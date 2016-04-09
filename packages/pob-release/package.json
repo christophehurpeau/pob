@@ -1,0 +1,19 @@
+{
+  "name": "pob-release",
+  "version": "1.0.0",
+  "description": "release with ease",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
+  "license": "ISC",
+  "repository": "christophehurpeau/pob-release",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "bin": {
+    "release": "./release"
+  },
+  "dependencies": {
+    "inquirer": "^1.0.0",
+    "minimist-argv": "^1.0.0",
+    "semver": "^5.1.0"
+  }
+}
