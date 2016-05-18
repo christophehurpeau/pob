@@ -1,3 +1,4 @@
+const readFileSync = require('fs').readFileSync;
 const argv = require('minimist-argv');
 const inquirer = require('inquirer');
 const execSync = require('child_process').execSync;
@@ -49,11 +50,15 @@ Promise.resolve(argv._[0]).then(version => {
         });
     });
 }).then(version => {
-    console.log(execSync('npm version "' + version + '"').toString());
-    version = execSync('node -pe "require(\'./package.json\').version"').toString().trim();
+    /* VERSION */
+    execSync('npm version "' + version + '"', { stdio: 'inherit' });
+    const pkg = JSON.parse(readFileSync('./package.json'));
+    version = pkg.version;
     if (!isSemverValid(version)) {
         throw new Error(`Unexpected version: ${version}`);
     }
-    console.log(execSync('git push').toString());
-    console.log(execSync('git push origin "v' + version + '"').toString());
-}).catch(console.log);
+
+    /* PUSH */
+    execSync('git push', { stdio: 'inherit' });
+    execSync('git push origin "v' + version + '"', { stdio: 'inherit' });
+}).catch(err => console.log(err.message || err));
