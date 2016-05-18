@@ -1,0 +1,17 @@
+var production = process.env.NODE_ENV === 'production';
+<% var envs = [
+    ['es5', env_es5],
+    ['node5', env_node5],
+    ['node6', env_node6],
+].filter(v => v[1]);
+if (envs.length === 1) { -%>
+module.exports = require('./<%= envs[0][0] %>' + (production ? '' : '-dev') + '/');
+<% } else { -%><% if (env_node6) {
+-%>if (process.version.startsWith && process.version.startsWith('6.'))
+    return module.exports = require('./dist/node6' + (production ? '' : '-dev') + '/');
+<% } if (env_node5) {
+-%>if (process.version.startsWith && process.version.startsWith('5.'))
+    return module.exports = require('./dist/node5' + (production ? '' : '-dev') + '/');
+<% } if (env_es5) {
+-%>return module.exports = require('./dist/es5' + (production ? '' : '-dev') + '/');
+<% } } -%>

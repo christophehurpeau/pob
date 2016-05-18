@@ -1,0 +1,16 @@
+circle.yml
+
+/.settings
+.project
+.idea
+*.sublime-project
+*.sublime-workspace
+
+#*
+*$
+*.BAK
+*.bak
+*.log
+*.old
+*~
+.#*

@@ -1,0 +1,50 @@
+{
+  "env": {
+<% if (env_doc) { -%>
+    "doc": {
+      "presets": ["es2015", "<%= react ? 'react' : 'flow' %>", "stage-1"],
+      "plugins": ["add-jsdoc-annotations"]
+    }<% if (env_es5 || env_node5 || env_node6 || env_modern_browsers) { -%>,<% } -%>
+<% } -%>
+
+<% if (env_es5) { -%>
+    "es5": {
+      "presets": ["es2015", "<%= react ? 'react' : 'flow' %>", "stage-1"]
+    },
+    "es5-dev": {
+      "presets": ["es2015", "<%= react ? 'react' : 'flow' %>", "stage-1"],
+      "plugins": ["typecheck"]
+    }<% if (env_node5 || env_node6 || env_modern_browsers) { -%>,<% } -%>
+<% } -%>
+
+<% if (env_node5) { -%>
+    "node5": {
+      "presets": ["es2015-node5", "<%= react ? 'react' : 'flow' %>", "stage-1"]
+    },
+    "node5-dev": {
+      "presets": ["es2015-node5", "<%= react ? 'react' : 'flow' %>", "stage-1"],
+      "plugins": ["typecheck"]
+    }<% if (env_node6 || env_modern_browsers) { -%>,<% } -%>
+<% } -%>
+
+<% if (env_node6) { -%>
+    "node6": {
+      "presets": ["es2015-node6/object-rest", "<%= react ? 'react' : 'flow' %>", "stage-1"]
+    },
+    "node6-dev": {
+      "presets": ["es2015-node6/object-rest", "<%= react ? 'react' : 'flow' %>", "stage-1"],
+      "plugins": ["typecheck"]
+    }<% if (env_modern_browsers) { -%>,<% } -%>
+<% } -%>
+
+<% if (env_modern_browsers) { -%>
+    "modern-browsers": {
+      "presets": ["modern-browsers", "<%= react ? 'react' : 'flow' %>", "modern-browsers/stage1"]
+    },
+    "modern-browsers-dev": {
+      "presets": ["modern-browsers", "<%= react ? 'react' : 'flow' %>", "modern-browsers/stage1"],
+      "plugins": ["typecheck"]
+    }
+<% } -%>
+  }
+}
