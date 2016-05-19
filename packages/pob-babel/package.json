@@ -1,0 +1,15 @@
+{
+  "name": "pob-babel",
+  "version": "0.1.1",
+  "description": "Build and watch with babel",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
+  "license": "ISC",
+  "repository": "christophehurpeau/pob-babel",
+  "bin": {
+    "pob-build": "./build",
+    "pob-watch": "./watch"
+  },
+  "dependencies": {
+    "babel-cli": "^6.9.0"
+  }
+}
