@@ -61,4 +61,7 @@ Promise.resolve(argv._[0]).then(version => {
     /* PUSH */
     execSync('git push', { stdio: 'inherit' });
     execSync('git push origin "v' + version + '"', { stdio: 'inherit' });
+
+    /* RELEASE */
+    execSync('npm publish', { stdio: 'inherit' });
 }).catch(err => console.log(err.message || err));
