@@ -26,17 +26,17 @@
             "plugins": ["typecheck"]
         },
         "webpack": {
-            "presets": ["es2015-webpack", "flow", "stage-1"]
+            "presets": ["es2015", "flow", "stage-1"]
         },
         "webpack-dev": {
-            "presets": ["es2015-webpack", "flow", "stage-1"],
+            "presets": ["es2015", "flow", "stage-1"],
             "plugins": ["typecheck"]
         },
         "webpack-modern-browsers": {
-            "presets": ["modern-browsers/webpack2", "flow", "modern-browsers/stage1"]
+            "presets": ["modern-browsers", "flow", "modern-browsers/stage1"]
         },
         "webpack-modern-browsers-dev": {
-            "presets": ["modern-browsers/webpack2", "flow", "modern-browsers/stage1"],
+            "presets": ["modern-browsers", "flow", "modern-browsers/stage1"],
             "plugins": ["typecheck"]
         }
     }
