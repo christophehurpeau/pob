@@ -8,8 +8,8 @@ const babelrc = require(`./babelrc${pobrc.react ? '' : '-no'}-react.json`);
 
 module.exports = {
     clean() {
-        console.log('> rm -Rf dist');
-        execSync('rm -Rf dist');
+        console.log('> rm -Rf lib-*');
+        execSync('rm -Rf lib-*');
         console.log('done.');
     },
 
@@ -40,7 +40,7 @@ module.exports = {
                         '--source-maps',
                         watch && '--watch',
                         '--out-dir',
-                        isTesting ? 'test/node6' : `dist/${env}`,
+                        isTesting ? 'test/node6' : `lib-${env}`,
                         isTesting ? 'test/src' : 'src',
                     ].filter(Boolean),
                     {
