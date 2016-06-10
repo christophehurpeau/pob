@@ -30,5 +30,6 @@ execSync('git log `git describe --abbrev=0 &> /dev/null && git rev-list --tags -
 execSync('$EDITOR \\#temp_changelog', { stdio: 'inherit' });
 execSync('echo "\\n" >> \\#temp_changelog', { stdio: 'inherit' });
 execSync('cat CHANGELOG.md || echo >> \\#temp_changelog || true', { stdio: 'inherit' });
-execSync('mv -f \\#temp_changelog CHANGELOG.md', { stdio: 'inherit' });
+execSync('cat \\#temp_changelog | sed -e :a -e \'/^\\n*$/{$d;N;};/\\n$/ba\' > CHANGELOG.md', { stdio: 'inherit' });
+execSync('rm \\#temp_changelog', { stdio: 'inherit' });
 execSync('git add CHANGELOG.md');
