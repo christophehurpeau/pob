@@ -5,39 +5,89 @@
             "plugins": ["add-jsdoc-annotations"]
         },
         "es5": {
-            "presets": ["es2015", "flow", "stage-1"]
+            "presets": ["es2015", "flow", "stage-1"],
+            "plugins": [
+                ["defines", { "PRODUCTION": true, "BROWSER": false, "SERVER": true }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [] }]
+            ]
         },
         "es5-dev": {
             "presets": ["es2015", "flow", "stage-1"],
-            "plugins": ["typecheck"]
+            "plugins": [
+                "typecheck",
+                ["defines", { "PRODUCTION": false, "BROWSER": false, "SERVER": true }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [] }]
+            ]
         },
         "node5": {
-            "presets": ["es2015-node5", "flow", "stage-1"]
+            "presets": ["es2015-node5", "flow", "stage-1"],
+            "plugins": [
+                ["defines", { "PRODUCTION": true, "BROWSER": false, "SERVER": true }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [] }]
+            ]
         },
         "node5-dev": {
             "presets": ["es2015-node5", "flow", "stage-1"],
-            "plugins": ["typecheck"]
+            "plugins": [
+                "typecheck",
+                ["defines", { "PRODUCTION": false, "BROWSER": false, "SERVER": true }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [] }]
+            ]
         },
         "node6": {
-            "presets": ["es2015-node6/object-rest", "flow", "stage-1"]
+            "presets": ["es2015-node6/object-rest", "flow", "stage-1"],
+            "plugins": [
+                ["defines", { "PRODUCTION": true, "BROWSER": false, "SERVER": true }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [] }]
+            ]
         },
         "node6-dev": {
             "presets": ["es2015-node6/object-rest", "flow", "stage-1"],
-            "plugins": ["typecheck"]
+            "plugins": [
+                "typecheck",
+                ["defines", { "PRODUCTION": false, "BROWSER": false, "SERVER": true }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [] }]
+            ]
         },
         "webpack": {
-            "presets": ["es2015", "flow", "stage-1"]
+            "presets": ["es2015-webpack", "flow", "stage-1"],
+            "plugins": [
+                ["defines", { "PRODUCTION": true, "BROWSER": true, "SERVER": false }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [] }]
+            ]
         },
         "webpack-dev": {
-            "presets": ["es2015", "flow", "stage-1"],
-            "plugins": ["typecheck"]
+            "presets": ["es2015-webpack", "flow", "stage-1"],
+            "plugins": [
+                "typecheck",
+                ["defines", { "PRODUCTION": true, "BROWSER": true, "SERVER": false }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [] }]
+            ]
         },
         "webpack-modern-browsers": {
-            "presets": ["modern-browsers", "flow", "modern-browsers/stage1"]
+            "presets": ["modern-browsers/webpack", "flow", "modern-browsers/stage1"],
+            "plugins": [
+                ["defines", { "PRODUCTION": true, "BROWSER": true, "SERVER": false }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [] }]
+            ]
         },
         "webpack-modern-browsers-dev": {
-            "presets": ["modern-browsers", "flow", "modern-browsers/stage1"],
-            "plugins": ["typecheck"]
+            "presets": ["modern-browsers/webpack", "flow", "modern-browsers/stage1"],
+            "plugins": [
+                "typecheck",
+                ["defines", { "PRODUCTION": true, "BROWSER": true, "SERVER": false }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [] }]
+            ]
         }
     }
 }

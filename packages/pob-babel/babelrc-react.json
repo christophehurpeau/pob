@@ -5,39 +5,99 @@
             "plugins": ["add-jsdoc-annotations"]
         },
         "es5": {
-            "presets": ["es2015", "react", "stage-1"]
+            "presets": ["es2015", "react", "stage-1"],
+            "plugins": [
+                "react-require",
+                ["defines", { "PRODUCTION": true, "BROWSER": false, "SERVER": true }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [], "unusedWhitelist": ["react"] }]
+            ]
         },
         "es5-dev": {
             "presets": ["es2015", "react", "stage-1"],
-            "plugins": ["typecheck"]
+            "plugins": [
+                "react-require",
+                "typecheck",
+                ["defines", { "PRODUCTION": false, "BROWSER": false, "SERVER": true }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [], "unusedWhitelist": ["react"] }]
+            ]
         },
         "node5": {
-            "presets": ["es2015-node5", "react", "stage-1"]
+            "presets": ["es2015-node5", "react", "stage-1"],
+            "plugins": [
+                "react-require",
+                ["defines", { "PRODUCTION": true, "BROWSER": false, "SERVER": true }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [], "unusedWhitelist": ["react"] }]
+            ]
         },
         "node5-dev": {
             "presets": ["es2015-node5", "react", "stage-1"],
-            "plugins": ["typecheck"]
+            "plugins": [
+                "react-require",
+                "typecheck",
+                ["defines", { "PRODUCTION": false, "BROWSER": false, "SERVER": true }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [], "unusedWhitelist": ["react"] }]
+            ]
         },
         "node6": {
-            "presets": ["es2015-node6/object-rest", "react", "stage-1"]
+            "presets": ["es2015-node6/object-rest", "react", "stage-1"],
+            "plugins": [
+                "react-require",
+                ["defines", { "PRODUCTION": true, "BROWSER": false, "SERVER": true }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [], "unusedWhitelist": ["react"] }]
+            ]
         },
         "node6-dev": {
             "presets": ["es2015-node6/object-rest", "react", "stage-1"],
-            "plugins": ["typecheck"]
+            "plugins": [
+                "react-require",
+                "typecheck",
+                ["defines", { "PRODUCTION": false, "BROWSER": false, "SERVER": true }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [], "unusedWhitelist": ["react"] }]
+            ]
         },
         "webpack": {
-            "presets": ["es2015", "flow", "stage-1"]
+            "presets": ["es2015-webpack", "react", "stage-1"],
+            "plugins": [
+                "react-require",
+                ["defines", { "PRODUCTION": true, "BROWSER": true, "SERVER": false }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [], "unusedWhitelist": ["react"] }]
+            ]
         },
         "webpack-dev": {
-            "presets": ["es2015", "flow", "stage-1"],
-            "plugins": ["typecheck"]
+            "presets": ["es2015-webpack", "react", "stage-1"],
+            "plugins": [
+                "react-require",
+                "typecheck",
+                ["defines", { "PRODUCTION": true, "BROWSER": true, "SERVER": false }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [], "unusedWhitelist": ["react"] }]
+            ]
         },
         "webpack-modern-browsers": {
-            "presets": ["modern-browsers", "react", "modern-browsers/stage1"]
+            "presets": ["modern-browsers/webpack2-uglifyjs", "react", "modern-browsers/stage1"],
+            "plugins": [
+                "react-require",
+                ["defines", { "PRODUCTION": true, "BROWSER": true, "SERVER": false }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [], "unusedWhitelist": ["react"] }]
+            ]
         },
         "webpack-modern-browsers-dev": {
-            "presets": ["modern-browsers", "react", "modern-browsers/stage1"],
-            "plugins": ["typecheck"]
+            "presets": ["modern-browsers/webpack2-uglifyjs", "react", "modern-browsers/stage1"],
+            "plugins": [
+                "react-require",
+                "typecheck",
+                ["defines", { "PRODUCTION": true, "BROWSER": true, "SERVER": false }],
+                "remove-dead-code",
+                ["discard-module-references", { "targets": [], "unusedWhitelist": ["react"] }]
+            ]
         }
     }
 }
