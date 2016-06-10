@@ -5,6 +5,9 @@ const execSync = require('child_process').execSync;
 const validateSemver = require('semver').valid;
 const isSemverValid = version => validateSemver(version) !== null;
 
+/*execSync('[[ -z $(git status --porcelain) ]] || (echo "Git working directory not clean."; exit 1)', { stdio: 'inherit' });
+execSync('[[ -z $(git symbolic-ref HEAD) ]] || (echo "Git working directory not clean."; exit 1)', { stdio: 'inherit' });*/
+
 Promise.resolve(argv._[0]).then(version => {
     if (version) {
         if (!isSemverValid(version)) {
