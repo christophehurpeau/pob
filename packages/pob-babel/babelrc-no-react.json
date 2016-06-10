@@ -73,7 +73,7 @@
             ]
         },
         "webpack-modern-browsers": {
-            "presets": ["modern-browsers/webpack", "flow", "modern-browsers/stage1"],
+            "presets": ["modern-browsers/webpack2-uglifyjs", "flow", "modern-browsers/stage1"],
             "plugins": [
                 ["defines", { "PRODUCTION": true, "BROWSER": true, "SERVER": false }],
                 "remove-dead-code",
@@ -81,7 +81,7 @@
             ]
         },
         "webpack-modern-browsers-dev": {
-            "presets": ["modern-browsers/webpack", "flow", "modern-browsers/stage1"],
+            "presets": ["modern-browsers/webpack2-uglifyjs", "flow", "modern-browsers/stage1"],
             "plugins": [
                 "typecheck",
                 ["defines", { "PRODUCTION": true, "BROWSER": true, "SERVER": false }],
