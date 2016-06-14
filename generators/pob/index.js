@@ -4,6 +4,7 @@ const parseAuthor = require('parse-author');
 const githubUsername = require('github-username');
 const kebabCase = require('lodash.kebabcase');
 const path = require('path');
+const packageUtils = require('../../utils/package');
 
 module.exports = generators.Base.extend({
     constructor: function() {
@@ -134,8 +135,12 @@ module.exports = generators.Base.extend({
                     value: 'es5',
                     checked: true,
                 }, {
-                    name: 'Modern browsers (latest version of firefox and chrome)',
-                    value: 'modernBrowsers',
+                    name: 'Webpack: es5',
+                    value: 'webpackES5',
+                    checked: false,
+                }, {
+                    name: 'Webpack: Modern browsers (latest version of firefox and chrome)',
+                    value: 'webpackModernBrowsers',
                     checked: false,
                 }]
             }, {
@@ -245,7 +250,8 @@ module.exports = generators.Base.extend({
                     env_es5: this.props.babelEnvs.includes('es5'),
                     env_node5: this.props.babelEnvs.includes('node5'),
                     env_node6: this.props.babelEnvs.includes('node6'),
-                    env_modern_browsers: this.props.babelEnvs.includes('modernBrowsers'),
+                    env_webpack_es5: this.props.babelEnvs.includes('webpackES5'),
+                    env_webpack_modern_browsers: this.props.babelEnvs.includes('webpackModernBrowsers'),
                 },
             }, {
                 local: require.resolve('../babel'),
@@ -308,7 +314,7 @@ module.exports = generators.Base.extend({
         // Re-read the content at this point because a composed generator might modify it.
         const currentPkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
-        const pkg = Object.assign({
+        const pkg = packageUtils.extend(currentPkg, {
             name: kebabCase(this.props.name),
             version: '0.0.0',
             description: this.props.description,
@@ -316,20 +322,18 @@ module.exports = generators.Base.extend({
             author: `${this.props.authorName} <${this.props.authorEmail}>${
                 this.props.authorUrl && ` (${this.props.authorUrl})`}`,
             keywords: []
-        }, currentPkg);
-
-        const scripts = pkg.scripts || (pkg.scripts = {});;
-
-        scripts.release = 'pob-repository-check-clean && pob-release';
-        scripts.preversion = 'npm run lint && npm run build && npm run build && pob-repository-check-clean';
-        scripts.version = 'pob-version';
-        scripts.clean = 'rm -Rf docs dist test/node6 coverage';
-        scripts.prepublish = 'ln -s ../../git-hooks/pre-commit .git/hooks/pre-commit || echo';
-
-        pkg.devDependencies = pkg.devDependencies || {};
-        Object.assign(pkg.devDependencies, {
-            'pob-release': '^2.0.0',
         });
+
+
+        packageUtils.addScripts(pkg, {
+            release: 'pob-repository-check-clean && pob-release',
+            preversion: 'npm run lint && npm run build && npm run build && pob-repository-check-clean',
+            version: 'pob-version',
+            clean: 'rm -Rf docs dist test/node6 coverage',
+            prepublish: 'ln -s ../../git-hooks/pre-commit .git/hooks/pre-commit || echo',
+        });
+
+        packageUtils.addDevDependency(pkg, 'pob-release', '^2.0.5');
 
         this.fs.writeJSON(this.destinationPath('package.json'), pkg);
     },

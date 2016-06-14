@@ -1,4 +1,5 @@
 const generators = require('yeoman-generator');
+const packageUtils = require('../../utils/package');
 
 module.exports = generators.Base.extend({
     constructor: function() {
@@ -35,30 +36,27 @@ module.exports = generators.Base.extend({
     },
 
     writing() {
-        this.pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
+        const pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
 
-        const scripts = this.pkg.scripts || (this.pkg.scripts = {});
-
-        scripts['generate:docs'] = 'npm run generate:api';
-
-        scripts['generate:api'] = [
-            'rm -Rf docs/',
-            'BABEL_ENV=doc babel -s --out-dir docs/_dist src',
-            'jsdoc README.md docs/_dist --recurse --destination docs/ --configure jsdoc.conf.json',
-            'rm -Rf docs/_dist'
-        ].join(' ; ');
-
+        packageUtils.addScripts({
+            'generate:docs': 'npm run generate:api',
+            'generate:api': [
+                'rm -Rf docs/',
+                'BABEL_ENV=doc babel -s --out-dir docs/_dist src',
+                'jsdoc README.md docs/_dist --recurse --destination docs/ --configure jsdoc.conf.json',
+                'rm -Rf docs/_dist'
+            ].join(' ; ')
+        });
 
         if (this.options.testing) {
-            scripts['generate:docs'] += ' && npm run generate:test-coverage';
+            pkg.scripts['generate:docs'] += ' && npm run generate:test-coverage';
         }
 
-        this.pkg.devDependencies = this.pkg.devDependencies || {};
-        Object.assign(this.pkg.devDependencies, {
+        packageUtils.addDevDependencies(pkg, {
             'jsdoc': '^3.4.0',
             'jaguarjs-jsdoc': 'github:christophehurpeau/jaguarjs-jsdoc#0e577602ac327a694d4f619cb37c1476c523261e',
         });
 
-        this.fs.writeJSON(this.destinationPath(this.options.destination, 'package.json'), this.pkg);
+        this.fs.writeJSON(this.destinationPath(this.options.destination, 'package.json'), pkg);
     },
 });

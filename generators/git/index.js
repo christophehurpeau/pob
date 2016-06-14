@@ -1,6 +1,7 @@
 const generators = require('yeoman-generator');
 const remoteUrl = require('git-remote-url');
 const accessSync = require('fs').accessSync;
+const packageUtils = require('../../utils/package');
 
 module.exports = generators.Base.extend({
     constructor: function() {
@@ -58,6 +59,7 @@ module.exports = generators.Base.extend({
 
         if (this.pkg.repository !== repository) {
             this.pkg.repository = repository;
+            packageUtils.sort(this.pkg);
             this.fs.writeJSON(
                 this.destinationPath(this.options.destination, 'package.json'),
                 this.pkg

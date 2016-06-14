@@ -5,13 +5,15 @@ var production = process.env.NODE_ENV === 'production';
     ['node6', env_node6],
 ].filter(v => v[1]);
 if (envs.length === 1) { -%>
-module.exports = require('./<%= envs[0][0] %>' + (production ? '' : '-dev') + '/');
+module.exports = require('./lib-<%= envs[0][0] %>' + (production ? '' : '-dev') + '/');
 <% } else { -%><% if (env_node6) {
--%>if (process.version.startsWith && process.version.startsWith('6.'))
-    return module.exports = require('./dist/node6' + (production ? '' : '-dev') + '/');
+-%>if (process.version.startsWith && process.version.startsWith('v6.'))
+    return module.exports = require('./lib-node6' + (production ? '' : '-dev') + '/');
 <% } if (env_node5) {
--%>if (process.version.startsWith && process.version.startsWith('5.'))
-    return module.exports = require('./dist/node5' + (production ? '' : '-dev') + '/');
+-%>if (process.version.startsWith && process.version.startsWith('v5.'))
+    return module.exports = require('./lib-node5' + (production ? '' : '-dev') + '/');
 <% } if (env_es5) {
--%>return module.exports = require('./dist/es5' + (production ? '' : '-dev') + '/');
+-%>return module.exports = require('./lib-es5' + (production ? '' : '-dev') + '/');
+<% } else { -%>
+throw new Error('Platform not supported: ' + process.version + '.');
 <% } } -%>

@@ -1,5 +1,6 @@
 'use strict';
-var generators = require('yeoman-generator');
+const generators = require('yeoman-generator');
+const packageUtils = require('../../utils/package');
 
 module.exports = generators.Base.extend({
     constructor: function () {
@@ -51,114 +52,116 @@ module.exports = generators.Base.extend({
     },
 
     initializing: function () {
-        const envs = {
-            env_doc: this.options.env_doc,
-            env_es5: this.options.env_es5,
-            env_node5: this.options.env_node5,
-            env_node6: this.options.env_node6,
-            env_modern_browsers: this.options.env_modern_browsers,
-        };
-
-        this.fs.copyTpl(
-            this.templatePath('babelrc'),
-            this.destinationPath(this.options.destination, '.babelrc'),
-            Object.assign({ react: this.options.react }, envs)
-        );
-
         this.fs.copyTpl(
             this.templatePath('index.js.ejs'),
             this.destinationPath(this.options.destination, 'index.js'),
-            envs
+            {
+                env_es5: this.options.env_es5,
+                env_node5: this.options.env_node5,
+                env_node6: this.options.env_node6,
+            }
         );
     },
 
     writing() {
-        const pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
+        const pobrc = this.fs.readJSON(this.destinationPath(this.options.destination, '.pobrc.json'), {});
 
         const envs = [
             this.options.env_es5 && "es5",
             this.options.env_node5 && "node5",
             this.options.env_node6 && "node6",
-            this.options['env_modern_browsers'] && "modern-browsers",
+            this.options.env_webpack_es5 && "webpack",
+            this.options.env_webpack_modern_browsers && "webpack-modern-browsers",
         ].filter(Boolean);
+
+        pobrc.envs = envs;
+        pobrc.react = !!this.options.react;
+        pobrc.testing = !!this.options.testing;
+
+        this.fs.writeJSON(this.destinationPath(this.options.destination, '.pobrc.json'), pobrc);
+
+        const pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
 
         if (!pkg.main) {
             pkg.main = './index.js';
         }
 
-        if (!this.options['env_modern_browsers']) {
-            delete pkg['main-modern-browsers'];
-        } else if (!pkg['main-modern-browsers-dev']) {
-            if (this.options.env_es5) {
-                pkg.browser = './dist/es5/index.js';
-                pkg['browser-dev'] = './dist/es5-dev/index.js';
-            }
-            pkg['main-modern-browsers'] = './dist/modern-browsers/index.js';
-            pkg['main-modern-browsers-dev'] = './dist/modern-browsers-dev/index.js';
+        if (!this.options.env_es5) {
+            delete pkg.browser;
+            delete pkg['browser-dev'];
+        } else if (!pkg.browser) {
+            pkg.browser = './lib-es5/index.js';
+            pkg['browser-dev'] = './lib-es5-dev/index.js';
         }
 
-        const scripts = pkg.scripts || (pkg.scripts = {});
-        scripts.build = 'rm -Rf dist && '
-            + envs
-                .map(env => [env, `${env}-dev`]
-                    .map(env => `BABEL_ENV=${env} babel -s --out-dir dist/${env} src`)
-                    .join(' && ')
-                )
-                .join(' && ');
-
-        scripts['build:dev'] = 'rm -Rf dist/*-dev/ && '
-            + envs
-                .map(env => [`${env}-dev`]
-                    .map(env => `BABEL_ENV=${env} babel -s --out-dir dist/${env} src`)
-                    .join(' && ')
-                )
-                .join(' && ');
-
-        if (this.options.testing) {
-            scripts.build += '&& rm -Rf test/node6 && BABEL_ENV=node6 babel -s --out-dir test/node6 test/src';
+        if (!this.options.env_webpack_es5) {
+            delete pkg['webpack:main'];
+            delete pkg['webpack:main-dev'];
+        } else if (!pkg['webpack:main']) {
+            pkg['webpack:main'] = './lib-webpack/index.js';
+            pkg['webpack:main-dev'] = './lib-webpack-dev/index.js';
         }
 
-        scripts['watch:dev'] = 'rm -Rf dist test/node6 && echo "'
-            + envs
-                .map(env => `${env}-dev`)
-                .map(env => `BABEL_ENV=${env} babel -sw --out-dir dist/${env} src`)
-                .join('\\n')
-            + (this.options.testing ? 'BABEL_ENV=node6 babel -sw --out-dir test/node6 test/src' : '')
-            + `" | while read i; do printf "%q\\n" "$i"; done | xargs -n1 -P ${envs.length + (this.options.testing ? 1 : 0)} -I cmd bash -c "cmd"`;
+        if (!this.options.env_webpack_modern_browsers) {
+            delete pkg['webpack:main'];
+            delete pkg['webpack:main-dev'];
+        } else if (!pkg['webpack:main-modern-browsers']) {
+            pkg['webpack:main-modern-browsers'] = './lib-webpack-modern-browsers/index.js';
+            pkg['webpack:main-modern-browsers-dev'] = './lib-webpack-modern-browsers-dev/index.js';
+        }
 
-        Object.assign(pkg.devDependencies, {
-            'babel-cli': '^6.8.0',
+        packageUtils.sort(pkg);
+
+        packageUtils.addScripts(pkg, {
+            build: 'pob-build',
+            'build:dev': 'pob-build',
+            'watch': 'pob-watch',
+            'watch:dev': 'pob-watch',
+        });
+
+        packageUtils.addDevDependencies(pkg, {
+            'pob-babel': '^0.4.1',
             'babel-preset-stage-1': '^6.5.0',
             'babel-plugin-typecheck': '^3.9.0',
+            'babel-plugin-defines': '^2.0.0',
+            'babel-plugin-discard-module-references': '^1.0.0',
+            'babel-plugin-remove-dead-code': '^1.0.1',
         });
 
         if (this.options.react) {
-            pkg.devDependencies['babel-preset-react'] = '^6.5.0';
+            packageUtils.addDevDependencies(pkg, {
+                'babel-preset-react': '^6.5.0',
+                'babel-plugin-react-require': '^2.1.0',
+            });
         } else {
-            pkg.devDependencies['babel-preset-flow'] = '^1.0.0';
+            packageUtils.addDevDependency(pkg, 'babel-preset-flow', '^1.0.0');
         }
 
         if (this.options.env_doc) {
-            pkg.devDependencies['babel-plugin-add-jsdoc-annotations'] = '^4.0.1';
+            packageUtils.addDevDependency(pkg, 'babel-plugin-add-jsdoc-annotations', '^4.0.1');
         }
 
         if (this.options.env_es5) {
-            pkg.devDependencies['babel-preset-es2015'] = '^6.6.0';
-            pkg.devDependencies['babel-preset-stage-1'] = '^6.5.0';
+            packageUtils.addDevDependency(pkg, 'babel-preset-es2015', '^6.9.0');
+            packageUtils.addDevDependency(pkg, 'babel-preset-stage-1', '^6.5.0');
         }
 
         if (this.options.env_node5) {
-            pkg.devDependencies['babel-preset-es2015-node5'] = '^1.2.0';
-            pkg.devDependencies['babel-preset-stage-1'] = '^6.5.0';
+            packageUtils.addDevDependency(pkg, 'babel-preset-es2015-node5', '^1.2.0');
+            packageUtils.addDevDependency(pkg, 'babel-preset-stage-1', '^6.5.0');
         }
 
         if (this.options.env_node6) {
-            pkg.devDependencies['babel-preset-es2015-node6'] = '^0.2.0';
-            pkg.devDependencies['babel-preset-stage-1'] = '^6.5.0';
+            packageUtils.addDevDependency(pkg, 'babel-preset-es2015-node6', '^0.2.0');
+            packageUtils.addDevDependency(pkg, 'babel-preset-stage-1', '^6.5.0');
         }
 
-        if (this.options['env_modern_browsers']) {
-            pkg.devDependencies['babel-preset-modern-browsers'] = '^2.0.0';
+        if (this.options.env_webpack_es5) {
+            packageUtils.addDevDependency(pkg, 'babel-preset-es2015-webpack', '^6.4.1');
+        }
+
+        if (this.options.env_webpack_modern_browsers) {
+            packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers', '^3.0.0');
         }
 
         this.fs.writeJSON(this.destinationPath(this.options.destination, 'package.json'), pkg);

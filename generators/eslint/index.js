@@ -1,4 +1,5 @@
 const generators = require('yeoman-generator');
+const packageUtils = require('../../utils/package');
 
 module.exports = generators.Base.extend({
     constructor: function() {
@@ -55,45 +56,40 @@ module.exports = generators.Base.extend({
     },
 
     writing() {
-        this.pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
+        const pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
 
-        const scripts = this.pkg.scripts || (this.pkg.scripts = {});
-        scripts.lint = 'eslint --fix -c .eslintrc.yml src/';
+        packageUtils.addScript(pkg, 'lint', 'eslint --ext .js,.jsx --fix -c .eslintrc.yml src/');
         if (this.options.testing) {
-            scripts.lint += ' test/src/';
+            pkg.scripts.lint += ' test/src/';
         }
 
-        this.pkg.devDependencies = this.pkg.devDependencies || {};
-        Object.assign(this.pkg.devDependencies, {
-            'eslint': '^2.10.2',
-            'eslint-plugin-import': '^1.6.1',
-            'eslint-config-pob': '^6.0.1',
+        packageUtils.addDevDependencies(pkg, {
+            'eslint': '^2.12.0',
+            'eslint-plugin-import': '^1.8.0',
+            'eslint-config-pob': '^6.1.1',
         });
 
         if (this.options.babel || this.options.react) {
-            Object.assign(this.pkg.devDependencies, {
-                'babel-eslint': '^6.0.4',
-            });
+            packageUtils.addDevDependency(pkg, 'babel-eslint', '^6.0.4');
         } else {
-            delete this.pkg.devDependencies['babel-eslint'];
+            delete pkg.devDependencies['babel-eslint'];
         }
 
         if (this.options.react) {
-            Object.assign(this.pkg.devDependencies, {
+            packageUtils.addDevDependencies(pkg, {
                 'babel-eslint': '^6.0.4',
                 'eslint-config-airbnb': '^9.0.1',
                 'eslint-plugin-react': '^5.0.1',
-                'eslint-plugin-jsx-a11y': '^1.0.4',
+                'eslint-plugin-jsx-a11y': '^1.4.1',
             });
-            delete this.pkg.devDependencies['eslint-config-airbnb-base'];
+            delete pkg.devDependencies['eslint-config-airbnb-base'];
         } else {
-            this.pkg.devDependencies['eslint-config-airbnb-base'] = '^3.0.1';
-            delete this.pkg.devDependencies['babel-eslint'];
-            delete this.pkg.devDependencies['eslint-config-airbnb'];
-            delete this.pkg.devDependencies['eslint-plugin-react'];
-            delete this.pkg.devDependencies['eslint-plugin-jsx-a11y'];
+            packageUtils.addDevDependency(pkg, 'eslint-config-airbnb-base', '^3.0.1');
+            delete pkg.devDependencies['eslint-config-airbnb'];
+            delete pkg.devDependencies['eslint-plugin-react'];
+            delete pkg.devDependencies['eslint-plugin-jsx-a11y'];
         }
 
-        this.fs.writeJSON(this.destinationPath(this.options.destination, 'package.json'), this.pkg);
+        this.fs.writeJSON(this.destinationPath(this.options.destination, 'package.json'), pkg);
     },
 });

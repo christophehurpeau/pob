@@ -1,4 +1,5 @@
 const generators = require('yeoman-generator');
+const packageUtils = require('../../utils/package');
 
 module.exports = generators.Base.extend({
     constructor: function() {
@@ -19,20 +20,19 @@ module.exports = generators.Base.extend({
     },
 
     writing() {
-        this.pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
+        const pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
 
-        const scripts = this.pkg.scripts || (this.pkg.scripts = {});
+        packageUtils.addScripts(pkg, {
+            test: 'mocha --harmony --es_staging --recursive --bail -u tdd test/node6',
+            'generate:test-coverage': 'rm -Rf coverage/; node --harmony --es_staging node_modules/istanbul/lib/cli.js'
+                + ' cover node_modules/.bin/_mocha -- --recursive --reporter=spec -u tdd test/node6',
+        });
 
-        scripts.test = 'mocha --harmony --es_staging --recursive --bail -u tdd test/node6';
-        scripts['generate:test-coverage'] = 'rm -Rf coverage/; node --harmony --es_staging node_modules/istanbul/lib/cli.js'
-            + ' cover node_modules/.bin/_mocha -- --recursive --reporter=spec -u tdd test/node6';
-
-        this.pkg.devDependencies = this.pkg.devDependencies || {};
-        Object.assign(this.pkg.devDependencies, {
+        packageUtils.addDevDependencies(pkg, {
             'mocha': '^2.4.5',
             'istanbul': '^0.4.3',
         });
 
-        this.fs.writeJSON(this.destinationPath(this.options.destination, 'package.json'), this.pkg);
+        this.fs.writeJSON(this.destinationPath(this.options.destination, 'package.json'), pkg);
     },
 });
