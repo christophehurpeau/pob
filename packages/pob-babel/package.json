@@ -10,10 +10,10 @@
     "pob-watch": "./watch"
   },
   "dependencies": {
-    "babel-core": "^6.9.1",
-    "chokidar": "^1.5.2",
+    "babel-core": "^6.10.4",
+    "chokidar": "^1.6.0",
     "fs-readdir-recursive": "^1.0.0",
-    "glob": "^7.0.3",
+    "glob": "^7.0.5",
     "lock": "^0.1.2",
     "output-file": "^1.1.1",
     "promise-callback-factory": "^1.0.0",
