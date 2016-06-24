@@ -52,6 +52,11 @@ module.exports = {
     build(watch = false) {
         console.log(`> ${watch ? 'watching' : 'building'}... (${pobrc.envs.join(',')})`);
 
+        if (pobrc.envs.includes('node5')) {
+            console.log('[WARN] node5 is deprecated.');
+            pobrc.envs = pobrc.envs.filter(env => env === 'node5');
+        }
+
         const envs = pobrc.envs.reduce((res, env) => {
             res.push(env, `${env}-dev`);
             return res;
