@@ -62,7 +62,7 @@
             ]
         },
         "webpack-modern-browsers": {
-            "presets": ["modern-browsers/webpack2", "react", "modern-browsers/stage1"],
+            "presets": ["modern-browsers/webpack2", "react", "modern-browsers-stage-1"],
             "plugins": [
                 "react-require",
                 ["defines", { "PRODUCTION": true, "BROWSER": true, "SERVER": false }],
@@ -71,7 +71,7 @@
             ]
         },
         "webpack-modern-browsers-dev": {
-            "presets": ["modern-browsers/webpack2", "react", "modern-browsers/stage1"],
+            "presets": ["modern-browsers/webpack2", "react", "modern-browsers-stage-1"],
             "plugins": [
                 "react-require",
                 "typecheck",
