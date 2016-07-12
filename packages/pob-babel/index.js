@@ -15,7 +15,7 @@ const copyFile = require('./copyFile');
 
 const cwd = process.cwd();
 const pobrc = JSON.parse(fs.readFileSync(`${cwd}/.pobrc.json`));
-const babelrc = require(`./babelrc${pobrc.react ? '' : '-no'}-react.json`);
+const options = require(`./options`);
 const queue = new Queue(50, Infinity);
 
 function toErrorStack(err) {
@@ -39,6 +39,7 @@ module.exports = {
         const diff = glob.sync('lib*').filter(path => !envs.includes(path.substr('lib-'.length)));
         if (diff.length) {
             console.log('removing: ' + diff.join(','));
+            if (diff.some(diff => diff.startsWith('src'))) throw new Error('Cannot contains src');
             execSync('rm -Rf ' + diff.join(' '));
         }
 
@@ -80,10 +81,7 @@ module.exports = {
             const optsManager = new babel.OptionManager;
 
             optsManager.mergeOptions({
-                options: {
-                    presets: babelrc.env[env].presets,
-                    plugins: babelrc.env[env].plugins,
-                },
+                options: options(env, pobrc.react),
                 alias: 'base',
                 loc: cwd,
             });
@@ -110,8 +108,8 @@ module.exports = {
 
                             const diff = envAllFiles.filter(path => !allSrcFiles.includes(path.replace(/.map$/, '')));
                             if (diff.length) {
-                                console.log('removing: ' + diff.join(','));
-                                execSync('rm -Rf ' + diff.join(' '));
+                                console.log(`${out}: removing: ${diff.join(',')}`);
+                                execSync('rm -Rf ' + diff.map(filename => path.join(out, filename)).join(' '));
                             }
                         });
 
