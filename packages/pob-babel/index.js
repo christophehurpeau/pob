@@ -238,7 +238,7 @@ const build = exports.build = function build(watch = false) {
     }
 
     return Promise.all([
-        transpile('src', env => `lib-${env}`, envs, watch),
+        transpile(pobrc.src || 'src', env => `lib-${env}`, envs, watch),
         pobrc.testing && transpile('test/src', () => 'test/node6', ['node6'], watch),
     ]).then(() => watch);
 };
