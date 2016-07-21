@@ -1,2 +1,3 @@
 #!/usr/bin/env node
-require('./index.js').build();
+const pobBabel = require('./lib');
+pobBabel.build(process.argv[2] && process.argv[2].split(',').map(env => env.trim()));

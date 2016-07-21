@@ -5,12 +5,13 @@
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "license": "ISC",
   "repository": "christophehurpeau/pob-babel",
+  "main": "lib/index.js",
   "bin": {
     "pob-build": "./build",
     "pob-watch": "./watch"
   },
   "dependencies": {
-    "babel-core": "^6.10.4",
+    "babel-core": "^6.11.4",
     "chokidar": "^1.6.0",
     "fs-readdir-recursive": "^1.0.0",
     "glob": "^7.0.5",

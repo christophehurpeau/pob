@@ -1,7 +1,6 @@
-const fs = require('fs');
+const { execSync } = require('child_process');
 const path = require('path');
-const execSync = require('child_process').execSync;
-const EventEmitter = require('events');
+const { stat, readFile, unlink } = require('fs');
 const babel = require('babel-core');
 const chokidar = require('chokidar');
 const glob = require('glob');
@@ -14,9 +13,8 @@ const copyChmod = require('./copyChmod');
 const copyFile = require('./copyFile');
 const writeFile = require('./writeFile');
 
-const cwd = process.cwd();
-const pobrc = JSON.parse(fs.readFileSync(`${cwd}/.pobrc.json`));
 const options = require(`./options`);
+
 const queue = new Queue(40, Infinity);
 
 function toErrorStack(err) {
@@ -27,26 +25,7 @@ function toErrorStack(err) {
     }
 }
 
-const clean = exports.clean = function clean(envs) {
-    console.log('> cleaning');
-
-    if (!envs) {
-        execSync('rm -Rf lib-*');
-        console.log('done.');
-        return;
-    }
-
-    const diff = glob.sync('lib*').filter(path => !envs.includes(path.substr('lib-'.length)));
-    if (diff.length) {
-        console.log('removing: ' + diff.join(','));
-        if (diff.some(diff => diff.startsWith('src'))) throw new Error('Cannot contains src');
-        execSync('rm -Rf ' + diff.join(' '));
-    }
-
-    console.log('done.');
-};
-
-const transpile = exports.transpile = function transpile(src, outFn, envs, watch) {
+module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch) {
     const srcFiles = glob.sync(src, { cwd });
     const _lock = Lock();
     const lock = resource => new Promise(resolve => _lock(resource, release => resolve(() => release()())));
@@ -67,7 +46,7 @@ const transpile = exports.transpile = function transpile(src, outFn, envs, watch
 
 
     function handle(filename) {
-        return promiseCallback(done => fs.stat(filename, done))
+        return promiseCallback(done => stat(filename, done))
             .catch(err => {
                 console.log(err);
                 process.exit(1);
@@ -112,7 +91,7 @@ const transpile = exports.transpile = function transpile(src, outFn, envs, watch
                     console.log('compiling: ' + relative);
 
                     return Promise.resolve(src)
-                        .then(src => promiseCallback(done => fs.readFile(src, done)))
+                        .then(src => promiseCallback(done => readFile(src, done)))
                         .then(content => {
                             return Promise.all(envs.map(env => {
                                 const out = outFn(env);
@@ -140,7 +119,7 @@ const transpile = exports.transpile = function transpile(src, outFn, envs, watch
                                         return writeFile(dest, data.code)
                                             .then(() => Promise.all([
                                                 copyChmod(src, dest),
-                                                promiseCallback(done => fs.writeFile(mapLoc, JSON.stringify(data.map), done)),
+                                                writeFile(mapLoc, JSON.stringify(data.map)),
                                             ]));
                                     })
                                     .catch(watch && (err => {
@@ -198,8 +177,8 @@ const transpile = exports.transpile = function transpile(src, outFn, envs, watch
                             const dest = destFromSrc(relative, out);
 
                             return Promise.all([
-                                promiseCallback(done => fs.unlink(dest, done)).catch(() => {}),
-                                promiseCallback(done => fs.unlink(`${dest}.map`, done)).catch(() => {}),
+                                promiseCallback(done => unlink(dest, done)).catch(() => {}),
+                                promiseCallback(done => unlink(`${dest}.map`, done)).catch(() => {}),
                             ]);
                         }))
                         .then(() => release())
@@ -216,33 +195,4 @@ const transpile = exports.transpile = function transpile(src, outFn, envs, watch
             console.log(err.stack);
             process.exit(1);
         });
-};
-
-const build = exports.build = function build(watch = false) {
-    console.log(`> ${watch ? 'watching' : 'building'}... (${pobrc.envs.join(',')})`);
-
-    if (pobrc.envs.includes('node5')) {
-        console.log('[WARN] node5 is deprecated.');
-        pobrc.envs = pobrc.envs.filter(env => env === 'node5');
-    }
-
-    const envs = pobrc.envs.reduce((res, env) => {
-        res.push(env, `${env}-dev`);
-        return res;
-    }, []);
-
-    clean(envs);
-
-    if (watch) {
-        watch = new EventEmitter();
-    }
-
-    return Promise.all([
-        transpile(pobrc.src || 'src', env => `lib-${env}`, envs, watch),
-        pobrc.testing && transpile('test/src', () => 'test/node6', ['node6'], watch),
-    ]).then(() => watch);
-};
-
-const watch = exports.watch = function watch(envs) {
-    return build(true);
 };
