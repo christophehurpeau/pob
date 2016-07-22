@@ -2,15 +2,18 @@ const { execSync } = require('child_process');
 const glob = require('glob');
 const destFromSrc = require('./utils/destFromSrc');
 const { logger: parentLogger } = require('./logger');
+const Task = require('./cli-spinner');
 
 const logger = parentLogger.child('clean', 'clean');
 
 module.exports = function clean(envs) {
+    const task = new Task('clean');
     const startTime = logger.infoTime('starting');
 
     if (!envs) {
         execSync('rm -Rf lib-* test/node6');
-        console.log('done.');
+        task.succeed();
+        logger.infoSuccessTimeEnd(startTime, 'done.');
         return;
     }
 
@@ -24,5 +27,6 @@ module.exports = function clean(envs) {
         execSync('rm -Rf ' + diff.join(' '));
     }
 
+    task.succeed();
     logger.infoSuccessTimeEnd(startTime, 'done.');
 };

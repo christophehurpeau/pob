@@ -17,6 +17,7 @@ const destFromSrc = require('./utils/destFromSrc');
 const plugins = require('./plugins');
 const options = require(`./options`);
 const { logger: parentLogger } = require('./logger');
+const Task = require('./cli-spinner');
 
 const readFile = filepath => promiseCallback(done => readFileCallback(filepath, done));
 
@@ -35,6 +36,7 @@ module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch) {
     const srcFiles = glob.sync(src, { cwd });
     const _lock = Lock();
     const lock = resource => new Promise(resolve => _lock(resource, release => resolve(() => release()())));
+    let task = new Task('build');
 
     let logger = parentLogger.child('build', 'build');
     const watchLogger = parentLogger.child('watch', 'watch');
@@ -96,6 +98,7 @@ module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch) {
         return lock(relative).then(release => {
             return queue.add(() => {
                 if (babel.util.canCompile(relative)) {
+                    const subtask = task.subtask('compiling: ' + relative);
                     logger.debug('compiling: ' + relative);
 
                     return Promise.resolve(src)
@@ -131,11 +134,13 @@ module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch) {
                         .then(() => {
                             logger[watching ? 'success' : 'debug']('compiled: ' + relative);
                         })
-                        .then(() => release(), err => { release(); throw err; });
+                        .then(() => release(), err => { release(); throw err; })
+                        .then(() => subtask.done(), err => { subtask.done(); throw err; });
                 } else {
                     const extension = path.extname(relative).substr(1);
                     const plugin = plugins.findByExtension(extension);
                     if (plugin) {
+                        const subtask = task.subtask(plugin.extension + ': ' + relative);
                         logger.debug(plugin.extension + ': ' + relative);
                         const destRelative = destFromSrc(relative, plugin);
                         return Promise.resolve(src)
@@ -155,15 +160,18 @@ module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch) {
                                         map && writeFile(mapLoc, JSON.stringify(map)),
                                     ]));
                             })))
-                            .then(() => release(), err => { release(); throw err; });
+                            .then(() => release(), err => { release(); throw err; })
+                            .then(() => subtask.done(), err => { subtask.done(); throw err; });
                     } else {
+                        const subtask = task.subtask('copy: ' + relative);
                         logger.debug('copy: ' + relative);
                         return Promise.all(envs.map(env => {
                             const out = outFn(env);
                             const dest = path.join(out, relative);
                             return copyFile(src, dest).then(() => copyChmod(src, dest));
                         }))
-                        .then(() => release(), err => { release(); throw err; });
+                        .then(() => release(), err => { release(); throw err; })
+                        .then(() => subtask.done(), err => { subtask.done(); throw err; });
                     }
                  }
             });
@@ -186,6 +194,7 @@ module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch) {
                 function handleChange(filename) {
                     let relative = path.relative(dirname, filename) || filename;
                     watchLogger.debug('changed: ' + relative);
+                    task.subtask('changed: ' + relative);
                     handleFile(filename, relative)
                         .catch(err => {
                             console.log(err.stack);
@@ -198,6 +207,7 @@ module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch) {
                 watcher.on('unlink', filename => {
                     let relative = path.relative(dirname, filename) || filename;
                     watchLogger.debug('unlink: ' + relative);
+                    const subtask = task.subtask('delete: ' + relative);
                     if (_lock.isLocked(relative)) watchLogger.debug(relative + ' locked, waiting...');
                     lock(relative).then(release => {
                         return Promise.all(envs.map(env => {
@@ -209,7 +219,8 @@ module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch) {
                             ]);
                         }))
                         .then(() => release())
-                        .then(() => watch.emit('changed', filename));
+                        .then(() => watch.emit('changed', filename))
+                        .then(() => subtask.done());
                     });
                 });
             });
@@ -219,7 +230,9 @@ module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch) {
     return Promise.all(srcFiles.map(filename => handle(filename)))
         .then(() => {
             logger.infoSuccessTimeEnd(timeBuildStarted, 'build finished');
+            task.succeed();
             if (watch) {
+                task = new Task('watch');
                 logger.info('watching');
                 watching = true;
                 logger = watchLogger;

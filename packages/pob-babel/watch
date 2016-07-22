@@ -1,3 +1,4 @@
 #!/usr/bin/env node
 require('./lib/logger').configure();
+require('./lib/cli-spinner').enable();
 require('./lib').watch();
