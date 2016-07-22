@@ -1,3 +1,4 @@
 #!/usr/bin/env node
+require('./lib/logger').configure();
 const pobBabel = require('./lib');
 pobBabel.build(process.argv[2] && process.argv[2].split(',').map(env => env.trim()));

@@ -1,8 +1,12 @@
 const { execSync } = require('child_process');
 const glob = require('glob');
+const destFromSrc = require('./utils/destFromSrc');
+const { logger: parentLogger } = require('./logger');
+
+const logger = parentLogger.child('clean', 'clean');
 
 module.exports = function clean(envs) {
-    console.log('> cleaning');
+    const startTime = logger.infoTime('starting');
 
     if (!envs) {
         execSync('rm -Rf lib-* test/node6');
@@ -12,7 +16,7 @@ module.exports = function clean(envs) {
 
     const diff = glob.sync('lib*').filter(path => !envs.includes(path.substr('lib-'.length)));
     if (diff.length) {
-        console.log('removing: ' + diff.join(','));
+        logger.warn('removing: ' + diff.join(','));
         if (diff.some(diff => diff.startsWith('src'))) {
             throw new Error('Cannot contains src');
         }
@@ -20,5 +24,5 @@ module.exports = function clean(envs) {
         execSync('rm -Rf ' + diff.join(' '));
     }
 
-    console.log('done.');
+    logger.infoSuccessTimeEnd(startTime, 'done.');
 };
