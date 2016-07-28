@@ -48,6 +48,7 @@ module.exports = function createOpts(env, react) {
         presets: presets,
         plugins: [
             react && 'react-require',
+            !production && react && 'transform-react-jsx-self',
             !production && 'typecheck',
             ['defines', { 'PRODUCTION': production, 'BROWSER': browser, 'SERVER': !browser }],
             'remove-dead-code',
