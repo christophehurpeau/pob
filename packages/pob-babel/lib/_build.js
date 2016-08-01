@@ -36,7 +36,7 @@ module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch) {
     const srcFiles = glob.sync(src, { cwd });
     const _lock = Lock();
     const lock = resource => new Promise(resolve => _lock(resource, release => resolve(() => release()())));
-    let task = new Task('build');
+    let task = new Task(`build ${src}`);
 
     let logger = parentLogger.child('build', 'build');
     const watchLogger = parentLogger.child('watch', 'watch');

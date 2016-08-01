@@ -4,6 +4,8 @@ const _build = require('./_build');
 const { logger } = require('./logger');
 
 module.exports = function build(pobrc, cwd, envs, watch = false) {
+    const envsSet = envs !== undefined;
+
     if (!envs) {
         envs = pobrc.envs;
 
@@ -16,9 +18,10 @@ module.exports = function build(pobrc, cwd, envs, watch = false) {
             res.push(env, `${env}-dev`);
             return res;
         }, []);
+
+        clean(envs);
     }
 
-    clean(envs);
 
     if (watch) {
         watch = new EventEmitter();
@@ -26,6 +29,6 @@ module.exports = function build(pobrc, cwd, envs, watch = false) {
 
     return Promise.all([
         _build(pobrc, cwd, pobrc.src || 'src', env => `lib-${env}`, envs, watch),
-        pobrc.testing && _build(pobrc, cwd, 'test/src', () => 'test/node6', ['node6'], watch),
+        !envsSet && pobrc.testing && _build(pobrc, cwd, 'test/src', () => 'test/node6', ['node6'], watch),
     ]).then(() => watch);
 };

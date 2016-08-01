@@ -19,12 +19,15 @@ module.exports = function clean(envs) {
 
     const diff = glob.sync('lib*').filter(path => !envs.includes(path.substr('lib-'.length)));
     if (diff.length) {
-        logger.warn('removing: ' + diff.join(','));
+        const log = 'removing: ' + diff.join(',');
+        const subtask = task.subtask(log);
+        logger.warn(log);
         if (diff.some(diff => diff.startsWith('src'))) {
             throw new Error('Cannot contains src');
         }
 
         execSync('rm -Rf ' + diff.join(' '));
+        subtask.done();
     }
 
     task.succeed();
