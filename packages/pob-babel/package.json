@@ -19,7 +19,7 @@
     "lock": "^0.1.2",
     "nightingale": "^4.4.0",
     "nightingale-console": "^1.1.0",
-    "ora": "github:sindresorhus/ora#643b94b1b5b371fb977ff9f24064d9a320f600f7",
+    "ora": "^0.3.0",
     "promise-callback-factory": "^1.0.0",
     "promise-queue": "^2.2.3",
     "slash": "^1.0.0"
