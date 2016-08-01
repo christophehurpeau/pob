@@ -80,23 +80,18 @@ module.exports = generators.Base.extend({
                 return;
             }
 
-            const done = this.async();
-
-            askName({
+            return askName({
                 name: 'name',
                 message: 'Module Name',
                 default: path.basename(process.cwd()),
                 filter: kebabCase,
                 validate: str => str.length > 0,
-            }, this, name => {
+            }, this).then(({ name }) => {
                 this.props.name = name;
-                done();
             });
         },
 
         askFor() {
-            var done = this.async();
-
             var prompts = [{
                 name: 'description',
                 message: 'Description',
@@ -122,56 +117,70 @@ module.exports = generators.Base.extend({
                 type: 'checkbox',
                 name: 'babelEnvs',
                 message: 'Babel envs:',
+                when: this.options.babel,
                 choices: [{
                     name: 'Node6',
                     value: 'node6',
                     checked: true,
                 }, {
-                    name: 'Node5',
-                    value: 'node5',
-                    checked: true,
-                }, {
-                    name: 'es5',
-                    value: 'es5',
-                    checked: true,
-                }, {
-                    name: 'Webpack: es5',
-                    value: 'webpackES5',
+                    name: 'Node < 6',
+                    value: 'olderNode',
                     checked: false,
                 }, {
                     name: 'Webpack: Modern browsers (latest version of firefox and chrome)',
                     value: 'webpackModernBrowsers',
                     checked: false,
-                }]
+                }, {
+                    name: 'Webpack: All Browsers',
+                    value: 'webpackAllBrowsers',
+                    checked: false,
+                }, {
+                    name: 'Browsers',
+                    value: 'browsers',
+                    checked: false,
+                }, ]
             }, {
-                type: 'checkbox',
-                name: 'features',
-                message: 'What would you like?',
-                choices: [{
-                    name: 'Syntax React: babel preset-react',
-                    value: 'react',
-                    checked: false,
-                }, {
-                    name: 'Testing: mocha + istanbul',
-                    value: 'includeTesting',
-                    checked: true,
-                /*}, {
-                    name: 'Browser Testing: karma',
-                    value: 'includeBrowserTesting',
-                    checked: false,*/
-                }, {
-                    name: 'Documentation: jsdoc',
-                    value: 'includeDocumentation',
-                    checked: false,
-                }]
+                type: 'confirm',
+                name: 'react',
+                message: 'Would you like React syntax ?',
+                default: false,
+            }, {
+                type: 'confirm',
+                name: 'includeDocumentation',
+                message: 'Would you like documentation (manually generated) ?',
+                default: true,
+            }, {
+                type: 'confirm',
+                name: 'includeDoclets',
+                message: 'Would you like doclets ?',
+                default: false,
+            }, {
+                type: 'confirm',
+                name: 'includeTesting',
+                message: 'Would you like testing ?',
+                default: true,
             }];
 
-            this.prompt(prompts, props => {
-                this.props = Object.assign(this.props, props);
-                if (this.props.features) {
-                    this.props.features.forEach(feature => this.props[feature] = true);
+            return this.prompt(prompts).then(props => {
+                Object.assign(this.props, props);
+
+                if (!props.includeTesting) {
+                    return;
                 }
-                done();
+
+                const testingPrompts = [{
+                    type: 'confirm',
+                    name: 'circleci',
+                    message: 'Would you like circleci ?',
+                }, {
+                    type: 'confirm',
+                    name: 'includeCoveralls',
+                    message: 'Would you like coveralls badge ?',
+                }];
+
+                return this.prompt(testingPrompts).then(props => {
+                    Object.assign(this.props, props);
+                });
             });
         },
 
@@ -181,20 +190,20 @@ module.exports = generators.Base.extend({
                 return;
             }
 
-            const done = this.async();
+            return new Promise((resolve) => {
+                githubUsername(this.props.authorEmail, (err, username) => {
+                    if (err) {
+                        username = username || '';
+                    }
 
-            githubUsername(this.props.authorEmail, (err, username) => {
-                if (err) {
-                    username = username || '';
-                }
-
-                this.prompt({
-                    name: 'githubAccount',
-                    message: 'GitHub username or organization',
-                    default: username
-                }, prompt => {
-                    this.props.githubAccount = prompt.githubAccount;
-                    done();
+                    this.prompt({
+                        name: 'githubAccount',
+                        message: 'GitHub username or organization',
+                        default: username
+                    }).then(prompt => {
+                        this.props.githubAccount = prompt.githubAccount;
+                        resolve();
+                    });
                 });
             });
         },
@@ -241,17 +250,17 @@ module.exports = generators.Base.extend({
             local: require.resolve('../eslint'),
         });
 
-        if (this.options.babel) {
+        if (this.options.babel && this.props.babelEnvs.length) {
             this.composeWith('pob:babel', {
                 options: {
-                    testing: this.props.includeTesting,
                     react: this.props.react,
-                    env_doc: this.props.includeDocumentation,
-                    env_es5: this.props.babelEnvs.includes('es5'),
-                    env_node5: this.props.babelEnvs.includes('node5'),
+                    documentation: this.props.includeDocumentation,
+                    testing: this.props.includeTesting,
                     env_node6: this.props.babelEnvs.includes('node6'),
-                    env_webpack_es5: this.props.babelEnvs.includes('webpackES5'),
-                    env_webpack_modern_browsers: this.props.babelEnvs.includes('webpackModernBrowsers'),
+                    env_olderNode: this.props.babelEnvs.includes('olderNode'),
+                    env_webpack_modernBrowsers: this.props.babelEnvs.includes('webpackModernBrowsers'),
+                    env_webpack_allBrowsers: this.props.babelEnvs.includes('webpackAllBrowsers'),
+                    env_browsers: this.props.babelEnvs.includes('browsers'),
                 },
             }, {
                 local: require.resolve('../babel'),
@@ -278,8 +287,11 @@ module.exports = generators.Base.extend({
                     authorName: this.props.authorName,
                     authorEmail: this.props.authorEmail,
                     authorUrl: this.props.authorUrl,
+                    documentation: this.props.includeDocumentation,
+                    doclets: this.props.includeDoclets,
                     testing: this.props.includeTesting,
                     coveralls: this.props.includeCoveralls,
+                    circleci: this.props.circleci,
                     content: this.options.readme
                 }
             }, {
@@ -292,6 +304,9 @@ module.exports = generators.Base.extend({
                 options: {
                     babel: this.options.babel,
                     react: this.props.react,
+                    documentation: this.props.includeDocumentation,
+                    coveralls: this.props.includeCoveralls,
+                    circleci: this.props.circleci,
                 }
             }, {
                 local: require.resolve('../testing'),
@@ -302,7 +317,8 @@ module.exports = generators.Base.extend({
             this.composeWith('pob:doc', {
                 options: {
                     name: this.props.name,
-                    testing: this.props.includeTesting
+                    testing: this.props.includeTesting,
+                    doclets: this.props.includeDoclets,
                 }
             }, {
                 local: require.resolve('../doc'),
@@ -324,10 +340,9 @@ module.exports = generators.Base.extend({
             keywords: []
         });
 
-
         packageUtils.addScripts(pkg, {
             release: 'pob-repository-check-clean && pob-release',
-            preversion: 'npm run lint && npm run build && npm run build && pob-repository-check-clean',
+            preversion: 'npm run lint && npm run build && pob-repository-check-clean',
             version: 'pob-version',
             clean: 'rm -Rf docs dist test/node6 coverage',
             prepublish: 'ln -s ../../git-hooks/pre-commit .git/hooks/pre-commit || echo',
@@ -339,11 +354,11 @@ module.exports = generators.Base.extend({
     },
 
     installing() {
-        this.npmInstall();
+        return this.npmInstall();
     },
 
     configuring() {
-        this.mkdir('src');
+        return this.mkdir('src');
     },
 
     end() {

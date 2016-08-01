@@ -38,13 +38,14 @@ module.exports = generators.Base.extend({
     writing() {
         const pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
 
-        packageUtils.addScripts({
+        packageUtils.addScripts(pkg, {
             'generate:docs': 'npm run generate:api',
             'generate:api': [
                 'rm -Rf docs/',
-                'BABEL_ENV=doc babel -s --out-dir docs/_dist src',
-                'jsdoc README.md docs/_dist --recurse --destination docs/ --configure jsdoc.conf.json',
-                'rm -Rf docs/_dist'
+                'mkdir docs/',
+                'pob-build doc',
+                'jsdoc README.md lib-doc --recurse --destination docs/ --configure jsdoc.conf.json',
+                'rm -Rf lib-doc'
             ].join(' ; ')
         });
 

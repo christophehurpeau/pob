@@ -22,6 +22,11 @@ const generator = env.run('pob:generator', options, function(err) {
     console.log('done !');
 });
 
+
+env.on('error', err => {
+    console.log(err.stack || err.message || err);
+});
+
 generator.on('error', err => {
     console.log(err.stack || err.message || err);
 });

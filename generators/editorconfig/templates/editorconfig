@@ -16,10 +16,10 @@ insert_final_newline = true
 trim_trailing_whitespace = false
 
 # Tab indentation (no size specified)
-[Makefile]
+[Makefile, *.mk]
 indent_style = tab
 
 # Matches the exact files either package.json or .travis.yml
-[{package.json,.travis.yml,eslintrc.js,.eslintrc.yml,.eslintrc.yaml}]
+[{package.json,.travis.yml,eslintrc.js,.eslintrc.yml,.eslintrc.yaml,circle.yml}]
 indent_style = space
 indent_size = 2

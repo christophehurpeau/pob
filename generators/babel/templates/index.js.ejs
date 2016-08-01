@@ -1,19 +1,17 @@
 var production = process.env.NODE_ENV === 'production';
 <% var envs = [
-    ['es5', env_es5],
-    ['node5', env_node5],
     ['node6', env_node6],
+    ['olderNode', env_olderNode],
 ].filter(v => v[1]);
 if (envs.length === 1) { -%>
-module.exports = require('./lib-<%= envs[0][0] %>' + (production ? '' : '-dev') + '/');
+return module.exports = require('./lib-<%= envs[0][0] %>' + (production ? '' : '-dev') + '/');
 <% } else { -%><% if (env_node6) {
 -%>if (process.version.startsWith && process.version.startsWith('v6.'))
     return module.exports = require('./lib-node6' + (production ? '' : '-dev') + '/');
-<% } if (env_node5) {
--%>if (process.version.startsWith && process.version.startsWith('v5.'))
-    return module.exports = require('./lib-node5' + (production ? '' : '-dev') + '/');
-<% } if (env_es5) {
--%>return module.exports = require('./lib-es5' + (production ? '' : '-dev') + '/');
+<% } if (env_olderNode) {
+-%>return module.exports = require('./lib-olderNode' + (production ? '' : '-dev') + '/');
 <% } else { -%>
 throw new Error('Platform not supported: ' + process.version + '.');
 <% } } -%>
+// help autocomplete
+module.exports = require('./src/');
