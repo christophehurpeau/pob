@@ -19,13 +19,16 @@ module.exports = function createOpts(env, react) {
 
     switch (env) {
         case 'es5':
-            presets = ['es2015', flowOrReactPreset, 'stage-1'];
-            browser = false;
-            break;
+            throw new Error('use olderNode instead.');
 
         case 'test':
         case 'node6':
             presets = ['es2015-node6/object-rest', flowOrReactPreset, 'stage-1'];
+            browser = false;
+            break;
+
+        case 'older-node':
+            presets = ['es2015', flowOrReactPreset, 'stage-1'];
             browser = false;
             break;
 
@@ -36,6 +39,11 @@ module.exports = function createOpts(env, react) {
 
         case 'webpack-modern-browsers':
             presets = ['modern-browsers/webpack2', flowOrReactPreset, 'modern-browsers-stage-1'];
+            browser = true;
+            break;
+
+        case 'browsers':
+            presets = ['es2015', flowOrReactPreset, 'stage-1'];
             browser = true;
             break;
 
