@@ -128,7 +128,7 @@ module.exports = generators.Base.extend({
         });
 
         packageUtils.addDevDependencies(pkg, {
-            'pob-babel': '^4.0.1',
+            'pob-babel': '^4.0.2',
             'babel-preset-stage-1': '^6.5.0',
             'babel-plugin-typecheck': '^3.9.0',
             'babel-plugin-defines': '^3.0.0',
@@ -146,10 +146,11 @@ module.exports = generators.Base.extend({
         }
 
         if (this.options.documentation) {
+            packageUtils.addDevDependency(pkg, 'babel-preset-jsdoc', '^0.1.0');
             packageUtils.addDevDependency(pkg, 'babel-plugin-add-jsdoc-annotations', '^4.0.1');
         }
 
-        if (this.options.env_olderNode || this.options.env_browsers || this.options.documentation) {
+        if (this.options.env_olderNode || this.options.env_browsers) {
             packageUtils.addDevDependency(pkg, 'babel-preset-es2015', '^6.9.0');
         }
 
