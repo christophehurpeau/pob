@@ -9,7 +9,12 @@ module.exports = function createOpts(env, react) {
 
     if (env === 'doc') {
         return {
-            presets: ['es2015', flowOrReactPreset, 'stage-1'],
+            presets: [
+                'jsdoc',
+                'jsdoc/object-rest',
+                flowOrReactPreset,
+                'stage-1'
+            ],
             plugins: ['add-jsdoc-annotations']
         };
     }
