@@ -68,7 +68,13 @@ module.exports = function createOpts(env, react) {
             react && 'react-require',
             !production && react && 'transform-react-jsx-self',
             !production && 'typecheck',
-            ['defines', { 'PRODUCTION': production, 'BROWSER': browser, 'SERVER': !browser }],
+            ['import-rename', { '^([a-z\\-]+)/src(.*)$': '$1$2' }],
+            ['defines', {
+                'PRODUCTION': production,
+                'BROWSER': browser,
+                'SERVER': !browser,
+                'NODEJS': !browser,
+            }],
             'remove-dead-code',
             ['discard-module-references', { 'targets': [], 'unusedWhitelist': ['react']  }]
         ].filter(Boolean)
