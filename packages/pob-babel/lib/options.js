@@ -38,7 +38,7 @@ module.exports = function createOpts(env, react) {
             break;
 
         case 'webpack':
-            presets = ['es2015-webpack', flowOrReactPreset, 'stage-1'];
+            presets = [['es2015', { modules: false }], flowOrReactPreset, 'stage-1'];
             browser = true;
             break;
 
