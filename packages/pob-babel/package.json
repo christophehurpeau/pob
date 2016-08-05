@@ -11,13 +11,13 @@
     "pob-watch": "./watch"
   },
   "dependencies": {
-    "babel-core": "^6.11.4",
+    "babel-core": "^6.13.2",
     "chokidar": "^1.6.0",
     "fs-readdir-recursive": "^1.0.0",
     "glob": "^7.0.5",
     "js-yaml": "^3.6.1",
     "lock": "^0.1.2",
-    "nightingale": "^4.4.0",
+    "nightingale": "^4.5.0",
     "nightingale-console": "^1.1.0",
     "ora": "^0.3.0",
     "promise-callback-factory": "^1.0.0",
