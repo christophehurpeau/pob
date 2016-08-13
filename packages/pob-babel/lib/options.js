@@ -1,4 +1,10 @@
 
+const requirePlugin = function (pluginName) {
+    const required = require(`babel-plugin-${pluginName}`);
+    if (required.__esModule) return required.default;
+    return required;
+};
+
 module.exports = function createOpts(env, react) {
     const flowOrReactPreset = react ? 'react' : 'flow';
     const production = !env.endsWith('-dev');
@@ -65,18 +71,18 @@ module.exports = function createOpts(env, react) {
     return {
         presets: presets,
         plugins: [
-            react && 'react-require',
+            react && requirePlugin('react-require'),
             !production && react && 'transform-react-jsx-self',
-            !production && 'typecheck',
-            ['import-rename', { '^([a-z\\-]+)/src(.*)$': '$1$2' }],
-            ['defines', {
+            !production && requirePlugin('typecheck'),
+            [requirePlugin('import-rename'), { '^([a-z\\-]+)/src(.*)$': '$1$2' }],
+            [requirePlugin('defines'), {
                 'PRODUCTION': production,
                 'BROWSER': browser,
                 'SERVER': !browser,
                 'NODEJS': !browser,
             }],
-            'remove-dead-code',
-            ['discard-module-references', { 'targets': [], 'unusedWhitelist': ['react']  }]
+            [requirePlugin('discard-module-references'), { 'targets': [], 'unusedWhitelist': ['react']  }],
+            requirePlugin('remove-dead-code'),
         ].filter(Boolean)
     };
 };

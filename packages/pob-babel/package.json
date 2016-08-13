@@ -12,6 +12,12 @@
   },
   "dependencies": {
     "babel-core": "^6.13.2",
+    "babel-plugin-defines": "^3.1.0",
+    "babel-plugin-discard-module-references": "^1.0.0",
+    "babel-plugin-import-rename": "^1.0.1",
+    "babel-plugin-react-require": "^2.1.0",
+    "babel-plugin-remove-dead-code": "^1.2.0",
+    "babel-plugin-typecheck": "^3.9.0",
     "chokidar": "^1.6.0",
     "fs-readdir-recursive": "^1.0.0",
     "glob": "^7.0.5",
