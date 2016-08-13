@@ -1,8 +1,6 @@
 
-const requirePlugin = function (pluginName) {
-    const required = require(`babel-plugin-${pluginName}`);
-    if (required.__esModule) return required.default;
-    return required;
+const resolvePlugin = function (pluginName) {
+    return require.resolve(`babel-plugin-${pluginName}`);
 };
 
 module.exports = function createOpts(env, react) {
@@ -71,18 +69,19 @@ module.exports = function createOpts(env, react) {
     return {
         presets: presets,
         plugins: [
-            react && requirePlugin('react-require'),
+            react && resolvePlugin('react-require'),
+            // browser && 'react-hot-loader/babel',
             !production && react && 'transform-react-jsx-self',
-            !production && requirePlugin('typecheck'),
-            [requirePlugin('import-rename'), { '^([a-z\\-]+)/src(.*)$': '$1$2' }],
-            [requirePlugin('defines'), {
+            !production && resolvePlugin('typecheck'),
+            [resolvePlugin('import-rename'), { '^([a-z\\-]+)/src(.*)$': '$1$2' }],
+            [resolvePlugin('defines'), {
                 'PRODUCTION': production,
                 'BROWSER': browser,
                 'SERVER': !browser,
                 'NODEJS': !browser,
             }],
-            [requirePlugin('discard-module-references'), { 'targets': [], 'unusedWhitelist': ['react']  }],
-            requirePlugin('remove-dead-code'),
+            [resolvePlugin('discard-module-references'), { 'targets': [], 'unusedWhitelist': ['react']  }],
+            resolvePlugin('remove-dead-code'),
         ].filter(Boolean)
     };
 };
