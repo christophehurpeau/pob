@@ -80,8 +80,8 @@ module.exports = function createOpts(env, react) {
                 'SERVER': !browser,
                 'NODEJS': !browser,
             }],
-            [resolvePlugin('discard-module-references'), { 'targets': [], 'unusedWhitelist': ['react']  }],
             resolvePlugin('remove-dead-code'),
+            [resolvePlugin('discard-module-references'), { 'targets': [], 'unusedWhitelist': ['react']  }],
         ].filter(Boolean)
     };
 };
