@@ -2,37 +2,51 @@ const readFileSync = require('fs').readFileSync;
 const argv = require('minimist-argv');
 const inquirer = require('inquirer');
 const execSync = require('child_process').execSync;
-const validateSemver = require('semver').valid;
+const { valid: validateSemver, inc: incSemver } = require('semver');
 const isSemverValid = version => validateSemver(version) !== null;
 
 /*execSync('[[ -z $(git status --porcelain) ]] || (echo "Git working directory not clean."; exit 1)', { stdio: 'inherit' });
 execSync('[[ -z $(git symbolic-ref HEAD) ]] || (echo "Git working directory not clean."; exit 1)', { stdio: 'inherit' });*/
 
+const availableVersions = [
+    'patch',
+    'minor',
+    'major',
+    'manual',
+    'premajor',
+    'preminor',
+    'prepatch',
+    'prerelease',
+];
+
+const packageJson = JSON.parse(readFileSync('./package.json'));
+const currentVersion = packageJson.version;
+
 Promise.resolve(argv._[0]).then(version => {
     if (version) {
-        if (!isSemverValid(version)) {
+        if (!availableVersions.includes(version) && !isSemverValid(version)) {
             throw new Error(`Invalid semver version: ${version}`);
         }
 
         return version;
     }
 
+    const availableVersionsWithSemver = availableVersions.map(version => {
+        if (version === 'manual') return version;
+        const nextVersion = incSemver(currentVersion, version);
+        return {
+            name: `${version}: ${nextVersion}`,
+            value: nextVersion
+        };
+    });
+
     return inquirer.prompt([
         {
             type: 'list',
             name: 'version',
             message: 'npm version:',
-            default: 'minor',
-            choices: [
-                'patch',
-                'minor',
-                'major',
-                'manual',
-                'premajor',
-                'preminor',
-                'prepatch',
-                'prerelease',
-            ]
+            choices: availableVersionsWithSemver,
+            default: availableVersionsWithSemver[1].value, // minor
         }
     ]).then(answers => {
         const version = answers.version;
@@ -55,16 +69,13 @@ Promise.resolve(argv._[0]).then(version => {
 }).then(version => {
     /* VERSION */
     execSync('npm version "' + version + '"', { stdio: 'inherit' });
-    const pkg = JSON.parse(readFileSync('./package.json'));
-    version = pkg.version;
-    if (!isSemverValid(version)) {
-        throw new Error(`Unexpected version: ${version}`);
-    }
 
     /* PUSH */
     execSync('git push', { stdio: 'inherit' });
     execSync('git push origin "v' + version + '"', { stdio: 'inherit' });
 
-    /* RELEASE */
-    execSync('npm publish', { stdio: 'inherit' });
+    if (!packageJson.private) {
+        /* RELEASE */
+        execSync('npm publish', { stdio: 'inherit' });
+    }
 }).catch(err => console.log(err.message || err));
