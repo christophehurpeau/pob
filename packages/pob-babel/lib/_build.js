@@ -15,7 +15,7 @@ const copyFile = require('./utils/copyFile');
 const writeFile = require('./utils/writeFile');
 const destFromSrc = require('./utils/destFromSrc');
 const plugins = require('./plugins');
-const options = require(`./options`);
+const options = require(`./babel-options`);
 const { logger: parentLogger } = require('./logger');
 const Task = require('./cli-spinner');
 

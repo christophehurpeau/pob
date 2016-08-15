@@ -1,4 +1,3 @@
-
 const resolvePlugin = function (pluginName) {
     return require.resolve(`babel-plugin-${pluginName}`);
 };
@@ -82,6 +81,6 @@ module.exports = function createOpts(env, react) {
             }],
             resolvePlugin('remove-dead-code'),
             [resolvePlugin('discard-module-references'), { 'targets': [], 'unusedWhitelist': ['react']  }],
-        ].filter(Boolean)
+        ].filter(Boolean).concat(createOpts.plugins || [])
     };
 };

@@ -2,12 +2,17 @@ const { readFileSync } = require('fs');
 const clean = require('./clean');
 const build = require('./build');
 const plugins = require('./plugins');
+const babelOptions = require('./babel-options');
 
 const cwd = process.cwd();
 const pobrc = JSON.parse(readFileSync(`${cwd}/.pobrc.json`));
 
 if (pobrc.plugins) {
     pobrc.plugins.forEach(pluginName => plugins.register(require(`../plugins/${pluginName}`)));
+}
+
+if (pobrc.babelPlugins) {
+    babelOptions.plugins = pobrc.babelPlugins;
 }
 
 exports.clean = clean;
