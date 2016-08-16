@@ -10,6 +10,11 @@
     "pob-build": "./build",
     "pob-watch": "./watch"
   },
+  "scripts": {
+    "preversion": "pob-repository-check-clean",
+    "release": "pob-repository-check-clean && pob-release",
+    "version": "pob-version"
+  },
   "dependencies": {
     "babel-core": "^6.13.2",
     "babel-plugin-defines": "^3.1.0",
@@ -26,6 +31,7 @@
     "nightingale": "^4.6.0",
     "nightingale-console": "^1.1.0",
     "ora": "^0.3.0",
+    "pob-release": "^2.1.0",
     "promise-callback-factory": "^1.0.0",
     "promise-queue": "^2.2.3",
     "slash": "^1.0.0"
