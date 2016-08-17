@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "babel-core": "^6.13.2",
-    "babel-plugin-defines": "^3.1.0",
+    "babel-plugin-defines": "^3.1.2",
     "babel-plugin-discard-module-references": "^1.0.0",
     "babel-plugin-import-rename": "^1.0.1",
     "babel-plugin-react-require": "^2.1.0",
