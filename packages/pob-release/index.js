@@ -6,7 +6,7 @@ const { valid: validateSemver, inc: incSemver } = require('semver');
 const isSemverValid = version => validateSemver(version) !== null;
 
 /*execSync('[[ -z $(git status --porcelain) ]] || (echo "Git working directory not clean."; exit 1)', { stdio: 'inherit' });
-execSync('[[ -z $(git symbolic-ref HEAD) ]] || (echo "Git working directory not clean."; exit 1)', { stdio: 'inherit' });*/
+ execSync('[[ -z $(git symbolic-ref HEAD) ]] || (echo "Git working directory not clean."; exit 1)', { stdio: 'inherit' });*/
 
 const availableVersions = [
     'patch',
@@ -24,7 +24,9 @@ const currentVersion = packageJson.version;
 
 Promise.resolve(argv._[0]).then(version => {
     if (version) {
-        if (!availableVersions.includes(version) && !isSemverValid(version)) {
+        if (availableVersions.includes(version)) {
+            version = incSemver(currentVersion, version);
+        } else if (!isSemverValid(version)) {
             throw new Error(`Invalid semver version: ${version}`);
         }
 
