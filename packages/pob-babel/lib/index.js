@@ -5,7 +5,13 @@ const plugins = require('./plugins');
 const babelOptions = require('./babel-options');
 
 const cwd = process.cwd();
-const pobrc = JSON.parse(readFileSync(`${cwd}/.pobrc.json`));
+const pobrc = (() => {
+    try {
+        return JSON.parse(readFileSync(`${cwd}/.pobrc.json`));
+    } catch (err) {
+        return JSON.parse(readFileSync(`${cwd}/.pob.json`));
+    }
+})();
 
 if (pobrc.plugins) {
     pobrc.plugins.forEach(pluginName => plugins.register(require(`../plugins/${pluginName}`)));
