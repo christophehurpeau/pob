@@ -1,3 +1,7 @@
+### v7.2.1
+
+- [`d7bd492`](https://github.com/christophehurpeau/pob-babel/commit/d7bd492878c24329b89d97505d0ff58709b5c073) pob.json (Christophe Hurpeau)
+
 ### v7.2.0
 
 - [`a5e6b09`](https://github.com/christophehurpeau/pob-babel/commit/a5e6b0933debcca0de440e85185b9afa6caab782) babel-plugin-defines@3.2 (Christophe Hurpeau)
