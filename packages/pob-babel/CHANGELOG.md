@@ -1,3 +1,7 @@
+### v7.3.0
+
+- [`437c04a`](https://github.com/christophehurpeau/pob-babel/commit/437c04aa818881eb32de54b33bc9ca79122ff0e9) allow configure logger (Christophe Hurpeau)
+
 ### v7.2.1
 
 - [`d7bd492`](https://github.com/christophehurpeau/pob-babel/commit/d7bd492878c24329b89d97505d0ff58709b5c073) pob.json (Christophe Hurpeau)
