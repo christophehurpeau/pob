@@ -1,7 +1,6 @@
 const generators = require('yeoman-generator');
 const askName = require('inquirer-npm-name');
 const parseAuthor = require('parse-author');
-const githubUsername = require('github-username');
 const kebabCase = require('lodash.kebabcase');
 const path = require('path');
 const packageUtils = require('../../utils/package');
@@ -42,6 +41,18 @@ module.exports = generators.Base.extend({
             desc: 'GitHub username or organization'
         });
 
+        this.option('bitbucketAccount', {
+            type: String,
+            required: false,
+            desc: 'Bitbucket username or organization'
+        });
+
+        this.option('gitlabAccount', {
+            type: String,
+            required: false,
+            desc: 'GitLab username or organization'
+        });
+
         this.option('projectRoot', {
             type: String,
             required: false,
@@ -52,13 +63,20 @@ module.exports = generators.Base.extend({
 
     initializing() {
         this.pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+        this.pobjson = this.fs.readJSON(this.destinationPath('.pob.json'), null);
+        if (!this.pobjson) {
+            this.pobjson = this.fs.readJSON(this.destinationPath('.pobrc.json'), null);
+            if (this.pobjson) this.fs.delete(this.destinationPath('.pobrc.json'));
+        }
+        if (!this.pobjson) this.pobjson = {};
 
         // Pre set the default props from the information we have at this point
         this.props = {
             name: this.pkg.name,
+            private: this.pkg.private,
             description: this.pkg.description,
             version: this.pkg.version,
-            homepage: this.pkg.homepage,
+            babelEnvs: this.pobjson.envs || [],
         };
 
         if (typeof this.pkg.author === 'object') {
@@ -93,6 +111,11 @@ module.exports = generators.Base.extend({
 
         askFor() {
             var prompts = [{
+                type: 'confirm',
+                name: 'private',
+                message: 'Private package ?',
+                default: this.props.private === true,
+            }, {
                 name: 'description',
                 message: 'Description',
                 when: !this.props.description,
@@ -121,34 +144,34 @@ module.exports = generators.Base.extend({
                 choices: [{
                     name: 'Node6',
                     value: 'node6',
-                    checked: true,
+                    checked: this.props.babelEnvs.includes('node6'),
                 }, {
                     name: 'Node < 6',
                     value: 'olderNode',
-                    checked: false,
+                    checked: this.props.babelEnvs.includes('older-node'),
                 }, {
                     name: 'Webpack: Modern browsers (latest version of firefox and chrome)',
                     value: 'webpackModernBrowsers',
-                    checked: false,
+                    checked: this.props.babelEnvs.includes('webpack-modern-browsers'),
                 }, {
                     name: 'Webpack: All Browsers',
                     value: 'webpackAllBrowsers',
-                    checked: false,
+                    checked: this.props.babelEnvs.includes('webpack'),
                 }, {
                     name: 'Browsers',
                     value: 'browsers',
-                    checked: false,
+                    checked: this.props.babelEnvs.includes('browsers'),
                 }, ]
             }, {
                 type: 'confirm',
                 name: 'react',
                 message: 'Would you like React syntax ?',
-                default: false,
+                default: this.pobjson.react || false,
             }, {
                 type: 'confirm',
                 name: 'includeDocumentation',
                 message: 'Would you like documentation (manually generated) ?',
-                default: true,
+                default: this.pobjson.documentation != null ? this.pobjson.documentation : true,
             }, {
                 type: 'confirm',
                 name: 'includeDoclets',
@@ -158,7 +181,7 @@ module.exports = generators.Base.extend({
                 type: 'confirm',
                 name: 'includeTesting',
                 message: 'Would you like testing ?',
-                default: true,
+                default: this.pobjson.testing,
             }];
 
             return this.prompt(prompts).then(props => {
@@ -172,6 +195,12 @@ module.exports = generators.Base.extend({
                     type: 'confirm',
                     name: 'circleci',
                     message: 'Would you like circleci ?',
+                    default: true,
+                }, {
+                    type: 'confirm',
+                    name: 'travisci',
+                    message: 'Would you like travisci ?',
+                    default: true,
                 }, {
                     type: 'confirm',
                     name: 'includeCoveralls',
@@ -183,37 +212,9 @@ module.exports = generators.Base.extend({
                 });
             });
         },
-
-        askForGithubAccount() {
-            if (this.options.githubAccount) {
-                this.props.githubAccount = this.options.githubAccount;
-                return;
-            }
-
-            return new Promise((resolve) => {
-                githubUsername(this.props.authorEmail, (err, username) => {
-                    if (err) {
-                        username = username || '';
-                    }
-
-                    this.prompt({
-                        name: 'githubAccount',
-                        message: 'GitHub username or organization',
-                        default: username
-                    }).then(prompt => {
-                        this.props.githubAccount = prompt.githubAccount;
-                        resolve();
-                    });
-                });
-            });
-        },
     },
 
     default() {
-        if (!this.props.homepage && this.props.githubAccount) {
-            this.props.homepage = `https://github.com/${this.props.githubAccount}/${this.props.name}`;
-        }
-
         if (this.options.license && !this.fs.exists(this.destinationPath('LICENSE'))) {
             this.composeWith('license', {
                 options: {
@@ -230,7 +231,10 @@ module.exports = generators.Base.extend({
         this.composeWith('pob:git', {
             options: {
                 name: this.props.name,
+                authorEmail: this.props.authorEmail,
                 githubAccount: this.props.githubAccount,
+                bitbucketAccount: this.props.bitbucketAccount,
+                gitlabAccount: this.props.gitlabAccount,
             }
         }, {
             local: require.resolve('../git'),
@@ -265,6 +269,8 @@ module.exports = generators.Base.extend({
             }, {
                 local: require.resolve('../babel'),
             });
+        } else {
+            this.mkdir('lib');
         }
 
         /* if (this.options.boilerplate) {
@@ -283,7 +289,6 @@ module.exports = generators.Base.extend({
                 options: {
                     name: this.props.name,
                     description: this.props.description,
-                    githubAccount: this.props.githubAccount,
                     authorName: this.props.authorName,
                     authorEmail: this.props.authorEmail,
                     authorUrl: this.props.authorUrl,
@@ -292,7 +297,8 @@ module.exports = generators.Base.extend({
                     testing: this.props.includeTesting,
                     coveralls: this.props.includeCoveralls,
                     circleci: this.props.circleci,
-                    content: this.options.readme
+                    travisci: this.props.travisci,
+                    content: this.options.readme,
                 }
             }, {
                 local: require.resolve('../readme')
@@ -302,11 +308,13 @@ module.exports = generators.Base.extend({
         if (this.props.includeTesting) {
             this.composeWith('pob:testing', {
                 options: {
+                    private: this.props.private,
                     babel: this.options.babel,
                     react: this.props.react,
                     documentation: this.props.includeDocumentation,
                     coveralls: this.props.includeCoveralls,
                     circleci: this.props.circleci,
+                    travisci: this.props.travisci,
                 }
             }, {
                 local: require.resolve('../testing'),
@@ -334,31 +342,48 @@ module.exports = generators.Base.extend({
             name: kebabCase(this.props.name),
             version: '0.0.0',
             description: this.props.description,
-            homepage: this.props.homepage,
             author: `${this.props.authorName} <${this.props.authorEmail}>${
                 this.props.authorUrl && ` (${this.props.authorUrl})`}`,
             keywords: []
         });
+
+        if (this.props.private) {
+            pkg.private = true;
+        }
 
         packageUtils.addScripts(pkg, {
             release: 'pob-repository-check-clean && pob-release',
             preversion: 'npm run lint && npm run build && pob-repository-check-clean',
             version: 'pob-version',
             clean: 'rm -Rf docs dist test/node6 coverage',
-            prepublish: 'ln -s ../../git-hooks/pre-commit .git/hooks/pre-commit || echo',
         });
 
         packageUtils.addDevDependency(pkg, 'pob-release', '^2.0.5');
+        delete pkg.devDependencies['springbokjs-library'];
 
+        packageUtils.sort(pkg);
         this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+
+
+        const pobjson = this.pobjson;
+
+        pobjson.envs = [
+            this.props.babelEnvs.includes('node6') && "node6",
+            this.props.babelEnvs.includes('olderNode') && "older-node",
+            this.props.babelEnvs.includes('webpackModernBrowsers') && "webpack-modern-browsers",
+            this.props.babelEnvs.includes('webpackAllBrowsers') && "webpack",
+            this.props.babelEnvs.includes('browsers') && "browsers",
+        ].filter(Boolean);
+
+        pobjson.react = this.props.react;
+        pobjson.documentation = this.props.includeDocumentation;
+        pobjson.testing = this.props.includeTesting;
+
+        this.fs.writeJSON(this.destinationPath('.pob.json'), pobjson);
     },
 
     installing() {
         return this.npmInstall();
-    },
-
-    configuring() {
-        return this.mkdir('src');
     },
 
     end() {

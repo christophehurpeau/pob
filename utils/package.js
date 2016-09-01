@@ -1,3 +1,5 @@
+const semver = require('semver');
+
 function sortObject(obj, keys = []) {
     const objCopy = Object.assign({}, obj);
     const objKeys = Object.keys(obj);
@@ -69,8 +71,27 @@ exports.extend = function extend(pkg, props) {
     return exports.sort(pkg);
 };
 
+const cleanVersion = version => version.replace(/^(\^|~)/, '');
+
+function _addDependencies(pkg, type, dependencies) {
+    const currentDependencies = pkg[type];
+    const filtredDependencies = !currentDependencies ? dependencies : {};
+
+    if (currentDependencies) {
+        Object.keys(dependencies).forEach(dependency => {
+            const potentialNewVersion = dependencies[dependency];
+            const currentVersion = currentDependencies[dependency];
+            if (!currentVersion || semver.gt(cleanVersion(potentialNewVersion), cleanVersion(currentVersion))) {
+                filtredDependencies[dependency] = potentialNewVersion;
+            }
+        });
+    }
+
+    return _addToObject(pkg, type, filtredDependencies);
+}
+
 exports.addDependencies = function addDependencies(pkg, dependencies) {
-    _addToObject(pkg, 'dependencies', dependencies);
+    _addDependencies(pkg, 'dependencies', dependencies);
 };
 
 exports.addDependency = function addDependency(pkg, dependency, version) {
@@ -78,7 +99,7 @@ exports.addDependency = function addDependency(pkg, dependency, version) {
 };
 
 exports.addDevDependencies = function addDevDependencies(pkg, dependencies) {
-    _addToObject(pkg, 'devDependencies', dependencies);
+    _addDependencies(pkg, 'devDependencies', dependencies);
 };
 
 exports.addDevDependency = function addDevDependency(pkg, dependency, version) {

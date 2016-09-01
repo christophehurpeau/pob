@@ -2,8 +2,10 @@
 
 <%= description %>
 
-<% if (testing) { -%>[![Build Status][build-status-image]][build-status-url]<% } -%> [![Dependency Status][daviddm-image]][daviddm-url]
-<% if (coveralls) { %> [![Coverage percentage][coverage-image]][coverage-url]<% } -%>
+<% if (testing && circleci) { -%>[![Build Status][circleci-status-image]][circleci-status-url]<% } -%>
+<% if (testing && travisci) { -%>[![Travis Status][travisci-status-image]][travisci-status-url]<% } -%>
+[![Dependency Status][daviddm-image]][daviddm-url]
+<% if (testing && coveralls) { %> [![Coverage percentage][coverage-image]][coverage-url]<% } -%>
 <% if (doclets) { %> [![Doclets Link][doclets-image]][doclets-url]<% } -%>
 
 <% if (!content) { -%>
@@ -36,8 +38,14 @@ console.log(<%= camelCaseProjectName %>);
 [daviddm-image]: https://david-dm.org/<%= githubAccount %>/<%= projectName %>.svg?style=flat-square
 [daviddm-url]: https://david-dm.org/<%= githubAccount %>/<%= projectName %>
 <% if (testing) { -%>
-[build-status-image]: https://img.shields.io/circleci/project/<%= githubAccount %>/<%= projectName %>/master.svg?style=flat-square
-[build-status-url]: https://circleci.com/gh/<%= githubAccount %>/<%= projectName %>
+<% if (circleci) { -%>
+[circleci-status-image]: https://img.shields.io/circleci/project/<%= githubAccount %>/<%= projectName %>/master.svg?style=flat-square
+[circleci-status-url]: https://circleci.com/gh/<%= githubAccount %>/<%= projectName %>
+<% } -%>
+<% if (travisci) { -%>
+[travisci-status-image]: https://img.shields.io/travisci/project/<%= githubAccount %>/<%= projectName %>/master.svg?style=flat-square
+[travisci-status-url]: https://travis-ci.org/<%= githubAccount %>/<%= projectName %>
+<% } -%>
 <% if (coveralls) { -%>
 [coverage-image]: https://img.shields.io/coveralls/<%= githubAccount %>/<%= projectName %>/master.svg?style=flat-square
 [coverage-url]: https://<%= githubAccount %>.github.io/<%= projectName %>/coverage/lcov-report/

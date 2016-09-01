@@ -59,6 +59,7 @@ module.exports = generators.Base.extend({
     },
 
     initializing: function () {
+        this.mkdir('src');
         this.fs.copyTpl(
             this.templatePath('index.js.ejs'),
             this.destinationPath(this.options.destination, 'index.js'),
@@ -70,28 +71,10 @@ module.exports = generators.Base.extend({
     },
 
     writing() {
-        const pobrc = this.fs.readJSON(this.destinationPath(this.options.destination, '.pobrc.json'), {});
-
-        const envs = [
-            this.options.env_node6 && "node6",
-            this.options.env_olderNode && "older-node",
-            this.options.env_webpack_modernBrowsers && "webpack-modern-browsers",
-            this.options.env_webpack_allBrowsers && "webpack",
-            this.options.env_browsers && "browsers",
-        ].filter(Boolean);
-
-        pobrc.envs = envs;
-        pobrc.react = !!this.options.react;
-        pobrc.testing = !!this.options.testing;
-
-        this.fs.writeJSON(this.destinationPath(this.options.destination, '.pobrc.json'), pobrc);
-
         const pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
 
         if (!pkg.main) {
             pkg.main = './index.js';
-        } else if (pkg.main.startsWith('./lib/')) {
-            pkg.main = `./${pkg.main.substr('./lib/'.length)}`;
         }
 
         if (!this.options.env_browsers) {
@@ -120,26 +103,26 @@ module.exports = generators.Base.extend({
 
         packageUtils.sort(pkg);
 
-        packageUtils.addScripts(pkg, {
-            build: 'pob-build',
-            'build:dev': 'pob-build',
-            'watch': 'pob-watch',
-            'watch:dev': 'pob-watch',
-        });
+        if (!pkg.scripts.build) {
+            packageUtils.addScript(pkg, 'build', 'pob-build');
+        }
+
+        if (!pkg.scripts.watch) {
+            packageUtils.addScript(pkg, 'watch', 'pob-watch');
+        }
+
+        delete pkg.scripts['build:dev'];
+        delete pkg.scripts['watch:dev'];
 
         packageUtils.addDevDependencies(pkg, {
-            'pob-babel': '^4.0.2',
-            'babel-preset-stage-1': '^6.5.0',
-            'babel-plugin-typecheck': '^3.9.0',
-            'babel-plugin-defines': '^3.0.0',
-            'babel-plugin-discard-module-references': '^1.0.0',
-            'babel-plugin-remove-dead-code': '^1.1.0',
+            'pob-babel': '^7.0.0',
+            'babel-preset-stage-1': '^6.13.0',
+            'eslint-plugin-babel': '^3.3.0',
         });
 
         if (this.options.react) {
             packageUtils.addDevDependencies(pkg, {
                 'babel-preset-react': '^6.11.1',
-                'babel-plugin-react-require': '^2.1.0',
             });
         } else {
             packageUtils.addDevDependency(pkg, 'babel-preset-flow', '^1.0.0');
@@ -147,15 +130,20 @@ module.exports = generators.Base.extend({
 
         if (this.options.documentation) {
             packageUtils.addDevDependency(pkg, 'babel-preset-jsdoc', '^0.1.0');
-            packageUtils.addDevDependency(pkg, 'babel-plugin-add-jsdoc-annotations', '^4.0.1');
+            packageUtils.addDevDependency(pkg, 'babel-plugin-add-jsdoc-annotations', '^5.0.0');
         }
 
-        if (this.options.env_olderNode || this.options.env_browsers) {
-            packageUtils.addDevDependency(pkg, 'babel-preset-es2015', '^6.9.0');
+        if (this.options.env_olderNode || this.options.env_browsers || this.options.env_webpack_allBrowsers) {
+            packageUtils.addDevDependency(pkg, 'babel-preset-es2015', '^6.13.1');
         }
 
         if (this.options.env_node6) {
             packageUtils.addDevDependency(pkg, 'babel-preset-es2015-node6', '^0.2.0');
+        }
+
+        if (this.options.env_webpack_modernBrowsers) {
+            packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers', '^5.1.0');
+            packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers-stage-1', '^1.0.0');
         }
 
         if (this.options.env_node6
@@ -164,15 +152,6 @@ module.exports = generators.Base.extend({
             || this.options.env_webpack_allBrowsers
         ) {
             packageUtils.addDevDependency(pkg, 'babel-preset-stage-1', '^6.5.0');
-        }
-
-        if (this.options.env_webpack_modernBrowsers) {
-            packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers', '^5.0.2');
-            packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers-stage-1', '^1.0.0');
-        }
-
-        if (this.options.env_webpack_allBrowsers) {
-            packageUtils.addDevDependency(pkg, 'babel-preset-es2015-webpack', '^6.4.1');
         }
 
         this.fs.writeJSON(this.destinationPath(this.options.destination, 'package.json'), pkg);

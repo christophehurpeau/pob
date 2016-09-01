@@ -1,7 +1,7 @@
 var production = process.env.NODE_ENV === 'production';
 <% var envs = [
     ['node6', env_node6],
-    ['olderNode', env_olderNode],
+    ['older-node', env_olderNode],
 ].filter(v => v[1]);
 if (envs.length === 1) { -%>
 return module.exports = require('./lib-<%= envs[0][0] %>' + (production ? '' : '-dev') + '/');
@@ -9,9 +9,7 @@ return module.exports = require('./lib-<%= envs[0][0] %>' + (production ? '' : '
 -%>if (process.version.startsWith && process.version.startsWith('v6.'))
     return module.exports = require('./lib-node6' + (production ? '' : '-dev') + '/');
 <% } if (env_olderNode) {
--%>return module.exports = require('./lib-olderNode' + (production ? '' : '-dev') + '/');
+-%>return module.exports = require('./lib-older-node' + (production ? '' : '-dev') + '/');
 <% } else { -%>
 throw new Error('Platform not supported: ' + process.version + '.');
 <% } } -%>
-// help autocomplete
-module.exports = require('./src/');
