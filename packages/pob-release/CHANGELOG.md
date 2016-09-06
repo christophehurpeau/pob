@@ -1,3 +1,7 @@
+### v2.1.2
+
+- [`8ff84f6`](https://github.com/christophehurpeau/pob-release/commit/8ff84f678ca536eaf96a382320a6be14602c83d8) repository-check-clean bash (Christophe Hurpeau)
+
 ### v2.1.1
 
 - [`25433ba`](https://github.com/christophehurpeau/pob-release/commit/25433ba96657fca952d629d079e1d95424cc33d1) fix release with version arg (Christophe Hurpeau)
