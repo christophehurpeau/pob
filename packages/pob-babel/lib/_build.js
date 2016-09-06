@@ -42,7 +42,7 @@ module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch) {
     const watchLogger = parentLogger.child('watch', 'watch');
     let watching = false;
 
-    const timeBuildStarted = 0;// logger.infoTime('building ' + src);
+    const timeBuildStarted = Date.now();// logger.infoTime('building ' + src);
     logger.debug('envs', { envs });
 
     const optsManagers = {};
