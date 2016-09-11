@@ -203,8 +203,8 @@ module.exports = generators.Base.extend({
                     default: true,
                 }, {
                     type: 'confirm',
-                    name: 'includeCoveralls',
-                    message: 'Would you like coveralls badge ?',
+                    name: 'includeCodecov',
+                    message: 'Would you like codecov ?',
                 }];
 
                 return this.prompt(testingPrompts).then(props => {
@@ -295,7 +295,7 @@ module.exports = generators.Base.extend({
                     documentation: this.props.includeDocumentation,
                     doclets: this.props.includeDoclets,
                     testing: this.props.includeTesting,
-                    coveralls: this.props.includeCoveralls,
+                    codecov: this.props.includeCodecov,
                     circleci: this.props.circleci,
                     travisci: this.props.travisci,
                     content: this.options.readme,
@@ -312,7 +312,7 @@ module.exports = generators.Base.extend({
                     babel: this.options.babel,
                     react: this.props.react,
                     documentation: this.props.includeDocumentation,
-                    coveralls: this.props.includeCoveralls,
+                    codecov: this.props.includeCodecov,
                     circleci: this.props.circleci,
                     travisci: this.props.travisci,
                 }

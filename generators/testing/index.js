@@ -23,10 +23,10 @@ module.exports = generators.Base.extend({
             desc: 'travisci'
         });
 
-        this.option('coveralls', {
+        this.option('codecov', {
             type: Boolean,
             required: true,
-            desc: 'Include coveralls report'
+            desc: 'Include codecov report'
         });
 
         this.option('documentation', {
@@ -65,10 +65,6 @@ module.exports = generators.Base.extend({
             packageUtils.addDevDependency(pkg, 'xunit-file', '^1.0.0');
         }
 
-        if (this.options.coveralls) {
-            packageUtils.addDevDependency(pkg, 'coveralls', '^2.11.11');
-        }
-
         this.fs.writeJSON(this.destinationPath(this.options.destination, 'package.json'), pkg);
 
         if (this.options.circleci) {
@@ -78,7 +74,7 @@ module.exports = generators.Base.extend({
                 this.destinationPath(this.options.destination, 'circle.yml'),
                 {
                     documentation: this.options.documentation,
-                    coveralls: this.options.coveralls,
+                    codecov: this.options.codecov,
                 }
             );
             } catch (err) {

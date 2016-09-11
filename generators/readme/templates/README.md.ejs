@@ -5,7 +5,7 @@
 <% if (testing && circleci) { -%>[![Build Status][circleci-status-image]][circleci-status-url]<% } -%>
 <% if (testing && travisci) { -%>[![Travis Status][travisci-status-image]][travisci-status-url]<% } -%>
 [![Dependency Status][daviddm-image]][daviddm-url]
-<% if (testing && coveralls) { %> [![Coverage percentage][coverage-image]][coverage-url]<% } -%>
+<% if (testing && codecov) { %> [![Coverage percentage][coverage-image]][coverage-url]<% } -%>
 <% if (doclets) { %> [![Doclets Link][doclets-image]][doclets-url]<% } -%>
 
 <% if (!content) { -%>
@@ -46,9 +46,10 @@ console.log(<%= camelCaseProjectName %>);
 [travisci-status-image]: https://img.shields.io/travisci/project/<%= githubAccount %>/<%= projectName %>/master.svg?style=flat-square
 [travisci-status-url]: https://travis-ci.org/<%= githubAccount %>/<%= projectName %>
 <% } -%>
-<% if (coveralls) { -%>
-[coverage-image]: https://img.shields.io/coveralls/<%= githubAccount %>/<%= projectName %>/master.svg?style=flat-square
-[coverage-url]: https://<%= githubAccount %>.github.io/<%= projectName %>/coverage/lcov-report/
+<% if (codecov) { -%>
+[coverage-image]: https://codecov.io/gh/<%= githubAccount %>/<%= projectName %>/branch/master/graph/badge.svg?style=flat-square
+[coverage-url]: https://codecov.io/gh/<%= githubAccount %>/<%= projectName %>
+[docs-coverage-url]: https://<%= githubAccount %>.github.io/<%= projectName %>/coverage/lcov-report/
 <% } -%>
 <% } -%>
 <% if (doclets) { %>

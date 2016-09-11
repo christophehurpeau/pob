@@ -71,7 +71,7 @@ module.exports = generators.Base.extend({
                     originUrl = pkg.repository;
                 }
                 this.originUrl = originUrl;
-                const match = originUrl.match(/^(?:git@)?(?:([^:/.]+)(?:\.com)?:)?([^:/]+)\/([^:/.]+)(?:.git)?/);
+                const match = originUrl && originUrl.match(/^(?:git@)?(?:([^:/.]+)(?:\.com)?:)?([^:/]+)\/([^:/.]+)(?:.git)?/);
                 if (!match) return;
                 const [, gitHost, gitAccount, pkgName] = match;
                 this.gitHost = gitHost || 'github';
