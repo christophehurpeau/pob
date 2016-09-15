@@ -1,3 +1,8 @@
+### v8.0.0
+
+- [`2fee306`](https://github.com/christophehurpeau/pob-babel/commit/2fee306153b125cc3500242753660433acd31b95) fix build started time (Christophe Hurpeau)
+- [`d1d32c1`](https://github.com/christophehurpeau/pob-babel/commit/d1d32c1e33c66b9d812475d8f7bc37caf9a1f5a4) use flow-tcomb-forked instead of typecheck (Christophe Hurpeau)
+
 ### v7.3.0
 
 - [`437c04a`](https://github.com/christophehurpeau/pob-babel/commit/437c04aa818881eb32de54b33bc9ca79122ff0e9) allow configure logger (Christophe Hurpeau)
