@@ -1,3 +1,7 @@
+### v8.0.1
+
+- [`1f8ae0c`](https://github.com/christophehurpeau/pob-babel/commit/1f8ae0c8b73a43c1c2265002d6f5c917eeb07656) fix babel-preset-flow-tcomb-forked (Christophe Hurpeau)
+
 ### v8.0.0
 
 - [`2fee306`](https://github.com/christophehurpeau/pob-babel/commit/2fee306153b125cc3500242753660433acd31b95) fix build started time (Christophe Hurpeau)
