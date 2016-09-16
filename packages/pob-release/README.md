@@ -44,7 +44,7 @@ Edit your package.json:
 
 `pob-release [version]`
 
-### Install
+### Cli
 
 If you use npm script:
 
