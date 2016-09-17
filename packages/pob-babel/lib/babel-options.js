@@ -1,7 +1,3 @@
-const resolvePreset = function (presetName) {
-  return require.resolve(`babel-preset-${presetName}`);
-};
-
 const resolvePlugin = function (pluginName) {
   return require.resolve(`babel-plugin-${pluginName}`);
 };
@@ -87,7 +83,7 @@ module.exports = function createOpts(env, react) {
   return {
     presets: [
       ...presets,
-      resolvePreset(!production ? 'flow-tcomb-forked' : 'flow'),
+      !production ? 'flow-tcomb-forked' : 'flow',
     ].filter(Boolean),
     plugins: [
       react && resolvePlugin('react-require'),
