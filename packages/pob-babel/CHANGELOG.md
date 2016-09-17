@@ -1,3 +1,7 @@
+### v8.0.2
+
+- [`e10c861`](https://github.com/christophehurpeau/pob-babel/commit/e10c8618689eb92373ad428807ccd26ce266dd62) resolve preset flow and flow-tcomb-forked (fix babel with link) (Christophe Hurpeau)
+
 ### v8.0.1
 
 - [`1f8ae0c`](https://github.com/christophehurpeau/pob-babel/commit/1f8ae0c8b73a43c1c2265002d6f5c917eeb07656) fix babel-preset-flow-tcomb-forked (Christophe Hurpeau)
