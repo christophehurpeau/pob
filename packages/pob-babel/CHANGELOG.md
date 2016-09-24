@@ -1,3 +1,7 @@
+### v8.0.4
+
+- [`8ec6031`](https://github.com/christophehurpeau/pob-babel/commit/8ec60315a0b299a654904dc94ba4227005bcf591) forked version of discard-module-references, fix missed unused imports (Christophe Hurpeau)
+
 ### v8.0.3
 
 - [`6876d98`](https://github.com/christophehurpeau/pob-babel/commit/6876d98d9a72b1153373c1714faebe6628529779) Revert "resolve preset flow and flow-tcomb-forked (fix babel with link)" (Christophe Hurpeau)
