@@ -97,7 +97,7 @@ module.exports = function createOpts(env, react) {
         'NODEJS': !browser,
       }],
       resolvePlugin('remove-dead-code'),
-      [resolvePlugin('discard-module-references'), { 'targets': [], 'unusedWhitelist': ['react']  }],
+      [resolvePlugin('discard-module-references-fork'), { 'targets': [], 'unusedWhitelist': ['react']  }],
     ].filter(Boolean).concat(createOpts.plugins || [])
   };
 };
