@@ -11,6 +11,12 @@ module.exports = generators.Base.extend({
             desc: 'Destination of the generated files.'
         });
 
+        this.option('privatePackage', {
+            type: Boolean,
+            required: true,
+            desc: 'If the project is private'
+        });
+
         this.option('name', {
             type: String,
             required: true,
@@ -21,12 +27,6 @@ module.exports = generators.Base.extend({
             type: String,
             required: true,
             desc: 'Project description'
-        });
-
-        this.option('githubAccount', {
-            type: String,
-            required: true,
-            desc: 'User github account'
         });
 
         this.option('authorName', {
@@ -72,10 +72,10 @@ module.exports = generators.Base.extend({
             desc: 'travisci badge'
         });
 
-        this.option('coveralls', {
+        this.option('codecov', {
             type: Boolean,
             required: true,
-            desc: 'Include coveralls badge'
+            desc: 'Include codecov badge'
         });
 
         this.option('content', {
@@ -88,22 +88,28 @@ module.exports = generators.Base.extend({
     writing() {
         const pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
 
+        const repository = pkg.repository;
+        const match = repository && repository.match(/^(?:git@)?(?:([^:/.]+)(?:\.com)?:)?([^:/]+)\/([^:/.]+)(?:.git)?/);
+        const [, gitHost, gitAccount, gitName] = match || [];
         try {
         this.fs.copyTpl(
             this.templatePath('README.md.ejs'),
             this.destinationPath(this.options.destination, 'README.md'),
             {
+                privatePackage: this.options.privatePackage,
                 projectName: this.options.name,
                 camelCaseProjectName: camelCase(this.options.name),
                 description: this.options.description,
-                githubAccount: this.options.githubAccount,
+                gitHost: gitHost,
+                gitAccount: gitAccount,
+                gitName: gitName,
                 author: {
                     name: this.options.authorName,
                     url: this.options.authorUrl
                 },
                 license: pkg.license,
                 doclets: this.options.doclets,
-                coveralls: this.options.coveralls,
+                codecov: this.options.codecov,
                 documentation: this.options.documentation,
                 testing: this.options.testing,
                 circleci: this.options.circleci,

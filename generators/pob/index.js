@@ -287,6 +287,7 @@ module.exports = generators.Base.extend({
         if (!this.fs.exists(this.destinationPath('README.md'))) {
             this.composeWith('pob:readme', {
                 options: {
+                    privatePackage: this.props.private,
                     name: this.props.name,
                     description: this.props.description,
                     authorName: this.props.authorName,
@@ -358,7 +359,7 @@ module.exports = generators.Base.extend({
             clean: 'rm -Rf docs dist test/node6 coverage',
         });
 
-        packageUtils.addDevDependency(pkg, 'pob-release', '^2.0.5');
+        packageUtils.addDevDependency(pkg, 'pob-release', '^2.1.2');
         delete pkg.devDependencies['springbokjs-library'];
 
         packageUtils.sort(pkg);

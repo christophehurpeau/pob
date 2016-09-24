@@ -1,6 +1,6 @@
 machine:
   node:
-    version: 6.3.0
+    version: 6.6.0
 
 general:
   branches:
@@ -20,17 +20,20 @@ test:
     - npm run preversion
     - npm run test
     - XUNIT_FILE=$CIRCLE_TEST_REPORTS/junit/xunit.xml node_modules/.bin/mocha --harmony --recursive --reporter xunit-file -u tdd test/node6
-    <% if (documentation) { %>- npm run generate:docs
-    <% } else { %>- npm run generate:test-coverage<% } -%>
+<% if (documentation) { -%>
+    - npm run generate:docs
+<% } else { -%>
+    - npm run generate:test-coverage
+<% } -%>
   post:
-    <% if (codecov) { %>
+<% if (codecov) { -%>
     - bash <(curl -s https://codecov.io/bash)
-    <% } -%>
+<% } -%>
     - cp -R coverage $CIRCLE_ARTIFACTS/
-    <% if (documentation) { %>
+<% if (documentation) { -%>
     - cp -R docs $CIRCLE_ARTIFACTS/
-    <% } -%>
-<% if (documentation) { %>
+<% } -%>
+<% if (documentation) { -%>
 
 deployment:
   docs:

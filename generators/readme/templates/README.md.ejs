@@ -1,25 +1,36 @@
-# <%= projectName %> [![NPM version][npm-image]][npm-url]
+# <%= projectName %><% if (!privatePackage) { %> [![NPM version][npm-image]][npm-url]<% } %>
 
 <%= description %>
 
-<% if (testing && circleci) { -%>[![Build Status][circleci-status-image]][circleci-status-url]<% } -%>
-<% if (testing && travisci) { -%>[![Travis Status][travisci-status-image]][travisci-status-url]<% } -%>
+<% if (gitHost === 'github') { -%>
+<% if (testing && circleci) { -%>
+[![Build Status][circleci-status-image]][circleci-status-url]
+<% } -%>
+<% if (testing && travisci) { -%>
+[![Travis Status][travisci-status-image]][travisci-status-url]
+<% } -%>
 [![Dependency Status][daviddm-image]][daviddm-url]
-<% if (testing && codecov) { %> [![Coverage percentage][coverage-image]][coverage-url]<% } -%>
-<% if (doclets) { %> [![Doclets Link][doclets-image]][doclets-url]<% } -%>
+<% if (testing && codecov) { -%>
+[![Coverage percentage][coverage-image]][coverage-url]
+<% } -%>
+<% if (doclets) { -%>
+[![Doclets Link][doclets-image]][doclets-url]
+<% } -%>
+<% } -%>
 
-<% if (!content) { -%>
-
+<% if (content) { -%>
+<%= content %>
+<% } else { -%>
 ## Install
 
 ```sh
 npm install --save <%= projectName %>
 ```
 
-<% if (documentation && circleci) { %>
+<% if (documentation && circleci && gitHost === 'github') { -%>
 ## API
 
-[https://<%= githubAccount %>.github.io/<%= projectName %>/docs](http://<%= githubAccount %>.github.io/<%= projectName %>/docs)
+[https://<%= gitAccount %>.github.io/<%= projectName %>/docs](http://<%= gitAccount %>.github.io/<%= projectName %>/docs)
 
 <% } -%>
 ## Usage
@@ -29,30 +40,30 @@ import <%= camelCaseProjectName %> from '<%= projectName %>';
 
 console.log(<%= camelCaseProjectName %>);
 ```
-<% } else { -%>
-<%= content %>
 <% } -%>
 
 [npm-image]: https://img.shields.io/npm/v/<%= projectName %>.svg?style=flat-square
 [npm-url]: https://npmjs.org/package/<%= projectName %>
-[daviddm-image]: https://david-dm.org/<%= githubAccount %>/<%= projectName %>.svg?style=flat-square
-[daviddm-url]: https://david-dm.org/<%= githubAccount %>/<%= projectName %>
+<% if (gitHost === 'github') { -%>
+[daviddm-image]: https://david-dm.org/<%= gitAccount %>/<%= gitName %>.svg?style=flat-square
+[daviddm-url]: https://david-dm.org/<%= gitAccount %>/<%= gitName %>
 <% if (testing) { -%>
 <% if (circleci) { -%>
-[circleci-status-image]: https://img.shields.io/circleci/project/<%= githubAccount %>/<%= projectName %>/master.svg?style=flat-square
-[circleci-status-url]: https://circleci.com/gh/<%= githubAccount %>/<%= projectName %>
+[circleci-status-image]: https://img.shields.io/circleci/project/<%= gitAccount %>/<%= gitName %>/master.svg?style=flat-square
+[circleci-status-url]: https://circleci.com/gh/<%= gitAccount %>/<%= gitName %>
 <% } -%>
 <% if (travisci) { -%>
-[travisci-status-image]: https://img.shields.io/travisci/project/<%= githubAccount %>/<%= projectName %>/master.svg?style=flat-square
-[travisci-status-url]: https://travis-ci.org/<%= githubAccount %>/<%= projectName %>
+[travisci-status-image]: https://img.shields.io/travisci/project/<%= gitAccount %>/<%= gitName %>/master.svg?style=flat-square
+[travisci-status-url]: https://travis-ci.org/<%= gitAccount %>/<%= gitName %>
 <% } -%>
 <% if (codecov) { -%>
-[coverage-image]: https://codecov.io/gh/<%= githubAccount %>/<%= projectName %>/branch/master/graph/badge.svg?style=flat-square
-[coverage-url]: https://codecov.io/gh/<%= githubAccount %>/<%= projectName %>
-[docs-coverage-url]: https://<%= githubAccount %>.github.io/<%= projectName %>/coverage/lcov-report/
+[coverage-image]: https://codecov.io/gh/<%= gitAccount %>/<%= gitName %>/branch/master/graph/badge.svg?style=flat-square
+[coverage-url]: https://codecov.io/gh/<%= gitAccount %>/<%= gitName %>
+[docs-coverage-url]: https://<%= gitAccount %>.github.io/<%= gitName %>/coverage/lcov-report/
 <% } -%>
 <% } -%>
 <% if (doclets) { %>
 [doclets-image]: https://img.shields.io/badge/doclets.io-master-green.svg?style=flat-square
-[doclets-url]: https://doclets.io/<%= githubAccount %>/<%= projectName %>/master
+[doclets-url]: https://doclets.io/<%= gitAccount %>/<%= gitName %>/master
+<% } -%>
 <% } -%>

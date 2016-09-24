@@ -54,7 +54,7 @@ module.exports = generators.Base.extend({
         }
 
         packageUtils.addDevDependencies(pkg, {
-            'jsdoc': '^3.4.0',
+            'jsdoc': '^3.4.1',
             'jaguarjs-jsdoc': 'github:christophehurpeau/jaguarjs-jsdoc#0e577602ac327a694d4f619cb37c1476c523261e',
         });
 

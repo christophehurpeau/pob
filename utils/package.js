@@ -81,7 +81,11 @@ function _addDependencies(pkg, type, dependencies) {
         Object.keys(dependencies).forEach(dependency => {
             const potentialNewVersion = dependencies[dependency];
             const currentVersion = currentDependencies[dependency];
-            if (!currentVersion || semver.gt(cleanVersion(potentialNewVersion), cleanVersion(currentVersion))) {
+            try {
+                if (!currentVersion || semver.gt(cleanVersion(potentialNewVersion), cleanVersion(currentVersion))) {
+                    filtredDependencies[dependency] = potentialNewVersion;
+                }
+            } catch (err) {
                 filtredDependencies[dependency] = potentialNewVersion;
             }
         });

@@ -51,15 +51,17 @@ module.exports = generators.Base.extend({
             test: 'mocha --harmony --es_staging --recursive --bail -u tdd test/node6',
             'generate:test-coverage': [
                 'rm -Rf coverage/',
-                'node --harmony --es_staging node_modules/istanbul/lib/cli.js'
+                'NODE_ENV=production node --harmony --es_staging node_modules/istanbul/lib/cli.js'
                     + ' cover node_modules/.bin/_mocha -- --recursive --reporter=spec -u tdd test/node6',
             ].join(' ; ')
         });
 
         packageUtils.addDevDependencies(pkg, {
             'mocha': '^3.0.0',
-            'istanbul': '^0.4.3',
+            'istanbul': '^0.4.5',
         });
+
+        delete pkg.devDependencies['coveralls'];
 
         if (this.options.circleci) {
             packageUtils.addDevDependency(pkg, 'xunit-file', '^1.0.0');
