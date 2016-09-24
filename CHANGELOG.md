@@ -1,3 +1,7 @@
+### v0.4.3
+
+- [`46ba0cf`](https://github.com/christophehurpeau/pob/commit/46ba0cf9b96339ee18bffa1fe2cdc3d1a1ba5470) update dependencies, fix in package when the version is not semver (like an github link), readme and circleci newlines fixes (Christophe Hurpeau)
+
 ### v0.4.2
 
 - [`5172ea3`](https://github.com/christophehurpeau/pob/commit/5172ea3b5f4ffbe7679bf65f7616c04bd2c1e0c4) circleci, codecov and fix git generator (Christophe Hurpeau)
