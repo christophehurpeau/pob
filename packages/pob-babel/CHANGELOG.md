@@ -1,3 +1,8 @@
+### v8.1.0
+
+- [`9b034e4`](https://github.com/christophehurpeau/pob-babel/commit/9b034e4434c4ab0fe303bfdf14ccad245fa1343b) discard-module-references v1.1 (Christophe Hurpeau)
+- [`2241cd0`](https://github.com/christophehurpeau/pob-babel/commit/2241cd0cd95d81b224aa47e036f846cff780611e) dependency transform-react-jsx-self and add transform-react-jsx-source (Christophe Hurpeau)
+
 ### v8.0.4
 
 - [`8ec6031`](https://github.com/christophehurpeau/pob-babel/commit/8ec60315a0b299a654904dc94ba4227005bcf591) forked version of discard-module-references, fix missed unused imports (Christophe Hurpeau)
