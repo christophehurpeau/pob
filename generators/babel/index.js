@@ -115,24 +115,29 @@ module.exports = generators.Base.extend({
         delete pkg.scripts['watch:dev'];
 
         packageUtils.addDevDependencies(pkg, {
-            'pob-babel': '^8.0.3',
-            'babel-preset-stage-1': '^6.13.0',
+            'pob-babel': '^8.3.0',
             'eslint-plugin-babel': '^3.3.0',
             'tcomb-forked': '^3.2.13',
         });
 
         delete pkg.devDependencies['tcomb'];
         delete pkg.devDependencies['babel-preset-es2015-webpack'];
+        delete pkg.devDependencies['babel-preset-stage-1'];
+        delete pkg.devDependencies['babel-preset-modern-browsers-stage-1'];
+        delete pkg.devDependencies['babel-preset-flow'];
+        delete pkg.devDependencies['babel-preset-flow-tcomb'];
+        delete pkg.devDependencies['babel-preset-flow-tcomb-forked'];
         delete pkg.devDependencies['babel-plugin-typecheck'];
         delete pkg.devDependencies['babel-plugin-defines'];
         delete pkg.devDependencies['babel-plugin-discard-module-references'];
         delete pkg.devDependencies['babel-plugin-remove-dead-code'];
-        delete pkg.devDependencies['babel-plugin-typecheck'];
 
         if (this.options.react) {
             packageUtils.addDevDependencies(pkg, {
-                'babel-preset-react': '^6.11.1',
+                'babel-preset-react': '^6.16.0',
             });
+        } else {
+            delete pkg.devDependencies['babel-preset-react'];
         }
 
         if (this.options.documentation) {
@@ -144,7 +149,7 @@ module.exports = generators.Base.extend({
         }
 
         if (this.options.env_olderNode || this.options.env_browsers || this.options.env_webpack_allBrowsers) {
-            packageUtils.addDevDependency(pkg, 'babel-preset-es2015', '^6.14.0');
+            packageUtils.addDevDependency(pkg, 'babel-preset-es2015', '^6.16.0');
         } else {
            delete pkg.devDependencies['babel-preset-es2015'];
         }
@@ -157,21 +162,10 @@ module.exports = generators.Base.extend({
 
         if (this.options.env_webpack_modernBrowsers) {
             packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers', '^5.1.0');
-            packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers-stage-1', '^1.0.0');
         } else {
            delete pkg.devDependencies['babel-preset-modern-browsers'];
-           delete pkg.devDependencies['babel-preset-modern-browsers-stage-1'];
         }
 
-        if (this.options.env_node6
-            || this.options.env_browsers
-            || this.options.documentation
-            || this.options.env_webpack_allBrowsers
-        ) {
-            packageUtils.addDevDependency(pkg, 'babel-preset-stage-1', '^6.5.0');
-        } else {
-           delete pkg.devDependencies['babel-preset-stage-1'];
-        }
 
         this.fs.writeJSON(this.destinationPath(this.options.destination, 'package.json'), pkg);
     },
