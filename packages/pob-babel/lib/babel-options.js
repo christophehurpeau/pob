@@ -90,7 +90,7 @@ module.exports = function createOpts(env, react) {
     presets: presets.filter(Boolean),
     plugins: [
       resolvePlugin('syntax-flow'),
-      resolvePlugin('tcomb-forked'),
+      !production && resolvePlugin('tcomb-forked'),
       resolvePlugin('transform-flow-strip-types'),
       react && resolvePlugin('react-require'),
       // browser && 'react-hot-loader/babel',
