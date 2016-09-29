@@ -1,3 +1,7 @@
+### v0.5.0
+
+- [`4ccfe06`](https://github.com/christophehurpeau/pob/commit/4ccfe06e87c06f81dd504c4ca4a82afa83f43832) update dependencies (Christophe Hurpeau)
+
 ### v0.4.3
 
 - [`46ba0cf`](https://github.com/christophehurpeau/pob/commit/46ba0cf9b96339ee18bffa1fe2cdc3d1a1ba5470) update dependencies, fix in package when the version is not semver (like an github link), readme and circleci newlines fixes (Christophe Hurpeau)
