@@ -1,3 +1,7 @@
+const resolvePreset = function (presetName) {
+  return require.resolve(`babel-preset-${presetName}`);
+};
+
 const resolvePlugin = function (pluginName) {
   return require.resolve(`babel-plugin-${pluginName}`);
 };
@@ -15,7 +19,7 @@ module.exports = function createOpts(env, react) {
         'jsdoc',
         'jsdoc/object-rest',
         react && 'react',
-        'stage-1',
+        resolvePreset('stage-1'),
       ],
       plugins: ['add-jsdoc-annotations']
     };
@@ -23,6 +27,7 @@ module.exports = function createOpts(env, react) {
 
   let presets;
   let browser;
+  let modernBrowsers = false;
 
   switch (env) {
     case 'es5':
@@ -33,7 +38,7 @@ module.exports = function createOpts(env, react) {
       presets = [
         'es2015-node6/object-rest',
         react && 'react',
-        'stage-1',
+        resolvePreset('stage-1'),
       ];
       browser = false;
       break;
@@ -42,7 +47,7 @@ module.exports = function createOpts(env, react) {
       presets = [
         'es2015',
         react && 'react',
-        'stage-1',
+        resolvePreset('stage-1'),
       ];
       browser = false;
       break;
@@ -51,7 +56,7 @@ module.exports = function createOpts(env, react) {
       presets = [
         ['es2015', { modules: false }],
         react && 'react',
-        'stage-1',
+        resolvePreset('stage-1'),
       ];
       browser = true;
       break;
@@ -61,16 +66,17 @@ module.exports = function createOpts(env, react) {
         'modern-browsers/webpack2',
         'modern-browsers/object-rest',
         react && 'react',
-        'modern-browsers-stage-1'
+        resolvePreset('stage-1'),
       ];
       browser = true;
+      modernBrowsers = true;
       break;
 
     case 'browsers':
       presets = [
         'es2015',
         react && 'react',
-        'stage-1',
+        resolvePreset('stage-1'),
       ];
       browser = true;
       break;
