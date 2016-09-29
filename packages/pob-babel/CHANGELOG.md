@@ -1,3 +1,7 @@
+### v8.3.1
+
+- [`ebf7cce`](https://github.com/christophehurpeau/pob-babel/commit/ebf7cce5fbee3565300ad1128ea5d9c6a3c6ac93) only use tcomb-forked on dev (Christophe Hurpeau)
+
 ### v8.3.0
 
 - [`dcc6c4f`](https://github.com/christophehurpeau/pob-babel/commit/dcc6c4f2b73af992fc834f4955e6295747550f84) use flow plugins instead of preset (Christophe Hurpeau)
