@@ -1,3 +1,7 @@
+### v8.2.0
+
+- [`7010324`](https://github.com/christophehurpeau/pob-babel/commit/7010324c1fae33f190664e0370bd34afbd6c96a0) update dependencies and always use stage-1 (Christophe Hurpeau)
+
 ### v8.1.0
 
 - [`9b034e4`](https://github.com/christophehurpeau/pob-babel/commit/9b034e4434c4ab0fe303bfdf14ccad245fa1343b) discard-module-references v1.1 (Christophe Hurpeau)
