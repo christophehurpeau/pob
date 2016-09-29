@@ -87,11 +87,11 @@ module.exports = function createOpts(env, react) {
   }
 
   return {
-    presets: [
-      ...presets,
-      !production ? 'flow-tcomb-forked' : 'flow',
-    ].filter(Boolean),
+    presets: presets.filter(Boolean),
     plugins: [
+      resolvePlugin('syntax-flow'),
+      resolvePlugin('tcomb-forked'),
+      resolvePlugin('transform-flow-strip-types'),
       react && resolvePlugin('react-require'),
       // browser && 'react-hot-loader/babel',
       !production && react && resolvePlugin('transform-react-jsx-self'),
