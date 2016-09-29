@@ -1,3 +1,8 @@
+### v8.3.0
+
+- [`dcc6c4f`](https://github.com/christophehurpeau/pob-babel/commit/dcc6c4f2b73af992fc834f4955e6295747550f84) use flow plugins instead of preset (Christophe Hurpeau)
+- [`ff99e4d`](https://github.com/christophehurpeau/pob-babel/commit/ff99e4d113cc5786174f626109ebcd74a51e184a) update tcomb-forked dependency (Christophe Hurpeau)
+
 ### v8.2.0
 
 - [`7010324`](https://github.com/christophehurpeau/pob-babel/commit/7010324c1fae33f190664e0370bd34afbd6c96a0) update dependencies and always use stage-1 (Christophe Hurpeau)
