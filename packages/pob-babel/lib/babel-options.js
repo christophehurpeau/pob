@@ -20,7 +20,7 @@ module.exports = function createOpts(env, react) {
         'jsdoc/object-rest',
         react && 'react',
         resolvePreset('stage-1'),
-      ],
+      ].filter(Boolean),
       plugins: ['add-jsdoc-annotations']
     };
   }
