@@ -1,3 +1,7 @@
+### v8.3.2
+
+- [`65bc5f9`](https://github.com/christophehurpeau/pob-babel/commit/65bc5f9586f6ecde7ea0fb2136199c829807cd95) fix preset false jsdoc (Christophe Hurpeau)
+
 ### v8.3.1
 
 - [`ebf7cce`](https://github.com/christophehurpeau/pob-babel/commit/ebf7cce5fbee3565300ad1128ea5d9c6a3c6ac93) only use tcomb-forked on dev (Christophe Hurpeau)
