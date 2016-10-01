@@ -21,7 +21,10 @@ module.exports = function createOpts(env, react) {
         react && 'react',
         resolvePreset('stage-1'),
       ].filter(Boolean),
-      plugins: ['add-jsdoc-annotations']
+      plugins: [
+        'add-jsdoc-annotations',
+        resolvePlugin('transform-flow-strip-types'),
+      ]
     };
   }
 
