@@ -1,3 +1,7 @@
+### v0.6.0
+
+- [`a788d63`](https://github.com/christophehurpeau/pob/commit/a788d6393eef1017cea0eb379355edf06e651410) update dependencies and jsdoc use minami (Christophe Hurpeau)
+
 ### v0.5.0
 
 - [`4ccfe06`](https://github.com/christophehurpeau/pob/commit/4ccfe06e87c06f81dd504c4ca4a82afa83f43832) update dependencies (Christophe Hurpeau)
