@@ -115,9 +115,9 @@ module.exports = generators.Base.extend({
         delete pkg.scripts['watch:dev'];
 
         packageUtils.addDevDependencies(pkg, {
-            'pob-babel': '^8.3.0',
+            'pob-babel': '^8.3.2',
             'eslint-plugin-babel': '^3.3.0',
-            'tcomb-forked': '^3.2.13',
+            'tcomb-forked': '^3.4.0',
         });
 
         delete pkg.devDependencies['tcomb'];
@@ -141,8 +141,8 @@ module.exports = generators.Base.extend({
         }
 
         if (this.options.documentation) {
-            packageUtils.addDevDependency(pkg, 'babel-preset-jsdoc', '^0.1.0');
-            packageUtils.addDevDependency(pkg, 'babel-plugin-add-jsdoc-annotations', '^5.0.0');
+            packageUtils.addDevDependency(pkg, 'babel-preset-jsdoc', '^0.4.0');
+            packageUtils.addDevDependency(pkg, 'babel-plugin-add-jsdoc-annotations', '^5.1.0');
         } else {
             delete pkg.devDependencies['babel-preset-jsdoc'];
             delete pkg.devDependencies['babel-plugin-add-jsdoc-annotations'];
@@ -155,7 +155,7 @@ module.exports = generators.Base.extend({
         }
 
         if (this.options.env_node6) {
-            packageUtils.addDevDependency(pkg, 'babel-preset-es2015-node6', '^0.2.0');
+            packageUtils.addDevDependency(pkg, 'babel-preset-es2015-node6', '^0.3.0');
         } else {
            delete pkg.devDependencies['babel-preset-es2015-node6'];
         }

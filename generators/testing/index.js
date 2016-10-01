@@ -57,7 +57,7 @@ module.exports = generators.Base.extend({
         });
 
         packageUtils.addDevDependencies(pkg, {
-            'mocha': '^3.0.0',
+            'mocha': '^3.1.0',
             'istanbul': '^0.4.5',
         });
 

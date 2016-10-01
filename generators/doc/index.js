@@ -55,8 +55,10 @@ module.exports = generators.Base.extend({
 
         packageUtils.addDevDependencies(pkg, {
             'jsdoc': '^3.4.1',
-            'jaguarjs-jsdoc': 'github:christophehurpeau/jaguarjs-jsdoc#0e577602ac327a694d4f619cb37c1476c523261e',
+            'minami': '^1.1.1',
         });
+
+        delete pkg.devDependencies['jaguarjs-jsdoc'];
 
         this.fs.writeJSON(this.destinationPath(this.options.destination, 'package.json'), pkg);
     },

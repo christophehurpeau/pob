@@ -73,14 +73,13 @@ module.exports = generators.Base.extend({
         });
 
         if (this.options.babel || this.options.react) {
-            packageUtils.addDevDependency(pkg, 'babel-eslint', '^6.0.4');
+            packageUtils.addDevDependency(pkg, 'babel-eslint', '^7.0.0');
         } else {
             delete pkg.devDependencies['babel-eslint'];
         }
 
         if (this.options.react) {
             packageUtils.addDevDependencies(pkg, {
-                'babel-eslint': '^7.0.0',
                 'eslint-config-airbnb': '^12.0.0',
                 'eslint-plugin-jsx-a11y': '^2.2.2',
                 'eslint-plugin-react': '^6.3.0',
