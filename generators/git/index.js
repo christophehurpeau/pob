@@ -56,7 +56,12 @@ module.exports = generators.Base.extend({
             this.destinationPath('.npmignore')
         );
 
-        ['pre-commit', 'post-checkout', 'post-merge'].forEach(filename => (
+        this.fs.copy(
+            this.templatePath('commitrc.js'),
+            this.destinationPath('.commitrc.js')
+        );
+
+        ['pre-commit', 'post-checkout', 'post-merge', 'prepare-commit-msg'].forEach(filename => (
             this.fs.copy(
                 this.templatePath(filename),
                 this.destinationPath(this.options.destination, `git-hooks/${filename}`)
@@ -130,30 +135,36 @@ module.exports = generators.Base.extend({
     writing() {
         if (this.gitHost === 'none') return;
 
-        this.pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
+        const pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
 
-        if (!this.pkg.homepage && this.gitHostAccount) {
-            this.pkg.homepage = `https://${this.gitHost}.com/${this.gitHostAccount}/${this.pkg.name}`;
+        if (!pkg.homepage && this.gitHostAccount) {
+            pkg.homepage = `https://${this.gitHost}.com/${this.gitHostAccount}/${pkg.name}`;
         }
 
-        packageUtils.addScripts(this.pkg, {
+        packageUtils.addScripts(pkg, {
             prepublish: [
                 'ln -s ../../git-hooks/pre-commit .git/hooks/pre-commit 2>/dev/null || true',
                 'ln -s ../../git-hooks/post-checkout .git/hooks/post-checkout 2>/dev/null || true',
                 'ln -s ../../git-hooks/post-merge .git/hooks/post-merge 2>/dev/null || true',
+                'ln -s ../../git-hooks/prepare-commit-msg .git/hooks/prepare-commit-msg 2>/dev/null || true',
             ].join(' ; '),
         });
 
         var repository = `git@${this.gitHost}.com:${this.gitHostAccount}/${this.pkgName || this.options.name}.git`;
 
-        if (this.pkg.repository !== repository) {
-            this.pkg.repository = repository;
-            packageUtils.sort(this.pkg);
+        if (pkg.repository !== repository) {
+            pkg.repository = repository;
+            packageUtils.sort(pkg);
+        }
+
+        if (this.pkgName !== 'komet') {
+            packageUtils.addDevDependency(pkg, 'komet', '^0.1.0');
+            packageUtils.addDevDependency(pkg, 'komet-karma', '^0.1.0');
         }
 
         this.fs.writeJSON(
             this.destinationPath(this.options.destination, 'package.json'),
-            this.pkg
+            pkg
         );
 
         const cwd = this.destinationPath(this.options.destination);
@@ -162,8 +173,8 @@ module.exports = generators.Base.extend({
             this.spawnCommandSync('git', ['init'], { cwd });
 
             if (!this.originUrl) {
-                var repoSSH = this.pkg.repository;
-                if (this.pkg.repository && this.pkg.repository.indexOf('.git') === -1) {
+                var repoSSH = pkg.repository;
+                if (pkg.repository && pkg.repository.indexOf('.git') === -1) {
                     /*this.spawnCommandSync('curl', [
                         '--silent',
                         '--write-out',
@@ -177,7 +188,7 @@ module.exports = generators.Base.extend({
                         'https://api.github.com/user/repos',
                     ], { cwd });*/
 
-                    repoSSH = this.pkg.repository;
+                    repoSSH = pkg.repository;
                 }
 
                 this.spawnCommandSync('git', ['remote', 'add', 'origin', repoSSH], { cwd });

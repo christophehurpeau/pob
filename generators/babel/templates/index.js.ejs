@@ -1,4 +1,4 @@
-var production = process.env.NODE_ENV === 'production';
+var production = process.env.NODE_ENV === 'production' || (process.argv0 && process.argv0 !== process.argv[0]);
 <% var envs = [
     ['node6', env_node6],
     ['older-node', env_olderNode],

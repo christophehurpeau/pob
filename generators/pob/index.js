@@ -92,30 +92,40 @@ module.exports = generators.Base.extend({
     },
 
     prompting: {
+        askPrivate() {
+            return this.prompt({
+                type: 'confirm',
+                name: 'private',
+                message: 'Private package ?',
+                default: this.props.private === true,
+            }).then((props) => {
+                this.props.private = props.private;
+            });
+        },
+
         askForModuleName() {
             if (this.pkg.name || this.options.name) {
                 this.props.name = this.pkg.name || this.options.name;
                 return;
             }
 
-            return askName({
+            const prompt = {
                 name: 'name',
                 message: 'Module Name',
                 default: path.basename(process.cwd()),
                 filter: kebabCase,
                 validate: str => str.length > 0,
-            }, this).then(({ name }) => {
-                this.props.name = name;
-            });
+            };
+
+
+            return (this.props.private ? this.prompt([prompt]) : askName(prompt, this))
+                .then(({ name }) => {
+                    this.props.name = name;
+                });
         },
 
         askFor() {
-            var prompts = [{
-                type: 'confirm',
-                name: 'private',
-                message: 'Private package ?',
-                default: this.props.private === true,
-            }, {
+            return this.prompt([{
                 name: 'description',
                 message: 'Description',
                 when: !this.props.description,
@@ -136,7 +146,13 @@ module.exports = generators.Base.extend({
                 message: 'Author\'s Homepage',
                 when: !this.props.authorUrl,
                 store: true,
-            }, {
+            }]).then((props) => {
+                Object.assign(this.props, props);
+            });
+        },
+
+        askForBabelEnvs() {
+            return this.prompt([{
                 type: 'checkbox',
                 name: 'babelEnvs',
                 message: 'Babel envs:',
@@ -162,12 +178,25 @@ module.exports = generators.Base.extend({
                     value: 'browsers',
                     checked: this.props.babelEnvs.includes('browsers'),
                 }, ]
-            }, {
+            }]).then((props) => {
+                Object.assign(this.props, props);
+            });
+        },
+
+        askForReact() {
+            if (!this.props.babelEnvs.length) return;
+            return this.prompt([{
                 type: 'confirm',
                 name: 'react',
                 message: 'Would you like React syntax ?',
                 default: this.pobjson.react || false,
-            }, {
+            }]).then((props) => {
+                Object.assign(this.props, props);
+            });
+        },
+
+        askForDoc() {
+            return this.prompt([{
                 type: 'confirm',
                 name: 'includeDocumentation',
                 message: 'Would you like documentation (manually generated) ?',
@@ -177,14 +206,18 @@ module.exports = generators.Base.extend({
                 name: 'includeDoclets',
                 message: 'Would you like doclets ?',
                 default: false,
-            }, {
+            }]).then((props) => {
+                Object.assign(this.props, props);
+            });
+        },
+
+        askForTesting() {
+            return this.prompt([{
                 type: 'confirm',
                 name: 'includeTesting',
                 message: 'Would you like testing ?',
                 default: this.pobjson.testing,
-            }];
-
-            return this.prompt(prompts).then(props => {
+            }]).then(props => {
                 Object.assign(this.props, props);
 
                 if (!props.includeTesting) {
