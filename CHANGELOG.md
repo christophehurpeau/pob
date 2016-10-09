@@ -1,3 +1,7 @@
+### v0.7.0
+
+- [`81a1f76`](https://github.com/christophehurpeau/pob/commit/81a1f7657b0543fc9e8dd30158f4bdfcea2a6821) split questions, use komet (Christophe Hurpeau)
+
 ### v0.6.0
 
 - [`a788d63`](https://github.com/christophehurpeau/pob/commit/a788d6393eef1017cea0eb379355edf06e651410) update dependencies and jsdoc use minami (Christophe Hurpeau)
