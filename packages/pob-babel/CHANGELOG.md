@@ -1,3 +1,8 @@
+### v9.0.0
+
+- [`7256e79`](https://github.com/christophehurpeau/pob-babel/commit/7256e79e2961aed35574953efd5745afacd8c0ed) jsdoc add flow-strip-types (Christophe Hurpeau)
+- [`d157147`](https://github.com/christophehurpeau/pob-babel/commit/d1571472856eddaa3a400ff2fedeff0cf9778090) update dependencies and babel-preset-modern-browsers v6 (Christophe Hurpeau)
+
 ### v8.3.2
 
 - [`65bc5f9`](https://github.com/christophehurpeau/pob-babel/commit/65bc5f9586f6ecde7ea0fb2136199c829807cd95) fix preset false jsdoc (Christophe Hurpeau)
