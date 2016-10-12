@@ -1,3 +1,7 @@
+### v0.7.1
+
+- [`894c10f`](https://github.com/christophehurpeau/pob/commit/894c10f97ec819390062b5ffdb6ff0dafa9cf466) fixes (Christophe Hurpeau)
+
 ### v0.7.0
 
 - [`81a1f76`](https://github.com/christophehurpeau/pob/commit/81a1f7657b0543fc9e8dd30158f4bdfcea2a6821) split questions, use komet (Christophe Hurpeau)
