@@ -1,3 +1,7 @@
+### v2.2.1
+
+- [`6f8d8ef`](https://github.com/christophehurpeau/pob-release/commit/6f8d8ef719451e513b71256b4dd01025fbf0120d) update authors also uses karma message (Christophe Hurpeau)
+
 ### v2.2.0
 
 - [`d7a64a6`](https://github.com/christophehurpeau/pob-release/commit/d7a64a697425ae3b24c35e83d7b0258786f00e86) Update README.md (Christophe Hurpeau)
