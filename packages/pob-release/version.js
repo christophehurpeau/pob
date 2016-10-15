@@ -13,7 +13,7 @@ if (!isSemverValid(version)) {
 
 /* AUTHORS */
 execSync('git --no-pager log --reverse --format="%aN <%aE>" | sort -fub > AUTHORS'
-         + ' && git add AUTHORS && git commit -m "update AUTHORS" AUTHORS || true', { stdio: 'inherit' });
+         + ' && git add AUTHORS && git commit -m "chore(authors): update AUTHORS" AUTHORS || true', { stdio: 'inherit' });
 
 /* CHANGELOG */
 execSync(`echo "### v${version}\\n" > \\#temp_changelog`, { stdio: 'inherit' });
