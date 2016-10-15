@@ -2,7 +2,7 @@ const readFileSync = require('fs').readFileSync;
 const argv = require('minimist-argv');
 const inquirer = require('inquirer');
 const execSync = require('child_process').execSync;
-const { valid: validateSemver, inc: incSemver } = require('semver');
+const { valid: validateSemver, inc: incSemver, gt: gtSemver } = require('semver');
 const isSemverValid = version => validateSemver(version) !== null;
 
 /*execSync('[[ -z $(git status --porcelain) ]] || (echo "Git working directory not clean."; exit 1)', { stdio: 'inherit' });
@@ -62,7 +62,7 @@ Promise.resolve(argv._[0]).then(version => {
                 type: 'input',
                 name: 'version',
                 message: 'version (must follow semver):',
-                validate: isSemverValid,
+                validate: version => isSemverValid(version) && gtSemver(version, currentVersion),
             }
         ]).then(answers => {
             return answers.version;
