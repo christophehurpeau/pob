@@ -1,13 +1,14 @@
 const readFileSync = require('fs').readFileSync;
 const execSync = require('child_process').execSync;
 const validateSemver = require('semver').valid;
+
 const isSemverValid = version => validateSemver(version) !== null;
 
 /* VERSION */
 const pkg = JSON.parse(readFileSync('./package.json'));
 const version = pkg.version;
 if (!isSemverValid(version)) {
-    throw new Error(`Unexpected version: ${version}`);
+  throw new Error(`Unexpected version: ${version}`);
 }
 
 /* AUTHORS */
@@ -19,7 +20,7 @@ execSync(`echo "### v${version}\\n" > \\#temp_changelog`, { stdio: 'inherit' });
 
 let repository = pkg.repository;
 if (repository) {
-    repository = repository.replace(/^git@github.com:(.*)\.git$/, '$1');
+  repository = repository.replace(/^git@github.com:(.*)\.git$/, '$1');
 }
 
 // Initial commit: diff against an empty tree object
@@ -30,7 +31,7 @@ execSync('git log `git describe --abbrev=0 &> /dev/null && git rev-list --tags -
 execSync('$EDITOR \\#temp_changelog', { stdio: 'inherit' });
 execSync('echo "\\n" >> \\#temp_changelog', { stdio: 'inherit' });
 try {
-    execSync('cat CHANGELOG.md >> \\#temp_changelog', { stdio: 'inherit' });
+  execSync('cat CHANGELOG.md >> \\#temp_changelog', { stdio: 'inherit' });
 } catch (err) {}
 execSync('cat \\#temp_changelog | sed -e :a -e \'/^\\n*$/{$d;N;};/\\n$/ba\' > CHANGELOG.md', { stdio: 'inherit' });
 execSync('rm \\#temp_changelog', { stdio: 'inherit' });
