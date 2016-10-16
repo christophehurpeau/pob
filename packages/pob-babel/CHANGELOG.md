@@ -1,3 +1,7 @@
+### v9.0.1
+
+- [`e8d3c83`](https://github.com/christophehurpeau/pob-babel/commit/e8d3c83c51f7f0ac7437b0837b8c8c8b385b03d0) fix objectRest option (Christophe Hurpeau)
+
 ### v9.0.0
 
 - [`7256e79`](https://github.com/christophehurpeau/pob-babel/commit/7256e79e2961aed35574953efd5745afacd8c0ed) jsdoc add flow-strip-types (Christophe Hurpeau)
