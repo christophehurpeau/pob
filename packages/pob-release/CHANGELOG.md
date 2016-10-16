@@ -1,3 +1,7 @@
+### v2.2.2
+
+- [`6a8eef7`](https://github.com/christophehurpeau/pob-release/commit/6a8eef783bb9f0c8eae504a13a3a751298d08152) use version instead of %s in npm version commit message (Christophe Hurpeau)
+
 ### v2.2.1
 
 - [`6f8d8ef`](https://github.com/christophehurpeau/pob-release/commit/6f8d8ef719451e513b71256b4dd01025fbf0120d) update authors also uses karma message (Christophe Hurpeau)
