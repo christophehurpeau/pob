@@ -66,7 +66,7 @@ module.exports = function createOpts(env, react) {
 
     case 'webpack-modern-browsers':
       presets = [
-        ['modern-browsers', { modules: false, objectReset: true }],
+        ['modern-browsers', { modules: false, objectRest: true }],
         react && 'react',
         resolvePreset('stage-1'),
       ];
