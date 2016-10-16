@@ -77,7 +77,7 @@ Promise.resolve(argv._[0]).then((version) => {
   });
 }).then((version) => {
   /* VERSION */
-  execSync(`npm version "${version}" -m "chore(package): v%s"`, { stdio: 'inherit' });
+  execSync(`npm version "${version}" -m "chore(package): v${version}"`, { stdio: 'inherit' });
 
   /* PUSH */
   execSync('git push', { stdio: 'inherit' });
