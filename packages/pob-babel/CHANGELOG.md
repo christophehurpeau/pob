@@ -1,3 +1,8 @@
+### v11.0.0
+
+- [`f80d988`](https://github.com/christophehurpeau/pob-babel/commit/f80d988e9e0ca9aa352c11b04005633427949110) breaking: use nightingale 5.0 (Christophe Hurpeau)
+- [`5a2496a`](https://github.com/christophehurpeau/pob-babel/commit/5a2496a5bf29806a68c36edcf9246f593f5f2d0b) chore(package): v10.0.0 (Christophe Hurpeau)
+
 ### v10.0.0
 
 - [`f80d988`](https://github.com/christophehurpeau/pob-babel/commit/f80d988e9e0ca9aa352c11b04005633427949110) breaking: use nightingale 5.0 (Christophe Hurpeau)
