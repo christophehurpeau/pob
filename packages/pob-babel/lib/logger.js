@@ -4,7 +4,7 @@ const ConsoleHandler = require('nightingale-console').default;
 const config = level => (
   [
     {
-        patterns: ['pob-build', 'pob-build.*'],
+        pattern: /^pob-build/,
         handler: new ConsoleHandler(level),
     },
   ]
