@@ -1,3 +1,7 @@
+### v11.0.1
+
+- [`334f50d`](https://github.com/christophehurpeau/pob-babel/commit/334f50de07a86dfafaf12187cd3c59cb7cb3b89f) fix pattern nightingale 5 (Christophe Hurpeau)
+
 ### v11.0.0
 
 - [`f80d988`](https://github.com/christophehurpeau/pob-babel/commit/f80d988e9e0ca9aa352c11b04005633427949110) breaking: use nightingale 5.0 (Christophe Hurpeau)
