@@ -1,3 +1,8 @@
+### v12.0.0
+
+- [`a3e1647`](https://github.com/christophehurpeau/pob-babel/commit/a3e1647f8c0e8c560ec51b0f6a51a211b7241168) use babel-plugin-minify-replace, babel-plugin-minify-dead-code-elimination and babel-plugin-minify-guarded-expressions (Christophe Hurpeau)
+- [`9cce2ed`](https://github.com/christophehurpeau/pob-babel/commit/9cce2edca949e7135e809a9576f1ecbf47fae666) readme (Christophe Hurpeau)
+
 ### v11.0.1
 
 - [`334f50d`](https://github.com/christophehurpeau/pob-babel/commit/334f50de07a86dfafaf12187cd3c59cb7cb3b89f) fix pattern nightingale 5 (Christophe Hurpeau)
