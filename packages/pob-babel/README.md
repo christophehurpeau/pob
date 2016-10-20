@@ -17,13 +17,13 @@ npm install --save-dev pob-babel
 
 Also install babel plugins and presets
 
-Create .pobrc.js
+Create .pob.json
 
-```js
-module.exports = {
-  react: false,
-  envs: ['es5', 'node6', 'webpack', 'webpack-modern-browsers'],
-};
+```json
+{
+  "react": false,
+  "envs": ["node6", "webpack", "webpack-modern-browsers"],
+}
 ```
 
 ### How to use
