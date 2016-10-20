@@ -99,14 +99,30 @@ module.exports = function createOpts(env, react) {
       !production && react && resolvePlugin('transform-react-jsx-self'),
       !production && react && resolvePlugin('transform-react-jsx-source'),
       [resolvePlugin('import-rename'), { '^([a-z\\-]+)/src(.*)$': '$1$2' }],
-      [resolvePlugin('defines'), {
-        'PRODUCTION': production,
-        'BROWSER': browser,
-        'SERVER': !browser,
-        'NODEJS': !browser,
+
+      [resolvePlugin('minify-replace'), {
+          replacements: [
+              {
+                  identifierName: 'PRODUCTION',
+                  replacement: { type: 'booleanLiteral', value: production },
+              },
+              {
+                  identifierName: 'BROWSER',
+                  replacement: { type: 'booleanLiteral', value: browser },
+              },
+              {
+                  identifierName: 'SERVER',
+                  replacement: { type: 'booleanLiteral', value: !browser },
+              },
+              {
+                  identifierName: 'NODEJS',
+                  replacement: { type: 'booleanLiteral', value: !browser },
+              },
+          ],
       }],
-      resolvePlugin('remove-dead-code'),
-      [resolvePlugin('discard-module-references'), { 'targets': [], 'unusedWhitelist': ['react']  }],
+      [resolvePlugin('minify-dead-code-elimination'), { keepFnName: true, keepFnames: true }],
+      resolvePlugin('minify-guarded-expressions'),
+      resolvePlugin('discard-module-references'),
     ].filter(Boolean).concat(createOpts.plugins || [])
   };
 };
