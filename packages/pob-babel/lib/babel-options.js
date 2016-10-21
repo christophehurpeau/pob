@@ -120,6 +120,7 @@ module.exports = function createOpts(env, react) {
               },
           ],
       }],
+      resolvePlugin('minify-constant-folding'),
       [resolvePlugin('minify-dead-code-elimination'), { keepFnName: true, keepFnames: true }],
       resolvePlugin('minify-guarded-expressions'),
       resolvePlugin('discard-module-references'),
