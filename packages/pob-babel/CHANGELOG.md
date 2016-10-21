@@ -1,3 +1,7 @@
+### v12.1.0
+
+- [`bf663ee`](https://github.com/christophehurpeau/pob-babel/commit/bf663eeb9e037d4e8c8ccfdae93d2536dc321b78) add babel-plugin-minify-constant-folding (Christophe Hurpeau)
+
 ### v12.0.0
 
 - [`a3e1647`](https://github.com/christophehurpeau/pob-babel/commit/a3e1647f8c0e8c560ec51b0f6a51a211b7241168) use babel-plugin-minify-replace, babel-plugin-minify-dead-code-elimination and babel-plugin-minify-guarded-expressions (Christophe Hurpeau)
