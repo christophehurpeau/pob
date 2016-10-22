@@ -92,13 +92,13 @@ module.exports = function createOpts(env, react) {
     presets: presets.filter(Boolean),
     plugins: [
       resolvePlugin('syntax-flow'),
+      [resolvePlugin('import-rename'), { '^([a-z\\-]+)/src(.*)$': '$1$2' }],
       !production && resolvePlugin('tcomb-forked'),
       resolvePlugin('transform-flow-strip-types'),
       react && resolvePlugin('react-require'),
       // browser && 'react-hot-loader/babel',
       !production && react && resolvePlugin('transform-react-jsx-self'),
       !production && react && resolvePlugin('transform-react-jsx-source'),
-      [resolvePlugin('import-rename'), { '^([a-z\\-]+)/src(.*)$': '$1$2' }],
 
       [resolvePlugin('minify-replace'), {
           replacements: [
