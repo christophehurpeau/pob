@@ -1,3 +1,7 @@
+### v12.1.1
+
+- [`22fe075`](https://github.com/christophehurpeau/pob-babel/commit/22fe0757b94262bbf3c1cae8a43a28347630e7fe) import-rename before tcomb (Christophe Hurpeau)
+
 ### v12.1.0
 
 - [`bf663ee`](https://github.com/christophehurpeau/pob-babel/commit/bf663eeb9e037d4e8c8ccfdae93d2536dc321b78) add babel-plugin-minify-constant-folding (Christophe Hurpeau)
