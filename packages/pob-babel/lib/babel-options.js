@@ -92,7 +92,7 @@ module.exports = function createOpts(env, react) {
     presets: presets.filter(Boolean),
     plugins: [
       resolvePlugin('syntax-flow'),
-      [resolvePlugin('import-rename'), { '^([a-z\\-]+)/src(.*)$': '$1$2' }],
+      [resolvePlugin('import-rename'), { '^([a-z\\-]+|[\./]+)/src(.*)$': '$1$2' }],
       !production && resolvePlugin('tcomb-forked'),
       resolvePlugin('transform-flow-strip-types'),
       react && resolvePlugin('react-require'),
