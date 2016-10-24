@@ -61,7 +61,7 @@ module.exports = generators.Base.extend({
     writing() {
         const pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
 
-        packageUtils.addScript(pkg, 'lint', 'eslint --ext .js,.jsx --fix src/');
+        packageUtils.addScript(pkg, 'lint', 'eslint --ext .js,.jsx src/');
         if (this.options.testing) {
             pkg.scripts.lint += ' test/src/';
         }
