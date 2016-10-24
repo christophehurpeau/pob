@@ -1,3 +1,7 @@
+### v12.2.0
+
+- [`49bae47`](https://github.com/christophehurpeau/pob-babel/commit/49bae47b7da687e073235c2fcd9f4fe058b9905c) import-rename allow internal src module, for tests (Christophe Hurpeau)
+
 ### v12.1.1
 
 - [`22fe075`](https://github.com/christophehurpeau/pob-babel/commit/22fe0757b94262bbf3c1cae8a43a28347630e7fe) import-rename before tcomb (Christophe Hurpeau)
