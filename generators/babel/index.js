@@ -20,6 +20,13 @@ module.exports = generators.Base.extend({
             desc: 'Parse react.'
         });
 
+        this.option('flow', {
+            type: Boolean,
+            required: false,
+            defaults: false,
+            desc: 'Use flow.'
+        });
+
         this.option('documentation', {
             type: Boolean,
             required: false,
@@ -68,6 +75,21 @@ module.exports = generators.Base.extend({
                 env_olderNode: this.options.env_olderNode,
             }
         );
+        this.fs.copy(
+            this.templatePath('src/index.js'),
+            this.destinationPath(this.options.destination, 'src/index.js')
+        );
+
+        if (this.options.flow) {
+            this.fs.copy(
+                this.templatePath('types.js'),
+                this.destinationPath(this.options.destination, 'types.js')
+            );
+            this.fs.copy(
+                this.templatePath('src/types.js'),
+                this.destinationPath(this.options.destination, 'src/types.js')
+            );
+        }
     },
 
     writing() {
@@ -115,7 +137,7 @@ module.exports = generators.Base.extend({
         delete pkg.scripts['watch:dev'];
 
         packageUtils.addDevDependencies(pkg, {
-            'pob-babel': '^8.3.2',
+            'pob-babel': '^9.0.0',
             'eslint-plugin-babel': '^3.3.0',
             'tcomb-forked': '^3.4.0',
         });
@@ -161,7 +183,7 @@ module.exports = generators.Base.extend({
         }
 
         if (this.options.env_webpack_modernBrowsers) {
-            packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers', '^5.1.0');
+            packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers', '^6.0.0');
         } else {
            delete pkg.devDependencies['babel-preset-modern-browsers'];
         }

@@ -4,7 +4,7 @@ var production = process.env.NODE_ENV === 'production';
     ['older-node', env_olderNode],
 ].filter(v => v[1]);
 if (envs.length === 1) { -%>
-return module.exports = require('./lib-<%= envs[0][0] %>' + (production ? '' : '-dev') + '/');
+module.exports = require('./lib-<%= envs[0][0] %>' + (production ? '' : '-dev') + '/');
 <% } else { -%><% if (env_node6) {
 -%>if (process.version.startsWith && process.version.startsWith('v6.'))
     return module.exports = require('./lib-node6' + (production ? '' : '-dev') + '/');
