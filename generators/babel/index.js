@@ -137,7 +137,7 @@ module.exports = generators.Base.extend({
         delete pkg.scripts['watch:dev'];
 
         packageUtils.addDevDependencies(pkg, {
-            'pob-babel': '^9.0.0',
+            'pob-babel': '^12.1.1',
             'eslint-plugin-babel': '^3.3.0',
             'tcomb-forked': '^3.4.0',
         });
