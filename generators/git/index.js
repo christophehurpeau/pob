@@ -148,6 +148,13 @@ module.exports = generators.Base.extend({
                 'ln -s ../../git-hooks/post-merge .git/hooks/post-merge 2>/dev/null || true',
                 'ln -s ../../git-hooks/prepare-commit-msg .git/hooks/prepare-commit-msg 2>/dev/null || true',
             ].join(' ; '),
+            // npm@4
+            prepare: [
+                'ln -s ../../git-hooks/pre-commit .git/hooks/pre-commit 2>/dev/null || true',
+                'ln -s ../../git-hooks/post-checkout .git/hooks/post-checkout 2>/dev/null || true',
+                'ln -s ../../git-hooks/post-merge .git/hooks/post-merge 2>/dev/null || true',
+                'ln -s ../../git-hooks/prepare-commit-msg .git/hooks/prepare-commit-msg 2>/dev/null || true',
+            ].join(' ; ')
         });
 
         var repository = `git@${this.gitHost}.com:${this.gitHostAccount}/${this.pkgName || this.options.name}.git`;
@@ -159,7 +166,7 @@ module.exports = generators.Base.extend({
 
         if (this.pkgName !== 'komet') {
             packageUtils.addDevDependency(pkg, 'komet', '^0.1.3');
-            packageUtils.addDevDependency(pkg, 'komet-karma', '^0.1.2');
+            packageUtils.addDevDependency(pkg, 'komet-karma', '^0.2.3');
         }
 
         this.fs.writeJSON(
