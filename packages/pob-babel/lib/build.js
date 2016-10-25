@@ -3,7 +3,7 @@ const clean = require('./clean');
 const _build = require('./_build');
 const { logger } = require('./logger');
 
-module.exports = function build(pobrc, cwd, envs, watch = false) {
+module.exports = function build(pobrc, cwd, envs, watch = false, options) {
     const envsSet = envs !== undefined;
 
     if (!envs) {
@@ -28,7 +28,7 @@ module.exports = function build(pobrc, cwd, envs, watch = false) {
     }
 
     return Promise.all([
-        _build(pobrc, cwd, pobrc.src || 'src', env => `lib-${env}`, envs, watch),
-        !envsSet && pobrc.testing && _build(pobrc, cwd, 'test/src', () => 'test/node6', ['node6'], watch),
+        _build(pobrc, cwd, pobrc.src || 'src', env => `lib-${env}`, envs, watch, options),
+        !envsSet && pobrc.testing && _build(pobrc, cwd, 'test/src', () => 'test/node6', ['node6'], watch, options),
     ]).then(() => watch);
 };

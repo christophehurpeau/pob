@@ -22,7 +22,7 @@ if (pobrc.babelPlugins) {
 }
 
 exports.clean = clean;
-exports.watch = (envs) => build(pobrc, cwd, envs, true);
-exports.build = (envs) => build(pobrc, cwd, envs);
+exports.watch = (envs, options) => build(pobrc, cwd, envs, true, options);
+exports.build = (envs, options) => build(pobrc, cwd, envs, false, options);
 
 exports.registerPlugin = plugin => plugins.register(plugin);

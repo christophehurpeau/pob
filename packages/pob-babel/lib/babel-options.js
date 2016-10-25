@@ -6,7 +6,7 @@ const resolvePlugin = function (pluginName) {
   return require.resolve(`babel-plugin-${pluginName}`);
 };
 
-module.exports = function createOpts(env, react) {
+module.exports = function createOpts(env, react, { presets: otherPresets, plugins: otherPlugins } = {}) {
   const production = !env.endsWith('-dev');
 
   if (!production) {
@@ -89,7 +89,7 @@ module.exports = function createOpts(env, react) {
   }
 
   return {
-    presets: presets.filter(Boolean),
+    presets: presets.concat(otherPresets || []).filter(Boolean),
     plugins: [
       resolvePlugin('syntax-flow'),
       [resolvePlugin('import-rename'), { '^([a-z\\-]+|[\./]+)/src(.*)$': '$1$2' }],
@@ -124,6 +124,7 @@ module.exports = function createOpts(env, react) {
       [resolvePlugin('minify-dead-code-elimination'), { keepFnName: true, keepFnames: true }],
       resolvePlugin('minify-guarded-expressions'),
       resolvePlugin('discard-module-references'),
-    ].filter(Boolean).concat(createOpts.plugins || [])
+      ...(otherPlugins || []),
+    ].filter(Boolean)
   };
 };

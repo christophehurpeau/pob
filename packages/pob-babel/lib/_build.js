@@ -15,7 +15,7 @@ const copyFile = require('./utils/copyFile');
 const writeFile = require('./utils/writeFile');
 const destFromSrc = require('./utils/destFromSrc');
 const plugins = require('./plugins');
-const options = require(`./babel-options`);
+const createBabelOptions = require(`./babel-options`);
 const { logger: parentLogger } = require('./logger');
 const Task = require('./cli-spinner');
 
@@ -32,7 +32,7 @@ function toErrorStack(err) {
     }
 }
 
-module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch) {
+module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch, options) {
     const srcFiles = glob.sync(src, { cwd });
     const _lock = Lock();
     const lock = resource => new Promise(resolve => _lock(resource, release => resolve(() => release()())));
@@ -51,7 +51,7 @@ module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch) {
         const optsManager = new babel.OptionManager;
 
         optsManager.mergeOptions({
-            options: options(env, pobrc.react),
+            options: createBabelOptions(env, pobrc.react, options),
             alias: 'base',
             loc: cwd,
         });
@@ -97,7 +97,7 @@ module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch) {
         if (_lock.isLocked(relative)) logger.debug(relative + ' locked, waiting...');
         return lock(relative).then(release => {
             return queue.add(() => {
-                if (babel.util.canCompile(relative)) {
+                if (babel.util.canCompile(relative, options && options.babelExtensions)) {
                     const subtask = task.subtask('compiling: ' + relative);
                     logger.debug('compiling: ' + relative);
 
@@ -151,15 +151,28 @@ module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch) {
 
                                 return { map: null, code: 'throw new Error("Syntax Error");' };
                             }))
-                            .then(({ code, map }) => Promise.all(envs.map(env => {
-                                const dest = path.join(outFn(env), destRelative);
-                                const mapLoc = dest + ".map";
-                                return writeFile(dest, code)
-                                    .then(() => Promise.all([
-                                        copyChmod(src, dest),
-                                        map && writeFile(mapLoc, JSON.stringify(map)),
-                                    ]));
-                            })))
+                            .then(result => {
+                                if (!result) {
+                                    // plugin returned nothing, remove.
+                                    return Promise.all(envs.map(env => (
+                                        Promise.all([
+                                            promiseCallback(done => unlink(dest, done)).catch(() => {}),
+                                            promiseCallback(done => unlink(`${dest}.map`, done)).catch(() => {}),
+                                        ])
+                                    )));
+                                }
+
+                                const { code, map } = result;
+                                return Promise.all(envs.map(env => {
+                                    const dest = path.join(outFn(env), destRelative);
+                                    const mapLoc = dest + ".map";
+                                    return writeFile(dest, code)
+                                      .then(() => Promise.all([
+                                          copyChmod(src, dest),
+                                          map && writeFile(mapLoc, JSON.stringify(map)),
+                                      ]));
+                                }))
+                            })
                             .then(() => release(), err => { release(); throw err; })
                             .then(() => subtask.done(), err => { subtask.done(); throw err; });
                     } else {
