@@ -1,3 +1,7 @@
+### v12.3.0
+
+- [`15339e4`](https://github.com/christophehurpeau/pob-babel/commit/15339e4e85ef5f69c3e09373d82e9a73e823d014) build options (Christophe Hurpeau)
+
 ### v12.2.0
 
 - [`49bae47`](https://github.com/christophehurpeau/pob-babel/commit/49bae47b7da687e073235c2fcd9f4fe058b9905c) import-rename allow internal src module, for tests (Christophe Hurpeau)
