@@ -1,3 +1,7 @@
+### v12.4.0
+
+- [`523e6af`](https://github.com/christophehurpeau/pob-babel/commit/523e6af25d48b6b6dfff7de27f923f959daa07d1) examples build (Christophe Hurpeau)
+
 ### v12.3.0
 
 - [`15339e4`](https://github.com/christophehurpeau/pob-babel/commit/15339e4e85ef5f69c3e09373d82e9a73e823d014) build options (Christophe Hurpeau)
