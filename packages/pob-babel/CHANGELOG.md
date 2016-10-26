@@ -1,3 +1,7 @@
+### v12.5.0
+
+- [`0b13d4d`](https://github.com/christophehurpeau/pob-babel/commit/0b13d4d7a00f7c5ea3fcf238e3611438cb4ac028) chore(package): update babel 6.18 (Christophe Hurpeau)
+
 ### v12.4.0
 
 - [`523e6af`](https://github.com/christophehurpeau/pob-babel/commit/523e6af25d48b6b6dfff7de27f923f959daa07d1) examples build (Christophe Hurpeau)
