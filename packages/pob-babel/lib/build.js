@@ -30,5 +30,6 @@ module.exports = function build(pobrc, cwd, envs, watch = false, options) {
     return Promise.all([
         _build(pobrc, cwd, pobrc.src || 'src', env => `lib-${env}`, envs, watch, options),
         !envsSet && pobrc.testing && _build(pobrc, cwd, 'test/src', () => 'test/node6', ['node6'], watch, options),
+        !envsSet && pobrc.examples && _build(pobrc, cwd, 'examples/src', () => 'examples/node6', ['node6'], watch, options),
     ]).then(() => watch);
 };
