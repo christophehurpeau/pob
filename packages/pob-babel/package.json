@@ -18,7 +18,7 @@
   "dependencies": {
     "babel-core": "^6.18.0",
     "babel-plugin-discard-module-references": "^1.1.2",
-    "babel-plugin-import-export-rename": "^1.0.0",
+    "babel-plugin-import-export-rename": "^1.0.1",
     "babel-plugin-minify-constant-folding": "0.0.1",
     "babel-plugin-minify-dead-code-elimination": "0.0.4",
     "babel-plugin-minify-guarded-expressions": "0.0.3",
