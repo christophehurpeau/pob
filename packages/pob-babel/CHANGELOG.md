@@ -1,3 +1,7 @@
+### v12.5.5
+
+- [`a1f2880`](https://github.com/christophehurpeau/pob-babel/commit/a1f288004943a0568cdc2aaa022d75d019e53d4b) babel-plugin-tcomb-forked@^0.3.23 (Christophe Hurpeau)
+
 ### v12.5.4
 
 - [`ce87162`](https://github.com/christophehurpeau/pob-babel/commit/ce871624541a4b08d64d5c72bf2c2e8a29a05d93) babel-plugin-tcomb-forked@^0.3.22 (Christophe Hurpeau)
