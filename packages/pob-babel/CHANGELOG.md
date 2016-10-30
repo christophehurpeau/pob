@@ -1,3 +1,7 @@
+### v12.5.4
+
+- [`ce87162`](https://github.com/christophehurpeau/pob-babel/commit/ce871624541a4b08d64d5c72bf2c2e8a29a05d93) babel-plugin-tcomb-forked@^0.3.22 (Christophe Hurpeau)
+
 ### v12.5.3
 
 - [`426ead3`](https://github.com/christophehurpeau/pob-babel/commit/426ead3b939f41efccfefdc5ba99098d1943f5e7) chore(package): babel-plugin-import-export-rename@^1.0.1 (Christophe Hurpeau)
