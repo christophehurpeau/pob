@@ -25,7 +25,7 @@
     "babel-plugin-minify-replace": "0.0.1",
     "babel-plugin-react-require": "^3.0.0",
     "babel-plugin-syntax-flow": "^6.18.0",
-    "babel-plugin-tcomb-forked": "^0.3.21",
+    "babel-plugin-tcomb-forked": "^0.3.22",
     "babel-plugin-transform-flow-strip-types": "^6.18.0",
     "babel-plugin-transform-react-jsx-self": "^6.11.0",
     "babel-plugin-transform-react-jsx-source": "^6.9.0",
