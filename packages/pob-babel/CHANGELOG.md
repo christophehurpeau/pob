@@ -1,3 +1,7 @@
+### v12.5.1
+
+- [`dfc59ca`](https://github.com/christophehurpeau/pob-babel/commit/dfc59cab98b9e1d25300b0bf2edd4fe38a7c437f) babel-plugin-tcomb-forked@^0.3.21 (Christophe Hurpeau)
+
 ### v12.5.0
 
 - [`0b13d4d`](https://github.com/christophehurpeau/pob-babel/commit/0b13d4d7a00f7c5ea3fcf238e3611438cb4ac028) chore(package): update babel 6.18 (Christophe Hurpeau)
