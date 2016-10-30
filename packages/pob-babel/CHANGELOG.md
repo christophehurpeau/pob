@@ -1,3 +1,7 @@
+### v12.5.3
+
+- [`426ead3`](https://github.com/christophehurpeau/pob-babel/commit/426ead3b939f41efccfefdc5ba99098d1943f5e7) chore(package): babel-plugin-import-export-rename@^1.0.1 (Christophe Hurpeau)
+
 ### v12.5.2
 
 - [`6102085`](https://github.com/christophehurpeau/pob-babel/commit/6102085a3b60d01c6740808edd6aa337e1fe163e) babel-plugin-import-export-rename (Christophe Hurpeau)
