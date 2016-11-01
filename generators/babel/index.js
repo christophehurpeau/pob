@@ -75,20 +75,24 @@ module.exports = generators.Base.extend({
                 env_olderNode: this.options.env_olderNode,
             }
         );
-        this.fs.copy(
-            this.templatePath('src/index.js'),
-            this.destinationPath(this.options.destination, 'src/index.js')
-        );
+
+        const indexDestPath = this.destinationPath(this.options.destination, 'src/index.js');
+        if (!this.fs.exists(indexDestPath)) {
+            const idxJsxDestPath = this.destinationPath(this.options.destination, 'src/index.jsx');
+            if (!this.fs.exists(idxJsxDestPath)) {
+                this.fs.copy(this.templatePath('src/index.js'), indexDestPath);
+            }
+        }
 
         if (this.options.flow) {
             this.fs.copy(
                 this.templatePath('types.js'),
                 this.destinationPath(this.options.destination, 'types.js')
             );
-            this.fs.copy(
-                this.templatePath('src/types.js'),
-                this.destinationPath(this.options.destination, 'src/types.js')
-            );
+            const typesDestPath = this.destinationPath(this.options.destination, 'src/types.js');
+            if (!this.fs.exists(typesDestPath)) {
+                this.fs.copy(this.templatePath('src/types.js'), typesDestPath);
+            }
         }
     },
 
@@ -137,13 +141,14 @@ module.exports = generators.Base.extend({
         delete pkg.scripts['watch:dev'];
 
         packageUtils.addDevDependencies(pkg, {
-            'pob-babel': '^12.1.1',
+            'pob-babel': '^12.5.0',
             'eslint-plugin-babel': '^3.3.0',
             'tcomb-forked': '^3.4.0',
         });
 
         delete pkg.devDependencies['tcomb'];
         delete pkg.devDependencies['babel-preset-es2015-webpack'];
+        delete pkg.devDependencies['babel-preset-es2015-node5'];
         delete pkg.devDependencies['babel-preset-stage-1'];
         delete pkg.devDependencies['babel-preset-modern-browsers-stage-1'];
         delete pkg.devDependencies['babel-preset-flow'];
@@ -153,6 +158,7 @@ module.exports = generators.Base.extend({
         delete pkg.devDependencies['babel-plugin-defines'];
         delete pkg.devDependencies['babel-plugin-discard-module-references'];
         delete pkg.devDependencies['babel-plugin-remove-dead-code'];
+        delete pkg.devDependencies['babel-plugin-react-require'];
 
         if (this.options.react) {
             packageUtils.addDevDependencies(pkg, {

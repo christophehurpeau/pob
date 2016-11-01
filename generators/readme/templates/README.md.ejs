@@ -9,6 +9,7 @@
 <% if (testing && travisci) { -%>
 [![Travis Status][travisci-status-image]][travisci-status-url]
 <% } -%>
+[![Dependency ci Status][dependencyci-image]][dependencyci-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
 <% if (testing && codecov) { -%>
 [![Coverage percentage][coverage-image]][coverage-url]
@@ -47,17 +48,19 @@ console.log(<%= camelCaseProjectName %>);
 <% if (gitHost === 'github') { -%>
 [daviddm-image]: https://david-dm.org/<%= gitAccount %>/<%= gitName %>.svg?style=flat-square
 [daviddm-url]: https://david-dm.org/<%= gitAccount %>/<%= gitName %>
+[dependencyci-image]: https://dependencyci.com/github/<%= gitAccount %>/<%= gitName %>/badge?style=flat-square
+[dependencyci-url]: https://dependencyci.com/github/<%= gitAccount %>/<%= gitName %>
 <% if (testing) { -%>
 <% if (circleci) { -%>
 [circleci-status-image]: https://img.shields.io/circleci/project/<%= gitAccount %>/<%= gitName %>/master.svg?style=flat-square
 [circleci-status-url]: https://circleci.com/gh/<%= gitAccount %>/<%= gitName %>
 <% } -%>
 <% if (travisci) { -%>
-[travisci-status-image]: https://img.shields.io/travisci/project/<%= gitAccount %>/<%= gitName %>/master.svg?style=flat-square
+[travisci-status-image]: https://img.shields.io/travis/<%= gitAccount %>/<%= gitName %>/master.svg?style=flat-square
 [travisci-status-url]: https://travis-ci.org/<%= gitAccount %>/<%= gitName %>
 <% } -%>
 <% if (codecov) { -%>
-[coverage-image]: https://codecov.io/gh/<%= gitAccount %>/<%= gitName %>/branch/master/graph/badge.svg?style=flat-square
+[coverage-image]: https://img.shields.io/codecov/c/github/<%= gitAccount %>/<%= gitName %>/master.svg?style=flat-square
 [coverage-url]: https://codecov.io/gh/<%= gitAccount %>/<%= gitName %>
 [docs-coverage-url]: https://<%= gitAccount %>.github.io/<%= gitName %>/coverage/lcov-report/
 <% } -%>

@@ -69,7 +69,7 @@ module.exports = generators.Base.extend({
         packageUtils.addDevDependencies(pkg, {
             'eslint': '^3.6.1',
             'eslint-plugin-import': '^1.16.0',
-            'eslint-config-pob': '^7.6.0',
+            'eslint-config-pob': '^8.0.0',
         });
 
         if (this.options.babel || this.options.react) {
