@@ -93,6 +93,7 @@ module.exports = function createOpts(env, react, { presets: otherPresets, plugin
     plugins: [
       resolvePlugin('syntax-flow'),
       [require('babel-plugin-import-export-rename'), { '^([a-z\\-]+|[\./]+)/src(.*)$': '$1$2' }],
+      require('babel-plugin-transform-export-default-name-forked'),
       !production && resolvePlugin('tcomb-forked'),
       resolvePlugin('transform-flow-strip-types'),
       react && resolvePlugin('react-require'),
