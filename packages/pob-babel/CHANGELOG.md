@@ -1,3 +1,8 @@
+### v12.6.0
+
+- [`df19269`](https://github.com/christophehurpeau/pob-babel/commit/df1926925b2020aa2cd75be1fe60d13282ff0abb) chore(package): babel-plugin-minify-dead-code-elimination@0.1.0 (Christophe Hurpeau)
+- [`a66e75c`](https://github.com/christophehurpeau/pob-babel/commit/a66e75c297216947647b0df00b1186d7b8917f5f) feat: add babel-plugin-transform-export-default-name-forked (Christophe Hurpeau)
+
 ### v12.5.5
 
 - [`a1f2880`](https://github.com/christophehurpeau/pob-babel/commit/a1f288004943a0568cdc2aaa022d75d019e53d4b) babel-plugin-tcomb-forked@^0.3.23 (Christophe Hurpeau)
