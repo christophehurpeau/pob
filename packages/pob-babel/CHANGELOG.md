@@ -1,3 +1,7 @@
+### v12.7.1
+
+- [`1a2b148`](https://github.com/christophehurpeau/pob-babel/commit/1a2b14813da6a6be63da532c76096ae9231f4495) replace srcBasePath by cwd (Christophe Hurpeau)
+
 ### v12.7.0
 
 - [`30e3289`](https://github.com/christophehurpeau/pob-babel/commit/30e328994840ca0356f5e606015fc68a48728654) add srcBasePath info for plugins (Christophe Hurpeau)
