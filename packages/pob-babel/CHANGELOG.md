@@ -1,3 +1,7 @@
+### v12.7.0
+
+- [`30e3289`](https://github.com/christophehurpeau/pob-babel/commit/30e328994840ca0356f5e606015fc68a48728654) add srcBasePath info for plugins (Christophe Hurpeau)
+
 ### v12.6.0
 
 - [`df19269`](https://github.com/christophehurpeau/pob-babel/commit/df1926925b2020aa2cd75be1fe60d13282ff0abb) chore(package): babel-plugin-minify-dead-code-elimination@0.1.0 (Christophe Hurpeau)
