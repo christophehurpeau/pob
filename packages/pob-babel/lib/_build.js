@@ -33,7 +33,6 @@ function toErrorStack(err) {
 }
 
 module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch, options) {
-    const srcBasePath = src;
     const srcFiles = glob.sync(src, { cwd });
     const _lock = Lock();
     const lock = resource => new Promise(resolve => _lock(resource, release => resolve(() => release()())));
@@ -146,7 +145,7 @@ module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch, options
                         const destRelative = destFromSrc(relative, plugin);
                         return Promise.resolve(src)
                             .then(src => readFile(src))
-                            .then(content => plugin.transform(content, { src, relative, srcBasePath }))
+                            .then(content => plugin.transform(content, { src, relative, cwd }))
                             .catch(watch && (err => {
                                 console.log(toErrorStack(err));
 
