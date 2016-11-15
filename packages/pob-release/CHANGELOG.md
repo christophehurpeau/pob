@@ -1,3 +1,8 @@
+### v2.3.0
+
+- [`3dbc492`](https://github.com/christophehurpeau/pob-release/commit/3dbc492baf337c56dcb7aa1e072a82523f44abdf) prerelease publish to beta tag (Christophe Hurpeau)
+
+
 ### v2.2.2
 
 - [`6a8eef7`](https://github.com/christophehurpeau/pob-release/commit/6a8eef783bb9f0c8eae504a13a3a751298d08152) use version instead of %s in npm version commit message (Christophe Hurpeau)
