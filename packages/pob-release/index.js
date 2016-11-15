@@ -2,7 +2,7 @@ const readFileSync = require('fs').readFileSync;
 const argv = require('minimist-argv');
 const inquirer = require('inquirer');
 const execSync = require('child_process').execSync;
-const { valid: validateSemver, inc: incSemver, gt: gtSemver } = require('semver');
+const { valid: validateSemver, inc: incSemver, gt: gtSemver, prerelease } = require('semver');
 
 const isSemverValid = version => validateSemver(version) !== null;
 
@@ -85,6 +85,10 @@ Promise.resolve(argv._[0]).then((version) => {
 
   if (!packageJson.private) {
     /* RELEASE */
-    execSync('npm publish', { stdio: 'inherit' });
+    if (prerelease(version)) {
+      execSync('npm publish --tag beta', { stdio: 'inherit' });
+    } else {
+      execSync('npm publish', { stdio: 'inherit' });
+    }
   }
 }).catch(err => console.log(err.message || err));
