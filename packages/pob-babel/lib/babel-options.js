@@ -17,7 +17,6 @@ module.exports = function createOpts(env, react, { presets: otherPresets, plugin
     return {
       presets: [
         'jsdoc',
-        'jsdoc/object-rest',
         react && 'react',
         resolvePreset('stage-1'),
       ].filter(Boolean),
@@ -39,7 +38,7 @@ module.exports = function createOpts(env, react, { presets: otherPresets, plugin
     case 'test':
     case 'node6':
       presets = [
-        'es2015-node6/object-rest',
+        'es2015-node6',
         react && 'react',
         resolvePreset('stage-1'),
       ];
@@ -66,7 +65,7 @@ module.exports = function createOpts(env, react, { presets: otherPresets, plugin
 
     case 'webpack-modern-browsers':
       presets = [
-        ['modern-browsers', { modules: false, objectRest: true }],
+        ['modern-browsers', { modules: false }],
         react && 'react',
         resolvePreset('stage-1'),
       ];
