@@ -1,3 +1,7 @@
+### v12.7.2
+
+- [`14aaa5d`](https://github.com/christophehurpeau/pob-babel/commit/14aaa5d27b09e00341486f543378537d73252b69) remove objectRest, now babel supports it, and plugin-transform-export-default-name-forked@1.0.6 (Christophe Hurpeau)
+
 ### v12.7.1
 
 - [`1a2b148`](https://github.com/christophehurpeau/pob-babel/commit/1a2b14813da6a6be63da532c76096ae9231f4495) replace srcBasePath by cwd (Christophe Hurpeau)
