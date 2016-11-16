@@ -1,6 +1,6 @@
 const { execSync } = require('child_process');
 const path = require('path');
-const { stat, readFile: readFileCallback, unlink } = require('fs');
+const { stat, unlink } = require('fs');
 const babel = require('babel-core');
 const chokidar = require('chokidar');
 const glob = require('glob');
@@ -12,15 +12,13 @@ const promiseCallback = require('promise-callback-factory').default;
 const Logger = require('nightingale').default;
 const copyChmod = require('./utils/copyChmod');
 const copyFile = require('./utils/copyFile');
+const readFile = require('./utils/readFile');
 const writeFile = require('./utils/writeFile');
 const destFromSrc = require('./utils/destFromSrc');
 const plugins = require('./plugins');
 const createBabelOptions = require(`./babel-options`);
 const { logger: parentLogger } = require('./logger');
 const Task = require('./cli-spinner');
-
-const readFile = filepath => promiseCallback(done => readFileCallback(filepath, done));
-
 
 const queue = new Queue(40, Infinity);
 
@@ -32,7 +30,7 @@ function toErrorStack(err) {
     }
 }
 
-module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch, options) {
+module.exports = function build(pobrc, cwd, src, outFn, envs, watch, options) {
     const srcFiles = glob.sync(src, { cwd });
     const _lock = Lock();
     const lock = resource => new Promise(resolve => _lock(resource, release => resolve(() => release()())));
@@ -145,7 +143,7 @@ module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch, options
                         const destRelative = destFromSrc(relative, plugin);
                         return Promise.resolve(src)
                             .then(src => readFile(src))
-                            .then(content => plugin.transform(content, { src, relative, cwd }))
+                            .then(content => plugin.transform(content, { src, relative, cwd, envs }))
                             .catch(watch && (err => {
                                 console.log(toErrorStack(err));
 
@@ -162,8 +160,8 @@ module.exports = function transpile(pobrc, cwd, src, outFn, envs, watch, options
                                     )));
                                 }
 
-                                const { code, map } = result;
                                 return Promise.all(envs.map(env => {
+                                    const { code, map } = result[env] || result;
                                     const dest = path.join(outFn(env), destRelative);
                                     const mapLoc = dest + ".map";
                                     return writeFile(dest, code)
