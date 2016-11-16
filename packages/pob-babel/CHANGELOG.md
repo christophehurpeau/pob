@@ -1,3 +1,7 @@
+### v12.8.0
+
+- [`4a137b3`](https://github.com/christophehurpeau/pob-babel/commit/4a137b34e9d4dd1932bc370546820cfffa42c047) allow to plugins to return different things for envs, add readFile util (Christophe Hurpeau)
+
 ### v12.7.2
 
 - [`14aaa5d`](https://github.com/christophehurpeau/pob-babel/commit/14aaa5d27b09e00341486f543378537d73252b69) remove objectRest, now babel supports it, and plugin-transform-export-default-name-forked@1.0.6 (Christophe Hurpeau)
