@@ -1,3 +1,7 @@
+### v12.8.1
+
+- [`c33ef51`](https://github.com/christophehurpeau/pob-babel/commit/c33ef51e01c2c9ceec692bd972f594c742ff464e) force object-rest-spread@^6.19.0 (Christophe Hurpeau)
+
 ### v12.8.0
 
 - [`4a137b3`](https://github.com/christophehurpeau/pob-babel/commit/4a137b34e9d4dd1932bc370546820cfffa42c047) allow to plugins to return different things for envs, add readFile util (Christophe Hurpeau)
