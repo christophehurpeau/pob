@@ -28,6 +28,7 @@
     "babel-plugin-tcomb-forked": "^0.3.23",
     "babel-plugin-transform-export-default-name-forked": "^1.0.6",
     "babel-plugin-transform-flow-strip-types": "^6.18.0",
+    "babel-plugin-transform-object-rest-spread": "^6.19.0",
     "babel-plugin-transform-react-jsx-self": "^6.11.0",
     "babel-plugin-transform-react-jsx-source": "^6.9.0",
     "babel-preset-stage-1": "^6.16.0",
