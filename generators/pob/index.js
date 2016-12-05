@@ -392,7 +392,7 @@ module.exports = generators.Base.extend({
             clean: 'rm -Rf docs dist test/node6 coverage',
         });
 
-        packageUtils.addDevDependency(pkg, 'pob-release', '^2.2.2');
+        packageUtils.addDevDependency(pkg, 'pob-release', '^2.3.0');
         delete pkg.devDependencies['springbokjs-library'];
 
         packageUtils.sort(pkg);
@@ -417,9 +417,7 @@ module.exports = generators.Base.extend({
     },
 
     installing() {
-        const cwd = this.destinationPath();
-        this.spawnCommandSync('rm', ['-Rf', 'node_modules'], { cwd });
-        return this.npmInstall();
+        return this.runInstall('yarn');
     },
 
     end() {

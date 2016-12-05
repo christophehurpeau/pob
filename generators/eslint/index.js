@@ -67,9 +67,9 @@ module.exports = generators.Base.extend({
         }
 
         packageUtils.addDevDependencies(pkg, {
-            'eslint': '^3.6.1',
-            'eslint-plugin-import': '^1.16.0',
-            'eslint-config-pob': '^8.0.0',
+            'eslint': '^3.10.2',
+            'eslint-plugin-import': '^2.2.0',
+            'eslint-config-pob': '^10.0.1',
         });
 
         if (this.options.babel || this.options.react) {
@@ -86,7 +86,7 @@ module.exports = generators.Base.extend({
             });
             delete pkg.devDependencies['eslint-config-airbnb-base'];
         } else {
-            packageUtils.addDevDependency(pkg, 'eslint-config-airbnb-base', '^8.0.0');
+            packageUtils.addDevDependency(pkg, 'eslint-config-airbnb-base', '^10.0.1');
             delete pkg.devDependencies['eslint-config-airbnb'];
             delete pkg.devDependencies['eslint-plugin-react'];
             delete pkg.devDependencies['eslint-plugin-jsx-a11y'];

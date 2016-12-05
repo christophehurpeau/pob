@@ -122,9 +122,19 @@ module.exports = generators.Base.extend({
         if (!this.options.env_webpack_allBrowsers) {
             delete pkg['webpack:main'];
             delete pkg['webpack:main-dev'];
+            delete pkg['webpack:browser'];
+            delete pkg['webpack:browser-dev'];
         } else if (!pkg['webpack:main']) {
-            pkg['webpack:main'] = './lib-webpack/index.js';
-            pkg['webpack:main-dev'] = './lib-webpack-dev/index.js';
+            pkg['webpack:main'] = pkg['webpack:browser'] = './lib-webpack/index.js';
+            pkg['webpack:main-dev'] = pkg['webpack:browser-dev'] = './lib-webpack-dev/index.js';
+        }
+
+        if (!this.options.env_node6) {
+            delete pkg['webpack:node'];
+            delete pkg['webpack:node-dev'];
+        } else {
+            pkg['webpack:node'] = './lib-node6/index.js';
+            pkg['webpack:node-dev'] = './lib-node6-dev/index.js';
         }
 
         packageUtils.sort(pkg);
@@ -142,7 +152,7 @@ module.exports = generators.Base.extend({
 
         packageUtils.addDevDependencies(pkg, {
             'pob-babel': '^12.5.0',
-            'eslint-plugin-babel': '^3.3.0',
+            'eslint-plugin-babel': '^4.0.0',
             'tcomb-forked': '^3.4.0',
         });
 
@@ -183,13 +193,13 @@ module.exports = generators.Base.extend({
         }
 
         if (this.options.env_node6) {
-            packageUtils.addDevDependency(pkg, 'babel-preset-es2015-node6', '^0.3.0');
+            packageUtils.addDevDependency(pkg, 'babel-preset-es2015-node6', '^0.4.0');
         } else {
            delete pkg.devDependencies['babel-preset-es2015-node6'];
         }
 
         if (this.options.env_webpack_modernBrowsers) {
-            packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers', '^6.0.0');
+            packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers', '^7.0.0');
         } else {
            delete pkg.devDependencies['babel-preset-modern-browsers'];
         }
