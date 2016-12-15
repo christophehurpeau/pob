@@ -1,3 +1,7 @@
+### v12.9.0
+
+- [`ffe4d3d`](https://github.com/christophehurpeau/pob-babel/commit/ffe4d3d08a80eaecce2071919645a9d8010e3535) chore(package): update dependencies (Christophe Hurpeau)
+
 ### v12.8.1
 
 - [`c33ef51`](https://github.com/christophehurpeau/pob-babel/commit/c33ef51e01c2c9ceec692bd972f594c742ff464e) force object-rest-spread@^6.19.0 (Christophe Hurpeau)
