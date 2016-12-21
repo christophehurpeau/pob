@@ -165,7 +165,7 @@ module.exports = generators.Base.extend({
         }
 
         if (this.pkgName !== 'komet') {
-            packageUtils.addDevDependency(pkg, 'komet', '^0.1.3');
+            packageUtils.addDevDependency(pkg, 'komet', '^0.1.4');
             packageUtils.addDevDependency(pkg, 'komet-karma', '^0.2.3');
         }
 

@@ -207,4 +207,8 @@ module.exports = generators.Base.extend({
 
         this.fs.writeJSON(this.destinationPath(this.options.destination, 'package.json'), pkg);
     },
+
+    end() {
+        return this.spawnCommandSync('yarn', ['run', 'build']);
+    }
 });

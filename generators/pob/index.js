@@ -205,7 +205,7 @@ module.exports = generators.Base.extend({
                 type: 'confirm',
                 name: 'includeDoclets',
                 message: 'Would you like doclets ?',
-                default: false,
+                default: !!this.pobjson.doclets,
             }]).then((props) => {
                 Object.assign(this.props, props);
             });
@@ -317,27 +317,25 @@ module.exports = generators.Base.extend({
             });
         } */
 
-        if (!this.fs.exists(this.destinationPath('README.md'))) {
-            this.composeWith('pob:readme', {
-                options: {
-                    privatePackage: this.props.private,
-                    name: this.props.name,
-                    description: this.props.description,
-                    authorName: this.props.authorName,
-                    authorEmail: this.props.authorEmail,
-                    authorUrl: this.props.authorUrl,
-                    documentation: this.props.includeDocumentation,
-                    doclets: this.props.includeDoclets,
-                    testing: this.props.includeTesting,
-                    codecov: this.props.includeCodecov,
-                    circleci: this.props.circleci,
-                    travisci: this.props.travisci,
-                    content: this.options.readme,
-                }
-            }, {
-                local: require.resolve('../readme')
-            });
-        }
+        this.composeWith('pob:readme', {
+            options: {
+                privatePackage: this.props.private,
+                name: this.props.name,
+                description: this.props.description,
+                authorName: this.props.authorName,
+                authorEmail: this.props.authorEmail,
+                authorUrl: this.props.authorUrl,
+                documentation: this.props.includeDocumentation,
+                doclets: this.props.includeDoclets,
+                testing: this.props.includeTesting,
+                codecov: this.props.includeCodecov,
+                circleci: this.props.circleci,
+                travisci: this.props.travisci,
+                content: this.options.readme,
+            }
+        }, {
+            local: require.resolve('../readme')
+        });
 
         if (this.props.includeTesting) {
             this.composeWith('pob:testing', {
@@ -411,6 +409,7 @@ module.exports = generators.Base.extend({
 
         pobjson.react = this.props.react;
         pobjson.documentation = this.props.includeDocumentation;
+        pobjson.doclets = this.props.includeDoclets;
         pobjson.testing = this.props.includeTesting;
 
         this.fs.writeJSON(this.destinationPath('.pob.json'), pobjson);

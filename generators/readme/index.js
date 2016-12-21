@@ -88,35 +88,45 @@ module.exports = generators.Base.extend({
     writing() {
         const pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
 
+        const readmePath = this.destinationPath(this.options.destination, 'README.md');
+        let content = this.options.content;
+
+        if (this.fs.exists(readmePath)) {
+            const readmeFullContent = this.fs.read(readmePath);
+            content = readmeFullContent.match(/^#(?:[^#]+)([^]+)\[npm-image]:/)[1].trim();
+        }
+
         const repository = pkg.repository;
-        const match = repository && repository.match(/^(?:git@)?(?:([^:/.]+)(?:\.com)?:)?([^:/]+)\/([^:/.]+)(?:.git)?/);
+        const match = repository && repository.match(
+            /^(?:git@)?(?:([^:/.]+)(?:\.com)?:)?([^:/]+)\/([^:/.]+)(?:.git)?/
+        );
         const [, gitHost, gitAccount, gitName] = match || [];
         try {
-        this.fs.copyTpl(
-            this.templatePath('README.md.ejs'),
-            this.destinationPath(this.options.destination, 'README.md'),
-            {
-                privatePackage: this.options.privatePackage,
-                projectName: this.options.name,
-                camelCaseProjectName: camelCase(this.options.name),
-                description: this.options.description,
-                gitHost: gitHost,
-                gitAccount: gitAccount,
-                gitName: gitName,
-                author: {
-                    name: this.options.authorName,
-                    url: this.options.authorUrl
-                },
-                license: pkg.license,
-                doclets: this.options.doclets,
-                codecov: this.options.codecov,
-                documentation: this.options.documentation,
-                testing: this.options.testing,
-                circleci: this.options.circleci,
-                travisci: this.options.travisci,
-                content: this.options.content
-            }
-        );
+            this.fs.copyTpl(
+                this.templatePath('README.md.ejs'),
+                readmePath,
+                {
+                    privatePackage: this.options.privatePackage,
+                    projectName: this.options.name,
+                    camelCaseProjectName: camelCase(this.options.name),
+                    description: this.options.description,
+                    gitHost: gitHost,
+                    gitAccount: gitAccount,
+                    gitName: gitName,
+                    author: {
+                        name: this.options.authorName,
+                        url: this.options.authorUrl
+                    },
+                    license: pkg.license,
+                    doclets: this.options.doclets,
+                    codecov: this.options.codecov,
+                    documentation: this.options.documentation,
+                    testing: this.options.testing,
+                    circleci: this.options.circleci,
+                    travisci: this.options.travisci,
+                    content: content
+                }
+            );
         } catch (err) {
             console.log(err.stack || err.message || err);
             throw err;
