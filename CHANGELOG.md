@@ -1,3 +1,15 @@
+### v1.0.0
+
+- [`606d10b`](https://github.com/christophehurpeau/pob/commit/606d10bc758c29feeb54bce357b165713ec1fcdd) babel: update dependencies, add flow option (Christophe Hurpeau)
+- [`5dba3cc`](https://github.com/christophehurpeau/pob/commit/5dba3cc8f60032ce55879ccd684493bddcb8bfa0) eslint: lint no longer fix by default, you can do it with `npm run lint -- --fix` (Christophe Hurpeau)
+- [`95c9f89`](https://github.com/christophehurpeau/pob/commit/95c9f89cc26c958f0af18c0953ac916ccaeec1e0) pob-babel@12.1.1 (Christophe Hurpeau)
+- [`1614856`](https://github.com/christophehurpeau/pob/commit/16148567f368f621d4f3ca1f459d4aec6ade37eb) komet-karma@0.2.3 and prepare hook npm@4 (Christophe Hurpeau)
+- [`fdfac17`](https://github.com/christophehurpeau/pob/commit/fdfac1788e2beba75f09b8aa2c06d4a9ea9443ae) always remove node_modules for a clean fresh install (Christophe Hurpeau)
+- [`869ba6b`](https://github.com/christophehurpeau/pob/commit/869ba6b1ceb0d855f2d2c07636420dd355628c63) circleci: update node version to 6 LTS (Christophe Hurpeau)
+- [`794db11`](https://github.com/christophehurpeau/pob/commit/794db113285b1242b44e0ff3187369c54505b1df) update dependencies and some readme links (Christophe Hurpeau)
+- [`7218efb`](https://github.com/christophehurpeau/pob/commit/7218efbdb42eee831c129d92b0a874bf1cef862f) update dependencies, use yarn and webpack:node (Christophe Hurpeau)
+- [`10417f6`](https://github.com/christophehurpeau/pob/commit/10417f674172cd09383e34681b400acf0e94bb14) parse readme, update dependencies, run build after install, docklets config (Christophe Hurpeau)
+
 ### v0.7.1
 
 - [`894c10f`](https://github.com/christophehurpeau/pob/commit/894c10f97ec819390062b5ffdb6ff0dafa9cf466) fixes (Christophe Hurpeau)
