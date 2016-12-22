@@ -390,7 +390,7 @@ module.exports = generators.Base.extend({
             clean: 'rm -Rf docs dist test/node6 coverage',
         });
 
-        packageUtils.addDevDependency(pkg, 'pob-release', '^2.3.0');
+        packageUtils.addDevDependency(pkg, 'pob-release', '^3.0.0');
         delete pkg.devDependencies['springbokjs-library'];
 
         packageUtils.sort(pkg);
