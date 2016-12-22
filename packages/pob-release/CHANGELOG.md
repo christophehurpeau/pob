@@ -1,3 +1,9 @@
+<a name="3.0.0"></a>
+# [3.0.0](https://github.com/christophehurpeau/pob-release/compare/v2.3.0...v3.0.0) (2016-12-22)
+
+use [standard-changelog](https://github.com/conventional-changelog/standard-changelog)
+
+
 <a name="3.0.0-beta2"></a>
 # [3.0.0-beta2](https://github.com/christophehurpeau/pob-release/compare/v3.0.0-beta1...v3.0.0-beta2) (2016-12-22)
 

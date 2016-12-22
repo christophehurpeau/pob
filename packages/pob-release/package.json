@@ -1,6 +1,6 @@
 {
   "name": "pob-release",
-  "version": "3.0.0-beta2",
+  "version": "3.0.0",
   "description": "release with ease",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "license": "ISC",
