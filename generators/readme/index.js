@@ -93,7 +93,7 @@ module.exports = generators.Base.extend({
 
         if (this.fs.exists(readmePath)) {
             const readmeFullContent = this.fs.read(readmePath);
-            content = readmeFullContent.match(/^#(?:[^#]+)([^]+)\[npm-image]:/)[1].trim();
+            content = readmeFullContent.match(/^#(?:[^#]+)([^]+)(?:\[npm-image]:|$)/)[1].trim();
         }
 
         const repository = pkg.repository;
