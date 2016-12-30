@@ -1,13 +1,14 @@
-const generators = require('yeoman-generator');
+const Generator = require('yeoman-generator');
 const askName = require('inquirer-npm-name');
 const parseAuthor = require('parse-author');
 const kebabCase = require('lodash.kebabcase');
 const path = require('path');
+const mkdirp = require('mkdirp');
 const packageUtils = require('../../utils/package');
 
-module.exports = generators.Base.extend({
-    constructor: function() {
-        generators.Base.apply(this, arguments);
+module.exports = class extends Generator {
+    constructor(args, opts) {
+        super(args, opts);
 
         /* this.option('boilerplate', {
             type: Boolean,
@@ -59,7 +60,7 @@ module.exports = generators.Base.extend({
             defaults: 'lib',
             desc: 'Relative path to the project code root'
         });
-    },
+    }
 
     initializing() {
         this.pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
@@ -89,21 +90,17 @@ module.exports = generators.Base.extend({
             this.props.authorEmail = parsedAuthor.email;
             this.props.authorUrl = parsedAuthor.url;
         }
-    },
+    }
 
-    prompting: {
-        askPrivate() {
-            return this.prompt({
-                type: 'confirm',
-                name: 'private',
-                message: 'Private package ?',
-                default: this.props.private === true,
-            }).then((props) => {
-                this.props.private = props.private;
-            });
-        },
-
-        askForModuleName() {
+    prompting() {
+        return this.prompt({
+            type: 'confirm',
+            name: 'private',
+            message: 'Private package ?',
+            default: this.props.private === true,
+        }).then((props) => {
+            this.props.private = props.private;
+        }).then(() => {
             if (this.pkg.name || this.options.name) {
                 this.props.name = this.pkg.name || this.options.name;
                 return;
@@ -122,9 +119,7 @@ module.exports = generators.Base.extend({
                 .then(({ name }) => {
                     this.props.name = name;
                 });
-        },
-
-        askFor() {
+        }).then(() => {
             return this.prompt([{
                 name: 'description',
                 message: 'Description',
@@ -149,9 +144,9 @@ module.exports = generators.Base.extend({
             }]).then((props) => {
                 Object.assign(this.props, props);
             });
-        },
+        }).then(() => {
+            // askForBabelEnvs
 
-        askForBabelEnvs() {
             return this.prompt([{
                 type: 'checkbox',
                 name: 'babelEnvs',
@@ -181,9 +176,8 @@ module.exports = generators.Base.extend({
             }]).then((props) => {
                 Object.assign(this.props, props);
             });
-        },
-
-        askForReact() {
+        }).then(() => {
+            // askForReact
             if (!this.props.babelEnvs.length) return;
             return this.prompt([{
                 type: 'confirm',
@@ -193,9 +187,8 @@ module.exports = generators.Base.extend({
             }]).then((props) => {
                 Object.assign(this.props, props);
             });
-        },
-
-        askForDoc() {
+        }).then(() => {
+            // doc
             return this.prompt([{
                 type: 'confirm',
                 name: 'includeDocumentation',
@@ -209,9 +202,8 @@ module.exports = generators.Base.extend({
             }]).then((props) => {
                 Object.assign(this.props, props);
             });
-        },
-
-        askForTesting() {
+        }).then(() => {
+            // testing
             return this.prompt([{
                 type: 'confirm',
                 name: 'includeTesting',
@@ -244,127 +236,93 @@ module.exports = generators.Base.extend({
                     Object.assign(this.props, props);
                 });
             });
-        },
-    },
+        });
+    }
 
     default() {
         if (this.options.license && !this.fs.exists(this.destinationPath('LICENSE'))) {
-            this.composeWith('license', {
-                options: {
-                    name: this.props.authorName,
-                    email: this.props.authorEmail,
-                    website: this.props.authorUrl,
-                    defaultLicense: 'ISC',
-                }
-            }, {
-                local: require.resolve('generator-license/app'),
+            this.composeWith(require.resolve('generator-license/app'), {
+                name: this.props.authorName,
+                email: this.props.authorEmail,
+                website: this.props.authorUrl,
+                defaultLicense: 'ISC',
             });
         }
 
-        this.composeWith('pob:git', {
-            options: {
-                name: this.props.name,
-                authorEmail: this.props.authorEmail,
-                githubAccount: this.props.githubAccount,
-                bitbucketAccount: this.props.bitbucketAccount,
-                gitlabAccount: this.props.gitlabAccount,
-            }
-        }, {
-            local: require.resolve('../git'),
+        this.composeWith(require.resolve('../git'), {
+            name: this.props.name,
+            authorEmail: this.props.authorEmail,
+            githubAccount: this.props.githubAccount,
+            bitbucketAccount: this.props.bitbucketAccount,
+            gitlabAccount: this.props.gitlabAccount,
         });
 
-        this.composeWith('pob:editorconfig', {}, {
-            local: require.resolve('../editorconfig'),
-        });
+        this.composeWith(require.resolve('../editorconfig'), {});
 
-        this.composeWith('pob:eslint', {
-            options: {
-                babel: this.options.babel,
-                react: this.props.react,
-                testing: this.props.includeTesting,
-            },
-        }, {
-            local: require.resolve('../eslint'),
+        this.composeWith(require.resolve('../eslint'), {
+            babel: this.options.babel,
+            react: this.props.react,
+            testing: this.props.includeTesting,
         });
 
         if (this.options.babel && this.props.babelEnvs.length) {
-            this.composeWith('pob:babel', {
-                options: {
-                    react: this.props.react,
-                    documentation: this.props.includeDocumentation,
-                    testing: this.props.includeTesting,
-                    env_node6: this.props.babelEnvs.includes('node6'),
-                    env_olderNode: this.props.babelEnvs.includes('olderNode'),
-                    env_webpack_modernBrowsers: this.props.babelEnvs.includes('webpackModernBrowsers'),
-                    env_webpack_allBrowsers: this.props.babelEnvs.includes('webpackAllBrowsers'),
-                    env_browsers: this.props.babelEnvs.includes('browsers'),
-                },
-            }, {
-                local: require.resolve('../babel'),
+            this.composeWith(require.resolve('../babel'), {
+                react: this.props.react,
+                documentation: this.props.includeDocumentation,
+                testing: this.props.includeTesting,
+                env_node6: this.props.babelEnvs.includes('node6'),
+                env_olderNode: this.props.babelEnvs.includes('olderNode'),
+                env_webpack_modernBrowsers: this.props.babelEnvs.includes('webpackModernBrowsers'),
+                env_webpack_allBrowsers: this.props.babelEnvs.includes('webpackAllBrowsers'),
+                env_browsers: this.props.babelEnvs.includes('browsers'),
             });
         } else {
-            this.mkdir('lib');
+            mkdirp('lib');
         }
 
         /* if (this.options.boilerplate) {
-            this.composeWith(`pob:boilerplate`, {
-                options: {
-                    babelEnvs: this.props.babelEnvs,
-                    name: this.props.name,
-                }
-            }, {
-                local: require.resolve(`./boilerplate-${this.options.boilerplate}`),
+            this.composeWith(require.resolve(`./boilerplate-${this.options.boilerplate}`), {
+                babelEnvs: this.props.babelEnvs,
+                name: this.props.name,
             });
         } */
 
-        this.composeWith('pob:readme', {
-            options: {
-                privatePackage: this.props.private,
-                name: this.props.name,
-                description: this.props.description,
-                authorName: this.props.authorName,
-                authorEmail: this.props.authorEmail,
-                authorUrl: this.props.authorUrl,
-                documentation: this.props.includeDocumentation,
-                doclets: this.props.includeDoclets,
-                testing: this.props.includeTesting,
-                codecov: this.props.includeCodecov,
-                circleci: this.props.circleci,
-                travisci: this.props.travisci,
-                content: this.options.readme,
-            }
-        }, {
-            local: require.resolve('../readme')
+        this.composeWith(require.resolve('../readme'), {
+            privatePackage: this.props.private,
+            name: this.props.name,
+            description: this.props.description,
+            authorName: this.props.authorName,
+            authorEmail: this.props.authorEmail,
+            authorUrl: this.props.authorUrl,
+            documentation: this.props.includeDocumentation,
+            doclets: this.props.includeDoclets,
+            testing: this.props.includeTesting,
+            codecov: this.props.includeCodecov,
+            circleci: this.props.circleci,
+            travisci: this.props.travisci,
+            content: this.options.readme,
         });
 
         if (this.props.includeTesting) {
-            this.composeWith('pob:testing', {
-                options: {
-                    private: this.props.private,
-                    babel: this.options.babel,
-                    react: this.props.react,
-                    documentation: this.props.includeDocumentation,
-                    codecov: this.props.includeCodecov,
-                    circleci: this.props.circleci,
-                    travisci: this.props.travisci,
-                }
-            }, {
-                local: require.resolve('../testing'),
+            this.composeWith(require.resolve('../testing'), {
+                private: this.props.private,
+                babel: this.options.babel,
+                react: this.props.react,
+                documentation: this.props.includeDocumentation,
+                codecov: this.props.includeCodecov,
+                circleci: this.props.circleci,
+                travisci: this.props.travisci,
             });
         }
 
         if (this.props.includeDocumentation) {
-            this.composeWith('pob:doc', {
-                options: {
-                    name: this.props.name,
-                    testing: this.props.includeTesting,
-                    doclets: this.props.includeDoclets,
-                }
-            }, {
-                local: require.resolve('../doc'),
+            this.composeWith(require.resolve('../doc'), {
+                name: this.props.name,
+                testing: this.props.includeTesting,
+                doclets: this.props.includeDoclets,
             });
         }
-    },
+    }
 
     writing() {
         // Re-read the content at this point because a composed generator might modify it.
@@ -413,12 +371,12 @@ module.exports = generators.Base.extend({
         pobjson.testing = this.props.includeTesting;
 
         this.fs.writeJSON(this.destinationPath('.pob.json'), pobjson);
-    },
+    }
 
     installing() {
-        return this.runInstall('yarn');
-    },
+        return this.yarnInstall();
+    }
 
     end() {
     }
-});
+};

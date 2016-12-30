@@ -1,9 +1,10 @@
-const generators = require('yeoman-generator');
+const Generator = require('yeoman-generator');
 const camelCase = require('lodash.camelcase');
 
-module.exports = generators.Base.extend({
-    constructor: function() {
-        generators.Base.apply(this, arguments);
+module.exports = class extends Generator {
+    constructor(args, opts) {
+        super(args, opts);
+
         this.option('destination', {
             type: String,
             required: false,
@@ -83,7 +84,7 @@ module.exports = generators.Base.extend({
             required: false,
             desc: 'Readme content'
         });
-    },
+    }
 
     writing() {
         const pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
@@ -131,5 +132,5 @@ module.exports = generators.Base.extend({
             console.log(err.stack || err.message || err);
             throw err;
         }
-    },
-});
+    }
+};

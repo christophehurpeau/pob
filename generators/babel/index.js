@@ -1,10 +1,11 @@
 'use strict';
-const generators = require('yeoman-generator');
+const Generator = require('yeoman-generator');
+const mkdirp = require('mkdirp');
 const packageUtils = require('../../utils/package');
 
-module.exports = generators.Base.extend({
-    constructor: function () {
-        generators.Base.apply(this, arguments);
+module.exports = class extends Generator {
+    constructor(args, opts) {
+        super(args, opts);
 
         this.option('destination', {
             type: String,
@@ -63,10 +64,10 @@ module.exports = generators.Base.extend({
             required: false,
             desc: 'Babel Env browsers'
         });
-    },
+    }
 
-    initializing: function () {
-        this.mkdir('src');
+    initializing() {
+        mkdirp(this.destinationPath(this.options.destination, 'src'));
         this.fs.copyTpl(
             this.templatePath('index.js.ejs'),
             this.destinationPath(this.options.destination, 'index.js'),
@@ -94,7 +95,7 @@ module.exports = generators.Base.extend({
                 this.fs.copy(this.templatePath('src/types.js'), typesDestPath);
             }
         }
-    },
+    }
 
     writing() {
         const pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
@@ -206,9 +207,9 @@ module.exports = generators.Base.extend({
 
 
         this.fs.writeJSON(this.destinationPath(this.options.destination, 'package.json'), pkg);
-    },
+    }
 
     end() {
         return this.spawnCommandSync('yarn', ['run', 'build']);
     }
-});
+};

@@ -1,12 +1,13 @@
-const generators = require('yeoman-generator');
+const Generator = require('yeoman-generator');
 const remoteUrl = require('git-remote-url');
 const githubUsername = require('github-username');
 const accessSync = require('fs').accessSync;
 const packageUtils = require('../../utils/package');
 
-module.exports = generators.Base.extend({
-    constructor: function() {
-        generators.Base.apply(this, arguments);
+module.exports = class extends Generator {
+    constructor(args, opts) {
+        super(args, opts);
+
         this.option('destination', {
             type: String,
             required: false,
@@ -43,7 +44,7 @@ module.exports = generators.Base.extend({
             required: true,
             desc: 'User bitbucket account'
         });
-    },
+    }
 
     initializing() {
         this.fs.copy(
@@ -83,7 +84,7 @@ module.exports = generators.Base.extend({
                 this.gitHostAccount = gitAccount;
                 this.pkgName = pkgName;
             });
-    },
+    }
 
     prompting() {
         if (this.options.githubAccount) {
@@ -130,7 +131,7 @@ module.exports = generators.Base.extend({
         })).then(prompt => {
             this.gitHostAccount = prompt && prompt.gitHostAccount;
         });
-    },
+    }
 
     writing() {
         if (this.gitHost === 'none') return;
@@ -157,7 +158,7 @@ module.exports = generators.Base.extend({
             ].join(' ; ')
         });
 
-        var repository = `git@${this.gitHost}.com:${this.gitHostAccount}/${this.pkgName || this.options.name}.git`;
+        const repository = `git@${this.gitHost}.com:${this.gitHostAccount}/${this.pkgName || this.options.name}.git`;
 
         if (pkg.repository !== repository) {
             pkg.repository = repository;
@@ -180,7 +181,7 @@ module.exports = generators.Base.extend({
             this.spawnCommandSync('git', ['init'], { cwd });
 
             if (!this.originUrl) {
-                var repoSSH = pkg.repository;
+                let repoSSH = pkg.repository;
                 if (pkg.repository && pkg.repository.indexOf('.git') === -1) {
                     /*this.spawnCommandSync('curl', [
                         '--silent',
@@ -202,4 +203,4 @@ module.exports = generators.Base.extend({
             }
         }
     }
-});
+};

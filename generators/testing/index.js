@@ -1,9 +1,11 @@
-const generators = require('yeoman-generator');
+const Generator = require('yeoman-generator');
+const mkdirp = require('mkdirp');
 const packageUtils = require('../../utils/package');
 
-module.exports = generators.Base.extend({
-    constructor: function() {
-        generators.Base.apply(this, arguments);
+module.exports = class extends Generator {
+    constructor(args, opts) {
+        super(args, opts);
+
         this.option('destination', {
             type: String,
             required: false,
@@ -34,15 +36,15 @@ module.exports = generators.Base.extend({
             required: true,
             desc: 'Include documentation generation'
         });
-    },
+    }
 
     initializing() {
-        this.mkdir(this.destinationPath(this.options.destination, 'test/src'));
+        mkdirp(this.destinationPath(this.options.destination, 'test/src'));
         const testIndexPath = this.destinationPath(this.options.destination, 'test/src/index.js');
         if (!this.fs.exists(testIndexPath)) {
             this.fs.copy(this.templatePath('index.js'), testIndexPath);
         }
-    },
+    }
 
     writing() {
         const pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
@@ -91,5 +93,5 @@ module.exports = generators.Base.extend({
                 this.destinationPath(this.options.destination, '.travis.yml')
             );
         }
-    },
-});
+    }
+};

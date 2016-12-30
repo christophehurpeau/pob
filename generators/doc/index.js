@@ -1,9 +1,10 @@
-const generators = require('yeoman-generator');
+const Generator = require('yeoman-generator');
 const packageUtils = require('../../utils/package');
 
-module.exports = generators.Base.extend({
-    constructor: function() {
-        generators.Base.apply(this, arguments);
+module.exports = class extends Generator {
+    constructor(args, opts) {
+        super(args, opts);
+
         this.option('destination', {
             type: String,
             required: false,
@@ -23,7 +24,7 @@ module.exports = generators.Base.extend({
             defaults: false,
             desc: 'Coverage.'
         });
-    },
+    }
 
     initializing() {
         this.fs.copyTpl(
@@ -33,7 +34,7 @@ module.exports = generators.Base.extend({
                 projectName: this.options.name,
             }
         );
-    },
+    }
 
     writing() {
         const pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
@@ -61,5 +62,5 @@ module.exports = generators.Base.extend({
         delete pkg.devDependencies['jaguarjs-jsdoc'];
 
         this.fs.writeJSON(this.destinationPath(this.options.destination, 'package.json'), pkg);
-    },
-});
+    }
+};
