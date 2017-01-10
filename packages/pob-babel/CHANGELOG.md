@@ -1,3 +1,12 @@
+<a name="12.10.0"></a>
+# [12.10.0](https://github.com/christophehurpeau/pob-babel/compare/v12.9.0...v12.10.0) (2017-01-10)
+
+
+### Features
+
+* update dependencies and use compose: true for babel plugin transform-export-defa ([e351ec4](https://github.com/christophehurpeau/pob-babel/commit/e351ec4))
+
+
 ### v12.9.0
 
 - [`ffe4d3d`](https://github.com/christophehurpeau/pob-babel/commit/ffe4d3d08a80eaecce2071919645a9d8010e3535) chore(package): update dependencies (Christophe Hurpeau)
