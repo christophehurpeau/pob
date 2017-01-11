@@ -2,16 +2,22 @@
   "name": "pob-babel",
   "version": "12.11.0",
   "description": "Build and watch with babel",
+  "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "license": "ISC",
-  "repository": "christophehurpeau/pob-babel",
+  "repository": "git@github.com:christophehurpeau/pob-babel.git",
+  "homepage": "https://github.com/christophehurpeau/pob-babel",
   "main": "lib/index.js",
   "bin": {
     "pob-build": "./build",
     "pob-watch": "./watch"
   },
   "scripts": {
-    "preversion": "pob-repository-check-clean",
+    "clean": "rm -Rf docs dist test/node6 coverage",
+    "lint": "eslint --ext .js,.jsx lib/",
+    "prepare": "ln -s ../../git-hooks/pre-commit .git/hooks/pre-commit 2>/dev/null || true ; ln -s ../../git-hooks/post-checkout .git/hooks/post-checkout 2>/dev/null || true ; ln -s ../../git-hooks/post-merge .git/hooks/post-merge 2>/dev/null || true ; ln -s ../../git-hooks/prepare-commit-msg .git/hooks/prepare-commit-msg 2>/dev/null || true",
+    "prepublish": "ln -s ../../git-hooks/pre-commit .git/hooks/pre-commit 2>/dev/null || true ; ln -s ../../git-hooks/post-checkout .git/hooks/post-checkout 2>/dev/null || true ; ln -s ../../git-hooks/post-merge .git/hooks/post-merge 2>/dev/null || true ; ln -s ../../git-hooks/prepare-commit-msg .git/hooks/prepare-commit-msg 2>/dev/null || true",
+    "preversion": "npm run lint && pob-repository-check-clean",
     "release": "pob-repository-check-clean && pob-release",
     "version": "pob-version"
   },
@@ -46,6 +52,13 @@
     "slash": "^1.0.0"
   },
   "devDependencies": {
+    "eslint": "^3.12.2",
+    "eslint-config-airbnb-base": "^11.0.0",
+    "eslint-config-pob": "^10.0.1",
+    "eslint-plugin-import": "^2.2.0",
+    "komet": "^0.1.4",
+    "komet-karma": "^0.2.3",
+    "pob-release": "^3.0.0",
     "tcomb-forked": "^3.5.0"
   }
 }

@@ -1,6 +1,9 @@
-# pob-babel
+# pob-babel [![NPM version][npm-image]][npm-url]
 
 Build and watch with babel
+
+[![Dependency ci Status][dependencyci-image]][dependencyci-url]
+[![Dependency Status][daviddm-image]][daviddm-url]
 
 ### What it does
 
@@ -46,5 +49,11 @@ Edit your package.json:
         "watch": "pob-watch"
     }
 }
-
 ```
+
+[npm-image]: https://img.shields.io/npm/v/pob-babel.svg?style=flat-square
+[npm-url]: https://npmjs.org/package/pob-babel
+[daviddm-image]: https://david-dm.org/christophehurpeau/pob-babel.svg?style=flat-square
+[daviddm-url]: https://david-dm.org/christophehurpeau/pob-babel
+[dependencyci-image]: https://dependencyci.com/github/christophehurpeau/pob-babel/badge?style=flat-square
+[dependencyci-url]: https://dependencyci.com/github/christophehurpeau/pob-babel
