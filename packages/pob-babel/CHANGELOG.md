@@ -1,3 +1,12 @@
+<a name="13.0.1"></a>
+## [13.0.1](https://github.com/christophehurpeau/pob-babel/compare/v13.0.0...v13.0.1) (2017-01-11)
+
+
+### Bug Fixes
+
+* require fails sometimes, back to require.resolve ([9ddf859](https://github.com/christophehurpeau/pob-babel/commit/9ddf859))
+
+
 <a name="13.0.0"></a>
 # [13.0.0](https://github.com/christophehurpeau/pob-babel/compare/v12.11.0...v13.0.0) (2017-01-11)
 
