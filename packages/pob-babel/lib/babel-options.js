@@ -24,7 +24,7 @@ module.exports = function createOpts(
       ].filter(Boolean),
       plugins: [
         'add-jsdoc-annotations',
-        require('babel-plugin-transform-flow-strip-types'),
+        require.resolve('babel-plugin-transform-flow-strip-types'),
       ],
     };
   }
@@ -90,16 +90,16 @@ module.exports = function createOpts(
   return {
     presets: presets.concat(otherPresets || []).filter(Boolean),
     plugins: [
-      require('babel-plugin-syntax-flow'),
-      [require('babel-plugin-import-export-rename'), { '^([a-z\\-]+|[./]+)/src(.*)$': '$1$2' }],
-      !production && [require('babel-plugin-transform-export-default-name-forked'), { compose: true }],
-      !production && require('babel-plugin-tcomb-forked'),
-      require('babel-plugin-transform-flow-strip-types'),
-      react && require('babel-plugin-react-require'),
-      !production && react && require('babel-plugin-transform-react-jsx-self'),
-      !production && react && require('babel-plugin-transform-react-jsx-source'),
+      require.resolve('babel-plugin-syntax-flow'),
+      [require.resolve('babel-plugin-import-export-rename'), { '^([a-z\\-]+|[./]+)/src(.*)$': '$1$2' }],
+      !production && [require.resolve('babel-plugin-transform-export-default-name-forked'), { compose: true }],
+      !production && require.resolve('babel-plugin-tcomb-forked'),
+      require.resolve('babel-plugin-transform-flow-strip-types'),
+      react && require.resolve('babel-plugin-react-require'),
+      !production && react && require.resolve('babel-plugin-transform-react-jsx-self'),
+      !production && react && require.resolve('babel-plugin-transform-react-jsx-source'),
 
-      [require('babel-plugin-minify-replace'), {
+      [require.resolve('babel-plugin-minify-replace'), {
         replacements: [
           {
             identifierName: 'PRODUCTION',
@@ -119,10 +119,10 @@ module.exports = function createOpts(
           },
         ],
       }],
-      require('babel-plugin-minify-constant-folding'),
-      [require('babel-plugin-minify-dead-code-elimination'), { keepFnName: true, keepFnames: true }],
-      require('babel-plugin-minify-guarded-expressions'),
-      require('babel-plugin-discard-module-references'),
+      require.resolve('babel-plugin-minify-constant-folding'),
+      [require.resolve('babel-plugin-minify-dead-code-elimination'), { keepFnName: true, keepFnames: true }],
+      require.resolve('babel-plugin-minify-guarded-expressions'),
+      require.resolve('babel-plugin-discard-module-references'),
       ...(otherPlugins || []),
     ].filter(Boolean),
   };
