@@ -1,3 +1,9 @@
+<a name="13.0.0"></a>
+# [13.0.0](https://github.com/christophehurpeau/pob-babel/compare/v12.11.0...v13.0.0) (2017-01-11)
+
+Breaking: removed option react hot reload patch
+
+
 <a name="12.11.0"></a>
 # [12.11.0](https://github.com/christophehurpeau/pob-babel/compare/v12.10.0...v12.11.0) (2017-01-11)
 
