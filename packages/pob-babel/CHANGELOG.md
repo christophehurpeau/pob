@@ -1,3 +1,12 @@
+<a name="12.11.0"></a>
+# [12.11.0](https://github.com/christophehurpeau/pob-babel/compare/v12.10.0...v12.11.0) (2017-01-11)
+
+
+### Features
+
+* babel option reactHotLoader ([7665b5b](https://github.com/christophehurpeau/pob-babel/commit/7665b5b))
+
+
 <a name="12.10.0"></a>
 # [12.10.0](https://github.com/christophehurpeau/pob-babel/compare/v12.9.0...v12.10.0) (2017-01-10)
 
