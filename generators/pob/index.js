@@ -259,13 +259,14 @@ module.exports = class extends Generator {
 
         this.composeWith(require.resolve('../editorconfig'), {});
 
+        const withBabel = !!(this.options.babel && this.props.babelEnvs.length);
         this.composeWith(require.resolve('../eslint'), {
-            babel: this.options.babel,
+            babel: withBabel,
             react: this.props.react,
             testing: this.props.includeTesting,
         });
 
-        if (this.options.babel && this.props.babelEnvs.length) {
+        if (withBabel) {
             this.composeWith(require.resolve('../babel'), {
                 react: this.props.react,
                 documentation: this.props.includeDocumentation,
@@ -328,6 +329,8 @@ module.exports = class extends Generator {
         // Re-read the content at this point because a composed generator might modify it.
         const currentPkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
+        const withBabel = !!(this.options.babel && this.props.babelEnvs.length);
+
         const pkg = packageUtils.extend(currentPkg, {
             name: kebabCase(this.props.name),
             version: '0.0.0',
@@ -343,7 +346,11 @@ module.exports = class extends Generator {
 
         packageUtils.addScripts(pkg, {
             release: 'pob-repository-check-clean && pob-release',
-            preversion: 'npm run lint && npm run build && pob-repository-check-clean',
+            preversion: [
+                'npm run lint',
+                withBabel && 'npm run build',
+                'pob-repository-check-clean',
+            ].filter(Boolean).join(' && '),
             version: 'pob-version',
             clean: 'rm -Rf docs dist test/node6 coverage',
         });
