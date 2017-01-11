@@ -9,7 +9,7 @@ const resolvePlugin = function (pluginName) {
 module.exports = function createOpts(
   env,
   react,
-  { presets: otherPresets, plugins: otherPlugins, reactHotLoader = false } = {}
+  { presets: otherPresets, plugins: otherPlugins } = {}
 ) {
   const production = !env.endsWith('-dev');
 
@@ -100,7 +100,6 @@ module.exports = function createOpts(
       !production && resolvePlugin('tcomb-forked'),
       resolvePlugin('transform-flow-strip-types'),
       react && resolvePlugin('react-require'),
-      !production && react && reactHotLoader && 'react-hot-loader/babel',
       !production && react && resolvePlugin('transform-react-jsx-self'),
       !production && react && resolvePlugin('transform-react-jsx-source'),
 
