@@ -6,7 +6,11 @@ const resolvePlugin = function (pluginName) {
   return require.resolve(`babel-plugin-${pluginName}`);
 };
 
-module.exports = function createOpts(env, react, { presets: otherPresets, plugins: otherPlugins } = {}) {
+module.exports = function createOpts(
+  env,
+  react,
+  { presets: otherPresets, plugins: otherPlugins, reactHotLoader = false } = {}
+) {
   const production = !env.endsWith('-dev');
 
   if (!production) {
@@ -92,11 +96,11 @@ module.exports = function createOpts(env, react, { presets: otherPresets, plugin
     plugins: [
       resolvePlugin('syntax-flow'),
       [require('babel-plugin-import-export-rename'), { '^([a-z\\-]+|[\./]+)/src(.*)$': '$1$2' }],
-      [require('babel-plugin-transform-export-default-name-forked'), { compose: true }],
+      !production && [require('babel-plugin-transform-export-default-name-forked'), { compose: true }],
       !production && resolvePlugin('tcomb-forked'),
       resolvePlugin('transform-flow-strip-types'),
       react && resolvePlugin('react-require'),
-      // browser && 'react-hot-loader/babel',
+      !production && react && reactHotLoader && 'react-hot-loader/babel',
       !production && react && resolvePlugin('transform-react-jsx-self'),
       !production && react && resolvePlugin('transform-react-jsx-source'),
 
