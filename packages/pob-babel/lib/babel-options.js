@@ -1,9 +1,7 @@
+/* eslint-disable global-require */
+
 const resolvePreset = function (presetName) {
   return require.resolve(`babel-preset-${presetName}`);
-};
-
-const resolvePlugin = function (pluginName) {
-  return require.resolve(`babel-plugin-${pluginName}`);
 };
 
 module.exports = function createOpts(
@@ -26,14 +24,13 @@ module.exports = function createOpts(
       ].filter(Boolean),
       plugins: [
         'add-jsdoc-annotations',
-        resolvePlugin('transform-flow-strip-types'),
-      ]
+        require('babel-plugin-transform-flow-strip-types'),
+      ],
     };
   }
 
   let presets;
   let browser;
-  let modernBrowsers = false;
 
   switch (env) {
     case 'es5':
@@ -74,7 +71,6 @@ module.exports = function createOpts(
         resolvePreset('stage-1'),
       ];
       browser = true;
-      modernBrowsers = true;
       break;
 
     case 'browsers':
@@ -94,40 +90,40 @@ module.exports = function createOpts(
   return {
     presets: presets.concat(otherPresets || []).filter(Boolean),
     plugins: [
-      resolvePlugin('syntax-flow'),
-      [require('babel-plugin-import-export-rename'), { '^([a-z\\-]+|[\./]+)/src(.*)$': '$1$2' }],
+      require('babel-plugin-syntax-flow'),
+      [require('babel-plugin-import-export-rename'), { '^([a-z\\-]+|[./]+)/src(.*)$': '$1$2' }],
       !production && [require('babel-plugin-transform-export-default-name-forked'), { compose: true }],
-      !production && resolvePlugin('tcomb-forked'),
-      resolvePlugin('transform-flow-strip-types'),
-      react && resolvePlugin('react-require'),
-      !production && react && resolvePlugin('transform-react-jsx-self'),
-      !production && react && resolvePlugin('transform-react-jsx-source'),
+      !production && require('babel-plugin-tcomb-forked'),
+      require('babel-plugin-transform-flow-strip-types'),
+      react && require('babel-plugin-react-require'),
+      !production && react && require('babel-plugin-transform-react-jsx-self'),
+      !production && react && require('babel-plugin-transform-react-jsx-source'),
 
-      [resolvePlugin('minify-replace'), {
-          replacements: [
-              {
-                  identifierName: 'PRODUCTION',
-                  replacement: { type: 'booleanLiteral', value: production },
-              },
-              {
-                  identifierName: 'BROWSER',
-                  replacement: { type: 'booleanLiteral', value: browser },
-              },
-              {
-                  identifierName: 'SERVER',
-                  replacement: { type: 'booleanLiteral', value: !browser },
-              },
-              {
-                  identifierName: 'NODEJS',
-                  replacement: { type: 'booleanLiteral', value: !browser },
-              },
-          ],
+      [require('babel-plugin-minify-replace'), {
+        replacements: [
+          {
+            identifierName: 'PRODUCTION',
+            replacement: { type: 'booleanLiteral', value: production },
+          },
+          {
+            identifierName: 'BROWSER',
+            replacement: { type: 'booleanLiteral', value: browser },
+          },
+          {
+            identifierName: 'SERVER',
+            replacement: { type: 'booleanLiteral', value: !browser },
+          },
+          {
+            identifierName: 'NODEJS',
+            replacement: { type: 'booleanLiteral', value: !browser },
+          },
+        ],
       }],
-      resolvePlugin('minify-constant-folding'),
+      require('babel-plugin-minify-constant-folding'),
       [require('babel-plugin-minify-dead-code-elimination'), { keepFnName: true, keepFnames: true }],
-      resolvePlugin('minify-guarded-expressions'),
-      resolvePlugin('discard-module-references'),
+      require('babel-plugin-minify-guarded-expressions'),
+      require('babel-plugin-discard-module-references'),
       ...(otherPlugins || []),
-    ].filter(Boolean)
+    ].filter(Boolean),
   };
 };
