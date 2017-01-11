@@ -26,7 +26,7 @@
     "babel-plugin-react-require": "^3.0.0",
     "babel-plugin-syntax-flow": "^6.18.0",
     "babel-plugin-tcomb-forked": "^0.3.24",
-    "babel-plugin-transform-export-default-name-forked": "^1.1.0",
+    "babel-plugin-transform-export-default-name-forked": "^1.2.0",
     "babel-plugin-transform-flow-strip-types": "^6.18.0",
     "babel-plugin-transform-object-rest-spread": "^6.20.2",
     "babel-plugin-transform-react-jsx-self": "^6.11.0",
