@@ -48,11 +48,10 @@ module.exports = class extends Generator {
         const eslintrcBadPath = this.destinationPath(this.options.destination, '.eslintrc');
         this.fs.delete(eslintrcBadPath);
         this.fs.delete(eslintrcBadPath + '.yml');
-        this.fs.copyTpl(
-            this.templatePath('eslintrc.js.ejs'),
-            this.destinationPath(this.options.destination, '.eslintrc.js'),
-            { config }
-        );
+        const eslintrcPath = this.destinationPath(this.options.destination, '.eslintrc.js');
+        if (!this.fs.exists(eslintrcPath)) {
+            this.fs.copyTpl(this.templatePath('eslintrc.js.ejs'), eslintrcPath, { config });
+        }
         this.fs.copy(
             this.templatePath('eslintignore'),
             this.destinationPath(this.options.destination, '.eslintignore')
