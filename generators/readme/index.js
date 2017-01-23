@@ -94,7 +94,9 @@ module.exports = class extends Generator {
 
         if (this.fs.exists(readmePath)) {
             const readmeFullContent = this.fs.read(readmePath);
-            content = readmeFullContent.match(/^#(?:[^#]+)([^]+)(?:\[npm-image]:)/)[1].trim();
+            content = readmeFullContent.match(/^#(?:[^#]+)([^]+)(?:\[npm-image]:)/);
+            if (!content) content = readmeFullContent.match(/^#(?:[^#]+)([^]+)$/);
+            content = content ? content[1].trim() : readmeFullContent;
         }
 
         const repository = pkg.repository;
