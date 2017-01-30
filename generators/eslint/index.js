@@ -70,7 +70,7 @@ module.exports = class extends Generator {
         packageUtils.addDevDependencies(pkg, {
             'eslint': '^3.12.2',
             'eslint-plugin-import': '^2.2.0',
-            'eslint-config-pob': '^10.0.1',
+            'eslint-config-pob': '^11.0.0',
         });
 
         if (this.options.babel) {
