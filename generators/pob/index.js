@@ -6,7 +6,7 @@ const path = require('path');
 const mkdirp = require('mkdirp');
 const packageUtils = require('../../utils/package');
 
-module.exports = class extends Generator {
+module.exports = class PobGenerator extends Generator {
     constructor(args, opts) {
         super(args, opts);
 
