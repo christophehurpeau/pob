@@ -200,7 +200,7 @@ module.exports = class extends Generator {
         }
 
         if (this.options.env_webpack_modernBrowsers) {
-            packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers', '^7.0.0');
+            packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers', '^8.0.0');
         } else {
            delete pkg.devDependencies['babel-preset-modern-browsers'];
         }
