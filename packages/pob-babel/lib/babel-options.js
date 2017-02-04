@@ -51,6 +51,13 @@ module.exports = function createOpts(
       browser = false;
       break;
 
+    case 'webpack-node6':
+      presets = [
+        react && ['babel-preset-pob-react', { production }],
+        require.resolve('babel-preset-stage-1'),
+      ];
+      break;
+
     case 'webpack':
       presets = [
         ['es2015', { modules: false }],
