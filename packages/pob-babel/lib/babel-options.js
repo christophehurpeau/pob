@@ -1,9 +1,5 @@
 /* eslint-disable global-require */
 
-const resolvePreset = function (presetName) {
-  return require.resolve(`babel-preset-${presetName}`);
-};
-
 module.exports = function createOpts(
   env,
   react,
@@ -20,7 +16,7 @@ module.exports = function createOpts(
       presets: [
         'jsdoc',
         react && 'react',
-        resolvePreset('stage-1'),
+        require.resolve('babel-preset-stage-1'),
       ].filter(Boolean),
       plugins: [
         'add-jsdoc-annotations',
@@ -41,7 +37,7 @@ module.exports = function createOpts(
       presets = [
         'es2015-node6',
         react && 'react',
-        resolvePreset('stage-1'),
+        require.resolve('babel-preset-stage-1'),
       ];
       browser = false;
       break;
@@ -50,7 +46,7 @@ module.exports = function createOpts(
       presets = [
         'es2015',
         react && 'react',
-        resolvePreset('stage-1'),
+        require.resolve('babel-preset-stage-1'),
       ];
       browser = false;
       break;
@@ -59,7 +55,7 @@ module.exports = function createOpts(
       presets = [
         ['es2015', { modules: false }],
         react && 'react',
-        resolvePreset('stage-1'),
+        require.resolve('babel-preset-stage-1'),
       ];
       browser = true;
       break;
@@ -68,7 +64,7 @@ module.exports = function createOpts(
       presets = [
         ['modern-browsers', { modules: false }],
         react && 'react',
-        resolvePreset('stage-1'),
+        require.resolve('babel-preset-stage-1'),
       ];
       browser = true;
       break;
@@ -77,7 +73,7 @@ module.exports = function createOpts(
       presets = [
         'es2015',
         react && 'react',
-        resolvePreset('stage-1'),
+        require.resolve('babel-preset-stage-1'),
       ];
       browser = true;
       break;
