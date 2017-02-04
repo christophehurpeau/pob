@@ -1,3 +1,25 @@
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/christophehurpeau/pob/compare/v1.0.0...v1.1.0) (2017-02-04)
+
+
+### Bug Fixes
+
+* readme without npm link ([0d5d515](https://github.com/christophehurpeau/pob/commit/0d5d515))
+* **readme:** don't escape description ([a72876a](https://github.com/christophehurpeau/pob/commit/a72876a))
+* **readme:** Install set bash instead of sh ([08cb6bb](https://github.com/christophehurpeau/pob/commit/08cb6bb))
+* testing without babel ([159a9da](https://github.com/christophehurpeau/pob/commit/159a9da))
+
+### Features
+
+* **eslint:** update eslint-config-pob@11 ([a5e0e2d](https://github.com/christophehurpeau/pob/commit/a5e0e2d))
+* **readme:** Allow to have lists before the first heading ([0bdbc4b](https://github.com/christophehurpeau/pob/commit/0bdbc4b))
+* circleci use yarn ([d71d9da](https://github.com/christophehurpeau/pob/commit/d71d9da))
+* komet-karma@ 0.2.5 ([ad759a2](https://github.com/christophehurpeau/pob/commit/ad759a2))
+* pob-release@3.0.0 with standard changelog ([0b5fbd8](https://github.com/christophehurpeau/pob/commit/0b5fbd8))
+* pob-release@3.1 ([881aa6d](https://github.com/christophehurpeau/pob/commit/881aa6d))
+* travis yarn cache ([5d28977](https://github.com/christophehurpeau/pob/commit/5d28977))
+
+
 ### v1.0.0
 
 - [`606d10b`](https://github.com/christophehurpeau/pob/commit/606d10bc758c29feeb54bce357b165713ec1fcdd) babel: update dependencies, add flow option (Christophe Hurpeau)
