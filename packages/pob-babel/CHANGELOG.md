@@ -1,3 +1,12 @@
+<a name="14.1.0"></a>
+# [14.1.0](https://github.com/christophehurpeau/pob-babel/compare/v14.0.0...v14.1.0) (2017-02-04)
+
+
+### Features
+
+* webpack-node6 env ([c23bda3](https://github.com/christophehurpeau/pob-babel/commit/c23bda3))
+
+
 <a name="14.0.0"></a>
 # [14.0.0](https://github.com/christophehurpeau/pob-babel/compare/v13.0.1...v14.0.0) (2017-02-04)
 
