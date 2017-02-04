@@ -1,3 +1,22 @@
+<a name="14.0.0"></a>
+# [14.0.0](https://github.com/christophehurpeau/pob-babel/compare/v13.0.1...v14.0.0) (2017-02-04)
+
+
+### Bug Fixes
+
+* clean missing examples ([1f6102d](https://github.com/christophehurpeau/pob-babel/commit/1f6102d))
+
+### Features
+
+* upgrade dependencies ([9e09259](https://github.com/christophehurpeau/pob-babel/commit/9e09259))
+* use babel-preset-pob-react ([7af44d1](https://github.com/christophehurpeau/pob-babel/commit/7af44d1))
+
+
+### BREAKING CHANGES
+
+* require babel-preset-pob-react instead of babel-preset-react
+
+
 <a name="13.0.1"></a>
 ## [13.0.1](https://github.com/christophehurpeau/pob-babel/compare/v13.0.0...v13.0.1) (2017-01-11)
 
