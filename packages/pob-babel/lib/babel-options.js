@@ -15,7 +15,7 @@ module.exports = function createOpts(
     return {
       presets: [
         'jsdoc',
-        react && 'react',
+        react && 'babel-preset-pob-react',
         require.resolve('babel-preset-stage-1'),
       ].filter(Boolean),
       plugins: [
@@ -36,7 +36,7 @@ module.exports = function createOpts(
     case 'node6':
       presets = [
         'es2015-node6',
-        react && 'react',
+        react && ['babel-preset-pob-react', { production }],
         require.resolve('babel-preset-stage-1'),
       ];
       browser = false;
@@ -45,7 +45,7 @@ module.exports = function createOpts(
     case 'older-node':
       presets = [
         'es2015',
-        react && 'react',
+        react && ['babel-preset-pob-react', { production }],
         require.resolve('babel-preset-stage-1'),
       ];
       browser = false;
@@ -54,7 +54,7 @@ module.exports = function createOpts(
     case 'webpack':
       presets = [
         ['es2015', { modules: false }],
-        react && 'react',
+        react && ['babel-preset-pob-react', { production }],
         require.resolve('babel-preset-stage-1'),
       ];
       browser = true;
@@ -63,7 +63,7 @@ module.exports = function createOpts(
     case 'webpack-modern-browsers':
       presets = [
         ['modern-browsers', { modules: false }],
-        react && 'react',
+        react && ['babel-preset-pob-react', { production }],
         require.resolve('babel-preset-stage-1'),
       ];
       browser = true;
@@ -72,7 +72,7 @@ module.exports = function createOpts(
     case 'browsers':
       presets = [
         'es2015',
-        react && 'react',
+        react && ['babel-preset-pob-react', { production }],
         require.resolve('babel-preset-stage-1'),
       ];
       browser = true;
@@ -91,10 +91,6 @@ module.exports = function createOpts(
       !production && [require.resolve('babel-plugin-transform-export-default-name-forked'), { compose: true }],
       !production && require.resolve('babel-plugin-tcomb-forked'),
       require.resolve('babel-plugin-transform-flow-strip-types'),
-      react && require.resolve('babel-plugin-react-require'),
-      !production && react && require.resolve('babel-plugin-transform-react-jsx-self'),
-      !production && react && require.resolve('babel-plugin-transform-react-jsx-source'),
-
       [require.resolve('babel-plugin-minify-replace'), {
         replacements: [
           {
