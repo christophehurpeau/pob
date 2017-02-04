@@ -1,3 +1,16 @@
+<a name="3.1.0"></a>
+# [3.1.0](https://github.com/christophehurpeau/pob-release/compare/v3.0.0...v3.1.0) (2017-02-04)
+
+
+### Features
+
+* abort when changelog is empty ([9fefc67](https://github.com/christophehurpeau/pob-release/commit/9fefc67))
+* exit 1 on error ([b3b91ee](https://github.com/christophehurpeau/pob-release/commit/b3b91ee))
+* remove useless premajor, preminor, prepatch and prerelease ([b7500d8](https://github.com/christophehurpeau/pob-release/commit/b7500d8))
+* upgrade dependencies ([ef4d028](https://github.com/christophehurpeau/pob-release/commit/ef4d028))
+* use conventional-recommended-bump ([d4a4457](https://github.com/christophehurpeau/pob-release/commit/d4a4457))
+
+
 <a name="3.0.0"></a>
 # [3.0.0](https://github.com/christophehurpeau/pob-release/compare/v2.3.0...v3.0.0) (2016-12-22)
 
