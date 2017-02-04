@@ -25,6 +25,12 @@ module.exports = class extends Generator {
             desc: 'travisci'
         });
 
+        this.option('withBabel', {
+            type: Boolean,
+            required: true,
+            desc: 'withBabel'
+        });
+
         this.option('codecov', {
             type: Boolean,
             required: true,
@@ -39,8 +45,9 @@ module.exports = class extends Generator {
     }
 
     initializing() {
-        mkdirp(this.destinationPath(this.options.destination, 'test/src'));
-        const testIndexPath = this.destinationPath(this.options.destination, 'test/src/index.js');
+        const testDirectory = `test${this.options.withBabel ? '/src' : ''}`;
+        mkdirp(this.destinationPath(this.options.destination, testDirectory));
+        const testIndexPath = this.destinationPath(this.options.destination, `${testDirectory}/index.js`);
         if (!this.fs.exists(testIndexPath)) {
             this.fs.copy(this.templatePath('index.js'), testIndexPath);
         }
@@ -49,12 +56,13 @@ module.exports = class extends Generator {
     writing() {
         const pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
 
+        const testDirectory = `test${this.options.withBabel ? '/lib' : ''}`;
         packageUtils.addScripts(pkg, {
-            test: 'mocha --harmony --es_staging --recursive --bail -u tdd test/node6',
+            test: `mocha --harmony --es_staging --recursive --bail -u tdd ${testDirectory}`,
             'generate:test-coverage': [
                 'rm -Rf coverage/',
                 'NODE_ENV=production node --harmony --es_staging node_modules/istanbul/lib/cli.js'
-                    + ' cover node_modules/.bin/_mocha -- --recursive --reporter=spec -u tdd test/node6',
+                    + ` cover node_modules/.bin/_mocha -- --recursive --reporter=spec -u tdd ${testDirectory}`,
             ].join(' ; ')
         });
 
@@ -79,6 +87,7 @@ module.exports = class extends Generator {
                 {
                     documentation: this.options.documentation,
                     codecov: this.options.codecov,
+                    withBabel: this.options.withBabel,
                 }
             );
             } catch (err) {

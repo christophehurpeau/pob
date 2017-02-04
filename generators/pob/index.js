@@ -307,7 +307,7 @@ module.exports = class PobGenerator extends Generator {
         if (this.props.includeTesting) {
             this.composeWith(require.resolve('../testing'), {
                 private: this.props.private,
-                babel: this.options.babel,
+                withBabel: withBabel,
                 react: this.props.react,
                 documentation: this.props.includeDocumentation,
                 codecov: this.props.includeCodecov,
