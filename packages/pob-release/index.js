@@ -3,6 +3,7 @@ const argv = require('minimist-argv');
 const inquirer = require('inquirer');
 const execSync = require('child_process').execSync;
 const { valid: validateSemver, inc: incSemver, gt: gtSemver, prerelease } = require('semver');
+const conventionalRecommendedBump = require('conventional-recommended-bump');
 
 const isSemverValid = version => validateSemver(version) !== null;
 
@@ -15,12 +16,17 @@ execSync(
 { stdio: 'inherit' });
 */
 
-const availableVersions = [
+const AVAILABLE_VERSIONS = [
   'patch',
   'minor',
   'major',
-  'manual',
 ];
+
+const VERSION_NAME_TO_INDEX = {
+  patch: 0,
+  minor: 1,
+  major: 2,
+};
 
 const packageJson = JSON.parse(readFileSync('./package.json'));
 const currentVersion = packageJson.version;
@@ -29,7 +35,7 @@ const isValidNextVersion = version => isSemverValid(version) && gtSemver(version
 
 Promise.resolve(argv._[0]).then((version) => {
   if (version) {
-    if (availableVersions.includes(version)) {
+    if (AVAILABLE_VERSIONS.includes(version)) {
       version = incSemver(currentVersion, version);
     } else if (!isValidNextVersion(version)) {
       throw new Error(`Invalid semver version: ${version}`);
@@ -38,14 +44,23 @@ Promise.resolve(argv._[0]).then((version) => {
     return version;
   }
 
-  const availableVersionsWithSemver = availableVersions.map((version) => {
-    if (version === 'manual') return version;
+  return new Promise((resolve, reject) => (
+    conventionalRecommendedBump({ preset: 'angular' }, (err, result) => {
+      if (err) return reject(err);
+      resolve(result.releaseType);
+    })
+  ));
+}).then((recommandedVersion) => {
+  const availableVersionsWithSemver = AVAILABLE_VERSIONS.map((version) => {
     const nextVersion = incSemver(currentVersion, version);
     return {
       name: `${version}: ${nextVersion}`,
       value: nextVersion,
     };
-  });
+  }).concat('manual');
+
+  const defaultVersionIndex = VERSION_NAME_TO_INDEX[recommandedVersion];
+  const defaultVersion = availableVersionsWithSemver[defaultVersionIndex].value;
 
   return inquirer.prompt([
     {
@@ -53,7 +68,7 @@ Promise.resolve(argv._[0]).then((version) => {
       name: 'version',
       message: 'npm version:',
       choices: availableVersionsWithSemver,
-      default: availableVersionsWithSemver[1].value, // minor
+      default: defaultVersion,
     },
   ]).then((answers) => {
     const version = answers.version;
