@@ -20,10 +20,6 @@ const availableVersions = [
   'minor',
   'major',
   'manual',
-  'premajor',
-  'preminor',
-  'prepatch',
-  'prerelease',
 ];
 
 const packageJson = JSON.parse(readFileSync('./package.json'));
