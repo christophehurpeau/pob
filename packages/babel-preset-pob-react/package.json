@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-pob-react",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "babel preset react and plugins for pob",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
