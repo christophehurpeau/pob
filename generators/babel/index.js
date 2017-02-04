@@ -59,6 +59,12 @@ module.exports = class extends Generator {
             desc: 'Babel Env webpack all browsers'
         });
 
+        this.option('env_webpack_node6', {
+            type: Boolean,
+            required: false,
+            desc: 'Babel Env webpack node6'
+        });
+
         this.option('env_browsers', {
             type: Boolean,
             required: false,
@@ -68,20 +74,26 @@ module.exports = class extends Generator {
 
     initializing() {
         mkdirp(this.destinationPath(this.options.destination, 'src'));
-        this.fs.copyTpl(
-            this.templatePath('index.js.ejs'),
-            this.destinationPath(this.options.destination, 'index.js'),
-            {
-                env_node6: this.options.env_node6,
-                env_olderNode: this.options.env_olderNode,
-            }
-        );
 
-        const indexDestPath = this.destinationPath(this.options.destination, 'src/index.js');
-        if (!this.fs.exists(indexDestPath)) {
+        const indexDestPath = this.destinationPath(this.options.destination, 'index.js');
+        if (this.options.env_node6 || this.options.env_olderNode) {
+            this.fs.copyTpl(
+                this.templatePath('index.js.ejs'),
+                indexDestPath,
+                {
+                    env_node6: this.options.env_node6,
+                    env_olderNode: this.options.env_olderNode,
+                }
+            );
+        } else {
+            this.fs.delete(indexDestPath);
+        }
+
+        const indexSrcDestPath = this.destinationPath(this.options.destination, 'src/index.js');
+        if (!this.fs.exists(indexSrcDestPath)) {
             const idxJsxDestPath = this.destinationPath(this.options.destination, 'src/index.jsx');
             if (!this.fs.exists(idxJsxDestPath)) {
-                this.fs.copy(this.templatePath('src/index.js'), indexDestPath);
+                this.fs.copy(this.templatePath('src/index.js'), indexSrcDestPath);
             }
         }
 
@@ -130,9 +142,12 @@ module.exports = class extends Generator {
             pkg['webpack:main-dev'] = pkg['webpack:browser-dev'] = './lib-webpack-dev/index.js';
         }
 
-        if (!this.options.env_node6) {
+        if (!this.options.env_node6 && !this.options.env_webpack_node6) {
             delete pkg['webpack:node'];
             delete pkg['webpack:node-dev'];
+        } else if (this.options.env_webpack_node6) {
+            pkg['webpack:node'] = './lib-webpack-node6/index.js';
+            pkg['webpack:node-dev'] = './lib-webpack-node6-dev/index.js';
         } else {
             pkg['webpack:node'] = './lib-node6/index.js';
             pkg['webpack:node-dev'] = './lib-node6-dev/index.js';
@@ -152,7 +167,7 @@ module.exports = class extends Generator {
         delete pkg.scripts['watch:dev'];
 
         packageUtils.addDevDependencies(pkg, {
-            'pob-babel': '^13.0.0',
+            'pob-babel': '^14.1.0',
             'eslint-plugin-babel': '^4.0.0',
             'tcomb-forked': '^3.4.0',
         });
@@ -170,13 +185,14 @@ module.exports = class extends Generator {
         delete pkg.devDependencies['babel-plugin-discard-module-references'];
         delete pkg.devDependencies['babel-plugin-remove-dead-code'];
         delete pkg.devDependencies['babel-plugin-react-require'];
+        delete pkg.devDependencies['babel-preset-react'];
 
         if (this.options.react) {
             packageUtils.addDevDependencies(pkg, {
-                'babel-preset-react': '^6.16.0',
+                'babel-preset-pob-react': '^0.1.0',
             });
         } else {
-            delete pkg.devDependencies['babel-preset-react'];
+            delete pkg.devDependencies['babel-preset-pob-react'];
         }
 
         if (this.options.documentation) {
