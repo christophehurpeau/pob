@@ -355,7 +355,7 @@ module.exports = class PobGenerator extends Generator {
             clean: 'rm -Rf docs dist test/node6 coverage',
         });
 
-        packageUtils.addDevDependency(pkg, 'pob-release', '^3.0.0');
+        packageUtils.addDevDependency(pkg, 'pob-release', '^3.1.0');
         delete pkg.devDependencies['springbokjs-library'];
 
         packageUtils.sort(pkg);
