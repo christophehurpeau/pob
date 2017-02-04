@@ -1,6 +1,7 @@
 # pob [![NPM version][npm-image]][npm-url]
 
-Pile of bones, library generator with git/babel/eslint/readme/editorconfig/mocha/jsdoc/circleci/travis.
+Pile Of Bones / Place Of Birth / Point Of Beginning 
+Library generator with git/babel/eslint/readme/editorconfig/mocha/jsdoc/circleci/travis.
 Better than a skeleton !
 
 ## How to install
