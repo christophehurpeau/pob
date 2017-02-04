@@ -10,7 +10,7 @@ module.exports = function clean(envs) {
   const startTime = logger.infoTime('starting');
 
   if (!envs) {
-    execSync('rm -Rf lib-* test/node6');
+    execSync('rm -Rf lib-* test/node6 examples/node6');
     task.succeed();
     logger.infoSuccessTimeEnd(startTime, 'done.');
     return;
