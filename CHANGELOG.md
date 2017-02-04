@@ -1,3 +1,12 @@
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/christophehurpeau/pob/compare/v1.1.0...v1.2.0) (2017-02-04)
+
+
+### Features
+
+* pob-babel@14.1.0 webpack node 6 and preset pob-react ([a535687](https://github.com/christophehurpeau/pob/commit/a535687))
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/christophehurpeau/pob/compare/v1.0.0...v1.1.0) (2017-02-04)
 
