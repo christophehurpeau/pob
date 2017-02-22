@@ -1,3 +1,9 @@
+<a name="14.2.0"></a>
+# [14.2.0](https://github.com/christophehurpeau/pob-babel/compare/v14.1.0...v14.2.0) (2017-02-22)
+
+update dependencies
+
+
 <a name="14.1.0"></a>
 # [14.1.0](https://github.com/christophehurpeau/pob-babel/compare/v14.0.0...v14.1.0) (2017-02-04)
 
