@@ -25,7 +25,7 @@ module.exports = function createOpts(
     };
   }
 
-  let presets;
+  let transpilationPresets;
   let browser;
 
   switch (env) {
@@ -34,95 +34,79 @@ module.exports = function createOpts(
 
     case 'test':
     case 'node6':
-      presets = [
-        'es2015-node6',
-        react && ['babel-preset-pob-react', { production }],
-        require.resolve('babel-preset-stage-1'),
+      transpilationPresets = [
+        'node6',
+      ];
+      browser = false;
+      break;
+
+    case 'node7':
+      transpilationPresets = [
+        ['babel-preset-env', { targets: { node: 7.6 } }],
       ];
       browser = false;
       break;
 
     case 'older-node':
-      presets = [
-        'es2015',
-        react && ['babel-preset-pob-react', { production }],
-        require.resolve('babel-preset-stage-1'),
+      transpilationPresets = [
+        'latest',
       ];
       browser = false;
       break;
 
-    case 'webpack-node6':
-      presets = [
-        react && ['babel-preset-pob-react', { production }],
-        require.resolve('babel-preset-stage-1'),
+    case 'webpack-node7':
+      transpilationPresets = [
+        ['babel-preset-env', { targets: { node: 6.5 }, modules: false }],
       ];
+      browser = false;
       break;
 
     case 'webpack':
-      presets = [
-        ['es2015', { modules: false }],
-        react && ['babel-preset-pob-react', { production }],
-        require.resolve('babel-preset-stage-1'),
+      transpilationPresets = [
+        ['latest', { es2015: { modules: false } }],
       ];
       browser = true;
       break;
 
     case 'webpack-modern-browsers':
-      presets = [
+      transpilationPresets = [
         ['modern-browsers', { modules: false }],
-        react && ['babel-preset-pob-react', { production }],
-        require.resolve('babel-preset-stage-1'),
       ];
       browser = true;
       break;
 
     case 'browsers':
-      presets = [
-        'es2015',
-        react && ['babel-preset-pob-react', { production }],
-        require.resolve('babel-preset-stage-1'),
+      transpilationPresets = [
+        'latest',
       ];
       browser = true;
       break;
 
     default:
       throw new Error(`Unsupported env ${env}`);
-
   }
 
   return {
-    presets: presets.concat(otherPresets || []).filter(Boolean),
-    plugins: [
-      require.resolve('babel-plugin-syntax-flow'),
-      [require.resolve('babel-plugin-import-export-rename'), { '^([a-z\\-]+|[./]+)/src(.*)$': '$1$2' }],
-      !production && [require.resolve('babel-plugin-transform-export-default-name-forked'), { compose: true }],
-      !production && require.resolve('babel-plugin-tcomb-forked'),
-      require.resolve('babel-plugin-transform-flow-strip-types'),
-      [require.resolve('babel-plugin-minify-replace'), {
-        replacements: [
-          {
-            identifierName: 'PRODUCTION',
-            replacement: { type: 'booleanLiteral', value: production },
-          },
-          {
-            identifierName: 'BROWSER',
-            replacement: { type: 'booleanLiteral', value: browser },
-          },
-          {
-            identifierName: 'SERVER',
-            replacement: { type: 'booleanLiteral', value: !browser },
-          },
-          {
-            identifierName: 'NODEJS',
-            replacement: { type: 'booleanLiteral', value: !browser },
-          },
-        ],
+    // preset order is last to first, so we reverse it for clarity.
+    presets: [
+      // add react preset with jsx
+      react && ['babel-preset-pob-react', { production }],
+      // add stage-1 to stage-3 features
+      require.resolve('babel-preset-pob-stages'),
+      // pob preset: flow, import `src`, export default function name, replacements
+      [require.resolve('babel-preset-pob'), {
+        production,
+        replacements: {
+          BROWSER: browser,
+          NODEJS: !browser,
+          SERVER: !browser,
+        },
       }],
-      require.resolve('babel-plugin-minify-constant-folding'),
-      [require.resolve('babel-plugin-minify-dead-code-elimination'), { keepFnName: true, keepFnames: true }],
-      require.resolve('babel-plugin-minify-guarded-expressions'),
-      require.resolve('babel-plugin-discard-module-references'),
-      ...(otherPlugins || []),
-    ].filter(Boolean),
+      // optimizations: remove dead-code
+      require.resolve('babel-preset-babili-optimizations'),
+      // discard unused imports (like production-only or node-only imports)
+      { plugins: [require.resolve('babel-plugin-discard-module-references')] },
+    ].concat(transpilationPresets).reverse().concat(otherPresets || []).filter(Boolean),
+    plugins: (otherPlugins || []).filter(Boolean),
   };
 };
