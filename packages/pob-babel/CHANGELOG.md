@@ -1,3 +1,17 @@
+<a name="15.0.0"></a>
+# [15.0.0](https://github.com/christophehurpeau/pob-babel/compare/v14.2.0...v15.0.0) (2017-02-25)
+
+
+### Features
+
+* use pob presets ([2906d7d](https://github.com/christophehurpeau/pob-babel/commit/2906d7d))
+
+
+### BREAKING CHANGES
+
+* use flow-runtime instead of tcomb
+
+
 <a name="14.2.0"></a>
 # [14.2.0](https://github.com/christophehurpeau/pob-babel/compare/v14.1.0...v14.2.0) (2017-02-22)
 
