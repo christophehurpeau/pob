@@ -1,3 +1,12 @@
+<a name="15.0.1"></a>
+## [15.0.1](https://github.com/christophehurpeau/pob-babel/compare/v15.0.0...v15.0.1) (2017-02-25)
+
+
+### Bug Fixes
+
+* babel-preset-babili-optimizations@0.2.0 ([a56cc70](https://github.com/christophehurpeau/pob-babel/commit/a56cc70))
+
+
 <a name="15.0.0"></a>
 # [15.0.0](https://github.com/christophehurpeau/pob-babel/compare/v14.2.0...v15.0.0) (2017-02-25)
 
