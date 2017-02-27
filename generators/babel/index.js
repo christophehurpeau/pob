@@ -41,6 +41,12 @@ module.exports = class extends Generator {
             desc: 'Babel Env node6'
         });
 
+        this.option('env_node7', {
+            type: Boolean,
+            required: false,
+            desc: 'Babel Env node7'
+        });
+
         this.option('env_olderNode', {
             type: Boolean,
             required: false,
@@ -59,10 +65,10 @@ module.exports = class extends Generator {
             desc: 'Babel Env webpack all browsers'
         });
 
-        this.option('env_webpack_node6', {
+        this.option('env_webpack_node7', {
             type: Boolean,
             required: false,
-            desc: 'Babel Env webpack node6'
+            desc: 'Babel Env webpack node7'
         });
 
         this.option('env_browsers', {
@@ -76,12 +82,13 @@ module.exports = class extends Generator {
         mkdirp(this.destinationPath(this.options.destination, 'src'));
 
         const indexDestPath = this.destinationPath(this.options.destination, 'index.js');
-        if (this.options.env_node6 || this.options.env_olderNode) {
+        if (this.options.env_node6 || this.options.env_node7 || this.options.env_olderNode) {
             this.fs.copyTpl(
                 this.templatePath('index.js.ejs'),
                 indexDestPath,
                 {
                     env_node6: this.options.env_node6,
+                    env_node7: this.options.env_node7,
                     env_olderNode: this.options.env_olderNode,
                 }
             );
@@ -142,15 +149,20 @@ module.exports = class extends Generator {
             pkg['webpack:main-dev'] = pkg['webpack:browser-dev'] = './lib-webpack-dev/index.js';
         }
 
-        if (!this.options.env_node6 && !this.options.env_webpack_node6) {
+        if (!this.options.env_node7 && !this.options.env_webpack_node7) {
             delete pkg['webpack:node'];
             delete pkg['webpack:node-dev'];
-        } else if (this.options.env_webpack_node6) {
-            pkg['webpack:node'] = './lib-webpack-node6/index.js';
-            pkg['webpack:node-dev'] = './lib-webpack-node6-dev/index.js';
+        } else if (this.options.env_webpack_node7) {
+            pkg['webpack:node'] = './lib-webpack-node7/index.js';
+            pkg['webpack:node-dev'] = './lib-webpack-node7-dev/index.js';
         } else {
-            pkg['webpack:node'] = './lib-node6/index.js';
-            pkg['webpack:node-dev'] = './lib-node6-dev/index.js';
+            pkg['webpack:node'] = './lib-node7/index.js';
+            pkg['webpack:node-dev'] = './lib-node7-dev/index.js';
+        }
+
+        if (!this.options.env_olderNode && (this.options.env_node6 || this.options.env_node7)) {
+            if (!pkg.engines) pkg.engines = {};
+            pkg.engines = { "node" : `>=${this.options.env_node6 ? '6.5.0' : '7.6.0'}` };
         }
 
         packageUtils.sort(pkg);
@@ -167,14 +179,19 @@ module.exports = class extends Generator {
         delete pkg.scripts['watch:dev'];
 
         packageUtils.addDevDependencies(pkg, {
-            'pob-babel': '^14.1.0',
+            'pob-babel': '^16.0.0',
             'eslint-plugin-babel': '^4.0.0',
-            'tcomb-forked': '^3.4.0',
+            'flow-runtime': '^0.6.0',
         });
 
+        // old pob dependencies
         delete pkg.devDependencies['tcomb'];
+        delete pkg.devDependencies['tcomb-forked'];
+        delete pkg.devDependencies['babel-preset-env'];
+        delete pkg.devDependencies['babel-preset-es2015'];
         delete pkg.devDependencies['babel-preset-es2015-webpack'];
         delete pkg.devDependencies['babel-preset-es2015-node5'];
+        delete pkg.devDependencies['babel-preset-es2015-node6'];
         delete pkg.devDependencies['babel-preset-stage-1'];
         delete pkg.devDependencies['babel-preset-modern-browsers-stage-1'];
         delete pkg.devDependencies['babel-preset-flow'];
@@ -204,19 +221,19 @@ module.exports = class extends Generator {
         }
 
         if (this.options.env_olderNode || this.options.env_browsers || this.options.env_webpack_allBrowsers) {
-            packageUtils.addDevDependency(pkg, 'babel-preset-es2015', '^6.16.0');
+            packageUtils.addDevDependency(pkg, 'babel-preset-latest', '^6.22.0');
         } else {
-           delete pkg.devDependencies['babel-preset-es2015'];
+           delete pkg.devDependencies['babel-preset-latest'];
         }
 
-        if (this.options.env_node6) {
-            packageUtils.addDevDependency(pkg, 'babel-preset-es2015-node6', '^0.4.0');
+        if (this.options.env_node6 || this.options.env_node7) {
+            packageUtils.addDevDependency(pkg, 'babel-preset-latest-node', '^0.1.0');
         } else {
-           delete pkg.devDependencies['babel-preset-es2015-node6'];
+           delete pkg.devDependencies['babel-preset-latest-node'];
         }
 
         if (this.options.env_webpack_modernBrowsers) {
-            packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers', '^8.0.0');
+            packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers', '^8.1.1');
         } else {
            delete pkg.devDependencies['babel-preset-modern-browsers'];
         }

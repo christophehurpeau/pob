@@ -152,7 +152,12 @@ module.exports = class PobGenerator extends Generator {
                 name: 'babelEnvs',
                 message: 'Babel envs:',
                 when: this.options.babel,
-                choices: [{
+                choices: [
+                {
+                    name: 'Node7',
+                    value: 'node7',
+                    checked: this.props.babelEnvs.includes('node7'),
+                }, {
                     name: 'Node6',
                     value: 'node6',
                     checked: this.props.babelEnvs.includes('node6'),
@@ -169,9 +174,10 @@ module.exports = class PobGenerator extends Generator {
                     value: 'webpackAllBrowsers',
                     checked: this.props.babelEnvs.includes('webpack'),
                 }, {
-                    name: 'Webpack: Node 6',
-                    value: 'webpackNode6',
-                    checked: this.props.babelEnvs.includes('webpack-node6'),
+                    name: 'Webpack: Node 7',
+                    value: 'webpackNode7',
+                    checked: this.props.babelEnvs.includes('webpack-node6')
+                     || this.props.babelEnvs.includes('webpack-node7'),
                 }, {
                     name: 'Browsers',
                     value: 'browsers',
@@ -276,10 +282,11 @@ module.exports = class PobGenerator extends Generator {
                 documentation: this.props.includeDocumentation,
                 testing: this.props.includeTesting,
                 env_node6: this.props.babelEnvs.includes('node6'),
+                env_node7: this.props.babelEnvs.includes('node7'),
                 env_olderNode: this.props.babelEnvs.includes('olderNode'),
                 env_webpack_modernBrowsers: this.props.babelEnvs.includes('webpackModernBrowsers'),
                 env_webpack_allBrowsers: this.props.babelEnvs.includes('webpackAllBrowsers'),
-                env_webpack_node6: this.props.babelEnvs.includes('webpackNode6'),
+                env_webpack_node7: this.props.babelEnvs.includes('webpackNode7'),
                 env_browsers: this.props.babelEnvs.includes('browsers'),
             });
         } else {
@@ -371,10 +378,11 @@ module.exports = class PobGenerator extends Generator {
 
         pobjson.envs = [
             this.props.babelEnvs.includes('node6') && "node6",
+            this.props.babelEnvs.includes('node7') && "node7",
             this.props.babelEnvs.includes('olderNode') && "older-node",
             this.props.babelEnvs.includes('webpackModernBrowsers') && "webpack-modern-browsers",
             this.props.babelEnvs.includes('webpackAllBrowsers') && "webpack",
-            this.props.babelEnvs.includes('webpackNode6') && "webpack-node6",
+            this.props.babelEnvs.includes('webpackNode7') && "webpack-node7",
             this.props.babelEnvs.includes('browsers') && "browsers",
         ].filter(Boolean);
 
