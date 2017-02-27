@@ -1,3 +1,17 @@
+<a name="16.0.0"></a>
+# [16.0.0](https://github.com/christophehurpeau/pob-babel/compare/v15.0.1...v16.0.0) (2017-02-27)
+
+
+### Features
+
+* use preset latest-node ([b43bf1f](https://github.com/christophehurpeau/pob-babel/commit/b43bf1f))
+
+
+### BREAKING CHANGES
+
+* remove babel-preset-env and add babel-preset-latest-node
+
+
 <a name="15.0.1"></a>
 ## [15.0.1](https://github.com/christophehurpeau/pob-babel/compare/v15.0.0...v15.0.1) (2017-02-25)
 
