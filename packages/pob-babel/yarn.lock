@@ -306,14 +306,14 @@ babel-plugin-discard-module-references@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/babel-plugin-discard-module-references/-/babel-plugin-discard-module-references-1.1.2.tgz#898007cbeb472cef76ef11e1af485b41d4241747"
 
-babel-plugin-flow-runtime@^0.5.0:
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-flow-runtime/-/babel-plugin-flow-runtime-0.5.0.tgz#854ef8d902847daab20ac1d80de63c7bea8ba8bd"
+babel-plugin-flow-runtime@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/babel-plugin-flow-runtime/-/babel-plugin-flow-runtime-0.6.1.tgz#1a4c98e350086a53e785a691a7f9a00f552c181a"
   dependencies:
     babel-generator "^6.21.0"
     babel-traverse "^6.20.0"
     babel-types "^6.16.0"
-    babylon "^6.14.1"
+    babylon "^6.16.1"
     camelcase "^3.0.0"
     flow-config-parser "^0.3.0"
 
@@ -481,11 +481,11 @@ babel-preset-babili-optimizations@^0.2.0:
     babel-plugin-minify-guarded-expressions "^0.0.4"
     babel-plugin-transform-inline-consecutive-adds "^0.0.2"
 
-babel-preset-flow-runtime@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-flow-runtime/-/babel-preset-flow-runtime-0.1.0.tgz#152c9b57f57de2ab0d9f08e90129dcf86c40a341"
+babel-preset-flow-runtime@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/babel-preset-flow-runtime/-/babel-preset-flow-runtime-0.6.1.tgz#77679e9a243f558f822fcaacfbc70926be733b14"
   dependencies:
-    babel-plugin-flow-runtime "^0.5.0"
+    babel-plugin-flow-runtime "^0.6.1"
     babel-plugin-syntax-flow "^6.18.0"
 
 babel-preset-flow@^6.23.0:
@@ -503,15 +503,15 @@ babel-preset-pob-stages@^0.1.0:
     babel-plugin-transform-export-extensions "^6.22.0"
     babel-plugin-transform-object-rest-spread "^6.23.0"
 
-babel-preset-pob@^0.1.0:
-  version "0.1.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-pob/-/babel-preset-pob-0.1.0.tgz#19c2ada19ab8794719cf27d9df123d94d5c4496a"
+babel-preset-pob@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/babel-preset-pob/-/babel-preset-pob-0.1.1.tgz#66890b43d1e73dfaf1eff205e1cbbec4b3873cd9"
   dependencies:
     babel-plugin-import-export-rename "^1.0.1"
     babel-plugin-minify-replace "^0.0.3"
     babel-plugin-transform-export-default-name-forked "^1.2.2"
     babel-preset-flow "^6.23.0"
-    babel-preset-flow-runtime "^0.1.0"
+    babel-preset-flow-runtime "^0.6.1"
 
 babel-preset-stage-1@^6.22.0:
   version "6.22.0"
@@ -592,7 +592,7 @@ babel-types@^6.16.0, babel-types@^6.22.0, babel-types@^6.23.0:
     lodash "^4.2.0"
     to-fast-properties "^1.0.1"
 
-babylon@^6.11.0, babylon@^6.14.1, babylon@^6.15.0:
+babylon@^6.11.0, babylon@^6.15.0, babylon@^6.16.1:
   version "6.16.1"
   resolved "https://registry.yarnpkg.com/babylon/-/babylon-6.16.1.tgz#30c5a22f481978a9e7f8cdfdf496b11d94b404d3"
 
