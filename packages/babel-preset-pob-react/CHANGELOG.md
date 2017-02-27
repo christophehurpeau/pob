@@ -1,3 +1,12 @@
+<a name="0.2.1"></a>
+## [0.2.1](https://github.com/christophehurpeau/babel-preset-pob-react/compare/v0.2.0...v0.2.1) (2017-02-27)
+
+
+### Bug Fixes
+
+* useDefault ([292fc0e](https://github.com/christophehurpeau/babel-preset-pob-react/commit/292fc0e))
+
+
 <a name="0.2.0"></a>
 # [0.2.0](https://github.com/christophehurpeau/babel-preset-pob-react/compare/v0.1.0...v0.2.0) (2017-02-27)
 
