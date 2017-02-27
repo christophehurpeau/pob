@@ -1,7 +1,8 @@
-const presetReact = require('babel-preset-react');
-const pluginReactRequire = require('babel-plugin-react-require');
-const pluginTransformReactJSXSelf = require('babel-plugin-transform-react-jsx-self');
-const pluginTransformReactJSXSource = require('babel-plugin-transform-react-jsx-source');
+const useDefault = obj => (obj.__esModule ? obj.default : obj);
+const presetReact = useDefault(require('babel-preset-react'));
+const pluginReactRequire = useDefault(require('babel-plugin-react-require'));
+const pluginTransformReactJSXSelf = useDefault(require('babel-plugin-transform-react-jsx-self'));
+const pluginTransformReactJSXSource = useDefault(require('babel-plugin-transform-react-jsx-source'));
 
 
 module.exports = function (context, opts = {}) {
