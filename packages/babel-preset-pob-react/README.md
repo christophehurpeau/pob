@@ -5,6 +5,10 @@ babel preset react and plugins for pob
 [![Dependency ci Status][dependencyci-image]][dependencyci-url]
 [![Dependency Status][daviddm-image]][daviddm-url]
 
+## Options
+
+- production: true | false (default: process.env.NODE_ENV === 'production')
+
 ## Content
 
 This preset includes [babel-preset-react](https://www.npmjs.com/package/babel-preset-react) and the following plugins:
