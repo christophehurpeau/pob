@@ -1,3 +1,12 @@
+<a name="16.1.0"></a>
+# [16.1.0](https://github.com/christophehurpeau/pob-babel/compare/v16.0.0...v16.1.0) (2017-02-27)
+
+
+### Features
+
+* babel-preset-pob@^0.1.1 ([b066602](https://github.com/christophehurpeau/pob-babel/commit/b066602))
+
+
 <a name="16.0.0"></a>
 # [16.0.0](https://github.com/christophehurpeau/pob-babel/compare/v15.0.1...v16.0.0) (2017-02-27)
 
