@@ -25,7 +25,7 @@ module.exports = function createOpts(
     };
   }
 
-  let transpilationPresets;
+  let transpilationPreset;
   let browser;
 
   switch (env) {
@@ -33,52 +33,38 @@ module.exports = function createOpts(
       throw new Error('use olderNode instead.');
 
     case 'test':
-    case 'node6':
-      transpilationPresets = [
-        'node6',
-      ];
+    case 'node7':
+      transpilationPreset = ['latest-node', { target: 7.6 }];
       browser = false;
       break;
 
-    case 'node7':
-      transpilationPresets = [
-        ['babel-preset-env', { targets: { node: 7.6 } }],
-      ];
+    case 'node6':
+      transpilationPreset = ['latest-node', { target: 6.5 }];
       browser = false;
       break;
 
     case 'older-node':
-      transpilationPresets = [
-        'latest',
-      ];
+      transpilationPreset = 'latest';
       browser = false;
       break;
 
     case 'webpack-node7':
-      transpilationPresets = [
-        ['babel-preset-env', { targets: { node: 6.5 }, modules: false }],
-      ];
+      transpilationPreset = ['latest-node', { target: 7.6, modules: false }];
       browser = false;
       break;
 
     case 'webpack':
-      transpilationPresets = [
-        ['latest', { es2015: { modules: false } }],
-      ];
+      transpilationPreset = ['latest', { es2015: { modules: false } }];
       browser = true;
       break;
 
     case 'webpack-modern-browsers':
-      transpilationPresets = [
-        ['modern-browsers', { modules: false }],
-      ];
+      transpilationPreset = ['modern-browsers', { modules: false }];
       browser = true;
       break;
 
     case 'browsers':
-      transpilationPresets = [
-        'latest',
-      ];
+      transpilationPreset = 'latest';
       browser = true;
       break;
 
@@ -106,7 +92,9 @@ module.exports = function createOpts(
       require.resolve('babel-preset-babili-optimizations'),
       // discard unused imports (like production-only or node-only imports)
       { plugins: [require.resolve('babel-plugin-discard-module-references')] },
-    ].concat(transpilationPresets).reverse().concat(otherPresets || []).filter(Boolean),
+      // transpile for specified target
+      transpilationPreset,
+    ].reverse().concat(otherPresets || []).filter(Boolean),
     plugins: (otherPlugins || []).filter(Boolean),
   };
 };
