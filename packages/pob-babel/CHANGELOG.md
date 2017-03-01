@@ -1,3 +1,12 @@
+<a name="16.2.3"></a>
+## [16.2.3](https://github.com/christophehurpeau/pob-babel/compare/v16.2.2...v16.2.3) (2017-03-01)
+
+
+### Bug Fixes
+
+* pob-babel/register ([a2b1868](https://github.com/christophehurpeau/pob-babel/commit/a2b1868))
+
+
 <a name="16.2.2"></a>
 ## [16.2.2](https://github.com/christophehurpeau/pob-babel/compare/v16.2.1...v16.2.2) (2017-03-01)
 
