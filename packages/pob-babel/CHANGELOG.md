@@ -1,3 +1,12 @@
+<a name="16.2.1"></a>
+## [16.2.1](https://github.com/christophehurpeau/pob-babel/compare/v16.2.0...v16.2.1) (2017-03-01)
+
+
+### Bug Fixes
+
+* bin path ([3cc6ca5](https://github.com/christophehurpeau/pob-babel/commit/3cc6ca5))
+
+
 <a name="16.2.0"></a>
 # [16.2.0](https://github.com/christophehurpeau/pob-babel/compare/v16.1.0...v16.2.0) (2017-03-01)
 
