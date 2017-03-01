@@ -1,3 +1,12 @@
+<a name="16.2.2"></a>
+## [16.2.2](https://github.com/christophehurpeau/pob-babel/compare/v16.2.1...v16.2.2) (2017-03-01)
+
+
+### Bug Fixes
+
+* update dependencies ([056c831](https://github.com/christophehurpeau/pob-babel/commit/056c831))
+
+
 <a name="16.2.1"></a>
 ## [16.2.1](https://github.com/christophehurpeau/pob-babel/compare/v16.2.0...v16.2.1) (2017-03-01)
 
