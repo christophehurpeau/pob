@@ -32,7 +32,6 @@ module.exports = function createOpts(
     case 'es5':
       throw new Error('use olderNode instead.');
 
-    case 'test':
     case 'node7':
       transpilationPreset = ['latest-node', { target: 7.6 }];
       browser = false;
