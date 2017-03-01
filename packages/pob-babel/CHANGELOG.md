@@ -1,3 +1,12 @@
+<a name="16.2.0"></a>
+# [16.2.0](https://github.com/christophehurpeau/pob-babel/compare/v16.1.0...v16.2.0) (2017-03-01)
+
+
+### Features
+
+* pob-register ([ece40e8](https://github.com/christophehurpeau/pob-babel/commit/ece40e8))
+
+
 <a name="16.1.0"></a>
 # [16.1.0](https://github.com/christophehurpeau/pob-babel/compare/v16.0.0...v16.1.0) (2017-02-27)
 
