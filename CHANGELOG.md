@@ -1,3 +1,13 @@
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/christophehurpeau/pob/compare/v1.2.0...v1.3.0) (2017-03-01)
+
+
+### Features
+
+* node7, flow-runtime ([91929a8](https://github.com/christophehurpeau/pob/commit/91929a8))
+* use pob-babel/generator for tests ([cff149b](https://github.com/christophehurpeau/pob/commit/cff149b))
+
+
 <a name="1.2.0"></a>
 # [1.2.0](https://github.com/christophehurpeau/pob/compare/v1.1.0...v1.2.0) (2017-02-04)
 
