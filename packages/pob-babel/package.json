@@ -11,7 +11,7 @@
   "bin": {
     "pob-build": "./pob-build",
     "pob-watch": "./pob-watch",
-    "pob-register": "./pob-register"
+    "pob-register": "./register"
   },
   "scripts": {
     "clean": "rm -Rf docs dist test/node6 coverage",
