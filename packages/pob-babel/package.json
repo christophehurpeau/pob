@@ -9,9 +9,9 @@
   "homepage": "https://github.com/christophehurpeau/pob-babel",
   "main": "lib/index.js",
   "bin": {
-    "pob-build": "./build",
-    "pob-watch": "./watch",
-    "pob-register": "./register"
+    "pob-build": "./pob-build",
+    "pob-watch": "./pob-watch",
+    "pob-register": "./pob-register"
   },
   "scripts": {
     "clean": "rm -Rf docs dist test/node6 coverage",
