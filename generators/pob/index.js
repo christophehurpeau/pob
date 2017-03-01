@@ -70,6 +70,7 @@ module.exports = class PobGenerator extends Generator {
             if (this.pobjson) this.fs.delete(this.destinationPath('.pobrc.json'));
         }
         if (!this.pobjson) this.pobjson = {};
+        if (!this.pobjson.entries) this.pobjson.entries = ['index'];
 
         // Pre set the default props from the information we have at this point
         this.props = {
@@ -187,14 +188,22 @@ module.exports = class PobGenerator extends Generator {
                 Object.assign(this.props, props);
             });
         }).then(() => {
-            // askForReact
+            // askForReact and flow
             if (!this.props.babelEnvs.length) return;
-            return this.prompt([{
-                type: 'confirm',
-                name: 'react',
-                message: 'Would you like React syntax ?',
-                default: this.pobjson.react || false,
-            }]).then((props) => {
+            return this.prompt([
+                {
+                    type: 'confirm',
+                    name: 'react',
+                    message: 'Would you like React syntax ?',
+                    default: this.pobjson.react || false,
+                },
+                {
+                    type: 'confirm',
+                    name: 'flow',
+                    message: 'Would you like flowtype ?',
+                    default: this.pobjson.flow || false,
+                }
+            ]).then((props) => {
                 Object.assign(this.props, props);
             });
         }).then(() => {
@@ -273,8 +282,14 @@ module.exports = class PobGenerator extends Generator {
         this.composeWith(require.resolve('../eslint'), {
             babel: withBabel,
             react: this.props.react,
+            flow: this.props.flow,
             testing: this.props.includeTesting,
         });
+
+        if (this.props.flow) {
+            this.composeWith(require.resolve('../flow'), {
+            });
+        }
 
         if (withBabel) {
             this.composeWith(require.resolve('../babel'), {
@@ -288,6 +303,7 @@ module.exports = class PobGenerator extends Generator {
                 env_webpack_allBrowsers: this.props.babelEnvs.includes('webpackAllBrowsers'),
                 env_webpack_node7: this.props.babelEnvs.includes('webpackNode7'),
                 env_browsers: this.props.babelEnvs.includes('browsers'),
+                entries: this.pobjson.entries,
             });
         } else {
             mkdirp('lib');
@@ -325,6 +341,9 @@ module.exports = class PobGenerator extends Generator {
                 codecov: this.props.includeCodecov,
                 circleci: this.props.circleci,
                 travisci: this.props.travisci,
+                env_node6: this.props.babelEnvs.includes('node6'),
+                env_node7: this.props.babelEnvs.includes('node7'),
+                env_olderNode: this.props.babelEnvs.includes('olderNode'),
             });
         }
 
@@ -359,8 +378,8 @@ module.exports = class PobGenerator extends Generator {
         packageUtils.addScripts(pkg, {
             release: 'pob-repository-check-clean && pob-release',
             preversion: [
-                'npm run lint',
-                withBabel && 'npm run build',
+                'yarn run lint',
+                withBabel && 'yarn run build',
                 'pob-repository-check-clean',
             ].filter(Boolean).join(' && '),
             version: 'pob-version',
@@ -387,6 +406,7 @@ module.exports = class PobGenerator extends Generator {
         ].filter(Boolean);
 
         pobjson.react = this.props.react;
+        pobjson.flow = this.props.flow;
         pobjson.documentation = this.props.includeDocumentation;
         pobjson.doclets = this.props.includeDoclets;
         pobjson.testing = this.props.includeTesting;

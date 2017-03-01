@@ -1,4 +1,3 @@
-/* global test */
 import { strictEqual } from 'assert';
 
 test('ok', () => {

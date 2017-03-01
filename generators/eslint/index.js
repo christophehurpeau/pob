@@ -37,10 +37,10 @@ module.exports = class extends Generator {
     initializing() {
         const config = (() => {
             if (this.options.react) {
-                return 'pob/react';
+                return this.options.flow ? 'pob/react-flow' : 'pob/react';
             }
             if (this.options.babel) {
-                return 'pob/babel';
+                return this.options.flow ? 'pob/flow' : 'pob/babel';
             }
             return 'pob/base'
         })();
@@ -64,13 +64,13 @@ module.exports = class extends Generator {
         const srcDirectory = this.options.babel ? 'src' : 'lib';
         packageUtils.addScript(pkg, 'lint', `eslint --ext .js,.jsx ${srcDirectory}/`);
         if (this.options.testing) {
-            pkg.scripts.lint += ` test/${srcDirectory}/`;
+            pkg.scripts.lint += ` test/`;
         }
 
         packageUtils.addDevDependencies(pkg, {
-            'eslint': '^3.12.2',
+            'eslint': '^3.16.1',
             'eslint-plugin-import': '^2.2.0',
-            'eslint-config-pob': '^11.0.0',
+            'eslint-config-pob': '^11.1.0',
         });
 
         if (this.options.babel) {
@@ -87,10 +87,19 @@ module.exports = class extends Generator {
             });
             delete pkg.devDependencies['eslint-config-airbnb-base'];
         } else {
-            packageUtils.addDevDependency(pkg, 'eslint-config-airbnb-base', '^11.0.0');
+            packageUtils.addDevDependency(pkg, 'eslint-config-airbnb-base', '^11.1.0');
             delete pkg.devDependencies['eslint-config-airbnb'];
             delete pkg.devDependencies['eslint-plugin-react'];
             delete pkg.devDependencies['eslint-plugin-jsx-a11y'];
+        }
+
+
+        if (this.options.flow) {
+            packageUtils.addDevDependencies(pkg, {
+                'eslint-plugin-flowtype': '^2.30.0',
+            });
+        } else {
+            delete pkg.devDependencies['eslint-plugin-flowtype'];
         }
 
         this.fs.writeJSON(this.destinationPath(this.options.destination, 'package.json'), pkg);

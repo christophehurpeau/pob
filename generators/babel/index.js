@@ -76,25 +76,34 @@ module.exports = class extends Generator {
             required: false,
             desc: 'Babel Env browsers'
         });
+
+        this.option('entries', {
+            type: String,
+            required: true,
+            desc: 'Entries'
+        });
     }
 
     initializing() {
         mkdirp(this.destinationPath(this.options.destination, 'src'));
 
-        const indexDestPath = this.destinationPath(this.options.destination, 'index.js');
-        if (this.options.env_node6 || this.options.env_node7 || this.options.env_olderNode) {
-            this.fs.copyTpl(
-                this.templatePath('index.js.ejs'),
-                indexDestPath,
-                {
-                    env_node6: this.options.env_node6,
-                    env_node7: this.options.env_node7,
-                    env_olderNode: this.options.env_olderNode,
-                }
-            );
-        } else {
-            this.fs.delete(indexDestPath);
-        }
+        this.options.entries.split(',').forEach(entry => {
+            const entryDestPath = this.destinationPath(this.options.destination, `${entry}.js`);
+            if (this.options.env_node6 || this.options.env_node7 || this.options.env_olderNode) {
+                this.fs.copyTpl(
+                    this.templatePath('entry.js.ejs'),
+                    entryDestPath,
+                    {
+                        entry: entry,
+                        env_node6: this.options.env_node6,
+                        env_node7: this.options.env_node7,
+                        env_olderNode: this.options.env_olderNode,
+                    }
+                );
+            } else {
+                this.fs.delete(entryDestPath);
+            }
+        });
 
         const indexSrcDestPath = this.destinationPath(this.options.destination, 'src/index.js');
         if (!this.fs.exists(indexSrcDestPath)) {
@@ -179,14 +188,15 @@ module.exports = class extends Generator {
         delete pkg.scripts['watch:dev'];
 
         packageUtils.addDevDependencies(pkg, {
-            'pob-babel': '^16.0.0',
-            'eslint-plugin-babel': '^4.0.0',
-            'flow-runtime': '^0.6.0',
+            'pob-babel': '^16.2.0',
+            'eslint-plugin-babel': '^4.1.0',
         });
+        packageUtils.addDependency(pkg, 'flow-runtime', '^0.6.1');
 
         // old pob dependencies
         delete pkg.devDependencies['tcomb'];
         delete pkg.devDependencies['tcomb-forked'];
+        delete pkg.devDependencies['flow-runtime'];
         delete pkg.devDependencies['babel-preset-env'];
         delete pkg.devDependencies['babel-preset-es2015'];
         delete pkg.devDependencies['babel-preset-es2015-webpack'];

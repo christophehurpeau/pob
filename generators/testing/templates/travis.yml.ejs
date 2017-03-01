@@ -1,8 +1,11 @@
 language: node_js
 node_js:
   - node
+<% if (node6) { -%>
   - "6"
+<% } if (node4) { -%>
   - "4"
+<% } -%>
 
 cache:
   yarn: true

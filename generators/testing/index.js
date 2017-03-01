@@ -1,3 +1,4 @@
+const existsSync = require('fs').existsSync;
 const Generator = require('yeoman-generator');
 const mkdirp = require('mkdirp');
 const packageUtils = require('../../utils/package');
@@ -31,6 +32,24 @@ module.exports = class extends Generator {
             desc: 'withBabel'
         });
 
+        this.option('env_node6', {
+            type: Boolean,
+            required: false,
+            desc: 'Babel Env node6'
+        });
+
+        this.option('env_node7', {
+            type: Boolean,
+            required: false,
+            desc: 'Babel Env node7'
+        });
+
+        this.option('env_olderNode', {
+            type: Boolean,
+            required: false,
+            desc: 'Babel Env older node'
+        });
+
         this.option('codecov', {
             type: Boolean,
             required: true,
@@ -45,29 +64,33 @@ module.exports = class extends Generator {
     }
 
     initializing() {
-        const testDirectory = `test${this.options.withBabel ? '/src' : ''}`;
-        mkdirp(this.destinationPath(this.options.destination, testDirectory));
-        const testIndexPath = this.destinationPath(this.options.destination, `${testDirectory}/index.js`);
-        if (!this.fs.exists(testIndexPath)) {
-            this.fs.copy(this.templatePath('index.js'), testIndexPath);
+        const testDirectory = this.destinationPath(this.options.destination, 'test');
+        if (!existsSync(testDirectory)) {
+            mkdirp(testDirectory);
+            const testIndexPath = this.destinationPath(this.options.destination, 'test/index.js');
+            if (!this.fs.exists(testIndexPath)) {
+                this.fs.copy(this.templatePath('index.js'), testIndexPath);
+            }
         }
     }
 
     writing() {
         const pkg = this.fs.readJSON(this.destinationPath(this.options.destination, 'package.json'), {});
 
-        const testDirectory = `test${this.options.withBabel ? '/lib' : ''}`;
+        const envVariables = this.options.withBabel ? 'POBREGISTER_ONLY=./test' : '';
+        const mochaOptions = (this.options.withBabel ? '--require pob-babel/register ' : '')
+                             + '--recursive --bail -u tdd test';
         packageUtils.addScripts(pkg, {
-            test: `mocha --harmony --es_staging --recursive --bail -u tdd ${testDirectory}`,
+            test: `${envVariables} mocha ${mochaOptions}`.trim(),
             'generate:test-coverage': [
                 'rm -Rf coverage/',
-                'NODE_ENV=production node --harmony --es_staging node_modules/istanbul/lib/cli.js'
-                    + ` cover node_modules/.bin/_mocha -- --recursive --reporter=spec -u tdd ${testDirectory}`,
+                `NODE_ENV=production ${envVariables} node node_modules/istanbul/lib/cli.js`
+                    + ` cover node_modules/.bin/_mocha -- ${mochaOptions}`,
             ].join(' ; ')
         });
 
         packageUtils.addDevDependencies(pkg, {
-            'mocha': '^3.1.0',
+            'mocha': '^3.2.0',
             'istanbul': '^0.4.5',
         });
 
@@ -97,10 +120,19 @@ module.exports = class extends Generator {
         }
 
         if (this.options.travisci) {
-            this.fs.copy(
-                this.templatePath('travis.yml'),
-                this.destinationPath(this.options.destination, '.travis.yml')
+            const { withBabel, env_node6, env_node7, env_olderNode } = this.options;
+            this.fs.copyTpl(
+                this.templatePath('travis.yml.ejs'),
+                this.destinationPath(this.options.destination, '.travis.yml'),
+                {
+                    node6: !withBabel || env_node6 || env_olderNode,
+                    node4: !withBabel || env_olderNode,
+                }
             );
         }
+        this.fs.copy(
+            this.templatePath('eslintrc.js'),
+            this.destinationPath(this.options.destination, 'test/.eslintrc.js')
+        );
     }
 };
