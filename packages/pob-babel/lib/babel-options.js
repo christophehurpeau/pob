@@ -55,7 +55,7 @@ module.exports = function createOpts(
 
     case 'module':
     case 'webpack':
-      transpilationPreset = ['latest', { es2015: { modules: false } }];
+      transpilationPreset = ['env', { modules: false }];
       browser = true;
       break;
 
