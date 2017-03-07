@@ -1,3 +1,17 @@
+<a name="17.0.0"></a>
+# [17.0.0](https://github.com/christophehurpeau/pob-babel/compare/v16.4.0...v17.0.0) (2017-03-07)
+
+
+### Features
+
+* use babel-preset-env ([b22be20](https://github.com/christophehurpeau/pob-babel/commit/b22be20))
+
+
+### BREAKING CHANGES
+
+* babel-preset-env
+
+
 <a name="16.4.0"></a>
 # [16.4.0](https://github.com/christophehurpeau/pob-babel/compare/v16.3.0...v16.4.0) (2017-03-07)
 
