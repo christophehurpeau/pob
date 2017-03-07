@@ -66,7 +66,7 @@ module.exports = function createOpts(
       break;
 
     case 'browsers':
-      transpilationPreset = 'latest';
+      transpilationPreset = 'env';
       browser = true;
       break;
 
