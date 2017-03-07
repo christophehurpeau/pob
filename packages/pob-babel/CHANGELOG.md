@@ -1,3 +1,12 @@
+<a name="16.4.0"></a>
+# [16.4.0](https://github.com/christophehurpeau/pob-babel/compare/v16.3.0...v16.4.0) (2017-03-07)
+
+
+### Features
+
+* module ([f20d683](https://github.com/christophehurpeau/pob-babel/commit/f20d683))
+
+
 <a name="16.3.0"></a>
 # [16.3.0](https://github.com/christophehurpeau/pob-babel/compare/v16.2.3...v16.3.0) (2017-03-05)
 
