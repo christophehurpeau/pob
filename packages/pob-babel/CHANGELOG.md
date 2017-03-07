@@ -1,3 +1,12 @@
+<a name="17.0.1"></a>
+## [17.0.1](https://github.com/christophehurpeau/pob-babel/compare/v17.0.0...v17.0.1) (2017-03-07)
+
+
+### Bug Fixes
+
+* env ([ae2f03f](https://github.com/christophehurpeau/pob-babel/commit/ae2f03f))
+
+
 <a name="17.0.0"></a>
 # [17.0.0](https://github.com/christophehurpeau/pob-babel/compare/v16.4.0...v17.0.0) (2017-03-07)
 
