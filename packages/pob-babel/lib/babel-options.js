@@ -43,7 +43,7 @@ module.exports = function createOpts(
       break;
 
     case 'older-node':
-      transpilationPreset = 'latest';
+      transpilationPreset = ['env', { targets: { node: 4 } }];
       browser = false;
       break;
 
