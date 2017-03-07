@@ -47,16 +47,19 @@ module.exports = function createOpts(
       browser = false;
       break;
 
+    case 'module-node7':
     case 'webpack-node7':
       transpilationPreset = ['latest-node', { target: 7.6, modules: false }];
       browser = false;
       break;
 
+    case 'module':
     case 'webpack':
       transpilationPreset = ['latest', { es2015: { modules: false } }];
       browser = true;
       break;
 
+    case 'module-modern-browsers':
     case 'webpack-modern-browsers':
       transpilationPreset = ['modern-browsers', { modules: false }];
       browser = true;
