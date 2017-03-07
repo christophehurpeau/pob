@@ -1,3 +1,12 @@
+<a name="17.0.2"></a>
+## [17.0.2](https://github.com/christophehurpeau/pob-babel/compare/v17.0.1...v17.0.2) (2017-03-07)
+
+
+### Bug Fixes
+
+* target node 4 ([1f91f52](https://github.com/christophehurpeau/pob-babel/commit/1f91f52))
+
+
 <a name="17.0.1"></a>
 ## [17.0.1](https://github.com/christophehurpeau/pob-babel/compare/v17.0.0...v17.0.1) (2017-03-07)
 
