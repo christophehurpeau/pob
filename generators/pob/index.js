@@ -167,18 +167,21 @@ module.exports = class PobGenerator extends Generator {
                     value: 'olderNode',
                     checked: this.props.babelEnvs.includes('older-node'),
                 }, {
-                    name: 'Webpack: Modern browsers (latest version of firefox and chrome)',
-                    value: 'webpackModernBrowsers',
-                    checked: this.props.babelEnvs.includes('webpack-modern-browsers'),
+                    name: 'Module: Modern browsers (latest version of firefox and chrome)',
+                    value: 'moduleModernBrowsers',
+                    checked: this.props.babelEnvs.includes('module-modern-browsers')
+                        || this.props.babelEnvs.includes('webpack-modern-browsers'),
                 }, {
-                    name: 'Webpack: All Browsers',
-                    value: 'webpackAllBrowsers',
-                    checked: this.props.babelEnvs.includes('webpack'),
+                    name: 'Module: All Browsers',
+                    value: 'moduleAllBrowsers',
+                    checked: this.props.babelEnvs.includes('module')
+                        || this.props.babelEnvs.includes('webpack'),
                 }, {
-                    name: 'Webpack: Node 7',
-                    value: 'webpackNode7',
-                    checked: this.props.babelEnvs.includes('webpack-node6')
-                     || this.props.babelEnvs.includes('webpack-node7'),
+                    name: 'Module: Node 7',
+                    value: 'moduleNode7',
+                    checked: this.props.babelEnvs.includes('module-node7')
+                     || this.props.babelEnvs.includes('webpack-node7')
+                     || this.props.babelEnvs.includes('webpack-node6'),
                 }, {
                     name: 'Browsers',
                     value: 'browsers',
@@ -201,7 +204,7 @@ module.exports = class PobGenerator extends Generator {
                     type: 'confirm',
                     name: 'flow',
                     message: 'Would you like flowtype ?',
-                    default: this.pobjson.flow || false,
+                    default: this.pobjson.flow || this.pobjson.react || false,
                 }
             ]).then((props) => {
                 Object.assign(this.props, props);
@@ -299,9 +302,9 @@ module.exports = class PobGenerator extends Generator {
                 env_node6: this.props.babelEnvs.includes('node6'),
                 env_node7: this.props.babelEnvs.includes('node7'),
                 env_olderNode: this.props.babelEnvs.includes('olderNode'),
-                env_webpack_modernBrowsers: this.props.babelEnvs.includes('webpackModernBrowsers'),
-                env_webpack_allBrowsers: this.props.babelEnvs.includes('webpackAllBrowsers'),
-                env_webpack_node7: this.props.babelEnvs.includes('webpackNode7'),
+                env_module_modernBrowsers: this.props.babelEnvs.includes('moduleModernBrowsers'),
+                env_module_allBrowsers: this.props.babelEnvs.includes('moduleAllBrowsers'),
+                env_module_node7: this.props.babelEnvs.includes('moduleNode7'),
                 env_browsers: this.props.babelEnvs.includes('browsers'),
                 entries: this.pobjson.entries,
             });
@@ -399,9 +402,9 @@ module.exports = class PobGenerator extends Generator {
             this.props.babelEnvs.includes('node6') && "node6",
             this.props.babelEnvs.includes('node7') && "node7",
             this.props.babelEnvs.includes('olderNode') && "older-node",
-            this.props.babelEnvs.includes('webpackModernBrowsers') && "webpack-modern-browsers",
-            this.props.babelEnvs.includes('webpackAllBrowsers') && "webpack",
-            this.props.babelEnvs.includes('webpackNode7') && "webpack-node7",
+            this.props.babelEnvs.includes('moduleModernBrowsers') && "module-modern-browsers",
+            this.props.babelEnvs.includes('moduleAllBrowsers') && "module",
+            this.props.babelEnvs.includes('moduleNode7') && "module-node7",
             this.props.babelEnvs.includes('browsers') && "browsers",
         ].filter(Boolean);
 
