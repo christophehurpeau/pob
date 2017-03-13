@@ -1,3 +1,12 @@
+<a name="17.1.1"></a>
+## [17.1.1](https://github.com/christophehurpeau/pob-babel/compare/v17.1.0...v17.1.1) (2017-03-13)
+
+
+### Bug Fixes
+
+* babel-plugin-flow-runtime ([4bc5d1f](https://github.com/christophehurpeau/pob-babel/commit/4bc5d1f))
+
+
 <a name="17.1.0"></a>
 # [17.1.0](https://github.com/christophehurpeau/pob-babel/compare/v17.0.2...v17.1.0) (2017-03-13)
 
