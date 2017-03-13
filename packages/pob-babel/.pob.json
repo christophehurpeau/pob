@@ -2,5 +2,8 @@
   "envs": [],
   "documentation": false,
   "doclets": false,
-  "testing": false
+  "testing": false,
+  "entries": [
+    "index"
+  ]
 }
