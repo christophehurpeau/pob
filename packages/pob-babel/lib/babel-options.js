@@ -81,7 +81,7 @@ module.exports = function createOpts(
       react && ['babel-preset-pob-react', { production }],
       // add stage-1 to stage-3 features
       require.resolve('babel-preset-pob-stages'),
-      // pob preset: flow, import `src`, export default function name, replacements
+      // pob preset: import `src`, export default function name, replacements
       [require.resolve('babel-preset-pob'), {
         production,
         replacements: {
@@ -92,6 +92,13 @@ module.exports = function createOpts(
       }],
       // optimizations: remove dead-code
       require.resolve('babel-preset-babili-optimizations'),
+      // flow runtime
+      !production && {
+        plugins: [[require.resolve('babel-plugin-flow-runtime'), {
+          assert: true,
+          annotate: false,
+        }]],
+      },
       // discard unused imports (like production-only or node-only imports)
       { plugins: [require.resolve('babel-plugin-discard-module-references')] },
       // transpile for specified target
