@@ -1,3 +1,12 @@
+<a name="17.1.0"></a>
+# [17.1.0](https://github.com/christophehurpeau/pob-babel/compare/v17.0.2...v17.1.0) (2017-03-13)
+
+
+### Features
+
+* update dependencies ([56ecef8](https://github.com/christophehurpeau/pob-babel/commit/56ecef8))
+
+
 <a name="17.0.2"></a>
 ## [17.0.2](https://github.com/christophehurpeau/pob-babel/compare/v17.0.1...v17.0.2) (2017-03-07)
 
