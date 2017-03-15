@@ -20,7 +20,7 @@ test:
   override:
     - yarn run preversion
     - yarn run test
-    - XUNIT_FILE=$CIRCLE_TEST_REPORTS/junit/xunit.xml node_modules/.bin/mocha --harmony --recursive --reporter xunit-file -u tdd test<% if (withBabel) { -%>/node6<% } %>
+    - <% if (withBabel) { -%>POBREGISTER_ONLY=./test<% } %>XUNIT_FILE=$CIRCLE_TEST_REPORTS/junit/xunit.xml node_modules/.bin/mocha <% if (withBabel) { -%>--require pob-babel/register <% } %>--recursive --reporter xunit-file -u tdd test
 <% if (documentation) { -%>
     - yarn run generate:docs
 <% } else { -%>

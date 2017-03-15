@@ -82,7 +82,7 @@ module.exports = class extends Generator {
         if (this.options.react) {
             packageUtils.addDevDependencies(pkg, {
                 'eslint-config-airbnb': '^14.0.0',
-                'eslint-plugin-jsx-a11y': '^3.0.2',
+                'eslint-plugin-jsx-a11y': '^4.0.0',
                 'eslint-plugin-react': '^6.3.0',
             });
             delete pkg.devDependencies['eslint-config-airbnb-base'];

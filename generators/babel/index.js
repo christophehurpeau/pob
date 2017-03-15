@@ -151,6 +151,10 @@ module.exports = class extends Generator {
         if (pkg['webpack:node']) pkg['module:node'] = pkg['webpack:node'];
         if (pkg['webpack:node-dev']) pkg['module:node-dev'] = pkg['webpack:node-dev'];
 
+        // fix
+        if (pkg['module']) pkg['module'] = pkg['module'].replace('webpack', 'module');
+        if (pkg['module-dev']) pkg['module-dev'] = pkg['module-dev'].replace('webpack', 'module');
+
         delete pkg['webpack:main-modern-browsers'];
         delete pkg['webpack:main-modern-browsers-dev'];
         delete pkg['webpack:browser'];
@@ -195,8 +199,6 @@ module.exports = class extends Generator {
             }
         }
 
-        packageUtils.sort(pkg);
-
         if (!pkg.scripts.build) {
             packageUtils.addScript(pkg, 'build', 'pob-build');
         }
@@ -209,10 +211,10 @@ module.exports = class extends Generator {
         delete pkg.scripts['watch:dev'];
 
         packageUtils.addDevDependencies(pkg, {
-            'pob-babel': '^17.0.1',
+            'pob-babel': '^17.1.1',
             'eslint-plugin-babel': '^4.1.0',
         });
-        packageUtils.addDependency(pkg, 'flow-runtime', '^0.8.0');
+        packageUtils.addDependency(pkg, 'flow-runtime', '^0.9.1');
 
         // old pob dependencies
         delete pkg.devDependencies['tcomb'];
@@ -253,7 +255,7 @@ module.exports = class extends Generator {
         }
 
         if (this.options.env_olderNode || this.options.env_browsers || this.options.env_module_allBrowsers) {
-            packageUtils.addDevDependency(pkg, 'babel-preset-env', '^1.2.1');
+            packageUtils.addDevDependency(pkg, 'babel-preset-env', '^1.2.2');
         } else {
            delete pkg.devDependencies['babel-preset-env'];
         }
@@ -265,12 +267,51 @@ module.exports = class extends Generator {
         }
 
         if (this.options.env_module_modernBrowsers) {
-            packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers', '^8.1.1');
+            packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers', '^9.0.2');
         } else {
            delete pkg.devDependencies['babel-preset-modern-browsers'];
         }
 
+        delete pkg['webpack:aliases'];
+        delete pkg['webpack:aliases-dev'];
+        delete pkg['webpack:aliases-modern-browsers'];
+        delete pkg['webpack:aliases-modern-browsers-dev'];
+        delete pkg['webpack:aliases-node'];
+        delete pkg['webpack:aliases-node-dev'];
 
+        if (this.options.entries && (
+            this.options.env_module_node7
+            || this.options.env_module_allBrowsers
+            || env_module_modernBrowsers
+        )) {
+            const aliases = this.options.entries.split(',').filter(entry => entry !== 'index');
+            if (aliases.length) {
+                [
+                    this.options.env_module_node7 && { key: 'node', path: 'lib-module-node7' },
+                    this.options.env_module_modernBrowsers && { key: 'modern-browsers', path: 'lib-module-modern-browsers' },
+                    this.options.env_module_allBrowsers && { key: 'browser', path: 'lib-module' },
+                ].filter(Boolean).forEach(({ key, path }) => {
+                    pkg[`module:aliases-${key}`] = {};
+                    pkg[`module:aliases-${key}-dev`] = {};
+                    aliases.forEach(aliasName => {
+                        pkg[`module:aliases-${key}`][`./${aliasName}.js`] = `./${path}/${aliasName}.js`;
+                        pkg[`module:aliases-${key}-dev`][`./${aliasName}.js`] = `./${path}-dev/${aliasName}.js`;
+                    });
+                });
+            } else {
+                delete pkg['module:aliases'];
+                delete pkg['module:aliases-dev'];
+                delete pkg['module:aliases-node'];
+                delete pkg['module:aliases-node-dev'];
+            }
+        } else {
+            delete pkg['module:aliases'];
+            delete pkg['module:aliases-dev'];
+            delete pkg['module:aliases-node'];
+            delete pkg['module:aliases-node-dev'];
+        }
+
+        packageUtils.sort(pkg);
         this.fs.writeJSON(this.destinationPath(this.options.destination, 'package.json'), pkg);
     }
 
