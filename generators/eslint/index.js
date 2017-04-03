@@ -68,13 +68,13 @@ module.exports = class extends Generator {
         }
 
         packageUtils.addDevDependencies(pkg, {
-            'eslint': '^3.17.0',
+            'eslint': '^3.19.0',
             'eslint-plugin-import': '^2.2.0',
             'eslint-config-pob': '^11.1.0',
         });
 
         if (this.options.babel) {
-            packageUtils.addDevDependency(pkg, 'babel-eslint', '^7.0.0');
+            packageUtils.addDevDependency(pkg, 'babel-eslint', '^7.2.1');
         } else {
             delete pkg.devDependencies['babel-eslint'];
         }
@@ -83,11 +83,11 @@ module.exports = class extends Generator {
             packageUtils.addDevDependencies(pkg, {
                 'eslint-config-airbnb': '^14.0.0',
                 'eslint-plugin-jsx-a11y': '^4.0.0',
-                'eslint-plugin-react': '^6.3.0',
+                'eslint-plugin-react': '^6.10.3',
             });
             delete pkg.devDependencies['eslint-config-airbnb-base'];
         } else {
-            packageUtils.addDevDependency(pkg, 'eslint-config-airbnb-base', '^11.1.1');
+            packageUtils.addDevDependency(pkg, 'eslint-config-airbnb-base', '^11.1.2');
             delete pkg.devDependencies['eslint-config-airbnb'];
             delete pkg.devDependencies['eslint-plugin-react'];
             delete pkg.devDependencies['eslint-plugin-jsx-a11y'];
@@ -96,7 +96,7 @@ module.exports = class extends Generator {
 
         if (this.options.flow) {
             packageUtils.addDevDependencies(pkg, {
-                'eslint-plugin-flowtype': '^2.30.0',
+                'eslint-plugin-flowtype': '^2.30.4',
             });
         } else {
             delete pkg.devDependencies['eslint-plugin-flowtype'];

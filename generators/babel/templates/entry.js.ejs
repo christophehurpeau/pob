@@ -7,19 +7,22 @@ var production = process.env.NODE_ENV === 'production';
 if (envs.length === 1) { -%>
 module.exports = require('./lib-<%= envs[0][0] %>' + (production ? '' : '-dev') + '/<%= entry %>');
 <% } else { -%>
-var nodeVersion = parseFloat(process.versions.node);
+<%# parseFloat(process.versions.node) doesnt work with 6.10.1 -%>
+var nodeVersion = process.versions.node.split('.');
+var nodeVersionMajor = Number(nodeVersion[0]);
+var nodeVersionMinor = Number(nodeVersion[1]);
 <% if (env_node7) { -%>
 /* istanbul ignore next */
-if (nodeVersion >= 7.6)
+if (nodeVersionMajor > 7 || (nodeVersionMajor === 7 && nodeVersionMinor >= 6))
   return module.exports = require('./lib-node7' + (production ? '' : '-dev') + '/<%= entry %>');
 <% } if (env_node6) { -%>
 /* istanbul ignore next */
-if (nodeVersion >= 6.5)
+if (nodeVersionMajor > 6 || (nodeVersionMajor === 6 && nodeVersionMinor >= 5))
   return module.exports = require('./lib-node6' + (production ? '' : '-dev') + '/<%= entry %>');
 <% } if (env_olderNode) { -%>
 /* istanbul ignore next */
 return module.exports = require('./lib-older-node' + (production ? '' : '-dev') + '/<%= entry %>');
 <% } else { -%>
 /* istanbul ignore next */
-throw new Error('Platform not supported: ' + process.version + '.');
+throw new Error('Node version not supported: ' + nodeVersion + ' (' + process.versions.node + ').');
 <% } } -%>
