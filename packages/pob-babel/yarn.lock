@@ -24,8 +24,8 @@ acorn@^3.0.4:
   resolved "https://registry.yarnpkg.com/acorn/-/acorn-3.3.0.tgz#45e37fb39e8da3f25baee3ff5369e2bb5f22017a"
 
 acorn@^5.0.1:
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.0.2.tgz#dc1c8fb907f64db2ab573de2326b73527c24de36"
+  version "5.0.3"
+  resolved "https://registry.yarnpkg.com/acorn/-/acorn-5.0.3.tgz#c460df08491463f028ccb82eab3730bf01087b3d"
 
 add-stream@^1.0.0:
   version "1.0.0"
@@ -66,9 +66,9 @@ ansi-styles@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-2.2.1.tgz#b432dd3358b634cf75e1e4664368240533c1ddbe"
 
-"ansi-styles@github:chalk/ansi-styles#47ccb63c5b9b296b39188717b0efc4123a036d47":
-  version "2.1.0"
-  resolved "https://codeload.github.com/chalk/ansi-styles/tar.gz/47ccb63c5b9b296b39188717b0efc4123a036d47"
+ansi-styles@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-3.0.0.tgz#5404e93a544c4fec7f048262977bebfe3155e0c1"
   dependencies:
     color-convert "^1.0.0"
 
@@ -2154,13 +2154,13 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
-nightingale-ansi-formatter@^1.7.1:
-  version "1.7.1"
-  resolved "https://registry.yarnpkg.com/nightingale-ansi-formatter/-/nightingale-ansi-formatter-1.7.1.tgz#597bd3616ef94c4ca1b6a43d52a5588e8fc9c5b0"
+nightingale-ansi-formatter@^1.7.2:
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/nightingale-ansi-formatter/-/nightingale-ansi-formatter-1.7.2.tgz#74513cd4b181f53d79174e9b3ecd37e10eecb713"
   dependencies:
-    ansi-styles "github:chalk/ansi-styles#47ccb63c5b9b296b39188717b0efc4123a036d47"
+    ansi-styles "^3.0.0"
     flow-runtime "^0.10.0"
-    nightingale-formatter "^2.2.1"
+    nightingale-formatter "^2.2.2"
 
 nightingale-console-output@^1.4.0:
   version "1.4.0"
@@ -2169,12 +2169,12 @@ nightingale-console-output@^1.4.0:
     flow-runtime "^0.10.0"
     nightingale-levels "^1.0.0"
 
-nightingale-console@^2.5.0:
-  version "2.5.0"
-  resolved "https://registry.yarnpkg.com/nightingale-console/-/nightingale-console-2.5.0.tgz#55797bac4f4c376219be7693d0e662f4b36c409a"
+nightingale-console@^2.5.1:
+  version "2.5.1"
+  resolved "https://registry.yarnpkg.com/nightingale-console/-/nightingale-console-2.5.1.tgz#eb89c19a26c0853b0fbdd815fea70a64eb530df4"
   dependencies:
     flow-runtime "^0.10.0"
-    nightingale-ansi-formatter "^1.7.1"
+    nightingale-ansi-formatter "^1.7.2"
     nightingale-console-output "^1.4.0"
     nightingale-debug "^2.3.1"
 
@@ -2185,7 +2185,7 @@ nightingale-debug@^2.3.1:
     flow-runtime "^0.10.0"
     nightingale-levels "^1.0.0"
 
-nightingale-formatter@^2.2.1:
+nightingale-formatter@^2.2.2:
   version "2.2.2"
   resolved "https://registry.yarnpkg.com/nightingale-formatter/-/nightingale-formatter-2.2.2.tgz#7a68dcce2a280533fcaeeb2b6fd315a720b1bace"
   dependencies:
@@ -2203,9 +2203,9 @@ nightingale-logger@^3.4.0:
     flow-runtime "^0.10.0"
     nightingale-levels "^1.1.0"
 
-nightingale@^6.2.0:
-  version "6.2.0"
-  resolved "https://registry.yarnpkg.com/nightingale/-/nightingale-6.2.0.tgz#9216a6f5859ceeb6e639ead1802aeba250141c39"
+nightingale@^6.2.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/nightingale/-/nightingale-6.2.1.tgz#4bf0ab7a448519f6874f039cb9e61ee48a893bc1"
   dependencies:
     flow-runtime "^0.10.0"
     nightingale-levels "^1.1.0"
@@ -2967,8 +2967,8 @@ typedarray@^0.0.6:
   resolved "https://registry.yarnpkg.com/typedarray/-/typedarray-0.0.6.tgz#867ac74e3864187b1d3d47d996a78ec5c8830777"
 
 uglify-js@^2.6:
-  version "2.8.20"
-  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.20.tgz#be87100fbc18de3876ed606e9d24b4568311cecf"
+  version "2.8.21"
+  resolved "https://registry.yarnpkg.com/uglify-js/-/uglify-js-2.8.21.tgz#1733f669ae6f82fc90c7b25ec0f5c783ee375314"
   dependencies:
     source-map "~0.5.1"
     yargs "~3.10.0"
