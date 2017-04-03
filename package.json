@@ -1,6 +1,6 @@
 {
   "name": "pob",
-  "version": "1.3.0",
+  "version": "2.0.0",
   "description": "Pile of bones, library generator with git/babel/eslint/readme/mocha/jsdoc",
   "repository": "christophehurpeau/pob",
   "keywords": [

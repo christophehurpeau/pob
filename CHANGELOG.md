@@ -1,3 +1,13 @@
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/christophehurpeau/pob/compare/v1.3.0...v2.0.0) (2017-04-03)
+
+
+### Features
+
+* module aliases, node version and fixes ([9d7ff8e](https://github.com/christophehurpeau/pob/commit/9d7ff8e))
+* module and babel-preset ([412b26b](https://github.com/christophehurpeau/pob/commit/412b26b))
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/christophehurpeau/pob/compare/v1.2.0...v1.3.0) (2017-03-01)
 
