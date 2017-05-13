@@ -1,4 +1,10 @@
 #!/usr/bin/env node
-require('./lib/logger').configure();
-require('./lib/cli-spinner').enable();
+const argv = require('minimist-argv');
+
+if (process.stdout.isTTY && argv.spinner !== false) {
+  require('./lib/logger').configure();
+  require('./lib/cli-spinner').enable();
+} else {
+  require('./lib/logger').enable();
+}
 require('./lib').watch();

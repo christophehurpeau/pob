@@ -14,5 +14,6 @@ module.exports = {
   config,
   levels,
   configure: level => nightingaleConfigure(config(level || levels.ERROR)),
+  enable: () => nightingaleConfigure(config(levels.INFO)),
   logger: new Logger('pob-build'),
 };
