@@ -1,3 +1,12 @@
+<a name="17.3.0"></a>
+# [17.3.0](https://github.com/christophehurpeau/pob-babel/compare/v17.2.0...v17.3.0) (2017-05-13)
+
+
+### Features
+
+* argv --no-spinner ([2a26c2b](https://github.com/christophehurpeau/pob-babel/commit/2a26c2b))
+
+
 <a name="17.2.0"></a>
 # [17.2.0](https://github.com/christophehurpeau/pob-babel/compare/v17.1.1...v17.2.0) (2017-04-01)
 
