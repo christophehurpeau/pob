@@ -1,5 +1,7 @@
 # pob [![NPM version][npm-image]][npm-url]
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/christophehurpeau/pob.svg)](https://greenkeeper.io/)
+
 Pile Of Bones / Place Of Birth / Point Of Beginning 
 Library generator with git/babel/eslint/readme/editorconfig/mocha/jsdoc/circleci/travis.
 Better than a skeleton !
