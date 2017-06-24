@@ -1077,9 +1077,9 @@ eslint-config-airbnb-base@^11.1.2:
   version "11.1.2"
   resolved "https://registry.yarnpkg.com/eslint-config-airbnb-base/-/eslint-config-airbnb-base-11.1.2.tgz#259209a7678bf693e31cbe8f953f206b6aa7ccc3"
 
-eslint-config-pob@^11.1.0:
-  version "11.1.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-pob/-/eslint-config-pob-11.1.0.tgz#a02acd41480c9637369222d01c28eb3cb2358408"
+eslint-config-pob@^12.0.0:
+  version "12.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-pob/-/eslint-config-pob-12.0.0.tgz#6070dd1e1eeacb8802ab09bdc24ee2ab36d137ee"
 
 eslint-import-resolver-node@^0.2.0:
   version "0.2.3"
