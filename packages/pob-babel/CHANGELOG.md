@@ -1,3 +1,12 @@
+<a name="17.4.0"></a>
+# [17.4.0](https://github.com/christophehurpeau/pob-babel/compare/v17.3.0...v17.4.0) (2017-06-24)
+
+
+### Features
+
+* jest env and node8 env ([0f167f7](https://github.com/christophehurpeau/pob-babel/commit/0f167f7))
+
+
 <a name="17.3.0"></a>
 # [17.3.0](https://github.com/christophehurpeau/pob-babel/compare/v17.2.0...v17.3.0) (2017-05-13)
 
