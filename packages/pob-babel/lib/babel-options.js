@@ -5,11 +5,10 @@ module.exports = function createOpts(
   react,
   { presets: otherPresets, plugins: otherPlugins } = {}
 ) {
-  const production = !env.endsWith('-dev');
+  const devEnv = env.endsWith('-dev');
+  const production = !devEnv && env !== 'jest';
 
-  if (!production) {
-    env = env.slice(0, -4);
-  }
+  if (devEnv) env = env.slice(0, -4);
 
   if (env === 'doc') {
     return {
@@ -32,7 +31,14 @@ module.exports = function createOpts(
     case 'es5':
       throw new Error('use olderNode instead.');
 
+    case 'jest':
+    case 'node8':
+      transpilationPreset = ['latest-node', { target: 8 }];
+      browser = false;
+      break;
+
     case 'node7':
+      console.warn('env "node7" is deprecated, use "node8" instead');
       transpilationPreset = ['latest-node', { target: 7.6 }];
       browser = false;
       break;
@@ -47,8 +53,15 @@ module.exports = function createOpts(
       browser = false;
       break;
 
+    case 'module-node8':
+      transpilationPreset = ['latest-node', { target: 8, modules: false }];
+      browser = false;
+      break;
+
+
     case 'module-node7':
     case 'webpack-node7':
+      console.warn(`env "${env}" is deprecated, use "module-node8" instead`);
       transpilationPreset = ['latest-node', { target: 7.6, modules: false }];
       browser = false;
       break;
