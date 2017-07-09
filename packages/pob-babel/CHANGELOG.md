@@ -1,3 +1,12 @@
+<a name="17.5.0"></a>
+# [17.5.0](https://github.com/christophehurpeau/pob-babel/compare/v17.4.0...v17.5.0) (2017-07-09)
+
+
+### Features
+
+* ignore tests files ([3a4f1bd](https://github.com/christophehurpeau/pob-babel/commit/3a4f1bd))
+
+
 <a name="17.4.0"></a>
 # [17.4.0](https://github.com/christophehurpeau/pob-babel/compare/v17.3.0...v17.4.0) (2017-06-24)
 
