@@ -19,6 +19,7 @@ const plugins = require('./plugins');
 const createBabelOptions = require('./babel-options');
 const { logger: parentLogger } = require('./logger');
 const Task = require('./cli-spinner');
+const ignore = require('./utils/ignore');
 
 const queue = new Queue(40, Infinity);
 
@@ -71,7 +72,9 @@ module.exports = function build(pobrc, cwd, src, outFn, envs, watch, options) {
           let dirname = filename;
 
           const allSrcFiles = readdir(dirname);
-          const allAllowedDestFiles = allSrcFiles.map(relative => destFromSrc(relative));
+          const allAllowedDestFiles = allSrcFiles
+            .filter(filename => !ignore(filename))
+            .map(relative => destFromSrc(relative));
 
           envs.forEach((env) => {
             const out = outFn(env);
@@ -94,6 +97,9 @@ module.exports = function build(pobrc, cwd, src, outFn, envs, watch, options) {
   }
 
   function handleFile(src, relative) {
+    if (ignore(relative)) {
+      return;
+    }
     if (_lock.isLocked(relative)) logger.debug(`${relative} locked, waiting...`);
     return lock(relative).then(release => queue.add(() => {
       if (babel.util.canCompile(relative, options && options.babelExtensions)) {
