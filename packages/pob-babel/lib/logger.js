@@ -1,14 +1,12 @@
 const { default: Logger, configure: nightingaleConfigure, levels } = require('nightingale');
 const ConsoleHandler = require('nightingale-console').default;
 
-const config = level => (
-  [
-    {
-      pattern: /^pob-build/,
-      handler: new ConsoleHandler(level),
-    },
-  ]
-);
+const config = level => [
+  {
+    pattern: /^pob-build/,
+    handler: new ConsoleHandler(level),
+  },
+];
 
 module.exports = {
   config,

@@ -34,21 +34,20 @@ function toErrorStack(err) {
 module.exports = function build(pobrc, cwd, src, outFn, envs, watch, options) {
   const srcFiles = glob.sync(src, { cwd });
   const _lock = Lock();
-  const lock = resource => new Promise(resolve => (
-    _lock(resource, release => resolve(() => release()()))
-  ));
+  const lock = resource =>
+    new Promise(resolve => _lock(resource, release => resolve(() => release()())));
   let task = new Task(`build ${src}`);
 
   let logger = parentLogger.child('build', 'build');
   const watchLogger = parentLogger.child('watch', 'watch');
   let watching = false;
 
-  const timeBuildStarted = Date.now();// logger.infoTime('building ' + src);
+  const timeBuildStarted = Date.now(); // logger.infoTime('building ' + src);
   logger.debug('envs', { envs });
 
   const optsManagers = {};
 
-  envs.forEach((env) => {
+  envs.forEach(env => {
     const optsManager = new babel.OptionManager();
 
     optsManager.mergeOptions({
@@ -60,14 +59,13 @@ module.exports = function build(pobrc, cwd, src, outFn, envs, watch, options) {
     optsManagers[env] = optsManager;
   });
 
-
   function handle(filename) {
     return promiseCallback(done => stat(filename, done))
-      .catch((err) => {
+      .catch(err => {
         console.log(err);
         process.exit(1);
       })
-      .then((stat) => {
+      .then(stat => {
         if (stat.isDirectory(filename)) {
           let dirname = filename;
 
@@ -76,21 +74,25 @@ module.exports = function build(pobrc, cwd, src, outFn, envs, watch, options) {
             .filter(filename => !ignore(filename))
             .map(relative => destFromSrc(relative));
 
-          envs.forEach((env) => {
+          envs.forEach(env => {
             const out = outFn(env);
             const envAllFiles = readdir(out);
 
-            const diff = envAllFiles.filter(path => !allAllowedDestFiles.includes(path.replace(/.map$/, '')));
+            const diff = envAllFiles.filter(
+              path => !allAllowedDestFiles.includes(path.replace(/.map$/, '')),
+            );
             if (diff.length) {
               logger.debug(`${out}: removing: ${diff.join(',')}`);
               execSync(`rm -Rf ${diff.map(filename => path.join(out, filename)).join(' ')}`);
             }
           });
 
-          return Promise.all(allSrcFiles.map((filename) => {
-            let src = path.join(dirname, filename);
-            return handleFile(src, filename);
-          }));
+          return Promise.all(
+            allSrcFiles.map(filename => {
+              let src = path.join(dirname, filename);
+              return handleFile(src, filename);
+            }),
+          );
         } else {
         }
       });
@@ -101,108 +103,166 @@ module.exports = function build(pobrc, cwd, src, outFn, envs, watch, options) {
       return;
     }
     if (_lock.isLocked(relative)) logger.debug(`${relative} locked, waiting...`);
-    return lock(relative).then(release => queue.add(() => {
-      if (babel.util.canCompile(relative, options && options.babelExtensions)) {
-        const subtask = task.subtask(`compiling: ${relative}`);
-        logger.debug(`compiling: ${relative}`);
+    return lock(relative)
+      .then(release =>
+        queue.add(() => {
+          if (babel.util.canCompile(relative, options && options.babelExtensions)) {
+            const subtask = task.subtask(`compiling: ${relative}`);
+            logger.debug(`compiling: ${relative}`);
 
-        return Promise.resolve(src)
-          .then(src => readFile(src))
-          .then(content => Promise.all(envs.map((env) => {
-            const dest = path.join(outFn(env), destFromSrc(relative));
+            return Promise.resolve(src)
+              .then(src => readFile(src))
+              .then(content =>
+                Promise.all(
+                  envs.map(env => {
+                    const dest = path.join(outFn(env), destFromSrc(relative));
 
-            const opts = optsManagers[env].init({ filename: relative });
-            opts.babelrc = false;
-            opts.sourceMap = true;
-            opts.sourceFileName = slash(path.relative(`${dest}/..`, src));
-            opts.sourceMapTarget = path.basename(relative);
+                    const opts = optsManagers[env].init({ filename: relative });
+                    opts.babelrc = false;
+                    opts.sourceMap = true;
+                    opts.sourceFileName = slash(path.relative(`${dest}/..`, src));
+                    opts.sourceMapTarget = path.basename(relative);
 
-            return Promise.resolve(content)
-              .then(content => babel.transform(content, opts))
-              .catch(watch && ((err) => {
-                console.log(toErrorStack(err));
+                    return Promise.resolve(content)
+                      .then(content => babel.transform(content, opts))
+                      .catch(
+                        watch &&
+                          (err => {
+                            console.log(toErrorStack(err));
 
-                return { map: null, code: 'throw new Error("Syntax Error");' };
-              }))
-              .then((data) => {
-                const mapLoc = `${dest}.map`;
-                data.code = `${data.code}\n//# sourceMappingURL=${path.basename(mapLoc)}`;
-                return writeFile(dest, data.code)
-                  .then(() => Promise.all([
-                    copyChmod(src, dest),
-                    writeFile(mapLoc, JSON.stringify(data.map)),
-                  ]));
-              });
-          })))
-          .then(() => {
-            logger[watching ? 'success' : 'debug'](`compiled: ${relative}`);
-          })
-          .then(() => release(), (err) => { release(); throw err; })
-          .then(() => subtask.done(), (err) => { subtask.done(); throw err; });
-      } else {
-        const extension = path.extname(relative).substr(1);
-        const plugin = plugins.findByExtension(extension);
-        if (plugin) {
-          const subtask = task.subtask(`${plugin.extension}: ${relative}`);
-          logger.debug(`${plugin.extension}: ${relative}`);
-          const destRelative = destFromSrc(relative, plugin);
-          return Promise.resolve(src)
-            .then(src => readFile(src))
-            .then(content => plugin.transform(content, { src, relative, cwd, envs }))
-            .catch(watch && ((err) => {
-              console.log(toErrorStack(err));
+                            return { map: null, code: 'throw new Error("Syntax Error");' };
+                          }),
+                      )
+                      .then(data => {
+                        const mapLoc = `${dest}.map`;
+                        data.code = `${data.code}\n//# sourceMappingURL=${path.basename(mapLoc)}`;
+                        return writeFile(dest, data.code).then(() =>
+                          Promise.all([
+                            copyChmod(src, dest),
+                            writeFile(mapLoc, JSON.stringify(data.map)),
+                          ]),
+                        );
+                      });
+                  }),
+                ),
+              )
+              .then(() => {
+                logger[watching ? 'success' : 'debug'](`compiled: ${relative}`);
+              })
+              .then(
+                () => release(),
+                err => {
+                  release();
+                  throw err;
+                },
+              )
+              .then(
+                () => subtask.done(),
+                err => {
+                  subtask.done();
+                  throw err;
+                },
+              );
+          } else {
+            const extension = path.extname(relative).substr(1);
+            const plugin = plugins.findByExtension(extension);
+            if (plugin) {
+              const subtask = task.subtask(`${plugin.extension}: ${relative}`);
+              logger.debug(`${plugin.extension}: ${relative}`);
+              const destRelative = destFromSrc(relative, plugin);
+              return Promise.resolve(src)
+                .then(src => readFile(src))
+                .then(content => plugin.transform(content, { src, relative, cwd, envs }))
+                .catch(
+                  watch &&
+                    (err => {
+                      console.log(toErrorStack(err));
 
-              return { map: null, code: 'throw new Error("Syntax Error");' };
-            }))
-            .then((result) => {
-              if (!result) {
-                // plugin returned nothing, remove.
-                return Promise.all(envs.map((env) => {
-                  const dest = path.join(outFn(env), destFromSrc(relative));
+                      return { map: null, code: 'throw new Error("Syntax Error");' };
+                    }),
+                )
+                .then(result => {
+                  if (!result) {
+                    // plugin returned nothing, remove.
+                    return Promise.all(
+                      envs.map(env => {
+                        const dest = path.join(outFn(env), destFromSrc(relative));
 
-                  return Promise.all([
-                    promiseCallback(done => unlink(dest, done)).catch(() => {}),
-                    promiseCallback(done => unlink(`${dest}.map`, done)).catch(() => {}),
-                  ]);
-                }));
-              }
+                        return Promise.all([
+                          promiseCallback(done => unlink(dest, done)).catch(() => {}),
+                          promiseCallback(done => unlink(`${dest}.map`, done)).catch(() => {}),
+                        ]);
+                      }),
+                    );
+                  }
 
-              return Promise.all(envs.map((env) => {
-                const { code, map } = result[env] || result;
-                const dest = path.join(outFn(env), destRelative);
-                const mapLoc = `${dest}.map`;
-                return writeFile(dest, code)
-                  .then(() => Promise.all([
-                    copyChmod(src, dest),
-                    map && writeFile(mapLoc, JSON.stringify(map)),
-                  ]));
-              }));
-            })
-            .then(() => release(), (err) => { release(); throw err; })
-            .then(() => subtask.done(), (err) => { subtask.done(); throw err; });
-        } else {
-          const subtask = task.subtask(`copy: ${relative}`);
-          logger.debug(`copy: ${relative}`);
-          return Promise.all(envs.map((env) => {
-            const out = outFn(env);
-            const dest = path.join(out, relative);
-            return copyFile(src, dest).then(() => copyChmod(src, dest));
-          }))
-            .then(() => release(), (err) => { release(); throw err; })
-            .then(() => subtask.done(), (err) => { subtask.done(); throw err; });
+                  return Promise.all(
+                    envs.map(env => {
+                      const { code, map } = result[env] || result;
+                      const dest = path.join(outFn(env), destRelative);
+                      const mapLoc = `${dest}.map`;
+                      return writeFile(dest, code).then(() =>
+                        Promise.all([
+                          copyChmod(src, dest),
+                          map && writeFile(mapLoc, JSON.stringify(map)),
+                        ]),
+                      );
+                    }),
+                  );
+                })
+                .then(
+                  () => release(),
+                  err => {
+                    release();
+                    throw err;
+                  },
+                )
+                .then(
+                  () => subtask.done(),
+                  err => {
+                    subtask.done();
+                    throw err;
+                  },
+                );
+            } else {
+              const subtask = task.subtask(`copy: ${relative}`);
+              logger.debug(`copy: ${relative}`);
+              return Promise.all(
+                envs.map(env => {
+                  const out = outFn(env);
+                  const dest = path.join(out, relative);
+                  return copyFile(src, dest).then(() => copyChmod(src, dest));
+                }),
+              )
+                .then(
+                  () => release(),
+                  err => {
+                    release();
+                    throw err;
+                  },
+                )
+                .then(
+                  () => subtask.done(),
+                  err => {
+                    subtask.done();
+                    throw err;
+                  },
+                );
+            }
+          }
+        }),
+      )
+      .catch(err => {
+        console.log(toErrorStack(err));
+        if (!watch) {
+          process.exit(1);
         }
-      }
-    })).catch((err) => {
-      console.log(toErrorStack(err));
-      if (!watch) {
-        process.exit(1);
-      }
-    });
+      });
   }
 
   if (watch) {
     process.nextTick(() => {
-      srcFiles.forEach((dirname) => {
+      srcFiles.forEach(dirname => {
         const watcher = chokidar.watch(dirname, {
           persistent: true,
           ignoreInitial: true,
@@ -213,7 +273,7 @@ module.exports = function build(pobrc, cwd, src, outFn, envs, watch, options) {
           watchLogger.debug(`changed: ${relative}`);
           task.subtask(`changed: ${relative}`);
           handleFile(filename, relative)
-            .catch((err) => {
+            .catch(err => {
               console.log(err.stack);
             })
             .then(() => watch.emit('changed', filename));
@@ -221,22 +281,26 @@ module.exports = function build(pobrc, cwd, src, outFn, envs, watch, options) {
 
         watcher.on('add', handleChange);
         watcher.on('change', handleChange);
-        watcher.on('unlink', (filename) => {
+        watcher.on('unlink', filename => {
           let relative = path.relative(dirname, filename) || filename;
           watchLogger.debug(`unlink: ${relative}`);
           const subtask = task.subtask(`delete: ${relative}`);
           if (_lock.isLocked(relative)) watchLogger.debug(`${relative} locked, waiting...`);
-          lock(relative).then(release => Promise.all(envs.map((env) => {
-            const dest = path.join(outFn(env), destFromSrc(relative));
+          lock(relative).then(release =>
+            Promise.all(
+              envs.map(env => {
+                const dest = path.join(outFn(env), destFromSrc(relative));
 
-            return Promise.all([
-              promiseCallback(done => unlink(dest, done)).catch(() => {}),
-              promiseCallback(done => unlink(`${dest}.map`, done)).catch(() => {}),
-            ]);
-          }))
-            .then(() => release())
-            .then(() => watch.emit('changed', filename))
-            .then(() => subtask.done()));
+                return Promise.all([
+                  promiseCallback(done => unlink(dest, done)).catch(() => {}),
+                  promiseCallback(done => unlink(`${dest}.map`, done)).catch(() => {}),
+                ]);
+              }),
+            )
+              .then(() => release())
+              .then(() => watch.emit('changed', filename))
+              .then(() => subtask.done()),
+          );
         });
       });
     });
@@ -253,7 +317,7 @@ module.exports = function build(pobrc, cwd, src, outFn, envs, watch, options) {
         logger = watchLogger;
       }
     })
-    .catch((err) => {
+    .catch(err => {
       console.log(err.stack);
       process.exit(1);
     });

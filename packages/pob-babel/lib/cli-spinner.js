@@ -42,4 +42,4 @@ module.exports = class Task {
   }
 };
 
-module.exports.enable = () => enabled = true;
+module.exports.enable = () => (enabled = true);

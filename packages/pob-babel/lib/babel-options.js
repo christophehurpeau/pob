@@ -3,7 +3,7 @@
 module.exports = function createOpts(
   env,
   react,
-  { presets: otherPresets, plugins: otherPlugins } = {}
+  { presets: otherPresets, plugins: otherPlugins } = {},
 ) {
   const devEnv = env.endsWith('-dev');
   const production = !devEnv && env !== 'jest';
@@ -58,7 +58,6 @@ module.exports = function createOpts(
       browser = false;
       break;
 
-
     case 'module-node7':
     case 'webpack-node7':
       console.warn(`env "${env}" is deprecated, use "module-node8" instead`);
@@ -95,28 +94,39 @@ module.exports = function createOpts(
       // add stage-1 to stage-3 features
       require.resolve('babel-preset-pob-stages'),
       // pob preset: import `src`, export default function name, replacements
-      [require.resolve('babel-preset-pob'), {
-        production,
-        replacements: {
-          BROWSER: browser,
-          NODEJS: !browser,
-          SERVER: !browser,
+      [
+        require.resolve('babel-preset-pob'),
+        {
+          production,
+          replacements: {
+            BROWSER: browser,
+            NODEJS: !browser,
+            SERVER: !browser,
+          },
         },
-      }],
+      ],
       // optimizations: remove dead-code
       require.resolve('babel-preset-babili-optimizations'),
       // flow runtime
       !production && {
-        plugins: [[require.resolve('babel-plugin-flow-runtime'), {
-          assert: true,
-          annotate: false,
-        }]],
+        plugins: [
+          [
+            require.resolve('babel-plugin-flow-runtime'),
+            {
+              assert: true,
+              annotate: false,
+            },
+          ],
+        ],
       },
       // discard unused imports (like production-only or node-only imports)
       { plugins: [require.resolve('babel-plugin-discard-module-references')] },
       // transpile for specified target
       transpilationPreset,
-    ].reverse().concat(otherPresets || []).filter(Boolean),
+    ]
+      .reverse()
+      .concat(otherPresets || [])
+      .filter(Boolean),
     plugins: (otherPlugins || []).filter(Boolean),
   };
 };

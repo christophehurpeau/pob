@@ -10,7 +10,7 @@ module.exports = function destFromSrc(relative, plugin) {
   }
   if (plugin) {
     if (plugin.destExtension) {
-      return relative.slice(0, -(plugin.extension.length)) + plugin.destExtension;
+      return relative.slice(0, -plugin.extension.length) + plugin.destExtension;
     } else {
       return relative;
     }
