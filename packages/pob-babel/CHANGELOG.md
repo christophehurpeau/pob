@@ -1,3 +1,12 @@
+<a name="17.5.1"></a>
+## [17.5.1](https://github.com/christophehurpeau/pob-babel/compare/v17.5.0...v17.5.1) (2017-07-24)
+
+
+### Bug Fixes
+
+* let ora check isTTY ([b866abe](https://github.com/christophehurpeau/pob-babel/commit/b866abe))
+
+
 <a name="17.5.0"></a>
 # [17.5.0](https://github.com/christophehurpeau/pob-babel/compare/v17.4.0...v17.5.0) (2017-07-09)
 
