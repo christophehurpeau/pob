@@ -1,3 +1,12 @@
+<a name="17.6.0"></a>
+# [17.6.0](https://github.com/christophehurpeau/pob-babel/compare/v17.5.1...v17.6.0) (2017-07-25)
+
+
+### Features
+
+* use .yo-rc.json if exists ([f1b04f7](https://github.com/christophehurpeau/pob-babel/commit/f1b04f7))
+
+
 <a name="17.5.1"></a>
 ## [17.5.1](https://github.com/christophehurpeau/pob-babel/compare/v17.5.0...v17.5.1) (2017-07-24)
 
