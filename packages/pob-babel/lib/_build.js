@@ -20,6 +20,7 @@ const createBabelOptions = require('./babel-options');
 const { logger: parentLogger } = require('./logger');
 const Task = require('./cli-spinner');
 const ignore = require('./utils/ignore');
+const pkgUtils = require('./utils/pkgUtils');
 
 const queue = new Queue(40, Infinity);
 
@@ -31,7 +32,7 @@ function toErrorStack(err) {
   }
 }
 
-module.exports = function build(pobrc, cwd, src, outFn, envs, watch, options) {
+module.exports = function build(pkg, cwd, src, outFn, envs, watch, options) {
   const srcFiles = glob.sync(src, { cwd });
   const _lock = Lock();
   const lock = resource =>
@@ -51,7 +52,7 @@ module.exports = function build(pobrc, cwd, src, outFn, envs, watch, options) {
     const optsManager = new babel.OptionManager();
 
     optsManager.mergeOptions({
-      options: createBabelOptions(env, pobrc.react, options),
+      options: createBabelOptions(env, pkgUtils.hasReact(pkg), options),
       alias: 'base',
       loc: cwd,
     });

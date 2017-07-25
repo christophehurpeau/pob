@@ -5,11 +5,17 @@ const plugins = require('./plugins');
 const babelOptions = require('./babel-options');
 
 const cwd = process.cwd();
+const pkg = JSON.parse(readFileSync(`${cwd}/package.json`));
+
 const pobrc = (() => {
   try {
-    return JSON.parse(readFileSync(`${cwd}/.pobrc.json`));
+    return JSON.parse(readFileSync(`${cwd}/.yo-rc.json`)).pob['pob-config'];
   } catch (err) {
-    return JSON.parse(readFileSync(`${cwd}/.pob.json`));
+    try {
+      return JSON.parse(readFileSync(`${cwd}/.pobrc.json`));
+    } catch (err) {
+      return JSON.parse(readFileSync(`${cwd}/.pob.json`));
+    }
   }
 })();
 
@@ -23,7 +29,7 @@ if (pobrc.babelPlugins) {
 }
 
 exports.clean = clean;
-exports.watch = (envs, options) => build(pobrc, cwd, envs, true, options);
-exports.build = (envs, options) => build(pobrc, cwd, envs, false, options);
+exports.watch = (envs, options) => build(pkg, pobrc, cwd, envs, true, options);
+exports.build = (envs, options) => build(pkg, pobrc, cwd, envs, false, options);
 
 exports.registerPlugin = plugin => plugins.register(plugin);

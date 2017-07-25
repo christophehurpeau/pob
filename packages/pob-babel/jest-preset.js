@@ -2,7 +2,9 @@ const readFileSync = require('fs').readFileSync;
 const createOpts = require('./lib/babel-options');
 
 const cwd = process.cwd();
-const pobrc = JSON.parse(readFileSync(`${cwd}/.pob.json`));
+const pkg = JSON.parse(readFileSync(`${cwd}/package.json`));
 
-
-module.exports = createOpts('jest', pobrc.react);
+const useReact =
+  (pkg.dependencies && pkg.dependencies.react) ||
+  (pkg.devDependencies && pkg.devDependencies.react);
+module.exports = createOpts('jest', useReact);
