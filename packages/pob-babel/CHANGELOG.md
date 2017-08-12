@@ -1,3 +1,13 @@
+<a name="17.6.1"></a>
+## [17.6.1](https://github.com/christophehurpeau/pob-babel/compare/v17.6.0...v17.6.1) (2017-08-12)
+
+
+### Bug Fixes
+
+* jsdoc use babel-preset-pob-stages and babel-preset-pob ([dff74ce](https://github.com/christophehurpeau/pob-babel/commit/dff74ce))
+* node6 compatible ([159e085](https://github.com/christophehurpeau/pob-babel/commit/159e085))
+
+
 <a name="17.6.0"></a>
 # [17.6.0](https://github.com/christophehurpeau/pob-babel/compare/v17.5.1...v17.6.0) (2017-07-25)
 
