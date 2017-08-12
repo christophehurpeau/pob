@@ -80,7 +80,7 @@ module.exports = function build(pkg, cwd, src, outFn, envs, watch, options) {
             const envAllFiles = readdir(out);
 
             const diff = envAllFiles.filter(
-              path => !allAllowedDestFiles.includes(path.replace(/.map$/, '')),
+              path => !allAllowedDestFiles.includes(path.replace(/.map$/, ''))
             );
             if (diff.length) {
               logger.debug(`${out}: removing: ${diff.join(',')}`);
@@ -92,7 +92,7 @@ module.exports = function build(pkg, cwd, src, outFn, envs, watch, options) {
             allSrcFiles.map(filename => {
               let src = path.join(dirname, filename);
               return handleFile(src, filename);
-            }),
+            })
           );
         } else {
         }
@@ -132,7 +132,7 @@ module.exports = function build(pkg, cwd, src, outFn, envs, watch, options) {
                             console.log(toErrorStack(err));
 
                             return { map: null, code: 'throw new Error("Syntax Error");' };
-                          }),
+                          })
                       )
                       .then(data => {
                         const mapLoc = `${dest}.map`;
@@ -141,11 +141,11 @@ module.exports = function build(pkg, cwd, src, outFn, envs, watch, options) {
                           Promise.all([
                             copyChmod(src, dest),
                             writeFile(mapLoc, JSON.stringify(data.map)),
-                          ]),
+                          ])
                         );
                       });
-                  }),
-                ),
+                  })
+                )
               )
               .then(() => {
                 logger[watching ? 'success' : 'debug'](`compiled: ${relative}`);
@@ -155,14 +155,14 @@ module.exports = function build(pkg, cwd, src, outFn, envs, watch, options) {
                 err => {
                   release();
                   throw err;
-                },
+                }
               )
               .then(
                 () => subtask.done(),
                 err => {
                   subtask.done();
                   throw err;
-                },
+                }
               );
           } else {
             const extension = path.extname(relative).substr(1);
@@ -180,7 +180,7 @@ module.exports = function build(pkg, cwd, src, outFn, envs, watch, options) {
                       console.log(toErrorStack(err));
 
                       return { map: null, code: 'throw new Error("Syntax Error");' };
-                    }),
+                    })
                 )
                 .then(result => {
                   if (!result) {
@@ -193,7 +193,7 @@ module.exports = function build(pkg, cwd, src, outFn, envs, watch, options) {
                           promiseCallback(done => unlink(dest, done)).catch(() => {}),
                           promiseCallback(done => unlink(`${dest}.map`, done)).catch(() => {}),
                         ]);
-                      }),
+                      })
                     );
                   }
 
@@ -206,9 +206,9 @@ module.exports = function build(pkg, cwd, src, outFn, envs, watch, options) {
                         Promise.all([
                           copyChmod(src, dest),
                           map && writeFile(mapLoc, JSON.stringify(map)),
-                        ]),
+                        ])
                       );
-                    }),
+                    })
                   );
                 })
                 .then(
@@ -216,14 +216,14 @@ module.exports = function build(pkg, cwd, src, outFn, envs, watch, options) {
                   err => {
                     release();
                     throw err;
-                  },
+                  }
                 )
                 .then(
                   () => subtask.done(),
                   err => {
                     subtask.done();
                     throw err;
-                  },
+                  }
                 );
             } else {
               const subtask = task.subtask(`copy: ${relative}`);
@@ -233,25 +233,25 @@ module.exports = function build(pkg, cwd, src, outFn, envs, watch, options) {
                   const out = outFn(env);
                   const dest = path.join(out, relative);
                   return copyFile(src, dest).then(() => copyChmod(src, dest));
-                }),
+                })
               )
                 .then(
                   () => release(),
                   err => {
                     release();
                     throw err;
-                  },
+                  }
                 )
                 .then(
                   () => subtask.done(),
                   err => {
                     subtask.done();
                     throw err;
-                  },
+                  }
                 );
             }
           }
-        }),
+        })
       )
       .catch(err => {
         console.log(toErrorStack(err));
@@ -296,11 +296,11 @@ module.exports = function build(pkg, cwd, src, outFn, envs, watch, options) {
                   promiseCallback(done => unlink(dest, done)).catch(() => {}),
                   promiseCallback(done => unlink(`${dest}.map`, done)).catch(() => {}),
                 ]);
-              }),
+              })
             )
               .then(() => release())
               .then(() => watch.emit('changed', filename))
-              .then(() => subtask.done()),
+              .then(() => subtask.done())
           );
         });
       });

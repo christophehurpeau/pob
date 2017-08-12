@@ -3,7 +3,7 @@
 module.exports = function createOpts(
   env,
   react,
-  { presets: otherPresets, plugins: otherPlugins } = {},
+  { presets: otherPresets, plugins: otherPlugins } = {}
 ) {
   const devEnv = env.endsWith('-dev');
   const production = !devEnv && env !== 'jest';
