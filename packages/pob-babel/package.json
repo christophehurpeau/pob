@@ -34,7 +34,7 @@
     "chokidar": "^1.7.0",
     "fs-readdir-recursive": "^1.0.0",
     "glob": "^7.1.2",
-    "js-yaml": "^3.9.0",
+    "js-yaml": "^3.9.1",
     "lock": "^0.1.4",
     "minimist-argv": "^1.0.0",
     "mkdirp": "^0.5.1",
@@ -46,9 +46,9 @@
     "slash": "^1.0.0"
   },
   "devDependencies": {
-    "eslint": "^4.3.0",
-    "eslint-config-airbnb-base": "^11.3.0",
-    "eslint-config-pob": "^14.1.1",
+    "eslint": "^4.4.1",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-config-pob": "^14.1.2",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-prettier": "^2.1.2",
