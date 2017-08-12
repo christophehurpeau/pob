@@ -15,7 +15,13 @@ module.exports = function createOpts(
       presets: [
         'jsdoc',
         react && 'babel-preset-pob-react',
-        require.resolve('babel-preset-stage-1'),
+        require.resolve('babel-preset-pob-stages'),
+        [
+          require.resolve('babel-preset-pob'),
+          {
+            production: false,
+          },
+        ],
       ].filter(Boolean),
       plugins: [
         'add-jsdoc-annotations',
