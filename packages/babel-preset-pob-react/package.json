@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-pob-react",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "babel preset react and plugins for pob",
   "keywords": [
     "babel-preset"
