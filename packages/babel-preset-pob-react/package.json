@@ -9,28 +9,50 @@
   "license": "ISC",
   "repository": "git@github.com:christophehurpeau/babel-preset-pob-react.git",
   "homepage": "https://github.com/christophehurpeau/babel-preset-pob-react",
+  "main": "./lib/index.js",
   "scripts": {
     "clean": "rm -Rf docs dist test/node6 coverage",
-    "lint": "eslint --ext .js,.jsx index.js",
-    "prepare": "ln -s ../../git-hooks/pre-commit .git/hooks/pre-commit 2>/dev/null || true ; ln -s ../../git-hooks/post-checkout .git/hooks/post-checkout 2>/dev/null || true ; ln -s ../../git-hooks/post-merge .git/hooks/post-merge 2>/dev/null || true ; ln -s ../../git-hooks/prepare-commit-msg .git/hooks/prepare-commit-msg 2>/dev/null || true",
-    "prepublish": "ln -s ../../git-hooks/pre-commit .git/hooks/pre-commit 2>/dev/null || true ; ln -s ../../git-hooks/post-checkout .git/hooks/post-checkout 2>/dev/null || true ; ln -s ../../git-hooks/post-merge .git/hooks/post-merge 2>/dev/null || true ; ln -s ../../git-hooks/prepare-commit-msg .git/hooks/prepare-commit-msg 2>/dev/null || true",
-    "preversion": "npm run lint && pob-repository-check-clean",
+    "lint": "eslint --ext .js,.jsx lib/",
+    "postcheckout": "./.git-hooks/post-checkout",
+    "postmerge": "./.git-hooks/post-merge",
+    "precommit": "./.git-hooks/pre-commit",
+    "preparecommitmsg": "./.git-hooks/prepare-commit-msg ${GIT_PARAMS}",
+    "preversion": "yarn run lint && pob-repository-check-clean",
     "release": "pob-repository-check-clean && pob-release",
     "version": "pob-version"
+  },
+  "lint-staged": {
+    "package.json": [
+      "prettier --write",
+      "git add"
+    ],
+    "src/**/*.json": [
+      "prettier --write",
+      "git add"
+    ],
+    "src/**/*.{js,jsx}": [
+      "eslint --fix --quiet",
+      "git add"
+    ]
   },
   "dependencies": {
     "babel-plugin-react-require": "^3.0.0",
     "babel-plugin-transform-react-jsx-self": "^6.22.0",
     "babel-plugin-transform-react-jsx-source": "^6.22.0",
-    "babel-preset-react": "^6.23.0"
+    "babel-preset-react": "^6.24.1"
   },
   "devDependencies": {
-    "eslint": "^3.16.1",
-    "eslint-config-airbnb-base": "^11.1.0",
-    "eslint-config-pob": "^11.1.0",
-    "eslint-plugin-import": "^2.2.0",
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-config-pob": "^14.1.2",
+    "eslint-config-prettier": "^2.3.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-prettier": "^2.1.2",
+    "husky": "^0.14.3",
     "komet": "^0.1.4",
     "komet-karma": "^0.2.5",
-    "pob-release": "^3.1.0"
+    "lint-staged": "^4.0.2",
+    "pob-release": "^3.1.0",
+    "prettier": "^1.5.3"
   }
 }
