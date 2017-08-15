@@ -1,3 +1,12 @@
+<a name="18.0.3"></a>
+## [18.0.3](https://github.com/christophehurpeau/pob-babel/compare/v18.0.2...v18.0.3) (2017-08-15)
+
+
+### Bug Fixes
+
+* babel-preset-pob-stages@0.2.2 ([5e17b29](https://github.com/christophehurpeau/pob-babel/commit/5e17b29))
+
+
 <a name="18.0.2"></a>
 ## [18.0.2](https://github.com/christophehurpeau/pob-babel/compare/v18.0.1...v18.0.2) (2017-08-15)
 
