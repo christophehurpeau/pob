@@ -1,3 +1,17 @@
+<a name="18.0.0"></a>
+# [18.0.0](https://github.com/christophehurpeau/pob-babel/compare/v17.6.1...v18.0.0) (2017-08-15)
+
+
+### Features
+
+* update dependencies ([627ff75](https://github.com/christophehurpeau/pob-babel/commit/627ff75))
+
+
+### BREAKING CHANGES
+
+* node 8.3
+
+
 <a name="17.6.1"></a>
 ## [17.6.1](https://github.com/christophehurpeau/pob-babel/compare/v17.6.0...v17.6.1) (2017-08-12)
 
