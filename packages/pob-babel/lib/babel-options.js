@@ -19,7 +19,8 @@ module.exports = function createOpts(
         [
           require.resolve('babel-preset-pob'),
           {
-            production: false,
+            exportDefaultName: true,
+            production: true,
           },
         ],
       ].filter(Boolean),
@@ -39,7 +40,7 @@ module.exports = function createOpts(
 
     case 'jest':
     case 'node8':
-      transpilationPreset = ['latest-node', { target: 8 }];
+      transpilationPreset = ['latest-node', { target: 8.3 }];
       browser = false;
       break;
 
@@ -60,7 +61,7 @@ module.exports = function createOpts(
       break;
 
     case 'module-node8':
-      transpilationPreset = ['latest-node', { target: 8, modules: false }];
+      transpilationPreset = ['latest-node', { target: 8.3, modules: false }];
       browser = false;
       break;
 
@@ -104,6 +105,7 @@ module.exports = function createOpts(
         require.resolve('babel-preset-pob'),
         {
           production,
+          exportDefaultName: !production,
           replacements: {
             BROWSER: browser,
             NODEJS: !browser,
@@ -112,7 +114,7 @@ module.exports = function createOpts(
         },
       ],
       // optimizations: remove dead-code
-      require.resolve('babel-preset-babili-optimizations'),
+      require.resolve('babel-preset-optimizations'),
       // flow runtime
       !production && {
         plugins: [
