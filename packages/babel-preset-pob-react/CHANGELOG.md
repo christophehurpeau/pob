@@ -1,3 +1,12 @@
+<a name="0.2.4"></a>
+## [0.2.4](https://github.com/christophehurpeau/babel-preset-pob-react/compare/v0.2.3...v0.2.4) (2017-08-15)
+
+
+### Bug Fixes
+
+* disable transform-react-jsx-self and transform-react-jsx-source ([26d0a77](https://github.com/christophehurpeau/babel-preset-pob-react/commit/26d0a77))
+
+
 <a name="0.2.3"></a>
 ## [0.2.3](https://github.com/christophehurpeau/babel-preset-pob-react/compare/v0.2.2...v0.2.3) (2017-08-15)
 
