@@ -25,7 +25,7 @@
   "dependencies": {
     "babel-core": "^6.25.0",
     "babel-plugin-discard-module-references": "^1.1.2",
-    "babel-plugin-flow-runtime": "^0.11.1",
+    "babel-plugin-flow-runtime": "^0.10.0",
     "babel-preset-optimizations": "^1.0.1",
     "babel-preset-pob": "^0.5.0",
     "babel-preset-pob-stages": "^0.2.2",
