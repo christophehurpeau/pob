@@ -1,3 +1,12 @@
+<a name="18.0.1"></a>
+## [18.0.1](https://github.com/christophehurpeau/pob-babel/compare/v18.0.0...v18.0.1) (2017-08-15)
+
+
+### Bug Fixes
+
+* remove babel-preset-stage-1 dependency ([3ea5dea](https://github.com/christophehurpeau/pob-babel/commit/3ea5dea))
+
+
 <a name="18.0.0"></a>
 # [18.0.0](https://github.com/christophehurpeau/pob-babel/compare/v17.6.1...v18.0.0) (2017-08-15)
 
