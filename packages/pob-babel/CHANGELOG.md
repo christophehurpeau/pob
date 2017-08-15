@@ -1,3 +1,12 @@
+<a name="18.0.4"></a>
+## [18.0.4](https://github.com/christophehurpeau/pob-babel/compare/v18.0.3...v18.0.4) (2017-08-15)
+
+
+### Bug Fixes
+
+* go back to babel-plugin-flow-runtime@0.10.0 ([8fe7ceb](https://github.com/christophehurpeau/pob-babel/commit/8fe7ceb))
+
+
 <a name="18.0.3"></a>
 ## [18.0.3](https://github.com/christophehurpeau/pob-babel/compare/v18.0.2...v18.0.3) (2017-08-15)
 
