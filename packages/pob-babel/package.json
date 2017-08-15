@@ -29,7 +29,6 @@
     "babel-preset-optimizations": "^1.0.1",
     "babel-preset-pob": "^0.5.0",
     "babel-preset-pob-stages": "^0.2.0",
-    "babel-preset-stage-1": "^6.24.1",
     "babel-register": "^6.24.1",
     "chokidar": "^1.7.0",
     "fs-readdir-recursive": "^1.0.0",
