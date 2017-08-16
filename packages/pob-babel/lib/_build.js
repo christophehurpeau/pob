@@ -1,4 +1,7 @@
 /* eslint-disable no-console, no-use-before-define, max-lines */
+
+'use strict';
+
 const { execSync } = require('child_process');
 const path = require('path');
 const { stat, unlink } = require('fs');

@@ -1,3 +1,5 @@
+'use strict';
+
 const plugins = new Map();
 
 module.exports = {

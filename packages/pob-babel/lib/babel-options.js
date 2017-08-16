@@ -1,5 +1,7 @@
 /* eslint-disable global-require */
 
+'use strict';
+
 module.exports = function createOpts(env, react, options) {
   const otherPresets = options && options.presets;
   const otherPlugins = options && options.plugins;

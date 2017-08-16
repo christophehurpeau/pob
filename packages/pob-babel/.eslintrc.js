@@ -1,1 +1,1 @@
-exports.extends = 'pob/es5';
+exports.extends = 'pob/node-lts';

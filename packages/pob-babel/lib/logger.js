@@ -1,3 +1,5 @@
+'use strict';
+
 const { default: Logger, configure: nightingaleConfigure, levels } = require('nightingale');
 const ConsoleHandler = require('nightingale-console').default;
 

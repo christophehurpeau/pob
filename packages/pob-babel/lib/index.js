@@ -1,3 +1,5 @@
+'use strict';
+
 const { readFileSync } = require('fs');
 const clean = require('./clean');
 const build = require('./build');

@@ -1,3 +1,5 @@
+'use strict';
+
 const EventEmitter = require('events');
 const clean = require('./clean');
 const _build = require('./_build');

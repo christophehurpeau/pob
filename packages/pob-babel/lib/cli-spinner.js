@@ -1,3 +1,5 @@
+'use strict';
+
 let enabled = false;
 const ora = require('ora');
 

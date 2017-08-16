@@ -1,3 +1,5 @@
+'use strict';
+
 const readFileSync = require('fs').readFileSync;
 const createOpts = require('./lib/babel-options');
 

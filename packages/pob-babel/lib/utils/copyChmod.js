@@ -1,3 +1,5 @@
+'use strict';
+
 const promiseCallback = require('promise-callback-factory').default;
 const fs = require('fs');
 
