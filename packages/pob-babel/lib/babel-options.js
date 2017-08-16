@@ -39,6 +39,10 @@ module.exports = function createOpts(env, react, options) {
       throw new Error('use olderNode instead.');
 
     case 'jest':
+      transpilationPreset = ['latest-node', { target: 'current' }];
+      browser = false;
+      break;
+
     case 'node8':
       transpilationPreset = ['latest-node', { target: 8.3 }];
       browser = false;

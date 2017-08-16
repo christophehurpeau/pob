@@ -393,7 +393,7 @@ babel-plugin-transform-inline-consecutive-adds@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-inline-consecutive-adds/-/babel-plugin-transform-inline-consecutive-adds-0.2.0.tgz#15dae78921057f4004f8eafd79e15ddc5f12f426"
 
-babel-plugin-transform-object-rest-spread@^6.23.0:
+babel-plugin-transform-object-rest-spread@^6.26.0:
   version "6.26.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-object-rest-spread/-/babel-plugin-transform-object-rest-spread-6.26.0.tgz#0f36692d50fef6b7e2d4b3ac1478137a963b7b06"
   dependencies:
@@ -421,14 +421,14 @@ babel-preset-optimizations@^1.1.1:
     babel-plugin-transform-inline-consecutive-adds "^0.2.0"
     babel-plugin-transform-undefined-to-void "^6.8.3"
 
-babel-preset-pob-stages@^0.2.2:
-  version "0.2.2"
-  resolved "https://registry.yarnpkg.com/babel-preset-pob-stages/-/babel-preset-pob-stages-0.2.2.tgz#d98dcc9132842f56fcb355955e8b5ad010138fd7"
+babel-preset-pob-stages@^0.2.4:
+  version "0.2.4"
+  resolved "https://registry.yarnpkg.com/babel-preset-pob-stages/-/babel-preset-pob-stages-0.2.4.tgz#b9d7462c87d24d772b8905d73e2444e521ca2e4c"
   dependencies:
     babel-plugin-transform-class-properties "^6.24.1"
     babel-plugin-transform-decorators-legacy "^1.3.4"
     babel-plugin-transform-export-extensions "^6.22.0"
-    babel-plugin-transform-object-rest-spread "^6.23.0"
+    babel-plugin-transform-object-rest-spread "^6.26.0"
 
 babel-preset-pob@^0.5.0:
   version "0.5.0"
@@ -920,9 +920,9 @@ eslint-config-airbnb-base@^11.3.1:
   dependencies:
     eslint-restricted-globals "^0.1.1"
 
-eslint-config-pob@^16.0.0:
-  version "16.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-pob/-/eslint-config-pob-16.0.0.tgz#7fde82a6c0034b3a8a70922da6dc3d2c8185198c"
+eslint-config-pob@^16.0.4:
+  version "16.0.4"
+  resolved "https://registry.yarnpkg.com/eslint-config-pob/-/eslint-config-pob-16.0.4.tgz#c492d14567b9dcd529e87ea81fdca611785b1ced"
 
 eslint-config-prettier@^2.3.0:
   version "2.3.0"
@@ -958,6 +958,15 @@ eslint-plugin-import@^2.7.0:
     lodash.cond "^4.3.0"
     minimatch "^3.0.3"
     read-pkg-up "^2.0.0"
+
+eslint-plugin-node@^5.1.1:
+  version "5.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-node/-/eslint-plugin-node-5.1.1.tgz#a7ed956e780c22aef6afd1116005acd82f26eac6"
+  dependencies:
+    ignore "^3.3.3"
+    minimatch "^3.0.4"
+    resolve "^1.3.3"
+    semver "5.3.0"
 
 eslint-plugin-prettier@^2.2.0:
   version "2.2.0"
@@ -2484,7 +2493,7 @@ resolve-from@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/resolve-from/-/resolve-from-1.0.1.tgz#26cbfe935d1aeeeabb29bc3fe5aeb01e93d44226"
 
-resolve@^1.2.0:
+resolve@^1.2.0, resolve@^1.3.3:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.4.0.tgz#a75be01c53da25d934a98ebd0e4c4a7312f92a86"
   dependencies:
@@ -2543,6 +2552,10 @@ safe-buffer@^5.0.1, safe-buffer@~5.1.0, safe-buffer@~5.1.1:
 "semver@2 || 3 || 4 || 5", semver@^5.0.1, semver@^5.3.0:
   version "5.4.1"
   resolved "https://registry.yarnpkg.com/semver/-/semver-5.4.1.tgz#e059c09d8571f0540823733433505d3a2f00b18e"
+
+semver@5.3.0:
+  version "5.3.0"
+  resolved "https://registry.yarnpkg.com/semver/-/semver-5.3.0.tgz#9b2ce5d3de02d17c6012ad326aa6b4d0cf54f94f"
 
 set-blocking@~2.0.0:
   version "2.0.0"

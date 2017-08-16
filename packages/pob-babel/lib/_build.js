@@ -2,9 +2,11 @@
 
 'use strict';
 
-const { execSync } = require('child_process');
+const execSync = require('child_process').execSync;
 const path = require('path');
-const { stat, unlink } = require('fs');
+const fs = require('fs');
+const stat = fs.stat;
+const unlink = fs.unlink;
 const babel = require('babel-core');
 const chokidar = require('chokidar');
 const glob = require('glob');
@@ -20,7 +22,7 @@ const writeFile = require('./utils/writeFile');
 const destFromSrc = require('./utils/destFromSrc');
 const plugins = require('./plugins');
 const createBabelOptions = require('./babel-options');
-const { logger: parentLogger } = require('./logger');
+const parentLogger = require('./logger').logger;
 const Task = require('./cli-spinner');
 const ignore = require('./utils/ignore');
 const pkgUtils = require('./utils/pkgUtils');
@@ -202,7 +204,9 @@ module.exports = function build(pkg, cwd, src, outFn, envs, watch, options) {
 
                   return Promise.all(
                     envs.map(env => {
-                      const { code, map } = result[env] || result;
+                      const codeAndMap = result[env] || result;
+                      const code = codeAndMap.code;
+                      const map = codeAndMap.map;
                       const dest = path.join(outFn(env), destRelative);
                       const mapLoc = `${dest}.map`;
                       return writeFile(dest, code).then(() =>

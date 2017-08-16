@@ -1,8 +1,8 @@
 'use strict';
 
-const { execSync } = require('child_process');
+const execSync = require('child_process').execSync;
 const glob = require('glob');
-const { logger: parentLogger } = require('./logger');
+const parentLogger = require('./logger').logger;
 const Task = require('./cli-spinner');
 
 const logger = parentLogger.child('clean', 'clean');

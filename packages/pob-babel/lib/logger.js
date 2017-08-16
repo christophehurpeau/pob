@@ -1,7 +1,8 @@
 'use strict';
 
-const { default: Logger, configure: nightingaleConfigure, levels } = require('nightingale');
+const nightingale = require('nightingale');
 const ConsoleHandler = require('nightingale-console').default;
+const Logger = nightingale.default;
 
 const config = level => [
   {
@@ -12,8 +13,8 @@ const config = level => [
 
 module.exports = {
   config,
-  levels,
-  configure: level => nightingaleConfigure(config(level || levels.ERROR)),
-  enable: () => nightingaleConfigure(config(levels.INFO)),
+  levels: nightingale.levels,
+  configure: level => nightingale.configure(config(level || nightingale.levels.ERROR)),
+  enable: () => nightingale.configure(config(nightingale.levels.INFO)),
   logger: new Logger('pob-build'),
 };

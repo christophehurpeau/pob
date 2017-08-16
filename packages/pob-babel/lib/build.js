@@ -3,9 +3,10 @@
 const EventEmitter = require('events');
 const clean = require('./clean');
 const _build = require('./_build');
-const { logger } = require('./logger');
+const logger = require('./logger').logger;
 
-module.exports = function build(pkg, pobrc, cwd, envs, watch = false, options) {
+module.exports = function build(pkg, pobrc, cwd, envs, watch, options) {
+  watch = watch || false;
   const envsSet = envs !== undefined;
 
   if (!envs) {
