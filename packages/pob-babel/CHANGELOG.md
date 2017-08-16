@@ -1,3 +1,12 @@
+<a name="18.1.0"></a>
+# [18.1.0](https://github.com/christophehurpeau/pob-babel/compare/v18.0.4...v18.1.0) (2017-08-16)
+
+
+### Features
+
+* update dependencies, including babel-preset-optimizations@1.1.1 ([84c72cc](https://github.com/christophehurpeau/pob-babel/commit/84c72cc))
+
+
 <a name="18.0.4"></a>
 ## [18.0.4](https://github.com/christophehurpeau/pob-babel/compare/v18.0.3...v18.0.4) (2017-08-15)
 
