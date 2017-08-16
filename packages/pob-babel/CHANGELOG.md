@@ -1,3 +1,12 @@
+<a name="18.1.3"></a>
+## [18.1.3](https://github.com/christophehurpeau/pob-babel/compare/v18.1.2...v18.1.3) (2017-08-16)
+
+
+### Bug Fixes
+
+* node 4 and jest preset current node compatibility ([0963b0c](https://github.com/christophehurpeau/pob-babel/commit/0963b0c))
+
+
 <a name="18.1.2"></a>
 ## [18.1.2](https://github.com/christophehurpeau/pob-babel/compare/v18.1.1...v18.1.2) (2017-08-16)
 
