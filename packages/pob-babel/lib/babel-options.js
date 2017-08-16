@@ -1,10 +1,8 @@
 /* eslint-disable global-require */
 
-module.exports = function createOpts(
-  env,
-  react,
-  { presets: otherPresets, plugins: otherPlugins } = {}
-) {
+module.exports = function createOpts(env, react, options) {
+  const otherPresets = options && options.presets;
+  const otherPlugins = options && options.plugins;
   const devEnv = env.endsWith('-dev');
   const production = !devEnv && env !== 'jest';
 
