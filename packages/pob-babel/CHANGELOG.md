@@ -1,3 +1,12 @@
+<a name="18.1.2"></a>
+## [18.1.2](https://github.com/christophehurpeau/pob-babel/compare/v18.1.1...v18.1.2) (2017-08-16)
+
+
+### Bug Fixes
+
+* eslint-config-pob@16.0.0 ([5632927](https://github.com/christophehurpeau/pob-babel/commit/5632927))
+
+
 <a name="18.1.1"></a>
 ## [18.1.1](https://github.com/christophehurpeau/pob-babel/compare/v18.1.0...v18.1.1) (2017-08-16)
 
