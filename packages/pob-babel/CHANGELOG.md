@@ -1,3 +1,12 @@
+<a name="18.1.4"></a>
+## [18.1.4](https://github.com/christophehurpeau/pob-babel/compare/v18.1.3...v18.1.4) (2017-08-25)
+
+
+### Bug Fixes
+
+* jest tests on node 4 ([a4e964f](https://github.com/christophehurpeau/pob-babel/commit/a4e964f))
+
+
 <a name="18.1.3"></a>
 ## [18.1.3](https://github.com/christophehurpeau/pob-babel/compare/v18.1.2...v18.1.3) (2017-08-16)
 
