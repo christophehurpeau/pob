@@ -83,7 +83,7 @@ ansi-styles@^2.2.1:
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-2.2.1.tgz#b432dd3358b634cf75e1e4664368240533c1ddbe"
 
-ansi-styles@^3.0.0, ansi-styles@^3.1.0:
+ansi-styles@^3.1.0, ansi-styles@^3.2.0:
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/ansi-styles/-/ansi-styles-3.2.0.tgz#c159b8d5be0f9e5a6f346dab94f16ce022161b88"
   dependencies:
@@ -1171,7 +1171,7 @@ flow-config-parser@^0.3.0:
   version "0.3.0"
   resolved "https://registry.yarnpkg.com/flow-config-parser/-/flow-config-parser-0.3.0.tgz#704916efba88cd2518ab4d8f933079571276138f"
 
-flow-runtime@^0.10.0:
+flow-runtime@0.10.0, flow-runtime@^0.10.0:
   version "0.10.0"
   resolved "https://registry.yarnpkg.com/flow-runtime/-/flow-runtime-0.10.0.tgz#20a70432fb20e8bba43769078c7a17d99dd1acab"
 
@@ -1428,8 +1428,8 @@ iconv-lite@^0.4.17:
   resolved "https://registry.yarnpkg.com/iconv-lite/-/iconv-lite-0.4.18.tgz#23d8656b16aae6742ac29732ea8f0336a4789cf2"
 
 ignore@^3.3.3:
-  version "3.3.3"
-  resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.3.tgz#432352e57accd87ab3110e82d3fea0e47812156d"
+  version "3.3.4"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.4.tgz#85ab6d0a9ca8b27b31604c09efe1c14dc21ab872"
 
 imurmurhash@^0.1.4:
   version "0.1.4"
@@ -2022,12 +2022,12 @@ natural-compare@^1.4.0:
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
 nightingale-ansi-formatter@^1.7.2:
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/nightingale-ansi-formatter/-/nightingale-ansi-formatter-1.7.2.tgz#74513cd4b181f53d79174e9b3ecd37e10eecb713"
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/nightingale-ansi-formatter/-/nightingale-ansi-formatter-1.8.0.tgz#890f007b7e0cfe4994efb71c63e37b92076b722a"
   dependencies:
-    ansi-styles "^3.0.0"
-    flow-runtime "^0.10.0"
-    nightingale-formatter "^2.2.2"
+    ansi-styles "^3.2.0"
+    flow-runtime "0.10.0"
+    nightingale-formatter "^2.2.5"
 
 nightingale-console-output@^1.4.0:
   version "1.4.0"
@@ -2052,7 +2052,7 @@ nightingale-debug@^2.3.1:
     flow-runtime "^0.10.0"
     nightingale-levels "^1.0.0"
 
-nightingale-formatter@^2.2.2:
+nightingale-formatter@^2.2.5:
   version "2.2.5"
   resolved "https://registry.yarnpkg.com/nightingale-formatter/-/nightingale-formatter-2.2.5.tgz#e6115ce03879302d6c5bce830f4be31d602b304d"
   dependencies:
