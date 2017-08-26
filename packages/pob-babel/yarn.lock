@@ -410,9 +410,9 @@ babel-preset-flow@^6.23.0:
   dependencies:
     babel-plugin-transform-flow-strip-types "^6.22.0"
 
-babel-preset-optimizations@^1.2.0:
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-optimizations/-/babel-preset-optimizations-1.2.0.tgz#5fad5b0550411038fae9a940a84f4439eb637e52"
+babel-preset-optimizations@^1.2.1:
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/babel-preset-optimizations/-/babel-preset-optimizations-1.2.1.tgz#fdbda5bbc0be40d22ab506e6e23a207dfb9d94da"
   dependencies:
     babel-plugin-minify-constant-folding "^0.2.0"
     babel-plugin-minify-dead-code-elimination "^0.2.0"

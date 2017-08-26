@@ -26,7 +26,7 @@
     "babel-core": "^6.26.0",
     "babel-plugin-discard-module-references": "^1.1.2",
     "babel-plugin-flow-runtime": "^0.10.0",
-    "babel-preset-optimizations": "^1.2.0",
+    "babel-preset-optimizations": "^1.2.1",
     "babel-preset-pob": "^0.5.0",
     "babel-preset-pob-stages": "^0.2.4",
     "babel-register": "^6.26.0",
