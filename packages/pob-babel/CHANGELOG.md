@@ -1,3 +1,12 @@
+<a name="18.1.5"></a>
+## [18.1.5](https://github.com/christophehurpeau/pob-babel/compare/v18.1.4...v18.1.5) (2017-08-26)
+
+
+### Bug Fixes
+
+* babel-preset-optimizations@1.2.1 ([a775a24](https://github.com/christophehurpeau/pob-babel/commit/a775a24))
+
+
 <a name="18.1.4"></a>
 ## [18.1.4](https://github.com/christophehurpeau/pob-babel/compare/v18.1.3...v18.1.4) (2017-08-25)
 
