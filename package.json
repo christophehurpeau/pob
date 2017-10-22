@@ -13,7 +13,7 @@
   },
   "homepage": "https://github.com/christophehurpeau/pob",
   "engines": {
-    "npm": ">=3.0.0"
+    "node": ">=8.1.0"
   },
   "bin": {
     "pob": "./pob"
@@ -21,23 +21,30 @@
   "scripts": {
     "preversion": "pob-repository-check-clean",
     "release": "pob-repository-check-clean && pob-release",
-    "version": "pob-version"
+    "version": "pob-version",
+    "format": "prettier --single-quote --print-width 100 --trailing-comma=all --write"
   },
   "dependencies": {
+    "findup-sync": "^2.0.0",
     "generator-license": "^5.1.0",
     "git-remote-url": "^1.0.1",
-    "github-username": "^3.0.0",
+    "github-username": "^4.1.0",
     "inquirer-npm-name": "^2.0.0",
     "lodash.camelcase": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",
+    "minimist-argv": "^1.0.0",
     "mkdirp": "^0.5.1",
-    "parse-author": "^1.0.0",
-    "semver": "^5.3.0",
-    "update-notifier": "^1.0.3",
-    "yeoman-environment": "^1.6.6",
-    "yeoman-generator": "^1.1.0"
+    "parse-author": "^2.0.0",
+    "semver": "^5.4.1",
+    "update-notifier": "^2.2.0",
+    "yeoman-environment": "^2.0.2",
+    "yeoman-generator": "^1.1.1"
   },
   "devDependencies": {
-    "pob-release": "^3.0.0"
+    "eslint": "^4.5.0",
+    "eslint-config-airbnb-base": "^11.3.2",
+    "eslint-plugin-import": "^2.7.0",
+    "pob-release": "^3.1.0",
+    "prettier": "^1.6.1"
   }
 }

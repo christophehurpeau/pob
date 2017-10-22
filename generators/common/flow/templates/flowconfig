@@ -1,0 +1,15 @@
+[ignore]
+<PROJECT_ROOT>/index.js
+<PROJECT_ROOT>/lib.*
+.*/lib-node(4|5|6|7|8)(-dev)?/.*
+.*/lib-module(-node(7|8)|-modern-browsers)?(-dev)?/.*
+.*/node_modules/.*
+
+[include]
+
+[libs]
+
+[options]
+all=true
+module.use_strict=true
+esproposal.export_star_as=enable

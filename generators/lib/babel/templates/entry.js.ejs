@@ -1,0 +1,34 @@
+var production = process.env.NODE_ENV === 'production';
+<% var envs = [
+    ['node8', env_node8],
+    ['node6', env_node6],
+    ['older-node', env_olderNode],
+].filter(v => v[1]);
+if (envs.length === 1) { -%>
+module.exports = require('./lib-<%= envs[0][0] %>' + (production ? '' : '-dev') + '/<%= entry %>');
+<% } else { -%>
+<%# parseFloat(process.versions.node) doesnt work with 6.10.1 -%>
+var nodeVersion = process.versions.node.split('.');
+var nodeVersionMajor = Number(nodeVersion[0]);
+var nodeVersionMinor = Number(nodeVersion[1]);
+<% if (env_node8) { -%>
+/* istanbul ignore next */
+if (nodeVersionMajor > 8 || (nodeVersionMajor === 8 && nodeVersionMinor >= 3))
+  module.exports = require('./lib-node8' + (production ? '' : '-dev') + '/<%= entry %>');
+<% } if (env_node6) { -%>
+/* istanbul ignore next */
+<% if (env_node8) { -%>
+else <% } -%>
+if (nodeVersionMajor > 6 || (nodeVersionMajor === 6 && nodeVersionMinor >= 5))
+  module.exports = require('./lib-node6' + (production ? '' : '-dev') + '/<%= entry %>');
+<% } if (env_olderNode) { -%>
+/* istanbul ignore next */
+<% if (env_node8 || env_node6) { -%>
+else <% } -%>
+module.exports = require('./lib-older-node' + (production ? '' : '-dev') + '/<%= entry %>');
+<% } else { -%>
+/* istanbul ignore next */
+<% if (env_node8 || env_node6) { -%>
+else <% } -%>
+throw new Error('Node version not supported: ' + nodeVersion + ' (' + process.versions.node + ').');
+<% } } -%>

@@ -1,0 +1,97 @@
+version: 2
+
+jobs:
+  dependencies:
+    docker:
+      - image: circleci/node:8
+
+    steps:
+      - restore_cache:
+          key: v1-yarn-deps-{{ checksum "yarn.lock" }}
+      - restore_cache:
+          key: v1-yarn-cache
+      - name: Installing dependencies
+        run: yarn --prefer-offline --pure-lockfile
+      - save_cache:
+          key: v1-yarn-deps-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      - save_cache:
+          key: v1-yarn-cache
+          paths:
+            - ~/.yarn-cache
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - node_modules
+
+
+  test:
+    docker:
+      - image: circleci/node:8
+
+    steps:
+      - name: preversion check
+        run: yarn run preversion
+      - name: tests
+        run: yarn run test
+
+  documentation:
+    docker:
+      - image: circleci/node:8
+
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - name: clean
+        run: rm -Rf docs coverage
+      - name: tests
+        run: yarn run generate:docs
+      - name: send results to codecov
+        run: bash <(curl -s https://codecov.io/bash)
+      - persist_to_workspace:
+          root: /tmp/workspace
+          paths:
+            - docs
+            - coverage
+
+  publish:
+    docker:
+      - image: circleci/node:8
+
+    steps:
+      - attach_workspace:
+          at: /tmp/workspace
+      - name: Set git config
+        run: git config user.email "builds@circleci.com" && git config user.name "CircleCi"
+      - name: Add docs and coverage
+        run: git add -f docs coverage
+      - name: Commit
+        run: 'git commit -m "docs: update generated docs [skip ci]"'
+      - name: Push
+        run: git push
+
+workflows:
+  version: 2
+
+  test_and_documetation:
+    jobs:
+      - dependencies
+      - test:
+          requires:
+            - dependencies
+      - documentation:
+          filters:
+            branches:
+              only:
+                - master
+        requires:
+          - dependencies
+      - publish:
+          filters:
+            branches:
+              only:
+                - master
+          requires:
+            - test
+            - documentation
