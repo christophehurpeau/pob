@@ -1,3 +1,7 @@
+<a name="18.2.0"></a>
+# [18.2.0](https://github.com/christophehurpeau/pob-babel/compare/v18.1.5...v18.2.0) (2017-11-25)
+
+
 <a name="18.1.5"></a>
 ## [18.1.5](https://github.com/christophehurpeau/pob-babel/compare/v18.1.4...v18.1.5) (2017-08-26)
 
