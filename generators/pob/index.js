@@ -27,7 +27,7 @@ module.exports = class PobGenerator extends Generator {
     });
   }
 
-  async initializing() {
+  initializing() {
     if (this.options.type === 'lerna') {
       this.useLerna = true;
       this.inLerna = false;
@@ -60,7 +60,7 @@ module.exports = class PobGenerator extends Generator {
       });
     }
 
-    this.composeWith(require.resolve('../core/editorconfig'), {});
+    this.composeWith(require.resolve('../core/editorconfig'));
 
     if (!this.inLerna) {
       this.composeWith(require.resolve('../core/git'));
@@ -72,6 +72,7 @@ module.exports = class PobGenerator extends Generator {
   }
 
   writing() {
+    console.log('writing')
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     packageUtils.sort(pkg);
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);

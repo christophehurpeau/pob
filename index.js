@@ -9,6 +9,11 @@ updateNotifier({ pkg }).notify();
 
 const env = yeoman.createEnv();
 
+env.on('error', (err) => {
+  console.error(err.stack || err.message || err);
+  process.exit(1);
+});
+
 process.on('uncaughtException', (err) => {
   console.log('uncaughtException', err.stack || err.message || err);
 });
@@ -65,11 +70,6 @@ const generator = env.run('pob:generator', options, (err) => {
     console.error(err.stack || err.message || err);
     process.exit(1);
   }
-});
-
-env.on('error', (err) => {
-  console.error(err.stack || err.message || err);
-  process.exit(1);
 });
 
 generator.on('error', (err) => {

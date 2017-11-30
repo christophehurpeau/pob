@@ -26,7 +26,7 @@
   },
   "dependencies": {
     "findup-sync": "^2.0.0",
-    "generator-license": "^5.1.0",
+    "generator-license": "^5.2.0",
     "git-remote-url": "^1.0.1",
     "github-username": "^4.1.0",
     "inquirer-npm-name": "^2.0.0",
@@ -36,15 +36,15 @@
     "mkdirp": "^0.5.1",
     "parse-author": "^2.0.0",
     "semver": "^5.4.1",
-    "update-notifier": "^2.2.0",
-    "yeoman-environment": "^2.0.2",
+    "update-notifier": "^2.3.0",
+    "yeoman-environment": "^2.0.5",
     "yeoman-generator": "^1.1.1"
   },
   "devDependencies": {
-    "eslint": "^4.5.0",
-    "eslint-config-airbnb-base": "^11.3.2",
-    "eslint-plugin-import": "^2.7.0",
+    "eslint": "^4.12.0",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
     "pob-release": "^3.1.0",
-    "prettier": "^1.6.1"
+    "prettier": "^1.8.2"
   }
 }

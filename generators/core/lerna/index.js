@@ -5,7 +5,7 @@ module.exports = class extends Generator {
   writing() {
     // lerna.json
     const lernaConfig = {
-      lerna: '2.0.0-rc.5',
+      lerna: '2.4.0',
       npmClient: 'yarn',
       packages: [
         'packages/*',
@@ -27,7 +27,7 @@ module.exports = class extends Generator {
     // package.json
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     packageUtils.addDependencies(pkg, {
-      lerna: '^2.0.0-rc.5',
+      lerna: '^2.4.0',
     });
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
 

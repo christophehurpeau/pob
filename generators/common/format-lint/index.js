@@ -13,17 +13,17 @@ module.exports = class extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
     packageUtils.addDevDependencies(pkg, {
-      eslint: '^4.8.0',
+      eslint: '^4.12.0',
       'eslint-config-pob': '^17.0.0',
-      'eslint-config-prettier': '^2.6.0',
+      'eslint-config-prettier': '^2.8.0',
       'eslint-plugin-prettier': '^2.3.1',
-      prettier: '^1.7.4',
+      prettier: '^1.8.2',
     });
 
     if (packageUtils.hasBabel(pkg)) {
       packageUtils.addDevDependency(pkg, 'babel-eslint', '^7.2.3');
       packageUtils.addDevDependency(pkg, 'eslint-plugin-babel', '^4.1.2');
-      packageUtils.addDevDependency(pkg, 'eslint-plugin-import', '^2.7.0');
+      packageUtils.addDevDependency(pkg, 'eslint-plugin-import', '^2.8.0');
     } else {
       packageUtils.addDevDependency(pkg, 'eslint-plugin-node', '^5.1.1');
       packageUtils.removeDevDependency(pkg, 'babel-eslint');
@@ -36,7 +36,7 @@ module.exports = class extends Generator {
       packageUtils.addDevDependencies(pkg, {
         'eslint-config-airbnb': '^16.0.0',
         'eslint-plugin-jsx-a11y': '^6.0.2',
-        'eslint-plugin-react': '^7.4.0',
+        'eslint-plugin-react': '^7.5.1',
       });
       packageUtils.removeDevDependency(pkg, 'eslint-config-airbnb-base');
     } else {

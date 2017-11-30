@@ -195,7 +195,7 @@ module.exports = class extends Generator {
 
     packageUtils.addDevDependency(pkg, 'pob-babel', '^18.1.5');
 
-    packageUtils.addDependency(pkg, 'flow-runtime', '^0.14.0');
+    packageUtils.addDependency(pkg, 'flow-runtime', '^0.16.0');
     packageUtils.removeDevDependency(pkg, 'flow-runtime');
 
     // old pob dependencies
@@ -245,7 +245,7 @@ module.exports = class extends Generator {
       this.options.env_browsers ||
       this.options.env_module_allBrowsers
     ) {
-      packageUtils.addDevDependency(pkg, 'babel-preset-env', '^1.6.0');
+      packageUtils.addDevDependency(pkg, 'babel-preset-env', '^1.6.1');
     } else {
       packageUtils.removeDevDependency(pkg, 'babel-preset-env');
     }
@@ -257,7 +257,7 @@ module.exports = class extends Generator {
     }
 
     if (this.options.env_module_modernBrowsers) {
-      packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers', '^10.0.0');
+      packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers', '^10.0.1');
     } else {
       packageUtils.removeDevDependency(pkg, 'babel-preset-modern-browsers');
     }

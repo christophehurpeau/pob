@@ -28,7 +28,7 @@ module.exports = class extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
     packageUtils.addDevDependency(pkg, 'husky', '^0.14.3');
-    packageUtils.addDevDependency(pkg, 'lint-staged', '^4.0.4');
+    packageUtils.addDevDependency(pkg, 'lint-staged', '^5.0.0');
 
     packageUtils.addScripts(pkg, {
       postcheckout: './.git-hooks/post-checkout',

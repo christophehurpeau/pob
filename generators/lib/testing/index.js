@@ -60,7 +60,7 @@ module.exports = class extends Generator {
     });
 
     packageUtils.addDevDependencies(pkg, {
-      jest: '^20.0.4',
+      jest: '^21.2.1',
     });
     packageUtils.removeDevDependencies(pkg, [
       'coveralls',
