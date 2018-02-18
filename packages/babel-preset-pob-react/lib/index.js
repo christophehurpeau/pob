@@ -1,12 +1,10 @@
-const useDefault = obj => (obj.__esModule ? obj.default : obj);
-const presetReact = useDefault(require('babel-preset-react'));
-const pluginReactRequire = useDefault(require('babel-plugin-react-require'));
-// const pluginTransformReactJSXSelf = useDefault(require('babel-plugin-transform-react-jsx-self'));
-// const pluginTransformReactJSXSource = useDefault(
-//   require('babel-plugin-transform-react-jsx-source')
-// );
+'use strict';
 
-module.exports = function(context, opts = {}) {
+// const pluginTransformReactJSXSelf = require.resolve('babel-plugin-transform-react-jsx-self');
+// const pluginTransformReactJSXSource = require.resolve('babel-plugin-transform-react-jsx-source');
+
+module.exports = function(context, opts) {
+  opts = opts || {};
   const production =
     opts.production !== undefined ? opts.production : process.env.NODE_ENV === 'production';
   if (typeof production !== 'boolean') {
@@ -14,9 +12,9 @@ module.exports = function(context, opts = {}) {
   }
 
   return {
-    presets: presetReact,
+    presets: require.resolve('babel-preset-react'),
     plugins: [
-      pluginReactRequire,
+      require.resolve('babel-plugin-react-require'),
       // !production && pluginTransformReactJSXSelf,
       // !production && pluginTransformReactJSXSource,
     ].filter(Boolean),
