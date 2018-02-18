@@ -1,10 +1,10 @@
-#!/usr/bin/env node
-const argv = require('minimist-argv');
+#!/usr/bin/env bash
 
-if (process.stdout.isTTY && argv.spinner !== false) {
-  require('./lib/logger').configure();
-  require('./lib/cli-spinner').enable();
-} else {
-  require('./lib/logger').enable();
-}
-require('./lib').watch();
+rm -f ./dist/*
+
+
+if [ -f ./node_modules/pob-babel/node_modules/rollup/bin/rollup ]; then
+  ./node_modules/pob-babel/node_modules/rollup/bin/rollup --watch --config ./node_modules/pob-babel/rollup.config.js
+else
+  ./node_modules/rollup/bin/rollup --watch --config ./node_modules/pob-babel/rollup.config.js
+fi

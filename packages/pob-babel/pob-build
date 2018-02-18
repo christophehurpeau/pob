@@ -1,6 +1,9 @@
-#!/usr/bin/env node
-require('./lib/logger').configure();
-require('./lib/cli-spinner').enable();
-const pobBabel = require('./lib');
+#!/usr/bin/env bash
 
-pobBabel.build(process.argv[2] && process.argv[2].split(',').map(env => env.trim()));
+rm -f ./dist/*
+
+if [ -f ./node_modules/pob-babel/node_modules/rollup/bin/rollup ]; then
+  ./node_modules/pob-babel/node_modules/rollup/bin/rollup --config ./node_modules/pob-babel/rollup.config.js
+else
+  ./node_modules/rollup/bin/rollup --config ./node_modules/pob-babel/rollup.config.js
+fi
