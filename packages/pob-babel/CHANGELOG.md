@@ -1,3 +1,12 @@
+<a name="19.0.1"></a>
+## [19.0.1](https://github.com/christophehurpeau/pob-babel/compare/v19.0.0...v19.0.1) (2018-02-18)
+
+
+### Bug Fixes
+
+* pob-build-doc babel-cli path ([104e435](https://github.com/christophehurpeau/pob-babel/commit/104e435))
+
+
 <a name="19.0.0"></a>
 # [19.0.0](https://github.com/christophehurpeau/pob-babel/compare/v18.2.0...v19.0.0) (2018-02-18)
 
