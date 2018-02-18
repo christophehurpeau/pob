@@ -1,3 +1,9 @@
+<a name="0.1.0"></a>
+# 0.1.0 (2018-02-18)
+
+initial
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/christophehurpeau/babel-preset-pob/compare/v0.5.0...v0.6.0) (2018-02-16)
 
