@@ -1,3 +1,17 @@
+<a name="19.0.0"></a>
+# [19.0.0](https://github.com/christophehurpeau/pob-babel/compare/v18.2.0...v19.0.0) (2018-02-18)
+
+
+### Features
+
+* rollup ([fa8daea](https://github.com/christophehurpeau/pob-babel/commit/fa8daea))
+
+
+### BREAKING CHANGES
+
+* removed everything, use rollupt and babel-preset-pob-env
+
+
 <a name="18.2.0"></a>
 # [18.2.0](https://github.com/christophehurpeau/pob-babel/compare/v18.1.5...v18.2.0) (2017-11-25)
 
