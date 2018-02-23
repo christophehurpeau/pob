@@ -1,3 +1,12 @@
+<a name="19.0.3"></a>
+## [19.0.3](https://github.com/christophehurpeau/pob-babel/compare/v19.0.2...v19.0.3) (2018-02-23)
+
+
+### Bug Fixes
+
+* resolve rollup config path ([dfcb3a6](https://github.com/christophehurpeau/pob-babel/commit/dfcb3a6))
+
+
 <a name="19.0.2"></a>
 ## [19.0.2](https://github.com/christophehurpeau/pob-babel/compare/v19.0.1...v19.0.2) (2018-02-23)
 
