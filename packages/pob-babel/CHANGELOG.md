@@ -1,3 +1,12 @@
+<a name="19.0.4"></a>
+## [19.0.4](https://github.com/christophehurpeau/pob-babel/compare/v19.0.3...v19.0.4) (2018-02-23)
+
+
+### Bug Fixes
+
+* remove console.log ([14c1a5e](https://github.com/christophehurpeau/pob-babel/commit/14c1a5e))
+
+
 <a name="19.0.3"></a>
 ## [19.0.3](https://github.com/christophehurpeau/pob-babel/compare/v19.0.2...v19.0.3) (2018-02-23)
 
