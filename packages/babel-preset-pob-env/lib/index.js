@@ -39,22 +39,48 @@ module.exports = function(context, opts) {
           SERVER: targetOption === 'node',
         };
 
+  const exportDefaultName =
+    opts.exportDefaultName !== undefined
+      ? opts.exportDefaultName
+      : targetOption === 'node' || !production;
+
+  if (typeof exportDefaultName !== 'boolean') {
+    throw new Error("Preset pob-env 'exportDefaultName' option must be an boolean.");
+  }
+
   if (typeof replacements !== 'object') {
     throw new Error(
-      "Preset latest-node 'replacements' option must be an object or undefined (default)"
+      "Preset pob-env 'replacements' option must be an object or undefined (default)"
     );
   }
 
   if (modules !== false && modules !== 'commonjs') {
     throw new Error(
-      "Preset latest-node 'modules' option must be 'false' to indicate no modules\n" +
+      "Preset pob-env 'modules' option must be 'false' to indicate no modules\n" +
         "or 'commonjs' (default)"
     );
   }
 
   if (production && targetOption === 'node' && versionOption === 'jest') {
-    throw new Error("Preset latest-node 'production' option cannot be false with jest");
+    throw new Error("Preset pob-env 'production' option cannot be false with jest");
   }
+
+  const replacementsKeys = Object.keys(replacements);
+  // use indexOf to support node 4
+  if (replacementsKeys.indexOf('PRODUCTION') !== -1) {
+    throw new Error(
+      "Preset pob-env 'replacements.production' is reserved. Use option 'production' if you want to change it."
+    );
+  }
+  replacementsKeys.forEach(key => {
+    if (key.toUpperCase() !== key) console.warn('warning: replacement key should be in uppercase.');
+    if (typeof replacements[key] !== 'boolean') {
+      throw new Error(`Preset pob-env 'replacements.${key}' option must be a boolean.`);
+    }
+  });
+
+  replacements.PRODUCTION = production;
+  replacementsKeys.push('PRODUCTION');
 
   let targetPreset;
 
@@ -89,18 +115,33 @@ module.exports = function(context, opts) {
   return {
     // preset order is last to first, so we reverse it for clarity.
     presets: [
+      // flow
+      flow && require.resolve('babel-preset-flow'),
       // add stage-1 to stage-3 features
       require.resolve('babel-preset-pob-stages'),
-      // pob preset: import `src`, export default function name, replacements
-      [
-        require.resolve('babel-preset-pob'),
-        {
-          production,
-          loose,
-          exportDefaultName: !production,
-          replacements,
-        },
-      ],
+      // plugins
+      {
+        plugins: [
+          // rename 'module/src/' to 'module' (helps IDE autocomplete)
+          [
+            require.resolve('babel-plugin-import-export-rename'),
+            { '^([a-z\\-]+|[./]+)/src(.*)$': '$1$2' },
+          ],
+          exportDefaultName && [
+            require.resolve('babel-plugin-transform-name-export-default'),
+            { compose: true },
+          ],
+          [
+            require.resolve('babel-plugin-minify-replace'),
+            {
+              replacements: replacementsKeys.map(key => ({
+                identifierName: key,
+                replacement: { type: 'booleanLiteral', value: replacements[key] },
+              })),
+            },
+          ],
+        ].filter(Boolean),
+      },
       // optimizations: remove dead-code
       optimizations && require.resolve('babel-preset-optimizations'),
       // flow runtime

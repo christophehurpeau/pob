@@ -55,13 +55,13 @@ yarn add --dev babel-preset-pob-env
 
 ```json
 {
-  "presets": ["pob"]
+  "presets": ["pob-env"]
 }
 ```
 
 ```json
 {
-  "presets": [["pob", { "production": true, "replacements": { "BROWSER": false } }]]
+  "presets": [["pob-env", { "production": true, "replacements": { "BROWSER": false } }]]
 }
 ```
 

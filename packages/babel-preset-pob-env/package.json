@@ -41,6 +41,10 @@
   "dependencies": {
     "babel-plugin-discard-module-references": "^1.1.2",
     "babel-plugin-flow-runtime": "^0.17.0",
+    "babel-plugin-import-export-rename": "^1.0.1",
+    "babel-plugin-minify-replace": "^0.3.0",
+    "babel-plugin-transform-name-export-default": "^1.0.0",
+    "babel-preset-flow": "^6.23.0",
     "babel-preset-optimizations": "^1.2.1",
     "babel-preset-pob": "^0.6.0",
     "babel-preset-pob-stages": "^0.2.4"
