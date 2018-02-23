@@ -1,3 +1,12 @@
+<a name="19.1.0"></a>
+# [19.1.0](https://github.com/christophehurpeau/pob-babel/compare/v19.0.4...v19.1.0) (2018-02-23)
+
+
+### Features
+
+* update dependencies ([1cedce5](https://github.com/christophehurpeau/pob-babel/commit/1cedce5))
+
+
 <a name="19.0.4"></a>
 ## [19.0.4](https://github.com/christophehurpeau/pob-babel/compare/v19.0.3...v19.0.4) (2018-02-23)
 
