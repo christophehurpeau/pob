@@ -38,7 +38,12 @@ const createConfigForEnv = (entry, env, production) => {
       format,
       sourcemap: true,
     })),
-    external: externalModules,
+    external: path => {
+      if (path.includes('node_modules')) return true;
+      // !path.startsWith('@') &&
+      if (/^[a-z].*\//.test(path)) path = path.replace(/^([^/]+)\/.*$/, '$1');
+      return externalModules.includes(path);
+    },
     plugins: [
       babel({
         babelrc: false,
@@ -52,6 +57,7 @@ const createConfigForEnv = (entry, env, production) => {
               production,
               flow: true,
               react: hasReact,
+              exportDefaultName: false, // this breaks the build (https://github.com/rollup/rollup/pull/2001 ?)
             },
           ],
         ],
