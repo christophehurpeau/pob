@@ -2,8 +2,4 @@
 
 rm -f ./dist/*
 
-if [ -f ./node_modules/pob-babel/node_modules/rollup/bin/rollup ]; then
-  ./node_modules/pob-babel/node_modules/rollup/bin/rollup --config ./node_modules/pob-babel/rollup.config.js
-else
-  ./node_modules/rollup/bin/rollup --config ./node_modules/pob-babel/rollup.config.js
-fi
+`node -e 'console.log(require.resolve("rollup/bin/rollup"))'` --config ./node_modules/pob-babel/rollup.config.js

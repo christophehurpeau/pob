@@ -3,11 +3,7 @@
 rm -Rf docs/
 mkdir docs/
 
-if [ -f ./node_modules/pob-babel/node_modules/babel-cli/bin/babel.js ]; then
-  BABEL_ENV=doc ./node_modules/pob-babel/node_modules/babel-cli/bin/babel.js --ignore *.test.js -d lib-doc src/
-else
-  BABEL_ENV=doc ./node_modules/babel-cli/bin/babel.js --ignore *.test.js -d lib-doc src/
-fi
-
+BABEL_ENV=doc `node -e 'console.log(require.resolve("babel-cli/bin/babel.js"))'` --ignore *.test.js -d lib-doc src/
 ./node_modules/.bin/jsdoc README.md lib-doc --recurse --destination docs/ --configure jsdoc.conf.json
+
 rm -Rf lib-doc
