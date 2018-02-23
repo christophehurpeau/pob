@@ -1,3 +1,12 @@
+<a name="19.1.1"></a>
+## [19.1.1](https://github.com/christophehurpeau/pob-babel/compare/v19.1.0...v19.1.1) (2018-02-23)
+
+
+### Bug Fixes
+
+* external modules and disable exportDefaultName ([a24fe98](https://github.com/christophehurpeau/pob-babel/commit/a24fe98))
+
+
 <a name="19.1.0"></a>
 # [19.1.0](https://github.com/christophehurpeau/pob-babel/compare/v19.0.4...v19.1.0) (2018-02-23)
 
