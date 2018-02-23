@@ -1,10 +1,9 @@
 'use strict';
 
+const nodeBuiltinModules = require('module').builtinModules;
 const readFileSync = require('fs').readFileSync;
 const babel = require('rollup-plugin-babel');
 const resolve = require('rollup-plugin-node-resolve');
-const nodeBuiltIns = require('./lib/nodeBuiltIns');
-
 const cwd = process.cwd();
 const pkg = JSON.parse(readFileSync(`${cwd}/package.json`));
 
@@ -35,7 +34,7 @@ const createConfigForEnv = (entry, env, production) => {
       format,
       sourcemap: true,
     })),
-    external: nodeBuiltIns
+    external: nodeBuiltinModules
       .concat(Object.keys(pkg.dependencies || {}))
       .concat(Object.keys(pkg.peerDependencies || {})),
     plugins: [
