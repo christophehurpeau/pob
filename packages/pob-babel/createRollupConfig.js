@@ -1,6 +1,10 @@
 'use strict';
 
-const nodeBuiltinModules = require('module').builtinModules;
+// node only > 9.3
+// const nodeBuiltinModules = require('module').builtinModules;
+const nodeBuiltinModules = Object.keys(process.binding('natives')).filter(
+  x => !x.startsWith('internal/')
+);
 const readFileSync = require('fs').readFileSync;
 const babel = require('rollup-plugin-babel');
 const resolve = require('rollup-plugin-node-resolve');
