@@ -3,7 +3,7 @@ const camelCase = require('lodash.camelcase');
 const packageUtils = require('../../../utils/package');
 const inLerna = require('../../../utils/inLerna');
 
-module.exports = class extends Generator {
+module.exports = class ReadmeGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 

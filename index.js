@@ -27,6 +27,8 @@ const printUsage = () => {
 };
 
 let type = argv._[0];
+const updateOnly = type === 'update';
+if (updateOnly) type = null;
 
 if (type === 'add') {
   if (!existsSync('lerna.json')) {
@@ -50,18 +52,22 @@ if (type === 'add') {
 if (type !== 'lib' && type !== 'lerna') {
   if (existsSync('lerna.json')) {
     type = 'lerna';
-  } else if (existsSync('.pob.json')) {
+  } else if (existsSync('.yo-rc.json')) {
     type = 'lib';
   } else {
     console.error('Missing first argument: type');
-    printUsage()
+    printUsage();
     process.exit(1);
   }
 }
 
+if (!existsSync('.yo-rc.json')) {
+  writeFileSync('.yo-rc.json', '{}');
+}
 
 const options = {
   type,
+  updateOnly,
   lerna: !!argv.lerna,
 };
 

@@ -1,4 +1,4 @@
-/* eslint-disable no-param-reassign */
+/* eslint-disable no-param-reassign, max-lines, max-len */
 const semver = require('semver');
 const parseAuthor = require('parse-author');
 
@@ -13,6 +13,10 @@ exports.hasBabel = pkg => !!(
   (pkg.devDependencies['babel-core'] || pkg.devDependencies['pob-babel'])
 );
 
+exports.transpileWithBabel = pkg => !!(
+  pkg.devDependencies && pkg.devDependencies['pob-babel']
+);
+
 exports.hasReact = pkg => !!(
   (pkg.dependencies && pkg.dependencies.react) ||
   (pkg.peerDependencies && pkg.peerDependencies.react)
@@ -20,6 +24,10 @@ exports.hasReact = pkg => !!(
 
 exports.hasDocumentation = pkg => !!(
   (pkg.devDependencies && pkg.devDependencies.jsdoc)
+);
+
+exports.hasJest = pkg => !!(
+  (pkg.devDependencies && pkg.devDependencies.jest)
 );
 
 function sortObject(obj, keys = []) {
@@ -61,6 +69,7 @@ exports.sort = function sort(pkg) {
     'engineStrict',
     'os',
     'cpu',
+    'workspaces',
     'browserslist',
     'main',
     'jsnext:main',
@@ -99,6 +108,7 @@ exports.sort = function sort(pkg) {
     'bundledDependencies',
     'bundleDependencies',
     'optionalDependencies',
+    'resolutions',
   ]);
 };
 
@@ -106,7 +116,13 @@ const cleanVersion = version => version.replace(/^(\^|~)/, '');
 
 
 const internalRemoveDependencies = (pkg, type, dependencies) => {
-  dependencies.forEach(dependency => delete pkg[type][dependency]);
+  if (!pkg[type]) return;
+  dependencies.forEach((dependency) => {
+    delete pkg[type][dependency];
+  });
+  if (Object.keys(pkg[type]) === 0) {
+    delete pkg[type];
+  }
 };
 
 const internalAddDependencies = (pkg, type, dependencies) => {
@@ -176,8 +192,14 @@ exports.removeDevDependencies = function removeDevDependencies(pkg, dependencies
   internalRemoveDependencies(pkg, 'devDependencies', dependencies);
 };
 
-exports.removeDevDependency = function removeDevDependency(pkg, dependency) {
-  exports.removeDevDependencies(pkg, [dependency]);
+exports.addOrRemoveDependencies = function addOrRemoveDependencies(pkg, condition, dependencies) {
+  if (condition) return exports.addDependencies(pkg, dependencies);
+  return exports.removeDependencies(pkg, Object.keys(dependencies));
+};
+
+exports.addOrRemoveDevDependencies = function addOrRemoveDependencies(pkg, condition, dependencies) {
+  if (condition) return exports.addDevDependencies(pkg, dependencies);
+  return exports.removeDevDependencies(pkg, Object.keys(dependencies));
 };
 
 exports.addScripts = function addScripts(pkg, scripts) {

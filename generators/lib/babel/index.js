@@ -2,7 +2,7 @@ const Generator = require('yeoman-generator');
 const mkdirp = require('mkdirp');
 const packageUtils = require('../../../utils/package');
 
-module.exports = class extends Generator {
+module.exports = class BabelGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
@@ -13,46 +13,17 @@ module.exports = class extends Generator {
       desc: 'Has documentation (use preset for jsdoc).',
     });
 
-    this.option('env_node6', {
+    this.option('testing', {
       type: Boolean,
       required: false,
-      desc: 'Babel Env node6',
+      defaults: false,
+      desc: 'Has testing.',
     });
 
-    this.option('env_node8', {
-      type: Boolean,
-      required: false,
-      desc: 'Babel Env node8',
-    });
-
-    this.option('env_olderNode', {
-      type: Boolean,
-      required: false,
-      desc: 'Babel Env older node',
-    });
-
-    this.option('env_module_node8', {
-      type: Boolean,
-      required: false,
-      desc: 'Babel Env module node8',
-    });
-
-    this.option('env_module_modernBrowsers', {
-      type: Boolean,
-      required: false,
-      desc: 'Babel Env module modern-browsers',
-    });
-
-    this.option('env_module_allBrowsers', {
-      type: Boolean,
-      required: false,
-      desc: 'Babel Env module all browsers',
-    });
-
-    this.option('env_browsers', {
-      type: Boolean,
-      required: false,
-      desc: 'Babel Env browsers',
+    this.option('babelEnvs', {
+      type: String,
+      required: true,
+      desc: 'Babel Envs',
     });
 
     this.option('entries', {
@@ -63,16 +34,18 @@ module.exports = class extends Generator {
   }
 
   initializing() {
+    this.entries = JSON.parse(this.options.entries);
+    this.babelEnvs = JSON.parse(this.options.babelEnvs);
     mkdirp(this.destinationPath('src'));
 
-    this.options.entries.split(',').forEach((entry) => {
+    this.entries.forEach((entry) => {
       const entryDestPath = this.destinationPath(`${entry}.js`);
-      if (this.options.env_node6 || this.options.env_node8 || this.options.env_olderNode) {
+      if (this.babelEnvs.find(env => env.target === 'node')) {
         this.fs.copyTpl(this.templatePath('entry.js.ejs'), entryDestPath, {
           entry,
-          env_node6: this.options.env_node6,
-          env_node8: this.options.env_node8,
-          env_olderNode: this.options.env_olderNode,
+          node8: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8')),
+          node6: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '6')),
+          node4: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '4')),
         });
       } else {
         this.fs.delete(entryDestPath);
@@ -87,29 +60,30 @@ module.exports = class extends Generator {
       }
     }
 
-    if (this.fs.exists(this.destinationPath('.flowconfig'))) {
+    this.hasFlow = this.fs.exists(this.destinationPath('.flowconfig'));
+    if (this.hasFlow) {
       this.fs.copy(
         this.templatePath('types.js'),
         this.destinationPath('types.js'),
       );
-      const typesDestPath = this.destinationPath('src/types.js');
-      if (!this.fs.exists(typesDestPath)) {
-        this.fs.copy(this.templatePath('src/types.js'), typesDestPath);
-      }
+      // const typesDestPath = this.destinationPath('src/types.js');
+      // if (!this.fs.exists(typesDestPath)) {
+      //   this.fs.copy(this.templatePath('src/types.js'), typesDestPath);
+      // }
     }
   }
 
-  writing() {
+  default() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
     if (!pkg.main) pkg.main = './index.js';
 
-    if (!this.options.env_browsers) {
+    if (!this.babelEnvs.find(env => env.target === 'browser' && env.version === undefined && env.formats.includes('cjs'))) {
       delete pkg.browser;
       delete pkg['browser-dev'];
-    } else if (!pkg.browser) {
-      pkg.browser = './lib-browsers/index.js';
-      pkg['browser-dev'] = './lib-browsers-dev/index.js';
+    } else {
+      pkg.browser = './dist/index.cjs.js';
+      pkg['browser-dev'] = './dist/index-dev.cjs.js';
     }
 
     if (pkg['webpack:main-modern-browsers']) {
@@ -124,17 +98,6 @@ module.exports = class extends Generator {
         'module',
       );
     }
-    if (pkg['webpack:browser']) pkg.module = pkg['webpack:browser'].replace('webpack', 'module');
-    if (pkg['webpack:browser-dev']) { pkg['module-dev'] = pkg['webpack:browser-dev'].replace('webpack', 'module'); }
-    if (pkg['webpack:main']) pkg.module = pkg['webpack:main'].replace('webpack', 'module');
-    if (pkg['webpack:main-dev']) { pkg['module-dev'] = pkg['webpack:main-dev'].replace('webpack', 'module'); }
-    if (pkg['webpack:node']) pkg['module:node'] = pkg['webpack:node'];
-    if (pkg['webpack:node-dev']) pkg['module:node-dev'] = pkg['webpack:node-dev'];
-
-    // fix
-    if (pkg.module) pkg.module = pkg.module.replace('webpack', 'module');
-    if (pkg['module-dev']) pkg['module-dev'] = pkg['module-dev'].replace('webpack', 'module');
-
     delete pkg['webpack:main-modern-browsers'];
     delete pkg['webpack:main-modern-browsers-dev'];
     delete pkg['webpack:browser'];
@@ -144,41 +107,48 @@ module.exports = class extends Generator {
     delete pkg['webpack:node'];
     delete pkg['webpack:node-dev'];
 
-    if (!this.options.env_module_modernBrowsers) {
+    if (!this.babelEnvs.find(env => env.target === 'browser' && env.version === 'modern' && env.formats.includes('es'))) {
       delete pkg['module:modern-browsers'];
       delete pkg['module:modern-browsers-dev'];
-    } else if (!pkg['module:modern-browsers']) {
-      pkg['module:modern-browsers'] = './lib-module-modern-browsers/index.js';
-      pkg['module:modern-browsers-dev'] = './lib-module-modern-browsers-dev/index.js';
+    } else { // if (!pkg['module:modern-browsers']) {
+      pkg['module:modern-browsers'] = './dist/index-browsermodern.es.js';
+      pkg['module:modern-browsers-dev'] = './dist/index-browsermodern-dev.es.js';
     }
 
-    if (!this.options.env_module_allBrowsers) {
+    if (!this.babelEnvs.find(env => env.target === 'browser' && env.version === undefined && env.formats.includes('es'))) {
       delete pkg.module;
       delete pkg['module-dev'];
       delete pkg['module:browser'];
       delete pkg['module:browser-dev'];
-    } else if (!pkg.module) {
-      pkg.module = pkg['module:browser'] = './lib-module/index.js';
-      pkg['module-dev'] = pkg['module:browser-dev'] = './lib-module-dev/index.js';
+    } else { //  if (!pkg.module) {
+      pkg.module = pkg['module:browser'] = './dist/index-browser.es.js';
+      pkg['module-dev'] = pkg['module:browser-dev'] = './dist/index-browser-dev.es.js';
     }
 
-    if (!this.options.env_module_node8) {
+    const esNodeEnv = this.babelEnvs.find(env => env.target === 'node' && env.formats.includes('es'));
+    if (!esNodeEnv) {
       delete pkg['module:node'];
       delete pkg['module:node-dev'];
-    } else if (this.options.env_module_node8) {
-      pkg['module:node'] = './lib-module-node8/index.js';
-      pkg['module:node-dev'] = './lib-module-node8-dev/index.js';
+    } else {
+      pkg['module:node'] = `./dist/index-${esNodeEnv.target}${esNodeEnv.version}.es.js`;
+      pkg['module:node-dev'] = './dist/index-node8-dev.es.js';
     }
 
-    if (this.options.env_olderNode || this.options.env_node6 || this.options.env_node8) {
-      if (this.options.env_olderNode) {
-        if (pkg.engines) {
-          delete pkg.engines.node;
-          if (Object.keys(pkg.engines).length === 0) delete pkg.engines;
-        }
-      } else {
-        if (!pkg.engines) pkg.engines = {};
-        pkg.engines.node = `>=${this.options.env_node6 ? '6.5.0' : '8.3.0'}`;
+    if (this.babelEnvs.find(env => env.target === 'node')) {
+      if (!pkg.engines) pkg.engines = {};
+      const minNodeVersion = this.babelEnvs.filter(env => env.target === 'node').reduce((min, env) => Math.min(min, env.version), Number.MAX_SAFE_INTEGER);
+      switch (String(minNodeVersion)) {
+        case '4':
+          pkg.engines.node = '>=4.0.0';
+          break;
+        case '6':
+          pkg.engines.node = '>=6.5.0';
+          break;
+        case '8':
+          pkg.engines.node = '>=8.3.0';
+          break;
+        default:
+          throw new Error(`Invalid min node version: ${minNodeVersion}`);
       }
     }
 
@@ -193,10 +163,13 @@ module.exports = class extends Generator {
     delete pkg.scripts['build:dev'];
     delete pkg.scripts['watch:dev'];
 
-    packageUtils.addDevDependency(pkg, 'pob-babel', '^18.1.5');
+    packageUtils.addDevDependencies(pkg, {
+      'babel-core': '^6.26.0',
+      'pob-babel': '^19.1.2',
+    });
 
-    packageUtils.addDependency(pkg, 'flow-runtime', '^0.16.0');
-    packageUtils.removeDevDependency(pkg, 'flow-runtime');
+    packageUtils.removeDevDependencies(pkg, ['flow-runtime']); // dev dependency !
+    packageUtils.addOrRemoveDependencies(pkg, this.hasFlow, { 'flow-runtime': '^0.17.0' });
 
     // old pob dependencies
     packageUtils.removeDevDependencies(pkg, [
@@ -222,45 +195,32 @@ module.exports = class extends Generator {
       'babel-preset-react',
     ]);
 
-    if (packageUtils.hasReact(pkg)) {
-      packageUtils.addDevDependencies(pkg, {
-        'babel-preset-pob-react': '^0.2.4',
-      });
-    } else {
-      packageUtils.removeDevDependency(pkg, 'babel-preset-pob-react');
-    }
+    packageUtils.addOrRemoveDevDependencies(pkg, packageUtils.hasReact(pkg), {
+      'babel-preset-pob-react': '^0.2.4',
+    });
 
-    if (this.options.documentation) {
-      packageUtils.addDevDependency(pkg, 'babel-preset-jsdoc', '^0.4.0');
-      packageUtils.addDevDependency(pkg, 'babel-plugin-add-jsdoc-annotations', '^5.1.0');
-    } else {
-      packageUtils.removeDevDependencies(pkg, [
-        'babel-preset-jsdoc',
-        'babel-plugin-add-jsdoc-annotations',
-      ]);
-    }
+    packageUtils.removeDevDependencies(pkg, [
+      'babel-preset-jsdoc',
+      'babel-plugin-add-jsdoc-annotations',
+    ]);
 
-    if (
-      this.options.env_olderNode ||
-      this.options.env_browsers ||
-      this.options.env_module_allBrowsers
-    ) {
-      packageUtils.addDevDependency(pkg, 'babel-preset-env', '^1.6.1');
-    } else {
-      packageUtils.removeDevDependency(pkg, 'babel-preset-env');
-    }
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      this.babelEnvs.find(env => (env.target === 'node' && env.version === '4') || (env.target === 'browser' && env.version === undefined)),
+      { 'babel-preset-env': '^1.6.1' },
+    );
 
-    if (this.options.env_node6 || this.options.env_node8 || this.options.env_module_node8) {
-      packageUtils.addDevDependency(pkg, 'babel-preset-latest-node', '^0.4.0');
-    } else {
-      packageUtils.removeDevDependency(pkg, 'babel-preset-latest-node');
-    }
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      this.babelEnvs.find(env => (env.target === 'node' && env.version !== '4')),
+      { 'babel-preset-latest-node': '^1.0.0' },
+    );
 
-    if (this.options.env_module_modernBrowsers) {
-      packageUtils.addDevDependency(pkg, 'babel-preset-modern-browsers', '^10.0.1');
-    } else {
-      packageUtils.removeDevDependency(pkg, 'babel-preset-modern-browsers');
-    }
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      this.babelEnvs.find(env => (env.target === 'browser' && env.version === 'modern')),
+      { 'babel-preset-modern-browsers': '^10.0.1' },
+    );
 
     ['', '-modern-browsers', '-node'].forEach((middle) => {
       ['', '-dev'].forEach((suffix) => {
@@ -280,44 +240,19 @@ module.exports = class extends Generator {
       });
     });
 
-    if (
-      this.options.entries &&
-      (this.options.env_module_node8 ||
-        this.options.env_module_allBrowsers ||
-        this.options.env_module_modernBrowsers)
-    ) {
-      const aliases = this.options.entries.split(',')
-        .filter(entry => entry !== 'index')
-        .map(alias => ({
-          alias,
-          isDirectory: this.fs.exists(this.destinationPath(`src/${alias}/index.js`))
-            || this.fs.exists(this.destinationPath(`src/${alias}/index.jsx`)),
-        }));
+    const browserEsEnvs = this.babelEnvs.filter(env => (env.target === 'browser' && env.formats.includes('es')));
+    if (this.entries.length && (esNodeEnv || browserEsEnvs.length)) {
+      const aliases = this.entries.filter(entry => entry !== 'index');
       if (aliases.length) {
-        [
-          this.options.env_module_node8 && {
-            key: 'node',
-            path: 'lib-module-node8',
-          },
-          this.options.env_module_modernBrowsers && {
-            key: 'modern-browsers',
-            path: 'lib-module-modern-browsers',
-          },
-          this.options.env_module_allBrowsers && {
-            key: 'browser',
-            path: 'lib-module',
-          },
-        ]
-          .filter(Boolean)
-          .forEach(({ key, path }) => {
-            pkg[`module:aliases-${key}`] = {};
-            pkg[`module:aliases-${key}-dev`] = {};
-            aliases.forEach(({ alias: aliasName, isDirectory }) => {
-              const indexIfDir = isDirectory ? '/index' : '';
-              pkg[`module:aliases-${key}`][`./${aliasName}.js`] = `./${path}/${aliasName}${indexIfDir}.js`;
-              pkg[`module:aliases-${key}-dev`][`./${aliasName}.js`] = `./${path}-dev/${aliasName}${indexIfDir}.js`;
-            });
+        [esNodeEnv, ...browserEsEnvs].forEach((env) => {
+          const key = env.target === 'node' ? 'node' : (env.version === 'modern' ? 'modern-browsers' : 'browser');
+          pkg[`module:aliases-${key}`] = {};
+          pkg[`module:aliases-${key}-dev`] = {};
+          aliases.forEach((aliasName) => {
+            pkg[`module:aliases-${key}`][`./${aliasName}.js`] = `./dist/${aliasName}-${env.target}${env.version || ''}.es.js`;
+            pkg[`module:aliases-${key}-dev`][`./${aliasName}.js`] = `./dist/${aliasName}-${env.target}${env.version || ''}-dev.es.js`;
           });
+        });
       } else {
         delete pkg['module:aliases'];
         delete pkg['module:aliases-dev'];
@@ -332,6 +267,26 @@ module.exports = class extends Generator {
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+  }
+
+  writing() {
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    const hasFlow = this.fs.exists(this.destinationPath('.flowconfig'));
+    const useBabel = true;
+    const hasReact = useBabel && packageUtils.hasReact(pkg);
+
+    if (this.options.documentation || this.options.testing) {
+      this.fs.copyTpl(
+        this.templatePath('babelrc.json.ejs'),
+        this.destinationPath('.babelrc'),
+        {
+          hasFlow,
+          hasReact,
+          documentation: this.options.documentation,
+          testing: this.options.testing,
+        },
+      );
+    }
   }
 
   end() {

@@ -1,7 +1,7 @@
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
 
-module.exports = class extends Generator {
+module.exports = class DocGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
@@ -32,26 +32,21 @@ module.exports = class extends Generator {
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
+
+    packageUtils.addOrRemoveDevDependencies(pkg, this.options.enabled, {
+      jsdoc: '^3.5.5',
+      minami: '^1.1.1',
+    });
+
     if (this.options.enabled) {
       packageUtils.addScripts(pkg, {
         'generate:docs': 'yarn run generate:api',
-        'generate:api': [
-          'rm -Rf docs/',
-          'mkdir docs/',
-          'pob-build doc',
-          'jsdoc README.md lib-doc --recurse --destination docs/ --configure jsdoc.conf.json',
-          'rm -Rf lib-doc',
-        ].join(' ; '),
+        'generate:api': 'pob-build-doc',
       });
 
       if (this.options.testing) {
         pkg.scripts['generate:docs'] += ' && yarn run generate:test-coverage';
       }
-
-      packageUtils.addDevDependencies(pkg, {
-        jsdoc: '^3.4.1',
-        minami: '^1.1.1',
-      });
     } else {
       delete pkg.scripts['generate:api'];
       delete pkg.scripts['generate:docs'];
@@ -59,7 +54,7 @@ module.exports = class extends Generator {
       packageUtils.removeDevDependencies(pkg, ['jsdoc', 'minami']);
     }
 
-    packageUtils.removeDevDependency(pkg, 'jaguarjs-jsdoc');
+    packageUtils.removeDevDependencies(pkg, ['jaguarjs-jsdoc']);
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }

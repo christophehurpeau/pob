@@ -3,8 +3,20 @@ const remoteUrl = require('git-remote-url');
 const githubUsername = require('github-username');
 const packageUtils = require('../../../utils/package');
 
-module.exports = class extends Generator {
+module.exports = class GitGenerator extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
+
+    this.option('shouldCreate', {
+      type: Boolean,
+      required: false,
+      defaults: '',
+      desc: 'Should create the repo on github',
+    });
+  }
+
   async initializing() {
+    console.log('git: initializing');
     this.fs.copy(
       this.templatePath('gitignore'),
       this.destinationPath('.gitignore'),
@@ -12,7 +24,7 @@ module.exports = class extends Generator {
 
     this.fs.copy(this.templatePath('npmignore'), this.destinationPath('.npmignore'));
 
-    this.fs.copy(this.templatePath('commitrc.js'), this.destinationPath('.commitrc.js'));
+    this.fs.delete(this.destinationPath('.commitrc.js'));
 
     let originUrl = await remoteUrl(this.destinationPath(), 'origin')
       .catch(() => '');
@@ -27,13 +39,16 @@ module.exports = class extends Generator {
         originUrl &&
         originUrl.match(/^(?:git@)?(?:([^:/.]+)(?:\.com)?:)?([^:/]+)\/([^:/.]+)(?:.git)?/);
     if (!match) return;
-    const [, gitHost, gitAccount, pkgName] = match;
+    const [, gitHost, gitAccount, repoName] = match;
     this.gitHost = gitHost || 'github';
     this.gitHostAccount = gitAccount;
-    this.pkgName = pkgName;
+    if (repoName !== 'undefined') {
+      this.repoName = repoName;
+    }
   }
 
   async prompting() {
+    console.log('git: prompting', { gitHost: this.gitHost });
     if (this.options.gitHost) {
       this.gitHost = this.options.gitHost;
       this.gitHostAccount = this.options.gitHostAccount;
@@ -41,7 +56,7 @@ module.exports = class extends Generator {
 
     if (this.gitHost) return;
 
-    const { gitHost } = await this.prompt({
+    const { gitHost } = await this.prompt([{
       type: 'list',
       name: 'gitHost',
       message: 'Which git host service would you like ?',
@@ -52,7 +67,7 @@ module.exports = class extends Generator {
         'bitbucket',
         'gitlab',
       ],
-    });
+    }]);
 
     this.gitHost = gitHost;
 
@@ -76,36 +91,41 @@ module.exports = class extends Generator {
   }
 
   default() {
+    console.log('git: default');
     this.composeWith(require.resolve('./generators/git-hooks'));
+
+    if (this.gitHost === 'github') {
+      this.composeWith(require.resolve('./generators/github'), {
+        shouldCreate: !this.originUrl,
+        gitHostAccount: this.gitHostAccount,
+        repoName: this.repoName,
+      });
+    }
   }
 
   writing() {
+    console.log('git: writing');
     if (this.gitHost === 'none') return;
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+    const repoName = this.repoName || this.options.name || pkg.name;
 
     if (!pkg.homepage && this.gitHostAccount) {
-      pkg.homepage = `https://${this.gitHost}.com/${this.gitHostAccount}/${pkg.name}`;
+      pkg.homepage = `https://${this.gitHost}.com/${this.gitHostAccount}/${repoName}`;
     }
 
-    const repository = `git@${this.gitHost}.com:${this.gitHostAccount}/${this.pkgName ||
-      this.options.name}.git`;
+    const repository = `git@${this.gitHost}.com:${this.gitHostAccount}/${repoName}.git`;
 
     if (pkg.repository !== repository) {
       pkg.repository = repository;
-      packageUtils.sort(pkg);
-    }
-
-    if (this.pkgName !== 'komet') {
-      packageUtils.addDevDependency(pkg, 'komet', '^0.1.4');
-      packageUtils.addDevDependency(pkg, 'komet-karma', '^0.2.5');
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
 
     const cwd = this.destinationPath();
 
-    if (this.spawnCommandSync('git', ['status'], { cwd }).status === 128) {
+    this.initGitRepository = this.spawnCommandSync('git', ['status'], { cwd, stdio: 'ignore' }).status === 128;
+    if (this.initGitRepository) {
       this.spawnCommandSync('git', ['init'], { cwd });
 
       if (!this.originUrl) {
@@ -122,7 +142,7 @@ module.exports = class extends Generator {
                         this.options.githubAccount,
                         `-d "{"name": "${this.options.name}", "auto_init": true}`,
                         'https://api.github.com/user/repos',
-                    ], { cwd });*/
+                    ], { cwd }); */
 
           repoSSH = pkg.repository;
         }

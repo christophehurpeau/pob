@@ -1,34 +1,34 @@
 var production = process.env.NODE_ENV === 'production';
 <% var envs = [
-    ['node8', env_node8],
-    ['node6', env_node6],
-    ['older-node', env_olderNode],
+    ['node8', node8],
+    ['node6', node6],
+    ['node4', node4],
 ].filter(v => v[1]);
 if (envs.length === 1) { -%>
-module.exports = require('./lib-<%= envs[0][0] %>' + (production ? '' : '-dev') + '/<%= entry %>');
+module.exports = require('./dist/<%= entry %>-<%= envs[0][0] %>' + (production ? '' : '-dev') + '.cjs');
 <% } else { -%>
 <%# parseFloat(process.versions.node) doesnt work with 6.10.1 -%>
 var nodeVersion = process.versions.node.split('.');
 var nodeVersionMajor = Number(nodeVersion[0]);
 var nodeVersionMinor = Number(nodeVersion[1]);
-<% if (env_node8) { -%>
+<% if (node6) { -%>
 /* istanbul ignore next */
 if (nodeVersionMajor > 8 || (nodeVersionMajor === 8 && nodeVersionMinor >= 3))
-  module.exports = require('./lib-node8' + (production ? '' : '-dev') + '/<%= entry %>');
-<% } if (env_node6) { -%>
+  module.exports = require('./dist/<%= entry %>-node8' + (production ? '' : '-dev') + '.cjs');
+<% } if (node6) { -%>
 /* istanbul ignore next */
-<% if (env_node8) { -%>
+<% if (node8) { -%>
 else <% } -%>
 if (nodeVersionMajor > 6 || (nodeVersionMajor === 6 && nodeVersionMinor >= 5))
-  module.exports = require('./lib-node6' + (production ? '' : '-dev') + '/<%= entry %>');
-<% } if (env_olderNode) { -%>
+  module.exports = require('./dist/<%= entry %>-node6' + (production ? '' : '-dev') + '.cjs');
+<% } if (node4) { -%>
 /* istanbul ignore next */
-<% if (env_node8 || env_node6) { -%>
+<% if (node8 || node6) { -%>
 else <% } -%>
-module.exports = require('./lib-older-node' + (production ? '' : '-dev') + '/<%= entry %>');
+module.exports = require('./dist/<%= entry %>-node4' + (production ? '' : '-dev') + '.cjs');
 <% } else { -%>
 /* istanbul ignore next */
-<% if (env_node8 || env_node6) { -%>
+<% if (node8 || node6) { -%>
 else <% } -%>
 throw new Error('Node version not supported: ' + nodeVersion + ' (' + process.versions.node + ').');
 <% } } -%>

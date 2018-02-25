@@ -1,6 +1,6 @@
 machine:
   node:
-    version: 8.3.0
+    version: 8.9.4
 
 general:
   branches:
@@ -15,26 +15,28 @@ dependencies:
     - yarn --prefer-offline --frozen-lockfile
 
 test:
+<% if (false) { -%>
   pre:
     - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+<% } -%>
   override:
     - yarn run preversion
     - yarn run test
 <% if (documentation) { -%>
     - yarn run generate:docs
-<% } else { -%>
+<% if (testing) { -%>
     - yarn run generate:test-coverage
 <% } -%>
+<% } -%>
+<% if (documentation || (testing && codecov)) { -%>
   post:
 <% if (codecov) { -%>
     - bash <(curl -s https://codecov.io/bash)
 <% } -%>
-    - cp -R coverage $CIRCLE_ARTIFACTS/
-<% if (documentation) { -%>
     - cp -R docs $CIRCLE_ARTIFACTS/
 <% } -%>
-<% if (documentation) { -%>
 
+<% if (documentation) { -%>
 deployment:
   docs:
     branch: master

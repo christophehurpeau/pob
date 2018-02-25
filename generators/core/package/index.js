@@ -4,7 +4,7 @@ const kebabCase = require('lodash.kebabcase');
 const path = require('path');
 const packageUtils = require('../../../utils/package');
 
-module.exports = class extends Generator {
+module.exports = class PackageGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
@@ -17,21 +17,24 @@ module.exports = class extends Generator {
   }
 
   async initializing() {
+    console.log('package: initializing');
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
-    if (this.options.private) {
-      pkg.private = true;
-    } else {
-      const { isPrivate } = await this.prompt({
-        type: 'confirm',
-        name: 'isPrivate',
-        message: 'Private package ?',
-        default: pkg.private === true,
-      });
-      if (isPrivate) {
-        pkg.private = isPrivate;
+    if (!this.options.updateOnly) {
+      if (this.options.private) {
+        pkg.private = true;
       } else {
-        delete pkg.private;
+        const { isPrivate } = await this.prompt({
+          type: 'confirm',
+          name: 'isPrivate',
+          message: 'Private package ?',
+          default: pkg.private === true,
+        });
+        if (isPrivate) {
+          pkg.private = isPrivate;
+        } else {
+          delete pkg.private;
+        }
       }
     }
 
@@ -53,11 +56,10 @@ module.exports = class extends Generator {
     let author = packageUtils.parsePkgAuthor(pkg);
 
     const props = await this.prompt([
-      {
+      !this.options.updateOnly && {
         name: 'description',
         message: 'Description',
         default: pkg.description,
-        when: !pkg.description,
       },
       {
         name: 'authorName',
@@ -79,7 +81,9 @@ module.exports = class extends Generator {
         when: !author || !author.url,
         store: true,
       },
-    ]);
+    ].filter(Boolean));
+
+    pkg.description = this.options.updateOnly ? pkg.description : props.description;
 
     author = {
       name: props.authorName || author.name,
@@ -89,7 +93,6 @@ module.exports = class extends Generator {
 
     Object.assign(pkg, {
       version: '0.0.0',
-      description: props.description,
       author: `${author.name} <${author.email}>${author.url ? ` (${author.url})` : ''}`,
       keywords: [],
     }, Object.assign({}, pkg));

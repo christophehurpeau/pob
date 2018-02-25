@@ -1,9 +1,10 @@
+const { realpathSync } = require('fs');
 const { execSync } = require('child_process');
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../../../utils/package');
 const inLerna = require('../../../../../utils/inLerna');
 
-module.exports = class extends Generator {
+module.exports = class GitHooksGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
@@ -18,39 +19,65 @@ module.exports = class extends Generator {
   async writing() {
     execSync('rm -Rf git-hooks/');
 
-    ['pre-commit', 'post-checkout', 'post-merge', 'prepare-commit-msg'].forEach(filename =>
+    ['pre-commit'].forEach(filename =>
       this.fs.copy(
         this.templatePath(filename),
         this.destinationPath(`.git-hooks/${filename}`),
-      ),
-    );
+      ));
+
+    const gitHookDestination = this.destinationPath('.git/hooks/post-checkout');
+    try {
+      if (realpathSync(gitHookDestination) !== gitHookDestination) {
+        this.fs.delete('.git/hooks/prepare-commit-msg');
+        this.fs.delete('.git/hooks/post-checkout');
+        this.fs.delete('.git/hooks/post-merge');
+      }
+    } catch (err) {
+      console.log(err.message, err.stack);
+    }
+
+    this.fs.delete('.git-hooks/prepare-commit-msg');
+    this.fs.delete('.git-hooks/post-checkout');
+    this.fs.delete('.git-hooks/post-merge');
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
-    packageUtils.addDevDependency(pkg, 'husky', '^0.14.3');
-    packageUtils.addDevDependency(pkg, 'lint-staged', '^5.0.0');
+    packageUtils.removeDevDependencies(pkg, ['komet', 'komet-karma']);
+
+    packageUtils.addDevDependencies(pkg, {
+      husky: '^0.14.3',
+      yarnhook: '^0.1.1',
+      'lint-staged': '^7.0.0',
+      '@commitlint/cli': '^6.1.2',
+      '@commitlint/config-conventional': '^6.1.2',
+    });
 
     packageUtils.addScripts(pkg, {
-      postcheckout: './.git-hooks/post-checkout',
-      postmerge: './.git-hooks/post-merge',
+      postmerge: 'yarnhook',
+      postcheckout: 'yarnhook',
+      postrewrite: 'yarnhook',
       precommit: './.git-hooks/pre-commit',
-      // eslint-disable-next-line no-template-curly-in-string
-      preparecommitmsg: './.git-hooks/prepare-commit-msg ${GIT_PARAMS}',
+      commitmsg: 'commitlint -x @commitlint/config-conventional -e $GIT_PARAMS',
     });
 
     delete pkg.scripts.prepublish;
     delete pkg.scripts.prepare;
+    delete pkg.scripts.preparecommitmsg;
+
+    const hasBabel = packageUtils.transpileWithBabel(pkg);
+    const hasReact = hasBabel && packageUtils.hasReact(pkg);
+    const srcDirectory = hasBabel ? 'src' : 'lib';
 
     pkg['lint-staged'] = {
-      [`package.json${inLerna ? ',packages/*/package.json' : ''}`]: [
+      [inLerna ? '{package.json,packages/*/package.json}' : 'package.json']: [
         'prettier --write',
         'git add',
       ],
-      [`${inLerna ? 'packages/*/' : ''}src/**/*.json`]: [
+      [`${inLerna ? 'packages/*/' : ''}${srcDirectory}/**/*.json`]: [
         'prettier --write',
         'git add',
       ],
-      [`${inLerna ? 'packages/*/' : ''}src/**/*.{js,jsx}`]: [
+      [`${inLerna ? 'packages/*/' : ''}${srcDirectory}/**/*.${hasReact ? '{js,jsx}' : 'js'}`]: [
         'eslint --fix --quiet',
         'git add',
       ],
@@ -60,12 +87,6 @@ module.exports = class extends Generator {
       packageUtils.addScript(pkg, 'postinstall', 'pob-repository-check-clean && lerna bootstrap');
     }
 
-    if (this.pkgName !== 'komet') {
-      packageUtils.addDevDependency(pkg, 'komet', '^0.1.4');
-      packageUtils.addDevDependency(pkg, 'komet-karma', '^0.2.5');
-    }
-
-    packageUtils.sort(pkg);
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
 
     const cwd = this.destinationPath();
@@ -87,7 +108,7 @@ module.exports = class extends Generator {
                         this.options.githubAccount,
                         `-d "{"name": "${this.options.name}", "auto_init": true}`,
                         'https://api.github.com/user/repos',
-                    ], { cwd });*/
+                    ], { cwd }); */
 
           repoSSH = pkg.repository;
         }
@@ -97,5 +118,9 @@ module.exports = class extends Generator {
         });
       }
     }
+  }
+
+  end() {
+    this.spawnCommandSync('node', ['node_modules/husky/bin/install.js']);
   }
 };

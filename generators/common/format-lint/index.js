@@ -1,7 +1,7 @@
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
 
-module.exports = class extends Generator {
+module.exports = class LintGenerator extends Generator {
   initializing() {
     this.fs.copy(
       this.templatePath('eslintignore'),
@@ -11,58 +11,54 @@ module.exports = class extends Generator {
 
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    const useBabel = packageUtils.transpileWithBabel(pkg);
+    const hasReact = useBabel && packageUtils.hasReact(pkg);
 
     packageUtils.addDevDependencies(pkg, {
-      eslint: '^4.12.0',
-      'eslint-config-pob': '^17.0.0',
-      'eslint-config-prettier': '^2.8.0',
-      'eslint-plugin-prettier': '^2.3.1',
-      prettier: '^1.8.2',
+      eslint: '4.13.0',
+      'eslint-config-pob': '^17.1.0',
+      'eslint-config-prettier': '^2.9.0',
+      'eslint-plugin-prettier': '^2.6.0',
+      prettier: '^1.9.2',
     });
 
-    if (packageUtils.hasBabel(pkg)) {
-      packageUtils.addDevDependency(pkg, 'babel-eslint', '^7.2.3');
-      packageUtils.addDevDependency(pkg, 'eslint-plugin-babel', '^4.1.2');
-      packageUtils.addDevDependency(pkg, 'eslint-plugin-import', '^2.8.0');
-    } else {
-      packageUtils.addDevDependency(pkg, 'eslint-plugin-node', '^5.1.1');
-      packageUtils.removeDevDependency(pkg, 'babel-eslint');
-      packageUtils.removeDevDependency(pkg, 'eslint-plugin-babel');
-      packageUtils.removeDevDependency(pkg, 'eslint-plugin-import');
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      packageUtils.hasJest(pkg) || useBabel,
+      { 'eslint-plugin-import': '^2.8.0' },
+    );
+
+    packageUtils.addOrRemoveDevDependencies(pkg, useBabel, {
+      'babel-eslint': '^7.2.3',
+      'eslint-plugin-babel': '^4.1.2',
+    });
+
+    packageUtils.addOrRemoveDevDependencies(pkg, !useBabel, {
+      'eslint-plugin-node': '^6.0.0',
+    });
+
+    if (!useBabel) {
       this.fs.delete(this.destinationPath('.flowconfig'));
     }
 
-    if (packageUtils.hasReact(pkg)) {
-      packageUtils.addDevDependencies(pkg, {
-        'eslint-config-airbnb': '^16.0.0',
-        'eslint-plugin-jsx-a11y': '^6.0.2',
-        'eslint-plugin-react': '^7.5.1',
-      });
-      packageUtils.removeDevDependency(pkg, 'eslint-config-airbnb-base');
-    } else {
-      packageUtils.addDevDependency(pkg, 'eslint-config-airbnb-base', '^12.0.1');
-      packageUtils.removeDevDependencies(pkg, [
-        'eslint-config-airbnb',
-        'eslint-plugin-react',
-        'eslint-plugin-jsx-a11y',
-      ]);
-    }
+    packageUtils.addOrRemoveDevDependencies(pkg, hasReact, {
+      'eslint-config-airbnb': '^16.0.0',
+      'eslint-plugin-jsx-a11y': '^6.0.2',
+      'eslint-plugin-react': '^7.5.1',
+    });
+    packageUtils.addOrRemoveDevDependencies(pkg, !hasReact, { 'eslint-config-airbnb-base': '^12.1.0' });
 
     const flow = this.fs.exists(this.destinationPath('.flowconfig'));
 
-    if (flow) {
-      packageUtils.addDevDependencies(pkg, {
-        'eslint-plugin-flowtype': '^2.39.1',
-      });
-    } else {
-      packageUtils.removeDevDependency(pkg, 'eslint-plugin-flowtype');
-    }
+    packageUtils.addOrRemoveDevDependencies(pkg, flow, {
+      'eslint-plugin-flowtype': '^2.39.1',
+    });
 
     const config = (() => {
-      if (packageUtils.hasReact(pkg)) {
+      if (hasReact) {
         return flow ? 'pob/react-flow' : 'pob/react';
       }
-      if (packageUtils.hasBabel(pkg)) {
+      if (useBabel) {
         return flow ? 'pob/flow' : 'pob/babel';
       }
       return 'pob/node-lts';
@@ -74,14 +70,39 @@ module.exports = class extends Generator {
     this.fs.delete(`${eslintrcBadPath}.js`);
     const eslintrcPath = this.destinationPath('.eslintrc.json');
     if (!this.fs.exists(eslintrcPath)) {
-      this.fs.writeJSON(eslintrcPath, { extends: config });
+      const eslintConfig = { extends: config };
+      if (packageUtils.hasJest(pkg)) {
+        const dir = useBabel ? 'src' : 'lib';
+        const ext = hasReact ? '{js,jsx}' : 'js';
+
+        const jestOverride = {
+          files: [
+            `${dir}/**/*.test.${ext}`,
+            `${dir}/__tests__/**/*.${ext}`,
+          ],
+          env: { jest: true },
+          rules: {
+            'import/no-extraneous-dependencies': [
+              'error',
+              { devDependencies: true },
+            ],
+          },
+        };
+
+        if (!useBabel) {
+          // see https://github.com/eslint/eslint/pull/9748 + https://github.com/eslint/eslint/issues/8813
+          jestOverride.extends = 'pob/babel';
+        }
+
+        eslintConfig.overrides = [jestOverride];
+      }
+      this.fs.writeJSON(eslintrcPath, eslintConfig);
     }
 
-    const srcDirectory = packageUtils.hasBabel(pkg) ? 'src' : 'lib';
-    packageUtils.addScript(pkg, 'lint', `eslint --ext .js,.jsx ${srcDirectory}/`);
+    const srcDirectory = useBabel ? 'src' : 'lib';
+    packageUtils.addScript(pkg, 'lint', `eslint ${hasReact ? '--ext .js,.jsx ' : ''}${srcDirectory}/`);
 
 
-    packageUtils.sort(pkg);
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 };

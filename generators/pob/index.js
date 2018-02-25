@@ -2,7 +2,7 @@ const Generator = require('yeoman-generator');
 const packageUtils = require('../../utils/package');
 const inLerna = require('../../utils/inLerna');
 
-module.exports = class PobGenerator extends Generator {
+module.exports = class PobBaseGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
@@ -10,6 +10,12 @@ module.exports = class PobGenerator extends Generator {
       type: String,
       required: true,
       desc: 'Type of generator',
+    });
+
+    this.option('updateOnly', {
+      type: Boolean,
+      required: true,
+      desc: 'Don\'t ask questions if we already have the answers',
     });
 
     this.option('license', {
@@ -37,6 +43,7 @@ module.exports = class PobGenerator extends Generator {
     }
 
     this.composeWith(require.resolve('../core/package'), {
+      updateOnly: this.options.updateOnly,
       private: this.useLerna,
     });
 
@@ -66,24 +73,26 @@ module.exports = class PobGenerator extends Generator {
       this.composeWith(require.resolve('../core/git'));
     }
 
+    console.log(this.options.type === 'lib');
     if (this.options.type === 'lib') {
-      this.composeWith(require.resolve('../lib/'));
+      this.composeWith(require.resolve('../lib/'), {
+        updateOnly: this.options.updateOnly,
+      });
     }
   }
 
   writing() {
-    console.log('writing')
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     packageUtils.sort(pkg);
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 
-  installing() {
-    return this.yarnInstall();
+  install() {
+    return this.spawnCommandSync('yarn');
   }
 
   end() {
-    if (this.useLerna) {
+    if (this.useLerna && !this.options.updateOnly) {
       console.log('To create a new lerna package: ');
       console.log(' pob add <packageName>');
     }
