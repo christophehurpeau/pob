@@ -1,3 +1,12 @@
+<a name="19.1.2"></a>
+## [19.1.2](https://github.com/christophehurpeau/pob-babel/compare/v19.1.1...v19.1.2) (2018-02-25)
+
+
+### Bug Fixes
+
+* replace require(module).builtinModules by a shim supported in node <9.3 ([53219eb](https://github.com/christophehurpeau/pob-babel/commit/53219eb))
+
+
 <a name="19.1.1"></a>
 ## [19.1.1](https://github.com/christophehurpeau/pob-babel/compare/v19.1.0...v19.1.1) (2018-02-23)
 
