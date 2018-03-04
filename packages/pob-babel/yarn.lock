@@ -403,12 +403,6 @@ babel-plugin-transform-decorators-legacy@^1.3.4:
     babel-runtime "^6.2.0"
     babel-template "^6.3.0"
 
-babel-plugin-transform-export-default-name-forked@^1.2.2:
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/babel-plugin-transform-export-default-name-forked/-/babel-plugin-transform-export-default-name-forked-1.2.2.tgz#43efdd18b5c6f9cd0aa432165df3f90afad7b950"
-  dependencies:
-    lodash.camelcase "^4.3.0"
-
 babel-plugin-transform-export-extensions@^6.22.0:
   version "6.22.0"
   resolved "https://registry.yarnpkg.com/babel-plugin-transform-export-extensions/-/babel-plugin-transform-export-extensions-6.22.0.tgz#53738b47e75e8218589eea946cbbd39109bbe653"
@@ -469,9 +463,9 @@ babel-preset-optimizations@^1.2.1:
     babel-plugin-transform-inline-consecutive-adds "^0.2.0"
     babel-plugin-transform-undefined-to-void "^6.8.3"
 
-babel-preset-pob-env@^0.2.0:
-  version "0.2.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-pob-env/-/babel-preset-pob-env-0.2.0.tgz#d08f2b900c18df91a2d1a518372110f882cc9027"
+babel-preset-pob-env@^0.2.1:
+  version "0.2.1"
+  resolved "https://registry.yarnpkg.com/babel-preset-pob-env/-/babel-preset-pob-env-0.2.1.tgz#2124217a23ced87f5bd9b9d60695dc61a3b8e205"
   dependencies:
     babel-plugin-discard-module-references "^1.1.2"
     babel-plugin-flow-runtime "^0.17.0"
@@ -480,7 +474,6 @@ babel-preset-pob-env@^0.2.0:
     babel-plugin-transform-name-export-default "^1.0.0"
     babel-preset-flow "^6.23.0"
     babel-preset-optimizations "^1.2.1"
-    babel-preset-pob "^0.6.0"
     babel-preset-pob-stages "^0.2.4"
 
 babel-preset-pob-stages@^0.2.4:
@@ -491,15 +484,6 @@ babel-preset-pob-stages@^0.2.4:
     babel-plugin-transform-decorators-legacy "^1.3.4"
     babel-plugin-transform-export-extensions "^6.22.0"
     babel-plugin-transform-object-rest-spread "^6.26.0"
-
-babel-preset-pob@^0.6.0:
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-pob/-/babel-preset-pob-0.6.0.tgz#67e5bbacced2940af50ae78c7745756cad98e895"
-  dependencies:
-    babel-plugin-import-export-rename "^1.0.1"
-    babel-plugin-minify-replace "^0.3.0"
-    babel-plugin-transform-export-default-name-forked "^1.2.2"
-    babel-preset-flow "^6.23.0"
 
 babel-register@^6.26.0:
   version "6.26.0"
