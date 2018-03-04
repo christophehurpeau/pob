@@ -1,3 +1,12 @@
+<a name="19.1.5"></a>
+## [19.1.5](https://github.com/christophehurpeau/pob-babel/compare/v19.1.4...v19.1.5) (2018-03-04)
+
+
+### Bug Fixes
+
+* react preset ([fee4240](https://github.com/christophehurpeau/pob-babel/commit/fee4240))
+
+
 <a name="19.1.4"></a>
 ## [19.1.4](https://github.com/christophehurpeau/pob-babel/compare/v19.1.3...v19.1.4) (2018-03-04)
 
