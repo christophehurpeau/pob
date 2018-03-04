@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-pob-env",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "pob babel preset env",
   "keywords": [
     "babel-preset"
