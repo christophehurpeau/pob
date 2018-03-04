@@ -33,6 +33,13 @@ const externalModules = nodeBuiltinModules
   .concat(Object.keys(pkg.dependencies || {}))
   .concat(Object.keys(pkg.peerDependencies || {}));
 
+if (hasReact) {
+  // allow to resolve .jsx entry files
+  if (!require.extensions['.jsx']) {
+    require.extensions['.jsx'] = require.extensions['.js'];
+  }
+}
+
 const createConfigForEnv = (entry, env, production) => {
   const devSuffix = production ? '' : '-dev';
   return {
@@ -52,6 +59,7 @@ const createConfigForEnv = (entry, env, production) => {
       babel({
         babelrc: false,
         presets: [
+          hasReact && 'babel-preset-pob-react',
           [
             require.resolve('babel-preset-pob-env'),
             {
@@ -60,11 +68,10 @@ const createConfigForEnv = (entry, env, production) => {
               version: env.target === 'node' ? nodeVersion(env.version) : env.version,
               production,
               flow: true,
-              react: hasReact,
               exportDefaultName: false, // this breaks the build (https://github.com/rollup/rollup/pull/2001 ?)
             },
           ],
-        ],
+        ].filter(Boolean),
         plugins: [require.resolve('babel-plugin-external-helpers')],
         externalHelpers: false,
         exclude: 'node_modules/**',
