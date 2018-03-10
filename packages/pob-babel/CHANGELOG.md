@@ -1,3 +1,17 @@
+<a name="20.0.0"></a>
+# [20.0.0](https://github.com/christophehurpeau/pob-babel/compare/v19.1.6...v20.0.0) (2018-03-10)
+
+
+### Features
+
+* jsdoc.conf.js ([48a38d7](https://github.com/christophehurpeau/pob-babel/commit/48a38d7))
+
+
+### BREAKING CHANGES
+
+* now use jsdoc.conf.js instead of jsdoc.conf.json
+
+
 <a name="19.1.6"></a>
 ## [19.1.6](https://github.com/christophehurpeau/pob-babel/compare/v19.1.5...v19.1.6) (2018-03-09)
 
