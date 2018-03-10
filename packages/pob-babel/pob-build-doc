@@ -4,6 +4,6 @@ rm -Rf docs/
 mkdir docs/
 
 BABEL_ENV=doc `node -e 'console.log(require.resolve("babel-cli/bin/babel.js"))'` --ignore *.test.js -d lib-doc src/
-./node_modules/.bin/jsdoc README.md lib-doc --recurse --destination docs/ --configure jsdoc.conf.json
+./node_modules/.bin/jsdoc README.md lib-doc --recurse --destination docs/ --configure jsdoc.conf.js
 
 rm -Rf lib-doc
