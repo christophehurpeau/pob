@@ -18,6 +18,9 @@ const hasReact = Boolean(
     (pkg.peerDependencies && pkg.peerDependencies.react)
 );
 
+const isIndexBrowserEntry = pobConfig.entries.length === 2 && pobConfig.entries[0] === 'index' && pobConfig.entries[1] === 'browser';
+const entries = isIndexBrowserEntry ? ['index', ...pobConfig.entries.slice(2)] : pobConfig.entries;
+
 const nodeVersion = version => {
   switch (String(version)) {
     case '8':
@@ -43,7 +46,7 @@ if (hasReact) {
 const createConfigForEnv = (entry, env, production) => {
   const devSuffix = production ? '' : '-dev';
   return {
-    input: require.resolve(`./src/${entry}`, { paths: [cwd] }),
+    input: require.resolve(`./src/${isIndexBrowserEntry && entry === 'index' && env.target === 'browser' ? 'browser' : entry}`, { paths: [cwd] }),
     output: env.formats.map(format => ({
       file: `dist/${entry}-${env.target}${env.version || ''}${devSuffix}.${format}.js`,
       format,
@@ -93,7 +96,7 @@ module.exports = () =>
     pobConfig.envs.map(env =>
       Array.prototype.concat.apply(
         [],
-        pobConfig.entries.map(entry => [
+        entries.map(entry => [
           createConfigForEnv(entry, env, true),
           createConfigForEnv(entry, env, false),
         ])
