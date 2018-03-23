@@ -1,3 +1,12 @@
+<a name="20.1.0"></a>
+# [20.1.0](https://github.com/christophehurpeau/pob-babel/compare/v20.0.0...v20.1.0) (2018-03-23)
+
+
+### Features
+
+* handle index+browser entry ([21a84fa](https://github.com/christophehurpeau/pob-babel/commit/21a84fa))
+
+
 <a name="20.0.0"></a>
 # [20.0.0](https://github.com/christophehurpeau/pob-babel/compare/v19.1.6...v20.0.0) (2018-03-10)
 
