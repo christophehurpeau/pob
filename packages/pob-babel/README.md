@@ -1,9 +1,16 @@
-# pob-babel [![NPM version][npm-image]][npm-url]
+<h3 align="center">
+  pob-babel
+</h3>
 
-Build and watch with babel
+<p align="center">
+  Build and watch with babel
+</p>
 
-[![Dependency ci Status][dependencyci-image]][dependencyci-url]
-[![Dependency Status][daviddm-image]][daviddm-url]
+<p align="center">
+  <a href="https://npmjs.org/package/pob-babel"><img src="https://img.shields.io/npm/v/pob-babel.svg?style=flat-square"></a>
+  <a href="https://david-dm.org/christophehurpeau/pob-babel"><img src="https://david-dm.org/christophehurpeau/pob-babel.svg?style=flat-square"></a>
+  <a href="https://dependencyci.com/github/christophehurpeau/pob-babel"><img src="https://dependencyci.com/github/christophehurpeau/pob-babel/badge?style=flat-square"></a>
+</p>
 
 ### What it does
 
@@ -50,10 +57,3 @@ Edit your package.json:
     }
 }
 ```
-
-[npm-image]: https://img.shields.io/npm/v/pob-babel.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/pob-babel
-[daviddm-image]: https://david-dm.org/christophehurpeau/pob-babel.svg?style=flat-square
-[daviddm-url]: https://david-dm.org/christophehurpeau/pob-babel
-[dependencyci-image]: https://dependencyci.com/github/christophehurpeau/pob-babel/badge?style=flat-square
-[dependencyci-url]: https://dependencyci.com/github/christophehurpeau/pob-babel
