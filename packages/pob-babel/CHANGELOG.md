@@ -1,3 +1,12 @@
+<a name="20.2.0"></a>
+# [20.2.0](https://github.com/christophehurpeau/pob-babel/compare/v20.1.1...v20.2.0) (2018-03-25)
+
+
+### Features
+
+* rollup@0.57.1 ([c154062](https://github.com/christophehurpeau/pob-babel/commit/c154062))
+
+
 <a name="20.1.1"></a>
 ## [20.1.1](https://github.com/christophehurpeau/pob-babel/compare/v20.1.0...v20.1.1) (2018-03-25)
 
