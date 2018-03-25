@@ -1,3 +1,7 @@
+<a name="20.1.1"></a>
+## [20.1.1](https://github.com/christophehurpeau/pob-babel/compare/v20.1.0...v20.1.1) (2018-03-25)
+
+
 <a name="20.1.0"></a>
 # [20.1.0](https://github.com/christophehurpeau/pob-babel/compare/v20.0.0...v20.1.0) (2018-03-23)
 

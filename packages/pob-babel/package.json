@@ -1,13 +1,15 @@
 {
   "name": "pob-babel",
-  "version": "20.1.0",
+  "version": "20.1.1",
   "description": "Build and watch with babel",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "license": "ISC",
   "repository": "git@github.com:christophehurpeau/pob-babel.git",
   "homepage": "https://github.com/christophehurpeau/pob-babel",
-  "engines": { "node": ">=4.0.0" },
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "main": "./lib/index.js",
   "bin": {
     "pob-build": "./pob-build",
@@ -32,8 +34,14 @@
     "lib/**/*.json": ["prettier --write", "git add"],
     "lib/**/*.js": ["eslint --fix --quiet", "git add"]
   },
-  "prettier": { "trailingComma": "es5", "singleQuote": true, "printWidth": 100 },
-  "commitlint": { "extends": ["@commitlint/config-conventional"] },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "printWidth": 100
+  },
+  "commitlint": {
+    "extends": ["@commitlint/config-conventional"]
+  },
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-add-jsdoc-annotations": "^5.1.0",
@@ -56,5 +64,7 @@
     "prettier": "^1.11.1",
     "yarnhook": "^0.1.1"
   },
-  "peerDependencies": { "babel-core": "^6.26.0" }
+  "peerDependencies": {
+    "babel-core": "^6.26.0"
+  }
 }
