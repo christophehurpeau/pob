@@ -1,5 +1,6 @@
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
+const inLerna = require('../../../utils/inLerna');
 
 module.exports = class TestingGenerator extends Generator {
   constructor(args, opts) {
@@ -17,11 +18,11 @@ module.exports = class TestingGenerator extends Generator {
       desc: 'circleci',
     });
 
-    this.option('travisci', {
-      type: Boolean,
-      required: true,
-      desc: 'travisci',
-    });
+    // this.option('travisci', {
+    //   type: Boolean,
+    //   required: true,
+    //   desc: 'travisci',
+    // });
 
     this.option('babelEnvs', {
       type: String,
@@ -42,6 +43,22 @@ module.exports = class TestingGenerator extends Generator {
     });
   }
 
+  default() {
+    if (!inLerna) {
+      this.composeWith(require.resolve('../../core/ci'), {
+        enable: this.options.enable,
+        testing: this.options.testing,
+        documentation: this.options.documentation,
+        circleci: this.options.circleci,
+        babelEnvs: this.options.babelEnvs,
+      });
+    } else {
+      this.composeWith(require.resolve('../../core/ci'), {
+        enable: false,
+      });
+    }
+  }
+
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
@@ -54,10 +71,21 @@ module.exports = class TestingGenerator extends Generator {
     if (!this.options.enable) {
       packageUtils.removeDevDependencies(pkg, [
         'jest',
-        'jest-junit-reporter',
+        'babel-jest',
       ]);
 
-      delete pkg.jest;
+      if (inLerna) {
+        packageUtils.addScripts(pkg, {
+          test: 'No tests',
+        });
+      } else {
+        delete pkg.jest;
+        if (pkg.scripts) {
+          delete pkg.scripts.test;
+          delete pkg.scripts['generate:test-coverage'];
+        }
+      }
+
       this.fs.writeJSON(this.destinationPath('package.json'), pkg);
     } else {
       this.babelEnvs = JSON.parse(this.options.babelEnvs);
@@ -71,70 +99,38 @@ module.exports = class TestingGenerator extends Generator {
       });
 
       packageUtils.addDevDependencies(pkg, {
-        jest: '^22.3.0',
+        jest: '^22.4.2',
       });
 
       const hasBabel = packageUtils.transpileWithBabel(pkg);
       const hasReact = hasBabel && packageUtils.hasReact(pkg);
-      const hasLerna = packageUtils.hasLerna(pkg);
       const srcDirectory = hasBabel ? 'src' : 'lib';
 
-      packageUtils.addOrRemoveDevDependencies(pkg, hasBabel, { 'babel-jest': '^22.2.2' });
+      packageUtils.addOrRemoveDevDependencies(pkg, hasBabel, { 'babel-jest': '^22.4.1' });
 
       if (!pkg.jest) pkg.jest = {};
       Object.assign(pkg.jest, {
         cacheDirectory: './node_modules/.cache/jest',
         testMatch: [
-          `<rootDir>/${hasLerna ? '**/' : ''}${srcDirectory}/**/__tests__/**/*.js${hasReact ? '?(x)' : ''}`,
-          `<rootDir>/${hasLerna ? '**/' : ''}${srcDirectory}/**/*.test.js${hasReact ? '?(x)' : ''}`,
+          `<rootDir>/${srcDirectory}/**/__tests__/**/*.js${hasReact ? '?(x)' : ''}`,
+          `<rootDir>/${srcDirectory}/**/*.test.js${hasReact ? '?(x)' : ''}`,
         ],
         collectCoverageFrom: [
           `${srcDirectory}/**/*.js${hasReact ? '?(x)' : ''}`,
         ],
       });
-
-      packageUtils.addOrRemoveDevDependencies(pkg, this.options.circleci, { 'jest-junit-reporter': '^1.1.0' });
-    }
-
-    if (this.options.circleci) {
-      try {
-        // this.fs.copyTpl(
-        //   this.templatePath('circle.yml.ejs'),
-        //   this.destinationPath('circle.yml'),
-        //   {
-        //     testing: this.options.enable,
-        //     documentation: this.options.documentation,
-        //     codecov: this.options.codecov,
-        //   },
-        // );
-        this.fs.delete(this.destinationPath('circle.yml'));
-        this.fs.copyTpl(
-          this.templatePath('circleci2.yml.ejs'),
-          this.destinationPath('.circleci/config.yml'),
-          {
-            testing: this.options.enable,
-            documentation: this.options.documentation,
-            codecov: this.options.codecov,
-          },
-        );
-      } catch (err) {
-        console.log(err.stack || err.message || err);
-        throw err;
-      }
-    }
-
-    if (this.options.travisci) {
-      this.fs.copyTpl(
-        this.templatePath('travis.yml.ejs'),
-        this.destinationPath('.travis.yml'),
-        {
-          node8: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8')),
-          node6: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '6')),
-          node4: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '4')),
-        },
-      );
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+  }
+
+  end() {
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+
+    if (!this.options.enable) {
+      if (this.fs.exists('flow-typed')) this.fs.delete('flow-typed');
+    } else {
+      this.spawnCommandSync('flow-typed', ['install', `jest@${pkg.devDependencies.jest}`]);
+    }
   }
 };

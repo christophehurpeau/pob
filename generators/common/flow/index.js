@@ -30,7 +30,12 @@ module.exports = class FlowGenerator extends Generator {
 
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
-    packageUtils.addScript(pkg, 'flow', 'flow');
+    if (this.flow) {
+      packageUtils.addDevDependency(pkg, 'flow-bin', '^0.68.0');
+      packageUtils.addScript(pkg, 'flow', 'flow');
+    } else if (pkg.scripts) {
+      delete pkg.scripts.flow;
+    }
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
 
 

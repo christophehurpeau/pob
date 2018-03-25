@@ -1,7 +1,7 @@
 # pob [![NPM version][npm-image]][npm-url]
 
 Pile Of Bones / Place Of Birth / Point Of Beginning 
-Library generator with git/babel/eslint/readme/editorconfig/jest/jsdoc/circleci/travis.
+Library generator with git/babel/eslint/readme/editorconfig/jest/jsdoc/circleci.
 Better than a skeleton !
 
 ## How to install

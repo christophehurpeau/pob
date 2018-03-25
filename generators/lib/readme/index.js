@@ -37,11 +37,11 @@ module.exports = class ReadmeGenerator extends Generator {
       desc: 'circleci badge and documentation link',
     });
 
-    this.option('travisci', {
-      type: Boolean,
-      required: true,
-      desc: 'travisci badge',
-    });
+    // this.option('travisci', {
+    //   type: Boolean,
+    //   required: true,
+    //   desc: 'travisci badge',
+    // });
 
     this.option('codecov', {
       type: Boolean,
@@ -64,7 +64,11 @@ module.exports = class ReadmeGenerator extends Generator {
 
     if (this.fs.exists(readmePath)) {
       const readmeFullContent = this.fs.read(readmePath);
-      content = readmeFullContent.match(/^#(?:[^#*]+)([^]+)(?:\[npm-image]:)/);
+      content = readmeFullContent.match(/^<h3(?:[^#*]+)([^]+)(?:\[npm-image]:)/);
+      if (!content) content = readmeFullContent.match(/^<h3(?:[^#*]+)([^]+)(?:\[daviddm-image]:)/);
+      if (!content) content = readmeFullContent.match(/^<h3(?:[^#*]+)([^]+)$/);
+      if (!content) content = readmeFullContent.match(/^#(?:[^#*]+)([^]+)(?:\[npm-image]:)/);
+      if (!content) content = readmeFullContent.match(/^#(?:[^#*]+)([^]+)(?:\[daviddm-image]:)/);
       if (!content) content = readmeFullContent.match(/^#(?:[^#*]+)([^]+)$/);
       content = content ? content[1].trim() : readmeFullContent;
     }
@@ -96,7 +100,8 @@ module.exports = class ReadmeGenerator extends Generator {
         documentation: this.options.documentation,
         testing: this.options.testing,
         circleci: this.options.circleci,
-        travisci: this.options.travisci,
+        // travisci: this.options.travisci,
+        travisci: false,
         content,
       });
     } catch (err) {

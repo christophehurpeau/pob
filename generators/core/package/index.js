@@ -3,6 +3,7 @@ const askName = require('inquirer-npm-name');
 const kebabCase = require('lodash.kebabcase');
 const path = require('path');
 const packageUtils = require('../../../utils/package');
+const inLerna = require('../../../utils/inLerna');
 
 module.exports = class PackageGenerator extends Generator {
   constructor(args, opts) {
@@ -84,6 +85,12 @@ module.exports = class PackageGenerator extends Generator {
     ].filter(Boolean));
 
     pkg.description = this.options.updateOnly ? pkg.description : props.description;
+
+    if (inLerna) {
+      const lernaPackage = this.fs.readJSON(path.resolve(path.dirname(inLerna), 'package.json'));
+      pkg.repository = lernaPackage.repository;
+      pkg.homepage = lernaPackage.homepage;
+    }
 
     author = {
       name: props.authorName || author.name,

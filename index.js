@@ -52,7 +52,7 @@ if (type === 'add') {
 if (type !== 'lib' && type !== 'lerna') {
   if (existsSync('lerna.json')) {
     type = 'lerna';
-  } else if (existsSync('.yo-rc.json')) {
+  } else if (existsSync('.yo-rc.json') || existsSync('.pob.json')) {
     type = 'lib';
   } else {
     console.error('Missing first argument: type');

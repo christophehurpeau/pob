@@ -1,4 +1,4 @@
-const { realpathSync } = require('fs');
+const { readlinkSync } = require('fs');
 const { execSync } = require('child_process');
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../../../utils/package');
@@ -19,26 +19,33 @@ module.exports = class GitHooksGenerator extends Generator {
   async writing() {
     execSync('rm -Rf git-hooks/');
 
-    ['pre-commit'].forEach(filename =>
-      this.fs.copy(
-        this.templatePath(filename),
-        this.destinationPath(`.git-hooks/${filename}`),
-      ));
-
-    const gitHookDestination = this.destinationPath('.git/hooks/post-checkout');
+    const gitHookDestination = this.destinationPath('.git/hooks/pre-commit');
     try {
-      if (realpathSync(gitHookDestination) !== gitHookDestination) {
+      let isSymlink;
+
+      try {
+        readlinkSync(gitHookDestination);
+        isSymlink = true;
+      } catch (err) {
+        isSymlink = false;
+      }
+
+      if (isSymlink) {
         this.fs.delete('.git/hooks/prepare-commit-msg');
         this.fs.delete('.git/hooks/post-checkout');
         this.fs.delete('.git/hooks/post-merge');
+        this.fs.delete('.git/hooks/pre-commit');
       }
     } catch (err) {
       console.log(err.message, err.stack);
+      process.exit(1);
     }
 
     this.fs.delete('.git-hooks/prepare-commit-msg');
     this.fs.delete('.git-hooks/post-checkout');
     this.fs.delete('.git-hooks/post-merge');
+    this.fs.delete('.git-hooks/pre-commit');
+    this.fs.delete('.git-hooks');
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
@@ -48,16 +55,20 @@ module.exports = class GitHooksGenerator extends Generator {
       husky: '^0.14.3',
       yarnhook: '^0.1.1',
       'lint-staged': '^7.0.0',
-      '@commitlint/cli': '^6.1.2',
-      '@commitlint/config-conventional': '^6.1.2',
+      '@commitlint/cli': '^6.1.3',
+      '@commitlint/config-conventional': '^6.1.3',
     });
+
+    pkg.commitlint = {
+      extends: ['@commitlint/config-conventional'],
+    };
 
     packageUtils.addScripts(pkg, {
       postmerge: 'yarnhook',
       postcheckout: 'yarnhook',
       postrewrite: 'yarnhook',
-      precommit: './.git-hooks/pre-commit',
-      commitmsg: 'commitlint -x @commitlint/config-conventional -e $GIT_PARAMS',
+      precommit: 'lint-staged',
+      commitmsg: 'commitlint -e $GIT_PARAMS',
     });
 
     delete pkg.scripts.prepublish;
@@ -69,7 +80,8 @@ module.exports = class GitHooksGenerator extends Generator {
     const srcDirectory = hasBabel ? 'src' : 'lib';
 
     pkg['lint-staged'] = {
-      [inLerna ? '{package.json,packages/*/package.json}' : 'package.json']: [
+      // [`{README.md,package.json${inLerna ? ',packages/*/package.json,packages/*/README.md,' : ''},.eslintrc.json}`]: [
+      [`{package.json${inLerna ? ',packages/*/package.json,' : ''},.eslintrc.json}`]: [
         'prettier --write',
         'git add',
       ],
@@ -83,9 +95,9 @@ module.exports = class GitHooksGenerator extends Generator {
       ],
     };
 
-    if (packageUtils.hasLerna(pkg)) {
-      packageUtils.addScript(pkg, 'postinstall', 'pob-repository-check-clean && lerna bootstrap');
-    }
+    // if (packageUtils.hasLerna(pkg)) {
+    //   packageUtils.addScript(pkg, 'postinstall', 'pob-repository-check-clean && lerna bootstrap');
+    // }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
 

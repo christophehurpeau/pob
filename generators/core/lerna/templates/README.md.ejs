@@ -1,6 +1,20 @@
-# <%= projectName %>
+<h3 align="center">
+  <%= projectName %>
+</h3>
 
-<%- description %>
+<p align="center">
+  <%- description %>
+</p>
+
+<h1>Packages</h1>
+
+This repository is a monorepo that we manage using [Lerna](https://github.com/lerna/lerna).
+
+| Package | Version | Description |
+|---------|---------|-------------|
+<% packages.filter(package => !package.name.endsWith('-example')).forEach(package => { -%>
+| [<%= package.name %>](/packages/<%= package.name %>) | <a href="https://npmjs.org/package/<%= package.name %>"><img src="https://img.shields.io/npm/v/<%= package.name %>.svg?style=flat-square"></a> | <%= package.description %>
+<% }) -%>
 
 <% if (content) { -%>
 <%- content %>

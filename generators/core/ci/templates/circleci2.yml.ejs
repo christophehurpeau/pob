@@ -1,0 +1,77 @@
+version: 2
+
+jobs:
+  test-node8:
+    docker:
+      - image: circleci/node:8.9
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dependencies-node8-{{ arch }}-{{ checksum "yarn.lock" }}
+            - dependencies-node8-{{ arch }}
+      - run:
+          name: Install dependencies
+          command: yarn --prefer-offline --pure-lockfile
+      - save_cache:
+          key: dependencies-node8-{{ arch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      - run:
+          name: lint code
+          command: yarn run lint
+<% if (testing) { -%>
+      - run:
+          name: tests
+          command: yarn run test
+<% } -%>
+<% if (documentation) { -%>
+      - run:
+          name: docs
+          command: yarn run generate:docs
+<% } else if (codecov) { -%>
+      - run:
+          name: Generate Coverage doc
+          command: yarn run generate:test-coverage
+<% } -%>
+<% if (codecov) { -%>
+      - run:
+          name: Send results to codecov
+          command: bash <(curl -s https://codecov.io/bash)
+<% } -%>
+# TODO: fix the date in the generated coverage
+#      - run:
+#          name: Check nothing was forget before commit
+#          command: npx pob-repository-check-clean
+
+<% [node4 && 4, node6 && 6, node9 && 9].filter(Boolean).forEach(version => { -%>
+  test-node<%= version %>:
+    docker:
+      - image: circleci/node:<%= version %>
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - dependencies-node<%= version %>-{{ arch }}-{{ checksum "yarn.lock" }}
+            - dependencies-node<%= version %>-{{ arch }}
+      - run:
+          name: Install dependencies
+          command: yarn --prefer-offline --pure-lockfile
+      - save_cache:
+          key: dependencies-node<%= version %>-{{ arch }}-{{ checksum "yarn.lock" }}
+          paths:
+            - node_modules
+      - run:
+          name: tests
+          command: yarn run test
+<% }) -%>
+
+workflows:
+  version: 2
+
+  tests:
+    jobs:
+      - test-node8
+<% [node4 && 4, node6 && 6, node9 && 9].filter(Boolean).forEach(version => { -%>
+      - test-node<%= version %>
+<% }) -%>

@@ -60,17 +60,18 @@ module.exports = class BabelGenerator extends Generator {
       }
     }
 
-    this.hasFlow = this.fs.exists(this.destinationPath('.flowconfig'));
-    if (this.hasFlow) {
-      this.fs.copy(
-        this.templatePath('types.js'),
-        this.destinationPath('types.js'),
-      );
-      // const typesDestPath = this.destinationPath('src/types.js');
-      // if (!this.fs.exists(typesDestPath)) {
-      //   this.fs.copy(this.templatePath('src/types.js'), typesDestPath);
-      // }
-    }
+    // not: flow has not yet run here
+    // this.hasFlow = this.fs.exists(this.destinationPath('.flowconfig'));
+    // if (this.hasFlow) {
+    //   // this.fs.copy(
+    //   //   this.templatePath('types.js'),
+    //   //   this.destinationPath('types.js'),
+    //   // );
+    //   // const typesDestPath = this.destinationPath('src/types.js');
+    //   // if (!this.fs.exists(typesDestPath)) {
+    //   //   this.fs.copy(this.templatePath('src/types.js'), typesDestPath);
+    //   // }
+    // }
   }
 
   default() {
@@ -152,24 +153,18 @@ module.exports = class BabelGenerator extends Generator {
       }
     }
 
-    if (!pkg.scripts.build) {
-      packageUtils.addScript(pkg, 'build', 'pob-build');
-    }
-
-    if (!pkg.scripts.watch) {
-      packageUtils.addScript(pkg, 'watch', 'pob-watch');
-    }
+    packageUtils.addScripts(pkg, {
+      build: pkg.scripts && pkg.scripts.build && !pkg.scripts.build.startsWith('make') ? pkg.scripts.build : 'pob-build',
+      watch: pkg.scripts && pkg.scripts.watch && !pkg.scripts.watch.startsWith('make') ? pkg.scripts.watch : 'pob-watch',
+    });
 
     delete pkg.scripts['build:dev'];
     delete pkg.scripts['watch:dev'];
 
     packageUtils.addDevDependencies(pkg, {
       'babel-core': '^6.26.0',
-      'pob-babel': '^19.1.2',
+      'pob-babel': '^20.2.0',
     });
-
-    packageUtils.removeDevDependencies(pkg, ['flow-runtime']); // dev dependency !
-    packageUtils.addOrRemoveDependencies(pkg, this.hasFlow, { 'flow-runtime': '^0.17.0' });
 
     // old pob dependencies
     packageUtils.removeDevDependencies(pkg, [
@@ -180,6 +175,7 @@ module.exports = class BabelGenerator extends Generator {
       'babel-preset-es2015-webpack',
       'babel-preset-es2015-node5',
       'babel-preset-es2015-node6',
+      'babel-preset-pob',
       'babel-preset-latest',
       'babel-preset-stage-1',
       'babel-preset-modern-browsers-stage-1',
@@ -242,7 +238,7 @@ module.exports = class BabelGenerator extends Generator {
 
     const browserEsEnvs = this.babelEnvs.filter(env => (env.target === 'browser' && env.formats.includes('es')));
     if (this.entries.length && (esNodeEnv || browserEsEnvs.length)) {
-      const aliases = this.entries.filter(entry => entry !== 'index');
+      const aliases = this.entries.filter(entry => entry !== 'index' && (!this.entries.includes('index') || entry !== 'browser'));
       if (aliases.length) {
         [esNodeEnv, ...browserEsEnvs].forEach((env) => {
           const key = env.target === 'node' ? 'node' : (env.version === 'modern' ? 'modern-browsers' : 'browser');
@@ -270,10 +266,17 @@ module.exports = class BabelGenerator extends Generator {
   }
 
   writing() {
+    this.fs.delete('types.js');
+
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     const hasFlow = this.fs.exists(this.destinationPath('.flowconfig'));
     const useBabel = true;
     const hasReact = useBabel && packageUtils.hasReact(pkg);
+
+
+    packageUtils.addOrRemoveDependencies(pkg, hasFlow, { 'flow-runtime': '^0.17.0' });
+
+    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
 
     if (this.options.documentation || this.options.testing) {
       this.fs.copyTpl(
@@ -286,6 +289,8 @@ module.exports = class BabelGenerator extends Generator {
           testing: this.options.testing,
         },
       );
+    } else {
+      this.fs.delete('.babelrc');
     }
   }
 

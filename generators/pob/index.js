@@ -56,6 +56,7 @@ module.exports = class PobBaseGenerator extends Generator {
   // }
 
   default() {
+    this.fs.delete('Makefile');
     if (this.options.license && !this.fs.exists(this.destinationPath('LICENSE'))) {
       const pkg = this.fs.readJSON(this.destinationPath('package.json'));
       const author = packageUtils.parsePkgAuthor(pkg);
@@ -73,18 +74,23 @@ module.exports = class PobBaseGenerator extends Generator {
       this.composeWith(require.resolve('../core/git'));
     }
 
-    console.log(this.options.type === 'lib');
-    if (this.options.type === 'lib') {
-      this.composeWith(require.resolve('../lib/'), {
-        updateOnly: this.options.updateOnly,
-      });
+    switch (this.options.type) {
+      case 'lib':
+        this.composeWith(require.resolve('../lib/'), {
+          updateOnly: this.options.updateOnly,
+        });
+        break;
+      case 'lerna':
+        // TODO create lerna generator
+        this.composeWith(require.resolve('../core/ci'), {
+          updateOnly: this.options.updateOnly,
+        });
+        break;
     }
   }
 
   writing() {
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-    packageUtils.sort(pkg);
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    this.composeWith(require.resolve('../core/sort-package'));
   }
 
   install() {

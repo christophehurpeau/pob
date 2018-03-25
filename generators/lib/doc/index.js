@@ -21,13 +21,15 @@ module.exports = class DocGenerator extends Generator {
   }
 
   writing() {
+    this.fs.delete(this.destinationPath('jsdoc.conf.json'));
     if (this.options.enabled) {
-      this.fs.copyTpl(
-        this.templatePath('jsdoc.conf.json.ejs'),
-        this.destinationPath('jsdoc.conf.json'),
+      this.fs.copy(
+        this.templatePath('jsdoc.conf.js'),
+        this.destinationPath('jsdoc.conf.js'),
       );
     } else {
-      this.fs.delete(this.destinationPath('jsdoc.conf.json'));
+      this.fs.delete(this.destinationPath('jsdoc.conf.js'));
+      this.fs.delete(this.destinationPath('docs'));
     }
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
@@ -35,12 +37,12 @@ module.exports = class DocGenerator extends Generator {
 
     packageUtils.addOrRemoveDevDependencies(pkg, this.options.enabled, {
       jsdoc: '^3.5.5',
-      minami: '^1.1.1',
+      minami: '^1.2.3',
     });
 
     if (this.options.enabled) {
       packageUtils.addScripts(pkg, {
-        'generate:docs': 'yarn run generate:api',
+        'generate:docs': 'rm -Rf docs ; yarn run generate:api',
         'generate:api': 'pob-build-doc',
       });
 

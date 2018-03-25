@@ -62,6 +62,7 @@ module.exports = class PobLibGenerator extends Generator {
               target: 'node', version: 4, formats: ['cjs'],
             };
 
+          case 'webpack-node7':
           case 'module-node7':
           case 'module-node8':
             return {
@@ -92,9 +93,10 @@ module.exports = class PobLibGenerator extends Generator {
     if (this.pobjson.testing === true) {
       this.pobjson.testing = {
         circleci: true,
-        travisci: true,
         codecov: true,
       };
+    } else if (this.pobjson.testing) {
+      delete this.pobjson.testing.travisci;
     }
 
     if (this.pobjson.documentation === true) {
@@ -268,12 +270,12 @@ module.exports = class PobLibGenerator extends Generator {
             message: 'Would you like circleci ?',
             default: this.pobjson.testing.circleci !== false,
           },
-          {
-            type: 'confirm',
-            name: 'travisci',
-            message: 'Would you like travisci ?',
-            default: this.pobjson.testing.travisci !== false,
-          },
+          // {
+          //   type: 'confirm',
+          //   name: 'travisci',
+          //   message: 'Would you like travisci ?',
+          //   default: this.pobjson.testing.travisci !== false,
+          // },
           {
             type: 'confirm',
             name: 'codecov',
@@ -313,7 +315,7 @@ module.exports = class PobLibGenerator extends Generator {
       testing: !!this.pobjson.testing,
       doclets: this.pobjson.documentation && this.pobjson.documentation.docklets,
       circleci: this.pobjson.testing && this.pobjson.testing.circleci,
-      travisci: this.pobjson.testing && this.pobjson.testing.travisci,
+      // travisci: this.pobjson.testing && this.pobjson.testing.travisci,
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
     });
 
@@ -322,7 +324,7 @@ module.exports = class PobLibGenerator extends Generator {
       documentation: !!this.pobjson.documentation,
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
       circleci: this.pobjson.testing && this.pobjson.testing.circleci,
-      travisci: this.pobjson.testing && this.pobjson.testing.travisci,
+      // travisci: this.pobjson.testing && this.pobjson.testing.travisci,
       babelEnvs: JSON.stringify(this.babelEnvs),
     });
 
@@ -337,6 +339,34 @@ module.exports = class PobLibGenerator extends Generator {
     // Re-read the content at this point because a composed generator might modify it.
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
+    if (inLerna) {
+      // see git-hooks
+      packageUtils.removeDevDependencies(pkg, [
+        'komet',
+        'komet-karma',
+        'husky',
+        'yarnhook',
+        'lint-staged',
+        '@commitlint/cli',
+        '@commitlint/config-conventional',
+      ]);
+
+      this.fs.delete('.git-hooks');
+      this.fs.delete('.commitrc.js');
+      delete pkg.commitlint;
+      delete pkg['lint-staged'];
+      if (pkg.scripts) {
+        delete pkg.scripts.postmerge;
+        delete pkg.scripts.postcheckout;
+        delete pkg.scripts.postrewrite;
+        delete pkg.scripts.precommit;
+        delete pkg.scripts.commitmsg;
+        delete pkg.scripts.preparecommitmsg;
+        delete pkg.scripts.prepublish;
+        delete pkg.scripts.prepare;
+      }
+    }
+
     const withBabel = Boolean(this.babelEnvs.length);
 
     packageUtils.removeDevDependencies(pkg, ['springbokjs-library']);
@@ -349,7 +379,7 @@ module.exports = class PobLibGenerator extends Generator {
       packageUtils.addDevDependency(pkg, 'pob-release', '^3.1.0');
       packageUtils.addScripts(pkg, {
         release: 'pob-repository-check-clean && pob-release',
-        preversion: ['yarn run lint', withBabel && 'yarn run build', 'pob-repository-check-clean']
+        preversion: ['yarn run lint', withBabel && 'yarn run build', this.pobjson.documentation && 'yarn run generate:docs', 'pob-repository-check-clean']
           .filter(Boolean)
           .join(' && '),
         version: 'pob-version',
