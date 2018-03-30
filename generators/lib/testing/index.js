@@ -76,7 +76,7 @@ module.exports = class TestingGenerator extends Generator {
 
       if (inLerna) {
         packageUtils.addScripts(pkg, {
-          test: 'No tests',
+          test: 'echo "No tests"',
         });
       } else {
         delete pkg.jest;
