@@ -83,8 +83,8 @@ module.exports = class BabelGenerator extends Generator {
       delete pkg.browser;
       delete pkg['browser-dev'];
     } else {
-      pkg.browser = './dist/index.cjs.js';
-      pkg['browser-dev'] = './dist/index-dev.cjs.js';
+      pkg.browser = './dist/index-browser.cjs.js';
+      pkg['browser-dev'] = './dist/index-browser-dev.cjs.js';
     }
 
     if (pkg['webpack:main-modern-browsers']) {
