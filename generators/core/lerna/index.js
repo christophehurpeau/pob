@@ -54,6 +54,7 @@ module.exports = class LernaGenerator extends Generator {
         .join(' && '),
       release: "lerna publish --conventional-commits -m 'chore: release'",
     });
+    delete pkg.scripts.version;
 
     pkg.workspaces = [
       'packages/*',
