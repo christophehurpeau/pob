@@ -40,7 +40,7 @@ module.exports = class BabelGenerator extends Generator {
 
     this.entries.forEach((entry) => {
       const entryDestPath = this.destinationPath(`${entry}.js`);
-      if (this.babelEnvs.find(env => env.target === 'node')) {
+      if (this.babelEnvs.find(env => env.target === 'node') && (!this.entries.includes('index') || entry !== 'browser')) {
         this.fs.copyTpl(this.templatePath('entry.js.ejs'), entryDestPath, {
           entry,
           node8: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8')),
