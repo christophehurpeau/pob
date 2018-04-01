@@ -1,9 +1,15 @@
-# babel-preset-pob-env [![NPM version][npm-image]][npm-url]
+<h3 align="center">
+  babel-preset-pob-env
+</h3>
 
-pob env babel preset
+<p align="center">
+  pob babel preset env
+</p>
 
-[![Dependency Status][daviddm-image]][daviddm-url]
-[![Dependency ci Status][dependencyci-image]][dependencyci-url]
+<p align="center">
+  <a href="https://npmjs.org/package/babel-preset-pob-env"><img src="https://img.shields.io/npm/v/babel-preset-pob-env.svg?style=flat-square"></a>
+  <a href="https://david-dm.org/christophehurpeau/pob?path=packages/babel-preset-pob-env"><img src="https://david-dm.org/christophehurpeau/pob?path=packages/babel-preset-pob-env.svg?style=flat-square"></a>
+</p>
 
 ## Options
 
@@ -84,10 +90,3 @@ require("babel-core").transform("code", {
   presets: [[require('babel-preset-pob-env'), { production: process.env.NODE_ENV === 'production' }]]
 });
 ```
-
-[npm-image]: https://img.shields.io/npm/v/babel-preset-pob-env.svg?style=flat-square
-[npm-url]: https://npmjs.org/package/babel-preset-pob-env
-[daviddm-image]: https://david-dm.org/christophehurpeau/babel-preset-pob-env.svg?style=flat-square
-[daviddm-url]: https://david-dm.org/christophehurpeau/babel-preset-pob-env
-[dependencyci-image]: https://dependencyci.com/github/christophehurpeau/babel-preset-pob-env/badge?style=flat-square
-[dependencyci-url]: https://dependencyci.com/github/christophehurpeau/babel-preset-pob-env
