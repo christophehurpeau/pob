@@ -2,42 +2,15 @@
   "name": "babel-preset-pob-react",
   "version": "0.2.5",
   "description": "babel preset react and plugins for pob",
-  "keywords": [
-    "babel-preset"
-  ],
+  "keywords": ["babel-preset"],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
-  "repository": "git@github.com:christophehurpeau/babel-preset-pob-react.git",
-  "homepage": "https://github.com/christophehurpeau/babel-preset-pob-react",
-  "engines": {
-    "node": ">=4.0.0"
-  },
+  "repository": "git@github.com:christophehurpeau/pob.git",
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "engines": { "node": ">=4.0.0" },
   "main": "./lib/index.js",
-  "scripts": {
-    "clean": "rm -Rf docs dist",
-    "lint": "eslint lib/",
-    "postcheckout": "./.git-hooks/post-checkout",
-    "postmerge": "./.git-hooks/post-merge",
-    "precommit": "./.git-hooks/pre-commit",
-    "preparecommitmsg": "./.git-hooks/prepare-commit-msg ${GIT_PARAMS}",
-    "preversion": "yarn run lint && pob-repository-check-clean",
-    "release": "pob-repository-check-clean && pob-release",
-    "version": "pob-version"
-  },
-  "lint-staged": {
-    "package.json": [
-      "prettier --write",
-      "git add"
-    ],
-    "lib/**/*.json": [
-      "prettier --write",
-      "git add"
-    ],
-    "lib/**/*.js": [
-      "eslint --fix --quiet",
-      "git add"
-    ]
-  },
+  "scripts": { "clean": "rm -Rf docs dist", "lint": "eslint lib/", "test": "echo \"No tests\"" },
+  "prettier": { "trailingComma": "es5", "singleQuote": true, "printWidth": 100 },
   "dependencies": {
     "babel-plugin-react-require": "^3.0.0",
     "babel-plugin-transform-react-jsx-self": "^6.22.0",
@@ -45,17 +18,10 @@
     "babel-preset-react": "^6.24.1"
   },
   "devDependencies": {
-    "eslint": "4.18.0",
-    "eslint-config-airbnb-base": "^12.0.1",
-    "eslint-config-pob": "^17.1.0",
-    "eslint-config-prettier": "^2.9.0",
+    "eslint": "^4.19.1",
+    "eslint-config-pob": "^18.0.0",
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-prettier": "^2.6.0",
-    "husky": "^0.14.3",
-    "komet": "^0.1.4",
-    "komet-karma": "^0.2.5",
-    "lint-staged": "^6.1.0",
-    "pob-release": "^3.1.0",
-    "prettier": "^1.8.2"
+    "prettier": "^1.11.1"
   }
 }
