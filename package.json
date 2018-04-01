@@ -1,60 +1,44 @@
 {
   "name": "pob",
-  "version": "2.0.0",
-  "description": "Pile of bones, library generator with git/babel/eslint/readme/mocha/jsdoc",
-  "repository": "christophehurpeau/pob",
-  "keywords": [
-    "skeleton"
-  ],
-  "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
+  "private": true,
+  "version": "0.0.0",
+  "description": "library generator/tools/scripts",
+  "keywords": [],
+  "author":
+    "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/christophehurpeau/pob/issues"
-  },
+  "repository": "git@github.com:christophehurpeau/pob.git",
   "homepage": "https://github.com/christophehurpeau/pob",
-  "engines": {
-    "node": ">=8.1.0"
-  },
-  "bin": {
-    "pob": "./pob"
-  },
-  "prettier": {
-    "trailingComma": "all",
-    "singleQuote": true,
-    "printWidth": 100
-  },
+  "workspaces": ["packages/*"],
   "scripts": {
-    "preversion": "pob-repository-check-clean",
-    "release": "pob-repository-check-clean && pob-release",
-    "version": "pob-version",
-    "format": "prettier --single-quote --print-width 100 --trailing-comma=all --write"
+    "build": "lerna run --parallel --ignore \"*-example\" build",
+    "commitmsg": "commitlint -e $GIT_PARAMS",
+    "generate:docs":
+      "lerna run --parallel --ignore \"*-example\" generate:docs",
+    "lint": "lerna run --stream lint",
+    "postcheckout": "yarnhook",
+    "postmerge": "yarnhook",
+    "postrewrite": "yarnhook",
+    "precommit": "lint-staged",
+    "preversion":
+      "yarn run lint && yarn run build && yarn run generate:docs && pob-repository-check-clean",
+    "release": "lerna publish --conventional-commits -m 'chore: release'",
+    "test": "lerna run --stream test",
+    "watch": "lerna run --parallel --ignore \"*-example\" watch"
   },
-  "dependencies": {
-    "findup-sync": "^2.0.0",
-    "generator-license": "^5.2.0",
-    "gh-got": "^7.0.0",
-    "git-remote-url": "^1.0.1",
-    "github-username": "^4.1.0",
-    "got": "^8.3.0",
-    "inquirer-npm-name": "^3.0.0",
-    "lodash.camelcase": "^4.3.0",
-    "lodash.kebabcase": "^4.1.1",
-    "minimist-argv": "^1.0.0",
-    "mkdirp": "^0.5.1",
-    "parse-author": "^2.0.0",
-    "prettier": "^1.11.1",
-    "semver": "^5.5.0",
-    "update-notifier": "^2.3.0",
-    "yeoman-environment": "^2.0.5",
-    "yeoman-generator": "^2.0.3"
+  "lint-staged": {
+    "{package.json,.eslintrc.json}": ["prettier --write", "git add"],
+    "lib/**/*.json": ["prettier --write", "git add"],
+    "lib/**/*.js": ["eslint --fix --quiet", "git add"]
   },
+  "commitlint": { "extends": ["@commitlint/config-conventional"] },
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^12.1.0",
-    "eslint-plugin-import": "^2.10.0",
-    "pob-release": "^3.1.0"
-  },
-  "resolutions": {
-    "yeoman-generator": "^2.0.3"
+    "@commitlint/cli": "^6.1.3",
+    "@commitlint/config-conventional": "^6.1.3",
+    "husky": "^0.14.3",
+    "lerna": "2.9.1",
+    "lint-staged": "^7.0.0",
+    "pob-release": "^3.1.0",
+    "yarnhook": "^0.2.0"
   }
 }

@@ -1,9 +1,8 @@
-node_modules
-/build
+circle.yml
 
 /.settings
-/.project
-/.idea
+.project
+.idea
 *.sublime-project
 *.sublime-workspace
 
