@@ -118,10 +118,14 @@ module.exports = function(context, opts) {
       // flow
       flow && require.resolve('babel-preset-flow'),
       // add esnext features
-      [require.resolve('babel-plugin-transform-object-rest-spread'), { useBuiltIns: true }],
-      require.resolve('babel-plugin-transform-decorators-legacy'),
-      require.resolve('babel-plugin-transform-class-properties'),
-      require.resolve('babel-plugin-transform-export-extensions'),
+      {
+        plugins: [
+          [require.resolve('babel-plugin-transform-object-rest-spread'), { useBuiltIns: true }],
+          require.resolve('babel-plugin-transform-decorators-legacy'),
+          require.resolve('babel-plugin-transform-class-properties'),
+          require.resolve('babel-plugin-transform-export-extensions'),
+        ],
+      },
       // plugins
       {
         plugins: [
