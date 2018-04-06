@@ -24,7 +24,6 @@
   "scripts": {
     "preversion": "pob-repository-check-clean",
     "release": "pob-repository-check-clean && pob-release",
-    "version": "pob-version",
     "format": "prettier --single-quote --print-width 100 --trailing-comma=all --write"
   },
   "dependencies": {
