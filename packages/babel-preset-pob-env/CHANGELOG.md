@@ -1,3 +1,30 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+<a name="1.0.0"></a>
+# 1.0.0 (2018-04-06)
+
+
+### Bug Fixes
+
+* shipped proposals, update babel-preset-latest-node and babel-preset-modern-browsers ([466f834](https://github.com/christophehurpeau/pob/commit/466f834))
+
+
+### Features
+
+* remove pob preset ([25a48e9](https://github.com/christophehurpeau/pob/commit/25a48e9))
+* typescript ([48a358c](https://github.com/christophehurpeau/pob/commit/48a358c))
+
+
+### BREAKING CHANGES
+
+* js files are no longer supported (except for pob generator)
+
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/christophehurpeau/babel-preset-pob-env/compare/v0.2.0...v0.2.1) (2018-03-04)
 

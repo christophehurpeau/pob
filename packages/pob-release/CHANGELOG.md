@@ -1,3 +1,34 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+<a name="4.0.0"></a>
+# 4.0.0 (2018-04-06)
+
+
+### Bug Fixes
+
+* shipped proposals, update babel-preset-latest-node and babel-preset-modern-browsers ([466f834](https://github.com/christophehurpeau/pob-release/commit/466f834))
+
+
+### Features
+
+* abort when changelog is empty ([0610640](https://github.com/christophehurpeau/pob-release/commit/0610640))
+* exit 1 on error ([0362dff](https://github.com/christophehurpeau/pob-release/commit/0362dff))
+* remove useless premajor, preminor, prepatch and prerelease ([0547816](https://github.com/christophehurpeau/pob-release/commit/0547816))
+* typescript ([48a358c](https://github.com/christophehurpeau/pob-release/commit/48a358c))
+* upgrade dependencies ([5851942](https://github.com/christophehurpeau/pob-release/commit/5851942))
+* use conventional-recommended-bump ([0def6d8](https://github.com/christophehurpeau/pob-release/commit/0def6d8))
+
+
+### BREAKING CHANGES
+
+* js files are no longer supported (except for pob generator)
+
+
+
+
 <a name="3.1.0"></a>
 # [3.1.0](https://github.com/christophehurpeau/pob-release/compare/v3.0.0...v3.1.0) (2017-02-04)
 

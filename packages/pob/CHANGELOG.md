@@ -1,3 +1,29 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+<a name="3.0.0"></a>
+# 3.0.0 (2018-04-06)
+
+
+### Bug Fixes
+
+* shipped proposals, update babel-preset-latest-node and babel-preset-modern-browsers ([466f834](https://github.com/christophehurpeau/pob/commit/466f834))
+
+
+### Features
+
+* typescript ([48a358c](https://github.com/christophehurpeau/pob/commit/48a358c))
+
+
+### BREAKING CHANGES
+
+* js files are no longer supported (except for pob generator)
+
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/christophehurpeau/pob/compare/v1.3.0...v2.0.0) (2017-04-03)
 

@@ -1,9 +1,11 @@
 {
   "name": "pob",
-  "version": "2.0.0",
+  "version": "3.0.0",
   "description": "Pile of bones, library generator with git/babel/typescript/typedoc/readme/jest",
   "repository": "christophehurpeau/pob",
-  "keywords": ["skeleton"],
+  "keywords": [
+    "skeleton"
+  ],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "license": "ISC",
   "bugs": {
@@ -47,7 +49,7 @@
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.10.0",
-    "pob-release": "^3.1.0"
+    "pob-release": "^4.0.0"
   },
   "resolutions": {
     "yeoman-generator": "^2.0.3"

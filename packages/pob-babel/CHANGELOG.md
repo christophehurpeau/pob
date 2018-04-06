@@ -1,3 +1,95 @@
+# Change Log
+
+All notable changes to this project will be documented in this file.
+See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+<a name="21.0.0"></a>
+# 21.0.0 (2018-04-06)
+
+
+### Bug Fixes
+
+* babel-plugin-flow-runtime ([32c847a](https://github.com/christophehurpeau/pob/commit/32c847a))
+* babel-preset-babili-optimizations@0.2.0 ([d2a9d81](https://github.com/christophehurpeau/pob/commit/d2a9d81))
+* babel-preset-optimizations@1.2.1 ([1716b08](https://github.com/christophehurpeau/pob/commit/1716b08))
+* babel-preset-pob-stages@^0.2.1 ([e84c97e](https://github.com/christophehurpeau/pob/commit/e84c97e))
+* babel-preset-pob-stages@0.2.2 ([4ea91de](https://github.com/christophehurpeau/pob/commit/4ea91de))
+* better support for node 4 ([9dda681](https://github.com/christophehurpeau/pob/commit/9dda681))
+* bin path ([cbcc4fa](https://github.com/christophehurpeau/pob/commit/cbcc4fa))
+* clean missing examples ([8571bfc](https://github.com/christophehurpeau/pob/commit/8571bfc))
+* env ([bfccf6f](https://github.com/christophehurpeau/pob/commit/bfccf6f))
+* eslint-config-pob@16.0.0 ([49af6ed](https://github.com/christophehurpeau/pob/commit/49af6ed))
+* external modules and disable exportDefaultName ([833c292](https://github.com/christophehurpeau/pob/commit/833c292))
+* go back to babel-plugin-flow-runtime@0.10.0 ([e3abcf2](https://github.com/christophehurpeau/pob/commit/e3abcf2))
+* jest tests on node 4 ([5324ef6](https://github.com/christophehurpeau/pob/commit/5324ef6))
+* jsdoc use babel-preset-pob-stages and babel-preset-pob ([6b913b6](https://github.com/christophehurpeau/pob/commit/6b913b6))
+* let ora check isTTY ([44f9bef](https://github.com/christophehurpeau/pob/commit/44f9bef))
+* node 4 and jest preset current node compatibility ([14b6e35](https://github.com/christophehurpeau/pob/commit/14b6e35))
+* node6 compatible ([41bce2d](https://github.com/christophehurpeau/pob/commit/41bce2d))
+* pob-babel/register ([2fc1040](https://github.com/christophehurpeau/pob/commit/2fc1040))
+* pob-build-doc babel-cli path ([ed7316c](https://github.com/christophehurpeau/pob/commit/ed7316c))
+* react preset ([5533e90](https://github.com/christophehurpeau/pob/commit/5533e90))
+* remove babel-preset-stage-1 dependency ([e7f9a56](https://github.com/christophehurpeau/pob/commit/e7f9a56))
+* remove console.log ([c4fccb0](https://github.com/christophehurpeau/pob/commit/c4fccb0))
+* replace require(module).builtinModules by a shim supported in node <9.3 ([2586562](https://github.com/christophehurpeau/pob/commit/2586562))
+* require fails sometimes, back to require.resolve ([0a3ea4d](https://github.com/christophehurpeau/pob/commit/0a3ea4d))
+* resolve rollup config path ([52715c9](https://github.com/christophehurpeau/pob/commit/52715c9))
+* target node 4 ([e337c18](https://github.com/christophehurpeau/pob/commit/e337c18))
+* update dependencies ([fb79b49](https://github.com/christophehurpeau/pob/commit/fb79b49))
+* use node resolve for babel and rollup path ([75e3f15](https://github.com/christophehurpeau/pob/commit/75e3f15))
+* use require(module).builtinModules ([e53dc92](https://github.com/christophehurpeau/pob/commit/e53dc92))
+
+
+### Code Refactoring
+
+* remove react hot reload patch ([c397630](https://github.com/christophehurpeau/pob/commit/c397630))
+
+
+### Features
+
+* 14.2.0 ([e9c23e2](https://github.com/christophehurpeau/pob/commit/e9c23e2))
+* add babel-plugin-transform-export-default-name-forked ([81430f0](https://github.com/christophehurpeau/pob/commit/81430f0))
+* argv --no-spinner ([4db187a](https://github.com/christophehurpeau/pob/commit/4db187a))
+* babel option reactHotLoader ([980ea0c](https://github.com/christophehurpeau/pob/commit/980ea0c))
+* babel-preset-pob@^0.1.1 ([6291144](https://github.com/christophehurpeau/pob/commit/6291144))
+* handle index+browser entry ([51b3f76](https://github.com/christophehurpeau/pob/commit/51b3f76))
+* ignore tests files ([ea32ed9](https://github.com/christophehurpeau/pob/commit/ea32ed9))
+* jest env and node8 env ([ec72910](https://github.com/christophehurpeau/pob/commit/ec72910))
+* jsdoc.conf.js ([4c98100](https://github.com/christophehurpeau/pob/commit/4c98100))
+* module ([5224da3](https://github.com/christophehurpeau/pob/commit/5224da3))
+* pob-register ([ba18ee6](https://github.com/christophehurpeau/pob/commit/ba18ee6))
+* rollup ([fa54b21](https://github.com/christophehurpeau/pob/commit/fa54b21))
+* rollup@0.57.1 ([bcff0bd](https://github.com/christophehurpeau/pob/commit/bcff0bd))
+* typescript ([48a358c](https://github.com/christophehurpeau/pob/commit/48a358c))
+* update dependencies ([3543866](https://github.com/christophehurpeau/pob/commit/3543866))
+* update dependencies ([4415692](https://github.com/christophehurpeau/pob/commit/4415692))
+* update dependencies ([59406dd](https://github.com/christophehurpeau/pob/commit/59406dd))
+* update dependencies and use compose: true for babel plugin transform-export-default-name ([eef6507](https://github.com/christophehurpeau/pob/commit/eef6507))
+* update dependencies, including babel-preset-optimizations@1.1.1 ([110a24b](https://github.com/christophehurpeau/pob/commit/110a24b))
+* upgrade dependencies ([be2664d](https://github.com/christophehurpeau/pob/commit/be2664d))
+* use .yo-rc.json if exists ([90ebb2d](https://github.com/christophehurpeau/pob/commit/90ebb2d))
+* use babel-preset-env ([32b39e7](https://github.com/christophehurpeau/pob/commit/32b39e7))
+* use babel-preset-pob-react ([cd744b4](https://github.com/christophehurpeau/pob/commit/cd744b4))
+* use pob presets ([8224364](https://github.com/christophehurpeau/pob/commit/8224364))
+* use preset latest-node ([e147ca3](https://github.com/christophehurpeau/pob/commit/e147ca3))
+* webpack-node6 env ([000b7bf](https://github.com/christophehurpeau/pob/commit/000b7bf))
+
+
+### BREAKING CHANGES
+
+* js files are no longer supported (except for pob generator)
+* now use jsdoc.conf.js instead of jsdoc.conf.json
+* removed everything, use rollupt and babel-preset-pob-env
+* node 8.3
+* babel-preset-env
+* remove babel-preset-env and add babel-preset-latest-node
+* use flow-runtime instead of tcomb
+* require babel-preset-pob-react instead of babel-preset-react
+* remove reactHotLoader option
+
+
+
+
 <a name="20.2.0"></a>
 # [20.2.0](https://github.com/christophehurpeau/pob-babel/compare/v20.1.1...v20.2.0) (2018-03-25)
 

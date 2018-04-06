@@ -1,23 +1,33 @@
 {
   "name": "pob-babel",
-  "version": "20.2.0",
+  "version": "21.0.0",
   "description": "Build and watch with babel and typescript",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "license": "ISC",
   "repository": "git@github.com:christophehurpeau/pob.git",
   "homepage": "https://github.com/christophehurpeau/pob",
-  "engines": { "node": ">=4.0.0" },
+  "engines": {
+    "node": ">=4.0.0"
+  },
   "main": "./lib/index.js",
   "bin": {
     "pob-build": "./pob-build",
     "pob-watch": "./pob-watch"
   },
-  "scripts": { "clean": "rm -Rf docs dist", "lint": "eslint lib/", "test": "echo \"No tests\"" },
-  "prettier": { "trailingComma": "es5", "singleQuote": true, "printWidth": 100 },
+  "scripts": {
+    "clean": "rm -Rf docs dist",
+    "lint": "eslint lib/",
+    "test": "echo \"No tests\""
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "printWidth": 100
+  },
   "dependencies": {
     "babel-plugin-external-helpers": "^6.22.0",
-    "babel-preset-pob-env": "^0.2.1",
+    "babel-preset-pob-env": "^1.0.0",
     "rollup": "^0.57.1",
     "rollup-plugin-babel": "^4.0.0-beta.3",
     "rollup-plugin-node-resolve": "^3.3.0"
