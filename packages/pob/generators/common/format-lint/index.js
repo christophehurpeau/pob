@@ -71,7 +71,7 @@ module.exports = class LintGenerator extends Generator {
 
     if (!useBabel && jestOverride) {
       // see https://github.com/eslint/eslint/pull/9748 + https://github.com/eslint/eslint/issues/8813
-      jestOverride.extends = 'pob/babel';
+      // jestOverride.extends = 'pob/babel';
     }
 
 

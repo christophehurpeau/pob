@@ -89,24 +89,30 @@ module.exports = function(context, opts) {
     case 'node':
       if (versionOption === 'current') {
         if (process.versions.node.startsWith('4.')) {
-          targetPreset = ['@babel/preset-env', { modules, targets: { node: 4 } }];
+          targetPreset = [
+            '@babel/preset-env',
+            { modules, loose, shippedProposals: true, targets: { node: 4 } },
+          ];
         } else {
-          targetPreset = ['latest-node', { modules, target: 'current' }];
+          targetPreset = ['latest-node', { modules, loose, target: 'current' }];
         }
       } else if (versionOption === '4' || versionOption === 'lts') {
-        targetPreset = ['@babel/preset-env', { modules, targets: { node: 4 } }];
+        targetPreset = [
+          '@babel/preset-env',
+          { modules, loose, shippedProposals: true, targets: { node: 4 } },
+        ];
       } else {
-        targetPreset = ['@babel/preset-env', { modules, targets: { node: versionOption } }];
-        // targetPreset = ['latest-node', { modules, target: versionOption }];
+        // targetPreset = ['@babel/preset-env', { modules, loose, targets: { node: versionOption } }];
+        targetPreset = ['latest-node', { modules, loose, target: versionOption }];
       }
       break;
 
     case 'browser':
       if (versionOption === 'modern') {
-        // targetPreset = ['modern-browsers', { modules, loose }];
-        targetPreset = ['@babel/preset-env', { modules, loose }];
+        targetPreset = ['modern-browsers', { modules, loose }];
+        // targetPreset = ['@babel/preset-env', { modules, loose }];
       } else {
-        targetPreset = ['@babel/preset-env', { modules, loose }];
+        targetPreset = ['@babel/preset-env', { modules, loose, shippedProposals: true }];
       }
       break;
 

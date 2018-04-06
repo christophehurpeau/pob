@@ -142,7 +142,7 @@ module.exports = class BabelGenerator extends Generator {
     packageUtils.addDevDependencies(pkg, {
       '@babel/core': '^7.0.0-beta.44',
       'babel-core': '7.0.0-bridge.0',
-      'pob-babel': '^20.2.0',
+      'pob-babel': '^21.0.0',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, packageUtils.hasReact(pkg), {
@@ -164,13 +164,13 @@ module.exports = class BabelGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.babelEnvs.find(env => (env.target === 'node' && env.version !== '4')),
-      { 'babel-preset-latest-node': '^1.0.0' },
+      { 'babel-preset-latest-node': '^2.0.0-beta.1' },
     );
 
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.babelEnvs.find(env => (env.target === 'browser' && env.version === 'modern')),
-      { 'babel-preset-modern-browsers': '^10.0.1' },
+      { 'babel-preset-modern-browsers': '^12.0.0-beta.0' },
     );
 
     ['', '-modern-browsers', '-node'].forEach((middle) => {

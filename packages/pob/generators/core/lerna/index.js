@@ -37,7 +37,7 @@ module.exports = class LernaGenerator extends Generator {
 
     packageUtils.addDevDependencies(pkg, {
       lerna: '2.9.1',
-      'pob-release': '^3.1.0', // only for pob-repository-check-clean
+      'pob-release': '^4.0.0', // only for pob-repository-check-clean
     });
 
     const withBabel = true;

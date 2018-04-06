@@ -97,7 +97,7 @@ Promise.resolve(argv._[0]).then((version) => {
   if (!packageJson.private) {
     /* RELEASE */
     if (prerelease(version)) {
-      execSync('npm publish --tag beta', { stdio: 'inherit' });
+      execSync('npm publish --tag next', { stdio: 'inherit' });
     } else {
       execSync('npm publish', { stdio: 'inherit' });
     }
