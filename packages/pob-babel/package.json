@@ -1,7 +1,7 @@
 {
   "name": "pob-babel",
   "version": "20.2.0",
-  "description": "Build and watch with babel",
+  "description": "Build and watch with babel and typescript",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "license": "ISC",
@@ -11,27 +11,27 @@
   "main": "./lib/index.js",
   "bin": {
     "pob-build": "./pob-build",
-    "pob-build-doc": "./pob-build-doc",
-    "pob-watch": "./pob-watch",
-    "pob-register": "./register"
+    "pob-watch": "./pob-watch"
   },
   "scripts": { "clean": "rm -Rf docs dist", "lint": "eslint lib/", "test": "echo \"No tests\"" },
   "prettier": { "trailingComma": "es5", "singleQuote": true, "printWidth": 100 },
   "dependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-plugin-add-jsdoc-annotations": "^5.1.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-pob-env": "^0.2.1",
     "rollup": "^0.57.1",
-    "rollup-plugin-babel": "^3.0.3",
+    "rollup-plugin-babel": "^4.0.0-beta.3",
     "rollup-plugin-node-resolve": "^3.3.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.0.0-beta.44",
     "eslint": "^4.19.1",
     "eslint-config-pob": "^18.0.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-prettier": "^2.6.0",
     "prettier": "^1.11.1"
   },
-  "peerDependencies": { "babel-core": "^6.26.0" }
+  "peerDependencies": {
+    "@babel/core": "^7.0.0-beta.44",
+    "typescript": "^2.8.1"
+  }
 }

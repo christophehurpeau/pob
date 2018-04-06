@@ -54,7 +54,7 @@ module.exports = class GitHooksGenerator extends Generator {
     packageUtils.addDevDependencies(pkg, {
       husky: '^0.14.3',
       yarnhook: '^0.2.0',
-      'lint-staged': '^7.0.0',
+      'lint-staged': '^7.0.4',
       '@commitlint/cli': '^6.1.3',
       '@commitlint/config-conventional': '^6.1.3',
     });

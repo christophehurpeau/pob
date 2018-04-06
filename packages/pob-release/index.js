@@ -102,7 +102,8 @@ Promise.resolve(argv._[0]).then((version) => {
       execSync('npm publish', { stdio: 'inherit' });
     }
   }
-}).catch((err) => {
+})
+.catch((err) => {
   console.log(err.message || err);
   process.exit(1);
 });

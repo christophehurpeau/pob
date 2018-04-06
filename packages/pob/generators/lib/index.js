@@ -99,13 +99,11 @@ module.exports = class PobLibGenerator extends Generator {
       delete this.pobjson.testing.travisci;
     }
 
-    if (this.pobjson.documentation === true) {
-      this.pobjson.documentation = {
-        docklets: this.pobjson.doclets,
-      };
-      delete this.pobjson.doclets;
+    if (typeof this.pobjson.documentation === 'object') {
+      this.pobjson.documentation = true;
     }
 
+    delete this.pobjson.doclets;
     delete this.pobjson.flow;
     delete this.pobjson.react;
   }
@@ -195,7 +193,7 @@ module.exports = class PobLibGenerator extends Generator {
             checked: Boolean(this.babelEnvs.find(env => env.target === 'browser' && env.version === 'modern')),
           },
           {
-            name: 'Supported (babel-preset-env)',
+            name: 'Supported (@babel/preset-env)',
             value: undefined,
             checked: Boolean(this.babelEnvs.find(env => env.target === 'browser' && env.version === undefined)),
           },
@@ -241,15 +239,9 @@ module.exports = class PobLibGenerator extends Generator {
           message: 'Would you like documentation (manually generated) ?',
           default: this.pobjson.documentation != null ? this.pobjson.documentation : true,
         },
-        {
-          type: 'confirm',
-          name: 'doclets',
-          message: 'Would you like doclets ?',
-          default: !!this.pobjson.doclets,
-        },
-      ].filter(Boolean));
+      ]);
 
-      this.pobjson.documentation = !answers.documentation ? false : { doclets: !!answers.doclets };
+      this.pobjson.documentation = !!answers.documentation;
     }
 
     // testing
@@ -291,11 +283,10 @@ module.exports = class PobLibGenerator extends Generator {
   default() {
     const withBabel = !!this.babelEnvs.length;
 
-    if (withBabel) {
-      this.composeWith(require.resolve('../common/flow'), {
-        updateOnly: this.options.updateOnly,
-      });
-    }
+    this.composeWith(require.resolve('../common/typescript'), {
+      enable: withBabel,
+      updateOnly: this.options.updateOnly,
+    });
 
     if (withBabel) {
       this.composeWith(require.resolve('./babel'), {
@@ -313,7 +304,6 @@ module.exports = class PobLibGenerator extends Generator {
     this.composeWith(require.resolve('./readme'), {
       documentation: !!this.pobjson.documentation,
       testing: !!this.pobjson.testing,
-      doclets: this.pobjson.documentation && this.pobjson.documentation.docklets,
       circleci: this.pobjson.testing && this.pobjson.testing.circleci,
       // travisci: this.pobjson.testing && this.pobjson.testing.travisci,
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
@@ -331,7 +321,6 @@ module.exports = class PobLibGenerator extends Generator {
     this.composeWith(require.resolve('./doc'), {
       enabled: this.pobjson.documentation,
       testing: this.pobjson.testing,
-      doclets: this.pobjson.documentation.doclets,
     });
   }
 
@@ -351,8 +340,9 @@ module.exports = class PobLibGenerator extends Generator {
         '@commitlint/config-conventional',
       ]);
 
-      this.fs.delete('.git-hooks');
-      this.fs.delete('.commitrc.js');
+      if (this.fs.exists('.git-hooks')) this.fs.delete('.git-hooks');
+      if (this.fs.exists('git-hooks')) this.fs.delete('git-hooks');
+      if (this.fs.exists('.commitrc.js')) this.fs.delete('.commitrc.js');
       delete pkg.commitlint;
       delete pkg['lint-staged'];
       if (pkg.scripts) {
@@ -367,9 +357,37 @@ module.exports = class PobLibGenerator extends Generator {
       }
     }
 
+
     const withBabel = Boolean(this.babelEnvs.length);
 
-    packageUtils.removeDevDependencies(pkg, ['springbokjs-library']);
+    // old pob dependencies
+    packageUtils.removeDependencies(pkg, ['flow-runtime']);
+    packageUtils.removeDevDependencies(pkg, [
+      'tcomb',
+      'tcomb-forked',
+      'flow-runtime',
+      'flow-bin',
+      'springbokjs-library',
+      'babel-preset-es2015',
+      'babel-preset-es2015-webpack',
+      'babel-preset-es2015-node5',
+      'babel-preset-es2015-node6',
+      'babel-preset-pob',
+      'babel-preset-latest',
+      'babel-preset-stage-1',
+      'babel-preset-modern-browsers-stage-1',
+      'babel-preset-flow',
+      'babel-preset-flow-tcomb',
+      'babel-preset-flow-tcomb-forked',
+      'babel-plugin-typecheck',
+      'babel-plugin-defines',
+      'babel-plugin-import-rename',
+      'babel-plugin-discard-module-references',
+      'babel-plugin-remove-dead-code',
+      'babel-plugin-react-require',
+      'babel-preset-react',
+    ]);
+
     if (inLerna) {
       packageUtils.removeDevDependencies(pkg, ['lerna', 'pob-release']);
       delete pkg.scripts.preversion;

@@ -6,13 +6,6 @@ module.exports = class BabelGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option('documentation', {
-      type: Boolean,
-      required: false,
-      defaults: false,
-      desc: 'Has documentation (use preset for jsdoc).',
-    });
-
     this.option('testing', {
       type: Boolean,
       required: false,
@@ -51,33 +44,18 @@ module.exports = class BabelGenerator extends Generator {
         this.fs.delete(entryDestPath);
       }
     });
-
-    const indexSrcDestPath = this.destinationPath('src/index.js');
-    if (!this.fs.exists(indexSrcDestPath)) {
-      const idxJsxDestPath = this.destinationPath('src/index.jsx');
-      if (!this.fs.exists(idxJsxDestPath)) {
-        this.fs.copy(this.templatePath('src/index.js'), indexSrcDestPath);
-      }
-    }
-
-    // not: flow has not yet run here
-    // this.hasFlow = this.fs.exists(this.destinationPath('.flowconfig'));
-    // if (this.hasFlow) {
-    //   // this.fs.copy(
-    //   //   this.templatePath('types.js'),
-    //   //   this.destinationPath('types.js'),
-    //   // );
-    //   // const typesDestPath = this.destinationPath('src/types.js');
-    //   // if (!this.fs.exists(typesDestPath)) {
-    //   //   this.fs.copy(this.templatePath('src/types.js'), typesDestPath);
-    //   // }
+    //
+    // const indexSrcDestPath = this.destinationPath('src/index.js');
+    // if (!this.fs.exists(indexSrcDestPath) && !this.fs.exists(this.destinationPath('src/index.jsx')) && !this.fs.exists(this.destinationPath('src/index.ts')) && !this.fs.exists(this.destinationPath('src/index.tsx'))) {
+    //   this.fs.copy(this.templatePath('src/index.ts'), indexSrcDestPath);
     // }
   }
 
   default() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
-    if (!pkg.main) pkg.main = './index.js';
+    if (!pkg.main || pkg.main.startsWith('./lib/')) pkg.main = './index.js';
+    pkg.typings = './dist/index.d.ts';
 
     if (!this.babelEnvs.find(env => env.target === 'browser' && env.version === undefined && env.formats.includes('cjs'))) {
       delete pkg.browser;
@@ -154,48 +132,25 @@ module.exports = class BabelGenerator extends Generator {
     }
 
     packageUtils.addScripts(pkg, {
-      build: pkg.scripts && pkg.scripts.build && !pkg.scripts.build.startsWith('make') ? pkg.scripts.build : 'pob-build',
-      watch: pkg.scripts && pkg.scripts.watch && !pkg.scripts.watch.startsWith('make') ? pkg.scripts.watch : 'pob-watch',
+      build: 'pob-build && tsc -p tsconfig.build.json --emitDeclarationOnly',
+      watch: 'pob-watch',
     });
 
     delete pkg.scripts['build:dev'];
     delete pkg.scripts['watch:dev'];
 
     packageUtils.addDevDependencies(pkg, {
-      'babel-core': '^6.26.0',
+      '@babel/core': '^7.0.0-beta.44',
+      'babel-core': '7.0.0-bridge.0',
       'pob-babel': '^20.2.0',
     });
-
-    // old pob dependencies
-    packageUtils.removeDevDependencies(pkg, [
-      'tcomb',
-      'tcomb-forked',
-      'flow-runtime',
-      'babel-preset-es2015',
-      'babel-preset-es2015-webpack',
-      'babel-preset-es2015-node5',
-      'babel-preset-es2015-node6',
-      'babel-preset-pob',
-      'babel-preset-latest',
-      'babel-preset-stage-1',
-      'babel-preset-modern-browsers-stage-1',
-      'babel-preset-flow',
-      'babel-preset-flow-tcomb',
-      'babel-preset-flow-tcomb-forked',
-      'babel-plugin-typecheck',
-      'babel-plugin-defines',
-      'babel-plugin-import-rename',
-      'babel-plugin-discard-module-references',
-      'babel-plugin-remove-dead-code',
-      'babel-plugin-react-require',
-      'babel-preset-react',
-    ]);
 
     packageUtils.addOrRemoveDevDependencies(pkg, packageUtils.hasReact(pkg), {
       'babel-preset-pob-react': '^0.2.4',
     });
 
     packageUtils.removeDevDependencies(pkg, [
+      'babel-preset-env', // now @babel/preset-env
       'babel-preset-jsdoc',
       'babel-plugin-add-jsdoc-annotations',
     ]);
@@ -203,7 +158,7 @@ module.exports = class BabelGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.babelEnvs.find(env => (env.target === 'node' && env.version === '4') || (env.target === 'browser' && env.version === undefined)),
-      { 'babel-preset-env': '^1.6.1' },
+      { '@babel/preset-env': '^7.0.0-beta.44' },
     );
 
     packageUtils.addOrRemoveDevDependencies(
@@ -269,23 +224,18 @@ module.exports = class BabelGenerator extends Generator {
     this.fs.delete('types.js');
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
-    const hasFlow = this.fs.exists(this.destinationPath('.flowconfig'));
+
     const useBabel = true;
     const hasReact = useBabel && packageUtils.hasReact(pkg);
 
-
-    packageUtils.addOrRemoveDependencies(pkg, hasFlow, { 'flow-runtime': '^0.17.0' });
-
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
 
-    if (this.options.documentation || this.options.testing) {
+    if (this.options.testing) {
       this.fs.copyTpl(
         this.templatePath('babelrc.json.ejs'),
         this.destinationPath('.babelrc'),
         {
-          hasFlow,
           hasReact,
-          documentation: this.options.documentation,
           testing: this.options.testing,
         },
       );

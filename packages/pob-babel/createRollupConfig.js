@@ -8,6 +8,7 @@ const nodeBuiltinModules = Object.keys(process.binding('natives')).filter(
 const readFileSync = require('fs').readFileSync;
 const babel = require('rollup-plugin-babel');
 const resolve = require('rollup-plugin-node-resolve');
+
 const cwd = process.cwd();
 const pkg = JSON.parse(readFileSync(`${cwd}/package.json`));
 
@@ -18,7 +19,10 @@ const hasReact = Boolean(
     (pkg.peerDependencies && pkg.peerDependencies.react)
 );
 
-const isIndexBrowserEntry = pobConfig.entries.length === 2 && pobConfig.entries[0] === 'index' && pobConfig.entries[1] === 'browser';
+const isIndexBrowserEntry =
+  pobConfig.entries.length === 2 &&
+  pobConfig.entries[0] === 'index' &&
+  pobConfig.entries[1] === 'browser';
 const entries = isIndexBrowserEntry ? ['index', ...pobConfig.entries.slice(2)] : pobConfig.entries;
 
 const nodeVersion = version => {
@@ -36,17 +40,27 @@ const externalModules = nodeBuiltinModules
   .concat(Object.keys(pkg.dependencies || {}))
   .concat(Object.keys(pkg.peerDependencies || {}));
 
+// allow to resolve .ts entry files
+if (!require.extensions['.ts']) {
+  require.extensions['.ts'] = require.extensions['.js'];
+}
+
 if (hasReact) {
-  // allow to resolve .jsx entry files
-  if (!require.extensions['.jsx']) {
-    require.extensions['.jsx'] = require.extensions['.js'];
+  // allow to resolve .tsx entry files
+  if (!require.extensions['.tsx']) {
+    require.extensions['.tsx'] = require.extensions['.js'];
   }
 }
 
 const createConfigForEnv = (entry, env, production) => {
   const devSuffix = production ? '' : '-dev';
   return {
-    input: require.resolve(`./src/${isIndexBrowserEntry && entry === 'index' && env.target === 'browser' ? 'browser' : entry}`, { paths: [cwd] }),
+    input: require.resolve(
+      `./src/${
+        isIndexBrowserEntry && entry === 'index' && env.target === 'browser' ? 'browser' : entry
+      }`,
+      { paths: [cwd] }
+    ),
     output: env.formats.map(format => ({
       file: `dist/${entry}-${env.target}${env.version || ''}${devSuffix}.${format}.js`,
       format,
@@ -62,27 +76,27 @@ const createConfigForEnv = (entry, env, production) => {
       babel({
         babelrc: false,
         presets: [
-          hasReact && 'babel-preset-pob-react',
+          hasReact && '@babel/preset-react',
           [
             require.resolve('babel-preset-pob-env'),
             {
+              loose: true,
               modules: false,
               target: env.target,
               version: env.target === 'node' ? nodeVersion(env.version) : env.version,
               production,
-              flow: true,
               exportDefaultName: false, // this breaks the build (https://github.com/rollup/rollup/pull/2001 ?)
             },
           ],
         ].filter(Boolean),
-        plugins: [require.resolve('babel-plugin-external-helpers')],
+        // plugins: [require.resolve('babel-plugin-external-helpers')],
         externalHelpers: false,
         exclude: 'node_modules/**',
       }),
 
       resolve({
         customResolveOptions: {
-          extensions: ['.js', hasReact && '.jsx'].filter(Boolean), // TODO: add json ?
+          extensions: ['.ts', hasReact && '.tsx'].filter(Boolean), // TODO: add json ?
           moduleDirectory: [], // don't resolve node_modules
         },
       }),

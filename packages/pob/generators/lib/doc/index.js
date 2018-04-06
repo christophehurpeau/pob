@@ -21,29 +21,37 @@ module.exports = class DocGenerator extends Generator {
   }
 
   writing() {
-    this.fs.delete(this.destinationPath('jsdoc.conf.json'));
-    if (this.options.enabled) {
-      this.fs.copy(
-        this.templatePath('jsdoc.conf.js'),
-        this.destinationPath('jsdoc.conf.js'),
-      );
-    } else {
+    if (this.fs.exists(this.destinationPath('jsdoc.conf.json'))) {
+      this.fs.delete(this.destinationPath('jsdoc.conf.json'));
+    }
+    if (this.fs.exists(this.destinationPath('jsdoc.conf.js'))) {
       this.fs.delete(this.destinationPath('jsdoc.conf.js'));
-      this.fs.delete(this.destinationPath('docs'));
+    }
+
+    if (this.options.enabled) {
+      // this.fs.copy(
+      //   this.templatePath('jsdoc.conf.js'),
+      //   this.destinationPath('jsdoc.conf.js'),
+      // );
+    } else {
+      // this.fs.delete(this.destinationPath('jsdoc.conf.js'));
+      if (this.fs.exists(this.destinationPath('docs'))) {
+        this.fs.delete(this.destinationPath('docs'));
+      }
     }
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
+    packageUtils.removeDevDependencies(pkg, ['jsdoc', 'minami', 'jaguarjs-jsdoc']);
 
     packageUtils.addOrRemoveDevDependencies(pkg, this.options.enabled, {
-      jsdoc: '^3.5.5',
-      minami: '^1.2.3',
+      typedoc: '^0.11.1',
     });
 
     if (this.options.enabled) {
       packageUtils.addScripts(pkg, {
         'generate:docs': 'rm -Rf docs ; yarn run generate:api',
-        'generate:api': 'pob-build-doc',
+        'generate:api': 'typedoc --out docs --tsconfig tsconfig.build.json',
       });
 
       if (this.options.testing) {
@@ -52,11 +60,8 @@ module.exports = class DocGenerator extends Generator {
     } else {
       delete pkg.scripts['generate:api'];
       delete pkg.scripts['generate:docs'];
-
-      packageUtils.removeDevDependencies(pkg, ['jsdoc', 'minami']);
     }
 
-    packageUtils.removeDevDependencies(pkg, ['jaguarjs-jsdoc']);
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
