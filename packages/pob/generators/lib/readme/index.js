@@ -25,12 +25,6 @@ module.exports = class ReadmeGenerator extends Generator {
       desc: 'Include testing badge',
     });
 
-    this.option('doclets', {
-      type: Boolean,
-      required: true,
-      desc: 'Include doclets.io link',
-    });
-
     this.option('circleci', {
       type: Boolean,
       required: true,
@@ -95,7 +89,6 @@ module.exports = class ReadmeGenerator extends Generator {
           url: author.url,
         },
         license: pkg.license,
-        doclets: this.options.doclets,
         codecov: this.options.codecov,
         documentation: this.options.documentation,
         testing: this.options.testing,

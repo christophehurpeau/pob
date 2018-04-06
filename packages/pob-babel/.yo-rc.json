@@ -3,7 +3,6 @@
     "pob-config": {
       "envs": [],
       "documentation": false,
-      "doclets": false,
       "testing": false,
       "entries": [
         "index"

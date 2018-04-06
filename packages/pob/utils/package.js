@@ -10,7 +10,7 @@ exports.hasLerna = pkg => !!(pkg.devDependencies && pkg.devDependencies.lerna);
 
 exports.hasBabel = pkg => !!(
   pkg.devDependencies &&
-  (pkg.devDependencies['babel-core'] || pkg.devDependencies['pob-babel'])
+  (pkg.devDependencies['babel-core'] || pkg.devDependencies['pob-babel'] || pkg.devDependencies['@babel/core'])
 );
 
 exports.transpileWithBabel = pkg => !!(
@@ -23,7 +23,7 @@ exports.hasReact = pkg => !!(
 );
 
 exports.hasDocumentation = pkg => !!(
-  (pkg.devDependencies && pkg.devDependencies.jsdoc)
+  (pkg.devDependencies && pkg.devDependencies.typedoc)
 );
 
 exports.hasJest = pkg => !!(
@@ -72,6 +72,7 @@ exports.sort = function sort(pkg) {
     'workspaces',
     'browserslist',
     'main',
+    'typings',
     'jsnext:main',
     'module',
     'module-dev',
@@ -152,6 +153,8 @@ const internalAddDependencies = (pkg, type, dependencies) => {
           !currentVersion ||
           semver.gt(cleanVersion(potentialNewVersion), cleanVersion(currentVersion))
         ) {
+          filtredDependencies[dependency] = potentialNewVersion;
+        } else if (potentialNewVersion === `^${currentVersion}` || potentialNewVersion === `~${currentVersion}`) {
           filtredDependencies[dependency] = potentialNewVersion;
         } else if (potentialNewVersion !== currentVersion) {
           console.warn(`dependency "${dependency}" has a higher version: expected ${potentialNewVersion}, actual: ${currentVersion}.`);

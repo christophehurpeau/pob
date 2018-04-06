@@ -1,7 +1,7 @@
 {
   "name": "pob",
   "version": "2.0.0",
-  "description": "Pile of bones, library generator with git/babel/eslint/readme/mocha/jsdoc",
+  "description": "Pile of bones, library generator with git/babel/typescript/typedoc/readme/jest",
   "repository": "christophehurpeau/pob",
   "keywords": ["skeleton"],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
@@ -24,7 +24,6 @@
   "scripts": {
     "preversion": "pob-repository-check-clean",
     "release": "pob-repository-check-clean && pob-release",
-    "version": "pob-version",
     "format": "prettier --single-quote --print-width 100 --trailing-comma=all --write"
   },
   "dependencies": {
@@ -42,8 +41,8 @@
     "parse-author": "^2.0.0",
     "prettier": "^1.11.1",
     "semver": "^5.5.0",
-    "update-notifier": "^2.3.0",
-    "yeoman-environment": "^2.0.5",
+    "update-notifier": "^2.4.0",
+    "yeoman-environment": "^2.0.6",
     "yeoman-generator": "^2.0.3"
   },
   "devDependencies": {

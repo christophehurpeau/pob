@@ -17,16 +17,17 @@ module.exports = function(context, opts) {
     throw new Error(`Preset pob-env 'target' option must one of ${validTargetOption.join(', ')}.`);
   }
 
-  ['production', 'loose', 'flow', 'optimizations'].forEach(optionName => {
+  ['production', 'loose', 'optimizations'].forEach(optionName => {
     if (opts[optionName] !== undefined && typeof opts[optionName] !== 'boolean') {
       throw new Error(`Preset pob-env '${optionName}' option must be a boolean.`);
     }
   });
 
+  if (opts.flow !== undefined) throw new Error('option flow is deprecated.');
+
   const production =
     opts.production !== undefined ? opts.production : process.env.NODE_ENV === 'production';
   const loose = opts.loose !== undefined ? opts.loose : false;
-  const flow = opts.flow !== undefined ? opts.flow : false;
   const optimizations = opts.optimizations !== undefined ? opts.optimizations : true;
   const modules = opts.modules !== undefined ? opts.modules : 'commonjs';
 
@@ -88,22 +89,24 @@ module.exports = function(context, opts) {
     case 'node':
       if (versionOption === 'current') {
         if (process.versions.node.startsWith('4.')) {
-          targetPreset = ['env', { modules, targets: { node: 4 } }];
+          targetPreset = ['@babel/preset-env', { modules, targets: { node: 4 } }];
         } else {
           targetPreset = ['latest-node', { modules, target: 'current' }];
         }
       } else if (versionOption === '4' || versionOption === 'lts') {
-        targetPreset = ['env', { modules, targets: { node: 4 } }];
+        targetPreset = ['@babel/preset-env', { modules, targets: { node: 4 } }];
       } else {
-        targetPreset = ['latest-node', { modules, target: versionOption }];
+        targetPreset = ['@babel/preset-env', { modules, targets: { node: versionOption } }];
+        // targetPreset = ['latest-node', { modules, target: versionOption }];
       }
       break;
 
     case 'browser':
       if (versionOption === 'modern') {
-        targetPreset = ['modern-browsers', { modules, loose }];
+        // targetPreset = ['modern-browsers', { modules, loose }];
+        targetPreset = ['@babel/preset-env', { modules, loose }];
       } else {
-        targetPreset = ['env', { modules, loose }];
+        targetPreset = ['@babel/preset-env', { modules, loose }];
       }
       break;
 
@@ -115,25 +118,22 @@ module.exports = function(context, opts) {
   return {
     // preset order is last to first, so we reverse it for clarity.
     presets: [
-      // flow
-      flow && require.resolve('babel-preset-flow'),
       // add esnext features
       {
         plugins: [
-          [require.resolve('babel-plugin-transform-object-rest-spread'), { useBuiltIns: true }],
-          require.resolve('babel-plugin-transform-decorators-legacy'),
-          require.resolve('babel-plugin-transform-class-properties'),
-          require.resolve('babel-plugin-transform-export-extensions'),
+          [require.resolve('@babel/plugin-proposal-class-properties'), { loose }],
+          require.resolve('@babel/plugin-proposal-export-default-from'),
+          require.resolve('@babel/plugin-proposal-export-namespace-from'),
+          [require.resolve('@babel/plugin-proposal-object-rest-spread'), { useBuiltIns: true }],
         ],
       },
+
+      // typescript
+      require.resolve('@babel/preset-typescript'),
+
       // plugins
       {
         plugins: [
-          // rename 'module/src/' to 'module' (helps IDE autocomplete)
-          [
-            require.resolve('babel-plugin-import-export-rename'),
-            { '^([a-z\\-]+|[./]+)/src(.*)$': '$1$2' },
-          ],
           exportDefaultName && [
             require.resolve('babel-plugin-transform-name-export-default'),
             { compose: true },
@@ -141,31 +141,39 @@ module.exports = function(context, opts) {
           [
             require.resolve('babel-plugin-minify-replace'),
             {
-              replacements: replacementsKeys.map(key => ({
-                identifierName: key,
-                replacement: { type: 'booleanLiteral', value: replacements[key] },
-              })),
+              replacements: replacementsKeys
+                .map(key => ({
+                  identifierName: key,
+                  replacement: { type: 'booleanLiteral', value: replacements[key] },
+                }))
+                .concat([
+                  {
+                    identifierName: 'process.env.NODE_ENV',
+                    replacement: {
+                      type: 'stringLiteral',
+                      value: process.env.NODE_ENV || 'development',
+                    },
+                  },
+                  {
+                    identifierName: 'process.env.POB_TARGET',
+                    replacement: { type: 'stringLiteral', value: targetOption },
+                  },
+                  {
+                    identifierName: 'process.env.POB_TARGET_VERSION',
+                    replacement: { type: 'stringLiteral', value: versionOption },
+                  },
+                ]),
             },
           ],
         ].filter(Boolean),
       },
+
       // optimizations: remove dead-code
       optimizations && require.resolve('babel-preset-optimizations'),
-      // flow runtime
-      !production &&
-        flow && {
-          plugins: [
-            [
-              require.resolve('babel-plugin-flow-runtime'),
-              {
-                assert: true,
-                annotate: false,
-              },
-            ],
-          ],
-        },
+
       // discard unused imports (like production-only or node-only imports)
       { plugins: [require.resolve('babel-plugin-discard-module-references')] },
+
       // transpile for specified target
       targetPreset,
     ]

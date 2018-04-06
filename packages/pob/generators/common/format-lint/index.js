@@ -3,10 +3,9 @@ const packageUtils = require('../../../utils/package');
 
 module.exports = class LintGenerator extends Generator {
   initializing() {
-    this.fs.copy(
-      this.templatePath('eslintignore'),
-      this.destinationPath('.eslintignore'),
-    );
+    if (this.fs.exists(this.destinationPath('.eslintignore'))) {
+      this.fs.delete(this.destinationPath('.eslintignore'));
+    }
   }
 
   writing() {
@@ -25,27 +24,18 @@ module.exports = class LintGenerator extends Generator {
       eslint: '^4.19.1',
       'eslint-config-pob': '^18.0.0',
       'eslint-plugin-prettier': '^2.6.0',
+      'eslint-plugin-import': '^2.10.0',
       prettier: '^1.11.1',
     });
 
-    packageUtils.addOrRemoveDevDependencies(
-      pkg,
-      packageUtils.hasJest(pkg) || useBabel,
-      { 'eslint-plugin-import': '^2.10.0' },
-    );
-
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel, {
-      'babel-eslint': '^8.2.2',
+      'typescript-eslint-parser': '^14.0.0',
       'eslint-plugin-babel': '^4.1.2',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, !useBabel, {
       'eslint-plugin-node': '^6.0.0',
     });
-
-    if (!useBabel) {
-      this.fs.delete(this.destinationPath('.flowconfig'));
-    }
 
     packageUtils.addOrRemoveDevDependencies(pkg, hasReact, {
       'eslint-config-airbnb': '^16.0.0',
@@ -55,21 +45,15 @@ module.exports = class LintGenerator extends Generator {
 
     // packageUtils.addOrRemoveDevDependencies(pkg, !hasReact, { 'eslint-config-airbnb-base': '^12.1.0' });
 
-    const flow = this.fs.exists(this.destinationPath('.flowconfig'));
-
-    packageUtils.addOrRemoveDevDependencies(pkg, flow, {
-      'eslint-plugin-flowtype': '^2.46.1',
-    });
-
     const config = (() => {
       if (useBabel) {
-        return ['pob/babel', flow && 'pob/flow', hasReact && 'pob/react'].filter(Boolean);
+        return ['pob/babel', hasReact && 'pob/react', 'pob/typescript'].filter(Boolean);
       }
       return ['pob/node'];
     })();
 
     const dir = useBabel ? 'src' : 'lib';
-    const ext = hasReact ? '{js,jsx}' : 'js';
+    const ext = !useBabel ? 'js' : (hasReact ? '{ts,tsx}' : 'ts');
 
     const jestOverride = !packageUtils.hasJest(pkg) ? null : {
       files: [
@@ -131,7 +115,11 @@ module.exports = class LintGenerator extends Generator {
     }
 
     const srcDirectory = useBabel ? 'src' : 'lib';
-    packageUtils.addScript(pkg, 'lint', `eslint ${hasReact ? '--ext .js,.jsx ' : ''}${srcDirectory}/`);
+    packageUtils.addScript(
+      pkg,
+      'lint',
+      `${useBabel ? 'tsc --noEmit && ' : ''}eslint${!useBabel ? '' : ` --ext .ts${hasReact ? ',.tsx' : ''} `} ${srcDirectory}/`,
+    );
 
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);

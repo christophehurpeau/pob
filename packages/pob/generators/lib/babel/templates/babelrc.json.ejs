@@ -9,14 +9,7 @@
     "test": {
       "only": ["src/"],
       "presets": [
-        ["pob-babel/preset", { "flow": <%= hasFlow ? 'true' : 'false' %> }]
-      ]
-    }<% if (documentation) { %>,<% } %>
-<% } if (documentation) { -%>
-    "doc": {
-      "only": ["src/"],
-      "presets": [
-        ["pob-babel/jsdoc-preset", { "flow": <%= hasFlow ? 'true' : 'false' %> }]
+        ["pob-babel/preset"]
       ]
     }
 <% } -%>

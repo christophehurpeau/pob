@@ -17,7 +17,6 @@
 - `version` - target's version
 - `production` - `true` | `false` (default: process.env.NODE_ENV === 'production')
 - `loose` - Enable “loose” transformations for any plugins in this preset that allow them (Disabled by default).
-- `flow` - Use "flow-runtime" plugin when not in production mode (Disabled by default).
 - `optimizations` - Use "babel-preset-optimizations" preset (Enabled by default).
 - `modules` - Enable transformation of ES6 module syntax to another module type (Enabled by default to "commonjs"). Can be false to not transform modules, or "commonjs"
 - `replacements` - { `[key]`: `true` | `false` }. Default: `{ BROWSER, NODEJS }`, according to target. Always add { PRODUCTION: production }. Key should be uppercase.
@@ -31,20 +30,20 @@
 
 ## Needed dependencies
 
-[babel-preset-latest-node](https://www.npmjs.com/package/babel-preset-latest-node) 
+[babel-preset-latest-node](https://www.npmjs.com/package/babel-preset-latest-node)
 
 - `target` === "node" and `version` !== ("4" | "lts")
-             
-[babel-preset-modern-browsers](https://www.npmjs.com/package/babel-preset-modern-browsers) 
+
+[babel-preset-modern-browsers](https://www.npmjs.com/package/babel-preset-modern-browsers)
 
 - `target` === "browser" and `version` === "modern"
 
-[babel-preset-env](https://www.npmjs.com/package/babel-preset-latest-node) 
+[babel-preset-env](https://www.npmjs.com/package/babel-preset-latest-node)
 
 - `target` === "node" and `version` === ("4" | "lts")
 - `target` === "node" and `version` === "jest" and you intend to run it with node 4
-- `target` === "browser" and `version` !== "modern" 
-- `target` === `false` 
+- `target` === "browser" and `version` !== "modern"
+- `target` === `false`
 
 ## Install
 

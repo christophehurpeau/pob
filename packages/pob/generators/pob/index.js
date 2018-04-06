@@ -42,6 +42,7 @@ module.exports = class PobBaseGenerator extends Generator {
       this.inLerna = inLerna;
     }
 
+
     this.composeWith(require.resolve('../core/package'), {
       updateOnly: this.options.updateOnly,
       private: this.useLerna,

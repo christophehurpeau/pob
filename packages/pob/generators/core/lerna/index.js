@@ -46,7 +46,7 @@ module.exports = class LernaGenerator extends Generator {
     packageUtils.addScripts(pkg, {
       lint: 'lerna run --stream lint',
       test: 'lerna run --stream test',
-      build: 'lerna run --parallel --ignore "*-example" build',
+      build: 'lerna run --ignore "*-example" build',
       watch: 'lerna run --parallel --ignore "*-example" watch',
       'generate:docs': 'lerna run --parallel --ignore "*-example" generate:docs',
       preversion: ['yarn run lint', withBabel && 'yarn run build', withDocumentation && 'yarn run generate:docs', 'pob-repository-check-clean']
