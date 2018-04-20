@@ -17,7 +17,7 @@ module.exports = function(context, opts) {
     throw new Error(`Preset pob-env 'target' option must one of ${validTargetOption.join(', ')}.`);
   }
 
-  ['production', 'loose', 'optimizations'].forEach(optionName => {
+  ['production', 'loose', 'optimizations', 'typescript'].forEach(optionName => {
     if (opts[optionName] !== undefined && typeof opts[optionName] !== 'boolean') {
       throw new Error(`Preset pob-env '${optionName}' option must be a boolean.`);
     }
@@ -29,6 +29,7 @@ module.exports = function(context, opts) {
     opts.production !== undefined ? opts.production : process.env.NODE_ENV === 'production';
   const loose = opts.loose !== undefined ? opts.loose : false;
   const optimizations = opts.optimizations !== undefined ? opts.optimizations : true;
+  const typescript = opts.typescript !== undefined ? opts.typescript : true;
   const modules = opts.modules !== undefined ? opts.modules : 'commonjs';
 
   const replacements =
@@ -135,7 +136,7 @@ module.exports = function(context, opts) {
       },
 
       // typescript
-      require.resolve('@babel/preset-typescript'),
+      typescript && require.resolve('@babel/preset-typescript'),
 
       // plugins
       {
