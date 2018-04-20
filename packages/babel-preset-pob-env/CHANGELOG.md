@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.2.0"></a>
+# [1.2.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@1.1.0...babel-preset-pob-env@1.2.0) (2018-04-20)
+
+
+### Features
+
+* add hidden option resolvePreset ([4fd654d](https://github.com/christophehurpeau/pob/commit/4fd654d))
+
+
+
+
 <a name="1.1.0"></a>
 # [1.1.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@1.0.2...babel-preset-pob-env@1.1.0) (2018-04-20)
 
