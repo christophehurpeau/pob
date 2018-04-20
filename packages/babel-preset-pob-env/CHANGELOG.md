@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.0.1"></a>
+## [1.0.1](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@1.0.0...babel-preset-pob-env@1.0.1) (2018-04-20)
+
+
+### Bug Fixes
+
+* **babel-preset-pob-env:** update [@babel](https://github.com/babel)/core peer dep ([28c8b48](https://github.com/christophehurpeau/pob/commit/28c8b48))
+
+
+
+
 <a name="1.0.0"></a>
 # 1.0.0 (2018-04-06)
 

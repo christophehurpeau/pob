@@ -1,9 +1,11 @@
 {
   "name": "pob",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Pile of bones, library generator with git/babel/typescript/typedoc/readme/jest",
   "repository": "christophehurpeau/pob",
-  "keywords": ["skeleton"],
+  "keywords": [
+    "skeleton"
+  ],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "license": "ISC",
   "bugs": {

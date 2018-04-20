@@ -1,8 +1,10 @@
 {
   "name": "babel-preset-pob-env",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "pob babel preset env",
-  "keywords": ["babel-preset"],
+  "keywords": [
+    "babel-preset"
+  ],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": "git@github.com:christophehurpeau/pob.git",
