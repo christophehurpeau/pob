@@ -26,6 +26,7 @@
     "printWidth": 100
   },
   "dependencies": {
+    "@babel/preset-flow": "^7.0.0-beta.44",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-pob-env": "^1.1.0",
     "rollup": "^0.58.1",

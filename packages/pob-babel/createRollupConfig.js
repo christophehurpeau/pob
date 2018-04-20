@@ -54,17 +54,20 @@ if (hasReact) {
 
 const createConfigForEnv = (entry, env, production) => {
   const devSuffix = production ? '' : '-dev';
+  const entryPath = require.resolve(
+    `./src/${
+      isIndexBrowserEntry && entry === 'index' && env.target === 'browser' ? 'browser' : entry
+    }`,
+    { paths: [cwd] }
+  );
+  const typescript = entryPath.endsWith('.ts') || entryPath.endsWith('.tsx');
   return {
-    input: require.resolve(
-      `./src/${
-        isIndexBrowserEntry && entry === 'index' && env.target === 'browser' ? 'browser' : entry
-      }`,
-      { paths: [cwd] }
-    ),
+    input: entryPath,
     output: env.formats.map(format => ({
       file: `dist/${entry}-${env.target}${env.version || ''}${devSuffix}.${format}.js`,
       format,
       sourcemap: true,
+      exports: 'named',
     })),
     external: path => {
       if (path.includes('node_modules')) return true;
@@ -76,12 +79,14 @@ const createConfigForEnv = (entry, env, production) => {
       babel({
         babelrc: false,
         presets: [
-          hasReact && '@babel/preset-react',
+          !typescript && require.resolve('@babel/preset-flow'), // compatibility
+          hasReact && ['@babel/preset-react', { development: !production, useBuiltIns: true }],
           [
             require.resolve('babel-preset-pob-env'),
             {
               loose: true,
               modules: false,
+              typescript,
               target: env.target,
               version: env.target === 'node' ? nodeVersion(env.version) : env.version,
               production,
@@ -89,14 +94,19 @@ const createConfigForEnv = (entry, env, production) => {
             },
           ],
         ].filter(Boolean),
-        // plugins: [require.resolve('babel-plugin-external-helpers')],
+        plugins: [
+          // require.resolve('babel-plugin-external-helpers'),
+        ].filter(Boolean),
         externalHelpers: false,
         exclude: 'node_modules/**',
       }),
 
       resolve({
         customResolveOptions: {
-          extensions: ['.ts', hasReact && '.tsx'].filter(Boolean), // TODO: add json ?
+          extensions: (typescript
+            ? ['.ts', hasReact && '.tsx']
+            : ['.js', hasReact && '.jsx']
+          ).filter(Boolean), // TODO: add json ?
           moduleDirectory: [], // don't resolve node_modules
         },
       }),
