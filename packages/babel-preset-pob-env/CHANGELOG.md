@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.1.0"></a>
+# [1.1.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@1.0.2...babel-preset-pob-env@1.1.0) (2018-04-20)
+
+
+### Features
+
+* **babel-preset-pob-env:** typescript as an option ([2ea785c](https://github.com/christophehurpeau/pob/commit/2ea785c))
+
+
+
+
 <a name="1.0.2"></a>
 ## [1.0.2](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@1.0.1...babel-preset-pob-env@1.0.2) (2018-04-20)
 
