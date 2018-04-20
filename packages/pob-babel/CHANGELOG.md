@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="21.2.0"></a>
+# [21.2.0](https://github.com/christophehurpeau/pob/compare/pob-babel@21.1.1...pob-babel@21.2.0) (2018-04-20)
+
+
+### Features
+
+* **pob-babel:** add typescript option and flow preset for compat ([be1249c](https://github.com/christophehurpeau/pob/commit/be1249c))
+
+
+
+
 <a name="21.1.1"></a>
 ## [21.1.1](https://github.com/christophehurpeau/pob/compare/pob-babel@21.1.0...pob-babel@21.1.1) (2018-04-20)
 

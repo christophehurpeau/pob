@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.1.0"></a>
+# [3.1.0](https://github.com/christophehurpeau/pob/compare/pob@3.0.4...pob@3.1.0) (2018-04-20)
+
+
+### Features
+
+* **pob-babel:** add typescript option and flow preset for compat ([be1249c](https://github.com/christophehurpeau/pob/commit/be1249c))
+
+
+
+
 <a name="3.0.4"></a>
 ## [3.0.4](https://github.com/christophehurpeau/pob/compare/pob@3.0.3...pob@3.0.4) (2018-04-20)
 
