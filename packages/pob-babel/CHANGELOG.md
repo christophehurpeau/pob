@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="21.1.0"></a>
+# [21.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@21.0.1...pob-babel@21.1.0) (2018-04-20)
+
+
+### Features
+
+* **pob-babel:** update rollup to 0.58 ([f13326c](https://github.com/christophehurpeau/pob/commit/f13326c))
+
+
+
+
 <a name="21.0.1"></a>
 ## [21.0.1](https://github.com/christophehurpeau/pob/compare/pob-babel@21.0.0...pob-babel@21.0.1) (2018-04-20)
 
