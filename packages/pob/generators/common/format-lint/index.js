@@ -19,18 +19,20 @@ module.exports = class LintGenerator extends Generator {
       printWidth: 100,
     };
 
-    packageUtils.removeDevDependencies(pkg, ['eslint-config-airbnb-base', 'eslint-config-prettier']);
+    packageUtils.removeDevDependencies(pkg, ['eslint-config-airbnb-base', 'eslint-config-prettier', 'eslint-plugin-flowtype']);
     packageUtils.addDevDependencies(pkg, {
       eslint: '^4.19.1',
-      'eslint-config-pob': '^18.0.0',
+      'eslint-config-pob': '^19.0.1',
       'eslint-plugin-prettier': '^2.6.0',
-      'eslint-plugin-import': '^2.10.0',
-      prettier: '^1.11.1',
+      'eslint-plugin-import': '^2.11.0',
+      prettier: '^1.12.1',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel, {
-      'typescript-eslint-parser': '^14.0.0',
+      'babel-eslint': '^8.2.3', // required...
+      'typescript-eslint-parser': '^15.0.0',
       'eslint-plugin-babel': '^4.1.2',
+      'eslint-plugin-typescript': '^0.11.0',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, !useBabel, {
@@ -85,6 +87,11 @@ module.exports = class LintGenerator extends Generator {
       if (jestOverride) {
         eslintConfig.overrides = [jestOverride];
       }
+      if (useBabel) {
+        // webstorm uses this to detect eslint .ts compat
+        eslintConfig.parser = 'typescript-eslint-parser';
+        eslintConfig.plugins = ['typescript'];
+      }
       this.fs.writeJSON(eslintrcPath, eslintConfig);
     } else {
       const eslintConfig = this.fs.readJSON(eslintrcPath);
@@ -94,6 +101,16 @@ module.exports = class LintGenerator extends Generator {
       // eslintConfig.extends[0] = config;
       // eslintConfig.extends[0] = config;
       // }
+
+      if (useBabel) {
+        // webstorm uses this to detect eslint .ts compat
+        eslintConfig.parser = 'typescript-eslint-parser';
+        eslintConfig.plugins = ['typescript'];
+      } else {
+        if (eslintConfig.parser === 'typescript-eslint-parser') delete eslintConfig.parser;
+        if (eslintConfig.plugins && eslintConfig.plugins[0] === 'typescript-eslint-parser') eslintConfig.plugins.splice(0, 1);
+        if (eslintConfig.plugins && eslintConfig.plugins.length === 0) delete eslintConfig.plugins;
+      }
 
       const existingJestOverrideIndex = !eslintConfig.overrides ? -1 : eslintConfig.overrides.findIndex(override => override.env && override.env.jest);
       if (!jestOverride) {

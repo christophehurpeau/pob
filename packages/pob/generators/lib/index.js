@@ -386,6 +386,7 @@ module.exports = class PobLibGenerator extends Generator {
       'babel-plugin-remove-dead-code',
       'babel-plugin-react-require',
       'babel-preset-react',
+      'babel-preset-pob-react',
     ]);
 
     if (inLerna) {

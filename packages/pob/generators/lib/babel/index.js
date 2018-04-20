@@ -146,7 +146,7 @@ module.exports = class BabelGenerator extends Generator {
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, packageUtils.hasReact(pkg), {
-      'babel-preset-pob-react': '^0.2.4',
+      '@babel/preset-react': '^7.0.0-beta.44',
     });
 
     packageUtils.removeDevDependencies(pkg, [
@@ -164,7 +164,7 @@ module.exports = class BabelGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.babelEnvs.find(env => (env.target === 'node' && env.version !== '4')),
-      { 'babel-preset-latest-node': '^2.0.0-beta.1' },
+      { 'babel-preset-latest-node': '^2.0.0-beta.2' },
     );
 
     packageUtils.addOrRemoveDevDependencies(

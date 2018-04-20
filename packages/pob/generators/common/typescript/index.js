@@ -28,7 +28,7 @@ module.exports = class TypescriptGenerator extends Generator {
     }
 
     packageUtils.addOrRemoveDevDependencies(pkg, this.options.enable, {
-      typescript: '^2.8.1',
+      typescript: '^2.8.3',
     });
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
