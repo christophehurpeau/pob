@@ -14,6 +14,12 @@ module.exports = class PobLibGenerator extends Generator {
       defaults: false,
       desc: 'Avoid asking questions',
     });
+
+    this.option('fromPob', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+    });
   }
 
 
@@ -294,6 +300,7 @@ module.exports = class PobLibGenerator extends Generator {
         documentation: !!this.pobjson.documentation,
         babelEnvs: JSON.stringify(this.babelEnvs),
         entries: JSON.stringify(this.pobjson.entries),
+        fromPob: this.options.fromPob,
       });
     } else {
       mkdirp('lib');

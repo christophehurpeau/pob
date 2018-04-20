@@ -154,7 +154,7 @@ const internalAddDependencies = (pkg, type, dependencies) => {
           semver.gt(cleanVersion(potentialNewVersion), cleanVersion(currentVersion))
         ) {
           filtredDependencies[dependency] = potentialNewVersion;
-        } else if (potentialNewVersion === `^${currentVersion}` || potentialNewVersion === `~${currentVersion}`) {
+        } else if (cleanVersion(potentialNewVersion) === cleanVersion(currentVersion)) {
           filtredDependencies[dependency] = potentialNewVersion;
         } else if (potentialNewVersion !== currentVersion) {
           console.warn(`dependency "${dependency}" has a higher version: expected ${potentialNewVersion}, actual: ${currentVersion}.`);

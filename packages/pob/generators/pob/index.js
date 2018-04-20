@@ -18,6 +18,12 @@ module.exports = class PobBaseGenerator extends Generator {
       desc: 'Don\'t ask questions if we already have the answers',
     });
 
+    this.option('fromPob', {
+      type: Boolean,
+      required: true,
+      desc: 'Don\'t run yarn or build',
+    });
+
     this.option('license', {
       type: Boolean,
       required: false,
@@ -79,6 +85,7 @@ module.exports = class PobBaseGenerator extends Generator {
       case 'lib':
         this.composeWith(require.resolve('../lib/'), {
           updateOnly: this.options.updateOnly,
+          fromPob: this.options.fromPob,
         });
         break;
       case 'lerna':
@@ -95,6 +102,7 @@ module.exports = class PobBaseGenerator extends Generator {
   }
 
   install() {
+    if (this.options.fromPob) return;
     return this.spawnCommandSync('yarn');
   }
 

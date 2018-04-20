@@ -30,6 +30,8 @@ let type = argv._[0];
 const updateOnly = type === 'update';
 if (updateOnly) type = null;
 
+const fromPob = argv._[1] === 'from-pob';
+
 if (type === 'add') {
   if (!existsSync('lerna.json')) {
     console.error('Not in lerna package');
@@ -69,6 +71,7 @@ const options = {
   type,
   updateOnly,
   lerna: !!argv.lerna,
+  fromPob,
 };
 
 const generator = env.run('pob:generator', options, (err) => {

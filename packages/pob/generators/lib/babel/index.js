@@ -24,6 +24,12 @@ module.exports = class BabelGenerator extends Generator {
       required: true,
       desc: 'Entries',
     });
+
+    this.option('fromPob', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+    });
   }
 
   initializing() {
@@ -245,6 +251,7 @@ module.exports = class BabelGenerator extends Generator {
   }
 
   end() {
+    if (this.options.fromPob) return;
     return this.spawnCommandSync('yarn', ['run', 'build']);
   }
 };
