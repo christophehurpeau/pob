@@ -1053,9 +1053,9 @@ babel-plugin-minify-guarded-expressions@^0.3.0:
   dependencies:
     babel-helper-flip-expressions "^0.3.0"
 
-babel-plugin-minify-replace@^0.3.0:
-  version "0.3.0"
-  resolved "https://registry.yarnpkg.com/babel-plugin-minify-replace/-/babel-plugin-minify-replace-0.3.0.tgz#980125bbf7cbb5a637439de9d0b1b030a4693893"
+babel-plugin-minify-replace@^0.4.0:
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/babel-plugin-minify-replace/-/babel-plugin-minify-replace-0.4.0.tgz#3bb80494dc340b2c19ebd8fbb1431691d8d34429"
 
 babel-plugin-minify-simplify@^0.3.0:
   version "0.3.0"
@@ -2262,6 +2262,14 @@ eslint-config-pob@^11.1.0:
 eslint-config-pob@^18.0.0:
   version "18.0.0"
   resolved "https://registry.yarnpkg.com/eslint-config-pob/-/eslint-config-pob-18.0.0.tgz#1d9c3a99a3135ae0639edf1c25c07d1f9a3c5553"
+  dependencies:
+    eslint-config-airbnb-base "^12.1.0"
+    eslint-config-prettier "^2.9.0"
+    eslint-plugin-prefer-class-properties "^1.0.0"
+
+eslint-config-pob@^19.0.1:
+  version "19.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-config-pob/-/eslint-config-pob-19.0.1.tgz#a99bdc82a62a318c16cac4ae36b5f0d048e4aeaf"
   dependencies:
     eslint-config-airbnb-base "^12.1.0"
     eslint-config-prettier "^2.9.0"
@@ -5104,6 +5112,10 @@ preserve@^0.2.0:
 prettier@^1.11.1:
   version "1.11.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.11.1.tgz#61e43fc4cd44e68f2b0dfc2c38cd4bb0fccdcc75"
+
+prettier@^1.12.1:
+  version "1.12.1"
+  resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.12.1.tgz#c1ad20e803e7749faf905a409d2367e06bbe7325"
 
 pretty-bytes@^4.0.2:
   version "4.0.2"

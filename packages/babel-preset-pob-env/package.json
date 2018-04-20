@@ -2,9 +2,7 @@
   "name": "babel-preset-pob-env",
   "version": "1.0.1",
   "description": "pob babel preset env",
-  "keywords": [
-    "babel-preset"
-  ],
+  "keywords": ["babel-preset"],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": "git@github.com:christophehurpeau/pob.git",
@@ -31,7 +29,7 @@
     "@babel/preset-typescript": "^7.0.0-beta.44",
     "babel-plugin-discard-module-references": "^1.1.2",
     "babel-plugin-import-export-rename": "^1.0.1",
-    "babel-plugin-minify-replace": "^0.3.0",
+    "babel-plugin-minify-replace": "^0.4.0",
     "babel-plugin-transform-name-export-default": "^1.0.0",
     "babel-preset-optimizations": "^1.3.0"
   },
@@ -43,10 +41,10 @@
     "babel-preset-latest-node": "^2.0.0-beta.1",
     "babel-preset-modern-browsers": "^12.0.0-beta.0",
     "eslint": "^4.19.1",
-    "eslint-config-pob": "^18.0.0",
+    "eslint-config-pob": "^19.0.1",
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-prettier": "^2.6.0",
     "lint-staged": "^7.0.4",
-    "prettier": "^1.11.1"
+    "prettier": "^1.12.1"
   }
 }
