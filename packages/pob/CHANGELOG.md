@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.1.0"></a>
+# [4.1.0](https://github.com/christophehurpeau/pob/compare/pob@4.0.0...pob@4.1.0) (2018-04-21)
+
+
+### Bug Fixes
+
+* typescript redeclare global fixed ([5bbe268](https://github.com/christophehurpeau/pob/commit/5bbe268))
+
+
+### Features
+
+* update lerna version to beta 3 ([daee49c](https://github.com/christophehurpeau/pob/commit/daee49c))
+
+
+
+
+
 <a name="4.0.0"></a>
 # [4.0.0](https://github.com/christophehurpeau/pob/compare/pob@3.1.1...pob@4.0.0) (2018-04-21)
 
