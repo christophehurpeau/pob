@@ -72,6 +72,7 @@ module.exports = class GitHooksGenerator extends Generator {
     });
 
     delete pkg.scripts.prepublish;
+    delete pkg.scripts.postpublish;
     delete pkg.scripts.prepare;
     delete pkg.scripts.preparecommitmsg;
 

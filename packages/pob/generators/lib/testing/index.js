@@ -73,6 +73,7 @@ module.exports = class TestingGenerator extends Generator {
     if (!this.options.enable) {
       packageUtils.removeDevDependencies(pkg, [
         'jest',
+        '@types/jest',
         'babel-jest',
       ]);
 
@@ -102,6 +103,7 @@ module.exports = class TestingGenerator extends Generator {
 
       packageUtils.addDevDependencies(pkg, {
         jest: '^22.4.3',
+        '@types/jest': '^22.2.3',
       });
 
       const hasBabel = packageUtils.transpileWithBabel(pkg);
