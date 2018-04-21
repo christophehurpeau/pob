@@ -12,8 +12,7 @@ module.exports = function(context, opts) {
 
   if (versionOption === 'jest') throw new Error('Invalid version "jest"');
 
-  // use indexOf to support node 4
-  if (targetOption && validTargetOption.indexOf(targetOption) === -1) {
+  if (targetOption && !validTargetOption.includes(targetOption)) {
     throw new Error(`Preset pob-env 'target' option must one of ${validTargetOption.join(', ')}.`);
   }
 
@@ -70,12 +69,12 @@ module.exports = function(context, opts) {
   }
 
   const replacementsKeys = Object.keys(replacements);
-  // use indexOf to support node 4
-  if (replacementsKeys.indexOf('PRODUCTION') !== -1) {
-    throw new Error(
-      "Preset pob-env 'replacements.production' is reserved. Use option 'production' if you want to change it."
-    );
-  }
+  ['PRODUCTION', 'POB_ENV', 'POB_TARGET', 'POB_TARGET_VERSION'].forEach(key => {
+    if (replacementsKeys.includes(key)) {
+      throw new Error(`Preset pob-env 'replacements.${key}' is reserved.`);
+    }
+  });
+
   replacementsKeys.forEach(key => {
     if (key.toUpperCase() !== key) console.warn('warning: replacement key should be in uppercase.');
     if (typeof replacements[key] !== 'boolean') {
@@ -84,26 +83,17 @@ module.exports = function(context, opts) {
   });
 
   replacements.PRODUCTION = production;
-  replacementsKeys.push('PRODUCTION');
+  replacements.POB_ENV = production ? 'production' : 'development';
+  replacements.POB_TARGET = targetOption;
+  replacements.POB_TARGET_VERSION = versionOption;
+  replacementsKeys.push('PRODUCTION', 'POB_ENV', 'POB_TARGET', 'POB_TARGET_VERSION');
 
   let targetPreset;
 
   switch (targetOption) {
     case 'node':
       if (versionOption === 'current') {
-        if (process.versions.node.startsWith('4.')) {
-          targetPreset = [
-            resolvePreset('@babel/preset-env'),
-            { modules, loose, shippedProposals: true, targets: { node: 4 } },
-          ];
-        } else {
-          targetPreset = ['latest-node', { modules, loose, target: 'current' }];
-        }
-      } else if (versionOption === '4' || versionOption === 'lts') {
-        targetPreset = [
-          resolvePreset('@babel/preset-env'),
-          { modules, loose, shippedProposals: true, targets: { node: 4 } },
-        ];
+        targetPreset = ['latest-node', { modules, loose, target: 'current' }];
       } else {
         // targetPreset = ['@babel/preset-env', { modules, loose, targets: { node: versionOption } }];
         targetPreset = [
@@ -164,28 +154,13 @@ module.exports = function(context, opts) {
           [
             require.resolve('babel-plugin-minify-replace'),
             {
-              replacements: replacementsKeys
-                .map(key => ({
-                  identifierName: key,
-                  replacement: { type: 'booleanLiteral', value: replacements[key] },
-                }))
-                .concat([
-                  {
-                    identifierName: 'process.env.NODE_ENV',
-                    replacement: {
-                      type: 'stringLiteral',
-                      value: process.env.NODE_ENV || 'development',
-                    },
-                  },
-                  {
-                    identifierName: 'process.env.POB_TARGET',
-                    replacement: { type: 'stringLiteral', value: targetOption },
-                  },
-                  {
-                    identifierName: 'process.env.POB_TARGET_VERSION',
-                    replacement: { type: 'stringLiteral', value: versionOption },
-                  },
-                ]),
+              replacements: replacementsKeys.map(key => ({
+                identifierName: key,
+                replacement: {
+                  type: `${typeof replacements[key]}Literal`,
+                  value: replacements[key],
+                },
+              })),
             },
           ],
         ].filter(Boolean),
@@ -198,7 +173,19 @@ module.exports = function(context, opts) {
       ],
 
       // discard unused imports (like production-only or node-only imports)
-      { plugins: [require.resolve('babel-plugin-discard-module-references')] },
+      {
+        plugins: [
+          [
+            require.resolve('babel-plugin-discard-module-references'),
+            {
+              targets: [
+                // used to import typings
+                'pob-babel',
+              ],
+            },
+          ],
+        ],
+      },
 
       // transpile for specified target
       targetPreset,

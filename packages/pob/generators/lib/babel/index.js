@@ -42,9 +42,9 @@ module.exports = class BabelGenerator extends Generator {
       if (this.babelEnvs.find(env => env.target === 'node') && (!this.entries.includes('index') || entry !== 'browser')) {
         this.fs.copyTpl(this.templatePath('entry.js.ejs'), entryDestPath, {
           entry,
+          node10: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '10')),
           node8: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8')),
           node6: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '6')),
-          node4: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '4')),
         });
       } else {
         this.fs.delete(entryDestPath);
@@ -123,14 +123,14 @@ module.exports = class BabelGenerator extends Generator {
       if (!pkg.engines) pkg.engines = {};
       const minNodeVersion = this.babelEnvs.filter(env => env.target === 'node').reduce((min, env) => Math.min(min, env.version), Number.MAX_SAFE_INTEGER);
       switch (String(minNodeVersion)) {
-        case '4':
-          pkg.engines.node = '>=4.0.0';
-          break;
         case '6':
           pkg.engines.node = '>=6.5.0';
           break;
         case '8':
           pkg.engines.node = '>=8.3.0';
+          break;
+        case '10':
+          pkg.engines.node = '>=10.0.0';
           break;
         default:
           throw new Error(`Invalid min node version: ${minNodeVersion}`);
@@ -149,7 +149,7 @@ module.exports = class BabelGenerator extends Generator {
     packageUtils.addDevDependencies(pkg, {
       '@babel/core': '^7.0.0-beta.44',
       'babel-core': '7.0.0-bridge.0',
-      'pob-babel': '^21.2.4',
+      'pob-babel': '^22.0.0',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, packageUtils.hasReact(pkg), {
@@ -164,13 +164,13 @@ module.exports = class BabelGenerator extends Generator {
 
     packageUtils.addOrRemoveDevDependencies(
       pkg,
-      this.babelEnvs.find(env => (env.target === 'node' && env.version === '4') || (env.target === 'browser' && env.version === undefined)),
+      this.babelEnvs.find(env => env.target === 'browser' && env.version === undefined),
       { '@babel/preset-env': '^7.0.0-beta.44' },
     );
 
     packageUtils.addOrRemoveDevDependencies(
       pkg,
-      this.babelEnvs.find(env => (env.target === 'node' && env.version !== '4')),
+      this.babelEnvs.find(env => (env.target === 'node')),
       { 'babel-preset-latest-node': '^2.0.0-beta.2' },
     );
 

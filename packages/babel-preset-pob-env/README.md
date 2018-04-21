@@ -35,7 +35,7 @@
 
 [babel-preset-latest-node](https://www.npmjs.com/package/babel-preset-latest-node)
 
-- `target` === "node" and `version` !== ("4" | "lts")
+- `target` === "node"
 
 [babel-preset-modern-browsers](https://www.npmjs.com/package/babel-preset-modern-browsers)
 
@@ -43,8 +43,6 @@
 
 [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
 
-- `target` === "node" and `version` === ("4" | "lts")
-- `target` === "node" and `version` === "jest" and you intend to run it with node 4
 - `target` === "browser" and `version` !== "modern"
 - `target` === `false`
 

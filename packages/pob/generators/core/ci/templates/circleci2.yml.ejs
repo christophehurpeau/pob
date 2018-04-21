@@ -44,7 +44,7 @@ jobs:
 #          name: Check nothing was forget before commit
 #          command: npx pob-repository-check-clean
 
-<% [node4 && 4, node6 && 6, node9 && 9].filter(Boolean).forEach(version => { -%>
+<% [node6 && 6, node9 && 9].filter(Boolean).forEach(version => { -%>
   test-node<%= version %>:
     docker:
       - image: circleci/node:<%= version %>
@@ -72,6 +72,6 @@ workflows:
   tests:
     jobs:
       - test-node8
-<% [node4 && 4, node6 && 6, node9 && 9].filter(Boolean).forEach(version => { -%>
+<% [node6 && 6, node9 && 9].filter(Boolean).forEach(version => { -%>
       - test-node<%= version %>
 <% }) -%>

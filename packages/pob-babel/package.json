@@ -8,9 +8,10 @@
   "repository": "git@github.com:christophehurpeau/pob.git",
   "homepage": "https://github.com/christophehurpeau/pob",
   "engines": {
-    "node": ">=4.0.0"
+    "node": ">=6.5.0"
   },
   "main": "./lib/index.js",
+  "typings": "./types/globals.d.ts",
   "bin": {
     "pob-build": "./pob-build",
     "pob-watch": "./pob-watch"

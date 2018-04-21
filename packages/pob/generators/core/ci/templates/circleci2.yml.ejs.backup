@@ -79,7 +79,7 @@ jobs:
 < % } -% >
 < % } */ -%>
 
-<% [node4 && 4, node6 && 6, node9 && 9].filter(Boolean).forEach(version => { -%>
+<% [node6 && 6, node9 && 9].filter(Boolean).forEach(version => { -%>
   test-node<%= version %>:
 <% /*    working_directory: /home/circleci/project  */ -%>
     docker:
@@ -111,7 +111,7 @@ workflows:
       - test-node8<% /* :
           requires:
             - dependencies-node8  */ -%>
-<% [node4 && 4, node6 && 6, node9 && 9].filter(Boolean).forEach(version => { -%>
+<% [node6 && 6, node9 && 9].filter(Boolean).forEach(version => { -%>
       - test-node<%= version %>:
           requires:
             - test-node8

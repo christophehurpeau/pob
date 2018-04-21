@@ -63,11 +63,6 @@ module.exports = class PobLibGenerator extends Generator {
               target: 'node', version: 6, formats: ['cjs'],
             };
 
-          case 'older-node':
-            return {
-              target: 'node', version: 4, formats: ['cjs'],
-            };
-
           case 'webpack-node7':
           case 'module-node7':
           case 'module-node8':
@@ -93,6 +88,24 @@ module.exports = class PobLibGenerator extends Generator {
           default:
             throw new Error(`Unsupported env ${env}`);
         }
+      });
+    }
+
+    this.babelEnvs = this.babelEnvs.filter(env => (
+      env.target !== 'node' || env.version >= 6
+    ));
+
+    if (
+      !this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '10') &&
+      Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8')) &&
+      Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '6'))) {
+      this.babelEnvs.unshift({
+        target: 'node',
+        version: '10',
+        formats: [
+          'cjs',
+          'es',
+        ],
       });
     }
 
@@ -123,10 +136,9 @@ module.exports = class PobLibGenerator extends Generator {
         this.babelEnvs.find(env => env.target === 'browser') && 'browser',
       ].filter(Boolean),
       babelNodeVersions: [
-        Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '9')) && '9',
+        Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '10')) && '10',
         Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8')) && '8',
         Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '6')) && '6',
-        Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '4')) && '4',
       ].filter(Boolean),
       babelBrowserVersions: [
         Boolean(this.babelEnvs.find(env => env.target === 'browser' && env.version === 'modern')) && 'modern',
@@ -163,9 +175,9 @@ module.exports = class PobLibGenerator extends Generator {
         validate: versions => versions.length > 0,
         choices: [
           {
-            name: '9 (Current Release)',
-            value: '9',
-            checked: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '9')),
+            name: '10 (Current Release)',
+            value: '10',
+            checked: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '10')),
           },
           {
             name: '8 (Active LTS)',
@@ -173,14 +185,9 @@ module.exports = class PobLibGenerator extends Generator {
             checked: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8')),
           },
           {
-            name: '6 (Active LTS)',
+            name: '6 (Maintenance LTS)',
             value: '6',
             checked: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '6')),
-          },
-          {
-            name: '4 (Maintenance LTS)',
-            value: '4',
-            checked: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '4')),
           },
         ],
       },
@@ -417,7 +424,7 @@ module.exports = class PobLibGenerator extends Generator {
     if (!withBabel) {
       pkg.main = './lib/index.js';
       if (!pkg.engines) pkg.engines = {};
-      pkg.engines.node = '>=4.0.0';
+      pkg.engines.node = '>=6.5.0';
 
       if (!this.fs.exists(this.destinationPath('lib/index.js'))
           && this.fs.exists(this.destinationPath('index.js'))) {
