@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="3.1.1"></a>
+## [3.1.1](https://github.com/christophehurpeau/pob/compare/pob@3.1.0...pob@3.1.1) (2018-04-21)
+
+
+### Bug Fixes
+
+* proposal-object-rest-spread is in es2018 ([5c9d896](https://github.com/christophehurpeau/pob/commit/5c9d896))
+
+
+
+
 <a name="3.1.0"></a>
 # [3.1.0](https://github.com/christophehurpeau/pob/compare/pob@3.0.4...pob@3.1.0) (2018-04-20)
 
