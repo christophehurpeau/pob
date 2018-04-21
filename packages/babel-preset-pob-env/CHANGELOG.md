@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.2.2"></a>
+## [1.2.2](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@1.2.1...babel-preset-pob-env@1.2.2) (2018-04-21)
+
+
+### Bug Fixes
+
+* previous commit deleted plugin-proposal-export-namespace-from ([95a4aaa](https://github.com/christophehurpeau/pob/commit/95a4aaa))
+
+
+
+
 <a name="1.2.1"></a>
 ## [1.2.1](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@1.2.0...babel-preset-pob-env@1.2.1) (2018-04-21)
 
