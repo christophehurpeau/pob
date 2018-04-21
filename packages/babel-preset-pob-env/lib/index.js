@@ -1,4 +1,4 @@
-/* eslint-disable complexity */
+/* eslint-disable complexity, max-lines */
 
 'use strict';
 
@@ -136,10 +136,18 @@ module.exports = function(context, opts) {
       // add esnext features
       {
         plugins: [
+          // es2018:
+          // @babel/plugin-proposal-object-rest-spread
+          // @babel/plugin-proposal-unicode-property-regex
+          // @babel/plugin-proposal-async-generator-functions
+
+          // shipped proposals:
+          // @babel/plugin-syntax-optional-catch-binding
+
+          // not shipped proposals:
           [require.resolve('@babel/plugin-proposal-class-properties'), { loose }],
           require.resolve('@babel/plugin-proposal-export-default-from'),
           require.resolve('@babel/plugin-proposal-export-namespace-from'),
-          [require.resolve('@babel/plugin-proposal-object-rest-spread'), { useBuiltIns: true }],
         ],
       },
 

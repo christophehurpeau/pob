@@ -138,6 +138,7 @@ module.exports = class BabelGenerator extends Generator {
     }
 
     packageUtils.addScripts(pkg, {
+      // TODO add --declarationMap when https://github.com/Microsoft/TypeScript/commit/6af764c5606270fe34117b2051ba819581b3e199 is release
       build: 'pob-build && tsc -p tsconfig.build.json --emitDeclarationOnly',
       watch: 'pob-watch',
     });
