@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="1.3.0"></a>
+# [1.3.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@1.2.2...babel-preset-pob-env@1.3.0) (2018-04-21)
+
+
+### Features
+
+* **babel-preset-pob-env:** update preset-optimizations to 1.5 ([34d7fbf](https://github.com/christophehurpeau/pob/commit/34d7fbf))
+
+
+
+
 <a name="1.2.2"></a>
 ## [1.2.2](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@1.2.1...babel-preset-pob-env@1.2.2) (2018-04-21)
 
