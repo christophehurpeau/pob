@@ -12,7 +12,7 @@ module.exports = class LernaGenerator extends Generator {
   default() {
     // lerna.json
     const lernaConfig = {
-      lerna: '2.9.1',
+      lerna: '3.0.0-beta.17',
       npmClient: 'yarn',
       useWorkspaces: true,
       version: 'independent',
@@ -36,7 +36,7 @@ module.exports = class LernaGenerator extends Generator {
     packageUtils.removeDependency(pkg, 'lerna');
 
     packageUtils.addDevDependencies(pkg, {
-      lerna: '2.9.1',
+      lerna: '3.0.0-beta.17',
       'pob-release': '^4.0.0', // only for pob-repository-check-clean
     });
 
