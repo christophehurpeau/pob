@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@1.3.0...babel-preset-pob-env@2.0.0) (2018-04-21)
+
+
+### Features
+
+* remove node 4, fix replacements ([4a6d3f5](https://github.com/christophehurpeau/pob/commit/4a6d3f5))
+
+
+### BREAKING CHANGES
+
+* - node 4 is no longer supported
+- process.env.POB_{TARGET,TARGET_VERSION} is replaced by a global
+
+
+
+
 <a name="1.3.0"></a>
 # [1.3.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@1.2.2...babel-preset-pob-env@1.3.0) (2018-04-21)
 

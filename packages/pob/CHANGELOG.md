@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.0.0"></a>
+# [4.0.0](https://github.com/christophehurpeau/pob/compare/pob@3.1.1...pob@4.0.0) (2018-04-21)
+
+
+### Features
+
+* **pob:** add [@types](https://github.com/types)/jest, remove postpublish script, update pob-babel ([47a4645](https://github.com/christophehurpeau/pob/commit/47a4645))
+* remove node 4, fix replacements ([4a6d3f5](https://github.com/christophehurpeau/pob/commit/4a6d3f5))
+
+
+### BREAKING CHANGES
+
+* - node 4 is no longer supported
+- process.env.POB_{TARGET,TARGET_VERSION} is replaced by a global
+
+
+
+
 <a name="3.1.1"></a>
 ## [3.1.1](https://github.com/christophehurpeau/pob/compare/pob@3.1.0...pob@3.1.1) (2018-04-21)
 
