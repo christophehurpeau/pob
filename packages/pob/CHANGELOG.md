@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.1.2"></a>
+## [4.1.2](https://github.com/christophehurpeau/pob/compare/pob@4.1.1...pob@4.1.2) (2018-04-22)
+
+
+### Bug Fixes
+
+* **pob-babel:** recursive remove inside dist before build/watch ([e67ea3b](https://github.com/christophehurpeau/pob/commit/e67ea3b))
+
+
+
+
+
 <a name="4.1.1"></a>
 ## [4.1.1](https://github.com/christophehurpeau/pob/compare/pob@4.1.0...pob@4.1.1) (2018-04-21)
 

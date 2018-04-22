@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="22.0.3"></a>
+## [22.0.3](https://github.com/christophehurpeau/pob/compare/pob-babel@22.0.2...pob-babel@22.0.3) (2018-04-22)
+
+
+### Bug Fixes
+
+* **pob-babel:** recursive remove inside dist before build/watch ([e67ea3b](https://github.com/christophehurpeau/pob/commit/e67ea3b))
+
+
+
+
+
 <a name="22.0.2"></a>
 ## [22.0.2](https://github.com/christophehurpeau/pob/compare/pob-babel@22.0.1...pob-babel@22.0.2) (2018-04-21)
 
