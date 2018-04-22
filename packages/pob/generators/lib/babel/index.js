@@ -149,7 +149,7 @@ module.exports = class BabelGenerator extends Generator {
     packageUtils.addDevDependencies(pkg, {
       '@babel/core': '^7.0.0-beta.44',
       'babel-core': '7.0.0-bridge.0',
-      'pob-babel': '^22.0.2',
+      'pob-babel': '^22.0.3',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, packageUtils.hasReact(pkg), {
