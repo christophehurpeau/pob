@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-pob-babel",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "babel plugin for pob-babel",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com>",
@@ -27,7 +27,7 @@
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-prettier": "^2.6.0",
     "lint-staged": "^7.0.5",
-    "pob-release": "^4.1.0",
+    "pob-release": "^4.1.1",
     "prettier": "^1.12.1"
   }
 }
