@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.3.2"></a>
+## [4.3.2](https://github.com/christophehurpeau/pob/compare/pob@4.3.1...pob@4.3.2) (2018-04-27)
+
+
+### Bug Fixes
+
+* **pob-babel:** typings as a declaration file ([03cf5dc](https://github.com/christophehurpeau/pob/commit/03cf5dc))
+
+
+
+
+
 <a name="4.3.1"></a>
 ## [4.3.1](https://github.com/christophehurpeau/pob/compare/pob@4.3.0...pob@4.3.1) (2018-04-27)
 

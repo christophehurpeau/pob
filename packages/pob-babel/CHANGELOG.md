@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="22.2.4"></a>
+## [22.2.4](https://github.com/christophehurpeau/pob/compare/pob-babel@22.2.3...pob-babel@22.2.4) (2018-04-27)
+
+
+### Bug Fixes
+
+* **pob-babel:** typings as a declaration file ([03cf5dc](https://github.com/christophehurpeau/pob/commit/03cf5dc))
+
+
+
+
+
 <a name="22.2.3"></a>
 ## [22.2.3](https://github.com/christophehurpeau/pob/compare/pob-babel@22.2.2...pob-babel@22.2.3) (2018-04-27)
 
