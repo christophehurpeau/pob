@@ -125,16 +125,25 @@ module.exports = class BabelGenerator extends Generator {
       switch (String(minNodeVersion)) {
         case '6':
           pkg.engines.node = '>=6.5.0';
+          if (pkg.dependencies && pkg.dependencies['@types/node']) pkg.dependencies['@types/node'] = '^6.0.0';
+          if (pkg.devDependencies && pkg.devDependencies['@types/node']) pkg.devDependencies['@types/node'] = '^6.0.0';
           break;
         case '8':
           pkg.engines.node = '>=8.3.0';
+          if (pkg.dependencies && pkg.dependencies['@types/node']) pkg.dependencies['@types/node'] = '^8.0.0';
+          if (pkg.devDependencies && pkg.devDependencies['@types/node']) pkg.devDependencies['@types/node'] = '^8.0.0';
           break;
         case '10':
           pkg.engines.node = '>=10.0.0';
+          if (pkg.dependencies && pkg.dependencies['@types/node']) pkg.dependencies['@types/node'] = '10.0.0';
+          if (pkg.devDependencies && pkg.devDependencies['@types/node']) pkg.devDependencies['@types/node'] = '10.0.0';
           break;
         default:
           throw new Error(`Invalid min node version: ${minNodeVersion}`);
       }
+    } else {
+      packageUtils.removeDependencies(pkg, ['@types/node']);
+      packageUtils.removeDevDependencies(pkg, ['@types/node']);
     }
 
     packageUtils.addScripts(pkg, {
@@ -149,7 +158,7 @@ module.exports = class BabelGenerator extends Generator {
     packageUtils.addDevDependencies(pkg, {
       '@babel/core': '^7.0.0-beta.46',
       'babel-core': '7.0.0-bridge.0',
-      'pob-babel': '^22.2.2',
+      'pob-babel': '^22.2.3',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, packageUtils.hasReact(pkg), {

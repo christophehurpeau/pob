@@ -124,7 +124,7 @@ module.exports = class GitHubGenerator extends Generator {
         console.error(err.stack || err.message || err);
       }
     } else {
-      console.log(await gh(`repos/${owner}/${repo}`, {
+      await gh(`repos/${owner}/${repo}`, {
         token: GITHUB_TOKEN,
         body: {
           name: pkg.name,
@@ -134,7 +134,8 @@ module.exports = class GitHubGenerator extends Generator {
           allow_merge_commit: false,
           allow_rebase_merge: true,
         },
-      }));
+      });
+      console.log('sync github description');
     }
   }
 };

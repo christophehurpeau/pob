@@ -20,34 +20,27 @@ module.exports = function({ types }, opts) {
   return {
     name: 'pob-babel', // not required
     visitor: {
-      Program: {
-        exit(path) {
-          path.traverse({
-            ImportDeclaration(path) {
-              const node = path.node;
-              if (node.source.value !== 'pob-babel') return;
-              if (!node.specifiers) throw path.buildCodeFrameError('Expecting named parameters');
-              node.specifiers.forEach(specifier => {
-                if (specifier.type === 'ImportDefaultSpecifier') {
-                  throw path.buildCodeFrameError('No default import expected');
-                }
-                if (!nodeReplacements.has(specifier.imported.name)) {
-                  throw path.buildCodeFrameError(`Unknown import: ${specifier.imported.name}`);
-                }
-              });
-              path.remove();
-            },
-          });
-        },
-      },
-
-      ReferencedIdentifier(path) {
+      ImportDeclaration(path) {
         const node = path.node;
-        const binding = path.scope.bindings[node.name];
-        if (!binding || !binding.path.parent.source.value === 'pob-babel') return;
-        const importSpecifier = binding.path.node;
-        const replacement = nodeReplacements.get(importSpecifier.imported.name);
-        if (replacement) path.replaceWith(replacement);
+        if (node.source.value !== 'pob-babel') return;
+        if (!node.specifiers) throw path.buildCodeFrameError('Expecting named parameters');
+        node.specifiers.forEach(specifier => {
+          if (specifier.type === 'ImportDefaultSpecifier') {
+            throw path.buildCodeFrameError('No default import expected');
+          }
+
+          const nodeReplacement = nodeReplacements.get(specifier.imported.name);
+
+          if (!nodeReplacement) {
+            throw path.buildCodeFrameError(`Unknown import: ${specifier.imported.name}`);
+          }
+
+          path.scope.bindings[specifier.local.name].referencePaths.forEach(ref =>
+            ref.replaceWith(nodeReplacement)
+          );
+        });
+
+        path.remove();
       },
     },
   };
