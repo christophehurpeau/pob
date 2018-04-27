@@ -406,9 +406,11 @@ module.exports = class PobLibGenerator extends Generator {
 
     if (inLerna) {
       packageUtils.removeDevDependencies(pkg, ['lerna', 'pob-release']);
-      delete pkg.scripts.preversion;
-      delete pkg.scripts.release;
-      delete pkg.scripts.version;
+      if (pkg.scripts) {
+        delete pkg.scripts.preversion;
+        delete pkg.scripts.release;
+        delete pkg.scripts.version;
+      }
     } else {
       packageUtils.addDevDependency(pkg, 'pob-release', '^4.0.0');
       packageUtils.addScripts(pkg, {
