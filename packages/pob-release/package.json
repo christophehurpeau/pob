@@ -2,12 +2,16 @@
   "name": "pob-release",
   "version": "4.1.0",
   "description": "release with ease",
-  "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
+  "author":
+    "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "license": "ISC",
   "repository": "christophehurpeau/pob-release",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint --ext .js,.jsx --fix *.js"
+  },
+  "engines": {
+    "node": ">=6.5.0"
   },
   "bin": {
     "pob-repository-check-clean": "./repository-check-clean.sh",
@@ -23,9 +27,9 @@
     "standard-changelog": "0.0.1"
   },
   "devDependencies": {
-    "eslint": "^3.17.0",
-    "eslint-config-airbnb-base": "^11.1.1",
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
     "eslint-config-pob": "^19.1.0",
-    "eslint-plugin-import": "^2.2.0"
+    "eslint-plugin-import": "^2.11.0"
   }
 }
