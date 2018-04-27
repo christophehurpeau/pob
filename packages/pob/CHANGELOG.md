@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.3.1"></a>
+## [4.3.1](https://github.com/christophehurpeau/pob/compare/pob@4.3.0...pob@4.3.1) (2018-04-27)
+
+
+### Bug Fixes
+
+* babel-plugin-pob-babel and [@types](https://github.com/types)/node version same than engines ([ce0417b](https://github.com/christophehurpeau/pob/commit/ce0417b))
+
+
+
+
+
 <a name="4.3.0"></a>
 # [4.3.0](https://github.com/christophehurpeau/pob/compare/pob@4.2.1...pob@4.3.0) (2018-04-27)
 
