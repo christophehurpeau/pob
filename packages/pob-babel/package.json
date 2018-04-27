@@ -30,7 +30,7 @@
     "@babel/preset-flow": "^7.0.0-beta.46",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-pob-env": "^2.2.1",
-    "rollup": "^0.58.1",
+    "rollup": "^0.58.2",
     "rollup-plugin-babel": "^4.0.0-beta.3",
     "rollup-plugin-node-resolve": "^3.3.0"
   },
