@@ -125,18 +125,18 @@ module.exports = class BabelGenerator extends Generator {
       switch (String(minNodeVersion)) {
         case '6':
           pkg.engines.node = '>=6.5.0';
-          if (pkg.dependencies && pkg.dependencies['@types/node']) pkg.dependencies['@types/node'] = '^6.0.0';
-          if (pkg.devDependencies && pkg.devDependencies['@types/node']) pkg.devDependencies['@types/node'] = '^6.0.0';
+          if (pkg.dependencies && pkg.dependencies['@types/node']) pkg.dependencies['@types/node'] = '>=6.0.0';
+          if (pkg.devDependencies && pkg.devDependencies['@types/node']) pkg.devDependencies['@types/node'] = '>=6.0.0';
           break;
         case '8':
           pkg.engines.node = '>=8.3.0';
-          if (pkg.dependencies && pkg.dependencies['@types/node']) pkg.dependencies['@types/node'] = '^8.0.0';
-          if (pkg.devDependencies && pkg.devDependencies['@types/node']) pkg.devDependencies['@types/node'] = '^8.0.0';
+          if (pkg.dependencies && pkg.dependencies['@types/node']) pkg.dependencies['@types/node'] = '>=8.0.0';
+          if (pkg.devDependencies && pkg.devDependencies['@types/node']) pkg.devDependencies['@types/node'] = '>=8.0.0';
           break;
         case '10':
           pkg.engines.node = '>=10.0.0';
-          if (pkg.dependencies && pkg.dependencies['@types/node']) pkg.dependencies['@types/node'] = '10.0.0';
-          if (pkg.devDependencies && pkg.devDependencies['@types/node']) pkg.devDependencies['@types/node'] = '10.0.0';
+          if (pkg.dependencies && pkg.dependencies['@types/node']) pkg.dependencies['@types/node'] = '>=10.0.0';
+          if (pkg.devDependencies && pkg.devDependencies['@types/node']) pkg.devDependencies['@types/node'] = '>=10.0.0';
           break;
         default:
           throw new Error(`Invalid min node version: ${minNodeVersion}`);
