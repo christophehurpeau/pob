@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.1.0"></a>
+# [4.1.0](https://github.com/christophehurpeau/pob-release/compare/pob-release@4.0.0...pob-release@4.1.0) (2018-04-27)
+
+
+### Features
+
+* update babel-preset-latest-node and babel-preset-modern-browsers ([e2976ea](https://github.com/christophehurpeau/pob-release/commit/e2976ea))
+
+
+
+
+
 <a name="4.0.0"></a>
 # 4.0.0 (2018-04-06)
 

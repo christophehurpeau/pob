@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="22.2.0"></a>
+# [22.2.0](https://github.com/christophehurpeau/pob/compare/pob-babel@22.1.0...pob-babel@22.2.0) (2018-04-27)
+
+
+### Features
+
+* babel 7 beta 46 ([4fd4a56](https://github.com/christophehurpeau/pob/commit/4fd4a56))
+* update babel-preset-latest-node and babel-preset-modern-browsers ([e2976ea](https://github.com/christophehurpeau/pob/commit/e2976ea))
+
+
+
+
+
 <a name="22.1.0"></a>
 # [22.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@22.0.3...pob-babel@22.1.0) (2018-04-27)
 

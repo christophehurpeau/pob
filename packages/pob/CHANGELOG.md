@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.2.0"></a>
+# [4.2.0](https://github.com/christophehurpeau/pob/compare/pob@4.1.3...pob@4.2.0) (2018-04-27)
+
+
+### Bug Fixes
+
+* lint-staged 7.0.5 ([548831b](https://github.com/christophehurpeau/pob/commit/548831b))
+
+
+### Features
+
+* babel 7 beta 46 ([4fd4a56](https://github.com/christophehurpeau/pob/commit/4fd4a56))
+* **pob:** move peerDependencies before devDependencies ([d825738](https://github.com/christophehurpeau/pob/commit/d825738))
+* update babel-preset-latest-node and babel-preset-modern-browsers ([e2976ea](https://github.com/christophehurpeau/pob/commit/e2976ea))
+
+
+
+
+
 <a name="4.1.3"></a>
 ## [4.1.3](https://github.com/christophehurpeau/pob/compare/pob@4.1.2...pob@4.1.3) (2018-04-27)
 
