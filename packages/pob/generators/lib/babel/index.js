@@ -171,13 +171,13 @@ module.exports = class BabelGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.babelEnvs.find(env => (env.target === 'node')),
-      { 'babel-preset-latest-node': '^2.0.0-beta.2' },
+      { 'babel-preset-latest-node': '^2.0.0-beta.3' },
     );
 
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.babelEnvs.find(env => (env.target === 'browser' && env.version === 'modern')),
-      { 'babel-preset-modern-browsers': '^12.0.0-beta.0' },
+      { 'babel-preset-modern-browsers': '^12.0.0-beta.1' },
     );
 
     ['', '-modern-browsers', '-node'].forEach((middle) => {
