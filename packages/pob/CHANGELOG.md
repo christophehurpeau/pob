@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.3.0"></a>
+# [4.3.0](https://github.com/christophehurpeau/pob/compare/pob@4.2.1...pob@4.3.0) (2018-04-27)
+
+
+### Features
+
+* **pob:** update pob-babel and pob-release ([8a820f1](https://github.com/christophehurpeau/pob/commit/8a820f1))
+
+
+
+
+
 <a name="4.2.1"></a>
 ## [4.2.1](https://github.com/christophehurpeau/pob/compare/pob@4.2.0...pob@4.2.1) (2018-04-27)
 
