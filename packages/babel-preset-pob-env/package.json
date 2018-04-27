@@ -2,9 +2,7 @@
   "name": "babel-preset-pob-env",
   "version": "2.0.0",
   "description": "pob babel preset env",
-  "keywords": [
-    "babel-preset"
-  ],
+  "keywords": ["babel-preset"],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": "git@github.com:christophehurpeau/pob.git",
@@ -31,6 +29,7 @@
     "babel-plugin-discard-module-references": "^1.1.2",
     "babel-plugin-import-export-rename": "^1.0.1",
     "babel-plugin-minify-replace": "^0.4.0",
+    "babel-plugin-pob-babel": "^1.0.0",
     "babel-plugin-transform-name-export-default": "^1.0.0",
     "babel-preset-optimizations": "^1.5.0"
   },

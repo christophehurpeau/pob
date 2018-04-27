@@ -163,6 +163,7 @@ module.exports = function(context, opts) {
               })),
             },
           ],
+          [require.resolve('babel-plugin-pob-babel'), { replacements }],
         ].filter(Boolean),
       },
 

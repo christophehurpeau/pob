@@ -1,7 +1,4 @@
-export {}
-
-declare global {
-  const POB_ENV: 'production' | 'development';
-  const POB_TARGET: 'node' | 'browser';
-  const POB_TARGET_VERSION: undefined | string;
-}
+export const PRODUCTION: boolean;
+export const POB_ENV: 'production' | 'development';
+export const POB_TARGET: 'node' | 'browser';
+export const POB_TARGET_VERSION: undefined | string;
