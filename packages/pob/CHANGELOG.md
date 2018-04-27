@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.4.0"></a>
+# [4.4.0](https://github.com/christophehurpeau/pob/compare/pob@4.3.2...pob@4.4.0) (2018-04-27)
+
+
+### Bug Fixes
+
+* **pob:** use [@types](https://github.com/types)/node >= to avoid duplicates ([35269a7](https://github.com/christophehurpeau/pob/commit/35269a7))
+
+
+### Features
+
+* **pob:** lerna 3.0.0-beta.18 ([3900bf8](https://github.com/christophehurpeau/pob/commit/3900bf8))
+
+
+
+
+
 <a name="4.3.2"></a>
 ## [4.3.2](https://github.com/christophehurpeau/pob/compare/pob@4.3.1...pob@4.3.2) (2018-04-27)
 
