@@ -11,7 +11,7 @@
     "node": ">=6.5.0"
   },
   "main": "./lib/index.js",
-  "typings": "./types/index.ts",
+  "typings": "./types/index.d.ts",
   "bin": {
     "pob-build": "./pob-build",
     "pob-watch": "./pob-watch"
