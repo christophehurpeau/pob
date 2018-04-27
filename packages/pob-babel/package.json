@@ -27,7 +27,7 @@
     "printWidth": 100
   },
   "dependencies": {
-    "@babel/preset-flow": "^7.0.0-beta.44",
+    "@babel/preset-flow": "^7.0.0-beta.46",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-pob-env": "^2.1.0",
     "rollup": "^0.58.1",
@@ -35,7 +35,7 @@
     "rollup-plugin-node-resolve": "^3.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.44",
+    "@babel/core": "^7.0.0-beta.46",
     "eslint": "^4.19.1",
     "eslint-config-pob": "^19.0.1",
     "eslint-plugin-node": "^6.0.1",
@@ -43,7 +43,7 @@
     "prettier": "^1.12.1"
   },
   "peerDependencies": {
-    "@babel/core": "^7.0.0-beta.44",
+    "@babel/core": "^7.0.0-beta.46",
     "typescript": "^2.8.1"
   }
 }

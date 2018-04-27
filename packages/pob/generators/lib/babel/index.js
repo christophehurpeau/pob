@@ -147,13 +147,13 @@ module.exports = class BabelGenerator extends Generator {
     delete pkg.scripts['watch:dev'];
 
     packageUtils.addDevDependencies(pkg, {
-      '@babel/core': '^7.0.0-beta.44',
+      '@babel/core': '^7.0.0-beta.46',
       'babel-core': '7.0.0-bridge.0',
       'pob-babel': '^22.0.3',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, packageUtils.hasReact(pkg), {
-      '@babel/preset-react': '^7.0.0-beta.44',
+      '@babel/preset-react': '^7.0.0-beta.46',
     });
 
     packageUtils.removeDevDependencies(pkg, [
@@ -165,7 +165,7 @@ module.exports = class BabelGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.babelEnvs.find(env => env.target === 'browser' && env.version === undefined),
-      { '@babel/preset-env': '^7.0.0-beta.44' },
+      { '@babel/preset-env': '^7.0.0-beta.46' },
     );
 
     packageUtils.addOrRemoveDevDependencies(
