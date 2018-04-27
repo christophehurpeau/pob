@@ -26,6 +26,7 @@
     "eslint-plugin-import": "^2.11.0",
     "eslint-plugin-node": "^6.0.0",
     "eslint-plugin-prettier": "^2.6.0",
+    "lint-staged": "^7.0.5",
     "prettier": "^1.12.1"
   }
 }
