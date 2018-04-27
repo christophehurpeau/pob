@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="22.1.0"></a>
+# [22.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@22.0.3...pob-babel@22.1.0) (2018-04-27)
+
+
+### Features
+
+* add babel-plugin-pob-babel for replacements ([14eec3d](https://github.com/christophehurpeau/pob/commit/14eec3d))
+
+
+
+
+
 <a name="22.0.3"></a>
 ## [22.0.3](https://github.com/christophehurpeau/pob/compare/pob-babel@22.0.2...pob-babel@22.0.3) (2018-04-22)
 

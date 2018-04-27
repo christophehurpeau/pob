@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.1.0"></a>
+# [2.1.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.0.0...babel-preset-pob-env@2.1.0) (2018-04-27)
+
+
+### Features
+
+* add babel-plugin-pob-babel for replacements ([14eec3d](https://github.com/christophehurpeau/pob/commit/14eec3d))
+
+
+
+
+
 <a name="2.0.0"></a>
 # [2.0.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@1.3.0...babel-preset-pob-env@2.0.0) (2018-04-21)
 

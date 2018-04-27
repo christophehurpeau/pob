@@ -1,16 +1,25 @@
 {
   "name": "babel-plugin-pob-babel",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "babel plugin for pob-babel",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com>",
   "license": "ISC",
   "repository": "git@github.com:christophehurpeau/pob.git",
   "homepage": "https://github.com/christophehurpeau/pob",
-  "engines": { "node": ">=6.5.0" },
+  "engines": {
+    "node": ">=6.5.0"
+  },
   "main": "./lib/index.js",
-  "scripts": { "lint": "eslint lib/", "test": "echo \"No tests\"" },
-  "prettier": { "trailingComma": "es5", "singleQuote": true, "printWidth": 100 },
+  "scripts": {
+    "lint": "eslint lib/",
+    "test": "echo \"No tests\""
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "printWidth": 100
+  },
   "devDependencies": {
     "eslint": "^4.19.1",
     "eslint-config-pob": "^19.1.0",
