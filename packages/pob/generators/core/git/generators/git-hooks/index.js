@@ -55,12 +55,18 @@ module.exports = class GitHooksGenerator extends Generator {
       husky: '^0.14.3',
       yarnhook: '^0.2.0',
       'lint-staged': '^7.0.5',
-      '@commitlint/cli': '^6.1.3',
+      '@commitlint/cli': '^6.2.0',
       '@commitlint/config-conventional': '^6.1.3',
     });
+    // packageUtils.addOrRemoveDevDependencies(pkg, inLerna, {
+    //   '@commitlint/config-lerna-scopes': '^6.1.3',
+    // });
 
     pkg.commitlint = {
-      extends: ['@commitlint/config-conventional'],
+      extends: [
+        '@commitlint/config-conventional',
+        // '@commitlint/config-lerna-scopes',
+      ].filter(Boolean),
     };
 
     packageUtils.addScripts(pkg, {
