@@ -6,7 +6,9 @@ const packageUtils = require('../../../utils/package');
 module.exports = class LernaGenerator extends Generator {
   initializing() {
     this.packageNames = existsSync('packages/') ? readdirSync('packages/') : [];
-    this.packages = this.packageNames.map(packageName => this.fs.readJSON(this.destinationPath(`packages/${packageName}/package.json`)));
+    this.packages = this.packageNames
+      .map(packageName => this.fs.readJSON(this.destinationPath(`packages/${packageName}/package.json`)))
+      .filter(Boolean);
   }
 
   default() {
