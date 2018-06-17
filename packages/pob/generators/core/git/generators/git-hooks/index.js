@@ -54,9 +54,9 @@ module.exports = class GitHooksGenerator extends Generator {
     packageUtils.addDevDependencies(pkg, {
       husky: '^0.14.3',
       yarnhook: '^0.2.0',
-      'lint-staged': '^7.0.5',
-      '@commitlint/cli': '^6.2.0',
-      '@commitlint/config-conventional': '^6.1.3',
+      'lint-staged': '^7.2.0',
+      '@commitlint/cli': '^7.0.0',
+      '@commitlint/config-conventional': '^7.0.1',
     });
     // packageUtils.addOrRemoveDevDependencies(pkg, inLerna, {
     //   '@commitlint/config-lerna-scopes': '^6.1.3',

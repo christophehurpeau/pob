@@ -202,13 +202,25 @@ exports.addOrRemoveDependencies = function addOrRemoveDependencies(pkg, conditio
   return exports.removeDependencies(pkg, Object.keys(dependencies));
 };
 
-exports.addOrRemoveDevDependencies = function addOrRemoveDependencies(pkg, condition, dependencies) {
+exports.addOrRemoveDevDependencies = function addOrRemoveDevDependencies(pkg, condition, dependencies) {
   if (condition) return exports.addDevDependencies(pkg, dependencies);
   return exports.removeDevDependencies(pkg, Object.keys(dependencies));
 };
 
 exports.addScripts = function addScripts(pkg, scripts) {
   internalAddToObject(pkg, 'scripts', scripts);
+};
+
+exports.addOrRemoveScripts = function addOrRemoveScripts(pkg, condition, scripts) {
+  if (condition) return exports.addScripts(pkg, scripts);
+  else if (pkg.scripts) {
+    Object.keys(scripts).forEach((key) => {
+      delete pkg.scripts[key];
+    });
+    if (Object.keys(pkg.scripts).length === 0) {
+      delete pkg.scripts;
+    }
+  }
 };
 
 exports.addScript = function addScript(pkg, scriptName, value) {

@@ -4,17 +4,17 @@
   "version": "0.0.0",
   "description": "library generator/tools/scripts",
   "keywords": [],
-  "author":
-    "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": "git@github.com:christophehurpeau/pob.git",
   "homepage": "https://github.com/christophehurpeau/pob",
-  "workspaces": ["packages/*"],
+  "workspaces": [
+    "packages/*"
+  ],
   "scripts": {
     "build": "lerna run --parallel --ignore \"*-example\" build",
     "commitmsg": "commitlint -e $GIT_PARAMS",
-    "generate:docs":
-      "lerna run --parallel --ignore \"*-example\" generate:docs",
+    "generate:docs": "lerna run --parallel --ignore \"*-example\" generate:docs",
     "lint": "lerna run --stream lint",
     "postcheckout": "yarnhook",
     "postmerge": "yarnhook",
@@ -26,19 +26,30 @@
     "watch": "lerna run --parallel --ignore \"*-example\" watch"
   },
   "lint-staged": {
-    "{package.json,.eslintrc.json}": ["prettier --write", "git add"],
-    "lib/**/*.json": ["prettier --write", "git add"],
-    "lib/**/*.js": ["eslint --fix --quiet", "git add"]
+    "{package.json,.eslintrc.json}": [
+      "prettier --write",
+      "git add"
+    ],
+    "lib/**/*.json": [
+      "prettier --write",
+      "git add"
+    ],
+    "lib/**/*.js": [
+      "eslint --fix --quiet",
+      "git add"
+    ]
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "devDependencies": {
-    "@commitlint/cli": "^6.2.0",
-    "@commitlint/config-conventional": "^6.1.3",
+    "@commitlint/cli": "^7.0.0",
+    "@commitlint/config-conventional": "^7.0.1",
     "husky": "^0.14.3",
     "lerna": "3.0.0-beta.17",
-    "lint-staged": "^7.0.0",
+    "lint-staged": "^7.2.0",
     "pob-release": "^3.1.0",
     "yarnhook": "^0.2.0"
   }

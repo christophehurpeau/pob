@@ -14,13 +14,13 @@ module.exports = class LernaGenerator extends Generator {
   default() {
     // lerna.json
     const lernaConfig = {
-      lerna: '3.0.0-beta.18',
+      lerna: '3.0.0-beta.21',
       npmClient: 'yarn',
       useWorkspaces: true,
       version: 'independent',
-      commands: {
+      command: {
         publish: {
-          ignore: [
+          ignoreChanges: [
             '*-example',
           ],
         },
@@ -38,7 +38,7 @@ module.exports = class LernaGenerator extends Generator {
     packageUtils.removeDependency(pkg, 'lerna');
 
     packageUtils.addDevDependencies(pkg, {
-      lerna: '3.0.0-beta.18',
+      lerna: '3.0.0-beta.21',
       'pob-release': '^4.1.1', // only for pob-repository-check-clean
     });
 
@@ -51,7 +51,12 @@ module.exports = class LernaGenerator extends Generator {
       build: 'lerna run --ignore "*-example" build',
       watch: 'lerna run --parallel --ignore "*-example" watch',
       'generate:docs': 'lerna run --parallel --ignore "*-example" generate:docs',
-      preversion: ['yarn run lint', withBabel && 'yarn run build', withDocumentation && 'yarn run generate:docs', 'pob-repository-check-clean']
+      preversion: [
+        'yarn run lint',
+        withBabel && 'yarn run build',
+        withDocumentation && 'yarn run generate:docs',
+        // 'pob-repository-check-clean'
+      ]
         .filter(Boolean)
         .join(' && '),
       release: "lerna publish --conventional-commits -m 'chore: release'",

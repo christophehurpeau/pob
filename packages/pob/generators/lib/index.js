@@ -301,15 +301,16 @@ module.exports = class PobLibGenerator extends Generator {
       updateOnly: this.options.updateOnly,
     });
 
-    if (withBabel) {
-      this.composeWith(require.resolve('./babel'), {
-        testing: !!this.pobjson.testing,
-        documentation: !!this.pobjson.documentation,
-        babelEnvs: JSON.stringify(this.babelEnvs),
-        entries: JSON.stringify(this.pobjson.entries),
-        fromPob: this.options.fromPob,
-      });
-    } else {
+
+    this.composeWith(require.resolve('./babel'), {
+      testing: !!this.pobjson.testing,
+      documentation: !!this.pobjson.documentation,
+      babelEnvs: JSON.stringify(this.babelEnvs),
+      entries: JSON.stringify(this.pobjson.entries),
+      fromPob: this.options.fromPob,
+    });
+
+    if (!withBabel) {
       mkdirp('lib');
     }
 
@@ -424,10 +425,6 @@ module.exports = class PobLibGenerator extends Generator {
     }
 
     if (!withBabel) {
-      pkg.main = './lib/index.js';
-      if (!pkg.engines) pkg.engines = {};
-      pkg.engines.node = '>=6.5.0';
-
       if (!this.fs.exists(this.destinationPath('lib/index.js'))
           && this.fs.exists(this.destinationPath('index.js'))) {
         this.fs.move(

@@ -22,17 +22,17 @@ module.exports = class LintGenerator extends Generator {
     packageUtils.removeDevDependencies(pkg, ['eslint-config-airbnb-base', 'eslint-config-prettier', 'eslint-plugin-flowtype']);
     packageUtils.addDevDependencies(pkg, {
       eslint: '^4.19.1',
-      'eslint-config-pob': '^19.1.0',
+      'eslint-config-pob': '^20.0.0',
       'eslint-plugin-prettier': '^2.6.0',
-      'eslint-plugin-import': '^2.11.0',
-      prettier: '^1.12.1',
+      'eslint-plugin-import': '^2.12.0',
+      prettier: '^1.13.5',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel, {
       'babel-eslint': '^8.2.3', // required...
-      'typescript-eslint-parser': '^15.0.0',
-      'eslint-plugin-babel': '^4.1.2',
-      'eslint-plugin-typescript': '^0.11.0',
+      'typescript-eslint-parser': '^16.0.0',
+      'eslint-plugin-babel': '^5.1.0',
+      'eslint-plugin-typescript': '^0.12.0',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, !useBabel, {
@@ -108,7 +108,7 @@ module.exports = class LintGenerator extends Generator {
         eslintConfig.plugins = ['typescript'];
       } else {
         if (eslintConfig.parser === 'typescript-eslint-parser') delete eslintConfig.parser;
-        if (eslintConfig.plugins && eslintConfig.plugins[0] === 'typescript-eslint-parser') eslintConfig.plugins.splice(0, 1);
+        if (eslintConfig.plugins && eslintConfig.plugins[0] === 'typescript') eslintConfig.plugins.splice(0, 1);
         if (eslintConfig.plugins && eslintConfig.plugins.length === 0) delete eslintConfig.plugins;
       }
 

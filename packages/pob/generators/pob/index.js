@@ -1,4 +1,6 @@
+const fs = require('fs');
 const Generator = require('yeoman-generator');
+const prettier = require('prettier');
 const packageUtils = require('../../utils/package');
 const inLerna = require('../../utils/inLerna');
 
@@ -40,6 +42,17 @@ module.exports = class PobBaseGenerator extends Generator {
   }
 
   initializing() {
+    // prettier package.json to ensure diff is correct
+    try {
+      const pkgJson = fs.readFileSync(this.destinationPath('package.json'), 'utf-8');
+      const formattedPkg = prettier.format(pkgJson, { parser: 'json', printWidth: 100 });
+      if (pkgJson !== formattedPkg) {
+        console.warn('prettier package.json');
+        fs.writeFileSync(this.destinationPath('package.json'), formattedPkg);
+      }
+    } catch (e) {
+    }
+
     if (this.options.type === 'lerna') {
       this.useLerna = true;
       this.inLerna = false;

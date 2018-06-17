@@ -28,11 +28,10 @@ module.exports = class TypescriptGenerator extends Generator {
     }
 
     packageUtils.addOrRemoveDevDependencies(pkg, this.options.enable, {
-      typescript: '^2.8.3',
+      typescript: '^2.9.2',
     });
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-
 
     const tsconfigPath = this.destinationPath('tsconfig.json');
     const tsconfigBuildPath = this.destinationPath('tsconfig.build.json');

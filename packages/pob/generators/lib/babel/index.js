@@ -1,6 +1,7 @@
 const Generator = require('yeoman-generator');
 const mkdirp = require('mkdirp');
 const packageUtils = require('../../../utils/package');
+const inLerna = require('../../../utils/inLerna');
 
 module.exports = class BabelGenerator extends Generator {
   constructor(args, opts) {
@@ -58,68 +59,61 @@ module.exports = class BabelGenerator extends Generator {
   }
 
   default() {
+    const useBabel = this.babelEnvs && this.babelEnvs.length;
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    const hasTargetNode = this.babelEnvs.find(env => env.target === 'node');
 
-    if (!pkg.main || pkg.main.startsWith('./lib/')) pkg.main = './index.js';
-    pkg.typings = './dist/index.d.ts';
+    /* scripts */
 
-    if (!this.babelEnvs.find(env => env.target === 'browser' && env.version === undefined && env.formats.includes('cjs'))) {
-      delete pkg.browser;
-      delete pkg['browser-dev'];
-    } else {
-      pkg.browser = './dist/index-browser.cjs.js';
-      pkg['browser-dev'] = './dist/index-browser-dev.cjs.js';
+    packageUtils.addOrRemoveScripts(pkg, useBabel || inLerna, {
+      build: !useBabel ? 'echo "No build script."' : 'pob-build && tsc -p tsconfig.build.json --declarationMap --emitDeclarationOnly',
+      watch: !useBabel ? 'echo "No watch script."' : 'pob-watch',
+    });
+
+    if (pkg.scripts) {
+      delete pkg.scripts['build:dev'];
+      delete pkg.scripts['watch:dev'];
     }
 
-    if (pkg['webpack:main-modern-browsers']) {
-      pkg['module:modern-browsers'] = pkg['webpack:main-modern-browsers'].replace(
-        'webpack',
-        'module',
-      );
-    }
-    if (pkg['webpack:main-modern-browsers-dev']) {
-      pkg['module:modern-browsers-dev'] = pkg['webpack:main-modern-browsers-dev'].replace(
-        'webpack',
-        'module',
-      );
-    }
-    delete pkg['webpack:main-modern-browsers'];
-    delete pkg['webpack:main-modern-browsers-dev'];
-    delete pkg['webpack:browser'];
-    delete pkg['webpack:browser-dev'];
-    delete pkg['webpack:main'];
-    delete pkg['webpack:main-dev'];
-    delete pkg['webpack:node'];
-    delete pkg['webpack:node-dev'];
+    /* dependencies */
 
-    if (!this.babelEnvs.find(env => env.target === 'browser' && env.version === 'modern' && env.formats.includes('es'))) {
-      delete pkg['module:modern-browsers'];
-      delete pkg['module:modern-browsers-dev'];
-    } else { // if (!pkg['module:modern-browsers']) {
-      pkg['module:modern-browsers'] = './dist/index-browsermodern.es.js';
-      pkg['module:modern-browsers-dev'] = './dist/index-browsermodern-dev.es.js';
-    }
+    packageUtils.addOrRemoveDevDependencies(pkg, useBabel, {
+      '@babel/core': '^7.0.0-beta.51',
+      'babel-core': '7.0.0-bridge.0',
+      'pob-babel': '^22.2.4',
+    });
 
-    if (!this.babelEnvs.find(env => env.target === 'browser' && env.version === undefined && env.formats.includes('es'))) {
-      delete pkg.module;
-      delete pkg['module-dev'];
-      delete pkg['module:browser'];
-      delete pkg['module:browser-dev'];
-    } else { //  if (!pkg.module) {
-      pkg.module = pkg['module:browser'] = './dist/index-browser.es.js';
-      pkg['module-dev'] = pkg['module:browser-dev'] = './dist/index-browser-dev.es.js';
-    }
+    packageUtils.addOrRemoveDevDependencies(pkg, useBabel && packageUtils.hasReact(pkg), {
+      '@babel/preset-react': '^7.0.0-beta.51',
+    });
 
-    const esNodeEnv = this.babelEnvs.find(env => env.target === 'node' && env.formats.includes('es'));
-    if (!esNodeEnv) {
-      delete pkg['module:node'];
-      delete pkg['module:node-dev'];
-    } else {
-      pkg['module:node'] = `./dist/index-${esNodeEnv.target}${esNodeEnv.version}.es.js`;
-      pkg['module:node-dev'] = './dist/index-node8-dev.es.js';
-    }
+    packageUtils.removeDevDependencies(pkg, [
+      'babel-preset-env', // now @babel/preset-env
+      'babel-preset-jsdoc',
+      'babel-plugin-add-jsdoc-annotations',
+    ]);
 
-    if (this.babelEnvs.find(env => env.target === 'node')) {
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      this.babelEnvs.find(env => env.target === 'browser' && env.version === undefined),
+      { '@babel/preset-env': '^7.0.0-beta.51' },
+    );
+
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      this.babelEnvs.find(env => (env.target === 'node')),
+      { 'babel-preset-latest-node': '^2.0.0-beta.3' },
+    );
+
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      this.babelEnvs.find(env => (env.target === 'browser' && env.version === 'modern')),
+      { 'babel-preset-modern-browsers': '^12.0.0-beta.1' },
+    );
+
+    /* engines */
+
+    if (hasTargetNode) {
       if (!pkg.engines) pkg.engines = {};
       const minNodeVersion = this.babelEnvs.filter(env => env.target === 'node').reduce((min, env) => Math.min(min, env.version), Number.MAX_SAFE_INTEGER);
       switch (String(minNodeVersion)) {
@@ -144,94 +138,115 @@ module.exports = class BabelGenerator extends Generator {
     } else {
       packageUtils.removeDependencies(pkg, ['@types/node']);
       packageUtils.removeDevDependencies(pkg, ['@types/node']);
+      if (pkg.engines && useBabel) {
+        delete pkg.engines.node;
+        if (!Object.keys(pkg.engines).length) delete pkg.engines;
+      }
     }
 
-    packageUtils.addScripts(pkg, {
-      // TODO add --declarationMap when https://github.com/Microsoft/TypeScript/commit/6af764c5606270fe34117b2051ba819581b3e199 is release
-      build: 'pob-build && tsc -p tsconfig.build.json --emitDeclarationOnly',
-      watch: 'pob-watch',
-    });
+    /* main / aliases / typing */
 
-    delete pkg.scripts['build:dev'];
-    delete pkg.scripts['watch:dev'];
+    // if (!pkg.main || pkg.main.startsWith('./lib/')) {
+    if (useBabel) {
+      pkg.main = !this.babelEnvs.find(env => env.target === 'node') ? './dist/index-browser.cjs.js' : './index.js';
+      pkg.typings = './dist/index.d.ts';
+    } else {
+      pkg.main = './lib/index.js';
+      pkg.typings = './lib/index.d.ts';
+      if (!pkg.engines) pkg.engines = {};
+      pkg.engines.node = '>=6.5.0';
+    }
 
-    packageUtils.addDevDependencies(pkg, {
-      '@babel/core': '^7.0.0-beta.46',
-      'babel-core': '7.0.0-bridge.0',
-      'pob-babel': '^22.2.4',
-    });
+    if (!this.babelEnvs.find(env => env.target === 'browser' && env.version === undefined && env.formats.includes('cjs'))) {
+      delete pkg.browser;
+      delete pkg['browser-dev'];
+    } else if (useBabel) {
+      pkg.browser = './dist/index-browser.cjs.js';
+      pkg['browser-dev'] = './dist/index-browser-dev.cjs.js';
+    }
 
-    packageUtils.addOrRemoveDevDependencies(pkg, packageUtils.hasReact(pkg), {
-      '@babel/preset-react': '^7.0.0-beta.46',
-    });
+    if (useBabel && pkg['webpack:main-modern-browsers']) {
+      pkg['module:modern-browsers'] = pkg['webpack:main-modern-browsers'].replace(
+        'webpack',
+        'module',
+      );
+    }
+    if (useBabel && pkg['webpack:main-modern-browsers-dev']) {
+      pkg['module:modern-browsers-dev'] = pkg['webpack:main-modern-browsers-dev'].replace(
+        'webpack',
+        'module',
+      );
+    }
 
-    packageUtils.removeDevDependencies(pkg, [
-      'babel-preset-env', // now @babel/preset-env
-      'babel-preset-jsdoc',
-      'babel-plugin-add-jsdoc-annotations',
-    ]);
+    const esNodeEnv = this.babelEnvs.find(env => env.target === 'node' && env.formats.includes('es'));
+    const esAllBrowserEnv = this.babelEnvs.find(env => env.target === 'browser' && env.version === undefined && env.formats.includes('es'));
+    const esModernBrowserEnv = this.babelEnvs.find(env => env.target === 'browser' && env.version === 'modern' && env.formats.includes('es'));
 
-    packageUtils.addOrRemoveDevDependencies(
-      pkg,
-      this.babelEnvs.find(env => env.target === 'browser' && env.version === undefined),
-      { '@babel/preset-env': '^7.0.0-beta.46' },
-    );
+    if (esModernBrowserEnv) {
+      pkg['module:modern-browsers'] = './dist/index-browsermodern.es.js';
+      pkg['module:modern-browsers-dev'] = './dist/index-browsermodern-dev.es.js';
+    }
 
-    packageUtils.addOrRemoveDevDependencies(
-      pkg,
-      this.babelEnvs.find(env => (env.target === 'node')),
-      { 'babel-preset-latest-node': '^2.0.0-beta.3' },
-    );
+    if (!esAllBrowserEnv) {
+      delete pkg.module;
+      delete pkg['module-dev'];
+      // pkg['module:browser'] and pkg['module:browser-dev'] are deleted below
+    } else { //  if (!pkg.module) {
+      pkg.module = pkg['module:browser'] = './dist/index-browser.es.js';
+      pkg['module-dev'] = pkg['module:browser-dev'] = './dist/index-browser-dev.es.js';
+    }
 
-    packageUtils.addOrRemoveDevDependencies(
-      pkg,
-      this.babelEnvs.find(env => (env.target === 'browser' && env.version === 'modern')),
-      { 'babel-preset-modern-browsers': '^12.0.0-beta.1' },
-    );
+    if (esNodeEnv) {
+      pkg['module:node'] = `./dist/index-${esNodeEnv.target}${esNodeEnv.version}.es.js`;
+      pkg['module:node-dev'] = './dist/index-node8-dev.es.js';
+    }
 
-    ['', '-modern-browsers', '-node'].forEach((middle) => {
-      ['', '-dev'].forEach((suffix) => {
-        const key = `aliases${middle}${suffix}`;
-        const value = pkg[`webpack:${key}`];
-        if (value) {
-          const replaced =
+    if (useBabel) {
+      ['', '-modern-browsers', '-node'].forEach((middle) => {
+        ['', '-dev'].forEach((suffix) => {
+          const key = `aliases${middle}${suffix}`;
+          const value = pkg[`webpack:${key}`];
+          if (value) {
+            const replaced =
             typeof value === 'string'
               ? value.replace('webpack', 'module')
               : Object.keys(value).reduce((o, oKey) => {
                 o[oKey] = value[oKey].replace('webpack', 'module');
                 return o;
               }, {});
-          pkg[`module:aliases${middle === '' ? '-browser' : middle}${suffix}`] = replaced;
-          delete pkg[`webpack:${key}`];
-        }
-      });
-    });
-
-    const browserEsEnvs = this.babelEnvs.filter(env => (env.target === 'browser' && env.formats.includes('es')));
-    if (this.entries.length && (esNodeEnv || browserEsEnvs.length)) {
-      const aliases = this.entries.filter(entry => entry !== 'index' && (!this.entries.includes('index') || entry !== 'browser'));
-      if (aliases.length) {
-        [esNodeEnv, ...browserEsEnvs].forEach((env) => {
-          const key = env.target === 'node' ? 'node' : (env.version === 'modern' ? 'modern-browsers' : 'browser');
-          pkg[`module:aliases-${key}`] = {};
-          pkg[`module:aliases-${key}-dev`] = {};
-          aliases.forEach((aliasName) => {
-            pkg[`module:aliases-${key}`][`./${aliasName}.js`] = `./dist/${aliasName}-${env.target}${env.version || ''}.es.js`;
-            pkg[`module:aliases-${key}-dev`][`./${aliasName}.js`] = `./dist/${aliasName}-${env.target}${env.version || ''}-dev.es.js`;
-          });
+            pkg[`module:aliases${middle === '' ? '-browser' : middle}${suffix}`] = replaced;
+            delete pkg[`webpack:${key}`];
+          }
         });
-      } else {
-        delete pkg['module:aliases'];
-        delete pkg['module:aliases-dev'];
-        delete pkg['module:aliases-node'];
-        delete pkg['module:aliases-node-dev'];
-      }
-    } else {
-      delete pkg['module:aliases'];
-      delete pkg['module:aliases-dev'];
-      delete pkg['module:aliases-node'];
-      delete pkg['module:aliases-node-dev'];
+      });
     }
+
+    const esBrowserEnvs = this.babelEnvs.filter(env => (env.target === 'browser' && env.formats.includes('es')));
+    const aliases = this.entries.filter(entry => entry !== 'index' && (!this.entries.includes('index') || entry !== 'browser'));
+    if (useBabel && aliases.length && (esNodeEnv || esBrowserEnvs.length)) {
+      [esNodeEnv, ...esBrowserEnvs].forEach((env) => {
+        const key = env.target === 'node' ? 'node' : (env.version === 'modern' ? 'modern-browsers' : 'browser');
+        pkg[`module:aliases-${key}`] = {};
+        pkg[`module:aliases-${key}-dev`] = {};
+        aliases.forEach((aliasName) => {
+          pkg[`module:aliases-${key}`][`./${aliasName}.js`] = `./dist/${aliasName}-${env.target}${env.version || ''}.es.js`;
+          pkg[`module:aliases-${key}-dev`][`./${aliasName}.js`] = `./dist/${aliasName}-${env.target}${env.version || ''}-dev.es.js`;
+        });
+      });
+    }
+
+    Object.keys(pkg).forEach((key) => {
+      if (!key.startsWith('module:') && !key.startsWith('webpack:')) return;
+      if (key.startsWith('module:node') && esNodeEnv) return;
+      if (key.startsWith('module:browser') && esAllBrowserEnv) return;
+      if (key.startsWith('module:modern-browsers') && esModernBrowserEnv) return;
+      if (key.startsWith('module:aliases') && aliases.length) {
+        if (key.startsWith('module:aliases-node') && esNodeEnv) return;
+        if (key.startsWith('module:aliases-browser') && esAllBrowserEnv) return;
+        if (key.startsWith('module:aliases-modern-browsers') && esModernBrowserEnv) return;
+      }
+      delete pkg[key];
+    });
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
@@ -241,12 +256,12 @@ module.exports = class BabelGenerator extends Generator {
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
-    const useBabel = true;
+    const useBabel = this.babelEnvs && this.babelEnvs.length;
     const hasReact = useBabel && packageUtils.hasReact(pkg);
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
 
-    if (this.options.testing) {
+    if (useBabel && this.options.testing) {
       this.fs.copyTpl(
         this.templatePath('babelrc.json.ejs'),
         this.destinationPath('.babelrc'),
@@ -262,6 +277,8 @@ module.exports = class BabelGenerator extends Generator {
 
   end() {
     if (this.options.fromPob) return;
-    return this.spawnCommandSync('yarn', ['run', 'build']);
+    if (this.babelEnvs && this.babelEnvs.length) {
+      this.spawnCommandSync('yarn', ['run', 'build']);
+    }
   }
 };

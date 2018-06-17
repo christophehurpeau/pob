@@ -1,4 +1,5 @@
-const { existsSync, writeFileSync } = require('fs');
+const { existsSync, readFileSync, writeFileSync } = require('fs');
+const prettier = require('prettier');
 const updateNotifier = require('update-notifier');
 const yeoman = require('yeoman-environment');
 const argv = require('minimist-argv');

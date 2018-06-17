@@ -50,6 +50,7 @@ module.exports = class TestingGenerator extends Generator {
         testing: this.options.testing,
         documentation: this.options.documentation,
         circleci: this.options.circleci,
+        codecov: this.options.codecov,
         babelEnvs: this.options.babelEnvs,
       });
     } else {
@@ -77,16 +78,15 @@ module.exports = class TestingGenerator extends Generator {
         'babel-jest',
       ]);
 
+      delete pkg.jest;
       if (inLerna) {
         packageUtils.addScripts(pkg, {
           test: 'echo "No tests"',
         });
-      } else {
-        delete pkg.jest;
-        if (pkg.scripts) {
-          delete pkg.scripts.test;
-          delete pkg.scripts['generate:test-coverage'];
-        }
+        delete pkg.scripts['generate:test-coverage'];
+      } else if (pkg.scripts) {
+        delete pkg.scripts.test;
+        delete pkg.scripts['generate:test-coverage'];
       }
 
       this.fs.writeJSON(this.destinationPath('package.json'), pkg);
@@ -102,15 +102,15 @@ module.exports = class TestingGenerator extends Generator {
       });
 
       packageUtils.addDevDependencies(pkg, {
-        jest: '^22.4.3',
-        '@types/jest': '^22.2.3',
+        jest: '^23.1.0',
+        '@types/jest': '^23.1.0',
       });
 
       const hasBabel = packageUtils.transpileWithBabel(pkg);
       const hasReact = hasBabel && packageUtils.hasReact(pkg);
       const srcDirectory = hasBabel ? 'src' : 'lib';
 
-      packageUtils.addOrRemoveDevDependencies(pkg, hasBabel, { 'babel-jest': '^22.4.3' });
+      packageUtils.addOrRemoveDevDependencies(pkg, hasBabel, { 'babel-jest': '^23.0.1' });
 
       if (!pkg.jest) pkg.jest = {};
       Object.assign(pkg.jest, {

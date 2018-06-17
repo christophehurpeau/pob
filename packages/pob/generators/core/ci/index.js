@@ -103,7 +103,6 @@ module.exports = class CiGenerator extends Generator {
             documentation: this.documentation,
             codecov: this.codecov,
             node10: true,
-            node9: true,
             node8: true, // Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8')),
             node6: true, // Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '6')),
           },
