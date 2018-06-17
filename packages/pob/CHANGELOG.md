@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.5.0"></a>
+# [4.5.0](https://github.com/christophehurpeau/pob/compare/pob@4.4.0...pob@4.5.0) (2018-06-17)
+
+
+### Bug Fixes
+
+* package.json missing ([7ccf6ff](https://github.com/christophehurpeau/pob/commit/7ccf6ff))
+
+
+### Features
+
+* **pob:** update [@commitlint](https://github.com/commitlint)/cli 6.2 ([e633a86](https://github.com/christophehurpeau/pob/commit/e633a86))
+
+
+
+
+
 <a name="4.4.0"></a>
 # [4.4.0](https://github.com/christophehurpeau/pob/compare/pob@4.3.2...pob@4.4.0) (2018-04-27)
 
