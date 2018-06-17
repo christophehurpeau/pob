@@ -31,7 +31,7 @@
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-pob-env": "^2.2.3",
     "rollup": "^0.59.3",
-    "rollup-plugin-babel": "^4.0.0-beta.3",
+    "rollup-plugin-babel": "^4.0.0-beta.5",
     "rollup-plugin-node-resolve": "^3.3.0"
   },
   "devDependencies": {
@@ -44,6 +44,6 @@
   },
   "peerDependencies": {
     "@babel/core": "^7.0.0-beta.51",
-    "typescript": "^2.8.1"
+    "typescript": "^2.9.2"
   }
 }
