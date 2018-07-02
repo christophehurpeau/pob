@@ -18,13 +18,6 @@ module.exports = class LernaGenerator extends Generator {
       npmClient: 'yarn',
       useWorkspaces: true,
       version: 'independent',
-      command: {
-        publish: {
-          ignoreChanges: [
-            '*-example',
-          ],
-        },
-      },
     };
 
     this.fs.writeJSON(this.destinationPath('lerna.json'), lernaConfig);
