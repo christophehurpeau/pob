@@ -54,12 +54,20 @@ if (hasReact) {
 
 const createConfigForEnv = (entry, env, production) => {
   const devSuffix = production ? '' : '-dev';
-  const entryPath = require.resolve(
-    `./src/${
-      isIndexBrowserEntry && entry === 'index' && env.target === 'browser' ? 'browser' : entry
-    }`,
-    { paths: [cwd] }
-  );
+  try {
+    const entryPath = require.resolve(
+      `./src/${
+        isIndexBrowserEntry && entry === 'index' && env.target === 'browser' ? 'browser' : entry
+      }`,
+      { paths: [cwd] }
+    );
+  } catch (err) {
+    console.error(
+      `Could not find entry "${
+        entry === 'index' && env.target === 'browser' ? 'browser' : entry
+      }" in path "${cwd}"`
+    );
+  }
   const typescript = entryPath.endsWith('.ts') || entryPath.endsWith('.tsx');
   return {
     input: entryPath,
