@@ -23,13 +23,13 @@ module.exports = class LintGenerator extends Generator {
     packageUtils.addDevDependencies(pkg, {
       eslint: '^4.19.1',
       'eslint-config-pob': '^20.0.0',
-      'eslint-plugin-prettier': '^2.6.0',
+      'eslint-plugin-prettier': '^2.6.1',
       'eslint-plugin-import': '^2.12.0',
       prettier: '^1.13.5',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel, {
-      'babel-eslint': '^8.2.3', // required...
+      'babel-eslint': '^8.2.5', // required...
       'typescript-eslint-parser': '^16.0.0',
       'eslint-plugin-babel': '^5.1.0',
       'eslint-plugin-typescript': '^0.12.0',
