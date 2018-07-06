@@ -66,7 +66,7 @@ module.exports = class BabelGenerator extends Generator {
     /* scripts */
 
     packageUtils.addOrRemoveScripts(pkg, useBabel || inLerna, {
-      build: !useBabel ? 'echo "No build script."' : 'pob-build && tsc -p tsconfig.build.json --declarationMap --emitDeclarationOnly',
+      build: !useBabel ? 'echo "No build script."' : 'pob-build && tsc -p tsconfig.build.json',
       watch: !useBabel ? 'echo "No watch script."' : 'pob-watch',
     });
 
