@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.2.0"></a>
+# [4.2.0](https://github.com/christophehurpeau/pob-release/compare/pob-release@4.1.2...pob-release@4.2.0) (2018-07-06)
+
+
+### Features
+
+* update dependencies ([98ccd60](https://github.com/christophehurpeau/pob-release/commit/98ccd60))
+
+
+
+
+
 <a name="4.1.2"></a>
 ## [4.1.2](https://github.com/christophehurpeau/pob-release/compare/pob-release@4.1.1...pob-release@4.1.2) (2018-06-17)
 

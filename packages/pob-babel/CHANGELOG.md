@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="22.3.0"></a>
+# [22.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@22.2.6...pob-babel@22.3.0) (2018-07-06)
+
+
+### Features
+
+* **pob-babel:** add explicit error message when entry path not found ([f6ea418](https://github.com/christophehurpeau/pob/commit/f6ea418))
+* update dependencies ([98ccd60](https://github.com/christophehurpeau/pob/commit/98ccd60))
+
+
+
+
+
 <a name="22.2.6"></a>
 ## [22.2.6](https://github.com/christophehurpeau/pob/compare/pob-babel@22.2.5...pob-babel@22.2.6) (2018-06-17)
 

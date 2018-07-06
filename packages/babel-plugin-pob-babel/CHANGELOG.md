@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-pob-babel@0.2.3...babel-plugin-pob-babel@0.3.0) (2018-07-06)
+
+
+### Features
+
+* update dependencies ([98ccd60](https://github.com/christophehurpeau/pob/commit/98ccd60))
+
+
+
+
+
 <a name="0.2.3"></a>
 ## [0.2.3](https://github.com/christophehurpeau/pob/compare/babel-plugin-pob-babel@0.2.2...babel-plugin-pob-babel@0.2.3) (2018-06-17)
 
