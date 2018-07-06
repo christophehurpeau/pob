@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.6.4"></a>
+## [4.6.4](https://github.com/christophehurpeau/pob/compare/pob@4.6.3...pob@4.6.4) (2018-07-06)
+
+
+### Bug Fixes
+
+* **pob-babel:** typings path ([7653d8b](https://github.com/christophehurpeau/pob/commit/7653d8b))
+
+
+
+
+
 <a name="4.6.3"></a>
 ## [4.6.3](https://github.com/christophehurpeau/pob/compare/pob@4.6.2...pob@4.6.3) (2018-07-06)
 

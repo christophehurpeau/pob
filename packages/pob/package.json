@@ -1,6 +1,6 @@
 {
   "name": "pob",
-  "version": "4.6.3",
+  "version": "4.6.4",
   "description": "Pile of bones, library generator with git/babel/typescript/typedoc/readme/jest",
   "repository": "christophehurpeau/pob",
   "keywords": [
