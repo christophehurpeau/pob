@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.6.3"></a>
+## [4.6.3](https://github.com/christophehurpeau/pob/compare/pob@4.6.2...pob@4.6.3) (2018-07-06)
+
+
+### Bug Fixes
+
+* **pob:** isolatedModules and compile ([d1da7cb](https://github.com/christophehurpeau/pob/commit/d1da7cb))
+
+
+
+
+
 <a name="4.6.2"></a>
 ## [4.6.2](https://github.com/christophehurpeau/pob/compare/pob@4.6.1...pob@4.6.2) (2018-07-06)
 
