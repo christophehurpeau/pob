@@ -2,21 +2,32 @@
   "name": "pob-release",
   "version": "4.2.0",
   "description": "release with ease",
+  "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "license": "ISC",
-  "repository": "christophehurpeau/pob-release",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --ext .js,.jsx --fix *.js"
-  },
+  "repository": "git@github.com:christophehurpeau/pob.git",
+  "homepage": "https://github.com/christophehurpeau/pob",
   "engines": {
     "node": ">=6.5.0"
   },
+  "main": "./lib/index.js",
+  "typings": "./lib/index.d.ts",
   "bin": {
     "pob-repository-check-clean": "./repository-check-clean.sh",
-    "pob-release": "./release",
-    "pob-version": "./version",
+    "pob-release": "./lib/index.js",
+    "pob-version": "./lib/version.js",
     "standard-changelog": "./standard-changelog"
+  },
+  "scripts": {
+    "build": "echo \"No build script.\"",
+    "lint": "eslint lib/",
+    "test": "echo \"No tests\"",
+    "watch": "echo \"No watch script.\""
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "printWidth": 100
   },
   "dependencies": {
     "conventional-recommended-bump": "^0.3.0",
@@ -27,9 +38,11 @@
   },
   "devDependencies": {
     "eslint": "^5.0.1",
-    "eslint-config-airbnb-base": "^13.0.0",
     "eslint-config-pob": "^21.1.0",
     "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-unicorn": "^4.0.3"
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-unicorn": "^4.0.3",
+    "prettier": "^1.13.7"
   }
 }

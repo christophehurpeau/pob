@@ -1,16 +1,13 @@
-"use strict";
+#!/usr/bin/env node
 
-const readFileSync = require("fs").readFileSync;
-const execSync = require("child_process").execSync;
-const argv = require("minimist-argv");
-const inquirer = require("inquirer");
-const {
-  valid: validateSemver,
-  inc: incSemver,
-  gt: gtSemver,
-  prerelease
-} = require("semver");
-const conventionalRecommendedBump = require("conventional-recommended-bump");
+'use strict';
+
+const readFileSync = require('fs').readFileSync;
+const execSync = require('child_process').execSync;
+const argv = require('minimist-argv');
+const inquirer = require('inquirer');
+const { valid: validateSemver, inc: incSemver, gt: gtSemver, prerelease } = require('semver');
+const conventionalRecommendedBump = require('conventional-recommended-bump');
 
 const isSemverValid = version => validateSemver(version) !== null;
 
@@ -23,19 +20,18 @@ execSync(
 { stdio: 'inherit' });
 */
 
-const AVAILABLE_VERSIONS = ["patch", "minor", "major"];
+const AVAILABLE_VERSIONS = ['patch', 'minor', 'major'];
 
 const VERSION_NAME_TO_INDEX = {
   patch: 0,
   minor: 1,
-  major: 2
+  major: 2,
 };
 
-const packageJson = JSON.parse(readFileSync("./package.json"));
+const packageJson = JSON.parse(readFileSync('./package.json'));
 const currentVersion = packageJson.version;
 
-const isValidNextVersion = version =>
-  isSemverValid(version) && gtSemver(version, currentVersion);
+const isValidNextVersion = version => isSemverValid(version) && gtSemver(version, currentVersion);
 
 Promise.resolve(argv._[0])
   .then(version => {
@@ -50,7 +46,7 @@ Promise.resolve(argv._[0])
     }
 
     return new Promise((resolve, reject) =>
-      conventionalRecommendedBump({ preset: "angular" }, (err, result) => {
+      conventionalRecommendedBump({ preset: 'angular' }, (err, result) => {
         if (err) return reject(err);
         resolve(result.releaseType);
       })
@@ -61,39 +57,38 @@ Promise.resolve(argv._[0])
       const nextVersion = incSemver(currentVersion, version);
       return {
         name: `${version}: ${nextVersion}`,
-        value: nextVersion
+        value: nextVersion,
       };
-    }).concat("manual");
+    }).concat('manual');
 
     const defaultVersionIndex = VERSION_NAME_TO_INDEX[recommandedVersion];
-    const defaultVersion =
-      availableVersionsWithSemver[defaultVersionIndex].value;
+    const defaultVersion = availableVersionsWithSemver[defaultVersionIndex].value;
 
     return inquirer
       .prompt([
         {
-          type: "list",
-          name: "version",
-          message: "npm version:",
+          type: 'list',
+          name: 'version',
+          message: 'npm version:',
           choices: availableVersionsWithSemver,
-          default: defaultVersion
-        }
+          default: defaultVersion,
+        },
       ])
       .then(answers => {
         const version = answers.version;
 
-        if (version !== "manual") {
+        if (version !== 'manual') {
           return version;
         }
 
         return inquirer
           .prompt([
             {
-              type: "input",
-              name: "version",
-              message: "version (must follow semver):",
-              validate: isValidNextVersion
-            }
+              type: 'input',
+              name: 'version',
+              message: 'version (must follow semver):',
+              validate: isValidNextVersion,
+            },
           ])
           .then(answers => answers.version);
       });
@@ -101,19 +96,19 @@ Promise.resolve(argv._[0])
   .then(version => {
     /* VERSION */
     execSync(`npm version "${version}" -m "chore(package): v${version}"`, {
-      stdio: "inherit"
+      stdio: 'inherit',
     });
 
     /* PUSH */
-    execSync("git push", { stdio: "inherit" });
-    execSync(`git push origin "v${version}"`, { stdio: "inherit" });
+    execSync('git push', { stdio: 'inherit' });
+    execSync(`git push origin "v${version}"`, { stdio: 'inherit' });
 
     if (!packageJson.private) {
       /* RELEASE */
       if (prerelease(version)) {
-        execSync("npm publish --tag next", { stdio: "inherit" });
+        execSync('npm publish --tag next', { stdio: 'inherit' });
       } else {
-        execSync("npm publish", { stdio: "inherit" });
+        execSync('npm publish', { stdio: 'inherit' });
       }
     }
   })

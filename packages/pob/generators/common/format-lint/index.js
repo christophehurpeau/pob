@@ -13,6 +13,7 @@ module.exports = class LintGenerator extends Generator {
     const useBabel = packageUtils.transpileWithBabel(pkg);
     const hasReact = useBabel && packageUtils.hasReact(pkg);
     const babelEnvs = JSON.parse(this.options.babelEnvs);
+    const useNodeOnly = !useBabel || (babelEnvs.length === 1 && babelEnvs[0].target === 'node');
 
     pkg.prettier = {
       trailingComma: !useBabel ? 'es5' : 'all',
@@ -37,7 +38,7 @@ module.exports = class LintGenerator extends Generator {
       'eslint-plugin-typescript': '^0.12.0',
     });
 
-    packageUtils.addOrRemoveDevDependencies(pkg, !useBabel, {
+    packageUtils.addOrRemoveDevDependencies(pkg, useNodeOnly, {
       'eslint-plugin-node': '^6.0.1',
     });
 
@@ -53,7 +54,7 @@ module.exports = class LintGenerator extends Generator {
       if (useBabel) {
         return [
           'pob/babel',
-          babelEnvs.length === 1 && babelEnvs[0].target === 'node' && 'pob/node',
+          useNodeOnly && 'pob/node',
           hasReact && 'pob/react',
           'pob/typescript',
         ].filter(Boolean);

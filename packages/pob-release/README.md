@@ -1,6 +1,15 @@
-# pob-release
+<h3 align="center">
+  pob-release
+</h3>
 
-Release with ease
+<p align="center">
+  release with ease
+</p>
+
+<p align="center">
+  <a href="https://npmjs.org/package/pob-release"><img src="https://img.shields.io/npm/v/pob-release.svg?style=flat-square"></a>
+  <a href="https://david-dm.org/christophehurpeau/pob?path=packages/pob-release"><img src="https://david-dm.org/christophehurpeau/pob?path=packages/pob-release.svg?style=flat-square"></a>
+</p>
 
 ### Install
 
@@ -51,4 +60,3 @@ If you use npm script:
 ```
 npm run release -- [version]
 ```
-

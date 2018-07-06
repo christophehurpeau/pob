@@ -1,0 +1,7 @@
+{
+  "extends": ["pob", "pob/node"],
+
+  "rules": {
+    "quote-props": ["error", "consistent-as-needed"]
+  }
+}
