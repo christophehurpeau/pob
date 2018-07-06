@@ -12,6 +12,7 @@ module.exports = class LintGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     const useBabel = packageUtils.transpileWithBabel(pkg);
     const hasReact = useBabel && packageUtils.hasReact(pkg);
+    const babelEnvs = JSON.parse(this.options.babelEnvs);
 
     pkg.prettier = {
       trailingComma: !useBabel ? 'es5' : 'all',
@@ -22,10 +23,11 @@ module.exports = class LintGenerator extends Generator {
     packageUtils.removeDevDependencies(pkg, ['eslint-config-airbnb-base', 'eslint-config-prettier', 'eslint-plugin-flowtype']);
     packageUtils.addDevDependencies(pkg, {
       eslint: '^4.19.1',
-      'eslint-config-pob': '^20.0.0',
-      'eslint-plugin-prettier': '^2.6.1',
-      'eslint-plugin-import': '^2.12.0',
-      prettier: '^1.13.5',
+      'eslint-config-pob': '^21.1.0',
+      'eslint-plugin-prettier': '^2.6.2',
+      'eslint-plugin-import': '^2.13.0',
+      'eslint-plugin-unicorn': '^4.0.3',
+      prettier: '^1.13.7',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel, {
@@ -41,17 +43,22 @@ module.exports = class LintGenerator extends Generator {
 
     packageUtils.addOrRemoveDevDependencies(pkg, hasReact, {
       'eslint-config-airbnb': '^16.0.0',
-      'eslint-plugin-jsx-a11y': '^6.0.2',
-      'eslint-plugin-react': '^7.5.1',
+      'eslint-plugin-jsx-a11y': '^6.1.0',
+      'eslint-plugin-react': '^7.10.0',
     });
 
     // packageUtils.addOrRemoveDevDependencies(pkg, !hasReact, { 'eslint-config-airbnb-base': '^12.1.0' });
 
     const config = (() => {
       if (useBabel) {
-        return ['pob/babel', hasReact && 'pob/react', 'pob/typescript'].filter(Boolean);
+        return [
+          'pob/babel',
+          babelEnvs.length === 1 && babelEnvs[0].target === 'node' && 'pob/node',
+          hasReact && 'pob/react',
+          'pob/typescript',
+        ].filter(Boolean);
       }
-      return ['pob/node'];
+      return ['pob', 'pob/node'];
     })();
 
     const dir = useBabel ? 'src' : 'lib';

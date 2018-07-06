@@ -78,13 +78,13 @@ module.exports = class BabelGenerator extends Generator {
     /* dependencies */
 
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel, {
-      '@babel/core': '^7.0.0-beta.51',
+      '@babel/core': '^7.0.0-beta.52',
       'babel-core': '7.0.0-bridge.0',
-      'pob-babel': '^22.2.5',
+      'pob-babel': '^22.3.0',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel && packageUtils.hasReact(pkg), {
-      '@babel/preset-react': '^7.0.0-beta.51',
+      '@babel/preset-react': '^7.0.0-beta.52',
     });
 
     packageUtils.removeDevDependencies(pkg, [
@@ -96,7 +96,7 @@ module.exports = class BabelGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.babelEnvs.find(env => env.target === 'browser' && env.version === undefined),
-      { '@babel/preset-env': '^7.0.0-beta.51' },
+      { '@babel/preset-env': '^7.0.0-beta.52' },
     );
 
     packageUtils.addOrRemoveDevDependencies(
@@ -207,8 +207,7 @@ module.exports = class BabelGenerator extends Generator {
           const key = `aliases${middle}${suffix}`;
           const value = pkg[`webpack:${key}`];
           if (value) {
-            const replaced =
-            typeof value === 'string'
+            const replaced = typeof value === 'string'
               ? value.replace('webpack', 'module')
               : Object.keys(value).reduce((o, oKey) => {
                 o[oKey] = value[oKey].replace('webpack', 'module');

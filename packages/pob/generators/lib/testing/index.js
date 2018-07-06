@@ -102,7 +102,7 @@ module.exports = class TestingGenerator extends Generator {
       });
 
       packageUtils.addDevDependencies(pkg, {
-        jest: '^23.1.0',
+        jest: '^23.3.0',
         '@types/jest': '^23.1.0',
       });
 

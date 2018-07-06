@@ -96,9 +96,9 @@ module.exports = class PobLibGenerator extends Generator {
     ));
 
     if (
-      !this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '10') &&
-      Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8')) &&
-      Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '6'))) {
+      !this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '10')
+      && Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8'))
+      && Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '6'))) {
       this.babelEnvs.unshift({
         target: 'node',
         version: '10',
@@ -314,7 +314,9 @@ module.exports = class PobLibGenerator extends Generator {
       mkdirp('lib');
     }
 
-    this.composeWith(require.resolve('../common/format-lint'));
+    this.composeWith(require.resolve('../common/format-lint'), {
+      babelEnvs: JSON.stringify(this.babelEnvs),
+    });
 
     this.composeWith(require.resolve('./readme'), {
       documentation: !!this.pobjson.documentation,
@@ -413,7 +415,7 @@ module.exports = class PobLibGenerator extends Generator {
         delete pkg.scripts.version;
       }
     } else {
-      packageUtils.addDevDependency(pkg, 'pob-release', '^4.1.2');
+      packageUtils.addDevDependency(pkg, 'pob-release', '^4.2.0');
       packageUtils.addScripts(pkg, {
         release: 'pob-repository-check-clean && pob-release',
         preversion: ['yarn run lint', withBabel && 'yarn run build', this.pobjson.documentation && 'yarn run generate:docs', 'pob-repository-check-clean']

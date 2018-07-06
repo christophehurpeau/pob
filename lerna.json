@@ -2,12 +2,5 @@
   "lerna": "3.0.0-beta.17",
   "npmClient": "yarn",
   "useWorkspaces": true,
-  "version": "independent",
-  "commands": {
-    "publish": {
-      "ignore": [
-        "*-example"
-      ]
-    }
-  }
+  "version": "independent"
 }

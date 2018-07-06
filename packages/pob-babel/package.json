@@ -27,23 +27,23 @@
     "printWidth": 100
   },
   "dependencies": {
-    "@babel/preset-flow": "^7.0.0-beta.51",
+    "@babel/preset-flow": "^7.0.0-beta.52",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-pob-env": "^2.2.3",
-    "rollup": "^0.59.3",
+    "rollup": "^0.62.0",
     "rollup-plugin-babel": "^4.0.0-beta.5",
     "rollup-plugin-node-resolve": "^3.3.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.51",
-    "eslint": "^4.19.1",
-    "eslint-config-pob": "^19.1.0",
+    "@babel/core": "^7.0.0-beta.52",
+    "eslint": "^5.0.1",
+    "eslint-config-pob": "^21.1.0",
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-prettier": "^2.6.1",
-    "prettier": "^1.13.5"
+    "prettier": "^1.13.7"
   },
   "peerDependencies": {
-    "@babel/core": "^7.0.0-beta.51",
+    "@babel/core": "^7.0.0-beta.52",
     "typescript": "^2.9.2"
   }
 }
