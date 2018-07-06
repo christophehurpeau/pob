@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="22.3.1"></a>
+## [22.3.1](https://github.com/christophehurpeau/pob/compare/pob-babel@22.3.0...pob-babel@22.3.1) (2018-07-06)
+
+
+### Bug Fixes
+
+* **pob-babel:** entryPath undefined ([881a856](https://github.com/christophehurpeau/pob/commit/881a856))
+
+
+
+
+
 <a name="22.3.0"></a>
 # [22.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@22.2.6...pob-babel@22.3.0) (2018-07-06)
 

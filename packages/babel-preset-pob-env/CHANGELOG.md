@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.3.1"></a>
+## [2.3.1](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.3.0...babel-preset-pob-env@2.3.1) (2018-07-06)
+
+**Note:** Version bump only for package babel-preset-pob-env
+
+
+
+
+
 <a name="2.3.0"></a>
 # [2.3.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.2.3...babel-preset-pob-env@2.3.0) (2018-07-06)
 
