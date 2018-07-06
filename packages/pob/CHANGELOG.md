@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.6.2"></a>
+## [4.6.2](https://github.com/christophehurpeau/pob/compare/pob@4.6.1...pob@4.6.2) (2018-07-06)
+
+
+### Bug Fixes
+
+* **pob:** enable "isolatedModules": true to ensure babel compatibility ([9d909d6](https://github.com/christophehurpeau/pob/commit/9d909d6))
+
+
+
+
+
 <a name="4.6.1"></a>
 ## [4.6.1](https://github.com/christophehurpeau/pob/compare/pob@4.6.0...pob@4.6.1) (2018-07-06)
 
