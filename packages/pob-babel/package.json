@@ -11,15 +11,17 @@
     "node": ">=6.5.0"
   },
   "main": "./lib/index.js",
-  "typings": "./types/index.d.ts",
+  "typings": "./lib/index.d.ts",
   "bin": {
     "pob-build": "./pob-build",
     "pob-watch": "./pob-watch"
   },
   "scripts": {
+    "build": "echo \"No build script.\"",
     "clean": "rm -Rf docs dist",
     "lint": "eslint lib/",
-    "test": "echo \"No tests\""
+    "test": "echo \"No tests\"",
+    "watch": "echo \"No watch script.\""
   },
   "prettier": {
     "trailingComma": "es5",
@@ -34,16 +36,17 @@
     "rollup-plugin-babel": "^4.0.0-beta.5",
     "rollup-plugin-node-resolve": "^3.3.0"
   },
-  "devDependencies": {
-    "@babel/core": "^7.0.0-beta.52",
-    "eslint": "^5.0.1",
-    "eslint-config-pob": "^21.1.0",
-    "eslint-plugin-node": "^6.0.1",
-    "eslint-plugin-prettier": "^2.6.1",
-    "prettier": "^1.13.7"
-  },
   "peerDependencies": {
     "@babel/core": "^7.0.0-beta.52",
     "typescript": "^2.9.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.0.1",
+    "eslint-config-pob": "^21.1.0",
+    "eslint-plugin-import": "^2.13.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-prettier": "^2.6.2",
+    "eslint-plugin-unicorn": "^4.0.3",
+    "prettier": "^1.13.7"
   }
 }

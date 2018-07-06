@@ -41,6 +41,7 @@ const externalModules = nodeBuiltinModules
   .concat(Object.keys(pkg.peerDependencies || {}));
 
 // allow to resolve .ts entry files
+/* eslint-disable node/no-deprecated-api */
 if (!require.extensions['.ts']) {
   require.extensions['.ts'] = require.extensions['.js'];
 }
@@ -51,18 +52,20 @@ if (hasReact) {
     require.extensions['.tsx'] = require.extensions['.js'];
   }
 }
+/* eslint-enable node/no-deprecated-api */
 
 const createConfigForEnv = (entry, env, production) => {
   const devSuffix = production ? '' : '-dev';
+  let entryPath;
   try {
-    const entryPath = require.resolve(
+    entryPath = require.resolve(
       `./src/${
         isIndexBrowserEntry && entry === 'index' && env.target === 'browser' ? 'browser' : entry
       }`,
       { paths: [cwd] }
     );
   } catch (err) {
-    console.error(
+    throw new Error(
       `Could not find entry "${
         entry === 'index' && env.target === 'browser' ? 'browser' : entry
       }" in path "${cwd}"`

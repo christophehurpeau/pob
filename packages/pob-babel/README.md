@@ -3,7 +3,7 @@
 </h3>
 
 <p align="center">
-  Build and watch with babel
+  Build and watch with babel and typescript
 </p>
 
 <p align="center">

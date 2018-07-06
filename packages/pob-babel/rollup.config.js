@@ -1,1 +1,3 @@
-module.exports = require('./createRollupConfig')();
+'use strict';
+
+module.exports = require('./lib/createRollupConfig')();
