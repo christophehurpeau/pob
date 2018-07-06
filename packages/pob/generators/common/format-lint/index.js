@@ -38,7 +38,7 @@ module.exports = class LintGenerator extends Generator {
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, !useBabel, {
-      'eslint-plugin-node': '^6.0.0',
+      'eslint-plugin-node': '^6.0.1',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, hasReact, {

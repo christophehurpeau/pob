@@ -24,7 +24,7 @@
     "eslint": "^5.0.1",
     "eslint-config-pob": "^21.1.0",
     "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-node": "^6.0.0",
+    "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-prettier": "^2.6.1",
     "pob-release": "^4.2.0",
     "prettier": "^1.13.7"
