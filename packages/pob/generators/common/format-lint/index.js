@@ -18,7 +18,8 @@ module.exports = class LintGenerator extends Generator {
     pkg.prettier = {
       trailingComma: !useBabel ? 'es5' : 'all',
       singleQuote: true,
-      printWidth: 100,
+      // https://github.com/airbnb/javascript/pull/1863
+      arrowParens: 'always',
     };
 
     packageUtils.removeDevDependencies(pkg, ['eslint-config-airbnb-base', 'eslint-config-prettier', 'eslint-plugin-flowtype']);
