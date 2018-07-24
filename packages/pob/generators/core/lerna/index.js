@@ -39,9 +39,10 @@ module.exports = class LernaGenerator extends Generator {
     const withDocumentation = true;
 
     packageUtils.addScripts(pkg, {
+      'typescript-check': 'lerna run --stream typescript-check',
       lint: 'lerna run --stream lint',
       test: 'lerna run --stream test',
-      build: 'lerna run --ignore "*-example" build',
+      build: 'lerna run build',
       watch: 'lerna run --parallel --ignore "*-example" watch',
       'generate:docs': 'lerna run --parallel --ignore "*-example" generate:docs',
       preversion: [

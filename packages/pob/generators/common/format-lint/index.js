@@ -143,9 +143,12 @@ module.exports = class LintGenerator extends Generator {
     packageUtils.addScript(
       pkg,
       'lint',
-      `${useBabel ? 'tsc --noEmit && ' : ''}eslint${!useBabel ? '' : ` --ext .ts${hasReact ? ',.tsx' : ''} `} ${srcDirectory}/`,
+      `${useBabel ? 'npm run typescript-check && ' : ''}eslint${!useBabel ? '' : ` --ext .ts${hasReact ? ',.tsx' : ''} `} ${srcDirectory}/`,
     );
 
+    packageUtils.addOrRemoveScripts(pkg, useBabel, {
+      'typescript-check': 'tsc --noEmit',
+    });
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
