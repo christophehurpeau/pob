@@ -25,7 +25,7 @@ module.exports = class LintGenerator extends Generator {
     packageUtils.removeDevDependencies(pkg, ['eslint-config-airbnb-base', 'eslint-config-prettier', 'eslint-plugin-flowtype']);
     packageUtils.addDevDependencies(pkg, {
       eslint: '^4.19.1',
-      'eslint-config-pob': '^21.1.0',
+      'eslint-config-pob': '^21.1.1',
       'eslint-plugin-prettier': '^2.6.2',
       'eslint-plugin-import': '^2.13.0',
       'eslint-plugin-unicorn': '^4.0.3',
