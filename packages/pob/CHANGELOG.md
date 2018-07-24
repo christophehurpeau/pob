@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.7.0"></a>
+# [4.7.0](https://github.com/christophehurpeau/pob/compare/pob@4.6.4...pob@4.7.0) (2018-07-24)
+
+
+### Bug Fixes
+
+* **pob:** eslint-config-pob@^21.1.1 ([ea5e433](https://github.com/christophehurpeau/pob/commit/ea5e433))
+
+
+### Features
+
+* **pob:** add typescript-check script and remove ignore examples in build ([01bc8f8](https://github.com/christophehurpeau/pob/commit/01bc8f8))
+* **pob:** prettier 80 width and always arrow parens ([a592745](https://github.com/christophehurpeau/pob/commit/a592745))
+* update babel 7 ([77518d7](https://github.com/christophehurpeau/pob/commit/77518d7))
+* **pob:** update dependencies ([c3ba0ee](https://github.com/christophehurpeau/pob/commit/c3ba0ee))
+
+
+
+
+
 <a name="4.6.4"></a>
 ## [4.6.4](https://github.com/christophehurpeau/pob/compare/pob@4.6.3...pob@4.6.4) (2018-07-06)
 

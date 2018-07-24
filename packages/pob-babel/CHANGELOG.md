@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="22.4.0"></a>
+# [22.4.0](https://github.com/christophehurpeau/pob/compare/pob-babel@22.3.2...pob-babel@22.4.0) (2018-07-24)
+
+
+### Features
+
+* update babel 7 ([77518d7](https://github.com/christophehurpeau/pob/commit/77518d7))
+
+
+
+
+
 <a name="22.3.2"></a>
 ## [22.3.2](https://github.com/christophehurpeau/pob/compare/pob-babel@22.3.1...pob-babel@22.3.2) (2018-07-06)
 
