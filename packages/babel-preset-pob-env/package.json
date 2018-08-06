@@ -24,10 +24,10 @@
     "printWidth": 100
   },
   "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.54",
-    "@babel/plugin-proposal-export-default-from": "^7.0.0-beta.54",
-    "@babel/plugin-proposal-export-namespace-from": "^7.0.0-beta.54",
-    "@babel/preset-typescript": "^7.0.0-beta.54",
+    "@babel/plugin-proposal-class-properties": "^7.0.0-beta.55",
+    "@babel/plugin-proposal-export-default-from": "^7.0.0-beta.55",
+    "@babel/plugin-proposal-export-namespace-from": "^7.0.0-beta.55",
+    "@babel/preset-typescript": "^7.0.0-beta.55",
     "babel-plugin-discard-module-references": "^1.1.2",
     "babel-plugin-import-export-rename": "^1.0.1",
     "babel-plugin-minify-replace": "^0.4.3",
@@ -36,11 +36,11 @@
     "babel-preset-optimizations": "^1.5.4"
   },
   "peerDependencies": {
-    "@babel/core": "^7.0.0-beta.54"
+    "@babel/core": "^7.0.0-beta.55"
   },
   "devDependencies": {
-    "@babel/core": "^7.0.0-beta.54",
-    "@babel/preset-env": "^7.0.0-beta.54",
+    "@babel/core": "^7.0.0-beta.55",
+    "@babel/preset-env": "^7.0.0-beta.55",
     "babel-preset-latest-node": "^2.0.0-beta.3",
     "babel-preset-modern-browsers": "^12.0.0-beta.1",
     "eslint": "^5.0.1",

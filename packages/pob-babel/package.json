@@ -29,7 +29,7 @@
     "printWidth": 100
   },
   "dependencies": {
-    "@babel/preset-flow": "^7.0.0-beta.54",
+    "@babel/preset-flow": "^7.0.0-beta.55",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-pob-env": "^2.4.0",
     "rollup": "^0.62.0",
@@ -37,7 +37,7 @@
     "rollup-plugin-node-resolve": "^3.3.0"
   },
   "peerDependencies": {
-    "@babel/core": "^7.0.0-beta.54",
+    "@babel/core": "^7.0.0-beta.55",
     "typescript": "^2.9.2"
   },
   "devDependencies": {
