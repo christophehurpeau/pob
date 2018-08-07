@@ -16,6 +16,7 @@
     "postcheckout": "yarnhook",
     "postmerge": "yarnhook",
     "postrewrite": "yarnhook",
+    "preinstall": "npm install packages/pob-release",
     "postinstall": "lerna link",
     "precommit": "lint-staged",
     "preversion": "yarn run lint && yarn run build && yarn run generate:docs",
