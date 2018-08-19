@@ -8,6 +8,12 @@ module.exports = class PobBaseGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
+    this.option('lerna', {
+      type: Boolean,
+      required: false,
+      desc: 'Lerna monorepo',
+    });
+
     this.option('type', {
       type: String,
       required: true,
@@ -53,7 +59,7 @@ module.exports = class PobBaseGenerator extends Generator {
     } catch (e) {
     }
 
-    if (this.options.type === 'lerna') {
+    if (this.options.lerna) {
       this.useLerna = true;
       this.inLerna = false;
     } else {
@@ -94,19 +100,22 @@ module.exports = class PobBaseGenerator extends Generator {
       this.composeWith(require.resolve('../core/git'));
     }
 
-    switch (this.options.type) {
-      case 'lib':
-        this.composeWith(require.resolve('../lib/'), {
-          updateOnly: this.options.updateOnly,
-          fromPob: this.options.fromPob,
-        });
-        break;
-      case 'lerna':
-        // TODO create lerna generator
-        this.composeWith(require.resolve('../core/ci'), {
-          updateOnly: this.options.updateOnly,
-        });
-        break;
+    if (this.options.lerna) {
+      // TODO create lerna generator
+      this.composeWith(require.resolve('../core/ci'), {
+        updateOnly: this.options.updateOnly,
+      });
+    } else {
+      switch (this.options.type) {
+        case 'lib':
+          this.composeWith(require.resolve('../lib/'), {
+            updateOnly: this.options.updateOnly,
+            fromPob: this.options.fromPob,
+          });
+          break;
+        default:
+          throw new Error(`Invalid type: ${this.options.type}`);
+      }
     }
   }
 

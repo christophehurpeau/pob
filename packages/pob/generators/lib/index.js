@@ -3,6 +3,7 @@ const execSync = require('child_process').execSync;
 const mkdirp = require('mkdirp');
 const packageUtils = require('../../utils/package');
 const inLerna = require('../../utils/inLerna');
+const inNpmLerna = require('../../utils/inNpmLerna');
 
 module.exports = class PobLibGenerator extends Generator {
   constructor(args, opts) {
@@ -344,6 +345,11 @@ module.exports = class PobLibGenerator extends Generator {
   writing() {
     // Re-read the content at this point because a composed generator might modify it.
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+
+    if (inNpmLerna) {
+      if (!pkg.engines) pkg.engines = {};
+      pkg.engines.yarn = '< 0.0.0';
+    }
 
     if (inLerna) {
       // see git-hooks

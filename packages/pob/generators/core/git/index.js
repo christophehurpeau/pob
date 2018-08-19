@@ -22,8 +22,6 @@ module.exports = class GitGenerator extends Generator {
       this.destinationPath('.gitignore'),
     );
 
-    this.fs.copy(this.templatePath('npmignore'), this.destinationPath('.npmignore'));
-
     this.fs.delete(this.destinationPath('.commitrc.js'));
 
     let originUrl = await remoteUrl(this.destinationPath(), 'origin')

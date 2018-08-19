@@ -28,30 +28,35 @@ module.exports = class DocGenerator extends Generator {
       this.fs.delete(this.destinationPath('jsdoc.conf.js'));
     }
 
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+
     if (this.options.enabled) {
-      // this.fs.copy(
-      //   this.templatePath('jsdoc.conf.js'),
-      //   this.destinationPath('jsdoc.conf.js'),
-      // );
+      const withReact = packageUtils.hasReact(pkg);
+      this.fs.copyTpl(
+        this.templatePath('tsconfig.doc.json.ejs'),
+        this.destinationPath('tsconfig.doc.json'), { withReact }
+      );
     } else {
       // this.fs.delete(this.destinationPath('jsdoc.conf.js'));
       if (this.fs.exists(this.destinationPath('docs'))) {
         this.fs.delete(this.destinationPath('docs'));
       }
-    }
 
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+      if (this.fs.exists(this.destinationPath('tsconfig.doc.json'))) {
+        this.fs.delete(this.destinationPath('tsconfig.doc.json'));
+      }
+    }
 
     packageUtils.removeDevDependencies(pkg, ['jsdoc', 'minami', 'jaguarjs-jsdoc']);
 
     packageUtils.addOrRemoveDevDependencies(pkg, this.options.enabled, {
-      typedoc: '^0.11.1',
+      typedoc: '0.12.0',
     });
 
     if (this.options.enabled) {
       packageUtils.addScripts(pkg, {
         'generate:docs': 'rm -Rf docs ; yarn run generate:api',
-        'generate:api': 'typedoc --out docs --tsconfig tsconfig.build.json',
+        'generate:api': 'typedoc --out docs --tsconfig tsconfig.doc.json',
       });
 
       if (this.options.testing) {

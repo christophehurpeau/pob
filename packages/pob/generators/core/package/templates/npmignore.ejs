@@ -1,4 +1,6 @@
+<% if (!inLerna) { -%>
 /.circleci
+<% } -%>
 /build
 /docs
 /examples
@@ -7,13 +9,20 @@
 /test
 /tsconfig.json
 /tsconfig.build.json
+<% if (typedoc) { -%>
+/tsconfig.doc.json
+<% } -%>
 .babelrc
 .codeclimate.yml
 .yo-rc.json
+<% if (!inLerna) { -%>
+/renovate.json
+<% } -%>
 
 /.settings
 /.project
 /.idea
+/.vscode
 *.sublime-project
 *.sublime-workspace
 

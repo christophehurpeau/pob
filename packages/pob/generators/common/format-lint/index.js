@@ -22,31 +22,35 @@ module.exports = class LintGenerator extends Generator {
       arrowParens: 'always',
     };
 
-    packageUtils.removeDevDependencies(pkg, ['eslint-config-airbnb-base', 'eslint-config-prettier', 'eslint-plugin-flowtype']);
+    packageUtils.removeDevDependencies(pkg, [
+      'eslint-config-airbnb-base',
+      'eslint-config-prettier',
+      'eslint-plugin-flowtype',
+      'eslint-plugin-unicorn',
+      'eslint-plugin-prettier',
+    ]);
     packageUtils.addDevDependencies(pkg, {
-      eslint: '^4.19.1',
-      'eslint-config-pob': '^21.1.1',
-      'eslint-plugin-prettier': '^2.6.2',
-      'eslint-plugin-import': '^2.13.0',
-      'eslint-plugin-unicorn': '^4.0.3',
-      prettier: '^1.13.7',
+      eslint: '5.4.0',
+      'eslint-config-pob': '22.0.1',
+      'eslint-plugin-import': '2.14.0',
+      prettier: '1.14.2',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel, {
-      'babel-eslint': '^8.2.6', // required...
-      'typescript-eslint-parser': '^16.0.1',
-      'eslint-plugin-babel': '^5.1.0',
-      'eslint-plugin-typescript': '^0.12.0',
+      'babel-eslint': '9.0.0-beta.3', // required...
+      'typescript-eslint-parser': '18.0.0',
+      'eslint-plugin-babel': '5.1.0',
+      'eslint-plugin-typescript': '0.12.0',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, useNodeOnly, {
-      'eslint-plugin-node': '^6.0.1',
+      'eslint-plugin-node': '7.0.1',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, hasReact, {
-      'eslint-config-airbnb': '^16.0.0',
-      'eslint-plugin-jsx-a11y': '^6.1.0',
-      'eslint-plugin-react': '^7.10.0',
+      'eslint-config-airbnb': '17.1.0',
+      'eslint-plugin-jsx-a11y': '6.1.0',
+      'eslint-plugin-react': '7.11.1',
     });
 
     // packageUtils.addOrRemoveDevDependencies(pkg, !hasReact, { 'eslint-config-airbnb-base': '^12.1.0' });
@@ -54,8 +58,7 @@ module.exports = class LintGenerator extends Generator {
     const config = (() => {
       if (useBabel) {
         return [
-          'pob/babel',
-          useNodeOnly && 'pob/node',
+          useNodeOnly ? 'pob/babel-node' : 'pob/babel',
           hasReact && 'pob/react',
           'pob/typescript',
         ].filter(Boolean);

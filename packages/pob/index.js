@@ -1,5 +1,5 @@
 const { existsSync, readFileSync, writeFileSync } = require('fs');
-const prettier = require('prettier');
+const { execSync } = require('child_process');
 const updateNotifier = require('update-notifier');
 const yeoman = require('yeoman-environment');
 const argv = require('minimist-argv');
@@ -22,18 +22,16 @@ process.on('uncaughtException', (err) => {
 env.registerStub(require('./generators/pob'), 'pob:generator');
 
 const printUsage = () => {
-  console.error('Usage: pob lib');
-  console.error('       pob lerna');
+  console.error('Usage: pob [lerna] lib|app');
+  console.error('       pob update');
+  console.error('       pob lerna convert-npm');
   console.error('       pob add <packageName>');
 };
 
-let type = argv._[0];
-const updateOnly = type === 'update';
-if (updateOnly) type = null;
+let lerna = argv._[0] === 'lerna';
+let action = lerna ? argv._[1] : argv._[0];
 
-const fromPob = argv._[1] === 'from-pob';
-
-if (type === 'add') {
+if (action === 'add') {
   if (!existsSync('lerna.json')) {
     console.error('Not in lerna package');
     process.exit(1);
@@ -52,11 +50,24 @@ if (type === 'add') {
   process.exit(0);
 }
 
-if (type !== 'lib' && type !== 'lerna') {
+if (lerna && action === 'convert-npm') {
+  execSync('sed -i \'/"npmClient": "yarn",/d\' ./lerna.json', { stdio: 'inherit' });
+  execSync('npm install packages/*', { stdio: 'inherit' });
+  execSync('yarn lerna link convert', { stdio: 'inherit' });
+  execSync('rm -Rf yarn.lock packages/*/yarn.lock', { stdio: 'inherit' });
+  process.exit(0);
+}
+
+const updateOnly = action === 'update';
+let type = updateOnly ? null : action;
+const fromPob = updateOnly && argv._[1] === 'from-pob';
+
+if (updateOnly) {
   if (existsSync('lerna.json')) {
-    type = 'lerna';
+    lerna = true;
+    type = 'lib'; // TODO
   } else if (existsSync('.yo-rc.json') || existsSync('.pob.json')) {
-    type = 'lib';
+    type = 'lib'; // TODO
   } else {
     console.error('Missing first argument: type');
     printUsage();
@@ -71,7 +82,7 @@ if (!existsSync('.yo-rc.json')) {
 const options = {
   type,
   updateOnly,
-  lerna: !!argv.lerna,
+  lerna,
   fromPob,
 };
 

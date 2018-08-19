@@ -12,12 +12,16 @@ module.exports = class LernaGenerator extends Generator {
   }
 
   default() {
+    const lernaCurrentConfig = this.fs.readJSON(this.destinationPath('lerna.json'), {});
+    this.npm = lernaCurrentConfig.version && lernaCurrentConfig.npmClient !== 'yarn';
+
     // lerna.json
-    const lernaConfig = {
-      lerna: '3.0.0-beta.21',
+    const lernaConfig = this.npm ? {
+      version: 'independent',
+    } : {
+      version: 'independent',
       npmClient: 'yarn',
       useWorkspaces: true,
-      version: 'independent',
     };
 
     this.fs.writeJSON(this.destinationPath('lerna.json'), lernaConfig);
@@ -30,9 +34,14 @@ module.exports = class LernaGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     packageUtils.removeDependency(pkg, 'lerna');
 
+    if (this.npm) {
+      if (!pkg.engines) pkg.engines = {};
+      pkg.engines.yarn = '< 0.0.0';
+    }
+
     packageUtils.addDevDependencies(pkg, {
-      lerna: '3.0.0-beta.21',
-      'pob-release': '^4.2.1', // only for pob-repository-check-clean
+      lerna: '3.1.1',
+      'pob-release': '4.2.1', // only for pob-repository-check-clean
     });
 
     const withBabel = true;
@@ -57,9 +66,18 @@ module.exports = class LernaGenerator extends Generator {
     });
     delete pkg.scripts.version;
 
-    pkg.workspaces = [
-      'packages/*',
-    ];
+
+    if (this.npm) {
+      delete pkg.workspaces;
+      packageUtils.addScripts(pkg, {
+        'postinstall': 'lerna link',
+      });
+    } else {
+      delete pkg.scripts.postinstall;
+      pkg.workspaces = [
+        'packages/*',
+      ];
+    }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
 

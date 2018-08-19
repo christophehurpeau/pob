@@ -62,6 +62,7 @@ module.exports = class BabelGenerator extends Generator {
     const useBabel = this.babelEnvs && this.babelEnvs.length;
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     const hasTargetNode = this.babelEnvs.find(env => env.target === 'node');
+    const hasTargetBrowser = this.babelEnvs.find(env => env.target === 'browser');
 
     /* scripts */
 
@@ -78,13 +79,13 @@ module.exports = class BabelGenerator extends Generator {
     /* dependencies */
 
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel, {
-      '@babel/core': '^7.0.0-beta.54',
+      '@babel/core': '7.0.0-rc.1',
       'babel-core': '7.0.0-bridge.0',
-      'pob-babel': '^22.4.0',
+      'pob-babel': '22.4.0',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel && packageUtils.hasReact(pkg), {
-      '@babel/preset-react': '^7.0.0-beta.54',
+      '@babel/preset-react': '7.0.0-rc.1',
     });
 
     packageUtils.removeDevDependencies(pkg, [
@@ -96,19 +97,19 @@ module.exports = class BabelGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.babelEnvs.find(env => env.target === 'browser' && env.version === undefined),
-      { '@babel/preset-env': '^7.0.0-beta.54' },
+      { '@babel/preset-env': '7.0.0-rc.1' },
     );
 
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.babelEnvs.find(env => (env.target === 'node')),
-      { 'babel-preset-latest-node': '^2.0.0-beta.3' },
+      { 'babel-preset-latest-node': '2.0.0-beta.3' },
     );
 
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.babelEnvs.find(env => (env.target === 'browser' && env.version === 'modern')),
-      { 'babel-preset-modern-browsers': '^12.0.0-beta.1' },
+      { 'babel-preset-modern-browsers': '12.0.0-beta.1' },
     );
 
     /* engines */
@@ -142,6 +143,19 @@ module.exports = class BabelGenerator extends Generator {
         delete pkg.engines.node;
         if (!Object.keys(pkg.engines).length) delete pkg.engines;
       }
+    }
+
+    /* browserlist */
+
+    if (hasTargetBrowser) {
+      pkg.browserslist = [
+        '> 0.1%',
+        'Firefox ESR',
+        'not ie < 9',
+        'not dead'
+      ];
+    } else {
+      delete pkg.browserslist;
     }
 
     /* main / aliases / typing */
