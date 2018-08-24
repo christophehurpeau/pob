@@ -428,7 +428,7 @@ module.exports = class PobLibGenerator extends Generator {
           .filter(Boolean)
           .join(' && '),
         version: 'pob-version',
-        clean: 'rm -Rf docs dist',
+        clean: 'rm -Rf dist',
       });
     }
 
@@ -443,7 +443,7 @@ module.exports = class PobLibGenerator extends Generator {
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-    execSync('rm -Rf lib-* coverage');
+    execSync('rm -Rf ' + ['lib-*', 'coverage', this.pobjson.documentation && 'docs'].filter(Boolean).join(' '));
 
     const pobjson = this.pobjson;
 
