@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.3.0"></a>
+# [4.3.0](https://github.com/christophehurpeau/pob/compare/pob-release@4.2.1...pob-release@4.3.0) (2018-08-27)
+
+
+### Features
+
+* hudge update ([afec425](https://github.com/christophehurpeau/pob/commit/afec425))
+
+
+
+
+
 <a name="4.2.1"></a>
 ## [4.2.1](https://github.com/christophehurpeau/pob/compare/pob-release@4.2.0...pob-release@4.2.1) (2018-07-06)
 

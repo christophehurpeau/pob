@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.8.0"></a>
+# [4.8.0](https://github.com/christophehurpeau/pob/compare/pob@4.7.0...pob@4.8.0) (2018-08-27)
+
+
+### Features
+
+* hudge update ([afec425](https://github.com/christophehurpeau/pob/commit/afec425))
+* remove docs from clean script ([a72f9ce](https://github.com/christophehurpeau/pob/commit/a72f9ce))
+* **pob:** update deps ([7b8ea8d](https://github.com/christophehurpeau/pob/commit/7b8ea8d))
+* **pob:** update pob-babel to 23 ([faba647](https://github.com/christophehurpeau/pob/commit/faba647))
+
+
+
+
+
 <a name="4.7.0"></a>
 # [4.7.0](https://github.com/christophehurpeau/pob/compare/pob@4.6.4...pob@4.7.0) (2018-07-24)
 

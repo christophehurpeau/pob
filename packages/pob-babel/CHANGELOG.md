@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="23.0.0"></a>
+# [23.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@22.4.0...pob-babel@23.0.0) (2018-08-27)
+
+
+### Features
+
+* hudge update ([afec425](https://github.com/christophehurpeau/pob/commit/afec425))
+* **pob-babel:** update to [@babel](https://github.com/babel) rc3 ([315a0fd](https://github.com/christophehurpeau/pob/commit/315a0fd))
+
+
+### BREAKING CHANGES
+
+* **pob-babel:** peer dep to @babel/core rc3
+
+
+
+
+
 <a name="22.4.0"></a>
 # [22.4.0](https://github.com/christophehurpeau/pob/compare/pob-babel@22.3.2...pob-babel@22.4.0) (2018-07-24)
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.5.0"></a>
+# [2.5.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.4.0...babel-preset-pob-env@2.5.0) (2018-08-27)
+
+
+### Features
+
+* hudge update ([afec425](https://github.com/christophehurpeau/pob/commit/afec425))
+
+
+
+
+
 <a name="2.4.0"></a>
 # [2.4.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.3.1...babel-preset-pob-env@2.4.0) (2018-07-24)
 
