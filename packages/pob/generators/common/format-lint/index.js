@@ -31,7 +31,7 @@ module.exports = class LintGenerator extends Generator {
     ]);
     packageUtils.addDevDependencies(pkg, {
       eslint: '5.4.0',
-      'eslint-config-pob': '22.0.1',
+      'eslint-config-pob': '22.0.3',
       'eslint-plugin-import': '2.14.0',
       prettier: '1.14.2',
     });

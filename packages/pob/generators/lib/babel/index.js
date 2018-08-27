@@ -79,13 +79,13 @@ module.exports = class BabelGenerator extends Generator {
     /* dependencies */
 
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel, {
-      '@babel/core': '7.0.0-rc.1',
+      '@babel/core': '7.0.0-rc.3',
       'babel-core': '7.0.0-bridge.0',
       'pob-babel': '22.4.0',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel && packageUtils.hasReact(pkg), {
-      '@babel/preset-react': '7.0.0-rc.1',
+      '@babel/preset-react': '7.0.0-rc.3',
     });
 
     packageUtils.removeDevDependencies(pkg, [
@@ -97,7 +97,7 @@ module.exports = class BabelGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.babelEnvs.find(env => env.target === 'browser' && env.version === undefined),
-      { '@babel/preset-env': '7.0.0-rc.1' },
+      { '@babel/preset-env': '7.0.0-rc.3' },
     );
 
     packageUtils.addOrRemoveDevDependencies(

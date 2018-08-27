@@ -44,6 +44,8 @@ module.exports = class LernaGenerator extends Generator {
       'pob-release': '4.2.1', // only for pob-repository-check-clean
     });
 
+    packageUtils.removeDevDependencies(pkg, ['prettier']);
+
     const withBabel = true;
     const withDocumentation = true;
 
