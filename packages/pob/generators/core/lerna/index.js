@@ -37,6 +37,7 @@ module.exports = class LernaGenerator extends Generator {
     if (this.npm) {
       if (!pkg.engines) pkg.engines = {};
       pkg.engines.yarn = '< 0.0.0';
+      pkg.engines.npm = '>= 6.4.0';
     }
 
     packageUtils.addDevDependencies(pkg, {
