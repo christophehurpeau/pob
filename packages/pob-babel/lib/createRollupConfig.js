@@ -108,7 +108,7 @@ const createConfigForEnv = (entry, env, production) => {
               target: env.target,
               version: env.target === 'node' ? nodeVersion(env.version) : env.version,
               production,
-              exportDefaultName: false, // this breaks the build (https://github.com/rollup/rollup/pull/2001 ?)
+              exportDefaultName: false, // Rollup does it
             },
           ],
         ].filter(Boolean),
