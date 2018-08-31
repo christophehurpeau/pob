@@ -13,7 +13,6 @@
     "commitmsg": "commitlint -e $GIT_PARAMS",
     "generate:docs": "lerna run --parallel --ignore \"*-example\" generate:docs",
     "lint": "lerna run --stream lint",
-    "preinstall": "npm install packages/pob-release",
     "postcheckout": "yarnhook",
     "postmerge": "yarnhook",
     "postrewrite": "yarnhook",
