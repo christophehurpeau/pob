@@ -71,7 +71,13 @@ const createConfigForEnv = (entry, env, production) => {
       }" in path "${cwd}"`
     );
   }
+
   const typescript = entryPath.endsWith('.ts') || entryPath.endsWith('.tsx');
+  const extensions = (typescript
+    ? ['.ts', hasReact && '.tsx']
+    : ['.js', hasReact && '.jsx']
+  ).filter(Boolean);
+
   return {
     input: entryPath,
     output: env.formats.map(format => ({
@@ -88,6 +94,7 @@ const createConfigForEnv = (entry, env, production) => {
     },
     plugins: [
       babel({
+        extensions,
         babelrc: false,
         presets: [
           !typescript && require.resolve('@babel/preset-flow'), // compatibility
@@ -114,10 +121,7 @@ const createConfigForEnv = (entry, env, production) => {
 
       resolve({
         customResolveOptions: {
-          extensions: (typescript
-            ? ['.ts', hasReact && '.tsx']
-            : ['.js', hasReact && '.jsx']
-          ).filter(Boolean), // TODO: add json ?
+          extensions,
           moduleDirectory: [], // don't resolve node_modules
         },
       }),
