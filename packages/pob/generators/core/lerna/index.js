@@ -41,7 +41,7 @@ module.exports = class LernaGenerator extends Generator {
     }
 
     packageUtils.addDevDependencies(pkg, {
-      lerna: '3.1.1',
+      lerna: '3.2.1',
       'pob-release': '4.4.0', // only for pob-repository-check-clean
     });
 
@@ -73,7 +73,7 @@ module.exports = class LernaGenerator extends Generator {
     if (this.npm) {
       delete pkg.workspaces;
       packageUtils.addScripts(pkg, {
-        'postinstall': 'lerna link',
+        postinstall: 'lerna link',
       });
     } else {
       delete pkg.scripts.postinstall;
