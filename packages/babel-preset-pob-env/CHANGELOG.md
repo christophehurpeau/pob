@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="2.6.0"></a>
+# [2.6.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.5.0...babel-preset-pob-env@2.6.0) (2018-08-31)
+
+
+### Features
+
+* babel 7.0.0 ([a65728b](https://github.com/christophehurpeau/pob/commit/a65728b))
+
+
+
+
+
 <a name="2.5.0"></a>
 # [2.5.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.4.0...babel-preset-pob-env@2.5.0) (2018-08-27)
 

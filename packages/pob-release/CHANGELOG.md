@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.4.0"></a>
+# [4.4.0](https://github.com/christophehurpeau/pob/compare/pob-release@4.3.0...pob-release@4.4.0) (2018-08-31)
+
+
+### Features
+
+* babel 7.0.0 ([a65728b](https://github.com/christophehurpeau/pob/commit/a65728b))
+
+
+
+
+
 <a name="4.3.0"></a>
 # [4.3.0](https://github.com/christophehurpeau/pob/compare/pob-release@4.2.1...pob-release@4.3.0) (2018-08-27)
 

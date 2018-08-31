@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.9.0"></a>
+# [4.9.0](https://github.com/christophehurpeau/pob/compare/pob@4.8.0...pob@4.9.0) (2018-08-31)
+
+
+### Features
+
+* babel 7.0.0 ([a65728b](https://github.com/christophehurpeau/pob/commit/a65728b))
+* hint npm >= 6.4 when using lerna with npm ([62f9d21](https://github.com/christophehurpeau/pob/commit/62f9d21))
+
+
+
+
+
 <a name="4.8.0"></a>
 # [4.8.0](https://github.com/christophehurpeau/pob/compare/pob@4.7.0...pob@4.8.0) (2018-08-27)
 
