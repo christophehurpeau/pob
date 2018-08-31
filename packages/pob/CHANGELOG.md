@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="4.10.0"></a>
+# [4.10.0](https://github.com/christophehurpeau/pob/compare/pob@4.9.1...pob@4.10.0) (2018-08-31)
+
+
+### Features
+
+* update [@commitlint](https://github.com/commitlint) ([f5fc744](https://github.com/christophehurpeau/pob/commit/f5fc744))
+* update [@types](https://github.com/types)/jest ([c79ff1b](https://github.com/christophehurpeau/pob/commit/c79ff1b))
+* update babel-eslint ([056e26c](https://github.com/christophehurpeau/pob/commit/056e26c))
+* update babel-jest ([e83e3ab](https://github.com/christophehurpeau/pob/commit/e83e3ab))
+* update lerna ([807dfb2](https://github.com/christophehurpeau/pob/commit/807dfb2))
+* update typescript ([4adfcb0](https://github.com/christophehurpeau/pob/commit/4adfcb0))
+
+
+
+
+
 <a name="4.9.1"></a>
 ## [4.9.1](https://github.com/christophehurpeau/pob/compare/pob@4.9.0...pob@4.9.1) (2018-08-31)
 
