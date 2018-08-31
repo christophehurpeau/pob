@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<a name="23.2.0"></a>
+# [23.2.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.1.0...pob-babel@23.2.0) (2018-08-31)
+
+
+### Features
+
+* update to rollup 0.65 ([0ca2e07](https://github.com/christophehurpeau/pob/commit/0ca2e07))
+
+
+
+
+
 <a name="23.1.0"></a>
 # [23.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.0.0...pob-babel@23.1.0) (2018-08-31)
 
