@@ -81,7 +81,7 @@ module.exports = class BabelGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel, {
       '@babel/core': '7.0.0',
       'babel-core': '7.0.0-bridge.0',
-      'pob-babel': '23.1.0',
+      'pob-babel': '23.2.0',
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel && packageUtils.hasReact(pkg), {
@@ -152,7 +152,7 @@ module.exports = class BabelGenerator extends Generator {
         '> 0.1%',
         'Firefox ESR',
         'not ie < 9',
-        'not dead'
+        'not dead',
       ];
     } else {
       delete pkg.browserslist;
