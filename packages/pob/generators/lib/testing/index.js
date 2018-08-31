@@ -103,7 +103,7 @@ module.exports = class TestingGenerator extends Generator {
 
       packageUtils.addDevDependencies(pkg, {
         jest: '23.5.0',
-        '@types/jest': '23.3.0',
+        '@types/jest': '23.3.1',
       });
 
       const hasBabel = packageUtils.transpileWithBabel(pkg);
