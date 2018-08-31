@@ -42,11 +42,11 @@
   },
   "devDependencies": {
     "eslint": "^5.0.1",
-    "eslint-config-pob": "^21.2.1",
+    "eslint-config-pob": "^22.0.3",
     "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-node": "^7.0.1",
     "eslint-plugin-prettier": "^2.6.2",
-    "eslint-plugin-unicorn": "^4.0.3",
+    "eslint-plugin-unicorn": "^6.0.0",
     "prettier": "^1.13.7"
   }
 }
