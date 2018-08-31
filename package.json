@@ -16,7 +16,6 @@
     "postcheckout": "yarnhook",
     "postmerge": "yarnhook",
     "postrewrite": "yarnhook",
-    "postinstall": "lerna link",
     "precommit": "lint-staged",
     "preversion": "yarn run lint && yarn run build && yarn run generate:docs",
     "release": "lerna publish --conventional-commits -m 'chore: release'",
@@ -42,18 +41,14 @@
       "@commitlint/config-conventional"
     ]
   },
-  "dependencies": {
-    "babel-plugin-pob-babel": "file:packages/babel-plugin-pob-babel",
-    "babel-preset-pob-env": "file:packages/babel-preset-pob-env",
-    "pob": "file:packages/pob",
-    "pob-babel": "file:packages/pob-babel",
-    "pob-release": "file:packages/pob-release"
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "devDependencies": {
     "@commitlint/cli": "^7.0.0",
     "@commitlint/config-conventional": "^7.0.1",
     "husky": "^0.14.3",
-    "lerna": "3.0.1",
+    "lerna": "3.2.1",
     "lint-staged": "^7.2.0",
     "yarnhook": "^0.3.0"
   }
