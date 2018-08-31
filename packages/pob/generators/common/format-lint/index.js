@@ -37,7 +37,7 @@ module.exports = class LintGenerator extends Generator {
     });
 
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel, {
-      'babel-eslint': '9.0.0-beta.3', // required...
+      'babel-eslint': '9.0.0', // required...
       'typescript-eslint-parser': '18.0.0',
       'eslint-plugin-babel': '5.1.0',
       'eslint-plugin-typescript': '0.12.0',
