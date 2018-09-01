@@ -21,7 +21,7 @@
     "printWidth": 100
   },
   "devDependencies": {
-    "eslint": "^5.0.1",
+    "eslint": "^5.5.0",
     "eslint-config-pob": "^22.0.3",
     "eslint-plugin-import": "^2.13.0",
     "eslint-plugin-node": "^7.0.1",

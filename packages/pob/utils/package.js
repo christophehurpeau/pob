@@ -1,6 +1,7 @@
 /* eslint-disable no-param-reassign, max-lines, max-len */
 const semver = require('semver');
 const parseAuthor = require('parse-author');
+const pobDependencies = require('pob-dependencies');
 
 exports.parseAuthor = parseAuthor;
 
@@ -133,20 +134,20 @@ const internalAddDependencies = (pkg, type, dependencies) => {
   const currentDependencies = pkg[type];
   const removeDependencies = [];
 
-  const dependenciesToCheck = {};
-  Object.keys(dependencies).forEach((dependency) => {
+  const dependenciesToCheck = [];
+  dependencies.forEach((dependency) => {
     if (ignoreDependencies[dependency]) {
       removeDependencies.push(dependency);
     } else {
-      dependenciesToCheck[dependency] = dependencies[dependency];
+      dependenciesToCheck.push(dependency);
     }
   });
 
 
   const filtredDependencies = !currentDependencies ? dependenciesToCheck : {};
   if (currentDependencies) {
-    Object.keys(dependenciesToCheck).forEach((dependency) => {
-      const potentialNewVersion = dependencies[dependency];
+    dependenciesToCheck.forEach((dependency) => {
+      const potentialNewVersion = pobDependencies[dependency];
       const currentVersion = currentDependencies[dependency];
       try {
         if (
@@ -173,24 +174,12 @@ exports.addDependencies = function addDependencies(pkg, dependencies) {
   internalAddDependencies(pkg, 'dependencies', dependencies);
 };
 
-exports.addDependency = function addDependency(pkg, dependency, version) {
-  exports.addDependencies(pkg, { [dependency]: version });
-};
-
 exports.removeDependencies = function removeDependencies(pkg, dependencies) {
   internalRemoveDependencies(pkg, 'dependencies', dependencies);
 };
 
-exports.removeDependency = function removeDependency(pkg, dependency) {
-  exports.removeDependencies(pkg, [dependency]);
-};
-
 exports.addDevDependencies = function addDevDependencies(pkg, dependencies) {
   internalAddDependencies(pkg, 'devDependencies', dependencies);
-};
-
-exports.addDevDependency = function addDevDependency(pkg, dependency, version) {
-  exports.addDevDependencies(pkg, { [dependency]: version });
 };
 
 exports.removeDevDependencies = function removeDevDependencies(pkg, dependencies) {

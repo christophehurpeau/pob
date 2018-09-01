@@ -101,16 +101,16 @@ module.exports = class TestingGenerator extends Generator {
         ].join(' ; '),
       });
 
-      packageUtils.addDevDependencies(pkg, {
-        jest: '23.5.0',
-        '@types/jest': '23.3.1',
-      });
+      packageUtils.addDevDependencies(pkg, [
+        'jest',
+        '@types/jest',
+      ]);
 
       const hasBabel = packageUtils.transpileWithBabel(pkg);
       const hasReact = hasBabel && packageUtils.hasReact(pkg);
       const srcDirectory = hasBabel ? 'src' : 'lib';
 
-      packageUtils.addOrRemoveDevDependencies(pkg, hasBabel, { 'babel-jest': '23.4.@' });
+      packageUtils.addOrRemoveDevDependencies(pkg, hasBabel, ['babel-jest']);
 
       if (!pkg.jest) pkg.jest = {};
       Object.assign(pkg.jest, {

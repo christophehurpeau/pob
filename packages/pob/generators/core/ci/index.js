@@ -131,7 +131,7 @@ module.exports = class CiGenerator extends Generator {
     } else {
       // this.babelEnvs = JSON.parse(this.options.babelEnvs);
 
-      packageUtils.addOrRemoveDevDependencies(pkg, this.options.circleci && pkg.jest, { 'jest-junit-reporter': '1.1.0' });
+      packageUtils.addOrRemoveDevDependencies(pkg, this.options.circleci && pkg.jest, ['jest-junit-reporter']);
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);

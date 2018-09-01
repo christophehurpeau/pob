@@ -32,7 +32,7 @@ module.exports = class LernaGenerator extends Generator {
 
     // package.json
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-    packageUtils.removeDependency(pkg, 'lerna');
+    packageUtils.removeDependencies(pkg, ['lerna']);
 
     if (this.npm) {
       if (!pkg.engines) pkg.engines = {};
@@ -40,10 +40,10 @@ module.exports = class LernaGenerator extends Generator {
       pkg.engines.npm = '>= 6.4.0';
     }
 
-    packageUtils.addDevDependencies(pkg, {
-      lerna: '3.2.1',
-      'pob-release': '4.4.0', // only for pob-repository-check-clean
-    });
+    packageUtils.addDevDependencies(pkg, [
+      'lerna',
+      'pob-release', // only for pob-repository-check-clean
+    ]);
 
     packageUtils.removeDevDependencies(pkg, ['prettier']);
 

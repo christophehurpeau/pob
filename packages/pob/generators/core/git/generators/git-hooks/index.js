@@ -51,13 +51,13 @@ module.exports = class GitHooksGenerator extends Generator {
 
     packageUtils.removeDevDependencies(pkg, ['komet', 'komet-karma']);
 
-    packageUtils.addDevDependencies(pkg, {
-      husky: '0.14.3',
-      yarnhook: '0.3.0',
-      'lint-staged': '7.2.2',
-      '@commitlint/cli': '7.1.1',
-      '@commitlint/config-conventional': '7.1.1',
-    });
+    packageUtils.addDevDependencies(pkg, [
+      'husky',
+      'yarnhook',
+      'lint-staged',
+      '@commitlint/cli',
+      '@commitlint/config-conventional',
+    ]);
     // packageUtils.addOrRemoveDevDependencies(pkg, inLerna, {
     //   '@commitlint/config-lerna-scopes': '6.1.3',
     // });

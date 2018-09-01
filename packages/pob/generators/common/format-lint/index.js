@@ -1,5 +1,6 @@
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
+const dependencies = require('pob-dependencies');
 
 module.exports = class LintGenerator extends Generator {
   initializing() {
@@ -29,31 +30,29 @@ module.exports = class LintGenerator extends Generator {
       'eslint-plugin-unicorn',
       'eslint-plugin-prettier',
     ]);
-    packageUtils.addDevDependencies(pkg, {
-      eslint: '5.4.0',
-      'eslint-config-pob': '22.0.3',
-      'eslint-plugin-import': '2.14.0',
-      prettier: '1.14.2',
-    });
+    packageUtils.addDevDependencies(pkg, [
+      'eslint',
+      'eslint-config-pob',
+      'eslint-plugin-import',
+      'prettier',
+    ]);
 
-    packageUtils.addOrRemoveDevDependencies(pkg, useBabel, {
-      'babel-eslint': '9.0.0', // required...
-      'typescript-eslint-parser': '18.0.0',
-      'eslint-plugin-babel': '5.1.0',
-      'eslint-plugin-typescript': '0.12.0',
-    });
+    packageUtils.addOrRemoveDevDependencies(pkg, useBabel, [
+      'babel-eslint', // required...
+      'typescript-eslint-parser',
+      'eslint-plugin-babel',
+      'eslint-plugin-typescript',
+    ]);
 
-    packageUtils.addOrRemoveDevDependencies(pkg, useNodeOnly, {
-      'eslint-plugin-node': '7.0.1',
-    });
+    packageUtils.addOrRemoveDevDependencies(pkg, useNodeOnly, [
+      'eslint-plugin-node',
+    ]);
 
-    packageUtils.addOrRemoveDevDependencies(pkg, hasReact, {
-      'eslint-config-airbnb': '17.1.0',
-      'eslint-plugin-jsx-a11y': '6.1.0',
-      'eslint-plugin-react': '7.11.1',
-    });
-
-    // packageUtils.addOrRemoveDevDependencies(pkg, !hasReact, { 'eslint-config-airbnb-base': '^12.1.0' });
+    packageUtils.addOrRemoveDevDependencies(pkg, hasReact, [
+      'eslint-config-airbnb',
+      'eslint-plugin-jsx-a11y',
+      'eslint-plugin-react',
+    ]);
 
     const config = (() => {
       if (useBabel) {

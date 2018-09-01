@@ -27,9 +27,9 @@ module.exports = class TypescriptGenerator extends Generator {
       delete pkg.scripts.flow;
     }
 
-    packageUtils.addOrRemoveDevDependencies(pkg, this.options.enable, {
-      typescript: '3.0.3',
-    });
+    packageUtils.addOrRemoveDevDependencies(pkg, this.options.enable, [
+      'typescript',
+    ]);
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
 

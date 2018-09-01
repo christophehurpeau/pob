@@ -421,7 +421,7 @@ module.exports = class PobLibGenerator extends Generator {
         delete pkg.scripts.version;
       }
     } else {
-      packageUtils.addDevDependencies(pkg, {'pob-release': '4.4.0'});
+      packageUtils.addDevDependencies(pkg, ['pob-release']);
       packageUtils.addScripts(pkg, {
         release: 'pob-repository-check-clean && pob-release',
         preversion: ['yarn run lint', withBabel && 'yarn run build', this.pobjson.documentation && 'yarn run generate:docs', 'pob-repository-check-clean']

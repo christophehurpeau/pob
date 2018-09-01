@@ -38,6 +38,7 @@
     "minimist-argv": "^1.1.0",
     "mkdirp": "^0.5.1",
     "parse-author": "^2.0.0",
+    "pob-dependencies": "0.0.0",
     "prettier": "^1.13.7",
     "semver": "^5.5.0",
     "update-notifier": "^2.5.0",
@@ -45,7 +46,7 @@
     "yeoman-generator": "^2.0.5"
   },
   "devDependencies": {
-    "eslint": "^5.0.1",
+    "eslint": "^5.5.0",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.13.0",
     "pob-release": "^4.4.0"
