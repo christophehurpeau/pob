@@ -76,6 +76,7 @@ module.exports = class TestingGenerator extends Generator {
         'jest',
         '@types/jest',
         'babel-jest',
+        'babel-core',
       ]);
 
       delete pkg.jest;
@@ -110,7 +111,10 @@ module.exports = class TestingGenerator extends Generator {
       const hasReact = hasBabel && packageUtils.hasReact(pkg);
       const srcDirectory = hasBabel ? 'src' : 'lib';
 
-      packageUtils.addOrRemoveDevDependencies(pkg, hasBabel, ['babel-jest']);
+      packageUtils.addOrRemoveDevDependencies(pkg, hasBabel, [
+        'babel-jest',
+        'babel-core',
+      ]);
 
       if (!pkg.jest) pkg.jest = {};
       Object.assign(pkg.jest, {

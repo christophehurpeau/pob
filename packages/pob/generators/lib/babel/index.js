@@ -80,7 +80,6 @@ module.exports = class BabelGenerator extends Generator {
 
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel, [
       '@babel/core',
-      'babel-core',
       'pob-babel',
     ]);
 
