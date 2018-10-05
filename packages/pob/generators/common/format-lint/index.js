@@ -54,12 +54,14 @@ module.exports = class LintGenerator extends Generator {
       'eslint-plugin-react',
     ]);
 
+    const typescript = true;
+
     const config = (() => {
       if (useBabel) {
         return [
           useNodeOnly ? 'pob/babel-node' : 'pob/babel',
-          hasReact && 'pob/react',
-          'pob/typescript',
+          typescript && 'pob/typescript',
+          hasReact && `pob/${typescript ? 'typescript-' : ''}react`,
         ].filter(Boolean);
       }
       return ['pob', 'pob/node'];

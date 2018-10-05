@@ -10,17 +10,21 @@
   "homepage": "https://github.com/christophehurpeau/pob",
   "scripts": {
     "build": "lerna run --parallel --ignore \"*-example\" build",
-    "commitmsg": "commitlint -e $GIT_PARAMS",
     "generate:docs": "lerna run --parallel --ignore \"*-example\" generate:docs",
     "lint": "lerna run --stream lint",
-    "postcheckout": "yarnhook",
-    "postmerge": "yarnhook",
-    "postrewrite": "yarnhook",
-    "precommit": "lint-staged",
     "preversion": "yarn run lint && yarn run build && yarn run generate:docs",
     "release": "lerna publish --conventional-commits -m 'chore: release'",
     "test": "lerna run --stream test",
     "watch": "lerna run --parallel --ignore \"*-example\" watch"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
+      "post-checkout": "yarnhook",
+      "post-merge": "yarnhook",
+      "post-rewrite": "yarnhook",
+      "pre-commit": "lint-staged"
+    }
   },
   "lint-staged": {
     "{package.json,.eslintrc.json}": [
@@ -47,7 +51,7 @@
   "devDependencies": {
     "@commitlint/cli": "^7.1.2",
     "@commitlint/config-conventional": "^7.1.2",
-    "husky": "^0.14.3",
+    "husky": "^1.1.0",
     "lerna": "3.2.1",
     "lint-staged": "^7.2.0",
     "yarnhook": "^0.3.0"

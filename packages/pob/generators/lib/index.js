@@ -367,18 +367,19 @@ module.exports = class PobLibGenerator extends Generator {
       if (this.fs.exists('git-hooks')) this.fs.delete('git-hooks');
       if (this.fs.exists('.commitrc.js')) this.fs.delete('.commitrc.js');
       delete pkg.commitlint;
+      delete pkg.husky;
       delete pkg['lint-staged'];
-      if (pkg.scripts) {
-        delete pkg.scripts.postmerge;
-        delete pkg.scripts.postcheckout;
-        delete pkg.scripts.postrewrite;
-        delete pkg.scripts.precommit;
-        delete pkg.scripts.commitmsg;
-        delete pkg.scripts.preparecommitmsg;
-        delete pkg.scripts.prepublish;
-        delete pkg.scripts.postpublish;
-        delete pkg.scripts.prepare;
-      }
+    }
+    if (pkg.scripts) {
+      delete pkg.scripts.postmerge;
+      delete pkg.scripts.postcheckout;
+      delete pkg.scripts.postrewrite;
+      delete pkg.scripts.precommit;
+      delete pkg.scripts.commitmsg;
+      delete pkg.scripts.preparecommitmsg;
+      delete pkg.scripts.prepublish;
+      delete pkg.scripts.postpublish;
+      delete pkg.scripts.prepare;
     }
 
 

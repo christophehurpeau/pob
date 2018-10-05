@@ -114,7 +114,7 @@ module.exports = class LernaGenerator extends Generator {
         stdio: 'inherit',
       });
     });
-    this.spawnCommandSync('yarn', ['install']);
+    this.spawnCommandSync('yarn', ['install', '--prefer-offline']);
     this.spawnCommandSync('yarn', ['run', 'build']);
   }
 };

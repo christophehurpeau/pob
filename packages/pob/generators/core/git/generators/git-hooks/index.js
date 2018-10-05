@@ -69,18 +69,24 @@ module.exports = class GitHooksGenerator extends Generator {
       ].filter(Boolean),
     };
 
-    packageUtils.addScripts(pkg, {
-      postmerge: 'yarnhook',
-      postcheckout: 'yarnhook',
-      postrewrite: 'yarnhook',
-      precommit: 'lint-staged',
-      commitmsg: 'commitlint -e $GIT_PARAMS',
-    });
+    pkg.husky = {
+      "hooks": {
+        'commit-msg': 'commitlint -e $GIT_PARAMS',
+        'post-checkout': 'yarnhook',
+        'post-merge': 'yarnhook',
+        'post-rewrite': 'yarnhook',
+        'pre-commit': 'lint-staged',
+      },
+    };
 
+    delete pkg.scripts.commitmsg;
+    delete pkg.scripts.precommit;
     delete pkg.scripts.prepublish;
-    delete pkg.scripts.postpublish;
     delete pkg.scripts.prepare;
     delete pkg.scripts.preparecommitmsg;
+    delete pkg.scripts.postcheckout;
+    delete pkg.scripts.postmerge;
+    delete pkg.scripts.postpublish;
 
     const hasBabel = packageUtils.transpileWithBabel(pkg);
     const hasReact = hasBabel && packageUtils.hasReact(pkg);
