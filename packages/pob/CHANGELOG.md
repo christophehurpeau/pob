@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.2](https://github.com/christophehurpeau/pob/compare/pob@4.11.1...pob@4.11.2) (2018-10-09)
+
+
+### Bug Fixes
+
+* husky install command changed ([1391bf6](https://github.com/christophehurpeau/pob/commit/1391bf6))
+* typedoc dependency ([64b38c4](https://github.com/christophehurpeau/pob/commit/64b38c4))
+
+
+
+
+
 ## [4.11.1](https://github.com/christophehurpeau/pob/compare/pob@4.11.0...pob@4.11.1) (2018-10-09)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.1.0...pob-dependencies@0.1.1) (2018-10-09)
+
+
+### Bug Fixes
+
+* typedoc dependency ([64b38c4](https://github.com/christophehurpeau/pob/commit/64b38c4))
+
+
+
+
+
 # 0.1.0 (2018-10-09)
 
 
