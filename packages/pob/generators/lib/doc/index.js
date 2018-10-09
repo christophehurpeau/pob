@@ -49,9 +49,7 @@ module.exports = class DocGenerator extends Generator {
 
     packageUtils.removeDevDependencies(pkg, ['jsdoc', 'minami', 'jaguarjs-jsdoc']);
 
-    packageUtils.addOrRemoveDevDependencies(pkg, this.options.enabled, {
-      typedoc: '0.12.0',
-    });
+    packageUtils.addOrRemoveDevDependencies(pkg, this.options.enabled, ['typedoc']);
 
     if (this.options.enabled) {
       packageUtils.addScripts(pkg, {
