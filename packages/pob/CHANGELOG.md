@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.11.0](https://github.com/christophehurpeau/pob/compare/pob@4.10.0...pob@4.11.0) (2018-10-09)
+
+
+### Features
+
+* import babel-core only for babel-jest ([7850139](https://github.com/christophehurpeau/pob/commit/7850139))
+* pob-dependencies package ([ec085ce](https://github.com/christophehurpeau/pob/commit/ec085ce))
+* update dependencies ([f52b87b](https://github.com/christophehurpeau/pob/commit/f52b87b))
+* update deps and husky ([f3cb82d](https://github.com/christophehurpeau/pob/commit/f3cb82d))
+* update pob-babel 23.2.3 ([2f6c88d](https://github.com/christophehurpeau/pob/commit/2f6c88d))
+
+
+
+
+
 <a name="4.10.0"></a>
 # [4.10.0](https://github.com/christophehurpeau/pob/compare/pob@4.9.1...pob@4.10.0) (2018-08-31)
 

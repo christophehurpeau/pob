@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.2.3...pob-babel@23.3.0) (2018-10-09)
+
+
+### Bug Fixes
+
+* remove unused var ([465e1fb](https://github.com/christophehurpeau/pob/commit/465e1fb))
+
+
+### Features
+
+* pob-dependencies package ([ec085ce](https://github.com/christophehurpeau/pob/commit/ec085ce))
+* rollup-config-external-dependencies ([b44d7cd](https://github.com/christophehurpeau/pob/commit/b44d7cd))
+* update dependencies ([f52b87b](https://github.com/christophehurpeau/pob/commit/f52b87b))
+
+
+
+
+
 <a name="23.2.3"></a>
 ## [23.2.3](https://github.com/christophehurpeau/pob/compare/pob-babel@23.2.2...pob-babel@23.2.3) (2018-08-31)
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.7.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.6.1...babel-preset-pob-env@2.7.0) (2018-10-09)
+
+
+### Features
+
+* pob-dependencies package ([ec085ce](https://github.com/christophehurpeau/pob/commit/ec085ce))
+* update dependencies ([f52b87b](https://github.com/christophehurpeau/pob/commit/f52b87b))
+
+
+
+
+
 <a name="2.6.1"></a>
 ## [2.6.1](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.6.0...babel-preset-pob-env@2.6.1) (2018-08-31)
 
