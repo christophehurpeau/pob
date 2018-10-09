@@ -1,0 +1,18 @@
+{
+  "name": "rollup-config-external-dependencies",
+  "version": "0.0.0",
+  "description": "rollup config external dependencies",
+  "keywords": [],
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
+  "license": "ISC",
+  "repository": "git@github.com:christophehurpeau/pob.git",
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "engines": {
+    "node": ">=6.5.0"
+  },
+  "main": "./lib/index.js",
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true
+  }
+}

@@ -1,13 +1,9 @@
 'use strict';
 
-// node only > 9.3
-// const nodeBuiltinModules = require('module').builtinModules;
-const nodeBuiltinModules = Object.keys(process.binding('natives')).filter(
-  x => !x.startsWith('internal/')
-);
 const readFileSync = require('fs').readFileSync;
 const babel = require('rollup-plugin-babel');
 const resolve = require('rollup-plugin-node-resolve');
+const configExternalDependencies = require('rollup-config-external-dependencies');
 
 const cwd = process.cwd();
 const pkg = JSON.parse(readFileSync(`${cwd}/package.json`));
@@ -54,6 +50,8 @@ if (hasReact) {
 }
 /* eslint-enable node/no-deprecated-api */
 
+const external = configExternalDependencies(pkg);
+
 const createConfigForEnv = (entry, env, production) => {
   const devSuffix = production ? '' : '-dev';
   let entryPath;
@@ -86,12 +84,7 @@ const createConfigForEnv = (entry, env, production) => {
       sourcemap: true,
       exports: 'named',
     })),
-    external: path => {
-      if (path.includes('node_modules')) return true;
-      // !path.startsWith('@') &&
-      if (/^[a-z].*\//.test(path)) path = path.replace(/^([^/]+)\/.*$/, '$1');
-      return externalModules.includes(path);
-    },
+    external,
     plugins: [
       babel({
         extensions,
