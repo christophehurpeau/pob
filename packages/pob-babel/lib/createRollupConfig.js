@@ -32,10 +32,6 @@ const nodeVersion = version => {
   }
 };
 
-const externalModules = nodeBuiltinModules
-  .concat(Object.keys(pkg.dependencies || {}))
-  .concat(Object.keys(pkg.peerDependencies || {}));
-
 // allow to resolve .ts entry files
 /* eslint-disable node/no-deprecated-api */
 if (!require.extensions['.ts']) {
