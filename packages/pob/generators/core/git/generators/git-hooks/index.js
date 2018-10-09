@@ -146,6 +146,6 @@ module.exports = class GitHooksGenerator extends Generator {
   }
 
   end() {
-    this.spawnCommandSync('node', ['node_modules/husky/bin/install.js']);
+    this.spawnCommandSync('node', ['node_modules/husky/lib/installer/bin.js', 'install']);
   }
 };
