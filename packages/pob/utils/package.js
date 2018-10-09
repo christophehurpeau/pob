@@ -99,6 +99,7 @@ exports.sort = function sort(pkg) {
     'directories',
     'files',
     'scripts',
+    'husky',
     'lint-staged',
     'babel',
     'prettier',
