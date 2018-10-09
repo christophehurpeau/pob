@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.11.1](https://github.com/christophehurpeau/pob/compare/pob@4.11.0...pob@4.11.1) (2018-10-09)
+
+
+### Bug Fixes
+
+* add husky in package order ([b55ad60](https://github.com/christophehurpeau/pob/commit/b55ad60))
+
+
+
+
+
 # [4.11.0](https://github.com/christophehurpeau/pob/compare/pob@4.10.0...pob@4.11.0) (2018-10-09)
 
 
