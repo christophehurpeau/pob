@@ -1,6 +1,5 @@
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
-const inLerna = require('../../../utils/inLerna');
 
 module.exports = class CiGenerator extends Generator {
   constructor(args, opts) {

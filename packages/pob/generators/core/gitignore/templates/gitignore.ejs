@@ -1,6 +1,12 @@
+<% if (root) { -%>
 node_modules
+<% } -%>
 /build
+<% if (documentation) { -%>
+/docs
+<% } -%>
 
+<% if (root) { -%>
 /.settings
 /.project
 /.idea
@@ -15,3 +21,4 @@ node_modules
 *.old
 *~
 .#*
+<% } -%>

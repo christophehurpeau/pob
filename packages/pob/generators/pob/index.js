@@ -94,7 +94,12 @@ module.exports = class PobBaseGenerator extends Generator {
       });
     }
 
+
+    this.fs.delete(this.destinationPath('.commitrc.js'));
+
     this.composeWith(require.resolve('../core/editorconfig'));
+
+    this.composeWith(require.resolve('../core/clean'), { root: !this.useLerna || !this.inLerna });
 
     if (!this.inLerna) {
       this.composeWith(require.resolve('../core/git'));
@@ -105,6 +110,9 @@ module.exports = class PobBaseGenerator extends Generator {
       this.composeWith(require.resolve('../core/ci'), {
         updateOnly: this.options.updateOnly,
       });
+
+      // Always add a gitignore, because npm publish uses it.
+      this.composeWith(require.resolve('../core/gitignore'), { root: true });
     } else {
       switch (this.options.type) {
         case 'lib':

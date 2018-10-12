@@ -340,6 +340,11 @@ module.exports = class PobLibGenerator extends Generator {
       enabled: this.pobjson.documentation,
       testing: this.pobjson.testing,
     });
+
+    this.composeWith(require.resolve('../core/gitignore'), {
+      root: !inLerna,
+      documentation: this.pobjson.documentation,
+    });
   }
 
   writing() {

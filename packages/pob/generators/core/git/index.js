@@ -17,12 +17,6 @@ module.exports = class GitGenerator extends Generator {
 
   async initializing() {
     console.log('git: initializing');
-    this.fs.copy(
-      this.templatePath('gitignore'),
-      this.destinationPath('.gitignore'),
-    );
-
-    this.fs.delete(this.destinationPath('.commitrc.js'));
 
     let originUrl = await remoteUrl(this.destinationPath(), 'origin')
       .catch(() => '');
@@ -103,7 +97,10 @@ module.exports = class GitGenerator extends Generator {
 
   writing() {
     console.log('git: writing');
-    if (this.gitHost === 'none') return;
+
+    if (this.gitHost === 'none') {
+      return;
+    }
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     const repoName = this.repoName || this.options.name || pkg.name;
