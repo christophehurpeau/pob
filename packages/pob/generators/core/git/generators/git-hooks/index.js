@@ -86,6 +86,7 @@ module.exports = class GitHooksGenerator extends Generator {
     delete pkg.scripts.preparecommitmsg;
     delete pkg.scripts.postcheckout;
     delete pkg.scripts.postmerge;
+    delete pkg.scripts.postrewrite;
     delete pkg.scripts.postpublish;
 
     const hasBabel = packageUtils.transpileWithBabel(pkg);
