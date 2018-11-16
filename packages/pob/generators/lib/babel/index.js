@@ -159,13 +159,18 @@ module.exports = class BabelGenerator extends Generator {
 
     /* main / aliases / typing */
 
+    if (pkg.typings) {
+      if (!pkg.types) pkg.types = pkg.typings;
+      delete pkg.typings;
+    }
+
     // if (!pkg.main || pkg.main.startsWith('./lib/')) {
     if (useBabel) {
       pkg.main = !this.babelEnvs.find(env => env.target === 'node') ? './dist/index-browser.cjs.js' : './index.js';
-      pkg.typings = './dist/index.d.ts';
+      pkg.types = './dist/index.d.ts';
     } else {
       pkg.main = './lib/index.js';
-      pkg.typings = './lib/index.d.ts';
+      pkg.types = './lib/index.d.ts';
       if (!pkg.engines) pkg.engines = {};
       pkg.engines.node = '>=6.5.0';
     }

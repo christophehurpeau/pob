@@ -121,6 +121,12 @@ module.exports = class PobBaseGenerator extends Generator {
             fromPob: this.options.fromPob,
           });
           break;
+        case 'app':
+          this.composeWith(require.resolve('../app/'), {
+            updateOnly: this.options.updateOnly,
+            fromPob: this.options.fromPob,
+          });
+          break;
         default:
           throw new Error(`Invalid type: ${this.options.type}`);
       }

@@ -319,6 +319,8 @@ module.exports = class PobLibGenerator extends Generator {
       babelEnvs: JSON.stringify(this.babelEnvs),
     });
 
+    this.composeWith(require.resolve('../common/old-dependencies'));
+
     this.composeWith(require.resolve('./readme'), {
       documentation: !!this.pobjson.documentation,
       testing: !!this.pobjson.testing,
@@ -356,68 +358,7 @@ module.exports = class PobLibGenerator extends Generator {
       pkg.engines.yarn = '< 0.0.0';
     }
 
-    if (inLerna) {
-      // see git-hooks
-      packageUtils.removeDevDependencies(pkg, [
-        'komet',
-        'komet-karma',
-        'husky',
-        'yarnhook',
-        'lint-staged',
-        '@commitlint/cli',
-        '@commitlint/config-conventional',
-      ]);
-
-      if (this.fs.exists('.git-hooks')) this.fs.delete('.git-hooks');
-      if (this.fs.exists('git-hooks')) this.fs.delete('git-hooks');
-      if (this.fs.exists('.commitrc.js')) this.fs.delete('.commitrc.js');
-      delete pkg.commitlint;
-      delete pkg.husky;
-      delete pkg['lint-staged'];
-    }
-    if (pkg.scripts) {
-      delete pkg.scripts.postmerge;
-      delete pkg.scripts.postcheckout;
-      delete pkg.scripts.postrewrite;
-      delete pkg.scripts.precommit;
-      delete pkg.scripts.commitmsg;
-      delete pkg.scripts.preparecommitmsg;
-      delete pkg.scripts.prepublish;
-      delete pkg.scripts.postpublish;
-      delete pkg.scripts.prepare;
-    }
-
-
     const withBabel = Boolean(this.babelEnvs.length);
-
-    // old pob dependencies
-    packageUtils.removeDependencies(pkg, ['flow-runtime']);
-    packageUtils.removeDevDependencies(pkg, [
-      'tcomb',
-      'tcomb-forked',
-      'flow-runtime',
-      'flow-bin',
-      'springbokjs-library',
-      'babel-preset-es2015',
-      'babel-preset-es2015-webpack',
-      'babel-preset-es2015-node5',
-      'babel-preset-es2015-node6',
-      'babel-preset-pob',
-      'babel-preset-latest',
-      'babel-preset-stage-1',
-      'babel-preset-modern-browsers-stage-1',
-      'babel-preset-flow',
-      'babel-preset-flow-tcomb',
-      'babel-preset-flow-tcomb-forked',
-      'babel-plugin-typecheck',
-      'babel-plugin-defines',
-      'babel-plugin-import-rename',
-      'babel-plugin-discard-module-references',
-      'babel-plugin-remove-dead-code',
-      'babel-plugin-react-require',
-      'babel-preset-react',
-      'babel-preset-pob-react',
-    ]);
 
     if (inLerna) {
       packageUtils.removeDevDependencies(pkg, ['lerna', 'pob-release']);

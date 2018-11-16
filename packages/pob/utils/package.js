@@ -15,7 +15,7 @@ exports.hasBabel = pkg => !!(
 );
 
 exports.transpileWithBabel = pkg => !!(
-  pkg.devDependencies && pkg.devDependencies['pob-babel']
+  (pkg.devDependencies && (pkg.devDependencies['pob-babel'] || pkg.devDependencies['next'])) || (pkg.dependencies && pkg.dependencies['next'])
 );
 
 exports.hasReact = pkg => !!(
@@ -73,7 +73,8 @@ exports.sort = function sort(pkg) {
     'workspaces',
     'browserslist',
     'main',
-    'typings',
+    'types',
+    'typesVersions',
     'jsnext:main',
     'module',
     'module-dev',

@@ -32,7 +32,7 @@
     "@babel/preset-flow": "^7.0.0",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-pob-env": "^2.8.0",
-    "rollup": "^0.66.6",
+    "rollup": "^0.67.0",
     "rollup-config-external-dependencies": "^0.1.0",
     "rollup-plugin-babel": "^4.0.3",
     "rollup-plugin-node-resolve": "^3.4.0"
@@ -42,12 +42,12 @@
     "typescript": "^3.1.1"
   },
   "devDependencies": {
-    "eslint": "^5.7.0",
-    "eslint-config-pob": "^22.0.3",
+    "eslint": "^5.9.0",
+    "eslint-config-pob": "^24.0.1",
     "eslint-plugin-import": "^2.13.0",
-    "eslint-plugin-node": "^7.0.1",
+    "eslint-plugin-node": "^8.0.0",
     "eslint-plugin-prettier": "^3.0.0",
     "eslint-plugin-unicorn": "^6.0.1",
-    "prettier": "^1.14.3"
+    "prettier": "^1.15.2"
   }
 }

@@ -1,6 +1,7 @@
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
 const dependencies = require('pob-dependencies');
+const inLerna = require('../../../utils/inLerna');
 
 module.exports = class LintGenerator extends Generator {
   initializing() {
@@ -15,6 +16,40 @@ module.exports = class LintGenerator extends Generator {
     const hasReact = useBabel && packageUtils.hasReact(pkg);
     const babelEnvs = JSON.parse(this.options.babelEnvs);
     const useNodeOnly = !useBabel || (babelEnvs.length === 1 && babelEnvs[0].target === 'node');
+
+
+    if (inLerna) {
+      // see git-hooks
+      packageUtils.removeDevDependencies(pkg, [
+        'komet',
+        'komet-karma',
+        'husky',
+        'yarnhook',
+        'lint-staged',
+        '@commitlint/cli',
+        '@commitlint/config-conventional',
+      ]);
+
+      if (this.fs.exists('.git-hooks')) this.fs.delete('.git-hooks');
+      if (this.fs.exists('git-hooks')) this.fs.delete('git-hooks');
+      if (this.fs.exists('.commitrc.js')) this.fs.delete('.commitrc.js');
+      delete pkg.commitlint;
+      delete pkg.husky;
+      delete pkg['lint-staged'];
+    }
+
+    if (pkg.scripts) {
+      delete pkg.scripts.postmerge;
+      delete pkg.scripts.postcheckout;
+      delete pkg.scripts.postrewrite;
+      delete pkg.scripts.precommit;
+      delete pkg.scripts.commitmsg;
+      delete pkg.scripts.preparecommitmsg;
+      delete pkg.scripts.prepublish;
+      delete pkg.scripts.postpublish;
+      delete pkg.scripts.prepare;
+    }
+
 
     pkg.prettier = {
       trailingComma: !useBabel ? 'es5' : 'all',

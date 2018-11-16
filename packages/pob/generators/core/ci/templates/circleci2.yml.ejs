@@ -3,7 +3,7 @@ version: 2
 jobs:
   test-node8:
     docker:
-      - image: circleci/node:8.9
+      - image: circleci/node:8.12
     steps:
       - checkout
       - restore_cache:
@@ -43,22 +43,22 @@ jobs:
 #      - run:
 #          name: Check nothing was forget before commit
 #          command: npx pob-repository-check-clean
-<% [node6 && 6, node10 && 10].filter(Boolean).forEach(version => { -%>
+<% [node6 && { name: 6, version: '6.14' }, node10 && { name: 10, version: '10.13' }].filter(Boolean).forEach(({ name, version }) => { -%>
 
-  test-node<%= version %>:
+  test-node<%= name %>:
     docker:
       - image: circleci/node:<%= version %>
     steps:
       - checkout
       - restore_cache:
           keys:
-            - dependencies-node<%= version %>-{{ arch }}-{{ checksum "yarn.lock" }}
-            - dependencies-node<%= version %>-{{ arch }}
+            - dependencies-node<%= name %>-{{ arch }}-{{ checksum "yarn.lock" }}
+            - dependencies-node<%= name %>-{{ arch }}
       - run:
           name: Install dependencies
           command: yarn --prefer-offline --pure-lockfile
       - save_cache:
-          key: dependencies-node<%= version %>-{{ arch }}-{{ checksum "yarn.lock" }}
+          key: dependencies-node<%= name %>-{{ arch }}-{{ checksum "yarn.lock" }}
           paths:
             - node_modules
       - run:
