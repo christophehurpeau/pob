@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.9.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.8.0...babel-preset-pob-env@2.9.0) (2018-11-16)
+
+
+### Features
+
+* deps, circleci and app ([9bcab60](https://github.com/christophehurpeau/pob/commit/9bcab60))
+* update [@babel](https://github.com/babel) deps ([5542d8d](https://github.com/christophehurpeau/pob/commit/5542d8d))
+* update eslint ([b6d1bd2](https://github.com/christophehurpeau/pob/commit/b6d1bd2))
+
+
+
+
+
 # [2.8.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.7.0...babel-preset-pob-env@2.8.0) (2018-10-09)
 
 

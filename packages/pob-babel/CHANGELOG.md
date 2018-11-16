@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.4.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.3.1...pob-babel@23.4.0) (2018-11-16)
+
+
+### Features
+
+* deps, circleci and app ([9bcab60](https://github.com/christophehurpeau/pob/commit/9bcab60))
+* update dependencies ([40fdb05](https://github.com/christophehurpeau/pob/commit/40fdb05))
+* update eslint ([b6d1bd2](https://github.com/christophehurpeau/pob/commit/b6d1bd2))
+
+
+
+
+
 ## [23.3.1](https://github.com/christophehurpeau/pob/compare/pob-babel@23.3.0...pob-babel@23.3.1) (2018-10-09)
 
 **Note:** Version bump only for package pob-babel
