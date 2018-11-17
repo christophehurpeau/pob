@@ -37,12 +37,12 @@
     "standard-changelog": "0.0.1"
   },
   "devDependencies": {
-    "eslint": "^5.9.0",
-    "eslint-config-pob": "^24.0.1",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-node": "^8.0.0",
-    "eslint-plugin-prettier": "^3.0.0",
-    "eslint-plugin-unicorn": "^6.0.1",
-    "prettier": "^1.15.2"
+    "eslint": "5.9.0",
+    "eslint-config-pob": "24.0.1",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-node": "8.0.0",
+    "eslint-plugin-prettier": "3.0.0",
+    "eslint-plugin-unicorn": "6.0.1",
+    "prettier": "1.15.2"
   }
 }
