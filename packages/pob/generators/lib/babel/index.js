@@ -1,5 +1,6 @@
 const Generator = require('yeoman-generator');
 const mkdirp = require('mkdirp');
+const semver = require('semver');
 const packageUtils = require('../../../utils/package');
 const inLerna = require('../../../utils/inLerna');
 
@@ -170,9 +171,13 @@ module.exports = class BabelGenerator extends Generator {
       pkg.types = './dist/index.d.ts';
     } else {
       pkg.main = './lib/index.js';
-      pkg.types = './lib/index.d.ts';
+      if (this.fs.exists('./lib/index.d.ts') || pkg.types) {
+        pkg.types = './lib/index.d.ts';
+      }
       if (!pkg.engines) pkg.engines = {};
-      pkg.engines.node = '>=6.5.0';
+      if (!pkg.engines.node || semver.lt(pkg.engines.node.slice(2), '6.5.0')) {
+        pkg.engines.node = '>=6.5.0';
+      }
     }
 
     if (!this.babelEnvs.find(env => env.target === 'browser' && env.version === undefined && env.formats.includes('cjs'))) {

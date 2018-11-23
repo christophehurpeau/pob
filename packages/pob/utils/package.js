@@ -131,7 +131,7 @@ const internalRemoveDependencies = (pkg, type, dependencies) => {
   }
 };
 
-const internalAddDependencies = (pkg, type, dependencies) => {
+const internalAddDependencies = (pkg, type, dependencies, cleaned) => {
   const ignoreDependencies = type === 'dependencies' ? {} : (pkg.dependencies || {});
   const currentDependencies = pkg[type];
   const removeDependencies = [];
@@ -151,19 +151,20 @@ const internalAddDependencies = (pkg, type, dependencies) => {
     dependenciesToCheck.forEach((dependency) => {
       const potentialNewVersion = pobDependencies[dependency];
       const currentVersion = currentDependencies[dependency];
+      const potentialNewVersionCleaned = cleanVersion(potentialNewVersion);
       try {
         if (
           !currentVersion ||
-          semver.gt(cleanVersion(potentialNewVersion), cleanVersion(currentVersion))
+          semver.gt(potentialNewVersionCleaned, cleanVersion(currentVersion))
         ) {
           filtredDependencies[dependency] = potentialNewVersion;
-        } else if (cleanVersion(potentialNewVersion) === cleanVersion(currentVersion)) {
+        } else if (potentialNewVersionCleaned === cleanVersion(currentVersion)) {
           filtredDependencies[dependency] = potentialNewVersion;
         } else if (potentialNewVersion !== currentVersion) {
           console.warn(`dependency "${dependency}" has a higher version: expected ${potentialNewVersion}, actual: ${currentVersion}.`);
         }
       } catch (err) {
-        filtredDependencies[dependency] = potentialNewVersion;
+        filtredDependencies[dependency] = cleaned ? potentialNewVersionCleaned : potentialNewVersion;
       }
     });
   }
@@ -181,7 +182,7 @@ exports.removeDependencies = function removeDependencies(pkg, dependencies) {
 };
 
 exports.addDevDependencies = function addDevDependencies(pkg, dependencies) {
-  internalAddDependencies(pkg, 'devDependencies', dependencies);
+  internalAddDependencies(pkg, 'devDependencies', dependencies, true);
 };
 
 exports.removeDevDependencies = function removeDevDependencies(pkg, dependencies) {

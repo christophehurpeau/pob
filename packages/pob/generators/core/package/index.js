@@ -105,10 +105,14 @@ module.exports = class PackageGenerator extends Generator {
     };
 
     Object.assign(pkg, {
-      version: '0.0.0',
       author: `${author.name} <${author.email}>${author.url ? ` (${author.url})` : ''}`,
       keywords: [],
     }, Object.assign({}, pkg));
+
+    if (!pkg.private && !pkg.version) {
+      // lerna root pkg should not have version
+      pkg.version = '0.0.0';
+    }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
