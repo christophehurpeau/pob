@@ -41,7 +41,7 @@
   "devDependencies": {
     "@babel/core": "7.1.6",
     "@babel/preset-env": "7.1.6",
-    "babel-preset-latest-node": "2.0.2",
+    "babel-preset-latest-node": "3.0.1",
     "babel-preset-modern-browsers": "12.0.0",
     "eslint": "5.9.0",
     "eslint-config-pob": "24.0.2",
