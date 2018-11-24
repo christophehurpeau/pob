@@ -15,7 +15,7 @@ module.exports = class LintGenerator extends Generator {
     const useBabel = packageUtils.transpileWithBabel(pkg);
     const hasReact = useBabel && packageUtils.hasReact(pkg);
     const babelEnvs = JSON.parse(this.options.babelEnvs);
-    const useNodeOnly = !useBabel || (babelEnvs.length === 1 && babelEnvs[0].target === 'node');
+    const useNodeOnly = !useBabel || (babelEnvs.every(env => env.target === 'node'));
 
 
     if (inLerna) {
