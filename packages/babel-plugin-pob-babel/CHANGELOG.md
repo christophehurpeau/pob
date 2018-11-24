@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/christophehurpeau/pob/compare/babel-plugin-pob-babel@0.6.0...babel-plugin-pob-babel@0.6.1) (2018-11-24)
+
+**Note:** Version bump only for package babel-plugin-pob-babel
+
+
+
+
+
 # [0.6.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-pob-babel@0.5.0...babel-plugin-pob-babel@0.6.0) (2018-11-16)
 
 

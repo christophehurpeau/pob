@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.2.0...pob-dependencies@0.3.0) (2018-11-24)
+
+
+### Features
+
+* drop node 6 ([7530034](https://github.com/christophehurpeau/pob/commit/7530034))
+
+
+
+
+
 # [0.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.1.1...pob-dependencies@0.2.0) (2018-11-16)
 
 

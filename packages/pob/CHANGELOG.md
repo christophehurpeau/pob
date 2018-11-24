@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.13.0](https://github.com/christophehurpeau/pob/compare/pob@4.12.0...pob@4.13.0) (2018-11-24)
+
+
+### Bug Fixes
+
+* always use fixed version in devDependencies ([0332e8b](https://github.com/christophehurpeau/pob/commit/0332e8b))
+
+
+### Features
+
+* drop node 6 ([7530034](https://github.com/christophehurpeau/pob/commit/7530034))
+
+
+
+
+
 # [4.12.0](https://github.com/christophehurpeau/pob/compare/pob@4.11.2...pob@4.12.0) (2018-11-16)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.5.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.4.0...pob-babel@23.5.0) (2018-11-24)
+
+
+### Features
+
+* drop node 6 ([7530034](https://github.com/christophehurpeau/pob/commit/7530034))
+
+
+
+
+
 # [23.4.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.3.1...pob-babel@23.4.0) (2018-11-16)
 
 
