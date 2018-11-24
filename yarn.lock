@@ -2220,13 +2220,14 @@ babel-preset-latest-node@2.0.2:
     "@babel/plugin-transform-function-name" "^7.0.0"
     "@babel/plugin-transform-modules-commonjs" "^7.0.0"
 
-babel-preset-modern-browsers@12.0.0:
-  version "12.0.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-modern-browsers/-/babel-preset-modern-browsers-12.0.0.tgz#2b66c8ffcebb865958b3ee97a4b07ecce3fe2431"
-  integrity sha512-S/ifWr+lOHlMEOZydpadl9o/PqVIjukbvQyHh61pHhA7RQWzrPNZqmq0PJvg8oHjK0xtOHw8h3pqHiZucy0/dw==
+babel-preset-modern-browsers@13.0.1:
+  version "13.0.1"
+  resolved "https://registry.yarnpkg.com/babel-preset-modern-browsers/-/babel-preset-modern-browsers-13.0.1.tgz#a04f002923c11011d564b64f8183f5d2ccf28392"
+  integrity sha512-HIWYwr1Y+yweOLolAVwYuRi7ifJnH4IIoPzkrp4E/TT35MDea257Zwn3/PGSSOsiMI6J0nzjzfVOVMQC4GnElQ==
   dependencies:
     "@babel/plugin-proposal-async-generator-functions" "^7.0.0"
     "@babel/plugin-proposal-object-rest-spread" "^7.0.0"
+    "@babel/plugin-proposal-optional-catch-binding" "^7.0.0"
     "@babel/plugin-proposal-unicode-property-regex" "^7.0.0"
     "@babel/plugin-syntax-async-generators" "^7.0.0"
     "@babel/plugin-syntax-object-rest-spread" "^7.0.0"
