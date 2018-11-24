@@ -118,11 +118,6 @@ module.exports = class BabelGenerator extends Generator {
       if (!pkg.engines) pkg.engines = {};
       const minNodeVersion = this.babelEnvs.filter(env => env.target === 'node').reduce((min, env) => Math.min(min, env.version), Number.MAX_SAFE_INTEGER);
       switch (String(minNodeVersion)) {
-        case '6':
-          pkg.engines.node = '>=6.5.0';
-          if (pkg.dependencies && pkg.dependencies['@types/node']) pkg.dependencies['@types/node'] = '>=6.0.0';
-          if (pkg.devDependencies && pkg.devDependencies['@types/node']) pkg.devDependencies['@types/node'] = '>=6.0.0';
-          break;
         case '8':
           pkg.engines.node = '>=8.3.0';
           if (pkg.dependencies && pkg.dependencies['@types/node']) pkg.dependencies['@types/node'] = '>=8.0.0';

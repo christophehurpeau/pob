@@ -53,15 +53,16 @@ module.exports = class PobLibGenerator extends Generator {
           case 'es5':
             throw new Error('use olderNode instead.');
 
+          case 'node6':
           case 'node7':
           case 'node8':
             return {
               target: 'node', version: 8, formats: ['cjs'],
             };
 
-          case 'node6':
+          case 'node10':
             return {
-              target: 'node', version: 6, formats: ['cjs'],
+              target: 'node', version: 10, formats: ['cjs'],
             };
 
           case 'webpack-node7':
@@ -93,13 +94,12 @@ module.exports = class PobLibGenerator extends Generator {
     }
 
     this.babelEnvs = this.babelEnvs.filter(env => (
-      env.target !== 'node' || env.version >= 6
+      env.target !== 'node' || env.version >= 8
     ));
 
     if (
       !this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '10')
-      && Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8'))
-      && Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '6'))) {
+      && Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8'))) {
       this.babelEnvs.unshift({
         target: 'node',
         version: '10',
@@ -139,7 +139,6 @@ module.exports = class PobLibGenerator extends Generator {
       babelNodeVersions: [
         Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '10')) && '10',
         Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8')) && '8',
-        Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '6')) && '6',
       ].filter(Boolean),
       babelBrowserVersions: [
         Boolean(this.babelEnvs.find(env => env.target === 'browser' && env.version === 'modern')) && 'modern',
@@ -176,19 +175,14 @@ module.exports = class PobLibGenerator extends Generator {
         validate: versions => versions.length > 0,
         choices: [
           {
-            name: '10 (Current Release)',
+            name: '10 (Active LTS)',
             value: '10',
             checked: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '10')),
           },
           {
-            name: '8 (Active LTS)',
+            name: '8 (Maintenance LTS)',
             value: '8',
             checked: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8')),
-          },
-          {
-            name: '6 (Maintenance LTS)',
-            value: '6',
-            checked: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '6')),
           },
         ],
       },
@@ -237,7 +231,7 @@ module.exports = class PobLibGenerator extends Generator {
 
     this.babelEnvs = [
       ...babelNodeVersions.map(version => ({
-        target: 'node', version, formats: babelFormats.includes('es') ? (version === '8' ? babelFormats : ['cjs']) : babelFormats,
+        target: 'node', version, formats: babelFormats.includes('es') ? (version === '10' ? babelFormats : ['cjs']) : babelFormats,
       })),
       ...babelBrowserVersions.map(version => ({
         target: 'browser', version, formats: babelFormats.includes('cjs') ? (version === undefined ? babelFormats : ['es']) : babelFormats,

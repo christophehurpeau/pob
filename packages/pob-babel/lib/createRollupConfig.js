@@ -23,10 +23,10 @@ const entries = isIndexBrowserEntry ? ['index', ...pobConfig.entries.slice(2)] :
 
 const nodeVersion = version => {
   switch (String(version)) {
+    case '10':
+      return '10.13';
     case '8':
       return '8.3';
-    case '6':
-      return '6.5';
     default:
       return version;
   }

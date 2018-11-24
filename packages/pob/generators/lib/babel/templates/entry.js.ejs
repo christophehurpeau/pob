@@ -2,33 +2,32 @@ var production = process.env.NODE_ENV === 'production';
 <% var envs = [
     ['node10', node10],
     ['node8', node8],
-    ['node6', node6],
 ].filter(v => v[1]);
 if (envs.length === 1) { -%>
+<% if (node8) { -%>
+/* istanbul ignore next */
+if (nodeVersionMajor > 8 || (nodeVersionMajor === 8 && nodeVersionMinor >= 3)) {
+  module.exports = require('./dist/<%= entry %>-<%= envs[0][0] %>' + (production ? '' : '-dev') + '.cjs');
+/* istanbul ignore next */
+} else {
+  throw new Error('Node version not supported: ' + nodeVersion + ' (' + process.versions.node + ').');
+}
+<% } else { -%>
 module.exports = require('./dist/<%= entry %>-<%= envs[0][0] %>' + (production ? '' : '-dev') + '.cjs');
+<% } -%>
 <% } else { -%>
 <%# parseFloat(process.versions.node) doesnt work with 6.10.1 -%>
 var nodeVersion = process.versions.node.split('.');
 var nodeVersionMajor = Number(nodeVersion[0]);
 var nodeVersionMinor = Number(nodeVersion[1]);
-<% if (node10) { -%>
 /* istanbul ignore next */
-if (nodeVersionMajor > 10 || (nodeVersionMajor === 10))
+if (nodeVersionMajor > 10 || (nodeVersionMajor === 10 && nodeVersionMinor >= 13)) {
   module.exports = require('./dist/<%= entry %>-node10' + (production ? '' : '-dev') + '.cjs');
-<% } if (node8) { -%>
 /* istanbul ignore next */
-<% if (node10) { -%>
-else <% } -%>
-if (nodeVersionMajor > 8 || (nodeVersionMajor === 8 && nodeVersionMinor >= 3))
+} else if (nodeVersionMajor > 8 || (nodeVersionMajor === 8 && nodeVersionMinor >= 3)) {
   module.exports = require('./dist/<%= entry %>-node8' + (production ? '' : '-dev') + '.cjs');
-<% } if (node6) { -%>
 /* istanbul ignore next */
-<% if (node8 || node10) { -%>
-else
-  <% } -%>module.exports = require('./dist/<%= entry %>-node6' + (production ? '' : '-dev') + '.cjs');
-<% } else { -%>
-/* istanbul ignore next */
-<% if (node8 || node10) { -%>
-else <% } -%>
+} else {
   throw new Error('Node version not supported: ' + nodeVersion + ' (' + process.versions.node + ').');
-<% } } -%>
+}
+<% } -%>
