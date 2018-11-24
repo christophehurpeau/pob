@@ -216,7 +216,7 @@ module.exports = class BabelGenerator extends Generator {
 
     if (esNodeEnv) {
       pkg['module:node'] = `./dist/index-${esNodeEnv.target}${esNodeEnv.version}.es.js`;
-      pkg['module:node-dev'] = './dist/index-node8-dev.es.js';
+      pkg['module:node-dev'] = `./dist/index-${esNodeEnv.target}${esNodeEnv.version}-dev.es.js`;
     }
 
     if (useBabel) {
