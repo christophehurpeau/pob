@@ -152,19 +152,20 @@ const internalAddDependencies = (pkg, type, dependencies, cleaned) => {
       const potentialNewVersion = pobDependencies[dependency];
       const currentVersion = currentDependencies[dependency];
       const potentialNewVersionCleaned = cleanVersion(potentialNewVersion);
+      const getNewVersion = () => cleaned ? potentialNewVersionCleaned : potentialNewVersion;
       try {
         if (
           !currentVersion ||
           semver.gt(potentialNewVersionCleaned, cleanVersion(currentVersion))
         ) {
-          filtredDependencies[dependency] = potentialNewVersion;
+          filtredDependencies[dependency] = getNewVersion();
         } else if (potentialNewVersionCleaned === cleanVersion(currentVersion)) {
-          filtredDependencies[dependency] = potentialNewVersion;
+          filtredDependencies[dependency] = getNewVersion();
         } else if (potentialNewVersion !== currentVersion) {
           console.warn(`dependency "${dependency}" has a higher version: expected ${potentialNewVersion}, actual: ${currentVersion}.`);
         }
       } catch (err) {
-        filtredDependencies[dependency] = cleaned ? potentialNewVersionCleaned : potentialNewVersion;
+        filtredDependencies[dependency] = getNewVersion();
       }
     });
   }
