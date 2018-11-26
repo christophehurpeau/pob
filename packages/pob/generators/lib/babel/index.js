@@ -37,7 +37,9 @@ module.exports = class BabelGenerator extends Generator {
   initializing() {
     this.entries = JSON.parse(this.options.entries);
     this.babelEnvs = JSON.parse(this.options.babelEnvs);
-    mkdirp(this.destinationPath('src'));
+    if (this.babelEnvs.length !== 0) {
+      mkdirp(this.destinationPath('src'));
+    }
 
     this.entries.forEach((entry) => {
       const entryDestPath = this.destinationPath(`${entry}.js`);
