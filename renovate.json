@@ -1,5 +1,20 @@
 {
   "extends": [
     "config:js-lib"
+  ],
+  "packageRules": [
+    {
+      "packagePatterns": ["*"],
+      "semanticCommitType": "chore"
+    },
+    {
+      "depTypeList": ["dependencies"],
+      "semanticCommitType": "fix"
+    },
+    {
+      "paths": ["packages/pob-dependencies"],
+      "depTypeList": ["devDependencies"],
+      "semanticCommitType": "feat"
+    }
   ]
 }
