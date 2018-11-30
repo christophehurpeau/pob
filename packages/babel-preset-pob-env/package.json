@@ -47,6 +47,6 @@
     "eslint-config-pob": "24.0.2",
     "eslint-plugin-node": "8.0.0",
     "eslint-plugin-prettier": "3.0.0",
-    "prettier": "1.15.2"
+    "prettier": "1.15.3"
   }
 }
