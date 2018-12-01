@@ -35,7 +35,7 @@
     "lint-staged": "8.1.0",
     "pob-babel": "^23.5.0",
     "pob-release": "^4.6.1",
-    "prettier": "1.15.2",
+    "prettier": "1.15.3",
     "typedoc": "0.13.0",
     "typescript": "3.1.6",
     "typescript-eslint-parser": "21.0.1",
