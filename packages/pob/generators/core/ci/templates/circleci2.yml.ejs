@@ -43,7 +43,7 @@ jobs:
 #      - run:
 #          name: Check nothing was forget before commit
 #          command: npx pob-repository-check-clean
-<% [node11 && { name: 11, version: '11.2' }, node10 && { name: 10, version: '10.13' }].filter(Boolean).forEach(({ name, version }) => { -%>
+<% [node11 && { name: 11, version: '11.2' }, node10 && { name: 10, version: '10.14' }].filter(Boolean).forEach(({ name, version }) => { -%>
 
   test-node<%= name %>:
     docker:
