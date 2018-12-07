@@ -102,6 +102,7 @@ const createConfigForEnv = (entry, env, production) => {
           ],
         ].filter(Boolean),
         plugins: [
+          require.resolve('./babel-plugin-rewrite-this'),
           // require.resolve('babel-plugin-external-helpers'),
         ].filter(Boolean),
         externalHelpers: false,
