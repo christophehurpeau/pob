@@ -1,7 +1,9 @@
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
-const dependencies = require('pob-dependencies');
 const inLerna = require('../../../utils/inLerna');
+const ensureJsonFileFormatted = require('../../../utils/ensureJsonFileFormatted');
+const sortObject = require('../../../utils/sortObject');
+const formatJson = require('../../../utils/formatJson');
 
 module.exports = class LintGenerator extends Generator {
   initializing() {
@@ -142,6 +144,7 @@ module.exports = class LintGenerator extends Generator {
       }
       this.fs.writeJSON(eslintrcPath, eslintConfig);
     } else {
+      ensureJsonFileFormatted(eslintrcPath);
       const eslintConfig = this.fs.readJSON(eslintrcPath);
       // if (!eslintConfig.extends || typeof eslintConfig.extends === 'string') {
       eslintConfig.extends = config;
@@ -176,7 +179,14 @@ module.exports = class LintGenerator extends Generator {
         }
       }
 
-      this.fs.writeJSON(eslintrcPath, eslintConfig);
+      const sortedConfig = sortObject(eslintConfig, ['root','parser','parserOptions','plugins','extends','env','globals','settings','rules','overrides']);
+      if (sortedConfig.overrides) {
+        sortedConfig.overrides.forEach((override, index) => {
+          sortedConfig.overrides[index] = sortObject(override, ['files', 'env','globals','settings','rules'])
+        })
+      }
+
+      this.fs.write(eslintrcPath, formatJson(sortedConfig));
     }
 
     const srcDirectory = useBabel ? 'src' : 'lib';

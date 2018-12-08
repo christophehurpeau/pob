@@ -2,6 +2,7 @@
 const semver = require('semver');
 const parseAuthor = require('parse-author');
 const pobDependencies = require('pob-dependencies');
+const sortObject = require('./sortObject');
 
 exports.parseAuthor = parseAuthor;
 
@@ -30,17 +31,6 @@ exports.hasDocumentation = pkg => !!(
 exports.hasJest = pkg => !!(
   (pkg.devDependencies && pkg.devDependencies.jest)
 );
-
-function sortObject(obj, keys = []) {
-  const objCopy = Object.assign({}, obj);
-  const objKeys = Object.keys(obj);
-  objKeys.forEach(key => delete obj[key]);
-  keys
-    .filter(key => Object.hasOwnProperty.call(objCopy, key))
-    .concat(objKeys.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase())))
-    .forEach(key => (obj[key] = objCopy[key]));
-  return obj;
-}
 
 function internalAddToObject(pkg, key, object) {
   if (!pkg[key]) {

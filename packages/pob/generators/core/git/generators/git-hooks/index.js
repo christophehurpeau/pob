@@ -96,11 +96,11 @@ module.exports = class GitHooksGenerator extends Generator {
     pkg['lint-staged'] = {
       // [`{README.md,package.json${inLerna ? ',packages/*/package.json,packages/*/README.md,' : ''},.eslintrc.json}`]: [
       [`{package.json${inLerna ? ',packages/*/package.json,' : ''},.eslintrc.json}`]: [
-        'prettier --write',
+        'prettier --parser json --write',
         'git add',
       ],
       [`${inLerna ? 'packages/*/' : ''}${srcDirectory}/**/*.json`]: [
-        'prettier --write',
+        'prettier --parser json --write',
         'git add',
       ],
       [`${inLerna ? 'packages/*/' : ''}${srcDirectory}/**/*.${hasReact ? '{js,jsx}' : 'js'}`]: [

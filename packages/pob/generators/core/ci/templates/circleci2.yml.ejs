@@ -3,7 +3,7 @@ version: 2
 jobs:
   test-node8:
     docker:
-      - image: circleci/node:8.12
+      - image: circleci/node:8.14
     steps:
       - checkout
       - restore_cache:
@@ -43,7 +43,7 @@ jobs:
 #      - run:
 #          name: Check nothing was forget before commit
 #          command: npx pob-repository-check-clean
-<% [node11 && { name: 11, version: '11.2' }, node10 && { name: 10, version: '10.14' }].filter(Boolean).forEach(({ name, version }) => { -%>
+<% [node11 && { name: 11, version: '11.3' }, node10 && { name: 10, version: '10.14' }].filter(Boolean).forEach(({ name, version }) => { -%>
 
   test-node<%= name %>:
     docker:
