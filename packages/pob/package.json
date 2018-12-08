@@ -46,7 +46,7 @@
     "yeoman-generator": "^2.0.5"
   },
   "devDependencies": {
-    "eslint": "5.9.0",
+    "eslint": "5.10.0",
     "eslint-config-airbnb-base": "13.1.0",
     "eslint-plugin-import": "2.14.0",
     "pob-release": "^4.6.1"
