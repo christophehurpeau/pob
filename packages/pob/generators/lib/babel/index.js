@@ -164,7 +164,7 @@ module.exports = class BabelGenerator extends Generator {
 
     // if (!pkg.main || pkg.main.startsWith('./lib/')) {
     if (useBabel) {
-      pkg.main = !this.babelEnvs.find(env => env.target === 'node') ? `./dist/index-browser.${!!this.babelEnvs.find(env => env.target === 'browser' && env.formats.includes('cjs'))?'es': 'cjs'}.js` : './index.js';
+      pkg.main = !this.babelEnvs.find(env => env.target === 'node') ? `./dist/index-browser.${!!this.babelEnvs.find(env => env.target === 'browser' && !env.formats.includes('cjs'))?'es': 'cjs'}.js` : './index.js';
       pkg.types = './dist/index.d.ts';
     } else {
       pkg.main = './lib/index.js';
