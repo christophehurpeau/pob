@@ -32,6 +32,12 @@ module.exports = class PobBaseGenerator extends Generator {
       desc: 'Don\'t run yarn or build',
     });
 
+    this.option('force', {
+      type: Boolean,
+      required: true,
+      desc: 'Don\'t check diff',
+    });
+
     this.option('license', {
       type: Boolean,
       required: false,
@@ -51,7 +57,7 @@ module.exports = class PobBaseGenerator extends Generator {
     // prettier package.json to ensure diff is correct
     try {
       const pkgJson = fs.readFileSync(this.destinationPath('package.json'), 'utf-8');
-      const formattedPkg = prettier.format(pkgJson, { parser: 'json', printWidth: 100 });
+      const formattedPkg = prettier.format(pkgJson, { parser: 'json' });
       if (pkgJson !== formattedPkg) {
         console.warn('prettier package.json');
         fs.writeFileSync(this.destinationPath('package.json'), formattedPkg);
@@ -74,12 +80,11 @@ module.exports = class PobBaseGenerator extends Generator {
     });
 
     if (this.useLerna) {
-      this.composeWith(require.resolve('../core/lerna'));
+      this.composeWith(require.resolve('../core/lerna'), {
+        force: this.options.force,
+      });
     }
   }
-
-  // async prompting() {
-  // }
 
   default() {
     this.fs.delete('Makefile');
@@ -139,7 +144,7 @@ module.exports = class PobBaseGenerator extends Generator {
 
   install() {
     if (this.options.fromPob) return;
-    return this.spawnCommandSync('yarn');
+    return this.spawnCommandSync('yarn', 'install', '--prefer-offline');
   }
 
   end() {

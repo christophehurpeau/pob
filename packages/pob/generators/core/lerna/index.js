@@ -1,3 +1,4 @@
+const path = require('path');
 const { readdirSync, existsSync } = require('fs');
 const { spawnSync } = require('child_process');
 const Generator = require('yeoman-generator');
@@ -109,7 +110,7 @@ module.exports = class LernaGenerator extends Generator {
     this.packageNames.forEach((name) => {
       if (!existsSync(`packages/${name}/.yo-rc.json`) && !existsSync(`packages/${name}/.pob.json`)) return;
       console.log(`=> update ${name}`);
-      spawnSync(process.argv[0], [process.argv[1], 'update', 'from-pob'], {
+      spawnSync(process.argv[0], [process.argv[1], 'update', 'from-pob', this.options.force ? '--force' : undefined].filter(Boolean), {
         cwd: `packages/${name}`,
         stdio: 'inherit',
       });

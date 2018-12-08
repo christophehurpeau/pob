@@ -23,7 +23,7 @@ env.registerStub(require('./generators/pob'), 'pob:generator');
 
 const printUsage = () => {
   console.error('Usage: pob [lerna] lib|app');
-  console.error('       pob update');
+  console.error('       pob update [--force]');
   console.error('       pob lerna convert-npm');
   console.error('       pob add <packageName>');
 };
@@ -84,6 +84,7 @@ const options = {
   updateOnly,
   lerna,
   fromPob,
+  force: argv.force,
 };
 
 const generator = env.run('pob:generator', options, (err) => {
