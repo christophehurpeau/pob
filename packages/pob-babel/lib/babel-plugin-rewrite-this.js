@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * A visitor to walk the tree, rewriting all `this` references in the top-level scope to be
  * `undefined`.
@@ -14,15 +16,15 @@ const rewriteThisVisitor = {
   },
 };
 
-module.exports = function () {
+module.exports = function() {
   return {
     name: 'babel-plugin-rewrite-this',
     visitor: {
       Program: {
         exit(path, state) {
           path.traverse(rewriteThisVisitor);
-        }
-      }
-    }
-  }
+        },
+      },
+    },
+  };
 };
