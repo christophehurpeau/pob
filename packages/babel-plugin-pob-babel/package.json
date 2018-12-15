@@ -12,8 +12,7 @@
   },
   "main": "./lib/index.js",
   "scripts": {
-    "lint": "eslint lib/",
-    "test": "echo \"No tests\""
+    "lint": "eslint lib/"
   },
   "prettier": {
     "trailingComma": "es5",

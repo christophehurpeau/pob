@@ -20,7 +20,6 @@
     "build": "echo \"No build script.\"",
     "clean": "rm -Rf docs dist",
     "lint": "eslint lib/",
-    "test": "echo \"No tests\"",
     "watch": "echo \"No watch script.\""
   },
   "prettier": {

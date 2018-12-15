@@ -21,7 +21,6 @@
   "scripts": {
     "build": "echo \"No build script.\"",
     "lint": "eslint lib/",
-    "test": "echo \"No tests\"",
     "watch": "echo \"No watch script.\""
   },
   "prettier": {
