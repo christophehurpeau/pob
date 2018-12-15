@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.5.1](https://github.com/christophehurpeau/pob/compare/pob-babel@23.5.0...pob-babel@23.5.1) (2018-12-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency rollup-plugin-node-resolve to v4 ([#29](https://github.com/christophehurpeau/pob/issues/29)) ([de96afe](https://github.com/christophehurpeau/pob/commit/de96afe))
+* rollup error this because of jsx-self plugin ([aee290c](https://github.com/christophehurpeau/pob/commit/aee290c))
+
+
+
+
+
 # [23.5.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.4.0...pob-babel@23.5.0) (2018-11-24)
 
 

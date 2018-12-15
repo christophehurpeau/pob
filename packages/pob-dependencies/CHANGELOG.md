@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.3.0...pob-dependencies@0.4.0) (2018-12-15)
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.2.0 ([#25](https://github.com/christophehurpeau/pob/issues/25)) ([ef42abc](https://github.com/christophehurpeau/pob/commit/ef42abc))
+* **deps:** update dependency [@babel](https://github.com/babel)/core to v7.2.2 ([#32](https://github.com/christophehurpeau/pob/issues/32)) ([490ed7c](https://github.com/christophehurpeau/pob/commit/490ed7c))
+* **deps:** update dependency [@types](https://github.com/types)/jest to v23.3.10 ([#19](https://github.com/christophehurpeau/pob/issues/19)) ([8550c9b](https://github.com/christophehurpeau/pob/commit/8550c9b))
+* **deps:** update dependency husky to v1.2.1 ([#31](https://github.com/christophehurpeau/pob/issues/31)) ([c09739d](https://github.com/christophehurpeau/pob/commit/c09739d))
+* **deps:** update dependency lerna to v3.5.0 ([#17](https://github.com/christophehurpeau/pob/issues/17)) ([8587775](https://github.com/christophehurpeau/pob/commit/8587775))
+* **deps:** update dependency lerna to v3.5.1 ([#21](https://github.com/christophehurpeau/pob/issues/21)) ([9bde994](https://github.com/christophehurpeau/pob/commit/9bde994))
+* **deps:** update dependency lerna to v3.6.0 ([#27](https://github.com/christophehurpeau/pob/issues/27)) ([38264b9](https://github.com/christophehurpeau/pob/commit/38264b9))
+* **deps:** update dependency typescript to v3.2.1 ([#22](https://github.com/christophehurpeau/pob/issues/22)) ([fad60b6](https://github.com/christophehurpeau/pob/commit/fad60b6))
+* **deps:** update dependency typescript to v3.2.2 ([#26](https://github.com/christophehurpeau/pob/issues/26)) ([8aa3d35](https://github.com/christophehurpeau/pob/commit/8aa3d35))
+* **deps:** update dependency typescript-eslint-parser to v21.0.2 ([#24](https://github.com/christophehurpeau/pob/issues/24)) ([739cd25](https://github.com/christophehurpeau/pob/commit/739cd25))
+
+
+
+
+
 # [0.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.2.0...pob-dependencies@0.3.0) (2018-11-24)
 
 

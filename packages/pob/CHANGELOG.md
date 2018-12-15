@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.14.0](https://github.com/christophehurpeau/pob/compare/pob@4.13.0...pob@4.14.0) (2018-12-15)
+
+
+### Bug Fixes
+
+* devDep always cleaned ([72e351a](https://github.com/christophehurpeau/pob/commit/72e351a))
+* dont create src folder when no babel envs ([4a76c9c](https://github.com/christophehurpeau/pob/commit/4a76c9c))
+* eslint babel-node when every env is for node ([081ec3b](https://github.com/christophehurpeau/pob/commit/081ec3b))
+* main entry when no cjs format ([bf67291](https://github.com/christophehurpeau/pob/commit/bf67291))
+* main es for non cjs formats ([cf3f046](https://github.com/christophehurpeau/pob/commit/cf3f046))
+* pkg module:node-dev path ([3850905](https://github.com/christophehurpeau/pob/commit/3850905))
+* remove no tests script ([5940d86](https://github.com/christophehurpeau/pob/commit/5940d86))
+
+
+### Features
+
+* add --force option ([46bf4a5](https://github.com/christophehurpeau/pob/commit/46bf4a5))
+* clean json prettier format and sort eslint config ([7b4141b](https://github.com/christophehurpeau/pob/commit/7b4141b))
+* enable strictBindCallApply in ts config ([bfa0668](https://github.com/christophehurpeau/pob/commit/bfa0668))
+* update docker node image to 10.14 ([9618d22](https://github.com/christophehurpeau/pob/commit/9618d22))
+
+
+
+
+
 # [4.13.0](https://github.com/christophehurpeau/pob/compare/pob@4.12.0...pob@4.13.0) (2018-11-24)
 
 
