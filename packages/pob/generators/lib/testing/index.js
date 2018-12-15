@@ -81,9 +81,9 @@ module.exports = class TestingGenerator extends Generator {
 
       delete pkg.jest;
       if (inLerna) {
-        packageUtils.addScripts(pkg, {
-          test: 'echo "No tests"',
-        });
+        if (pkg.scripts.test === 'echo "No tests"') {
+          delete pkg.scripts.test;
+        }
         delete pkg.scripts['generate:test-coverage'];
       } else if (pkg.scripts) {
         delete pkg.scripts.test;
