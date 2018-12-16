@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.5.2](https://github.com/christophehurpeau/pob/compare/pob-babel@23.5.1...pob-babel@23.5.2) (2018-12-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency rollup to ^0.68.0 ([#33](https://github.com/christophehurpeau/pob/issues/33)) ([e80fccc](https://github.com/christophehurpeau/pob/commit/e80fccc))
+
+
+
+
+
 ## [23.5.1](https://github.com/christophehurpeau/pob/compare/pob-babel@23.5.0...pob-babel@23.5.1) (2018-12-15)
 
 
