@@ -1,0 +1,31 @@
+{
+  "name": "babel-plugin-fix-class-properties-uninitialized",
+  "version": "1.0.0-pre",
+  "description": "babel plugin fix class properties uninitialized",
+  "keywords": [],
+  "author": "Christophe Hurpeau <christophe@hurpeau.com>",
+  "license": "ISC",
+  "repository": "git@github.com:christophehurpeau/pob.git",
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "engines": {
+    "node": ">=6.5.0"
+  },
+  "main": "./lib/index.js",
+  "scripts": {
+    "lint": "eslint lib/"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "printWidth": 100
+  },
+  "devDependencies": {
+    "eslint": "5.10.0",
+    "eslint-config-pob": "24.0.3",
+    "eslint-plugin-import": "2.14.0",
+    "eslint-plugin-node": "8.0.0",
+    "eslint-plugin-prettier": "3.0.0",
+    "pob-release": "^4.6.2",
+    "prettier": "1.15.3"
+  }
+}

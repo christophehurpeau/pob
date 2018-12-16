@@ -25,7 +25,7 @@ interface Dependencies {
   'jest-junit-reporter': '1.1.0';
   'lerna': '3.6.0';
   'lint-staged': '8.1.0';
-  'pob-babel': '^23.5.1';
+  'pob-babel': '^23.5.2';
   'pob-release': '^4.6.2';
   'prettier': '1.15.3';
   'typedoc': '0.13.0';

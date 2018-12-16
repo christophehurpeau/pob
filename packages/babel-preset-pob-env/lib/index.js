@@ -135,6 +135,7 @@ module.exports = function(context, opts) {
           // @babel/plugin-syntax-optional-catch-binding
 
           // not shipped proposals:
+          require.resolve('babel-plugin-fix-class-properties-uninitialized'),
           [require.resolve('@babel/plugin-proposal-class-properties'), { loose }],
           require.resolve('@babel/plugin-proposal-export-default-from'),
           require.resolve('@babel/plugin-proposal-export-namespace-from'),
