@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.12.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.11.0...babel-preset-pob-env@2.12.0) (2018-12-16)
+
+
+### Features
+
+* add babel-plugin-fix-class-properties-uninitialized ([24b5a9c](https://github.com/christophehurpeau/pob/commit/24b5a9c))
+
+
+
+
+
 # [2.11.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.10.0...babel-preset-pob-env@2.11.0) (2018-12-15)
 
 

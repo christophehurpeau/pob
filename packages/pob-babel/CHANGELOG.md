@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.5.3](https://github.com/christophehurpeau/pob/compare/pob-babel@23.5.2...pob-babel@23.5.3) (2018-12-16)
+
+**Note:** Version bump only for package pob-babel
+
+
+
+
+
 ## [23.5.2](https://github.com/christophehurpeau/pob/compare/pob-babel@23.5.1...pob-babel@23.5.2) (2018-12-16)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.4.1...pob-dependencies@0.5.0) (2018-12-16)
+
+
+### Features
+
+* add babel-plugin-fix-class-properties-uninitialized ([24b5a9c](https://github.com/christophehurpeau/pob/commit/24b5a9c))
+
+
+
+
+
 ## [0.4.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.4.0...pob-dependencies@0.4.1) (2018-12-16)
 
 **Note:** Version bump only for package pob-dependencies
