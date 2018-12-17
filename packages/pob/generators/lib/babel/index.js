@@ -43,20 +43,27 @@ module.exports = class BabelGenerator extends Generator {
 
     this.entries.forEach((entry) => {
       const entryDestPath = this.destinationPath(`${entry}.js`);
-      if (this.babelEnvs.find(env => env.target === 'node') && (!this.entries.includes('index') || entry !== 'browser')) {
-        this.fs.copyTpl(this.templatePath('entry.js.ejs'), entryDestPath, {
-          entry,
-          node10: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '10')),
-          node8: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8')),
-          node6: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '6')),
-        });
+      if (this.babelEnvs.find(env => env.target === 'node')) {
+        if (!this.entries.includes('index') || entry !== 'browser') {
+          this.fs.copyTpl(this.templatePath('entry.js.ejs'), entryDestPath, {
+            entry,
+            node10: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '10')),
+            node8: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8')),
+            node6: Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '6')),
+          });
+        } else {
+          this.fs.copyTpl(this.templatePath('entry.browseronly.js'), entryDestPath);
+        }
       } else {
         this.fs.delete(entryDestPath);
       }
     });
     //
     // const indexSrcDestPath = this.destinationPath('src/index.js');
-    // if (!this.fs.exists(indexSrcDestPath) && !this.fs.exists(this.destinationPath('src/index.jsx')) && !this.fs.exists(this.destinationPath('src/index.ts')) && !this.fs.exists(this.destinationPath('src/index.tsx'))) {
+    // if (!this.fs.exists(indexSrcDestPath)
+    // && !this.fs.exists(this.destinationPath('src/index.jsx'))
+    // && !this.fs.exists(this.destinationPath('src/index.ts'))
+    // && !this.fs.exists(this.destinationPath('src/index.tsx'))) {
     //   this.fs.copy(this.templatePath('src/index.ts'), indexSrcDestPath);
     // }
   }
@@ -241,15 +248,19 @@ module.exports = class BabelGenerator extends Generator {
     }
 
     const esBrowserEnvs = this.babelEnvs.filter(env => (env.target === 'browser' && env.formats.includes('es')));
-    const aliases = this.entries.filter(entry => entry !== 'index' && (!this.entries.includes('index') || entry !== 'browser'));
+    const aliases = this.entries.filter(entry => entry !== 'index');
     if (useBabel && aliases.length && (esNodeEnv || esBrowserEnvs.length)) {
       [esNodeEnv, ...esBrowserEnvs].forEach((env) => {
         const key = env.target === 'node' ? 'node' : (env.version === 'modern' ? 'modern-browsers' : 'browser');
+        const envAliases = this.entries.includes('index') && env.target === 'node' ? aliases.filter(alias => alias !== 'browser') : aliases;
+        if (envAliases.length === 0) return;
         pkg[`module:aliases-${key}`] = {};
         pkg[`module:aliases-${key}-dev`] = {};
-        aliases.forEach((aliasName) => {
-          pkg[`module:aliases-${key}`][`./${aliasName}.js`] = `./dist/${aliasName}-${env.target}${env.version || ''}.es.js`;
-          pkg[`module:aliases-${key}-dev`][`./${aliasName}.js`] = `./dist/${aliasName}-${env.target}${env.version || ''}-dev.es.js`;
+        envAliases.forEach((aliasName) => {
+          const isBrowserOnly = aliasName === 'browser' && env.target !== 'node';
+          const aliasDistName = isBrowserOnly ? 'index' : aliasName;
+          pkg[`module:aliases-${key}`][`./${aliasName}.js`] = `./dist/${aliasDistName}-${env.target}${env.version || ''}.es.js`;
+          pkg[`module:aliases-${key}-dev`][`./${aliasName}.js`] = `./dist/${aliasDistName}-${env.target}${env.version || ''}-dev.es.js`;
         });
       });
     }
