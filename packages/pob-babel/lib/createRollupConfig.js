@@ -50,20 +50,14 @@ const external = configExternalDependencies(pkg);
 
 const createConfigForEnv = (entry, env, production) => {
   const devSuffix = production ? '' : '-dev';
+
+  const entryName =
+    isIndexBrowserEntry && entry === 'index' && env.target === 'browser' ? 'browser' : entry;
   let entryPath;
   try {
-    entryPath = require.resolve(
-      `./src/${
-        isIndexBrowserEntry && entry === 'index' && env.target === 'browser' ? 'browser' : entry
-      }`,
-      { paths: [cwd] }
-    );
+    entryPath = require.resolve(`./src/${entryName}`, { paths: [cwd] });
   } catch (err) {
-    throw new Error(
-      `Could not find entry "${
-        entry === 'index' && env.target === 'browser' ? 'browser' : entry
-      }" in path "${cwd}"`
-    );
+    throw new Error(`Could not find entry "${entryName}" in path "${cwd}"`);
   }
 
   const typescript = entryPath.endsWith('.ts') || entryPath.endsWith('.tsx');
