@@ -11,17 +11,17 @@ exports.parsePkgAuthor = pkg => (typeof pkg.author === 'string' ? parseAuthor(pk
 exports.hasLerna = pkg => !!(pkg.devDependencies && pkg.devDependencies.lerna);
 
 exports.hasBabel = pkg => !!(
-  pkg.devDependencies &&
-  (pkg.devDependencies['babel-core'] || pkg.devDependencies['pob-babel'] || pkg.devDependencies['@babel/core'])
+  pkg.devDependencies
+  && (pkg.devDependencies['babel-core'] || pkg.devDependencies['pob-babel'] || pkg.devDependencies['@babel/core'])
 );
 
 exports.transpileWithBabel = pkg => !!(
-  (pkg.devDependencies && (pkg.devDependencies['pob-babel'] || pkg.devDependencies['next'])) || (pkg.dependencies && pkg.dependencies['next'])
+  (pkg.devDependencies && (pkg.devDependencies['pob-babel'] || pkg.devDependencies.next)) || (pkg.dependencies && pkg.dependencies.next)
 );
 
 exports.hasReact = pkg => !!(
-  (pkg.dependencies && pkg.dependencies.react) ||
-  (pkg.peerDependencies && pkg.peerDependencies.react)
+  (pkg.dependencies && pkg.dependencies.react)
+  || (pkg.peerDependencies && pkg.peerDependencies.react)
 );
 
 exports.hasDocumentation = pkg => !!(
@@ -98,8 +98,9 @@ exports.sort = function sort(pkg) {
     'eslintConfig',
     'stylelint',
     'jest',
-    'dependencies',
     'peerDependencies',
+    'devPeerDependencies',
+    'dependencies',
     'devDependencies',
     'bundledDependencies',
     'bundleDependencies',
@@ -142,11 +143,11 @@ const internalAddDependencies = (pkg, type, dependencies, cleaned) => {
       const potentialNewVersion = pobDependencies[dependency];
       const currentVersion = currentDependencies[dependency];
       const potentialNewVersionCleaned = cleanVersion(potentialNewVersion);
-      const getNewVersion = () => cleaned ? potentialNewVersionCleaned : potentialNewVersion;
+      const getNewVersion = () => (cleaned ? potentialNewVersionCleaned : potentialNewVersion);
       try {
         if (
-          !currentVersion ||
-          semver.gt(potentialNewVersionCleaned, cleanVersion(currentVersion))
+          !currentVersion
+          || semver.gt(potentialNewVersionCleaned, cleanVersion(currentVersion))
         ) {
           filtredDependencies[dependency] = getNewVersion();
         } else if (potentialNewVersionCleaned === cleanVersion(currentVersion)) {
@@ -195,8 +196,12 @@ exports.addScripts = function addScripts(pkg, scripts) {
 };
 
 exports.addOrRemoveScripts = function addOrRemoveScripts(pkg, condition, scripts) {
-  if (condition) return exports.addScripts(pkg, scripts);
-  else if (pkg.scripts) {
+  if (condition) {
+    exports.addScripts(pkg, scripts);
+    return;
+  }
+
+  if (pkg.scripts) {
     Object.keys(scripts).forEach((key) => {
       delete pkg.scripts[key];
     });
