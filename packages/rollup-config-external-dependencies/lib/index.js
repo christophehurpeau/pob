@@ -2,6 +2,7 @@
 
 // node only > 9.3
 // const nodeBuiltinModules = require('module').builtinModules;
+// eslint-disable-next-line node/no-deprecated-api
 const nodeBuiltinModules = Object.keys(process.binding('natives')).filter(
   x => !x.startsWith('internal/')
 );
@@ -9,7 +10,8 @@ const nodeBuiltinModules = Object.keys(process.binding('natives')).filter(
 module.exports = pkg => {
   const externalModules = nodeBuiltinModules
     .concat(Object.keys(pkg.dependencies || {}))
-    .concat(Object.keys(pkg.peerDependencies || {}));
+    .concat(Object.keys(pkg.peerDependencies || {}))
+    .concat(Object.keys(pkg.devPeerDependencies || {}));
 
 
   return path => {
