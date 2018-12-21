@@ -1,7 +1,7 @@
 
 interface Dependencies {
   '@babel/core': '7.2.2';
-  '@babel/preset-env': '7.2.0';
+  '@babel/preset-env': '7.2.3';
   '@babel/preset-react': '7.0.0';
   '@commitlint/cli': '7.2.1';
   '@commitlint/config-conventional': '7.1.2';
@@ -23,9 +23,9 @@ interface Dependencies {
   'husky': '1.2.1';
   'jest': '23.6.0';
   'jest-junit-reporter': '1.1.0';
-  'lerna': '3.6.0';
+  'lerna': '3.8.0';
   'lint-staged': '8.1.0';
-  'pob-babel': '^23.5.3';
+  'pob-babel': '^23.5.4';
   'pob-release': '^4.6.2';
   'prettier': '1.15.3';
   'typedoc': '0.13.0';
