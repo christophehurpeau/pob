@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.5.0...pob-dependencies@0.6.0) (2018-12-21)
+
+
+### Features
+
+* **deps:** update dependency [@babel](https://github.com/babel)/preset-env to v7.2.3 ([#37](https://github.com/christophehurpeau/pob/issues/37)) ([94f5703](https://github.com/christophehurpeau/pob/commit/94f5703))
+* **deps:** update dependency lerna to v3.7.0 ([#35](https://github.com/christophehurpeau/pob/issues/35)) ([4f08f5f](https://github.com/christophehurpeau/pob/commit/4f08f5f))
+* **deps:** update dependency lerna to v3.7.1 ([#36](https://github.com/christophehurpeau/pob/issues/36)) ([18e7f1c](https://github.com/christophehurpeau/pob/commit/18e7f1c))
+* **deps:** update dependency lerna to v3.8.0 ([#39](https://github.com/christophehurpeau/pob/issues/39)) ([663dcb8](https://github.com/christophehurpeau/pob/commit/663dcb8))
+
+
+
+
+
 # [0.5.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.4.1...pob-dependencies@0.5.0) (2018-12-16)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/christophehurpeau/pob/compare/rollup-config-external-dependencies@0.1.0...rollup-config-external-dependencies@0.2.0) (2018-12-21)
+
+
+### Features
+
+* **rollup-config-external-dependencies:** add devPeerDependencies ([37bb37a](https://github.com/christophehurpeau/pob/commit/37bb37a))
+
+
+
+
+
 # 0.1.0 (2018-10-09)
 
 

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.15.0](https://github.com/christophehurpeau/pob/compare/pob@4.14.2...pob@4.15.0) (2018-12-21)
+
+
+### Bug Fixes
+
+* always use npm to publish with lerna ([2936a13](https://github.com/christophehurpeau/pob/commit/2936a13))
+
+
+### Features
+
+* add devPeerDependencies and move peerDep before deps ([685df3c](https://github.com/christophehurpeau/pob/commit/685df3c))
+* support /browser import ([375ba5a](https://github.com/christophehurpeau/pob/commit/375ba5a))
+
+
+
+
+
 ## [4.14.2](https://github.com/christophehurpeau/pob/compare/pob@4.14.1...pob@4.14.2) (2018-12-16)
 
 **Note:** Version bump only for package pob

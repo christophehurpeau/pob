@@ -1,6 +1,6 @@
 {
   "name": "pob-dependencies",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "easier dependencies upgrade with a real package.json",
   "main": "./index.js",
   "typings": "./index.d.ts",
@@ -33,7 +33,7 @@
     "jest-junit-reporter": "1.1.0",
     "lerna": "3.8.0",
     "lint-staged": "8.1.0",
-    "pob-babel": "^23.5.3",
+    "pob-babel": "^23.5.4",
     "pob-release": "^4.6.2",
     "prettier": "1.15.3",
     "typedoc": "0.13.0",

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.13.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.12.0...babel-preset-pob-env@2.13.0) (2018-12-21)
+
+
+### Features
+
+* **deps:** update dependency [@babel](https://github.com/babel)/preset-env to v7.2.3 ([#37](https://github.com/christophehurpeau/pob/issues/37)) ([94f5703](https://github.com/christophehurpeau/pob/commit/94f5703))
+
+
+
+
+
 # [2.12.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.11.0...babel-preset-pob-env@2.12.0) (2018-12-16)
 
 
