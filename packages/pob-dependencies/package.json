@@ -31,7 +31,7 @@
     "husky": "1.2.1",
     "jest": "23.6.0",
     "jest-junit-reporter": "1.1.0",
-    "lerna": "3.7.1",
+    "lerna": "3.8.0",
     "lint-staged": "8.1.0",
     "pob-babel": "^23.5.3",
     "pob-release": "^4.6.2",
