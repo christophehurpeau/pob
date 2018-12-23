@@ -11,7 +11,7 @@ interface Dependencies {
   'babel-jest': '23.6.0';
   'babel-preset-latest-node': '3.0.1';
   'babel-preset-modern-browsers': '13.0.1';
-  'eslint': '5.10.0';
+  'eslint': '5.11.0';
   'eslint-config-airbnb': '17.1.0';
   'eslint-config-pob': '24.0.3';
   'eslint-plugin-babel': '5.3.0';
@@ -25,8 +25,8 @@ interface Dependencies {
   'jest-junit-reporter': '1.1.0';
   'lerna': '3.8.0';
   'lint-staged': '8.1.0';
-  'pob-babel': '^23.5.4';
-  'pob-release': '^4.6.2';
+  'pob-babel': '^23.5.5';
+  'pob-release': '^4.6.3';
   'prettier': '1.15.3';
   'typedoc': '0.13.0';
   'typescript': '3.2.2';
