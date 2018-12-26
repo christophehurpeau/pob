@@ -83,6 +83,7 @@ exports.sort = function sort(pkg) {
     'module:aliases-browser-dev',
     'module:aliases-modern-browsers',
     'module:aliases-modern-browsers-dev',
+    'sideEffects',
     'config',
     'style',
     'bin',
