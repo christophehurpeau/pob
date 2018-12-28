@@ -26,7 +26,7 @@
     "format": "prettier --write"
   },
   "dependencies": {
-    "findup-sync": "^2.0.0",
+    "findup-sync": "^3.0.0",
     "generator-license": "^5.2.0",
     "gh-got": "^8.0.1",
     "git-remote-url": "^1.0.1",
