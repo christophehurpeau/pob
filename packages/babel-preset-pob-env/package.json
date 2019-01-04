@@ -43,7 +43,7 @@
     "@babel/preset-env": "7.2.3",
     "babel-preset-latest-node": "3.0.1",
     "babel-preset-modern-browsers": "13.0.1",
-    "eslint": "5.11.1",
+    "eslint": "5.12.0",
     "eslint-config-pob": "24.0.3",
     "eslint-plugin-node": "8.0.0",
     "eslint-plugin-prettier": "3.0.1",
