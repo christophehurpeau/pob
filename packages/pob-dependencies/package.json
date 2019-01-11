@@ -36,7 +36,7 @@
     "pob-babel": "^23.5.5",
     "pob-release": "^4.6.3",
     "prettier": "1.15.3",
-    "typedoc": "0.14.0",
+    "typedoc": "0.14.1",
     "typescript": "3.2.2",
     "typescript-eslint-parser": "21.0.2",
     "yarnhook": "0.3.0"
