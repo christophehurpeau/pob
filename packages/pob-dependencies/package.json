@@ -21,7 +21,7 @@
     "babel-preset-modern-browsers": "13.0.1",
     "eslint": "5.12.0",
     "eslint-config-airbnb": "17.1.0",
-    "eslint-config-pob": "24.0.3",
+    "eslint-config-pob": "25.0.0",
     "eslint-plugin-babel": "5.3.0",
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-jsx-a11y": "6.1.2",
