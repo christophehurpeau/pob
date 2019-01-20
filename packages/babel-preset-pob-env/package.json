@@ -20,7 +20,7 @@
   "prettier": {
     "trailingComma": "es5",
     "singleQuote": true,
-    "printWidth": 100
+    "arrowParens": "always"
   },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.2.1",

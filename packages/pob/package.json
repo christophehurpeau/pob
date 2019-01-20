@@ -20,7 +20,8 @@
   },
   "prettier": {
     "trailingComma": "all",
-    "singleQuote": true
+    "singleQuote": true,
+    "arrowParens": "always"
   },
   "scripts": {
     "format": "prettier --write"

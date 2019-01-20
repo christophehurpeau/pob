@@ -17,7 +17,7 @@
   "prettier": {
     "trailingComma": "es5",
     "singleQuote": true,
-    "printWidth": 100
+    "arrowParens": "always"
   },
   "devDependencies": {
     "eslint": "5.12.1",
