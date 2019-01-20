@@ -1,6 +1,4 @@
 const Generator = require('yeoman-generator');
-const execSync = require('child_process').execSync;
-const mkdirp = require('mkdirp');
 const packageUtils = require('../../utils/package');
 const inLerna = require('../../utils/inLerna');
 const inNpmLerna = require('../../utils/inNpmLerna');
@@ -26,14 +24,18 @@ module.exports = class PobAppGenerator extends Generator {
 
   default() {
     const withBabel = true;
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    const withReact = packageUtils.hasReact(pkg);
+
 
     this.composeWith(require.resolve('../common/typescript'), {
       enable: withBabel,
+      withReact,
       updateOnly: this.options.updateOnly,
     });
 
     this.composeWith(require.resolve('../common/format-lint'), {
-      babelEnvs: JSON.stringify([{target:'browser'}, {target:'node'}]),
+      babelEnvs: JSON.stringify([{ target: 'browser' }, { target: 'node' }]),
     });
 
     this.composeWith(require.resolve('../common/old-dependencies'));

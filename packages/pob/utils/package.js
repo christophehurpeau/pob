@@ -16,7 +16,10 @@ exports.hasBabel = pkg => !!(
 );
 
 exports.transpileWithBabel = pkg => !!(
-  (pkg.devDependencies && (pkg.devDependencies['pob-babel'] || pkg.devDependencies.next)) || (pkg.dependencies && pkg.dependencies.next)
+  (pkg.devDependencies && (pkg.devDependencies['pob-babel'] || pkg.devDependencies.next))
+  || (
+    // alp-dev has pob-babel in dependencies
+    pkg.dependencies && (pkg.dependencies['pob-babel'] || pkg.dependencies.next))
 );
 
 exports.hasReact = pkg => !!(
@@ -184,12 +187,12 @@ exports.removeDevDependencies = function removeDevDependencies(pkg, dependencies
 
 exports.addOrRemoveDependencies = function addOrRemoveDependencies(pkg, condition, dependencies) {
   if (condition) return exports.addDependencies(pkg, dependencies);
-  return exports.removeDependencies(pkg, Object.keys(dependencies));
+  return exports.removeDependencies(pkg, dependencies);
 };
 
 exports.addOrRemoveDevDependencies = function addOrRemoveDevDependencies(pkg, condition, dependencies) {
   if (condition) return exports.addDevDependencies(pkg, dependencies);
-  return exports.removeDevDependencies(pkg, Object.keys(dependencies));
+  return exports.removeDevDependencies(pkg, dependencies);
 };
 
 exports.addScripts = function addScripts(pkg, scripts) {

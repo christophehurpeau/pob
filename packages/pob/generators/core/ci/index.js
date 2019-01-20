@@ -8,6 +8,12 @@ module.exports = class CiGenerator extends Generator {
     this.option('enable', {
       type: Boolean,
       defaults: true,
+      desc: 'enable ci',
+    });
+
+    this.option('testing', {
+      type: Boolean,
+      defaults: true,
       desc: 'enable testing',
     });
 
@@ -36,54 +42,8 @@ module.exports = class CiGenerator extends Generator {
     });
   }
 
-  async prompting() {
-    if (this.fs.exists(this.destinationPath('lerna.json'))) {
-      const {
-        ci, testing, codecov, documentation,
-      } = await this.prompt([
-        {
-          type: 'confirm',
-          name: 'ci',
-          message: 'Would you like ci ?',
-          default: this.fs.exists(this.destinationPath('.circleci/config.yml')),
-        },
-        {
-          type: 'confirm',
-          name: 'testing',
-          message: 'Would you like testing ?',
-          when: answers => answers.ci,
-          default: true,
-        },
-        {
-          type: 'confirm',
-          name: 'codecov',
-          message: 'Would you like code coverage ?',
-          when: answers => answers.ci,
-          default: true,
-        },
-        {
-          type: 'confirm',
-          name: 'documentation',
-          message: 'Would you like documentation ?',
-          when: answers => answers.ci,
-          default: true,
-        },
-      ]);
-
-      this.ci = ci;
-      this.testing = testing;
-      this.codecov = codecov;
-      this.documentation = documentation;
-    } else {
-      this.ci = this.options.enable;
-      this.testing = this.options.enable;
-      this.codecov = this.options.codecov;
-      this.documentation = this.options.documentation;
-    }
-  }
-
   default() {
-    if (this.ci) {
+    if (this.options.enable) {
       try {
         // this.fs.copyTpl(
         //   this.templatePath('circle.yml.ejs'),
@@ -98,9 +58,9 @@ module.exports = class CiGenerator extends Generator {
           this.templatePath('circleci2.yml.ejs'),
           this.destinationPath('.circleci/config.yml'),
           {
-            testing: this.testing,
-            documentation: this.documentation,
-            codecov: this.codecov,
+            testing: this.options.testing,
+            documentation: this.options.documentation,
+            codecov: this.options.codecov,
             node11: true,
             node10: true, // Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '10')),
             node8: true, // Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8')),
@@ -122,11 +82,10 @@ module.exports = class CiGenerator extends Generator {
     this.fs.delete(this.destinationPath('.travis.yml'));
     this.fs.delete(this.destinationPath('circle.yml'));
 
-    if (!this.ci) {
+    if (!this.options.enable) {
       packageUtils.removeDevDependencies(pkg, [
         'jest-junit-reporter',
       ]);
-      this.fs.delete(this.destinationPath('.circleci/config.yml'));
     } else {
       // this.babelEnvs = JSON.parse(this.options.babelEnvs);
 

@@ -23,7 +23,7 @@ module.exports = class LernaGenerator extends Generator {
       version: 'independent',
       npmClient: 'yarn',
       useWorkspaces: true,
-      commands: {
+      command: {
         publish: {
           npmClient: 'npm',
         },
@@ -57,15 +57,18 @@ module.exports = class LernaGenerator extends Generator {
     const withDocumentation = true;
 
     packageUtils.addScripts(pkg, {
-      'typescript-check': 'lerna run --parallel typescript-check',
+      'typescript-check': 'lerna run --parallel typescript-check', // this.options.typescript && 'tsc --noEmit tsconfig.json'
       lint: 'lerna run --stream lint',
       test: 'lerna run --stream test',
       build: 'lerna run --stream --concurrency=1 build',
+      'build:definitions': 'lerna run --stream build:definitions',
+      postbuild: 'yarn run build:definitions',
       watch: 'lerna run --parallel --ignore "*-example" watch',
       'generate:docs': 'lerna run --parallel --ignore "*-example" generate:docs',
       preversion: [
         'yarn run lint',
         withBabel && 'yarn run build',
+        withBabel && 'yarn run build:definitions',
         withDocumentation && 'yarn run generate:docs',
         // 'pob-repository-check-clean'
       ]

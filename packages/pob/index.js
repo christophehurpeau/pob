@@ -23,13 +23,13 @@ env.registerStub(require('./generators/pob'), 'pob:generator');
 
 const printUsage = () => {
   console.error('Usage: pob [lerna] lib|app');
-  console.error('       pob update [--force]');
+  console.error('       pob [lerna] update [--force]');
   console.error('       pob lerna convert-npm');
   console.error('       pob add <packageName>');
 };
 
 let lerna = argv._[0] === 'lerna';
-let action = lerna ? argv._[1] : argv._[0];
+const action = lerna ? argv._[1] : argv._[0];
 
 if (action === 'add') {
   if (!existsSync('lerna.json')) {

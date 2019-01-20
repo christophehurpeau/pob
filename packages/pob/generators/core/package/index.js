@@ -93,7 +93,7 @@ module.exports = class PackageGenerator extends Generator {
     pkg.description = this.options.updateOnly ? pkg.description : props.description;
 
     if (inLerna) {
-      const lernaPackage = this.fs.readJSON(path.resolve(path.dirname(inLerna), 'package.json'));
+      const lernaPackage = this.fs.readJSON(inLerna.packageJsonPath);
       pkg.repository = lernaPackage.repository;
       pkg.homepage = lernaPackage.homepage;
     }
@@ -127,7 +127,7 @@ module.exports = class PackageGenerator extends Generator {
         {
           inLerna,
           typedoc: pkg.devDependencies.typedoc,
-        }
+        },
       );
     } else if (this.fs.exists(this.destinationPath('.npmignore'))) {
       this.fs.delete(this.destinationPath('.npmignore'));

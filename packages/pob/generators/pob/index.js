@@ -72,7 +72,7 @@ module.exports = class PobBaseGenerator extends Generator {
     });
 
     if (this.useLerna) {
-      this.composeWith(require.resolve('../core/lerna'), {
+      this.composeWith(require.resolve('../monorepo/lerna'), {
         force: this.options.force,
       });
     }
@@ -103,13 +103,9 @@ module.exports = class PobBaseGenerator extends Generator {
     }
 
     if (this.options.lerna) {
-      // TODO create lerna generator
-      this.composeWith(require.resolve('../core/ci'), {
+      this.composeWith(require.resolve('../monorepo'), {
         updateOnly: this.options.updateOnly,
       });
-
-      // Always add a gitignore, because npm publish uses it.
-      this.composeWith(require.resolve('../core/gitignore'), { root: true });
     } else {
       switch (this.options.type) {
         case 'lib':
@@ -146,4 +142,3 @@ module.exports = class PobBaseGenerator extends Generator {
     }
   }
 };
-

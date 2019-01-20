@@ -1,4 +1,6 @@
+const { existsSync } = require('fs');
 const Generator = require('yeoman-generator');
+const inLerna = require('../../../utils/inLerna');
 const packageUtils = require('../../../utils/package');
 
 module.exports = class TypescriptGenerator extends Generator {
@@ -10,6 +12,12 @@ module.exports = class TypescriptGenerator extends Generator {
       defaults: true,
       desc: 'enable typescript',
     });
+
+    this.option('withReact', {
+      type: Boolean,
+      defaults: true,
+      desc: 'enable react with typescript',
+    });
   }
 
   writing() {
@@ -19,7 +27,6 @@ module.exports = class TypescriptGenerator extends Generator {
     }
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
-    const withReact = packageUtils.hasReact(pkg);
 
     packageUtils.removeDevDependencies(pkg, ['flow-bin']);
 
@@ -36,7 +43,17 @@ module.exports = class TypescriptGenerator extends Generator {
     const tsconfigPath = this.destinationPath('tsconfig.json');
     const tsconfigBuildPath = this.destinationPath('tsconfig.build.json');
     if (this.options.enable) {
-      this.fs.copyTpl(this.templatePath('tsconfig.json.ejs'), tsconfigPath, { withReact });
+      const { withReact } = this.options;
+      let composite;
+      let monorepoPackageNames;
+      if (inLerna) {
+        const yoConfig = this.fs.readJSON(`${inLerna.rootPath}/.yo-rc.json`);
+        composite = yoConfig.pob && yoConfig.pob.monorepo && yoConfig.pob.monorepo.typescript;
+        if (composite) {
+          monorepoPackageNames = yoConfig.pob.monorepo.packageNames.filter(packageName => ((pkg.dependencies && pkg.dependencies[packageName]) || (pkg.devDependencies && pkg.devDependencies[packageName]) || (pkg.peerDependencies && pkg.peerDependencies[packageName])) && existsSync(`../${packageName}/tsconfig.json`));
+        }
+      }
+      this.fs.copyTpl(this.templatePath('tsconfig.json.ejs'), tsconfigPath, { composite, monorepoPackageNames, withReact });
       this.fs.copyTpl(this.templatePath('tsconfig.build.json.ejs'), tsconfigBuildPath, { withReact });
     } else {
       this.fs.delete(tsconfigPath);

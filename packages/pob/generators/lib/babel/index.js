@@ -77,9 +77,16 @@ module.exports = class BabelGenerator extends Generator {
     /* scripts */
 
     packageUtils.addOrRemoveScripts(pkg, useBabel, {
-      build: 'pob-build && tsc -p tsconfig.build.json',
+      build: 'pob-build',
+      'build:definitions': 'tsc -p tsconfig.build.json',
       watch: 'pob-watch',
     });
+
+    if (inLerna) {
+      delete pkg.scripts.postbuild;
+    } else {
+      pkg.scripts.postbuild = pkg.scripts['build:definitions'];
+    }
 
     if (pkg.scripts) {
       delete pkg.scripts['build:dev'];

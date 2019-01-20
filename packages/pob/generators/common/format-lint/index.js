@@ -179,11 +179,11 @@ module.exports = class LintGenerator extends Generator {
         }
       }
 
-      const sortedConfig = sortObject(eslintConfig, ['root','parser','parserOptions','plugins','extends','env','globals','settings','rules','overrides']);
+      const sortedConfig = sortObject(eslintConfig, ['root', 'parser', 'parserOptions', 'plugins', 'extends', 'env', 'globals', 'settings', 'rules', 'overrides']);
       if (sortedConfig.overrides) {
         sortedConfig.overrides.forEach((override, index) => {
-          sortedConfig.overrides[index] = sortObject(override, ['files', 'env','globals','settings','rules'])
-        })
+          sortedConfig.overrides[index] = sortObject(override, ['files', 'env', 'globals', 'settings', 'rules']);
+        });
       }
 
       this.fs.write(eslintrcPath, formatJson(sortedConfig));
@@ -193,7 +193,7 @@ module.exports = class LintGenerator extends Generator {
     packageUtils.addScript(
       pkg,
       'lint',
-      `${useBabel ? 'npm run typescript-check && ' : ''}eslint${!useBabel ? '' : ` --ext .ts${hasReact ? ',.tsx' : ''} `} ${srcDirectory}/`,
+      `${useBabel ? 'npm run typescript-check && ' : ''}eslint${!useBabel ? '' : ` --ext .ts${hasReact ? ',.tsx' : ''}`} ${srcDirectory}/`,
     );
 
     packageUtils.addOrRemoveScripts(pkg, useBabel, {

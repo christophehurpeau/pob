@@ -1,5 +1,5 @@
 const Generator = require('yeoman-generator');
-const execSync = require('child_process').execSync;
+const { execSync } = require('child_process');
 const mkdirp = require('mkdirp');
 const packageUtils = require('../../utils/package');
 const inLerna = require('../../utils/inLerna');
@@ -290,9 +290,13 @@ module.exports = class PobLibGenerator extends Generator {
 
   default() {
     const withBabel = !!this.babelEnvs.length;
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    const withReact = packageUtils.hasReact(pkg);
+
 
     this.composeWith(require.resolve('../common/typescript'), {
       enable: withBabel,
+      withReact,
       updateOnly: this.options.updateOnly,
     });
 
@@ -325,6 +329,7 @@ module.exports = class PobLibGenerator extends Generator {
 
     this.composeWith(require.resolve('./testing'), {
       enable: this.pobjson.testing,
+      testing: this.pobjson.testing,
       documentation: !!this.pobjson.documentation,
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
       circleci: this.pobjson.testing && this.pobjson.testing.circleci,
@@ -384,7 +389,7 @@ module.exports = class PobLibGenerator extends Generator {
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-    execSync('rm -Rf ' + ['lib-*', 'coverage', this.pobjson.documentation && 'docs'].filter(Boolean).join(' '));
+    execSync(`rm -Rf ${['lib-*', 'coverage', this.pobjson.documentation && 'docs'].filter(Boolean).join(' ')}`);
 
     const pobjson = this.pobjson;
 

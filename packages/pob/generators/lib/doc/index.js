@@ -34,7 +34,7 @@ module.exports = class DocGenerator extends Generator {
       const withReact = packageUtils.hasReact(pkg);
       this.fs.copyTpl(
         this.templatePath('tsconfig.doc.json.ejs'),
-        this.destinationPath('tsconfig.doc.json'), { withReact }
+        this.destinationPath('tsconfig.doc.json'), { withReact },
       );
     } else {
       // this.fs.delete(this.destinationPath('jsdoc.conf.js'));
