@@ -3,6 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.6.1...pob-dependencies@0.7.0) (2019-02-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v1.16.0 ([#69](https://github.com/christophehurpeau/pob/issues/69)) ([ee9f224](https://github.com/christophehurpeau/pob/commit/ee9f224))
+* **deps:** update dependency prettier to v1.16.3 ([#74](https://github.com/christophehurpeau/pob/issues/74)) ([3cd2969](https://github.com/christophehurpeau/pob/commit/3cd2969))
+
+
+### Features
+
+* typescript-eslint ([5650b3b](https://github.com/christophehurpeau/pob/commit/5650b3b))
+* **deps:** update commitlint monorepo ([#59](https://github.com/christophehurpeau/pob/issues/59)) ([91436f6](https://github.com/christophehurpeau/pob/commit/91436f6))
+* **deps:** update commitlint monorepo to v7.5.0 ([#78](https://github.com/christophehurpeau/pob/issues/78)) ([352cf5b](https://github.com/christophehurpeau/pob/commit/352cf5b))
+* **deps:** update dependency [@babel](https://github.com/babel)/preset-env to v7.3.1 ([#71](https://github.com/christophehurpeau/pob/issues/71)) ([b30b982](https://github.com/christophehurpeau/pob/commit/b30b982))
+* **deps:** update dependency [@types](https://github.com/types)/jest to v23.3.11 ([#48](https://github.com/christophehurpeau/pob/issues/48)) ([890ff74](https://github.com/christophehurpeau/pob/commit/890ff74))
+* **deps:** update dependency [@types](https://github.com/types)/jest to v23.3.12 ([#56](https://github.com/christophehurpeau/pob/issues/56)) ([8dfdc96](https://github.com/christophehurpeau/pob/commit/8dfdc96))
+* **deps:** update dependency [@types](https://github.com/types)/jest to v23.3.13 ([#67](https://github.com/christophehurpeau/pob/issues/67)) ([f2896b0](https://github.com/christophehurpeau/pob/commit/f2896b0))
+* **deps:** update dependency eslint-plugin-jsx-a11y to v6.2.0 ([#76](https://github.com/christophehurpeau/pob/issues/76)) ([97a5258](https://github.com/christophehurpeau/pob/commit/97a5258))
+* **deps:** update dependency eslint-plugin-react to v7.12.0 ([#44](https://github.com/christophehurpeau/pob/issues/44)) ([c674f7a](https://github.com/christophehurpeau/pob/commit/c674f7a))
+* **deps:** update dependency eslint-plugin-react to v7.12.1 ([#50](https://github.com/christophehurpeau/pob/issues/50)) ([a05e234](https://github.com/christophehurpeau/pob/commit/a05e234))
+* **deps:** update dependency eslint-plugin-react to v7.12.3 ([#51](https://github.com/christophehurpeau/pob/issues/51)) ([55e3fda](https://github.com/christophehurpeau/pob/commit/55e3fda))
+* **deps:** update dependency eslint-plugin-react to v7.12.4 ([#63](https://github.com/christophehurpeau/pob/issues/63)) ([56e95c1](https://github.com/christophehurpeau/pob/commit/56e95c1))
+* **deps:** update dependency husky to v1.3.1 ([#43](https://github.com/christophehurpeau/pob/issues/43)) ([fe5e1a1](https://github.com/christophehurpeau/pob/commit/fe5e1a1))
+* **deps:** update dependency lerna to v3.10.5 ([#57](https://github.com/christophehurpeau/pob/issues/57)) ([da467d7](https://github.com/christophehurpeau/pob/commit/da467d7))
+* **deps:** update dependency lerna to v3.10.6 ([#68](https://github.com/christophehurpeau/pob/issues/68)) ([f7e52bc](https://github.com/christophehurpeau/pob/commit/f7e52bc))
+* **deps:** update dependency lerna to v3.10.7 ([#75](https://github.com/christophehurpeau/pob/issues/75)) ([ea494db](https://github.com/christophehurpeau/pob/commit/ea494db))
+* **deps:** update dependency lerna to v3.10.8 ([#83](https://github.com/christophehurpeau/pob/issues/83)) ([00807fb](https://github.com/christophehurpeau/pob/commit/00807fb))
+* **deps:** update dependency lerna to v3.8.1 ([#49](https://github.com/christophehurpeau/pob/issues/49)) ([3bad42c](https://github.com/christophehurpeau/pob/commit/3bad42c))
+* **deps:** update dependency lerna to v3.8.5 ([#52](https://github.com/christophehurpeau/pob/issues/52)) ([929133d](https://github.com/christophehurpeau/pob/commit/929133d))
+* **deps:** update dependency lint-staged to v8.1.1 ([#79](https://github.com/christophehurpeau/pob/issues/79)) ([21aa5bd](https://github.com/christophehurpeau/pob/commit/21aa5bd))
+* **deps:** update dependency lint-staged to v8.1.2 ([#84](https://github.com/christophehurpeau/pob/issues/84)) ([c5bd91c](https://github.com/christophehurpeau/pob/commit/c5bd91c))
+* **deps:** update dependency typedoc to v0.14.0 ([#53](https://github.com/christophehurpeau/pob/issues/53)) ([44dbef3](https://github.com/christophehurpeau/pob/commit/44dbef3))
+* **deps:** update dependency typedoc to v0.14.1 ([#58](https://github.com/christophehurpeau/pob/issues/58)) ([cf73b9e](https://github.com/christophehurpeau/pob/commit/cf73b9e))
+* **deps:** update dependency typedoc to v0.14.2 ([#62](https://github.com/christophehurpeau/pob/issues/62)) ([55aa310](https://github.com/christophehurpeau/pob/commit/55aa310))
+* **deps:** update dependency typescript to v3.2.4 ([#64](https://github.com/christophehurpeau/pob/issues/64)) ([253fb5d](https://github.com/christophehurpeau/pob/commit/253fb5d))
+* **deps:** update dependency typescript to v3.3.1 ([#80](https://github.com/christophehurpeau/pob/issues/80)) ([c5c24b6](https://github.com/christophehurpeau/pob/commit/c5c24b6))
+* **deps:** update jest monorepo to v24 ([#77](https://github.com/christophehurpeau/pob/issues/77)) ([f86faba](https://github.com/christophehurpeau/pob/commit/f86faba))
+
+
+
+
+
 ## [0.6.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.6.0...pob-dependencies@0.6.1) (2018-12-23)
 
 **Note:** Version bump only for package pob-dependencies

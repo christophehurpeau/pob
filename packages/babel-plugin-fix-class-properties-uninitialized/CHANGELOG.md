@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@1.0.1...babel-plugin-fix-class-properties-uninitialized@1.1.0) (2019-02-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v1.16.0 ([#69](https://github.com/christophehurpeau/pob/issues/69)) ([ee9f224](https://github.com/christophehurpeau/pob/commit/ee9f224))
+* **deps:** update dependency prettier to v1.16.3 ([#74](https://github.com/christophehurpeau/pob/issues/74)) ([3cd2969](https://github.com/christophehurpeau/pob/commit/3cd2969))
+
+
+### Features
+
+* typescript-eslint ([5650b3b](https://github.com/christophehurpeau/pob/commit/5650b3b))
+
+
+
+
+
 ## [1.0.1](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@1.0.0...babel-plugin-fix-class-properties-uninitialized@1.0.1) (2018-12-23)
 
 **Note:** Version bump only for package babel-plugin-fix-class-properties-uninitialized

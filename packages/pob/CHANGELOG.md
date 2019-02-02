@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.16.0](https://github.com/christophehurpeau/pob/compare/pob@4.15.1...pob@4.16.0) (2019-02-02)
+
+
+### Bug Fixes
+
+* ignore dependencies for special packages ([da31e74](https://github.com/christophehurpeau/pob/commit/da31e74))
+* **deps:** update dependency findup-sync to v3 ([#47](https://github.com/christophehurpeau/pob/issues/47)) ([225f264](https://github.com/christophehurpeau/pob/commit/225f264))
+* **deps:** update dependency prettier to v1.16.0 ([#69](https://github.com/christophehurpeau/pob/issues/69)) ([ee9f224](https://github.com/christophehurpeau/pob/commit/ee9f224))
+* **deps:** update dependency prettier to v1.16.3 ([#74](https://github.com/christophehurpeau/pob/issues/74)) ([3cd2969](https://github.com/christophehurpeau/pob/commit/3cd2969))
+
+
+### Features
+
+* add sideEffects in package sort ([6a42045](https://github.com/christophehurpeau/pob/commit/6a42045))
+* monorepo generator ([3d7c353](https://github.com/christophehurpeau/pob/commit/3d7c353))
+* typescript-eslint ([5650b3b](https://github.com/christophehurpeau/pob/commit/5650b3b))
+
+
+
+
+
 ## [4.15.1](https://github.com/christophehurpeau/pob/compare/pob@4.15.0...pob@4.15.1) (2018-12-23)
 
 **Note:** Version bump only for package pob

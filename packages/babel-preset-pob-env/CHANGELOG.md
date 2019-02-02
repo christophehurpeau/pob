@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.14.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.13.1...babel-preset-pob-env@2.14.0) (2019-02-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v1.16.0 ([#69](https://github.com/christophehurpeau/pob/issues/69)) ([ee9f224](https://github.com/christophehurpeau/pob/commit/ee9f224))
+* **deps:** update dependency prettier to v1.16.3 ([#74](https://github.com/christophehurpeau/pob/issues/74)) ([3cd2969](https://github.com/christophehurpeau/pob/commit/3cd2969))
+
+
+### Features
+
+* typescript-eslint ([5650b3b](https://github.com/christophehurpeau/pob/commit/5650b3b))
+* **deps:** update dependency [@babel](https://github.com/babel)/preset-env to v7.3.1 ([#71](https://github.com/christophehurpeau/pob/issues/71)) ([b30b982](https://github.com/christophehurpeau/pob/commit/b30b982))
+
+
+
+
+
 ## [2.13.1](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.13.0...babel-preset-pob-env@2.13.1) (2018-12-23)
 
 **Note:** Version bump only for package babel-preset-pob-env

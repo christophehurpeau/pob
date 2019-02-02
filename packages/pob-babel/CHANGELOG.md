@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.6.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.5.5...pob-babel@23.6.0) (2019-02-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v1.16.0 ([#69](https://github.com/christophehurpeau/pob/issues/69)) ([ee9f224](https://github.com/christophehurpeau/pob/commit/ee9f224))
+* **deps:** update dependency prettier to v1.16.3 ([#74](https://github.com/christophehurpeau/pob/issues/74)) ([3cd2969](https://github.com/christophehurpeau/pob/commit/3cd2969))
+
+
+### Features
+
+* rollup v1 ([0164bb7](https://github.com/christophehurpeau/pob/commit/0164bb7))
+* typescript-eslint ([5650b3b](https://github.com/christophehurpeau/pob/commit/5650b3b))
+
+
+
+
+
 ## [23.5.5](https://github.com/christophehurpeau/pob/compare/pob-babel@23.5.4...pob-babel@23.5.5) (2018-12-23)
 
 **Note:** Version bump only for package pob-babel
