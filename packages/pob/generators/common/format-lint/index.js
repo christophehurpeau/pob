@@ -66,6 +66,8 @@ module.exports = class LintGenerator extends Generator {
       'eslint-plugin-flowtype',
       'eslint-plugin-unicorn',
       'eslint-plugin-prettier',
+      'eslint-plugin-typescript',
+      'typescript-eslint-parser',
     ]);
     packageUtils.addDevDependencies(pkg, [
       'eslint',
@@ -76,9 +78,9 @@ module.exports = class LintGenerator extends Generator {
 
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel, [
       'babel-eslint', // required...
-      'typescript-eslint-parser',
       'eslint-plugin-babel',
-      'eslint-plugin-typescript',
+      '@typescript-eslint/eslint-plugin',
+      '@typescript-eslint/parser',
     ]);
 
     if (!pkg.name.startsWith('eslint-config')) {
@@ -141,8 +143,8 @@ module.exports = class LintGenerator extends Generator {
       }
       if (useBabel) {
         // webstorm uses this to detect eslint .ts compat
-        eslintConfig.parser = 'typescript-eslint-parser';
-        eslintConfig.plugins = ['typescript'];
+        eslintConfig.parser = '@typescript-eslint/parser';
+        eslintConfig.plugins = ['@typescript-eslint'];
       }
       this.fs.writeJSON(eslintrcPath, eslintConfig);
     } else {
@@ -157,11 +159,11 @@ module.exports = class LintGenerator extends Generator {
 
       if (useBabel) {
         // webstorm uses this to detect eslint .ts compat
-        eslintConfig.parser = 'typescript-eslint-parser';
-        eslintConfig.plugins = ['typescript'];
+        eslintConfig.parser = '@typescript-eslint/parser';
+        eslintConfig.plugins = ['@typescript-eslint'];
       } else {
-        if (eslintConfig.parser === 'typescript-eslint-parser') delete eslintConfig.parser;
-        if (eslintConfig.plugins && eslintConfig.plugins[0] === 'typescript') eslintConfig.plugins.splice(0, 1);
+        if (eslintConfig.parser === 'typescript-eslint-parser' || eslintConfig.parser === '@typescript-eslint/parser') delete eslintConfig.parser;
+        if (eslintConfig.plugins && (eslintConfig.plugins[0] === 'typescript' || eslintConfig.plugins[0] === '@typescript-eslint')) eslintConfig.plugins.splice(0, 1);
         if (eslintConfig.plugins && eslintConfig.plugins.length === 0) delete eslintConfig.plugins;
       }
 
