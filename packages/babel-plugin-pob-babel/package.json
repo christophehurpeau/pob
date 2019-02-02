@@ -20,7 +20,7 @@
     "arrowParens": "always"
   },
   "devDependencies": {
-    "eslint": "5.12.1",
+    "eslint": "5.13.0",
     "eslint-config-pob": "25.0.0",
     "eslint-plugin-import": "2.14.0",
     "eslint-plugin-node": "8.0.1",
