@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.16.1](https://github.com/christophehurpeau/pob/compare/pob@4.16.0...pob@4.16.1) (2019-02-02)
+
+
+### Bug Fixes
+
+* monorepo updateonly ([cd41bd3](https://github.com/christophehurpeau/pob/commit/cd41bd3))
+
+
+
+
+
 # [4.16.0](https://github.com/christophehurpeau/pob/compare/pob@4.15.1...pob@4.16.0) (2019-02-02)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.6.1](https://github.com/christophehurpeau/pob/compare/pob-babel@23.6.0...pob-babel@23.6.1) (2019-02-02)
+
+
+### Bug Fixes
+
+* update rollup-plugin-babel ([f01cf45](https://github.com/christophehurpeau/pob/commit/f01cf45))
+
+
+
+
+
 # [23.6.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.5.5...pob-babel@23.6.0) (2019-02-02)
 
 
