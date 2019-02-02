@@ -133,7 +133,7 @@ const internalAddDependencies = (pkg, type, dependencies, cleaned) => {
 
   const dependenciesToCheck = [];
   dependencies.forEach((dependency) => {
-    if (ignoreDependencies[dependency]) {
+    if (ignoreDependencies[dependency] || pkg.name === dependency) {
       removeDependencies.push(dependency);
     } else {
       dependenciesToCheck.push(dependency);

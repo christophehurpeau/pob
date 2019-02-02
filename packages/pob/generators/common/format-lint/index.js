@@ -81,15 +81,17 @@ module.exports = class LintGenerator extends Generator {
       'eslint-plugin-typescript',
     ]);
 
-    packageUtils.addOrRemoveDevDependencies(pkg, useNodeOnly, [
-      'eslint-plugin-node',
-    ]);
+    if (!pkg.name.startsWith('eslint-config')) {
+      packageUtils.addOrRemoveDevDependencies(pkg, useNodeOnly, [
+        'eslint-plugin-node',
+      ]);
 
-    packageUtils.addOrRemoveDevDependencies(pkg, hasReact, [
-      'eslint-config-airbnb',
-      'eslint-plugin-jsx-a11y',
-      'eslint-plugin-react',
-    ]);
+      packageUtils.addOrRemoveDevDependencies(pkg, hasReact, [
+        'eslint-config-airbnb',
+        'eslint-plugin-jsx-a11y',
+        'eslint-plugin-react',
+      ]);
+    }
 
     const typescript = true;
 
