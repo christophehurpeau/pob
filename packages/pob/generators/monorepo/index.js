@@ -19,7 +19,8 @@ module.exports = class PobMonorepoGenerator extends Generator {
 
   async prompting() {
     const config = this.config.get('monorepo');
-    if (this.updateOnly && config) {
+    if (this.options.updateOnly && config) {
+      this.pobLernaConfig = config;
       this.pobLernaConfig.packageNames = this.packageNames;
       this.pobLernaConfig.typescript = false; // doesn't work for now
       this.config.set('monorepo', this.pobLernaConfig);
