@@ -69,6 +69,7 @@ module.exports = class TestingGenerator extends Generator {
       'coveralls',
       'mocha',
       'istanbul',
+      'babel-core',
     ]);
 
     if (!this.options.enable) {
@@ -76,7 +77,6 @@ module.exports = class TestingGenerator extends Generator {
         'jest',
         '@types/jest',
         'babel-jest',
-        'babel-core',
       ]);
 
       delete pkg.jest;
@@ -113,7 +113,6 @@ module.exports = class TestingGenerator extends Generator {
 
       packageUtils.addOrRemoveDevDependencies(pkg, hasBabel, [
         'babel-jest',
-        'babel-core',
       ]);
 
       if (!pkg.jest) pkg.jest = {};

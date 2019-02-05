@@ -12,7 +12,7 @@ exports.hasLerna = pkg => !!(pkg.devDependencies && pkg.devDependencies.lerna);
 
 exports.hasBabel = pkg => !!(
   pkg.devDependencies
-  && (pkg.devDependencies['babel-core'] || pkg.devDependencies['pob-babel'] || pkg.devDependencies['@babel/core'])
+  && (pkg.devDependencies['pob-babel'] || pkg.devDependencies['@babel/core'])
 );
 
 exports.transpileWithBabel = pkg => !!(

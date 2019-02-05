@@ -8,7 +8,6 @@ interface Dependencies {
   '@types/jest': '23.3.13';
   '@typescript-eslint/eslint-plugin': '1.2.0';
   '@typescript-eslint/parser': '1.2.0';
-  'babel-core': '7.0.0-bridge.0';
   'babel-eslint': '10.0.1';
   'babel-jest': '24.0.0';
   'babel-preset-latest-node': '3.0.1';
@@ -32,6 +31,6 @@ interface Dependencies {
   'typedoc': '0.14.2';
   'typescript': '3.3.1';
   'yarnhook': '0.3.0';
-} 
+}
 
 export = dependencies;
