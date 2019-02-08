@@ -182,7 +182,7 @@ exports.addDevDependencies = function addDevDependencies(pkg, dependencies) {
 };
 
 exports.removeDevDependencies = function removeDevDependencies(pkg, dependencies) {
-  internalRemoveDependencies(pkg, 'devDependencies', dependencies);
+  internalRemoveDependencies(pkg, 'devDependencies', pkg.peerDependencies ? dependencies.filter(d => !pkg.peerDependencies[d]) : dependencies);
 };
 
 exports.addOrRemoveDependencies = function addOrRemoveDependencies(pkg, condition, dependencies) {
