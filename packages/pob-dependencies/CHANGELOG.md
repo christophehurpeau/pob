@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.7.1...pob-dependencies@0.8.0) (2019-02-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v1.16.4 ([#88](https://github.com/christophehurpeau/pob/issues/88)) ([d33897a](https://github.com/christophehurpeau/pob/commit/d33897a))
+* no need for babel-core since jest 24 ([92c6e6d](https://github.com/christophehurpeau/pob/commit/92c6e6d))
+
+
+### Features
+
+* **deps:** update dependency [@types](https://github.com/types)/jest to v24 ([#91](https://github.com/christophehurpeau/pob/issues/91)) ([ba690c6](https://github.com/christophehurpeau/pob/commit/ba690c6))
+* **deps:** update dependency [@typescript-eslint](https://github.com/typescript-eslint)/parser to v1.3.0 ([#94](https://github.com/christophehurpeau/pob/issues/94)) ([69d48b4](https://github.com/christophehurpeau/pob/commit/69d48b4))
+* **deps:** update dependency eslint-plugin-jsx-a11y to v6.2.1 ([#89](https://github.com/christophehurpeau/pob/issues/89)) ([9b9f50f](https://github.com/christophehurpeau/pob/commit/9b9f50f))
+* **deps:** update dependency lerna to v3.11.0 ([#96](https://github.com/christophehurpeau/pob/issues/96)) ([79b88a7](https://github.com/christophehurpeau/pob/commit/79b88a7))
+* **deps:** update dependency typescript to v3.3.3 ([#95](https://github.com/christophehurpeau/pob/issues/95)) ([e334319](https://github.com/christophehurpeau/pob/commit/e334319))
+* **deps:** update jest monorepo to v24.1.0 ([#92](https://github.com/christophehurpeau/pob/issues/92)) ([0e96bd7](https://github.com/christophehurpeau/pob/commit/0e96bd7))
+
+
+
+
+
 ## [0.7.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.7.0...pob-dependencies@0.7.1) (2019-02-02)
 
 **Note:** Version bump only for package pob-dependencies

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.7.1](https://github.com/christophehurpeau/pob/compare/pob-release@4.7.0...pob-release@4.7.1) (2019-02-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v1.16.4 ([#88](https://github.com/christophehurpeau/pob/issues/88)) ([d33897a](https://github.com/christophehurpeau/pob/commit/d33897a))
+
+
+
+
+
 # [4.7.0](https://github.com/christophehurpeau/pob/compare/pob-release@4.6.3...pob-release@4.7.0) (2019-02-02)
 
 

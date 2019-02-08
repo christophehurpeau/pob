@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-pob-env",
-  "version": "2.14.0",
+  "version": "2.14.1",
   "description": "pob babel preset env",
   "keywords": [
     "babel-preset"
@@ -28,10 +28,10 @@
     "@babel/plugin-proposal-export-namespace-from": "^7.2.0",
     "@babel/preset-typescript": "^7.1.0",
     "babel-plugin-discard-module-references": "^1.1.2",
-    "babel-plugin-fix-class-properties-uninitialized": "^1.1.0",
+    "babel-plugin-fix-class-properties-uninitialized": "^1.1.1",
     "babel-plugin-import-export-rename": "^1.0.1",
     "babel-plugin-minify-replace": "^0.5.0",
-    "babel-plugin-pob-babel": "^0.7.0",
+    "babel-plugin-pob-babel": "^0.7.1",
     "babel-plugin-transform-name-export-default": "^1.0.0",
     "babel-preset-optimizations": "^1.6.0"
   },

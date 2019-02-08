@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.17.0](https://github.com/christophehurpeau/pob/compare/pob@4.16.2...pob@4.17.0) (2019-02-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v1.16.4 ([#88](https://github.com/christophehurpeau/pob/issues/88)) ([d33897a](https://github.com/christophehurpeau/pob/commit/d33897a))
+* no need for babel-core since jest 24 ([92c6e6d](https://github.com/christophehurpeau/pob/commit/92c6e6d))
+
+
+### Features
+
+* enable github release ([39b3277](https://github.com/christophehurpeau/pob/commit/39b3277))
+
+
+
+
+
 ## [4.16.2](https://github.com/christophehurpeau/pob/compare/pob@4.16.1...pob@4.16.2) (2019-02-02)
 
 
