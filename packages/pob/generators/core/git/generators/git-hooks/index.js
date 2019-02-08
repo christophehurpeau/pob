@@ -70,7 +70,7 @@ module.exports = class GitHooksGenerator extends Generator {
     };
 
     pkg.husky = {
-      "hooks": {
+      hooks: {
         'commit-msg': 'commitlint -e $GIT_PARAMS',
         'post-checkout': 'yarnhook',
         'post-merge': 'yarnhook',

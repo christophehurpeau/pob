@@ -92,7 +92,7 @@ module.exports = class PackageGenerator extends Generator {
 
     pkg.description = this.options.updateOnly ? pkg.description : props.description;
 
-    if (inLerna) {
+    if (inLerna && !inLerna.root) {
       const lernaPackage = this.fs.readJSON(inLerna.packageJsonPath);
       pkg.repository = lernaPackage.repository;
       pkg.homepage = lernaPackage.homepage;
@@ -133,7 +133,7 @@ module.exports = class PackageGenerator extends Generator {
       this.fs.delete(this.destinationPath('.npmignore'));
     }
 
-    if (!inLerna) {
+    if (!inLerna || inLerna.root) {
       this.fs.copy(
         this.templatePath(this.options.app ? 'renovate.app.json' : 'renovate.lib.json'),
         this.destinationPath('renovate.json'),

@@ -20,7 +20,7 @@ module.exports = class LintGenerator extends Generator {
     const useNodeOnly = !useBabel || (babelEnvs.every(env => env.target === 'node'));
 
 
-    if (inLerna) {
+    if (inLerna && !inLerna.root) {
       // see git-hooks
       packageUtils.removeDevDependencies(pkg, [
         'komet',

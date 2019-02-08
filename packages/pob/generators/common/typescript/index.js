@@ -46,7 +46,7 @@ module.exports = class TypescriptGenerator extends Generator {
       const { withReact } = this.options;
       let composite;
       let monorepoPackageNames;
-      if (inLerna) {
+      if (inLerna && !inLerna.root) {
         const yoConfig = this.fs.readJSON(`${inLerna.rootPath}/.yo-rc.json`);
         composite = yoConfig.pob && yoConfig.pob.monorepo && yoConfig.pob.monorepo.typescript;
         if (composite) {

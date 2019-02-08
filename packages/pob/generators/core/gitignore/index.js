@@ -1,5 +1,4 @@
 const Generator = require('yeoman-generator');
-const inLerna = require('../../../utils/inLerna');
 
 module.exports = class GitignoreGenerator extends Generator {
   constructor(args, opts) {
@@ -27,7 +26,7 @@ module.exports = class GitignoreGenerator extends Generator {
       {
         root: this.options.root,
         documentation: this.options.documentation,
-      }
+      },
     );
   }
 };

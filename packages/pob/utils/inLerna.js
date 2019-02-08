@@ -8,5 +8,6 @@ const rootMonorepo = lernaJsonPath ? path.dirname(lernaJsonPath) : undefined;
 module.exports = !lernaJsonPath ? false : {
   lernaJsonPath,
   rootPath: rootMonorepo,
+  root: rootMonorepo === process.cwd(),
   packageJsonPath: path.resolve(rootMonorepo, 'package.json'),
 };
