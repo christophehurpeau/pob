@@ -24,9 +24,6 @@ module.exports = class LernaGenerator extends Generator {
       npmClient: 'yarn',
       useWorkspaces: true,
       command: {
-        version: {
-          githubRelease: true,
-        },
         publish: {
           npmClient: 'npm',
         },
@@ -77,7 +74,7 @@ module.exports = class LernaGenerator extends Generator {
       ]
         .filter(Boolean)
         .join(' && '),
-      release: "lerna publish --conventional-commits -m 'chore: release'",
+      release: "GH_TOKEN=$POB_GITHUB_TOKEN lerna publish --conventional-commits --github-release -m 'chore: release'",
     });
     delete pkg.scripts.version;
 

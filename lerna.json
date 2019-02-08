@@ -1,9 +1,6 @@
 {
   "version": "independent",
   "command": {
-    "version": {
-      "githubRelease": true
-    },
     "publish": {
       "npmClient": "npm"
     }
