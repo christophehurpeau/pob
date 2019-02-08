@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.17.1](https://github.com/christophehurpeau/pob/compare/pob@4.17.0...pob@4.17.1) (2019-02-08)
+
+
+### Bug Fixes
+
+* enable github-release when publishing with lerna ([ede3f9b](https://github.com/christophehurpeau/pob/commit/ede3f9b))
+
+
+
+
+
 # [4.17.0](https://github.com/christophehurpeau/pob/compare/pob@4.16.2...pob@4.17.0) (2019-02-08)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.8.0...pob-dependencies@0.9.0) (2019-02-08)
+
+
+### Features
+
+* **deps:** update dependency [@typescript-eslint](https://github.com/typescript-eslint)/eslint-plugin to v1.3.0 ([#93](https://github.com/christophehurpeau/pob/issues/93)) ([d40ac92](https://github.com/christophehurpeau/pob/commit/d40ac92))
+
+
+
+
+
 # [0.8.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.7.1...pob-dependencies@0.8.0) (2019-02-08)
 
 

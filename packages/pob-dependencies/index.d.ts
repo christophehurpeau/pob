@@ -6,7 +6,7 @@ interface Dependencies {
   '@commitlint/cli': '7.5.0';
   '@commitlint/config-conventional': '7.5.0';
   '@types/jest': '24.0.0';
-  '@typescript-eslint/eslint-plugin': '1.2.0';
+  '@typescript-eslint/eslint-plugin': '1.3.0';
   '@typescript-eslint/parser': '1.3.0';
   'babel-eslint': '10.0.1';
   'babel-jest': '24.1.0';
@@ -25,8 +25,8 @@ interface Dependencies {
   'jest-junit-reporter': '1.1.0';
   'lerna': '3.11.0';
   'lint-staged': '8.1.3';
-  'pob-babel': '^23.6.1';
-  'pob-release': '^4.7.0';
+  'pob-babel': '^23.6.2';
+  'pob-release': '^4.7.1';
   'prettier': '1.16.4';
   'typedoc': '0.14.2';
   'typescript': '3.3.3';
