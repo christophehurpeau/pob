@@ -24,6 +24,9 @@ module.exports = class LernaGenerator extends Generator {
       npmClient: 'yarn',
       useWorkspaces: true,
       command: {
+        version: {
+          githubRelease: true,
+        },
         publish: {
           npmClient: 'npm',
         },
