@@ -85,7 +85,7 @@ module.exports = class BabelGenerator extends Generator {
     if (!useBabel && this.fs.exists(this.destinationPath('lib/index.d.ts'))) {
       // check definitions, but also force lerna to execute build:definitions in right order
       // example: nightingale-types depends on nightingale-levels
-      pkg.scripts['build:definitions'] = 'tsc --noEmit ./lib/index.d.ts';
+      pkg.scripts['build:definitions'] = 'tsc --lib esnext --noEmit ./lib/index.d.ts';
     }
 
     if (inLerna) {
