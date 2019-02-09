@@ -68,7 +68,6 @@ module.exports = class LernaGenerator extends Generator {
       preversion: [
         'yarn run lint',
         withBabel && 'yarn run build',
-        withBabel && 'yarn run build:definitions',
         withDocumentation && 'yarn run generate:docs',
         // 'pob-repository-check-clean'
       ]
