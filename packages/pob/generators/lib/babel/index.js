@@ -89,7 +89,9 @@ module.exports = class BabelGenerator extends Generator {
     }
 
     if (inLerna) {
-      delete pkg.scripts.postbuild;
+      if (pkg.scripts) {
+        delete pkg.scripts.postbuild;
+      }
     } else {
       pkg.scripts.postbuild = pkg.scripts['build:definitions'];
     }

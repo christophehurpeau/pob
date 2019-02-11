@@ -126,7 +126,7 @@ module.exports = class PackageGenerator extends Generator {
         this.destinationPath('.npmignore'),
         {
           inLerna,
-          typedoc: pkg.devDependencies.typedoc,
+          typedoc: pkg.devDependencies && pkg.devDependencies.typedoc,
         },
       );
     } else if (this.fs.exists(this.destinationPath('.npmignore'))) {
