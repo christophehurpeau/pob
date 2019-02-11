@@ -3629,10 +3629,10 @@ eslint-config-airbnb@17.1.0:
     object.assign "^4.1.0"
     object.entries "^1.0.4"
 
-eslint-config-pob@27.0.0:
-  version "27.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-config-pob/-/eslint-config-pob-27.0.0.tgz#017d86e3168979642d5b5f97e63b6a2fc9d1744b"
-  integrity sha512-skN3Jb0SapBhT7pOW3bp8gOnzHstTQPKEbbSFVQMvYvE2BdaNKCjANhSMcjV4SjTIyApJzSGZQ/z8+A/CMRl2w==
+eslint-config-pob@28.0.0:
+  version "28.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-pob/-/eslint-config-pob-28.0.0.tgz#ccaa994dcad2e7e7d5824e864d83098e0fe3fe53"
+  integrity sha512-Q5yBp8TcyK+fM3RtsV1qkKZRkRCtB3Onr40xaoc8FsycDprhu/KTLyHSzLboQTQxgR2jzQP7dTCOBzVf8LMVOg==
   dependencies:
     eslint-config-airbnb-base "^13.1.0"
     eslint-config-prettier "^4.0.0"
