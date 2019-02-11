@@ -1,0 +1,25 @@
+{
+  "name": "yarn-update-lock",
+  "version": "0.0.0",
+  "description": "update yarn.lock and deduplicate",
+  "keywords": [],
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "license": "ISC",
+  "repository": "git@github.com:christophehurpeau/pob.git",
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "engines": {
+    "node": ">=6.5.0"
+  },
+  "bin": {
+    "yarn-update-lock": "./lib/yarn-update-lock.sh",
+    "yarn-deduplicate-lock": "./lib/yarn-deduplicate-lock.js"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "arrowParens": "always"
+  },
+  "dependencies": {
+    "yarn-deduplicate": "^1.1.1"
+  }
+}
