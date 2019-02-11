@@ -14,13 +14,29 @@
 ## Install
 
 ```bash
-npm install --save yarn-update-lock
+yarn add --dev yarn-update-lock
 ```
+
+## What does this do ?
+
+- runs `yarn install --prefer-offline`
+- runs `yarn deduplicate`
+- runs again `yarn install --prefer-offline`
 
 ## Usage
 
-```js
-import yarnUpdateLock from 'yarn-update-lock';
-
-console.log(yarnUpdateLock);
+> package.json
+```json
+{
+  "lint-staged": {
+    "package.json": [
+      "yarn-update-lock",
+      "git add yarn.lock"
+    ],
+    "yarn.lock": [
+      "yarn-update-lock",
+      "git add"
+    ]
+  }
+}
 ```
