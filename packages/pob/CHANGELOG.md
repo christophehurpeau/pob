@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.18.0](https://github.com/christophehurpeau/pob/compare/pob@4.17.1...pob@4.18.0) (2019-02-11)
+
+
+### Bug Fixes
+
+* add lib esnext for typing libs ([e15e444](https://github.com/christophehurpeau/pob/commit/e15e444))
+* dont remove devDependency if has peerDependency ([169def7](https://github.com/christophehurpeau/pob/commit/169def7))
+* generator issues with simple libs ([9ea7398](https://github.com/christophehurpeau/pob/commit/9ea7398))
+* inLerna root ([318de25](https://github.com/christophehurpeau/pob/commit/318de25))
+* pob-dependencies move eslint-plugin-react-hooks to devDeps ([6465300](https://github.com/christophehurpeau/pob/commit/6465300))
+* preversion build has postbuild ([93e4dbe](https://github.com/christophehurpeau/pob/commit/93e4dbe))
+
+
+### Features
+
+* clean tsconfig.json ([47969cb](https://github.com/christophehurpeau/pob/commit/47969cb))
+* tsconfig.json lib esnext ([be89e66](https://github.com/christophehurpeau/pob/commit/be89e66))
+* update circleci node v11 to 11.9 ([7803e3c](https://github.com/christophehurpeau/pob/commit/7803e3c))
+
+
+
+
+
 ## [4.17.1](https://github.com/christophehurpeau/pob/compare/pob@4.17.0...pob@4.17.1) (2019-02-08)
 
 

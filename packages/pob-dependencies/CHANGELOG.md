@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.9.0...pob-dependencies@0.10.0) (2019-02-11)
+
+
+### Bug Fixes
+
+* pob-dependencies move eslint-plugin-react-hooks to devDeps ([6465300](https://github.com/christophehurpeau/pob/commit/6465300))
+
+
+### Features
+
+* **deps:** update dependency [@commitlint](https://github.com/commitlint)/cli to v7.5.1 ([#97](https://github.com/christophehurpeau/pob/issues/97)) ([4fe5e20](https://github.com/christophehurpeau/pob/commit/4fe5e20))
+
+
+
+
+
 # [0.9.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.8.0...pob-dependencies@0.9.0) (2019-02-08)
 
 

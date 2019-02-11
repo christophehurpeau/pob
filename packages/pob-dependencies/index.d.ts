@@ -3,7 +3,7 @@ interface Dependencies {
   '@babel/core': '7.2.2';
   '@babel/preset-env': '7.3.1';
   '@babel/preset-react': '7.0.0';
-  '@commitlint/cli': '7.5.0';
+  '@commitlint/cli': '7.5.1';
   '@commitlint/config-conventional': '7.5.0';
   '@types/jest': '24.0.0';
   '@typescript-eslint/eslint-plugin': '1.3.0';
@@ -14,12 +14,13 @@ interface Dependencies {
   'babel-preset-modern-browsers': '13.0.1';
   'eslint': '5.13.0';
   'eslint-config-airbnb': '17.1.0';
-  'eslint-config-pob': '26.0.8';
+  'eslint-config-pob': '28.0.0';
   'eslint-plugin-babel': '5.3.0';
   'eslint-plugin-import': '2.16.0';
   'eslint-plugin-jsx-a11y': '6.2.1';
   'eslint-plugin-node': '8.0.1';
   'eslint-plugin-react': '7.12.4';
+  'eslint-plugin-react-hooks': '^1.0.1';
   'husky': '1.3.1';
   'jest': '24.1.0';
   'jest-junit-reporter': '1.1.0';
