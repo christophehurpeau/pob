@@ -44,7 +44,7 @@
     "babel-preset-latest-node": "3.0.1",
     "babel-preset-modern-browsers": "13.0.1",
     "eslint": "5.13.0",
-    "eslint-config-pob": "26.0.8",
+    "eslint-config-pob": "27.0.0",
     "eslint-plugin-node": "8.0.1",
     "eslint-plugin-prettier": "3.0.1",
     "prettier": "1.16.4"
