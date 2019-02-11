@@ -26,12 +26,13 @@ interface Dependencies {
   'jest-junit-reporter': '1.1.0';
   'lerna': '3.11.0';
   'lint-staged': '8.1.3';
-  'pob-babel': '^23.6.2';
-  'pob-release': '^4.7.1';
+  'pob-babel': '^23.6.3';
+  'pob-release': '^4.7.2';
   'prettier': '1.16.4';
   'typedoc': '0.14.2';
   'typescript': '3.3.3';
   'yarnhook': '0.3.0';
+  'yarn-update-lock': '^0.2.0';
 } 
 
 export = dependencies;

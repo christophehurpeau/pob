@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.10.0...pob-dependencies@0.10.1) (2019-02-11)
+
+
+### Bug Fixes
+
+* add yarn-update-lock in pob-dependencies ([f74096a](https://github.com/christophehurpeau/pob/commit/f74096a))
+
+
+
+
+
 # [0.10.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.9.0...pob-dependencies@0.10.0) (2019-02-11)
 
 
