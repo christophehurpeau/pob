@@ -145,6 +145,7 @@ const internalAddDependencies = (pkg, type, dependencies, cleaned) => {
   if (currentDependencies) {
     dependenciesToCheck.forEach((dependency) => {
       const potentialNewVersion = pobDependencies[dependency];
+      if (!potentialNewVersion) throw new Error('Missing pobDependency: ' + dependency)
       const currentVersion = currentDependencies[dependency];
       const potentialNewVersionCleaned = cleanVersion(potentialNewVersion);
       const getNewVersion = () => (cleaned ? potentialNewVersionCleaned : potentialNewVersion);
