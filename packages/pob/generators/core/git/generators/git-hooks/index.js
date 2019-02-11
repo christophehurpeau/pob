@@ -55,6 +55,7 @@ module.exports = class GitHooksGenerator extends Generator {
       'husky',
       'yarnhook',
       'lint-staged',
+      'yarn-update-lock',
       '@commitlint/cli',
       '@commitlint/config-conventional',
     ]);
