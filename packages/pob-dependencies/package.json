@@ -39,5 +39,8 @@
     "typedoc": "0.14.2",
     "typescript": "3.3.3",
     "yarnhook": "0.3.0"
+  },
+  "dependencies": {
+    "eslint-plugin-react-hooks": "^1.0.1"
   }
 }

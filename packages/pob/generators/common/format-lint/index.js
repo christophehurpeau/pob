@@ -92,6 +92,7 @@ module.exports = class LintGenerator extends Generator {
         'eslint-config-airbnb',
         'eslint-plugin-jsx-a11y',
         'eslint-plugin-react',
+        'eslint-plugin-react-hooks',
       ]);
     }
 
