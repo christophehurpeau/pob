@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.19.0](https://github.com/christophehurpeau/pob/compare/pob@4.18.0...pob@4.19.0) (2019-02-11)
+
+
+### Features
+
+* add yarn-update-lock in lint-staged ([baef244](https://github.com/christophehurpeau/pob/commit/baef244))
+
+
+
+
+
 # [4.18.0](https://github.com/christophehurpeau/pob/compare/pob@4.17.1...pob@4.18.0) (2019-02-11)
 
 
