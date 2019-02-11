@@ -37,7 +37,7 @@
   },
   "devDependencies": {
     "eslint": "5.13.0",
-    "eslint-config-pob": "27.0.0",
+    "eslint-config-pob": "28.0.0",
     "eslint-plugin-import": "2.16.0",
     "eslint-plugin-node": "8.0.1",
     "eslint-plugin-prettier": "3.0.1",
