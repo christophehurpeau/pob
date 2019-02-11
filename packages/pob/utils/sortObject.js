@@ -5,6 +5,8 @@ module.exports = function sortObject(obj, keys = []) {
   keys
     .filter(key => Object.hasOwnProperty.call(objCopy, key))
     .concat(objKeys.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase())))
-    .forEach(key => (obj[key] = objCopy[key]));
+    .forEach((key) => {
+      obj[key] = objCopy[key];
+    });
   return obj;
 };
