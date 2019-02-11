@@ -94,6 +94,14 @@ module.exports = class GitHooksGenerator extends Generator {
     const srcDirectory = hasBabel ? 'src' : 'lib';
 
     pkg['lint-staged'] = {
+      'package.json': [
+        'yarn-update-lock',
+        'git add yarn.lock',
+      ],
+      'yarn.lock': [
+        'yarn-update-lock',
+        'git add',
+      ],
       // [`{README.md,package.json${inLerna ? ',packages/*/package.json,packages/*/README.md,' : ''},.eslintrc.json}`]: [
       [`{package.json${inLerna ? ',packages/*/package.json,' : ''},.eslintrc.json}`]: [
         'prettier --parser json --write',
