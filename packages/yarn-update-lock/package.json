@@ -5,7 +5,11 @@
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
-  "repository": "git@github.com:christophehurpeau/pob.git",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:christophehurpeau/pob.git",
+    "directory": "packages/yarn-update-lock"
+  },
   "homepage": "https://github.com/christophehurpeau/pob",
   "engines": {
     "node": ">=6.5.0"

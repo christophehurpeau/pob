@@ -1,5 +1,6 @@
 {
   "version": "independent",
+  "npmClient": "yarn",
   "command": {
     "publish": {
       "npmClient": "npm"

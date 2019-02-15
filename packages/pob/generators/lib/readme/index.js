@@ -69,10 +69,9 @@ module.exports = class ReadmeGenerator extends Generator {
 
     const author = packageUtils.parsePkgAuthor(pkg);
 
-    const repository = pkg.repository;
-    const match =
-      repository &&
-      repository.match(/^(?:git@)?(?:([^:/.]+)(?:\.com)?:)?([^:/]+)\/([^:/.]+)(?:.git)?/);
+    const repository = (pkg.repository && pkg.repository.url) || pkg.repository;
+    const match = repository
+      && repository.match(/^(?:git@)?(?:([^:/.]+)(?:\.com)?:)?([^:/]+)\/([^:/.]+)(?:.git)?/);
     const [, gitHost, gitAccount, gitName] = match || [];
     try {
       this.fs.copyTpl(this.templatePath('README.md.ejs'), readmePath, {

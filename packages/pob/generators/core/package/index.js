@@ -94,7 +94,8 @@ module.exports = class PackageGenerator extends Generator {
 
     if (inLerna && !inLerna.root) {
       const lernaPackage = this.fs.readJSON(inLerna.packageJsonPath);
-      pkg.repository = lernaPackage.repository;
+      const rootRepositoryUrl = typeof lernaPackage.repository === 'string' ? lernaPackage.repository : lernaPackage.repository.url;
+      pkg.repository = { type: 'git', url: rootRepositoryUrl, directory: process.cwd().slice(inLerna.rootPath.length + 1) };
       pkg.homepage = lernaPackage.homepage;
     }
 
