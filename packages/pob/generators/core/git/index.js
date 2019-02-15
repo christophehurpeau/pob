@@ -27,9 +27,8 @@ module.exports = class GitGenerator extends Generator {
     }
 
     this.originUrl = originUrl;
-    const match =
-        originUrl &&
-        originUrl.match(/^(?:git@)?(?:([^:/.]+)(?:\.com)?:)?([^:/]+)\/([^:/.]+)(?:.git)?/);
+    const match = originUrl
+        && originUrl.match(/^(?:git@|https?:\/\/)(?:([^:/.]+)(?:\.com)?:)?([^:/]+)\/([^:/.]+)(?:.git)?/);
     if (!match) return;
     const [, gitHost, gitAccount, repoName] = match;
     this.gitHost = gitHost || 'github';
@@ -109,7 +108,7 @@ module.exports = class GitGenerator extends Generator {
       pkg.homepage = `https://${this.gitHost}.com/${this.gitHostAccount}/${repoName}`;
     }
 
-    const repository = `git@${this.gitHost}.com:${this.gitHostAccount}/${repoName}.git`;
+    const repository = `https://${this.gitHost}.com:${this.gitHostAccount}/${repoName}.git`;
 
     if (pkg.repository !== repository) {
       pkg.repository = repository;

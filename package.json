@@ -6,7 +6,7 @@
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
-  "repository": "git@github.com:christophehurpeau/pob.git",
+  "repository": "https://github.com/christophehurpeau/pob.git",
   "homepage": "https://github.com/christophehurpeau/pob",
   "scripts": {
     "build": "lerna run --parallel --ignore \"*-example\" build",
@@ -62,7 +62,7 @@
     "husky": "1.3.1",
     "lerna": "3.13.0",
     "lint-staged": "8.1.4",
-    "yarn-update-lock": "0.2.0",
+    "yarn-update-lock": "0.3.0",
     "yarnhook": "0.3.0"
   }
 }
