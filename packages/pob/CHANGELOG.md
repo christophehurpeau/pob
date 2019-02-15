@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.20.0](https://github.com/christophehurpeau/pob/compare/pob@4.19.1...pob@4.20.0) (2019-02-15)
+
+
+### Bug Fixes
+
+* issue when adding dependencies without existing ([81fa34a](https://github.com/christophehurpeau/pob/commit/81fa34a))
+
+
+### Features
+
+* support package.json repository.directory ([1a08b0c](https://github.com/christophehurpeau/pob/commit/1a08b0c))
+
+
+
+
+
 ## [4.19.1](https://github.com/christophehurpeau/pob/compare/pob@4.19.0...pob@4.19.1) (2019-02-11)
 
 

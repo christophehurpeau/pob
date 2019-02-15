@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.10.1...pob-dependencies@0.11.0) (2019-02-15)
+
+
+### Features
+
+* **deps:** pin dependency eslint-plugin-react-hooks to 1.0.1 ([#100](https://github.com/christophehurpeau/pob/issues/100)) ([990eab1](https://github.com/christophehurpeau/pob/commit/990eab1))
+* **deps:** update dependency [@commitlint](https://github.com/commitlint)/cli to v7.5.2 ([#101](https://github.com/christophehurpeau/pob/issues/101)) ([3e7b6c4](https://github.com/christophehurpeau/pob/commit/3e7b6c4))
+* **deps:** update dependency [@types](https://github.com/types)/jest to v24.0.5 ([#104](https://github.com/christophehurpeau/pob/issues/104)) ([1bb59a7](https://github.com/christophehurpeau/pob/commit/1bb59a7))
+* **deps:** update dependency eslint-plugin-react-hooks to v1.0.2 ([#106](https://github.com/christophehurpeau/pob/issues/106)) ([4b46948](https://github.com/christophehurpeau/pob/commit/4b46948))
+* **deps:** update dependency lerna to v3.11.1 ([#102](https://github.com/christophehurpeau/pob/issues/102)) ([575b3a8](https://github.com/christophehurpeau/pob/commit/575b3a8))
+* **deps:** update dependency lerna to v3.13.0 ([#107](https://github.com/christophehurpeau/pob/issues/107)) ([df23f9f](https://github.com/christophehurpeau/pob/commit/df23f9f))
+* **deps:** update dependency lint-staged to v8.1.4 ([#105](https://github.com/christophehurpeau/pob/issues/105)) ([ba0c7ab](https://github.com/christophehurpeau/pob/commit/ba0c7ab))
+
+
+
+
+
 ## [0.10.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.10.0...pob-dependencies@0.10.1) (2019-02-11)
 
 

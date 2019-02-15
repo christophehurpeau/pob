@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/christophehurpeau/pob/compare/yarn-update-lock@0.2.0...yarn-update-lock@0.3.0) (2019-02-15)
+
+
+### Features
+
+* support package.json repository.directory ([1a08b0c](https://github.com/christophehurpeau/pob/commit/1a08b0c))
+
+
+
+
+
 # [0.2.0](https://github.com/christophehurpeau/pob/compare/yarn-update-lock@0.1.0...yarn-update-lock@0.2.0) (2019-02-11)
 
 
