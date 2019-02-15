@@ -31,7 +31,7 @@ interface Dependencies {
   'prettier': '1.16.4';
   'typedoc': '0.14.2';
   'typescript': '3.3.3';
-  'yarn-update-lock': '^0.2.0';
+  'yarn-update-lock': '^0.3.0';
   'yarnhook': '0.3.0';
 } 
 

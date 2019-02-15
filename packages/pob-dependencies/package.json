@@ -1,6 +1,6 @@
 {
   "name": "pob-dependencies",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "easier dependencies upgrade with a real package.json",
   "main": "./index.js",
   "typings": "./index.d.ts",
@@ -39,7 +39,7 @@
     "prettier": "1.16.4",
     "typedoc": "0.14.2",
     "typescript": "3.3.3",
-    "yarn-update-lock": "^0.3.0",
+    "yarn-update-lock": "^0.3.1",
     "yarnhook": "0.3.0"
   }
 }
