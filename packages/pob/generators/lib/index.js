@@ -374,8 +374,15 @@ module.exports = class PobLibGenerator extends Generator {
           .filter(Boolean)
           .join(' && '),
         version: 'pob-version',
-        clean: 'rm -Rf dist',
       });
+
+      if (withBabel) {
+        packageUtils.addScripts(pkg, {
+          clean: 'rm -Rf dist',
+        });
+      } else {
+        delete pkg.scripts.clean;
+      }
     }
 
     if (!withBabel) {
@@ -389,7 +396,7 @@ module.exports = class PobLibGenerator extends Generator {
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-    execSync(`rm -Rf ${['lib-*', 'coverage', this.pobjson.documentation && 'docs'].filter(Boolean).join(' ')}`);
+    execSync(`rm -Rf ${['lib-*', 'coverage', this.pobjson.documentation && 'docs', !withBabel && 'dist'].filter(Boolean).join(' ')}`);
 
     const pobjson = this.pobjson;
 
