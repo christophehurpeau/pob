@@ -17,7 +17,7 @@
 <% } if (!inLerna) { -%>
   <a href="https://david-dm.org/<%= gitAccount %>/<%= gitName %>"><img src="https://david-dm.org/<%= gitAccount %>/<%= gitName %>.svg?style=flat-square"></a>
 <% } else { -%>
-  <a href="https://david-dm.org/<%= gitAccount %>/<%= gitName %>?path=packages/<%= packageName %>"><img src="https://david-dm.org/<%= gitAccount %>/<%= gitName %>?path=packages/<%= packageName %>.svg?style=flat-square"></a>
+  <a href="https://david-dm.org/<%= gitAccount %>/<%= gitName %>?path=packages/<%= packageName %>"><img src="https://david-dm.org/<%= gitAccount %>/<%= gitName %>.svg?path=packages/<%= packageName %>?style=flat-square"></a>
 <% } if (testing && codecov) { -%>
   <a href="https://codecov.io/gh/<%= gitAccount %>/<%= gitName %>"><img src="https://img.shields.io/codecov/c/github/<%= gitAccount %>/<%= gitName %>/master.svg?style=flat-square"></a>
 <% } -%>
