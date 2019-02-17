@@ -123,6 +123,6 @@ module.exports = class LernaGenerator extends Generator {
       });
     });
     this.spawnCommandSync('yarn', ['install', '--prefer-offline']);
-    this.spawnCommandSync('yarn', ['run', 'build']);
+    this.spawnCommandSync('yarn', ['run', 'preversion']);
   }
 };
