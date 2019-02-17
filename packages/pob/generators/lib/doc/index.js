@@ -53,7 +53,7 @@ module.exports = class DocGenerator extends Generator {
 
     if (this.options.enabled) {
       packageUtils.addScripts(pkg, {
-        'generate:docs': 'rm -Rf docs ; yarn run generate:api',
+        'generate:docs': 'rm -Rf docs ; yarn run generate:api ; touch docs/.nojekyll',
         'generate:api': 'typedoc --out docs --tsconfig tsconfig.doc.json',
       });
 
