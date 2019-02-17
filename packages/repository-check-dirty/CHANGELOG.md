@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@1.0.1...repository-check-dirty@1.0.2) (2019-02-17)
+
+
+### Bug Fixes
+
+* repository-check-dirty.sh path ([0903708](https://github.com/christophehurpeau/pob/commit/0903708))
+
+
+
+
+
 ## [1.0.1](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@1.0.0...repository-check-dirty@1.0.1) (2019-02-17)
 
 

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.22.0](https://github.com/christophehurpeau/pob/compare/pob@4.21.2...pob@4.22.0) (2019-02-17)
+
+
+### Bug Fixes
+
+* nojekyll for github pages ([b00cad8](https://github.com/christophehurpeau/pob/commit/b00cad8))
+* run preversion at the end instead of just build ([9203d50](https://github.com/christophehurpeau/pob/commit/9203d50))
+
+
+### Features
+
+* reenable repository-check-dirty in ci ([42867d5](https://github.com/christophehurpeau/pob/commit/42867d5))
+
+
+
+
+
 ## [4.21.2](https://github.com/christophehurpeau/pob/compare/pob@4.21.1...pob@4.21.2) (2019-02-17)
 
 **Note:** Version bump only for package pob
