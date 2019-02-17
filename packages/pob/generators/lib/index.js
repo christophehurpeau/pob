@@ -367,10 +367,10 @@ module.exports = class PobLibGenerator extends Generator {
         delete pkg.scripts.version;
       }
     } else {
-      packageUtils.addDevDependencies(pkg, ['pob-release']);
+      packageUtils.addDevDependencies(pkg, ['pob-release', 'repository-check-dirty']);
       packageUtils.addScripts(pkg, {
-        release: 'pob-repository-check-clean && pob-release',
-        preversion: ['yarn run lint', withBabel && 'yarn run build', this.pobjson.documentation && 'yarn run generate:docs', 'pob-repository-check-clean']
+        release: 'repository-check-dirty && pob-release',
+        preversion: ['yarn run lint', withBabel && 'yarn run build', this.pobjson.documentation && 'yarn run generate:docs', 'repository-check-dirty']
           .filter(Boolean)
           .join(' && '),
         version: 'pob-version',

@@ -48,7 +48,7 @@ module.exports = class LernaGenerator extends Generator {
 
     packageUtils.addDevDependencies(pkg, [
       'lerna',
-      'pob-release', // only for pob-repository-check-clean
+      'repository-check-dirty',
     ]);
 
     packageUtils.removeDevDependencies(pkg, ['prettier']);
@@ -68,11 +68,11 @@ module.exports = class LernaGenerator extends Generator {
       preversion: [
         'yarn run lint',
         withBabel && 'yarn run build',
-        withDocumentation && 'yarn run generate:docs',
-        // 'pob-repository-check-clean'
+        'repository-check-dirty',
       ]
         .filter(Boolean)
         .join(' && '),
+      prepublishOnly: 'repository-check-dirty',
       release: "GH_TOKEN=$POB_GITHUB_TOKEN lerna publish --conventional-commits --github-release -m 'chore: release'",
     });
     delete pkg.scripts.version;

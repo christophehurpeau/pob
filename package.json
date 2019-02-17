@@ -12,7 +12,7 @@
     "build": "lerna run --parallel --ignore \"*-example\" build",
     "generate:docs": "lerna run --parallel --ignore \"*-example\" generate:docs",
     "lint": "lerna run --stream lint",
-    "preversion": "yarn run lint && yarn run build && yarn run generate:docs",
+    "preversion": "yarn run lint && yarn run build",
     "release": "GH_TOKEN=$POB_GITHUB_TOKEN lerna publish --conventional-commits --github-release -m 'chore: release'",
     "test": "lerna run --stream test",
     "watch": "lerna run --parallel --ignore \"*-example\" watch"

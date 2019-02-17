@@ -14,7 +14,7 @@
 ### Install
 
 ```sh
-npm install --save-dev pob-release
+npm install --save-dev pob-release repository-check-dirty
 ```
 
 ### How to use
@@ -35,7 +35,7 @@ Edit your package.json:
         "lint": "eslint ...",
         "preversion": "npm run lint",
         "version": "pob-version",
-        "release": "pob-repository-check-clean && pob-release"
+        "release": "repository-check-dirty && pob-release"
     }
 }
 

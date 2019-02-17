@@ -26,7 +26,7 @@ jobs:
 # TODO: fix the date in the generated coverage
 #      - run:
 #          name: Check nothing was forget before commit
-#          command: npx pob-repository-check-clean
+#          command: npx repository-check-dirty
 
   test-node6:
     docker:

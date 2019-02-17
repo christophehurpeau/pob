@@ -1,0 +1,16 @@
+{
+  "name": "repository-check-dirty",
+  "version": "1.0.0-pre",
+  "description": "check that a git repository is not dirty",
+  "keywords": [],
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
+  "license": "ISC",
+  "repository": "git@github.com:christophehurpeau/pob.git",
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "engines": {
+    "node": ">=6.5.0"
+  },
+  "bin": {
+    "pob-repository-dirty": "./repository-dirty.sh"
+  }
+}

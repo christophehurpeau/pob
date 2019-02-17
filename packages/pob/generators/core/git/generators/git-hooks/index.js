@@ -119,7 +119,7 @@ module.exports = class GitHooksGenerator extends Generator {
     };
 
     // if (packageUtils.hasLerna(pkg)) {
-    //   packageUtils.addScript(pkg, 'postinstall', 'pob-repository-check-clean && lerna bootstrap');
+    //   packageUtils.addScript(pkg, 'postinstall', 'repository-check-dirty && lerna bootstrap');
     // }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);

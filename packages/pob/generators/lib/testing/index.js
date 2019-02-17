@@ -98,11 +98,12 @@ module.exports = class TestingGenerator extends Generator {
         test: 'jest',
         'generate:test-coverage': [
           'rm -Rf docs/coverage/',
-          'NODE_ENV=production BABEL_ENV=test jest --coverage --coverageReporters=lcov --coverageDirectory=docs/coverage/',
+          'NODE_ENV=production BABEL_ENV=test jest --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/',
         ].join(' ; '),
       });
 
       packageUtils.addDevDependencies(pkg, [
+        'pob-lcov-reporter',
         'jest',
         '@types/jest',
       ]);
