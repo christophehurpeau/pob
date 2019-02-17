@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.12.0...pob-dependencies@0.12.1) (2019-02-17)
+
+
+### Bug Fixes
+
+* add pob-lcov-reporter repository-check-dirty in pob-dependencies ([2e07f44](https://github.com/christophehurpeau/pob/commit/2e07f44))
+
+
+
+
+
 # [0.12.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.11.1...pob-dependencies@0.12.0) (2019-02-17)
 
 

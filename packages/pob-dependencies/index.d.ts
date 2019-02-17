@@ -26,9 +26,11 @@ interface Dependencies {
   'jest-junit-reporter': '1.1.0';
   'lerna': '3.13.0';
   'lint-staged': '8.1.4';
-  'pob-babel': '^23.6.3';
-  'pob-release': '^4.7.2';
+  'pob-babel': '^23.6.4';
+  'pob-lcov-reporter': '^1.0.0';
+  'pob-release': '^4.8.0';
   'prettier': '1.16.4';
+  'repository-check-dirty': '^1.0.0';
   'typedoc': '0.14.2';
   'typescript': '3.3.3';
   'yarn-update-lock': '^0.3.1';
