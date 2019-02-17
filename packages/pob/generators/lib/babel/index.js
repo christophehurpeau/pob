@@ -325,7 +325,7 @@ module.exports = class BabelGenerator extends Generator {
   end() {
     if (this.options.fromPob) return;
     if (this.babelEnvs && this.babelEnvs.length) {
-      this.spawnCommandSync('yarn', ['run', 'build']);
+      this.spawnCommandSync('yarn', ['run', 'preversion']);
     }
   }
 };
