@@ -1,6 +1,6 @@
 
 interface Dependencies {
-  '@babel/core': '7.2.2';
+  '@babel/core': '7.3.3';
   '@babel/preset-env': '7.3.1';
   '@babel/preset-react': '7.0.0';
   '@commitlint/cli': '7.5.2';
@@ -12,7 +12,7 @@ interface Dependencies {
   'babel-jest': '24.1.0';
   'babel-preset-latest-node': '3.0.1';
   'babel-preset-modern-browsers': '13.0.1';
-  'eslint': '5.13.0';
+  'eslint': '5.14.0';
   'eslint-config-airbnb': '17.1.0';
   'eslint-config-pob': '28.0.0';
   'eslint-plugin-babel': '5.3.0';
@@ -31,7 +31,7 @@ interface Dependencies {
   'prettier': '1.16.4';
   'typedoc': '0.14.2';
   'typescript': '3.3.3';
-  'yarn-update-lock': '^0.3.0';
+  'yarn-update-lock': '^0.3.1';
   'yarnhook': '0.3.0';
 } 
 

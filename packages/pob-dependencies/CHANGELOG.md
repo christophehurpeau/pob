@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.12.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.11.1...pob-dependencies@0.12.0) (2019-02-17)
+
+
+### Features
+
+* **deps:** update dependency @babel/core to v7.3.3 ([#110](https://github.com/christophehurpeau/pob/issues/110)) ([de0f2e8](https://github.com/christophehurpeau/pob/commit/de0f2e8))
+
+
+
+
+
 ## [0.11.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.11.0...pob-dependencies@0.11.1) (2019-02-15)
 
 **Note:** Version bump only for package pob-dependencies

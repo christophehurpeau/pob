@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.21.0](https://github.com/christophehurpeau/pob/compare/pob@4.20.1...pob@4.21.0) (2019-02-17)
+
+
+### Bug Fixes
+
+* david-dm svg url in lerna ([2e6b7dd](https://github.com/christophehurpeau/pob/commit/2e6b7dd))
+* remove dependencyci ([c70acd8](https://github.com/christophehurpeau/pob/commit/c70acd8))
+* special cases for eslint-config-pob ([97fb5e5](https://github.com/christophehurpeau/pob/commit/97fb5e5))
+
+
+### Features
+
+* remove clean script for non babel projets ([26b8754](https://github.com/christophehurpeau/pob/commit/26b8754))
+* repository-check-dirty and custom coverage reporter ([f1f061d](https://github.com/christophehurpeau/pob/commit/f1f061d))
+
+
+
+
+
 ## [4.20.1](https://github.com/christophehurpeau/pob/compare/pob@4.20.0...pob@4.20.1) (2019-02-15)
 
 **Note:** Version bump only for package pob

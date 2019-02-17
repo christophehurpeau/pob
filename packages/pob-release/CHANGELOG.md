@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.8.0](https://github.com/christophehurpeau/pob/compare/pob-release@4.7.2...pob-release@4.8.0) (2019-02-17)
+
+
+### Bug Fixes
+
+* remove dependencyci ([c70acd8](https://github.com/christophehurpeau/pob/commit/c70acd8))
+
+
+### Features
+
+* repository-check-dirty and custom coverage reporter ([f1f061d](https://github.com/christophehurpeau/pob/commit/f1f061d))
+
+
+
+
+
 ## [4.7.2](https://github.com/christophehurpeau/pob/compare/pob-release@4.7.1...pob-release@4.7.2) (2019-02-11)
 
 **Note:** Version bump only for package pob-release
