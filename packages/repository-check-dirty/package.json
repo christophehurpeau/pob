@@ -11,6 +11,6 @@
     "node": ">=6.5.0"
   },
   "bin": {
-    "pob-repository-dirty": "./repository-dirty.sh"
+    "repository-check-dirty": "./repository-dirty.sh"
   }
 }
