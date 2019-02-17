@@ -39,10 +39,9 @@ jobs:
           name: Send results to codecov
           command: bash <(curl -s https://codecov.io/bash)
 <% } -%>
-# TODO: fix the date in the generated coverage
-#      - run:
-#          name: Check nothing was forget before commit
-#          command: npx pob-repository-check-clean
+      - run:
+          name: Check nothing was forget before commit
+          command: yarn run repository-check-dirty
 <% [node11 && { name: 11, version: '11.9' }, node10 && { name: 10, version: '10.15' }].filter(Boolean).forEach(({ name, version }) => { -%>
 
   test-node<%= name %>:
