@@ -99,6 +99,7 @@ module.exports = class LintGenerator extends Generator {
     const typescript = true;
 
     const config = (() => {
+      if (pkg.name === 'eslint-config-pob') return ['./index.js', './node.js'];
       if (useBabel) {
         return [
           useNodeOnly ? 'pob/babel-node' : 'pob/babel',

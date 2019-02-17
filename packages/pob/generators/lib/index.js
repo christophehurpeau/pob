@@ -309,7 +309,7 @@ module.exports = class PobLibGenerator extends Generator {
       fromPob: this.options.fromPob,
     });
 
-    if (!withBabel) {
+    if (!withBabel && pkg.name !== 'eslint-config-pob') {
       mkdirp('lib');
     }
 
@@ -385,7 +385,7 @@ module.exports = class PobLibGenerator extends Generator {
       }
     }
 
-    if (!withBabel) {
+    if (!withBabel && pkg.name !== 'eslint-config-pob') {
       if (!this.fs.exists(this.destinationPath('lib/index.js'))
           && this.fs.exists(this.destinationPath('index.js'))) {
         this.fs.move(
