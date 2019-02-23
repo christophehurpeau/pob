@@ -29,10 +29,6 @@ yarn add --dev yarn-update-lock
 ```json
 {
   "lint-staged": {
-    "package.json": [
-      "yarn-update-lock",
-      "git add yarn.lock"
-    ],
     "yarn.lock": [
       "yarn-update-lock",
       "git add"

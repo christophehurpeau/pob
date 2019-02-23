@@ -73,7 +73,7 @@ module.exports = class LernaGenerator extends Generator {
         .filter(Boolean)
         .join(' && '),
       prepublishOnly: 'repository-check-dirty',
-      release: "GH_TOKEN=$POB_GITHUB_TOKEN lerna publish --conventional-commits --github-release -m 'chore: release'",
+      release: "GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --github-release -m 'chore: release' && lerna publish from-git",
     });
     delete pkg.scripts.version;
 

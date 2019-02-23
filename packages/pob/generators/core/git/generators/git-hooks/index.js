@@ -95,10 +95,6 @@ module.exports = class GitHooksGenerator extends Generator {
     const srcDirectory = hasBabel ? 'src' : 'lib';
 
     pkg['lint-staged'] = {
-      'package.json': [
-        'yarn-update-lock',
-        'git add yarn.lock',
-      ],
       'yarn.lock': [
         'yarn-update-lock',
         'git add',
