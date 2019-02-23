@@ -151,48 +151,52 @@ module.exports = class LintGenerator extends Generator {
       this.fs.writeJSON(eslintrcPath, eslintConfig);
     } else {
       ensureJsonFileFormatted(eslintrcPath);
-      const eslintConfig = this.fs.readJSON(eslintrcPath);
-      // if (!eslintConfig.extends || typeof eslintConfig.extends === 'string') {
-      eslintConfig.extends = config;
-      // } else if (Array.isArray(eslintConfig.extends)) {
-      // eslintConfig.extends[0] = config;
-      // eslintConfig.extends[0] = config;
-      // }
-
-      if (useBabel) {
-        // webstorm uses this to detect eslint .ts compat
-        eslintConfig.parser = '@typescript-eslint/parser';
-        eslintConfig.plugins = ['@typescript-eslint'];
-      } else {
-        if (eslintConfig.parser === 'typescript-eslint-parser' || eslintConfig.parser === '@typescript-eslint/parser') delete eslintConfig.parser;
-        if (eslintConfig.plugins && (eslintConfig.plugins[0] === 'typescript' || eslintConfig.plugins[0] === '@typescript-eslint')) eslintConfig.plugins.splice(0, 1);
-        if (eslintConfig.plugins && eslintConfig.plugins.length === 0) delete eslintConfig.plugins;
-      }
-
-      const existingJestOverrideIndex = !eslintConfig.overrides ? -1 : eslintConfig.overrides.findIndex(override => override.env && override.env.jest);
-      if (!jestOverride) {
-        if (existingJestOverrideIndex !== -1) {
-          eslintConfig.overrides.splice(existingJestOverrideIndex, 1);
-          if (eslintConfig.overrides.length === 0) delete eslintConfig.overrides;
-        }
-      } else {
-        // eslint-disable-next-line no-lonely-if
-        if (existingJestOverrideIndex !== -1) {
-          Object.assign(eslintConfig.overrides[existingJestOverrideIndex], jestOverride);
+      try {
+        const eslintConfig = this.fs.readJSON(eslintrcPath);
+        // if (!eslintConfig.extends || typeof eslintConfig.extends === 'string') {
+        eslintConfig.extends = config;
+        // } else if (Array.isArray(eslintConfig.extends)) {
+        // eslintConfig.extends[0] = config;
+        // eslintConfig.extends[0] = config;
+        // }
+  
+        if (useBabel) {
+          // webstorm uses this to detect eslint .ts compat
+          eslintConfig.parser = '@typescript-eslint/parser';
+          eslintConfig.plugins = ['@typescript-eslint'];
         } else {
-          if (!eslintConfig.overrides) eslintConfig.overrides = [];
-          eslintConfig.overrides.push(jestOverride);
+          if (eslintConfig.parser === 'typescript-eslint-parser' || eslintConfig.parser === '@typescript-eslint/parser') delete eslintConfig.parser;
+          if (eslintConfig.plugins && (eslintConfig.plugins[0] === 'typescript' || eslintConfig.plugins[0] === '@typescript-eslint')) eslintConfig.plugins.splice(0, 1);
+          if (eslintConfig.plugins && eslintConfig.plugins.length === 0) delete eslintConfig.plugins;
         }
+  
+        const existingJestOverrideIndex = !eslintConfig.overrides ? -1 : eslintConfig.overrides.findIndex(override => override.env && override.env.jest);
+        if (!jestOverride) {
+          if (existingJestOverrideIndex !== -1) {
+            eslintConfig.overrides.splice(existingJestOverrideIndex, 1);
+            if (eslintConfig.overrides.length === 0) delete eslintConfig.overrides;
+          }
+        } else {
+          // eslint-disable-next-line no-lonely-if
+          if (existingJestOverrideIndex !== -1) {
+            Object.assign(eslintConfig.overrides[existingJestOverrideIndex], jestOverride);
+          } else {
+            if (!eslintConfig.overrides) eslintConfig.overrides = [];
+            eslintConfig.overrides.push(jestOverride);
+          }
+        }
+  
+        const sortedConfig = sortObject(eslintConfig, ['root', 'parser', 'parserOptions', 'plugins', 'extends', 'env', 'globals', 'settings', 'rules', 'overrides']);
+        if (sortedConfig.overrides) {
+          sortedConfig.overrides.forEach((override, index) => {
+            sortedConfig.overrides[index] = sortObject(override, ['files', 'env', 'globals', 'settings', 'rules']);
+          });
+        }
+  
+        this.fs.write(eslintrcPath, formatJson(sortedConfig));
+      } catch (err) {
+        console.warn('Could not parse/edit eslintrc.json: ', err)
       }
-
-      const sortedConfig = sortObject(eslintConfig, ['root', 'parser', 'parserOptions', 'plugins', 'extends', 'env', 'globals', 'settings', 'rules', 'overrides']);
-      if (sortedConfig.overrides) {
-        sortedConfig.overrides.forEach((override, index) => {
-          sortedConfig.overrides[index] = sortObject(override, ['files', 'env', 'globals', 'settings', 'rules']);
-        });
-      }
-
-      this.fs.write(eslintrcPath, formatJson(sortedConfig));
     }
 
     const srcDirectory = useBabel ? 'src' : 'lib';
