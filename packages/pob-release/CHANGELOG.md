@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.8.3](https://github.com/christophehurpeau/pob/compare/pob-release@4.8.2...pob-release@4.8.3) (2019-02-23)
+
+**Note:** Version bump only for package pob-release
+
+
+
+
+
 ## [4.8.2](https://github.com/christophehurpeau/pob/compare/pob-release@4.8.1...pob-release@4.8.2) (2019-02-17)
 
 **Note:** Version bump only for package pob-release

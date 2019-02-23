@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.13.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.12.3...pob-dependencies@0.13.0) (2019-02-23)
+
+
+### Features
+
+* **deps:** update dependency @types/jest to v24.0.6 ([#111](https://github.com/christophehurpeau/pob/issues/111)) ([5f18c27](https://github.com/christophehurpeau/pob/commit/5f18c27))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v1.4.1 ([#113](https://github.com/christophehurpeau/pob/issues/113)) ([94f6b0f](https://github.com/christophehurpeau/pob/commit/94f6b0f))
+* **deps:** update dependency @typescript-eslint/parser to v1.4.1 ([#114](https://github.com/christophehurpeau/pob/issues/114)) ([a3a16b8](https://github.com/christophehurpeau/pob/commit/a3a16b8))
+* **deps:** update dependency eslint-plugin-react-hooks to v1.2.0 ([#116](https://github.com/christophehurpeau/pob/issues/116)) ([a03c992](https://github.com/christophehurpeau/pob/commit/a03c992))
+* **deps:** update dependency typescript to v3.3.3333 ([#117](https://github.com/christophehurpeau/pob/issues/117)) ([5340a7f](https://github.com/christophehurpeau/pob/commit/5340a7f))
+
+
+
+
+
 ## [0.12.3](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.12.2...pob-dependencies@0.12.3) (2019-02-17)
 
 **Note:** Version bump only for package pob-dependencies

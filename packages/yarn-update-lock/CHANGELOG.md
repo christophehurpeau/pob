@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.2](https://github.com/christophehurpeau/pob/compare/yarn-update-lock@0.3.1...yarn-update-lock@0.3.2) (2019-02-23)
+
+
+### Bug Fixes
+
+* avoid issues with yarn-update-lock running twice when both package.json and yarn.lock are modified ([53d10b7](https://github.com/christophehurpeau/pob/commit/53d10b7))
+
+
+
+
+
 ## [0.3.1](https://github.com/christophehurpeau/pob/compare/yarn-update-lock@0.3.0...yarn-update-lock@0.3.1) (2019-02-15)
 
 **Note:** Version bump only for package yarn-update-lock

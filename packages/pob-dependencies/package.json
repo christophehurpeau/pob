@@ -1,6 +1,6 @@
 {
   "name": "pob-dependencies",
-  "version": "0.12.3",
+  "version": "0.13.0",
   "description": "easier dependencies upgrade with a real package.json",
   "main": "./index.js",
   "typings": "./index.d.ts",
@@ -34,14 +34,14 @@
     "jest-junit-reporter": "1.1.0",
     "lerna": "3.13.0",
     "lint-staged": "8.1.4",
-    "pob-babel": "^23.6.6",
+    "pob-babel": "^23.6.7",
     "pob-lcov-reporter": "^1.0.0",
-    "pob-release": "^4.8.2",
+    "pob-release": "^4.8.3",
     "prettier": "1.16.4",
     "repository-check-dirty": "^1.0.2",
     "typedoc": "0.14.2",
     "typescript": "3.3.3333",
-    "yarn-update-lock": "^0.3.1",
+    "yarn-update-lock": "^0.3.2",
     "yarnhook": "0.3.0"
   }
 }

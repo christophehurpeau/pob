@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.22.1](https://github.com/christophehurpeau/pob/compare/pob@4.22.0...pob@4.22.1) (2019-02-23)
+
+
+### Bug Fixes
+
+* avoid issues with yarn-update-lock running twice when both package.json and yarn.lock are modified ([53d10b7](https://github.com/christophehurpeau/pob/commit/53d10b7))
+* run preversion at the end instead of just build ([70fdfbe](https://github.com/christophehurpeau/pob/commit/70fdfbe))
+* try/catch parse error eslint config ([09c7432](https://github.com/christophehurpeau/pob/commit/09c7432))
+* typedoc gitRevision ([401dcb8](https://github.com/christophehurpeau/pob/commit/401dcb8))
+
+
+
+
+
 # [4.22.0](https://github.com/christophehurpeau/pob/compare/pob@4.21.2...pob@4.22.0) (2019-02-17)
 
 
