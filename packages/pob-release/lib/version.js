@@ -4,7 +4,6 @@
 
 const readFileSync = require('fs').readFileSync;
 const existsSync = require('fs').existsSync;
-const unlinkSync = require('fs').unlinkSync;
 const execSync = require('child_process').execSync;
 const validateSemver = require('semver').valid;
 
@@ -28,32 +27,9 @@ execSync(
 
 /* eslint-disable prettier/prettier */
 execSync(
-  `node_modules/.bin/standard-changelog ${existsSync('CHANGELOG.md') ? '--first-release ' : ''}` +
-    "| sed -e :a -e '/^\\n*$/{$d;N;};/\\n$/ba' > \\#temp_changelog",
+  `node_modules/.bin/standard-changelog${existsSync('CHANGELOG.md') ? ' --first-release' : ''}`,
   { stdio: 'inherit' }
 );
 /* eslint-enable prettier/prettier */
 
-execSync('$EDITOR \\#temp_changelog', { stdio: 'inherit' });
-if (
-  !readFileSync('#temp_changelog')
-    .toString()
-    .trim()
-) {
-  unlinkSync('#temp_changelog');
-  // eslint-disable-next-line no-console
-  console.log('Aborting: empty changelog');
-  process.exit(1);
-}
-execSync('echo "\\n" >> \\#temp_changelog', { stdio: 'inherit' });
-try {
-  execSync('cat CHANGELOG.md >> \\#temp_changelog', { stdio: 'inherit' });
-} catch (err) {}
-execSync(
-  "cat \\#temp_changelog | sed -e :a -e '/^\\n*$/{$d;N;};/\\n$/ba' > CHANGELOG.md",
-  {
-    stdio: 'inherit',
-  }
-);
-execSync('rm \\#temp_changelog', { stdio: 'inherit' });
 execSync('git add CHANGELOG.md');
