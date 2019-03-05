@@ -52,10 +52,13 @@ Promise.resolve(argv._[0])
     }
 
     return new Promise((resolve, reject) =>
-      conventionalRecommendedBump({ preset: 'angular' }, (err, result) => {
-        if (err) return reject(err);
-        resolve(result.releaseType);
-      })
+      conventionalRecommendedBump(
+        { preset: 'angular' },
+        (err, recommendation) => {
+          if (err) return reject(err);
+          resolve(recommendation.releaseType);
+        }
+      )
     );
   })
   .then((recommandedVersion) => {
