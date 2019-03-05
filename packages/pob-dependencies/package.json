@@ -33,7 +33,7 @@
     "jest": "24.1.0",
     "jest-junit-reporter": "1.1.0",
     "lerna": "3.13.1",
-    "lint-staged": "8.1.4",
+    "lint-staged": "8.1.5",
     "pob-babel": "^23.6.7",
     "pob-lcov-reporter": "^1.0.0",
     "pob-release": "^4.8.3",
