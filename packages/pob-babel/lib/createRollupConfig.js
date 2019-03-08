@@ -96,6 +96,7 @@ const createConfigForEnv = (entry, env, production) => {
             require.resolve('babel-preset-pob-env'),
             {
               loose: true,
+              optimizations: true,
               modules: false,
               typescript,
               target: env.target,
