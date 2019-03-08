@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://npmjs.org/package/yarn-update-lock"><img src="https://img.shields.io/npm/v/yarn-update-lock.svg?style=flat-square"></a>
-  <a href="https://david-dm.org/christophehurpeau/pob?path=packages/yarn-update-lock"><img src="https://david-dm.org/christophehurpeau/pob?path=packages/yarn-update-lock.svg?style=flat-square"></a>
+  <a href="https://david-dm.org/christophehurpeau/pob?path=packages/yarn-update-lock"><img src="https://david-dm.org/christophehurpeau/pob.svg?path=packages/yarn-update-lock?style=flat-square"></a>
 </p>
 
 ## Install

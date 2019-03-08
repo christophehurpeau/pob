@@ -2,12 +2,14 @@
   "name": "babel-preset-pob-env",
   "version": "2.15.3",
   "description": "pob babel preset env",
-  "keywords": [
-    "babel-preset"
-  ],
+  "keywords": ["babel-preset"],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
-  "repository": "git@github.com:christophehurpeau/pob.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com:christophehurpeau/pob.git",
+    "directory": "packages/babel-preset-pob-env"
+  },
   "homepage": "https://github.com/christophehurpeau/pob",
   "engines": {
     "node": ">=6.5.0"
@@ -22,6 +24,9 @@
     "singleQuote": true,
     "arrowParens": "always"
   },
+  "peerDependencies": {
+    "@babel/core": "^7.0.0"
+  },
   "dependencies": {
     "@babel/plugin-proposal-class-properties": "^7.2.3",
     "@babel/plugin-proposal-export-default-from": "^7.2.0",
@@ -35,18 +40,11 @@
     "babel-plugin-transform-name-export-default": "^1.0.0",
     "babel-preset-optimizations": "^1.6.0"
   },
-  "peerDependencies": {
-    "@babel/core": "^7.0.0"
-  },
   "devDependencies": {
     "@babel/core": "7.3.4",
-    "@babel/preset-env": "7.3.4",
-    "babel-preset-latest-node": "3.0.1",
-    "babel-preset-modern-browsers": "13.0.1",
+    "@pob/eslint-config": "29.0.1",
+    "@pob/eslint-config-node": "29.0.1",
     "eslint": "5.15.1",
-    "eslint-config-pob": "28.0.1",
-    "eslint-plugin-node": "8.0.1",
-    "eslint-plugin-prettier": "3.0.1",
     "prettier": "1.16.4"
   }
 }

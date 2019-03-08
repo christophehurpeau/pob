@@ -8,7 +8,7 @@
 
 <p align="center">
   <a href="https://npmjs.org/package/pob-babel"><img src="https://img.shields.io/npm/v/pob-babel.svg?style=flat-square"></a>
-  <a href="https://david-dm.org/christophehurpeau/pob?path=packages/pob-babel"><img src="https://david-dm.org/christophehurpeau/pob?path=packages/pob-babel.svg?style=flat-square"></a>
+  <a href="https://david-dm.org/christophehurpeau/pob?path=packages/pob-babel"><img src="https://david-dm.org/christophehurpeau/pob.svg?path=packages/pob-babel?style=flat-square"></a>
 </p>
 
 ### What it does

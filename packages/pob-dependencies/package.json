@@ -2,10 +2,28 @@
   "name": "pob-dependencies",
   "version": "0.13.0",
   "description": "easier dependencies upgrade with a real package.json",
-  "main": "./index.js",
-  "typings": "./index.d.ts",
+  "keywords": [],
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com:christophehurpeau/pob.git",
+    "directory": "packages/pob-dependencies"
+  },
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "engines": {
+    "node": ">=6.5.0"
+  },
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
   "scripts": {
-    "preversion": "node ./generate.d.ts.js && git add index.d.ts"
+    "preversion": "node ./generate.d.ts.js && git add index.d.ts",
+    "lint": "eslint lib/"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "arrowParens": "always"
   },
   "devDependencies": {
     "@babel/core": "7.3.4",

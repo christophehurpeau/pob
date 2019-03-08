@@ -5,27 +5,34 @@
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "license": "ISC",
-  "repository": "git@github.com:christophehurpeau/pob.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com:christophehurpeau/pob.git",
+    "directory": "packages/pob-babel"
+  },
   "homepage": "https://github.com/christophehurpeau/pob",
   "engines": {
     "node": ">=6.5.0"
   },
   "main": "./lib/index.js",
-  "typings": "./lib/index.d.ts",
+  "types": "./lib/index.d.ts",
   "bin": {
     "pob-build": "./pob-build",
     "pob-watch": "./pob-watch"
   },
   "scripts": {
-    "build": "echo \"No build script.\"",
+    "build:definitions": "tsc --lib esnext --noEmit ./lib/index.d.ts",
     "clean": "rm -Rf docs dist",
-    "lint": "eslint lib/",
-    "watch": "echo \"No watch script.\""
+    "lint": "eslint lib/"
   },
   "prettier": {
     "trailingComma": "es5",
     "singleQuote": true,
-    "printWidth": 100
+    "arrowParens": "always"
+  },
+  "peerDependencies": {
+    "@babel/core": "^7.0.0",
+    "typescript": "^3.1.1"
   },
   "dependencies": {
     "@babel/preset-flow": "^7.0.0",
@@ -36,17 +43,10 @@
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-node-resolve": "^4.0.0"
   },
-  "peerDependencies": {
-    "@babel/core": "^7.0.0",
-    "typescript": "^3.1.1"
-  },
   "devDependencies": {
+    "@pob/eslint-config": "29.0.1",
+    "@pob/eslint-config-node": "29.0.1",
     "eslint": "5.15.1",
-    "eslint-config-pob": "28.0.1",
-    "eslint-plugin-import": "2.16.0",
-    "eslint-plugin-node": "8.0.1",
-    "eslint-plugin-prettier": "3.0.1",
-    "eslint-plugin-unicorn": "7.1.0",
     "prettier": "1.16.4"
   }
 }

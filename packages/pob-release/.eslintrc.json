@@ -1,6 +1,6 @@
 {
-  "extends": ["pob", "pob/node"],
-
+  "root": true,
+  "extends": ["@pob/eslint-config", "@pob/eslint-config-node"],
   "rules": {
     "quote-props": ["error", "consistent-as-needed"]
   }

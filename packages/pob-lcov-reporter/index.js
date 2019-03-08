@@ -1,5 +1,7 @@
 /* https://github.com/istanbuljs/istanbuljs/blob/master/packages/istanbul-reports/lib/lcov/index.js */
 
+'use strict';
+
 var LcovOnlyReport = require('istanbul-reports/lib/lcovonly'),
   HtmlReport = require('istanbul-reports/lib/html');
 

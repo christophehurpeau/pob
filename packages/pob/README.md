@@ -1,8 +1,15 @@
-# pob [![NPM version][npm-image]][npm-url]
+<h3 align="center">
+  pob
+</h3>
 
-Pile Of Bones / Place Of Birth / Point Of Beginning 
-Library generator with git/babel/eslint/readme/editorconfig/jest/jsdoc/circleci.
-Better than a skeleton !
+<p align="center">
+  Pile of bones, library generator with git/babel/typescript/typedoc/readme/jest
+</p>
+
+<p align="center">
+  <a href="https://npmjs.org/package/pob"><img src="https://img.shields.io/npm/v/pob.svg?style=flat-square"></a>
+  <a href="https://david-dm.org/christophehurpeau/pob?path=packages/pob"><img src="https://david-dm.org/christophehurpeau/pob.svg?path=packages/pob?style=flat-square"></a>
+</p>
 
 ## How to install
 
@@ -64,6 +71,3 @@ Tests are in the directory `src` with jest. Use the task `yarn test` to run the 
 - `yarn run release`
 
 In the process, this will pre-generate a changelog based on the commits, then open nano so you can adapt it if you want.
-
-[npm-image]: https://img.shields.io/npm/v/pob.svg?style=flat
-[npm-url]: https://npmjs.org/package/pob

@@ -2,29 +2,33 @@
   "name": "pob",
   "version": "4.22.1",
   "description": "Pile of bones, library generator with git/babel/typescript/typedoc/readme/jest",
-  "repository": "christophehurpeau/pob",
-  "keywords": [
-    "skeleton"
-  ],
+  "keywords": ["skeleton"],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com:christophehurpeau/pob.git",
+    "directory": "packages/pob"
+  },
+  "homepage": "https://github.com/christophehurpeau/pob",
   "bugs": {
     "url": "https://github.com/christophehurpeau/pob/issues"
   },
-  "homepage": "https://github.com/christophehurpeau/pob",
   "engines": {
     "node": ">=8.1.0"
   },
+  "main": "./lib/index.js",
   "bin": {
-    "pob": "./pob"
-  },
-  "prettier": {
-    "trailingComma": "all",
-    "singleQuote": true,
-    "arrowParens": "always"
+    "pob": "./lib/pob.js"
   },
   "scripts": {
-    "format": "prettier --write"
+    "format": "prettier --write",
+    "lint": "eslint lib/"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "arrowParens": "always"
   },
   "dependencies": {
     "findup-sync": "^3.0.0",
@@ -47,10 +51,9 @@
     "yeoman-generator": "^2.0.5"
   },
   "devDependencies": {
-    "eslint": "5.15.1",
-    "eslint-config-airbnb-base": "13.1.0",
-    "eslint-plugin-import": "2.16.0",
-    "pob-release": "^4.8.3"
+    "@pob/eslint-config": "29.0.1",
+    "@pob/eslint-config-node": "29.0.1",
+    "eslint": "5.15.1"
   },
   "resolutions": {
     "yeoman-generator": "^2.0.3"

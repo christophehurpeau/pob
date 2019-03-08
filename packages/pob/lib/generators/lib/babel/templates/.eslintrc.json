@@ -1,0 +1,7 @@
+{
+  "rules": {
+    "strict": "off",
+    "import/no-unresolved": "off",
+    "node/no-missing-require": "off"
+  }
+}

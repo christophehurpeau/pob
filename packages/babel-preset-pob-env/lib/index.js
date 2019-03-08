@@ -8,26 +8,41 @@ module.exports = function(context, opts) {
   // `|| {}` to support node 4
   opts = opts || {};
   const targetOption = opts.target !== undefined ? opts.target : 'node';
-  const versionOption = opts.target !== undefined ? String(opts.version) : 'current';
+  const versionOption =
+    opts.target !== undefined ? String(opts.version) : 'current';
 
   if (versionOption === 'jest') throw new Error('Invalid version "jest"');
 
   if (targetOption && !validTargetOption.includes(targetOption)) {
-    throw new Error(`Preset pob-env 'target' option must one of ${validTargetOption.join(', ')}.`);
+    throw new Error(
+      `Preset pob-env 'target' option must one of ${validTargetOption.join(
+        ', '
+      )}.`
+    );
   }
 
-  ['production', 'loose', 'optimizations', 'typescript'].forEach(optionName => {
-    if (opts[optionName] !== undefined && typeof opts[optionName] !== 'boolean') {
-      throw new Error(`Preset pob-env '${optionName}' option must be a boolean.`);
+  ['production', 'loose', 'optimizations', 'typescript'].forEach(
+    (optionName) => {
+      if (
+        opts[optionName] !== undefined &&
+        typeof opts[optionName] !== 'boolean'
+      ) {
+        throw new Error(
+          `Preset pob-env '${optionName}' option must be a boolean.`
+        );
+      }
     }
-  });
+  );
 
   if (opts.flow !== undefined) throw new Error('option flow is deprecated.');
 
   const production =
-    opts.production !== undefined ? opts.production : process.env.NODE_ENV === 'production';
+    opts.production !== undefined
+      ? opts.production
+      : process.env.NODE_ENV === 'production';
   const loose = opts.loose !== undefined ? opts.loose : false;
-  const optimizations = opts.optimizations !== undefined ? opts.optimizations : true;
+  const optimizations =
+    opts.optimizations !== undefined ? opts.optimizations : true;
   const typescript = opts.typescript !== undefined ? opts.typescript : true;
   const modules = opts.modules !== undefined ? opts.modules : 'commonjs';
 
@@ -45,14 +60,18 @@ module.exports = function(context, opts) {
       ? opts.exportDefaultName
       : targetOption === 'node' || !production;
 
-  const resolvePreset = opts.resolvePreset ? opts.resolvePreset : preset => preset;
+  const resolvePreset = opts.resolvePreset
+    ? opts.resolvePreset
+    : (preset) => preset;
 
   if (typeof exportDefaultName !== 'boolean') {
-    throw new Error("Preset pob-env 'exportDefaultName' option must be an boolean.");
+    throw new TypeError(
+      "Preset pob-env 'exportDefaultName' option must be an boolean."
+    );
   }
 
   if (typeof replacements !== 'object') {
-    throw new Error(
+    throw new TypeError(
       "Preset pob-env 'replacements' option must be an object or undefined (default)"
     );
   }
@@ -65,20 +84,28 @@ module.exports = function(context, opts) {
   }
 
   if (production && targetOption === 'node' && versionOption === 'jest') {
-    throw new Error("Preset pob-env 'production' option cannot be false with jest");
+    throw new Error(
+      "Preset pob-env 'production' option cannot be false with jest"
+    );
   }
 
   const replacementsKeys = Object.keys(replacements);
-  ['PRODUCTION', 'POB_ENV', 'POB_TARGET', 'POB_TARGET_VERSION'].forEach(key => {
-    if (replacementsKeys.includes(key)) {
-      throw new Error(`Preset pob-env 'replacements.${key}' is reserved.`);
+  ['PRODUCTION', 'POB_ENV', 'POB_TARGET', 'POB_TARGET_VERSION'].forEach(
+    (key) => {
+      if (replacementsKeys.includes(key)) {
+        throw new Error(`Preset pob-env 'replacements.${key}' is reserved.`);
+      }
     }
-  });
+  );
 
-  replacementsKeys.forEach(key => {
-    if (key.toUpperCase() !== key) console.warn('warning: replacement key should be in uppercase.');
+  replacementsKeys.forEach((key) => {
+    if (key.toUpperCase() !== key) {
+      console.warn('warning: replacement key should be in uppercase.');
+    }
     if (typeof replacements[key] !== 'boolean') {
-      throw new Error(`Preset pob-env 'replacements.${key}' option must be a boolean.`);
+      throw new TypeError(
+        `Preset pob-env 'replacements.${key}' option must be a boolean.`
+      );
     }
   });
 
@@ -86,7 +113,12 @@ module.exports = function(context, opts) {
   replacements.POB_ENV = production ? 'production' : 'development';
   replacements.POB_TARGET = targetOption;
   replacements.POB_TARGET_VERSION = versionOption;
-  replacementsKeys.push('PRODUCTION', 'POB_ENV', 'POB_TARGET', 'POB_TARGET_VERSION');
+  replacementsKeys.push(
+    'PRODUCTION',
+    'POB_ENV',
+    'POB_TARGET',
+    'POB_TARGET_VERSION'
+  );
 
   let targetPreset;
 
@@ -105,7 +137,10 @@ module.exports = function(context, opts) {
 
     case 'browser':
       if (versionOption === 'modern') {
-        targetPreset = [resolvePreset('babel-preset-modern-browsers'), { modules, loose }];
+        targetPreset = [
+          resolvePreset('babel-preset-modern-browsers'),
+          { modules, loose },
+        ];
         // targetPreset = ['@babel/preset-env', { modules, loose }];
       } else {
         targetPreset = [
@@ -136,7 +171,10 @@ module.exports = function(context, opts) {
 
           // not shipped proposals:
           require.resolve('babel-plugin-fix-class-properties-uninitialized'),
-          [require.resolve('@babel/plugin-proposal-class-properties'), { loose }],
+          [
+            require.resolve('@babel/plugin-proposal-class-properties'),
+            { loose },
+          ],
           require.resolve('@babel/plugin-proposal-export-default-from'),
           require.resolve('@babel/plugin-proposal-export-namespace-from'),
         ],
@@ -155,7 +193,7 @@ module.exports = function(context, opts) {
           [
             require.resolve('babel-plugin-minify-replace'),
             {
-              replacements: replacementsKeys.map(key => ({
+              replacements: replacementsKeys.map((key) => ({
                 identifierName: key,
                 replacement: {
                   type: `${typeof replacements[key]}Literal`,

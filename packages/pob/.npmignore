@@ -1,8 +1,20 @@
-circle.yml
+/build
+/docs
+/examples
+/git-hooks
+/samples
+/test
+/tsconfig.json
+/tsconfig.build.json
+.babelrc
+.codeclimate.yml
+.yo-rc.json
+/yarn.lock
 
 /.settings
-.project
-.idea
+/.project
+/.idea
+/.vscode
 *.sublime-project
 *.sublime-workspace
 

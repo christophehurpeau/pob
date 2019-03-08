@@ -8,7 +8,9 @@ const configExternalDependencies = require('rollup-config-external-dependencies'
 const cwd = process.cwd();
 const pkg = JSON.parse(readFileSync(`${cwd}/package.json`));
 
-const pobConfig = JSON.parse(readFileSync(`${cwd}/.yo-rc.json`)).pob['pob-config'];
+const pobConfig = JSON.parse(readFileSync(`${cwd}/.yo-rc.json`)).pob[
+  'pob-config'
+];
 
 const hasReact = Boolean(
   (pkg.dependencies && pkg.dependencies.react) ||
@@ -19,9 +21,11 @@ const isIndexBrowserEntry =
   pobConfig.entries.length === 2 &&
   pobConfig.entries[0] === 'index' &&
   pobConfig.entries[1] === 'browser';
-const entries = isIndexBrowserEntry ? ['index', ...pobConfig.entries.slice(2)] : pobConfig.entries;
+const entries = isIndexBrowserEntry
+  ? ['index', ...pobConfig.entries.slice(2)]
+  : pobConfig.entries;
 
-const nodeVersion = version => {
+const nodeVersion = (version) => {
   switch (String(version)) {
     case '10':
       return '10.13';
@@ -52,7 +56,9 @@ const createConfigForEnv = (entry, env, production) => {
   const devSuffix = production ? '' : '-dev';
 
   const entryName =
-    isIndexBrowserEntry && entry === 'index' && env.target === 'browser' ? 'browser' : entry;
+    isIndexBrowserEntry && entry === 'index' && env.target === 'browser'
+      ? 'browser'
+      : entry;
   let entryPath;
   try {
     entryPath = require.resolve(`./src/${entryName}`, { paths: [cwd] });
@@ -68,8 +74,9 @@ const createConfigForEnv = (entry, env, production) => {
 
   return {
     input: entryPath,
-    output: env.formats.map(format => ({
-      file: `dist/${entry}-${env.target}${env.version || ''}${devSuffix}.${format}.js`,
+    output: env.formats.map((format) => ({
+      file: `dist/${entry}-${env.target}${env.version ||
+        ''}${devSuffix}.${format}.js`,
       format,
       sourcemap: true,
       exports: 'named',
@@ -81,7 +88,10 @@ const createConfigForEnv = (entry, env, production) => {
         babelrc: false,
         presets: [
           !typescript && require.resolve('@babel/preset-flow'), // compatibility
-          hasReact && ['@babel/preset-react', { development: !production, useBuiltIns: true }],
+          hasReact && [
+            '@babel/preset-react',
+            { development: !production, useBuiltIns: true },
+          ],
           [
             require.resolve('babel-preset-pob-env'),
             {
@@ -89,7 +99,8 @@ const createConfigForEnv = (entry, env, production) => {
               modules: false,
               typescript,
               target: env.target,
-              version: env.target === 'node' ? nodeVersion(env.version) : env.version,
+              version:
+                env.target === 'node' ? nodeVersion(env.version) : env.version,
               production,
               exportDefaultName: false, // Rollup does it
             },
@@ -116,10 +127,10 @@ const createConfigForEnv = (entry, env, production) => {
 module.exports = () =>
   Array.prototype.concat.apply(
     [],
-    pobConfig.envs.map(env =>
+    pobConfig.envs.map((env) =>
       Array.prototype.concat.apply(
         [],
-        entries.map(entry => [
+        entries.map((entry) => [
           createConfigForEnv(entry, env, true),
           createConfigForEnv(entry, env, false),
         ])

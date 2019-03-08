@@ -1,14 +1,14 @@
 <h3 align="center">
-  babel-plugin-fix-class-properties-uninitialiazed
+  babel-plugin-fix-class-properties-uninitialized
 </h3>
 
 <p align="center">
-  babel plugin for pob-babel
+  babel plugin fix class properties uninitialized
 </p>
 
 <p align="center">
-  <a href="https://npmjs.org/package/babel-plugin-fix-class-properties-uninitialiazed"><img src="https://img.shields.io/npm/v/babel-plugin-fix-class-properties-uninitialiazed.svg?style=flat-square"></a>
-  <a href="https://david-dm.org/christophehurpeau/pob?path=packages/babel-plugin-fix-class-properties-uninitialiazed"><img src="https://david-dm.org/christophehurpeau/pob?path=packages/babel-plugin-fix-class-properties-uninitialiazed.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/babel-plugin-fix-class-properties-uninitialized"><img src="https://img.shields.io/npm/v/babel-plugin-fix-class-properties-uninitialized.svg?style=flat-square"></a>
+  <a href="https://david-dm.org/christophehurpeau/pob?path=packages/babel-plugin-fix-class-properties-uninitialized"><img src="https://david-dm.org/christophehurpeau/pob.svg?path=packages/babel-plugin-fix-class-properties-uninitialized?style=flat-square"></a>
 </p>
 
 ## Install
@@ -50,6 +50,4 @@ class Foo extends Bar {
 ```
 
 Except it causes an issue if prop is setup in the constructor of Bar.
-This plugin removes the uninitialized prop so that @babel/plugin-proposal-class-properties does not process it. 
-
-
+This plugin removes the uninitialized prop so that @babel/plugin-proposal-class-properties does not process it.
