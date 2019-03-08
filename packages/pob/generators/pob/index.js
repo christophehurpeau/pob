@@ -1,7 +1,6 @@
 const fs = require('fs');
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../utils/package');
-const inLerna = require('../../utils/inLerna');
 const ensureJsonFileFormatted = require('../../utils/ensureJsonFileFormatted');
 
 module.exports = class PobBaseGenerator extends Generator {
@@ -61,8 +60,11 @@ module.exports = class PobBaseGenerator extends Generator {
       this.useLerna = true;
       this.inLerna = false;
     } else {
-      this.useLerna = false;
-      this.inLerna = inLerna;
+      // only require if not specified in options
+      // eslint-disable-next-line global-require
+      const inLerna = require('../../utils/inLerna');
+      this.useLerna = inLerna && inLerna.root;
+      this.inLerna = inLerna && !inLerna.root;
     }
 
 

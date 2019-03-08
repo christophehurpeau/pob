@@ -39,60 +39,65 @@ module.exports = class LintGenerator extends Generator {
     };
 
     packageUtils.removeDevDependencies(pkg, [
+      '@typescript-eslint/eslint-plugin',
+      '@typescript-eslint/parser',
+      'babel-eslint',
+      'eslint-config-airbnb',
       'eslint-config-airbnb-base',
+      'eslint-config-pob',
       'eslint-config-prettier',
+      'eslint-plugin-babel',
       'eslint-plugin-flowtype',
-      'eslint-plugin-unicorn',
+      'eslint-plugin-import',
+      'eslint-plugin-jsx-a11y',
       'eslint-plugin-prettier',
+      'eslint-plugin-react',
+      'eslint-plugin-react-hooks',
       'eslint-plugin-typescript',
+      'eslint-plugin-unicorn',
       'typescript-eslint-parser',
     ]);
 
     packageUtils.addDevDependencies(pkg, [
       'eslint',
-      'eslint-plugin-import',
       'prettier',
     ]);
 
-    packageUtils.addOrRemoveDevDependencies(pkg, useBabel, [
-      'babel-eslint', // required...
-      'eslint-plugin-babel',
-      '@typescript-eslint/eslint-plugin',
-      '@typescript-eslint/parser',
-    ]);
-
-    if (!pkg.name.startsWith('eslint-config') && !pkg.name.startsWith('@pob/eslint-config')) {
-      packageUtils.addDevDependencies(pkg, [
-        'eslint-config-pob',
-      ]);
-
-      packageUtils.addOrRemoveDevDependencies(pkg, useNodeOnly, [
-        'eslint-plugin-node',
-      ]);
-
-      packageUtils.addOrRemoveDevDependencies(pkg, hasReact, [
-        'eslint-config-airbnb',
-        'eslint-plugin-jsx-a11y',
-        'eslint-plugin-react',
-        'eslint-plugin-react-hooks',
-      ]);
-    }
-
     const typescript = true;
 
+    if (!pkg.name.startsWith('eslint-config') && !pkg.name.startsWith('@pob/eslint-config')) {
+      packageUtils.addOrRemoveDevDependencies(pkg, !useBabel, [
+        '@pob/eslint-config',
+        '@pob/eslint-config-node',
+      ]);
+
+      packageUtils.addOrRemoveDevDependencies(pkg, useBabel, ['@pob/eslint-config-babel']);
+      packageUtils.addOrRemoveDevDependencies(pkg, useBabel && useNodeOnly, ['@pob/eslint-config-babel-node']);
+      packageUtils.addOrRemoveDevDependencies(pkg, useBabel && typescript, ['@pob/eslint-config-typescript']);
+
+      packageUtils.addOrRemoveDevDependencies(pkg, hasReact && !typescript, ['@pob/eslint-config-react']);
+      packageUtils.addOrRemoveDevDependencies(pkg, hasReact && typescript, ['@pob/eslint-config-typescript-react']);
+    }
+
     const config = (() => {
-      if (pkg.name === 'eslint-config-pob' || pkg.name.startsWith('@pob/eslint-config')) return ['./index.js', './node.js'];
+      if (pkg.name === 'eslint-config-pob' || pkg.name.startsWith('@pob/eslint-config')) {
+        return ['../eslint-config/lib/index.js', '../eslint-config-node/lib/index.js'];
+      }
+
       if (useBabel) {
         return [
-          useNodeOnly ? 'pob/babel-node' : 'pob/babel',
-          typescript && 'pob/typescript',
-          hasReact && `pob/${typescript ? 'typescript-' : ''}react`,
+          '@pob/eslint-config-babel',
+          useNodeOnly && '@pob/eslint-config-babel-node',
+          typescript && '@pob/eslint-config-typescript',
+          hasReact && `@pob/eslint-config-${typescript ? 'typescript-' : ''}react`,
         ].filter(Boolean);
       }
-      return ['pob', 'pob/node'];
+
+      return ['@pob/eslint-config', '@pob/eslint-config-node'];
     })();
 
     const dir = useBabel ? 'src' : 'lib';
+    // eslint-disable-next-line no-nested-ternary
     const ext = !useBabel ? 'js' : (hasReact ? '{ts,tsx}' : 'ts');
 
     const jestOverride = !packageUtils.hasJest(pkg) ? null : {
@@ -121,7 +126,7 @@ module.exports = class LintGenerator extends Generator {
     this.fs.delete(`${eslintrcBadPath}.js`);
     const eslintrcPath = this.destinationPath('.eslintrc.json');
     if (!this.fs.exists(eslintrcPath)) {
-      const eslintConfig = { extends: config };
+      const eslintConfig = { root: true, extends: config };
       if (jestOverride) {
         eslintConfig.overrides = [jestOverride];
       }
@@ -136,6 +141,7 @@ module.exports = class LintGenerator extends Generator {
       try {
         const eslintConfig = this.fs.readJSON(eslintrcPath);
         // if (!eslintConfig.extends || typeof eslintConfig.extends === 'string') {
+        eslintConfig.root = true;
         eslintConfig.extends = config;
         // } else if (Array.isArray(eslintConfig.extends)) {
         // eslintConfig.extends[0] = config;

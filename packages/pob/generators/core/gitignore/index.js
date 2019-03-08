@@ -28,7 +28,7 @@ module.exports = class GitignoreGenerator extends Generator {
 
   writing() {
     const dest = this.destinationPath('.gitignore');
-    if (!this.options.documentation && !this.options.withBabel) {
+    if (!this.options.root && !this.options.documentation && !this.options.withBabel) {
       this.fs.delete(dest);
     } else {
       this.fs.copyTpl(

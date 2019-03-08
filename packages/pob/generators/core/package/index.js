@@ -120,6 +120,12 @@ module.exports = class PackageGenerator extends Generator {
       pkg.version = '0.0.0';
     }
 
+    if (!pkg.private && !pkg.publishConfig && pkg.name[0] === '@') {
+      pkg.publishConfig = {
+        access: 'public',
+      };
+    }
+
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 

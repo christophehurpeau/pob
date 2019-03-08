@@ -63,6 +63,7 @@ exports.sort = function sort(pkg) {
     'engineStrict',
     'os',
     'cpu',
+    'publishConfig',
     'workspaces',
     'browserslist',
     'main',
