@@ -30,7 +30,7 @@ module.exports = class GitignoreGenerator extends Generator {
     this.option('paths', {
       type: String,
       required: false,
-      defaults: false,
+      defaults: '',
       desc: 'Paths ignored.',
     });
   }
