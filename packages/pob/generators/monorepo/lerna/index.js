@@ -1,4 +1,3 @@
-const path = require('path');
 const { readdirSync, existsSync } = require('fs');
 const { spawnSync } = require('child_process');
 const Generator = require('yeoman-generator');
@@ -6,9 +5,18 @@ const packageUtils = require('../../../utils/package');
 
 module.exports = class LernaGenerator extends Generator {
   initializing() {
-    this.packageNames = existsSync('packages/') ? readdirSync('packages/') : [];
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+    const packagesPath = pkg.workspaces
+      ? pkg.workspaces[0].replace(/\/\*$/, '')
+      : 'packages';
+
+    this.packagesPath = packagesPath;
+    this.packageNames = existsSync(`${packagesPath}/`) ? readdirSync(`${packagesPath}/`) : [];
     this.packages = this.packageNames
-      .map(packageName => this.fs.readJSON(this.destinationPath(`packages/${packageName}/package.json`)))
+      .map(packageName => this.fs.readJSON(this.destinationPath(`${packagesPath}/${packageName}/package.json`)))
+      .filter(Boolean);
+    this.packagesConfig = this.packageNames
+      .map(packageName => this.fs.readJSON(this.destinationPath(`${packagesPath}/${packageName}/.yo-rc.json`)))
       .filter(Boolean);
   }
 
@@ -20,7 +28,7 @@ module.exports = class LernaGenerator extends Generator {
     const lernaConfig = this.npm ? {
       version: 'independent',
     } : {
-      version: 'independent',
+      version: lernaCurrentConfig.version || 'independent',
       npmClient: 'yarn',
       useWorkspaces: true,
       command: {
@@ -53,18 +61,14 @@ module.exports = class LernaGenerator extends Generator {
 
     packageUtils.removeDevDependencies(pkg, ['prettier', 'pob-release']);
 
-    const withBabel = true;
-    const withDocumentation = true;
+    const withBabel = this.packagesConfig.some(config => config.pob['pob-config'].envs.length !== 0);
+    const withTypescript = withBabel && this.packageNames
+      .some(packageName => this.fs.exists(this.destinationPath(`${this.packagesPath}/${packageName}/tsconfig.json`)));
+    const withDocumentation = this.packagesConfig.some(config => config.pob['pob-config'].documentation);
+    const withTests = this.packagesConfig.some(config => config.pob['pob-config'].testing);
 
     packageUtils.addScripts(pkg, {
-      'typescript-check': 'lerna run --parallel typescript-check', // this.options.typescript && 'tsc --noEmit tsconfig.json'
       lint: 'lerna run --stream lint',
-      test: 'lerna run --stream test',
-      build: 'lerna run --stream --concurrency=1 build',
-      'build:definitions': 'lerna run --stream build:definitions',
-      postbuild: 'yarn run build:definitions',
-      watch: 'lerna run --parallel --ignore "*-example" watch',
-      'generate:docs': 'lerna run --parallel --ignore "*-example" generate:docs',
       preversion: [
         'yarn run lint',
         withBabel && 'yarn run build',
@@ -76,6 +80,26 @@ module.exports = class LernaGenerator extends Generator {
       // prepublishOnly: 'repository-check-dirty',
       release: "GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --github-release -m 'chore: release' && lerna publish from-git",
     });
+
+    packageUtils.addOrRemoveScripts(pkg, withTests, {
+      test: 'lerna run --stream test',
+    });
+
+    packageUtils.addOrRemoveScripts(pkg, withBabel, {
+      build: 'lerna run --stream --concurrency=1 build',
+      watch: 'lerna run --parallel --ignore "*-example" watch',
+    });
+
+    packageUtils.addOrRemoveScripts(pkg, withTypescript, {
+      'typescript-check': 'lerna run --parallel typescript-check', // this.options.typescript && 'tsc --noEmit tsconfig.json'
+      'build:definitions': 'lerna run --stream build:definitions',
+      postbuild: 'yarn run build:definitions',
+    });
+
+    packageUtils.addOrRemoveScripts(pkg, withDocumentation, {
+      'generate:docs': 'lerna run --parallel --ignore "*-example" generate:docs',
+    });
+
     delete pkg.scripts.version;
     delete pkg.scripts.prepublishOnly;
 
@@ -87,9 +111,9 @@ module.exports = class LernaGenerator extends Generator {
       });
     } else {
       delete pkg.scripts.postinstall;
-      pkg.workspaces = [
-        'packages/*',
-      ];
+      if (!pkg.workspaces) {
+        pkg.workspaces = ['packages/*'];
+      }
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
@@ -117,10 +141,10 @@ module.exports = class LernaGenerator extends Generator {
 
   end() {
     this.packageNames.forEach((name) => {
-      if (!existsSync(`packages/${name}/.yo-rc.json`) && !existsSync(`packages/${name}/.pob.json`)) return;
+      if (!existsSync(`${this.packagesPath}/${name}/.yo-rc.json`) && !existsSync(`${this.packagesPath}/${name}/.pob.json`)) return;
       console.log(`=> update ${name}`);
       spawnSync(process.argv[0], [process.argv[1], 'update', 'from-pob', this.options.force ? '--force' : undefined].filter(Boolean), {
-        cwd: `packages/${name}`,
+        cwd: `${this.packagesPath}/${name}`,
         stdio: 'inherit',
       });
     });

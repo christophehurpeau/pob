@@ -1,6 +1,5 @@
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
-const inLerna = require('../../../utils/inLerna');
 const ensureJsonFileFormatted = require('../../../utils/ensureJsonFileFormatted');
 const sortObject = require('../../../utils/sortObject');
 const formatJson = require('../../../utils/formatJson');
@@ -18,27 +17,6 @@ module.exports = class LintGenerator extends Generator {
     const hasReact = useBabel && packageUtils.hasReact(pkg);
     const babelEnvs = JSON.parse(this.options.babelEnvs);
     const useNodeOnly = !useBabel || (babelEnvs.every(env => env.target === 'node'));
-
-
-    if (inLerna && !inLerna.root) {
-      // see git-hooks
-      packageUtils.removeDevDependencies(pkg, [
-        'komet',
-        'komet-karma',
-        'husky',
-        'yarnhook',
-        'lint-staged',
-        '@commitlint/cli',
-        '@commitlint/config-conventional',
-      ]);
-
-      if (this.fs.exists('.git-hooks')) this.fs.delete('.git-hooks');
-      if (this.fs.exists('git-hooks')) this.fs.delete('git-hooks');
-      if (this.fs.exists('.commitrc.js')) this.fs.delete('.commitrc.js');
-      delete pkg.commitlint;
-      delete pkg.husky;
-      delete pkg['lint-staged'];
-    }
 
     if (pkg.scripts) {
       delete pkg.scripts.postmerge;
@@ -69,9 +47,9 @@ module.exports = class LintGenerator extends Generator {
       'eslint-plugin-typescript',
       'typescript-eslint-parser',
     ]);
+
     packageUtils.addDevDependencies(pkg, [
       'eslint',
-      'eslint-config-pob',
       'eslint-plugin-import',
       'prettier',
     ]);
@@ -83,7 +61,11 @@ module.exports = class LintGenerator extends Generator {
       '@typescript-eslint/parser',
     ]);
 
-    if (!pkg.name.startsWith('eslint-config')) {
+    if (!pkg.name.startsWith('eslint-config') && !pkg.name.startsWith('@pob/eslint-config')) {
+      packageUtils.addDevDependencies(pkg, [
+        'eslint-config-pob',
+      ]);
+
       packageUtils.addOrRemoveDevDependencies(pkg, useNodeOnly, [
         'eslint-plugin-node',
       ]);
@@ -99,7 +81,7 @@ module.exports = class LintGenerator extends Generator {
     const typescript = true;
 
     const config = (() => {
-      if (pkg.name === 'eslint-config-pob') return ['./index.js', './node.js'];
+      if (pkg.name === 'eslint-config-pob' || pkg.name.startsWith('@pob/eslint-config')) return ['./index.js', './node.js'];
       if (useBabel) {
         return [
           useNodeOnly ? 'pob/babel-node' : 'pob/babel',
@@ -159,7 +141,7 @@ module.exports = class LintGenerator extends Generator {
         // eslintConfig.extends[0] = config;
         // eslintConfig.extends[0] = config;
         // }
-  
+
         if (useBabel) {
           // webstorm uses this to detect eslint .ts compat
           eslintConfig.parser = '@typescript-eslint/parser';
@@ -169,7 +151,7 @@ module.exports = class LintGenerator extends Generator {
           if (eslintConfig.plugins && (eslintConfig.plugins[0] === 'typescript' || eslintConfig.plugins[0] === '@typescript-eslint')) eslintConfig.plugins.splice(0, 1);
           if (eslintConfig.plugins && eslintConfig.plugins.length === 0) delete eslintConfig.plugins;
         }
-  
+
         const existingJestOverrideIndex = !eslintConfig.overrides ? -1 : eslintConfig.overrides.findIndex(override => override.env && override.env.jest);
         if (!jestOverride) {
           if (existingJestOverrideIndex !== -1) {
@@ -185,17 +167,17 @@ module.exports = class LintGenerator extends Generator {
             eslintConfig.overrides.push(jestOverride);
           }
         }
-  
+
         const sortedConfig = sortObject(eslintConfig, ['root', 'parser', 'parserOptions', 'plugins', 'extends', 'env', 'globals', 'settings', 'rules', 'overrides']);
         if (sortedConfig.overrides) {
           sortedConfig.overrides.forEach((override, index) => {
             sortedConfig.overrides[index] = sortObject(override, ['files', 'env', 'globals', 'settings', 'rules']);
           });
         }
-  
+
         this.fs.write(eslintrcPath, formatJson(sortedConfig));
       } catch (err) {
-        console.warn('Could not parse/edit eslintrc.json: ', err)
+        console.warn('Could not parse/edit eslintrc.json: ', err);
       }
     }
 

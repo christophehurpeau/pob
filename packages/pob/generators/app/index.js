@@ -43,6 +43,7 @@ module.exports = class PobAppGenerator extends Generator {
     this.composeWith(require.resolve('../core/gitignore'), {
       root: !inLerna,
       documentation: false,
+      withBabel: this.babelEnvs.length !== 0,
     });
   }
 

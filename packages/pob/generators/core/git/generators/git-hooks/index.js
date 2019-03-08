@@ -2,7 +2,6 @@ const { readlinkSync } = require('fs');
 const { execSync } = require('child_process');
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../../../utils/package');
-const inLerna = require('../../../../../utils/inLerna');
 
 module.exports = class GitHooksGenerator extends Generator {
   constructor(args, opts) {
@@ -100,15 +99,15 @@ module.exports = class GitHooksGenerator extends Generator {
         'git add',
       ],
       // [`{README.md,package.json${inLerna ? ',packages/*/package.json,packages/*/README.md,' : ''},.eslintrc.json}`]: [
-      [`{package.json${inLerna ? ',packages/*/package.json,' : ''},.eslintrc.json}`]: [
+      [`{package.json${pkg.workspaces ? `,${pkg.workspaces.map(path => `${path}/package.json`).join(',')}` : ''},.eslintrc.json}`]: [
         'prettier --parser json --write',
         'git add',
       ],
-      [`${inLerna ? 'packages/*/' : ''}${srcDirectory}/**/*.json`]: [
+      [`${pkg.workspaces ? `{${pkg.workspaces.join(',')}}/` : ''}${srcDirectory}/**/*.json`]: [
         'prettier --parser json --write',
         'git add',
       ],
-      [`${inLerna ? 'packages/*/' : ''}${srcDirectory}/**/*.${hasReact ? '{js,jsx}' : 'js'}`]: [
+      [`${pkg.workspaces ? `{${pkg.workspaces.join(',')}}/` : ''}${srcDirectory}/**/*.${hasReact ? '{js,jsx}' : 'js'}`]: [
         'eslint --fix --quiet',
         'git add',
       ],

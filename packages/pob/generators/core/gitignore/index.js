@@ -17,16 +17,29 @@ module.exports = class GitignoreGenerator extends Generator {
       defaults: false,
       desc: 'Documentation enabled.',
     });
+
+    this.option('withBabel', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+      desc: 'Babel enabled.',
+    });
   }
 
   writing() {
-    this.fs.copyTpl(
-      this.templatePath('gitignore.ejs'),
-      this.destinationPath('.gitignore'),
-      {
-        root: this.options.root,
-        documentation: this.options.documentation,
-      },
-    );
+    const dest = this.destinationPath('.gitignore');
+    if (!this.options.documentation && !this.options.withBabel) {
+      this.fs.delete(dest);
+    } else {
+      this.fs.copyTpl(
+        this.templatePath('gitignore.ejs'),
+        dest,
+        {
+          root: this.options.root,
+          documentation: this.options.documentation,
+          withBabel: this.options.withBabel,
+        },
+      );
+    }
   }
 };

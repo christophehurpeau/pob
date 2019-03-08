@@ -14,7 +14,14 @@ module.exports = class PobMonorepoGenerator extends Generator {
   }
 
   initializing() {
-    this.packageNames = existsSync('packages/') ? readdirSync('packages/').filter(packageName => existsSync(`packages/${packageName}/package.json`)) : [];
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    const packagesPath = pkg.workspaces
+      ? pkg.workspaces[0].replace(/\/\*$/, '')
+      : 'packages';
+    this.packageNames = existsSync(`${packagesPath}/`)
+      ? readdirSync(`${packagesPath}/`)
+        .filter(packageName => existsSync(`${packagesPath}/${packageName}/package.json`))
+      : [];
   }
 
   async prompting() {
@@ -45,7 +52,7 @@ module.exports = class PobMonorepoGenerator extends Generator {
         type: 'confirm',
         name: 'codecov',
         message: 'Would you like code coverage ?',
-        when: answers => answers.ci,
+        when: answers => answers.ci && answers.testing,
         default: config ? config.codecov : true,
       },
       {

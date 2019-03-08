@@ -28,7 +28,7 @@ module.exports = class PackageGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
     if (!this.options.updateOnly) {
-      if (this.options.private) {
+      if (this.options.private || (inLerna && inLerna.root)) {
         pkg.private = true;
       } else {
         const { isPrivate } = await this.prompt({
@@ -63,7 +63,7 @@ module.exports = class PackageGenerator extends Generator {
     let author = packageUtils.parsePkgAuthor(pkg);
 
     const props = await this.prompt([
-      !this.options.updateOnly && {
+      !this.options.updateOnly && !(inLerna && inLerna.root) && {
         name: 'description',
         message: 'Description',
         default: pkg.description,
@@ -109,6 +109,11 @@ module.exports = class PackageGenerator extends Generator {
       author: `${author.name} <${author.email}>${author.url ? ` (${author.url})` : ''}`,
       keywords: [],
     }, Object.assign({}, pkg));
+
+    if (inLerna && inLerna.root) {
+      if (!pkg.description) delete pkg.description;
+      if (!pkg.keywords || pkg.keywords.length === 0) delete pkg.keywords;
+    }
 
     if (!pkg.private && !pkg.version) {
       // lerna root pkg should not have version

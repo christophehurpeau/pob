@@ -189,11 +189,9 @@ module.exports = class BabelGenerator extends Generator {
       pkg.main = !this.babelEnvs.find(env => env.target === 'node') ? `./dist/index-browser.${this.babelEnvs.find(env => env.target === 'browser' && !env.formats.includes('cjs')) ? 'es' : 'cjs'}.js` : './index.js';
       pkg.types = './dist/index.d.ts';
     } else {
-      if (pkg.name !== 'eslint-config-pob') {
-        pkg.main = './lib/index.js';
-        if (this.fs.exists('./lib/index.d.ts') || pkg.types) {
-          pkg.types = './lib/index.d.ts';
-        }
+      pkg.main = './lib/index.js';
+      if (this.fs.exists('./lib/index.d.ts') || pkg.types) {
+        pkg.types = './lib/index.d.ts';
       }
       if (!pkg.engines) pkg.engines = {};
       if (!pkg.engines.node || semver.lt(pkg.engines.node.slice(2), '6.5.0')) {

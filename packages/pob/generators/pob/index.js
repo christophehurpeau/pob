@@ -100,6 +100,28 @@ module.exports = class PobBaseGenerator extends Generator {
 
     if (!this.inLerna) {
       this.composeWith(require.resolve('../core/git'));
+    } else {
+      if (this.fs.exists('.git-hooks')) this.fs.delete('.git-hooks');
+      if (this.fs.exists('git-hooks')) this.fs.delete('git-hooks');
+      if (this.fs.exists('.commitrc.js')) this.fs.delete('.commitrc.js');
+      const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+      packageUtils.removeDevDependencies(pkg, [
+        'pob-release',
+        'repository-check-dirty',
+        'komet',
+        'komet-karma',
+        'husky',
+        'yarnhook',
+        'lint-staged',
+        'yarn-update-lock',
+        '@commitlint/cli',
+        '@commitlint/config-conventional',
+        'lerna',
+      ]);
+      delete pkg.commitlint;
+      delete pkg.husky;
+      delete pkg['lint-staged'];
+      this.fs.writeJSON(this.destinationPath('package.json'), pkg);
     }
 
     if (this.options.lerna) {

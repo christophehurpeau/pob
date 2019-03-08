@@ -309,7 +309,7 @@ module.exports = class PobLibGenerator extends Generator {
       fromPob: this.options.fromPob,
     });
 
-    if (!withBabel && pkg.name !== 'eslint-config-pob') {
+    if (!withBabel) {
       mkdirp('lib');
     }
 
@@ -344,6 +344,7 @@ module.exports = class PobLibGenerator extends Generator {
 
     this.composeWith(require.resolve('../core/gitignore'), {
       root: !inLerna,
+      withBabel: this.babelEnvs.length !== 0,
       documentation: this.pobjson.documentation,
     });
   }
@@ -359,8 +360,8 @@ module.exports = class PobLibGenerator extends Generator {
 
     const withBabel = Boolean(this.babelEnvs.length);
 
+    packageUtils.removeDevDependencies(pkg, ['lerna']);
     if (inLerna) {
-      packageUtils.removeDevDependencies(pkg, ['lerna', 'pob-release']);
       if (pkg.scripts) {
         delete pkg.scripts.preversion;
         delete pkg.scripts.release;
@@ -385,7 +386,7 @@ module.exports = class PobLibGenerator extends Generator {
       }
     }
 
-    if (!withBabel && pkg.name !== 'eslint-config-pob') {
+    if (!withBabel) {
       if (!this.fs.exists(this.destinationPath('lib/index.js'))
           && this.fs.exists(this.destinationPath('index.js'))) {
         this.fs.move(
@@ -398,7 +399,7 @@ module.exports = class PobLibGenerator extends Generator {
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
     execSync(`rm -Rf ${['lib-*', 'coverage', this.pobjson.documentation && 'docs', !withBabel && 'dist'].filter(Boolean).join(' ')}`);
 
-    const pobjson = this.pobjson;
+    const { pobjson } = this;
 
     pobjson.envs = this.babelEnvs;
     // .includes('node6') && 'node6',

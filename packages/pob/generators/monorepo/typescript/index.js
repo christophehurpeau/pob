@@ -39,7 +39,8 @@ module.exports = class MonorepoTypescriptGenerator extends Generator {
 
     const tsconfigPath = this.destinationPath('tsconfig.json');
     if (this.options.enable) {
-      const packageNames = JSON.parse(this.options.packageNames).filter(packageName => existsSync(`packages/${packageName}/tsconfig.json`));
+      const packagesPath = pkg.workspaces[0].replace(/\/\*$/, '');
+      const packageNames = JSON.parse(this.options.packageNames).filter(packageName => existsSync(`${packagesPath}/${packageName}/tsconfig.json`));
       this.fs.copyTpl(this.templatePath('tsconfig.json.ejs'), tsconfigPath, {
         packageNames,
       });

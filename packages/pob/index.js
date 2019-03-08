@@ -1,5 +1,5 @@
-const { existsSync, readFileSync, writeFileSync } = require('fs');
-const { execSync } = require('child_process');
+const { existsSync, writeFileSync, readFileSync } = require('fs');
+const { execSync, spawnSync } = require('child_process');
 const updateNotifier = require('update-notifier');
 const yeoman = require('yeoman-environment');
 const argv = require('minimist-argv');
@@ -45,8 +45,20 @@ if (action === 'add') {
     process.exit(1);
   }
 
-  mkdirp(`packages/${packageName}`);
-  writeFileSync(`packages/${packageName}/.yo-rc.json`, '{}');
+  const pkg = JSON.parse(readFileSync('package.json'));
+  if (!pkg.workspaces) {
+    throw new Error('Missing workspaces field in package.json: not a lerna repo');
+  }
+
+  const packagesPath = pkg.workspaces[0].replace(/\/\*$/, '');
+
+  mkdirp(`${packagesPath}/${packageName}`);
+  writeFileSync(`${packagesPath}/${packageName}/.yo-rc.json`, '{}');
+  writeFileSync(`${packagesPath}/${packageName}/package.json`, JSON.stringify({ name: packageName, version: '1.0.0-pre' }));
+  spawnSync(process.argv[0], [process.argv[1], 'lib'], {
+    cwd: `${packagesPath}/${packageName}`,
+    stdio: 'inherit',
+  });
   process.exit(0);
 }
 
