@@ -51,7 +51,7 @@ module.exports = class LernaGenerator extends Generator {
       'repository-check-dirty',
     ]);
 
-    packageUtils.removeDevDependencies(pkg, ['prettier']);
+    packageUtils.removeDevDependencies(pkg, ['prettier', 'pob-release']);
 
     const withBabel = true;
     const withDocumentation = true;
@@ -72,10 +72,12 @@ module.exports = class LernaGenerator extends Generator {
       ]
         .filter(Boolean)
         .join(' && '),
-      prepublishOnly: 'repository-check-dirty',
+      // cannot use this with lerna because it changes packages.json
+      // prepublishOnly: 'repository-check-dirty',
       release: "GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --github-release -m 'chore: release' && lerna publish from-git",
     });
     delete pkg.scripts.version;
+    delete pkg.scripts.prepublishOnly;
 
 
     if (this.npm) {
