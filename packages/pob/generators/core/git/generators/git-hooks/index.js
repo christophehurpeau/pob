@@ -71,7 +71,7 @@ module.exports = class GitHooksGenerator extends Generator {
 
     pkg.husky = {
       hooks: {
-        'commit-msg': 'commitlint -e $GIT_PARAMS',
+        'commit-msg': 'commitlint -e $HUSKY_GIT_PARAMS',
         'post-checkout': 'yarnhook',
         'post-merge': 'yarnhook',
         'post-rewrite': 'yarnhook',
