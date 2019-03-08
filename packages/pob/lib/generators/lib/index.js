@@ -441,6 +441,10 @@ module.exports = class PobLibGenerator extends Generator {
       pkg.engines.yarn = '< 0.0.0';
     }
 
+    if ('sideEffects' in pkg) {
+      pkg.sideEffects = false;
+    }
+
     const withBabel = Boolean(this.babelEnvs.length);
 
     packageUtils.removeDevDependencies(pkg, ['lerna']);
