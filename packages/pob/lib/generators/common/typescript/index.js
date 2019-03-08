@@ -20,6 +20,12 @@ module.exports = class TypescriptGenerator extends Generator {
       defaults: true,
       desc: 'enable react with typescript',
     });
+
+    this.option('baseUrl', {
+      type: String,
+      defaults: '',
+      desc: 'baseUrl option',
+    });
   }
 
   writing() {
@@ -68,6 +74,7 @@ module.exports = class TypescriptGenerator extends Generator {
         composite,
         monorepoPackageNames,
         withReact,
+        baseUrl: this.options.baseUrl,
       });
       this.fs.copyTpl(
         this.templatePath('tsconfig.build.json.ejs'),

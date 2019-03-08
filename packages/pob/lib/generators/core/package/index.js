@@ -17,13 +17,6 @@ module.exports = class PackageGenerator extends Generator {
       defaults: false,
       desc: 'private package',
     });
-
-    this.option('app', {
-      type: Boolean,
-      required: false,
-      defaults: false,
-      desc: 'is app (instead of lib)',
-    });
   }
 
   async initializing() {
@@ -130,7 +123,7 @@ module.exports = class PackageGenerator extends Generator {
       Object.assign({}, pkg)
     );
 
-    if (inLerna && inLerna.root) {
+    if (pkg.private) {
       if (!pkg.description) delete pkg.description;
       if (!pkg.keywords || pkg.keywords.length === 0) delete pkg.keywords;
     }
@@ -152,7 +145,7 @@ module.exports = class PackageGenerator extends Generator {
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
-    if (!this.options.private) {
+    if (!pkg.private) {
       this.fs.copyTpl(
         this.templatePath('npmignore.ejs'),
         this.destinationPath('.npmignore'),
@@ -163,17 +156,6 @@ module.exports = class PackageGenerator extends Generator {
       );
     } else if (this.fs.exists(this.destinationPath('.npmignore'))) {
       this.fs.delete(this.destinationPath('.npmignore'));
-    }
-
-    if (!inLerna || inLerna.root) {
-      this.fs.copy(
-        this.templatePath(
-          this.options.app ? 'renovate.app.json' : 'renovate.lib.json'
-        ),
-        this.destinationPath('renovate.json')
-      );
-    } else if (this.fs.exists(this.destinationPath('renovate.json'))) {
-      this.fs.delete(this.destinationPath('renovate.json'));
     }
   }
 };

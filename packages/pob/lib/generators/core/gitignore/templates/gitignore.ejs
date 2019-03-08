@@ -1,7 +1,16 @@
 <% if (root) { -%>
+# dependencies
 node_modules
+/.pnp
+.pnp.js
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 <% } -%>
-/build
+
+<% if (paths) { -%>
+<%= paths %>
+<% } -%>
 
 <% if (root) { -%>
 /.settings
@@ -9,6 +18,7 @@ node_modules
 /.idea
 *.sublime-project
 *.sublime-workspace
+
 
 #*
 *$
@@ -18,4 +28,5 @@ node_modules
 *.old
 *~
 .#*
+.DS_Store
 <% } -%>

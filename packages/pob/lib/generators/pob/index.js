@@ -80,6 +80,28 @@ module.exports = class PobBaseGenerator extends Generator {
     }
   }
 
+  async prompting() {
+    if (this.options.lerna) return;
+
+    const config = this.config.get('type');
+    if (config) {
+      this.typeConfig = config;
+      return;
+    }
+
+    this.typeConfig = await this.prompt([
+      {
+        type: 'list',
+        name: 'type',
+        message: 'What kind of project is this ?',
+        default: (config && config.type) || this.options.type || 'lib',
+        choices: ['lib', 'app'],
+      },
+    ]);
+
+    this.config.set('type', this.typeConfig);
+  }
+
   default() {
     this.fs.delete('Makefile');
     if (
@@ -102,6 +124,11 @@ module.exports = class PobBaseGenerator extends Generator {
 
     this.composeWith(require.resolve('../core/clean'), {
       root: !this.useLerna || !this.inLerna,
+    });
+
+    this.composeWith(require.resolve('../core/renovate'), {
+      updateOnly: this.options.updateOnly,
+      app: !this.options.lerna && this.typeConfig.type === 'app',
     });
 
     if (!this.inLerna) {
@@ -130,12 +157,12 @@ module.exports = class PobBaseGenerator extends Generator {
       this.fs.writeJSON(this.destinationPath('package.json'), pkg);
     }
 
-    if (this.options.lerna) {
+    if (this.useLerna) {
       this.composeWith(require.resolve('../monorepo'), {
         updateOnly: this.options.updateOnly,
       });
     } else {
-      switch (this.options.type) {
+      switch (this.typeConfig.type) {
         case 'lib':
           this.composeWith(require.resolve('../lib/'), {
             updateOnly: this.options.updateOnly,

@@ -26,6 +26,13 @@ module.exports = class GitignoreGenerator extends Generator {
       defaults: false,
       desc: 'Babel enabled.',
     });
+
+    this.option('paths', {
+      type: String,
+      required: false,
+      defaults: false,
+      desc: 'Paths ignored.',
+    });
   }
 
   writing() {
@@ -33,6 +40,7 @@ module.exports = class GitignoreGenerator extends Generator {
     if (
       !this.options.root &&
       !this.options.documentation &&
+      !this.options.paths &&
       !this.options.withBabel
     ) {
       this.fs.delete(dest);
@@ -41,6 +49,7 @@ module.exports = class GitignoreGenerator extends Generator {
         root: this.options.root,
         documentation: this.options.documentation,
         withBabel: this.options.withBabel,
+        paths: this.options.paths,
       });
     }
   }

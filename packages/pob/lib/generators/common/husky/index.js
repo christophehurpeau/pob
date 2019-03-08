@@ -3,7 +3,7 @@
 const { readlinkSync } = require('fs');
 const { execSync } = require('child_process');
 const Generator = require('yeoman-generator');
-const packageUtils = require('../../../../../utils/package');
+const packageUtils = require('../../../utils/package');
 
 module.exports = class GitHooksGenerator extends Generator {
   constructor(args, opts) {
@@ -88,7 +88,9 @@ module.exports = class GitHooksGenerator extends Generator {
 
     const hasBabel = packageUtils.transpileWithBabel(pkg);
     const hasReact = hasBabel && packageUtils.hasReact(pkg);
+    const useTypescript = packageUtils.hasTypescript(pkg);
     const srcDirectory = hasBabel ? 'src' : 'lib';
+    const ext = useTypescript ? 'ts' : 'js';
 
     pkg['lint-staged'] = {
       'yarn.lock': ['yarn-update-lock', 'git add'],
@@ -106,10 +108,13 @@ module.exports = class GitHooksGenerator extends Generator {
       ],
       [`${
         pkg.workspaces ? `{${pkg.workspaces.join(',')}}/` : ''
-      }${srcDirectory}/**/*.${hasReact ? '{js,jsx}' : 'js'}`]: [
-        'eslint --fix --quiet',
-        'git add',
-      ],
+      }${srcDirectory}/**/*.${
+        hasReact
+          ? `{${ext === 'js' ? '' : 'js,'}${ext},${ext}x}`
+          : ext === 'js'
+          ? ext
+          : `{js,${ext}}`
+      }`]: ['eslint --fix --quiet', 'git add'],
     };
 
     // if (packageUtils.hasLerna(pkg)) {

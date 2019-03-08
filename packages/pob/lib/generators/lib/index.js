@@ -390,19 +390,17 @@ module.exports = class PobLibGenerator extends Generator {
       mkdirp('lib');
     }
 
+    if (!inLerna || inLerna.root) {
+      this.composeWith(require.resolve('../common/husky'), {
+        babelEnvs: JSON.stringify(this.babelEnvs),
+      });
+    }
+
     this.composeWith(require.resolve('../common/format-lint'), {
       babelEnvs: JSON.stringify(this.babelEnvs),
     });
 
     this.composeWith(require.resolve('../common/old-dependencies'));
-
-    this.composeWith(require.resolve('./readme'), {
-      documentation: !!this.pobjson.documentation,
-      testing: !!this.pobjson.testing,
-      circleci: this.pobjson.testing && this.pobjson.testing.circleci,
-      // travisci: this.pobjson.testing && this.pobjson.testing.travisci,
-      codecov: this.pobjson.testing && this.pobjson.testing.codecov,
-    });
 
     this.composeWith(require.resolve('./testing'), {
       enable: this.pobjson.testing,
@@ -417,6 +415,14 @@ module.exports = class PobLibGenerator extends Generator {
     this.composeWith(require.resolve('./doc'), {
       enabled: this.pobjson.documentation,
       testing: this.pobjson.testing,
+    });
+
+    this.composeWith(require.resolve('./readme'), {
+      documentation: !!this.pobjson.documentation,
+      testing: !!this.pobjson.testing,
+      circleci: this.pobjson.testing && this.pobjson.testing.circleci,
+      // travisci: this.pobjson.testing && this.pobjson.testing.travisci,
+      codecov: this.pobjson.testing && this.pobjson.testing.codecov,
     });
 
     this.composeWith(require.resolve('../core/gitignore'), {

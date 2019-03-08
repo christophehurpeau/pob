@@ -15,9 +15,9 @@ module.exports = class LintGenerator extends Generator {
 
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
-    const useBabel = packageUtils.transpileWithBabel(pkg);
-    const hasReact = useBabel && packageUtils.hasReact(pkg);
     const babelEnvs = JSON.parse(this.options.babelEnvs);
+    const useBabel = babelEnvs.length !== 0;
+    const hasReact = useBabel && packageUtils.hasReact(pkg);
     const useNodeOnly =
       !useBabel || babelEnvs.every((env) => env.target === 'node');
 
@@ -248,14 +248,12 @@ module.exports = class LintGenerator extends Generator {
     packageUtils.addScript(
       pkg,
       'lint',
-      `${useBabel ? 'npm run typescript-check && ' : ''}eslint${
+      `${useBabel ? 'tsc && ' : ''}eslint${
         !useBabel ? '' : ` --ext .ts${hasReact ? ',.tsx' : ''}`
       } ${srcDirectory}/`
     );
 
-    packageUtils.addOrRemoveScripts(pkg, useBabel, {
-      'typescript-check': 'tsc --noEmit',
-    });
+    delete pkg.scripts['typescript-check'];
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }

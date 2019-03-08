@@ -94,8 +94,6 @@ module.exports = class GitGenerator extends Generator {
 
   default() {
     console.log('git: default');
-    this.composeWith(require.resolve('./generators/git-hooks'));
-
     if (this.gitHost === 'github') {
       this.composeWith(require.resolve('./generators/github'), {
         shouldCreate: !this.originUrl,

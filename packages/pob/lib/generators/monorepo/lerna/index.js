@@ -124,7 +124,6 @@ module.exports = class LernaGenerator extends Generator {
     });
 
     packageUtils.addOrRemoveScripts(pkg, withTypescript, {
-      'typescript-check': 'lerna run --parallel typescript-check', // this.options.typescript && 'tsc --noEmit tsconfig.json'
       'build:definitions': 'lerna run --stream build:definitions',
       postbuild: 'yarn run build:definitions',
     });

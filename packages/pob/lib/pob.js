@@ -26,7 +26,7 @@ process.on('uncaughtException', (err) => {
 env.registerStub(require('./generators/pob'), 'pob:generator');
 
 const printUsage = () => {
-  console.error('Usage: pob [lerna] lib|app');
+  console.error('Usage: pob [lerna] [lib|app]');
   console.error('       pob [lerna] update [--force]');
   console.error('       pob lerna convert-npm');
   console.error('       pob add <packageName>');
@@ -82,24 +82,19 @@ if (lerna && action === 'convert-npm') {
 }
 
 const updateOnly = action === 'update';
-let type = updateOnly ? null : action;
+const type = updateOnly ? null : action;
 const fromPob = updateOnly && argv._[1] === 'from-pob';
 
-if (updateOnly) {
-  if (existsSync('lerna.json')) {
-    lerna = true;
-    type = 'lib'; // TODO
-  } else if (existsSync('.yo-rc.json') || existsSync('.pob.json')) {
-    type = 'lib'; // TODO
-  } else {
-    console.error('Missing first argument: type');
-    printUsage();
-    process.exit(1);
+if (!existsSync('.yo-rc.json')) {
+  if (updateOnly) {
+    throw new Error('Cannot update.');
   }
+
+  writeFileSync('.yo-rc.json', '{}');
 }
 
-if (!existsSync('.yo-rc.json')) {
-  writeFileSync('.yo-rc.json', '{}');
+if (existsSync('lerna.json')) {
+  lerna = true;
 }
 
 const options = {

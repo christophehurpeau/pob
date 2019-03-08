@@ -24,10 +24,14 @@ exports.hasBabel = (pkg) =>
 exports.transpileWithBabel = (pkg) =>
   !!(
     (pkg.devDependencies &&
-      (pkg.devDependencies['pob-babel'] || pkg.devDependencies.next)) ||
+      (pkg.devDependencies['pob-babel'] ||
+        pkg.devDependencies.next ||
+        pkg.devDependencies['alp-dev'])) ||
     // alp-dev has pob-babel in dependencies
     (pkg.dependencies &&
-      (pkg.dependencies['pob-babel'] || pkg.dependencies.next))
+      (pkg.dependencies['pob-babel'] ||
+        pkg.dependencies.next ||
+        pkg.devDependencies['alp-dev']))
   );
 
 exports.hasReact = (pkg) =>
@@ -35,6 +39,9 @@ exports.hasReact = (pkg) =>
     (pkg.dependencies && pkg.dependencies.react) ||
     (pkg.peerDependencies && pkg.peerDependencies.react)
   );
+
+exports.hasTypescript = (pkg) =>
+  !!(pkg.devDependencies && pkg.devDependencies.typescript);
 
 exports.hasDocumentation = (pkg) =>
   !!(pkg.devDependencies && pkg.devDependencies.typedoc);

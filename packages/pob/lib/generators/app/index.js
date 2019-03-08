@@ -5,6 +5,11 @@ const packageUtils = require('../../utils/package');
 const inLerna = require('../../utils/inLerna');
 const inNpmLerna = require('../../utils/inNpmLerna');
 
+const gitignorePaths = {
+  alp: (config) => ['# alp paths', '/build', '/public', '/data'],
+  'next.js': (config) => ['# next.js paths', config.export && '/.next', '/out'],
+};
+
 module.exports = class PobAppGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
@@ -23,27 +28,64 @@ module.exports = class PobAppGenerator extends Generator {
     });
   }
 
+  async prompting() {
+    const config = this.config.get('app');
+    if (config && this.options.updateOnly) {
+      this.appConfig = config;
+      return;
+    }
+
+    this.appConfig = await this.prompt([
+      {
+        type: 'list',
+        name: 'type',
+        message: 'What kind of app is this ?',
+        default: (config && config.type) || 'alp',
+        choices: ['alp', 'next.js'],
+      },
+      {
+        type: 'confirm',
+        name: 'export',
+        message: 'Use next export ?',
+        default: false,
+      },
+    ]);
+
+    this.config.set('app', this.appConfig);
+  }
+
   default() {
-    const withBabel = true;
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+
+    const babelEnvs = [{ target: 'browser' }, { target: 'node' }];
     const withReact = packageUtils.hasReact(pkg);
 
     this.composeWith(require.resolve('../common/typescript'), {
-      enable: withBabel,
+      enable: babelEnvs.length !== 0,
       withReact,
       updateOnly: this.options.updateOnly,
+      baseUrl: this.appConfig.type === 'alp' ? './src' : '',
     });
 
+    if (!inLerna || inLerna.root) {
+      this.composeWith(require.resolve('../common/husky'), {
+        babelEnvs: JSON.stringify(this.babelEnvs),
+      });
+    }
+
     this.composeWith(require.resolve('../common/format-lint'), {
-      babelEnvs: JSON.stringify([{ target: 'browser' }, { target: 'node' }]),
+      babelEnvs: JSON.stringify(babelEnvs),
     });
 
     this.composeWith(require.resolve('../common/old-dependencies'));
 
     this.composeWith(require.resolve('../core/gitignore'), {
-      root: !inLerna,
+      root: !inLerna || inLerna.root,
       documentation: false,
-      withBabel: this.babelEnvs.length !== 0,
+      withBabel: babelEnvs.length !== 0,
+      paths: gitignorePaths[this.appConfig.type](this.appConfig)
+        .filter(Boolean)
+        .join('\n'),
     });
   }
 
