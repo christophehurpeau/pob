@@ -1878,10 +1878,10 @@
   resolved "https://registry.yarnpkg.com/@types/jest-diff/-/jest-diff-20.0.1.tgz#35cc15b9c4f30a18ef21852e255fdb02f6d59b89"
   integrity sha512-yALhelO3i0hqZwhjtcr6dYyaLoCHbAMshwtj6cGxTvHZAKXHsYGdff6E8EPw3xLKY0ELUTQ69Q1rQiJENnccMA==
 
-"@types/jest@24.0.9":
-  version "24.0.9"
-  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-24.0.9.tgz#74ce9cf337f25e189aa18f76ab3d65e8669b55f2"
-  integrity sha512-k3OOeevcBYLR5pdsOv5g3OP94h3mrJmLPHFEPWgbbVy2tGv0TZ/TlygiC848ogXhK8NL0I5up7YYtwpCp8xCJA==
+"@types/jest@24.0.11":
+  version "24.0.11"
+  resolved "https://registry.yarnpkg.com/@types/jest/-/jest-24.0.11.tgz#1f099bea332c228ea6505a88159bfa86a5858340"
+  integrity sha512-2kLuPC5FDnWIDvaJBzsGTBQaBbnDweznicvK7UGYzlIJP4RJR2a4A/ByLUXEyEgag6jz8eHdlWExGDtH3EYUXQ==
   dependencies:
     "@types/jest-diff" "*"
 
@@ -9842,6 +9842,13 @@ yarn-deduplicate@^1.1.1:
     "@yarnpkg/lockfile" "^1.1.0"
     commander "^2.10.0"
     semver "^5.3.0"
+
+yarn-update-lock@0.3.2:
+  version "0.3.2"
+  resolved "https://registry.yarnpkg.com/yarn-update-lock/-/yarn-update-lock-0.3.2.tgz#87ba057fc222c5fe13b352579ea6560fe63dd53d"
+  integrity sha512-SidwZdrMCaJuiFL4Pb8hLYjfDsxUcvP2a5R+DwYSAAYjgRVKfej1OV95wa+T7M8jXLe9gXp8+9JZVkoeSa/Aqg==
+  dependencies:
+    yarn-deduplicate "^1.1.1"
 
 yarnhook@0.4.0:
   version "0.4.0"
