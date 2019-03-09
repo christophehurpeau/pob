@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.23.1](https://github.com/christophehurpeau/pob/compare/pob@4.23.0...pob@4.23.1) (2019-03-09)
+
+
+### Bug Fixes
+
+* enableRenovateConfig ([6d6c349](https://github.com/christophehurpeau/pob/commit/6d6c349))
+* pkg.description lerna ([79199d8](https://github.com/christophehurpeau/pob/commit/79199d8))
+
+
+
+
+
 # [4.23.0](https://github.com/christophehurpeau/pob/compare/pob@4.22.1...pob@4.23.0) (2019-03-09)
 
 

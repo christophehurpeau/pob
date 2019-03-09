@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.15.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.14.0...pob-dependencies@0.15.0) (2019-03-09)
+
+
+### Features
+
+* update dependencies ([b415a8a](https://github.com/christophehurpeau/pob/commit/b415a8a))
+* **deps:** update dependency @types/jest to v24.0.11 ([#133](https://github.com/christophehurpeau/pob/issues/133)) ([630e235](https://github.com/christophehurpeau/pob/commit/630e235))
+* **deps:** update dependency babel-preset-latest-node to v3.1.0 ([#136](https://github.com/christophehurpeau/pob/issues/136)) ([6c6c449](https://github.com/christophehurpeau/pob/commit/6c6c449))
+
+
+
+
+
 # [0.14.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.13.0...pob-dependencies@0.14.0) (2019-03-09)
 
 

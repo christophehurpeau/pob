@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.17.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.16.0...babel-preset-pob-env@2.17.0) (2019-03-09)
+
+
+### Features
+
+* update dependencies ([b415a8a](https://github.com/christophehurpeau/pob/commit/b415a8a))
+
+
+
+
+
 # [2.16.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.15.3...babel-preset-pob-env@2.16.0) (2019-03-09)
 
 

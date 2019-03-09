@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-pob-env",
-  "version": "2.16.0",
+  "version": "2.17.0",
   "description": "pob babel preset env",
   "keywords": ["babel-preset"],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
