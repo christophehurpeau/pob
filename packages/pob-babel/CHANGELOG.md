@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.7.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.6.7...pob-babel@23.7.0) (2019-03-09)
+
+
+### Features
+
+* add plugin babel-plugin-transform-builtins ([c43ec93](https://github.com/christophehurpeau/pob/commit/c43ec93))
+
+
+
+
+
 ## [23.6.7](https://github.com/christophehurpeau/pob/compare/pob-babel@23.6.6...pob-babel@23.6.7) (2019-02-23)
 
 **Note:** Version bump only for package pob-babel

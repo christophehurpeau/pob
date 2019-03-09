@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.13.0...pob-dependencies@0.14.0) (2019-03-09)
+
+
+### Bug Fixes
+
+* pob-dependencies path index.d.ts in preversion ([0b35734](https://github.com/christophehurpeau/pob/commit/0b35734))
+
+
+### Features
+
+* use @pob/eslint-config* ([f130afb](https://github.com/christophehurpeau/pob/commit/f130afb))
+* **deps:** update babel monorepo to v7.3.4 ([#122](https://github.com/christophehurpeau/pob/issues/122)) ([870ad82](https://github.com/christophehurpeau/pob/commit/870ad82))
+* **deps:** update dependency @types/jest to v24.0.9 ([#124](https://github.com/christophehurpeau/pob/issues/124)) ([8b00154](https://github.com/christophehurpeau/pob/commit/8b00154))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v1.4.2 ([#119](https://github.com/christophehurpeau/pob/issues/119)) ([6062857](https://github.com/christophehurpeau/pob/commit/6062857))
+* **deps:** update dependency @typescript-eslint/parser to v1.4.2 ([#120](https://github.com/christophehurpeau/pob/issues/120)) ([89432c8](https://github.com/christophehurpeau/pob/commit/89432c8))
+* **deps:** update dependency eslint-plugin-react-hooks to v1.3.0 ([#126](https://github.com/christophehurpeau/pob/issues/126)) ([9b25d50](https://github.com/christophehurpeau/pob/commit/9b25d50))
+* **deps:** update dependency eslint-plugin-react-hooks to v1.4.0 ([#128](https://github.com/christophehurpeau/pob/issues/128)) ([4da3262](https://github.com/christophehurpeau/pob/commit/4da3262))
+* **deps:** update dependency eslint-plugin-react-hooks to v1.5.0 ([#131](https://github.com/christophehurpeau/pob/issues/131)) ([f2f4ad2](https://github.com/christophehurpeau/pob/commit/f2f4ad2))
+* **deps:** update dependency lerna to v3.13.1 ([#125](https://github.com/christophehurpeau/pob/issues/125)) ([de0dc8e](https://github.com/christophehurpeau/pob/commit/de0dc8e))
+* **deps:** update dependency lint-staged to v8.1.5 ([#127](https://github.com/christophehurpeau/pob/issues/127)) ([daea35a](https://github.com/christophehurpeau/pob/commit/daea35a))
+* **deps:** update dependency yarnhook to v0.4.0 ([#123](https://github.com/christophehurpeau/pob/issues/123)) ([db3b40d](https://github.com/christophehurpeau/pob/commit/db3b40d))
+* **deps:** update jest monorepo to v24.3.1 ([#130](https://github.com/christophehurpeau/pob/issues/130)) ([d34ac4b](https://github.com/christophehurpeau/pob/commit/d34ac4b))
+
+
+
+
+
 # [0.13.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.12.3...pob-dependencies@0.13.0) (2019-02-23)
 
 

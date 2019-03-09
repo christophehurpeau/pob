@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-pob-babel",
-  "version": "0.7.6",
+  "version": "0.7.7",
   "description": "babel plugin for pob-babel",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com>",

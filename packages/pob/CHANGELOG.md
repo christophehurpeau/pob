@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.23.0](https://github.com/christophehurpeau/pob/compare/pob@4.22.1...pob@4.23.0) (2019-03-09)
+
+
+### Bug Fixes
+
+* fallback when config is old or doesnt exits ([3dce85f](https://github.com/christophehurpeau/pob/commit/3dce85f))
+* fallback when package.repository.directory doesnt exists ([f5d7807](https://github.com/christophehurpeau/pob/commit/f5d7807))
+* paths gitignore false ([d956a9a](https://github.com/christophehurpeau/pob/commit/d956a9a))
+* remove prepublishOnly and pob-release dep in lerna ([c950ae8](https://github.com/christophehurpeau/pob/commit/c950ae8))
+* use HUSKY_GIT_PARAMS ([f73e350](https://github.com/christophehurpeau/pob/commit/f73e350))
+
+
+### Features
+
+* add @pob/renovate-config ([548a6a4](https://github.com/christophehurpeau/pob/commit/548a6a4))
+* add plugin babel-plugin-transform-builtins ([c43ec93](https://github.com/christophehurpeau/pob/commit/c43ec93))
+* enable no sideEffects by default ([2c2d146](https://github.com/christophehurpeau/pob/commit/2c2d146))
+* improve app generator and tsconfig ([c3f7058](https://github.com/christophehurpeau/pob/commit/c3f7058))
+* support orniganisations ([d6284f5](https://github.com/christophehurpeau/pob/commit/d6284f5))
+* use @pob/eslint-config* ([f130afb](https://github.com/christophehurpeau/pob/commit/f130afb))
+
+
+
+
+
 ## [4.22.1](https://github.com/christophehurpeau/pob/compare/pob@4.22.0...pob@4.22.1) (2019-02-23)
 
 
