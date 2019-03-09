@@ -29,9 +29,10 @@ module.exports = class RenovateGenerator extends Generator {
       return;
     }
 
-    const config = this.config.get('renovate');
+    this.enableRenovateConfig = this.config.get('renovate');
 
-    if (this.options.updateOnly && config) {
+    if (this.options.updateOnly && this.enableRenovateConfig) {
+      this.enableRenovate = this.enableRenovateConfig.enable;
       return;
     }
 
