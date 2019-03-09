@@ -90,7 +90,7 @@ module.exports = class PackageGenerator extends Generator {
 
     pkg.description = this.options.updateOnly
       ? pkg.description
-      : props.description;
+      : props.description || pkg.description;
 
     if (inLerna && !inLerna.root) {
       const lernaPackage = this.fs.readJSON(inLerna.packageJsonPath);
