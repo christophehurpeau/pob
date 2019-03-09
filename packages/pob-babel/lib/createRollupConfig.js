@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 'use strict';
 
 const readFileSync = require('fs').readFileSync;
@@ -108,10 +110,24 @@ const createConfigForEnv = (entry, env, production) => {
           ],
         ].filter(Boolean),
         plugins: [
+          [
+            require.resolve('babel-plugin-transform-builtins'),
+            {
+              useESModules: 'auto',
+              // for now we cant activate because of rollup preflight bug
+              useHelpers: false,
+            },
+          ],
+          // [
+          //   require.resolve('@babel/plugin-transform-runtime'),
+          //   {
+          //     useESModules: 'auto',
+          //   },
+          // ],
+          // fix issue with babel and this
           require.resolve('./babel-plugin-rewrite-this'),
-          // require.resolve('babel-plugin-external-helpers'),
-        ].filter(Boolean),
-        externalHelpers: false,
+        ],
+        // runtimeHelpers: true,
         exclude: 'node_modules/**',
       }),
 

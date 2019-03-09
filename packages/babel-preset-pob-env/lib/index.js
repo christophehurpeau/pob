@@ -209,7 +209,12 @@ module.exports = function(context, opts) {
       // optimizations: remove dead-code
       optimizations && [
         require.resolve('babel-preset-optimizations'),
-        { keepFnName: true, simplify: false, undefinedToVoid: false },
+        {
+          keepFnName: true,
+          keepClassName: true,
+          simplify: false,
+          undefinedToVoid: false,
+        },
       ],
 
       // discard unused imports (like production-only or node-only imports)

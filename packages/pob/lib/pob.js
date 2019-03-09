@@ -62,7 +62,7 @@ if (action === 'add') {
   writeFileSync(`${packagesPath}/${packageName}/.yo-rc.json`, '{}');
   writeFileSync(
     `${packagesPath}/${packageName}/package.json`,
-    JSON.stringify({ name: packageName, version: '1.0.0-pre' })
+    JSON.stringify({ name: packageName, version: '1.0.0-pre' }, null, 2)
   );
   spawnSync(process.argv[0], [process.argv[1], 'lib'], {
     cwd: `${packagesPath}/${packageName}`,
