@@ -1,0 +1,64 @@
+{
+  "name": "@pob/renovate-config",
+  "version": "1.0.0-pre",
+  "description": "renovate pob config",
+  "engines": {
+    "node": ">= 8.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "preversion": "node ./generate-package.json.js && git add package.json"
+  },
+  "devDependencies": {
+    "prettier": "1.16.4"
+  },
+  "renovate-config": {
+    "default": {
+      "postUpdateOptions": ["yarnDedupeHighest"],
+      "packageRules": [
+        {
+          "groupName": "Pob Dependencies",
+          "packageNames": [
+            "@babel/core",
+            "@babel/preset-env",
+            "@babel/preset-react",
+            "@commitlint/cli",
+            "@commitlint/config-conventional",
+            "@types/jest",
+            "@typescript-eslint/eslint-plugin",
+            "@typescript-eslint/parser",
+            "babel-eslint",
+            "babel-jest",
+            "babel-preset-latest-node",
+            "babel-preset-modern-browsers",
+            "eslint",
+            "@pob/eslint-config",
+            "@pob/eslint-config-babel",
+            "@pob/eslint-config-babel-node",
+            "@pob/eslint-config-node",
+            "@pob/eslint-config-react",
+            "@pob/eslint-config-typescript",
+            "@pob/eslint-config-typescript-react",
+            "husky",
+            "jest",
+            "jest-junit-reporter",
+            "lerna",
+            "lint-staged",
+            "pob-babel",
+            "pob-lcov-reporter",
+            "pob-release",
+            "prettier",
+            "repository-check-dirty",
+            "typedoc",
+            "typescript",
+            "yarn-update-lock",
+            "yarnhook"
+          ],
+          "schedule": ["before 3am on Friday"]
+        }
+      ]
+    }
+  }
+}
