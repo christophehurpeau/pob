@@ -72,6 +72,7 @@ module.exports = class TestingGenerator extends Generator {
       'mocha',
       'istanbul',
       'babel-core',
+      'ts-jest',
     ]);
 
     if (!this.options.enable) {
@@ -82,14 +83,16 @@ module.exports = class TestingGenerator extends Generator {
       ]);
 
       delete pkg.jest;
-      if (inLerna) {
-        if (pkg.scripts.test === 'echo "No tests"') {
-          delete pkg.scripts.test;
-        }
-        delete pkg.scripts['generate:test-coverage'];
-      } else if (pkg.scripts) {
+      // if (inLerna) {
+      //   if (pkg.scripts.test === 'echo "No tests"') {
+      //     delete pkg.scripts.test;
+      //   }
+      //   delete pkg.scripts['generate:test-coverage'];
+      // }
+      if (pkg.scripts) {
         delete pkg.scripts.test;
         delete pkg.scripts['generate:test-coverage'];
+        delete pkg.scripts['test:watch'];
       }
 
       this.fs.writeJSON(this.destinationPath('package.json'), pkg);
@@ -98,6 +101,7 @@ module.exports = class TestingGenerator extends Generator {
 
       packageUtils.addScripts(pkg, {
         test: 'jest',
+        'test:watch': 'jest',
         'generate:test-coverage': [
           'rm -Rf docs/coverage/',
           'NODE_ENV=production BABEL_ENV=test jest --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/',

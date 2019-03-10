@@ -33,6 +33,8 @@ module.exports = class LintGenerator extends Generator {
       delete pkg.scripts.prepare;
     }
 
+    delete pkg.standard;
+
     pkg.prettier = {
       trailingComma: !useBabel ? 'es5' : 'all',
       singleQuote: true,
@@ -59,6 +61,7 @@ module.exports = class LintGenerator extends Generator {
       'eslint-plugin-typescript',
       'eslint-plugin-unicorn',
       'typescript-eslint-parser',
+      'standard',
     ]);
 
     packageUtils.addDevDependencies(pkg, ['eslint', 'prettier']);
