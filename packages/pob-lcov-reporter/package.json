@@ -1,17 +1,29 @@
 {
   "name": "pob-lcov-reporter",
   "version": "1.0.1",
-  "description": "custom lcov reporter for poob",
+  "description": "custom lcov reporter for pob",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "license": "ISC",
-  "repository": "git@github.com:christophehurpeau/pob.git",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com:christophehurpeau/pob.git",
+    "directory": "packages/pob-lcov-reporter"
+  },
   "homepage": "https://github.com/christophehurpeau/pob",
   "engines": {
     "node": ">=6.5.0"
   },
-  "main": "./index.js",
+  "main": "./lib/index.js",
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "arrowParens": "always"
+  },
   "dependencies": {
     "istanbul-reports": "^2.1.1"
+  },
+  "devDependencies": {
+    "prettier": "1.16.4"
   }
 }

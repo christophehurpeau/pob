@@ -1,0 +1,17 @@
+{
+  "pob-lcov-reporter": {
+    "type": {
+      "type": "lib"
+    }
+  },
+  "pob": {
+    "pob-config": {
+      "entries": [
+        "index"
+      ],
+      "documentation": false,
+      "testing": false,
+      "envs": []
+    }
+  }
+}
