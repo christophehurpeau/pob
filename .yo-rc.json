@@ -12,17 +12,22 @@
       "packageNames": [
         "babel-plugin-fix-class-properties-uninitialized",
         "babel-plugin-pob-babel",
+        "babel-plugin-transform-builtins",
         "babel-preset-pob-env",
         "pob",
         "pob-babel",
         "pob-dependencies",
         "pob-lcov-reporter",
         "pob-release",
+        "renovate-config",
         "repository-check-dirty",
         "rollup-config-external-dependencies",
         "yarn-update-lock"
       ],
       "typescript": false
+    },
+    "renovate": {
+      "enable": true
     }
   }
 }
