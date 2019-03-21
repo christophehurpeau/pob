@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.24.0](https://github.com/christophehurpeau/pob/compare/pob@4.23.1...pob@4.24.0) (2019-03-21)
+
+
+### Features
+
+* remove ts-jest and standard ([41b98c4](https://github.com/christophehurpeau/pob/commit/41b98c4))
+* update circleci config node 11.11 ([80a7072](https://github.com/christophehurpeau/pob/commit/80a7072))
+* update update node 11 to 11.12 ([cd32b80](https://github.com/christophehurpeau/pob/commit/cd32b80))
+
+
+
+
+
 ## [4.23.1](https://github.com/christophehurpeau/pob/compare/pob@4.23.0...pob@4.23.1) (2019-03-09)
 
 

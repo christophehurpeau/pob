@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.16.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.15.0...pob-dependencies@0.16.0) (2019-03-21)
+
+
+### Features
+
+* **deps:** update babel monorepo ([#143](https://github.com/christophehurpeau/pob/issues/143)) ([8db4916](https://github.com/christophehurpeau/pob/commit/8db4916))
+* **deps:** update dependency babel-preset-latest-node to v3.1.1 ([#140](https://github.com/christophehurpeau/pob/issues/140)) ([cf29771](https://github.com/christophehurpeau/pob/commit/cf29771))
+* **deps:** update dependency typescript to v3.3.4000 ([#144](https://github.com/christophehurpeau/pob/issues/144)) ([fa31494](https://github.com/christophehurpeau/pob/commit/fa31494))
+* **deps:** update jest monorepo to v24.4.0 ([#137](https://github.com/christophehurpeau/pob/issues/137)) ([de6557d](https://github.com/christophehurpeau/pob/commit/de6557d))
+* **deps:** update jest monorepo to v24.5.0 ([#139](https://github.com/christophehurpeau/pob/issues/139)) ([1f2feb2](https://github.com/christophehurpeau/pob/commit/1f2feb2))
+* **deps:** update typescript-eslint monorepo to v1.5.0 ([#145](https://github.com/christophehurpeau/pob/issues/145)) ([65ee573](https://github.com/christophehurpeau/pob/commit/65ee573))
+
+
+
+
+
 # [0.15.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.14.0...pob-dependencies@0.15.0) (2019-03-09)
 
 
