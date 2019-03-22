@@ -28,7 +28,7 @@
   },
   "devDependencies": {
     "@pob/eslint-config": "29.1.0",
-    "@pob/eslint-config-node": "29.0.1",
+    "@pob/eslint-config-node": "29.1.0",
     "eslint": "5.15.3",
     "prettier": "1.16.4"
   },
