@@ -1755,13 +1755,13 @@
   dependencies:
     "@pob/eslint-config-react" "^29.0.1"
 
-"@pob/eslint-config-typescript@29.0.1":
-  version "29.0.1"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript/-/eslint-config-typescript-29.0.1.tgz#bed904a6b8f76f0bdbe25b706229b2ec3dbb4b8a"
-  integrity sha512-+fb5UY5Vo2yQVoNRmost2Jqr/XyDp+TYroGyEYlmazPI4yhVWX6A6VsHTCjPXRDjtnr5yQfHc6L6FdQtkp/0GA==
+"@pob/eslint-config-typescript@29.1.0":
+  version "29.1.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript/-/eslint-config-typescript-29.1.0.tgz#ab3d0674033435b44ca9d55bb14888bfeb45b1af"
+  integrity sha512-/NUd8otwNqirOs1QgNx7JPdkpB9QukPD2EVLCsVXhnRp1ner5cFTua/7cwzUnUuLgs+oq5/7wMf/viMoZC6Idw==
   dependencies:
-    "@typescript-eslint/eslint-plugin" "^1.4.2"
-    "@typescript-eslint/parser" "^1.4.2"
+    "@typescript-eslint/eslint-plugin" "^1.5.0"
+    "@typescript-eslint/parser" "^1.5.0"
     eslint-config-prettier "^4.1.0"
 
 "@pob/eslint-config@29.1.0":
@@ -1943,7 +1943,7 @@
   resolved "https://registry.yarnpkg.com/@types/yargs/-/yargs-12.0.9.tgz#693e76a52f61a2f1e7fb48c0eef167b95ea4ffd0"
   integrity sha512-sCZy4SxP9rN2w30Hlmg5dtdRwgYQfYRiLo9usw8X9cxlf+H4FqM1xX7+sNH7NNKVdbXMJWqva7iyy+fxh/V7fA==
 
-"@typescript-eslint/eslint-plugin@1.5.0", "@typescript-eslint/eslint-plugin@^1.4.2":
+"@typescript-eslint/eslint-plugin@1.5.0", "@typescript-eslint/eslint-plugin@^1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-1.5.0.tgz#85c509bcfc2eb35f37958fa677379c80b7a8f66f"
   integrity sha512-TZ5HRDFz6CswqBUviPX8EfS+iOoGbclYroZKT3GWGYiGScX0qo6QjHc5uuM7JN920voP2zgCkHgF5SDEVlCtjQ==
@@ -1953,7 +1953,7 @@
     requireindex "^1.2.0"
     tsutils "^3.7.0"
 
-"@typescript-eslint/parser@1.5.0", "@typescript-eslint/parser@^1.4.2":
+"@typescript-eslint/parser@1.5.0", "@typescript-eslint/parser@^1.5.0":
   version "1.5.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-1.5.0.tgz#a96114d195dff2a49534e4c4850fb676f905a072"
   integrity sha512-pRWTnJrnxuT0ragdY26hZL+bxqDd4liMlftpH2CBlMPryOIOb1J+MdZuw6R4tIu6bWVdwbHKPTs+Q34LuGvfGw==
