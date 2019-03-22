@@ -1720,12 +1720,12 @@
   dependencies:
     "@pob/eslint-config-node" "^29.0.1"
 
-"@pob/eslint-config-babel@29.0.1":
-  version "29.0.1"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel/-/eslint-config-babel-29.0.1.tgz#fcec1cde4f237be3be495829759a751b1d4a3e9a"
-  integrity sha512-562i0Pz6h4c+86qLT/QzRMMu2b/kDiSpyhq/rOYhnUQ3RN60TyL7xfEJJhxSRmvDSNXSnOPyW7cOL3QdXxe8TA==
+"@pob/eslint-config-babel@29.1.0":
+  version "29.1.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel/-/eslint-config-babel-29.1.0.tgz#d165e998729b438358fb980297e35f6be05439e9"
+  integrity sha512-wxH/+2GlSeFRfzYqDc2FJAh+jZBARzpTnOy30jLLt9NevoH9XHhEuOu+CfjlWj2QXWHhRbbpVRmgiRWCAULi+w==
   dependencies:
-    "@pob/eslint-config" "^29.0.1"
+    "@pob/eslint-config" "^29.1.0"
     babel-eslint "^10.0.1"
     eslint-config-airbnb-base "^13.1.0"
     eslint-plugin-prefer-class-properties "^1.0.0"
@@ -1764,22 +1764,10 @@
     "@typescript-eslint/parser" "^1.5.0"
     eslint-config-prettier "^4.1.0"
 
-"@pob/eslint-config@29.1.0":
+"@pob/eslint-config@29.1.0", "@pob/eslint-config@^29.1.0":
   version "29.1.0"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-29.1.0.tgz#eb25f2d1ad2aaf7703823cd68371402ba44c7bdb"
   integrity sha512-ishLXE8zo+fuGv25N4v2PlJM88k4qWU3WiTCklVhS5VQnuaBzIl8HXRdAOZ5Mg2MgNJiCrxK/GDuyjD6iNzkCg==
-  dependencies:
-    eslint-config-airbnb-base "^13.1.0"
-    eslint-config-prettier "^4.1.0"
-    eslint-plugin-import "^2.16.0"
-    eslint-plugin-prefer-class-properties "^1.0.0"
-    eslint-plugin-prettier "^3.0.1"
-    eslint-plugin-unicorn "^7.0.0"
-
-"@pob/eslint-config@^29.0.1":
-  version "29.0.1"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-29.0.1.tgz#3364ea8e2ea7f4a9c79a2e812c061a49bd084c3c"
-  integrity sha512-Em32sR6JEcM5q6bsCjhLILqRahmvaNzTSWUGurfL0pBY/xEF7R8NvOcz+/apg3iyTwavLG6FiRXUIOPTcZKLZg==
   dependencies:
     eslint-config-airbnb-base "^13.1.0"
     eslint-config-prettier "^4.1.0"
