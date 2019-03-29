@@ -102,8 +102,8 @@ module.exports = class LernaGenerator extends Generator {
     packageUtils.addScripts(pkg, {
       lint: 'lerna run --stream lint',
       preversion: [
-        'yarn run lint',
-        withBabel && 'yarn run build',
+        'yarn run lint --since',
+        withBabel && 'yarn run build --since',
         'repository-check-dirty',
       ]
         .filter(Boolean)
@@ -125,7 +125,7 @@ module.exports = class LernaGenerator extends Generator {
 
     packageUtils.addOrRemoveScripts(pkg, withTypescript, {
       'build:definitions': 'lerna run --stream build:definitions',
-      postbuild: 'yarn run build:definitions',
+      postbuild: 'yarn run build:definitions --since',
     });
 
     packageUtils.addOrRemoveScripts(pkg, withDocumentation, {
