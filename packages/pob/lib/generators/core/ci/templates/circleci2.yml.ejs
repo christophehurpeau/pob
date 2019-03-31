@@ -42,7 +42,7 @@ jobs:
       - run:
           name: Check nothing was forget before commit
           command: yarn run repository-check-dirty
-<% [node11 && { name: 11, version: '11.12' }, node10 && { name: 10, version: '10.15' }].filter(Boolean).forEach(({ name, version }) => { -%>
+<% [node11 && { name: 11, version: '11.13' }, node10 && { name: 10, version: '10.15' }].filter(Boolean).forEach(({ name, version }) => { -%>
 
   test-node<%= name %>:
     docker:
