@@ -2454,16 +2454,18 @@ babel-preset-latest-node@3.1.1:
     "@babel/plugin-transform-function-name" "^7.2.0"
     "@babel/plugin-transform-modules-commonjs" "^7.2.0"
 
-babel-preset-modern-browsers@13.1.0:
-  version "13.1.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-modern-browsers/-/babel-preset-modern-browsers-13.1.0.tgz#65c721fceef2d6e8a40efc7094a210fcb26b0587"
-  integrity sha512-c7xXqroqRFeKLlf0D9gvEIeNHxzJKC6OKplJS8qHfzPAvpAObTZRN53gPZGUPenmGDr2TLc0scewQjp4Myymyw==
+babel-preset-modern-browsers@14.0.0:
+  version "14.0.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-modern-browsers/-/babel-preset-modern-browsers-14.0.0.tgz#3a2f759d29db8462c4f077142159ddd031ede47d"
+  integrity sha512-StlM59GnTowme4QO/rLeuko5BRyTq9FM/K/4Xquyd0H6pdjPQ3JbLg9O8ID0V4WDNV8YKyPFlkKn531hSn5Ifw==
   dependencies:
     "@babel/plugin-proposal-async-generator-functions" "^7.2.0"
+    "@babel/plugin-proposal-json-strings" "^7.2.0"
     "@babel/plugin-proposal-object-rest-spread" "^7.3.4"
     "@babel/plugin-proposal-optional-catch-binding" "^7.2.0"
     "@babel/plugin-proposal-unicode-property-regex" "^7.2.0"
     "@babel/plugin-syntax-async-generators" "^7.2.0"
+    "@babel/plugin-syntax-json-strings" "^7.2.0"
     "@babel/plugin-syntax-object-rest-spread" "^7.2.0"
     "@babel/plugin-syntax-optional-catch-binding" "^7.2.0"
     "@babel/plugin-transform-arrow-functions" "^7.2.0"
