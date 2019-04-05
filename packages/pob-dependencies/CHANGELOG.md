@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.19.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.18.0...pob-dependencies@0.19.0) (2019-04-05)
+
+
+### Features
+
+* update eslint config pob ([9d6980d](https://github.com/christophehurpeau/pob/commit/9d6980d))
+
+
+
+
+
 # [0.18.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.17.2...pob-dependencies@0.18.0) (2019-04-05)
 
 

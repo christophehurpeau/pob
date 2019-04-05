@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-transform-builtins@1.1.0...babel-plugin-transform-builtins@1.2.0) (2019-04-05)
+
+
+### Features
+
+* update eslint config pob ([9d6980d](https://github.com/christophehurpeau/pob/commit/9d6980d))
+
+
+
+
+
 # [1.1.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-transform-builtins@1.0.2...babel-plugin-transform-builtins@1.1.0) (2019-04-05)
 
 

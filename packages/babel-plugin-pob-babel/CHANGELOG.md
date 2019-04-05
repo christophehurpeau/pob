@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.9.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-pob-babel@0.8.0...babel-plugin-pob-babel@0.9.0) (2019-04-05)
+
+
+### Features
+
+* update eslint config pob ([9d6980d](https://github.com/christophehurpeau/pob/commit/9d6980d))
+
+
+
+
+
 # [0.8.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-pob-babel@0.7.9...babel-plugin-pob-babel@0.8.0) (2019-04-05)
 
 

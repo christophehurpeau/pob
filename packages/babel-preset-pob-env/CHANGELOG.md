@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.21.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.20.0...babel-preset-pob-env@2.21.0) (2019-04-05)
+
+
+### Features
+
+* update eslint config pob ([9d6980d](https://github.com/christophehurpeau/pob/commit/9d6980d))
+
+
+
+
+
 # [2.20.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.19.0...babel-preset-pob-env@2.20.0) (2019-04-05)
 
 

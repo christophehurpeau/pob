@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.12.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.11.0...pob-babel@23.12.0) (2019-04-05)
+
+
+### Features
+
+* update eslint config pob ([9d6980d](https://github.com/christophehurpeau/pob/commit/9d6980d))
+
+
+
+
+
 # [23.11.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.10.1...pob-babel@23.11.0) (2019-04-05)
 
 

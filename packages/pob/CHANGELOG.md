@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.27.0](https://github.com/christophehurpeau/pob/compare/pob@4.26.0...pob@4.27.0) (2019-04-05)
+
+
+### Features
+
+* update eslint config pob ([9d6980d](https://github.com/christophehurpeau/pob/commit/9d6980d))
+
+
+
+
+
 # [4.26.0](https://github.com/christophehurpeau/pob/compare/pob@4.25.2...pob@4.26.0) (2019-04-05)
 
 

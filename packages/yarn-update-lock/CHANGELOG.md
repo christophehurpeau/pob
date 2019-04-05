@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/christophehurpeau/pob/compare/yarn-update-lock@0.4.0...yarn-update-lock@0.5.0) (2019-04-05)
+
+
+### Features
+
+* update eslint config pob ([9d6980d](https://github.com/christophehurpeau/pob/commit/9d6980d))
+
+
+
+
+
 # [0.4.0](https://github.com/christophehurpeau/pob/compare/yarn-update-lock@0.3.5...yarn-update-lock@0.4.0) (2019-04-05)
 
 

@@ -5,13 +5,13 @@ interface Dependencies {
   '@babel/preset-react': '7.0.0';
   '@commitlint/cli': '7.5.2';
   '@commitlint/config-conventional': '7.5.0';
-  '@pob/eslint-config': '29.1.1';
-  '@pob/eslint-config-babel': '29.1.1';
+  '@pob/eslint-config': '29.2.0';
+  '@pob/eslint-config-babel': '29.2.0';
   '@pob/eslint-config-babel-node': '29.1.1';
   '@pob/eslint-config-node': '29.1.1';
-  '@pob/eslint-config-react': '29.1.1';
-  '@pob/eslint-config-typescript': '29.1.1';
-  '@pob/eslint-config-typescript-react': '29.1.1';
+  '@pob/eslint-config-react': '29.2.0';
+  '@pob/eslint-config-typescript': '29.2.0';
+  '@pob/eslint-config-typescript-react': '29.2.0';
   '@types/jest': '24.0.11';
   '@typescript-eslint/eslint-plugin': '1.6.0';
   '@typescript-eslint/parser': '1.6.0';
@@ -25,14 +25,14 @@ interface Dependencies {
   'jest-junit-reporter': '1.1.0';
   'lerna': '3.13.1';
   'lint-staged': '8.1.5';
-  'pob-babel': '^23.10.1';
-  'pob-lcov-reporter': '^1.0.2';
-  'pob-release': '^4.10.0';
+  'pob-babel': '^23.11.0';
+  'pob-lcov-reporter': '^1.1.0';
+  'pob-release': '^4.11.0';
   'prettier': '1.16.4';
   'repository-check-dirty': '^1.0.2';
   'typedoc': '0.14.2';
   'typescript': '3.4.1';
-  'yarn-update-lock': '^0.3.5';
+  'yarn-update-lock': '^0.4.0';
   'yarnhook': '0.4.0';
 } 
 
