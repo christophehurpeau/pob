@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/christophehurpeau/pob/compare/rollup-config-external-dependencies@0.2.0...rollup-config-external-dependencies@0.2.1) (2019-04-05)
+
+
+### Bug Fixes
+
+* replace regexp for @ npm modules ([d346dca](https://github.com/christophehurpeau/pob/commit/d346dca))
+
+
+
+
+
 # [0.2.0](https://github.com/christophehurpeau/pob/compare/rollup-config-external-dependencies@0.1.0...rollup-config-external-dependencies@0.2.0) (2018-12-21)
 
 
