@@ -82,6 +82,7 @@ const createConfigForEnv = (entry, env, production) => {
       format,
       sourcemap: true,
       exports: 'named',
+      preferConst: !(env.target === 'browser' && env.version !== 'modern'),
     })),
     external,
     plugins: [
