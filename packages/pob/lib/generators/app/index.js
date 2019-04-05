@@ -8,6 +8,8 @@ const inNpmLerna = require('../../utils/inNpmLerna');
 const gitignorePaths = {
   alp: (config) => ['# alp paths', '/build', '/public', '/data'],
   'next.js': (config) => ['# next.js paths', config.export && '/.next', '/out'],
+  pobpack: (config) => ['/build', '/public'],
+  other: (config) => [],
 };
 
 module.exports = class PobAppGenerator extends Generator {
@@ -41,13 +43,14 @@ module.exports = class PobAppGenerator extends Generator {
         name: 'type',
         message: 'What kind of app is this ?',
         default: (config && config.type) || 'alp',
-        choices: ['alp', 'next.js'],
+        choices: ['alp', 'pobpack', 'next.js', 'other'],
       },
       {
         type: 'confirm',
         name: 'export',
         message: 'Use next export ?',
         default: false,
+        when: (values) => values.type === 'next.js',
       },
     ]);
 
@@ -64,7 +67,10 @@ module.exports = class PobAppGenerator extends Generator {
       enable: babelEnvs.length !== 0,
       withReact,
       updateOnly: this.options.updateOnly,
-      baseUrl: this.appConfig.type === 'alp' ? './src' : '',
+      baseUrl:
+        this.appConfig.type === 'alp' || this.appConfig.type === 'pobpack'
+          ? './src'
+          : '',
     });
 
     if (!inLerna || inLerna.root) {
