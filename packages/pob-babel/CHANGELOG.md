@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.10.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.9.0...pob-babel@23.10.0) (2019-04-05)
+
+
+### Features
+
+* rollup add option preferConst ([68620f1](https://github.com/christophehurpeau/pob/commit/68620f1))
+
+
+
+
+
 # [23.9.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.8.0...pob-babel@23.9.0) (2019-04-05)
 
 
