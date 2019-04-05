@@ -8,5 +8,10 @@
       "testing": false,
       "envs": []
     }
+  },
+  "pob-release": {
+    "type": {
+      "type": "lib"
+    }
   }
 }

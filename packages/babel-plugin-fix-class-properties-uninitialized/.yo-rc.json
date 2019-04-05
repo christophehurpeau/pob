@@ -13,5 +13,10 @@
       "testing": false,
       "envs": []
     }
+  },
+  "babel-plugin-fix-class-properties-uninitialized": {
+    "type": {
+      "type": "lib"
+    }
   }
 }

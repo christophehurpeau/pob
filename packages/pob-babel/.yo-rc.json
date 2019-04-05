@@ -8,5 +8,10 @@
         "index"
       ]
     }
+  },
+  "pob-babel": {
+    "type": {
+      "type": "lib"
+    }
   }
 }

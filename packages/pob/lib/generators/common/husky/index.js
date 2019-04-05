@@ -130,7 +130,7 @@ module.exports = class GitHooksGenerator extends Generator {
 
       if (!this.originUrl) {
         let repoSSH = pkg.repository;
-        if (pkg.repository && pkg.repository.indexOf('.git') === -1) {
+        if (pkg.repository && !pkg.repository.includes('.git')) {
           /* this.spawnCommandSync('curl', [
                         '--silent',
                         '--write-out',

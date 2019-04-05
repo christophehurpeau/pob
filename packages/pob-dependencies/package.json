@@ -18,7 +18,7 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "preversion": "node ./generate.d.ts.js && git add lib/index.d.ts",
-    "lint": "eslint lib/"
+    "lint": "eslint --quiet lib/"
   },
   "prettier": {
     "trailingComma": "es5",

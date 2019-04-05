@@ -23,7 +23,7 @@
   },
   "scripts": {
     "format": "prettier --write",
-    "lint": "eslint lib/"
+    "lint": "eslint --quiet lib/"
   },
   "prettier": {
     "trailingComma": "es5",

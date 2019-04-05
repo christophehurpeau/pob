@@ -8,5 +8,10 @@
         "index"
       ]
     }
+  },
+  "babel-preset-pob-env": {
+    "type": {
+      "type": "lib"
+    }
   }
 }

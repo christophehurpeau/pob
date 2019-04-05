@@ -20,7 +20,7 @@
     "yarn-deduplicate-lock": "./lib/yarn-deduplicate-lock.js"
   },
   "scripts": {
-    "lint": "eslint lib/"
+    "lint": "eslint --quiet lib/"
   },
   "prettier": {
     "trailingComma": "es5",

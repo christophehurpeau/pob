@@ -1,11 +1,11 @@
 /build
 /docs
 /examples
-/git-hooks
 /samples
 /test
 /tsconfig.json
 /tsconfig.build.json
+/tsconfig.doc.json
 .babelrc
 .codeclimate.yml
 .yo-rc.json

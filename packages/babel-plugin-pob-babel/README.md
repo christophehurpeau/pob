@@ -19,8 +19,12 @@ npm install --save babel-plugin-pob-babel
 
 ## Usage
 
-```js
-import babelPluginPobBabel from 'babel-plugin-pob-babel';
+### Via `.babelrc`
 
-console.log(babelPluginPobBabel);
+**.babelrc**
+
+```json
+{
+  "plugins": ["babel-plugin-pob-babel"]
+}
 ```

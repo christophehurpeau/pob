@@ -248,13 +248,11 @@ module.exports = class LintGenerator extends Generator {
     }
 
     const srcDirectory = useBabel ? 'src' : 'lib';
-    packageUtils.addScript(
-      pkg,
-      'lint',
-      `${useBabel ? 'tsc && ' : ''}eslint${
+    packageUtils.addScripts(pkg, {
+      lint: `${useBabel ? 'tsc && ' : ''}eslint${
         !useBabel ? '' : ` --ext .ts${hasReact ? ',.tsx' : ''}`
-      } ${srcDirectory}/`
-    );
+      } --quiet ${srcDirectory}/`,
+    });
 
     delete pkg.scripts['typescript-check'];
 

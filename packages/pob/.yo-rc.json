@@ -7,6 +7,9 @@
       "documentation": false,
       "testing": false,
       "envs": []
+    },
+    "type": {
+      "type": "lib"
     }
   }
 }

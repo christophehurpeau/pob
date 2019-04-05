@@ -10,7 +10,7 @@
   "workspaces": ["packages/*"],
   "scripts": {
     "lint": "lerna run --stream lint",
-    "preversion": "yarn run lint && repository-check-dirty",
+    "preversion": "yarn run lint --since && repository-check-dirty",
     "release": "GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --github-release -m 'chore: release' && lerna publish from-git"
   },
   "husky": {

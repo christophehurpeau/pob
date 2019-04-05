@@ -23,7 +23,7 @@
   },
   "scripts": {
     "build:definitions": "tsc --lib esnext --noEmit ./lib/index.d.ts",
-    "lint": "eslint lib/"
+    "lint": "eslint --quiet lib/"
   },
   "prettier": {
     "trailingComma": "es5",
