@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.17.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.16.0...pob-dependencies@0.17.0) (2019-04-05)
+
+
+### Features
+
+* update deps ([aa5d8aa](https://github.com/christophehurpeau/pob/commit/aa5d8aa))
+* **deps:** update dependency @pob/eslint-config-babel to v29.1.0 ([#149](https://github.com/christophehurpeau/pob/issues/149)) ([f3dffdb](https://github.com/christophehurpeau/pob/commit/f3dffdb))
+* **deps:** update dependency @pob/eslint-config-babel-node to v29.1.0 ([#150](https://github.com/christophehurpeau/pob/issues/150)) ([d4f19fc](https://github.com/christophehurpeau/pob/commit/d4f19fc))
+* **deps:** update dependency @pob/eslint-config-react to v29.1.0 ([#151](https://github.com/christophehurpeau/pob/issues/151)) ([ad2dee5](https://github.com/christophehurpeau/pob/commit/ad2dee5))
+* **deps:** update dependency @pob/eslint-config-typescript to v29.1.0 ([#152](https://github.com/christophehurpeau/pob/issues/152)) ([0fb1ce9](https://github.com/christophehurpeau/pob/commit/0fb1ce9))
+* **deps:** update dependency @pob/eslint-config-typescript-react to v29.1.0 ([#153](https://github.com/christophehurpeau/pob/issues/153)) ([348fd7f](https://github.com/christophehurpeau/pob/commit/348fd7f))
+* **deps:** update dependency typescript to v3.4.1 ([#155](https://github.com/christophehurpeau/pob/issues/155)) ([65297db](https://github.com/christophehurpeau/pob/commit/65297db))
+
+
+
+
+
 # [0.16.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.15.0...pob-dependencies@0.16.0) (2019-03-21)
 
 

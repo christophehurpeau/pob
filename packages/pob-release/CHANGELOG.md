@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.10.0](https://github.com/christophehurpeau/pob/compare/pob-release@4.9.1...pob-release@4.10.0) (2019-04-05)
+
+
+### Features
+
+* update deps ([aa5d8aa](https://github.com/christophehurpeau/pob/commit/aa5d8aa))
+
+
+
+
+
 ## [4.9.1](https://github.com/christophehurpeau/pob/compare/pob-release@4.9.0...pob-release@4.9.1) (2019-03-21)
 
 **Note:** Version bump only for package pob-release

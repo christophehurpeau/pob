@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.25.0](https://github.com/christophehurpeau/pob/compare/pob@4.24.0...pob@4.25.0) (2019-04-05)
+
+
+### Bug Fixes
+
+* tsconfig comma ([7e8e4b5](https://github.com/christophehurpeau/pob/commit/7e8e4b5))
+
+
+### Features
+
+* add app pobpack and other ([b2ab40c](https://github.com/christophehurpeau/pob/commit/b2ab40c))
+* lerna dont lint or build everything on release ([1ab5b78](https://github.com/christophehurpeau/pob/commit/1ab5b78))
+* update ci node to 11.13 ([bc27295](https://github.com/christophehurpeau/pob/commit/bc27295))
+* update deps ([aa5d8aa](https://github.com/christophehurpeau/pob/commit/aa5d8aa))
+
+
+
+
+
 # [4.24.0](https://github.com/christophehurpeau/pob/compare/pob@4.23.1...pob@4.24.0) (2019-03-21)
 
 
