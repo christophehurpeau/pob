@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.11.0](https://github.com/christophehurpeau/pob/compare/pob-release@4.10.0...pob-release@4.11.0) (2019-04-05)
+
+
+### Features
+
+* self pob ([79da71e](https://github.com/christophehurpeau/pob/commit/79da71e))
+* update eslint pob config ([14e5df1](https://github.com/christophehurpeau/pob/commit/14e5df1))
+
+
+
+
+
 # [4.10.0](https://github.com/christophehurpeau/pob/compare/pob-release@4.9.1...pob-release@4.10.0) (2019-04-05)
 
 

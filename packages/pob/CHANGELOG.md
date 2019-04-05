@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.26.0](https://github.com/christophehurpeau/pob/compare/pob@4.25.2...pob@4.26.0) (2019-04-05)
+
+
+### Features
+
+* self pob ([79da71e](https://github.com/christophehurpeau/pob/commit/79da71e))
+* update eslint pob config ([14e5df1](https://github.com/christophehurpeau/pob/commit/14e5df1))
+
+
+
+
+
 ## [4.25.2](https://github.com/christophehurpeau/pob/compare/pob@4.25.1...pob@4.25.2) (2019-04-05)
 
 **Note:** Version bump only for package pob

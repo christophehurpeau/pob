@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.18.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.17.2...pob-dependencies@0.18.0) (2019-04-05)
+
+
+### Features
+
+* self pob ([79da71e](https://github.com/christophehurpeau/pob/commit/79da71e))
+* update eslint pob config ([14e5df1](https://github.com/christophehurpeau/pob/commit/14e5df1))
+
+
+
+
+
 ## [0.17.2](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.17.1...pob-dependencies@0.17.2) (2019-04-05)
 
 **Note:** Version bump only for package pob-dependencies

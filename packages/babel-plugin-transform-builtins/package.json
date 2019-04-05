@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-transform-builtins",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "description": "instead of using @babel/runtime, use builtins",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com>",

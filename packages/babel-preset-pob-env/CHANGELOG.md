@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.20.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.19.0...babel-preset-pob-env@2.20.0) (2019-04-05)
+
+
+### Features
+
+* self pob ([79da71e](https://github.com/christophehurpeau/pob/commit/79da71e))
+* update eslint pob config ([14e5df1](https://github.com/christophehurpeau/pob/commit/14e5df1))
+
+
+
+
+
 # [2.19.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.18.0...babel-preset-pob-env@2.19.0) (2019-04-05)
 
 
