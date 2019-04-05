@@ -38,10 +38,10 @@
     "@babel/preset-flow": "^7.0.0",
     "babel-plugin-transform-builtins": "^1.0.1",
     "babel-preset-pob-env": "^2.18.0",
-    "rollup": "^1.7.0",
+    "rollup": "^1.9.0",
     "rollup-config-external-dependencies": "^0.2.0",
     "rollup-plugin-babel": "^4.3.2",
-    "rollup-plugin-node-resolve": "^4.0.1"
+    "rollup-plugin-node-resolve": "^4.1.0"
   },
   "devDependencies": {
     "@pob/eslint-config": "29.1.0",
