@@ -16,9 +16,10 @@ module.exports = pkg => {
 
   return path => {
     if (path.includes('node_modules')) return true;
-    if (/^[a-z].*\//.test(path)) path = path.replace(/^([^/]+)\/.*$/, '$1');
-    if (/^@[a-z].*\//.test(path)) {
-      path = path.replace(/^(@[a-z-]\/[^/]+)\/.*$/, '$1');
+    if (/^[a-z].*\//.test(path)) {
+      path = path.replace(/^([^/]+)\/.*$/, '$1');
+    } else if (/^@[a-z].*\//.test(path)) {
+      path = path.replace(/^(@[a-z-]+\/[^/]+)\/.*$/, '$1');
     }
     return externalModules.includes(path);
   };
