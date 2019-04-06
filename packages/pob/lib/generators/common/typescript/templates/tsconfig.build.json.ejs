@@ -11,7 +11,9 @@
   },
 
   "exclude": [
-    "src/**/*.test.ts<%= withReact ? 'x?' : '' %>",
+    "dist/**",
+    "src/**/*.test.ts",
+    <%- withReact ? '"src/**/*.test.tsx",' : '' %>
     "src/**/__tests__/**"
   ]
 }

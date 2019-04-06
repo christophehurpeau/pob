@@ -37,10 +37,14 @@ module.exports = class MonorepoTypescriptGenerator extends Generator {
       'typescript',
     ]);
 
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-
     const tsconfigPath = this.destinationPath('tsconfig.json');
+    const tsconfigBuildPath = this.destinationPath('tsconfig.build.json');
     if (this.options.enable) {
+      packageUtils.addScripts(pkg, {
+        'build:definitions': 'tsc -b tsconfig.build.json',
+        postbuild: 'yarn run build:definitions',
+      });
+
       const packagesPath = pkg.workspaces[0].replace(/\/\*$/, '');
       const packageNames = JSON.parse(this.options.packageNames).filter(
         (packageName) =>
@@ -49,8 +53,20 @@ module.exports = class MonorepoTypescriptGenerator extends Generator {
       this.fs.copyTpl(this.templatePath('tsconfig.json.ejs'), tsconfigPath, {
         packageNames,
       });
+      this.fs.copyTpl(
+        this.templatePath('tsconfig.build.json.ejs'),
+        tsconfigBuildPath,
+        {
+          packageNames: packageNames.filter((packageName) =>
+            existsSync(`${packagesPath}/${packageName}/tsconfig.build.json`)
+          ),
+        }
+      );
     } else {
       this.fs.delete(tsconfigPath);
+      this.fs.delete(tsconfigBuildPath);
     }
+
+    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 };

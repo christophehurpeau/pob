@@ -119,7 +119,7 @@ module.exports = class LernaGenerator extends Generator {
     });
 
     packageUtils.addOrRemoveScripts(pkg, withBabel, {
-      build: 'lerna run --stream --concurrency=1 build',
+      build: 'lerna run --stream build',
       watch: 'lerna run --parallel --ignore "*-example" watch',
     });
 

@@ -32,7 +32,6 @@ module.exports = class PobMonorepoGenerator extends Generator {
     if (this.options.updateOnly && config) {
       this.pobLernaConfig = config;
       this.pobLernaConfig.packageNames = this.packageNames;
-      this.pobLernaConfig.typescript = false; // doesn't work for now
       this.config.set('monorepo', this.pobLernaConfig);
       return;
     }
@@ -67,21 +66,19 @@ module.exports = class PobMonorepoGenerator extends Generator {
         when: (answers) => answers.ci,
         default: config ? config.documentation : true,
       },
-      // {
-      //   type: 'confirm',
-      //   name: 'typescript',
-      //   message: 'Would you like typescript monorepo ?',
-      //   default: config ? config.typescript : true,
-      // },
+      {
+        type: 'confirm',
+        name: 'typescript',
+        message: 'Would you like typescript monorepo ?',
+        default: config ? config.typescript : true,
+      },
     ]);
     this.pobLernaConfig.packageNames = this.packageNames;
-    this.pobLernaConfig.typescript = false; // doesn't work for now
     this.config.set('monorepo', this.pobLernaConfig);
     this.config.delete('pob-config');
   }
 
   default() {
-    console.log(this.pobLernaConfig);
     this.composeWith(require.resolve('../core/ci'), {
       enable: this.pobLernaConfig.ci,
       testing: this.pobLernaConfig.testing,

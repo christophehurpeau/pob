@@ -140,10 +140,13 @@ module.exports = class PobLibGenerator extends Generator {
   }
 
   async prompting() {
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+
     const {
       babelNodeVersions = [],
       babelBrowserVersions = [],
       babelFormats,
+      withReact,
     } = this.updateOnly
       ? {
           babelTargets: [
@@ -181,6 +184,10 @@ module.exports = class PobLibGenerator extends Generator {
             Boolean(this.babelEnvs.find((env) => env.formats.includes('es'))) &&
               'es',
           ].filter(Boolean),
+          withReact:
+            this.pobjson.withReact === undefined
+              ? packageUtils.hasReact(pkg)
+              : this.pobjson.withReact,
         }
       : await this.prompt([
           {
@@ -289,6 +296,17 @@ module.exports = class PobLibGenerator extends Generator {
               },
             ],
           },
+
+          {
+            type: 'confirm',
+            name: 'withReact',
+            message: 'Enable React ?',
+            when: (answers) => answers.babelTargets.length !== 0,
+            default:
+              this.pobjson.withReact === undefined
+                ? packageUtils.hasReact(pkg)
+                : this.pobjson.withReact,
+          },
         ]);
 
     this.babelEnvs = [
@@ -313,6 +331,8 @@ module.exports = class PobLibGenerator extends Generator {
           : babelFormats,
       })),
     ];
+
+    this.pobjson.withReact = this.babelEnvs.length === 0 ? false : withReact;
 
     // documentation
     if (!this.updateOnly) {
@@ -369,8 +389,7 @@ module.exports = class PobLibGenerator extends Generator {
 
   default() {
     const withBabel = !!this.babelEnvs.length;
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
-    const withReact = packageUtils.hasReact(pkg);
+    const withReact = this.pobjson.withReact;
 
     this.composeWith(require.resolve('../common/typescript'), {
       enable: withBabel,

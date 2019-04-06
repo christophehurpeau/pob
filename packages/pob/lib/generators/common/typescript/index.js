@@ -46,8 +46,6 @@ module.exports = class TypescriptGenerator extends Generator {
       'typescript',
     ]);
 
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-
     const tsconfigPath = this.destinationPath('tsconfig.json');
     const tsconfigBuildPath = this.destinationPath('tsconfig.build.json');
     if (this.options.enable) {
@@ -55,18 +53,22 @@ module.exports = class TypescriptGenerator extends Generator {
       let composite;
       let monorepoPackageNames;
       if (inLerna && !inLerna.root) {
-        const yoConfig = this.fs.readJSON(`${inLerna.rootPath}/.yo-rc.json`);
+        const yoConfig = inLerna.rootYoConfig;
+
         composite =
           yoConfig.pob &&
           yoConfig.pob.monorepo &&
           yoConfig.pob.monorepo.typescript;
+
         if (composite) {
+          packageUtils.removeDevDependencies(pkg, ['typescript']);
+
           monorepoPackageNames = yoConfig.pob.monorepo.packageNames.filter(
             (packageName) =>
               ((pkg.dependencies && pkg.dependencies[packageName]) ||
                 (pkg.devDependencies && pkg.devDependencies[packageName]) ||
                 (pkg.peerDependencies && pkg.peerDependencies[packageName])) &&
-              existsSync(`../${packageName}/tsconfig.json`)
+              existsSync(`../${packageName}/tsconfig.build.json`)
           );
         }
       }
@@ -85,5 +87,7 @@ module.exports = class TypescriptGenerator extends Generator {
       this.fs.delete(tsconfigPath);
       this.fs.delete(tsconfigBuildPath);
     }
+
+    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 };
