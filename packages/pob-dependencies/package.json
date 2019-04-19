@@ -33,7 +33,7 @@
     "@commitlint/config-conventional": "7.5.0",
     "@pob/eslint-config": "29.2.0",
     "@pob/eslint-config-babel": "29.2.0",
-    "@pob/eslint-config-babel-node": "29.1.1",
+    "@pob/eslint-config-babel-node": "30.0.0",
     "@pob/eslint-config-node": "29.1.1",
     "@pob/eslint-config-react": "29.2.0",
     "@pob/eslint-config-typescript": "29.2.0",
