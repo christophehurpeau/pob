@@ -115,8 +115,7 @@ const createConfigForEnv = (entry, env, production) => {
             require.resolve('babel-plugin-transform-builtins'),
             {
               useESModules: 'auto',
-              // for now we cant activate because of rollup preflight bug
-              useHelpers: false,
+              useHelpers: true,
             },
           ],
           // [
@@ -128,7 +127,8 @@ const createConfigForEnv = (entry, env, production) => {
           // fix issue with babel and this
           require.resolve('./babel-plugin-rewrite-this'),
         ],
-        // runtimeHelpers: true,
+        skipBabelHelpersCheck: true,
+        babelHelpers: 'runtime',
         exclude: 'node_modules/**',
       }),
 
