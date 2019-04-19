@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.20.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.19.0...pob-dependencies@0.20.0) (2019-04-19)
+
+
+### Features
+
+* **deps:** update dependency lerna to v3.13.2 ([#168](https://github.com/christophehurpeau/pob/issues/168)) ([f9a9ce3](https://github.com/christophehurpeau/pob/commit/f9a9ce3))
+* **deps:** update dependency lerna to v3.13.3 ([#173](https://github.com/christophehurpeau/pob/issues/173)) ([ce5d447](https://github.com/christophehurpeau/pob/commit/ce5d447))
+* **deps:** update dependency prettier to v1.17.0 ([#170](https://github.com/christophehurpeau/pob/issues/170)) ([2c36033](https://github.com/christophehurpeau/pob/commit/2c36033))
+* **deps:** update dependency typescript to v3.4.2 ([#167](https://github.com/christophehurpeau/pob/issues/167)) ([fb0173e](https://github.com/christophehurpeau/pob/commit/fb0173e))
+* **deps:** update dependency typescript to v3.4.3 ([#169](https://github.com/christophehurpeau/pob/issues/169)) ([544f883](https://github.com/christophehurpeau/pob/commit/544f883))
+* **deps:** update dependency typescript to v3.4.4 ([#174](https://github.com/christophehurpeau/pob/issues/174)) ([75eab6d](https://github.com/christophehurpeau/pob/commit/75eab6d))
+
+
+
+
+
 # [0.19.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.18.0...pob-dependencies@0.19.0) (2019-04-05)
 
 

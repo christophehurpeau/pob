@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.0.0...@pob/renovate-config@1.1.0) (2019-04-19)
+
+
+### Features
+
+* **deps:** update dependency prettier to v1.17.0 ([#170](https://github.com/christophehurpeau/pob/issues/170)) ([2c36033](https://github.com/christophehurpeau/pob/commit/2c36033))
+
+
+
+
+
 # 1.0.0 (2019-03-09)
 
 

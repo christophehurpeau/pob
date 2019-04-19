@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.28.0](https://github.com/christophehurpeau/pob/compare/pob@4.27.0...pob@4.28.0) (2019-04-19)
+
+
+### Bug Fixes
+
+* path tsbuildinfo ([18251de](https://github.com/christophehurpeau/pob/commit/18251de))
+* **deps:** update dependency github-username to v5 ([#172](https://github.com/christophehurpeau/pob/issues/172)) ([00eeb2f](https://github.com/christophehurpeau/pob/commit/00eeb2f))
+
+
+### Features
+
+* **deps:** update dependency prettier to v1.17.0 ([#170](https://github.com/christophehurpeau/pob/issues/170)) ([2c36033](https://github.com/christophehurpeau/pob/commit/2c36033))
+* update typescript project ([346ae08](https://github.com/christophehurpeau/pob/commit/346ae08))
+
+
+
+
+
 # [4.27.0](https://github.com/christophehurpeau/pob/compare/pob@4.26.0...pob@4.27.0) (2019-04-05)
 
 

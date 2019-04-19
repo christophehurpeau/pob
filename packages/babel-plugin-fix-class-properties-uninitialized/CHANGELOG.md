@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@1.3.0...babel-plugin-fix-class-properties-uninitialized@1.4.0) (2019-04-19)
+
+
+### Features
+
+* **deps:** update dependency prettier to v1.17.0 ([#170](https://github.com/christophehurpeau/pob/issues/170)) ([2c36033](https://github.com/christophehurpeau/pob/commit/2c36033))
+
+
+
+
+
 # [1.3.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@1.2.0...babel-plugin-fix-class-properties-uninitialized@1.3.0) (2019-04-05)
 
 

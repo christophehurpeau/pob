@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.22.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.21.0...babel-preset-pob-env@2.22.0) (2019-04-19)
+
+
+### Features
+
+* **deps:** update dependency prettier to v1.17.0 ([#170](https://github.com/christophehurpeau/pob/issues/170)) ([2c36033](https://github.com/christophehurpeau/pob/commit/2c36033))
+
+
+
+
+
 # [2.21.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.20.0...babel-preset-pob-env@2.21.0) (2019-04-05)
 
 

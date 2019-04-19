@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.10.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-pob-babel@0.9.0...babel-plugin-pob-babel@0.10.0) (2019-04-19)
+
+
+### Features
+
+* **deps:** update dependency prettier to v1.17.0 ([#170](https://github.com/christophehurpeau/pob/issues/170)) ([2c36033](https://github.com/christophehurpeau/pob/commit/2c36033))
+
+
+
+
+
 # [0.9.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-pob-babel@0.8.0...babel-plugin-pob-babel@0.9.0) (2019-04-05)
 
 

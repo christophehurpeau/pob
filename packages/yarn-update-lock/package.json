@@ -1,6 +1,6 @@
 {
   "name": "yarn-update-lock",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "update yarn.lock and deduplicate",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
