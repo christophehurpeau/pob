@@ -25,14 +25,14 @@ interface Dependencies {
   'jest-junit-reporter': '1.1.0';
   'lerna': '3.13.3';
   'lint-staged': '8.1.5';
-  'pob-babel': '^23.12.0';
-  'pob-lcov-reporter': '^1.1.0';
-  'pob-release': '^4.12.0';
+  'pob-babel': '^23.13.0';
+  'pob-lcov-reporter': '^1.2.0';
+  'pob-release': '^4.13.0';
   'prettier': '1.17.0';
   'repository-check-dirty': '^1.0.2';
   'typedoc': '0.14.2';
   'typescript': '3.4.4';
-  'yarn-update-lock': '^0.5.0';
+  'yarn-update-lock': '^0.6.0';
   'yarnhook': '0.4.0';
 } 
 
