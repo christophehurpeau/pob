@@ -103,7 +103,7 @@ module.exports = class LernaGenerator extends Generator {
       lint: 'lerna run --stream lint',
       preversion: [
         'yarn run lint --since',
-        withBabel && 'yarn run build --since -- --no-clean',
+        withBabel && 'yarn run build --since -- -- --no-clean',
         'repository-check-dirty',
       ]
         .filter(Boolean)
