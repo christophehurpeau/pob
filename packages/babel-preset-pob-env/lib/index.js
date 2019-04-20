@@ -177,6 +177,9 @@ module.exports = function(context, opts) {
           ],
           require.resolve('@babel/plugin-proposal-export-default-from'),
           require.resolve('@babel/plugin-proposal-export-namespace-from'),
+
+          // async import
+          require.resolve('@babel/plugin-syntax-dynamic-import'),
         ],
       },
 
