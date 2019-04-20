@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.29.1](https://github.com/christophehurpeau/pob/compare/pob@4.29.0...pob@4.29.1) (2019-04-20)
+
+
+### Bug Fixes
+
+* yarn needs two -- ([14fcf20](https://github.com/christophehurpeau/pob/commit/14fcf20))
+
+
+
+
+
 # [4.29.0](https://github.com/christophehurpeau/pob/compare/pob@4.28.0...pob@4.29.0) (2019-04-20)
 
 
