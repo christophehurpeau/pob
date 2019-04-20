@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.23.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.22.0...babel-preset-pob-env@2.23.0) (2019-04-20)
+
+
+### Features
+
+* add @babel/plugin-syntax-dynamic-import ([0f30c74](https://github.com/christophehurpeau/pob/commit/0f30c74))
+
+
+
+
+
 # [2.22.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.21.0...babel-preset-pob-env@2.22.0) (2019-04-19)
 
 

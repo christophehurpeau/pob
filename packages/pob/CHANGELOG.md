@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.29.2](https://github.com/christophehurpeau/pob/compare/pob@4.29.1...pob@4.29.2) (2019-04-20)
+
+
+### Bug Fixes
+
+* ignore tsbuildinfo ([9b26f6b](https://github.com/christophehurpeau/pob/commit/9b26f6b))
+
+
+
+
+
 ## [4.29.1](https://github.com/christophehurpeau/pob/compare/pob@4.29.0...pob@4.29.1) (2019-04-20)
 
 
