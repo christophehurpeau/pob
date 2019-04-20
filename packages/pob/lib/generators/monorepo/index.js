@@ -88,7 +88,10 @@ module.exports = class PobMonorepoGenerator extends Generator {
     });
 
     // Always add a gitignore, because npm publish uses it.
-    this.composeWith(require.resolve('../core/gitignore'), { root: true });
+    this.composeWith(require.resolve('../core/gitignore'), {
+      root: true,
+      typescript: this.pobLernaConfig.typescript,
+    });
 
     this.composeWith(require.resolve('./typescript'), {
       enable: this.pobLernaConfig.typescript,

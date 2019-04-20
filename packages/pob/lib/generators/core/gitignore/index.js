@@ -33,6 +33,13 @@ module.exports = class GitignoreGenerator extends Generator {
       defaults: '',
       desc: 'Paths ignored.',
     });
+
+    this.option('typescript', {
+      type: Boolean,
+      required: false,
+      defaults: true,
+      desc: 'Typescript use.',
+    });
   }
 
   writing() {
@@ -49,6 +56,7 @@ module.exports = class GitignoreGenerator extends Generator {
         root: this.options.root,
         documentation: this.options.documentation,
         withBabel: this.options.withBabel,
+        typescript: this.options.withBabel || this.options.typescript,
         paths: this.options.paths,
       });
     }
