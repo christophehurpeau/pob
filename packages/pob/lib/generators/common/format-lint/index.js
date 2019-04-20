@@ -5,6 +5,7 @@ const packageUtils = require('../../../utils/package');
 const ensureJsonFileFormatted = require('../../../utils/ensureJsonFileFormatted');
 const sortObject = require('../../../utils/sortObject');
 const formatJson = require('../../../utils/formatJson');
+const inLerna = require('../../../utils/inLerna');
 
 module.exports = class LintGenerator extends Generator {
   initializing() {
@@ -247,9 +248,13 @@ module.exports = class LintGenerator extends Generator {
       }
     }
 
+    const yoConfig = inLerna.rootYoConfig;
+    const composite =
+      yoConfig.pob && yoConfig.pob.monorepo && yoConfig.pob.monorepo.typescript;
+
     const srcDirectory = useBabel ? 'src' : 'lib';
     packageUtils.addScripts(pkg, {
-      lint: `${useBabel ? 'tsc && ' : ''}eslint${
+      lint: `${useBabel && !composite ? 'tsc && ' : ''}eslint${
         !useBabel ? '' : ` --ext .ts${hasReact ? ',.tsx' : ''}`
       } --quiet ${srcDirectory}/`,
     });

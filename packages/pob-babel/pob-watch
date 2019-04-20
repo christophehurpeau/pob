@@ -2,5 +2,4 @@
 
 rm -fR ./dist/*
 
-
 `node -e 'console.log(require.resolve("rollup/bin/rollup"))'` --watch --config `node -e 'console.log(require.resolve("pob-babel/rollup.config.js"))'`
