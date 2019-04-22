@@ -248,9 +248,12 @@ module.exports = class LintGenerator extends Generator {
       }
     }
 
-    const yoConfig = inLerna.rootYoConfig;
+    const yoConfig = inLerna && inLerna.rootYoConfig;
     const composite =
-      yoConfig.pob && yoConfig.pob.monorepo && yoConfig.pob.monorepo.typescript;
+      yoConfig &&
+      yoConfig.pob &&
+      yoConfig.pob.monorepo &&
+      yoConfig.pob.monorepo.typescript;
 
     const srcDirectory = useBabel ? 'src' : 'lib';
     packageUtils.addScripts(pkg, {
