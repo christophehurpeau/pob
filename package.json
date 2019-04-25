@@ -39,7 +39,7 @@
     "@commitlint/cli": "7.5.2",
     "@commitlint/config-conventional": "7.5.0",
     "husky": "2.1.0",
-    "lerna": "3.13.3",
+    "lerna": "3.13.4",
     "lint-staged": "8.1.5",
     "repository-check-dirty": "./packages/repository-check-dirty",
     "yarn-update-lock": "./packages/yarn-update-lock",
