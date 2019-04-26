@@ -20,12 +20,12 @@ interface Dependencies {
   'babel-preset-latest-node': '3.1.1';
   'babel-preset-modern-browsers': '14.0.0';
   'eslint': '5.16.0';
-  'husky': '1.3.1';
+  'husky': '2.1.0';
   'jest': '24.7.1';
   'jest-junit-reporter': '1.1.0';
-  'lerna': '3.13.3';
+  'lerna': '3.13.4';
   'lint-staged': '8.1.5';
-  'pob-babel': '^23.14.0';
+  'pob-babel': '^23.14.1';
   'pob-lcov-reporter': '^1.2.0';
   'pob-release': '^4.13.0';
   'prettier': '1.17.0';

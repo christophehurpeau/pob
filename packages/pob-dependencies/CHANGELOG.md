@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.21.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.20.2...pob-dependencies@0.21.0) (2019-04-26)
+
+
+### Features
+
+* **deps:** update dependency husky to v2 ([#185](https://github.com/christophehurpeau/pob/issues/185)) ([6f104dd](https://github.com/christophehurpeau/pob/commit/6f104dd))
+* **deps:** update dependency husky to v2.1.0 ([#186](https://github.com/christophehurpeau/pob/issues/186)) ([bea354b](https://github.com/christophehurpeau/pob/commit/bea354b))
+* **deps:** update dependency lerna to v3.13.4 ([#187](https://github.com/christophehurpeau/pob/issues/187)) ([1e9ded2](https://github.com/christophehurpeau/pob/commit/1e9ded2))
+
+
+
+
+
 ## [0.20.2](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.20.1...pob-dependencies@0.20.2) (2019-04-20)
 
 **Note:** Version bump only for package pob-dependencies

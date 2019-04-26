@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.1.0...@pob/renovate-config@1.2.0) (2019-04-26)
+
+
+### Features
+
+* group [@pob](https://github.com/pob) eslint configs in renovate ([6adb2e4](https://github.com/christophehurpeau/pob/commit/6adb2e4))
+
+
+
+
+
 # [1.1.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.0.0...@pob/renovate-config@1.1.0) (2019-04-19)
 
 
