@@ -57,6 +57,10 @@
             "yarnhook"
           ],
           "schedule": ["before 3am on Friday"]
+        },
+        {
+          "description": "@pob eslint configs",
+          "packagePatterns": ["^@pob/eslint-config"]
         }
       ]
     }
