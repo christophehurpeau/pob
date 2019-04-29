@@ -1752,12 +1752,12 @@
     universal-user-agent "^2.0.0"
     url-template "^2.0.8"
 
-"@pob/eslint-config-babel-node@29.1.1":
-  version "29.1.1"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel-node/-/eslint-config-babel-node-29.1.1.tgz#3219468a809414696dd89c678d581f42a3ee7091"
-  integrity sha512-shDYaxaCgAtvm8vFYvEs7mFQlOt3Qre+zESKOWWzSA4FFwFb28OWlGTIbUo8r+5bmFimwPX+91W9RrBjvdhUTQ==
+"@pob/eslint-config-babel-node@31.0.0":
+  version "31.0.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel-node/-/eslint-config-babel-node-31.0.0.tgz#e69a395c0cca5f0568167378dd851bfd648669cf"
+  integrity sha512-0gEH4rFJciSHrEuIxR26Litpopcm72tY7CFgRZeQ2IUMSZW6zCS8GogQ+YE8YpwI4eEu4J4nm4Il9mfz0rBSYA==
   dependencies:
-    "@pob/eslint-config-node" "^29.1.1"
+    "@pob/eslint-config-node" "^31.0.0"
 
 "@pob/eslint-config-babel@29.2.0":
   version "29.2.0"
@@ -1769,10 +1769,17 @@
     eslint-config-airbnb-base "^13.1.0"
     eslint-plugin-prefer-class-properties "^1.0.0"
 
-"@pob/eslint-config-node@29.1.1", "@pob/eslint-config-node@^29.1.1":
+"@pob/eslint-config-node@29.1.1":
   version "29.1.1"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config-node/-/eslint-config-node-29.1.1.tgz#4ccfba417153e69dca7e099e6f0c88b986db1f02"
   integrity sha512-9WsvQFvB4oSP3DUGR8nxERCUBN1v6dB9JnarkDjvLVT7li9BcoU9bBlWVgZKIyM7o6hsi8Ycdp6p1o4+eUZ7rw==
+  dependencies:
+    eslint-plugin-node "^8.0.1"
+
+"@pob/eslint-config-node@^31.0.0":
+  version "31.0.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-node/-/eslint-config-node-31.0.0.tgz#3ff1365c98e65c9f5f35b2a337238d2cbc349c63"
+  integrity sha512-/CgeP/gXRlpqTrqpvHpOFs87XgKd9WDExB+ckeHj5Mj6/abMKd6RTRhB5KmD/J4ZumCVJkMaUx2keDYXuymLig==
   dependencies:
     eslint-plugin-node "^8.0.1"
 
