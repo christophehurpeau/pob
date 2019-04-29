@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.15.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.14.1...pob-babel@23.15.0) (2019-04-29)
+
+
+### Features
+
+* support import css and scss, ignored for node ([f2496d1](https://github.com/christophehurpeau/pob/commit/f2496d1))
+
+
+
+
+
 ## [23.14.1](https://github.com/christophehurpeau/pob/compare/pob-babel@23.14.0...pob-babel@23.14.1) (2019-04-20)
 
 **Note:** Version bump only for package pob-babel

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/christophehurpeau/pob/compare/rollup-config-external-dependencies@0.2.1...rollup-config-external-dependencies@0.3.0) (2019-04-29)
+
+
+### Features
+
+* support multiple package.json ([bb049c5](https://github.com/christophehurpeau/pob/commit/bb049c5))
+
+
+
+
+
 ## [0.2.1](https://github.com/christophehurpeau/pob/compare/rollup-config-external-dependencies@0.2.0...rollup-config-external-dependencies@0.2.1) (2019-04-05)
 
 
