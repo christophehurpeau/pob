@@ -5,6 +5,7 @@
 const readFileSync = require('fs').readFileSync;
 const babel = require('rollup-plugin-babel');
 const resolve = require('rollup-plugin-node-resolve');
+const ignoreImport = require('rollup-plugin-ignore-import');
 const configExternalDependencies = require('rollup-config-external-dependencies');
 
 const cwd = process.cwd();
@@ -52,7 +53,8 @@ if (hasReact) {
 }
 /* eslint-enable node/no-deprecated-api */
 
-const external = configExternalDependencies(pkg);
+const externalByPackageJson = configExternalDependencies(pkg);
+const browserOnlyExtensions = ['.scss', '.css'];
 
 const createConfigForEnv = (entry, env, production) => {
   const devSuffix = production ? '' : '-dev';
@@ -84,8 +86,20 @@ const createConfigForEnv = (entry, env, production) => {
       exports: 'named',
       preferConst: !(env.target === 'browser' && env.version !== 'modern'),
     })),
-    external,
+    external:
+      env.target === 'browser'
+        ? (path) => {
+            if (browserOnlyExtensions.find((ext) => path.endsWith(ext))) {
+              return true;
+            }
+            return externalByPackageJson(path);
+          }
+        : externalByPackageJson,
     plugins: [
+      env.target !== 'browser' &&
+        ignoreImport({
+          extensions: browserOnlyExtensions,
+        }),
       babel({
         extensions,
         babelrc: false,
@@ -138,7 +152,7 @@ const createConfigForEnv = (entry, env, production) => {
           moduleDirectory: [], // don't resolve node_modules
         },
       }),
-    ],
+    ].filter(Boolean),
   };
 };
 
