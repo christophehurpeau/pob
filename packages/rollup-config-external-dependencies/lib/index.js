@@ -7,11 +7,15 @@ const nodeBuiltinModules = Object.keys(process.binding('natives')).filter(
   x => !x.startsWith('internal/')
 );
 
-module.exports = pkg => {
+module.exports = (pkgs) => {
+  if (!Array.isArray(pkgs)) pkgs = [pkgs];
+
   const externalModules = nodeBuiltinModules
-    .concat(Object.keys(pkg.dependencies || {}))
-    .concat(Object.keys(pkg.peerDependencies || {}))
-    .concat(Object.keys(pkg.devPeerDependencies || {}));
+    .concat.apply(nodeBuiltinModules,pkgs.map(pkg => [].concat(
+      Object.keys(pkg.dependencies || {}),
+      Object.keys(pkg.peerDependencies || {}),
+      Object.keys(pkg.devPeerDependencies || {})
+    )));
 
 
   return path => {
