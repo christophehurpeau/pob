@@ -156,6 +156,9 @@ module.exports = class LintGenerator extends Generator {
         // webstorm uses this to detect eslint .ts compat
         eslintConfig.parser = '@typescript-eslint/parser';
         eslintConfig.plugins = ['@typescript-eslint'];
+        eslintConfig.parserOptions = {
+          project: './tsconfig.json',
+        };
       }
       this.fs.writeJSON(eslintrcPath, eslintConfig);
     } else {
@@ -174,12 +177,21 @@ module.exports = class LintGenerator extends Generator {
           // webstorm uses this to detect eslint .ts compat
           eslintConfig.parser = '@typescript-eslint/parser';
           eslintConfig.plugins = ['@typescript-eslint'];
+          eslintConfig.parserOptions = {
+            project: './tsconfig.json',
+          };
         } else {
           if (
             eslintConfig.parser === 'typescript-eslint-parser' ||
             eslintConfig.parser === '@typescript-eslint/parser'
           ) {
             delete eslintConfig.parser;
+          }
+          if (
+            eslintConfig.parserOptions &&
+            eslintConfig.parserOptions.project
+          ) {
+            delete eslintConfig.parserOptions;
           }
           if (
             eslintConfig.plugins &&
