@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.30.0](https://github.com/christophehurpeau/pob/compare/pob@4.29.4...pob@4.30.0) (2019-05-01)
+
+
+### Features
+
+* add parserOptions for typescript eslint plugin ([ac959e4](https://github.com/christophehurpeau/pob/commit/ac959e4))
+* update node 11 in circleci template ([2baf095](https://github.com/christophehurpeau/pob/commit/2baf095))
+* update node 8 in circleci template ([ea8acaa](https://github.com/christophehurpeau/pob/commit/ea8acaa))
+
+
+
+
+
 ## [4.29.4](https://github.com/christophehurpeau/pob/compare/pob@4.29.3...pob@4.29.4) (2019-04-29)
 
 **Note:** Version bump only for package pob

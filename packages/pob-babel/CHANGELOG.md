@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.16.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.15.0...pob-babel@23.16.0) (2019-05-01)
+
+
+### Features
+
+* support multiple entries with special case for index+browser ([80f0556](https://github.com/christophehurpeau/pob/commit/80f0556))
+
+
+
+
+
 # [23.15.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.14.1...pob-babel@23.15.0) (2019-04-29)
 
 

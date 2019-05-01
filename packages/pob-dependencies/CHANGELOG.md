@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.22.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.21.1...pob-dependencies@0.22.0) (2019-05-01)
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.4.4 ([#195](https://github.com/christophehurpeau/pob/issues/195)) ([9a66681](https://github.com/christophehurpeau/pob/commit/9a66681))
+* **deps:** update dependency @pob/eslint-config-babel to v31 ([#190](https://github.com/christophehurpeau/pob/issues/190)) ([c1ff0e0](https://github.com/christophehurpeau/pob/commit/c1ff0e0))
+* **deps:** update dependency @pob/eslint-config-babel-node to v31 ([#191](https://github.com/christophehurpeau/pob/issues/191)) ([59ceee4](https://github.com/christophehurpeau/pob/commit/59ceee4))
+* **deps:** update dependency @pob/eslint-config-react to v31 ([#192](https://github.com/christophehurpeau/pob/issues/192)) ([9a6e782](https://github.com/christophehurpeau/pob/commit/9a6e782))
+* **deps:** update dependency @pob/eslint-config-typescript to v31 ([#193](https://github.com/christophehurpeau/pob/issues/193)) ([30385d4](https://github.com/christophehurpeau/pob/commit/30385d4))
+* **deps:** update dependency @pob/eslint-config-typescript-react to v31 ([#194](https://github.com/christophehurpeau/pob/issues/194)) ([62c9761](https://github.com/christophehurpeau/pob/commit/62c9761))
+* **deps:** update dependency @types/jest to v24.0.12 ([#196](https://github.com/christophehurpeau/pob/issues/196)) ([280db96](https://github.com/christophehurpeau/pob/commit/280db96))
+* **deps:** update dependency typescript to v3.4.5 ([#184](https://github.com/christophehurpeau/pob/issues/184)) ([88e0fcf](https://github.com/christophehurpeau/pob/commit/88e0fcf))
+* **deps:** update typescript-eslint monorepo to v1.7.0 ([#182](https://github.com/christophehurpeau/pob/issues/182)) ([fc496e2](https://github.com/christophehurpeau/pob/commit/fc496e2))
+
+
+
+
+
 ## [0.21.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.21.0...pob-dependencies@0.21.1) (2019-04-29)
 
 **Note:** Version bump only for package pob-dependencies

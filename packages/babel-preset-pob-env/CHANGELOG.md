@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.24.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.23.0...babel-preset-pob-env@2.24.0) (2019-05-01)
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.4.4 ([#195](https://github.com/christophehurpeau/pob/issues/195)) ([9a66681](https://github.com/christophehurpeau/pob/commit/9a66681))
+
+
+
+
+
 # [2.23.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.22.0...babel-preset-pob-env@2.23.0) (2019-04-20)
 
 
