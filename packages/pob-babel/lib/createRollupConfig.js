@@ -21,9 +21,7 @@ const hasReact = Boolean(
 );
 
 const isIndexBrowserEntry =
-  pobConfig.entries.length === 2 &&
-  pobConfig.entries[0] === 'index' &&
-  pobConfig.entries[1] === 'browser';
+  pobConfig.entries[0] === 'index' && pobConfig.entries[1] === 'browser';
 const entries = isIndexBrowserEntry
   ? ['index', ...pobConfig.entries.slice(2)]
   : pobConfig.entries;
