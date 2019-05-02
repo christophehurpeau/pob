@@ -20,9 +20,7 @@
         "pob-lcov-reporter",
         "pob-release",
         "renovate-config",
-        "repository-check-dirty",
-        "rollup-config-external-dependencies",
-        "yarn-update-lock"
+        "repository-check-dirty"
       ],
       "typescript": false
     },
