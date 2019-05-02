@@ -93,7 +93,12 @@ module.exports = class GitHooksGenerator extends Generator {
     const ext = useTypescript ? 'ts' : 'js';
 
     pkg['lint-staged'] = {
-      'yarn.lock': ['yarn-update-lock', 'git add'],
+      'yarn.lock': [
+        pkg.name === 'yarn-update-lock'
+          ? './lib/yarn-update-lock.sh'
+          : 'yarn-update-lock',
+        'git add',
+      ],
       // [`{README.md,package.json${inLerna ? ',packages/*/package.json,packages/*/README.md,' : ''},.eslintrc.json}`]: [
       [`{package.json${
         pkg.workspaces

@@ -32,6 +32,7 @@ module.exports = class GitGenerator extends Generator {
     this.originUrl = originUrl;
     const match =
       originUrl &&
+      typeof originUrl === 'string' &&
       originUrl.match(
         // eslint-disable-next-line unicorn/no-unsafe-regex
         /^(?:git@|https?:\/\/)(?:([^:/.]+)(?:\.com)?:)?([^:/]+)\/([^:/.]+)(?:.git)?/

@@ -26,6 +26,12 @@ module.exports = class TypescriptGenerator extends Generator {
       defaults: '',
       desc: 'baseUrl option',
     });
+
+    this.option('builddefs', {
+      type: Boolean,
+      defaults: true,
+      desc: 'build .d.ts option',
+    });
   }
 
   writing() {
@@ -78,11 +84,15 @@ module.exports = class TypescriptGenerator extends Generator {
         withReact,
         baseUrl: this.options.baseUrl,
       });
-      this.fs.copyTpl(
-        this.templatePath('tsconfig.build.json.ejs'),
-        tsconfigBuildPath,
-        { withReact }
-      );
+      if (this.options.builddefs) {
+        this.fs.copyTpl(
+          this.templatePath('tsconfig.build.json.ejs'),
+          tsconfigBuildPath,
+          { withReact }
+        );
+      } else {
+        this.fs.delete(tsconfigBuildPath);
+      }
     } else {
       this.fs.delete(tsconfigPath);
       this.fs.delete(tsconfigBuildPath);

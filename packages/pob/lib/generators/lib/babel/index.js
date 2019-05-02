@@ -108,12 +108,12 @@ module.exports = class BabelGenerator extends Generator {
         'tsc --lib esnext --noEmit ./lib/index.d.ts';
     }
 
-    if (inLerna) {
-      if (pkg.scripts) {
+    if (pkg.scripts) {
+      if (inLerna || !pkg.scripts['build:definitions']) {
         delete pkg.scripts.postbuild;
+      } else if (pkg.scripts['build:definitions']) {
+        pkg.scripts.postbuild = pkg.scripts['build:definitions'];
       }
-    } else {
-      pkg.scripts.postbuild = pkg.scripts['build:definitions'];
     }
 
     if (pkg.scripts) {

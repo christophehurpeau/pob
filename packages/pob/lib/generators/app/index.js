@@ -65,6 +65,7 @@ module.exports = class PobAppGenerator extends Generator {
 
     this.composeWith(require.resolve('../common/typescript'), {
       enable: babelEnvs.length !== 0,
+      builddefs: false,
       withReact,
       updateOnly: this.options.updateOnly,
       baseUrl:
