@@ -112,7 +112,7 @@ const generator = env.run('pob:generator', options, (err) => {
   }
 });
 
-generator.on('error', (err) => {
-  console.error(err.stack || err.message || err);
-  process.exit(1);
-});
+// generator.on('error', (err) => {
+//   console.error(err.stack || err.message || err);
+//   process.exit(1);
+// });
