@@ -1482,7 +1482,7 @@
     tar "^4.4.8"
     temp-write "^3.4.0"
 
-"@lerna/package-graph@3.13.0":
+"@lerna/package-graph@3.13.0", "@lerna/package-graph@^3.13.0":
   version "3.13.0"
   resolved "https://registry.yarnpkg.com/@lerna/package-graph/-/package-graph-3.13.0.tgz#607062f8d2ce22b15f8d4a0623f384736e67f760"
   integrity sha512-3mRF1zuqFE1HEFmMMAIggXy+f+9cvHhW/jzaPEVyrPNLKsyfJQtpTNzeI04nfRvbAh+Gd2aNksvaW/w3xGJnnw==
@@ -1500,7 +1500,7 @@
     npm-package-arg "^6.1.0"
     write-pkg "^3.1.0"
 
-"@lerna/project@3.13.1":
+"@lerna/project@3.13.1", "@lerna/project@^3.13.1":
   version "3.13.1"
   resolved "https://registry.yarnpkg.com/@lerna/project/-/project-3.13.1.tgz#bce890f60187bd950bcf36c04b5260642e295e79"
   integrity sha512-/GoCrpsCCTyb9sizk1+pMBrIYchtb+F1uCOn3cjn9yenyG/MfYEnlfrbV5k/UDud0Ei75YBLbmwCbigHkAKazQ==

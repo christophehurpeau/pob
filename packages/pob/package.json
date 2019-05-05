@@ -31,6 +31,8 @@
     "arrowParens": "always"
   },
   "dependencies": {
+    "@lerna/package-graph": "^3.13.0",
+    "@lerna/project": "^3.13.1",
     "findup-sync": "^3.0.0",
     "generator-license": "^5.2.0",
     "gh-got": "^8.1.0",

@@ -1,7 +1,8 @@
 'use strict';
 
-const { readdirSync, existsSync } = require('fs');
 const Generator = require('yeoman-generator');
+const LernaProject = require('@lerna/project');
+const PackageGraph = require('@lerna/package-graph');
 
 module.exports = class PobMonorepoGenerator extends Generator {
   constructor(args, opts) {
@@ -15,16 +16,36 @@ module.exports = class PobMonorepoGenerator extends Generator {
     });
   }
 
-  initializing() {
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
-    const packagesPath = pkg.workspaces
-      ? pkg.workspaces[0].replace(/\/\*$/, '')
-      : 'packages';
-    this.packageNames = existsSync(`${packagesPath}/`)
-      ? readdirSync(`${packagesPath}/`).filter((packageName) =>
-          existsSync(`${packagesPath}/${packageName}/package.json`)
-        )
-      : [];
+  async initializing() {
+    this.lernaProject = new LernaProject(this.destinationPath());
+    this.packages = await this.lernaProject.getPackages();
+    const graph = new PackageGraph(this.packages);
+    const [cyclePaths] = graph.partitionCycles();
+
+    if (cyclePaths.size) {
+      const cycleMessage = ['Dependency cycles detected, you should fix these!']
+        .concat([...cyclePaths].map((cycle) => cycle.join(' -> ')))
+        .join('\n');
+
+      console.warn(cycleMessage);
+    }
+
+    const packages = [];
+
+    while (graph.size) {
+      // pick the current set of nodes _without_ localDependencies (aka it is a "source" node)
+      const batch = [...graph.values()].filter(
+        (node) => node.localDependencies.size === 0
+      );
+
+      // batches are composed of Package instances, not PackageGraphNodes
+      packages.push(...batch.map((node) => node.pkg));
+
+      // pruning the graph changes the node.localDependencies.size test
+      graph.prune(...batch);
+    }
+
+    this.packageNames = packages.map((pkg) => pkg.name);
   }
 
   async prompting() {
@@ -95,7 +116,7 @@ module.exports = class PobMonorepoGenerator extends Generator {
 
     this.composeWith(require.resolve('./typescript'), {
       enable: this.pobLernaConfig.typescript,
-      packageNames: JSON.stringify(this.packageNames),
+      packageNames: JSON.stringify(this.pobLernaConfig.packageNames),
     });
   }
 
