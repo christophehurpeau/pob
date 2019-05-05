@@ -11,7 +11,8 @@
       ],
       "documentation": false,
       "testing": false,
-      "envs": []
+      "envs": [],
+      "withReact": false
     }
   },
   "babel-plugin-fix-class-properties-uninitialized": {

@@ -23,6 +23,4 @@ This repository is a monorepo that we manage using [Lerna](https://github.com/le
 | [pob-release](packages/pob-release) | <a href="https://npmjs.org/package/pob-release"><img src="https://img.shields.io/npm/v/pob-release.svg?style=flat-square"></a>  | release with ease
 | [@pob/renovate-config](packages/@pob/renovate-config) | <a href="https://npmjs.org/package/@pob/renovate-config"><img src="https://img.shields.io/npm/v/@pob/renovate-config.svg?style=flat-square"></a>  | renovate pob config
 | [repository-check-dirty](packages/repository-check-dirty) | <a href="https://npmjs.org/package/repository-check-dirty"><img src="https://img.shields.io/npm/v/repository-check-dirty.svg?style=flat-square"></a>  | check that a git repository is not dirty
-| [rollup-config-external-dependencies](packages/rollup-config-external-dependencies) | <a href="https://npmjs.org/package/rollup-config-external-dependencies"><img src="https://img.shields.io/npm/v/rollup-config-external-dependencies.svg?style=flat-square"></a>  | rollup config external dependencies
-| [yarn-update-lock](packages/yarn-update-lock) | <a href="https://npmjs.org/package/yarn-update-lock"><img src="https://img.shields.io/npm/v/yarn-update-lock.svg?style=flat-square"></a>  | update yarn.lock and deduplicate
 
