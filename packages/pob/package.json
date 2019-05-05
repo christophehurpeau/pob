@@ -48,7 +48,7 @@
     "semver": "^6.0.0",
     "update-notifier": "^2.5.0",
     "yeoman-environment": "^2.3.4",
-    "yeoman-generator": "^2.0.5"
+    "yeoman-generator": "^3.0.0"
   },
   "devDependencies": {
     "@pob/eslint-config": "31.0.0",
@@ -56,6 +56,6 @@
     "eslint": "5.16.0"
   },
   "resolutions": {
-    "yeoman-generator": "^2.0.3"
+    "yeoman-generator": "^3.0.0"
   }
 }
