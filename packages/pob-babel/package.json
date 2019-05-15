@@ -42,7 +42,7 @@
     "rollup-config-external-dependencies": "^1.0.0",
     "rollup-plugin-babel": "^5.0.0-alpha.0",
     "rollup-plugin-ignore-import": "^1.1.1",
-    "rollup-plugin-node-resolve": "^4.1.0"
+    "rollup-plugin-node-resolve": "^5.0.0"
   },
   "devDependencies": {
     "@pob/eslint-config": "31.0.0",
