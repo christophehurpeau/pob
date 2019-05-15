@@ -40,7 +40,7 @@
     "@commitlint/config-conventional": "7.5.0",
     "husky": "2.2.0",
     "lerna": "3.13.4",
-    "lint-staged": "8.1.6",
+    "lint-staged": "8.1.7",
     "repository-check-dirty": "./packages/repository-check-dirty",
     "yarn-update-lock": "1.0.0",
     "yarnhook": "0.4.0"
