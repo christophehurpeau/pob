@@ -108,11 +108,17 @@ module.exports = class PobMonorepoGenerator extends Generator {
       updateOnly: this.options.updateOnly,
     });
 
+    this.composeWith(require.resolve('../common/husky'), {
+      babelEnvs: [],
+    });
+
     // Always add a gitignore, because npm publish uses it.
     this.composeWith(require.resolve('../core/gitignore'), {
       root: true,
       typescript: this.pobLernaConfig.typescript,
     });
+
+    this.composeWith(require.resolve('../common/old-dependencies'));
 
     this.composeWith(require.resolve('./typescript'), {
       enable: this.pobLernaConfig.typescript,
