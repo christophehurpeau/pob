@@ -57,7 +57,7 @@
     "prettier": "1.17.1",
     "repository-check-dirty": "^1.0.2",
     "typedoc": "0.14.2",
-    "typescript": "3.4.5",
+    "typescript": "3.5.1",
     "yarn-update-lock": "1.0.0",
     "yarnhook": "0.4.0"
   }
