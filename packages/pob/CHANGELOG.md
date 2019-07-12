@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.32.0](https://github.com/christophehurpeau/pob/compare/pob@4.31.0...pob@4.32.0) (2019-07-12)
+
+
+### Bug Fixes
+
+* typescript config build when not composite ([2ad691e](https://github.com/christophehurpeau/pob/commit/2ad691e))
+
+
+### Features
+
+* add @pob/version for future use ([3b74e5b](https://github.com/christophehurpeau/pob/commit/3b74e5b))
+
+
+
+
+
 # [4.31.0](https://github.com/christophehurpeau/pob/compare/pob@4.30.0...pob@4.31.0) (2019-07-12)
 
 
