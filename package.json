@@ -8,9 +8,6 @@
   "repository": "https://github.com:christophehurpeau/pob.git",
   "homepage": "https://github.com/christophehurpeau/pob",
   "workspaces": ["packages/*"],
-  "publishConfig": {
-    "access": "public"
-  },
   "scripts": {
     "lint": "lerna run --stream lint",
     "preversion": "yarn run lint --since && repository-check-dirty && node ./packages/pob-version/generate-index.js && git add ./packages/pob-version/lib/index.js",
