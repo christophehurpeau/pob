@@ -1,10 +1,10 @@
 
 interface Dependencies {
-  '@babel/core': '7.4.4';
-  '@babel/preset-env': '7.4.4';
+  '@babel/core': '7.5.4';
+  '@babel/preset-env': '7.5.4';
   '@babel/preset-react': '7.0.0';
-  '@commitlint/cli': '7.5.2';
-  '@commitlint/config-conventional': '7.5.0';
+  '@commitlint/cli': '8.0.0';
+  '@commitlint/config-conventional': '8.0.0';
   '@pob/eslint-config': '31.0.0';
   '@pob/eslint-config-babel': '31.0.0';
   '@pob/eslint-config-babel-node': '31.0.0';
@@ -12,28 +12,28 @@ interface Dependencies {
   '@pob/eslint-config-react': '31.0.0';
   '@pob/eslint-config-typescript': '31.1.0';
   '@pob/eslint-config-typescript-react': '31.0.0';
-  '@types/jest': '24.0.12';
-  '@typescript-eslint/eslint-plugin': '1.7.0';
-  '@typescript-eslint/parser': '1.7.0';
-  'babel-eslint': '10.0.1';
-  'babel-jest': '24.7.1';
-  'babel-preset-latest-node': '3.1.1';
+  '@types/jest': '24.0.15';
+  '@typescript-eslint/eslint-plugin': '1.10.2';
+  '@typescript-eslint/parser': '1.10.2';
+  'babel-eslint': '10.0.2';
+  'babel-jest': '24.8.0';
+  'babel-preset-latest-node': '3.2.1';
   'babel-preset-modern-browsers': '14.0.0';
   'eslint': '5.16.0';
-  'husky': '2.1.0';
-  'jest': '24.7.1';
+  'husky': '3.0.0';
+  'jest': '24.8.0';
   'jest-junit-reporter': '1.1.0';
-  'lerna': '3.13.4';
-  'lint-staged': '8.1.5';
-  'pob-babel': '^23.15.0';
+  'lerna': '3.15.0';
+  'lint-staged': '9.2.0';
+  'pob-babel': '^23.16.0';
   'pob-lcov-reporter': '^1.2.0';
-  'pob-release': '^4.13.0';
-  'prettier': '1.17.0';
+  'pob-release': '^4.13.1';
+  'prettier': '1.18.2';
   'repository-check-dirty': '^1.0.2';
   'typedoc': '0.14.2';
-  'typescript': '3.4.5';
-  'yarn-update-lock': '^0.6.0';
-  'yarnhook': '0.4.0';
+  'typescript': '3.5.3';
+  'yarn-update-lock': '1.0.0';
+  'yarnhook': '0.4.1';
 } 
 
 export = dependencies;

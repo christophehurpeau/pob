@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.31.0](https://github.com/christophehurpeau/pob/compare/pob@4.30.0...pob@4.31.0) (2019-07-12)
+
+
+### Bug Fixes
+
+* eslint issues ([651d057](https://github.com/christophehurpeau/pob/commit/651d057))
+* **deps:** update dependency update-notifier to v3 ([#209](https://github.com/christophehurpeau/pob/issues/209)) ([88cf2f8](https://github.com/christophehurpeau/pob/commit/88cf2f8))
+* **deps:** update dependency yeoman-generator to v4 ([#206](https://github.com/christophehurpeau/pob/issues/206)) ([f563841](https://github.com/christophehurpeau/pob/commit/f563841))
+* lerna package sort ([5632342](https://github.com/christophehurpeau/pob/commit/5632342))
+* missing husky + old-deps in monorepo ([a349c52](https://github.com/christophehurpeau/pob/commit/a349c52))
+* on doesnt exists ([52eaf76](https://github.com/christophehurpeau/pob/commit/52eaf76))
+* **deps:** update dependency yeoman-generator to v3 ([#9](https://github.com/christophehurpeau/pob/issues/9)) ([44d34a1](https://github.com/christophehurpeau/pob/commit/44d34a1))
+* some issues in generators ([23372c9](https://github.com/christophehurpeau/pob/commit/23372c9))
+
+
+### Features
+
+* faster jest tests when node only ([7dcd56f](https://github.com/christophehurpeau/pob/commit/7dcd56f))
+* update node versions in circleci template ([ceb6ddf](https://github.com/christophehurpeau/pob/commit/ceb6ddf))
+* update to node 12.6 ([4336e8a](https://github.com/christophehurpeau/pob/commit/4336e8a))
+* use new lerna option create-release=github ([e61e9b7](https://github.com/christophehurpeau/pob/commit/e61e9b7))
+
+
+
+
+
 # [4.30.0](https://github.com/christophehurpeau/pob/compare/pob@4.29.4...pob@4.30.0) (2019-05-01)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.16.1](https://github.com/christophehurpeau/pob/compare/pob-babel@23.16.0...pob-babel@23.16.1) (2019-07-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency rollup-plugin-node-resolve to v5 ([#216](https://github.com/christophehurpeau/pob/issues/216)) ([36eb7f6](https://github.com/christophehurpeau/pob/commit/36eb7f6))
+
+
+
+
+
 # [23.16.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.15.0...pob-babel@23.16.0) (2019-05-01)
 
 

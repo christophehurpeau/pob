@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.23.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.22.0...pob-dependencies@0.23.0) (2019-07-12)
+
+
+### Features
+
+* **deps:** pin dependency yarn-update-lock to 1.0.0 ([#198](https://github.com/christophehurpeau/pob/issues/198)) ([796bcad](https://github.com/christophehurpeau/pob/commit/796bcad))
+* **deps:** update babel monorepo to v7.4.5 ([#218](https://github.com/christophehurpeau/pob/issues/218)) ([53a34e1](https://github.com/christophehurpeau/pob/commit/53a34e1))
+* **deps:** update babel monorepo to v7.5.4 ([#241](https://github.com/christophehurpeau/pob/issues/241)) ([30b0160](https://github.com/christophehurpeau/pob/commit/30b0160))
+* **deps:** update commitlint monorepo ([#205](https://github.com/christophehurpeau/pob/issues/205)) ([e02d26a](https://github.com/christophehurpeau/pob/commit/e02d26a))
+* **deps:** update commitlint monorepo to v8 (major) ([#222](https://github.com/christophehurpeau/pob/issues/222)) ([6275e2f](https://github.com/christophehurpeau/pob/commit/6275e2f))
+* **deps:** update dependency @types/jest to v24.0.13 ([#212](https://github.com/christophehurpeau/pob/issues/212)) ([dadb8f6](https://github.com/christophehurpeau/pob/commit/dadb8f6))
+* **deps:** update dependency @types/jest to v24.0.15 ([#231](https://github.com/christophehurpeau/pob/issues/231)) ([fb9ce77](https://github.com/christophehurpeau/pob/commit/fb9ce77))
+* **deps:** update dependency babel-eslint to v10.0.2 ([#234](https://github.com/christophehurpeau/pob/issues/234)) ([f200518](https://github.com/christophehurpeau/pob/commit/f200518))
+* **deps:** update dependency babel-preset-latest-node to v3.2.1 ([#208](https://github.com/christophehurpeau/pob/issues/208)) ([ba97082](https://github.com/christophehurpeau/pob/commit/ba97082))
+* **deps:** update dependency husky to v2.2.0 ([#197](https://github.com/christophehurpeau/pob/issues/197)) ([b5f4639](https://github.com/christophehurpeau/pob/commit/b5f4639))
+* **deps:** update dependency husky to v2.3.0 ([#213](https://github.com/christophehurpeau/pob/issues/213)) ([5631855](https://github.com/christophehurpeau/pob/commit/5631855))
+* **deps:** update dependency husky to v2.4.0 ([#224](https://github.com/christophehurpeau/pob/issues/224)) ([1b9484b](https://github.com/christophehurpeau/pob/commit/1b9484b))
+* **deps:** update dependency husky to v2.5.0 ([#230](https://github.com/christophehurpeau/pob/issues/230)) ([563ace7](https://github.com/christophehurpeau/pob/commit/563ace7))
+* **deps:** update dependency husky to v2.7.0 ([#237](https://github.com/christophehurpeau/pob/issues/237)) ([1e4709a](https://github.com/christophehurpeau/pob/commit/1e4709a))
+* **deps:** update dependency husky to v3 ([#240](https://github.com/christophehurpeau/pob/issues/240)) ([0818274](https://github.com/christophehurpeau/pob/commit/0818274))
+* **deps:** update dependency lerna to v3.14.0 ([#214](https://github.com/christophehurpeau/pob/issues/214)) ([f14a2eb](https://github.com/christophehurpeau/pob/commit/f14a2eb))
+* **deps:** update dependency lerna to v3.14.1 ([#217](https://github.com/christophehurpeau/pob/issues/217)) ([8686676](https://github.com/christophehurpeau/pob/commit/8686676))
+* **deps:** update dependency lerna to v3.15.0 ([#228](https://github.com/christophehurpeau/pob/issues/228)) ([7dabbde](https://github.com/christophehurpeau/pob/commit/7dabbde))
+* **deps:** update dependency lint-staged to v8.1.6 ([#199](https://github.com/christophehurpeau/pob/issues/199)) ([41c916b](https://github.com/christophehurpeau/pob/commit/41c916b))
+* **deps:** update dependency lint-staged to v8.1.7 ([#215](https://github.com/christophehurpeau/pob/issues/215)) ([d50f70a](https://github.com/christophehurpeau/pob/commit/d50f70a))
+* **deps:** update dependency lint-staged to v8.2.0 ([#225](https://github.com/christophehurpeau/pob/issues/225)) ([5e83780](https://github.com/christophehurpeau/pob/commit/5e83780))
+* **deps:** update dependency lint-staged to v8.2.1 ([#233](https://github.com/christophehurpeau/pob/issues/233)) ([6c4e76d](https://github.com/christophehurpeau/pob/commit/6c4e76d))
+* **deps:** update dependency lint-staged to v9 ([#239](https://github.com/christophehurpeau/pob/issues/239)) ([fdd83d9](https://github.com/christophehurpeau/pob/commit/fdd83d9))
+* **deps:** update dependency typescript to v3.5.1 ([#220](https://github.com/christophehurpeau/pob/issues/220)) ([3f70481](https://github.com/christophehurpeau/pob/commit/3f70481))
+* **deps:** update dependency typescript to v3.5.2 ([#232](https://github.com/christophehurpeau/pob/issues/232)) ([d6c7788](https://github.com/christophehurpeau/pob/commit/d6c7788))
+* **deps:** update dependency typescript to v3.5.3 ([#242](https://github.com/christophehurpeau/pob/issues/242)) ([fd3a5d6](https://github.com/christophehurpeau/pob/commit/fd3a5d6))
+* **deps:** update dependency yarnhook to v0.4.1 ([#229](https://github.com/christophehurpeau/pob/issues/229)) ([5e302f5](https://github.com/christophehurpeau/pob/commit/5e302f5))
+* **deps:** update jest monorepo to v24.8.0 ([#202](https://github.com/christophehurpeau/pob/issues/202)) ([ea09ef6](https://github.com/christophehurpeau/pob/commit/ea09ef6))
+* **deps:** update typescript-eslint monorepo to v1.10.2 ([#227](https://github.com/christophehurpeau/pob/issues/227)) ([6ee38be](https://github.com/christophehurpeau/pob/commit/6ee38be))
+* **deps:** update typescript-eslint monorepo to v1.9.0 ([#210](https://github.com/christophehurpeau/pob/issues/210)) ([079e345](https://github.com/christophehurpeau/pob/commit/079e345))
+
+
+
+
+
 # [0.22.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.21.1...pob-dependencies@0.22.0) (2019-05-01)
 
 

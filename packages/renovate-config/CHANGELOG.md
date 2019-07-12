@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.2.0...@pob/renovate-config@1.3.0) (2019-07-12)
+
+
+### Features
+
+* automerge pin and automerge patch/minor in pob repo ([0752dab](https://github.com/christophehurpeau/pob/commit/0752dab))
+
+
+
+
+
 # [1.2.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.1.0...@pob/renovate-config@1.2.0) (2019-04-26)
 
 
