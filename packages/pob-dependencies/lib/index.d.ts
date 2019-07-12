@@ -12,7 +12,7 @@ interface Dependencies {
   '@pob/eslint-config-react': '31.0.0';
   '@pob/eslint-config-typescript': '31.1.0';
   '@pob/eslint-config-typescript-react': '31.0.0';
-  '@pob/version': '^4.31.0';
+  '@pob/version': '^4.32.0';
   '@types/jest': '24.0.15';
   '@typescript-eslint/eslint-plugin': '1.12.0';
   '@typescript-eslint/parser': '1.12.0';

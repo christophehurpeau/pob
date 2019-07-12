@@ -1,6 +1,6 @@
 {
   "name": "pob-dependencies",
-  "version": "0.24.0",
+  "version": "0.24.1",
   "description": "easier dependencies upgrade with a real package.json",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -38,7 +38,7 @@
     "@pob/eslint-config-react": "31.0.0",
     "@pob/eslint-config-typescript": "31.1.0",
     "@pob/eslint-config-typescript-react": "31.0.0",
-    "@pob/version": "^4.32.0",
+    "@pob/version": "^4.32.1",
     "@types/jest": "24.0.15",
     "@typescript-eslint/eslint-plugin": "1.12.0",
     "@typescript-eslint/parser": "1.12.0",
