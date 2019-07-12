@@ -105,7 +105,8 @@ const options = {
   force: argv.force,
 };
 
-const generator = env.run('pob:generator', options, (err) => {
+// const generator =
+env.run('pob:generator', options, (err) => {
   if (err) {
     console.error(err.stack || err.message || err);
     process.exit(1);
