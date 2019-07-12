@@ -34,6 +34,8 @@ interface Dependencies {
   'typescript': '3.5.3';
   'yarn-update-lock': '1.0.0';
   'yarnhook': '0.4.1';
-} 
+}
+
+declare const dependencies: Dependencies;
 
 export = dependencies;

@@ -139,6 +139,8 @@ module.exports = class PackageGenerator extends Generator {
       };
     }
 
+    packageUtils.addDevDependencies(pkg, ['@pob/version']);
+
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 

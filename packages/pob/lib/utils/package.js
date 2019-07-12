@@ -140,6 +140,9 @@ const internalRemoveDependencies = (pkg, type, dependencies) => {
   }
 };
 
+const getVersionFromDependencyName = (dependency) =>
+  pobDependencies[dependency];
+
 const internalAddDependencies = (pkg, type, dependencies, cleaned) => {
   const ignoreDependencies =
     type === 'dependencies' ? {} : pkg.dependencies || {};
@@ -158,7 +161,7 @@ const internalAddDependencies = (pkg, type, dependencies, cleaned) => {
   const filtredDependencies = {};
   if (!currentDependencies) {
     dependenciesToCheck.forEach((dependency) => {
-      const potentialNewVersion = pobDependencies[dependency];
+      const potentialNewVersion = getVersionFromDependencyName(dependency);
       if (!potentialNewVersion) {
         throw new Error(`Missing pobDependency: ${dependency}`);
       }
@@ -168,7 +171,7 @@ const internalAddDependencies = (pkg, type, dependencies, cleaned) => {
     });
   } else {
     dependenciesToCheck.forEach((dependency) => {
-      const potentialNewVersion = pobDependencies[dependency];
+      const potentialNewVersion = getVersionFromDependencyName(dependency);
       if (!potentialNewVersion) {
         throw new Error(`Missing pobDependency: ${dependency}`);
       }
