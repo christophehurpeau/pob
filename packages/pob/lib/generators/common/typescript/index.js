@@ -88,7 +88,7 @@ module.exports = class TypescriptGenerator extends Generator {
         this.fs.copyTpl(
           this.templatePath('tsconfig.build.json.ejs'),
           tsconfigBuildPath,
-          { withReact }
+          { withReact, composite }
         );
       } else {
         this.fs.delete(tsconfigBuildPath);

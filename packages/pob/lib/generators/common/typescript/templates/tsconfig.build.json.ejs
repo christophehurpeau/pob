@@ -5,7 +5,9 @@
     "noEmit": false,
     "emitDeclarationOnly": true,
     "outDir": "dist",
+<% if(composite) { -%>
     "tsBuildInfoFile": "dist/tsbuildinfo",
+<% } -%>
     "isolatedModules": false,
     "declaration": true,
     "declarationMap": true
@@ -14,7 +16,9 @@
   "exclude": [
     "dist/**",
     "src/**/*.test.ts",
-    <%- withReact ? '"src/**/*.test.tsx",' : '' %>
+<% if(withReact) { -%>
+    "src/**/*.test.tsx",
+<% } -%>
     "src/**/__tests__/**"
   ]
 }
