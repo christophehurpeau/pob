@@ -17,6 +17,10 @@
   "renovate-config": {
     "default": {
       "postUpdateOptions": ["yarnDedupeHighest"],
+      "prBodyNotes": [
+        "<!-- do not edit after this -->This will be auto filled by reviewflow.<!-- end - don't add anything after this -->"
+      ],
+      "labels": [":soon: automerge"],
       "packageRules": [
         {
           "groupName": "Pob Dependencies",
@@ -61,6 +65,11 @@
         {
           "description": "@pob eslint configs",
           "packagePatterns": ["^@pob/eslint-config"]
+        },
+        {
+          "updateTypes": ["pin"],
+          "labels": [":ok_hand: code/approved", ":soon: automerge"],
+          "schedule": ["at any time"]
         }
       ]
     }

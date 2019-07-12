@@ -15,6 +15,16 @@
       "paths": ["packages/pob-dependencies"],
       "depTypeList": ["devDependencies"],
       "semanticCommitType": "feat"
+    },
+    {
+      "updateTypes": [
+        "patch",
+        "minor"
+      ],
+      "labels": [
+        ":ok_hand: code/approved",
+        ":soon: automerge"
+      ]
     }
   ]
 }
