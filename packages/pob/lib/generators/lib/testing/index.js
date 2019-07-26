@@ -26,12 +26,6 @@ module.exports = class TestingGenerator extends Generator {
     //   desc: 'travisci',
     // });
 
-    this.option('babelEnvs', {
-      type: String,
-      required: true,
-      desc: 'Babel Envs',
-    });
-
     this.option('codecov', {
       type: Boolean,
       required: true,
@@ -53,7 +47,6 @@ module.exports = class TestingGenerator extends Generator {
         documentation: this.options.documentation,
         circleci: this.options.circleci,
         codecov: this.options.codecov,
-        babelEnvs: this.options.babelEnvs,
       });
     } else {
       this.composeWith(require.resolve('../../core/ci'), {
@@ -97,7 +90,7 @@ module.exports = class TestingGenerator extends Generator {
 
       this.fs.writeJSON(this.destinationPath('package.json'), pkg);
     } else {
-      this.babelEnvs = JSON.parse(this.options.babelEnvs);
+      const babelEnvs = pkg.pob.babelEnvs || [];
 
       packageUtils.addScripts(pkg, {
         test: 'jest',
@@ -147,7 +140,7 @@ module.exports = class TestingGenerator extends Generator {
         },
       });
 
-      if (this.babelEnvs.find((env) => env.target === 'node')) {
+      if (babelEnvs.find((env) => env.target === 'node')) {
         pkg.jest.testEnvironment = 'node';
       } else {
         delete pkg.jest.testEnvironment;

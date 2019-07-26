@@ -108,9 +108,7 @@ module.exports = class PobMonorepoGenerator extends Generator {
       updateOnly: this.options.updateOnly,
     });
 
-    this.composeWith(require.resolve('../common/husky'), {
-      babelEnvs: [],
-    });
+    this.composeWith(require.resolve('../common/husky'), {});
 
     // Always add a gitignore, because npm publish uses it.
     this.composeWith(require.resolve('../core/gitignore'), {

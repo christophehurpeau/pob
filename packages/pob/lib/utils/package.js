@@ -116,6 +116,7 @@ exports.sort = function sort(pkg) {
     'eslintConfig',
     'stylelint',
     'jest',
+    'pob',
     'peerDependencies',
     'devPeerDependencies',
     'dependencies',

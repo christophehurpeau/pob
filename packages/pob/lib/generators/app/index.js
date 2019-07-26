@@ -9,6 +9,7 @@ const gitignorePaths = {
   alp: (config) => ['# alp paths', '/build', '/public', '/data'],
   'next.js': (config) => ['# next.js paths', config.export && '/.next', '/out'],
   pobpack: (config) => ['/build', '/public'],
+  node: (config) => ['/dist'],
   other: (config) => [],
 };
 
@@ -43,7 +44,7 @@ module.exports = class PobAppGenerator extends Generator {
         name: 'type',
         message: 'What kind of app is this ?',
         default: (config && config.type) || 'alp',
-        choices: ['alp', 'pobpack', 'next.js', 'other'],
+        choices: ['alp', 'pobpack', 'next.js', 'node', 'other'],
       },
       {
         type: 'confirm',
@@ -60,11 +61,17 @@ module.exports = class PobAppGenerator extends Generator {
   default() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
-    const babelEnvs = [{ target: 'browser' }, { target: 'node' }];
+    if (!inLerna || inLerna.root) {
+      this.composeWith(require.resolve('../common/husky'), {});
+    }
+
+    const babel = true;
+    const node = true;
+    const browser = true;
     const withReact = packageUtils.hasReact(pkg);
 
     this.composeWith(require.resolve('../common/typescript'), {
-      enable: babelEnvs.length !== 0,
+      enable: babel,
       builddefs: false,
       withReact,
       updateOnly: this.options.updateOnly,
@@ -74,14 +81,10 @@ module.exports = class PobAppGenerator extends Generator {
           : '',
     });
 
-    if (!inLerna || inLerna.root) {
-      this.composeWith(require.resolve('../common/husky'), {
-        babelEnvs: JSON.stringify(this.babelEnvs),
-      });
-    }
-
     this.composeWith(require.resolve('../common/format-lint'), {
-      babelEnvs: JSON.stringify(babelEnvs),
+      babel,
+      node,
+      browser,
     });
 
     this.composeWith(require.resolve('../common/old-dependencies'));
@@ -89,7 +92,7 @@ module.exports = class PobAppGenerator extends Generator {
     this.composeWith(require.resolve('../core/gitignore'), {
       root: !inLerna || inLerna.root,
       documentation: false,
-      withBabel: babelEnvs.length !== 0,
+      withBabel: babel,
       paths: gitignorePaths[this.appConfig.type](this.appConfig)
         .filter(Boolean)
         .join('\n'),

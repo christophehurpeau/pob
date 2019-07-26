@@ -35,8 +35,9 @@ module.exports = class GitGenerator extends Generator {
       typeof originUrl === 'string' &&
       originUrl.match(
         // eslint-disable-next-line unicorn/no-unsafe-regex
-        /^(?:git@|https?:\/\/)(?:([^:/.]+)(?:\.com)?:)?([^:/]+)\/([^:/.]+)(?:.git)?/
+        /^(?:git@|https?:\/\/)(?:([^:/.]+)(?:\.com)?[:/])?([^:/]+)\/([^:/.]+)(?:.git)?/
       );
+    console.log(originUrl, match);
     if (!match) return;
     const [, gitHost, gitAccount, repoName] = match;
     this.gitHost = gitHost || 'github';

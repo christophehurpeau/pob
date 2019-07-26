@@ -11,9 +11,8 @@ const configExternalDependencies = require('rollup-config-external-dependencies'
 const cwd = process.cwd();
 const pkg = JSON.parse(readFileSync(`${cwd}/package.json`));
 
-const pobConfig = JSON.parse(readFileSync(`${cwd}/.yo-rc.json`)).pob[
-  'pob-config'
-];
+const pobConfig =
+  pkg.pob || JSON.parse(readFileSync(`${cwd}/.yo-rc.json`)).pob['pob-config'];
 
 const hasReact = Boolean(
   (pkg.dependencies && pkg.dependencies.react) ||

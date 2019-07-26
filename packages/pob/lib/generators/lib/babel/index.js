@@ -17,18 +17,6 @@ module.exports = class BabelGenerator extends Generator {
       desc: 'Has testing.',
     });
 
-    this.option('babelEnvs', {
-      type: String,
-      required: true,
-      desc: 'Babel Envs',
-    });
-
-    this.option('entries', {
-      type: String,
-      required: true,
-      desc: 'Entries',
-    });
-
     this.option('fromPob', {
       type: Boolean,
       required: false,
@@ -37,8 +25,9 @@ module.exports = class BabelGenerator extends Generator {
   }
 
   initializing() {
-    this.entries = JSON.parse(this.options.entries);
-    this.babelEnvs = JSON.parse(this.options.babelEnvs);
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    this.entries = pkg.pob.entries;
+    this.babelEnvs = pkg.pob.babelEnvs;
     if (this.babelEnvs.length !== 0) {
       mkdirp(this.destinationPath('src'));
     }

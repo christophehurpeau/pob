@@ -38,18 +38,18 @@ module.exports = class PobLibGenerator extends Generator {
     this.config.delete('pob'); // deprecated
     this.fs.delete('.pob.json'); // deprecated
 
-    if (!this.pobjson) {
+    if (!this.pobjson || this.pobjson.babelEnvs) {
       this.pobjson = {};
       this.updateOnly = false;
     } else {
       this.updateOnly = this.options.updateOnly;
     }
-    if (!this.pobjson.entries) this.pobjson.entries = ['index'];
 
-    this.babelEnvs = this.pobjson.envs || [];
+    let babelEnvs = this.pobjson.envs;
+    const entries = this.pobjson.entries;
 
-    if (this.babelEnvs && typeof this.babelEnvs[0] === 'string') {
-      this.babelEnvs = this.babelEnvs.map((env) => {
+    if (babelEnvs && typeof babelEnvs[0] === 'string') {
+      babelEnvs = babelEnvs.map((env) => {
         switch (env) {
           case 'es5':
             throw new Error('use olderNode instead.');
@@ -100,25 +100,27 @@ module.exports = class PobLibGenerator extends Generator {
       });
     }
 
-    this.babelEnvs = this.babelEnvs.filter(
-      (env) => env.target !== 'node' || env.version >= 8
-    );
+    if (babelEnvs) {
+      babelEnvs = babelEnvs.filter(
+        (env) => env.target !== 'node' || env.version >= 8
+      );
 
-    if (
-      !this.babelEnvs.find(
-        (env) => env.target === 'node' && String(env.version) === '10'
-      ) &&
-      Boolean(
-        this.babelEnvs.find(
-          (env) => env.target === 'node' && String(env.version) === '8'
+      if (
+        !babelEnvs.find(
+          (env) => env.target === 'node' && String(env.version) === '10'
+        ) &&
+        Boolean(
+          babelEnvs.find(
+            (env) => env.target === 'node' && String(env.version) === '8'
+          )
         )
-      )
-    ) {
-      this.babelEnvs.unshift({
-        target: 'node',
-        version: '10',
-        formats: ['cjs', 'es'],
-      });
+      ) {
+        babelEnvs.unshift({
+          target: 'node',
+          version: '10',
+          formats: ['cjs', 'es'],
+        });
+      }
     }
 
     if (this.pobjson.testing === true) {
@@ -137,10 +139,24 @@ module.exports = class PobLibGenerator extends Generator {
     delete this.pobjson.doclets;
     delete this.pobjson.flow;
     delete this.pobjson.react;
+    delete this.pobjson.entries;
+    delete this.pobjson.babelEnvs;
+
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+
+    pkg.pob = pkg.pob || {};
+
+    if (babelEnvs && babelEnvs.length !== 0) {
+      pkg.pob.babelEnvs = babelEnvs;
+      pkg.pob.entries = entries;
+    }
+
+    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 
   async prompting() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    let babelEnvs = pkg.pob.babelEnvs || [];
 
     const {
       babelNodeVersions = [],
@@ -150,38 +166,37 @@ module.exports = class PobLibGenerator extends Generator {
     } = this.updateOnly
       ? {
           babelTargets: [
-            this.babelEnvs.find((env) => env.target === 'node') && 'node',
-            this.babelEnvs.find((env) => env.target === 'browser') && 'browser',
+            babelEnvs.find((env) => env.target === 'node') && 'node',
+            babelEnvs.find((env) => env.target === 'browser') && 'browser',
           ].filter(Boolean),
           babelNodeVersions: [
             Boolean(
-              this.babelEnvs.find(
+              babelEnvs.find(
                 (env) => env.target === 'node' && String(env.version) === '10'
               )
             ) && '10',
             Boolean(
-              this.babelEnvs.find(
+              babelEnvs.find(
                 (env) => env.target === 'node' && String(env.version) === '8'
               )
             ) && '8',
           ].filter(Boolean),
           babelBrowserVersions: [
             Boolean(
-              this.babelEnvs.find(
+              babelEnvs.find(
                 (env) => env.target === 'browser' && env.version === 'modern'
               )
             ) && 'modern',
             Boolean(
-              this.babelEnvs.find(
+              babelEnvs.find(
                 (env) => env.target === 'browser' && env.version === undefined
               )
             ) && undefined,
           ].filter((value) => value !== false),
           babelFormats: [
-            Boolean(
-              this.babelEnvs.find((env) => env.formats.includes('cjs'))
-            ) && 'cjs',
-            Boolean(this.babelEnvs.find((env) => env.formats.includes('es'))) &&
+            Boolean(babelEnvs.find((env) => env.formats.includes('cjs'))) &&
+              'cjs',
+            Boolean(babelEnvs.find((env) => env.formats.includes('es'))) &&
               'es',
           ].filter(Boolean),
           withReact:
@@ -200,14 +215,14 @@ module.exports = class PobLibGenerator extends Generator {
                 name: 'Node',
                 value: 'node',
                 checked: Boolean(
-                  this.babelEnvs.find((env) => env.target === 'node')
+                  babelEnvs.find((env) => env.target === 'node')
                 ),
               },
               {
                 name: 'Browser',
                 value: 'browser',
                 checked: Boolean(
-                  this.babelEnvs.find((env) => env.target === 'browser')
+                  babelEnvs.find((env) => env.target === 'browser')
                 ),
               },
             ],
@@ -224,7 +239,7 @@ module.exports = class PobLibGenerator extends Generator {
                 name: '10 (Active LTS)',
                 value: '10',
                 checked: Boolean(
-                  this.babelEnvs.find(
+                  babelEnvs.find(
                     (env) =>
                       env.target === 'node' && String(env.version) === '10'
                   )
@@ -234,7 +249,7 @@ module.exports = class PobLibGenerator extends Generator {
                 name: '8 (Maintenance LTS)',
                 value: '8',
                 checked: Boolean(
-                  this.babelEnvs.find(
+                  babelEnvs.find(
                     (env) =>
                       env.target === 'node' && String(env.version) === '8'
                   )
@@ -254,7 +269,7 @@ module.exports = class PobLibGenerator extends Generator {
                 name: 'Modern (babel-preset-modern-browsers)',
                 value: 'modern',
                 checked: Boolean(
-                  this.babelEnvs.find(
+                  babelEnvs.find(
                     (env) =>
                       env.target === 'browser' && env.version === 'modern'
                   )
@@ -264,7 +279,7 @@ module.exports = class PobLibGenerator extends Generator {
                 name: 'Supported (@babel/preset-env)',
                 value: undefined,
                 checked: Boolean(
-                  this.babelEnvs.find(
+                  babelEnvs.find(
                     (env) =>
                       env.target === 'browser' && env.version === undefined
                   )
@@ -284,14 +299,14 @@ module.exports = class PobLibGenerator extends Generator {
                 name: 'commonjs',
                 value: 'cjs',
                 checked: Boolean(
-                  this.babelEnvs.find((env) => env.formats.includes('cjs'))
+                  babelEnvs.find((env) => env.formats.includes('cjs'))
                 ),
               },
               {
                 name: 'ES2015 module',
                 value: 'es',
                 checked: Boolean(
-                  this.babelEnvs.find((env) => env.formats.includes('es'))
+                  babelEnvs.find((env) => env.formats.includes('es'))
                 ),
               },
             ],
@@ -309,7 +324,7 @@ module.exports = class PobLibGenerator extends Generator {
           },
         ]);
 
-    this.babelEnvs = [
+    babelEnvs = [
       ...babelNodeVersions.map((version) => ({
         target: 'node',
         version,
@@ -332,7 +347,15 @@ module.exports = class PobLibGenerator extends Generator {
       })),
     ];
 
-    this.pobjson.withReact = this.babelEnvs.length === 0 ? false : withReact;
+    if (babelEnvs.length === 0) {
+      delete pkg.pob.babelEnvs;
+      delete pkg.pob.entries;
+    } else {
+      pkg.pob.babelEnvs = babelEnvs;
+      pkg.pob.entries = pkg.pob.entries || ['index'];
+    }
+
+    this.pobjson.withReact = babelEnvs.length === 0 ? false : withReact;
 
     // documentation
     if (!this.updateOnly) {
@@ -385,10 +408,15 @@ module.exports = class PobLibGenerator extends Generator {
         Object.assign(this.pobjson.testing, testingPrompts);
       }
     }
+
+    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 
   default() {
-    const withBabel = !!this.babelEnvs.length;
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    const babelEnvs = pkg.pob.babelEnvs || [];
+
+    const withBabel = !!babelEnvs.length;
     const withReact = this.pobjson.withReact;
 
     this.composeWith(require.resolve('../common/typescript'), {
@@ -400,8 +428,6 @@ module.exports = class PobLibGenerator extends Generator {
     this.composeWith(require.resolve('./babel'), {
       testing: !!this.pobjson.testing,
       documentation: !!this.pobjson.documentation,
-      babelEnvs: JSON.stringify(this.babelEnvs),
-      entries: JSON.stringify(this.pobjson.entries),
       fromPob: this.options.fromPob,
     });
 
@@ -410,14 +436,10 @@ module.exports = class PobLibGenerator extends Generator {
     }
 
     if (!inLerna || inLerna.root) {
-      this.composeWith(require.resolve('../common/husky'), {
-        babelEnvs: JSON.stringify(this.babelEnvs),
-      });
+      this.composeWith(require.resolve('../common/husky'), {});
     }
 
-    this.composeWith(require.resolve('../common/format-lint'), {
-      babelEnvs: JSON.stringify(this.babelEnvs),
-    });
+    this.composeWith(require.resolve('../common/format-lint'), {});
 
     this.composeWith(require.resolve('../common/old-dependencies'));
 
@@ -428,7 +450,6 @@ module.exports = class PobLibGenerator extends Generator {
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
       circleci: this.pobjson.testing && this.pobjson.testing.circleci,
       // travisci: this.pobjson.testing && this.pobjson.testing.travisci,
-      babelEnvs: JSON.stringify(this.babelEnvs),
     });
 
     this.composeWith(require.resolve('./doc'), {
@@ -446,7 +467,7 @@ module.exports = class PobLibGenerator extends Generator {
 
     this.composeWith(require.resolve('../core/gitignore'), {
       root: !inLerna,
-      withBabel: this.babelEnvs.length !== 0,
+      withBabel: babelEnvs.length !== 0,
       documentation: this.pobjson.documentation,
     });
   }
@@ -464,7 +485,7 @@ module.exports = class PobLibGenerator extends Generator {
       pkg.sideEffects = false;
     }
 
-    const withBabel = Boolean(this.babelEnvs.length);
+    const withBabel = Boolean(pkg.pob.babelEnvs);
 
     packageUtils.removeDevDependencies(pkg, ['lerna']);
     if (inLerna) {
@@ -526,7 +547,6 @@ module.exports = class PobLibGenerator extends Generator {
 
     const { pobjson } = this;
 
-    pobjson.envs = this.babelEnvs;
     // .includes('node6') && 'node6',
     //   this.babelEnvs.includes('node8') && 'node8',
     //   this.babelEnvs.includes('olderNode') && 'older-node',

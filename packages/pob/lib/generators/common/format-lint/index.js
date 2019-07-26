@@ -8,6 +8,17 @@ const formatJson = require('../../../utils/formatJson');
 const inLerna = require('../../../utils/inLerna');
 
 module.exports = class LintGenerator extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
+
+    this.option('babel', {
+      type: Boolean,
+      required: false,
+      defaults: undefined,
+      desc: 'Use babel.',
+    });
+  }
+
   initializing() {
     if (this.fs.exists(this.destinationPath('.eslintignore'))) {
       this.fs.delete(this.destinationPath('.eslintignore'));
@@ -16,11 +27,16 @@ module.exports = class LintGenerator extends Generator {
 
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
-    const babelEnvs = JSON.parse(this.options.babelEnvs);
-    const useBabel = babelEnvs.length !== 0;
+    const babelEnvs = (pkg.pob && pkg.pob.babelEnvs) || [];
+    const useBabel =
+      this.options.babel !== undefined
+        ? this.options.babel
+        : babelEnvs.length !== 0;
     const hasReact = useBabel && packageUtils.hasReact(pkg);
     const useNodeOnly =
-      !useBabel || babelEnvs.every((env) => env.target === 'node');
+      !useBabel ||
+      (babelEnvs.length !== 0 &&
+        babelEnvs.every((env) => env.target === 'node'));
 
     if (pkg.scripts) {
       delete pkg.scripts.postmerge;
