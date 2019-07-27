@@ -27,7 +27,7 @@ module.exports = class BabelGenerator extends Generator {
   initializing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     this.entries = pkg.pob.entries;
-    this.babelEnvs = pkg.pob.babelEnvs;
+    this.babelEnvs = pkg.pob.babelEnvs || [];
     if (this.babelEnvs.length !== 0) {
       mkdirp(this.destinationPath('src'));
     }
