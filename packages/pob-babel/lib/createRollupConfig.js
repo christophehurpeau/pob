@@ -156,7 +156,7 @@ const createConfigForEnv = (entry, env, production) => {
 module.exports = () =>
   Array.prototype.concat.apply(
     [],
-    pobConfig.envs.map((env) =>
+    pobConfig.babelEnvs.map((env) =>
       Array.prototype.concat.apply(
         [],
         entries.map((entry) => [
