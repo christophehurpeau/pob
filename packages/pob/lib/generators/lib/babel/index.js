@@ -32,38 +32,40 @@ module.exports = class BabelGenerator extends Generator {
       mkdirp(this.destinationPath('src'));
     }
 
-    this.entries.forEach((entry) => {
-      const entryDestPath = this.destinationPath(`${entry}.js`);
-      if (this.babelEnvs.find((env) => env.target === 'node')) {
-        if (!this.entries.includes('index') || entry !== 'browser') {
-          this.fs.copyTpl(this.templatePath('entry.js.ejs'), entryDestPath, {
-            entry,
-            node10: Boolean(
-              this.babelEnvs.find(
-                (env) => env.target === 'node' && String(env.version) === '10'
-              )
-            ),
-            node8: Boolean(
-              this.babelEnvs.find(
-                (env) => env.target === 'node' && String(env.version) === '8'
-              )
-            ),
-            node6: Boolean(
-              this.babelEnvs.find(
-                (env) => env.target === 'node' && String(env.version) === '6'
-              )
-            ),
-          });
+    if (this.entries) {
+      this.entries.forEach((entry) => {
+        const entryDestPath = this.destinationPath(`${entry}.js`);
+        if (this.babelEnvs.find((env) => env.target === 'node')) {
+          if (!this.entries.includes('index') || entry !== 'browser') {
+            this.fs.copyTpl(this.templatePath('entry.js.ejs'), entryDestPath, {
+              entry,
+              node10: Boolean(
+                this.babelEnvs.find(
+                  (env) => env.target === 'node' && String(env.version) === '10'
+                )
+              ),
+              node8: Boolean(
+                this.babelEnvs.find(
+                  (env) => env.target === 'node' && String(env.version) === '8'
+                )
+              ),
+              node6: Boolean(
+                this.babelEnvs.find(
+                  (env) => env.target === 'node' && String(env.version) === '6'
+                )
+              ),
+            });
+          } else {
+            this.fs.copyTpl(
+              this.templatePath('entry.browseronly.js'),
+              entryDestPath
+            );
+          }
         } else {
-          this.fs.copyTpl(
-            this.templatePath('entry.browseronly.js'),
-            entryDestPath
-          );
+          this.fs.delete(entryDestPath);
         }
-      } else {
-        this.fs.delete(entryDestPath);
-      }
-    });
+      });
+    }
     //
     // const indexSrcDestPath = this.destinationPath('src/index.js');
     // if (!this.fs.exists(indexSrcDestPath)
@@ -323,7 +325,7 @@ module.exports = class BabelGenerator extends Generator {
     const esBrowserEnvs = this.babelEnvs.filter(
       (env) => env.target === 'browser' && env.formats.includes('es')
     );
-    const aliases = this.entries.filter((entry) => entry !== 'index');
+    const aliases = (this.entries || []).filter((entry) => entry !== 'index');
     if (
       useBabel &&
       aliases.length !== 0 &&
