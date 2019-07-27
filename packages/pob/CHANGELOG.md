@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.33.1](https://github.com/christophehurpeau/pob/compare/pob@4.33.0...pob@4.33.1) (2019-07-27)
+
+
+### Bug Fixes
+
+* babel generator babelEnvs can be undefined ([c6ab93b](https://github.com/christophehurpeau/pob/commit/c6ab93b))
+* babel generator when pob not fully in package.json ([4b75887](https://github.com/christophehurpeau/pob/commit/4b75887))
+
+
+
+
+
 # [4.33.0](https://github.com/christophehurpeau/pob/compare/pob@4.32.1...pob@4.33.0) (2019-07-27)
 
 

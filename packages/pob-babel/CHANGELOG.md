@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.17.1](https://github.com/christophehurpeau/pob/compare/pob-babel@23.17.0...pob-babel@23.17.1) (2019-07-27)
+
+
+### Bug Fixes
+
+* **pob-babel:** envs to babelEnvs ([96e5326](https://github.com/christophehurpeau/pob/commit/96e5326))
+
+
+
+
+
 # [23.17.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.16.1...pob-babel@23.17.0) (2019-07-27)
 
 
