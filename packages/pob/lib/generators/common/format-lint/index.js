@@ -12,9 +12,9 @@ module.exports = class LintGenerator extends Generator {
     super(args, opts);
 
     this.option('babel', {
-      type: Boolean,
+      type: String,
       required: false,
-      defaults: undefined,
+      defaults: 'undefined',
       desc: 'Use babel.',
     });
   }
@@ -29,8 +29,8 @@ module.exports = class LintGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     const babelEnvs = (pkg.pob && pkg.pob.babelEnvs) || [];
     const useBabel =
-      this.options.babel !== undefined
-        ? this.options.babel
+      this.options.babel !== 'undefined'
+        ? this.options.babel === 'true'
         : babelEnvs.length !== 0;
     const hasReact = useBabel && packageUtils.hasReact(pkg);
     const useNodeOnly =
