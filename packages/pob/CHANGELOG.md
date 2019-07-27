@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.33.0](https://github.com/christophehurpeau/pob/compare/pob@4.32.1...pob@4.33.0) (2019-07-27)
+
+
+### Bug Fixes
+
+* babel option in format-lint ([ec1d6ab](https://github.com/christophehurpeau/pob/commit/ec1d6ab))
+* remove debug console.log in git generator ([bf82209](https://github.com/christophehurpeau/pob/commit/bf82209))
+
+
+### Features
+
+* move babelEnvs and entries to package.json ([9aa1966](https://github.com/christophehurpeau/pob/commit/9aa1966))
+
+
+
+
+
 ## [4.32.1](https://github.com/christophehurpeau/pob/compare/pob@4.32.0...pob@4.32.1) (2019-07-12)
 
 **Note:** Version bump only for package pob

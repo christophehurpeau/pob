@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.25.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.24.1...pob-dependencies@0.25.0) (2019-07-27)
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.5.5 ([#246](https://github.com/christophehurpeau/pob/issues/246)) ([3219cd6](https://github.com/christophehurpeau/pob/commit/3219cd6))
+* **deps:** update commitlint monorepo to v8.1.0 ([#245](https://github.com/christophehurpeau/pob/issues/245)) ([36d4821](https://github.com/christophehurpeau/pob/commit/36d4821))
+* **deps:** update dependency husky to v3.0.1 ([#247](https://github.com/christophehurpeau/pob/issues/247)) ([9511534](https://github.com/christophehurpeau/pob/commit/9511534))
+* **deps:** update dependency lerna to v3.16.0 ([#248](https://github.com/christophehurpeau/pob/issues/248)) ([c8b06a5](https://github.com/christophehurpeau/pob/commit/c8b06a5))
+* **deps:** update dependency lerna to v3.16.1 ([#249](https://github.com/christophehurpeau/pob/issues/249)) ([03e17b0](https://github.com/christophehurpeau/pob/commit/03e17b0))
+* **deps:** update dependency lerna to v3.16.2 ([#251](https://github.com/christophehurpeau/pob/issues/251)) ([84ffb55](https://github.com/christophehurpeau/pob/commit/84ffb55))
+* **deps:** update dependency lerna to v3.16.3 ([#252](https://github.com/christophehurpeau/pob/issues/252)) ([35e03e9](https://github.com/christophehurpeau/pob/commit/35e03e9))
+* **deps:** update dependency lerna to v3.16.4 ([#253](https://github.com/christophehurpeau/pob/issues/253)) ([95aa1d5](https://github.com/christophehurpeau/pob/commit/95aa1d5))
+* **deps:** update dependency lint-staged to v9.2.1 ([#254](https://github.com/christophehurpeau/pob/issues/254)) ([3389e04](https://github.com/christophehurpeau/pob/commit/3389e04))
+* **deps:** update dependency typedoc to v0.15.0 ([#256](https://github.com/christophehurpeau/pob/issues/256)) ([886452f](https://github.com/christophehurpeau/pob/commit/886452f))
+* **deps:** update typescript-eslint monorepo to v1.13.0 ([#250](https://github.com/christophehurpeau/pob/issues/250)) ([705c8c7](https://github.com/christophehurpeau/pob/commit/705c8c7))
+
+
+
+
+
 ## [0.24.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.24.0...pob-dependencies@0.24.1) (2019-07-12)
 
 **Note:** Version bump only for package pob-dependencies
