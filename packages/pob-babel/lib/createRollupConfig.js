@@ -4,6 +4,7 @@
 
 const readFileSync = require('fs').readFileSync;
 const babel = require('rollup-plugin-babel');
+const json = require('rollup-plugin-json');
 const resolve = require('rollup-plugin-node-resolve');
 const ignoreImport = require('rollup-plugin-ignore-import');
 const configExternalDependencies = require('rollup-config-external-dependencies');
@@ -72,6 +73,7 @@ const createConfigForEnv = (entry, env, production) => {
     ? ['.ts', hasReact && '.tsx']
     : ['.js', hasReact && '.jsx']
   ).filter(Boolean);
+  const preferConst = !(env.target === 'browser' && env.version !== 'modern');
 
   return {
     input: entryPath,
@@ -81,7 +83,7 @@ const createConfigForEnv = (entry, env, production) => {
       format,
       sourcemap: true,
       exports: 'named',
-      preferConst: !(env.target === 'browser' && env.version !== 'modern'),
+      preferConst,
     })),
     external:
       env.target === 'browser'
@@ -141,6 +143,12 @@ const createConfigForEnv = (entry, env, production) => {
         skipBabelHelpersCheck: true,
         babelHelpers: 'runtime',
         exclude: 'node_modules/**',
+      }),
+
+      json({
+        preferConst,
+        compact: true,
+        namedExports: true, // allow tree shaking
       }),
 
       resolve({
