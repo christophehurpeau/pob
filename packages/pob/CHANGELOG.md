@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.34.0](https://github.com/christophehurpeau/pob/compare/pob@4.33.2...pob@4.34.0) (2019-07-28)
+
+
+### Features
+
+* add node app with babel generator ([7992b82](https://github.com/christophehurpeau/pob/commit/7992b82))
+
+
+
+
+
 ## [4.33.2](https://github.com/christophehurpeau/pob/compare/pob@4.33.1...pob@4.33.2) (2019-07-27)
 
 **Note:** Version bump only for package pob

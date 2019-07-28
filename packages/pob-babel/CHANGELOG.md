@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.19.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.18.0...pob-babel@23.19.0) (2019-07-28)
+
+
+### Features
+
+* add rollup-plugin-json to allow import package.json ([c43dc93](https://github.com/christophehurpeau/pob/commit/c43dc93))
+
+
+
+
+
 # [23.18.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.17.1...pob-babel@23.18.0) (2019-07-27)
 
 
