@@ -18,8 +18,6 @@ module.exports = class GitGenerator extends Generator {
   }
 
   async initializing() {
-    console.log('git: initializing');
-
     let originUrl = await remoteUrl(this.destinationPath(), 'origin').catch(
       () => ''
     );

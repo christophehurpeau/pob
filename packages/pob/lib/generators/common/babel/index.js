@@ -10,6 +10,13 @@ module.exports = class BabelGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
+    this.option('updateOnly', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+      desc: 'Avoid asking questions',
+    });
+
     this.option('testing', {
       type: Boolean,
       required: false,
@@ -24,7 +31,212 @@ module.exports = class BabelGenerator extends Generator {
     });
   }
 
-  initializing() {
+  async prompting() {
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+
+    if (pkg.pob && this.options.updateOnly) return;
+
+    if (!pkg.pob) pkg.pob = {};
+    const babelEnvs = pkg.pob.babelEnvs || [];
+
+    /*
+
+    {
+          babelTargets: [
+            babelEnvs.find((env) => env.target === 'node') && 'node',
+            babelEnvs.find((env) => env.target === 'browser') && 'browser',
+          ].filter(Boolean),
+          babelNodeVersions: [
+            Boolean(
+              babelEnvs.find(
+                (env) => env.target === 'node' && String(env.version) === '10'
+              )
+            ) && '10',
+            Boolean(
+              babelEnvs.find(
+                (env) => env.target === 'node' && String(env.version) === '8'
+              )
+            ) && '8',
+          ].filter(Boolean),
+          babelBrowserVersions: [
+            Boolean(
+              babelEnvs.find(
+                (env) => env.target === 'browser' && env.version === 'modern'
+              )
+            ) && 'modern',
+            Boolean(
+              babelEnvs.find(
+                (env) => env.target === 'browser' && env.version === undefined
+              )
+            ) && undefined,
+          ].filter((value) => value !== false),
+          babelFormats: [
+            Boolean(babelEnvs.find((env) => env.formats.includes('cjs'))) &&
+              'cjs',
+            Boolean(babelEnvs.find((env) => env.formats.includes('es'))) &&
+              'es',
+          ].filter(Boolean),
+          withReact:
+            this.pobjson.withReact === undefined
+              ? packageUtils.hasReact(pkg)
+              : this.pobjson.withReact,
+        }
+
+     */
+    const {
+      babelNodeVersions = [],
+      babelBrowserVersions = [],
+      babelFormats,
+      withReact,
+    } = await this.prompt([
+      {
+        type: 'checkbox',
+        name: 'babelTargets',
+        message:
+          "Babel targets: (don't select anything if you don't want babel)",
+        choices: [
+          {
+            name: 'Node',
+            value: 'node',
+            checked: Boolean(babelEnvs.find((env) => env.target === 'node')),
+          },
+          {
+            name: 'Browser',
+            value: 'browser',
+            checked: Boolean(babelEnvs.find((env) => env.target === 'browser')),
+          },
+        ],
+      },
+
+      {
+        type: 'checkbox',
+        name: 'babelNodeVersions',
+        message: 'Babel node versions: (https://github.com/nodejs/Release)',
+        when: (answers) => answers.babelTargets.includes('node'),
+        validate: (versions) => versions.length > 0,
+        choices: [
+          {
+            name: '10 (Active LTS)',
+            value: '10',
+            checked: Boolean(
+              babelEnvs.find(
+                (env) => env.target === 'node' && String(env.version) === '10'
+              )
+            ),
+          },
+          {
+            name: '8 (Maintenance LTS)',
+            value: '8',
+            checked: Boolean(
+              babelEnvs.find(
+                (env) => env.target === 'node' && String(env.version) === '8'
+              )
+            ),
+          },
+        ],
+      },
+
+      {
+        type: 'checkbox',
+        name: 'babelBrowserVersions',
+        message: 'Babel browser versions',
+        when: (answers) => answers.babelTargets.includes('browser'),
+        validate: (versions) => versions.length > 0,
+        choices: [
+          {
+            name: 'Modern (babel-preset-modern-browsers)',
+            value: 'modern',
+            checked: Boolean(
+              babelEnvs.find(
+                (env) => env.target === 'browser' && env.version === 'modern'
+              )
+            ),
+          },
+          {
+            name: 'Supported (@babel/preset-env)',
+            value: undefined,
+            checked: Boolean(
+              babelEnvs.find(
+                (env) => env.target === 'browser' && env.version === undefined
+              )
+            ),
+          },
+        ],
+      },
+
+      {
+        type: 'checkbox',
+        name: 'babelFormats',
+        message: 'Babel formats',
+        when: (answers) => answers.babelTargets.length !== 0,
+        validate: (babelTargets) => babelTargets.length > 0,
+        choices: [
+          {
+            name: 'commonjs',
+            value: 'cjs',
+            checked: Boolean(
+              babelEnvs.find((env) => env.formats.includes('cjs'))
+            ),
+          },
+          {
+            name: 'ES2015 module',
+            value: 'es',
+            checked: Boolean(
+              babelEnvs.find((env) => env.formats.includes('es'))
+            ),
+          },
+        ],
+      },
+
+      {
+        type: 'confirm',
+        name: 'withReact',
+        message: 'Enable React ?',
+        when: (answers) => answers.babelTargets.length !== 0,
+        default:
+          pkg.pob.withReact === undefined
+            ? packageUtils.hasReact(pkg)
+            : pkg.pob.withReact,
+      },
+    ]);
+
+    const newBabelEnvs = [
+      ...babelNodeVersions.map((version) => ({
+        target: 'node',
+        version,
+        // eslint-disable-next-line no-nested-ternary
+        formats: babelFormats.includes('es')
+          ? version === '10'
+            ? babelFormats
+            : ['cjs']
+          : babelFormats,
+      })),
+      ...babelBrowserVersions.map((version) => ({
+        target: 'browser',
+        version,
+        // eslint-disable-next-line no-nested-ternary
+        formats: babelFormats.includes('cjs')
+          ? version === undefined
+            ? babelFormats
+            : ['es']
+          : babelFormats,
+      })),
+    ];
+
+    if (newBabelEnvs.length === 0) {
+      delete pkg.pob.babelEnvs;
+      delete pkg.pob.entries;
+      delete pkg.pob.withReact;
+    } else {
+      pkg.pob.babelEnvs = newBabelEnvs;
+      pkg.pob.entries = pkg.pob.entries || ['index'];
+      pkg.pob.withReact = withReact;
+    }
+
+    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+  }
+
+  configuring() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     this.entries = pkg.pob.entries;
     this.babelEnvs = pkg.pob.babelEnvs || [];

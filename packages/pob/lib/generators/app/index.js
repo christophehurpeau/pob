@@ -59,6 +59,15 @@ module.exports = class PobAppGenerator extends Generator {
   }
 
   default() {
+    if (this.appConfig.type === 'node') {
+      this.composeWith(require.resolve('../common/babel'), {
+        updateOnly: this.options.updateOnly,
+        testing: false,
+        documentation: false,
+        fromPob: this.options.fromPob,
+      });
+    }
+
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
     if (!inLerna || inLerna.root) {
@@ -67,7 +76,7 @@ module.exports = class PobAppGenerator extends Generator {
 
     const babel = true;
     const node = true;
-    const browser = true;
+    const browser = ['alp', 'next.js', 'node'].includes(this.appConfig.type);
     const withReact = packageUtils.hasReact(pkg);
 
     this.composeWith(require.resolve('../common/typescript'), {

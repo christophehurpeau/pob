@@ -22,7 +22,7 @@ module.exports = class RenovateGenerator extends Generator {
     });
   }
 
-  async initializing() {
+  initializing() {
     if (inLerna && !inLerna.root) {
       this.enableRenovate = false;
       this.config.delete('renovate');
@@ -30,7 +30,9 @@ module.exports = class RenovateGenerator extends Generator {
     }
 
     this.enableRenovateConfig = this.config.get('renovate');
+  }
 
+  async prompting() {
     if (this.options.updateOnly && this.enableRenovateConfig) {
       this.enableRenovate = this.enableRenovateConfig.enable;
       return;

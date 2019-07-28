@@ -19,7 +19,7 @@ module.exports = class LintGenerator extends Generator {
     });
   }
 
-  initializing() {
+  configuring() {
     if (this.fs.exists(this.destinationPath('.eslintignore'))) {
       this.fs.delete(this.destinationPath('.eslintignore'));
     }

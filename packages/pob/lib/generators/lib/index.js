@@ -47,6 +47,7 @@ module.exports = class PobLibGenerator extends Generator {
 
     let babelEnvs = this.pobjson.envs;
     const entries = this.pobjson.entries;
+    const withReact = this.pobjson.withReact;
 
     if (babelEnvs && typeof babelEnvs[0] === 'string') {
       babelEnvs = babelEnvs.map((env) => {
@@ -140,7 +141,8 @@ module.exports = class PobLibGenerator extends Generator {
     delete this.pobjson.flow;
     delete this.pobjson.react;
     delete this.pobjson.entries;
-    delete this.pobjson.babelEnvs;
+    delete this.pobjson.envs;
+    delete this.pobjson.withReact;
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
@@ -149,6 +151,11 @@ module.exports = class PobLibGenerator extends Generator {
     if (babelEnvs && babelEnvs.length !== 0) {
       pkg.pob.babelEnvs = babelEnvs;
       pkg.pob.entries = entries;
+      pkg.pob.withReact = withReact;
+    } else {
+      delete pkg.pob.babelEnvs;
+      delete pkg.pob.entries;
+      delete pkg.pob.withReact;
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
@@ -156,206 +163,6 @@ module.exports = class PobLibGenerator extends Generator {
 
   async prompting() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
-    let babelEnvs = pkg.pob.babelEnvs || [];
-
-    const {
-      babelNodeVersions = [],
-      babelBrowserVersions = [],
-      babelFormats,
-      withReact,
-    } = this.updateOnly
-      ? {
-          babelTargets: [
-            babelEnvs.find((env) => env.target === 'node') && 'node',
-            babelEnvs.find((env) => env.target === 'browser') && 'browser',
-          ].filter(Boolean),
-          babelNodeVersions: [
-            Boolean(
-              babelEnvs.find(
-                (env) => env.target === 'node' && String(env.version) === '10'
-              )
-            ) && '10',
-            Boolean(
-              babelEnvs.find(
-                (env) => env.target === 'node' && String(env.version) === '8'
-              )
-            ) && '8',
-          ].filter(Boolean),
-          babelBrowserVersions: [
-            Boolean(
-              babelEnvs.find(
-                (env) => env.target === 'browser' && env.version === 'modern'
-              )
-            ) && 'modern',
-            Boolean(
-              babelEnvs.find(
-                (env) => env.target === 'browser' && env.version === undefined
-              )
-            ) && undefined,
-          ].filter((value) => value !== false),
-          babelFormats: [
-            Boolean(babelEnvs.find((env) => env.formats.includes('cjs'))) &&
-              'cjs',
-            Boolean(babelEnvs.find((env) => env.formats.includes('es'))) &&
-              'es',
-          ].filter(Boolean),
-          withReact:
-            this.pobjson.withReact === undefined
-              ? packageUtils.hasReact(pkg)
-              : this.pobjson.withReact,
-        }
-      : await this.prompt([
-          {
-            type: 'checkbox',
-            name: 'babelTargets',
-            message:
-              "Babel targets: (don't select anything if you don't want babel)",
-            choices: [
-              {
-                name: 'Node',
-                value: 'node',
-                checked: Boolean(
-                  babelEnvs.find((env) => env.target === 'node')
-                ),
-              },
-              {
-                name: 'Browser',
-                value: 'browser',
-                checked: Boolean(
-                  babelEnvs.find((env) => env.target === 'browser')
-                ),
-              },
-            ],
-          },
-
-          {
-            type: 'checkbox',
-            name: 'babelNodeVersions',
-            message: 'Babel node versions: (https://github.com/nodejs/Release)',
-            when: (answers) => answers.babelTargets.includes('node'),
-            validate: (versions) => versions.length > 0,
-            choices: [
-              {
-                name: '10 (Active LTS)',
-                value: '10',
-                checked: Boolean(
-                  babelEnvs.find(
-                    (env) =>
-                      env.target === 'node' && String(env.version) === '10'
-                  )
-                ),
-              },
-              {
-                name: '8 (Maintenance LTS)',
-                value: '8',
-                checked: Boolean(
-                  babelEnvs.find(
-                    (env) =>
-                      env.target === 'node' && String(env.version) === '8'
-                  )
-                ),
-              },
-            ],
-          },
-
-          {
-            type: 'checkbox',
-            name: 'babelBrowserVersions',
-            message: 'Babel browser versions',
-            when: (answers) => answers.babelTargets.includes('browser'),
-            validate: (versions) => versions.length > 0,
-            choices: [
-              {
-                name: 'Modern (babel-preset-modern-browsers)',
-                value: 'modern',
-                checked: Boolean(
-                  babelEnvs.find(
-                    (env) =>
-                      env.target === 'browser' && env.version === 'modern'
-                  )
-                ),
-              },
-              {
-                name: 'Supported (@babel/preset-env)',
-                value: undefined,
-                checked: Boolean(
-                  babelEnvs.find(
-                    (env) =>
-                      env.target === 'browser' && env.version === undefined
-                  )
-                ),
-              },
-            ],
-          },
-
-          {
-            type: 'checkbox',
-            name: 'babelFormats',
-            message: 'Babel formats',
-            when: (answers) => answers.babelTargets.length !== 0,
-            validate: (babelTargets) => babelTargets.length > 0,
-            choices: [
-              {
-                name: 'commonjs',
-                value: 'cjs',
-                checked: Boolean(
-                  babelEnvs.find((env) => env.formats.includes('cjs'))
-                ),
-              },
-              {
-                name: 'ES2015 module',
-                value: 'es',
-                checked: Boolean(
-                  babelEnvs.find((env) => env.formats.includes('es'))
-                ),
-              },
-            ],
-          },
-
-          {
-            type: 'confirm',
-            name: 'withReact',
-            message: 'Enable React ?',
-            when: (answers) => answers.babelTargets.length !== 0,
-            default:
-              this.pobjson.withReact === undefined
-                ? packageUtils.hasReact(pkg)
-                : this.pobjson.withReact,
-          },
-        ]);
-
-    babelEnvs = [
-      ...babelNodeVersions.map((version) => ({
-        target: 'node',
-        version,
-        // eslint-disable-next-line no-nested-ternary
-        formats: babelFormats.includes('es')
-          ? version === '10'
-            ? babelFormats
-            : ['cjs']
-          : babelFormats,
-      })),
-      ...babelBrowserVersions.map((version) => ({
-        target: 'browser',
-        version,
-        // eslint-disable-next-line no-nested-ternary
-        formats: babelFormats.includes('cjs')
-          ? version === undefined
-            ? babelFormats
-            : ['es']
-          : babelFormats,
-      })),
-    ];
-
-    if (babelEnvs.length === 0) {
-      delete pkg.pob.babelEnvs;
-      delete pkg.pob.entries;
-    } else {
-      pkg.pob.babelEnvs = babelEnvs;
-      pkg.pob.entries = pkg.pob.entries || ['index'];
-    }
-
-    this.pobjson.withReact = babelEnvs.length === 0 ? false : withReact;
 
     // documentation
     if (!this.updateOnly) {
@@ -413,22 +220,23 @@ module.exports = class PobLibGenerator extends Generator {
   }
 
   default() {
+    this.composeWith(require.resolve('../common/babel'), {
+      updateOnly: this.options.updateOnly,
+      testing: !!this.pobjson.testing,
+      documentation: !!this.pobjson.documentation,
+      fromPob: this.options.fromPob,
+    });
+
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     const babelEnvs = pkg.pob.babelEnvs || [];
 
     const withBabel = !!babelEnvs.length;
-    const withReact = this.pobjson.withReact;
+    const withReact = withBabel && pkg.pob.withReact === true;
 
     this.composeWith(require.resolve('../common/typescript'), {
       enable: withBabel,
       withReact,
       updateOnly: this.options.updateOnly,
-    });
-
-    this.composeWith(require.resolve('./babel'), {
-      testing: !!this.pobjson.testing,
-      documentation: !!this.pobjson.documentation,
-      fromPob: this.options.fromPob,
     });
 
     if (!withBabel) {
