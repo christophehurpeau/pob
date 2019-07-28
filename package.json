@@ -12,7 +12,7 @@
     "lint": "lerna run --stream lint",
     "preversion": "yarn run lint --since && repository-check-dirty && node ./packages/pob-version/generate-index.js && git add ./packages/pob-version/lib/index.js",
     "postversion": "yarn && git add yarn.lock",
-    "release": "GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --create-release=github -m 'chore: release' && lerna publish from-git"
+    "release": "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --create-release=github -m 'chore: release' && lerna publish from-git"
   },
   "husky": {
     "hooks": {
@@ -38,6 +38,7 @@
   "devDependencies": {
     "@commitlint/cli": "8.1.0",
     "@commitlint/config-conventional": "8.1.0",
+    "cross-env": "^5.2.0",
     "husky": "3.0.1",
     "lerna": "3.16.4",
     "lint-staged": "9.2.1",
