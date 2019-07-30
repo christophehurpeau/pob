@@ -11,6 +11,10 @@ yarn-error.log*
 /.settings
 /.project
 /.idea
+!/.idea/name
+!/.idea/runConfigurations
+!/.idea/scopes
+!/.idea/vcs.xml
 *.sublime-project
 *.sublime-workspace
 
