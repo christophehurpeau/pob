@@ -44,6 +44,6 @@
     "lint-staged": "9.2.1",
     "repository-check-dirty": "./packages/repository-check-dirty",
     "yarn-update-lock": "1.0.0",
-    "yarnhook": "0.4.1"
+    "yarnhook": "0.4.2"
   }
 }
