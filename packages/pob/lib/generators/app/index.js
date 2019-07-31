@@ -62,6 +62,7 @@ module.exports = class PobAppGenerator extends Generator {
     if (this.appConfig.type === 'node') {
       this.composeWith(require.resolve('../common/babel'), {
         updateOnly: this.options.updateOnly,
+        isApp: true,
         testing: false,
         documentation: false,
         fromPob: this.options.fromPob,
