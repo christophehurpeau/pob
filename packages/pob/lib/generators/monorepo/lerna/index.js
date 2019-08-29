@@ -81,13 +81,15 @@ module.exports = class LernaGenerator extends Generator {
 
     packageUtils.removeDevDependencies(pkg, ['pob-release']);
 
+    const getPackagePobConfig = (config) =>
+      Object.assign({ babelEnvs: [] }, (config && config.pob) || {});
     const getPobConfig = (config) =>
       Object.assign(
-        { envs: [] },
+        {},
         (config && config.pob && config.pob['pob-config']) || {}
       );
-    const withBabel = this.packagesConfig.some(
-      (config) => getPobConfig(config).envs.length !== 0
+    const withBabel = this.packages.some(
+      (config) => getPackagePobConfig(config).babelEnvs.length !== 0
     );
     // ynnub doesnt use babel but still have typescript
     const withTypescript = this.packagePaths.some((packagePath) =>

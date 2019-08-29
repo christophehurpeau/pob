@@ -342,6 +342,15 @@ module.exports = class BabelGenerator extends Generator {
       'pob-babel',
     ]);
 
+    if (pkg.dependencies && pkg.dependencies['pob-babel']) {
+      // update pob-babel in alp-dev
+      packageUtils.addDependencies(pkg, ['pob-babel']);
+    }
+    if (pkg.dependencies && pkg.dependencies['@babel/runtime']) {
+      // update pob-babel in alp-dev
+      packageUtils.addDependencies(pkg, ['@babel/runtime']);
+    }
+
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       useBabel && packageUtils.hasReact(pkg),

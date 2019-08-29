@@ -45,9 +45,11 @@ module.exports = class PobLibGenerator extends Generator {
       this.updateOnly = this.options.updateOnly;
     }
 
-    let babelEnvs = this.pobjson.envs;
-    const entries = this.pobjson.entries;
-    const withReact = this.pobjson.withReact;
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+
+    let babelEnvs = this.pobjson.envs || pkg.pob.babelEnvs;
+    const entries = this.pobjson.entries || pkg.pob.entries;
+    const withReact = this.pobjson.withReact || pkg.pob.withReact;
 
     if (babelEnvs && typeof babelEnvs[0] === 'string') {
       babelEnvs = babelEnvs.map((env) => {
@@ -143,8 +145,6 @@ module.exports = class PobLibGenerator extends Generator {
     delete this.pobjson.entries;
     delete this.pobjson.envs;
     delete this.pobjson.withReact;
-
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
     pkg.pob = pkg.pob || {};
 
