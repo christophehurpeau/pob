@@ -31,7 +31,7 @@
     "arrowParens": "always"
   },
   "dependencies": {
-    "conventional-recommended-bump": "^5.0.0",
+    "conventional-recommended-bump": "^6.0.0",
     "inquirer": "^6.2.1",
     "minimist-argv": "^1.1.0",
     "repository-check-dirty": "^1.0.2",
