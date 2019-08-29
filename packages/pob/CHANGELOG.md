@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.35.0](https://github.com/christophehurpeau/pob/compare/pob@4.34.0...pob@4.35.0) (2019-08-29)
+
+
+### Bug Fixes
+
+* remove build definitions for apps ([8642fe6](https://github.com/christophehurpeau/pob/commit/8642fe6))
+
+
+### Features
+
+* @pob/repo-config ([95f61c4](https://github.com/christophehurpeau/pob/commit/95f61c4))
+* workspaces for scoped packages ([c85fd52](https://github.com/christophehurpeau/pob/commit/c85fd52))
+
+
+
+
+
 # [4.34.0](https://github.com/christophehurpeau/pob/compare/pob@4.33.2...pob@4.34.0) (2019-07-28)
 
 

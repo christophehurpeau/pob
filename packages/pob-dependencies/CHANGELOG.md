@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.26.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.25.3...pob-dependencies@0.26.0) (2019-08-29)
+
+
+### Features
+
+* @pob/repo-config ([95f61c4](https://github.com/christophehurpeau/pob/commit/95f61c4))
+* **deps:** update dependency @types/jest to v24.0.16 ([#261](https://github.com/christophehurpeau/pob/issues/261)) ([5cfe604](https://github.com/christophehurpeau/pob/commit/5cfe604))
+* **deps:** update dependency @types/jest to v24.0.17 ([#263](https://github.com/christophehurpeau/pob/issues/263)) ([48586b3](https://github.com/christophehurpeau/pob/commit/48586b3))
+* **deps:** update dependency babel-eslint to v10.0.3 ([#271](https://github.com/christophehurpeau/pob/issues/271)) ([673e7a8](https://github.com/christophehurpeau/pob/commit/673e7a8))
+* **deps:** update dependency husky to v3.0.2 ([#260](https://github.com/christophehurpeau/pob/issues/260)) ([611dbd9](https://github.com/christophehurpeau/pob/commit/611dbd9))
+* **deps:** update dependency typescript to v3.6.2 ([#272](https://github.com/christophehurpeau/pob/issues/272)) ([2f5f360](https://github.com/christophehurpeau/pob/commit/2f5f360))
+* **deps:** update dependency yarnhook to v0.4.2 ([#262](https://github.com/christophehurpeau/pob/issues/262)) ([af57638](https://github.com/christophehurpeau/pob/commit/af57638))
+
+
+
+
+
 ## [0.25.3](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.25.2...pob-dependencies@0.25.3) (2019-07-28)
 
 **Note:** Version bump only for package pob-dependencies

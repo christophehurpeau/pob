@@ -1,6 +1,6 @@
 {
   "name": "@pob/repo-config",
-  "version": "1.0.0-pre",
+  "version": "1.0.0",
   "description": "repo config",
   "license": "ISC",
   "engines": {

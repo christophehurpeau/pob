@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.3.0...@pob/renovate-config@1.4.0) (2019-08-29)
+
+
+### Features
+
+* workspaces for scoped packages ([c85fd52](https://github.com/christophehurpeau/pob/commit/c85fd52))
+
+
+
+
+
 # [1.3.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.2.0...@pob/renovate-config@1.3.0) (2019-07-12)
 
 

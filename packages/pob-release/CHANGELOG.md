@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.13.3](https://github.com/christophehurpeau/pob/compare/pob-release@4.13.2...pob-release@4.13.3) (2019-08-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency standard-changelog to v2.0.13 ([#259](https://github.com/christophehurpeau/pob/issues/259)) ([5428f3a](https://github.com/christophehurpeau/pob/commit/5428f3a))
+
+
+
+
+
 ## [4.13.2](https://github.com/christophehurpeau/pob/compare/pob-release@4.13.1...pob-release@4.13.2) (2019-07-12)
 
 

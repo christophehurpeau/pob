@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@1.4.2...babel-plugin-fix-class-properties-uninitialized@1.5.0) (2019-08-29)
+
+
+### Features
+
+* workspaces for scoped packages ([c85fd52](https://github.com/christophehurpeau/pob/commit/c85fd52))
+
+
+
+
+
 ## [1.4.2](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@1.4.1...babel-plugin-fix-class-properties-uninitialized@1.4.2) (2019-07-12)
 
 **Note:** Version bump only for package babel-plugin-fix-class-properties-uninitialized
