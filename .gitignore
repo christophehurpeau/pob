@@ -10,7 +10,7 @@ yarn-error.log*
 # IDE
 /.settings
 /.project
-/.idea
+/.idea/*
 !/.idea/name
 !/.idea/runConfigurations
 !/.idea/scopes
