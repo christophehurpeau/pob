@@ -45,35 +45,26 @@ module.exports = class GitHooksGenerator extends Generator {
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
-    packageUtils.removeDevDependencies(pkg, ['komet', 'komet-karma']);
-
-    packageUtils.addDevDependencies(pkg, [
-      'husky',
-      'yarnhook',
-      'lint-staged',
-      'yarn-update-lock',
-      '@commitlint/cli',
-      '@commitlint/config-conventional',
-    ]);
+    packageUtils.addDevDependencies(pkg, ['@pob/repo-config', 'husky']);
     // packageUtils.addOrRemoveDevDependencies(pkg, inLerna, {
     //   '@commitlint/config-lerna-scopes': '6.1.3',
     // });
+
+    this.fs.copy(
+      this.templatePath('huskyrc.js.txt'),
+      this.destinationPath('.huskyrc.js')
+    );
+
+    this.fs.copy(
+      this.templatePath('lint-staged.config.js.txt'),
+      this.destinationPath('lint-staged.config.js')
+    );
 
     pkg.commitlint = {
       extends: [
         '@commitlint/config-conventional',
         // '@commitlint/config-lerna-scopes',
       ].filter(Boolean),
-    };
-
-    pkg.husky = {
-      hooks: {
-        'commit-msg': 'commitlint -e $HUSKY_GIT_PARAMS',
-        'post-checkout': 'yarnhook',
-        'post-merge': 'yarnhook',
-        'post-rewrite': 'yarnhook',
-        'pre-commit': 'lint-staged',
-      },
     };
 
     delete pkg.scripts.commitmsg;
@@ -85,42 +76,8 @@ module.exports = class GitHooksGenerator extends Generator {
     delete pkg.scripts.postmerge;
     delete pkg.scripts.postrewrite;
     delete pkg.scripts.postpublish;
-
-    const hasBabel = packageUtils.transpileWithBabel(pkg);
-    const hasReact = hasBabel && packageUtils.hasReact(pkg);
-    const useTypescript = packageUtils.hasTypescript(pkg);
-    const srcDirectory = hasBabel ? 'src' : 'lib';
-    const ext = useTypescript ? 'ts' : 'js';
-
-    pkg['lint-staged'] = {
-      'yarn.lock': [
-        pkg.name === 'yarn-update-lock'
-          ? './lib/yarn-update-lock.sh'
-          : 'yarn-update-lock',
-        'git add',
-      ],
-      // [`{README.md,package.json${inLerna ? ',packages/*/package.json,packages/*/README.md,' : ''},.eslintrc.json}`]: [
-      [`{package.json${
-        pkg.workspaces
-          ? `,${pkg.workspaces.map((path) => `${path}/package.json`).join(',')}`
-          : ''
-      },.eslintrc.json}`]: ['prettier --parser json --write', 'git add'],
-      [`${
-        pkg.workspaces ? `{${pkg.workspaces.join(',')}}/` : ''
-      }${srcDirectory}/**/*.json`]: [
-        'prettier --parser json --write',
-        'git add',
-      ],
-      [`${
-        pkg.workspaces ? `{${pkg.workspaces.join(',')}}/` : ''
-      }${srcDirectory}/**/*.${
-        hasReact
-          ? `{${ext === 'js' ? '' : 'js,'}${ext},${ext}x}`
-          : ext === 'js'
-          ? ext
-          : `{js,${ext}}`
-      }`]: ['eslint --fix --quiet', 'git add'],
-    };
+    delete pkg['lint-staged'];
+    delete pkg.husky;
 
     // if (packageUtils.hasLerna(pkg)) {
     //   packageUtils.addScript(pkg, 'postinstall', 'repository-check-dirty && lerna bootstrap');

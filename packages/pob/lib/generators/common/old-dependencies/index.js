@@ -35,6 +35,13 @@ module.exports = class OldDependenciesGenerator extends Generator {
       'babel-plugin-react-require',
       'babel-preset-react',
       'babel-preset-pob-react',
+      'komet',
+      'komet-karma',
+      '@commitlint/cli',
+      '@commitlint/config-conventional',
+      'lint-staged',
+      'yarnhook',
+      'yarn-update-lock',
     ]);
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);

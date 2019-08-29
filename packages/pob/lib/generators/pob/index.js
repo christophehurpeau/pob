@@ -141,14 +141,8 @@ module.exports = class PobBaseGenerator extends Generator {
       packageUtils.removeDevDependencies(pkg, [
         'pob-release',
         'repository-check-dirty',
-        'komet',
-        'komet-karma',
         'husky',
         'yarnhook',
-        'lint-staged',
-        'yarn-update-lock',
-        '@commitlint/cli',
-        '@commitlint/config-conventional',
         'lerna',
       ]);
       delete pkg.commitlint;

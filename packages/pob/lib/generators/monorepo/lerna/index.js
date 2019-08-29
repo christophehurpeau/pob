@@ -112,7 +112,7 @@ module.exports = class LernaGenerator extends Generator {
       // cannot use this with lerna because it changes packages.json
       // prepublishOnly: 'repository-check-dirty',
       release:
-        "GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --create-release=github -m 'chore: release' && lerna publish from-git",
+        "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git",
     });
 
     packageUtils.addOrRemoveScripts(pkg, withTests, {
