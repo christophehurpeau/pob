@@ -17,10 +17,10 @@
   "publishConfig": {
     "access": "public"
   },
-  "main": "./lib/index.js",
+  "main": "lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "lint": "eslint --quiet lib/"
+    "lint": "eslint --quiet lib"
   },
   "prettier": {
     "trailingComma": "es5",

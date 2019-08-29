@@ -9,7 +9,7 @@
     "access": "public"
   },
   "scripts": {
-    "preversion": "node ./generate-package.json.js && git add package.json"
+    "preversion": "node generate-package.json.js && git add package.json"
   },
   "devDependencies": {
     "prettier": "1.18.2"

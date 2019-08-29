@@ -7,10 +7,10 @@
   "license": "ISC",
   "repository": "https://github.com:christophehurpeau/pob.git",
   "homepage": "https://github.com/christophehurpeau/pob",
-  "workspaces": ["packages/*"],
+  "workspaces": ["packages/*", "@pob/*"],
   "scripts": {
     "lint": "lerna run --stream lint",
-    "preversion": "yarn run lint --since && repository-check-dirty && node ./packages/pob-version/generate-index.js && git add ./packages/pob-version/lib/index.js",
+    "preversion": "yarn run lint --since && repository-check-dirty && node @pob/version/generate-index.js && git add ./@pob/version/lib/index.js",
     "postversion": "yarn && git add yarn.lock",
     "release": "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --create-release=github -m 'chore: release' && lerna publish from-git"
   },
@@ -25,12 +25,15 @@
   },
   "lint-staged": {
     "yarn.lock": ["yarn-deduplicate", "git add"],
-    "{package.json,packages/*/package.json,.eslintrc.json}": [
+    "{package.json,packages/*/package.json,@pob/*/package.json,.eslintrc.json}": [
       "prettier --parser json --write",
       "git add"
     ],
-    "{packages/*}/lib/**/*.json": ["prettier --parser json --write", "git add"],
-    "{packages/*}/lib/**/*.js": ["eslint --fix --quiet", "git add"]
+    "{packages/*,@pob/*}/lib/**/*.json": [
+      "prettier --parser json --write",
+      "git add"
+    ],
+    "{packages/*,@pob/*}/lib/**/*.js": ["eslint --fix --quiet", "git add"]
   },
   "commitlint": {
     "extends": ["@commitlint/config-conventional"]

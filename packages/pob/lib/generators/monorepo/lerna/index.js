@@ -8,26 +8,27 @@ const packageUtils = require('../../../utils/package');
 module.exports = class LernaGenerator extends Generator {
   initializing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-    const packagesPath = pkg.workspaces
-      ? pkg.workspaces[0].replace(/\/\*$/, '')
-      : 'packages';
+    const packagesPaths = pkg.workspaces
+      ? pkg.workspaces.map((workspace) => workspace.replace(/\/\*$/, ''))
+      : ['packages'];
 
-    this.packagesPath = packagesPath;
-    this.packageNames = existsSync(`${packagesPath}/`)
-      ? readdirSync(`${packagesPath}/`)
-      : [];
-    this.packages = this.packageNames
-      .map((packageName) =>
-        this.fs.readJSON(
-          this.destinationPath(`${packagesPath}/${packageName}/package.json`)
-        )
+    this.packagePaths = [].concat(
+      ...packagesPaths.map((packagesPath) => {
+        return existsSync(`${packagesPath}/`)
+          ? readdirSync(`${packagesPath}/`).map(
+              (packageName) => `${packagesPath}/${packageName}`
+            )
+          : [];
+      })
+    );
+    this.packages = this.packagePaths
+      .map((packagePath) =>
+        this.fs.readJSON(this.destinationPath(`${packagePath}/package.json`))
       )
       .filter(Boolean);
-    this.packagesConfig = this.packageNames
-      .map((packageName) =>
-        this.fs.readJSON(
-          this.destinationPath(`${packagesPath}/${packageName}/.yo-rc.json`)
-        )
+    this.packagesConfig = this.packagePaths
+      .map((packagePath) =>
+        this.fs.readJSON(this.destinationPath(`${packagePath}/.yo-rc.json`))
       )
       .filter(Boolean);
   }
@@ -72,7 +73,11 @@ module.exports = class LernaGenerator extends Generator {
       pkg.engines.npm = '>= 6.4.0';
     }
 
-    packageUtils.addDevDependencies(pkg, ['lerna', 'repository-check-dirty']);
+    packageUtils.addDevDependencies(pkg, ['lerna']);
+
+    if (pkg.name !== 'pob-lerna') {
+      packageUtils.addDevDependencies(pkg, ['repository-check-dirty']);
+    }
 
     packageUtils.removeDevDependencies(pkg, ['pob-release']);
 
@@ -85,12 +90,8 @@ module.exports = class LernaGenerator extends Generator {
       (config) => getPobConfig(config).envs.length !== 0
     );
     // ynnub doesnt use babel but still have typescript
-    const withTypescript = this.packageNames.some((packageName) =>
-      this.fs.exists(
-        this.destinationPath(
-          `${this.packagesPath}/${packageName}/tsconfig.json`
-        )
-      )
+    const withTypescript = this.packagePaths.some((packagePath) =>
+      this.fs.exists(this.destinationPath(`${packagePath}/tsconfig.json`))
     );
     const withDocumentation = this.packagesConfig.some(
       (config) => getPobConfig(config).documentation
@@ -172,14 +173,14 @@ module.exports = class LernaGenerator extends Generator {
   }
 
   end() {
-    this.packageNames.forEach((name) => {
+    this.packagePaths.forEach((packagePath) => {
       if (
-        !existsSync(`${this.packagesPath}/${name}/.yo-rc.json`) &&
-        !existsSync(`${this.packagesPath}/${name}/.pob.json`)
+        !existsSync(`${packagePath}/.yo-rc.json`) &&
+        !existsSync(`${packagePath}/.pob.json`)
       ) {
         return;
       }
-      console.log(`=> update ${name}`);
+      console.log(`=> update ${packagePath}`);
       spawnSync(
         process.argv[0],
         [
@@ -189,7 +190,7 @@ module.exports = class LernaGenerator extends Generator {
           this.options.force ? '--force' : undefined,
         ].filter(Boolean),
         {
-          cwd: `${this.packagesPath}/${name}`,
+          cwd: packagePath,
           stdio: 'inherit',
         }
       );

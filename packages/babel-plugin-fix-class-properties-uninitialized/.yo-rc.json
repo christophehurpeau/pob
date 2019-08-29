@@ -6,13 +6,8 @@
       "authorUrl": "https://christophe.hurpeau.com"
     },
     "pob-config": {
-      "entries": [
-        "index"
-      ],
       "documentation": false,
-      "testing": false,
-      "envs": [],
-      "withReact": false
+      "testing": false
     }
   },
   "babel-plugin-fix-class-properties-uninitialized": {

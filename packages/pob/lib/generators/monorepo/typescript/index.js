@@ -45,20 +45,21 @@ module.exports = class MonorepoTypescriptGenerator extends Generator {
         postbuild: 'yarn run build:definitions',
       });
 
-      const packagesPath = pkg.workspaces[0].replace(/\/\*$/, '');
-      const packageNames = JSON.parse(this.options.packageNames).filter(
-        (packageName) =>
-          existsSync(`${packagesPath}/${packageName}/tsconfig.json`)
-      );
+      const packagePaths = JSON.parse(this.options.packageNames)
+        .map(
+          (packageName) =>
+            `${packageName[0] === '@' ? '' : 'packages/'}${packageName}`
+        )
+        .filter((packagePath) => existsSync(`${packagePath}/tsconfig.json`));
       this.fs.copyTpl(this.templatePath('tsconfig.json.ejs'), tsconfigPath, {
-        packageNames,
+        packagePaths,
       });
       this.fs.copyTpl(
         this.templatePath('tsconfig.build.json.ejs'),
         tsconfigBuildPath,
         {
-          packageNames: packageNames.filter((packageName) =>
-            existsSync(`${packagesPath}/${packageName}/tsconfig.build.json`)
+          packagePaths: packagePaths.filter((packagePath) =>
+            existsSync(`${packagePath}/tsconfig.build.json`)
           ),
         }
       );

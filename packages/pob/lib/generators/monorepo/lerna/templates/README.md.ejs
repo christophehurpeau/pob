@@ -13,7 +13,7 @@ This repository is a monorepo that we manage using [Lerna](https://github.com/le
 | Package | Version | Description |
 |---------|---------|-------------|
 <% packages.filter(package => !package.name.endsWith('-example')).forEach(package => { -%>
-| [<%= package.name %>](<%= (package.repository && package.repository.directory) || `packages/${package.name}` %>) | <% if (!package.private) { -%><a href="https://npmjs.org/package/<%= package.name %>"><img src="https://img.shields.io/npm/v/<%= package.name %>.svg?style=flat-square"></a> <% } -%> | <%= package.description %>
+| [<%= package.name %>](<%= (package.repository && package.repository.directory) || (package.name[0] === '@' ? package.name : `packages/${package.name}`) %>) | <% if (!package.private) { -%><a href="https://npmjs.org/package/<%= package.name %>"><img src="https://img.shields.io/npm/v/<%= package.name %>.svg?style=flat-square"></a> <% } -%> | <%= package.description %>
 <% }) -%>
 
 <% if (content) { -%>

@@ -7,6 +7,13 @@ module.exports = class RenovateGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
+    this.option('disable', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+      desc: 'disable',
+    });
+
     this.option('app', {
       type: Boolean,
       required: false,
@@ -33,6 +40,10 @@ module.exports = class RenovateGenerator extends Generator {
   }
 
   async prompting() {
+    if (inLerna && !inLerna.root) {
+      return;
+    }
+
     if (this.options.updateOnly && this.enableRenovateConfig) {
       this.enableRenovate = this.enableRenovateConfig.enable;
       return;

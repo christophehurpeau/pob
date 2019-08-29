@@ -10,17 +10,18 @@
       "testing": false,
       "documentation": false,
       "packageNames": [
+        "@pob/renovate-config",
+        "@pob/version",
         "babel-plugin-fix-class-properties-uninitialized",
         "babel-plugin-pob-babel",
         "babel-plugin-transform-builtins",
+        "pob-lcov-reporter",
+        "repository-check-dirty",
         "babel-preset-pob-env",
-        "pob",
+        "pob-release",
         "pob-babel",
         "pob-dependencies",
-        "pob-lcov-reporter",
-        "pob-release",
-        "renovate-config",
-        "repository-check-dirty"
+        "pob"
       ],
       "typescript": false
     },

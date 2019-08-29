@@ -21,7 +21,7 @@ This repository is a monorepo that we manage using [Lerna](https://github.com/le
 | [pob-dependencies](packages/pob-dependencies) | <a href="https://npmjs.org/package/pob-dependencies"><img src="https://img.shields.io/npm/v/pob-dependencies.svg?style=flat-square"></a>  | easier dependencies upgrade with a real package.json
 | [pob-lcov-reporter](packages/pob-lcov-reporter) | <a href="https://npmjs.org/package/pob-lcov-reporter"><img src="https://img.shields.io/npm/v/pob-lcov-reporter.svg?style=flat-square"></a>  | custom lcov reporter for pob
 | [pob-release](packages/pob-release) | <a href="https://npmjs.org/package/pob-release"><img src="https://img.shields.io/npm/v/pob-release.svg?style=flat-square"></a>  | release with ease
-| [@pob/renovate-config](packages/renovate-config) | <a href="https://npmjs.org/package/@pob/renovate-config"><img src="https://img.shields.io/npm/v/@pob/renovate-config.svg?style=flat-square"></a>  | renovate pob config
-| [@pob/version](packages/pob-version) | <a href="https://npmjs.org/package/@pob/version"><img src="https://img.shields.io/npm/v/@pob/version.svg?style=flat-square"></a>  | version of pob
 | [repository-check-dirty](packages/repository-check-dirty) | <a href="https://npmjs.org/package/repository-check-dirty"><img src="https://img.shields.io/npm/v/repository-check-dirty.svg?style=flat-square"></a>  | check that a git repository is not dirty
+| [@pob/renovate-config](@pob/renovate-config) | <a href="https://npmjs.org/package/@pob/renovate-config"><img src="https://img.shields.io/npm/v/@pob/renovate-config.svg?style=flat-square"></a>  | renovate pob config
+| [@pob/version](packages/pob-version) | <a href="https://npmjs.org/package/@pob/version"><img src="https://img.shields.io/npm/v/@pob/version.svg?style=flat-square"></a>  | version of pob
 
