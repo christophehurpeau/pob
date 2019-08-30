@@ -46,7 +46,7 @@
     "@babel/core": "7.5.5",
     "@pob/eslint-config": "32.0.2",
     "@pob/eslint-config-node": "32.0.0",
-    "eslint": "6.2.2",
+    "eslint": "6.3.0",
     "prettier": "1.18.2"
   }
 }
