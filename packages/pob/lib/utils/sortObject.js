@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = function sortObject(obj, keys = []) {
-  const objCopy = Object.assign({}, obj);
+  const objCopy = { ...obj };
   const objKeys = Object.keys(obj);
   objKeys.forEach((key) => delete obj[key]);
   keys

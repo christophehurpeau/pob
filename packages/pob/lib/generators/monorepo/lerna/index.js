@@ -81,13 +81,13 @@ module.exports = class LernaGenerator extends Generator {
 
     packageUtils.removeDevDependencies(pkg, ['pob-release']);
 
-    const getPackagePobConfig = (config) =>
-      Object.assign({ babelEnvs: [] }, (config && config.pob) || {});
-    const getPobConfig = (config) =>
-      Object.assign(
-        {},
-        (config && config.pob && config.pob['pob-config']) || {}
-      );
+    const getPackagePobConfig = (config) => ({
+      babelEnvs: [],
+      ...((config && config.pob) || {}),
+    });
+    const getPobConfig = (config) => ({
+      ...((config && config.pob && config.pob['pob-config']) || {}),
+    });
     const withBabel = this.packages.some(
       (config) => getPackagePobConfig(config).babelEnvs.length !== 0
     );

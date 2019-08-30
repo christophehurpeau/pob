@@ -1933,12 +1933,12 @@
     universal-user-agent "^3.0.0"
     url-template "^2.0.8"
 
-"@pob/eslint-config-babel-common@^32.0.1":
-  version "32.0.1"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel-common/-/eslint-config-babel-common-32.0.1.tgz#38f22d0f27ccfe34b206662919bf9c62046052fb"
-  integrity sha512-hW5bfn82o2Hrlk9clekChM0cW/kHdClxVrZ/7UJrecAdmH2T5LLjrWZV0x+9xHKSNHfxyC3+kxy0kiXKPDUdBg==
+"@pob/eslint-config-babel-common@^32.0.2":
+  version "32.0.2"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel-common/-/eslint-config-babel-common-32.0.2.tgz#d38d0d5951308d7611cad00628b751fe234eaf6e"
+  integrity sha512-Rbbu4i6oLl0PCwHvIQHmmrlb4zujmiKtLhwI0CF6DXi0b1wAHnveETblKZYCtbaEE8WBRRVoLot89qQ/6199Zw==
   dependencies:
-    "@pob/eslint-config" "^32.0.0"
+    "@pob/eslint-config" "^32.0.2"
     eslint-config-airbnb-base "^14.0.0"
     eslint-plugin-prefer-class-properties "^1.0.0"
 
@@ -1949,12 +1949,12 @@
   dependencies:
     "@pob/eslint-config-node" "^32.0.0"
 
-"@pob/eslint-config-babel@32.0.1":
-  version "32.0.1"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel/-/eslint-config-babel-32.0.1.tgz#8189ccac2efae1549a6af163eb3eca496cdd80e1"
-  integrity sha512-IhkttOUlSVZXyiei/Yh40ONmxUph0y+vbIOUqoW51T9ZOeFhTTICXK8SK3kgkTE4ZSQchoP5VqCzzaD9E7wV8Q==
+"@pob/eslint-config-babel@32.0.2":
+  version "32.0.2"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel/-/eslint-config-babel-32.0.2.tgz#065bdf565e5349ff5927e928451b9ccb1e6391de"
+  integrity sha512-jKDGJZY67ti74LDMLWUqeAke8wzPeFe9H/bQqXDMwCyANX3E4WLnJE6zVG5yRirle/OA6gsmL516nE069HZj/A==
   dependencies:
-    "@pob/eslint-config-babel-common" "^32.0.1"
+    "@pob/eslint-config-babel-common" "^32.0.2"
     babel-eslint "^10.0.3"
 
 "@pob/eslint-config-node@32.0.0", "@pob/eslint-config-node@^32.0.0":
@@ -1982,20 +1982,20 @@
   dependencies:
     "@pob/eslint-config-react" "^32.0.0"
 
-"@pob/eslint-config-typescript@32.0.1":
-  version "32.0.1"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript/-/eslint-config-typescript-32.0.1.tgz#b0b55f3eff905a45024f299706ad0ab9d1d0b683"
-  integrity sha512-4cFxDrnAiIfGs1a06zS9k59tXwpi3y7XcJgJ9zJYhkVK1DQk7tkVfVa1bDGt5aaRmrbpWclOVteYvKbgJVN81g==
+"@pob/eslint-config-typescript@32.0.2":
+  version "32.0.2"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript/-/eslint-config-typescript-32.0.2.tgz#0768a6df060f48174718e2de52e9d09ba76af36f"
+  integrity sha512-I3sZFtCOu7soOmINVPnqdW7FaCRQsCz9T/SPBFlkIEHiJdS32kqREA+jzD//CUziJ+lSMnAJWObl0LIbKE8l5Q==
   dependencies:
-    "@pob/eslint-config-babel-common" "^32.0.1"
+    "@pob/eslint-config-babel-common" "^32.0.2"
     "@typescript-eslint/eslint-plugin" "^2.0.0"
     "@typescript-eslint/parser" "^2.0.0"
     eslint-config-prettier "^6.1.0"
 
-"@pob/eslint-config@32.0.0", "@pob/eslint-config@^32.0.0":
-  version "32.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-32.0.0.tgz#a842900f1de0e60c6070170368862364d8c92d17"
-  integrity sha512-YKUkv2ZLPbaFoUKpOaJujfeS6M+OBEA20Dcyz8W1kd8fqRtIkBWYFumRVP7b+DcmHk3OAsEAwpNDQ6PLgddlSw==
+"@pob/eslint-config@32.0.2", "@pob/eslint-config@^32.0.2":
+  version "32.0.2"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-32.0.2.tgz#a3b5ac765fb441e80e21c330a95dffcecdd62cc8"
+  integrity sha512-HLaF5TpUo3Oq1JgebHluhj+mFPQmEY9bt8hQgT22+kjM5x6ffLVwgpwdMZiIOOm7bF/KVt+vUxBKgqfu3ZnLtw==
   dependencies:
     eslint-config-airbnb-base "^14.0.0"
     eslint-config-prettier "^6.1.0"
@@ -3566,7 +3566,7 @@ create-error-class@^3.0.0:
   dependencies:
     capture-stack-trace "^1.0.0"
 
-cross-env@5.2.0, cross-env@^5.2.0:
+cross-env@^5.2.0:
   version "5.2.0"
   resolved "https://registry.yarnpkg.com/cross-env/-/cross-env-5.2.0.tgz#6ecd4c015d5773e614039ee529076669b9d126f2"
   integrity sha512-jtdNFfFW1hB7sMhr/H6rW1Z45LFqyI431m3qU6bFXcQ3Eh7LtBuG3h74o7ohHZ3crrRkkqHlo4jYHFPcjroANg==
@@ -10343,7 +10343,7 @@ yargs@^13.3.0:
     y18n "^4.0.0"
     yargs-parser "^13.1.1"
 
-yarn-deduplicate@1.1.1, yarn-deduplicate@^1.1.1:
+yarn-deduplicate@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/yarn-deduplicate/-/yarn-deduplicate-1.1.1.tgz#19b4a87654b66f55bf3a4bd6b153b4e4ab1b6e6d"
   integrity sha512-2FDJ1dFmtvqhRmfja89ohYzpaheCYg7BFBSyaUq+kxK0y61C9oHv1XaQovCWGJtP2WU8PksQOgzMVV7oQOobzw==
@@ -10352,14 +10352,7 @@ yarn-deduplicate@1.1.1, yarn-deduplicate@^1.1.1:
     commander "^2.10.0"
     semver "^5.3.0"
 
-yarn-update-lock@1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/yarn-update-lock/-/yarn-update-lock-1.0.0.tgz#2b06b953246770a93f85fe28eec8d78e94a0be84"
-  integrity sha512-eXbu2pbTKl61dmm4406qGP9VbPUdy9ZdQaAeS7iL4yQyap/4gKombMt9xddxqWGr4SZOaPb/qX1J825ihGQIiw==
-  dependencies:
-    yarn-deduplicate "^1.1.1"
-
-yarnhook@0.4.2, yarnhook@^0.4.2:
+yarnhook@^0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/yarnhook/-/yarnhook-0.4.2.tgz#7cb6a82ac4f7ad2b2df531ec5f427734a4c388ed"
   integrity sha512-kgX/R9I5yMgJMhr7pjX7mg7bUAwZK4IONtMjspOsniEi+WTbN0c2oMdE+9pakUof68aeFhOOXzmy8Ug9EMnVzw==

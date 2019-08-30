@@ -397,7 +397,7 @@ module.exports = class BabelGenerator extends Generator {
         );
       switch (String(minNodeVersion)) {
         case '8':
-          pkg.engines.node = '>=8.3.0';
+          pkg.engines.node = '>=8.6.0';
           if (pkg.dependencies && pkg.dependencies['@types/node']) {
             pkg.dependencies['@types/node'] = '>=8.0.0';
           }
@@ -459,8 +459,8 @@ module.exports = class BabelGenerator extends Generator {
         pkg.types = './lib/index.d.ts';
       }
       if (!pkg.engines) pkg.engines = {};
-      if (!pkg.engines.node || semver.lt(pkg.engines.node.slice(2), '6.5.0')) {
-        pkg.engines.node = '>=6.5.0';
+      if (!pkg.engines.node || semver.lt(pkg.engines.node.slice(2), '8.6.0')) {
+        pkg.engines.node = '>=8.6.0';
       }
     }
 

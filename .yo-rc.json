@@ -5,7 +5,7 @@
       "testing": false,
       "documentation": false,
       "packageNames": [
-        "@pob/renovate-config",
+        "@pob/repo-config",
         "@pob/version",
         "babel-plugin-fix-class-properties-uninitialized",
         "babel-plugin-pob-babel",
@@ -16,6 +16,7 @@
         "pob-release",
         "pob-babel",
         "pob-dependencies",
+        "@pob/renovate-config",
         "pob"
       ],
       "typescript": false

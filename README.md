@@ -23,5 +23,6 @@ This repository is a monorepo that we manage using [Lerna](https://github.com/le
 | [pob-release](packages/pob-release) | <a href="https://npmjs.org/package/pob-release"><img src="https://img.shields.io/npm/v/pob-release.svg?style=flat-square"></a>  | release with ease
 | [repository-check-dirty](packages/repository-check-dirty) | <a href="https://npmjs.org/package/repository-check-dirty"><img src="https://img.shields.io/npm/v/repository-check-dirty.svg?style=flat-square"></a>  | check that a git repository is not dirty
 | [@pob/renovate-config](@pob/renovate-config) | <a href="https://npmjs.org/package/@pob/renovate-config"><img src="https://img.shields.io/npm/v/@pob/renovate-config.svg?style=flat-square"></a>  | renovate pob config
-| [@pob/version](packages/pob-version) | <a href="https://npmjs.org/package/@pob/version"><img src="https://img.shields.io/npm/v/@pob/version.svg?style=flat-square"></a>  | version of pob
+| [@pob/repo-config](@pob/repo-config) | <a href="https://npmjs.org/package/@pob/repo-config"><img src="https://img.shields.io/npm/v/@pob/repo-config.svg?style=flat-square"></a>  | repo config
+| [@pob/version](@pob/version) | <a href="https://npmjs.org/package/@pob/version"><img src="https://img.shields.io/npm/v/@pob/version.svg?style=flat-square"></a>  | version of pob
 

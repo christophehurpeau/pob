@@ -15,7 +15,7 @@
     "url": "https://github.com/christophehurpeau/pob/issues"
   },
   "engines": {
-    "node": ">=8.1.0"
+    "node": ">=8.6.0"
   },
   "main": "./lib/index.js",
   "bin": {
@@ -30,6 +30,7 @@
     "singleQuote": true,
     "arrowParens": "always"
   },
+  "pob": {},
   "dependencies": {
     "@lerna/package-graph": "^3.13.0",
     "@lerna/project": "^3.13.1",
@@ -53,7 +54,7 @@
     "yeoman-generator": "^4.0.0"
   },
   "devDependencies": {
-    "@pob/eslint-config": "32.0.0",
+    "@pob/eslint-config": "32.0.2",
     "@pob/eslint-config-node": "32.0.0",
     "eslint": "6.2.2"
   },

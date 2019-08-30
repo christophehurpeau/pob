@@ -14,26 +14,12 @@
     "postversion": "yarn && git add yarn.lock",
     "release": "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git"
   },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -e $HUSKY_GIT_PARAMS",
-      "post-checkout": "yarnhook",
-      "post-merge": "yarnhook",
-      "post-rewrite": "yarnhook",
-      "pre-commit": "lint-staged"
-    }
-  },
   "commitlint": {
     "extends": ["@commitlint/config-conventional"]
   },
   "devDependencies": {
-    "@commitlint/cli": "8.1.0",
-    "@commitlint/config-conventional": "8.1.0",
-    "cross-env": "5.2.0",
     "husky": "3.0.4",
     "lerna": "3.16.4",
-    "repository-check-dirty": "./packages/repository-check-dirty",
-    "yarn-update-lock": "1.0.0",
-    "yarnhook": "0.4.2"
+    "repository-check-dirty": "./packages/repository-check-dirty"
   }
 }

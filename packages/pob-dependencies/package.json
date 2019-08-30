@@ -12,7 +12,7 @@
   },
   "homepage": "https://github.com/christophehurpeau/pob",
   "engines": {
-    "node": ">=6.5.0"
+    "node": ">=8.6.0"
   },
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -25,17 +25,18 @@
     "singleQuote": true,
     "arrowParens": "always"
   },
+  "pob": {},
   "devDependencies": {
     "@babel/core": "7.5.5",
     "@babel/preset-env": "7.5.5",
     "@babel/preset-react": "7.0.0",
     "@babel/runtime": "7.5.5",
-    "@pob/eslint-config": "32.0.0",
-    "@pob/eslint-config-babel": "32.0.1",
+    "@pob/eslint-config": "32.0.2",
+    "@pob/eslint-config-babel": "32.0.2",
     "@pob/eslint-config-babel-node": "32.0.0",
     "@pob/eslint-config-node": "32.0.0",
     "@pob/eslint-config-react": "32.0.0",
-    "@pob/eslint-config-typescript": "32.0.1",
+    "@pob/eslint-config-typescript": "32.0.2",
     "@pob/eslint-config-typescript-react": "32.0.0",
     "@pob/repo-config": "^1.0.0",
     "@pob/version": "^4.33.0",
