@@ -1964,7 +1964,18 @@
   dependencies:
     eslint-plugin-node "^9.2.0"
 
-"@pob/eslint-config-react@32.0.0", "@pob/eslint-config-react@^32.0.0":
+"@pob/eslint-config-react@32.0.9":
+  version "32.0.9"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-react/-/eslint-config-react-32.0.9.tgz#145ad13dabeca280cd3e66353f0c9640572155b7"
+  integrity sha512-pZk4AHEzPJ+yZ5WmUe0Le3NcgHgDw5KmECykvXP8/rkybbrfxIOIvkpJ7MrqRfnQ8hVUH+PMeA2hROeBv2J8og==
+  dependencies:
+    eslint-config-airbnb "^18.0.1"
+    eslint-config-prettier "^6.1.0"
+    eslint-plugin-jsx-a11y "^6.2.3"
+    eslint-plugin-react "^7.14.3"
+    eslint-plugin-react-hooks "^2.0.1"
+
+"@pob/eslint-config-react@^32.0.0":
   version "32.0.0"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config-react/-/eslint-config-react-32.0.0.tgz#c1922136bfcea105cae3cf0b28c03dd28fb8c859"
   integrity sha512-ifBTefN70SR6Kp2B862kdlNorbhIYpLfsvmEzL3OdDz3G3n/VdjMhZ7PkPLpH5VIemkjSA5+OX3yRQbLZFz6NA==
