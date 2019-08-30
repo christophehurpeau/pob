@@ -46,10 +46,11 @@ module.exports = class PobLibGenerator extends Generator {
     }
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    const pobPkgConfig = pkg.pob || {};
 
-    let babelEnvs = this.pobjson.envs || pkg.pob.babelEnvs;
-    const entries = this.pobjson.entries || pkg.pob.entries;
-    const withReact = this.pobjson.withReact || pkg.pob.withReact;
+    let babelEnvs = this.pobjson.envs || pobPkgConfig.babelEnvs;
+    const entries = this.pobjson.entries || pobPkgConfig.entries;
+    const withReact = this.pobjson.withReact || pobPkgConfig.withReact;
 
     if (babelEnvs && typeof babelEnvs[0] === 'string') {
       babelEnvs = babelEnvs.map((env) => {
