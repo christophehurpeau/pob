@@ -94,7 +94,7 @@ module.exports = class LintGenerator extends Generator {
         '@pob/eslint-config-node',
       ]);
 
-      packageUtils.addOrRemoveDevDependencies(pkg, useBabel, [
+      packageUtils.addOrRemoveDevDependencies(pkg, useBabel && !typescript, [
         '@pob/eslint-config-babel',
       ]);
       packageUtils.addOrRemoveDevDependencies(pkg, useBabel && useNodeOnly, [
@@ -125,9 +125,9 @@ module.exports = class LintGenerator extends Generator {
 
       if (useBabel) {
         return [
-          '@pob/eslint-config-babel',
-          useNodeOnly && '@pob/eslint-config-babel-node',
+          !typescript && '@pob/eslint-config-babel',
           typescript && '@pob/eslint-config-typescript',
+          useNodeOnly && '@pob/eslint-config-babel-node',
           hasReact &&
             `@pob/eslint-config-${typescript ? 'typescript-' : ''}react`,
         ].filter(Boolean);
