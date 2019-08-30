@@ -1942,10 +1942,10 @@
     eslint-config-airbnb-base "^14.0.0"
     eslint-plugin-prefer-class-properties "^1.0.0"
 
-"@pob/eslint-config-babel-node@32.0.6":
-  version "32.0.6"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel-node/-/eslint-config-babel-node-32.0.6.tgz#aaa35e2a9030db26aae33d883ff39c565c77ac4d"
-  integrity sha512-8/AJdZSa6KAps7Ql+BUEkRuZ6qcjfi+UEEDeC4DRv9jpzwlWkw1/utnlQ4U9Rw5v4tKuPgvfHT+IBZxgMOMI9w==
+"@pob/eslint-config-babel-node@32.0.7":
+  version "32.0.7"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel-node/-/eslint-config-babel-node-32.0.7.tgz#cc2ea12f4e3b7413ca4f37314f3be83864bae3ea"
+  integrity sha512-/CNoW8TWdVHNc9CkqMLwftmlOjcUpUkapdPv0uukQ0xjmsUZnEIaXpLdNhzznHzGc0pDAFNCPx17N5lGSgVfog==
   dependencies:
     eslint-plugin-node "^9.2.0"
 
