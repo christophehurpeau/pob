@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@1.5.0...babel-plugin-fix-class-properties-uninitialized@1.6.0) (2019-08-30)
+
+
+### Bug Fixes
+
+* self update ([02173ba](https://github.com/christophehurpeau/pob/commit/02173ba))
+
+
+### Features
+
+* update pob eslint config ([6e00b7a](https://github.com/christophehurpeau/pob/commit/6e00b7a))
+
+
+
+
+
 # [1.5.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@1.4.2...babel-plugin-fix-class-properties-uninitialized@1.5.0) (2019-08-29)
 
 

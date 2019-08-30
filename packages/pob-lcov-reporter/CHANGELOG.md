@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.2](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@1.2.1...pob-lcov-reporter@1.2.2) (2019-08-30)
+
+
+### Bug Fixes
+
+* self update ([02173ba](https://github.com/christophehurpeau/pob/commit/02173ba))
+
+
+
+
+
 ## [1.2.1](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@1.2.0...pob-lcov-reporter@1.2.1) (2019-07-12)
 
 **Note:** Version bump only for package pob-lcov-reporter

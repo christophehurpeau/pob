@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.20.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.19.1...pob-babel@23.20.0) (2019-08-30)
+
+
+### Bug Fixes
+
+* bring back index.d.ts in pob-babel ([ddb8214](https://github.com/christophehurpeau/pob/commit/ddb8214))
+* self update ([02173ba](https://github.com/christophehurpeau/pob/commit/02173ba))
+
+
+### Features
+
+* update pob eslint config ([6e00b7a](https://github.com/christophehurpeau/pob/commit/6e00b7a))
+
+
+
+
+
 ## [23.19.1](https://github.com/christophehurpeau/pob/compare/pob-babel@23.19.0...pob-babel@23.19.1) (2019-08-29)
 
 **Note:** Version bump only for package pob-babel

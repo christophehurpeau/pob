@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.14.0](https://github.com/christophehurpeau/pob/compare/pob-release@4.13.3...pob-release@4.14.0) (2019-08-30)
+
+
+### Bug Fixes
+
+* self update ([02173ba](https://github.com/christophehurpeau/pob/commit/02173ba))
+* **deps:** update dependency conventional-recommended-bump to v6 ([#258](https://github.com/christophehurpeau/pob/issues/258)) ([8802e18](https://github.com/christophehurpeau/pob/commit/8802e18))
+
+
+### Features
+
+* update pob eslint config ([6e00b7a](https://github.com/christophehurpeau/pob/commit/6e00b7a))
+
+
+
+
+
 ## [4.13.3](https://github.com/christophehurpeau/pob/compare/pob-release@4.13.2...pob-release@4.13.3) (2019-08-29)
 
 

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.27.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.26.0...pob-dependencies@0.27.0) (2019-08-30)
+
+
+### Bug Fixes
+
+* missing @pob/repo-config in pob-dependencies ([887bc0f](https://github.com/christophehurpeau/pob/commit/887bc0f))
+* pob fixes ([7cf9b35](https://github.com/christophehurpeau/pob/commit/7cf9b35))
+* self update ([02173ba](https://github.com/christophehurpeau/pob/commit/02173ba))
+
+
+### Features
+
+* update pob eslint config ([6e00b7a](https://github.com/christophehurpeau/pob/commit/6e00b7a))
+* **deps:** update dependency @types/jest to v24.0.18 ([#269](https://github.com/christophehurpeau/pob/issues/269)) ([6e2473d](https://github.com/christophehurpeau/pob/commit/6e2473d))
+* **deps:** update dependency husky to v3.0.4 ([#264](https://github.com/christophehurpeau/pob/issues/264)) ([e1eb00c](https://github.com/christophehurpeau/pob/commit/e1eb00c))
+* **deps:** update jest monorepo to v24.9.0 ([#267](https://github.com/christophehurpeau/pob/issues/267)) ([622f5d0](https://github.com/christophehurpeau/pob/commit/622f5d0))
+
+
+
+
+
 # [0.26.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.25.3...pob-dependencies@0.26.0) (2019-08-29)
 
 
