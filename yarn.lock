@@ -1942,6 +1942,15 @@
     eslint-config-airbnb-base "^14.0.0"
     eslint-plugin-prefer-class-properties "^1.0.0"
 
+"@pob/eslint-config-babel-common@^32.0.3":
+  version "32.0.3"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel-common/-/eslint-config-babel-common-32.0.3.tgz#ece192cb8bd47cf60b18b1a7d6a8e8a414cd206f"
+  integrity sha512-rj04NwkMq1EQZaqkkDCM90snfl0rOiu+l7GCA10NRxKwFRyKdL8ihECzZUmn8E2TgsiVd3w6US2eU82s0mDn8w==
+  dependencies:
+    "@pob/eslint-config" "^32.0.2"
+    eslint-config-airbnb-base "^14.0.0"
+    eslint-plugin-prefer-class-properties "^1.0.0"
+
 "@pob/eslint-config-babel-node@32.0.0":
   version "32.0.0"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel-node/-/eslint-config-babel-node-32.0.0.tgz#381be90b22f1b23e1706c6fa90d6f4d282615d8e"
@@ -1949,12 +1958,12 @@
   dependencies:
     "@pob/eslint-config-node" "^32.0.0"
 
-"@pob/eslint-config-babel@32.0.2":
-  version "32.0.2"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel/-/eslint-config-babel-32.0.2.tgz#065bdf565e5349ff5927e928451b9ccb1e6391de"
-  integrity sha512-jKDGJZY67ti74LDMLWUqeAke8wzPeFe9H/bQqXDMwCyANX3E4WLnJE6zVG5yRirle/OA6gsmL516nE069HZj/A==
+"@pob/eslint-config-babel@32.0.3":
+  version "32.0.3"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel/-/eslint-config-babel-32.0.3.tgz#8014cf020266497f0a488129547d4efba8c2d0dd"
+  integrity sha512-yBBREmSMQUwD8dERyu8KlgV92BSTqZipbNa+6EkTrp4U2joaV6WVKxEI2vV75TXTdCRfoqWpeGKPLhze7LMvVw==
   dependencies:
-    "@pob/eslint-config-babel-common" "^32.0.2"
+    "@pob/eslint-config-babel-common" "^32.0.3"
     babel-eslint "^10.0.3"
 
 "@pob/eslint-config-node@32.0.0", "@pob/eslint-config-node@^32.0.0":
