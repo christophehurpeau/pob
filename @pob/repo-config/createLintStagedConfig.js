@@ -27,7 +27,7 @@ module.exports = function createLintStagedConfig() {
     }}`]: (filenames) => [
       'yarn --prefer-offline',
       'yarn-deduplicate',
-      'git add',
+      'git add yarn.lock',
     ],
     [`{.eslintrc.json,package.json${
       workspaces
