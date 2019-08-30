@@ -70,20 +70,17 @@ module.exports = class PackageGenerator extends Generator {
           message: "Author's Name",
           when: !author || !author.name,
           default: this.user.git.name(),
-          store: true,
         },
         {
           name: 'authorEmail',
           message: "Author's Email",
           when: !author || !author.email,
           default: this.user.git.email(),
-          store: true,
         },
         {
           name: 'authorUrl',
           message: "Author's Homepage",
           when: !author || !author.url,
-          store: true,
         },
       ].filter(Boolean)
     );
@@ -112,20 +109,15 @@ module.exports = class PackageGenerator extends Generator {
       url: props.authorUrl || (author && author.url),
     };
 
-    Object.assign(
-      pkg,
-      {
-        author: `${author.name} <${author.email}>${
-          author.url ? ` (${author.url})` : ''
-        }`,
-        keywords: [],
-      },
-      Object.assign({}, pkg)
-    );
+    pkg.author = `${author.name} <${author.email}>${
+      author.url ? ` (${author.url})` : ''
+    }`;
 
     if (pkg.private) {
       if (!pkg.description) delete pkg.description;
       if (!pkg.keywords || pkg.keywords.length === 0) delete pkg.keywords;
+    } else if (!pkg.keywords) {
+      pkg.keywords = [];
     }
 
     if (!pkg.private && !pkg.version) {
