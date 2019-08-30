@@ -1993,10 +1993,10 @@
   dependencies:
     "@pob/eslint-config-react" "^32.0.0"
 
-"@pob/eslint-config-typescript@32.0.6":
-  version "32.0.6"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript/-/eslint-config-typescript-32.0.6.tgz#d6204f2fe8d67f64176a23c28d4ea9eb15d081b8"
-  integrity sha512-NUfvuIlcxugHEWoM/nOOSbkw2kcLlpQe8dN+d9xOY3Y8bg2P3I64u3Cf4zAd0J8sVKIXCaK6v2juCixAK6tObQ==
+"@pob/eslint-config-typescript@32.0.8":
+  version "32.0.8"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript/-/eslint-config-typescript-32.0.8.tgz#ceae8113c9b3f2d296cbf6394a7cbca9f6cbf290"
+  integrity sha512-c+NSZmVGOBXVsz/8PfIu+MdZvjacjj1jxOVelmKnTgIJDEezDfvPiIOhin97MqzdYIzxbFegnUveGo3lFPTzuw==
   dependencies:
     "@pob/eslint-config-babel-common" "^32.0.3"
     "@typescript-eslint/eslint-plugin" "^2.0.0"
