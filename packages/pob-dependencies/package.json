@@ -37,7 +37,7 @@
     "@pob/eslint-config-node": "32.0.0",
     "@pob/eslint-config-react": "32.0.10",
     "@pob/eslint-config-typescript": "32.0.8",
-    "@pob/eslint-config-typescript-react": "32.0.9",
+    "@pob/eslint-config-typescript-react": "32.0.10",
     "@pob/repo-config": "^1.0.1",
     "@pob/version": "^4.33.1",
     "@types/jest": "24.0.18",
