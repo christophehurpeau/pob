@@ -34,7 +34,7 @@
     "@pob/eslint-config": "32.0.2",
     "@pob/eslint-config-babel": "32.0.3",
     "@pob/eslint-config-babel-node": "32.0.7",
-    "@pob/eslint-config-node": "32.0.0",
+    "@pob/eslint-config-node": "32.0.13",
     "@pob/eslint-config-react": "32.0.10",
     "@pob/eslint-config-typescript": "32.0.12",
     "@pob/eslint-config-typescript-react": "32.0.10",
