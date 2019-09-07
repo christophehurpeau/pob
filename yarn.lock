@@ -2052,12 +2052,12 @@
     "@pob/eslint-config-babel-common" "^32.0.3"
     babel-eslint "^10.0.3"
 
-"@pob/eslint-config-node@32.0.0":
-  version "32.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-node/-/eslint-config-node-32.0.0.tgz#d8f302f6568bf023261638987bbe75733cbd1bf2"
-  integrity sha512-m41GomyPY24rHakl8teo5YRt3DLtBjEUwk8z6zXXnlVAfemg0cQAc0RwVsA2ZE/nqiqZUnJLfdcawhl3BnK5jQ==
+"@pob/eslint-config-node@32.0.13":
+  version "32.0.13"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-node/-/eslint-config-node-32.0.13.tgz#1682a68b1375795c090ea58d2301ca1b2ac3732b"
+  integrity sha512-lUrTbkYyDPvtHbAdGQov/mouJHTLhfxN3KloM212REOLnAHtTKZbFNaRUugA/m1YHtV8GO7mUiYW2igNyNnTDA==
   dependencies:
-    eslint-plugin-node "^9.2.0"
+    eslint-plugin-node "^10.0.0"
 
 "@pob/eslint-config-react@32.0.10", "@pob/eslint-config-react@^32.0.10":
   version "32.0.10"
@@ -4268,6 +4268,14 @@ eslint-plugin-es@^1.4.1:
     eslint-utils "^1.4.2"
     regexpp "^2.0.1"
 
+eslint-plugin-es@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-es/-/eslint-plugin-es-2.0.0.tgz#0f5f5da5f18aa21989feebe8a73eadefb3432976"
+  integrity sha512-f6fceVtg27BR02EYnBhgWLFQfK6bN4Ll0nQFrBHOlCsAyxeZkn0NHns5O0YZOPrV1B3ramd6cgFwaoFLcSkwEQ==
+  dependencies:
+    eslint-utils "^1.4.2"
+    regexpp "^3.0.0"
+
 eslint-plugin-import@^2.18.2:
   version "2.18.2"
   resolved "https://registry.yarnpkg.com/eslint-plugin-import/-/eslint-plugin-import-2.18.2.tgz#02f1180b90b077b33d447a17a2326ceb400aceb6"
@@ -4299,6 +4307,18 @@ eslint-plugin-jsx-a11y@^6.2.3:
     emoji-regex "^7.0.2"
     has "^1.0.3"
     jsx-ast-utils "^2.2.1"
+
+eslint-plugin-node@^10.0.0:
+  version "10.0.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-node/-/eslint-plugin-node-10.0.0.tgz#fd1adbc7a300cf7eb6ac55cf4b0b6fc6e577f5a6"
+  integrity sha512-1CSyM/QCjs6PXaT18+zuAXsjXGIGo5Rw630rSKwokSs2jrYURQc4R5JZpoanNCqwNmepg+0eZ9L7YiRUJb8jiQ==
+  dependencies:
+    eslint-plugin-es "^2.0.0"
+    eslint-utils "^1.4.2"
+    ignore "^5.1.1"
+    minimatch "^3.0.4"
+    resolve "^1.10.1"
+    semver "^6.1.0"
 
 eslint-plugin-node@^9.2.0:
   version "9.2.0"
@@ -8706,6 +8726,11 @@ regexpp@^2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-2.0.1.tgz#8d19d31cf632482b589049f8281f93dbcba4d07f"
   integrity sha512-lv0M6+TkDVniA3aD1Eg0DVpfU/booSu7Eev3TDO/mZKHBfVjgCGTV4t4buppESEYDtkArYFOxTJWv6S5C+iaNw==
+
+regexpp@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/regexpp/-/regexpp-3.0.0.tgz#dd63982ee3300e67b41c1956f850aa680d9d330e"
+  integrity sha512-Z+hNr7RAVWxznLPuA7DIh8UNX1j9CDrUQxskw9IrBE1Dxue2lyXT+shqEIeLUjrokxIP8CMy1WkjgG3rTsd5/g==
 
 regexpu-core@^4.5.4:
   version "4.5.4"
