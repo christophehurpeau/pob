@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.37.2](https://github.com/christophehurpeau/pob/compare/pob@4.37.1...pob@4.37.2) (2019-09-13)
+
+
+### Bug Fixes
+
+* update to node 12.10 in circleci template ([f7a0d44](https://github.com/christophehurpeau/pob/commit/f7a0d44))
+
+
+
+
+
 ## [4.37.1](https://github.com/christophehurpeau/pob/compare/pob@4.37.0...pob@4.37.1) (2019-09-13)
 
 **Note:** Version bump only for package pob
