@@ -248,8 +248,6 @@ module.exports = class PobLibGenerator extends Generator {
       this.composeWith(require.resolve('../common/husky'), {});
     }
 
-    this.composeWith(require.resolve('../common/format-lint'), {});
-
     this.composeWith(require.resolve('../common/old-dependencies'));
 
     this.composeWith(require.resolve('./testing'), {
@@ -261,11 +259,15 @@ module.exports = class PobLibGenerator extends Generator {
       // travisci: this.pobjson.testing && this.pobjson.testing.travisci,
     });
 
+    // must be after testing
+    this.composeWith(require.resolve('../common/format-lint'), {});
+
     this.composeWith(require.resolve('./doc'), {
       enabled: this.pobjson.documentation,
       testing: this.pobjson.testing,
     });
 
+    // must be after doc, testing
     this.composeWith(require.resolve('./readme'), {
       documentation: !!this.pobjson.documentation,
       testing: !!this.pobjson.testing,
@@ -274,6 +276,7 @@ module.exports = class PobLibGenerator extends Generator {
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
     });
 
+    // must be after doc, testing
     this.composeWith(require.resolve('../core/gitignore'), {
       root: !inLerna,
       withBabel: babelEnvs.length !== 0,

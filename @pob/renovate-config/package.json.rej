@@ -1,0 +1,18 @@
+diff a/@pob/renovate-config/package.json b/@pob/renovate-config/package.json	(rejected hunks)
+@@ -70,13 +70,3 @@
+-          "packageNames": [
+-            "husky",
+-            "lint-staged",
+-            "prettier"
+-          ],
+-          "updateTypes": [
+-            "patch",
+-            "minor"
+-          ],
+-          "labels": [
+-            ":ok_hand: code/approved",
+-            ":soon: automerge"
+-          ],
++          "packageNames": ["husky", "lint-staged", "prettier"],
++          "updateTypes": ["patch", "minor"],
++          "labels": [":ok_hand: code/approved", ":soon: automerge"],

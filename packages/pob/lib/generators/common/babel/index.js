@@ -344,11 +344,11 @@ module.exports = class BabelGenerator extends Generator {
 
     if (pkg.dependencies && pkg.dependencies['pob-babel']) {
       // update pob-babel in alp-dev
-      packageUtils.addDependencies(pkg, ['pob-babel']);
+      packageUtils.addDependencies(pkg, ['pob-babel'], '^');
     }
     if (pkg.dependencies && pkg.dependencies['@babel/runtime']) {
       // update pob-babel in alp-dev
-      packageUtils.addDependencies(pkg, ['@babel/runtime']);
+      packageUtils.addDependencies(pkg, ['@babel/runtime'], '^');
     }
 
     packageUtils.addOrRemoveDevDependencies(

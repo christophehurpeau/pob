@@ -19,12 +19,6 @@ module.exports = class LintGenerator extends Generator {
     });
   }
 
-  configuring() {
-    if (this.fs.exists(this.destinationPath('.eslintignore'))) {
-      this.fs.delete(this.destinationPath('.eslintignore'));
-    }
-  }
-
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     const babelEnvs = (pkg.pob && pkg.pob.babelEnvs) || [];
@@ -37,6 +31,16 @@ module.exports = class LintGenerator extends Generator {
       !useBabel ||
       (babelEnvs.length !== 0 &&
         babelEnvs.every((env) => env.target === 'node'));
+    const useTypescript = useBabel;
+
+    if (useTypescript) {
+      this.fs.copy(
+        this.templatePath('eslintignore.txt'),
+        this.destinationPath('.eslintignore')
+      );
+    } else if (this.fs.exists(this.destinationPath('.eslintignore'))) {
+      this.fs.delete(this.destinationPath('.eslintignore'));
+    }
 
     if (pkg.scripts) {
       delete pkg.scripts.postmerge;
@@ -174,6 +178,7 @@ module.exports = class LintGenerator extends Generator {
         eslintConfig.plugins = ['@typescript-eslint'];
         eslintConfig.parserOptions = {
           project: './tsconfig.json',
+          createDefaultProgram: true, // fix for lint-staged
         };
       }
       this.fs.writeJSON(eslintrcPath, eslintConfig);
@@ -195,6 +200,7 @@ module.exports = class LintGenerator extends Generator {
           eslintConfig.plugins = ['@typescript-eslint'];
           eslintConfig.parserOptions = {
             project: './tsconfig.json',
+            createDefaultProgram: true, // fix for lint-staged
           };
         } else {
           if (

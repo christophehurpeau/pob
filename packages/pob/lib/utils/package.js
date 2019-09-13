@@ -144,7 +144,7 @@ const internalRemoveDependencies = (pkg, type, dependencies) => {
 const getVersionFromDependencyName = (dependency) =>
   pobDependencies[dependency];
 
-const internalAddDependencies = (pkg, type, dependencies, cleaned) => {
+const internalAddDependencies = (pkg, type, dependencies, cleaned, prefix) => {
   const ignoreDependencies =
     type === 'dependencies' ? {} : pkg.dependencies || {};
   const currentDependencies = pkg[type];
@@ -179,7 +179,9 @@ const internalAddDependencies = (pkg, type, dependencies, cleaned) => {
       const currentVersion = currentDependencies[dependency];
       const potentialNewVersionCleaned = cleanVersion(potentialNewVersion);
       const getNewVersion = () =>
-        cleaned ? potentialNewVersionCleaned : potentialNewVersion;
+        cleaned
+          ? `${prefix || ''}${potentialNewVersionCleaned}`
+          : potentialNewVersion;
       try {
         if (
           !currentVersion ||
@@ -207,8 +209,8 @@ const internalAddDependencies = (pkg, type, dependencies, cleaned) => {
   return internalAddToObject(pkg, type, filtredDependencies);
 };
 
-exports.addDependencies = function addDependencies(pkg, dependencies) {
-  internalAddDependencies(pkg, 'dependencies', dependencies);
+exports.addDependencies = function addDependencies(pkg, dependencies, prefix) {
+  internalAddDependencies(pkg, 'dependencies', dependencies, !!prefix, prefix);
 };
 
 exports.removeDependencies = function removeDependencies(pkg, dependencies) {
