@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.28.0...pob-dependencies@0.28.1) (2019-09-13)
+
+
+### Bug Fixes
+
+* remove [@typescript-eslint](https://github.com/typescript-eslint) from pob-dependencies ([754538a](https://github.com/christophehurpeau/pob/commit/754538a))
+
+
+
+
+
 # [0.28.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.26.0...pob-dependencies@0.28.0) (2019-09-13)
 
 

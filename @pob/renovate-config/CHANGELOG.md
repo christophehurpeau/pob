@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.1](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.5.0...@pob/renovate-config@1.5.1) (2019-09-13)
+
+
+### Bug Fixes
+
+* remove [@typescript-eslint](https://github.com/typescript-eslint) from pob-dependencies ([754538a](https://github.com/christophehurpeau/pob/commit/754538a))
+
+
+
+
+
 # [1.5.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.4.0...@pob/renovate-config@1.5.0) (2019-09-13)
 
 
