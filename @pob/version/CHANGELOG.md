@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.33.2](https://github.com/christophehurpeau/pob/compare/@pob/version@4.33.0...@pob/version@4.33.2) (2019-09-13)
+
+
+### Bug Fixes
+
+* self update ([02173ba](https://github.com/christophehurpeau/pob/commit/02173ba))
+
+
+
+
+
 ## [4.33.1](https://github.com/christophehurpeau/pob/compare/@pob/version@4.33.0...@pob/version@4.33.1) (2019-08-30)
 
 

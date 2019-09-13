@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.29.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.27.1...babel-preset-pob-env@2.29.0) (2019-09-13)
+
+
+### Bug Fixes
+
+* self update ([02173ba](https://github.com/christophehurpeau/pob/commit/02173ba))
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.6.0 ([#291](https://github.com/christophehurpeau/pob/issues/291)) ([d5c2543](https://github.com/christophehurpeau/pob/commit/d5c2543))
+* update pob eslint config ([6e00b7a](https://github.com/christophehurpeau/pob/commit/6e00b7a))
+
+
+
+
+
 # [2.28.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.27.1...babel-preset-pob-env@2.28.0) (2019-08-30)
 
 

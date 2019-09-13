@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.37.0](https://github.com/christophehurpeau/pob/compare/pob@4.35.0...pob@4.37.0) (2019-09-13)
+
+
+### Bug Fixes
+
+* author url in package ([b838c43](https://github.com/christophehurpeau/pob/commit/b838c43))
+* config from pob in package ([1ab4697](https://github.com/christophehurpeau/pob/commit/1ab4697))
+* pob fixes ([7cf9b35](https://github.com/christophehurpeau/pob/commit/7cf9b35))
+* prefix, typescript, eslintignore ([f6ea134](https://github.com/christophehurpeau/pob/commit/f6ea134))
+* self update ([02173ba](https://github.com/christophehurpeau/pob/commit/02173ba))
+* update node 12 ([d806ea4](https://github.com/christophehurpeau/pob/commit/d806ea4))
+* **deps:** update dependency findup-sync to v4 ([#244](https://github.com/christophehurpeau/pob/issues/244)) ([493fee9](https://github.com/christophehurpeau/pob/commit/493fee9))
+
+
+### Features
+
+* update pob eslint config ([6e00b7a](https://github.com/christophehurpeau/pob/commit/6e00b7a))
+
+
+
+
+
 # [4.36.0](https://github.com/christophehurpeau/pob/compare/pob@4.35.0...pob@4.36.0) (2019-08-30)
 
 

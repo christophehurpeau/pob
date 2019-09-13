@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.28.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.26.0...pob-dependencies@0.28.0) (2019-09-13)
+
+
+### Bug Fixes
+
+* missing @pob/repo-config in pob-dependencies ([887bc0f](https://github.com/christophehurpeau/pob/commit/887bc0f))
+* pob fixes ([7cf9b35](https://github.com/christophehurpeau/pob/commit/7cf9b35))
+* self update ([02173ba](https://github.com/christophehurpeau/pob/commit/02173ba))
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.6.0 ([#291](https://github.com/christophehurpeau/pob/issues/291)) ([d5c2543](https://github.com/christophehurpeau/pob/commit/d5c2543))
+* **deps:** update dependency @pob/eslint-config-babel to v32.0.3 ([#278](https://github.com/christophehurpeau/pob/issues/278)) ([58a851b](https://github.com/christophehurpeau/pob/commit/58a851b))
+* **deps:** update dependency @pob/eslint-config-babel-node to v32.0.13 ([#294](https://github.com/christophehurpeau/pob/issues/294)) ([7acaca1](https://github.com/christophehurpeau/pob/commit/7acaca1))
+* **deps:** update dependency @pob/eslint-config-babel-node to v32.0.6 ([#279](https://github.com/christophehurpeau/pob/issues/279)) ([95b18b9](https://github.com/christophehurpeau/pob/commit/95b18b9))
+* **deps:** update dependency @pob/eslint-config-babel-node to v32.0.7 ([#281](https://github.com/christophehurpeau/pob/issues/281)) ([9c9ffd6](https://github.com/christophehurpeau/pob/commit/9c9ffd6))
+* **deps:** update dependency @pob/eslint-config-react to v32.0.10 ([#287](https://github.com/christophehurpeau/pob/issues/287)) ([5c1bb58](https://github.com/christophehurpeau/pob/commit/5c1bb58))
+* **deps:** update dependency @pob/eslint-config-react to v32.0.9 ([#282](https://github.com/christophehurpeau/pob/issues/282)) ([a9dce0f](https://github.com/christophehurpeau/pob/commit/a9dce0f))
+* **deps:** update dependency @pob/eslint-config-typescript to v32.0.11 ([#289](https://github.com/christophehurpeau/pob/issues/289)) ([d0f6b32](https://github.com/christophehurpeau/pob/commit/d0f6b32))
+* **deps:** update dependency @pob/eslint-config-typescript to v32.0.12 ([#290](https://github.com/christophehurpeau/pob/issues/290)) ([e3bb35e](https://github.com/christophehurpeau/pob/commit/e3bb35e))
+* **deps:** update dependency @pob/eslint-config-typescript to v32.0.13 ([#295](https://github.com/christophehurpeau/pob/issues/295)) ([e092bab](https://github.com/christophehurpeau/pob/commit/e092bab))
+* **deps:** update dependency @pob/eslint-config-typescript to v32.0.6 ([#280](https://github.com/christophehurpeau/pob/issues/280)) ([a8441db](https://github.com/christophehurpeau/pob/commit/a8441db))
+* **deps:** update dependency @pob/eslint-config-typescript to v32.0.8 ([#283](https://github.com/christophehurpeau/pob/issues/283)) ([e424545](https://github.com/christophehurpeau/pob/commit/e424545))
+* **deps:** update dependency @pob/eslint-config-typescript-react to v32.0.10 ([#288](https://github.com/christophehurpeau/pob/issues/288)) ([e375276](https://github.com/christophehurpeau/pob/commit/e375276))
+* **deps:** update dependency @pob/eslint-config-typescript-react to v32.0.9 ([#284](https://github.com/christophehurpeau/pob/issues/284)) ([5ab8211](https://github.com/christophehurpeau/pob/commit/5ab8211))
+* **deps:** update dependency @types/jest to v24.0.18 ([#269](https://github.com/christophehurpeau/pob/issues/269)) ([6e2473d](https://github.com/christophehurpeau/pob/commit/6e2473d))
+* **deps:** update dependency husky to v3.0.4 ([#264](https://github.com/christophehurpeau/pob/issues/264)) ([e1eb00c](https://github.com/christophehurpeau/pob/commit/e1eb00c))
+* **deps:** update dependency husky to v3.0.5 ([#285](https://github.com/christophehurpeau/pob/issues/285)) ([8736001](https://github.com/christophehurpeau/pob/commit/8736001))
+* **deps:** update dependency typescript to v3.6.3 ([#297](https://github.com/christophehurpeau/pob/issues/297)) ([32876cc](https://github.com/christophehurpeau/pob/commit/32876cc))
+* **deps:** update jest monorepo to v24.9.0 ([#267](https://github.com/christophehurpeau/pob/issues/267)) ([622f5d0](https://github.com/christophehurpeau/pob/commit/622f5d0))
+* **deps:** update typescript-eslint monorepo to v2.1.0 ([#286](https://github.com/christophehurpeau/pob/issues/286)) ([1408c40](https://github.com/christophehurpeau/pob/commit/1408c40))
+* **deps:** update typescript-eslint monorepo to v2.2.0 ([#296](https://github.com/christophehurpeau/pob/issues/296)) ([06cb5fd](https://github.com/christophehurpeau/pob/commit/06cb5fd))
+* update pob eslint config ([6e00b7a](https://github.com/christophehurpeau/pob/commit/6e00b7a))
+
+
+
+
+
 # [0.27.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.26.0...pob-dependencies@0.27.0) (2019-08-30)
 
 

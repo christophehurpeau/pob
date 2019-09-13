@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.4.0...@pob/renovate-config@1.5.0) (2019-09-13)
+
+
+### Bug Fixes
+
+* prefix, typescript, eslintignore ([f6ea134](https://github.com/christophehurpeau/pob/commit/f6ea134))
+
+
+### Features
+
+* automerge @pob/repo-config, husky and prettier on patch and minor ([4438bb7](https://github.com/christophehurpeau/pob/commit/4438bb7))
+
+
+
+
+
 ## [1.4.1](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.4.0...@pob/renovate-config@1.4.1) (2019-08-30)
 
 **Note:** Version bump only for package @pob/renovate-config

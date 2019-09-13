@@ -1,6 +1,6 @@
 {
   "name": "@pob/renovate-config",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "renovate pob config",
   "engines": {
     "node": ">= 8.3.0"
@@ -17,7 +17,7 @@
     "preversion": "node generate-package.json.js && git add package.json"
   },
   "devDependencies": {
-    "pob-dependencies": "^0.27.0",
+    "pob-dependencies": "^0.28.0",
     "prettier": "1.18.2"
   },
   "renovate-config": {
@@ -42,7 +42,6 @@
             "@pob/eslint-config-react",
             "@pob/eslint-config-typescript",
             "@pob/eslint-config-typescript-react",
-            "@pob/repo-config",
             "@pob/version",
             "@types/jest",
             "@typescript-eslint/eslint-plugin",
@@ -52,7 +51,6 @@
             "babel-preset-latest-node",
             "babel-preset-modern-browsers",
             "eslint",
-            "husky",
             "jest",
             "jest-junit-reporter",
             "lerna",

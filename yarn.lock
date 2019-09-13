@@ -2171,7 +2171,7 @@
   dependencies:
     "@types/yargs-parser" "*"
 
-"@typescript-eslint/eslint-plugin@2.2.0":
+"@typescript-eslint/eslint-plugin@2.2.0", "@typescript-eslint/eslint-plugin@^2.0.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-2.2.0.tgz#cba8caa6ad8df544c46bca674125a31af8c9ac2f"
   integrity sha512-rOodtI+IvaO8USa6ValYOrdWm9eQBgqwsY+B0PPiB+aSiK6p6Z4l9jLn/jI3z3WM4mkABAhKIqvGIBl0AFRaLQ==
@@ -2181,17 +2181,6 @@
     functional-red-black-tree "^1.0.1"
     regexpp "^2.0.1"
     tsutils "^3.17.1"
-
-"@typescript-eslint/eslint-plugin@^2.0.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/eslint-plugin/-/eslint-plugin-2.1.0.tgz#4bcd978d88419ea971613675f2620dde39920d69"
-  integrity sha512-3i/dLPwxaVfCsaLu3HkB8CAA1Uw3McAegrTs+VBJ0BrGRKW7nUwSqRfHfCS7sw7zSbf62q3v0v6pOS8MyaYItg==
-  dependencies:
-    "@typescript-eslint/experimental-utils" "2.1.0"
-    eslint-utils "^1.4.0"
-    functional-red-black-tree "^1.0.1"
-    regexpp "^2.0.1"
-    tsutils "^3.14.0"
 
 "@typescript-eslint/experimental-utils@2.1.0":
   version "2.1.0"
@@ -2211,7 +2200,7 @@
     "@typescript-eslint/typescript-estree" "2.2.0"
     eslint-scope "^5.0.0"
 
-"@typescript-eslint/parser@2.2.0":
+"@typescript-eslint/parser@2.2.0", "@typescript-eslint/parser@^2.0.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-2.2.0.tgz#3cd758ed85ae9be06667beb61bbdf8060f274fb7"
   integrity sha512-0mf893kj9L65O5sA7wP6EoYvTybefuRFavUNhT7w9kjhkdZodoViwVS+k3D+ZxKhvtL7xGtP/y/cNMJX9S8W4A==
@@ -2220,16 +2209,6 @@
     "@typescript-eslint/experimental-utils" "2.2.0"
     "@typescript-eslint/typescript-estree" "2.2.0"
     eslint-visitor-keys "^1.1.0"
-
-"@typescript-eslint/parser@^2.0.0":
-  version "2.1.0"
-  resolved "https://registry.yarnpkg.com/@typescript-eslint/parser/-/parser-2.1.0.tgz#ca62b26fa6a5a34ecdec4a000f22baf103791830"
-  integrity sha512-0+hzirRJoqE1T4lSSvCfKD+kWjIpDWfbGBiisK5CENcr+22pPkHB2sfV1giON+UxHV4A08SSrQonZk7X2zIQdw==
-  dependencies:
-    "@types/eslint-visitor-keys" "^1.0.0"
-    "@typescript-eslint/experimental-utils" "2.1.0"
-    "@typescript-eslint/typescript-estree" "2.1.0"
-    eslint-visitor-keys "^1.0.0"
 
 "@typescript-eslint/typescript-estree@2.1.0":
   version "2.1.0"
