@@ -1992,7 +1992,19 @@
     "@typescript-eslint/parser" "^2.0.0"
     eslint-config-prettier "^6.1.0"
 
-"@pob/eslint-config@32.0.2", "@pob/eslint-config@^32.0.2":
+"@pob/eslint-config@32.1.0":
+  version "32.1.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-32.1.0.tgz#f851f458dbb108ed1cb1c83343eb2318daac6354"
+  integrity sha512-/fGG9QI1btqOdIiI+J0xyHWsr/7xRCCMOLQFNQUHzovOC/Q4EHhsdJMzvySRqPM0cUNum/755JjILVqwrBraDg==
+  dependencies:
+    eslint-config-airbnb-base "^14.0.0"
+    eslint-config-prettier "^6.3.0"
+    eslint-plugin-import "^2.18.2"
+    eslint-plugin-prefer-class-properties "^1.0.0"
+    eslint-plugin-prettier "^3.1.0"
+    eslint-plugin-unicorn "^10.0.0"
+
+"@pob/eslint-config@^32.0.2":
   version "32.0.2"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-32.0.2.tgz#a3b5ac765fb441e80e21c330a95dffcecdd62cc8"
   integrity sha512-HLaF5TpUo3Oq1JgebHluhj+mFPQmEY9bt8hQgT22+kjM5x6ffLVwgpwdMZiIOOm7bF/KVt+vUxBKgqfu3ZnLtw==
@@ -4108,6 +4120,13 @@ eslint-config-prettier@^6.1.0:
   version "6.1.0"
   resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.1.0.tgz#e6f678ba367fbd1273998d5510f76f004e9dce7b"
   integrity sha512-k9fny9sPjIBQ2ftFTesJV21Rg4R/7a7t7LCtZVrYQiHEp8Nnuk3EGaDmsKSAnsPj0BYcgB2zxzHa2NTkIxcOLg==
+  dependencies:
+    get-stdin "^6.0.0"
+
+eslint-config-prettier@^6.3.0:
+  version "6.3.0"
+  resolved "https://registry.yarnpkg.com/eslint-config-prettier/-/eslint-config-prettier-6.3.0.tgz#e73b48e59dc49d950843f3eb96d519e2248286a3"
+  integrity sha512-EWaGjlDAZRzVFveh2Jsglcere2KK5CJBhkNSa1xs3KfMUGdRiT7lG089eqPdvlzWHpAqaekubOsOMu8W8Yk71A==
   dependencies:
     get-stdin "^6.0.0"
 
