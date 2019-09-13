@@ -4,4 +4,4 @@ if [ "$1" != "--no-clean" ]; then
   rm -fR ./dist/*
 fi
 
-`node -e 'console.log(require.resolve("rollup/bin/rollup"))'` --config `node -e 'console.log(require.resolve("pob-babel/rollup.config.js"))'`
+`node -e 'console.log(require.resolve("rollup/dist/bin/rollup"))'` --config `node -e 'console.log(require.resolve("pob-babel/rollup.config.js"))'`
