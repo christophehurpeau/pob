@@ -55,7 +55,7 @@
   },
   "devDependencies": {
     "@pob/eslint-config": "32.1.0",
-    "@pob/eslint-config-node": "32.0.13",
+    "@pob/eslint-config-node": "32.1.0",
     "eslint": "6.3.0"
   },
   "resolutions": {
