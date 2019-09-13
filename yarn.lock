@@ -1957,10 +1957,10 @@
     "@pob/eslint-config-babel-common" "^32.0.3"
     babel-eslint "^10.0.3"
 
-"@pob/eslint-config-node@32.0.13":
-  version "32.0.13"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-node/-/eslint-config-node-32.0.13.tgz#1682a68b1375795c090ea58d2301ca1b2ac3732b"
-  integrity sha512-lUrTbkYyDPvtHbAdGQov/mouJHTLhfxN3KloM212REOLnAHtTKZbFNaRUugA/m1YHtV8GO7mUiYW2igNyNnTDA==
+"@pob/eslint-config-node@32.1.0":
+  version "32.1.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-node/-/eslint-config-node-32.1.0.tgz#52610cb9eb818339f8d3666998c0e773fd4dc657"
+  integrity sha512-bVzHFya7WUOHGO3k7OesjHamdSC1Da/xlwS5ecwpblsNL4Ra7fztMDBpe0DVnKQVs7CRk/VqT01/71usrbXaAw==
   dependencies:
     eslint-plugin-node "^10.0.0"
 
