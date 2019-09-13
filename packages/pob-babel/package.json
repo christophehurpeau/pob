@@ -39,10 +39,10 @@
     "@babel/preset-flow": "^7.0.0",
     "babel-plugin-transform-builtins": "^1.5.0",
     "babel-preset-pob-env": "^2.29.0",
-    "rollup": "^1.17.0",
-    "rollup-config-external-dependencies": "^1.0.0",
+    "rollup": "^1.21.2",
+    "rollup-config-external-dependencies": "^1.1.0",
     "rollup-plugin-babel": "^5.0.0-alpha.0",
-    "rollup-plugin-ignore-import": "^1.1.2",
+    "rollup-plugin-ignore-import": "^1.3.0",
     "rollup-plugin-json": "^4.0.0",
     "rollup-plugin-node-resolve": "^5.2.0"
   },
