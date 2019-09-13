@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.22.1](https://github.com/christophehurpeau/pob/compare/pob-babel@23.22.0...pob-babel@23.22.1) (2019-09-13)
+
+
+### Bug Fixes
+
+* rollup bin path ([d3fafc1](https://github.com/christophehurpeau/pob/commit/d3fafc1))
+
+
+
+
+
 # [23.22.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.21.0...pob-babel@23.22.0) (2019-09-13)
 
 

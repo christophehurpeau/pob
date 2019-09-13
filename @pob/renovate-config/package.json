@@ -1,6 +1,6 @@
 {
   "name": "@pob/renovate-config",
-  "version": "1.5.2",
+  "version": "1.5.3",
   "description": "renovate pob config",
   "engines": {
     "node": ">= 8.3.0"
@@ -17,7 +17,7 @@
     "preversion": "node generate-package.json.js && git add package.json"
   },
   "devDependencies": {
-    "pob-dependencies": "^0.29.0",
+    "pob-dependencies": "^0.29.1",
     "prettier": "1.18.2"
   },
   "renovate-config": {

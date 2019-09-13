@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.29.0...pob-dependencies@0.29.1) (2019-09-13)
+
+**Note:** Version bump only for package pob-dependencies
+
+
+
+
+
 # [0.29.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.28.1...pob-dependencies@0.29.0) (2019-09-13)
 
 
