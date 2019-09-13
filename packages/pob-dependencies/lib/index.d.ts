@@ -14,8 +14,6 @@ interface Dependencies {
   '@pob/repo-config': '^1.0.1';
   '@pob/version': '^4.33.1';
   '@types/jest': '24.0.18';
-  '@typescript-eslint/eslint-plugin': '2.2.0';
-  '@typescript-eslint/parser': '2.2.0';
   'babel-eslint': '10.0.3';
   'babel-jest': '24.9.0';
   'babel-preset-latest-node': '3.2.1';

@@ -44,8 +44,6 @@
             "@pob/eslint-config-typescript-react",
             "@pob/version",
             "@types/jest",
-            "@typescript-eslint/eslint-plugin",
-            "@typescript-eslint/parser",
             "babel-eslint",
             "babel-jest",
             "babel-preset-latest-node",
