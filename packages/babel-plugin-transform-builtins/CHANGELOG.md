@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.5.2](https://github.com/christophehurpeau/pob/compare/babel-plugin-transform-builtins@1.5.1...babel-plugin-transform-builtins@1.5.2) (2019-09-14)
+
+**Note:** Version bump only for package babel-plugin-transform-builtins
+
+
+
+
+
 ## [1.5.1](https://github.com/christophehurpeau/pob/compare/babel-plugin-transform-builtins@1.5.0...babel-plugin-transform-builtins@1.5.1) (2019-09-13)
 
 **Note:** Version bump only for package babel-plugin-transform-builtins

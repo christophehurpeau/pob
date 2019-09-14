@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.37.5](https://github.com/christophehurpeau/pob/compare/pob@4.37.4...pob@4.37.5) (2019-09-14)
+
+
+### Bug Fixes
+
+* remove error logs and yarn.lock inside monorepos ([ab94511](https://github.com/christophehurpeau/pob/commit/ab94511))
+
+
+
+
+
 ## [4.37.4](https://github.com/christophehurpeau/pob/compare/pob@4.37.3...pob@4.37.4) (2019-09-13)
 
 **Note:** Version bump only for package pob

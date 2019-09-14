@@ -18,12 +18,12 @@ interface Dependencies {
   'babel-jest': '24.9.0';
   'babel-preset-latest-node': '3.2.1';
   'babel-preset-modern-browsers': '14.0.0';
-  'eslint': '6.3.0';
+  'eslint': '6.4.0';
   'husky': '3.0.5';
   'jest': '24.9.0';
   'jest-junit-reporter': '1.1.0';
   'lerna': '3.16.4';
-  'pob-babel': '^23.22.0';
+  'pob-babel': '^23.22.1';
   'pob-lcov-reporter': '^1.2.3';
   'pob-release': '^4.15.1';
   'prettier': '1.18.2';

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.33.4](https://github.com/christophehurpeau/pob/compare/@pob/version@4.33.3...@pob/version@4.33.4) (2019-09-14)
+
+**Note:** Version bump only for package @pob/version
+
+
+
+
+
 ## [4.33.3](https://github.com/christophehurpeau/pob/compare/@pob/version@4.33.2...@pob/version@4.33.3) (2019-09-13)
 
 **Note:** Version bump only for package @pob/version
