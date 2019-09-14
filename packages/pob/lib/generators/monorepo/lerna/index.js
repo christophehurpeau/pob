@@ -67,6 +67,9 @@ module.exports = class LernaGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     packageUtils.removeDependencies(pkg, ['lerna']);
 
+    if (this.fs.exists(this.destinationPath('lerna-debug.log'))) {
+      this.fs.delete(this.destinationPath('lerna-debug.log'));
+    }
     if (this.npm) {
       if (!pkg.engines) pkg.engines = {};
       pkg.engines.yarn = '< 0.0.0';

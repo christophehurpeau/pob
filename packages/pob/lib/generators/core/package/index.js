@@ -101,6 +101,16 @@ module.exports = class PackageGenerator extends Generator {
         directory: process.cwd().slice(inLerna.rootPath.length + 1),
       };
       pkg.homepage = lernaPackage.homepage;
+
+      if (this.fs.exists(this.destinationPath('yarn.lock'))) {
+        this.fs.delete(this.destinationPath('yarn.lock'));
+      }
+      if (this.fs.exists(this.destinationPath('yarn-error.log'))) {
+        this.fs.delete(this.destinationPath('yarn-error.log'));
+      }
+    }
+    if (this.fs.exists(this.destinationPath('yarn-error.log'))) {
+      this.fs.delete(this.destinationPath('yarn-error.log'));
     }
 
     author = {
