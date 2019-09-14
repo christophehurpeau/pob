@@ -17,6 +17,18 @@
       "semanticCommitType": "feat"
     },
     {
+      "groupName": "react",
+      "description": "react monorepo",
+      "sourceUrlPrefixes": [
+        "https://github.com/facebook/react"
+      ],
+      "packageNames": [
+        "@hot-loader/react-dom",
+        "@types/react",
+        "@types/react-dom"
+      ]
+    },
+    {
       "updateTypes": [
         "patch",
         "minor"
