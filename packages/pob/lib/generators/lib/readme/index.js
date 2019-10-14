@@ -97,6 +97,7 @@ module.exports = class ReadmeGenerator extends Generator {
       this.fs.copyTpl(this.templatePath('README.md.ejs'), readmePath, {
         privatePackage: pkg.private,
         packageName: pkg.name,
+        packagePath: `${pkg.name[0] === '@' ? '' : 'packages/'}${pkg.name}`,
         camelCaseProjectName: camelCase(pkg.name),
         description: pkg.description,
         inLerna,
