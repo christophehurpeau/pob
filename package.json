@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "husky": "3.0.9",
-    "lerna": "3.18.2",
+    "lerna": "3.18.3",
     "repository-check-dirty": "./packages/repository-check-dirty"
   }
 }
