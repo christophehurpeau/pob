@@ -14,7 +14,7 @@
 ### Install
 
 ```sh
-npm install --save-dev pob-repository-dirty
+npm install --save-dev repository-check-dirty
 ```
 
 ### How to use
@@ -22,7 +22,7 @@ npm install --save-dev pob-repository-dirty
 #### Direct use
 
 ```
-node_modules/.bin/pob-repository-dirty
+node_modules/.bin/repository-check-dirty
 ```
 
 #### With npm scripts `npm run release`
@@ -32,7 +32,7 @@ Edit your package.json:
 ```json
 {
     "scripts": {
-        "preversion": "pob-repository-dirty",
+        "preversion": "repository-check-dirty",
     }
 }
 
