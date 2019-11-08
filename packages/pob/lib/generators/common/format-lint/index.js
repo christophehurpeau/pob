@@ -1,5 +1,6 @@
 'use strict';
 
+const fs = require('fs');
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
 const ensureJsonFileFormatted = require('../../../utils/ensureJsonFileFormatted');
@@ -88,12 +89,14 @@ module.exports = class LintGenerator extends Generator {
     packageUtils.addDevDependencies(pkg, ['eslint', 'prettier']);
 
     const typescript = true;
+    const hasScripts = fs.existsSync(this.destinationPath('scripts'));
+    console.log(hasScripts);
 
     if (
       !pkg.name.startsWith('eslint-config') &&
       !pkg.name.startsWith('@pob/eslint-config')
     ) {
-      packageUtils.addOrRemoveDevDependencies(pkg, !useBabel, [
+      packageUtils.addOrRemoveDevDependencies(pkg, !useBabel || hasScripts, [
         '@pob/eslint-config',
         '@pob/eslint-config-node',
       ]);
@@ -290,10 +293,14 @@ module.exports = class LintGenerator extends Generator {
       yoConfig.pob.monorepo.typescript;
 
     const srcDirectory = useBabel ? 'src' : 'lib';
+
+    const lintDirectories = [srcDirectory, 'scripts', 'migrations'].filter(
+      (dir) => fs.existsSync(this.destinationPath(dir))
+    );
     packageUtils.addScripts(pkg, {
       lint: `${useBabel && !composite ? 'tsc && ' : ''}eslint${
-        !useBabel ? '' : ` --ext .ts${hasReact ? ',.tsx' : ''}`
-      } --quiet ${srcDirectory}/`,
+        !useBabel ? '' : ` --ext .js,.ts${hasReact ? ',.tsx' : ''}`
+      } --quiet ${lintDirectories.join(' ')}`,
     });
 
     delete pkg.scripts['typescript-check'];
