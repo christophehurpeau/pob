@@ -4,8 +4,10 @@
   "compilerOptions": {
     "noEmit": false,
     "emitDeclarationOnly": true,
+    "rootDirs": ["src"],
     "outDir": "dist",
 <% if(composite) { -%>
+    "composite": true,
     "tsBuildInfoFile": "dist/tsbuildinfo",
 <% } -%>
     "isolatedModules": false,
@@ -20,5 +22,11 @@
     "src/**/*.test.tsx",
 <% } -%>
     "src/**/__tests__/**"
-  ]
+  ]<% if (monorepoPackageNames) { %>,<% } -%>
+<% if (monorepoPackageNames && monorepoPackageNames.length) { %>
+  "references": [
+<% monorepoPackageNames.forEach((packageName, index) => { -%>
+    { "path": "../<%= packageName %>/tsconfig.build.json" }<%= index === monorepoPackageNames.length -1 ? '' : ',' %>
+<% }) -%>
+]<% } -%>
 }

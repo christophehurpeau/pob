@@ -58,6 +58,8 @@ module.exports = class TypescriptGenerator extends Generator {
       const { withReact } = this.options;
       let composite;
       let monorepoPackageNames;
+      let monorepoPackageSrcPaths;
+
       if (inLerna && !inLerna.root) {
         const yoConfig = inLerna.rootYoConfig;
 
@@ -74,13 +76,38 @@ module.exports = class TypescriptGenerator extends Generator {
               ((pkg.dependencies && pkg.dependencies[packageName]) ||
                 (pkg.devDependencies && pkg.devDependencies[packageName]) ||
                 (pkg.peerDependencies && pkg.peerDependencies[packageName])) &&
-              existsSync(`../${packageName}/tsconfig.build.json`)
+              existsSync(
+                `../../${
+                  packageName[0] === '@'
+                    ? packageName
+                    : `packages/${packageName}`
+                }/tsconfig.build.json`
+              )
+          );
+
+          monorepoPackageSrcPaths = monorepoPackageNames.map(
+            (packageName) =>
+              `${
+                packageName[0] === '@' ? packageName : `packages/${packageName}`
+              }/${existsSync(`../${packageName}/src`) ? 'src' : 'lib'}`
           );
         }
       }
+
+      if (
+        inLerna &&
+        inLerna.root &&
+        inLerna.rootYoConfig.pob &&
+        inLerna.rootYoConfig.pob.monorepo &&
+        inLerna.rootYoConfig.pob.monorepo.typescript
+      ) {
+        pkg.scripts.tsc = 'tsc -b';
+      } else {
+        delete pkg.scripts.tsc;
+      }
       this.fs.copyTpl(this.templatePath('tsconfig.json.ejs'), tsconfigPath, {
-        composite,
         monorepoPackageNames,
+        monorepoPackageSrcPaths,
         withReact,
         baseUrl: this.options.baseUrl,
       });
@@ -88,7 +115,12 @@ module.exports = class TypescriptGenerator extends Generator {
         this.fs.copyTpl(
           this.templatePath('tsconfig.build.json.ejs'),
           tsconfigBuildPath,
-          { withReact, composite }
+          {
+            withReact,
+            composite,
+            monorepoPackageNames,
+            monorepoPackageSrcPaths,
+          }
         );
       } else {
         this.fs.delete(tsconfigBuildPath);

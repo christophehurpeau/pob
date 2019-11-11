@@ -4,22 +4,18 @@
     "src/**/*.tsx"<% } %>
   ],
   "compilerOptions": {
-<% if (composite) { -%>
-    /* in monorepo */
-    "composite": true,
-    "rootDir": "src",
-
-<% } -%>
     /* No emit in default config file. See build config file for config to build declaration files */
     "noEmit": true,
     /* No need to check .d.ts files */
     "skipLibCheck": true,
 
+    "rootDirs": ["src"<% monorepoPackageNames.forEach((packageName, index) => { -%>, "../../<%= monorepoPackageSrcPaths[index] %>"<% }) -%>],
+
     "target": "esnext",                       /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
     "module": "esnext",                       /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
     "lib": ["dom", "esnext"],                 /* Polyfills are imported either by babel or with polyfill.io */
     <%= withReact ? '' : '// ' %>"jsx": "preserve",                     /* Specify JSX code generation: 'preserve', 'react-native', or 'react'. */
-    "isolatedModules": <% if (composite) { %>false<% } else { %>true<% } %>,                  /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
+    "isolatedModules": true,                  /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
 
     /* Enable all strict type-checking options. */
     "strict": true,
@@ -34,21 +30,14 @@
     /* Module Resolution Options */
     "moduleResolution": "node",               /* Specify module resolution strategy: 'node' (Node.js) or 'classic' (TypeScript pre-1.6). */
     "allowSyntheticDefaultImports": true,     /* Allow default imports from modules with no default export. This does not affect code emit, just typechecking. */
-    "esModuleInterop": true<% if (baseUrl) { %>,<% } %>                   /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
-<% if (baseUrl) { -%>
-    "baseUrl": "<%= baseUrl %>"<%= '                            '.slice(0, -baseUrl.length) %>/* Base directory to resolve non-absolute module names. */
-<% } else { -%>
-    // "baseUrl": "./",                       /* Base directory to resolve non-absolute module names. */
-<% } -%>
-    // "rootDirs": [],                        /* List of root folders whose combined content represents the structure of the project at runtime. */
-    // "paths": {},                           /* A series of entries which re-map imports to lookup locations relative to the 'baseUrl'. */
-    // "typeRoots": [],                       /* List of folders to include type definitions from. */
-    // "types": [],                           /* Type declaration files to be included in compilation. */
-  }<% if (monorepoPackageNames) { %>,
-  "references": [
-<% monorepoPackageNames.forEach((packageName, index) => { -%>
-    { "path": "../<%= packageName %>" }<%= index === monorepoPackageNames.length -1 ? '' : ',' %>
-<% }) -%>
-  ]
-<% } %>
+    "esModuleInterop": true,                  /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
+    "baseUrl": "<%= baseUrl %>"<% if (monorepoPackageNames) { %>,<% } %><%= '                            '.slice(0, -(baseUrl.length + (monorepoPackageNames ? 1 : 0))) %>/* Base directory to resolve non-absolute module names. */
+    <% if (monorepoPackageNames && monorepoPackageNames.length !== 0) { -%>
+
+    "paths": {
+      <% monorepoPackageNames.forEach((packageName, index) => { %>
+      "<%= packageName %>": ["../../<%= monorepoPackageSrcPaths[index] %>"]<%= index === monorepoPackageNames.length -1 ? '' : ',' -%>
+      <% }) %>
+    }<% } %>
+  }
 }

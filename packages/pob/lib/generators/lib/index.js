@@ -238,6 +238,7 @@ module.exports = class PobLibGenerator extends Generator {
       enable: withBabel,
       withReact,
       updateOnly: this.options.updateOnly,
+      baseUrl: './src',
     });
 
     if (!withBabel) {
