@@ -33,7 +33,7 @@
     "@babel/runtime": "7.7.5",
     "@pob/eslint-config": "32.1.0",
     "@pob/eslint-config-babel": "32.1.0",
-    "@pob/eslint-config-babel-node": "32.1.0",
+    "@pob/eslint-config-babel-node": "33.0.0",
     "@pob/eslint-config-node": "32.1.0",
     "@pob/eslint-config-react": "32.1.0",
     "@pob/eslint-config-typescript": "32.1.0",
