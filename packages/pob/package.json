@@ -38,7 +38,7 @@
     "generator-license": "^5.2.0",
     "gh-got": "^8.1.0",
     "git-remote-url": "^1.0.1",
-    "github-username": "^5.0.0",
+    "github-username": "^5.0.1",
     "got": "^10.0.1",
     "inquirer-npm-name": "^3.0.0",
     "lodash.camelcase": "^4.3.0",
@@ -49,9 +49,9 @@
     "pob-dependencies": "^0.29.2",
     "prettier": "1.19.1",
     "semver": "^6.0.0",
-    "update-notifier": "^3.0.0",
-    "yeoman-environment": "^2.3.4",
-    "yeoman-generator": "^4.0.0"
+    "update-notifier": "^3.0.1",
+    "yeoman-environment": "^2.6.0",
+    "yeoman-generator": "^4.2.0"
   },
   "devDependencies": {
     "@pob/eslint-config": "32.1.0",
