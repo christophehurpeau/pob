@@ -56,7 +56,7 @@
   "devDependencies": {
     "@pob/eslint-config": "32.1.0",
     "@pob/eslint-config-node": "32.1.0",
-    "eslint": "6.4.0"
+    "eslint": "6.7.2"
   },
   "resolutions": {
     "yeoman-generator": "^4.0.0"
