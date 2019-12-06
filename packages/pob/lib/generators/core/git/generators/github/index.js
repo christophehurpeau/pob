@@ -103,20 +103,23 @@ module.exports = class GitHubGenerator extends Generator {
 
         if (this.fs.exists('.circleci/config.yml')) {
           try {
-            await got.post(
-              `https://circleci.com/api/v1.1/project/github/${owner}/${repo}/follow`,
-              { query: { 'circle-token': CIRCLECI_TOKEN }, json: true }
-            );
+            await got
+              .post(
+                `https://circleci.com/api/v1.1/project/github/${owner}/${repo}/follow`,
+                { query: { 'circle-token': CIRCLECI_TOKEN } }
+              )
+              .json();
 
             try {
-              const result = await got.get(
-                `https://circleci.com/api/v1.1/project/github/${owner}/${repo}/checkout-key`,
-                {
-                  query: { 'circle-token': CIRCLECI_TOKEN },
-                  json: true,
-                  body: { type: 'deploy-key' },
-                }
-              );
+              const result = await got
+                .get(
+                  `https://circleci.com/api/v1.1/project/github/${owner}/${repo}/checkout-key`,
+                  {
+                    query: { 'circle-token': CIRCLECI_TOKEN },
+                    json: { type: 'deploy-key' },
+                  }
+                )
+                .json();
               const deployKey = result && result.body && result.body[0];
               if (!deployKey) throw new Error('Invalid deploy key');
               const publicKey = deployKey.public_key.replace('\\n', '').trim();
