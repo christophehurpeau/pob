@@ -54,7 +54,7 @@
     "yeoman-generator": "^4.2.0"
   },
   "devDependencies": {
-    "@pob/eslint-config": "32.1.0",
+    "@pob/eslint-config": "33.0.8",
     "@pob/eslint-config-node": "32.1.0",
     "eslint": "6.7.2"
   },
