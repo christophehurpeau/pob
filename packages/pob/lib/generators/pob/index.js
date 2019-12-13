@@ -44,13 +44,6 @@ module.exports = class PobBaseGenerator extends Generator {
       defaults: true,
       desc: 'Include a license',
     });
-
-    this.option('babel', {
-      type: Boolean,
-      required: false,
-      defaults: true,
-      desc: 'Use babel',
-    });
   }
 
   initializing() {
