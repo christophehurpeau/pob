@@ -45,20 +45,23 @@ module.exports = class GitHooksGenerator extends Generator {
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
-    packageUtils.addDevDependencies(pkg, ['@pob/repo-config', 'husky']);
-    // packageUtils.addOrRemoveDevDependencies(pkg, inLerna, {
-    //   '@commitlint/config-lerna-scopes': '6.1.3',
-    // });
+    packageUtils.addDevDependencies(pkg, ['husky']);
+    if (pkg.name !== 'pob-lerna') {
+      packageUtils.addDevDependencies(pkg, ['@pob/repo-config']);
+      // packageUtils.addOrRemoveDevDependencies(pkg, inLerna, {
+      //   '@commitlint/config-lerna-scopes': '6.1.3',
+      // });
 
-    this.fs.copy(
-      this.templatePath('huskyrc.js.txt'),
-      this.destinationPath('.huskyrc.js')
-    );
+      this.fs.copy(
+        this.templatePath('huskyrc.js.txt'),
+        this.destinationPath('.huskyrc.js')
+      );
 
-    this.fs.copy(
-      this.templatePath('lint-staged.config.js.txt'),
-      this.destinationPath('lint-staged.config.js')
-    );
+      this.fs.copy(
+        this.templatePath('lint-staged.config.js.txt'),
+        this.destinationPath('lint-staged.config.js')
+      );
+    }
 
     pkg.commitlint = {
       extends: [

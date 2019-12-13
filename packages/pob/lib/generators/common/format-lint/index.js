@@ -294,9 +294,11 @@ module.exports = class LintGenerator extends Generator {
 
     const srcDirectory = useBabel ? 'src' : 'lib';
 
-    const lintDirectories = [srcDirectory, 'scripts', 'migrations'].filter(
-      (dir) => fs.existsSync(this.destinationPath(dir))
-    );
+    const lintDirectories = [
+      srcDirectory,
+      'scripts',
+      'migrations',
+    ].filter((dir) => fs.existsSync(this.destinationPath(dir)));
     packageUtils.addScripts(pkg, {
       lint: `${useBabel && !composite ? 'tsc && ' : ''}eslint${
         !useBabel ? '' : ` --ext .js,.ts${hasReact ? ',.tsx' : ''}`

@@ -115,7 +115,7 @@ module.exports = class TypescriptGenerator extends Generator {
         this.fs.delete(tsconfigBuildPath);
       }
     } else {
-      delete pkg.scripts.tsc;
+      if (pkg.scripts) delete pkg.scripts.tsc;
       this.fs.delete(tsconfigPath);
       this.fs.delete(tsconfigBuildPath);
     }

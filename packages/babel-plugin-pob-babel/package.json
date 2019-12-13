@@ -12,11 +12,11 @@
   },
   "homepage": "https://github.com/christophehurpeau/pob",
   "engines": {
-    "node": ">=8.6.0"
+    "node": ">=10.13.0"
   },
   "main": "./lib/index.js",
   "scripts": {
-    "lint": "eslint --quiet lib/"
+    "lint": "eslint --quiet lib"
   },
   "prettier": {
     "trailingComma": "es5",

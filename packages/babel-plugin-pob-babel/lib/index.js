@@ -39,9 +39,9 @@ module.exports = function({ types }, opts) {
             );
           }
 
-          path.scope.bindings[specifier.local.name].referencePaths.forEach(
-            (ref) => ref.replaceWith(nodeReplacement)
-          );
+          path.scope.bindings[
+            specifier.local.name
+          ].referencePaths.forEach((ref) => ref.replaceWith(nodeReplacement));
         });
 
         path.remove();

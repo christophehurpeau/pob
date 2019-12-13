@@ -130,15 +130,6 @@ module.exports = class BabelGenerator extends Generator {
               )
             ),
           },
-          {
-            name: '8 (Maintenance LTS)',
-            value: '8',
-            checked: Boolean(
-              babelEnvs.find(
-                (env) => env.target === 'node' && String(env.version) === '8'
-              )
-            ),
-          },
         ],
       },
 
@@ -396,17 +387,8 @@ module.exports = class BabelGenerator extends Generator {
           Number.MAX_SAFE_INTEGER
         );
       switch (String(minNodeVersion)) {
-        case '8':
-          pkg.engines.node = '>=8.9.0';
-          if (pkg.dependencies && pkg.dependencies['@types/node']) {
-            pkg.dependencies['@types/node'] = '>=8.0.0';
-          }
-          if (pkg.devDependencies && pkg.devDependencies['@types/node']) {
-            pkg.devDependencies['@types/node'] = '>=8.0.0';
-          }
-          break;
         case '10':
-          pkg.engines.node = '>=10.0.0';
+          pkg.engines.node = '>=10.13.0';
           if (pkg.dependencies && pkg.dependencies['@types/node']) {
             pkg.dependencies['@types/node'] = '>=10.0.0';
           }
@@ -459,8 +441,11 @@ module.exports = class BabelGenerator extends Generator {
         pkg.types = './lib/index.d.ts';
       }
       if (!pkg.engines) pkg.engines = {};
-      if (!pkg.engines.node || semver.lt(pkg.engines.node.slice(2), '8.9.0')) {
-        pkg.engines.node = '>=8.9.0';
+      if (
+        !pkg.engines.node ||
+        semver.lt(pkg.engines.node.slice(2), '10.13.0')
+      ) {
+        pkg.engines.node = '>=10.13.0';
       }
     }
 

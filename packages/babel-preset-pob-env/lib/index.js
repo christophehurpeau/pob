@@ -185,6 +185,14 @@ module.exports = function(context, opts) {
 
       // typescript
       typescript && require.resolve('@babel/preset-typescript'),
+      typescript &&
+        targetOption === 'browser' &&
+        versionOption !== 'modern' &&
+        require.resolve('@babel/plugin-proposal-optional-chaining'),
+      typescript &&
+        targetOption === 'browser' &&
+        versionOption !== 'modern' &&
+        require.resolve('@babel/plugin-proposal-nullish-coalescing-operator'),
 
       // plugins
       {

@@ -1,12 +1,11 @@
 var production = process.env.NODE_ENV === 'production';
 <% var envs = [
     ['node10', node10],
-    ['node8', node8],
 ].filter(v => v[1]);
 if (envs.length === 1) { -%>
-<% if (node8) { -%>
+<% if (node10) { -%>
 /* istanbul ignore next */
-if (nodeVersionMajor > 8 || (nodeVersionMajor === 8 && nodeVersionMinor >= 3)) {
+if (nodeVersionMajor > 10 || (nodeVersionMajor === 10 && nodeVersionMinor >= 13)) {
   module.exports = require('./dist/<%= entry %>-<%= envs[0][0] %>' + (production ? '' : '-dev') + '.cjs');
 /* istanbul ignore next */
 } else {
@@ -23,9 +22,6 @@ var nodeVersionMinor = Number(nodeVersion[1]);
 /* istanbul ignore next */
 if (nodeVersionMajor > 10 || (nodeVersionMajor === 10 && nodeVersionMinor >= 13)) {
   module.exports = require('./dist/<%= entry %>-node10' + (production ? '' : '-dev') + '.cjs');
-/* istanbul ignore next */
-} else if (nodeVersionMajor > 8 || (nodeVersionMajor === 8 && nodeVersionMinor >= 3)) {
-  module.exports = require('./dist/<%= entry %>-node8' + (production ? '' : '-dev') + '.cjs');
 /* istanbul ignore next */
 } else {
   throw new Error('Node version not supported: ' + nodeVersion + ' (' + process.versions.node + ').');

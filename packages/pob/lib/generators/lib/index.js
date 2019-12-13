@@ -55,18 +55,9 @@ module.exports = class PobLibGenerator extends Generator {
     if (babelEnvs && typeof babelEnvs[0] === 'string') {
       babelEnvs = babelEnvs.map((env) => {
         switch (env) {
-          case 'es5':
-            throw new Error('use olderNode instead.');
-
           case 'node6':
           case 'node7':
           case 'node8':
-            return {
-              target: 'node',
-              version: 8,
-              formats: ['cjs'],
-            };
-
           case 'node10':
             return {
               target: 'node',
@@ -79,7 +70,7 @@ module.exports = class PobLibGenerator extends Generator {
           case 'module-node8':
             return {
               target: 'node',
-              version: 8,
+              version: 10,
               formats: ['es'],
             };
 
@@ -105,18 +96,14 @@ module.exports = class PobLibGenerator extends Generator {
     }
 
     if (babelEnvs) {
-      babelEnvs = babelEnvs.filter(
-        (env) => env.target !== 'node' || env.version >= 8
-      );
-
       if (
-        !babelEnvs.find(
+        !babelEnvs.some(
           (env) => env.target === 'node' && String(env.version) === '10'
         ) &&
-        Boolean(
-          babelEnvs.find(
-            (env) => env.target === 'node' && String(env.version) === '8'
-          )
+        babelEnvs.some(
+          (env) =>
+            env.target === 'node' &&
+            (String(env.version) === '8' || String(env.version) === '6')
         )
       ) {
         babelEnvs.unshift({
@@ -125,6 +112,9 @@ module.exports = class PobLibGenerator extends Generator {
           formats: ['cjs', 'es'],
         });
       }
+      babelEnvs = babelEnvs.filter(
+        (env) => env.target !== 'node' || env.version >= 10
+      );
     }
 
     if (this.pobjson.testing === true) {

@@ -15,7 +15,7 @@
     "url": "https://github.com/christophehurpeau/pob/issues"
   },
   "engines": {
-    "node": ">=8.6.0"
+    "node": ">=10.13.0"
   },
   "main": "./lib/index.js",
   "bin": {
@@ -23,7 +23,7 @@
   },
   "scripts": {
     "format": "prettier --write",
-    "lint": "eslint --quiet lib/"
+    "lint": "eslint --quiet lib"
   },
   "prettier": {
     "trailingComma": "es5",
