@@ -44,13 +44,6 @@ module.exports = class PobBaseGenerator extends Generator {
       defaults: true,
       desc: 'Include a license',
     });
-
-    this.option('babel', {
-      type: Boolean,
-      required: false,
-      defaults: true,
-      desc: 'Use babel',
-    });
   }
 
   initializing() {
@@ -71,7 +64,6 @@ module.exports = class PobBaseGenerator extends Generator {
     this.composeWith(require.resolve('../core/package'), {
       updateOnly: this.options.updateOnly,
       private: this.useLerna,
-      babel: this.options.babel,
     });
 
     if (this.useLerna) {
