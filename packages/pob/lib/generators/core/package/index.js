@@ -1,5 +1,6 @@
 'use strict';
 
+const fs = require('fs');
 const path = require('path');
 const Generator = require('yeoman-generator');
 const askName = require('inquirer-npm-name');
@@ -16,6 +17,13 @@ module.exports = class PackageGenerator extends Generator {
       required: false,
       defaults: false,
       desc: 'private package',
+    });
+
+    this.option('babel', {
+      type: Boolean,
+      required: false,
+      defaults: true,
+      desc: 'Use babel',
     });
   }
 
@@ -103,14 +111,14 @@ module.exports = class PackageGenerator extends Generator {
       pkg.homepage = lernaPackage.homepage;
 
       if (this.fs.exists(this.destinationPath('yarn.lock'))) {
-        this.fs.delete(this.destinationPath('yarn.lock'));
+        fs.unlinkSync(this.destinationPath('yarn.lock'));
       }
       if (this.fs.exists(this.destinationPath('yarn-error.log'))) {
-        this.fs.delete(this.destinationPath('yarn-error.log'));
+        fs.unlinkSync(this.destinationPath('yarn-error.log'));
       }
     }
     if (this.fs.exists(this.destinationPath('yarn-error.log'))) {
-      this.fs.delete(this.destinationPath('yarn-error.log'));
+      fs.unlinkSync(this.destinationPath('yarn-error.log'));
     }
 
     author = {
@@ -157,6 +165,7 @@ module.exports = class PackageGenerator extends Generator {
         this.destinationPath('.npmignore'),
         {
           inLerna,
+          babel: this.options.babel,
           typedoc: pkg.devDependencies && pkg.devDependencies.typedoc,
         }
       );

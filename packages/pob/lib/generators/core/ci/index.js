@@ -68,6 +68,18 @@ module.exports = class CiGenerator extends Generator {
             node8: true, // Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8')),
           }
         );
+        this.fs.copyTpl(
+          this.templatePath('github-action-node-workflow.yml.ejs'),
+          this.destinationPath('.github/workflows/push.yml'),
+          {
+            testing: this.options.testing,
+            documentation: this.options.documentation,
+            codecov: this.options.codecov,
+            node12: true,
+            node10: true, // Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '10')),
+            node8: true, // Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '8')),
+          }
+        );
       } catch (err) {
         console.log(err.stack || err.message || err);
         throw err;
@@ -75,6 +87,7 @@ module.exports = class CiGenerator extends Generator {
     } else {
       this.fs.delete(this.destinationPath('.circleci/config.yml'));
       this.fs.delete(this.destinationPath('.circleci'));
+      this.fs.delete(this.destinationPath('.github/workflows/push.yml'));
     }
   }
 
