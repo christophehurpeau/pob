@@ -60,26 +60,18 @@ module.exports = class ReadmeGenerator extends Generator {
 
     if (this.fs.exists(readmePath)) {
       const readmeFullContent = this.fs.read(readmePath);
-      content = readmeFullContent.match(
-        /^<h3(?:[^#*]+)([^]+)(?:\[npm-image]:)/
-      );
+      content = readmeFullContent.match(/^<h3[^#*]+([^]+)\[npm-image]:/);
       if (!content) {
-        content = readmeFullContent.match(
-          /^<h3(?:[^#*]+)([^]+)(?:\[daviddm-image]:)/
-        );
+        content = readmeFullContent.match(/^<h3[^#*]+([^]+)\[daviddm-image]:/);
       }
-      if (!content) content = readmeFullContent.match(/^<h3(?:[^#*]+)([^]+)$/);
+      if (!content) content = readmeFullContent.match(/^<h3[^#*]+([^]+)$/);
       if (!content) {
-        content = readmeFullContent.match(
-          /^#(?:[^#*]+)([^]+)(?:\[npm-image]:)/
-        );
+        content = readmeFullContent.match(/^#[^#*]+([^]+)\[npm-image]:/);
       }
       if (!content) {
-        content = readmeFullContent.match(
-          /^#(?:[^#*]+)([^]+)(?:\[daviddm-image]:)/
-        );
+        content = readmeFullContent.match(/^#[^#*]+([^]+)\[daviddm-image]:/);
       }
-      if (!content) content = readmeFullContent.match(/^#(?:[^#*]+)([^]+)$/);
+      if (!content) content = readmeFullContent.match(/^#[^#*]+([^]+)$/);
       content = content ? content[1].trim() : readmeFullContent;
     }
 
@@ -90,7 +82,7 @@ module.exports = class ReadmeGenerator extends Generator {
       repository &&
       repository.match(
         // eslint-disable-next-line unicorn/no-unsafe-regex
-        /^(?:git@|https?:\/\/)(?:([^:/.]+)(?:\.com)?:)?([^:/]+)\/([^:/.]+)(?:.git)?/
+        /^(?:git@|https?:\/\/)(?:([^./:]+)(?:\.com)?:)?([^/:]+)\/([^./:]+)(?:.git)?/
       );
     const [, gitHost, gitAccount, gitName] = match || [];
     try {

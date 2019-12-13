@@ -163,8 +163,8 @@ module.exports = class LernaGenerator extends Generator {
 
     if (this.fs.exists(readmePath)) {
       const readmeFullContent = this.fs.read(readmePath);
-      content = readmeFullContent.match(/^<h3(?:[^#*]+)([^]+)$/);
-      if (!content) content = readmeFullContent.match(/^#(?:[^#*]+)([^]+)$/);
+      content = readmeFullContent.match(/^<h3[^#*]+([^]+)$/);
+      if (!content) content = readmeFullContent.match(/^#[^#*]+([^]+)$/);
       content = content ? content[1].trim() : readmeFullContent;
     }
 

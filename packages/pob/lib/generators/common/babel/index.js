@@ -201,9 +201,9 @@ module.exports = class BabelGenerator extends Generator {
       ...babelNodeVersions.map((version) => ({
         target: 'node',
         version,
-        // eslint-disable-next-line no-nested-ternary
         formats: babelFormats.includes('es')
-          ? version === '10'
+          ? // eslint-disable-next-line unicorn/no-nested-ternary
+            version === '10'
             ? babelFormats
             : ['cjs']
           : babelFormats,
@@ -211,9 +211,9 @@ module.exports = class BabelGenerator extends Generator {
       ...babelBrowserVersions.map((version) => ({
         target: 'browser',
         version,
-        // eslint-disable-next-line no-nested-ternary
         formats: babelFormats.includes('cjs')
-          ? version === undefined
+          ? // eslint-disable-next-line unicorn/no-nested-ternary
+            version === undefined
             ? babelFormats
             : ['es']
           : babelFormats,
@@ -552,7 +552,8 @@ module.exports = class BabelGenerator extends Generator {
         const key =
           env.target === 'node'
             ? 'node'
-            : env.version === 'modern'
+            : // eslint-disable-next-line unicorn/no-nested-ternary
+            env.version === 'modern'
             ? 'modern-browsers'
             : 'browser';
         const envAliases =

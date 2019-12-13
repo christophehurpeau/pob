@@ -144,7 +144,7 @@ module.exports = class LintGenerator extends Generator {
     })();
 
     const dir = useBabel ? 'src' : 'lib';
-    // eslint-disable-next-line no-nested-ternary
+    // eslint-disable-next-line unicorn/no-nested-ternary
     const ext = !useBabel ? 'js' : hasReact ? '{ts,tsx}' : 'ts';
 
     const jestOverride = !packageUtils.hasJest(pkg)
