@@ -2,7 +2,9 @@
   "name": "babel-preset-pob-env",
   "version": "2.30.1",
   "description": "pob babel preset env",
-  "keywords": ["babel-preset"],
+  "keywords": [
+    "babel-preset"
+  ],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": {
@@ -32,6 +34,8 @@
     "@babel/plugin-proposal-class-properties": "^7.7.4",
     "@babel/plugin-proposal-export-default-from": "^7.7.4",
     "@babel/plugin-proposal-export-namespace-from": "^7.7.4",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.7.4",
+    "@babel/plugin-proposal-optional-chaining": "^7.7.5",
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-typescript": "^7.7.4",
     "babel-plugin-discard-module-references": "^1.1.2",
