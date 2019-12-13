@@ -75,7 +75,8 @@ module.exports = class PobAppGenerator extends Generator {
       this.composeWith(require.resolve('../common/husky'), {});
     }
 
-    const babel = true;
+    const babelEnvs = pkg.pob.babelEnvs || [];
+    const babel = !!babelEnvs.length;
     const node = true;
     const browser = ['alp', 'next.js', 'node'].includes(this.appConfig.type);
     const withReact = packageUtils.hasReact(pkg);

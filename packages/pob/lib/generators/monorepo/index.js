@@ -64,7 +64,8 @@ module.exports = class PobMonorepoGenerator extends Generator {
         message: 'Would you like ci ?',
         default: config
           ? config.ci
-          : this.fs.exists(this.destinationPath('.circleci/config.yml')) ||  this.fs.exists(this.destinationPath('.github/workflows')),
+          : this.fs.exists(this.destinationPath('.circleci/config.yml')) ||
+            this.fs.exists(this.destinationPath('.github/workflows')),
       },
       {
         type: 'confirm',
