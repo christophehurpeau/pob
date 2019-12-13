@@ -94,17 +94,6 @@ module.exports = class TypescriptGenerator extends Generator {
         }
       }
 
-      if (
-        inLerna &&
-        inLerna.root &&
-        inLerna.rootYoConfig.pob &&
-        inLerna.rootYoConfig.pob.monorepo &&
-        inLerna.rootYoConfig.pob.monorepo.typescript
-      ) {
-        pkg.scripts.tsc = 'tsc -b';
-      } else {
-        delete pkg.scripts.tsc;
-      }
       this.fs.copyTpl(this.templatePath('tsconfig.json.ejs'), tsconfigPath, {
         monorepoPackageNames,
         monorepoPackageSrcPaths,
@@ -126,6 +115,7 @@ module.exports = class TypescriptGenerator extends Generator {
         this.fs.delete(tsconfigBuildPath);
       }
     } else {
+      delete pkg.scripts.tsc;
       this.fs.delete(tsconfigPath);
       this.fs.delete(tsconfigBuildPath);
     }

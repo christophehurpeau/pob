@@ -36,7 +36,7 @@
 
     "paths": {
       <% monorepoPackageNames.forEach((packageName, index) => { %>
-      "<%= packageName %>": ["../../<%= monorepoPackageSrcPaths[index] %>"]<%= index === monorepoPackageNames.length -1 ? '' : ',' -%>
+      "<%= packageName %>": ["../../../<%= monorepoPackageSrcPaths[index] %>"]<%= index === monorepoPackageNames.length -1 ? '' : ',' -%>
       <% }) %>
     }<% } %>
   }

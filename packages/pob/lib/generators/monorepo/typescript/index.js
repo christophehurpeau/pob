@@ -41,6 +41,7 @@ module.exports = class MonorepoTypescriptGenerator extends Generator {
     const tsconfigBuildPath = this.destinationPath('tsconfig.build.json');
     if (this.options.enable) {
       packageUtils.addScripts(pkg, {
+        tsc: 'tsc -b',
         'build:definitions': 'tsc -b tsconfig.build.json',
         postbuild: 'yarn run build:definitions',
       });
@@ -64,8 +65,19 @@ module.exports = class MonorepoTypescriptGenerator extends Generator {
         }
       );
     } else {
+      if (pkg.scripts) {
+        delete pkg.scripts.tsc;
+        if (pkg.scripts.postbuild === 'tsc -b tsconfig.build.json') {
+          delete pkg.scripts.postbuild;
+        }
+        delete pkg.scripts['build:definitions'];
+      }
       this.fs.delete(tsconfigPath);
       this.fs.delete(tsconfigBuildPath);
+    }
+
+    if (pkg.scripts) {
+      delete pkg.scripts['typescript-check'];
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
