@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-pob-env",
-  "version": "2.30.1",
+  "version": "3.0.0",
   "description": "pob babel preset env",
   "keywords": ["babel-preset"],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -37,10 +37,10 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-typescript": "^7.7.4",
     "babel-plugin-discard-module-references": "^1.1.2",
-    "babel-plugin-fix-class-properties-uninitialized": "^1.7.2",
+    "babel-plugin-fix-class-properties-uninitialized": "^2.0.0",
     "babel-plugin-import-export-rename": "^1.0.1",
     "babel-plugin-minify-replace": "^0.5.0",
-    "babel-plugin-pob-babel": "^0.12.2",
+    "babel-plugin-pob-babel": "^1.0.0",
     "babel-plugin-transform-name-export-default": "^1.0.0",
     "babel-preset-optimizations": "^1.7.0"
   },

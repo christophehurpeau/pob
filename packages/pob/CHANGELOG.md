@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/christophehurpeau/pob/compare/pob@4.37.5...pob@5.0.0) (2019-12-13)
+
+
+### Bug Fixes
+
+* when pkg.pob doesnt exists ([0e640ef](https://github.com/christophehurpeau/pob/commit/0e640ef2b7397d0df646191208a94332ae65dc00))
+* **deps:** update dependency update-notifier to v4 ([#363](https://github.com/christophehurpeau/pob/issues/363)) ([0c12671](https://github.com/christophehurpeau/pob/commit/0c1267166078a99f2cf0a83b90806a45bee53b7f))
+* package path ([aa6dcbb](https://github.com/christophehurpeau/pob/commit/aa6dcbb6944517791022b7321cd7c6cd8f9364fe))
+* require min node 8 version to 8.9 ([ba50c8f](https://github.com/christophehurpeau/pob/commit/ba50c8f663dea3a3307167b63d6ccafb1240229e))
+
+
+### Features
+
+* add nullish-coalescing-operator and optional-chaining ([fca6e0b](https://github.com/christophehurpeau/pob/commit/fca6e0b6ddfd5b5851134fa0cdbb1eb56930c8d4))
+* fix tsconfig.json and improve scripts ([1699a01](https://github.com/christophehurpeau/pob/commit/1699a015fe072f72cf29709c5283e90f4db2d8cb))
+* github workflow and improve npmignore/githubignore ([4141004](https://github.com/christophehurpeau/pob/commit/4141004e09f6e8f50b06ca01a13af684e68cd807))
+* support scripts and migrations directories ([7e44dec](https://github.com/christophehurpeau/pob/commit/7e44decf62f5f664a06a9cbb87db51bea86dbac6))
+* ts config use paths ([9833937](https://github.com/christophehurpeau/pob/commit/9833937af285b9e6e899db08d9df31516bb2fbc6))
+* update node 12 in circleci template ([129b51f](https://github.com/christophehurpeau/pob/commit/129b51f2b9d0c9ec092cb2e2dc222a137115b2e1))
+* update to got 10 ([7953f8f](https://github.com/christophehurpeau/pob/commit/7953f8ffb77822775ae1244c0c32b4fd3fe187f0))
+
+
+### BREAKING CHANGES
+
+* drop node 8
+
+
+
+
+
 ## [4.37.5](https://github.com/christophehurpeau/pob/compare/pob@4.37.4...pob@4.37.5) (2019-09-14)
 
 

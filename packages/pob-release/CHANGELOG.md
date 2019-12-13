@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/christophehurpeau/pob/compare/pob-release@4.15.2...pob-release@5.0.0) (2019-12-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency inquirer to v7 ([#270](https://github.com/christophehurpeau/pob/issues/270)) ([5c6d324](https://github.com/christophehurpeau/pob/commit/5c6d3245698e9677813af5eb0a7f04bbfe110303))
+* **deps:** update dependency standard-changelog to v2.0.15 ([#315](https://github.com/christophehurpeau/pob/issues/315)) ([da57dee](https://github.com/christophehurpeau/pob/commit/da57dee55cb29550335825cc9ba65694d2cc233e))
+* **deps:** update dependency standard-changelog to v2.0.17 ([#339](https://github.com/christophehurpeau/pob/issues/339)) ([d263936](https://github.com/christophehurpeau/pob/commit/d263936c1c6d32992cf7d29f9bd31a6d62aedcb8))
+* **deps:** update dependency standard-changelog to v2.0.18 ([#344](https://github.com/christophehurpeau/pob/issues/344)) ([9991c2f](https://github.com/christophehurpeau/pob/commit/9991c2fcafed1e29a02165f6e714177173018649))
+
+
+### Features
+
+* add nullish-coalescing-operator and optional-chaining ([fca6e0b](https://github.com/christophehurpeau/pob/commit/fca6e0b6ddfd5b5851134fa0cdbb1eb56930c8d4))
+
+
+### BREAKING CHANGES
+
+* drop node 8
+
+
+
+
+
 ## [4.15.2](https://github.com/christophehurpeau/pob/compare/pob-release@4.15.1...pob-release@4.15.2) (2019-09-14)
 
 **Note:** Version bump only for package pob-release

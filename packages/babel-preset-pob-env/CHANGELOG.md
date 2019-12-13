@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.30.1...babel-preset-pob-env@3.0.0) (2019-12-13)
+
+
+### Features
+
+* add nullish-coalescing-operator and optional-chaining ([fca6e0b](https://github.com/christophehurpeau/pob/commit/fca6e0b6ddfd5b5851134fa0cdbb1eb56930c8d4))
+* **deps:** update babel monorepo to v7.6.2 ([#304](https://github.com/christophehurpeau/pob/issues/304)) ([ba28247](https://github.com/christophehurpeau/pob/commit/ba28247ca4718a6726f57d82598500dba6cb3b86))
+* **deps:** update babel monorepo to v7.6.3 ([#314](https://github.com/christophehurpeau/pob/issues/314)) ([f3ed216](https://github.com/christophehurpeau/pob/commit/f3ed216e312f8e4b5ad8cbfc2f1d15ceed903fff))
+* **deps:** update babel monorepo to v7.7.0 ([#331](https://github.com/christophehurpeau/pob/issues/331)) ([bda5e5f](https://github.com/christophehurpeau/pob/commit/bda5e5f97b087f60821ebc5d303f828125925f99))
+* **deps:** update babel monorepo to v7.7.2 ([#335](https://github.com/christophehurpeau/pob/issues/335)) ([e0f8214](https://github.com/christophehurpeau/pob/commit/e0f8214e5616ced370ca25310a8eebfadf7e2a53))
+* **deps:** update babel monorepo to v7.7.4 ([#348](https://github.com/christophehurpeau/pob/issues/348)) ([44aae72](https://github.com/christophehurpeau/pob/commit/44aae7213c04a37045ba6e6e1d4fe2580948a2cf))
+* **deps:** update babel monorepo to v7.7.5 ([#353](https://github.com/christophehurpeau/pob/issues/353)) ([aac45db](https://github.com/christophehurpeau/pob/commit/aac45db0b9c2613a387d9e2917b37cb2dbdce1b5))
+* **deps:** update dependency @babel/core to v7.6.4 ([#318](https://github.com/christophehurpeau/pob/issues/318)) ([c1475de](https://github.com/christophehurpeau/pob/commit/c1475debe83041068ef1168760fb58fd2fa6c028))
+
+
+### BREAKING CHANGES
+
+* drop node 8
+
+
+
+
+
 ## [2.30.1](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@2.30.0...babel-preset-pob-env@2.30.1) (2019-09-14)
 
 **Note:** Version bump only for package babel-preset-pob-env

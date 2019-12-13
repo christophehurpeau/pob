@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-pob-babel@0.12.2...babel-plugin-pob-babel@1.0.0) (2019-12-13)
+
+
+### Features
+
+* add nullish-coalescing-operator and optional-chaining ([fca6e0b](https://github.com/christophehurpeau/pob/commit/fca6e0b6ddfd5b5851134fa0cdbb1eb56930c8d4))
+
+
+### BREAKING CHANGES
+
+* drop node 8
+
+
+
+
+
 ## [0.12.2](https://github.com/christophehurpeau/pob/compare/babel-plugin-pob-babel@0.12.1...babel-plugin-pob-babel@0.12.2) (2019-09-14)
 
 **Note:** Version bump only for package babel-plugin-pob-babel

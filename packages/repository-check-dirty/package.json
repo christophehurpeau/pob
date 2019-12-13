@@ -1,6 +1,6 @@
 {
   "name": "repository-check-dirty",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "check that a git repository is not dirty",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",

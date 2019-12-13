@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@1.2.3...pob-lcov-reporter@2.0.0) (2019-12-13)
+
+
+### Features
+
+* add nullish-coalescing-operator and optional-chaining ([fca6e0b](https://github.com/christophehurpeau/pob/commit/fca6e0b6ddfd5b5851134fa0cdbb1eb56930c8d4))
+
+
+### BREAKING CHANGES
+
+* drop node 8
+
+
+
+
+
 ## [1.2.3](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@1.2.1...pob-lcov-reporter@1.2.3) (2019-09-13)
 
 

@@ -3,6 +3,58 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.29.2...pob-dependencies@1.0.0) (2019-12-13)
+
+
+### Features
+
+* add nullish-coalescing-operator and optional-chaining ([fca6e0b](https://github.com/christophehurpeau/pob/commit/fca6e0b6ddfd5b5851134fa0cdbb1eb56930c8d4))
+* **deps:** update babel monorepo to v7.6.2 ([#304](https://github.com/christophehurpeau/pob/issues/304)) ([ba28247](https://github.com/christophehurpeau/pob/commit/ba28247ca4718a6726f57d82598500dba6cb3b86))
+* **deps:** update babel monorepo to v7.6.3 ([#314](https://github.com/christophehurpeau/pob/issues/314)) ([f3ed216](https://github.com/christophehurpeau/pob/commit/f3ed216e312f8e4b5ad8cbfc2f1d15ceed903fff))
+* **deps:** update babel monorepo to v7.7.0 ([#331](https://github.com/christophehurpeau/pob/issues/331)) ([bda5e5f](https://github.com/christophehurpeau/pob/commit/bda5e5f97b087f60821ebc5d303f828125925f99))
+* **deps:** update babel monorepo to v7.7.1 ([#332](https://github.com/christophehurpeau/pob/issues/332)) ([e033cf1](https://github.com/christophehurpeau/pob/commit/e033cf1e09216e95d016ac552e440e91e5f045bd))
+* **deps:** update babel monorepo to v7.7.2 ([#335](https://github.com/christophehurpeau/pob/issues/335)) ([e0f8214](https://github.com/christophehurpeau/pob/commit/e0f8214e5616ced370ca25310a8eebfadf7e2a53))
+* **deps:** update babel monorepo to v7.7.4 ([#348](https://github.com/christophehurpeau/pob/issues/348)) ([44aae72](https://github.com/christophehurpeau/pob/commit/44aae7213c04a37045ba6e6e1d4fe2580948a2cf))
+* **deps:** update babel monorepo to v7.7.5 ([#353](https://github.com/christophehurpeau/pob/issues/353)) ([aac45db](https://github.com/christophehurpeau/pob/commit/aac45db0b9c2613a387d9e2917b37cb2dbdce1b5))
+* **deps:** update babel monorepo to v7.7.6 ([#361](https://github.com/christophehurpeau/pob/issues/361)) ([dd8059c](https://github.com/christophehurpeau/pob/commit/dd8059c3d9828f47b934bfb61af93c148290ca62))
+* **deps:** update dependency @babel/core to v7.6.4 ([#318](https://github.com/christophehurpeau/pob/issues/318)) ([c1475de](https://github.com/christophehurpeau/pob/commit/c1475debe83041068ef1168760fb58fd2fa6c028))
+* **deps:** update dependency @types/jest to v24.0.19 ([#320](https://github.com/christophehurpeau/pob/issues/320)) ([42851bf](https://github.com/christophehurpeau/pob/commit/42851bf6df6c6c6ca4a2a823d26ccfe36b2cb121))
+* **deps:** update dependency @types/jest to v24.0.20 ([#328](https://github.com/christophehurpeau/pob/issues/328)) ([bac2737](https://github.com/christophehurpeau/pob/commit/bac27373f95774b78d7e452d6cd7a5c17dbde526))
+* **deps:** update dependency @types/jest to v24.0.21 ([#329](https://github.com/christophehurpeau/pob/issues/329)) ([e20b26b](https://github.com/christophehurpeau/pob/commit/e20b26b8b3c528ee8a174c047aeb4d468266634c))
+* **deps:** update dependency @types/jest to v24.0.22 ([#334](https://github.com/christophehurpeau/pob/issues/334)) ([58b0a3a](https://github.com/christophehurpeau/pob/commit/58b0a3ad03533d8b771f036e17271ce846f53ed9))
+* **deps:** update dependency @types/jest to v24.0.23 ([#340](https://github.com/christophehurpeau/pob/issues/340)) ([d64e1eb](https://github.com/christophehurpeau/pob/commit/d64e1eb1515d8f3cdff320d4439a3865ce4e2b75))
+* **deps:** update dependency babel-preset-modern-browsers to v14.1.0 ([#364](https://github.com/christophehurpeau/pob/issues/364)) ([7bfc4a8](https://github.com/christophehurpeau/pob/commit/7bfc4a8489973d3b6f6120cc00e4f9873b613abe))
+* **deps:** update dependency husky to v3.0.6 ([#306](https://github.com/christophehurpeau/pob/issues/306)) ([c7b24d0](https://github.com/christophehurpeau/pob/commit/c7b24d08dd1a2298b88abaebd0e3caa0404c2c0e))
+* **deps:** update dependency husky to v3.0.7 ([#307](https://github.com/christophehurpeau/pob/issues/307)) ([70ad456](https://github.com/christophehurpeau/pob/commit/70ad456185561910fc8848858cdb3875516fe66b))
+* **deps:** update dependency husky to v3.0.8 ([#310](https://github.com/christophehurpeau/pob/issues/310)) ([9dcc586](https://github.com/christophehurpeau/pob/commit/9dcc586b8a156988467197603252e63e54924ba8))
+* **deps:** update dependency husky to v3.0.9 ([#319](https://github.com/christophehurpeau/pob/issues/319)) ([a8575f3](https://github.com/christophehurpeau/pob/commit/a8575f31ce4171177d7be5010a6498f0ec2a8563))
+* **deps:** update dependency husky to v3.1.0 ([#345](https://github.com/christophehurpeau/pob/issues/345)) ([9bb44c0](https://github.com/christophehurpeau/pob/commit/9bb44c096044dd7b1c398f5fd0d4f02d642dd3de))
+* **deps:** update dependency lerna to v3.16.5 ([#312](https://github.com/christophehurpeau/pob/issues/312)) ([d2ac73b](https://github.com/christophehurpeau/pob/commit/d2ac73b78dbc7063a705f85c884c87a2e831d2a2))
+* **deps:** update dependency lerna to v3.17.0 ([#317](https://github.com/christophehurpeau/pob/issues/317)) ([a6ce34b](https://github.com/christophehurpeau/pob/commit/a6ce34b23e89dadf32342a0571ed8b9786f6a9ff))
+* **deps:** update dependency lerna to v3.18.0 ([#321](https://github.com/christophehurpeau/pob/issues/321)) ([7d2df18](https://github.com/christophehurpeau/pob/commit/7d2df18137d4636cdbe95a7d56f335f84a3c7185))
+* **deps:** update dependency lerna to v3.18.1 ([#322](https://github.com/christophehurpeau/pob/issues/322)) ([097fd41](https://github.com/christophehurpeau/pob/commit/097fd41a3e3dc7225025cef9142e61f2d665419e))
+* **deps:** update dependency lerna to v3.18.2 ([#324](https://github.com/christophehurpeau/pob/issues/324)) ([049ada8](https://github.com/christophehurpeau/pob/commit/049ada81cb1edd5f030117cfef69299f6086960b))
+* **deps:** update dependency lerna to v3.18.3 ([#325](https://github.com/christophehurpeau/pob/issues/325)) ([8ac5e5c](https://github.com/christophehurpeau/pob/commit/8ac5e5c90987368dc1706a38020224574687afd5))
+* **deps:** update dependency lerna to v3.18.4 ([#336](https://github.com/christophehurpeau/pob/issues/336)) ([0a8b10c](https://github.com/christophehurpeau/pob/commit/0a8b10c2d91bc8d4da11580311ce991cbb41f8aa))
+* **deps:** update dependency lerna to v3.18.5 ([#346](https://github.com/christophehurpeau/pob/issues/346)) ([9de4611](https://github.com/christophehurpeau/pob/commit/9de46119a17d83fd385a206d6a2e78602082810d))
+* **deps:** update dependency lerna to v3.19.0 ([#347](https://github.com/christophehurpeau/pob/issues/347)) ([7b7c4a3](https://github.com/christophehurpeau/pob/commit/7b7c4a368e1c0a43bd0461dd12c0831f14295cb2))
+* **deps:** update dependency typedoc to v0.15.1 ([#341](https://github.com/christophehurpeau/pob/issues/341)) ([c4a075c](https://github.com/christophehurpeau/pob/commit/c4a075c1e9d9a63320845d72703a81a9d4abcfc0))
+* **deps:** update dependency typedoc to v0.15.2 ([#343](https://github.com/christophehurpeau/pob/issues/343)) ([b64d751](https://github.com/christophehurpeau/pob/commit/b64d751d42c8982ccbd43e068eb3d4faf0efb7f5))
+* **deps:** update dependency typedoc to v0.15.3 ([#349](https://github.com/christophehurpeau/pob/issues/349)) ([e9b1b47](https://github.com/christophehurpeau/pob/commit/e9b1b47881738557a1523dadf437051bf217430e))
+* **deps:** update dependency typedoc to v0.15.4 ([#362](https://github.com/christophehurpeau/pob/issues/362)) ([c2905d4](https://github.com/christophehurpeau/pob/commit/c2905d48ba59266bfeac7428f38bc51594fedbc2))
+* **deps:** update dependency typescript to v3.6.4 ([#316](https://github.com/christophehurpeau/pob/issues/316)) ([f45a312](https://github.com/christophehurpeau/pob/commit/f45a3120be324edb71bacfbc6877cabb670511b1))
+* **deps:** update dependency typescript to v3.7.2 ([#333](https://github.com/christophehurpeau/pob/issues/333)) ([599f408](https://github.com/christophehurpeau/pob/commit/599f4082a43227395cabbb38fc6a096c7b6884f9))
+* **deps:** update dependency typescript to v3.7.3 ([#352](https://github.com/christophehurpeau/pob/issues/352)) ([acad69f](https://github.com/christophehurpeau/pob/commit/acad69f528e79259ff7ae053ea86d33748a11450))
+
+
+### BREAKING CHANGES
+
+* drop node 8
+
+
+
+
+
 ## [0.29.2](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.29.1...pob-dependencies@0.29.2) (2019-09-14)
 
 **Note:** Version bump only for package pob-dependencies

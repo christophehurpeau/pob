@@ -2,4 +2,4 @@
 
 const pkg = require('../package.json');
 
-module.exports = { version: pkg.version, date: 1568448877042 };
+module.exports = { version: pkg.version, date: 1576277840408 };

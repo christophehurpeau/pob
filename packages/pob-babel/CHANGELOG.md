@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@23.22.2...pob-babel@24.0.0) (2019-12-13)
+
+
+### Features
+
+* add nullish-coalescing-operator and optional-chaining ([fca6e0b](https://github.com/christophehurpeau/pob/commit/fca6e0b6ddfd5b5851134fa0cdbb1eb56930c8d4))
+
+
+### BREAKING CHANGES
+
+* drop node 8
+
+
+
+
+
 ## [23.22.2](https://github.com/christophehurpeau/pob/compare/pob-babel@23.22.1...pob-babel@23.22.2) (2019-09-14)
 
 **Note:** Version bump only for package pob-babel

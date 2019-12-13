@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@1.7.2...babel-plugin-fix-class-properties-uninitialized@2.0.0) (2019-12-13)
+
+
+### Features
+
+* add nullish-coalescing-operator and optional-chaining ([fca6e0b](https://github.com/christophehurpeau/pob/commit/fca6e0b6ddfd5b5851134fa0cdbb1eb56930c8d4))
+
+
+### BREAKING CHANGES
+
+* drop node 8
+
+
+
+
+
 ## [1.7.2](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@1.7.1...babel-plugin-fix-class-properties-uninitialized@1.7.2) (2019-09-14)
 
 **Note:** Version bump only for package babel-plugin-fix-class-properties-uninitialized
