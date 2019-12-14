@@ -44,7 +44,7 @@
     "babel-eslint": "10.0.3",
     "babel-jest": "24.9.0",
     "babel-preset-latest-node": "4.0.0",
-    "babel-preset-modern-browsers": "14.1.0",
+    "babel-preset-modern-browsers": "14.1.1",
     "eslint": "6.7.2",
     "husky": "3.1.0",
     "jest": "24.9.0",
