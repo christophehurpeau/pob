@@ -42,6 +42,7 @@
             "@pob/eslint-config-react",
             "@pob/eslint-config-typescript",
             "@pob/eslint-config-typescript-react",
+            "@pob/repo-config",
             "@pob/version",
             "@types/jest",
             "babel-eslint",
@@ -63,14 +64,14 @@
           "schedule": ["before 3am on Friday"]
         },
         {
-          "packageNames": ["@pob/repo-config", "husky", "prettier"],
-          "updateTypes": ["patch", "minor"],
-          "labels": [":ok_hand: code/approved", ":soon: automerge"],
-          "schedule": ["before 3am on Friday"]
-        },
-        {
           "description": "@pob eslint configs",
           "packagePatterns": ["^@pob/eslint-config"]
+        },
+        {
+          "packageNames": ["@pob/repo-config", "husky", "prettier", "lerna"],
+          "updateTypes": ["patch", "minor"],
+          "labels": [":ok_hand: code/approved", ":soon: automerge"],
+          "schedule": ["at any time"]
         },
         {
           "updateTypes": ["pin"],
