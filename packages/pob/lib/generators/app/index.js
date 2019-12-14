@@ -13,6 +13,9 @@ const gitignorePaths = {
   other: (config) => [],
 };
 
+const appsWithTypescript = ['alp', 'next.js', 'pobpack'];
+const appsWithNode = ['alp', 'next.js'];
+
 module.exports = class PobAppGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
@@ -76,9 +79,10 @@ module.exports = class PobAppGenerator extends Generator {
     }
 
     const babelEnvs = (pkg.pob && pkg.pob.babelEnvs) || [];
-    const babel = !!babelEnvs.length;
+    const babel =
+      !!babelEnvs.length || appsWithTypescript.includes(this.appConfig.type);
     const node = true;
-    const browser = ['alp', 'next.js', 'node'].includes(this.appConfig.type);
+    const browser = appsWithNode.includes(this.appConfig.type);
     const withReact = packageUtils.hasReact(pkg);
 
     this.composeWith(require.resolve('../common/typescript'), {
