@@ -3,17 +3,7 @@ var production = process.env.NODE_ENV === 'production';
     ['node10', node10],
 ].filter(v => v[1]);
 if (envs.length === 1) { -%>
-<% if (node10) { -%>
-/* istanbul ignore next */
-if (nodeVersionMajor > 10 || (nodeVersionMajor === 10 && nodeVersionMinor >= 13)) {
-  module.exports = require('./dist/<%= entry %>-<%= envs[0][0] %>' + (production ? '' : '-dev') + '.cjs');
-/* istanbul ignore next */
-} else {
-  throw new Error('Node version not supported: ' + nodeVersion + ' (' + process.versions.node + ').');
-}
-<% } else { -%>
 module.exports = require('./dist/<%= entry %>-<%= envs[0][0] %>' + (production ? '' : '-dev') + '.cjs');
-<% } -%>
 <% } else { -%>
 <%# parseFloat(process.versions.node) doesnt work with 6.10.1 -%>
 var nodeVersion = process.versions.node.split('.');
