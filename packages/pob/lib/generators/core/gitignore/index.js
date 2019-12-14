@@ -23,7 +23,7 @@ module.exports = class GitignoreGenerator extends Generator {
     this.option('withBabel', {
       type: Boolean,
       required: false,
-      defaults: false,
+      defaults: undefined,
       desc: 'Babel enabled.',
     });
 
@@ -44,19 +44,25 @@ module.exports = class GitignoreGenerator extends Generator {
 
   writing() {
     const dest = this.destinationPath('.gitignore');
+    const withBabel = this.options.withBabel;
+    // if (withBabel === undefined) {
+    //   const babelEnvs = (pkg.pob && pkg.pob.babelEnvs) || [];
+    //   withBabel = babelEnvs.length !== 0;
+    // }
+
     if (
       !this.options.root &&
       !this.options.documentation &&
       !this.options.paths &&
-      !this.options.withBabel
+      !withBabel
     ) {
       this.fs.delete(dest);
     } else {
       this.fs.copyTpl(this.templatePath('gitignore.ejs'), dest, {
         root: this.options.root,
         documentation: this.options.documentation,
-        withBabel: this.options.withBabel,
-        typescript: this.options.withBabel || this.options.typescript,
+        withBabel,
+        typescript: withBabel || this.options.typescript,
         paths: this.options.paths,
       });
     }

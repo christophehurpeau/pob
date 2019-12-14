@@ -271,6 +271,7 @@ module.exports = class PobLibGenerator extends Generator {
     this.composeWith(require.resolve('../core/gitignore'), {
       root: !inLerna,
       withBabel: babelEnvs.length !== 0,
+      typescript: babelEnvs.length !== 0,
       documentation: this.pobjson.documentation,
     });
   }
