@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.0.0...pob-dependencies@1.1.0) (2019-12-14)
+
+
+### Features
+
+* **deps:** update dependency babel-preset-latest-node to v4.0.1 ([#367](https://github.com/christophehurpeau/pob/issues/367)) ([b63f6e3](https://github.com/christophehurpeau/pob/commit/b63f6e336cbcf1778ca05ef1f9279d1d99c7e9fb))
+* **deps:** update dependency babel-preset-modern-browsers to v14.1.1 ([#366](https://github.com/christophehurpeau/pob/issues/366)) ([f5fee4e](https://github.com/christophehurpeau/pob/commit/f5fee4e8c0e4ae9650da391be3ef3e3dbb784372))
+
+
+
+
+
 # [1.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@0.29.2...pob-dependencies@1.0.0) (2019-12-13)
 
 

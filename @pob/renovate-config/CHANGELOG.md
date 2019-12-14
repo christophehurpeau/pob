@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.6.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.5.5...@pob/renovate-config@1.6.0) (2019-12-14)
+
+
+### Features
+
+* improve renovate config ([6b4e153](https://github.com/christophehurpeau/pob/commit/6b4e153e65ca86ad585bf5095e53a468084d9ca9))
+
+
+
+
+
 ## [1.5.5](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.5.4...@pob/renovate-config@1.5.5) (2019-12-13)
 
 **Note:** Version bump only for package @pob/renovate-config

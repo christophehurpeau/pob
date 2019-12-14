@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.1](https://github.com/christophehurpeau/pob/compare/pob@5.0.0...pob@5.0.1) (2019-12-14)
+
+
+### Bug Fixes
+
+* add use strict in lint-staged config template ([7cce912](https://github.com/christophehurpeau/pob/commit/7cce912b5fa96428112111ce9721cb4c97f4495f))
+
+
+
+
+
 # [5.0.0](https://github.com/christophehurpeau/pob/compare/pob@4.37.5...pob@5.0.0) (2019-12-13)
 
 

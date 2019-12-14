@@ -1,6 +1,6 @@
 {
   "name": "pob",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Pile of bones, library generator with git/babel/typescript/typedoc/readme/jest",
   "keywords": ["skeleton"],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
@@ -46,7 +46,7 @@
     "minimist-argv": "^1.1.0",
     "mkdirp": "^0.5.1",
     "parse-author": "^2.0.0",
-    "pob-dependencies": "^1.0.0",
+    "pob-dependencies": "^1.1.0",
     "prettier": "1.19.1",
     "semver": "^6.0.0",
     "update-notifier": "^4.0.0",
