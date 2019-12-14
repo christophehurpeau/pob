@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.2](https://github.com/christophehurpeau/pob/compare/pob@5.0.1...pob@5.0.2) (2019-12-14)
+
+
+### Bug Fixes
+
+* gitignore withBabel option ([2a73afb](https://github.com/christophehurpeau/pob/commit/2a73afb058e9b50c0e82947a03f37a21758bb824))
+* remove lerna suffix in github ([3e17992](https://github.com/christophehurpeau/pob/commit/3e1799221a60a48745fb869291bdaa2e5fe6a9a6))
+
+
+
+
+
 ## [5.0.1](https://github.com/christophehurpeau/pob/compare/pob@5.0.0...pob@5.0.1) (2019-12-14)
 
 
