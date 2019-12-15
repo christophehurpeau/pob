@@ -48,7 +48,7 @@
     "parse-author": "^2.0.0",
     "pob-dependencies": "^1.1.1",
     "prettier": "1.19.1",
-    "semver": "^6.0.0",
+    "semver": "^7.0.0",
     "update-notifier": "^4.0.0",
     "yeoman-environment": "^2.6.0",
     "yeoman-generator": "^4.2.0"
