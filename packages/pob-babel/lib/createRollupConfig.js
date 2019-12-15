@@ -106,7 +106,11 @@ const createConfigForEnv = (entry, env, production) => {
           !typescript && require.resolve('@babel/preset-flow'), // compatibility
           hasReact && [
             '@babel/preset-react',
-            { development: !production, useBuiltIns: true },
+            {
+              // always disable development: babel-plugin-transform-react-jsx-source compiles with filename full path, resulting in non reproducible builds
+              development: false,
+              useBuiltIns: true,
+            },
           ],
           [
             require.resolve('babel-preset-pob-env'),
