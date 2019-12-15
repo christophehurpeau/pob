@@ -12,7 +12,8 @@
     "lint": "lerna run --stream lint",
     "preversion": "yarn run lint --since && repository-check-dirty && node @pob/version/generate-index.js && git add ./@pob/version/lib/index.js",
     "postversion": "yarn && git add yarn.lock",
-    "release": "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git"
+    "release": "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git",
+    "test": "lerna run --stream test"
   },
   "commitlint": {
     "extends": ["@commitlint/config-conventional"]

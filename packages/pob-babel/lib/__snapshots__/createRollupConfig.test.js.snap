@@ -1,0 +1,19 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`fixtures basic 1`] = `
+"console.log(\`the answer is \${42}\`);
+"
+`;
+
+exports[`fixtures react 1`] = `
+"const React = require('react');
+
+const {
+  render
+} = require('react-dom');
+
+const Component = () => React.createElement(\\"div\\", null);
+
+render(React.createElement(Component, null), document.getElementById('react-container'));
+"
+`;

@@ -1,0 +1,15 @@
+{
+  "pob": {
+    "entries": ["index"],
+    "babelEnvs": [
+      {
+        "target": "node",
+        "version": "10",
+        "formats": ["es"]
+      }
+    ]
+  },
+  "dependencies": {
+    "react": "16.0.0"
+  }
+}
