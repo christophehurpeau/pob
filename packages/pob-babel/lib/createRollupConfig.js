@@ -144,7 +144,7 @@ const createConfigForEnv = (entry, env, production) => {
           // fix issue with babel and this
           require.resolve('./babel-plugin-rewrite-this'),
         ],
-        skipBabelHelpersCheck: true,
+        skipPreflightCheck: true,
         babelHelpers: 'runtime',
         exclude: 'node_modules/**',
       }),

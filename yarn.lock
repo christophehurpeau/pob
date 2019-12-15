@@ -9120,13 +9120,13 @@ rollup-config-external-dependencies@^1.1.0:
   resolved "https://registry.yarnpkg.com/rollup-config-external-dependencies/-/rollup-config-external-dependencies-1.1.0.tgz#0b5c44ac7b597ce90fc0aac2e3c79e2b59699c90"
   integrity sha512-LMsYdOPWFUw3hap6xqwp9sRD65FPP36YgwkVxmAj564B3yCYAlhjTSraOw6c4V8XdsH9v8KleFiGaWVHmwY4MA==
 
-rollup-plugin-babel@^5.0.0-alpha.0:
-  version "5.0.0-alpha.0"
-  resolved "https://registry.yarnpkg.com/rollup-plugin-babel/-/rollup-plugin-babel-5.0.0-alpha.0.tgz#7cfa2071f1771782dc066b51ffe7b1458d03999d"
-  integrity sha512-9PIj3tvLGPIY5FpwqEUjSFzcS10sGBFqBB9lkCwQ5WnfYAKS8NfTEsAgcTaHWkxvgVNSZIjyQqWSPyu4YpkjPw==
+rollup-plugin-babel@5.0.0-alpha.1:
+  version "5.0.0-alpha.1"
+  resolved "https://registry.yarnpkg.com/rollup-plugin-babel/-/rollup-plugin-babel-5.0.0-alpha.1.tgz#eb23e17a3fd61aed6473d8dd5ea08b23701f02b6"
+  integrity sha512-UDuSQCpHhgNvyVvtwLaqx00eGcj2uF9swdPcUJ3rBkDEvthwvKA2JoduTqUPbK5zUIvbKlLgqZ3KAHL8Eu027w==
   dependencies:
-    "@babel/helper-module-imports" "^7.0.0"
-    rollup-pluginutils "^2.3.0"
+    "@babel/helper-module-imports" "^7.7.4"
+    rollup-pluginutils "^2.8.2"
 
 rollup-plugin-ignore-import@^1.3.2:
   version "1.3.2"
@@ -9151,7 +9151,7 @@ rollup-plugin-node-resolve@^5.2.0:
     resolve "^1.11.1"
     rollup-pluginutils "^2.8.1"
 
-rollup-pluginutils@^2.3.0, rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.8.1:
+rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.8.1, rollup-pluginutils@^2.8.2:
   version "2.8.2"
   resolved "https://registry.yarnpkg.com/rollup-pluginutils/-/rollup-pluginutils-2.8.2.tgz#72f2af0748b592364dbd3389e600e5a9444a351e"
   integrity sha512-EEp9NhnUkwY8aif6bxgovPHMoMoNr2FulJziTndpt5H9RdwC47GSGuII9XxpSdzVGM0GWrNPHV6ie1LTNJPaLQ==
