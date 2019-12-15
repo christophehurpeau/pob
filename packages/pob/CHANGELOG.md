@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/christophehurpeau/pob/compare/pob@5.0.3...pob@5.1.0) (2019-12-15)
+
+
+### Bug Fixes
+
+* apps with typescript ([088f862](https://github.com/christophehurpeau/pob/commit/088f862c979aa12c78348724472b11ce7a12d89d))
+* entry template ([338e749](https://github.com/christophehurpeau/pob/commit/338e74948443807f3717e5cf06b581db0dd6d955))
+* monorepoPackageNames.forEach on non ts repo ([1b24c62](https://github.com/christophehurpeau/pob/commit/1b24c623b262de86ff3a140dc44d5ee42a641323))
+* tsconfig build config ([b9a1aac](https://github.com/christophehurpeau/pob/commit/b9a1aac8ee742c0975bacb0a6acd64f643b74181))
+
+
+### Features
+
+* use const in entry point ([3cb3a25](https://github.com/christophehurpeau/pob/commit/3cb3a253f3594aa99d6650b2bb451933f0d84c01))
+
+
+
+
+
 ## [5.0.3](https://github.com/christophehurpeau/pob/compare/pob@5.0.2...pob@5.0.3) (2019-12-14)
 
 **Note:** Version bump only for package pob

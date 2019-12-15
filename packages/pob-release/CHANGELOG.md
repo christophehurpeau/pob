@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.1](https://github.com/christophehurpeau/pob/compare/pob-release@5.0.0...pob-release@5.0.1) (2019-12-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency standard-changelog to v2.0.21 ([#369](https://github.com/christophehurpeau/pob/issues/369)) ([4194c45](https://github.com/christophehurpeau/pob/commit/4194c457848c22bb1b0b257b00230c8d56b38fd6))
+
+
+
+
+
 # [5.0.0](https://github.com/christophehurpeau/pob/compare/pob-release@4.15.2...pob-release@5.0.0) (2019-12-13)
 
 

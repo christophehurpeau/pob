@@ -23,7 +23,7 @@ interface Dependencies {
   'jest': '24.9.0';
   'jest-junit-reporter': '1.1.0';
   'lerna': '3.19.0';
-  'pob-babel': '^24.0.0';
+  'pob-babel': '^24.0.1';
   'pob-lcov-reporter': '^2.0.0';
   'pob-release': '^5.0.0';
   'prettier': '1.19.1';

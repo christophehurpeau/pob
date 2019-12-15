@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.0.2](https://github.com/christophehurpeau/pob/compare/pob-babel@24.0.1...pob-babel@24.0.2) (2019-12-15)
+
+
+### Bug Fixes
+
+* always disable dev in preset react ([40975e3](https://github.com/christophehurpeau/pob/commit/40975e337c52931f588dee0d60ee1033b0cbc3bc))
+
+
+
+
+
 ## [24.0.1](https://github.com/christophehurpeau/pob/compare/pob-babel@24.0.0...pob-babel@24.0.1) (2019-12-14)
 
 **Note:** Version bump only for package pob-babel
