@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.0.2...pob-babel@24.1.0) (2019-12-15)
+
+
+### Features
+
+* use rollup-plugin-babel@5.0.0-alpha.1 ([0c9db8a](https://github.com/christophehurpeau/pob/commit/0c9db8ab3de27c76a49bf305ef2d4321b6634928))
+
+
+
+
+
 ## [24.0.2](https://github.com/christophehurpeau/pob/compare/pob-babel@24.0.1...pob-babel@24.0.2) (2019-12-15)
 
 
