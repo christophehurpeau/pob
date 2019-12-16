@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.7.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.6.4...@pob/renovate-config@1.7.0) (2019-12-16)
+
+
+### Features
+
+* **renovate-config:** add master issue ([2a68d16](https://github.com/christophehurpeau/pob/commit/2a68d16f80e534f7776f0f359801394c86d15486))
+
+
+
+
+
 ## [1.6.4](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.6.3...@pob/renovate-config@1.6.4) (2019-12-16)
 
 **Note:** Version bump only for package @pob/renovate-config
