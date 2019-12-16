@@ -22,6 +22,9 @@
   },
   "renovate-config": {
     "default": {
+      "prConcurrentLimit": 10,
+      "masterIssue": true,
+      "masterIssueApproval": false,
       "postUpdateOptions": ["yarnDedupeHighest"],
       "prBodyNotes": [
         "<!-- do not edit after this -->This will be auto filled by reviewflow.<!-- end - don't add anything after this -->"
