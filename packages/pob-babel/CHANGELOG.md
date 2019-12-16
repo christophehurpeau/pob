@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.2.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.1.0...pob-babel@24.2.0) (2019-12-16)
+
+
+### Features
+
+* update minor dependencies ([2177d37](https://github.com/christophehurpeau/pob/commit/2177d37e9040a35f09dfcfd974692cd60e78e086))
+
+
+
+
+
 # [24.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.0.2...pob-babel@24.1.0) (2019-12-15)
 
 

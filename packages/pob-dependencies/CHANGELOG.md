@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.1.3...pob-dependencies@1.2.0) (2019-12-16)
+
+
+### Features
+
+* **deps:** update dependency typedoc to v0.15.5 ([#370](https://github.com/christophehurpeau/pob/issues/370)) ([dc90a2b](https://github.com/christophehurpeau/pob/commit/dc90a2bcfcee543d0cf7ed35f7e1852d4832e140))
+
+
+
+
+
 ## [1.1.3](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.1.2...pob-dependencies@1.1.3) (2019-12-15)
 
 **Note:** Version bump only for package pob-dependencies

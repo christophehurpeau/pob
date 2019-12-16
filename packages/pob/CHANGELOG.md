@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/christophehurpeau/pob/compare/pob@5.1.1...pob@5.2.0) (2019-12-16)
+
+
+### Features
+
+* update minor dependencies ([2177d37](https://github.com/christophehurpeau/pob/commit/2177d37e9040a35f09dfcfd974692cd60e78e086))
+
+
+
+
+
 ## [5.1.1](https://github.com/christophehurpeau/pob/compare/pob@5.1.0...pob@5.1.1) (2019-12-15)
 
 **Note:** Version bump only for package pob
