@@ -2080,7 +2080,7 @@
   dependencies:
     defer-to-connect "^1.0.1"
 
-"@szmarczak/http-timer@^3.1.0":
+"@szmarczak/http-timer@^3.1.1":
   version "3.1.1"
   resolved "https://registry.yarnpkg.com/@szmarczak/http-timer/-/http-timer-3.1.1.tgz#8b876acd14a4f36ad274468910ee858241e356ad"
   integrity sha512-F7vS53bV9NXT+mmYFeSBr2nXaOI1h6qxdlLDVP+4CPG/c60MMStT7aaqYD2TSNWob1DA3GH9ikFY0UW31bUsWA==
@@ -5335,13 +5335,13 @@ globby@^9.2.0:
     pify "^4.0.1"
     slash "^2.0.0"
 
-got@^10.0.1:
-  version "10.0.1"
-  resolved "https://registry.yarnpkg.com/got/-/got-10.0.1.tgz#0c9eb81a7e5e3baca2dddd611a4bd7c054e31fdd"
-  integrity sha512-lXOWDVJczIX4uOZG5CRSlIzNAGqft40Kj7/rLSccH8y9GKs1a86rO/+23CC4kF8OdHFazapX3mI6gZPqDrIAfA==
+got@^10.0.4:
+  version "10.0.4"
+  resolved "https://registry.yarnpkg.com/got/-/got-10.0.4.tgz#d3a5a6cafd2f6c342d562513cc2d2d7b6afdcbb4"
+  integrity sha512-yMaRLGZJ7iINsDcZ8hso+v44IXVOejz7xrqEabSvUewdHS3zOf57IqU3sWIBYwHlekSrk+CC2PCeLzabOBxnVA==
   dependencies:
     "@sindresorhus/is" "^1.0.0"
-    "@szmarczak/http-timer" "^3.1.0"
+    "@szmarczak/http-timer" "^3.1.1"
     "@types/cacheable-request" "^6.0.1"
     cacheable-lookup "^0.2.1"
     cacheable-request "^7.0.0"
@@ -5795,10 +5795,10 @@ inquirer@^6.0.0, inquirer@^6.2.0:
     strip-ansi "^5.1.0"
     through "^2.3.6"
 
-inquirer@^7.0.0:
-  version "7.0.0"
-  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-7.0.0.tgz#9e2b032dde77da1db5db804758b8fea3a970519a"
-  integrity sha512-rSdC7zelHdRQFkWnhsMu2+2SO41mpv2oF2zy4tMhmiLWkcKbOAs87fWAJhVXttKVwhdZvymvnuM95EyEXg2/tQ==
+inquirer@^7.0.0, inquirer@^7.0.1:
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/inquirer/-/inquirer-7.0.1.tgz#13f7980eedc73c689feff3994b109c4e799c6ebb"
+  integrity sha512-V1FFQ3TIO15det8PijPLFR9M9baSlnRs9nL7zWu1MNVA2T9YVl9ZbrHJhYs7e9X8jeMZ3lr2JH/rdHFgNCBdYw==
   dependencies:
     ansi-escapes "^4.2.1"
     chalk "^2.4.2"
@@ -5809,7 +5809,7 @@ inquirer@^7.0.0:
     lodash "^4.17.15"
     mute-stream "0.0.8"
     run-async "^2.2.0"
-    rxjs "^6.4.0"
+    rxjs "^6.5.3"
     string-width "^4.1.0"
     strip-ansi "^5.1.0"
     through "^2.3.6"
@@ -9160,10 +9160,10 @@ rollup-pluginutils@^2.5.0, rollup-pluginutils@^2.8.1, rollup-pluginutils@^2.8.2:
   dependencies:
     estree-walker "^0.6.1"
 
-rollup@^1.27.8:
-  version "1.27.8"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.27.8.tgz#94288a957af9f4c2380b73a17494d87705997d0f"
-  integrity sha512-EVoEV5rAWl+5clnGznt1KY8PeVkzVQh/R0d2s3gHEkN7gfoyC4JmvIVuCtPbYE8NM5Ep/g+nAmvKXBjzaqTsHA==
+rollup@^1.27.13:
+  version "1.27.13"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-1.27.13.tgz#d6d3500512daacbf8de54d2800de62d893085b90"
+  integrity sha512-hDi7M07MpmNSDE8YVwGVFA8L7n8jTLJ4lG65nMAijAyqBe//rtu4JdxjUBE7JqXfdpqxqDTbCDys9WcqdpsQvw==
   dependencies:
     "@types/estree" "*"
     "@types/node" "*"
@@ -9198,7 +9198,7 @@ run-queue@^1.0.0, run-queue@^1.0.3:
   dependencies:
     aproba "^1.1.1"
 
-rxjs@^6.3.3, rxjs@^6.4.0:
+rxjs@^6.3.3, rxjs@^6.4.0, rxjs@^6.5.3:
   version "6.5.3"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-6.5.3.tgz#510e26317f4db91a7eb1de77d9dd9ba0a4899a3a"
   integrity sha512-wuYsAYYFdWTAnAaPoKGNhfpWwKZbJW+HgAJ+mImp+Epl7BG8oNWBCTyRM8gba9k4lk8BgWdoYm21Mo/RYhhbgA==
@@ -10729,10 +10729,10 @@ yarnhook@^0.4.3:
     execa "^0.8.0"
     find-parent-dir "^0.3.0"
 
-yeoman-environment@^2.0.5, yeoman-environment@^2.3.4, yeoman-environment@^2.6.0:
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-2.6.0.tgz#db884c778946fec9a41e8980a6b3aa94fe41302d"
-  integrity sha512-Hl0LBs9/mKun8XyJ6gFiUNhZwjN/eezn+E9IFWz6KtXg/3wsnztF2lgtE8eIjfhWYtvY4yMq9iizi1Ei5JJ+7A==
+yeoman-environment@^2.0.5, yeoman-environment@^2.3.4, yeoman-environment@^2.7.0:
+  version "2.7.0"
+  resolved "https://registry.yarnpkg.com/yeoman-environment/-/yeoman-environment-2.7.0.tgz#d1b6679de883ce14a68b869c4b19d55a0d66f477"
+  integrity sha512-YNzSUWgJVSgnm0qgLON4Gb2nTm+kywBiWjK4MbvosjUP2YJJ30lNhEx7ukyzKRPUlsavd5IsuALtF6QaVrq81A==
   dependencies:
     chalk "^2.4.1"
     cross-spawn "^6.0.5"
@@ -10781,10 +10781,10 @@ yeoman-generator@^2.0.1:
     through2 "^2.0.0"
     yeoman-environment "^2.0.5"
 
-yeoman-generator@^4.2.0:
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/yeoman-generator/-/yeoman-generator-4.2.0.tgz#18fcf671e38a5eb5ec87aeaa862383b6075be31c"
-  integrity sha512-9+PXgEXm8U31mgigU064vSOzeQg/s5GUG0iF6cXaozV+CKf/iaioZ9n12iYh6ctVsS6I3lksriLGH+LmioA6lA==
+yeoman-generator@^4.3.0:
+  version "4.3.0"
+  resolved "https://registry.yarnpkg.com/yeoman-generator/-/yeoman-generator-4.3.0.tgz#552b8eb19fc7160a43583fe84b56de3a8fda39d8"
+  integrity sha512-iFNNYbDBFWGNg36D2/vG5x5ngkjAMGyqUH8fI9bDR3Oeo+Zr8yIFy7J9NuJEEoTiaHJ9b2m9DcWt9prl9ZDnkw==
   dependencies:
     async "^2.6.2"
     chalk "^2.4.2"
