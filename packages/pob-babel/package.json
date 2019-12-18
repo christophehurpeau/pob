@@ -50,6 +50,8 @@
   "dependencies": {
     "@babel/preset-flow": "^7.7.4",
     "babel-plugin-transform-builtins": "^2.0.0",
+    "babel-preset-latest-node": "^4.0.1",
+    "babel-preset-modern-browsers": "^14.1.1",
     "babel-preset-pob-env": "^3.0.1",
     "rollup": "^1.27.13",
     "rollup-config-external-dependencies": "^1.1.0",

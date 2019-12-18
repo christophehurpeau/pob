@@ -121,6 +121,7 @@ module.exports = function(context, opts) {
   );
 
   let targetPreset;
+  let targetPlugins;
 
   switch (targetOption) {
     case 'node':
@@ -146,6 +147,10 @@ module.exports = function(context, opts) {
         targetPreset = [
           resolvePreset('@babel/preset-env'),
           { modules, loose, shippedProposals: true },
+        ];
+        targetPlugins = [
+          require.resolve('@babel/plugin-proposal-optional-chaining'),
+          require.resolve('@babel/plugin-proposal-nullish-coalescing-operator'),
         ];
       }
       break;
@@ -187,15 +192,9 @@ module.exports = function(context, opts) {
       typescript && require.resolve('@babel/preset-typescript'),
 
       // proposals
-      targetOption === 'browser' &&
-        versionOption !== 'modern' && {
-          plugins: [
-            require.resolve('@babel/plugin-proposal-optional-chaining'),
-            require.resolve(
-              '@babel/plugin-proposal-nullish-coalescing-operator'
-            ),
-          ],
-        },
+      targetPlugins && {
+        plugins: targetPlugins,
+      },
 
       // plugins
       {
