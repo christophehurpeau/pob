@@ -106,9 +106,6 @@ module.exports = class PackageGenerator extends Generator {
       if (this.fs.exists(this.destinationPath('yarn.lock'))) {
         fs.unlinkSync(this.destinationPath('yarn.lock'));
       }
-      if (this.fs.exists(this.destinationPath('yarn-error.log'))) {
-        fs.unlinkSync(this.destinationPath('yarn-error.log'));
-      }
     }
     if (this.fs.exists(this.destinationPath('yarn-error.log'))) {
       fs.unlinkSync(this.destinationPath('yarn-error.log'));
