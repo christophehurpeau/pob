@@ -56,6 +56,6 @@
     "prettier": "1.19.1",
     "repository-check-dirty": "^1.0.3",
     "typedoc": "0.15.5",
-    "typescript": "3.7.3"
+    "typescript": "3.7.4"
   }
 }
