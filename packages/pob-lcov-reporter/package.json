@@ -21,7 +21,7 @@
     "arrowParens": "always"
   },
   "dependencies": {
-    "istanbul-reports": "^2.1.1"
+    "istanbul-reports": "^3.0.0"
   },
   "devDependencies": {
     "prettier": "1.19.1"
