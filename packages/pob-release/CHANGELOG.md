@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/christophehurpeau/pob/compare/pob-release@5.1.0...pob-release@5.2.0) (2019-12-29)
+
+
+### Features
+
+* update semver dependencies ([d345b7f](https://github.com/christophehurpeau/pob/commit/d345b7fdd002a67e289953be3e9217f1aa82d55d))
+
+
+
+
+
 # [5.1.0](https://github.com/christophehurpeau/pob/compare/pob-release@5.0.1...pob-release@5.1.0) (2019-12-16)
 
 

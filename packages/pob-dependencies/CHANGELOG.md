@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.2.0...pob-dependencies@1.3.0) (2019-12-29)
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.7.7 ([#375](https://github.com/christophehurpeau/pob/issues/375)) ([6415eb4](https://github.com/christophehurpeau/pob/commit/6415eb4c453ea1691f2b4b79c8b909d54083005d))
+* **deps:** update dependency @types/jest to v24.0.24 ([#371](https://github.com/christophehurpeau/pob/issues/371)) ([681f5d2](https://github.com/christophehurpeau/pob/commit/681f5d22337cd8300d9c34e754d8378db0f7f3bb))
+* **deps:** update dependency @types/jest to v24.0.25 ([#379](https://github.com/christophehurpeau/pob/issues/379)) ([4110f6b](https://github.com/christophehurpeau/pob/commit/4110f6b7089d707c1c1dfe77cd8cfe6eca053a8c))
+* **deps:** update dependency lerna to v3.20.0 ([#381](https://github.com/christophehurpeau/pob/issues/381)) ([3ae2877](https://github.com/christophehurpeau/pob/commit/3ae287748291f7c40df6d2da948fa9df878fb5db))
+* **deps:** update dependency typedoc to v0.15.6 ([#380](https://github.com/christophehurpeau/pob/issues/380)) ([4b8504e](https://github.com/christophehurpeau/pob/commit/4b8504e574821a406ba33737c78ea342d65afcef))
+* **deps:** update dependency typescript to v3.7.4 ([#377](https://github.com/christophehurpeau/pob/issues/377)) ([a5b3d6d](https://github.com/christophehurpeau/pob/commit/a5b3d6d6891179e25dfa752968bde0070f9bfe97))
+
+
+
+
+
 # [1.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.1.3...pob-dependencies@1.2.0) (2019-12-16)
 
 

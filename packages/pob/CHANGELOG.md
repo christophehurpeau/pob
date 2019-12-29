@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/christophehurpeau/pob/compare/pob@5.2.0...pob@5.3.0) (2019-12-29)
+
+
+### Bug Fixes
+
+* remove duplicated yarn-error.log delete ([e357d9e](https://github.com/christophehurpeau/pob/commit/e357d9e6e8f44d1a8c71f001b8d55658431cec5b))
+
+
+### Features
+
+* update minor dependencies ([6c02a4d](https://github.com/christophehurpeau/pob/commit/6c02a4d9129c9913895d058665733edd9471306b))
+* update semver dependencies ([d345b7f](https://github.com/christophehurpeau/pob/commit/d345b7fdd002a67e289953be3e9217f1aa82d55d))
+
+
+
+
+
 # [5.2.0](https://github.com/christophehurpeau/pob/compare/pob@5.1.1...pob@5.2.0) (2019-12-16)
 
 

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.2.0...pob-babel@24.3.0) (2019-12-29)
+
+
+### Features
+
+* update minor dependencies ([6c02a4d](https://github.com/christophehurpeau/pob/commit/6c02a4d9129c9913895d058665733edd9471306b))
+* **deps:** update dependency @types/jest to v24.0.25 ([#379](https://github.com/christophehurpeau/pob/issues/379)) ([4110f6b](https://github.com/christophehurpeau/pob/commit/4110f6b7089d707c1c1dfe77cd8cfe6eca053a8c))
+* update babel-preset-optimizations ([582c72e](https://github.com/christophehurpeau/pob/commit/582c72e92a098042fe7c33828858913e649e66d4))
+* **deps:** update dependency @types/jest to v24.0.24 ([#371](https://github.com/christophehurpeau/pob/issues/371)) ([681f5d2](https://github.com/christophehurpeau/pob/commit/681f5d22337cd8300d9c34e754d8378db0f7f3bb))
+
+
+
+
+
 # [24.2.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.1.0...pob-babel@24.2.0) (2019-12-16)
 
 
