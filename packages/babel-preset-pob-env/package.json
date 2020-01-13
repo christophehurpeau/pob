@@ -45,7 +45,7 @@
     "babel-preset-optimizations": "^2.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.8.0",
+    "@babel/core": "7.8.3",
     "@pob/eslint-config": "33.0.8",
     "@pob/eslint-config-node": "33.0.0",
     "eslint": "6.8.0",
