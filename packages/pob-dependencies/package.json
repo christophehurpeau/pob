@@ -55,7 +55,7 @@
     "pob-release": "^5.2.0",
     "prettier": "1.19.1",
     "repository-check-dirty": "^1.0.3",
-    "typedoc": "0.16.1",
+    "typedoc": "0.16.2",
     "typescript": "3.7.4"
   }
 }
