@@ -46,7 +46,7 @@
     "babel-preset-latest-node": "4.0.1",
     "babel-preset-modern-browsers": "14.1.1",
     "eslint": "6.8.0",
-    "husky": "3.1.0",
+    "husky": "4.2.1",
     "jest": "24.9.0",
     "jest-junit-reporter": "1.1.0",
     "lerna": "3.20.2",
