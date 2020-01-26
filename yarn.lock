@@ -2404,6 +2404,15 @@
     eslint-config-airbnb-base "^14.0.0"
     eslint-plugin-prefer-class-properties "^1.0.0"
 
+"@pob/eslint-config-babel-common@^34.0.0":
+  version "34.0.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel-common/-/eslint-config-babel-common-34.0.0.tgz#6874a19d7fbb9fca261fea4f125df7f39a5f5502"
+  integrity sha512-4g1x9obXM+QNm/rohnkcvXpRnuWCtLPM8Mn4R2+yMR0HftV/Mmu2JVo8rRYoCgOJbPGodGIVnhMT7vaY8mtHuA==
+  dependencies:
+    "@pob/eslint-config" "^34.0.0"
+    eslint-config-airbnb-base "^14.0.0"
+    eslint-plugin-prefer-class-properties "^1.0.0"
+
 "@pob/eslint-config-babel-node@33.0.0":
   version "33.0.0"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel-node/-/eslint-config-babel-node-33.0.0.tgz#33d1bc181a6b4935b122f469a328cf6e0067bca6"
@@ -2411,12 +2420,12 @@
   dependencies:
     eslint-plugin-node "^10.0.0"
 
-"@pob/eslint-config-babel@33.0.8":
-  version "33.0.8"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel/-/eslint-config-babel-33.0.8.tgz#bc768056ed3fca47ffb2c4b1dd06e00dc282ea10"
-  integrity sha512-1Lmt6RT6yaN6TT6QW3fXkSEJULkI/0fJLDXw+hFtsg2+ZistYvaEltYwS0Itp7NIK7ukI9Ue8ZZGdOD9aTKUmw==
+"@pob/eslint-config-babel@34.0.0":
+  version "34.0.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel/-/eslint-config-babel-34.0.0.tgz#842ee37c60d5aaac7e0d98f7ce5d00497129dd92"
+  integrity sha512-iISCTmiQS7ib92q+eHoi+m+K+Pykd/L2iYWqRwRB5Rkfu7V7VNBcbpQ3gPrQVLcbVb5TinQp2+FuJWAvq7q+kQ==
   dependencies:
-    "@pob/eslint-config-babel-common" "^33.0.8"
+    "@pob/eslint-config-babel-common" "^34.0.0"
     babel-eslint "^10.0.3"
 
 "@pob/eslint-config-node@33.0.0":
@@ -2466,6 +2475,18 @@
     eslint-plugin-prefer-class-properties "^1.0.0"
     eslint-plugin-prettier "^3.1.1"
     eslint-plugin-unicorn "^14.0.0"
+
+"@pob/eslint-config@^34.0.0":
+  version "34.0.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-34.0.0.tgz#7d61c3e1a566f409e3bd6c9902e28e06c7f3582d"
+  integrity sha512-3ucBOz9RBg9UkyxMbRwgFf9aZivi9kVae8SLuDY6jvhFmHziCv65Ccxrv9awxeCiN750L9/tgJzGhjfLY9SlhA==
+  dependencies:
+    eslint-config-airbnb-base "^14.0.0"
+    eslint-config-prettier "^6.7.0"
+    eslint-plugin-import "^2.18.2"
+    eslint-plugin-prefer-class-properties "^1.0.0"
+    eslint-plugin-prettier "^3.1.1"
+    eslint-plugin-unicorn "^15.0.0"
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -4875,6 +4896,28 @@ eslint-plugin-unicorn@^14.0.0:
     lodash.upperfirst "^4.3.1"
     read-pkg-up "^7.0.0"
     regexp-tree "^0.1.16"
+    regexpp "^3.0.0"
+    reserved-words "^0.1.2"
+    safe-regex "^2.1.1"
+    semver "^6.3.0"
+
+eslint-plugin-unicorn@^15.0.0:
+  version "15.0.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-unicorn/-/eslint-plugin-unicorn-15.0.1.tgz#8379d1d6882f9f8631bec8025ac9e8fe89e43945"
+  integrity sha512-yahqrPGFUzwH5cnmnj+iPlgPapAiBIZ/ZNSDkhTVPgPCo7/mOEjJ2gDhEclrtQVBE9olmec4N+CKDnJuZ9XpRA==
+  dependencies:
+    ci-info "^2.0.0"
+    clean-regexp "^1.0.0"
+    eslint-ast-utils "^1.1.0"
+    eslint-template-visitor "^1.1.0"
+    import-modules "^2.0.0"
+    lodash.camelcase "^4.3.0"
+    lodash.defaultsdeep "^4.6.1"
+    lodash.kebabcase "^4.1.1"
+    lodash.snakecase "^4.1.1"
+    lodash.upperfirst "^4.3.1"
+    read-pkg-up "^7.0.1"
+    regexp-tree "^0.1.17"
     regexpp "^3.0.0"
     reserved-words "^0.1.2"
     safe-regex "^2.1.1"
@@ -9156,7 +9199,7 @@ read-pkg-up@^5.0.0:
     find-up "^3.0.0"
     read-pkg "^5.0.0"
 
-read-pkg-up@^7.0.0:
+read-pkg-up@^7.0.0, read-pkg-up@^7.0.1:
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/read-pkg-up/-/read-pkg-up-7.0.1.tgz#f3a6135758459733ae2b95638056e1854e7ef507"
   integrity sha512-zK0TB7Xd6JpCLmlLmufqykGE+/TlOePD6qKClNW7hHDKFh/J7/7gCWGR7joEQEW1bKq3a3yUZSObOoWLFQ4ohg==
@@ -9313,7 +9356,7 @@ regex-not@^1.0.0, regex-not@^1.0.2:
     extend-shallow "^3.0.2"
     safe-regex "^1.1.0"
 
-regexp-tree@^0.1.16, regexp-tree@~0.1.1:
+regexp-tree@^0.1.16, regexp-tree@^0.1.17, regexp-tree@~0.1.1:
   version "0.1.17"
   resolved "https://registry.yarnpkg.com/regexp-tree/-/regexp-tree-0.1.17.tgz#66d914a6ca21f95dd7660ed70a7dad47aeb2246a"
   integrity sha512-UnOJjFS/EPZmfISmYx+0PcDtPzyFKTe+cZTS5sM5hifnRUDRxoB1j4DAmGwqzxjwBGlwOkGfb2cDGHtjuEwqoA==
