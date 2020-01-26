@@ -40,8 +40,8 @@
     "standard-changelog": "2.0.21"
   },
   "devDependencies": {
-    "@pob/eslint-config": "33.0.8",
-    "@pob/eslint-config-node": "33.0.0",
+    "@pob/eslint-config": "34.0.0",
+    "@pob/eslint-config-node": "34.0.0",
     "eslint": "6.8.0",
     "prettier": "1.19.1"
   }
