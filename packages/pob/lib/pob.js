@@ -4,10 +4,10 @@
 
 const { existsSync, writeFileSync, readFileSync } = require('fs');
 const { execSync, spawnSync } = require('child_process');
+const fs = require('fs');
 const updateNotifier = require('update-notifier');
 const yeoman = require('yeoman-environment');
 const argv = require('minimist-argv');
-const mkdirp = require('mkdirp');
 const pkg = require('../package.json');
 
 updateNotifier({ pkg }).notify();
@@ -58,7 +58,7 @@ if (action === 'add') {
 
   const packagesPath = pkg.workspaces[0].replace(/\/\*$/, '');
 
-  mkdirp(`${packagesPath}/${packageName}`);
+  fs.mkdirSync(`${packagesPath}/${packageName}`, { recursive: true });
   writeFileSync(`${packagesPath}/${packageName}/.yo-rc.json`, '{}');
   writeFileSync(
     `${packagesPath}/${packageName}/package.json`,

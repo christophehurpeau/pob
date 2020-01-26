@@ -1,8 +1,8 @@
 'use strict';
 
 const { execSync } = require('child_process');
+const fs = require('fs');
 const Generator = require('yeoman-generator');
-const mkdirp = require('mkdirp');
 const packageUtils = require('../../utils/package');
 const inLerna = require('../../utils/inLerna');
 const inNpmLerna = require('../../utils/inNpmLerna');
@@ -232,7 +232,8 @@ module.exports = class PobLibGenerator extends Generator {
     });
 
     if (!withBabel) {
-      mkdirp('lib');
+      // recursive does not throw if directory already exists
+      fs.mkdirSync(this.destinationPath('lib'), { recursive: true });
     }
 
     if (!inLerna || inLerna.root) {

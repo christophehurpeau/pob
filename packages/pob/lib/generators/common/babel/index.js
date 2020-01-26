@@ -1,7 +1,7 @@
 'use strict';
 
+const fs = require('fs');
 const Generator = require('yeoman-generator');
-const mkdirp = require('mkdirp');
 const semver = require('semver');
 const packageUtils = require('../../../utils/package');
 const inLerna = require('../../../utils/inLerna');
@@ -238,7 +238,7 @@ module.exports = class BabelGenerator extends Generator {
     this.entries = pkg.pob.entries;
     this.babelEnvs = pkg.pob.babelEnvs || [];
     if (this.babelEnvs.length !== 0) {
-      mkdirp(this.destinationPath('src'));
+      fs.mkdirSync(this.destinationPath('src'), { recursive: true });
     }
 
     if (this.entries) {
