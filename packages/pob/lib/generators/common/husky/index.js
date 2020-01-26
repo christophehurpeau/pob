@@ -52,9 +52,12 @@ module.exports = class GitHooksGenerator extends Generator {
       //   '@commitlint/config-lerna-scopes': '6.1.3',
       // });
 
+      if (this.fs.exists(this.destinationPath('.huskyrc.js'))) {
+        this.fs.delete(this.destinationPath('.huskyrc.js'));
+      }
       this.fs.copy(
-        this.templatePath('huskyrc.js.txt'),
-        this.destinationPath('.huskyrc.js')
+        this.templatePath('husky.config.js.txt'),
+        this.destinationPath('husky.config.js')
       );
 
       this.fs.copy(
@@ -119,10 +122,10 @@ module.exports = class GitHooksGenerator extends Generator {
     }
   }
 
-  end() {
-    this.spawnCommandSync('node', [
-      'node_modules/husky/lib/installer/bin.js',
-      'install',
-    ]);
-  }
+  // end() {
+  //   this.spawnCommandSync(
+  //     'node',
+  //     ['node_modules/husky/lib/installer/bin.js', 'install'],
+  //   );
+  // }
 };
