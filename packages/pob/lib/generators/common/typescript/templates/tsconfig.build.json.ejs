@@ -23,7 +23,7 @@
     "src/**/*.test.tsx",
 <% } -%>
     "src/**/__tests__/**"
-  ]<% if (monorepoPackageNames) { %>,<% } -%>
+  ]<% if (monorepoPackageNames && monorepoPackageNames.length) { %>,<% } -%>
 <% if (monorepoPackageNames && monorepoPackageNames.length) { %>
   "references": [
 <% monorepoPackageNames.forEach((packageName, index) => { -%>
