@@ -16,7 +16,7 @@
     "@commitlint/cli": "8.3.5",
     "@commitlint/config-conventional": "8.3.4",
     "cross-env": "^7.0.0",
-    "lint-staged": "10.0.2",
+    "lint-staged": "10.0.3",
     "yarn-deduplicate": "1.1.1",
     "yarnhook": "^0.4.3"
   },
