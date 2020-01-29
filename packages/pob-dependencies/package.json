@@ -40,7 +40,7 @@
     "@pob/eslint-config-typescript-react": "34.0.0",
     "@pob/repo-config": "^1.0.3",
     "@pob/version": "^5.0.1",
-    "@types/jest": "24.9.1",
+    "@types/jest": "25.1.1",
     "babel-eslint": "10.0.3",
     "babel-jest": "25.1.0",
     "babel-preset-latest-node": "4.0.1",
