@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.1](https://github.com/christophehurpeau/pob/compare/@pob/repo-config@1.1.0...@pob/repo-config@1.1.1) (2020-02-02)
+
+
+### Bug Fixes
+
+* disable yarnhook for yarn 2 ([8ee52a8](https://github.com/christophehurpeau/pob/commit/8ee52a8cf0fdefba01926bebfcb5fef72ac689fa))
+
+
+
+
+
 # [1.1.0](https://github.com/christophehurpeau/pob/compare/@pob/repo-config@1.0.3...@pob/repo-config@1.1.0) (2020-02-02)
 
 

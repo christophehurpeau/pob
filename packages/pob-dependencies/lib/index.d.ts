@@ -11,8 +11,8 @@ interface Dependencies {
   '@pob/eslint-config-react': '34.0.0';
   '@pob/eslint-config-typescript': '34.0.0';
   '@pob/eslint-config-typescript-react': '34.0.0';
-  '@pob/repo-config': '^1.0.3';
-  '@pob/version': '^5.0.1';
+  '@pob/repo-config': '^1.1.0';
+  '@pob/version': '^5.1.0';
   '@types/jest': '25.1.1';
   'babel-eslint': '10.0.3';
   'babel-jest': '25.1.0';
@@ -23,9 +23,9 @@ interface Dependencies {
   'jest': '25.1.0';
   'jest-junit-reporter': '1.1.0';
   'lerna': '3.20.2';
-  'pob-babel': '^24.3.0';
-  'pob-lcov-reporter': '^2.0.0';
-  'pob-release': '^5.2.0';
+  'pob-babel': '^24.4.0';
+  'pob-lcov-reporter': '^2.0.1';
+  'pob-release': '^5.3.0';
   'prettier': '1.19.1';
   'repository-check-dirty': '^1.0.3';
   'typedoc': '0.16.9';
