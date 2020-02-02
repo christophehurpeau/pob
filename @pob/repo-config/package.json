@@ -20,6 +20,8 @@
     "@commitlint/config-conventional": "8.3.4",
     "cross-env": "^7.0.0",
     "lint-staged": "10.0.7",
+    "semver": "^7.1.2",
+    "which-pm-runs": "1.0.0",
     "yarn-deduplicate": "1.1.1",
     "yarnhook": "^0.4.3"
   },
