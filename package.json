@@ -7,8 +7,12 @@
   "license": "ISC",
   "repository": "https://github.com:christophehurpeau/pob.git",
   "homepage": "https://github.com/christophehurpeau/pob",
-  "workspaces": ["packages/*", "@pob/*"],
+  "workspaces": [
+    "packages/*",
+    "@pob/*"
+  ],
   "scripts": {
+    "lerna": "lerna",
     "lint": "lerna run --stream lint",
     "preversion": "yarn run lint --since && repository-check-dirty && node @pob/version/generate-index.js && git add ./@pob/version/lib/index.js",
     "postversion": "yarn && git add yarn.lock",
@@ -16,7 +20,9 @@
     "test": "lerna run --stream test"
   },
   "commitlint": {
-    "extends": ["@commitlint/config-conventional"]
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
   },
   "devDependencies": {
     "husky": "4.2.1",
