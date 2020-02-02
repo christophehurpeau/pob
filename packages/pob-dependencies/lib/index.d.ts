@@ -11,7 +11,7 @@ interface Dependencies {
   '@pob/eslint-config-react': '34.0.0';
   '@pob/eslint-config-typescript': '34.0.0';
   '@pob/eslint-config-typescript-react': '34.0.0';
-  '@pob/repo-config': '^1.1.0';
+  '@pob/repo-config': '^1.1.1';
   '@pob/version': '^5.1.0';
   '@types/jest': '25.1.1';
   'babel-eslint': '10.0.3';

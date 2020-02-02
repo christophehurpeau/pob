@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/christophehurpeau/pob/compare/@pob/repo-config@1.1.1...@pob/repo-config@1.1.2) (2020-02-02)
+
+
+### Bug Fixes
+
+* **lerna-config:** conflict between 2 yarn rules and remove git add ([23248bb](https://github.com/christophehurpeau/pob/commit/23248bb48afbdeb693ae39914d93308622981e16))
+
+
+
+
+
 ## [1.1.1](https://github.com/christophehurpeau/pob/compare/@pob/repo-config@1.1.0...@pob/repo-config@1.1.1) (2020-02-02)
 
 
