@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@3.1.0...babel-preset-pob-env@3.2.0) (2020-02-02)
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.8.4 ([#418](https://github.com/christophehurpeau/pob/issues/418)) ([6b19a35](https://github.com/christophehurpeau/pob/commit/6b19a35980ef9ae0d2536c3937360f6235ecfac0))
+* update babel presets and plugins ([6a9dc0e](https://github.com/christophehurpeau/pob/commit/6a9dc0e6edeac9cead3ec2f1fa8abd79209a473c))
+* update eslint configs ([2add77e](https://github.com/christophehurpeau/pob/commit/2add77e6fa5d81065cec87007ae54b22921de3c5))
+* **deps:** update babel monorepo to v7.8.0 ([#389](https://github.com/christophehurpeau/pob/issues/389)) ([5a3288f](https://github.com/christophehurpeau/pob/commit/5a3288fae5a724a3b24828c97868395b22741f95))
+* **deps:** update babel monorepo to v7.8.3 ([#394](https://github.com/christophehurpeau/pob/issues/394)) ([c8a193a](https://github.com/christophehurpeau/pob/commit/c8a193aacf9d896355d40bb01ca358fec901639c))
+
+
+
+
+
 # [3.1.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@3.0.1...babel-preset-pob-env@3.1.0) (2019-12-29)
 
 

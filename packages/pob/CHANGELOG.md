@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/christophehurpeau/pob/compare/pob@5.3.0...pob@5.4.0) (2020-02-02)
+
+
+### Bug Fixes
+
+* **pob:** use sortPkg in package utils ([2dc4a7d](https://github.com/christophehurpeau/pob/commit/2dc4a7d475e79247965e8e5020595f1cdf36a3c5))
+* comma in tsconfig.build.json ([a4ed181](https://github.com/christophehurpeau/pob/commit/a4ed1814e07a2b4cf59deed1109d77fd7a80db86))
+
+
+### Features
+
+* add sort-object and sort-pkg ([6bf2cc9](https://github.com/christophehurpeau/pob/commit/6bf2cc9f1b9996d1c3016efcf9c605d4f3e22712))
+* husky 4 ([94b6a3c](https://github.com/christophehurpeau/pob/commit/94b6a3c65429625deadaef5d24f871c56fd4bbd8))
+* update dependencies ([6b50d85](https://github.com/christophehurpeau/pob/commit/6b50d85e261efae67c33997ba79c9b9004327f15))
+* update eslint configs ([2add77e](https://github.com/christophehurpeau/pob/commit/2add77e6fa5d81065cec87007ae54b22921de3c5))
+* use tsconfig.doc.json to pass arguments to typedoc ([2adfee9](https://github.com/christophehurpeau/pob/commit/2adfee9ad4a5aab85ad73da41b870225a0150ac6))
+
+
+
+
+
 # [5.3.0](https://github.com/christophehurpeau/pob/compare/pob@5.2.0...pob@5.3.0) (2019-12-29)
 
 

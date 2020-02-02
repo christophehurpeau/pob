@@ -1,6 +1,6 @@
 {
   "name": "@pob/sort-pkg",
-  "version": "1.0.0-pre",
+  "version": "1.0.0",
   "description": "sort package.json",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -28,7 +28,7 @@
   },
   "pob": {},
   "dependencies": {
-    "@pob/sort-object": "^1.0.0-pre"
+    "@pob/sort-object": "^1.0.0"
   },
   "devDependencies": {
     "@pob/eslint-config": "34.0.0",

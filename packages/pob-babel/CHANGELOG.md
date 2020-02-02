@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.4.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.3.0...pob-babel@24.4.0) (2020-02-02)
+
+
+### Features
+
+* **deps:** update dependency @types/jest to v25 ([#415](https://github.com/christophehurpeau/pob/issues/415)) ([7dc5093](https://github.com/christophehurpeau/pob/commit/7dc5093171c15cbc1fc214418efa05b488d71c42))
+* update babel presets and plugins ([6a9dc0e](https://github.com/christophehurpeau/pob/commit/6a9dc0e6edeac9cead3ec2f1fa8abd79209a473c))
+* update dependencies ([6b50d85](https://github.com/christophehurpeau/pob/commit/6b50d85e261efae67c33997ba79c9b9004327f15))
+* **deps:** update dependency @types/jest to v24.9.0 ([#397](https://github.com/christophehurpeau/pob/issues/397)) ([0a2d3ce](https://github.com/christophehurpeau/pob/commit/0a2d3cec2dca6eb53e80fcac4ef436d4f28ecc8f))
+* **deps:** update jest monorepo to v25 ([#405](https://github.com/christophehurpeau/pob/issues/405)) ([b9cf2de](https://github.com/christophehurpeau/pob/commit/b9cf2de8e0bf85948c6d66ff662219c832576e00))
+* update eslint configs ([2add77e](https://github.com/christophehurpeau/pob/commit/2add77e6fa5d81065cec87007ae54b22921de3c5))
+* **deps:** update dependency @types/jest to v24.9.1 ([#406](https://github.com/christophehurpeau/pob/issues/406)) ([7a6ab5d](https://github.com/christophehurpeau/pob/commit/7a6ab5d1b553b81a89c2735f11bb744c7d7d7cec))
+
+
+
+
+
 # [24.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.2.0...pob-babel@24.3.0) (2019-12-29)
 
 

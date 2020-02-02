@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/christophehurpeau/pob/compare/pob-release@5.2.0...pob-release@5.3.0) (2020-02-02)
+
+
+### Features
+
+* add sort-object and sort-pkg ([6bf2cc9](https://github.com/christophehurpeau/pob/commit/6bf2cc9f1b9996d1c3016efcf9c605d4f3e22712))
+* update dependencies ([6b50d85](https://github.com/christophehurpeau/pob/commit/6b50d85e261efae67c33997ba79c9b9004327f15))
+* update eslint configs ([2add77e](https://github.com/christophehurpeau/pob/commit/2add77e6fa5d81065cec87007ae54b22921de3c5))
+
+
+
+
+
 # [5.2.0](https://github.com/christophehurpeau/pob/compare/pob-release@5.1.0...pob-release@5.2.0) (2019-12-29)
 
 

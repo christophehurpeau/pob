@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.1.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-pob-babel@1.0.1...babel-plugin-pob-babel@1.1.0) (2020-02-02)
+
+
+### Features
+
+* update eslint configs ([2add77e](https://github.com/christophehurpeau/pob/commit/2add77e6fa5d81065cec87007ae54b22921de3c5))
+
+
+
+
+
 ## [1.0.1](https://github.com/christophehurpeau/pob/compare/babel-plugin-pob-babel@1.0.0...babel-plugin-pob-babel@1.0.1) (2019-12-29)
 
 **Note:** Version bump only for package babel-plugin-pob-babel

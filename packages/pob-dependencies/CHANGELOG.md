@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.3.0...pob-dependencies@1.4.0) (2020-02-02)
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.8.0 ([#389](https://github.com/christophehurpeau/pob/issues/389)) ([5a3288f](https://github.com/christophehurpeau/pob/commit/5a3288fae5a724a3b24828c97868395b22741f95))
+* **deps:** update babel monorepo to v7.8.3 ([#394](https://github.com/christophehurpeau/pob/issues/394)) ([c8a193a](https://github.com/christophehurpeau/pob/commit/c8a193aacf9d896355d40bb01ca358fec901639c))
+* **deps:** update babel monorepo to v7.8.4 ([#418](https://github.com/christophehurpeau/pob/issues/418)) ([6b19a35](https://github.com/christophehurpeau/pob/commit/6b19a35980ef9ae0d2536c3937360f6235ecfac0))
+* **deps:** update dependency @babel/preset-env to v7.8.2 ([#392](https://github.com/christophehurpeau/pob/issues/392)) ([2a30417](https://github.com/christophehurpeau/pob/commit/2a30417332237148f06aa4c29f159f0f29692bab))
+* **deps:** update dependency @types/jest to v24.9.0 ([#397](https://github.com/christophehurpeau/pob/issues/397)) ([0a2d3ce](https://github.com/christophehurpeau/pob/commit/0a2d3cec2dca6eb53e80fcac4ef436d4f28ecc8f))
+* **deps:** update dependency @types/jest to v24.9.1 ([#406](https://github.com/christophehurpeau/pob/issues/406)) ([7a6ab5d](https://github.com/christophehurpeau/pob/commit/7a6ab5d1b553b81a89c2735f11bb744c7d7d7cec))
+* **deps:** update dependency @types/jest to v25 ([#415](https://github.com/christophehurpeau/pob/issues/415)) ([7dc5093](https://github.com/christophehurpeau/pob/commit/7dc5093171c15cbc1fc214418efa05b488d71c42))
+* **deps:** update dependency lerna to v3.20.1 ([#382](https://github.com/christophehurpeau/pob/issues/382)) ([855f4c4](https://github.com/christophehurpeau/pob/commit/855f4c4872f86513c2ce55df1a80281e13710731))
+* **deps:** update dependency lerna to v3.20.2 ([#383](https://github.com/christophehurpeau/pob/issues/383)) ([117b57a](https://github.com/christophehurpeau/pob/commit/117b57a39870e09cc4e01487995f70d0d00d28ba))
+* **deps:** update dependency typedoc to v0.15.7 ([#387](https://github.com/christophehurpeau/pob/issues/387)) ([33d6f3b](https://github.com/christophehurpeau/pob/commit/33d6f3bc5bb8cedea44b28b17ab5ad8b8c4a7945))
+* **deps:** update dependency typedoc to v0.15.8 ([#388](https://github.com/christophehurpeau/pob/issues/388)) ([bc3fc28](https://github.com/christophehurpeau/pob/commit/bc3fc28a430e625eb0685ad3e2c805e7df7d2b46))
+* **deps:** update dependency typedoc to v0.16.0 ([#390](https://github.com/christophehurpeau/pob/issues/390)) ([a56517c](https://github.com/christophehurpeau/pob/commit/a56517cee24c8134af0c3f84f68c3922f4f22be1))
+* **deps:** update dependency typedoc to v0.16.1 ([#391](https://github.com/christophehurpeau/pob/issues/391)) ([c3a0daa](https://github.com/christophehurpeau/pob/commit/c3a0daad63952030ee2a3a73c26e29988d9f3714))
+* **deps:** update dependency typedoc to v0.16.2 ([#393](https://github.com/christophehurpeau/pob/issues/393)) ([95637f3](https://github.com/christophehurpeau/pob/commit/95637f30f2d9824871ca377b6a45748983622d10))
+* **deps:** update dependency typedoc to v0.16.3 ([#395](https://github.com/christophehurpeau/pob/issues/395)) ([9f654f2](https://github.com/christophehurpeau/pob/commit/9f654f22188eefc3be42c19204dd98bf1b40da95))
+* **deps:** update dependency typedoc to v0.16.4 ([#396](https://github.com/christophehurpeau/pob/issues/396)) ([51e564f](https://github.com/christophehurpeau/pob/commit/51e564f544dfd7a7a56e38f21e6519a7b2087dfe))
+* **deps:** update dependency typedoc to v0.16.5 ([#399](https://github.com/christophehurpeau/pob/issues/399)) ([c09c249](https://github.com/christophehurpeau/pob/commit/c09c249faf0e77e43ccc46e2ba4ae162cd74e0a4))
+* **deps:** update dependency typedoc to v0.16.6 ([#400](https://github.com/christophehurpeau/pob/issues/400)) ([9b2edce](https://github.com/christophehurpeau/pob/commit/9b2edcea7663c87b40a8f0e8bfc5ace6c5d72516))
+* **deps:** update dependency typedoc to v0.16.7 ([#402](https://github.com/christophehurpeau/pob/issues/402)) ([2aa200a](https://github.com/christophehurpeau/pob/commit/2aa200abe38bcd0e306cf52c3742e0ce94ef8982))
+* **deps:** update dependency typedoc to v0.16.8 ([#404](https://github.com/christophehurpeau/pob/issues/404)) ([962985b](https://github.com/christophehurpeau/pob/commit/962985b6d8a07e76df863938b1a7dc39f89ea645))
+* **deps:** update dependency typedoc to v0.16.9 ([#409](https://github.com/christophehurpeau/pob/issues/409)) ([1fecdf1](https://github.com/christophehurpeau/pob/commit/1fecdf165562cde125e22e5d72f52c9217a28761))
+* **deps:** update jest monorepo to v25 ([#405](https://github.com/christophehurpeau/pob/issues/405)) ([b9cf2de](https://github.com/christophehurpeau/pob/commit/b9cf2de8e0bf85948c6d66ff662219c832576e00))
+* husky 4 ([94b6a3c](https://github.com/christophehurpeau/pob/commit/94b6a3c65429625deadaef5d24f871c56fd4bbd8))
+* update eslint configs ([2add77e](https://github.com/christophehurpeau/pob/commit/2add77e6fa5d81065cec87007ae54b22921de3c5))
+* **deps:** update dependency typescript to v3.7.5 ([#401](https://github.com/christophehurpeau/pob/issues/401)) ([19f98e5](https://github.com/christophehurpeau/pob/commit/19f98e536a31ba5e333df2c81eb798b5bfead735))
+
+
+
+
+
 # [1.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.2.0...pob-dependencies@1.3.0) (2019-12-29)
 
 

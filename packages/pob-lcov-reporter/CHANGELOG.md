@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@2.0.0...pob-lcov-reporter@2.0.1) (2020-02-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency istanbul-reports to v3 ([#378](https://github.com/christophehurpeau/pob/issues/378)) ([482e863](https://github.com/christophehurpeau/pob/commit/482e863e47db170f9fe2acec013a786eb780e97a))
+
+
+
+
+
 # [2.0.0](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@1.2.3...pob-lcov-reporter@2.0.0) (2019-12-13)
 
 
