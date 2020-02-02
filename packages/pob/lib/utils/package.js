@@ -5,7 +5,8 @@
 const semver = require('semver');
 const parseAuthor = require('parse-author');
 const pobDependencies = require('pob-dependencies');
-const sortObject = require('./sortObject');
+const sortObject = require('@pob/sort-object');
+const sortPkg = require('@pob/sort-pkg');
 
 exports.parseAuthor = parseAuthor;
 

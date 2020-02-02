@@ -2,9 +2,9 @@
 
 const fs = require('fs');
 const Generator = require('yeoman-generator');
+const sortObject = require('@pob/sort-object');
 const packageUtils = require('../../../utils/package');
 const ensureJsonFileFormatted = require('../../../utils/ensureJsonFileFormatted');
-const sortObject = require('../../../utils/sortObject');
 const formatJson = require('../../../utils/formatJson');
 const inLerna = require('../../../utils/inLerna');
 

@@ -1,0 +1,39 @@
+{
+  "name": "@pob/pretty-pkg",
+  "version": "1.0.0-pre",
+  "description": "prettier and sort package.json",
+  "keywords": [],
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com:christophehurpeau/pob.git",
+    "directory": "@pob/pretty-pkg"
+  },
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "engines": {
+    "node": ">=10.13.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./lib/index.js",
+  "scripts": {
+    "lint": "eslint --quiet lib"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "arrowParens": "always"
+  },
+  "pob": {},
+  "dependencies": {
+    "@pob/sort-pkg": "^1.0.0-pre",
+    "prettier": "^1.19.1"
+  },
+  "devDependencies": {
+    "@pob/eslint-config": "34.0.0",
+    "@pob/eslint-config-node": "34.0.0",
+    "eslint": "6.8.0"
+  }
+}
