@@ -39,31 +39,33 @@ module.exports = function createLintStagedConfig() {
             .map((workspacePath) => `${workspacePath}/package.json`)
             .join(',')}`
         : ''
-    }}`]: (filenames) =>
-      [
+    }}`]: (filenames) => {
+      const packagejsonFilenames = filenames.filter((filename) =>
+        filename.endsWith('.json')
+      );
+
+      return [
         yarnMajorVersion < 2 ? 'yarn --prefer-offline' : 'yarn',
         yarnMajorVersion < 2 ? 'yarn-deduplicate' : undefined,
-        `git add yarn.lock${yarnMajorVersion}` >= 2 ? ' .yarn .yarnrc.yml' : '',
-      ].filter(Boolean),
-    [`{.eslintrc.json,package.json${
+        packagejsonFilenames.length === 0
+          ? undefined
+          : `prettier --parser json --write "${packagejsonFilenames.join(
+              '" "'
+            )}"`,
+      ].filter(Boolean);
+    },
+    [`{.eslintrc.json${
       workspaces
         ? `,${workspaces
-            .map(
-              (workspacePath) =>
-                `${workspacePath}/{.eslintrc.json,package.json}`
-            )
+            .map((workspacePath) => `${workspacePath}/{.eslintrc.json}`)
             .join(',')}`
         : ''
-    },${srcDirectories}/**/*.json}`]: [
-      'prettier --parser json --write',
-      'git add',
-    ],
+    },${srcDirectories}/**/*.json}`]: ['prettier --parser json --write'],
     [`{.storybook,${srcDirectories}}/**/*.css`]: [
       'prettier --parser css --write',
-      'git add',
     ],
 
-    [`${srcDirectories}/**/*.{js,ts,tsx}`]: ['eslint --fix --quiet', 'git add'],
-    '{scripts,config,.storyboook}/*.js': ['eslint --fix --quiet', 'git add'],
+    [`${srcDirectories}/**/*.{js,ts,tsx}`]: ['eslint --fix --quiet'],
+    '{scripts,config,.storyboook}/*.js': ['eslint --fix --quiet'],
   };
 };

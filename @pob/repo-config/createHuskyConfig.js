@@ -1,3 +1,5 @@
+/* eslint-disable no-console, unicorn/no-process-exit */
+
 'use strict';
 
 const path = require('path');

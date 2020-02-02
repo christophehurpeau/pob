@@ -12,7 +12,6 @@
     "@pob/*"
   ],
   "scripts": {
-    "lerna": "lerna",
     "lint": "lerna run --stream lint",
     "preversion": "yarn run lint --since && repository-check-dirty && node @pob/version/generate-index.js && git add ./@pob/version/lib/index.js",
     "postversion": "yarn && git add yarn.lock",
