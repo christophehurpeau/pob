@@ -46,6 +46,8 @@ module.exports = class CiGenerator extends Generator {
 
   default() {
     if (this.options.enable) {
+      const isYarn2 = this.fs.exists('.yarnrc.yml');
+
       try {
         // this.fs.copyTpl(
         //   this.templatePath('circle.yml.ejs'),
@@ -56,21 +58,26 @@ module.exports = class CiGenerator extends Generator {
         //     codecov: this.options.codecov,
         //   },
         // );
-        this.fs.copyTpl(
-          this.templatePath('circleci2.yml.ejs'),
-          this.destinationPath('.circleci/config.yml'),
-          {
-            testing: this.options.testing,
-            documentation: this.options.documentation,
-            codecov: this.options.codecov,
-            node12: true,
-            node10: true, // Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '10')),
-          }
-        );
+        if (isYarn2) {
+          this.fs.delete(this.destinationPath('.circleci/config.yml'));
+        } else {
+          this.fs.copyTpl(
+            this.templatePath('circleci2.yml.ejs'),
+            this.destinationPath('.circleci/config.yml'),
+            {
+              testing: this.options.testing,
+              documentation: this.options.documentation,
+              codecov: this.options.codecov,
+              node12: true,
+              node10: true, // Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '10')),
+            }
+          );
+        }
         this.fs.copyTpl(
           this.templatePath('github-action-node-workflow.yml.ejs'),
           this.destinationPath('.github/workflows/push.yml'),
           {
+            isYarn2,
             testing: this.options.testing,
             documentation: this.options.documentation,
             codecov: this.options.codecov,

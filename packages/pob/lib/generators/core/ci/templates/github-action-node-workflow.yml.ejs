@@ -26,8 +26,13 @@ jobs:
             dependencies--${{ matrix.node-version }}-${{ runner.OS }}-
             dependencies--${{ matrix.node-version }}-
 
+<% if (isYarn2) { -%>
+      - name: Check Dependencies
+        run: yarn install --immutable
+<% } else { -%>
       - name: Install Dependencies
         run: yarn install --prefer-offline --pure-lockfile
+<% } -%>
 
       - name: Lint
         run: yarn run lint
