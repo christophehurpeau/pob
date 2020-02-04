@@ -52,6 +52,7 @@ module.exports = function createLintStagedConfig() {
           : `prettier --parser json --write "${packagejsonFilenames.join(
               '" "'
             )}"`,
+        `git add yarn.lock${yarnMajorVersion >= 2 ? ' .yarn .yarnrc.yml' : ''}`,
       ].filter(Boolean);
     },
     [`{.eslintrc.json${
