@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.3](https://github.com/christophehurpeau/pob/compare/@pob/repo-config@1.1.2...@pob/repo-config@1.1.3) (2020-02-04)
+
+
+### Bug Fixes
+
+* missing git add for non stashed files ([3cbed48](https://github.com/christophehurpeau/pob/commit/3cbed48e41ccf78cabb12d9971c79c84971cbe90))
+
+
+
+
+
 ## [1.1.2](https://github.com/christophehurpeau/pob/compare/@pob/repo-config@1.1.1...@pob/repo-config@1.1.2) (2020-02-02)
 
 
