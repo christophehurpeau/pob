@@ -1,10 +1,12 @@
 <h3 align="center">
   <%= packageName %>
 </h3>
+<% if (description) { -%>
 
 <p align="center">
   <%= description %>
 </p>
+<% } -%>
 
 <p align="center">
 <% if (!privatePackage) { -%>

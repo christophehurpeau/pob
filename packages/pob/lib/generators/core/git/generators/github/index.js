@@ -151,7 +151,7 @@ module.exports = class GitHubGenerator extends Generator {
       await gh(`repos/${owner}/${repo}`, {
         token: GITHUB_TOKEN,
         body: {
-          name: pkg.name.replace(/-lerna$/, ''),
+          name: pkg.name.replace(/-(lerna|monorepo)$/, ''),
           description: pkg.description,
           // homepage: null,
           allow_squash_merge: true,

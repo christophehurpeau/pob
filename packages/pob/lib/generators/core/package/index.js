@@ -41,12 +41,23 @@ module.exports = class PackageGenerator extends Generator {
       }
     }
 
-    if (!pkg.name) {
+    if (inLerna && inLerna.root) {
+      if (!pkg.name) {
+        const { name } = await this.prompt({
+          name: 'name',
+          message: 'Monorepo Name',
+          default: path.basename(process.cwd()),
+          validate: (str) => str.length > 0,
+        });
+        pkg.name = name;
+      } else if (pkg.name.endsWith('-lerna')) {
+        pkg.name = pkg.name.replace('-lerna', '-monorepo');
+      }
+    } else if (!pkg.name) {
       const prompt = {
         name: 'name',
         message: 'Module Name',
         default: path.basename(process.cwd()),
-        filter: kebabCase,
         validate: (str) => str.length > 0,
       };
 
