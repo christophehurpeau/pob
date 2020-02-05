@@ -2179,7 +2179,19 @@
     "@typescript-eslint/parser" "^2.10.0"
     eslint-config-prettier "^6.7.0"
 
-"@pob/eslint-config@34.0.0", "@pob/eslint-config@^34.0.0":
+"@pob/eslint-config@35.0.0":
+  version "35.0.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-35.0.0.tgz#eb54ffedd706395b8e38c5b1f94e8f19ca063f23"
+  integrity sha512-hrvrvQytqn8mdF20jdWCsTxV/KsFL9aWkLpfadDiALHox7W9vKLazojc43cFlwMn5LIE9ZW2njtuf2WwaQr47A==
+  dependencies:
+    "@pob/use-eslint-plugin" "^35.0.0"
+    eslint-config-airbnb-base "^14.0.0"
+    eslint-config-prettier "^6.7.0"
+    eslint-plugin-prefer-class-properties "^1.0.0"
+    eslint-plugin-prettier "^3.1.2"
+    eslint-plugin-unicorn "^15.0.1"
+
+"@pob/eslint-config@^34.0.0":
   version "34.0.0"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-34.0.0.tgz#7d61c3e1a566f409e3bd6c9902e28e06c7f3582d"
   integrity sha512-3ucBOz9RBg9UkyxMbRwgFf9aZivi9kVae8SLuDY6jvhFmHziCv65Ccxrv9awxeCiN750L9/tgJzGhjfLY9SlhA==
@@ -2190,6 +2202,11 @@
     eslint-plugin-prefer-class-properties "^1.0.0"
     eslint-plugin-prettier "^3.1.1"
     eslint-plugin-unicorn "^15.0.0"
+
+"@pob/use-eslint-plugin@^35.0.0":
+  version "35.0.0"
+  resolved "https://registry.yarnpkg.com/@pob/use-eslint-plugin/-/use-eslint-plugin-35.0.0.tgz#f0ab91696f2b1649743360e9a54be77da0fc5481"
+  integrity sha512-fZ0pBHc1981qhXAaWKj7jxuPaIlWqK3FguVpqvoqIBGyQthfwK82U/+wlTaWfV/7oSr2g0uGeqvtC5KqGOhyaw==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -4587,6 +4604,13 @@ eslint-plugin-prettier@^3.1.1:
   dependencies:
     prettier-linter-helpers "^1.0.0"
 
+eslint-plugin-prettier@^3.1.2:
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-prettier/-/eslint-plugin-prettier-3.1.2.tgz#432e5a667666ab84ce72f945c72f77d996a5c9ba"
+  integrity sha512-GlolCC9y3XZfv3RQfwGew7NnuFDKsfI4lbvRK+PIIo23SFH+LemGs4cKwzAaRa+Mdb+lQO/STaIayno8T5sJJA==
+  dependencies:
+    prettier-linter-helpers "^1.0.0"
+
 eslint-plugin-react-hooks@^2.3.0:
   version "2.3.0"
   resolved "https://registry.yarnpkg.com/eslint-plugin-react-hooks/-/eslint-plugin-react-hooks-2.3.0.tgz#53e073961f1f5ccf8dd19558036c1fac8c29d99a"
@@ -4608,7 +4632,7 @@ eslint-plugin-react@^7.17.0:
     prop-types "^15.7.2"
     resolve "^1.13.1"
 
-eslint-plugin-unicorn@^15.0.0:
+eslint-plugin-unicorn@^15.0.0, eslint-plugin-unicorn@^15.0.1:
   version "15.0.1"
   resolved "https://registry.yarnpkg.com/eslint-plugin-unicorn/-/eslint-plugin-unicorn-15.0.1.tgz#8379d1d6882f9f8631bec8025ac9e8fe89e43945"
   integrity sha512-yahqrPGFUzwH5cnmnj+iPlgPapAiBIZ/ZNSDkhTVPgPCo7/mOEjJ2gDhEclrtQVBE9olmec4N+CKDnJuZ9XpRA==
