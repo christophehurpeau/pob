@@ -49,9 +49,7 @@ module.exports = function createLintStagedConfig() {
         yarnMajorVersion < 2 ? 'yarn-deduplicate' : undefined,
         packagejsonFilenames.length === 0
           ? undefined
-          : `prettier --parser json --write "${packagejsonFilenames.join(
-              '" "'
-            )}"`,
+          : `prettier --write "${packagejsonFilenames.join('" "')}"`,
         `git add yarn.lock${yarnMajorVersion >= 2 ? ' .yarn .yarnrc.yml' : ''}`,
       ].filter(Boolean);
     },
@@ -61,7 +59,7 @@ module.exports = function createLintStagedConfig() {
             .map((workspacePath) => `${workspacePath}/{.eslintrc.json}`)
             .join(',')}`
         : ''
-    },${srcDirectories}/**/*.json}`]: ['prettier --parser json --write'],
+    },${srcDirectories}/**/*.json}`]: ['prettier --write'],
     [`{.storybook,${srcDirectories}}/**/*.css`]: [
       'prettier --parser css --write',
     ],
