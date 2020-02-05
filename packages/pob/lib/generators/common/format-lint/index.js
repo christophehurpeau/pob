@@ -117,37 +117,37 @@ module.exports = class LintGenerator extends Generator {
       );
     } else {
       packageUtils.addDevDependencies(pkg, ['eslint', 'prettier']);
-    if (
-      !pkg.name.startsWith('eslint-config') &&
+      if (
+        !pkg.name.startsWith('eslint-config') &&
         !pkg.name.startsWith('@pob/eslint-config') &&
         pkg.name !== '@pob/use-eslint-plugin'
-    ) {
-      packageUtils.addOrRemoveDevDependencies(pkg, !useBabel || hasScripts, [
-        '@pob/eslint-config',
-        '@pob/eslint-config-node',
+      ) {
+        packageUtils.addOrRemoveDevDependencies(pkg, !useBabel || hasScripts, [
+          '@pob/eslint-config',
+          '@pob/eslint-config-node',
           'eslint-plugin-node',
           'eslint-plugin-prettier',
           'eslint-plugin-unicorn',
-      ]);
+        ]);
 
-      packageUtils.addOrRemoveDevDependencies(pkg, useBabel && !typescript, [
-        '@pob/eslint-config-babel',
-      ]);
-      packageUtils.addOrRemoveDevDependencies(pkg, useBabel && useNodeOnly, [
-        '@pob/eslint-config-babel-node',
-      ]);
-      packageUtils.addOrRemoveDevDependencies(pkg, useBabel && typescript, [
-        '@pob/eslint-config-typescript',
+        packageUtils.addOrRemoveDevDependencies(pkg, useBabel && !typescript, [
+          '@pob/eslint-config-babel',
+        ]);
+        packageUtils.addOrRemoveDevDependencies(pkg, useBabel && useNodeOnly, [
+          '@pob/eslint-config-babel-node',
+        ]);
+        packageUtils.addOrRemoveDevDependencies(pkg, useBabel && typescript, [
+          '@pob/eslint-config-typescript',
           '@typescript-eslint/eslint-plugin',
-      ]);
+        ]);
 
-      packageUtils.addOrRemoveDevDependencies(pkg, hasReact && !typescript, [
-        '@pob/eslint-config-react',
-      ]);
-      packageUtils.addOrRemoveDevDependencies(pkg, hasReact && typescript, [
-        '@pob/eslint-config-typescript-react',
-      ]);
-    }
+        packageUtils.addOrRemoveDevDependencies(pkg, hasReact && !typescript, [
+          '@pob/eslint-config-react',
+        ]);
+        packageUtils.addOrRemoveDevDependencies(pkg, hasReact && typescript, [
+          '@pob/eslint-config-typescript-react',
+        ]);
+      }
     }
     const config = (() => {
       if (
@@ -315,13 +315,6 @@ module.exports = class LintGenerator extends Generator {
         console.warn('Could not parse/edit eslintrc.json: ', err);
       }
     }
-
-    const yoConfig = inLerna && inLerna.rootYoConfig;
-    const composite =
-      yoConfig &&
-      yoConfig.pob &&
-      yoConfig.pob.monorepo &&
-      yoConfig.pob.monorepo.typescript;
 
     const srcDirectory = useBabel ? 'src' : 'lib';
 

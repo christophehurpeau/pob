@@ -58,8 +58,6 @@ module.exports = class TestingGenerator extends Generator {
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
-    const transpileWithBabel = packageUtils.transpileWithBabel(pkg);
-
     packageUtils.removeDevDependencies(pkg, [
       'coveralls',
       'mocha',
@@ -107,9 +105,9 @@ module.exports = class TestingGenerator extends Generator {
         '@types/jest',
       ]);
 
-      const hasBabel = packageUtils.transpileWithBabel(pkg);
-      const hasReact = hasBabel && packageUtils.hasReact(pkg);
-      const srcDirectory = hasBabel ? 'src' : 'lib';
+      const transpileWithBabel = packageUtils.transpileWithBabel(pkg);
+      const hasReact = transpileWithBabel && packageUtils.hasReact(pkg);
+      const srcDirectory = transpileWithBabel ? 'src' : 'lib';
 
       packageUtils.addOrRemoveDevDependencies(pkg, hasBabel, ['babel-jest']);
 

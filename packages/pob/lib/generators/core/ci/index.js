@@ -47,6 +47,7 @@ module.exports = class CiGenerator extends Generator {
   default() {
     if (this.options.enable) {
       const isYarn2 = this.fs.exists('.yarnrc.yml');
+      const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
       try {
         // this.fs.copyTpl(
@@ -65,7 +66,7 @@ module.exports = class CiGenerator extends Generator {
             this.templatePath('circleci2.yml.ejs'),
             this.destinationPath('.circleci/config.yml'),
             {
-              testing: this.options.testing,
+              testing: this.options.testing && !!pkg.scripts.test,
               documentation: this.options.documentation,
               codecov: this.options.codecov,
               node12: true,
@@ -73,12 +74,13 @@ module.exports = class CiGenerator extends Generator {
             }
           );
         }
+
         this.fs.copyTpl(
           this.templatePath('github-action-node-workflow.yml.ejs'),
           this.destinationPath('.github/workflows/push.yml'),
           {
             isYarn2,
-            testing: this.options.testing,
+            testing: this.options.testing && !!pkg.scripts.test,
             documentation: this.options.documentation,
             codecov: this.options.codecov,
           }
