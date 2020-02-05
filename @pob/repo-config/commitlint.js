@@ -3,7 +3,7 @@
 'use strict';
 
 const path = require('path');
-const pkg = require('lint-staged/package.json');
+const pkg = require('@commitlint/cli/package.json');
 
 // eslint-disable-next-line import/no-dynamic-require
-require(path.join('lint-staged', pkg.bin));
+require(path.join('@commitlint/cli', pkg.bin.commitlint));
