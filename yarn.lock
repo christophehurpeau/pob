@@ -2143,11 +2143,12 @@
     "@pob/eslint-config-babel-common" "^34.0.0"
     babel-eslint "^10.0.3"
 
-"@pob/eslint-config-node@34.0.0":
-  version "34.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-node/-/eslint-config-node-34.0.0.tgz#55341f973e58ab097bc698089a104fa7491fe66f"
-  integrity sha512-rKhMeQa97Y275qebTP/XymHQ/8nYVz2fs+6hMRl/MRXV9wm5K9fa29WeN9SdwXq2e/88z2Qf6uHxrhjeE4OC2g==
+"@pob/eslint-config-node@35.0.0":
+  version "35.0.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-node/-/eslint-config-node-35.0.0.tgz#f373f5392e3c718682deced1c273b43b9b11051a"
+  integrity sha512-fTVMGUpCMTlYcxhvLXa8udt1rpNNA7l2z/2/1pv9/SktYpTTim60kxd2D/HhAmjikDvXWyX43OAIr0UMgNAAPw==
   dependencies:
+    "@pob/use-eslint-plugin" "^35.0.0"
     eslint-plugin-node "^11.0.0"
 
 "@pob/eslint-config-react@34.0.0", "@pob/eslint-config-react@^34.0.0":
@@ -2190,6 +2191,11 @@
     eslint-plugin-prefer-class-properties "^1.0.0"
     eslint-plugin-prettier "^3.1.1"
     eslint-plugin-unicorn "^15.0.0"
+
+"@pob/use-eslint-plugin@^35.0.0":
+  version "35.0.0"
+  resolved "https://registry.yarnpkg.com/@pob/use-eslint-plugin/-/use-eslint-plugin-35.0.0.tgz#f0ab91696f2b1649743360e9a54be77da0fc5481"
+  integrity sha512-fZ0pBHc1981qhXAaWKj7jxuPaIlWqK3FguVpqvoqIBGyQthfwK82U/+wlTaWfV/7oSr2g0uGeqvtC5KqGOhyaw==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
