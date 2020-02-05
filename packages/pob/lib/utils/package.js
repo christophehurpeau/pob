@@ -158,12 +158,13 @@ exports.addDevDependencies = function addDevDependencies(pkg, dependencies) {
 
 exports.removeDevDependencies = function removeDevDependencies(
   pkg,
-  dependencies
+  dependencies,
+  forceEvenIfInPeerDep
 ) {
   internalRemoveDependencies(
     pkg,
     'devDependencies',
-    pkg.peerDependencies
+    pkg.peerDependencies && !forceEvenIfInPeerDep
       ? dependencies.filter((d) => !pkg.peerDependencies[d])
       : dependencies
   );

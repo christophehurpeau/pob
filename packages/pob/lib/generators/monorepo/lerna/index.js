@@ -105,10 +105,17 @@ module.exports = class LernaGenerator extends Generator {
       (config) => getPobConfig(config).testing
     );
 
+    const monorepoConfig = this.config.get('monorepo');
+
     packageUtils.addScripts(pkg, {
-      lint: 'lerna run --stream lint',
+      lint:
+        monorepoConfig && monorepoConfig.eslint
+          ? 'eslint .'
+          : 'lerna run --stream lint',
       preversion: [
-        'yarn run lint --since',
+        monorepoConfig && monorepoConfig.eslint
+          ? 'eslint .'
+          : 'yarn run lint --since',
         withBabel && 'yarn run build --since -- -- --no-clean',
         'repository-check-dirty',
       ]

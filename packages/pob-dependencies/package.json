@@ -17,8 +17,8 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "scripts": {
-    "preversion": "node ./generate.d.ts.js && git add lib/index.d.ts",
-    "lint": "eslint --quiet lib"
+    "lint": "eslint --quiet lib",
+    "preversion": "node ./update-peerdeps.js && node ./generate.d.ts.js && git add lib/index.d.ts"
   },
   "prettier": {
     "trailingComma": "es5",
@@ -41,11 +41,20 @@
     "@pob/repo-config": "^1.1.3",
     "@pob/version": "^5.1.0",
     "@types/jest": "25.1.1",
+    "@typescript-eslint/eslint-plugin": "2.10.0",
+    "@typescript-eslint/parser": "2.10.0",
     "babel-eslint": "10.0.3",
     "babel-jest": "25.1.0",
     "babel-preset-latest-node": "4.0.1",
     "babel-preset-modern-browsers": "14.1.1",
     "eslint": "6.8.0",
+    "eslint-plugin-jsx-a11y": "6.2.3",
+    "eslint-plugin-node": "11.0.0",
+    "eslint-plugin-prefer-class-properties": "1.0.0",
+    "eslint-plugin-prettier": "3.1.2",
+    "eslint-plugin-react": "7.17.0",
+    "eslint-plugin-react-hooks": "2.3.0",
+    "eslint-plugin-unicorn": "15.0.1",
     "husky": "4.2.1",
     "jest": "25.1.0",
     "jest-junit-reporter": "1.1.0",
@@ -55,6 +64,7 @@
     "pob-release": "^5.3.0",
     "prettier": "1.19.1",
     "repository-check-dirty": "^1.0.3",
+    "semver": "^7.1.2",
     "typedoc": "0.16.9",
     "typescript": "3.7.5"
   }
