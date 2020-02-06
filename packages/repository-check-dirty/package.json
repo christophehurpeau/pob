@@ -11,6 +11,9 @@
     "node": ">=6.5.0"
   },
   "bin": {
-    "repository-check-dirty": "./repository-check-dirty.sh"
+    "repository-check-dirty": "./repository-check-dirty.js"
+  },
+  "dependencies": {
+    "@lerna/check-working-tree": "3.16.5"
   }
 }
