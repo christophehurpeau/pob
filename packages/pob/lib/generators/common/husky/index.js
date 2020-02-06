@@ -47,7 +47,8 @@ module.exports = class GitHooksGenerator extends Generator {
 
     packageUtils.addDevDependencies(pkg, ['husky']);
     if (pkg.name !== 'pob-lerna') {
-      packageUtils.addDevDependencies(pkg, ['@pob/repo-config']);
+      packageUtils.removeDevDependencies(pkg, ['@pob/repo-config']);
+      packageUtils.addDevDependencies(pkg, ['@pob/root']);
       // packageUtils.addOrRemoveDevDependencies(pkg, inLerna, {
       //   '@commitlint/config-lerna-scopes': '6.1.3',
       // });

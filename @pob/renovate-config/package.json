@@ -79,7 +79,7 @@
         },
         {
           "packageNames": [
-            "@pob/repo-config",
+            "@pob/root",
             "husky",
             "prettier",
             "lerna"

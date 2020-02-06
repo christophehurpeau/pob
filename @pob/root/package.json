@@ -1,7 +1,7 @@
 {
-  "name": "@pob/repo-config",
+  "name": "@pob/root",
   "version": "1.2.0",
-  "description": "repo config",
+  "description": "root package",
   "license": "ISC",
   "engines": {
     "node": ">=6.5.0"

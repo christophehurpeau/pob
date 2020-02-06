@@ -5,7 +5,7 @@
       "testing": false,
       "documentation": false,
       "packageNames": [
-        "@pob/repo-config",
+        "@pob/root",
         "@pob/version",
         "babel-plugin-fix-class-properties-uninitialized",
         "babel-plugin-pob-babel",

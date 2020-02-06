@@ -11,7 +11,7 @@ interface Dependencies {
   '@pob/eslint-config-react': '34.0.0';
   '@pob/eslint-config-typescript': '34.0.0';
   '@pob/eslint-config-typescript-react': '34.0.0';
-  '@pob/repo-config': '^1.1.2';
+  '@pob/root': '^1.1.2';
   '@pob/version': '^5.1.0';
   '@types/jest': '25.1.1';
   'babel-eslint': '10.0.3';
@@ -30,6 +30,6 @@ interface Dependencies {
   'repository-check-dirty': '^1.0.3';
   'typedoc': '0.16.9';
   'typescript': '3.7.5';
-} 
+}
 
 export = dependencies;
