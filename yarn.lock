@@ -2109,7 +2109,19 @@
     "@typescript-eslint/parser" "^2.10.0"
     eslint-config-prettier "^6.7.0"
 
-"@pob/eslint-config@35.0.0", "@pob/eslint-config@^35.0.0":
+"@pob/eslint-config@35.0.1":
+  version "35.0.1"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-35.0.1.tgz#b2ed6958a5099eb7d48f8c611354689d58e2d832"
+  integrity sha512-V1N1NQPfzwyZoWX/JC2VOd9mM9UM+a7MlCWxR+0STvQYPiKd6zAn+SReKNVvVJcwjhWqykEmN9eyMphdCpcMBw==
+  dependencies:
+    "@pob/use-eslint-plugin" "^35.0.0"
+    eslint-config-airbnb-base "^14.0.0"
+    eslint-config-prettier "^6.7.0"
+    eslint-plugin-prefer-class-properties "^1.0.0"
+    eslint-plugin-prettier "^3.1.2"
+    eslint-plugin-unicorn "^15.0.1"
+
+"@pob/eslint-config@^35.0.0":
   version "35.0.0"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-35.0.0.tgz#eb54ffedd706395b8e38c5b1f94e8f19ca063f23"
   integrity sha512-hrvrvQytqn8mdF20jdWCsTxV/KsFL9aWkLpfadDiALHox7W9vKLazojc43cFlwMn5LIE9ZW2njtuf2WwaQr47A==
