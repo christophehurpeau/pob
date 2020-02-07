@@ -3,7 +3,7 @@ version: 2
 jobs:
   test-node10:
     docker:
-      - image: circleci/node:10.17
+      - image: circleci/node:10.18
     steps:
       - checkout
       - restore_cache:
@@ -42,7 +42,7 @@ jobs:
       - run:
           name: Check nothing was forget before commit
           command: yarn run repository-check-dirty
-<% [node12 && { name: 12, version: '12.13' }].filter(Boolean).forEach(({ name, version }) => { -%>
+<% [node12 && { name: 12, version: '12.14' }].filter(Boolean).forEach(({ name, version }) => { -%>
 
   test-node<%= name %>:
     docker:
