@@ -2089,7 +2089,19 @@
     "@pob/use-eslint-plugin" "^35.0.0"
     eslint-plugin-node "^11.0.0"
 
-"@pob/eslint-config-react@35.0.0", "@pob/eslint-config-react@^35.0.0":
+"@pob/eslint-config-react@35.0.1":
+  version "35.0.1"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-react/-/eslint-config-react-35.0.1.tgz#9c38e290a7b0863040002f574172555170f956b3"
+  integrity sha512-FtO7rAec4kTwiW3x7aMOMgoJ65OaWEJ58DWAoH3V/C34+YPXMb3suGTCRsPXCqTmoTVwKKSQ8btqrTtF7JimdA==
+  dependencies:
+    "@pob/eslint-config" "^35.0.1"
+    eslint-config-airbnb "^18.0.1"
+    eslint-config-prettier "^6.7.0"
+    eslint-plugin-jsx-a11y "^6.2.3"
+    eslint-plugin-react "^7.17.0"
+    eslint-plugin-react-hooks "^2.3.0"
+
+"@pob/eslint-config-react@^35.0.0":
   version "35.0.0"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config-react/-/eslint-config-react-35.0.0.tgz#fad89003e78f3e0438eaca767854201cd451e5b6"
   integrity sha512-wPo50NxaMSlLpICXNL2Jr9i5Xl8OI+Wg9ueOOrI1WZkhxfViwf2T0YbiIikbof6LKJ+qGPkzeGIVKcqQTmye7Q==
