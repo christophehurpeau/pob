@@ -2079,7 +2079,7 @@
     "@pob/use-eslint-plugin" "^35.0.0"
     eslint-plugin-node "^11.0.0"
 
-"@pob/eslint-config-react@35.0.1":
+"@pob/eslint-config-react@35.0.1", "@pob/eslint-config-react@^35.0.1":
   version "35.0.1"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config-react/-/eslint-config-react-35.0.1.tgz#9c38e290a7b0863040002f574172555170f956b3"
   integrity sha512-FtO7rAec4kTwiW3x7aMOMgoJ65OaWEJ58DWAoH3V/C34+YPXMb3suGTCRsPXCqTmoTVwKKSQ8btqrTtF7JimdA==
@@ -2091,24 +2091,12 @@
     eslint-plugin-react "^7.17.0"
     eslint-plugin-react-hooks "^2.3.0"
 
-"@pob/eslint-config-react@^35.0.0":
-  version "35.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-react/-/eslint-config-react-35.0.0.tgz#fad89003e78f3e0438eaca767854201cd451e5b6"
-  integrity sha512-wPo50NxaMSlLpICXNL2Jr9i5Xl8OI+Wg9ueOOrI1WZkhxfViwf2T0YbiIikbof6LKJ+qGPkzeGIVKcqQTmye7Q==
+"@pob/eslint-config-typescript-react@35.0.1":
+  version "35.0.1"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript-react/-/eslint-config-typescript-react-35.0.1.tgz#e39f6bc974a34dd7ee5ddf464b06c6f8e856f7cd"
+  integrity sha512-gFKynWlxXzHY4mD2KTfO/5ojkEzAEBmjfLCe9OYJGDRZQVkZcufQP1v6Psnvvgjg+e8utJVflej36NpHaO3j+g==
   dependencies:
-    "@pob/eslint-config" "^35.0.0"
-    eslint-config-airbnb "^18.0.1"
-    eslint-config-prettier "^6.7.0"
-    eslint-plugin-jsx-a11y "^6.2.3"
-    eslint-plugin-react "^7.17.0"
-    eslint-plugin-react-hooks "^2.3.0"
-
-"@pob/eslint-config-typescript-react@35.0.0":
-  version "35.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript-react/-/eslint-config-typescript-react-35.0.0.tgz#d7f59fa6657628d6bb9be47c8423029f01fd31d4"
-  integrity sha512-GGed2cLGW5I9XnBw6cwif+AzlEqLf6DR+dpgVNknc2m+Iw4JgITiKgzO5x1ZNf7F21ZldMsd7kAWBC4oNjKqWg==
-  dependencies:
-    "@pob/eslint-config-react" "^35.0.0"
+    "@pob/eslint-config-react" "^35.0.1"
 
 "@pob/eslint-config-typescript@35.0.1":
   version "35.0.1"
@@ -2125,18 +2113,6 @@
   version "35.0.1"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-35.0.1.tgz#b2ed6958a5099eb7d48f8c611354689d58e2d832"
   integrity sha512-V1N1NQPfzwyZoWX/JC2VOd9mM9UM+a7MlCWxR+0STvQYPiKd6zAn+SReKNVvVJcwjhWqykEmN9eyMphdCpcMBw==
-  dependencies:
-    "@pob/use-eslint-plugin" "^35.0.0"
-    eslint-config-airbnb-base "^14.0.0"
-    eslint-config-prettier "^6.7.0"
-    eslint-plugin-prefer-class-properties "^1.0.0"
-    eslint-plugin-prettier "^3.1.2"
-    eslint-plugin-unicorn "^15.0.1"
-
-"@pob/eslint-config@^35.0.0":
-  version "35.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-35.0.0.tgz#eb54ffedd706395b8e38c5b1f94e8f19ca063f23"
-  integrity sha512-hrvrvQytqn8mdF20jdWCsTxV/KsFL9aWkLpfadDiALHox7W9vKLazojc43cFlwMn5LIE9ZW2njtuf2WwaQr47A==
   dependencies:
     "@pob/use-eslint-plugin" "^35.0.0"
     eslint-config-airbnb-base "^14.0.0"
