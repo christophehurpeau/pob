@@ -12,7 +12,7 @@ interface Dependencies {
   '@pob/eslint-config-typescript': '35.0.0';
   '@pob/eslint-config-typescript-react': '35.0.0';
   '@pob/pretty-pkg': '^1.1.0';
-  '@pob/root': '^1.2.1';
+  '@pob/root': '^1.2.2';
   '@types/jest': '25.1.2';
   '@typescript-eslint/eslint-plugin': '2.19.0';
   '@typescript-eslint/parser': '2.19.0';
@@ -37,7 +37,7 @@ interface Dependencies {
   'pob-release': '^5.4.0';
   'prettier': '1.19.1';
   'repository-check-dirty': '^1.0.4';
-  'semver': '^7.1.2';
+  'semver': '7.1.2';
   'typedoc': '0.16.9';
   'typescript': '3.7.5';
 }

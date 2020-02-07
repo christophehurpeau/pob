@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.7.7...@pob/renovate-config@1.8.0) (2020-02-07)
+
+
+### Features
+
+* drop @pob/version ([9434645](https://github.com/christophehurpeau/pob/commit/943464578db5ad52c2d446e55bd1d8e49ee0e768))
+
+
+
+
+
 ## [1.7.7](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.7.6...@pob/renovate-config@1.7.7) (2020-02-07)
 
 **Note:** Version bump only for package @pob/renovate-config
