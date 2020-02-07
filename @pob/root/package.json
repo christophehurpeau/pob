@@ -19,7 +19,6 @@
   },
   "dependencies": {
     "@commitlint/cli": "8.3.5",
-    "@commitlint/config-conventional": "8.3.4",
     "cross-env": "^7.0.0",
     "lint-staged": "10.0.7",
     "repository-check-dirty": "^1.0.4",

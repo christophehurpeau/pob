@@ -1,0 +1,35 @@
+{
+  "name": "@pob/commitlint-config",
+  "version": "1.0.0-pre",
+  "description": "pob commitlint config",
+  "keywords": [
+    "commitlint"
+  ],
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com:christophehurpeau/pob.git",
+    "directory": "@pob/commitlint-config"
+  },
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "engines": {
+    "node": ">=10.13.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./lib/index.js",
+  "scripts": {
+    "lint": "eslint --quiet lib"
+  },
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "arrowParens": "always"
+  },
+  "pob": {},
+  "dependencies": {
+    "@commitlint/config-conventional": "^8.3.4"
+  }
+}

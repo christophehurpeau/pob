@@ -25,7 +25,7 @@
   },
   "commitlint": {
     "extends": [
-      "@commitlint/config-conventional"
+      "@pob/commitlint-config"
     ]
   },
   "devDependencies": {

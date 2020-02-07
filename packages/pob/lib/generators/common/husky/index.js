@@ -72,7 +72,7 @@ module.exports = class GitHooksGenerator extends Generator {
 
     pkg.commitlint = {
       extends: [
-        '@commitlint/config-conventional',
+        '@pob/commitlint-config',
         // '@commitlint/config-lerna-scopes',
       ].filter(Boolean),
     };

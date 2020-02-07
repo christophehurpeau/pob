@@ -1,0 +1,13 @@
+{
+  "pob-monorepo": {
+    "type": {
+      "type": "lib"
+    }
+  },
+  "pob": {
+    "pob-config": {
+      "documentation": false,
+      "testing": false
+    }
+  }
+}
