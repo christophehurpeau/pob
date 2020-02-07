@@ -9,5 +9,10 @@
       "documentation": false,
       "testing": false
     }
+  },
+  "@pob/pretty-pkg": {
+    "type": {
+      "type": "lib"
+    }
   }
 }

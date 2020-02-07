@@ -14,7 +14,7 @@ pkg['renovate-config'].default.packageRules[0].packageNames = Object.keys(
 ).filter((pkgName) => !excludePkgNames.includes(pkgName));
 
 const formattedPkg = prettier.format(JSON.stringify(pkg, null, 2), {
-  parser: 'json',
+  filepath: 'package.json',
   printWidth: 80,
 });
 

@@ -18,7 +18,7 @@ module.exports = function prettyPkg(pkg, prettierOptions) {
 
   sortPkg(pkg);
   return prettier.format(JSON.stringify(pkg, undefined, 2), {
-    parser: 'json',
+    filepath: 'package.json',
     printWidth: 80,
     ...prettierOptions,
   });

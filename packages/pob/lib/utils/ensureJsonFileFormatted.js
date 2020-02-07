@@ -7,7 +7,7 @@ const ensureJsonFileFormatted = (path) => {
   try {
     const pkgJson = fs.readFileSync(path, 'utf-8');
     const formattedPkg = prettier.format(pkgJson, {
-      parser: 'json',
+      filepath: 'package.json',
       printWidth: 80,
     });
     if (pkgJson !== formattedPkg) {
