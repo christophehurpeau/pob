@@ -109,7 +109,9 @@ module.exports = class TestingGenerator extends Generator {
       const hasReact = transpileWithBabel && packageUtils.hasReact(pkg);
       const srcDirectory = transpileWithBabel ? 'src' : 'lib';
 
-      packageUtils.addOrRemoveDevDependencies(pkg, transpileWithBabel, ['babel-jest']);
+      packageUtils.addOrRemoveDevDependencies(pkg, transpileWithBabel, [
+        'babel-jest',
+      ]);
 
       if (!pkg.jest) pkg.jest = {};
       Object.assign(pkg.jest, {

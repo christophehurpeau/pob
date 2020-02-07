@@ -300,9 +300,7 @@ module.exports = class PobLibGenerator extends Generator {
         delete pkg.scripts.version;
       }
     } else {
-      packageUtils.addDevDependencies(pkg, [
-        'pob-release',
-      ]);
+      packageUtils.addDevDependencies(pkg, ['pob-release']);
       if (pkg.name !== 'pob-monorepo') {
         packageUtils.addScripts(pkg, {
           release: 'repository-check-dirty && pob-release',

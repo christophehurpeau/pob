@@ -1,0 +1,13 @@
+{
+  "rules": {
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": true
+      }
+    ],
+    "import/no-dynamic-require": "off",
+    "node/no-extraneous-require": "off",
+    "global-require": "off"
+  }
+}

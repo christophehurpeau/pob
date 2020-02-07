@@ -4,7 +4,6 @@ const fs = require('fs');
 const path = require('path');
 const Generator = require('yeoman-generator');
 const askName = require('inquirer-npm-name');
-const kebabCase = require('lodash.kebabcase');
 const packageUtils = require('../../../utils/package');
 const inLerna = require('../../../utils/inLerna');
 

@@ -18,7 +18,7 @@
   "types": "./lib/index.d.ts",
   "scripts": {
     "lint": "eslint --quiet lib",
-    "preversion": "node ./update-peerdeps.js && node ./generate.d.ts.js && git add lib/index.d.ts"
+    "preversion": "node ./scripts/update-peerdeps.js && node ./scripts/generate.d.ts.js && git add lib/index.d.ts"
   },
   "prettier": {
     "trailingComma": "es5",
@@ -27,6 +27,7 @@
   },
   "pob": {},
   "devDependencies": {
+    "@pob/pretty-pkg": "1.0.0",
     "@babel/core": "7.8.4",
     "@babel/preset-env": "7.8.4",
     "@babel/preset-react": "7.8.3",

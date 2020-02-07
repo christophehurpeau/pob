@@ -11,6 +11,11 @@
     "packages/*",
     "@pob/*"
   ],
+  "prettier": {
+    "trailingComma": "es5",
+    "singleQuote": true,
+    "arrowParens": "always"
+  },
   "scripts": {
     "lint": "eslint .",
     "preversion": "eslint . && repository-check-dirty && node @pob/version/generate-index.js && git add ./@pob/version/lib/index.js",
