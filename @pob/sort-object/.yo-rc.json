@@ -9,5 +9,10 @@
       "documentation": false,
       "testing": false
     }
+  },
+  "@pob/sort-object": {
+    "type": {
+      "type": "lib"
+    }
   }
 }

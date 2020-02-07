@@ -39,6 +39,11 @@ module.exports = class LintGenerator extends Generator {
         this.templatePath('eslintignore.txt'),
         this.destinationPath('.eslintignore')
       );
+    } else if (inLerna && inLerna.root) {
+      this.fs.copy(
+        this.templatePath('eslintignore.monorepoEslint.txt'),
+        this.destinationPath('.eslintignore')
+      );
     } else if (this.fs.exists(this.destinationPath('.eslintignore'))) {
       this.fs.delete(this.destinationPath('.eslintignore'));
     }
@@ -86,9 +91,7 @@ module.exports = class LintGenerator extends Generator {
       'standard',
     ]);
 
-    const yoConfig = inLerna && inLerna.rootYoConfig;
-    const yoConfigPob = yoConfig && yoConfig.pob;
-    const yoConfigPobMonorepo = yoConfigPob && yoConfigPob.monorepo;
+    const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
     const globalEslint = yoConfigPobMonorepo && yoConfigPobMonorepo.eslint;
     const composite = yoConfigPobMonorepo && yoConfigPobMonorepo.typescript;
 

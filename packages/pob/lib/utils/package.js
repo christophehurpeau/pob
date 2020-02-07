@@ -71,7 +71,7 @@ const internalRemoveDependencies = (pkg, type, dependencies) => {
   dependencies.forEach((dependency) => {
     delete pkg[type][dependency];
   });
-  if (Object.keys(pkg[type]) === 0) {
+  if (Object.keys(pkg[type]).length === 0) {
     delete pkg[type];
   }
 };

@@ -94,6 +94,12 @@ module.exports = class PobMonorepoGenerator extends Generator {
         message: 'Would you like typescript monorepo ?',
         default: config ? config.typescript : true,
       },
+      {
+        type: 'confirm',
+        name: 'eslint',
+        message: 'Would you like eslint in monorepo ?',
+        default: config ? config.eslint : false,
+      },
     ]);
     this.pobLernaConfig.packageNames = this.packageNames;
     this.config.set('monorepo', this.pobLernaConfig);

@@ -78,7 +78,7 @@ module.exports = class LernaGenerator extends Generator {
 
     packageUtils.addDevDependencies(pkg, ['lerna']);
 
-    if (pkg.name !== 'pob-lerna') {
+    if (pkg.name !== 'pob-monorepo') {
       packageUtils.addDevDependencies(pkg, ['repository-check-dirty']);
     }
 

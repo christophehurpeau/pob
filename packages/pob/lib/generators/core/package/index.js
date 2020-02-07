@@ -150,7 +150,7 @@ module.exports = class PackageGenerator extends Generator {
       };
     }
 
-    if (pkg.name !== 'pob-lerna' && (!inLerna || inLerna.root)) {
+    if (pkg.name !== 'pob-monorepo' && (!inLerna || inLerna.root)) {
       packageUtils.addDevDependencies(pkg, ['@pob/version']);
     }
 

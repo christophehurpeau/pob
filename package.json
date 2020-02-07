@@ -1,5 +1,5 @@
 {
-  "name": "pob-lerna",
+  "name": "pob-monorepo",
   "private": true,
   "version": "0.0.0",
   "description": "library generator/tools/scripts",
@@ -12,8 +12,8 @@
     "@pob/*"
   ],
   "scripts": {
-    "lint": "lerna run --stream lint",
-    "preversion": "yarn run lint --since && repository-check-dirty && node @pob/version/generate-index.js && git add ./@pob/version/lib/index.js",
+    "lint": "eslint .",
+    "preversion": "eslint . && repository-check-dirty && node @pob/version/generate-index.js && git add ./@pob/version/lib/index.js",
     "postversion": "yarn && git add yarn.lock",
     "release": "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git",
     "test": "lerna run --stream test"
@@ -24,8 +24,12 @@
     ]
   },
   "devDependencies": {
+    "@pob/eslint-config": "35.0.0",
+    "@pob/eslint-config-node": "35.0.0",
+    "eslint": "6.8.0",
+    "eslint-plugin-import": "^2.20.1",
     "husky": "4.2.1",
     "lerna": "3.20.2",
-    "repository-check-dirty": "./packages/repository-check-dirty"
+    "prettier": "1.19.1"
   }
 }
