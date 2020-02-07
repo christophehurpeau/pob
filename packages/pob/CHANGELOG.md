@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.8.1](https://github.com/christophehurpeau/pob/compare/pob@5.8.0...pob@5.8.1) (2020-02-07)
+
+
+### Bug Fixes
+
+* dont use cross-env in yarn 2 ([5c434e6](https://github.com/christophehurpeau/pob/commit/5c434e6a1b62f4f6f4aa69b71048e072f8120af1))
+
+
+
+
+
 # [5.8.0](https://github.com/christophehurpeau/pob/compare/pob@5.7.0...pob@5.8.0) (2020-02-07)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.2](https://github.com/christophehurpeau/pob/compare/@pob/root@1.3.1...@pob/root@1.3.2) (2020-02-07)
+
+
+### Bug Fixes
+
+* dont use cross-env in yarn 2 ([5c434e6](https://github.com/christophehurpeau/pob/commit/5c434e6a1b62f4f6f4aa69b71048e072f8120af1))
+
+
+
+
+
 ## [1.3.1](https://github.com/christophehurpeau/pob/compare/@pob/root@1.3.0...@pob/root@1.3.1) (2020-02-07)
 
 **Note:** Version bump only for package @pob/root
