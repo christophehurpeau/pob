@@ -7,7 +7,6 @@
       "eslint": true,
       "packageNames": [
         "@pob/sort-object",
-        "@pob/version",
         "babel-plugin-fix-class-properties-uninitialized",
         "babel-plugin-pob-babel",
         "babel-plugin-transform-builtins",

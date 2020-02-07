@@ -18,7 +18,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "preversion": "eslint . && repository-check-dirty && node @pob/version/generate-index.js && git add ./@pob/version/lib/index.js",
+    "preversion": "eslint . && repository-check-dirty",
     "postversion": "yarn && git add yarn.lock",
     "release": "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git",
     "test": "lerna run --stream test"

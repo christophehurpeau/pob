@@ -149,10 +149,6 @@ module.exports = class PackageGenerator extends Generator {
       };
     }
 
-    if (pkg.name !== 'pob-monorepo' && (!inLerna || inLerna.root)) {
-      packageUtils.addDevDependencies(pkg, ['@pob/version']);
-    }
-
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 
