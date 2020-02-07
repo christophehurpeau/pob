@@ -34,7 +34,7 @@
     "@pob/commitlint-config": "^1.1.0",
     "@pob/eslint-config": "35.0.1",
     "@pob/eslint-config-babel": "35.0.1",
-    "@pob/eslint-config-babel-node": "35.0.0",
+    "@pob/eslint-config-babel-node": "35.0.1",
     "@pob/eslint-config-node": "35.0.0",
     "@pob/eslint-config-react": "35.0.0",
     "@pob/eslint-config-typescript": "35.0.0",
