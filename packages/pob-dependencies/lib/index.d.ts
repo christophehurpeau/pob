@@ -4,7 +4,7 @@ interface Dependencies {
   '@babel/preset-env': '7.8.4';
   '@babel/preset-react': '7.8.3';
   '@babel/runtime': '7.8.4';
-  '@pob/commitlint-config': '1.0.0-pre';
+  '@pob/commitlint-config': '^1.0.0';
   '@pob/eslint-config': '35.0.0';
   '@pob/eslint-config-babel': '35.0.0';
   '@pob/eslint-config-babel-node': '35.0.0';
@@ -13,7 +13,7 @@ interface Dependencies {
   '@pob/eslint-config-typescript': '35.0.0';
   '@pob/eslint-config-typescript-react': '35.0.0';
   '@pob/pretty-pkg': '^1.1.0';
-  '@pob/root': '^1.2.2';
+  '@pob/root': '^1.3.0';
   '@types/jest': '25.1.2';
   '@typescript-eslint/eslint-plugin': '2.19.0';
   '@typescript-eslint/parser': '2.19.0';

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@2.1.0...pob-lcov-reporter@2.2.0) (2020-02-07)
+
+
+### Features
+
+* run prettier on README.md ([2b43ba0](https://github.com/christophehurpeau/pob/commit/2b43ba0c07dfea9f991d88af9daf7b852853a4fa))
+
+
+
+
+
 # [2.1.0](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@2.0.1...pob-lcov-reporter@2.1.0) (2020-02-07)
 
 
