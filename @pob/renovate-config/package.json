@@ -1,6 +1,6 @@
 {
   "name": "@pob/renovate-config",
-  "version": "1.7.5",
+  "version": "1.7.6",
   "description": "renovate pob config",
   "engines": {
     "node": ">= 8.3.0"
@@ -17,7 +17,7 @@
     "preversion": "node generate-package.json.js && git add package.json"
   },
   "devDependencies": {
-    "pob-dependencies": "^1.4.3",
+    "pob-dependencies": "^1.5.0",
     "prettier": "1.19.1"
   },
   "renovate-config": {
@@ -49,13 +49,23 @@
             "@pob/eslint-config-react",
             "@pob/eslint-config-typescript",
             "@pob/eslint-config-typescript-react",
+            "@pob/pretty-pkg",
             "@pob/version",
             "@types/jest",
+            "@typescript-eslint/eslint-plugin",
+            "@typescript-eslint/parser",
             "babel-eslint",
             "babel-jest",
             "babel-preset-latest-node",
             "babel-preset-modern-browsers",
             "eslint",
+            "eslint-plugin-jsx-a11y",
+            "eslint-plugin-node",
+            "eslint-plugin-prefer-class-properties",
+            "eslint-plugin-prettier",
+            "eslint-plugin-react",
+            "eslint-plugin-react-hooks",
+            "eslint-plugin-unicorn",
             "jest",
             "jest-junit-reporter",
             "lerna",
@@ -64,6 +74,7 @@
             "pob-release",
             "prettier",
             "repository-check-dirty",
+            "semver",
             "typedoc",
             "typescript"
           ],

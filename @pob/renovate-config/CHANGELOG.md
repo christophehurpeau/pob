@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.7.6](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.7.5...@pob/renovate-config@1.7.6) (2020-02-07)
+
+
+### Bug Fixes
+
+* format json without parser option ([765bfcf](https://github.com/christophehurpeau/pob/commit/765bfcfd70e90c208d8c6e95d5f27c477ace2328))
+
+
+
+
+
 ## [1.7.5](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.7.4...@pob/renovate-config@1.7.5) (2020-02-04)
 
 **Note:** Version bump only for package @pob/renovate-config

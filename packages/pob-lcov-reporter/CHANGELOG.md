@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@2.0.1...pob-lcov-reporter@2.1.0) (2020-02-07)
+
+
+### Features
+
+* eslint monorepo config ([d962a0e](https://github.com/christophehurpeau/pob/commit/d962a0e158001d039d72a7f1bababd699c782d58))
+* monorepo eslint ([7fcf874](https://github.com/christophehurpeau/pob/commit/7fcf87491cf92231fed13b65fc8e1a19b5ec79aa))
+
+
+
+
+
 ## [2.0.1](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@2.0.0...pob-lcov-reporter@2.0.1) (2020-02-02)
 
 

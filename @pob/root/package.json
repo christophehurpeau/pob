@@ -1,6 +1,6 @@
 {
   "name": "@pob/root",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "description": "root package",
   "license": "ISC",
   "engines": {
@@ -22,7 +22,7 @@
     "@commitlint/config-conventional": "8.3.4",
     "cross-env": "^7.0.0",
     "lint-staged": "10.0.7",
-    "repository-check-dirty": "^1.0.3",
+    "repository-check-dirty": "^1.0.4",
     "semver": "^7.1.2",
     "which-pm-runs": "1.0.0",
     "yarn-deduplicate": "1.1.1",

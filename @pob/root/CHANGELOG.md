@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 1.2.1 (2020-02-07)
+
+
+### Bug Fixes
+
+* format json without parser option ([765bfcf](https://github.com/christophehurpeau/pob/commit/765bfcfd70e90c208d8c6e95d5f27c477ace2328))
+* missing bin repository-check-dirty ([f1899ed](https://github.com/christophehurpeau/pob/commit/f1899ed019b6e3bc07446954389aa2bbbda23c45))
+
+
+
+
+
 ## [1.1.3](https://github.com/christophehurpeau/pob/compare/@pob/repo-config@1.1.2...@pob/repo-config@1.1.3) (2020-02-04)
 
 

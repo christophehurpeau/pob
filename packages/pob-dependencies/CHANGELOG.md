@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.4.3...pob-dependencies@1.5.0) (2020-02-07)
+
+
+### Bug Fixes
+
+* format json without parser option ([765bfcf](https://github.com/christophehurpeau/pob/commit/765bfcfd70e90c208d8c6e95d5f27c477ace2328))
+
+
+### Features
+
+* monorepo eslint ([7fcf874](https://github.com/christophehurpeau/pob/commit/7fcf87491cf92231fed13b65fc8e1a19b5ec79aa))
+* **deps:** update dependency @types/jest to v25.1.2 ([#427](https://github.com/christophehurpeau/pob/issues/427)) ([beb5d99](https://github.com/christophehurpeau/pob/commit/beb5d9996766b47408b81631196fae70bc58ba78))
+* **deps:** update dependency eslint-plugin-react to v7.18.3 ([#424](https://github.com/christophehurpeau/pob/issues/424)) ([04b3873](https://github.com/christophehurpeau/pob/commit/04b38738bf4a7ef21fc018632fd604a280e3308f))
+* **deps:** update typescript-eslint monorepo to v2.19.0 ([#425](https://github.com/christophehurpeau/pob/issues/425)) ([28651e3](https://github.com/christophehurpeau/pob/commit/28651e39d880143cb96291a341ea70b421ed6b39))
+* add eslint peerdeps for yarn 2 ([3f062fd](https://github.com/christophehurpeau/pob/commit/3f062fdf32611a4536f2ae75006094c509212c34))
+* update eslint pob config packages ([a8a808b](https://github.com/christophehurpeau/pob/commit/a8a808bedd34983165f981d069af59bdbf5487e2))
+
+
+
+
+
 ## [1.4.3](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.4.2...pob-dependencies@1.4.3) (2020-02-04)
 
 **Note:** Version bump only for package pob-dependencies

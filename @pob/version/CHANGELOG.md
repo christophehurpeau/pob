@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/christophehurpeau/pob/compare/@pob/version@5.1.0...@pob/version@5.2.0) (2020-02-07)
+
+
+### Bug Fixes
+
+* format json without parser option ([765bfcf](https://github.com/christophehurpeau/pob/commit/765bfcfd70e90c208d8c6e95d5f27c477ace2328))
+
+
+### Features
+
+* eslint monorepo config ([d962a0e](https://github.com/christophehurpeau/pob/commit/d962a0e158001d039d72a7f1bababd699c782d58))
+* update eslint pob config packages ([a8a808b](https://github.com/christophehurpeau/pob/commit/a8a808bedd34983165f981d069af59bdbf5487e2))
+
+
+
+
+
 # [5.1.0](https://github.com/christophehurpeau/pob/compare/@pob/version@5.0.1...@pob/version@5.1.0) (2020-02-02)
 
 

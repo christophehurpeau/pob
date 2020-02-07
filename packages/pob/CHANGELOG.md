@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.5.0](https://github.com/christophehurpeau/pob/compare/pob@5.4.3...pob@5.5.0) (2020-02-07)
+
+
+### Bug Fixes
+
+* format json without parser option ([765bfcf](https://github.com/christophehurpeau/pob/commit/765bfcfd70e90c208d8c6e95d5f27c477ace2328))
+
+
+### Features
+
+* add eslint peerdeps for yarn 2 ([3f062fd](https://github.com/christophehurpeau/pob/commit/3f062fdf32611a4536f2ae75006094c509212c34))
+* eslint monorepo config ([d962a0e](https://github.com/christophehurpeau/pob/commit/d962a0e158001d039d72a7f1bababd699c782d58))
+* improve ci config ([ae962d2](https://github.com/christophehurpeau/pob/commit/ae962d28f981924d968d7841dc7ea5b599ec2601))
+* monorepo eslint ([7fcf874](https://github.com/christophehurpeau/pob/commit/7fcf87491cf92231fed13b65fc8e1a19b5ec79aa))
+* remame monorepo package name ([566e842](https://github.com/christophehurpeau/pob/commit/566e842f1cf4ac8a15a8fc304ef2ed42f8ceb055))
+* update eslint pob config packages ([a8a808b](https://github.com/christophehurpeau/pob/commit/a8a808bedd34983165f981d069af59bdbf5487e2))
+* update node in ci template ([b4f4b8b](https://github.com/christophehurpeau/pob/commit/b4f4b8bb70b85954453788bd268eead26d179f1a))
+* when yarn 2, remove circleci config and use yarn install immutable ([a680608](https://github.com/christophehurpeau/pob/commit/a6806083542d0567ca5e532f710b44e44c73d00f))
+
+
+
+
+
 ## [5.4.3](https://github.com/christophehurpeau/pob/compare/pob@5.4.2...pob@5.4.3) (2020-02-04)
 
 **Note:** Version bump only for package pob
