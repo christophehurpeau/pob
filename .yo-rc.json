@@ -2,10 +2,11 @@
   "pob": {
     "monorepo": {
       "ci": true,
-      "testing": false,
+      "testing": true,
       "documentation": false,
       "eslint": true,
       "packageNames": [
+        "@pob/commitlint-config",
         "@pob/sort-object",
         "babel-plugin-fix-class-properties-uninitialized",
         "babel-plugin-pob-babel",

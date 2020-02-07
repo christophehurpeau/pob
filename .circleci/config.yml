@@ -21,6 +21,9 @@ jobs:
           name: lint code
           command: yarn run lint
       - run:
+          name: tests
+          command: yarn run test
+      - run:
           name: Check nothing was forget before commit
           command: yarn run repository-check-dirty
 
