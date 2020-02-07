@@ -12,6 +12,7 @@ jobs:
 
     steps:
       - uses: actions/checkout@v1
+
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
@@ -32,12 +33,3 @@ jobs:
       - name: Lint
         run: yarn run lint
         if: startsWith(matrix.node-version, '12.')
-
-      - name: Test
-        run: yarn run test
-        env:
-          CI: true
-
-      - name: Check nothing was forgotten before commit
-        if: startsWith(matrix.node-version, '12.')
-        run: yarn run repository-check-dirty
