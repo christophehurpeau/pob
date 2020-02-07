@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.5.1](https://github.com/christophehurpeau/pob/compare/pob@5.5.0...pob@5.5.1) (2020-02-07)
+
+**Note:** Version bump only for package pob
+
+
+
+
+
 # [5.5.0](https://github.com/christophehurpeau/pob/compare/pob@5.4.3...pob@5.5.0) (2020-02-07)
 
 

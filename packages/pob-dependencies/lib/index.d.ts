@@ -1,6 +1,5 @@
 
 interface Dependencies {
-  '@pob/pretty-pkg': '1.0.0';
   '@babel/core': '7.8.4';
   '@babel/preset-env': '7.8.4';
   '@babel/preset-react': '7.8.3';
@@ -12,8 +11,9 @@ interface Dependencies {
   '@pob/eslint-config-react': '35.0.0';
   '@pob/eslint-config-typescript': '35.0.0';
   '@pob/eslint-config-typescript-react': '35.0.0';
-  '@pob/root': '^1.1.3';
-  '@pob/version': '^5.1.0';
+  '@pob/pretty-pkg': '^1.1.0';
+  '@pob/root': '^1.2.1';
+  '@pob/version': '^5.2.0';
   '@types/jest': '25.1.2';
   '@typescript-eslint/eslint-plugin': '2.19.0';
   '@typescript-eslint/parser': '2.19.0';
@@ -33,11 +33,11 @@ interface Dependencies {
   'jest': '25.1.0';
   'jest-junit-reporter': '1.1.0';
   'lerna': '3.20.2';
-  'pob-babel': '^24.4.0';
-  'pob-lcov-reporter': '^2.0.1';
-  'pob-release': '^5.3.0';
+  'pob-babel': '^24.5.0';
+  'pob-lcov-reporter': '^2.1.0';
+  'pob-release': '^5.4.0';
   'prettier': '1.19.1';
-  'repository-check-dirty': '^1.0.3';
+  'repository-check-dirty': '^1.0.4';
   'semver': '^7.1.2';
   'typedoc': '0.16.9';
   'typescript': '3.7.5';
