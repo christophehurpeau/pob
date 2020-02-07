@@ -1,5 +1,5 @@
 'use strict';
 
-const createHuskyConfig = require('./@pob/repo-config/createHuskyConfig');
+const createHuskyConfig = require('./@pob/root/createHuskyConfig');
 
 module.exports = createHuskyConfig();
