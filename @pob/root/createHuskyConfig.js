@@ -38,7 +38,11 @@ module.exports = () => {
     });
   }
 
-  if (shouldRunTest()) hooks['pre-push'] = 'cross-env CI=true yarn test';
+  if (shouldRunTest()) {
+    hooks['pre-push'] = `${
+      yarnMajorVersion < 2 ? 'cross-env ' : ''
+    }CI=true yarn test`;
+  }
 
   return {
     hooks,

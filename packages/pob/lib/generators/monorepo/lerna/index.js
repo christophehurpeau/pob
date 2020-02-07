@@ -63,6 +63,8 @@ module.exports = class LernaGenerator extends Generator {
   writing() {
     console.log('lerna: writing');
 
+    const isYarn2 = this.fs.exists('.yarnrc.yml');
+
     // package.json
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     packageUtils.removeDependencies(pkg, ['lerna']);
@@ -123,8 +125,9 @@ module.exports = class LernaGenerator extends Generator {
         .join(' && '),
       // cannot use this with lerna because it changes packages.json
       // prepublishOnly: 'repository-check-dirty',
-      release:
-        "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git",
+      release: `${
+        isYarn2 ? '' : 'cross-env '
+      }GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git`,
     });
 
     packageUtils.addOrRemoveScripts(pkg, withTests, {
