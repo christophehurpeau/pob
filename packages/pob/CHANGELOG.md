@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.7.0](https://github.com/christophehurpeau/pob/compare/pob@5.6.0...pob@5.7.0) (2020-02-07)
+
+
+### Features
+
+* @pob/commitlint-config ([9f25dc0](https://github.com/christophehurpeau/pob/commit/9f25dc055bb811103c2b38d25dd7361991116710))
+
+
+
+
+
 # [5.6.0](https://github.com/christophehurpeau/pob/compare/pob@5.5.1...pob@5.6.0) (2020-02-07)
 
 

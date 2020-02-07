@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@1.2.2...@pob/root@1.3.0) (2020-02-07)
+
+
+### Features
+
+* @pob/commitlint-config ([9f25dc0](https://github.com/christophehurpeau/pob/commit/9f25dc055bb811103c2b38d25dd7361991116710))
+
+
+
+
+
 ## [1.2.2](https://github.com/christophehurpeau/pob/compare/@pob/root@1.2.1...@pob/root@1.2.2) (2020-02-07)
 
 **Note:** Version bump only for package @pob/root

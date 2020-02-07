@@ -4,6 +4,7 @@ interface Dependencies {
   '@babel/preset-env': '7.8.4';
   '@babel/preset-react': '7.8.3';
   '@babel/runtime': '7.8.4';
+  '@pob/commitlint-config': '1.0.0-pre';
   '@pob/eslint-config': '35.0.0';
   '@pob/eslint-config-babel': '35.0.0';
   '@pob/eslint-config-babel-node': '35.0.0';
