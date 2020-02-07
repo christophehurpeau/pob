@@ -2,6 +2,7 @@
 
 const Generator = require('yeoman-generator');
 const camelCase = require('lodash.camelcase');
+const prettier = require('prettier');
 const packageUtils = require('../../../utils/package');
 const inLerna = require('../../../utils/inLerna');
 
@@ -109,6 +110,14 @@ module.exports = class ReadmeGenerator extends Generator {
         travisci: false,
         content,
       });
+      this.fs.write(
+        readmePath,
+        prettier.format(this.fs.read(readmePath), {
+          filepath: 'README.md',
+          singleQuote: true,
+          arrowParens: 'always',
+        })
+      );
     } catch (err) {
       console.log(err.stack || err.message || err);
       throw err;

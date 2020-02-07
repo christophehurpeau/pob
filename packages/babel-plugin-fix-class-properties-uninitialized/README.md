@@ -33,10 +33,9 @@ npm install --save babel-plugin-fix-class-properties-uninitialiazed
 
 Fixes when you have unitialized properties, for example with `@babel/preset-typescript`:
 
-
 ```typescript
 class Foo extends Bar {
-  prop!: string;  
+  prop!: string;
 }
 ```
 
@@ -45,7 +44,7 @@ class Foo extends Bar {
   constructor() {
     super();
     this.prop = void 0;
-  }  
+  }
 }
 ```
 

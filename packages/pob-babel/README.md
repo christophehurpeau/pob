@@ -32,7 +32,7 @@ Create .pob.json
 ```json
 {
   "react": false,
-  "envs": ["node6", "webpack", "webpack-modern-browsers"],
+  "envs": ["node6", "webpack", "webpack-modern-browsers"]
 }
 ```
 
@@ -51,9 +51,9 @@ Edit your package.json:
 
 ```json
 {
-    "scripts": {
-        "build": "pob-build",
-        "watch": "pob-watch"
-    }
+  "scripts": {
+    "build": "pob-build",
+    "watch": "pob-watch"
+  }
 }
 ```

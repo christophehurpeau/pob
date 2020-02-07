@@ -31,9 +31,8 @@ Edit your package.json:
 
 ```json
 {
-    "scripts": {
-        "preversion": "repository-check-dirty",
-    }
+  "scripts": {
+    "preversion": "repository-check-dirty"
+  }
 }
-
 ```

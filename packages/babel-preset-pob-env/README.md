@@ -24,7 +24,6 @@
 
 ## Content
 
-
 - [babel-preset-optimizations](https://www.npmjs.com/package/babel-preset-optimizations)
 - [babel-plugin-discard-module-references](https://www.npmjs.com/package/babel-plugin-discard-module-references)
 - [babel-plugin-import-export-rename](https://www.npmjs.com/package/babel-plugin-import-export-rename)
@@ -67,7 +66,9 @@ yarn add --dev babel-preset-pob-env
 
 ```json
 {
-  "presets": [["pob-env", { "production": true, "replacements": { "BROWSER": false } }]]
+  "presets": [
+    ["pob-env", { "production": true, "replacements": { "BROWSER": false } }]
+  ]
 }
 ```
 
@@ -80,13 +81,18 @@ babel script.js --presets pob
 ### Via Node API
 
 ```javascript
-require("babel-core").transform("code", {
+require('babel-core').transform('code', {
   presets: [require('babel-preset-pob-env')]
 });
 ```
 
 ```javascript
-require("babel-core").transform("code", {
-  presets: [[require('babel-preset-pob-env'), { production: process.env.NODE_ENV === 'production' }]]
+require('babel-core').transform('code', {
+  presets: [
+    [
+      require('babel-preset-pob-env'),
+      { production: process.env.NODE_ENV === 'production' }
+    ]
+  ]
 });
 ```

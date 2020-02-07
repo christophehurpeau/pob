@@ -9,5 +9,10 @@
       "documentation": false,
       "testing": false
     }
+  },
+  "@pob/commitlint-config": {
+    "type": {
+      "type": "lib"
+    }
   }
 }

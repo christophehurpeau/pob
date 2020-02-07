@@ -31,14 +31,13 @@ Edit your package.json:
 
 ```json
 {
-    "scripts": {
-        "lint": "eslint ...",
-        "preversion": "npm run lint",
-        "version": "pob-version",
-        "release": "repository-check-dirty && pob-release"
-    }
+  "scripts": {
+    "lint": "eslint ...",
+    "preversion": "npm run lint",
+    "version": "pob-version",
+    "release": "repository-check-dirty && pob-release"
+  }
 }
-
 ```
 
 ### What it does
@@ -47,7 +46,6 @@ Edit your package.json:
 1. (Optional with pob-version) Create/Update AUTHORS
 1. (Optional with pob-version) Create/Update CHANGELOG.md (and let you edit with your `$EDITOR`)
 1. Call `git push` and `git push [tag]`
-
 
 ### Options
 

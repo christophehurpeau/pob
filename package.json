@@ -11,17 +11,17 @@
     "packages/*",
     "@pob/*"
   ],
+  "scripts": {
+    "lint": "eslint .",
+    "postversion": "yarn && git add yarn.lock",
+    "preversion": "eslint . && repository-check-dirty",
+    "release": "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git",
+    "test": "lerna run --stream test"
+  },
   "prettier": {
     "trailingComma": "es5",
     "singleQuote": true,
     "arrowParens": "always"
-  },
-  "scripts": {
-    "lint": "eslint .",
-    "preversion": "eslint . && repository-check-dirty",
-    "postversion": "yarn && git add yarn.lock",
-    "release": "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git",
-    "test": "lerna run --stream test"
   },
   "commitlint": {
     "extends": [

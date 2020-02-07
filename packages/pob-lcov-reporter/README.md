@@ -31,9 +31,8 @@ Edit your package.json:
 
 ```json
 {
-    "scripts": {
-        "preversion": "pob-repository-dirty",
-    }
+  "scripts": {
+    "preversion": "pob-repository-dirty"
+  }
 }
-
 ```
