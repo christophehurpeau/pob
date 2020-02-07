@@ -2081,10 +2081,10 @@
     "@pob/eslint-config-babel-common" "^35.0.1"
     babel-eslint "^10.0.3"
 
-"@pob/eslint-config-node@35.0.0":
-  version "35.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-node/-/eslint-config-node-35.0.0.tgz#f373f5392e3c718682deced1c273b43b9b11051a"
-  integrity sha512-fTVMGUpCMTlYcxhvLXa8udt1rpNNA7l2z/2/1pv9/SktYpTTim60kxd2D/HhAmjikDvXWyX43OAIr0UMgNAAPw==
+"@pob/eslint-config-node@35.0.1":
+  version "35.0.1"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-node/-/eslint-config-node-35.0.1.tgz#e68609b317dedb437c68bc5ce75868b2b7988836"
+  integrity sha512-MecRCgWsO6pvAlh7vh9I27wv4D3YWiONthUKnrjFCm3MyfgDJFuHteRXn6Q/dcol5nvSio0uqzPWd5/ipqIadw==
   dependencies:
     "@pob/use-eslint-plugin" "^35.0.0"
     eslint-plugin-node "^11.0.0"
