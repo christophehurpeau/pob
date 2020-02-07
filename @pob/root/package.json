@@ -14,7 +14,8 @@
   },
   "bin": {
     "commitlint": "./commitlint.js",
-    "lint-staged": "./lint-staged.js"
+    "lint-staged": "./lint-staged.js",
+    "repository-check-dirty": "./repository-check-dirty.js"
   },
   "dependencies": {
     "@commitlint/cli": "8.3.5",
