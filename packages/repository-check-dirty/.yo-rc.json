@@ -1,0 +1,13 @@
+{
+  "repository-check-dirty": {
+    "type": {
+      "type": "lib"
+    }
+  },
+  "pob": {
+    "pob-config": {
+      "documentation": false,
+      "testing": false
+    }
+  }
+}

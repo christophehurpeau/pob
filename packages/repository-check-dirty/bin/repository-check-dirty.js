@@ -2,8 +2,7 @@
 
 'use strict';
 
-const checkWorkingTree = require("@lerna/check-working-tree");
-
+const checkWorkingTree = require('@lerna/check-working-tree');
 
 (async () => {
   try {
