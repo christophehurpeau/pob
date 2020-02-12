@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.8.2](https://github.com/christophehurpeau/pob/compare/pob@5.8.1...pob@5.8.2) (2020-02-12)
+
+
+### Bug Fixes
+
+* repo name based on pkg name ([b26974c](https://github.com/christophehurpeau/pob/commit/b26974c5ad9262afc5d7d46756ee6749b62490e7))
+
+
+
+
+
 ## [5.8.1](https://github.com/christophehurpeau/pob/compare/pob@5.8.0...pob@5.8.1) (2020-02-07)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@1.1.0...repository-check-dirty@1.2.0) (2020-02-12)
+
+
+### Features
+
+* simplify repository-check-dirty ([8a0bff3](https://github.com/christophehurpeau/pob/commit/8a0bff34e2142a5e38474e21c835df66319bf51a))
+
+
+
+
+
 # [1.1.0](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@1.0.4...repository-check-dirty@1.1.0) (2020-02-07)
 
 

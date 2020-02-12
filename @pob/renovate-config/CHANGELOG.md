@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.8.4](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.8.3...@pob/renovate-config@1.8.4) (2020-02-12)
+
+**Note:** Version bump only for package @pob/renovate-config
+
+
+
+
+
 ## [1.8.3](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.8.2...@pob/renovate-config@1.8.3) (2020-02-07)
 
 **Note:** Version bump only for package @pob/renovate-config

@@ -5,18 +5,18 @@ interface Dependencies {
   '@babel/preset-react': '7.8.3';
   '@babel/runtime': '7.8.4';
   '@pob/commitlint-config': '^1.1.0';
-  '@pob/eslint-config': '35.0.0';
-  '@pob/eslint-config-babel': '35.0.0';
-  '@pob/eslint-config-babel-node': '35.0.0';
-  '@pob/eslint-config-node': '35.0.0';
-  '@pob/eslint-config-react': '35.0.0';
-  '@pob/eslint-config-typescript': '35.0.0';
-  '@pob/eslint-config-typescript-react': '35.0.0';
+  '@pob/eslint-config': '35.0.1';
+  '@pob/eslint-config-babel': '35.0.1';
+  '@pob/eslint-config-babel-node': '35.0.1';
+  '@pob/eslint-config-node': '35.0.1';
+  '@pob/eslint-config-react': '35.0.1';
+  '@pob/eslint-config-typescript': '35.0.1';
+  '@pob/eslint-config-typescript-react': '35.0.1';
   '@pob/pretty-pkg': '^1.1.0';
-  '@pob/root': '^1.3.1';
+  '@pob/root': '^1.3.2';
   '@types/jest': '25.1.2';
-  '@typescript-eslint/eslint-plugin': '2.19.0';
-  '@typescript-eslint/parser': '2.19.0';
+  '@typescript-eslint/eslint-plugin': '2.19.2';
+  '@typescript-eslint/parser': '2.19.2';
   'babel-eslint': '10.0.3';
   'babel-jest': '25.1.0';
   'babel-preset-latest-node': '4.0.1';
@@ -29,7 +29,7 @@ interface Dependencies {
   'eslint-plugin-react': '7.18.3';
   'eslint-plugin-react-hooks': '2.3.0';
   'eslint-plugin-unicorn': '15.0.1';
-  'husky': '4.2.1';
+  'husky': '4.2.2';
   'jest': '25.1.0';
   'jest-junit-reporter': '1.1.0';
   'lerna': '3.20.2';
@@ -38,7 +38,7 @@ interface Dependencies {
   'pob-release': '^5.5.0';
   'prettier': '1.19.1';
   'repository-check-dirty': '^1.1.0';
-  'semver': '7.1.2';
+  'semver': '7.1.3';
   'typedoc': '0.16.9';
   'typescript': '3.7.5';
 }

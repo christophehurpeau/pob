@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.8.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.7.2...pob-dependencies@1.8.0) (2020-02-12)
+
+
+### Features
+
+* **deps:** update dependency @pob/eslint-config to v35.0.1 ([#428](https://github.com/christophehurpeau/pob/issues/428)) ([d5c6d9b](https://github.com/christophehurpeau/pob/commit/d5c6d9b35eceb748cf09f59d42a2f50c1dde9523))
+* **deps:** update dependency @pob/eslint-config-babel to v35.0.1 ([#429](https://github.com/christophehurpeau/pob/issues/429)) ([5f7cf7d](https://github.com/christophehurpeau/pob/commit/5f7cf7d2891bcb437d40e5bf48196fcba158ed71))
+* **deps:** update dependency @pob/eslint-config-babel-node to v35.0.1 ([#430](https://github.com/christophehurpeau/pob/issues/430)) ([4a8683b](https://github.com/christophehurpeau/pob/commit/4a8683b873b64e8fa2cc6374d5affd7402f178a0))
+* **deps:** update dependency @pob/eslint-config-node to v35.0.1 ([#431](https://github.com/christophehurpeau/pob/issues/431)) ([4e18ba1](https://github.com/christophehurpeau/pob/commit/4e18ba173d8fc159f840f56e40d12b1da83c41cb))
+* **deps:** update dependency @pob/eslint-config-react to v35.0.1 ([#432](https://github.com/christophehurpeau/pob/issues/432)) ([41cb56f](https://github.com/christophehurpeau/pob/commit/41cb56f0a5a8bd45a9d5d0e1b4a32aa856d9050e))
+* **deps:** update dependency @pob/eslint-config-typescript to v35.0.1 ([#433](https://github.com/christophehurpeau/pob/issues/433)) ([ff52215](https://github.com/christophehurpeau/pob/commit/ff52215ebd314cd36fcceac3d72a6c0a28a38456))
+* **deps:** update dependency @pob/eslint-config-typescript-react to v35.0.1 ([#434](https://github.com/christophehurpeau/pob/issues/434)) ([7924f46](https://github.com/christophehurpeau/pob/commit/7924f4683067a7362485fd270a5d43c2d531607d))
+* **deps:** update dependency husky to v4.2.2 ([#440](https://github.com/christophehurpeau/pob/issues/440)) ([033c2e1](https://github.com/christophehurpeau/pob/commit/033c2e14b66e93e131d19c3dde355972b04d4bfe))
+* **deps:** update dependency semver to v7.1.3 ([#439](https://github.com/christophehurpeau/pob/issues/439)) ([f8517fd](https://github.com/christophehurpeau/pob/commit/f8517fdda6d040394bf2d62d49df7579cc634a0e))
+* **deps:** update typescript-eslint monorepo to v2.19.1 ([#437](https://github.com/christophehurpeau/pob/issues/437)) ([d61ee93](https://github.com/christophehurpeau/pob/commit/d61ee9362a25d1282c370abb5c883d204842f193))
+* **deps:** update typescript-eslint monorepo to v2.19.2 ([#438](https://github.com/christophehurpeau/pob/issues/438)) ([25421d3](https://github.com/christophehurpeau/pob/commit/25421d32066a8567f8f6cdb27ace8976edeb77a7))
+
+
+
+
+
 ## [1.7.2](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.7.1...pob-dependencies@1.7.2) (2020-02-07)
 
 **Note:** Version bump only for package pob-dependencies
