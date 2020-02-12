@@ -1,14 +1,21 @@
 #!/usr/bin/env node
 
+/* eslint-disable no-console */
+
 'use strict';
 
-const checkWorkingTree = require('@lerna/check-working-tree');
+const { execSync } = require('child_process');
 
-(async () => {
-  try {
-    await checkWorkingTree();
-  } catch (err) {
-    console.error(err.message);
+try {
+  const { stdout } = execSync('git status --porcelain');
+  if (stdout) {
+    console.log(
+      'Repository has uncommitted changes, please commit or remove these files:\n'
+    );
+    console.log(stdout);
     process.exit(1);
   }
-})();
+} catch (err) {
+  console.error(err.message);
+  process.exit(1);
+}

@@ -25,8 +25,5 @@
     "singleQuote": true,
     "arrowParens": "always"
   },
-  "pob": {},
-  "dependencies": {
-    "@lerna/check-working-tree": "3.16.5"
-  }
+  "pob": {}
 }
