@@ -1,7 +1,6 @@
 {
   "name": "pob-monorepo",
   "private": true,
-  "version": "0.0.0",
   "description": "library generator/tools/scripts",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
@@ -13,7 +12,6 @@
   ],
   "scripts": {
     "lint": "eslint .",
-    "postversion": "yarn && git add yarn.lock",
     "preversion": "eslint . && repository-check-dirty",
     "release": "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git",
     "test": "lerna run --stream test"
