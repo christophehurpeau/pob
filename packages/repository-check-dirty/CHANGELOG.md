@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.2.1](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@1.2.0...repository-check-dirty@1.2.1) (2020-02-13)
+
+
+### Bug Fixes
+
+* **repository-check-diryt:** execSync ([6712caf](https://github.com/christophehurpeau/pob/commit/6712caf474d967fe60b4f20a015daad5a710e622))
+
+
+
+
+
 # [1.2.0](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@1.1.0...repository-check-dirty@1.2.0) (2020-02-12)
 
 

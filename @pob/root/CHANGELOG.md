@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.4](https://github.com/christophehurpeau/pob/compare/@pob/root@1.3.3...@pob/root@1.3.4) (2020-02-13)
+
+
+### Bug Fixes
+
+* husky ([c6f586b](https://github.com/christophehurpeau/pob/commit/c6f586bf8eb53bb399c48854b95c5974826c1648))
+
+
+
+
+
 ## [1.3.3](https://github.com/christophehurpeau/pob/compare/@pob/root@1.3.2...@pob/root@1.3.3) (2020-02-12)
 
 **Note:** Version bump only for package @pob/root

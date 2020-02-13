@@ -1,6 +1,6 @@
 {
   "name": "pob-release",
-  "version": "5.5.1",
+  "version": "5.5.2",
   "description": "release with ease",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
@@ -35,7 +35,7 @@
     "conventional-recommended-bump": "^6.0.5",
     "inquirer": "^7.0.4",
     "minimist-argv": "^1.1.0",
-    "repository-check-dirty": "^1.2.0",
+    "repository-check-dirty": "^1.2.1",
     "semver": "^7.1.2",
     "standard-changelog": "2.0.21"
   }

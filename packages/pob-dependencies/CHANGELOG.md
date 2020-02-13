@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.8.0...pob-dependencies@1.9.0) (2020-02-13)
+
+
+### Features
+
+* **deps:** update dependency husky to v4.2.3 ([#441](https://github.com/christophehurpeau/pob/issues/441)) ([3c8e88e](https://github.com/christophehurpeau/pob/commit/3c8e88e608a5c01b27ed6825f733e361e4783efa))
+
+
+
+
+
 # [1.8.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.7.2...pob-dependencies@1.8.0) (2020-02-12)
 
 

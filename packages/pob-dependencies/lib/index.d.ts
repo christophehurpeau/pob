@@ -13,7 +13,7 @@ interface Dependencies {
   '@pob/eslint-config-typescript': '35.0.1';
   '@pob/eslint-config-typescript-react': '35.0.1';
   '@pob/pretty-pkg': '^1.1.0';
-  '@pob/root': '^1.3.2';
+  '@pob/root': '^1.3.3';
   '@types/jest': '25.1.2';
   '@typescript-eslint/eslint-plugin': '2.19.2';
   '@typescript-eslint/parser': '2.19.2';
@@ -29,15 +29,15 @@ interface Dependencies {
   'eslint-plugin-react': '7.18.3';
   'eslint-plugin-react-hooks': '2.3.0';
   'eslint-plugin-unicorn': '15.0.1';
-  'husky': '4.2.2';
+  'husky': '4.2.3';
   'jest': '25.1.0';
   'jest-junit-reporter': '1.1.0';
   'lerna': '3.20.2';
   'pob-babel': '^24.6.0';
   'pob-lcov-reporter': '^2.2.0';
-  'pob-release': '^5.5.0';
+  'pob-release': '^5.5.1';
   'prettier': '1.19.1';
-  'repository-check-dirty': '^1.1.0';
+  'repository-check-dirty': '^1.2.0';
   'semver': '7.1.3';
   'typedoc': '0.16.9';
   'typescript': '3.7.5';
