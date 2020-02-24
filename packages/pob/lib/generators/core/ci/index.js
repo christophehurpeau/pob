@@ -81,6 +81,7 @@ module.exports = class CiGenerator extends Generator {
           {
             isYarn2,
             testing: this.options.testing && !!pkg.scripts.test,
+            checks: !!pkg.scripts.checks,
             documentation: this.options.documentation,
             codecov: this.options.codecov,
           }
