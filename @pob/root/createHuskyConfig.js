@@ -21,6 +21,7 @@ const yarnMajorVersion = semver.major(pm.version);
 const pkg = require(path.resolve('package.json'));
 
 const shouldRunTest = () => pkg.scripts && pkg.scripts.test;
+const shouldRunChecks = () => pkg.scripts && pkg.scripts.checks;
 
 module.exports = () => {
   // Note that since version 4 husky greps the config file
@@ -42,6 +43,16 @@ module.exports = () => {
     hooks['pre-push'] = `${
       yarnMajorVersion < 2 ? 'cross-env ' : ''
     }CI=true yarn test`;
+  }
+
+  if (shouldRunChecks()) {
+    if (hooks['pre-push']) {
+      hooks['pre-push'] += ' && ';
+    } else {
+      hooks['pre-push'] = '';
+    }
+
+    hooks['pre-push'] += 'yarn checks';
   }
 
   return {
