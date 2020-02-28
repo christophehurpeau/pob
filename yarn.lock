@@ -2168,7 +2168,7 @@
     "@pob/use-eslint-plugin" "^35.0.0"
     eslint-plugin-node "^11.0.0"
 
-"@pob/eslint-config-react@35.0.1", "@pob/eslint-config-react@^35.0.1":
+"@pob/eslint-config-react@35.0.1":
   version "35.0.1"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config-react/-/eslint-config-react-35.0.1.tgz#9c38e290a7b0863040002f574172555170f956b3"
   integrity sha512-FtO7rAec4kTwiW3x7aMOMgoJ65OaWEJ58DWAoH3V/C34+YPXMb3suGTCRsPXCqTmoTVwKKSQ8btqrTtF7JimdA==
@@ -2180,12 +2180,24 @@
     eslint-plugin-react "^7.17.0"
     eslint-plugin-react-hooks "^2.3.0"
 
-"@pob/eslint-config-typescript-react@35.0.1":
-  version "35.0.1"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript-react/-/eslint-config-typescript-react-35.0.1.tgz#e39f6bc974a34dd7ee5ddf464b06c6f8e856f7cd"
-  integrity sha512-gFKynWlxXzHY4mD2KTfO/5ojkEzAEBmjfLCe9OYJGDRZQVkZcufQP1v6Psnvvgjg+e8utJVflej36NpHaO3j+g==
+"@pob/eslint-config-react@^36.0.0":
+  version "36.0.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-react/-/eslint-config-react-36.0.0.tgz#22411fcae57d3d38b89976f308ca5e9523e32431"
+  integrity sha512-xSdl23b9y3jvYXZmvtv3bBCfX+k6VxViXN/JJaP6Hp6mqOwYgmq6e0btzoj1Jml4zET9iupBTUd8nMxjTM9BvA==
   dependencies:
-    "@pob/eslint-config-react" "^35.0.1"
+    "@pob/eslint-config" "^36.0.0"
+    eslint-config-airbnb "^18.0.1"
+    eslint-config-prettier "^6.7.0"
+    eslint-plugin-jsx-a11y "^6.2.3"
+    eslint-plugin-react "^7.17.0"
+    eslint-plugin-react-hooks "^2.3.0"
+
+"@pob/eslint-config-typescript-react@36.0.0":
+  version "36.0.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript-react/-/eslint-config-typescript-react-36.0.0.tgz#0cd4348625f6f01d8075620c09e4c17b751a68c7"
+  integrity sha512-oP7dvjYtanHgl//2ZhQa4RPMfD+T2J+DcG4v9eFWlJ/o5OqtX+WkZSnVOaexQQYuIjrXASC6KQSSMAUH9n5PWA==
+  dependencies:
+    "@pob/eslint-config-react" "^36.0.0"
 
 "@pob/eslint-config-typescript@35.0.1":
   version "35.0.1"
