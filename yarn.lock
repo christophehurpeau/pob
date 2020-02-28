@@ -2160,12 +2160,12 @@
     "@pob/eslint-config-babel-common" "^36.0.0"
     babel-eslint "^10.0.3"
 
-"@pob/eslint-config-node@35.0.1":
-  version "35.0.1"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-node/-/eslint-config-node-35.0.1.tgz#e68609b317dedb437c68bc5ce75868b2b7988836"
-  integrity sha512-MecRCgWsO6pvAlh7vh9I27wv4D3YWiONthUKnrjFCm3MyfgDJFuHteRXn6Q/dcol5nvSio0uqzPWd5/ipqIadw==
+"@pob/eslint-config-node@36.0.0":
+  version "36.0.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-node/-/eslint-config-node-36.0.0.tgz#b80017fddb4cf625ca0ec6589ae3f3239034aebd"
+  integrity sha512-kcsVb1SVbBI3oQFUsJ9PNkp3xErRMnSy2XNm334XboN+YiEstj00CMus7ktaBpxkRp4eqlMuMdCBM8sXMBMYEg==
   dependencies:
-    "@pob/use-eslint-plugin" "^35.0.0"
+    "@pob/use-eslint-plugin" "^36.0.0"
     eslint-plugin-node "^11.0.0"
 
 "@pob/eslint-config-react@35.0.1", "@pob/eslint-config-react@^35.0.1":
