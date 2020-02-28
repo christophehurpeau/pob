@@ -2134,6 +2134,16 @@
     eslint-config-airbnb-base "^14.0.0"
     eslint-plugin-prefer-class-properties "^1.0.0"
 
+"@pob/eslint-config-babel-common@^36.0.0":
+  version "36.0.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel-common/-/eslint-config-babel-common-36.0.0.tgz#ecf25c6570f3c971c58e523bf432f71f76190116"
+  integrity sha512-gbGjrq6nIdwx9Q9/4oKkit7R5sLpeq8RM8+lFqa7ea9vRlJgC8/8K3F1ZumBL1pUnP5O/f+9OgPSDUG5jNGdFg==
+  dependencies:
+    "@pob/eslint-config" "^36.0.0"
+    "@pob/use-eslint-plugin" "^36.0.0"
+    eslint-config-airbnb-base "^14.0.0"
+    eslint-plugin-prefer-class-properties "^1.0.0"
+
 "@pob/eslint-config-babel-node@35.0.1":
   version "35.0.1"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel-node/-/eslint-config-babel-node-35.0.1.tgz#11c2aea0b8aa6785594ac29cbe878ae492156c21"
@@ -2142,12 +2152,12 @@
     "@pob/use-eslint-plugin" "^35.0.0"
     eslint-plugin-node "^11.0.0"
 
-"@pob/eslint-config-babel@35.0.1":
-  version "35.0.1"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel/-/eslint-config-babel-35.0.1.tgz#bade2c4461548ac3e8dd83050d591588b3ad2316"
-  integrity sha512-/AUiIEvO+LXXyrAZwFaySCTYoVv1kBeikL0qvrJvN3SEVDpsdi37UQOle5lfwE5/YKj8V8bs5N0eRGJcNx2Vxg==
+"@pob/eslint-config-babel@36.0.0":
+  version "36.0.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel/-/eslint-config-babel-36.0.0.tgz#1d5615e89f932584ac81fdf0f29cb8cc825b1924"
+  integrity sha512-9JkjAqEESoRwcSQMr5ew4jAavKr+KV3IjM/lgSBIF0uPPKwWgR8049Oy4teT5q6743Oz3CrYr1Kev2i3dIsgdQ==
   dependencies:
-    "@pob/eslint-config-babel-common" "^35.0.1"
+    "@pob/eslint-config-babel-common" "^36.0.0"
     babel-eslint "^10.0.3"
 
 "@pob/eslint-config-node@35.0.1":
@@ -2200,10 +2210,27 @@
     eslint-plugin-prettier "^3.1.2"
     eslint-plugin-unicorn "^15.0.1"
 
+"@pob/eslint-config@^36.0.0":
+  version "36.0.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-36.0.0.tgz#5beecc2cb074f41e10c20ee37be79f46a9f38900"
+  integrity sha512-9B9O/rZfzTn9xR4/2PkYSZYSJluNl8MJ1YqSsRB/kfH6j3zcaOQ2i//TGGDgtIIq5CyA5caku+UUjmrrXBU+Yg==
+  dependencies:
+    "@pob/use-eslint-plugin" "^36.0.0"
+    eslint-config-airbnb-base "^14.0.0"
+    eslint-config-prettier "^6.7.0"
+    eslint-plugin-prefer-class-properties "^1.0.0"
+    eslint-plugin-prettier "^3.1.2"
+    eslint-plugin-unicorn "^16.0.0"
+
 "@pob/use-eslint-plugin@^35.0.0":
   version "35.0.0"
   resolved "https://registry.yarnpkg.com/@pob/use-eslint-plugin/-/use-eslint-plugin-35.0.0.tgz#f0ab91696f2b1649743360e9a54be77da0fc5481"
   integrity sha512-fZ0pBHc1981qhXAaWKj7jxuPaIlWqK3FguVpqvoqIBGyQthfwK82U/+wlTaWfV/7oSr2g0uGeqvtC5KqGOhyaw==
+
+"@pob/use-eslint-plugin@^36.0.0":
+  version "36.0.0"
+  resolved "https://registry.yarnpkg.com/@pob/use-eslint-plugin/-/use-eslint-plugin-36.0.0.tgz#8931fc31554f512a25d747ee715895b2365557de"
+  integrity sha512-PH7EpcgyiIvrh0E/ONmhp+o0cL1zd4QXgko17ECtgjI0PW2mFB3zXra0SaMmIPiSKCAC1yEqt/qN4ysGU0DCJQ==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
@@ -4677,6 +4704,28 @@ eslint-plugin-unicorn@15.0.1, eslint-plugin-unicorn@^15.0.1:
     reserved-words "^0.1.2"
     safe-regex "^2.1.1"
     semver "^6.3.0"
+
+eslint-plugin-unicorn@^16.0.0:
+  version "16.1.1"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-unicorn/-/eslint-plugin-unicorn-16.1.1.tgz#012c598d71914ef30f5d386dd85110e59f2ef999"
+  integrity sha512-IMxCsntb0T8s660Irc40gtzXtxuXHcOn36G9G8OYKfiseBD/kNrA1cNJhsJ0xQteDASGrFwqdzBsYEkUvczhOA==
+  dependencies:
+    ci-info "^2.0.0"
+    clean-regexp "^1.0.0"
+    eslint-ast-utils "^1.1.0"
+    eslint-template-visitor "^1.1.0"
+    import-modules "^2.0.0"
+    lodash.camelcase "^4.3.0"
+    lodash.defaultsdeep "^4.6.1"
+    lodash.kebabcase "^4.1.1"
+    lodash.snakecase "^4.1.1"
+    lodash.upperfirst "^4.3.1"
+    read-pkg-up "^7.0.1"
+    regexp-tree "^0.1.17"
+    regexpp "^3.0.0"
+    reserved-words "^0.1.2"
+    safe-regex "^2.1.1"
+    semver "^7.1.2"
 
 eslint-scope@^5.0.0:
   version "5.0.0"
