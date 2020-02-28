@@ -79,7 +79,7 @@ module.exports = class LintGenerator extends Generator {
       'eslint-config-prettier',
       'eslint-plugin-babel',
       'eslint-plugin-flowtype',
-      'eslint-plugin-import',
+      // 'eslint-plugin-import',
       'eslint-plugin-jsx-a11y',
       'eslint-plugin-node',
       'eslint-plugin-prettier',
@@ -115,6 +115,7 @@ module.exports = class LintGenerator extends Generator {
           'eslint-plugin-node',
           'eslint-plugin-prettier',
           'eslint-plugin-unicorn',
+          'eslint-plugin-import',
         ],
         true
       );
@@ -125,12 +126,16 @@ module.exports = class LintGenerator extends Generator {
         !pkg.name.startsWith('@pob/eslint-config') &&
         pkg.name !== '@pob/use-eslint-plugin'
       ) {
-        packageUtils.addOrRemoveDevDependencies(pkg, !useBabel || hasScripts, [
+        packageUtils.addDevDependencies(pkg, [
           '@pob/eslint-config',
-          '@pob/eslint-config-node',
-          'eslint-plugin-node',
+          'eslint-plugin-import',
           'eslint-plugin-prettier',
           'eslint-plugin-unicorn',
+        ]);
+
+        packageUtils.addOrRemoveDevDependencies(pkg, !useBabel || hasScripts, [
+          '@pob/eslint-config-node',
+          'eslint-plugin-node',
         ]);
 
         packageUtils.addOrRemoveDevDependencies(pkg, useBabel && !typescript, [
