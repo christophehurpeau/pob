@@ -2124,16 +2124,6 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@pob/eslint-config-babel-common@^35.0.1":
-  version "35.0.1"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel-common/-/eslint-config-babel-common-35.0.1.tgz#b9cea2bc97112c23d6acbc4850ab6754036e2bbf"
-  integrity sha512-oZ3kBu1Uf8Ya9X7AzqwJCBl5ei8qVACdChEbZ0/yjnoMGmDhy7iMJuIfiJHWciV5jaRJUPMwVY0BhxOOx4xrwQ==
-  dependencies:
-    "@pob/eslint-config" "^35.0.1"
-    "@pob/use-eslint-plugin" "^35.0.0"
-    eslint-config-airbnb-base "^14.0.0"
-    eslint-plugin-prefer-class-properties "^1.0.0"
-
 "@pob/eslint-config-babel-common@^36.0.0":
   version "36.0.0"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel-common/-/eslint-config-babel-common-36.0.0.tgz#ecf25c6570f3c971c58e523bf432f71f76190116"
@@ -2187,13 +2177,13 @@
   dependencies:
     "@pob/eslint-config-react" "^35.0.1"
 
-"@pob/eslint-config-typescript@35.0.1":
-  version "35.0.1"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript/-/eslint-config-typescript-35.0.1.tgz#cef506eaa37bce41b4e07e44a75a83eb3c297679"
-  integrity sha512-z67M5cvw3xr4WkKiu/KqF24ZVemiP4piTT3sPbMdYg4NPgSMVAjvNOoiEao50IYRIM23CvLdDq+oplzXEYVXVA==
+"@pob/eslint-config-typescript@36.0.0":
+  version "36.0.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript/-/eslint-config-typescript-36.0.0.tgz#fa81c44be76755fba6902a51c2067bc3700c3b33"
+  integrity sha512-XhIL0r3thU/7E3VSgMfSQN0GmRN0FhPZ5ikZlFqdl3pMuLD4AopW1cSbeg4PWM8nMn3qdrkyy/rfKQU+U9FStg==
   dependencies:
-    "@pob/eslint-config-babel-common" "^35.0.1"
-    "@pob/use-eslint-plugin" "^35.0.0"
+    "@pob/eslint-config-babel-common" "^36.0.0"
+    "@pob/use-eslint-plugin" "^36.0.0"
     "@typescript-eslint/eslint-plugin" "^2.10.0"
     "@typescript-eslint/parser" "^2.10.0"
     eslint-config-prettier "^6.7.0"
