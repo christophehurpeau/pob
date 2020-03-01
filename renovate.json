@@ -29,6 +29,12 @@
       ]
     },
     {
+      "description": "@pob eslint configs",
+      "packagePatterns": [
+        "^@pob/eslint-config"
+      ]
+    },
+    {
       "updateTypes": [
         "patch",
         "minor"
