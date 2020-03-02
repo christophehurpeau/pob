@@ -40,7 +40,7 @@
     "@pob/sort-pkg": "^1.1.0",
     "findup-sync": "^4.0.0",
     "generator-license": "^5.2.0",
-    "gh-got": "^8.1.0",
+    "gh-got": "^9.0.0",
     "git-remote-url": "^1.0.1",
     "github-username": "^5.0.1",
     "got": "^10.3.0",
