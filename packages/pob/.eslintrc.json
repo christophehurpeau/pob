@@ -1,13 +1,11 @@
 {
   "root": true,
-  "extends": [
-    "@pob/eslint-config",
-    "@pob/eslint-config-node"
-  ],
+  "extends": ["@pob/eslint-config", "@pob/eslint-config-node"],
   "rules": {
     "max-lines": "off",
     "no-multi-assign": "off",
     "no-nested-ternary": "off",
-    "unicorn/no-process-exit": "off"
+    "unicorn/no-process-exit": "off",
+    "no-console": "off"
   }
 }

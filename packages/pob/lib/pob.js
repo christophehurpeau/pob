@@ -10,6 +10,22 @@ const yeoman = require('yeoman-environment');
 const argv = require('minimist-argv');
 const pkg = require('../package.json');
 
+const printUsage = () => {
+  console.error('Usage: pob [lerna] [lib|app]');
+  console.error('       pob [lerna] update [--force]');
+  console.error('       pob lerna convert-npm');
+  console.error('       pob add <packageName>');
+};
+
+const printVersion = () => {
+  console.log(pkg.version);
+};
+
+if (argv.version) {
+  printVersion();
+  process.exit(0);
+}
+
 updateNotifier({ pkg }).notify();
 
 const env = yeoman.createEnv();
@@ -24,13 +40,6 @@ process.on('uncaughtException', (err) => {
 });
 
 env.registerStub(require('./generators/pob'), 'pob:generator');
-
-const printUsage = () => {
-  console.error('Usage: pob [lerna] [lib|app]');
-  console.error('       pob [lerna] update [--force]');
-  console.error('       pob lerna convert-npm');
-  console.error('       pob add <packageName>');
-};
 
 let lerna = argv._[0] === 'lerna';
 const action = lerna ? argv._[1] : argv._[0];
