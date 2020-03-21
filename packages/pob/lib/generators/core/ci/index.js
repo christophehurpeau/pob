@@ -66,7 +66,8 @@ module.exports = class CiGenerator extends Generator {
             this.templatePath('circleci2.yml.ejs'),
             this.destinationPath('.circleci/config.yml'),
             {
-              testing: this.options.testing && !!pkg.scripts.test,
+              testing:
+                this.options.testing && !!pkg.scripts && !!pkg.scripts.test,
               documentation: this.options.documentation,
               codecov: this.options.codecov,
               node12: true,
@@ -81,7 +82,7 @@ module.exports = class CiGenerator extends Generator {
           {
             isYarn2,
             testing: this.options.testing && !!pkg.scripts.test,
-            checks: !!pkg.scripts.checks,
+            checks: !!pkg.scripts && !!pkg.scripts.checks,
             documentation: this.options.documentation,
             codecov: this.options.codecov,
           }
