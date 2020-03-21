@@ -76,13 +76,13 @@ module.exports = class PobBaseGenerator extends Generator {
   async prompting() {
     if (this.options.lerna) return;
 
-    const config = this.config.get('type');
+    const config = this.config.get('project') || this.config.get('type');
     if (config) {
-      this.typeConfig = config;
+      this.projectConfig = config;
       return;
     }
 
-    this.typeConfig = await this.prompt([
+    this.projectConfig = await this.prompt([
       {
         type: 'list',
         name: 'type',
@@ -92,7 +92,8 @@ module.exports = class PobBaseGenerator extends Generator {
       },
     ]);
 
-    this.config.set('type', this.typeConfig);
+    this.config.delete('project', this.projectConfig);
+    this.config.set('project', this.projectConfig);
   }
 
   default() {
@@ -121,7 +122,7 @@ module.exports = class PobBaseGenerator extends Generator {
 
     this.composeWith(require.resolve('../core/renovate'), {
       updateOnly: this.options.updateOnly,
-      app: !this.options.lerna && this.typeConfig.type === 'app',
+      app: !this.options.lerna && this.projectConfig.type === 'app',
     });
 
     if (!this.inLerna) {
@@ -149,7 +150,7 @@ module.exports = class PobBaseGenerator extends Generator {
         updateOnly: this.options.updateOnly,
       });
     } else {
-      switch (this.typeConfig.type) {
+      switch (this.projectConfig.type) {
         case 'lib':
           this.composeWith(require.resolve('../lib/'), {
             updateOnly: this.options.updateOnly,
