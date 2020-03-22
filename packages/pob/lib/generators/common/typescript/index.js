@@ -69,7 +69,11 @@ module.exports = class TypescriptGenerator extends Generator {
           yoConfig.pob.monorepo.typescript;
 
         if (composite) {
-          packageUtils.removeDevDependencies(pkg, ['typescript']);
+          packageUtils.addOrRemoveDevDependencies(
+            pkg,
+            this.fs.exists(`${inLerna.rootPath}/.yarnrc.yml`),
+            ['typescript']
+          );
 
           monorepoPackageNames = yoConfig.pob.monorepo.packageNames.filter(
             (packageName) =>
