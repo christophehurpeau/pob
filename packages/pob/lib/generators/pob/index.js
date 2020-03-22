@@ -177,7 +177,7 @@ module.exports = class PobBaseGenerator extends Generator {
 
   install() {
     if (this.options.fromPob) return;
-    return this.spawnCommandSync('yarn', 'install', '--prefer-offline');
+    return this.spawnCommandSync('yarn', 'install');
   }
 
   end() {
