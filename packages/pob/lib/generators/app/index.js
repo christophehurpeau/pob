@@ -112,6 +112,14 @@ module.exports = class PobAppGenerator extends Generator {
         .filter(Boolean)
         .join('\n'),
     });
+
+    switch (this.appConfig.type) {
+      case 'next.js':
+        this.composeWith(require.resolve('./nextjs'), {
+          export: this.appConfig.export,
+        });
+        break;
+    }
   }
 
   writing() {
