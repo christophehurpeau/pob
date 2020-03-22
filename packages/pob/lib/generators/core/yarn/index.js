@@ -61,6 +61,6 @@ module.exports = class YarnGenerator extends Generator {
   }
 
   end() {
-    this.spawnCommandSync('yarn', ['pnpify ', '--sdk']);
+    this.spawnCommandSync('yarn', ['pnpify', '--sdk']);
   }
 };
