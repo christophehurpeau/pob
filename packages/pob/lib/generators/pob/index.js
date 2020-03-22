@@ -167,6 +167,8 @@ module.exports = class PobBaseGenerator extends Generator {
           throw new Error(`Invalid type: ${this.options.type}`);
       }
     }
+
+    this.composeWith(require.resolve('../core/npm'));
   }
 
   writing() {
