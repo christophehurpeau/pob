@@ -7,7 +7,7 @@ const inNpmLerna = require('../../utils/inNpmLerna');
 
 const gitignorePaths = {
   alp: (config) => ['# alp paths', '/build', '/public', '/data'],
-  'next.js': (config) => ['# next.js paths', config.export && '/.next', '/out'],
+  'next.js': (config) => ['# next.js paths', '/.next', '/out'],
   pobpack: (config) => ['/build', '/public'],
   node: (config) => ['/dist'],
   other: (config) => [],
