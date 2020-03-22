@@ -53,34 +53,25 @@ module.exports = class PobBaseGenerator extends Generator {
     if (this.options.lerna) {
       this.useLerna = true;
       this.inLerna = false;
+      this.isRoot = true;
     } else {
       // only require if not specified in options
       // eslint-disable-next-line global-require
       const inLerna = require('../../utils/inLerna');
       this.useLerna = inLerna && inLerna.root;
       this.inLerna = inLerna && !inLerna.root;
-    }
-
-    this.composeWith(require.resolve('../core/package'), {
-      updateOnly: this.options.updateOnly,
-      private: this.useLerna,
-    });
-
-    if (this.useLerna) {
-      this.composeWith(require.resolve('../monorepo/lerna'), {
-        force: this.options.force,
-      });
+      this.isRoot = !inLerna || this.useLerna;
     }
   }
 
   async prompting() {
-    if (this.options.lerna) return;
-
-    const config = this.config.get('project') || this.config.get('type');
+    let config = this.config.get('project');
     if (config) {
       this.projectConfig = config;
       return;
     }
+
+    config = this.config.get('type');
 
     this.projectConfig = await this.prompt([
       {
@@ -90,13 +81,35 @@ module.exports = class PobBaseGenerator extends Generator {
         default: (config && config.type) || this.options.type || 'lib',
         choices: ['lib', 'app'],
       },
+      {
+        type: 'confirm',
+        name: 'yarn2',
+        message: 'Use yarn 2 ?',
+        when: () => this.isRoot,
+        default:
+          config && config.yarn2 !== undefined
+            ? config.yarn2
+            : this.fs.exists('.yarn'),
+      },
     ]);
 
-    this.config.delete('project', this.projectConfig);
+    this.config.delete('type');
     this.config.set('project', this.projectConfig);
   }
 
   default() {
+    this.composeWith(require.resolve('../core/package'), {
+      updateOnly: this.options.updateOnly,
+      private: this.useLerna,
+    });
+
+    if (this.useLerna) {
+      this.composeWith(require.resolve('../monorepo/lerna'), {
+        force: this.options.force,
+        isAppProject: this.projectConfig.type === 'app',
+      });
+    }
+
     this.fs.delete('Makefile');
     if (
       this.options.license &&
@@ -117,13 +130,20 @@ module.exports = class PobBaseGenerator extends Generator {
     this.composeWith(require.resolve('../core/editorconfig'));
 
     this.composeWith(require.resolve('../core/clean'), {
-      root: !this.useLerna || !this.inLerna,
+      root: this.isRoot,
     });
 
     this.composeWith(require.resolve('../core/renovate'), {
       updateOnly: this.options.updateOnly,
-      app: !this.options.lerna && this.projectConfig.type === 'app',
+      app: this.projectConfig.type === 'app',
     });
+
+    if (this.isRoot) {
+      this.composeWith(require.resolve('../core/yarn'), {
+        type: this.projectConfig.type,
+        yarn2: this.projectConfig.yarn2,
+      });
+    }
 
     if (!this.inLerna) {
       this.composeWith(require.resolve('../core/git'));
@@ -148,6 +168,7 @@ module.exports = class PobBaseGenerator extends Generator {
     if (this.useLerna) {
       this.composeWith(require.resolve('../monorepo'), {
         updateOnly: this.options.updateOnly,
+        isAppProject: this.projectConfig.type === 'app',
       });
     } else {
       switch (this.projectConfig.type) {

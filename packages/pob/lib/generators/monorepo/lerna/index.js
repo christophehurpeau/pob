@@ -6,6 +6,16 @@ const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
 
 module.exports = class LernaGenerator extends Generator {
+  constructor(args, opts) {
+    super(args, opts);
+
+    this.option('isAppProject', {
+      type: Boolean,
+      defaults: true,
+      desc: 'is app project',
+    });
+  }
+
   initializing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     const packagesPaths = pkg.workspaces
@@ -125,9 +135,14 @@ module.exports = class LernaGenerator extends Generator {
         .join(' && '),
       // cannot use this with lerna because it changes packages.json
       // prepublishOnly: 'repository-check-dirty',
-      release: `${
-        isYarn2 ? '' : 'cross-env '
-      }GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git`,
+      release: [
+        `${
+          isYarn2 ? '' : 'cross-env '
+        }GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release'`,
+        !this.options.isAppProject && 'lerna publish from-git',
+      ]
+        .filter(Boolean)
+        .join(' && '),
     });
 
     packageUtils.addOrRemoveScripts(pkg, withTests, {
@@ -210,7 +225,7 @@ module.exports = class LernaGenerator extends Generator {
         }
       );
     });
-    this.spawnCommandSync('yarn', ['install', '--prefer-offline']);
+    this.spawnCommandSync('yarn', ['install']);
     this.spawnCommandSync('yarn', ['run', 'preversion']);
   }
 };

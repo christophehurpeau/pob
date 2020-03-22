@@ -38,6 +38,7 @@
     "@lerna/project": "^3.13.1",
     "@pob/sort-object": "^1.1.0",
     "@pob/sort-pkg": "^1.1.0",
+    "@yarnpkg/parsers": "^2.0.0-rc.10",
     "findup-sync": "^4.0.0",
     "generator-license": "^5.2.0",
     "gh-got": "^8.1.0",

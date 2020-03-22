@@ -14,6 +14,13 @@ module.exports = class PobMonorepoGenerator extends Generator {
       defaults: false,
       desc: 'Avoid asking questions',
     });
+
+    this.option('isAppProject', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+      desc: 'app project, no pusblishing on npm',
+    });
   }
 
   async initializing() {
@@ -85,7 +92,7 @@ module.exports = class PobMonorepoGenerator extends Generator {
         type: 'confirm',
         name: 'documentation',
         message: 'Would you like documentation ?',
-        when: (answers) => answers.ci,
+        when: (answers) => answers.ci && !this.options.isAppProject,
         default: config ? config.documentation : true,
       },
       {
