@@ -33,6 +33,6 @@
     "eslint-plugin-import": "2.20.1",
     "husky": "4.2.3",
     "lerna": "3.20.2",
-    "prettier": "1.19.1"
+    "prettier": "2.0.2"
   }
 }
