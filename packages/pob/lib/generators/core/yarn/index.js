@@ -47,11 +47,13 @@ module.exports = class YarnGenerator extends Generator {
   }
 
   writing() {
-    this.fs.copyTpl(
-      this.templatePath('yarn_gitignore.ejs'),
-      this.destinationPath('.yarn/.gitignore'),
-      {}
-    );
+    if (this.options.yarn2) {
+      this.fs.copyTpl(
+        this.templatePath('yarn_gitignore.ejs'),
+        this.destinationPath('.yarn/.gitignore'),
+        {}
+      );
+    }
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     packageUtils.addOrRemoveDevDependencies(pkg, this.options.yarn2, [
