@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function({ types }, opts) {
+module.exports = function ({ types }, opts) {
   const replacements = opts.replacements;
 
   const nodeReplacements = new Map(

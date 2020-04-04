@@ -16,7 +16,7 @@ const rewriteThisVisitor = {
   },
 };
 
-module.exports = function() {
+module.exports = function () {
   return {
     name: 'babel-plugin-rewrite-this',
     visitor: {
