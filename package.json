@@ -27,8 +27,8 @@
     ]
   },
   "devDependencies": {
-    "@pob/eslint-config": "36.0.0",
-    "@pob/eslint-config-node": "36.0.0",
+    "@pob/eslint-config": "37.0.0",
+    "@pob/eslint-config-node": "37.0.0",
     "eslint": "6.8.0",
     "eslint-plugin-import": "2.20.2",
     "husky": "4.2.3",
