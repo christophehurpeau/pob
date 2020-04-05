@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://github.com/christophehurpeau/pob/compare/babel-plugin-transform-builtins@2.2.0...babel-plugin-transform-builtins@2.2.1) (2020-04-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v2 ([#480](https://github.com/christophehurpeau/pob/issues/480)) ([9a55c81](https://github.com/christophehurpeau/pob/commit/9a55c81a795255674bbe42cfb82845511d724d9e))
+
+
+
+
+
 # [2.2.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-transform-builtins@2.1.0...babel-plugin-transform-builtins@2.2.0) (2020-02-07)
 
 

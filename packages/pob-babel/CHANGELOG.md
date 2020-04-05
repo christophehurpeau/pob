@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.7.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.6.0...pob-babel@24.7.0) (2020-04-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v2 ([#480](https://github.com/christophehurpeau/pob/issues/480)) ([9a55c81](https://github.com/christophehurpeau/pob/commit/9a55c81a795255674bbe42cfb82845511d724d9e))
+
+
+### Features
+
+* **deps:** update dependency @types/jest to v25.1.3 ([#447](https://github.com/christophehurpeau/pob/issues/447)) ([7b236b3](https://github.com/christophehurpeau/pob/commit/7b236b34f71b80baf1e2728b2de31b89a8804b7c))
+* **deps:** update dependency @types/jest to v25.1.4 ([#472](https://github.com/christophehurpeau/pob/issues/472)) ([f482215](https://github.com/christophehurpeau/pob/commit/f4822155de504ec14038158958ecc571c7d98e62))
+* **deps:** update dependency @types/jest to v25.1.5 ([#500](https://github.com/christophehurpeau/pob/issues/500)) ([117b266](https://github.com/christophehurpeau/pob/commit/117b266326de049ef86418674276bca67b9ccd72))
+* **deps:** update dependency @types/jest to v25.2.0 ([#501](https://github.com/christophehurpeau/pob/issues/501)) ([83c355a](https://github.com/christophehurpeau/pob/commit/83c355a6b22a65fd0e5c35a008bce2902e1ad603))
+* **deps:** update dependency jest to v25.2.2 ([#489](https://github.com/christophehurpeau/pob/issues/489)) ([4c4da0e](https://github.com/christophehurpeau/pob/commit/4c4da0e60de248cfba1632493831c234e54c85cc))
+* **deps:** update jest monorepo to v25.2.0 ([#486](https://github.com/christophehurpeau/pob/issues/486)) ([bd26367](https://github.com/christophehurpeau/pob/commit/bd26367848f325f614b9adb44de758604a242c6a))
+* **deps:** update jest monorepo to v25.2.1 ([#487](https://github.com/christophehurpeau/pob/issues/487)) ([193c4da](https://github.com/christophehurpeau/pob/commit/193c4da94f077ee5286a2fced432eacc9d92a6ee))
+* **deps:** update jest monorepo to v25.2.3 ([#491](https://github.com/christophehurpeau/pob/issues/491)) ([7f07351](https://github.com/christophehurpeau/pob/commit/7f07351128866239ba5bc78aa50e97279135f021))
+* **deps:** update jest monorepo to v25.2.4 ([#495](https://github.com/christophehurpeau/pob/issues/495)) ([74c811f](https://github.com/christophehurpeau/pob/commit/74c811f532f52fe2b20deb8f385ff9239775c6d5))
+
+
+
+
+
 # [24.6.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.5.0...pob-babel@24.6.0) (2020-02-07)
 
 

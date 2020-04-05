@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.9.0](https://github.com/christophehurpeau/pob/compare/pob@5.8.3...pob@5.9.0) (2020-04-05)
+
+
+### Bug Fixes
+
+* add @pob/commitlint-config in devdep for yarn2 packages ([52531c5](https://github.com/christophehurpeau/pob/commit/52531c56e1b98821391a950724019c18447193de))
+* create husky template ([fcfd946](https://github.com/christophehurpeau/pob/commit/fcfd946aa818cf0decc3adbbb3a753ea2027d892))
+* **deps:** update dependency gh-got to v9 ([#444](https://github.com/christophehurpeau/pob/issues/444)) ([c5a5a53](https://github.com/christophehurpeau/pob/commit/c5a5a534feba0b07359711a483b50bd8b88827c3))
+* **deps:** update dependency prettier to v2 ([#480](https://github.com/christophehurpeau/pob/issues/480)) ([9a55c81](https://github.com/christophehurpeau/pob/commit/9a55c81a795255674bbe42cfb82845511d724d9e))
+* add typescript as devdep in lerna packages for yarn 2 ([9887f41](https://github.com/christophehurpeau/pob/commit/9887f413f5c183a853425b7f2b72d6ea861f77ac))
+* dont use mem fs to check if yarnrc.yml exists ([56f6dde](https://github.com/christophehurpeau/pob/commit/56f6ddea1600950b5320ca07cb756ccb88ffc8ab))
+* fix command pnpify ([763ee3e](https://github.com/christophehurpeau/pob/commit/763ee3e17886984d0362d92b233660a31c2c8623))
+* github action template newline ([#451](https://github.com/christophehurpeau/pob/issues/451)) ([e01d90c](https://github.com/christophehurpeau/pob/commit/e01d90cc1860757e00b9443fa8d457f76bc41392))
+* only add .yarn/.gitignore for yarn 2 ([c414da4](https://github.com/christophehurpeau/pob/commit/c414da4509c4de9ac2dfa49fcfc67c621c8015f2))
+* pkg.scripts not always defined ([ed43bb2](https://github.com/christophehurpeau/pob/commit/ed43bb20d1e374d4b5679eb3df6ef9fe244e2953))
+* run yarn install when config fails to load ([0f07f31](https://github.com/christophehurpeau/pob/commit/0f07f3155f54b80902d4d172970959ce2e9b8d7a))
+* yarn install to work on both yarn 1 and yarn 2 ([fef2d2a](https://github.com/christophehurpeau/pob/commit/fef2d2a8bbe9557f2708cb9ee6f1867e6ccba7f4))
+
+
+### Features
+
+* add checks scripts support ([#450](https://github.com/christophehurpeau/pob/issues/450)) ([32254e8](https://github.com/christophehurpeau/pob/commit/32254e839a3de96518abcdc635843aa455577e08))
+* add nextjs generator ([241f9fb](https://github.com/christophehurpeau/pob/commit/241f9fbc1cb4a7cc66cd8dc7b652913b30c32ebb))
+* move npmignore to its own generator ([c3bb4cd](https://github.com/christophehurpeau/pob/commit/c3bb4cd457744e15d5c17c17f87ddc9dfe0ecd52))
+* print version ([84b4108](https://github.com/christophehurpeau/pob/commit/84b41082285e0da97bc184835787760e28311ccb))
+* rename confising type to project ([787b7e6](https://github.com/christophehurpeau/pob/commit/787b7e6429e0a2681b585e7b8f0fbc7fbe62d0e7))
+* update actions/checkout to v2 ([81dfba4](https://github.com/christophehurpeau/pob/commit/81dfba469fbe8a8435788d2279baffad99819e36))
+* update next gitignore config ([33c0760](https://github.com/christophehurpeau/pob/commit/33c0760824c586f6ca12fa43b0bc29cdb7c08a15))
+* update node versions in circleci ([cf5d76d](https://github.com/christophehurpeau/pob/commit/cf5d76de5990b82cfff32a7a31e183c260b1453f))
+* update pob eslint config ([#466](https://github.com/christophehurpeau/pob/issues/466)) ([fefb4a7](https://github.com/christophehurpeau/pob/commit/fefb4a71a77029c20bf833a5a23668a3174a7c79))
+* yarn generator for yarn 2 and fixes for yarn 2 ([1ff23bb](https://github.com/christophehurpeau/pob/commit/1ff23bbf03e9d068448ef220992bb6271368797a))
+
+
+
+
+
 ## [5.8.3](https://github.com/christophehurpeau/pob/compare/pob@5.8.2...pob@5.8.3) (2020-02-13)
 
 **Note:** Version bump only for package pob

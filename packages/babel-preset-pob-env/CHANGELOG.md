@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@3.4.0...babel-preset-pob-env@3.5.0) (2020-04-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v2 ([#480](https://github.com/christophehurpeau/pob/issues/480)) ([9a55c81](https://github.com/christophehurpeau/pob/commit/9a55c81a795255674bbe42cfb82845511d724d9e))
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.8.6 ([#454](https://github.com/christophehurpeau/pob/issues/454)) ([9c5aee9](https://github.com/christophehurpeau/pob/commit/9c5aee950ff8e09bf0eb06cc86714a005d51ce65))
+* **deps:** update babel monorepo to v7.8.7 ([#469](https://github.com/christophehurpeau/pob/issues/469)) ([fe35eb0](https://github.com/christophehurpeau/pob/commit/fe35eb065164131f68ecf56859e15a733f9c64e3))
+
+
+
+
+
 # [3.4.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@3.3.0...babel-preset-pob-env@3.4.0) (2020-02-07)
 
 

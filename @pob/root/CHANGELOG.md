@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@1.3.4...@pob/root@1.4.0) (2020-04-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v10.0.10 ([#494](https://github.com/christophehurpeau/pob/issues/494)) ([626f89b](https://github.com/christophehurpeau/pob/commit/626f89b7e3f011a13738324d9e740ae912aaac47))
+* **deps:** update dependency lint-staged to v10.0.8 ([#452](https://github.com/christophehurpeau/pob/issues/452)) ([d3e567c](https://github.com/christophehurpeau/pob/commit/d3e567c3f3beebb2ed7aad48cb6bb42a40ecea09))
+* **deps:** update dependency lint-staged to v10.0.9 ([#484](https://github.com/christophehurpeau/pob/issues/484)) ([ec7a49e](https://github.com/christophehurpeau/pob/commit/ec7a49e9faf2726a955f9c15375cd82a5f071440))
+* **deps:** update dependency lint-staged to v10.1.0 ([#496](https://github.com/christophehurpeau/pob/issues/496)) ([ee25f60](https://github.com/christophehurpeau/pob/commit/ee25f6029476c6904f3def70f54fe91bad198784))
+* **deps:** update dependency lint-staged to v10.1.1 ([#498](https://github.com/christophehurpeau/pob/issues/498)) ([3ab4123](https://github.com/christophehurpeau/pob/commit/3ab412367acf585e94bc0d9f1d752108b1909794))
+* **deps:** update dependency lint-staged to v10.1.2 ([#505](https://github.com/christophehurpeau/pob/issues/505)) ([7a7ca1b](https://github.com/christophehurpeau/pob/commit/7a7ca1b214ae1da8abf8501abf402592a7672691))
+* **deps:** update dependency yarn-deduplicate to v1.2.0 ([#464](https://github.com/christophehurpeau/pob/issues/464)) ([928b522](https://github.com/christophehurpeau/pob/commit/928b522df33d68c8b83aa6559675e1b6f7343a81))
+* **deps:** update dependency yarn-deduplicate to v2 ([#465](https://github.com/christophehurpeau/pob/issues/465)) ([4f63786](https://github.com/christophehurpeau/pob/commit/4f637862ecea5a9414d5e2e0aa1dfe056a08d3e9))
+
+
+### Features
+
+* add checks scripts support ([#450](https://github.com/christophehurpeau/pob/issues/450)) ([32254e8](https://github.com/christophehurpeau/pob/commit/32254e839a3de96518abcdc635843aa455577e08))
+
+
+
+
+
 ## [1.3.4](https://github.com/christophehurpeau/pob/compare/@pob/root@1.3.3...@pob/root@1.3.4) (2020-02-13)
 
 

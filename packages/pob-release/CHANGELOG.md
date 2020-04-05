@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.5.3](https://github.com/christophehurpeau/pob/compare/pob-release@5.5.2...pob-release@5.5.3) (2020-04-05)
+
+
+### Bug Fixes
+
+* try to resolve conventional-changelog-angular ([dd5a9d0](https://github.com/christophehurpeau/pob/commit/dd5a9d0f6dcbe0d6737eedc955fcd284fc029d88))
+
+
+
+
+
 ## [5.5.2](https://github.com/christophehurpeau/pob/compare/pob-release@5.5.1...pob-release@5.5.2) (2020-02-13)
 
 **Note:** Version bump only for package pob-release
