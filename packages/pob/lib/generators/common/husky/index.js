@@ -77,11 +77,7 @@ module.exports = class GitHooksGenerator extends Generator {
       ].filter(Boolean),
     };
 
-    const isYarn2 = this.fs.exists('.yarnrc.yml');
-
-    packageUtils.addOrRemoveDevDependencies(pkg, isYarn2, [
-      '@pob/commitlint-config',
-    ]);
+    packageUtils.addDevDependencies(pkg, ['@pob/commitlint-config']);
 
     delete pkg.scripts.commitmsg;
     delete pkg.scripts.precommit;
