@@ -1,5 +1,0 @@
-#!/usr/bin/env bash
-
-rm -fR ./dist/*
-
-`node -e 'console.log(require.resolve("rollup/dist/bin/rollup"))'` --watch --config `node -e 'console.log(require.resolve("pob-babel/rollup.config.js"))'`

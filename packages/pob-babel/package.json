@@ -17,8 +17,8 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "bin": {
-    "pob-build": "./pob-build",
-    "pob-watch": "./pob-watch"
+    "pob-build": "./bin/pob-build.js",
+    "pob-watch": "./bin/pob-watch.js"
   },
   "scripts": {
     "build:definitions": "tsc --lib esnext --noEmit ./lib/index.d.ts",
@@ -57,6 +57,7 @@
     "babel-preset-latest-node": "^4.1.0",
     "babel-preset-modern-browsers": "^14.2.1",
     "babel-preset-pob-env": "^3.5.0",
+    "minimist-argv": "^1.1.0",
     "rollup": "^1.29.1",
     "rollup-config-external-dependencies": "^1.1.0",
     "rollup-plugin-babel": "5.0.0-alpha.1",
