@@ -1,5 +1,6 @@
 'use strict';
 
+const fs = require('fs');
 const Generator = require('yeoman-generator');
 const yarnParsers = require('@yarnpkg/parsers');
 const packageUtils = require('../../../utils/package');
@@ -25,7 +26,8 @@ module.exports = class YarnGenerator extends Generator {
 
   initializing() {
     if (this.options.yarn2) {
-      if (!this.fs.exists('.yarnrc.yml')) {
+      // dont use this.fs here, as it will cache the result
+      if (!fs.existsSync('.yarnrc.yml')) {
         // yarn 2 not yet installed
         // https://yarnpkg.com/getting-started/install
         this.spawnCommandSync('yarn', ['set', 'version', 'berry']);
