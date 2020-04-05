@@ -116,7 +116,7 @@ module.exports = class PobBaseGenerator extends Generator {
       !this.fs.exists(this.destinationPath('LICENSE'))
     ) {
       const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-      const author = packageUtils.parsePkgAuthor(pkg);
+      const author = packageUtils.parsePkgAuthor(pkg) || {};
       this.composeWith(require.resolve('generator-license/app'), {
         name: author.name,
         email: author.email,
@@ -151,7 +151,7 @@ module.exports = class PobBaseGenerator extends Generator {
       if (this.fs.exists('.git-hooks')) this.fs.delete('.git-hooks');
       if (this.fs.exists('git-hooks')) this.fs.delete('git-hooks');
       if (this.fs.exists('.commitrc.js')) this.fs.delete('.commitrc.js');
-      const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+      const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
       packageUtils.removeDevDependencies(pkg, [
         'pob-release',
         'repository-check-dirty',
