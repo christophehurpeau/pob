@@ -19,8 +19,12 @@ npm install --save @pob/commitlint-config
 
 ## Usage
 
-```js
-import pobCommitlintConfig from '@pob/commitlint-config';
+> package.json
 
-console.log(pobCommitlintConfig);
+```json
+{
+  "commitlint": {
+    "extends": ["@pob/commitlint-config"]
+  }
+}
 ```
