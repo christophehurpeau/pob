@@ -329,6 +329,7 @@ module.exports = class LintGenerator extends Generator {
 
     const lintDirectories = [
       srcDirectory,
+      'bin',
       'scripts',
       'migrations',
     ].filter((dir) => fs.existsSync(this.destinationPath(dir)));
