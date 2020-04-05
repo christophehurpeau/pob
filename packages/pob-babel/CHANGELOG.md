@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.8.1](https://github.com/christophehurpeau/pob/compare/pob-babel@24.8.0...pob-babel@24.8.1) (2020-04-05)
+
+
+### Bug Fixes
+
+* add try/catch on clean command ([c07c8f4](https://github.com/christophehurpeau/pob/commit/c07c8f442eb8e96173d05d5d994f9d5841519e09))
+
+
+
+
+
 # [24.8.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.7.0...pob-babel@24.8.0) (2020-04-05)
 
 
