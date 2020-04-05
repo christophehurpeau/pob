@@ -52,10 +52,10 @@
     "typescript": "^3.1.1"
   },
   "dependencies": {
-    "@babel/preset-flow": "^7.8.3",
+    "@babel/preset-flow": "^7.9.0",
     "babel-plugin-transform-builtins": "^2.2.1",
-    "babel-preset-latest-node": "^4.0.1",
-    "babel-preset-modern-browsers": "^14.1.1",
+    "babel-preset-latest-node": "^4.1.0",
+    "babel-preset-modern-browsers": "^14.2.1",
     "babel-preset-pob-env": "^3.5.0",
     "rollup": "^1.29.1",
     "rollup-config-external-dependencies": "^1.1.0",
