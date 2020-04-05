@@ -79,8 +79,9 @@ module.exports = ({
     return {
       input: entryPath,
       output: env.formats.map((format) => ({
-        file: `dist/${entry}-${env.target}${env.version ||
-          ''}${devSuffix}.${format}.js`,
+        file: `dist/${entry}-${env.target}${
+          env.version || ''
+        }${devSuffix}.${format}.js`,
         format,
         sourcemap: true,
         exports: 'named',

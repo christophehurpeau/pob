@@ -4,7 +4,7 @@
 
 const validTargetOption = [false, 'node', 'browser'];
 
-module.exports = function(context, opts) {
+module.exports = function (context, opts) {
   // `|| {}` to support node 4
   opts = opts || {};
   const targetOption = opts.target !== undefined ? opts.target : 'node';

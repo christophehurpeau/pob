@@ -12,7 +12,7 @@ function supportsStaticESM(caller) {
 const pkg = JSON.parse(fs.readFileSync('package.json', { encoding: 'utf-8' }));
 const HEADER_HELPERS = ['interopRequireWildcard', 'interopRequireDefault'];
 
-module.exports = function(api, options, dirname) {
+module.exports = function (api, options, dirname) {
   api.assertVersion(7);
 
   const {

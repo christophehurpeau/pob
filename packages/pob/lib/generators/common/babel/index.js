@@ -572,8 +572,9 @@ module.exports = class BabelGenerator extends Generator {
           ] = `./dist/${aliasDistName}-${env.target}${env.version || ''}.es.js`;
           pkg[`module:aliases-${key}-dev`][
             `./${aliasName}.js`
-          ] = `./dist/${aliasDistName}-${env.target}${env.version ||
-            ''}-dev.es.js`;
+          ] = `./dist/${aliasDistName}-${env.target}${
+            env.version || ''
+          }-dev.es.js`;
         });
       });
     }
