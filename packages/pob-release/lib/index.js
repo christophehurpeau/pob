@@ -53,7 +53,7 @@ Promise.resolve(argv._[0])
 
     return new Promise((resolve, reject) =>
       conventionalRecommendedBump(
-        { preset: 'angular' },
+        { preset: require.resolve('conventional-changelog-angular') },
         (err, recommendation) => {
           if (err) return reject(err);
           resolve(recommendation.releaseType);

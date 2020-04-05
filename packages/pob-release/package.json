@@ -32,6 +32,7 @@
   },
   "pob": {},
   "dependencies": {
+    "conventional-changelog-angular": "^5.0.6",
     "conventional-recommended-bump": "^6.0.5",
     "inquirer": "^7.0.4",
     "minimist-argv": "^1.1.0",
