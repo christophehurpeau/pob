@@ -3071,7 +3071,20 @@ babel-preset-jest@^25.2.6:
     "@babel/plugin-syntax-object-rest-spread" "^7.0.0"
     babel-plugin-jest-hoist "^25.2.6"
 
-babel-preset-latest-node@4.0.1, babel-preset-latest-node@^4.0.1:
+babel-preset-latest-node@4.1.0:
+  version "4.1.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-latest-node/-/babel-preset-latest-node-4.1.0.tgz#b5696cf19b0106b515890a427274f67ac009e8c8"
+  integrity sha512-LOdNzg2qtx+rHE0++hPjhIEJy8X3jkuhfV0oe8peVeXUjTY4jUEo18263WKNSqyn/Vg6ym9LK0rCywc51e/okQ==
+  dependencies:
+    "@babel/plugin-proposal-nullish-coalescing-operator" "^7.8.3"
+    "@babel/plugin-proposal-optional-catch-binding" "^7.8.3"
+    "@babel/plugin-proposal-optional-chaining" "^7.9.0"
+    "@babel/plugin-proposal-unicode-property-regex" "^7.8.8"
+    "@babel/plugin-syntax-json-strings" "^7.8.3"
+    "@babel/plugin-syntax-optional-catch-binding" "^7.8.3"
+    "@babel/plugin-transform-modules-commonjs" "^7.9.0"
+
+babel-preset-latest-node@^4.0.1:
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/babel-preset-latest-node/-/babel-preset-latest-node-4.0.1.tgz#7352a6506d28b4a9261e4d5c06395d4f7c6ed593"
   integrity sha512-GHzS3al0juBZzq2vSrxK4frntN4dEWUbFfenqwrmlP9dN9tS50xiOWDQTn5i28H5ehNW1EUZKLtH980JJ/jL8Q==
