@@ -12,8 +12,8 @@ const {
   render
 } = require('react-dom');
 
-const Component = () => React.createElement(\\"div\\", null);
+const Component = () => /*#__PURE__*/React.createElement(\\"div\\", null);
 
-render(React.createElement(Component, null), document.getElementById('react-container'));
+render( /*#__PURE__*/React.createElement(Component, null), document.getElementById('react-container'));
 "
 `;
