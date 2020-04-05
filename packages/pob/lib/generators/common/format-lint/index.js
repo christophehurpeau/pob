@@ -136,6 +136,7 @@ module.exports = class LintGenerator extends Generator {
         packageUtils.addOrRemoveDevDependencies(pkg, !useBabel || hasScripts, [
           '@pob/eslint-config-node',
           'eslint-plugin-node',
+          'eslint-import-resolver-node',
         ]);
 
         packageUtils.addOrRemoveDevDependencies(pkg, useBabel && !typescript, [
