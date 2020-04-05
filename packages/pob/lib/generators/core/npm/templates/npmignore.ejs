@@ -21,6 +21,11 @@
 /yarn.lock
 <% if (!inLerna) { -%>
 /renovate.json
+<% if (yarn2) { -%>
+/.yarn
+/.yarnrc.yml
+/.pnp.js
+<% } -%>
 <% } -%>
 
 /.settings
