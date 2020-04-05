@@ -104,10 +104,18 @@ Promise.resolve(argv._[0])
       });
   })
   .then((version) => {
-    /* VERSION */
-    execSync(`npm version "${version}" -m "chore(package): v${version}"`, {
+    /* PREVERSION */
+    execSync('yarn preversion', {
       stdio: 'inherit',
     });
+
+    /* VERSION */
+    execSync(
+      `npm version --ignore-scripts "${version}" -m "chore(package): v${version}"`,
+      {
+        stdio: 'inherit',
+      }
+    );
 
     /* PUSH */
     execSync('git push', { stdio: 'inherit' });
