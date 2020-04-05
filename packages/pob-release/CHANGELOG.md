@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.5.4](https://github.com/christophehurpeau/pob/compare/pob-release@5.5.3...pob-release@5.5.4) (2020-04-05)
+
+
+### Bug Fixes
+
+* run preversion script with yarn ([c716058](https://github.com/christophehurpeau/pob/commit/c7160587b1c2c07b6bfcad41cc60027f4061fe76))
+
+
+
+
+
 ## [5.5.3](https://github.com/christophehurpeau/pob/compare/pob-release@5.5.2...pob-release@5.5.3) (2020-04-05)
 
 
