@@ -3085,10 +3085,10 @@ babel-preset-latest-node@4.0.1, babel-preset-latest-node@^4.0.1:
     "@babel/plugin-syntax-optional-catch-binding" "^7.7.4"
     "@babel/plugin-transform-modules-commonjs" "^7.7.5"
 
-babel-preset-modern-browsers@14.2.0:
-  version "14.2.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-modern-browsers/-/babel-preset-modern-browsers-14.2.0.tgz#f5855e8a46f199bcc62d94422a6852dc50924421"
-  integrity sha512-mCYXUDRaPEDrIOpmOmcLq+qCytqC9HhQNLeITa2aRM4DtfdlVMNQnLFLe18u7E8bu/RI7pa6YnBbSDhv/Emzng==
+babel-preset-modern-browsers@14.2.1:
+  version "14.2.1"
+  resolved "https://registry.yarnpkg.com/babel-preset-modern-browsers/-/babel-preset-modern-browsers-14.2.1.tgz#176319e59f0483743a527c8f106e6d0fde5c89bf"
+  integrity sha512-dlK/7ttZgp4jPi45QuMt4HRqNXX663Fg7us+BcUbgko7911KS7FE3Z5szN8BBPA+BSjbLlFB69bhM7k7nKoPKA==
   dependencies:
     "@babel/plugin-proposal-async-generator-functions" "^7.8.3"
     "@babel/plugin-proposal-json-strings" "^7.8.3"
