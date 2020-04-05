@@ -115,7 +115,7 @@ module.exports = class PobBaseGenerator extends Generator {
       this.options.license &&
       !this.fs.exists(this.destinationPath('LICENSE'))
     ) {
-      const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+      const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
       const author = packageUtils.parsePkgAuthor(pkg);
       this.composeWith(require.resolve('generator-license/app'), {
         name: author.name,
