@@ -8,7 +8,11 @@ const { spawnSync } = require('child_process');
 const argv = require('minimist-argv');
 
 if (argv.clean !== false) {
-  fs.rmdirSync(path.resolve('dist'), { recursive: true });
+  try {
+    fs.rmdirSync(path.resolve('dist'), { recursive: true });
+  } catch (err) {
+    console.error(err);
+  }
 }
 
 const rollupBin = require.resolve('rollup/dist/bin/rollup');
