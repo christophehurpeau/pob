@@ -1,9 +1,9 @@
 
 interface Dependencies {
-  '@babel/core': '7.8.7';
-  '@babel/preset-env': '7.8.7';
-  '@babel/preset-react': '7.8.3';
-  '@babel/runtime': '7.8.7';
+  '@babel/core': '7.9.0';
+  '@babel/preset-env': '7.9.0';
+  '@babel/preset-react': '7.9.4';
+  '@babel/runtime': '7.9.2';
   '@pob/commitlint-config': '^1.1.1';
   '@pob/eslint-config': '37.0.0';
   '@pob/eslint-config-babel': '37.0.0';
@@ -14,15 +14,16 @@ interface Dependencies {
   '@pob/eslint-config-typescript-react': '37.0.0';
   '@pob/pretty-pkg': '^1.1.1';
   '@pob/root': '^1.4.0';
-  '@types/jest': '25.2.0';
+  '@types/jest': '25.2.1';
   '@typescript-eslint/eslint-plugin': '2.26.0';
   '@typescript-eslint/parser': '2.26.0';
   '@yarnpkg/pnpify': '2.0.0-rc.20';
   'babel-eslint': '10.1.0';
-  'babel-jest': '25.2.4';
-  'babel-preset-latest-node': '4.0.1';
-  'babel-preset-modern-browsers': '14.1.1';
+  'babel-jest': '25.2.6';
+  'babel-preset-latest-node': '4.1.0';
+  'babel-preset-modern-browsers': '14.2.1';
   'eslint': '6.8.0';
+  'eslint-import-resolver-node': '0.3.3';
   'eslint-plugin-import': '2.20.2';
   'eslint-plugin-jsx-a11y': '6.2.3';
   'eslint-plugin-node': '11.1.0';
@@ -32,12 +33,12 @@ interface Dependencies {
   'eslint-plugin-react-hooks': '2.5.1';
   'eslint-plugin-unicorn': '18.0.1';
   'husky': '4.2.3';
-  'jest': '25.2.4';
+  'jest': '25.2.7';
   'jest-junit-reporter': '1.1.0';
   'lerna': '3.20.2';
   'pob-babel': '^24.7.0';
   'pob-lcov-reporter': '^2.2.0';
-  'pob-release': '^5.5.3';
+  'pob-release': '^5.5.4';
   'prettier': '2.0.2';
   'repository-check-dirty': '^1.2.1';
   'semver': '7.1.3';

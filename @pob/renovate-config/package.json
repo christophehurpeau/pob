@@ -1,6 +1,6 @@
 {
   "name": "@pob/renovate-config",
-  "version": "1.8.7",
+  "version": "1.8.8",
   "description": "renovate pob config",
   "engines": {
     "node": ">= 8.3.0"
@@ -17,7 +17,7 @@
     "preversion": "node generate-package.json.js && git add package.json"
   },
   "devDependencies": {
-    "pob-dependencies": "^1.10.1",
+    "pob-dependencies": "^1.11.0",
     "prettier": "2.0.2"
   },
   "renovate-config": {
@@ -60,6 +60,7 @@
             "babel-preset-latest-node",
             "babel-preset-modern-browsers",
             "eslint",
+            "eslint-import-resolver-node",
             "eslint-plugin-import",
             "eslint-plugin-jsx-a11y",
             "eslint-plugin-node",

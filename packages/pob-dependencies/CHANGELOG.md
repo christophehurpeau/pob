@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.10.1...pob-dependencies@1.11.0) (2020-04-05)
+
+
+### Bug Fixes
+
+* missing devdep eslint-import-resolver-node for yarn 2 ([0f36bb2](https://github.com/christophehurpeau/pob/commit/0f36bb28643ce87e83128b6dd86537766699c729))
+
+
+### Features
+
+* **deps:** update babel monorepo ([#479](https://github.com/christophehurpeau/pob/issues/479)) ([f7c355e](https://github.com/christophehurpeau/pob/commit/f7c355e8b0ae62786844d3b75fb241f2071717c9))
+* **deps:** update dependency @types/jest to v25.2.1 ([#502](https://github.com/christophehurpeau/pob/issues/502)) ([c2b704c](https://github.com/christophehurpeau/pob/commit/c2b704c4db0ab9d2b8e3c852c477c0f0dea5b8ba))
+* **deps:** update dependency babel-preset-latest-node to v4.1.0 ([#508](https://github.com/christophehurpeau/pob/issues/508)) ([2ecfa99](https://github.com/christophehurpeau/pob/commit/2ecfa992353f3c1a8dc94981b0c5071b74f50a2a))
+* **deps:** update dependency babel-preset-modern-browsers to v14.2.0 ([#506](https://github.com/christophehurpeau/pob/issues/506)) ([1b8f2ed](https://github.com/christophehurpeau/pob/commit/1b8f2ed35a153b2f6432476b77971679f24753d2))
+* **deps:** update dependency babel-preset-modern-browsers to v14.2.1 ([#507](https://github.com/christophehurpeau/pob/issues/507)) ([3b87840](https://github.com/christophehurpeau/pob/commit/3b8784031da4b7f4b49cd5b346bee28ed7c241eb))
+* **deps:** update jest monorepo ([#499](https://github.com/christophehurpeau/pob/issues/499)) ([5cd021f](https://github.com/christophehurpeau/pob/commit/5cd021feee28a47d7c014e8283806f82044ed2ba))
+
+
+
+
+
 ## [1.10.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.10.0...pob-dependencies@1.10.1) (2020-04-05)
 
 **Note:** Version bump only for package pob-dependencies

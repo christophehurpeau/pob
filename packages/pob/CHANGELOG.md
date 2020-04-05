@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.10.0](https://github.com/christophehurpeau/pob/compare/pob@5.9.1...pob@5.10.0) (2020-04-05)
+
+
+### Bug Fixes
+
+* add install-state.gz in yarn 2 gitignore ([fb7fd11](https://github.com/christophehurpeau/pob/commit/fb7fd1179a808733590a496bf61ec41a4393abc6))
+* add yarn2 files in npmignore ([d277ba3](https://github.com/christophehurpeau/pob/commit/d277ba3816194e5c1e0f2edf23b23448e37055c5))
+* author error when package.json does not exists ([8fe4a3c](https://github.com/christophehurpeau/pob/commit/8fe4a3ce8e1ad2317f74d0e6c43ab748be6a6c12))
+* missing devdep eslint-import-resolver-node for yarn 2 ([0f36bb2](https://github.com/christophehurpeau/pob/commit/0f36bb28643ce87e83128b6dd86537766699c729))
+* package error when package.json does not exists ([cb4f3d9](https://github.com/christophehurpeau/pob/commit/cb4f3d9b9175909e5a424fb5f57509b6c0fc0163))
+
+
+### Features
+
+* add bin as potential lint directory ([29ff56b](https://github.com/christophehurpeau/pob/commit/29ff56b7c06d2b1cb488de6c2553c24be47dd382))
+
+
+
+
+
 ## [5.9.1](https://github.com/christophehurpeau/pob/compare/pob@5.9.0...pob@5.9.1) (2020-04-05)
 
 **Note:** Version bump only for package pob
