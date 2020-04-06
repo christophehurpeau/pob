@@ -69,7 +69,7 @@
     "prettier": "2.0.3",
     "repository-check-dirty": "^1.2.1",
     "semver": "7.1.3",
-    "typedoc": "0.17.3",
+    "typedoc": "0.17.4",
     "typescript": "3.8.3"
   }
 }
