@@ -225,9 +225,16 @@ module.exports = class LintGenerator extends Generator {
       if (this.fs.exists(rootEslintrcPath)) {
         ensureJsonFileFormatted(rootEslintrcPath);
       }
-      updateEslintConfig(this.fs.readJSON(rootEslintrcPath, {}), {
-        extendsConfig: isPobEslintConfig ? extendsConfig : extendsConfigNoBabel,
-      });
+      const rootEslintrcConfig = updateEslintConfig(
+        this.fs.readJSON(rootEslintrcPath, {}),
+        {
+          extendsConfig: isPobEslintConfig
+            ? extendsConfig
+            : extendsConfigNoBabel,
+        }
+      );
+
+      this.fs.write(rootEslintrcPath, formatJson(rootEslintrcConfig));
     } catch (err) {
       console.warn(`Could not parse/edit ${rootEslintrcPath}: `, err);
     }
