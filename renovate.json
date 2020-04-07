@@ -1,7 +1,5 @@
 {
-  "extends": [
-    "config:js-lib"
-  ],
+  "extends": ["config:js-lib"],
   "packageRules": [
     {
       "packagePatterns": ["*"],
@@ -19,9 +17,7 @@
     {
       "groupName": "react",
       "description": "react monorepo",
-      "sourceUrlPrefixes": [
-        "https://github.com/facebook/react"
-      ],
+      "sourceUrlPrefixes": ["https://github.com/facebook/react"],
       "packageNames": [
         "@hot-loader/react-dom",
         "@types/react",
@@ -29,20 +25,13 @@
       ]
     },
     {
+      "groupName": "@pob/eslint-config",
       "description": "@pob eslint configs",
-      "packagePatterns": [
-        "^@pob/eslint-config"
-      ]
+      "packagePatterns": ["^@pob/eslint-config"]
     },
     {
-      "updateTypes": [
-        "patch",
-        "minor"
-      ],
-      "labels": [
-        ":ok_hand: code/approved",
-        ":soon: automerge"
-      ]
+      "updateTypes": ["patch", "minor"],
+      "labels": [":ok_hand: code/approved", ":soon: automerge"]
     }
   ]
 }
