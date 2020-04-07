@@ -1,12 +1,14 @@
+/* eslint-disable complexity */
+
 'use strict';
 
 const fs = require('fs');
 const Generator = require('yeoman-generator');
-const sortObject = require('@pob/sort-object');
 const packageUtils = require('../../../utils/package');
 const ensureJsonFileFormatted = require('../../../utils/ensureJsonFileFormatted');
 const formatJson = require('../../../utils/formatJson');
 const inLerna = require('../../../utils/inLerna');
+const updateEslintConfig = require('./updateEslintConfig');
 
 module.exports = class LintGenerator extends Generator {
   constructor(args, opts) {
@@ -97,7 +99,6 @@ module.exports = class LintGenerator extends Generator {
     const composite = yoConfigPobMonorepo && yoConfigPobMonorepo.typescript;
 
     const typescript = true;
-    const hasScripts = fs.existsSync(this.destinationPath('scripts'));
 
     if (globalEslint && !isRootYarn2) {
       packageUtils.removeDevDependencies(
@@ -135,7 +136,7 @@ module.exports = class LintGenerator extends Generator {
           'eslint-plugin-unicorn',
         ]);
 
-        packageUtils.addOrRemoveDevDependencies(pkg, !useBabel || hasScripts, [
+        packageUtils.addDevDependencies(pkg, [
           '@pob/eslint-config-node',
           'eslint-plugin-node',
           'eslint-import-resolver-node',
@@ -160,12 +161,19 @@ module.exports = class LintGenerator extends Generator {
         ]);
       }
     }
-    const config = (() => {
-      if (
-        pkg.name === 'eslint-config-pob' ||
-        pkg.name.startsWith('@pob/eslint-config') ||
-        pkg.name === '@pob/use-eslint-plugin'
-      ) {
+
+    const isPobEslintConfig =
+      pkg.name === 'eslint-config-pob' ||
+      pkg.name.startsWith('@pob/eslint-config') ||
+      pkg.name === '@pob/use-eslint-plugin';
+
+    const extendsConfigNoBabel = [
+      '@pob/eslint-config',
+      '@pob/eslint-config-node',
+    ];
+
+    const extendsConfig = (() => {
+      if (isPobEslintConfig) {
         return [
           '../eslint-config/lib/index.js',
           '../eslint-config-node/lib/index.js',
@@ -182,7 +190,7 @@ module.exports = class LintGenerator extends Generator {
         ].filter(Boolean);
       }
 
-      return ['@pob/eslint-config', '@pob/eslint-config-node'];
+      return extendsConfigNoBabel;
     })();
 
     const dir = useBabel ? 'src' : 'lib';
@@ -211,120 +219,40 @@ module.exports = class LintGenerator extends Generator {
     this.fs.delete(eslintrcBadPath);
     this.fs.delete(`${eslintrcBadPath}.yml`);
     this.fs.delete(`${eslintrcBadPath}.js`);
-    const eslintrcPath = this.destinationPath('.eslintrc.json');
-    if (!this.fs.exists(eslintrcPath)) {
-      const eslintConfig = { root: true, extends: config };
-      if (jestOverride) {
-        eslintConfig.overrides = [jestOverride];
+
+    const rootEslintrcPath = this.destinationPath('.eslintrc.json');
+    try {
+      if (this.fs.exists(rootEslintrcPath)) {
+        ensureJsonFileFormatted(rootEslintrcPath);
       }
-      if (useBabel) {
-        // webstorm uses this to detect eslint .ts compat
-        eslintConfig.parser = '@typescript-eslint/parser';
-        eslintConfig.plugins = ['@typescript-eslint'];
-        eslintConfig.parserOptions = {
-          project: './tsconfig.json',
-          createDefaultProgram: true, // fix for lint-staged
-        };
+      updateEslintConfig(this.fs.readJSON(rootEslintrcPath, {}), {
+        extendsConfig: isPobEslintConfig ? extendsConfig : extendsConfigNoBabel,
+      });
+    } catch (err) {
+      console.warn(`Could not parse/edit ${rootEslintrcPath}: `, err);
+    }
+
+    const srcEslintrcPath = this.destinationPath(
+      `${useBabel ? 'src/' : 'lib/'}.eslintrc.json`
+    );
+
+    try {
+      if (this.fs.exists(srcEslintrcPath)) {
+        ensureJsonFileFormatted(srcEslintrcPath);
       }
-      this.fs.writeJSON(eslintrcPath, eslintConfig);
-    } else {
-      ensureJsonFileFormatted(eslintrcPath);
-      try {
-        const eslintConfig = this.fs.readJSON(eslintrcPath);
-        // if (!eslintConfig.extends || typeof eslintConfig.extends === 'string') {
-        eslintConfig.root = true;
-        eslintConfig.extends = config;
-        // } else if (Array.isArray(eslintConfig.extends)) {
-        // eslintConfig.extends[0] = config;
-        // eslintConfig.extends[0] = config;
-        // }
 
-        if (useBabel) {
-          // webstorm uses this to detect eslint .ts compat
-          eslintConfig.parser = '@typescript-eslint/parser';
-          eslintConfig.plugins = ['@typescript-eslint'];
-          eslintConfig.parserOptions = {
-            project: './tsconfig.json',
-            createDefaultProgram: true, // fix for lint-staged
-          };
-        } else {
-          if (
-            eslintConfig.parser === 'typescript-eslint-parser' ||
-            eslintConfig.parser === '@typescript-eslint/parser'
-          ) {
-            delete eslintConfig.parser;
-          }
-          if (
-            eslintConfig.parserOptions &&
-            eslintConfig.parserOptions.project
-          ) {
-            delete eslintConfig.parserOptions;
-          }
-          if (
-            eslintConfig.plugins &&
-            (eslintConfig.plugins[0] === 'typescript' ||
-              eslintConfig.plugins[0] === '@typescript-eslint')
-          ) {
-            eslintConfig.plugins.splice(0, 1);
-          }
-          if (eslintConfig.plugins && eslintConfig.plugins.length === 0) {
-            delete eslintConfig.plugins;
-          }
+      const srcEslintrcConfig = updateEslintConfig(
+        this.fs.readJSON(srcEslintrcPath, {}),
+        {
+          extendsConfig,
+          jestOverride,
+          useTypescript: useBabel,
         }
+      );
 
-        const existingJestOverrideIndex = !eslintConfig.overrides
-          ? -1
-          : eslintConfig.overrides.findIndex(
-              (override) => override.env && override.env.jest
-            );
-        if (!jestOverride) {
-          if (existingJestOverrideIndex !== -1) {
-            eslintConfig.overrides.splice(existingJestOverrideIndex, 1);
-            if (eslintConfig.overrides.length === 0) {
-              delete eslintConfig.overrides;
-            }
-          }
-        } else {
-          // eslint-disable-next-line no-lonely-if
-          if (existingJestOverrideIndex !== -1) {
-            Object.assign(
-              eslintConfig.overrides[existingJestOverrideIndex],
-              jestOverride
-            );
-          } else {
-            if (!eslintConfig.overrides) eslintConfig.overrides = [];
-            eslintConfig.overrides.push(jestOverride);
-          }
-        }
-
-        const sortedConfig = sortObject(eslintConfig, [
-          'root',
-          'parser',
-          'parserOptions',
-          'plugins',
-          'extends',
-          'env',
-          'globals',
-          'settings',
-          'rules',
-          'overrides',
-        ]);
-        if (sortedConfig.overrides) {
-          sortedConfig.overrides.forEach((override, index) => {
-            sortedConfig.overrides[index] = sortObject(override, [
-              'files',
-              'env',
-              'globals',
-              'settings',
-              'rules',
-            ]);
-          });
-        }
-
-        this.fs.write(eslintrcPath, formatJson(sortedConfig));
-      } catch (err) {
-        console.warn('Could not parse/edit eslintrc.json: ', err);
-      }
+      this.fs.write(srcEslintrcPath, formatJson(srcEslintrcConfig));
+    } catch (err) {
+      console.warn(`Could not parse/edit ${srcEslintrcPath}: `, err);
     }
 
     const srcDirectory = useBabel ? 'src' : 'lib';
@@ -338,7 +266,7 @@ module.exports = class LintGenerator extends Generator {
     packageUtils.addScripts(pkg, {
       lint: `${useBabel && !composite ? 'tsc && ' : ''}eslint${
         !useBabel ? '' : ` --ext .js,.ts${hasReact ? ',.tsx' : ''}`
-      } --quiet ${lintDirectories.join(' ')}`,
+      } --quiet *.js ${lintDirectories.join(' ')}`,
     });
 
     delete pkg.scripts['typescript-check'];
