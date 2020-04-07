@@ -93,12 +93,13 @@ module.exports = class LintGenerator extends Generator {
 
     const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
     const globalEslint = yoConfigPobMonorepo && yoConfigPobMonorepo.eslint;
+    const isRootYarn2 = inLerna && inLerna.pobConfig.project.yarn2;
     const composite = yoConfigPobMonorepo && yoConfigPobMonorepo.typescript;
 
     const typescript = true;
     const hasScripts = fs.existsSync(this.destinationPath('scripts'));
 
-    if (globalEslint) {
+    if (globalEslint && !isRootYarn2) {
       packageUtils.removeDevDependencies(
         pkg,
         [
@@ -120,7 +121,8 @@ module.exports = class LintGenerator extends Generator {
         true
       );
     } else {
-      packageUtils.addDevDependencies(pkg, ['eslint', 'prettier']);
+      packageUtils.addOrRemoveDevDependencies(pkg, !globalEslint, ['prettier']);
+      packageUtils.addDevDependencies(pkg, ['eslint']);
       if (
         !pkg.name.startsWith('eslint-config') &&
         !pkg.name.startsWith('@pob/eslint-config') &&

@@ -1,5 +1,6 @@
 'use strict';
 
+const fs = require('fs');
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../utils/package');
 const ensureJsonFileFormatted = require('../../utils/ensureJsonFileFormatted');
@@ -46,6 +47,10 @@ module.exports = class PobBaseGenerator extends Generator {
     });
   }
 
+  rootGeneratorName() {
+    return 'pob';
+  }
+
   initializing() {
     // prettier package.json to ensure diff is correct
     ensureJsonFileFormatted(this.destinationPath('package.json'));
@@ -66,13 +71,17 @@ module.exports = class PobBaseGenerator extends Generator {
 
   async prompting() {
     let config = this.config.get('project');
-    if (config) {
+    if (config && config.type) {
       this.projectConfig = config;
       return;
     }
 
-    config = this.config.get('type');
-
+    const oldConfigStorage = this._getStorage(super.rootGeneratorName());
+    config = oldConfigStorage.get('type') || oldConfigStorage.get('project');
+    if (config) {
+      oldConfigStorage.delete('type');
+      oldConfigStorage.delete('project');
+    }
     this.projectConfig = await this.prompt([
       {
         type: 'list',
@@ -89,11 +98,10 @@ module.exports = class PobBaseGenerator extends Generator {
         default:
           config && config.yarn2 !== undefined
             ? config.yarn2
-            : this.fs.exists('.yarn'),
+            : fs.existsSync('.yarnrc.yml'),
       },
     ]);
 
-    this.config.delete('type');
     this.config.set('project', this.projectConfig);
   }
 
