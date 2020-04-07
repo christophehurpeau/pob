@@ -66,7 +66,7 @@
     "pob-babel": "^24.8.1",
     "pob-lcov-reporter": "^2.2.0",
     "pob-release": "^5.5.4",
-    "prettier": "2.0.3",
+    "prettier": "2.0.4",
     "repository-check-dirty": "^1.2.1",
     "semver": "7.2.1",
     "typedoc": "0.17.4",
