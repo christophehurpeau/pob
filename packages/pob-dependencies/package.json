@@ -28,7 +28,7 @@
   "pob": {},
   "devDependencies": {
     "@babel/core": "7.9.0",
-    "@babel/preset-env": "7.9.0",
+    "@babel/preset-env": "7.9.5",
     "@babel/preset-react": "7.9.4",
     "@babel/runtime": "7.9.2",
     "@pob/commitlint-config": "^1.1.1",
