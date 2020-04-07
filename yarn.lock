@@ -2163,7 +2163,19 @@
     "@typescript-eslint/parser" "^2.26.0"
     eslint-config-prettier "^6.7.0"
 
-"@pob/eslint-config@37.0.0", "@pob/eslint-config@^37.0.0":
+"@pob/eslint-config@37.0.1":
+  version "37.0.1"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-37.0.1.tgz#8b5e57c7e24184d1cb3b8d5814e105d2aeb15d8e"
+  integrity sha512-11tPIiU6gVGZKs+9a6dSswLybZNbkW0jnfckILko66NUjD83tBF/RwV6r5B2tcXlb/CepeIuSQzTZTgxHM37LQ==
+  dependencies:
+    "@pob/use-eslint-plugin" "^37.0.1"
+    eslint-config-airbnb-base "^14.1.0"
+    eslint-config-prettier "^6.7.0"
+    eslint-plugin-prefer-class-properties "^1.0.0"
+    eslint-plugin-prettier "^3.1.2"
+    eslint-plugin-unicorn "^18.0.1"
+
+"@pob/eslint-config@^37.0.0":
   version "37.0.0"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-37.0.0.tgz#28f80776d78c3d721c7188e6bffdf2fb1a43e169"
   integrity sha512-jH5QY+wcIPvsGOpIiGHTpmvwrEPdygEV5epn5vytffi3SMSRrhW8AQhNJmkDQmGp6tgSDJLmJdjc9n34zaAnyQ==
@@ -2179,6 +2191,11 @@
   version "37.0.0"
   resolved "https://registry.yarnpkg.com/@pob/use-eslint-plugin/-/use-eslint-plugin-37.0.0.tgz#c98834ba55ab90e0a85b7d82a6c973bcbad2aed0"
   integrity sha512-fYmVI0NbQC7SO5UmH6OXxMdbBiDVBc4kRVZnXKmdeEfPu7SYmvINH3VKZ81nvtD/BpyVx5SwrCyZOf3+NGxMoA==
+
+"@pob/use-eslint-plugin@^37.0.1":
+  version "37.0.1"
+  resolved "https://registry.yarnpkg.com/@pob/use-eslint-plugin/-/use-eslint-plugin-37.0.1.tgz#58e8759ae7f00031b5552136d159c37bc111f932"
+  integrity sha512-LAdcEQn4nSTbtdajhehHndW8BByRYh6a9WvbPb6naSjmkwb73ti31NIGvRbBPSvgnjkSUsi51w8n1BrK5mdeiw==
 
 "@samverschueren/stream-to-observable@^0.3.0":
   version "0.3.0"
