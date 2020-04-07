@@ -2109,6 +2109,16 @@
     eslint-config-airbnb-base "^14.1.0"
     eslint-plugin-prefer-class-properties "^1.0.0"
 
+"@pob/eslint-config-babel-common@^37.0.1":
+  version "37.0.1"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel-common/-/eslint-config-babel-common-37.0.1.tgz#800becf81b2ce9c51f97a6e579bb790095a3ad33"
+  integrity sha512-cKsKZg2s2qcJV9vCse2Vm5aK/9Hbf8MP39oOIjeBHtq54aDuFJBfeqWizpIdtW/3yjEG2rpgWm+IIPzRxGHaOw==
+  dependencies:
+    "@pob/eslint-config" "^37.0.1"
+    "@pob/use-eslint-plugin" "^37.0.1"
+    eslint-config-airbnb-base "^14.1.0"
+    eslint-plugin-prefer-class-properties "^1.0.0"
+
 "@pob/eslint-config-babel-node@37.0.0":
   version "37.0.0"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel-node/-/eslint-config-babel-node-37.0.0.tgz#c2ec2ae8f95120f2a907d6bbc20cf2e7fccefecf"
@@ -2117,12 +2127,12 @@
     "@pob/use-eslint-plugin" "^37.0.0"
     eslint-plugin-node "^11.0.0"
 
-"@pob/eslint-config-babel@37.0.0":
-  version "37.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel/-/eslint-config-babel-37.0.0.tgz#15b21b6c7fd3370474175d8bb48b8b15486d63cc"
-  integrity sha512-reMgHbvoM8lRnUIqMPqlp7NmCwksgdcGlxhaqi6iYGMYDlFgJbFIqsEMqLHQ741roXbTTxLH/Pedqc7gIqcqvQ==
+"@pob/eslint-config-babel@37.0.1":
+  version "37.0.1"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-babel/-/eslint-config-babel-37.0.1.tgz#6384af21950037fbda7787dca8b850d932a5afd7"
+  integrity sha512-8YLidy2eVK/f4SBhsU3zYL/aigVHlxqoOitt5vpuz55xmmljS7X8mikyy9vZZmRZkM6r86XVVeobC1Fh6WS8OA==
   dependencies:
-    "@pob/eslint-config-babel-common" "^37.0.0"
+    "@pob/eslint-config-babel-common" "^37.0.1"
     babel-eslint "^10.0.3"
 
 "@pob/eslint-config-node@37.0.0":
@@ -2163,7 +2173,7 @@
     "@typescript-eslint/parser" "^2.26.0"
     eslint-config-prettier "^6.7.0"
 
-"@pob/eslint-config@37.0.1":
+"@pob/eslint-config@37.0.1", "@pob/eslint-config@^37.0.1":
   version "37.0.1"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-37.0.1.tgz#8b5e57c7e24184d1cb3b8d5814e105d2aeb15d8e"
   integrity sha512-11tPIiU6gVGZKs+9a6dSswLybZNbkW0jnfckILko66NUjD83tBF/RwV6r5B2tcXlb/CepeIuSQzTZTgxHM37LQ==
