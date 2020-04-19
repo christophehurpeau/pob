@@ -193,14 +193,13 @@ module.exports = class LintGenerator extends Generator {
       return extendsConfigNoBabel;
     })();
 
-    const dir = useBabel ? 'src' : 'lib';
     // eslint-disable-next-line unicorn/no-nested-ternary
     const ext = !useBabel ? 'js' : hasReact ? '{ts,tsx}' : 'ts';
 
     const jestOverride = !packageUtils.hasJest(pkg)
       ? null
       : {
-          files: [`${dir}/**/*.test.${ext}`, `${dir}/__tests__/**/*.${ext}`],
+          files: [`**/*.test.${ext}`, `__tests__/**/*.${ext}`],
           env: { jest: true },
           rules: {
             'import/no-extraneous-dependencies': [
