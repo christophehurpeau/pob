@@ -20,7 +20,7 @@
   "dependencies": {
     "@commitlint/cli": "8.3.5",
     "cross-env": "^7.0.0",
-    "lint-staged": "10.1.5",
+    "lint-staged": "10.1.6",
     "repository-check-dirty": "^1.2.1",
     "semver": "^7.1.2",
     "which-pm-runs": "1.0.0",
