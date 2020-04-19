@@ -10,6 +10,29 @@ const gh = require('gh-got');
 const GITHUB_TOKEN = process.env.POB_GITHUB_TOKEN;
 const CIRCLECI_TOKEN = process.env.POB_CIRCLECI_TOKEN;
 
+const configureProtectionRule = async (owner, repo) => {
+  try {
+    await gh.put(`repos/${owner}/${repo}/branches/master/protection`, {
+      token: GITHUB_TOKEN,
+      body: {
+        required_status_checks: {
+          strict: false,
+          contexts: ['build (10.x)', 'build (12.x)', 'reviewflow'],
+        },
+        enforce_admins: false, // true,
+        required_pull_request_reviews: null,
+        restrictions: null,
+        required_linear_history: true,
+        allow_force_pushes: true, // false
+        allow_deletions: false,
+      },
+    });
+  } catch (err) {
+    console.error('Failed to configure master branch protection');
+    console.error(err.stack || err.message || err);
+  }
+};
+
 module.exports = class GitHubGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
@@ -57,19 +80,24 @@ module.exports = class GitHubGenerator extends Generator {
     if (this.options.shouldCreate) {
       try {
         if (this.options.shouldCreate) {
-          await gh('user/repos', {
-            token: GITHUB_TOKEN,
-            body: {
-              name: pkg.name,
-              description: pkg.description,
-              homepage: null,
-              private: false,
-              auto_init: false,
-              allow_squash_merge: true,
-              allow_merge_commit: false,
-              allow_rebase_merge: true,
-            },
-          });
+          try {
+            await gh('user/repos', {
+              token: GITHUB_TOKEN,
+              body: {
+                name: pkg.name,
+                description: pkg.description,
+                homepage: null,
+                private: false,
+                auto_init: false,
+                allow_squash_merge: true,
+                allow_merge_commit: false,
+                allow_rebase_merge: true,
+              },
+            });
+          } catch (err) {
+            console.error('Failed to create repository');
+            console.error(err.stack || err.message || err);
+          }
         }
 
         const cwd = this.destinationPath();
@@ -83,23 +111,7 @@ module.exports = class GitHubGenerator extends Generator {
           cwd,
         });
 
-        try {
-          await gh.put(`repos/${owner}/${repo}/branches/master/protection`, {
-            token: GITHUB_TOKEN,
-            body: {
-              required_status_checks: {
-                strict: false,
-                contexts: [],
-              },
-              enforce_admins: true,
-              required_pull_request_reviews: null,
-              restrictions: null,
-            },
-          });
-        } catch (err) {
-          console.error('Failed to change master branch protection');
-          console.error(err.stack || err.message || err);
-        }
+        configureProtectionRule(owner, repo);
 
         if (this.fs.exists('.circleci/config.yml')) {
           try {
@@ -148,12 +160,14 @@ module.exports = class GitHubGenerator extends Generator {
         console.error(err.stack || err.message || err);
       }
     } else {
-      await gh(`repos/${owner}/${repo}`, {
+      console.log('sync github info');
+      await gh.post(`repos/${owner}/${repo}`, {
         token: GITHUB_TOKEN,
         body: {
-          name: pkg.name
+          name: repo,
+          /* pkg.name
             .replace(/-(lerna|monorepo)$/, '')
-            .replace(/^@([^-]*)-/, '$1-'),
+            .replace(/^@([^-]*)-/, '$1-') */
           description: pkg.description,
           // homepage: null,
           allow_squash_merge: true,
@@ -161,7 +175,8 @@ module.exports = class GitHubGenerator extends Generator {
           allow_rebase_merge: true,
         },
       });
-      console.log('sync github description');
+
+      configureProtectionRule(owner, repo);
     }
   }
 };
