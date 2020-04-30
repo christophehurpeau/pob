@@ -2711,16 +2711,16 @@
     semver "^6.3.0"
     tsutils "^3.17.1"
 
-"@yarnpkg/core@^2.0.0-rc.26":
-  version "2.0.0-rc.26"
-  resolved "https://registry.yarnpkg.com/@yarnpkg/core/-/core-2.0.0-rc.26.tgz#2e1d04e8b45289a865ae434d721dd734db5263c0"
-  integrity sha512-h2Tg4x0kOwK+DouzSvRIVou8kDB7O4nWaJaJYD3ib7nzlGdQnTU2Jo5YG0n/j1Svyvy4M6SPf9x4MI/R85QIzg==
+"@yarnpkg/core@^2.0.0-rc.27":
+  version "2.0.0-rc.27"
+  resolved "https://registry.yarnpkg.com/@yarnpkg/core/-/core-2.0.0-rc.27.tgz#1ae8aa5d1b0e537e165be506f904d668bf585a68"
+  integrity sha512-DjzftF4+s1lTwtOitW40GJ4iCgFBHH5fyhlJrBgA28i3MrPhYk8w6Rj6SrfyZRljwQrO3twB1fo8oiIlUwzmeQ==
   dependencies:
-    "@yarnpkg/fslib" "^2.0.0-rc.18"
+    "@yarnpkg/fslib" "^2.0.0-rc.20"
     "@yarnpkg/json-proxy" "^2.0.0-rc.7"
     "@yarnpkg/libzip" "^2.0.0-rc.11"
     "@yarnpkg/parsers" "^2.0.0-rc.11"
-    "@yarnpkg/pnp" "^2.0.0-rc.19"
+    "@yarnpkg/pnp" "^2.0.0-rc.20"
     "@yarnpkg/shell" "^2.0.0-rc.11"
     camelcase "^5.3.1"
     chalk "^3.0.0"
@@ -2746,6 +2746,13 @@
   version "2.0.0-rc.18"
   resolved "https://registry.yarnpkg.com/@yarnpkg/fslib/-/fslib-2.0.0-rc.18.tgz#de557c6de708a61f647caf307937c540460cb6cf"
   integrity sha512-igIs1m2kW0OUzYJXVu2TwEP0jCIAafHDj8IfSNdmE5Vx3A7CY+zTiSOxibe6bacyj/xOtwVhrh3S4+LElygxdw==
+  dependencies:
+    "@yarnpkg/libzip" "^2.0.0-rc.11"
+
+"@yarnpkg/fslib@^2.0.0-rc.20":
+  version "2.0.0-rc.20"
+  resolved "https://registry.yarnpkg.com/@yarnpkg/fslib/-/fslib-2.0.0-rc.20.tgz#cc0caff495bf0aad9eb3ea2ac29aa2ecb8f6e7f2"
+  integrity sha512-zKCT2hA1lPzQ/GxEU3O/A9JGuPuD65phzd9L4W91ipIimHjpmei9FX6z0e9TwlMdXJqBa8RtDLvoSA+OBOxUBA==
   dependencies:
     "@yarnpkg/libzip" "^2.0.0-rc.11"
 
@@ -2782,21 +2789,21 @@
   dependencies:
     js-yaml "^3.10.0"
 
-"@yarnpkg/pnp@^2.0.0-rc.19":
-  version "2.0.0-rc.19"
-  resolved "https://registry.yarnpkg.com/@yarnpkg/pnp/-/pnp-2.0.0-rc.19.tgz#208d431e56b93c2f660643d0d33dbab81cb2e810"
-  integrity sha512-tVO7/gh84JJyi9lyU4n/DdAhZGXKYNSfiWzk+veGwo0T3k6p/UWkCfIUUApbvvgeLjQsTPl52LquYuLagsrhvA==
+"@yarnpkg/pnp@^2.0.0-rc.20":
+  version "2.0.0-rc.20"
+  resolved "https://registry.yarnpkg.com/@yarnpkg/pnp/-/pnp-2.0.0-rc.20.tgz#3b44b391223e5747fcf76ee19a75ccf638668076"
+  integrity sha512-H01+ilA8+GQpNsKeiXGZSam+LQqlROKflPukYj3ovhD3CYFOE9Lq64X1ikF74FHtAakzK5PsxWw1zQgAy4rUVA==
   dependencies:
     "@types/node" "^13.7.0"
-    "@yarnpkg/fslib" "^2.0.0-rc.18"
+    "@yarnpkg/fslib" "^2.0.0-rc.20"
 
-"@yarnpkg/pnpify@2.0.0-rc.21":
-  version "2.0.0-rc.21"
-  resolved "https://registry.yarnpkg.com/@yarnpkg/pnpify/-/pnpify-2.0.0-rc.21.tgz#705c4968268c306d873071b8e1cbb1dc7486cc85"
-  integrity sha512-7QdEg3Uo/+Z4OqxvpODleXfo07lvUVsrMm3SJAWYks0UvkEdCtlbWa6nNX+qm/kol8fFMHB7R/85nTBv3R108w==
+"@yarnpkg/pnpify@2.0.0-rc.22":
+  version "2.0.0-rc.22"
+  resolved "https://registry.yarnpkg.com/@yarnpkg/pnpify/-/pnpify-2.0.0-rc.22.tgz#b905f718d2cdc4a9a4a5448504dc38d5bb1d4d8e"
+  integrity sha512-vn8bm2LxTn8Uk7T+IU0C4vykl6ssX3RYA9gu5J0oXHFmKZRjtmOShYjh00xcOwWqbxZLpS23Uil7bJrGu+4QCw==
   dependencies:
-    "@yarnpkg/core" "^2.0.0-rc.26"
-    "@yarnpkg/fslib" "^2.0.0-rc.18"
+    "@yarnpkg/core" "^2.0.0-rc.27"
+    "@yarnpkg/fslib" "^2.0.0-rc.20"
     chalk "^3.0.0"
     comment-json "^2.2.0"
     cross-spawn "6.0.5"
