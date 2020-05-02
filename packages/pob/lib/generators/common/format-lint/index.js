@@ -272,17 +272,23 @@ module.exports = class LintGenerator extends Generator {
     }
 
     const srcDirectory = useBabel ? 'src' : 'lib';
+    const lintRootJsFiles = useBabel || !inLerna;
 
-    const lintDirectories = [
+    const lintPaths = [
       srcDirectory,
       'bin',
       'scripts',
       'migrations',
     ].filter((dir) => fs.existsSync(this.destinationPath(dir)));
+
+    if (lintRootJsFiles) {
+      lintPaths.unshift('*.js');
+    }
+
     packageUtils.addScripts(pkg, {
       lint: `${useBabel && !composite ? 'tsc && ' : ''}eslint${
         !useBabel ? '' : ` --ext .js,.ts${hasReact ? ',.tsx' : ''}`
-      } --quiet *.js ${lintDirectories.join(' ')}`,
+      } --quiet ${lintPaths.join(' ')}`,
     });
 
     delete pkg.scripts['typescript-check'];
