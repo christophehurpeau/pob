@@ -8,10 +8,8 @@
     "pob-config": {
       "documentation": false,
       "testing": false
-    }
-  },
-  "@pob/pretty-pkg": {
-    "type": {
+    },
+    "project": {
       "type": "lib"
     }
   }

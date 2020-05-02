@@ -8,10 +8,8 @@
     "pob-config": {
       "documentation": false,
       "testing": false
-    }
-  },
-  "babel-plugin-transform-builtins": {
-    "type": {
+    },
+    "project": {
       "type": "lib"
     }
   }

@@ -4,7 +4,7 @@
       "documentation": false,
       "testing": false
     },
-    "type": {
+    "project": {
       "type": "lib"
     }
   }

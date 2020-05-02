@@ -27,6 +27,10 @@
     },
     "renovate": {
       "enable": true
+    },
+    "project": {
+      "type": "lib",
+      "yarn2": false
     }
   }
 }

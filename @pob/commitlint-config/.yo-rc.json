@@ -8,10 +8,8 @@
     "pob-config": {
       "documentation": false,
       "testing": false
-    }
-  },
-  "@pob/commitlint-config": {
-    "type": {
+    },
+    "project": {
       "type": "lib"
     }
   }

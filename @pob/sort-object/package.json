@@ -19,7 +19,7 @@
   },
   "main": "./lib/index.js",
   "scripts": {
-    "lint": "eslint --quiet lib"
+    "lint": "eslint --quiet *.js lib"
   },
   "prettier": {
     "trailingComma": "es5",

@@ -82,7 +82,7 @@ babel script.js --presets pob
 
 ```javascript
 require('babel-core').transform('code', {
-  presets: [require('babel-preset-pob-env')]
+  presets: [require('babel-preset-pob-env')],
 });
 ```
 
@@ -91,8 +91,8 @@ require('babel-core').transform('code', {
   presets: [
     [
       require('babel-preset-pob-env'),
-      { production: process.env.NODE_ENV === 'production' }
-    ]
-  ]
+      { production: process.env.NODE_ENV === 'production' },
+    ],
+  ],
 });
 ```

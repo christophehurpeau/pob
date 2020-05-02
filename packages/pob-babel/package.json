@@ -24,7 +24,7 @@
     "build:definitions": "tsc --lib esnext --noEmit ./lib/index.d.ts",
     "clean": "rm -Rf docs dist",
     "generate:test-coverage": "rm -Rf docs/coverage/ ; NODE_ENV=production BABEL_ENV=test jest --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/",
-    "lint": "eslint --quiet lib",
+    "lint": "eslint --quiet lib bin",
     "test": "jest",
     "test:watch": "jest"
   },
@@ -68,6 +68,6 @@
   "devDependencies": {
     "@types/jest": "25.2.1",
     "jest": "25.5.4",
-    "pob-lcov-reporter": "^2.2.0"
+    "pob-lcov-reporter": "2.2.0"
   }
 }
