@@ -101,6 +101,10 @@ module.exports = class LintGenerator extends Generator {
       inLerna.pobConfig.project &&
       inLerna.pobConfig.project.yarn2;
     const composite = yoConfigPobMonorepo && yoConfigPobMonorepo.typescript;
+    const lernaProjectType =
+      yoConfigPobMonorepo &&
+      yoConfigPobMonorepo.project &&
+      yoConfigPobMonorepo.project.type;
 
     const typescript = true;
 
@@ -118,6 +122,7 @@ module.exports = class LintGenerator extends Generator {
           '@pob/eslint-config-typescript-react',
           '@pob/eslint-config-react',
           '@typescript-eslint/eslint-plugin',
+          'eslint-import-resolver-node',
           'eslint-plugin-node',
           'eslint-plugin-prettier',
           'eslint-plugin-unicorn',
@@ -127,7 +132,11 @@ module.exports = class LintGenerator extends Generator {
       );
     } else {
       packageUtils.addOrRemoveDevDependencies(pkg, !globalEslint, ['prettier']);
-      packageUtils.addDevDependencies(pkg, ['eslint']);
+      packageUtils.addOrRemoveDevDependencies(
+        pkg,
+        !globalEslint || lernaProjectType === 'app',
+        ['eslint']
+      );
       if (
         !pkg.name.startsWith('eslint-config') &&
         !pkg.name.startsWith('@pob/eslint-config') &&
@@ -262,6 +271,8 @@ module.exports = class LintGenerator extends Generator {
             extendsConfig,
             jestOverride,
             useTypescript: useBabel,
+            globalEslint,
+            relativePath: inLerna ? inLerna.relative : undefined,
           }
         );
 

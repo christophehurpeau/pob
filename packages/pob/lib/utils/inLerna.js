@@ -12,11 +12,14 @@ const getInLernaThings = () => {
   const rootYoConfig = JSON.parse(
     fs.readFileSync(path.resolve(rootMonorepo, '.yo-rc.json'), 'utf-8')
   );
+  const cwd = process.cwd();
+
   return {
     lernaJsonPath,
     rootPath: rootMonorepo,
-    root: rootMonorepo === process.cwd(),
+    root: rootMonorepo === cwd,
     packageJsonPath: path.resolve(rootMonorepo, 'package.json'),
+    relative: path.relative(rootMonorepo, cwd),
     rootYoConfig,
     pobConfig: rootYoConfig && rootYoConfig.pob,
     pobMonorepoConfig:

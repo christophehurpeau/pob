@@ -27,15 +27,27 @@ function updateOverrides(config, jestOverride) {
   return config;
 }
 
-function updateParserAndPlugins(config, useTypescript) {
+function updateParserAndPlugins(
+  config,
+  useTypescript,
+  globalEslint,
+  relativePath
+) {
   if (useTypescript) {
     // webstorm uses this to detect eslint .ts compat
     config.parser = '@typescript-eslint/parser';
     config.plugins = ['@typescript-eslint'];
-    config.parserOptions = {
-      project: './tsconfig.json',
-      createDefaultProgram: true, // fix for lint-staged
-    };
+
+    if (!globalEslint) {
+      config.parserOptions = {
+        project: './tsconfig.json',
+        createDefaultProgram: true, // fix for lint-staged
+      };
+    } else {
+      config.parserOptions = {
+        project: `${relativePath}/tsconfig.json`,
+      };
+    }
   } else {
     if (
       config.parser === 'typescript-eslint-parser' ||
@@ -91,12 +103,17 @@ function sortConfig(config) {
 
 module.exports = function updateEslintConfig(
   config,
-  { extendsConfig, jestOverride, useTypescript }
+  { extendsConfig, jestOverride, useTypescript, globalEslint, relativePath }
 ) {
   config.root = true;
   config.extends = extendsConfig;
 
-  config = updateParserAndPlugins(config, useTypescript);
+  config = updateParserAndPlugins(
+    config,
+    useTypescript,
+    globalEslint,
+    relativePath
+  );
   config = updateOverrides(config, jestOverride);
 
   return sortConfig(config);

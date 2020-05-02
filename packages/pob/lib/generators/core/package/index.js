@@ -22,6 +22,10 @@ module.exports = class PackageGenerator extends Generator {
   async initializing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
+    if (!pkg.engines) pkg.engines = {};
+    // this might be overridden by babel generator
+    pkg.engines.node = '>=10.13.0';
+
     if (!this.options.updateOnly) {
       if (this.options.private || (inLerna && inLerna.root)) {
         pkg.private = true;
