@@ -95,7 +95,11 @@ module.exports = class LintGenerator extends Generator {
 
     const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
     const globalEslint = yoConfigPobMonorepo && yoConfigPobMonorepo.eslint;
-    const isRootYarn2 = inLerna && inLerna.pobConfig.project.yarn2;
+    const isRootYarn2 =
+      inLerna &&
+      inLerna.pobConfig &&
+      inLerna.pobConfig.project &&
+      inLerna.pobConfig.project.yarn2;
     const composite = yoConfigPobMonorepo && yoConfigPobMonorepo.typescript;
 
     const typescript = true;
