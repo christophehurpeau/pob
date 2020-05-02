@@ -300,17 +300,20 @@ module.exports = class BabelGenerator extends Generator {
       watch: 'pob-watch',
     });
 
-    if (!this.options.isApp) {
-      packageUtils.addOrRemoveScripts(pkg, useBabel, {
-        'build:definitions': 'tsc -p tsconfig.build.json',
-      });
+    const shouldBuildDefinitions = !this.options.isApp && useBabel;
+    packageUtils.addOrRemoveScripts(pkg, shouldBuildDefinitions, {
+      'build:definitions': 'tsc -p tsconfig.build.json',
+    });
 
-      if (!useBabel && this.fs.exists(this.destinationPath('lib/index.d.ts'))) {
-        // check definitions, but also force lerna to execute build:definitions in right order
-        // example: nightingale-types depends on nightingale-levels
-        pkg.scripts['build:definitions'] =
-          'tsc --lib esnext --noEmit ./lib/index.d.ts';
-      }
+    if (
+      !this.options.isApp &&
+      !useBabel &&
+      this.fs.exists(this.destinationPath('lib/index.d.ts'))
+    ) {
+      // check definitions, but also force lerna to execute build:definitions in right order
+      // example: nightingale-types depends on nightingale-levels
+      pkg.scripts['build:definitions'] =
+        'tsc --lib esnext --noEmit ./lib/index.d.ts';
     }
 
     if (pkg.scripts) {
