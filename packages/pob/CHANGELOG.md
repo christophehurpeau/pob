@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.11.0](https://github.com/christophehurpeau/pob/compare/pob@5.10.1...pob@5.11.0) (2020-05-02)
+
+
+### Bug Fixes
+
+* always add @pob/commitlint-config in devdeps ([543a689](https://github.com/christophehurpeau/pob/commit/543a689c468396b569d8c8f4ee86c89575c0cc18))
+* delete build:definitions script in apps ([3c86ef0](https://github.com/christophehurpeau/pob/commit/3c86ef010df66af11e03b5a612a49448dc6137d9))
+* for when pobConfig doesnt exists yet ([7926e6e](https://github.com/christophehurpeau/pob/commit/7926e6ed405c0c5db77017440700e8ef1e0a692e))
+* jest override ([c084d45](https://github.com/christophehurpeau/pob/commit/c084d4505ab90f7ed2da3f142849091e12db2b0a))
+* lint *.js only in root or babel projets ([d0e8dc8](https://github.com/christophehurpeau/pob/commit/d0e8dc886a8beae793cf0be7a7acf2476ebd7a7c))
+* only run pnpify on yarn 2 ([bdb8ced](https://github.com/christophehurpeau/pob/commit/bdb8ced5b29e515470fd2837b58b1dfdd977584f))
+* use yarn to publish with yarn 2 ([4ab2343](https://github.com/christophehurpeau/pob/commit/4ab2343e1530c23d8e967e41f3559dddc5008cf0))
+* write root eslintrc config ([a7625cb](https://github.com/christophehurpeau/pob/commit/a7625cb44aaaf7bd2c492912b96d412b66cb7115))
+* yarn dependencies ([2848995](https://github.com/christophehurpeau/pob/commit/28489957398a5d91913b513e3619adf77066d162))
+* **deps:** update dependency prettier to v2.0.3 ([#509](https://github.com/christophehurpeau/pob/issues/509)) ([740be36](https://github.com/christophehurpeau/pob/commit/740be36db0f5907e0134d3a6c8264882648dfd97))
+* **deps:** update dependency prettier to v2.0.4 ([#511](https://github.com/christophehurpeau/pob/issues/511)) ([2ba8888](https://github.com/christophehurpeau/pob/commit/2ba888816e299a75977a2d3c26de145b159abc05))
+* **deps:** update dependency prettier to v2.0.5 ([#538](https://github.com/christophehurpeau/pob/issues/538)) ([f43fc5f](https://github.com/christophehurpeau/pob/commit/f43fc5f129171739f6c556a59be646e35bbb739f))
+* yarn 2 eslint devdeps ([7618b7d](https://github.com/christophehurpeau/pob/commit/7618b7dbf08926e8c58e4d6446f3ada3849beff9))
+
+
+### Features
+
+* add ignoreChanges in lerna config ([07e3e64](https://github.com/christophehurpeau/pob/commit/07e3e6479d85f8e3fa0c8a4ce9d920056ecf53c6))
+* dont add eslint config in lib if same as root ([3163101](https://github.com/christophehurpeau/pob/commit/3163101cfed63f0e49fe6af9ee2a779177fce28d))
+* root vs src eslint ([eeb6b29](https://github.com/christophehurpeau/pob/commit/eeb6b29b6b87ca6bad08ccdaf935a093a57fcdbe))
+* run command to update yarn ([004a6be](https://github.com/christophehurpeau/pob/commit/004a6bec6e2e42ab6407c81c6fcb3c174c71a188))
+* update node 10 image for circleci ([a77a850](https://github.com/christophehurpeau/pob/commit/a77a85094860a92a30701102d77b1eafff57df54))
+* update protection branch ([bbd44c8](https://github.com/christophehurpeau/pob/commit/bbd44c8314c672812cec6d15725cbf9cd69c3747))
+* use node 14 instead of 13 ([b597253](https://github.com/christophehurpeau/pob/commit/b597253d7ee91731a91338d89361fd00b3ec7464))
+
+
+
+
+
 ## [5.10.1](https://github.com/christophehurpeau/pob/compare/pob@5.10.0...pob@5.10.1) (2020-04-05)
 
 **Note:** Version bump only for package pob

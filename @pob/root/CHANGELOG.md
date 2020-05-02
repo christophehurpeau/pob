@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.1](https://github.com/christophehurpeau/pob/compare/@pob/root@1.4.0...@pob/root@1.4.1) (2020-05-02)
+
+
+### Bug Fixes
+
+* **@pob/root:** run yarn install after yarn-deduplicate ([88c23ff](https://github.com/christophehurpeau/pob/commit/88c23ff3299770344a4c6d4c63ab96af576cfa93))
+* **deps:** update dependency lint-staged to v10.1.3 ([#518](https://github.com/christophehurpeau/pob/issues/518)) ([cfd44f5](https://github.com/christophehurpeau/pob/commit/cfd44f51467c4d5ad1c20df07f96ada1d29e6ace))
+* **deps:** update dependency lint-staged to v10.1.4 ([#530](https://github.com/christophehurpeau/pob/issues/530)) ([ae695b8](https://github.com/christophehurpeau/pob/commit/ae695b8f5de0a66d3f1769a99f93c091944c29b5))
+* **deps:** update dependency lint-staged to v10.1.5 ([#531](https://github.com/christophehurpeau/pob/issues/531)) ([6e9800a](https://github.com/christophehurpeau/pob/commit/6e9800a7f71fe14df288f8e421b380418bd58c4f))
+* **deps:** update dependency lint-staged to v10.1.6 ([#533](https://github.com/christophehurpeau/pob/issues/533)) ([1a42bab](https://github.com/christophehurpeau/pob/commit/1a42babf13927bbaa2459efa29be275842aa3660))
+* **deps:** update dependency lint-staged to v10.1.7 ([#537](https://github.com/christophehurpeau/pob/issues/537)) ([c898ded](https://github.com/christophehurpeau/pob/commit/c898dedbd9d485385423bd20b1cbf6a575bd16d1))
+* **deps:** update dependency lint-staged to v10.2.0 ([#544](https://github.com/christophehurpeau/pob/issues/544)) ([888d166](https://github.com/christophehurpeau/pob/commit/888d1669f0dc067ebe8096debc795860b77dfcb1))
+* **deps:** update dependency lint-staged to v10.2.1 ([#549](https://github.com/christophehurpeau/pob/issues/549)) ([1ba0049](https://github.com/christophehurpeau/pob/commit/1ba0049a11ac970b1414a451e3d23e402a6925cc))
+* **deps:** update dependency lint-staged to v10.2.2 ([#552](https://github.com/christophehurpeau/pob/issues/552)) ([77c7b21](https://github.com/christophehurpeau/pob/commit/77c7b21866620836715b05556a6fa3ea9a4c1ca8))
+
+
+
+
+
 # [1.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@1.3.4...@pob/root@1.4.0) (2020-04-05)
 
 

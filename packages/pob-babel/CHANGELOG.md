@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.9.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.8.1...pob-babel@24.9.0) (2020-05-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency rollup-plugin-babel to v5.0.0-alpha.2 ([#524](https://github.com/christophehurpeau/pob/issues/524)) ([b9761e0](https://github.com/christophehurpeau/pob/commit/b9761e0e029f1b5e4a9110176c20faa77842b143))
+
+
+### Features
+
+* **deps:** update dependency jest to v25.5.2 ([#548](https://github.com/christophehurpeau/pob/issues/548)) ([ce73c28](https://github.com/christophehurpeau/pob/commit/ce73c2852aa26d29e8bddfa450a7fd746825eb32))
+* **deps:** update dependency jest to v25.5.3 ([#550](https://github.com/christophehurpeau/pob/issues/550)) ([d64c412](https://github.com/christophehurpeau/pob/commit/d64c412cedf9be5aa6e32d35512b314ebd35bbe7))
+* **deps:** update dependency jest to v25.5.4 ([#553](https://github.com/christophehurpeau/pob/issues/553)) ([35bf836](https://github.com/christophehurpeau/pob/commit/35bf83686b3342dc34b50893ba40e506b294a6af))
+* **deps:** update jest monorepo to v25.3.0 ([#517](https://github.com/christophehurpeau/pob/issues/517)) ([0d960c4](https://github.com/christophehurpeau/pob/commit/0d960c4776edbe6b7bb27ec051a16f4435d62ddb))
+* **deps:** update jest monorepo to v25.4.0 ([#534](https://github.com/christophehurpeau/pob/issues/534)) ([b16a539](https://github.com/christophehurpeau/pob/commit/b16a539cc9dc7484c281eaeb5ff76e2ce4863583))
+* **deps:** update jest monorepo to v25.5.0 ([#545](https://github.com/christophehurpeau/pob/issues/545)) ([e8c6c92](https://github.com/christophehurpeau/pob/commit/e8c6c92cb353e5c1df4c0122f9b30bd0d1c683c8))
+* **deps:** update jest monorepo to v25.5.1 ([#546](https://github.com/christophehurpeau/pob/issues/546)) ([5551e1d](https://github.com/christophehurpeau/pob/commit/5551e1d297345d36b23ba3ebae6b5174cf024e35))
+
+
+
+
+
 ## [24.8.1](https://github.com/christophehurpeau/pob/compare/pob-babel@24.8.0...pob-babel@24.8.1) (2020-04-05)
 
 

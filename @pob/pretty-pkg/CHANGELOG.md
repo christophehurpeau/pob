@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@1.1.1...@pob/pretty-pkg@1.2.0) (2020-05-02)
+
+
+### Features
+
+* update prettier ([e66d60f](https://github.com/christophehurpeau/pob/commit/e66d60f4989307bad90b704d882295b76d9be21e))
+
+
+
+
+
 ## [1.1.1](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@1.1.0...@pob/pretty-pkg@1.1.1) (2020-04-05)
 
 

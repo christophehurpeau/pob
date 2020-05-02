@@ -1,6 +1,6 @@
 {
   "name": "@pob/sort-pkg",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "sort package.json",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -28,6 +28,6 @@
   },
   "pob": {},
   "dependencies": {
-    "@pob/sort-object": "^1.1.0"
+    "@pob/sort-object": "^1.1.1"
   }
 }
