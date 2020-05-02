@@ -73,13 +73,52 @@ module.exports = class LernaGenerator extends Generator {
       }
     }
 
+    if (!lernaConfig.command) lernaConfig.command = {};
+    if (!lernaConfig.command.publish) lernaConfig.command.publish = {};
+
+    lernaConfig.command.publish.ignoreChanges =
+      (lernaCurrentConfig &&
+        lernaCurrentConfig.command &&
+        lernaCurrentConfig.command.publish &&
+        lernaCurrentConfig.command.publish.ignoreChanges) ||
+      [];
+
     this.fs.writeJSON(this.destinationPath('lerna.json'), lernaConfig);
   }
 
   writing() {
     console.log('lerna: writing');
 
+    const getPackagePobConfig = (config) => ({
+      babelEnvs: [],
+      ...((config && config.pob) || {}),
+    });
+    const withBabel = this.packages.some(
+      (config) => getPackagePobConfig(config).babelEnvs.length !== 0
+    );
+
     const isYarn2 = this.fs.exists('.yarnrc.yml');
+
+    // lerna.json
+    const lernaConfig = this.fs.readJSON(
+      this.destinationPath('lerna.json'),
+      {}
+    );
+
+    lernaConfig.command.publish.ignoreChanges = [
+      '**/.yo-rc.json',
+      '**/renovate.json',
+      '**/.eslintrc.json',
+    ];
+
+    if (withBabel) {
+      lernaConfig.command.publish.ignoreChanges.push(
+        '**/tsconfig.json',
+        '**/tsconfig.build.json'
+      );
+    }
+
+    this.fs.writeJSON(this.destinationPath('lerna.json'), lernaConfig);
 
     // package.json
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
@@ -102,16 +141,9 @@ module.exports = class LernaGenerator extends Generator {
 
     packageUtils.removeDevDependencies(pkg, ['pob-release']);
 
-    const getPackagePobConfig = (config) => ({
-      babelEnvs: [],
-      ...((config && config.pob) || {}),
-    });
     const getPobConfig = (config) => ({
       ...((config && config.pob && config.pob['pob-config']) || {}),
     });
-    const withBabel = this.packages.some(
-      (config) => getPackagePobConfig(config).babelEnvs.length !== 0
-    );
     // ynnub doesnt use babel but still have typescript
     const withTypescript = this.packagePaths.some((packagePath) =>
       this.fs.exists(this.destinationPath(`${packagePath}/tsconfig.json`))
