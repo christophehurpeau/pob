@@ -246,23 +246,29 @@ module.exports = class LintGenerator extends Generator {
       `${useBabel ? 'src/' : 'lib/'}.eslintrc.json`
     );
 
-    try {
+    if (!useBabel && useNodeOnly) {
       if (this.fs.exists(srcEslintrcPath)) {
-        ensureJsonFileFormatted(srcEslintrcPath);
+        this.fs.delete(srcEslintrcPath);
       }
-
-      const srcEslintrcConfig = updateEslintConfig(
-        this.fs.readJSON(srcEslintrcPath, {}),
-        {
-          extendsConfig,
-          jestOverride,
-          useTypescript: useBabel,
+    } else {
+      try {
+        if (this.fs.exists(srcEslintrcPath)) {
+          ensureJsonFileFormatted(srcEslintrcPath);
         }
-      );
 
-      this.fs.write(srcEslintrcPath, formatJson(srcEslintrcConfig));
-    } catch (err) {
-      console.warn(`Could not parse/edit ${srcEslintrcPath}: `, err);
+        const srcEslintrcConfig = updateEslintConfig(
+          this.fs.readJSON(srcEslintrcPath, {}),
+          {
+            extendsConfig,
+            jestOverride,
+            useTypescript: useBabel,
+          }
+        );
+
+        this.fs.write(srcEslintrcPath, formatJson(srcEslintrcConfig));
+      } catch (err) {
+        console.warn(`Could not parse/edit ${srcEslintrcPath}: `, err);
+      }
     }
 
     const srcDirectory = useBabel ? 'src' : 'lib';
