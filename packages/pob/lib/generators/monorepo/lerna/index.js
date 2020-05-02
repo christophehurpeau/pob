@@ -60,12 +60,18 @@ module.exports = class LernaGenerator extends Generator {
           version: lernaCurrentConfig.version || 'independent',
           npmClient: 'yarn',
           useWorkspaces: true,
-          command: {
-            publish: {
-              npmClient: 'npm',
-            },
+        };
+
+    if (!this.npm) {
+      const isYarn2 = this.fs.exists('.yarnrc.yml');
+      if (!isYarn2) {
+        lernaConfig.command = {
+          publish: {
+            npmClient: 'npm',
           },
         };
+      }
+    }
 
     this.fs.writeJSON(this.destinationPath('lerna.json'), lernaConfig);
   }
