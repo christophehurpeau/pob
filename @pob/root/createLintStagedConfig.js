@@ -54,13 +54,19 @@ module.exports = function createLintStagedConfig() {
         `git add yarn.lock${yarnMajorVersion >= 2 ? ' .yarn .yarnrc.yml' : ''}`,
       ].filter(Boolean);
     },
-    [`{.eslintrc.json${
+    [`{*.json${
       workspaces
         ? `,${workspaces
-            .map((workspacePath) => `${workspacePath}/{.eslintrc.json}`)
+            .map((workspacePath) => `${workspacePath}/*.json`)
             .join(',')}`
         : ''
-    },${srcDirectories}/**/*.json}`]: ['prettier --write'],
+    }}`]: (filenames) => {
+      const filteredFilenames = filenames.filter(
+        (name) => !name.endsWith('/package.json')
+      );
+      if (filteredFilenames.length === 0) return [];
+      return [`prettier --write ${filteredFilenames.join(' ')}`];
+    },
     [`{.storybook,${srcDirectories}}/**/*.css`]: [
       'prettier --parser css --write',
     ],
