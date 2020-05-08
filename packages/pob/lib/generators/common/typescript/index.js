@@ -15,10 +15,10 @@ module.exports = class TypescriptGenerator extends Generator {
       desc: 'enable typescript',
     });
 
-    this.option('withReact', {
+    this.option('jsx', {
       type: Boolean,
       defaults: true,
-      desc: 'enable react with typescript',
+      desc: 'enable jsx with typescript',
     });
 
     this.option('baseUrl', {
@@ -55,7 +55,7 @@ module.exports = class TypescriptGenerator extends Generator {
     const tsconfigPath = this.destinationPath('tsconfig.json');
     const tsconfigBuildPath = this.destinationPath('tsconfig.build.json');
     if (this.options.enable) {
-      const { withReact } = this.options;
+      const { jsx } = this.options;
       let composite;
       let monorepoPackageNames;
       let monorepoPackageSrcPaths;
@@ -101,7 +101,7 @@ module.exports = class TypescriptGenerator extends Generator {
       this.fs.copyTpl(this.templatePath('tsconfig.json.ejs'), tsconfigPath, {
         monorepoPackageNames,
         monorepoPackageSrcPaths,
-        withReact,
+        jsx,
         baseUrl: this.options.baseUrl,
       });
       if (this.options.builddefs) {
@@ -109,7 +109,7 @@ module.exports = class TypescriptGenerator extends Generator {
           this.templatePath('tsconfig.build.json.ejs'),
           tsconfigBuildPath,
           {
-            withReact,
+            jsx,
             composite,
             monorepoPackageNames,
             monorepoPackageSrcPaths,

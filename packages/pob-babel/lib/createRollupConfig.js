@@ -22,10 +22,13 @@ module.exports = ({
     ? ['index', ...pobConfig.entries.slice(2)]
     : pobConfig.entries;
 
-  const hasReact = Boolean(
-    (pkg.dependencies && pkg.dependencies.react) ||
-      (pkg.peerDependencies && pkg.peerDependencies.react)
-  );
+  const jsx =
+    pobConfig.jsx ||
+    (pobConfig.jsx !== false &&
+      Boolean(
+        (pkg.dependencies && pkg.dependencies.react) ||
+          (pkg.peerDependencies && pkg.peerDependencies.react)
+      ));
 
   const nodeVersion = (version) => {
     switch (String(version)) {
@@ -44,7 +47,7 @@ module.exports = ({
     require.extensions['.ts'] = require.extensions['.js'];
   }
 
-  if (hasReact) {
+  if (jsx) {
     // allow to resolve .tsx entry files
     if (!require.extensions['.tsx']) {
       require.extensions['.tsx'] = require.extensions['.js'];
@@ -71,8 +74,8 @@ module.exports = ({
 
     const typescript = entryPath.endsWith('.ts') || entryPath.endsWith('.tsx');
     const extensions = (typescript
-      ? ['.ts', hasReact && '.tsx']
-      : ['.js', hasReact && '.jsx']
+      ? ['.ts', jsx && '.tsx']
+      : ['.js', jsx && '.jsx']
     ).filter(Boolean);
     const preferConst = !(env.target === 'browser' && env.version !== 'modern');
 
@@ -106,7 +109,7 @@ module.exports = ({
           babelrc: false,
           presets: [
             !typescript && require.resolve('@babel/preset-flow'), // compatibility
-            hasReact && [
+            jsx && [
               '@babel/preset-react',
               {
                 // always disable development: babel-plugin-transform-react-jsx-source compiles with filename full path, resulting in non reproducible builds

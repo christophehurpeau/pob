@@ -93,7 +93,7 @@ module.exports = class BabelGenerator extends Generator {
       babelNodeVersions = [],
       babelBrowserVersions = [],
       babelFormats,
-      withReact,
+      jsx,
     } = await this.prompt([
       {
         type: 'checkbox',
@@ -187,13 +187,13 @@ module.exports = class BabelGenerator extends Generator {
 
       {
         type: 'confirm',
-        name: 'withReact',
-        message: 'Enable React ?',
+        name: 'jsx',
+        message: 'Enable JSX ?',
         when: (answers) => answers.babelTargets.length !== 0,
         default:
-          pkg.pob.withReact === undefined
+          (pkg.pob.jsx || pkg.pob.withReact) === undefined
             ? packageUtils.hasReact(pkg)
-            : pkg.pob.withReact,
+            : pkg.pob.jsx || pkg.pob.withReact,
       },
     ]);
 
@@ -224,10 +224,11 @@ module.exports = class BabelGenerator extends Generator {
       delete pkg.pob.babelEnvs;
       delete pkg.pob.entries;
       delete pkg.pob.withReact;
+      delete pkg.pob.jsx;
     } else {
       pkg.pob.babelEnvs = newBabelEnvs;
       pkg.pob.entries = pkg.pob.entries || ['index'];
-      pkg.pob.withReact = withReact;
+      pkg.pob.jsx = jsx;
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
@@ -345,11 +346,9 @@ module.exports = class BabelGenerator extends Generator {
       packageUtils.addDependencies(pkg, ['@babel/runtime'], '^');
     }
 
-    packageUtils.addOrRemoveDevDependencies(
-      pkg,
-      useBabel && packageUtils.hasReact(pkg),
-      ['@babel/preset-react']
-    );
+    packageUtils.addOrRemoveDevDependencies(pkg, useBabel && pkg.pob.jsx, [
+      '@babel/preset-react',
+    ]);
 
     packageUtils.removeDevDependencies(pkg, [
       'babel-preset-env', // now @babel/preset-env

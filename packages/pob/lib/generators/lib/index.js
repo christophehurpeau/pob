@@ -50,7 +50,8 @@ module.exports = class PobLibGenerator extends Generator {
 
     let babelEnvs = this.pobjson.envs || pobPkgConfig.babelEnvs;
     const entries = this.pobjson.entries || pobPkgConfig.entries;
-    const withReact = this.pobjson.withReact || pobPkgConfig.withReact;
+    const jsx =
+      this.pobjson.withReact || pobPkgConfig.withReact || pobPkgConfig.jsx;
 
     if (babelEnvs && typeof babelEnvs[0] === 'string') {
       babelEnvs = babelEnvs.map((env) => {
@@ -139,14 +140,15 @@ module.exports = class PobLibGenerator extends Generator {
 
     pkg.pob = pkg.pob || {};
 
+    delete pkg.pob.withReact;
     if (babelEnvs && babelEnvs.length !== 0) {
       pkg.pob.babelEnvs = babelEnvs;
       pkg.pob.entries = entries;
-      pkg.pob.withReact = withReact;
+      pkg.pob.jsx = jsx;
     } else {
       delete pkg.pob.babelEnvs;
       delete pkg.pob.entries;
-      delete pkg.pob.withReact;
+      delete pkg.pob.jsx;
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
@@ -222,11 +224,11 @@ module.exports = class PobLibGenerator extends Generator {
     const babelEnvs = pkg.pob.babelEnvs || [];
 
     const withBabel = !!babelEnvs.length;
-    const withReact = withBabel && pkg.pob.withReact === true;
+    const jsx = withBabel && pkg.pob.jsx === true;
 
     this.composeWith(require.resolve('../common/typescript'), {
       enable: withBabel,
-      withReact,
+      jsx,
       updateOnly: this.options.updateOnly,
       baseUrl: './src',
     });

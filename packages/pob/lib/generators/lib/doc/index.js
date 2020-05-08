@@ -33,11 +33,12 @@ module.exports = class DocGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
     if (this.options.enabled) {
-      const withReact = packageUtils.hasReact(pkg);
+      const jsx =
+        pkg.pob.jsx !== undefined ? pkg.pob.jsx : packageUtils.hasReact(pkg);
       this.fs.copyTpl(
         this.templatePath('tsconfig.doc.json.ejs'),
         this.destinationPath('tsconfig.doc.json'),
-        { withReact }
+        { jsx }
       );
     } else {
       // this.fs.delete(this.destinationPath('jsdoc.conf.js'));
