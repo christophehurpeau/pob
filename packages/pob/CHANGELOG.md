@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.12.0](https://github.com/christophehurpeau/pob/compare/pob@5.11.0...pob@5.12.0) (2020-05-08)
+
+
+### Bug Fixes
+
+* global eslint ([fcceb80](https://github.com/christophehurpeau/pob/commit/fcceb80834aff09817ec07c38deb668a76adc5a7))
+
+
+### Features
+
+* jsx is not the same as with react ([c211a94](https://github.com/christophehurpeau/pob/commit/c211a9406046b615d7dd7444ff7edd4a2257b9a2))
+
+
+
+
+
 # [5.11.0](https://github.com/christophehurpeau/pob/compare/pob@5.10.1...pob@5.11.0) (2020-05-02)
 
 

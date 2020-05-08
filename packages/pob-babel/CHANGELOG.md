@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.10.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.9.0...pob-babel@24.10.0) (2020-05-08)
+
+
+### Features
+
+* jsx is not the same as with react ([c211a94](https://github.com/christophehurpeau/pob/commit/c211a9406046b615d7dd7444ff7edd4a2257b9a2))
+
+
+
+
+
 # [24.9.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.8.1...pob-babel@24.9.0) (2020-05-02)
 
 

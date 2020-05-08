@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.12.0...pob-dependencies@1.13.0) (2020-05-08)
+
+
+### Features
+
+* update pob eslint config ([20e31dc](https://github.com/christophehurpeau/pob/commit/20e31dc73fd01c60013028257cf833e3de32c3b5))
+* **deps:** update typescript-eslint monorepo to v2.31.0 ([#556](https://github.com/christophehurpeau/pob/issues/556)) ([26e9154](https://github.com/christophehurpeau/pob/commit/26e9154450e4123155751a61fceb317ce8edd70a))
+
+
+
+
+
 # [1.12.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.11.1...pob-dependencies@1.12.0) (2020-05-02)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.5.0](https://github.com/christophehurpeau/pob/compare/@pob/root@1.4.1...@pob/root@1.5.0) (2020-05-08)
+
+
+### Features
+
+* lint all json files in root package directory ([964be11](https://github.com/christophehurpeau/pob/commit/964be11aca23ffc91eae717e4cc3dd9a46e5c42f))
+
+
+
+
+
 ## [1.4.1](https://github.com/christophehurpeau/pob/compare/@pob/root@1.4.0...@pob/root@1.4.1) (2020-05-02)
 
 
