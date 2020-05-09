@@ -14,6 +14,12 @@ module.exports = class MonorepoTypescriptGenerator extends Generator {
       desc: 'enable typescript',
     });
 
+    this.option('isAppProject', {
+      type: Boolean,
+      defaults: true,
+      desc: 'app project, no building definitions',
+    });
+
     this.option('packageNames', {
       type: String,
     });
@@ -42,28 +48,45 @@ module.exports = class MonorepoTypescriptGenerator extends Generator {
     if (this.options.enable) {
       packageUtils.addScripts(pkg, {
         tsc: 'tsc -b',
+      });
+      packageUtils.addOrRemoveScripts(pkg, !this.options.isAppProject, {
         'build:definitions': 'tsc -b tsconfig.build.json',
         postbuild: 'yarn run build:definitions',
       });
 
       const packagePaths = JSON.parse(this.options.packageNames)
-        .map(
-          (packageName) =>
-            `${packageName[0] === '@' ? '' : 'packages/'}${packageName}`
+        .map((packageName) =>
+          this.options.isAppProject && packageName.startsWith(`@${pkg.name}/`)
+            ? `packages/${packageName.slice(pkg.name.length + 2)}`
+            : `${packageName[0] === '@' ? '' : 'packages/'}${packageName}`
         )
         .filter((packagePath) => existsSync(`${packagePath}/tsconfig.json`));
+
+      if (packagePaths.length === 0) {
+        console.log(JSON.parse(this.options.packageNames));
+        throw new Error('packages should not be empty');
+      }
+
       this.fs.copyTpl(this.templatePath('tsconfig.json.ejs'), tsconfigPath, {
         packagePaths,
       });
-      this.fs.copyTpl(
-        this.templatePath('tsconfig.build.json.ejs'),
-        tsconfigBuildPath,
-        {
-          packagePaths: packagePaths.filter((packagePath) =>
-            existsSync(`${packagePath}/tsconfig.build.json`)
-          ),
-        }
-      );
+      if (this.options.isAppProject) {
+        this.fs.delete(tsconfigBuildPath);
+      } else {
+        this.fs.copyTpl(
+          this.templatePath('tsconfig.build.json.ejs'),
+          tsconfigBuildPath,
+          {
+            packagePaths: packagePaths.filter((packagePath) =>
+              existsSync(
+                `${packagePath}/tsconfig${
+                  this.options.isAppProject ? '' : '.build'
+                }.json`
+              )
+            ),
+          }
+        );
+      }
     } else {
       if (pkg.scripts) {
         delete pkg.scripts.tsc;

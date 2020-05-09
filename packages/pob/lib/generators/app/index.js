@@ -78,13 +78,15 @@ module.exports = class PobAppGenerator extends Generator {
       this.composeWith(require.resolve('../common/husky'), {});
     }
 
-    const babelEnvs = pkg.pob.babelEnvs || [];
+    const babelEnvs = (pkg.pob && pkg.pob.babelEnvs) || [];
     const babel =
       !!babelEnvs.length || appsWithTypescript.includes(this.appConfig.type);
     const node = true;
     const browser = appsWithNode.includes(this.appConfig.type);
     const jsx =
-      pkg.pob.jsx !== undefined ? pkg.pob.jsx : packageUtils.hasReact(pkg);
+      babelEnvs.length !== 0 && pkg.pob.jsx !== undefined
+        ? pkg.pob.jsx
+        : packageUtils.hasReact(pkg);
 
     this.composeWith(require.resolve('../common/typescript'), {
       enable: babel,

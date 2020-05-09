@@ -134,6 +134,7 @@ module.exports = class PobMonorepoGenerator extends Generator {
 
     this.composeWith(require.resolve('./typescript'), {
       enable: this.pobLernaConfig.typescript,
+      isAppProject: this.options.isAppProject,
       packageNames: JSON.stringify(this.pobLernaConfig.packageNames),
     });
   }
