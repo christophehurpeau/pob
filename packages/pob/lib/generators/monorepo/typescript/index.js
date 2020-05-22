@@ -58,7 +58,7 @@ module.exports = class MonorepoTypescriptGenerator extends Generator {
         .map((packageName) =>
           this.options.isAppProject && packageName.startsWith(`@${pkg.name}/`)
             ? `packages/${packageName.slice(pkg.name.length + 2)}`
-            : `${packageName[0] === '@' ? '' : 'packages/'}${packageName}`
+            : `${packageName[0] === '@' ? '' : 'packages/'}${packageName}`,
         )
         .filter((packagePath) => existsSync(`${packagePath}/tsconfig.json`));
 
@@ -81,10 +81,10 @@ module.exports = class MonorepoTypescriptGenerator extends Generator {
               existsSync(
                 `${packagePath}/tsconfig${
                   this.options.isAppProject ? '' : '.build'
-                }.json`
-              )
+                }.json`,
+              ),
             ),
-          }
+          },
         );
       }
     } else {

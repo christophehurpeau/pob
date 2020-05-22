@@ -26,19 +26,19 @@ module.exports = class LernaGenerator extends Generator {
       ...packagesPaths.map((packagesPath) => {
         return existsSync(`${packagesPath}/`)
           ? readdirSync(`${packagesPath}/`).map(
-              (packageName) => `${packagesPath}/${packageName}`
+              (packageName) => `${packagesPath}/${packageName}`,
             )
           : [];
-      })
+      }),
     );
     this.packages = this.packagePaths
       .map((packagePath) =>
-        this.fs.readJSON(this.destinationPath(`${packagePath}/package.json`))
+        this.fs.readJSON(this.destinationPath(`${packagePath}/package.json`)),
       )
       .filter(Boolean);
     this.packagesConfig = this.packagePaths
       .map((packagePath) =>
-        this.fs.readJSON(this.destinationPath(`${packagePath}/.yo-rc.json`))
+        this.fs.readJSON(this.destinationPath(`${packagePath}/.yo-rc.json`)),
       )
       .filter(Boolean);
   }
@@ -46,7 +46,7 @@ module.exports = class LernaGenerator extends Generator {
   default() {
     const lernaCurrentConfig = this.fs.readJSON(
       this.destinationPath('lerna.json'),
-      {}
+      {},
     );
     this.npm =
       lernaCurrentConfig.version && lernaCurrentConfig.npmClient !== 'yarn';
@@ -94,7 +94,7 @@ module.exports = class LernaGenerator extends Generator {
       ...((config && config.pob) || {}),
     });
     const withBabel = this.packages.some(
-      (config) => getPackagePobConfig(config).babelEnvs.length !== 0
+      (config) => getPackagePobConfig(config).babelEnvs.length !== 0,
     );
 
     const isYarn2 = this.fs.exists('.yarnrc.yml');
@@ -102,7 +102,7 @@ module.exports = class LernaGenerator extends Generator {
     // lerna.json
     const lernaConfig = this.fs.readJSON(
       this.destinationPath('lerna.json'),
-      {}
+      {},
     );
 
     lernaConfig.command.publish.ignoreChanges = [
@@ -114,7 +114,7 @@ module.exports = class LernaGenerator extends Generator {
     if (withBabel) {
       lernaConfig.command.publish.ignoreChanges.push(
         '**/tsconfig.json',
-        '**/tsconfig.build.json'
+        '**/tsconfig.build.json',
       );
     }
 
@@ -146,13 +146,13 @@ module.exports = class LernaGenerator extends Generator {
     });
     // ynnub doesnt use babel but still have typescript
     const withTypescript = this.packagePaths.some((packagePath) =>
-      this.fs.exists(this.destinationPath(`${packagePath}/tsconfig.json`))
+      this.fs.exists(this.destinationPath(`${packagePath}/tsconfig.json`)),
     );
     const withDocumentation = this.packagesConfig.some(
-      (config) => getPobConfig(config).documentation
+      (config) => getPobConfig(config).documentation,
     );
     const withTests = this.packagesConfig.some(
-      (config) => getPobConfig(config).testing
+      (config) => getPobConfig(config).testing,
     );
 
     const monorepoConfig = this.config.get('monorepo');
@@ -260,7 +260,7 @@ module.exports = class LernaGenerator extends Generator {
         {
           cwd: packagePath,
           stdio: 'inherit',
-        }
+        },
       );
     });
     this.spawnCommandSync('yarn', ['install']);

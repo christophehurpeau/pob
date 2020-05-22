@@ -6,18 +6,21 @@
   "license": "ISC",
   "repository": "https://github.com:christophehurpeau/pob.git",
   "homepage": "https://github.com/christophehurpeau/pob",
+  "engines": {
+    "node": ">=10.13.0"
+  },
   "workspaces": [
     "packages/*",
     "@pob/*"
   ],
   "scripts": {
-    "lint": "eslint .",
-    "preversion": "eslint . && repository-check-dirty",
+    "lint": "eslint --ext js,ts,tsx .",
+    "preversion": "yarn run lint && repository-check-dirty",
     "release": "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git",
     "test": "lerna run --stream test"
   },
   "prettier": {
-    "trailingComma": "es5",
+    "trailingComma": "all",
     "singleQuote": true,
     "arrowParens": "always"
   },

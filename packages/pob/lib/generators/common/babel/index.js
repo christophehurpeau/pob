@@ -126,8 +126,8 @@ module.exports = class BabelGenerator extends Generator {
             value: '10',
             checked: Boolean(
               babelEnvs.find(
-                (env) => env.target === 'node' && String(env.version) === '10'
-              )
+                (env) => env.target === 'node' && String(env.version) === '10',
+              ),
             ),
           },
         ],
@@ -145,8 +145,8 @@ module.exports = class BabelGenerator extends Generator {
             value: 'modern',
             checked: Boolean(
               babelEnvs.find(
-                (env) => env.target === 'browser' && env.version === 'modern'
-              )
+                (env) => env.target === 'browser' && env.version === 'modern',
+              ),
             ),
           },
           {
@@ -154,8 +154,8 @@ module.exports = class BabelGenerator extends Generator {
             value: undefined,
             checked: Boolean(
               babelEnvs.find(
-                (env) => env.target === 'browser' && env.version === undefined
-              )
+                (env) => env.target === 'browser' && env.version === undefined,
+              ),
             ),
           },
         ],
@@ -172,14 +172,14 @@ module.exports = class BabelGenerator extends Generator {
             name: 'commonjs',
             value: 'cjs',
             checked: Boolean(
-              babelEnvs.find((env) => env.formats.includes('cjs'))
+              babelEnvs.find((env) => env.formats.includes('cjs')),
             ),
           },
           {
             name: 'ES2015 module',
             value: 'es',
             checked: Boolean(
-              babelEnvs.find((env) => env.formats.includes('es'))
+              babelEnvs.find((env) => env.formats.includes('es')),
             ),
           },
         ],
@@ -251,24 +251,25 @@ module.exports = class BabelGenerator extends Generator {
               entry,
               node10: Boolean(
                 this.babelEnvs.find(
-                  (env) => env.target === 'node' && String(env.version) === '10'
-                )
+                  (env) =>
+                    env.target === 'node' && String(env.version) === '10',
+                ),
               ),
               node8: Boolean(
                 this.babelEnvs.find(
-                  (env) => env.target === 'node' && String(env.version) === '8'
-                )
+                  (env) => env.target === 'node' && String(env.version) === '8',
+                ),
               ),
               node6: Boolean(
                 this.babelEnvs.find(
-                  (env) => env.target === 'node' && String(env.version) === '6'
-                )
+                  (env) => env.target === 'node' && String(env.version) === '6',
+                ),
               ),
             });
           } else {
             this.fs.copyTpl(
               this.templatePath('entry.browseronly.js'),
-              entryDestPath
+              entryDestPath,
             );
           }
         } else {
@@ -291,7 +292,7 @@ module.exports = class BabelGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     const hasTargetNode = this.babelEnvs.find((env) => env.target === 'node');
     const hasTargetBrowser = this.babelEnvs.find(
-      (env) => env.target === 'browser'
+      (env) => env.target === 'browser',
     );
 
     /* scripts */
@@ -359,23 +360,23 @@ module.exports = class BabelGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.babelEnvs.find(
-        (env) => env.target === 'browser' && env.version === undefined
+        (env) => env.target === 'browser' && env.version === undefined,
       ),
-      ['@babel/preset-env']
+      ['@babel/preset-env'],
     );
 
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.babelEnvs.find((env) => env.target === 'node'),
-      ['babel-preset-latest-node']
+      ['babel-preset-latest-node'],
     );
 
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.babelEnvs.find(
-        (env) => env.target === 'browser' && env.version === 'modern'
+        (env) => env.target === 'browser' && env.version === 'modern',
       ),
-      ['babel-preset-modern-browsers']
+      ['babel-preset-modern-browsers'],
     );
 
     /* engines */
@@ -386,7 +387,7 @@ module.exports = class BabelGenerator extends Generator {
         .filter((env) => env.target === 'node')
         .reduce(
           (min, env) => Math.min(min, env.version),
-          Number.MAX_SAFE_INTEGER
+          Number.MAX_SAFE_INTEGER,
         );
       switch (String(minNodeVersion)) {
         case '10':
@@ -430,7 +431,7 @@ module.exports = class BabelGenerator extends Generator {
       pkg.main = !this.babelEnvs.find((env) => env.target === 'node')
         ? `./dist/index-browser.${
             this.babelEnvs.find(
-              (env) => env.target === 'browser' && !env.formats.includes('cjs')
+              (env) => env.target === 'browser' && !env.formats.includes('cjs'),
             )
               ? 'es'
               : 'cjs'
@@ -456,7 +457,7 @@ module.exports = class BabelGenerator extends Generator {
         (env) =>
           env.target === 'browser' &&
           env.version === undefined &&
-          env.formats.includes('cjs')
+          env.formats.includes('cjs'),
       )
     ) {
       delete pkg.browser;
@@ -478,19 +479,19 @@ module.exports = class BabelGenerator extends Generator {
     }
 
     const esNodeEnv = this.babelEnvs.find(
-      (env) => env.target === 'node' && env.formats.includes('es')
+      (env) => env.target === 'node' && env.formats.includes('es'),
     );
     const esAllBrowserEnv = this.babelEnvs.find(
       (env) =>
         env.target === 'browser' &&
         env.version === undefined &&
-        env.formats.includes('es')
+        env.formats.includes('es'),
     );
     const esModernBrowserEnv = this.babelEnvs.find(
       (env) =>
         env.target === 'browser' &&
         env.version === 'modern' &&
-        env.formats.includes('es')
+        env.formats.includes('es'),
     );
 
     if (esModernBrowserEnv) {
@@ -542,7 +543,7 @@ module.exports = class BabelGenerator extends Generator {
     }
 
     const esBrowserEnvs = this.babelEnvs.filter(
-      (env) => env.target === 'browser' && env.formats.includes('es')
+      (env) => env.target === 'browser' && env.formats.includes('es'),
     );
     const aliases = (this.entries || []).filter((entry) => entry !== 'index');
     if (
@@ -621,7 +622,7 @@ module.exports = class BabelGenerator extends Generator {
         {
           hasReact,
           testing: this.options.testing,
-        }
+        },
       );
     } else {
       this.fs.delete('.babelrc');

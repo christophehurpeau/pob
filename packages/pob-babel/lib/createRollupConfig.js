@@ -27,7 +27,7 @@ module.exports = ({
     (pobConfig.jsx !== false &&
       Boolean(
         (pkg.dependencies && pkg.dependencies.react) ||
-          (pkg.peerDependencies && pkg.peerDependencies.react)
+          (pkg.peerDependencies && pkg.peerDependencies.react),
       ));
 
   const nodeVersion = (version) => {
@@ -180,8 +180,8 @@ module.exports = ({
         entries.map((entry) => [
           createConfigForEnv(entry, env, true),
           createConfigForEnv(entry, env, false),
-        ])
-      )
-    )
+        ]),
+      ),
+    ),
   );
 };

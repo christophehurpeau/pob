@@ -57,8 +57,8 @@ Promise.resolve(argv._[0])
         (err, recommendation) => {
           if (err) return reject(err);
           resolve(recommendation.releaseType);
-        }
-      )
+        },
+      ),
     );
   })
   .then((recommandedVersion) => {
@@ -114,7 +114,7 @@ Promise.resolve(argv._[0])
       `npm version --ignore-scripts "${version}" -m "chore(package): v${version}"`,
       {
         stdio: 'inherit',
-      }
+      },
     );
 
     /* PUSH */

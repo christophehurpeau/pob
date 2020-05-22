@@ -19,7 +19,7 @@ module.exports = class GitGenerator extends Generator {
 
   async initializing() {
     let originUrl = await remoteUrl(this.destinationPath(), 'origin').catch(
-      () => ''
+      () => '',
     );
 
     if (!originUrl) {
@@ -33,7 +33,7 @@ module.exports = class GitGenerator extends Generator {
       typeof originUrl === 'string' &&
       originUrl.match(
         // eslint-disable-next-line unicorn/no-unsafe-regex
-        /^(?:git@|https?:\/\/)(?:([^./:]+)(?:\.com)?[/:])?([^/:]+)\/([^./:]+)(?:.git)?/
+        /^(?:git@|https?:\/\/)(?:([^./:]+)(?:\.com)?[/:])?([^/:]+)\/([^./:]+)(?:.git)?/,
       );
     if (!match) return;
     const [, gitHost, gitAccount, repoName] = match;
@@ -74,7 +74,7 @@ module.exports = class GitGenerator extends Generator {
         const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
         const author = packageUtils.parsePkgAuthor(pkg);
         this.gitHostAccount = await githubUsername(author.email).catch(
-          () => ''
+          () => '',
         );
       }
     }

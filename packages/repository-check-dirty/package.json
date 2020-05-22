@@ -21,7 +21,7 @@
     "lint": "eslint --quiet bin"
   },
   "prettier": {
-    "trailingComma": "es5",
+    "trailingComma": "all",
     "singleQuote": true,
     "arrowParens": "always"
   },

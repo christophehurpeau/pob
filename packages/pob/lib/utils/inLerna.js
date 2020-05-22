@@ -10,7 +10,7 @@ const rootMonorepo = lernaJsonPath ? path.dirname(lernaJsonPath) : undefined;
 
 const getInLernaThings = () => {
   const rootYoConfig = JSON.parse(
-    fs.readFileSync(path.resolve(rootMonorepo, '.yo-rc.json'), 'utf-8')
+    fs.readFileSync(path.resolve(rootMonorepo, '.yo-rc.json'), 'utf-8'),
   );
   const cwd = process.cwd();
 

@@ -23,7 +23,7 @@ module.exports = function (api, options, dirname) {
 
   if (typeof useESModules !== 'boolean' && useESModules !== 'auto') {
     throw new Error(
-      "The 'useESModules' option must be undefined, or a boolean, or 'auto'."
+      "The 'useESModules' option must be undefined, or a boolean, or 'auto'.",
     );
   }
 
@@ -81,7 +81,7 @@ module.exports = function (api, options, dirname) {
         return this.addDefaultImport(
           `${modulePath}/${helpersDir}/${name}`,
           name,
-          blockHoist
+          blockHoist,
         );
       });
 
@@ -120,8 +120,8 @@ module.exports = function (api, options, dirname) {
           path.replaceWith(
             this.addDefaultImport(
               `${modulePath}/regenerator`,
-              'regeneratorRuntime'
-            )
+              'regeneratorRuntime',
+            ),
           );
         }
       },

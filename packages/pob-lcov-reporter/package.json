@@ -16,7 +16,7 @@
   },
   "main": "./lib/index.js",
   "prettier": {
-    "trailingComma": "es5",
+    "trailingComma": "all",
     "singleQuote": true,
     "arrowParens": "always"
   },

@@ -72,7 +72,7 @@ module.exports = class CiGenerator extends Generator {
               codecov: this.options.codecov,
               node12: true,
               node10: true, // Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '10')),
-            }
+            },
           );
         }
 
@@ -85,7 +85,7 @@ module.exports = class CiGenerator extends Generator {
             checks: !!pkg.scripts && !!pkg.scripts.checks,
             documentation: this.options.documentation,
             codecov: this.options.codecov,
-          }
+          },
         );
       } catch (err) {
         console.log(err.stack || err.message || err);
@@ -112,7 +112,7 @@ module.exports = class CiGenerator extends Generator {
       packageUtils.addOrRemoveDevDependencies(
         pkg,
         this.options.circleci && pkg.jest,
-        ['jest-junit-reporter']
+        ['jest-junit-reporter'],
       );
     }
 

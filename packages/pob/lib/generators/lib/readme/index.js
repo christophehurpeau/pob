@@ -83,7 +83,7 @@ module.exports = class ReadmeGenerator extends Generator {
       repository &&
       repository.match(
         // eslint-disable-next-line unicorn/no-unsafe-regex
-        /^(?:git@|https?:\/\/)(?:([^./:]+)(?:\.com)?:)?([^/:]+)\/([^./:]+)(?:.git)?/
+        /^(?:git@|https?:\/\/)(?:([^./:]+)(?:\.com)?:)?([^/:]+)\/([^./:]+)(?:.git)?/,
       );
     const [, gitHost, gitAccount, gitName] = match || [];
     try {
@@ -116,7 +116,7 @@ module.exports = class ReadmeGenerator extends Generator {
           filepath: 'README.md',
           singleQuote: true,
           arrowParens: 'always',
-        })
+        }),
       );
     } catch (err) {
       console.log(err.stack || err.message || err);

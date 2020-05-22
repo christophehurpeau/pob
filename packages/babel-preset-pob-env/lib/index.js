@@ -16,8 +16,8 @@ module.exports = function (context, opts) {
   if (targetOption && !validTargetOption.includes(targetOption)) {
     throw new Error(
       `Preset pob-env 'target' option must one of ${validTargetOption.join(
-        ', '
-      )}.`
+        ', ',
+      )}.`,
     );
   }
 
@@ -28,10 +28,10 @@ module.exports = function (context, opts) {
         typeof opts[optionName] !== 'boolean'
       ) {
         throw new Error(
-          `Preset pob-env '${optionName}' option must be a boolean.`
+          `Preset pob-env '${optionName}' option must be a boolean.`,
         );
       }
-    }
+    },
   );
 
   if (opts.flow !== undefined) throw new Error('option flow is deprecated.');
@@ -66,26 +66,26 @@ module.exports = function (context, opts) {
 
   if (typeof exportDefaultName !== 'boolean') {
     throw new TypeError(
-      "Preset pob-env 'exportDefaultName' option must be an boolean."
+      "Preset pob-env 'exportDefaultName' option must be an boolean.",
     );
   }
 
   if (typeof replacements !== 'object') {
     throw new TypeError(
-      "Preset pob-env 'replacements' option must be an object or undefined (default)"
+      "Preset pob-env 'replacements' option must be an object or undefined (default)",
     );
   }
 
   if (modules !== false && modules !== 'commonjs') {
     throw new Error(
       "Preset pob-env 'modules' option must be 'false' to indicate no modules\n" +
-        "or 'commonjs' (default)"
+        "or 'commonjs' (default)",
     );
   }
 
   if (production && targetOption === 'node' && versionOption === 'jest') {
     throw new Error(
-      "Preset pob-env 'production' option cannot be false with jest"
+      "Preset pob-env 'production' option cannot be false with jest",
     );
   }
 
@@ -95,7 +95,7 @@ module.exports = function (context, opts) {
       if (replacementsKeys.includes(key)) {
         throw new Error(`Preset pob-env 'replacements.${key}' is reserved.`);
       }
-    }
+    },
   );
 
   replacementsKeys.forEach((key) => {
@@ -104,7 +104,7 @@ module.exports = function (context, opts) {
     }
     if (typeof replacements[key] !== 'boolean') {
       throw new TypeError(
-        `Preset pob-env 'replacements.${key}' option must be a boolean.`
+        `Preset pob-env 'replacements.${key}' option must be a boolean.`,
       );
     }
   });
@@ -117,7 +117,7 @@ module.exports = function (context, opts) {
     'PRODUCTION',
     'POB_ENV',
     'POB_TARGET',
-    'POB_TARGET_VERSION'
+    'POB_TARGET_VERSION',
   );
 
   let targetPreset;

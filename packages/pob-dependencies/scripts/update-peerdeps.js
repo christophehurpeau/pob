@@ -24,7 +24,7 @@ Object.keys(pkg.devDependencies).forEach((key) => {
           !pkg.devDependencies[peerDep]
             ? 'it was added in'
             : `version ${pkg.devDependencies[peerDep]} doesn't match peer dependency in`
-        } ${depPkg.name} (${depPkg.version})`
+        } ${depPkg.name} (${depPkg.version})`,
       );
       pkg.devDependencies[peerDep] = newVersion;
       madeModifications = true;

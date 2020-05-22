@@ -38,7 +38,7 @@ module.exports = class DocGenerator extends Generator {
       this.fs.copyTpl(
         this.templatePath('tsconfig.doc.json.ejs'),
         this.destinationPath('tsconfig.doc.json'),
-        { jsx }
+        { jsx },
       );
     } else {
       // this.fs.delete(this.destinationPath('jsdoc.conf.js'));

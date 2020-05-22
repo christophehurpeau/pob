@@ -22,7 +22,7 @@
     "lint": "eslint --quiet lib"
   },
   "prettier": {
-    "trailingComma": "es5",
+    "trailingComma": "all",
     "singleQuote": true,
     "arrowParens": "always"
   },

@@ -10,7 +10,7 @@ const pm = whichPmRuns();
 
 if (pm.name !== 'yarn') {
   console.error(
-    `Package manager not supported: ${pm.name}. Please run with yarn !`
+    `Package manager not supported: ${pm.name}. Please run with yarn !`,
   );
   process.exit(1);
 }
@@ -41,7 +41,7 @@ module.exports = function createLintStagedConfig() {
         : ''
     }}`]: (filenames) => {
       const packagejsonFilenames = filenames.filter((filename) =>
-        filename.endsWith('.json')
+        filename.endsWith('.json'),
       );
 
       return [
@@ -62,7 +62,7 @@ module.exports = function createLintStagedConfig() {
         : ''
     }}`]: (filenames) => {
       const filteredFilenames = filenames.filter(
-        (name) => !name.endsWith('/package.json')
+        (name) => !name.endsWith('/package.json'),
       );
       if (filteredFilenames.length === 0) return [];
       return [`prettier --write ${filteredFilenames.join(' ')}`];

@@ -10,7 +10,7 @@ const pkg = JSON.parse(fs.readFileSync(path, 'utf-8'));
 const excludePkgNames = ['@pob/root', 'husky'];
 
 pkg['renovate-config'].default.packageRules[0].packageNames = Object.keys(
-  pobDependencies.devDependencies
+  pobDependencies.devDependencies,
 ).filter((pkgName) => !excludePkgNames.includes(pkgName));
 
 const formattedPkg = prettier.format(JSON.stringify(pkg, null, 2), {

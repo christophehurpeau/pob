@@ -9,7 +9,7 @@ module.exports = function prettyPkg(pkg, prettierOptions) {
     pkg = JSON.parse(pkg);
     if (typeof pkg !== 'object') {
       throw new TypeError(
-        'Invalid package: not an object after parsing string'
+        'Invalid package: not an object after parsing string',
       );
     }
   } else if (typeof pkg !== 'object') {

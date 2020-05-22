@@ -10,7 +10,7 @@ try {
   const stdout = execSync('git status --porcelain', { encoding: 'utf-8' });
   if (stdout) {
     console.log(
-      'Repository has uncommitted changes, please commit or remove these files:\n'
+      'Repository has uncommitted changes, please commit or remove these files:\n',
     );
     console.log(stdout);
     process.exit(1);

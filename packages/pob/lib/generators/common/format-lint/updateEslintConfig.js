@@ -6,7 +6,7 @@ function updateOverrides(config, jestOverride) {
   const existingJestOverrideIndex = !config.overrides
     ? -1
     : config.overrides.findIndex(
-        (override) => override.env && override.env.jest
+        (override) => override.env && override.env.jest,
       );
   if (!jestOverride) {
     if (existingJestOverrideIndex !== -1) {
@@ -31,7 +31,7 @@ function updateParserAndPlugins(
   config,
   useTypescript,
   globalEslint,
-  relativePath
+  relativePath,
 ) {
   if (useTypescript) {
     // webstorm uses this to detect eslint .ts compat
@@ -103,7 +103,7 @@ function sortConfig(config) {
 
 module.exports = function updateEslintConfig(
   config,
-  { extendsConfig, jestOverride, useTypescript, globalEslint, relativePath }
+  { extendsConfig, jestOverride, useTypescript, globalEslint, relativePath },
 ) {
   config.root = true;
   config.extends = extendsConfig;
@@ -112,7 +112,7 @@ module.exports = function updateEslintConfig(
     config,
     useTypescript,
     globalEslint,
-    relativePath
+    relativePath,
   );
   config = updateOverrides(config, jestOverride);
 

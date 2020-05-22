@@ -47,7 +47,7 @@ module.exports = class YarnGenerator extends Generator {
       this.fs.copyTpl(
         this.templatePath('yarn_gitignore.ejs'),
         this.destinationPath('.yarn/.gitignore'),
-        {}
+        {},
       );
     }
 

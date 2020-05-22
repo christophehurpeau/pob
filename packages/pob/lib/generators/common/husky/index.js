@@ -61,12 +61,12 @@ module.exports = class GitHooksGenerator extends Generator {
       }
       this.fs.copy(
         this.templatePath('husky.config.js.txt'),
-        this.destinationPath('husky.config.js')
+        this.destinationPath('husky.config.js'),
       );
 
       this.fs.copy(
         this.templatePath('lint-staged.config.js.txt'),
-        this.destinationPath('lint-staged.config.js')
+        this.destinationPath('lint-staged.config.js'),
       );
     }
 
@@ -77,7 +77,9 @@ module.exports = class GitHooksGenerator extends Generator {
       ].filter(Boolean),
     };
 
-    packageUtils.addDevDependencies(pkg, ['@pob/commitlint-config']);
+    if (pkg.name !== 'pob-monorepo') {
+      packageUtils.addDevDependencies(pkg, ['@pob/commitlint-config']);
+    }
 
     delete pkg.scripts.commitmsg;
     delete pkg.scripts.precommit;

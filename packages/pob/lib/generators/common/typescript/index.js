@@ -72,7 +72,7 @@ module.exports = class TypescriptGenerator extends Generator {
           packageUtils.addOrRemoveDevDependencies(
             pkg,
             this.fs.exists(`${inLerna.rootPath}/.yarnrc.yml`),
-            ['typescript']
+            ['typescript'],
           );
 
           monorepoPackageNames = yoConfig.pob.monorepo.packageNames.filter(
@@ -85,15 +85,15 @@ module.exports = class TypescriptGenerator extends Generator {
                   packageName[0] === '@'
                     ? packageName
                     : `packages/${packageName}`
-                }/tsconfig.build.json`
-              )
+                }/tsconfig.build.json`,
+              ),
           );
 
           monorepoPackageSrcPaths = monorepoPackageNames.map(
             (packageName) =>
               `${
                 packageName[0] === '@' ? packageName : `packages/${packageName}`
-              }/${existsSync(`../${packageName}/src`) ? 'src' : 'lib'}`
+              }/${existsSync(`../${packageName}/src`) ? 'src' : 'lib'}`,
           );
         }
       }
@@ -113,7 +113,7 @@ module.exports = class TypescriptGenerator extends Generator {
             composite,
             monorepoPackageNames,
             monorepoPackageSrcPaths,
-          }
+          },
         );
       } else {
         this.fs.delete(tsconfigBuildPath);

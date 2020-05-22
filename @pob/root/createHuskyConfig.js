@@ -10,7 +10,7 @@ const pm = whichPmRuns();
 
 if (pm.name !== 'yarn') {
   console.error(
-    `Package manager not supported: ${pm.name}. Please run with yarn !`
+    `Package manager not supported: ${pm.name}. Please run with yarn !`,
   );
   process.exit(1);
 }

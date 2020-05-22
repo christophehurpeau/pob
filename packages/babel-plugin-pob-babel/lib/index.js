@@ -14,7 +14,7 @@ module.exports = function ({ types }, opts) {
       })();
 
       return [key, node];
-    })
+    }),
   );
 
   return {
@@ -35,7 +35,7 @@ module.exports = function ({ types }, opts) {
 
           if (!nodeReplacement) {
             throw path.buildCodeFrameError(
-              `Unknown import: ${specifier.imported.name}`
+              `Unknown import: ${specifier.imported.name}`,
             );
           }
 

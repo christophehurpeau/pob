@@ -20,7 +20,7 @@ if (!isSemverValid(version)) {
 execSync(
   'git --no-pager log --reverse --format="%aN <%aE>" | sort -fub > AUTHORS' +
     ' && git add AUTHORS && git commit -m "chore(authors): update AUTHORS" AUTHORS || true',
-  { stdio: 'inherit' }
+  { stdio: 'inherit' },
 );
 
 /* CHANGELOG */

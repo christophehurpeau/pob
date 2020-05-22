@@ -13,5 +13,5 @@ interface Dependencies {
 }
 
 export = dependencies;
-`
+`,
 );

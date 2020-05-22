@@ -129,7 +129,7 @@ const internalAddDependencies = (pkg, type, dependencies, cleaned, prefix) => {
           filtredDependencies[dependency] = getNewVersion();
         } else if (potentialNewVersion !== currentVersion) {
           console.warn(
-            `dependency "${dependency}" has a higher version: expected ${potentialNewVersion}, actual: ${currentVersion}.`
+            `dependency "${dependency}" has a higher version: expected ${potentialNewVersion}, actual: ${currentVersion}.`,
           );
         }
       } catch (err) {
@@ -159,21 +159,21 @@ exports.addDevDependencies = function addDevDependencies(pkg, dependencies) {
 exports.removeDevDependencies = function removeDevDependencies(
   pkg,
   dependencies,
-  forceEvenIfInPeerDep
+  forceEvenIfInPeerDep,
 ) {
   internalRemoveDependencies(
     pkg,
     'devDependencies',
     pkg.peerDependencies && !forceEvenIfInPeerDep
       ? dependencies.filter((d) => !pkg.peerDependencies[d])
-      : dependencies
+      : dependencies,
   );
 };
 
 exports.addOrRemoveDependencies = function addOrRemoveDependencies(
   pkg,
   condition,
-  dependencies
+  dependencies,
 ) {
   if (condition) return exports.addDependencies(pkg, dependencies);
   return exports.removeDependencies(pkg, dependencies);
@@ -182,7 +182,7 @@ exports.addOrRemoveDependencies = function addOrRemoveDependencies(
 exports.addOrRemoveDevDependencies = function addOrRemoveDevDependencies(
   pkg,
   condition,
-  dependencies
+  dependencies,
 ) {
   if (condition) return exports.addDevDependencies(pkg, dependencies);
   return exports.removeDevDependencies(pkg, dependencies);
@@ -195,7 +195,7 @@ exports.addScripts = function addScripts(pkg, scripts) {
 exports.addOrRemoveScripts = function addOrRemoveScripts(
   pkg,
   condition,
-  scripts
+  scripts,
 ) {
   if (condition) {
     exports.addScripts(pkg, scripts);

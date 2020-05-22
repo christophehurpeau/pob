@@ -19,7 +19,7 @@ module.exports = class NpmGenerator extends Generator {
           babel: withBabel,
           typedoc: pkg.devDependencies && pkg.devDependencies.typedoc,
           yarn2: this.fs.exists('.yarnrc.yml'),
-        }
+        },
       );
     } else if (this.fs.exists(this.destinationPath('.npmignore'))) {
       this.fs.delete(this.destinationPath('.npmignore'));

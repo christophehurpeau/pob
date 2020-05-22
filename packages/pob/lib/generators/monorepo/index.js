@@ -42,7 +42,7 @@ module.exports = class PobMonorepoGenerator extends Generator {
     while (graph.size) {
       // pick the current set of nodes _without_ localDependencies (aka it is a "source" node)
       const batch = [...graph.values()].filter(
-        (node) => node.localDependencies.size === 0
+        (node) => node.localDependencies.size === 0,
       );
 
       // batches are composed of Package instances, not PackageGraphNodes

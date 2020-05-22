@@ -6,7 +6,7 @@
     "node": ">= 8.3.0"
   },
   "prettier": {
-    "trailingComma": "es5",
+    "trailingComma": "all",
     "singleQuote": true,
     "arrowParens": "always"
   },

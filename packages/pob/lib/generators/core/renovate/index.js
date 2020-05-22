@@ -62,9 +62,9 @@ module.exports = class RenovateGenerator extends Generator {
     if (this.enableRenovate) {
       this.fs.copy(
         this.templatePath(
-          this.options.app ? 'renovate.app.json' : 'renovate.lib.json'
+          this.options.app ? 'renovate.app.json' : 'renovate.lib.json',
         ),
-        this.destinationPath('renovate.json')
+        this.destinationPath('renovate.json'),
       );
     } else if (this.fs.exists(this.destinationPath('renovate.json'))) {
       this.fs.delete(this.destinationPath('renovate.json'));

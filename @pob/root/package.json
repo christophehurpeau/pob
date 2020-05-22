@@ -28,7 +28,7 @@
     "yarnhook": "^0.4.3"
   },
   "prettier": {
-    "trailingComma": "es5",
+    "trailingComma": "all",
     "singleQuote": true,
     "arrowParens": "always"
   }

@@ -25,7 +25,7 @@ module.exports = class PackageGenerator extends Generator {
     if (!pkg.engines) pkg.engines = {};
 
     // dont override engines if set to latest
-    if (!pkg.engines.node.startsWith('>=14.')) {
+    if (!pkg.engines.node || !pkg.engines.node.startsWith('>=14.')) {
       // this might be overridden by babel generator
       pkg.engines.node = '>=10.13.0';
     }
@@ -101,7 +101,7 @@ module.exports = class PackageGenerator extends Generator {
           message: "Author's Homepage",
           when: !author || !author.url,
         },
-      ].filter(Boolean)
+      ].filter(Boolean),
     );
 
     pkg.description = this.options.updateOnly

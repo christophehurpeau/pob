@@ -58,14 +58,14 @@ module.exports = class GitHubGenerator extends Generator {
 
     if (!GITHUB_TOKEN) {
       console.error(
-        'Missing POB_GITHUB_TOKEN. Create one with https://github.com/settings/tokens/new?scopes=repo&description=POB%20Generator and add it in your env variables.'
+        'Missing POB_GITHUB_TOKEN. Create one with https://github.com/settings/tokens/new?scopes=repo&description=POB%20Generator and add it in your env variables.',
       );
       process.exit(1);
     }
 
     if (!CIRCLECI_TOKEN) {
       console.error(
-        'Missing POB_CIRCLECI_TOKEN. Create one with https://circleci.com/account/api and add it in your env variables.'
+        'Missing POB_CIRCLECI_TOKEN. Create one with https://circleci.com/account/api and add it in your env variables.',
       );
       process.exit(1);
     }
@@ -105,7 +105,7 @@ module.exports = class GitHubGenerator extends Generator {
         this.spawnCommandSync(
           'git',
           ['commit', '-m', 'chore: initial commit [skip ci]'],
-          { cwd }
+          { cwd },
         );
         this.spawnCommandSync('git', ['push', '-u', 'origin', 'master'], {
           cwd,
@@ -118,7 +118,7 @@ module.exports = class GitHubGenerator extends Generator {
             await got
               .post(
                 `https://circleci.com/api/v1.1/project/github/${owner}/${repo}/follow`,
-                { query: { 'circle-token': CIRCLECI_TOKEN } }
+                { query: { 'circle-token': CIRCLECI_TOKEN } },
               )
               .json();
 
@@ -129,7 +129,7 @@ module.exports = class GitHubGenerator extends Generator {
                   {
                     query: { 'circle-token': CIRCLECI_TOKEN },
                     json: { type: 'deploy-key' },
-                  }
+                  },
                 )
                 .json();
               const deployKey = result && result.body && result.body[0];
