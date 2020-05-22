@@ -31,12 +31,6 @@ module.exports = class YarnGenerator extends Generator {
         // yarn 2 not yet installed
         // https://yarnpkg.com/getting-started/install
         this.spawnCommandSync('yarn', ['set', 'version', 'berry']);
-        this.spawnCommandSync('yarn', [
-          'add',
-          '--dev',
-          '--exact',
-          '@yarnpkg/pnpify',
-        ]);
       }
 
       const configString = this.fs.read('.yarnrc.yml');
@@ -58,16 +52,14 @@ module.exports = class YarnGenerator extends Generator {
     }
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
-    packageUtils.addOrRemoveDevDependencies(pkg, this.options.yarn2, [
-      '@yarnpkg/pnpify',
-    ]);
+    packageUtils.removeDevDependencies(pkg, ['@yarnpkg/pnpify']);
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 
   end() {
     if (this.options.yarn2) {
       this.spawnCommandSync('yarn', ['set', 'version', 'latest']);
-      this.spawnCommandSync('yarn', ['pnpify', '--sdk']);
+      this.spawnCommandSync('yarn', ['dlx', '@yarnpkg/pnpify', '--sdk']);
     }
   }
 };

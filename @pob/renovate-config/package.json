@@ -55,7 +55,6 @@
             "@types/jest",
             "@typescript-eslint/eslint-plugin",
             "@typescript-eslint/parser",
-            "@yarnpkg/pnpify",
             "babel-eslint",
             "babel-jest",
             "babel-preset-latest-node",
