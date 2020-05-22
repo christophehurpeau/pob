@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.14.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.13.0...pob-dependencies@1.14.0) (2020-05-22)
+
+
+### Features
+
+* **deps:** update dependency eslint-plugin-react to v7.20.0 ([#564](https://github.com/christophehurpeau/pob/issues/564)) ([efa0a86](https://github.com/christophehurpeau/pob/commit/efa0a862a0b2f257d09acc8dfc5a9a47dccdc880))
+* **deps:** update dependency lerna to v3.21.0 ([#563](https://github.com/christophehurpeau/pob/issues/563)) ([af5c9b1](https://github.com/christophehurpeau/pob/commit/af5c9b163f7bd6d84d33972deec6ca591da1aa3e))
+* **deps:** update dependency typedoc to v0.17.7 ([#567](https://github.com/christophehurpeau/pob/issues/567)) ([2448907](https://github.com/christophehurpeau/pob/commit/24489079669e6810f27c9cc7e8a973dc49e47004))
+* **deps:** update dependency typescript to v3.9.2 ([#561](https://github.com/christophehurpeau/pob/issues/561)) ([a78bdfb](https://github.com/christophehurpeau/pob/commit/a78bdfb902f117321d18923b343dfc3d031cf6ea))
+* **deps:** update dependency typescript to v3.9.3 ([#571](https://github.com/christophehurpeau/pob/issues/571)) ([6c36d73](https://github.com/christophehurpeau/pob/commit/6c36d73ada7ce56d932cb8caf69bf3b5f22c04e9))
+* **deps:** update jest monorepo to v26 (major) ([#557](https://github.com/christophehurpeau/pob/issues/557)) ([71332ad](https://github.com/christophehurpeau/pob/commit/71332adcecfb0510ee553c11fe7d2f478134c403))
+* **deps:** update typescript-eslint monorepo to v2.32.0 ([#560](https://github.com/christophehurpeau/pob/issues/560)) ([52ae075](https://github.com/christophehurpeau/pob/commit/52ae075a4a187f4781928a11dff880e018a3058d))
+* **deps:** update typescript-eslint monorepo to v2.33.0 ([#562](https://github.com/christophehurpeau/pob/issues/562)) ([43cd393](https://github.com/christophehurpeau/pob/commit/43cd393fb6286d9ac603a99b376bf209bdc877d2))
+* **deps:** update typescript-eslint monorepo to v2.34.0 ([#570](https://github.com/christophehurpeau/pob/issues/570)) ([0fcf45f](https://github.com/christophehurpeau/pob/commit/0fcf45fabcecad5cc42ad964364987706ccdb767))
+
+
+
+
+
 # [1.13.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.12.0...pob-dependencies@1.13.0) (2020-05-08)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.9.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.8.11...@pob/renovate-config@1.9.0) (2020-05-22)
+
+
+### Features
+
+* use bump strategy for renovate ([2df8252](https://github.com/christophehurpeau/pob/commit/2df82527255e8cd1841a4c09ef02e9e99eadc97c))
+* use dlx version of pnpify ([3f48cfb](https://github.com/christophehurpeau/pob/commit/3f48cfb925b577374377c9d348e9c1b384430eaa))
+
+
+
+
+
 ## [1.8.11](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.8.10...@pob/renovate-config@1.8.11) (2020-05-08)
 
 **Note:** Version bump only for package @pob/renovate-config

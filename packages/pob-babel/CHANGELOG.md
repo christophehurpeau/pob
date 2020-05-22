@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.11.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.10.0...pob-babel@24.11.0) (2020-05-22)
+
+
+### Features
+
+* **deps:** update jest monorepo to v26 (major) ([#557](https://github.com/christophehurpeau/pob/issues/557)) ([71332ad](https://github.com/christophehurpeau/pob/commit/71332adcecfb0510ee553c11fe7d2f478134c403))
+
+
+
+
+
 # [24.10.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.9.0...pob-babel@24.10.0) (2020-05-08)
 
 

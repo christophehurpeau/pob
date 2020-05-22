@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.2](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@1.1.1...@pob/sort-pkg@1.1.2) (2020-05-22)
+
+**Note:** Version bump only for package @pob/sort-pkg
+
+
+
+
+
 ## [1.1.1](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@1.1.0...@pob/sort-pkg@1.1.1) (2020-05-02)
 
 **Note:** Version bump only for package @pob/sort-pkg

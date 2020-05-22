@@ -13,13 +13,13 @@ interface Dependencies {
   '@pob/eslint-config-typescript': '37.1.0';
   '@pob/eslint-config-typescript-react': '37.1.0';
   '@pob/pretty-pkg': '^1.2.0';
-  '@pob/root': '^1.4.1';
+  '@pob/root': '^1.5.0';
   '@types/jest': '25.2.1';
-  '@typescript-eslint/eslint-plugin': '2.31.0';
-  '@typescript-eslint/parser': '2.31.0';
+  '@typescript-eslint/eslint-plugin': '2.34.0';
+  '@typescript-eslint/parser': '2.34.0';
   '@yarnpkg/pnpify': '2.0.0-rc.22';
   'babel-eslint': '10.1.0';
-  'babel-jest': '25.5.1';
+  'babel-jest': '26.0.1';
   'babel-preset-latest-node': '4.1.0';
   'babel-preset-modern-browsers': '14.2.1';
   'eslint': '6.8.0';
@@ -29,21 +29,21 @@ interface Dependencies {
   'eslint-plugin-node': '11.1.0';
   'eslint-plugin-prefer-class-properties': '1.0.0';
   'eslint-plugin-prettier': '3.1.3';
-  'eslint-plugin-react': '7.19.0';
+  'eslint-plugin-react': '7.20.0';
   'eslint-plugin-react-hooks': '2.5.1';
   'eslint-plugin-unicorn': '18.0.1';
   'husky': '4.2.5';
-  'jest': '25.5.4';
+  'jest': '26.0.1';
   'jest-junit-reporter': '1.1.0';
-  'lerna': '3.20.2';
-  'pob-babel': '^24.9.0';
+  'lerna': '3.21.0';
+  'pob-babel': '^24.10.0';
   'pob-lcov-reporter': '^2.2.0';
   'pob-release': '^5.5.4';
   'prettier': '2.0.5';
   'repository-check-dirty': '^1.2.1';
   'semver': '7.3.2';
-  'typedoc': '0.17.6';
-  'typescript': '3.8.3';
+  'typedoc': '0.17.7';
+  'typescript': '3.9.3';
 }
 
 export = dependencies;

@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@1.5.0...@pob/root@2.0.0) (2020-05-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v10.2.3 ([#568](https://github.com/christophehurpeau/pob/issues/568)) ([847d31d](https://github.com/christophehurpeau/pob/commit/847d31deeeff021437b3b33fda12ac6f2259d5f4))
+* **deps:** update dependency lint-staged to v10.2.4 ([#569](https://github.com/christophehurpeau/pob/issues/569)) ([1b4fd9f](https://github.com/christophehurpeau/pob/commit/1b4fd9fc54d43b29e1be564d3d9c613defb028cf))
+* **deps:** update dependency lint-staged to v10.2.5 ([#573](https://github.com/christophehurpeau/pob/issues/573)) ([f9ad480](https://github.com/christophehurpeau/pob/commit/f9ad480012655a8e1c8dc1d75546e210b8844030))
+* **deps:** update dependency lint-staged to v10.2.6 ([#574](https://github.com/christophehurpeau/pob/issues/574)) ([284d46d](https://github.com/christophehurpeau/pob/commit/284d46d772355b75bdbf37c7314ecbea9c5ab49c))
+
+
+### Features
+
+* **@pob/root:** require node 10 ([c19b192](https://github.com/christophehurpeau/pob/commit/c19b1925138d0eb42d820de8e199970fd0e60270))
+
+
+### BREAKING CHANGES
+
+* **@pob/root:** require node 10
+
+
+
+
+
 # [1.5.0](https://github.com/christophehurpeau/pob/compare/@pob/root@1.4.1...@pob/root@1.5.0) (2020-05-08)
 
 

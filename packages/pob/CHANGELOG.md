@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.13.0](https://github.com/christophehurpeau/pob/compare/pob@5.12.0...pob@5.13.0) (2020-05-22)
+
+
+### Bug Fixes
+
+* better typescript app monorepo support ([a71a093](https://github.com/christophehurpeau/pob/commit/a71a093275d0ecef3d6a4cdc9018ede27ac20c2d))
+
+
+### Features
+
+* set prettier config trailingComma to all ([55631ca](https://github.com/christophehurpeau/pob/commit/55631ca2dfd63c5086af1ac84198bc46e389b301))
+* use dlx version of pnpify ([3f48cfb](https://github.com/christophehurpeau/pob/commit/3f48cfb925b577374377c9d348e9c1b384430eaa))
+
+
+
+
+
 # [5.12.0](https://github.com/christophehurpeau/pob/compare/pob@5.11.0...pob@5.12.0) (2020-05-08)
 
 
