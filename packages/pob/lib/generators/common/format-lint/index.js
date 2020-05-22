@@ -39,12 +39,12 @@ module.exports = class LintGenerator extends Generator {
     if (useTypescript) {
       this.fs.copy(
         this.templatePath('eslintignore.txt'),
-        this.destinationPath('.eslintignore')
+        this.destinationPath('.eslintignore'),
       );
     } else if (inLerna && inLerna.root) {
       this.fs.copy(
         this.templatePath('eslintignore.monorepoEslint.txt'),
-        this.destinationPath('.eslintignore')
+        this.destinationPath('.eslintignore'),
       );
     } else if (this.fs.exists(this.destinationPath('.eslintignore'))) {
       this.fs.delete(this.destinationPath('.eslintignore'));
@@ -65,7 +65,7 @@ module.exports = class LintGenerator extends Generator {
     delete pkg.standard;
 
     pkg.prettier = {
-      trailingComma: !useBabel ? 'es5' : 'all',
+      trailingComma: 'all',
       singleQuote: true,
       // https://github.com/airbnb/javascript/pull/1863
       arrowParens: 'always',
@@ -128,14 +128,14 @@ module.exports = class LintGenerator extends Generator {
           'eslint-plugin-unicorn',
           'eslint-plugin-import',
         ],
-        true
+        true,
       );
     } else {
       packageUtils.addOrRemoveDevDependencies(pkg, !globalEslint, ['prettier']);
       packageUtils.addOrRemoveDevDependencies(
         pkg,
         !globalEslint || lernaProjectType === 'app',
-        ['eslint']
+        ['eslint'],
       );
       if (
         !pkg.name.startsWith('eslint-config') &&
@@ -243,7 +243,7 @@ module.exports = class LintGenerator extends Generator {
           extendsConfig: isPobEslintConfig
             ? extendsConfig
             : extendsConfigNoBabel,
-        }
+        },
       );
 
       this.fs.write(rootEslintrcPath, formatJson(rootEslintrcConfig));
@@ -252,7 +252,7 @@ module.exports = class LintGenerator extends Generator {
     }
 
     const srcEslintrcPath = this.destinationPath(
-      `${useBabel ? 'src/' : 'lib/'}.eslintrc.json`
+      `${useBabel ? 'src/' : 'lib/'}.eslintrc.json`,
     );
 
     if (!useBabel && useNodeOnly) {
@@ -273,7 +273,7 @@ module.exports = class LintGenerator extends Generator {
             useTypescript: useBabel,
             globalEslint,
             relativePath: inLerna ? inLerna.relative : undefined,
-          }
+          },
         );
 
         this.fs.write(srcEslintrcPath, formatJson(srcEslintrcConfig));
