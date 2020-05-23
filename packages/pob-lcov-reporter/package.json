@@ -15,12 +15,22 @@
     "node": ">=10.13.0"
   },
   "main": "./lib/index.js",
+  "scripts": {
+    "lint": "eslint --quiet lib"
+  },
   "prettier": {
     "trailingComma": "all",
     "singleQuote": true,
     "arrowParens": "always"
   },
+  "pob": {},
+  "peerDependencies": {
+    "jest": "^26.0.1"
+  },
   "dependencies": {
-    "istanbul-reports": "^3.0.0"
+    "istanbul-reports": "^3.0.2"
+  },
+  "devDependencies": {
+    "jest": "26.0.1"
   }
 }

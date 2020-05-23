@@ -2,30 +2,15 @@
 
 'use strict';
 
-var LcovOnlyReport = require('istanbul-reports/lib/lcovonly'),
-  HtmlReport = require('istanbul-reports/lib/html');
+const BaseLcovReport = require('istanbul-reports/lib/lcov');
 
-function LcovReport() {
-  this.lcov = new LcovOnlyReport({ file: 'lcov.info' });
-  this.html = new HtmlReport({ subdir: 'lcov-report' });
-  // override date
-  this.html.date = new Date(2000, 0, 1);
+class LcovReport extends BaseLcovReport {
+  constructor(opts) {
+    super(opts);
+    // override date
+    this.html.date = new Date(2000, 0, 1);
+  }
 }
 
-['Start', 'End', 'Summary', 'SummaryEnd', 'Detail'].forEach(function(what) {
-  var meth = 'on' + what;
-  LcovReport.prototype[meth] = function() {
-    var args = Array.prototype.slice.call(arguments),
-      lcov = this.lcov,
-      html = this.html;
-
-    if (lcov[meth]) {
-      lcov[meth].apply(lcov, args);
-    }
-    if (html[meth]) {
-      html[meth].apply(html, args);
-    }
-  };
-});
-
 module.exports = LcovReport;
+module.exports.default = LcovReport;
