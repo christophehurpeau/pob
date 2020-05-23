@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.2](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@2.2.1...pob-lcov-reporter@2.2.2) (2020-05-23)
+
+
+### Bug Fixes
+
+* **pob-lcov-reporter:** support jest 26 ([ab77d21](https://github.com/christophehurpeau/pob/commit/ab77d21f4aab3e5b510bc11ba292f3e42ff5271a))
+
+
+
+
+
 ## [2.2.1](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@2.2.0...pob-lcov-reporter@2.2.1) (2020-05-22)
 
 **Note:** Version bump only for package pob-lcov-reporter

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.14.0](https://github.com/christophehurpeau/pob/compare/pob@5.13.0...pob@5.14.0) (2020-05-23)
+
+
+### Bug Fixes
+
+* no js files present in root when package support no node ([a367a60](https://github.com/christophehurpeau/pob/commit/a367a600e8ed2ff53eaedf568a4837e51b2e4ed2))
+* tsconfig.build.json not present for some reason ([94c9b56](https://github.com/christophehurpeau/pob/commit/94c9b5690e33b9feba06f74a649fc0ddf18b1333))
+
+
+### Features
+
+* add checks script ([7cca036](https://github.com/christophehurpeau/pob/commit/7cca036e2a08fdb96ffb935590d9ae9e404945c9))
+
+
+
+
+
 # [5.13.0](https://github.com/christophehurpeau/pob/compare/pob@5.12.0...pob@5.13.0) (2020-05-22)
 
 

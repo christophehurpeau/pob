@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@2.0.0...@pob/root@2.1.0) (2020-05-23)
+
+
+### Features
+
+* add checks script ([7cca036](https://github.com/christophehurpeau/pob/commit/7cca036e2a08fdb96ffb935590d9ae9e404945c9))
+
+
+
+
+
 # [2.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@1.5.0...@pob/root@2.0.0) (2020-05-22)
 
 

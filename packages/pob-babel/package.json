@@ -1,6 +1,6 @@
 {
   "name": "pob-babel",
-  "version": "24.11.0",
+  "version": "24.11.1",
   "description": "Build and watch with babel and typescript",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
@@ -68,6 +68,6 @@
   "devDependencies": {
     "@types/jest": "25.2.1",
     "jest": "26.0.1",
-    "pob-lcov-reporter": "^2.2.1"
+    "pob-lcov-reporter": "^2.2.2"
   }
 }
