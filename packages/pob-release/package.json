@@ -32,12 +32,12 @@
   },
   "pob": {},
   "dependencies": {
-    "conventional-changelog-angular": "^5.0.6",
-    "conventional-recommended-bump": "^6.0.5",
-    "inquirer": "^7.0.4",
+    "conventional-changelog-angular": "^5.0.10",
+    "conventional-recommended-bump": "^6.0.9",
+    "inquirer": "^7.1.0",
     "minimist-argv": "^1.1.0",
     "repository-check-dirty": "^1.2.2",
     "semver": "^7.1.2",
-    "standard-changelog": "2.0.21"
+    "standard-changelog": "2.0.24"
   }
 }

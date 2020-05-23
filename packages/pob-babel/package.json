@@ -66,7 +66,7 @@
     "rollup-plugin-node-resolve": "^5.2.0"
   },
   "devDependencies": {
-    "@types/jest": "25.2.1",
+    "@types/jest": "25.2.3",
     "jest": "26.0.1",
     "pob-lcov-reporter": "^2.2.2"
   }

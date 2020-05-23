@@ -53,9 +53,9 @@
     "pob-dependencies": "^1.14.1",
     "prettier": "2.0.5",
     "semver": "^7.1.2",
-    "update-notifier": "^4.0.0",
-    "yeoman-environment": "^2.7.0",
-    "yeoman-generator": "^4.4.0"
+    "update-notifier": "^4.1.0",
+    "yeoman-environment": "^2.10.2",
+    "yeoman-generator": "^4.10.1"
   },
   "resolutions": {
     "yeoman-generator": "^4.0.0"

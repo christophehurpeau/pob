@@ -41,7 +41,7 @@
     "@pob/eslint-config-typescript-react": "37.1.0",
     "@pob/pretty-pkg": "^1.2.1",
     "@pob/root": "^2.1.0",
-    "@types/jest": "25.2.1",
+    "@types/jest": "25.2.3",
     "@typescript-eslint/eslint-plugin": "2.34.0",
     "@typescript-eslint/parser": "2.34.0",
     "@yarnpkg/pnpify": "2.0.0-rc.22",
