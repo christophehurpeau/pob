@@ -80,7 +80,7 @@ jobs:
           token: ${{ secrets.CODECOV_TOKEN }}
         if: startsWith(matrix.node-version, '12.')
 <% } -%>
-<% if (false) { -%>
+<% if (true) { -%>
 
       - name: Check nothing was forgotten before commit
         if: startsWith(matrix.node-version, '12.')
