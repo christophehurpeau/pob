@@ -202,6 +202,12 @@ module.exports = class LernaGenerator extends Generator {
         'lerna run --parallel --ignore "*-example" generate:docs',
     });
 
+    if (withDocumentation) {
+      pkg.scripts.postbuild = `${
+        pkg.scripts.postbuild ? `${pkg.scripts.postbuild} && ` : ''
+      }yarn run generate:docs`;
+    }
+
     delete pkg.scripts.version;
     delete pkg.scripts.prepublishOnly;
 
