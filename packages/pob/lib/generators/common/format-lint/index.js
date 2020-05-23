@@ -30,6 +30,10 @@ module.exports = class LintGenerator extends Generator {
         ? this.options.babel === 'true'
         : babelEnvs.length !== 0;
     const hasReact = useBabel && packageUtils.hasReact(pkg);
+    const useNode =
+      !useBabel ||
+      (babelEnvs.length !== 0 &&
+        babelEnvs.some((env) => env.target === 'node'));
     const useNodeOnly =
       !useBabel ||
       (babelEnvs.length !== 0 &&
@@ -283,7 +287,7 @@ module.exports = class LintGenerator extends Generator {
     }
 
     const srcDirectory = useBabel ? 'src' : 'lib';
-    const lintRootJsFiles = useBabel || !inLerna;
+    const lintRootJsFiles = (useBabel && useNode) || !inLerna;
 
     const lintPaths = [
       srcDirectory,
