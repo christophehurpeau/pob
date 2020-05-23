@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.15.0](https://github.com/christophehurpeau/pob/compare/pob@5.14.0...pob@5.15.0) (2020-05-23)
+
+
+### Features
+
+* github action reenable repository-check-dirty ([e691a49](https://github.com/christophehurpeau/pob/commit/e691a4949c539b58a2c79f746f7dd45440ef6ca4))
+* postbuild generate doc ([157221d](https://github.com/christophehurpeau/pob/commit/157221da642c1af6b9d767483dc8586fe113a540))
+* update minor and patch dependencies ([00cbca6](https://github.com/christophehurpeau/pob/commit/00cbca614bafde4e2d4211b0a180b1a1f6adf40e))
+
+
+
+
+
 # [5.14.0](https://github.com/christophehurpeau/pob/compare/pob@5.13.0...pob@5.14.0) (2020-05-23)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.6.0](https://github.com/christophehurpeau/pob/compare/pob-release@5.5.5...pob-release@5.6.0) (2020-05-23)
+
+
+### Features
+
+* update minor and patch dependencies ([00cbca6](https://github.com/christophehurpeau/pob/commit/00cbca614bafde4e2d4211b0a180b1a1f6adf40e))
+
+
+
+
+
 ## [5.5.5](https://github.com/christophehurpeau/pob/compare/pob-release@5.5.4...pob-release@5.5.5) (2020-05-22)
 
 **Note:** Version bump only for package pob-release

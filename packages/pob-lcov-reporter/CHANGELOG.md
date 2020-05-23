@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@2.2.2...pob-lcov-reporter@2.3.0) (2020-05-23)
+
+
+### Features
+
+* **pob-lcov-reporter:** instead of fake date (with timzone), use "no date" as string ([cde537b](https://github.com/christophehurpeau/pob/commit/cde537b7ea08552ee8f37421b6c523dad7a3035d))
+
+
+
+
+
 ## [2.2.2](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@2.2.1...pob-lcov-reporter@2.2.2) (2020-05-23)
 
 

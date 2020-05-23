@@ -13,8 +13,8 @@ interface Dependencies {
   '@pob/eslint-config-typescript': '37.1.0';
   '@pob/eslint-config-typescript-react': '37.1.0';
   '@pob/pretty-pkg': '^1.2.1';
-  '@pob/root': '^2.0.0';
-  '@types/jest': '25.2.1';
+  '@pob/root': '^2.1.0';
+  '@types/jest': '25.2.3';
   '@typescript-eslint/eslint-plugin': '2.34.0';
   '@typescript-eslint/parser': '2.34.0';
   '@yarnpkg/pnpify': '2.0.0-rc.22';
@@ -36,8 +36,8 @@ interface Dependencies {
   'jest': '26.0.1';
   'jest-junit-reporter': '1.1.0';
   'lerna': '3.21.0';
-  'pob-babel': '^24.11.0';
-  'pob-lcov-reporter': '^2.2.1';
+  'pob-babel': '^24.11.1';
+  'pob-lcov-reporter': '^2.2.2';
   'pob-release': '^5.5.5';
   'prettier': '2.0.5';
   'repository-check-dirty': '^1.2.2';
