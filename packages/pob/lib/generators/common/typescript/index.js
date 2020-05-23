@@ -104,7 +104,10 @@ module.exports = class TypescriptGenerator extends Generator {
         jsx,
         baseUrl: this.options.baseUrl,
       });
-      if (this.options.builddefs && monorepoPackageNames.length !== 0) {
+      if (
+        this.options.builddefs // &&
+        // (!composite || monorepoPackageNames.length !== 0)
+      ) {
         this.fs.copyTpl(
           this.templatePath('tsconfig.build.json.ejs'),
           tsconfigBuildPath,
