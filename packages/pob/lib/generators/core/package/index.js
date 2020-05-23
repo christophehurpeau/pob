@@ -129,6 +129,16 @@ module.exports = class PackageGenerator extends Generator {
       fs.unlinkSync(this.destinationPath('yarn-error.log'));
     }
 
+    packageUtils.addOrRemoveScripts(
+      pkg,
+      this.fs.exists(
+        this.destinationPath('scripts/check-packages-dependencies.js'),
+      ),
+      {
+        checks: 'node scripts/check-packages-dependencies.js',
+      },
+    );
+
     author = {
       name: props.authorName || author.name,
       email: props.authorEmail || author.email,

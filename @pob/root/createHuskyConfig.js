@@ -52,7 +52,7 @@ module.exports = () => {
       hooks['pre-push'] = '';
     }
 
-    hooks['pre-push'] += 'yarn checks';
+    hooks['pre-push'] += 'yarn run checks';
   }
 
   return {
