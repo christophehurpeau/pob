@@ -8,7 +8,7 @@ class LcovReport extends BaseLcovReport {
   constructor(opts) {
     super(opts);
     // override date
-    this.html.date = new Date(2000, 0, 1);
+    this.html.date = 'no date set';
   }
 }
 
