@@ -61,7 +61,7 @@ Promise.resolve(argv._[0])
       ),
     );
   })
-  .then((recommandedVersion) => {
+  .then((recommendedVersion) => {
     const availableVersionsWithSemver = AVAILABLE_VERSIONS.map((version) => {
       const nextVersion = incSemver(currentVersion, version);
       return {
@@ -70,7 +70,7 @@ Promise.resolve(argv._[0])
       };
     }).concat('manual');
 
-    const defaultVersionIndex = VERSION_NAME_TO_INDEX[recommandedVersion];
+    const defaultVersionIndex = VERSION_NAME_TO_INDEX[recommendedVersion];
     const defaultVersion =
       availableVersionsWithSemver[defaultVersionIndex].value;
 
