@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.16.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.15.0...pob-dependencies@1.16.0) (2020-06-04)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v37.2.0 ([#580](https://github.com/christophehurpeau/pob/issues/580)) ([3d17760](https://github.com/christophehurpeau/pob/commit/3d17760596f0f0d893b879b54f358c62a3b71f5e))
+* **deps:** update babel monorepo to v7.10.0 ([#576](https://github.com/christophehurpeau/pob/issues/576)) ([74e4c01](https://github.com/christophehurpeau/pob/commit/74e4c0165e6cdbf78d3d9e0b8a5599e327b726a7))
+* **deps:** update babel monorepo to v7.10.1 ([#578](https://github.com/christophehurpeau/pob/issues/578)) ([16835f5](https://github.com/christophehurpeau/pob/commit/16835f5935b2aa62bd7a265eb99eda8c4be63a7d))
+* **deps:** update babel monorepo to v7.10.2 ([#581](https://github.com/christophehurpeau/pob/issues/581)) ([69ea4af](https://github.com/christophehurpeau/pob/commit/69ea4afd6824c8ac5e482a8751a3c0bd2da6973c))
+* **deps:** update dependency lerna to v3.22.0 ([#575](https://github.com/christophehurpeau/pob/issues/575)) ([61aea65](https://github.com/christophehurpeau/pob/commit/61aea652921c456a9b226b235fde601278a83c84))
+* **deps:** update dependency typescript to v3.9.5 ([#586](https://github.com/christophehurpeau/pob/issues/586)) ([61b6aa1](https://github.com/christophehurpeau/pob/commit/61b6aa1f07461bcd2d7ce8c3398c98007aa547ce))
+
+
+
+
+
 # [1.15.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.14.1...pob-dependencies@1.15.0) (2020-05-23)
 
 

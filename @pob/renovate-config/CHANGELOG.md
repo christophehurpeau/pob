@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.10.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.9.2...@pob/renovate-config@1.10.0) (2020-06-04)
+
+
+### Features
+
+* remove pr body for reviewflow in renovate ([6136660](https://github.com/christophehurpeau/pob/commit/61366601fd2bd6735dda49833d2d2033fc0ded7e))
+
+
+
+
+
 ## [1.9.2](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.9.1...@pob/renovate-config@1.9.2) (2020-05-23)
 
 **Note:** Version bump only for package @pob/renovate-config

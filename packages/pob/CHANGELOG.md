@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.16.0](https://github.com/christophehurpeau/pob/compare/pob@5.15.0...pob@5.16.0) (2020-06-04)
+
+
+### Features
+
+* add build 14.x in required status checks ([fca76e0](https://github.com/christophehurpeau/pob/commit/fca76e009ebde991ef00062de3bd99219a333321))
+* improve eslint global ([abef47a](https://github.com/christophehurpeau/pob/commit/abef47a0a3506d74bdb3381f39c417811a65676c))
+
+
+
+
+
 # [5.15.0](https://github.com/christophehurpeau/pob/compare/pob@5.14.0...pob@5.15.0) (2020-05-23)
 
 
