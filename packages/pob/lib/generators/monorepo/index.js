@@ -124,6 +124,8 @@ module.exports = class PobMonorepoGenerator extends Generator {
 
     this.composeWith(require.resolve('../common/husky'), {});
 
+    this.composeWith(require.resolve('../common/format-lint'), {});
+
     // Always add a gitignore, because npm publish uses it.
     this.composeWith(require.resolve('../core/gitignore'), {
       root: true,

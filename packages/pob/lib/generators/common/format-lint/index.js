@@ -3,6 +3,7 @@
 'use strict';
 
 const fs = require('fs');
+const path = require('path');
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
 const ensureJsonFileFormatted = require('../../../utils/ensureJsonFileFormatted');
@@ -46,9 +47,12 @@ module.exports = class LintGenerator extends Generator {
         this.destinationPath('.eslintignore'),
       );
     } else if (inLerna && inLerna.root) {
-      this.fs.copy(
+      this.fs.copyTpl(
         this.templatePath('eslintignore.monorepoEslint.txt'),
         this.destinationPath('.eslintignore'),
+        {
+          workspaces: pkg.workspaces,
+        },
       );
     } else if (this.fs.exists(this.destinationPath('.eslintignore'))) {
       this.fs.delete(this.destinationPath('.eslintignore'));
@@ -76,7 +80,6 @@ module.exports = class LintGenerator extends Generator {
     };
 
     packageUtils.removeDevDependencies(pkg, [
-      '@typescript-eslint/eslint-plugin',
       '@typescript-eslint/parser',
       'babel-eslint',
       'eslint-config-airbnb',
@@ -99,11 +102,6 @@ module.exports = class LintGenerator extends Generator {
 
     const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
     const globalEslint = yoConfigPobMonorepo && yoConfigPobMonorepo.eslint;
-    const isRootYarn2 =
-      inLerna &&
-      inLerna.pobConfig &&
-      inLerna.pobConfig.project &&
-      inLerna.pobConfig.project.yarn2;
     const composite = yoConfigPobMonorepo && yoConfigPobMonorepo.typescript;
     const lernaProjectType =
       yoConfigPobMonorepo &&
@@ -112,7 +110,7 @@ module.exports = class LintGenerator extends Generator {
 
     const typescript = true;
 
-    if (globalEslint && !isRootYarn2) {
+    if (globalEslint && !(inLerna && inLerna.root)) {
       packageUtils.removeDevDependencies(
         pkg,
         [
@@ -135,10 +133,16 @@ module.exports = class LintGenerator extends Generator {
         true,
       );
     } else {
-      packageUtils.addOrRemoveDevDependencies(pkg, !globalEslint, ['prettier']);
       packageUtils.addOrRemoveDevDependencies(
         pkg,
-        !globalEslint || lernaProjectType === 'app',
+        (inLerna && inLerna.root) || !globalEslint,
+        ['prettier'],
+      );
+      packageUtils.addOrRemoveDevDependencies(
+        pkg,
+        !globalEslint ||
+          (inLerna && inLerna.root) ||
+          lernaProjectType === 'app',
         ['eslint'],
       );
       if (
@@ -159,23 +163,40 @@ module.exports = class LintGenerator extends Generator {
           'eslint-import-resolver-node',
         ]);
 
-        packageUtils.addOrRemoveDevDependencies(pkg, useBabel && !typescript, [
-          '@pob/eslint-config-babel',
-        ]);
-        packageUtils.addOrRemoveDevDependencies(pkg, useBabel && useNodeOnly, [
-          '@pob/eslint-config-babel-node',
-        ]);
-        packageUtils.addOrRemoveDevDependencies(pkg, useBabel && typescript, [
-          '@pob/eslint-config-typescript',
-          '@typescript-eslint/eslint-plugin',
-        ]);
+        if (inLerna && inLerna.root) {
+          packageUtils.updateDevDependenciesIfPresent(pkg, [
+            '@pob/eslint-config-babel',
+            '@pob/eslint-config-babel-node',
+            '@pob/eslint-config-typescript',
+            '@typescript-eslint/eslint-plugin',
+            '@pob/eslint-config-react',
+            '@pob/eslint-config-typescript-react',
+          ]);
+        } else {
+          packageUtils.addOrRemoveDevDependencies(
+            pkg,
+            useBabel && !typescript,
+            ['@pob/eslint-config-babel'],
+          );
+          packageUtils.addOrRemoveDevDependencies(
+            pkg,
+            useBabel && useNodeOnly,
+            ['@pob/eslint-config-babel-node'],
+          );
+          packageUtils.addOrRemoveDevDependencies(pkg, useBabel && typescript, [
+            '@pob/eslint-config-typescript',
+            '@typescript-eslint/eslint-plugin',
+          ]);
 
-        packageUtils.addOrRemoveDevDependencies(pkg, hasReact && !typescript, [
-          '@pob/eslint-config-react',
-        ]);
-        packageUtils.addOrRemoveDevDependencies(pkg, hasReact && typescript, [
-          '@pob/eslint-config-typescript-react',
-        ]);
+          packageUtils.addOrRemoveDevDependencies(
+            pkg,
+            hasReact && !typescript,
+            ['@pob/eslint-config-react'],
+          );
+          packageUtils.addOrRemoveDevDependencies(pkg, hasReact && typescript, [
+            '@pob/eslint-config-typescript-react',
+          ]);
+        }
       }
     }
 
@@ -286,27 +307,37 @@ module.exports = class LintGenerator extends Generator {
       }
     }
 
-    const srcDirectory = useBabel ? 'src' : 'lib';
-    const lintRootJsFiles = (useBabel && useNode) || !inLerna;
+    // see monorepo/lerna/index.js
+    if (!(inLerna && inLerna.root)) {
+      const srcDirectory = useBabel ? 'src' : 'lib';
+      const lintRootJsFiles = (useBabel && useNode) || !inLerna;
 
-    const lintPaths = [
-      srcDirectory,
-      'bin',
-      'scripts',
-      'migrations',
-    ].filter((dir) => fs.existsSync(this.destinationPath(dir)));
+      const lintPaths = [
+        srcDirectory,
+        'bin',
+        'scripts',
+        'migrations',
+      ].filter((dir) => fs.existsSync(this.destinationPath(dir)));
 
-    if (lintRootJsFiles) {
-      lintPaths.unshift('*.js');
+      if (lintRootJsFiles) {
+        lintPaths.unshift('*.js');
+      }
+
+      const extArg = !useBabel
+        ? ''
+        : ` --ext .js,.ts${hasReact ? ',.tsx' : ''}`;
+      const args = `${extArg} --quiet`;
+
+      packageUtils.addScripts(pkg, {
+        lint: globalEslint
+          ? `yarn --cwd ../.. eslint${args} ${path.relative('../..', '.')}`
+          : `${
+              useBabel && !composite ? 'tsc && ' : ''
+            }eslint${args} ${lintPaths.join(' ')}`,
+      });
+
+      delete pkg.scripts['typescript-check'];
     }
-
-    packageUtils.addScripts(pkg, {
-      lint: `${useBabel && !composite ? 'tsc && ' : ''}eslint${
-        !useBabel ? '' : ` --ext .js,.ts${hasReact ? ',.tsx' : ''}`
-      } --quiet ${lintPaths.join(' ')}`,
-    });
-
-    delete pkg.scripts['typescript-check'];
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }

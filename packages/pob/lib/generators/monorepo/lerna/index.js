@@ -4,6 +4,7 @@ const { readdirSync, existsSync } = require('fs');
 const { spawnSync } = require('child_process');
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
+const inLerna = require('../../../utils/inLerna');
 
 module.exports = class LernaGenerator extends Generator {
   constructor(args, opts) {
@@ -97,8 +98,6 @@ module.exports = class LernaGenerator extends Generator {
       (config) => getPackagePobConfig(config).babelEnvs.length !== 0,
     );
 
-    const isYarn2 = this.fs.exists('.yarnrc.yml');
-
     // lerna.json
     const lernaConfig = this.fs.readJSON(
       this.destinationPath('lerna.json'),
@@ -175,7 +174,7 @@ module.exports = class LernaGenerator extends Generator {
       // prepublishOnly: 'repository-check-dirty',
       release: [
         `${
-          isYarn2 ? '' : 'cross-env '
+          inLerna && inLerna.isRootYarn2 ? '' : 'cross-env '
         }GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release'`,
         !this.options.isAppProject && 'lerna publish from-git',
       ]

@@ -188,6 +188,17 @@ exports.addOrRemoveDevDependencies = function addOrRemoveDevDependencies(
   return exports.removeDevDependencies(pkg, dependencies);
 };
 
+exports.updateDevDependenciesIfPresent = function updateDevDependenciesIfPresent(
+  pkg,
+  dependencies,
+) {
+  if (!pkg.devDependencies) return;
+  return exports.addDevDependencies(
+    pkg,
+    dependencies.filter((d) => pkg.devDependencies[d]),
+  );
+};
+
 exports.addScripts = function addScripts(pkg, scripts) {
   internalAddToObject(pkg, 'scripts', scripts);
 };
