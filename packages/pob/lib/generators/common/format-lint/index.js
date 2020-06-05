@@ -21,6 +21,13 @@ module.exports = class LintGenerator extends Generator {
       defaults: 'undefined',
       desc: 'Use babel.',
     });
+
+    this.option('enableSrcResolver', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+      desc: 'Enable resolving from src directory',
+    });
   }
 
   writing() {
@@ -283,7 +290,7 @@ module.exports = class LintGenerator extends Generator {
       `${useBabel ? 'src/' : 'lib/'}.eslintrc.json`,
     );
 
-    if (!useBabel && useNodeOnly) {
+    if (!useBabel && useNodeOnly && !this.options.enableSrcResolver) {
       if (this.fs.exists(srcEslintrcPath)) {
         this.fs.delete(srcEslintrcPath);
       }
@@ -300,6 +307,15 @@ module.exports = class LintGenerator extends Generator {
             jestOverride,
             useTypescript: useBabel,
             globalEslint,
+            settings: {
+              'import/resolver': this.options.enableSrcResolver
+                ? {
+                    node: {
+                      paths: ['./node_modules', './src'],
+                    },
+                  }
+                : false,
+            },
             relativePath: inLerna ? inLerna.relative : undefined,
           },
         );

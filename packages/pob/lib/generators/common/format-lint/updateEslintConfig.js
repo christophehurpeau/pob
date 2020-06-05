@@ -73,6 +73,23 @@ function updateParserAndPlugins(
   return config;
 }
 
+function updateSettings(config, settings) {
+  Object.entries(settings).forEach(([key, value]) => {
+    if (value === false && config.settings) {
+      delete config.settings[key];
+    } else {
+      if (!config.settings) config.settings = {};
+      config.settings[key] = value;
+    }
+  });
+
+  if (Object.keys(config.settings) === 0) {
+    delete config.settings;
+  }
+
+  return config;
+}
+
 function sortConfig(config) {
   const sortedConfig = sortObject(config, [
     'root',
@@ -103,7 +120,14 @@ function sortConfig(config) {
 
 module.exports = function updateEslintConfig(
   config,
-  { extendsConfig, jestOverride, useTypescript, globalEslint, relativePath },
+  {
+    extendsConfig,
+    jestOverride,
+    useTypescript,
+    globalEslint,
+    settings,
+    relativePath,
+  },
 ) {
   config.root = true;
   config.extends = extendsConfig;
@@ -115,6 +139,9 @@ module.exports = function updateEslintConfig(
     relativePath,
   );
   config = updateOverrides(config, jestOverride);
+  if (settings) {
+    config = updateSettings(config, settings);
+  }
 
   return sortConfig(config);
 };

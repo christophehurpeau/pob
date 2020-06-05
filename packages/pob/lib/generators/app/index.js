@@ -103,6 +103,7 @@ module.exports = class PobAppGenerator extends Generator {
       babel,
       node,
       browser,
+      enableSrcResolver: true,
     });
 
     this.composeWith(require.resolve('../common/old-dependencies'));
