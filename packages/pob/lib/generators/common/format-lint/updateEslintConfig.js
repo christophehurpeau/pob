@@ -75,8 +75,10 @@ function updateParserAndPlugins(
 
 function updateSettings(config, settings) {
   Object.entries(settings).forEach(([key, value]) => {
-    if (value === false && config.settings) {
-      delete config.settings[key];
+    if (value === false) {
+      if (config.settings) {
+        delete config.settings[key];
+      }
     } else {
       if (!config.settings) config.settings = {};
       config.settings[key] = value;
