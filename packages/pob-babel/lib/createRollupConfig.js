@@ -3,11 +3,11 @@
 'use strict';
 
 const readFileSync = require('fs').readFileSync;
+const configExternalDependencies = require('rollup-config-external-dependencies');
 const babel = require('rollup-plugin-babel');
+const ignoreImport = require('rollup-plugin-ignore-import');
 const json = require('rollup-plugin-json');
 const resolve = require('rollup-plugin-node-resolve');
-const ignoreImport = require('rollup-plugin-ignore-import');
-const configExternalDependencies = require('rollup-config-external-dependencies');
 
 module.exports = ({
   cwd = process.cwd(),

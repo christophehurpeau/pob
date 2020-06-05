@@ -1,8 +1,8 @@
 'use strict';
 
 const fs = require('fs');
-const Generator = require('yeoman-generator');
 const yarnParsers = require('@yarnpkg/parsers');
+const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
 
 module.exports = class YarnGenerator extends Generator {

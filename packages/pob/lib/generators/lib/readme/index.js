@@ -1,10 +1,10 @@
 'use strict';
 
-const Generator = require('yeoman-generator');
 const camelCase = require('lodash.camelcase');
 const prettier = require('prettier');
-const packageUtils = require('../../../utils/package');
+const Generator = require('yeoman-generator');
 const inLerna = require('../../../utils/inLerna');
+const packageUtils = require('../../../utils/package');
 
 module.exports = class ReadmeGenerator extends Generator {
   constructor(args, opts) {

@@ -2,9 +2,9 @@
 
 'use strict';
 
+const { spawnSync } = require('child_process');
 const fs = require('fs');
 const path = require('path');
-const { spawnSync } = require('child_process');
 const argv = require('minimist-argv');
 
 if (argv.clean !== false) {

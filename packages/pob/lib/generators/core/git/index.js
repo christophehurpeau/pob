@@ -1,8 +1,8 @@
 'use strict';
 
-const Generator = require('yeoman-generator');
 const remoteUrl = require('git-remote-url');
 const githubUsername = require('github-username');
+const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
 
 module.exports = class GitGenerator extends Generator {

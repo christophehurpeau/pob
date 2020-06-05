@@ -2,17 +2,17 @@
 
 'use strict';
 
-const readFileSync = require('fs').readFileSync;
 const execSync = require('child_process').execSync;
-const argv = require('minimist-argv');
+const readFileSync = require('fs').readFileSync;
+const conventionalRecommendedBump = require('conventional-recommended-bump');
 const inquirer = require('inquirer');
+const argv = require('minimist-argv');
 const {
   valid: validateSemver,
   inc: incSemver,
   gt: gtSemver,
   prerelease,
 } = require('semver');
-const conventionalRecommendedBump = require('conventional-recommended-bump');
 
 const isSemverValid = (version) => validateSemver(version) !== null;
 

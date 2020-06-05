@@ -2,9 +2,9 @@
 
 'use strict';
 
-const Generator = require('yeoman-generator');
-const got = require('got');
 const gh = require('gh-got');
+const got = require('got');
+const Generator = require('yeoman-generator');
 // const packageUtils = require('../../../../../utils/package');
 
 const GITHUB_TOKEN = process.env.POB_GITHUB_TOKEN;

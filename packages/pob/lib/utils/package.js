@@ -2,11 +2,11 @@
 
 'use strict';
 
-const semver = require('semver');
-const parseAuthor = require('parse-author');
-const pobDependencies = require('pob-dependencies');
 const sortObject = require('@pob/sort-object');
 const sortPkg = require('@pob/sort-pkg');
+const parseAuthor = require('parse-author');
+const pobDependencies = require('pob-dependencies');
+const semver = require('semver');
 
 exports.parseAuthor = parseAuthor;
 

@@ -1,10 +1,10 @@
 'use strict';
 
-const { readdirSync, existsSync } = require('fs');
 const { spawnSync } = require('child_process');
+const { readdirSync, existsSync } = require('fs');
 const Generator = require('yeoman-generator');
-const packageUtils = require('../../../utils/package');
 const inLerna = require('../../../utils/inLerna');
+const packageUtils = require('../../../utils/package');
 
 module.exports = class LernaGenerator extends Generator {
   constructor(args, opts) {

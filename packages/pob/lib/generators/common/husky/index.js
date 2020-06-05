@@ -1,7 +1,7 @@
 'use strict';
 
-const { readlinkSync } = require('fs');
 const { execSync } = require('child_process');
+const { readlinkSync } = require('fs');
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
 

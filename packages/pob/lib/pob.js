@@ -2,12 +2,12 @@
 
 'use strict';
 
-const { existsSync, writeFileSync, readFileSync } = require('fs');
 const { execSync, spawnSync } = require('child_process');
+const { existsSync, writeFileSync, readFileSync } = require('fs');
 const fs = require('fs');
+const argv = require('minimist-argv');
 const updateNotifier = require('update-notifier');
 const yeoman = require('yeoman-environment');
-const argv = require('minimist-argv');
 const pkg = require('../package.json');
 
 const printUsage = () => {

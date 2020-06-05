@@ -1,8 +1,8 @@
 'use strict';
 
 const fs = require('fs');
-const semver = require('semver');
 const prettyPkg = require('@pob/pretty-pkg');
+const semver = require('semver');
 
 const pkgPath = require.resolve('../package.json');
 const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));

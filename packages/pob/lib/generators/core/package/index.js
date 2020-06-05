@@ -2,10 +2,10 @@
 
 const fs = require('fs');
 const path = require('path');
-const Generator = require('yeoman-generator');
 const askName = require('inquirer-npm-name');
-const packageUtils = require('../../../utils/package');
+const Generator = require('yeoman-generator');
 const inLerna = require('../../../utils/inLerna');
+const packageUtils = require('../../../utils/package');
 
 module.exports = class PackageGenerator extends Generator {
   constructor(args, opts) {

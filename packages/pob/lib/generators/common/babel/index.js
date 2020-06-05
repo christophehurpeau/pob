@@ -1,10 +1,10 @@
 'use strict';
 
 const fs = require('fs');
-const Generator = require('yeoman-generator');
 const semver = require('semver');
-const packageUtils = require('../../../utils/package');
+const Generator = require('yeoman-generator');
 const inLerna = require('../../../utils/inLerna');
+const packageUtils = require('../../../utils/package');
 
 module.exports = class BabelGenerator extends Generator {
   constructor(args, opts) {

@@ -2,9 +2,9 @@
 
 'use strict';
 
+const execSync = require('child_process').execSync;
 const readFileSync = require('fs').readFileSync;
 const existsSync = require('fs').existsSync;
-const execSync = require('child_process').execSync;
 const validateSemver = require('semver').valid;
 
 const isSemverValid = (version) => validateSemver(version) !== null;

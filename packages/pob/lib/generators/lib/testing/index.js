@@ -1,8 +1,8 @@
 'use strict';
 
 const Generator = require('yeoman-generator');
-const packageUtils = require('../../../utils/package');
 const inLerna = require('../../../utils/inLerna');
+const packageUtils = require('../../../utils/package');
 
 module.exports = class TestingGenerator extends Generator {
   constructor(args, opts) {

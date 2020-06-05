@@ -1,8 +1,8 @@
 'use strict';
 
 const Generator = require('yeoman-generator');
-const packageUtils = require('../../../utils/package');
 const formatJson = require('../../../utils/formatJson');
+const packageUtils = require('../../../utils/package');
 
 module.exports = class SortPackageGenerator extends Generator {
   writing() {

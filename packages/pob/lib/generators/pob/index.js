@@ -2,8 +2,8 @@
 
 const fs = require('fs');
 const Generator = require('yeoman-generator');
-const packageUtils = require('../../utils/package');
 const ensureJsonFileFormatted = require('../../utils/ensureJsonFileFormatted');
+const packageUtils = require('../../utils/package');
 
 module.exports = class PobBaseGenerator extends Generator {
   constructor(args, opts) {

@@ -1,8 +1,8 @@
 'use strict';
 
-const Generator = require('yeoman-generator');
-const LernaProject = require('@lerna/project');
 const PackageGraph = require('@lerna/package-graph');
+const LernaProject = require('@lerna/project');
+const Generator = require('yeoman-generator');
 
 module.exports = class PobMonorepoGenerator extends Generator {
   constructor(args, opts) {

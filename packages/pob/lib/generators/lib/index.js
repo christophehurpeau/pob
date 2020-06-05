@@ -3,9 +3,9 @@
 const { execSync } = require('child_process');
 const fs = require('fs');
 const Generator = require('yeoman-generator');
-const packageUtils = require('../../utils/package');
 const inLerna = require('../../utils/inLerna');
 const inNpmLerna = require('../../utils/inNpmLerna');
+const packageUtils = require('../../utils/package');
 
 module.exports = class PobLibGenerator extends Generator {
   constructor(args, opts) {

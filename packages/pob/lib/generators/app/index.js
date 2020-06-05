@@ -1,9 +1,9 @@
 'use strict';
 
 const Generator = require('yeoman-generator');
-const packageUtils = require('../../utils/package');
 const inLerna = require('../../utils/inLerna');
 const inNpmLerna = require('../../utils/inNpmLerna');
+const packageUtils = require('../../utils/package');
 
 const gitignorePaths = {
   alp: (config) => ['# alp paths', '/build', '/public', '/data'],
@@ -100,6 +100,7 @@ module.exports = class PobAppGenerator extends Generator {
     });
 
     this.composeWith(require.resolve('../common/format-lint'), {
+      testing: false,
       babel,
       node,
       browser,
