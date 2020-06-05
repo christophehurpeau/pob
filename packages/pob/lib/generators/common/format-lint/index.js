@@ -5,10 +5,10 @@
 const fs = require('fs');
 const path = require('path');
 const Generator = require('yeoman-generator');
-const packageUtils = require('../../../utils/package');
 const ensureJsonFileFormatted = require('../../../utils/ensureJsonFileFormatted');
 const formatJson = require('../../../utils/formatJson');
 const inLerna = require('../../../utils/inLerna');
+const packageUtils = require('../../../utils/package');
 const updateEslintConfig = require('./updateEslintConfig');
 
 module.exports = class LintGenerator extends Generator {
@@ -86,7 +86,20 @@ module.exports = class LintGenerator extends Generator {
       arrowParens: 'always',
     };
 
+    if (pkg.devDependencies) {
+      if (pkg.devDependencies['@pob/eslint-config-babel']) {
+        packageUtils.addDevDependencies(pkg, ['@pob/eslint-config-typescript']);
+      }
+      if (pkg.devDependencies['@pob/eslint-config-babel-node']) {
+        packageUtils.addDevDependencies(pkg, [
+          '@pob/eslint-config-typescript-node',
+        ]);
+      }
+    }
+
     packageUtils.removeDevDependencies(pkg, [
+      '@pob/eslint-config-babel',
+      '@pob/eslint-config-babel-node',
       '@typescript-eslint/parser',
       'babel-eslint',
       'eslint-config-pob',
@@ -114,8 +127,6 @@ module.exports = class LintGenerator extends Generator {
       yoConfigPobMonorepo.project &&
       yoConfigPobMonorepo.project.type;
 
-    const typescript = true;
-
     if (globalEslint && !(inLerna && inLerna.root)) {
       packageUtils.removeDevDependencies(
         pkg,
@@ -123,10 +134,8 @@ module.exports = class LintGenerator extends Generator {
           'eslint',
           'prettier',
           '@pob/eslint-config',
-          '@pob/eslint-config-node',
-          '@pob/eslint-config-babel',
-          '@pob/eslint-config-babel-node',
           '@pob/eslint-config-typescript',
+          '@pob/eslint-config-typescript-node',
           '@pob/eslint-config-typescript-react',
           '@pob/eslint-config-react',
           '@typescript-eslint/eslint-plugin',
@@ -171,35 +180,24 @@ module.exports = class LintGenerator extends Generator {
 
         if (inLerna && inLerna.root) {
           packageUtils.updateDevDependenciesIfPresent(pkg, [
-            '@pob/eslint-config-babel',
-            '@pob/eslint-config-babel-node',
             '@pob/eslint-config-typescript',
-            '@typescript-eslint/eslint-plugin',
-            '@pob/eslint-config-react',
+            '@pob/eslint-config-typescript-node',
             '@pob/eslint-config-typescript-react',
+            '@typescript-eslint/eslint-plugin',
           ]);
         } else {
-          packageUtils.addOrRemoveDevDependencies(
-            pkg,
-            useBabel && !typescript,
-            ['@pob/eslint-config-babel'],
-          );
-          packageUtils.addOrRemoveDevDependencies(
-            pkg,
-            useBabel && useNodeOnly,
-            ['@pob/eslint-config-babel-node'],
-          );
-          packageUtils.addOrRemoveDevDependencies(pkg, useBabel && typescript, [
+          packageUtils.addOrRemoveDevDependencies(pkg, useBabel, [
             '@pob/eslint-config-typescript',
             '@typescript-eslint/eslint-plugin',
           ]);
 
           packageUtils.addOrRemoveDevDependencies(
             pkg,
-            hasReact && !typescript,
-            ['@pob/eslint-config-react'],
+            useBabel && useNodeOnly,
+            ['@pob/eslint-config-typescript-node'],
           );
-          packageUtils.addOrRemoveDevDependencies(pkg, hasReact && typescript, [
+
+          packageUtils.addOrRemoveDevDependencies(pkg, hasReact, [
             '@pob/eslint-config-typescript-react',
           ]);
         }
@@ -232,11 +230,9 @@ module.exports = class LintGenerator extends Generator {
 
       if (useBabel) {
         return [
-          !typescript && '@pob/eslint-config-babel',
-          typescript && '@pob/eslint-config-typescript',
-          useNodeOnly && '@pob/eslint-config-babel-node',
-          hasReact &&
-            `@pob/eslint-config-${typescript ? 'typescript-' : ''}react`,
+          '@pob/eslint-config-typescript',
+          useNodeOnly && '@pob/eslint-config-typescript-node',
+          hasReact && '@pob/eslint-config-typescript-react',
         ].filter(Boolean);
       }
 
