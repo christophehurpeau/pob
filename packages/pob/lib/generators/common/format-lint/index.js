@@ -271,7 +271,10 @@ module.exports = class LintGenerator extends Generator {
         },
       );
 
-      this.fs.write(rootEslintrcPath, formatJson(rootEslintrcConfig));
+      this.fs.write(
+        rootEslintrcPath,
+        formatJson(rootEslintrcConfig, '.eslintrc.json'),
+      );
     } catch (err) {
       console.warn(`Could not parse/edit ${rootEslintrcPath}: `, err);
     }
@@ -301,7 +304,10 @@ module.exports = class LintGenerator extends Generator {
           },
         );
 
-        this.fs.write(srcEslintrcPath, formatJson(srcEslintrcConfig));
+        this.fs.write(
+          srcEslintrcPath,
+          formatJson(srcEslintrcConfig, '.eslintrc.json'),
+        );
       } catch (err) {
         console.warn(`Could not parse/edit ${srcEslintrcPath}: `, err);
       }
