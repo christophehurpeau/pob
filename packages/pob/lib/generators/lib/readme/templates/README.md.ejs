@@ -12,11 +12,7 @@
 <% if (!privatePackage) { -%>
   <a href="https://npmjs.org/package/<%= packageName %>"><img src="https://img.shields.io/npm/v/<%= packageName %>.svg?style=flat-square"></a>
 <% } if (gitHost === 'github') { -%>
-<% if (testing && circleci) { -%>
-  <a href="https://circleci.com/gh/<%= gitAccount %>/<%= gitName %>"><img src="https://img.shields.io/circleci/project/<%= gitAccount %>/<%= gitName %>/master.svg?style=flat-square"></a>
-<% } if (testing && travisci) { -%>
-  <a href="https://travis-ci.org/<%= gitAccount %>/<%= gitName %>"><img src="https://img.shields.io/travis/<%= gitAccount %>/<%= gitName %>/master.svg?style=flat-square"></a>
-<% } if (testing && codecov) { -%>
+<% if (testing && codecov) { -%>
   <a href="https://codecov.io/gh/<%= gitAccount %>/<%= gitName %>"><img src="https://img.shields.io/codecov/c/github/<%= gitAccount %>/<%= gitName %>/master.svg?style=flat-square"></a>
 <% } -%>
 <% } -%>

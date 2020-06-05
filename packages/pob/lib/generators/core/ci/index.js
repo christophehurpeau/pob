@@ -48,6 +48,7 @@ module.exports = class CiGenerator extends Generator {
     if (this.options.enable) {
       const isYarn2 = this.fs.exists('.yarnrc.yml');
       const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+      const circleci = false;
 
       try {
         // this.fs.copyTpl(
@@ -59,7 +60,7 @@ module.exports = class CiGenerator extends Generator {
         //     codecov: this.options.codecov,
         //   },
         // );
-        if (isYarn2) {
+        if (circleci) {
           this.fs.delete(this.destinationPath('.circleci/config.yml'));
         } else {
           this.fs.copyTpl(

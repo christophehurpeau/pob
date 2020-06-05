@@ -28,18 +28,6 @@ module.exports = class ReadmeGenerator extends Generator {
       desc: 'Include testing badge',
     });
 
-    this.option('circleci', {
-      type: Boolean,
-      required: true,
-      desc: 'circleci badge and documentation link',
-    });
-
-    // this.option('travisci', {
-    //   type: Boolean,
-    //   required: true,
-    //   desc: 'travisci badge',
-    // });
-
     this.option('codecov', {
       type: Boolean,
       required: true,
@@ -105,9 +93,6 @@ module.exports = class ReadmeGenerator extends Generator {
         codecov: this.options.codecov,
         documentation: this.options.documentation,
         testing: this.options.testing,
-        circleci: this.options.circleci,
-        // travisci: this.options.travisci,
-        travisci: false,
         content,
       });
       this.fs.write(
