@@ -85,7 +85,7 @@ function updateSettings(config, settings) {
     }
   });
 
-  if (Object.keys(config.settings) === 0) {
+  if (config.settings && Object.keys(config.settings) === 0) {
     delete config.settings;
   }
 
