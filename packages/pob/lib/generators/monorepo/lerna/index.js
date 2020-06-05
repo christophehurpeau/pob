@@ -147,9 +147,6 @@ module.exports = class LernaGenerator extends Generator {
     const withTypescript = this.packagePaths.some((packagePath) =>
       this.fs.exists(this.destinationPath(`${packagePath}/tsconfig.json`)),
     );
-    const withDocumentation = this.packagesConfig.some(
-      (config) => getPobConfig(config).documentation,
-    );
     const withTests = this.packagesConfig.some(
       (config) => getPobConfig(config).testing,
     );
@@ -195,17 +192,6 @@ module.exports = class LernaGenerator extends Generator {
       'build:definitions': 'lerna run --stream build:definitions',
       postbuild: 'yarn run build:definitions --since',
     });
-
-    packageUtils.addOrRemoveScripts(pkg, withDocumentation, {
-      'generate:docs':
-        'lerna run --parallel --ignore "*-example" generate:docs',
-    });
-
-    if (withDocumentation) {
-      pkg.scripts.postbuild = `${
-        pkg.scripts.postbuild ? `${pkg.scripts.postbuild} && ` : ''
-      }yarn run generate:docs`;
-    }
 
     delete pkg.scripts.version;
     delete pkg.scripts.prepublishOnly;

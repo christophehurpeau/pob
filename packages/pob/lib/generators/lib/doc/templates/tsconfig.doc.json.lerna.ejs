@@ -1,0 +1,28 @@
+{
+  "include": [
+<% workspaces.forEach((workspace, i) => { -%>
+    "packages/*/src/**/*.ts<%= jsx ? 'x?' : '' %>"<% if (i + 1 !== workspaces.length) { %>,<% } -%>
+<% }) %>
+  ],
+
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["dom", "esnext"],
+    "moduleResolution": "node",
+    "esModuleInterop": true
+  },
+
+  "typedocOptions": {
+    "mode": "modules",
+    "out": "docs",
+    "excludePrivate": true,
+    "gitRevision": "master"
+  },
+
+  "exclude": [
+    "**/node_modules/**",
+    "**/src/**/*.test.ts",
+    "**/src/**/__tests__/**"
+  ]
+}

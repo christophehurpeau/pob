@@ -100,6 +100,7 @@ module.exports = class PobAppGenerator extends Generator {
     });
 
     this.composeWith(require.resolve('../common/format-lint'), {
+      documentation: false,
       testing: false,
       babel,
       node,

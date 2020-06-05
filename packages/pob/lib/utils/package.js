@@ -41,12 +41,6 @@ exports.hasReact = (pkg) =>
     (pkg.peerDependencies && pkg.peerDependencies.react)
   );
 
-exports.hasTypescript = (pkg) =>
-  !!(pkg.devDependencies && pkg.devDependencies.typescript);
-
-exports.hasDocumentation = (pkg) =>
-  !!(pkg.devDependencies && pkg.devDependencies.typedoc);
-
 exports.hasJest = (pkg) => !!(pkg.devDependencies && pkg.devDependencies.jest);
 
 function internalAddToObject(pkg, key, object) {

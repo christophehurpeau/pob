@@ -158,7 +158,9 @@ module.exports = class PobLibGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
     // documentation
-    if (!this.updateOnly) {
+    if (inLerna && !inLerna.root) {
+      this.pobjson.documentation = false;
+    } else if (!this.updateOnly) {
       const answers = await this.prompt([
         {
           type: 'confirm',
@@ -255,7 +257,10 @@ module.exports = class PobLibGenerator extends Generator {
     });
 
     // must be after testing
-    this.composeWith(require.resolve('../common/format-lint'), {});
+    this.composeWith(require.resolve('../common/format-lint'), {
+      documentation: !!this.pobjson.documentation,
+      testing: this.pobjson.testing,
+    });
 
     this.composeWith(require.resolve('./doc'), {
       enabled: this.pobjson.documentation,

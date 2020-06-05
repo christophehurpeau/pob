@@ -307,15 +307,18 @@ module.exports = class BabelGenerator extends Generator {
       'build:definitions': 'tsc -p tsconfig.build.json',
     });
 
-    if (
-      !this.options.isApp &&
-      !useBabel &&
-      this.fs.exists(this.destinationPath('lib/index.d.ts'))
-    ) {
+    if (!this.options.isApp && !useBabel) {
       // check definitions, but also force lerna to execute build:definitions in right order
       // example: nightingale-types depends on nightingale-levels
-      pkg.scripts['build:definitions'] =
-        'tsc --lib esnext --noEmit ./lib/index.d.ts';
+      if (this.fs.exists(this.destinationPath('lib/index.d.ts'))) {
+        pkg.scripts['build:definitions'] =
+          'tsc --lib esnext --noEmit ./lib/index.d.ts';
+      }
+
+      if (this.fs.exists(this.destinationPath('lib/index.ts'))) {
+        pkg.scripts['build:definitions'] =
+          'tsc --lib esnext --noEmit ./lib/index.ts';
+      }
     }
 
     if (pkg.scripts) {
@@ -440,7 +443,9 @@ module.exports = class BabelGenerator extends Generator {
       pkg.types = './dist/index.d.ts';
     } else {
       pkg.main = './lib/index.js';
-      if (this.fs.exists('./lib/index.d.ts') || pkg.types) {
+      if (this.fs.exists('./lib/index.ts')) {
+        pkg.types = './lib/index.ts';
+      } else if (this.fs.exists('./lib/index.d.ts') || pkg.types) {
         pkg.types = './lib/index.d.ts';
       }
       if (!pkg.engines) pkg.engines = {};

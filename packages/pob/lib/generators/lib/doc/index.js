@@ -1,6 +1,7 @@
 'use strict';
 
 const Generator = require('yeoman-generator');
+const inLerna = require('../../../utils/inLerna');
 const packageUtils = require('../../../utils/package');
 
 module.exports = class DocGenerator extends Generator {
@@ -34,12 +35,23 @@ module.exports = class DocGenerator extends Generator {
 
     if (this.options.enabled) {
       const jsx =
-        pkg.pob.jsx !== undefined ? pkg.pob.jsx : packageUtils.hasReact(pkg);
-      this.fs.copyTpl(
-        this.templatePath('tsconfig.doc.json.ejs'),
-        this.destinationPath('tsconfig.doc.json'),
-        { jsx },
-      );
+        pkg.pob && pkg.pob.jsx !== undefined
+          ? pkg.pob.jsx
+          : packageUtils.hasReact(pkg);
+
+      if (inLerna && inLerna.root) {
+        this.fs.copyTpl(
+          this.templatePath('tsconfig.doc.json.lerna.ejs'),
+          this.destinationPath('tsconfig.doc.json'),
+          { jsx, workspaces: pkg.workspaces },
+        );
+      } else {
+        this.fs.copyTpl(
+          this.templatePath('tsconfig.doc.json.ejs'),
+          this.destinationPath('tsconfig.doc.json'),
+          { jsx },
+        );
+      }
     } else {
       // this.fs.delete(this.destinationPath('jsdoc.conf.js'));
       if (this.fs.exists(this.destinationPath('docs'))) {
@@ -60,6 +72,11 @@ module.exports = class DocGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(pkg, this.options.enabled, [
       'typedoc',
     ]);
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      this.options.enabled && inLerna && inLerna.root,
+      ['typedoc-plugin-lerna-packages'],
+    );
 
     if (this.options.enabled) {
       packageUtils.addScripts(pkg, {
@@ -68,7 +85,7 @@ module.exports = class DocGenerator extends Generator {
         'generate:api': 'typedoc --tsconfig tsconfig.doc.json',
       });
 
-      if (this.options.testing) {
+      if (this.options.testing && (!inLerna || !inLerna.root)) {
         pkg.scripts['generate:docs'] += ' && yarn run generate:test-coverage';
       }
     } else {

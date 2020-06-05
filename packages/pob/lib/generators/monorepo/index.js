@@ -124,8 +124,15 @@ module.exports = class PobMonorepoGenerator extends Generator {
 
     this.composeWith(require.resolve('../common/husky'), {});
 
-    this.composeWith(require.resolve('../common/format-lint'), {});
+    this.composeWith(require.resolve('../common/format-lint'), {
+      documentation: this.pobLernaConfig.documentation,
+      testing: this.pobLernaConfig.testing,
+    });
 
+    this.composeWith(require.resolve('../lib/doc'), {
+      enabled: this.pobLernaConfig.documentation,
+      testing: this.pobLernaConfig.testing,
+    });
     // Always add a gitignore, because npm publish uses it.
     this.composeWith(require.resolve('../core/gitignore'), {
       root: true,
@@ -139,6 +146,21 @@ module.exports = class PobMonorepoGenerator extends Generator {
       isAppProject: this.options.isAppProject,
       packageNames: JSON.stringify(this.pobLernaConfig.packageNames),
     });
+
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+
+    // packageUtils.addOrRemoveScripts(pkg, this.pobLernaConfig.documentation, {
+    //   'generate:test-coverage':
+    //     'lerna run --parallel --ignore "*-example" generate:test-coverage',
+    // });
+
+    if (this.pobLernaConfig.documentation) {
+      pkg.scripts.postbuild = `${
+        pkg.scripts.postbuild ? `${pkg.scripts.postbuild} && ` : ''
+      }yarn run generate:docs`;
+    }
+
+    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 
   end() {

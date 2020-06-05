@@ -1,9 +1,12 @@
 **/node_modules/*
 *.d.ts
-<% workspaces.forEach((workspace) => { %>
+<% if (documentation) { -%>
+/docs
+<% } -%>
+
+<% workspaces.forEach((workspace) => { -%>
 <%= workspace %>/dist
 <%= workspace %>/test
 <%= workspace %>/public
 <%= workspace %>/build
-<%= workspace %>/docs
-<% }) %>
+<% }) -%>

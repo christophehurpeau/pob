@@ -22,6 +22,13 @@ module.exports = class LintGenerator extends Generator {
       desc: 'Use babel.',
     });
 
+    this.option('documentation', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+      desc: 'Documentation enabled',
+    });
+
     this.option('enableSrcResolver', {
       type: Boolean,
       required: false,
@@ -59,6 +66,7 @@ module.exports = class LintGenerator extends Generator {
         this.destinationPath('.eslintignore'),
         {
           workspaces: pkg.workspaces,
+          documentation: this.options.documentation,
         },
       );
     } else if (this.fs.exists(this.destinationPath('.eslintignore'))) {
