@@ -89,23 +89,22 @@ module.exports = class LintGenerator extends Generator {
     packageUtils.removeDevDependencies(pkg, [
       '@typescript-eslint/parser',
       'babel-eslint',
-      'eslint-config-airbnb',
-      'eslint-config-airbnb-base',
       'eslint-config-pob',
       'eslint-config-prettier',
       'eslint-plugin-babel',
       'eslint-plugin-flowtype',
       // 'eslint-plugin-import',
       'eslint-plugin-jsx-a11y',
-      'eslint-plugin-node',
-      'eslint-plugin-prettier',
-      'eslint-plugin-react',
-      'eslint-plugin-react-hooks',
-      'eslint-plugin-typescript',
-      'eslint-plugin-unicorn',
       'typescript-eslint-parser',
       'standard',
     ]);
+
+    if (!pkg.name.startsWith('@pob/eslint-config')) {
+      packageUtils.removeDevDependencies(pkg, [
+        'eslint-config-airbnb',
+        'eslint-config-airbnb-base',
+      ]);
+    }
 
     const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
     const globalEslint = yoConfigPobMonorepo && yoConfigPobMonorepo.eslint;
@@ -219,6 +218,12 @@ module.exports = class LintGenerator extends Generator {
 
     const extendsConfig = (() => {
       if (isPobEslintConfig) {
+        if (pkg.name === '@pob/eslint-config-monorepo') {
+          return [
+            './@pob/eslint-config/lib/index.js',
+            './@pob/eslint-config-node/lib/index.js',
+          ];
+        }
         return [
           '../eslint-config/lib/index.js',
           '../eslint-config-node/lib/index.js',
