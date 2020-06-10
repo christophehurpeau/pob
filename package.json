@@ -34,7 +34,7 @@
     "@pob/eslint-config": "37.2.0",
     "@pob/eslint-config-node": "37.2.0",
     "eslint": "6.8.0",
-    "eslint-plugin-import": "2.21.1",
+    "eslint-plugin-import": "2.21.2",
     "husky": "4.2.5",
     "lerna": "3.22.1",
     "prettier": "2.0.5"
