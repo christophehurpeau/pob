@@ -47,7 +47,7 @@
     "babel-preset-latest-node": "4.1.0",
     "babel-preset-modern-browsers": "14.2.1",
     "eslint": "6.8.0",
-    "eslint-import-resolver-node": "0.3.3",
+    "eslint-import-resolver-node": "0.3.4",
     "eslint-plugin-import": "2.21.2",
     "eslint-plugin-jsx-a11y": "6.2.3",
     "eslint-plugin-node": "11.1.0",
