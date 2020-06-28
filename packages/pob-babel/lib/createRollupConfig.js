@@ -165,7 +165,7 @@ module.exports = ({
         resolve({
           customResolveOptions: {
             extensions,
-            moduleDirectory: [], // don't resolve node_modules
+            moduleDirectory: ['src'], // don't resolve node_modules, but allow src (see baseUrl in tsconfig)
           },
         }),
       ].filter(Boolean),
