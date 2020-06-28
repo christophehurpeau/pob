@@ -1,6 +1,6 @@
 {
   "name": "@pob/renovate-config",
-  "version": "1.10.0",
+  "version": "1.10.1",
   "description": "renovate pob config",
   "engines": {
     "node": ">= 8.3.0"
@@ -17,7 +17,7 @@
     "preversion": "node generate-package.json.js && git add package.json"
   },
   "devDependencies": {
-    "pob-dependencies": "^1.16.0",
+    "pob-dependencies": "^1.17.0",
     "prettier": "2.0.5"
   },
   "renovate-config": {
@@ -42,17 +42,14 @@
             "@babel/runtime",
             "@pob/commitlint-config",
             "@pob/eslint-config",
-            "@pob/eslint-config-babel",
-            "@pob/eslint-config-babel-node",
             "@pob/eslint-config-node",
-            "@pob/eslint-config-react",
             "@pob/eslint-config-typescript",
+            "@pob/eslint-config-typescript-node",
             "@pob/eslint-config-typescript-react",
             "@pob/pretty-pkg",
             "@types/jest",
             "@typescript-eslint/eslint-plugin",
             "@typescript-eslint/parser",
-            "@yarnpkg/pnpify",
             "babel-eslint",
             "babel-jest",
             "babel-preset-latest-node",
@@ -77,6 +74,7 @@
             "repository-check-dirty",
             "semver",
             "typedoc",
+            "typedoc-plugin-lerna-packages",
             "typescript"
           ],
           "schedule": [

@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.17.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.16.0...pob-dependencies@1.17.0) (2020-06-28)
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.10.3 ([#600](https://github.com/christophehurpeau/pob/issues/600)) ([18e762f](https://github.com/christophehurpeau/pob/commit/18e762f3e75f25d34d976b1b62f04f25f4d7c09b))
+* **deps:** update dependency @yarnpkg/pnpify to v2.0.0-rc.23 ([#588](https://github.com/christophehurpeau/pob/issues/588)) ([225fd45](https://github.com/christophehurpeau/pob/commit/225fd457b15b916d08faf023498e9c9aeb2c1ef9))
+* **deps:** update dependency eslint-import-resolver-node to v0.3.4 ([#597](https://github.com/christophehurpeau/pob/issues/597)) ([255a4cb](https://github.com/christophehurpeau/pob/commit/255a4cb737c2784e270ca784f652e4c7aa956b5c))
+* **deps:** update dependency eslint-plugin-import to v2.21.0 ([#589](https://github.com/christophehurpeau/pob/issues/589)) ([ddad12b](https://github.com/christophehurpeau/pob/commit/ddad12bc6a7076d93d7678f7bf2deef60dc68da5))
+* **deps:** update dependency eslint-plugin-import to v2.21.1 ([#590](https://github.com/christophehurpeau/pob/issues/590)) ([498066e](https://github.com/christophehurpeau/pob/commit/498066ecc8f9fb280e0694b7d3c9a956893a0a3b))
+* **deps:** update dependency eslint-plugin-import to v2.21.2 ([#593](https://github.com/christophehurpeau/pob/issues/593)) ([a27ba6f](https://github.com/christophehurpeau/pob/commit/a27ba6f3e5933d98bccbdfa61e44382d689ea575))
+* **deps:** update dependency eslint-plugin-import to v2.22.0 ([#604](https://github.com/christophehurpeau/pob/issues/604)) ([ec128f6](https://github.com/christophehurpeau/pob/commit/ec128f61b1cd9d7d47ab18b9391d1f4140895b5e))
+* **deps:** update dependency eslint-plugin-jsx-a11y to v6.3.0 ([#599](https://github.com/christophehurpeau/pob/issues/599)) ([b65b0b9](https://github.com/christophehurpeau/pob/commit/b65b0b9199b0e2e0831c1c7a8aec4a1c13652cc1))
+* **deps:** update dependency eslint-plugin-jsx-a11y to v6.3.1 ([#601](https://github.com/christophehurpeau/pob/issues/601)) ([2e327d2](https://github.com/christophehurpeau/pob/commit/2e327d242b4f78a96f57d7c86b97ed506c698ae3))
+* **deps:** update dependency lerna to v3.22.1 ([#591](https://github.com/christophehurpeau/pob/issues/591)) ([ac9178e](https://github.com/christophehurpeau/pob/commit/ac9178e25f22005e2be71b97a34eb6591bb1ea63))
+* **deps:** update jest monorepo to v26.1.0 ([#603](https://github.com/christophehurpeau/pob/issues/603)) ([a8c162f](https://github.com/christophehurpeau/pob/commit/a8c162f98f0d575afcecea31dcb59e29cc3a471b))
+* monorepo doc ([bac17fc](https://github.com/christophehurpeau/pob/commit/bac17fcc01b32e6abfc5364a80f7776a7efabf57))
+
+
+
+
+
 # [1.16.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.15.0...pob-dependencies@1.16.0) (2020-06-04)
 
 

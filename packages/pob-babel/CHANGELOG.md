@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.13.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.12.1...pob-babel@24.13.0) (2020-06-28)
+
+
+### Features
+
+* **deps:** update jest monorepo to v26.1.0 ([#603](https://github.com/christophehurpeau/pob/issues/603)) ([a8c162f](https://github.com/christophehurpeau/pob/commit/a8c162f98f0d575afcecea31dcb59e29cc3a471b))
+* **pob-babel:** enable resolve src ([7244c7c](https://github.com/christophehurpeau/pob/commit/7244c7c8a523b1d010acab626d06283c57cddccf))
+
+
+
+
+
 ## [24.12.1](https://github.com/christophehurpeau/pob/compare/pob-babel@24.12.0...pob-babel@24.12.1) (2020-06-04)
 
 **Note:** Version bump only for package pob-babel

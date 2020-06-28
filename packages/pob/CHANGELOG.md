@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.17.0](https://github.com/christophehurpeau/pob/compare/pob@5.16.0...pob@5.17.0) (2020-06-28)
+
+
+### Bug Fixes
+
+* ensure right filename passed to prettier ([c0941f0](https://github.com/christophehurpeau/pob/commit/c0941f0669b54f29e1e230288123247bf96b4a06))
+* eslint config for pob eslint monorepo ([bfbfbe4](https://github.com/christophehurpeau/pob/commit/bfbfbe48a19aa0a6d8e91cade821ee606bc9f7ed))
+* formatJson ([00102fd](https://github.com/christophehurpeau/pob/commit/00102fd1ae63470082baa3e0738e6b251ceb2492))
+* formatJson ([2a79a31](https://github.com/christophehurpeau/pob/commit/2a79a3192849f2d0edb6d7b9e01e970a8bd6238a))
+* settings false value ([4596444](https://github.com/christophehurpeau/pob/commit/459644492a82511b0f9fe46d51ba9a4594743837))
+* when settings not defined in eslint config ([a7be844](https://github.com/christophehurpeau/pob/commit/a7be844ada17437a119f2cd8d972559d89d4037a))
+
+
+### Features
+
+* add option enableSrcResolver for apps ([c3f1ff7](https://github.com/christophehurpeau/pob/commit/c3f1ff7d9404a7f5dd8b9fc023445e4683347239))
+* drop circleci and travisci ([53beb5c](https://github.com/christophehurpeau/pob/commit/53beb5c65ba681c9f8f0d56dea80b1f93e2217e3))
+* monorepo doc ([bac17fc](https://github.com/christophehurpeau/pob/commit/bac17fcc01b32e6abfc5364a80f7776a7efabf57))
+* remove david-dm ([5e432d6](https://github.com/christophehurpeau/pob/commit/5e432d65d1067e5196a6ecb75a02a17c830431ca))
+
+
+
+
+
 # [5.16.0](https://github.com/christophehurpeau/pob/compare/pob@5.15.0...pob@5.16.0) (2020-06-04)
 
 
