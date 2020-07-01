@@ -67,7 +67,7 @@
     "repository-check-dirty": "^1.2.2",
     "semver": "7.3.2",
     "typedoc": "0.17.8",
-    "typedoc-plugin-lerna-packages": "^0.3.0",
+    "typedoc-plugin-lerna-packages": "0.3.0",
     "typescript": "3.9.6"
   }
 }
