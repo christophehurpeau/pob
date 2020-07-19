@@ -43,7 +43,6 @@
             "@types/jest",
             "@typescript-eslint/eslint-plugin",
             "@typescript-eslint/parser",
-            "babel-eslint",
             "babel-jest",
             "babel-preset-latest-node",
             "babel-preset-modern-browsers",
