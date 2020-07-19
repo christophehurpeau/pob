@@ -56,16 +56,27 @@ module.exports = class MonorepoTypescriptGenerator extends Generator {
         }`,
       });
 
+      const basePackageName = pkg.name.startsWith('@')
+        ? `${pkg.name.replace(/-monorepo$/, '')}-`
+        : `@${pkg.name}/`;
+
       const packagePaths = JSON.parse(this.options.packageNames)
         .map((packageName) =>
-          this.options.isAppProject && packageName.startsWith(`@${pkg.name}/`)
-            ? `packages/${packageName.slice(pkg.name.length + 2)}`
+          this.options.isAppProject && packageName.startsWith(basePackageName)
+            ? `packages/${packageName.slice(basePackageName.length)}`
             : `${packageName[0] === '@' ? '' : 'packages/'}${packageName}`,
         )
         .filter((packagePath) => existsSync(`${packagePath}/tsconfig.json`));
 
       if (packagePaths.length === 0) {
-        console.log(JSON.parse(this.options.packageNames));
+        console.log(
+          JSON.parse(this.options.packageNames),
+          JSON.parse(this.options.packageNames).map((packageName) =>
+            this.options.isAppProject && packageName.startsWith(basePackageName)
+              ? `packages/${packageName.slice(basePackageName.length)}`
+              : `${packageName[0] === '@' ? '' : 'packages/'}${packageName}`,
+          ),
+        );
         throw new Error('packages should not be empty');
       }
 
