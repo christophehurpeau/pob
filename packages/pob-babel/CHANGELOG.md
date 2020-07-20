@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.14.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.13.0...pob-babel@24.14.0) (2020-07-20)
+
+
+### Features
+
+* drop circleci ([5ca1dda](https://github.com/christophehurpeau/pob/commit/5ca1dda4da3e45469e100bc35b36899a6faa9216))
+
+
+
+
+
 # [24.13.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.12.1...pob-babel@24.13.0) (2020-06-28)
 
 

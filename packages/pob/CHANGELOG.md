@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.18.0](https://github.com/christophehurpeau/pob/compare/pob@5.17.0...pob@5.18.0) (2020-07-20)
+
+
+### Features
+
+* drop circleci ([5ca1dda](https://github.com/christophehurpeau/pob/commit/5ca1dda4da3e45469e100bc35b36899a6faa9216))
+* support monorepo without scope ([90a159e](https://github.com/christophehurpeau/pob/commit/90a159eacebeefbf5a0b598a83a7f3680b6e6ab9))
+
+
+
+
+
 # [5.17.0](https://github.com/christophehurpeau/pob/compare/pob@5.16.0...pob@5.17.0) (2020-06-28)
 
 

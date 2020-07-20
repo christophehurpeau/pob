@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.18.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.17.0...pob-dependencies@1.18.0) (2020-07-20)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v38.2.0 ([#615](https://github.com/christophehurpeau/pob/issues/615)) ([9d5fb4e](https://github.com/christophehurpeau/pob/commit/9d5fb4e76dba7ef6880b44f24316e47f6e02d3d5))
+* remove unused babel-eslint ([22bb14d](https://github.com/christophehurpeau/pob/commit/22bb14d62153f71363088229cea2c2652895e642))
+* **deps:** pin dependency typedoc-plugin-lerna-packages to 0.3.0 ([#595](https://github.com/christophehurpeau/pob/issues/595)) ([4063893](https://github.com/christophehurpeau/pob/commit/40638936a3fcb7923f3a932248076097d7f6b0f0))
+* **deps:** update babel monorepo to v7.10.4 ([#608](https://github.com/christophehurpeau/pob/issues/608)) ([1b6719b](https://github.com/christophehurpeau/pob/commit/1b6719b4aec0c8ee9e6a472d2d571de63d3b0013))
+* **deps:** update babel monorepo to v7.10.5 [skip ci] ([#612](https://github.com/christophehurpeau/pob/issues/612)) ([49c4599](https://github.com/christophehurpeau/pob/commit/49c4599529307611795b12401b13162c5e82c711))
+* **deps:** update dependency eslint-plugin-react to v7.20.1 ([#605](https://github.com/christophehurpeau/pob/issues/605)) ([ab9ce16](https://github.com/christophehurpeau/pob/commit/ab9ce16cb040355cf314ec3af8def86b3db8f8ab))
+* **deps:** update dependency eslint-plugin-react to v7.20.2 ([#607](https://github.com/christophehurpeau/pob/issues/607)) ([9539cf2](https://github.com/christophehurpeau/pob/commit/9539cf277250041e3c41f41e4f59f205223b07e0))
+* **deps:** update dependency eslint-plugin-react to v7.20.3 ([#609](https://github.com/christophehurpeau/pob/issues/609)) ([2cff7a6](https://github.com/christophehurpeau/pob/commit/2cff7a6023f452bb41260cc625b392bcb5d92d8c))
+* **deps:** update dependency typedoc to v0.17.8 ([#606](https://github.com/christophehurpeau/pob/issues/606)) ([96a96cd](https://github.com/christophehurpeau/pob/commit/96a96cd5a479249204030fb2fb0161cb365cb351))
+* **deps:** update dependency typescript to v3.9.6 ([#610](https://github.com/christophehurpeau/pob/issues/610)) ([8d95849](https://github.com/christophehurpeau/pob/commit/8d95849c30ac2cfa0108735f1aedb8811ca29f18))
+
+
+
+
+
 # [1.17.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.16.0...pob-dependencies@1.17.0) (2020-06-28)
 
 

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.11.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.10.1...@pob/renovate-config@1.11.0) (2020-07-20)
+
+
+### Features
+
+* **renovate:** move typescript-eslint to eslint configs ([249b7dd](https://github.com/christophehurpeau/pob/commit/249b7ddcec795fca09650e4e3729d20360274933))
+* improve renovate config ([c5c618d](https://github.com/christophehurpeau/pob/commit/c5c618d1200828c31a5de3bf9c245e80cb302274))
+* remove unused babel-eslint ([22bb14d](https://github.com/christophehurpeau/pob/commit/22bb14d62153f71363088229cea2c2652895e642))
+
+
+
+
+
 ## [1.10.1](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.10.0...@pob/renovate-config@1.10.1) (2020-06-28)
 
 **Note:** Version bump only for package @pob/renovate-config
