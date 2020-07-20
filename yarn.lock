@@ -2199,61 +2199,61 @@
   dependencies:
     "@types/node" ">= 8"
 
-"@pob/eslint-config-node@38.0.0":
-  version "38.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-node/-/eslint-config-node-38.0.0.tgz#1aaf95038cacc00be964fda7014020b9c6f0a891"
-  integrity sha512-t2TT9cqs5gUXuXfWzxVVrEvPkAftb8ReQNtJc6Ug6ppSkZyUwatKyhCtuYTcFRg+VLEh2aM6dG4Bj6Bff7c65w==
+"@pob/eslint-config-node@38.2.0":
+  version "38.2.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-node/-/eslint-config-node-38.2.0.tgz#910cb5daa00327517d2a2e2c56aea26874343f83"
+  integrity sha512-BpFsrd+RKPJ8z4Kh7ZioiJydsa5FcQiy0q+UnsYgv0MKiEVHV3FZrjbDALDdJ/DTiyFB55EA5oSJ+Qund41BiQ==
   dependencies:
-    "@pob/use-eslint-plugin" "^38.0.0"
+    "@pob/use-eslint-plugin" "^38.2.0"
     eslint-plugin-node "^11.0.0"
 
-"@pob/eslint-config-typescript-node@38.0.2":
-  version "38.0.2"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript-node/-/eslint-config-typescript-node-38.0.2.tgz#c8192fbe8a876bab4a8347aa04123c01c27b70e9"
-  integrity sha512-4h2Wl+GapXLTYVDxVn6MTXUvfXNkKhNwcZyTMeb14k3Ep8QyzT1eQn1mHKIaeNx6HD2gCodbZamlnUDQ6GCQ6g==
+"@pob/eslint-config-typescript-node@38.2.0":
+  version "38.2.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript-node/-/eslint-config-typescript-node-38.2.0.tgz#15d6e0d3e6155adcdd3d108c6163c90d9e4a9c7d"
+  integrity sha512-fXx5QJn1pNVJ634N9ZeNc1IdtEFlogOCSOlbIXNSia9OzD10iLuyF/0HO27eM+aMSHswnuGIFsK2fyEFi+puuw==
   dependencies:
-    "@pob/use-eslint-plugin" "^38.0.0"
+    "@pob/use-eslint-plugin" "^38.2.0"
     eslint-plugin-node "^11.0.0"
 
-"@pob/eslint-config-typescript-react@38.0.0":
-  version "38.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript-react/-/eslint-config-typescript-react-38.0.0.tgz#dfc767df829b0a4160ea7ef5d9266cd59d6f1a1d"
-  integrity sha512-kZHqJ6XTg9lE56ZbgxXim5fmJCKjeYGKTItM32iiUy4W3ZHqgremxbXWdxD6X8qWURNRspGYp0KRN32dZYzAYQ==
+"@pob/eslint-config-typescript-react@38.2.0":
+  version "38.2.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript-react/-/eslint-config-typescript-react-38.2.0.tgz#3c02b82a6dcac675e7825e9a1ff10ad29219a59c"
+  integrity sha512-a/DqZi0njAufs7aVOdSm4rQp8bSmYjse5VcsxhDWzx4HnFvjzQYNF1oGjxA/ZILGcYRRFkzD4fuGnfnwbBfmxg==
   dependencies:
-    "@pob/eslint-config" "^38.0.0"
+    "@pob/eslint-config" "^38.2.0"
     eslint-config-airbnb "^18.1.0"
     eslint-config-prettier "^6.11.0"
     eslint-plugin-jsx-a11y "^6.2.3"
     eslint-plugin-react "^7.19.0"
     eslint-plugin-react-hooks "^2.3.0"
 
-"@pob/eslint-config-typescript@38.1.0":
-  version "38.1.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript/-/eslint-config-typescript-38.1.0.tgz#ffc24546224d33703e72a8dd41327a2b7505afb4"
-  integrity sha512-BITlTM7mucYqan5q+J/3/UXlZbDzGUze3fCRXz/s7WkOhSnRJ/islTSVXdxK3FOv/XdTcQMrtTvLRo5WRfC9CQ==
+"@pob/eslint-config-typescript@38.2.0":
+  version "38.2.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript/-/eslint-config-typescript-38.2.0.tgz#c53eb01aee1eacfd6b9e49a16563b2710244ebf4"
+  integrity sha512-YfhXIP3tpNii5uo1pOelS6sFtZ2TmYH06FIJadP/P6vJ0YaEzGVZodY9HNddefW7bH75AxtuZ6Prce5CcPxc9A==
   dependencies:
-    "@pob/eslint-config" "^38.0.0"
-    "@pob/use-eslint-plugin" "^38.0.0"
+    "@pob/eslint-config" "^38.2.0"
+    "@pob/use-eslint-plugin" "^38.2.0"
     "@typescript-eslint/eslint-plugin" "^2.26.0"
     "@typescript-eslint/parser" "^2.26.0"
     eslint-config-airbnb-base "^14.1.0"
     eslint-config-prettier "^6.11.0"
 
-"@pob/eslint-config@38.0.0", "@pob/eslint-config@^38.0.0":
-  version "38.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-38.0.0.tgz#2bf99de260982c3d66e2d96470f703091106a0fa"
-  integrity sha512-r9/MumNVqjdAHFKJkEJEfzJJKOEni8r0VKx+zYlpbKB/JH2ogGYx+u6todFDehwjjgmSCgi31BOA4QGYlwHSwA==
+"@pob/eslint-config@38.2.0", "@pob/eslint-config@^38.2.0":
+  version "38.2.0"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-38.2.0.tgz#f74af30ec5e02473819ac5649622cd9683cd428d"
+  integrity sha512-YZGL/5bGg+6k9JlFKvoD6ID1an+kYmTP8o9X3DjOdotSIwtDzz/6wARhKLOq6aiMIpvtlssFRapFWyA5QL/rbQ==
   dependencies:
-    "@pob/use-eslint-plugin" "^38.0.0"
+    "@pob/use-eslint-plugin" "^38.2.0"
     eslint-config-airbnb-base "^14.1.0"
     eslint-config-prettier "^6.11.0"
     eslint-plugin-prettier "^3.1.3"
     eslint-plugin-unicorn "^18.0.1"
 
-"@pob/use-eslint-plugin@^38.0.0":
-  version "38.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/use-eslint-plugin/-/use-eslint-plugin-38.0.0.tgz#97a5dbfc87da219adb038bed15d68c3363212130"
-  integrity sha512-CqM9qZd7ex6q6JMHNlu3QwAev5SUE7ulaSWulmwuDIT6OnbrRPP1X0TnGMRMImwvzunvYxgQq1BimWPjongkcA==
+"@pob/use-eslint-plugin@^38.2.0":
+  version "38.2.0"
+  resolved "https://registry.yarnpkg.com/@pob/use-eslint-plugin/-/use-eslint-plugin-38.2.0.tgz#5de15bfb6b1dfcf8cbf31810ba8f6e50d713f47c"
+  integrity sha512-/5W+MQlajunaB6hip1AV9WI5dDnqKcKaWzEL1aEw1Vl9ex4lpAazrchnB3b4KNTPvYSg/9bjO3KttiOZmJZESQ==
 
 "@sindresorhus/is@^0.14.0":
   version "0.14.0"
