@@ -120,11 +120,15 @@ module.exports = class PobLibGenerator extends Generator {
 
     if (this.pobjson.testing === true) {
       this.pobjson.testing = {
-        circleci: true,
+        ci: true,
         codecov: true,
       };
     } else if (this.pobjson.testing) {
       delete this.pobjson.testing.travisci;
+      if ('circleci' in this.pobjson.testing) {
+        this.pobjson.testing.ci = this.pobjson.testing.circleci;
+        delete this.pobjson.testing.circleci;
+      }
     }
 
     if (typeof this.pobjson.documentation === 'object') {
@@ -190,16 +194,10 @@ module.exports = class PobLibGenerator extends Generator {
         const testingPrompts = await this.prompt([
           {
             type: 'confirm',
-            name: 'circleci',
-            message: 'Would you like circleci ?',
-            default: this.pobjson.testing.circleci !== false,
+            name: 'ci',
+            message: 'Would you like ci with github actions ?',
+            default: this.pobjson.testing.ci !== false,
           },
-          // {
-          //   type: 'confirm',
-          //   name: 'travisci',
-          //   message: 'Would you like travisci ?',
-          //   default: this.pobjson.testing.travisci !== false,
-          // },
           {
             type: 'confirm',
             name: 'codecov',
@@ -252,8 +250,7 @@ module.exports = class PobLibGenerator extends Generator {
       testing: this.pobjson.testing,
       documentation: !!this.pobjson.documentation,
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
-      circleci: this.pobjson.testing && this.pobjson.testing.circleci,
-      // travisci: this.pobjson.testing && this.pobjson.testing.travisci,
+      ci: this.pobjson.testing && this.pobjson.testing.ci,
     });
 
     // must be after testing
@@ -271,7 +268,7 @@ module.exports = class PobLibGenerator extends Generator {
     this.composeWith(require.resolve('./readme'), {
       documentation: !!this.pobjson.documentation,
       testing: !!this.pobjson.testing,
-      circleci: this.pobjson.testing && this.pobjson.testing.circleci,
+      ci: this.pobjson.testing && this.pobjson.testing.ci,
       // travisci: this.pobjson.testing && this.pobjson.testing.travisci,
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
     });

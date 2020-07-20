@@ -14,10 +14,10 @@ module.exports = class TestingGenerator extends Generator {
       desc: 'enable testing',
     });
 
-    this.option('circleci', {
+    this.option('ci', {
       type: Boolean,
       required: true,
-      desc: 'circleci',
+      desc: 'ci',
     });
 
     // this.option('travisci', {
@@ -42,10 +42,9 @@ module.exports = class TestingGenerator extends Generator {
   default() {
     if (!inLerna) {
       this.composeWith(require.resolve('../../core/ci'), {
-        enable: this.options.enable,
+        enable: this.options.ci,
         testing: this.options.testing,
         documentation: this.options.documentation,
-        circleci: this.options.circleci,
         codecov: this.options.codecov,
       });
     } else {

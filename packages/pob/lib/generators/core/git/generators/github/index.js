@@ -3,12 +3,10 @@
 'use strict';
 
 const gh = require('gh-got');
-const got = require('got');
 const Generator = require('yeoman-generator');
 // const packageUtils = require('../../../../../utils/package');
 
 const GITHUB_TOKEN = process.env.POB_GITHUB_TOKEN;
-const CIRCLECI_TOKEN = process.env.POB_CIRCLECI_TOKEN;
 
 const configureProtectionRule = async (owner, repo) => {
   try {
@@ -67,13 +65,6 @@ module.exports = class GitHubGenerator extends Generator {
       );
       process.exit(1);
     }
-
-    if (!CIRCLECI_TOKEN) {
-      console.error(
-        'Missing POB_CIRCLECI_TOKEN. Create one with https://circleci.com/account/api and add it in your env variables.',
-      );
-      process.exit(1);
-    }
   }
 
   async end() {
@@ -117,45 +108,6 @@ module.exports = class GitHubGenerator extends Generator {
         });
 
         configureProtectionRule(owner, repo);
-
-        if (this.fs.exists('.circleci/config.yml')) {
-          try {
-            await got
-              .post(
-                `https://circleci.com/api/v1.1/project/github/${owner}/${repo}/follow`,
-                { query: { 'circle-token': CIRCLECI_TOKEN } },
-              )
-              .json();
-
-            try {
-              const result = await got
-                .get(
-                  `https://circleci.com/api/v1.1/project/github/${owner}/${repo}/checkout-key`,
-                  {
-                    query: { 'circle-token': CIRCLECI_TOKEN },
-                    json: { type: 'deploy-key' },
-                  },
-                )
-                .json();
-              const deployKey = result && result.body && result.body[0];
-              if (!deployKey) throw new Error('Invalid deploy key');
-              const publicKey = deployKey.public_key.replace('\\n', '').trim();
-              if (!publicKey) throw new Error('Invalid deploy key');
-
-              await gh.post(`repos/${owner}/${repo}/keys`, {
-                title: 'CircleCI Writable',
-                key: publicKey,
-                read_only: false,
-              });
-            } catch (err) {
-              console.error('Failed to create writable circleci key on github');
-              console.error(err.stack || err.message || err);
-            }
-          } catch (err) {
-            console.error('Failed to configure circleci');
-            console.error(err.stack || err.message || err);
-          }
-        }
 
         // await gh.put(`/repos/${owner}/${repo}/topics`, {
         //   names: pkg.keywords,

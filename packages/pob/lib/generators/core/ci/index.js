@@ -1,5 +1,6 @@
 'use strict';
 
+const fs = require('fs');
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
 
@@ -25,10 +26,10 @@ module.exports = class CiGenerator extends Generator {
     //   desc: 'Babel Envs',
     // });
 
-    this.option('circleci', {
+    this.option('ci', {
       type: Boolean,
       required: true,
-      desc: 'circleci',
+      desc: 'ci with github actions',
     });
 
     this.option('codecov', {
@@ -45,56 +46,34 @@ module.exports = class CiGenerator extends Generator {
   }
 
   default() {
+    fs.rmdirSync(this.destinationPath('.circleci'), { recursive: true });
+
     if (this.options.enable) {
       const isYarn2 = this.fs.exists('.yarnrc.yml');
       const pkg = this.fs.readJSON(this.destinationPath('package.json'));
-      const circleci = false;
 
-      try {
-        // this.fs.copyTpl(
-        //   this.templatePath('circle.yml.ejs'),
-        //   this.destinationPath('circle.yml'),
-        //   {
-        //     testing: this.ci,
-        //     documentation: this.options.documentation,
-        //     codecov: this.options.codecov,
-        //   },
-        // );
-        if (circleci) {
-          this.fs.delete(this.destinationPath('.circleci/config.yml'));
-        } else {
-          this.fs.copyTpl(
-            this.templatePath('circleci2.yml.ejs'),
-            this.destinationPath('.circleci/config.yml'),
-            {
-              testing:
-                this.options.testing && !!pkg.scripts && !!pkg.scripts.test,
-              documentation: this.options.documentation,
-              codecov: this.options.codecov,
-              node12: true,
-              node10: true, // Boolean(this.babelEnvs.find(env => env.target === 'node' && String(env.version) === '10')),
-            },
-          );
-        }
+      // this.fs.copyTpl(
+      //   this.templatePath('circle.yml.ejs'),
+      //   this.destinationPath('circle.yml'),
+      //   {
+      //     testing: this.ci,
+      //     documentation: this.options.documentation,
+      //     codecov: this.options.codecov,
+      //   },
+      // );
 
-        this.fs.copyTpl(
-          this.templatePath('github-action-node-workflow.yml.ejs'),
-          this.destinationPath('.github/workflows/push.yml'),
-          {
-            isYarn2,
-            testing: this.options.testing && !!pkg.scripts.test,
-            checks: !!pkg.scripts && !!pkg.scripts.checks,
-            documentation: this.options.documentation,
-            codecov: this.options.codecov,
-          },
-        );
-      } catch (err) {
-        console.log(err.stack || err.message || err);
-        throw err;
-      }
+      this.fs.copyTpl(
+        this.templatePath('github-action-node-workflow.yml.ejs'),
+        this.destinationPath('.github/workflows/push.yml'),
+        {
+          isYarn2,
+          testing: this.options.testing && !!pkg.scripts.test,
+          checks: !!pkg.scripts && !!pkg.scripts.checks,
+          documentation: this.options.documentation,
+          codecov: this.options.codecov,
+        },
+      );
     } else {
-      this.fs.delete(this.destinationPath('.circleci/config.yml'));
-      this.fs.delete(this.destinationPath('.circleci'));
       this.fs.delete(this.destinationPath('.github/workflows/push.yml'));
     }
   }
@@ -110,11 +89,12 @@ module.exports = class CiGenerator extends Generator {
     } else {
       // this.babelEnvs = JSON.parse(this.options.babelEnvs);
 
-      packageUtils.addOrRemoveDevDependencies(
-        pkg,
-        this.options.circleci && pkg.jest,
-        ['jest-junit-reporter'],
-      );
+      packageUtils.removeDevDependencies(pkg, ['jest-junit-reporter']);
+      // packageUtils.addOrRemoveDevDependencies(
+      //   pkg,
+      //   this.options.circleci && pkg.jest,
+      //   ['jest-junit-reporter'],
+      // );
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);

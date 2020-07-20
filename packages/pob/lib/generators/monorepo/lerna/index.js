@@ -226,7 +226,7 @@ module.exports = class LernaGenerator extends Generator {
       projectName: pkg.name,
       description: pkg.description,
       packages: this.packages,
-      circleci: this.fs.exists(this.destinationPath('.circleci/config.yml')),
+      ci: this.fs.exists(this.destinationPath('.github/workflows/push.yml')),
       content,
     });
   }

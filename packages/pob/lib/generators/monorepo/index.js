@@ -68,7 +68,7 @@ module.exports = class PobMonorepoGenerator extends Generator {
       {
         type: 'confirm',
         name: 'ci',
-        message: 'Would you like ci ?',
+        message: 'Would you like ci with github actions ?',
         default: config
           ? config.ci
           : this.fs.exists(this.destinationPath('.circleci/config.yml')) ||

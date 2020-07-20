@@ -27,7 +27,7 @@
 npm install --save <%= packageName %>
 ```
 
-<% if (documentation && circleci && gitHost === 'github') { -%>
+<% if (documentation && ci && gitHost === 'github') { -%>
 ## API
 
 [https://<%= gitAccount %>.github.io/<%= packageName %>/docs](http://<%= gitAccount %>.github.io/<%= packageName %>/docs)
