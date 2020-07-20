@@ -41,8 +41,6 @@
             "@babel/preset-react",
             "@babel/runtime",
             "@types/jest",
-            "@typescript-eslint/eslint-plugin",
-            "@typescript-eslint/parser",
             "babel-jest",
             "babel-preset-latest-node",
             "babel-preset-modern-browsers",
@@ -63,6 +61,7 @@
           "description": "@pob eslint configs",
           "packagePatterns": [
             "^@pob/eslint-config",
+            "^@typescript-eslint/",
             "^eslint-"
           ],
           "packageNames": [
@@ -75,6 +74,7 @@
         {
           "packagePatterns": [
             "^@pob/eslint-config",
+            "^@typescript-eslint/",
             "^eslint-"
           ],
           "packageNames": [

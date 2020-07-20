@@ -19,7 +19,9 @@ const excludePkgNames = [
 ];
 
 const isEslintDep = (dep) =>
-  dep.startsWith('eslint') || dep.startsWith('@pob/eslint');
+  dep.startsWith('eslint') ||
+  dep.startsWith('@pob/eslint') ||
+  dep.startsWith('@typescript-eslint/');
 
 pkg['renovate-config'].default.packageRules[0].packageNames = Object.keys(
   pobDependencies.devDependencies,
@@ -29,6 +31,7 @@ pkg['renovate-config'].default.packageRules[0].packageNames = Object.keys(
 
 pkg['renovate-config'].default.packageRules[1].packagePatterns = [
   '^@pob/eslint-config',
+  '^@typescript-eslint/',
   '^eslint-',
 ];
 pkg['renovate-config'].default.packageRules[1].packageNames = ['eslint'];
