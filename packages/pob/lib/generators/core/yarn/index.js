@@ -59,7 +59,12 @@ module.exports = class YarnGenerator extends Generator {
   end() {
     if (this.options.yarn2) {
       this.spawnCommandSync('yarn', ['set', 'version', 'latest']);
-      this.spawnCommandSync('yarn', ['dlx', '@yarnpkg/pnpify', '--sdk']);
+      this.spawnCommandSync('yarn', [
+        'dlx',
+        '@yarnpkg/pnpify',
+        '--sdk',
+        'vscode',
+      ]);
     }
   }
 };
