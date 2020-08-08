@@ -26,6 +26,7 @@
       "masterIssue": true,
       "masterIssueApproval": false,
       "postUpdateOptions": [
+        "yarnDedupeFewer",
         "yarnDedupeHighest"
       ],
       "labels": [
