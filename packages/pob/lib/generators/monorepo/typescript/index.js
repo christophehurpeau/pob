@@ -51,8 +51,8 @@ module.exports = class MonorepoTypescriptGenerator extends Generator {
       });
       packageUtils.addOrRemoveScripts(pkg, !this.options.isAppProject, {
         'build:definitions': 'tsc -b tsconfig.build.json',
-        postbuild: `yarn run build:definitions ${
-          pkg.scripts['generate:docs'] ? '&& yarn run generate:docs' : ''
+        postbuild: `yarn run build:definitions${
+          pkg.scripts['generate:docs'] ? ' && yarn run generate:docs' : ''
         }`,
       });
 
