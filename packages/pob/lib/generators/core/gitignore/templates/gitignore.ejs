@@ -20,7 +20,7 @@ yarn-error.log*
 *.sublime-project
 *.sublime-workspace
 
-<% if (typescript) { -%>
+<% if (typescript && buildInGit) { -%>
 # Typescript
 tsbuildinfo
 <% } -%>

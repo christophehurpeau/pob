@@ -40,6 +40,13 @@ module.exports = class GitignoreGenerator extends Generator {
       defaults: true,
       desc: 'Typescript use.',
     });
+
+    this.option('buildInGit', {
+      type: Boolean,
+      required: false,
+      defaults: true,
+      desc: 'Build is saved in git.',
+    });
   }
 
   writing() {
@@ -64,6 +71,7 @@ module.exports = class GitignoreGenerator extends Generator {
         withBabel,
         typescript: withBabel || this.options.typescript,
         paths: this.options.paths,
+        buildInGit: this.options.buildInGit,
       });
     }
   }
