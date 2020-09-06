@@ -3,7 +3,9 @@ console.log(`the answer is ${answer}`);
 
 
 class Test {
-  constructor(...args) {
+  args: number[];
+
+  constructor(...args: number[]) {
     this.args = args;
   }
 }

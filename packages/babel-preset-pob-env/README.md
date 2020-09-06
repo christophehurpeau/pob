@@ -28,7 +28,6 @@
 - [babel-plugin-discard-module-references](https://www.npmjs.com/package/babel-plugin-discard-module-references)
 - [babel-plugin-import-export-rename](https://www.npmjs.com/package/babel-plugin-import-export-rename)
 - [babel-plugin-minify-replace](https://www.npmjs.com/package/babel-plugin-minify-replace)
-- [babel-plugin-transform-name-export-default](https://www.npmjs.com/package/babel-plugin-transform-name-export-default)
 
 ## Needed dependencies
 

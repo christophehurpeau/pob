@@ -386,24 +386,27 @@ module.exports = class BabelGenerator extends Generator {
 
     if (hasTargetNode) {
       if (!pkg.engines) pkg.engines = {};
-      const minNodeVersion = this.babelEnvs
-        .filter((env) => env.target === 'node')
-        .reduce(
-          (min, env) => Math.min(min, env.version),
-          Number.MAX_SAFE_INTEGER,
-        );
+      const minNodeVersion = Math.min(
+        ...this.babelEnvs
+          .filter((env) => env.target === 'node')
+          .map((env) => env.version),
+      );
       switch (String(minNodeVersion)) {
+        case '12':
+          pkg.engines.node = '>=12.10.0';
+          break;
         case '10':
           pkg.engines.node = '>=10.13.0';
-          if (pkg.dependencies && pkg.dependencies['@types/node']) {
-            pkg.dependencies['@types/node'] = '>=10.0.0';
-          }
-          if (pkg.devDependencies && pkg.devDependencies['@types/node']) {
-            pkg.devDependencies['@types/node'] = '>=10.0.0';
-          }
           break;
         default:
           throw new Error(`Invalid min node version: ${minNodeVersion}`);
+      }
+
+      if (pkg.dependencies && pkg.dependencies['@types/node']) {
+        pkg.dependencies['@types/node'] = `>=${minNodeVersion}.0.0`;
+      }
+      if (pkg.devDependencies && pkg.devDependencies['@types/node']) {
+        pkg.devDependencies['@types/node'] = `>=${minNodeVersion}.0.0`;
       }
     } else {
       packageUtils.removeDependencies(pkg, ['@types/node']);
@@ -534,10 +537,12 @@ module.exports = class BabelGenerator extends Generator {
             const replaced =
               typeof value === 'string'
                 ? value.replace('webpack', 'module')
-                : Object.keys(value).reduce((o, oKey) => {
-                    o[oKey] = value[oKey].replace('webpack', 'module');
-                    return o;
-                  }, {});
+                : Object.fromEntries(
+                    Object.entries(value).map(([key, value]) => [
+                      key,
+                      value.replace('webpack', 'module'),
+                    ]),
+                  );
             pkg[
               `module:aliases${middle === '' ? '-browser' : middle}${suffix}`
             ] = replaced;

@@ -126,7 +126,7 @@ const internalAddDependencies = (pkg, type, dependencies, cleaned, prefix) => {
             `dependency "${dependency}" has a higher version: expected ${potentialNewVersion}, actual: ${currentVersion}.`,
           );
         }
-      } catch (err) {
+      } catch {
         filtredDependencies[dependency] = getNewVersion();
       }
     });

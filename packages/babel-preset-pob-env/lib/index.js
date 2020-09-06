@@ -55,19 +55,12 @@ module.exports = function (context, opts) {
           SERVER: targetOption === 'node',
         };
 
-  const exportDefaultName =
-    opts.exportDefaultName !== undefined
-      ? opts.exportDefaultName
-      : targetOption === 'node' || !production;
-
   const resolvePreset = opts.resolvePreset
     ? opts.resolvePreset
     : (preset) => preset;
 
-  if (typeof exportDefaultName !== 'boolean') {
-    throw new TypeError(
-      "Preset pob-env 'exportDefaultName' option must be an boolean.",
-    );
+  if (opts.exportDefaultName !== undefined) {
+    throw new TypeError("Preset pob-env 'exportDefaultName' was removed.");
   }
 
   if (typeof replacements !== 'object') {
@@ -146,11 +139,7 @@ module.exports = function (context, opts) {
       } else {
         targetPreset = [
           resolvePreset('@babel/preset-env'),
-          { modules, loose, shippedProposals: true },
-        ];
-        targetPlugins = [
-          require.resolve('@babel/plugin-proposal-optional-chaining'),
-          require.resolve('@babel/plugin-proposal-nullish-coalescing-operator'),
+          { modules, loose, shippedProposals: true, bugfixes: true },
         ];
       }
       break;
@@ -166,22 +155,12 @@ module.exports = function (context, opts) {
       // add esnext features
       {
         plugins: [
-          // es2018:
-          // @babel/plugin-proposal-object-rest-spread
-          // @babel/plugin-proposal-unicode-property-regex
-          // @babel/plugin-proposal-async-generator-functions
-
-          // shipped proposals:
-          // @babel/plugin-syntax-optional-catch-binding
-
-          // not shipped proposals:
+          // class properties with fix
           require.resolve('babel-plugin-fix-class-properties-uninitialized'),
           [
             require.resolve('@babel/plugin-proposal-class-properties'),
             { loose },
           ],
-          require.resolve('@babel/plugin-proposal-export-default-from'),
-          require.resolve('@babel/plugin-proposal-export-namespace-from'),
 
           // async import
           require.resolve('@babel/plugin-syntax-dynamic-import'),
@@ -199,10 +178,6 @@ module.exports = function (context, opts) {
       // plugins
       {
         plugins: [
-          exportDefaultName && [
-            require.resolve('babel-plugin-transform-name-export-default'),
-            { compose: true },
-          ],
           [
             require.resolve('babel-plugin-minify-replace'),
             {

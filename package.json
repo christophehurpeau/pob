@@ -7,7 +7,7 @@
   "repository": "https://github.com:christophehurpeau/pob.git",
   "homepage": "https://github.com/christophehurpeau/pob",
   "engines": {
-    "node": ">=10.13.0"
+    "node": ">=12.10.0"
   },
   "workspaces": [
     "packages/*",
@@ -31,10 +31,9 @@
     ]
   },
   "devDependencies": {
-    "@pob/eslint-config": "38.2.0",
-    "@pob/eslint-config-node": "38.2.0",
-    "eslint": "6.8.0",
-    "eslint-plugin-import": "2.22.0",
+    "@pob/eslint-config": "39.0.0",
+    "@pob/eslint-config-node": "39.0.0",
+    "eslint": "7.5.0",
     "husky": "4.2.5",
     "lerna": "3.22.1",
     "prettier": "2.0.5"

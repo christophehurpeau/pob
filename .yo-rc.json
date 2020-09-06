@@ -10,7 +10,6 @@
         "@pob/sort-object",
         "babel-plugin-fix-class-properties-uninitialized",
         "babel-plugin-pob-babel",
-        "babel-plugin-transform-builtins",
         "pob-lcov-reporter",
         "repository-check-dirty",
         "@pob/root",

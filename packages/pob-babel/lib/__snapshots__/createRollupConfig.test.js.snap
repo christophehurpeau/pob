@@ -1,19 +1,113 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`fixtures basic 1`] = `
+exports[`fixtures basic 0 1`] = `
 "console.log(\`the answer is \${42}\`);
+
+class Test {
+  constructor(...args) {
+    this.args = args;
+  }
+
+}
+
+class Test2 extends Test {
+  constructor(...args) {
+    super(...args);
+  }
+
+}
+
+const t = new Test2(1, 2, 3);
+
+export { t };
 "
 `;
 
-exports[`fixtures react 1`] = `
-"const React = require('react');
+exports[`fixtures basic 1 1`] = `
+"console.log(\`the answer is \${42}\`);
 
-const {
-  render
-} = require('react-dom');
+class Test {
+  constructor(...args) {
+    this.args = args;
+  }
+
+}
+
+class Test2 extends Test {
+  constructor(...args) {
+    super(...args);
+  }
+
+}
+
+const t = new Test2(1, 2, 3);
+
+export { t };
+"
+`;
+
+exports[`fixtures react 0 1`] = `
+"import React from 'react';
+import { render } from 'react-dom';
 
 const Component = () => /*#__PURE__*/React.createElement(\\"div\\", null);
 
 render( /*#__PURE__*/React.createElement(Component, null), document.getElementById('react-container'));
+"
+`;
+
+exports[`fixtures react 1 1`] = `
+"import React from 'react';
+import { render } from 'react-dom';
+
+const Component = () => /*#__PURE__*/React.createElement(\\"div\\", null);
+
+render( /*#__PURE__*/React.createElement(Component, null), document.getElementById('react-container'));
+"
+`;
+
+exports[`fixtures ts 0 1`] = `
+"console.log(\`the answer is \${42}\`);
+
+class Test {
+  constructor(...args) {
+    this.args = args;
+  }
+
+}
+
+class Test2 extends Test {
+  constructor(...args) {
+    super(...args);
+  }
+
+}
+
+const t = new Test2(1, 2, 3);
+
+export { t };
+"
+`;
+
+exports[`fixtures ts 1 1`] = `
+"console.log(\`the answer is \${42}\`);
+
+class Test {
+  constructor(...args) {
+    this.args = args;
+  }
+
+}
+
+class Test2 extends Test {
+  constructor(...args) {
+    super(...args);
+  }
+
+}
+
+const t = new Test2(1, 2, 3);
+
+export { t };
 "
 `;

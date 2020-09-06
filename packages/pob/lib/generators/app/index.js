@@ -117,6 +117,7 @@ module.exports = class PobAppGenerator extends Generator {
       paths: gitignorePaths[this.appConfig.type](this.appConfig)
         .filter(Boolean)
         .join('\n'),
+      buildInGit: false,
     });
 
     switch (this.appConfig.type) {

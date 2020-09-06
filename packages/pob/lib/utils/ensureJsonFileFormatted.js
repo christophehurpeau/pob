@@ -13,7 +13,7 @@ const ensureJsonFileFormatted = (path) => {
       console.warn(`formatted json file ${path}`);
       fs.writeFileSync(path, formattedPkg);
     }
-  } catch (err) {}
+  } catch {}
 };
 
 module.exports = ensureJsonFileFormatted;

@@ -106,7 +106,6 @@ module.exports = class LernaGenerator extends Generator {
 
     lernaConfig.command.publish.ignoreChanges = [
       '**/.yo-rc.json',
-      '**/renovate.json',
       '**/.eslintrc.json',
     ];
 
