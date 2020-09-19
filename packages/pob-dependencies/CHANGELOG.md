@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.19.0...pob-dependencies@2.0.0) (2020-09-19)
+
+
+### Bug Fixes
+
+* dependencies declaration ([7793988](https://github.com/christophehurpeau/pob/commit/7793988539e049d4c79f559e04c013ba32fc10cd))
+* ignore typedoc-plugin-lerna-packages in update-peerdeps script ([73ed807](https://github.com/christophehurpeau/pob/commit/73ed80765928b06e590a844dfcceffd1f4b521d7))
+
+
+### Features
+
+* remove pob-release, use standard-version instead ([45e9c72](https://github.com/christophehurpeau/pob/commit/45e9c726d17b213638320c8fe85bcf971f884919))
+* rollup 2, typescript 4, jest 26 ([1f830ec](https://github.com/christophehurpeau/pob/commit/1f830ec879b5e145455178554f8cb7358019949c))
+
+
+### BREAKING CHANGES
+
+* babel presets updated, rollup 2, jest 26
+
+
+
+
+
 # [1.19.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@1.18.0...pob-dependencies@1.19.0) (2020-09-19)
 
 

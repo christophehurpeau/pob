@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [25.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@24.14.1...pob-babel@25.0.0) (2020-09-19)
+
+
+### Features
+
+* requires typescript 4 as pob-babel peerdependency ([9d52a09](https://github.com/christophehurpeau/pob/commit/9d52a09324fcfe52def8cee6b5586ebca20ef627))
+* rollup 2, typescript 4, jest 26 ([1f830ec](https://github.com/christophehurpeau/pob/commit/1f830ec879b5e145455178554f8cb7358019949c))
+* support node ESM with mjs and exports config ([d3bba88](https://github.com/christophehurpeau/pob/commit/d3bba8867bfd7a1fceb2d56d6d483bbcddb56373))
+
+
+### BREAKING CHANGES
+
+* babel presets updated, rollup 2, jest 26
+
+
+
+
+
 ## [24.14.1](https://github.com/christophehurpeau/pob/compare/pob-babel@24.14.0...pob-babel@24.14.1) (2020-09-19)
 
 **Note:** Version bump only for package pob-babel

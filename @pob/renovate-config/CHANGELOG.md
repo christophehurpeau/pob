@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.13.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.12.0...@pob/renovate-config@1.13.0) (2020-09-19)
+
+
+### Features
+
+* remove pob-release, use standard-version instead ([45e9c72](https://github.com/christophehurpeau/pob/commit/45e9c726d17b213638320c8fe85bcf971f884919))
+
+
+
+
+
 # [1.12.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.11.0...@pob/renovate-config@1.12.0) (2020-09-19)
 
 

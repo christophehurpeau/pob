@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@3.10.0...babel-preset-pob-env@4.0.0) (2020-09-19)
+
+
+### Features
+
+* rollup 2, typescript 4, jest 26 ([1f830ec](https://github.com/christophehurpeau/pob/commit/1f830ec879b5e145455178554f8cb7358019949c))
+
+
+### BREAKING CHANGES
+
+* babel presets updated, rollup 2, jest 26
+
+
+
+
+
 # [3.10.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@3.9.0...babel-preset-pob-env@3.10.0) (2020-07-20)
 
 

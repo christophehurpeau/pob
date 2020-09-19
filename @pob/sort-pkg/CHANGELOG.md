@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.2.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@1.1.2...@pob/sort-pkg@1.2.0) (2020-09-19)
+
+
+### Features
+
+* support node ESM with mjs and exports config ([d3bba88](https://github.com/christophehurpeau/pob/commit/d3bba8867bfd7a1fceb2d56d6d483bbcddb56373))
+
+
+
+
+
 ## [1.1.2](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@1.1.1...@pob/sort-pkg@1.1.2) (2020-05-22)
 
 **Note:** Version bump only for package @pob/sort-pkg

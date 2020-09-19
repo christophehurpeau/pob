@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/christophehurpeau/pob/compare/pob@5.19.0...pob@6.0.0) (2020-09-19)
+
+
+### Bug Fixes
+
+* ensure yarn-deduplicate is not in devdeps ([e6934b5](https://github.com/christophehurpeau/pob/commit/e6934b52faf20c559474cf8d620955d234cd5db1))
+
+
+### Features
+
+* remove pob-release, use standard-version instead ([45e9c72](https://github.com/christophehurpeau/pob/commit/45e9c726d17b213638320c8fe85bcf971f884919))
+* rollup 2, typescript 4, jest 26 ([1f830ec](https://github.com/christophehurpeau/pob/commit/1f830ec879b5e145455178554f8cb7358019949c))
+* support node ESM with mjs and exports config ([d3bba88](https://github.com/christophehurpeau/pob/commit/d3bba8867bfd7a1fceb2d56d6d483bbcddb56373))
+
+
+### BREAKING CHANGES
+
+* babel presets updated, rollup 2, jest 26
+
+
+
+
+
 # [5.19.0](https://github.com/christophehurpeau/pob/compare/pob@5.18.0...pob@5.19.0) (2020-09-19)
 
 
