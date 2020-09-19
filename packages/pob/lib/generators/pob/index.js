@@ -119,11 +119,12 @@ module.exports = class PobBaseGenerator extends Generator {
     }
 
     this.fs.delete('Makefile');
+
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     if (
       this.options.license &&
       !this.fs.exists(this.destinationPath('LICENSE'))
     ) {
-      const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
       const author = packageUtils.parsePkgAuthor(pkg) || {};
       this.composeWith(require.resolve('generator-license/app'), {
         name: author.name,
@@ -149,6 +150,7 @@ module.exports = class PobBaseGenerator extends Generator {
     this.composeWith(require.resolve('../core/vscode'), {
       root: this.isRoot,
       yarn2: this.projectConfig.yarn2,
+      typescript: !!(pkg.devDependencies && pkg.devDependencies.typescript),
     });
 
     if (this.isRoot) {

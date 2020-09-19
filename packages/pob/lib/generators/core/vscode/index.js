@@ -19,6 +19,13 @@ module.exports = class VscodeGenerator extends Generator {
       defaults: '',
       desc: 'Uses yarn 2.',
     });
+
+    this.option('typescript', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+      desc: 'Typescript enabled',
+    });
   }
 
   writing() {
@@ -35,6 +42,7 @@ module.exports = class VscodeGenerator extends Generator {
         this.destinationPath('.vscode/settings.json'),
         {
           yarn2: this.options.yarn2,
+          typescript: this.options.typescript,
         },
       );
     } else {
