@@ -3,7 +3,9 @@ console.log(`the answer is ${answer}`);
 
 
 class Test {
-  constructor(...args) {
+  args: number[];
+
+  constructor(...args: number[]) {
     this.args = args;
   }
 }
@@ -14,4 +16,6 @@ class Test2 extends Test {
   }
 }
 
-export const t = new Test2(1, 2, 3);
+const t = new Test2(1, 2, 3);
+
+export default t;

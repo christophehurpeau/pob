@@ -38,7 +38,7 @@
     "@lerna/project": "^3.13.1",
     "@pob/sort-object": "^1.1.2",
     "@pob/sort-pkg": "^1.1.2",
-    "@yarnpkg/parsers": "^2.0.0-rc.10",
+    "@yarnpkg/parsers": "^2.2.0",
     "findup-sync": "^4.0.0",
     "generator-license": "^5.2.0",
     "gh-got": "^9.0.0",
@@ -52,7 +52,7 @@
     "pob-dependencies": "^1.19.0",
     "prettier": "2.1.2",
     "semver": "^7.1.2",
-    "update-notifier": "^4.1.0",
+    "update-notifier": "^4.1.1",
     "yeoman-environment": "^2.10.2",
     "yeoman-generator": "^4.10.1"
   },

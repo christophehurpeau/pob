@@ -1,5 +1,6 @@
-const React = require('react');
-const { render } = require('react-dom');
+import React from 'react';
+import { render } from 'react-dom';
+import './styles.css';
 
 const Component = () => <div />;
 

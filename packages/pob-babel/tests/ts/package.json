@@ -14,16 +14,13 @@
       },
       {
         "target": "browser",
-        "version": "modern",
         "formats": [
-          "es",
-          "cjs"
+          "es"
         ]
       }
     ]
   },
   "dependencies": {
-    "react": "16.0.0",
-    "react-dom": "16.0.0"
+    "@babel/runtime": "7.11.2"
   }
 }

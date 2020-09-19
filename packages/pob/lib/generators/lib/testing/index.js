@@ -133,6 +133,7 @@ module.exports = class TestingGenerator extends Generator {
           transpileWithBabel && hasReact && 'tsx',
           'js',
           // 'jsx',
+          'json',
         ].filter(Boolean),
         transform: {
           [`^.+\\.ts${hasReact ? 'x?' : ''}$`]: 'babel-jest',

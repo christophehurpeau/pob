@@ -10,17 +10,21 @@ describe('fixtures', () => {
 
   tests.forEach((dirname) => {
     if (dirname === '.eslintignore') return;
-    test(dirname, async () => {
+    describe(dirname, () => {
       const configs = createRollupConfig({
         cwd: testsPath + dirname,
       });
 
-      const bundle = await rollup.rollup(configs[0]);
-      const {
-        output: [{ code: actual }],
-      } = await bundle.generate({ format: 'esm' });
+      configs.forEach((config, index) => {
+        test(String(index), async () => {
+          const bundle = await rollup.rollup(config);
+          const {
+            output: [{ code: actual }],
+          } = await bundle.generate({ format: 'esm' });
 
-      expect(actual).toMatchSnapshot();
+          expect(actual).toMatchSnapshot();
+        });
+      });
     });
   });
 });

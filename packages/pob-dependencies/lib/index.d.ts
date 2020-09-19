@@ -39,4 +39,6 @@ interface Dependencies {
   'typescript': '3.9.6';
 }
 
+declare const dependencies: Dependencies;
+
 export = dependencies;

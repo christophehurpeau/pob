@@ -1,11 +1,15 @@
 {
   "pob": {
-    "entries": ["index"],
+    "entries": [
+      "index"
+    ],
     "babelEnvs": [
       {
         "target": "node",
         "version": "10",
-        "formats": ["es"]
+        "formats": [
+          "es"
+        ]
       }
     ]
   },

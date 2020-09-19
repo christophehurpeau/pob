@@ -2,12 +2,15 @@
 
 'use strict';
 
-const readFileSync = require('fs').readFileSync;
+const { readFileSync, existsSync } = require('fs');
+const path = require('path');
+const { babel } = require('@rollup/plugin-babel');
+const json = require('@rollup/plugin-json');
+const { default: resolve } = require('@rollup/plugin-node-resolve');
 const configExternalDependencies = require('rollup-config-external-dependencies');
-const babel = require('rollup-plugin-babel');
-const ignoreImport = require('rollup-plugin-ignore-import');
-const json = require('rollup-plugin-json');
-const resolve = require('rollup-plugin-node-resolve');
+const ignoreImport = require('./rollup-plugin-ignore-browser-only-imports');
+
+const browserOnlyExtensions = ['.scss', '.css'];
 
 module.exports = ({
   cwd = process.cwd(),
@@ -32,10 +35,10 @@ module.exports = ({
 
   const nodeVersion = (version) => {
     switch (String(version)) {
+      case '12':
+        return '12.10';
       case '10':
         return '10.13';
-      case '8':
-        return '8.3';
       default:
         return version;
     }
@@ -56,7 +59,6 @@ module.exports = ({
   /* eslint-enable node/no-deprecated-api */
 
   const externalByPackageJson = configExternalDependencies(pkg);
-  const browserOnlyExtensions = ['.scss', '.css'];
 
   const createConfigForEnv = (entry, env, production) => {
     const devSuffix = production ? '' : '-dev';
@@ -66,16 +68,31 @@ module.exports = ({
         ? 'browser'
         : entry;
     let entryPath;
-    try {
-      entryPath = require.resolve(`./src/${entryName}`, { paths: [cwd] });
-    } catch {
-      throw new Error(`Could not find entry "${entryName}" in path "${cwd}"`);
+    ['ts', 'tsx', 'js', 'jsx'].some((extension) => {
+      const potentialEntryPath = path.resolve(
+        cwd,
+        'src',
+        `${entryName}.${extension}`,
+      );
+
+      if (existsSync(potentialEntryPath)) {
+        entryPath = potentialEntryPath;
+        return true;
+      }
+
+      return false;
+    });
+
+    if (!entryPath) {
+      throw new Error(
+        `Could not find entry "src/${entryName}" in path "${cwd}"`,
+      );
     }
 
     const typescript = entryPath.endsWith('.ts') || entryPath.endsWith('.tsx');
     const extensions = (typescript
-      ? ['.ts', jsx && '.tsx']
-      : ['.js', jsx && '.jsx']
+      ? ['.ts', jsx && '.tsx', '.json']
+      : ['.js', jsx && '.jsx', '.json']
     ).filter(Boolean);
     const preferConst = !(env.target === 'browser' && env.version !== 'modern');
 
@@ -108,7 +125,6 @@ module.exports = ({
           extensions,
           babelrc: false,
           presets: [
-            !typescript && require.resolve('@babel/preset-flow'), // compatibility
             jsx && [
               '@babel/preset-react',
               {
@@ -130,26 +146,18 @@ module.exports = ({
                     ? nodeVersion(env.version)
                     : env.version,
                 production,
-                exportDefaultName: false, // Rollup does it
               },
             ],
           ].filter(Boolean),
           plugins: [
             [
-              require.resolve('babel-plugin-transform-builtins'),
+              require.resolve('@babel/plugin-transform-runtime'),
               {
+                corejs: false,
                 useESModules: 'auto',
                 useHelpers: true,
               },
             ],
-            // [
-            //   require.resolve('@babel/plugin-transform-runtime'),
-            //   {
-            //     useESModules: 'auto',
-            //   },
-            // ],
-            // fix issue with babel and this
-            require.resolve('./babel-plugin-rewrite-this'),
           ],
           skipPreflightCheck: true,
           babelHelpers: 'runtime',

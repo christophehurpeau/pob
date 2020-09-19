@@ -1,19 +1,209 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`fixtures basic 1`] = `
+exports[`fixtures basic 0 1`] = `
 "console.log(\`the answer is \${42}\`);
+
+class Test {
+  constructor(...args) {
+    this.args = args;
+  }
+
+}
+
+class Test2 extends Test {
+  constructor(...args) {
+    super(...args);
+  }
+
+}
+
+const t = new Test2(1, 2, 3);
+
+export { t };
 "
 `;
 
-exports[`fixtures react 1`] = `
-"const React = require('react');
+exports[`fixtures basic 1 1`] = `
+"console.log(\`the answer is \${42}\`);
 
-const {
-  render
-} = require('react-dom');
+class Test {
+  constructor(...args) {
+    this.args = args;
+  }
+
+}
+
+class Test2 extends Test {
+  constructor(...args) {
+    super(...args);
+  }
+
+}
+
+const t = new Test2(1, 2, 3);
+
+export { t };
+"
+`;
+
+exports[`fixtures react 0 1`] = `
+"import React from 'react';
+import { render } from 'react-dom';
 
 const Component = () => /*#__PURE__*/React.createElement(\\"div\\", null);
 
 render( /*#__PURE__*/React.createElement(Component, null), document.getElementById('react-container'));
+"
+`;
+
+exports[`fixtures react 1 1`] = `
+"import React from 'react';
+import { render } from 'react-dom';
+
+const Component = () => /*#__PURE__*/React.createElement(\\"div\\", null);
+
+render( /*#__PURE__*/React.createElement(Component, null), document.getElementById('react-container'));
+"
+`;
+
+exports[`fixtures react 2 1`] = `
+"import React from 'react';
+import { render } from 'react-dom';
+import './styles.css';
+
+const Component = () => /*#__PURE__*/React.createElement(\\"div\\", null);
+
+render( /*#__PURE__*/React.createElement(Component, null), document.getElementById('react-container'));
+"
+`;
+
+exports[`fixtures react 3 1`] = `
+"import React from 'react';
+import { render } from 'react-dom';
+import './styles.css';
+
+const Component = () => /*#__PURE__*/React.createElement(\\"div\\", null);
+
+render( /*#__PURE__*/React.createElement(Component, null), document.getElementById('react-container'));
+"
+`;
+
+exports[`fixtures ts 0 1`] = `
+"console.log(\`the answer is \${42}\`);
+
+class Test {
+  constructor(...args) {
+    this.args = args;
+  }
+
+}
+
+class Test2 extends Test {
+  constructor(...args) {
+    super(...args);
+  }
+
+}
+
+const t = new Test2(1, 2, 3);
+
+export default t;
+"
+`;
+
+exports[`fixtures ts 1 1`] = `
+"console.log(\`the answer is \${42}\`);
+
+class Test {
+  constructor(...args) {
+    this.args = args;
+  }
+
+}
+
+class Test2 extends Test {
+  constructor(...args) {
+    super(...args);
+  }
+
+}
+
+const t = new Test2(1, 2, 3);
+
+export default t;
+"
+`;
+
+exports[`fixtures ts 2 1`] = `
+"import _inheritsLoose from '@babel/runtime/helpers/esm/inheritsLoose';
+
+console.log(\\"the answer is 42\\");
+
+var Test = function Test() {
+  var _len, args, _key;
+
+  for (_len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  this.args = args;
+};
+
+var Test2 = /*#__PURE__*/function (_Test) {
+  _inheritsLoose(Test2, _Test);
+
+  function Test2() {
+    var _len2, args, _key2;
+
+    for (_len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    return _Test.call.apply(_Test, [this].concat(args)) || this;
+  }
+
+  return Test2;
+}(Test);
+
+var t = new Test2(1, 2, 3);
+
+export default t;
+"
+`;
+
+exports[`fixtures ts 3 1`] = `
+"import _inheritsLoose from '@babel/runtime/helpers/esm/inheritsLoose';
+
+console.log(\\"the answer is 42\\");
+
+var Test = function Test() {
+  var _len, args, _key;
+
+  for (_len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
+  }
+
+  this.args = args;
+};
+
+var Test2 = /*#__PURE__*/function (_Test) {
+  _inheritsLoose(Test2, _Test);
+
+  function Test2() {
+    var _len2, args, _key2;
+
+    for (_len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+      args[_key2] = arguments[_key2];
+    }
+
+    return _Test.call.apply(_Test, [this].concat(args)) || this;
+  }
+
+  return Test2;
+}(Test);
+
+var t = new Test2(1, 2, 3);
+
+export default t;
 "
 `;
