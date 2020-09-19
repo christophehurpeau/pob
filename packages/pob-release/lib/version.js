@@ -27,7 +27,7 @@ execSync(
 
 /* eslint-disable prettier/prettier */
 execSync(
-  `node_modules/.bin/standard-changelog${existsSync('CHANGELOG.md') ? ' --first-release' : ''}`,
+  `yarn standard-changelog${existsSync('CHANGELOG.md') ? ' --first-release' : ''}`,
   { stdio: 'inherit' }
 );
 /* eslint-enable prettier/prettier */
