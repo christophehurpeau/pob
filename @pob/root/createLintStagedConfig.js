@@ -46,7 +46,7 @@ module.exports = function createLintStagedConfig() {
 
       return [
         yarnMajorVersion < 2 ? 'yarn --prefer-offline' : 'yarn',
-        yarnMajorVersion < 2 ? 'yarn-deduplicate' : undefined,
+        yarnMajorVersion < 2 ? 'yarn-deduplicate' : 'yarn dedupe',
         yarnMajorVersion < 2 ? 'yarn --prefer-offline' : undefined,
         packagejsonFilenames.length === 0
           ? undefined
