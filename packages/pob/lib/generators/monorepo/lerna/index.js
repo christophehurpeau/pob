@@ -155,7 +155,7 @@ module.exports = class LernaGenerator extends Generator {
     packageUtils.addScripts(pkg, {
       lint:
         monorepoConfig && monorepoConfig.eslint
-          ? 'eslint --ext js,ts,tsx .'
+          ? 'eslint --resolve-plugins-relative-to . --ext js,ts,tsx .'
           : 'lerna run --stream lint',
       preversion: [
         monorepoConfig && monorepoConfig.eslint
