@@ -58,10 +58,10 @@
     "lerna": "3.22.1",
     "pob-babel": "^24.14.1",
     "pob-lcov-reporter": "^2.4.0",
-    "pob-release": "^5.6.3",
     "prettier": "2.1.2",
     "repository-check-dirty": "^1.2.2",
     "semver": "7.3.2",
+    "standard-version": "^9.0.0",
     "typedoc": "0.16.7",
     "typedoc-plugin-lerna-packages": "0.3.0",
     "typescript": "3.9.6"

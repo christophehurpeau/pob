@@ -43,6 +43,7 @@ module.exports = class OldDependenciesGenerator extends Generator {
       'yarnhook',
       'yarn-update-lock',
       '@pob/version',
+      'pob-release',
     ]);
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);

@@ -137,7 +137,7 @@ module.exports = class LernaGenerator extends Generator {
       packageUtils.addDevDependencies(pkg, ['repository-check-dirty']);
     }
 
-    packageUtils.removeDevDependencies(pkg, ['pob-release']);
+    packageUtils.removeDevDependencies(pkg, ['standard-version']);
 
     const getPobConfig = (config) => ({
       ...((config && config.pob && config.pob['pob-config']) || {}),

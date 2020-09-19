@@ -16,7 +16,6 @@
         "@pob/root",
         "@pob/sort-pkg",
         "babel-preset-pob-env",
-        "pob-release",
         "@pob/pretty-pkg",
         "pob-babel",
         "pob-dependencies",

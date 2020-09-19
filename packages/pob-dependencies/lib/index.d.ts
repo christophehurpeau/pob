@@ -31,7 +31,6 @@ interface Dependencies {
   'lerna': '3.22.1';
   'pob-babel': '^24.14.0';
   'pob-lcov-reporter': '^2.4.0';
-  'pob-release': '^5.6.2';
   'prettier': '2.1.2';
   'repository-check-dirty': '^1.2.2';
   'semver': '7.3.2';

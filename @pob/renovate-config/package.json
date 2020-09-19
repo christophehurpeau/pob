@@ -47,7 +47,6 @@
             "jest-junit-reporter",
             "pob-babel",
             "pob-lcov-reporter",
-            "pob-release",
             "semver",
             "typedoc",
             "typedoc-plugin-lerna-packages"
@@ -85,7 +84,8 @@
             "prettier",
             "lerna",
             "typescript",
-            "repository-check-dirty"
+            "repository-check-dirty",
+            "standard-version"
           ],
           "updateTypes": [
             "patch",

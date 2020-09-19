@@ -305,10 +305,11 @@ module.exports = class PobLibGenerator extends Generator {
         delete pkg.scripts.version;
       }
     } else {
-      packageUtils.addDevDependencies(pkg, ['pob-release']);
+      packageUtils.addDevDependencies(pkg, ['standard-version']);
       if (pkg.name !== 'pob-monorepo') {
         packageUtils.addScripts(pkg, {
-          release: 'repository-check-dirty && pob-release',
+          release:
+            "repository-check-dirty && standard-version -a -m 'chore(release): %s [skip ci]' && git push --follow-tags origin master && npm publish",
           preversion: [
             'yarn run lint',
             withBabel && 'yarn run build',

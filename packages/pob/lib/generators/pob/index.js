@@ -166,7 +166,7 @@ module.exports = class PobBaseGenerator extends Generator {
       if (this.fs.exists('.commitrc.js')) this.fs.delete('.commitrc.js');
       const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
       packageUtils.removeDevDependencies(pkg, [
-        'pob-release',
+        'standard-version',
         'repository-check-dirty',
         'husky',
         'yarnhook',
