@@ -3249,18 +3249,17 @@ babel-preset-jest@^26.3.0:
     babel-plugin-jest-hoist "^26.2.0"
     babel-preset-current-node-syntax "^0.1.3"
 
-babel-preset-latest-node@4.1.0, babel-preset-latest-node@^4.1.0:
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/babel-preset-latest-node/-/babel-preset-latest-node-4.1.0.tgz#b5696cf19b0106b515890a427274f67ac009e8c8"
-  integrity sha512-LOdNzg2qtx+rHE0++hPjhIEJy8X3jkuhfV0oe8peVeXUjTY4jUEo18263WKNSqyn/Vg6ym9LK0rCywc51e/okQ==
+babel-preset-latest-node@5.0.0, babel-preset-latest-node@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-latest-node/-/babel-preset-latest-node-5.0.0.tgz#1c776799455889585ce7a731184b4964fc54e1df"
+  integrity sha512-FxabAzGKRkD6oFB10RrYoyS2Nuk/NNU+aJPVTOkX164EZvOF8r/5P3RaM0ed/1Iv7uugoPpSVW024ANEaHisCg==
   dependencies:
-    "@babel/plugin-proposal-nullish-coalescing-operator" "^7.8.3"
-    "@babel/plugin-proposal-optional-catch-binding" "^7.8.3"
-    "@babel/plugin-proposal-optional-chaining" "^7.9.0"
-    "@babel/plugin-proposal-unicode-property-regex" "^7.8.8"
-    "@babel/plugin-syntax-json-strings" "^7.8.3"
-    "@babel/plugin-syntax-optional-catch-binding" "^7.8.3"
-    "@babel/plugin-transform-modules-commonjs" "^7.9.0"
+    "@babel/plugin-proposal-nullish-coalescing-operator" "^7.10.4"
+    "@babel/plugin-proposal-optional-catch-binding" "^7.10.4"
+    "@babel/plugin-proposal-optional-chaining" "^7.10.4"
+    "@babel/plugin-proposal-unicode-property-regex" "^7.10.4"
+    "@babel/plugin-syntax-numeric-separator" "^7.10.4"
+    "@babel/plugin-transform-modules-commonjs" "^7.10.4"
 
 babel-preset-modern-browsers@14.2.1, babel-preset-modern-browsers@^14.2.1:
   version "14.2.1"
