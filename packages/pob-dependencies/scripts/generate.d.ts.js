@@ -12,6 +12,7 @@ interface Dependencies {
     .join(';\n  ')};
 }
 
+declare const dependencies: Dependencies;
 export = dependencies;
 `,
 );
