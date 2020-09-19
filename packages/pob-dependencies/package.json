@@ -53,7 +53,7 @@
     "eslint-plugin-react-hooks": "4.1.2",
     "eslint-plugin-unicorn": "22.0.0",
     "husky": "4.3.0",
-    "jest": "26.0.1",
+    "jest": "26.4.2",
     "jest-junit-reporter": "1.1.0",
     "lerna": "3.22.1",
     "pob-babel": "^24.14.1",
