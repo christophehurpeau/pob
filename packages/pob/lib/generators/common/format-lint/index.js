@@ -120,7 +120,6 @@ module.exports = class LintGenerator extends Generator {
     packageUtils.removeDevDependencies(pkg, [
       '@pob/eslint-config-babel',
       '@pob/eslint-config-babel-node',
-      '@typescript-eslint/parser',
       'babel-eslint',
       'eslint-config-pob',
       'eslint-config-prettier',
@@ -160,6 +159,7 @@ module.exports = class LintGenerator extends Generator {
           '@pob/eslint-config-react',
           '@pob/eslint-config-node',
           '@typescript-eslint/eslint-plugin',
+          '@typescript-eslint/parser',
           'eslint-import-resolver-node',
           'eslint-plugin-node',
           'eslint-plugin-prettier',
@@ -205,11 +205,13 @@ module.exports = class LintGenerator extends Generator {
             '@pob/eslint-config-typescript-node',
             '@pob/eslint-config-typescript-react',
             '@typescript-eslint/eslint-plugin',
+            '@typescript-eslint/parser',
           ]);
         } else {
           packageUtils.addOrRemoveDevDependencies(pkg, useBabel, [
             '@pob/eslint-config-typescript',
             '@typescript-eslint/eslint-plugin',
+            '@typescript-eslint/parser',
           ]);
 
           packageUtils.addOrRemoveDevDependencies(
