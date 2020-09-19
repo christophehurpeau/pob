@@ -146,6 +146,11 @@ module.exports = class PobBaseGenerator extends Generator {
       app: this.projectConfig.type === 'app',
     });
 
+    this.composeWith(require.resolve('../core/vscode'), {
+      root: this.isRoot,
+      yarn2: this.projectConfig.yarn2,
+    });
+
     if (this.isRoot) {
       this.composeWith(require.resolve('../core/yarn'), {
         type: this.projectConfig.type,
