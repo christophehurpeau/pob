@@ -41,6 +41,7 @@ module.exports = class OldDependenciesGenerator extends Generator {
       '@commitlint/config-conventional',
       'lint-staged',
       'yarnhook',
+      'yarn-deduplicate', // in @pob/root (for yarn 1)
       'yarn-update-lock',
       '@pob/version',
       'pob-release',
