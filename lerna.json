@@ -5,11 +5,7 @@
   "command": {
     "publish": {
       "npmClient": "npm",
-      "ignoreChanges": [
-        "**/.yo-rc.json",
-        "**/renovate.json",
-        "**/.eslintrc.json"
-      ]
+      "ignoreChanges": ["**/.yo-rc.json", "**/.eslintrc.json"]
     }
   }
 }
