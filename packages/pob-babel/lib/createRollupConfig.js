@@ -12,6 +12,12 @@ const ignoreImport = require('./rollup-plugin-ignore-browser-only-imports');
 
 const browserOnlyExtensions = ['.scss', '.css'];
 
+const nodeFormatToExt = (format) => {
+  if (format === 'cjs') return '.cjs';
+  if (format === 'es') return '.mjs';
+  return `.${format}.js`;
+};
+
 module.exports = ({
   cwd = process.cwd(),
   pkg = JSON.parse(readFileSync(`${cwd}/package.json`)),
@@ -43,20 +49,6 @@ module.exports = ({
         return version;
     }
   };
-
-  // allow to resolve .ts entry files
-  /* eslint-disable node/no-deprecated-api */
-  if (!require.extensions['.ts']) {
-    require.extensions['.ts'] = require.extensions['.js'];
-  }
-
-  if (jsx) {
-    // allow to resolve .tsx entry files
-    if (!require.extensions['.tsx']) {
-      require.extensions['.tsx'] = require.extensions['.js'];
-    }
-  }
-  /* eslint-enable node/no-deprecated-api */
 
   const externalByPackageJson = configExternalDependencies(pkg);
 
@@ -99,9 +91,9 @@ module.exports = ({
     return {
       input: entryPath,
       output: env.formats.map((format) => ({
-        file: `dist/${entry}-${env.target}${
-          env.version || ''
-        }${devSuffix}.${format}.js`,
+        file: `dist/${entry}-${env.target}${env.version || ''}${devSuffix}${
+          env.target === 'node' ? nodeFormatToExt(format) : `.${format}.js`
+        }`,
         format,
         sourcemap: true,
         exports: 'named',

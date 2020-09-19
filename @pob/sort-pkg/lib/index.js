@@ -34,6 +34,7 @@ module.exports = function sortPkg(pkg) {
     'browser',
     'browser-dev',
     'browserify',
+    'exports',
     'module:node',
     'module:node-dev',
     'module:browser',

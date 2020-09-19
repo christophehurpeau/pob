@@ -489,6 +489,9 @@ module.exports = class BabelGenerator extends Generator {
     const esNodeEnv = this.babelEnvs.find(
       (env) => env.target === 'node' && env.formats.includes('es'),
     );
+    const cjsNodeEnv = this.babelEnvs.find(
+      (env) => env.target === 'node' && env.formats.includes('cjs'),
+    );
     const esAllBrowserEnv = this.babelEnvs.find(
       (env) =>
         env.target === 'browser' &&
@@ -519,13 +522,30 @@ module.exports = class BabelGenerator extends Generator {
         './dist/index-browser-dev.es.js';
     }
 
+    if (useBabel) {
+      pkg.exports = {};
+    } else if (typeof pkg.exports !== 'string') {
+      delete pkg.exports;
+    }
+
     if (esNodeEnv) {
       pkg[
         'module:node'
-      ] = `./dist/index-${esNodeEnv.target}${esNodeEnv.version}.es.js`;
+      ] = `./dist/index-${esNodeEnv.target}${esNodeEnv.version}.mjs`;
       pkg[
         'module:node-dev'
-      ] = `./dist/index-${esNodeEnv.target}${esNodeEnv.version}-dev.es.js`;
+      ] = `./dist/index-${esNodeEnv.target}${esNodeEnv.version}-dev.mjs`;
+
+      pkg.exports['.'] = {
+        node: {
+          development: {
+            import: `./dist/index-${esNodeEnv.target}${esNodeEnv.version}-dev.mjs`,
+            require: `./dist/index-${cjsNodeEnv.target}${cjsNodeEnv.version}-dev.cjs`,
+          },
+          import: `./dist/index-${esNodeEnv.target}${esNodeEnv.version}.mjs`,
+          require: `./dist/index-${cjsNodeEnv.target}${cjsNodeEnv.version}.cjs`,
+        },
+      };
     }
 
     if (useBabel) {
@@ -592,6 +612,23 @@ module.exports = class BabelGenerator extends Generator {
             env.version || ''
           }-dev.es.js`;
         });
+
+        if (env.target === 'node') {
+          envAliases.forEach((aliasName) => {
+            pkg.exports[`./${aliasName}`] = {
+              node: {
+                development: {
+                  import: `./dist/${aliasName}-${env.target}${
+                    env.version || ''
+                  }-dev.mjs`,
+                },
+                import: `./dist/${aliasName}-${env.target}${
+                  env.version || ''
+                }.mjs`,
+              },
+            };
+          });
+        }
       });
     }
 
