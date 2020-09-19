@@ -68,7 +68,7 @@ module.exports = ({
     let entryPath;
     try {
       entryPath = require.resolve(`./src/${entryName}`, { paths: [cwd] });
-    } catch (err) {
+    } catch {
       throw new Error(`Could not find entry "${entryName}" in path "${cwd}"`);
     }
 

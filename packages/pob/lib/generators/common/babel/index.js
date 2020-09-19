@@ -388,6 +388,7 @@ module.exports = class BabelGenerator extends Generator {
       if (!pkg.engines) pkg.engines = {};
       const minNodeVersion = this.babelEnvs
         .filter((env) => env.target === 'node')
+        // eslint-disable-next-line unicorn/no-reduce
         .reduce(
           (min, env) => Math.min(min, env.version),
           Number.MAX_SAFE_INTEGER,
@@ -534,7 +535,8 @@ module.exports = class BabelGenerator extends Generator {
             const replaced =
               typeof value === 'string'
                 ? value.replace('webpack', 'module')
-                : Object.keys(value).reduce((o, oKey) => {
+                : // eslint-disable-next-line unicorn/no-reduce
+                  Object.keys(value).reduce((o, oKey) => {
                     o[oKey] = value[oKey].replace('webpack', 'module');
                     return o;
                   }, {});
