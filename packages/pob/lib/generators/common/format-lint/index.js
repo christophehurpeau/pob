@@ -29,6 +29,13 @@ module.exports = class LintGenerator extends Generator {
       desc: 'Documentation enabled',
     });
 
+    this.option('typescript', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+      desc: 'Typescript enabled',
+    });
+
     this.option('enableSrcResolver', {
       type: Boolean,
       required: false,
@@ -60,13 +67,18 @@ module.exports = class LintGenerator extends Generator {
         this.templatePath('eslintignore.txt'),
         this.destinationPath('.eslintignore'),
       );
-    } else if (inLerna && inLerna.root) {
+    } else if (
+      inLerna &&
+      inLerna.root &&
+      (this.options.documentation || this.options.typescript)
+    ) {
       this.fs.copyTpl(
         this.templatePath('eslintignore.monorepoEslint.txt'),
         this.destinationPath('.eslintignore'),
         {
           workspaces: pkg.workspaces,
           documentation: this.options.documentation,
+          typescript: this.options.typescript,
         },
       );
     } else if (this.fs.exists(this.destinationPath('.eslintignore'))) {
@@ -114,7 +126,7 @@ module.exports = class LintGenerator extends Generator {
       'eslint-config-prettier',
       'eslint-plugin-babel',
       'eslint-plugin-flowtype',
-      // 'eslint-plugin-import',
+      'eslint-plugin-prefer-class-properties',
       'eslint-plugin-jsx-a11y',
       'typescript-eslint-parser',
       'standard',
@@ -146,6 +158,7 @@ module.exports = class LintGenerator extends Generator {
           '@pob/eslint-config-typescript-node',
           '@pob/eslint-config-typescript-react',
           '@pob/eslint-config-react',
+          '@pob/eslint-config-node',
           '@typescript-eslint/eslint-plugin',
           'eslint-import-resolver-node',
           'eslint-plugin-node',
@@ -274,6 +287,11 @@ module.exports = class LintGenerator extends Generator {
     this.fs.delete(`${eslintrcBadPath}.js`);
 
     const rootEslintrcPath = this.destinationPath('.eslintrc.json');
+
+    const srcEslintrcPath = this.destinationPath(
+      `${useBabel ? 'src/' : 'lib/'}.eslintrc.json`,
+    );
+
     try {
       if (this.fs.exists(rootEslintrcPath)) {
         ensureJsonFileFormatted(rootEslintrcPath);
@@ -295,11 +313,12 @@ module.exports = class LintGenerator extends Generator {
       console.warn(`Could not parse/edit ${rootEslintrcPath}: `, err);
     }
 
-    const srcEslintrcPath = this.destinationPath(
-      `${useBabel ? 'src/' : 'lib/'}.eslintrc.json`,
-    );
-
-    if (!useBabel && useNodeOnly && !this.options.enableSrcResolver) {
+    if (
+      !useBabel &&
+      useNodeOnly &&
+      !this.options.enableSrcResolver &&
+      !jestOverride
+    ) {
       if (this.fs.exists(srcEslintrcPath)) {
         this.fs.delete(srcEslintrcPath);
       }

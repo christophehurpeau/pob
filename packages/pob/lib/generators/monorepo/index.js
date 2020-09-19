@@ -126,6 +126,7 @@ module.exports = class PobMonorepoGenerator extends Generator {
 
     this.composeWith(require.resolve('../common/format-lint'), {
       documentation: this.pobLernaConfig.documentation,
+      typescript: this.pobLernaConfig.typescript,
       testing: this.pobLernaConfig.testing,
     });
 

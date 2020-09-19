@@ -26,7 +26,7 @@ module.exports = class GitHooksGenerator extends Generator {
     try {
       readlinkSync(gitHookDestination);
       isSymlink = true;
-    } catch (err) {
+    } catch {
       isSymlink = false;
     }
 
