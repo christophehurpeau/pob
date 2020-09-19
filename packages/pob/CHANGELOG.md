@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.19.0](https://github.com/christophehurpeau/pob/compare/pob@5.18.0...pob@5.19.0) (2020-09-19)
+
+
+### Bug Fixes
+
+* add missing new sdk argument for pnpify ([39068b1](https://github.com/christophehurpeau/pob/commit/39068b19b35b239d06b5f07d1cb1d8dd62eec950))
+* dont add tsbuildinfo in app gitignore ([71685af](https://github.com/christophehurpeau/pob/commit/71685af0eb777e4eea69e5664032a61350df9e32))
+* eslint resolve-plugins-relative-to with lerna for eslint 7 ([60ecece](https://github.com/christophehurpeau/pob/commit/60ececed3028d118bb899ea723cf735a0eb27b95))
+* remove renovate.json in lerna config ([ccb2b8c](https://github.com/christophehurpeau/pob/commit/ccb2b8cc2588e9b86451115b0353a53ac3d00200))
+* remove space in postbuild script ([fb7a27a](https://github.com/christophehurpeau/pob/commit/fb7a27ae249ab84b5c12ea9822e0bcc7b16c80a7))
+
+
+### Features
+
+* add initial vscode generator ([8e9de7c](https://github.com/christophehurpeau/pob/commit/8e9de7c45ecaa9e77453f6048c7e5e2281b09ae6))
+* ignore config.js in npmignore ([f39101e](https://github.com/christophehurpeau/pob/commit/f39101e9264791da13035a6efc458ad464dfdfc2))
+* update eslint, pob-eslint, prettier, husky and lint-staged ([a62814e](https://github.com/christophehurpeau/pob/commit/a62814e294426ff0b75334d57c0861fb1de171e4))
+
+
+
+
+
 # [5.18.0](https://github.com/christophehurpeau/pob/compare/pob@5.17.0...pob@5.18.0) (2020-07-20)
 
 

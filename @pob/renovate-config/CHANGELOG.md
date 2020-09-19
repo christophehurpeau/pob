@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.12.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.11.0...@pob/renovate-config@1.12.0) (2020-09-19)
+
+
+### Features
+
+* update eslint, pob-eslint, prettier, husky and lint-staged ([a62814e](https://github.com/christophehurpeau/pob/commit/a62814e294426ff0b75334d57c0861fb1de171e4))
+* **renovate-config:** run both dedupe fewer and dedupe highest ([0c5b573](https://github.com/christophehurpeau/pob/commit/0c5b573172fc7eed0babe9b4bffb82d9ccfc9b22))
+
+
+
+
+
 # [1.11.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.10.1...@pob/renovate-config@1.11.0) (2020-07-20)
 
 

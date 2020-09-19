@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.6.3](https://github.com/christophehurpeau/pob/compare/pob-release@5.6.2...pob-release@5.6.3) (2020-09-19)
+
+
+### Bug Fixes
+
+* use yarn to exec standard-changelog, fixing yarn2 and pnp ([031f247](https://github.com/christophehurpeau/pob/commit/031f24764be8fb7c9d23afc2700c409be02669ea))
+
+
+
+
+
 ## [5.6.2](https://github.com/christophehurpeau/pob/compare/pob-release@5.6.1...pob-release@5.6.2) (2020-06-28)
 
 **Note:** Version bump only for package pob-release

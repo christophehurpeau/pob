@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [1.3.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@1.2.1...@pob/pretty-pkg@1.3.0) (2020-09-19)
+
+
+### Features
+
+* update eslint, pob-eslint, prettier, husky and lint-staged ([a62814e](https://github.com/christophehurpeau/pob/commit/a62814e294426ff0b75334d57c0861fb1de171e4))
+
+
+
+
+
 ## [1.2.1](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@1.2.0...@pob/pretty-pkg@1.2.1) (2020-05-22)
 
 **Note:** Version bump only for package @pob/pretty-pkg

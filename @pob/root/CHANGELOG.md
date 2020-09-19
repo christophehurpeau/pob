@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@2.2.2...@pob/root@2.3.0) (2020-09-19)
+
+
+### Features
+
+* use yarn dedupe from yarn 2.2 ([608b74d](https://github.com/christophehurpeau/pob/commit/608b74dca764c17c44acfae4327a2a8d52e556ad))
+
+
+
+
+
 ## [2.2.2](https://github.com/christophehurpeau/pob/compare/@pob/root@2.2.1...@pob/root@2.2.2) (2020-06-28)
 
 
