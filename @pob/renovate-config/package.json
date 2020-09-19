@@ -3,7 +3,7 @@
   "version": "1.11.0",
   "description": "renovate pob config",
   "engines": {
-    "node": ">=12.10.0"
+    "node": ">=10.13.0"
   },
   "prettier": {
     "trailingComma": "all",
