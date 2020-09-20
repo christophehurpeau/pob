@@ -1,6 +1,6 @@
 {
   "name": "@pob/renovate-config",
-  "version": "1.13.0",
+  "version": "1.13.1",
   "description": "renovate pob config",
   "engines": {
     "node": ">=10.13.0"
@@ -17,7 +17,7 @@
     "preversion": "node generate-package.json.js && git add package.json"
   },
   "devDependencies": {
-    "pob-dependencies": "^2.0.0",
+    "pob-dependencies": "^2.0.1",
     "prettier": "2.1.2"
   },
   "renovate-config": {
@@ -49,6 +49,7 @@
             "jest-junit-reporter",
             "pob-babel",
             "pob-lcov-reporter",
+            "rollup",
             "semver",
             "standard-version",
             "typedoc",

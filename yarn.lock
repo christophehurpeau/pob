@@ -9794,7 +9794,7 @@ rollup-config-external-dependencies@^2.0.0:
   resolved "https://registry.yarnpkg.com/rollup-config-external-dependencies/-/rollup-config-external-dependencies-2.0.0.tgz#1323783bb530424a2b4cce47f26b3fc4a33a6ac7"
   integrity sha512-4/9+WSF/ekK21hivHp9BOzfwcgD7jNiWjfOQU9LXferNHfK8OWPaADiquYO8WZuU6uY30uB1m3huSD9ZOzWxYA==
 
-rollup@^2.27.1:
+rollup@2.27.1, rollup@^2.27.1:
   version "2.27.1"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.27.1.tgz#372744e1d36eba0fd942d997600c2fc2ca266305"
   integrity sha512-GiWHQvnmMgBktSpY/1+nrGpwPsTw4b9P28og2uedfeq4JZ16rzAmnQ5Pm/E0/BEmDNia1ZbY7+qu3nBgNa19Hg==

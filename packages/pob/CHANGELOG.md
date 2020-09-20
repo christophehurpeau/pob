@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.1](https://github.com/christophehurpeau/pob/compare/pob@6.0.0...pob@6.0.1) (2020-09-20)
+
+
+### Bug Fixes
+
+* add @typescript-eslint/parser in devdeps for yarn 2 ([a8bb3bc](https://github.com/christophehurpeau/pob/commit/a8bb3bc16f9716b9d32af8de9ff7b1557d07649b))
+* support yarn 2, use cjs to prevent breakings ([a600853](https://github.com/christophehurpeau/pob/commit/a600853354201025dde61a5e9fc61d901e8e23b2))
+* support yarn2 typescript in vscode config ([a6699d0](https://github.com/christophehurpeau/pob/commit/a6699d048f607dd588aea8a0940a4f07b892b5d0))
+
+
+
+
+
 # [6.0.0](https://github.com/christophehurpeau/pob/compare/pob@5.19.0...pob@6.0.0) (2020-09-19)
 
 
