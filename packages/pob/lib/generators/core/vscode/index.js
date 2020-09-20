@@ -14,7 +14,7 @@ module.exports = class VscodeGenerator extends Generator {
     });
 
     this.option('yarn2', {
-      type: String,
+      type: Boolean,
       required: false,
       defaults: '',
       desc: 'Uses yarn 2.',
