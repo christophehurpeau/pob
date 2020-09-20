@@ -540,10 +540,10 @@ module.exports = class BabelGenerator extends Generator {
         node: {
           development: {
             import: `./dist/index-${esNodeEnv.target}${esNodeEnv.version}-dev.mjs`,
-            require: `./dist/index-${cjsNodeEnv.target}${cjsNodeEnv.version}-dev.cjs`,
+            require: `./dist/index-${cjsNodeEnv.target}${cjsNodeEnv.version}-dev.cjs.js`,
           },
           import: `./dist/index-${esNodeEnv.target}${esNodeEnv.version}.mjs`,
-          require: `./dist/index-${cjsNodeEnv.target}${cjsNodeEnv.version}.cjs`,
+          require: `./dist/index-${cjsNodeEnv.target}${cjsNodeEnv.version}.cjs.js`,
         },
       };
     }
@@ -663,7 +663,18 @@ module.exports = class BabelGenerator extends Generator {
     const useBabel = this.babelEnvs && this.babelEnvs.length;
     const hasReact = useBabel && packageUtils.hasReact(pkg);
 
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    /* pob-babel config */
+
+    if (useBabel) {
+      this.fs.copy(
+        this.templatePath('rollup.config.js.txt'),
+        this.destinationPath('rollup.config.js'),
+      );
+    } else {
+      this.fs.delete('rollup.config.js');
+    }
+
+    /* jest babel config */
 
     if (useBabel && this.options.testing) {
       this.fs.copyTpl(

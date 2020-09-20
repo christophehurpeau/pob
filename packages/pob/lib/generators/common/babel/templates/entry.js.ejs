@@ -15,7 +15,7 @@ const nodeVersionMajor = Number(nodeVersion[0]);
 const nodeVersionMinor = Number(nodeVersion[1]);
 /* istanbul ignore next */
 if (nodeVersionMajor > 10 || (nodeVersionMajor === 10 && nodeVersionMinor >= 13)) {
-  module.exports = require(`./dist/<%= entry %>-node10${production ? '' : '-dev'}.cjs`);
+  module.exports = require(`./dist/<%= entry %>-node10${production ? '' : '-dev'}.cjs.js`);
 /* istanbul ignore next */
 } else {
   throw new Error('Node version not supported: ' + nodeVersion + ' (' + process.versions.node + ').');

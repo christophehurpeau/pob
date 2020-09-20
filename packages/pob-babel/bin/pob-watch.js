@@ -3,24 +3,30 @@
 'use strict';
 
 const { spawnSync } = require('child_process');
-const fs = require('fs');
 const path = require('path');
+const checkDep = require('@pob/check-lib-dependency-in-root-dev-dependencies');
 const argv = require('minimist-argv');
+
+checkDep(require('rollup/package.json'));
 
 if (argv.clean !== false) {
   try {
-    fs.rmdirSync(path.resolve('dist'), { recursive: true });
+    spawnSync('yarn', ['run', 'clean']);
   } catch (err) {
     console.error(err);
   }
 }
 
-const rollupBin = require.resolve('rollup/dist/bin/rollup');
-const configPath = require.resolve('../rollup.config.js');
+// const rollupBin = require.resolve('rollup/dist/bin/rollup');
+const configPath = path.resolve('rollup.config.js');
 
-const { error } = spawnSync(rollupBin, ['--watch', '--config', configPath], {
-  stdio: 'inherit',
-});
+const { error } = spawnSync(
+  'yarn',
+  ['rollup', '--watch', '--config', configPath],
+  {
+    stdio: 'inherit',
+  },
+);
 if (error) {
   throw error;
 }

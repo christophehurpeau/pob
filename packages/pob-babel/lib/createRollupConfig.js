@@ -13,7 +13,7 @@ const ignoreImport = require('./rollup-plugin-ignore-browser-only-imports');
 const browserOnlyExtensions = ['.scss', '.css'];
 
 const nodeFormatToExt = (format) => {
-  if (format === 'cjs') return '.cjs';
+  if (format === 'cjs') return '.cjs.js';
   if (format === 'es') return '.mjs';
   return `.${format}.js`;
 };
