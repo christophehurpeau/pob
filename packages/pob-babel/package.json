@@ -68,7 +68,7 @@
   },
   "devDependencies": {
     "@types/jest": "26.0.14",
-    "jest": "26.4.2",
+    "jest": "26.5.0",
     "pob-lcov-reporter": "^3.0.0"
   }
 }
