@@ -31,6 +31,6 @@
     "istanbul-reports": "^3.0.2"
   },
   "devDependencies": {
-    "jest": "26.5.0"
+    "jest": "26.5.2"
   }
 }
