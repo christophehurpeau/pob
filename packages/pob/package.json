@@ -52,7 +52,7 @@
     "pob-dependencies": "^2.0.1",
     "prettier": "2.1.2",
     "semver": "^7.1.2",
-    "update-notifier": "^4.1.1",
+    "update-notifier": "^5.0.0",
     "yeoman-environment": "^2.10.2",
     "yeoman-generator": "^4.10.1"
   },
