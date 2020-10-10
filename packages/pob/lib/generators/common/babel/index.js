@@ -339,6 +339,7 @@ module.exports = class BabelGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel, [
       '@babel/core',
       'pob-babel',
+      'rollup',
     ]);
 
     if (pkg.dependencies && pkg.dependencies['pob-babel']) {
