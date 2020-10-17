@@ -421,7 +421,13 @@ module.exports = class BabelGenerator extends Generator {
     /* browserlist */
 
     if (hasTargetBrowser) {
-      pkg.browserslist = ['> 0.1%', 'Firefox ESR', 'not ie < 9', 'not dead'];
+      pkg.browserslist = [
+        '> 0.2%',
+        'Firefox ESR',
+        'not ie < 12',
+        'not dead',
+        'not op_mini all',
+      ];
     } else {
       delete pkg.browserslist;
     }
