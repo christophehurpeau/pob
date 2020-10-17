@@ -98,6 +98,8 @@ module.exports = ({
         sourcemap: true,
         exports: 'named',
         preferConst,
+        externalLiveBindings: false,
+        freeze: false,
       })),
       external:
         env.target === 'browser'
