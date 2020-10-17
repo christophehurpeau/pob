@@ -378,7 +378,7 @@ module.exports = class LintGenerator extends Generator {
       const extArg = !useBabel
         ? ''
         : ` --ext .js,.ts${hasReact ? ',.tsx' : ''}`;
-      const args = `${extArg} --quiet`;
+      const args = `${extArg} --report-unused-disable-directives --quiet`;
 
       packageUtils.addScripts(pkg, {
         lint: globalEslint
