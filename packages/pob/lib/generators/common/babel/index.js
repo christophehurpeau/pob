@@ -432,6 +432,12 @@ module.exports = class BabelGenerator extends Generator {
       delete pkg.browserslist;
     }
 
+    /* side effects */
+
+    if (!('sideEffects' in pkg)) {
+      pkg.sideEffects = true;
+    }
+
     /* main / aliases / typing */
 
     if (pkg.typings) {
