@@ -4,10 +4,18 @@
 
 const { spawnSync } = require('child_process');
 const path = require('path');
-const checkDep = require('@pob/check-lib-dependency-in-root-dev-dependencies');
 const argv = require('minimist-argv');
+const rollup = require('rollup');
+const semver = require('semver');
+const requiredRollupVersion = require('../package.json').peerDependencies.rollup.slice(
+  1,
+);
 
-checkDep(require('rollup/package.json'));
+if (semver.lt(requiredRollupVersion, rollup.VERSION)) {
+  console.error(
+    `Invalid rollup version: ${rollup.VERSION}. Expecting >= ${requiredRollupVersion}`,
+  );
+}
 
 if (argv.clean !== false) {
   try {
