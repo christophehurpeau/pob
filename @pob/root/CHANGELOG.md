@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.2](https://github.com/christophehurpeau/pob/compare/@pob/root@2.4.1...@pob/root@2.4.2) (2020-10-18)
+
+
+### Bug Fixes
+
+* husky and lint-staged with npm 7 ([c51e1ad](https://github.com/christophehurpeau/pob/commit/c51e1ad68edcb61c988f263b93dd0fa5f58dd2a2))
+
+
+
+
+
 ## [2.4.1](https://github.com/christophehurpeau/pob/compare/@pob/root@2.4.0...@pob/root@2.4.1) (2020-10-18)
 
 

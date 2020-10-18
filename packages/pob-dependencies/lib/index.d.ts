@@ -11,7 +11,7 @@ interface Dependencies {
   '@pob/eslint-config-typescript-node': '40.0.0';
   '@pob/eslint-config-typescript-react': '40.0.0';
   '@pob/pretty-pkg': '^1.3.1';
-  '@pob/root': '^2.4.0';
+  '@pob/root': '^2.4.1';
   '@types/jest': '26.0.14';
   '@typescript-eslint/eslint-plugin': '4.4.1';
   '@typescript-eslint/parser': '4.4.1';
