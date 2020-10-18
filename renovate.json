@@ -4,6 +4,7 @@
   "masterIssue": true,
   "masterIssueApproval": false,
   "postUpdateOptions": ["yarnDedupeFewer", "yarnDedupeHighest"],
+  "rangeStrategy": "bump",
   "packageRules": [
     {
       "packagePatterns": ["*"],
