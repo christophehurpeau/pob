@@ -2,11 +2,15 @@
 
 'use strict';
 
+const fs = require('fs');
 const path = require('path');
 const semver = require('semver');
 const whichPmRuns = require('which-pm-runs');
 
-const pm = whichPmRuns();
+const pm =
+  whichPmRuns() || fs.existsSync('package-lock.json')
+    ? { name: 'npm' }
+    : undefined;
 
 if (pm.name !== 'yarn' && pm.name !== 'npm') {
   console.error(
@@ -14,8 +18,7 @@ if (pm.name !== 'yarn' && pm.name !== 'npm') {
   );
   process.exit(1);
 }
-
-const yarnMajorVersion = semver.major(pm.version);
+const yarnMajorVersion = pm.name === 'yarn' && semver.major(pm.version);
 const lockfile = pm.name === 'yarn' ? 'yarn.lock' : 'package-lock.json';
 
 // eslint-disable-next-line import/no-dynamic-require

@@ -59,9 +59,12 @@ module.exports = class GitHooksGenerator extends Generator {
       if (this.fs.exists(this.destinationPath('.huskyrc.js'))) {
         this.fs.delete(this.destinationPath('.huskyrc.js'));
       }
-      this.fs.copy(
-        this.templatePath('husky.config.js.txt'),
+      this.fs.copyTpl(
+        this.templatePath('husky.config.js.ejs.txt'),
         this.destinationPath('husky.config.js'),
+        {
+          packageManager: this.fs.exists('package-lock.json') ? 'npm' : 'yarn',
+        },
       );
 
       this.fs.copy(
