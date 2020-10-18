@@ -53,6 +53,13 @@ module.exports = class VscodeGenerator extends Generator {
           typescript: this.options.typescript,
         },
       );
+      this.fs.copyTpl(
+        this.templatePath('tasks.json.ejs'),
+        this.destinationPath('.vscode/tasks.json'),
+        {
+          typescript: this.options.typescript,
+        },
+      );
     } else {
       this.fs.delete('.vscode');
     }
