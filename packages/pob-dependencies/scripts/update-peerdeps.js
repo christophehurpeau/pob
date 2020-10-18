@@ -9,9 +9,19 @@ const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
 
 let madeModifications = false;
 
+const requireIfPossible = (packageJsonPath) => {
+  try {
+    return require(packageJsonPath);
+  } catch (err) {
+    console.error(`Failed to require ${packageJsonPath}`);
+    console.error(err.message);
+    return {};
+  }
+};
+
 Object.keys(pkg.devDependencies).forEach((key) => {
   if (key === 'typedoc-plugin-lerna-packages') return;
-  const depPkg = require(`${key}/package.json`);
+  const depPkg = requireIfPossible(`${key}/package.json`);
   if (!depPkg.peerDependencies) return;
   Object.keys(depPkg.peerDependencies).forEach((peerDep) => {
     const peerDepRange = depPkg.peerDependencies[peerDep];
