@@ -280,31 +280,32 @@ module.exports = class LintGenerator extends Generator {
       if (this.fs.exists(rootEslintrcPath)) {
         ensureJsonFileFormatted(rootEslintrcPath);
       }
+
+      const ignorePatterns = [];
+
+      if (!inLerna && useTypescript) {
+        ignorePatterns.push('*.d.ts');
+      }
+
+      if (inLerna && !inLerna.root && this.options.typescript) {
+        ignorePatterns.push('*.d.ts');
+      }
+      if (inLerna && inLerna.root && this.options.documentation) {
+        ignorePatterns.push('/docs');
+      }
+
+      if (inLerna && !inLerna.root) {
+        ignorePatterns.push('/dist', '/test', '/public', '/build');
+      }
+
       const rootEslintrcConfig = updateEslintConfig(
         this.fs.readJSON(rootEslintrcPath, {}),
         {
           extendsConfig: isPobEslintConfig
             ? extendsConfig
             : extendsConfigNoBabel,
-          ignorePatterns: useTypescript
-            ? ['*.d.ts']
-            : // eslint-disable-next-line unicorn/no-nested-ternary
-            inLerna &&
-              inLerna.root &&
-              (this.options.documentation || this.options.typescript)
-            ? [
-                this.options.typescript && '*.d.ts',
-                this.options.documentation && '/docs',
-                ...(this.options.typescript
-                  ? pkg.workspaces.flatMap((w) => [
-                      `${w}/dist`,
-                      `${w}/test`,
-                      `${w}/public`,
-                      `${w}/build`,
-                    ])
-                  : []),
-              ].filter(Boolean)
-            : undefined,
+          ignorePatterns:
+            ignorePatterns.length === 0 ? undefined : ignorePatterns,
         },
       );
 
