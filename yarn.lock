@@ -2279,7 +2279,7 @@
     eslint-plugin-import "^2.22.0"
     eslint-plugin-prettier "^3.1.4"
 
-"@pob/eslint-config@40.0.0", "@pob/eslint-config@^40.0.0":
+"@pob/eslint-config@40.0.0":
   version "40.0.0"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-40.0.0.tgz"
   integrity sha512-14kCIZCQwl6wON7I/5J7rhdZVvKX0uEFn63kmr7MUCNFcu0YViaOoqWo32GwgyHQHULWigoYUq2TG7OxCeJklg==
@@ -2290,7 +2290,7 @@
     eslint-plugin-prettier "^3.1.4"
     eslint-plugin-unicorn "^22.0.0"
 
-"@pob/eslint-config@^40.1.0":
+"@pob/eslint-config@^40.0.0", "@pob/eslint-config@^40.1.0":
   version "40.1.0"
   resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-40.1.0.tgz#ed5c3b9fe21e0e370ff4cf6c9078ea6fc0c913ac"
   integrity sha512-2xUDZu9TJRxHiQiuL/b1ZhvZCTd7H4j7jRug8iSbuHYOINA4iY5X3jLFh47rlo8mu0LP6isG7HYf+KWraO/AOA==
@@ -2301,12 +2301,7 @@
     eslint-plugin-prettier "^3.1.4"
     eslint-plugin-unicorn "^23.0.0"
 
-"@pob/use-eslint-plugin@^40.0.0":
-  version "40.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/use-eslint-plugin/-/use-eslint-plugin-40.0.0.tgz"
-  integrity sha512-GW+0R1N+yIcRxS4fM0wmzSO87PcURHhFajQNkxAPYwql6WCAqeNcOeZfZweUhpd+rt7yvTMoBbtjn7PV63wfEw==
-
-"@pob/use-eslint-plugin@^40.1.0":
+"@pob/use-eslint-plugin@^40.0.0", "@pob/use-eslint-plugin@^40.1.0":
   version "40.1.0"
   resolved "https://registry.yarnpkg.com/@pob/use-eslint-plugin/-/use-eslint-plugin-40.1.0.tgz#c8ede1d6354105c5e1df31486c6a534bfcfc273e"
   integrity sha512-qz+E6WroUQbI6QQUBJwYXoJtwwibVjTRpAHIpTMAZ/G6iyP/p0K/uiQ6NgApzsOAJsqRXop9ORWabYYljeUheQ==
