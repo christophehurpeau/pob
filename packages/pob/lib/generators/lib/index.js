@@ -311,9 +311,10 @@ module.exports = class PobLibGenerator extends Generator {
           release:
             "repository-check-dirty && standard-version -a -m 'chore(release): %s [skip ci]' && git push --follow-tags origin master && npm publish",
           preversion: [
-            'yarn run lint',
-            withBabel && 'yarn run build',
-            this.pobjson.documentation && 'yarn run generate:docs',
+            `${inNpmLerna ? 'npm' : 'yarn'} run lint`,
+            withBabel && `${inNpmLerna ? 'npm' : 'yarn'} run build`,
+            this.pobjson.documentation &&
+              `${inNpmLerna ? 'npm' : 'yarn'} run generate:docs`,
             'repository-check-dirty',
           ]
             .filter(Boolean)

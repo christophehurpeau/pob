@@ -151,6 +151,7 @@ module.exports = class LernaGenerator extends Generator {
     );
 
     const monorepoConfig = this.config.get('monorepo');
+    const packageManager = this.npm ? 'npm' : 'yarn';
 
     packageUtils.addScripts(pkg, {
       lint:
@@ -159,9 +160,9 @@ module.exports = class LernaGenerator extends Generator {
           : 'lerna run --stream lint',
       preversion: [
         monorepoConfig && monorepoConfig.eslint
-          ? 'yarn run lint'
-          : 'yarn run lint --since',
-        withBabel && 'yarn run build --since -- -- --no-clean',
+          ? `${packageManager} run lint`
+          : `${packageManager} run lint --since`,
+        withBabel && `${packageManager} run build --since -- -- --no-clean`,
         'repository-check-dirty',
       ]
         .filter(Boolean)
@@ -189,7 +190,7 @@ module.exports = class LernaGenerator extends Generator {
 
     packageUtils.addOrRemoveScripts(pkg, withTypescript, {
       'build:definitions': 'lerna run --stream build:definitions',
-      postbuild: 'yarn run build:definitions --since',
+      postbuild: `${packageManager} run build:definitions --since`,
     });
 
     delete pkg.scripts.version;
