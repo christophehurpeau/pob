@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/christophehurpeau/pob/compare/pob@6.1.2...pob@6.2.0) (2020-10-18)
+
+
+### Bug Fixes
+
+* use yarn or npm for running scripts depending on config ([b7a2003](https://github.com/christophehurpeau/pob/commit/b7a2003282cbace4e8df2b837b0032ab56577b4f))
+
+
+### Features
+
+* remove deprecated option eslint.enable ([ea8c7ef](https://github.com/christophehurpeau/pob/commit/ea8c7ef18e34b4e6a9b3772384869ad57fc379e8))
+
+
+
+
+
 ## [6.1.2](https://github.com/christophehurpeau/pob/compare/pob@6.1.1...pob@6.1.2) (2020-10-18)
 
 

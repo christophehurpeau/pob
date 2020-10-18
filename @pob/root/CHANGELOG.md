@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.3](https://github.com/christophehurpeau/pob/compare/@pob/root@2.4.2...@pob/root@2.4.3) (2020-10-18)
+
+
+### Bug Fixes
+
+* missing () ([3ce1dff](https://github.com/christophehurpeau/pob/commit/3ce1dff3a6f7a8f63f00a6ba5b3a51e8676852b0))
+
+
+
+
+
 ## [2.4.2](https://github.com/christophehurpeau/pob/compare/@pob/root@2.4.1...@pob/root@2.4.2) (2020-10-18)
 
 
