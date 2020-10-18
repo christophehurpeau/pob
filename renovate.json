@@ -1,5 +1,9 @@
 {
   "extends": ["config:js-lib"],
+  "prConcurrentLimit": 10,
+  "masterIssue": true,
+  "masterIssueApproval": false,
+  "postUpdateOptions": ["yarnDedupeFewer", "yarnDedupeHighest"],
   "packageRules": [
     {
       "packagePatterns": ["*"],
