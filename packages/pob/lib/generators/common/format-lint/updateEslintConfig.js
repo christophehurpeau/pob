@@ -92,6 +92,15 @@ function updateSettings(config, settings) {
   return config;
 }
 
+function updateIgnorePatterns(config, ignorePatterns) {
+  if (!ignorePatterns) {
+    delete config.ignorePatterns;
+  } else {
+    config.ignorePatterns = ignorePatterns;
+  }
+  return config;
+}
+
 function sortConfig(config) {
   const sortedConfig = sortObject(config, [
     'root',
@@ -102,6 +111,7 @@ function sortConfig(config) {
     'env',
     'globals',
     'settings',
+    'ignorePatterns',
     'rules',
     'overrides',
   ]);
@@ -128,6 +138,7 @@ module.exports = function updateEslintConfig(
     useTypescript,
     globalEslint,
     settings,
+    ignorePatterns,
     relativePath,
   },
 ) {
@@ -144,6 +155,7 @@ module.exports = function updateEslintConfig(
   if (settings) {
     config = updateSettings(config, settings);
   }
+  config = updateIgnorePatterns(config, ignorePatterns);
 
   return sortConfig(config);
 };

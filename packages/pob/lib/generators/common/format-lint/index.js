@@ -60,28 +60,8 @@ module.exports = class LintGenerator extends Generator {
       !useBabel ||
       (babelEnvs.length !== 0 &&
         babelEnvs.every((env) => env.target === 'node'));
-    const useTypescript = useBabel;
 
-    if (useTypescript) {
-      this.fs.copy(
-        this.templatePath('eslintignore.txt'),
-        this.destinationPath('.eslintignore'),
-      );
-    } else if (
-      inLerna &&
-      inLerna.root &&
-      (this.options.documentation || this.options.typescript)
-    ) {
-      this.fs.copyTpl(
-        this.templatePath('eslintignore.monorepoEslint.txt'),
-        this.destinationPath('.eslintignore'),
-        {
-          workspaces: pkg.workspaces,
-          documentation: this.options.documentation,
-          typescript: this.options.typescript,
-        },
-      );
-    } else if (this.fs.exists(this.destinationPath('.eslintignore'))) {
+    if (this.fs.exists(this.destinationPath('.eslintignore'))) {
       this.fs.delete(this.destinationPath('.eslintignore'));
     }
 
@@ -294,6 +274,8 @@ module.exports = class LintGenerator extends Generator {
       `${useBabel ? 'src/' : 'lib/'}.eslintrc.json`,
     );
 
+    const useTypescript = useBabel;
+
     try {
       if (this.fs.exists(rootEslintrcPath)) {
         ensureJsonFileFormatted(rootEslintrcPath);
@@ -304,6 +286,25 @@ module.exports = class LintGenerator extends Generator {
           extendsConfig: isPobEslintConfig
             ? extendsConfig
             : extendsConfigNoBabel,
+          ignorePatterns: useTypescript
+            ? ['*.d.ts']
+            : // eslint-disable-next-line unicorn/no-nested-ternary
+            inLerna &&
+              inLerna.root &&
+              (this.options.documentation || this.options.typescript)
+            ? [
+                this.options.typescript && '*.d.ts',
+                this.options.documentation && '/docs',
+                ...(this.options.typescript
+                  ? pkg.workspaces.flatMap((w) => [
+                      `${w}/dist`,
+                      `${w}/test`,
+                      `${w}/public`,
+                      `${w}/build`,
+                    ])
+                  : []),
+              ].filter(Boolean)
+            : undefined,
         },
       );
 
@@ -337,6 +338,7 @@ module.exports = class LintGenerator extends Generator {
             jestOverride,
             useTypescript: useBabel,
             globalEslint,
+            ignorePatterns: useTypescript ? ['*.d.ts'] : undefined,
             settings: {
               'import/resolver': this.options.enableSrcResolver
                 ? {
