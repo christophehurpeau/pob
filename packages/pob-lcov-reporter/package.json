@@ -1,6 +1,6 @@
 {
   "name": "pob-lcov-reporter",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "custom lcov reporter for pob",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",

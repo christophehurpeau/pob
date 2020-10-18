@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/christophehurpeau/pob/compare/pob@6.0.1...pob@6.1.0) (2020-10-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency update-notifier to v5 ([#645](https://github.com/christophehurpeau/pob/issues/645)) ([68ad4b5](https://github.com/christophehurpeau/pob/commit/68ad4b5129571fd14482c5fd7bd14d3df80bb109))
+* missing rollup dep required with pob-babel ([75d1717](https://github.com/christophehurpeau/pob/commit/75d1717653d845d12931d9d3164fa1810e8e77e6))
+* yarn2 option in vscode generator is boolean ([2996abf](https://github.com/christophehurpeau/pob/commit/2996abff5a6d6dcc0ee7f9eb21e3460e473c9dd0))
+
+
+### Features
+
+* add sideEffects in package by default to true ([3aba4af](https://github.com/christophehurpeau/pob/commit/3aba4afb61312021dc80550dbc3e57433101038f))
+* initial npm 7 support ([c7eecdc](https://github.com/christophehurpeau/pob/commit/c7eecdca0bcc49c06d9dade0f0d2f0a71abbb60d))
+* remove eslintignore for ignorePatterns in eslint config ([166969d](https://github.com/christophehurpeau/pob/commit/166969d2390c042891b8b89fa4d5f0d1fa1eccc7))
+* remove unsued eslint-disable in husky config template ([ad60f45](https://github.com/christophehurpeau/pob/commit/ad60f450491b929006d3607a95f21e884a8f18e7))
+* update browserslist and drop ie, opera mini ([63b4ce0](https://github.com/christophehurpeau/pob/commit/63b4ce085f02ac840c5f2ae2f11be67396294ce6))
+* use exports for node and webpack ([1358f10](https://github.com/christophehurpeau/pob/commit/1358f10775abfb671a85c2665681c8ee21048b13))
+* use report-unused-disable-directives with eslint ([9fc607f](https://github.com/christophehurpeau/pob/commit/9fc607f058a4838c13ba7959c3d93073e07d1d4e))
+
+
+
+
+
 ## [6.0.1](https://github.com/christophehurpeau/pob/compare/pob@6.0.0...pob@6.0.1) (2020-09-20)
 
 

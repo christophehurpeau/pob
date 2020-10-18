@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [25.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@25.0.1...pob-babel@25.1.0) (2020-10-18)
+
+
+### Bug Fixes
+
+* **pob-babel:** rollup with exports prevents requiring package.json, use VERSION instead ([23da266](https://github.com/christophehurpeau/pob/commit/23da266321156887f61e2058af0e86e720db45bf))
+
+
+### Features
+
+* tweak rollup for shorter code generation ([db96788](https://github.com/christophehurpeau/pob/commit/db967887f3966ead41edf182cf64d8590144a881))
+* **deps:** update babel monorepo to v7.12.0 [skip ci] ([#658](https://github.com/christophehurpeau/pob/issues/658)) ([f241870](https://github.com/christophehurpeau/pob/commit/f24187035f9e447f29a4df8daa429ff7b4f3eaf8))
+* **deps:** update babel monorepo to v7.12.1 ([#660](https://github.com/christophehurpeau/pob/issues/660)) ([e63a764](https://github.com/christophehurpeau/pob/commit/e63a764ecc4f59c13e8a5ccadf274fad920862e0))
+
+
+
+
+
 ## [25.0.1](https://github.com/christophehurpeau/pob/compare/pob-babel@25.0.0...pob-babel@25.0.1) (2020-09-20)
 
 

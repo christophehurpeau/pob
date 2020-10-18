@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@2.3.1...@pob/root@2.4.0) (2020-10-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v10.4.1 ([#661](https://github.com/christophehurpeau/pob/issues/661)) ([ef35b17](https://github.com/christophehurpeau/pob/commit/ef35b17e23e92076f97ccf09a2150f18d2352670))
+* **deps:** update dependency lint-staged to v10.4.2 [skip ci] ([#665](https://github.com/christophehurpeau/pob/issues/665)) ([84d10e9](https://github.com/christophehurpeau/pob/commit/84d10e94b30bb9482f91ab132fd3e0beaf4a1ab7))
+
+
+### Features
+
+* initial npm 7 support ([c7eecdc](https://github.com/christophehurpeau/pob/commit/c7eecdca0bcc49c06d9dade0f0d2f0a71abbb60d))
+
+
+
+
+
 ## [2.3.1](https://github.com/christophehurpeau/pob/compare/@pob/root@2.3.0...@pob/root@2.3.1) (2020-09-19)
 
 
