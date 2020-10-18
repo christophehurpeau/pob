@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.1](https://github.com/christophehurpeau/pob/compare/@pob/root@2.4.0...@pob/root@2.4.1) (2020-10-18)
+
+
+### Bug Fixes
+
+* support npm with husky config ([a6b5045](https://github.com/christophehurpeau/pob/commit/a6b5045ede05b33995748b0c86bf2a2d55a1dc88))
+
+
+
+
+
 # [2.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@2.3.1...@pob/root@2.4.0) (2020-10-18)
 
 
