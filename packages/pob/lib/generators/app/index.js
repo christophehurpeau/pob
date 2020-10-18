@@ -84,7 +84,7 @@ module.exports = class PobAppGenerator extends Generator {
     const node = true;
     const browser = appsWithNode.includes(this.appConfig.type);
     const jsx =
-      babelEnvs.length !== 0 && pkg.pob.jsx !== undefined
+      babelEnvs.length > 0 && pkg.pob.jsx !== undefined
         ? pkg.pob.jsx
         : packageUtils.hasReact(pkg);
 

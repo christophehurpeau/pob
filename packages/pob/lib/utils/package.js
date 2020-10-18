@@ -132,7 +132,7 @@ const internalAddDependencies = (pkg, type, dependencies, cleaned, prefix) => {
     });
   }
 
-  if (removeDependencies.length !== 0) {
+  if (removeDependencies.length > 0) {
     internalRemoveDependencies(pkg, type, removeDependencies);
   }
   return internalAddToObject(pkg, type, filtredDependencies);
