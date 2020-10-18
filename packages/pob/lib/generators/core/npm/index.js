@@ -18,7 +18,9 @@ module.exports = class NpmGenerator extends Generator {
           inLerna,
           babel: withBabel,
           typedoc: pkg.devDependencies && pkg.devDependencies.typedoc,
+          // TODO pass as options
           yarn2: this.fs.exists('.yarnrc.yml'),
+          npm: this.fs.exists('package-lock.json'),
         },
       );
     } else if (this.fs.exists(this.destinationPath('.npmignore'))) {

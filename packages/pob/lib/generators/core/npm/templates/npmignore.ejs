@@ -18,13 +18,15 @@
 <% } -%>
 .codeclimate.yml
 .yo-rc.json
-/yarn.lock
 <% if (!inLerna) { -%>
 /renovate.json
+<% if (!npm) { -%>
+/yarn.lock
 <% if (yarn2) { -%>
 /.yarn
 /.yarnrc.yml
 /.pnp.js
+<% } -%>
 <% } -%>
 <% } -%>
 

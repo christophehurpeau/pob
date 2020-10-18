@@ -97,38 +97,13 @@ module.exports = class GitHooksGenerator extends Generator {
     //   packageUtils.addScript(pkg, 'postinstall', 'repository-check-dirty && lerna bootstrap');
     // }
 
+    // this.fs.delete('.git/hooks/husky.sh');
+    // this.fs.delete('.git/hooks/husky.local.sh');
+
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-
-    const cwd = this.destinationPath();
-
-    if (this.spawnCommandSync('git', ['status'], { cwd }).status === 128) {
-      this.spawnCommandSync('git', ['init'], { cwd });
-
-      if (!this.originUrl) {
-        let repoSSH = pkg.repository;
-        if (pkg.repository && !pkg.repository.includes('.git')) {
-          /* this.spawnCommandSync('curl', [
-                        '--silent',
-                        '--write-out',
-                        '"%{http_code}"',
-                        '--output',
-                        '/dev/null',
-                        '-i',
-                        '-u',
-                        this.options.githubAccount,
-                        `-d "{"name": "${this.options.name}", "auto_init": true}`,
-                        'https://api.github.com/user/repos',
-                    ], { cwd }); */
-
-          repoSSH = pkg.repository;
-        }
-
-        this.spawnCommandSync('git', ['remote', 'add', 'origin', repoSSH], {
-          cwd,
-        });
-      }
-    }
   }
+
+  end() {}
 
   // end() {
   //   this.spawnCommandSync(

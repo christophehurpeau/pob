@@ -18,6 +18,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+<% if (!isNpm) { -%>
       - name: Cache dependencies
         uses: actions/cache@v1
         with:
@@ -34,9 +35,16 @@ jobs:
             v2-dependencies--${{ matrix.node-version }}-${{ runner.OS }}-
             v2-dependencies--${{ matrix.node-version }}-
 
+<% } -%>
 <% if (isYarn2) { -%>
       - name: Check Dependencies
         run: yarn install --immutable
+<% } else if (isNpm) { -%>
+      - name: Install Latest Npm
+        run: npm install -g npm@next-7
+
+      - name: Install Dependencies
+        run: npm ci
 <% } else { -%>
       - name: Install Dependencies
         run: yarn install --prefer-offline --pure-lockfile
@@ -44,30 +52,30 @@ jobs:
 
 <% if (checks) { -%>
       - name: Checks
-        run: yarn run checks
+        run: <%= isNpm ? 'npm' : 'yarn' %> run checks
 
 <% } -%>
       - name: Lint
-        run: yarn run lint
+        run: <%= isNpm ? 'npm' : 'yarn' %> run lint
         if: startsWith(matrix.node-version, '12.')
 <% if (testing) { -%>
 
       - name: Test
-        run: yarn run test
+        run: <%= isNpm ? 'npm' : 'yarn' %> run test
         env:
           CI: true
 <% } -%>
 <% if (documentation) { -%>
 
       - name: Documentation
-        run: yarn run generate:docs
+        run: <%= isNpm ? 'npm' : 'yarn' %> run generate:docs
         if: startsWith(matrix.node-version, '12.')
         env:
           CI: true
 <% } else if (codecov) { -%>
 
       - name: Generate Coverage doc
-        run: yarn run generate:test-coverage
+        run: <%= isNpm ? 'npm' : 'yarn' %> run generate:test-coverage
         if: startsWith(matrix.node-version, '12.')
         env:
           CI: true
@@ -84,5 +92,5 @@ jobs:
 
       - name: Check nothing was forgotten before commit
         if: startsWith(matrix.node-version, '12.')
-        run: yarn run repository-check-dirty
+        run: <%= isNpm ? 'npx' : 'yarn run' %> repository-check-dirty
 <% } -%>

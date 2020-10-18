@@ -50,6 +50,7 @@ module.exports = class CiGenerator extends Generator {
 
     if (this.options.enable) {
       const isYarn2 = this.fs.exists('.yarnrc.yml');
+      const isNpm = this.fs.exists('package-lock.json');
       const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
       // this.fs.copyTpl(
@@ -67,6 +68,7 @@ module.exports = class CiGenerator extends Generator {
         this.destinationPath('.github/workflows/push.yml'),
         {
           isYarn2,
+          isNpm,
           testing: this.options.testing && !!pkg.scripts.test,
           checks: !!pkg.scripts && !!pkg.scripts.checks,
           documentation: this.options.documentation,

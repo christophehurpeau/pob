@@ -20,6 +20,13 @@ module.exports = class VscodeGenerator extends Generator {
       desc: 'Uses yarn 2.',
     });
 
+    this.option('npm', {
+      type: Boolean,
+      required: false,
+      defaults: '',
+      desc: 'Uses npm.',
+    });
+
     this.option('typescript', {
       type: Boolean,
       required: false,
@@ -42,6 +49,7 @@ module.exports = class VscodeGenerator extends Generator {
         this.destinationPath('.vscode/settings.json'),
         {
           yarn2: this.options.yarn2,
+          npm: this.options.npm,
           typescript: this.options.typescript,
         },
       );

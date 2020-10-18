@@ -147,13 +147,16 @@ module.exports = class PobBaseGenerator extends Generator {
       app: this.projectConfig.type === 'app',
     });
 
+    this.npm = this.fs.exists('package-lock.json');
+
     this.composeWith(require.resolve('../core/vscode'), {
       root: this.isRoot,
       yarn2: this.projectConfig.yarn2,
+      npm: this.npm,
       typescript: !!(pkg.devDependencies && pkg.devDependencies.typescript),
     });
 
-    if (this.isRoot) {
+    if (this.isRoot && !this.npm) {
       this.composeWith(require.resolve('../core/yarn'), {
         type: this.projectConfig.type,
         yarn2: this.projectConfig.yarn2,
@@ -213,7 +216,11 @@ module.exports = class PobBaseGenerator extends Generator {
 
   install() {
     if (this.options.fromPob) return;
-    return this.spawnCommandSync('yarn', 'install');
+    if (this.npm) {
+      this.spawnCommandSync('npm', ['install']);
+    } else {
+      this.spawnCommandSync('yarn', ['install']);
+    }
   }
 
   end() {

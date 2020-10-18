@@ -253,7 +253,12 @@ module.exports = class LernaGenerator extends Generator {
         },
       );
     });
-    this.spawnCommandSync('yarn', ['install']);
-    this.spawnCommandSync('yarn', ['run', 'preversion']);
+    if (this.npm) {
+      this.spawnCommandSync('npm', ['install']);
+      this.spawnCommandSync('npm', ['run', 'preversion']);
+    } else {
+      this.spawnCommandSync('yarn', ['install']);
+      this.spawnCommandSync('yarn', ['run', 'preversion']);
+    }
   }
 };

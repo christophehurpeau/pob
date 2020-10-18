@@ -42,6 +42,7 @@ module.exports = class OldDependenciesGenerator extends Generator {
       'lint-staged',
       'yarnhook',
       'yarn-deduplicate', // in @pob/root (for yarn 1)
+      'yarn-berry-deduplicate', // use yarn dedupe with yarn 2
       'yarn-update-lock',
       '@pob/version',
       'pob-release',

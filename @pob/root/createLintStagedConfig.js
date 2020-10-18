@@ -8,14 +8,15 @@ const whichPmRuns = require('which-pm-runs');
 
 const pm = whichPmRuns();
 
-if (pm.name !== 'yarn') {
+if (pm.name !== 'yarn' && pm.name !== 'npm') {
   console.error(
-    `Package manager not supported: ${pm.name}. Please run with yarn !`,
+    `Package manager not supported: ${pm.name}. Please run with yarn or npm !`,
   );
   process.exit(1);
 }
 
 const yarnMajorVersion = semver.major(pm.version);
+const lockfile = pm.name === 'yarn' ? 'yarn.lock' : 'package-lock.json';
 
 // eslint-disable-next-line import/no-dynamic-require
 const pkg = require(path.resolve('package.json'));
@@ -29,11 +30,29 @@ const getSrcDirectories = () => {
   return '{src,lib}';
 };
 
+const generateInstallAndDedupe = () => {
+  if (pm.name === 'npm') {
+    return ['npm install', 'npm dedupe'];
+  }
+
+  if (yarnMajorVersion < 2) {
+    return [
+      'yarn --prefer-offline',
+      'yarn-deduplicate',
+      'yarn --prefer-offline',
+    ];
+  }
+
+  return ['yarn', 'yarn dedupe'];
+};
+
 module.exports = function createLintStagedConfig() {
   const srcDirectories = getSrcDirectories();
 
+  const installAndDedupe = generateInstallAndDedupe();
+
   return {
-    [`{yarn.lock,package.json${
+    [`{${lockfile},package.json${
       workspaces
         ? `,${workspaces
             .map((workspacePath) => `${workspacePath}/package.json`)
@@ -45,13 +64,15 @@ module.exports = function createLintStagedConfig() {
       );
 
       return [
-        yarnMajorVersion < 2 ? 'yarn --prefer-offline' : 'yarn',
-        yarnMajorVersion < 2 ? 'yarn-deduplicate' : 'yarn dedupe',
-        yarnMajorVersion < 2 ? 'yarn --prefer-offline' : undefined,
+        ...installAndDedupe,
         packagejsonFilenames.length === 0
           ? undefined
           : `prettier --write "${packagejsonFilenames.join('" "')}"`,
-        `git add yarn.lock${yarnMajorVersion >= 2 ? ' .yarn .yarnrc.yml' : ''}`,
+        `git add ${lockfile}${
+          pm.name === 'yarn' && yarnMajorVersion >= 2
+            ? ' .yarn .yarnrc.yml'
+            : ''
+        }`,
       ].filter(Boolean);
     },
     [`{*.json${
