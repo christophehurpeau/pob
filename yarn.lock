@@ -3243,7 +3243,15 @@ babel-preset-latest-node@5.0.0, babel-preset-latest-node@^5.0.0:
     "@babel/plugin-syntax-numeric-separator" "^7.10.4"
     "@babel/plugin-transform-modules-commonjs" "^7.10.4"
 
-babel-preset-modern-browsers@15.0.1, babel-preset-modern-browsers@^15.0.1:
+babel-preset-modern-browsers@15.0.2:
+  version "15.0.2"
+  resolved "https://registry.yarnpkg.com/babel-preset-modern-browsers/-/babel-preset-modern-browsers-15.0.2.tgz#cf4cfb7b27d37dc28ebf3d602269b101df6c685a"
+  integrity sha512-grJeZfDN75ZYferYEMZqcukh1nmYlzbGYrC+kXcbfKKgmfabKP/HNTGw7gzlQ1DAY8pU0hzSq8XI9tf7f0MdEA==
+  dependencies:
+    "@babel/plugin-syntax-numeric-separator" "^7.10.4"
+    "@babel/plugin-transform-modules-commonjs" "^7.10.4"
+
+babel-preset-modern-browsers@^15.0.1:
   version "15.0.1"
   resolved "https://registry.yarnpkg.com/babel-preset-modern-browsers/-/babel-preset-modern-browsers-15.0.1.tgz"
   integrity sha512-GpLmSc1B5gBS0IVnpKtCIaJ2uwankFL4alBk3qFs8y9Dj/1K0Sps9/TZy/kuDgn5LpDwVZR216ZKGAiNmgj7ZA==
