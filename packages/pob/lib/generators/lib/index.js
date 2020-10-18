@@ -145,7 +145,7 @@ module.exports = class PobLibGenerator extends Generator {
     pkg.pob = pkg.pob || {};
 
     delete pkg.pob.withReact;
-    if (babelEnvs && babelEnvs.length !== 0) {
+    if (babelEnvs && babelEnvs.length > 0) {
       pkg.pob.babelEnvs = babelEnvs;
       pkg.pob.entries = entries;
       pkg.pob.jsx = jsx;

@@ -238,7 +238,7 @@ module.exports = class BabelGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     this.entries = pkg.pob.entries;
     this.babelEnvs = pkg.pob.babelEnvs || [];
-    if (this.babelEnvs.length !== 0) {
+    if (this.babelEnvs.length > 0) {
       fs.mkdirSync(this.destinationPath('src'), { recursive: true });
     }
 
@@ -597,7 +597,7 @@ module.exports = class BabelGenerator extends Generator {
 
   end() {
     if (this.options.fromPob) return;
-    if (this.babelEnvs && this.babelEnvs.length !== 0) {
+    if (this.babelEnvs && this.babelEnvs.length > 0) {
       this.spawnCommandSync('yarn', ['run', 'preversion']);
     }
   }
