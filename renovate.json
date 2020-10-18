@@ -37,6 +37,11 @@
     {
       "updateTypes": ["patch", "minor"],
       "labels": [":ok_hand: code/approved", ":soon: automerge"]
+    },
+    {
+      "updateTypes": ["pin"],
+      "labels": [":ok_hand: code/approved", ":soon: automerge"],
+      "schedule": ["at any time"]
     }
   ]
 }
