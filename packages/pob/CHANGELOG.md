@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/christophehurpeau/pob/compare/pob@6.2.0...pob@6.3.0) (2020-10-18)
+
+
+### Bug Fixes
+
+* ensure npm is used not lerna when package-lock.json exists ([796cd2f](https://github.com/christophehurpeau/pob/commit/796cd2fd3db20c05d7f999ab8122bff6c563b083))
+* ignorePatterns in lerna ([14e854a](https://github.com/christophehurpeau/pob/commit/14e854a06f4f94b1aaf51e512eb81eb2726c68eb))
+
+
+### Features
+
+* add initail tasks for vscode with lint ([701b8e3](https://github.com/christophehurpeau/pob/commit/701b8e3c71e6685a1a5349c80826e11a0ca225b9))
+* **deps:** update @pob/eslint-config to v40.1.0 [skip ci] ([#668](https://github.com/christophehurpeau/pob/issues/668)) ([b1fd4f4](https://github.com/christophehurpeau/pob/commit/b1fd4f418ab87438bbfb915ffcb2ed741a2dca3f))
+
+
+
+
+
 # [6.2.0](https://github.com/christophehurpeau/pob/compare/pob@6.1.2...pob@6.2.0) (2020-10-18)
 
 

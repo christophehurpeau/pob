@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@2.1.3...pob-dependencies@2.2.0) (2020-10-18)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v40.1.0 [skip ci] ([#666](https://github.com/christophehurpeau/pob/issues/666)) ([a4ea913](https://github.com/christophehurpeau/pob/commit/a4ea9136f781709fa73a43f0f51f79a81d1c246a))
+* **deps:** update @pob/eslint-config to v40.1.0 [skip ci] ([#668](https://github.com/christophehurpeau/pob/issues/668)) ([b1fd4f4](https://github.com/christophehurpeau/pob/commit/b1fd4f418ab87438bbfb915ffcb2ed741a2dca3f))
+* **deps:** update dependency babel-preset-modern-browsers to v15.0.2 ([#629](https://github.com/christophehurpeau/pob/issues/629)) ([baf4391](https://github.com/christophehurpeau/pob/commit/baf4391b451de7756befa690e000c1f1857f3f47))
+
+
+
+
+
 ## [2.1.3](https://github.com/christophehurpeau/pob/compare/pob-dependencies@2.1.2...pob-dependencies@2.1.3) (2020-10-18)
 
 **Note:** Version bump only for package pob-dependencies

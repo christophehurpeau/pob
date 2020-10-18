@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.4](https://github.com/christophehurpeau/pob/compare/@pob/root@2.4.3...@pob/root@2.4.4) (2020-10-18)
+
+
+### Bug Fixes
+
+* **deps:** update commitlint monorepo to v11 (major) ([#620](https://github.com/christophehurpeau/pob/issues/620)) ([cf24fea](https://github.com/christophehurpeau/pob/commit/cf24fea46492d2238673a344d36fc2723199073b))
+
+
+
+
+
 ## [2.4.3](https://github.com/christophehurpeau/pob/compare/@pob/root@2.4.2...@pob/root@2.4.3) (2020-10-18)
 
 
