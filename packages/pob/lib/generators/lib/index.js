@@ -285,8 +285,10 @@ module.exports = class PobLibGenerator extends Generator {
   writing() {
     // Re-read the content at this point because a composed generator might modify it.
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    const isNpmPackageLock = this.fs.exists('package-lock.json');
+    const isNpm = isNpmPackageLock || inNpmLerna;
 
-    if (inNpmLerna) {
+    if (isNpm) {
       if (!pkg.engines) pkg.engines = {};
       pkg.engines.yarn = '< 0.0.0';
     }
@@ -311,10 +313,10 @@ module.exports = class PobLibGenerator extends Generator {
           release:
             "repository-check-dirty && standard-version -a -m 'chore(release): %s [skip ci]' && git push --follow-tags origin master && npm publish",
           preversion: [
-            `${inNpmLerna ? 'npm' : 'yarn'} run lint`,
-            withBabel && `${inNpmLerna ? 'npm' : 'yarn'} run build`,
+            `${isNpm ? 'npm' : 'yarn'} run lint`,
+            withBabel && `${isNpm ? 'npm' : 'yarn'} run build`,
             this.pobjson.documentation &&
-              `${inNpmLerna ? 'npm' : 'yarn'} run generate:docs`,
+              `${isNpm ? 'npm' : 'yarn'} run generate:docs`,
             'repository-check-dirty',
           ]
             .filter(Boolean)
