@@ -8,14 +8,15 @@ const whichPmRuns = require('which-pm-runs');
 
 const pm = whichPmRuns();
 
-if (pm.name !== 'yarn') {
+if (pm.name !== 'yarn' && pm.name !== 'npm') {
   console.error(
-    `Package manager not supported: ${pm.name}. Please run with yarn !`,
+    `Package manager not supported: ${pm.name}. Please run with yarn or npm !`,
   );
   process.exit(1);
 }
 
 const yarnMajorVersion = semver.major(pm.version);
+const isYarnWithOfflineCache = pm.name === 'yarn' && yarnMajorVersion >= 2;
 
 // eslint-disable-next-line import/no-dynamic-require
 const pkg = require(path.resolve('package.json'));
@@ -31,7 +32,7 @@ module.exports = () => {
     'pre-commit': 'lint-staged',
   };
 
-  if (yarnMajorVersion < 2) {
+  if (!isYarnWithOfflineCache) {
     Object.assign(hooks, {
       'post-checkout': 'yarnhook',
       'post-merge': 'yarnhook',
@@ -41,8 +42,8 @@ module.exports = () => {
 
   if (shouldRunTest()) {
     hooks['pre-push'] = `${
-      yarnMajorVersion < 2 ? 'cross-env ' : ''
-    }CI=true yarn test`;
+      !isYarnWithOfflineCache ? 'cross-env ' : ''
+    }CI=true ${pm.name} test`;
   }
 
   if (shouldRunChecks()) {
@@ -52,7 +53,7 @@ module.exports = () => {
       hooks['pre-push'] = '';
     }
 
-    hooks['pre-push'] += 'yarn run checks';
+    hooks['pre-push'] += `${pm.name} run checks`;
   }
 
   return {
