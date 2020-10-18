@@ -255,16 +255,6 @@ module.exports = class BabelGenerator extends Generator {
                     env.target === 'node' && String(env.version) === '10',
                 ),
               ),
-              node8: Boolean(
-                this.babelEnvs.find(
-                  (env) => env.target === 'node' && String(env.version) === '8',
-                ),
-              ),
-              node6: Boolean(
-                this.babelEnvs.find(
-                  (env) => env.target === 'node' && String(env.version) === '6',
-                ),
-              ),
             });
           } else {
             this.fs.copyTpl(
