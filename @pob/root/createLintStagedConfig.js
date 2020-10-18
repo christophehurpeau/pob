@@ -8,9 +8,8 @@ const semver = require('semver');
 const whichPmRuns = require('which-pm-runs');
 
 const pm =
-  whichPmRuns() || fs.existsSync('package-lock.json')
-    ? { name: 'npm' }
-    : undefined;
+  whichPmRuns() ||
+  (fs.existsSync('package-lock.json') ? { name: 'npm' } : undefined);
 
 if (pm.name !== 'yarn' && pm.name !== 'npm') {
   console.error(
