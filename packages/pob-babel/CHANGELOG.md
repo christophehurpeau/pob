@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [25.2.0](https://github.com/christophehurpeau/pob/compare/pob-babel@25.1.1...pob-babel@25.2.0) (2020-11-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @rollup/plugin-node-resolve to v10 ([#685](https://github.com/christophehurpeau/pob/issues/685)) ([1bc65ca](https://github.com/christophehurpeau/pob/commit/1bc65ca5b79867d88bb1263e289d67eeb47bc0ba))
+
+
+### Features
+
+* **deps:** update dependency @types/jest to v26.0.15 [skip ci] ([#673](https://github.com/christophehurpeau/pob/issues/673)) ([7254098](https://github.com/christophehurpeau/pob/commit/7254098abbdc5ed7f53ec8641e2772c5365df0e1))
+* **deps:** update jest monorepo to v26.6.1 [skip ci] ([#676](https://github.com/christophehurpeau/pob/issues/676)) ([1aa605e](https://github.com/christophehurpeau/pob/commit/1aa605ed9273b4609e1d7d01aa2f39eaf2a79f77))
+
+
+
+
+
 ## [25.1.1](https://github.com/christophehurpeau/pob/compare/pob-babel@25.1.0...pob-babel@25.1.1) (2020-10-18)
 
 **Note:** Version bump only for package pob-babel

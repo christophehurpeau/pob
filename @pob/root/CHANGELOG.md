@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.5](https://github.com/christophehurpeau/pob/compare/@pob/root@2.4.4...@pob/root@2.4.5) (2020-11-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v10.5.0 [skip ci] ([#682](https://github.com/christophehurpeau/pob/issues/682)) ([3a18eb4](https://github.com/christophehurpeau/pob/commit/3a18eb4026f0e9d8093c96f987dcde4c2bf75d72))
+* **deps:** update dependency lint-staged to v10.5.1 [skip ci] ([#686](https://github.com/christophehurpeau/pob/issues/686)) ([ad486aa](https://github.com/christophehurpeau/pob/commit/ad486aa3e5e275c0606d0dd7b38b2c7070b051c4))
+* **deps:** update dependency yarn-deduplicate to v3.1.0 [skip ci] ([#678](https://github.com/christophehurpeau/pob/issues/678)) ([37ba48b](https://github.com/christophehurpeau/pob/commit/37ba48b11b4ec41ff8183905df262ad2c75372ae))
+
+
+
+
+
 ## [2.4.4](https://github.com/christophehurpeau/pob/compare/@pob/root@2.4.3...@pob/root@2.4.4) (2020-10-18)
 
 

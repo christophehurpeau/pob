@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/christophehurpeau/pob/compare/pob@6.3.0...pob@6.4.0) (2020-11-01)
+
+
+### Bug Fixes
+
+* temp support main and master ([79a7d5c](https://github.com/christophehurpeau/pob/commit/79a7d5c72bc7e033f287b3d8563e3a2ca98e580f))
+
+
+### Features
+
+* eslint vscode config reportUnusedDisableDirectives and enable lint task ([37444c3](https://github.com/christophehurpeau/pob/commit/37444c3b821493a338f46a0d09373ef97ba023c1))
+
+
+
+
+
 # [6.3.0](https://github.com/christophehurpeau/pob/compare/pob@6.2.0...pob@6.3.0) (2020-10-18)
 
 

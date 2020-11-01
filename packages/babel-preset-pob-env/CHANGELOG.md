@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@4.1.0...babel-preset-pob-env@4.2.0) (2020-11-01)
+
+
+### Features
+
+* update @babel/preset-typescript ([8b154c9](https://github.com/christophehurpeau/pob/commit/8b154c90f174de9e9e658107de9b2579f02dfb3a))
+
+
+
+
+
 # [4.1.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@4.0.0...babel-preset-pob-env@4.1.0) (2020-10-18)
 
 
