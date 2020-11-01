@@ -9,30 +9,32 @@ const Generator = require('yeoman-generator');
 const GITHUB_TOKEN = process.env.POB_GITHUB_TOKEN;
 
 const configureProtectionRule = async (owner, repo) => {
-  try {
-    await gh.put(`repos/${owner}/${repo}/branches/master/protection`, {
-      token: GITHUB_TOKEN,
-      body: {
-        required_status_checks: {
-          strict: false,
-          contexts: [
-            'build (10.x)',
-            'build (12.x)',
-            'build (14.x)',
-            'reviewflow',
-          ],
+  for (const branch of ['main', 'master']) {
+    try {
+      await gh.put(`repos/${owner}/${repo}/branches/${branch}/protection`, {
+        token: GITHUB_TOKEN,
+        body: {
+          required_status_checks: {
+            strict: false,
+            contexts: [
+              'build (10.x)',
+              'build (12.x)',
+              'build (14.x)',
+              'reviewflow',
+            ],
+          },
+          enforce_admins: false, // true,
+          required_pull_request_reviews: null,
+          restrictions: null,
+          required_linear_history: true,
+          allow_force_pushes: true, // false
+          allow_deletions: false,
         },
-        enforce_admins: false, // true,
-        required_pull_request_reviews: null,
-        restrictions: null,
-        required_linear_history: true,
-        allow_force_pushes: true, // false
-        allow_deletions: false,
-      },
-    });
-  } catch (err) {
-    console.error('Failed to configure master branch protection');
-    console.error(err.stack || err.message || err);
+      });
+    } catch (err) {
+      console.error(`Failed to configure ${branch} branch protection`);
+      console.error(err.stack || err.message || err);
+    }
   }
 };
 
