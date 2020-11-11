@@ -19,7 +19,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
 
       - name: Cache dependencies
-        uses: actions/cache@v1
+        uses: actions/cache@v2
         with:
           path: node_modules
           key: v2-dependencies--${{ matrix.node-version }}-${{ runner.OS }}-${{ hashFiles('yarn.lock') }}
