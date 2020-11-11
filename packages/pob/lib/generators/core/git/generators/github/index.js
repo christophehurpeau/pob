@@ -17,9 +17,9 @@ const configureProtectionRule = async (owner, repo) => {
           required_status_checks: {
             strict: false,
             contexts: [
-              'build (10.x)',
               'build (12.x)',
               'build (14.x)',
+              'build (15.x)',
               'reviewflow',
             ],
           },

@@ -4,7 +4,7 @@
   "description": "root package",
   "license": "ISC",
   "engines": {
-    "node": ">=10.13.0"
+    "node": ">=12.10.0"
   },
   "publishConfig": {
     "access": "public"

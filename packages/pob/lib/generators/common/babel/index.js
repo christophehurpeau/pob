@@ -122,11 +122,11 @@ module.exports = class BabelGenerator extends Generator {
         validate: (versions) => versions.length > 0,
         choices: [
           {
-            name: '10 (Active LTS)',
-            value: '10',
+            name: '12 (Active LTS)',
+            value: '12',
             checked: Boolean(
               babelEnvs.find(
-                (env) => env.target === 'node' && String(env.version) === '10',
+                (env) => env.target === 'node' && String(env.version) === '12',
               ),
             ),
           },
@@ -203,7 +203,7 @@ module.exports = class BabelGenerator extends Generator {
         version,
         formats: babelFormats.includes('es')
           ? // eslint-disable-next-line unicorn/no-nested-ternary
-            version === '10'
+            version === '12'
             ? babelFormats
             : ['cjs']
           : babelFormats,
@@ -249,10 +249,10 @@ module.exports = class BabelGenerator extends Generator {
           if (!this.entries.includes('index') || entry !== 'browser') {
             this.fs.copyTpl(this.templatePath('entry.js.ejs'), entryDestPath, {
               entry,
-              node10: Boolean(
+              node12: Boolean(
                 this.babelEnvs.find(
                   (env) =>
-                    env.target === 'node' && String(env.version) === '10',
+                    env.target === 'node' && String(env.version) === '12',
                 ),
               ),
             });
@@ -383,11 +383,9 @@ module.exports = class BabelGenerator extends Generator {
           .map((env) => env.version),
       );
       switch (String(minNodeVersion)) {
+        case '10':
         case '12':
           pkg.engines.node = '>=12.10.0';
-          break;
-        case '10':
-          pkg.engines.node = '>=10.13.0';
           break;
         default:
           throw new Error(`Invalid min node version: ${minNodeVersion}`);
@@ -457,9 +455,9 @@ module.exports = class BabelGenerator extends Generator {
       if (!pkg.engines) pkg.engines = {};
       if (
         !pkg.engines.node ||
-        semver.lt(pkg.engines.node.slice(2), '10.13.0')
+        semver.lt(pkg.engines.node.slice(2), '12.10.0')
       ) {
-        pkg.engines.node = '>=10.13.0';
+        pkg.engines.node = '>=12.10.0';
       }
     }
 

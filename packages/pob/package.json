@@ -17,7 +17,7 @@
     "url": "https://github.com/christophehurpeau/pob/issues"
   },
   "engines": {
-    "node": ">=10.13.0"
+    "node": ">=12.10.0"
   },
   "main": "./lib/index.js",
   "bin": {

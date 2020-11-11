@@ -62,7 +62,7 @@ module.exports = class PobLibGenerator extends Generator {
           case 'node10':
             return {
               target: 'node',
-              version: 10,
+              version: 12,
               formats: ['cjs'],
             };
 
@@ -71,7 +71,7 @@ module.exports = class PobLibGenerator extends Generator {
           case 'module-node8':
             return {
               target: 'node',
-              version: 10,
+              version: 12,
               formats: ['es'],
             };
 
@@ -99,22 +99,24 @@ module.exports = class PobLibGenerator extends Generator {
     if (babelEnvs) {
       if (
         !babelEnvs.some(
-          (env) => env.target === 'node' && String(env.version) === '10',
+          (env) => env.target === 'node' && String(env.version) === '12',
         ) &&
         babelEnvs.some(
           (env) =>
             env.target === 'node' &&
-            (String(env.version) === '8' || String(env.version) === '6'),
+            (String(env.version) === '8' ||
+              String(env.version) === '6' ||
+              String(env.version) === '10'),
         )
       ) {
         babelEnvs.unshift({
           target: 'node',
-          version: '10',
+          version: '12',
           formats: ['cjs', 'es'],
         });
       }
       babelEnvs = babelEnvs.filter(
-        (env) => env.target !== 'node' || env.version >= 10,
+        (env) => env.target !== 'node' || env.version >= 12,
       );
     }
 

@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [10.x, 12.x, 14.x]
+        node-version: [12.x, 14.x, 15.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -35,7 +35,7 @@ jobs:
 
       - name: Lint
         run: yarn run lint
-        if: startsWith(matrix.node-version, '12.')
+        if: startsWith(matrix.node-version, '14.')
 
       - name: Test
         run: yarn run test
@@ -43,5 +43,5 @@ jobs:
           CI: true
 
       - name: Check nothing was forgotten before commit
-        if: startsWith(matrix.node-version, '12.')
+        if: startsWith(matrix.node-version, '14.')
         run: yarn run repository-check-dirty

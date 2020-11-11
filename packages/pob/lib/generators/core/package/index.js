@@ -27,7 +27,7 @@ module.exports = class PackageGenerator extends Generator {
     // dont override engines if set to latest
     if (!pkg.engines.node || !pkg.engines.node.startsWith('>=14.')) {
       // this might be overridden by babel generator
-      pkg.engines.node = '>=10.13.0';
+      pkg.engines.node = '>=12.10.0';
     }
 
     if (!this.options.updateOnly) {

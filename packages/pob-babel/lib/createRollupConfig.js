@@ -43,8 +43,6 @@ module.exports = ({
     switch (String(version)) {
       case '12':
         return '12.10';
-      case '10':
-        return '10.13';
       default:
         return version;
     }
