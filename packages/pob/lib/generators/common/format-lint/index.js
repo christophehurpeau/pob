@@ -121,12 +121,16 @@ module.exports = class LintGenerator extends Generator {
     const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
     const globalEslint = yoConfigPobMonorepo && yoConfigPobMonorepo.eslint;
     const composite = yoConfigPobMonorepo && yoConfigPobMonorepo.typescript;
+    const isYarn2 =
+      inLerna.pobConfig &&
+      inLerna.pobConfig.project &&
+      inLerna.pobConfig.project.yarn2;
     const lernaProjectType =
-      yoConfigPobMonorepo &&
-      yoConfigPobMonorepo.project &&
-      yoConfigPobMonorepo.project.type;
+      inLerna.pobConfig &&
+      inLerna.pobConfig.project &&
+      inLerna.pobConfig.project.type;
 
-    if (globalEslint && !(inLerna && inLerna.root)) {
+    if (globalEslint && !(inLerna && inLerna.root) && !isYarn2) {
       packageUtils.removeDevDependencies(
         pkg,
         [
@@ -161,38 +165,52 @@ module.exports = class LintGenerator extends Generator {
           lernaProjectType === 'app',
         ['eslint'],
       );
+      const shouldHavePluginsDependencies =
+        !globalEslint || !inLerna || (inLerna.root && isYarn2);
+
       if (
         !pkg.name.startsWith('eslint-config') &&
         !pkg.name.startsWith('@pob/eslint-config') &&
         pkg.name !== '@pob/use-eslint-plugin'
       ) {
-        packageUtils.addDevDependencies(pkg, [
-          '@pob/eslint-config',
-          'eslint-plugin-import',
-          'eslint-plugin-prettier',
-          'eslint-plugin-unicorn',
-        ]);
+        packageUtils.addDevDependencies(pkg, ['@pob/eslint-config']);
+        packageUtils.addOrRemoveDevDependencies(
+          pkg,
+          shouldHavePluginsDependencies,
+          [
+            'eslint-plugin-import',
+            'eslint-plugin-prettier',
+            'eslint-plugin-unicorn',
+          ],
+        );
 
-        packageUtils.addDevDependencies(pkg, [
-          '@pob/eslint-config-node',
-          'eslint-plugin-node',
-          'eslint-import-resolver-node',
-        ]);
+        packageUtils.addDevDependencies(pkg, ['@pob/eslint-config-node']);
+        packageUtils.addOrRemoveDevDependencies(
+          pkg,
+          shouldHavePluginsDependencies,
+          ['eslint-plugin-node', 'eslint-import-resolver-node'],
+        );
 
         if (inLerna && inLerna.root) {
           packageUtils.updateDevDependenciesIfPresent(pkg, [
             '@pob/eslint-config-typescript',
             '@pob/eslint-config-typescript-node',
             '@pob/eslint-config-typescript-react',
-            '@typescript-eslint/eslint-plugin',
-            '@typescript-eslint/parser',
           ]);
+          packageUtils.addOrRemoveDevDependencies(
+            pkg,
+            shouldHavePluginsDependencies,
+            ['@typescript-eslint/eslint-plugin', '@typescript-eslint/parser'],
+          );
         } else {
           packageUtils.addOrRemoveDevDependencies(pkg, useBabel, [
             '@pob/eslint-config-typescript',
-            '@typescript-eslint/eslint-plugin',
-            '@typescript-eslint/parser',
           ]);
+          packageUtils.addOrRemoveDevDependencies(
+            pkg,
+            useBabel && shouldHavePluginsDependencies,
+            ['@typescript-eslint/eslint-plugin', '@typescript-eslint/parser'],
+          );
 
           packageUtils.addOrRemoveDevDependencies(
             pkg,
