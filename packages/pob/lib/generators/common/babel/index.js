@@ -581,17 +581,19 @@ module.exports = class BabelGenerator extends Generator {
 
     /* jest babel config */
 
+    this.fs.delete('.babelrc');
+    this.fs.delete('babel.config.json');
     if (useBabel && this.options.testing) {
       this.fs.copyTpl(
-        this.templatePath('babelrc.json.ejs'),
-        this.destinationPath('.babelrc'),
+        this.templatePath('babel.config.js.ejs'),
+        this.destinationPath('babel.config.js'),
         {
           hasReact,
           testing: this.options.testing,
         },
       );
     } else {
-      this.fs.delete('.babelrc');
+      this.fs.delete('babel.config.js');
     }
   }
 
