@@ -3,7 +3,6 @@
 const { spawnSync } = require('child_process');
 const { readdirSync, existsSync } = require('fs');
 const Generator = require('yeoman-generator');
-const inLerna = require('../../../utils/inLerna');
 const packageUtils = require('../../../utils/package');
 
 module.exports = class LernaGenerator extends Generator {
@@ -14,6 +13,12 @@ module.exports = class LernaGenerator extends Generator {
       type: Boolean,
       defaults: true,
       desc: 'is app project',
+    });
+
+    this.option('useYarn2', {
+      type: Boolean,
+      defaults: false,
+      desc: 'is yarn 2 monorepo',
     });
   }
 
@@ -64,8 +69,7 @@ module.exports = class LernaGenerator extends Generator {
         };
 
     if (!this.npm) {
-      const isYarn2 = this.fs.exists('.yarnrc.yml');
-      if (!isYarn2) {
+      if (!this.options.useYarn2) {
         lernaConfig.command = {
           publish: {
             npmClient: 'npm',
@@ -161,8 +165,13 @@ module.exports = class LernaGenerator extends Generator {
       preversion: [
         monorepoConfig && monorepoConfig.eslint
           ? `${packageManager} run lint`
-          : `${packageManager} run lint --since`,
-        withBabel && `${packageManager} run build --since -- -- --no-clean`,
+          : `${packageManager} run lint${
+              this.options.useYarn2 ? '' : ' --since'
+            }`,
+        withBabel &&
+          `${packageManager} run build${
+            this.options.useYarn2 ? '' : ' --since'
+          } -- -- --no-clean`,
         'repository-check-dirty',
       ]
         .filter(Boolean)
@@ -171,7 +180,7 @@ module.exports = class LernaGenerator extends Generator {
       // prepublishOnly: 'repository-check-dirty',
       release: [
         `${
-          inLerna && inLerna.isRootYarn2 ? '' : 'cross-env '
+          this.options.useYarn2 ? '' : 'cross-env '
         }GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release'`,
         !this.options.isAppProject && 'lerna publish from-git',
       ]
@@ -180,17 +189,35 @@ module.exports = class LernaGenerator extends Generator {
     });
 
     packageUtils.addOrRemoveScripts(pkg, withTests, {
-      test: 'lerna run --stream test',
+      test: `${
+        this.options.useYarn2
+          ? 'yarn workspaces foreach --parallel -Av run'
+          : 'lerna run --stream'
+      } test`,
     });
 
     packageUtils.addOrRemoveScripts(pkg, withBabel, {
-      build: 'lerna run --stream build',
-      watch: 'lerna run --parallel --ignore "*-example" watch',
+      build: `${
+        this.options.useYarn2
+          ? 'yarn workspaces foreach -Av run'
+          : 'lerna run --stream'
+      } build`,
+      watch: `${
+        this.options.useYarn2
+          ? 'yarn workspaces foreach --parallel --exclude "*-example" -Av run'
+          : 'lerna run --parallel --ignore "*-example"'
+      } watch`,
     });
 
     packageUtils.addOrRemoveScripts(pkg, withTypescript, {
-      'build:definitions': 'lerna run --stream build:definitions',
-      postbuild: `${packageManager} run build:definitions --since`,
+      'build:definitions': `${
+        this.options.useYarn2
+          ? 'yarn workspaces foreach --parallel --exclude "*-example" -Av run'
+          : 'lerna run --stream'
+      } build:definitions`,
+      postbuild: `${packageManager} run build:definitions${
+        this.options.useYarn2 ? '' : ' --since'
+      }`,
     });
 
     delete pkg.scripts.version;

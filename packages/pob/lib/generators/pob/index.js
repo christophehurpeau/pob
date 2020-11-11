@@ -115,6 +115,7 @@ module.exports = class PobBaseGenerator extends Generator {
       this.composeWith(require.resolve('../monorepo/lerna'), {
         force: this.options.force,
         isAppProject: this.projectConfig.type === 'app',
+        useYarn2: this.projectConfig.yarn2,
       });
     }
 
