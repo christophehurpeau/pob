@@ -115,7 +115,7 @@ module.exports = class GitGenerator extends Generator {
       pkg.homepage = `https://${this.gitHost}.com/${this.gitHostAccount}/${repoName}`;
     }
 
-    const repository = `https://${this.gitHost}.com:${this.gitHostAccount}/${repoName}.git`;
+    const repository = `https://${this.gitHost}.com/${this.gitHostAccount}/${repoName}.git`;
 
     if (pkg.repository !== repository) {
       pkg.repository = repository;
