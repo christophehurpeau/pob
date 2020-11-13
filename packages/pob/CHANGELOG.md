@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/christophehurpeau/pob/compare/pob@6.4.0...pob@7.0.0) (2020-11-13)
+
+
+### Bug Fixes
+
+* babel select empty ([38de46c](https://github.com/christophehurpeau/pob/commit/38de46c3a8b6540b64feb0ff405e3eeb178e89c1))
+* dont add prettierignore inside lerna ([3d44669](https://github.com/christophehurpeau/pob/commit/3d446695abde0fae2c722edd869ad64254afd33c))
+* ensure most of files are prettiered before writing ([c61aecc](https://github.com/christophehurpeau/pob/commit/c61aeccb6eaeac6c921523e40716a3b38408edaa))
+* ignore .d.ts ([80b5d75](https://github.com/christophehurpeau/pob/commit/80b5d7548dab283f0775dcff19578fe292afabef))
+* missing dependencies for yarn berry ([78bf6f2](https://github.com/christophehurpeau/pob/commit/78bf6f2eefdf4c34d78c866698042fb75df3802d))
+* package repository url ([e84a7ad](https://github.com/christophehurpeau/pob/commit/e84a7ada3108f4377edf55760e77f76d545f35fa))
+* update update-notifier and generator-license ([c6af91a](https://github.com/christophehurpeau/pob/commit/c6af91a44b500f63cee0a646f0784d4dd8ed054e))
+* use babel.config.json for jest ([e72494b](https://github.com/christophehurpeau/pob/commit/e72494b0aab862cad4343183ecf7487de641b013))
+* util copyAndFormatTpl fixes prettier issues ([83ef4b6](https://github.com/christophehurpeau/pob/commit/83ef4b6718df75716ee8b04bf2e05553f2740913))
+
+
+### Features
+
+* drop node 10 ([84cdd60](https://github.com/christophehurpeau/pob/commit/84cdd609edf105ca89692d913d5f363deb747ae1))
+* run prettier and eslint independently ([9abe7ae](https://github.com/christophehurpeau/pob/commit/9abe7ae6f8a2a019a80b8a3e74f6be3ddb7e9075))
+* run prettier outside of eslint ([445e2cc](https://github.com/christophehurpeau/pob/commit/445e2cc4def17c3eef1da69c9112dcc1d9e005ce))
+* update actions/cache to v2 ([58a269f](https://github.com/christophehurpeau/pob/commit/58a269f42be580ff32ae08120cce6b3930902c24))
+* update pob, use prettier outside of eslint ([5ef824d](https://github.com/christophehurpeau/pob/commit/5ef824d42a60bef88255134288a17d8c910af19f))
+* use yarn workspace plugin instead of lerna ([55abbe2](https://github.com/christophehurpeau/pob/commit/55abbe2ba23b6e1cd18b4b24987c4a0d76a69a5f))
+
+
+### BREAKING CHANGES
+
+* requires node 12.10
+
+
+
+
+
 # [6.4.0](https://github.com/christophehurpeau/pob/compare/pob@6.3.0...pob@6.4.0) (2020-11-01)
 
 

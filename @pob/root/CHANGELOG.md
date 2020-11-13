@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@2.4.5...@pob/root@3.0.0) (2020-11-13)
+
+
+### chore
+
+* require husky 4 ([c8b10fb](https://github.com/christophehurpeau/pob/commit/c8b10fb0a3ffe9dacbfc7c8d66ad4f8f4bdd851b))
+
+
+### Features
+
+* drop node 10 ([84cdd60](https://github.com/christophehurpeau/pob/commit/84cdd609edf105ca89692d913d5f363deb747ae1))
+* run prettier outside of eslint ([445e2cc](https://github.com/christophehurpeau/pob/commit/445e2cc4def17c3eef1da69c9112dcc1d9e005ce))
+
+
+### BREAKING CHANGES
+
+* drop husky 3 support
+* requires node 12.10
+
+
+
+
+
 ## [2.4.5](https://github.com/christophehurpeau/pob/compare/@pob/root@2.4.4...@pob/root@2.4.5) (2020-11-01)
 
 

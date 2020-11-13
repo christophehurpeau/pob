@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@1.1.3...@pob/commitlint-config@2.0.0) (2020-11-13)
+
+
+### Features
+
+* drop node 10 ([84cdd60](https://github.com/christophehurpeau/pob/commit/84cdd609edf105ca89692d913d5f363deb747ae1))
+
+
+### BREAKING CHANGES
+
+* requires node 12.10
+
+
+
+
+
 ## [1.1.3](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@1.1.2...@pob/commitlint-config@1.1.3) (2020-10-18)
 
 

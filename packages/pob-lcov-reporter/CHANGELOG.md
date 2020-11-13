@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@3.1.0...pob-lcov-reporter@4.0.0) (2020-11-13)
+
+
+### Features
+
+* drop node 10 ([84cdd60](https://github.com/christophehurpeau/pob/commit/84cdd609edf105ca89692d913d5f363deb747ae1))
+* **deps:** update jest monorepo to v26.6.3 [skip ci] ([#694](https://github.com/christophehurpeau/pob/issues/694)) ([7b090f5](https://github.com/christophehurpeau/pob/commit/7b090f5f2c369a27444268f3a9dd58217bbc4e4c))
+
+
+### BREAKING CHANGES
+
+* requires node 12.10
+
+
+
+
+
 # [3.1.0](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@3.0.1...pob-lcov-reporter@3.1.0) (2020-11-01)
 
 

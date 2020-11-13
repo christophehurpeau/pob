@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@1.3.1...@pob/pretty-pkg@2.0.0) (2020-11-13)
+
+
+### Features
+
+* drop node 10 ([84cdd60](https://github.com/christophehurpeau/pob/commit/84cdd609edf105ca89692d913d5f363deb747ae1))
+
+
+### BREAKING CHANGES
+
+* requires node 12.10
+
+
+
+
+
 ## [1.3.1](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@1.3.0...@pob/pretty-pkg@1.3.1) (2020-09-19)
 
 **Note:** Version bump only for package @pob/pretty-pkg

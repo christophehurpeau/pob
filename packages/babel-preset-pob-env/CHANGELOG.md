@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@4.2.0...babel-preset-pob-env@5.0.0) (2020-11-13)
+
+
+### Bug Fixes
+
+* **babel-preset-pob-env:** resolve babel-preset-latest-node when version is current ([a520f04](https://github.com/christophehurpeau/pob/commit/a520f040455aba9cb5a3096be39b3b8e76d2432e))
+
+
+### Features
+
+* drop node 10 ([84cdd60](https://github.com/christophehurpeau/pob/commit/84cdd609edf105ca89692d913d5f363deb747ae1))
+
+
+### BREAKING CHANGES
+
+* requires node 12.10
+
+
+
+
+
 # [4.2.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@4.1.0...babel-preset-pob-env@4.2.0) (2020-11-01)
 
 

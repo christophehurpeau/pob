@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.0.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.13.7...@pob/renovate-config@2.0.0) (2020-11-13)
+
+
+### Features
+
+* allow to auto update [@types](https://github.com/types) ([c9e7ed3](https://github.com/christophehurpeau/pob/commit/c9e7ed341bda2fb2823597eb47d40cb81e8ede53))
+* allow to auto update jest and babel ([47316c1](https://github.com/christophehurpeau/pob/commit/47316c17f1cacce7015463119c0ca5b06bd0be31))
+* drop node 10 ([84cdd60](https://github.com/christophehurpeau/pob/commit/84cdd609edf105ca89692d913d5f363deb747ae1))
+
+
+### BREAKING CHANGES
+
+* requires node 12.10
+
+
+
+
+
 ## [1.13.7](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@1.13.6...@pob/renovate-config@1.13.7) (2020-11-01)
 
 **Note:** Version bump only for package @pob/renovate-config

@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@2.3.0...pob-dependencies@3.0.0) (2020-11-13)
+
+
+### Bug Fixes
+
+* update babel-preset-latest-node ([0ceff20](https://github.com/christophehurpeau/pob/commit/0ceff2008682650fbbb8b3066b4752efac465600))
+
+
+### Features
+
+* **deps:** update dependency @pob/eslint-config-typescript to v41.0.1 [skip ci] ([#699](https://github.com/christophehurpeau/pob/issues/699)) ([6f858a4](https://github.com/christophehurpeau/pob/commit/6f858a4e420f5e8de8cc4c0115f84985c944ce0e))
+* **deps:** update dependency @pob/eslint-config-typescript to v41.0.2 [skip ci] ([#700](https://github.com/christophehurpeau/pob/issues/700)) ([169490a](https://github.com/christophehurpeau/pob/commit/169490a40f91e5744192c50c7cbb426607a92081))
+* drop node 10 ([84cdd60](https://github.com/christophehurpeau/pob/commit/84cdd609edf105ca89692d913d5f363deb747ae1))
+* update pob, use prettier outside of eslint ([5ef824d](https://github.com/christophehurpeau/pob/commit/5ef824d42a60bef88255134288a17d8c910af19f))
+* **deps:** update babel monorepo to v7.12.5 [skip ci] ([#693](https://github.com/christophehurpeau/pob/issues/693)) ([5ed4620](https://github.com/christophehurpeau/pob/commit/5ed4620bdcb095161e10226127bd2e3575ade75f))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v4.6.1 [skip ci] ([#692](https://github.com/christophehurpeau/pob/issues/692)) ([17a5e03](https://github.com/christophehurpeau/pob/commit/17a5e03857b3d187127d307430d4764f41827045))
+* **deps:** update dependency @typescript-eslint/parser to v4.6.1 [skip ci] ([#691](https://github.com/christophehurpeau/pob/issues/691)) ([80ad36e](https://github.com/christophehurpeau/pob/commit/80ad36e757c3102030a21c46c8fd42431581900f))
+* **deps:** update dependency babel-jest to v26.6.2 [skip ci] ([#689](https://github.com/christophehurpeau/pob/issues/689)) ([964ec62](https://github.com/christophehurpeau/pob/commit/964ec623d04e60851d531ec443c2477f311ee8b2))
+* **deps:** update dependency eslint to v7.13.0 [skip ci] ([#695](https://github.com/christophehurpeau/pob/issues/695)) ([c6ec363](https://github.com/christophehurpeau/pob/commit/c6ec3631c2fa14ba4801690762da8bf268ede8b2))
+* **deps:** update dependency rollup to v2.33.1 [skip ci] ([#688](https://github.com/christophehurpeau/pob/issues/688)) ([aebd158](https://github.com/christophehurpeau/pob/commit/aebd158bae309162bd43cb3622923e3b1b117d2d))
+* **deps:** update jest monorepo to v26.6.3 [skip ci] ([#694](https://github.com/christophehurpeau/pob/issues/694)) ([7b090f5](https://github.com/christophehurpeau/pob/commit/7b090f5f2c369a27444268f3a9dd58217bbc4e4c))
+* **deps:** update typescript-eslint monorepo to v4.7.0 ([#696](https://github.com/christophehurpeau/pob/issues/696)) ([247d240](https://github.com/christophehurpeau/pob/commit/247d240eb749e6b5d145a27264ec57ea6ecb0c74))
+
+
+### BREAKING CHANGES
+
+* requires node 12.10
+
+
+
+
+
 # [2.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@2.2.0...pob-dependencies@2.3.0) (2020-11-01)
 
 

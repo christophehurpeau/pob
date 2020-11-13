@@ -1,6 +1,6 @@
 {
   "name": "babel-plugin-fix-class-properties-uninitialized",
-  "version": "2.3.2",
+  "version": "3.0.0",
   "description": "babel plugin fix class properties uninitialized",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
