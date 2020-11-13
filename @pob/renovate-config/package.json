@@ -77,7 +77,8 @@
           "packagePatterns": [
             "^@pob/eslint-config",
             "^@typescript-eslint/",
-            "^eslint-"
+            "^eslint-",
+            "^@types/"
           ],
           "packageNames": [
             "eslint",
