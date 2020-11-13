@@ -164,6 +164,7 @@ module.exports = class LernaGenerator extends Generator {
 
     const monorepoConfig = this.config.get('monorepo');
     const packageManager = this.npm ? 'npm' : 'yarn';
+    const useYarn2WorkspacesCommand = false; // this.options.useYarn2;
 
     packageUtils.addScripts(pkg, {
       lint: `${packageManager} run lint:prettier && ${packageManager} run lint:eslint`,
@@ -176,11 +177,11 @@ module.exports = class LernaGenerator extends Generator {
         monorepoConfig && monorepoConfig.eslint
           ? `${packageManager} run lint`
           : `${packageManager} run lint:prettier && ${packageManager} run lint:eslint${
-              this.options.useYarn2 ? '' : ' --since'
+              useYarn2WorkspacesCommand ? '' : ' --since'
             }`,
         withBabel &&
           `${packageManager} run build${
-            this.options.useYarn2 ? '' : ' --since'
+            useYarn2WorkspacesCommand ? '' : ' --since'
           } -- -- --no-clean`,
         'repository-check-dirty',
       ]
@@ -200,7 +201,7 @@ module.exports = class LernaGenerator extends Generator {
 
     packageUtils.addOrRemoveScripts(pkg, withTests, {
       test: `${
-        this.options.useYarn2
+        useYarn2WorkspacesCommand
           ? 'yarn workspaces foreach --parallel -Av run'
           : 'lerna run --stream'
       } test`,
@@ -208,12 +209,12 @@ module.exports = class LernaGenerator extends Generator {
 
     packageUtils.addOrRemoveScripts(pkg, withBabel, {
       build: `${
-        this.options.useYarn2
+        useYarn2WorkspacesCommand
           ? 'yarn workspaces foreach -Av run'
           : 'lerna run --stream'
       } build`,
       watch: `${
-        this.options.useYarn2
+        useYarn2WorkspacesCommand
           ? 'yarn workspaces foreach --parallel --exclude "*-example" -Av run'
           : 'lerna run --parallel --ignore "*-example"'
       } watch`,
@@ -221,12 +222,12 @@ module.exports = class LernaGenerator extends Generator {
 
     packageUtils.addOrRemoveScripts(pkg, withTypescript, {
       'build:definitions': `${
-        this.options.useYarn2
+        useYarn2WorkspacesCommand
           ? 'yarn workspaces foreach --parallel --exclude "*-example" -Av run'
           : 'lerna run --stream'
       } build:definitions`,
       postbuild: `${packageManager} run build:definitions${
-        this.options.useYarn2 ? '' : ' --since'
+        useYarn2WorkspacesCommand ? '' : ' --since'
       }`,
     });
 
