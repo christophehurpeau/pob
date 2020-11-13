@@ -119,7 +119,10 @@ module.exports = function (context, opts) {
   switch (targetOption) {
     case 'node':
       if (versionOption === 'current') {
-        targetPreset = ['latest-node', { modules, loose, target: 'current' }];
+        targetPreset = [
+          resolvePreset('babel-preset-latest-node'),
+          { modules, loose, target: 'current' },
+        ];
       } else {
         // targetPreset = ['@babel/preset-env', { modules, loose, targets: { node: versionOption } }];
         targetPreset = [
