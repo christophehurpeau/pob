@@ -3187,10 +3187,10 @@ babel-preset-jest@^26.6.2:
     babel-plugin-jest-hoist "^26.6.2"
     babel-preset-current-node-syntax "^1.0.0"
 
-babel-preset-latest-node@5.1.1, babel-preset-latest-node@^5.1.1:
-  version "5.1.1"
-  resolved "https://registry.yarnpkg.com/babel-preset-latest-node/-/babel-preset-latest-node-5.1.1.tgz#6c4712bb649eba77f87fd1af7a87740572a43fdc"
-  integrity sha512-8hGfeItmpeypAEVEJ5bTV3hQXdEHYRLnlo+dKw/6x+1omRUVt3Gd6WqjVGW+drHFuW+Wxf2nM3rLuD/h2LPJuA==
+babel-preset-latest-node@5.1.0, babel-preset-latest-node@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/babel-preset-latest-node/-/babel-preset-latest-node-5.1.0.tgz#3e6f5f9d58c6f54431419625e9135580c9101984"
+  integrity sha512-ThXTWAC8wEhioYP9HP0GDmCOPDJfstueeBCCeJVE+iTL6/KQsY4Ot3worykVmdXz2wJ7ssAWyt9xXjUzJpJ1dA==
   dependencies:
     "@babel/plugin-proposal-nullish-coalescing-operator" "^7.10.4"
     "@babel/plugin-proposal-optional-catch-binding" "^7.10.4"
@@ -9655,17 +9655,10 @@ reusify@^1.0.4:
   resolved "https://registry.yarnpkg.com/reusify/-/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
   integrity sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==
 
-rimraf@2.6.3:
+rimraf@2.6.3, rimraf@^2.2.8, rimraf@^2.5.4, rimraf@^2.6.2, rimraf@^2.6.3:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.3.tgz#b2d104fe0d8fb27cf9e0a1cda8262dd3833c6cab"
   integrity sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==
-  dependencies:
-    glob "^7.1.3"
-
-rimraf@^2.2.8, rimraf@^2.5.4, rimraf@^2.6.2, rimraf@^2.6.3:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.7.1.tgz#35797f13a7fdadc566142c29d4f07ccad483e3ec"
-  integrity sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==
   dependencies:
     glob "^7.1.3"
 
