@@ -78,7 +78,8 @@
             "^@pob/eslint-config",
             "^@typescript-eslint/",
             "^eslint-",
-            "^@types/"
+            "^@types/",
+            "^@babel/"
           ],
           "packageNames": [
             "eslint",
@@ -90,7 +91,10 @@
             "lerna",
             "typescript",
             "repository-check-dirty",
-            "standard-version"
+            "standard-version",
+            "babel-jest",
+            "jest",
+            "jest-junit-reporter"
           ],
           "updateTypes": [
             "patch",
