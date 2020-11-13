@@ -97,7 +97,9 @@ module.exports = class GitHooksGenerator extends Generator {
     delete pkg.husky;
 
     // if (packageUtils.hasLerna(pkg)) {
-    //   packageUtils.addScript(pkg, 'postinstall', 'repository-check-dirty && lerna bootstrap');
+    //   packageUtils.addScripts(pkg, {
+    //  'postinstall': 'repository-check-dirty && lerna bootstrap'
+    // });
     // }
 
     // this.fs.delete('.git/hooks/husky.sh');

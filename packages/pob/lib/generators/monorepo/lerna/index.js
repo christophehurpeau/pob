@@ -155,9 +155,9 @@ module.exports = class LernaGenerator extends Generator {
       ...((config && config.pob && config.pob['pob-config']) || {}),
     });
     // ynnub doesnt use babel but still have typescript
-    const withTypescript = this.packagePaths.some((packagePath) =>
-      this.fs.exists(this.destinationPath(`${packagePath}/tsconfig.json`)),
-    );
+    // const withTypescript = this.packagePaths.some((packagePath) =>
+    //   this.fs.exists(this.destinationPath(`${packagePath}/tsconfig.json`)),
+    // );
     const withTests = this.packagesConfig.some(
       (config) => getPobConfig(config).testing,
     );
@@ -220,17 +220,21 @@ module.exports = class LernaGenerator extends Generator {
       } watch`,
     });
 
-    packageUtils.addOrRemoveScripts(pkg, withTypescript, {
-      'build:definitions': `${
-        useYarn2WorkspacesCommand
-          ? 'yarn workspaces foreach --parallel --exclude "*-example" -Av run'
-          : 'lerna run --stream'
-      } build:definitions`,
-      postbuild: `${packageManager} run build:definitions${
-        useYarn2WorkspacesCommand ? '' : ' --since'
-      }`,
-    });
+    // packageUtils.addOrRemoveScripts(pkg, withTypescript, {
+    //   'build:definitions': `${
+    //     useYarn2WorkspacesCommand
+    //       ? 'yarn workspaces foreach --parallel --exclude "*-example" -Av run'
+    //       : 'lerna run --stream'
+    //   } build:definitions`,
+    // });
 
+    // if (withTypescript) {
+    //   pkg.scripts.build += `${packageManager} run build:definitions${
+    //     useYarn2WorkspacesCommand ? '' : ' --since'
+    //   }`;
+    // }
+
+    delete pkg.scripts.postbuild;
     delete pkg.scripts.version;
     delete pkg.scripts.prepublishOnly;
 

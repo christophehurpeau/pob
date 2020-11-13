@@ -42,11 +42,20 @@ exports.hasReact = (pkg) =>
 exports.hasJest = (pkg) => !!(pkg.devDependencies && pkg.devDependencies.jest);
 
 function internalAddToObject(pkg, key, object) {
+  if (typeof object !== 'object') {
+    throw new TypeError(`Invalid type object ${typeof object} passed`);
+  }
+
   if (!pkg[key]) {
     pkg[key] = {};
     exports.sort(pkg);
   }
   const value = pkg[key];
+  if (typeof value !== 'object') {
+    throw new TypeError(
+      `Invalid type value ${typeof value} for package key "${key}"`,
+    );
+  }
   Object.assign(value, object);
   pkg[key] = sortObject(pkg[key]);
 }
@@ -213,8 +222,4 @@ exports.addOrRemoveScripts = function addOrRemoveScripts(
       delete pkg.scripts;
     }
   }
-};
-
-exports.addScript = function addScript(pkg, scriptName, value) {
-  exports.addScripts(pkg, { [scriptName]: value });
 };

@@ -163,8 +163,8 @@ module.exports = class PobMonorepoGenerator extends Generator {
     // });
 
     if (this.pobLernaConfig.documentation) {
-      pkg.scripts.postbuild = `${
-        pkg.scripts.postbuild ? `${pkg.scripts.postbuild} && ` : ''
+      pkg.scripts.build = `${
+        pkg.scripts.build ? `${pkg.scripts.build} && ` : ''
       }yarn run generate:docs`;
     }
 

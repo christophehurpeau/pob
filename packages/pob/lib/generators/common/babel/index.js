@@ -3,7 +3,6 @@
 const fs = require('fs');
 const semver = require('semver');
 const Generator = require('yeoman-generator');
-const inLerna = require('../../../utils/inLerna');
 const packageUtils = require('../../../utils/package');
 const { copyAndFormatTpl } = require('../../../utils/writeAndFormat');
 
@@ -261,29 +260,28 @@ module.exports = class BabelGenerator extends Generator {
       'build:definitions': 'tsc -p tsconfig.build.json',
     });
 
-    if (!this.options.isApp && !useBabel) {
+    if (shouldBuildDefinitions) {
+      pkg.scripts.build += ' && yarn run build:definitions';
+    } else if (!this.options.isApp && !useBabel) {
       // check definitions, but also force lerna to execute build:definitions in right order
       // example: nightingale-types depends on nightingale-levels
       if (this.fs.exists(this.destinationPath('lib/index.d.ts'))) {
-        pkg.scripts['build:definitions'] =
-          'tsc --lib esnext --noEmit ./lib/index.d.ts';
+        packageUtils.addScripts(pkg, {
+          'build:definitions': 'tsc --lib esnext --noEmit ./lib/index.d.ts',
+          build: 'yarn run build:definitions',
+        });
       }
 
       if (this.fs.exists(this.destinationPath('lib/index.ts'))) {
-        pkg.scripts['build:definitions'] =
-          'tsc --lib esnext --noEmit ./lib/index.ts';
+        packageUtils.addScripts(pkg, {
+          'build:definitions': 'tsc --lib esnext --noEmit ./lib/index.ts',
+          build: 'yarn run build:definitions',
+        });
       }
     }
 
     if (pkg.scripts) {
-      if (inLerna || !pkg.scripts['build:definitions']) {
-        delete pkg.scripts.postbuild;
-      } else if (pkg.scripts['build:definitions']) {
-        pkg.scripts.postbuild = pkg.scripts['build:definitions'];
-      }
-    }
-
-    if (pkg.scripts) {
+      delete pkg.scripts.postbuild;
       delete pkg.scripts['build:dev'];
       delete pkg.scripts['watch:dev'];
     }
