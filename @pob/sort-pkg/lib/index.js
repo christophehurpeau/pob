@@ -69,6 +69,7 @@ module.exports = function sortPkg(pkg) {
     'devPeerDependencies',
     'dependencies',
     'devDependencies',
+    'dependenciesMeta',
     'bundledDependencies',
     'bundleDependencies',
     'optionalDependencies',
