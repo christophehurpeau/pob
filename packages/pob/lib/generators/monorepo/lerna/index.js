@@ -158,14 +158,16 @@ module.exports = class LernaGenerator extends Generator {
     const packageManager = this.npm ? 'npm' : 'yarn';
 
     packageUtils.addScripts(pkg, {
-      lint:
+      lint: `${packageManager} run lint:prettier && ${packageManager} run lint:eslint`,
+      'lint:prettier': 'prettier --check .',
+      'lint:eslint':
         monorepoConfig && monorepoConfig.eslint
           ? 'eslint --report-unused-disable-directives --quiet --resolve-plugins-relative-to . --ext js,ts,tsx .'
           : 'lerna run --stream lint',
       preversion: [
         monorepoConfig && monorepoConfig.eslint
           ? `${packageManager} run lint`
-          : `${packageManager} run lint${
+          : `${packageManager} run lint:prettier && ${packageManager} run lint:eslint${
               this.options.useYarn2 ? '' : ' --since'
             }`,
         withBabel &&

@@ -86,6 +86,12 @@ module.exports = class LintGenerator extends Generator {
       arrowParens: 'always',
     };
 
+    this.fs.copyTpl(
+      this.templatePath('prettierignore.ejs'),
+      this.destinationPath('.prettierignore'),
+      {},
+    );
+
     if (pkg.devDependencies) {
       if (pkg.devDependencies['@pob/eslint-config-babel']) {
         packageUtils.addDevDependencies(pkg, ['@pob/eslint-config-typescript']);
@@ -107,6 +113,7 @@ module.exports = class LintGenerator extends Generator {
       'eslint-plugin-flowtype',
       'eslint-plugin-prefer-class-properties',
       'eslint-plugin-jsx-a11y',
+      'eslint-plugin-prettier',
       'typescript-eslint-parser',
       'standard',
     ]);
@@ -146,7 +153,6 @@ module.exports = class LintGenerator extends Generator {
           '@typescript-eslint/parser',
           'eslint-import-resolver-node',
           'eslint-plugin-node',
-          'eslint-plugin-prettier',
           'eslint-plugin-unicorn',
           'eslint-plugin-import',
         ],
@@ -177,11 +183,7 @@ module.exports = class LintGenerator extends Generator {
         packageUtils.addOrRemoveDevDependencies(
           pkg,
           shouldHavePluginsDependencies,
-          [
-            'eslint-plugin-import',
-            'eslint-plugin-prettier',
-            'eslint-plugin-unicorn',
-          ],
+          ['eslint-plugin-import', 'eslint-plugin-unicorn'],
         );
 
         packageUtils.addDevDependencies(pkg, ['@pob/eslint-config-node']);
