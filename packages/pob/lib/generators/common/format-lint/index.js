@@ -84,11 +84,15 @@ module.exports = class LintGenerator extends Generator {
       arrowParens: 'always',
     };
 
-    this.fs.copyTpl(
-      this.templatePath('prettierignore.ejs'),
-      this.destinationPath('.prettierignore'),
-      {},
-    );
+    if (!inLerna || inLerna.root) {
+      this.fs.copyTpl(
+        this.templatePath('prettierignore.ejs'),
+        this.destinationPath('.prettierignore'),
+        {},
+      );
+    } else if (this.fs.exists(this.destinationPath('.prettierignore'))) {
+      this.fs.delete(this.destinationPath('.prettierignore'));
+    }
 
     if (pkg.devDependencies) {
       if (pkg.devDependencies['@pob/eslint-config-babel']) {
