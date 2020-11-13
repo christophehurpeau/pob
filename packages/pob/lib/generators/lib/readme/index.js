@@ -2,9 +2,9 @@
 
 const camelCase = require('lodash.camelcase');
 const Generator = require('yeoman-generator');
-const { copyAndFormatTpl } = require('../../../utils/copyAndFormat');
 const inLerna = require('../../../utils/inLerna');
 const packageUtils = require('../../../utils/package');
+const { copyAndFormatTpl } = require('../../../utils/writeAndFormat');
 
 module.exports = class ReadmeGenerator extends Generator {
   constructor(args, opts) {

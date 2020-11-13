@@ -187,6 +187,7 @@ module.exports = class PobBaseGenerator extends Generator {
       this.composeWith(require.resolve('../monorepo'), {
         updateOnly: this.options.updateOnly,
         isAppProject: this.projectConfig.type === 'app',
+        useYarn2: this.projectConfig.yarn2,
       });
     } else {
       switch (this.projectConfig.type) {
@@ -194,12 +195,14 @@ module.exports = class PobBaseGenerator extends Generator {
           this.composeWith(require.resolve('../lib/'), {
             updateOnly: this.options.updateOnly,
             fromPob: this.options.fromPob,
+            useYarn2: this.projectConfig.yarn2,
           });
           break;
         case 'app':
           this.composeWith(require.resolve('../app/'), {
             updateOnly: this.options.updateOnly,
             fromPob: this.options.fromPob,
+            useYarn2: this.projectConfig.yarn2,
           });
           break;
         default:

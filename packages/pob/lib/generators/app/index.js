@@ -32,6 +32,12 @@ module.exports = class PobAppGenerator extends Generator {
       required: false,
       defaults: false,
     });
+
+    this.option('useYarn2', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+    });
   }
 
   async prompting() {
@@ -106,6 +112,7 @@ module.exports = class PobAppGenerator extends Generator {
       node,
       browser,
       enableSrcResolver: true,
+      useYarn2: this.options.useYarn2,
     });
 
     this.composeWith(require.resolve('../common/old-dependencies'));

@@ -1,15 +1,16 @@
 'use strict';
 
 const Generator = require('yeoman-generator');
-const formatJson = require('../../../utils/formatJson');
 const packageUtils = require('../../../utils/package');
+const { writeAndFormatJson } = require('../../../utils/writeAndFormat');
 
 module.exports = class SortPackageGenerator extends Generator {
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
-    this.fs.write(
+    writeAndFormatJson(
+      this.fs,
       this.destinationPath('package.json'),
-      formatJson(packageUtils.sort(pkg), 'package.json'),
+      packageUtils.sort(pkg),
     );
   }
 };

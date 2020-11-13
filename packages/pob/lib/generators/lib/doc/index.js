@@ -3,6 +3,7 @@
 const Generator = require('yeoman-generator');
 const inLerna = require('../../../utils/inLerna');
 const packageUtils = require('../../../utils/package');
+const { copyAndFormatTpl } = require('../../../utils/writeAndFormat');
 
 module.exports = class DocGenerator extends Generator {
   constructor(args, opts) {
@@ -40,13 +41,15 @@ module.exports = class DocGenerator extends Generator {
           : packageUtils.hasReact(pkg);
 
       if (inLerna && inLerna.root) {
-        this.fs.copyTpl(
+        copyAndFormatTpl(
+          this.fs,
           this.templatePath('tsconfig.doc.json.lerna.ejs'),
           this.destinationPath('tsconfig.doc.json'),
           { jsx, workspaces: pkg.workspaces },
         );
       } else {
-        this.fs.copyTpl(
+        copyAndFormatTpl(
+          this.fs,
           this.templatePath('tsconfig.doc.json.ejs'),
           this.destinationPath('tsconfig.doc.json'),
           { jsx },

@@ -3,6 +3,7 @@
 const { existsSync } = require('fs');
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
+const { copyAndFormatTpl } = require('../../../utils/writeAndFormat');
 
 module.exports = class MonorepoTypescriptGenerator extends Generator {
   constructor(args, opts) {
@@ -80,13 +81,19 @@ module.exports = class MonorepoTypescriptGenerator extends Generator {
         throw new Error('packages should not be empty');
       }
 
-      this.fs.copyTpl(this.templatePath('tsconfig.json.ejs'), tsconfigPath, {
-        packagePaths,
-      });
+      copyAndFormatTpl(
+        this.fs,
+        this.templatePath('tsconfig.json.ejs'),
+        tsconfigPath,
+        {
+          packagePaths,
+        },
+      );
       if (this.options.isAppProject) {
         this.fs.delete(tsconfigBuildPath);
       } else {
-        this.fs.copyTpl(
+        copyAndFormatTpl(
+          this.fs,
           this.templatePath('tsconfig.build.json.ejs'),
           tsconfigBuildPath,
           {

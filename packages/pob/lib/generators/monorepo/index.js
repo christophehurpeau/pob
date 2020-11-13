@@ -21,6 +21,12 @@ module.exports = class PobMonorepoGenerator extends Generator {
       defaults: false,
       desc: 'app project, no pusblishing on npm',
     });
+
+    this.option('useYarn2', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+    });
   }
 
   async initializing() {
@@ -128,6 +134,7 @@ module.exports = class PobMonorepoGenerator extends Generator {
       documentation: this.pobLernaConfig.documentation,
       typescript: this.pobLernaConfig.typescript,
       testing: this.pobLernaConfig.testing,
+      useYarn2: this.options.useYarn2,
     });
 
     this.composeWith(require.resolve('../lib/doc'), {

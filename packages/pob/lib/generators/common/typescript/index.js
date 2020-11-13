@@ -4,6 +4,7 @@ const { existsSync } = require('fs');
 const Generator = require('yeoman-generator');
 const inLerna = require('../../../utils/inLerna');
 const packageUtils = require('../../../utils/package');
+const { copyAndFormatTpl } = require('../../../utils/writeAndFormat');
 
 module.exports = class TypescriptGenerator extends Generator {
   constructor(args, opts) {
@@ -96,17 +97,23 @@ module.exports = class TypescriptGenerator extends Generator {
         }
       }
 
-      this.fs.copyTpl(this.templatePath('tsconfig.json.ejs'), tsconfigPath, {
-        monorepoPackageNames,
-        monorepoPackageSrcPaths,
-        jsx,
-        baseUrl: this.options.baseUrl,
-      });
+      copyAndFormatTpl(
+        this.fs,
+        this.templatePath('tsconfig.json.ejs'),
+        tsconfigPath,
+        {
+          monorepoPackageNames,
+          monorepoPackageSrcPaths,
+          jsx,
+          baseUrl: this.options.baseUrl,
+        },
+      );
       if (
         this.options.builddefs // &&
         // (!composite || monorepoPackageNames.length !== 0)
       ) {
-        this.fs.copyTpl(
+        copyAndFormatTpl(
+          this.fs,
           this.templatePath('tsconfig.build.json.ejs'),
           tsconfigBuildPath,
           {

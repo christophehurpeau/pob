@@ -4,6 +4,7 @@ const fs = require('fs');
 const yarnParsers = require('@yarnpkg/parsers');
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
+const { writeAndFormat } = require('../../../utils/writeAndFormat');
 
 module.exports = class YarnGenerator extends Generator {
   constructor(args, opts) {
@@ -36,7 +37,7 @@ module.exports = class YarnGenerator extends Generator {
       const configString = this.fs.read('.yarnrc.yml');
       const config = yarnParsers.parseSyml(configString);
       config.defaultSemverRangePrefix = this.options.type === 'app' ? '' : '^';
-      this.fs.write('.yarnrc.yml', yarnParsers.stringifySyml(config));
+      writeAndFormat(this.fs, '.yarnrc.yml', yarnParsers.stringifySyml(config));
     } else {
       this.fs.delete('.yarn');
     }

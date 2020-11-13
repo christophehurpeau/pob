@@ -3,8 +3,11 @@
 const { spawnSync } = require('child_process');
 const { readdirSync, existsSync } = require('fs');
 const Generator = require('yeoman-generator');
-const { copyAndFormatTpl } = require('../../../utils/copyAndFormat');
 const packageUtils = require('../../../utils/package');
+const {
+  copyAndFormatTpl,
+  writeAndFormatJson,
+} = require('../../../utils/writeAndFormat');
 
 module.exports = class LernaGenerator extends Generator {
   constructor(args, opts) {
@@ -89,7 +92,11 @@ module.exports = class LernaGenerator extends Generator {
         lernaCurrentConfig.command.publish.ignoreChanges) ||
       [];
 
-    this.fs.writeJSON(this.destinationPath('lerna.json'), lernaConfig);
+    writeAndFormatJson(
+      this.fs,
+      this.destinationPath('lerna.json'),
+      lernaConfig,
+    );
   }
 
   writing() {

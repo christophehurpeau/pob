@@ -4,9 +4,9 @@ const fs = require('fs');
 const path = require('path');
 const Generator = require('yeoman-generator');
 const ensureJsonFileFormatted = require('../../../utils/ensureJsonFileFormatted');
-const formatJson = require('../../../utils/formatJson');
 const inLerna = require('../../../utils/inLerna');
 const packageUtils = require('../../../utils/package');
+const { writeAndFormatJson } = require('../../../utils/writeAndFormat');
 const updateEslintConfig = require('./updateEslintConfig');
 
 module.exports = class LintGenerator extends Generator {
@@ -88,7 +88,11 @@ module.exports = class LintGenerator extends Generator {
       this.fs.copyTpl(
         this.templatePath('prettierignore.ejs'),
         this.destinationPath('.prettierignore'),
-        {},
+        {
+          documentation: this.options.documentation,
+          useYarn2: this.options.useYarn2,
+          workspaces: pkg.workspaces,
+        },
       );
     } else if (this.fs.exists(this.destinationPath('.prettierignore'))) {
       this.fs.delete(this.destinationPath('.prettierignore'));
@@ -331,10 +335,7 @@ module.exports = class LintGenerator extends Generator {
         },
       );
 
-      this.fs.write(
-        rootEslintrcPath,
-        formatJson(rootEslintrcConfig, '.eslintrc.json'),
-      );
+      writeAndFormatJson(this.fs, rootEslintrcPath, rootEslintrcConfig);
     } catch (err) {
       console.warn(`Could not parse/edit ${rootEslintrcPath}: `, err);
     }
@@ -375,10 +376,7 @@ module.exports = class LintGenerator extends Generator {
           },
         );
 
-        this.fs.write(
-          srcEslintrcPath,
-          formatJson(srcEslintrcConfig, '.eslintrc.json'),
-        );
+        writeAndFormatJson(this.fs, srcEslintrcPath, srcEslintrcConfig);
       } catch (err) {
         console.warn(`Could not parse/edit ${srcEslintrcPath}: `, err);
       }

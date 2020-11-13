@@ -23,6 +23,12 @@ module.exports = class PobLibGenerator extends Generator {
       required: false,
       defaults: false,
     });
+
+    this.option('useYarn2', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+    });
   }
 
   initializing() {
@@ -259,6 +265,7 @@ module.exports = class PobLibGenerator extends Generator {
     this.composeWith(require.resolve('../common/format-lint'), {
       documentation: !!this.pobjson.documentation,
       testing: this.pobjson.testing,
+      useYarn2: this.options.useYarn2,
     });
 
     this.composeWith(require.resolve('./doc'), {

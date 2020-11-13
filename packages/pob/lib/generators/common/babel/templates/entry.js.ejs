@@ -1,6 +1,6 @@
-/* eslint-disable import/no-dynamic-require, prettier/prettier */
+/* eslint-disable import/no-dynamic-require */
 
-'use strict' <% /* space to ensure there is a prettier error */ %>;
+'use strict';
 
 const production = process.env.NODE_ENV === 'production';
 <% var envs = [
@@ -18,6 +18,8 @@ if (nodeVersionMajor > 12 || (nodeVersionMajor === 12 && nodeVersionMinor >= 10)
   module.exports = require(`./dist/<%= entry %>-node12${production ? '' : '-dev'}.cjs.js`);
 /* istanbul ignore next */
 } else {
-  throw new Error('Node version not supported: ' + nodeVersion + ' (' + process.versions.node + ').');
+  throw new Error(
+    `Node version not supported: ${nodeVersion} (${process.versions.node}).`,
+  );
 }
 <% } -%>

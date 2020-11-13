@@ -1,1 +1,13 @@
 CHANGELOG.md
+<% if (documentation) { -%>
+/docs
+<% } -%>
+<% if (useYarn2) { -%>
+/.pnp.js
+/.yarn/**/*
+<% } -%>
+<% if (workspaces) { -%>
+<% for (let workspace of workspaces) { -%>
+<%= '/' + workspace + '/dist' %>
+<% } -%>
+<% } -%>

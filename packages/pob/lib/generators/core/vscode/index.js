@@ -1,7 +1,7 @@
 'use strict';
 
 const Generator = require('yeoman-generator');
-const { copyAndFormatTpl } = require('../../../utils/copyAndFormat');
+const { copyAndFormatTpl } = require('../../../utils/writeAndFormat');
 
 module.exports = class VscodeGenerator extends Generator {
   constructor(args, opts) {
