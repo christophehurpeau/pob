@@ -178,7 +178,7 @@ module.exports = class LintGenerator extends Generator {
         ['eslint'],
       );
       const shouldHavePluginsDependencies =
-        !globalEslint || !inLerna || (inLerna.root && isYarn2);
+        !globalEslint || !inLerna || isYarn2;
 
       if (
         !pkg.name.startsWith('eslint-config') &&
@@ -313,14 +313,14 @@ module.exports = class LintGenerator extends Generator {
         ignorePatterns.push('*.d.ts');
       }
 
-      if (inLerna && !inLerna.root && this.options.typescript) {
+      if (inLerna && !inLerna.root && (this.options.typescript || pkg.types)) {
         ignorePatterns.push('*.d.ts');
       }
       if (inLerna && inLerna.root && this.options.documentation) {
         ignorePatterns.push('/docs');
       }
 
-      if (inLerna && !inLerna.root) {
+      if (inLerna && !inLerna.root && useBabel) {
         ignorePatterns.push('/dist', '/test', '/public', '/build');
       }
 
