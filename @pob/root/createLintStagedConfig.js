@@ -77,24 +77,21 @@ module.exports = function createLintStagedConfig() {
         }`,
       ].filter(Boolean);
     },
-    [`{*.json${
-      workspaces
-        ? `,${workspaces
-            .map((workspacePath) => `${workspacePath}/*.json`)
-            .join(',')}`
-        : ''
-    }}`]: (filenames) => {
-      const filteredFilenames = filenames.filter(
-        (name) => !name.endsWith('/package.json'),
-      );
-      if (filteredFilenames.length === 0) return [];
-      return [`prettier --write ${filteredFilenames.join(' ')}`];
-    },
+    '!(package|package-lock).json': ['prettier --write'],
+    [`{scripts,config,${srcDirectories}}/**/*.{yml,yaml,md}`]: [
+      'prettier --write',
+    ],
+    './*.{yml,yaml,md}': ['prettier --write'],
+    [`${srcDirectories}/**/*.{js,ts,tsx}`]: [
+      'prettier --write',
+      'eslint --fix --quiet',
+    ],
+    '{scripts,config,.storyboook}/**/*.{js,mjs,cjs}': [
+      'prettier --write',
+      'eslint --fix --quiet',
+    ],
     [`{.storybook,${srcDirectories}}/**/*.css`]: [
       'prettier --parser css --write',
     ],
-
-    [`${srcDirectories}/**/*.{js,ts,tsx}`]: ['eslint --fix --quiet'],
-    '{scripts,config,.storyboook}/*.js': ['eslint --fix --quiet'],
   };
 };
