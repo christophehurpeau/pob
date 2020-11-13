@@ -1,6 +1,7 @@
 'use strict';
 
 const Generator = require('yeoman-generator');
+const { copyAndFormatTpl } = require('../../../utils/copyAndFormat');
 
 module.exports = class VscodeGenerator extends Generator {
   constructor(args, opts) {
@@ -37,14 +38,16 @@ module.exports = class VscodeGenerator extends Generator {
 
   writing() {
     if (this.options.root) {
-      this.fs.copyTpl(
+      copyAndFormatTpl(
+        this.fs,
         this.templatePath('extensions.json.ejs'),
         this.destinationPath('.vscode/extensions.json'),
         {
           yarn2: this.options.yarn2,
         },
       );
-      this.fs.copyTpl(
+      copyAndFormatTpl(
+        this.fs,
         this.templatePath('settings.json.ejs'),
         this.destinationPath('.vscode/settings.json'),
         {
@@ -53,7 +56,8 @@ module.exports = class VscodeGenerator extends Generator {
           typescript: this.options.typescript,
         },
       );
-      this.fs.copyTpl(
+      copyAndFormatTpl(
+        this.fs,
         this.templatePath('tasks.json.ejs'),
         this.destinationPath('.vscode/tasks.json'),
         {

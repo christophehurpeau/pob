@@ -3,6 +3,7 @@
 const { spawnSync } = require('child_process');
 const { readdirSync, existsSync } = require('fs');
 const Generator = require('yeoman-generator');
+const { copyAndFormatTpl } = require('../../../utils/copyAndFormat');
 const packageUtils = require('../../../utils/package');
 
 module.exports = class LernaGenerator extends Generator {
@@ -251,7 +252,7 @@ module.exports = class LernaGenerator extends Generator {
       content = content ? content[1].trim() : readmeFullContent;
     }
 
-    this.fs.copyTpl(this.templatePath('README.md.ejs'), readmePath, {
+    copyAndFormatTpl(this.fs, this.templatePath('README.md.ejs'), readmePath, {
       projectName: pkg.name,
       description: pkg.description,
       packages: this.packages,

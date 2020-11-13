@@ -1,8 +1,8 @@
 'use strict';
 
 const camelCase = require('lodash.camelcase');
-const prettier = require('prettier');
 const Generator = require('yeoman-generator');
+const { copyAndFormatTpl } = require('../../../utils/copyAndFormat');
 const inLerna = require('../../../utils/inLerna');
 const packageUtils = require('../../../utils/package');
 
@@ -75,33 +75,30 @@ module.exports = class ReadmeGenerator extends Generator {
       );
     const [, gitHost, gitAccount, gitName] = match || [];
     try {
-      this.fs.copyTpl(this.templatePath('README.md.ejs'), readmePath, {
-        privatePackage: pkg.private,
-        packageName: pkg.name,
-        packagePath: `${pkg.name[0] === '@' ? '' : 'packages/'}${pkg.name}`,
-        camelCaseProjectName: camelCase(pkg.name),
-        description: pkg.description,
-        inLerna,
-        gitHost,
-        gitAccount,
-        gitName,
-        author: {
-          name: author.name,
-          url: author.url,
-        },
-        license: pkg.license,
-        codecov: this.options.codecov,
-        documentation: this.options.documentation,
-        testing: this.options.testing,
-        content,
-      });
-      this.fs.write(
+      copyAndFormatTpl(
+        this.fs,
+        this.templatePath('README.md.ejs'),
         readmePath,
-        prettier.format(this.fs.read(readmePath), {
-          filepath: 'README.md',
-          singleQuote: true,
-          arrowParens: 'always',
-        }),
+        {
+          privatePackage: pkg.private,
+          packageName: pkg.name,
+          packagePath: `${pkg.name[0] === '@' ? '' : 'packages/'}${pkg.name}`,
+          camelCaseProjectName: camelCase(pkg.name),
+          description: pkg.description,
+          inLerna,
+          gitHost,
+          gitAccount,
+          gitName,
+          author: {
+            name: author.name,
+            url: author.url,
+          },
+          license: pkg.license,
+          codecov: this.options.codecov,
+          documentation: this.options.documentation,
+          testing: this.options.testing,
+          content,
+        },
       );
     } catch (err) {
       console.log(err.stack || err.message || err);
