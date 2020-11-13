@@ -33,7 +33,7 @@
     ]
   },
   "devDependencies": {
-    "@pob/eslint-config": "41.0.0",
+    "@pob/eslint-config": "41.0.3",
     "@pob/eslint-config-node": "41.0.0",
     "eslint": "7.13.0",
     "husky": "4.3.0",

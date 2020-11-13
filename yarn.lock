@@ -2235,24 +2235,24 @@
     "@pob/use-eslint-plugin" "^41.0.0"
     eslint-plugin-node "^11.1.0"
 
-"@pob/eslint-config-typescript-react@41.0.0":
-  version "41.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript-react/-/eslint-config-typescript-react-41.0.0.tgz#c06886dd6a130f067bd6a87f11d9ecf4e15ddd4e"
-  integrity sha512-ZwdA9YaQKLPxW4AOXeRkAdM4nGT5UTxqDy7c6nUCIKXfIXxlP8iid3xsbs2ATLhO90ks9N4HgvIMgcrYM+F5mA==
+"@pob/eslint-config-typescript-react@41.0.3":
+  version "41.0.3"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript-react/-/eslint-config-typescript-react-41.0.3.tgz#fd289b40197b99b92f45e04e1a8c610481dbb63d"
+  integrity sha512-sDGJDHV/KnKA/fbmX2H+kPyqgfGl8tTCFEeQ5hvpWJrDqMquoEp6t9Qhx9QYcf7IXzb0uCgLCAVB854MN7chNw==
   dependencies:
-    "@pob/eslint-config" "^41.0.0"
+    "@pob/eslint-config" "^41.0.3"
     eslint-config-airbnb "^18.2.1"
     eslint-config-prettier "^6.11.0"
     eslint-plugin-jsx-a11y "^6.4.1"
     eslint-plugin-react "^7.21.5"
     eslint-plugin-react-hooks "^4.1.2"
 
-"@pob/eslint-config-typescript@41.0.2":
-  version "41.0.2"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript/-/eslint-config-typescript-41.0.2.tgz#59d70e2290791cc15ed33cfab42a0ee1d903286a"
-  integrity sha512-WeigTORgq7g+qXJiAnb7ioV+2axINd62bpBtUG2J3slddnhKLVqXGuhrX448WMOZjkbQ9/nXM9kTvHoZWbUQYw==
+"@pob/eslint-config-typescript@41.0.3":
+  version "41.0.3"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript/-/eslint-config-typescript-41.0.3.tgz#2d99106003d062d2f18bcbdd0f31bf658b001098"
+  integrity sha512-+IsmHfVij/1dB5N6U2cFKaWfrv5oSnU43lTjifjFNU9nRvFAZStZUoyVUmofbwEKc3LRMIpK++KasAtlqzC4iQ==
   dependencies:
-    "@pob/eslint-config" "^41.0.0"
+    "@pob/eslint-config" "^41.0.3"
     "@pob/use-eslint-plugin" "^41.0.0"
     "@typescript-eslint/eslint-plugin" "^4.1.1"
     "@typescript-eslint/parser" "^4.1.1"
@@ -2261,10 +2261,10 @@
     eslint-plugin-import "^2.22.1"
     eslint-plugin-prettier "^3.1.4"
 
-"@pob/eslint-config@41.0.0", "@pob/eslint-config@^41.0.0":
-  version "41.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-41.0.0.tgz#262c07015ed90ab7c4062fce95e764ed582ef41a"
-  integrity sha512-o5uXkFq1WobB4duP4uXU4rmB86eX32kO0NOC8hHAm3Co2S/GxUjTQgFMfBHgtu+pnM/2oMFb0GF7wUGiRKYtYQ==
+"@pob/eslint-config@41.0.3", "@pob/eslint-config@^41.0.3":
+  version "41.0.3"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-41.0.3.tgz#cdff17487a02379a2d99618620c72a7ede242eac"
+  integrity sha512-hu87l+ojWh1hA4Pe006VaUIVUKb+UWtv6lFDFyAo79ND+e8Jd/3DKlX31Tv2maQvEhb83yS+xRVRYZOjQn+SXw==
   dependencies:
     "@pob/use-eslint-plugin" "^41.0.0"
     eslint-config-airbnb-base "^14.2.1"
@@ -9655,17 +9655,10 @@ reusify@^1.0.4:
   resolved "https://registry.yarnpkg.com/reusify/-/reusify-1.0.4.tgz#90da382b1e126efc02146e90845a88db12925d76"
   integrity sha512-U9nH88a3fc/ekCF1l0/UP1IosiuIjyTh7hBvXVMHYgVcfGvt897Xguj2UOLDeI5BG2m7/uwyaLVT6fbtCwTyzw==
 
-rimraf@2.6.3:
+rimraf@2.6.3, rimraf@^2.2.8, rimraf@^2.5.4, rimraf@^2.6.2, rimraf@^2.6.3:
   version "2.6.3"
   resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.6.3.tgz#b2d104fe0d8fb27cf9e0a1cda8262dd3833c6cab"
   integrity sha512-mwqeW5XsA2qAejG46gYdENaxXjx9onRNCfn7L0duuP4hCuTIi/QO7PDK07KJfp1d+izWPrzEJDcSqBa0OZQriA==
-  dependencies:
-    glob "^7.1.3"
-
-rimraf@^2.2.8, rimraf@^2.5.4, rimraf@^2.6.2, rimraf@^2.6.3:
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/rimraf/-/rimraf-2.7.1.tgz#35797f13a7fdadc566142c29d4f07ccad483e3ec"
-  integrity sha512-uWjbaKIK3T1OSVptzX7Nl6PvQ3qAGtKEtVRjRuazjfL3Bx5eI409VZSqgND+4UNnmzLVdPj9FqFJNPqBZFve4w==
   dependencies:
     glob "^7.1.3"
 
