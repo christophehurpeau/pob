@@ -11,7 +11,7 @@ const requiredRollupVersion = require('../package.json').peerDependencies.rollup
   1,
 );
 
-if (semver.lt(requiredRollupVersion, rollup.VERSION)) {
+if (semver.lt(rollup.VERSION, requiredRollupVersion)) {
   console.error(
     `Invalid rollup version: ${rollup.VERSION}. Expecting >= ${requiredRollupVersion}`,
   );
