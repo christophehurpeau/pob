@@ -91,7 +91,7 @@ module.exports = class BabelGenerator extends Generator {
           type: 'checkbox',
           name: 'nodeVersions',
           message: 'Babel node versions: (https://github.com/nodejs/Release)',
-          when: (answers) => answers.babelTargets.includes('node'),
+          when: ({ babelTargets = [] }) => babelTargets.includes('node'),
           validate: (versions) => versions.length > 0,
           default: nodeVersions,
           choices: [
@@ -106,7 +106,7 @@ module.exports = class BabelGenerator extends Generator {
           type: 'checkbox',
           name: 'browserVersions',
           message: 'Babel browser versions',
-          when: (answers) => answers.babelTargets.includes('browser'),
+          when: ({ babelTargets = [] }) => babelTargets.includes('browser'),
           validate: (versions) => versions.length > 0,
           default: browserVersions,
           choices: [
@@ -125,8 +125,8 @@ module.exports = class BabelGenerator extends Generator {
           type: 'checkbox',
           name: 'formats',
           message: 'Babel formats',
-          when: (answers) => answers.babelTargets.length !== 0,
-          validate: (babelTargets) => babelTargets.length > 0,
+          when: ({ babelTargets = [] }) => babelTargets.length !== 0,
+          validate: (babelTargets = []) => babelTargets.length > 0,
           default: formats,
           choices: [
             {
@@ -144,14 +144,14 @@ module.exports = class BabelGenerator extends Generator {
           type: 'confirm',
           name: 'jsx',
           message: 'Enable JSX ?',
-          when: (answers) => answers.babelTargets.length !== 0,
+          when: ({ babelTargets = [] }) => babelTargets.length !== 0,
           default: jsx,
         },
       ]);
     }
 
     const newBabelEnvs = [
-      ...babelConfig.nodeVersions.map((version) => ({
+      ...(babelConfig.nodeVersions || []).map((version) => ({
         target: 'node',
         version,
         formats: babelConfig.formats.includes('es')
@@ -161,7 +161,7 @@ module.exports = class BabelGenerator extends Generator {
             : ['cjs']
           : babelConfig.formats,
       })),
-      ...babelConfig.browserVersions.map((version) => ({
+      ...(babelConfig.browserVersions || []).map((version) => ({
         target: 'browser',
         version: version === 'supported' ? undefined : version,
         formats: babelConfig.formats.includes('cjs')
