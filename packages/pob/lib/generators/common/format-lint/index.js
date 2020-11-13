@@ -174,7 +174,8 @@ module.exports = class LintGenerator extends Generator {
         pkg,
         !globalEslint ||
           (inLerna && inLerna.root) ||
-          lernaProjectType === 'app',
+          lernaProjectType === 'app' ||
+          isYarn2,
         ['eslint'],
       );
       const shouldHavePluginsDependencies =
