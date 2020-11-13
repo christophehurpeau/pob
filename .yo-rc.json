@@ -6,6 +6,7 @@
       "documentation": false,
       "eslint": true,
       "packageNames": [
+        "@pob/check-lib-dependency-in-root-dev-dependencies",
         "@pob/commitlint-config",
         "@pob/sort-object",
         "babel-plugin-fix-class-properties-uninitialized",

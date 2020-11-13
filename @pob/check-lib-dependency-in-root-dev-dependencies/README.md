@@ -7,8 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="https://npmjs.org/package/@pob/commitlint-config"><img src="https://img.shields.io/npm/v/@pob/commitlint-config.svg?style=flat-square"></a>
-  <a href="https://david-dm.org/christophehurpeau/pob?path=@pob/commitlint-config"><img src="https://david-dm.org/christophehurpeau/pob.svg?path=@pob/commitlint-config?style=flat-square"></a>
+  <a href="https://npmjs.org/package/@pob/check-lib-dependency-in-root-dev-dependencies"><img src="https://img.shields.io/npm/v/@pob/check-lib-dependency-in-root-dev-dependencies.svg?style=flat-square"></a>
 </p>
 
 ## Install

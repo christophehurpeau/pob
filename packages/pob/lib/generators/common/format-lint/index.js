@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-
 'use strict';
 
 const fs = require('fs');
@@ -404,13 +402,14 @@ module.exports = class LintGenerator extends Generator {
       const args = `${extArg} --report-unused-disable-directives --quiet`;
 
       packageUtils.addScripts(pkg, {
-        lint: globalEslint
+        'lint:eslint': globalEslint
           ? `yarn --cwd ../.. eslint${args} ${path.relative('../..', '.')}`
           : `${
               useBabel && !composite ? 'tsc && ' : ''
             }eslint${args} ${lintPaths.join(' ')}`,
       });
 
+      delete pkg.scripts.lint;
       delete pkg.scripts['typescript-check'];
     }
 

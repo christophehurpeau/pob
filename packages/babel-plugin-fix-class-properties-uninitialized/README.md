@@ -8,7 +8,6 @@
 
 <p align="center">
   <a href="https://npmjs.org/package/babel-plugin-fix-class-properties-uninitialized"><img src="https://img.shields.io/npm/v/babel-plugin-fix-class-properties-uninitialized.svg?style=flat-square"></a>
-  <a href="https://david-dm.org/christophehurpeau/pob?path=packages/babel-plugin-fix-class-properties-uninitialized"><img src="https://david-dm.org/christophehurpeau/pob.svg?path=packages/babel-plugin-fix-class-properties-uninitialized?style=flat-square"></a>
 </p>
 
 ## Install

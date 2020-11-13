@@ -4,4 +4,4 @@ import './styles.css';
 
 const Component = () => <div />;
 
-render(<Component />, document.getElementById('react-container'))
+render(<Component />, document.getElementById('react-container'));

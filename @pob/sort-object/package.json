@@ -7,7 +7,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com:christophehurpeau/pob.git",
+    "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "@pob/sort-object"
   },
   "homepage": "https://github.com/christophehurpeau/pob",
@@ -18,8 +18,9 @@
     "access": "public"
   },
   "main": "./lib/index.js",
+  "sideEffects": false,
   "scripts": {
-    "lint": "eslint --quiet lib"
+    "lint:eslint": "yarn --cwd ../.. eslint --report-unused-disable-directives --quiet @pob/sort-object"
   },
   "prettier": {
     "trailingComma": "all",

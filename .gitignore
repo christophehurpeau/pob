@@ -10,13 +10,7 @@ yarn-error.log*
 # IDE
 /.settings
 /.project
-/.idea/*
-!/.idea/name
-!/.idea/runConfigurations
-!/.idea/scopes
-!/.idea/modules.xml
-!/.idea/*.iml
-!/.idea/vcs.xml
+/.idea
 *.sublime-project
 *.sublime-workspace
 

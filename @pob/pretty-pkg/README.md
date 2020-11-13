@@ -8,7 +8,6 @@
 
 <p align="center">
   <a href="https://npmjs.org/package/@pob/pretty-pkg"><img src="https://img.shields.io/npm/v/@pob/pretty-pkg.svg?style=flat-square"></a>
-  <a href="https://david-dm.org/christophehurpeau/pob?path=@pob/pretty-pkg"><img src="https://david-dm.org/christophehurpeau/pob.svg?path=@pob/pretty-pkg?style=flat-square"></a>
 </p>
 
 ## Install

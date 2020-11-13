@@ -1,5 +1,3 @@
-/* eslint-disable no-param-reassign, max-lines, max-len */
-
 'use strict';
 
 const sortObject = require('@pob/sort-object');

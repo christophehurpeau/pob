@@ -61,7 +61,6 @@ module.exports = class PobBaseGenerator extends Generator {
       this.isRoot = true;
     } else {
       // only require if not specified in options
-      // eslint-disable-next-line global-require
       const inLerna = require('../../utils/inLerna');
       this.useLerna = inLerna && inLerna.root;
       this.inLerna = inLerna && !inLerna.root;

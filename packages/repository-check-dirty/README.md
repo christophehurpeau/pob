@@ -8,7 +8,6 @@
 
 <p align="center">
   <a href="https://npmjs.org/package/repository-check-dirty"><img src="https://img.shields.io/npm/v/repository-check-dirty.svg?style=flat-square"></a>
-  <a href="https://david-dm.org/christophehurpeau/pob?path=packages/repository-check-dirty"><img src="https://david-dm.org/christophehurpeau/pob.svg?path=packages/repository-check-dirty?style=flat-square"></a>
 </p>
 
 ### Install

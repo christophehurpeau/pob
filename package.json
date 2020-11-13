@@ -4,7 +4,7 @@
   "description": "library generator/tools/scripts",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
-  "repository": "https://github.com:christophehurpeau/pob.git",
+  "repository": "https://github.com/christophehurpeau/pob.git",
   "homepage": "https://github.com/christophehurpeau/pob",
   "engines": {
     "node": ">=12.10.0"
@@ -15,7 +15,9 @@
   ],
   "scripts": {
     "checks": "node scripts/check-packages-dependencies.js",
-    "lint": "eslint --ext js,ts,tsx .",
+    "lint": "yarn run lint:prettier && yarn run lint:eslint",
+    "lint:eslint": "eslint --report-unused-disable-directives --quiet --resolve-plugins-relative-to . --ext js,ts,tsx .",
+    "lint:prettier": "prettier --check .",
     "preversion": "yarn run lint && repository-check-dirty",
     "release": "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git",
     "test": "lerna run --stream test"

@@ -7,7 +7,7 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com:christophehurpeau/pob.git",
+    "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "packages/pob-dependencies"
   },
   "homepage": "https://github.com/christophehurpeau/pob",
@@ -16,9 +16,10 @@
   },
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
+  "sideEffects": false,
   "scripts": {
-    "lint": "eslint --quiet lib",
-    "preversion": "node ./scripts/update-peerdeps.js && node ./scripts/generate.d.ts.js && git add lib/index.d.ts"
+    "build:definitions": "tsc --lib esnext --noEmit ./lib/index.d.ts",
+    "lint:eslint": "yarn --cwd ../.. eslint --report-unused-disable-directives --quiet packages/pob-dependencies"
   },
   "prettier": {
     "trailingComma": "all",
