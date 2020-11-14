@@ -179,10 +179,7 @@ module.exports = class LernaGenerator extends Generator {
           : `${packageManager} run lint:prettier && ${packageManager} run lint:eslint${
               useYarn2WorkspacesCommand ? '' : ' --since'
             }`,
-        withBabel &&
-          `${packageManager} run build${
-            useYarn2WorkspacesCommand ? '' : ' --since'
-          } -- -- --no-clean`,
+        withBabel && `${packageManager} run build`,
         'repository-check-dirty',
       ]
         .filter(Boolean)

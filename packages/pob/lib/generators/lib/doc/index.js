@@ -22,6 +22,18 @@ module.exports = class DocGenerator extends Generator {
       defaults: false,
       desc: 'Coverage.',
     });
+
+    this.option('useYarn2', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+    });
+
+    this.option('packageNames', {
+      type: String,
+      required: false,
+      defaults: '{}',
+    });
   }
 
   writing() {
@@ -41,11 +53,19 @@ module.exports = class DocGenerator extends Generator {
           : packageUtils.hasReact(pkg);
 
       if (inLerna && inLerna.root) {
+        // "external-modulemap": ".*packages/([^/]+)/.*",
+        const packageNames = JSON.parse(this.options.packageNames);
         copyAndFormatTpl(
           this.fs,
           this.templatePath('tsconfig.doc.json.lerna.ejs'),
           this.destinationPath('tsconfig.doc.json'),
-          { jsx, workspaces: pkg.workspaces },
+          {
+            jsx,
+            workspaces: pkg.workspaces,
+            packageNames,
+            repositoryUrl: pkg.homepage, // or pkg.repository.replace(/\.git$/, '')
+            useYarn2: this.options.useYarn2,
+          },
         );
       } else {
         copyAndFormatTpl(
@@ -80,6 +100,15 @@ module.exports = class DocGenerator extends Generator {
       this.options.enabled && inLerna && inLerna.root,
       ['typedoc-plugin-lerna-packages'],
     );
+    // packageUtils.addOrRemoveDependenciesMeta(
+    //   pkg,
+    //   this.options.enabled && inLerna && inLerna.root,
+    //   {
+    //     'typedoc-neo-theme': {
+    //       unplugged: true,
+    //     },
+    //   },
+    // );
 
     if (this.options.enabled) {
       packageUtils.addScripts(pkg, {

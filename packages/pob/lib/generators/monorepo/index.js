@@ -140,6 +140,8 @@ module.exports = class PobMonorepoGenerator extends Generator {
     this.composeWith(require.resolve('../lib/doc'), {
       enabled: this.pobLernaConfig.documentation,
       testing: this.pobLernaConfig.testing,
+      packageNames: JSON.stringify(this.pobLernaConfig.packageNames),
+      useYarn2: this.options.useYarn2,
     });
     // Always add a gitignore, because npm publish uses it.
     this.composeWith(require.resolve('../core/gitignore'), {

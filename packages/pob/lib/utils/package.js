@@ -60,21 +60,25 @@ function internalAddToObject(pkg, key, object) {
   pkg[key] = sortObject(pkg[key]);
 }
 
+function internalRemoveFromObject(pkg, key, keys) {
+  if (!pkg[key]) return;
+  keys.forEach((k) => {
+    delete pkg[key][k];
+  });
+  if (Object.keys(pkg[key]).length === 0) {
+    delete pkg[key];
+  }
+}
+
 exports.sort = function sort(pkg) {
   return sortPkg(pkg);
 };
 
 const cleanVersion = (version) => version.replace(/^(\^|~)/, '');
 
-const internalRemoveDependencies = (pkg, type, dependencies) => {
+const internalRemoveDependencies = (pkg, type, dependencyKeys) => {
   if (pkg.name === 'pob-dependencies') return;
-  if (!pkg[type]) return;
-  dependencies.forEach((dependency) => {
-    delete pkg[type][dependency];
-  });
-  if (Object.keys(pkg[type]).length === 0) {
-    delete pkg[type];
-  }
+  internalRemoveFromObject(pkg, type, dependencyKeys);
 };
 
 const getVersionFromDependencyName = (dependency) =>
@@ -153,6 +157,32 @@ exports.removeDependencies = function removeDependencies(pkg, dependencies) {
   internalRemoveDependencies(pkg, 'dependencies', dependencies);
 };
 
+exports.addDependenciesMeta = function addDependenciesMeta(
+  pkg,
+  dependenciesMeta,
+) {
+  internalAddToObject(pkg, 'dependenciesMeta', dependenciesMeta);
+};
+
+exports.removeDependenciesMeta = function removeDependenciesMeta(
+  pkg,
+  dependenciesMetaKeys,
+) {
+  internalRemoveFromObject(pkg, 'dependenciesMeta', dependenciesMetaKeys);
+};
+
+exports.addOrRemoveDependenciesMeta = function addOrRemoveDependenciesMeta(
+  pkg,
+  condition,
+  dependenciesMeta,
+) {
+  if (condition) {
+    exports.addDependenciesMeta(pkg, dependenciesMeta);
+  } else {
+    exports.removeDependenciesMeta(pkg, Object.keys(dependenciesMeta));
+  }
+};
+
 exports.addDevDependencies = function addDevDependencies(pkg, dependencies) {
   internalAddDependencies(pkg, 'devDependencies', dependencies, true);
 };
@@ -204,6 +234,10 @@ exports.addScripts = function addScripts(pkg, scripts) {
   internalAddToObject(pkg, 'scripts', scripts);
 };
 
+exports.removeScripts = function removeScripts(pkg, keys) {
+  internalRemoveFromObject(pkg, 'scripts', keys);
+};
+
 exports.addOrRemoveScripts = function addOrRemoveScripts(
   pkg,
   condition,
@@ -211,15 +245,7 @@ exports.addOrRemoveScripts = function addOrRemoveScripts(
 ) {
   if (condition) {
     exports.addScripts(pkg, scripts);
-    return;
-  }
-
-  if (pkg.scripts) {
-    Object.keys(scripts).forEach((key) => {
-      delete pkg.scripts[key];
-    });
-    if (Object.keys(pkg.scripts).length === 0) {
-      delete pkg.scripts;
-    }
+  } else {
+    exports.removeScripts(pkg, Object.keys(scripts));
   }
 };
