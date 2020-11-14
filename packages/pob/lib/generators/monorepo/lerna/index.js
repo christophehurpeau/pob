@@ -128,7 +128,11 @@ module.exports = class LernaGenerator extends Generator {
       );
     }
 
-    this.fs.writeJSON(this.destinationPath('lerna.json'), lernaConfig);
+    writeAndFormatJson(
+      this.fs,
+      this.destinationPath('lerna.json'),
+      lernaConfig,
+    );
 
     // package.json
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
