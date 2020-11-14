@@ -62,7 +62,7 @@
     "pob-lcov-reporter": "^4.0.0",
     "prettier": "2.1.2",
     "repository-check-dirty": "^2.0.0",
-    "rollup": "2.33.1",
+    "rollup": "2.33.2",
     "semver": "7.3.2",
     "standard-version": "9.0.0",
     "typedoc": "0.19.2",
