@@ -3,6 +3,7 @@
 const fs = require('fs');
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
+const { copyAndFormatTpl } = require('../../../utils/writeAndFormat');
 
 module.exports = class CiGenerator extends Generator {
   constructor(args, opts) {
@@ -63,7 +64,7 @@ module.exports = class CiGenerator extends Generator {
       //   },
       // );
 
-      this.fs.copyTpl(
+      copyAndFormatTpl(
         this.templatePath('github-action-node-workflow.yml.ejs'),
         this.destinationPath('.github/workflows/push.yml'),
         {
