@@ -37,12 +37,43 @@ module.exports = class BabelGenerator extends Generator {
     });
   }
 
+  initializing() {
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+
+    if (pkg.pob && pkg.pob.babelEnvs) {
+      let babelEnvs = pkg.pob.babelEnvs;
+      if (
+        !babelEnvs.some(
+          (env) => env.target === 'node' && String(env.version) === '12',
+        ) &&
+        babelEnvs.some(
+          (env) =>
+            env.target === 'node' &&
+            (String(env.version) === '8' ||
+              String(env.version) === '6' ||
+              String(env.version) === '10'),
+        )
+      ) {
+        babelEnvs.unshift({
+          target: 'node',
+          version: '12',
+          formats: ['cjs', 'es'],
+        });
+      }
+      babelEnvs = babelEnvs.filter(
+        (env) => env.target !== 'node' || env.version >= 12,
+      );
+
+      pkg.pob.babelEnvs = babelEnvs;
+      this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    }
+  }
+
   async prompting() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
     const hasInitialPkgPob = !!pkg.pob;
 
-    if (!pkg.pob) pkg.pob = {};
     const babelEnvs = pkg.pob.babelEnvs || [];
 
     const targets = [

@@ -102,30 +102,6 @@ module.exports = class PobLibGenerator extends Generator {
       });
     }
 
-    if (babelEnvs) {
-      if (
-        !babelEnvs.some(
-          (env) => env.target === 'node' && String(env.version) === '12',
-        ) &&
-        babelEnvs.some(
-          (env) =>
-            env.target === 'node' &&
-            (String(env.version) === '8' ||
-              String(env.version) === '6' ||
-              String(env.version) === '10'),
-        )
-      ) {
-        babelEnvs.unshift({
-          target: 'node',
-          version: '12',
-          formats: ['cjs', 'es'],
-        });
-      }
-      babelEnvs = babelEnvs.filter(
-        (env) => env.target !== 'node' || env.version >= 12,
-      );
-    }
-
     if (this.pobjson.testing === true) {
       this.pobjson.testing = {
         ci: true,
