@@ -1391,6 +1391,16 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@lerna/changed@3.21.0":
+  version "3.21.0"
+  resolved "https://registry.yarnpkg.com/@lerna/changed/-/changed-3.21.0.tgz#108e15f679bfe077af500f58248c634f1044ea0b"
+  integrity sha512-hzqoyf8MSHVjZp0gfJ7G8jaz+++mgXYiNs9iViQGA8JlN/dnWLI5sWDptEH3/B30Izo+fdVz0S0s7ydVE3pWIw==
+  dependencies:
+    "@lerna/collect-updates" "3.20.0"
+    "@lerna/command" "3.21.0"
+    "@lerna/listable" "3.18.5"
+    "@lerna/output" "3.13.0"
+
 "@lerna/check-working-tree@3.16.5":
   version "3.16.5"
   resolved "https://registry.yarnpkg.com/@lerna/check-working-tree/-/check-working-tree-3.16.5.tgz#b4f8ae61bb4523561dfb9f8f8d874dd46bb44baa"
@@ -1554,6 +1564,15 @@
   version "3.13.0"
   resolved "https://registry.yarnpkg.com/@lerna/global-options/-/global-options-3.13.0.tgz#217662290db06ad9cf2c49d8e3100ee28eaebae1"
   integrity sha512-SlZvh1gVRRzYLVluz9fryY1nJpZ0FHDGB66U9tFfvnnxmueckRQxLopn3tXj3NU1kc3QANT2I5BsQkOqZ4TEFQ==
+
+"@lerna/listable@3.18.5":
+  version "3.18.5"
+  resolved "https://registry.yarnpkg.com/@lerna/listable/-/listable-3.18.5.tgz#e82798405b5ed8fc51843c8ef1e7a0e497388a1a"
+  integrity sha512-Sdr3pVyaEv5A7ZkGGYR7zN+tTl2iDcinryBPvtuv20VJrXBE8wYcOks1edBTcOWsPjCE/rMP4bo1pseyk3UTsg==
+  dependencies:
+    "@lerna/query-graph" "3.18.5"
+    chalk "^2.3.1"
+    columnify "^1.5.4"
 
 "@lerna/log-packed@3.16.0":
   version "3.16.0"
