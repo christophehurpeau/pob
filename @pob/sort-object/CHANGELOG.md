@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/christophehurpeau/pob/compare/@pob/sort-object@2.0.0...@pob/sort-object@2.0.1) (2020-11-15)
+
+
+### Bug Fixes
+
+* remove postbuild script and use only build ([2f9b660](https://github.com/christophehurpeau/pob/commit/2f9b660565e35f928a475213787f7b88c3f60c44))
+
+
+
+
+
 # [2.0.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-object@1.1.2...@pob/sort-object@2.0.0) (2020-11-13)
 
 

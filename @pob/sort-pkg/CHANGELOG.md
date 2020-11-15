@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@2.0.0...@pob/sort-pkg@2.1.0) (2020-11-15)
+
+
+### Features
+
+* add dependenciesMeta ([88bf50b](https://github.com/christophehurpeau/pob/commit/88bf50b3f150ed60fbcaf0b1e12f3821bf047a96))
+
+
+
+
+
 # [2.0.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@1.2.0...@pob/sort-pkg@2.0.0) (2020-11-13)
 
 

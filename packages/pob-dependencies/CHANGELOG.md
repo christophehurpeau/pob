@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.0.0...pob-dependencies@3.1.0) (2020-11-15)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v41.0.3 [skip ci] ([#703](https://github.com/christophehurpeau/pob/issues/703)) ([0d49c9c](https://github.com/christophehurpeau/pob/commit/0d49c9c9ecfb6f5fc2abdb77d190d501951767c2))
+* **deps:** update @pob/eslint-config to v41.0.4 ([#705](https://github.com/christophehurpeau/pob/issues/705)) ([c3c1395](https://github.com/christophehurpeau/pob/commit/c3c1395141109949199d6888981e9131a8991681))
+* **deps:** update dependency rollup to v2.33.2 [skip ci] ([#704](https://github.com/christophehurpeau/pob/issues/704)) ([5445f6a](https://github.com/christophehurpeau/pob/commit/5445f6a02b247407f483806af36c8d57a69ebdb6))
+
+
+
+
+
 # [3.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@2.3.0...pob-dependencies@3.0.0) (2020-11-13)
 
 

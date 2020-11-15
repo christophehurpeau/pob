@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@3.0.0...babel-plugin-fix-class-properties-uninitialized@3.0.1) (2020-11-15)
+
+**Note:** Version bump only for package babel-plugin-fix-class-properties-uninitialized
+
+
+
+
+
 # [3.0.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@2.3.2...babel-plugin-fix-class-properties-uninitialized@3.0.0) (2020-11-13)
 
 

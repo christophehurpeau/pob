@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.1](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@2.0.0...@pob/commitlint-config@2.0.1) (2020-11-15)
+
+**Note:** Version bump only for package @pob/commitlint-config
+
+
+
+
+
 # [2.0.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@1.1.3...@pob/commitlint-config@2.0.0) (2020-11-13)
 
 

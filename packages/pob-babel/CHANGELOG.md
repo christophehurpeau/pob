@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.0.1](https://github.com/christophehurpeau/pob/compare/pob-babel@26.0.0...pob-babel@26.0.1) (2020-11-15)
+
+
+### Bug Fixes
+
+* rollup config template ([3ff67c4](https://github.com/christophehurpeau/pob/commit/3ff67c479c4242c230a78f899c8090cfa24cf82a))
+
+
+
+
+
 # [26.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@25.2.0...pob-babel@26.0.0) (2020-11-13)
 
 

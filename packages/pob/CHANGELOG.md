@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/christophehurpeau/pob/compare/pob@7.0.0...pob@7.1.0) (2020-11-15)
+
+
+### Bug Fixes
+
+* add eslint in devdep to prevent having peer dep warnings ([b95390c](https://github.com/christophehurpeau/pob/commit/b95390c7080abdd59dc65ee710abc6e037459b11))
+* babelEnvs should be fixed in babel generator ([78cff70](https://github.com/christophehurpeau/pob/commit/78cff70a23ab264b0a0e3b03bcae94e84b6a6d78))
+* format lerna.json ([086789b](https://github.com/christophehurpeau/pob/commit/086789bc6c776076adea37f45a6b4f712a4e08d1))
+* format push workflow ([449a8db](https://github.com/christophehurpeau/pob/commit/449a8dba897455783a1d563e1c330be4e4e0e1fc))
+* go back to using lerna for running commands ([364900a](https://github.com/christophehurpeau/pob/commit/364900abd7400e51da1b986dc108f8c8fe0d2a74))
+* missing first arg in ci generator ([94a9748](https://github.com/christophehurpeau/pob/commit/94a97489636d09aa76b7641f56379d0e8acf0798))
+* remove postbuild script and use only build ([2f9b660](https://github.com/christophehurpeau/pob/commit/2f9b660565e35f928a475213787f7b88c3f60c44))
+* rollup config template ([3ff67c4](https://github.com/christophehurpeau/pob/commit/3ff67c479c4242c230a78f899c8090cfa24cf82a))
+
+
+### Features
+
+* improve docs and support with yarn 2 ([e0b80b4](https://github.com/christophehurpeau/pob/commit/e0b80b45ff6981b5ca308c032fd3a73236146340))
+
+
+
+
+
 # [7.0.0](https://github.com/christophehurpeau/pob/compare/pob@6.4.0...pob@7.0.0) (2020-11-13)
 
 
