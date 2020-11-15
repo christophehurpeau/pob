@@ -65,6 +65,7 @@ module.exports = class CiGenerator extends Generator {
       // );
 
       copyAndFormatTpl(
+        this.fs,
         this.templatePath('github-action-node-workflow.yml.ejs'),
         this.destinationPath('.github/workflows/push.yml'),
         {
