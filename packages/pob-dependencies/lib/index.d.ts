@@ -37,7 +37,7 @@ interface Dependencies {
   semver: '7.3.2';
   'standard-version': '9.0.0';
   typedoc: '0.19.2';
-  'typedoc-plugin-lerna-packages': '0.3.1';
+  '@chrp/typedoc-plugin-lerna-packages': '0.4.0';
   typescript: '4.0.5';
 }
 

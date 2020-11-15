@@ -53,7 +53,7 @@
             "semver",
             "standard-version",
             "typedoc",
-            "typedoc-plugin-lerna-packages"
+            "@chrp/typedoc-plugin-lerna-packages"
           ],
           "schedule": [
             "before 3am on Friday"

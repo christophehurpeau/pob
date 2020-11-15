@@ -20,7 +20,6 @@ const requireIfPossible = (packageJsonPath) => {
 };
 
 Object.keys(pkg.devDependencies).forEach((key) => {
-  if (key === 'typedoc-plugin-lerna-packages') return;
   const depPkg = requireIfPossible(`${key}/package.json`);
   if (!depPkg.peerDependencies) return;
   Object.keys(depPkg.peerDependencies).forEach((peerDep) => {

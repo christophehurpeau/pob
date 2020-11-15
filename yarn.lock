@@ -970,6 +970,11 @@
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
   integrity sha512-0hYQ8SB4Db5zvZB4axdMHGwEaQjkZzFjQiN9LVYvIFB2nSUHW9tYpxWriPrWDASIxiaXax83REcLxuSdnGPZtw==
 
+"@chrp/typedoc-plugin-lerna-packages@0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@chrp/typedoc-plugin-lerna-packages/-/typedoc-plugin-lerna-packages-0.4.0.tgz#a3871fc3bacafb59226b72c5227e282b5e0dcbd1"
+  integrity sha512-v7iklMxx8MK3c/RhDw3o4T0GyL+KJ/xgyvPi3tcVaD1ZHWWwvVUfCjLLRg2FlsnUQJlX+2YKpRsD3ptiW+twBA==
+
 "@cnakazawa/watch@^1.0.3":
   version "1.0.4"
   resolved "https://registry.yarnpkg.com/@cnakazawa/watch/-/watch-1.0.4.tgz#f864ae85004d0fcab6f50be9141c4da368d1656a"
@@ -10316,11 +10321,6 @@ typedoc-default-themes@^0.11.4:
   version "0.11.4"
   resolved "https://registry.yarnpkg.com/typedoc-default-themes/-/typedoc-default-themes-0.11.4.tgz#1bc55b7c8d1132844616ff6f570e1e2cd0eb7343"
   integrity sha512-Y4Lf+qIb9NTydrexlazAM46SSLrmrQRqWiD52593g53SsmUFioAsMWt8m834J6qsp+7wHRjxCXSZeiiW5cMUdw==
-
-typedoc-plugin-lerna-packages@0.3.1:
-  version "0.3.1"
-  resolved "https://registry.yarnpkg.com/typedoc-plugin-lerna-packages/-/typedoc-plugin-lerna-packages-0.3.1.tgz#3e65068e6c6ef987fc4c4553416af3fb22c8a5e6"
-  integrity sha512-azeP5DVv4Me+C32RoGbMAzXo7JeYmeEstMAx4mdtVGHLtrXjitlaf0pS562vogofwyIcyVnjL6BlZWvbPQ3hmw==
 
 typedoc@0.19.2:
   version "0.19.2"

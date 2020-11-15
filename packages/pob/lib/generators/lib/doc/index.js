@@ -90,6 +90,7 @@ module.exports = class DocGenerator extends Generator {
       'jsdoc',
       'minami',
       'jaguarjs-jsdoc',
+      'typedoc-plugin-lerna-packages',
     ]);
 
     packageUtils.addOrRemoveDevDependencies(pkg, this.options.enabled, [
@@ -98,7 +99,7 @@ module.exports = class DocGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.options.enabled && inLerna && inLerna.root,
-      ['typedoc-plugin-lerna-packages'],
+      ['@chrp/typedoc-plugin-lerna-packages'],
     );
     // packageUtils.addOrRemoveDependenciesMeta(
     //   pkg,

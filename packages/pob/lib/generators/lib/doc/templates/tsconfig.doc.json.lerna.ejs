@@ -19,7 +19,7 @@
 < % } else { -% >
     "theme": "./node_modules/typedoc-neo-theme/bin/default",
 < % } */ -%>
-    "plugin": [<% /* "typedoc-neo-theme", */ %>"typedoc-plugin-lerna-packages"],
+    "plugin": [<% /* "typedoc-neo-theme", */ %>"@chrp/typedoc-plugin-lerna-packages"],
     "lernaExclude": [
       <%- packageNames.filter(n => n.endsWith('-example')).map(n => n.startsWith('@') ? `"${n}"` : `"packages/${n}"`).join(', ') %>
     ],
