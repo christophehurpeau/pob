@@ -1,7 +1,6 @@
 {
   "root": true,
   "extends": ["@pob/eslint-config", "@pob/eslint-config-node"],
-  "ignorePatterns": ["/dist", "/test", "/public", "/build"],
   "rules": {
     "max-lines": "off",
     "no-multi-assign": "off",

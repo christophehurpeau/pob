@@ -18,6 +18,7 @@
   "types": "./lib/index.d.ts",
   "sideEffects": false,
   "scripts": {
+    "build": "yarn run build:definitions",
     "build:definitions": "tsc --lib esnext --noEmit ./lib/index.d.ts",
     "lint:eslint": "yarn --cwd ../.. eslint --report-unused-disable-directives --quiet packages/pob-dependencies"
   },

@@ -8,6 +8,7 @@
       "packageNames": [
         "@pob/check-lib-dependency-in-root-dev-dependencies",
         "@pob/commitlint-config",
+        "@pob/lerna-light",
         "@pob/sort-object",
         "babel-plugin-fix-class-properties-uninitialized",
         "babel-plugin-pob-babel",
