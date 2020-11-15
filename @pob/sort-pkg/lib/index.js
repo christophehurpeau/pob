@@ -23,6 +23,7 @@ module.exports = function sortPkg(pkg) {
     'os',
     'cpu',
     'publishConfig',
+    'lerna',
     'workspaces',
     'browserslist',
     'main',
