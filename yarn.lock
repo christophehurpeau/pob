@@ -2050,6 +2050,16 @@
     eslint-config-prettier "^6.11.0"
     eslint-plugin-unicorn "^23.0.0"
 
+"@pob/lerna-light@file:./@pob/lerna-light":
+  version "3.23.0"
+  dependencies:
+    "@lerna/changed" "3.21.0"
+    "@lerna/cli" "3.18.5"
+    "@lerna/exec" "3.21.0"
+    "@lerna/publish" "3.22.1"
+    "@lerna/run" "3.21.0"
+    "@lerna/version" "3.22.1"
+
 "@pob/use-eslint-plugin@^41.0.4":
   version "41.0.4"
   resolved "https://registry.yarnpkg.com/@pob/use-eslint-plugin/-/use-eslint-plugin-41.0.4.tgz#4c22cb6f6b002c65e985ebdc7902e2ebb29860d1"
