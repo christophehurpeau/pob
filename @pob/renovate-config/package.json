@@ -86,6 +86,7 @@
             "@pob/root",
             "@pob/commitlint-config",
             "@pob/pretty-pkg",
+            "@pob/lerna-light",
             "husky",
             "prettier",
             "lerna",

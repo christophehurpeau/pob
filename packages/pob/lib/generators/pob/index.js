@@ -176,6 +176,7 @@ module.exports = class PobBaseGenerator extends Generator {
         'husky',
         'yarnhook',
         'lerna',
+        '@pob/lerna-light',
       ]);
       delete pkg.commitlint;
       delete pkg.husky;

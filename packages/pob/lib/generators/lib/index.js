@@ -284,7 +284,7 @@ module.exports = class PobLibGenerator extends Generator {
 
     const withBabel = Boolean(pkg.pob.babelEnvs);
 
-    packageUtils.removeDevDependencies(pkg, ['lerna']);
+    packageUtils.removeDevDependencies(pkg, ['lerna', '@pob/lerna-light']);
     if (inLerna) {
       if (pkg.scripts) {
         delete pkg.scripts.preversion;

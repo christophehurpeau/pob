@@ -136,7 +136,8 @@ module.exports = class LernaGenerator extends Generator {
 
     // package.json
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-    packageUtils.removeDependencies(pkg, ['lerna']);
+    packageUtils.removeDependencies(pkg, ['lerna', '@pob/lerna-light']);
+    packageUtils.removeDevDependencies(pkg, ['lerna']);
 
     if (this.fs.exists(this.destinationPath('lerna-debug.log'))) {
       this.fs.delete(this.destinationPath('lerna-debug.log'));
@@ -147,7 +148,7 @@ module.exports = class LernaGenerator extends Generator {
       pkg.engines.npm = '>= 6.4.0';
     }
 
-    packageUtils.addDevDependencies(pkg, ['lerna']);
+    packageUtils.addDevDependencies(pkg, ['@pob/lerna-light']);
 
     if (pkg.name !== 'pob-monorepo') {
       packageUtils.addDevDependencies(pkg, ['repository-check-dirty']);
