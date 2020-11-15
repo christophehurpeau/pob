@@ -1,0 +1,42 @@
+{
+  "name": "@pob/lerna-light",
+  "version": "3.22.1-pre",
+  "description": "import only required commands from lerna",
+  "keywords": [],
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "@pob/lerna-light"
+  },
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "engines": {
+    "node": ">=12.10.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./lib/index.js",
+  "sideEffects": false,
+  "bin": {
+    "lerna": "bin/cli.js"
+  },
+  "scripts": {
+    "lint:eslint": "yarn --cwd ../.. eslint --report-unused-disable-directives --quiet @pob/lerna-light"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true,
+    "arrowParens": "always"
+  },
+  "pob": {},
+  "dependencies": {
+    "@lerna/changed": "3.21.0",
+    "@lerna/cli": "3.18.5",
+    "@lerna/exec": "3.21.0",
+    "@lerna/publish": "3.22.1",
+    "@lerna/run": "3.21.0",
+    "@lerna/version": "3.22.1"
+  }
+}
