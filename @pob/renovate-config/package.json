@@ -60,7 +60,7 @@
           ]
         },
         {
-          "description": "@pob eslint configs",
+          "description": "eslint configs",
           "packagePatterns": [
             "^@pob/eslint-config",
             "^@typescript-eslint/",
@@ -71,6 +71,19 @@
           ],
           "updateTypes": [
             "major"
+          ]
+        },
+        {
+          "description": "@pob eslint configs",
+          "packagePatterns": [
+            "^@pob/eslint-config"
+          ],
+          "packageNames": [
+            "eslint"
+          ],
+          "updateTypes": [
+            "patch",
+            "minor"
           ]
         },
         {
