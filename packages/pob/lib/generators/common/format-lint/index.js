@@ -444,12 +444,17 @@ module.exports = class LintGenerator extends Generator {
       packageUtils.addScripts(pkg, {
         'lint:eslint': globalEslint
           ? `yarn --cwd ../.. eslint${args} ${path.relative('../..', '.')}`
-          : `${
-              useBabel && !composite ? 'tsc && ' : ''
-            }eslint${args} ${lintPaths.join(' ')}`,
+          : `eslint${args} ${lintPaths.join(' ')}`,
+        lint: `${useBabel && !composite ? 'tsc && ' : ''}yarn run lint:eslint`,
       });
 
-      delete pkg.scripts.lint;
+      if (!inLerna) {
+        pkg.scripts.lint = `yarn run lint:prettier && ${pkg.scripts.lint}`;
+        packageUtils.addScripts(pkg, { 'lint:prettier': 'prettier --check .' });
+      } else {
+        delete pkg.scripts['lint:prettier'];
+      }
+
       delete pkg.scripts['typescript-check'];
     }
 
