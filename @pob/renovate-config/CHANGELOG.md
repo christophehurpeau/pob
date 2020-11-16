@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.0.1...@pob/renovate-config@2.1.0) (2020-11-16)
+
+
+### Features
+
+* **renovate-config:** improve eslint config groups ([8d086bc](https://github.com/christophehurpeau/pob/commit/8d086bcb3ffaa9052a3d92140806aca35dfd8348))
+
+
+
+
+
 ## [2.0.1](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.0.0...@pob/renovate-config@2.0.1) (2020-11-15)
 
 **Note:** Version bump only for package @pob/renovate-config

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.1.0...pob-dependencies@3.1.1) (2020-11-16)
+
+
+### Bug Fixes
+
+* update @chrp/typedoc-plugin-lerna-packages ([be7ba49](https://github.com/christophehurpeau/pob/commit/be7ba4928fd3db015a27d4dc3398e722f84af2cd))
+
+
+
+
+
 # [3.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.0.0...pob-dependencies@3.1.0) (2020-11-15)
 
 
