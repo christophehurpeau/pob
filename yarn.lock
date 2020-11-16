@@ -10926,10 +10926,10 @@ yarn-deduplicate@3.1.0:
     commander "^6.1.0"
     semver "^7.3.2"
 
-yarnhook@^0.4.3:
-  version "0.4.5"
-  resolved "https://registry.yarnpkg.com/yarnhook/-/yarnhook-0.4.5.tgz#1c3c850b1c5e459e378adb4a72a68f82acef419b"
-  integrity sha512-ES7Z/OPagymy0/IHUc/UmogECxO916JxH+K9IpBewDdWEwtEMDa5BxJfBOB43dgobuoJORru5UdRBn0Fq40y7A==
+yarnhook@^0.5.0:
+  version "0.5.1"
+  resolved "https://registry.yarnpkg.com/yarnhook/-/yarnhook-0.5.1.tgz#27d47947412bd124874d56aa75725b76b68cc398"
+  integrity sha512-YPLLXO/PzsFXKvRfsOG/r60WBz8RT7VbkkQv2oHDb6o+EjX0vcUSeA3aw5el2AEWjbcg1sgemjHyCwRIvQxZWw==
   dependencies:
     execa "^4.0.3"
     find-parent-dir "^0.3.0"
