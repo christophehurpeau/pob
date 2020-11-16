@@ -2,12 +2,16 @@ CHANGELOG.md
 <% if (documentation) { -%>
 /docs
 <% } -%>
-<% if (useYarn2) { -%>
+<% if (useYarn2 && inLernaRoot) { -%>
 /.pnp.js
 /.yarn/**/*
 <% } -%>
 <% if (workspaces) { -%>
 <% for (let workspace of workspaces) { -%>
-<%= '/' + workspace + '/dist' %>
+<% if (ignorePatterns) { -%>
+<% for (let ignorePattern of ignorePatterns) { -%>
+<%= '/' + workspace + ignorePattern %>
+<% } -%>
+<% } -%>
 <% } -%>
 <% } -%>

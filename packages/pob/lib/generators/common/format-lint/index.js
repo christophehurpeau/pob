@@ -7,6 +7,7 @@ const ensureJsonFileFormatted = require('../../../utils/ensureJsonFileFormatted'
 const inLerna = require('../../../utils/inLerna');
 const packageUtils = require('../../../utils/package');
 const { writeAndFormatJson } = require('../../../utils/writeAndFormat');
+const { appIgnorePaths } = require('../../app/ignorePaths');
 const updateEslintConfig = require('./updateEslintConfig');
 
 module.exports = class LintGenerator extends Generator {
@@ -39,6 +40,18 @@ module.exports = class LintGenerator extends Generator {
       required: false,
       defaults: false,
       desc: 'Enable resolving from src directory',
+    });
+
+    this.option('appTypes', {
+      type: String,
+      required: false,
+      desc: 'list of app types',
+    });
+
+    this.option('ignorePaths', {
+      type: String,
+      required: false,
+      desc: 'list of ignore paths to add',
     });
   }
 
@@ -85,13 +98,29 @@ module.exports = class LintGenerator extends Generator {
     };
 
     if (!inLerna || inLerna.root) {
+      const ignorePatterns = new Set(['/dist']);
+      if (this.options.appTypes) {
+        const appTypes = JSON.parse(this.options.appTypes);
+        appTypes.forEach((appType) => {
+          appIgnorePaths[appType]({})
+            .filter(Boolean)
+            .forEach((ignorePath) => {
+              if (ignorePath.startsWith('#')) return;
+              ignorePatterns.add(ignorePath);
+            });
+        });
+      }
+
       this.fs.copyTpl(
         this.templatePath('prettierignore.ejs'),
         this.destinationPath('.prettierignore'),
         {
+          inLernaRoot: !!inLerna && inLerna.root,
           documentation: this.options.documentation,
           useYarn2: this.options.useYarn2,
           workspaces: pkg.workspaces,
+          hasApp: this.options.hasApp,
+          ignorePatterns: [...ignorePatterns],
         },
       );
     } else if (this.fs.exists(this.destinationPath('.prettierignore'))) {
@@ -308,21 +337,29 @@ module.exports = class LintGenerator extends Generator {
         ensureJsonFileFormatted(rootEslintrcPath);
       }
 
-      const ignorePatterns = [];
+      const ignorePatterns = new Set();
 
       if (!inLerna && useTypescript) {
-        ignorePatterns.push('*.d.ts');
+        ignorePatterns.add('*.d.ts');
       }
 
       if (inLerna && !inLerna.root && (this.options.typescript || pkg.types)) {
-        ignorePatterns.push('*.d.ts');
+        ignorePatterns.add('*.d.ts');
       }
       if (inLerna && inLerna.root && this.options.documentation) {
-        ignorePatterns.push('/docs');
+        ignorePatterns.add('/docs');
       }
 
       if (inLerna && !inLerna.root && useBabel) {
-        ignorePatterns.push('/dist', '/test', '/public', '/build');
+        ignorePatterns.add('/dist', '/test');
+      }
+
+      if (this.options.ignorePaths) {
+        const ignorePaths = JSON.parse(this.options.ignorePaths);
+        ignorePaths.forEach((ignorePath) => {
+          if (ignorePath.startsWith('#')) return;
+          ignorePatterns.add(ignorePath);
+        });
       }
 
       const rootEslintrcConfig = updateEslintConfig(
@@ -332,7 +369,7 @@ module.exports = class LintGenerator extends Generator {
             ? extendsConfig
             : extendsConfigNoBabel,
           ignorePatterns:
-            ignorePatterns.length === 0 ? undefined : ignorePatterns,
+            ignorePatterns.size === 0 ? undefined : [...ignorePatterns],
         },
       );
 

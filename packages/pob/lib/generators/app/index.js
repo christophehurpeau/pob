@@ -4,14 +4,7 @@ const Generator = require('yeoman-generator');
 const inLerna = require('../../utils/inLerna');
 const inNpmLerna = require('../../utils/inNpmLerna');
 const packageUtils = require('../../utils/package');
-
-const gitignorePaths = {
-  alp: (config) => ['# alp paths', '/build', '/public', '/data'],
-  'next.js': (config) => ['# next.js paths', '/.next', '/out'],
-  pobpack: (config) => ['/build', '/public'],
-  node: (config) => ['/dist'],
-  other: (config) => [],
-};
+const { appIgnorePaths } = require('./ignorePaths');
 
 const appsWithTypescript = ['alp', 'next.js', 'pobpack'];
 const appsWithNode = ['alp', 'next.js'];
@@ -94,6 +87,10 @@ module.exports = class PobAppGenerator extends Generator {
         ? pkg.pob.jsx
         : packageUtils.hasReact(pkg);
 
+    const ignorePaths = appIgnorePaths[this.appConfig.type](
+      this.appConfig,
+    ).filter(Boolean);
+
     this.composeWith(require.resolve('../common/typescript'), {
       enable: babel,
       builddefs: false,
@@ -113,6 +110,7 @@ module.exports = class PobAppGenerator extends Generator {
       browser,
       enableSrcResolver: true,
       useYarn2: this.options.useYarn2,
+      ignorePaths: JSON.stringify(ignorePaths),
     });
 
     this.composeWith(require.resolve('../common/old-dependencies'));
@@ -121,9 +119,7 @@ module.exports = class PobAppGenerator extends Generator {
       root: !inLerna || inLerna.root,
       documentation: false,
       withBabel: babel,
-      paths: gitignorePaths[this.appConfig.type](this.appConfig)
-        .filter(Boolean)
-        .join('\n'),
+      paths: ignorePaths.join('\n'),
       buildInGit: false,
     });
 

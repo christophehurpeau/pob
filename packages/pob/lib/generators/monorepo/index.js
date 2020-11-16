@@ -1,8 +1,22 @@
 'use strict';
 
+const fs = require('fs');
 const PackageGraph = require('@lerna/package-graph');
 const LernaProject = require('@lerna/project');
 const Generator = require('yeoman-generator');
+
+const getAppTypes = (configs) => {
+  const appConfigs = configs.filter(
+    (config) => config && config.project && config.project.type === 'app',
+  );
+
+  const appTypes = new Set();
+  appConfigs.forEach((config) => {
+    appTypes.add(config.app.type);
+  });
+
+  return [...appTypes];
+};
 
 module.exports = class PobMonorepoGenerator extends Generator {
   constructor(args, opts) {
@@ -31,8 +45,8 @@ module.exports = class PobMonorepoGenerator extends Generator {
 
   async initializing() {
     this.lernaProject = new LernaProject(this.destinationPath());
-    this.packages = await this.lernaProject.getPackages();
-    const graph = new PackageGraph(this.packages);
+    const packages = await this.lernaProject.getPackages();
+    const graph = new PackageGraph(packages);
     const [cyclePaths] = graph.partitionCycles();
 
     if (cyclePaths.size) {
@@ -43,7 +57,8 @@ module.exports = class PobMonorepoGenerator extends Generator {
       console.warn(cycleMessage);
     }
 
-    const packages = [];
+    this.packages = [];
+    this.packageLocations = [];
 
     while (graph.size) {
       // pick the current set of nodes _without_ localDependencies (aka it is a "source" node)
@@ -52,13 +67,23 @@ module.exports = class PobMonorepoGenerator extends Generator {
       );
 
       // batches are composed of Package instances, not PackageGraphNodes
-      packages.push(...batch.map((node) => node.pkg));
+      this.packages.push(...batch.map((node) => node.pkg));
+      this.packageLocations.push(...batch.map((node) => node.location));
 
       // pruning the graph changes the node.localDependencies.size test
       graph.prune(...batch);
     }
 
-    this.packageNames = packages.map((pkg) => pkg.name);
+    this.packageNames = this.packages.map((pkg) => pkg.name);
+    this.packageConfigs = this.packageLocations.map((location) => {
+      try {
+        return JSON.parse(fs.readFileSync(`${location}/.yo-rc.json`, 'utf-8'))
+          .pob;
+      } catch {
+        console.warn(`warn: could not read pob config in ${location}`);
+        return {};
+      }
+    });
   }
 
   async prompting() {
@@ -135,6 +160,7 @@ module.exports = class PobMonorepoGenerator extends Generator {
       typescript: this.pobLernaConfig.typescript,
       testing: this.pobLernaConfig.testing,
       useYarn2: this.options.useYarn2,
+      appTypes: JSON.stringify(getAppTypes(this.packageConfigs)),
     });
 
     this.composeWith(require.resolve('../lib/doc'), {
