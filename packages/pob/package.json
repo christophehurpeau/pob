@@ -1,6 +1,6 @@
 {
   "name": "pob",
-  "version": "7.1.1",
+  "version": "7.2.0",
   "description": "Pile of bones, library generator with git/babel/typescript/typedoc/readme/jest",
   "keywords": [
     "skeleton"
@@ -50,7 +50,7 @@
     "lodash.kebabcase": "^4.1.1",
     "minimist-argv": "^1.1.0",
     "parse-author": "^2.0.0",
-    "pob-dependencies": "^3.1.1",
+    "pob-dependencies": "^3.2.0",
     "prettier": "2.1.2",
     "semver": "^7.1.2",
     "update-notifier": "^5.0.1",

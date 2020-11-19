@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.2](https://github.com/christophehurpeau/pob/compare/@pob/root@3.0.1...@pob/root@3.0.2) (2020-11-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency yarnhook to ^0.5.0 ([#706](https://github.com/christophehurpeau/pob/issues/706)) ([fc2fc54](https://github.com/christophehurpeau/pob/commit/fc2fc547f0b847c42c189d6ea860d5eb635389bc))
+
+
+
+
+
 ## [3.0.1](https://github.com/christophehurpeau/pob/compare/@pob/root@3.0.0...@pob/root@3.0.1) (2020-11-15)
 
 **Note:** Version bump only for package @pob/root

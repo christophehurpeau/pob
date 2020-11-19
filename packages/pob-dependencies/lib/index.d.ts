@@ -14,8 +14,8 @@ interface Dependencies {
   '@pob/pretty-pkg': '^2.0.1';
   '@pob/root': '^3.0.1';
   '@types/jest': '26.0.15';
-  '@typescript-eslint/eslint-plugin': '4.7.0';
-  '@typescript-eslint/parser': '4.7.0';
+  '@typescript-eslint/eslint-plugin': '4.8.1';
+  '@typescript-eslint/parser': '4.8.1';
   'babel-jest': '26.6.3';
   'babel-preset-latest-node': '5.1.1';
   'babel-preset-modern-browsers': '15.0.2';
@@ -34,7 +34,7 @@ interface Dependencies {
   'pob-lcov-reporter': '^4.0.1';
   prettier: '2.1.2';
   'repository-check-dirty': '^2.0.1';
-  rollup: '2.33.2';
+  rollup: '2.33.3';
   semver: '7.3.2';
   'standard-version': '9.0.0';
   typedoc: '0.19.2';

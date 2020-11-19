@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.1.1...pob-dependencies@3.2.0) (2020-11-19)
+
+
+### Features
+
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v4.8.0 [skip ci] ([#707](https://github.com/christophehurpeau/pob/issues/707)) ([293f8d2](https://github.com/christophehurpeau/pob/commit/293f8d2bcb685e9dc8da6f541a4ef5d8e4965d17))
+* **deps:** update dependency @typescript-eslint/parser to v4.8.0 ([#708](https://github.com/christophehurpeau/pob/issues/708)) ([d976680](https://github.com/christophehurpeau/pob/commit/d976680d238d409d85c8b702d8cb3ccc8e893c3c))
+* **deps:** update dependency rollup to v2.33.3 ([#710](https://github.com/christophehurpeau/pob/issues/710)) ([6c04650](https://github.com/christophehurpeau/pob/commit/6c046506dfb357e371587d92de4b79a017b546cb))
+* **deps:** update typescript-eslint monorepo to v4.8.1 ([#709](https://github.com/christophehurpeau/pob/issues/709)) ([b52a494](https://github.com/christophehurpeau/pob/commit/b52a494be6f2a2f1201b03ff541ff0ed09480826))
+
+
+
+
+
 ## [3.1.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.1.0...pob-dependencies@3.1.1) (2020-11-16)
 
 

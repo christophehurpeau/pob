@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0](https://github.com/christophehurpeau/pob/compare/pob@7.1.1...pob@7.2.0) (2020-11-19)
+
+
+### Bug Fixes
+
+* lint for non lerna projects ([61548e5](https://github.com/christophehurpeau/pob/commit/61548e51a29651ffb6fab55a9ee30bc56e87fa42))
+* root prettier ignore ([9e1187f](https://github.com/christophehurpeau/pob/commit/9e1187ffa0227993d3f80ef0899208e6dd1bb96d))
+
+
+### Features
+
+* force vscode config to not be ignored ([284f65a](https://github.com/christophehurpeau/pob/commit/284f65a12f790ace9bc8a781b8cb8defa1e5c55b))
+* improve ignore paths ([ac90c3c](https://github.com/christophehurpeau/pob/commit/ac90c3c90c2250ba69ccfc5384ba568166e72ef8))
+
+
+
+
+
 ## [7.1.1](https://github.com/christophehurpeau/pob/compare/pob@7.1.0...pob@7.1.1) (2020-11-16)
 
 **Note:** Version bump only for package pob
