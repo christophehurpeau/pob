@@ -115,7 +115,7 @@ module.exports = class LintGenerator extends Generator {
         this.templatePath('prettierignore.ejs'),
         this.destinationPath('.prettierignore'),
         {
-          inLernaRoot: !!inLerna && inLerna.root,
+          inRoot: !inLerna || inLerna.root,
           documentation: this.options.documentation,
           useYarn2: this.options.useYarn2,
           workspaces: pkg.workspaces,

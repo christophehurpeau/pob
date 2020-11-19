@@ -2,7 +2,7 @@ CHANGELOG.md
 <% if (documentation) { -%>
 /docs
 <% } -%>
-<% if (useYarn2 && inLernaRoot) { -%>
+<% if (useYarn2 && inRoot) { -%>
 /.pnp.js
 /.yarn/**/*
 <% } -%>
@@ -13,5 +13,9 @@ CHANGELOG.md
 <%= '/' + workspace + ignorePattern %>
 <% } -%>
 <% } -%>
+<% } -%>
+<% } else { -%>
+<% for (let ignorePattern of ignorePatterns) { -%>
+<%= ignorePattern %>
 <% } -%>
 <% } -%>
