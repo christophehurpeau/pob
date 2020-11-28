@@ -63,7 +63,7 @@
     "jest-junit-reporter": "1.1.0",
     "pob-babel": "^26.0.1",
     "pob-lcov-reporter": "^4.0.1",
-    "prettier": "2.1.2",
+    "prettier": "2.2.1",
     "repository-check-dirty": "^2.0.1",
     "rollup": "2.33.3",
     "semver": "7.3.2",
