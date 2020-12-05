@@ -109,7 +109,7 @@ module.exports = class PackageGenerator extends Generator {
       : props.description || pkg.description;
 
     if (inLerna && !inLerna.root) {
-      const lernaPackage = inLerna.rootPkg;
+      const lernaPackage = this.fs.readJSON(inLerna.packageJsonPath);
       const rootRepositoryUrl =
         typeof lernaPackage.repository === 'string'
           ? lernaPackage.repository

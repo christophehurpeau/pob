@@ -9,20 +9,6 @@
   "engines": {
     "node": ">=12.10.0"
   },
-  "lerna": {
-    "version": "independent",
-    "npmClient": "yarn",
-    "useWorkspaces": true,
-    "command": {
-      "publish": {
-        "npmClient": "npm",
-        "ignoreChanges": [
-          "**/.yo-rc.json",
-          "**/.eslintrc.json"
-        ]
-      }
-    }
-  },
   "workspaces": [
     "packages/*",
     "@pob/*"

@@ -4,7 +4,10 @@ const { spawnSync } = require('child_process');
 const { readdirSync, existsSync } = require('fs');
 const Generator = require('yeoman-generator');
 const packageUtils = require('../../../utils/package');
-const { copyAndFormatTpl } = require('../../../utils/writeAndFormat');
+const {
+  copyAndFormatTpl,
+  writeAndFormatJson,
+} = require('../../../utils/writeAndFormat');
 
 module.exports = class LernaGenerator extends Generator {
   constructor(args, opts) {
@@ -51,11 +54,10 @@ module.exports = class LernaGenerator extends Generator {
   }
 
   default() {
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-
-    const lernaCurrentConfig =
-      pkg.lerna || this.fs.readJSON(this.destinationPath('lerna.json'), {});
-
+    const lernaCurrentConfig = this.fs.readJSON(
+      this.destinationPath('lerna.json'),
+      {},
+    );
     this.npm =
       lernaCurrentConfig.version && lernaCurrentConfig.npmClient !== 'yarn';
 
@@ -90,13 +92,11 @@ module.exports = class LernaGenerator extends Generator {
         lernaCurrentConfig.command.publish.ignoreChanges) ||
       [];
 
-    if (this.fs.exists(this.destinationPath('lerna.json'))) {
-      this.fs.delete(this.destinationPath('lerna.json'));
-    }
-
-    pkg.lerna = lernaConfig;
-
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    writeAndFormatJson(
+      this.fs,
+      this.destinationPath('lerna.json'),
+      lernaConfig,
+    );
   }
 
   writing() {
@@ -110,9 +110,11 @@ module.exports = class LernaGenerator extends Generator {
       (config) => getPackagePobConfig(config).babelEnvs.length !== 0,
     );
 
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-
-    const lernaConfig = pkg.lerna;
+    // lerna.json
+    const lernaConfig = this.fs.readJSON(
+      this.destinationPath('lerna.json'),
+      {},
+    );
 
     lernaConfig.command.publish.ignoreChanges = [
       '**/.yo-rc.json',
@@ -126,6 +128,14 @@ module.exports = class LernaGenerator extends Generator {
       );
     }
 
+    writeAndFormatJson(
+      this.fs,
+      this.destinationPath('lerna.json'),
+      lernaConfig,
+    );
+
+    // package.json
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     packageUtils.removeDependencies(pkg, ['lerna', '@pob/lerna-light']);
     packageUtils.removeDevDependencies(pkg, ['lerna']);
 
