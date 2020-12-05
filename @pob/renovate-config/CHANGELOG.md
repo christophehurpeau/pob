@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.3.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.2.0...@pob/renovate-config@2.3.0) (2020-12-05)
+
+
+### Features
+
+* improve renovate config ([8e82b0c](https://github.com/christophehurpeau/pob/commit/8e82b0c3f3337975f268f011111832bd0b01e104))
+
+
+
+
+
 # [2.2.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.1.1...@pob/renovate-config@2.2.0) (2020-12-05)
 
 
