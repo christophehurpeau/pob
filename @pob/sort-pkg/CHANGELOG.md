@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@2.1.0...@pob/sort-pkg@2.1.1) (2020-12-05)
+
+
+### Reverts
+
+* Revert "chore: configure lerna in package instead of lerna.json" ([4b397eb](https://github.com/christophehurpeau/pob/commit/4b397eb9b883e023c220f42c6bdbb9802ee948ea))
+
+
+
+
+
 # [2.1.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@2.0.0...@pob/sort-pkg@2.1.0) (2020-11-15)
 
 

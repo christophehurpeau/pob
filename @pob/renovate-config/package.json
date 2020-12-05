@@ -1,6 +1,6 @@
 {
   "name": "@pob/renovate-config",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "renovate pob config",
   "engines": {
     "node": ">=12.10.0"
@@ -17,7 +17,7 @@
     "preversion": "node generate-package.json.js && git add package.json"
   },
   "devDependencies": {
-    "pob-dependencies": "^3.2.0",
+    "pob-dependencies": "^3.3.0",
     "prettier": "2.2.1"
   },
   "renovate-config": {
@@ -40,7 +40,23 @@
             "^@pob/eslint-config"
           ],
           "packageNames": [
-            "eslint"
+            "@babel/core",
+            "@babel/preset-env",
+            "@babel/preset-react",
+            "@babel/runtime",
+            "@chrp/typedoc-plugin-lerna-packages",
+            "@types/jest",
+            "babel-jest",
+            "babel-preset-latest-node",
+            "babel-preset-modern-browsers",
+            "jest",
+            "jest-junit-reporter",
+            "pob-babel",
+            "pob-lcov-reporter",
+            "rollup",
+            "semver",
+            "standard-version",
+            "typedoc"
           ],
           "updateTypes": [
             "patch",
@@ -51,25 +67,10 @@
           "packagePatterns": [
             "^@pob/eslint-config",
             "^@typescript-eslint/",
-            "^eslint-",
-            "^@types/",
-            "^@babel/"
+            "^eslint-"
           ],
           "packageNames": [
-            "eslint",
-            "@pob/root",
-            "@pob/commitlint-config",
-            "@pob/pretty-pkg",
-            "@pob/lerna-light",
-            "husky",
-            "prettier",
-            "lerna",
-            "typescript",
-            "repository-check-dirty",
-            "standard-version",
-            "babel-jest",
-            "jest",
-            "jest-junit-reporter"
+            "eslint"
           ],
           "updateTypes": [
             "patch",

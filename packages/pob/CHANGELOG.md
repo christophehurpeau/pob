@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.3.0](https://github.com/christophehurpeau/pob/compare/pob@7.2.0...pob@7.3.0) (2020-12-05)
+
+
+### Bug Fixes
+
+* allow packages to be empty in initial repo creation ([4563a37](https://github.com/christophehurpeau/pob/commit/4563a3768fb19e48bb32530f3cd79b1da438d004))
+* legacy lerna config in pkg ([13f1350](https://github.com/christophehurpeau/pob/commit/13f135062292415eb3a54a6ab70aaeff321ecd57))
+* **deps:** update dependency prettier to v2.2.1 ([#712](https://github.com/christophehurpeau/pob/issues/712)) ([42821c1](https://github.com/christophehurpeau/pob/commit/42821c12bd9691096a081045d7288977e9715f18))
+
+
+### Features
+
+* default monorepo eslint ([b133b29](https://github.com/christophehurpeau/pob/commit/b133b2969ff27100531bec1b70a1aa013a0bfb7d))
+
+
+### Reverts
+
+* Revert "chore: configure lerna in package instead of lerna.json" ([4b397eb](https://github.com/christophehurpeau/pob/commit/4b397eb9b883e023c220f42c6bdbb9802ee948ea))
+
+
+
+
+
 # [7.2.0](https://github.com/christophehurpeau/pob/compare/pob@7.1.1...pob@7.2.0) (2020-11-19)
 
 

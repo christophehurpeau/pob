@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.1.1...@pob/renovate-config@2.2.0) (2020-12-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v2.2.1 ([#712](https://github.com/christophehurpeau/pob/issues/712)) ([42821c1](https://github.com/christophehurpeau/pob/commit/42821c12bd9691096a081045d7288977e9715f18))
+
+
+### Features
+
+* **renovate-config:** move minor+patch config up ([da80f4a](https://github.com/christophehurpeau/pob/commit/da80f4a3f8fc0726d8e047cf9ad73d987c76e653))
+
+
+
+
+
 ## [2.1.1](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.1.0...@pob/renovate-config@2.1.1) (2020-11-19)
 
 **Note:** Version bump only for package @pob/renovate-config

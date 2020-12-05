@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.2](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@2.0.1...@pob/pretty-pkg@2.0.2) (2020-12-05)
+
+**Note:** Version bump only for package @pob/pretty-pkg
+
+
+
+
+
 ## [2.0.1](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@2.0.0...@pob/pretty-pkg@2.0.1) (2020-11-15)
 
 **Note:** Version bump only for package @pob/pretty-pkg

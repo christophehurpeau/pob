@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.2.0...pob-dependencies@3.3.0) (2020-12-05)
+
+
+### Bug Fixes
+
+* dont downgrade package version ([aa34e6b](https://github.com/christophehurpeau/pob/commit/aa34e6b9db87a3b56acc3c344651ed2968658163))
+* **deps:** update dependency prettier to v2.2.1 ([#712](https://github.com/christophehurpeau/pob/issues/712)) ([42821c1](https://github.com/christophehurpeau/pob/commit/42821c12bd9691096a081045d7288977e9715f18))
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.12.7 [skip ci] ([#713](https://github.com/christophehurpeau/pob/issues/713)) ([ed7ebe0](https://github.com/christophehurpeau/pob/commit/ed7ebe0af315d631f9a872750f96109b62606ec7))
+* **deps:** update dependency @babel/core to v7.12.8 ([#716](https://github.com/christophehurpeau/pob/issues/716)) ([a8a38fa](https://github.com/christophehurpeau/pob/commit/a8a38fa16f705d907ece3b47c4631c27fd81e54c))
+* **deps:** update dependency @babel/core to v7.12.9 [skip ci] ([#718](https://github.com/christophehurpeau/pob/issues/718)) ([b0119ca](https://github.com/christophehurpeau/pob/commit/b0119ca7a5e2a424f2e31f73427f641f73b09f6b))
+* **deps:** update dependency @types/jest to v26.0.16 [skip ci] ([#724](https://github.com/christophehurpeau/pob/issues/724)) ([3c11e4e](https://github.com/christophehurpeau/pob/commit/3c11e4ecc1c5013bd169d17f9e9936bc06c1559a))
+* **deps:** update dependency babel-preset-latest-node to v5.2.0 [skip ci] ([#728](https://github.com/christophehurpeau/pob/issues/728)) ([10661f2](https://github.com/christophehurpeau/pob/commit/10661f265267581d368af7c62df16aa14820403c))
+* **deps:** update dependency eslint to v7.14.0 [skip ci] ([#714](https://github.com/christophehurpeau/pob/issues/714)) ([62251b4](https://github.com/christophehurpeau/pob/commit/62251b4a90fd8bf6185d03e4ebdf8477978ad329))
+* **deps:** update dependency eslint to v7.15.0 [skip ci] ([#727](https://github.com/christophehurpeau/pob/issues/727)) ([195a641](https://github.com/christophehurpeau/pob/commit/195a641e67e41decca31d6e4baeabe9754767e6d))
+* **deps:** update dependency husky to v4.3.4 [skip ci] ([#729](https://github.com/christophehurpeau/pob/issues/729)) ([6b1a2c6](https://github.com/christophehurpeau/pob/commit/6b1a2c65d87622f548ce80286464e18e03f7210f))
+* **deps:** update dependency rollup to v2.34.0 [skip ci] ([#719](https://github.com/christophehurpeau/pob/issues/719)) ([64acf8e](https://github.com/christophehurpeau/pob/commit/64acf8eefefb4beb3c13a676d0c822b4aae81c60))
+* **deps:** update dependency rollup to v2.34.1 ([#725](https://github.com/christophehurpeau/pob/issues/725)) ([04d7e48](https://github.com/christophehurpeau/pob/commit/04d7e48e6b8ca172d90568c6d6770391a540c216))
+* **deps:** update dependency semver to v7.3.4 [skip ci] ([#723](https://github.com/christophehurpeau/pob/issues/723)) ([e6e8949](https://github.com/christophehurpeau/pob/commit/e6e894951b66c4b02c0e280d74babad5b5c6aae2))
+* **deps:** update dependency typescript to v4.1.2 ([#711](https://github.com/christophehurpeau/pob/issues/711)) ([d747b1e](https://github.com/christophehurpeau/pob/commit/d747b1ee07ac980a6a2209d9b90b6f647aed7e20))
+* **deps:** update typescript-eslint monorepo to v4.8.2 [skip ci] ([#715](https://github.com/christophehurpeau/pob/issues/715)) ([6cf8e81](https://github.com/christophehurpeau/pob/commit/6cf8e819c403c8b382003ee3988ce3b59358f764))
+* **deps:** update typescript-eslint monorepo to v4.9.0 [skip ci] ([#720](https://github.com/christophehurpeau/pob/issues/720)) ([e374fd0](https://github.com/christophehurpeau/pob/commit/e374fd0f5533f24dc92e2028022a736029a34fb8))
+
+
+
+
+
 # [3.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.1.1...pob-dependencies@3.2.0) (2020-11-19)
 
 

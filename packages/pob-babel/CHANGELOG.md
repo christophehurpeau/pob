@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [26.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@26.0.1...pob-babel@26.1.0) (2020-12-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @rollup/plugin-babel to v5.2.2 [skip ci] ([#721](https://github.com/christophehurpeau/pob/issues/721)) ([e0ad5a4](https://github.com/christophehurpeau/pob/commit/e0ad5a4042b337367c68669a7b277fa46e7e5d55))
+
+
+### Features
+
+* **deps:** update dependency @types/jest to v26.0.16 [skip ci] ([#724](https://github.com/christophehurpeau/pob/issues/724)) ([3c11e4e](https://github.com/christophehurpeau/pob/commit/3c11e4ecc1c5013bd169d17f9e9936bc06c1559a))
+
+
+
+
+
 ## [26.0.1](https://github.com/christophehurpeau/pob/compare/pob-babel@26.0.0...pob-babel@26.0.1) (2020-11-15)
 
 

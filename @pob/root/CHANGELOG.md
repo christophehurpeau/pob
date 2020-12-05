@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.3](https://github.com/christophehurpeau/pob/compare/@pob/root@3.0.2...@pob/root@3.0.3) (2020-12-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v10.5.2 ([#717](https://github.com/christophehurpeau/pob/issues/717)) ([be6f266](https://github.com/christophehurpeau/pob/commit/be6f266a2de0dc25cb4964aa5709c69ecdd6f249))
+* **deps:** update dependency lint-staged to v10.5.3 [skip ci] ([#726](https://github.com/christophehurpeau/pob/issues/726)) ([12244e9](https://github.com/christophehurpeau/pob/commit/12244e9b9e446ef7a1c2be4c385d964955aa597d))
+
+
+
+
+
 ## [3.0.2](https://github.com/christophehurpeau/pob/compare/@pob/root@3.0.1...@pob/root@3.0.2) (2020-11-19)
 
 
