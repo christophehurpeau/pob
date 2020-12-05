@@ -29,15 +29,21 @@ Object.keys(pkg.devDependencies).forEach((key) => {
       !semver.satisfies(pkg.devDependencies[peerDep], peerDepRange)
     ) {
       const newVersion = semver.minVersion(peerDepRange).version;
-      console.log(
-        `update ${peerDep} to ${newVersion} because ${
-          !pkg.devDependencies[peerDep]
-            ? 'it was added in'
-            : `version ${pkg.devDependencies[peerDep]} doesn't match peer dependency in`
-        } ${depPkg.name} (${depPkg.version})`,
-      );
-      pkg.devDependencies[peerDep] = newVersion;
-      madeModifications = true;
+      if (semver.lt(newVersion, pkg.devDependencies[peerDep])) {
+        console.warn(
+          `Incompatible peerdep ${peerDep} required version ${newVersion} from ${depPkg.name}, asking for ${peerDepRange}`,
+        );
+      } else {
+        console.log(
+          `update ${peerDep} to ${newVersion} because ${
+            !pkg.devDependencies[peerDep]
+              ? 'it was added in'
+              : `version ${pkg.devDependencies[peerDep]} doesn't match peer dependency in`
+          } ${depPkg.name} (${depPkg.version})`,
+        );
+        pkg.devDependencies[peerDep] = newVersion;
+        madeModifications = true;
+      }
     }
   });
 });
