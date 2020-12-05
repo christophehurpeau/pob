@@ -16,6 +16,8 @@ const excludePkgNames = [
   'prettier',
   'typescript',
   'repository-check-dirty',
+  'jest',
+  'jest-junit-reporter',
 ];
 
 const isEslintDep = (dep) =>
@@ -26,7 +28,12 @@ const isEslintDep = (dep) =>
 pkg['renovate-config'].default.packageRules[0].packageNames = Object.keys(
   pobDependencies.devDependencies,
 ).filter(
-  (pkgName) => !excludePkgNames.includes(pkgName) && !isEslintDep(pkgName),
+  (pkgName) =>
+    !pkgName.startsWith('@babel') &&
+    !pkgName.startsWith('babel-') &&
+    !pkgName.startsWith('@types') &&
+    !excludePkgNames.includes(pkgName) &&
+    !isEslintDep(pkgName),
 );
 
 pkg['renovate-config'].default.packageRules[1].packagePatterns = [

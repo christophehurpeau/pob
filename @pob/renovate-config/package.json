@@ -35,69 +35,9 @@
       "rangeStrategy": "bump",
       "packageRules": [
         {
-          "description": "@pob eslint configs",
-          "packagePatterns": [
-            "^@pob/eslint-config"
-          ],
-          "packageNames": [
-            "@babel/core",
-            "@babel/preset-env",
-            "@babel/preset-react",
-            "@babel/runtime",
-            "@chrp/typedoc-plugin-lerna-packages",
-            "@types/jest",
-            "babel-jest",
-            "babel-preset-latest-node",
-            "babel-preset-modern-browsers",
-            "jest",
-            "jest-junit-reporter",
-            "pob-babel",
-            "pob-lcov-reporter",
-            "rollup",
-            "semver",
-            "standard-version",
-            "typedoc"
-          ],
-          "updateTypes": [
-            "patch",
-            "minor"
-          ]
-        },
-        {
-          "packagePatterns": [
-            "^@pob/eslint-config",
-            "^@typescript-eslint/",
-            "^eslint-"
-          ],
-          "packageNames": [
-            "eslint"
-          ],
-          "updateTypes": [
-            "patch",
-            "minor"
-          ],
-          "labels": [
-            ":ok_hand: code/approved",
-            ":soon: automerge"
-          ],
-          "schedule": [
-            "at any time"
-          ]
-        },
-        {
           "groupName": "Pob Dependencies",
           "packageNames": [
-            "@babel/core",
-            "@babel/preset-env",
-            "@babel/preset-react",
-            "@babel/runtime",
             "@chrp/typedoc-plugin-lerna-packages",
-            "@types/jest",
-            "babel-jest",
-            "babel-preset-latest-node",
-            "babel-preset-modern-browsers",
-            "jest",
-            "jest-junit-reporter",
             "pob-babel",
             "pob-lcov-reporter",
             "rollup",
@@ -107,6 +47,22 @@
           ],
           "schedule": [
             "before 3am on Friday"
+          ]
+        },
+        {
+          "packagePatterns": [
+            "^@pob/eslint-config",
+            "^@typescript-eslint/",
+            "^eslint-"
+          ],
+          "updateTypes": [
+            "major"
+          ],
+          "schedule": [
+            "before 3am on Friday"
+          ],
+          "packageNames": [
+            "eslint"
           ]
         },
         {
@@ -121,6 +77,55 @@
           ],
           "updateTypes": [
             "major"
+          ]
+        },
+        {
+          "description": "@pob eslint configs",
+          "packagePatterns": [
+            "^@pob/eslint-config"
+          ],
+          "packageNames": [
+            "eslint"
+          ],
+          "updateTypes": [
+            "patch",
+            "minor"
+          ]
+        },
+        {
+          "packagePatterns": [
+            "^@pob/eslint-config",
+            "^@typescript-eslint/",
+            "^eslint-",
+            "^@babel/",
+            "^babel-",
+            "^@types/"
+          ],
+          "packageNames": [
+            "eslint",
+            "@pob/root",
+            "@pob/commitlint-config",
+            "@pob/pretty-pkg",
+            "@pob/lerna-light",
+            "husky",
+            "prettier",
+            "lerna",
+            "typescript",
+            "repository-check-dirty",
+            "standard-version",
+            "jest",
+            "jest-junit-reporter"
+          ],
+          "updateTypes": [
+            "patch",
+            "minor"
+          ],
+          "labels": [
+            ":ok_hand: code/approved",
+            ":soon: automerge"
+          ],
+          "schedule": [
+            "at any time"
           ]
         },
         {
