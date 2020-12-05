@@ -35,45 +35,6 @@
       "rangeStrategy": "bump",
       "packageRules": [
         {
-          "groupName": "Pob Dependencies",
-          "packageNames": [
-            "@babel/core",
-            "@babel/preset-env",
-            "@babel/preset-react",
-            "@babel/runtime",
-            "@chrp/typedoc-plugin-lerna-packages",
-            "@types/jest",
-            "babel-jest",
-            "babel-preset-latest-node",
-            "babel-preset-modern-browsers",
-            "jest",
-            "jest-junit-reporter",
-            "pob-babel",
-            "pob-lcov-reporter",
-            "rollup",
-            "semver",
-            "standard-version",
-            "typedoc"
-          ],
-          "schedule": [
-            "before 3am on Friday"
-          ]
-        },
-        {
-          "description": "eslint configs",
-          "packagePatterns": [
-            "^@pob/eslint-config",
-            "^@typescript-eslint/",
-            "^eslint-"
-          ],
-          "packageNames": [
-            "eslint"
-          ],
-          "updateTypes": [
-            "major"
-          ]
-        },
-        {
           "description": "@pob eslint configs",
           "packagePatterns": [
             "^@pob/eslint-config"
@@ -120,6 +81,45 @@
           ],
           "schedule": [
             "at any time"
+          ]
+        },
+        {
+          "groupName": "Pob Dependencies",
+          "packageNames": [
+            "@babel/core",
+            "@babel/preset-env",
+            "@babel/preset-react",
+            "@babel/runtime",
+            "@chrp/typedoc-plugin-lerna-packages",
+            "@types/jest",
+            "babel-jest",
+            "babel-preset-latest-node",
+            "babel-preset-modern-browsers",
+            "jest",
+            "jest-junit-reporter",
+            "pob-babel",
+            "pob-lcov-reporter",
+            "rollup",
+            "semver",
+            "standard-version",
+            "typedoc"
+          ],
+          "schedule": [
+            "before 3am on Friday"
+          ]
+        },
+        {
+          "description": "eslint configs",
+          "packagePatterns": [
+            "^@pob/eslint-config",
+            "^@typescript-eslint/",
+            "^eslint-"
+          ],
+          "packageNames": [
+            "eslint"
+          ],
+          "updateTypes": [
+            "major"
           ]
         },
         {
