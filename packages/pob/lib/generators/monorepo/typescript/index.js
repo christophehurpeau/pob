@@ -66,7 +66,9 @@ module.exports = class MonorepoTypescriptGenerator extends Generator {
         ? `${pkg.name.replace(/-monorepo$/, '')}-`
         : `@${pkg.name}/`;
 
-      const packagePaths = JSON.parse(this.options.packageNames)
+      const packageNames = JSON.parse(this.options.packageNames);
+
+      const packagePaths = packageNames
         .map((packageName) =>
           this.options.isAppProject && packageName.startsWith(basePackageName)
             ? `packages/${packageName.slice(basePackageName.length)}`
@@ -74,10 +76,10 @@ module.exports = class MonorepoTypescriptGenerator extends Generator {
         )
         .filter((packagePath) => existsSync(`${packagePath}/tsconfig.json`));
 
-      if (packagePaths.length === 0) {
+      if (packagePaths.length === 0 && packageNames.length > 0) {
         console.log(
-          JSON.parse(this.options.packageNames),
-          JSON.parse(this.options.packageNames).map((packageName) =>
+          packageNames,
+          packageNames.map((packageName) =>
             this.options.isAppProject && packageName.startsWith(basePackageName)
               ? `packages/${packageName.slice(basePackageName.length)}`
               : `${packageName[0] === '@' ? '' : 'packages/'}${packageName}`,
