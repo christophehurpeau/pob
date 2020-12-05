@@ -5,8 +5,17 @@ const path = require('path');
 const findup = require('findup-sync');
 
 const lernaJsonPath = findup('lerna.json');
+const huskyConfigPath = findup('husky.config.js');
 
-const rootMonorepo = lernaJsonPath ? path.dirname(lernaJsonPath) : undefined;
+const rootMonorepo = huskyConfigPath
+  ? path.dirname(huskyConfigPath)
+  : undefined;
+
+const rootMonorepoPkg =
+  rootMonorepo &&
+  JSON.parse(
+    fs.readFileSync(path.resolve(rootMonorepo, 'package.json'), 'utf-8'),
+  );
 
 const getInLernaThings = () => {
   const rootYoConfig = JSON.parse(
@@ -15,6 +24,7 @@ const getInLernaThings = () => {
   const cwd = process.cwd();
 
   return {
+    rootMonorepoPkg,
     lernaJsonPath,
     rootPath: rootMonorepo,
     root: rootMonorepo === cwd,
@@ -23,7 +33,6 @@ const getInLernaThings = () => {
       rootYoConfig.pob &&
       rootYoConfig.pob.project &&
       rootYoConfig.pob.project.yarn2,
-    packageJsonPath: path.resolve(rootMonorepo, 'package.json'),
     relative: path.relative(rootMonorepo, cwd),
     rootYoConfig,
     pobConfig: rootYoConfig && rootYoConfig.pob,
@@ -32,4 +41,9 @@ const getInLernaThings = () => {
   };
 };
 
-module.exports = !lernaJsonPath ? false : getInLernaThings();
+module.exports = !(
+  rootMonorepoPkg &&
+  (rootMonorepoPkg.lerna || !!lernaJsonPath)
+)
+  ? false
+  : getInLernaThings();

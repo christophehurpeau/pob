@@ -5,6 +5,7 @@
 const { execSync, spawnSync } = require('child_process');
 const { existsSync, writeFileSync, readFileSync } = require('fs');
 const fs = require('fs');
+const path = require('path');
 const argv = require('minimist-argv');
 const updateNotifier = require('update-notifier');
 const yeoman = require('yeoman-environment');
@@ -15,6 +16,14 @@ const printUsage = () => {
   console.error('       pob [lerna] update [--force]');
   console.error('       pob lerna convert-npm');
   console.error('       pob add <packageName>');
+};
+
+const readJson = (filepath) => {
+  try {
+    return JSON.parse(readFileSync(filepath, 'utf-8'));
+  } catch {
+    return null;
+  }
 };
 
 const printVersion = () => {
@@ -43,6 +52,7 @@ env.registerStub(require('./generators/pob'), 'pob:generator');
 
 let lerna = argv._[0] === 'lerna';
 const action = lerna ? argv._[1] : argv._[0];
+const projectPkg = readJson(path.resolve('./package.json'));
 
 if (action === 'add') {
   if (!existsSync('lerna.json')) {
@@ -102,7 +112,7 @@ if (!existsSync('.yo-rc.json')) {
   writeFileSync('.yo-rc.json', '{}');
 }
 
-if (existsSync('lerna.json')) {
+if (existsSync('lerna.json') || (projectPkg && projectPkg.lerna)) {
   lerna = true;
 }
 

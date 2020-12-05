@@ -109,17 +109,17 @@ module.exports = class PackageGenerator extends Generator {
       : props.description || pkg.description;
 
     if (inLerna && !inLerna.root) {
-      const lernaPackage = this.fs.readJSON(inLerna.packageJsonPath);
+      const rootMonorepoPkg = inLerna.rootMonorepoPkg;
       const rootRepositoryUrl =
-        typeof lernaPackage.repository === 'string'
-          ? lernaPackage.repository
-          : lernaPackage.repository.url;
+        typeof rootMonorepoPkg.repository === 'string'
+          ? rootMonorepoPkg.repository
+          : rootMonorepoPkg.repository.url;
       pkg.repository = {
         type: 'git',
         url: rootRepositoryUrl,
         directory: process.cwd().slice(inLerna.rootPath.length + 1),
       };
-      pkg.homepage = lernaPackage.homepage;
+      pkg.homepage = rootMonorepoPkg.homepage;
 
       if (this.fs.exists(this.destinationPath('yarn.lock'))) {
         fs.unlinkSync(this.destinationPath('yarn.lock'));

@@ -54,10 +54,13 @@ module.exports = class LernaGenerator extends Generator {
   }
 
   default() {
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+
     const lernaCurrentConfig = this.fs.readJSON(
       this.destinationPath('lerna.json'),
-      {},
+      pkg.lerna || {},
     );
+
     this.npm =
       lernaCurrentConfig.version && lernaCurrentConfig.npmClient !== 'yarn';
 
@@ -136,6 +139,7 @@ module.exports = class LernaGenerator extends Generator {
 
     // package.json
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+    delete pkg.lerna;
     packageUtils.removeDependencies(pkg, ['lerna', '@pob/lerna-light']);
     packageUtils.removeDevDependencies(pkg, ['lerna']);
 
