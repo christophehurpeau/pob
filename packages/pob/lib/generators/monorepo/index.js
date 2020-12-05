@@ -136,7 +136,7 @@ module.exports = class PobMonorepoGenerator extends Generator {
         type: 'confirm',
         name: 'eslint',
         message: 'Would you like eslint in monorepo ?',
-        default: config ? config.eslint : false,
+        default: config ? config.eslint : true,
       },
     ]);
     this.pobLernaConfig.packageNames = this.packageNames;
