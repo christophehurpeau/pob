@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [26.2.0](https://github.com/christophehurpeau/pob/compare/pob-babel@26.1.0...pob-babel@26.2.0) (2020-12-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @rollup/plugin-node-resolve to v11 ([#722](https://github.com/christophehurpeau/pob/issues/722)) ([b28f758](https://github.com/christophehurpeau/pob/commit/b28f758738b061e7623cc6dddb6a05ee67fdf69d))
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.12.10 [skip ci] ([#736](https://github.com/christophehurpeau/pob/issues/736)) ([2cbf38b](https://github.com/christophehurpeau/pob/commit/2cbf38bb751eaa7d91d47d0349dac690d0298095))
+* **deps:** update dependency @types/jest to v26.0.17 ([#734](https://github.com/christophehurpeau/pob/issues/734)) ([8ec468c](https://github.com/christophehurpeau/pob/commit/8ec468cc3e29c879d5a6249433da2f589c3a7b24))
+* **deps:** update dependency @types/jest to v26.0.18 ([#735](https://github.com/christophehurpeau/pob/issues/735)) ([dc2b2f4](https://github.com/christophehurpeau/pob/commit/dc2b2f44e94833ed3265afa9e04ccc78ebdc08c2))
+* **deps:** update dependency @types/jest to v26.0.19 [skip ci] ([#737](https://github.com/christophehurpeau/pob/issues/737)) ([782ca72](https://github.com/christophehurpeau/pob/commit/782ca72052a88f38f64b02acf8574849fdf4f87b))
+
+
+
+
+
 # [26.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@26.0.1...pob-babel@26.1.0) (2020-12-05)
 
 

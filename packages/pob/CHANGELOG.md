@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.1](https://github.com/christophehurpeau/pob/compare/pob@7.3.0...pob@7.3.1) (2020-12-12)
+
+**Note:** Version bump only for package pob
+
+
+
+
+
 # [7.3.0](https://github.com/christophehurpeau/pob/compare/pob@7.2.0...pob@7.3.0) (2020-12-05)
 
 

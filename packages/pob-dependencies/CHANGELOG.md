@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.4.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.3.0...pob-dependencies@3.4.0) (2020-12-12)
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.12.10 [skip ci] ([#736](https://github.com/christophehurpeau/pob/issues/736)) ([2cbf38b](https://github.com/christophehurpeau/pob/commit/2cbf38bb751eaa7d91d47d0349dac690d0298095))
+* **deps:** update dependency @types/jest to v26.0.17 ([#734](https://github.com/christophehurpeau/pob/issues/734)) ([8ec468c](https://github.com/christophehurpeau/pob/commit/8ec468cc3e29c879d5a6249433da2f589c3a7b24))
+* **deps:** update dependency @types/jest to v26.0.18 ([#735](https://github.com/christophehurpeau/pob/issues/735)) ([dc2b2f4](https://github.com/christophehurpeau/pob/commit/dc2b2f44e94833ed3265afa9e04ccc78ebdc08c2))
+* **deps:** update dependency @types/jest to v26.0.19 [skip ci] ([#737](https://github.com/christophehurpeau/pob/issues/737)) ([782ca72](https://github.com/christophehurpeau/pob/commit/782ca72052a88f38f64b02acf8574849fdf4f87b))
+* **deps:** update dependency husky to v4.3.5 ([#732](https://github.com/christophehurpeau/pob/issues/732)) ([6e7cfee](https://github.com/christophehurpeau/pob/commit/6e7cfee7c7a7d9dfadc1207f716bc5cf08117c66))
+* **deps:** update dependency rollup to v2.34.2 [skip ci] ([#730](https://github.com/christophehurpeau/pob/issues/730)) ([ddd68a9](https://github.com/christophehurpeau/pob/commit/ddd68a98b61ac3ab93e75b4c054cf8aa85d15915))
+* **deps:** update dependency typescript to v4.1.3 ([#738](https://github.com/christophehurpeau/pob/issues/738)) ([c78c4e4](https://github.com/christophehurpeau/pob/commit/c78c4e4828610e0ac187594814c7ac0981ba7120))
+* **deps:** update typescript-eslint monorepo to v4.9.1 [skip ci] ([#733](https://github.com/christophehurpeau/pob/issues/733)) ([95d5a88](https://github.com/christophehurpeau/pob/commit/95d5a884e3f55594f74ecfe6d8984ba77b71ad37))
+
+
+
+
+
 # [3.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.2.0...pob-dependencies@3.3.0) (2020-12-05)
 
 
