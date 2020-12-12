@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`fixtures basic 0 1`] = `
-"console.log(\`the answer is \${42}\`);
-
-class Test {
+"class Test {
   constructor(...args) {
     this.args = args;
   }
 
 }
+
+console.log(\`the answer is \${42}\`);
 
 class Test2 extends Test {
   constructor(...args) {
@@ -24,14 +24,14 @@ export { t };
 `;
 
 exports[`fixtures basic 1 1`] = `
-"console.log(\`the answer is \${42}\`);
-
-class Test {
+"class Test {
   constructor(...args) {
     this.args = args;
   }
 
 }
+
+console.log(\`the answer is \${42}\`);
 
 class Test2 extends Test {
   constructor(...args) {
@@ -89,14 +89,14 @@ render( /*#__PURE__*/React.createElement(Component, null), document.getElementBy
 `;
 
 exports[`fixtures ts 0 1`] = `
-"console.log(\`the answer is \${42}\`);
-
-class Test {
+"class Test {
   constructor(...args) {
     this.args = args;
   }
 
 }
+
+console.log(\`the answer is \${42}\`);
 
 class Test2 extends Test {
   constructor(...args) {
@@ -112,14 +112,14 @@ export default t;
 `;
 
 exports[`fixtures ts 1 1`] = `
-"console.log(\`the answer is \${42}\`);
-
-class Test {
+"class Test {
   constructor(...args) {
     this.args = args;
   }
 
 }
+
+console.log(\`the answer is \${42}\`);
 
 class Test2 extends Test {
   constructor(...args) {
@@ -137,8 +137,6 @@ export default t;
 exports[`fixtures ts 2 1`] = `
 "import _inheritsLoose from '@babel/runtime/helpers/esm/inheritsLoose';
 
-console.log(\\"the answer is 42\\");
-
 var Test = function Test() {
   var _len, args, _key;
 
@@ -149,14 +147,16 @@ var Test = function Test() {
   this.args = args;
 };
 
+console.log(\\"the answer is 42\\");
+
 var Test2 = /*#__PURE__*/function (_Test) {
   _inheritsLoose(Test2, _Test);
 
   function Test2() {
-    var _len2, args, _key2;
+    var _len, args, _key;
 
-    for (_len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      args[_key2] = arguments[_key2];
+    for (_len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
 
     return _Test.call.apply(_Test, [this].concat(args)) || this;
@@ -174,8 +174,6 @@ export default t;
 exports[`fixtures ts 3 1`] = `
 "import _inheritsLoose from '@babel/runtime/helpers/esm/inheritsLoose';
 
-console.log(\\"the answer is 42\\");
-
 var Test = function Test() {
   var _len, args, _key;
 
@@ -186,14 +184,16 @@ var Test = function Test() {
   this.args = args;
 };
 
+console.log(\\"the answer is 42\\");
+
 var Test2 = /*#__PURE__*/function (_Test) {
   _inheritsLoose(Test2, _Test);
 
   function Test2() {
-    var _len2, args, _key2;
+    var _len, args, _key;
 
-    for (_len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
-      args[_key2] = arguments[_key2];
+    for (_len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
 
     return _Test.call.apply(_Test, [this].concat(args)) || this;
