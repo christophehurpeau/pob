@@ -51,24 +51,25 @@
   },
   "pob": {},
   "peerDependencies": {
-    "@babel/core": "^7.11.6",
-    "rollup": "^2.27.1",
+    "@babel/core": "^7.12.10",
+    "rollup": "^2.34.2",
     "typescript": "^4.0.3"
   },
   "dependencies": {
-    "@babel/plugin-transform-runtime": "7.12.10",
-    "@rollup/plugin-babel": "5.2.2",
+    "@babel/plugin-transform-runtime": "^7.12.10",
+    "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^11.0.0",
-    "babel-preset-latest-node": "^5.1.1",
-    "babel-preset-modern-browsers": "^15.0.1",
+    "babel-preset-latest-node": "^5.2.0",
+    "babel-preset-modern-browsers": "^15.0.2",
     "babel-preset-pob-env": "^5.1.0",
     "minimist-argv": "^1.1.0",
-    "rollup": "^2.27.1",
+    "rollup": "^2.34.2",
     "rollup-config-external-dependencies": "^2.0.0",
-    "semver": "^7.3.2"
+    "semver": "^7.3.4"
   },
   "devDependencies": {
+    "@babel/core": "7.12.10",
     "@types/jest": "26.0.19",
     "jest": "26.6.3",
     "pob-lcov-reporter": "^4.0.1"
