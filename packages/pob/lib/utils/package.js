@@ -219,6 +219,15 @@ exports.addOrRemoveDevDependencies = function addOrRemoveDevDependencies(
   return exports.removeDevDependencies(pkg, dependencies);
 };
 
+exports.removeDevAndNotDevDependencies = function removeDevAndNotDevDependencies(
+  pkg,
+  dependencies,
+  forceEvenIfInPeerDep,
+) {
+  exports.removeDevDependencies(pkg, dependencies, forceEvenIfInPeerDep);
+  exports.removeDependencies(pkg, dependencies, forceEvenIfInPeerDep);
+};
+
 exports.updateDevDependenciesIfPresent = function updateDevDependenciesIfPresent(
   pkg,
   dependencies,
