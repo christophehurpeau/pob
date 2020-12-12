@@ -298,14 +298,16 @@ module.exports = class BabelGenerator extends Generator {
       // example: nightingale-types depends on nightingale-levels
       if (this.fs.exists(this.destinationPath('lib/index.d.ts'))) {
         packageUtils.addScripts(pkg, {
-          'build:definitions': 'tsc --lib esnext --noEmit ./lib/index.d.ts',
+          'build:definitions':
+            'tsc --lib esnext --noEmit --skipLibCheck ./lib/index.d.ts',
           build: 'yarn run build:definitions',
         });
       }
 
       if (this.fs.exists(this.destinationPath('lib/index.ts'))) {
         packageUtils.addScripts(pkg, {
-          'build:definitions': 'tsc --lib esnext --noEmit ./lib/index.ts',
+          'build:definitions':
+            'tsc --lib esnext --noEmit --skipLibCheck ./lib/index.ts',
           build: 'yarn run build:definitions',
         });
       }

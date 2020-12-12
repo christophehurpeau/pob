@@ -23,7 +23,7 @@
   },
   "scripts": {
     "build": "yarn run build:definitions",
-    "build:definitions": "tsc --lib esnext --noEmit ./lib/index.d.ts",
+    "build:definitions": "tsc --lib esnext --noEmit --skipLibCheck ./lib/index.d.ts",
     "clean": "rm -Rf docs dist",
     "generate:test-coverage": "rm -Rf docs/coverage/ ; NODE_ENV=production BABEL_ENV=test jest --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/",
     "lint:eslint": "yarn --cwd ../.. eslint --report-unused-disable-directives --quiet packages/pob-babel",
