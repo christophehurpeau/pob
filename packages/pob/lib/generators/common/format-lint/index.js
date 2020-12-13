@@ -314,9 +314,14 @@ module.exports = class LintGenerator extends Generator {
           },
         };
 
-    if (!useBabel && jestOverride) {
-      // see https://github.com/eslint/eslint/pull/9748 + https://github.com/eslint/eslint/issues/8813
-      // jestOverride.extends = 'pob/babel';
+    if (jestOverride) {
+      // if (!useBabel) {
+      //   jestOverride.extends = ['pob/babel'];
+      // }
+
+      if (useBabel) {
+        jestOverride.extends = ['@pob/eslint-config-typescript/test'];
+      }
     }
 
     const eslintrcBadPath = this.destinationPath('.eslintrc');

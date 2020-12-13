@@ -122,6 +122,7 @@ function sortConfig(config) {
         'env',
         'globals',
         'settings',
+        'extends',
         'rules',
       ]);
     });
