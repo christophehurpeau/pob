@@ -2003,10 +2003,10 @@
     "@pob/use-eslint-plugin" "^41.1.0"
     eslint-plugin-node "^11.1.0"
 
-"@pob/eslint-config-typescript-react@41.1.0":
-  version "41.1.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript-react/-/eslint-config-typescript-react-41.1.0.tgz#c98c10dacb88b501e08c2816a27977f118087aff"
-  integrity sha512-QYgwQrBsT+JL9kO9p/75YBkIWpddjj81WOsXejJcTgcg5jti0R/oxcOeBFlqupj4PhTtSDVI7oW/1zCpP/TYcA==
+"@pob/eslint-config-typescript-react@41.1.1":
+  version "41.1.1"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript-react/-/eslint-config-typescript-react-41.1.1.tgz#6bbc463f759bd6c846590f1cafb22d8eeea1c9ca"
+  integrity sha512-NsTZECBPIB4jifZiXtbVjhWFbyhuy56XlvlQB3n0PjOMTocYICfEz8uCrivzPQ8/jGd6TF5Be5AdGLKK8byvSw==
   dependencies:
     "@pob/eslint-config" "^41.1.0"
     eslint-config-airbnb "^18.2.1"
