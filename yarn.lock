@@ -9272,10 +9272,10 @@ rollup-config-external-dependencies@^2.0.0:
   resolved "https://registry.yarnpkg.com/rollup-config-external-dependencies/-/rollup-config-external-dependencies-2.0.0.tgz#1323783bb530424a2b4cce47f26b3fc4a33a6ac7"
   integrity sha512-4/9+WSF/ekK21hivHp9BOzfwcgD7jNiWjfOQU9LXferNHfK8OWPaADiquYO8WZuU6uY30uB1m3huSD9ZOzWxYA==
 
-rollup@2.35.0, rollup@^2.34.2:
-  version "2.35.0"
-  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.35.0.tgz#47b77827b122fbeca6a2c494fb2258db73d04fa9"
-  integrity sha512-AkiRsGBlHbP+bnAcOgiCRp6jm0BEGHXJk7TGZ+GpKyTL3EiSv+v+zEHlaB1gy1Ql2zyblBhzo5X346bCL45OAg==
+rollup@2.35.1, rollup@^2.34.2:
+  version "2.35.1"
+  resolved "https://registry.yarnpkg.com/rollup/-/rollup-2.35.1.tgz#e6bc8d10893556a638066f89e8c97f422d03968c"
+  integrity sha512-q5KxEyWpprAIcainhVy6HfRttD9kutQpHbeqDTWnqAFNJotiojetK6uqmcydNMymBEtC4I8bCYR+J3mTMqeaUA==
   optionalDependencies:
     fsevents "~2.1.2"
 
