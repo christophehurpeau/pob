@@ -312,8 +312,11 @@ module.exports = class PobLibGenerator extends Generator {
           ]
             .filter(Boolean)
             .join(' && '),
-          version: 'pob-version',
         });
+
+        if (pkg.scripts.version === 'pob-version') {
+          delete pkg.scripts.version;
+        }
       }
 
       if (withBabel) {
