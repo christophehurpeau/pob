@@ -35,6 +35,17 @@
       "rangeStrategy": "bump",
       "packageRules": [
         {
+          "depTypeList": [
+            "dependencies",
+            "peerDependencies"
+          ],
+          "updateTypes": [
+            "major",
+            "minor"
+          ],
+          "semanticCommitType": "feat"
+        },
+        {
           "groupName": "Pob Dependencies",
           "packageNames": [
             "@chrp/typedoc-plugin-lerna-packages",
