@@ -121,7 +121,7 @@ module.exports = class BabelGenerator extends Generator {
           type: 'checkbox',
           name: 'nodeVersions',
           message: 'Babel node versions: (https://github.com/nodejs/Release)',
-          when: ({ babelTargets = [] }) => babelTargets.includes('node'),
+          when: ({ targets = [] }) => targets.includes('node'),
           validate: (versions) => versions.length > 0,
           default: nodeVersions,
           choices: [
@@ -136,7 +136,7 @@ module.exports = class BabelGenerator extends Generator {
           type: 'checkbox',
           name: 'browserVersions',
           message: 'Babel browser versions',
-          when: ({ babelTargets = [] }) => babelTargets.includes('browser'),
+          when: ({ targets = [] }) => targets.includes('browser'),
           validate: (versions) => versions.length > 0,
           default: browserVersions,
           choices: [
@@ -155,8 +155,8 @@ module.exports = class BabelGenerator extends Generator {
           type: 'checkbox',
           name: 'formats',
           message: 'Babel formats',
-          when: ({ babelTargets = [] }) => babelTargets.length !== 0,
-          validate: (babelTargets = []) => babelTargets.length > 0,
+          when: ({ targets = [] }) => targets.length !== 0,
+          validate: (targets = []) => targets.length > 0,
           default: formats,
           choices: [
             {
@@ -174,7 +174,7 @@ module.exports = class BabelGenerator extends Generator {
           type: 'confirm',
           name: 'jsx',
           message: 'Enable JSX ?',
-          when: ({ babelTargets = [] }) => babelTargets.length !== 0,
+          when: ({ targets = [] }) => targets.length !== 0,
           default: jsx,
         },
       ]);
@@ -417,13 +417,23 @@ module.exports = class BabelGenerator extends Generator {
 
     /* side effects */
 
-    if (!('sideEffects' in pkg)) {
+    if (this.options.isApp) {
+      delete pkg.sideEffects;
+    } else if (!('sideEffects' in pkg)) {
       pkg.sideEffects = true;
+      console.warn('Setting pkg.sideEffects to true, as it was not defined');
+    } else if (pkg.sideEffects) {
+      console.warn(
+        "pkg.sideEffects is true, are you sure you can't set it to false ?",
+      );
     }
 
     /* main / aliases / typing */
 
-    if (pkg.typings) {
+    if (this.options.isApp) {
+      delete pkg.types;
+      delete pkg.typings;
+    } else if (pkg.typings) {
       if (!pkg.types) pkg.types = pkg.typings;
       delete pkg.typings;
     }
@@ -439,13 +449,15 @@ module.exports = class BabelGenerator extends Generator {
               : 'cjs'
           }.js`
         : './index.js';
-      pkg.types = './dist/index.d.ts';
+      if (!this.options.isApp) pkg.types = './dist/index.d.ts';
     } else {
       pkg.main = './lib/index.js';
-      if (this.fs.exists('./lib/index.ts')) {
-        pkg.types = './lib/index.ts';
-      } else if (this.fs.exists('./lib/index.d.ts') || pkg.types) {
-        pkg.types = './lib/index.d.ts';
+      if (!this.options.isApp) {
+        if (this.fs.exists('./lib/index.ts')) {
+          pkg.types = './lib/index.ts';
+        } else if (this.fs.exists('./lib/index.d.ts') || pkg.types) {
+          pkg.types = './lib/index.d.ts';
+        }
       }
       if (!pkg.engines) pkg.engines = {};
       if (

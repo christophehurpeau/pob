@@ -20,12 +20,6 @@ module.exports = class TestingGenerator extends Generator {
       desc: 'ci',
     });
 
-    // this.option('travisci', {
-    //   type: Boolean,
-    //   required: true,
-    //   desc: 'travisci',
-    // });
-
     this.option('codecov', {
       type: Boolean,
       required: true,

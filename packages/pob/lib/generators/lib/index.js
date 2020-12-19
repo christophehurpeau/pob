@@ -32,16 +32,20 @@ module.exports = class PobLibGenerator extends Generator {
   }
 
   initializing() {
-    this.pobjson = this.config.get('pob') || this.config.get('pob-config');
+    this.pobjson =
+      this.config.get('pob') ||
+      this.config.get('pob-config') ||
+      this.config.get('pob-lib-config');
     if (!this.pobjson) {
       this.pobjson = this.fs.readJSON(this.destinationPath('.pob.json'), null);
       if (this.pobjson) {
-        this.config.set('pob-config', this.pobjson);
+        this.config.set('pob-lib-config', this.pobjson);
         this.config.save();
       }
     }
 
     this.config.delete('pob'); // deprecated
+    this.config.delete('pob-config'); // deprecated
     this.fs.delete('.pob.json'); // deprecated
 
     if (!this.pobjson || this.pobjson.babelEnvs) {
@@ -229,7 +233,7 @@ module.exports = class PobLibGenerator extends Generator {
 
     this.composeWith(require.resolve('../common/old-dependencies'));
 
-    this.composeWith(require.resolve('./testing'), {
+    this.composeWith(require.resolve('../common/testing'), {
       enable: this.pobjson.testing,
       testing: this.pobjson.testing,
       documentation: !!this.pobjson.documentation,
@@ -356,7 +360,7 @@ module.exports = class PobLibGenerator extends Generator {
     //   this.babelEnvs.includes('browsers') && 'browsers',
     // ].filter(Boolean);
 
-    this.config.set('pob-config', pobjson);
+    this.config.set('pob-lib-config', pobjson);
     this.config.save();
   }
 };

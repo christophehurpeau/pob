@@ -119,6 +119,7 @@ module.exports = class PobBaseGenerator extends Generator {
     }
 
     this.fs.delete('Makefile');
+    this.fs.delete(this.destinationPath('.commitrc.js'));
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     if (
@@ -133,8 +134,6 @@ module.exports = class PobBaseGenerator extends Generator {
         defaultLicense: 'ISC',
       });
     }
-
-    this.fs.delete(this.destinationPath('.commitrc.js'));
 
     this.composeWith(require.resolve('../core/editorconfig'));
 

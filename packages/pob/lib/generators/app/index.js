@@ -33,10 +33,24 @@ module.exports = class PobAppGenerator extends Generator {
     });
   }
 
+  initializing() {
+    this.appConfig =
+      this.config.get('app') || this.config.get('pob-app-config');
+
+    this.config.delete('app'); // deprecated
+
+    // see lib, in case the app migrating from a lib when app were not available
+    this.config.delete('pob'); // deprecated
+    this.config.delete('pob-config'); // deprecated
+    this.fs.delete('.pob.json'); // deprecated
+
+    this.config.delete('pob-lib-config'); // in case coming from lib
+  }
+
   async prompting() {
-    const config = this.config.get('app');
+    const config = this.appConfig;
+
     if (config && this.options.updateOnly) {
-      this.appConfig = config;
       return;
     }
 
@@ -55,9 +69,22 @@ module.exports = class PobAppGenerator extends Generator {
         default: false,
         when: (values) => values.type === 'next.js',
       },
+      {
+        type: 'confirm',
+        name: 'testing',
+        message: 'Do you want testing ?',
+        default: config.testing === undefined ? false : config.testing,
+      },
+      {
+        type: 'confirm',
+        name: 'ci',
+        message: 'Do you want ci ?',
+        default: config.ci === undefined ? true : config.ci,
+      },
     ]);
 
-    this.config.set('app', this.appConfig);
+    this.config.set('pob-app-config', this.appConfig);
+    this.config.save();
   }
 
   default() {
@@ -65,7 +92,7 @@ module.exports = class PobAppGenerator extends Generator {
       this.composeWith(require.resolve('../common/babel'), {
         updateOnly: this.options.updateOnly,
         isApp: true,
-        testing: false,
+        testing: this.appConfig.testing,
         documentation: false,
         fromPob: this.options.fromPob,
       });
@@ -102,9 +129,19 @@ module.exports = class PobAppGenerator extends Generator {
           : '',
     });
 
+    this.composeWith(require.resolve('../common/old-dependencies'));
+
+    this.composeWith(require.resolve('../common/testing'), {
+      enable: this.appConfig.testing,
+      testing: this.appConfig.testing,
+      documentation: false,
+      codecov: false,
+      ci: this.appConfig.ci,
+    });
+
     this.composeWith(require.resolve('../common/format-lint'), {
       documentation: false,
-      testing: false,
+      testing: this.appConfig.testing,
       babel,
       node,
       browser,
@@ -112,8 +149,6 @@ module.exports = class PobAppGenerator extends Generator {
       useYarn2: this.options.useYarn2,
       ignorePaths: JSON.stringify(ignorePaths),
     });
-
-    this.composeWith(require.resolve('../common/old-dependencies'));
 
     this.composeWith(require.resolve('../core/gitignore'), {
       root: !inLerna || inLerna.root,
