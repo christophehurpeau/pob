@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.5.1](https://github.com/christophehurpeau/pob/compare/pob@7.5.0...pob@7.5.1) (2020-12-19)
+
+
+### Bug Fixes
+
+* **pob:** only run in watch mode ([8b60c46](https://github.com/christophehurpeau/pob/commit/8b60c46abfb90265007f164aa5467dff84b7edf0))
+* remove pob-version ([b076e5d](https://github.com/christophehurpeau/pob/commit/b076e5dc478fd75523596890f99d467970b70687))
+
+
+
+
+
 # [7.5.0](https://github.com/christophehurpeau/pob/compare/pob@7.4.0...pob@7.5.0) (2020-12-19)
 
 
