@@ -37,13 +37,12 @@ module.exports = class PobAppGenerator extends Generator {
     this.appConfig =
       this.config.get('app') || this.config.get('pob-app-config');
 
-    this.config.delete('app'); // deprecated
+    this.config.delete('pob-app-config'); // deprecated
 
     // see lib, in case the app migrating from a lib when app were not available
     this.config.delete('pob'); // deprecated
     this.config.delete('pob-config'); // deprecated
     this.fs.delete('.pob.json'); // deprecated
-
     this.config.delete('pob-lib-config'); // in case coming from lib
   }
 
@@ -51,6 +50,8 @@ module.exports = class PobAppGenerator extends Generator {
     const config = this.appConfig;
 
     if (config && this.options.updateOnly) {
+      this.config.set('app', this.appConfig);
+      this.config.save();
       return;
     }
 
@@ -83,7 +84,7 @@ module.exports = class PobAppGenerator extends Generator {
       },
     ]);
 
-    this.config.set('pob-app-config', this.appConfig);
+    this.config.set('app', this.appConfig);
     this.config.save();
   }
 

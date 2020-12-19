@@ -33,19 +33,21 @@ module.exports = class PobLibGenerator extends Generator {
 
   initializing() {
     this.pobjson =
+      this.config.get('lib') ||
       this.config.get('pob') ||
       this.config.get('pob-config') ||
       this.config.get('pob-lib-config');
     if (!this.pobjson) {
       this.pobjson = this.fs.readJSON(this.destinationPath('.pob.json'), null);
       if (this.pobjson) {
-        this.config.set('pob-lib-config', this.pobjson);
+        this.config.set('lib', this.pobjson);
         this.config.save();
       }
     }
 
     this.config.delete('pob'); // deprecated
     this.config.delete('pob-config'); // deprecated
+    this.config.delete('pob-lib-config'); // deprecated
     this.fs.delete('.pob.json'); // deprecated
 
     if (!this.pobjson || this.pobjson.babelEnvs) {
@@ -363,7 +365,7 @@ module.exports = class PobLibGenerator extends Generator {
     //   this.babelEnvs.includes('browsers') && 'browsers',
     // ].filter(Boolean);
 
-    this.config.set('pob-lib-config', pobjson);
+    this.config.set('lib', pobjson);
     this.config.save();
   }
 };
