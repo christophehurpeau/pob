@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.6.0](https://github.com/christophehurpeau/pob/compare/pob@7.5.1...pob@7.6.0) (2020-12-19)
+
+
+### Bug Fixes
+
+* lerna detect children testing ([fec42e8](https://github.com/christophehurpeau/pob/commit/fec42e8538f6214d2afe935f12dc2ab1302e52d3))
+* missing new line ([13e99f5](https://github.com/christophehurpeau/pob/commit/13e99f5b5921170cfbda3a65857cf1b4473b202c))
+* missing write pkg ([fb0eabd](https://github.com/christophehurpeau/pob/commit/fb0eabdb5adac08f641fa43c6b2f815d35fc8539))
+* remove console.log ([76c3fc5](https://github.com/christophehurpeau/pob/commit/76c3fc569337093507b18d2a56deeca051800f03))
+* style rollup config app ([fd3d4ee](https://github.com/christophehurpeau/pob/commit/fd3d4ee4b9ac4455aae45355a019b7827f8ec3d9))
+
+
+### Features
+
+* imrpove ignore paths ([8572c8c](https://github.com/christophehurpeau/pob/commit/8572c8c66bdf23bb403541e3e0c5a8fd05ab0297))
+* simplify pob-lib-config pob-app-config ([b3325d4](https://github.com/christophehurpeau/pob/commit/b3325d45e4a22c018caa07b4810ae8e4b102f021))
+
+
+
+
+
 ## [7.5.1](https://github.com/christophehurpeau/pob/compare/pob@7.5.0...pob@7.5.1) (2020-12-19)
 
 

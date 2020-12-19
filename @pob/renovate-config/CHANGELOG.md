@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.3](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.4.2...@pob/renovate-config@2.4.3) (2020-12-19)
+
+
+### Bug Fixes
+
+* update automerge label ([803a0c2](https://github.com/christophehurpeau/pob/commit/803a0c2dc94ed34f83e0f8d52fc9c967c753a7a7))
+
+
+
+
+
 ## [2.4.2](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.4.1...@pob/renovate-config@2.4.2) (2020-12-19)
 
 
