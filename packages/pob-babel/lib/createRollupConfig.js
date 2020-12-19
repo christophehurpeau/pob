@@ -21,6 +21,8 @@ const nodeFormatToExt = (format) => {
 module.exports = ({
   cwd = process.cwd(),
   pkg = JSON.parse(readFileSync(`${cwd}/package.json`)),
+  devPlugins = [],
+  prodPlugins = [],
 } = {}) => {
   const pobConfig =
     pkg.pob || JSON.parse(readFileSync(`${cwd}/.yo-rc.json`)).pob['pob-config'];
@@ -50,7 +52,7 @@ module.exports = ({
 
   const externalByPackageJson = configExternalDependencies(pkg);
 
-  const createConfigForEnv = (entry, env, production) => {
+  const createConfigForEnv = (entry, env, production, morePlugins) => {
     const devSuffix = production ? '' : '-dev';
 
     const entryName =
@@ -168,6 +170,7 @@ module.exports = ({
             moduleDirectories: ['src'], // don't resolve node_modules, but allow src (see baseUrl in tsconfig)
           },
         }),
+        ...morePlugins,
       ].filter(Boolean),
     };
   };
@@ -178,8 +181,8 @@ module.exports = ({
       Array.prototype.concat.apply(
         [],
         entries.map((entry) => [
-          createConfigForEnv(entry, env, true),
-          createConfigForEnv(entry, env, false),
+          createConfigForEnv(entry, env, true, prodPlugins),
+          createConfigForEnv(entry, env, false, devPlugins),
         ]),
       ),
     ),

@@ -575,11 +575,21 @@ module.exports = class BabelGenerator extends Generator {
 
     /* pob-babel config */
 
+    this.addOrRemoveDevDependencies(pkg, useBabel && this.options.isApp, [
+      '@rollup/plugin-run',
+    ]);
     if (useBabel) {
-      this.fs.copy(
-        this.templatePath('rollup.config.js.txt'),
-        this.destinationPath('rollup.config.js'),
-      );
+      if (this.options.isApp) {
+        this.fs.copy(
+          this.templatePath('app.rollup.config.js.ejs'),
+          this.destinationPath('rollup.config.js'),
+        );
+      } else {
+        this.fs.copy(
+          this.templatePath('lib.rollup.config.js.txt'),
+          this.destinationPath('rollup.config.js'),
+        );
+      }
     } else {
       this.fs.delete('rollup.config.js');
     }

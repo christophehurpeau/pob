@@ -1,0 +1,7 @@
+'use strict';
+
+const run = require('@rollup/plugin-run');
+
+module.exports = require('pob-babel/lib/createRollupConfig')({
+  devPlugins: [run({ execArgv: ['--enable-source-maps'] })],
+});
