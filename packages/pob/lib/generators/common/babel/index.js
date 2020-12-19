@@ -575,7 +575,6 @@ module.exports = class BabelGenerator extends Generator {
 
     /* pob-babel config */
 
-    console.log(!!useBabel && this.options.isApp);
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       useBabel && this.options.isApp,
