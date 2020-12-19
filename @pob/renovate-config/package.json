@@ -30,7 +30,7 @@
         "yarnDedupeHighest"
       ],
       "labels": [
-        ":soon: automerge"
+        ":vertical_traffic_light: automerge"
       ],
       "rangeStrategy": "bump",
       "packageRules": [
@@ -122,7 +122,7 @@
           ],
           "labels": [
             ":ok_hand: code/approved",
-            ":soon: automerge"
+            ":vertical_traffic_light: automerge"
           ],
           "schedule": [
             "at any time"
@@ -134,7 +134,7 @@
           ],
           "labels": [
             ":ok_hand: code/approved",
-            ":soon: automerge"
+            ":vertical_traffic_light: automerge"
           ],
           "schedule": [
             "at any time"
