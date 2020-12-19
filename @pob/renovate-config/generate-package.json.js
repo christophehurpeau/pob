@@ -15,6 +15,8 @@ const excludePkgNames = [
   'husky',
   'prettier',
   'typescript',
+  'rollup',
+  'semver',
   'repository-check-dirty',
   'jest',
   'jest-junit-reporter',
@@ -25,7 +27,7 @@ const isEslintDep = (dep) =>
   dep.startsWith('@pob/eslint') ||
   dep.startsWith('@typescript-eslint/');
 
-pkg['renovate-config'].default.packageRules[0].packageNames = Object.keys(
+pkg['renovate-config'].default.packageRules[1].packageNames = Object.keys(
   pobDependencies.devDependencies,
 ).filter(
   (pkgName) =>
@@ -35,13 +37,6 @@ pkg['renovate-config'].default.packageRules[0].packageNames = Object.keys(
     !excludePkgNames.includes(pkgName) &&
     !isEslintDep(pkgName),
 );
-
-pkg['renovate-config'].default.packageRules[1].packagePatterns = [
-  '^@pob/eslint-config',
-  '^@typescript-eslint/',
-  '^eslint-',
-];
-pkg['renovate-config'].default.packageRules[1].packageNames = ['eslint'];
 
 const formattedPkg = prettier.format(JSON.stringify(pkg, null, 2), {
   filepath: 'package.json',
