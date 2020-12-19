@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.5.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.4.0...pob-dependencies@3.5.0) (2020-12-19)
+
+
+### Bug Fixes
+
+* add  --skipLibCheck to check .d.ts ([e2b31be](https://github.com/christophehurpeau/pob/commit/e2b31be542a1fc70846b888865328bc73483cc3d))
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v41.1.0 [skip ci] ([#739](https://github.com/christophehurpeau/pob/issues/739)) ([f0f979f](https://github.com/christophehurpeau/pob/commit/f0f979fbe7036d45f698c56576a34f764febda91))
+* **deps:** update dependency @babel/preset-env to v7.12.11 ([#745](https://github.com/christophehurpeau/pob/issues/745)) ([9f25a8a](https://github.com/christophehurpeau/pob/commit/9f25a8a67a7f2c98124dd96af1d17af70b6a0a6b))
+* **deps:** update dependency @pob/eslint-config-typescript-react to v41.1.1 ([#740](https://github.com/christophehurpeau/pob/issues/740)) ([c7ce379](https://github.com/christophehurpeau/pob/commit/c7ce37946462086a77a377772a8c5620a6f0eed6))
+* **deps:** update dependency eslint to v7.16.0 [skip ci] ([#748](https://github.com/christophehurpeau/pob/issues/748)) ([ad7f4a9](https://github.com/christophehurpeau/pob/commit/ad7f4a90a24a3b0f2748841c06e88bd80083818d))
+* **deps:** update dependency husky to v4.3.6 [skip ci] ([#741](https://github.com/christophehurpeau/pob/issues/741)) ([0cefa9f](https://github.com/christophehurpeau/pob/commit/0cefa9f0040c220c9677b79fe4a284759a4b3628))
+* **deps:** update dependency rollup to v2.35.0 [skip ci] ([#742](https://github.com/christophehurpeau/pob/issues/742)) ([b317f9a](https://github.com/christophehurpeau/pob/commit/b317f9abf194b59c2bfb38e7c2192e8d9ec1e985))
+* **deps:** update dependency rollup to v2.35.1 [skip ci] ([#743](https://github.com/christophehurpeau/pob/issues/743)) ([cce58a3](https://github.com/christophehurpeau/pob/commit/cce58a385a5d72b454b1ec588da2c1eb22e23b9f))
+* **deps:** update typescript-eslint monorepo to v4.10.0 [skip ci] ([#744](https://github.com/christophehurpeau/pob/issues/744)) ([6ce64a4](https://github.com/christophehurpeau/pob/commit/6ce64a4b8214c6d54a649b7cbd1ed0cca95f3abd))
+
+
+
+
+
 # [3.4.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.3.0...pob-dependencies@3.4.0) (2020-12-12)
 
 

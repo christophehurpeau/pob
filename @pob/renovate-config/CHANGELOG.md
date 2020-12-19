@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.4.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.3.1...@pob/renovate-config@2.4.0) (2020-12-19)
+
+
+### Features
+
+* **renovate-config:** semantic commit to feat when major or minor in dependencies or peer dependencies ([3529da5](https://github.com/christophehurpeau/pob/commit/3529da5159527dfca8105e67c9679c54d0a2b290))
+
+
+
+
+
 ## [2.3.1](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.3.0...@pob/renovate-config@2.3.1) (2020-12-12)
 
 **Note:** Version bump only for package @pob/renovate-config

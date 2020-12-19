@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.2.1](https://github.com/christophehurpeau/pob/compare/pob-babel@26.2.0...pob-babel@26.2.1) (2020-12-19)
+
+
+### Bug Fixes
+
+* add  --skipLibCheck to check .d.ts ([e2b31be](https://github.com/christophehurpeau/pob/commit/e2b31be542a1fc70846b888865328bc73483cc3d))
+
+
+
+
+
 # [26.2.0](https://github.com/christophehurpeau/pob/compare/pob-babel@26.1.0...pob-babel@26.2.0) (2020-12-12)
 
 

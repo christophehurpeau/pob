@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.4.0](https://github.com/christophehurpeau/pob/compare/pob@7.3.1...pob@7.4.0) (2020-12-19)
+
+
+### Bug Fixes
+
+* add  --skipLibCheck to check .d.ts ([e2b31be](https://github.com/christophehurpeau/pob/commit/e2b31be542a1fc70846b888865328bc73483cc3d))
+* call preversion before standard-version ([d6ad259](https://github.com/christophehurpeau/pob/commit/d6ad259130ce684bc9f917216b0ddbc6cb3a0790))
+
+
+### Features
+
+* add removeDevAndNotDevDependencies ([707f840](https://github.com/christophehurpeau/pob/commit/707f84061c92a8a86e79104ffecb2d8870305565))
+* add typescript.tsdk in vscode settings for yarn 1 ([60c2c3f](https://github.com/christophehurpeau/pob/commit/60c2c3f2179e2b67c6356bb6e7803270682c05f4))
+* improve app and enable testing for apps ([5302b21](https://github.com/christophehurpeau/pob/commit/5302b2144ef37f108a274c6938acf1030bdb949c))
+* use @pob/eslint-config-typescript/test in tests ([d19f360](https://github.com/christophehurpeau/pob/commit/d19f360a781c5671d071818ca2ccab3cdd196ab9))
+* use actions/setup-node@v2 ([0269a70](https://github.com/christophehurpeau/pob/commit/0269a704531b8d9a573266815446b27398c67259))
+
+
+
+
+
 ## [7.3.1](https://github.com/christophehurpeau/pob/compare/pob@7.3.0...pob@7.3.1) (2020-12-12)
 
 **Note:** Version bump only for package pob
