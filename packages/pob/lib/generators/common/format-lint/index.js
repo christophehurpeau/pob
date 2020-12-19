@@ -98,7 +98,9 @@ module.exports = class LintGenerator extends Generator {
     };
 
     if (!inLerna || inLerna.root) {
-      const ignorePatterns = new Set(['/dist']);
+      const ignorePatterns = new Set(
+        this.options.ignorePaths.split('\n').filter(Boolean),
+      );
       if (this.options.appTypes) {
         const appTypes = JSON.parse(this.options.appTypes);
         appTypes.forEach((appType) => {

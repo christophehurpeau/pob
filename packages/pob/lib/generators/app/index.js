@@ -148,7 +148,7 @@ module.exports = class PobAppGenerator extends Generator {
       browser,
       enableSrcResolver: true,
       useYarn2: this.options.useYarn2,
-      ignorePaths: JSON.stringify(ignorePaths),
+      ignorePaths: ignorePaths.join('\n'),
     });
 
     this.composeWith(require.resolve('../core/gitignore'), {

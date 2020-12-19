@@ -248,6 +248,7 @@ module.exports = class PobLibGenerator extends Generator {
       documentation: !!this.pobjson.documentation,
       testing: this.pobjson.testing,
       useYarn2: this.options.useYarn2,
+      ignorePaths: withBabel ? '/dist' : '',
     });
 
     this.composeWith(require.resolve('./doc'), {

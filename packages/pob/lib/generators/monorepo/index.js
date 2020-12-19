@@ -161,6 +161,7 @@ module.exports = class PobMonorepoGenerator extends Generator {
       testing: this.pobLernaConfig.testing,
       useYarn2: this.options.useYarn2,
       appTypes: JSON.stringify(getAppTypes(this.packageConfigs)),
+      ignorePaths: this.pobLernaConfig.typescript ? 'dist' : '',
     });
 
     this.composeWith(require.resolve('../lib/doc'), {
