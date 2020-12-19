@@ -575,9 +575,11 @@ module.exports = class BabelGenerator extends Generator {
 
     /* pob-babel config */
 
-    this.addOrRemoveDevDependencies(pkg, useBabel && this.options.isApp, [
-      '@rollup/plugin-run',
-    ]);
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      useBabel && this.options.isApp,
+      ['@rollup/plugin-run'],
+    );
     if (useBabel) {
       if (this.options.isApp) {
         this.fs.copy(

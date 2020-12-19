@@ -42,7 +42,7 @@
     "@yarnpkg/parsers": "^2.2.0",
     "findup-sync": "^4.0.0",
     "generator-license": "^5.4.0",
-    "gh-got": "^9.0.0",
+    "got": "^11.8.1",
     "git-remote-url": "^1.0.1",
     "github-username": "^5.0.1",
     "inquirer-npm-name": "^3.0.0",

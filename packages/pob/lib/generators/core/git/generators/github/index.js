@@ -2,18 +2,26 @@
 
 'use strict';
 
-const gh = require('gh-got');
+const got = require('got');
 const Generator = require('yeoman-generator');
 // const packageUtils = require('../../../../../utils/package');
 
 const GITHUB_TOKEN = process.env.POB_GITHUB_TOKEN;
 
+const gh = got.extend({
+  prefixUrl: 'https://api.github.com/',
+  responseType: 'json',
+  resolveBodyOnly: true,
+  headers: {
+    authorization: `token ${GITHUB_TOKEN}`,
+  },
+});
+
 const configureProtectionRule = async (owner, repo) => {
   for (const branch of ['main', 'master']) {
     try {
       await gh.put(`repos/${owner}/${repo}/branches/${branch}/protection`, {
-        token: GITHUB_TOKEN,
-        body: {
+        json: {
           required_status_checks: {
             strict: false,
             contexts: [
@@ -80,8 +88,7 @@ module.exports = class GitHubGenerator extends Generator {
         if (this.options.shouldCreate) {
           try {
             await gh('user/repos', {
-              token: GITHUB_TOKEN,
-              body: {
+              json: {
                 name: pkg.name,
                 description: pkg.description,
                 homepage: null,
@@ -121,8 +128,7 @@ module.exports = class GitHubGenerator extends Generator {
     } else {
       console.log('sync github info');
       await gh.post(`repos/${owner}/${repo}`, {
-        token: GITHUB_TOKEN,
-        body: {
+        json: {
           name: repo,
           /* pkg.name
             .replace(/-(lerna|monorepo)$/, '')
