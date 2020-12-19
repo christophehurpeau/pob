@@ -13,6 +13,7 @@ interface Dependencies {
   '@pob/lerna-light': '^3.23.0';
   '@pob/pretty-pkg': '^2.0.2';
   '@pob/root': '^3.0.3';
+  '@rollup/plugin-run': '2.0.2';
   '@types/jest': '26.0.19';
   '@typescript-eslint/eslint-plugin': '4.10.0';
   '@typescript-eslint/parser': '4.10.0';
@@ -30,7 +31,7 @@ interface Dependencies {
   husky: '4.3.6';
   jest: '26.6.3';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '^26.2.0';
+  'pob-babel': '^26.2.1';
   'pob-lcov-reporter': '^4.0.1';
   prettier: '2.2.1';
   'repository-check-dirty': '^2.0.1';

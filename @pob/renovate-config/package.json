@@ -1,6 +1,6 @@
 {
   "name": "@pob/renovate-config",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "renovate pob config",
   "engines": {
     "node": ">=12.10.0"
@@ -17,7 +17,7 @@
     "preversion": "node generate-package.json.js && git add package.json"
   },
   "devDependencies": {
-    "pob-dependencies": "^3.5.0",
+    "pob-dependencies": "^3.6.0",
     "prettier": "2.2.1"
   },
   "renovate-config": {
@@ -46,6 +46,7 @@
           "semanticCommitType": "feat",
           "packageNames": [
             "@chrp/typedoc-plugin-lerna-packages",
+            "@rollup/plugin-run",
             "pob-babel",
             "pob-lcov-reporter",
             "rollup",

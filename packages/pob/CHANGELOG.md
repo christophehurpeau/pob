@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.5.0](https://github.com/christophehurpeau/pob/compare/pob@7.4.0...pob@7.5.0) (2020-12-19)
+
+
+### Features
+
+* rollup config for node app ([ee088c7](https://github.com/christophehurpeau/pob/commit/ee088c7726b4c6f4f250950ee8824c25fbdadaf3))
+
+
+
+
+
 # [7.4.0](https://github.com/christophehurpeau/pob/compare/pob@7.3.1...pob@7.4.0) (2020-12-19)
 
 

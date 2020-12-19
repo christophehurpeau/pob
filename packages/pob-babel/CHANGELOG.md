@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [26.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@26.2.1...pob-babel@26.3.0) (2020-12-19)
+
+
+### Features
+
+* rollup config for node app ([ee088c7](https://github.com/christophehurpeau/pob/commit/ee088c7726b4c6f4f250950ee8824c25fbdadaf3))
+
+
+
+
+
 ## [26.2.1](https://github.com/christophehurpeau/pob/compare/pob-babel@26.2.0...pob-babel@26.2.1) (2020-12-19)
 
 
