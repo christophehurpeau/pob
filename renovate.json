@@ -4,6 +4,7 @@
   "masterIssue": true,
   "masterIssueApproval": false,
   "postUpdateOptions": ["yarnDedupeFewer", "yarnDedupeHighest"],
+  "labels": [":vertical_traffic_light: automerge"],
   "rangeStrategy": "bump",
   "packageRules": [
     {
@@ -36,11 +37,17 @@
     },
     {
       "updateTypes": ["patch", "minor"],
-      "labels": [":ok_hand: code/approved", ":soon: automerge"]
+      "labels": [
+        ":ok_hand: code/approved",
+        ":vertical_traffic_light: automerge"
+      ]
     },
     {
       "updateTypes": ["pin"],
-      "labels": [":ok_hand: code/approved", ":soon: automerge"],
+      "labels": [
+        ":ok_hand: code/approved",
+        ":vertical_traffic_light: automerge"
+      ],
       "schedule": ["at any time"]
     }
   ]
