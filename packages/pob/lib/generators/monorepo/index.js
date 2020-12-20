@@ -18,6 +18,12 @@ const getAppTypes = (configs) => {
   return [...appTypes];
 };
 
+const hasDist = (configs) => {
+  return configs.some(
+    (config) => config && config.project && config.project.type === 'lib',
+  );
+};
+
 module.exports = class PobMonorepoGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
@@ -162,7 +168,10 @@ module.exports = class PobMonorepoGenerator extends Generator {
       testing: this.pobLernaConfig.testing,
       useYarn2: this.options.useYarn2,
       appTypes: JSON.stringify(getAppTypes(this.packageConfigs)),
-      ignorePaths: '',
+      ignorePaths:
+        this.pobLernaConfig.typescript && hasDist(this.packageConfigs)
+          ? '/dist'
+          : '',
     });
 
     this.composeWith(require.resolve('../lib/doc'), {
