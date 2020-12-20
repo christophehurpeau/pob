@@ -362,11 +362,13 @@ module.exports = class LintGenerator extends Generator {
       }
 
       if (this.options.ignorePaths) {
-        const ignorePaths = JSON.parse(this.options.ignorePaths);
-        ignorePaths.forEach((ignorePath) => {
-          if (ignorePath.startsWith('#')) return;
-          ignorePatterns.add(ignorePath);
-        });
+        this.options.ignorePaths
+          .split('\n')
+          .filter(Boolean)
+          .forEach((ignorePath) => {
+            if (ignorePath.startsWith('#')) return;
+            ignorePatterns.add(ignorePath);
+          });
       }
 
       const rootEslintrcConfig = updateEslintConfig(

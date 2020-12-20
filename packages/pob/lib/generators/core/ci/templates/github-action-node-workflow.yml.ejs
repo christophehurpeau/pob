@@ -62,6 +62,12 @@ jobs:
       - name: Eslint
         run: <%= isNpm ? 'npm' : 'yarn' %> run lint:eslint
         if: startsWith(matrix.node-version, '14.')
+<% if (typescript) { -%>
+
+      - name: Typescript
+        run: yarn run tsc
+        if: startsWith(matrix.node-version, '14.')
+<% } -%>
 <% if (testing) { -%>
 
       - name: Test

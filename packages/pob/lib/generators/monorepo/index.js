@@ -147,6 +147,7 @@ module.exports = class PobMonorepoGenerator extends Generator {
   default() {
     this.composeWith(require.resolve('../core/ci'), {
       enable: this.pobLernaConfig.ci,
+      typescript: this.pobLernaConfig.typescript,
       testing: this.pobLernaConfig.testing,
       codecov: this.pobLernaConfig.codecov,
       documentation: this.pobLernaConfig.documentation,
@@ -161,7 +162,7 @@ module.exports = class PobMonorepoGenerator extends Generator {
       testing: this.pobLernaConfig.testing,
       useYarn2: this.options.useYarn2,
       appTypes: JSON.stringify(getAppTypes(this.packageConfigs)),
-      ignorePaths: this.pobLernaConfig.typescript ? 'dist' : '',
+      ignorePaths: '',
     });
 
     this.composeWith(require.resolve('../lib/doc'), {

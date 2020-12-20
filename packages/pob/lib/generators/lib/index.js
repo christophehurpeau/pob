@@ -238,6 +238,7 @@ module.exports = class PobLibGenerator extends Generator {
     this.composeWith(require.resolve('../common/testing'), {
       enable: this.pobjson.testing,
       testing: this.pobjson.testing,
+      typescript: withBabel,
       documentation: !!this.pobjson.documentation,
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
       ci: this.pobjson.testing && this.pobjson.testing.ci,

@@ -135,6 +135,7 @@ module.exports = class PobAppGenerator extends Generator {
     this.composeWith(require.resolve('../common/testing'), {
       enable: this.appConfig.testing,
       testing: this.appConfig.testing,
+      typescript: babel,
       documentation: false,
       codecov: false,
       ci: this.appConfig.ci,

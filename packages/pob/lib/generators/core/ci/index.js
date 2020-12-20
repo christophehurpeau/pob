@@ -15,6 +15,12 @@ module.exports = class CiGenerator extends Generator {
       desc: 'enable ci',
     });
 
+    this.option('typescript', {
+      type: Boolean,
+      defaults: true,
+      desc: 'enable typescript',
+    });
+
     this.option('testing', {
       type: Boolean,
       defaults: true,
@@ -74,6 +80,7 @@ module.exports = class CiGenerator extends Generator {
           testing: this.options.testing && !!pkg.scripts.test,
           checks: !!pkg.scripts && !!pkg.scripts.checks,
           documentation: this.options.documentation,
+          typescript: this.options.typescript,
           codecov: this.options.codecov,
         },
       );

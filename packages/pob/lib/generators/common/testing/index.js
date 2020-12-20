@@ -20,6 +20,12 @@ module.exports = class TestingGenerator extends Generator {
       desc: 'ci',
     });
 
+    this.option('typescript', {
+      type: Boolean,
+      required: true,
+      desc: 'typescript',
+    });
+
     this.option('codecov', {
       type: Boolean,
       required: true,
@@ -38,6 +44,7 @@ module.exports = class TestingGenerator extends Generator {
       this.composeWith(require.resolve('../../core/ci'), {
         enable: this.options.ci,
         testing: this.options.testing,
+        typescript: this.options.typescript,
         documentation: this.options.documentation,
         codecov: this.options.codecov,
       });
