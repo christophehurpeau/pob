@@ -2015,10 +2015,10 @@
     eslint-plugin-react "^7.21.5"
     eslint-plugin-react-hooks "^4.1.2"
 
-"@pob/eslint-config-typescript@41.1.2":
-  version "41.1.2"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript/-/eslint-config-typescript-41.1.2.tgz#e92b256185f13bb524687de23a9fa5a1e2b8b4cd"
-  integrity sha512-d8AROaqtyk422fwPwvNIyDhkoak0nc82Whd8uNotdq0Kexki3BBo/JLT+TqgMTzjeroO1B76+iZm/DCoy1chKw==
+"@pob/eslint-config-typescript@41.1.3":
+  version "41.1.3"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript/-/eslint-config-typescript-41.1.3.tgz#e0d57c391ee12cc0bb2082fc7c1439cbcf90736e"
+  integrity sha512-ff0DlsU8q5XiT8hxTjO3VLgpymomRKJzBxuobmxZff1h+PuUH6oZeGfkjnyjk0Nb7Eqq+4HI+zcXzGgRH+eurg==
   dependencies:
     "@pob/eslint-config" "^41.1.2"
     "@pob/use-eslint-plugin" "^41.1.2"
