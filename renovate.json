@@ -13,7 +13,13 @@
     },
     {
       "depTypeList": ["dependencies"],
+      "updateTypes": ["patch"],
       "semanticCommitType": "fix"
+    },
+    {
+      "depTypeList": ["dependencies"],
+      "updateTypes": ["minor", "major"],
+      "semanticCommitType": "feat"
     },
     {
       "paths": ["packages/pob-dependencies"],
