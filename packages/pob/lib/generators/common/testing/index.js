@@ -141,7 +141,7 @@ module.exports = class TestingGenerator extends Generator {
         },
       });
 
-      if (babelEnvs.find((env) => env.target === 'node')) {
+      if (babelEnvs.some((env) => env.target === 'node')) {
         pkg.jest.testEnvironment = 'node';
       } else {
         delete pkg.jest.testEnvironment;
