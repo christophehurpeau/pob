@@ -33,7 +33,7 @@
     ]
   },
   "devDependencies": {
-    "@pob/eslint-config": "42.0.0",
+    "@pob/eslint-config": "42.0.1",
     "@pob/eslint-config-node": "42.0.0",
     "@pob/lerna-light": "file:./@pob/lerna-light",
     "eslint": "7.17.0",

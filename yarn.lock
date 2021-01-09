@@ -2062,24 +2062,24 @@
     "@pob/use-eslint-plugin" "^42.0.0"
     eslint-plugin-node "^11.1.0"
 
-"@pob/eslint-config-typescript-react@42.0.0":
-  version "42.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript-react/-/eslint-config-typescript-react-42.0.0.tgz#56b7063b5913a6cbeafb094d5f8ac0e58a26183e"
-  integrity sha512-GOpbD3tsz/6RpqfwLHsL6eeIYP8RGzye9iAeTqZSx0Wu2ZHwcvO9FKakSarnZx1o7KH9Qn2ZI1BLNGQZOQbvbA==
+"@pob/eslint-config-typescript-react@42.0.1":
+  version "42.0.1"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript-react/-/eslint-config-typescript-react-42.0.1.tgz#6f8b190ca225b98f1af6e92c4ce968eb53cde9ee"
+  integrity sha512-kopQNUDq368iXtkoOE/YjS5AMH169FqaPnEkOJ+fzyLET5cVQvWT7Nbyr7J2p1OLIDLH6mu8kDzPjfwdJyN2zA==
   dependencies:
-    "@pob/eslint-config" "^42.0.0"
+    "@pob/eslint-config" "^42.0.1"
     eslint-config-airbnb "^18.2.1"
     eslint-config-prettier "^7.1.0"
     eslint-plugin-jsx-a11y "^6.4.1"
     eslint-plugin-react "^7.21.5"
     eslint-plugin-react-hooks "^4.1.2"
 
-"@pob/eslint-config-typescript@42.0.0":
-  version "42.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript/-/eslint-config-typescript-42.0.0.tgz#8cb7259f14cf3d99cbaa2fe24cd9c4e8ef6695d4"
-  integrity sha512-HPIoP+Gp0Lr1kFo4GPMk8iIoYqSQHLDA8adnAbGi0rVgT0/R1+s6SmoOO3rL6mtm+Mv5Y5h6MALocuWPmky28g==
+"@pob/eslint-config-typescript@42.0.1":
+  version "42.0.1"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config-typescript/-/eslint-config-typescript-42.0.1.tgz#bb0035b72deab3ee01e32065c824f6374adfecda"
+  integrity sha512-Z/czUhaBowQIA0e+DMzM9F2pA9+c2TtuL+PgElSHkZ8dDMNEA7FdVpIgbiwuowcJmrwtbiJns8RxmghZ0TU5hQ==
   dependencies:
-    "@pob/eslint-config" "^42.0.0"
+    "@pob/eslint-config" "^42.0.1"
     "@pob/use-eslint-plugin" "^42.0.0"
     "@typescript-eslint/eslint-plugin" "^4.1.1"
     "@typescript-eslint/parser" "^4.1.1"
@@ -2087,10 +2087,10 @@
     eslint-config-prettier "^7.1.0"
     eslint-plugin-import "^2.22.1"
 
-"@pob/eslint-config@42.0.0", "@pob/eslint-config@^42.0.0":
-  version "42.0.0"
-  resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-42.0.0.tgz#971d99cf0bf439cd8aeea4bfaaa61c11b13e2b9b"
-  integrity sha512-4MT2oc0v0shTk+Jwz+eQSv95dDoM890aWNMrMjMNlQONvNafuWcg5FRRfNyc5AX61zVIDJVPczW7c/wEG9hOdw==
+"@pob/eslint-config@42.0.1", "@pob/eslint-config@^42.0.1":
+  version "42.0.1"
+  resolved "https://registry.yarnpkg.com/@pob/eslint-config/-/eslint-config-42.0.1.tgz#6bc4a89a519e9c36041934138e92b24e7cc8845d"
+  integrity sha512-tkRLr2vUTbtzjPIOq3iTqGVZbrS/uxajXGpI4zE69hCArCFVIrhxolGfnchnlekkGcBU/1CLrZJSkLcX5xtxjw==
   dependencies:
     "@pob/use-eslint-plugin" "^42.0.0"
     eslint-config-airbnb-base "^14.2.1"
