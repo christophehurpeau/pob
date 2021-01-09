@@ -107,7 +107,7 @@ module.exports = class PobAppGenerator extends Generator {
 
     const babelEnvs = (pkg.pob && pkg.pob.babelEnvs) || [];
     const babel =
-      !!babelEnvs.length || appsWithTypescript.includes(this.appConfig.type);
+      babelEnvs.length > 0 || appsWithTypescript.includes(this.appConfig.type);
     const node = true;
     const browser = appsWithNode.includes(this.appConfig.type);
     const jsx =

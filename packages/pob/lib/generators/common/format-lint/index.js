@@ -61,16 +61,14 @@ module.exports = class LintGenerator extends Generator {
     const useBabel =
       this.options.babel !== 'undefined'
         ? this.options.babel === 'true'
-        : babelEnvs.length !== 0;
+        : babelEnvs.length > 0;
     const hasReact = useBabel && packageUtils.hasReact(pkg);
     const useNode =
       !useBabel ||
-      (babelEnvs.length !== 0 &&
-        babelEnvs.some((env) => env.target === 'node'));
+      (babelEnvs.length > 0 && babelEnvs.some((env) => env.target === 'node'));
     const useNodeOnly =
       !useBabel ||
-      (babelEnvs.length !== 0 &&
-        babelEnvs.every((env) => env.target === 'node'));
+      (babelEnvs.length > 0 && babelEnvs.every((env) => env.target === 'node'));
 
     if (this.fs.exists(this.destinationPath('.eslintignore'))) {
       this.fs.delete(this.destinationPath('.eslintignore'));

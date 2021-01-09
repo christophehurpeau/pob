@@ -9,7 +9,7 @@ module.exports = class NpmGenerator extends Generator {
 
     if (!pkg.private) {
       const babelEnvs = pkg.pob.babelEnvs || [];
-      const withBabel = !!babelEnvs.length;
+      const withBabel = babelEnvs.length > 0;
 
       this.fs.copyTpl(
         this.templatePath('npmignore.ejs'),

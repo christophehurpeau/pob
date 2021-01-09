@@ -213,7 +213,7 @@ module.exports = class PobLibGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     const babelEnvs = pkg.pob.babelEnvs || [];
 
-    const withBabel = !!babelEnvs.length;
+    const withBabel = babelEnvs.length > 0;
     const jsx = withBabel && pkg.pob.jsx === true;
 
     this.composeWith(require.resolve('../common/typescript'), {
@@ -269,8 +269,8 @@ module.exports = class PobLibGenerator extends Generator {
     // must be after doc, testing
     this.composeWith(require.resolve('../core/gitignore'), {
       root: !inLerna,
-      withBabel: babelEnvs.length !== 0,
-      typescript: babelEnvs.length !== 0,
+      withBabel: babelEnvs.length > 0,
+      typescript: babelEnvs.length > 0,
       documentation: this.pobjson.documentation,
     });
   }

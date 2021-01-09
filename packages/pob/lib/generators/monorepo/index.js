@@ -18,11 +18,10 @@ const getAppTypes = (configs) => {
   return [...appTypes];
 };
 
-const hasDist = (configs) => {
-  return configs.some(
+const hasDist = (configs) =>
+  configs.some(
     (config) => config && config.project && config.project.type === 'lib',
   );
-};
 
 module.exports = class PobMonorepoGenerator extends Generator {
   constructor(args, opts) {

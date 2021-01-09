@@ -33,13 +33,13 @@ module.exports = class LernaGenerator extends Generator {
       : ['packages'];
 
     this.packagePaths = [].concat(
-      ...packagesPaths.map((packagesPath) => {
-        return existsSync(`${packagesPath}/`)
+      ...packagesPaths.map((packagesPath) =>
+        existsSync(`${packagesPath}/`)
           ? readdirSync(`${packagesPath}/`).map(
               (packageName) => `${packagesPath}/${packageName}`,
             )
-          : [];
-      }),
+          : [],
+      ),
     );
     this.packages = this.packagePaths
       .map((packagePath) =>
@@ -110,7 +110,7 @@ module.exports = class LernaGenerator extends Generator {
       ...((config && config.pob) || {}),
     });
     const withBabel = this.packages.some(
-      (config) => getPackagePobConfig(config).babelEnvs.length !== 0,
+      (config) => getPackagePobConfig(config).babelEnvs.length > 0,
     );
 
     // lerna.json

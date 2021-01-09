@@ -104,7 +104,7 @@ module.exports = ({
       external:
         env.target === 'browser'
           ? (path) => {
-              if (browserOnlyExtensions.find((ext) => path.endsWith(ext))) {
+              if (browserOnlyExtensions.some((ext) => path.endsWith(ext))) {
                 return true;
               }
               return externalByPackageJson(path);

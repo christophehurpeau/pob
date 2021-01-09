@@ -155,7 +155,7 @@ module.exports = class BabelGenerator extends Generator {
           type: 'checkbox',
           name: 'formats',
           message: 'Babel formats',
-          when: ({ targets = [] }) => targets.length !== 0,
+          when: ({ targets = [] }) => targets.length > 0,
           validate: (targets = []) => targets.length > 0,
           default: formats,
           choices: [
@@ -174,7 +174,7 @@ module.exports = class BabelGenerator extends Generator {
           type: 'confirm',
           name: 'jsx',
           message: 'Enable JSX ?',
-          when: ({ targets = [] }) => targets.length !== 0,
+          when: ({ targets = [] }) => targets.length > 0,
           default: jsx,
         },
       ]);
@@ -233,7 +233,7 @@ module.exports = class BabelGenerator extends Generator {
     if (this.entries) {
       this.entries.forEach((entry) => {
         const entryDestPath = this.destinationPath(`${entry}.js`);
-        if (this.babelEnvs.find((env) => env.target === 'node')) {
+        if (this.babelEnvs.some((env) => env.target === 'node')) {
           if (!this.entries.includes('index') || entry !== 'browser') {
             copyAndFormatTpl(
               this.fs,
@@ -242,7 +242,7 @@ module.exports = class BabelGenerator extends Generator {
               {
                 entry,
                 node12: Boolean(
-                  this.babelEnvs.find(
+                  this.babelEnvs.some(
                     (env) =>
                       env.target === 'node' && String(env.version) === '12',
                   ),
@@ -272,7 +272,7 @@ module.exports = class BabelGenerator extends Generator {
   }
 
   default() {
-    const useBabel = this.babelEnvs && this.babelEnvs.length;
+    const useBabel = this.babelEnvs && this.babelEnvs.length > 0;
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     const hasTargetNode = this.babelEnvs.find((env) => env.target === 'node');
     const hasTargetBrowser = this.babelEnvs.find(
@@ -440,9 +440,9 @@ module.exports = class BabelGenerator extends Generator {
 
     // if (!pkg.main || pkg.main.startsWith('./lib/')) {
     if (useBabel) {
-      pkg.main = !this.babelEnvs.find((env) => env.target === 'node')
+      pkg.main = !this.babelEnvs.some((env) => env.target === 'node')
         ? `./dist/index-browser.${
-            this.babelEnvs.find(
+            this.babelEnvs.some(
               (env) => env.target === 'browser' && !env.formats.includes('cjs'),
             )
               ? 'es'
@@ -570,7 +570,7 @@ module.exports = class BabelGenerator extends Generator {
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
-    const useBabel = this.babelEnvs && this.babelEnvs.length;
+    const useBabel = this.babelEnvs && this.babelEnvs.length > 0;
     const hasReact = useBabel && packageUtils.hasReact(pkg);
 
     /* pob-babel config */
