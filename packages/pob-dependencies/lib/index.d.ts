@@ -3,7 +3,6 @@ interface Dependencies {
   '@babel/preset-env': '7.12.11';
   '@babel/preset-react': '7.12.10';
   '@babel/runtime': '7.12.5';
-  '@chrp/typedoc-plugin-lerna-packages': '0.4.1';
   '@pob/commitlint-config': '^2.0.1';
   '@pob/eslint-config': '41.1.2';
   '@pob/eslint-config-node': '41.1.2';

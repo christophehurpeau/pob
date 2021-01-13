@@ -5,6 +5,12 @@
 <% }) %>
   ],
 
+  "exclude": [
+    "**/node_modules/**",
+    "**/src/**/*.test.ts<%= jsx ? 'x?' : '' %>",
+    "**/src/**/__tests__/**"
+  ],
+
   "compilerOptions": {
     "target": "esnext",
     "module": "esnext",
@@ -19,9 +25,8 @@
 < % } else { -% >
     "theme": "./node_modules/typedoc-neo-theme/bin/default",
 < % } */ -%>
-    "plugin": [<% /* "typedoc-neo-theme", */ %>"@chrp/typedoc-plugin-lerna-packages"],
-    "lernaExclude": [
-      <%- packageNames.filter(n => n.endsWith('-example')).map(n => n.startsWith('@') ? `"${n}"` : `"packages/${n}"`).join(', ') %>
+    "entryPoints": [
+      <%- packageNames.filter(n => !n.endsWith('-example')).map(n => n.startsWith('@') ? `"${n}/src/index.ts"` : `"packages/${n}/src/index.ts"`).join(', ') %>
     ],
 <% /*
     "links": [
@@ -38,17 +43,8 @@
     ],
 */ -%>
     "readme": "README.md",
-    "mode": "modules",
     "out": "docs",
     "excludePrivate": true,
-    "excludeNotExported": false,
-    "preserveConstEnums": true,
     "gitRevision": "master"
-  },
-
-  "exclude": [
-    "**/node_modules/**",
-    "**/src/**/*.test.ts",
-    "**/src/**/__tests__/**"
-  ]
+  }
 }

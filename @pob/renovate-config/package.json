@@ -48,7 +48,6 @@
         {
           "groupName": "Pob Dependencies",
           "packageNames": [
-            "@chrp/typedoc-plugin-lerna-packages",
             "@rollup/plugin-run",
             "pob-babel",
             "pob-lcov-reporter",
