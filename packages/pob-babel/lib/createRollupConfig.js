@@ -52,11 +52,9 @@ module.exports = ({
 
   const externalByPackageJson = configExternalDependencies(pkg);
 
-  const createConfigForEnv = (entry, env, production, morePlugins) => {
-    const devSuffix = production ? '' : '-dev';
-
+  const resolveEntry = (entry, target) => {
     const entryName =
-      isIndexBrowserEntry && entry === 'index' && env.target === 'browser'
+      isIndexBrowserEntry && entry === 'index' && target === 'browser'
         ? 'browser'
         : entry;
     let entryPath;
@@ -80,6 +78,12 @@ module.exports = ({
         `Could not find entry "src/${entryName}" in path "${cwd}"`,
       );
     }
+
+    return entryPath;
+  };
+
+  const createConfigForEnv = (entry, entryPath, env, production, plugins) => {
+    const devSuffix = production ? '' : '-dev';
 
     const typescript = entryPath.endsWith('.ts') || entryPath.endsWith('.tsx');
     const extensions = (typescript
@@ -170,21 +174,24 @@ module.exports = ({
             moduleDirectories: ['src'], // don't resolve node_modules, but allow src (see baseUrl in tsconfig)
           },
         }),
-        ...morePlugins,
+        ...plugins,
       ].filter(Boolean),
     };
   };
 
   return Array.prototype.concat.apply(
     [],
-    pobConfig.babelEnvs.map((env) =>
-      Array.prototype.concat.apply(
+    pobConfig.babelEnvs.map((env) => {
+      return Array.prototype.concat.apply(
         [],
-        entries.map((entry) => [
-          createConfigForEnv(entry, env, true, prodPlugins),
-          createConfigForEnv(entry, env, false, devPlugins),
-        ]),
-      ),
-    ),
+        entries.map((entry, index) => {
+          const entryPath = resolveEntry(entry, env.target);
+          return [
+            createConfigForEnv(entry, entryPath, env, true, prodPlugins),
+            createConfigForEnv(entry, entryPath, env, false, devPlugins),
+          ];
+        }),
+      );
+    }),
   );
 };
