@@ -26,7 +26,11 @@
     "theme": "./node_modules/typedoc-neo-theme/bin/default",
 < % } */ -%>
     "entryPoints": [
-      <%- packageNames.filter(n => !n.endsWith('-example')).map(n => n.startsWith('@') ? `"${n}/src/index.ts"` : `"packages/${n}/src/index.ts"`).join(', ') %>
+      <%- packageNames.filter(n => !n.endsWith('-example')).map(n => n.startsWith('@') ? `"${n}/src/"` : `"packages/${n}/src/"`).join(', ') %>
+    ],
+    "exclude": [
+      "src/**/*.test.ts<%= jsx ? 'x?' : '' %>",
+      "src/**/__tests__/**"
     ],
 <% /*
     "links": [

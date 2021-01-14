@@ -9,8 +9,16 @@
   },
 
   "typedocOptions": {
+    "entryPoints": [
+      "src/"
+    ],
+    "exclude": [
+      "src/**/*.test.ts<%= jsx ? 'x?' : '' %>",
+      "src/**/__tests__/**"
+    ],
     "readme": "README.md",
     "out": "docs",
+    "excludePrivate": true,
     "gitRevision": "master"
   },
 
