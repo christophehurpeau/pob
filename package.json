@@ -37,7 +37,7 @@
     "@pob/eslint-config-node": "42.0.0",
     "@pob/lerna-light": "file:./@pob/lerna-light",
     "eslint": "7.18.0",
-    "husky": "4.3.7",
+    "husky": "4.3.8",
     "prettier": "2.2.1"
   }
 }
