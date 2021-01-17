@@ -312,6 +312,10 @@ module.exports = class LernaGenerator extends Generator {
       this.spawnCommandSync('yarn', ['install']);
       if (this.options.useYarn2) {
         this.spawnCommandSync('yarn', ['dedupe']);
+      } else {
+        this.spawnCommandSync('yarn', ['yarn-deduplicate', '-s', 'fewer']);
+        this.spawnCommandSync('yarn', ['yarn-deduplicate']);
+        this.spawnCommandSync('yarn', ['install']);
       }
       this.spawnCommandSync('yarn', ['run', 'preversion']);
     }

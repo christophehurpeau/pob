@@ -225,6 +225,10 @@ module.exports = class PobBaseGenerator extends Generator {
       this.spawnCommandSync('yarn', ['install']);
       if (this.projectConfig.yarn2) {
         this.spawnCommandSync('yarn', ['dedupe']);
+      } else {
+        this.spawnCommandSync('yarn', ['yarn-deduplicate', '-s', 'fewer']);
+        this.spawnCommandSync('yarn', ['yarn-deduplicate']);
+        this.spawnCommandSync('yarn', ['install']);
       }
     }
   }
