@@ -223,6 +223,9 @@ module.exports = class PobBaseGenerator extends Generator {
       this.spawnCommandSync('npm', ['install']);
     } else {
       this.spawnCommandSync('yarn', ['install']);
+      if (this.projectConfig.yarn2) {
+        this.spawnCommandSync('yarn', ['dedupe']);
+      }
     }
   }
 
