@@ -182,8 +182,10 @@ module.exports = class LernaGenerator extends Generator {
       lint: `${packageManager} run lint:prettier && ${packageManager} run lint:eslint`,
       'lint:prettier': 'prettier --check .',
       'lint:eslint':
-        monorepoConfig && monorepoConfig.eslint
-          ? 'eslint --report-unused-disable-directives --quiet --resolve-plugins-relative-to . --ext js,ts,tsx .'
+        monorepoConfig &&
+        monorepoConfig.eslint &&
+        this.packagesConfig.length < 15
+          ? 'eslint --report-unused-disable-directives --quiet --resolve-plugins-relative-to . --ext js,mjs,ts,tsx .'
           : 'lerna run --stream lint',
       preversion: [
         monorepoConfig && monorepoConfig.eslint

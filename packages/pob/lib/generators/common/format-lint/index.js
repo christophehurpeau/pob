@@ -268,22 +268,28 @@ module.exports = class LintGenerator extends Generator {
       pkg.name.startsWith('@pob/eslint-config') ||
       pkg.name === '@pob/use-eslint-plugin';
 
-    const extendsConfigNoBabel = [
-      '@pob/eslint-config',
-      '@pob/eslint-config-node',
-    ];
-
-    const extendsConfig = (() => {
+    const extendsConfigRoot = (() => {
       if (isPobEslintConfig) {
         if (pkg.name === '@pob/eslint-config-monorepo') {
           return [
-            './@pob/eslint-config/lib/index.js',
+            './@pob/eslint-config/root.js',
             './@pob/eslint-config-node/lib/index.js',
           ];
         }
         return [
-          '../eslint-config/lib/index.js',
+          '../eslint-config/root.js',
           '../eslint-config-node/lib/index.js',
+        ];
+      }
+
+      return ['@pob/eslint-config/root', '@pob/eslint-config-node'];
+    })();
+
+    const extendsConfigSrc = (() => {
+      if (isPobEslintConfig) {
+        return [
+          '../../eslint-config/lib/index.js',
+          '../../eslint-config-node/lib/index.js',
         ];
       }
 
@@ -295,7 +301,7 @@ module.exports = class LintGenerator extends Generator {
         ].filter(Boolean);
       }
 
-      return extendsConfigNoBabel;
+      return ['@pob/eslint-config', '@pob/eslint-config-node'];
     })();
 
     // eslint-disable-next-line unicorn/no-nested-ternary
@@ -372,9 +378,7 @@ module.exports = class LintGenerator extends Generator {
       const rootEslintrcConfig = updateEslintConfig(
         this.fs.readJSON(rootEslintrcPath, {}),
         {
-          extendsConfig: isPobEslintConfig
-            ? extendsConfig
-            : extendsConfigNoBabel,
+          extendsConfig: extendsConfigRoot,
           ignorePatterns:
             ignorePatterns.size === 0 ? undefined : [...ignorePatterns],
         },
@@ -385,12 +389,7 @@ module.exports = class LintGenerator extends Generator {
       console.warn(`Could not parse/edit ${rootEslintrcPath}: `, err);
     }
 
-    if (
-      !useBabel &&
-      useNodeOnly &&
-      !this.options.enableSrcResolver &&
-      !jestOverride
-    ) {
+    if (inLerna && inLerna.root) {
       if (this.fs.exists(srcEslintrcPath)) {
         this.fs.delete(srcEslintrcPath);
       }
@@ -403,7 +402,7 @@ module.exports = class LintGenerator extends Generator {
         const srcEslintrcConfig = updateEslintConfig(
           this.fs.readJSON(srcEslintrcPath, {}),
           {
-            extendsConfig,
+            extendsConfig: extendsConfigSrc,
             jestOverride,
             useTypescript: useBabel,
             globalEslint,
@@ -445,7 +444,7 @@ module.exports = class LintGenerator extends Generator {
 
       const extArg = !useBabel
         ? ''
-        : ` --ext .js,.ts${hasReact ? ',.tsx' : ''}`;
+        : ` --ext .js,.mjs,.ts${hasReact ? ',.tsx' : ''}`;
       const args = `${extArg} --report-unused-disable-directives --quiet`;
 
       packageUtils.addScripts(pkg, {

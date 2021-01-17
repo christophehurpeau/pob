@@ -553,6 +553,15 @@ module.exports = class BabelGenerator extends Generator {
 
         pkg.exports[exportName] = targets;
       });
+
+      if (pkg.pob.extraEntries) {
+        pkg.pob.extraEntries.forEach((exportName) => {
+          pkg.exports[`./${exportName}`] = {
+            import: `./${exportName}.mjs`,
+            require: `./${exportName}.js`,
+          };
+        });
+      }
     } else if (typeof pkg.exports !== 'string') {
       delete pkg.exports;
     }
