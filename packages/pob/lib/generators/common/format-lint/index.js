@@ -350,6 +350,10 @@ module.exports = class LintGenerator extends Generator {
 
       const ignorePatterns = new Set();
 
+      if (inLerna && !inLerna.root && (this.options.typescript || pkg.types)) {
+        ignorePatterns.add('*.d.ts');
+      }
+
       if (inLerna && inLerna.root && this.options.documentation) {
         ignorePatterns.add('/docs');
       }
