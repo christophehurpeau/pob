@@ -350,13 +350,6 @@ module.exports = class LintGenerator extends Generator {
 
       const ignorePatterns = new Set();
 
-      if (!inLerna && useTypescript) {
-        ignorePatterns.add('*.d.ts');
-      }
-
-      if (inLerna && !inLerna.root && (this.options.typescript || pkg.types)) {
-        ignorePatterns.add('*.d.ts');
-      }
       if (inLerna && inLerna.root && this.options.documentation) {
         ignorePatterns.add('/docs');
       }
@@ -406,7 +399,7 @@ module.exports = class LintGenerator extends Generator {
             jestOverride,
             useTypescript: useBabel,
             globalEslint,
-            ignorePatterns: useTypescript ? ['*.d.ts'] : undefined,
+            ignorePatterns: useTypescript || pkg.types ? ['*.d.ts'] : undefined,
             settings: {
               'import/resolver': this.options.enableSrcResolver
                 ? {
@@ -449,7 +442,7 @@ module.exports = class LintGenerator extends Generator {
 
       packageUtils.addScripts(pkg, {
         'lint:eslint': globalEslint
-          ? `yarn --cwd ../.. eslint${args} ${path.relative('../..', '.')}`
+          ? `yarn --cwd ../.. run eslint${args} ${path.relative('../..', '.')}`
           : `eslint${args} ${lintPaths.join(' ')}`,
         lint: `${useBabel && !composite ? 'tsc && ' : ''}yarn run lint:eslint`,
       });

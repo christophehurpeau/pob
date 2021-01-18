@@ -74,13 +74,14 @@ module.exports = class PobAppGenerator extends Generator {
         type: 'confirm',
         name: 'testing',
         message: 'Do you want testing ?',
-        default: config.testing === undefined ? false : config.testing,
+        default:
+          !config || config.testing === undefined ? false : config.testing,
       },
       {
         type: 'confirm',
         name: 'ci',
         message: 'Do you want ci ?',
-        default: config.ci === undefined ? true : config.ci,
+        default: !config || config.ci === undefined ? true : config.ci,
       },
     ]);
 
@@ -124,10 +125,16 @@ module.exports = class PobAppGenerator extends Generator {
       builddefs: false,
       jsx,
       updateOnly: this.options.updateOnly,
-      baseUrl:
-        this.appConfig.type === 'alp' || this.appConfig.type === 'pobpack'
-          ? './src'
-          : '',
+      baseUrl: (() => {
+        if (
+          this.appConfig.type === 'alp' ||
+          this.appConfig.type === 'pobpack'
+        ) {
+          return './src';
+        }
+        if (this.appConfig.type === 'next.js') return '.';
+        return '';
+      })(),
     });
 
     this.composeWith(require.resolve('../common/old-dependencies'));

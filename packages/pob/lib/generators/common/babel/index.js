@@ -74,6 +74,8 @@ module.exports = class BabelGenerator extends Generator {
 
     const hasInitialPkgPob = !!pkg.pob;
 
+    if (!hasInitialPkgPob) pkg.pob = {};
+
     const babelEnvs = pkg.pob.babelEnvs || [];
 
     const targets = [
@@ -389,7 +391,14 @@ module.exports = class BabelGenerator extends Generator {
       if (pkg.dependencies && pkg.dependencies['@types/node']) {
         pkg.dependencies['@types/node'] = `>=${minNodeVersion}.0.0`;
       }
-      if (pkg.devDependencies && pkg.devDependencies['@types/node']) {
+      if (
+        pkg.devDependencies &&
+        pkg.devDependencies['@types/node'] &&
+        !semver.satisfies(
+          pkg.devDependencies['@types/node'],
+          `>=${minNodeVersion}.0.0`,
+        )
+      ) {
         pkg.devDependencies['@types/node'] = `>=${minNodeVersion}.0.0`;
       }
     } else {
@@ -478,11 +487,86 @@ module.exports = class BabelGenerator extends Generator {
         env.version === undefined &&
         env.formats.includes('es'),
     );
+
+    const esModernBrowserEnv = this.babelEnvs.find(
+      (env) =>
+        env.target === 'browser' &&
+        env.version === 'modern' &&
+        env.formats.includes('es'),
+    );
+
+    const esNodeEnv = this.babelEnvs.find(
+      (env) => env.target === 'node' && env.formats.includes('es'),
+    );
+
+    /* webpack 4 */
     if (esAllBrowserEnv) {
-      // for compatibility with webpack 4
       pkg.module = './dist/index-browser.es.js';
+      pkg['module:browser'] = './dist/index-browser.es.js';
+      pkg['module:browser-dev'] = './dist/index-browser-dev.es.js';
+    } else {
+      delete pkg.module;
+      delete pkg['module:browser'];
+      delete pkg['module:browser-dev'];
     }
 
+    if (esModernBrowserEnv) {
+      pkg['module:modern-browsers'] = './dist/index-browsermodern.es.js';
+      pkg['module:modern-browsers-dev'] =
+        './dist/index-browsermodern-dev.es.js';
+    } else {
+      delete pkg['module:modern-browsers'];
+      delete pkg['module:modern-browsers-dev'];
+    }
+
+    if (esNodeEnv) {
+      pkg[
+        'module:node'
+      ] = `./dist/index-${esNodeEnv.target}${esNodeEnv.version}.mjs`;
+      pkg[
+        'module:node-dev'
+      ] = `./dist/index-${esNodeEnv.target}${esNodeEnv.version}-dev.mjs`;
+    }
+
+    const aliases = (this.entries || []).filter((entry) => entry !== 'index');
+
+    if (useBabel && aliases.length > 0 && (esNodeEnv || esAllBrowserEnv)) {
+      [esNodeEnv, esAllBrowserEnv, esModernBrowserEnv]
+        .filter(Boolean)
+        .forEach((env) => {
+          const key = (() => {
+            if (env.target === 'node') return 'node';
+            if (env.version === 'modern') return 'modern-browsers';
+            return 'browser';
+          })();
+
+          const envAliases =
+            this.entries.includes('index') && env.target === 'node'
+              ? aliases.filter((alias) => alias !== 'browser')
+              : aliases;
+          if (envAliases.length === 0) return;
+          pkg[`module:aliases-${key}`] = {};
+          pkg[`module:aliases-${key}-dev`] = {};
+
+          envAliases.forEach((aliasName) => {
+            const isBrowserOnly =
+              aliasName === 'browser' && env.target !== 'node';
+            const aliasDistName = isBrowserOnly ? 'index' : aliasName;
+            pkg[`module:aliases-${key}`][
+              `./${aliasName}.js`
+            ] = `./dist/${aliasDistName}-${env.target}${
+              env.version || ''
+            }.es.js`;
+            pkg[`module:aliases-${key}-dev`][
+              `./${aliasName}.js`
+            ] = `./dist/${aliasDistName}-${env.target}${
+              env.version || ''
+            }-dev.es.js`;
+          });
+        });
+    }
+
+    /* webpack 5 and node with ESM support */
     if (useBabel) {
       pkg.exports = {};
 
@@ -519,10 +603,10 @@ module.exports = class BabelGenerator extends Generator {
             if (formats.includes('es')) {
               exportTarget.development.import = `./dist/${entryDistName}-${target}${
                 version || ''
-              }-dev.mjs`;
+              }-dev.es.js`;
               exportTarget.import = `./dist/${entryDistName}-${target}${
                 version || ''
-              }.mjs`;
+              }.es.js`;
             }
 
             if (formats.includes('cjs')) {
@@ -568,6 +652,21 @@ module.exports = class BabelGenerator extends Generator {
 
     Object.keys(pkg).forEach((key) => {
       if (!key.startsWith('module:') && !key.startsWith('webpack:')) return;
+      if (key.startsWith('module:node') && esNodeEnv) return;
+      if (key.startsWith('module:browser') && esAllBrowserEnv) return;
+      if (key.startsWith('module:modern-browsers') && esModernBrowserEnv) {
+        return;
+      }
+      if (key.startsWith('module:aliases') && aliases.length > 0) {
+        if (key.startsWith('module:aliases-node') && esNodeEnv) return;
+        if (key.startsWith('module:aliases-browser') && esAllBrowserEnv) return;
+        if (
+          key.startsWith('module:aliases-modern-browsers') &&
+          esModernBrowserEnv
+        ) {
+          return;
+        }
+      }
       delete pkg[key];
     });
 

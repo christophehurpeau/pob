@@ -66,6 +66,7 @@ module.exports = class YarnGenerator extends Generator {
         '--sdk',
         'vscode',
       ]);
+      this.spawnCommandSync('yarn', ['prettier', '--write', '.vscode']);
     }
   }
 };

@@ -184,13 +184,13 @@ module.exports = class LernaGenerator extends Generator {
       'lint:eslint':
         monorepoConfig &&
         monorepoConfig.eslint &&
-        this.packagesConfig.length < 15
+        this.packagesConfig.length < 25
           ? 'eslint --report-unused-disable-directives --quiet --resolve-plugins-relative-to . --ext js,mjs,ts,tsx .'
           : 'lerna run --stream lint',
       preversion: [
         monorepoConfig &&
         monorepoConfig.eslint &&
-        this.packagesConfig.length < 15
+        this.packagesConfig.length < 25
           ? `${packageManager} run lint`
           : `${packageManager} run lint:prettier && ${packageManager} run lint:eslint${
               useYarn2WorkspacesCommand ? '' : ' --since'
