@@ -167,6 +167,15 @@ module.exports = function (context, opts) {
 
           // async import
           require.resolve('@babel/plugin-syntax-dynamic-import'),
+
+          // numeric separator
+          require.resolve('@babel/plugin-proposal-numeric-separator'),
+
+          // var foo = object.foo ?? "default";
+          require.resolve('@babel/plugin-proposal-nullish-coalescing-operator'),
+
+          // const baz = obj?.foo?.bar?.baz;
+          require.resolve('@babel/plugin-proposal-optional-chaining'),
         ],
       },
 
