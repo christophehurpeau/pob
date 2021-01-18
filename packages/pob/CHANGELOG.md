@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.7.0](https://github.com/christophehurpeau/pob/compare/pob@7.6.0...pob@7.7.0) (2021-01-18)
+
+
+### Bug Fixes
+
+* config for typedoc 0.20 ([65ef9ef](https://github.com/christophehurpeau/pob/commit/65ef9efaef95d1158956d421fe7df27e14f9f151))
+* fixes ([d74ba8f](https://github.com/christophehurpeau/pob/commit/d74ba8f453d717834979b36f9e1e8372c1bf60fe))
+* ignorePaths ([5e7afe6](https://github.com/christophehurpeau/pob/commit/5e7afe6623279866e5c1939f3a10e7585ad4b548))
+* missing dist prettierignore monorepo with lib ([408ef69](https://github.com/christophehurpeau/pob/commit/408ef69c6c65141b8d11d8513c34c9d2795fd67b))
+* use since when possible ([9bea5c1](https://github.com/christophehurpeau/pob/commit/9bea5c149aa64c8c75ba298b06bdfcef968e61ca))
+
+
+### Features
+
+* dedupe also for non yarn 2 projects ([3d70a29](https://github.com/christophehurpeau/pob/commit/3d70a29ca1ac844035bc28b9255163e15f8c384d))
+* extraEntries and update eslint to support mjs ([b662d8b](https://github.com/christophehurpeau/pob/commit/b662d8b5fd1840499c17f6a7b30d1b44269a2185))
+* improve tsconfig ([11cea8d](https://github.com/christophehurpeau/pob/commit/11cea8d6fed56ad4405044e10f906d08e8ca3c02))
+* improve tsdoc config ([02cae60](https://github.com/christophehurpeau/pob/commit/02cae6058ea68ab742a81a1eafc64631f9ef1ae5))
+* run yarn dedupe ([c4b8711](https://github.com/christophehurpeau/pob/commit/c4b8711c3839e3e022657d6f0865da2be3b28d3d))
+* **deps:** update dependency github-username to v6 ([#753](https://github.com/christophehurpeau/pob/issues/753)) ([16d9bf1](https://github.com/christophehurpeau/pob/commit/16d9bf1cf6ca6112e17bec6c472ab759f97f7425))
+* **deps:** update pob eslint config ([#756](https://github.com/christophehurpeau/pob/issues/756)) ([d93e29b](https://github.com/christophehurpeau/pob/commit/d93e29b4d77cd77c1567e90c130fa2467a5c57bf))
+
+
+
+
+
 # [7.6.0](https://github.com/christophehurpeau/pob/compare/pob@7.5.1...pob@7.6.0) (2020-12-19)
 
 

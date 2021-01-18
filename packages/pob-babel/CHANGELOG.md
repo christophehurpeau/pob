@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [26.4.0](https://github.com/christophehurpeau/pob/compare/pob-babel@26.3.0...pob-babel@26.4.0) (2021-01-18)
+
+
+### Features
+
+* **deps:** update dependency @types/jest to v26.0.20 [skip ci] ([#777](https://github.com/christophehurpeau/pob/issues/777)) ([6b764de](https://github.com/christophehurpeau/pob/commit/6b764de7dfbb7190c86920c03698894e5183bd7b))
+* **deps:** update pob eslint config ([#756](https://github.com/christophehurpeau/pob/issues/756)) ([d93e29b](https://github.com/christophehurpeau/pob/commit/d93e29b4d77cd77c1567e90c130fa2467a5c57bf))
+* **pob-babel:** only resolve entry path once ([cbe85b7](https://github.com/christophehurpeau/pob/commit/cbe85b7b1771cdf8c4f7e066855e7396b1edda87))
+
+
+
+
+
 # [26.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@26.2.1...pob-babel@26.3.0) (2020-12-19)
 
 

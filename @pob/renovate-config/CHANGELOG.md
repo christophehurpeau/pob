@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.4](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.4.3...@pob/renovate-config@2.4.4) (2021-01-18)
+
+
+### Bug Fixes
+
+* config for typedoc 0.20 ([65ef9ef](https://github.com/christophehurpeau/pob/commit/65ef9efaef95d1158956d421fe7df27e14f9f151))
+
+
+
+
+
 ## [2.4.3](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.4.2...@pob/renovate-config@2.4.3) (2020-12-19)
 
 

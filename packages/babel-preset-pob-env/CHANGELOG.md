@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.1](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@5.2.0...babel-preset-pob-env@5.2.1) (2021-01-18)
+
+
+### Bug Fixes
+
+* add plugins numeric separator, nullish-coalescing and optional-chaining ([2188397](https://github.com/christophehurpeau/pob/commit/218839784d1441c04143f740c3cf90e6fedfac77))
+
+
+
+
+
 # [5.2.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@5.1.0...babel-preset-pob-env@5.2.0) (2020-12-12)
 
 
