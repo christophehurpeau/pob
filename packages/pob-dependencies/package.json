@@ -36,7 +36,7 @@
     "@babel/runtime": "7.12.5",
     "@pob/commitlint-config": "^2.0.1",
     "@pob/eslint-config": "43.0.0",
-    "@pob/eslint-config-node": "43.0.0",
+    "@pob/eslint-config-node": "43.1.0",
     "@pob/eslint-config-typescript": "43.0.0",
     "@pob/eslint-config-typescript-node": "43.0.0",
     "@pob/eslint-config-typescript-react": "43.0.0",

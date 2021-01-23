@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@pob/eslint-config": "43.0.0",
-    "@pob/eslint-config-node": "43.0.0",
+    "@pob/eslint-config-node": "43.1.0",
     "@pob/lerna-light": "file:./@pob/lerna-light",
     "eslint": "7.18.0",
     "husky": "4.3.8",
