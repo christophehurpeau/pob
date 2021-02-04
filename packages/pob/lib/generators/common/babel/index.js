@@ -477,7 +477,6 @@ module.exports = class BabelGenerator extends Generator {
       }
     }
 
-    delete pkg.browser;
     delete pkg['browser-dev'];
     delete pkg['module-dev'];
 
@@ -502,10 +501,12 @@ module.exports = class BabelGenerator extends Generator {
     /* webpack 4 */
     if (esAllBrowserEnv) {
       pkg.module = './dist/index-browser.es.js';
+      pkg.browser = './dist/index-browser.es.js';
       pkg['module:browser'] = './dist/index-browser.es.js';
       pkg['module:browser-dev'] = './dist/index-browser-dev.es.js';
     } else {
       delete pkg.module;
+      delete pkg.browser;
       delete pkg['module:browser'];
       delete pkg['module:browser-dev'];
     }
