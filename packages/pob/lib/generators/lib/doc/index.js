@@ -53,6 +53,10 @@ module.exports = class DocGenerator extends Generator {
           : packageUtils.hasReact(pkg);
 
       if (inLerna && inLerna.root) {
+        const existingConfig = this.fs.readJSON(
+          this.destinationPath('tsconfig.doc.json'),
+          { typedocOptions: {} },
+        );
         // "external-modulemap": ".*packages/([^/]+)/.*",
         const packageNames = JSON.parse(this.options.packageNames);
         copyAndFormatTpl(
@@ -65,6 +69,7 @@ module.exports = class DocGenerator extends Generator {
             packageNames,
             repositoryUrl: pkg.homepage, // or pkg.repository.replace(/\.git$/, '')
             useYarn2: this.options.useYarn2,
+            readme: existingConfig.typedocOptions.readme || 'README.md',
           },
         );
       } else {
@@ -72,7 +77,7 @@ module.exports = class DocGenerator extends Generator {
           this.fs,
           this.templatePath('tsconfig.doc.json.ejs'),
           this.destinationPath('tsconfig.doc.json'),
-          { jsx },
+          { jsx, readme: 'README.md' },
         );
       }
     } else {
