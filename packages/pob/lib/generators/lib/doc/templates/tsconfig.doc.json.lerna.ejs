@@ -26,7 +26,7 @@
     "theme": "./node_modules/typedoc-neo-theme/bin/default",
 < % } */ -%>
     "entryPoints": [
-      <%- packageNames.filter(n => !n.endsWith('-example')).map(n => n.startsWith('@') ? `"${n}/src/"` : `"packages/${n}/src/"`).join(', ') %>
+      <%- entryPoints.map(entryPoint => `"${entryPoint}"`).join(', ') %>
     ],
     "exclude": [
       "src/**/*.test.ts<%= jsx ? 'x?' : '' %>",

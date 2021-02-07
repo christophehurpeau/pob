@@ -59,6 +59,31 @@ module.exports = class DocGenerator extends Generator {
         );
         // "external-modulemap": ".*packages/([^/]+)/.*",
         const packageNames = JSON.parse(this.options.packageNames);
+        const filteredPackages = packageNames
+          .filter((n) => !n.endsWith('-example'))
+          .map((pkgName) => {
+            const pkgPath = pkgName.startsWith('@')
+              ? pkgName
+              : `packages/${pkgName}`;
+            return {
+              path: pkgPath,
+              packageJSON: this.fs.readJSON(
+                this.destinationPath(`${pkgPath}/package.json`),
+              ),
+            };
+          });
+        const entryPoints = [];
+        for (const { path, packageJSON } of filteredPackages) {
+          if (!packageJSON) {
+            throw new Error(`Invalid package.json in ${path}`);
+          }
+          const entries = packageJSON.pob && packageJSON.pob.entries;
+          if (entries) {
+            entryPoints.push(
+              ...entries.map((entry) => `${path}/src/${entry}.ts`),
+            );
+          }
+        }
         copyAndFormatTpl(
           this.fs,
           this.templatePath('tsconfig.doc.json.lerna.ejs'),
@@ -66,18 +91,19 @@ module.exports = class DocGenerator extends Generator {
           {
             jsx,
             workspaces: pkg.workspaces,
-            packageNames,
+            entryPoints,
             repositoryUrl: pkg.homepage, // or pkg.repository.replace(/\.git$/, '')
             useYarn2: this.options.useYarn2,
             readme: existingConfig.typedocOptions.readme || 'README.md',
           },
         );
       } else {
+        const entryPoints = (pkg.pob && pkg.pob.entries) || [];
         copyAndFormatTpl(
           this.fs,
           this.templatePath('tsconfig.doc.json.ejs'),
           this.destinationPath('tsconfig.doc.json'),
-          { jsx, readme: 'README.md' },
+          { jsx, readme: 'README.md', entryPoints },
         );
       }
     } else {
