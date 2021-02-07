@@ -150,6 +150,34 @@ module.exports = class PobMonorepoGenerator extends Generator {
   }
 
   default() {
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+
+    const packageNames = this.packageNames;
+
+    const basePackageName = pkg.name.startsWith('@')
+      ? `${pkg.name.replace(/-monorepo$/, '')}-`
+      : `@${pkg.name}/`;
+
+    const packagePaths = packageNames
+      .map((packageName) =>
+        this.options.isAppProject && packageName.startsWith(basePackageName)
+          ? `packages/${packageName.slice(basePackageName.length)}`
+          : `${packageName[0] === '@' ? '' : 'packages/'}${packageName}`,
+      )
+      .filter((packagePath) => fs.existsSync(`${packagePath}/tsconfig.json`));
+
+    if (packagePaths.length === 0 && packageNames.length > 0) {
+      console.log(
+        packageNames,
+        packageNames.map((packageName) =>
+          this.options.isAppProject && packageName.startsWith(basePackageName)
+            ? `packages/${packageName.slice(basePackageName.length)}`
+            : `${packageName[0] === '@' ? '' : 'packages/'}${packageName}`,
+        ),
+      );
+      throw new Error('packages should not be empty');
+    }
+
     this.composeWith(require.resolve('../core/ci'), {
       enable: this.pobLernaConfig.ci,
       typescript: this.pobLernaConfig.typescript,
@@ -176,7 +204,8 @@ module.exports = class PobMonorepoGenerator extends Generator {
     this.composeWith(require.resolve('../lib/doc'), {
       enabled: this.pobLernaConfig.documentation,
       testing: this.pobLernaConfig.testing,
-      packageNames: JSON.stringify(this.pobLernaConfig.packageNames),
+      packageNames: JSON.stringify(packageNames),
+      packagePaths: JSON.stringify(packagePaths),
       useYarn2: this.options.useYarn2,
     });
     // Always add a gitignore, because npm publish uses it.
@@ -190,10 +219,9 @@ module.exports = class PobMonorepoGenerator extends Generator {
     this.composeWith(require.resolve('./typescript'), {
       enable: this.pobLernaConfig.typescript,
       isAppProject: this.options.isAppProject,
-      packageNames: JSON.stringify(this.pobLernaConfig.packageNames),
+      packageNames: JSON.stringify(packageNames),
+      packagePaths: JSON.stringify(packagePaths),
     });
-
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
     // packageUtils.addOrRemoveScripts(pkg, this.pobLernaConfig.documentation, {
     //   'generate:test-coverage':

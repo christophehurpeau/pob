@@ -58,13 +58,11 @@ module.exports = class DocGenerator extends Generator {
           { typedocOptions: {} },
         );
         // "external-modulemap": ".*packages/([^/]+)/.*",
-        const packageNames = JSON.parse(this.options.packageNames);
-        const filteredPackages = packageNames
-          .filter((n) => !n.endsWith('-example'))
-          .map((pkgName) => {
-            const pkgPath = pkgName.startsWith('@')
-              ? pkgName
-              : `packages/${pkgName}`;
+        const packagePaths = JSON.parse(this.options.packagePaths);
+
+        const filteredPackages = packagePaths
+          .filter((pkgPath) => !pkgPath.endsWith('-example'))
+          .map((pkgPath) => {
             return {
               path: pkgPath,
               packageJSON: this.fs.readJSON(
@@ -72,6 +70,7 @@ module.exports = class DocGenerator extends Generator {
               ),
             };
           });
+
         const entryPoints = [];
         for (const { path, packageJSON } of filteredPackages) {
           if (!packageJSON) {
@@ -79,7 +78,9 @@ module.exports = class DocGenerator extends Generator {
           }
           const entries = packageJSON.pob && packageJSON.pob.entries;
           if (entries) {
-            entryPoints.push(
+            // unshift:https://typedoc.org/guides/project-references/
+            entryPoints.unshift(
+              // `${path}/src/`,
               ...entries.map((entry) => `${path}/src/${entry}.ts`),
             );
           }
@@ -92,13 +93,16 @@ module.exports = class DocGenerator extends Generator {
             jsx,
             workspaces: pkg.workspaces,
             entryPoints,
+            packagePaths: filteredPackages.map((p) => p.path),
             repositoryUrl: pkg.homepage, // or pkg.repository.replace(/\.git$/, '')
             useYarn2: this.options.useYarn2,
             readme: existingConfig.typedocOptions.readme || 'README.md',
           },
         );
       } else {
-        const entryPoints = (pkg.pob && pkg.pob.entries) || [];
+        const entryPoints = ((pkg.pob && pkg.pob.entries) || []).map(
+          (entryName) => `src/${entryName}.ts`,
+        );
         copyAndFormatTpl(
           this.fs,
           this.templatePath('tsconfig.doc.json.ejs'),

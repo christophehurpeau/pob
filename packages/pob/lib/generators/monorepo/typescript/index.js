@@ -23,6 +23,12 @@ module.exports = class MonorepoTypescriptGenerator extends Generator {
 
     this.option('packageNames', {
       type: String,
+      required: true,
+    });
+
+    this.option('packagePaths', {
+      type: String,
+      required: true,
     });
   }
 
@@ -62,31 +68,7 @@ module.exports = class MonorepoTypescriptGenerator extends Generator {
         }`;
       }
 
-      const basePackageName = pkg.name.startsWith('@')
-        ? `${pkg.name.replace(/-monorepo$/, '')}-`
-        : `@${pkg.name}/`;
-
-      const packageNames = JSON.parse(this.options.packageNames);
-
-      const packagePaths = packageNames
-        .map((packageName) =>
-          this.options.isAppProject && packageName.startsWith(basePackageName)
-            ? `packages/${packageName.slice(basePackageName.length)}`
-            : `${packageName[0] === '@' ? '' : 'packages/'}${packageName}`,
-        )
-        .filter((packagePath) => existsSync(`${packagePath}/tsconfig.json`));
-
-      if (packagePaths.length === 0 && packageNames.length > 0) {
-        console.log(
-          packageNames,
-          packageNames.map((packageName) =>
-            this.options.isAppProject && packageName.startsWith(basePackageName)
-              ? `packages/${packageName.slice(basePackageName.length)}`
-              : `${packageName[0] === '@' ? '' : 'packages/'}${packageName}`,
-          ),
-        );
-        throw new Error('packages should not be empty');
-      }
+      const packagePaths = JSON.parse(this.options.packagePaths);
 
       copyAndFormatTpl(
         this.fs,

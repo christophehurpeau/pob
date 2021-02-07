@@ -10,7 +10,7 @@
 
   "typedocOptions": {
     "entryPoints": [
-      "src/"
+      <%- entryPoints.map(entryPoint => `"${entryPoint}"`).join(', ') %>
     ],
     "exclude": [
       "src/**/*.test.ts<%= jsx ? 'x?' : '' %>",
