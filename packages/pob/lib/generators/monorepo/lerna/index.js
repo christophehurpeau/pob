@@ -184,13 +184,14 @@ module.exports = class LernaGenerator extends Generator {
       'lint:eslint':
         monorepoConfig &&
         monorepoConfig.eslint &&
-        this.packagesConfig.length < 25
+        // TODO yarn --cwd doesnt work inside script in package with yarn 2
+        (this.packagesConfig.length < 25 || this.options.useYarn2)
           ? 'eslint --report-unused-disable-directives --quiet --resolve-plugins-relative-to . --ext js,mjs,ts,tsx .'
           : 'lerna run --stream lint',
       preversion: [
         monorepoConfig &&
         monorepoConfig.eslint &&
-        this.packagesConfig.length < 25
+        (this.packagesConfig.length < 25 || this.options.useYarn2)
           ? `${packageManager} run lint`
           : `${packageManager} run lint:prettier && ${packageManager} run lint:eslint${
               useYarn2WorkspacesCommand ? '' : ' --since'
