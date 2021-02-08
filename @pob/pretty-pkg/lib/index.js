@@ -4,7 +4,7 @@ const fs = require('fs');
 const sortPkg = require('@pob/sort-pkg');
 const prettier = require('prettier');
 
-module.exports = function prettyPkg(pkg, prettierOptions) {
+module.exports = function prettyPkg(pkg, prettierOptions = pkg.prettier) {
   if (typeof pkg === 'string') {
     pkg = JSON.parse(pkg);
     if (typeof pkg !== 'object') {
@@ -25,7 +25,7 @@ module.exports = function prettyPkg(pkg, prettierOptions) {
 };
 
 module.exports.writeSync = (pkg, path, prettierOptions) => {
-  const string = module.exports(pkg);
+  const string = module.exports(pkg, prettierOptions);
   fs.writeFileSync(path, string, 'utf-8');
 };
 
