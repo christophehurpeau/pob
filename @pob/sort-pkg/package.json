@@ -1,6 +1,6 @@
 {
   "name": "@pob/sort-pkg",
-  "version": "2.1.1",
+  "version": "2.2.0",
   "description": "sort package.json",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",

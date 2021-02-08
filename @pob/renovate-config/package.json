@@ -1,14 +1,9 @@
 {
   "name": "@pob/renovate-config",
-  "version": "2.4.4",
+  "version": "2.4.5",
   "description": "renovate pob config",
   "engines": {
     "node": ">=12.10.0"
-  },
-  "prettier": {
-    "trailingComma": "all",
-    "singleQuote": true,
-    "arrowParens": "always"
   },
   "publishConfig": {
     "access": "public"
@@ -16,8 +11,13 @@
   "scripts": {
     "preversion": "node generate-package.json.js && git add package.json"
   },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true,
+    "arrowParens": "always"
+  },
   "devDependencies": {
-    "pob-dependencies": "^3.8.0",
+    "pob-dependencies": "^3.9.0",
     "prettier": "2.2.1"
   },
   "renovate-config": {

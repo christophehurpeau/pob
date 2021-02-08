@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@2.1.1...@pob/sort-pkg@2.2.0) (2021-02-08)
+
+
+### Features
+
+* **@pob/root:** use @pob/pretty-{pkg,eslint-config} ([c37df22](https://github.com/christophehurpeau/pob/commit/c37df22e1ecaa637254e5224035f77b5aaaf5d7a))
+
+
+
+
+
 ## [2.1.1](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@2.1.0...@pob/sort-pkg@2.1.1) (2020-12-05)
 
 

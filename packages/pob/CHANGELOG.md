@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.8.0](https://github.com/christophehurpeau/pob/compare/pob@7.7.0...pob@7.8.0) (2021-02-08)
+
+
+### Bug Fixes
+
+* bring back browser entry point for react-native ([ad239a3](https://github.com/christophehurpeau/pob/commit/ad239a399a70756213efbb24d766b23a761cded4))
+* lint script with yarn 2 ([51698f9](https://github.com/christophehurpeau/pob/commit/51698f91bfaf259e17b13b54fb75060582213709))
+* reignore .d.ts ([c132612](https://github.com/christophehurpeau/pob/commit/c132612a7844cab55b6a5aaf3b67149317df967e))
+
+
+### Features
+
+* add @pob/sort-eslint-config and @pob/pretty-eslint-config ([c2984a7](https://github.com/christophehurpeau/pob/commit/c2984a7da51aaf13b4667053337fc8c9e65da060))
+* improve docs with ts references ([2267a25](https://github.com/christophehurpeau/pob/commit/2267a2515fcb57a53ae5cda5c5067574f629e3a4))
+* improve typedoc config with lerna ([e6eedcc](https://github.com/christophehurpeau/pob/commit/e6eedccbd1e82bbfc7ae27a8a85f1a7e983406e4))
+* support custom readme in lerna configs ([7ba21ec](https://github.com/christophehurpeau/pob/commit/7ba21ec9983db0c6d2f528acc22704a3521e0acc))
+
+
+
+
+
 # [7.7.0](https://github.com/christophehurpeau/pob/compare/pob@7.6.0...pob@7.7.0) (2021-01-18)
 
 

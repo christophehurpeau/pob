@@ -1,6 +1,6 @@
 {
   "name": "@pob/root",
-  "version": "3.0.3",
+  "version": "3.1.0",
   "description": "root package",
   "license": "ISC",
   "engines": {
@@ -26,8 +26,8 @@
   },
   "dependencies": {
     "@commitlint/cli": "11.0.0",
-    "@pob/pretty-eslint-config": "1.0.0-pre",
-    "@pob/pretty-pkg": "2.0.2",
+    "@pob/pretty-eslint-config": "^1.0.0",
+    "@pob/pretty-pkg": "^2.1.0",
     "cross-env": "^7.0.2",
     "lint-staged": "10.5.4",
     "repository-check-dirty": "^2.0.1",

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@3.0.3...@pob/root@3.1.0) (2021-02-08)
+
+
+### Features
+
+* **@pob/root:** use @pob/pretty-{pkg,eslint-config} ([c37df22](https://github.com/christophehurpeau/pob/commit/c37df22e1ecaa637254e5224035f77b5aaaf5d7a))
+* **deps:** update dependency lint-staged to v10.5.4 ([#810](https://github.com/christophehurpeau/pob/issues/810)) ([0099f57](https://github.com/christophehurpeau/pob/commit/0099f57898c34906dce843c845f28c64c096c486))
+
+
+
+
+
 ## [3.0.3](https://github.com/christophehurpeau/pob/compare/@pob/root@3.0.2...@pob/root@3.0.3) (2020-12-05)
 
 

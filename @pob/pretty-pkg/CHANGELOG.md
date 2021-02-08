@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@2.0.2...@pob/pretty-pkg@2.1.0) (2021-02-08)
+
+
+### Bug Fixes
+
+* **@pob/pretty-pkg:** use package prettier options ([e7ebd25](https://github.com/christophehurpeau/pob/commit/e7ebd2531036f57c767e2279c43bbdee0f4cb317))
+
+
+### Features
+
+* **@pob/pretty-pkg:** add bin script ([9486ca1](https://github.com/christophehurpeau/pob/commit/9486ca13c732dd3a6a0034a29f91fce561355bde))
+
+
+
+
+
 ## [2.0.2](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@2.0.1...@pob/pretty-pkg@2.0.2) (2020-12-05)
 
 **Note:** Version bump only for package @pob/pretty-pkg
