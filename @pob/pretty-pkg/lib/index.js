@@ -16,6 +16,11 @@ module.exports = function prettyPkg(pkg, prettierOptions = pkg.prettier) {
     throw new TypeError('expected pkg to be object or string');
   }
 
+  if (typeof prettierOptions === 'string') {
+    // eslint-disable-next-line import/no-dynamic-require
+    prettierOptions = require(prettierOptions);
+  }
+
   sortPkg(pkg);
   return prettier.format(JSON.stringify(pkg, undefined, 2), {
     filepath: 'package.json',
@@ -30,6 +35,6 @@ module.exports.writeSync = (pkg, path, prettierOptions) => {
 };
 
 module.exports.overrideSync = (path, prettierOptions) => {
-  const pkg = fs.readFileSync(path, 'uft-8');
+  const pkg = fs.readFileSync(path, 'utf-8');
   return module.exports.writeSync(pkg, path, prettierOptions);
 };

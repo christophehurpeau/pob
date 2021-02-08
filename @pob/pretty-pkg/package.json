@@ -19,6 +19,9 @@
   },
   "main": "./lib/index.js",
   "sideEffects": false,
+  "bin": {
+    "pretty-pkg": "./bin/pretty-pkg.js"
+  },
   "scripts": {
     "lint:eslint": "yarn --cwd ../.. eslint --report-unused-disable-directives --quiet @pob/pretty-pkg"
   },
