@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-
 'use strict';
 
 const sortObject = require('@pob/sort-object');
