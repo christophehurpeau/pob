@@ -54,27 +54,29 @@ module.exports = function createLintStagedConfig() {
   const installAndDedupe = generateInstallAndDedupe();
 
   return {
-    [`{${lockfile},package.json${workspaces
-      ? `,${workspaces
-        .map((workspacePath) => `${workspacePath}/package.json`)
-        .join(',')}`
-      : ''
-      }}`]: (filenames) => {
-        const packagejsonFilenames = filenames.filter((filename) =>
-          filename.endsWith('.json'),
-        );
+    [`{${lockfile},package.json${
+      workspaces
+        ? `,${workspaces
+            .map((workspacePath) => `${workspacePath}/package.json`)
+            .join(',')}`
+        : ''
+    }}`]: (filenames) => {
+      const packagejsonFilenames = filenames.filter((filename) =>
+        filename.endsWith('.json'),
+      );
 
-        return [
-          ...installAndDedupe,
-          packagejsonFilenames.length === 0
-            ? undefined
-            : `pretty-pkg "${packagejsonFilenames.join('" "')}"`,
-          `git add ${lockfile}${pm.name === 'yarn' && yarnMajorVersion >= 2
+      return [
+        ...installAndDedupe,
+        packagejsonFilenames.length === 0
+          ? undefined
+          : `pretty-pkg "${packagejsonFilenames.join('" "')}"`,
+        `git add ${lockfile}${
+          pm.name === 'yarn' && yarnMajorVersion >= 2
             ? ' .yarn .yarnrc.yml'
             : ''
-          }`,
-        ].filter(Boolean);
-      },
+        }`,
+      ].filter(Boolean);
+    },
     '!(package|package-lock|.eslintrc).json': ['prettier --write'],
     '.eslintrc.json': ['pretty-eslint-config'],
     [`{scripts,config,${srcDirectories}}/**/*.{yml,yaml,md}`]: [

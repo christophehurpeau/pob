@@ -12,6 +12,6 @@ if (paths.length === 0) {
   paths.push('.eslintrc.json');
 }
 
-paths.forEach(path => {
+paths.forEach((path) => {
   overrideSync(path, pkg.prettier);
-})
+});
