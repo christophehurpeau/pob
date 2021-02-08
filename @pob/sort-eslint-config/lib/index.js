@@ -21,10 +21,10 @@ module.exports = function sortEslintConfig(config) {
     sortedConfig.overrides.forEach((override, index) => {
       sortedConfig.overrides[index] = sortObject(override, [
         'files',
+        'extends',
         'env',
         'globals',
         'settings',
-        'extends',
         'rules',
       ]);
     });
