@@ -1,6 +1,6 @@
 'use strict';
 
-const sortObject = require('@pob/sort-object');
+const sortConfig = require('@pob/sort-eslint-config');
 
 function updateOverrides(config, jestOverride) {
   const existingJestOverrideIndex = !config.overrides
@@ -99,36 +99,6 @@ function updateIgnorePatterns(config, ignorePatterns) {
     config.ignorePatterns = ignorePatterns;
   }
   return config;
-}
-
-function sortConfig(config) {
-  const sortedConfig = sortObject(config, [
-    'root',
-    'parser',
-    'parserOptions',
-    'plugins',
-    'extends',
-    'env',
-    'globals',
-    'settings',
-    'ignorePatterns',
-    'rules',
-    'overrides',
-  ]);
-  if (sortedConfig.overrides) {
-    sortedConfig.overrides.forEach((override, index) => {
-      sortedConfig.overrides[index] = sortObject(override, [
-        'files',
-        'env',
-        'globals',
-        'settings',
-        'extends',
-        'rules',
-      ]);
-    });
-  }
-
-  return sortedConfig;
 }
 
 module.exports = function updateEslintConfig(
