@@ -10,8 +10,8 @@ interface Dependencies {
   '@pob/eslint-config-typescript-node': '43.0.0';
   '@pob/eslint-config-typescript-react': '43.0.0';
   '@pob/lerna-light': '^3.23.0';
-  '@pob/pretty-pkg': '^2.0.2';
-  '@pob/root': '^3.0.3';
+  '@pob/pretty-pkg': '^2.1.0';
+  '@pob/root': '^3.1.0';
   '@rollup/plugin-run': '2.0.2';
   '@types/jest': '26.0.20';
   '@typescript-eslint/eslint-plugin': '4.14.2';
@@ -30,7 +30,7 @@ interface Dependencies {
   husky: '4.3.8';
   jest: '26.6.3';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '^26.4.0';
+  'pob-babel': '^26.5.0';
   'pob-lcov-reporter': '^4.0.1';
   prettier: '2.2.1';
   'repository-check-dirty': '^2.0.1';

@@ -1,6 +1,6 @@
 {
   "name": "pob",
-  "version": "7.8.0",
+  "version": "7.8.1",
   "description": "Pile of bones, library generator with git/babel/typescript/typedoc/readme/jest",
   "keywords": [
     "skeleton"
@@ -37,7 +37,7 @@
   "dependencies": {
     "@lerna/package-graph": "^3.13.0",
     "@lerna/project": "^3.13.1",
-    "@pob/sort-eslint-config": "^1.0.0",
+    "@pob/sort-eslint-config": "^1.0.1",
     "@pob/sort-object": "^2.0.1",
     "@pob/sort-pkg": "^2.2.0",
     "@yarnpkg/parsers": "^2.2.0",
@@ -51,7 +51,7 @@
     "lodash.kebabcase": "^4.1.1",
     "minimist-argv": "^1.1.0",
     "parse-author": "^2.0.0",
-    "pob-dependencies": "^3.9.0",
+    "pob-dependencies": "^3.9.1",
     "prettier": "2.2.1",
     "semver": "^7.1.2",
     "update-notifier": "^5.0.1",
