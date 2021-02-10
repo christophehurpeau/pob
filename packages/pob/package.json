@@ -35,8 +35,8 @@
   },
   "pob": {},
   "dependencies": {
-    "@lerna/package-graph": "^3.13.0",
-    "@lerna/project": "^3.13.1",
+    "@lerna/package-graph": "^4.0.0",
+    "@lerna/project": "^4.0.0",
     "@pob/sort-eslint-config": "^1.0.1",
     "@pob/sort-object": "^2.0.1",
     "@pob/sort-pkg": "^2.2.0",

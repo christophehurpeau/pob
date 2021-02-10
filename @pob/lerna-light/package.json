@@ -32,11 +32,11 @@
   },
   "pob": {},
   "dependencies": {
-    "@lerna/changed": "3.21.0",
-    "@lerna/cli": "3.18.5",
-    "@lerna/exec": "3.21.0",
-    "@lerna/publish": "3.22.1",
-    "@lerna/run": "3.21.0",
-    "@lerna/version": "3.22.1"
+    "@lerna/changed": "4.0.0",
+    "@lerna/cli": "4.0.0",
+    "@lerna/exec": "4.0.0",
+    "@lerna/publish": "4.0.0",
+    "@lerna/run": "4.0.0",
+    "@lerna/version": "4.0.0"
   }
 }
