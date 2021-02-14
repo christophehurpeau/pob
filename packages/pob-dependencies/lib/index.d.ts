@@ -1,6 +1,6 @@
 interface Dependencies {
-  '@babel/core': '7.12.13';
-  '@babel/preset-env': '7.12.13';
+  '@babel/core': '7.12.16';
+  '@babel/preset-env': '7.12.16';
   '@babel/preset-react': '7.12.13';
   '@babel/runtime': '7.12.13';
   '@pob/commitlint-config': '^2.0.1';
@@ -11,15 +11,15 @@ interface Dependencies {
   '@pob/eslint-config-typescript-react': '43.0.0';
   '@pob/lerna-light': '^3.23.0';
   '@pob/pretty-pkg': '^2.1.0';
-  '@pob/root': '^3.1.0';
+  '@pob/root': '^3.1.1';
   '@rollup/plugin-run': '2.0.2';
   '@types/jest': '26.0.20';
-  '@typescript-eslint/eslint-plugin': '4.14.2';
-  '@typescript-eslint/parser': '4.14.2';
+  '@typescript-eslint/eslint-plugin': '4.15.0';
+  '@typescript-eslint/parser': '4.15.0';
   'babel-jest': '26.6.3';
   'babel-preset-latest-node': '5.4.0';
   'babel-preset-modern-browsers': '15.0.2';
-  eslint: '7.19.0';
+  eslint: '7.20.0';
   'eslint-import-resolver-node': '0.3.4';
   'eslint-plugin-import': '2.22.1';
   'eslint-plugin-jsx-a11y': '6.4.1';
@@ -34,11 +34,11 @@ interface Dependencies {
   'pob-lcov-reporter': '^4.0.1';
   prettier: '2.2.1';
   'repository-check-dirty': '^2.0.1';
-  rollup: '2.38.5';
+  rollup: '2.39.0';
   semver: '7.3.4';
   'standard-version': '9.1.0';
-  typedoc: '0.20.23';
-  typescript: '4.1.3';
+  typedoc: '0.20.24';
+  typescript: '4.1.5';
 }
 
 declare const dependencies: Dependencies;

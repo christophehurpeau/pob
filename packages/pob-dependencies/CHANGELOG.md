@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.10.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.9.1...pob-dependencies@3.10.0) (2021-02-14)
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.12.16 ([#821](https://github.com/christophehurpeau/pob/issues/821)) ([88f7b36](https://github.com/christophehurpeau/pob/commit/88f7b3641e228ff8ab45678c6a8d8599bd1b1e19))
+* **deps:** update dependency eslint to v7.20.0 ([#823](https://github.com/christophehurpeau/pob/issues/823)) ([30620a0](https://github.com/christophehurpeau/pob/commit/30620a03ee309c3598f93f402ed0f3e302e34dc0))
+* **deps:** update dependency rollup to v2.39.0 ([#822](https://github.com/christophehurpeau/pob/issues/822)) ([6915d74](https://github.com/christophehurpeau/pob/commit/6915d7410e46d94b0fa20ed8ed51fc4cc7f6d087))
+* **deps:** update dependency typedoc to v0.20.24 ([#820](https://github.com/christophehurpeau/pob/issues/820)) ([3af4792](https://github.com/christophehurpeau/pob/commit/3af4792a22acb1ec413bc1b977c5245d3a3aebac))
+* **deps:** update dependency typescript to v4.1.4 ([#816](https://github.com/christophehurpeau/pob/issues/816)) ([bbe7634](https://github.com/christophehurpeau/pob/commit/bbe7634c1a81673933b9928bade5dcd066442b46))
+* **deps:** update dependency typescript to v4.1.5 ([#818](https://github.com/christophehurpeau/pob/issues/818)) ([d4254d0](https://github.com/christophehurpeau/pob/commit/d4254d00df9f97f02f5343356fc8e8f5b823a7c1))
+* **deps:** update typescript-eslint monorepo to v4.15.0 ([#814](https://github.com/christophehurpeau/pob/issues/814)) ([bfb3d05](https://github.com/christophehurpeau/pob/commit/bfb3d0577617e56e35a69260a65036c3afcdcb00))
+
+
+
+
+
 ## [3.9.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.9.0...pob-dependencies@3.9.1) (2021-02-08)
 
 **Note:** Version bump only for package pob-dependencies

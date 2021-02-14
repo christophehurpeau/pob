@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.9.0](https://github.com/christophehurpeau/pob/compare/pob@7.8.1...pob@7.9.0) (2021-02-14)
+
+
+### Features
+
+* **deps:** update lerna monorepo to v4 (major) ([#819](https://github.com/christophehurpeau/pob/issues/819)) ([40e6fc4](https://github.com/christophehurpeau/pob/commit/40e6fc440aabfec3fc9102a44924e8f8c176cfb7))
+
+
+
+
+
 ## [7.8.1](https://github.com/christophehurpeau/pob/compare/pob@7.8.0...pob@7.8.1) (2021-02-08)
 
 **Note:** Version bump only for package pob

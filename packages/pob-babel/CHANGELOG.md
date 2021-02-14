@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [26.6.0](https://github.com/christophehurpeau/pob/compare/pob-babel@26.5.0...pob-babel@26.6.0) (2021-02-14)
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.12.16 ([#821](https://github.com/christophehurpeau/pob/issues/821)) ([88f7b36](https://github.com/christophehurpeau/pob/commit/88f7b3641e228ff8ab45678c6a8d8599bd1b1e19))
+
+
+
+
+
 # [26.5.0](https://github.com/christophehurpeau/pob/compare/pob-babel@26.4.0...pob-babel@26.5.0) (2021-02-08)
 
 
