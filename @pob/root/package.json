@@ -25,7 +25,7 @@
     "husky": "^4.2.3"
   },
   "dependencies": {
-    "@commitlint/cli": "11.0.0",
+    "@commitlint/cli": "12.0.1",
     "@pob/pretty-eslint-config": "^1.0.1",
     "@pob/pretty-pkg": "^2.1.0",
     "cross-env": "^7.0.2",
