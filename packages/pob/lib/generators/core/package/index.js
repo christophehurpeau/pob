@@ -131,11 +131,9 @@ module.exports = class PackageGenerator extends Generator {
 
     packageUtils.addOrRemoveScripts(
       pkg,
-      this.fs.exists(
-        this.destinationPath('scripts/check-packages-dependencies.js'),
-      ),
+      this.fs.exists(this.destinationPath('scripts/check-packages.js')),
       {
-        checks: 'node scripts/check-packages-dependencies.js',
+        checks: 'node scripts/check-packages.js',
       },
     );
 

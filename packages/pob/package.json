@@ -60,5 +60,8 @@
   },
   "resolutions": {
     "yeoman-generator": "^4.0.0"
+  },
+  "resolutionsExplained": {
+    "yeoman-generator": "generator-license has a dependency to yeoman-generator@2.0.5"
   }
 }

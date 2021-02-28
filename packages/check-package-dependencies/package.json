@@ -1,0 +1,34 @@
+{
+  "name": "check-package-dependencies",
+  "version": "0.0.1",
+  "description": "check package dependencies for duplicates, peer dependencies satisfaction and more",
+  "keywords": [
+    "package.json"
+  ],
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "packages/check-package-dependencies"
+  },
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "engines": {
+    "node": ">=12.10.0"
+  },
+  "main": "./lib/index.js",
+  "sideEffects": false,
+  "scripts": {
+    "lint:eslint": "yarn --cwd ../.. eslint --report-unused-disable-directives --quiet packages/repository-check-dirty"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true,
+    "arrowParens": "always"
+  },
+  "pob": {},
+  "dependencies": {
+    "glob": "^7.1.6",
+    "semver": "^7.3.4"
+  }
+}
