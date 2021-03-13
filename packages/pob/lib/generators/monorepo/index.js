@@ -1,8 +1,8 @@
 'use strict';
 
 const fs = require('fs');
-const PackageGraph = require('@lerna/package-graph');
-const LernaProject = require('@lerna/project');
+const { PackageGraph } = require('@lerna/package-graph');
+const { Project: LernaProject } = require('@lerna/project');
 const Generator = require('yeoman-generator');
 
 const getAppTypes = (configs) => {
