@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [26.7.0](https://github.com/christophehurpeau/pob/compare/pob-babel@26.6.0...pob-babel@26.7.0) (2021-03-13)
+
+
+### Features
+
+* **deps:** pin dependencies ([#833](https://github.com/christophehurpeau/pob/issues/833)) ([54e90ce](https://github.com/christophehurpeau/pob/commit/54e90ceed5064e619162bf052b512425dbfd0631))
+* **deps:** update babel monorepo to v7.12.17 ([#827](https://github.com/christophehurpeau/pob/issues/827)) ([394cd81](https://github.com/christophehurpeau/pob/commit/394cd81672606d9b1789ce1f2b844443ee612c83))
+* **deps:** update babel monorepo to v7.13.0 ([#835](https://github.com/christophehurpeau/pob/issues/835)) ([1793af7](https://github.com/christophehurpeau/pob/commit/1793af7348b9a036115e6ecdabe42aa900421106))
+* **deps:** update babel monorepo to v7.13.1 ([#836](https://github.com/christophehurpeau/pob/issues/836)) ([19d4308](https://github.com/christophehurpeau/pob/commit/19d4308f60163f5b7450338fb69ccaf5f05bf3e1))
+* **deps:** update babel monorepo to v7.13.10 ([#852](https://github.com/christophehurpeau/pob/issues/852)) ([4ec222d](https://github.com/christophehurpeau/pob/commit/4ec222d989076c58828e5652e0822bed06401b66))
+* **deps:** update babel monorepo to v7.13.8 ([#847](https://github.com/christophehurpeau/pob/issues/847)) ([0b5eba7](https://github.com/christophehurpeau/pob/commit/0b5eba74c1f2e58bc148f7529454be9ff38ef2b8))
+
+
+
+
+
 # [26.6.0](https://github.com/christophehurpeau/pob/compare/pob-babel@26.5.0...pob-babel@26.6.0) (2021-02-14)
 
 

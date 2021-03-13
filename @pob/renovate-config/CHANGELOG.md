@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.5.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.4.7...@pob/renovate-config@2.5.0) (2021-03-13)
+
+
+### Features
+
+* **deps:** pin dependencies ([#833](https://github.com/christophehurpeau/pob/issues/833)) ([54e90ce](https://github.com/christophehurpeau/pob/commit/54e90ceed5064e619162bf052b512425dbfd0631))
+
+
+
+
+
 ## [2.4.7](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.4.6...@pob/renovate-config@2.4.7) (2021-02-14)
 
 **Note:** Version bump only for package @pob/renovate-config

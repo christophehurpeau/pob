@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.11.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.10.0...pob-dependencies@3.11.0) (2021-03-13)
+
+
+### Features
+
+* **deps:** pin dependencies ([#833](https://github.com/christophehurpeau/pob/issues/833)) ([54e90ce](https://github.com/christophehurpeau/pob/commit/54e90ceed5064e619162bf052b512425dbfd0631))
+* **deps:** update babel monorepo to v7.12.17 ([#827](https://github.com/christophehurpeau/pob/issues/827)) ([394cd81](https://github.com/christophehurpeau/pob/commit/394cd81672606d9b1789ce1f2b844443ee612c83))
+* **deps:** update babel monorepo to v7.13.0 ([#835](https://github.com/christophehurpeau/pob/issues/835)) ([1793af7](https://github.com/christophehurpeau/pob/commit/1793af7348b9a036115e6ecdabe42aa900421106))
+* **deps:** update babel monorepo to v7.13.1 ([#836](https://github.com/christophehurpeau/pob/issues/836)) ([19d4308](https://github.com/christophehurpeau/pob/commit/19d4308f60163f5b7450338fb69ccaf5f05bf3e1))
+* **deps:** update babel monorepo to v7.13.10 ([#852](https://github.com/christophehurpeau/pob/issues/852)) ([4ec222d](https://github.com/christophehurpeau/pob/commit/4ec222d989076c58828e5652e0822bed06401b66))
+* **deps:** update babel monorepo to v7.13.8 ([#847](https://github.com/christophehurpeau/pob/issues/847)) ([0b5eba7](https://github.com/christophehurpeau/pob/commit/0b5eba74c1f2e58bc148f7529454be9ff38ef2b8))
+* **deps:** update dependency @babel/preset-env to v7.13.5 ([#842](https://github.com/christophehurpeau/pob/issues/842)) ([50676fe](https://github.com/christophehurpeau/pob/commit/50676feb628bda13d6462dc81b810d20eca3d480))
+* **deps:** update dependency @babel/runtime to v7.12.18 ([#828](https://github.com/christophehurpeau/pob/issues/828)) ([1a67775](https://github.com/christophehurpeau/pob/commit/1a67775935cf5e5f67caa36608e5f2c0cde2804a))
+* **deps:** update dependency @babel/runtime to v7.13.2 ([#838](https://github.com/christophehurpeau/pob/issues/838)) ([95ddca6](https://github.com/christophehurpeau/pob/commit/95ddca69568092349e55059b4a5e89abc88fdd21))
+* **deps:** update dependency @babel/runtime to v7.13.4 ([#841](https://github.com/christophehurpeau/pob/issues/841)) ([3e61cd8](https://github.com/christophehurpeau/pob/commit/3e61cd8b114be2d74c0358b63d7c963ee46fe07a))
+* **deps:** update dependency @babel/runtime to v7.13.6 ([#843](https://github.com/christophehurpeau/pob/issues/843)) ([f5d33bf](https://github.com/christophehurpeau/pob/commit/f5d33bf1a97c8da92032bbaaaad566037e17c911))
+* **deps:** update dependency @babel/runtime to v7.13.7 ([#845](https://github.com/christophehurpeau/pob/issues/845)) ([1eecd2b](https://github.com/christophehurpeau/pob/commit/1eecd2bbbbe874088390527c93ef014675fc6ad8))
+* **deps:** update dependency eslint to v7.21.0 ([#848](https://github.com/christophehurpeau/pob/issues/848)) ([4449414](https://github.com/christophehurpeau/pob/commit/4449414d985bbf37f7c7e042db04554f5824947d))
+* **deps:** update dependency eslint to v7.22.0 ([#859](https://github.com/christophehurpeau/pob/issues/859)) ([0d557d5](https://github.com/christophehurpeau/pob/commit/0d557d5132104e4794a8af1762300ea0c1478469))
+* **deps:** update dependency rollup to v2.39.1 ([#840](https://github.com/christophehurpeau/pob/issues/840)) ([8828cf4](https://github.com/christophehurpeau/pob/commit/8828cf48fa3f56a5ce4014e6cd52e6f31da10aad))
+* **deps:** update dependency rollup to v2.40.0 ([#846](https://github.com/christophehurpeau/pob/issues/846)) ([0f54c8b](https://github.com/christophehurpeau/pob/commit/0f54c8b3429d0a2aafe2eeddb0e7f7e77d67b507))
+* **deps:** update dependency rollup to v2.41.0 ([#856](https://github.com/christophehurpeau/pob/issues/856)) ([3e98eb6](https://github.com/christophehurpeau/pob/commit/3e98eb6852d42ab8e73078efb7ad2fa82748967e))
+* **deps:** update dependency rollup to v2.41.1 ([#857](https://github.com/christophehurpeau/pob/issues/857)) ([40b5b36](https://github.com/christophehurpeau/pob/commit/40b5b363c1e73f257d97888e651b1da2df57a942))
+* **deps:** update dependency rollup to v2.41.2 ([#858](https://github.com/christophehurpeau/pob/issues/858)) ([ec23b5e](https://github.com/christophehurpeau/pob/commit/ec23b5e45d3982a8c8dce4d65811082b5411ee91))
+* **deps:** update dependency standard-version to v9.1.1 ([#826](https://github.com/christophehurpeau/pob/issues/826)) ([0f5a26b](https://github.com/christophehurpeau/pob/commit/0f5a26bea30e86f7a1f7fef33e9826dd98259e8c))
+* **deps:** update dependency typedoc to v0.20.25 ([#824](https://github.com/christophehurpeau/pob/issues/824)) ([ac7b9b5](https://github.com/christophehurpeau/pob/commit/ac7b9b5137da9af2b49e37e705d1b4b065a3b45f))
+* **deps:** update dependency typedoc to v0.20.26 ([#829](https://github.com/christophehurpeau/pob/issues/829)) ([f96768e](https://github.com/christophehurpeau/pob/commit/f96768e38a1e517afaf4eb9fd613316fcff2e09f))
+* **deps:** update dependency typedoc to v0.20.27 ([#832](https://github.com/christophehurpeau/pob/issues/832)) ([8bbab06](https://github.com/christophehurpeau/pob/commit/8bbab060e11be12a0cb19ec05f09233c2f43119a))
+* **deps:** update dependency typedoc to v0.20.28 ([#839](https://github.com/christophehurpeau/pob/issues/839)) ([1f87b86](https://github.com/christophehurpeau/pob/commit/1f87b86ab7394327acd3d261c8ee264c09ea4a65))
+* **deps:** update dependency typedoc to v0.20.29 ([#853](https://github.com/christophehurpeau/pob/issues/853)) ([57489ce](https://github.com/christophehurpeau/pob/commit/57489ceb87062456c4f74b13ee6cca09a48f6f81))
+* **deps:** update dependency typedoc to v0.20.30 ([#855](https://github.com/christophehurpeau/pob/issues/855)) ([2c639dc](https://github.com/christophehurpeau/pob/commit/2c639dc4ad3073b72859c25969893f477e93da5e))
+* **deps:** update dependency typescript to v4.2.2 ([#844](https://github.com/christophehurpeau/pob/issues/844)) ([330528c](https://github.com/christophehurpeau/pob/commit/330528c13d49bb1ab2041c435396d9ff63af2d63))
+* **deps:** update dependency typescript to v4.2.3 ([#854](https://github.com/christophehurpeau/pob/issues/854)) ([7da7b76](https://github.com/christophehurpeau/pob/commit/7da7b769c6e32a758256edaff1f86ea651f2731b))
+* **deps:** update typescript-eslint monorepo to v4.15.1 ([#825](https://github.com/christophehurpeau/pob/issues/825)) ([a5c49be](https://github.com/christophehurpeau/pob/commit/a5c49bef7898d5581b88c8ab49389f3692cc1a3b))
+* **deps:** update typescript-eslint monorepo to v4.15.2 ([#834](https://github.com/christophehurpeau/pob/issues/834)) ([6ae450b](https://github.com/christophehurpeau/pob/commit/6ae450bb69e8c65eb7033c909abfe91f38fe7d1f))
+* **deps:** update typescript-eslint monorepo to v4.17.0 ([#850](https://github.com/christophehurpeau/pob/issues/850)) ([73846e6](https://github.com/christophehurpeau/pob/commit/73846e60b93d693947e4b87e7f81b53594bf7434))
+
+
+
+
+
 # [3.10.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.9.1...pob-dependencies@3.10.0) (2021-02-14)
 
 
