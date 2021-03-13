@@ -14,7 +14,7 @@ exports.checkResolutionsHasExplanation = (
 
   Object.keys(pkgResolutions).forEach((depKey) => {
     if (!pkgResolutionsExplained[depKey]) {
-      reportError(`Missing "${depKey}" in resolutionsExplained`);
+      reportError(`Missing "${depKey}" in resolutionsExplained.`);
     }
   });
 
@@ -29,7 +29,8 @@ exports.checkResolutionsHasExplanation = (
       });
       if (error) {
         reportError(
-          `Invalid message for "${depKey}" in resolutionsExplained: ${error}.`,
+          `Invalid message for "${depKey}" in resolutionsExplained`,
+          `${error}.`,
         );
       }
     }

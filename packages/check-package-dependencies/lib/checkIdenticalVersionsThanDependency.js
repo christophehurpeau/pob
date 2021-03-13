@@ -21,14 +21,15 @@ exports.checkIdenticalVersionsThanDependency = (
     const version = dependencies[depKey];
     if (!version) {
       reportError(
-        `Unexpected missing dependency version in "${depPkg.name}" for "${depKey}"`,
+        `Unexpected missing dependency version in "${depPkg.name}" for "${depKey}".`,
       );
       return;
     }
 
     if (version.startsWith('^') || version.startsWith('~')) {
       reportError(
-        `Unexpected range dependency in "${depPkg.name}" for "${depKey}", perhaps use checkSatisfiesVersionsFromDependency() instead`,
+        `Unexpected range dependency in "${depPkg.name}" for "${depKey}"`,
+        'perhaps use checkSatisfiesVersionsFromDependency() instead.',
       );
       return;
     }
@@ -37,14 +38,16 @@ exports.checkIdenticalVersionsThanDependency = (
 
     if (!value) {
       reportError(
-        `Missing "${depKey}" in ${type}: expecting to be "${version}"`,
+        `Missing "${depKey}" in ${type}`,
+        `expecting to be "${version}".`,
         onlyWarnsFor.includes(depKey),
       );
     }
 
     if (value !== version) {
       reportError(
-        `Invalid "${depKey}" in ${type}: expecting "${value}" be "${version}"`,
+        `Invalid "${depKey}" in ${type}`,
+        `expecting "${value}" to be "${version}".`,
         onlyWarnsFor.includes(depKey),
       );
     }

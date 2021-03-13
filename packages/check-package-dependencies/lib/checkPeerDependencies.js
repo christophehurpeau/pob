@@ -1,3 +1,5 @@
+/* eslint-disable complexity */
+
 'use strict';
 
 const semver = require('semver');
@@ -15,15 +17,13 @@ exports.checkPeerDependencies = (
   const reportError = createReportError('Peer Dependencies', pkgPath);
   const { peerDependencies, peerDependenciesMeta = {} } = depPkg;
 
-  const pkgDependenciesList = allowedPeerIn
-    .map((allowedType) => pkg[allowedType])
-    .filter(Boolean);
+  const allowedPeerInExisting = allowedPeerIn.filter((type) => pkg[type]);
 
   for (const [peerDepKey, range] of Object.entries(peerDependencies)) {
-    const versions = pkgDependenciesList
-      .map((d) => d[peerDepKey])
-      .filter(Boolean);
-    if (versions.length === 0) {
+    const versionsIn = allowedPeerInExisting.filter(
+      (type) => pkg[type][peerDepKey],
+    );
+    if (versionsIn.length === 0) {
       if (
         peerDependenciesMeta[peerDepKey] &&
         peerDependenciesMeta[peerDepKey].optional
@@ -31,18 +31,29 @@ exports.checkPeerDependencies = (
         return;
       }
       reportError(
-        `Missing "${peerDepKey}" peer dependency from "${depPkg.name}" in ${type}, it should satisfies "${range}"`,
+        `Missing "${peerDepKey}" peer dependency from "${depPkg.name}" in ${type}`,
+        `it should satisfies "${range}"`,
         onlyWarnsFor.includes(peerDepKey),
       );
-    } else if (versions.length > 1) {
-      reportError(
-        `${peerDepKey} is present in both devDependencies and dependencies, please place it only in dependencies`,
-      );
-    } else if (!semver.satisfies(semver.minVersion(versions[0]), range)) {
-      reportError(
-        `Invalid "${peerDepKey}" peer dependency from "${depPkg.name}" in ${type}: "${versions[0]}" should satisfies "${range}"`,
-        onlyWarnsFor.includes(peerDepKey),
-      );
+    } else {
+      const versions = versionsIn.map((type) => pkg[type][peerDepKey]);
+      if (versions.length > 1) {
+        reportError(
+          `${peerDepKey} is present in both devDependencies and dependencies`,
+          'place it only in dependencies',
+        );
+        return;
+      }
+
+      versions.forEach((version, index) => {
+        if (!semver.satisfies(semver.minVersion(version), range)) {
+          reportError(
+            `Invalid "${peerDepKey}" peer dependency`,
+            `"${version}" (in ${allowedPeerInExisting[index]}) should satisfies "${range}" from "${depPkg.name}" ${type}`,
+            onlyWarnsFor.includes(peerDepKey),
+          );
+        }
+      });
     }
   }
 };

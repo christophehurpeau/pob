@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-
 'use strict';
 
 const semver = require('semver');
@@ -63,7 +61,8 @@ exports.checkDirectDuplicateDependencies = (
         if (shouldWarns) warnedFor.add(depKey);
 
         reportError(
-          `Invalid duplicate dependency "${depKey}": "${versions[0]}" (in ${versionInType}) should satisfies "${range}" from "${depPkg.name}" ${depType}`,
+          `Invalid duplicate dependency "${depKey}"`,
+          `"${versions[0]}" (in ${versionInType}) should satisfies "${range}" from "${depPkg.name}" ${depType}.`,
           shouldWarns,
         );
       });

@@ -22,7 +22,7 @@ exports.checkSatisfiesVersionsFromDependency = (
     const range = dependencies[depKey];
     if (!range) {
       throw new Error(
-        `Unexpected missing dependency range in "${depPkg.name}" for "${depKey}"`,
+        `Unexpected missing dependency range in "${depPkg.name}" for "${depKey}".`,
       );
     }
 
@@ -30,12 +30,14 @@ exports.checkSatisfiesVersionsFromDependency = (
 
     if (!version) {
       reportError(
-        `Missing "${depKey}" in ${type}, it should satisfies "${range}"`,
+        `Missing "${depKey}" in ${type}`,
+        `should satisfies "${range}" from "${depPkg.name}" ${depKey}.`,
         onlyWarnsFor.includes(depKey),
       );
     } else if (!semver.satisfies(semver.minVersion(version), range)) {
       reportError(
-        `Invalid "${depKey}" in ${type}, it should satisfies "${depPkg.name}" from "${depPkg.name}": "${version}" should satisfies "${range}"`,
+        `Invalid "${depKey}" in ${type}`,
+        `"${version}" (in "${depKey}") should satisfies "${range}" from "${depPkg.name}" ${depKey}.`,
         onlyWarnsFor.includes(depKey),
       );
     }

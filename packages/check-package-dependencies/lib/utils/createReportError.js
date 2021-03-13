@@ -1,16 +1,22 @@
 'use strict';
 
+const chalk = require('chalk');
+
 let titleDisplayed = null;
 let pkgPathDisplayed = null;
 exports.createReportError = (title, pkgPath) => {
-  return (msg, onlyWarns) => {
+  return function reportError(msgTitle, msgInfo, onlyWarns) {
     if (titleDisplayed !== title || pkgPath !== pkgPathDisplayed) {
       if (titleDisplayed) console.error();
-      console.error(`== ${title} in ${pkgPath} ==`);
+      console.error(chalk.cyan(`== ${title} in ${pkgPath} ==`));
       titleDisplayed = title;
       pkgPathDisplayed = pkgPath;
     }
-    console.error((onlyWarns ? '⚠ ' : '❌ ') + msg);
+    console.error(
+      `${
+        onlyWarns ? chalk.yellow(`⚠ ${msgTitle}`) : chalk.red(`❌ ${msgTitle}`)
+      }${msgInfo ? `: ${msgInfo}` : ''}`,
+    );
     if (!onlyWarns) {
       // console.trace();
       process.exitCode = 1;

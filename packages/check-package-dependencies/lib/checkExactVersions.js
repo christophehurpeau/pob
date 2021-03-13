@@ -11,9 +11,8 @@ exports.checkExactVersions = (pkg, pkgPath, type) => {
   for (const [depKey, version] of Object.entries(pkgDependencies)) {
     if (version.startsWith('^') || version.startsWith('~')) {
       reportError(
-        `Unexpected range dependency in "${type}" for "${depKey}": "${version}" should be exact ("${version.slice(
-          1,
-        )}")`,
+        `Unexpected range dependency in "${type}" for "${depKey}"`,
+        `expecting "${version}" to be exact "${version.slice(1)}".`,
       );
       return;
     }

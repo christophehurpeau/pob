@@ -13,6 +13,7 @@ exports.checkNoDependencies = (
 
   const reportError = createReportError('No dependencies', pkgPath);
   reportError(
-    `Unexpected ${type}, you should move them in ${moveToSuggestion}`,
+    `Unexpected ${type}`,
+    `you should move them in ${moveToSuggestion}`,
   );
 };
