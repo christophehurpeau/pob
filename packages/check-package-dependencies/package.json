@@ -18,6 +18,9 @@
   },
   "main": "./lib/index.js",
   "sideEffects": false,
+  "bin": {
+    "check-package-dependencies": "./bin/check-package-dependencies"
+  },
   "scripts": {
     "lint:eslint": "yarn --cwd ../.. eslint --report-unused-disable-directives --quiet packages/repository-check-dirty"
   },
