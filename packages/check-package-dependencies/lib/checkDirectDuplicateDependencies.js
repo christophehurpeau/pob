@@ -3,7 +3,7 @@
 const semver = require('semver');
 const { createReportError } = require('./utils/createReportError');
 
-const checkWarnedFor = (reportError, onlyWarnsFor, warnedFor) => {
+const checkWarnedFor = (reportError, onlyWarnsFor = [], warnedFor) => {
   onlyWarnsFor.forEach((depName) => {
     if (!warnedFor.has(depName)) {
       reportError(
