@@ -7,14 +7,14 @@ const { createReportError } = require('./utils/createReportError');
 
 exports.checkPeerDependencies = (
   pkg,
-  pkgPath,
+  pkgPathName,
   type,
   allowedPeerIn,
   depPkg,
   onlyWarnsFor = [],
 ) => {
   if (!depPkg.peerDependencies) return;
-  const reportError = createReportError('Peer Dependencies', pkgPath);
+  const reportError = createReportError('Peer Dependencies', pkgPathName);
   const { peerDependencies, peerDependenciesMeta = {} } = depPkg;
 
   const allowedPeerInExisting = allowedPeerIn.filter((type) => pkg[type]);

@@ -31,6 +31,7 @@ const readPkgJson = (packagePath) => {
 exports.createCheckPackage = (pkgDirectoryPath = '.') => {
   const pkgDirname = path.resolve(pkgDirectoryPath);
   const pkgPath = `${pkgDirname}/package.json`;
+  const pkgPathName = `${pkgDirectoryPath}/package.json`;
   const pkg = readPkgJson(pkgPath);
   const nodeModulesPackagePathCache = new Map();
   const getDependencyPackageJson = (pkgDepName) => {
@@ -80,7 +81,7 @@ exports.createCheckPackage = (pkgDirectoryPath = '.') => {
     },
 
     checkExactDevVersions() {
-      checkExactVersions(pkg, pkgPath, 'devDependencies');
+      checkExactVersions(pkg, pkgPathName, 'devDependencies');
       return this;
     },
 
@@ -88,7 +89,7 @@ exports.createCheckPackage = (pkgDirectoryPath = '.') => {
       type = 'dependencies',
       moveToSuggestion = 'devDependencies',
     ) {
-      checkNoDependencies(pkg, pkgPath, type, moveToSuggestion);
+      checkNoDependencies(pkg, pkgPathName, type, moveToSuggestion);
       return this;
     },
 
@@ -111,7 +112,7 @@ exports.createCheckPackage = (pkgDirectoryPath = '.') => {
           if (depPkg.peerDependencies) {
             checkPeerDependencies(
               pkg,
-              pkgPath,
+              pkgPathName,
               type,
               allowedPeerIn,
               depPkg,
@@ -141,7 +142,7 @@ exports.createCheckPackage = (pkgDirectoryPath = '.') => {
           const depPkg = getDependencyPackageJson(depName);
           checkDirectDuplicateDependencies(
             pkg,
-            pkgPath,
+            pkgPathName,
             'dependencies',
             searchIn,
             depPkg,
@@ -154,7 +155,7 @@ exports.createCheckPackage = (pkgDirectoryPath = '.') => {
       if (!warnedForInternal) {
         const reportError = createReportError(
           'Direct Duplicate Dependencies',
-          pkgPath,
+          pkgPathName,
         );
         checkWarnedFor(reportError, onlyWarnsFor, warnedForInternal);
       }
@@ -166,7 +167,7 @@ exports.createCheckPackage = (pkgDirectoryPath = '.') => {
     ) {
       checkResolutionsHasExplanation(
         pkg,
-        pkgPath,
+        pkgPathName,
         checkMessage,
         getDependencyPackageJson,
       );
@@ -207,7 +208,7 @@ exports.createCheckPackage = (pkgDirectoryPath = '.') => {
       if (resolutions) {
         checkIdenticalVersionsThanDependency(
           pkg,
-          pkgPath,
+          pkgPathName,
           'resolutions',
           resolutions,
           depPkg,
@@ -217,7 +218,7 @@ exports.createCheckPackage = (pkgDirectoryPath = '.') => {
       if (dependencies) {
         checkIdenticalVersionsThanDependency(
           pkg,
-          pkgPath,
+          pkgPathName,
           'dependencies',
           dependencies,
           depPkg,
@@ -227,7 +228,7 @@ exports.createCheckPackage = (pkgDirectoryPath = '.') => {
       if (devDependencies) {
         checkIdenticalVersionsThanDependency(
           pkg,
-          pkgPath,
+          pkgPathName,
           'devDependencies',
           devDependencies,
           depPkg,
@@ -277,7 +278,7 @@ exports.createCheckPackage = (pkgDirectoryPath = '.') => {
       if (resolutions) {
         checkSatisfiesVersionsFromDependency(
           pkg,
-          pkgPath,
+          pkgPathName,
           'resolutions',
           resolutions,
           depPkg,
@@ -287,7 +288,7 @@ exports.createCheckPackage = (pkgDirectoryPath = '.') => {
       if (dependencies) {
         checkSatisfiesVersionsFromDependency(
           pkg,
-          pkgPath,
+          pkgPathName,
           'dependencies',
           dependencies,
           depPkg,
@@ -297,7 +298,7 @@ exports.createCheckPackage = (pkgDirectoryPath = '.') => {
       if (devDependencies) {
         checkSatisfiesVersionsFromDependency(
           pkg,
-          pkgPath,
+          pkgPathName,
           'devDependencies',
           devDependencies,
           depPkg,
@@ -315,7 +316,7 @@ exports.createCheckPackage = (pkgDirectoryPath = '.') => {
       if (resolutions) {
         checkSatisfiesVersionsFromDependency(
           pkg,
-          pkgPath,
+          pkgPathName,
           'resolutions',
           resolutions,
           depPkg,
@@ -325,7 +326,7 @@ exports.createCheckPackage = (pkgDirectoryPath = '.') => {
       if (dependencies) {
         checkSatisfiesVersionsFromDependency(
           pkg,
-          pkgPath,
+          pkgPathName,
           'dependencies',
           dependencies,
           depPkg,
@@ -335,7 +336,7 @@ exports.createCheckPackage = (pkgDirectoryPath = '.') => {
       if (devDependencies) {
         checkSatisfiesVersionsFromDependency(
           pkg,
-          pkgPath,
+          pkgPathName,
           'devDependencies',
           devDependencies,
           depPkg,
@@ -362,7 +363,7 @@ exports.createCheckPackage = (pkgDirectoryPath = '.') => {
 
 exports.createCheckPackageWithWorkspaces = (pkgDirectoryPath = '.') => {
   const checkPackage = exports.createCheckPackage(pkgDirectoryPath);
-  const { pkg, pkgDirname, pkgPath } = checkPackage;
+  const { pkg, pkgDirname, pkgPathName } = checkPackage;
 
   if (!pkg.workspaces) {
     throw new Error('Package is missing "workspaces"');
@@ -374,14 +375,13 @@ exports.createCheckPackageWithWorkspaces = (pkgDirectoryPath = '.') => {
     match.forEach((pathMatch) => {
       const stat = fs.statSync(pathMatch);
       if (!stat.isDirectory()) return;
-      const pkgPath = path.relative(
-        process.cwd(),
-        path.join(pathMatch, 'package.json'),
-      );
+      const pkgDirectoryPath = path.relative(process.cwd(), pathMatch);
+      const pkgPath = path.join(pkgDirectoryPath, 'package.json');
       const pkg = readPkgJson(pkgPath);
       workspaces.push({
         id: pkg.name,
         pkgDirname: pathMatch,
+        pkgDirectoryPath,
         pkgPath,
         pkg,
       });
@@ -389,9 +389,9 @@ exports.createCheckPackageWithWorkspaces = (pkgDirectoryPath = '.') => {
   });
 
   const checksWorkspaces = new Map(
-    workspaces.map(({ id, pkgDirname }) => [
+    workspaces.map(({ id, pkgDirectoryPath }) => [
       id,
-      exports.createCheckPackage(pkgDirname),
+      exports.createCheckPackage(pkgDirectoryPath),
     ]),
   );
 
@@ -421,7 +421,7 @@ exports.createCheckPackageWithWorkspaces = (pkgDirectoryPath = '.') => {
         });
         checkDirectDuplicateDependencies(
           pkg,
-          pkgPath,
+          pkgPathName,
           'devDependencies',
           ['devDependencies', 'dependencies'],
           pkg,
@@ -431,7 +431,7 @@ exports.createCheckPackageWithWorkspaces = (pkgDirectoryPath = '.') => {
       });
 
       checkWarnedFor(
-        createReportError('Recommended Checks', pkgPath),
+        createReportError('Recommended Checks', pkgPathName),
         directDuplicateDependenciesOnlyWarnsFor,
         warnedForDuplicate,
       );

@@ -17,7 +17,7 @@ exports.checkWarnedFor = checkWarnedFor;
 
 exports.checkDirectDuplicateDependencies = (
   pkg,
-  pkgPath,
+  pkgPathName,
   depType,
   searchIn,
   depPkg,
@@ -30,7 +30,7 @@ exports.checkDirectDuplicateDependencies = (
 
   const reportError = createReportError(
     'Direct Duplicate Dependencies',
-    pkgPath,
+    pkgPathName,
   );
   const searchInExisting = searchIn.filter((type) => pkg[type]);
 

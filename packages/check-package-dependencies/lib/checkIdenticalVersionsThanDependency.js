@@ -4,7 +4,7 @@ const { createReportError } = require('./utils/createReportError');
 
 exports.checkIdenticalVersionsThanDependency = (
   pkg,
-  pkgPath,
+  pkgPathName,
   type,
   depKeys,
   depPkg,
@@ -14,7 +14,7 @@ exports.checkIdenticalVersionsThanDependency = (
   const pkgDependencies = pkg[type];
   const reportError = createReportError(
     `Same Versions than ${depPkg.name}`,
-    pkgPath,
+    pkgPathName,
   );
 
   depKeys.forEach((depKey) => {

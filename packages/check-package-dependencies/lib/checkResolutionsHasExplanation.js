@@ -4,13 +4,16 @@ const { createReportError } = require('./utils/createReportError');
 
 exports.checkResolutionsHasExplanation = (
   pkg,
-  pkgPath,
+  pkgPathName,
   checkMessage,
   getDependencyPackageJson,
 ) => {
   const pkgResolutions = pkg.resolutions || {};
   const pkgResolutionsExplained = pkg.resolutionsExplained || {};
-  const reportError = createReportError('Resolutions has explanation', pkgPath);
+  const reportError = createReportError(
+    'Resolutions has explanation',
+    pkgPathName,
+  );
 
   Object.keys(pkgResolutions).forEach((depKey) => {
     if (!pkgResolutionsExplained[depKey]) {

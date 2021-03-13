@@ -5,7 +5,7 @@ const { createReportError } = require('./utils/createReportError');
 
 exports.checkSatisfiesVersionsFromDependency = (
   pkg,
-  pkgPath,
+  pkgPathName,
   type,
   depKeys,
   depPkg,
@@ -15,7 +15,7 @@ exports.checkSatisfiesVersionsFromDependency = (
   const pkgDependencies = pkg[type];
   const reportError = createReportError(
     `Satisfies Versions from ${depPkg.name}`,
-    pkgPath,
+    pkgPathName,
   );
 
   depKeys.forEach((depKey) => {

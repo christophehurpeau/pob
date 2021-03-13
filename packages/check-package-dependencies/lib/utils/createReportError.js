@@ -4,13 +4,13 @@ const chalk = require('chalk');
 
 let titleDisplayed = null;
 let pkgPathDisplayed = null;
-exports.createReportError = (title, pkgPath) => {
+exports.createReportError = (title, pkgPathName) => {
   return function reportError(msgTitle, msgInfo, onlyWarns) {
-    if (titleDisplayed !== title || pkgPath !== pkgPathDisplayed) {
+    if (titleDisplayed !== title || pkgPathName !== pkgPathDisplayed) {
       if (titleDisplayed) console.error();
-      console.error(chalk.cyan(`== ${title} in ${pkgPath} ==`));
+      console.error(chalk.cyan(`== ${title} in ${pkgPathName} ==`));
       titleDisplayed = title;
-      pkgPathDisplayed = pkgPath;
+      pkgPathDisplayed = pkgPathName;
     }
     console.error(
       `${
