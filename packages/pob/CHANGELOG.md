@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.10.1](https://github.com/christophehurpeau/pob/compare/pob@7.10.0...pob@7.10.1) (2021-03-13)
+
+
+### Bug Fixes
+
+* **pob:** lerna 4 ([e26946c](https://github.com/christophehurpeau/pob/commit/e26946cdcf01058674afcaeb33e38764cb60e8cb))
+
+
+
+
+
 # [7.10.0](https://github.com/christophehurpeau/pob/compare/pob@7.9.0...pob@7.10.0) (2021-03-13)
 
 

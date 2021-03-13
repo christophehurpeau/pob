@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/christophehurpeau/pob/compare/check-package-dependencies@0.1.1...check-package-dependencies@0.1.2) (2021-03-13)
+
+
+### Bug Fixes
+
+* **check-package-dependencies:** onlyWarnsFor undefined ([0a52498](https://github.com/christophehurpeau/pob/commit/0a524989225cc954afc6caec073069d4cceff30c))
+
+
+
+
+
 ## [0.1.1](https://github.com/christophehurpeau/pob/compare/check-package-dependencies@0.1.0...check-package-dependencies@0.1.1) (2021-03-13)
 
 
