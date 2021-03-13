@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/christophehurpeau/pob/compare/check-package-dependencies@0.1.0...check-package-dependencies@0.1.1) (2021-03-13)
+
+
+### Bug Fixes
+
+* **check-package-dependencies:** pkg path name ([f056a54](https://github.com/christophehurpeau/pob/commit/f056a547908c39834407ef9673c5cd8908fe8158))
+
+
+
+
+
 # 0.1.0 (2021-03-13)
 
 
