@@ -31,7 +31,7 @@ Create a script, for example `scripts/check-package.js`. Add it in `"scripts"` i
 
 const { createCheckPackage } from 'check-package-dependencies';
 
-createCheckPackage(/* 'package.json' */)
+createCheckPackage(/* '.' */)
   // Check that your package.json contains only exact versions of package, not range.
   .checkExactVersions({
     // When isLibrary is true, it doesnt check "dependencies" as they should mostly have a range, not an exact version

@@ -28,10 +28,10 @@ const readPkgJson = (packagePath) => {
   return JSON.parse(fs.readFileSync(packagePath, 'utf-8'));
 };
 
-exports.createCheckPackage = (pkgPath = 'package.json') => {
-  const pkgResolved = path.resolve(pkgPath);
-  const pkgDirname = `${path.dirname(pkgResolved)}/`;
-  const pkg = readPkgJson(pkgResolved);
+exports.createCheckPackage = (pkgDirectoryPath = '.') => {
+  const pkgDirname = path.resolve(pkgDirectoryPath);
+  const pkgPath = `${pkgDirname}/package.json`;
+  const pkg = readPkgJson(pkgPath);
   const nodeModulesPackagePathCache = new Map();
   const getDependencyPackageJson = (pkgDepName) => {
     const existing = nodeModulesPackagePathCache.get(pkgDepName);
@@ -360,9 +360,9 @@ exports.createCheckPackage = (pkgPath = 'package.json') => {
   };
 };
 
-exports.createCheckPackageWithWorkspaces = (pkgPath = 'package.json') => {
-  const checkPackage = exports.createCheckPackage(pkgPath);
-  const { pkg, pkgDirname } = checkPackage;
+exports.createCheckPackageWithWorkspaces = (pkgDirectoryPath = '.') => {
+  const checkPackage = exports.createCheckPackage(pkgDirectoryPath);
+  const { pkg, pkgDirname, pkgPath } = checkPackage;
 
   if (!pkg.workspaces) {
     throw new Error('Package is missing "workspaces"');
@@ -370,7 +370,7 @@ exports.createCheckPackageWithWorkspaces = (pkgPath = 'package.json') => {
 
   const workspaces = [];
   pkg.workspaces.forEach((pattern) => {
-    const match = glob.sync(pkgDirname + pattern);
+    const match = glob.sync(`${pkgDirname}/${pattern}`);
     match.forEach((pathMatch) => {
       const stat = fs.statSync(pathMatch);
       if (!stat.isDirectory()) return;
@@ -389,9 +389,9 @@ exports.createCheckPackageWithWorkspaces = (pkgPath = 'package.json') => {
   });
 
   const checksWorkspaces = new Map(
-    workspaces.map(({ id, pkgPath }) => [
+    workspaces.map(({ id, pkgDirname }) => [
       id,
-      exports.createCheckPackage(pkgPath),
+      exports.createCheckPackage(pkgDirname),
     ]),
   );
 
