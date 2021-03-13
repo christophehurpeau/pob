@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/christophehurpeau/pob/compare/check-package-dependencies@0.1.2...check-package-dependencies@0.2.0) (2021-03-13)
+
+
+### Features
+
+* **check-package-dependencies:** add bin script ([1886768](https://github.com/christophehurpeau/pob/commit/1886768250216ed301ee7d3ae79c141c4478f543))
+
+
+
+
+
 ## [0.1.2](https://github.com/christophehurpeau/pob/compare/check-package-dependencies@0.1.1...check-package-dependencies@0.1.2) (2021-03-13)
 
 
