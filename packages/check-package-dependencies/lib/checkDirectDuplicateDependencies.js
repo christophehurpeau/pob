@@ -1,3 +1,5 @@
+/* eslint-disable complexity */
+
 'use strict';
 
 const semver = require('semver');
@@ -32,31 +34,39 @@ exports.checkDirectDuplicateDependencies = (
     'Direct Duplicate Dependencies',
     pkgPath,
   );
-  const pkgDependenciesList = searchIn
-    .map((searchInType) => pkg[searchInType])
-    .filter(Boolean);
+  const searchInExisting = searchIn.filter((type) => pkg[type]);
 
   for (const [depKey, range] of Object.entries(depPkg[depType])) {
-    const versions = pkgDependenciesList.map((d) => d[depKey]).filter(Boolean);
-    if (versions.length > 1) {
+    const versionsIn = searchInExisting.filter((type) => pkg[type][depKey]);
+
+    if (versionsIn.length > 1) {
       reportError(
         `${depKey} is present in both devDependencies and dependencies, please place it only in dependencies`,
       );
-    } else if (
-      versions[0] &&
-      !versions[0].startsWith('file:') &&
-      !semver.satisfies(semver.minVersion(versions[0]), range)
-    ) {
-      // Ignore reporting duplicate when there's a resolution for it
-      if (!pkg.resolutions || !pkg.resolutions[depKey]) {
+    } else {
+      const versions = versionsIn.map((type) => pkg[type][depKey]);
+
+      versions.forEach((version, index) => {
+        if (version.startsWith('file:')) return;
+
+        if (semver.intersects(version, range)) {
+          return;
+        }
+
+        // Ignore reporting duplicate when there's a resolution for it
+        if (pkg.resolutions && pkg.resolutions[depKey]) {
+          return;
+        }
+
+        const versionInType = versionsIn[index];
         const shouldWarns = onlyWarnsFor.includes(depKey);
         if (shouldWarns) warnedFor.add(depKey);
 
         reportError(
-          `Invalid "${depKey}" duplicate dependency from "${depPkg.name}" in ${depType}: "${versions[0]}" should satisfies "${range}"`,
+          `Invalid duplicate dependency "${depKey}": "${versions[0]}" (in ${versionInType}) should satisfies "${range}" from "${depPkg.name}" ${depType}`,
           shouldWarns,
         );
-      }
+      });
     }
   }
 
