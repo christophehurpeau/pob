@@ -301,24 +301,33 @@ module.exports = class PobLibGenerator extends Generator {
         delete pkg.scripts.version;
       }
     } else {
-      packageUtils.addDevDependencies(pkg, ['standard-version']);
-      if (pkg.name !== 'pob-monorepo') {
-        packageUtils.addScripts(pkg, {
-          release:
-            "repository-check-dirty && yarn preversion && standard-version -a -m 'chore(release): %s [skip ci]' && git push --follow-tags origin master && npm publish",
-          preversion: [
-            `${isNpm ? 'npm' : 'yarn'} run lint`,
-            withBabel && `${isNpm ? 'npm' : 'yarn'} run build`,
-            this.pobjson.documentation &&
-              `${isNpm ? 'npm' : 'yarn'} run generate:docs`,
-            'repository-check-dirty',
-          ]
-            .filter(Boolean)
-            .join(' && '),
-        });
+      if (
+        this.fs.exists(
+          this.destinationPath('.github/workflows/release-please.yml'),
+        )
+      ) {
+        packageUtils.removeDevDependencies(pkg, ['standard-version']);
+        packageUtils.removeScripts(pkg, ['release', 'preversion']);
+      } else {
+        packageUtils.addDevDependencies(pkg, ['standard-version']);
+        if (pkg.name !== 'pob-monorepo') {
+          packageUtils.addScripts(pkg, {
+            release:
+              "repository-check-dirty && yarn preversion && standard-version -a -m 'chore(release): %s [skip ci]' && git push --follow-tags origin master && npm publish",
+            preversion: [
+              `${isNpm ? 'npm' : 'yarn'} run lint`,
+              withBabel && `${isNpm ? 'npm' : 'yarn'} run build`,
+              this.pobjson.documentation &&
+                `${isNpm ? 'npm' : 'yarn'} run generate:docs`,
+              'repository-check-dirty',
+            ]
+              .filter(Boolean)
+              .join(' && '),
+          });
 
-        if (pkg.scripts.version === 'pob-version') {
-          delete pkg.scripts.version;
+          if (pkg.scripts.version === 'pob-version') {
+            delete pkg.scripts.version;
+          }
         }
       }
 
