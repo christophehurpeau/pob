@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.6.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@5.5.0...babel-preset-pob-env@5.6.0) (2021-03-14)
+
+
+### Features
+
+* update babel presets ([6212013](https://github.com/christophehurpeau/pob/commit/621201358055542c46beaf6328f28733bf43d367))
+* **babel-preset-pob:** remove proposals in shipped proposals ([34973db](https://github.com/christophehurpeau/pob/commit/34973db156c9dafb58b5245b51915e8aa92ea777))
+
+
+
+
+
 # [5.5.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@5.4.0...babel-preset-pob-env@5.5.0) (2021-03-13)
 
 

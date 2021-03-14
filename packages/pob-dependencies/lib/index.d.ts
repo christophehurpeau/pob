@@ -17,7 +17,7 @@ interface Dependencies {
   '@typescript-eslint/eslint-plugin': '4.17.0';
   '@typescript-eslint/parser': '4.17.0';
   'babel-jest': '26.6.3';
-  'babel-preset-latest-node': '5.4.0';
+  'babel-preset-latest-node': '5.5.1';
   'babel-preset-modern-browsers': '15.0.2';
   eslint: '7.22.0';
   'eslint-import-resolver-node': '0.3.4';
@@ -30,14 +30,14 @@ interface Dependencies {
   husky: '4.3.8';
   jest: '26.6.3';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '26.6.0';
+  'pob-babel': '^26.7.0';
   'pob-lcov-reporter': '4.0.1';
   prettier: '2.2.1';
   'repository-check-dirty': '2.0.1';
   rollup: '2.41.2';
   semver: '7.3.4';
   'standard-version': '9.1.1';
-  typedoc: '0.20.30';
+  typedoc: '0.20.31';
   typescript: '4.2.3';
 }
 

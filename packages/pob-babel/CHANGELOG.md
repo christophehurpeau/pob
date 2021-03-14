@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [26.8.0](https://github.com/christophehurpeau/pob/compare/pob-babel@26.7.0...pob-babel@26.8.0) (2021-03-14)
+
+
+### Features
+
+* update babel presets ([6212013](https://github.com/christophehurpeau/pob/commit/621201358055542c46beaf6328f28733bf43d367))
+
+
+
+
+
 # [26.7.0](https://github.com/christophehurpeau/pob/compare/pob-babel@26.6.0...pob-babel@26.7.0) (2021-03-13)
 
 

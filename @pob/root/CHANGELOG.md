@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@3.1.1...@pob/root@3.2.0) (2021-03-14)
+
+
+### Features
+
+* **deps:** update commitlint monorepo to v12 (major) ([#837](https://github.com/christophehurpeau/pob/issues/837)) ([c1f7069](https://github.com/christophehurpeau/pob/commit/c1f7069bb0badba0c1d679d3ee363ff9e85429f3))
+
+
+
+
+
 ## [3.1.1](https://github.com/christophehurpeau/pob/compare/@pob/root@3.1.0...@pob/root@3.1.1) (2021-02-08)
 
 **Note:** Version bump only for package @pob/root

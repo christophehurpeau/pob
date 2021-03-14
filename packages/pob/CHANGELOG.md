@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.11.0](https://github.com/christophehurpeau/pob/compare/pob@7.10.1...pob@7.11.0) (2021-03-14)
+
+
+### Bug Fixes
+
+* delete engines.yarn ([defaa37](https://github.com/christophehurpeau/pob/commit/defaa3724480c056ea8ae690c6169932a55682ae))
+* **pob:** only fixAll eslint in vscode settings ([ba6abe9](https://github.com/christophehurpeau/pob/commit/ba6abe938c09a8d05eca57ba0ad618de661cae50))
+
+
+### Features
+
+* **deps:** update dependency inquirer-npm-name to v4 ([#851](https://github.com/christophehurpeau/pob/issues/851)) ([aa3ab20](https://github.com/christophehurpeau/pob/commit/aa3ab208f59f1539f4aef582318eb83952858029))
+
+
+
+
+
 ## [7.10.1](https://github.com/christophehurpeau/pob/compare/pob@7.10.0...pob@7.10.1) (2021-03-13)
 
 

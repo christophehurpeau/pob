@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.12.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.11.0...pob-dependencies@3.12.0) (2021-03-14)
+
+
+### Features
+
+* **deps:** update dependency babel-preset-latest-node to v5.5.1 ([#861](https://github.com/christophehurpeau/pob/issues/861)) ([0d47149](https://github.com/christophehurpeau/pob/commit/0d47149909648b8208d5d8f1fa081e421e8cf262))
+* **deps:** update dependency typedoc to v0.20.31 ([#860](https://github.com/christophehurpeau/pob/issues/860)) ([663bcb0](https://github.com/christophehurpeau/pob/commit/663bcb04b61a4a5976b1669b0470fbe7ccabfe52))
+
+
+
+
+
 # [3.11.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.10.0...pob-dependencies@3.11.0) (2021-03-13)
 
 

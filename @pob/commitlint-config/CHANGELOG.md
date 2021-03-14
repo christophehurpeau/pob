@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.1.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@2.0.1...@pob/commitlint-config@2.1.0) (2021-03-14)
+
+
+### Features
+
+* **deps:** update commitlint monorepo to v12 (major) ([#837](https://github.com/christophehurpeau/pob/issues/837)) ([c1f7069](https://github.com/christophehurpeau/pob/commit/c1f7069bb0badba0c1d679d3ee363ff9e85429f3))
+
+
+
+
+
 ## [2.0.1](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@2.0.0...@pob/commitlint-config@2.0.1) (2020-11-15)
 
 **Note:** Version bump only for package @pob/commitlint-config
