@@ -129,13 +129,25 @@ module.exports = class PackageGenerator extends Generator {
       fs.unlinkSync(this.destinationPath('yarn-error.log'));
     }
 
-    packageUtils.addOrRemoveScripts(
-      pkg,
-      this.fs.exists(this.destinationPath('scripts/check-packages.js')),
-      {
-        checks: 'node scripts/check-packages.js',
-      },
-    );
+    if (inLerna && !inLerna.root) {
+      packageUtils.removeScripts(pkg, ['checks']);
+    } else if (inLerna && inLerna.root) {
+      packageUtils.addOrRemoveScripts(
+        pkg,
+        this.fs.exists(this.destinationPath('scripts/check-packages.js')),
+        {
+          checks: 'node scripts/check-packages.js',
+        },
+      );
+    } else {
+      packageUtils.addOrRemoveScripts(
+        pkg,
+        this.fs.exists(this.destinationPath('scripts/check-package.js')),
+        {
+          checks: 'node scripts/check-package.js',
+        },
+      );
+    }
 
     author = {
       name: props.authorName || author.name,
