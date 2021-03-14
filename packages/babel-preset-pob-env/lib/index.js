@@ -121,13 +121,13 @@ module.exports = function (context, opts) {
       if (versionOption === 'current') {
         targetPreset = [
           resolvePreset('babel-preset-latest-node'),
-          { modules, loose, target: 'current' },
+          { modules, loose, shippedProposals: true, target: 'current' },
         ];
       } else {
         // targetPreset = ['@babel/preset-env', { modules, loose, targets: { node: versionOption } }];
         targetPreset = [
           resolvePreset('babel-preset-latest-node'),
-          { modules, loose, target: versionOption },
+          { modules, loose, shippedProposals: true, target: versionOption },
         ];
       }
       break;
@@ -136,7 +136,7 @@ module.exports = function (context, opts) {
       if (versionOption === 'modern') {
         targetPreset = [
           resolvePreset('babel-preset-modern-browsers'),
-          { modules, loose },
+          { modules, loose, shippedProposals: true },
         ];
         // targetPreset = ['@babel/preset-env', { modules, loose }];
       } else {
@@ -167,15 +167,6 @@ module.exports = function (context, opts) {
 
           // async import
           require.resolve('@babel/plugin-syntax-dynamic-import'),
-
-          // numeric separator
-          require.resolve('@babel/plugin-proposal-numeric-separator'),
-
-          // var foo = object.foo ?? "default";
-          require.resolve('@babel/plugin-proposal-nullish-coalescing-operator'),
-
-          // const baz = obj?.foo?.bar?.baz;
-          require.resolve('@babel/plugin-proposal-optional-chaining'),
         ],
       },
 
