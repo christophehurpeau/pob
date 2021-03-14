@@ -183,6 +183,8 @@ module.exports = class PobAppGenerator extends Generator {
     if (inNpmLerna) {
       if (!pkg.engines) pkg.engines = {};
       pkg.engines.yarn = '< 0.0.0';
+    } else if (pkg.engines) {
+      delete pkg.engines.yarn;
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);

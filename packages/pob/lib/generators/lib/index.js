@@ -281,9 +281,8 @@ module.exports = class PobLibGenerator extends Generator {
     const isNpmPackageLock = this.fs.exists('package-lock.json');
     const isNpm = isNpmPackageLock || inNpmLerna;
 
-    if (isNpm) {
-      if (!pkg.engines) pkg.engines = {};
-      pkg.engines.yarn = '< 0.0.0';
+    if (pkg.engines) {
+      delete pkg.engines.yarn;
     }
 
     if ('sideEffects' in pkg) {

@@ -150,6 +150,8 @@ module.exports = class LernaGenerator extends Generator {
       if (!pkg.engines) pkg.engines = {};
       pkg.engines.yarn = '< 0.0.0';
       pkg.engines.npm = '>= 6.4.0';
+    } else if (pkg.engines) {
+      delete pkg.engines.yarn;
     }
 
     packageUtils.addDevDependencies(pkg, ['@pob/lerna-light']);
