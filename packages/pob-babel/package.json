@@ -70,7 +70,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.13.10",
-    "@types/jest": "26.0.20",
+    "@types/jest": "26.0.21",
     "jest": "26.6.3",
     "pob-lcov-reporter": "4.0.1"
   }
