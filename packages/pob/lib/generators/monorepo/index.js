@@ -164,7 +164,11 @@ module.exports = class PobMonorepoGenerator extends Generator {
           ? `packages/${packageName.slice(basePackageName.length)}`
           : `${packageName[0] === '@' ? '' : 'packages/'}${packageName}`,
       )
-      .filter((packagePath) => fs.existsSync(`${packagePath}/tsconfig.json`));
+      .filter(
+        this.pobLernaConfig.typescript
+          ? (packagePath) => fs.existsSync(`${packagePath}/tsconfig.json`)
+          : Boolean,
+      );
 
     if (packagePaths.length === 0 && packageNames.length > 0) {
       console.log(
