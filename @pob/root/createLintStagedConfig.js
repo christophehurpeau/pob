@@ -1,4 +1,4 @@
-/* eslint-disable no-console, unicorn/no-process-exit */
+/* eslint-disable no-console */
 
 'use strict';
 
