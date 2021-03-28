@@ -58,7 +58,6 @@
             "before 3am on Friday"
           ],
           "packagePatterns": [
-            "^@pob/eslint-config",
             "^@typescript-eslint/",
             "^eslint-"
           ]
