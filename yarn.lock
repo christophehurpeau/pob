@@ -3304,6 +3304,16 @@ chardet@^0.7.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
+check-package-dependencies@1.2.3:
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/check-package-dependencies/-/check-package-dependencies-1.2.3.tgz#e675db2726e1dca0665eee5a89df63c171f4ddd9"
+  integrity sha512-fKjqj6SPzNE3ieXu4bg2BgPwon6YsnOkSaFcRjZvPFcmRUtEW5cAA9jxwSyapgMKXF95rtbVOnGqkfOXBs3ICA==
+  dependencies:
+    chalk "^4.1.0"
+    glob "^7.1.6"
+    semver "^7.3.4"
+    type-fest "^1.0.0"
+
 chownr@^1.1.1:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/chownr/-/chownr-1.1.4.tgz#6fc9d7b42d32a583596337666e7d08084da2cc6b"
@@ -10138,6 +10148,11 @@ type-fest@^0.8.1:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
   integrity sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==
+
+type-fest@^1.0.0:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-1.0.1.tgz#2494455e65c59170ec98bdda05b7d7184f5b74ad"
+  integrity sha512-+UTPE7JT3O+sUpRroRgQAbbSfIRBwOHh+o/oruB1JJE6g6uBm3Y0D82fO3xu8VHfxJLQjeRp0PEY6mRmh/lElA==
 
 typedarray-to-buffer@^3.1.5:
   version "3.1.5"

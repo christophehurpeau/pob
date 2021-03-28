@@ -2,7 +2,7 @@
 
 const {
   createCheckPackageWithWorkspaces,
-} = require('../packages/check-package-dependencies');
+} = require('check-package-dependencies');
 
 createCheckPackageWithWorkspaces()
   .checkRecommended({

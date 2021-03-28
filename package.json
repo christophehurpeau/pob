@@ -36,6 +36,7 @@
     "@pob/eslint-config": "43.0.0",
     "@pob/eslint-config-node": "43.1.0",
     "@pob/lerna-light": "file:./@pob/lerna-light",
+    "check-package-dependencies": "1.2.3",
     "eslint": "7.23.0",
     "husky": "4.3.8",
     "prettier": "2.2.1"
