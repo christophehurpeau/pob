@@ -46,6 +46,7 @@ module.exports = class OldDependenciesGenerator extends Generator {
       'yarn-update-lock',
       '@pob/version',
       'pob-release',
+      'eslint-plugin-typescript',
     ]);
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
