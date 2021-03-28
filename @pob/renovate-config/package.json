@@ -92,16 +92,13 @@
             "^@typescript-eslint/",
             "^eslint-",
             "^@babel/",
+            "^@pob/",
             "^babel-",
             "^@types/",
             "^@rollup/"
           ],
           "packageNames": [
             "eslint",
-            "@pob/root",
-            "@pob/commitlint-config",
-            "@pob/pretty-pkg",
-            "@pob/lerna-light",
             "husky",
             "prettier",
             "lerna",
