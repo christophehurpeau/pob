@@ -98,6 +98,7 @@
             "^@rollup/"
           ],
           "packageNames": [
+            "check-package-dependencies",
             "eslint",
             "husky",
             "prettier",
