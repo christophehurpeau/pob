@@ -69,7 +69,7 @@
     "semver": "^7.3.4"
   },
   "devDependencies": {
-    "@babel/core": "7.13.15",
+    "@babel/core": "7.13.16",
     "@types/jest": "26.0.22",
     "jest": "26.6.3",
     "pob-lcov-reporter": "4.0.1"
