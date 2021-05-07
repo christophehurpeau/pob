@@ -3333,10 +3333,10 @@ chardet@^0.7.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
-check-package-dependencies@1.2.3:
-  version "1.2.3"
-  resolved "https://registry.yarnpkg.com/check-package-dependencies/-/check-package-dependencies-1.2.3.tgz#e675db2726e1dca0665eee5a89df63c171f4ddd9"
-  integrity sha512-fKjqj6SPzNE3ieXu4bg2BgPwon6YsnOkSaFcRjZvPFcmRUtEW5cAA9jxwSyapgMKXF95rtbVOnGqkfOXBs3ICA==
+check-package-dependencies@1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/check-package-dependencies/-/check-package-dependencies-1.2.4.tgz#f7cea3d1f0193f98ce1a76f15ef7f9f8325ca5ab"
+  integrity sha512-+TshpGGClHq/87tpdrwpPJ1IuF4kyag5DF8E5BsCsxmlyANTE/uxYcuZCzj+r+8xk5ULs8kIdtTqsHNYmdetNQ==
   dependencies:
     chalk "^4.1.0"
     glob "^7.1.6"
