@@ -42,6 +42,10 @@
       "packagePatterns": ["^@pob/eslint-config"]
     },
     {
+      "groupName": "yeoman group",
+      "packagePatterns": ["^yeoman-"]
+    },
+    {
       "updateTypes": ["patch", "minor"],
       "labels": [
         ":ok_hand: code/approved",
