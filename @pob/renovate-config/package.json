@@ -56,10 +56,6 @@
           ],
           "schedule": [
             "before 3am on Friday"
-          ],
-          "packagePatterns": [
-            "^@typescript-eslint/",
-            "^eslint-"
           ]
         },
         {
