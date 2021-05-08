@@ -51,8 +51,7 @@
             "@rollup/plugin-run",
             "pob-babel",
             "pob-lcov-reporter",
-            "standard-version",
-            "typedoc"
+            "standard-version"
           ],
           "schedule": [
             "before 3am on Friday"

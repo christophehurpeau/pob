@@ -20,6 +20,7 @@ const excludePkgNames = [
   'repository-check-dirty',
   'jest',
   'jest-junit-reporter',
+  'typedoc',
 ];
 
 const isEslintDep = (dep) =>
