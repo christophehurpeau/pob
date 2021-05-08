@@ -84,15 +84,17 @@ module.exports = class GitHooksGenerator extends Generator {
       packageUtils.addDevDependencies(pkg, ['@pob/commitlint-config']);
     }
 
-    delete pkg.scripts.commitmsg;
-    delete pkg.scripts.precommit;
-    delete pkg.scripts.prepublish;
-    delete pkg.scripts.prepare;
-    delete pkg.scripts.preparecommitmsg;
-    delete pkg.scripts.postcheckout;
-    delete pkg.scripts.postmerge;
-    delete pkg.scripts.postrewrite;
-    delete pkg.scripts.postpublish;
+    if (pkg.scripts) {
+      delete pkg.scripts.commitmsg;
+      delete pkg.scripts.precommit;
+      delete pkg.scripts.prepublish;
+      delete pkg.scripts.prepare;
+      delete pkg.scripts.preparecommitmsg;
+      delete pkg.scripts.postcheckout;
+      delete pkg.scripts.postmerge;
+      delete pkg.scripts.postrewrite;
+      delete pkg.scripts.postpublish;
+    }
     delete pkg['lint-staged'];
     delete pkg.husky;
 
