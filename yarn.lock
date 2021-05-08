@@ -4700,7 +4700,7 @@ execa@^1.0.0:
     signal-exit "^3.0.0"
     strip-eof "^1.0.0"
 
-execa@^4.0.0, execa@^4.0.3:
+execa@^4.0.0, execa@^4.0.3, execa@^4.1.0:
   version "4.1.0"
   resolved "https://registry.yarnpkg.com/execa/-/execa-4.1.0.tgz#4e5491ad1572f2f17a77d388c6c857135b22847a"
   integrity sha512-j5W0//W7f8UxAn8hXVnwG8tLwdiUy4FJLcSupCg6maBYZDpyBvTApK7KyuI4bKj8KOh1r2YH+6ucuYtJv1bTZA==
@@ -10861,7 +10861,7 @@ yeoman-generator@^2.0.1:
     through2 "^2.0.0"
     yeoman-environment "^2.0.5"
 
-yeoman-generator@^4.10.1, yeoman-generator@^4.8.2:
+yeoman-generator@^4.8.2:
   version "4.13.0"
   resolved "https://registry.yarnpkg.com/yeoman-generator/-/yeoman-generator-4.13.0.tgz#a6caeed8491fceea1f84f53e31795f25888b4672"
   integrity sha512-f2/5N5IR3M2Ozm+QocvZQudlQITv2DwI6Mcxfy7R7gTTzaKgvUpgo/pQMJ+WQKm0KN0YMWCFOZpj0xFGxevc1w==
@@ -10894,6 +10894,24 @@ yeoman-generator@^4.10.1, yeoman-generator@^4.8.2:
   optionalDependencies:
     grouped-queue "^1.1.0"
     yeoman-environment "^2.9.5"
+
+yeoman-generator@^5.0.0:
+  version "5.2.0"
+  resolved "https://registry.yarnpkg.com/yeoman-generator/-/yeoman-generator-5.2.0.tgz#0260d9472c87d6f32c394f9376900cbcfd6627ba"
+  integrity sha512-LCHaYrcgtC4NpYAkritCEteuDSjBdhsQNYrssZjnK0okRFvroMXDX4//CA1RfVsjCHKi4Df6lILOUYCRiYKG4g==
+  dependencies:
+    chalk "^4.1.0"
+    dargs "^7.0.0"
+    debug "^4.1.1"
+    execa "^4.1.0"
+    github-username "^6.0.0"
+    lodash "^4.17.11"
+    minimist "^1.2.5"
+    read-pkg-up "^7.0.1"
+    run-async "^2.0.0"
+    semver "^7.2.1"
+    shelljs "^0.8.4"
+    text-table "^0.2.0"
 
 yocto-queue@^0.1.0:
   version "0.1.0"
