@@ -43,6 +43,6 @@
     "babel-preset-optimizations": "^2.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.14.2"
+    "@babel/core": "7.14.3"
   }
 }
