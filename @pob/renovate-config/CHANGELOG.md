@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.6.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.5.1...@pob/renovate-config@2.6.0) (2021-06-24)
+
+
+### Bug Fixes
+
+* **renovage-config:** remove eslint from pob group ([98d0c28](https://github.com/christophehurpeau/pob/commit/98d0c2897e2e97dc08491b9b054b10965b6cb5e8))
+* **renovage-config:** remove typedoc from pob group ([39cecbc](https://github.com/christophehurpeau/pob/commit/39cecbc183be39485306bc9fba597ad4950beea8))
+* **renovate-config:** remove pob eslint configs from pob dependencies ([c1df448](https://github.com/christophehurpeau/pob/commit/c1df448b6e812e71f562876ad9107c0b3a48860e))
+
+
+### Features
+
+* **renovate-config:** add check-package-dependencies in auto update minor/patch ([2354150](https://github.com/christophehurpeau/pob/commit/23541507cfd3ba8a5949aa83582f0f96b41e768a))
+* **renovate-config:** auto update all minor/patch [@pob](https://github.com/pob) packages ([405787b](https://github.com/christophehurpeau/pob/commit/405787ba469ce76b3e411a0f61b0a9802dd088b1))
+
+
+
+
+
 ## [2.5.1](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.5.0...@pob/renovate-config@2.5.1) (2021-03-14)
 
 **Note:** Version bump only for package @pob/renovate-config

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@3.2.0...@pob/root@3.3.0) (2021-06-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @commitlint/cli to v12.1.3 ([#926](https://github.com/christophehurpeau/pob/issues/926)) ([087e883](https://github.com/christophehurpeau/pob/commit/087e883c14bec8e61d235651d8cc73ef9f829080))
+* **deps:** update dependency @commitlint/cli to v12.1.4 ([#928](https://github.com/christophehurpeau/pob/issues/928)) ([28a1930](https://github.com/christophehurpeau/pob/commit/28a193045a79a2439ba0effa17fc69ea873fe187))
+
+
+### Features
+
+* **deps:** update dependency @commitlint/cli to v12.1.1 ([#891](https://github.com/christophehurpeau/pob/issues/891)) ([2fe2fe6](https://github.com/christophehurpeau/pob/commit/2fe2fe6f1f0c09cc2716fa847ef71f7918c99997))
+* **deps:** update dependency lint-staged to v11 ([#920](https://github.com/christophehurpeau/pob/issues/920)) ([b11dd4e](https://github.com/christophehurpeau/pob/commit/b11dd4e0a538b042a598b6e8ac244ef2a027f4ce))
+* update pob eslint-config ([464f35a](https://github.com/christophehurpeau/pob/commit/464f35adef8c6afdde70dd95f41f64332ec836e9))
+
+
+
+
+
 # [3.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@3.1.1...@pob/root@3.2.0) (2021-03-14)
 
 

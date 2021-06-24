@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@2.1.0...@pob/commitlint-config@2.2.0) (2021-06-24)
+
+
+### Features
+
+* **deps:** update dependency @commitlint/config-conventional to ^12.0.1 ([#903](https://github.com/christophehurpeau/pob/issues/903)) ([1aaf440](https://github.com/christophehurpeau/pob/commit/1aaf44062bac0468a3023dab607906c28ea73865))
+
+
+
+
+
 # [2.1.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@2.0.1...@pob/commitlint-config@2.1.0) (2021-03-14)
 
 

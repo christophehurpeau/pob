@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.7.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@5.6.0...babel-preset-pob-env@5.7.0) (2021-06-24)
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.13.13 ([#882](https://github.com/christophehurpeau/pob/issues/882)) ([85d02dc](https://github.com/christophehurpeau/pob/commit/85d02dc3d16d0cf7c550ef78a4d032397b8c7f1a))
+* **deps:** update babel monorepo to v7.13.15 ([#895](https://github.com/christophehurpeau/pob/issues/895)) ([6f429fb](https://github.com/christophehurpeau/pob/commit/6f429fbccadb3a9ec8ec3fb5def1bf71931c98cd))
+* **deps:** update babel monorepo to v7.13.16 ([#906](https://github.com/christophehurpeau/pob/issues/906)) ([6df575c](https://github.com/christophehurpeau/pob/commit/6df575c67f3e20ba51d1f1d670d6453105dab06c))
+* **deps:** update babel monorepo to v7.14.0 ([#912](https://github.com/christophehurpeau/pob/issues/912)) ([ed3d4c4](https://github.com/christophehurpeau/pob/commit/ed3d4c43dfff0b23008807a7a475a5e6532b8cf9))
+* **deps:** update babel monorepo to v7.14.2 ([#927](https://github.com/christophehurpeau/pob/issues/927)) ([96f7bf4](https://github.com/christophehurpeau/pob/commit/96f7bf456c1d74343d13ea48232ff22c299287ec))
+* **deps:** update babel monorepo to v7.14.5 ([#958](https://github.com/christophehurpeau/pob/issues/958)) ([6e0b564](https://github.com/christophehurpeau/pob/commit/6e0b564772c16ab67ba183a7db30036160c8c6dc))
+* **deps:** update babel monorepo to v7.14.6 ([#961](https://github.com/christophehurpeau/pob/issues/961)) ([526de52](https://github.com/christophehurpeau/pob/commit/526de524e7d7c961edf9ba8b5c0764027c673a7b))
+* **deps:** update dependency @babel/core to v7.13.14 ([#887](https://github.com/christophehurpeau/pob/issues/887)) ([3a5b243](https://github.com/christophehurpeau/pob/commit/3a5b2430755675d0414c99f4680ee7b6d7648622))
+* **deps:** update dependency @babel/core to v7.14.3 ([#934](https://github.com/christophehurpeau/pob/issues/934)) ([b05fff6](https://github.com/christophehurpeau/pob/commit/b05fff62a69b4b0b957f70749ee89f642206655a))
+
+
+
+
+
 # [5.6.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@5.5.0...babel-preset-pob-env@5.6.0) (2021-03-14)
 
 

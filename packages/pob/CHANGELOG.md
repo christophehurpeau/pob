@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.12.0](https://github.com/christophehurpeau/pob/compare/pob@7.11.0...pob@7.12.0) (2021-06-24)
+
+
+### Bug Fixes
+
+* check pkg.scripts exists before deleting scripts ([5b9d377](https://github.com/christophehurpeau/pob/commit/5b9d377e58e14cff4ee2e861f7ffc27d93ac1769))
+* **pob:** monorepo without typescript ([d48a4df](https://github.com/christophehurpeau/pob/commit/d48a4df11de2faa25f872a1fd274576b5fba497a))
+* run build and docs if preversion script doesnt exists ([a93150c](https://github.com/christophehurpeau/pob/commit/a93150cb9a161e37c592c1f624ed620f401fe23c))
+
+
+### Features
+
+* add eslint-plugin-typescript in legacy dependencies ([2b289f6](https://github.com/christophehurpeau/pob/commit/2b289f65f41db385d89b0d05398a81f440f880c7))
+* change browserlist query ([75a531c](https://github.com/christophehurpeau/pob/commit/75a531cd8caa8cda2a680cedce693b7f04de5bb7))
+* update pob eslint-config ([464f35a](https://github.com/christophehurpeau/pob/commit/464f35adef8c6afdde70dd95f41f64332ec836e9))
+* **pob:** add scripts/check-package.js for non monorepo ([a9093a1](https://github.com/christophehurpeau/pob/commit/a9093a1678e8b6535659f8b18ca64d585e2ab1ee))
+* **pob:** when release-please used, remove manual release scripts ([67aeac7](https://github.com/christophehurpeau/pob/commit/67aeac77ac9b70337fd29fa78c9c192f65207cab))
+
+
+
+
+
 # [7.11.0](https://github.com/christophehurpeau/pob/compare/pob@7.10.1...pob@7.11.0) (2021-03-14)
 
 
