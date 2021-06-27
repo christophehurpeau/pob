@@ -5,10 +5,10 @@ const path = require('path');
 const findup = require('findup-sync');
 
 const lernaJsonPath = findup('lerna.json');
-const huskyConfigPath = findup('husky.config.js');
+const lintStagedConfigPath = findup('lint-staged.config.js');
 
-const rootMonorepo = huskyConfigPath
-  ? path.dirname(huskyConfigPath)
+const rootMonorepo = lintStagedConfigPath
+  ? path.dirname(lintStagedConfigPath)
   : undefined;
 
 const rootMonorepoPkg =
