@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.13.0](https://github.com/christophehurpeau/pob/compare/pob@7.12.0...pob@7.13.0) (2021-06-27)
+
+
+### Bug Fixes
+
+* remove husky dev dependency ([e29e189](https://github.com/christophehurpeau/pob/commit/e29e189bc186a5727f0d473657a0763e3dccf1e7))
+
+
+### Features
+
+* update browserslist config to drop safari 8 ([0c0ca02](https://github.com/christophehurpeau/pob/commit/0c0ca0201ad0ea1e5336b3d2fba549f124b2f6a1))
+
+
+
+
+
 # [7.12.0](https://github.com/christophehurpeau/pob/compare/pob@7.11.0...pob@7.12.0) (2021-06-24)
 
 

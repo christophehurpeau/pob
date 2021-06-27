@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@3.3.0...@pob/root@4.0.0) (2021-06-27)
+
+
+### Features
+
+* use husky 6 ([9270879](https://github.com/christophehurpeau/pob/commit/9270879af78b431cd872b5a8f0575a050710ccad))
+
+
+### BREAKING CHANGES
+
+* requires to remove husky from dev dependencies
+
+
+
+
+
 # [3.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@3.2.0...@pob/root@3.3.0) (2021-06-24)
 
 

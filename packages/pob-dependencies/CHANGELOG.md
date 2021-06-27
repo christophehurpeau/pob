@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.13.0...pob-dependencies@4.0.0) (2021-06-27)
+
+
+### Features
+
+* use husky 6 ([9270879](https://github.com/christophehurpeau/pob/commit/9270879af78b431cd872b5a8f0575a050710ccad))
+* **deps:** update dependency rollup to v2.52.3 ([#971](https://github.com/christophehurpeau/pob/issues/971)) ([e60d749](https://github.com/christophehurpeau/pob/commit/e60d7498cd8a453d50bf038d734bd712516973c8))
+* **deps:** update dependency typedoc to v0.21.1 ([#970](https://github.com/christophehurpeau/pob/issues/970)) ([766f5a3](https://github.com/christophehurpeau/pob/commit/766f5a365f65aa79166c057958c1a69ede7141fd))
+* **deps:** update dependency typedoc to v0.21.2 ([#972](https://github.com/christophehurpeau/pob/issues/972)) ([bca3250](https://github.com/christophehurpeau/pob/commit/bca3250be961019b8a2ad3f224929b645743b67b))
+
+
+### BREAKING CHANGES
+
+* requires to remove husky from dev dependencies
+
+
+
+
+
 # [3.13.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@3.12.0...pob-dependencies@3.13.0) (2021-06-24)
 
 

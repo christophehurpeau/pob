@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.6.0...@pob/renovate-config@3.0.0) (2021-06-27)
+
+
+### Features
+
+* use husky 6 ([9270879](https://github.com/christophehurpeau/pob/commit/9270879af78b431cd872b5a8f0575a050710ccad))
+
+
+### BREAKING CHANGES
+
+* requires to remove husky from dev dependencies
+
+
+
+
+
 # [2.6.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@2.5.1...@pob/renovate-config@2.6.0) (2021-06-24)
 
 
