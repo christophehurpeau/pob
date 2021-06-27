@@ -22,8 +22,9 @@ const spreadTest = { ...{
     test: 'spread'
   }
 };
+const operator = spreadTest === null || spreadTest === void 0 ? void 0 : spreadTest.toString();
 
-export { spreadTest, t };
+export { operator, spreadTest, t };
 "
 `;
 
@@ -49,8 +50,9 @@ const spreadTest = { ...{
     test: 'spread'
   }
 };
+const operator = spreadTest === null || spreadTest === void 0 ? void 0 : spreadTest.toString();
 
-export { spreadTest, t };
+export { operator, spreadTest, t };
 "
 `;
 
@@ -90,8 +92,9 @@ var t = new Test2(1, 2, 3);
 var spreadTest = _extends({}, {
   test: 'spread'
 });
+var operator = spreadTest == null ? void 0 : spreadTest.toString();
 
-export { spreadTest, t };
+export { operator, spreadTest, t };
 "
 `;
 
@@ -131,8 +134,9 @@ var t = new Test2(1, 2, 3);
 var spreadTest = _extends({}, {
   test: 'spread'
 });
+var operator = spreadTest == null ? void 0 : spreadTest.toString();
 
-export { spreadTest, t };
+export { operator, spreadTest, t };
 "
 `;
 
