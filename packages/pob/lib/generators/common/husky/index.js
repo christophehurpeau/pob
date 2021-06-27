@@ -45,7 +45,7 @@ module.exports = class GitHooksGenerator extends Generator {
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
-    packageUtils.addDevDependencies(pkg, ['husky']);
+    packageUtils.removeDevDependencies(pkg, ['husky']);
     if (pkg.name !== 'pob-monorepo') {
       packageUtils.removeDevDependencies(pkg, [
         '@pob/repo-config',
