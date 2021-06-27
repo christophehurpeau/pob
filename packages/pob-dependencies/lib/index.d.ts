@@ -11,7 +11,7 @@ interface Dependencies {
   '@pob/eslint-config-typescript-react': '43.2.0';
   '@pob/lerna-light': '3.24.0';
   '@pob/pretty-pkg': '2.1.0';
-  '@pob/root': '^3.3.0';
+  '@pob/root': '^4.0.0';
   '@rollup/plugin-run': '2.0.2';
   '@types/jest': '26.0.23';
   '@typescript-eslint/eslint-plugin': '4.28.0';
@@ -29,7 +29,7 @@ interface Dependencies {
   'eslint-plugin-unicorn': '29.0.0';
   jest: '26.6.3';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '^27.0.0';
+  'pob-babel': '^27.0.1';
   'pob-lcov-reporter': '4.0.1';
   prettier: '2.2.1';
   'repository-check-dirty': '2.0.1';

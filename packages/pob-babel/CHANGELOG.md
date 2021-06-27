@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.0.2](https://github.com/christophehurpeau/pob/compare/pob-babel@27.0.1...pob-babel@27.0.2) (2021-06-27)
+
+**Note:** Version bump only for package pob-babel
+
+
+
+
+
 ## [27.0.1](https://github.com/christophehurpeau/pob/compare/pob-babel@27.0.0...pob-babel@27.0.1) (2021-06-27)
 
 **Note:** Version bump only for package pob-babel

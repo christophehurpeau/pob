@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.14.0](https://github.com/christophehurpeau/pob/compare/pob@7.13.0...pob@7.14.0) (2021-06-27)
+
+
+### Bug Fixes
+
+* inLerna ([4bc7be4](https://github.com/christophehurpeau/pob/commit/4bc7be44a90490ce0e10355703ab6a858e2178fc))
+* remove husky.config.js template ([1b1ebeb](https://github.com/christophehurpeau/pob/commit/1b1ebeb544c5d4cc25e9e9b54b95a82d435d86b0))
+
+
+### Features
+
+* simplify browserlist ([74bfe82](https://github.com/christophehurpeau/pob/commit/74bfe82034dafb9044a370cce81b7f854a075eb9))
+
+
+
+
+
 # [7.13.0](https://github.com/christophehurpeau/pob/compare/pob@7.12.0...pob@7.13.0) (2021-06-27)
 
 
