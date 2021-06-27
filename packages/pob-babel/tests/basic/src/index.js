@@ -10,3 +10,5 @@ class Test2 extends Test {
 }
 
 export const t = new Test2(1, 2, 3);
+
+export const spreadTest = { ...{ test: 'spread' } };

@@ -10,6 +10,12 @@
         "formats": [
           "es"
         ]
+      },
+      {
+        "target": "browser",
+        "formats": [
+          "es"
+        ]
       }
     ]
   },

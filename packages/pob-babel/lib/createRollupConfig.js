@@ -23,10 +23,9 @@ module.exports = ({
   pkg = JSON.parse(readFileSync(`${cwd}/package.json`)),
   devPlugins = [],
   prodPlugins = [],
+  pobConfig = pkg.pob ||
+    JSON.parse(readFileSync(`${cwd}/.yo-rc.json`)).pob['pob-config'],
 } = {}) => {
-  const pobConfig =
-    pkg.pob || JSON.parse(readFileSync(`${cwd}/.yo-rc.json`)).pob['pob-config'];
-
   const isIndexBrowserEntry =
     pobConfig.entries[0] === 'index' && pobConfig.entries[1] === 'browser';
   const entries = isIndexBrowserEntry

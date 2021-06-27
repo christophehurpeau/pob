@@ -17,6 +17,7 @@ describe('fixtures', () => {
 
       configs.forEach((config, index) => {
         test(String(index), async () => {
+          // TODO: configure browserslist
           const bundle = await rollup.rollup(config);
           const {
             output: [{ code: actual }],
