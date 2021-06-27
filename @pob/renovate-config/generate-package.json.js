@@ -12,7 +12,6 @@ const excludePkgNames = [
   '@pob/commitlint-config',
   '@pob/pretty-pkg',
   '@pob/lerna-light',
-  'husky',
   'prettier',
   'typescript',
   'rollup',

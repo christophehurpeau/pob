@@ -95,7 +95,6 @@
           "packageNames": [
             "check-package-dependencies",
             "eslint",
-            "husky",
             "prettier",
             "lerna",
             "rollup",
