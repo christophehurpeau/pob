@@ -410,7 +410,7 @@ module.exports = class BabelGenerator extends Generator {
       }
     }
 
-    /* browserlist */
+    /* browserslist */
 
     if (hasTargetBrowser) {
       pkg.browserslist = [
@@ -421,6 +421,7 @@ module.exports = class BabelGenerator extends Generator {
         'last 2 Edge versions',
         'last 2 Safari versions',
         'not ie < 12',
+        'not safari < 10',
         'not ios_saf < 10',
         'not dead',
         'not op_mini all',
