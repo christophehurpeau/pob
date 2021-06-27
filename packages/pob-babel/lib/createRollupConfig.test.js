@@ -5,7 +5,7 @@ const rollup = require('rollup');
 const createRollupConfig = require('./createRollupConfig');
 
 describe('fixtures', () => {
-  const testsPath = `${__dirname}/../tests/`;
+  const testsPath = `${__dirname}/../test/`;
   const tests = fs.readdirSync(testsPath);
 
   tests.forEach((dirname) => {

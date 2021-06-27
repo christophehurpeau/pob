@@ -6,6 +6,7 @@
 /*.config.js
 .codeclimate.yml
 .yo-rc.json
+__snapshots__
 
 /.settings
 /.project
