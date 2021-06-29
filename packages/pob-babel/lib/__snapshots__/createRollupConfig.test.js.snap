@@ -140,6 +140,62 @@ export { operator, spreadTest, t };
 "
 `;
 
+exports[`fixtures basic 4 1`] = `
+"class Test {
+  constructor(...args) {
+    this.args = args;
+  }
+
+}
+
+console.log(\`the answer is \${42}\`);
+
+class Test2 extends Test {
+  constructor(...args) {
+    super(...args);
+  }
+
+}
+
+const t = new Test2(1, 2, 3);
+const spreadTest = { ...{
+    test: 'spread'
+  }
+};
+const operator = spreadTest === null || spreadTest === void 0 ? void 0 : spreadTest.toString();
+
+export { operator, spreadTest, t };
+"
+`;
+
+exports[`fixtures basic 5 1`] = `
+"class Test {
+  constructor(...args) {
+    this.args = args;
+  }
+
+}
+
+console.log(\`the answer is \${42}\`);
+
+class Test2 extends Test {
+  constructor(...args) {
+    super(...args);
+  }
+
+}
+
+const t = new Test2(1, 2, 3);
+const spreadTest = { ...{
+    test: 'spread'
+  }
+};
+const operator = spreadTest === null || spreadTest === void 0 ? void 0 : spreadTest.toString();
+
+export { operator, spreadTest, t };
+"
+`;
+
 exports[`fixtures react 0 1`] = `
 "import React from 'react';
 import { render } from 'react-dom';

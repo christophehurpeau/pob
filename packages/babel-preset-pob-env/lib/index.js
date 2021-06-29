@@ -138,6 +138,13 @@ module.exports = function (context, opts) {
           resolvePreset('babel-preset-modern-browsers'),
           { modules, loose, shippedProposals: true },
         ];
+        targetPlugins = [
+          // var foo = object.foo ?? "default";
+          require.resolve('@babel/plugin-proposal-nullish-coalescing-operator'),
+
+          // const baz = obj?.foo?.bar?.baz;
+          require.resolve('@babel/plugin-proposal-optional-chaining'),
+        ];
         // targetPreset = ['@babel/preset-env', { modules, loose }];
       } else {
         targetPreset = [
