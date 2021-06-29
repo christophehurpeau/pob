@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.7.1](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@5.7.0...babel-preset-pob-env@5.7.1) (2021-06-29)
+
+
+### Bug Fixes
+
+* **pob-babel:** bring back nullish-coalescing and optional-chaining plugins for webpack 4 support ([d3f3957](https://github.com/christophehurpeau/pob/commit/d3f3957875fef8a9896a79cb5b2cec8cf3b879a9))
+
+
+
+
+
 # [5.7.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@5.6.0...babel-preset-pob-env@5.7.0) (2021-06-24)
 
 

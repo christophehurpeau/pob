@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.0.3](https://github.com/christophehurpeau/pob/compare/pob-babel@27.0.2...pob-babel@27.0.3) (2021-06-29)
+
+
+### Bug Fixes
+
+* **pob-babel:** bring back nullish-coalescing and optional-chaining plugins for webpack 4 support ([d3f3957](https://github.com/christophehurpeau/pob/commit/d3f3957875fef8a9896a79cb5b2cec8cf3b879a9))
+* **pob-babel:** move test directory to avoid publishing it ([9dd45a0](https://github.com/christophehurpeau/pob/commit/9dd45a0c7595e402db0eba010b24d29897122cfb))
+
+
+
+
+
 ## [27.0.2](https://github.com/christophehurpeau/pob/compare/pob-babel@27.0.1...pob-babel@27.0.2) (2021-06-27)
 
 **Note:** Version bump only for package pob-babel
