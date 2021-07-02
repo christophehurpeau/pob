@@ -37,7 +37,7 @@
     "@pob/eslint-config-node": "43.2.0",
     "@pob/lerna-light": "file:./@pob/lerna-light",
     "check-package-dependencies": "1.2.5",
-    "eslint": "7.29.0",
+    "eslint": "7.30.0",
     "prettier": "2.2.1"
   }
 }
