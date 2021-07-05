@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@4.0.2...pob-dependencies@4.1.0) (2021-07-05)
+
+
+### Features
+
+* **deps:** update dependency eslint to v7.30.0 ([#981](https://github.com/christophehurpeau/pob/issues/981)) ([dc84fd6](https://github.com/christophehurpeau/pob/commit/dc84fd6f1c43a887878b589251e9b7bb64ed91d5))
+* **deps:** update dependency rollup to v2.52.4 ([#975](https://github.com/christophehurpeau/pob/issues/975)) ([7a3e5bc](https://github.com/christophehurpeau/pob/commit/7a3e5bcdd884f02ee96f84262886c37b8ccaecbb))
+* **deps:** update dependency rollup to v2.52.5 ([#977](https://github.com/christophehurpeau/pob/issues/977)) ([b2a4172](https://github.com/christophehurpeau/pob/commit/b2a4172b5986d46c71e4e15f060b77a32adef33c))
+* **deps:** update dependency rollup to v2.52.6 ([#978](https://github.com/christophehurpeau/pob/issues/978)) ([90b577d](https://github.com/christophehurpeau/pob/commit/90b577db3f4195f5f9ef6a2f74d76376b608f503))
+* **deps:** update dependency rollup to v2.52.7 ([#980](https://github.com/christophehurpeau/pob/issues/980)) ([ff32d8c](https://github.com/christophehurpeau/pob/commit/ff32d8c1818753308efa6d23939bd3d334b106b3))
+* **deps:** update dependency typescript to v4.3.5 ([#976](https://github.com/christophehurpeau/pob/issues/976)) ([4be7301](https://github.com/christophehurpeau/pob/commit/4be73018c054a2cb890effba5156c9853b3d5224))
+* **deps:** update typescript-eslint monorepo to v4.28.1 ([#974](https://github.com/christophehurpeau/pob/issues/974)) ([8d11190](https://github.com/christophehurpeau/pob/commit/8d111908e06897dbfac4d92f0535df746f81719b))
+* **deps:** update typescript-eslint monorepo to v4.28.2 ([#982](https://github.com/christophehurpeau/pob/issues/982)) ([627d503](https://github.com/christophehurpeau/pob/commit/627d503c07a9ca172e317035ffb5c132aaee4018))
+
+
+
+
+
 ## [4.0.2](https://github.com/christophehurpeau/pob/compare/pob-dependencies@4.0.1...pob-dependencies@4.0.2) (2021-06-29)
 
 **Note:** Version bump only for package pob-dependencies

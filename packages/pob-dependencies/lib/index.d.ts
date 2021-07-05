@@ -14,12 +14,12 @@ interface Dependencies {
   '@pob/root': '^4.0.0';
   '@rollup/plugin-run': '2.0.2';
   '@types/jest': '26.0.23';
-  '@typescript-eslint/eslint-plugin': '4.28.0';
-  '@typescript-eslint/parser': '4.28.0';
+  '@typescript-eslint/eslint-plugin': '4.28.2';
+  '@typescript-eslint/parser': '4.28.2';
   'babel-jest': '26.6.3';
   'babel-preset-latest-node': '5.5.1';
   'babel-preset-modern-browsers': '15.0.2';
-  eslint: '7.29.0';
+  eslint: '7.30.0';
   'eslint-import-resolver-node': '0.3.4';
   'eslint-plugin-import': '2.23.4';
   'eslint-plugin-jsx-a11y': '6.4.1';
@@ -29,15 +29,15 @@ interface Dependencies {
   'eslint-plugin-unicorn': '29.0.0';
   jest: '26.6.3';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '^27.0.2';
+  'pob-babel': '^27.0.3';
   'pob-lcov-reporter': '4.0.1';
   prettier: '2.2.1';
   'repository-check-dirty': '2.0.1';
-  rollup: '2.52.3';
+  rollup: '2.52.7';
   semver: '7.3.5';
   'standard-version': '9.3.0';
   typedoc: '0.21.2';
-  typescript: '4.3.4';
+  typescript: '4.3.5';
 }
 
 declare const dependencies: Dependencies;

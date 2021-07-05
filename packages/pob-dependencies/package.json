@@ -1,6 +1,6 @@
 {
   "name": "pob-dependencies",
-  "version": "4.0.2",
+  "version": "4.1.0",
   "description": "easier dependencies upgrade with a real package.json",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -42,7 +42,7 @@
     "@pob/eslint-config-typescript-react": "43.2.0",
     "@pob/lerna-light": "3.24.0",
     "@pob/pretty-pkg": "2.1.0",
-    "@pob/root": "^4.0.0",
+    "@pob/root": "^4.1.0",
     "@rollup/plugin-run": "2.0.2",
     "@types/jest": "26.0.23",
     "@typescript-eslint/eslint-plugin": "4.28.2",

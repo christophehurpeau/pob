@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@4.0.0...@pob/root@4.1.0) (2021-07-05)
+
+
+### Features
+
+* **@pob/root:** install push-renovate-prettier.yml ([95e825a](https://github.com/christophehurpeau/pob/commit/95e825a705eb503b0b14837bd708003d3d48699b))
+* **@pob/root:** remove unused cross-env dependency ([709f923](https://github.com/christophehurpeau/pob/commit/709f92361b68cf941756f210c2569c3ba0c593f7))
+* **deps:** update dependency husky to v7 ([#979](https://github.com/christophehurpeau/pob/issues/979)) ([74c0df9](https://github.com/christophehurpeau/pob/commit/74c0df965ed5a13d958fb7d0300b30acf16419a4))
+
+
+
+
+
 # [4.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@3.3.0...@pob/root@4.0.0) (2021-06-27)
 
 
