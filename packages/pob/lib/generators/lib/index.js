@@ -229,9 +229,7 @@ module.exports = class PobLibGenerator extends Generator {
       fs.mkdirSync(this.destinationPath('lib'), { recursive: true });
     }
 
-    if (!inLerna || inLerna.root) {
-      this.composeWith(require.resolve('../common/husky'), {});
-    }
+    this.composeWith(require.resolve('../common/husky'), {});
 
     this.composeWith(require.resolve('../common/old-dependencies'));
 
