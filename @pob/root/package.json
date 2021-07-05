@@ -29,7 +29,6 @@
     "@commitlint/cli": "12.1.4",
     "@pob/pretty-eslint-config": "^1.0.1",
     "@pob/pretty-pkg": "^2.1.0",
-    "cross-env": "^7.0.2",
     "husky": "^7.0.0",
     "lint-staged": "11.0.0",
     "repository-check-dirty": "^2.0.1",
