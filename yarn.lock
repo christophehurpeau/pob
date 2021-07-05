@@ -2078,6 +2078,20 @@
     "@lerna/run" "4.0.0"
     "@lerna/version" "4.0.0"
 
+"@pob/root@file:./@pob/root":
+  version "4.0.0"
+  dependencies:
+    "@commitlint/cli" "12.1.4"
+    "@pob/pretty-eslint-config" "^1.0.1"
+    "@pob/pretty-pkg" "^2.1.0"
+    husky "^7.0.0"
+    lint-staged "11.0.0"
+    repository-check-dirty "^2.0.1"
+    semver "^7.1.2"
+    which-pm-runs "1.0.0"
+    yarn-deduplicate "3.1.0"
+    yarnhook "^0.5.0"
+
 "@pob/use-eslint-plugin@^43.2.0":
   version "43.2.0"
   resolved "https://registry.yarnpkg.com/@pob/use-eslint-plugin/-/use-eslint-plugin-43.2.0.tgz#eacd18b5a0bcac047f5ded21f77952d1f2750306"
