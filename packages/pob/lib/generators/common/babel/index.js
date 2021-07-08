@@ -569,7 +569,9 @@ module.exports = class BabelGenerator extends Generator {
 
     /* webpack 5 and node with ESM support */
     if (useBabel) {
-      pkg.exports = {};
+      pkg.exports = {
+        './package.json': './package.json',
+      };
 
       this.entries.forEach((entry) => {
         const isBrowserOnly =
