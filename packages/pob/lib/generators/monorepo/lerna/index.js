@@ -192,7 +192,7 @@ module.exports = class LernaGenerator extends Generator {
         monorepoConfig.eslint &&
         // TODO yarn --cwd doesnt work inside script in package with yarn 2
         (this.packagesConfig.length < 25 || this.options.useYarn2)
-          ? 'eslint --report-unused-disable-directives --quiet --resolve-plugins-relative-to . --ext js,mjs,ts,tsx .'
+          ? 'eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet .'
           : 'lerna run --stream lint',
       preversion: [
         monorepoConfig &&
