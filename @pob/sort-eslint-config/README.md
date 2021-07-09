@@ -7,7 +7,7 @@
 </p>
 
 <p align="center">
-  <a href="https://npmjs.org/package/@pob/sort-pkg"><img src="https://img.shields.io/npm/v/@pob/sort-pkg.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/@pob/sort-eslint-config"><img src="https://img.shields.io/npm/v/@pob/sort-eslint-config.svg?style=flat-square"></a>
 </p>
 
 ## Install
