@@ -382,7 +382,13 @@ module.exports = class BabelGenerator extends Generator {
       switch (String(minNodeVersion)) {
         case '10':
         case '12':
-          pkg.engines.node = '>=12.10.0';
+          pkg.engines.node = '^12.20.0 || ^14.13.1 || >=16.0.0';
+          break;
+        case '14':
+          pkg.engines.node = '^14.13.1 || >=16.0.0';
+          break;
+        case '16':
+          pkg.engines.node = '>=16.0.0';
           break;
         default:
           throw new Error(`Invalid min node version: ${minNodeVersion}`);
@@ -407,6 +413,9 @@ module.exports = class BabelGenerator extends Generator {
       if (pkg.engines && useBabel) {
         delete pkg.engines.node;
         if (Object.keys(pkg.engines).length === 0) delete pkg.engines;
+      } else {
+        // Supported LTS versions of node, that supports ESM modules.
+        pkg.engines.node = '^12.20.0 || ^14.13.1 || >=16.0.0';
       }
     }
 
@@ -471,9 +480,9 @@ module.exports = class BabelGenerator extends Generator {
       if (!pkg.engines) pkg.engines = {};
       if (
         !pkg.engines.node ||
-        semver.lt(pkg.engines.node.slice(2), '12.10.0')
+        semver.lt(semver.minVersion(pkg.engines.node), '12.20.0')
       ) {
-        pkg.engines.node = '>=12.10.0';
+        pkg.engines.node = '^12.20.0 || ^14.13.1 || >=16.0.0';
       }
     }
 
