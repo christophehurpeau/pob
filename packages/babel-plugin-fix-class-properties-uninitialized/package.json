@@ -12,7 +12,7 @@
   },
   "homepage": "https://github.com/christophehurpeau/pob",
   "engines": {
-    "node": ">=12.10.0"
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
   },
   "main": "./lib/index.js",
   "sideEffects": false,
