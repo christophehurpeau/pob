@@ -18,6 +18,7 @@ module.exports = function sortPkg(pkg) {
     'homepage',
     'bugs',
     'preferGlobal',
+    'type',
     'engines',
     'engineStrict',
     'os',
