@@ -273,24 +273,31 @@ module.exports = class LintGenerator extends Generator {
         if (pkg.name === '@pob/eslint-config-monorepo') {
           return [
             './@pob/eslint-config/root.js',
+            pkg.type === 'commonjs' ? './@pob/eslint-config/commonjs' : null,
             './@pob/eslint-config-node/lib/index.js',
-          ];
+          ].filter(Boolean);
         }
         return [
           '../eslint-config/root.js',
+          pkg.type === 'commonjs' ? '../eslint-config/commonjs.js' : null,
           '../eslint-config-node/lib/index.js',
-        ];
+        ].filter(Boolean);
       }
 
-      return ['@pob/eslint-config/root', '@pob/eslint-config-node'];
+      return [
+        '@pob/eslint-config/root',
+        pkg.type === 'commonjs' ? '@pob/eslint-config/commonjs' : null,
+        '@pob/eslint-config-node',
+      ].filter(Boolean);
     })();
 
     const extendsConfigSrc = (() => {
       if (isPobEslintConfig) {
         return [
           '../../eslint-config/lib/index.js',
+          pkg.type === 'commonjs' ? '../../eslint-config/commonjs.js' : null,
           '../../eslint-config-node/lib/index.js',
-        ];
+        ].filter(Boolean);
       }
 
       if (useBabel) {
@@ -301,7 +308,11 @@ module.exports = class LintGenerator extends Generator {
         ].filter(Boolean);
       }
 
-      return ['@pob/eslint-config', '@pob/eslint-config-node'];
+      return [
+        '@pob/eslint-config',
+        pkg.type === 'commonjs' ? '@pob/eslint-config/commonjs' : null,
+        '@pob/eslint-config-node',
+      ].filter(Boolean);
     })();
 
     // eslint-disable-next-line unicorn/no-nested-ternary
