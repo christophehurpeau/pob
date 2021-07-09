@@ -154,7 +154,11 @@ module.exports = class LernaGenerator extends Generator {
       delete pkg.engines.yarn;
     }
 
-    packageUtils.addDevDependencies(pkg, ['@pob/lerna-light']);
+    if (pkg.name === 'pob-monorepo') {
+      pkg.devDependencies['@pob/lerna-light'] = 'file:./@pob/lerna-light';
+    } else {
+      packageUtils.addDevDependencies(pkg, ['@pob/lerna-light']);
+    }
 
     if (pkg.name !== 'pob-monorepo') {
       packageUtils.addDevDependencies(pkg, ['repository-check-dirty']);
