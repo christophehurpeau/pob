@@ -20,7 +20,8 @@
   "scripts": {
     "build": "yarn run build:definitions",
     "build:definitions": "tsc --lib esnext --noEmit --skipLibCheck ./lib/index.d.ts",
-    "lint:eslint": "yarn --cwd ../.. eslint --report-unused-disable-directives --quiet packages/pob-dependencies",
+    "lint": "yarn run lint:eslint",
+    "lint:eslint": "yarn --cwd ../.. run eslint --report-unused-disable-directives --quiet packages/pob-dependencies",
     "preversion": "node ./scripts/update-peerdeps.js && node ./scripts/generate.d.ts.js && git add lib/index.d.ts"
   },
   "prettier": {

@@ -23,7 +23,8 @@
     "pretty-eslint-config": "./bin/pretty-eslint-config.js"
   },
   "scripts": {
-    "lint:eslint": "yarn --cwd ../.. eslint --report-unused-disable-directives --quiet @pob/pretty-eslint-config"
+    "lint": "yarn run lint:eslint",
+    "lint:eslint": "yarn --cwd ../.. run eslint --report-unused-disable-directives --quiet @pob/pretty-eslint-config"
   },
   "prettier": {
     "trailingComma": "all",

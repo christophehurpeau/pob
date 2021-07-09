@@ -17,7 +17,8 @@
   "main": "./lib/index.js",
   "sideEffects": false,
   "scripts": {
-    "lint:eslint": "yarn --cwd ../.. eslint --report-unused-disable-directives --quiet packages/pob-lcov-reporter"
+    "lint": "yarn run lint:eslint",
+    "lint:eslint": "yarn --cwd ../.. run eslint --report-unused-disable-directives --quiet packages/pob-lcov-reporter"
   },
   "prettier": {
     "trailingComma": "all",

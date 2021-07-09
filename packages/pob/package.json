@@ -26,7 +26,8 @@
   },
   "scripts": {
     "format": "prettier --write",
-    "lint:eslint": "yarn --cwd ../.. eslint --report-unused-disable-directives --quiet packages/pob"
+    "lint": "yarn run lint:eslint",
+    "lint:eslint": "yarn --cwd ../.. run eslint --report-unused-disable-directives --quiet packages/pob"
   },
   "prettier": {
     "trailingComma": "all",

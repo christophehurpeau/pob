@@ -23,7 +23,8 @@
     "lerna": "bin/cli.js"
   },
   "scripts": {
-    "lint:eslint": "yarn --cwd ../.. eslint --report-unused-disable-directives --quiet @pob/lerna-light"
+    "lint": "yarn run lint:eslint",
+    "lint:eslint": "yarn --cwd ../.. run eslint --report-unused-disable-directives --quiet @pob/lerna-light"
   },
   "prettier": {
     "trailingComma": "all",
