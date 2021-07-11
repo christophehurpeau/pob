@@ -32,7 +32,7 @@
   },
   "pob": {},
   "peerDependencies": {
-    "jest": "^26.0.1"
+    "jest": "^26.0.1 || ^27.0.6"
   },
   "dependencies": {
     "istanbul-reports": "^3.0.2"
