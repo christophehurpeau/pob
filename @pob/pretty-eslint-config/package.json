@@ -1,6 +1,6 @@
 {
   "name": "@pob/pretty-eslint-config",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "prettier and sort eslint config",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",

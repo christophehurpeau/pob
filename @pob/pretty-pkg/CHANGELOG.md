@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@3.0.0...@pob/pretty-pkg@3.1.0) (2021-07-11)
+
+
+### Features
+
+* use yarn berry by default, add nodeLinker option ([dd69f07](https://github.com/christophehurpeau/pob/commit/dd69f07bea029aff1c3a5f1d22f5981cbbee3539))
+
+
+
+
+
 # [3.0.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@2.1.0...@pob/pretty-pkg@3.0.0) (2021-07-11)
 
 

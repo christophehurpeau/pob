@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.0.1...@pob/root@5.1.0) (2021-07-11)
+
+
+### Bug Fixes
+
+* **@pob/root:** pkg.bin can be a string ([7f755fb](https://github.com/christophehurpeau/pob/commit/7f755fb997f245e06817e4cd692b6e897468be86))
+* use yarnhook with node-modules linker ([e4938f4](https://github.com/christophehurpeau/pob/commit/e4938f43f6632654ee32db3eacd7a43e130fa2db))
+* **@pob/root:** use PROJECT_CWD in postinstall script when available ([49996bc](https://github.com/christophehurpeau/pob/commit/49996bc4e88ea748e6c2f5dc749b8159417762ea))
+
+
+### Features
+
+* create typedoc renovate update workflow ([7a64173](https://github.com/christophehurpeau/pob/commit/7a641738cb40c34170bde3d9911400e5298d64c8))
+
+
+
+
+
 ## [5.0.1](https://github.com/christophehurpeau/pob/compare/@pob/root@5.0.0...@pob/root@5.0.1) (2021-07-11)
 
 **Note:** Version bump only for package @pob/root

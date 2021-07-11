@@ -9,7 +9,7 @@ interface Dependencies {
   '@pob/eslint-config-typescript-react': '45.0.2';
   '@pob/lerna-light': '^4.0.0';
   '@pob/pretty-pkg': '^3.0.0';
-  '@pob/root': '^5.0.0';
+  '@pob/root': '^5.0.1';
   '@rollup/plugin-run': '2.0.2';
   '@types/jest': '26.0.24';
   '@typescript-eslint/eslint-plugin': '4.28.2';
@@ -30,7 +30,7 @@ interface Dependencies {
   'pob-babel': '^28.0.2';
   'pob-lcov-reporter': '^5.0.0';
   prettier: '2.2.1';
-  'repository-check-dirty': '^3.0.0';
+  'repository-check-dirty': '^3.0.1';
   rollup: '2.53.0';
   semver: '7.3.5';
   'standard-version': '9.3.0';

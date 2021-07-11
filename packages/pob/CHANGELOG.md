@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/christophehurpeau/pob/compare/pob@8.0.3...pob@8.1.0) (2021-07-11)
+
+
+### Bug Fixes
+
+* **pob:** keep setting main field for eslint ([d359bb1](https://github.com/christophehurpeau/pob/commit/d359bb15c68bc7dba9ad4bd9a07d0516d01384b5))
+
+
+### Features
+
+* use yarn berry by default, add nodeLinker option ([dd69f07](https://github.com/christophehurpeau/pob/commit/dd69f07bea029aff1c3a5f1d22f5981cbbee3539))
+
+
+
+
+
 ## [8.0.3](https://github.com/christophehurpeau/pob/compare/pob@8.0.2...pob@8.0.3) (2021-07-11)
 
 
