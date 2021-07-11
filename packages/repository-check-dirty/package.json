@@ -18,6 +18,7 @@
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
+    "./bin/repository-check-dirty.js": "./bin/repository-check-dirty.js",
     "./package.json": "./package.json"
   },
   "sideEffects": false,
