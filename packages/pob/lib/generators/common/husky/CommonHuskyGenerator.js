@@ -61,8 +61,8 @@ export default class CommonHuskyGenerator extends Generator {
         // });
 
         this.fs.copy(
-          this.templatePath('lint-staged.config.mjs.txt'),
-          this.destinationPath('lint-staged.config.mjs'),
+          this.templatePath('lint-staged.config.cjs.txt'),
+          this.destinationPath('lint-staged.config.cjs'),
         );
       }
 
@@ -90,9 +90,7 @@ export default class CommonHuskyGenerator extends Generator {
         '@pob/root',
         '@pob/commitlint-config',
       ]);
-      if (this.fs.exists(this.destinationPath('lint-staged.config.js'))) {
-        this.fs.delete(this.destinationPath('lint-staged.config.js'));
-      }
+      this.fs.delete(this.destinationPath('lint-staged.config.cjs'));
 
       delete pkg.commitlint;
     }

@@ -4,10 +4,12 @@ import findup from 'findup-sync';
 
 const lernaJsonPath = findup('lerna.json');
 const lintStagedConfigPath = findup('lint-staged.config.js');
+const lintStagedConfigCjsPath = findup('lint-staged.config.cjs');
 
-const rootMonorepo = lintStagedConfigPath
-  ? path.dirname(lintStagedConfigPath)
-  : undefined;
+const rootMonorepo =
+  lintStagedConfigPath || lintStagedConfigCjsPath
+    ? path.dirname(lintStagedConfigPath || lintStagedConfigCjsPath)
+    : undefined;
 
 const rootMonorepoPkg =
   rootMonorepo &&
