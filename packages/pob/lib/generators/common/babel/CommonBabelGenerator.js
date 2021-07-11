@@ -597,6 +597,8 @@ export default class CommonBabelGenerator extends Generator {
               exportTarget.development = `./dist/${entryDistName}-${target}${version}-dev.cjs.js`;
               exportTarget.default = `./dist/${entryDistName}-${target}${version}.cjs.js`;
             }
+            // https://github.com/benmosher/eslint-plugin-import/issues/2132
+            if (!pkg.main) pkg.main = exportTarget.default;
           } else if (target === 'browser') {
             if (formats.includes('es')) {
               exportTarget.development.import = `./dist/${entryDistName}-${target}${
