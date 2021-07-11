@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [28.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@27.0.3...pob-babel@28.0.0) (2021-07-11)
+
+
+### Bug Fixes
+
+* pob-babel createRollupConfig export ([d3c3ee7](https://github.com/christophehurpeau/pob/commit/d3c3ee797f7ec333e1074b690e2e380c51c78606))
+* stop using --experimental-json-modules, replace with cjs helper ([7eb0dcd](https://github.com/christophehurpeau/pob/commit/7eb0dcd0310a85a39b92238e85ce42cc4c4686e0))
+
+
+### Features
+
+* adapt for esm modules ([1a61dca](https://github.com/christophehurpeau/pob/commit/1a61dcafefd4f00e4ea98b75fce0404bf2fa6460))
+* change min node supported to ESM supported versions ([9db0319](https://github.com/christophehurpeau/pob/commit/9db031908e73eb08863685f428043dc17b3f08c2))
+* **deps:** update dependency @types/jest to v26.0.24 ([#983](https://github.com/christophehurpeau/pob/issues/983)) ([d4604cc](https://github.com/christophehurpeau/pob/commit/d4604cc7374bd9d00a79c790fc1886514aa5988f))
+
+
+### BREAKING CHANGES
+
+* esm support changes
+* modified node engines: ^12.20.0 || ^14.13.1 || >=16.0.0
+
+see https://github.com/sindresorhus/meta/discussions/15
+
+
+
+
+
 ## [27.0.3](https://github.com/christophehurpeau/pob/compare/pob-babel@27.0.2...pob-babel@27.0.3) (2021-06-29)
 
 

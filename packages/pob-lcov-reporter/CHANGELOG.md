@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@4.0.1...pob-lcov-reporter@5.0.0) (2021-07-11)
+
+
+### Bug Fixes
+
+* **pob-lcov-reporter:** allow jest 27 ([35a22e2](https://github.com/christophehurpeau/pob/commit/35a22e27649bdc947f9028544471aaf33989b990))
+
+
+### Features
+
+* adapt for esm modules ([1a61dca](https://github.com/christophehurpeau/pob/commit/1a61dcafefd4f00e4ea98b75fce0404bf2fa6460))
+* change min node supported to ESM supported versions ([9db0319](https://github.com/christophehurpeau/pob/commit/9db031908e73eb08863685f428043dc17b3f08c2))
+
+
+### BREAKING CHANGES
+
+* esm support changes
+* modified node engines: ^12.20.0 || ^14.13.1 || >=16.0.0
+
+see https://github.com/sindresorhus/meta/discussions/15
+
+
+
+
+
 ## [4.0.1](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@4.0.0...pob-lcov-reporter@4.0.1) (2020-11-15)
 
 **Note:** Version bump only for package pob-lcov-reporter

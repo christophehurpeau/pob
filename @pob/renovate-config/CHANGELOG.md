@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.0.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@3.0.3...@pob/renovate-config@4.0.0) (2021-07-11)
+
+
+### Bug Fixes
+
+* **renovate-config:** add type ([3b94a41](https://github.com/christophehurpeau/pob/commit/3b94a416af57f2a220b71552abc131a961a88b27))
+* **renovate-config:** fix import of pob-dependencies package.json ([4febefe](https://github.com/christophehurpeau/pob/commit/4febefe50910b3c0b4202d81018cfea323b26efb))
+
+
+### Features
+
+* adapt for esm modules ([1a61dca](https://github.com/christophehurpeau/pob/commit/1a61dcafefd4f00e4ea98b75fce0404bf2fa6460))
+
+
+### BREAKING CHANGES
+
+* esm support changes
+
+
+
+
+
 ## [3.0.3](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@3.0.2...@pob/renovate-config@3.0.3) (2021-07-05)
 
 **Note:** Version bump only for package @pob/renovate-config

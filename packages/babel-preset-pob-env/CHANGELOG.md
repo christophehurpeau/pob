@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@5.7.1...babel-preset-pob-env@6.0.0) (2021-07-11)
+
+
+### Features
+
+* adapt for esm modules ([1a61dca](https://github.com/christophehurpeau/pob/commit/1a61dcafefd4f00e4ea98b75fce0404bf2fa6460))
+* change min node supported to ESM supported versions ([9db0319](https://github.com/christophehurpeau/pob/commit/9db031908e73eb08863685f428043dc17b3f08c2))
+
+
+### BREAKING CHANGES
+
+* esm support changes
+* modified node engines: ^12.20.0 || ^14.13.1 || >=16.0.0
+
+see https://github.com/sindresorhus/meta/discussions/15
+
+
+
+
+
 ## [5.7.1](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@5.7.0...babel-preset-pob-env@5.7.1) (2021-06-29)
 
 

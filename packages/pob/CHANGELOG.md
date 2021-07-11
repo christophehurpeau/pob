@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/christophehurpeau/pob/compare/pob@7.14.2...pob@8.0.0) (2021-07-11)
+
+
+### Bug Fixes
+
+* **pob:** better babel config ([4f8a65c](https://github.com/christophehurpeau/pob/commit/4f8a65c41521f7631d2a4ab610fb487dbb14f58a))
+* **pob:** move babel.config.js to babel.config.cjs ([e092f74](https://github.com/christophehurpeau/pob/commit/e092f74a39d27c359a53436895bc4009737ba515))
+* **pob:** move lint-staged.config.js to lint-staged.config.cjs ([4d6a410](https://github.com/christophehurpeau/pob/commit/4d6a410a525ca15ece8e46a483f1c29b02358506))
+* mem-fs dependency ([d9b0862](https://github.com/christophehurpeau/pob/commit/d9b086257a8ecde6fd5bcbc0101d2daa810b240d))
+* pob-babel createRollupConfig export ([d3c3ee7](https://github.com/christophehurpeau/pob/commit/d3c3ee797f7ec333e1074b690e2e380c51c78606))
+* support no es export ([acbeaa8](https://github.com/christophehurpeau/pob/commit/acbeaa8358125f29a5d334400aa00401e5d0931d))
+* **pob:** clean non root package for root stuff ([d8f3f10](https://github.com/christophehurpeau/pob/commit/d8f3f1049d4d84f3ad32724ca75c83196ae151e1))
+* **pob:** import lerna-light in pob-monorepo ([24f821c](https://github.com/christophehurpeau/pob/commit/24f821ca415f40bb0d2b57ba8a7d471579d2ac22))
+
+
+### Features
+
+* adapt for esm modules ([1a61dca](https://github.com/christophehurpeau/pob/commit/1a61dcafefd4f00e4ea98b75fce0404bf2fa6460))
+* **pob:** ci matrix use node 16 instead of 15 ([2f44999](https://github.com/christophehurpeau/pob/commit/2f44999bc258e9678e52c7bc95bf00fa89797a43))
+* **pob:** support explicit commonjs config for eslint ([cb3d693](https://github.com/christophehurpeau/pob/commit/cb3d69356e5773e42e66cba53d677e42073a7be4))
+* change min node supported to ESM supported versions ([9db0319](https://github.com/christophehurpeau/pob/commit/9db031908e73eb08863685f428043dc17b3f08c2))
+* **pob:** update min node version to supported ESM ([df73d6b](https://github.com/christophehurpeau/pob/commit/df73d6b38b8533153aa09ddfedbf7c8ffcebe79c))
+* **pob:** with eslint 7 no need to specify ext ([68a3d6c](https://github.com/christophehurpeau/pob/commit/68a3d6c619d6ebd36b985888b368923e36fc8d77))
+* exports package.json by default ([3549e29](https://github.com/christophehurpeau/pob/commit/3549e29c381ba8381ad1009c01bd363c689d7cf2))
+
+
+### BREAKING CHANGES
+
+* esm support changes
+* modified node engines: ^12.20.0 || ^14.13.1 || >=16.0.0
+
+see https://github.com/sindresorhus/meta/discussions/15
+
+
+
+
+
 ## [7.14.2](https://github.com/christophehurpeau/pob/compare/pob@7.14.1...pob@7.14.2) (2021-07-05)
 
 **Note:** Version bump only for package pob

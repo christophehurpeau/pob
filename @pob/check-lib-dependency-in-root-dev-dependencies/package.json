@@ -1,6 +1,6 @@
 {
   "name": "@pob/check-lib-dependency-in-root-dev-dependencies",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Checks an lib dependency in root dev dependency. Ensures you have the version you want ! Very useful with yarn berry.",
   "keywords": [
     "commitlint"

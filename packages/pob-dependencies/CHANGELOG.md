@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@4.1.0...pob-dependencies@5.0.0) (2021-07-11)
+
+
+### Features
+
+* adapt for esm modules ([1a61dca](https://github.com/christophehurpeau/pob/commit/1a61dcafefd4f00e4ea98b75fce0404bf2fa6460))
+* **deps:** update @pob/eslint-config to v44 ([f52f35b](https://github.com/christophehurpeau/pob/commit/f52f35b88b4b40667532926ffe679efd9e8d2be9))
+* change min node supported to ESM supported versions ([9db0319](https://github.com/christophehurpeau/pob/commit/9db031908e73eb08863685f428043dc17b3f08c2))
+* **deps:** update dependency @types/jest to v26.0.24 ([#983](https://github.com/christophehurpeau/pob/issues/983)) ([d4604cc](https://github.com/christophehurpeau/pob/commit/d4604cc7374bd9d00a79c790fc1886514aa5988f))
+* **deps:** update dependency rollup to v2.52.8 ([#984](https://github.com/christophehurpeau/pob/issues/984)) ([be5f130](https://github.com/christophehurpeau/pob/commit/be5f1303914e7bfc26406793e927f18a7214c1a5))
+* **deps:** update dependency rollup to v2.53.0 ([#986](https://github.com/christophehurpeau/pob/issues/986)) ([6a644c6](https://github.com/christophehurpeau/pob/commit/6a644c6669b6871e313093a43810fa18a0b047ca))
+
+
+### BREAKING CHANGES
+
+* esm support changes
+* modified node engines: ^12.20.0 || ^14.13.1 || >=16.0.0
+
+see https://github.com/sindresorhus/meta/discussions/15
+
+
+
+
+
 # [4.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@4.0.2...pob-dependencies@4.1.0) (2021-07-05)
 
 

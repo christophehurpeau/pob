@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@4.1.0...@pob/root@5.0.0) (2021-07-11)
+
+
+### Features
+
+* adapt for esm modules ([1a61dca](https://github.com/christophehurpeau/pob/commit/1a61dcafefd4f00e4ea98b75fce0404bf2fa6460))
+
+
+### BREAKING CHANGES
+
+* esm support changes
+
+
+
+
+
 # [4.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@4.0.0...@pob/root@4.1.0) (2021-07-05)
 
 
