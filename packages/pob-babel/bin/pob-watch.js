@@ -1,17 +1,17 @@
-#!/usr/bin/env node --experimental-json-modules
+#!/usr/bin/env node
 
 import { spawnSync } from 'child_process';
 import path from 'path';
 import argv from 'minimist-argv';
-import rollup from 'rollup';
+import { VERSION as rollupVersion } from 'rollup';
 import semver from 'semver';
-import pkg from '../package.json';
+import { pkg } from './helper.cjs';
 
 const requiredRollupVersion = pkg.peerDependencies.rollup.slice(1);
 
-if (semver.lt(rollup.VERSION, requiredRollupVersion)) {
+if (semver.lt(rollupVersion, requiredRollupVersion)) {
   console.error(
-    `Invalid rollup version: ${rollup.VERSION}. Expecting >= ${requiredRollupVersion}`,
+    `Invalid rollup version: ${rollupVersion}. Expecting >= ${requiredRollupVersion}`,
   );
 }
 if (argv.clean !== false) {
