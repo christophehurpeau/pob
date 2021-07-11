@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.1](https://github.com/christophehurpeau/pob/compare/pob@8.0.0...pob@8.0.1) (2021-07-11)
+
+
+### Bug Fixes
+
+* update github required status checks ([be1312e](https://github.com/christophehurpeau/pob/commit/be1312e5e708af0ea6b5f9fd17fd5cfd3704f402))
+
+
+
+
+
 # [8.0.0](https://github.com/christophehurpeau/pob/compare/pob@7.14.2...pob@8.0.0) (2021-07-11)
 
 
