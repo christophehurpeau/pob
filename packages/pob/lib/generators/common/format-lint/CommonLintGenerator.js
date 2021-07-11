@@ -129,11 +129,6 @@ export default class CommonLintGenerator extends Generator {
       if (pkg.devDependencies['@pob/eslint-config-babel']) {
         packageUtils.addDevDependencies(pkg, ['@pob/eslint-config-typescript']);
       }
-      if (pkg.devDependencies['@pob/eslint-config-babel-node']) {
-        packageUtils.addDevDependencies(pkg, [
-          '@pob/eslint-config-typescript-node',
-        ]);
-      }
     }
 
     packageUtils.removeDevDependencies(pkg, [
@@ -293,7 +288,7 @@ export default class CommonLintGenerator extends Generator {
       if (useBabel) {
         return [
           '@pob/eslint-config-typescript',
-          useNodeOnly && '@pob/eslint-config-typescript-node',
+          useNodeOnly && '@pob/eslint-config-typescript/node',
           hasReact && '@pob/eslint-config-typescript-react',
         ].filter(Boolean);
       }
