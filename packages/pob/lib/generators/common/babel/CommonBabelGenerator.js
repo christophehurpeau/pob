@@ -588,11 +588,14 @@ export default class CommonBabelGenerator extends Generator {
             if (formats.includes('es')) {
               exportTarget.development.import = `./dist/${entryDistName}-${target}${version}-dev.mjs`;
               exportTarget.import = `./dist/${entryDistName}-${target}${version}.mjs`;
-            }
 
-            if (formats.includes('cjs')) {
-              exportTarget.development.require = `./dist/${entryDistName}-${target}${version}-dev.cjs.js`;
-              exportTarget.require = `./dist/${entryDistName}-${target}${version}.cjs.js`;
+              if (formats.includes('cjs')) {
+                exportTarget.development.require = `./dist/${entryDistName}-${target}${version}-dev.cjs.js`;
+                exportTarget.require = `./dist/${entryDistName}-${target}${version}.cjs.js`;
+              }
+            } else if (formats.includes('cjs')) {
+              exportTarget.development = `./dist/${entryDistName}-${target}${version}-dev.cjs.js`;
+              exportTarget.default = `./dist/${entryDistName}-${target}${version}.cjs.js`;
             }
           } else if (target === 'browser') {
             if (formats.includes('es')) {
