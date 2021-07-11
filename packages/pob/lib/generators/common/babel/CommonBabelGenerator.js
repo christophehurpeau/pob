@@ -718,6 +718,13 @@ export default class CommonBabelGenerator extends Generator {
     this.fs.delete('.babelrc');
     this.fs.delete('babel.config.json');
     this.fs.delete('babel.config.mjs');
+    if (this.fs.exists(this.destinationPath('babel.config.js'))) {
+      this.fs.move(
+        this.destinationPath('babel.config.js'),
+        this.destinationPath('babel.config.cjs'),
+      );
+    }
+
     if (useBabel && this.options.testing) {
       // cjs for jest compat
       this.fs.copyTpl(
