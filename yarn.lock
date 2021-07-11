@@ -3002,7 +3002,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pob/lerna-light@^4.0.0, @pob/lerna-light@workspace:@pob/lerna-light":
+"@pob/lerna-light@^4.0.0, @pob/lerna-light@workspace:*, @pob/lerna-light@workspace:@pob/lerna-light":
   version: 0.0.0-use.local
   resolution: "@pob/lerna-light@workspace:@pob/lerna-light"
   dependencies:
@@ -3016,22 +3016,6 @@ __metadata:
     lerna: bin/cli.js
   languageName: unknown
   linkType: soft
-
-"@pob/lerna-light@file:./@pob/lerna-light::locator=pob-monorepo%40workspace%3A.":
-  version: 4.0.0
-  resolution: "@pob/lerna-light@file:./@pob/lerna-light#./@pob/lerna-light::hash=7c87b2&locator=pob-monorepo%40workspace%3A."
-  dependencies:
-    "@lerna/changed": 4.0.0
-    "@lerna/cli": 4.0.0
-    "@lerna/exec": 4.0.0
-    "@lerna/publish": 4.0.0
-    "@lerna/run": 4.0.0
-    "@lerna/version": 4.0.0
-  bin:
-    lerna: bin/cli.js
-  checksum: fb7a5975dcf187649222c95eb01e26e0e294eed7b3a18736925d73732bd2ef27d6e4da02b544780a4c610dd73d0b54b3a309e281c5d8b0b5b9013c846563cc2f
-  languageName: node
-  linkType: hard
 
 "@pob/pretty-eslint-config@^2.0.0, @pob/pretty-eslint-config@workspace:@pob/pretty-eslint-config":
   version: 0.0.0-use.local
@@ -3064,7 +3048,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/root@^5.0.1, @pob/root@workspace:@pob/root":
+"@pob/root@^5.0.1, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -3088,32 +3072,6 @@ __metadata:
     yarnhook: ./bin/yarnhook.js
   languageName: unknown
   linkType: soft
-
-"@pob/root@file:./@pob/root::locator=pob-monorepo%40workspace%3A.":
-  version: 5.0.1
-  resolution: "@pob/root@file:./@pob/root#./@pob/root::hash=2d877a&locator=pob-monorepo%40workspace%3A."
-  dependencies:
-    "@commitlint/cli": 12.1.4
-    "@pob/pretty-eslint-config": ^2.0.0
-    "@pob/pretty-pkg": ^3.0.0
-    husky: ^7.0.0
-    lint-staged: 11.0.0
-    repository-check-dirty: ^3.0.1
-    semver: ^7.1.2
-    which-pm-runs: 1.0.0
-    yarn-deduplicate: 3.1.0
-    yarnhook: ^0.5.0
-  bin:
-    commitlint: ./bin/commitlint.js
-    lint-staged: ./bin/lint-staged.js
-    pob-root-postinstall: ./bin/pob-root-postinstall.js
-    pretty-eslint-config: ./bin/pretty-eslint-config.mjs
-    pretty-pkg: ./bin/pretty-pkg.mjs
-    repository-check-dirty: ./bin/repository-check-dirty.js
-    yarnhook: ./bin/yarnhook.js
-  checksum: 145b4d2ce44a81b0518b99b7c64850e7e25febf2b7064ca910e9ceae88426ad689f78ca8d3ef8ffdad1b0bd2730df0f758689cc954502d033e0f33a0382501e6
-  languageName: node
-  linkType: hard
 
 "@pob/sort-eslint-config@^2.0.0, @pob/sort-eslint-config@workspace:@pob/sort-eslint-config":
   version: 0.0.0-use.local
@@ -12548,8 +12506,8 @@ __metadata:
   resolution: "pob-monorepo@workspace:."
   dependencies:
     "@pob/eslint-config": 45.0.2
-    "@pob/lerna-light": "file:./@pob/lerna-light"
-    "@pob/root": "file:./@pob/root"
+    "@pob/lerna-light": "workspace:*"
+    "@pob/root": "workspace:*"
     check-package-dependencies: 1.2.7
     cross-env: 7.0.3
     eslint: 7.30.0
