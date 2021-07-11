@@ -2,6 +2,7 @@
   "name": "@pob/renovate-config",
   "version": "3.0.3",
   "description": "renovate pob config",
+  "type": "module",
   "engines": {
     "node": ">=12.10.0"
   },
