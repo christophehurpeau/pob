@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.0.2](https://github.com/christophehurpeau/pob/compare/pob-babel@28.0.1...pob-babel@28.0.2) (2021-07-11)
+
+
+### Bug Fixes
+
+* **pob-babel:** preset export ([24ae7a3](https://github.com/christophehurpeau/pob/commit/24ae7a30368b8490258f7f2815ce2994d0018bc3))
+
+
+
+
+
 ## [28.0.1](https://github.com/christophehurpeau/pob/compare/pob-babel@28.0.0...pob-babel@28.0.1) (2021-07-11)
 
 
