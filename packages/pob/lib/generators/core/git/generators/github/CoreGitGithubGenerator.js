@@ -25,7 +25,7 @@ const configureProtectionRule = async (owner, repo) => {
             contexts: [
               'build (12.x)',
               'build (14.x)',
-              'build (15.x)',
+              'build (16.x)',
               'reviewflow',
             ],
           },
