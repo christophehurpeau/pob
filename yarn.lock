@@ -6697,7 +6697,7 @@ isbinaryfile@^3.0.2:
   dependencies:
     buffer-alloc "^1.2.0"
 
-isbinaryfile@^4.0.0, isbinaryfile@^4.0.8:
+isbinaryfile@^4.0.0:
   version "4.0.8"
   resolved "https://registry.yarnpkg.com/isbinaryfile/-/isbinaryfile-4.0.8.tgz#5d34b94865bd4946633ecc78a026fc76c5b11fcf"
   integrity sha512-53h6XFniq77YdW+spoRrebh0mnmTxRPTlcuIArO57lmMdq4uBKFKaeTjnb92oYWrSn/LVL+LT+Hap2tFQj8V+w==
@@ -8199,6 +8199,19 @@ marked@^2.1.1:
   resolved "https://registry.yarnpkg.com/marked/-/marked-2.1.1.tgz#b7c27f520fc4de0ddd049d9b4be3b04e06314923"
   integrity sha512-5XFS69o9CzDpQDSpUYC+AN2xvq8yl1EGa5SG/GI1hP78/uTeo3PDfiDNmsUyiahpyhToDDJhQk7fNtJsga+KVw==
 
+mem-fs-editor@8.1.2, "mem-fs-editor@^8.1.2 || ^9.0.0":
+  version "8.1.2"
+  resolved "https://registry.yarnpkg.com/mem-fs-editor/-/mem-fs-editor-8.1.2.tgz#475cbaeeb917d162a949e9d4b6049f688e422ec4"
+  integrity sha512-owE6PKMRegrYb37Lsar3yLSwK9wLGvHkNIOzBO3ycFeoOwshdF8j593EqjU7ucFAf3ZvcFVwfpo8Q8LqgFQg0A==
+  dependencies:
+    commondir "^1.0.1"
+    deep-extend "^0.6.0"
+    ejs "^3.1.6"
+    globby "^11.0.2"
+    isbinaryfile "^4.0.0"
+    multimatch "^5.0.0"
+    normalize-path "^3.0.0"
+
 mem-fs-editor@^4.0.0:
   version "4.0.3"
   resolved "https://registry.yarnpkg.com/mem-fs-editor/-/mem-fs-editor-4.0.3.tgz#d282a0c4e0d796e9eff9d75661f25f68f389af53"
@@ -8250,22 +8263,7 @@ mem-fs-editor@^7.0.1:
     through2 "^3.0.2"
     vinyl "^2.2.1"
 
-"mem-fs-editor@^8.1.2 || ^9.0.0":
-  version "9.0.1"
-  resolved "https://registry.yarnpkg.com/mem-fs-editor/-/mem-fs-editor-9.0.1.tgz#c700117476ff004cdacf5fa66f4fd1b5410b23c9"
-  integrity sha512-SqW+DkPbxZVzVldNHexoo5MiUR3YpIqiCVcZ/SZ6f7KToaSV7pMd4/URrkD5mnj35bd6NAK7SlftHSyW+Kgk4w==
-  dependencies:
-    binaryextensions "^4.15.0"
-    commondir "^1.0.1"
-    deep-extend "^0.6.0"
-    ejs "^3.1.6"
-    globby "^11.0.3"
-    isbinaryfile "^4.0.8"
-    multimatch "^5.0.0"
-    normalize-path "^3.0.0"
-    textextensions "^5.12.0"
-
-mem-fs@^1.1.0, "mem-fs@^1.2.0 || ^2.0.0":
+mem-fs@1.2.0, mem-fs@^1.1.0, "mem-fs@^1.2.0 || ^2.0.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/mem-fs/-/mem-fs-1.2.0.tgz#5f29b2d02a5875cd14cd836c388385892d556cde"
   integrity sha512-b8g0jWKdl8pM0LqAPdK9i8ERL7nYrzmJfRhxMiWH2uYdfYnb7uXnmwVb0ZGe7xyEl4lj+nLIU3yf4zPUT+XsVQ==
