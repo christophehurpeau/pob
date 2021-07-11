@@ -1,6 +1,9 @@
 import fs from 'fs';
-import pobDependencies from 'pob-dependencies/package.json';
 import prettier from 'prettier';
+
+const pobDependencies = JSON.parse(
+  fs.readFileSync('../../packages/pob-dependencies/package.json', 'utf-8'),
+);
 
 const path = './package.json';
 const pkg = JSON.parse(fs.readFileSync(path, 'utf-8'));
