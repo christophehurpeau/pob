@@ -19,6 +19,7 @@
   "types": "./lib/index.d.ts",
   "exports": {
     ".": "./lib/index.js",
+    "./createRollupConfig.js": "./lib/createRollupConfig.js",
     "./package.json": "./package.json"
   },
   "sideEffects": false,
