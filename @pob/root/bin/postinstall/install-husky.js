@@ -36,10 +36,19 @@ const ensureHookDeleted = (hookName) => {
   } catch {}
 };
 
+const readYarnConfigFile = () => {
+  try {
+    return fs.readFileSync(path.resolve('.yarnrc.yml'));
+  } catch {
+    return '';
+  }
+};
+
 module.exports = function installHusky({ pkg, pm }) {
   const yarnMajorVersion = pm.name === 'yarn' && semver.major(pm.version);
   const isYarnBerry = pm.name === 'yarn' && yarnMajorVersion >= 2;
-  const isYarnWithOfflineCache = isYarnBerry;
+  const isYarnPnp =
+    isYarnBerry && !readYarnConfigFile().includes('nodeLinker: node-modules');
 
   /* Check legacy */
 
@@ -60,14 +69,15 @@ module.exports = function installHusky({ pkg, pm }) {
   writeHook('commit-msg', `${pmExec} commitlint --edit $1`);
   writeHook('pre-commit', `${pmExec} lint-staged`);
 
-  if (!isYarnWithOfflineCache) {
-    writeHook('post-checkout', `${pmExec} yarnhook`);
-    writeHook('post-merge', `${pmExec} yarnhook`);
-    writeHook('post-rewrite', `${pmExec} yarnhook`);
-  } else {
+  if (isYarnPnp) {
     ensureHookDeleted('post-checkout');
     ensureHookDeleted('post-merge');
     ensureHookDeleted('post-rewrite');
+  } else {
+    // https://yarnpkg.com/features/zero-installs
+    writeHook('post-checkout', `${pmExec} yarnhook`);
+    writeHook('post-merge', `${pmExec} yarnhook`);
+    writeHook('post-rewrite', `${pmExec} yarnhook`);
   }
 
   const prePushHook = [];
