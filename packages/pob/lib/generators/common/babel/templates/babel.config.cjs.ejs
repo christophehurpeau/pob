@@ -8,7 +8,7 @@ module.exports = function babelConfig(api) {
   if (!isTest) return {};
 
   return {
-    only: [path.resolve('src')],
-    presets: ['pob-babel/preset'],
+    only: [path.resolve(__dirname, 'src')],
+    presets: [require.resolve('pob-babel/preset')],
   };
 };
