@@ -1,5 +1,1 @@
-'use strict';
-
-const pkg = require('../package.json');
-
-module.exports = pkg.devDependencies;
+export { default } from './package.cjs';

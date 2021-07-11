@@ -1,7 +1,7 @@
-'use strict';
+import fs from 'fs';
+import { pkgPath } from './helper.cjs';
 
-const fs = require('fs');
-const pkg = require('../package.json');
+const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
 
 fs.writeFileSync(
   './lib/index.d.ts',

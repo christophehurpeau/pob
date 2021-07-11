@@ -1,23 +1,11 @@
-'use strict';
-
-const fs = require('fs');
-const prettyPkg = require('@pob/pretty-pkg');
-const semver = require('semver');
-
-const pkgPath = require.resolve('../package.json');
-const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
+import fs from 'fs';
+import prettyPkg from '@pob/pretty-pkg';
+import semver from 'semver';
+import { pkgPath, requireIfPossible } from './helper.cjs';
 
 let madeModifications = false;
 
-const requireIfPossible = (packageJsonPath) => {
-  try {
-    return require(packageJsonPath);
-  } catch (err) {
-    console.error(`Failed to require ${packageJsonPath}`);
-    console.error(err.message);
-    return {};
-  }
-};
+const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
 
 Object.keys(pkg.devDependencies).forEach((key) => {
   const depPkg = requireIfPossible(`${key}/package.json`);
