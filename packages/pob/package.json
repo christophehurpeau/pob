@@ -65,7 +65,7 @@
     "yeoman-generator": "^5.4.0"
   },
   "resolutions": {
-    "yeoman-generator": "4.13.0"
+    "yeoman-generator": "5.4.0"
   },
   "resolutionsExplained": {
     "yeoman-generator": "generator-license has a dependency to yeoman-generator@2.0.5"
