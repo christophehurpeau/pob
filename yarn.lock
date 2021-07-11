@@ -2299,14 +2299,14 @@
     "@lerna/version" "4.0.0"
 
 "@pob/root@file:./@pob/root":
-  version "5.0.0"
+  version "5.0.1"
   dependencies:
     "@commitlint/cli" "12.1.4"
     "@pob/pretty-eslint-config" "^2.0.0"
     "@pob/pretty-pkg" "^3.0.0"
     husky "^7.0.0"
     lint-staged "11.0.0"
-    repository-check-dirty "^3.0.0"
+    repository-check-dirty "^3.0.1"
     semver "^7.1.2"
     which-pm-runs "1.0.0"
     yarn-deduplicate "3.1.0"
@@ -3675,10 +3675,10 @@ chardet@^0.7.0:
   resolved "https://registry.yarnpkg.com/chardet/-/chardet-0.7.0.tgz#90094849f0937f2eedc2425d0d28a9e5f0cbad9e"
   integrity sha512-mT8iDcrh03qDGRRmoA2hmBJnxpllMR+0/0qlzjqZES6NdiWDcZkCNAk4rPFZ9Q85r27unkiNNg8ZOiwZXBHwcA==
 
-check-package-dependencies@1.2.7:
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/check-package-dependencies/-/check-package-dependencies-1.2.7.tgz#cd24af36b47bb56331caa24e6d585ba235e564be"
-  integrity sha512-j0taxpkC1TA7elJ+1pqqEp1q7mqK3NR95etCmyQQUpzdgf+aBRsE+eU0vgVHfdwzks61MV/A5SUXman0lkw/cw==
+check-package-dependencies@2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/check-package-dependencies/-/check-package-dependencies-2.0.0.tgz#4c8b9dce62996ceac0a6292efd3abf3855e75d87"
+  integrity sha512-LR+8/96Kaiimy8pCSWSZfldFaJslXznmtsii/sl2Sx6Tsmwc8xnWBXqQOqGEx4JVIk5IGOs59LacaCQZxuxANg==
   dependencies:
     chalk "^4.1.0"
     glob "^7.1.6"
