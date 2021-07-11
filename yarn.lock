@@ -3060,7 +3060,6 @@ __metadata:
     repository-check-dirty: ^3.1.0
     semver: ^7.1.2
     which-pm-runs: 1.0.0
-    yarn-deduplicate: 3.1.0
     yarnhook: ^0.5.0
   bin:
     commitlint: ./bin/commitlint.js
@@ -3575,13 +3574,6 @@ __metadata:
     "@typescript-eslint/types": 4.28.2
     eslint-visitor-keys: ^2.0.0
   checksum: cec563831f563bb057f00045104db7ed92576755065d7563607c5f3581e5588fe8b83229767cd81763136aeb663dd49b99e7ee24decfbfc5fc7bd7b36bb1a525
-  languageName: node
-  linkType: hard
-
-"@yarnpkg/lockfile@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "@yarnpkg/lockfile@npm:1.1.0"
-  checksum: 76f3f2625334fb4d37881408643b61ae08e1cfcdeb5db3e3e92f626b3535f99e963df8bafe5c07d85aa1dd09a308939eb4d0667ed4a4e93e645417b6af6e9a2f
   languageName: node
   linkType: hard
 
@@ -5263,13 +5255,6 @@ __metadata:
   version: 7.1.0
   resolution: "commander@npm:7.1.0"
   checksum: 2b6dacb11f17cd9b702ae18b586b060327590dd57e2702edefbff701ec7c63b55338e70544210893bad280fc9579ffb839dd8ae0a6bc652fceffe3f9ad1c2c44
-  languageName: node
-  linkType: hard
-
-"commander@npm:^6.1.0":
-  version: 6.2.1
-  resolution: "commander@npm:6.2.1"
-  checksum: 47856aae6f194404122e359d8463e5e1a18f7cbab26722ce69f1379be8514bd49a160ef81a983d3d2091e3240022643354101d1276c797dcdd0b5bfc3c3f04a3
   languageName: node
   linkType: hard
 
@@ -15643,19 +15628,6 @@ typescript@4.3.5:
     y18n: ^5.0.5
     yargs-parser: ^20.2.2
   checksum: a79ce1f043021cd645de1ffebb6149541d382ba68f4a6b5eca5d2ad65af51893371bbd78e240dc3b6cf0cbb419511ba5bda715dec992e4266e6863ea49f14feb
-  languageName: node
-  linkType: hard
-
-"yarn-deduplicate@npm:3.1.0":
-  version: 3.1.0
-  resolution: "yarn-deduplicate@npm:3.1.0"
-  dependencies:
-    "@yarnpkg/lockfile": ^1.1.0
-    commander: ^6.1.0
-    semver: ^7.3.2
-  bin:
-    yarn-deduplicate: cli.js
-  checksum: 0c764f7c6d4aa9be8f0fb93dfc69dfc79bf94e3bbdb84fc3fa81370635584a2a2e751baacd08a16c9105b8e22714888a090a5f17fe6741143f708010b7f82afa
   languageName: node
   linkType: hard
 

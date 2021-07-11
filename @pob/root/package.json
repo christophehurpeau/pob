@@ -36,7 +36,6 @@
     "repository-check-dirty": "^3.1.0",
     "semver": "^7.1.2",
     "which-pm-runs": "1.0.0",
-    "yarn-deduplicate": "3.1.0",
     "yarnhook": "^0.5.0"
   }
 }

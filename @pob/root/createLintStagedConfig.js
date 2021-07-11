@@ -34,14 +34,6 @@ const generateInstallAndDedupe = () => {
     return ['npm install', 'npm dedupe'];
   }
 
-  if (yarnMajorVersion < 2) {
-    return [
-      'yarn --prefer-offline',
-      'yarn-deduplicate',
-      'yarn --prefer-offline',
-    ];
-  }
-
   return ['yarn', 'yarn dedupe'];
 };
 
