@@ -20,6 +20,8 @@
   "exports": {
     ".": "./lib/index.js",
     "./createRollupConfig.js": "./lib/createRollupConfig.js",
+    "./preset.js": "./preset.cjs",
+    "./preset.cjs": "./preset.cjs",
     "./package.json": "./package.json"
   },
   "sideEffects": false,
