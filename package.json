@@ -38,7 +38,7 @@
     "@pob/eslint-config": "45.0.2",
     "@pob/lerna-light": "workspace:*",
     "@pob/root": "workspace:*",
-    "check-package-dependencies": "2.0.1",
+    "check-package-dependencies": "2.0.2",
     "cross-env": "7.0.3",
     "eslint": "7.30.0",
     "prettier": "2.2.1"
