@@ -11,11 +11,16 @@
     "directory": "packages/pob-babel"
   },
   "homepage": "https://github.com/christophehurpeau/pob",
+  "type": "module",
   "engines": {
     "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
   },
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
   "sideEffects": false,
   "bin": {
     "pob-build": "./bin/pob-build.js",
@@ -25,11 +30,11 @@
     "build": "yarn run build:definitions",
     "build:definitions": "tsc --lib esnext --noEmit --skipLibCheck ./lib/index.d.ts",
     "clean": "rm -Rf docs dist",
-    "generate:test-coverage": "rm -Rf docs/coverage/ ; NODE_ENV=production BABEL_ENV=test jest --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/",
+    "generate:test-coverage": "rm -Rf docs/coverage/ ; NODE_ENV=production NODE_OPTIONS=--experimental-vm-modules jest --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/",
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn --cwd ../.. run eslint --report-unused-disable-directives --quiet packages/pob-babel",
-    "test": "jest",
-    "test:watch": "jest"
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch"
   },
   "prettier": {
     "trailingComma": "all",
@@ -39,11 +44,11 @@
   "jest": {
     "cacheDirectory": "./node_modules/.cache/jest",
     "testMatch": [
-      "<rootDir>/lib/**/__tests__/**/*.js",
-      "<rootDir>/lib/**/*.test.js"
+      "<rootDir>/lib/**/__tests__/**/*.?(m)js",
+      "<rootDir>/lib/**/*.test.?(m)js"
     ],
     "collectCoverageFrom": [
-      "lib/**/*.js"
+      "lib/**/*.?(m)js"
     ],
     "moduleFileExtensions": [
       "js",
@@ -72,7 +77,7 @@
   "devDependencies": {
     "@babel/core": "7.14.6",
     "@types/jest": "26.0.24",
-    "jest": "26.6.3",
+    "jest": "27.0.6",
     "pob-lcov-reporter": "4.0.1"
   }
 }

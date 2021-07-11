@@ -1,9 +1,7 @@
-'use strict';
+import fs from 'fs';
+import prettier from 'prettier';
 
-const fs = require('fs');
-const prettier = require('prettier');
-
-const ensureJsonFileFormatted = (path) => {
+export default function ensureJsonFileFormatted(path) {
   try {
     const pkgJson = fs.readFileSync(path, 'utf-8');
     const formattedPkg = prettier.format(pkgJson, {
@@ -14,6 +12,4 @@ const ensureJsonFileFormatted = (path) => {
       fs.writeFileSync(path, formattedPkg);
     }
   } catch {}
-};
-
-module.exports = ensureJsonFileFormatted;
+}

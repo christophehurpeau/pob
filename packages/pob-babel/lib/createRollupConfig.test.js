@@ -1,11 +1,10 @@
-'use strict';
-
-const fs = require('fs');
-const rollup = require('rollup');
-const createRollupConfig = require('./createRollupConfig');
+import fs from 'fs';
+import path from 'path';
+import rollup from 'rollup';
+import createRollupConfig from './createRollupConfig.js';
 
 describe('fixtures', () => {
-  const testsPath = `${__dirname}/../test/`;
+  const testsPath = `${path.resolve('test')}/`;
   const tests = fs.readdirSync(testsPath);
 
   tests.forEach((dirname) => {

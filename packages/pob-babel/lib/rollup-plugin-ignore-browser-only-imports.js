@@ -1,10 +1,8 @@
-'use strict';
-
 const emptyFile = 'export default {}';
 const emptyFileName =
   '\0rollup_plugin_ignoreBrowserOnlyImports_empty_module_placeholder';
 
-module.exports = function ignoreBrowserOnlyImports({ extensions }) {
+export default function ignoreBrowserOnlyImports({ extensions }) {
   return {
     resolveId(importee) {
       return extensions.some((ext) => importee.endsWith(ext))
@@ -15,4 +13,4 @@ module.exports = function ignoreBrowserOnlyImports({ extensions }) {
       return id === emptyFileName ? emptyFile : null;
     },
   };
-};
+}

@@ -1,6 +1,6 @@
 'use strict';
 
-module.exports = function ({ types }, opts) {
+module.exports = function babelPluginPobBabel({ types }, opts) {
   const replacements = opts.replacements;
 
   const nodeReplacements = new Map(
@@ -18,7 +18,7 @@ module.exports = function ({ types }, opts) {
   );
 
   return {
-    name: 'pob-babel', // not required
+    name: 'plugin-pob-babel', // not required
     visitor: {
       ImportDeclaration(path) {
         const node = path.node;

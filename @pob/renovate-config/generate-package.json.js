@@ -1,8 +1,6 @@
-'use strict';
-
-const fs = require('fs');
-const pobDependencies = require('pob-dependencies/package.json');
-const prettier = require('prettier');
+import fs from 'fs';
+import pobDependencies from 'pob-dependencies/package.json';
+import prettier from 'prettier';
 
 const path = './package.json';
 const pkg = JSON.parse(fs.readFileSync(path, 'utf-8'));

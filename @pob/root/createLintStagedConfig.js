@@ -1,5 +1,3 @@
-/* eslint-disable no-console */
-
 'use strict';
 
 const fs = require('fs');
@@ -12,10 +10,9 @@ const pm =
   (fs.existsSync('package-lock.json') ? { name: 'npm' } : undefined);
 
 if (pm.name !== 'yarn' && pm.name !== 'npm') {
-  console.error(
+  throw new Error(
     `Package manager not supported: ${pm.name}. Please run with yarn or npm !`,
   );
-  process.exit(1);
 }
 const yarnMajorVersion = pm.name === 'yarn' && semver.major(pm.version);
 const lockfile = pm.name === 'yarn' ? 'yarn.lock' : 'package-lock.json';

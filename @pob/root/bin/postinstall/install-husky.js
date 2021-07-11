@@ -18,10 +18,9 @@ const ensureLegacyHuskyConfigDeleted = () => {
 
 const ensureHuskyNotInDevDependencies = (pkg) => {
   if (pkg.devDependencies && pkg.devDependencies.husky) {
-    console.error(
+    throw new Error(
       'Found husky in devDependencies. Husky is provided by @pob/root, please remove',
     );
-    process.exit(1);
   }
 };
 

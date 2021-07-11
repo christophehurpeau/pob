@@ -1,6 +1,4 @@
-'use strict';
-
-const sortConfig = require('@pob/sort-eslint-config');
+import sortConfig from '@pob/sort-eslint-config';
 
 function updateOverrides(config, jestOverride) {
   const existingJestOverrideIndex = !config.overrides
@@ -101,7 +99,7 @@ function updateIgnorePatterns(config, ignorePatterns) {
   return config;
 }
 
-module.exports = function updateEslintConfig(
+export default function updateEslintConfig(
   config,
   {
     extendsConfig,
@@ -129,4 +127,4 @@ module.exports = function updateEslintConfig(
   config = updateIgnorePatterns(config, ignorePatterns);
 
   return sortConfig(config);
-};
+}

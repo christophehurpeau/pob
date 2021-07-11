@@ -1,10 +1,10 @@
 {
   "root": true,
-  "extends": ["@pob/eslint-config", "@pob/eslint-config-node"],
+  "extends": ["@pob/eslint-config/node-commonjs"],
   "ignorePatterns": ["*.d.ts"],
   "overrides": [
     {
-      "files": ["**/*.test.js", "__tests__/**/*.js"],
+      "files": ["**/*.test.{mjs,js}", "__tests__/**/*.{mjs,js}"],
       "env": {
         "jest": true
       },

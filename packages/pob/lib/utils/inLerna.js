@@ -1,8 +1,6 @@
-'use strict';
-
-const fs = require('fs');
-const path = require('path');
-const findup = require('findup-sync');
+import fs from 'fs';
+import path from 'path';
+import findup from 'findup-sync';
 
 const lernaJsonPath = findup('lerna.json');
 const lintStagedConfigPath = findup('lint-staged.config.js');
@@ -41,9 +39,6 @@ const getInLernaThings = () => {
   };
 };
 
-module.exports = !(
-  rootMonorepoPkg &&
-  (rootMonorepoPkg.lerna || !!lernaJsonPath)
-)
+export default !(rootMonorepoPkg && (rootMonorepoPkg.lerna || !!lernaJsonPath))
   ? false
   : getInLernaThings();

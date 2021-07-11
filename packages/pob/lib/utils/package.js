@@ -1,26 +1,24 @@
-'use strict';
+import sortObject from '@pob/sort-object';
+import sortPkg from '@pob/sort-pkg';
+import parseAuthor from 'parse-author';
+import pobDependencies from 'pob-dependencies';
+import semver from 'semver';
 
-const sortObject = require('@pob/sort-object');
-const sortPkg = require('@pob/sort-pkg');
-const parseAuthor = require('parse-author');
-const pobDependencies = require('pob-dependencies');
-const semver = require('semver');
+export { parseAuthor };
 
-exports.parseAuthor = parseAuthor;
-
-exports.parsePkgAuthor = (pkg) =>
+export const parsePkgAuthor = (pkg) =>
   typeof pkg.author === 'string' ? parseAuthor(pkg.author) : pkg.author;
 
-exports.hasLerna = (pkg) =>
+export const hasLerna = (pkg) =>
   !!(pkg.devDependencies && pkg.devDependencies.lerna);
 
-exports.hasBabel = (pkg) =>
+export const hasBabel = (pkg) =>
   !!(
     pkg.devDependencies &&
     (pkg.devDependencies['pob-babel'] || pkg.devDependencies['@babel/core'])
   );
 
-exports.transpileWithBabel = (pkg) =>
+export const transpileWithBabel = (pkg) =>
   !!(
     (pkg.devDependencies &&
       (pkg.devDependencies['pob-babel'] ||
@@ -33,13 +31,18 @@ exports.transpileWithBabel = (pkg) =>
         pkg.devDependencies['alp-dev']))
   );
 
-exports.hasReact = (pkg) =>
+export const hasReact = (pkg) =>
   !!(
     (pkg.dependencies && pkg.dependencies.react) ||
     (pkg.peerDependencies && pkg.peerDependencies.react)
   );
 
-exports.hasJest = (pkg) => !!(pkg.devDependencies && pkg.devDependencies.jest);
+export const hasJest = (pkg) =>
+  !!(pkg.devDependencies && pkg.devDependencies.jest);
+
+export const sort = function sort(pkg) {
+  return sortPkg(pkg);
+};
 
 function internalAddToObject(pkg, key, object) {
   if (typeof object !== 'object') {
@@ -48,7 +51,7 @@ function internalAddToObject(pkg, key, object) {
 
   if (!pkg[key]) {
     pkg[key] = {};
-    exports.sort(pkg);
+    sort(pkg);
   }
   const value = pkg[key];
   if (typeof value !== 'object') {
@@ -69,10 +72,6 @@ function internalRemoveFromObject(pkg, key, keys) {
     delete pkg[key];
   }
 }
-
-exports.sort = function sort(pkg) {
-  return sortPkg(pkg);
-};
 
 const cleanVersion = (version) => version.replace(/^(\^|~)/, '');
 
@@ -149,49 +148,35 @@ const internalAddDependencies = (pkg, type, dependencies, cleaned, prefix) => {
   return internalAddToObject(pkg, type, filtredDependencies);
 };
 
-exports.addDependencies = function addDependencies(pkg, dependencies, prefix) {
+export function addDependencies(pkg, dependencies, prefix) {
   internalAddDependencies(pkg, 'dependencies', dependencies, !!prefix, prefix);
-};
+}
 
-exports.removeDependencies = function removeDependencies(pkg, dependencies) {
+export function removeDependencies(pkg, dependencies) {
   internalRemoveDependencies(pkg, 'dependencies', dependencies);
-};
+}
 
-exports.addDependenciesMeta = function addDependenciesMeta(
-  pkg,
-  dependenciesMeta,
-) {
+export function addDependenciesMeta(pkg, dependenciesMeta) {
   internalAddToObject(pkg, 'dependenciesMeta', dependenciesMeta);
-};
+}
 
-exports.removeDependenciesMeta = function removeDependenciesMeta(
-  pkg,
-  dependenciesMetaKeys,
-) {
+export function removeDependenciesMeta(pkg, dependenciesMetaKeys) {
   internalRemoveFromObject(pkg, 'dependenciesMeta', dependenciesMetaKeys);
-};
+}
 
-exports.addOrRemoveDependenciesMeta = function addOrRemoveDependenciesMeta(
-  pkg,
-  condition,
-  dependenciesMeta,
-) {
+export function addOrRemoveDependenciesMeta(pkg, condition, dependenciesMeta) {
   if (condition) {
-    exports.addDependenciesMeta(pkg, dependenciesMeta);
+    addDependenciesMeta(pkg, dependenciesMeta);
   } else {
-    exports.removeDependenciesMeta(pkg, Object.keys(dependenciesMeta));
+    removeDependenciesMeta(pkg, Object.keys(dependenciesMeta));
   }
-};
+}
 
-exports.addDevDependencies = function addDevDependencies(pkg, dependencies) {
+export function addDevDependencies(pkg, dependencies) {
   internalAddDependencies(pkg, 'devDependencies', dependencies, true);
-};
+}
 
-exports.removeDevDependencies = function removeDevDependencies(
-  pkg,
-  dependencies,
-  forceEvenIfInPeerDep,
-) {
+export function removeDevDependencies(pkg, dependencies, forceEvenIfInPeerDep) {
   internalRemoveDependencies(
     pkg,
     'devDependencies',
@@ -199,62 +184,47 @@ exports.removeDevDependencies = function removeDevDependencies(
       ? dependencies.filter((d) => !pkg.peerDependencies[d])
       : dependencies,
   );
-};
+}
 
-exports.addOrRemoveDependencies = function addOrRemoveDependencies(
-  pkg,
-  condition,
-  dependencies,
-) {
-  if (condition) return exports.addDependencies(pkg, dependencies);
-  return exports.removeDependencies(pkg, dependencies);
-};
+export function addOrRemoveDependencies(pkg, condition, dependencies) {
+  if (condition) return addDependencies(pkg, dependencies);
+  return removeDependencies(pkg, dependencies);
+}
 
-exports.addOrRemoveDevDependencies = function addOrRemoveDevDependencies(
-  pkg,
-  condition,
-  dependencies,
-) {
-  if (condition) return exports.addDevDependencies(pkg, dependencies);
-  return exports.removeDevDependencies(pkg, dependencies);
-};
+export function addOrRemoveDevDependencies(pkg, condition, dependencies) {
+  if (condition) return addDevDependencies(pkg, dependencies);
+  return removeDevDependencies(pkg, dependencies);
+}
 
-exports.removeDevAndNotDevDependencies = function removeDevAndNotDevDependencies(
+export function removeDevAndNotDevDependencies(
   pkg,
   dependencies,
   forceEvenIfInPeerDep,
 ) {
-  exports.removeDevDependencies(pkg, dependencies, forceEvenIfInPeerDep);
-  exports.removeDependencies(pkg, dependencies, forceEvenIfInPeerDep);
-};
+  removeDevDependencies(pkg, dependencies, forceEvenIfInPeerDep);
+  removeDependencies(pkg, dependencies, forceEvenIfInPeerDep);
+}
 
-exports.updateDevDependenciesIfPresent = function updateDevDependenciesIfPresent(
-  pkg,
-  dependencies,
-) {
+export function updateDevDependenciesIfPresent(pkg, dependencies) {
   if (!pkg.devDependencies) return;
-  return exports.addDevDependencies(
+  return addDevDependencies(
     pkg,
     dependencies.filter((d) => pkg.devDependencies[d]),
   );
-};
+}
 
-exports.addScripts = function addScripts(pkg, scripts) {
+export function addScripts(pkg, scripts) {
   internalAddToObject(pkg, 'scripts', scripts);
-};
+}
 
-exports.removeScripts = function removeScripts(pkg, keys) {
+export function removeScripts(pkg, keys) {
   internalRemoveFromObject(pkg, 'scripts', keys);
-};
+}
 
-exports.addOrRemoveScripts = function addOrRemoveScripts(
-  pkg,
-  condition,
-  scripts,
-) {
+export function addOrRemoveScripts(pkg, condition, scripts) {
   if (condition) {
-    exports.addScripts(pkg, scripts);
+    addScripts(pkg, scripts);
   } else {
-    exports.removeScripts(pkg, Object.keys(scripts));
+    removeScripts(pkg, Object.keys(scripts));
   }
-};
+}

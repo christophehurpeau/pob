@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
-'use strict';
-
-const { overrideSync } = require('../lib');
+import { overrideSync } from '../lib/index.js';
 
 const paths = process.argv.slice(2);
 

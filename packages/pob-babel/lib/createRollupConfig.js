@@ -1,14 +1,14 @@
 /* eslint-disable complexity */
 
-'use strict';
-
-const { readFileSync, existsSync } = require('fs');
-const path = require('path');
-const { babel } = require('@rollup/plugin-babel');
-const json = require('@rollup/plugin-json');
-const { default: resolve } = require('@rollup/plugin-node-resolve');
-const configExternalDependencies = require('rollup-config-external-dependencies');
-const ignoreImport = require('./rollup-plugin-ignore-browser-only-imports');
+import { readFileSync, existsSync } from 'fs';
+import path from 'path';
+import babelPluginTransformRuntime from '@babel/plugin-transform-runtime';
+import { babel } from '@rollup/plugin-babel';
+import json from '@rollup/plugin-json';
+import { nodeResolve } from '@rollup/plugin-node-resolve';
+import babelPresetEnv from 'babel-preset-pob-env';
+import configExternalDependencies from 'rollup-config-external-dependencies';
+import ignoreImport from './rollup-plugin-ignore-browser-only-imports.js';
 
 const browserOnlyExtensions = ['.scss', '.css'];
 
@@ -18,14 +18,14 @@ const nodeFormatToExt = (format) => {
   return `.${format}.js`;
 };
 
-module.exports = ({
+export default function createRollupConfig({
   cwd = process.cwd(),
   pkg = JSON.parse(readFileSync(`${cwd}/package.json`)),
   devPlugins = [],
   prodPlugins = [],
   pobConfig = pkg.pob ||
     JSON.parse(readFileSync(`${cwd}/.yo-rc.json`)).pob['pob-config'],
-} = {}) => {
+} = {}) {
   const isIndexBrowserEntry =
     pobConfig.entries[0] === 'index' && pobConfig.entries[1] === 'browser';
   const entries = isIndexBrowserEntry
@@ -131,7 +131,7 @@ module.exports = ({
               },
             ],
             [
-              require.resolve('babel-preset-pob-env'),
+              babelPresetEnv,
               {
                 loose: true,
                 optimizations: true,
@@ -148,7 +148,7 @@ module.exports = ({
           ].filter(Boolean),
           plugins: [
             [
-              require.resolve('@babel/plugin-transform-runtime'),
+              babelPluginTransformRuntime,
               {
                 corejs: false,
                 useESModules: 'auto',
@@ -167,7 +167,7 @@ module.exports = ({
           namedExports: true, // allow tree shaking
         }),
 
-        resolve({
+        nodeResolve({
           extensions,
           customResolveOptions: {
             moduleDirectories: ['src'], // don't resolve node_modules, but allow src (see baseUrl in tsconfig)
@@ -178,19 +178,13 @@ module.exports = ({
     };
   };
 
-  return Array.prototype.concat.apply(
-    [],
-    pobConfig.babelEnvs.map((env) => {
-      return Array.prototype.concat.apply(
-        [],
-        entries.map((entry, index) => {
-          const entryPath = resolveEntry(entry, env.target);
-          return [
-            createConfigForEnv(entry, entryPath, env, true, prodPlugins),
-            createConfigForEnv(entry, entryPath, env, false, devPlugins),
-          ];
-        }),
-      );
-    }),
-  );
-};
+  return pobConfig.babelEnvs.flatMap((env) => {
+    return entries.flatMap((entry, index) => {
+      const entryPath = resolveEntry(entry, env.target);
+      return [
+        createConfigForEnv(entry, entryPath, env, true, prodPlugins),
+        createConfigForEnv(entry, entryPath, env, false, devPlugins),
+      ];
+    });
+  });
+}

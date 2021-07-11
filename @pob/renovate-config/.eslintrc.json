@@ -1,6 +1,6 @@
 {
   "root": true,
-  "extends": ["@pob/eslint-config", "@pob/eslint-config-node"],
+  "extends": ["@pob/eslint-config/node-module"],
   "overrides": [
     {
       "files": ["generate-package.json.js"],

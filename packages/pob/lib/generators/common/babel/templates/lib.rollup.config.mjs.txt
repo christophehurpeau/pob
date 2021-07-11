@@ -1,0 +1,3 @@
+import createRollupConfig from 'pob-babel/lib/createRollupConfig';
+
+export default createRollupConfig({});

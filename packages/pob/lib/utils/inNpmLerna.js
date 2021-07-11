@@ -1,8 +1,5 @@
-'use strict';
+import { readFileSync } from 'fs';
+import inLerna from './inLerna.js';
 
-const { readFileSync } = require('fs');
-const inLerna = require('./inLerna');
-
-module.exports =
-  inLerna &&
+export default inLerna &&
   JSON.parse(readFileSync(inLerna.lernaJsonPath)).npmClient !== 'yarn';
