@@ -4940,9 +4940,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"check-package-dependencies@npm:2.0.1":
-  version: 2.0.1
-  resolution: "check-package-dependencies@npm:2.0.1"
+"check-package-dependencies@npm:2.0.0":
+  version: 2.0.0
+  resolution: "check-package-dependencies@npm:2.0.0"
   dependencies:
     chalk: ^4.1.0
     glob: ^7.1.6
@@ -4950,7 +4950,7 @@ __metadata:
     type-fest: ^1.0.0
   bin:
     check-package-dependencies: bin/check-package-dependencies.js
-  checksum: 05909a6b5d2380a9379048bd5ef59485c62911ce4b67d09d01a2fe92b5ea7e84e771f7aa688eca808fa5cfb9ef4061ca1c4362fd15e26ba962ea67491eb8789e
+  checksum: 52e73e0664107524feefb4990dbcb6931c615c71a82eacfda5300c5d054b8caba1ac79cbe926372ff041afacb822e1ce11651a82345fa2b0e18880c932fa9b78
   languageName: node
   linkType: hard
 
@@ -12508,7 +12508,7 @@ __metadata:
     "@pob/eslint-config": 45.0.2
     "@pob/lerna-light": "workspace:*"
     "@pob/root": "workspace:*"
-    check-package-dependencies: 2.0.1
+    check-package-dependencies: 2.0.0
     cross-env: 7.0.3
     eslint: 7.30.0
     prettier: 2.2.1
