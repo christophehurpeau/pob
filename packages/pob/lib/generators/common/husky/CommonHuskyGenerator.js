@@ -44,7 +44,13 @@ export default class CommonHuskyGenerator extends Generator {
 
     this.fs.delete(this.destinationPath('.huskyrc.js'));
     this.fs.delete(this.destinationPath('husky.config.js'));
-    this.fs.delete(this.destinationPath('lint-staged.config.js'));
+
+    if (this.fs.exists(this.destinationPath('lint-staged.config.js'))) {
+      this.fs.move(
+        this.destinationPath('lint-staged.config.js'),
+        this.destinationPath('lint-staged.config.cjs'),
+      );
+    }
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     packageUtils.removeDevDependencies(pkg, ['husky']);
