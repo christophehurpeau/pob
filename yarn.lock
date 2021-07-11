@@ -3043,12 +3043,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: ^5.1.0
+    pob-dependencies: ^5.2.0
     prettier: 2.2.1
   languageName: unknown
   linkType: soft
 
-"@pob/root@^5.1.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@^5.1.1, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -12446,7 +12446,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@^5.1.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@^5.2.0, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -12460,7 +12460,7 @@ __metadata:
     "@pob/eslint-config-typescript-react": 45.0.2
     "@pob/lerna-light": ^4.0.0
     "@pob/pretty-pkg": ^3.1.0
-    "@pob/root": ^5.1.0
+    "@pob/root": ^5.1.1
     "@rollup/plugin-run": 2.0.2
     "@types/jest": 26.0.24
     "@typescript-eslint/eslint-plugin": 4.28.2
@@ -12537,7 +12537,7 @@ __metadata:
     mem-fs-editor: 8.1.2
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
-    pob-dependencies: ^5.1.0
+    pob-dependencies: ^5.2.0
     prettier: 2.2.1
     semver: ^7.3.4
     update-notifier: ^5.0.1

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.1](https://github.com/christophehurpeau/pob/compare/@pob/root@5.1.0...@pob/root@5.1.1) (2021-07-11)
+
+
+### Bug Fixes
+
+* **@pob/root:** better typedoc workflow name ([8706cfd](https://github.com/christophehurpeau/pob/commit/8706cfd7fac274b88c0b7cdc7492db2cccfde10d))
+
+
+
+
+
 # [5.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.0.1...@pob/root@5.1.0) (2021-07-11)
 
 
