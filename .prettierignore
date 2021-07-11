@@ -1,3 +1,4 @@
 CHANGELOG.md
+/.yarn/**/*
 /packages/*/dist
 /@pob/*/dist

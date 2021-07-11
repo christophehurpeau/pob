@@ -1,4 +1,8 @@
 {
+  "search.exclude": {
+    "**/.yarn": true,
+    "**/.pnp.*": true
+  },
   // save config
   "editor.formatOnSave": true,
   "eslint.codeActionsOnSave.mode": "all",

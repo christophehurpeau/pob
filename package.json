@@ -20,6 +20,7 @@
     "lint:eslint": "eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet .",
     "lint:prettier": "prettier --check .",
     "preversion": "yarn run lint && repository-check-dirty",
+    "postinstall": "yarn node @pob/root/bin/pob-root-postinstall.js",
     "release": "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git",
     "test": "lerna run --stream test"
   },
