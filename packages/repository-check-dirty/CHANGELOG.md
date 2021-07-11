@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@3.0.0...repository-check-dirty@3.0.1) (2021-07-11)
+
+
+### Bug Fixes
+
+* **repository-check-dirty:** bin in exports ([a11d4bd](https://github.com/christophehurpeau/pob/commit/a11d4bda8bd7dd4a0d14f2ad586654d021f22dd6))
+
+
+
+
+
 # [3.0.0](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@2.0.1...repository-check-dirty@3.0.0) (2021-07-11)
 
 

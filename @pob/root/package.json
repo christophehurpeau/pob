@@ -1,6 +1,6 @@
 {
   "name": "@pob/root",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "root package",
   "license": "ISC",
   "type": "commonjs",
@@ -32,7 +32,7 @@
     "@pob/pretty-pkg": "^3.0.0",
     "husky": "^7.0.0",
     "lint-staged": "11.0.0",
-    "repository-check-dirty": "^3.0.0",
+    "repository-check-dirty": "^3.0.1",
     "semver": "^7.1.2",
     "which-pm-runs": "1.0.0",
     "yarn-deduplicate": "3.1.0",

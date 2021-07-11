@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.3](https://github.com/christophehurpeau/pob/compare/pob@8.0.2...pob@8.0.3) (2021-07-11)
+
+
+### Bug Fixes
+
+* config for @pob/eslint-config-typescript/node ([8f57ac1](https://github.com/christophehurpeau/pob/commit/8f57ac1099d7b1f1fc25c3f582fb2b7f3926e1ca))
+
+
+
+
+
 ## [8.0.2](https://github.com/christophehurpeau/pob/compare/pob@8.0.1...pob@8.0.2) (2021-07-11)
 
 **Note:** Version bump only for package pob

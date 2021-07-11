@@ -27,7 +27,7 @@ interface Dependencies {
   'eslint-plugin-unicorn': '34.0.1';
   jest: '26.6.3';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '^28.0.1';
+  'pob-babel': '^28.0.2';
   'pob-lcov-reporter': '^5.0.0';
   prettier: '2.2.1';
   'repository-check-dirty': '^3.0.0';
