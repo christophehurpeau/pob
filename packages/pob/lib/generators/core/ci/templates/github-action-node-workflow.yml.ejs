@@ -18,11 +18,11 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-<% if (!isNpm) { -%>
+<% if (packageManager !== 'npm') { -%>
       - name: Cache dependencies
         uses: actions/cache@v2
         with:
-<% if (isYarn2) { -%>
+<% if (packageManager === 'yarn') { -%>
           path: |
             .yarn/unplugged
             .yarn/build-state.yml
@@ -36,10 +36,10 @@ jobs:
             v2-dependencies--${{ matrix.node-version }}-
 
 <% } -%>
-<% if (isYarn2) { -%>
+<% if (packageManager === 'yarn') { -%>
       - name: Check Dependencies
         run: yarn install --immutable
-<% } else if (isNpm) { -%>
+<% } else if (packageManager === 'npm') { -%>
       - name: Install Latest Npm
         run: npm install -g npm@next-7
 
@@ -52,15 +52,15 @@ jobs:
 
 <% if (checks) { -%>
       - name: Checks
-        run: <%= isNpm ? 'npm' : 'yarn' %> run checks
+        run: <%= packageManager %> run checks
 
 <% } -%>
       - name: Prettier
-        run: <%= isNpm ? 'npm' : 'yarn' %> run lint:prettier
+        run: <%= packageManager %> run lint:prettier
         if: startsWith(matrix.node-version, '14.')
 
       - name: Eslint
-        run: <%= isNpm ? 'npm' : 'yarn' %> run lint:eslint
+        run: <%= packageManager %> run lint:eslint
         if: startsWith(matrix.node-version, '14.')
 <% if (typescript) { -%>
 
@@ -71,21 +71,21 @@ jobs:
 <% if (testing) { -%>
 
       - name: Test
-        run: <%= isNpm ? 'npm' : 'yarn' %> run test
+        run: <%= packageManager %> run test
         env:
           CI: true
 <% } -%>
 <% if (documentation) { -%>
 
       - name: Documentation
-        run: <%= isNpm ? 'npm' : 'yarn' %> run generate:docs
+        run: <%= packageManager %> run generate:docs
         if: startsWith(matrix.node-version, '14.')
         env:
           CI: true
 <% } else if (codecov) { -%>
 
       - name: Generate Coverage doc
-        run: <%= isNpm ? 'npm' : 'yarn' %> run generate:test-coverage
+        run: <%= packageManager %> run generate:test-coverage
         if: startsWith(matrix.node-version, '14.')
         env:
           CI: true
@@ -102,5 +102,5 @@ jobs:
 
       - name: Check nothing was forgotten before commit
         if: startsWith(matrix.node-version, '14.')
-        run: <%= isNpm ? 'npx' : 'yarn run' %> repository-check-dirty
+        run: <%= packageManager === 'npm' ? 'npx' : 'yarn run' %> repository-check-dirty
 <% } -%>

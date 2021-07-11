@@ -2,9 +2,11 @@ CHANGELOG.md
 <% if (documentation) { -%>
 /docs
 <% } -%>
-<% if (useYarn2 && inRoot) { -%>
-/.pnp.js
+<% if (packageManager === 'yarn' && inRoot) { -%>
 /.yarn/**/*
+<% if (yarnNodeLinker === 'pnp') { -%>
+/.pnp.js
+<% } -%>
 <% } -%>
 <% if (workspaces) { -%>
 <% for (let workspace of workspaces) { -%>

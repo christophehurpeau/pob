@@ -21,10 +21,10 @@ export default class LibDocGenerator extends Generator {
       desc: 'Coverage.',
     });
 
-    this.option('useYarn2', {
-      type: Boolean,
-      required: false,
-      defaults: false,
+    this.option('packageManager', {
+      type: String,
+      defaults: 'yarn',
+      desc: 'yarn or npm',
     });
 
     this.option('packageNames', {
@@ -93,7 +93,7 @@ export default class LibDocGenerator extends Generator {
             entryPoints,
             packagePaths: filteredPackages.map((p) => p.path),
             repositoryUrl: pkg.homepage, // or pkg.repository.replace(/\.git$/, '')
-            useYarn2: this.options.useYarn2,
+            packageManager: this.options.packageManager,
             readme: existingConfig.typedocOptions.readme || 'README.md',
           },
         );

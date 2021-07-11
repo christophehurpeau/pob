@@ -68,9 +68,11 @@ export default class CommonTypescriptGenerator extends Generator {
           yoConfig.pob.monorepo.typescript;
 
         if (composite) {
-          packageUtils.addOrRemoveDevDependencies(pkg, inLerna.isRootYarn2, [
-            'typescript',
-          ]);
+          packageUtils.addOrRemoveDevDependencies(
+            pkg,
+            inLerna.rootPackageManager === 'yarn',
+            ['typescript'],
+          );
 
           monorepoPackageNames = yoConfig.pob.monorepo.packageNames.filter(
             (packageName) =>

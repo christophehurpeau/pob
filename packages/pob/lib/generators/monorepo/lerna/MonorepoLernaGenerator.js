@@ -17,10 +17,10 @@ export default class MonorepoLernaGenerator extends Generator {
       desc: 'is app project',
     });
 
-    this.option('useYarn2', {
+    this.option('packageManager', {
       type: Boolean,
-      defaults: false,
-      desc: 'is yarn 2 monorepo',
+      defaults: 'yarn',
+      desc: 'yarn or npm',
     });
   }
 
@@ -70,16 +70,6 @@ export default class MonorepoLernaGenerator extends Generator {
           npmClient: 'yarn',
           useWorkspaces: true,
         };
-
-    if (!this.npm) {
-      if (!this.options.useYarn2) {
-        lernaConfig.command = {
-          publish: {
-            npmClient: 'npm',
-          },
-        };
-      }
-    }
 
     if (!lernaConfig.command) lernaConfig.command = {};
     if (!lernaConfig.command.publish) lernaConfig.command.publish = {};
@@ -178,7 +168,7 @@ export default class MonorepoLernaGenerator extends Generator {
 
     const monorepoConfig = this.config.get('monorepo');
     const packageManager = this.npm ? 'npm' : 'yarn';
-    const useYarn2WorkspacesCommand = false; // this.options.useYarn2;
+    const useYarnWorkspacesCommand = false; // this.options.packageManager === 'yarn';
 
     packageUtils.addScripts(pkg, {
       lint: `${packageManager} run lint:prettier && ${packageManager} run lint:eslint`,
@@ -187,16 +177,18 @@ export default class MonorepoLernaGenerator extends Generator {
         monorepoConfig &&
         monorepoConfig.eslint &&
         // TODO yarn --cwd doesnt work inside script in package with yarn 2
-        (this.packagesConfig.length < 25 || this.options.useYarn2)
+        (this.packagesConfig.length < 25 ||
+          this.options.packageManager === 'yarn')
           ? 'eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet .'
           : 'lerna run --stream lint',
       preversion: [
         monorepoConfig &&
         monorepoConfig.eslint &&
-        (this.packagesConfig.length < 25 || this.options.useYarn2)
+        (this.packagesConfig.length < 25 ||
+          this.options.packageManager === 'yarn')
           ? `${packageManager} run lint`
           : `${packageManager} run lint:prettier && ${packageManager} run lint:eslint${
-              useYarn2WorkspacesCommand ? '' : ' --since'
+              useYarnWorkspacesCommand ? '' : ' --since'
             }`,
         withBabel && `${packageManager} run build`,
         'repository-check-dirty',
@@ -207,7 +199,7 @@ export default class MonorepoLernaGenerator extends Generator {
       // prepublishOnly: 'repository-check-dirty',
       release: [
         `${
-          this.options.useYarn2 ? '' : 'cross-env '
+          this.options.packageManager === 'yarn' ? '' : 'cross-env '
         }GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release'`,
         !this.options.isAppProject && 'lerna publish from-git',
       ]
@@ -217,7 +209,7 @@ export default class MonorepoLernaGenerator extends Generator {
 
     packageUtils.addOrRemoveScripts(pkg, withTests, {
       test: `${
-        useYarn2WorkspacesCommand
+        useYarnWorkspacesCommand
           ? 'yarn workspaces foreach --parallel -Av run'
           : 'lerna run --stream'
       } test`,
@@ -225,12 +217,12 @@ export default class MonorepoLernaGenerator extends Generator {
 
     packageUtils.addOrRemoveScripts(pkg, withBabel, {
       build: `${
-        useYarn2WorkspacesCommand
+        useYarnWorkspacesCommand
           ? 'yarn workspaces foreach -Av run'
           : 'lerna run --stream'
       } build`,
       watch: `${
-        useYarn2WorkspacesCommand
+        useYarnWorkspacesCommand
           ? 'yarn workspaces foreach --parallel --exclude "*-example" -Av run'
           : 'lerna run --parallel --ignore "*-example"'
       } watch`,
@@ -238,7 +230,7 @@ export default class MonorepoLernaGenerator extends Generator {
 
     // packageUtils.addOrRemoveScripts(pkg, withTypescript, {
     //   'build:definitions': `${
-    //     useYarn2WorkspacesCommand
+    //     useYarnWorkspacesCommand
     //       ? 'yarn workspaces foreach --parallel --exclude "*-example" -Av run'
     //       : 'lerna run --stream'
     //   } build:definitions`,
@@ -246,7 +238,7 @@ export default class MonorepoLernaGenerator extends Generator {
 
     // if (withTypescript) {
     //   pkg.scripts.build += `${packageManager} run build:definitions${
-    //     useYarn2WorkspacesCommand ? '' : ' --since'
+    //     useYarnWorkspacesCommand ? '' : ' --since'
     //   }`;
     // }
 
@@ -312,19 +304,17 @@ export default class MonorepoLernaGenerator extends Generator {
         },
       );
     });
-    if (this.npm) {
-      this.spawnCommandSync('npm', ['install']);
-      this.spawnCommandSync('npm', ['run', 'preversion']);
-    } else {
-      this.spawnCommandSync('yarn', ['install']);
-      if (this.options.useYarn2) {
-        this.spawnCommandSync('yarn', ['dedupe']);
-      } else {
-        this.spawnCommandSync('yarn', ['yarn-deduplicate', '-s', 'fewer']);
-        this.spawnCommandSync('yarn', ['yarn-deduplicate']);
+
+    switch (this.options.packageManager) {
+      case 'npm':
+        this.spawnCommandSync('npm', ['install']);
+        this.spawnCommandSync('npm', ['run', 'preversion']);
+        break;
+      case 'yarn':
         this.spawnCommandSync('yarn', ['install']);
-      }
-      this.spawnCommandSync('yarn', ['run', 'preversion']);
+        this.spawnCommandSync('yarn', ['dedupe']);
+        this.spawnCommandSync('yarn', ['run', 'preversion']);
+        break;
     }
   }
 }

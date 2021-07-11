@@ -28,11 +28,11 @@ const getInLernaThings = () => {
     lernaJsonPath,
     rootPath: rootMonorepo,
     root: rootMonorepo === cwd,
-    isRootYarn2:
+    rootPackageManager:
       rootYoConfig &&
       rootYoConfig.pob &&
       rootYoConfig.pob.project &&
-      rootYoConfig.pob.project.yarn2,
+      rootYoConfig.pob.project.packageManager,
     relative: path.relative(rootMonorepo, cwd),
     rootYoConfig,
     pobConfig: rootYoConfig && rootYoConfig.pob,

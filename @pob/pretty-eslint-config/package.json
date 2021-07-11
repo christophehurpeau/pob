@@ -25,9 +25,7 @@
     "./package.json": "./package.json"
   },
   "sideEffects": false,
-  "bin": {
-    "pretty-eslint-config": "./bin/pretty-eslint-config.js"
-  },
+  "bin": "./bin/pretty-eslint-config.js",
   "scripts": {
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn --cwd ../.. run eslint --report-unused-disable-directives --quiet @pob/pretty-eslint-config"

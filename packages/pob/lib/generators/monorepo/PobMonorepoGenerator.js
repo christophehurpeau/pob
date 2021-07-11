@@ -39,10 +39,18 @@ export default class PobMonorepoGenerator extends Generator {
       desc: 'app project, no pusblishing on npm',
     });
 
-    this.option('useYarn2', {
-      type: Boolean,
+    this.option('packageManager', {
+      type: String,
+      defaults: 'yarn',
+      desc: 'yarn or npm',
+    });
+
+    this.option('yarnNodeLinker', {
+      type: String,
       required: false,
-      defaults: false,
+      defaults: 'pnp',
+      desc:
+        'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
   }
 
@@ -188,6 +196,7 @@ export default class PobMonorepoGenerator extends Generator {
       codecov: this.pobLernaConfig.codecov,
       documentation: this.pobLernaConfig.documentation,
       updateOnly: this.options.updateOnly,
+      packageManager: this.options.packageManager,
     });
 
     this.composeWith('pob:common:husky', {});
@@ -196,7 +205,8 @@ export default class PobMonorepoGenerator extends Generator {
       documentation: this.pobLernaConfig.documentation,
       typescript: this.pobLernaConfig.typescript,
       testing: this.pobLernaConfig.testing,
-      useYarn2: this.options.useYarn2,
+      packageManager: this.options.packageManager,
+      yarnNodeLinker: this.options.yarnNodeLinker,
       appTypes: JSON.stringify(getAppTypes(this.packageConfigs)),
       ignorePaths:
         this.pobLernaConfig.typescript && hasDist(this.packageConfigs)
@@ -209,7 +219,7 @@ export default class PobMonorepoGenerator extends Generator {
       testing: this.pobLernaConfig.testing,
       packageNames: JSON.stringify(packageNames),
       packagePaths: JSON.stringify(packagePaths),
-      useYarn2: this.options.useYarn2,
+      packageManager: this.options.packageManager,
     });
     // Always add a gitignore, because npm publish uses it.
     this.composeWith('pob:core:gitignore', {

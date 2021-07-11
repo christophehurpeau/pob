@@ -5,12 +5,12 @@
       "authorEmail": "christophe@hurpeau.com",
       "authorUrl": "https://christophe.hurpeau.com"
     },
-    "project": {
-      "type": "lib"
-    },
     "lib": {
       "documentation": false,
       "testing": false
+    },
+    "project": {
+      "type": "lib"
     }
   }
 }

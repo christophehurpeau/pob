@@ -1,4 +1,3 @@
-import fs from 'fs';
 import Generator from 'yeoman-generator';
 import ensureJsonFileFormatted from '../../utils/ensureJsonFileFormatted.js';
 import inLerna from '../../utils/inLerna.js';
@@ -67,7 +66,7 @@ export default class PobBaseGenerator extends Generator {
 
   async prompting() {
     let config = this.config.get('project');
-    if (config && config.type) {
+    if (config && config.type && config.packageManager) {
       this.projectConfig = config;
       return;
     }
@@ -78,26 +77,41 @@ export default class PobBaseGenerator extends Generator {
       oldConfigStorage.delete('type');
       oldConfigStorage.delete('project');
     }
-    this.projectConfig = await this.prompt([
+
+    if (config.yarn2) {
+      config.yarnNodeLinker = 'pnp';
+      delete config.yarn2;
+    }
+
+    const responses = await this.prompt([
       {
-        type: 'list',
+        when: () => !config.type,
         name: 'type',
         message: 'What kind of project is this ?',
-        default: (config && config.type) || this.options.type || 'lib',
+        type: 'list',
         choices: ['lib', 'app'],
+        default: (config && config.type) || this.options.type || 'lib',
       },
       {
-        type: 'confirm',
-        name: 'yarn2',
-        message: 'Use yarn 2 ?',
-        when: () => this.isRoot,
-        default:
-          config && config.yarn2 !== undefined
-            ? config.yarn2
-            : fs.existsSync('.yarnrc.yml'),
+        when: () => this.isRoot && !config.packageManager,
+        name: 'packageManager',
+        message: 'Witch package manager do you want to use ?',
+        type: 'list',
+        choices: ['yarn', 'npm'],
+        default: config.packageManager || 'yarn',
+      },
+      {
+        when: ({ packageManager = config.packageManager }) =>
+          this.isRoot && packageManager === 'yarn' && !config.yarnNodeLinker,
+        name: 'yarnNodeLinker',
+        message: 'Witch Linker do you want to use ?',
+        type: 'list',
+        choices: ['node-modules', 'pnp'],
+        default: config.yarnNodeLinker || 'node-modules',
       },
     ]);
 
+    this.projectConfig = { ...config, ...responses };
     this.config.set('project', this.projectConfig);
   }
 
@@ -111,7 +125,7 @@ export default class PobBaseGenerator extends Generator {
       this.composeWith('pob:monorepo:lerna', {
         force: this.options.force,
         isAppProject: this.projectConfig.type === 'app',
-        useYarn2: this.projectConfig.yarn2,
+        packageManager: this.projectConfig.packageManager,
       });
     }
 
@@ -143,21 +157,18 @@ export default class PobBaseGenerator extends Generator {
       app: this.projectConfig.type === 'app',
     });
 
-    this.npm = this.fs.exists('package-lock.json');
-
     this.composeWith('pob:core:vscode', {
       root: this.isRoot,
-      yarn2: this.projectConfig.yarn2,
-      npm: this.npm,
+      packageManager: this.projectConfig.packageManager,
+      yarnNodeLinker: this.projectConfig.yarnNodeLinker,
       typescript: !!(pkg.devDependencies && pkg.devDependencies.typescript),
     });
 
-    if (this.isRoot && !this.npm) {
-      this.composeWith('pob:core:yarn', {
-        type: this.projectConfig.type,
-        yarn2: this.projectConfig.yarn2,
-      });
-    }
+    this.composeWith('pob:core:yarn', {
+      type: this.projectConfig.type,
+      enable: this.isRoot && this.projectConfig.packageManager === 'yarn',
+      yarnNodeLinker: this.projectConfig.yarnNodeLinker,
+    });
 
     if (!this.inLerna) {
       this.composeWith('pob:core:git');
@@ -184,7 +195,8 @@ export default class PobBaseGenerator extends Generator {
       this.composeWith('pob:monorepo', {
         updateOnly: this.options.updateOnly,
         isAppProject: this.projectConfig.type === 'app',
-        useYarn2: this.projectConfig.yarn2,
+        packageManager: this.projectConfig.packageManager,
+        yarnNodeLinker: this.projectConfig.yarnNodeLinker,
       });
     } else {
       switch (this.projectConfig.type) {
@@ -192,14 +204,16 @@ export default class PobBaseGenerator extends Generator {
           this.composeWith('pob:lib', {
             updateOnly: this.options.updateOnly,
             fromPob: this.options.fromPob,
-            useYarn2: this.projectConfig.yarn2,
+            packageManager: this.projectConfig.packageManager,
+            yarnNodeLinker: this.projectConfig.yarnNodeLinker,
           });
           break;
         case 'app':
           this.composeWith('pob:app', {
             updateOnly: this.options.updateOnly,
             fromPob: this.options.fromPob,
-            useYarn2: this.projectConfig.yarn2,
+            packageManager: this.projectConfig.packageManager,
+            yarnNodeLinker: this.projectConfig.yarnNodeLinker,
           });
           break;
         default:
@@ -216,17 +230,14 @@ export default class PobBaseGenerator extends Generator {
 
   install() {
     if (this.options.fromPob) return;
-    if (this.npm) {
-      this.spawnCommandSync('npm', ['install']);
-    } else {
-      this.spawnCommandSync('yarn', ['install']);
-      if (this.projectConfig.yarn2) {
+
+    switch (this.projectConfig.packageManager) {
+      case 'npm':
+        this.spawnCommandSync('npm', ['install']);
+        break;
+      case 'yarn':
         this.spawnCommandSync('yarn', ['dedupe']);
-      } else if (!inLerna || inLerna.root) {
-        this.spawnCommandSync('yarn', ['yarn-deduplicate', '-s', 'fewer']);
-        this.spawnCommandSync('yarn', ['yarn-deduplicate']);
-        this.spawnCommandSync('yarn', ['install']);
-      }
+        break;
     }
   }
 

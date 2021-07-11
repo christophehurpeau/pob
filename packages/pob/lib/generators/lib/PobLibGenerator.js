@@ -22,10 +22,18 @@ export default class PobLibGenerator extends Generator {
       defaults: false,
     });
 
-    this.option('useYarn2', {
-      type: Boolean,
+    this.option('packageManager', {
+      type: String,
+      defaults: 'yarn',
+      desc: 'yarn or npm',
+    });
+
+    this.option('yarnNodeLinker', {
+      type: String,
       required: false,
-      defaults: false,
+      defaults: 'node-modules',
+      desc:
+        'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
   }
 
@@ -243,13 +251,15 @@ export default class PobLibGenerator extends Generator {
       documentation: !!this.pobjson.documentation,
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
       ci: this.pobjson.testing && this.pobjson.testing.ci,
+      packageManager: this.options.packageManager,
     });
 
     // must be after testing
     this.composeWith('pob:common:format-lint', {
       documentation: !!this.pobjson.documentation,
       testing: this.pobjson.testing,
-      useYarn2: this.options.useYarn2,
+      packageManager: this.options.packageManager,
+      yarnNodeLinker: this.options.yarnNodeLinker,
       ignorePaths: withBabel ? '/dist' : '',
     });
 

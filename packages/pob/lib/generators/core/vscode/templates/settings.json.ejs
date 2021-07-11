@@ -1,11 +1,13 @@
 {
-<% if (yarn2) { -%>
+<% if (yarn) { -%>
+<% if (pnp) { -%>
   // yarn berry
   "eslint.nodePath": ".yarn/sdks",
   "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
 <% if (typescript) { -%>
   "typescript.tsdk": ".yarn/sdks/typescript/lib",
   "typescript.enablePromptUseWorkspaceTsdk": true,
+<% } -%>
 <% } -%>
   "search.exclude": {
     "**/.yarn": true,

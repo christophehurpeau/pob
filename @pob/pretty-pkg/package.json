@@ -25,9 +25,7 @@
     "./package.json": "./package.json"
   },
   "sideEffects": false,
-  "bin": {
-    "pretty-pkg": "./bin/pretty-pkg.js"
-  },
+  "bin": "./bin/pretty-pkg.js",
   "scripts": {
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn --cwd ../.. run eslint --report-unused-disable-directives --quiet @pob/pretty-pkg"

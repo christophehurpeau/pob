@@ -24,10 +24,18 @@ export default class PobAppGenerator extends Generator {
       defaults: false,
     });
 
-    this.option('useYarn2', {
-      type: Boolean,
+    this.option('packageManager', {
+      type: String,
+      defaults: 'yarn',
+      desc: 'yarn or npm',
+    });
+
+    this.option('yarnNodeLinker', {
+      type: String,
       required: false,
-      defaults: false,
+      defaults: 'node-modules',
+      desc:
+        'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
   }
 
@@ -144,6 +152,7 @@ export default class PobAppGenerator extends Generator {
       documentation: false,
       codecov: false,
       ci: this.appConfig.ci,
+      packageManager: this.options.packageManager,
     });
 
     this.composeWith('pob:common:format-lint', {
@@ -153,7 +162,8 @@ export default class PobAppGenerator extends Generator {
       node,
       browser,
       enableSrcResolver: true,
-      useYarn2: this.options.useYarn2,
+      packageManager: this.options.packageManager,
+      yarnNodeLinker: this.options.yarnNodeLinker,
       ignorePaths: ignorePaths.join('\n'),
     });
 

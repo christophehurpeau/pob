@@ -20,13 +20,11 @@ babel.config.json
 .yo-rc.json
 <% if (!inLerna) { -%>
 /renovate.json
-<% if (!npm) { -%>
+<% if (yarn) { -%>
 /yarn.lock
-<% if (yarn2) { -%>
 /.yarn
 /.yarnrc.yml
 /.pnp.js
-<% } -%>
 <% } -%>
 <% } -%>
 

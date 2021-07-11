@@ -51,6 +51,20 @@ export default class CommonLintGenerator extends Generator {
       required: false,
       desc: 'list of ignore paths to add',
     });
+
+    this.option('packageManager', {
+      type: String,
+      defaults: 'yarn',
+      desc: 'yarn or npm',
+    });
+
+    this.option('yarnNodeLinker', {
+      type: String,
+      required: false,
+      defaults: 'node-modules',
+      desc:
+        'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
+    });
   }
 
   writing() {
@@ -115,7 +129,8 @@ export default class CommonLintGenerator extends Generator {
         {
           inRoot: !inLerna || inLerna.root,
           documentation: this.options.documentation,
-          useYarn2: this.options.useYarn2,
+          packageManager: this.options.packageManager,
+          yarnNodeLinker: this.options.yarnNodeLinker,
           workspaces: pkg.workspaces,
           hasApp: this.options.hasApp,
           ignorePatterns: [...ignorePatterns],
@@ -158,16 +173,13 @@ export default class CommonLintGenerator extends Generator {
     const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
     const globalEslint = yoConfigPobMonorepo && yoConfigPobMonorepo.eslint;
     const composite = yoConfigPobMonorepo && yoConfigPobMonorepo.typescript;
-    const isYarn2 =
-      inLerna.pobConfig &&
-      inLerna.pobConfig.project &&
-      inLerna.pobConfig.project.yarn2;
+    const packageManager = inLerna.rootPackageManager;
     const lernaProjectType =
       inLerna.pobConfig &&
       inLerna.pobConfig.project &&
       inLerna.pobConfig.project.type;
 
-    if (globalEslint && !(inLerna && inLerna.root) && !isYarn2) {
+    if (globalEslint && !(inLerna && inLerna.root)) {
       packageUtils.removeDevDependencies(
         pkg,
         [
@@ -197,11 +209,11 @@ export default class CommonLintGenerator extends Generator {
         !globalEslint ||
           (inLerna && inLerna.root) ||
           lernaProjectType === 'app' ||
-          isYarn2,
+          packageManager === 'yarn',
         ['eslint'],
       );
       const shouldHavePluginsDependencies =
-        !globalEslint || !inLerna || isYarn2;
+        !globalEslint || !inLerna || packageManager === 'yarn';
 
       if (
         !pkg.name.startsWith('eslint-config') &&
@@ -222,13 +234,20 @@ export default class CommonLintGenerator extends Generator {
         );
 
         if (inLerna && inLerna.root) {
-          packageUtils.updateDevDependenciesIfPresent(pkg, [
-            '@pob/eslint-config-typescript',
-            '@pob/eslint-config-typescript-react',
-          ]);
+          if (this.options.typescript) {
+            packageUtils.updateDevDependenciesIfPresent(pkg, [
+              '@pob/eslint-config-typescript',
+              '@pob/eslint-config-typescript-react',
+            ]);
+          } else if (pkg.name !== '@pob/eslint-config-monorepo') {
+            packageUtils.removeDevDependencies(pkg, [
+              '@pob/eslint-config-typescript',
+              '@pob/eslint-config-typescript-react',
+            ]);
+          }
           packageUtils.addOrRemoveDevDependencies(
             pkg,
-            shouldHavePluginsDependencies,
+            this.options.typescript && shouldHavePluginsDependencies,
             ['@typescript-eslint/eslint-plugin', '@typescript-eslint/parser'],
           );
         } else {

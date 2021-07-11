@@ -15,39 +15,50 @@ export default class CoreYarnGenerator extends Generator {
       desc: 'Project type',
     });
 
-    this.option('yarn2', {
+    this.option('enable', {
       type: Boolean,
+      required: true,
+      desc: 'Enable yarn',
+    });
+
+    this.option('yarnNodeLinker', {
+      type: String,
       required: false,
-      defaults: true,
-      desc: 'Use yarn 2',
+      defaults: 'node-modules',
+      desc:
+        'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
   }
 
   initializing() {
-    if (this.options.yarn2) {
+    if (this.options.enable) {
       // dont use this.fs here, as it will cache the result
       if (!fs.existsSync('.yarnrc.yml')) {
         // yarn 2 not yet installed
         // https://yarnpkg.com/getting-started/install
         this.spawnCommandSync('yarn', ['set', 'version', 'berry']);
+        this.spawnCommandSync('yarn', ['set', 'version', 'latest']);
       }
 
       const configString = this.fs.read('.yarnrc.yml');
       const config = yarnParsers.parseSyml(configString);
       config.defaultSemverRangePrefix = this.options.type === 'app' ? '' : '^';
+      config.nodeLinker = this.options.yarnNodeLinker;
       writeAndFormat(this.fs, '.yarnrc.yml', yarnParsers.stringifySyml(config));
-    } else {
-      this.fs.delete('.yarn');
     }
   }
 
   writing() {
-    if (this.options.yarn2) {
+    if (this.options.enable) {
       this.fs.copyTpl(
         this.templatePath('yarn_gitignore.ejs'),
         this.destinationPath('.yarn/.gitignore'),
         {},
       );
+    } else {
+      this.fs.delete('.yarn');
+      this.fs.delete('.yarnrc.yml');
+      this.fs.delete('.yarn.lock');
     }
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
@@ -56,14 +67,16 @@ export default class CoreYarnGenerator extends Generator {
   }
 
   end() {
-    if (this.options.yarn2) {
+    if (this.options.enable) {
       this.spawnCommandSync('yarn', ['set', 'version', 'latest']);
-      this.spawnCommandSync('yarn', [
-        'dlx',
-        '@yarnpkg/pnpify',
-        '--sdk',
-        'vscode',
-      ]);
+      if (this.options.yarnNodeLinker === 'pnp') {
+        this.spawnCommandSync('yarn', [
+          'dlx',
+          '@yarnpkg/pnpify',
+          '--sdk',
+          'vscode',
+        ]);
+      }
       this.spawnCommandSync('yarn', ['prettier', '--write', '.vscode']);
     }
   }

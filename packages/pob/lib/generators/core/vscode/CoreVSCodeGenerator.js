@@ -12,18 +12,19 @@ export default class CoreVSCodeGenerator extends Generator {
       desc: 'Is root',
     });
 
-    this.option('yarn2', {
-      type: Boolean,
+    this.option('packageManager', {
+      type: String,
       required: false,
-      defaults: '',
-      desc: 'Uses yarn 2.',
+      defaults: 'yarn',
+      desc: 'yarn|npm.',
     });
 
-    this.option('npm', {
-      type: Boolean,
+    this.option('yarnNodeLinker', {
+      type: String,
       required: false,
-      defaults: '',
-      desc: 'Uses npm.',
+      defaults: 'node-modules',
+      desc:
+        'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
 
     this.option('typescript', {
@@ -41,7 +42,7 @@ export default class CoreVSCodeGenerator extends Generator {
         this.templatePath('extensions.json.ejs'),
         this.destinationPath('.vscode/extensions.json'),
         {
-          yarn2: this.options.yarn2,
+          yarn: this.options.packageManager === 'yarn',
         },
       );
       copyAndFormatTpl(
@@ -49,8 +50,9 @@ export default class CoreVSCodeGenerator extends Generator {
         this.templatePath('settings.json.ejs'),
         this.destinationPath('.vscode/settings.json'),
         {
-          yarn2: this.options.yarn2,
-          npm: this.options.npm,
+          yarn: this.options.packageManager === 'yarn',
+          pnp: this.options.yarnNodeLinker === 'pnp',
+          npm: this.options.packageManager === 'npm',
           typescript: this.options.typescript,
         },
       );

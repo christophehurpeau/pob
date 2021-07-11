@@ -35,6 +35,12 @@ export default class CommonTestingGenerator extends Generator {
       required: true,
       desc: 'Include documentation generation',
     });
+
+    this.option('packageManager', {
+      type: String,
+      defaults: 'yarn',
+      desc: 'yarn or npm',
+    });
   }
 
   default() {
@@ -45,6 +51,7 @@ export default class CommonTestingGenerator extends Generator {
         typescript: this.options.typescript,
         documentation: this.options.documentation,
         codecov: this.options.codecov,
+        packageManager: this.options.packageManager,
       });
     } else {
       this.composeWith('pob:core:ci', {
