@@ -13,7 +13,7 @@ if (!process.env.INIT_CWD) {
   process.exit(1);
 }
 
-process.chdir(process.env.INIT_CWD);
+process.chdir(process.env.PROJECT_CWD || process.env.INIT_CWD);
 
 const pkg = JSON.parse(fs.readFileSync(path.resolve('package.json')));
 
