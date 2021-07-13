@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "pob-dependencies": "^5.2.0",
-    "prettier": "2.2.1"
+    "prettier": "2.3.2"
   },
   "renovate-config": {
     "default": {
