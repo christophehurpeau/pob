@@ -8528,7 +8528,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isbinaryfile@npm:^4.0.0":
+"isbinaryfile@npm:^4.0.0, isbinaryfile@npm:^4.0.8":
   version: 4.0.8
   resolution: "isbinaryfile@npm:4.0.8"
   checksum: 414258852a8962a0e1c6dcbebfc0422489cc7684488fcde6f08de2378596d4888696b3593b40df5f9c7897538891d006fd3edc35994cc75473d71e4012aa2263
@@ -9988,23 +9988,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mem-fs-editor@npm:8.1.2, mem-fs-editor@npm:^8.1.2 || ^9.0.0":
-  version: 8.1.2
-  resolution: "mem-fs-editor@npm:8.1.2"
+"mem-fs-editor@npm:9.0.1, mem-fs-editor@npm:^8.1.2 || ^9.0.0":
+  version: 9.0.1
+  resolution: "mem-fs-editor@npm:9.0.1"
   dependencies:
+    binaryextensions: ^4.15.0
     commondir: ^1.0.1
     deep-extend: ^0.6.0
     ejs: ^3.1.6
-    globby: ^11.0.2
-    isbinaryfile: ^4.0.0
+    globby: ^11.0.3
+    isbinaryfile: ^4.0.8
     multimatch: ^5.0.0
     normalize-path: ^3.0.0
+    textextensions: ^5.12.0
   peerDependencies:
-    mem-fs: ^1.2.0 || ^2.0.0
+    mem-fs: ^2.1.0
   peerDependenciesMeta:
     mem-fs:
       optional: true
-  checksum: 411dcba8421abc716f9d60bddef87fbc784aafe7225ecddfe46e4b0dad877358ce24af6132bdbb385f16c74b9ae365f5f697306b6d5bb018949a8777ae3faab6
+  checksum: 09a4115d1447795e03d7e26dab0c283137465deeb444c9966311001012135a967596447c8dd2e14ff86064d2688fbf0d6ef6ba598054a01aec702b57f4bffaaf
   languageName: node
   linkType: hard
 
@@ -11721,7 +11723,7 @@ __metadata:
     lodash.camelcase: ^4.3.0
     lodash.kebabcase: ^4.1.1
     mem-fs: 1.2.0
-    mem-fs-editor: 8.1.2
+    mem-fs-editor: 9.0.1
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
     pob-dependencies: ^5.2.0
