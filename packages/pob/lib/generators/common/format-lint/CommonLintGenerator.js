@@ -62,8 +62,7 @@ export default class CommonLintGenerator extends Generator {
       type: String,
       required: false,
       defaults: 'node-modules',
-      desc:
-        'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
+      desc: 'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
   }
 
@@ -444,12 +443,9 @@ export default class CommonLintGenerator extends Generator {
       const srcDirectory = useBabel ? 'src' : 'lib';
       const lintRootJsFiles = (useBabel && useNode) || !inLerna;
 
-      const lintPaths = [
-        srcDirectory,
-        'bin',
-        'scripts',
-        'migrations',
-      ].filter((dir) => fs.existsSync(this.destinationPath(dir)));
+      const lintPaths = [srcDirectory, 'bin', 'scripts', 'migrations'].filter(
+        (dir) => fs.existsSync(this.destinationPath(dir)),
+      );
 
       if (lintRootJsFiles) {
         lintPaths.unshift('*.js');
