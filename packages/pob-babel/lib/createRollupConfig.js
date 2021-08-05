@@ -85,9 +85,10 @@ export default function createRollupConfig({
     const devSuffix = production ? '' : '-dev';
 
     const typescript = entryPath.endsWith('.ts') || entryPath.endsWith('.tsx');
-    const extensions = (typescript
-      ? ['.ts', jsx && '.tsx', '.json']
-      : ['.js', jsx && '.jsx', '.json']
+    const extensions = (
+      typescript
+        ? ['.ts', jsx && '.tsx', '.json']
+        : ['.js', jsx && '.jsx', '.json']
     ).filter(Boolean);
     const preferConst = !(env.target === 'browser' && env.version !== 'modern');
 

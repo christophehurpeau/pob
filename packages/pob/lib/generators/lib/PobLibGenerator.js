@@ -32,8 +32,7 @@ export default class PobLibGenerator extends Generator {
       type: String,
       required: false,
       defaults: 'node-modules',
-      desc:
-        'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
+      desc: 'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
   }
 
