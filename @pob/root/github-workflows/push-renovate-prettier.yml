@@ -43,4 +43,3 @@ jobs:
             -c user.email="christophehurpeau@users.noreply.github.com" \
             commit -m "chore: update pob root" --author="github-actions[bot] <actions@github.com>"
           git push
-
