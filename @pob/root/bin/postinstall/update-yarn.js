@@ -12,5 +12,6 @@ module.exports = function updateYarn({ pkg, pm }) {
       execSync('yarn set version berry');
     }
     execSync('yarn set version latest');
+    execSync('yarn install');
   }
 };

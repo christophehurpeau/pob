@@ -1,6 +1,6 @@
 'use strict';
 
-const prettyPkg = require('@pob/pretty-pkg');
+const fs = require('fs');
 
 const addPobRootPostinstallInScript = (pkg, scriptName) => {
   if (!pkg.scripts[scriptName]) {
@@ -30,5 +30,5 @@ module.exports = function installScripts({ pkg, pm }) {
     addPobRootPostinstallInScript(pkg, 'prepare');
   }
 
-  prettyPkg.writeSync(pkg, 'package.json');
+  fs.writeFileSync('package.json', JSON.stringify(pkg, null, 2), 'utf-8');
 };
