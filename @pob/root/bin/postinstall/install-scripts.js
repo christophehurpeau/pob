@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-
 'use strict';
 
 const prettyPkg = require('@pob/pretty-pkg');
