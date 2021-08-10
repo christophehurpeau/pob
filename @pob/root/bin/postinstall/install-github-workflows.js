@@ -29,6 +29,7 @@ module.exports = function installGithubWorkflows({ pkg, pm }) {
 
   if (!isYarnBerry) return;
 
+  installWorkflow('push-renovate-pob_root');
   installWorkflow('push-renovate-prettier');
 
   installWorkflow(
