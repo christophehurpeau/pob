@@ -1,8 +1,10 @@
 /* eslint-disable complexity */
 
-import sortObject from '@pob/sort-object';
+'use strict';
 
-export default function sortPkg(pkg) {
+const sortObject = require('@pob/sort-object');
+
+module.exports = function sortPkg(pkg) {
   sortObject(pkg, [
     'name',
     'private',
@@ -86,4 +88,4 @@ export default function sortPkg(pkg) {
   if (pkg.resolutions) sortObject(pkg.resolutions);
 
   return pkg;
-}
+};

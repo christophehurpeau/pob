@@ -1,4 +1,6 @@
-export default function sortObject(obj, keys = []) {
+'use strict';
+
+module.exports = function sortObject(obj, keys = []) {
   if (typeof obj !== 'object') throw new Error('Invalid object passed');
   const objCopy = { ...obj };
   const objKeys = Object.keys(obj);
@@ -10,4 +12,4 @@ export default function sortObject(obj, keys = []) {
     obj[key] = objCopy[key];
   });
   return obj;
-}
+};

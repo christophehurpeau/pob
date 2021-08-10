@@ -1,7 +1,9 @@
 #!/usr/bin/env node
 
-import fs from 'fs';
-import { overrideSync } from '../lib/index.js';
+'use strict';
+
+const fs = require('fs');
+const { overrideSync } = require('../lib');
 
 const paths = process.argv.slice(2);
 const pkg = fs.readFileSync('package.json', 'utf-8');

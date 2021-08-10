@@ -1,4 +1,4 @@
 {
   "root": true,
-  "extends": ["@pob/eslint-config/node-module"]
+  "extends": ["@pob/eslint-config/node-commonjs"]
 }

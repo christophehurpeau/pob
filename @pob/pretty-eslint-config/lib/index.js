@@ -1,8 +1,10 @@
-import fs from 'fs';
-import sortEslintConfig from '@pob/sort-eslint-config';
-import prettier from 'prettier';
+'use strict';
 
-export default function prettyEslintConfig(eslintConfig, prettierOptions) {
+const fs = require('fs');
+const sortEslintConfig = require('@pob/sort-eslint-config');
+const prettier = require('prettier');
+
+module.exports = function prettyEslintConfig(eslintConfig, prettierOptions) {
   if (typeof eslintConfig === 'string') {
     eslintConfig = JSON.parse(eslintConfig);
     if (typeof eslintConfig !== 'object') {
@@ -26,14 +28,18 @@ export default function prettyEslintConfig(eslintConfig, prettierOptions) {
     printWidth: 80,
     ...prettierOptions,
   });
-}
+};
 
-export function writeSync(eslintConfig, path, prettierOptions) {
-  const string = prettyEslintConfig(eslintConfig, prettierOptions);
+module.exports.writeSync = function writeSync(
+  eslintConfig,
+  path,
+  prettierOptions,
+) {
+  const string = module.exports(eslintConfig, prettierOptions);
   fs.writeFileSync(path, string, 'utf-8');
-}
+};
 
-export function overrideSync(path, prettierOptions) {
+module.exports.overrideSync = function overrideSync(path, prettierOptions) {
   const eslintConfig = fs.readFileSync(path, 'utf-8');
-  return writeSync(eslintConfig, path, prettierOptions);
-}
+  return module.exports.writeSync(eslintConfig, path, prettierOptions);
+};
