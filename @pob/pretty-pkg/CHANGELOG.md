@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.1](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@3.1.0...@pob/pretty-pkg@3.1.1) (2021-08-10)
+
+
+### Bug Fixes
+
+* go back to commonjs modules for yarn pnp compatibility ([2a6442c](https://github.com/christophehurpeau/pob/commit/2a6442cbc96f221320d796f15d3c84bc1ee4b0ab))
+
+
+
+
+
 # [3.1.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@3.0.0...@pob/pretty-pkg@3.1.0) (2021-07-11)
 
 

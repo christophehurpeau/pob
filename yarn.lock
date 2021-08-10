@@ -2824,22 +2824,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/pretty-eslint-config@^2.1.0, @pob/pretty-eslint-config@workspace:@pob/pretty-eslint-config":
+"@pob/pretty-eslint-config@^2.1.1, @pob/pretty-eslint-config@workspace:@pob/pretty-eslint-config":
   version: 0.0.0-use.local
   resolution: "@pob/pretty-eslint-config@workspace:@pob/pretty-eslint-config"
   dependencies:
-    "@pob/sort-eslint-config": ^2.0.0
+    "@pob/sort-eslint-config": ^2.1.0
     prettier: ^2.1.2
   bin:
     pretty-eslint-config: ./bin/pretty-eslint-config.js
   languageName: unknown
   linkType: soft
 
-"@pob/pretty-pkg@^3.1.0, @pob/pretty-pkg@workspace:@pob/pretty-pkg":
+"@pob/pretty-pkg@^3.1.1, @pob/pretty-pkg@workspace:@pob/pretty-pkg":
   version: 0.0.0-use.local
   resolution: "@pob/pretty-pkg@workspace:@pob/pretty-pkg"
   dependencies:
-    "@pob/sort-pkg": ^3.0.0
+    "@pob/sort-pkg": ^3.1.0
     prettier: ^2.1.2
   bin:
     pretty-pkg: ./bin/pretty-pkg.js
@@ -2850,18 +2850,18 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: ^5.3.1
+    pob-dependencies: ^5.3.2
     prettier: 2.3.2
   languageName: unknown
   linkType: soft
 
-"@pob/root@^5.2.1, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@^5.2.2, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
     "@commitlint/cli": 13.1.0
-    "@pob/pretty-eslint-config": ^2.1.0
-    "@pob/pretty-pkg": ^3.1.0
+    "@pob/pretty-eslint-config": ^2.1.1
+    "@pob/pretty-pkg": ^3.1.1
     husky: ^7.0.0
     lint-staged: 11.1.2
     repository-check-dirty: ^3.1.0
@@ -2879,25 +2879,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/sort-eslint-config@^2.0.0, @pob/sort-eslint-config@workspace:@pob/sort-eslint-config":
+"@pob/sort-eslint-config@^2.1.0, @pob/sort-eslint-config@workspace:@pob/sort-eslint-config":
   version: 0.0.0-use.local
   resolution: "@pob/sort-eslint-config@workspace:@pob/sort-eslint-config"
   dependencies:
-    "@pob/sort-object": ^3.0.0
+    "@pob/sort-object": ^3.1.0
   languageName: unknown
   linkType: soft
 
-"@pob/sort-object@^3.0.0, @pob/sort-object@workspace:@pob/sort-object":
+"@pob/sort-object@^3.1.0, @pob/sort-object@workspace:@pob/sort-object":
   version: 0.0.0-use.local
   resolution: "@pob/sort-object@workspace:@pob/sort-object"
   languageName: unknown
   linkType: soft
 
-"@pob/sort-pkg@^3.0.0, @pob/sort-pkg@workspace:@pob/sort-pkg":
+"@pob/sort-pkg@^3.1.0, @pob/sort-pkg@workspace:@pob/sort-pkg":
   version: 0.0.0-use.local
   resolution: "@pob/sort-pkg@workspace:@pob/sort-pkg"
   dependencies:
-    "@pob/sort-object": ^3.0.0
+    "@pob/sort-object": ^3.1.0
   languageName: unknown
   linkType: soft
 
@@ -11644,7 +11644,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@^5.3.1, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@^5.3.2, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -11657,8 +11657,8 @@ __metadata:
     "@pob/eslint-config-typescript": 45.0.2
     "@pob/eslint-config-typescript-react": 45.0.2
     "@pob/lerna-light": ^4.0.0
-    "@pob/pretty-pkg": ^3.1.0
-    "@pob/root": ^5.2.1
+    "@pob/pretty-pkg": ^3.1.1
+    "@pob/root": ^5.2.2
     "@rollup/plugin-run": 2.1.0
     "@types/jest": 26.0.24
     "@typescript-eslint/eslint-plugin": 4.29.1
@@ -11719,9 +11719,9 @@ __metadata:
   dependencies:
     "@lerna/package-graph": ^4.0.0
     "@lerna/project": ^4.0.0
-    "@pob/sort-eslint-config": ^2.0.0
-    "@pob/sort-object": ^3.0.0
-    "@pob/sort-pkg": ^3.0.0
+    "@pob/sort-eslint-config": ^2.1.0
+    "@pob/sort-object": ^3.1.0
+    "@pob/sort-pkg": ^3.1.0
     "@yarnpkg/parsers": ^2.2.0
     findup-sync: ^4.0.0
     generator-license: ^5.4.0
@@ -11735,7 +11735,7 @@ __metadata:
     mem-fs-editor: 8.1.2
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
-    pob-dependencies: ^5.3.1
+    pob-dependencies: ^5.3.2
     prettier: 2.3.2
     semver: ^7.3.4
     update-notifier: ^5.0.1

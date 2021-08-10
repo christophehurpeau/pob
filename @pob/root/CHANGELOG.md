@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.2](https://github.com/christophehurpeau/pob/compare/@pob/root@5.2.1...@pob/root@5.2.2) (2021-08-10)
+
+
+### Bug Fixes
+
+* go back to commonjs modules for yarn pnp compatibility ([2a6442c](https://github.com/christophehurpeau/pob/commit/2a6442cbc96f221320d796f15d3c84bc1ee4b0ab))
+
+
+
+
+
 ## [5.2.1](https://github.com/christophehurpeau/pob/compare/@pob/root@5.2.0...@pob/root@5.2.1) (2021-08-10)
 
 
