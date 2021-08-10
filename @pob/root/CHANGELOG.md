@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.1](https://github.com/christophehurpeau/pob/compare/@pob/root@5.2.0...@pob/root@5.2.1) (2021-08-10)
+
+
+### Bug Fixes
+
+* **@pob/root:** dont use mjs as they dont work with yarn ([0a4fad4](https://github.com/christophehurpeau/pob/commit/0a4fad4fc29fd195e0652933e767e50ea3a5b474))
+
+
+
+
+
 # [5.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.1.1...@pob/root@5.2.0) (2021-08-10)
 
 
