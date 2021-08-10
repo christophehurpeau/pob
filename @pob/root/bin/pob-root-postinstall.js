@@ -38,3 +38,4 @@ if (pm.name !== 'yarn' && pm.name !== 'npm') {
 
 require('./postinstall/install-husky')({ pkg, pm });
 require('./postinstall/install-github-workflows')({ pkg, pm });
+require('./postinstall/install-scripts')({ pkg, pm });
