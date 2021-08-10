@@ -36,6 +36,7 @@ if (pm.name !== 'yarn' && pm.name !== 'npm') {
   process.exit(1);
 }
 
+require('./postinstall/update-yarn')({ pkg, pm });
 require('./postinstall/install-husky')({ pkg, pm });
 require('./postinstall/install-github-workflows')({ pkg, pm });
 require('./postinstall/install-scripts')({ pkg, pm });
