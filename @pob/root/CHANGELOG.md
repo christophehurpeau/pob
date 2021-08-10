@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.3](https://github.com/christophehurpeau/pob/compare/@pob/root@5.2.2...@pob/root@5.2.3) (2021-08-10)
+
+
+### Bug Fixes
+
+* pkg.bin can be a string if there is only one script ([5990724](https://github.com/christophehurpeau/pob/commit/5990724c19a04d465f0157db7ee47ff2fd740446))
+
+
+
+
+
 ## [5.2.2](https://github.com/christophehurpeau/pob/compare/@pob/root@5.2.1...@pob/root@5.2.2) (2021-08-10)
 
 
