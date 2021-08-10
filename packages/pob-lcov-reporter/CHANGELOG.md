@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@5.0.0...pob-lcov-reporter@5.1.0) (2021-08-10)
+
+
+### Features
+
+* **deps:** update jest monorepo to v27 (major) ([#939](https://github.com/christophehurpeau/pob/issues/939)) ([71701f5](https://github.com/christophehurpeau/pob/commit/71701f52c277451e35560576aef9c14c70dfafea))
+* use yarn berry by default, add nodeLinker option ([dd69f07](https://github.com/christophehurpeau/pob/commit/dd69f07bea029aff1c3a5f1d22f5981cbbee3539))
+
+
+
+
+
 # [5.0.0](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@4.0.1...pob-lcov-reporter@5.0.0) (2021-07-11)
 
 

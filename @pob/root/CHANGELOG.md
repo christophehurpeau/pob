@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.1.1...@pob/root@5.2.0) (2021-08-10)
+
+
+### Bug Fixes
+
+* **@pob/root:** remove postinstall script ([954f4c1](https://github.com/christophehurpeau/pob/commit/954f4c1ed6d44c8ed653cd857aa0bde694ae9de9))
+* **deps:** update dependency lint-staged to v11.0.1 ([#997](https://github.com/christophehurpeau/pob/issues/997)) ([1977fe9](https://github.com/christophehurpeau/pob/commit/1977fe958c37ec4342fb45a17e68e39dbe23f45f))
+* **deps:** update dependency lint-staged to v11.1.1 ([#1006](https://github.com/christophehurpeau/pob/issues/1006)) ([d4eaabe](https://github.com/christophehurpeau/pob/commit/d4eaabe3e3149702252173ff7de89c91e5b5e9be))
+* **deps:** update dependency lint-staged to v11.1.2 ([#1017](https://github.com/christophehurpeau/pob/issues/1017)) ([3a57f51](https://github.com/christophehurpeau/pob/commit/3a57f510a2469a02dfd204dfc4555fa759489f6d))
+
+
+### Features
+
+* update yarn ([e56ce7f](https://github.com/christophehurpeau/pob/commit/e56ce7fbc00721050ce6c42f1290e4d6e14eeba5))
+* **@pob/root:** add postinstall script ([f01fe4b](https://github.com/christophehurpeau/pob/commit/f01fe4bb3afd4bd0decf000bb5088f3fe3edcc0d))
+* install push-renovate-pob_root workflow ([9a2a105](https://github.com/christophehurpeau/pob/commit/9a2a10590c5bb4a5fa3f6f3e19d78d755432daaf))
+* **@pob/root:** remove yarn-deduplicate ([243ebd6](https://github.com/christophehurpeau/pob/commit/243ebd628ede0c3292e5af8ae75d809f131cb637))
+* **deps:** update commitlint monorepo to v13 (major) ([#1005](https://github.com/christophehurpeau/pob/issues/1005)) ([e6194b0](https://github.com/christophehurpeau/pob/commit/e6194b07367b1305f941501915ba6120c0533d9e))
+* improve github workflows ([4a0c8b8](https://github.com/christophehurpeau/pob/commit/4a0c8b8531323f17baccc5c7fea7a455b4784c02))
+* **deps:** update dependency lint-staged to v11.1.0 ([#1004](https://github.com/christophehurpeau/pob/issues/1004)) ([d0e8a91](https://github.com/christophehurpeau/pob/commit/d0e8a9145554f269dabb2870ed88675dcbec904b))
+
+
+
+
+
 ## [5.1.1](https://github.com/christophehurpeau/pob/compare/@pob/root@5.1.0...@pob/root@5.1.1) (2021-07-11)
 
 

@@ -2716,7 +2716,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/commitlint-config@^3.0.0, @pob/commitlint-config@workspace:@pob/commitlint-config":
+"@pob/commitlint-config@^3.1.0, @pob/commitlint-config@workspace:@pob/commitlint-config":
   version: 0.0.0-use.local
   resolution: "@pob/commitlint-config@workspace:@pob/commitlint-config"
   dependencies:
@@ -2850,12 +2850,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: ^5.2.0
+    pob-dependencies: ^5.3.0
     prettier: 2.3.2
   languageName: unknown
   linkType: soft
 
-"@pob/root@^5.1.1, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@^5.2.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -4067,7 +4067,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-pob-babel@^3.0.0, babel-plugin-pob-babel@workspace:packages/babel-plugin-pob-babel":
+"babel-plugin-pob-babel@^3.1.0, babel-plugin-pob-babel@workspace:packages/babel-plugin-pob-babel":
   version: 0.0.0-use.local
   resolution: "babel-plugin-pob-babel@workspace:packages/babel-plugin-pob-babel"
   languageName: unknown
@@ -4200,7 +4200,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-pob-env@^6.0.0, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
+"babel-preset-pob-env@^6.1.0, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
   version: 0.0.0-use.local
   resolution: "babel-preset-pob-env@workspace:packages/babel-preset-pob-env"
   dependencies:
@@ -4214,7 +4214,7 @@ __metadata:
     babel-plugin-fix-class-properties-uninitialized: ^4.0.0
     babel-plugin-import-export-rename: ^1.0.1
     babel-plugin-minify-replace: ^0.5.0
-    babel-plugin-pob-babel: ^3.0.0
+    babel-plugin-pob-babel: ^3.1.0
     babel-preset-optimizations: ^2.0.0
   peerDependencies:
     "@babel/core": ^7.11.6
@@ -11615,7 +11615,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@^28.0.2, pob-babel@workspace:packages/pob-babel":
+"pob-babel@^28.1.0, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -11627,10 +11627,10 @@ __metadata:
     "@types/jest": 26.0.24
     babel-preset-latest-node: ^5.5.1
     babel-preset-modern-browsers: ^15.0.2
-    babel-preset-pob-env: ^6.0.0
+    babel-preset-pob-env: ^6.1.0
     jest: 27.0.6
     minimist-argv: ^1.1.0
-    pob-lcov-reporter: 5.0.0
+    pob-lcov-reporter: ^5.1.0
     rollup: ^2.47.0
     rollup-config-external-dependencies: ^2.0.0
     semver: ^7.3.4
@@ -11644,7 +11644,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@^5.2.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@^5.3.0, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -11652,13 +11652,13 @@ __metadata:
     "@babel/preset-env": 7.15.0
     "@babel/preset-react": 7.14.5
     "@babel/runtime": 7.14.8
-    "@pob/commitlint-config": ^3.0.0
+    "@pob/commitlint-config": ^3.1.0
     "@pob/eslint-config": 45.0.2
     "@pob/eslint-config-typescript": 45.0.2
     "@pob/eslint-config-typescript-react": 45.0.2
     "@pob/lerna-light": ^4.0.0
     "@pob/pretty-pkg": ^3.1.0
-    "@pob/root": ^5.1.1
+    "@pob/root": ^5.2.0
     "@rollup/plugin-run": 2.1.0
     "@types/jest": 26.0.24
     "@typescript-eslint/eslint-plugin": 4.29.1
@@ -11676,8 +11676,8 @@ __metadata:
     eslint-plugin-unicorn: 34.0.1
     jest: 27.0.6
     jest-junit-reporter: 1.1.0
-    pob-babel: ^28.0.2
-    pob-lcov-reporter: ^5.0.0
+    pob-babel: ^28.1.0
+    pob-lcov-reporter: ^5.1.0
     prettier: 2.3.2
     repository-check-dirty: ^3.1.0
     rollup: 2.54.0
@@ -11688,7 +11688,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-lcov-reporter@5.0.0, pob-lcov-reporter@^5.0.0, pob-lcov-reporter@workspace:packages/pob-lcov-reporter":
+"pob-lcov-reporter@^5.1.0, pob-lcov-reporter@workspace:packages/pob-lcov-reporter":
   version: 0.0.0-use.local
   resolution: "pob-lcov-reporter@workspace:packages/pob-lcov-reporter"
   dependencies:
@@ -11735,7 +11735,7 @@ __metadata:
     mem-fs-editor: 8.1.2
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
-    pob-dependencies: ^5.2.0
+    pob-dependencies: ^5.3.0
     prettier: 2.3.2
     semver: ^7.3.4
     update-notifier: ^5.0.1

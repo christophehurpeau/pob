@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-pob-babel@3.0.0...babel-plugin-pob-babel@3.1.0) (2021-08-10)
+
+
+### Features
+
+* **deps:** update dependency prettier to v2.3.2 ([#924](https://github.com/christophehurpeau/pob/issues/924)) ([498cdc2](https://github.com/christophehurpeau/pob/commit/498cdc2dac582b3d6582990627cb92f7f1fb24ac))
+* use yarn berry by default, add nodeLinker option ([dd69f07](https://github.com/christophehurpeau/pob/commit/dd69f07bea029aff1c3a5f1d22f5981cbbee3539))
+
+
+
+
+
 # [3.0.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-pob-babel@2.0.1...babel-plugin-pob-babel@3.0.0) (2021-07-11)
 
 

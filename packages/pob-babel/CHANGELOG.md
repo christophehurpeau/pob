@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [28.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@28.0.2...pob-babel@28.1.0) (2021-08-10)
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.14.8 ([#1002](https://github.com/christophehurpeau/pob/issues/1002)) ([eb7a063](https://github.com/christophehurpeau/pob/commit/eb7a06311d4c735ce8e6902b67f95d1d8a6452b6))
+* **deps:** update babel monorepo to v7.15.0 ([#1016](https://github.com/christophehurpeau/pob/issues/1016)) ([abb0240](https://github.com/christophehurpeau/pob/commit/abb0240b46d732be8d6182a14f27d38977610aa1))
+* **deps:** update dependency prettier to v2.3.2 ([#924](https://github.com/christophehurpeau/pob/issues/924)) ([498cdc2](https://github.com/christophehurpeau/pob/commit/498cdc2dac582b3d6582990627cb92f7f1fb24ac))
+* use yarn berry by default, add nodeLinker option ([dd69f07](https://github.com/christophehurpeau/pob/commit/dd69f07bea029aff1c3a5f1d22f5981cbbee3539))
+
+
+
+
+
 ## [28.0.2](https://github.com/christophehurpeau/pob/compare/pob-babel@28.0.1...pob-babel@28.0.2) (2021-07-11)
 
 

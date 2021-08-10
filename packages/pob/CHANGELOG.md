@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0](https://github.com/christophehurpeau/pob/compare/pob@8.1.1...pob@8.2.0) (2021-08-10)
+
+
+### Features
+
+* **deps:** update dependency prettier to v2.3.2 ([#924](https://github.com/christophehurpeau/pob/issues/924)) ([498cdc2](https://github.com/christophehurpeau/pob/commit/498cdc2dac582b3d6582990627cb92f7f1fb24ac))
+
+
+
+
+
 ## [8.1.1](https://github.com/christophehurpeau/pob/compare/pob@8.1.0...pob@8.1.1) (2021-07-11)
 
 **Note:** Version bump only for package pob

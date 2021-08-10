@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.2.0...pob-dependencies@5.3.0) (2021-08-10)
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.14.8 ([#1002](https://github.com/christophehurpeau/pob/issues/1002)) ([eb7a063](https://github.com/christophehurpeau/pob/commit/eb7a06311d4c735ce8e6902b67f95d1d8a6452b6))
+* **deps:** update babel monorepo to v7.15.0 ([#1016](https://github.com/christophehurpeau/pob/issues/1016)) ([abb0240](https://github.com/christophehurpeau/pob/commit/abb0240b46d732be8d6182a14f27d38977610aa1))
+* **deps:** update dependency @babel/preset-env to v7.14.9 ([#1013](https://github.com/christophehurpeau/pob/issues/1013)) ([fc416d1](https://github.com/christophehurpeau/pob/commit/fc416d11032c7fcce59dbcdd9f54477bbfc84f0f))
+* **deps:** update dependency @rollup/plugin-run to v2.1.0 ([#1010](https://github.com/christophehurpeau/pob/issues/1010)) ([6fa8ae9](https://github.com/christophehurpeau/pob/commit/6fa8ae9f4cdc8b69cec14d4108a9eeafea76c605))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v4.28.3 ([#996](https://github.com/christophehurpeau/pob/issues/996)) ([81893d0](https://github.com/christophehurpeau/pob/commit/81893d054a5c3da8583a92b343dd94f31d713aa2))
+* **deps:** update dependency @typescript-eslint/parser to v4.28.3 ([#995](https://github.com/christophehurpeau/pob/issues/995)) ([c24c238](https://github.com/christophehurpeau/pob/commit/c24c238156d3fa5cfc7a055baf84e4e39d004837))
+* **deps:** update dependency eslint to v7.31.0 ([#1000](https://github.com/christophehurpeau/pob/issues/1000)) ([e6fdb2b](https://github.com/christophehurpeau/pob/commit/e6fdb2bf3fdac1abe0cffa0b83117bb1b05d8085))
+* **deps:** update dependency eslint to v7.32.0 ([#1011](https://github.com/christophehurpeau/pob/issues/1011)) ([68e4c3a](https://github.com/christophehurpeau/pob/commit/68e4c3a77bcda3e716b3476bbd4a8cd5df0fbcba))
+* **deps:** update dependency eslint-import-resolver-node to v0.3.5 ([#1018](https://github.com/christophehurpeau/pob/issues/1018)) ([4abe2f6](https://github.com/christophehurpeau/pob/commit/4abe2f66ad11cecfb9878397a64cf596101c6be3))
+* **deps:** update dependency eslint-plugin-import to v2.24.0 ([#1019](https://github.com/christophehurpeau/pob/issues/1019)) ([6e745da](https://github.com/christophehurpeau/pob/commit/6e745da7a4e6de3af55e019e786c5cd9402786e5))
+* **deps:** update dependency prettier to v2.3.2 ([#924](https://github.com/christophehurpeau/pob/issues/924)) ([498cdc2](https://github.com/christophehurpeau/pob/commit/498cdc2dac582b3d6582990627cb92f7f1fb24ac))
+* **deps:** update dependency rollup to v2.53.2 ([#999](https://github.com/christophehurpeau/pob/issues/999)) ([120678d](https://github.com/christophehurpeau/pob/commit/120678da5c13ba2354d18e1a35db3ec9e07c8de9))
+* **deps:** update dependency rollup to v2.53.3 ([#1003](https://github.com/christophehurpeau/pob/issues/1003)) ([bb984b4](https://github.com/christophehurpeau/pob/commit/bb984b4f60e9f7671e5ddb2414aa5d71f87ae454))
+* **deps:** update dependency rollup to v2.54.0 ([#1007](https://github.com/christophehurpeau/pob/issues/1007)) ([78f7601](https://github.com/christophehurpeau/pob/commit/78f76015227adf6bc6c808dc1dbd882d46acf6bd))
+* **deps:** update dependency standard-version to v9.3.1 ([#998](https://github.com/christophehurpeau/pob/issues/998)) ([fc028dd](https://github.com/christophehurpeau/pob/commit/fc028dd2cf5981e764b99470e732b963f21d4d52))
+* **deps:** update dependency typedoc to v0.21.4 ([#988](https://github.com/christophehurpeau/pob/issues/988)) ([112b10d](https://github.com/christophehurpeau/pob/commit/112b10d5e0ed20f24f9cd7fb28f488b7030e3156))
+* **deps:** update dependency typedoc to v0.21.5 ([#1012](https://github.com/christophehurpeau/pob/issues/1012)) ([acc2c7e](https://github.com/christophehurpeau/pob/commit/acc2c7e8d9df12725445786a60759097c5bda7dc))
+* **deps:** update jest monorepo to v27 (major) ([#939](https://github.com/christophehurpeau/pob/issues/939)) ([71701f5](https://github.com/christophehurpeau/pob/commit/71701f52c277451e35560576aef9c14c70dfafea))
+* **deps:** update typescript-eslint monorepo to v4.28.4 ([#1001](https://github.com/christophehurpeau/pob/issues/1001)) ([bc41ef0](https://github.com/christophehurpeau/pob/commit/bc41ef0f03df3fb60bedf76e282fba80f3d6bf8e))
+* **deps:** update typescript-eslint monorepo to v4.28.5 ([#1008](https://github.com/christophehurpeau/pob/issues/1008)) ([9573810](https://github.com/christophehurpeau/pob/commit/957381059fd3a6aec2fc06b323c3b8c2038ebdad))
+* **deps:** update typescript-eslint monorepo to v4.29.0 ([#1014](https://github.com/christophehurpeau/pob/issues/1014)) ([fc67532](https://github.com/christophehurpeau/pob/commit/fc67532db7dffa027cf18e0192618b211b9e4b18))
+* **deps:** update typescript-eslint monorepo to v4.29.1 ([#1020](https://github.com/christophehurpeau/pob/issues/1020)) ([139bcb2](https://github.com/christophehurpeau/pob/commit/139bcb247295e5b3c7972907bb131c5ba3febf29))
+
+
+
+
+
 # [5.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.1.0...pob-dependencies@5.2.0) (2021-07-11)
 
 

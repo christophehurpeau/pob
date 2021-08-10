@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.1.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@3.0.0...@pob/commitlint-config@3.1.0) (2021-08-10)
+
+
+### Features
+
+* **deps:** update commitlint monorepo to v13 (major) ([#1005](https://github.com/christophehurpeau/pob/issues/1005)) ([e6194b0](https://github.com/christophehurpeau/pob/commit/e6194b07367b1305f941501915ba6120c0533d9e))
+* use yarn berry by default, add nodeLinker option ([dd69f07](https://github.com/christophehurpeau/pob/commit/dd69f07bea029aff1c3a5f1d22f5981cbbee3539))
+
+
+
+
+
 # [3.0.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@2.2.0...@pob/commitlint-config@3.0.0) (2021-07-11)
 
 
