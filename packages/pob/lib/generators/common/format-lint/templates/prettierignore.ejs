@@ -5,7 +5,7 @@ CHANGELOG.md
 <% if (packageManager === 'yarn' && inRoot) { -%>
 /.yarn/**/*
 <% if (yarnNodeLinker === 'pnp') { -%>
-/.pnp.js
+/.pnp.*
 <% } -%>
 <% } -%>
 <% if (workspaces) { -%>
