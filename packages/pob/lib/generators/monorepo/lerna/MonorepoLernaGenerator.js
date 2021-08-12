@@ -18,7 +18,7 @@ export default class MonorepoLernaGenerator extends Generator {
     });
 
     this.option('packageManager', {
-      type: Boolean,
+      type: String,
       defaults: 'yarn',
       desc: 'yarn or npm',
     });
