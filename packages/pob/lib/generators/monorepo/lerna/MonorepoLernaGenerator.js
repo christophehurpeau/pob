@@ -252,7 +252,12 @@ export default class MonorepoLernaGenerator extends Generator {
         postinstall: 'lerna link',
       });
     } else {
-      delete pkg.scripts.postinstall;
+      if (
+        pkg.scripts.postinstall &&
+        !pkg.scripts.postinstall.includes('pob-root-postinstall')
+      ) {
+        delete pkg.scripts.postinstall;
+      }
       if (!pkg.workspaces) {
         pkg.workspaces = ['packages/*'];
       }
