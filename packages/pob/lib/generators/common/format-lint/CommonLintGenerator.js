@@ -178,7 +178,11 @@ export default class CommonLintGenerator extends Generator {
       inLerna.pobConfig.project &&
       inLerna.pobConfig.project.type;
 
-    if (globalEslint && !(inLerna && inLerna.root)) {
+    if (
+      globalEslint &&
+      !(inLerna && inLerna.root) &&
+      packageManager !== 'yarn'
+    ) {
       packageUtils.removeDevDependencies(
         pkg,
         [
@@ -451,10 +455,8 @@ export default class CommonLintGenerator extends Generator {
         lintPaths.unshift('*.js');
       }
 
-      const extArg = !useBabel
-        ? ''
-        : ` --ext .js,.mjs,.ts${hasReact ? ',.tsx' : ''}`;
-      const args = `${extArg} --report-unused-disable-directives --quiet`;
+      const args =
+        '--report-unused-disable-directives --resolve-plugins-relative-to . --quiet';
 
       packageUtils.addScripts(pkg, {
         'lint:eslint': globalEslint
