@@ -70,6 +70,8 @@ export default class CoreYarnGenerator extends Generator {
       this.spawnCommandSync('yarn', ['set', 'version', 'latest']);
       if (this.options.yarnNodeLinker === 'pnp') {
         this.spawnCommandSync('yarn', ['dlx', '@yarnpkg/sdks', 'vscode']);
+      } else {
+        this.fs.delete('.yarn/sdks');
       }
       this.spawnCommandSync('yarn', ['prettier', '--write', '.vscode']);
       this.spawnCommandSync('yarn', ['install']);
