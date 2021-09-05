@@ -25,7 +25,7 @@ const ensureHuskyNotInDevDependencies = (pkg) => {
 };
 
 const writeHook = (hookName, hookContent) => {
-  fs.writeFileSync(path.resolve(`.husky/${hookName}`), hookContent, {
+  fs.writeFileSync(path.resolve(`.husky/${hookName}`), `${hookContent}\n`, {
     mode: '755',
   });
 };
@@ -81,8 +81,7 @@ if [ -n "$(git diff HEAD@{1}..HEAD@{0} -- yarn.lock)" ]; then
       ? '--immutable --immutable-cache'
       : 'yarn install --prefer-offline --pure-lockfile --ignore-optional'
   } || true
-fi
-`;
+fi`;
 
     // https://yarnpkg.com/features/zero-installs
     writeHook('post-checkout', runYarnInstallOnDiff);
