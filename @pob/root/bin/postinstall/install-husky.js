@@ -74,10 +74,20 @@ module.exports = function installHusky({ pkg, pm }) {
     ensureHookDeleted('post-merge');
     ensureHookDeleted('post-rewrite');
   } else {
+    const runYarnInstallOnDiff = `
+if [ -n "$(git diff HEAD@{1}..HEAD@{0} -- yarn.lock)" ]; then
+  yarn install ${
+    isYarnBerry
+      ? '--immutable'
+      : 'yarn install --prefer-offline --pure-lockfile --ignore-optional'
+  }
+fi
+`;
+
     // https://yarnpkg.com/features/zero-installs
-    writeHook('post-checkout', `${pmExec} yarnhook`);
-    writeHook('post-merge', `${pmExec} yarnhook`);
-    writeHook('post-rewrite', `${pmExec} yarnhook`);
+    writeHook('post-checkout', runYarnInstallOnDiff);
+    writeHook('post-merge', runYarnInstallOnDiff);
+    writeHook('post-rewrite', runYarnInstallOnDiff);
   }
 
   const prePushHook = [];
