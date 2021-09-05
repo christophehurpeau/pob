@@ -38,7 +38,7 @@ jobs:
 <% } -%>
 <% if (packageManager === 'yarn') { -%>
       - name: Check Dependencies
-        run: yarn install --immutable
+        run: yarn install --immutable --immutable-cache
 <% } else if (packageManager === 'npm') { -%>
       - name: Install Latest Npm
         run: npm install -g npm@next-7
