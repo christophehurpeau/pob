@@ -5,7 +5,7 @@ import * as packageUtils from '../../utils/package.js';
 
 export default class PobBaseGenerator extends Generator {
   constructor(args, opts) {
-    super(args, opts);
+    super(args, opts, { customInstallTask: true });
 
     this.option('lerna', {
       type: Boolean,
