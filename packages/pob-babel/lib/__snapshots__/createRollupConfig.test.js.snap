@@ -257,7 +257,7 @@ class Test2 extends Test {
 
 const t = new Test2(1, 2, 3);
 
-export default t;
+export { t as default };
 "
 `;
 
@@ -280,7 +280,7 @@ class Test2 extends Test {
 
 const t = new Test2(1, 2, 3);
 
-export default t;
+export { t as default };
 "
 `;
 
@@ -317,7 +317,7 @@ var Test2 = /*#__PURE__*/function (_Test) {
 
 var t = new Test2(1, 2, 3);
 
-export default t;
+export { t as default };
 "
 `;
 
@@ -354,6 +354,6 @@ var Test2 = /*#__PURE__*/function (_Test) {
 
 var t = new Test2(1, 2, 3);
 
-export default t;
+export { t as default };
 "
 `;
