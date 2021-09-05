@@ -184,6 +184,7 @@ export default class PobBaseGenerator extends Generator {
         'yarnhook',
         'lerna',
         '@pob/lerna-light',
+        '@pob/root',
       ]);
       delete pkg.commitlint;
       delete pkg.husky;
