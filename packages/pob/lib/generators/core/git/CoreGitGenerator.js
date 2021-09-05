@@ -89,7 +89,6 @@ export default class CoreGitGenerator extends Generator {
   }
 
   default() {
-    console.log('git: default');
     if (this.gitHost === 'github') {
       this.composeWith('pob:core:git:github', {
         shouldCreate: !this.originUrl,
