@@ -9340,7 +9340,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json5@npm:^2.1.2":
+"json5@npm:^2.1.2, json5@npm:^2.2.0":
   version: 2.2.0
   resolution: "json5@npm:2.2.0"
   dependencies:
@@ -9981,12 +9981,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"marked@npm:^2.1.1":
-  version: 2.1.1
-  resolution: "marked@npm:2.1.1"
+"marked@npm:^3.0.2":
+  version: 3.0.2
+  resolution: "marked@npm:3.0.2"
   bin:
     marked: bin/marked
-  checksum: 930b5a005b538817929d15e1f0829eb7460f290990ad6346e8b90e3343a1d04220c57f54a12a04520d28e57902ff4e80ab8816de568747334280d91615c42b70
+  checksum: 6f88083a7e50494f97af9f92f1b03a299ecde78055f7378dd0837f12aa2e192db84b7ed528d3e7008fd8d26d39f23a2a07af2a349899917171531574798563b5
   languageName: node
   linkType: hard
 
@@ -11674,7 +11674,7 @@ __metadata:
     rollup: 2.56.3
     semver: 7.3.5
     standard-version: 9.3.1
-    typedoc: 0.21.5
+    typedoc: 0.21.9
     typescript: 4.3.5
   languageName: unknown
   linkType: soft
@@ -12842,13 +12842,14 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"shiki@npm:^0.9.3":
-  version: 0.9.3
-  resolution: "shiki@npm:0.9.3"
+"shiki@npm:^0.9.8":
+  version: 0.9.10
+  resolution: "shiki@npm:0.9.10"
   dependencies:
+    json5: ^2.2.0
     onigasm: ^2.2.5
-    vscode-textmate: ^5.2.0
-  checksum: 68e1b4907f9a6924d89c55944c023925d4d57b4940396fe6db4f7943ae759ed04b48eceafa8951c8bdea27aaa4dd9cb7136fd5707081c7952ee6308d213e24a3
+    vscode-textmate: 5.2.0
+  checksum: 2544ee3321d280de4a22e7e871bc93c1f2566120bf340fcc9764f29e22fcd7aa778bd9f8b133387f0808cd4085bda25c0a7e1c0868d85fe06aea7bbb4c904a68
   languageName: node
   linkType: hard
 
@@ -13966,23 +13967,23 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"typedoc@npm:0.21.5":
-  version: 0.21.5
-  resolution: "typedoc@npm:0.21.5"
+"typedoc@npm:0.21.9":
+  version: 0.21.9
+  resolution: "typedoc@npm:0.21.9"
   dependencies:
     glob: ^7.1.7
     handlebars: ^4.7.7
     lunr: ^2.3.9
-    marked: ^2.1.1
+    marked: ^3.0.2
     minimatch: ^3.0.0
     progress: ^2.0.3
-    shiki: ^0.9.3
+    shiki: ^0.9.8
     typedoc-default-themes: ^0.12.10
   peerDependencies:
-    typescript: 4.0.x || 4.1.x || 4.2.x || 4.3.x
+    typescript: 4.0.x || 4.1.x || 4.2.x || 4.3.x || 4.4.x
   bin:
     typedoc: bin/typedoc
-  checksum: 1d69ecfc436712ccf5658e63c1665de44b1480593e2627e2ebe1e0f88823866f112ffa0358ee51ddb51a8500994f3600453daacee7ebacf21ccade1ceecc6be1
+  checksum: 5079e55f7d233874aedd5be4acc9ad9deab4b1cacee9a5c950baa19a6990003945e0eccc792f288cbac9d0e900d1f7b7856fc40318bdfef413ed94b7e7690406
   languageName: node
   linkType: hard
 
@@ -14340,10 +14341,10 @@ typescript@4.3.5:
   languageName: node
   linkType: hard
 
-"vscode-textmate@npm:^5.2.0":
-  version: 5.4.0
-  resolution: "vscode-textmate@npm:5.4.0"
-  checksum: 350ccb2d16915d60c01c4d71ec0dba9997b696fc391fb7c99196789f58f0153a471ae5d0356d298a6eb47d8ca23b6a452960ccea4326aa546b61c3a87de89548
+"vscode-textmate@npm:5.2.0":
+  version: 5.2.0
+  resolution: "vscode-textmate@npm:5.2.0"
+  checksum: 5449b42d451080f6f3649b66948f4b5ee4643c4e88cfe3558a3b31c84c78060cfdd288c4958c1690eaa5cd65d09992fa6b7c3bef9d4aa72b3651054a04624d20
   languageName: node
   linkType: hard
 
