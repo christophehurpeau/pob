@@ -42,6 +42,7 @@ export default class CoreVSCodeGenerator extends Generator {
         this.destinationPath('.vscode/extensions.json'),
         {
           yarn: this.options.packageManager === 'yarn',
+          pnp: this.options.yarnNodeLinker === 'pnp',
         },
       );
       copyAndFormatTpl(
