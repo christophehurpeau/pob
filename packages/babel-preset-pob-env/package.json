@@ -26,7 +26,7 @@
   "scripts": {
     "clean": "rm -Rf docs dist test/node6 coverage",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn --cwd ../.. run eslint --report-unused-disable-directives --quiet packages/babel-preset-pob-env"
+    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/babel-preset-pob-env"
   },
   "prettier": {
     "trailingComma": "all",

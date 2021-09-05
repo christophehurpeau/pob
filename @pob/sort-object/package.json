@@ -26,7 +26,7 @@
   "sideEffects": false,
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn --cwd ../.. run eslint --report-unused-disable-directives --quiet @pob/sort-object"
+    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet @pob/sort-object"
   },
   "prettier": {
     "trailingComma": "all",

@@ -25,7 +25,7 @@
   "bin": "./bin/repository-check-dirty.js",
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn --cwd ../.. run eslint --report-unused-disable-directives --quiet packages/repository-check-dirty"
+    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/repository-check-dirty"
   },
   "prettier": {
     "trailingComma": "all",

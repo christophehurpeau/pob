@@ -28,7 +28,7 @@
   "bin": "./bin/pretty-pkg.js",
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn --cwd ../.. run eslint --report-unused-disable-directives --quiet @pob/pretty-pkg"
+    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet @pob/pretty-pkg"
   },
   "prettier": {
     "trailingComma": "all",
