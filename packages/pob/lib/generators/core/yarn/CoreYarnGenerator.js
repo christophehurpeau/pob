@@ -81,7 +81,9 @@ export default class CoreYarnGenerator extends Generator {
       const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
       if (pkg.scripts.preversion) {
-        this.spawnCommandSync('yarn', ['run', 'preversion']);
+        try {
+          this.spawnCommandSync('yarn', ['run', 'preversion']);
+        } catch {}
       } else {
         if (pkg.scripts.build) {
           this.spawnCommandSync('yarn', ['run', 'build']);
