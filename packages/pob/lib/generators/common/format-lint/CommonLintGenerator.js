@@ -172,7 +172,7 @@ export default class CommonLintGenerator extends Generator {
     const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
     const globalEslint = yoConfigPobMonorepo && yoConfigPobMonorepo.eslint;
     const composite = yoConfigPobMonorepo && yoConfigPobMonorepo.typescript;
-    const { packageManager, rootYarnNodeLinker } = inLerna || {};
+    const { rootPackageManager, rootYarnNodeLinker } = inLerna || {};
     const lernaProjectType =
       inLerna.pobConfig &&
       inLerna.pobConfig.project &&
@@ -181,7 +181,7 @@ export default class CommonLintGenerator extends Generator {
     if (
       globalEslint &&
       !(inLerna && inLerna.root) &&
-      (packageManager !== 'yarn' || rootYarnNodeLinker === 'node-modules')
+      (rootPackageManager !== 'yarn' || rootYarnNodeLinker === 'node-modules')
     ) {
       packageUtils.removeDevDependencies(
         pkg,
@@ -212,11 +212,11 @@ export default class CommonLintGenerator extends Generator {
         !globalEslint ||
           (inLerna && inLerna.root) ||
           lernaProjectType === 'app' ||
-          packageManager === 'yarn',
+          rootPackageManager === 'yarn',
         ['eslint'],
       );
       const shouldHavePluginsDependencies =
-        !globalEslint || !inLerna || packageManager === 'yarn';
+        !globalEslint || !inLerna || rootPackageManager === 'yarn';
 
       if (
         !pkg.name.startsWith('eslint-config') &&
