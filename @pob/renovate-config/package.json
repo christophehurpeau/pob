@@ -77,9 +77,6 @@
           "description": "@pob eslint configs",
           "packagePatterns": [
             "^@pob/eslint-config"
-          ],
-          "updateTypes": [
-            "major"
           ]
         },
         {
