@@ -2711,11 +2711,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/eslint-config-typescript-react@npm:45.0.2":
-  version: 45.0.2
-  resolution: "@pob/eslint-config-typescript-react@npm:45.0.2"
+"@pob/eslint-config-typescript-react@npm:45.0.3":
+  version: 45.0.3
+  resolution: "@pob/eslint-config-typescript-react@npm:45.0.3"
   dependencies:
-    "@pob/eslint-config": ^45.0.2
+    "@pob/eslint-config": ^45.0.3
     eslint-config-airbnb: ^18.2.1
     eslint-config-prettier: ^7.1.0
     eslint-plugin-import: ^2.22.1
@@ -2735,15 +2735,15 @@ __metadata:
       optional: true
     eslint-plugin-react-hooks:
       optional: true
-  checksum: 835f61602b48f9d21404851cdd71f7c6c29a7f31f5dd23aafb59b1f1b38e6a88dc91347624445bd11b9f8213228375babb6dc4daa783e47bd3836fe5d75d5401
+  checksum: b7a969acf640992a49363e12bdb91e7a57f9acf40bde485573c51d1ce6db0a185e8db6270ce47cc37f7385a60fc056469932445cbcfcd20df01056412932e70e
   languageName: node
   linkType: hard
 
-"@pob/eslint-config-typescript@npm:45.0.2":
-  version: 45.0.2
-  resolution: "@pob/eslint-config-typescript@npm:45.0.2"
+"@pob/eslint-config-typescript@npm:45.0.3":
+  version: 45.0.3
+  resolution: "@pob/eslint-config-typescript@npm:45.0.3"
   dependencies:
-    "@pob/eslint-config": ^45.0.2
+    "@pob/eslint-config": ^45.0.3
     "@pob/use-eslint-plugin": ^45.0.0
     "@typescript-eslint/eslint-plugin": ^4.19.0
     "@typescript-eslint/parser": ^4.19.0
@@ -2766,13 +2766,13 @@ __metadata:
       optional: true
     eslint-plugin-node:
       optional: true
-  checksum: 054c867f294f031ca273df9a67e68ab8cc08532c7cc610d26c515ef83cab6f0d9f55e17493276f72f91e746a5718972b087e347a660e8a276ea8acc61c84b90f
+  checksum: 89ba3bd50e543d4581c77b17aa5fa6714c7eb027c2f07aa7c9a97e769a6d4c52d4ce621e25c73e7385f778fabf782b4476c2ff28bc5e6ea9b80186faf144f54b
   languageName: node
   linkType: hard
 
-"@pob/eslint-config@npm:45.0.2, @pob/eslint-config@npm:^45.0.2":
-  version: 45.0.2
-  resolution: "@pob/eslint-config@npm:45.0.2"
+"@pob/eslint-config@npm:45.0.3, @pob/eslint-config@npm:^45.0.3":
+  version: 45.0.3
+  resolution: "@pob/eslint-config@npm:45.0.3"
   dependencies:
     "@pob/use-eslint-plugin": ^45.0.0
     eslint-config-airbnb-base: ^14.2.1
@@ -2792,7 +2792,7 @@ __metadata:
       optional: true
     eslint-plugin-unicorn:
       optional: true
-  checksum: 414b34649ffdbf2153ebc176fdba175e9598628859186120753a1f2f69d24ed0fc6dae0543485f5e9856f927ba0d8d6585c3aecdbb214d701d343a8692f6b465
+  checksum: cb8e72cb459c2cc1777c974d32f7a4fa12a55c1bd33ddb315e932a2fd9cc6b2309fac2b20760c733a41a3b3c9b8e7f480b15f5c1e2d8441dea8b780588079e8e
   languageName: node
   linkType: hard
 
@@ -11596,9 +11596,9 @@ __metadata:
     "@babel/preset-react": 7.14.5
     "@babel/runtime": 7.15.4
     "@pob/commitlint-config": ^3.1.0
-    "@pob/eslint-config": 45.0.2
-    "@pob/eslint-config-typescript": 45.0.2
-    "@pob/eslint-config-typescript-react": 45.0.2
+    "@pob/eslint-config": 45.0.3
+    "@pob/eslint-config-typescript": 45.0.3
+    "@pob/eslint-config-typescript-react": 45.0.3
     "@pob/lerna-light": ^4.0.0
     "@pob/pretty-pkg": ^3.1.1
     "@pob/root": ^5.3.0
@@ -11646,7 +11646,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "pob-monorepo@workspace:."
   dependencies:
-    "@pob/eslint-config": 45.0.2
+    "@pob/eslint-config": 45.0.3
     "@pob/lerna-light": "workspace:*"
     "@pob/root": "workspace:*"
     check-package-dependencies: 2.0.2
