@@ -74,11 +74,11 @@ module.exports = function createLintStagedConfig() {
     './*.{yml,yaml,md}': ['prettier --write'],
     [`${srcDirectories}/**/*.{js,ts,tsx}`]: [
       'prettier --write',
-      'eslint --fix --quiet',
+      'eslint --fix --quiet --report-unused-disable-directives --resolve-plugins-relative-to .',
     ],
     '{scripts,config,.storyboook}/**/*.{js,mjs,cjs}': [
       'prettier --write',
-      'eslint --fix --quiet',
+      'eslint --fix --quiet --report-unused-disable-directives --resolve-plugins-relative-to .',
     ],
     [`{.storybook,${srcDirectories}}/**/*.css`]: [
       'prettier --parser css --write',
