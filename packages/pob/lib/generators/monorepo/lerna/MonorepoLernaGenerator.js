@@ -253,10 +253,10 @@ export default class MonorepoLernaGenerator extends Generator {
       });
     } else {
       if (
-        pkg.scripts.postinstall &&
+        !pkg.scripts.postinstall ||
         !pkg.scripts.postinstall.includes('pob-root-postinstall')
       ) {
-        delete pkg.scripts.postinstall;
+        pkg.scripts.postinstall = 'pob-root-postinstall';
       }
       if (!pkg.workspaces) {
         pkg.workspaces = ['packages/*'];
