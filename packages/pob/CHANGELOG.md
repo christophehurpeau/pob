@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.4.1](https://github.com/christophehurpeau/pob/compare/pob@8.4.0...pob@8.4.1) (2021-09-05)
+
+**Note:** Version bump only for package pob
+
+
+
+
+
 # [8.4.0](https://github.com/christophehurpeau/pob/compare/pob@8.3.1...pob@8.4.0) (2021-09-05)
 
 
