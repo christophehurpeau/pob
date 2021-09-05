@@ -36,7 +36,7 @@
     ]
   },
   "devDependencies": {
-    "@pob/eslint-config": "45.0.3",
+    "@pob/eslint-config": "45.1.0",
     "@pob/lerna-light": "workspace:*",
     "@pob/root": "workspace:*",
     "check-package-dependencies": "2.0.2",

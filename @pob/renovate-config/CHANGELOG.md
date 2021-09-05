@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.11](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@4.1.10...@pob/renovate-config@4.1.11) (2021-09-05)
+
+
+### Bug Fixes
+
+* always group pob eslint configs ([672b970](https://github.com/christophehurpeau/pob/commit/672b97039643ce504c457fd8854490bae1890ca0))
+
+
+
+
+
 ## [4.1.10](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@4.1.9...@pob/renovate-config@4.1.10) (2021-09-05)
 
 **Note:** Version bump only for package @pob/renovate-config
