@@ -67,7 +67,7 @@ module.exports = function installHusky({ pkg, pm }) {
   const pmExec = pm.name === 'npm' ? 'npx --no-install' : pm.name;
 
   writeHook('commit-msg', `${pmExec} commitlint --edit $1`);
-  writeHook('pre-commit', `${pmExec} lint-staged`);
+  writeHook('pre-commit', `${pmExec} lint-staged -r`);
 
   if (isYarnPnp) {
     ensureHookDeleted('post-checkout');
