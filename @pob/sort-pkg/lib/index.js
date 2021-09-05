@@ -23,6 +23,7 @@ module.exports = function sortPkg(pkg) {
     'engineStrict',
     'os',
     'cpu',
+    /* yarn berry */ 'packageManager',
     'publishConfig',
     'workspaces',
     'browserslist',
