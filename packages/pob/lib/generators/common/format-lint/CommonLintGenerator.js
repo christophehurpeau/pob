@@ -172,7 +172,7 @@ export default class CommonLintGenerator extends Generator {
     const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
     const globalEslint = yoConfigPobMonorepo && yoConfigPobMonorepo.eslint;
     const composite = yoConfigPobMonorepo && yoConfigPobMonorepo.typescript;
-    const packageManager = inLerna.rootPackageManager;
+    const { packageManager, rootYarnNodeLinker } = inLerna || {};
     const lernaProjectType =
       inLerna.pobConfig &&
       inLerna.pobConfig.project &&
@@ -181,7 +181,7 @@ export default class CommonLintGenerator extends Generator {
     if (
       globalEslint &&
       !(inLerna && inLerna.root) &&
-      packageManager !== 'yarn'
+      (packageManager !== 'yarn' || rootYarnNodeLinker === 'node-modules')
     ) {
       packageUtils.removeDevDependencies(
         pkg,

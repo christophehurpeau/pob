@@ -33,6 +33,11 @@ const getInLernaThings = () => {
       rootYoConfig.pob &&
       rootYoConfig.pob.project &&
       rootYoConfig.pob.project.packageManager,
+    rootYarnNodeLinker:
+      rootYoConfig &&
+      rootYoConfig.pob &&
+      rootYoConfig.pob.project &&
+      rootYoConfig.pob.project.yarnNodeLinker,
     relative: path.relative(rootMonorepo, cwd),
     rootYoConfig,
     pobConfig: rootYoConfig && rootYoConfig.pob,
