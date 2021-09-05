@@ -302,8 +302,8 @@ export default class CommonLintGenerator extends Generator {
       if (isPobEslintConfig) {
         return [
           pkg.type === 'commonjs'
-            ? '../../eslint-config/node-commonjs'
-            : '../../eslint-config/node-module',
+            ? '../../eslint-config/lib/node-commonjs'
+            : '../../eslint-config/lib/node-module',
         ];
       }
 
