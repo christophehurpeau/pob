@@ -66,19 +66,22 @@ module.exports = function sortPkg(pkg) {
     'stylelint',
     'jest',
     'pob',
+    'resolutions',
+    'resolutionsExplained',
     'peerDependencies',
     'peerDependenciesMeta',
     'devPeerDependencies',
     'dependencies',
     'devDependencies',
     'dependenciesMeta',
+    'optionalDependencies',
     'bundledDependencies',
     'bundleDependencies',
-    'optionalDependencies',
-    'resolutions',
   ]);
 
   if (pkg.scripts) sortObject(pkg.scripts);
+  if (pkg.resolutions) sortObject(pkg.resolutions);
+  if (pkg.resolutionsExplained) sortObject(pkg.resolutionsExplained);
   if (pkg.peerDependencies) sortObject(pkg.peerDependencies);
   if (pkg.devPeerDependencies) sortObject(pkg.devPeerDependencies);
   if (pkg.dependencies) sortObject(pkg.dependencies);
@@ -86,7 +89,6 @@ module.exports = function sortPkg(pkg) {
   if (pkg.bundledDependencies) sortObject(pkg.bundledDependencies);
   if (pkg.bundleDependencies) sortObject(pkg.bundleDependencies);
   if (pkg.optionalDependencies) sortObject(pkg.optionalDependencies);
-  if (pkg.resolutions) sortObject(pkg.resolutions);
 
   return pkg;
 };
