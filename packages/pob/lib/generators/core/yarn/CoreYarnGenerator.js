@@ -73,9 +73,10 @@ export default class CoreYarnGenerator extends Generator {
       } else {
         this.fs.delete('.yarn/sdks');
       }
-      this.spawnCommandSync('yarn', ['prettier', '--write', '.vscode']);
       this.spawnCommandSync('yarn', ['install']);
       this.spawnCommandSync('yarn', ['dedupe']);
+
+      this.spawnCommandSync('yarn', ['prettier', '--write', '.vscode']);
 
       const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
