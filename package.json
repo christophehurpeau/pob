@@ -23,7 +23,7 @@
     "postinstall": "yarn node @pob/root/bin/pob-root-postinstall.js",
     "preversion": "yarn run lint && repository-check-dirty",
     "release": "cross-env GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git",
-    "test": "lerna run --stream test"
+    "test": "yarn workspaces foreach --parallel -Av run test"
   },
   "prettier": {
     "trailingComma": "all",

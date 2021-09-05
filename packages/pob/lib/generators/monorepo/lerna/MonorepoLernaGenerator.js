@@ -168,7 +168,7 @@ export default class MonorepoLernaGenerator extends Generator {
 
     const monorepoConfig = this.config.get('monorepo');
     const packageManager = this.npm ? 'npm' : 'yarn';
-    const useYarnWorkspacesCommand = false; // this.options.packageManager === 'yarn';
+    const useYarnWorkspacesCommand = pkg.name === 'pob-monorepo'; // this.options.packageManager === 'yarn';
 
     packageUtils.addScripts(pkg, {
       lint: `${packageManager} run lint:prettier && ${packageManager} run lint:eslint`,
