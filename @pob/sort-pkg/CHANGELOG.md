@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@3.1.0...@pob/sort-pkg@3.2.0) (2021-09-05)
+
+
+### Features
+
+* **@pob/sort-pkg:** add packageManager ([aaad4c9](https://github.com/christophehurpeau/pob/commit/aaad4c9d309d211d5f84ba19b0b8c70b48741483))
+* **@pob/sort-pkg:** add resolutionsExplained and move resolutions up ([a5cd595](https://github.com/christophehurpeau/pob/commit/a5cd59535932f8fc7d7696b9da91728926b3fae6))
+
+
+
+
+
 # [3.1.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@3.0.0...@pob/sort-pkg@3.1.0) (2021-08-10)
 
 

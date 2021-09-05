@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.1](https://github.com/christophehurpeau/pob/compare/pob@8.3.0...pob@8.3.1) (2021-09-05)
+
+
+### Bug Fixes
+
+* **pob:** handle install task manually ([31a350b](https://github.com/christophehurpeau/pob/commit/31a350bbf8310404c32035ccc25565021e45ff86))
+* **pob:** rootPackageManager ([5ab38f5](https://github.com/christophehurpeau/pob/commit/5ab38f568de914459d1b277e82a76d7d13b59b3e))
+* **pob:** use cd instead of yarn cwd legacy argument ([de7833f](https://github.com/christophehurpeau/pob/commit/de7833f1bbaf7e6de9c37676a1194b1588420c9d))
+* **pob:** yarn install and pnp sdk in CoreYarn generator ([8959cea](https://github.com/christophehurpeau/pob/commit/8959cea42f71dfed9b32485c28224cec117e7eb1))
+* dont need to install eslint plugins on each package when node linker is node-modules ([af2cdc8](https://github.com/christophehurpeau/pob/commit/af2cdc8cf275bff7f1d5c6c002fbee591a0e0aa4))
+
+
+
+
+
 # [8.3.0](https://github.com/christophehurpeau/pob/compare/pob@8.2.4...pob@8.3.0) (2021-09-05)
 
 

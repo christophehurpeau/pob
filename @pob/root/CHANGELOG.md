@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.1](https://github.com/christophehurpeau/pob/compare/@pob/root@5.3.0...@pob/root@5.3.1) (2021-09-05)
+
+**Note:** Version bump only for package @pob/root
+
+
+
+
+
 # [5.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.2.3...@pob/root@5.3.0) (2021-09-05)
 
 

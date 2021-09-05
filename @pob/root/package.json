@@ -1,6 +1,6 @@
 {
   "name": "@pob/root",
-  "version": "5.3.0",
+  "version": "5.3.1",
   "description": "root package",
   "license": "ISC",
   "type": "commonjs",
@@ -25,11 +25,11 @@
   },
   "dependencies": {
     "@commitlint/cli": "13.1.0",
-    "@pob/pretty-eslint-config": "^2.1.1",
-    "@pob/pretty-pkg": "^3.1.1",
+    "@pob/pretty-eslint-config": "^2.1.2",
+    "@pob/pretty-pkg": "^3.1.2",
     "husky": "^7.0.0",
     "lint-staged": "11.1.2",
-    "repository-check-dirty": "^3.1.0",
+    "repository-check-dirty": "^3.1.1",
     "semver": "^7.1.2",
     "which-pm-runs": "1.0.0"
   }
