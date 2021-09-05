@@ -452,7 +452,7 @@ export default class CommonLintGenerator extends Generator {
       );
 
       if (lintRootJsFiles) {
-        lintPaths.unshift('*.js');
+        lintPaths.unshift('*.{js,cjs,mjs}');
       }
 
       const args =
