@@ -69,14 +69,24 @@ export default class CoreYarnGenerator extends Generator {
     if (this.options.enable) {
       this.spawnCommandSync('yarn', ['set', 'version', 'latest']);
       if (this.options.yarnNodeLinker === 'pnp') {
-        this.spawnCommandSync('yarn', [
-          'dlx',
-          '@yarnpkg/pnpify',
-          '--sdk',
-          'vscode',
-        ]);
+        this.spawnCommandSync('yarn', ['dlx', '@yarnpkg/sdks', 'vscode']);
       }
       this.spawnCommandSync('yarn', ['prettier', '--write', '.vscode']);
+      this.spawnCommandSync('yarn', ['install']);
+      this.spawnCommandSync('yarn', ['dedupe']);
+
+      const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+
+      if (pkg.scripts.preversion) {
+        this.spawnCommandSync('yarn', ['run', 'preversion']);
+      } else {
+        if (pkg.scripts.build) {
+          this.spawnCommandSync('yarn', ['run', 'build']);
+        }
+        if (pkg.scripts['generate:docs']) {
+          this.spawnCommandSync('yarn', ['run', 'generate:docs']);
+        }
+      }
     }
   }
 }

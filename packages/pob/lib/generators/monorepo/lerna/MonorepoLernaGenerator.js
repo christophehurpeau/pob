@@ -317,9 +317,7 @@ export default class MonorepoLernaGenerator extends Generator {
         this.spawnCommandSync('npm', ['run', 'preversion']);
         break;
       case 'yarn':
-        this.spawnCommandSync('yarn', ['install']);
-        this.spawnCommandSync('yarn', ['dedupe']);
-        this.spawnCommandSync('yarn', ['run', 'preversion']);
+        // see CoreYarnGenerator
         break;
     }
   }

@@ -746,22 +746,4 @@ export default class CommonBabelGenerator extends Generator {
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
-
-  end() {
-    if (this.options.fromPob) return;
-    if (this.babelEnvs && this.babelEnvs.length > 0) {
-      const pkg = this.fs.readJSON(this.destinationPath('package.json'));
-
-      if (pkg.scripts.preversion) {
-        this.spawnCommandSync('yarn', ['run', 'preversion']);
-      } else {
-        if (pkg.scripts.build) {
-          this.spawnCommandSync('yarn', ['run', 'build']);
-        }
-        if (pkg.scripts['generate:docs']) {
-          this.spawnCommandSync('yarn', ['run', 'generate:docs']);
-        }
-      }
-    }
-  }
 }

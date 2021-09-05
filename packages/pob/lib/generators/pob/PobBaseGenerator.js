@@ -236,7 +236,7 @@ export default class PobBaseGenerator extends Generator {
         this.spawnCommandSync('npm', ['install']);
         break;
       case 'yarn':
-        this.spawnCommandSync('yarn', ['dedupe']);
+        // see CoreYarnGenerator
         break;
     }
   }
