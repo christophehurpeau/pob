@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.4.3](https://github.com/christophehurpeau/pob/compare/pob@8.4.2...pob@8.4.3) (2021-09-05)
+
+
+### Bug Fixes
+
+* remove @pob/root in non root packages ([2d1e3c1](https://github.com/christophehurpeau/pob/commit/2d1e3c12aff9ab95aea08bc3860530055d891b58))
+* **pob:** add try/catch when running preversion script ([28b5f11](https://github.com/christophehurpeau/pob/commit/28b5f11b6d94d1dfb9056f155902fc5539bd6797))
+* **pob:** remove console.log in git generator ([89eb0ef](https://github.com/christophehurpeau/pob/commit/89eb0efd4169c6f49070741913840357f58e4ef8))
+
+
+
+
+
 ## [8.4.2](https://github.com/christophehurpeau/pob/compare/pob@8.4.1...pob@8.4.2) (2021-09-05)
 
 **Note:** Version bump only for package pob

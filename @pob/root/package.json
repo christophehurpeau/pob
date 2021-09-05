@@ -1,6 +1,6 @@
 {
   "name": "@pob/root",
-  "version": "5.4.1",
+  "version": "5.4.2",
   "description": "root package",
   "license": "ISC",
   "type": "commonjs",

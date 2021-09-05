@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.2](https://github.com/christophehurpeau/pob/compare/@pob/root@5.4.1...@pob/root@5.4.2) (2021-09-05)
+
+
+### Bug Fixes
+
+* **@pob/root:** make sure new line eof in git hooks ([5b2c669](https://github.com/christophehurpeau/pob/commit/5b2c6696f28b56f99ce6b396d3c42d4ab2ed80dd))
+
+
+
+
+
 ## [5.4.1](https://github.com/christophehurpeau/pob/compare/@pob/root@5.4.0...@pob/root@5.4.1) (2021-09-05)
 
 

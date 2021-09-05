@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.5.5](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.5.4...pob-dependencies@5.5.5) (2021-09-05)
+
+**Note:** Version bump only for package pob-dependencies
+
+
+
+
+
 ## [5.5.4](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.5.3...pob-dependencies@5.5.4) (2021-09-05)
 
 **Note:** Version bump only for package pob-dependencies
