@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.2](https://github.com/christophehurpeau/pob/compare/@pob/root@5.3.1...@pob/root@5.3.2) (2021-09-05)
+
+
+### Bug Fixes
+
+* **@pob/root:** missing new line at the end of file ([5b70b42](https://github.com/christophehurpeau/pob/commit/5b70b425294dccd13a1be29ffd8ae6447934779f))
+
+
+
+
+
 ## [5.3.1](https://github.com/christophehurpeau/pob/compare/@pob/root@5.3.0...@pob/root@5.3.1) (2021-09-05)
 
 **Note:** Version bump only for package @pob/root

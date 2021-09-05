@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.4.0](https://github.com/christophehurpeau/pob/compare/pob@8.3.1...pob@8.4.0) (2021-09-05)
+
+
+### Bug Fixes
+
+* **pob:** also lint cjs and mjs files with eslint ([d9db76c](https://github.com/christophehurpeau/pob/commit/d9db76c29bf1f5aed477c8d0003b8b721afb851d))
+* **pob:** define typescript.tsdk even on non pnp yarn ([bebf2d9](https://github.com/christophehurpeau/pob/commit/bebf2d9fb8c24b1a6361c3f82cc7cd26b3c29978))
+* **pob:** delete .yarn/sdks when pnp is disabled ([e81a5f6](https://github.com/christophehurpeau/pob/commit/e81a5f630b1fa3b869673d093edf8ead1e090b0b))
+* **pob:** only recommend zipfs extension if pnp is enabled ([08ddf19](https://github.com/christophehurpeau/pob/commit/08ddf191169d8c12155ef424330301f9b568cd02))
+* **pob:** remove pnp sdks when pnp is disabled ([19a1ffd](https://github.com/christophehurpeau/pob/commit/19a1ffdd957e54e63d9217eafc6507a47455a621))
+* **pob:** run prettier after yarn install ([a8a1204](https://github.com/christophehurpeau/pob/commit/a8a1204bae1a083341512962f58037ebf4934ea8))
+
+
+### Features
+
+* **pob:** update codecov-action to v2 ([f184b51](https://github.com/christophehurpeau/pob/commit/f184b51fd4265164bc9ecf47f97fe4b7da181c7d))
+
+
+
+
+
 ## [8.3.1](https://github.com/christophehurpeau/pob/compare/pob@8.3.0...pob@8.3.1) (2021-09-05)
 
 
