@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.1](https://github.com/christophehurpeau/pob/compare/@pob/root@5.4.0...@pob/root@5.4.1) (2021-09-05)
+
+
+### Bug Fixes
+
+* **@pob/root:** missing eslint arguments in lint-staged config ([112d6b1](https://github.com/christophehurpeau/pob/commit/112d6b1f8bbb2985c9a12d36f98b34514d9e592d))
+
+
+
+
+
 # [5.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.3.2...@pob/root@5.4.0) (2021-09-05)
 
 

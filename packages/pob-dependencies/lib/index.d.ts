@@ -9,7 +9,7 @@ interface Dependencies {
   '@pob/eslint-config-typescript-react': '45.0.3';
   '@pob/lerna-light': '^4.1.0';
   '@pob/pretty-pkg': '^3.1.2';
-  '@pob/root': '^5.3.2';
+  '@pob/root': '^5.4.0';
   '@rollup/plugin-run': '2.1.0';
   '@types/jest': '27.0.1';
   '@typescript-eslint/eslint-plugin': '4.29.1';
