@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.2.3...@pob/root@5.3.0) (2021-09-05)
+
+
+### Bug Fixes
+
+* add --immutable-cache when running yarn install on ci or hooks and add fallback to prevent hooks from failing ([1f3f296](https://github.com/christophehurpeau/pob/commit/1f3f2969bb7f551996200c8f04371ded0b779d1e))
+
+
+### Features
+
+* **@pob/root:** update yarn and fix script ([90f6dfe](https://github.com/christophehurpeau/pob/commit/90f6dfe9511edc53b5552558f289b124c85bd482))
+* remove yarnhook dependency ([710196f](https://github.com/christophehurpeau/pob/commit/710196f706a9e66753c98c98d4059bfb4ed47a70))
+
+
+
+
+
 ## [5.2.3](https://github.com/christophehurpeau/pob/compare/@pob/root@5.2.2...@pob/root@5.2.3) (2021-08-10)
 
 

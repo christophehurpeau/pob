@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [28.2.0](https://github.com/christophehurpeau/pob/compare/pob-babel@28.1.0...pob-babel@28.2.0) (2021-09-05)
+
+
+### Features
+
+* **deps:** update babel monorepo ([#1022](https://github.com/christophehurpeau/pob/issues/1022)) ([5f4245f](https://github.com/christophehurpeau/pob/commit/5f4245fb299409615fc437ce1c927cd5684ec502))
+* **deps:** update dependency @types/jest to v27 ([#1021](https://github.com/christophehurpeau/pob/issues/1021)) ([771fdcb](https://github.com/christophehurpeau/pob/commit/771fdcb1f403f1d76d2193f8d8351b59ae41c2fd))
+* **deps:** update dependency rollup to v2.56.3 ([#1009](https://github.com/christophehurpeau/pob/issues/1009)) ([b631afa](https://github.com/christophehurpeau/pob/commit/b631afa7aa9039b5996190d0be1796f07f9a9b0c))
+
+
+
+
+
 # [28.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@28.0.2...pob-babel@28.1.0) (2021-08-10)
 
 

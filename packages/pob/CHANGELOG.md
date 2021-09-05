@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.4](https://github.com/christophehurpeau/pob/compare/pob@8.2.3...pob@8.2.4) (2021-09-05)
+
+
+### Bug Fixes
+
+* **pob:** dont delete pob root postinstall script ([ab88179](https://github.com/christophehurpeau/pob/commit/ab88179c88225dbbf5f0ef0ac6461e1ae0577958))
+* **pob:** eslint config path in pob eslint monorepo ([240d427](https://github.com/christophehurpeau/pob/commit/240d4277e7d2b55aa03248233fa31fadc6d06788))
+* **pob:** eslint install for yarn ([c09afb5](https://github.com/christophehurpeau/pob/commit/c09afb5aac4c121aa6ddde2a6b67584695690b22))
+* **pob:** ignore .pnp.* to cover js and cjs ([595a986](https://github.com/christophehurpeau/pob/commit/595a986b47091a810b3767d699f72d3f390395c0))
+* **pob:** missing pkg.main when esm is enabled ([af36f58](https://github.com/christophehurpeau/pob/commit/af36f583b315c43cdac3d1214a8d93a1cdf0e892))
+* **pob:** monorepo postinstall script ([b714003](https://github.com/christophehurpeau/pob/commit/b714003d18f86091c291b6ebfb4d0504971cb9a3))
+* add --immutable-cache when running yarn install on ci or hooks and add fallback to prevent hooks from failing ([1f3f296](https://github.com/christophehurpeau/pob/commit/1f3f2969bb7f551996200c8f04371ded0b779d1e))
+* **pob:** type of packageManager option ([d91a23b](https://github.com/christophehurpeau/pob/commit/d91a23ba5beb1f501e2e5eca0644b8d54280fb81))
+
+
+
+
+
 ## [8.2.3](https://github.com/christophehurpeau/pob/compare/pob@8.2.2...pob@8.2.3) (2021-08-10)
 
 **Note:** Version bump only for package pob

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.3.3...pob-dependencies@5.4.0) (2021-09-05)
+
+
+### Features
+
+* **deps:** update babel monorepo ([#1022](https://github.com/christophehurpeau/pob/issues/1022)) ([5f4245f](https://github.com/christophehurpeau/pob/commit/5f4245fb299409615fc437ce1c927cd5684ec502))
+* **deps:** update dependency @types/jest to v27 ([#1021](https://github.com/christophehurpeau/pob/issues/1021)) ([771fdcb](https://github.com/christophehurpeau/pob/commit/771fdcb1f403f1d76d2193f8d8351b59ae41c2fd))
+* **deps:** update dependency eslint-plugin-import to v2.24.2 ([#1026](https://github.com/christophehurpeau/pob/issues/1026)) ([f3dab6f](https://github.com/christophehurpeau/pob/commit/f3dab6f8ef31b7e00042057ed33268e2dd546252))
+* **deps:** update dependency rollup to v2.56.3 ([#1009](https://github.com/christophehurpeau/pob/issues/1009)) ([b631afa](https://github.com/christophehurpeau/pob/commit/b631afa7aa9039b5996190d0be1796f07f9a9b0c))
+* **deps:** update dependency typedoc to v0.21.9 ([#1027](https://github.com/christophehurpeau/pob/issues/1027)) ([79d11b5](https://github.com/christophehurpeau/pob/commit/79d11b59dc99aa72d45f2d71725cf7bc1d3fee33))
+* remove yarnhook dependency ([710196f](https://github.com/christophehurpeau/pob/commit/710196f706a9e66753c98c98d4059bfb4ed47a70))
+
+
+
+
+
 ## [5.3.3](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.3.2...pob-dependencies@5.3.3) (2021-08-10)
 
 **Note:** Version bump only for package pob-dependencies
