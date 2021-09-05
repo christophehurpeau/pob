@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.2.1](https://github.com/christophehurpeau/pob/compare/pob-babel@28.2.0...pob-babel@28.2.1) (2021-09-05)
+
+
+### Bug Fixes
+
+* **pob-babel:** add createRollupConfig.js for eslint ([cd03500](https://github.com/christophehurpeau/pob/commit/cd0350098e0b449a33d2ebb16a737faea1e33d58))
+
+
+
+
+
 # [28.2.0](https://github.com/christophehurpeau/pob/compare/pob-babel@28.1.0...pob-babel@28.2.0) (2021-09-05)
 
 

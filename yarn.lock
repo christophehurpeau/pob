@@ -2837,7 +2837,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: ^5.4.0
+    pob-dependencies: ^5.5.0
     prettier: 2.3.2
   languageName: unknown
   linkType: soft
@@ -11558,7 +11558,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@^28.2.0, pob-babel@workspace:packages/pob-babel":
+"pob-babel@^28.2.1, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -11587,7 +11587,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@^5.4.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@^5.5.0, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -11619,7 +11619,7 @@ __metadata:
     eslint-plugin-unicorn: 34.0.1
     jest: 27.0.6
     jest-junit-reporter: 1.1.0
-    pob-babel: ^28.2.0
+    pob-babel: ^28.2.1
     pob-lcov-reporter: ^5.1.0
     prettier: 2.3.2
     repository-check-dirty: ^3.1.0
@@ -11678,7 +11678,7 @@ __metadata:
     mem-fs-editor: 8.1.2
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
-    pob-dependencies: ^5.4.0
+    pob-dependencies: ^5.5.0
     prettier: 2.3.2
     semver: ^7.3.4
     update-notifier: ^5.0.1

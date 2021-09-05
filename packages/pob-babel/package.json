@@ -1,6 +1,6 @@
 {
   "name": "pob-babel",
-  "version": "28.2.0",
+  "version": "28.2.1",
   "description": "Build and watch with babel and typescript",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",

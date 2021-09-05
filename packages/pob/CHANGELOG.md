@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.3.0](https://github.com/christophehurpeau/pob/compare/pob@8.2.4...pob@8.3.0) (2021-09-05)
+
+
+### Bug Fixes
+
+* missing space before args ([4919594](https://github.com/christophehurpeau/pob/commit/4919594b69e79352b32eeb0e651b2bf84b875d55))
+
+
+### Features
+
+* also enable yarn workspaces command in nightingale-monorepo ([4d7df91](https://github.com/christophehurpeau/pob/commit/4d7df916c75f2e7924c0b0fe21b433dbc98207c2))
+
+
+
+
+
 ## [8.2.4](https://github.com/christophehurpeau/pob/compare/pob@8.2.3...pob@8.2.4) (2021-09-05)
 
 

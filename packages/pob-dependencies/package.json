@@ -1,6 +1,6 @@
 {
   "name": "pob-dependencies",
-  "version": "5.4.0",
+  "version": "5.5.0",
   "description": "easier dependencies upgrade with a real package.json",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -64,7 +64,7 @@
     "eslint-plugin-unicorn": "34.0.1",
     "jest": "27.0.6",
     "jest-junit-reporter": "1.1.0",
-    "pob-babel": "^28.2.0",
+    "pob-babel": "^28.2.1",
     "pob-lcov-reporter": "^5.1.0",
     "prettier": "2.3.2",
     "repository-check-dirty": "^3.1.0",

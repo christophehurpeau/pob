@@ -4,12 +4,12 @@ interface Dependencies {
   '@babel/preset-react': '7.14.5';
   '@babel/runtime': '7.15.4';
   '@pob/commitlint-config': '^3.1.0';
-  '@pob/eslint-config': '45.0.2';
-  '@pob/eslint-config-typescript': '45.0.2';
-  '@pob/eslint-config-typescript-react': '45.0.2';
+  '@pob/eslint-config': '45.0.3';
+  '@pob/eslint-config-typescript': '45.0.3';
+  '@pob/eslint-config-typescript-react': '45.0.3';
   '@pob/lerna-light': '^4.0.0';
   '@pob/pretty-pkg': '^3.1.1';
-  '@pob/root': '^5.2.3';
+  '@pob/root': '^5.3.0';
   '@rollup/plugin-run': '2.1.0';
   '@types/jest': '27.0.1';
   '@typescript-eslint/eslint-plugin': '4.29.1';
@@ -27,7 +27,7 @@ interface Dependencies {
   'eslint-plugin-unicorn': '34.0.1';
   jest: '27.0.6';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '^28.1.0';
+  'pob-babel': '^28.2.0';
   'pob-lcov-reporter': '^5.1.0';
   prettier: '2.3.2';
   'repository-check-dirty': '^3.1.0';
