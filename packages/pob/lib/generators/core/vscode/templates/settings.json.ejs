@@ -4,21 +4,23 @@
   // yarn berry
   "eslint.nodePath": ".yarn/sdks",
   "prettier.prettierPath": ".yarn/sdks/prettier/index.js",
-<% if (typescript) { -%>
-  "typescript.tsdk": ".yarn/sdks/typescript/lib",
-  "typescript.enablePromptUseWorkspaceTsdk": true,
-<% } -%>
 <% } -%>
   "search.exclude": {
-    "**/.yarn": true,
-    "**/.pnp.*": true
+    <% if (pnp) { -%>
+    "**/.pnp.*": true,
+    <% } -%>
+    "**/.yarn": true
   },
-<% } else { -%>
+<% } -%>
 <% if (typescript) { -%>
+<% if (yarn && pnp) { -%>
+  "typescript.tsdk": ".yarn/sdks/typescript/lib",
+<% } else { -%>
   "typescript.tsdk": "node_modules/typescript/lib",
+<% } -%>
+  "typescript.enablePromptUseWorkspaceTsdk": true,
+<% } -%>
 
-<% } -%>
-<% } -%>
   // save config
   "editor.formatOnSave": true,
   "eslint.codeActionsOnSave.mode": "all",
