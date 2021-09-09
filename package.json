@@ -41,6 +41,6 @@
     "@pob/root": "workspace:*",
     "check-package-dependencies": "2.0.2",
     "eslint": "7.32.0",
-    "prettier": "2.3.2"
+    "prettier": "2.4.0"
   }
 }
