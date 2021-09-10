@@ -11615,7 +11615,7 @@ __metadata:
     rollup: 2.56.3
     semver: 7.3.5
     standard-version: 9.3.1
-    typedoc: 0.22.0
+    typedoc: 0.22.1
     typescript: 4.3.5
   languageName: unknown
   linkType: soft
@@ -13881,9 +13881,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"typedoc@npm:0.22.0":
-  version: 0.22.0
-  resolution: "typedoc@npm:0.22.0"
+"typedoc@npm:0.22.1":
+  version: 0.22.1
+  resolution: "typedoc@npm:0.22.1"
   dependencies:
     glob: ^7.1.7
     lunr: ^2.3.9
@@ -13894,7 +13894,7 @@ resolve@^2.0.0-next.3:
     typescript: 4.0.x || 4.1.x || 4.2.x || 4.3.x || 4.4.x
   bin:
     typedoc: bin/typedoc
-  checksum: a82164d4f3b1ac181dbd3c9aff7dc602fca51f8d9ac08fb0e79d107b35c8e7724d82c1730e17a65317cdffe7c6056f15b5b6be0effc0026bfc58167b6301e59d
+  checksum: ecff7e5d4a3e654684fbdd0d8f4a89927e8c858599b1da0566fb1101b66af5ed296942614b29685bfd20f3731945cbf113b306cad8908b1dc66581bddbd11b78
   languageName: node
   linkType: hard
 
