@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@4.1.11...@pob/renovate-config@4.2.0) (2021-09-25)
+
+
+### Bug Fixes
+
+* **@pob/renovate-config:** group pob eslint packages ([c7f54ff](https://github.com/christophehurpeau/pob/commit/c7f54ff9a385152f9314592d25fb73f6bece4cf9))
+* **deps:** update dependency prettier to v2.4.1 ([#1044](https://github.com/christophehurpeau/pob/issues/1044)) ([3f827ab](https://github.com/christophehurpeau/pob/commit/3f827abf1972baaaf08a654761fd3e9a9334fef6))
+
+
+### Features
+
+* **deps:** update dependency prettier to v2.4.0 ([#1033](https://github.com/christophehurpeau/pob/issues/1033)) ([962a5bb](https://github.com/christophehurpeau/pob/commit/962a5bbd5fc1b6b5b36cf39b8e3265a113e79d92))
+
+
+
+
+
 ## [4.1.11](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@4.1.10...@pob/renovate-config@4.1.11) (2021-09-05)
 
 

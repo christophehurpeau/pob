@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [28.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@28.2.2...pob-babel@28.3.0) (2021-09-25)
+
+
+### Features
+
+* **deps:** update dependency @types/jest to v27.0.2 ([#1051](https://github.com/christophehurpeau/pob/issues/1051)) ([761d099](https://github.com/christophehurpeau/pob/commit/761d09921b1d3f7a5ef8a23cdac2bea4570ee4f1))
+* **deps:** update jest monorepo to v27.1.0 ([#1030](https://github.com/christophehurpeau/pob/issues/1030)) ([0ca73d8](https://github.com/christophehurpeau/pob/commit/0ca73d8f4ed0ad238860251dd610480b3f45436d))
+* **deps:** update jest monorepo to v27.1.1 ([#1032](https://github.com/christophehurpeau/pob/issues/1032)) ([2221a09](https://github.com/christophehurpeau/pob/commit/2221a0933c1fe14cb7403f0232fb342785b55861))
+* **deps:** update jest monorepo to v27.2.0 ([#1041](https://github.com/christophehurpeau/pob/issues/1041)) ([c9d4e56](https://github.com/christophehurpeau/pob/commit/c9d4e567f496c8c9c308247210c71be41eb42404))
+* **deps:** update jest monorepo to v27.2.1 ([#1048](https://github.com/christophehurpeau/pob/issues/1048)) ([9014cd5](https://github.com/christophehurpeau/pob/commit/9014cd5865fd0c9ec9de76404c4c78db533e7d33))
+
+
+
+
+
 ## [28.2.2](https://github.com/christophehurpeau/pob/compare/pob-babel@28.2.1...pob-babel@28.2.2) (2021-09-05)
 
 **Note:** Version bump only for package pob-babel

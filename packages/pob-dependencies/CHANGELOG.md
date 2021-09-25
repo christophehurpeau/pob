@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.6.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.5.5...pob-dependencies@5.6.0) (2021-09-25)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v2.4.1 ([#1044](https://github.com/christophehurpeau/pob/issues/1044)) ([3f827ab](https://github.com/christophehurpeau/pob/commit/3f827abf1972baaaf08a654761fd3e9a9334fef6))
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v45.1.0 ([#1031](https://github.com/christophehurpeau/pob/issues/1031)) ([6f00a19](https://github.com/christophehurpeau/pob/commit/6f00a1973943c0c4676726ceae4bbf10da901df0))
+* **deps:** update dependency @babel/preset-env to v7.15.6 ([#1034](https://github.com/christophehurpeau/pob/issues/1034)) ([7e16083](https://github.com/christophehurpeau/pob/commit/7e16083c01aa63b7705cae866a6d861cd9697121))
+* **deps:** update dependency @types/jest to v27.0.2 ([#1051](https://github.com/christophehurpeau/pob/issues/1051)) ([761d099](https://github.com/christophehurpeau/pob/commit/761d09921b1d3f7a5ef8a23cdac2bea4570ee4f1))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v4.31.1 ([#1042](https://github.com/christophehurpeau/pob/issues/1042)) ([cdcea7b](https://github.com/christophehurpeau/pob/commit/cdcea7b670e1b4e20345be5a0c801ff9043e0d4a))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v4.31.2 ([#1049](https://github.com/christophehurpeau/pob/issues/1049)) ([bd07e83](https://github.com/christophehurpeau/pob/commit/bd07e837cbd3a509cb2b6a2e8389e933b7e618df))
+* **deps:** update dependency @typescript-eslint/parser to v4.31.1 ([#1043](https://github.com/christophehurpeau/pob/issues/1043)) ([925ecc4](https://github.com/christophehurpeau/pob/commit/925ecc4ef9f538f52571cb6d54f195e0f8516e61))
+* **deps:** update dependency @typescript-eslint/parser to v4.31.2 ([#1050](https://github.com/christophehurpeau/pob/issues/1050)) ([feb0670](https://github.com/christophehurpeau/pob/commit/feb067099d978bc9e30a1668c8c4c1288df8afe6))
+* **deps:** update dependency eslint-plugin-react to v7.25.1 ([#1028](https://github.com/christophehurpeau/pob/issues/1028)) ([59093e0](https://github.com/christophehurpeau/pob/commit/59093e0b9434436bac81f9615f1554521f7fac04))
+* **deps:** update dependency eslint-plugin-react to v7.25.2 ([#1045](https://github.com/christophehurpeau/pob/issues/1045)) ([150a6da](https://github.com/christophehurpeau/pob/commit/150a6da6bf54c850c0a6603406cfd142b8207d2e))
+* **deps:** update dependency eslint-plugin-react to v7.25.3 ([#1047](https://github.com/christophehurpeau/pob/issues/1047)) ([66c490b](https://github.com/christophehurpeau/pob/commit/66c490b5ab8ec095d9a277bdb2598035823250cf))
+* **deps:** update dependency eslint-plugin-react to v7.26.0 ([#1052](https://github.com/christophehurpeau/pob/issues/1052)) ([f256e54](https://github.com/christophehurpeau/pob/commit/f256e54c606037207843fc2b0f278ae4234882a5))
+* **deps:** update dependency prettier to v2.4.0 ([#1033](https://github.com/christophehurpeau/pob/issues/1033)) ([962a5bb](https://github.com/christophehurpeau/pob/commit/962a5bbd5fc1b6b5b36cf39b8e3265a113e79d92))
+* **deps:** update dependency rollup to v2.57.0 ([#1053](https://github.com/christophehurpeau/pob/issues/1053)) ([19364a8](https://github.com/christophehurpeau/pob/commit/19364a8e502cac00a9afc6b5bfe59172d386204d))
+* **deps:** update dependency typedoc to v0.22.0 ([#1035](https://github.com/christophehurpeau/pob/issues/1035)) ([0175f6e](https://github.com/christophehurpeau/pob/commit/0175f6e52e7aec5088557d5af808864dbc9b062e))
+* **deps:** update dependency typedoc to v0.22.1 ([#1036](https://github.com/christophehurpeau/pob/issues/1036)) ([c7bd5b2](https://github.com/christophehurpeau/pob/commit/c7bd5b2ba5420f000162455cd88eda82f314b78e))
+* **deps:** update dependency typedoc to v0.22.2 ([#1038](https://github.com/christophehurpeau/pob/issues/1038)) ([d58609b](https://github.com/christophehurpeau/pob/commit/d58609be00accde55f1873dbd0ed9ac42c5faaa1))
+* **deps:** update dependency typedoc to v0.22.3 ([#1040](https://github.com/christophehurpeau/pob/issues/1040)) ([d629b91](https://github.com/christophehurpeau/pob/commit/d629b915dd9e9b3ac7b3c3d9a608f49038181a3a))
+* **deps:** update dependency typedoc to v0.22.4 ([#1046](https://github.com/christophehurpeau/pob/issues/1046)) ([9fc99e8](https://github.com/christophehurpeau/pob/commit/9fc99e84430d6254641b71e7b44404003ba96f1b))
+* **deps:** update dependency typescript to v4.4.2 ([#1029](https://github.com/christophehurpeau/pob/issues/1029)) ([f168be5](https://github.com/christophehurpeau/pob/commit/f168be568fbc0209daf1ca8037b0ab9b8293b735))
+* **deps:** update dependency typescript to v4.4.3 ([#1037](https://github.com/christophehurpeau/pob/issues/1037)) ([f5ee61f](https://github.com/christophehurpeau/pob/commit/f5ee61f359ccd9ee2a3c8cca6008c65ab727d0f5))
+* **deps:** update jest monorepo to v27.1.0 ([#1030](https://github.com/christophehurpeau/pob/issues/1030)) ([0ca73d8](https://github.com/christophehurpeau/pob/commit/0ca73d8f4ed0ad238860251dd610480b3f45436d))
+* **deps:** update jest monorepo to v27.1.1 ([#1032](https://github.com/christophehurpeau/pob/issues/1032)) ([2221a09](https://github.com/christophehurpeau/pob/commit/2221a0933c1fe14cb7403f0232fb342785b55861))
+* **deps:** update jest monorepo to v27.2.0 ([#1041](https://github.com/christophehurpeau/pob/issues/1041)) ([c9d4e56](https://github.com/christophehurpeau/pob/commit/c9d4e567f496c8c9c308247210c71be41eb42404))
+* **deps:** update jest monorepo to v27.2.1 ([#1048](https://github.com/christophehurpeau/pob/issues/1048)) ([9014cd5](https://github.com/christophehurpeau/pob/commit/9014cd5865fd0c9ec9de76404c4c78db533e7d33))
+* **deps:** update typescript-eslint monorepo to v4.31.0 ([#1025](https://github.com/christophehurpeau/pob/issues/1025)) ([51fb9b1](https://github.com/christophehurpeau/pob/commit/51fb9b1025da47f5649d059ab8ed87200a9a6032))
+
+
+
+
+
 ## [5.5.5](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.5.4...pob-dependencies@5.5.5) (2021-09-05)
 
 **Note:** Version bump only for package pob-dependencies
