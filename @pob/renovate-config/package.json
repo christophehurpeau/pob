@@ -74,12 +74,6 @@
           ]
         },
         {
-          "description": "@pob eslint configs",
-          "packagePatterns": [
-            "^@pob/eslint-config"
-          ]
-        },
-        {
           "packagePatterns": [
             "^@pob/eslint-config",
             "^@typescript-eslint/",
@@ -114,6 +108,12 @@
           ],
           "schedule": [
             "at any time"
+          ]
+        },
+        {
+          "description": "@pob eslint configs",
+          "packagePatterns": [
+            "^@pob/eslint-config"
           ]
         },
         {
