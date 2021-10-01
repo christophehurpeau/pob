@@ -42,6 +42,7 @@ export default class CoreYarnGenerator extends Generator {
       const configString = this.fs.read('.yarnrc.yml');
       const config = yarnParsers.parseSyml(configString);
       config.defaultSemverRangePrefix = this.options.type === 'app' ? '' : '^';
+      config.enableMessageNames = false;
       config.nodeLinker = this.options.yarnNodeLinker;
       writeAndFormat(this.fs, '.yarnrc.yml', yarnParsers.stringifySyml(config));
     }
