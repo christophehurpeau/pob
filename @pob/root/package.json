@@ -28,7 +28,7 @@
     "@pob/pretty-eslint-config": "^2.1.2",
     "@pob/pretty-pkg": "^3.1.2",
     "husky": "^7.0.0",
-    "lint-staged": "11.2.2",
+    "lint-staged": "11.2.3",
     "repository-check-dirty": "^3.1.1",
     "semver": "^7.1.2",
     "which-pm-runs": "1.0.0"
