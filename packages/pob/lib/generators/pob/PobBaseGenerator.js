@@ -76,6 +76,8 @@ export default class PobBaseGenerator extends Generator {
     if (config) {
       oldConfigStorage.delete('type');
       oldConfigStorage.delete('project');
+    } else {
+      config = {};
     }
 
     if ('yarn2' in config) {

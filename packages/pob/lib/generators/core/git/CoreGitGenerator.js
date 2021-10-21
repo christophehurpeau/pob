@@ -123,8 +123,11 @@ export default class CoreGitGenerator extends Generator {
     const cwd = this.destinationPath();
 
     this.initGitRepository =
-      this.spawnCommandSync('git', ['status'], { cwd, stdio: 'ignore' })
-        .status === 128;
+      this.spawnCommandSync('git', ['status'], {
+        cwd,
+        stdio: 'ignore',
+        reject: false,
+      }).status === 128;
     if (this.initGitRepository) {
       this.spawnCommandSync('git', ['init'], { cwd });
 
