@@ -214,7 +214,10 @@ export default class CommonLintGenerator extends Generator {
         ['eslint'],
       );
       const shouldHavePluginsDependencies =
-        !globalEslint || !inLerna || rootPackageManager === 'yarn';
+        !globalEslint ||
+        !inLerna ||
+        (rootPackageManager === 'yarn' &&
+          rootYarnNodeLinker !== 'node-modules');
 
       if (
         !pkg.name.startsWith('eslint-config') &&
