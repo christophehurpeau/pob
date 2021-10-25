@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.6.0](https://github.com/christophehurpeau/pob/compare/pob@8.5.0...pob@8.6.0) (2021-10-25)
+
+
+### Bug Fixes
+
+* **pob:** delete yarn2 in config even if value is false ([f6393fe](https://github.com/christophehurpeau/pob/commit/f6393fee76538d20dd7ac418416fa965bba4cbc0))
+* **pob:** dont add any script as main, only "." ([93293e0](https://github.com/christophehurpeau/pob/commit/93293e0916cfbd5a6cf868716a8ff3f74297ef37))
+* **pob:** fixes when creating ([9fb72f1](https://github.com/christophehurpeau/pob/commit/9fb72f1e781dffd56dd8d2cc7994c64b44601620))
+
+
+### Features
+
+* **pob:** set enableMessageName to false in yarn config ([f5d76af](https://github.com/christophehurpeau/pob/commit/f5d76af0ddad1d1831e56c1489d3a3825af5c0c3))
+
+
+
+
+
 # [8.5.0](https://github.com/christophehurpeau/pob/compare/pob@8.4.3...pob@8.5.0) (2021-09-25)
 
 

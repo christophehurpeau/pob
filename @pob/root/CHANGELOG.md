@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.5.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.4.2...@pob/root@5.5.0) (2021-10-25)
+
+
+### Bug Fixes
+
+* **@pob/root:** argument install in legacy yarn 1 ([7cf1566](https://github.com/christophehurpeau/pob/commit/7cf1566bfd536223e37bf6b7d11790d79e0e2270))
+* **deps:** update dependency @commitlint/cli to v13.2.1 ([#1067](https://github.com/christophehurpeau/pob/issues/1067)) ([f6c56df](https://github.com/christophehurpeau/pob/commit/f6c56df3803151aadc1877a76910e84762548512))
+* **deps:** update dependency lint-staged to v11.2.1 ([#1066](https://github.com/christophehurpeau/pob/issues/1066)) ([995eefe](https://github.com/christophehurpeau/pob/commit/995eefe9920a07cbf5d2575577de2477df4647f5))
+* **deps:** update dependency lint-staged to v11.2.2 ([#1068](https://github.com/christophehurpeau/pob/issues/1068)) ([1351272](https://github.com/christophehurpeau/pob/commit/135127291756f79d39129a7ae657d8b9b171b4f3))
+* **deps:** update dependency lint-staged to v11.2.3 ([#1070](https://github.com/christophehurpeau/pob/issues/1070)) ([adf2a74](https://github.com/christophehurpeau/pob/commit/adf2a7474d1355e2c405b146d6fbe25e81b6cf2e))
+* **deps:** update dependency lint-staged to v11.2.4 ([#1079](https://github.com/christophehurpeau/pob/issues/1079)) ([8221e57](https://github.com/christophehurpeau/pob/commit/8221e5740953e2c72f90b0fa808bb93a9dcfac3f))
+
+
+### Features
+
+* **@pob/root:** update yarn ([d77b408](https://github.com/christophehurpeau/pob/commit/d77b408d1198c6dac181578c00f1afa0be38aa5d))
+* **deps:** update dependency @commitlint/cli to v13.2.0 ([#1056](https://github.com/christophehurpeau/pob/issues/1056)) ([b4a0b61](https://github.com/christophehurpeau/pob/commit/b4a0b61ade5cfdee584d9a341a1d579ac67201d3))
+* **deps:** update dependency lint-staged to v11.2.0 ([#1062](https://github.com/christophehurpeau/pob/issues/1062)) ([4d01261](https://github.com/christophehurpeau/pob/commit/4d0126137a8574297918fef5bfeb4b0dfbf4361f))
+
+
+
+
+
 ## [5.4.2](https://github.com/christophehurpeau/pob/compare/@pob/root@5.4.1...@pob/root@5.4.2) (2021-09-05)
 
 

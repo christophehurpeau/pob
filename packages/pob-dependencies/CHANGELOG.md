@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.7.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.6.0...pob-dependencies@5.7.0) (2021-10-25)
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.15.8 ([#1064](https://github.com/christophehurpeau/pob/issues/1064)) ([a800a16](https://github.com/christophehurpeau/pob/commit/a800a1605c019e627db28a16482874c641a5a470))
+* **deps:** update dependency eslint-plugin-import to v2.25.2 ([#1073](https://github.com/christophehurpeau/pob/issues/1073)) ([f24c143](https://github.com/christophehurpeau/pob/commit/f24c143d743dc4698426566b80ca23d7133f4510))
+* **deps:** update dependency eslint-plugin-react to v7.26.1 ([#1059](https://github.com/christophehurpeau/pob/issues/1059)) ([eeb8997](https://github.com/christophehurpeau/pob/commit/eeb89977c573e06ce87b7610cf5253289154e0cb))
+* **deps:** update dependency rollup to v2.58.0 ([#1060](https://github.com/christophehurpeau/pob/issues/1060)) ([a9d4497](https://github.com/christophehurpeau/pob/commit/a9d4497be228a950e626646722194abd88c158cd))
+* **deps:** update dependency rollup to v2.58.3 ([#1080](https://github.com/christophehurpeau/pob/issues/1080)) ([7d321f9](https://github.com/christophehurpeau/pob/commit/7d321f9bf32689d8152b15782725774ecf521656))
+* **deps:** update dependency standard-version to v9.3.2 ([#1076](https://github.com/christophehurpeau/pob/issues/1076)) ([7128fbf](https://github.com/christophehurpeau/pob/commit/7128fbf60f7f36f918afd0817d86b15668f248a2))
+* **deps:** update dependency typedoc to v0.22.5 ([#1061](https://github.com/christophehurpeau/pob/issues/1061)) ([9f6e54f](https://github.com/christophehurpeau/pob/commit/9f6e54fa4e94dd1790729ed567c95aa57dbc82f6))
+* **deps:** update dependency typedoc to v0.22.6 ([#1077](https://github.com/christophehurpeau/pob/issues/1077)) ([cc3e5e0](https://github.com/christophehurpeau/pob/commit/cc3e5e0ee39d1751cd6921d607c73a815174c67f))
+* **deps:** update dependency typescript to v4.4.4 ([#1074](https://github.com/christophehurpeau/pob/issues/1074)) ([c555c92](https://github.com/christophehurpeau/pob/commit/c555c92e1191240729b2150ededb9372cd06a875))
+* **deps:** update jest monorepo to v27.2.2 ([#1054](https://github.com/christophehurpeau/pob/issues/1054)) ([5f6c28a](https://github.com/christophehurpeau/pob/commit/5f6c28ac31dcf97b06f8eabb8daae73d16a8c69c))
+* **deps:** update jest monorepo to v27.2.3 ([#1057](https://github.com/christophehurpeau/pob/issues/1057)) ([a664be2](https://github.com/christophehurpeau/pob/commit/a664be24736e3e49f8b1f427d30056a82c5575b9))
+* **deps:** update jest monorepo to v27.2.4 ([#1058](https://github.com/christophehurpeau/pob/issues/1058)) ([5087203](https://github.com/christophehurpeau/pob/commit/508720305cbc9fef5036743814bab15baa261f04))
+* **deps:** update jest monorepo to v27.2.5 ([#1065](https://github.com/christophehurpeau/pob/issues/1065)) ([65b26d1](https://github.com/christophehurpeau/pob/commit/65b26d11be918fd3c808641f061210db7575bb24))
+* **deps:** update jest monorepo to v27.3.1 ([#1078](https://github.com/christophehurpeau/pob/issues/1078)) ([f060dba](https://github.com/christophehurpeau/pob/commit/f060dba8ee89de7fd2b84284fa991d7c4382ed8f))
+* **deps:** update typescript-eslint monorepo to v4.32.0 ([#1055](https://github.com/christophehurpeau/pob/issues/1055)) ([eac0031](https://github.com/christophehurpeau/pob/commit/eac00310b7e7dba1b6cb38390d861778c996d62b))
+* **deps:** update typescript-eslint monorepo to v4.33.0 ([#1063](https://github.com/christophehurpeau/pob/issues/1063)) ([232da8d](https://github.com/christophehurpeau/pob/commit/232da8d373282eb6a205627c88b7583c08dc7038))
+
+
+
+
+
 # [5.6.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.5.5...pob-dependencies@5.6.0) (2021-09-25)
 
 

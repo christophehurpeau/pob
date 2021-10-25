@@ -1,6 +1,6 @@
 interface Dependencies {
-  '@babel/core': '7.15.5';
-  '@babel/preset-env': '7.15.6';
+  '@babel/core': '7.15.8';
+  '@babel/preset-env': '7.15.8';
   '@babel/preset-react': '7.14.5';
   '@babel/runtime': '7.15.4';
   '@pob/commitlint-config': '^3.1.1';
@@ -12,30 +12,30 @@ interface Dependencies {
   '@pob/root': '^5.4.2';
   '@rollup/plugin-run': '2.1.0';
   '@types/jest': '27.0.2';
-  '@typescript-eslint/eslint-plugin': '4.31.2';
-  '@typescript-eslint/parser': '4.31.2';
-  'babel-jest': '27.2.1';
+  '@typescript-eslint/eslint-plugin': '4.33.0';
+  '@typescript-eslint/parser': '4.33.0';
+  'babel-jest': '27.3.1';
   'babel-preset-latest-node': '5.5.1';
   'babel-preset-modern-browsers': '15.0.2';
   eslint: '7.32.0';
   'eslint-import-resolver-node': '0.3.6';
-  'eslint-plugin-import': '2.24.2';
+  'eslint-plugin-import': '2.25.2';
   'eslint-plugin-jsx-a11y': '6.4.1';
   'eslint-plugin-node': '11.1.0';
-  'eslint-plugin-react': '7.26.0';
+  'eslint-plugin-react': '7.26.1';
   'eslint-plugin-react-hooks': '4.2.0';
   'eslint-plugin-unicorn': '35.0.0';
-  jest: '27.2.1';
+  jest: '27.3.1';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '^28.2.2';
-  'pob-lcov-reporter': '^5.1.1';
+  'pob-babel': '^28.3.0';
+  'pob-lcov-reporter': '^5.2.0';
   prettier: '2.4.1';
   'repository-check-dirty': '^3.1.1';
-  rollup: '2.57.0';
+  rollup: '2.58.3';
   semver: '7.3.5';
-  'standard-version': '9.3.1';
-  typedoc: '0.22.4';
-  typescript: '4.4.3';
+  'standard-version': '9.3.2';
+  typedoc: '0.22.6';
+  typescript: '4.4.4';
 }
 
 declare const dependencies: Dependencies;

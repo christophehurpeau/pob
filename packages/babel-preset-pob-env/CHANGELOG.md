@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@6.2.1...babel-preset-pob-env@6.3.0) (2021-10-25)
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.15.8 ([#1064](https://github.com/christophehurpeau/pob/issues/1064)) ([a800a16](https://github.com/christophehurpeau/pob/commit/a800a1605c019e627db28a16482874c641a5a470))
+
+
+
+
+
 ## [6.2.1](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@6.2.0...babel-preset-pob-env@6.2.1) (2021-09-05)
 
 **Note:** Version bump only for package babel-preset-pob-env
