@@ -219,7 +219,7 @@ export default class MonorepoLernaGenerator extends Generator {
     packageUtils.addOrRemoveScripts(pkg, withBabel, {
       build: `${
         useYarnWorkspacesCommand
-          ? 'yarn workspaces foreach -Av run'
+          ? 'yarn workspaces foreach --parallel --topological-dev -Av run'
           : 'lerna run --stream'
       } build`,
       watch: `${
