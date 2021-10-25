@@ -26,7 +26,8 @@ jobs:
             v2-dependencies--${{ matrix.node-version }}-
 
       - name: Check Dependencies
-        run: yarn install --immutable --immutable-cache
+        # no immutable here
+        run: yarn install
 
       - name: Run pob-root-postinstall
         run: yarn run pob-root-postinstall
