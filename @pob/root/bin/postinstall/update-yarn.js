@@ -6,7 +6,7 @@ const semver = require('semver');
 module.exports = function updateYarn({ pkg, pm }) {
   if (pm.name !== 'yarn' || !pm.version) return;
 
-  if (semver.lt(pm.version, '3.0.2')) {
+  if (semver.lt(pm.version, '3.1.0')) {
     // Upgrade from yarn 1
     if (semver.lt(pm.version, '2.0.0')) {
       console.log('-- Upgrade from yarn 1 --');
