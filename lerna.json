@@ -4,7 +4,12 @@
   "useWorkspaces": true,
   "command": {
     "publish": {
-      "ignoreChanges": ["**/.yo-rc.json", "**/.eslintrc.json"]
+      "ignoreChanges": [
+        "**/.yo-rc.json",
+        "**/.eslintrc.json",
+        "**/tsconfig.json",
+        "**/tsconfig.build.json"
+      ]
     }
   }
 }

@@ -1,0 +1,16 @@
+{
+  "pob-lerna": {
+    "type": {
+      "type": "lib"
+    }
+  },
+  "pob": {
+    "lib": {
+      "documentation": false,
+      "testing": false
+    },
+    "project": {
+      "type": "lib"
+    }
+  }
+}

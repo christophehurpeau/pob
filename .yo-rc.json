@@ -16,11 +16,13 @@
         "repository-check-dirty",
         "@pob/sort-eslint-config",
         "@pob/sort-pkg",
+        "example-simple-lib",
         "babel-preset-pob-env",
         "@pob/pretty-eslint-config",
         "@pob/pretty-pkg",
         "pob-babel",
         "@pob/root",
+        "example-ts-lib",
         "pob-dependencies",
         "@pob/renovate-config",
         "pob"

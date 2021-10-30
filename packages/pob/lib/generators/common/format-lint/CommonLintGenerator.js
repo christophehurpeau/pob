@@ -108,6 +108,7 @@ export default class CommonLintGenerator extends Generator {
       const ignorePatterns = new Set(
         this.options.ignorePaths.split('\n').filter(Boolean),
       );
+
       if (this.options.appTypes) {
         const appTypes = JSON.parse(this.options.appTypes);
         appTypes.forEach((appType) => {

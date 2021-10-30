@@ -13,18 +13,21 @@
   "packageManager": "yarn@3.1.0",
   "workspaces": [
     "packages/*",
-    "@pob/*"
+    "@pob/*",
+    "examples/*"
   ],
   "scripts": {
+    "build": "yarn workspaces foreach --parallel --topological-dev -Av run build",
     "checks": "node scripts/check-packages.mjs",
     "lint": "yarn run lint:prettier && yarn run lint:eslint",
     "lint:eslint": "eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet .",
     "lint:prettier": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
     "postinstall": "yarn node @pob/root/bin/pob-root-postinstall.js",
-    "preversion": "yarn run lint && repository-check-dirty",
+    "preversion": "yarn run lint && yarn run build && repository-check-dirty",
     "release": "GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release' && lerna publish from-git",
-    "test": "yarn workspaces foreach --parallel -Av run test"
+    "test": "yarn workspaces foreach --parallel -Av run test",
+    "watch": "yarn workspaces foreach --parallel --exclude \"*-example\" -Av run watch"
   },
   "prettier": {
     "trailingComma": "all",

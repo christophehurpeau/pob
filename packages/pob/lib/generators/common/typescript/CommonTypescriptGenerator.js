@@ -47,9 +47,12 @@ export default class CommonTypescriptGenerator extends Generator {
       delete pkg.scripts.flow;
     }
 
-    packageUtils.addOrRemoveDevDependencies(pkg, this.options.enable, [
-      'typescript',
-    ]);
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      this.options.enable ||
+        this.fs.exists(this.destinationPath('lib/index.d.ts')),
+      ['typescript'],
+    );
 
     const tsconfigPath = this.destinationPath('tsconfig.json');
     const tsconfigBuildPath = this.destinationPath('tsconfig.build.json');

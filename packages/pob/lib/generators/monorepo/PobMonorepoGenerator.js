@@ -16,9 +16,15 @@ const getAppTypes = (configs) => {
   return [...appTypes];
 };
 
-const hasDist = (configs) =>
+const hasDist = (packages, configs) =>
   configs.some(
-    (config) => config && config.project && config.project.type === 'lib',
+    (config, index) =>
+      !!(config && config.project && config.project.type === 'lib') &&
+      !!(
+        packages[index].get('pob') &&
+        packages[index].get('pob').babelEnvs &&
+        packages[index].get('pob').babelEnvs.length > 0
+      ),
   );
 
 export default class PobMonorepoGenerator extends Generator {
@@ -207,10 +213,7 @@ export default class PobMonorepoGenerator extends Generator {
       packageManager: this.options.packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
       appTypes: JSON.stringify(getAppTypes(this.packageConfigs)),
-      ignorePaths:
-        this.pobLernaConfig.typescript && hasDist(this.packageConfigs)
-          ? '/dist'
-          : '',
+      ignorePaths: hasDist(this.packages, this.packageConfigs) ? '/dist' : '',
     });
 
     this.composeWith('pob:lib:doc', {
