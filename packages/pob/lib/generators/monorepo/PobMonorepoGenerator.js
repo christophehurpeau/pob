@@ -16,9 +16,38 @@ const getAppTypes = (configs) => {
   return [...appTypes];
 };
 
-const hasDist = (configs) =>
+const hasDist = (packages, configs) =>
+  console.log({
+    hasDist: configs.some(
+      (config, index) =>
+        !!(config && config.project && config.project.type === 'lib') &&
+        !!(
+          packages[index].pob &&
+          packages[index].pob.babelEnvs &&
+          packages[index].pob.babelEnvs.length > 0
+        ),
+    ),
+    hasLib: configs.some(
+      (config, index) =>
+        !!(config && config.project && config.project.type === 'lib'),
+    ),
+    hasBabelEnv: configs.some(
+      (config, index) =>
+        !!(
+          packages[index].pob &&
+          packages[index].pob.babelEnvs &&
+          packages[index].pob.babelEnvs.length > 0
+        ),
+    ),
+  }) ||
   configs.some(
-    (config) => config && config.project && config.project.type === 'lib',
+    (config, index) =>
+      !!(config && config.project && config.project.type === 'lib') &&
+      !!(
+        packages[index].pob &&
+        packages[index].pob.babelEnvs &&
+        packages[index].pob.babelEnvs.length > 0
+      ),
   );
 
 export default class PobMonorepoGenerator extends Generator {
@@ -85,6 +114,7 @@ export default class PobMonorepoGenerator extends Generator {
       graph.prune(...batch);
     }
 
+    console.log(this.packages);
     this.packageNames = this.packages.map((pkg) => pkg.name);
     this.packageConfigs = this.packageLocations.map((location) => {
       try {
@@ -207,10 +237,7 @@ export default class PobMonorepoGenerator extends Generator {
       packageManager: this.options.packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
       appTypes: JSON.stringify(getAppTypes(this.packageConfigs)),
-      ignorePaths:
-        this.pobLernaConfig.typescript && hasDist(this.packageConfigs)
-          ? '/dist'
-          : '',
+      ignorePaths: hasDist(this.packages, this.packageConfigs) ? '/dist' : '',
     });
 
     this.composeWith('pob:lib:doc', {

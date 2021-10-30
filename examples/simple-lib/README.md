@@ -1,5 +1,5 @@
 <h3 align="center">
-  simple-lib
+  example-simple-lib
 </h3>
 
 <p align="center">
