@@ -1,0 +1,1 @@
+{"version":3,"file":"index-node12.mjs","sources":["../src/index.ts"],"sourcesContent":["export default function simpleLib() {\n  return 'hello world';\n}\n"],"names":["simpleLib"],"mappings":"AAAe,SAASA,SAAT,GAAqB;AAClC,SAAO,aAAP;AACD;;;;"}

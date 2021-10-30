@@ -6507,6 +6507,32 @@ __metadata:
   languageName: node
   linkType: hard
 
+"example-simple-lib@workspace:examples/simple-lib":
+  version: 0.0.0-use.local
+  resolution: "example-simple-lib@workspace:examples/simple-lib"
+  dependencies:
+    "@types/jest": 27.0.2
+    jest: 27.3.1
+    pob-lcov-reporter: 5.3.0
+  languageName: unknown
+  linkType: soft
+
+"example-ts-lib@workspace:examples/ts-lib":
+  version: 0.0.0-use.local
+  resolution: "example-ts-lib@workspace:examples/ts-lib"
+  dependencies:
+    "@babel/core": 7.16.0
+    "@types/jest": 27.0.2
+    babel-jest: 27.3.1
+    babel-preset-latest-node: 5.5.1
+    jest: 27.3.1
+    pob-babel: 28.4.0
+    pob-lcov-reporter: 5.3.0
+    rollup: 2.58.3
+    typescript: 4.4.4
+  languageName: unknown
+  linkType: soft
+
 "execa@npm:^4.0.0, execa@npm:^4.1.0":
   version: 4.1.0
   resolution: "execa@npm:4.1.0"
@@ -11662,7 +11688,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@^28.4.0, pob-babel@workspace:packages/pob-babel":
+"pob-babel@28.4.0, pob-babel@^28.4.0, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:

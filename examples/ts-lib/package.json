@@ -1,0 +1,90 @@
+{
+  "name": "example-ts-lib",
+  "private": true,
+  "author": "Christophe Hurpeau <christophe@hurpeau.com>",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "examples/ts-lib"
+  },
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "type": "module",
+  "engines": {
+    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+  },
+  "types": "./dist/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "node": {
+        "development": {
+          "import": "./dist/index-node12-dev.mjs"
+        },
+        "import": "./dist/index-node12.mjs"
+      }
+    }
+  },
+  "module:node": "./dist/index-node12.mjs",
+  "module:node-dev": "./dist/index-node12-dev.mjs",
+  "sideEffects": false,
+  "scripts": {
+    "build": "pob-build && yarn run build:definitions",
+    "build:definitions": "tsc -p tsconfig.build.json",
+    "generate:test-coverage": "rm -Rf docs/coverage/ ; NODE_ENV=production BABEL_ENV=test jest --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/",
+    "lint": "tsc && yarn run lint:eslint",
+    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet examples/ts-lib",
+    "test": "jest",
+    "test:watch": "jest --watch",
+    "watch": "pob-watch"
+  },
+  "prettier": {
+    "trailingComma": "all",
+    "singleQuote": true,
+    "arrowParens": "always"
+  },
+  "jest": {
+    "cacheDirectory": "./node_modules/.cache/jest",
+    "testMatch": [
+      "<rootDir>/src/**/__tests__/**/*.ts",
+      "<rootDir>/src/**/*.test.ts"
+    ],
+    "collectCoverageFrom": [
+      "src/**/*.ts"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "js",
+      "json"
+    ],
+    "transform": {
+      "^.+\\.ts$": "babel-jest"
+    },
+    "testEnvironment": "node"
+  },
+  "pob": {
+    "babelEnvs": [
+      {
+        "target": "node",
+        "version": "12",
+        "formats": [
+          "es"
+        ]
+      }
+    ],
+    "entries": [
+      "index"
+    ]
+  },
+  "devDependencies": {
+    "@babel/core": "7.16.0",
+    "@types/jest": "27.0.2",
+    "babel-jest": "27.3.1",
+    "babel-preset-latest-node": "5.5.1",
+    "jest": "27.3.1",
+    "pob-babel": "28.4.0",
+    "pob-lcov-reporter": "5.3.0",
+    "rollup": "2.58.3",
+    "typescript": "4.4.4"
+  }
+}
