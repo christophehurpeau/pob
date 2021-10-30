@@ -51,20 +51,11 @@ export default class CoreCIGenerator extends Generator {
   }
 
   default() {
-    fs.rmdirSync(this.destinationPath('.circleci'), { recursive: true });
-
+    if (fs.existsSync(this.destinationPath('.circleci'))) {
+      fs.rmdirSync(this.destinationPath('.circleci'), { recursive: true });
+    }
     if (this.options.enable) {
       const pkg = this.fs.readJSON(this.destinationPath('package.json'));
-
-      // this.fs.copyTpl(
-      //   this.templatePath('circle.yml.ejs'),
-      //   this.destinationPath('circle.yml'),
-      //   {
-      //     testing: this.ci,
-      //     documentation: this.options.documentation,
-      //     codecov: this.options.codecov,
-      //   },
-      // );
 
       copyAndFormatTpl(
         this.fs,

@@ -42,6 +42,7 @@ export default class PobLibGenerator extends Generator {
       this.config.get('pob') ||
       this.config.get('pob-config') ||
       this.config.get('pob-lib-config');
+
     if (!this.pobjson) {
       this.pobjson = this.fs.readJSON(this.destinationPath('.pob.json'), null);
       if (this.pobjson) {
@@ -190,7 +191,7 @@ export default class PobLibGenerator extends Generator {
       });
       this.pobjson.testing = !testing ? false : this.pobjson.testing || {};
 
-      if (this.pobjson.testing) {
+      if (this.pobjson.testing && !(inLerna || inLerna.root)) {
         const testingPrompts = await this.prompt([
           {
             type: 'confirm',
