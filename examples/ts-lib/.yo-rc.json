@@ -1,6 +1,5 @@
 {
   "pob": {
-    "libtest": "test",
     "lib": {
       "documentation": false,
       "testing": {}

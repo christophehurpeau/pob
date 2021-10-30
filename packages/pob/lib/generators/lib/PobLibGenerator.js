@@ -47,18 +47,14 @@ export default class PobLibGenerator extends Generator {
       this.pobjson = this.fs.readJSON(this.destinationPath('.pob.json'), null);
       if (this.pobjson) {
         this.config.set('lib', this.pobjson);
-        this.config.save();
       }
     }
 
-    if (!this.pobjson) {
-      this.config.set('libtest', 'test');
-      this.config.save();
-    }
-
+    this.config.delete('libtest'); // deprecated
     this.config.delete('pob'); // deprecated
     this.config.delete('pob-config'); // deprecated
     this.config.delete('pob-lib-config'); // deprecated
+    this.config.save();
     this.fs.delete('.pob.json'); // deprecated
 
     if (!this.pobjson || this.pobjson.babelEnvs) {
