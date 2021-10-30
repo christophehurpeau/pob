@@ -1,7 +1,7 @@
 {
   "name": "example-ts-lib",
   "private": true,
-  "author": "Christophe Hurpeau <christophe@hurpeau.com>",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": {
     "type": "git",

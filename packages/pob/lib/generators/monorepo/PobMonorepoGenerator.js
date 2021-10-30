@@ -17,36 +17,13 @@ const getAppTypes = (configs) => {
 };
 
 const hasDist = (packages, configs) =>
-  console.log({
-    hasDist: configs.some(
-      (config, index) =>
-        !!(config && config.project && config.project.type === 'lib') &&
-        !!(
-          packages[index].pob &&
-          packages[index].pob.babelEnvs &&
-          packages[index].pob.babelEnvs.length > 0
-        ),
-    ),
-    hasLib: configs.some(
-      (config, index) =>
-        !!(config && config.project && config.project.type === 'lib'),
-    ),
-    hasBabelEnv: configs.some(
-      (config, index) =>
-        !!(
-          packages[index].pob &&
-          packages[index].pob.babelEnvs &&
-          packages[index].pob.babelEnvs.length > 0
-        ),
-    ),
-  }) ||
   configs.some(
     (config, index) =>
       !!(config && config.project && config.project.type === 'lib') &&
       !!(
-        packages[index].pob &&
-        packages[index].pob.babelEnvs &&
-        packages[index].pob.babelEnvs.length > 0
+        packages[index].get('pob') &&
+        packages[index].get('pob').babelEnvs &&
+        packages[index].get('pob').babelEnvs.length > 0
       ),
   );
 
@@ -114,7 +91,6 @@ export default class PobMonorepoGenerator extends Generator {
       graph.prune(...batch);
     }
 
-    console.log(this.packages);
     this.packageNames = this.packages.map((pkg) => pkg.name);
     this.packageConfigs = this.packageLocations.map((location) => {
       try {
