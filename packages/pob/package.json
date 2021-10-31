@@ -51,7 +51,7 @@
     "@pob/sort-object": "^3.1.1",
     "@pob/sort-pkg": "^3.2.0",
     "@yarnpkg/parsers": "^2.2.0",
-    "findup-sync": "^4.0.0",
+    "findup-sync": "^5.0.0",
     "generator-license": "^5.4.0",
     "git-remote-url": "^1.0.1",
     "github-username": "^6.0.0",
