@@ -174,6 +174,8 @@ export default class PobAppGenerator extends Generator {
       buildInGit: false,
     });
 
+    this.composeWith('pob:core:npm', { enable: false });
+
     switch (this.appConfig.type) {
       case 'next.js':
         this.composeWith('pob:app:nextjs', {

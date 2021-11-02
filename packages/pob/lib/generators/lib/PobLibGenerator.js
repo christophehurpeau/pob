@@ -280,6 +280,12 @@ export default class PobLibGenerator extends Generator {
       typescript: babelEnvs.length > 0,
       documentation: this.pobjson.documentation,
     });
+
+    this.composeWith('pob:core:npm', {
+      enable: !pkg.private,
+      testing: !!this.pobjson.testing,
+      ci: this.pobjson.testing && this.pobjson.testing.ci,
+    });
   }
 
   writing() {

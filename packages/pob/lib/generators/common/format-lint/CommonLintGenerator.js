@@ -386,7 +386,7 @@ export default class CommonLintGenerator extends Generator {
       if (this.options.ignorePaths) {
         this.options.ignorePaths
           .split('\n')
-          .filter(Boolean)
+          .filter((path) => path !== '/dist' && path)
           .forEach((ignorePath) => {
             if (ignorePath.startsWith('#')) return;
             ignorePatterns.add(ignorePath);

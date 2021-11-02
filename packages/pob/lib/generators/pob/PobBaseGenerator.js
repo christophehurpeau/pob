@@ -225,8 +225,6 @@ export default class PobBaseGenerator extends Generator {
           throw new Error(`Invalid type: ${this.options.type}`);
       }
     }
-
-    this.composeWith('pob:core:npm');
   }
 
   writing() {

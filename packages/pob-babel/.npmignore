@@ -5,8 +5,8 @@
 /test
 /*.config.js
 .codeclimate.yml
-.yo-rc.json
 __snapshots__
+.yo-rc.json
 
 /.settings
 /.project

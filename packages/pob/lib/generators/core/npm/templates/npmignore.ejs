@@ -1,5 +1,8 @@
-<% if (!inLerna) { -%>
+<% if (!inLerna && ci) { -%>
 /.github
+<% } -%>
+<% if (!inLerna && codeclimate) { -%>
+/.codeclimate.yml
 <% } -%>
 /build
 /docs
@@ -16,7 +19,9 @@
 <% } -%>
 babel.config.json
 <% } -%>
-.codeclimate.yml
+<% if (testing) { -%>
+__snapshots__
+<% } -%>
 .yo-rc.json
 <% if (!inLerna) { -%>
 /renovate.json
@@ -24,7 +29,7 @@ babel.config.json
 /yarn.lock
 /.yarn
 /.yarnrc.yml
-/.pnp.js
+/.pnp.*
 <% } -%>
 <% } -%>
 
