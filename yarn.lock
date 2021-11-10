@@ -1354,7 +1354,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/runtime@npm:7.16.3, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.11.2, @babel/runtime@npm:^7.8.4":
+"@babel/runtime@npm:7.16.3, @babel/runtime@npm:^7.10.2, @babel/runtime@npm:^7.16.3, @babel/runtime@npm:^7.8.4":
   version: 7.16.3
   resolution: "@babel/runtime@npm:7.16.3"
   dependencies:
@@ -3706,7 +3706,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"array-includes@npm:^3.1.1, array-includes@npm:^3.1.2, array-includes@npm:^3.1.3, array-includes@npm:^3.1.4":
+"array-includes@npm:^3.1.3, array-includes@npm:^3.1.4":
   version: 3.1.4
   resolution: "array-includes@npm:3.1.4"
   dependencies:
@@ -3890,10 +3890,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axe-core@npm:^4.0.2":
-  version: 4.1.3
-  resolution: "axe-core@npm:4.1.3"
-  checksum: 4094e0b3ee084f0cbefb85eac95bbbf6afb17c6c5522edf84608a17019f17fcfbedd4e9230576a1d4658480ab1dcb777e3063204212ac2d81431287773f2bf61
+"axe-core@npm:^4.3.5":
+  version: 4.3.5
+  resolution: "axe-core@npm:4.3.5"
+  checksum: 973c6a80f0aaa663820b209d4202de7a0c240a2dea2f3cff168b09c0f221b27179b1f0988f00ad11ed63cbc50535920f8ca779de1c60dc82090ab2d275f71fdd
   languageName: node
   linkType: hard
 
@@ -5431,10 +5431,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"damerau-levenshtein@npm:^1.0.6":
-  version: 1.0.6
-  resolution: "damerau-levenshtein@npm:1.0.6"
-  checksum: 4746e69c33e83038cac1f26100be6eb6a1cc1e52bdbf6d1c14a91aa0323cac35aea7e4f2bedf53e39db80c08853c88ec64b0e8b1622f05c80281636d4da7d139
+"damerau-levenshtein@npm:^1.0.7":
+  version: 1.0.7
+  resolution: "damerau-levenshtein@npm:1.0.7"
+  checksum: ec8161cb381523e0db9b5c9b64863736da3197808b6fdc4a3a2ca764c0b4357e9232a4c5592220fb18755a91240b8fee7b13ab1b269fbbdc5f68c36f0053aceb
   languageName: node
   linkType: hard
 
@@ -5951,7 +5951,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"emoji-regex@npm:^9.0.0":
+"emoji-regex@npm:^9.2.2":
   version: 9.2.2
   resolution: "emoji-regex@npm:9.2.2"
   checksum: 8487182da74aabd810ac6d6f1994111dfc0e331b01271ae01ec1eb0ad7b5ecc2bbbbd2f053c05cb55a1ac30449527d819bbfbf0e3de1023db308cbcb47f86601
@@ -6222,24 +6222,25 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsx-a11y@npm:6.4.1, eslint-plugin-jsx-a11y@npm:^6.4.1":
-  version: 6.4.1
-  resolution: "eslint-plugin-jsx-a11y@npm:6.4.1"
+"eslint-plugin-jsx-a11y@npm:6.5.0, eslint-plugin-jsx-a11y@npm:^6.4.1":
+  version: 6.5.0
+  resolution: "eslint-plugin-jsx-a11y@npm:6.5.0"
   dependencies:
-    "@babel/runtime": ^7.11.2
+    "@babel/runtime": ^7.16.3
     aria-query: ^4.2.2
-    array-includes: ^3.1.1
+    array-includes: ^3.1.4
     ast-types-flow: ^0.0.7
-    axe-core: ^4.0.2
+    axe-core: ^4.3.5
     axobject-query: ^2.2.0
-    damerau-levenshtein: ^1.0.6
-    emoji-regex: ^9.0.0
+    damerau-levenshtein: ^1.0.7
+    emoji-regex: ^9.2.2
     has: ^1.0.3
-    jsx-ast-utils: ^3.1.0
+    jsx-ast-utils: ^3.2.1
     language-tags: ^1.0.5
+    minimatch: ^3.0.4
   peerDependencies:
-    eslint: ^3 || ^4 || ^5 || ^6 || ^7
-  checksum: 30326276385b6029754fbca0a25140be0f2f84d263b38f794651acf973399ea316ab1b9d69dffb9b9807d2b47592ba4bc271a242edbb15abfc05d07b08060a7e
+    eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
+  checksum: d2329aab101a97112d76a8ff2b09e00b500ed3ab1ba9edd6f5474b563dce2dfa46c1a94807fd434a7affea219adb67e5e26ddcc3a3f372d352ce8620c557cd23
   languageName: node
   linkType: hard
 
@@ -9441,13 +9442,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsx-ast-utils@npm:^2.4.1 || ^3.0.0, jsx-ast-utils@npm:^3.1.0":
-  version: 3.2.0
-  resolution: "jsx-ast-utils@npm:3.2.0"
+"jsx-ast-utils@npm:^2.4.1 || ^3.0.0, jsx-ast-utils@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "jsx-ast-utils@npm:3.2.1"
   dependencies:
-    array-includes: ^3.1.2
+    array-includes: ^3.1.3
     object.assign: ^4.1.2
-  checksum: 9f695c480212868557c5e3cd01082857e101768dc75cb904335d1a805e972d6203baa58ae0b786e7afeab1e8fdb98242fccf22dbc1734595a65845172743877c
+  checksum: dcee22e6382ee5a6bd4187333a44b6420d9d079838119a07055d6e88d137dd0afadc97a2246152b0b65006bd5fc393112dc0cef01956a01a66c1713913953c66
   languageName: node
   linkType: hard
 
@@ -11743,7 +11744,7 @@ __metadata:
     eslint: 7.32.0
     eslint-import-resolver-node: 0.3.6
     eslint-plugin-import: 2.25.3
-    eslint-plugin-jsx-a11y: 6.4.1
+    eslint-plugin-jsx-a11y: 6.5.0
     eslint-plugin-node: 11.1.0
     eslint-plugin-react: 7.26.1
     eslint-plugin-react-hooks: 4.3.0
