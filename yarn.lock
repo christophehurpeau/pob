@@ -6221,9 +6221,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsx-a11y@npm:6.5.0, eslint-plugin-jsx-a11y@npm:^6.4.1":
-  version: 6.5.0
-  resolution: "eslint-plugin-jsx-a11y@npm:6.5.0"
+"eslint-plugin-jsx-a11y@npm:6.5.1, eslint-plugin-jsx-a11y@npm:^6.4.1":
+  version: 6.5.1
+  resolution: "eslint-plugin-jsx-a11y@npm:6.5.1"
   dependencies:
     "@babel/runtime": ^7.16.3
     aria-query: ^4.2.2
@@ -6239,7 +6239,7 @@ __metadata:
     minimatch: ^3.0.4
   peerDependencies:
     eslint: ^3 || ^4 || ^5 || ^6 || ^7 || ^8
-  checksum: d2329aab101a97112d76a8ff2b09e00b500ed3ab1ba9edd6f5474b563dce2dfa46c1a94807fd434a7affea219adb67e5e26ddcc3a3f372d352ce8620c557cd23
+  checksum: 311ab993ed982d0cc7cb0ba02fbc4b36c4a94e9434f31e97f13c4d67e8ecb8aec36baecfd759ff70498846e7e11d7a197eb04c39ad64934baf3354712fd0bc9d
   languageName: node
   linkType: hard
 
@@ -11742,7 +11742,7 @@ __metadata:
     eslint: 7.32.0
     eslint-import-resolver-node: 0.3.6
     eslint-plugin-import: 2.25.3
-    eslint-plugin-jsx-a11y: 6.5.0
+    eslint-plugin-jsx-a11y: 6.5.1
     eslint-plugin-node: 11.1.0
     eslint-plugin-react: 7.27.0
     eslint-plugin-react-hooks: 4.3.0
