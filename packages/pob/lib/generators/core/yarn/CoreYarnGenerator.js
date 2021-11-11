@@ -1,6 +1,7 @@
 import fs from 'fs';
 import yarnParsers from '@yarnpkg/parsers';
 import Generator from 'yeoman-generator';
+import inLerna from '../../../utils/inLerna.js';
 import * as packageUtils from '../../../utils/package.js';
 import { writeAndFormat } from '../../../utils/writeAndFormat.js';
 
@@ -63,7 +64,36 @@ export default class CoreYarnGenerator extends Generator {
       this.fs.delete('.yarn.lock');
     }
 
+    const { stdout } = this.spawnCommandSync(
+      'yarn',
+      ['plugin', 'runtime', '--json'],
+      { stdio: 'pipe' },
+    );
+    const installedPlugins = stdout.split('\n').map(JSON.parse);
+
+    const isPluginInstalled = (name) =>
+      installedPlugins.some((plugin) => plugin.name === name);
+
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+
+    const postinstallDevPluginName = '@yarnpkg/plugin-postinstall-dev';
+
+    if (!inLerna && !pkg.private) {
+      if (!isPluginInstalled(postinstallDevPluginName)) {
+        this.spawnCommandSync('yarn', [
+          'plugin',
+          'import',
+          'https://raw.githubusercontent.com/sachinraja/yarn-plugin-postinstall-dev/main/bundles/%40yarnpkg/plugin-postinstall-dev.js',
+        ]);
+      }
+    } else if (isPluginInstalled(postinstallDevPluginName)) {
+      this.spawnCommandSync('yarn', [
+        'plugin',
+        'remove',
+        postinstallDevPluginName,
+      ]);
+    }
+
     packageUtils.removeDevDependencies(pkg, ['@yarnpkg/pnpify']);
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
@@ -94,6 +124,11 @@ export default class CoreYarnGenerator extends Generator {
           this.spawnCommandSync('yarn', ['run', 'generate:docs']);
         }
       }
+
+      // format
+      const configString = this.fs.read('.yarnrc.yml');
+      const config = yarnParsers.parseSyml(configString);
+      writeAndFormat(this.fs, '.yarnrc.yml', yarnParsers.stringifySyml(config));
     }
   }
 }

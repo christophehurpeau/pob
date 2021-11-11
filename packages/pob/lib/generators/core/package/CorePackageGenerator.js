@@ -203,4 +203,43 @@ export default class CorePackageGenerator extends Generator {
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
+
+  writing() {
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+
+    const installPostinstallScript = (scriptName) => {
+      if (
+        !pkg.scripts[scriptName] ||
+        !pkg.scripts[scriptName].includes('pob-root-postinstall')
+      ) {
+        pkg.scripts[scriptName] = 'pob-root-postinstall';
+      }
+    };
+
+    const uninstallPostinstallScript = (scriptName) => {
+      if (pkg.scripts[scriptName]) {
+        if (pkg.scripts[scriptName] === 'pob-root-postinstall') {
+          delete pkg.scripts[scriptName];
+        }
+
+        if (pkg.scripts[scriptName].startsWith('pob-root-postinstall && ')) {
+          pkg.scripts[scriptName] = pkg.scripts[scriptName].slice(
+            'pob-root-postinstall && '.length - 1,
+          );
+        } else if (pkg.scripts[scriptName].includes('pob-root-postinstall')) {
+          throw new Error('Could not remove pob-root-postinstall');
+        }
+      }
+    };
+
+    if (inLerna || pkg.private) {
+      uninstallPostinstallScript('postinstallDev');
+      installPostinstallScript('postinstall');
+    } else {
+      uninstallPostinstallScript('postinstall');
+      installPostinstallScript('postinstallDev');
+    }
+
+    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+  }
 }
