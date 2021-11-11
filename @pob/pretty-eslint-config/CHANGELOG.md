@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [2.2.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-eslint-config@2.1.2...@pob/pretty-eslint-config@2.2.0) (2021-11-11)
+
+
+### Features
+
+* improve npmignore ([b47706a](https://github.com/christophehurpeau/pob/commit/b47706af4f9be4f8103ec1306879bbd0a6989e6b))
+
+
+
+
+
 ## [2.1.2](https://github.com/christophehurpeau/pob/compare/@pob/pretty-eslint-config@2.1.1...@pob/pretty-eslint-config@2.1.2) (2021-09-05)
 
 **Note:** Version bump only for package @pob/pretty-eslint-config

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@4.1.0...babel-plugin-fix-class-properties-uninitialized@4.2.0) (2021-11-11)
+
+
+### Features
+
+* improve npmignore ([b47706a](https://github.com/christophehurpeau/pob/commit/b47706af4f9be4f8103ec1306879bbd0a6989e6b))
+
+
+
+
+
 # [4.1.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@4.0.0...babel-plugin-fix-class-properties-uninitialized@4.1.0) (2021-09-05)
 
 

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.8.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.7.0...pob-dependencies@5.8.0) (2021-11-11)
+
+
+### Features
+
+* **deps:** update babel monorepo to v7.16.0 ([#1084](https://github.com/christophehurpeau/pob/issues/1084)) ([35eabd8](https://github.com/christophehurpeau/pob/commit/35eabd8cf2031427c6d347e759b6a2a532c56464))
+* **deps:** update dependency @babel/runtime to v7.16.3 ([#1092](https://github.com/christophehurpeau/pob/issues/1092)) ([4f67a22](https://github.com/christophehurpeau/pob/commit/4f67a223a98e8e7d2b73af8774f6b1d9c1f1d086))
+* **deps:** update dependency eslint-plugin-import to v2.25.3 ([#1093](https://github.com/christophehurpeau/pob/issues/1093)) ([a061d64](https://github.com/christophehurpeau/pob/commit/a061d641bd640478ae67ca14338f1ae917384f21))
+* **deps:** update dependency eslint-plugin-jsx-a11y to v6.5.0 ([#1094](https://github.com/christophehurpeau/pob/issues/1094)) ([ec320b8](https://github.com/christophehurpeau/pob/commit/ec320b8c844bcca463faf966767b2657f74ffc51))
+* **deps:** update dependency eslint-plugin-jsx-a11y to v6.5.1 ([#1096](https://github.com/christophehurpeau/pob/issues/1096)) ([f8dd9fb](https://github.com/christophehurpeau/pob/commit/f8dd9fb1430bdadcff457966fce71d9fbaf4eba7))
+* **deps:** update dependency eslint-plugin-react to v7.27.0 ([#1095](https://github.com/christophehurpeau/pob/issues/1095)) ([7932db3](https://github.com/christophehurpeau/pob/commit/7932db3eaa2546a87ae642b0014a08c4e1e6b6bf))
+* **deps:** update dependency eslint-plugin-react-hooks to v4.3.0 ([#1091](https://github.com/christophehurpeau/pob/issues/1091)) ([9b1c026](https://github.com/christophehurpeau/pob/commit/9b1c0268eb520b8ea055ea757e8c81e759ee208d))
+* **deps:** update dependency rollup to v2.59.0 ([#1087](https://github.com/christophehurpeau/pob/issues/1087)) ([f49190f](https://github.com/christophehurpeau/pob/commit/f49190ff773132531470374b33682df8515753b4))
+* **deps:** update dependency typedoc to v0.22.7 ([#1081](https://github.com/christophehurpeau/pob/issues/1081)) ([bd2f260](https://github.com/christophehurpeau/pob/commit/bd2f260182132519dc1c1aa6981765f7e9b414e5))
+* **deps:** update dependency typedoc to v0.22.8 ([#1090](https://github.com/christophehurpeau/pob/issues/1090)) ([b2dbacf](https://github.com/christophehurpeau/pob/commit/b2dbacfbdd53b55f95b3b5dc5cfadb202435b944))
+* improve npmignore ([b47706a](https://github.com/christophehurpeau/pob/commit/b47706af4f9be4f8103ec1306879bbd0a6989e6b))
+
+
+
+
+
 # [5.7.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.6.0...pob-dependencies@5.7.0) (2021-10-25)
 
 

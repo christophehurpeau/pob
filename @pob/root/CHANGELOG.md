@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.6.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.5.0...@pob/root@5.6.0) (2021-11-11)
+
+
+### Bug Fixes
+
+* **@pob/root:** dont install with immutable when updating pob root ([7fc32d4](https://github.com/christophehurpeau/pob/commit/7fc32d44383299e8b138eb4248e5ff09e0a11ff8))
+* **deps:** update dependency lint-staged to v11.2.5 ([#1082](https://github.com/christophehurpeau/pob/issues/1082)) ([16321c0](https://github.com/christophehurpeau/pob/commit/16321c00814b04c2ee33bae003ef2f911c9e94a7))
+* **deps:** update dependency lint-staged to v11.2.6 ([#1083](https://github.com/christophehurpeau/pob/issues/1083)) ([9f25941](https://github.com/christophehurpeau/pob/commit/9f25941086f15de78c8117c15034321a1b6ff38f))
+
+
+### Features
+
+* **deps:** update commitlint monorepo to v14 (major) ([#1088](https://github.com/christophehurpeau/pob/issues/1088)) ([6a012c5](https://github.com/christophehurpeau/pob/commit/6a012c526c7ba2447ffc712da21a944372f42a2f))
+* improve npmignore ([b47706a](https://github.com/christophehurpeau/pob/commit/b47706af4f9be4f8103ec1306879bbd0a6989e6b))
+
+
+
+
+
 # [5.5.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.4.2...@pob/root@5.5.0) (2021-10-25)
 
 

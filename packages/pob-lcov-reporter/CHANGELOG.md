@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@5.2.0...pob-lcov-reporter@5.4.0) (2021-11-11)
+
+
+### Features
+
+* improve npmignore ([b47706a](https://github.com/christophehurpeau/pob/commit/b47706af4f9be4f8103ec1306879bbd0a6989e6b))
+* **deps:** update jest monorepo to v27.2.2 ([#1054](https://github.com/christophehurpeau/pob/issues/1054)) ([5f6c28a](https://github.com/christophehurpeau/pob/commit/5f6c28ac31dcf97b06f8eabb8daae73d16a8c69c))
+* **deps:** update jest monorepo to v27.2.3 ([#1057](https://github.com/christophehurpeau/pob/issues/1057)) ([a664be2](https://github.com/christophehurpeau/pob/commit/a664be24736e3e49f8b1f427d30056a82c5575b9))
+* **deps:** update jest monorepo to v27.2.4 ([#1058](https://github.com/christophehurpeau/pob/issues/1058)) ([5087203](https://github.com/christophehurpeau/pob/commit/508720305cbc9fef5036743814bab15baa261f04))
+* **deps:** update jest monorepo to v27.2.5 ([#1065](https://github.com/christophehurpeau/pob/issues/1065)) ([65b26d1](https://github.com/christophehurpeau/pob/commit/65b26d11be918fd3c808641f061210db7575bb24))
+* **deps:** update jest monorepo to v27.3.1 ([#1078](https://github.com/christophehurpeau/pob/issues/1078)) ([f060dba](https://github.com/christophehurpeau/pob/commit/f060dba8ee89de7fd2b84284fa991d7c4382ed8f))
+
+
+
+
+
 # [5.3.0](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@5.2.0...pob-lcov-reporter@5.3.0) (2021-10-25)
 
 

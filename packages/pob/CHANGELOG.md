@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.7.0](https://github.com/christophehurpeau/pob/compare/pob@8.6.0...pob@8.7.0) (2021-11-11)
+
+
+### Bug Fixes
+
+* **pob:** add dist and test ignore in lib package ([b38fa8f](https://github.com/christophehurpeau/pob/commit/b38fa8fef42761c765b4af439dc1f7eaebab0fcb))
+* **pob:** dont add postinstallscripts in monorepo subpackages ([26fea8a](https://github.com/christophehurpeau/pob/commit/26fea8a7ad464c1a17b2147900a006b5e2cf5ce2))
+* **pob:** fix issue when circleci directory doesnt exists ([f75e991](https://github.com/christophehurpeau/pob/commit/f75e991980e474f8b4513cebb0e12eed880ee8e7))
+* **pob:** fix update yarn before changing yarnrc config file ([31365e0](https://github.com/christophehurpeau/pob/commit/31365e046e6cc320b76e792d0b7e3ed5c6bdefe4))
+* **pob:** sort package also after on end, because yarn changes package file ([d18f904](https://github.com/christophehurpeau/pob/commit/d18f90426b7336a068ac3c979a9cf9666c65235d))
+* **pob:** yarnrc.yml diffs due to yarn install modifiying after first load by fs ([aecd272](https://github.com/christophehurpeau/pob/commit/aecd272eb0dbb7caac1465578ae2e628f9e164f1))
+* install postinstallDev plugin if necessary ([588a142](https://github.com/christophehurpeau/pob/commit/588a1422bb5effce1bf51e0459df8dee13f21075))
+* remove eslint root dependencies when node linker is node-modules ([4e081da](https://github.com/christophehurpeau/pob/commit/4e081da3fdf0e7acf0d23def66ddb85002932666))
+
+
+### Features
+
+* **deps:** update dependency findup-sync to v5 ([#1086](https://github.com/christophehurpeau/pob/issues/1086)) ([b04a452](https://github.com/christophehurpeau/pob/commit/b04a4524a3ccf3ed750d5c9e23999d8ee56ddc75))
+* improve npmignore ([b47706a](https://github.com/christophehurpeau/pob/commit/b47706af4f9be4f8103ec1306879bbd0a6989e6b))
+* **pob:** use --parallel --topological-dev with build command and yarn workspaces ([6bc6f33](https://github.com/christophehurpeau/pob/commit/6bc6f33dbd981801eb0eb4f2cfd6963074f7ed9c))
+
+
+
+
+
 # [8.6.0](https://github.com/christophehurpeau/pob/compare/pob@8.5.0...pob@8.6.0) (2021-10-25)
 
 

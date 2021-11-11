@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.2.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@3.1.1...@pob/commitlint-config@3.2.0) (2021-11-11)
+
+
+### Features
+
+* **deps:** update commitlint monorepo to v14 (major) ([#1088](https://github.com/christophehurpeau/pob/issues/1088)) ([6a012c5](https://github.com/christophehurpeau/pob/commit/6a012c526c7ba2447ffc712da21a944372f42a2f))
+* improve npmignore ([b47706a](https://github.com/christophehurpeau/pob/commit/b47706af4f9be4f8103ec1306879bbd0a6989e6b))
+
+
+
+
+
 ## [3.1.1](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@3.1.0...@pob/commitlint-config@3.1.1) (2021-09-05)
 
 **Note:** Version bump only for package @pob/commitlint-config
