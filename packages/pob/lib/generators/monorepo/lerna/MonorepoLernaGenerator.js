@@ -177,36 +177,28 @@ export default class MonorepoLernaGenerator extends Generator {
       'lint:eslint':
         monorepoConfig &&
         monorepoConfig.eslint &&
-        // TODO yarn --cwd doesnt work inside script in package with yarn 2
-        (this.packagesConfig.length < 25 ||
-          this.options.packageManager === 'yarn')
+        this.packagesConfig.length < 25
           ? 'eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet .'
+          : // eslint-disable-next-line unicorn/no-nested-ternary
+          this.options.packageManager === 'yarn'
+          ? 'yarn workspaces foreach --parallel -Av run lint'
           : 'lerna run --stream lint',
-      preversion: [
-        monorepoConfig &&
-        monorepoConfig.eslint &&
-        (this.packagesConfig.length < 25 ||
-          this.options.packageManager === 'yarn')
-          ? `${packageManager} run lint`
-          : `${packageManager} run lint:prettier && ${packageManager} run lint:eslint${
-              useYarnWorkspacesCommand ? '' : ' --since'
-            }`,
-        withBabel && `${packageManager} run build`,
-        'repository-check-dirty',
-      ]
-        .filter(Boolean)
-        .join(' && '),
-      // cannot use this with lerna because it changes packages.json
-      // prepublishOnly: 'repository-check-dirty',
-      release: [
-        `${
-          this.options.packageManager === 'yarn' ? '' : 'cross-env '
-        }GH_TOKEN=$POB_GITHUB_TOKEN lerna version --conventional-commits --conventional-graduate --create-release=github -m 'chore: release'`,
-        !this.options.isAppProject && 'lerna publish from-git',
-      ]
-        .filter(Boolean)
-        .join(' && '),
     });
+
+    this.fs.copyTpl(
+      this.templatePath('workflow-publish.yml.ejs'),
+      this.destinationPath('.github/workflows/publish.yml'),
+      {
+        publish: !this.options.isAppProject,
+      },
+    );
+
+    packageUtils.removeScripts(
+      pkg,
+      [pkg.name !== 'pob-dependencies' && 'preversion', 'release'].filter(
+        Boolean,
+      ),
+    );
 
     packageUtils.addOrRemoveScripts(pkg, withTests, {
       test: `${

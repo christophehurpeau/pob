@@ -2,7 +2,6 @@ import { execSync } from 'child_process';
 import fs from 'fs';
 import Generator from 'yeoman-generator';
 import inLerna from '../../utils/inLerna.js';
-import inNpmLerna from '../../utils/inNpmLerna.js';
 import * as packageUtils from '../../utils/package.js';
 
 export default class PobLibGenerator extends Generator {
@@ -273,6 +272,12 @@ export default class PobLibGenerator extends Generator {
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
     });
 
+    this.composeWith('pob:lib:release', {
+      enable: !inLerna,
+      withBabel: babelEnvs.length > 0,
+      documentation: !!this.pobjson.documentation,
+    });
+
     // must be after doc, testing
     this.composeWith('pob:core:gitignore', {
       root: !inLerna,
@@ -291,8 +296,6 @@ export default class PobLibGenerator extends Generator {
   writing() {
     // Re-read the content at this point because a composed generator might modify it.
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
-    const isNpmPackageLock = this.fs.exists('package-lock.json');
-    const isNpm = isNpmPackageLock || inNpmLerna;
 
     if (pkg.engines) {
       delete pkg.engines.yarn;
@@ -313,44 +316,12 @@ export default class PobLibGenerator extends Generator {
         delete pkg.scripts.release;
         delete pkg.scripts.version;
       }
+    } else if (withBabel) {
+      packageUtils.addScripts(pkg, {
+        clean: 'rm -Rf dist',
+      });
     } else {
-      if (
-        this.fs.exists(
-          this.destinationPath('.github/workflows/release-please.yml'),
-        )
-      ) {
-        packageUtils.removeDevDependencies(pkg, ['standard-version']);
-        packageUtils.removeScripts(pkg, ['release', 'preversion']);
-      } else {
-        packageUtils.addDevDependencies(pkg, ['standard-version']);
-        if (pkg.name !== 'pob-monorepo') {
-          packageUtils.addScripts(pkg, {
-            release:
-              "repository-check-dirty && yarn preversion && standard-version -a -m 'chore(release): %s [skip ci]' && git push --follow-tags origin master && npm publish",
-            preversion: [
-              `${isNpm ? 'npm' : 'yarn'} run lint`,
-              withBabel && `${isNpm ? 'npm' : 'yarn'} run build`,
-              this.pobjson.documentation &&
-                `${isNpm ? 'npm' : 'yarn'} run generate:docs`,
-              'repository-check-dirty',
-            ]
-              .filter(Boolean)
-              .join(' && '),
-          });
-
-          if (pkg.scripts.version === 'pob-version') {
-            delete pkg.scripts.version;
-          }
-        }
-      }
-
-      if (withBabel) {
-        packageUtils.addScripts(pkg, {
-          clean: 'rm -Rf dist',
-        });
-      } else {
-        delete pkg.scripts.clean;
-      }
+      delete pkg.scripts.clean;
     }
 
     if (!withBabel) {
