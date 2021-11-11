@@ -37,6 +37,8 @@ export default class CoreYarnGenerator extends Generator {
         // https://yarnpkg.com/getting-started/install
         this.spawnCommandSync('yarn', ['set', 'version', 'berry']);
         this.spawnCommandSync('yarn', ['set', 'version', 'latest']);
+      } else {
+        this.spawnCommandSync('yarn', ['set', 'version', 'latest']);
       }
 
       const configString = this.fs.read('.yarnrc.yml');
@@ -68,7 +70,6 @@ export default class CoreYarnGenerator extends Generator {
 
   end() {
     if (this.options.enable) {
-      this.spawnCommandSync('yarn', ['set', 'version', 'latest']);
       if (this.options.yarnNodeLinker === 'pnp') {
         this.spawnCommandSync('yarn', ['dlx', '@yarnpkg/sdks', 'vscode']);
       } else {
