@@ -1,3 +1,4 @@
+import fs from 'fs';
 import Generator from 'yeoman-generator';
 import inLerna from '../../../utils/inLerna.js';
 
@@ -41,7 +42,7 @@ export default class CoreNpmGenerator extends Generator {
           testing: this.options.testing,
           babel: withBabel,
           typedoc: pkg.devDependencies && pkg.devDependencies.typedoc,
-          yarn: this.fs.exists('.yarnrc.yml'),
+          yarn: fs.existsSync('.yarnrc.yml'),
           npm: this.fs.exists('package-lock.json'),
           codeclimate: this.fs.exists('.codeclimate.yml'),
         },
