@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.6.1](https://github.com/christophehurpeau/pob/compare/@pob/root@5.6.0...@pob/root@5.6.1) (2021-11-11)
+
+
+### Bug Fixes
+
+* **@pob/root:** fix running install without immutable in ci ([a0132ca](https://github.com/christophehurpeau/pob/commit/a0132caa200714a806520cff004c169f32c74e98))
+
+
+
+
+
 # [5.6.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.5.0...@pob/root@5.6.0) (2021-11-11)
 
 
