@@ -379,7 +379,7 @@ export default class CommonLintGenerator extends Generator {
         ignorePatterns.add('/docs');
       }
 
-      if (inLerna && !inLerna.root && useBabel) {
+      if ((!inLerna || !inLerna.root) && useBabel) {
         ignorePatterns.add('/dist', '/test');
       }
 
