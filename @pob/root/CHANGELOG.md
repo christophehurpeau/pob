@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.7.2](https://github.com/christophehurpeau/pob/compare/@pob/root@5.7.1...@pob/root@5.7.2) (2021-11-14)
+
+
+### Bug Fixes
+
+* **@pob/root:** export ./createLintStagedConfig ([2c39f36](https://github.com/christophehurpeau/pob/commit/2c39f3671c9c38aac3d4b60b885624532531af9c))
+
+
+
+
+
 ## [5.7.1](https://github.com/christophehurpeau/pob/compare/@pob/root@5.7.0...@pob/root@5.7.1) (2021-11-14)
 
 
