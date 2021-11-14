@@ -1,1 +1,2 @@
-yarn lint-staged -r
+
+yarn pob-root-lint-staged

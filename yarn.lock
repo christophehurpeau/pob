@@ -2882,7 +2882,7 @@ __metadata:
     which-pm-runs: 1.0.0
   bin:
     commitlint: ./bin/commitlint.js
-    lint-staged: ./bin/lint-staged.js
+    pob-root-lint-staged: ./bin/pob-root-lint-staged.mjs
     pob-root-postinstall: ./bin/pob-root-postinstall.js
     pretty-eslint-config: ./bin/pretty-eslint-config.js
     pretty-pkg: ./bin/pretty-pkg.js
