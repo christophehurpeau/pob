@@ -155,7 +155,6 @@ export default class CommonLintGenerator extends Generator {
       'eslint-plugin-babel',
       'eslint-plugin-flowtype',
       'eslint-plugin-prefer-class-properties',
-      'eslint-plugin-jsx-a11y',
       'eslint-plugin-prettier',
       'typescript-eslint-parser',
       'standard',
@@ -163,6 +162,7 @@ export default class CommonLintGenerator extends Generator {
 
     if (!pkg.name.startsWith('@pob/eslint-config')) {
       packageUtils.removeDevDependencies(pkg, [
+        'eslint-plugin-jsx-a11y',
         'eslint-config-airbnb',
         'eslint-config-airbnb-base',
       ]);
@@ -211,7 +211,8 @@ export default class CommonLintGenerator extends Generator {
         !globalEslint ||
           (inLerna && inLerna.root) ||
           lernaProjectType === 'app' ||
-          rootPackageManager === 'yarn',
+          rootPackageManager === 'yarn' ||
+          !!(pkg.peerDependencies && pkg.peerDependencies.eslint),
         ['eslint'],
       );
       const shouldHavePluginsDependencies =
