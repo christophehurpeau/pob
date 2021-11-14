@@ -21,6 +21,7 @@
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
+    "./createLintStagedConfig": "./createLintStagedConfig.js",
     "./createLintStagedConfig.js": "./createLintStagedConfig.js",
     "./package.json": "./package.json"
   },
