@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.8.0](https://github.com/christophehurpeau/pob/compare/pob@8.7.1...pob@8.8.0) (2021-11-14)
+
+
+### Features
+
+* release libs using github ([3c09271](https://github.com/christophehurpeau/pob/commit/3c0927168a7bd755311470212a8699a560a52174))
+
+
+
+
+
 ## [8.7.1](https://github.com/christophehurpeau/pob/compare/pob@8.7.0...pob@8.7.1) (2021-11-11)
 
 **Note:** Version bump only for package pob

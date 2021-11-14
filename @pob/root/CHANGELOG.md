@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.7.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.6.1...@pob/root@5.7.0) (2021-11-14)
+
+
+### Bug Fixes
+
+* **@pob/root:** lint-staged bin ([c3fb251](https://github.com/christophehurpeau/pob/commit/c3fb251ac3fee9080a056c144702b87cdf86b8f1))
+
+
+### Features
+
+* **@pob/root:** use husky script ([7a668c2](https://github.com/christophehurpeau/pob/commit/7a668c280101dca57198a10d73321df7135b03fb))
+* **deps:** update dependency lint-staged to v12 ([#1098](https://github.com/christophehurpeau/pob/issues/1098)) ([70e9712](https://github.com/christophehurpeau/pob/commit/70e97125201a969c3b4040ee0966869c4fa47dad))
+
+
+
+
+
 ## [5.6.1](https://github.com/christophehurpeau/pob/compare/@pob/root@5.6.0...@pob/root@5.6.1) (2021-11-11)
 
 
