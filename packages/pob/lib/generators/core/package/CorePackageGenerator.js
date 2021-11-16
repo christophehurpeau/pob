@@ -220,9 +220,7 @@ export default class CorePackageGenerator extends Generator {
       if (pkg.scripts[scriptName]) {
         if (pkg.scripts[scriptName] === 'pob-root-postinstall') {
           delete pkg.scripts[scriptName];
-        }
-
-        if (pkg.scripts[scriptName].startsWith('pob-root-postinstall && ')) {
+        } else if (pkg.scripts[scriptName].startsWith('pob-root-postinstall && ')) {
           pkg.scripts[scriptName] = pkg.scripts[scriptName].slice(
             'pob-root-postinstall && '.length - 1,
           );
