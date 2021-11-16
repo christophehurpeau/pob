@@ -4,7 +4,7 @@ import parseAuthor from 'parse-author';
 import pobDependencies from 'pob-dependencies';
 import semver from 'semver';
 
-export { parseAuthor };
+export { default as parseAuthor } from 'parse-author';
 
 export const parsePkgAuthor = (pkg) =>
   typeof pkg.author === 'string' ? parseAuthor(pkg.author) : pkg.author;

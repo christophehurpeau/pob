@@ -93,7 +93,7 @@ export default class MonorepoLernaGenerator extends Generator {
 
     const getPackagePobConfig = (config) => ({
       babelEnvs: [],
-      ...((config && config.pob) || {}),
+      ...(config && config.pob),
     });
     const withBabel = this.packages.some(
       (config) => getPackagePobConfig(config).babelEnvs.length > 0,
@@ -153,10 +153,9 @@ export default class MonorepoLernaGenerator extends Generator {
     packageUtils.removeDevDependencies(pkg, ['standard-version']);
 
     const getPobConfig = (config) => ({
-      ...((config &&
+      ...(config &&
         config.pob &&
-        (config.pob['pob-config'] || config.pob.lib || config.pob.app)) ||
-        {}),
+        (config.pob['pob-config'] || config.pob.lib || config.pob.app)),
     });
     // ynnub doesnt use babel but still have typescript
     // const withTypescript = this.packagePaths.some((packagePath) =>
