@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.9.0](https://github.com/christophehurpeau/pob/compare/pob@8.8.2...pob@8.9.0) (2021-11-16)
+
+
+### Bug Fixes
+
+* **pob:** fixes for @pob/eslint-config ([e84152c](https://github.com/christophehurpeau/pob/commit/e84152c8e2b2c8421d51c9883426646afad49134))
+* **pob:** startsWith of undefined ([b0ebc73](https://github.com/christophehurpeau/pob/commit/b0ebc73bb74f4a2c98221b917ec8e159fd5a7c22))
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v47 (major) ([#1101](https://github.com/christophehurpeau/pob/issues/1101)) ([e726bf5](https://github.com/christophehurpeau/pob/commit/e726bf5a5baa8631933a5f69dbd3c48f9bf25ca5))
+
+
+
+
+
 ## [8.8.2](https://github.com/christophehurpeau/pob/compare/pob@8.8.1...pob@8.8.2) (2021-11-14)
 
 **Note:** Version bump only for package pob
