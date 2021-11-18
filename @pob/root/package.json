@@ -49,7 +49,7 @@
     "@pob/pretty-eslint-config": "^2.2.0",
     "@pob/pretty-pkg": "^3.2.0",
     "husky": "^7.0.0",
-    "lint-staged": "12.0.2",
+    "lint-staged": "12.0.3",
     "repository-check-dirty": "^3.2.0",
     "semver": "^7.1.2",
     "which-pm-runs": "1.0.0"
