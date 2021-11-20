@@ -231,10 +231,9 @@ export default class CorePackageGenerator extends Generator {
         }
       }
     };
-
     if (inLerna || pkg.private) {
       uninstallPostinstallScript('postinstallDev');
-      if (inLerna && inLerna.root) {
+      if (!inLerna || inLerna.root) {
         installPostinstallScript('postinstall');
       } else {
         uninstallPostinstallScript('postinstall');
