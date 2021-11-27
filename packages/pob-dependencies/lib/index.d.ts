@@ -22,8 +22,6 @@ interface Dependencies {
   'eslint-plugin-import': '2.25.3';
   'eslint-plugin-jsx-a11y': '6.5.1';
   'eslint-plugin-node': '11.1.0';
-  'eslint-plugin-react': '7.27.0';
-  'eslint-plugin-react-hooks': '4.3.0';
   'eslint-plugin-unicorn': '38.0.1';
   jest: '27.3.1';
   'jest-junit-reporter': '1.1.0';

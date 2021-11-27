@@ -156,6 +156,8 @@ export default class CommonLintGenerator extends Generator {
       'eslint-plugin-flowtype',
       'eslint-plugin-prefer-class-properties',
       'eslint-plugin-prettier',
+      'eslint-plugin-react',
+      'eslint-plugin-react-hooks',
       'typescript-eslint-parser',
       'standard',
     ]);
