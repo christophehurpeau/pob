@@ -1,17 +1,17 @@
 interface Dependencies {
   '@babel/core': '7.16.0';
-  '@babel/preset-env': '7.16.0';
+  '@babel/preset-env': '7.16.4';
   '@babel/preset-react': '7.16.0';
   '@babel/runtime': '7.16.3';
   '@pob/commitlint-config': '^3.2.0';
   '@pob/eslint-config': '47.0.0';
-  '@pob/eslint-config-typescript': '47.0.0';
+  '@pob/eslint-config-typescript': '47.0.1';
   '@pob/eslint-config-typescript-react': '47.0.0';
   '@pob/lerna-light': '^4.2.0';
   '@pob/pretty-pkg': '^3.2.0';
   '@pob/root': '^5.7.2';
   '@rollup/plugin-run': '2.1.0';
-  '@types/jest': '27.0.2';
+  '@types/jest': '27.0.3';
   '@typescript-eslint/eslint-plugin': '5.4.0';
   '@typescript-eslint/parser': '5.4.0';
   'babel-jest': '27.3.1';
@@ -27,13 +27,13 @@ interface Dependencies {
   'jest-junit-reporter': '1.1.0';
   'pob-babel': '^28.5.0';
   'pob-lcov-reporter': '^5.4.0';
-  prettier: '2.4.1';
+  prettier: '2.5.0';
   'repository-check-dirty': '^3.2.0';
-  rollup: '2.60.0';
+  rollup: '2.60.1';
   semver: '7.3.5';
   'standard-version': '9.3.2';
-  typedoc: '0.22.9';
-  typescript: '4.4.4';
+  typedoc: '0.22.10';
+  typescript: '4.5.2';
 }
 
 declare const dependencies: Dependencies;

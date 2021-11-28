@@ -2881,12 +2881,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: ^5.10.0
+    pob-dependencies: ^5.11.0
     prettier: 2.5.0
   languageName: unknown
   linkType: soft
 
-"@pob/root@^5.7.2, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@^5.8.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -11758,7 +11758,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@^28.5.0, pob-babel@workspace:packages/pob-babel":
+"pob-babel@^28.6.0, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -11814,7 +11814,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-dependencies@^5.10.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@^5.11.0, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -11828,7 +11828,7 @@ __metadata:
     "@pob/eslint-config-typescript-react": 47.0.0
     "@pob/lerna-light": ^4.2.0
     "@pob/pretty-pkg": ^3.2.0
-    "@pob/root": ^5.7.2
+    "@pob/root": ^5.8.0
     "@rollup/plugin-run": 2.1.0
     "@types/jest": 27.0.3
     "@typescript-eslint/eslint-plugin": 5.4.0
@@ -11844,7 +11844,7 @@ __metadata:
     eslint-plugin-unicorn: 38.0.1
     jest: 27.3.1
     jest-junit-reporter: 1.1.0
-    pob-babel: ^28.5.0
+    pob-babel: ^28.6.0
     pob-lcov-reporter: ^5.4.0
     prettier: 2.5.0
     repository-check-dirty: ^3.2.0
@@ -11913,7 +11913,7 @@ __metadata:
     mem-fs-editor: 8.1.2
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
-    pob-dependencies: ^5.10.0
+    pob-dependencies: ^5.11.0
     prettier: 2.5.0
     semver: ^7.3.4
     update-notifier: ^5.0.1

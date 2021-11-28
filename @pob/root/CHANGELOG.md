@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.8.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.7.2...@pob/root@5.8.0) (2021-11-28)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v12.0.3 ([#1107](https://github.com/christophehurpeau/pob/issues/1107)) ([b86a68f](https://github.com/christophehurpeau/pob/commit/b86a68fb7ad45cf231a1ed975df7ee83c65f517e))
+* **deps:** update dependency lint-staged to v12.1.2 ([#1112](https://github.com/christophehurpeau/pob/issues/1112)) ([8be59f6](https://github.com/christophehurpeau/pob/commit/8be59f604f2b1b93e9859c966cf8f34b7cbe3d74))
+
+
+### Features
+
+* **deps:** update dependency lint-staged to v12.1.1 ([#1110](https://github.com/christophehurpeau/pob/issues/1110)) ([1b6d958](https://github.com/christophehurpeau/pob/commit/1b6d958089f85f5ad1bf6bfadec272f86e99d618))
+
+
+
+
+
 ## [5.7.2](https://github.com/christophehurpeau/pob/compare/@pob/root@5.7.1...@pob/root@5.7.2) (2021-11-14)
 
 

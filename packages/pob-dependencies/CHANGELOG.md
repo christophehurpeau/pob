@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.11.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.10.0...pob-dependencies@5.11.0) (2021-11-28)
+
+
+### Bug Fixes
+
+* **pob:** also remove react eslint plugins ([77dc9c5](https://github.com/christophehurpeau/pob/commit/77dc9c564bf8d2622956f23973b5258fa97aed2d))
+
+
+### Features
+
+* **deps:** update dependency @babel/preset-env to v7.16.4 ([#1103](https://github.com/christophehurpeau/pob/issues/1103)) ([ba01c05](https://github.com/christophehurpeau/pob/commit/ba01c05a05fe20dfb20a297fdf82af4d57120120))
+* **deps:** update dependency @pob/eslint-config-typescript to v47.0.1 ([#1102](https://github.com/christophehurpeau/pob/issues/1102)) ([ccee96c](https://github.com/christophehurpeau/pob/commit/ccee96cd6af6f21d525191a2a0ff8db9fac2a46e))
+* **deps:** update dependency @types/jest to v27.0.3 ([#1106](https://github.com/christophehurpeau/pob/issues/1106)) ([f50438e](https://github.com/christophehurpeau/pob/commit/f50438e3beb6b4a30c3eeb4c4d737c4a6849c261))
+* **deps:** update dependency eslint-plugin-react to v7.27.1 ([#1108](https://github.com/christophehurpeau/pob/issues/1108)) ([f61a02f](https://github.com/christophehurpeau/pob/commit/f61a02f9fc6e5a81ca5e3eb571be406f69707066))
+* **deps:** update dependency prettier to v2.5.0 ([#1114](https://github.com/christophehurpeau/pob/issues/1114)) ([50d4b98](https://github.com/christophehurpeau/pob/commit/50d4b98f8ec76ee8a44e3f01eea882089b1a89e5))
+* **deps:** update dependency rollup to v2.60.1 ([#1111](https://github.com/christophehurpeau/pob/issues/1111)) ([9878a65](https://github.com/christophehurpeau/pob/commit/9878a659428efa84f4a87b66b161f7b539999efe))
+* **deps:** update dependency typedoc to v0.22.10 ([#1113](https://github.com/christophehurpeau/pob/issues/1113)) ([5e2e965](https://github.com/christophehurpeau/pob/commit/5e2e9657050104764cde2d357a769c897b1c3a5a))
+* **deps:** update dependency typescript to v4.5.2 ([#1105](https://github.com/christophehurpeau/pob/issues/1105)) ([c093018](https://github.com/christophehurpeau/pob/commit/c093018e3f86d5505e3facd9f46472eb3dbdb844))
+
+
+
+
+
 # [5.10.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.9.2...pob-dependencies@5.10.0) (2021-11-16)
 
 

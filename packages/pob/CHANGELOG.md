@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.10.0](https://github.com/christophehurpeau/pob/compare/pob@8.9.0...pob@8.10.0) (2021-11-28)
+
+
+### Bug Fixes
+
+* **pob:** also remove react eslint plugins ([77dc9c5](https://github.com/christophehurpeau/pob/commit/77dc9c564bf8d2622956f23973b5258fa97aed2d))
+* **pob:** monorepo typedoc enable tsc skipLibCheck ([87b8e88](https://github.com/christophehurpeau/pob/commit/87b8e88656308cea49994335f1aafcb3eb49121a))
+* **pob:** node options when lots of packages ([4829f93](https://github.com/christophehurpeau/pob/commit/4829f9386504c5de4ccc488544c10cf194b0f0f0))
+* **pob:** remove deprecated dependency xunit-file ([62d4602](https://github.com/christophehurpeau/pob/commit/62d460276709d6a5630ba3759984910d36a506cc))
+* postinstall script for non lerna private packages ([8a3f3a4](https://github.com/christophehurpeau/pob/commit/8a3f3a4143f2595391503d51c31dd9b8157ccc97))
+
+
+### Features
+
+* **deps:** update dependency prettier to v2.5.0 ([#1114](https://github.com/christophehurpeau/pob/issues/1114)) ([50d4b98](https://github.com/christophehurpeau/pob/commit/50d4b98f8ec76ee8a44e3f01eea882089b1a89e5))
+
+
+
+
+
 # [8.9.0](https://github.com/christophehurpeau/pob/compare/pob@8.8.2...pob@8.9.0) (2021-11-16)
 
 

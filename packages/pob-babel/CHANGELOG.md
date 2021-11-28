@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [28.6.0](https://github.com/christophehurpeau/pob/compare/pob-babel@28.5.0...pob-babel@28.6.0) (2021-11-28)
+
+
+### Features
+
+* **deps:** update dependency @types/jest to v27.0.3 ([#1106](https://github.com/christophehurpeau/pob/issues/1106)) ([f50438e](https://github.com/christophehurpeau/pob/commit/f50438e3beb6b4a30c3eeb4c4d737c4a6849c261))
+* **deps:** update dependency typescript to v4.5.2 ([#1105](https://github.com/christophehurpeau/pob/issues/1105)) ([c093018](https://github.com/christophehurpeau/pob/commit/c093018e3f86d5505e3facd9f46472eb3dbdb844))
+* **pob-babel:** add createRollupConfig in exports ([4a63185](https://github.com/christophehurpeau/pob/commit/4a6318505ecff8db02960b77263e1aacc6bcbadb))
+
+
+
+
+
 # [28.5.0](https://github.com/christophehurpeau/pob/compare/pob-babel@28.4.0...pob-babel@28.5.0) (2021-11-11)
 
 
