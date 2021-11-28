@@ -176,12 +176,18 @@ export default class MonorepoLernaGenerator extends Generator {
       'lint:eslint':
         monorepoConfig &&
         monorepoConfig.eslint &&
-        this.packagesConfig.length < 25
-          ? 'eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet .'
+        this.packagesConfig.length < 50
+          ? `${
+              this.packagesConfig.length > 20
+                ? 'NODE_OPTIONS=--max_old_space_size=4096 '
+                : ''
+            }eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet .`
           : // eslint-disable-next-line unicorn/no-nested-ternary
           this.options.packageManager === 'yarn'
-          ? 'yarn workspaces foreach --parallel -Av run lint'
-          : 'lerna run --stream lint',
+          ? `NODE_OPTIONS=--max_old_space_size=4096 eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet . --ignore-pattern ${pkg.workspaces.join(
+              ',',
+            )} && yarn workspaces foreach --parallel -Av run lint:eslint`
+          : 'lerna run --stream lint:eslint',
     });
 
     this.fs.copyTpl(
