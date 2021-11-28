@@ -45,6 +45,7 @@ export default class CommonRemoveOldDependenciesGenerator extends Generator {
       '@pob/version',
       'pob-release',
       'eslint-plugin-typescript',
+      'xunit-file',
     ]);
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
