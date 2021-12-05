@@ -214,27 +214,22 @@ const action = monorepo ? argv._[1] : argv._[0];
 const projectPkg = readJson(path.resolve('./package.json'));
 
 if (action === 'add') {
-  if (!existsSync('lerna.json')) {
-    console.error('Not in lerna package');
-    process.exit(1);
+  if (!projectPkg.workspaces) {
+    throw new Error(
+      'Missing workspaces field in package.json: not a lerna repo',
+    );
   }
 
-  const packageName = argv._[1];
+  const packageName = monorepo ? argv._[2] : argv._[1];
 
   if (!packageName) {
     console.error('Missing argument: packageName');
     printUsage();
     process.exit(1);
   }
-
-  const pkg = JSON.parse(readFileSync('package.json'));
-  if (!pkg.workspaces) {
-    throw new Error(
-      'Missing workspaces field in package.json: not a lerna repo',
-    );
-  }
-
-  const packagesPath = pkg.workspaces[0].replace(/\/\*$/, '');
+  const packagesPath = packageName.startsWith('@')
+    ? packageName
+    : projectPkg.workspaces[0].replace(/\/\*$/, '');
 
   fs.mkdirSync(`${packagesPath}/${packageName}`, { recursive: true });
   writeFileSync(`${packagesPath}/${packageName}/.yo-rc.json`, '{}');
@@ -242,8 +237,14 @@ if (action === 'add') {
     `${packagesPath}/${packageName}/package.json`,
     JSON.stringify({ name: packageName, version: '1.0.0-pre' }, null, 2),
   );
-  spawnSync(process.argv[0], [process.argv[1], 'lib'], {
+  console.log('> Creating new Package');
+  spawnSync(process.argv[0], [process.argv[1]], {
     cwd: `${packagesPath}/${packageName}`,
+    stdio: 'inherit',
+  });
+
+  console.log('> Updating monorepo');
+  spawnSync(process.argv[0], [process.argv[1], 'update'], {
     stdio: 'inherit',
   });
   process.exit(0);

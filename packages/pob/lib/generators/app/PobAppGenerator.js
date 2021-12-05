@@ -87,6 +87,7 @@ export default class PobAppGenerator extends Generator {
         name: 'ci',
         message: 'Do you want ci ?',
         default: !config || config.ci === undefined ? true : config.ci,
+        when: () => !inLerna,
       },
     ]);
 
