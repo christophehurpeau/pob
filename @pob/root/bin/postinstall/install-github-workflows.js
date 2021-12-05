@@ -29,11 +29,13 @@ module.exports = function installGithubWorkflows({ pkg, pm }) {
 
   if (!isYarnBerry) return;
 
-  installWorkflow('push-renovate-pob_root');
-  installWorkflow('push-renovate-prettier');
+  if (fs.existsSync('.github')) {
+    installWorkflow('push-renovate-pob_root');
+    installWorkflow('push-renovate-prettier');
 
-  installWorkflow(
-    'push-renovate-typedoc',
-    !!(pkg.devDependencies && pkg.devDependencies.typedoc),
-  );
+    installWorkflow(
+      'push-renovate-typedoc',
+      !!(pkg.devDependencies && pkg.devDependencies.typedoc),
+    );
+  }
 };
