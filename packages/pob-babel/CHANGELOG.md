@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [28.7.0](https://github.com/christophehurpeau/pob/compare/pob-babel@28.6.0...pob-babel@28.7.0) (2021-12-05)
+
+
+### Features
+
+* **deps:** update jest monorepo to v27.4.0 ([#1116](https://github.com/christophehurpeau/pob/issues/1116)) ([4f5592d](https://github.com/christophehurpeau/pob/commit/4f5592dcbb74a5972c16babce5dda1dfab85c847))
+* **deps:** update jest monorepo to v27.4.1 ([#1119](https://github.com/christophehurpeau/pob/issues/1119)) ([4e00ed4](https://github.com/christophehurpeau/pob/commit/4e00ed444c86ed2ba2169e9e2a646ac47b0def88))
+* **deps:** update jest monorepo to v27.4.2 ([#1120](https://github.com/christophehurpeau/pob/issues/1120)) ([166d498](https://github.com/christophehurpeau/pob/commit/166d498387a49ee794f6539948acbef8b60b3bb6))
+
+
+
+
+
 # [28.6.0](https://github.com/christophehurpeau/pob/compare/pob-babel@28.5.0...pob-babel@28.6.0) (2021-11-28)
 
 

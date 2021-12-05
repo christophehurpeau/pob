@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.12.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.11.0...pob-dependencies@5.12.0) (2021-12-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v2.5.1 ([#1122](https://github.com/christophehurpeau/pob/issues/1122)) ([ba903e3](https://github.com/christophehurpeau/pob/commit/ba903e3c63ff90eab7938d5aecbd9d37fac68293))
+
+
+### Features
+
+* **deps:** update dependency rollup to v2.60.2 ([#1118](https://github.com/christophehurpeau/pob/issues/1118)) ([045d9f2](https://github.com/christophehurpeau/pob/commit/045d9f2b1af11ebdb7df59f50fc32d5b6c487dad))
+* **deps:** update jest monorepo to v27.4.0 ([#1116](https://github.com/christophehurpeau/pob/issues/1116)) ([4f5592d](https://github.com/christophehurpeau/pob/commit/4f5592dcbb74a5972c16babce5dda1dfab85c847))
+* **deps:** update jest monorepo to v27.4.1 ([#1119](https://github.com/christophehurpeau/pob/issues/1119)) ([4e00ed4](https://github.com/christophehurpeau/pob/commit/4e00ed444c86ed2ba2169e9e2a646ac47b0def88))
+* **deps:** update jest monorepo to v27.4.2 ([#1120](https://github.com/christophehurpeau/pob/issues/1120)) ([166d498](https://github.com/christophehurpeau/pob/commit/166d498387a49ee794f6539948acbef8b60b3bb6))
+* **deps:** update typescript-eslint monorepo to v5.5.0 ([#1117](https://github.com/christophehurpeau/pob/issues/1117)) ([e41e054](https://github.com/christophehurpeau/pob/commit/e41e054dd66ab93dfbf6e5b954f7995f0b4e05ae))
+
+
+
+
+
 # [5.11.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.10.0...pob-dependencies@5.11.0) (2021-11-28)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.9.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.8.0...@pob/root@5.9.0) (2021-12-05)
+
+
+### Bug Fixes
+
+* **@pob/root:** only install ci workflows if ci is enabled ([4802555](https://github.com/christophehurpeau/pob/commit/48025558ce3f5c6bedefbbd39087cd7908bf179a))
+
+
+### Features
+
+* **deps:** update commitlint monorepo to v15 (major) ([#1104](https://github.com/christophehurpeau/pob/issues/1104)) ([3ae680e](https://github.com/christophehurpeau/pob/commit/3ae680e101f3525c1855f001f50851c3b4f7dbc0))
+
+
+
+
+
 # [5.8.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.7.2...@pob/root@5.8.0) (2021-11-28)
 
 

@@ -2749,7 +2749,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/commitlint-config@^3.2.0, @pob/commitlint-config@workspace:@pob/commitlint-config":
+"@pob/commitlint-config@^3.3.0, @pob/commitlint-config@workspace:@pob/commitlint-config":
   version: 0.0.0-use.local
   resolution: "@pob/commitlint-config@workspace:@pob/commitlint-config"
   dependencies:
@@ -2881,12 +2881,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: ^5.11.0
+    pob-dependencies: ^5.12.0
     prettier: 2.5.1
   languageName: unknown
   linkType: soft
 
-"@pob/root@^5.8.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@^5.9.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -11795,7 +11795,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@^28.6.0, pob-babel@workspace:packages/pob-babel":
+"pob-babel@^28.7.0, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -11810,7 +11810,7 @@ __metadata:
     babel-preset-pob-env: ^6.4.0
     jest: 27.4.3
     minimist-argv: ^1.1.0
-    pob-lcov-reporter: ^5.4.0
+    pob-lcov-reporter: ^5.5.0
     rollup: ^2.47.0
     rollup-config-external-dependencies: ^2.0.0
     semver: ^7.3.4
@@ -11851,7 +11851,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-dependencies@^5.11.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@^5.12.0, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -11859,13 +11859,13 @@ __metadata:
     "@babel/preset-env": 7.16.4
     "@babel/preset-react": 7.16.0
     "@babel/runtime": 7.16.3
-    "@pob/commitlint-config": ^3.2.0
+    "@pob/commitlint-config": ^3.3.0
     "@pob/eslint-config": 47.0.0
     "@pob/eslint-config-typescript": 47.0.1
     "@pob/eslint-config-typescript-react": 47.0.0
     "@pob/lerna-light": ^4.2.0
     "@pob/pretty-pkg": ^3.2.0
-    "@pob/root": ^5.8.0
+    "@pob/root": ^5.9.0
     "@rollup/plugin-run": 2.1.0
     "@types/jest": 27.0.3
     "@typescript-eslint/eslint-plugin": 5.5.0
@@ -11881,8 +11881,8 @@ __metadata:
     eslint-plugin-unicorn: 38.0.1
     jest: 27.4.3
     jest-junit-reporter: 1.1.0
-    pob-babel: ^28.6.0
-    pob-lcov-reporter: ^5.4.0
+    pob-babel: ^28.7.0
+    pob-lcov-reporter: ^5.5.0
     prettier: 2.5.1
     repository-check-dirty: ^3.2.0
     rollup: 2.60.2
@@ -11893,7 +11893,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-lcov-reporter@^5.4.0, pob-lcov-reporter@workspace:packages/pob-lcov-reporter":
+"pob-lcov-reporter@^5.5.0, pob-lcov-reporter@workspace:packages/pob-lcov-reporter":
   version: 0.0.0-use.local
   resolution: "pob-lcov-reporter@workspace:packages/pob-lcov-reporter"
   dependencies:
@@ -11950,7 +11950,7 @@ __metadata:
     mem-fs-editor: 8.1.2
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
-    pob-dependencies: ^5.11.0
+    pob-dependencies: ^5.12.0
     prettier: 2.5.1
     semver: ^7.3.4
     update-notifier: ^5.0.1

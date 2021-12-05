@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.10.1](https://github.com/christophehurpeau/pob/compare/pob@8.10.0...pob@8.10.1) (2021-12-05)
+
+
+### Bug Fixes
+
+* **pob:** only install release workflow if ci is enabled ([8e2fc45](https://github.com/christophehurpeau/pob/commit/8e2fc45ec5435a149b4580b09ae4636e3dbc0fdf))
+* **pob:** start script for apps ([623cfb5](https://github.com/christophehurpeau/pob/commit/623cfb5e5a9af9978b5533962ec7fb3b85035a3b))
+* init new monorepo ([7a212de](https://github.com/christophehurpeau/pob/commit/7a212deb2feb480c19b5243a201f31a7b2ce45c3))
+* monorepo add ([3ae8bfb](https://github.com/christophehurpeau/pob/commit/3ae8bfb487b8a88b62ad8692789ecdddf01ec376))
+* **deps:** update dependency prettier to v2.5.1 ([#1122](https://github.com/christophehurpeau/pob/issues/1122)) ([ba903e3](https://github.com/christophehurpeau/pob/commit/ba903e3c63ff90eab7938d5aecbd9d37fac68293))
+
+
+
+
+
 # [8.10.0](https://github.com/christophehurpeau/pob/compare/pob@8.9.0...pob@8.10.0) (2021-11-28)
 
 
