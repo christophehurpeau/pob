@@ -273,7 +273,7 @@ export default class PobLibGenerator extends Generator {
     });
 
     this.composeWith('pob:lib:release', {
-      enable: !inLerna,
+      enable: !inLerna && this.pobjson.testing && this.pobjson.testing.ci,
       withBabel: babelEnvs.length > 0,
       documentation: !!this.pobjson.documentation,
     });
