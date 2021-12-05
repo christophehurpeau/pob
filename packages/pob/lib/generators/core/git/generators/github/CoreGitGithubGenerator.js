@@ -37,9 +37,14 @@ const configureProtectionRule = async (owner, repo) => {
           allow_deletions: false,
         },
       });
+      if (branch === 'master') {
+        console.warn('You should rename your "master" branch to "main"');
+      }
     } catch (err) {
-      console.error(`Failed to configure ${branch} branch protection`);
-      console.error(err.stack || err.message || err);
+      if (branch === 'main') {
+        console.error(`Failed to configure ${branch} branch protection`);
+        console.error(err.stack || err.message || err);
+      }
     }
   }
 };
@@ -79,14 +84,17 @@ export default class CoreGitGithubGenerator extends Generator {
     const repo = this.options.repoName;
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+    const name = pkg.name.endsWith('-monorepo')
+      ? pkg.name.slice(0, -'-monorepo'.length)
+      : pkg.name;
 
     if (this.options.shouldCreate) {
       try {
         if (this.options.shouldCreate) {
           try {
-            await gh('user/repos', {
+            await gh.post('user/repos', {
               json: {
-                name: pkg.name,
+                name,
                 description: pkg.description,
                 homepage: null,
                 private: false,
@@ -103,13 +111,33 @@ export default class CoreGitGithubGenerator extends Generator {
         }
 
         const cwd = this.destinationPath();
-        this.spawnCommandSync('git', ['add', '--all', '.'], { cwd });
+        try {
+          this.spawnCommandSync('git', ['add', '--all', '.'], { cwd });
+        } catch (err) {
+          this.spawnCommandSync('git', ['init'], { cwd });
+          this.spawnCommandSync('git', ['add', '--all', '.'], { cwd });
+          this.spawnCommandSync(
+            'git',
+            [
+              'remote',
+              'add',
+              'origin',
+              `git@github.com:christophehurpeau/${name}.git`,
+            ],
+            { cwd },
+          );
+          console.error('Failed to create repository');
+          console.error(err.stack || err.message || err);
+        }
         this.spawnCommandSync(
           'git',
           ['commit', '-m', 'chore: initial commit [skip ci]'],
           { cwd },
         );
-        this.spawnCommandSync('git', ['push', '-u', 'origin', 'master'], {
+        this.spawnCommandSync('git', ['branch', '-M', 'main'], {
+          cwd,
+        });
+        this.spawnCommandSync('git', ['push', '-u', 'origin', 'main'], {
           cwd,
         });
 

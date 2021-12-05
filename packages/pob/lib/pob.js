@@ -37,9 +37,9 @@ import PobBaseGenerator from './generators/pob/PobBaseGenerator.js';
 import { __dirname } from './pob-dirname.cjs';
 
 const printUsage = () => {
-  console.error('Usage: pob [lerna] [lib|app]');
-  console.error('       pob [lerna] update [--force]');
-  console.error('       pob lerna convert-npm');
+  console.error('Usage: pob [monorepo] [lib|app|init]');
+  console.error('       pob [monorepo] update [--force]');
+  console.error('       pob monorepo convert-npm');
   console.error('       pob add <packageName>');
 };
 
@@ -209,8 +209,8 @@ env.registerStub(
   `${__dirname}/generators/monorepo/typescript/MonorepoTypescriptGenerator.js`,
 );
 
-let lerna = argv._[0] === 'lerna';
-const action = lerna ? argv._[1] : argv._[0];
+let monorepo = argv._[0] === 'lerna' || argv._[0] === 'monorepo';
+const action = monorepo ? argv._[1] : argv._[0];
 const projectPkg = readJson(path.resolve('./package.json'));
 
 if (action === 'add') {
@@ -249,7 +249,7 @@ if (action === 'add') {
   process.exit(0);
 }
 
-if (lerna && action === 'convert-npm') {
+if (monorepo && action === 'convert-npm') {
   execSync('sed -i \'/"npmClient": "yarn",/d\' ./lerna.json', {
     stdio: 'inherit',
   });
@@ -260,7 +260,8 @@ if (lerna && action === 'convert-npm') {
 }
 
 const updateOnly = action === 'update';
-const type = updateOnly ? null : action;
+const init = action === 'init';
+const type = updateOnly || init ? null : action;
 const fromPob = updateOnly && argv._[1] === 'from-pob';
 
 if (!existsSync('.yo-rc.json')) {
@@ -272,13 +273,14 @@ if (!existsSync('.yo-rc.json')) {
 }
 
 if (existsSync('lerna.json') || (projectPkg && projectPkg.lerna)) {
-  lerna = true;
+  monorepo = true;
 }
 
 const options = {
   type,
+  init,
   updateOnly,
-  lerna,
+  monorepo,
   fromPob,
   force: argv.force,
 };

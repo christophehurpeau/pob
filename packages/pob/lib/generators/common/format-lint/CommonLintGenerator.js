@@ -12,6 +12,13 @@ export default class CommonLintGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
+    this.option('monorepo', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+      description: 'Is root monorepo',
+    });
+
     this.option('babel', {
       type: String,
       required: false,
@@ -104,7 +111,7 @@ export default class CommonLintGenerator extends Generator {
       arrowParens: 'always',
     };
 
-    if (!inLerna || inLerna.root) {
+    if (!inLerna || inLerna.root || this.options.monorepo) {
       const ignorePatterns = new Set(
         this.options.ignorePaths.split('\n').filter(Boolean),
       );
@@ -125,7 +132,7 @@ export default class CommonLintGenerator extends Generator {
         this.templatePath('prettierignore.ejs'),
         this.destinationPath('.prettierignore'),
         {
-          inRoot: !inLerna || inLerna.root,
+          inRoot: !inLerna || inLerna.root || this.options.monorepo,
           documentation: this.options.documentation,
           packageManager: this.options.packageManager,
           yarnNodeLinker: this.options.yarnNodeLinker,
@@ -181,7 +188,7 @@ export default class CommonLintGenerator extends Generator {
 
     if (
       globalEslint &&
-      !(inLerna && inLerna.root) &&
+      !((inLerna && inLerna.root) || this.options.monorepo) &&
       (rootPackageManager !== 'yarn' || rootYarnNodeLinker === 'node-modules')
     ) {
       packageUtils.removeDevDependencies(
@@ -205,15 +212,17 @@ export default class CommonLintGenerator extends Generator {
     } else {
       packageUtils.addOrRemoveDevDependencies(
         pkg,
-        (inLerna && inLerna.root) || !globalEslint,
+        (inLerna && inLerna.root) || this.options.monorepo || !globalEslint,
         ['prettier'],
       );
       packageUtils.addOrRemoveDevDependencies(
         pkg,
         !globalEslint ||
           (inLerna && inLerna.root) ||
+          this.options.monorepo ||
           lernaProjectType === 'app' ||
-          rootPackageManager === 'yarn' ||
+          (rootPackageManager === 'yarn' &&
+            rootYarnNodeLinker !== 'node-modules') ||
           !!(pkg.peerDependencies && pkg.peerDependencies.eslint),
         ['eslint'],
       );
@@ -241,7 +250,7 @@ export default class CommonLintGenerator extends Generator {
           ['eslint-plugin-node', 'eslint-import-resolver-node'],
         );
 
-        if (inLerna && inLerna.root) {
+        if ((inLerna && inLerna.root) || this.options.monorepo) {
           if (this.options.typescript) {
             packageUtils.updateDevDependenciesIfPresent(pkg, [
               '@pob/eslint-config-typescript',
@@ -410,7 +419,7 @@ export default class CommonLintGenerator extends Generator {
       console.warn(`Could not parse/edit ${rootEslintrcPath}: `, err);
     }
 
-    if (inLerna && inLerna.root) {
+    if ((inLerna && inLerna.root) || this.options.monorepo) {
       if (this.fs.exists(srcEslintrcPath)) {
         this.fs.delete(srcEslintrcPath);
       }
@@ -448,7 +457,7 @@ export default class CommonLintGenerator extends Generator {
     }
 
     // see monorepo/lerna/index.js
-    if (!(inLerna && inLerna.root)) {
+    if (!(inLerna && inLerna.root) && !this.options.monorepo) {
       const srcDirectory = useBabel ? 'src' : 'lib';
       const lintRootJsFiles = (useBabel && useNode) || !inLerna;
 

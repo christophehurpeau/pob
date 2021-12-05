@@ -7,10 +7,17 @@ export default class PobBaseGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts, { customInstallTask: true });
 
+    /** @deprecated use monorepo option instead */
     this.option('lerna', {
       type: Boolean,
       required: false,
       desc: 'Lerna monorepo',
+    });
+
+    this.option('monorepo', {
+      type: Boolean,
+      required: false,
+      desc: 'monorepo',
     });
 
     this.option('type', {
@@ -53,7 +60,7 @@ export default class PobBaseGenerator extends Generator {
     // prettier package.json to ensure diff is correct
     ensureJsonFileFormatted(this.destinationPath('package.json'));
 
-    if (this.options.lerna) {
+    if (this.options.monorepo || this.options.lerna) {
       this.useLerna = true;
       this.inLerna = false;
       this.isRoot = true;
@@ -123,6 +130,8 @@ export default class PobBaseGenerator extends Generator {
     this.composeWith('pob:core:package', {
       updateOnly: this.options.updateOnly,
       private: this.useLerna,
+      monorepo: this.useLerna,
+      isRoot: this.isRoot,
     });
 
     if (this.useLerna) {
@@ -207,6 +216,8 @@ export default class PobBaseGenerator extends Generator {
       switch (this.projectConfig.type) {
         case 'lib':
           this.composeWith('pob:lib', {
+            monorepo: this.useLerna,
+            isRoot: this.isRoot,
             updateOnly: this.options.updateOnly,
             fromPob: this.options.fromPob,
             packageManager: this.projectConfig.packageManager,
@@ -215,6 +226,8 @@ export default class PobBaseGenerator extends Generator {
           break;
         case 'app':
           this.composeWith('pob:app', {
+            monorepo: this.useLerna,
+            isRoot: this.isRoot,
             updateOnly: this.options.updateOnly,
             fromPob: this.options.fromPob,
             packageManager: this.projectConfig.packageManager,

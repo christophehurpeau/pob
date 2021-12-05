@@ -9,6 +9,20 @@ export default class CorePackageGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
+    this.option('monorepo', {
+      type: Boolean,
+      required: true,
+      defaults: false,
+      desc: 'is monorepo',
+    });
+
+    this.option('isRoot', {
+      type: Boolean,
+      required: true,
+      defaults: false,
+      desc: 'is root',
+    });
+
     this.option('private', {
       type: Boolean,
       required: false,
@@ -29,7 +43,9 @@ export default class CorePackageGenerator extends Generator {
     }
 
     if (!this.options.updateOnly) {
-      if (this.options.private || (inLerna && inLerna.root)) {
+      if (this.options.monorepo && this.options.isRoot) {
+        pkg.private = true;
+      } else if (this.options.private) {
         pkg.private = true;
       } else {
         const { isPrivate } = await this.prompt({
@@ -46,7 +62,7 @@ export default class CorePackageGenerator extends Generator {
       }
     }
 
-    if (inLerna && inLerna.root) {
+    if (this.options.monorepo && this.options.isRoot) {
       if (!pkg.name) {
         const { name } = await this.prompt({
           name: 'name',
@@ -77,7 +93,7 @@ export default class CorePackageGenerator extends Generator {
     const props = await this.prompt(
       [
         !this.options.updateOnly &&
-          !(inLerna && inLerna.root) && {
+          !(this.options.monorepo && this.options.isRoot) && {
             name: 'description',
             message: 'Description',
             default: pkg.description,
@@ -115,7 +131,7 @@ export default class CorePackageGenerator extends Generator {
       ? pkg.description
       : props.description || pkg.description;
 
-    if (inLerna && !inLerna.root) {
+    if (this.options.monorepo && !this.options.isRoot) {
       const rootMonorepoPkg = inLerna.rootMonorepoPkg;
       const rootRepositoryUrl =
         typeof rootMonorepoPkg.repository === 'string'
@@ -136,9 +152,9 @@ export default class CorePackageGenerator extends Generator {
       fs.unlinkSync(this.destinationPath('yarn-error.log'));
     }
 
-    if (inLerna && !inLerna.root) {
+    if (this.options.monorepo && !this.options.isRoot) {
       packageUtils.removeScripts(pkg, ['checks']);
-    } else if (inLerna && inLerna.root) {
+    } else if (this.options.monorepo && this.options.isRoot) {
       const doesMjsCheckPackagesExists = this.fs.exists(
         this.destinationPath('scripts/check-packages.mjs'),
       );
@@ -206,6 +222,7 @@ export default class CorePackageGenerator extends Generator {
 
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+    pkg.scripts = {};
 
     const installPostinstallScript = (scriptName) => {
       if (
@@ -217,7 +234,7 @@ export default class CorePackageGenerator extends Generator {
     };
 
     const uninstallPostinstallScript = (scriptName) => {
-      if (pkg.scripts[scriptName]) {
+      if (pkg.scripts && pkg.scripts[scriptName]) {
         if (pkg.scripts[scriptName] === 'pob-root-postinstall') {
           delete pkg.scripts[scriptName];
         } else if (
@@ -231,9 +248,9 @@ export default class CorePackageGenerator extends Generator {
         }
       }
     };
-    if (inLerna || pkg.private) {
+    if (this.options.monorepo || pkg.private) {
       uninstallPostinstallScript('postinstallDev');
-      if (!inLerna || inLerna.root) {
+      if (this.options.isRoot) {
         installPostinstallScript('postinstall');
       } else {
         uninstallPostinstallScript('postinstall');

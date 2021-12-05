@@ -207,6 +207,7 @@ export default class PobMonorepoGenerator extends Generator {
     this.composeWith('pob:common:husky', {});
 
     this.composeWith('pob:common:format-lint', {
+      monorepo: true,
       documentation: this.pobLernaConfig.documentation,
       typescript: this.pobLernaConfig.typescript,
       testing: this.pobLernaConfig.testing,
