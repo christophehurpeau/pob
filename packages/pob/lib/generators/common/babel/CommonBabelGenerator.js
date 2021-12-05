@@ -267,10 +267,19 @@ export default class CommonBabelGenerator extends Generator {
 
     /* scripts */
 
-    packageUtils.addOrRemoveScripts(pkg, useBabel, {
-      build: 'pob-build',
-      watch: 'pob-watch',
-    });
+    if (this.options.isApp) {
+      packageUtils.removeScripts(['watch']);
+      packageUtils.addOrRemoveScripts(pkg, useBabel, {
+        build: 'pob-build',
+        start: 'pob-watch',
+      });
+    } else {
+      packageUtils.removeScripts(['start']);
+      packageUtils.addOrRemoveScripts(pkg, useBabel, {
+        build: 'pob-build',
+        watch: 'pob-watch',
+      });
+    }
 
     const shouldBuildDefinitions = !this.options.isApp && useBabel;
     packageUtils.addOrRemoveScripts(pkg, shouldBuildDefinitions, {

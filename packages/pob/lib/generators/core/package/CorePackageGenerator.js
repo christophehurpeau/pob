@@ -222,7 +222,7 @@ export default class CorePackageGenerator extends Generator {
 
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-    pkg.scripts = {};
+    if (!pkg.scripts) pkg.scripts = {};
 
     const installPostinstallScript = (scriptName) => {
       if (
