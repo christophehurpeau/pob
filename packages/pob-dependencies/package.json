@@ -59,7 +59,7 @@
     "eslint-plugin-import": "2.25.3",
     "eslint-plugin-jsx-a11y": "6.5.1",
     "eslint-plugin-node": "11.1.0",
-    "eslint-plugin-unicorn": "38.0.1",
+    "eslint-plugin-unicorn": "39.0.0",
     "jest": "27.4.4",
     "jest-junit-reporter": "1.1.0",
     "pob-babel": "^28.7.0",
