@@ -15,7 +15,6 @@ interface Dependencies {
   '@typescript-eslint/eslint-plugin': '5.5.0';
   '@typescript-eslint/parser': '5.5.0';
   'babel-jest': '27.4.2';
-  'babel-preset-latest-node': '5.5.1';
   'babel-preset-modern-browsers': '15.0.2';
   eslint: '7.32.0';
   'eslint-import-resolver-node': '0.3.6';
