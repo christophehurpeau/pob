@@ -80,7 +80,7 @@ export default class PobLibGenerator extends Generator {
           case 'node10':
             return {
               target: 'node',
-              version: 12,
+              version: 14,
               formats: ['cjs'],
             };
 
@@ -89,7 +89,7 @@ export default class PobLibGenerator extends Generator {
           case 'module-node8':
             return {
               target: 'node',
-              version: 12,
+              version: 14,
               formats: ['es'],
             };
 

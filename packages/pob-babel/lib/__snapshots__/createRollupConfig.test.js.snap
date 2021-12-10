@@ -22,125 +22,58 @@ const spreadTest = { ...{
     test: 'spread'
   }
 };
-const operator = spreadTest === null || spreadTest === void 0 ? void 0 : spreadTest.toString();
+const foo = t.foo ?? 'default';
+const operator = spreadTest?.toString();
 
-export { operator, spreadTest, t };
+export { foo, operator, spreadTest, t };
 "
 `;
 
 exports[`fixtures basic 1 1`] = `
-"class Test {
-  constructor(...args) {
-    this.args = args;
+"import _extends from '@babel/runtime/helpers/esm/extends';
+import _inheritsLoose from '@babel/runtime/helpers/esm/inheritsLoose';
+
+var Test = function Test() {
+  var _len, args, _key;
+
+  for (_len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+    args[_key] = arguments[_key];
   }
 
-}
-
-console.log(\`the answer is \${42}\`);
-
-class Test2 extends Test {
-  constructor(...args) {
-    super(...args);
-  }
-
-}
-
-const t = new Test2(1, 2, 3);
-const spreadTest = { ...{
-    test: 'spread'
-  }
+  this.args = args;
 };
-const operator = spreadTest === null || spreadTest === void 0 ? void 0 : spreadTest.toString();
 
-export { operator, spreadTest, t };
+var _t$foo;
+console.log(\\"the answer is 42\\");
+
+var Test2 = /*#__PURE__*/function (_Test) {
+  _inheritsLoose(Test2, _Test);
+
+  function Test2() {
+    var _len, args, _key;
+
+    for (_len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    return _Test.call.apply(_Test, [this].concat(args)) || this;
+  }
+
+  return Test2;
+}(Test);
+
+var t = new Test2(1, 2, 3);
+var spreadTest = _extends({}, {
+  test: 'spread'
+});
+var foo = (_t$foo = t.foo) != null ? _t$foo : 'default';
+var operator = spreadTest == null ? void 0 : spreadTest.toString();
+
+export { foo, operator, spreadTest, t };
 "
 `;
 
 exports[`fixtures basic 2 1`] = `
-"import _extends from '@babel/runtime/helpers/esm/extends';
-import _inheritsLoose from '@babel/runtime/helpers/esm/inheritsLoose';
-
-var Test = function Test() {
-  var _len, args, _key;
-
-  for (_len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-    args[_key] = arguments[_key];
-  }
-
-  this.args = args;
-};
-
-console.log(\\"the answer is 42\\");
-
-var Test2 = /*#__PURE__*/function (_Test) {
-  _inheritsLoose(Test2, _Test);
-
-  function Test2() {
-    var _len, args, _key;
-
-    for (_len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _Test.call.apply(_Test, [this].concat(args)) || this;
-  }
-
-  return Test2;
-}(Test);
-
-var t = new Test2(1, 2, 3);
-var spreadTest = _extends({}, {
-  test: 'spread'
-});
-var operator = spreadTest == null ? void 0 : spreadTest.toString();
-
-export { operator, spreadTest, t };
-"
-`;
-
-exports[`fixtures basic 3 1`] = `
-"import _extends from '@babel/runtime/helpers/esm/extends';
-import _inheritsLoose from '@babel/runtime/helpers/esm/inheritsLoose';
-
-var Test = function Test() {
-  var _len, args, _key;
-
-  for (_len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-    args[_key] = arguments[_key];
-  }
-
-  this.args = args;
-};
-
-console.log(\\"the answer is 42\\");
-
-var Test2 = /*#__PURE__*/function (_Test) {
-  _inheritsLoose(Test2, _Test);
-
-  function Test2() {
-    var _len, args, _key;
-
-    for (_len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _Test.call.apply(_Test, [this].concat(args)) || this;
-  }
-
-  return Test2;
-}(Test);
-
-var t = new Test2(1, 2, 3);
-var spreadTest = _extends({}, {
-  test: 'spread'
-});
-var operator = spreadTest == null ? void 0 : spreadTest.toString();
-
-export { operator, spreadTest, t };
-"
-`;
-
-exports[`fixtures basic 4 1`] = `
 "class Test {
   constructor(...args) {
     this.args = args;
@@ -148,6 +81,7 @@ exports[`fixtures basic 4 1`] = `
 
 }
 
+var _t$foo;
 console.log(\`the answer is \${42}\`);
 
 class Test2 extends Test {
@@ -162,37 +96,10 @@ const spreadTest = { ...{
     test: 'spread'
   }
 };
+const foo = (_t$foo = t.foo) !== null && _t$foo !== void 0 ? _t$foo : 'default';
 const operator = spreadTest === null || spreadTest === void 0 ? void 0 : spreadTest.toString();
 
-export { operator, spreadTest, t };
-"
-`;
-
-exports[`fixtures basic 5 1`] = `
-"class Test {
-  constructor(...args) {
-    this.args = args;
-  }
-
-}
-
-console.log(\`the answer is \${42}\`);
-
-class Test2 extends Test {
-  constructor(...args) {
-    super(...args);
-  }
-
-}
-
-const t = new Test2(1, 2, 3);
-const spreadTest = { ...{
-    test: 'spread'
-  }
-};
-const operator = spreadTest === null || spreadTest === void 0 ? void 0 : spreadTest.toString();
-
-export { operator, spreadTest, t };
+export { foo, operator, spreadTest, t };
 "
 `;
 
@@ -207,27 +114,6 @@ render( /*#__PURE__*/React.createElement(Component, null), document.getElementBy
 `;
 
 exports[`fixtures react 1 1`] = `
-"import React from 'react';
-import { render } from 'react-dom';
-
-const Component = () => /*#__PURE__*/React.createElement(\\"div\\", null);
-
-render( /*#__PURE__*/React.createElement(Component, null), document.getElementById('react-container'));
-"
-`;
-
-exports[`fixtures react 2 1`] = `
-"import React from 'react';
-import { render } from 'react-dom';
-import './styles.css';
-
-const Component = () => /*#__PURE__*/React.createElement(\\"div\\", null);
-
-render( /*#__PURE__*/React.createElement(Component, null), document.getElementById('react-container'));
-"
-`;
-
-exports[`fixtures react 3 1`] = `
 "import React from 'react';
 import { render } from 'react-dom';
 import './styles.css';
@@ -255,36 +141,16 @@ class Test2 extends Test {
 
 }
 
+class Foo {}
+
 const t = new Test2(1, 2, 3);
+t.foo = new Foo();
 
 export { t as default };
 "
 `;
 
 exports[`fixtures ts 1 1`] = `
-"class Test {
-  constructor(...args) {
-    this.args = args;
-  }
-
-}
-
-console.log(\`the answer is \${42}\`);
-
-class Test2 extends Test {
-  constructor(...args) {
-    super(...args);
-  }
-
-}
-
-const t = new Test2(1, 2, 3);
-
-export { t as default };
-"
-`;
-
-exports[`fixtures ts 2 1`] = `
 "import _inheritsLoose from '@babel/runtime/helpers/esm/inheritsLoose';
 
 var Test = function Test() {
@@ -315,44 +181,10 @@ var Test2 = /*#__PURE__*/function (_Test) {
   return Test2;
 }(Test);
 
-var t = new Test2(1, 2, 3);
-
-export { t as default };
-"
-`;
-
-exports[`fixtures ts 3 1`] = `
-"import _inheritsLoose from '@babel/runtime/helpers/esm/inheritsLoose';
-
-var Test = function Test() {
-  var _len, args, _key;
-
-  for (_len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-    args[_key] = arguments[_key];
-  }
-
-  this.args = args;
-};
-
-console.log(\\"the answer is 42\\");
-
-var Test2 = /*#__PURE__*/function (_Test) {
-  _inheritsLoose(Test2, _Test);
-
-  function Test2() {
-    var _len, args, _key;
-
-    for (_len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    return _Test.call.apply(_Test, [this].concat(args)) || this;
-  }
-
-  return Test2;
-}(Test);
+var Foo = function Foo() {};
 
 var t = new Test2(1, 2, 3);
+t.foo = new Foo();
 
 export { t as default };
 "

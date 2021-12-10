@@ -19,6 +19,7 @@ export default class CommonRemoveOldDependenciesGenerator extends Generator {
       'babel-preset-es2015-node6',
       'babel-preset-pob',
       'babel-preset-latest',
+      'babel-preset-latest-node',
       'babel-preset-stage-0',
       'babel-preset-stage-1',
       'babel-preset-modern-browsers-stage-1',

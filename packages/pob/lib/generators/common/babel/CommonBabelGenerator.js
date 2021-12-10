@@ -41,24 +41,25 @@ export default class CommonBabelGenerator extends Generator {
       let babelEnvs = pkg.pob.babelEnvs;
       if (
         !babelEnvs.some(
-          (env) => env.target === 'node' && String(env.version) === '12',
+          (env) => env.target === 'node' && String(env.version) === '14',
         ) &&
         babelEnvs.some(
           (env) =>
             env.target === 'node' &&
             (String(env.version) === '8' ||
               String(env.version) === '6' ||
-              String(env.version) === '10'),
+              String(env.version) === '10' ||
+              String(env.version) === '12'),
         )
       ) {
         babelEnvs.unshift({
           target: 'node',
-          version: '12',
+          version: '14',
           formats: ['cjs', 'es'],
         });
       }
       babelEnvs = babelEnvs.filter(
-        (env) => env.target !== 'node' || env.version >= 12,
+        (env) => env.target !== 'node' || env.version >= 14,
       );
 
       pkg.pob.babelEnvs = babelEnvs;
@@ -125,8 +126,12 @@ export default class CommonBabelGenerator extends Generator {
           default: nodeVersions,
           choices: [
             {
-              name: '12 (Active LTS)',
+              name: '12 (Maintenance LTS)',
               value: '12',
+            },
+            {
+              name: '14 (Maintenance LTS)',
+              value: '14',
             },
           ],
         },
@@ -195,11 +200,11 @@ export default class CommonBabelGenerator extends Generator {
       ...(babelConfig.nodeVersions || []).map((version) => ({
         target: 'node',
         version,
-        formats: babelConfig.formats.includes('es')
+        formats: babelConfig.formats.includes('cjs')
           ? // eslint-disable-next-line unicorn/no-nested-ternary
-            version === '12'
+            version === '14'
             ? babelConfig.formats
-            : ['cjs']
+            : ['es']
           : babelConfig.formats,
       })),
       ...(babelConfig.browserVersions || []).map((version) => ({
@@ -351,12 +356,6 @@ export default class CommonBabelGenerator extends Generator {
 
     packageUtils.addOrRemoveDevDependencies(
       pkg,
-      this.babelEnvs.find((env) => env.target === 'node'),
-      ['babel-preset-latest-node'],
-    );
-
-    packageUtils.addOrRemoveDevDependencies(
-      pkg,
       this.babelEnvs.find(
         (env) => env.target === 'browser' && env.version === 'modern',
       ),
@@ -375,8 +374,6 @@ export default class CommonBabelGenerator extends Generator {
       switch (String(minNodeVersion)) {
         case '10':
         case '12':
-          pkg.engines.node = '^12.20.0 || ^14.13.1 || >=16.0.0';
-          break;
         case '14':
           pkg.engines.node = '^14.13.1 || >=16.0.0';
           break;
@@ -408,7 +405,7 @@ export default class CommonBabelGenerator extends Generator {
         if (Object.keys(pkg.engines).length === 0) delete pkg.engines;
       } else {
         // Supported LTS versions of node, that supports ESM modules.
-        pkg.engines.node = '^12.20.0 || ^14.13.1 || >=16.0.0';
+        pkg.engines.node = '^14.13.1 || >=16.0.0';
       }
     }
 
@@ -471,10 +468,11 @@ export default class CommonBabelGenerator extends Generator {
         !pkg.engines.node ||
         semver.lt(
           semver.minVersion(pkg.engines.node),
-          pkg.type === 'commonjs' ? '12.10.0' : '12.20.0',
+          // pkg.type === 'commonjs' ? '12.10.0' : '12.20.0',
+          '14.13.1',
         )
       ) {
-        pkg.engines.node = '^12.20.0 || ^14.13.1 || >=16.0.0';
+        pkg.engines.node = '^14.13.1 || >=16.0.0';
       }
     }
 
@@ -499,35 +497,32 @@ export default class CommonBabelGenerator extends Generator {
       (env) => env.target === 'node' && env.formats.includes('es'),
     );
 
+    // Legacy "dev" builds
+    delete pkg['module:browser'];
+    delete pkg['module:browser-dev'];
+    delete pkg['module:modern-browsers-dev'];
+    delete pkg['module:node-dev'];
+
     /* webpack 4 */
     if (esAllBrowserEnv) {
       pkg.module = './dist/index-browser.es.js';
       pkg.browser = './dist/index-browser.es.js';
-      pkg['module:browser'] = './dist/index-browser.es.js';
-      pkg['module:browser-dev'] = './dist/index-browser-dev.es.js';
     } else {
       delete pkg.module;
       delete pkg.browser;
-      delete pkg['module:browser'];
-      delete pkg['module:browser-dev'];
     }
 
     if (esModernBrowserEnv) {
       pkg['module:modern-browsers'] = './dist/index-browsermodern.es.js';
-      pkg['module:modern-browsers-dev'] =
-        './dist/index-browsermodern-dev.es.js';
     } else {
       delete pkg['module:modern-browsers'];
-      delete pkg['module:modern-browsers-dev'];
     }
 
     if (esNodeEnv) {
+      // webpack 4 node
       pkg[
         'module:node'
       ] = `./dist/index-${esNodeEnv.target}${esNodeEnv.version}.mjs`;
-      pkg[
-        'module:node-dev'
-      ] = `./dist/index-${esNodeEnv.target}${esNodeEnv.version}-dev.mjs`;
     }
 
     const aliases = (this.entries || []).filter((entry) => entry !== 'index');
@@ -548,7 +543,6 @@ export default class CommonBabelGenerator extends Generator {
               : aliases;
           if (envAliases.length === 0) return;
           pkg[`module:aliases-${key}`] = {};
-          pkg[`module:aliases-${key}-dev`] = {};
 
           envAliases.forEach((aliasName) => {
             const isBrowserOnly =
@@ -559,11 +553,6 @@ export default class CommonBabelGenerator extends Generator {
             ] = `./dist/${aliasDistName}-${env.target}${
               env.version || ''
             }.es.js`;
-            pkg[`module:aliases-${key}-dev`][
-              `./${aliasName}.js`
-            ] = `./dist/${aliasDistName}-${env.target}${
-              env.version || ''
-            }-dev.es.js`;
           });
         });
     }
@@ -591,19 +580,16 @@ export default class CommonBabelGenerator extends Generator {
         this.babelEnvs.forEach(({ target, version, formats }) => {
           if (target === 'node' && entry === 'browser') return;
 
-          const exportTarget = { development: {} };
+          const exportTarget = {};
 
           if (target === 'node') {
             if (formats.includes('es')) {
-              exportTarget.development.import = `./dist/${entryDistName}-${target}${version}-dev.mjs`;
               exportTarget.import = `./dist/${entryDistName}-${target}${version}.mjs`;
 
               if (formats.includes('cjs')) {
-                exportTarget.development.require = `./dist/${entryDistName}-${target}${version}-dev.cjs.js`;
                 exportTarget.require = `./dist/${entryDistName}-${target}${version}.cjs.js`;
               }
             } else if (formats.includes('cjs')) {
-              exportTarget.development = `./dist/${entryDistName}-${target}${version}-dev.cjs.js`;
               exportTarget.default = `./dist/${entryDistName}-${target}${version}.cjs.js`;
             }
             // eslint: https://github.com/benmosher/eslint-plugin-import/issues/2132
@@ -613,18 +599,12 @@ export default class CommonBabelGenerator extends Generator {
             }
           } else if (target === 'browser') {
             if (formats.includes('es')) {
-              exportTarget.development.import = `./dist/${entryDistName}-${target}${
-                version || ''
-              }-dev.es.js`;
               exportTarget.import = `./dist/${entryDistName}-${target}${
                 version || ''
               }.es.js`;
             }
 
             if (formats.includes('cjs')) {
-              exportTarget.development.require = `./dist/index-${target}${
-                version || ''
-              }-dev.cjs.js`;
               exportTarget.require = `./dist/index-${target}${
                 version || ''
               }.cjs.js`;
@@ -673,6 +653,13 @@ export default class CommonBabelGenerator extends Generator {
 
     Object.keys(pkg).forEach((key) => {
       if (!key.startsWith('module:') && !key.startsWith('webpack:')) return;
+
+      // legacy
+      if (key.endsWith('-dev')) {
+        delete pkg[key];
+        return;
+      }
+
       if (key.startsWith('module:node') && esNodeEnv) return;
       if (key.startsWith('module:browser') && esAllBrowserEnv) return;
       if (key.startsWith('module:modern-browsers') && esModernBrowserEnv) {

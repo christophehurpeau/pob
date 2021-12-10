@@ -1,3 +1,4 @@
+/* eslint-disable max-lines */
 /* eslint-disable complexity */
 
 import { readFileSync, existsSync } from 'fs';
@@ -6,6 +7,7 @@ import babelPluginTransformRuntime from '@babel/plugin-transform-runtime';
 import { babel } from '@rollup/plugin-babel';
 import json from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
 import babelPresetEnv from 'babel-preset-pob-env';
 import configExternalDependencies from 'rollup-config-external-dependencies';
 import ignoreImport from './rollup-plugin-ignore-browser-only-imports.js';
@@ -21,11 +23,22 @@ const nodeFormatToExt = (format) => {
 export default function createRollupConfig({
   cwd = process.cwd(),
   pkg = JSON.parse(readFileSync(`${cwd}/package.json`)),
-  devPlugins = [],
-  prodPlugins = [],
+  plugins = [],
+  devPlugins,
+  prodPlugins,
   pobConfig = pkg.pob ||
     JSON.parse(readFileSync(`${cwd}/.yo-rc.json`)).pob['pob-config'],
 } = {}) {
+  if (devPlugins) {
+    throw new Error(
+      '"devPlugins" option is no longer supported, use "plugins" instead',
+    );
+  }
+  if (prodPlugins) {
+    throw new Error(
+      '"prodPlugins" option is no longer supported, use "plugins" instead',
+    );
+  }
   const isIndexBrowserEntry =
     pobConfig.entries[0] === 'index' && pobConfig.entries[1] === 'browser';
   const entries = isIndexBrowserEntry
@@ -43,7 +56,8 @@ export default function createRollupConfig({
   const nodeVersion = (version) => {
     switch (String(version)) {
       case '12':
-        return '12.10';
+      case '14':
+        return '14.17';
       default:
         return version;
     }
@@ -81,9 +95,7 @@ export default function createRollupConfig({
     return entryPath;
   };
 
-  const createConfigForEnv = (entry, entryPath, env, production, plugins) => {
-    const devSuffix = production ? '' : '-dev';
-
+  const createConfigForEnv = (entry, entryPath, env) => {
     const typescript = entryPath.endsWith('.ts') || entryPath.endsWith('.tsx');
     const extensions = (
       typescript
@@ -95,7 +107,7 @@ export default function createRollupConfig({
     return {
       input: entryPath,
       output: env.formats.map((format) => ({
-        file: `dist/${entry}-${env.target}${env.version || ''}${devSuffix}${
+        file: `dist/${entry}-${env.target}${env.version || ''}${
           env.target === 'node' ? nodeFormatToExt(format) : `.${format}.js`
         }`,
         format,
@@ -143,7 +155,6 @@ export default function createRollupConfig({
                   env.target === 'node'
                     ? nodeVersion(env.version)
                     : env.version,
-                production,
               },
             ],
           ].filter(Boolean),
@@ -162,6 +173,15 @@ export default function createRollupConfig({
           exclude: 'node_modules/**',
         }),
 
+        replace({
+          preventAssignment: true,
+          values: {
+            __DEV__: 'process.env.NODE_ENV !== "production"',
+            __TARGET__: `${JSON.stringify(env.target)}`,
+            __TARGET_VERSION__: `${JSON.stringify(env.version)}`,
+          },
+        }),
+
         json({
           preferConst,
           compact: true,
@@ -174,18 +194,16 @@ export default function createRollupConfig({
             moduleDirectories: ['src'], // don't resolve node_modules, but allow src (see baseUrl in tsconfig)
           },
         }),
+
         ...plugins,
       ].filter(Boolean),
     };
   };
 
   return pobConfig.babelEnvs.flatMap((env) => {
-    return entries.flatMap((entry, index) => {
+    return entries.map((entry) => {
       const entryPath = resolveEntry(entry, env.target);
-      return [
-        createConfigForEnv(entry, entryPath, env, true, prodPlugins),
-        createConfigForEnv(entry, entryPath, env, false, devPlugins),
-      ];
+      return createConfigForEnv(entry, entryPath, env);
     });
   });
 }

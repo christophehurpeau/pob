@@ -71,7 +71,7 @@
     "@rollup/plugin-babel": "^5.2.2",
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.0",
-    "babel-preset-latest-node": "^5.5.1",
+    "@rollup/plugin-replace": "^3.0.0",
     "babel-preset-modern-browsers": "^15.0.2",
     "babel-preset-pob-env": "^6.4.0",
     "minimist-argv": "^1.1.0",

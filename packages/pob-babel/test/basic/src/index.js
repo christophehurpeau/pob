@@ -12,4 +12,7 @@ class Test2 extends Test {
 export const t = new Test2(1, 2, 3);
 
 export const spreadTest = { ...{ test: 'spread' } };
+
+export const foo = t.foo ?? 'default';
+
 export const operator = spreadTest?.toString();
