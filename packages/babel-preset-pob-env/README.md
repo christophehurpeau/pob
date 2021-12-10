@@ -14,25 +14,12 @@
 
 - `target` - "node", "browser" or `false`
 - `version` - target's version
-- `production` - `true` | `false` (default: process.env.NODE_ENV === 'production')
 - `loose` - Enable “loose” transformations for any plugins in this preset that allow them (Disabled by default).
 - `typescript` - Enable [@babel/preset-typescript](https://www.npmjs.com/package/@babel/preset-typescript) (Enabled by default).
 - `optimizations` - Use "babel-preset-optimizations" preset (Enabled by default).
 - `modules` - Enable transformation of ES6 module syntax to another module type (Enabled by default to "commonjs"). Can be false to not transform modules, or "commonjs"
-- `replacements` - { `[key]`: `true` | `false` }. Default: `{ BROWSER, NODEJS }`, according to target. Always add { PRODUCTION: production }. Key should be uppercase.
-
-## Content
-
-- [babel-preset-optimizations](https://www.npmjs.com/package/babel-preset-optimizations)
-- [babel-plugin-discard-module-references](https://www.npmjs.com/package/babel-plugin-discard-module-references)
-- [babel-plugin-import-export-rename](https://www.npmjs.com/package/babel-plugin-import-export-rename)
-- [babel-plugin-minify-replace](https://www.npmjs.com/package/babel-plugin-minify-replace)
 
 ## Needed dependencies
-
-[babel-preset-latest-node](https://www.npmjs.com/package/babel-preset-latest-node)
-
-- `target` === "node"
 
 [babel-preset-modern-browsers](https://www.npmjs.com/package/babel-preset-modern-browsers)
 
@@ -65,7 +52,7 @@ yarn add --dev babel-preset-pob-env
 ```json
 {
   "presets": [
-    ["pob-env", { "production": true, "replacements": { "BROWSER": false } }]
+    ["pob-env", { "loose": true]
   ]
 }
 ```
@@ -86,11 +73,6 @@ require('babel-core').transform('code', {
 
 ```javascript
 require('babel-core').transform('code', {
-  presets: [
-    [
-      require('babel-preset-pob-env'),
-      { production: process.env.NODE_ENV === 'production' },
-    ],
-  ],
+  presets: [[require('babel-preset-pob-env'), { loose: true }]],
 });
 ```

@@ -2,7 +2,10 @@
   "pob": {
     "lib": {
       "documentation": false,
-      "testing": false
+      "testing": {
+        "ci": true,
+        "codecov": true
+      }
     },
     "project": {
       "type": "lib"

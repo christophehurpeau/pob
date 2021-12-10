@@ -25,32 +25,48 @@
   "sideEffects": false,
   "scripts": {
     "clean": "rm -Rf docs dist test/node6 coverage",
+    "generate:test-coverage": "rm -Rf docs/coverage/ ; NODE_ENV=production jest --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/babel-preset-pob-env"
+    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/babel-preset-pob-env",
+    "postinstallDev": "pob-root-postinstall",
+    "test": "jest",
+    "test:watch": "jest --watch"
   },
   "prettier": {
     "trailingComma": "all",
     "singleQuote": true,
     "arrowParens": "always"
   },
+  "jest": {
+    "cacheDirectory": "./node_modules/.cache/jest",
+    "testMatch": [
+      "<rootDir>/lib/**/__tests__/**/*.?(m)js",
+      "<rootDir>/lib/**/*.test.?(m)js"
+    ],
+    "collectCoverageFrom": [
+      "lib/**/*.?(m)js"
+    ],
+    "moduleFileExtensions": [
+      "js",
+      "json"
+    ]
+  },
   "pob": {},
   "peerDependencies": {
     "@babel/core": "^7.11.6"
   },
   "dependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.14.5",
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.14.5",
-    "@babel/plugin-proposal-optional-chaining": "^7.14.5",
-    "@babel/plugin-syntax-dynamic-import": "^7.8.3",
-    "@babel/preset-typescript": "^7.14.5",
-    "babel-plugin-discard-module-references": "^1.1.2",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.16.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.16.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.16.0",
+    "@babel/preset-typescript": "^7.16.0",
     "babel-plugin-fix-class-properties-uninitialized": "^4.2.0",
-    "babel-plugin-import-export-rename": "^1.0.1",
-    "babel-plugin-minify-replace": "^0.5.0",
-    "babel-plugin-pob-babel": "^3.2.0",
     "babel-preset-optimizations": "^2.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.16.0"
+    "@babel/core": "7.16.0",
+    "@types/jest": "27.0.3",
+    "jest": "27.4.4",
+    "pob-lcov-reporter": "^5.5.0"
   }
 }

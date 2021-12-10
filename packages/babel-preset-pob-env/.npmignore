@@ -4,6 +4,7 @@
 /samples
 /test
 /*.config.js
+__snapshots__
 .yo-rc.json
 
 /.settings
