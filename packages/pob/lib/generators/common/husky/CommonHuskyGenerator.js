@@ -42,8 +42,12 @@ export default class CommonHuskyGenerator extends Generator {
     this.fs.delete('.git-hooks/pre-commit');
     if (this.fs.exists('.git-hooks')) this.fs.delete('.git-hooks');
 
-    this.fs.delete(this.destinationPath('.huskyrc.js'));
-    this.fs.delete(this.destinationPath('husky.config.js'));
+    if (this.fs.exists(this.destinationPath('.huskyrc.js'))) {
+      this.fs.delete(this.destinationPath('.huskyrc.js'));
+    }
+    if (this.fs.exists(this.destinationPath('husky.config.js'))) {
+      this.fs.delete(this.destinationPath('husky.config.js'));
+    }
 
     if (this.fs.exists(this.destinationPath('lint-staged.config.js'))) {
       this.fs.move(

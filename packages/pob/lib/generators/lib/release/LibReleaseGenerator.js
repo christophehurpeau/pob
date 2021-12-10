@@ -61,9 +61,15 @@ export default class LibReleaseGenerator extends Generator {
     }
 
     if (!isReleasePleaseEnabled) {
-      this.fs.delete(
-        this.destinationPath('.github/workflows/release-please.yml'),
-      );
+      if (
+        this.fs.exists(
+          this.destinationPath('.github/workflows/release-please.yml'),
+        )
+      ) {
+        this.fs.delete(
+          this.destinationPath('.github/workflows/release-please.yml'),
+        );
+      }
     } else {
       this.fs.copyTpl(
         this.templatePath('release-please.yml.ejs'),
