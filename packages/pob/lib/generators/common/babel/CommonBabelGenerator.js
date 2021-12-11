@@ -278,12 +278,14 @@ export default class CommonBabelGenerator extends Generator {
       packageUtils.addOrRemoveScripts(pkg, useBabel, {
         build: 'pob-build',
         start: 'pob-watch',
+        clean: 'rm -Rf dist',
       });
     } else {
       packageUtils.removeScripts(['start']);
       packageUtils.addOrRemoveScripts(pkg, useBabel, {
         build: 'pob-build',
         watch: 'pob-watch',
+        clean: 'rm -Rf dist',
       });
     }
 
