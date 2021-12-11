@@ -7,7 +7,7 @@ import { VERSION as rollupVersion } from 'rollup';
 import semver from 'semver';
 import { pkg } from './helper.cjs';
 
-const requiredRollupVersion = pkg.peerDependencies.rollup.slice(1);
+const requiredRollupVersion = pkg.dependencies.rollup;
 
 if (semver.lt(rollupVersion, requiredRollupVersion)) {
   console.error(
