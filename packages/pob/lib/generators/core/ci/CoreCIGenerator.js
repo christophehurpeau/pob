@@ -13,6 +13,12 @@ export default class CoreCIGenerator extends Generator {
       desc: 'enable ci',
     });
 
+    this.option('build', {
+      type: Boolean,
+      defaults: true,
+      desc: 'enable build',
+    });
+
     this.option('typescript', {
       type: Boolean,
       defaults: true,
@@ -66,6 +72,7 @@ export default class CoreCIGenerator extends Generator {
           testing: this.options.testing && !!pkg.scripts.test,
           checks: !!pkg.scripts && !!pkg.scripts.checks,
           documentation: this.options.documentation,
+          build: this.options.build,
           typescript: this.options.typescript,
           codecov: this.options.codecov,
         },

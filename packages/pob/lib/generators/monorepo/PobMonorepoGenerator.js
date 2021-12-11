@@ -196,6 +196,7 @@ export default class PobMonorepoGenerator extends Generator {
 
     this.composeWith('pob:core:ci', {
       enable: this.pobLernaConfig.ci,
+      build: this.pobLernaConfig.typescript,
       typescript: this.pobLernaConfig.typescript,
       testing: this.pobLernaConfig.testing,
       codecov: this.pobLernaConfig.codecov,

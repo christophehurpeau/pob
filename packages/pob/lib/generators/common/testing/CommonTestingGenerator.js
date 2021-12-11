@@ -48,6 +48,7 @@ export default class CommonTestingGenerator extends Generator {
       this.composeWith('pob:core:ci', {
         enable: this.options.ci,
         testing: this.options.testing,
+        build: this.options.typescript,
         typescript: this.options.typescript,
         documentation: this.options.documentation,
         codecov: this.options.codecov,
