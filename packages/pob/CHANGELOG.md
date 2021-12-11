@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.1](https://github.com/christophehurpeau/pob/compare/pob@9.2.0...pob@9.2.1) (2021-12-11)
+
+
+### Bug Fixes
+
+* bring back @babel/core as dev dependency ([9aa52ec](https://github.com/christophehurpeau/pob/commit/9aa52ecf895ac28d216e4957028bb8366c278f00))
+
+
+
+
+
 # [9.2.0](https://github.com/christophehurpeau/pob/compare/pob@9.1.0...pob@9.2.0) (2021-12-11)
 
 

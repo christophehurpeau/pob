@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.1](https://github.com/christophehurpeau/pob/compare/example-ts-lib@0.1.0...example-ts-lib@0.1.1) (2021-12-11)
+
+
+### Bug Fixes
+
+* bring back @babel/core as dev dependency ([9aa52ec](https://github.com/christophehurpeau/pob/commit/9aa52ecf895ac28d216e4957028bb8366c278f00))
+
+
+
+
+
 # 0.1.0 (2021-12-11)
 
 

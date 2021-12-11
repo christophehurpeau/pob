@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.1.2](https://github.com/christophehurpeau/pob/compare/pob-babel@29.1.1...pob-babel@29.1.2) (2021-12-11)
+
+
+### Bug Fixes
+
+* bring back @babel/core as dev dependency ([9aa52ec](https://github.com/christophehurpeau/pob/commit/9aa52ecf895ac28d216e4957028bb8366c278f00))
+* **pob-babel:** add rollup bin ([0f22acb](https://github.com/christophehurpeau/pob/commit/0f22acb60fe4abe1c0daccf0af1b002154c4e39a))
+
+
+
+
+
 ## [29.1.1](https://github.com/christophehurpeau/pob/compare/pob-babel@29.1.0...pob-babel@29.1.1) (2021-12-11)
 
 
