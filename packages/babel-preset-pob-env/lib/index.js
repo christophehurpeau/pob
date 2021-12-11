@@ -17,7 +17,7 @@ module.exports = function (context, opts = {}) {
     }
   });
 
-  ['flow', 'production', 'modules'].forEach((optionName) => {
+  ['flow', 'production'].forEach((optionName) => {
     if (opts[optionName] !== undefined) {
       throw new Error(`option "${optionName}" is deprecated.`);
     }
