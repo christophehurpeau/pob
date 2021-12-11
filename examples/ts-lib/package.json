@@ -11,22 +11,18 @@
   "homepage": "https://github.com/christophehurpeau/pob",
   "type": "module",
   "engines": {
-    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+    "node": "^14.13.1 || >=16.0.0"
   },
   "types": "./dist/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "node": {
-        "development": {
-          "import": "./dist/index-node12-dev.mjs"
-        },
-        "import": "./dist/index-node12.mjs"
+        "import": "./dist/index-node14.mjs"
       }
     }
   },
-  "module:node": "./dist/index-node12.mjs",
-  "module:node-dev": "./dist/index-node12-dev.mjs",
+  "module:node": "./dist/index-node14.mjs",
   "sideEffects": false,
   "scripts": {
     "build": "pob-build && yarn run build:definitions",
@@ -66,7 +62,7 @@
     "babelEnvs": [
       {
         "target": "node",
-        "version": "12",
+        "version": "14",
         "formats": [
           "es"
         ]
@@ -78,13 +74,12 @@
   },
   "devDependencies": {
     "@babel/core": "7.16.0",
-    "@types/jest": "27.0.2",
-    "babel-jest": "27.3.1",
-    "babel-preset-latest-node": "5.5.1",
-    "jest": "27.3.1",
-    "pob-babel": "28.4.0",
-    "pob-lcov-reporter": "5.3.0",
-    "rollup": "2.59.0",
-    "typescript": "4.4.4"
+    "@types/jest": "27.0.3",
+    "babel-jest": "27.4.4",
+    "jest": "27.4.4",
+    "pob-babel": "28.7.0",
+    "pob-lcov-reporter": "5.5.0",
+    "rollup": "2.61.0",
+    "typescript": "4.5.3"
   }
 }

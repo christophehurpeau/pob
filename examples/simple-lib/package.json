@@ -11,7 +11,7 @@
   "homepage": "https://github.com/christophehurpeau/pob",
   "type": "module",
   "engines": {
-    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+    "node": "^14.13.1 || >=16.0.0"
   },
   "main": "./lib/index.js",
   "exports": {
@@ -47,8 +47,8 @@
   },
   "pob": {},
   "devDependencies": {
-    "@types/jest": "27.0.2",
-    "jest": "27.3.1",
-    "pob-lcov-reporter": "5.3.0"
+    "@types/jest": "27.0.3",
+    "jest": "27.4.4",
+    "pob-lcov-reporter": "5.5.0"
   }
 }
