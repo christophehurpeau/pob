@@ -37,9 +37,15 @@ export default class CorePackageGenerator extends Generator {
     if (!pkg.engines) pkg.engines = {};
 
     // dont override engines if set to latest
-    if (!pkg.engines.node || !pkg.engines.node.startsWith('>=14.')) {
+    if (
+      !pkg.engines.node ||
+      !(
+        pkg.engines.node.startsWith('>=14.') ||
+        pkg.engines.node.startsWith('>=16.')
+      )
+    ) {
       // this might be overridden by babel generator
-      pkg.engines.node = '>=12.10.0';
+      pkg.engines.node = '>=14.13.1';
     }
 
     if (!this.options.updateOnly) {

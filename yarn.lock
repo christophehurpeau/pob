@@ -4274,7 +4274,7 @@ __metadata:
     babel-plugin-minify-replace: ^0.5.0
     babel-preset-optimizations: ^2.0.0
     jest: 27.4.4
-    pob-lcov-reporter: ^5.5.0
+    pob-lcov-reporter: 5.5.0
   peerDependencies:
     "@babel/core": ^7.11.6
   languageName: unknown
@@ -6584,7 +6584,7 @@ __metadata:
     jest: 27.4.4
     pob-babel: 28.7.0
     pob-lcov-reporter: 5.5.0
-    rollup: 2.61.0
+    rollup: 2.61.1
     typescript: 4.5.3
   languageName: unknown
   linkType: soft
@@ -11753,7 +11753,7 @@ __metadata:
     babel-preset-pob-env: ^6.4.0
     jest: 27.4.4
     minimist-argv: ^1.1.0
-    pob-lcov-reporter: ^5.5.0
+    pob-lcov-reporter: 5.5.0
     rollup: ^2.47.0
     rollup-config-external-dependencies: ^2.0.0
     semver: ^7.3.4
@@ -12725,20 +12725,6 @@ resolve@^2.0.0-next.3:
   version: 2.0.0
   resolution: "rollup-config-external-dependencies@npm:2.0.0"
   checksum: 44268b67ad0a45371529313acb966e490d789a4fc4e1a82bc271b043854713d28324a8807dc4faa0eaf195bb88c9163cfd84bc84daf0a39e41dcde2aded8866c
-  languageName: node
-  linkType: hard
-
-"rollup@npm:2.61.0":
-  version: 2.61.0
-  resolution: "rollup@npm:2.61.0"
-  dependencies:
-    fsevents: ~2.3.2
-  dependenciesMeta:
-    fsevents:
-      optional: true
-  bin:
-    rollup: dist/bin/rollup
-  checksum: 9a30043759c990503f870fa2591b428d8dc979a2c407c3f23a177fa8bef5e423f9a6adf707e0a92bdd67a3a1af28ff1e5fdf6176e1d03c513867608208165d87
   languageName: node
   linkType: hard
 

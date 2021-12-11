@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [14.x, 16.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -57,16 +57,16 @@ jobs:
 <% } -%>
       - name: Prettier
         run: <%= packageManager %> run lint:prettier
-        if: startsWith(matrix.node-version, '14.')
+        if: startsWith(matrix.node-version, '16.')
 
       - name: Eslint
         run: <%= packageManager %> run lint:eslint
-        if: startsWith(matrix.node-version, '14.')
+        if: startsWith(matrix.node-version, '16.')
 <% if (typescript) { -%>
 
       - name: Typescript
         run: yarn run tsc
-        if: startsWith(matrix.node-version, '14.')
+        if: startsWith(matrix.node-version, '16.')
 <% } -%>
 <% if (testing) { -%>
 
@@ -79,14 +79,14 @@ jobs:
 
       - name: Documentation
         run: <%= packageManager %> run generate:docs
-        if: startsWith(matrix.node-version, '14.')
+        if: startsWith(matrix.node-version, '16.')
         env:
           CI: true
 <% } else if (codecov) { -%>
 
       - name: Generate Coverage doc
         run: <%= packageManager %> run generate:test-coverage
-        if: startsWith(matrix.node-version, '14.')
+        if: startsWith(matrix.node-version, '16.')
         env:
           CI: true
 <% } -%>
@@ -96,11 +96,11 @@ jobs:
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-        if: startsWith(matrix.node-version, '14.')
+        if: startsWith(matrix.node-version, '16.')
 <% } -%>
 <% if (true) { -%>
 
       - name: Check nothing was forgotten before commit
-        if: startsWith(matrix.node-version, '14.')
+        if: startsWith(matrix.node-version, '16.')
         run: <%= packageManager === 'npm' ? 'npx' : 'yarn run' %> repository-check-dirty
 <% } -%>

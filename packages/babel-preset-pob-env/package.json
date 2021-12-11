@@ -15,7 +15,7 @@
   "homepage": "https://github.com/christophehurpeau/pob",
   "type": "commonjs",
   "engines": {
-    "node": "^12.20.0 || ^14.13.1 || >=16.0.0"
+    "node": "^14.13.1 || >=16.0.0"
   },
   "main": "./lib/index.js",
   "exports": {
@@ -24,11 +24,9 @@
   },
   "sideEffects": false,
   "scripts": {
-    "clean": "rm -Rf docs dist test/node6 coverage",
     "generate:test-coverage": "rm -Rf docs/coverage/ ; NODE_ENV=production jest --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/",
     "lint": "yarn run lint:eslint",
     "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/babel-preset-pob-env",
-    "postinstallDev": "pob-root-postinstall",
     "test": "jest",
     "test:watch": "jest --watch"
   },
@@ -49,7 +47,9 @@
     "moduleFileExtensions": [
       "js",
       "json"
-    ]
+    ],
+    "extensionsToTreatAsEsm": [],
+    "testEnvironment": "node"
   },
   "pob": {},
   "peerDependencies": {
@@ -69,6 +69,6 @@
     "@babel/core": "7.16.0",
     "@types/jest": "27.0.3",
     "jest": "27.4.4",
-    "pob-lcov-reporter": "^5.5.0"
+    "pob-lcov-reporter": "5.5.0"
   }
 }

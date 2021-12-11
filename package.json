@@ -8,7 +8,7 @@
   "homepage": "https://github.com/christophehurpeau/pob",
   "type": "commonjs",
   "engines": {
-    "node": ">=12.10.0"
+    "node": ">=14.17.0"
   },
   "packageManager": "yarn@3.1.1",
   "workspaces": [

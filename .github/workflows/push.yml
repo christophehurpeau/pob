@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [12.x, 14.x, 16.x]
+        node-version: [14.x, 16.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -38,11 +38,11 @@ jobs:
 
       - name: Prettier
         run: yarn run lint:prettier
-        if: startsWith(matrix.node-version, '14.')
+        if: startsWith(matrix.node-version, '16.')
 
       - name: Eslint
         run: yarn run lint:eslint
-        if: startsWith(matrix.node-version, '14.')
+        if: startsWith(matrix.node-version, '16.')
 
       - name: Test
         run: yarn run test
@@ -50,5 +50,5 @@ jobs:
           CI: true
 
       - name: Check nothing was forgotten before commit
-        if: startsWith(matrix.node-version, '14.')
+        if: startsWith(matrix.node-version, '16.')
         run: yarn run repository-check-dirty

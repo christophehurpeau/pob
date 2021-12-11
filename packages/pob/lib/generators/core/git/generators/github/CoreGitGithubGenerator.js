@@ -22,12 +22,7 @@ const configureProtectionRule = async (owner, repo) => {
         json: {
           required_status_checks: {
             strict: false,
-            contexts: [
-              'build (12.x)',
-              'build (14.x)',
-              'build (16.x)',
-              'reviewflow',
-            ],
+            contexts: ['build (14.x)', 'build (16.x)', 'reviewflow'],
           },
           enforce_admins: false, // true,
           required_pull_request_reviews: null,
