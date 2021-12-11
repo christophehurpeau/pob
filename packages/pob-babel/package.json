@@ -16,7 +16,6 @@
     "node": "^14.13.1 || >=16.0.0"
   },
   "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
   "exports": {
     ".": "./lib/index.js",
     "./createRollupConfig": "./lib/createRollupConfig.js",
