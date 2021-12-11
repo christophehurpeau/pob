@@ -316,7 +316,8 @@ export default class PobLibGenerator extends Generator {
         delete pkg.scripts.release;
         delete pkg.scripts.version;
       }
-    } else if (withBabel) {
+    }
+    if (withBabel && (!inLerna || !inLerna.root)) {
       packageUtils.addScripts(pkg, {
         clean: 'rm -Rf dist',
       });
