@@ -12,8 +12,6 @@ console.log(b);
 `;
 
 exports.expected = `
-"use strict";
-
 const b = await import('./b.js');
 console.log(b);
 `;
