@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.4.0](https://github.com/christophehurpeau/pob/compare/pob@9.3.1...pob@9.4.0) (2021-12-11)
+
+
+### Features
+
+* monorepo testing generator ([b444042](https://github.com/christophehurpeau/pob/commit/b444042aa5203e4ac7a56a3d93f5a3b98c0fce11))
+
+
+
+
+
 ## [9.3.1](https://github.com/christophehurpeau/pob/compare/pob@9.3.0...pob@9.3.1) (2021-12-11)
 
 **Note:** Version bump only for package pob

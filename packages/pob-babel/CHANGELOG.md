@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [29.2.0](https://github.com/christophehurpeau/pob/compare/pob-babel@29.1.4...pob-babel@29.2.0) (2021-12-11)
+
+
+### Features
+
+* add setup-jest in pob-babel ([b311b34](https://github.com/christophehurpeau/pob/commit/b311b3451fb3803cb4b21bdf92ca6eaa32ac002d))
+
+
+
+
+
 ## [29.1.4](https://github.com/christophehurpeau/pob/compare/pob-babel@29.1.3...pob-babel@29.1.4) (2021-12-11)
 
 
