@@ -79,10 +79,8 @@ export default class CommonTestingGenerator extends Generator {
       'babel-jest',
     ]);
 
-    // const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
-    // const globalTesting = yoConfigPobMonorepo && yoConfigPobMonorepo.testing;
-    const globalTesting = false;
-
+    const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
+    const globalTesting = yoConfigPobMonorepo && yoConfigPobMonorepo.testing;
     const enableForMonorepo = this.options.monorepo && globalTesting;
 
     if (!this.options.enable) {
@@ -109,11 +107,54 @@ export default class CommonTestingGenerator extends Generator {
         ['pob-lcov-reporter', 'jest', '@types/jest'],
       );
 
-      if (this.options.monorepo) {
+      if (this.options.monorepo && !globalTesting) {
         delete pkg.jest;
         packageUtils.addScripts(pkg, {
           test: 'yarn workspaces foreach --parallel -Av run test',
         });
+      } else if (this.options.monorepo) {
+        const shouldUseExperimentalVmModules = pkg.type === 'module';
+
+        const jestCommand = `${
+          shouldUseExperimentalVmModules
+            ? 'NODE_OPTIONS=--experimental-vm-modules '
+            : ''
+        }jest`;
+        const transpileWithBabel = yoConfigPobMonorepo.typescript;
+
+        packageUtils.addScripts(pkg, {
+          test: jestCommand,
+          'generate:test-coverage': [
+            'rm -Rf docs/coverage/',
+            `NODE_ENV=production ${
+              transpileWithBabel ? 'BABEL_ENV=test ' : ''
+            }${jestCommand} --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/`,
+          ].join(' ; '),
+        });
+
+        if (!pkg.jest) pkg.jest = {};
+        Object.assign(pkg.jest, {
+          cacheDirectory: './node_modules/.cache/jest',
+          testEnvironment: 'node',
+        });
+
+        const hasReact = false;
+
+        if (shouldUseExperimentalVmModules) {
+          pkg.jest.extensionsToTreatAsEsm = [
+            transpileWithBabel && '.ts',
+            transpileWithBabel && hasReact && '.tsx',
+          ].filter(Boolean);
+        } else {
+          delete pkg.jest.extensionsToTreatAsEsm;
+        }
+      } else if (globalTesting) {
+        delete pkg.jest;
+        if (pkg.scripts) {
+          delete pkg.scripts.test;
+          delete pkg.scripts['generate:test-coverage'];
+          delete pkg.scripts['test:watch'];
+        }
       } else {
         const babelEnvs = pkg.pob.babelEnvs || [];
         const transpileWithBabel = packageUtils.transpileWithBabel(pkg);

@@ -727,7 +727,7 @@ export default class CommonBabelGenerator extends Generator {
       );
     }
 
-    if (useBabel && this.options.testing) {
+    if (useBabel && this.options.testing && !inLerna) {
       // cjs for jest compat
       this.fs.copyTpl(
         this.templatePath('babel.config.cjs.ejs'),
