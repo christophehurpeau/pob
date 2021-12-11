@@ -248,7 +248,7 @@ export default class CorePackageGenerator extends Generator {
         }
       }
     };
-    if (this.options.monorepo || pkg.private) {
+    if (this.options.monorepo || inLerna || pkg.private) {
       uninstallPostinstallScript('postinstallDev');
       if (this.options.isRoot) {
         installPostinstallScript('postinstall');
