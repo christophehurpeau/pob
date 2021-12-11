@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.1.4](https://github.com/christophehurpeau/pob/compare/pob-babel@29.1.3...pob-babel@29.1.4) (2021-12-11)
+
+
+### Bug Fixes
+
+* **pob-babel:** fix typings and prefix target global variable by pob ([869f885](https://github.com/christophehurpeau/pob/commit/869f885f05199948697d51b3c898e1800f5a8364))
+
+
+
+
+
 ## [29.1.3](https://github.com/christophehurpeau/pob/compare/pob-babel@29.1.2...pob-babel@29.1.3) (2021-12-11)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.1](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@7.1.0...babel-preset-pob-env@7.1.1) (2021-12-11)
+
+
+### Bug Fixes
+
+* **pob-babel:** fix typings and prefix target global variable by pob ([869f885](https://github.com/christophehurpeau/pob/commit/869f885f05199948697d51b3c898e1800f5a8364))
+
+
+
+
+
 # [7.1.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@7.0.0...babel-preset-pob-env@7.1.0) (2021-12-11)
 
 

@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.3.1](https://github.com/christophehurpeau/pob/compare/pob@9.3.0...pob@9.3.1) (2021-12-11)
+
+**Note:** Version bump only for package pob
+
+
+
+
+
 # [9.3.0](https://github.com/christophehurpeau/pob/compare/pob@9.2.1...pob@9.3.0) (2021-12-11)
 
 
