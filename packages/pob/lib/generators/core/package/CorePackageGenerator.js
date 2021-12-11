@@ -168,6 +168,15 @@ export default class CorePackageGenerator extends Generator {
         this.destinationPath('scripts/check-packages.js'),
       );
 
+      if (pkg.type === 'module' && !doesJsCheckPackagesExists) {
+        doesJsCheckPackagesExists = true;
+        this.fs.copyTpl(
+          this.templatePath('check-packages.js.ejs'),
+          this.destinationPath('scripts/check-packages.js'),
+          {},
+        );
+      }
+
       packageUtils.addOrRemoveScripts(
         pkg,
         doesMjsCheckPackagesExists || doesJsCheckPackagesExists,
@@ -181,9 +190,19 @@ export default class CorePackageGenerator extends Generator {
       const doesMjsCheckPackageExists = this.fs.exists(
         this.destinationPath('scripts/check-package.mjs'),
       );
-      const doesJsCheckPackageExists = this.fs.exists(
+      let doesJsCheckPackageExists = this.fs.exists(
         this.destinationPath('scripts/check-package.js'),
       );
+
+      if (pkg.type === 'module' && !doesJsCheckPackageExists) {
+        doesJsCheckPackageExists = true;
+        this.fs.copyTpl(
+          this.templatePath('check-package.js.ejs'),
+          this.destinationPath('scripts/check-package.js'),
+          {},
+        );
+      }
+
       packageUtils.addOrRemoveScripts(
         pkg,
         doesMjsCheckPackageExists || doesJsCheckPackageExists,
