@@ -159,12 +159,6 @@ export default class CommonLintGenerator extends Generator {
       'babel-eslint',
       'eslint-config-pob',
       'eslint-config-prettier',
-      'eslint-plugin-babel',
-      'eslint-plugin-flowtype',
-      'eslint-plugin-prefer-class-properties',
-      'eslint-plugin-prettier',
-      'eslint-plugin-react',
-      'eslint-plugin-react-hooks',
       'typescript-eslint-parser',
       'standard',
     ]);
@@ -174,6 +168,12 @@ export default class CommonLintGenerator extends Generator {
         'eslint-plugin-jsx-a11y',
         'eslint-config-airbnb',
         'eslint-config-airbnb-base',
+        'eslint-plugin-babel',
+        'eslint-plugin-flowtype',
+        'eslint-plugin-prefer-class-properties',
+        'eslint-plugin-prettier',
+        'eslint-plugin-react',
+        'eslint-plugin-react-hooks',
       ]);
     }
 
