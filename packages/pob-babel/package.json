@@ -24,6 +24,9 @@
     "./preset": "./preset.cjs",
     "./preset.js": "./preset.cjs",
     "./preset.cjs": "./preset.cjs",
+    "./setup-jest": "./setup-jest.cjs",
+    "./setup-jest.js": "./setup-jest.cjs",
+    "./setup-jest.cjs": "./setup-jest.cjs",
     "./package.json": "./package.json"
   },
   "sideEffects": false,
