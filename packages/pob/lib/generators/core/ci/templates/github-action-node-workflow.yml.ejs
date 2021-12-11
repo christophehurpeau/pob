@@ -56,10 +56,10 @@ jobs:
 
 <% } -%>
 <% if (build) { -%>
-
       - name: Build
         run: yarn run build
         if: startsWith(matrix.node-version, '16.')
+
 <% } -%>
       - name: Prettier
         run: <%= packageManager %> run lint:prettier
