@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [29.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@29.0.0...pob-babel@29.1.0) (2021-12-11)
+
+
+### Features
+
+* move @babel/core to pob-babel dependencies ([3d42287](https://github.com/christophehurpeau/pob/commit/3d422877476b443a2ea6789e0656ce676963451d))
+* set rollup as dependencies ([8a3a87b](https://github.com/christophehurpeau/pob/commit/8a3a87bd7c541d92ce63bcf33043fedb2df98d01))
+
+
+
+
+
 # [29.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@28.7.0...pob-babel@29.0.0) (2021-12-11)
 
 

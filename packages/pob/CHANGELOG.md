@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.1.0](https://github.com/christophehurpeau/pob/compare/pob@9.0.0...pob@9.1.0) (2021-12-11)
+
+
+### Bug Fixes
+
+* **pob:** replace devPlugins by plugins ([ddd0681](https://github.com/christophehurpeau/pob/commit/ddd0681284b5f5e9f851737beb2ec76bd69f01be))
+
+
+### Features
+
+* move @babel/core to pob-babel dependencies ([3d42287](https://github.com/christophehurpeau/pob/commit/3d422877476b443a2ea6789e0656ce676963451d))
+* set rollup as dependencies ([8a3a87b](https://github.com/christophehurpeau/pob/commit/8a3a87bd7c541d92ce63bcf33043fedb2df98d01))
+
+
+
+
+
 # [9.0.0](https://github.com/christophehurpeau/pob/compare/pob@8.10.1...pob@9.0.0) (2021-12-11)
 
 

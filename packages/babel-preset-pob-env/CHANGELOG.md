@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@7.0.0...babel-preset-pob-env@7.1.0) (2021-12-11)
+
+
+### Features
+
+* set rollup as dependencies ([8a3a87b](https://github.com/christophehurpeau/pob/commit/8a3a87bd7c541d92ce63bcf33043fedb2df98d01))
+
+
+
+
+
 # [7.0.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@6.4.0...babel-preset-pob-env@7.0.0) (2021-12-11)
 
 

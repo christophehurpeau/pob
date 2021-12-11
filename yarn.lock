@@ -1108,7 +1108,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-runtime@npm:7.16.4":
+"@babel/plugin-transform-runtime@npm:7.16.4, @babel/plugin-transform-runtime@npm:^7.13.10":
   version: 7.16.4
   resolution: "@babel/plugin-transform-runtime@npm:7.16.4"
   dependencies:
@@ -2863,7 +2863,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: ^6.0.0
+    pob-dependencies: ^6.0.1
     prettier: 2.5.1
   languageName: unknown
   linkType: soft
@@ -2919,7 +2919,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-babel@npm:5.3.0":
+"@rollup/plugin-babel@npm:5.3.0, @rollup/plugin-babel@npm:^5.2.2":
   version: 5.3.0
   resolution: "@rollup/plugin-babel@npm:5.3.0"
   dependencies:
@@ -2936,7 +2936,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-json@npm:4.1.0":
+"@rollup/plugin-json@npm:4.1.0, @rollup/plugin-json@npm:^4.1.0":
   version: 4.1.0
   resolution: "@rollup/plugin-json@npm:4.1.0"
   dependencies:
@@ -2947,7 +2947,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-node-resolve@npm:13.0.6":
+"@rollup/plugin-node-resolve@npm:13.0.6, @rollup/plugin-node-resolve@npm:^13.0.0":
   version: 13.0.6
   resolution: "@rollup/plugin-node-resolve@npm:13.0.6"
   dependencies:
@@ -2963,7 +2963,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-replace@npm:3.0.0":
+"@rollup/plugin-replace@npm:3.0.0, @rollup/plugin-replace@npm:^3.0.0":
   version: 3.0.0
   resolution: "@rollup/plugin-replace@npm:3.0.0"
   dependencies:
@@ -4205,7 +4205,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-pob-env@^7.0.0, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
+"babel-preset-pob-env@^7.0.0, babel-preset-pob-env@^7.1.0, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
   version: 0.0.0-use.local
   resolution: "babel-preset-pob-env@workspace:packages/babel-preset-pob-env"
   dependencies:
@@ -11683,7 +11683,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@29.0.0, pob-babel@^29.0.0, pob-babel@workspace:packages/pob-babel":
+"pob-babel@^29.1.0, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -11695,7 +11695,7 @@ __metadata:
     "@rollup/plugin-replace": 3.0.0
     "@types/jest": 27.0.3
     babel-preset-modern-browsers: ^15.0.2
-    babel-preset-pob-env: ^7.0.0
+    babel-preset-pob-env: ^7.1.0
     jest: 27.4.4
     minimist-argv: ^1.1.0
     pob-lcov-reporter: 6.0.0
@@ -11711,7 +11711,33 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@^6.0.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-babel@npm:29.0.0":
+  version: 29.0.0
+  resolution: "pob-babel@npm:29.0.0"
+  dependencies:
+    "@babel/plugin-transform-runtime": ^7.13.10
+    "@rollup/plugin-babel": ^5.2.2
+    "@rollup/plugin-json": ^4.1.0
+    "@rollup/plugin-node-resolve": ^13.0.0
+    "@rollup/plugin-replace": ^3.0.0
+    babel-preset-modern-browsers: ^15.0.2
+    babel-preset-pob-env: ^7.0.0
+    minimist-argv: ^1.1.0
+    rollup: ^2.47.0
+    rollup-config-external-dependencies: ^2.0.0
+    semver: ^7.3.4
+  peerDependencies:
+    "@babel/core": ^7.12.10
+    rollup: ^2.47.0
+    typescript: ^4.0.3
+  bin:
+    pob-build: bin/pob-build.js
+    pob-watch: bin/pob-watch.js
+  checksum: ad8c78ff2200bbeff87a895b0acfed976577e1bcb828637edd72936422da9ed349f5d9ee56c320e5be7441804f17a33eac5aed8c9275be907f0d8183ff6bca26
+  languageName: node
+  linkType: hard
+
+"pob-dependencies@^6.0.1, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -11739,7 +11765,7 @@ __metadata:
     eslint-plugin-unicorn: 38.0.1
     jest: 27.4.4
     jest-junit-reporter: 1.1.0
-    pob-babel: ^29.0.0
+    pob-babel: ^29.1.0
     pob-lcov-reporter: ^6.0.0
     prettier: 2.5.1
     repository-check-dirty: ^4.0.0
@@ -11797,7 +11823,7 @@ __metadata:
     mem-fs-editor: 8.1.2
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
-    pob-dependencies: ^6.0.0
+    pob-dependencies: ^6.0.1
     prettier: 2.5.1
     semver: ^7.3.4
     update-notifier: ^5.0.1
@@ -12671,7 +12697,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"rollup@npm:2.61.1":
+"rollup@npm:2.61.1, rollup@npm:^2.47.0":
   version: 2.61.1
   resolution: "rollup@npm:2.61.1"
   dependencies:
