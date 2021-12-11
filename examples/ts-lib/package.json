@@ -74,7 +74,6 @@
     ]
   },
   "devDependencies": {
-    "@babel/core": "7.16.0",
     "@types/jest": "27.0.3",
     "jest": "27.4.4",
     "pob-babel": "29.0.0",
