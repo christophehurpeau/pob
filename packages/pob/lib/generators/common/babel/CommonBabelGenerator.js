@@ -321,10 +321,7 @@ export default class CommonBabelGenerator extends Generator {
 
     /* dependencies */
 
-    packageUtils.addOrRemoveDevDependencies(pkg, useBabel, [
-      '@babel/core',
-      'pob-babel',
-    ]);
+    packageUtils.addOrRemoveDevDependencies(pkg, useBabel, ['pob-babel']);
 
     if (pkg.dependencies && pkg.dependencies['pob-babel']) {
       // update pob-babel in alp-dev
@@ -340,6 +337,7 @@ export default class CommonBabelGenerator extends Generator {
     ]);
 
     packageUtils.removeDevDependencies(pkg, [
+      '@babel/core',
       'rollup',
       'babel-preset-env', // now @babel/preset-env
       'babel-preset-jsdoc',

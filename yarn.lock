@@ -139,24 +139,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-define-polyfill-provider@npm:^0.2.2, @babel/helper-define-polyfill-provider@npm:^0.2.4":
-  version: 0.2.4
-  resolution: "@babel/helper-define-polyfill-provider@npm:0.2.4"
-  dependencies:
-    "@babel/helper-compilation-targets": ^7.13.0
-    "@babel/helper-module-imports": ^7.12.13
-    "@babel/helper-plugin-utils": ^7.13.0
-    "@babel/traverse": ^7.13.0
-    debug: ^4.1.1
-    lodash.debounce: ^4.0.8
-    resolve: ^1.14.2
-    semver: ^6.1.2
-  peerDependencies:
-    "@babel/core": ^7.4.0-0
-  checksum: 0b81df2fe8d4e7af1f0ed0f9c83bdb0fc1978e2cb2d4b5421dad7ee4afda79044d61de5b06026164ef52ee1afa59a15ee99bc7e532ad2b8a4bbe4341d3fa6b05
-  languageName: node
-  linkType: hard
-
 "@babel/helper-define-polyfill-provider@npm:^0.3.0":
   version: 0.3.0
   resolution: "@babel/helper-define-polyfill-provider@npm:0.3.0"
@@ -222,7 +204,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-module-imports@npm:^7.10.4, @babel/helper-module-imports@npm:^7.12.13, @babel/helper-module-imports@npm:^7.13.12, @babel/helper-module-imports@npm:^7.16.0":
+"@babel/helper-module-imports@npm:^7.10.4, @babel/helper-module-imports@npm:^7.12.13, @babel/helper-module-imports@npm:^7.16.0":
   version: 7.16.0
   resolution: "@babel/helper-module-imports@npm:7.16.0"
   dependencies:
@@ -1126,19 +1108,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-runtime@npm:^7.13.10":
-  version: 7.13.15
-  resolution: "@babel/plugin-transform-runtime@npm:7.13.15"
+"@babel/plugin-transform-runtime@npm:7.16.4":
+  version: 7.16.4
+  resolution: "@babel/plugin-transform-runtime@npm:7.16.4"
   dependencies:
-    "@babel/helper-module-imports": ^7.13.12
-    "@babel/helper-plugin-utils": ^7.13.0
-    babel-plugin-polyfill-corejs2: ^0.2.0
-    babel-plugin-polyfill-corejs3: ^0.2.0
-    babel-plugin-polyfill-regenerator: ^0.2.0
+    "@babel/helper-module-imports": ^7.16.0
+    "@babel/helper-plugin-utils": ^7.14.5
+    babel-plugin-polyfill-corejs2: ^0.3.0
+    babel-plugin-polyfill-corejs3: ^0.4.0
+    babel-plugin-polyfill-regenerator: ^0.3.0
     semver: ^6.3.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: d52bda711815a82674e390b8ef4887dbf8116eb66eca3c23b3ae4b3ed37022a09b80aed86b44d2a3399b281d8ca341329293e12d6f4aea9991459434537131ba
+  checksum: 3586fb1035a8233162c0dfb28f3466c3129b430bd351d7271894dc7dc29956cc2e6e348f5e21ae91f8b59ceddce02b32140e4bb629fdbbacad2ab04f6cec2ff5
   languageName: node
   linkType: hard
 
@@ -2937,7 +2919,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-babel@npm:^5.2.2":
+"@rollup/plugin-babel@npm:5.3.0":
   version: 5.3.0
   resolution: "@rollup/plugin-babel@npm:5.3.0"
   dependencies:
@@ -2954,7 +2936,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-json@npm:^4.1.0":
+"@rollup/plugin-json@npm:4.1.0":
   version: 4.1.0
   resolution: "@rollup/plugin-json@npm:4.1.0"
   dependencies:
@@ -2965,9 +2947,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-node-resolve@npm:^13.0.0":
-  version: 13.0.0
-  resolution: "@rollup/plugin-node-resolve@npm:13.0.0"
+"@rollup/plugin-node-resolve@npm:13.0.6":
+  version: 13.0.6
+  resolution: "@rollup/plugin-node-resolve@npm:13.0.6"
   dependencies:
     "@rollup/pluginutils": ^3.1.0
     "@types/resolve": 1.17.1
@@ -2977,11 +2959,11 @@ __metadata:
     resolve: ^1.19.0
   peerDependencies:
     rollup: ^2.42.0
-  checksum: c0237e65f50d593efc176e07a2ddf734918bc7344f739fe2254a3bfaa4be37c6d4787d045ab79d741811d3658f7e8bbb1484e6aa25bbb9fe2a3c33472b3f371d
+  checksum: da304025ca898f3ad70e3a24d788634298f2ca6e139517adff43f27ea9cf821af3ee3530ca6f8abaf7e697294b59803837cd8f0ec22e3b1d34d3411c39e9a32c
   languageName: node
   linkType: hard
 
-"@rollup/plugin-replace@npm:^3.0.0":
+"@rollup/plugin-replace@npm:3.0.0":
   version: 3.0.0
   resolution: "@rollup/plugin-replace@npm:3.0.0"
   dependencies:
@@ -4113,19 +4095,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-polyfill-corejs2@npm:^0.2.0":
-  version: 0.2.3
-  resolution: "babel-plugin-polyfill-corejs2@npm:0.2.3"
-  dependencies:
-    "@babel/compat-data": ^7.13.11
-    "@babel/helper-define-polyfill-provider": ^0.2.4
-    semver: ^6.1.1
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: a379fdb5aa046fb96516796afb50888bd22de1590fbdaed15c613910f3208500e705dd2a605fb30c0bb8b3191ee9ba9c10b3f46121e0507bf396186941056090
-  languageName: node
-  linkType: hard
-
 "babel-plugin-polyfill-corejs2@npm:^0.3.0":
   version: 0.3.0
   resolution: "babel-plugin-polyfill-corejs2@npm:0.3.0"
@@ -4139,18 +4108,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-polyfill-corejs3@npm:^0.2.0":
-  version: 0.2.5
-  resolution: "babel-plugin-polyfill-corejs3@npm:0.2.5"
-  dependencies:
-    "@babel/helper-define-polyfill-provider": ^0.2.2
-    core-js-compat: ^3.16.2
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 7d464001f6cecc6b85aef71307e3ef17980b15aae4b2ae75d38a3fc3166005f6354932f9c694566970a3fb428f8fbc44f94c46e055a5a85b7fe8820ca16f85b6
-  languageName: node
-  linkType: hard
-
 "babel-plugin-polyfill-corejs3@npm:^0.4.0":
   version: 0.4.0
   resolution: "babel-plugin-polyfill-corejs3@npm:0.4.0"
@@ -4160,17 +4117,6 @@ __metadata:
   peerDependencies:
     "@babel/core": ^7.0.0-0
   checksum: 18dce9a09a608b4844bce468a1d7b3abfc8a2a4c0df317ad6eb5951c0c95f3d1cc99699d8e67642cdd629f5074499d481481ae5e203ce85b8ed73e8295e25da8
-  languageName: node
-  linkType: hard
-
-"babel-plugin-polyfill-regenerator@npm:^0.2.0":
-  version: 0.2.3
-  resolution: "babel-plugin-polyfill-regenerator@npm:0.2.3"
-  dependencies:
-    "@babel/helper-define-polyfill-provider": ^0.2.4
-  peerDependencies:
-    "@babel/core": ^7.0.0-0
-  checksum: 81be5914f241d785abdfa3b5fc9005792b1b675e3e0a48bbc12db25b49e965985a500fc2008c8026ec7625a757d6d43aa44a75369fece1a413bd9863369e5a9c
   languageName: node
   linkType: hard
 
@@ -5362,7 +5308,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"core-js-compat@npm:^3.16.2, core-js-compat@npm:^3.18.0, core-js-compat@npm:^3.19.1":
+"core-js-compat@npm:^3.18.0, core-js-compat@npm:^3.19.1":
   version: 3.19.1
   resolution: "core-js-compat@npm:3.19.1"
   dependencies:
@@ -11742,11 +11688,11 @@ __metadata:
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
     "@babel/core": 7.16.0
-    "@babel/plugin-transform-runtime": ^7.13.10
-    "@rollup/plugin-babel": ^5.2.2
-    "@rollup/plugin-json": ^4.1.0
-    "@rollup/plugin-node-resolve": ^13.0.0
-    "@rollup/plugin-replace": ^3.0.0
+    "@babel/plugin-transform-runtime": 7.16.4
+    "@rollup/plugin-babel": 5.3.0
+    "@rollup/plugin-json": 4.1.0
+    "@rollup/plugin-node-resolve": 13.0.6
+    "@rollup/plugin-replace": 3.0.0
     "@types/jest": 27.0.3
     babel-preset-modern-browsers: ^15.0.2
     babel-preset-pob-env: ^7.0.0
@@ -11758,7 +11704,6 @@ __metadata:
     semver: ^7.3.4
     typescript: 4.5.3
   peerDependencies:
-    "@babel/core": ^7.12.10
     typescript: ^4.0.3
   bin:
     pob-build: ./bin/pob-build.js
