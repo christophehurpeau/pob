@@ -152,19 +152,6 @@ export default class MonorepoLernaGenerator extends Generator {
 
     packageUtils.removeDevDependencies(pkg, ['standard-version']);
 
-    const getPobConfig = (config) => ({
-      ...(config &&
-        config.pob &&
-        (config.pob['pob-config'] || config.pob.lib || config.pob.app)),
-    });
-    // ynnub doesnt use babel but still have typescript
-    // const withTypescript = this.packagePaths.some((packagePath) =>
-    //   this.fs.exists(this.destinationPath(`${packagePath}/tsconfig.json`)),
-    // );
-    const withTests = this.packagesConfig.some(
-      (config) => getPobConfig(config).testing,
-    );
-
     const monorepoConfig = this.config.get('monorepo');
     const packageManager = this.npm ? 'npm' : 'yarn';
     const useYarnWorkspacesCommand =
@@ -204,14 +191,6 @@ export default class MonorepoLernaGenerator extends Generator {
         Boolean,
       ),
     );
-
-    packageUtils.addOrRemoveScripts(pkg, withTests, {
-      test: `${
-        useYarnWorkspacesCommand
-          ? 'yarn workspaces foreach --parallel -Av run'
-          : 'lerna run --stream'
-      } test`,
-    });
 
     packageUtils.addOrRemoveScripts(pkg, withBabel, {
       build: `${

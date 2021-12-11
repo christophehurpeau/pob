@@ -37,9 +37,6 @@ export const hasReact = (pkg) =>
     (pkg.peerDependencies && pkg.peerDependencies.react)
   );
 
-export const hasJest = (pkg) =>
-  !!(pkg.devDependencies && pkg.devDependencies.jest);
-
 export const sort = function sort(pkg) {
   return sortPkg(pkg);
 };

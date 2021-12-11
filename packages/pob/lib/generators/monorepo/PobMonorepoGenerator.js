@@ -194,18 +194,18 @@ export default class PobMonorepoGenerator extends Generator {
       throw new Error('packages should not be empty');
     }
 
-    this.composeWith('pob:core:ci', {
-      enable: this.pobLernaConfig.ci,
-      build: this.pobLernaConfig.typescript,
-      typescript: this.pobLernaConfig.typescript,
+    this.composeWith('pob:common:husky', {});
+
+    this.composeWith('pob:common:testing', {
+      monorepo: true,
+      enable: this.pobLernaConfig.testing,
       testing: this.pobLernaConfig.testing,
-      codecov: this.pobLernaConfig.codecov,
-      documentation: this.pobLernaConfig.documentation,
-      updateOnly: this.options.updateOnly,
+      typescript: this.pobLernaConfig.typescript,
+      documentation: !!this.pobLernaConfig.documentation,
+      codecov: this.pobLernaConfig.testing && this.pobLernaConfig.codecov,
+      ci: this.pobLernaConfig.ci,
       packageManager: this.options.packageManager,
     });
-
-    this.composeWith('pob:common:husky', {});
 
     this.composeWith('pob:common:format-lint', {
       monorepo: true,

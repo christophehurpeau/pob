@@ -6,6 +6,12 @@ export default class CommonTestingGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
+    this.option('monorepo', {
+      type: Boolean,
+      defaults: false,
+      desc: 'is root monorepo',
+    });
+
     this.option('enable', {
       type: Boolean,
       defaults: true,
@@ -44,10 +50,10 @@ export default class CommonTestingGenerator extends Generator {
   }
 
   default() {
-    if (!inLerna) {
+    if (!inLerna || inLerna.root) {
       this.composeWith('pob:core:ci', {
         enable: this.options.ci,
-        testing: this.options.testing,
+        testing: this.options.enable,
         build: this.options.typescript,
         typescript: this.options.typescript,
         documentation: this.options.documentation,
@@ -73,6 +79,12 @@ export default class CommonTestingGenerator extends Generator {
       'babel-jest',
     ]);
 
+    // const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
+    // const globalTesting = yoConfigPobMonorepo && yoConfigPobMonorepo.testing;
+    const globalTesting = false;
+
+    const enableForMonorepo = this.options.monorepo && globalTesting;
+
     if (!this.options.enable) {
       packageUtils.removeDevDependencies(pkg, ['jest', '@types/jest']);
 
@@ -91,81 +103,93 @@ export default class CommonTestingGenerator extends Generator {
 
       this.fs.writeJSON(this.destinationPath('package.json'), pkg);
     } else {
-      const babelEnvs = pkg.pob.babelEnvs || [];
-      const transpileWithBabel = packageUtils.transpileWithBabel(pkg);
+      packageUtils.addOrRemoveDevDependencies(
+        pkg,
+        enableForMonorepo || !globalTesting,
+        ['pob-lcov-reporter', 'jest', '@types/jest'],
+      );
 
-      const shouldUseExperimentalVmModules =
-        pkg.type === 'module' || transpileWithBabel;
-
-      const jestCommand = `${
-        shouldUseExperimentalVmModules
-          ? 'NODE_OPTIONS=--experimental-vm-modules '
-          : ''
-      }jest`;
-
-      packageUtils.addScripts(pkg, {
-        test: jestCommand,
-        'test:watch': `${jestCommand} --watch`,
-        'generate:test-coverage': [
-          'rm -Rf docs/coverage/',
-          `NODE_ENV=production ${
-            transpileWithBabel ? 'BABEL_ENV=test ' : ''
-          }${jestCommand} --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/`,
-        ].join(' ; '),
-      });
-
-      packageUtils.addDevDependencies(pkg, [
-        'pob-lcov-reporter',
-        'jest',
-        '@types/jest',
-      ]);
-
-      const hasReact = transpileWithBabel && packageUtils.hasReact(pkg);
-      const srcDirectory = transpileWithBabel ? 'src' : 'lib';
-
-      if (!pkg.jest) pkg.jest = {};
-      Object.assign(pkg.jest, {
-        cacheDirectory: './node_modules/.cache/jest',
-        testMatch: [
-          `<rootDir>/${srcDirectory}/**/__tests__/**/*.${
-            transpileWithBabel ? 'ts' : '?(m)js'
-          }${hasReact ? '?(x)' : ''}`,
-          `<rootDir>/${srcDirectory}/**/*.test.${
-            transpileWithBabel ? 'ts' : '?(m)js'
-          }${hasReact ? '?(x)' : ''}`,
-        ],
-        collectCoverageFrom: [
-          `${srcDirectory}/**/*.${transpileWithBabel ? 'ts' : '?(m)js'}${
-            hasReact ? '?(x)' : ''
-          }`,
-        ],
-        moduleFileExtensions: [
-          transpileWithBabel && 'ts',
-          transpileWithBabel && hasReact && 'tsx',
-          'js',
-          // 'jsx',
-          'json',
-        ].filter(Boolean),
-        extensionsToTreatAsEsm: [
-          transpileWithBabel && '.ts',
-          transpileWithBabel && hasReact && '.tsx',
-        ].filter(Boolean),
-        // transform: {
-        //   [`^.+\\.ts${hasReact ? 'x?' : ''}$`]: 'babel-jest',
-        // },
-      });
-      delete pkg.jest.transform;
-
-      if (
-        babelEnvs.length === 0 ||
-        babelEnvs.some((env) => env.target === 'node')
-      ) {
-        pkg.jest.testEnvironment = 'node';
+      if (this.options.monorepo) {
+        delete pkg.jest;
+        packageUtils.addScripts(pkg, {
+          test: 'yarn workspaces foreach --parallel -Av run test',
+        });
       } else {
-        delete pkg.jest.testEnvironment;
-      }
+        const babelEnvs = pkg.pob.babelEnvs || [];
+        const transpileWithBabel = packageUtils.transpileWithBabel(pkg);
 
-      if (!transpileWithBabel) delete pkg.jest.transform;
+        const shouldUseExperimentalVmModules =
+          pkg.type === 'module' || (transpileWithBabel && !inLerna);
+
+        const jestCommand = `${
+          shouldUseExperimentalVmModules
+            ? 'NODE_OPTIONS=--experimental-vm-modules '
+            : ''
+        }jest`;
+
+        packageUtils.addScripts(pkg, {
+          test: jestCommand,
+          'test:watch': `${jestCommand} --watch`,
+          'generate:test-coverage': [
+            'rm -Rf docs/coverage/',
+            `NODE_ENV=production ${
+              transpileWithBabel ? 'BABEL_ENV=test ' : ''
+            }${jestCommand} --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/`,
+          ].join(' ; '),
+        });
+
+        const hasReact = transpileWithBabel && packageUtils.hasReact(pkg);
+        const srcDirectory = transpileWithBabel ? 'src' : 'lib';
+
+        if (!pkg.jest) pkg.jest = {};
+        Object.assign(pkg.jest, {
+          cacheDirectory: './node_modules/.cache/jest',
+          testMatch: [
+            `<rootDir>/${srcDirectory}/**/__tests__/**/*.${
+              transpileWithBabel ? 'ts' : '?(m)js'
+            }${hasReact ? '?(x)' : ''}`,
+            `<rootDir>/${srcDirectory}/**/*.test.${
+              transpileWithBabel ? 'ts' : '?(m)js'
+            }${hasReact ? '?(x)' : ''}`,
+          ],
+          collectCoverageFrom: [
+            `${srcDirectory}/**/*.${transpileWithBabel ? 'ts' : '?(m)js'}${
+              hasReact ? '?(x)' : ''
+            }`,
+          ],
+          moduleFileExtensions: [
+            transpileWithBabel && 'ts',
+            transpileWithBabel && hasReact && 'tsx',
+            'js',
+            // 'jsx',
+            'json',
+          ].filter(Boolean),
+          // transform: {
+          //   [`^.+\\.ts${hasReact ? 'x?' : ''}$`]: 'babel-jest',
+          // },
+        });
+        delete pkg.jest.transform;
+
+        if (shouldUseExperimentalVmModules) {
+          pkg.jest.extensionsToTreatAsEsm = [
+            transpileWithBabel && '.ts',
+            transpileWithBabel && hasReact && '.tsx',
+          ].filter(Boolean);
+        } else {
+          delete pkg.jest.extensionsToTreatAsEsm;
+        }
+
+        if (
+          babelEnvs.length === 0 ||
+          babelEnvs.some((env) => env.target === 'node')
+        ) {
+          pkg.jest.testEnvironment = 'node';
+        } else {
+          delete pkg.jest.testEnvironment;
+        }
+
+        if (!transpileWithBabel) delete pkg.jest.transform;
+      }
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);

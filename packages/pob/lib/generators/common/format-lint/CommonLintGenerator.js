@@ -337,7 +337,7 @@ export default class CommonLintGenerator extends Generator {
       ? `{${pkg.type === 'commonjs' ? 'mjs' : 'cjs'},js}`
       : `${hasReact ? '{ts,tsx}' : 'ts'}`;
 
-    const jestOverride = !packageUtils.hasJest(pkg)
+    const jestOverride = !pkg.jest
       ? null
       : {
           files: [`**/*.test.${ext}`, `__tests__/**/*.${ext}`],
