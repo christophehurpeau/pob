@@ -286,16 +286,14 @@ const options = {
   force: argv.force,
 };
 
-(async () => {
-  try {
-    await env.run('pob', options);
-  } catch (err) {
-    if (err) {
-      console.error(err.stack || err.message || err);
-      process.exit(1);
-    }
+try {
+  await env.run('pob', options);
+} catch (err) {
+  if (err) {
+    console.error(err.stack || err.message || err);
+    process.exit(1);
   }
-})();
+}
 
 // generator.on('error', (err) => {
 //   console.error(err.stack || err.message || err);
