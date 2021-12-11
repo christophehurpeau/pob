@@ -3998,7 +3998,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-jest@npm:27.4.4, babel-jest@npm:^27.4.4":
+"babel-jest@npm:^27.4.4":
   version: 27.4.4
   resolution: "babel-jest@npm:27.4.4"
   dependencies:
@@ -4269,7 +4269,9 @@ __metadata:
     "@babel/plugin-transform-modules-commonjs": ^7.16.0
     "@babel/preset-typescript": ^7.16.0
     "@types/jest": 27.0.3
+    babel-plugin-discard-module-references: ^1.1.2
     babel-plugin-fix-class-properties-uninitialized: ^4.2.0
+    babel-plugin-minify-replace: ^0.5.0
     babel-preset-optimizations: ^2.0.0
     jest: 27.4.4
     pob-lcov-reporter: ^5.5.0
@@ -6579,7 +6581,6 @@ __metadata:
   dependencies:
     "@babel/core": 7.16.0
     "@types/jest": 27.0.3
-    babel-jest: 27.4.4
     jest: 27.4.4
     pob-babel: 28.7.0
     pob-lcov-reporter: 5.5.0
@@ -11748,8 +11749,6 @@ __metadata:
     "@rollup/plugin-node-resolve": ^13.0.0
     "@rollup/plugin-replace": ^3.0.0
     "@types/jest": 27.0.3
-    babel-plugin-discard-module-references: ^1.1.2
-    babel-plugin-minify-replace: ^0.5.0
     babel-preset-modern-browsers: ^15.0.2
     babel-preset-pob-env: ^6.4.0
     jest: 27.4.4
@@ -11788,7 +11787,6 @@ __metadata:
     "@types/jest": 27.0.3
     "@typescript-eslint/eslint-plugin": 5.6.0
     "@typescript-eslint/parser": 5.6.0
-    babel-jest: 27.4.4
     babel-preset-modern-browsers: 15.0.2
     eslint: 7.32.0
     eslint-import-resolver-node: 0.3.6

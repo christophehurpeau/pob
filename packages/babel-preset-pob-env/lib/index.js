@@ -1,12 +1,28 @@
+/* eslint-disable max-lines */
 /* eslint-disable complexity */
 
 'use strict';
 
 const validTargetOption = [false, 'node', 'browser'];
 
-module.exports = function (context, opts) {
-  // `|| {}` to support node 4
-  opts = opts || {};
+module.exports = function (context, opts = {}) {
+  ['loose', 'optimizations', 'typescript'].forEach((optionName) => {
+    if (
+      opts[optionName] !== undefined &&
+      typeof opts[optionName] !== 'boolean'
+    ) {
+      throw new Error(
+        `Preset pob-env '${optionName}' option must be a boolean.`,
+      );
+    }
+  });
+
+  ['flow', 'production', 'modules'].forEach((optionName) => {
+    if (opts[optionName] !== undefined) {
+      throw new Error(`option "${optionName}" is deprecated.`);
+    }
+  });
+
   const targetOption = opts.target !== undefined ? opts.target : 'node';
   const versionOption =
     opts.target !== undefined ? String(opts.version) : 'current';
@@ -21,20 +37,33 @@ module.exports = function (context, opts) {
     );
   }
 
-  ['loose', 'optimizations', 'typescript'].forEach((optionName) => {
-    if (
-      opts[optionName] !== undefined &&
-      typeof opts[optionName] !== 'boolean'
-    ) {
-      throw new Error(
-        `Preset pob-env '${optionName}' option must be a boolean.`,
-      );
-    }
-  });
+  const replacements =
+    opts.replacements !== undefined
+      ? opts.replacements
+      : {
+          __TARGET__: targetOption,
+          __TARGET_VERSION__: versionOption,
+          BROWSER: targetOption === 'browser',
+          NODEJS: targetOption === 'node',
+          SERVER: targetOption === 'node',
+        };
 
-  ['flow', 'production', 'replacements'].forEach((optionName) => {
-    if (opts[optionName] !== undefined) {
-      throw new Error(`option "${optionName}" is deprecated.`);
+  if (typeof replacements !== 'object') {
+    throw new TypeError(
+      "Preset pob-env 'replacements' option must be an object or undefined (default)",
+    );
+  }
+
+  const replacementsKeys = Object.keys(replacements);
+  replacementsKeys.forEach((key) => {
+    if (key.toUpperCase() !== key) {
+      console.warn('warning: replacement key should be in uppercase.');
+    }
+    const type = typeof replacements[key];
+    if (type !== 'boolean' && type !== 'string') {
+      throw new TypeError(
+        `Preset pob-env 'replacements.${key}' option must be a boolean or string.`,
+      );
     }
   });
 
@@ -42,7 +71,7 @@ module.exports = function (context, opts) {
   const optimizations =
     opts.optimizations !== undefined ? opts.optimizations : true;
   const typescript = opts.typescript !== undefined ? opts.typescript : true;
-  const modules = opts.modules !== undefined ? opts.modules : 'commonjs';
+  const modules = opts.modules !== undefined ? opts.modules : false;
 
   const resolvePreset = opts.resolvePreset
     ? opts.resolvePreset
@@ -109,8 +138,8 @@ module.exports = function (context, opts) {
   return {
     // preset order is last to first, so we reverse it for clarity.
     presets: [
-      // add esnext features
-      {
+      // fix for typescript
+      typescript && {
         plugins: [
           // class properties with fix
           require.resolve('babel-plugin-fix-class-properties-uninitialized'),
@@ -132,6 +161,24 @@ module.exports = function (context, opts) {
         plugins: targetPlugins,
       },
 
+      // plugins
+      {
+        plugins: [
+          [
+            require.resolve('babel-plugin-minify-replace'),
+            {
+              replacements: replacementsKeys.map((key) => ({
+                identifierName: key,
+                replacement: {
+                  type: `${typeof replacements[key]}Literal`,
+                  value: replacements[key],
+                },
+              })),
+            },
+          ],
+        ],
+      },
+
       // optimizations: remove dead-code
       optimizations && [
         require.resolve('babel-preset-optimizations'),
@@ -142,6 +189,11 @@ module.exports = function (context, opts) {
           undefinedToVoid: false,
         },
       ],
+
+      // discard unused imports (like production-only or node-only imports)
+      {
+        plugins: [[require.resolve('babel-plugin-discard-module-references')]],
+      },
 
       // transpile for specified target
       targetPreset,

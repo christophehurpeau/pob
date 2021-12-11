@@ -17,7 +17,7 @@
 - `loose` - Enable “loose” transformations for any plugins in this preset that allow them (Disabled by default).
 - `typescript` - Enable [@babel/preset-typescript](https://www.npmjs.com/package/@babel/preset-typescript) (Enabled by default).
 - `optimizations` - Use "babel-preset-optimizations" preset (Enabled by default).
-- `modules` - Enable transformation of ES6 module syntax to another module type (Enabled by default to "commonjs"). Can be false to not transform modules, or "commonjs"
+- `modules` - Enable transformation of ES6 module syntax to another module type (Disabled by default). Can be false to not transform modules, or "commonjs"
 
 ## Needed dependencies
 
