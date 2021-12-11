@@ -20,6 +20,12 @@ export default class CommonTypescriptGenerator extends Generator {
       desc: 'enable jsx with typescript',
     });
 
+    this.option('dom', {
+      type: Boolean,
+      defaults: true,
+      desc: 'enable dom with typescript',
+    });
+
     this.option('baseUrl', {
       type: String,
       defaults: '',
@@ -57,7 +63,7 @@ export default class CommonTypescriptGenerator extends Generator {
     const tsconfigPath = this.destinationPath('tsconfig.json');
     const tsconfigBuildPath = this.destinationPath('tsconfig.build.json');
     if (this.options.enable) {
-      const { jsx } = this.options;
+      const { jsx, dom } = this.options;
       let composite;
       let monorepoPackageNames;
       let monorepoPackageSrcPaths;
@@ -108,6 +114,7 @@ export default class CommonTypescriptGenerator extends Generator {
           monorepoPackageNames,
           monorepoPackageSrcPaths,
           jsx,
+          dom,
           baseUrl: this.options.baseUrl,
         },
       );

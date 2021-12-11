@@ -129,6 +129,7 @@ export default class PobAppGenerator extends Generator {
     this.composeWith('pob:common:typescript', {
       enable: babel,
       builddefs: false,
+      dom: browser,
       jsx,
       updateOnly: this.options.updateOnly,
       baseUrl: (() => {

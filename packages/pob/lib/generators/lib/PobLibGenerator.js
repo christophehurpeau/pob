@@ -221,9 +221,12 @@ export default class PobLibGenerator extends Generator {
 
     const withBabel = babelEnvs.length > 0;
     const jsx = withBabel && pkg.pob.jsx === true;
+    const browser =
+      withBabel && babelEnvs.some((env) => env.target === 'browser');
 
     this.composeWith('pob:common:typescript', {
       enable: withBabel,
+      dom: browser,
       jsx,
       updateOnly: this.options.updateOnly,
       baseUrl: './src',
