@@ -49,7 +49,6 @@
         {
           "groupName": "Pob Dependencies",
           "packageNames": [
-            "@rollup/plugin-run",
             "pob-babel",
             "pob-lcov-reporter",
             "standard-version"

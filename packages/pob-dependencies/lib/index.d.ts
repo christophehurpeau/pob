@@ -10,7 +10,6 @@ interface Dependencies {
   '@pob/lerna-light': '^5.0.0';
   '@pob/pretty-pkg': '^4.0.0';
   '@pob/root': '^6.0.0';
-  '@rollup/plugin-run': '2.1.0';
   '@types/jest': '27.0.3';
   '@typescript-eslint/eslint-plugin': '5.6.0';
   '@typescript-eslint/parser': '5.6.0';

@@ -11693,6 +11693,7 @@ __metadata:
     "@rollup/plugin-json": 4.1.0
     "@rollup/plugin-node-resolve": 13.0.6
     "@rollup/plugin-replace": 3.0.0
+    "@rollup/plugin-run": 2.1.0
     "@types/jest": 27.0.3
     babel-preset-modern-browsers: ^15.0.2
     babel-preset-pob-env: ^7.1.1
@@ -11728,7 +11729,6 @@ __metadata:
     "@pob/lerna-light": ^5.0.0
     "@pob/pretty-pkg": ^4.0.0
     "@pob/root": ^6.0.0
-    "@rollup/plugin-run": 2.1.0
     "@types/jest": 27.0.3
     "@typescript-eslint/eslint-plugin": 5.6.0
     "@typescript-eslint/parser": 5.6.0

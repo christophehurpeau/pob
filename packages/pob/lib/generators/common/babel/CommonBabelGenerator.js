@@ -692,11 +692,7 @@ export default class CommonBabelGenerator extends Generator {
 
     /* pob-babel config */
 
-    packageUtils.addOrRemoveDevDependencies(
-      pkg,
-      useBabel && this.options.isApp,
-      ['@rollup/plugin-run'],
-    );
+    packageUtils.removeDevDependencies(pkg, ['@rollup/plugin-run']);
 
     this.fs.delete('rollup.config.js');
     if (useBabel) {
