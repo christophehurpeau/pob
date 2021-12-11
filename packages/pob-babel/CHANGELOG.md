@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [29.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@28.7.0...pob-babel@29.0.0) (2021-12-11)
+
+
+### Bug Fixes
+
+* **pob-babel:** fix runtime.d.ts and plugins in preset ([726e7bd](https://github.com/christophehurpeau/pob/commit/726e7bdce4025fee5ed92eb2fbe293c16c721cb4))
+* use babel-plugin-discard-module-references again ([ef53e2b](https://github.com/christophehurpeau/pob/commit/ef53e2bb047a1de8effc8779df01b9aab616479c))
+
+
+### Features
+
+* drop node 12 ([2f32308](https://github.com/christophehurpeau/pob/commit/2f32308b06ca74d0deb3355707e3082fa73e25dc))
+* **deps:** update dependency typescript to v4.5.3 ([#1128](https://github.com/christophehurpeau/pob/issues/1128)) ([e856fef](https://github.com/christophehurpeau/pob/commit/e856fefc10a0a674b341d76549cbde61267f100b))
+* **deps:** update jest monorepo to v27.4.4 ([#1129](https://github.com/christophehurpeau/pob/issues/1129)) ([9cf8c1a](https://github.com/christophehurpeau/pob/commit/9cf8c1a380b500dab175da434396e70184a22972))
+* **pob-babel:** stop build dev specific and drop node 12 ([9cb8975](https://github.com/christophehurpeau/pob/commit/9cb897538df6b9c0e3ad3750abacb6ab96113862))
+
+
+### BREAKING CHANGES
+
+* requires node 14
+* **pob-babel:** requires to delete dev exports and requires node 14
+
+
+
+
+
 # [28.7.0](https://github.com/christophehurpeau/pob/compare/pob-babel@28.6.0...pob-babel@28.7.0) (2021-12-05)
 
 

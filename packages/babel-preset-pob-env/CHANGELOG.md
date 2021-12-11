@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@6.4.0...babel-preset-pob-env@7.0.0) (2021-12-11)
+
+
+### Bug Fixes
+
+* **babel-preset-pob-env:** bring back replacements option ([0952e2a](https://github.com/christophehurpeau/pob/commit/0952e2adaafa921e3f7c1ff96212250dcd60e7cf))
+* **babel-preset-pob-env:** dont deprecate module option ([a71ade3](https://github.com/christophehurpeau/pob/commit/a71ade35c18088934e36df6701d4abd552b36a7e))
+
+
+### Features
+
+* drop node 12 ([2f32308](https://github.com/christophehurpeau/pob/commit/2f32308b06ca74d0deb3355707e3082fa73e25dc))
+* **babel-preset-pob-env:** clean config, remove replacements and production options, remove babel-preset-latest-node ([df18ef5](https://github.com/christophehurpeau/pob/commit/df18ef5ee8cd73f030c724e2d7eb3810b19ae263))
+
+
+### BREAKING CHANGES
+
+* requires node 14
+* **babel-preset-pob-env:** make modules option false by default
+* **babel-preset-pob-env:** removed replacements and production options, removed babel-preset-latest-node
+
+
+
+
+
 # [6.4.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@6.3.0...babel-preset-pob-env@6.4.0) (2021-11-11)
 
 

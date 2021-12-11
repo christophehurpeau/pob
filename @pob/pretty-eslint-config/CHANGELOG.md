@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [3.0.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-eslint-config@2.2.0...@pob/pretty-eslint-config@3.0.0) (2021-12-11)
+
+
+### Features
+
+* drop node 12 ([2f32308](https://github.com/christophehurpeau/pob/commit/2f32308b06ca74d0deb3355707e3082fa73e25dc))
+
+
+### BREAKING CHANGES
+
+* requires node 14
+
+
+
+
+
 # [2.2.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-eslint-config@2.1.2...@pob/pretty-eslint-config@2.2.0) (2021-11-11)
 
 

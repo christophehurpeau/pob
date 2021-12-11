@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.12.0...pob-dependencies@6.0.0) (2021-12-11)
+
+
+### Bug Fixes
+
+* **pob-dependencies:** remove babel-preset-latest-node ([666ebf8](https://github.com/christophehurpeau/pob/commit/666ebf82fbee847bcc77afb4fd0c939c19fa406d))
+
+
+### Features
+
+* drop node 12 ([2f32308](https://github.com/christophehurpeau/pob/commit/2f32308b06ca74d0deb3355707e3082fa73e25dc))
+* **deps:** update @pob/eslint-config to v47.1.0 ([#1131](https://github.com/christophehurpeau/pob/issues/1131)) ([0718598](https://github.com/christophehurpeau/pob/commit/0718598218848d4555890a20d2d70013cfe54d3f))
+* **deps:** update dependency @typescript-eslint/eslint-plugin to v5.6.0 ([#1126](https://github.com/christophehurpeau/pob/issues/1126)) ([e293627](https://github.com/christophehurpeau/pob/commit/e2936272b90f8864e9d0d418d621953bc06f705b))
+* **deps:** update dependency @typescript-eslint/parser to v5.6.0 ([#1125](https://github.com/christophehurpeau/pob/issues/1125)) ([1cdc1e1](https://github.com/christophehurpeau/pob/commit/1cdc1e11d2a63ee33695496fd37950e277a8e47e))
+* **deps:** update dependency rollup to v2.61.0 ([#1127](https://github.com/christophehurpeau/pob/issues/1127)) ([96c17d3](https://github.com/christophehurpeau/pob/commit/96c17d3163806a845cee7e27468b7c2daf39afd1))
+* **deps:** update dependency rollup to v2.61.1 ([#1132](https://github.com/christophehurpeau/pob/issues/1132)) ([7d25aa9](https://github.com/christophehurpeau/pob/commit/7d25aa90d26e2da4fd6b88dcc9fc36c149e523c8))
+* **deps:** update dependency typescript to v4.5.3 ([#1128](https://github.com/christophehurpeau/pob/issues/1128)) ([e856fef](https://github.com/christophehurpeau/pob/commit/e856fefc10a0a674b341d76549cbde61267f100b))
+* **deps:** update jest monorepo to v27.4.4 ([#1129](https://github.com/christophehurpeau/pob/issues/1129)) ([9cf8c1a](https://github.com/christophehurpeau/pob/commit/9cf8c1a380b500dab175da434396e70184a22972))
+* **pob-dependencies:** remove babel-jest ([7136247](https://github.com/christophehurpeau/pob/commit/713624717fa52da98d18f50b457bc8fb4c56ff68))
+
+
+### BREAKING CHANGES
+
+* requires node 14
+
+
+
+
+
 # [5.12.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@5.11.0...pob-dependencies@5.12.0) (2021-12-05)
 
 

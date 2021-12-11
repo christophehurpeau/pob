@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@5.5.0...pob-lcov-reporter@6.0.0) (2021-12-11)
+
+
+### Features
+
+* drop node 12 ([2f32308](https://github.com/christophehurpeau/pob/commit/2f32308b06ca74d0deb3355707e3082fa73e25dc))
+* **deps:** update jest monorepo to v27.4.4 ([#1129](https://github.com/christophehurpeau/pob/issues/1129)) ([9cf8c1a](https://github.com/christophehurpeau/pob/commit/9cf8c1a380b500dab175da434396e70184a22972))
+
+
+### BREAKING CHANGES
+
+* requires node 14
+
+
+
+
+
 # [5.5.0](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@5.4.0...pob-lcov-reporter@5.5.0) (2021-12-05)
 
 

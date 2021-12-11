@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.0.0](https://github.com/christophehurpeau/pob/compare/pob@8.10.1...pob@9.0.0) (2021-12-11)
+
+
+### Bug Fixes
+
+* **pob:** add try/catch arround build and generate:docs commands ([561f87f](https://github.com/christophehurpeau/pob/commit/561f87f75f2ec90480403432ea4a70090d9962ce))
+* **pob:** dont add postinstallDev scripts in monorepo packages ([f993c13](https://github.com/christophehurpeau/pob/commit/f993c13670b6c1a537b2e5731987b407a25c4eb6))
+* **pob:** missing clean script when using monorepo ([4a4ac95](https://github.com/christophehurpeau/pob/commit/4a4ac9527af1681606d80e2bf963364ecccb4e81))
+* **pob:** use fs.exists before fs.delete ([b2640d1](https://github.com/christophehurpeau/pob/commit/b2640d1545411ffecb90bacd2ad400e19ea815f0))
+
+
+### Features
+
+* drop node 12 ([2f32308](https://github.com/christophehurpeau/pob/commit/2f32308b06ca74d0deb3355707e3082fa73e25dc))
+* **pob:** configure jest to enable esm by default and remove direct dependency to babel-jest ([a789916](https://github.com/christophehurpeau/pob/commit/a78991696c6f7716cb1198ff8a6c36cc1acfa1a9))
+* **pob-babel:** stop build dev specific and drop node 12 ([9cb8975](https://github.com/christophehurpeau/pob/commit/9cb897538df6b9c0e3ad3750abacb6ab96113862))
+
+
+### BREAKING CHANGES
+
+* requires node 14
+* **pob-babel:** requires to delete dev exports and requires node 14
+
+
+
+
+
 ## [8.10.1](https://github.com/christophehurpeau/pob/compare/pob@8.10.0...pob@8.10.1) (2021-12-05)
 
 

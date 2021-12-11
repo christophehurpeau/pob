@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-pob-env",
-  "version": "6.4.0",
+  "version": "7.0.0",
   "description": "pob babel preset env",
   "keywords": [
     "babel-preset"
@@ -61,7 +61,7 @@
     "@babel/plugin-transform-modules-commonjs": "^7.16.0",
     "@babel/preset-typescript": "^7.16.0",
     "babel-plugin-discard-module-references": "^1.1.2",
-    "babel-plugin-fix-class-properties-uninitialized": "^4.2.0",
+    "babel-plugin-fix-class-properties-uninitialized": "^5.0.0",
     "babel-plugin-minify-replace": "^0.5.0",
     "babel-preset-optimizations": "^2.0.0"
   },
@@ -69,6 +69,6 @@
     "@babel/core": "7.16.0",
     "@types/jest": "27.0.3",
     "jest": "27.4.4",
-    "pob-lcov-reporter": "5.5.0"
+    "pob-lcov-reporter": "^6.0.0"
   }
 }

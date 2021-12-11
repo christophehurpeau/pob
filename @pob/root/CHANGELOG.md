@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.9.0...@pob/root@6.0.0) (2021-12-11)
+
+
+### Features
+
+* drop node 12 ([2f32308](https://github.com/christophehurpeau/pob/commit/2f32308b06ca74d0deb3355707e3082fa73e25dc))
+
+
+### BREAKING CHANGES
+
+* requires node 14
+
+
+
+
+
 # [5.9.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.8.0...@pob/root@5.9.0) (2021-12-05)
 
 
