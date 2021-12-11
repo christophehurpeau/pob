@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0](https://github.com/christophehurpeau/pob/compare/pob@9.1.0...pob@9.2.0) (2021-12-11)
+
+
+### Features
+
+* **pob:** force global eslint and fix remove plugins on non monorepo ([9c04867](https://github.com/christophehurpeau/pob/commit/9c0486700355e27981f0e1a73d05663a6c1bb16b))
+
+
+
+
+
 # [9.1.0](https://github.com/christophehurpeau/pob/compare/pob@9.0.0...pob@9.1.0) (2021-12-11)
 
 

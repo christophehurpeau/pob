@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.1.1](https://github.com/christophehurpeau/pob/compare/pob-babel@29.1.0...pob-babel@29.1.1) (2021-12-11)
+
+
+### Bug Fixes
+
+* **pob-babel:** test rollup version ([a995f2b](https://github.com/christophehurpeau/pob/commit/a995f2b646d21bf179f169f33a1269f2ec75022a))
+
+
+
+
+
 # [29.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@29.0.0...pob-babel@29.1.0) (2021-12-11)
 
 
