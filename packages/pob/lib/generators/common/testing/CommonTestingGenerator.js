@@ -160,7 +160,7 @@ export default class CommonTestingGenerator extends Generator {
         const transpileWithBabel = packageUtils.transpileWithBabel(pkg);
 
         const shouldUseExperimentalVmModules =
-          pkg.type === 'module' || (transpileWithBabel && !inLerna);
+          pkg.type === 'module' && !inLerna;
 
         const jestCommand = `${
           shouldUseExperimentalVmModules

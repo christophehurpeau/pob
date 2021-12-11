@@ -179,6 +179,7 @@ export default class CommonLintGenerator extends Generator {
 
     const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
     const globalEslint = yoConfigPobMonorepo && yoConfigPobMonorepo.eslint;
+    const globalTesting = yoConfigPobMonorepo && yoConfigPobMonorepo.testing;
     const composite = yoConfigPobMonorepo && yoConfigPobMonorepo.typescript;
     const { rootPackageManager, rootYarnNodeLinker } = inLerna || {};
     const lernaProjectType =
@@ -337,18 +338,19 @@ export default class CommonLintGenerator extends Generator {
       ? `{${pkg.type === 'commonjs' ? 'mjs' : 'cjs'},js}`
       : `${hasReact ? '{ts,tsx}' : 'ts'}`;
 
-    const jestOverride = !pkg.jest
-      ? null
-      : {
-          files: [`**/*.test.${ext}`, `__tests__/**/*.${ext}`],
-          env: { jest: true },
-          rules: {
-            'import/no-extraneous-dependencies': [
-              'error',
-              { devDependencies: true },
-            ],
-          },
-        };
+    const jestOverride =
+      !pkg.jest && !globalTesting
+        ? null
+        : {
+            files: [`**/*.test.${ext}`, `__tests__/**/*.${ext}`],
+            env: { jest: true },
+            rules: {
+              'import/no-extraneous-dependencies': [
+                'error',
+                { devDependencies: true },
+              ],
+            },
+          };
 
     if (jestOverride) {
       // if (!useBabel) {
