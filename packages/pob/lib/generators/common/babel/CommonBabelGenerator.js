@@ -731,7 +731,7 @@ export default class CommonBabelGenerator extends Generator {
         {
           hasReact,
           testing: this.options.testing,
-          jestExperimentalESM: !inLerna,
+          jestExperimentalESM: pkg.type === 'module',
         },
       );
     } else {
