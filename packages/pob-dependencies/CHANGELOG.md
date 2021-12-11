@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.0.6...pob-dependencies@6.1.0) (2021-12-11)
+
+
+### Features
+
+* **pob-babel:** include plugin-run as export ([9a4515d](https://github.com/christophehurpeau/pob/commit/9a4515d26d816df6f257a90647046c7da5d83a16))
+
+
+
+
+
 ## [6.0.6](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.0.5...pob-dependencies@6.0.6) (2021-12-11)
 
 **Note:** Version bump only for package pob-dependencies

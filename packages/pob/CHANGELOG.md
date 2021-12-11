@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.5.0](https://github.com/christophehurpeau/pob/compare/pob@9.4.0...pob@9.5.0) (2021-12-11)
+
+
+### Features
+
+* **pob-babel:** include plugin-run as export ([9a4515d](https://github.com/christophehurpeau/pob/commit/9a4515d26d816df6f257a90647046c7da5d83a16))
+* enable global testing in monorepo ([178775b](https://github.com/christophehurpeau/pob/commit/178775bb7fc971bc6a9712b105623508f739ba7b))
+
+
+
+
+
 # [9.4.0](https://github.com/christophehurpeau/pob/compare/pob@9.3.1...pob@9.4.0) (2021-12-11)
 
 
