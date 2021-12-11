@@ -41,8 +41,8 @@ module.exports = function (context, opts = {}) {
     opts.replacements !== undefined
       ? opts.replacements
       : {
-          __TARGET__: targetOption,
-          __TARGET_VERSION__: versionOption,
+          __POB_TARGET__: targetOption,
+          __POB_TARGET_VERSION__: versionOption,
           BROWSER: targetOption === 'browser',
           NODEJS: targetOption === 'node',
           SERVER: targetOption === 'node',

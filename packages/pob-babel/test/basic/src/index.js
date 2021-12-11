@@ -2,7 +2,7 @@ import Test from './Test';
 import { sayHello as helloNode } from './helloNode';
 import { sayHello as helloBrowser } from './helloBrowser';
 
-__TARGET__ === 'node' ? helloNode() : helloBrowser();
+__POB_TARGET__ === 'node' ? helloNode() : helloBrowser();
 
 const answer = 42;
 console.log(`the answer is ${answer}`);
