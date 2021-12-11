@@ -110,7 +110,7 @@
           ]
         },
         {
-          "description": "@pob eslint configs",
+          "groupName": "@pob eslint configs",
           "packagePatterns": [
             "^@pob/eslint-config"
           ]
