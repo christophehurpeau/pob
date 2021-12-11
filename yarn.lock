@@ -4044,6 +4044,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"babel-plugin-discard-module-references@npm:^1.1.2":
+  version: 1.1.2
+  resolution: "babel-plugin-discard-module-references@npm:1.1.2"
+  checksum: 601c32ee5f620abd6cd371b521652d004114d5d174d21893dd27b62dad771fbc86d32c0a5c2e2a718ecc88d50310a1debe349c77dff9eddc9e8ec28b70f73c6b
+  languageName: node
+  linkType: hard
+
 "babel-plugin-dynamic-import-node@npm:^2.3.3":
   version: 2.3.3
   resolution: "babel-plugin-dynamic-import-node@npm:2.3.3"
@@ -4112,6 +4119,13 @@ __metadata:
     babel-helper-evaluate-path: ^0.5.0
     babel-helper-flip-expressions: ^0.4.3
   checksum: 6071558a5bdc64ed811809d66ad9982ea3ead16ac32f09d4f17e41b07b2106d9b0d12641758f89cfa1dff94fdfb3df8afed908ff1c0e50972b0312cc66d09a75
+  languageName: node
+  linkType: hard
+
+"babel-plugin-minify-replace@npm:^0.5.0":
+  version: 0.5.0
+  resolution: "babel-plugin-minify-replace@npm:0.5.0"
+  checksum: eca0ef9c9197b55b7c6467fb097fe3f266ca64293eda0c1254303897923df11e9f5a9c25888de98da6a4fc32debe2651d50bdcebb667553013be4875543480f6
   languageName: node
   linkType: hard
 
@@ -11798,6 +11812,8 @@ __metadata:
     "@rollup/plugin-node-resolve": ^13.0.0
     "@rollup/plugin-replace": ^3.0.0
     "@types/jest": 27.0.3
+    babel-plugin-discard-module-references: ^1.1.2
+    babel-plugin-minify-replace: ^0.5.0
     babel-preset-modern-browsers: ^15.0.2
     babel-preset-pob-env: ^6.4.0
     jest: 27.4.4

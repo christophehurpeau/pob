@@ -8,6 +8,11 @@ exports[`fixtures basic 0 1`] = `
 
 }
 
+const sayHello = () => {
+  console.log('hello node');
+};
+
+sayHello();
 console.log(\`the answer is \${42}\`);
 
 class Test2 extends Test {
@@ -43,7 +48,12 @@ var Test = function Test() {
   this.args = args;
 };
 
+var sayHello = function sayHello() {
+  console.log('hello browser');
+};
+
 var _t$foo;
+sayHello();
 console.log(\\"the answer is 42\\");
 
 var Test2 = /*#__PURE__*/function (_Test) {
@@ -81,7 +91,12 @@ exports[`fixtures basic 2 1`] = `
 
 }
 
+const sayHello = () => {
+  console.log('hello browser');
+};
+
 var _t$foo;
+sayHello();
 console.log(\`the answer is \${42}\`);
 
 class Test2 extends Test {
