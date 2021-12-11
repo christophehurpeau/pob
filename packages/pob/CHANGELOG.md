@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.3.0](https://github.com/christophehurpeau/pob/compare/pob@9.2.1...pob@9.3.0) (2021-12-11)
+
+
+### Bug Fixes
+
+* **pob:** newline in ci workflow ([78652a1](https://github.com/christophehurpeau/pob/commit/78652a1a412e04ab63fdb5ca7139e86f6e6a3dad))
+
+
+### Features
+
+* **pob:** ci build ([1d1e76b](https://github.com/christophehurpeau/pob/commit/1d1e76b64e81fb08f3c1ea4de26363d162c9a15f))
+* **pob:** typescript dom condition ([eecb027](https://github.com/christophehurpeau/pob/commit/eecb027d4415a20dfcc5612082d9b6ee3ad6a205))
+
+
+
+
+
 ## [9.2.1](https://github.com/christophehurpeau/pob/compare/pob@9.2.0...pob@9.2.1) (2021-12-11)
 
 

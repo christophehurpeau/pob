@@ -1,7 +1,7 @@
 {
   "name": "example-ts-lib",
   "private": true,
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": {
@@ -78,7 +78,7 @@
     "@babel/core": "7.16.0",
     "@types/jest": "27.0.3",
     "jest": "27.4.4",
-    "pob-babel": "^29.1.2",
+    "pob-babel": "^29.1.3",
     "pob-lcov-reporter": "6.0.0",
     "typescript": "4.5.3"
   }

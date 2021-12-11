@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.1.3](https://github.com/christophehurpeau/pob/compare/pob-babel@29.1.2...pob-babel@29.1.3) (2021-12-11)
+
+
+### Bug Fixes
+
+* **pob-babel:** remove types as they no longer exists ([56ca22b](https://github.com/christophehurpeau/pob/commit/56ca22b46dc4f1941eb949f4c2bbecd2fb5465c7))
+
+
+
+
+
 ## [29.1.2](https://github.com/christophehurpeau/pob/compare/pob-babel@29.1.1...pob-babel@29.1.2) (2021-12-11)
 
 
