@@ -69,14 +69,11 @@ export default class CommonTestingGenerator extends Generator {
       'istanbul',
       'babel-core',
       'ts-jest',
+      'babel-jest',
     ]);
 
     if (!this.options.enable) {
-      packageUtils.removeDevDependencies(pkg, [
-        'jest',
-        '@types/jest',
-        'babel-jest',
-      ]);
+      packageUtils.removeDevDependencies(pkg, ['jest', '@types/jest']);
 
       delete pkg.jest;
       // if (inLerna) {
@@ -97,7 +94,7 @@ export default class CommonTestingGenerator extends Generator {
       const transpileWithBabel = packageUtils.transpileWithBabel(pkg);
 
       const shouldUseExperimentalVmModules =
-        pkg.type === 'module' && !transpileWithBabel;
+        pkg.type === 'module' || transpileWithBabel;
 
       const jestCommand = `${
         shouldUseExperimentalVmModules
@@ -125,10 +122,6 @@ export default class CommonTestingGenerator extends Generator {
       const hasReact = transpileWithBabel && packageUtils.hasReact(pkg);
       const srcDirectory = transpileWithBabel ? 'src' : 'lib';
 
-      packageUtils.addOrRemoveDevDependencies(pkg, transpileWithBabel, [
-        'babel-jest',
-      ]);
-
       if (!pkg.jest) pkg.jest = {};
       Object.assign(pkg.jest, {
         cacheDirectory: './node_modules/.cache/jest',
@@ -152,12 +145,20 @@ export default class CommonTestingGenerator extends Generator {
           // 'jsx',
           'json',
         ].filter(Boolean),
-        transform: {
-          [`^.+\\.ts${hasReact ? 'x?' : ''}$`]: 'babel-jest',
-        },
+        extensionsToTreatAsEsm: [
+          transpileWithBabel && '.ts',
+          transpileWithBabel && hasReact && '.tsx',
+        ].filter(Boolean),
+        // transform: {
+        //   [`^.+\\.ts${hasReact ? 'x?' : ''}$`]: 'babel-jest',
+        // },
       });
+      delete pkg.jest.transform;
 
-      if (babelEnvs.some((env) => env.target === 'node')) {
+      if (
+        babelEnvs.length === 0 ||
+        babelEnvs.some((env) => env.target === 'node')
+      ) {
         pkg.jest.testEnvironment = 'node';
       } else {
         delete pkg.jest.testEnvironment;
