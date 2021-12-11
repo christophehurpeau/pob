@@ -29,7 +29,8 @@
   "sideEffects": false,
   "bin": {
     "pob-build": "./bin/pob-build.js",
-    "pob-watch": "./bin/pob-watch.js"
+    "pob-watch": "./bin/pob-watch.js",
+    "rollup": "./bin/rollup.cjs"
   },
   "scripts": {
     "build": "yarn run build:definitions",
