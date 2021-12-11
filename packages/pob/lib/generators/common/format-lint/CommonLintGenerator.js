@@ -186,11 +186,11 @@ export default class CommonLintGenerator extends Generator {
       inLerna.pobConfig.project &&
       inLerna.pobConfig.project.type;
 
-    if (
-      globalEslint &&
-      !((inLerna && inLerna.root) || this.options.monorepo) &&
-      (rootPackageManager !== 'yarn' || rootYarnNodeLinker === 'node-modules')
-    ) {
+    if (this.options.monorepo && !globalEslint) {
+      throw new Error('Please enable global eslint');
+    }
+
+    if (globalEslint && !((inLerna && inLerna.root) || this.options.monorepo)) {
       packageUtils.removeDevDependencies(
         pkg,
         [
@@ -227,10 +227,7 @@ export default class CommonLintGenerator extends Generator {
         ['eslint'],
       );
       const shouldHavePluginsDependencies =
-        !globalEslint ||
-        !inLerna ||
-        (rootPackageManager === 'yarn' &&
-          rootYarnNodeLinker !== 'node-modules');
+        rootPackageManager === 'yarn' && rootYarnNodeLinker !== 'node-modules';
 
       if (
         !pkg.name.startsWith('eslint-config') &&
