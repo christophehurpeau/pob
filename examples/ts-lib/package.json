@@ -27,11 +27,12 @@
   "scripts": {
     "build": "pob-build && yarn run build:definitions",
     "build:definitions": "tsc -p tsconfig.build.json",
-    "generate:test-coverage": "rm -Rf docs/coverage/ ; NODE_ENV=production BABEL_ENV=test jest --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/",
+    "clean": "rm -Rf dist",
+    "generate:test-coverage": "rm -Rf docs/coverage/ ; NODE_ENV=production BABEL_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/",
     "lint": "tsc && yarn run lint:eslint",
     "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet examples/ts-lib",
-    "test": "jest",
-    "test:watch": "jest --watch",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch",
     "watch": "pob-watch"
   },
   "prettier": {
@@ -53,10 +54,10 @@
       "js",
       "json"
     ],
-    "transform": {
-      "^.+\\.ts$": "babel-jest"
-    },
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ]
   },
   "pob": {
     "babelEnvs": [
@@ -75,7 +76,6 @@
   "devDependencies": {
     "@babel/core": "7.16.0",
     "@types/jest": "27.0.3",
-    "babel-jest": "27.4.4",
     "jest": "27.4.4",
     "pob-babel": "28.7.0",
     "pob-lcov-reporter": "5.5.0",

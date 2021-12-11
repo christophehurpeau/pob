@@ -8,15 +8,15 @@ describe('index', () => {
 });
 
 describe('dist', () => {
-  it('should build node12 mjs', () => {
-    expect(fs.readFileSync('./dist/index-node12.mjs', 'utf-8'))
+  it('should build node14 mjs', () => {
+    expect(fs.readFileSync('./dist/index-node14.mjs', 'utf-8'))
       .toMatchInlineSnapshot(`
       "function simpleLib() {
         return 'hello world';
       }
 
       export { simpleLib as default };
-      //# sourceMappingURL=index-node12.mjs.map
+      //# sourceMappingURL=index-node14.mjs.map
       "
     `);
   });
