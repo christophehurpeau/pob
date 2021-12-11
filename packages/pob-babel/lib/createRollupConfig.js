@@ -8,8 +8,6 @@ import { babel } from '@rollup/plugin-babel';
 import json from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
-import babelPluginDiscardModuleReferences from 'babel-plugin-discard-module-references';
-import babelPluginMinifyReplace from 'babel-plugin-minify-replace';
 import babelPresetEnv from 'babel-preset-pob-env';
 import configExternalDependencies from 'rollup-config-external-dependencies';
 import ignoreImport from './rollup-plugin-ignore-browser-only-imports.js';
@@ -161,35 +159,6 @@ export default function createRollupConfig({
             ],
           ].filter(Boolean),
           plugins: [
-            // inject target replacements
-            [
-              babelPluginMinifyReplace,
-              {
-                replacements: [
-                  {
-                    identifierName: '__TARGET__',
-                    replacement: {
-                      type: 'stringLiteral',
-                      value: env.target,
-                    },
-                  },
-                  {
-                    identifierName: '__TARGET_VERSION__',
-                    replacement:
-                      env.version === undefined
-                        ? { type: 'undefined' }
-                        : {
-                            type: 'stringLiteral',
-                            value: env.version,
-                          },
-                  },
-                ],
-              },
-            ],
-
-            // discard unused imports (like production-only or node-only imports)
-            babelPluginDiscardModuleReferences,
-
             // use @babel/runtime
             [
               babelPluginTransformRuntime,
