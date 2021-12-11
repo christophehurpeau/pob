@@ -3290,7 +3290,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/eslint-plugin@npm:5.6.0, @typescript-eslint/eslint-plugin@npm:^5.3.1":
+"@typescript-eslint/eslint-plugin@npm:^5.3.1":
   version: 5.6.0
   resolution: "@typescript-eslint/eslint-plugin@npm:5.6.0"
   dependencies:
@@ -3328,7 +3328,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@typescript-eslint/parser@npm:5.6.0, @typescript-eslint/parser@npm:^5.3.1":
+"@typescript-eslint/parser@npm:^5.3.1":
   version: 5.6.0
   resolution: "@typescript-eslint/parser@npm:5.6.0"
   dependencies:
@@ -6159,7 +6159,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-import-resolver-node@npm:0.3.6, eslint-import-resolver-node@npm:^0.3.6":
+"eslint-import-resolver-node@npm:^0.3.6":
   version: 0.3.6
   resolution: "eslint-import-resolver-node@npm:0.3.6"
   dependencies:
@@ -6192,7 +6192,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-import@npm:2.25.3, eslint-plugin-import@npm:^2.22.1":
+"eslint-plugin-import@npm:^2.22.1":
   version: 2.25.3
   resolution: "eslint-plugin-import@npm:2.25.3"
   dependencies:
@@ -6215,7 +6215,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-jsx-a11y@npm:6.5.1, eslint-plugin-jsx-a11y@npm:^6.4.1":
+"eslint-plugin-jsx-a11y@npm:^6.4.1":
   version: 6.5.1
   resolution: "eslint-plugin-jsx-a11y@npm:6.5.1"
   dependencies:
@@ -6237,7 +6237,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-node@npm:11.1.0, eslint-plugin-node@npm:^11.1.0":
+"eslint-plugin-node@npm:^11.1.0":
   version: 11.1.0
   resolution: "eslint-plugin-node@npm:11.1.0"
   dependencies:
@@ -6286,7 +6286,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-unicorn@npm:38.0.1, eslint-plugin-unicorn@npm:^38.0.1":
+"eslint-plugin-unicorn@npm:^38.0.1":
   version: 38.0.1
   resolution: "eslint-plugin-unicorn@npm:38.0.1"
   dependencies:
@@ -11730,15 +11730,8 @@ __metadata:
     "@pob/pretty-pkg": ^4.0.0
     "@pob/root": ^6.0.0
     "@types/jest": 27.0.3
-    "@typescript-eslint/eslint-plugin": 5.6.0
-    "@typescript-eslint/parser": 5.6.0
     babel-preset-modern-browsers: 15.0.2
     eslint: 7.32.0
-    eslint-import-resolver-node: 0.3.6
-    eslint-plugin-import: 2.25.3
-    eslint-plugin-jsx-a11y: 6.5.1
-    eslint-plugin-node: 11.1.0
-    eslint-plugin-unicorn: 38.0.1
     jest: 27.4.4
     jest-junit-reporter: 1.1.0
     pob-babel: ^29.3.0

@@ -161,6 +161,7 @@ export default class CommonLintGenerator extends Generator {
       'eslint-config-prettier',
       'typescript-eslint-parser',
       'standard',
+      'eslint-import-resolver-node',
     ]);
 
     if (!pkg.name.startsWith('@pob/eslint-config')) {
@@ -203,7 +204,6 @@ export default class CommonLintGenerator extends Generator {
           '@pob/eslint-config-react',
           '@typescript-eslint/eslint-plugin',
           '@typescript-eslint/parser',
-          'eslint-import-resolver-node',
           'eslint-plugin-node',
           'eslint-plugin-unicorn',
           'eslint-plugin-import',
@@ -245,7 +245,7 @@ export default class CommonLintGenerator extends Generator {
         packageUtils.addOrRemoveDevDependencies(
           pkg,
           shouldHavePluginsDependencies,
-          ['eslint-plugin-node', 'eslint-import-resolver-node'],
+          ['eslint-plugin-node'],
         );
 
         if ((inLerna && inLerna.root) || this.options.monorepo) {

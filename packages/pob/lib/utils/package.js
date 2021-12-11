@@ -3,6 +3,11 @@ import sortPkg from '@pob/sort-pkg';
 import parseAuthor from 'parse-author';
 import pobDependencies from 'pob-dependencies';
 import semver from 'semver';
+import {
+  pobEslintConfig,
+  pobEslintConfigTypescript,
+  pobEslintConfigTypescriptReact,
+} from './dependenciesPackages.cjs';
 
 export { default as parseAuthor } from 'parse-author';
 
@@ -78,6 +83,26 @@ const internalRemoveDependencies = (pkg, type, dependencyKeys) => {
 };
 
 const getVersionFromDependencyName = (dependency) => {
+  if (
+    [
+      // 'eslint-import-resolver-node',
+      'eslint-plugin-import',
+      'eslint-plugin-node',
+      'eslint-plugin-unicorn',
+    ].includes(dependency)
+  ) {
+    return pobEslintConfig.dependencies[dependency];
+  }
+  if (['eslint-plugin-jsx-a11y', 'eslint-plugin-react'].includes(dependency)) {
+    return pobEslintConfigTypescriptReact.dependencies[dependency];
+  }
+  if (
+    ['@typescript-eslint/eslint-plugin', '@typescript-eslint/parser'].includes(
+      dependency,
+    )
+  ) {
+    return pobEslintConfigTypescript.dependencies[dependency];
+  }
   return pobDependencies[dependency];
 };
 
