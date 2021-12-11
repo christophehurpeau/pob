@@ -80,8 +80,9 @@ const internalRemoveDependencies = (pkg, type, dependencyKeys) => {
   internalRemoveFromObject(pkg, type, dependencyKeys);
 };
 
-const getVersionFromDependencyName = (dependency) =>
-  pobDependencies[dependency];
+const getVersionFromDependencyName = (dependency) => {
+  return pobDependencies[dependency];
+};
 
 const internalAddDependencies = (pkg, type, dependencies, cleaned, prefix) => {
   const ignoreDependencies =

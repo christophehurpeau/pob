@@ -6525,9 +6525,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-ts-lib@workspace:examples/ts-lib"
   dependencies:
+    "@babel/core": 7.16.0
     "@types/jest": 27.0.3
     jest: 27.4.4
-    pob-babel: ^29.1.1
+    pob-babel: 29.1.1
     pob-lcov-reporter: 6.0.0
     typescript: 4.5.3
   languageName: unknown
@@ -11682,7 +11683,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@^29.1.1, pob-babel@workspace:packages/pob-babel":
+"pob-babel@29.1.1, pob-babel@^29.1.1, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -11703,10 +11704,12 @@ __metadata:
     semver: ^7.3.4
     typescript: 4.5.3
   peerDependencies:
+    "@babel/core": 7.16.0
     typescript: ^4.0.3
   bin:
     pob-build: ./bin/pob-build.js
     pob-watch: ./bin/pob-watch.js
+    rollup: ./bin/rollup.cjs
   languageName: unknown
   linkType: soft
 
@@ -11796,6 +11799,7 @@ __metadata:
     mem-fs-editor: 8.1.2
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
+    pob-babel: 29.1.1
     pob-dependencies: ^6.0.2
     prettier: 2.5.1
     semver: ^7.3.4
