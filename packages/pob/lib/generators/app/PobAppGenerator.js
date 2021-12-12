@@ -132,10 +132,12 @@ export default class PobAppGenerator extends Generator {
       dom: browser,
       jsx,
       updateOnly: this.options.updateOnly,
+      resolveJsonModule: true,
       baseUrl: (() => {
         if (
           this.appConfig.type === 'alp' ||
-          this.appConfig.type === 'pobpack'
+          this.appConfig.type === 'pobpack' ||
+          this.appConfig.type === 'node'
         ) {
           return './src';
         }

@@ -32,6 +32,12 @@ export default class CommonTypescriptGenerator extends Generator {
       desc: 'baseUrl option',
     });
 
+    this.option('resolveJsonModule', {
+      type: Boolean,
+      defaults: false,
+      desc: 'resolveJsonModule option',
+    });
+
     this.option('builddefs', {
       type: Boolean,
       defaults: true,
@@ -116,6 +122,7 @@ export default class CommonTypescriptGenerator extends Generator {
           jsx,
           dom,
           baseUrl: this.options.baseUrl,
+          resolveJsonModule: this.options.resolveJsonModule,
         },
       );
       if (
