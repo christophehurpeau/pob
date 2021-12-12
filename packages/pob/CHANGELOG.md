@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.7.2](https://github.com/christophehurpeau/pob/compare/pob@9.7.1...pob@9.7.2) (2021-12-12)
+
+
+### Bug Fixes
+
+* **pob:** testing babel condition ([a468640](https://github.com/christophehurpeau/pob/commit/a4686400a2844d8930a77a201dea3d7f5f302384))
+
+
+
+
+
 ## [9.7.1](https://github.com/christophehurpeau/pob/compare/pob@9.7.0...pob@9.7.1) (2021-12-12)
 
 
