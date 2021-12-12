@@ -1,6 +1,7 @@
 import fs from 'fs';
 import yarnParsers from '@yarnpkg/parsers';
 import Generator from 'yeoman-generator';
+import ensureJsonFileFormatted from '../../../utils/ensureJsonFileFormatted.js';
 import inLerna from '../../../utils/inLerna.js';
 import * as packageUtils from '../../../utils/package.js';
 import { writeAndFormat } from '../../../utils/writeAndFormat.js';
@@ -40,6 +41,7 @@ export default class CoreYarnGenerator extends Generator {
         this.spawnCommandSync('yarn', ['set', 'version', 'latest']);
       } else {
         this.spawnCommandSync('yarn', ['set', 'version', 'latest']);
+        ensureJsonFileFormatted(this.destinationPath('package.json'));
       }
     }
   }
