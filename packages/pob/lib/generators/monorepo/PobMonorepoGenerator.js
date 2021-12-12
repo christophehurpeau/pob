@@ -1,4 +1,5 @@
 import fs from 'fs';
+import path from 'path';
 import { PackageGraph } from '@lerna/package-graph';
 import { Project as LernaProject } from '@lerna/project';
 import Generator from 'yeoman-generator';
@@ -82,10 +83,15 @@ export default class PobMonorepoGenerator extends Generator {
       const batch = [...graph.values()].filter(
         (node) => node.localDependencies.size === 0,
       );
+      batch.sort((a, b) => a.name.localeCompare(b.name, 'en'));
 
       // batches are composed of Package instances, not PackageGraphNodes
       this.packages.push(...batch.map((node) => node.pkg));
-      this.packageLocations.push(...batch.map((node) => node.location));
+      this.packageLocations.push(
+        ...batch.map((node) =>
+          path.relative(this.destinationPath(), node.location),
+        ),
+      );
 
       // pruning the graph changes the node.localDependencies.size test
       graph.prune(...batch);
@@ -165,32 +171,14 @@ export default class PobMonorepoGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
     const packageNames = this.packageNames;
-
-    const basePackageName = pkg.name.startsWith('@')
-      ? `${pkg.name.replace(/-monorepo$/, '')}-`
-      : `@${pkg.name}/`;
-
-    const packagePaths = packageNames
-      .map((packageName) =>
-        this.options.isAppProject && packageName.startsWith(basePackageName)
-          ? `packages/${packageName.slice(basePackageName.length)}`
-          : `${packageName[0] === '@' ? '' : 'packages/'}${packageName}`,
-      )
-      .filter(
-        this.pobLernaConfig.typescript
-          ? (packagePath) => fs.existsSync(`${packagePath}/tsconfig.json`)
-          : Boolean,
-      );
+    const packagePaths = this.packageLocations.filter(
+      this.pobLernaConfig.typescript
+        ? (packagePath) => fs.existsSync(`${packagePath}/tsconfig.json`)
+        : Boolean,
+    );
 
     if (packagePaths.length === 0 && packageNames.length > 0) {
-      console.log(
-        packageNames,
-        packageNames.map((packageName) =>
-          this.options.isAppProject && packageName.startsWith(basePackageName)
-            ? `packages/${packageName.slice(basePackageName.length)}`
-            : `${packageName[0] === '@' ? '' : 'packages/'}${packageName}`,
-        ),
-      );
+      console.log(packageNames, packagePaths);
       throw new Error('packages should not be empty');
     }
 
