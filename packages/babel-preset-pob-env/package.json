@@ -24,32 +24,13 @@
   },
   "sideEffects": false,
   "scripts": {
-    "generate:test-coverage": "rm -Rf docs/coverage/ ; NODE_ENV=production jest --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/babel-preset-pob-env",
-    "test": "jest",
-    "test:watch": "jest --watch"
+    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/babel-preset-pob-env"
   },
   "prettier": {
     "trailingComma": "all",
     "singleQuote": true,
     "arrowParens": "always"
-  },
-  "jest": {
-    "cacheDirectory": "./node_modules/.cache/jest",
-    "testMatch": [
-      "<rootDir>/lib/**/__tests__/**/*.?(m)js",
-      "<rootDir>/lib/**/*.test.?(m)js"
-    ],
-    "collectCoverageFrom": [
-      "lib/**/*.?(m)js"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json"
-    ],
-    "extensionsToTreatAsEsm": [],
-    "testEnvironment": "node"
   },
   "pob": {},
   "peerDependencies": {
@@ -66,9 +47,6 @@
     "babel-preset-optimizations": "^2.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.16.0",
-    "@types/jest": "27.0.3",
-    "jest": "27.4.4",
-    "pob-lcov-reporter": "6.0.0"
+    "@babel/core": "7.16.0"
   }
 }

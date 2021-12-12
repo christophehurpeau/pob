@@ -1,12 +1,14 @@
 'use strict';
 
 const fs = require('fs');
-const { transform } = require('@babel/core');
+const { transformSync } = require('@babel/core');
 
 describe('fixtures', () => {
-  const presetPath = require.resolve('.');
+  // const presetPath = new URL('..', import.meta.url).pathname;
+  const presetPath = require.resolve(`${__dirname}/..`);
 
   const tests = fs
+    // .readdirSync(new URL('__tests_fixtures__', import.meta.url))
     .readdirSync(`${__dirname}/__tests_fixtures__`)
     .filter((name) => name.endsWith('.js'));
 
@@ -19,9 +21,10 @@ describe('fixtures', () => {
 
     test(testContent.name || filename, () => {
       try {
-        const output = transform(testContent.actual, {
+        const output = transformSync(testContent.actual, {
           filename: 'file.ts',
           babelrc: false,
+          configFile: false,
           presets: [[presetPath, testContent.presetOptions || {}]],
         });
 

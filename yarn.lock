@@ -4202,13 +4202,10 @@ __metadata:
     "@babel/plugin-proposal-optional-chaining": ^7.16.0
     "@babel/plugin-transform-modules-commonjs": ^7.16.0
     "@babel/preset-typescript": ^7.16.0
-    "@types/jest": 27.0.3
     babel-plugin-discard-module-references: ^1.1.2
     babel-plugin-fix-class-properties-uninitialized: ^5.0.0
     babel-plugin-minify-replace: ^0.5.0
     babel-preset-optimizations: ^2.0.0
-    jest: 27.4.4
-    pob-lcov-reporter: 6.0.0
   peerDependencies:
     "@babel/core": ^7.11.6
   languageName: unknown
@@ -6511,10 +6508,6 @@ __metadata:
 "example-simple-lib@workspace:examples/simple-lib":
   version: 0.0.0-use.local
   resolution: "example-simple-lib@workspace:examples/simple-lib"
-  dependencies:
-    "@types/jest": 27.0.3
-    jest: 27.4.4
-    pob-lcov-reporter: 6.0.0
   languageName: unknown
   linkType: soft
 
@@ -6523,10 +6516,7 @@ __metadata:
   resolution: "example-ts-lib@workspace:examples/ts-lib"
   dependencies:
     "@babel/core": 7.16.0
-    "@types/jest": 27.0.3
-    jest: 27.4.4
-    pob-babel: ^29.3.0
-    pob-lcov-reporter: 6.0.0
+    pob-babel: 29.3.0
     typescript: 4.5.3
   languageName: unknown
   linkType: soft
@@ -9389,7 +9379,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json5@npm:^2.1.2":
+"json5@npm:^2.1.2, json5@npm:^2.2.0":
   version: 2.2.0
   resolution: "json5@npm:2.2.0"
   dependencies:
@@ -11679,7 +11669,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@^29.3.0, pob-babel@workspace:packages/pob-babel":
+"pob-babel@29.3.0, pob-babel@^29.3.0, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -11690,12 +11680,9 @@ __metadata:
     "@rollup/plugin-node-resolve": 13.0.6
     "@rollup/plugin-replace": 3.0.0
     "@rollup/plugin-run": 2.1.0
-    "@types/jest": 27.0.3
     babel-preset-modern-browsers: ^15.0.2
     babel-preset-pob-env: ^7.1.1
-    jest: 27.4.4
     minimist-argv: ^1.1.0
-    pob-lcov-reporter: "workspace:*"
     rollup: 2.61.1
     rollup-config-external-dependencies: ^2.0.0
     semver: ^7.3.4
@@ -11742,7 +11729,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-lcov-reporter@6.0.0, pob-lcov-reporter@^6.0.0, pob-lcov-reporter@workspace:*, pob-lcov-reporter@workspace:packages/pob-lcov-reporter":
+"pob-lcov-reporter@^6.0.0, pob-lcov-reporter@workspace:*, pob-lcov-reporter@workspace:packages/pob-lcov-reporter":
   version: 0.0.0-use.local
   resolution: "pob-lcov-reporter@workspace:packages/pob-lcov-reporter"
   dependencies:
@@ -11764,8 +11751,10 @@ __metadata:
     check-package-dependencies: 2.2.1
     eslint: 8.4.1
     jest: 27.4.4
+    pob-babel: "workspace:*"
     pob-lcov-reporter: "workspace:*"
     prettier: 2.5.1
+    typescript: 4.5.3
   languageName: unknown
   linkType: soft
 
@@ -11785,6 +11774,7 @@ __metadata:
     github-username: ^6.0.0
     got: ^11.8.1
     inquirer-npm-name: ^4.0.0
+    json5: ^2.2.0
     lodash.camelcase: ^4.3.0
     lodash.kebabcase: ^4.1.1
     mem-fs: 1.2.0

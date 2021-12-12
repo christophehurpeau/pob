@@ -1,7 +1,6 @@
 import fs from 'fs';
 import semver from 'semver';
 import Generator from 'yeoman-generator';
-import inLerna from '../../../utils/inLerna.js';
 import * as packageUtils from '../../../utils/package.js';
 
 export default class CommonBabelGenerator extends Generator {

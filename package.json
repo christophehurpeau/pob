@@ -6,7 +6,7 @@
   "license": "ISC",
   "repository": "https://github.com/christophehurpeau/pob.git",
   "homepage": "https://github.com/christophehurpeau/pob",
-  "type": "commonjs",
+  "type": "module",
   "engines": {
     "node": ">=14.17.0"
   },
@@ -17,14 +17,17 @@
     "examples/*"
   ],
   "scripts": {
-    "build": "yarn workspaces foreach --parallel --topological-dev -Av run build",
-    "checks": "node scripts/check-packages.mjs",
+    "build": "yarn workspaces foreach --parallel --topological-dev -Av run build && yarn run build:definitions",
+    "build:definitions": "tsc -b tsconfig.build.json",
+    "checks": "node scripts/check-packages.js",
+    "generate:test-coverage": "rm -Rf docs/coverage/ ; NODE_ENV=production BABEL_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/",
     "lint": "yarn run lint:prettier && yarn run lint:eslint",
     "lint:eslint": "eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet .",
     "lint:prettier": "prettier --check .",
     "lint:prettier:fix": "prettier --write .",
     "postinstall": "yarn node @pob/root/bin/pob-root-postinstall.js",
-    "test": "yarn workspaces foreach --parallel -Av run test",
+    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "tsc": "tsc -b",
     "watch": "yarn workspaces foreach --parallel --exclude \"*-example\" -Av run watch"
   },
   "prettier": {
@@ -37,12 +40,34 @@
       "@pob/commitlint-config"
     ]
   },
+  "jest": {
+    "cacheDirectory": "./node_modules/.cache/jest",
+    "testEnvironment": "node",
+    "extensionsToTreatAsEsm": [
+      ".ts"
+    ],
+    "testMatch": [
+      "<rootDir>/(packages|@pob|examples)/*/(src|lib)/**/__tests__/**/*.(ts|js|cjs|mjs)",
+      "<rootDir>/(packages|@pob|examples)/*/(src|lib)/**/*.test.(ts|js|cjs|mjs)"
+    ]
+  },
+  "resolutions": {
+    "npm-package-arg@8.1.2": "patch:npm-package-arg@npm:8.1.2#.yarn/patches/npm-package-arg-npm-8.1.2-1de2ee4bd8"
+  },
+  "resolutionsExplained": {
+    "npm-package-arg@8.1.2": "patch to support yarn 'workspace:*'"
+  },
   "devDependencies": {
     "@pob/eslint-config": "48.0.4",
     "@pob/lerna-light": "workspace:*",
     "@pob/root": "workspace:*",
+    "@types/jest": "27.0.3",
     "check-package-dependencies": "2.2.1",
     "eslint": "8.4.1",
-    "prettier": "2.5.1"
+    "jest": "27.4.4",
+    "pob-babel": "workspace:*",
+    "pob-lcov-reporter": "workspace:*",
+    "prettier": "2.5.1",
+    "typescript": "4.5.3"
   }
 }

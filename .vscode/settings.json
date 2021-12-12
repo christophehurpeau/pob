@@ -2,6 +2,8 @@
   "search.exclude": {
     "**/.yarn": true
   },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.enablePromptUseWorkspaceTsdk": true,
 
   // save config
   "editor.formatOnSave": true,

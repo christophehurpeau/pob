@@ -138,8 +138,9 @@ export default class CommonTestingGenerator extends Generator {
         });
 
         const workspacesWithoutStar = pkg.workspaces.map((workspace) => {
-          if (!workspace.endsWith('/*'))
-            throw new Error('Invalid workspace format: ' + workspace);
+          if (!workspace.endsWith('/*')) {
+            throw new Error(`Invalid workspace format: ${  workspace}`);
+          }
           return workspace.slice(0, -2);
         });
         const workspacesPattern =
@@ -267,7 +268,7 @@ export default class CommonTestingGenerator extends Generator {
         this.destinationPath('babel.config.cjs'),
         {
           only: !this.options.monorepo
-            ? "path.resolve(__dirname, 'src')"
+            ? "'src'"
             : pkg.workspaces
                 .flatMap((workspace) => [
                   `'${workspace}/src'`,

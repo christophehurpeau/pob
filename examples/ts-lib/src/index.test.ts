@@ -9,7 +9,7 @@ describe('index', () => {
 
 describe('dist', () => {
   it('should build node14 mjs', () => {
-    expect(fs.readFileSync('./dist/index-node14.mjs', 'utf-8'))
+    expect(fs.readFileSync('./examples/ts-lib/dist/index-node14.mjs', 'utf-8'))
       .toMatchInlineSnapshot(`
       "function simpleLib() {
         return 'hello world';

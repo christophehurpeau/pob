@@ -16,7 +16,7 @@
     "node": "^14.13.1 || >=16.0.0"
   },
   "main": "./lib/index.js",
-  "types": "./runtime.d.ts",
+  "types": "./lib/index.d.ts",
   "exports": {
     ".": "./lib/index.js",
     "./createRollupConfig": "./lib/createRollupConfig.js",
@@ -38,34 +38,13 @@
     "rollup": "./bin/rollup.cjs"
   },
   "scripts": {
-    "build": "yarn run build:definitions",
-    "build:definitions": "tsc --lib esnext --noEmit --skipLibCheck ./lib/index.d.ts",
-    "generate:test-coverage": "rm -Rf docs/coverage/ ; NODE_ENV=production NODE_OPTIONS=--experimental-vm-modules jest --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/pob-babel",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest",
-    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch"
+    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/pob-babel"
   },
   "prettier": {
     "trailingComma": "all",
     "singleQuote": true,
     "arrowParens": "always"
-  },
-  "jest": {
-    "cacheDirectory": "./node_modules/.cache/jest",
-    "testMatch": [
-      "<rootDir>/lib/**/__tests__/**/*.?(m)js",
-      "<rootDir>/lib/**/*.test.?(m)js"
-    ],
-    "collectCoverageFrom": [
-      "lib/**/*.?(m)js"
-    ],
-    "moduleFileExtensions": [
-      "js",
-      "json"
-    ],
-    "extensionsToTreatAsEsm": [],
-    "testEnvironment": "node"
   },
   "pob": {},
   "peerDependencies": {
@@ -88,9 +67,6 @@
     "semver": "^7.3.4"
   },
   "devDependencies": {
-    "@types/jest": "27.0.3",
-    "jest": "27.4.4",
-    "pob-lcov-reporter": "workspace:*",
     "typescript": "4.5.3"
   }
 }
