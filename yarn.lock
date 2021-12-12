@@ -6126,7 +6126,7 @@ __metadata:
   resolution: "example-ts-lib@workspace:examples/ts-lib"
   dependencies:
     "@babel/core": 7.16.0
-    pob-babel: "workspace:*"
+    pob-babel: 29.4.1
     typescript: 4.5.3
   languageName: unknown
   linkType: soft
@@ -10464,7 +10464,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@^29.4.1, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
+"pob-babel@29.4.1, pob-babel@^29.4.1, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
