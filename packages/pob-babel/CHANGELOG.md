@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [29.4.0](https://github.com/christophehurpeau/pob/compare/pob-babel@29.3.0...pob-babel@29.4.0) (2021-12-12)
+
+
+### Features
+
+* configure pob-lcov-reporter for pob monorepo ([e7f40c4](https://github.com/christophehurpeau/pob/commit/e7f40c4dc9a2400e48a1497ac4ea0bdc5f842a15))
+* update eslint 8 and eslint-config-pob ([f881f05](https://github.com/christophehurpeau/pob/commit/f881f05852e00c22a35178979e1425445413ce70))
+
+
+
+
+
 # [29.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@29.2.0...pob-babel@29.3.0) (2021-12-11)
 
 

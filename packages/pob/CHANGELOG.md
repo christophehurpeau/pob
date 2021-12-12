@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.6.0](https://github.com/christophehurpeau/pob/compare/pob@9.5.0...pob@9.6.0) (2021-12-12)
+
+
+### Bug Fixes
+
+* **pob:** move babel config generator to testing generator and configure for monorepo ([1d2a4e6](https://github.com/christophehurpeau/pob/commit/1d2a4e6f97adae84b8e4e045e36aa10c47913e5f))
+* package locations in mongorepo generator ([63e7f62](https://github.com/christophehurpeau/pob/commit/63e7f62e934e6703066ac16ddb4fff7975811295))
+* **pob:** dont remove preversion script for pob-dependencies ([f62355d](https://github.com/christophehurpeau/pob/commit/f62355d35ab186a9c680fee4836e4aaa5293d77b))
+* **pob:** only add test-setup in ignored build tsconfig when package is not in a monorepo ([dba09fd](https://github.com/christophehurpeau/pob/commit/dba09fdec9a15617274ffe7acdb39c627ba84ab6))
+* add missing clean script in apps ([a871c2c](https://github.com/christophehurpeau/pob/commit/a871c2c74386d9af0febf62ae09962ba092f6a29))
+* add src/test-setup.ts in build exclude ([118efc9](https://github.com/christophehurpeau/pob/commit/118efc90130d07c1689db1f58ccab7762eefe0dd))
+* allow extendable renovate config ([5d9a053](https://github.com/christophehurpeau/pob/commit/5d9a053f0485fa66586fb237b7770f450799c045))
+* allow to extends renovate config ([e61b0b7](https://github.com/christophehurpeau/pob/commit/e61b0b792f63e9e938a9172a102089ff9eb3aa2f))
+* doesJsCheckPackagesExists should be let ([6aac69f](https://github.com/christophehurpeau/pob/commit/6aac69f1a2eb6df4e98d4289da2e4b245a278e94))
+* dont create and delete check-package script in workspace packages ([3398ef5](https://github.com/christophehurpeau/pob/commit/3398ef56a97933149eaea02cea58949cadfc61b2))
+* dont delete plugin dependencies in eslint-config-pob ([31fe081](https://github.com/christophehurpeau/pob/commit/31fe08106647624317f277d2e31f820911445532))
+* get eslint dependency versions from @pob/eslint-config ([4100cc5](https://github.com/christophehurpeau/pob/commit/4100cc5a342b1cc970f614de99692600f9ec89f9))
+* order pob-babel/plugin-run.cjs ([57d6c8b](https://github.com/christophehurpeau/pob/commit/57d6c8bfbcfd756a23f96b436614db8991cf1ed2))
+* read vscode tasks file ([436c480](https://github.com/christophehurpeau/pob/commit/436c480d4538b68893b3521573ab50199d63a23e))
+* **pob:** esm condition for babel.config.cjs ([6aeb96f](https://github.com/christophehurpeau/pob/commit/6aeb96fd7648484755c595310008b0dff20fa6a4))
+* **pob:** global testing config ([fc56a6d](https://github.com/christophehurpeau/pob/commit/fc56a6d28413a8ae2c7a45235f853b5123005c84))
+
+
+### Features
+
+* configure pob-lcov-reporter for pob monorepo ([e7f40c4](https://github.com/christophehurpeau/pob/commit/e7f40c4dc9a2400e48a1497ac4ea0bdc5f842a15))
+* **pob:** add default check-package-dependencies script if it doesnt exists and package type is module ([7e54041](https://github.com/christophehurpeau/pob/commit/7e540417e34d908f06f6263d668f9cbb4d9c7990))
+* update eslint 8 and eslint-config-pob ([f881f05](https://github.com/christophehurpeau/pob/commit/f881f05852e00c22a35178979e1425445413ce70))
+
+
+
+
+
 # [9.5.0](https://github.com/christophehurpeau/pob/compare/pob@9.4.0...pob@9.5.0) (2021-12-11)
 
 

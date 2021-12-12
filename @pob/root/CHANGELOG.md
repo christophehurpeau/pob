@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.0.0...@pob/root@6.1.0) (2021-12-12)
+
+
+### Features
+
+* run npx pob update on @pob/root renovate update ([67666e9](https://github.com/christophehurpeau/pob/commit/67666e9a87941ac78cdf68373164a52a532020b1))
+
+
+
+
+
 # [6.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@5.9.0...@pob/root@6.0.0) (2021-12-11)
 
 

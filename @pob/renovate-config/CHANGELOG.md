@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.1.0...@pob/renovate-config@5.2.0) (2021-12-12)
+
+
+### Bug Fixes
+
+* [@pob](https://github.com/pob) eslint configs group ([645abda](https://github.com/christophehurpeau/pob/commit/645abda386f9d319cc5d89cb11b69793bd81d05f))
+
+
+### Features
+
+* run npx pob update on @pob/root renovate update ([67666e9](https://github.com/christophehurpeau/pob/commit/67666e9a87941ac78cdf68373164a52a532020b1))
+
+
+
+
+
 # [5.1.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.0.6...@pob/renovate-config@5.1.0) (2021-12-11)
 
 

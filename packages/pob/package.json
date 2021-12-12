@@ -1,6 +1,6 @@
 {
   "name": "pob",
-  "version": "9.5.0",
+  "version": "9.6.0",
   "description": "Pile of bones, library generator with git/babel/typescript/typedoc/readme/jest",
   "keywords": [
     "skeleton"
@@ -64,7 +64,7 @@
     "mem-fs-editor": "8.1.2",
     "minimist-argv": "^1.1.0",
     "parse-author": "^2.0.0",
-    "pob-dependencies": "^6.1.0",
+    "pob-dependencies": "^6.2.0",
     "prettier": "2.5.1",
     "semver": "^7.3.4",
     "update-notifier": "^5.0.1",
