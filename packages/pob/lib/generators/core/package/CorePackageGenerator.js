@@ -164,7 +164,7 @@ export default class CorePackageGenerator extends Generator {
       const doesMjsCheckPackagesExists = this.fs.exists(
         this.destinationPath('scripts/check-packages.mjs'),
       );
-      const doesJsCheckPackagesExists = this.fs.exists(
+      let doesJsCheckPackagesExists = this.fs.exists(
         this.destinationPath('scripts/check-packages.js'),
       );
 
