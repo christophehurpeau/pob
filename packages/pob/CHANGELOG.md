@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.6.1](https://github.com/christophehurpeau/pob/compare/pob@9.6.0...pob@9.6.1) (2021-12-12)
+
+
+### Bug Fixes
+
+* vscode settings for eslint 8 ([841b0ff](https://github.com/christophehurpeau/pob/commit/841b0ff3cf18b1aed9a070445508128806572680))
+
+
+
+
+
 # [9.6.0](https://github.com/christophehurpeau/pob/compare/pob@9.5.0...pob@9.6.0) (2021-12-12)
 
 

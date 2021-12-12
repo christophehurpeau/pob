@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.3](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@7.1.2...babel-preset-pob-env@7.1.3) (2021-12-12)
+
+
+### Bug Fixes
+
+* **babel-preset-pob-env:** discard pob-babel import ([6ca879f](https://github.com/christophehurpeau/pob/commit/6ca879fbae7445db751e51d4a590ebc21ff99712))
+
+
+
+
+
 ## [7.1.2](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@7.1.1...babel-preset-pob-env@7.1.2) (2021-12-12)
 
 **Note:** Version bump only for package babel-preset-pob-env

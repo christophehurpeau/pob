@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.1](https://github.com/christophehurpeau/pob/compare/@pob/pretty-eslint-config@3.0.0...@pob/pretty-eslint-config@3.0.1) (2021-12-12)
+
+
+### Reverts
+
+* fix: go back to commonjs modules for yarn pnp compatibility ([4e943b6](https://github.com/christophehurpeau/pob/commit/4e943b65ac843b6900aa4f86294f13b8fb18a0e8))
+
+
+
+
+
 # [3.0.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-eslint-config@2.2.0...@pob/pretty-eslint-config@3.0.0) (2021-12-11)
 
 

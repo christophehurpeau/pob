@@ -1,6 +1,6 @@
 {
   "name": "@pob/pretty-eslint-config",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "prettier and sort eslint config",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -37,7 +37,7 @@
   },
   "pob": {},
   "dependencies": {
-    "@pob/sort-eslint-config": "^3.0.0",
+    "@pob/sort-eslint-config": "^3.0.1",
     "prettier": "^2.1.2"
   }
 }
