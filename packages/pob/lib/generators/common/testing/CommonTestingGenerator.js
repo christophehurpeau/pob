@@ -83,7 +83,9 @@ export default class CommonTestingGenerator extends Generator {
     const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
     const globalTesting = yoConfigPobMonorepo && yoConfigPobMonorepo.testing;
     const enableForMonorepo = this.options.monorepo && globalTesting;
-    const transpileWithBabel = yoConfigPobMonorepo.typescript;
+    const transpileWithBabel = this.options.monorepo
+      ? yoConfigPobMonorepo.typescript
+      : pkg.pob && pkg.pob.babelEnvs && pkg.pob.babelEnvs.length > 0;
 
     if (!this.options.enable) {
       packageUtils.removeDevDependencies(pkg, ['jest', '@types/jest']);
