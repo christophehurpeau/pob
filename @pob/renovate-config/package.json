@@ -116,6 +116,18 @@
           ]
         },
         {
+          "packagePatterns": [
+            "^@pob/root"
+          ],
+          "schedule": [
+            "at any time"
+          ],
+          "labels": [
+            ":ok_hand: code/approved",
+            ":vertical_traffic_light: automerge"
+          ]
+        },
+        {
           "updateTypes": [
             "pin"
           ],
