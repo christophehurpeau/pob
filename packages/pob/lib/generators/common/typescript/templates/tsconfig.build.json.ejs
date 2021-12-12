@@ -18,7 +18,9 @@
 
   "exclude": [
     "dist/**",
+<% if (!inMonorepo) { -%>
     "src/test-setup.ts",
+<% } -%>
     "src/**/*.test.ts",
 <% if(jsx) { -%>
     "src/**/*.test.tsx",

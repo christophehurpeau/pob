@@ -127,6 +127,7 @@ export default class CommonTypescriptGenerator extends Generator {
           this.templatePath('tsconfig.build.json.ejs'),
           tsconfigBuildPath,
           {
+            inMonorepo: inLerna && !inLerna.root,
             jsx,
             composite,
             monorepoPackageNames,
