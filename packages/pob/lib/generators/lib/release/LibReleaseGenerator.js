@@ -39,7 +39,10 @@ export default class LibReleaseGenerator extends Generator {
 
     if (!isStandardVersionEnabled) {
       packageUtils.removeDevDependencies(pkg, ['standard-version']);
-      packageUtils.removeScripts(pkg, ['release', 'preversion']);
+      packageUtils.removeScripts(pkg, [
+        'release',
+        pkg.name === 'pob-dependencies' ? null : 'preversion',
+      ]);
     } else {
       packageUtils.addDevDependencies(pkg, ['standard-version']);
       packageUtils.addScripts(pkg, {
