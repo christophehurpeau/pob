@@ -279,6 +279,7 @@ export default class PobLibGenerator extends Generator {
       enable: !inLerna && this.pobjson.testing && this.pobjson.testing.ci,
       withBabel: babelEnvs.length > 0,
       documentation: !!this.pobjson.documentation,
+      updateOnly: this.options.updateOnly,
     });
 
     // must be after doc, testing

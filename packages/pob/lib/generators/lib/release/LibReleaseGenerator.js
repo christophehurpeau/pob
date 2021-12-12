@@ -24,16 +24,37 @@ export default class LibReleaseGenerator extends Generator {
       required: true,
       desc: 'Include documentation',
     });
+
+    this.option('updateOnly', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+      desc: 'Avoid asking questions',
+    });
+  }
+
+  async prompting() {
+    this.isReleasePleaseEnabled =
+      this.options.enable &&
+      this.fs.exists(
+        this.destinationPath('.github/workflows/release-please.yml'),
+      );
+
+    if (!this.options.updateOnly && !this.isReleasePleaseEnabled) {
+      const { enableReleasePlease } = await this.prompt({
+        type: 'confirm',
+        name: 'enableReleasePlease',
+        message: 'Would you like to enable release please ?',
+        default: true,
+      });
+      this.isReleasePleaseEnabled = enableReleasePlease;
+    }
   }
 
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
-    const isReleasePleaseEnabled =
-      this.options.enable &&
-      this.fs.exists(
-        this.destinationPath('.github/workflows/release-please.yml'),
-      );
+    const isReleasePleaseEnabled = this.isReleasePleaseEnabled;
     const isStandardVersionEnabled =
       this.options.enable && !isReleasePleaseEnabled;
 
