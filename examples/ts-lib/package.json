@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.16.0",
-    "pob-babel": "^29.4.1",
+    "pob-babel": "workspace:*",
     "typescript": "4.5.3"
   }
 }
