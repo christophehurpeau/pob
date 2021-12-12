@@ -67,7 +67,7 @@ export default class CoreGitGithubGenerator extends Generator {
       desc: 'repo name',
     });
 
-    if (!GITHUB_TOKEN) {
+    if (!GITHUB_TOKEN && process.env.CI !== 'true') {
       throw new Error(
         'Missing POB_GITHUB_TOKEN. Create one with https://github.com/settings/tokens/new?scopes=repo&description=POB%20Generator and add it in your env variables.',
       );
@@ -75,6 +75,7 @@ export default class CoreGitGithubGenerator extends Generator {
   }
 
   async end() {
+    if (!GITHUB_TOKEN) return;
     const owner = this.options.gitHostAccount;
     const repo = this.options.repoName;
 
