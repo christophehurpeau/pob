@@ -38,12 +38,6 @@
     "arrowParens": "always"
   },
   "pob": {},
-  "resolutions": {
-    "yeoman-generator": "4.13.0"
-  },
-  "resolutionsExplained": {
-    "yeoman-generator": "generator-license has a dependency to yeoman-generator@2.0.5"
-  },
   "dependencies": {
     "@lerna/package-graph": "^4.0.0",
     "@lerna/project": "^4.0.0",
