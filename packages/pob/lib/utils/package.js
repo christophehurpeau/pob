@@ -145,7 +145,10 @@ const internalAddDependencies = (pkg, type, dependencies, cleaned, prefix) => {
           ? `${prefix || ''}${potentialNewVersionCleaned}`
           : potentialNewVersion;
       try {
-        if (
+        if (currentVersion === 'workspace:*') {
+          // the package is in the monorepo
+          return;
+        } else if (
           !currentVersion ||
           semver.gt(potentialNewVersionCleaned, cleanVersion(currentVersion))
         ) {
