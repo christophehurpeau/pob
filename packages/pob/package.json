@@ -54,7 +54,7 @@
     "findup-sync": "^5.0.0",
     "generator-license": "^5.4.0",
     "git-remote-url": "^1.0.1",
-    "github-username": "^6.0.0",
+    "github-username": "^7.0.0",
     "got": "^11.8.1",
     "inquirer-npm-name": "^4.0.0",
     "json5": "^2.2.0",
