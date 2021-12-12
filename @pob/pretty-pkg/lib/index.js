@@ -1,10 +1,8 @@
-'use strict';
+import fs from 'fs';
+import sortPkg from '@pob/sort-pkg';
+import prettier from 'prettier';
 
-const fs = require('fs');
-const sortPkg = require('@pob/sort-pkg');
-const prettier = require('prettier');
-
-module.exports = function prettyPkg(pkg, prettierOptions = pkg.prettier) {
+export default function prettyPkg(pkg, prettierOptions = pkg.prettier) {
   if (typeof pkg === 'string') {
     pkg = JSON.parse(pkg);
     if (typeof pkg !== 'object') {
@@ -28,14 +26,14 @@ module.exports = function prettyPkg(pkg, prettierOptions = pkg.prettier) {
     printWidth: 80,
     ...prettierOptions,
   });
-};
+}
 
-module.exports.writeSync = function writeSync(pkg, path, prettierOptions) {
-  const string = module.exports(pkg, prettierOptions);
+export function writeSync(pkg, path, prettierOptions) {
+  const string = prettyPkg(pkg, prettierOptions);
   fs.writeFileSync(path, string, 'utf-8');
-};
+}
 
-module.exports.overrideSync = function overrideSync(path, prettierOptions) {
+export function overrideSync(path, prettierOptions) {
   const pkg = fs.readFileSync(path, 'utf-8');
-  return module.exports.writeSync(pkg, path, prettierOptions);
-};
+  return writeSync(pkg, path, prettierOptions);
+}

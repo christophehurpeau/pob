@@ -1,8 +1,6 @@
-'use strict';
+import sortObject from '@pob/sort-object';
 
-const sortObject = require('@pob/sort-object');
-
-module.exports = function sortEslintConfig(config) {
+export default function sortEslintConfig(config) {
   const sortedConfig = sortObject(config, [
     'root',
     'parser',
@@ -31,4 +29,4 @@ module.exports = function sortEslintConfig(config) {
   }
 
   return sortedConfig;
-};
+}

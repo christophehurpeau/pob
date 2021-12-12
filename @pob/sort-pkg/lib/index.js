@@ -1,10 +1,8 @@
 /* eslint-disable complexity */
 
-'use strict';
+import sortObject from '@pob/sort-object';
 
-const sortObject = require('@pob/sort-object');
-
-module.exports = function sortPkg(pkg) {
+export default function sortPkg(pkg) {
   sortObject(pkg, [
     'name',
     'private',
@@ -91,4 +89,4 @@ module.exports = function sortPkg(pkg) {
   if (pkg.optionalDependencies) sortObject(pkg.optionalDependencies);
 
   return pkg;
-};
+}

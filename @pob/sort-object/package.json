@@ -11,7 +11,7 @@
     "directory": "@pob/sort-object"
   },
   "homepage": "https://github.com/christophehurpeau/pob",
-  "type": "commonjs",
+  "type": "module",
   "engines": {
     "node": "^14.13.1 || >=16.0.0"
   },
