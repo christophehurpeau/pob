@@ -52,21 +52,21 @@ overrideSync('.eslintrc.json');
 const fs = require('fs');
 const { writeSync } = require('@pob/pretty-eslint-config');
 
-const pkg = JSON.parse(fs.readFileSync('.eslintrc.json', 'utf-8'));
-writeSync(pkg, '.eslintrc.json');
+const eslintConfig = JSON.parse(fs.readFileSync('.eslintrc.json', 'utf-8'));
+writeSync(eslintConfig, '.eslintrc.json');
 ```
 
 #### default
 
 ```js
 const fs = require('fs');
-const prettyPkg = require('@pob/pretty-eslint-config');
+const prettyEslintConfig = require('@pob/pretty-eslint-config');
 
 // parsing yourself
-const pkg = JSON.parse(fs.readFileSync('.eslintrc.json', 'utf-8'));
-fs.writeFileSync(prettyPkg(pkg), '.eslintrc.json');
+const eslintConfig = JSON.parse(fs.readFileSync('.eslintrc.json', 'utf-8'));
+fs.writeFileSync(prettyEslintConfig(eslintConfig), '.eslintrc.json');
 
 // let prettyPkg parse
-const pkgContent = fs.readFileSync('.eslintrc.json', 'utf-8');
-fs.writeFileSync(prettyPkg(pkgContent), '.eslintrc.json');
+const eslintConfig = fs.readFileSync('.eslintrc.json', 'utf-8');
+fs.writeFileSync(prettyEslintConfig(eslintConfig), '.eslintrc.json');
 ```
