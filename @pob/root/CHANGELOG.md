@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.5](https://github.com/christophehurpeau/pob/compare/@pob/root@6.1.4...@pob/root@6.1.5) (2021-12-12)
+
+
+### Bug Fixes
+
+* enable yarn install in pob update workflow ([f7a946a](https://github.com/christophehurpeau/pob/commit/f7a946a3773e7d2400c1507c895d24f46525343c))
+* exitCode when lint-staged fails ([cb78fe8](https://github.com/christophehurpeau/pob/commit/cb78fe8ddd709529a8f026d568e9ad41700d1270))
+
+
+
+
+
 ## [6.1.4](https://github.com/christophehurpeau/pob/compare/@pob/root@6.1.3...@pob/root@6.1.4) (2021-12-12)
 
 

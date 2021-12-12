@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.8.0](https://github.com/christophehurpeau/pob/compare/pob@9.7.4...pob@9.8.0) (2021-12-12)
+
+
+### Bug Fixes
+
+* **pob:** dont try release-please if release is disabled ([86d6edf](https://github.com/christophehurpeau/pob/commit/86d6edf3e84cf98c0605044e09fb994fb036a3cc))
+* sort package after running yarn version update ([b9773f0](https://github.com/christophehurpeau/pob/commit/b9773f0ac08c857b87836cbb2a665557f652bffd))
+* **deps:** update @pob/eslint-config to v48.0.6 ([#1137](https://github.com/christophehurpeau/pob/issues/1137)) ([999b411](https://github.com/christophehurpeau/pob/commit/999b411e0e4a1c0a47e3c8f23ca20694ca8f2451))
+
+
+### Features
+
+* **pob:** add env in app gitignore ([148a02a](https://github.com/christophehurpeau/pob/commit/148a02a9437b638051b384c7bd61ce1195cae8aa))
+* allow to configure resolveJsonModule and fix baseUrl in tsconfig for apps ([d68393f](https://github.com/christophehurpeau/pob/commit/d68393f9bf02598aa3638e21d2dc407b9b282d1b))
+* **pob:** allow release-please in apps ([6d567c6](https://github.com/christophehurpeau/pob/commit/6d567c6ee49f4faa26d7ab23f042615134681158))
+* **pob:** suggest to enable release-please ([f62e46c](https://github.com/christophehurpeau/pob/commit/f62e46c8fd9e5936b10790288b14f516e9d8e6d6))
+* conditional publish in release workflow ([162c83e](https://github.com/christophehurpeau/pob/commit/162c83ed7875d7caeaef43169742eef8742825f5))
+
+
+
+
+
 ## [9.7.4](https://github.com/christophehurpeau/pob/compare/pob@9.7.3...pob@9.7.4) (2021-12-12)
 
 

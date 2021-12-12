@@ -5,11 +5,11 @@ interface Dependencies {
   '@babel/runtime': '7.16.3';
   '@pob/commitlint-config': '^4.0.0';
   '@pob/eslint-config': '48.0.5';
-  '@pob/eslint-config-typescript': '48.0.5';
-  '@pob/eslint-config-typescript-react': '48.0.5';
+  '@pob/eslint-config-typescript': '48.0.6';
+  '@pob/eslint-config-typescript-react': '48.0.6';
   '@pob/lerna-light': '^5.0.0';
   '@pob/pretty-pkg': '^4.0.1';
-  '@pob/root': '6.1.3';
+  '@pob/root': '6.1.4';
   '@types/jest': '27.0.3';
   'babel-preset-modern-browsers': '15.0.2';
   eslint: '8.4.1';
