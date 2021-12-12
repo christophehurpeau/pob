@@ -1,5 +1,6 @@
 import Generator from 'yeoman-generator';
 import inLerna from '../../../utils/inLerna.js';
+import { writeAndFormatJson } from '../../../utils/writeAndFormat.js';
 
 export default class CoreRenovateGenerator extends Generator {
   constructor(args, opts) {
@@ -58,11 +59,21 @@ export default class CoreRenovateGenerator extends Generator {
 
   writing() {
     if (this.enableRenovate) {
-      this.fs.copy(
-        this.templatePath(
-          this.options.app ? 'renovate.app.json' : 'renovate.lib.json',
-        ),
+      const renovateConfig = this.fs.readJSON(
         this.destinationPath('renovate.json'),
+        {},
+      );
+
+      if (this.options.app) {
+        renovateConfig.extends = ['config:js-app', '@pob'];
+      } else {
+        renovateConfig.extends = ['config:js-lib', '@pob'];
+      }
+
+      writeAndFormatJson(
+        this.fs,
+        this.destinationPath('renovate.json'),
+        renovateConfig,
       );
     } else if (this.fs.exists(this.destinationPath('renovate.json'))) {
       this.fs.delete(this.destinationPath('renovate.json'));
