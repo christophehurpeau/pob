@@ -186,6 +186,14 @@ export default class CorePackageGenerator extends Generator {
           }`,
         },
       );
+    } else if (inLerna && !inLerna.root) {
+      if (this.fs.exists('scripts/check-package.js')) {
+        this.fs.delete('scripts/check-package.js');
+      }
+      if (this.fs.exists('scripts/check-package.mjs')) {
+        this.fs.delete('scripts/check-package.mjs');
+      }
+      packageUtils.removeScripts(pkg, ['checks']);
     } else {
       const doesMjsCheckPackageExists = this.fs.exists(
         this.destinationPath('scripts/check-package.mjs'),
