@@ -23,3 +23,7 @@ import pobRoot from '@pob/root';
 
 console.log(pobRoot);
 ```
+
+## Latest forced update for pob
+
+[pob@9.7.2](https://github.com/christophehurpeau/pob/commit/4a64b1861d1339afe33e624e5db5f9d9fc009129)
