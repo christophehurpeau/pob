@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.7.4](https://github.com/christophehurpeau/pob/compare/pob@9.7.3...pob@9.7.4) (2021-12-12)
+
+
+### Bug Fixes
+
+* no process.env.POB_GITHUB_TOKEN in ci ([8248c48](https://github.com/christophehurpeau/pob/commit/8248c48441d4c6cfea86367166159444f4711bb8))
+
+
+
+
+
 ## [9.7.3](https://github.com/christophehurpeau/pob/compare/pob@9.7.2...pob@9.7.3) (2021-12-12)
 
 **Note:** Version bump only for package pob
