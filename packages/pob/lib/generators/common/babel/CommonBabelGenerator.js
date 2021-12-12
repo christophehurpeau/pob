@@ -690,7 +690,6 @@ export default class CommonBabelGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
     const useBabel = this.babelEnvs && this.babelEnvs.length > 0;
-    const hasReact = useBabel && packageUtils.hasReact(pkg);
 
     /* pob-babel config */
 
@@ -723,21 +722,6 @@ export default class CommonBabelGenerator extends Generator {
         this.destinationPath('babel.config.js'),
         this.destinationPath('babel.config.cjs'),
       );
-    }
-
-    if (useBabel && this.options.testing && !inLerna) {
-      // cjs for jest compat
-      this.fs.copyTpl(
-        this.templatePath('babel.config.cjs.ejs'),
-        this.destinationPath('babel.config.cjs'),
-        {
-          hasReact,
-          testing: this.options.testing,
-          jestExperimentalESM: pkg.type === 'module',
-        },
-      );
-    } else {
-      this.fs.delete('babel.config.cjs');
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);

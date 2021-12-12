@@ -1,6 +1,7 @@
 import Generator from 'yeoman-generator';
 import inLerna from '../../../utils/inLerna.js';
 import * as packageUtils from '../../../utils/package.js';
+import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
 
 export default class CommonTestingGenerator extends Generator {
   constructor(args, opts) {
@@ -82,6 +83,7 @@ export default class CommonTestingGenerator extends Generator {
     const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
     const globalTesting = yoConfigPobMonorepo && yoConfigPobMonorepo.testing;
     const enableForMonorepo = this.options.monorepo && globalTesting;
+    const transpileWithBabel = yoConfigPobMonorepo.typescript;
 
     if (!this.options.enable) {
       packageUtils.removeDevDependencies(pkg, ['jest', '@types/jest']);
@@ -124,7 +126,6 @@ export default class CommonTestingGenerator extends Generator {
             ? 'NODE_OPTIONS=--experimental-vm-modules '
             : ''
         }jest`;
-        const transpileWithBabel = yoConfigPobMonorepo.typescript;
 
         packageUtils.addScripts(pkg, {
           test: jestCommand,
@@ -136,13 +137,30 @@ export default class CommonTestingGenerator extends Generator {
           ].join(' ; '),
         });
 
+        const workspacesWithoutStar = pkg.workspaces.map((workspace) => {
+          if (!workspace.endsWith('/*'))
+            throw new Error('Invalid workspace format: ' + workspace);
+          return workspace.slice(0, -2);
+        });
+        const workspacesPattern =
+          workspacesWithoutStar.length === 1
+            ? workspacesWithoutStar[0]
+            : `(${workspacesWithoutStar.join('|')})`;
+        const hasReact = packageUtils.hasReact(pkg);
+
         if (!pkg.jest) pkg.jest = {};
         Object.assign(pkg.jest, {
           cacheDirectory: './node_modules/.cache/jest',
           testEnvironment: 'node',
+          testMatch: [
+            `<rootDir>/${workspacesPattern}/*/(src|lib)/**/__tests__/**/*.${
+              transpileWithBabel ? '(ts|js|cjs|mjs)' : '(js|cjs|mjs)'
+            }${hasReact ? '?(x)' : ''}`,
+            `<rootDir>/${workspacesPattern}/*/(src|lib)/**/*.test.${
+              transpileWithBabel ? '(ts|js|cjs|mjs)' : '(js|cjs|mjs)'
+            }${hasReact ? '?(x)' : ''}`,
+          ],
         });
-
-        const hasReact = false;
 
         if (shouldUseExperimentalVmModules) {
           pkg.jest.extensionsToTreatAsEsm = [
@@ -235,6 +253,34 @@ export default class CommonTestingGenerator extends Generator {
 
         if (!transpileWithBabel) delete pkg.jest.transform;
       }
+    }
+
+    if (
+      transpileWithBabel &&
+      ((this.options.monorepo && globalTesting) || !globalTesting)
+    ) {
+      const hasReact = transpileWithBabel && packageUtils.hasReact(pkg);
+      // cjs for jest compat
+      copyAndFormatTpl(
+        this.fs,
+        this.templatePath('babel.config.cjs.ejs'),
+        this.destinationPath('babel.config.cjs'),
+        {
+          only: !this.options.monorepo
+            ? "path.resolve(__dirname, 'src')"
+            : pkg.workspaces
+                .flatMap((workspace) => [
+                  `'${workspace}/src'`,
+                  `'${workspace}/lib'`,
+                ])
+                .join(', '),
+          hasReact,
+          testing: this.options.testing,
+          jestExperimentalESM: pkg.type === 'module',
+        },
+      );
+    } else {
+      this.fs.delete('babel.config.cjs');
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
