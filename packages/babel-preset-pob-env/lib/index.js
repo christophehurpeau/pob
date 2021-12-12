@@ -192,7 +192,17 @@ module.exports = function (context, opts = {}) {
 
       // discard unused imports (like production-only or node-only imports)
       {
-        plugins: [[require.resolve('babel-plugin-discard-module-references')]],
+        plugins: [
+          [
+            require.resolve('babel-plugin-discard-module-references'),
+            {
+              targets: [
+                // used to import typings
+                'pob-babel',
+              ],
+            },
+          ],
+        ],
       },
 
       // transpile for specified target
