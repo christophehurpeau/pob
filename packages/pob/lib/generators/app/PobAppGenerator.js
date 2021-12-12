@@ -168,6 +168,13 @@ export default class PobAppGenerator extends Generator {
       ignorePaths: ignorePaths.join('\n'),
     });
 
+    this.composeWith('pob:common:release', {
+      enable: !inLerna && this.appConfig.testing && this.appConfig.ci,
+      withBabel: babel,
+      documentation: false,
+      updateOnly: this.options.updateOnly,
+    });
+
     this.composeWith('pob:core:gitignore', {
       root: !inLerna || inLerna.root,
       documentation: false,

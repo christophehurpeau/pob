@@ -2,7 +2,7 @@ import Generator from 'yeoman-generator';
 import inLerna from '../../../utils/inLerna.js';
 import * as packageUtils from '../../../utils/package.js';
 
-export default class LibReleaseGenerator extends Generator {
+export default class CommonReleaseGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
@@ -40,7 +40,7 @@ export default class LibReleaseGenerator extends Generator {
         this.destinationPath('.github/workflows/release-please.yml'),
       );
 
-    if (!this.options.updateOnly && !this.isReleasePleaseEnabled) {
+    if (!process.env.CI && !this.isReleasePleaseEnabled) {
       const { enableReleasePlease } = await this.prompt({
         type: 'confirm',
         name: 'enableReleasePlease',

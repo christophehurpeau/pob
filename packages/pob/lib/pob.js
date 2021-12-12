@@ -12,6 +12,7 @@ import CommonBabelGenerator from './generators/common/babel/CommonBabelGenerator
 import CommonLintGenerator from './generators/common/format-lint/CommonLintGenerator.js';
 import CommonHuskyGenerator from './generators/common/husky/CommonHuskyGenerator.js';
 import CommonRemoveOldDependenciesGenerator from './generators/common/old-dependencies/CommonRemoveOldDependenciesGenerator.js';
+import CommonReleaseGenerator from './generators/common/release/CommonReleaseGenerator.js';
 import CommonTestingGenerator from './generators/common/testing/CommonTestingGenerator.js';
 import CommonTypescriptGenerator from './generators/common/typescript/CommonTypescriptGenerator.js';
 import CoreCIGenerator from './generators/core/ci/CoreCIGenerator.js';
@@ -29,7 +30,6 @@ import CoreYarnGenerator from './generators/core/yarn/CoreYarnGenerator.js';
 import PobLibGenerator from './generators/lib/PobLibGenerator.js';
 import LibDocGenerator from './generators/lib/doc/LibDocGenerator.js';
 import LibReadmeGenerator from './generators/lib/readme/LibReadmeGenerator.js';
-import LibReleaseGenerator from './generators/lib/release/LibReleaseGenerator.js';
 import PobMonorepoGenerator from './generators/monorepo/PobMonorepoGenerator.js';
 import MonorepoLernaGenerator from './generators/monorepo/lerna/MonorepoLernaGenerator.js';
 import MonorepoTypescriptGenerator from './generators/monorepo/typescript/MonorepoTypescriptGenerator.js';
@@ -102,6 +102,11 @@ env.registerStub(
   CommonRemoveOldDependenciesGenerator,
   'pob:common:remove-old-dependencies',
   `${__dirname}/generators/common/old-dependencies/CommonRemoveOldDependenciesGenerator.js`,
+);
+env.registerStub(
+  CommonReleaseGenerator,
+  'pob:common:release',
+  `${__dirname}/generators/common/release/CommonReleaseGenerator.js`,
 );
 env.registerStub(
   CommonTestingGenerator,
@@ -187,11 +192,6 @@ env.registerStub(
   LibReadmeGenerator,
   'pob:lib:readme',
   `${__dirname}/generators/lib/readme/LibReadmeGenerator.js`,
-);
-env.registerStub(
-  LibReleaseGenerator,
-  'pob:lib:release',
-  `${__dirname}/generators/lib/release/LibReleaseGenerator.js`,
 );
 env.registerStub(
   PobMonorepoGenerator,

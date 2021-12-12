@@ -275,7 +275,7 @@ export default class PobLibGenerator extends Generator {
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
     });
 
-    this.composeWith('pob:lib:release', {
+    this.composeWith('pob:common:release', {
       enable: !inLerna && this.pobjson.testing && this.pobjson.testing.ci,
       withBabel: babelEnvs.length > 0,
       documentation: !!this.pobjson.documentation,
