@@ -90,7 +90,7 @@
   "devDependencies": {
     "@types/jest": "27.0.3",
     "jest": "27.4.4",
-    "pob-lcov-reporter": "6.0.0",
+    "pob-lcov-reporter": "workspace:*",
     "typescript": "4.5.3"
   }
 }

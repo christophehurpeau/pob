@@ -104,7 +104,11 @@ export default class CommonTestingGenerator extends Generator {
       packageUtils.addOrRemoveDevDependencies(
         pkg,
         enableForMonorepo || !globalTesting,
-        ['pob-lcov-reporter', 'jest', '@types/jest'],
+        [
+          pkg.name !== 'pob-monorepo' && 'pob-lcov-reporter',
+          'jest',
+          '@types/jest',
+        ],
       );
 
       if (this.options.monorepo && !globalTesting) {

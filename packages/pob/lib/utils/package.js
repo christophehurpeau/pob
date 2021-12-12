@@ -67,7 +67,7 @@ function internalAddToObject(pkg, key, object) {
 
 function internalRemoveFromObject(pkg, key, keys) {
   if (!pkg[key]) return;
-  keys.forEach((k) => {
+  keys.filter(Boolean).forEach((k) => {
     delete pkg[key][k];
   });
   if (Object.keys(pkg[key]).length === 0) {
@@ -113,7 +113,7 @@ const internalAddDependencies = (pkg, type, dependencies, cleaned, prefix) => {
   const removeDependencies = [];
 
   const dependenciesToCheck = [];
-  dependencies.forEach((dependency) => {
+  dependencies.filter(Boolean).forEach((dependency) => {
     if (ignoreDependencies[dependency] || pkg.name === dependency) {
       removeDependencies.push(dependency);
     } else {

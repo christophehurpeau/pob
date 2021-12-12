@@ -11695,7 +11695,7 @@ __metadata:
     babel-preset-pob-env: ^7.1.1
     jest: 27.4.4
     minimist-argv: ^1.1.0
-    pob-lcov-reporter: 6.0.0
+    pob-lcov-reporter: "workspace:*"
     rollup: 2.61.1
     rollup-config-external-dependencies: ^2.0.0
     semver: ^7.3.4
@@ -11742,7 +11742,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-lcov-reporter@6.0.0, pob-lcov-reporter@^6.0.0, pob-lcov-reporter@workspace:packages/pob-lcov-reporter":
+"pob-lcov-reporter@6.0.0, pob-lcov-reporter@^6.0.0, pob-lcov-reporter@workspace:*, pob-lcov-reporter@workspace:packages/pob-lcov-reporter":
   version: 0.0.0-use.local
   resolution: "pob-lcov-reporter@workspace:packages/pob-lcov-reporter"
   dependencies:
@@ -11760,8 +11760,11 @@ __metadata:
     "@pob/eslint-config": 48.0.4
     "@pob/lerna-light": "workspace:*"
     "@pob/root": "workspace:*"
+    "@types/jest": 27.0.3
     check-package-dependencies: 2.2.1
     eslint: 8.4.1
+    jest: 27.4.4
+    pob-lcov-reporter: "workspace:*"
     prettier: 2.5.1
   languageName: unknown
   linkType: soft
