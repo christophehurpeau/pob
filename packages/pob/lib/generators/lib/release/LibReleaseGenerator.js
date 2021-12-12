@@ -79,7 +79,7 @@ export default class LibReleaseGenerator extends Generator {
         this.destinationPath('.github/workflows/release-please.yml'),
         {
           isLerna: !!inLerna,
-          // publish: ...
+          publish: !pkg.private,
         },
       );
     }
