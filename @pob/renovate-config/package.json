@@ -1,6 +1,6 @@
 {
   "name": "@pob/renovate-config",
-  "version": "5.2.1",
+  "version": "5.2.2",
   "description": "renovate pob config",
   "type": "module",
   "engines": {
@@ -18,7 +18,7 @@
     "arrowParens": "always"
   },
   "devDependencies": {
-    "pob-dependencies": "^6.2.1",
+    "pob-dependencies": "6.3.0",
     "prettier": "2.5.1"
   },
   "renovate-config": {

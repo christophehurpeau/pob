@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.4.2](https://github.com/christophehurpeau/pob/compare/pob-babel@29.4.1...pob-babel@29.4.2) (2021-12-12)
+
+
+### Bug Fixes
+
+* **pob-babel:** fix typings ([c643824](https://github.com/christophehurpeau/pob/commit/c643824d72bee08fb77df4d6c1a4332f77e66aac))
+
+
+
+
+
 ## [29.4.1](https://github.com/christophehurpeau/pob/compare/pob-babel@29.4.0...pob-babel@29.4.1) (2021-12-12)
 
 **Note:** Version bump only for package pob-babel

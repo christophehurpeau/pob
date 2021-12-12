@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.7.0](https://github.com/christophehurpeau/pob/compare/pob@9.6.1...pob@9.7.0) (2021-12-12)
+
+
+### Bug Fixes
+
+* remove dependency generator-license ([f087175](https://github.com/christophehurpeau/pob/commit/f0871751cbd883b4a7e64f56853da73d1c2daef0))
+* remove resolutions in pob ([04940d3](https://github.com/christophehurpeau/pob/commit/04940d36da39cc3771b241ff695b2ad54f28c5d3))
+* update generator-license ([ef71b4d](https://github.com/christophehurpeau/pob/commit/ef71b4d2e0cb47736436945e4865df4e8eccd890))
+* use lerna version with exact param ([9dd6a5c](https://github.com/christophehurpeau/pob/commit/9dd6a5c8d965cd4af40db3d93e022e6824baf97a))
+
+
+### Features
+
+* support workspace:* in dependencies ([258a5e8](https://github.com/christophehurpeau/pob/commit/258a5e88ad890f0e2f429d63f8011e8d01c3ebe3))
+* update @yarnpkg/parsers ([f778458](https://github.com/christophehurpeau/pob/commit/f778458f8e49f610f52e1111846d9465f54576a6))
+
+
+
+
+
 ## [9.6.1](https://github.com/christophehurpeau/pob/compare/pob@9.6.0...pob@9.6.1) (2021-12-12)
 
 

@@ -2839,12 +2839,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: ^6.2.1
+    pob-dependencies: 6.3.0
     prettier: 2.5.1
   languageName: unknown
   linkType: soft
 
-"@pob/root@^6.1.1, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@6.1.2, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -6126,7 +6126,7 @@ __metadata:
   resolution: "example-ts-lib@workspace:examples/ts-lib"
   dependencies:
     "@babel/core": 7.16.0
-    pob-babel: 29.4.1
+    pob-babel: 29.4.2
     typescript: 4.5.3
   languageName: unknown
   linkType: soft
@@ -10464,7 +10464,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@29.4.1, pob-babel@^29.4.1, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
+"pob-babel@29.4.2, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -10492,7 +10492,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@^6.2.1, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@6.3.0, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -10506,13 +10506,13 @@ __metadata:
     "@pob/eslint-config-typescript-react": 48.0.5
     "@pob/lerna-light": ^5.0.0
     "@pob/pretty-pkg": ^4.0.1
-    "@pob/root": ^6.1.1
+    "@pob/root": 6.1.2
     "@types/jest": 27.0.3
     babel-preset-modern-browsers: 15.0.2
     eslint: 8.4.1
     jest: 27.4.4
     jest-junit-reporter: 1.1.0
-    pob-babel: ^29.4.1
+    pob-babel: 29.4.2
     pob-lcov-reporter: ^6.0.0
     prettier: 2.5.1
     repository-check-dirty: ^4.0.0
@@ -10576,7 +10576,7 @@ __metadata:
     mem-fs-editor: 8.1.2
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
-    pob-dependencies: ^6.2.1
+    pob-dependencies: 6.3.0
     prettier: 2.5.1
     semver: ^7.3.4
     update-notifier: ^5.0.1

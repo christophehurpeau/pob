@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.8](https://github.com/christophehurpeau/pob/compare/example-ts-lib@0.1.7...example-ts-lib@0.1.8) (2021-12-12)
+
+
+### Bug Fixes
+
+* use exact pob-babel version in ts-lib example ([9aa68bf](https://github.com/christophehurpeau/pob/commit/9aa68bf086f43fe90720048e91b1a602f3e87b85))
+
+
+
+
+
 ## [0.1.7](https://github.com/christophehurpeau/pob/compare/example-ts-lib@0.1.6...example-ts-lib@0.1.7) (2021-12-12)
 
 **Note:** Version bump only for package example-ts-lib
