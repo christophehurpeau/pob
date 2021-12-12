@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.3](https://github.com/christophehurpeau/pob/compare/@pob/root@6.1.2...@pob/root@6.1.3) (2021-12-12)
+
+
+### Bug Fixes
+
+* force update to @pob/root for pob ([67ce09a](https://github.com/christophehurpeau/pob/commit/67ce09a19bd2313e436c3950ff8d57ef0cbcb84f))
+
+
+
+
+
 ## [6.1.2](https://github.com/christophehurpeau/pob/compare/@pob/root@6.1.1...@pob/root@6.1.2) (2021-12-12)
 
 

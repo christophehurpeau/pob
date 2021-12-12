@@ -2839,12 +2839,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: 6.3.0
+    pob-dependencies: 6.3.1
     prettier: 2.5.1
   languageName: unknown
   linkType: soft
 
-"@pob/root@6.1.2, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@6.1.3, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -10492,7 +10492,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@6.3.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@6.3.1, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -10506,7 +10506,7 @@ __metadata:
     "@pob/eslint-config-typescript-react": 48.0.5
     "@pob/lerna-light": ^5.0.0
     "@pob/pretty-pkg": ^4.0.1
-    "@pob/root": 6.1.2
+    "@pob/root": 6.1.3
     "@types/jest": 27.0.3
     babel-preset-modern-browsers: 15.0.2
     eslint: 8.4.1
@@ -10580,7 +10580,7 @@ __metadata:
     mem-fs-editor: 8.1.2
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
-    pob-dependencies: 6.3.0
+    pob-dependencies: 6.3.1
     prettier: 2.5.1
     semver: ^7.3.4
     update-notifier: ^5.0.1
