@@ -11744,6 +11744,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "pob-monorepo@workspace:."
   dependencies:
+    "@babel/core": 7.16.0
     "@pob/eslint-config": 48.0.4
     "@pob/lerna-light": "workspace:*"
     "@pob/root": "workspace:*"
