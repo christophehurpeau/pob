@@ -3,7 +3,7 @@ import rollup from 'rollup';
 import createRollupConfig from './createRollupConfig.js';
 
 describe('fixtures', () => {
-  const testsPath = `${new URL('../test', import.meta.url).pathname  }/`;
+  const testsPath = `${new URL('../test', import.meta.url).pathname}/`;
   console.log(testsPath);
   const tests = fs.readdirSync(testsPath);
 

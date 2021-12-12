@@ -139,7 +139,7 @@ export default class CommonTestingGenerator extends Generator {
 
         const workspacesWithoutStar = pkg.workspaces.map((workspace) => {
           if (!workspace.endsWith('/*')) {
-            throw new Error(`Invalid workspace format: ${  workspace}`);
+            throw new Error(`Invalid workspace format: ${workspace}`);
           }
           return workspace.slice(0, -2);
         });
