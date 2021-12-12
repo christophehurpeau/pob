@@ -59,6 +59,7 @@ export default class CoreRenovateGenerator extends Generator {
 
   writing() {
     if (this.enableRenovate) {
+      const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
       const renovateConfig = this.fs.readJSON(
         this.destinationPath('renovate.json'),
         {},
@@ -67,7 +68,10 @@ export default class CoreRenovateGenerator extends Generator {
       if (this.options.app) {
         renovateConfig.extends = ['config:js-app', '@pob'];
       } else {
-        renovateConfig.extends = ['config:js-lib', '@pob'];
+        renovateConfig.extends = [
+          'config:js-lib',
+          pkg.name === 'pob-monorepo' ? undefined : '@pob',
+        ].filter(Boolean);
       }
 
       writeAndFormatJson(
