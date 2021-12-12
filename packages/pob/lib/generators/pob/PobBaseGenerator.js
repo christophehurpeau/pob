@@ -82,7 +82,7 @@ export default class PobBaseGenerator extends Generator {
 
     if ('yarn2' in config) {
       if (config.yarn2) {
-        config.yarnNodeLinker = 'pnp';
+        config.yarnNodeLinker = 'node-modules';
       }
       delete config.yarn2;
     }
