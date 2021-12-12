@@ -1,0 +1,27 @@
+diff --git a/npa.js b/npa.js
+index 6018dd608ed3349f4d3b8f731e642e6b4990f50f..ea682d779b7b5f20281d21d6e9f5143c839f29ac 100644
+--- a/npa.js
++++ b/npa.js
+@@ -69,8 +69,9 @@ function resolve (name, spec, where, arg) {
+ 
+   if (spec && (isFilespec.test(spec) || /^file:/i.test(spec))) {
+     return fromFile(res, where)
+-  } else if (spec && /^npm:/i.test(spec)) {
+-    return fromAlias(res, where)
++  } else if (spec && /^(npm|workspace):/i.test(spec)) {
++    const [,aliasName] = /^(npm|workspace):/i.exec(spec);
++    return fromAlias(res, where, aliasName)
+   }
+   if (!HostedGit) HostedGit = require('hosted-git-info')
+   const hosted = HostedGit.fromUrl(spec, { noGitPlus: true, noCommittish: true })
+@@ -264,8 +265,8 @@ function fromURL (res) {
+   return res
+ }
+ 
+-function fromAlias (res, where) {
+-  const subSpec = npa(res.rawSpec.substr(4), where)
++function fromAlias (res, where, aliasName) {
++  const subSpec = npa(res.rawSpec.substr(aliasName.length + 1), where)
+   if (subSpec.type === 'alias') {
+     throw new Error('nested aliases not supported')
+   }
