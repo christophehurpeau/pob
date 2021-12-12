@@ -1,3 +1,4 @@
+import fs from 'fs';
 import Generator from 'yeoman-generator';
 import inLerna from '../../utils/inLerna.js';
 import inNpmLerna from '../../utils/inNpmLerna.js';
@@ -176,6 +177,14 @@ export default class PobAppGenerator extends Generator {
       documentation: false,
       updateOnly: this.options.updateOnly,
     });
+
+    // only for gitignore
+    if (this.fs.exists('.env.example')) {
+      ignorePaths.push('/.env*', '!/.env.example');
+    }
+    if (fs.existsSync('private_key')) {
+      ignorePaths.push('/private_key');
+    }
 
     this.composeWith('pob:core:gitignore', {
       root: !inLerna || inLerna.root,
