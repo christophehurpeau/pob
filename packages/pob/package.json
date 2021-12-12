@@ -46,7 +46,6 @@
     "@pob/sort-pkg": "^4.0.1",
     "@yarnpkg/parsers": "2.5.0-rc.6",
     "findup-sync": "^5.0.0",
-    "generator-license": "^5.5.0",
     "git-remote-url": "^1.0.1",
     "github-username": "^6.0.0",
     "got": "^11.8.1",

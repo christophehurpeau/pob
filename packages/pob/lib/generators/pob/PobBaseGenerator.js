@@ -43,13 +43,6 @@ export default class PobBaseGenerator extends Generator {
       required: true,
       desc: "Don't check diff",
     });
-
-    this.option('license', {
-      type: Boolean,
-      required: false,
-      defaults: true,
-      desc: 'Include a license',
-    });
   }
 
   rootGeneratorName() {
@@ -145,20 +138,6 @@ export default class PobBaseGenerator extends Generator {
     this.fs.delete('Makefile');
     this.fs.delete(this.destinationPath('.commitrc.js'));
 
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-    if (
-      this.options.license &&
-      !this.fs.exists(this.destinationPath('LICENSE'))
-    ) {
-      const author = packageUtils.parsePkgAuthor(pkg) || {};
-      this.composeWith('generator-license/app', {
-        name: author.name,
-        email: author.email,
-        website: author.url,
-        defaultLicense: 'ISC',
-      });
-    }
-
     this.composeWith('pob:core:editorconfig');
 
     this.composeWith('pob:core:clean', {
@@ -169,6 +148,8 @@ export default class PobBaseGenerator extends Generator {
       updateOnly: this.options.updateOnly,
       app: this.projectConfig.type === 'app',
     });
+
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
     this.composeWith('pob:core:vscode', {
       root: this.isRoot,

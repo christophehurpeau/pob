@@ -128,6 +128,13 @@ export default class CorePackageGenerator extends Generator {
           choices: ['commonjs', 'module'],
           when: !pkg.type,
         },
+        {
+          name: 'license',
+          message: 'License Type',
+          type: 'list',
+          choices: ['MIT', 'ISC', 'UNLICENSED'],
+          when: !pkg.license,
+        },
       ].filter(Boolean),
     );
 
@@ -231,6 +238,18 @@ export default class CorePackageGenerator extends Generator {
     pkg.author = `${author.name} <${author.email}>${
       author.url ? ` (${author.url})` : ''
     }`;
+
+    if (!pkg.license) {
+      pkg.license = props.license;
+      this.fs.copyTpl(
+        this.templatePath(`licenses/${props.license}.ejs`),
+        this.destinationPath('LICENSE'),
+        {
+          year: new Date().getFullYear(),
+          author: pkg.author,
+        },
+      );
+    }
 
     if (pkg.private) {
       if (!pkg.description) delete pkg.description;
