@@ -57,6 +57,7 @@
     "github-username": "^6.0.0",
     "got": "^11.8.1",
     "inquirer-npm-name": "^4.0.0",
+    "json5": "^2.2.0",
     "lodash.camelcase": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",
     "mem-fs": "1.2.0",

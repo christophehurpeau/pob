@@ -1,4 +1,5 @@
 import Generator from 'yeoman-generator';
+import { readJSON5 } from '../../../utils/json5.js';
 import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
 
 export default class CoreVSCodeGenerator extends Generator {
@@ -56,12 +57,19 @@ export default class CoreVSCodeGenerator extends Generator {
           typescript: this.options.typescript,
         },
       );
+
+      const tasksConfig = readJSON5(
+        this.fs,
+        this.destinationPath('.vscode/tasks.json'),
+        {},
+      );
       copyAndFormatTpl(
         this.fs,
         this.templatePath('tasks.json.ejs'),
         this.destinationPath('.vscode/tasks.json'),
         {
           typescript: this.options.typescript,
+          tasks: JSON.stringify(tasksConfig.tasks || [], null, 2),
         },
       );
     } else {
