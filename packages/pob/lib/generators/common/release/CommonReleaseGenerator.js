@@ -40,7 +40,11 @@ export default class CommonReleaseGenerator extends Generator {
         this.destinationPath('.github/workflows/release-please.yml'),
       );
 
-    if (!process.env.CI && !this.isReleasePleaseEnabled) {
+    if (
+      this.options.enable &&
+      !process.env.CI &&
+      !this.isReleasePleaseEnabled
+    ) {
       const { enableReleasePlease } = await this.prompt({
         type: 'confirm',
         name: 'enableReleasePlease',
