@@ -65,7 +65,7 @@
     "@types/jest": "27.0.3",
     "check-package-dependencies": "3.0.0",
     "eslint": "8.4.1",
-    "jest": "27.4.4",
+    "jest": "27.4.5",
     "pob-babel": "workspace:*",
     "pob-lcov-reporter": "workspace:*",
     "prettier": "2.5.1",
