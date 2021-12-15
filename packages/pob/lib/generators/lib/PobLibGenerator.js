@@ -254,7 +254,9 @@ export default class PobLibGenerator extends Generator {
 
     // must be after testing
     this.composeWith('pob:common:format-lint', {
-      documentation: !!this.pobjson.documentation,
+      documentation:
+        !!this.pobjson.documentation ||
+        !!(this.pobjson.testing && this.pobjson.testing.codecov),
       testing: this.pobjson.testing,
       packageManager: this.options.packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
