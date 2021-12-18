@@ -69,7 +69,7 @@ export default class CoreCIGenerator extends Generator {
         this.destinationPath('.github/workflows/push.yml'),
         {
           packageManager: this.options.packageManager,
-          testing: this.options.testing && !!pkg.scripts.test,
+          testing: this.options.testing && !!pkg.scripts && !!pkg.scripts.test,
           checks: !!pkg.scripts && !!pkg.scripts.checks,
           documentation: this.options.documentation,
           build: this.options.build,
