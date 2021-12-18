@@ -4,9 +4,7 @@ import { spawnSync } from 'child_process';
 import fs, { existsSync, writeFileSync, readFileSync } from 'fs';
 import path from 'path';
 import argv from 'minimist-argv';
-// import updateNotifier from 'update-notifier';
 import yeoman from 'yeoman-environment';
-// import pkg from '../package.json';
 import PobAppGenerator from './generators/app/PobAppGenerator.js';
 import CommonBabelGenerator from './generators/common/babel/CommonBabelGenerator.js';
 import CommonLintGenerator from './generators/common/format-lint/CommonLintGenerator.js';
@@ -58,8 +56,6 @@ if (argv.version) {
   // printVersion();
   process.exit(0);
 }
-
-// updateNotifier({ pkg }).notify();
 
 const env = yeoman.createEnv();
 
