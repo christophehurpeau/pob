@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { execSync, spawnSync } from 'child_process';
+import { spawnSync } from 'child_process';
 import fs, { existsSync, writeFileSync, readFileSync } from 'fs';
 import path from 'path';
 import argv from 'minimist-argv';
@@ -39,7 +39,6 @@ import { __dirname } from './pob-dirname.cjs';
 const printUsage = () => {
   console.error('Usage: pob [monorepo] [lib|app|init]');
   console.error('       pob [monorepo] update [--force]');
-  console.error('       pob monorepo convert-npm');
   console.error('       pob add <packageName>');
 };
 
@@ -247,16 +246,6 @@ if (action === 'add') {
   spawnSync(process.argv[0], [process.argv[1], 'update'], {
     stdio: 'inherit',
   });
-  process.exit(0);
-}
-
-if (monorepo && action === 'convert-npm') {
-  execSync('sed -i \'/"npmClient": "yarn",/d\' ./lerna.json', {
-    stdio: 'inherit',
-  });
-  execSync('npm install packages/*', { stdio: 'inherit' });
-  execSync('yarn lerna link convert', { stdio: 'inherit' });
-  execSync('rm -Rf yarn.lock packages/*/yarn.lock', { stdio: 'inherit' });
   process.exit(0);
 }
 
