@@ -154,8 +154,6 @@ export default class MonorepoLernaGenerator extends Generator {
 
     const monorepoConfig = this.config.get('monorepo');
     const packageManager = this.npm ? 'npm' : 'yarn';
-    const useYarnWorkspacesCommand =
-      pkg.name === 'pob-monorepo' || pkg.name === 'nightingale-monorepo'; // this.options.packageManager === 'yarn';
 
     packageUtils.addScripts(pkg, {
       lint: `${packageManager} run lint:prettier && ${packageManager} run lint:eslint`,
@@ -174,7 +172,7 @@ export default class MonorepoLernaGenerator extends Generator {
           ? `NODE_OPTIONS=--max_old_space_size=4096 eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet . --ignore-pattern ${pkg.workspaces.join(
               ',',
             )} && yarn workspaces foreach --parallel -Av run lint:eslint`
-          : 'lerna run --stream lint:eslint',
+          : 'npm run lint:eslint --workspaces',
     });
 
     this.fs.copyTpl(
@@ -193,16 +191,10 @@ export default class MonorepoLernaGenerator extends Generator {
     );
 
     packageUtils.addOrRemoveScripts(pkg, withBabel, {
-      build: `${
-        useYarnWorkspacesCommand
-          ? 'yarn workspaces foreach --parallel --topological-dev -Av run'
-          : 'lerna run --stream'
-      } build`,
-      watch: `${
-        useYarnWorkspacesCommand
-          ? 'yarn workspaces foreach --parallel --exclude "*-example" -Av run'
-          : 'lerna run --parallel --ignore "*-example"'
-      } watch`,
+      build:
+        'yarn workspaces foreach --parallel --topological-dev -Av run build',
+      watch:
+        'yarn workspaces foreach --parallel --exclude "*-example" -Av run watch',
     });
 
     // packageUtils.addOrRemoveScripts(pkg, withTypescript, {

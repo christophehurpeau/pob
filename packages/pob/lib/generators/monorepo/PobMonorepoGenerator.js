@@ -228,11 +228,6 @@ export default class PobMonorepoGenerator extends Generator {
       packagePaths: JSON.stringify(packagePaths),
     });
 
-    // packageUtils.addOrRemoveScripts(pkg, this.pobLernaConfig.documentation, {
-    //   'generate:test-coverage':
-    //     'lerna run --parallel --ignore "*-example" generate:test-coverage',
-    // });
-
     if (this.pobLernaConfig.documentation) {
       pkg.scripts.build = `${
         pkg.scripts.build ? `${pkg.scripts.build} && ` : ''
