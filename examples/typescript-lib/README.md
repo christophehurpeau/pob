@@ -1,5 +1,5 @@
 <h3 align="center">
-  example-ts-lib
+  example-typescript-lib
 </h3>
 
 <p align="center">
@@ -8,13 +8,13 @@
 ## Install
 
 ```bash
-npm install --save example-ts-lib
+npm install --save example-typescript-lib
 ```
 
 ## Usage
 
 ```js
-import exampleTsLib from 'example-ts-lib';
+import exampleTsLib from 'example-typescript-lib';
 
 console.log(exampleTsLib);
 ```

@@ -13,7 +13,6 @@
         "@pob/sort-object",
         "babel-plugin-fix-class-properties-uninitialized",
         "example-simple-lib",
-        "example-ts-lib",
         "pob-lcov-reporter",
         "repository-check-dirty",
         "@pob/sort-eslint-config",
@@ -23,6 +22,7 @@
         "@pob/pretty-pkg",
         "pob-babel",
         "@pob/root",
+        "example-typescript-lib",
         "pob-dependencies",
         "@pob/renovate-config",
         "pob"

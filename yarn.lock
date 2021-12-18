@@ -6002,9 +6002,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-ts-lib@workspace:examples/ts-lib":
+"example-typescript-lib@workspace:examples/typescript-lib":
   version: 0.0.0-use.local
-  resolution: "example-ts-lib@workspace:examples/ts-lib"
+  resolution: "example-typescript-lib@workspace:examples/typescript-lib"
   dependencies:
     "@babel/core": 7.16.0
     pob-babel: 29.4.2
