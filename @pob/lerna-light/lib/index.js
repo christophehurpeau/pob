@@ -1,10 +1,7 @@
 'use strict';
 
-const changedCmd = require('@lerna/changed/command');
 const cli = require('@lerna/cli');
-const execCmd = require('@lerna/exec/command');
 const publishCmd = require('@lerna/publish/command');
-const runCmd = require('@lerna/run/command');
 const versionCmd = require('@lerna/version/command');
 const pkg = require('../package.json');
 
@@ -13,11 +10,5 @@ module.exports = function main(argv) {
     lernaVersion: pkg.version,
   };
 
-  return cli()
-    .command(changedCmd)
-    .command(execCmd)
-    .command(publishCmd)
-    .command(runCmd)
-    .command(versionCmd)
-    .parse(argv, context);
+  return cli().command(publishCmd).command(versionCmd).parse(argv, context);
 };
