@@ -11,8 +11,8 @@ module.exports = function babelConfig(api) {
       'packages/*/lib',
       '@pob/*/src',
       '@pob/*/lib',
-      'examples/*/src',
-      'examples/*/lib',
+      'pob-examples/*/src',
+      'pob-examples/*/lib',
     ],
     presets: [[require.resolve('pob-babel/preset.cjs')]],
   };

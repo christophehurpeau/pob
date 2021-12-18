@@ -5996,15 +5996,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"example-simple-lib@workspace:examples/simple-lib":
+"example-simple-lib@workspace:pob-examples/simple-lib":
   version: 0.0.0-use.local
-  resolution: "example-simple-lib@workspace:examples/simple-lib"
+  resolution: "example-simple-lib@workspace:pob-examples/simple-lib"
   languageName: unknown
   linkType: soft
 
-"example-typescript-lib@workspace:examples/typescript-lib":
+"example-typescript-lib@workspace:pob-examples/typescript-lib":
   version: 0.0.0-use.local
-  resolution: "example-typescript-lib@workspace:examples/typescript-lib"
+  resolution: "example-typescript-lib@workspace:pob-examples/typescript-lib"
   dependencies:
     "@babel/core": 7.16.0
     pob-babel: 29.4.2

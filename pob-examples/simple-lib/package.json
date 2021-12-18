@@ -7,7 +7,7 @@
   "repository": {
     "type": "git",
     "url": "https://github.com/christophehurpeau/pob.git",
-    "directory": "examples/simple-lib"
+    "directory": "pob-examples/simple-lib"
   },
   "homepage": "https://github.com/christophehurpeau/pob",
   "type": "module",
@@ -22,7 +22,7 @@
   "sideEffects": false,
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet examples/simple-lib"
+    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet pob-examples/simple-lib"
   },
   "prettier": {
     "trailingComma": "all",

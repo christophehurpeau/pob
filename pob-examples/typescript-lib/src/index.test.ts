@@ -11,7 +11,7 @@ describe('dist', () => {
   it('should build node14 mjs', () => {
     expect(
       fs.readFileSync(
-        './examples/typescript-lib/dist/index-node14.mjs',
+        './pob-examples/typescript-lib/dist/index-node14.mjs',
         'utf-8',
       ),
     ).toMatchInlineSnapshot(`

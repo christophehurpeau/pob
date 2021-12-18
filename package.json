@@ -14,7 +14,7 @@
   "workspaces": [
     "packages/*",
     "@pob/*",
-    "examples/*"
+    "pob-examples/*"
   ],
   "scripts": {
     "build": "yarn workspaces foreach --parallel --topological-dev -Av run build && yarn run build:definitions",

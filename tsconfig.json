@@ -1,4 +1,4 @@
 {
   "files": [],
-  "references": [{ "path": "examples/typescript-lib/tsconfig.json" }]
+  "references": [{ "path": "pob-examples/typescript-lib/tsconfig.json" }]
 }
