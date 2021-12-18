@@ -14,7 +14,7 @@ module.exports = function updateYarn({ pkg, pm }) {
     }
 
     console.log('-- Update yarn --');
-    execSync('yarn set version latest', { stdio: 'inherit' });
+    execSync('yarn set version stable', { stdio: 'inherit' });
 
     // removes yarn paths (can have 2) to use the newly installed yarn
     const paths = process.env.PATH.split(':');

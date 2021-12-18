@@ -2978,6 +2978,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/expect@npm:^1.20.4":
+  version: 1.20.4
+  resolution: "@types/expect@npm:1.20.4"
+  checksum: c09a9abec2c1776dd8948920dc3bad87b1206c843509d3d3002040983b1769b2e3914202a6c20b72e5c3fb5738a1ab87cb7be9d3fe9efabf2a324173b222a224
+  languageName: node
+  linkType: hard
+
 "@types/graceful-fs@npm:^4.1.2":
   version: 4.1.5
   resolution: "@types/graceful-fs@npm:4.1.5"
@@ -3066,7 +3073,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:14.0.26":
+"@types/node@npm:*, @types/node@npm:^15.6.1":
+  version: 15.14.9
+  resolution: "@types/node@npm:15.14.9"
+  checksum: 49f7f0522a3af4b8389aee660e88426490cd54b86356672a1fedb49919a8797c00d090ec2dcc4a5df34edc2099d57fc2203d796c4e7fbd382f2022ccd789eee7
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:14.0.26":
   version: 14.0.26
   resolution: "@types/node@npm:14.0.26"
   checksum: f23255d21725db1ec26ca3f992ce7fbf03cdb8556ea4dce3464ea94da868cf5e3404ff2242ded49c05474b80f57f58e11e934870e83dc8badf2b80c42936dd6b
@@ -3116,6 +3130,16 @@ __metadata:
   version: 2.0.0
   resolution: "@types/stack-utils@npm:2.0.0"
   checksum: b3fbae25b073116977ecb5c67d22f14567b51a7792403b0bf46e5de8f29bde3bd4ec1626afb22065495ca7f1c699c8bd66720050c94b8f8f9bcefbee79d161fd
+  languageName: node
+  linkType: hard
+
+"@types/vinyl@npm:^2.0.4":
+  version: 2.0.6
+  resolution: "@types/vinyl@npm:2.0.6"
+  dependencies:
+    "@types/expect": ^1.20.4
+    "@types/node": "*"
+  checksum: 5012fb61e3a29e7deaac7e66b6d8cb73d87d15965c8a38cb69277c2beb851a9a8ec09d4a1b07a3151e143afc2e3a102ca368b9a0e08f2f29de9183c97f9c7d85
   languageName: node
   linkType: hard
 
@@ -3999,10 +4023,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"binaryextensions@npm:^4.15.0":
-  version: 4.15.0
-  resolution: "binaryextensions@npm:4.15.0"
-  checksum: 6c3cc8bc6852d94d3700dd8c2da742c83a5f95469465aac374c5064ac6b367307c164f717c5c4e85fd2acc37fd57d483e411977f3ea82065eccda7e24f0037e1
+"binaryextensions@npm:^4.15.0, binaryextensions@npm:^4.16.0":
+  version: 4.18.0
+  resolution: "binaryextensions@npm:4.18.0"
+  checksum: 6fe92a9004c5a7c08a8d49ac4087581043a0d195e76c288619c13e9232d0b80543f01da0037bb0f1b02830c174721fcad92bdfe76c84295cc8f308ee3b74d184
   languageName: node
   linkType: hard
 
@@ -6573,7 +6597,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globby@npm:^11.0.1, globby@npm:^11.0.2, globby@npm:^11.0.4":
+"globby@npm:^11.0.1, globby@npm:^11.0.2, globby@npm:^11.0.3, globby@npm:^11.0.4":
   version: 11.0.4
   resolution: "globby@npm:11.0.4"
   dependencies:
@@ -7388,7 +7412,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isbinaryfile@npm:^4.0.0":
+"isbinaryfile@npm:^4.0.8":
   version: 4.0.8
   resolution: "isbinaryfile@npm:4.0.8"
   checksum: 606e3bb648d1a0dee23459d1d937bb2560e66a5281ec7c9ff50e585402d73321ac268d0f34cb7393125b3ebc4c7962d39e50a01cdb8904b52fce08b7ccd2bf9f
@@ -8728,34 +8752,38 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mem-fs-editor@npm:8.1.2, mem-fs-editor@npm:^8.1.2 || ^9.0.0":
-  version: 8.1.2
-  resolution: "mem-fs-editor@npm:8.1.2"
+"mem-fs-editor@npm:9.3.0, mem-fs-editor@npm:^8.1.2 || ^9.0.0":
+  version: 9.3.0
+  resolution: "mem-fs-editor@npm:9.3.0"
   dependencies:
+    binaryextensions: ^4.16.0
     commondir: ^1.0.1
     deep-extend: ^0.6.0
     ejs: ^3.1.6
-    globby: ^11.0.2
-    isbinaryfile: ^4.0.0
+    globby: ^11.0.3
+    isbinaryfile: ^4.0.8
+    minimatch: ^3.0.4
     multimatch: ^5.0.0
     normalize-path: ^3.0.0
+    textextensions: ^5.13.0
   peerDependencies:
-    mem-fs: ^1.2.0 || ^2.0.0
+    mem-fs: ^2.1.0
   peerDependenciesMeta:
     mem-fs:
       optional: true
-  checksum: f5d66b6c2e1906e6b42d3206e0c8be7b4adda4e18266964f429b6022efc3a278b48db9ccadca30a0f2bdac32cb563e5ce8e09fe27300a70789200696068272e9
+  checksum: ec61cbded585b61efaf5b04a6d9eb8e96bb2ce7baeeae98443e2ec7e0cb22a060af98f5fb4edd5d8fcfbd05eff0396b0b5d6929d3add4f65eed7616ef94a272a
   languageName: node
   linkType: hard
 
-"mem-fs@npm:1.2.0, mem-fs@npm:^1.2.0 || ^2.0.0":
-  version: 1.2.0
-  resolution: "mem-fs@npm:1.2.0"
+"mem-fs@npm:2.2.1, mem-fs@npm:^1.2.0 || ^2.0.0":
+  version: 2.2.1
+  resolution: "mem-fs@npm:2.2.1"
   dependencies:
-    through2: ^3.0.0
+    "@types/node": ^15.6.1
+    "@types/vinyl": ^2.0.4
     vinyl: ^2.0.1
     vinyl-file: ^3.0.0
-  checksum: 21e81fc689f442b1eebe7aac16875207ac3e4b82a4d9ee6cd2940f4ad20768b2d7824035475c63fb0b821a0298922bf14b74a0afb459b3084dc11f2822f435ca
+  checksum: e44fb4acf8391a847b9e9494115b27300eda77aa7c6caea533786f43d385253515b0c0ff4f00906744b2bd31010df923cc448bb6efb9593f41df5d40b0e69046
   languageName: node
   linkType: hard
 
@@ -10204,8 +10232,8 @@ __metadata:
     json5: ^2.2.0
     lodash.camelcase: ^4.3.0
     lodash.kebabcase: ^4.1.1
-    mem-fs: 1.2.0
-    mem-fs-editor: 8.1.2
+    mem-fs: 2.2.1
+    mem-fs-editor: 9.3.0
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
     pob-dependencies: 6.3.3
@@ -10561,7 +10589,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"readable-stream@npm:2 || 3, readable-stream@npm:3, readable-stream@npm:^3.0.0, readable-stream@npm:^3.0.2, readable-stream@npm:^3.4.0":
+"readable-stream@npm:3, readable-stream@npm:^3.0.0, readable-stream@npm:^3.0.2, readable-stream@npm:^3.4.0":
   version: 3.6.0
   resolution: "readable-stream@npm:3.6.0"
   dependencies:
@@ -11800,10 +11828,10 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"textextensions@npm:^5.12.0":
-  version: 5.12.0
-  resolution: "textextensions@npm:5.12.0"
-  checksum: 251e91d85ff52fada81c8a46cea38c845e05d47712ee6b8e4edca3408669ec375a063a85ee7d9571d7bf1c7d99e1ccb7e034d4e47225846ffab0e580169ce4ad
+"textextensions@npm:^5.12.0, textextensions@npm:^5.13.0":
+  version: 5.14.0
+  resolution: "textextensions@npm:5.14.0"
+  checksum: 1f610ccf2a2c1445fb7156c23b5c8defd608c74e8047df18abd4b9ee44c74d29b453ba104d14c53c91f9026670f7c923114cd12200ee5ec458cc518fd0798c74
   languageName: node
   linkType: hard
 
@@ -11821,16 +11849,6 @@ resolve@^2.0.0-next.3:
     readable-stream: ~2.3.6
     xtend: ~4.0.1
   checksum: beb0f338aa2931e5660ec7bf3ad949e6d2e068c31f4737b9525e5201b824ac40cac6a337224856b56bd1ddd866334bbfb92a9f57cd6f66bc3f18d3d86fc0fe50
-  languageName: node
-  linkType: hard
-
-"through2@npm:^3.0.0":
-  version: 3.0.2
-  resolution: "through2@npm:3.0.2"
-  dependencies:
-    inherits: ^2.0.4
-    readable-stream: 2 || 3
-  checksum: 47c9586c735e7d9cbbc1029f3ff422108212f7cc42e06d5cc9fff7901e659c948143c790e0d0d41b1b5f89f1d1200bdd200c7b72ad34f42f9edbeb32ea49e8b7
   languageName: node
   linkType: hard
 
