@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.9.0](https://github.com/christophehurpeau/pob/compare/pob@9.8.0...pob@9.9.0) (2021-12-18)
+
+
+### Bug Fixes
+
+* update mem-fs ([8fdf8f7](https://github.com/christophehurpeau/pob/commit/8fdf8f79768ac0ca6e0326e629834657e2992c71))
+* **pob:** ci testing check fix ([c8eb2cd](https://github.com/christophehurpeau/pob/commit/c8eb2cdf000766699e5590aebcc55e1c23d15700))
+* coverage is a documentation ([cfde873](https://github.com/christophehurpeau/pob/commit/cfde8733ef340dd097143acb66e9acd87e69fbbe))
+* defaults for readJSON5 method ([2a213b5](https://github.com/christophehurpeau/pob/commit/2a213b545be5e653b4f0a279983ea4cfeaacaa11))
+* update legacy yarn2 to node-modules ([d543e5e](https://github.com/christophehurpeau/pob/commit/d543e5ede8273f16fb0416424671c2d1d7c60c73))
+
+
+### Features
+
+* always use yarn workspaces commands ([83945e0](https://github.com/christophehurpeau/pob/commit/83945e0a2ee07c52ecd1a105e1e7b9749f91b712))
+* **deps:** update dependency eslint to v8.5.0 ([#1069](https://github.com/christophehurpeau/pob/issues/1069)) ([46d8538](https://github.com/christophehurpeau/pob/commit/46d85381f97fbd55e424ca8b6f1fc0138900ff7f))
+
+
+
+
+
 # [9.8.0](https://github.com/christophehurpeau/pob/compare/pob@9.7.4...pob@9.8.0) (2021-12-12)
 
 

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.6](https://github.com/christophehurpeau/pob/compare/@pob/root@6.1.5...@pob/root@6.1.6) (2021-12-18)
+
+
+### Bug Fixes
+
+* update mem-fs ([8fdf8f7](https://github.com/christophehurpeau/pob/commit/8fdf8f79768ac0ca6e0326e629834657e2992c71))
+* **deps:** update dependency lint-staged to v12.1.3 ([#1142](https://github.com/christophehurpeau/pob/issues/1142)) ([a119ab7](https://github.com/christophehurpeau/pob/commit/a119ab70b341c3cbe71ae640605a1160f99753fc))
+
+
+
+
+
 ## [6.1.5](https://github.com/christophehurpeau/pob/compare/@pob/root@6.1.4...@pob/root@6.1.5) (2021-12-12)
 
 

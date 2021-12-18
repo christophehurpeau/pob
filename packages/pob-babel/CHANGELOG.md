@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [29.5.0](https://github.com/christophehurpeau/pob/compare/pob-babel@29.4.2...pob-babel@29.5.0) (2021-12-18)
+
+
+### Bug Fixes
+
+* **pob-babel:** add ^ in @babel/core dep and peer dep ([ba433f2](https://github.com/christophehurpeau/pob/commit/ba433f21284f4eb37c3f808487f288b7a81ee682))
+
+
+### Features
+
+* **deps:** update dependency @rollup/plugin-node-resolve to v13.1.1 ([#1138](https://github.com/christophehurpeau/pob/issues/1138)) ([0c80476](https://github.com/christophehurpeau/pob/commit/0c804763f227aed558bf389902b88c514d24b8aa))
+
+
+
+
+
 ## [29.4.2](https://github.com/christophehurpeau/pob/compare/pob-babel@29.4.1...pob-babel@29.4.2) (2021-12-12)
 
 

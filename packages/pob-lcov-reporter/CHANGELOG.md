@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.1](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@6.0.0...pob-lcov-reporter@6.0.1) (2021-12-18)
+
+**Note:** Version bump only for package pob-lcov-reporter
+
+
+
+
+
 # [6.0.0](https://github.com/christophehurpeau/pob/compare/pob-lcov-reporter@5.5.0...pob-lcov-reporter@6.0.0) (2021-12-11)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/christophehurpeau/pob/compare/@pob/lerna-light@5.0.0...@pob/lerna-light@5.1.0) (2021-12-18)
+
+
+### Features
+
+* remove changed exec and run commands in lerna-light ([d2a71cb](https://github.com/christophehurpeau/pob/commit/d2a71cbd20374779c96f62427455035f5e339bf3))
+
+
+
+
+
 # [5.0.0](https://github.com/christophehurpeau/pob/compare/@pob/lerna-light@4.2.0...@pob/lerna-light@5.0.0) (2021-12-11)
 
 
