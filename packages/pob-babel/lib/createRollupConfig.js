@@ -134,6 +134,7 @@ export default function createRollupConfig({
         babel({
           extensions,
           babelrc: false,
+          configFile: false,
           presets: [
             jsx && [
               '@babel/preset-react',
