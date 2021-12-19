@@ -421,6 +421,17 @@ export default class CommonBabelGenerator extends Generator {
         'not safari < 10',
         'not ios_saf < 10',
       ];
+    } else if (this.options.isApp && pkg.browserslist) {
+      pkg.browserslist = {
+        ...pkg.browserslist,
+        production: [
+          'defaults',
+          '> 0.2%',
+          'not ie < 12',
+          'not safari < 10',
+          'not ios_saf < 10',
+        ],
+      };
     } else {
       delete pkg.browserslist;
     }
@@ -568,9 +579,10 @@ export default class CommonBabelGenerator extends Generator {
       this.entries.forEach((entry) => {
         const isBrowserOnly =
           entry === 'browser' &&
-          this.babelEnvs.every((env) => env.target === 'browser');
+          (this.babelEnvs.every((env) => env.target === 'browser') ||
+            (this.entries.length === 2 && this.entries.includes('index')));
         const entryDistName = isBrowserOnly ? 'index' : entry;
-        const exportName = entryDistName === 'index' ? '.' : `./${entry}`;
+        const exportName = entry === 'index' ? '.' : `./${entry}`;
 
         const targets = {};
 
