@@ -4,6 +4,14 @@ import { sayHello as helloBrowser } from './helloBrowser';
 
 __POB_TARGET__ === 'node' ? helloNode() : helloBrowser();
 
+if (__DEV__) {
+  console.log('__DEV__ is true');
+}
+
+if (!__DEV__) {
+  console.log('__DEV__ is false');
+}
+
 const answer = 42;
 console.log(`the answer is ${answer}`);
 

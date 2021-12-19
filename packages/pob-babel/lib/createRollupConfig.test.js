@@ -4,12 +4,11 @@ import createRollupConfig from './createRollupConfig.js';
 
 describe('fixtures', () => {
   const testsPath = `${new URL('../test', import.meta.url).pathname}/`;
-  console.log(testsPath);
   const tests = fs.readdirSync(testsPath);
 
   tests.forEach((dirname) => {
     if (dirname === '.eslintrc.json') return;
-    describe.skip(dirname, () => {
+    describe(dirname, () => {
       const configs = createRollupConfig({
         cwd: testsPath + dirname,
       });
