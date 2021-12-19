@@ -178,7 +178,7 @@ export default function createRollupConfig({
         replace({
           preventAssignment: true,
           values: {
-            __DEV__: 'process.env.NODE_ENV !== "production"',
+            __DEV__: '(process.env.NODE_ENV !== "production")',
           },
         }),
 
