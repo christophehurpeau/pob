@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.9.1](https://github.com/christophehurpeau/pob/compare/pob@9.9.0...pob@9.9.1) (2021-12-19)
+
+
+### Bug Fixes
+
+* **pob:** add missing workspaces plugin when needed ([f3759c3](https://github.com/christophehurpeau/pob/commit/f3759c3f9bc34f30a7f72580df85b352fb67fbad))
+* **pob:** exports for browser only ([0ede342](https://github.com/christophehurpeau/pob/commit/0ede342c71aefbcad6b037c3bd6ea1ac4eec2a61))
+* **pob:** watch command ([e026f52](https://github.com/christophehurpeau/pob/commit/e026f5209d5bc0eb81ce766bbc8b7e5f62abe4b7))
+
+
+
+
+
 # [9.9.0](https://github.com/christophehurpeau/pob/compare/pob@9.8.0...pob@9.9.0) (2021-12-18)
 
 

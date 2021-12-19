@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.5.1](https://github.com/christophehurpeau/pob/compare/pob-babel@29.5.0...pob-babel@29.5.1) (2021-12-19)
+
+
+### Bug Fixes
+
+* disable babel.config.js ([27b7e08](https://github.com/christophehurpeau/pob/commit/27b7e0851643db4238aaf5128cb7073196bbb3ff))
+* replace __DEV__ with () for negation ([1d9296d](https://github.com/christophehurpeau/pob/commit/1d9296dd658ae741337302eefde237d402ee35bd))
+
+
+
+
+
 # [29.5.0](https://github.com/christophehurpeau/pob/compare/pob-babel@29.4.2...pob-babel@29.5.0) (2021-12-18)
 
 

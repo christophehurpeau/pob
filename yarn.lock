@@ -2733,7 +2733,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: 6.4.0
+    pob-dependencies: 6.4.1
     prettier: 2.5.1
   languageName: unknown
   linkType: soft
@@ -5923,7 +5923,7 @@ __metadata:
   resolution: "example-typescript-lib@workspace:pob-examples/typescript-lib"
   dependencies:
     "@babel/core": 7.16.5
-    pob-babel: 29.5.0
+    pob-babel: 29.5.1
     typescript: 4.5.4
   languageName: unknown
   linkType: soft
@@ -10120,7 +10120,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@29.5.0, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
+"pob-babel@29.5.1, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -10148,7 +10148,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@6.4.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@6.4.1, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -10168,7 +10168,7 @@ __metadata:
     eslint: 8.5.0
     jest: 27.4.5
     jest-junit-reporter: 1.1.0
-    pob-babel: 29.5.0
+    pob-babel: 29.5.1
     pob-lcov-reporter: 6.0.1
     prettier: 2.5.1
     repository-check-dirty: ^4.0.0
@@ -10236,7 +10236,7 @@ __metadata:
     mem-fs-editor: 9.3.0
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
-    pob-dependencies: 6.4.0
+    pob-dependencies: 6.4.1
     prettier: 2.5.1
     semver: ^7.3.4
     yeoman-environment: ^3.5.1
