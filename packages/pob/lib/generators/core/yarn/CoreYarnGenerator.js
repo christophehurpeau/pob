@@ -66,22 +66,32 @@ export default class CoreYarnGenerator extends Generator {
       const isPluginInstalled = (name) =>
         installedPlugins.some((plugin) => plugin.name === name);
 
+      const installPlugin = (nameOrUrl) => {
+        this.spawnCommandSync('yarn', ['plugin', 'import', nameOrUrl]);
+      };
+      const removePlugin = (name) => {
+        this.spawnCommandSync('yarn', ['plugin', 'remove', name]);
+      };
+
       const postinstallDevPluginName = '@yarnpkg/plugin-postinstall-dev';
+      const workspacesPluginName = '@yarnpkg/plugin-workspace-tools';
 
       if (!inLerna && !pkg.private) {
         if (!isPluginInstalled(postinstallDevPluginName)) {
-          this.spawnCommandSync('yarn', [
-            'plugin',
-            'import',
+          installPlugin(
             'https://raw.githubusercontent.com/sachinraja/yarn-plugin-postinstall-dev/main/bundles/%40yarnpkg/plugin-postinstall-dev.js',
-          ]);
+          );
         }
       } else if (isPluginInstalled(postinstallDevPluginName)) {
-        this.spawnCommandSync('yarn', [
-          'plugin',
-          'remove',
-          postinstallDevPluginName,
-        ]);
+        removePlugin(postinstallDevPluginName);
+      }
+
+      if (pkg.workspaces) {
+        if (!isPluginInstalled(workspacesPluginName)) {
+          installPlugin(workspacesPluginName);
+        }
+      } else if (isPluginInstalled(workspacesPluginName)) {
+        removePlugin(workspacesPluginName);
       }
 
       // must be done after plugins installed
