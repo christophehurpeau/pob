@@ -194,7 +194,7 @@ export default class MonorepoLernaGenerator extends Generator {
       build:
         'yarn workspaces foreach --parallel --topological-dev -Av run build',
       watch:
-        'yarn workspaces foreach --parallel --exclude "*-example" -Av run watch',
+        'yarn workspaces foreach --parallel --jobs unlimited --interlaced --exclude "*-example" -Av run watch',
     });
 
     // packageUtils.addOrRemoveScripts(pkg, withTypescript, {
