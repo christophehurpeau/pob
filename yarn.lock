@@ -8752,9 +8752,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mem-fs-editor@npm:9.3.0, mem-fs-editor@npm:^8.1.2 || ^9.0.0":
-  version: 9.3.0
-  resolution: "mem-fs-editor@npm:9.3.0"
+"mem-fs-editor@npm:9.4.0, mem-fs-editor@npm:^8.1.2 || ^9.0.0":
+  version: 9.4.0
+  resolution: "mem-fs-editor@npm:9.4.0"
   dependencies:
     binaryextensions: ^4.16.0
     commondir: ^1.0.1
@@ -8771,7 +8771,7 @@ __metadata:
   peerDependenciesMeta:
     mem-fs:
       optional: true
-  checksum: ec61cbded585b61efaf5b04a6d9eb8e96bb2ce7baeeae98443e2ec7e0cb22a060af98f5fb4edd5d8fcfbd05eff0396b0b5d6929d3add4f65eed7616ef94a272a
+  checksum: 427b71d59a4bd7032b12ef22e8f69fdf3165ec7cc4350f1a1fca190c4211ba8a01e14a04d9a7db8cb44f74034de2bc6e42f0d5ffb5b20590e71646baac5a8a0c
   languageName: node
   linkType: hard
 
@@ -10233,7 +10233,7 @@ __metadata:
     lodash.camelcase: ^4.3.0
     lodash.kebabcase: ^4.1.1
     mem-fs: 2.2.1
-    mem-fs-editor: 9.3.0
+    mem-fs-editor: 9.4.0
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
     pob-dependencies: 6.4.1

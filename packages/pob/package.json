@@ -58,7 +58,7 @@
     "lodash.camelcase": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",
     "mem-fs": "2.2.1",
-    "mem-fs-editor": "9.3.0",
+    "mem-fs-editor": "9.4.0",
     "minimist-argv": "^1.1.0",
     "parse-author": "^2.0.0",
     "pob-dependencies": "6.4.1",
