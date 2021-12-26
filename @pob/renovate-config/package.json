@@ -34,6 +34,9 @@
         ":vertical_traffic_light: automerge"
       ],
       "rangeStrategy": "bump",
+      "assignees": [
+        "christophehurpeau"
+      ],
       "packageRules": [
         {
           "depTypeList": [
