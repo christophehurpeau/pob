@@ -40,6 +40,7 @@
       "lockFileMaintenance": {
         "enabled": true
       },
+      "stabilityDays": 6,
       "packageRules": [
         {
           "depTypeList": [
@@ -116,6 +117,7 @@
         },
         {
           "groupName": "@pob eslint configs",
+          "stabilityDays": 0,
           "packagePatterns": [
             "^@pob/eslint-config"
           ]
@@ -124,6 +126,7 @@
           "packagePatterns": [
             "^@pob/root"
           ],
+          "stabilityDays": 0,
           "schedule": [
             "at any time"
           ],
