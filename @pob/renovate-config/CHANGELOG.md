@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.2.7...@pob/renovate-config@5.3.0) (2021-12-26)
+
+
+### Features
+
+* **renovate:** configure assinees ([38818b3](https://github.com/christophehurpeau/pob/commit/38818b3574fcda8719c04119ac0c6c02a0523bc9))
+* **renovate:** configure lockfile maintenance ([6976af2](https://github.com/christophehurpeau/pob/commit/6976af23de445c706964d76b56c4fcd12e2f369e))
+* **renovate:** configure stabilityDays ([4a73d4b](https://github.com/christophehurpeau/pob/commit/4a73d4b27d255b18c0e1ea2170cfcd0321aba1b3))
+
+
+
+
+
 ## [5.2.7](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.2.6...@pob/renovate-config@5.2.7) (2021-12-19)
 
 **Note:** Version bump only for package @pob/renovate-config

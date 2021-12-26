@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.1.6...@pob/root@6.2.0) (2021-12-26)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v12.1.4 ([#1144](https://github.com/christophehurpeau/pob/issues/1144)) ([12fec19](https://github.com/christophehurpeau/pob/commit/12fec19cf9e73bc0d946366d56dd1ae920849730))
+
+
+### Features
+
+* **deps:** update commitlint monorepo to v16 (major) ([#1145](https://github.com/christophehurpeau/pob/issues/1145)) ([f0a0e84](https://github.com/christophehurpeau/pob/commit/f0a0e849adc7c441f4e01be7fd086b52077afbc4))
+
+
+
+
+
 ## [6.1.6](https://github.com/christophehurpeau/pob/compare/@pob/root@6.1.5...@pob/root@6.1.6) (2021-12-18)
 
 

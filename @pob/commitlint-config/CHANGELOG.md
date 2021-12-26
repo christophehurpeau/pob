@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@4.0.0...@pob/commitlint-config@4.1.0) (2021-12-26)
+
+
+### Features
+
+* **deps:** update commitlint monorepo to v16 (major) ([#1145](https://github.com/christophehurpeau/pob/issues/1145)) ([f0a0e84](https://github.com/christophehurpeau/pob/commit/f0a0e849adc7c441f4e01be7fd086b52077afbc4))
+
+
+
+
+
 # [4.0.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@3.3.0...@pob/commitlint-config@4.0.0) (2021-12-11)
 
 

@@ -15,11 +15,11 @@ interface Dependencies {
   eslint: '8.5.0';
   jest: '27.4.5';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '29.5.0';
+  'pob-babel': '29.5.1';
   'pob-lcov-reporter': '6.0.1';
   prettier: '2.5.1';
   'repository-check-dirty': '^4.0.0';
-  rollup: '2.61.1';
+  rollup: '2.62.0';
   semver: '7.3.5';
   'standard-version': '9.3.2';
   typedoc: '0.22.10';
