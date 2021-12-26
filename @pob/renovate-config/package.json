@@ -37,6 +37,9 @@
       "assignees": [
         "christophehurpeau"
       ],
+      "lockFileMaintenance": {
+        "enabled": true
+      },
       "packageRules": [
         {
           "depTypeList": [
