@@ -101,9 +101,8 @@
             "patch",
             "minor"
           ],
-          "labels": [
-            ":ok_hand: code/approved",
-            ":vertical_traffic_light: automerge"
+          "addLabels": [
+            ":ok_hand: code/approved"
           ],
           "schedule": [
             "at any time"
@@ -122,18 +121,16 @@
           "schedule": [
             "at any time"
           ],
-          "labels": [
-            ":ok_hand: code/approved",
-            ":vertical_traffic_light: automerge"
+          "addLabels": [
+            ":ok_hand: code/approved"
           ]
         },
         {
           "updateTypes": [
             "pin"
           ],
-          "labels": [
-            ":ok_hand: code/approved",
-            ":vertical_traffic_light: automerge"
+          "addLabels": [
+            ":ok_hand: code/approved"
           ],
           "schedule": [
             "at any time"
