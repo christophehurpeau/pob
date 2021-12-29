@@ -609,7 +609,10 @@ export default class CommonBabelGenerator extends Generator {
             // eslint: https://github.com/benmosher/eslint-plugin-import/issues/2132
             // jest: https://github.com/facebook/jest/issues/9771
             if (!pkg.main && exportName === '.') {
-              pkg.main = exportTarget.default || exportTarget.require;
+              pkg.main =
+                exportTarget.default ||
+                exportTarget.require ||
+                exportTarget.import;
             }
           } else if (target === 'browser') {
             if (formats.includes('es')) {
