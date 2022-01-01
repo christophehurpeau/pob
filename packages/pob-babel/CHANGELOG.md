@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.6.1](https://github.com/christophehurpeau/pob/compare/pob-babel@29.6.0...pob-babel@29.6.1) (2022-01-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @rollup/plugin-node-resolve to v13.1.2 ([#1151](https://github.com/christophehurpeau/pob/issues/1151)) ([f56c2e3](https://github.com/christophehurpeau/pob/commit/f56c2e384c5806da5aef54ff222885257963ef24))
+* **deps:** update dependency @rollup/plugin-replace to v3.0.1 ([#1147](https://github.com/christophehurpeau/pob/issues/1147)) ([78f1d71](https://github.com/christophehurpeau/pob/commit/78f1d710d5ecc3437f40411eb880ca888f8c47cf))
+
+
+
+
+
 # [29.6.0](https://github.com/christophehurpeau/pob/compare/pob-babel@29.5.1...pob-babel@29.6.0) (2021-12-26)
 
 

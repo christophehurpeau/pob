@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.11.0](https://github.com/christophehurpeau/pob/compare/pob@9.10.0...pob@9.11.0) (2022-01-01)
+
+
+### Bug Fixes
+
+* **pob:** legacy pkg.main cjs ([04dc5e2](https://github.com/christophehurpeau/pob/commit/04dc5e22e77b7383660b3bc62516d884670cf25a))
+* force package type module when lerna and root is module ([c8e89a8](https://github.com/christophehurpeau/pob/commit/c8e89a8d04936ea7035d86a646437ba74e54146b))
+* **deps:** update dependency @yarnpkg/parsers to v2.5.0-rc.7 ([#1148](https://github.com/christophehurpeau/pob/issues/1148)) ([8da56d4](https://github.com/christophehurpeau/pob/commit/8da56d4c1576908570c16da89caebad87a50c473))
+* **pob:** monorepo react testing detection ([3f95cbf](https://github.com/christophehurpeau/pob/commit/3f95cbf667f624301aab82a88080c526507fe662))
+* **pob:** test babel config with react ([726b954](https://github.com/christophehurpeau/pob/commit/726b95400eeef042bb22cafd1f4cdec23e0008df))
+* package main when only esm is used ([b02684f](https://github.com/christophehurpeau/pob/commit/b02684f03a7bdf5875ac4919aa69df6b4993532f))
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.6.0 ([#1152](https://github.com/christophehurpeau/pob/issues/1152)) ([004bf4f](https://github.com/christophehurpeau/pob/commit/004bf4f78e200606813498ee4f211ed06fec659f))
+
+
+
+
+
 # [9.10.0](https://github.com/christophehurpeau/pob/compare/pob@9.9.1...pob@9.10.0) (2021-12-26)
 
 
