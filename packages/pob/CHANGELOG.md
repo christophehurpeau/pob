@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.12.0](https://github.com/christophehurpeau/pob/compare/pob@9.11.0...pob@9.12.0) (2022-01-01)
+
+
+### Features
+
+* **pob:** update release-please version ([8091222](https://github.com/christophehurpeau/pob/commit/80912226fedb9eb5e25936f2c9f4a719bf9605e9))
+
+
+
+
+
 # [9.11.0](https://github.com/christophehurpeau/pob/compare/pob@9.10.0...pob@9.11.0) (2022-01-01)
 
 
