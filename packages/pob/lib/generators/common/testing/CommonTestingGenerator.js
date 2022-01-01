@@ -86,6 +86,7 @@ export default class CommonTestingGenerator extends Generator {
     const transpileWithBabel = this.options.monorepo
       ? yoConfigPobMonorepo.typescript
       : pkg.pob && pkg.pob.babelEnvs && pkg.pob.babelEnvs.length > 0;
+    let hasReact = transpileWithBabel && packageUtils.hasReact(pkg);
 
     if (!this.options.enable) {
       packageUtils.removeDevDependencies(pkg, ['jest', '@types/jest']);
@@ -149,7 +150,9 @@ export default class CommonTestingGenerator extends Generator {
           workspacesWithoutStar.length === 1
             ? workspacesWithoutStar[0]
             : `(${workspacesWithoutStar.join('|')})`;
-        const hasReact = packageUtils.hasReact(pkg);
+        hasReact = yoConfigPobMonorepo.packageNames.some((pkgName) =>
+          pkgName.startsWith('react-'),
+        );
 
         if (!pkg.jest) pkg.jest = {};
         Object.assign(pkg.jest, {
@@ -204,7 +207,6 @@ export default class CommonTestingGenerator extends Generator {
           ].join(' ; '),
         });
 
-        const hasReact = transpileWithBabel && packageUtils.hasReact(pkg);
         const srcDirectory = transpileWithBabel ? 'src' : 'lib';
 
         if (!pkg.jest) pkg.jest = {};
@@ -262,7 +264,6 @@ export default class CommonTestingGenerator extends Generator {
       transpileWithBabel &&
       ((this.options.monorepo && globalTesting) || !globalTesting)
     ) {
-      const hasReact = transpileWithBabel && packageUtils.hasReact(pkg);
       // cjs for jest compat
       copyAndFormatTpl(
         this.fs,
