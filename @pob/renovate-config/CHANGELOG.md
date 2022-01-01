@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.3.1...@pob/renovate-config@5.4.0) (2022-01-01)
+
+
+### Bug Fixes
+
+* **renovate-config:** use groupName to group monorepo ([b5b2443](https://github.com/christophehurpeau/pob/commit/b5b24431d4d2299b7f8ae160f3baadfe559bdf51))
+
+
+### Features
+
+* **renovate-config:** monorepo groups ([eb53c99](https://github.com/christophehurpeau/pob/commit/eb53c99fb98e841affa7c5a862a3548495846e01))
+
+
+
+
+
 ## [5.3.1](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.3.0...@pob/renovate-config@5.3.1) (2022-01-01)
 
 **Note:** Version bump only for package @pob/renovate-config
