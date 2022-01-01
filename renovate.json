@@ -37,6 +37,18 @@
       ]
     },
     {
+      "description": "nightingale monorepo",
+      "sourceUrlPrefixes": ["https://github.com/christophehurpeau/nightingale"]
+    },
+    {
+      "description": "alp monorepo",
+      "sourceUrlPrefixes": ["https://github.com/christophehurpeau/alp"]
+    },
+    {
+      "description": "liwi monorepo",
+      "sourceUrlPrefixes": ["https://github.com/liwijs/liwi"]
+    },
+    {
       "groupName": "@pob/eslint-config",
       "description": "@pob eslint configs",
       "packagePatterns": ["^@pob/eslint-config"]

@@ -123,6 +123,27 @@
           ]
         },
         {
+          "description": "nightingale monorepo",
+          "stabilityDays": 0,
+          "sourceUrlPrefixes": [
+            "https://github.com/christophehurpeau/nightingale"
+          ]
+        },
+        {
+          "description": "alp monorepo",
+          "stabilityDays": 0,
+          "sourceUrlPrefixes": [
+            "https://github.com/christophehurpeau/alp"
+          ]
+        },
+        {
+          "description": "liwi monorepo",
+          "stabilityDays": 0,
+          "sourceUrlPrefixes": [
+            "https://github.com/liwijs/liwi"
+          ]
+        },
+        {
           "packagePatterns": [
             "^@pob/root"
           ],
