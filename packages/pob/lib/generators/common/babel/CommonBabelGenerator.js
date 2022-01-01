@@ -468,7 +468,11 @@ export default class CommonBabelGenerator extends Generator {
       if (!pkg.main) {
         pkg.exports = './lib/index.js';
       }
-      pkg.main = './lib/index.js';
+      if (pkg.type === 'module' && this.fs.exists('./lib/index.cjs')) {
+        pkg.main = './lib/index.cjs';
+      } else {
+        pkg.main = './lib/index.js';
+      }
       if (!this.options.isApp) {
         if (this.fs.exists('./lib/index.ts')) {
           pkg.types = './lib/index.ts';
