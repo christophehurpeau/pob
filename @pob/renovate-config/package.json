@@ -123,6 +123,7 @@
           ]
         },
         {
+          "groupName": "nightingale",
           "description": "nightingale monorepo",
           "stabilityDays": 0,
           "sourceUrlPrefixes": [
@@ -130,6 +131,7 @@
           ]
         },
         {
+          "groupName": "alp",
           "description": "alp monorepo",
           "stabilityDays": 0,
           "sourceUrlPrefixes": [
@@ -137,6 +139,7 @@
           ]
         },
         {
+          "groupName": "liwi",
           "description": "liwi monorepo",
           "stabilityDays": 0,
           "sourceUrlPrefixes": [

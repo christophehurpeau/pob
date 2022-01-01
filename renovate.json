@@ -37,14 +37,17 @@
       ]
     },
     {
+      "groupName": "nightingale",
       "description": "nightingale monorepo",
       "sourceUrlPrefixes": ["https://github.com/christophehurpeau/nightingale"]
     },
     {
+      "groupName": "alp",
       "description": "alp monorepo",
       "sourceUrlPrefixes": ["https://github.com/christophehurpeau/alp"]
     },
     {
+      "groupName": "liwi",
       "description": "liwi monorepo",
       "sourceUrlPrefixes": ["https://github.com/liwijs/liwi"]
     },
