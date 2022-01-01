@@ -139,6 +139,9 @@ export default class CorePackageGenerator extends Generator {
     );
 
     if (!pkg.type) pkg.type = props.type;
+    if (inLerna && !inLerna.root && inLerna.rootMonorepoPkg.type === 'module') {
+      pkg.type = 'module';
+    }
 
     pkg.description = this.options.updateOnly
       ? pkg.description
