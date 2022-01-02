@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.3](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.4.2...@pob/renovate-config@5.4.3) (2022-01-02)
+
+
+### Bug Fixes
+
+* **renovate-config:** set stabilityDays 0 to trusted auto approuved dependencies ([abec5e8](https://github.com/christophehurpeau/pob/commit/abec5e86c083b0089150152c5a9d6b0200f42857))
+
+
+
+
+
 ## [5.4.2](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.4.1...@pob/renovate-config@5.4.2) (2022-01-02)
 
 **Note:** Version bump only for package @pob/renovate-config

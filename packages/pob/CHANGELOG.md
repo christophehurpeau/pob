@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.12.3](https://github.com/christophehurpeau/pob/compare/pob@9.12.2...pob@9.12.3) (2022-01-02)
+
+
+### Bug Fixes
+
+* remove legacy .yarn/build-state.yml ([b625bab](https://github.com/christophehurpeau/pob/commit/b625bab16caa53342fdcbf1961b73446cdfd2541))
+
+
+
+
+
 ## [9.12.2](https://github.com/christophehurpeau/pob/compare/pob@9.12.1...pob@9.12.2) (2022-01-02)
 
 
