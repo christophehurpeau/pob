@@ -651,10 +651,13 @@ export default class CommonBabelGenerator extends Generator {
 
       if (pkg.pob.extraEntries) {
         pkg.pob.extraEntries.forEach((exportName) => {
-          pkg.exports[`./${exportName}`] = {
-            import: `./${exportName}.mjs`,
-            require: `./${exportName}.js`,
-          };
+          pkg.exports[`./${exportName}`] =
+            pkg.type === 'module'
+              ? `./${exportName}.js`
+              : {
+                  import: `./${exportName}.mjs`,
+                  require: `./${exportName}.js`,
+                };
         });
       }
     } else if (!pkg.exports) {
