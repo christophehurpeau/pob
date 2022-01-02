@@ -179,7 +179,8 @@ export default class CommonLintGenerator extends Generator {
     }
 
     const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
-    const globalEslint = yoConfigPobMonorepo && yoConfigPobMonorepo.eslint;
+    const globalEslint =
+      yoConfigPobMonorepo && yoConfigPobMonorepo.eslint !== false;
     const globalTesting = yoConfigPobMonorepo && yoConfigPobMonorepo.testing;
     const composite = yoConfigPobMonorepo && yoConfigPobMonorepo.typescript;
     const { rootPackageManager, rootYarnNodeLinker } = inLerna || {};
