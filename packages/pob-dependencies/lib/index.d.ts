@@ -9,13 +9,13 @@ interface Dependencies {
   '@pob/eslint-config-typescript-react': '48.0.6';
   '@pob/lerna-light': '5.1.0';
   '@pob/pretty-pkg': '^4.0.1';
-  '@pob/root': '6.2.0';
+  '@pob/root': '6.2.1';
   '@types/jest': '27.4.0';
   'babel-preset-modern-browsers': '15.0.2';
   eslint: '8.6.0';
   jest: '27.4.5';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '29.6.0';
+  'pob-babel': '29.6.1';
   'pob-lcov-reporter': '6.0.1';
   prettier: '2.5.1';
   'repository-check-dirty': '^4.0.0';

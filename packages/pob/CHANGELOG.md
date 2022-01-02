@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.12.1](https://github.com/christophehurpeau/pob/compare/pob@9.12.0...pob@9.12.1) (2022-01-02)
+
+
+### Bug Fixes
+
+* set globalEslint default to true ([8d7d3d5](https://github.com/christophehurpeau/pob/commit/8d7d3d5917b340b901b565a23356b21939059cb8))
+* use cjs for default main for jest which doesnt supports exports yet ([f97c897](https://github.com/christophehurpeau/pob/commit/f97c8972b35032078f4603d788b4a3e637d61637))
+
+
+
+
+
 # [9.12.0](https://github.com/christophehurpeau/pob/compare/pob@9.11.0...pob@9.12.0) (2022-01-01)
 
 

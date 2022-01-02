@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.2.1...@pob/root@6.3.0) (2022-01-02)
+
+
+### Features
+
+* rename pob root update install step ([a11d606](https://github.com/christophehurpeau/pob/commit/a11d6062ab01712997455f312f16637b014e0d7b))
+* update commit message in github workflows ([de35263](https://github.com/christophehurpeau/pob/commit/de35263aa74f6ec91dffefc19e0c49c7701e6358))
+
+
+
+
+
 ## [6.2.1](https://github.com/christophehurpeau/pob/compare/@pob/root@6.2.0...@pob/root@6.2.1) (2022-01-01)
 
 
