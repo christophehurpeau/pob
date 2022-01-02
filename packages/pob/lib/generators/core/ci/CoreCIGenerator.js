@@ -54,6 +54,12 @@ export default class CoreCIGenerator extends Generator {
       required: true,
       desc: 'Include documentation generation',
     });
+
+    this.option('isApp', {
+      type: Boolean,
+      required: true,
+      desc: 'is app',
+    });
   }
 
   default() {
@@ -75,6 +81,7 @@ export default class CoreCIGenerator extends Generator {
           build: this.options.build,
           typescript: this.options.typescript,
           codecov: this.options.codecov,
+          supportsNode14: !this.options.isApp,
         },
       );
     } else {

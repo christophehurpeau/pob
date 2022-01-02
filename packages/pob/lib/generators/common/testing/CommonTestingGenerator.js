@@ -48,6 +48,12 @@ export default class CommonTestingGenerator extends Generator {
       defaults: 'yarn',
       desc: 'yarn or npm',
     });
+
+    this.option('isApp', {
+      type: Boolean,
+      required: true,
+      desc: 'is app',
+    });
   }
 
   default() {
@@ -60,6 +66,7 @@ export default class CommonTestingGenerator extends Generator {
         documentation: this.options.documentation,
         codecov: this.options.codecov,
         packageManager: this.options.packageManager,
+        isApp: this.options.isApp,
       });
     } else {
       this.composeWith('pob:core:ci', {

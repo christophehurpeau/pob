@@ -157,6 +157,7 @@ export default class PobAppGenerator extends Generator {
       codecov: false,
       ci: this.appConfig.ci,
       packageManager: this.options.packageManager,
+      isApp: true,
     });
 
     this.composeWith('pob:common:format-lint', {

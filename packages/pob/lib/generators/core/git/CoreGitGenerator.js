@@ -13,6 +13,12 @@ export default class CoreGitGenerator extends Generator {
       defaults: '',
       desc: 'Should create the repo on github',
     });
+
+    this.option('isApp', {
+      type: String,
+      required: true,
+      desc: 'is app',
+    });
   }
 
   async initializing() {
@@ -94,6 +100,7 @@ export default class CoreGitGenerator extends Generator {
         shouldCreate: !this.originUrl,
         gitHostAccount: this.gitHostAccount,
         repoName: this.repoName,
+        isApp: this.options.isApp,
       });
     }
   }

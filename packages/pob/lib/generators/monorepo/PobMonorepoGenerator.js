@@ -193,6 +193,7 @@ export default class PobMonorepoGenerator extends Generator {
       codecov: this.pobLernaConfig.testing && this.pobLernaConfig.codecov,
       ci: this.pobLernaConfig.ci,
       packageManager: this.options.packageManager,
+      isApp: this.options.isAppProject,
     });
 
     this.composeWith('pob:common:format-lint', {

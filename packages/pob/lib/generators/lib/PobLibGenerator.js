@@ -250,6 +250,7 @@ export default class PobLibGenerator extends Generator {
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
       ci: this.pobjson.testing && this.pobjson.testing.ci,
       packageManager: this.options.packageManager,
+      isApp: false,
     });
 
     // must be after testing

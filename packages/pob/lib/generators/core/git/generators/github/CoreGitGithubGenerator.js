@@ -15,14 +15,18 @@ const gh = got.extend({
   },
 });
 
-const configureProtectionRule = async (owner, repo) => {
+const configureProtectionRule = async (owner, repo, isApp) => {
   for (const branch of ['main', 'master']) {
     try {
       await gh.put(`repos/${owner}/${repo}/branches/${branch}/protection`, {
         json: {
           required_status_checks: {
             strict: false,
-            contexts: ['build (14.x)', 'build (16.x)', 'reviewflow'],
+            contexts: [
+              !isApp && 'build (14.x)',
+              'build (16.x)',
+              'reviewflow',
+            ].filter(Boolean),
           },
           enforce_admins: false, // true,
           required_pull_request_reviews: null,
@@ -65,6 +69,12 @@ export default class CoreGitGithubGenerator extends Generator {
       type: String,
       required: true,
       desc: 'repo name',
+    });
+
+    this.option('isApp', {
+      type: String,
+      required: true,
+      desc: 'is app',
     });
 
     if (!GITHUB_TOKEN && process.env.CI !== 'true') {
@@ -137,7 +147,7 @@ export default class CoreGitGithubGenerator extends Generator {
           cwd,
         });
 
-        configureProtectionRule(owner, repo);
+        configureProtectionRule(owner, repo, this.options.isApp);
 
         // await gh.put(`/repos/${owner}/${repo}/topics`, {
         //   names: pkg.keywords,
@@ -162,7 +172,7 @@ export default class CoreGitGithubGenerator extends Generator {
         },
       });
 
-      configureProtectionRule(owner, repo);
+      configureProtectionRule(owner, repo, this.options.isApp);
     }
   }
 }

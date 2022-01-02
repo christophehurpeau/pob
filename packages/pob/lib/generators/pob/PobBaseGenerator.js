@@ -165,7 +165,9 @@ export default class PobBaseGenerator extends Generator {
     });
 
     if (!this.inLerna) {
-      this.composeWith('pob:core:git');
+      this.composeWith('pob:core:git', {
+        isApp: this.projectConfig.type === 'app',
+      });
     } else {
       if (this.fs.exists('.git-hooks')) this.fs.delete('.git-hooks');
       if (this.fs.exists('git-hooks')) this.fs.delete('git-hooks');
