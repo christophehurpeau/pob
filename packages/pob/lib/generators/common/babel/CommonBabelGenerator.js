@@ -126,10 +126,6 @@ export default class CommonBabelGenerator extends Generator {
           default: nodeVersions,
           choices: [
             {
-              name: '12 (Maintenance LTS)',
-              value: '12',
-            },
-            {
               name: '14 (Maintenance LTS)',
               value: '14',
             },
