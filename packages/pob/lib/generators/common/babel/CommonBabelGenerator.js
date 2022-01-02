@@ -614,9 +614,11 @@ export default class CommonBabelGenerator extends Generator {
             // jest: https://github.com/facebook/jest/issues/9771
             if (!pkg.main && exportName === '.') {
               pkg.main =
-                exportTarget.default ||
-                exportTarget.require ||
-                exportTarget.import;
+                pkg.type === 'module'
+                  ? exportTarget.import
+                  : exportTarget.default ||
+                    exportTarget.require ||
+                    exportTarget.import;
             }
           } else if (target === 'browser') {
             if (formats.includes('es')) {
