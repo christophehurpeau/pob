@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.1](https://github.com/christophehurpeau/pob/compare/@pob/root@6.3.0...@pob/root@6.3.1) (2022-01-02)
+
+
+### Bug Fixes
+
+* **@pob/root:** fix lint-staged warning message ([fa96c7a](https://github.com/christophehurpeau/pob/commit/fa96c7a440a7711acc933f4247072b13ffe5a977))
+
+
+
+
+
 # [6.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.2.1...@pob/root@6.3.0) (2022-01-02)
 
 

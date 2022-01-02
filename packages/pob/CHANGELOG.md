@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.12.2](https://github.com/christophehurpeau/pob/compare/pob@9.12.1...pob@9.12.2) (2022-01-02)
+
+
+### Bug Fixes
+
+* **pob:** stop ci testing on node 14 on app projects ([c775697](https://github.com/christophehurpeau/pob/commit/c77569741136dc3feefcdc61f666092751be944c))
+
+
+
+
+
 ## [9.12.1](https://github.com/christophehurpeau/pob/compare/pob@9.12.0...pob@9.12.1) (2022-01-02)
 
 
