@@ -23,7 +23,9 @@ const workspaces = pkg.workspaces || false;
 
 const getSrcDirectories = () => {
   if (workspaces) {
-    return `{${workspaces.join(',')}}/{src,lib}`;
+    return `${
+      workspaces.length === 1 ? workspaces[0] : `{${workspaces.join(',')}}`
+    }/{src,lib}`;
   }
 
   return '{src,lib}';
