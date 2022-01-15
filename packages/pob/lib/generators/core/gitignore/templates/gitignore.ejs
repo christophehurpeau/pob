@@ -7,12 +7,12 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 <% } -%>
-
 <% if (paths) { -%>
+
 <%= paths %>
 <% } -%>
-
 <% if (root) { -%>
+
 # IDE
 /.settings
 /.project
@@ -20,19 +20,18 @@ yarn-error.log*
 !/.vscode
 *.sublime-project
 *.sublime-workspace
-
 <% if (documentation) { -%>
+
 # generated documentation directory
 /docs
 <% } -%>
-
 <% if (testing) { -%>
+
 # jest default coverage directory
 /coverage
 <% } -%>
-
-
 <% if (typescript && buildInGit) { -%>
+
 # Typescript
 tsbuildinfo
 <% } -%>
