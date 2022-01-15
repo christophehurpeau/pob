@@ -2749,7 +2749,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: 6.7.0
+    pob-dependencies: 6.8.0
     prettier: 2.5.1
   languageName: unknown
   linkType: soft
@@ -10189,7 +10189,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@6.7.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@6.8.0, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -10264,7 +10264,7 @@ __metadata:
     mem-fs-editor: 9.4.0
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
-    pob-dependencies: 6.7.0
+    pob-dependencies: 6.8.0
     prettier: 2.5.1
     semver: ^7.3.4
     yeoman-environment: ^3.5.1

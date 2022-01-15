@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.13.1](https://github.com/christophehurpeau/pob/compare/pob@9.13.0...pob@9.13.1) (2022-01-15)
+
+
+### Bug Fixes
+
+* **pob:** multiple newlines in gitignore template ([f00c5be](https://github.com/christophehurpeau/pob/commit/f00c5bed9a6200d3ded4737ffcdab175eb56b2c5))
+
+
+
+
+
 # [9.13.0](https://github.com/christophehurpeau/pob/compare/pob@9.12.3...pob@9.13.0) (2022-01-15)
 
 

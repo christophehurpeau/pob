@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.8.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.7.0...pob-dependencies@6.8.0) (2022-01-15)
+
+
+### Features
+
+* **deps:** update dependency jest to v27.4.7 ([#1157](https://github.com/christophehurpeau/pob/issues/1157)) ([8a3c172](https://github.com/christophehurpeau/pob/commit/8a3c17287982ecf30e8fea8d1e7ab3007f030bd6))
+
+
+
+
+
 # [6.7.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.6.3...pob-dependencies@6.7.0) (2022-01-15)
 
 
