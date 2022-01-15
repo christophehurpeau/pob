@@ -66,6 +66,7 @@ export default class CoreCIGenerator extends Generator {
     if (fs.existsSync(this.destinationPath('.circleci'))) {
       fs.rmdirSync(this.destinationPath('.circleci'), { recursive: true });
     }
+
     if (this.options.enable) {
       const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
@@ -86,6 +87,24 @@ export default class CoreCIGenerator extends Generator {
       );
     } else {
       this.fs.delete(this.destinationPath('.github/workflows/push.yml'));
+    }
+
+    if (
+      this.options.enable &&
+      (this.options.documentation || this.options.testing)
+    ) {
+      copyAndFormatTpl(
+        this.fs,
+        this.templatePath('github-action-documentation-workflow.yml.ejs'),
+        this.destinationPath('.github/workflows/gh-pages.yml'),
+        {
+          packageManager: this.options.packageManager,
+          testing: this.options.testing,
+          typedoc: this.options.documentation && this.options.typescript,
+        },
+      );
+    } else {
+      this.fs.delete(this.destinationPath('.github/workflows/gh-pages.yml'));
     }
   }
 

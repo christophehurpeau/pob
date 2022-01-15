@@ -18,6 +18,13 @@ export default class CoreGitignoreGenerator extends Generator {
       desc: 'Documentation enabled.',
     });
 
+    this.option('testing', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+      desc: 'Testing enabled.',
+    });
+
     this.option('withBabel', {
       type: Boolean,
       required: false,
@@ -66,6 +73,7 @@ export default class CoreGitignoreGenerator extends Generator {
       this.fs.copyTpl(this.templatePath('gitignore.ejs'), dest, {
         root: this.options.root,
         documentation: this.options.documentation,
+        testing: this.options.testing,
         withBabel,
         typescript: withBabel || this.options.typescript,
         paths: this.options.paths,

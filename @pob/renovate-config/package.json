@@ -57,7 +57,6 @@
           "groupName": "Pob Dependencies",
           "packageNames": [
             "pob-babel",
-            "pob-lcov-reporter",
             "standard-version"
           ],
           "schedule": [

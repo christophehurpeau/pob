@@ -21,6 +21,17 @@ yarn-error.log*
 *.sublime-project
 *.sublime-workspace
 
+<% if (documentation) { -%>
+# generated documentation directory
+/docs
+<% } -%>
+
+<% if (testing) { -%>
+# jest default coverage directory
+/coverage
+<% } -%>
+
+
 <% if (typescript && buildInGit) { -%>
 # Typescript
 tsbuildinfo

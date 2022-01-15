@@ -85,6 +85,7 @@ export default class CommonTestingGenerator extends Generator {
       'babel-core',
       'ts-jest',
       'babel-jest',
+      'pob-lcov-reporter',
     ]);
 
     const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
@@ -116,13 +117,10 @@ export default class CommonTestingGenerator extends Generator {
       packageUtils.addOrRemoveDevDependencies(
         pkg,
         enableForMonorepo || !globalTesting,
-        [
-          pkg.name !== 'pob-monorepo' && 'pob-lcov-reporter',
-          'jest',
-          '@types/jest',
-        ],
+        ['jest', '@types/jest'],
       );
 
+      packageUtils.removeScripts(['test:coverage']);
       if (this.options.monorepo && !globalTesting) {
         delete pkg.jest;
         packageUtils.addScripts(pkg, {
@@ -139,12 +137,6 @@ export default class CommonTestingGenerator extends Generator {
 
         packageUtils.addScripts(pkg, {
           test: jestCommand,
-          'generate:test-coverage': [
-            'rm -Rf docs/coverage/',
-            `NODE_ENV=production ${
-              transpileWithBabel ? 'BABEL_ENV=test ' : ''
-            }${jestCommand} --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/`,
-          ].join(' ; '),
         });
 
         const workspacesWithoutStar = pkg.workspaces.map((workspace) => {
@@ -206,12 +198,6 @@ export default class CommonTestingGenerator extends Generator {
         packageUtils.addScripts(pkg, {
           test: jestCommand,
           'test:watch': `${jestCommand} --watch`,
-          'generate:test-coverage': [
-            'rm -Rf docs/coverage/',
-            `NODE_ENV=production ${
-              transpileWithBabel ? 'BABEL_ENV=test ' : ''
-            }${jestCommand} --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/`,
-          ].join(' ; '),
         });
 
         const srcDirectory = transpileWithBabel ? 'src' : 'lib';

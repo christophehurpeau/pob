@@ -73,35 +73,25 @@ jobs:
         run: yarn run tsc
         if: startsWith(matrix.node-version, '16.')
 <% } -%>
-<% if (testing) { -%>
-
-      - name: Test
-        run: <%= packageManager %> run test
-        env:
-          CI: true
-<% } -%>
-<% if (documentation) { -%>
-
-      - name: Documentation
-        run: <%= packageManager %> run generate:docs
-        if: startsWith(matrix.node-version, '16.')
-        env:
-          CI: true
-<% } else if (codecov) { -%>
-
-      - name: Generate Coverage doc
-        run: <%= packageManager %> run generate:test-coverage
-        if: startsWith(matrix.node-version, '16.')
-        env:
-          CI: true
-<% } -%>
 <% if (codecov) { -%>
+
+      - name: Generate Test Coverage
+        run: <%= packageManager %> run test --coverage --coverageReporters=json --coverageReporters=text
+        if: startsWith(matrix.node-version, '16.')
+        env:
+          CI: true
 
       - name: Send results to codecov
         uses: codecov/codecov-action@v2
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
         if: startsWith(matrix.node-version, '16.')
+<% } else if (testing) { -%>
+
+      - name: Test
+        run: <%= packageManager %> run test
+        env:
+          CI: true
 <% } -%>
 <% if (true) { -%>
 

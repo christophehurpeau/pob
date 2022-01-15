@@ -129,17 +129,10 @@ export default class CoreYarnGenerator extends Generator {
         try {
           this.spawnCommandSync('yarn', ['run', 'preversion']);
         } catch {}
-      } else {
-        if (pkg.scripts.build) {
-          try {
-            this.spawnCommandSync('yarn', ['run', 'build']);
-          } catch {}
-        }
-        if (pkg.scripts['generate:docs']) {
-          try {
-            this.spawnCommandSync('yarn', ['run', 'generate:docs']);
-          } catch {}
-        }
+      } else if (pkg.scripts.build) {
+        try {
+          this.spawnCommandSync('yarn', ['run', 'build']);
+        } catch {}
       }
     }
   }

@@ -186,6 +186,7 @@ export default class PobAppGenerator extends Generator {
     this.composeWith('pob:core:gitignore', {
       root: !inLerna || inLerna.root,
       documentation: false,
+      testing: this.appConfig.testing,
       withBabel: babel,
       paths: ignorePaths.join('\n'),
       buildInGit: false,

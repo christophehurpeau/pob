@@ -20,7 +20,6 @@
     "build": "yarn workspaces foreach --parallel --topological-dev -Av run build && yarn run build:definitions",
     "build:definitions": "tsc -b tsconfig.build.json",
     "checks": "node scripts/check-packages.js",
-    "generate:test-coverage": "rm -Rf docs/coverage/ ; NODE_ENV=production BABEL_ENV=test NODE_OPTIONS=--experimental-vm-modules jest --coverage --coverageReporters=pob-lcov-reporter --coverageDirectory=docs/coverage/",
     "lint": "yarn run lint:prettier && yarn run lint:eslint",
     "lint:eslint": "eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet .",
     "lint:prettier": "prettier --check .",
@@ -28,7 +27,7 @@
     "postinstall": "yarn node @pob/root/bin/pob-root-postinstall.js",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "tsc": "tsc -b",
-    "watch": "yarn workspaces foreach --parallel --exclude \"*-example\" -Av run watch"
+    "watch": "yarn workspaces foreach --parallel --jobs unlimited --interlaced --exclude \"*-example\" -Av run watch"
   },
   "prettier": {
     "trailingComma": "all",
@@ -47,8 +46,8 @@
       ".ts"
     ],
     "testMatch": [
-      "<rootDir>/(packages|@pob|examples)/*/(src|lib)/**/__tests__/**/*.(ts|js|cjs|mjs)",
-      "<rootDir>/(packages|@pob|examples)/*/(src|lib)/**/*.test.(ts|js|cjs|mjs)"
+      "<rootDir>/(packages|@pob|pob-examples)/*/(src|lib)/**/__tests__/**/*.(ts|js|cjs|mjs)",
+      "<rootDir>/(packages|@pob|pob-examples)/*/(src|lib)/**/*.test.(ts|js|cjs|mjs)"
     ]
   },
   "resolutions": {
@@ -67,7 +66,6 @@
     "eslint": "8.6.0",
     "jest": "27.4.5",
     "pob-babel": "workspace:*",
-    "pob-lcov-reporter": "workspace:*",
     "prettier": "2.5.1",
     "typescript": "4.5.4"
   }

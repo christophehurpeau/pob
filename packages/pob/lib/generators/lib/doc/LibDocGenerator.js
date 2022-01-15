@@ -146,19 +146,16 @@ export default class LibDocGenerator extends Generator {
     //   },
     // );
 
+    if (pkg.scripts) {
+      delete pkg.scripts['generate:docs'];
+    }
+
     if (this.options.enabled) {
       packageUtils.addScripts(pkg, {
-        'generate:docs':
-          'rm -Rf docs ; yarn run generate:api ; touch docs/.nojekyll',
         'generate:api': 'typedoc --tsconfig tsconfig.doc.json',
       });
-
-      if (this.options.testing && (!inLerna || !inLerna.root)) {
-        pkg.scripts['generate:docs'] += ' && yarn run generate:test-coverage';
-      }
     } else {
       delete pkg.scripts['generate:api'];
-      delete pkg.scripts['generate:docs'];
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);

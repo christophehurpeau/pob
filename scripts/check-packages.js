@@ -12,9 +12,4 @@ createCheckPackageWithWorkspaces()
     return pkgCheck.checkSatisfiesVersionsFromDependency('yeoman-environment', {
       dependencies: ['mem-fs', 'mem-fs-editor'],
     });
-  })
-  .for('pob-lcov-reporter', (pkgCheck) => {
-    return pkgCheck.checkSatisfiesVersionsFromDependency('@jest/reporters', {
-      dependencies: ['istanbul-reports'],
-    });
   });

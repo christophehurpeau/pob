@@ -76,7 +76,6 @@ export default class CommonReleaseGenerator extends Generator {
         preversion: [
           'yarn run lint',
           this.options.withBabel && 'yarn run build',
-          this.options.documentation && 'yarn run generate:docs',
           'repository-check-dirty',
         ]
           .filter(Boolean)

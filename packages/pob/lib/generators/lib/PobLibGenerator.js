@@ -291,6 +291,7 @@ export default class PobLibGenerator extends Generator {
       withBabel: babelEnvs.length > 0,
       typescript: babelEnvs.length > 0,
       documentation: this.pobjson.documentation,
+      testing: !!this.pobjson.testing,
     });
 
     this.composeWith('pob:core:npm', {

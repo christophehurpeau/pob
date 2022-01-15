@@ -10227,7 +10227,6 @@ __metadata:
     jest: 27.4.5
     jest-junit-reporter: 1.1.0
     pob-babel: 29.6.1
-    pob-lcov-reporter: 6.0.1
     prettier: 2.5.1
     repository-check-dirty: ^4.0.0
     rollup: 2.64.0
@@ -10235,17 +10234,6 @@ __metadata:
     standard-version: 9.3.2
     typedoc: 0.22.10
     typescript: 4.5.4
-  languageName: unknown
-  linkType: soft
-
-"pob-lcov-reporter@6.0.1, pob-lcov-reporter@workspace:*, pob-lcov-reporter@workspace:packages/pob-lcov-reporter":
-  version: 0.0.0-use.local
-  resolution: "pob-lcov-reporter@workspace:packages/pob-lcov-reporter"
-  dependencies:
-    istanbul-reports: ^3.0.2
-    jest: 27.4.5
-  peerDependencies:
-    jest: ^26.0.1 || ^27.0.6
   languageName: unknown
   linkType: soft
 
@@ -10262,7 +10250,6 @@ __metadata:
     eslint: 8.6.0
     jest: 27.4.5
     pob-babel: "workspace:*"
-    pob-lcov-reporter: "workspace:*"
     prettier: 2.5.1
     typescript: 4.5.4
   languageName: unknown

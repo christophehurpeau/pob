@@ -16,7 +16,6 @@ interface Dependencies {
   jest: '27.4.5';
   'jest-junit-reporter': '1.1.0';
   'pob-babel': '29.6.1';
-  'pob-lcov-reporter': '6.0.1';
   prettier: '2.5.1';
   'repository-check-dirty': '^4.0.0';
   rollup: '2.62.0';

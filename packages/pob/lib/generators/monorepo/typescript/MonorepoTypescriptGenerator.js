@@ -61,9 +61,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
       delete pkg.scripts.postbuild;
 
       if (!this.options.isAppProject) {
-        pkg.scripts.build += ` && yarn run build:definitions${
-          pkg.scripts['generate:docs'] ? ' && yarn run generate:docs' : ''
-        }`;
+        pkg.scripts.build += ' && yarn run build:definitions';
       }
 
       const packagePaths = JSON.parse(this.options.packagePaths);

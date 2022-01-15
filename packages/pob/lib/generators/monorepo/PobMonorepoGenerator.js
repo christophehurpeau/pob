@@ -1,3 +1,4 @@
+import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import { PackageGraph } from '@lerna/package-graph';
@@ -218,6 +219,8 @@ export default class PobMonorepoGenerator extends Generator {
     this.composeWith('pob:core:gitignore', {
       root: true,
       typescript: this.pobLernaConfig.typescript,
+      documentation: this.pobLernaConfig.documentation,
+      testing: this.pobLernaConfig.testing,
     });
 
     this.composeWith('pob:common:remove-old-dependencies');
@@ -229,13 +232,11 @@ export default class PobMonorepoGenerator extends Generator {
       packagePaths: JSON.stringify(packagePaths),
     });
 
-    if (this.pobLernaConfig.documentation) {
-      pkg.scripts.build = `${
-        pkg.scripts.build ? `${pkg.scripts.build} && ` : ''
-      }yarn run generate:docs`;
-    }
-
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+
+    execSync(
+      `rm -Rf ${['lib-*', 'coverage', 'docs'].filter(Boolean).join(' ')}`,
+    );
   }
 
   end() {

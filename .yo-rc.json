@@ -13,7 +13,6 @@
         "@pob/sort-object",
         "babel-plugin-fix-class-properties-uninitialized",
         "example-simple-lib",
-        "pob-lcov-reporter",
         "repository-check-dirty",
         "@pob/sort-eslint-config",
         "@pob/sort-pkg",
