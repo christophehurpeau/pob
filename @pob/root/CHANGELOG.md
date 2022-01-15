@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.3.2...@pob/root@6.4.0) (2022-01-15)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @commitlint/cli to v16.0.2 ([#1161](https://github.com/christophehurpeau/pob/issues/1161)) ([80dccd0](https://github.com/christophehurpeau/pob/commit/80dccd0b1c12052fe076e934d31a5150892e8b80))
+* **deps:** update dependency lint-staged to v12.1.5 ([#1154](https://github.com/christophehurpeau/pob/issues/1154)) ([984425e](https://github.com/christophehurpeau/pob/commit/984425ec4716fae1602cc11e414aa4b4f1ae74b2))
+* **deps:** update dependency lint-staged to v12.1.6 ([#1159](https://github.com/christophehurpeau/pob/issues/1159)) ([2eb816f](https://github.com/christophehurpeau/pob/commit/2eb816f9ceb78230f45e64b46c52eb06c57e95c9))
+* **deps:** update dependency lint-staged to v12.1.7 ([#1160](https://github.com/christophehurpeau/pob/issues/1160)) ([fd984fd](https://github.com/christophehurpeau/pob/commit/fd984fd8817a22e5ea09f2b47a7f7f125aa46ec2))
+
+
+### Features
+
+* generate documentation and coverage on gh-pages ([32e4801](https://github.com/christophehurpeau/pob/commit/32e4801e8a4d1ff221a7fe63d42c6fe52d46f796))
+
+
+
+
+
 ## [6.3.2](https://github.com/christophehurpeau/pob/compare/@pob/root@6.3.1...@pob/root@6.3.2) (2022-01-02)
 
 

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.13.0](https://github.com/christophehurpeau/pob/compare/pob@9.12.3...pob@9.13.0) (2022-01-15)
+
+
+### Bug Fixes
+
+* disable gh-pages for apps ([0f935ff](https://github.com/christophehurpeau/pob/commit/0f935ff24207ebe782bb7f0a2f75372ab87ac240))
+* **deps:** update dependency @pob/eslint-config-typescript-react to v48.0.7 ([#1153](https://github.com/christophehurpeau/pob/issues/1153)) ([b96b1c4](https://github.com/christophehurpeau/pob/commit/b96b1c4497529772b58e18c04b6b19020bb4931f))
+* **deps:** update dependency @yarnpkg/parsers to v2.5.0-rc.8 ([#1155](https://github.com/christophehurpeau/pob/issues/1155)) ([4a01d49](https://github.com/christophehurpeau/pob/commit/4a01d4929b0b6ae0d19494e478357a6d7bf4acb6))
+* **pob:** add @babel/core when pkg has peer dependency ([acd04cb](https://github.com/christophehurpeau/pob/commit/acd04cbc77c914af56db8b83734d187cc926f4e4))
+* **pob:** extraEntries for pkg.type === "module" ([2fae75c](https://github.com/christophehurpeau/pob/commit/2fae75cdf6ee5678f436d11a15f02bd22f1a9c66))
+* **pob:** remove /private_key in gitignore ([368d819](https://github.com/christophehurpeau/pob/commit/368d8193d638ec41a7caa7a46e9cbcd6607dcaf2))
+
+
+### Features
+
+* generate documentation and coverage on gh-pages ([32e4801](https://github.com/christophehurpeau/pob/commit/32e4801e8a4d1ff221a7fe63d42c6fe52d46f796))
+
+
+
+
+
 ## [9.12.3](https://github.com/christophehurpeau/pob/compare/pob@9.12.2...pob@9.12.3) (2022-01-02)
 
 

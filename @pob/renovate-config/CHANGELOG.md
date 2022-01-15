@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.5.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.4.3...@pob/renovate-config@5.5.0) (2022-01-15)
+
+
+### Features
+
+* generate documentation and coverage on gh-pages ([32e4801](https://github.com/christophehurpeau/pob/commit/32e4801e8a4d1ff221a7fe63d42c6fe52d46f796))
+
+
+
+
+
 ## [5.4.3](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.4.2...@pob/renovate-config@5.4.3) (2022-01-02)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.1.12...example-typescript-lib@0.2.0) (2022-01-15)
+
+
+### Features
+
+* generate documentation and coverage on gh-pages ([32e4801](https://github.com/christophehurpeau/pob/commit/32e4801e8a4d1ff221a7fe63d42c6fe52d46f796))
+
+
+
+
+
 ## [0.1.12](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.1.11...example-typescript-lib@0.1.12) (2022-01-01)
 
 **Note:** Version bump only for package example-typescript-lib

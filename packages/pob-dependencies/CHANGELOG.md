@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.7.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.6.3...pob-dependencies@6.7.0) (2022-01-15)
+
+
+### Bug Fixes
+
+* **deps:** update babel monorepo to v7.16.8 ([#1162](https://github.com/christophehurpeau/pob/issues/1162)) ([de17c7e](https://github.com/christophehurpeau/pob/commit/de17c7ed3a1c3dc560860eaf19fa393cad1cb2ac))
+* **deps:** update dependency @pob/eslint-config-typescript-react to v48.0.7 ([#1153](https://github.com/christophehurpeau/pob/issues/1153)) ([b96b1c4](https://github.com/christophehurpeau/pob/commit/b96b1c4497529772b58e18c04b6b19020bb4931f))
+
+
+### Features
+
+* generate documentation and coverage on gh-pages ([32e4801](https://github.com/christophehurpeau/pob/commit/32e4801e8a4d1ff221a7fe63d42c6fe52d46f796))
+* **deps:** update dependency rollup to v2.63.0 ([#1156](https://github.com/christophehurpeau/pob/issues/1156)) ([3e5f612](https://github.com/christophehurpeau/pob/commit/3e5f61282c0a9346cb57744ba51faff484c55bf8))
+* **deps:** update dependency rollup to v2.64.0 ([#1163](https://github.com/christophehurpeau/pob/issues/1163)) ([529ee6b](https://github.com/christophehurpeau/pob/commit/529ee6bf826018dcc7f970fddade2fd65d33e533))
+
+
+
+
+
 ## [6.6.3](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.6.2...pob-dependencies@6.6.3) (2022-01-02)
 
 **Note:** Version bump only for package pob-dependencies
