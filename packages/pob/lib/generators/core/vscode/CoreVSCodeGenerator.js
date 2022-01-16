@@ -112,11 +112,42 @@ export default class CoreVSCodeGenerator extends Generator {
         }));
         folders.sort((a, b) => a.name.localeCompare(b.name, 'en'));
 
+        const extensions = readJSON5(
+          this.fs,
+          this.destinationPath('.vscode/extensions.json'),
+          {},
+        );
+        const tasks = readJSON5(
+          this.fs,
+          this.destinationPath('.vscode/tasks.json'),
+          {},
+        );
+        const settings = readJSON5(
+          this.fs,
+          this.destinationPath('.vscode/settings.json'),
+          {},
+        );
+
         const projectName = pkg.name.replace('/', '-');
         writeAndFormatJson(
           this.fs,
           this.destinationPath(`.vscode/${projectName}.code-workspace`),
           {
+            extensions,
+            tasks,
+            settings: {
+              ...settings,
+              ...(this.options.testing
+                ? {
+                    'jest.jestCommandLine':
+                      'NODE_OPTIONS=--experimental-vm-modules node_modules/.bin/jest',
+                    // disable all folders to enable only root.
+                    'jest.disabledWorkspaceFolders': folders.map(
+                      (folder) => folder.name,
+                    ),
+                  }
+                : {}),
+            },
             folders: [
               {
                 name: '✨ root',
