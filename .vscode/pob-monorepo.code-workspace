@@ -7,33 +7,6 @@
     ],
     "unwantedRecommendations": []
   },
-  "tasks": {
-    "version": "2.0.0",
-    "tasks": [
-      {
-        "label": "lint:prettier",
-        "problemMatcher": [],
-        "type": "npm",
-        "script": "lint:prettier",
-        "group": "test",
-        "presentation": {
-          "panel": "dedicated",
-          "clear": true
-        }
-      },
-      {
-        "label": "lint:prettier:fix",
-        "problemMatcher": [],
-        "type": "npm",
-        "script": "lint:prettier:fix",
-        "group": "test",
-        "presentation": {
-          "panel": "dedicated",
-          "clear": true
-        }
-      }
-    ]
-  },
   "settings": {
     "search.exclude": {
       "**/.yarn": true

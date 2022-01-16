@@ -117,11 +117,6 @@ export default class CoreVSCodeGenerator extends Generator {
           this.destinationPath('.vscode/extensions.json'),
           {},
         );
-        const tasks = readJSON5(
-          this.fs,
-          this.destinationPath('.vscode/tasks.json'),
-          {},
-        );
         const settings = readJSON5(
           this.fs,
           this.destinationPath('.vscode/settings.json'),
@@ -134,7 +129,6 @@ export default class CoreVSCodeGenerator extends Generator {
           this.destinationPath(`.vscode/${projectName}.code-workspace`),
           {
             extensions,
-            tasks,
             settings: {
               ...settings,
               ...(this.options.testing
