@@ -178,6 +178,15 @@ export default class PobAppGenerator extends Generator {
       updateOnly: this.options.updateOnly,
     });
 
+    this.composeWith('pob:core:vscode', {
+      root: !inLerna,
+      monorepo: false,
+      packageManager: this.options.packageManager,
+      yarnNodeLinker: this.options.yarnNodeLinker,
+      typescript: babel,
+      testing: this.appConfig.testing,
+    });
+
     // only for gitignore
     if (this.fs.exists('.env.example')) {
       ignorePaths.push('/.env*', '!/.env.example');

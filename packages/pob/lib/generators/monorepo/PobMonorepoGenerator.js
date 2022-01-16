@@ -215,6 +215,18 @@ export default class PobMonorepoGenerator extends Generator {
       packagePaths: JSON.stringify(packagePaths),
       packageManager: this.options.packageManager,
     });
+
+    this.composeWith('pob:core:vscode', {
+      root: true,
+      monorepo: true,
+      packageManager: this.options.packageManager,
+      yarnNodeLinker: this.options.yarnNodeLinker,
+      typescript: this.pobLernaConfig.typescript,
+      testing: this.pobLernaConfig.testing,
+      packageNames: JSON.stringify(packageNames),
+      packageLocations: JSON.stringify(this.packageLocations),
+    });
+
     // Always add a gitignore, because npm publish uses it.
     this.composeWith('pob:core:gitignore', {
       root: true,

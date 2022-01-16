@@ -285,6 +285,15 @@ export default class PobLibGenerator extends Generator {
       updateOnly: this.options.updateOnly,
     });
 
+    this.composeWith('pob:core:vscode', {
+      root: !inLerna,
+      monorepo: false,
+      packageManager: this.options.packageManager,
+      yarnNodeLinker: this.options.yarnNodeLinker,
+      typescript: withBabel,
+      testing: this.pobjson.testing,
+    });
+
     // must be after doc, testing
     this.composeWith('pob:core:gitignore', {
       root: !inLerna,

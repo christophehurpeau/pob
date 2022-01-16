@@ -1,0 +1,80 @@
+{
+  "folders": [
+    {
+      "name": "✨ root",
+      "path": ".."
+    },
+    {
+      "name": "@pob/check-lib-dependency-in-root-dev-dependencies",
+      "path": "../@pob/check-lib-dependency-in-root-dev-dependencies"
+    },
+    {
+      "name": "@pob/commitlint-config",
+      "path": "../@pob/commitlint-config"
+    },
+    {
+      "name": "@pob/lerna-light",
+      "path": "../@pob/lerna-light"
+    },
+    {
+      "name": "@pob/pretty-eslint-config",
+      "path": "../@pob/pretty-eslint-config"
+    },
+    {
+      "name": "@pob/pretty-pkg",
+      "path": "../@pob/pretty-pkg"
+    },
+    {
+      "name": "@pob/renovate-config",
+      "path": "../@pob/renovate-config"
+    },
+    {
+      "name": "@pob/root",
+      "path": "../@pob/root"
+    },
+    {
+      "name": "@pob/sort-eslint-config",
+      "path": "../@pob/sort-eslint-config"
+    },
+    {
+      "name": "@pob/sort-object",
+      "path": "../@pob/sort-object"
+    },
+    {
+      "name": "@pob/sort-pkg",
+      "path": "../@pob/sort-pkg"
+    },
+    {
+      "name": "babel-plugin-fix-class-properties-uninitialized",
+      "path": "../packages/babel-plugin-fix-class-properties-uninitialized"
+    },
+    {
+      "name": "babel-preset-pob-env",
+      "path": "../packages/babel-preset-pob-env"
+    },
+    {
+      "name": "example-simple-lib",
+      "path": "../pob-examples/simple-lib"
+    },
+    {
+      "name": "example-typescript-lib",
+      "path": "../pob-examples/typescript-lib"
+    },
+    {
+      "name": "pob",
+      "path": "../packages/pob"
+    },
+    {
+      "name": "pob-babel",
+      "path": "../packages/pob-babel"
+    },
+    {
+      "name": "pob-dependencies",
+      "path": "../packages/pob-dependencies"
+    },
+    {
+      "name": "repository-check-dirty",
+      "path": "../packages/repository-check-dirty"
+    }
+  ]
+}

@@ -149,15 +149,6 @@ export default class PobBaseGenerator extends Generator {
       app: this.projectConfig.type === 'app',
     });
 
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-
-    this.composeWith('pob:core:vscode', {
-      root: this.isRoot,
-      packageManager: this.projectConfig.packageManager,
-      yarnNodeLinker: this.projectConfig.yarnNodeLinker,
-      typescript: !!(pkg.devDependencies && pkg.devDependencies.typescript),
-    });
-
     this.composeWith('pob:core:yarn', {
       type: this.projectConfig.type,
       enable: this.isRoot && this.projectConfig.packageManager === 'yarn',
