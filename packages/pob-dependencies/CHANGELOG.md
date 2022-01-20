@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.9.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.8.0...pob-dependencies@6.9.0) (2022-01-20)
+
+
+### Features
+
+* **deps:** update dependency @babel/preset-env to v7.16.11 ([#1174](https://github.com/christophehurpeau/pob/issues/1174)) ([1eab5bf](https://github.com/christophehurpeau/pob/commit/1eab5bf9e3be75a00508193dc5d2af092cbd8677))
+* **deps:** update dependency eslint to v8.7.0 ([#1164](https://github.com/christophehurpeau/pob/issues/1164)) ([9ec0c31](https://github.com/christophehurpeau/pob/commit/9ec0c3156cf5ed5d1f9e3e4ce4636b77da826850))
+* **deps:** update dependency typedoc to v0.22.11 ([#1166](https://github.com/christophehurpeau/pob/issues/1166)) ([ae968c2](https://github.com/christophehurpeau/pob/commit/ae968c21826d294d5e089a09b3906d26a7bd3d1b))
+
+
+
+
+
 # [6.8.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.7.0...pob-dependencies@6.8.0) (2022-01-15)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.6.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.5.1...@pob/renovate-config@5.6.0) (2022-01-20)
+
+
+### Features
+
+* **renovate-config:** tweak config for stability days ([4325c37](https://github.com/christophehurpeau/pob/commit/4325c37b8cebb1860c1b4d27af6745598271a277))
+
+
+
+
+
 ## [5.5.1](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.5.0...@pob/renovate-config@5.5.1) (2022-01-15)
 
 **Note:** Version bump only for package @pob/renovate-config

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.5.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.4.0...@pob/root@6.5.0) (2022-01-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @commitlint/cli to v16.0.3 ([#1169](https://github.com/christophehurpeau/pob/issues/1169)) ([273d502](https://github.com/christophehurpeau/pob/commit/273d5021da0d613a34f95d1349b9d21fdac3a5d8))
+* **deps:** update dependency lint-staged to v12.2.1 ([#1171](https://github.com/christophehurpeau/pob/issues/1171)) ([8b6954a](https://github.com/christophehurpeau/pob/commit/8b6954ac097c4f5a8347f1b74b42755e2cf4d863))
+* **deps:** update dependency lint-staged to v12.2.2 ([#1175](https://github.com/christophehurpeau/pob/issues/1175)) ([0bbdb17](https://github.com/christophehurpeau/pob/commit/0bbdb17e61239fd86a51a1378b32f79413fc7b9e))
+
+
+### Features
+
+* **deps:** update dependency @commitlint/cli to v16.1.0 ([#1173](https://github.com/christophehurpeau/pob/issues/1173)) ([778a409](https://github.com/christophehurpeau/pob/commit/778a4095bdf4f3f295046b7cbac48ae30e859069))
+* **deps:** update dependency lint-staged to v12.2.0 ([#1167](https://github.com/christophehurpeau/pob/issues/1167)) ([7354483](https://github.com/christophehurpeau/pob/commit/73544836fc5a9c73b1ed59baa0342bb0ed64c105))
+
+
+
+
+
 # [6.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.3.2...@pob/root@6.4.0) (2022-01-15)
 
 

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.14.0](https://github.com/christophehurpeau/pob/compare/pob@9.13.2...pob@9.14.0) (2022-01-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @yarnpkg/parsers to v2.5.0-rc.9 ([#1165](https://github.com/christophehurpeau/pob/issues/1165)) ([bdb496f](https://github.com/christophehurpeau/pob/commit/bdb496febb6ec534a0ca0ac24cb32fe16b639e79))
+* full vscode workspace config ([f3aa63d](https://github.com/christophehurpeau/pob/commit/f3aa63de6cc2b597c3114eb34757e94347cf5f3f))
+* remove tasks from workspace config ([cc4b1a7](https://github.com/christophehurpeau/pob/commit/cc4b1a7efe39e2d7f13ac3079a32c58d3cd86c75))
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.7.0 ([#1164](https://github.com/christophehurpeau/pob/issues/1164)) ([9ec0c31](https://github.com/christophehurpeau/pob/commit/9ec0c3156cf5ed5d1f9e3e4ce4636b77da826850))
+* **pob:** generate vscode monorepo workspace ([23ceaae](https://github.com/christophehurpeau/pob/commit/23ceaae63bc1abc58061366d90f8cd5c397bf232))
+
+
+
+
+
 ## [9.13.2](https://github.com/christophehurpeau/pob/compare/pob@9.13.1...pob@9.13.2) (2022-01-15)
 
 
