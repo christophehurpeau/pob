@@ -24,10 +24,10 @@ export default class CoreVSCodeGenerator extends Generator {
     });
 
     this.option('monorepo', {
-      type: String,
+      type: Boolean,
       required: false,
-      defaults: 'yarn',
-      desc: 'yarn|npm.',
+      defaults: false,
+      desc: 'is monorepo',
     });
 
     this.option('testing', {
