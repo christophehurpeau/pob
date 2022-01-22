@@ -131,6 +131,9 @@ export default class CoreVSCodeGenerator extends Generator {
             extensions,
             settings: {
               ...settings,
+              ...(settings['typescript.tsdk']
+                ? { 'typescript.tsdk': '✨ root/node_modules/typescript/lib' }
+                : {}),
               ...(this.options.testing
                 ? {
                     'jest.jestCommandLine':
