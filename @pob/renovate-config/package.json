@@ -42,7 +42,6 @@
       },
       "stabilityDays": 4,
       "internalChecksFilter": "strict",
-      "prCreation": "not-pending",
       "packageRules": [
         {
           "depTypeList": [
