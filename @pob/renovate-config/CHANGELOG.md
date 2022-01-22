@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.6.2](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.6.1...@pob/renovate-config@5.6.2) (2022-01-22)
+
+
+### Bug Fixes
+
+* **renovate-config:** fix renovate not opening prs ([198d0ac](https://github.com/christophehurpeau/pob/commit/198d0ace6f3be2a92e42ddc5b5dd62480116e7bc))
+
+
+
+
+
 ## [5.6.1](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.6.0...@pob/renovate-config@5.6.1) (2022-01-22)
 
 **Note:** Version bump only for package @pob/renovate-config
