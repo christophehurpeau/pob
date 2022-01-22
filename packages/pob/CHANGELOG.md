@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.14.1](https://github.com/christophehurpeau/pob/compare/pob@9.14.0...pob@9.14.1) (2022-01-22)
+
+
+### Bug Fixes
+
+* **pob:** vscode generator monorepo option ([cb589e8](https://github.com/christophehurpeau/pob/commit/cb589e80168eaf114a5b22bc4e454ec59d449097))
+* **pob:** vscode generator tsdk path for monorepo ([fc92541](https://github.com/christophehurpeau/pob/commit/fc92541f5926a6892186c086940c966420e4ef83))
+
+
+
+
+
 # [9.14.0](https://github.com/christophehurpeau/pob/compare/pob@9.13.2...pob@9.14.0) (2022-01-20)
 
 

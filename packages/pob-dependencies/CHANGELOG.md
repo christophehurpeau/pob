@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.10.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.9.0...pob-dependencies@6.10.0) (2022-01-22)
+
+
+### Features
+
+* **deps:** update dependency rollup to v2.65.0 ([#1177](https://github.com/christophehurpeau/pob/issues/1177)) ([81ee59c](https://github.com/christophehurpeau/pob/commit/81ee59cb2055f26b397a10e6671f73ed7993f4fd))
+* **deps:** update dependency rollup to v2.66.0 ([#1178](https://github.com/christophehurpeau/pob/issues/1178)) ([74ecb87](https://github.com/christophehurpeau/pob/commit/74ecb87a2935017b4b419d3bf3b4c52a52697542))
+
+
+
+
+
 # [6.9.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.8.0...pob-dependencies@6.9.0) (2022-01-20)
 
 
