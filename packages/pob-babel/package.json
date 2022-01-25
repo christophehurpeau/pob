@@ -64,7 +64,7 @@
     "babel-preset-modern-browsers": "^15.0.2",
     "babel-preset-pob-env": "7.1.6",
     "minimist-argv": "^1.1.0",
-    "rollup": "2.66.0",
+    "rollup": "2.66.1",
     "rollup-config-external-dependencies": "^2.0.0",
     "semver": "^7.3.4"
   },
