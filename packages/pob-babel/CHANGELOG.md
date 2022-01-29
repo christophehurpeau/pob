@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.0.1](https://github.com/christophehurpeau/pob/compare/pob-babel@30.0.0...pob-babel@30.0.1) (2022-01-29)
+
+
+### Bug Fixes
+
+* pkg.type ([99bd28d](https://github.com/christophehurpeau/pob/commit/99bd28d88b9bd57cbe0dd76e7dd48aa351025392))
+
+
+
+
+
 # [30.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@29.8.0...pob-babel@30.0.0) (2022-01-29)
 
 
