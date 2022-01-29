@@ -599,14 +599,15 @@ export default class CommonBabelGenerator extends Generator {
           const exportTarget = {};
 
           if (target === 'node') {
+            const cjsExt = pkg.type === 'module' ? 'cjs' : 'cjs.js';
             if (formats.includes('es')) {
               exportTarget.import = `./dist/${entryDistName}-${target}${version}.mjs`;
 
               if (formats.includes('cjs')) {
-                exportTarget.require = `./dist/${entryDistName}-${target}${version}.cjs.js`;
+                exportTarget.require = `./dist/${entryDistName}-${target}${version}.${cjsExt}`;
               }
             } else if (formats.includes('cjs')) {
-              exportTarget.default = `./dist/${entryDistName}-${target}${version}.cjs.js`;
+              exportTarget.default = `./dist/${entryDistName}-${target}${version}.${cjsExt}`;
             }
             // eslint: https://github.com/benmosher/eslint-plugin-import/issues/2132
             // jest: https://github.com/facebook/jest/issues/9771
