@@ -2749,12 +2749,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: 6.10.0
+    pob-dependencies: 6.11.0
     prettier: 2.5.1
   languageName: unknown
   linkType: soft
 
-"@pob/root@6.5.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@6.6.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -4005,7 +4005,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-pob-env@7.1.6, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
+"babel-preset-pob-env@7.1.7, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
   version: 0.0.0-use.local
   resolution: "babel-preset-pob-env@workspace:packages/babel-preset-pob-env"
   dependencies:
@@ -5969,7 +5969,7 @@ __metadata:
   resolution: "example-typescript-lib@workspace:pob-examples/typescript-lib"
   dependencies:
     "@babel/core": 7.16.12
-    pob-babel: 29.8.0
+    pob-babel: 30.0.0
     typescript: 4.5.5
   languageName: unknown
   linkType: soft
@@ -10124,7 +10124,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@29.8.0, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
+"pob-babel@30.0.0, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -10136,7 +10136,7 @@ __metadata:
     "@rollup/plugin-replace": 3.0.1
     "@rollup/plugin-run": 2.1.0
     babel-preset-modern-browsers: ^15.0.2
-    babel-preset-pob-env: 7.1.6
+    babel-preset-pob-env: 7.1.7
     minimist-argv: ^1.1.0
     rollup: 2.66.1
     rollup-config-external-dependencies: ^2.0.0
@@ -10152,7 +10152,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@6.10.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@6.11.0, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -10166,13 +10166,13 @@ __metadata:
     "@pob/eslint-config-typescript-react": 48.0.7
     "@pob/lerna-light": 5.1.0
     "@pob/pretty-pkg": ^4.0.1
-    "@pob/root": 6.5.0
+    "@pob/root": 6.6.0
     "@types/jest": 27.4.0
     babel-preset-modern-browsers: 15.0.2
     eslint: 8.8.0
     jest: 27.4.7
     jest-junit-reporter: 1.1.0
-    pob-babel: 29.8.0
+    pob-babel: 30.0.0
     prettier: 2.5.1
     repository-check-dirty: ^4.0.0
     rollup: 2.66.1
@@ -10227,7 +10227,7 @@ __metadata:
     mem-fs-editor: 9.4.0
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
-    pob-dependencies: 6.10.0
+    pob-dependencies: 6.11.0
     prettier: 2.5.1
     semver: ^7.3.4
     yeoman-environment: ^3.5.1

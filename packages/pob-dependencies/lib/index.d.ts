@@ -1,5 +1,5 @@
 interface Dependencies {
-  '@babel/core': '7.16.10';
+  '@babel/core': '7.16.12';
   '@babel/preset-env': '7.16.11';
   '@babel/preset-react': '7.16.7';
   '@babel/runtime': '7.16.7';
@@ -12,13 +12,13 @@ interface Dependencies {
   '@pob/root': '6.5.0';
   '@types/jest': '27.4.0';
   'babel-preset-modern-browsers': '15.0.2';
-  eslint: '8.7.0';
+  eslint: '8.8.0';
   jest: '27.4.7';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '29.7.1';
+  'pob-babel': '29.8.0';
   prettier: '2.5.1';
   'repository-check-dirty': '^4.0.0';
-  rollup: '2.66.0';
+  rollup: '2.66.1';
   semver: '7.3.5';
   'standard-version': '9.3.2';
   typedoc: '0.22.11';

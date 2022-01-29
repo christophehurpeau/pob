@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [30.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@29.8.0...pob-babel@30.0.0) (2022-01-29)
+
+
+### Features
+
+* build .cjs ext if package type is module ([13b34e6](https://github.com/christophehurpeau/pob/commit/13b34e681293db220fac2e95f78d8d0e288e56ab))
+* **deps:** update dependency rollup to v2.66.1 ([#1183](https://github.com/christophehurpeau/pob/issues/1183)) ([ccf7e4f](https://github.com/christophehurpeau/pob/commit/ccf7e4f844fc0f2a12903556d1f6e0d084d10914))
+
+
+### BREAKING CHANGES
+
+* requires to change extension in package.json main and exports
+
+
+
+
+
 # [29.8.0](https://github.com/christophehurpeau/pob/compare/pob-babel@29.7.1...pob-babel@29.8.0) (2022-01-22)
 
 

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.15.0](https://github.com/christophehurpeau/pob/compare/pob@9.14.1...pob@9.15.0) (2022-01-29)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @yarnpkg/parsers to v2.5.0-rc.10 ([#1182](https://github.com/christophehurpeau/pob/issues/1182)) ([4d3c5b4](https://github.com/christophehurpeau/pob/commit/4d3c5b4ef731cb1cb059f81494b4e0eda3778f80))
+
+
+### Features
+
+* **pob:** update exported cjs extension ([47e7031](https://github.com/christophehurpeau/pob/commit/47e7031af4e83db775f2da607a299c5b896da89b))
+* support codecov for apps ([741380b](https://github.com/christophehurpeau/pob/commit/741380b0fd9acfcb0b21e4c98fd4111cff692cbf))
+* **deps:** update dependency eslint to v8.8.0 ([#1186](https://github.com/christophehurpeau/pob/issues/1186)) ([14f9e44](https://github.com/christophehurpeau/pob/commit/14f9e4460257392979383b264af4499a4ae24dc5))
+
+
+
+
+
 ## [9.14.1](https://github.com/christophehurpeau/pob/compare/pob@9.14.0...pob@9.14.1) (2022-01-22)
 
 
