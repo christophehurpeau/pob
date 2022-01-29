@@ -84,6 +84,13 @@ export default class PobAppGenerator extends Generator {
       },
       {
         type: 'confirm',
+        name: 'codecov',
+        message: 'Do you want codecov ?',
+        default: !config || false,
+        when: (values) => values.testing,
+      },
+      {
+        type: 'confirm',
         name: 'ci',
         message: 'Do you want ci ?',
         default: !config || config.ci === undefined ? true : config.ci,
@@ -153,7 +160,7 @@ export default class PobAppGenerator extends Generator {
       testing: this.appConfig.testing,
       typescript: babel,
       documentation: false,
-      codecov: false,
+      codecov: this.appConfig.codecov,
       ci: this.appConfig.ci,
       packageManager: this.options.packageManager,
       isApp: true,
