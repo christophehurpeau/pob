@@ -14,7 +14,8 @@ import ignoreImport from './rollup-plugin-ignore-browser-only-imports.js';
 
 const browserOnlyExtensions = ['.scss', '.css'];
 
-const nodeFormatToExt = (format) => {
+const nodeFormatToExt = (format, pkgType) => {
+  if (format === 'cjs' && pkgType === 'module') return '.cjs';
   if (format === 'cjs') return '.cjs.js';
   if (format === 'es') return '.mjs';
   return `.${format}.js`;
@@ -108,7 +109,9 @@ export default function createRollupConfig({
       input: entryPath,
       output: env.formats.map((format) => ({
         file: `dist/${entry}-${env.target}${env.version || ''}${
-          env.target === 'node' ? nodeFormatToExt(format) : `.${format}.js`
+          env.target === 'node'
+            ? nodeFormatToExt(format, pkg.module)
+            : `.${format}.js`
         }`,
         format,
         sourcemap: true,
