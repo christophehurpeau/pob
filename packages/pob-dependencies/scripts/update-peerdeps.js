@@ -5,7 +5,7 @@ import { pkgPath, requireIfPossible } from './helper.cjs';
 
 let madeModifications = false;
 
-const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
+const pkg = JSON.parse(fs.readFileSync(pkgPath));
 
 Object.keys(pkg.devDependencies).forEach((key) => {
   const depPkg = requireIfPossible(`${key}/package.json`);

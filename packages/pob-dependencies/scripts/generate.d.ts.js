@@ -1,7 +1,7 @@
 import fs from 'fs';
 import { pkgPath } from './helper.cjs';
 
-const pkg = JSON.parse(fs.readFileSync(pkgPath, 'utf-8'));
+const pkg = JSON.parse(fs.readFileSync(pkgPath));
 
 fs.writeFileSync(
   './lib/index.d.ts',

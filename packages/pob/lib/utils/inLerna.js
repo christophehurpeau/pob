@@ -13,13 +13,11 @@ const rootMonorepo =
 
 const rootMonorepoPkg =
   rootMonorepo &&
-  JSON.parse(
-    fs.readFileSync(path.resolve(rootMonorepo, 'package.json'), 'utf-8'),
-  );
+  JSON.parse(fs.readFileSync(path.resolve(rootMonorepo, 'package.json')));
 
 const getInLernaThings = () => {
   const rootYoConfig = JSON.parse(
-    fs.readFileSync(path.resolve(rootMonorepo, '.yo-rc.json'), 'utf-8'),
+    fs.readFileSync(path.resolve(rootMonorepo, '.yo-rc.json')),
   );
   const cwd = process.cwd();
 

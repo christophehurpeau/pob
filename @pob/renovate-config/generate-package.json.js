@@ -2,11 +2,11 @@ import fs from 'fs';
 import prettier from 'prettier';
 
 const pobDependencies = JSON.parse(
-  fs.readFileSync('../../packages/pob-dependencies/package.json', 'utf-8'),
+  fs.readFileSync('../../packages/pob-dependencies/package.json'),
 );
 
 const path = './package.json';
-const pkg = JSON.parse(fs.readFileSync(path, 'utf-8'));
+const pkg = JSON.parse(fs.readFileSync(path));
 
 const excludePkgNames = [
   '@pob/root',
