@@ -63,16 +63,16 @@ jobs:
       - name: Prettier
         run: <%= packageManager %> run lint:prettier
         if: startsWith(matrix.node-version, '16.')
-
-      - name: Eslint
-        run: <%= packageManager %> run lint:eslint
-        if: startsWith(matrix.node-version, '16.')
 <% if (typescript) { -%>
 
       - name: Typescript
         run: yarn run tsc
         if: startsWith(matrix.node-version, '16.')
 <% } -%>
+
+      - name: Eslint
+        run: <%= packageManager %> run lint:eslint
+        if: startsWith(matrix.node-version, '16.')
 <% if (codecov) { -%>
 
       - name: Generate Test Coverage
