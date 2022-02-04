@@ -2,17 +2,15 @@
   "extends": "./tsconfig.json",
 
   "compilerOptions": {
-    "noEmit": false,
-    "emitDeclarationOnly": true,
-    "rootDirs": [],
     "rootDir": "src",
-    "outDir": "dist",
-<% if(composite) { -%>
-    "composite": true,
-    "tsBuildInfoFile": "dist/tsbuildinfo",
-<% } -%>
+    "noEmit": false,
     "declaration": true,
-    "declarationMap": true
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "outDir": "dist"<% if(composite) { -%>,
+    "composite": true,
+    "tsBuildInfoFile": "dist/tsbuildinfo"
+<% } -%>
   },
 
   "exclude": [

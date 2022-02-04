@@ -120,6 +120,7 @@ export default class CommonTypescriptGenerator extends Generator {
           monorepoPackageNames,
           monorepoPackageSrcPaths,
           jsx,
+          composite,
           dom,
           baseUrl: this.options.baseUrl,
           resolveJsonModule: this.options.resolveJsonModule,

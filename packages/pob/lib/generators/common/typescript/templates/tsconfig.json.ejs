@@ -4,12 +4,24 @@
     "src/**/*.tsx"<% } %>
   ],
   "compilerOptions": {
+    "rootDir": "src",
+<% if(!composite) { -%>
     /* No emit in default config file. See build config file for config to build declaration files */
     "noEmit": true,
+<% } else { -%>
+    "composite": true,
+    "incremental": true,
+    "noEmit": false,
+    "noEmitOnError": true,
+    "declaration": true,
+    "declarationMap": true,
+    "emitDeclarationOnly": true,
+    "outDir": "node_modules/.cache/tsc",
+    "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo",
+<% } -%>
+
     /* No need to check .d.ts files */
     "skipLibCheck": true,
-
-    "rootDirs": ["src"<% /*(monorepoPackageNames || []).forEach((packageName, index) => { -%>, "../../<%= monorepoPackageSrcPaths[index] %>"<% })*/ -%>],
 
     "target": "esnext",                       /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
     "module": "esnext",                       /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
@@ -34,14 +46,19 @@
     <% if (resolveJsonModule) { -%>
     "resolveJsonModule": <%= resolveJsonModule %>,
     <% } -%>
-    "baseUrl": "<%= baseUrl %>"<% if (monorepoPackageNames) { %>,<% } %><%= '                            '.slice(0, -(baseUrl.length + (monorepoPackageNames ? 1 : 0))) %>/* Base directory to resolve non-absolute module names. */
+    "baseUrl": "<%= baseUrl %>"<% if (monorepoPackageNames) { %>,<% } %> /* Base directory to resolve non-absolute module names. */
     <% if (monorepoPackageNames && monorepoPackageNames.length !== 0) { -%>
-
     "paths": {
       <% monorepoPackageNames.forEach((packageName, index) => { %>
       "<%= packageName %>": ["../../../<%= monorepoPackageSrcPaths[index] %>"],
       "<%= packageName %>/*": ["../../../<%= monorepoPackageSrcPaths[index] %>/*"]<%= index === monorepoPackageNames.length -1 ? '' : ',' -%>
       <% }) %>
     }<% } %>
-  }
+  }<% if (monorepoPackageNames && monorepoPackageNames.length) { -%>,
+  "references": [
+    <% monorepoPackageNames.forEach((packageName, index) => { -%>
+        { "path": "../<%= packageName %>/tsconfig.json" }<%= index === monorepoPackageNames.length -1 ? '' : ',' %>
+    <% }) -%>
+  ],
+  <% } -%>
 }
