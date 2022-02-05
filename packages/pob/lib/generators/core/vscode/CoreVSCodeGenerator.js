@@ -166,7 +166,7 @@ export default class CoreVSCodeGenerator extends Generator {
         );
       }
     } else {
-      this.fs.delete('.vscode');
+      // this.fs.delete('.vscode');
     }
   }
 }
