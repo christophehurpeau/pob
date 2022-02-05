@@ -108,11 +108,17 @@ export default function createRollupConfig({
     return {
       input: entryPath,
       output: env.formats.map((format) => ({
-        file: `dist/${entry}-${env.target}${env.version || ''}${
-          env.target === 'node'
-            ? nodeFormatToExt(format, pkg.type)
-            : `.${format}.js`
-        }`,
+        file: path.relative(
+          process.cwd(),
+          path.join(
+            cwd,
+            `dist/${entry}-${env.target}${env.version || ''}${
+              env.target === 'node'
+                ? nodeFormatToExt(format, pkg.type)
+                : `.${format}.js`
+            }`,
+          ),
+        ),
         format,
         sourcemap: true,
         exports: 'named',
