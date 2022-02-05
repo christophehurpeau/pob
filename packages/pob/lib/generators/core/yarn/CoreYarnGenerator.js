@@ -112,6 +112,7 @@ export default class CoreYarnGenerator extends Generator {
   }
 
   end() {
+    this.fs.delete(this.destinationPath('.yarn/build-state.yml'));
     if (this.options.enable) {
       if (this.options.yarnNodeLinker === 'pnp') {
         this.spawnCommandSync('yarn', ['dlx', '@yarnpkg/sdks', 'vscode']);
