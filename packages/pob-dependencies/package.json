@@ -50,7 +50,7 @@
     "@types/jest": "27.4.0",
     "babel-preset-modern-browsers": "15.0.2",
     "eslint": "8.8.0",
-    "jest": "27.4.7",
+    "jest": "27.5.0",
     "jest-junit-reporter": "1.1.0",
     "pob-babel": "30.0.1",
     "prettier": "2.5.1",
