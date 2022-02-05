@@ -10134,17 +10134,18 @@ __metadata:
     "@rollup/plugin-run": 2.1.0
     babel-preset-modern-browsers: ^15.0.2
     babel-preset-pob-env: 7.1.7
-    minimist-argv: ^1.1.0
     rollup: 2.67.0
     rollup-config-external-dependencies: ^2.0.0
     semver: ^7.3.4
     typescript: 4.5.5
   peerDependencies:
     "@babel/core": ^7.16.5
+    rollup: 2.67.0
     typescript: ^4.0.3
+  peerDependenciesMeta:
+    rollup:
+      optional: true
   bin:
-    pob-build: ./bin/pob-build.js
-    pob-watch: ./bin/pob-watch.js
     rollup: ./bin/rollup.cjs
   languageName: unknown
   linkType: soft

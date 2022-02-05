@@ -12,10 +12,9 @@
 
 ### What it does
 
-- Transpiles js and jsx files for specific envs (pre-node6, node6, webpack 2, modern browsers webpack 2)
+- Transpiles js and jsx files for specific envs (node, webpack, modern browsers webpack 2)
 - Transform yml files to json (for faster load)
 - Allow you to register plugins to transform more files by extension
-- `watch` returns an EventEmitter to allow you to restart your server if needed.
 
 ### Install
 
@@ -25,13 +24,40 @@ npm install --save-dev pob-babel
 
 Also install babel plugins and presets
 
-Create .pob.json
+In package.json
 
 ```json
 {
-  "react": false,
-  "envs": ["node6", "webpack", "webpack-modern-browsers"]
+  "pob": {
+    "babelEnvs": [
+      {
+        "target": "node",
+        "version": "14",
+        "formats": ["es"]
+      },
+      {
+        "target": "browser",
+        "version": "modern",
+        "formats": ["es"]
+      },
+      {
+        "target": "browser",
+        "formats": ["es"]
+      }
+    ],
+    "entries": ["index"]
+  }
 }
+```
+
+Create `rollup.config.mjs`
+
+```js
+import createRollupConfig from 'pob-babel/createRollupConfig.js';
+
+export default createRollupConfig({
+  cwd: new URL('.', import.meta.url).pathname,
+});
 ```
 
 ### How to use
@@ -39,8 +65,7 @@ Create .pob.json
 #### Direct use
 
 ```
-node_modules/.bin/pob-build
-node_modules/.bin/pob-watch
+rollup --config rollup.config.mjs
 ```
 
 #### With npm scripts `npm run build`
@@ -50,8 +75,8 @@ Edit your package.json:
 ```json
 {
   "scripts": {
-    "build": "pob-build",
-    "watch": "pob-watch"
+    "build": "rollup --config rollup.config.mjs",
+    "watch": "yarn build --watch"
   }
 }
 ```
