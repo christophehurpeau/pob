@@ -272,6 +272,9 @@ export default class CommonTestingGenerator extends Generator {
                 ])
                 .join(', '),
           hasReact,
+          hasLinaria:
+            !!pkg.devDependencies?.['@linaria/babel-preset'] ||
+            !!pkg.devDependencies?.['alp-dev'],
           testing: this.options.testing,
           jestExperimentalESM: pkg.type === 'module',
         },
