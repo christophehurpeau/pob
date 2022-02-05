@@ -112,6 +112,16 @@ export default class CoreVSCodeGenerator extends Generator {
         }));
         folders.sort((a, b) => a.name.localeCompare(b.name, 'en'));
 
+        packageLocations.forEach((location) => {
+          writeAndFormatJson(
+            this.fs,
+            this.destinationPath(`${location}/.vscode/settings.json`),
+            {
+              'eslint.workingDirectories': ['../../'],
+            },
+          );
+        });
+
         const extensions = readJSON5(
           this.fs,
           this.destinationPath('.vscode/extensions.json'),
