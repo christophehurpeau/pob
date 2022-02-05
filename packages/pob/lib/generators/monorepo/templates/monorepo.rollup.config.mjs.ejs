@@ -1,0 +1,9 @@
+<% configLocations.forEach((location, index) => { -%>
+import configs<%= index + 1 %> from './<%= location %>';
+<% }) -%>
+
+export default [
+  <% configLocations.forEach((location, index) => { -%>
+    ...configs<%= index + 1 %>,
+  <% }) -%>
+];

@@ -4,6 +4,8 @@ import path from 'path';
 import { PackageGraph } from '@lerna/package-graph';
 import { Project as LernaProject } from '@lerna/project';
 import Generator from 'yeoman-generator';
+import * as packageUtils from '../../utils/package.js';
+import { copyAndFormatTpl } from '../../utils/writeAndFormat.js';
 
 const getAppTypes = (configs) => {
   const appConfigs = configs.filter(
@@ -248,6 +250,46 @@ export default class PobMonorepoGenerator extends Generator {
     execSync(
       `rm -Rf ${['lib-*', 'coverage', 'docs'].filter(Boolean).join(' ')}`,
     );
+  }
+
+  writing() {
+    if (!this.options.isAppProject) {
+      const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+
+      const rollupConfigs = [];
+      this.packageLocations.forEach((location) => {
+        const rollupPath = `${location}/rollup.config.mjs`;
+        const rollupConfig = this.fs.read(this.destinationPath(rollupPath), {
+          defaults: null,
+        });
+        if (rollupConfig) {
+          rollupConfigs.push(rollupPath);
+        }
+      });
+
+      if (rollupConfigs.length > 0) {
+        copyAndFormatTpl(
+          this.fs,
+          this.templatePath('monorepo.rollup.config.mjs.ejs'),
+          this.destinationPath('rollup.config.mjs'),
+          {
+            configLocations: rollupConfigs,
+          },
+        );
+      } else {
+        this.fs.delete('rollup.config.mjs');
+      }
+      packageUtils.addOrRemoveScripts(pkg, rollupConfigs.length > 0, {
+        'clean:build': `(${pkg.workspaces
+          .map((workspaces) => `rm -Rf ${workspaces}/dist`)
+          .join(' && ')}) || true`,
+        build: 'yarn clean:build && rollup --config rollup.config.mjs',
+      });
+      packageUtils.addOrRemoveDevDependencies(pkg, rollupConfigs.length, [
+        'pob-babel',
+      ]);
+      this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    }
   }
 
   end() {

@@ -271,16 +271,18 @@ export default class CommonBabelGenerator extends Generator {
     if (this.options.isApp) {
       packageUtils.removeScripts(['watch']);
       packageUtils.addOrRemoveScripts(pkg, useBabel, {
-        build: 'pob-build',
-        start: 'pob-watch',
-        clean: 'rm -Rf dist',
+        'clean:build': 'rm -Rf dist',
+        build: 'yarn clean:build && rollup --config rollup.config.mjs',
+        start: 'yarn clean:build && rollup --config rollup.config.mjs --watch',
+        clean: 'yarn clean:build',
       });
     } else {
       packageUtils.removeScripts(['start']);
       packageUtils.addOrRemoveScripts(pkg, useBabel, {
-        build: 'pob-build',
-        watch: 'pob-watch',
-        clean: 'rm -Rf dist',
+        'clean:build': 'rm -Rf dist',
+        build: 'yarn clean:build && rollup --config rollup.config.mjs',
+        watch: 'yarn clean:build && rollup --config rollup.config.mjs --watch',
+        clean: 'yarn clean:build',
       });
     }
 
@@ -340,7 +342,6 @@ export default class CommonBabelGenerator extends Generator {
     ]);
 
     packageUtils.removeDevDependencies(pkg, [
-      'rollup',
       'babel-preset-env', // now @babel/preset-env
       'babel-preset-jsdoc',
       'babel-plugin-add-jsdoc-annotations',

@@ -89,8 +89,6 @@ export default class MonorepoLernaGenerator extends Generator {
   }
 
   writing() {
-    console.log('lerna: writing');
-
     const getPackagePobConfig = (config) => ({
       babelEnvs: [],
       ...(config && config.pob),
