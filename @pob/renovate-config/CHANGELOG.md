@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.7.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.6.4...@pob/renovate-config@5.7.0) (2022-02-05)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v48.1.0 ([#1188](https://github.com/christophehurpeau/pob/issues/1188)) ([75dd637](https://github.com/christophehurpeau/pob/commit/75dd6373d04359e12beb3b48f54ae2a541af4765))
+
+
+
+
+
 ## [5.6.4](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.6.3...@pob/renovate-config@5.6.4) (2022-01-29)
 
 **Note:** Version bump only for package @pob/renovate-config

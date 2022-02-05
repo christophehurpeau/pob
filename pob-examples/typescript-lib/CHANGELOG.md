@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.5](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.2.4...example-typescript-lib@0.2.5) (2022-02-05)
+
+
+### Bug Fixes
+
+* dont set isolatedModules to false now that composite is supported with isolatedModules ([5d0816d](https://github.com/christophehurpeau/pob/commit/5d0816d9da90765aba168bd694d2a8e7f696ec46))
+
+
+
+
+
 ## [0.2.4](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.2.3...example-typescript-lib@0.2.4) (2022-01-29)
 
 **Note:** Version bump only for package example-typescript-lib

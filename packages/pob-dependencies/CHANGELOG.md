@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.12.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.11.1...pob-dependencies@6.12.0) (2022-02-05)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v48.1.0 ([#1188](https://github.com/christophehurpeau/pob/issues/1188)) ([75dd637](https://github.com/christophehurpeau/pob/commit/75dd6373d04359e12beb3b48f54ae2a541af4765))
+* **deps:** update dependency jest to v27.5.0 ([#1192](https://github.com/christophehurpeau/pob/issues/1192)) ([dc0fabf](https://github.com/christophehurpeau/pob/commit/dc0fabfc6db808d1b1f8fac00070d9e77539a43e))
+* **deps:** update dependency rollup to v2.67.0 ([#1190](https://github.com/christophehurpeau/pob/issues/1190)) ([d74c009](https://github.com/christophehurpeau/pob/commit/d74c0091de2d9d96cfcdbc5b101aeff20cef1d65))
+
+
+
+
+
 ## [6.11.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.11.0...pob-dependencies@6.11.1) (2022-01-29)
 
 **Note:** Version bump only for package pob-dependencies

@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.16.0](https://github.com/christophehurpeau/pob/compare/pob@9.15.1...pob@9.16.0) (2022-02-05)
+
+
+### Bug Fixes
+
+* **pob:** add monorpeo generaterd rollup config file to ignored paths ([c08328b](https://github.com/christophehurpeau/pob/commit/c08328b9f4970b3488bcd0bfe9f23bcc282144f7))
+* dont delete vscode directory inside monorepo ([837bfe5](https://github.com/christophehurpeau/pob/commit/837bfe577cbf5c892fab95f0f19ff19c9e971f1e))
+* **deps:** update dependency @yarnpkg/parsers to v2.5.0-rc.11 ([#1187](https://github.com/christophehurpeau/pob/issues/1187)) ([70d8a9a](https://github.com/christophehurpeau/pob/commit/70d8a9acfa0325349d465a0ee0539937535026d8))
+* **pob:** ci tsc before eslint to build cache ([92d60de](https://github.com/christophehurpeau/pob/commit/92d60de3d616ed712d7ee4ba42d4d702670afd41))
+* **pob:** generate vscode config for eslint in monorepo workspace ([ebdb9cc](https://github.com/christophehurpeau/pob/commit/ebdb9cc1f8c5b4e5ac325e37fa44c20616779a6a))
+* **pob:** make sure build-state.yml doesnt exists ([322d582](https://github.com/christophehurpeau/pob/commit/322d5826627ba74a188f381e37a1365fe390baa2))
+* dont set isolatedModules to false now that composite is supported with isolatedModules ([5d0816d](https://github.com/christophehurpeau/pob/commit/5d0816d9da90765aba168bd694d2a8e7f696ec46))
+
+
+### Features
+
+* better composite tsc config ([edef88e](https://github.com/christophehurpeau/pob/commit/edef88ef046c18498f6909c3dbeef2289cb418f9))
+* much faster monorepo build with only one rollup command ([c4bafc3](https://github.com/christophehurpeau/pob/commit/c4bafc3be0c06a0a2446d37d176a043835693752))
+* support linaria in jest config ([2e26479](https://github.com/christophehurpeau/pob/commit/2e26479be7016a383c74ee14669aa3a19d3a5a75))
+* **deps:** update @pob/eslint-config to v48.1.0 ([#1188](https://github.com/christophehurpeau/pob/issues/1188)) ([75dd637](https://github.com/christophehurpeau/pob/commit/75dd6373d04359e12beb3b48f54ae2a541af4765))
+
+
+
+
+
 ## [9.15.1](https://github.com/christophehurpeau/pob/compare/pob@9.15.0...pob@9.15.1) (2022-01-29)
 
 **Note:** Version bump only for package pob

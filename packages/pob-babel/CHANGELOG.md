@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@30.0.1...pob-babel@31.0.0) (2022-02-05)
+
+
+### Bug Fixes
+
+* **pob-babel:** dist path based on cwd ([62a1199](https://github.com/christophehurpeau/pob/commit/62a1199f82a1b6befcee592297966d733410ca02))
+
+
+### Features
+
+* remove bin pob-build and pob-watch. You can use rollup bin directly ([6bc559e](https://github.com/christophehurpeau/pob/commit/6bc559e57f276f358c426332991ca76165dc6619))
+* **deps:** update dependency rollup to v2.67.0 ([#1190](https://github.com/christophehurpeau/pob/issues/1190)) ([d74c009](https://github.com/christophehurpeau/pob/commit/d74c0091de2d9d96cfcdbc5b101aeff20cef1d65))
+
+
+### BREAKING CHANGES
+
+* removed pob-build and pob-watch bin
+
+
+
+
+
 ## [30.0.1](https://github.com/christophehurpeau/pob/compare/pob-babel@30.0.0...pob-babel@30.0.1) (2022-01-29)
 
 
