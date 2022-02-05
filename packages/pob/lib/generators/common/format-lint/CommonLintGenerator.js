@@ -394,6 +394,9 @@ export default class CommonLintGenerator extends Generator {
       if ((!inLerna || !inLerna.root) && useBabel) {
         ignorePatterns.add('/dist', '/test');
       }
+      if (inLerna && inLerna.root) {
+        ignorePatterns.add('/rollup.config.mjs');
+      }
 
       if (this.options.ignorePaths) {
         this.options.ignorePaths
