@@ -284,6 +284,7 @@ export default class PobMonorepoGenerator extends Generator {
           .map((workspaces) => `rm -Rf ${workspaces}/dist`)
           .join(' && ')}) || true`,
         build: 'yarn clean:build && rollup --config rollup.config.mjs',
+        watch: 'yarn clean:build && rollup --config rollup.config.mjs --watch',
       });
       packageUtils.addOrRemoveDevDependencies(pkg, rollupConfigs.length, [
         '@babel/core',
