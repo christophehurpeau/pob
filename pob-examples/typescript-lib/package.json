@@ -27,12 +27,13 @@
   "module:node": "./dist/index-node14.mjs",
   "sideEffects": false,
   "scripts": {
-    "build": "pob-build && yarn run build:definitions",
+    "build": "yarn clean:build && rollup --config rollup.config.mjs && yarn run build:definitions",
     "build:definitions": "tsc -p tsconfig.build.json",
-    "clean": "rm -Rf dist",
+    "clean": "yarn clean:build",
+    "clean:build": "rm -Rf dist",
     "lint": "yarn run lint:eslint",
     "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet pob-examples/typescript-lib",
-    "watch": "pob-watch"
+    "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
   "prettier": {
     "trailingComma": "all",

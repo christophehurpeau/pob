@@ -17,9 +17,10 @@
     "pob-examples/*"
   ],
   "scripts": {
-    "build": "yarn workspaces foreach --parallel --topological-dev -Av run build && yarn run build:definitions",
+    "build": "yarn clean:build && rollup --config rollup.config.mjs && yarn run build:definitions",
     "build:definitions": "tsc -b tsconfig.build.json",
     "checks": "node scripts/check-packages.js",
+    "clean:build": "(rm -Rf packages/*/dist && rm -Rf @pob/*/dist && rm -Rf pob-examples/*/dist) || true",
     "lint": "yarn run lint:prettier && yarn run lint:eslint",
     "lint:eslint": "eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet .",
     "lint:prettier": "prettier --check .",

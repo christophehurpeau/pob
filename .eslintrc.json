@@ -1,4 +1,5 @@
 {
   "root": true,
-  "extends": ["@pob/eslint-config/root-module"]
+  "extends": ["@pob/eslint-config/root-module"],
+  "ignorePatterns": ["/rollup.config.mjs"]
 }
