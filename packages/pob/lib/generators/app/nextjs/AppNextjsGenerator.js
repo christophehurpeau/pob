@@ -17,8 +17,9 @@ export default class AppNextjsGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
     packageUtils.addScripts(pkg, {
+      start: 'next dev',
+      'start:prod': 'next start',
       build: 'next build',
-      start: 'next',
     });
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
