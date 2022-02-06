@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.16.2](https://github.com/christophehurpeau/pob/compare/pob@9.16.1...pob@9.16.2) (2022-02-06)
+
+
+### Bug Fixes
+
+* add missing cwd in apps to work in monorepo ([d8357bc](https://github.com/christophehurpeau/pob/commit/d8357bceb325cb14b90a86bf0a89168aad58565b))
+* **deps:** update @pob/eslint-config to v48.1.1 ([#1193](https://github.com/christophehurpeau/pob/issues/1193)) ([bc8b133](https://github.com/christophehurpeau/pob/commit/bc8b1336982c6461e17645cef40d719cd1a8ac1c))
+* **pob:** add missing @babel/core in monorepo with pob-babel ([4595747](https://github.com/christophehurpeau/pob/commit/45957478be9d01e56ffcffc8d2f9bec3a9899b9a))
+
+
+
+
+
 ## [9.16.1](https://github.com/christophehurpeau/pob/compare/pob@9.16.0...pob@9.16.1) (2022-02-06)
 
 

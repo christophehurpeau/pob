@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.7.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.6.1...@pob/root@6.7.0) (2022-02-06)
+
+
+### Features
+
+* **@pob/root:** add dep pob-dependencies to release new version when dependencies are updated ([88b80b2](https://github.com/christophehurpeau/pob/commit/88b80b256663859c901edd4826bb72b9b274b80f))
+
+
+
+
+
 ## [6.6.1](https://github.com/christophehurpeau/pob/compare/@pob/root@6.6.0...@pob/root@6.6.1) (2022-02-05)
 
 

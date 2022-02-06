@@ -2780,12 +2780,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: 6.12.0
+    pob-dependencies: 6.12.1
     prettier: 2.5.1
   languageName: unknown
   linkType: soft
 
-"@pob/root@6.6.1, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@6.7.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -2794,7 +2794,7 @@ __metadata:
     "@pob/pretty-pkg": ^4.0.1
     husky: ^7.0.0
     lint-staged: 12.3.3
-    pob-dependencies: 6.12.0
+    pob-dependencies: 6.12.1
     repository-check-dirty: ^4.0.0
     semver: ^7.1.2
     which-pm-runs: 1.0.0
@@ -9996,7 +9996,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@6.12.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@6.12.1, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -10010,7 +10010,7 @@ __metadata:
     "@pob/eslint-config-typescript-react": 48.1.1
     "@pob/lerna-light": 5.1.0
     "@pob/pretty-pkg": ^4.0.1
-    "@pob/root": 6.6.1
+    "@pob/root": 6.7.0
     "@types/jest": 27.4.0
     babel-preset-modern-browsers: 15.0.2
     eslint: 8.8.0
@@ -10071,7 +10071,7 @@ __metadata:
     mem-fs-editor: 9.4.0
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
-    pob-dependencies: 6.12.0
+    pob-dependencies: 6.12.1
     prettier: 2.5.1
     semver: ^7.3.4
     yeoman-environment: ^3.5.1
