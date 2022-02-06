@@ -286,6 +286,7 @@ export default class PobMonorepoGenerator extends Generator {
         build: 'yarn clean:build && rollup --config rollup.config.mjs',
       });
       packageUtils.addOrRemoveDevDependencies(pkg, rollupConfigs.length, [
+        '@babel/core',
         'pob-babel',
       ]);
       this.fs.writeJSON(this.destinationPath('package.json'), pkg);
