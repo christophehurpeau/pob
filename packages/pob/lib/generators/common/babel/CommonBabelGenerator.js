@@ -401,13 +401,8 @@ export default class CommonBabelGenerator extends Generator {
     } else {
       packageUtils.removeDependencies(pkg, ['@types/node']);
       packageUtils.removeDevDependencies(pkg, ['@types/node']);
-      if (pkg.engines && useBabel) {
-        delete pkg.engines.node;
-        if (Object.keys(pkg.engines).length === 0) delete pkg.engines;
-      } else {
-        // Supported LTS versions of node, that supports ESM modules.
-        pkg.engines.node = '^14.13.1 || >=16.0.0';
-      }
+      // Supported LTS versions of node, that supports ESM modules.
+      pkg.engines.node = '^14.13.1 || >=16.0.0';
     }
 
     /* browserslist */
