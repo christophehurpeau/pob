@@ -26,6 +26,7 @@
       "prConcurrentLimit": 10,
       "masterIssue": true,
       "masterIssueApproval": false,
+      "recreateClosed": true,
       "postUpdateOptions": [
         "yarnDedupeFewer",
         "yarnDedupeHighest"
