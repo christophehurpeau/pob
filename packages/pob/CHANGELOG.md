@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.16.1](https://github.com/christophehurpeau/pob/compare/pob@9.16.0...pob@9.16.1) (2022-02-06)
+
+
+### Bug Fixes
+
+* dont add rollup.config.mjs for non typescript monorepos ([848e578](https://github.com/christophehurpeau/pob/commit/848e57843d03eeb6fd9d5544eff085248110c711))
+* **pob:** always add engines ([7095ad3](https://github.com/christophehurpeau/pob/commit/7095ad3388d503f4a752403530c2e7c24b385248))
+
+
+
+
+
 # [9.16.0](https://github.com/christophehurpeau/pob/compare/pob@9.15.1...pob@9.16.0) (2022-02-05)
 
 
