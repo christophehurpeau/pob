@@ -2,7 +2,6 @@
   "extends": "./tsconfig.json",
 
   "compilerOptions": {
-    "rootDir": "src",
     "noEmit": false,
     "declaration": true,
     "declarationMap": true,
@@ -23,11 +22,11 @@
     "src/**/*.test.tsx",
 <% } -%>
     "src/**/__tests__/**"
-  ]<% if (monorepoPackageNames && monorepoPackageNames.length) { %>,<% } -%>
-<% if (monorepoPackageNames && monorepoPackageNames.length) { %>
+  ]<% if (monorepoPackageBuildReferences && monorepoPackageBuildReferences.length) { %>,<% } -%>
+<% if (monorepoPackageBuildReferences && monorepoPackageBuildReferences.length) { %>
   "references": [
-<% monorepoPackageNames.forEach((packageName, index) => { -%>
-    { "path": "../<%= packageName %>/tsconfig.build.json" }<%= index === monorepoPackageNames.length -1 ? '' : ',' %>
+<% monorepoPackageBuildReferences.forEach((monorepoPackageSrcPath, index) => { -%>
+      { "path": "<%= monorepoPackageSrcPath %>/tsconfig.json" }<%= index === monorepoPackageBuildReferences.length -1 ? '' : ',' %>
 <% }) -%>
 ]<% } -%>
 }

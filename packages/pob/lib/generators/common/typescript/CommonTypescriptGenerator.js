@@ -14,6 +14,12 @@ export default class CommonTypescriptGenerator extends Generator {
       desc: 'enable typescript',
     });
 
+    this.option('rootDir', {
+      type: String,
+      defaults: 'src',
+      desc: 'customize rootDir',
+    });
+
     this.option('jsx', {
       type: Boolean,
       defaults: true,
@@ -71,7 +77,7 @@ export default class CommonTypescriptGenerator extends Generator {
     if (this.options.enable) {
       const { jsx, dom } = this.options;
       let composite;
-      let monorepoPackageNames;
+      let monorepoPackageBuildReferences;
       let monorepoPackageSrcPaths;
 
       if (inLerna && !inLerna.root) {
@@ -89,26 +95,39 @@ export default class CommonTypescriptGenerator extends Generator {
             ['typescript'],
           );
 
-          monorepoPackageNames = yoConfig.pob.monorepo.packageNames.filter(
-            (packageName) =>
-              ((pkg.dependencies && pkg.dependencies[packageName]) ||
-                (pkg.devDependencies && pkg.devDependencies[packageName]) ||
-                (pkg.peerDependencies && pkg.peerDependencies[packageName])) &&
-              existsSync(
+          const packageLocations = new Map(
+            yoConfig.pob.monorepo.packageNames
+              .filter(
+                (packageName) =>
+                  (pkg.dependencies && pkg.dependencies[packageName]) ||
+                  (pkg.devDependencies && pkg.devDependencies[packageName]) ||
+                  (pkg.peerDependencies && pkg.peerDependencies[packageName]),
+              )
+              .map((packageName) => [
+                packageName,
                 `../../${
                   packageName[0] === '@'
                     ? packageName
                     : `packages/${packageName}`
-                }/tsconfig.build.json`,
-              ),
+                }`,
+              ]),
           );
 
-          monorepoPackageSrcPaths = monorepoPackageNames.map(
-            (packageName) =>
-              `${
-                packageName[0] === '@' ? packageName : `packages/${packageName}`
-              }/${existsSync(`../${packageName}/src`) ? 'src' : 'lib'}`,
+          monorepoPackageSrcPaths = [...packageLocations.entries()].map(
+            ([packageName, packageLocation]) => [
+              packageName,
+              `${packageLocation}/${
+                existsSync(`${packageLocation}/src`) ? 'src' : 'lib'
+              }`,
+            ],
           );
+          monorepoPackageBuildReferences = yoConfig.pob.monorepo.packageNames
+            .filter((packageName) =>
+              existsSync(
+                `${packageLocations.get(packageName)}/tsconfig.build.json`,
+              ),
+            )
+            .map((packageName) => packageLocations.get(packageName));
         }
       }
 
@@ -117,8 +136,9 @@ export default class CommonTypescriptGenerator extends Generator {
         this.templatePath('tsconfig.json.ejs'),
         tsconfigPath,
         {
-          monorepoPackageNames,
           monorepoPackageSrcPaths,
+          monorepoPackageBuildReferences,
+          rootDir: this.options.rootDir,
           jsx,
           composite,
           dom,
@@ -138,8 +158,8 @@ export default class CommonTypescriptGenerator extends Generator {
             inMonorepo: inLerna && !inLerna.root,
             jsx,
             composite,
-            monorepoPackageNames,
             monorepoPackageSrcPaths,
+            monorepoPackageBuildReferences,
           },
         );
       } else {

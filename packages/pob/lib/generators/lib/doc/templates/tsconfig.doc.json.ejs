@@ -1,12 +1,6 @@
 {
   "extends": "./tsconfig.json",
 
-
-  "compilerOptions": {
-    "rootDirs": [],
-    "rootDir": "src"
-  },
-
   "typedocOptions": {
     "entryPoints": [
       <%- entryPoints.map(entryPoint => `"${entryPoint}"`).join(', ') %>

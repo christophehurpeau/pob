@@ -1,16 +1,21 @@
 {
   "include": [
-    "src/**/*.ts"<% if (jsx) { -%>,
-    "src/**/*.tsx"<% } %>
+    "<%= rootDir %>/**/*.ts"<% if (jsx) { -%>,
+    "<%= rootDir %>/**/*.tsx"<% } %>
   ],
+<% if(rootDir === '.') { -%>
+  "exclude": [
+    "node_modules"
+  ],
+<% } -%>
   "compilerOptions": {
-    "rootDir": "src",
+    "rootDir": "<%= rootDir %>",
+    "incremental": true,
 <% if(!composite) { -%>
     /* No emit in default config file. See build config file for config to build declaration files */
     "noEmit": true,
 <% } else { -%>
     "composite": true,
-    "incremental": true,
     "noEmit": false,
     "noEmitOnError": true,
     "declaration": true,
@@ -46,18 +51,18 @@
     <% if (resolveJsonModule) { -%>
     "resolveJsonModule": <%= resolveJsonModule %>,
     <% } -%>
-    "baseUrl": "<%= baseUrl %>"<% if (monorepoPackageNames) { %>,<% } %> /* Base directory to resolve non-absolute module names. */
-    <% if (monorepoPackageNames && monorepoPackageNames.length !== 0) { -%>
+    "baseUrl": "<%= baseUrl %>"<% if (monorepoPackageSrcPaths) { %>,<% } %> /* Base directory to resolve non-absolute module names. */
+    <% if (monorepoPackageSrcPaths && monorepoPackageSrcPaths.length !== 0) { -%>
     "paths": {
-      <% monorepoPackageNames.forEach((packageName, index) => { %>
-      "<%= packageName %>": ["../../../<%= monorepoPackageSrcPaths[index] %>"],
-      "<%= packageName %>/*": ["../../../<%= monorepoPackageSrcPaths[index] %>/*"]<%= index === monorepoPackageNames.length -1 ? '' : ',' -%>
+      <% monorepoPackageSrcPaths.forEach(([packageName, packageLocation], index) => { %>
+      "<%= packageName %>": ["../<%= packageLocation %>"],
+      "<%= packageName %>/*": ["../<%= packageLocation %>/*"]<%= index === monorepoPackageSrcPaths.length -1 ? '' : ',' -%>
       <% }) %>
     }<% } %>
-  }<% if (monorepoPackageNames && monorepoPackageNames.length) { -%>,
+  }<% if (monorepoPackageBuildReferences && monorepoPackageBuildReferences.length) { -%>,
   "references": [
-    <% monorepoPackageNames.forEach((packageName, index) => { -%>
-        { "path": "../<%= packageName %>/tsconfig.json" }<%= index === monorepoPackageNames.length -1 ? '' : ',' %>
+    <% monorepoPackageBuildReferences.forEach((monorepoPackageSrcPath, index) => { -%>
+        { "path": "<%= monorepoPackageSrcPath %>/tsconfig.json" }<%= index === monorepoPackageBuildReferences.length -1 ? '' : ',' %>
     <% }) -%>
   ],
   <% } -%>

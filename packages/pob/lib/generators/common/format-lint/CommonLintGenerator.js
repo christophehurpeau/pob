@@ -47,6 +47,13 @@ export default class CommonLintGenerator extends Generator {
       desc: 'Enable resolving from src directory',
     });
 
+    this.option('rootAsSrc', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+      desc: 'src directory is root',
+    });
+
     this.option('appTypes', {
       type: String,
       required: false,
@@ -368,19 +375,16 @@ export default class CommonLintGenerator extends Generator {
     this.fs.delete(`${eslintrcBadPath}.yml`);
     this.fs.delete(`${eslintrcBadPath}.js`);
 
-    const rootEslintrcPath = this.destinationPath('.eslintrc.json');
+    const rootEslintrcPath = this.options.rootAsSrc
+      ? false
+      : this.destinationPath('.eslintrc.json');
 
-    const srcEslintrcPath = this.destinationPath(
-      `${useBabel ? 'src/' : 'lib/'}.eslintrc.json`,
-    );
+    const srcEslintrcPath = this.options.rootAsSrc
+      ? this.destinationPath('.eslintrc.json')
+      : this.destinationPath(`${useBabel ? 'src/' : 'lib/'}.eslintrc.json`);
 
     const useTypescript = useBabel;
-
-    try {
-      if (this.fs.exists(rootEslintrcPath)) {
-        ensureJsonFileFormatted(rootEslintrcPath);
-      }
-
+    const getRootIgnorePatterns = () => {
       const ignorePatterns = new Set();
 
       if (inLerna && !inLerna.root && (this.options.typescript || pkg.types)) {
@@ -408,19 +412,34 @@ export default class CommonLintGenerator extends Generator {
           });
       }
 
-      const rootEslintrcConfig = updateEslintConfig(
-        this.fs.readJSON(rootEslintrcPath, {}),
-        {
-          extendsConfig: extendsConfigRoot,
-          ignorePatterns:
-            ignorePatterns.size === 0 ? undefined : [...ignorePatterns],
-        },
-      );
+      return ignorePatterns;
+    };
 
-      writeAndFormatJson(this.fs, rootEslintrcPath, rootEslintrcConfig);
-    } catch (err) {
-      console.warn(`Could not parse/edit ${rootEslintrcPath}: `, err);
+    if (rootEslintrcPath) {
+      try {
+        if (this.fs.exists(rootEslintrcPath)) {
+          ensureJsonFileFormatted(rootEslintrcPath);
+        }
+
+        const rootIgnorePatterns = getRootIgnorePatterns();
+
+        const rootEslintrcConfig = updateEslintConfig(
+          this.fs.readJSON(rootEslintrcPath, {}),
+          {
+            extendsConfig: extendsConfigRoot,
+            ignorePatterns:
+              rootIgnorePatterns.size === 0
+                ? undefined
+                : [...rootIgnorePatterns],
+          },
+        );
+
+        writeAndFormatJson(this.fs, rootEslintrcPath, rootEslintrcConfig);
+      } catch (err) {
+        console.warn(`Could not parse/edit ${rootEslintrcPath}: `, err);
+      }
     }
+    // no else: dont delete root eslintrc, src is root
 
     if ((inLerna && inLerna.root) || this.options.monorepo) {
       if (this.fs.exists(srcEslintrcPath)) {
@@ -432,6 +451,13 @@ export default class CommonLintGenerator extends Generator {
           ensureJsonFileFormatted(srcEslintrcPath);
         }
 
+        const ignorePatterns = this.options.rootAsSrc
+          ? getRootIgnorePatterns()
+          : new Set();
+        if (useTypescript || pkg.types) {
+          ignorePatterns.add('*.d.ts');
+        }
+
         const srcEslintrcConfig = updateEslintConfig(
           this.fs.readJSON(srcEslintrcPath, {}),
           {
@@ -439,7 +465,8 @@ export default class CommonLintGenerator extends Generator {
             jestOverride,
             useTypescript: useBabel,
             globalEslint,
-            ignorePatterns: useTypescript || pkg.types ? ['*.d.ts'] : undefined,
+            ignorePatterns:
+              ignorePatterns.size === 0 ? undefined : [...ignorePatterns],
             settings: {
               'import/resolver': this.options.enableSrcResolver
                 ? {

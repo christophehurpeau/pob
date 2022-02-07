@@ -135,6 +135,7 @@ export default class PobAppGenerator extends Generator {
 
     this.composeWith('pob:common:typescript', {
       enable: babel,
+      // nextjs now supports src rootDir: this.appConfig.type === 'next.js' ? '.' : 'src',
       builddefs: false,
       dom: browser,
       jsx,
@@ -144,11 +145,12 @@ export default class PobAppGenerator extends Generator {
         if (
           this.appConfig.type === 'alp' ||
           this.appConfig.type === 'pobpack' ||
-          this.appConfig.type === 'node'
+          this.appConfig.type === 'node' ||
+          this.appConfig.type === 'next.js'
         ) {
           return './src';
         }
-        if (this.appConfig.type === 'next.js') return '.';
+        // if (this.appConfig.type === 'next.js') return '.';
         return '';
       })(),
     });
@@ -172,6 +174,7 @@ export default class PobAppGenerator extends Generator {
       babel,
       node,
       browser,
+      // nextjs now supports src rootAsSrc: this.appConfig.type === 'next.js',
       enableSrcResolver: true,
       packageManager: this.options.packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
