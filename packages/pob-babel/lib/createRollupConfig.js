@@ -8,6 +8,7 @@ import { babel } from '@rollup/plugin-babel';
 import json from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import babelPluginModuleResolver from 'babel-plugin-module-resolver';
 import babelPresetEnv from 'babel-preset-pob-env';
 import configExternalDependencies from 'rollup-config-external-dependencies';
 import ignoreImport from './rollup-plugin-ignore-browser-only-imports.js';
@@ -178,6 +179,14 @@ export default function createRollupConfig({
                 corejs: false,
                 useESModules: 'auto',
                 useHelpers: true,
+              },
+            ],
+            [
+              babelPluginModuleResolver,
+              {
+                alias: {
+                  'react/jsx-runtime': 'react/jsx-runtime.js',
+                },
               },
             ],
           ],
