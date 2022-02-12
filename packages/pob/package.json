@@ -48,7 +48,7 @@
     "@pob/sort-object": "^4.0.1",
     "@pob/sort-pkg": "^4.0.1",
     "@yarnpkg/parsers": "2.5.0-rc.13",
-    "eslint": "8.8.0",
+    "eslint": "8.9.0",
     "findup-sync": "^5.0.0",
     "git-remote-url": "^1.0.1",
     "github-username": "^6.0.0",
