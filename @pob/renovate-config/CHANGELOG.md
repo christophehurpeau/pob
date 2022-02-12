@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.7.2](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.7.1...@pob/renovate-config@5.7.2) (2022-02-12)
+
+
+### Bug Fixes
+
+* **renovate-config:** configure recreateClosed ([3d3d958](https://github.com/christophehurpeau/pob/commit/3d3d958e447856947283bb9104211742924fe5b9))
+
+
+
+
+
 ## [5.7.1](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.7.0...@pob/renovate-config@5.7.1) (2022-02-06)
 
 **Note:** Version bump only for package @pob/renovate-config

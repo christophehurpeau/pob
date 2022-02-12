@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.2.6...example-typescript-lib@0.3.0) (2022-02-12)
+
+
+### Features
+
+* **pob:** improve nextjs config ([17c4daf](https://github.com/christophehurpeau/pob/commit/17c4dafd3af2f982e0e0b260b7d5352f1e9f8c36))
+
+
+
+
+
 ## [0.2.6](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.2.5...example-typescript-lib@0.2.6) (2022-02-06)
 
 **Note:** Version bump only for package example-typescript-lib

@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0](https://github.com/christophehurpeau/pob/compare/pob@9.16.2...pob@10.0.0) (2022-02-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @yarnpkg/parsers to v2.5.0-rc.12 ([#1195](https://github.com/christophehurpeau/pob/issues/1195)) ([90c432e](https://github.com/christophehurpeau/pob/commit/90c432e9c714db95901bec29f3899d4ac8f24bd8))
+* **deps:** update dependency @yarnpkg/parsers to v2.5.0-rc.13 ([#1200](https://github.com/christophehurpeau/pob/issues/1200)) ([8351d60](https://github.com/christophehurpeau/pob/commit/8351d60fee9b6629fbba5876eaf142af3a3bc544))
+* **pob:** nextjs generator ([5f814dd](https://github.com/christophehurpeau/pob/commit/5f814dd9243c46d5b96fdc8b01adadaa044f2734))
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.9.0 ([#1202](https://github.com/christophehurpeau/pob/issues/1202)) ([0c59870](https://github.com/christophehurpeau/pob/commit/0c59870f0cb4e9c7bf5a478446164de297c44ea8))
+* **pob:** add watch in monorepo with rollup ([eba1e69](https://github.com/christophehurpeau/pob/commit/eba1e693149807b5a139eda1036b8d131e7a7228))
+* **pob:** improve nextjs config ([17c4daf](https://github.com/christophehurpeau/pob/commit/17c4dafd3af2f982e0e0b260b7d5352f1e9f8c36))
+* use react jsx-runtime ([5c8bd2b](https://github.com/christophehurpeau/pob/commit/5c8bd2ba8fc1153537a26e3439852fab4c7878de))
+
+
+### BREAKING CHANGES
+
+* requires react with jsx-supported runtime
+
+
+
+
+
 ## [9.16.2](https://github.com/christophehurpeau/pob/compare/pob@9.16.1...pob@9.16.2) (2022-02-06)
 
 

@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [32.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@31.0.0...pob-babel@32.0.0) (2022-02-12)
+
+
+### Features
+
+* **deps:** update dependency @rollup/plugin-replace to v3.1.0 ([#1201](https://github.com/christophehurpeau/pob/issues/1201)) ([03d6df4](https://github.com/christophehurpeau/pob/commit/03d6df4d003df2849ebebb26b2f2935370aac793))
+* **deps:** update dependency rollup to v2.67.1 ([#1196](https://github.com/christophehurpeau/pob/issues/1196)) ([40c6485](https://github.com/christophehurpeau/pob/commit/40c64851a6ecf0ac5fabb2bfbda0567ca5e4e672))
+* **deps:** update dependency rollup to v2.67.2 ([#1199](https://github.com/christophehurpeau/pob/issues/1199)) ([b115de6](https://github.com/christophehurpeau/pob/commit/b115de6f9953ae9ff8fca9d604ace4a0aa7b7142))
+* use react jsx-runtime ([5c8bd2b](https://github.com/christophehurpeau/pob/commit/5c8bd2ba8fc1153537a26e3439852fab4c7878de))
+
+
+### BREAKING CHANGES
+
+* requires react with jsx-supported runtime
+
+
+
+
+
 # [31.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@30.0.1...pob-babel@31.0.0) (2022-02-05)
 
 
