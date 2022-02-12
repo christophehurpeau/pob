@@ -143,23 +143,23 @@ export { foo, operator, spreadTest, t };
 `;
 
 exports[`fixtures react 0 1`] = `
-"import React from 'react';
-import { render } from 'react-dom';
+"import { render } from 'react-dom';
+import { jsx } from 'react/jsx-runtime';
 
-const Component = () => /*#__PURE__*/React.createElement(\\"div\\", null);
+const Component = () => /*#__PURE__*/jsx(\\"div\\", {});
 
-render( /*#__PURE__*/React.createElement(Component, null), document.getElementById('react-container'));
+render( /*#__PURE__*/jsx(Component, {}), document.getElementById('react-container'));
 "
 `;
 
 exports[`fixtures react 1 1`] = `
-"import React from 'react';
-import { render } from 'react-dom';
+"import { render } from 'react-dom';
 import './styles.css';
+import { jsx } from 'react/jsx-runtime';
 
-const Component = () => /*#__PURE__*/React.createElement(\\"div\\", null);
+const Component = () => /*#__PURE__*/jsx(\\"div\\", {});
 
-render( /*#__PURE__*/React.createElement(Component, null), document.getElementById('react-container'));
+render( /*#__PURE__*/jsx(Component, {}), document.getElementById('react-container'));
 "
 `;
 
