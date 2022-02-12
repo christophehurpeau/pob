@@ -2657,9 +2657,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/eslint-config-typescript-react@npm:49.0.0":
-  version: 49.0.0
-  resolution: "@pob/eslint-config-typescript-react@npm:49.0.0"
+"@pob/eslint-config-typescript-react@npm:49.0.1":
+  version: 49.0.1
+  resolution: "@pob/eslint-config-typescript-react@npm:49.0.1"
   dependencies:
     "@pob/eslint-config": 49.0.0
     eslint-config-airbnb: ^19.0.4
@@ -2682,7 +2682,7 @@ __metadata:
       optional: true
     eslint-plugin-react-hooks:
       optional: true
-  checksum: ceef4446ca56f9b7e09a5056877d8f27303031330b7c57d3543185cbe5e0d1675da7df91d52a68e4a023d0d97c3510cc84f169be77a270757fabb0e63a20ba25
+  checksum: 3c2f9e418d0c0f1aac8cdcf87e7eedd2b704de90c0e6f35565274758d4aa6d001fe909a07c23e58be039eaafd3f18420b379e48d7a8939918d3d24b722562840
   languageName: node
   linkType: hard
 
@@ -10051,7 +10051,7 @@ __metadata:
     "@pob/commitlint-config": 4.1.0
     "@pob/eslint-config": 49.0.0
     "@pob/eslint-config-typescript": 49.0.0
-    "@pob/eslint-config-typescript-react": 49.0.0
+    "@pob/eslint-config-typescript-react": 49.0.1
     "@pob/lerna-light": 5.1.0
     "@pob/pretty-pkg": ^4.0.1
     "@pob/root": 6.7.2
@@ -10098,7 +10098,7 @@ __metadata:
     "@lerna/project": ^4.0.0
     "@pob/eslint-config": 49.0.0
     "@pob/eslint-config-typescript": 49.0.0
-    "@pob/eslint-config-typescript-react": 49.0.0
+    "@pob/eslint-config-typescript-react": 49.0.1
     "@pob/sort-eslint-config": ^3.0.1
     "@pob/sort-object": ^4.0.1
     "@pob/sort-pkg": ^4.0.1
