@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.0.1](https://github.com/christophehurpeau/pob/compare/pob-babel@32.0.0...pob-babel@32.0.1) (2022-02-12)
+
+
+### Bug Fixes
+
+* **pob-babel:** add alias for react/jsx-runtime ([3b0fd3a](https://github.com/christophehurpeau/pob/commit/3b0fd3ab3bb4d0ddb09328bbd37f46c438aa9701))
+
+
+
+
+
 # [32.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@31.0.0...pob-babel@32.0.0) (2022-02-12)
 
 

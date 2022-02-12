@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.7.3](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.7.2...@pob/renovate-config@5.7.3) (2022-02-12)
+
+**Note:** Version bump only for package @pob/renovate-config
+
+
+
+
+
 ## [5.7.2](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.7.1...@pob/renovate-config@5.7.2) (2022-02-12)
 
 

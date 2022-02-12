@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.1.0](https://github.com/christophehurpeau/pob/compare/pob@10.0.0...pob@10.1.0) (2022-02-12)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v49 (major) ([#1203](https://github.com/christophehurpeau/pob/issues/1203)) ([c063b55](https://github.com/christophehurpeau/pob/commit/c063b553eb15e3d3422f149b89ac1f9f12958e43))
+
+
+
+
+
 # [10.0.0](https://github.com/christophehurpeau/pob/compare/pob@9.16.2...pob@10.0.0) (2022-02-12)
 
 
