@@ -99,12 +99,6 @@ export default class PobAppGenerator extends Generator {
       },
     ]);
 
-    execSync(
-      `rm -Rf ${['lib-*', 'coverage', 'docs', 'dist']
-        .filter(Boolean)
-        .join(' ')}`,
-    );
-
     this.config.set('app', this.appConfig);
     this.config.save();
   }
@@ -231,6 +225,12 @@ export default class PobAppGenerator extends Generator {
         });
         break;
     }
+
+    execSync(
+      `rm -Rf ${['lib-*', 'coverage', 'docs', 'dist']
+        .filter(Boolean)
+        .join(' ')}`,
+    );
   }
 
   writing() {
