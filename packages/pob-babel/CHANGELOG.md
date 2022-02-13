@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [32.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@32.0.1...pob-babel@32.1.0) (2022-02-13)
+
+
+### Features
+
+* build directory for apps and alp-rollup-plugin-config ([0d57816](https://github.com/christophehurpeau/pob/commit/0d57816fbe0ac0a86d0bf7204aed42c3313366df))
+
+
+
+
+
 ## [32.0.1](https://github.com/christophehurpeau/pob/compare/pob-babel@32.0.0...pob-babel@32.0.1) (2022-02-12)
 
 

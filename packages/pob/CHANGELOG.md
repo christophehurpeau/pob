@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.2.0](https://github.com/christophehurpeau/pob/compare/pob@10.1.0...pob@10.2.0) (2022-02-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @pob/eslint-config-typescript-react to v49.0.1 ([#1204](https://github.com/christophehurpeau/pob/issues/1204)) ([5fc0b39](https://github.com/christophehurpeau/pob/commit/5fc0b39970645a99188f8a74fb473535a6d38461))
+* **pob:** create eslint specific tsconfig ([fb80eac](https://github.com/christophehurpeau/pob/commit/fb80eaccce5c48dfe4af98c411ef3839c11f3be8))
+
+
+### Features
+
+* build directory for apps and alp-rollup-plugin-config ([0d57816](https://github.com/christophehurpeau/pob/commit/0d57816fbe0ac0a86d0bf7204aed42c3313366df))
+
+
+
+
+
 # [10.1.0](https://github.com/christophehurpeau/pob/compare/pob@10.0.0...pob@10.1.0) (2022-02-12)
 
 

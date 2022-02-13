@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.8.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.7.2...@pob/root@6.8.0) (2022-02-13)
+
+
+### Features
+
+* **deps:** update dependency @commitlint/cli to v16.2.1 ([#1205](https://github.com/christophehurpeau/pob/issues/1205)) ([303ad10](https://github.com/christophehurpeau/pob/commit/303ad1098d28610b2919679d5cb7feacf0956ddc))
+
+
+
+
+
 ## [6.7.2](https://github.com/christophehurpeau/pob/compare/@pob/root@6.7.1...@pob/root@6.7.2) (2022-02-12)
 
 **Note:** Version bump only for package @pob/root
