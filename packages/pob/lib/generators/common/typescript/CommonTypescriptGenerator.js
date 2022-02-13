@@ -73,6 +73,7 @@ export default class CommonTypescriptGenerator extends Generator {
     );
 
     const tsconfigPath = this.destinationPath('tsconfig.json');
+    const tsconfigEslintPath = this.destinationPath('tsconfig.eslint.json');
     const tsconfigBuildPath = this.destinationPath('tsconfig.build.json');
     if (this.options.enable) {
       const { jsx, dom } = this.options;
@@ -146,6 +147,12 @@ export default class CommonTypescriptGenerator extends Generator {
           resolveJsonModule: this.options.resolveJsonModule,
         },
       );
+      copyAndFormatTpl(
+        this.fs,
+        this.templatePath('tsconfig.eslint.json.ejs'),
+        tsconfigEslintPath,
+        {},
+      );
       if (
         this.options.builddefs // &&
         // (!composite || monorepoPackageNames.length !== 0)
@@ -168,6 +175,7 @@ export default class CommonTypescriptGenerator extends Generator {
     } else {
       if (pkg.scripts) delete pkg.scripts.tsc;
       this.fs.delete(tsconfigPath);
+      this.fs.delete(tsconfigEslintPath);
       this.fs.delete(tsconfigBuildPath);
     }
 
