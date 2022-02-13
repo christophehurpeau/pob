@@ -31,6 +31,17 @@ const hasDist = (packages, configs) =>
       ),
   );
 
+const hasBuild = (packages, configs) =>
+  configs.some(
+    (config, index) =>
+      !!(
+        config &&
+        config.project &&
+        config.project.type === 'app' &&
+        config.app.type === 'alp-node'
+      ),
+  );
+
 export default class PobMonorepoGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
@@ -206,7 +217,12 @@ export default class PobMonorepoGenerator extends Generator {
       packageManager: this.options.packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
       appTypes: JSON.stringify(getAppTypes(this.packageConfigs)),
-      ignorePaths: hasDist(this.packages, this.packageConfigs) ? '/dist' : '',
+      ignorePaths: [
+        hasDist(this.packages, this.packageConfigs) && '/dist',
+        hasBuild(this.packages, this.packageConfigs) && '/build',
+      ]
+        .filter(Boolean)
+        .join('\n'),
     });
 
     this.composeWith('pob:lib:doc', {
@@ -281,7 +297,7 @@ export default class PobMonorepoGenerator extends Generator {
       }
       packageUtils.addOrRemoveScripts(pkg, rollupConfigs.length > 0, {
         'clean:build': `(${pkg.workspaces
-          .map((workspaces) => `rm -Rf ${workspaces}/dist`)
+          .map((workspaces) => `rm -Rf ${workspaces}/dist ${workspaces}/build`)
           .join(' && ')}) || true`,
         build: 'yarn clean:build && rollup --config rollup.config.mjs',
         watch: 'yarn clean:build && rollup --config rollup.config.mjs --watch',

@@ -2,6 +2,7 @@ import fs from 'fs';
 import semver from 'semver';
 import Generator from 'yeoman-generator';
 import * as packageUtils from '../../../utils/package.js';
+import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
 
 export default class CommonBabelGenerator extends Generator {
   constructor(args, opts) {
@@ -31,6 +32,18 @@ export default class CommonBabelGenerator extends Generator {
       type: Boolean,
       required: false,
       defaults: false,
+    });
+
+    this.option('useAppConfig', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+    });
+
+    this.option('buildDirectory', {
+      type: String,
+      required: false,
+      defaults: 'dist',
     });
   }
 
@@ -271,7 +284,7 @@ export default class CommonBabelGenerator extends Generator {
     if (this.options.isApp) {
       packageUtils.removeScripts(['watch']);
       packageUtils.addOrRemoveScripts(pkg, useBabel, {
-        'clean:build': 'rm -Rf dist',
+        'clean:build': `rm -Rf ${this.options.buildDirectory}`,
         build: 'yarn clean:build && rollup --config rollup.config.mjs',
         start: 'yarn clean:build && rollup --config rollup.config.mjs --watch',
         clean: 'yarn clean:build',
@@ -279,7 +292,7 @@ export default class CommonBabelGenerator extends Generator {
     } else {
       packageUtils.removeScripts(['start']);
       packageUtils.addOrRemoveScripts(pkg, useBabel, {
-        'clean:build': 'rm -Rf dist',
+        'clean:build': `rm -Rf ${this.options.buildDirectory}`,
         build: 'yarn clean:build && rollup --config rollup.config.mjs',
         watch: 'yarn clean:build && rollup --config rollup.config.mjs --watch',
         clean: 'yarn clean:build',
@@ -712,13 +725,22 @@ export default class CommonBabelGenerator extends Generator {
     /* pob-babel config */
 
     packageUtils.removeDevDependencies(pkg, ['@rollup/plugin-run']);
+    packageUtils.addOrRemoveDependencies(
+      pkg,
+      useBabel && this.options.isApp && this.options.useAppConfig,
+      ['alp-rollup-plugin-config'],
+    );
 
     this.fs.delete('rollup.config.js');
     if (useBabel) {
       if (this.options.isApp) {
-        this.fs.copy(
+        copyAndFormatTpl(
+          this.fs,
           this.templatePath('app.rollup.config.mjs.ejs'),
           this.destinationPath('rollup.config.mjs'),
+          {
+            config: this.options.useAppConfig,
+          },
         );
       } else {
         this.fs.copy(

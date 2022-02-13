@@ -1,3 +1,4 @@
+import { execSync } from 'child_process';
 import Generator from 'yeoman-generator';
 import inLerna from '../../utils/inLerna.js';
 import inNpmLerna from '../../utils/inNpmLerna.js';
@@ -5,7 +6,7 @@ import * as packageUtils from '../../utils/package.js';
 import { appIgnorePaths } from './ignorePaths.js';
 
 const appsWithTypescript = ['alp', 'next.js', 'pobpack'];
-const appsWithNode = ['alp', 'next.js'];
+const appsWithBrowser = ['alp', 'next.js'];
 
 export default class PobAppGenerator extends Generator {
   constructor(args, opts) {
@@ -66,7 +67,7 @@ export default class PobAppGenerator extends Generator {
         name: 'type',
         message: 'What kind of app is this ?',
         default: (config && config.type) || 'alp',
-        choices: ['alp', 'pobpack', 'next.js', 'node', 'other'],
+        choices: ['alp', 'pobpack', 'next.js', 'node', 'alp-node', 'other'],
       },
       {
         type: 'confirm',
@@ -98,18 +99,26 @@ export default class PobAppGenerator extends Generator {
       },
     ]);
 
+    execSync(
+      `rm -Rf ${['lib-*', 'coverage', 'docs', 'dist']
+        .filter(Boolean)
+        .join(' ')}`,
+    );
+
     this.config.set('app', this.appConfig);
     this.config.save();
   }
 
   default() {
-    if (this.appConfig.type === 'node') {
+    if (this.appConfig.type === 'node' || this.appConfig.type === 'alp-node') {
       this.composeWith('pob:common:babel', {
         updateOnly: this.options.updateOnly,
         isApp: true,
+        useAppConfig: this.appConfig.type === 'alp-node',
         testing: this.appConfig.testing,
         documentation: false,
         fromPob: this.options.fromPob,
+        buildDirectory: 'build',
       });
     }
 
@@ -123,7 +132,7 @@ export default class PobAppGenerator extends Generator {
     const babel =
       babelEnvs.length > 0 || appsWithTypescript.includes(this.appConfig.type);
     const node = true;
-    const browser = appsWithNode.includes(this.appConfig.type);
+    const browser = appsWithBrowser.includes(this.appConfig.type);
     const jsx =
       babelEnvs.length > 0 && pkg.pob.jsx !== undefined
         ? pkg.pob.jsx
@@ -146,6 +155,7 @@ export default class PobAppGenerator extends Generator {
           this.appConfig.type === 'alp' ||
           this.appConfig.type === 'pobpack' ||
           this.appConfig.type === 'node' ||
+          this.appConfig.type === 'alp-node' ||
           this.appConfig.type === 'next.js'
         ) {
           return './src';
@@ -179,6 +189,7 @@ export default class PobAppGenerator extends Generator {
       packageManager: this.options.packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
       ignorePaths: ignorePaths.join('\n'),
+      buildDirectory: 'build',
     });
 
     this.composeWith('pob:common:release', {

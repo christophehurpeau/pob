@@ -24,6 +24,7 @@ const nodeFormatToExt = (format, pkgType) => {
 
 export default function createRollupConfig({
   cwd = process.cwd(),
+  outDirectory = 'dist',
   pkg = JSON.parse(readFileSync(`${cwd}/package.json`)),
   plugins = [],
   devPlugins,
@@ -113,7 +114,7 @@ export default function createRollupConfig({
           process.cwd(),
           path.join(
             cwd,
-            `dist/${entry}-${env.target}${env.version || ''}${
+            `${outDirectory}/${entry}-${env.target}${env.version || ''}${
               env.target === 'node'
                 ? nodeFormatToExt(format, pkg.type)
                 : `.${format}.js`

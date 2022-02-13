@@ -78,6 +78,12 @@ export default class CommonLintGenerator extends Generator {
       defaults: 'node-modules',
       desc: 'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
+
+    this.option('buildDirectory', {
+      type: String,
+      required: false,
+      defaults: 'dist',
+    });
   }
 
   writing() {
@@ -396,7 +402,7 @@ export default class CommonLintGenerator extends Generator {
       }
 
       if ((!inLerna || !inLerna.root) && useBabel) {
-        ignorePatterns.add('/dist', '/test');
+        ignorePatterns.add(`/${this.options.buildDirectory}`, '/test');
       }
       if (inLerna && inLerna.root && this.options.typescript) {
         ignorePatterns.add('/rollup.config.mjs');
@@ -405,7 +411,7 @@ export default class CommonLintGenerator extends Generator {
       if (this.options.ignorePaths) {
         this.options.ignorePaths
           .split('\n')
-          .filter((path) => path !== '/dist' && path)
+          .filter((path) => path !== `/${this.options.buildDirectory}` && path)
           .forEach((ignorePath) => {
             if (ignorePath.startsWith('#')) return;
             ignorePatterns.add(ignorePath);
