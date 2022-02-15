@@ -58,7 +58,7 @@
     "npm-package-arg@8.1.2": "patch to support yarn 'workspace:*'"
   },
   "devDependencies": {
-    "@babel/core": "7.17.2",
+    "@babel/core": "7.17.3",
     "@pob/eslint-config": "49.0.0",
     "@pob/lerna-light": "workspace:*",
     "@pob/root": "workspace:*",
