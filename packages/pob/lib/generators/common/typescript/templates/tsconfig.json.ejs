@@ -59,10 +59,10 @@
       "<%= packageName %>/*": ["../<%= packageLocation %>/*"]<%= index === monorepoPackageSrcPaths.length -1 ? '' : ',' -%>
       <% }) %>
     }<% } %>
-  }<% if (monorepoPackageBuildReferences && monorepoPackageBuildReferences.length) { -%>,
+  }<% if (monorepoPackageReferences && monorepoPackageReferences.length) { -%>,
   "references": [
-    <% monorepoPackageBuildReferences.forEach((monorepoPackageSrcPath, index) => { -%>
-        { "path": "<%= monorepoPackageSrcPath %>/tsconfig.json" }<%= index === monorepoPackageBuildReferences.length -1 ? '' : ',' %>
+    <% monorepoPackageReferences.forEach((monorepoPackageSrcPath, index) => { -%>
+        { "path": "<%= monorepoPackageSrcPath %>/tsconfig.json" }<%= index === monorepoPackageReferences.length -1 ? '' : ',' %>
     <% }) -%>
   ],
   <% } -%>

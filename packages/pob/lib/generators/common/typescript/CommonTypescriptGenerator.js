@@ -78,6 +78,7 @@ export default class CommonTypescriptGenerator extends Generator {
     if (this.options.enable) {
       const { jsx, dom } = this.options;
       let composite;
+      let monorepoPackageReferences;
       let monorepoPackageBuildReferences;
       let monorepoPackageSrcPaths;
 
@@ -122,6 +123,11 @@ export default class CommonTypescriptGenerator extends Generator {
               }`,
             ],
           );
+          monorepoPackageReferences = yoConfig.pob.monorepo.packageNames
+            .filter((packageName) =>
+              existsSync(`${packageLocations.get(packageName)}/tsconfig.json`),
+            )
+            .map((packageName) => packageLocations.get(packageName));
           monorepoPackageBuildReferences = yoConfig.pob.monorepo.packageNames
             .filter((packageName) =>
               existsSync(
@@ -138,7 +144,7 @@ export default class CommonTypescriptGenerator extends Generator {
         tsconfigPath,
         {
           monorepoPackageSrcPaths,
-          monorepoPackageBuildReferences,
+          monorepoPackageReferences,
           rootDir: this.options.rootDir,
           jsx,
           composite,
