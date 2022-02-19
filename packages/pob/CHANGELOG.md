@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.1](https://github.com/christophehurpeau/pob/compare/pob@10.2.0...pob@10.2.1) (2022-02-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @yarnpkg/parsers to v2.5.0-rc.14 ([#1213](https://github.com/christophehurpeau/pob/issues/1213)) ([82319b2](https://github.com/christophehurpeau/pob/commit/82319b27f6091cbb19851573d650620cfa361519))
+* only enable incremental for composite tsconfigs ([b73a16a](https://github.com/christophehurpeau/pob/commit/b73a16a15a09f68cde3ad22d01331418c3a5d92c))
+* **pob:** clean script ([6f2646e](https://github.com/christophehurpeau/pob/commit/6f2646e150e5ca4c889f5657811273a44eb68549))
+
+
+
+
+
 # [10.2.0](https://github.com/christophehurpeau/pob/compare/pob@10.1.0...pob@10.2.0) (2022-02-13)
 
 

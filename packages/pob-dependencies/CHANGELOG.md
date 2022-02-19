@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.16.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.15.0...pob-dependencies@6.16.0) (2022-02-19)
+
+
+### Features
+
+* **deps:** update dependency alp-rollup-plugin-config to v1 ([#1206](https://github.com/christophehurpeau/pob/issues/1206)) ([2717cd5](https://github.com/christophehurpeau/pob/commit/2717cd5b5613c2ea800b755e5455c731ac50ca3c))
+* **deps:** update dependency rollup to v2.67.3 ([#1211](https://github.com/christophehurpeau/pob/issues/1211)) ([d6a48ab](https://github.com/christophehurpeau/pob/commit/d6a48aba3496a9dc811680adb4b244a9c40a8b8e))
+
+
+
+
+
 # [6.15.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.14.0...pob-dependencies@6.15.0) (2022-02-13)
 
 
