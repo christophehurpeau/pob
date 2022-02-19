@@ -10,11 +10,11 @@
 <% } -%>
   "compilerOptions": {
     "rootDir": "<%= rootDir %>",
-    "incremental": true,
 <% if(!composite) { -%>
     /* No emit in default config file. See build config file for config to build declaration files */
     "noEmit": true,
 <% } else { -%>
+    "incremental": true,
     "composite": true,
     "noEmit": false,
     "noEmitOnError": true,
