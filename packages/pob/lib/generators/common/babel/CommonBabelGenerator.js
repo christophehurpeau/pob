@@ -470,7 +470,9 @@ export default class CommonBabelGenerator extends Generator {
     if (useBabel) {
       // see pkg.exports instead.
       delete pkg.main;
-      if (!this.options.isApp) pkg.types = './dist/index.d.ts';
+      if (!this.options.isApp) {
+        pkg.types = `./${this.options.buildDirectory}/index.d.ts`;
+      }
     } else {
       if (!pkg.main) {
         pkg.exports = './lib/index.js';
@@ -529,15 +531,17 @@ export default class CommonBabelGenerator extends Generator {
 
     /* webpack 4 */
     if (esAllBrowserEnv) {
-      pkg.module = './dist/index-browser.es.js';
-      pkg.browser = './dist/index-browser.es.js';
+      pkg.module = `./${this.options.buildDirectory}/index-browser.es.js`;
+      pkg.browser = `./${this.options.buildDirectory}/index-browser.es.js`;
     } else {
       delete pkg.module;
       delete pkg.browser;
     }
 
     if (esModernBrowserEnv) {
-      pkg['module:modern-browsers'] = './dist/index-browsermodern.es.js';
+      pkg[
+        'module:modern-browsers'
+      ] = `./${this.options.buildDirectory}/index-browsermodern.es.js`;
     } else {
       delete pkg['module:modern-browsers'];
     }
@@ -546,7 +550,7 @@ export default class CommonBabelGenerator extends Generator {
       // webpack 4 node
       pkg[
         'module:node'
-      ] = `./dist/index-${esNodeEnv.target}${esNodeEnv.version}.mjs`;
+      ] = `./${this.options.buildDirectory}/index-${esNodeEnv.target}${esNodeEnv.version}.mjs`;
     }
 
     const aliases = (this.entries || []).filter((entry) => entry !== 'index');
@@ -572,11 +576,9 @@ export default class CommonBabelGenerator extends Generator {
             const isBrowserOnly =
               aliasName === 'browser' && env.target !== 'node';
             const aliasDistName = isBrowserOnly ? 'index' : aliasName;
-            pkg[`module:aliases-${key}`][
-              `./${aliasName}.js`
-            ] = `./dist/${aliasDistName}-${env.target}${
-              env.version || ''
-            }.es.js`;
+            pkg[`module:aliases-${key}`][`./${aliasName}.js`] = `./${
+              this.options.buildDirectory
+            }/${aliasDistName}-${env.target}${env.version || ''}.es.js`;
           });
         });
     }
@@ -610,13 +612,13 @@ export default class CommonBabelGenerator extends Generator {
           if (target === 'node') {
             const cjsExt = pkg.type === 'module' ? 'cjs' : 'cjs.js';
             if (formats.includes('es')) {
-              exportTarget.import = `./dist/${entryDistName}-${target}${version}.mjs`;
+              exportTarget.import = `./${this.options.buildDirectory}/${entryDistName}-${target}${version}.mjs`;
 
               if (formats.includes('cjs')) {
-                exportTarget.require = `./dist/${entryDistName}-${target}${version}.${cjsExt}`;
+                exportTarget.require = `./${this.options.buildDirectory}/${entryDistName}-${target}${version}.${cjsExt}`;
               }
             } else if (formats.includes('cjs')) {
-              exportTarget.default = `./dist/${entryDistName}-${target}${version}.${cjsExt}`;
+              exportTarget.default = `./${this.options.buildDirectory}/${entryDistName}-${target}${version}.${cjsExt}`;
             }
             // eslint: https://github.com/benmosher/eslint-plugin-import/issues/2132
             // jest: https://github.com/facebook/jest/issues/9771
@@ -630,15 +632,15 @@ export default class CommonBabelGenerator extends Generator {
             }
           } else if (target === 'browser') {
             if (formats.includes('es')) {
-              exportTarget.import = `./dist/${entryDistName}-${target}${
-                version || ''
-              }.es.js`;
+              exportTarget.import = `./${
+                this.options.buildDirectory
+              }/${entryDistName}-${target}${version || ''}.es.js`;
             }
 
             if (formats.includes('cjs')) {
-              exportTarget.require = `./dist/index-${target}${
-                version || ''
-              }.cjs.js`;
+              exportTarget.require = `./${
+                this.options.buildDirectory
+              }/index-${target}${version || ''}.cjs.js`;
             }
           }
 
