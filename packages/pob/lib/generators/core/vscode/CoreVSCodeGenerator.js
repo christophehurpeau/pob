@@ -93,13 +93,15 @@ export default class CoreVSCodeGenerator extends Generator {
         this.destinationPath('.vscode/tasks.json'),
         {},
       );
+      const tasks = tasksConfig.tasks || [];
+
       copyAndFormatTpl(
         this.fs,
         this.templatePath('tasks.json.ejs'),
         this.destinationPath('.vscode/tasks.json'),
         {
           typescript: this.options.typescript,
-          tasks: JSON.stringify(tasksConfig.tasks || [], null, 2),
+          tasks: JSON.stringify(tasks, null, 2),
         },
       );
 

@@ -2813,8 +2813,10 @@ __metadata:
     "@pob/pretty-eslint-config": 3.0.2
     "@pob/pretty-pkg": ^4.0.1
     husky: ^7.0.0
+    json5: ^2.2.0
     lint-staged: 12.3.4
     pob-dependencies: 6.16.0
+    prettier: 2.5.1
     repository-check-dirty: ^4.0.0
     semver: ^7.1.2
     which-pm-runs: 1.1.0

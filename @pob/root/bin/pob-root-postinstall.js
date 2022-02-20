@@ -40,3 +40,7 @@ require('./postinstall/update-yarn')({ pkg, pm });
 require('./postinstall/install-husky')({ pkg, pm });
 require('./postinstall/install-github-workflows')({ pkg, pm });
 require('./postinstall/install-scripts')({ pkg, pm });
+
+if (process.env.POB_EXPERIMENTAL_VSCODE_TASKS) {
+  require('./postinstall/install-vscode-tasks')({ pkg, pm });
+}
