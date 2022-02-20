@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.10.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.9.0...@pob/root@6.10.0) (2022-02-20)
+
+
+### Features
+
+* experimental vscode tasks generator ([d7a727f](https://github.com/christophehurpeau/pob/commit/d7a727fa1f8aec1e0f6f56b8219ea781b0759240))
+
+
+
+
+
 # [6.9.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.8.0...@pob/root@6.9.0) (2022-02-19)
 
 

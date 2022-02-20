@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.3.0](https://github.com/christophehurpeau/pob/compare/pob@10.2.1...pob@10.3.0) (2022-02-20)
+
+
+### Bug Fixes
+
+* alllow "allow-unsafe" in extends in eslint configs ([e1c0d69](https://github.com/christophehurpeau/pob/commit/e1c0d695feaba044c8a80d430254481854861dec))
+* **pob:** fix tsconfig references for apps ([ea5e185](https://github.com/christophehurpeau/pob/commit/ea5e185ae67ded3ea55f5d4bc992e9526ba98c0a))
+* use buid directory option in babel generator ([03a6754](https://github.com/christophehurpeau/pob/commit/03a6754a5356ed97dd39dc4e9292126f0696a44e))
+
+
+### Features
+
+* experimental vscode tasks generator ([d7a727f](https://github.com/christophehurpeau/pob/commit/d7a727fa1f8aec1e0f6f56b8219ea781b0759240))
+
+
+
+
+
 ## [10.2.1](https://github.com/christophehurpeau/pob/compare/pob@10.2.0...pob@10.2.1) (2022-02-19)
 
 

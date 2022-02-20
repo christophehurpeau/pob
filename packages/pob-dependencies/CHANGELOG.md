@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.17.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.16.0...pob-dependencies@6.17.0) (2022-02-20)
+
+
+### Features
+
+* **deps:** update dependency typedoc to v0.22.12 ([#1214](https://github.com/christophehurpeau/pob/issues/1214)) ([ead6549](https://github.com/christophehurpeau/pob/commit/ead6549c0fcfc01c3e4e16a63f0056fb11a27779))
+
+
+
+
+
 # [6.16.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.15.0...pob-dependencies@6.16.0) (2022-02-19)
 
 
