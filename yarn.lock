@@ -3500,13 +3500,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"alp-rollup-plugin-config@npm:1.0.0":
-  version: 1.0.0
-  resolution: "alp-rollup-plugin-config@npm:1.0.0"
+"alp-rollup-plugin-config@npm:1.0.2":
+  version: 1.0.2
+  resolution: "alp-rollup-plugin-config@npm:1.0.2"
   dependencies:
     "@guanghechen/rollup-plugin-copy": 1.8.6
     js-yaml: 4.1.0
-  checksum: 9f4065aeafca94282f1aab03641fe27848730cf0f1ceeaeebb84639215bb3cdd3f6e9302531cb44fc17fc7ad2c99b33c3f63c6daa5fc8fa1077aa6b31a56f93f
+  checksum: dbfd2743055863fcd69052c682e6e62dff2815930f60a4c6be21866a0b6b6da7238c638bf5923dc708d5ccae36ffa1d7d87202faa2be13e094b063b7d84e0b23
   languageName: node
   linkType: hard
 
@@ -10095,7 +10095,7 @@ __metadata:
     "@pob/pretty-pkg": ^4.0.1
     "@pob/root": 6.11.0
     "@types/jest": 27.4.0
-    alp-rollup-plugin-config: 1.0.0
+    alp-rollup-plugin-config: 1.0.2
     babel-preset-modern-browsers: 15.0.2
     eslint: 8.9.0
     jest: 27.5.1
