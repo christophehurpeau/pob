@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.3.1](https://github.com/christophehurpeau/pob/compare/pob@10.3.0...pob@10.3.1) (2022-02-20)
+
+
+### Bug Fixes
+
+* **pob:** fix app import/resolver config ([5179b36](https://github.com/christophehurpeau/pob/commit/5179b364d1b72f0ed3a3b7df577e46d49e23d69a))
+
+
+
+
+
 # [10.3.0](https://github.com/christophehurpeau/pob/compare/pob@10.2.1...pob@10.3.0) (2022-02-20)
 
 
