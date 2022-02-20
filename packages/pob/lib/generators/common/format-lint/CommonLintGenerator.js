@@ -477,7 +477,7 @@ export default class CommonLintGenerator extends Generator {
               'import/resolver': this.options.enableSrcResolver
                 ? {
                     node: {
-                      paths: ['./node_modules', './src'],
+                      moduleDirectory: ['node_modules', 'src'],
                     },
                   }
                 : false,
