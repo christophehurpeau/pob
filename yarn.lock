@@ -2805,7 +2805,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/root@6.10.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@6.11.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -2815,7 +2815,7 @@ __metadata:
     husky: ^7.0.0
     json5: ^2.2.0
     lint-staged: 12.3.4
-    pob-dependencies: 6.17.0
+    pob-dependencies: 6.17.1
     prettier: 2.5.1
     repository-check-dirty: ^4.0.0
     semver: ^7.1.2
@@ -10079,7 +10079,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@6.17.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@6.17.1, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -10093,7 +10093,7 @@ __metadata:
     "@pob/eslint-config-typescript-react": 49.0.1
     "@pob/lerna-light": 5.1.0
     "@pob/pretty-pkg": ^4.0.1
-    "@pob/root": 6.10.0
+    "@pob/root": 6.11.0
     "@types/jest": 27.4.0
     alp-rollup-plugin-config: 1.0.0
     babel-preset-modern-browsers: 15.0.2
@@ -10110,6 +10110,13 @@ __metadata:
     typescript: 4.5.5
   languageName: unknown
   linkType: soft
+
+"pob-dependencies@npm:6.17.0":
+  version: 6.17.0
+  resolution: "pob-dependencies@npm:6.17.0"
+  checksum: 008d648847ec3d7b9bb8dc36e3e4fdd7cf4db9975d97d1ff0051f23bcf2f2f4588a65cc66359d89867dd09d8acf40fa8c78383b205efe2598a153021a0f97bdd
+  languageName: node
+  linkType: hard
 
 "pob-monorepo@workspace:.":
   version: 0.0.0-use.local

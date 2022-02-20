@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.11.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.10.0...@pob/root@6.11.0) (2022-02-20)
+
+
+### Features
+
+* **@pob/root:** add lint task ([51cce9f](https://github.com/christophehurpeau/pob/commit/51cce9f9605c3c2ce09de5a69ed84178659d6338))
+
+
+
+
+
 # [6.10.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.9.0...@pob/root@6.10.0) (2022-02-20)
 
 
