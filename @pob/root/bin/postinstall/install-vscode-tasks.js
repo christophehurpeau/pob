@@ -40,14 +40,18 @@ module.exports = function installVscodeTasks({ pkg }) {
     Object.entries(pkg.scripts).forEach(([scriptName, scriptCommand]) => {
       if (scriptName === 'postinstall') return;
       if (scriptName === 'lint') {
-        return {
+        tasks.push({
           label: scriptName,
           group: getGroupNameFromScriptName(scriptName),
           dependsOn: scriptNames.filter(
             (name) =>
-              (name !== 'lint' && name.startsWith('lint')) || name === 'tsc',
+              (name !== 'lint' &&
+                name.startsWith('lint') &&
+                !name.endsWith(':fix')) ||
+              name === 'tsc',
           ),
-        };
+        });
+        return;
       }
 
       const task = {

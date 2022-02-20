@@ -4,6 +4,11 @@
   "version": "2.0.0",
   "tasks": [
     {
+      "label": "lint",
+      "group": "lint",
+      "dependsOn": ["lint:eslint", "lint:prettier", "lint:prettier:fix", "tsc"]
+    },
+    {
       "label": "build",
       "problemMatcher": [],
       "type": "npm",
@@ -34,6 +39,11 @@
       "presentation": { "panel": "dedicated", "clear": true }
     },
     {
+      "label": "lint",
+      "group": "lint",
+      "dependsOn": ["lint:eslint", "lint:prettier", "tsc"]
+    },
+    {
       "label": "lint:eslint",
       "problemMatcher": ["$eslint-stylish"],
       "type": "npm",
@@ -56,13 +66,6 @@
       "script": "lint:prettier:fix",
       "group": "lint",
       "presentation": { "panel": "dedicated", "group": "lint", "clear": true }
-    },
-    {
-      "label": "postinstall",
-      "problemMatcher": [],
-      "type": "npm",
-      "script": "postinstall",
-      "presentation": { "panel": "dedicated", "clear": true }
     },
     {
       "label": "test",
