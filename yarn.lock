@@ -3364,13 +3364,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/parsers@npm:2.5.0-rc.14":
-  version: 2.5.0-rc.14
-  resolution: "@yarnpkg/parsers@npm:2.5.0-rc.14"
+"@yarnpkg/parsers@npm:2.5.0":
+  version: 2.5.0
+  resolution: "@yarnpkg/parsers@npm:2.5.0"
   dependencies:
     js-yaml: ^3.10.0
     tslib: ^1.13.0
-  checksum: 9d9537c903d6987566d7792fda21bb0201e97934b54661b8ae815385e71bdebb6a717417386231af3e7f91771469bd6b091cc61895697ebf60f270d732319008
+  checksum: 02678b7b910eb653c27f0043ac5295c96f2547164959a76e529cad628c2dd48748d1eec2e5d0ee77f79c7d0536549477f203274ca0533e1b478a7f1e0689bb75
   languageName: node
   linkType: hard
 
@@ -10149,7 +10149,7 @@ __metadata:
     "@pob/sort-eslint-config": ^3.0.1
     "@pob/sort-object": ^4.0.1
     "@pob/sort-pkg": ^4.0.1
-    "@yarnpkg/parsers": 2.5.0-rc.14
+    "@yarnpkg/parsers": 2.5.0
     eslint: 8.9.0
     findup-sync: ^5.0.0
     git-remote-url: ^1.0.1
