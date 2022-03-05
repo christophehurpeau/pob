@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.3.3...example-typescript-lib@0.4.0) (2022-03-05)
+
+
+### Features
+
+* **deps:** update dependency rollup to v2.69.1 ([#1227](https://github.com/christophehurpeau/pob/issues/1227)) ([9254203](https://github.com/christophehurpeau/pob/commit/9254203e2beea02e8d2dc7b5c1f92fe041f5202b))
+
+
+
+
+
 ## [0.3.3](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.3.2...example-typescript-lib@0.3.3) (2022-02-19)
 
 **Note:** Version bump only for package example-typescript-lib

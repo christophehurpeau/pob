@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.18.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.17.1...pob-dependencies@6.18.0) (2022-03-05)
+
+
+### Features
+
+* **deps:** update dependency @types/jest to v27.4.1 ([#1221](https://github.com/christophehurpeau/pob/issues/1221)) ([8d20e25](https://github.com/christophehurpeau/pob/commit/8d20e25db6a2f210377f10cbb3ac25cac5643ba5))
+* **deps:** update dependency alp-rollup-plugin-config to v1.0.2 ([#1215](https://github.com/christophehurpeau/pob/issues/1215)) ([74d2a16](https://github.com/christophehurpeau/pob/commit/74d2a1698126a4fef515ef0b94f4c4bb2dd43be6))
+* **deps:** update dependency eslint to v8.10.0 ([#1223](https://github.com/christophehurpeau/pob/issues/1223)) ([a0bec26](https://github.com/christophehurpeau/pob/commit/a0bec26c62a46771458e061add0f008dcd5e2681))
+* **deps:** update dependency rollup to v2.68.0 ([#1218](https://github.com/christophehurpeau/pob/issues/1218)) ([36f3d2a](https://github.com/christophehurpeau/pob/commit/36f3d2ae15d666b27a44804917ded355a0b1769c))
+* **deps:** update dependency rollup to v2.69.0 ([#1226](https://github.com/christophehurpeau/pob/issues/1226)) ([3229b0e](https://github.com/christophehurpeau/pob/commit/3229b0eab692078c19ee109f0da256f97776164a))
+* **deps:** update dependency rollup to v2.69.1 ([#1227](https://github.com/christophehurpeau/pob/issues/1227)) ([9254203](https://github.com/christophehurpeau/pob/commit/9254203e2beea02e8d2dc7b5c1f92fe041f5202b))
+
+
+
+
+
 ## [6.17.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.17.0...pob-dependencies@6.17.1) (2022-02-20)
 
 **Note:** Version bump only for package pob-dependencies

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.12.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.11.0...@pob/root@6.12.0) (2022-03-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v12.3.5 ([#1228](https://github.com/christophehurpeau/pob/issues/1228)) ([177259b](https://github.com/christophehurpeau/pob/commit/177259bf9fdbce0e2c38036dfe94c501c5b18842))
+
+
+### Features
+
+* update actions/checkout ([b8abb40](https://github.com/christophehurpeau/pob/commit/b8abb40cfecaeceda0998246be17c7ef35f05d32))
+* update yarn to 3.2.0 ([3066268](https://github.com/christophehurpeau/pob/commit/3066268b13a658e52d3d1458ec386462ef8f401a))
+
+
+
+
+
 # [6.11.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.10.0...@pob/root@6.11.0) (2022-02-20)
 
 

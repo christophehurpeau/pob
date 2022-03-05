@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.4.0](https://github.com/christophehurpeau/pob/compare/pob@10.3.1...pob@10.4.0) (2022-03-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @yarnpkg/parsers to v2.5.0 ([#1216](https://github.com/christophehurpeau/pob/issues/1216)) ([87cfb68](https://github.com/christophehurpeau/pob/commit/87cfb68046d184a30c0e5ede696dd4d74a7c7382))
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.10.0 ([#1223](https://github.com/christophehurpeau/pob/issues/1223)) ([a0bec26](https://github.com/christophehurpeau/pob/commit/a0bec26c62a46771458e061add0f008dcd5e2681))
+* update actions/checkout ([b8abb40](https://github.com/christophehurpeau/pob/commit/b8abb40cfecaeceda0998246be17c7ef35f05d32))
+
+
+
+
+
 ## [10.3.1](https://github.com/christophehurpeau/pob/compare/pob@10.3.0...pob@10.3.1) (2022-02-20)
 
 
