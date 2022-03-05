@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.5.0](https://github.com/christophehurpeau/pob/compare/pob@10.4.1...pob@10.5.0) (2022-03-05)
+
+
+### Features
+
+* update actions/setup-node@v3 ([2ab3475](https://github.com/christophehurpeau/pob/commit/2ab3475da500ae3aaee0d9969eb7bb9bc207a8d0))
+
+
+
+
+
 ## [10.4.1](https://github.com/christophehurpeau/pob/compare/pob@10.4.0...pob@10.4.1) (2022-03-05)
 
 
