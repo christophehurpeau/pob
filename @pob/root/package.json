@@ -51,7 +51,7 @@
     "@pob/pretty-pkg": "^4.0.1",
     "husky": "^7.0.0",
     "json5": "^2.2.0",
-    "lint-staged": "12.3.4",
+    "lint-staged": "12.3.5",
     "pob-dependencies": "6.17.1",
     "prettier": "2.5.1",
     "repository-check-dirty": "^4.0.0",
