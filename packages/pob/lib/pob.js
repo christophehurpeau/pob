@@ -7,6 +7,7 @@ import argv from 'minimist-argv';
 import yeoman from 'yeoman-environment';
 import PobAppGenerator from './generators/app/PobAppGenerator.js';
 import AppNextjsGenerator from './generators/app/nextjs/AppNextjsGenerator.js';
+import AppRemixGenerator from './generators/app/remix/AppRemixGenerator.js';
 import CommonBabelGenerator from './generators/common/babel/CommonBabelGenerator.js';
 import CommonLintGenerator from './generators/common/format-lint/CommonLintGenerator.js';
 import CommonHuskyGenerator from './generators/common/husky/CommonHuskyGenerator.js';
@@ -83,6 +84,11 @@ env.registerStub(
   AppNextjsGenerator,
   'pob:app:nextjs',
   `${__dirname}/generators/app/nextjs/AppNextjsGenerator.js`,
+);
+env.registerStub(
+  AppRemixGenerator,
+  'pob:app:remix',
+  `${__dirname}/generators/app/nextjs/AppRemixGenerator.js`,
 );
 env.registerStub(
   CommonBabelGenerator,

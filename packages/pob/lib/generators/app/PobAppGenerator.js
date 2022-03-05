@@ -5,8 +5,8 @@ import inNpmLerna from '../../utils/inNpmLerna.js';
 import * as packageUtils from '../../utils/package.js';
 import { appIgnorePaths } from './ignorePaths.js';
 
-const appsWithTypescript = ['alp', 'next.js', 'pobpack'];
-const appsWithBrowser = ['alp', 'next.js'];
+const appsWithTypescript = ['alp', 'next.js', 'remix', 'pobpack'];
+const appsWithBrowser = ['alp', 'next.js', 'remix'];
 
 export default class PobAppGenerator extends Generator {
   constructor(args, opts) {
@@ -67,7 +67,15 @@ export default class PobAppGenerator extends Generator {
         name: 'type',
         message: 'What kind of app is this ?',
         default: (config && config.type) || 'alp',
-        choices: ['alp', 'pobpack', 'next.js', 'node', 'alp-node', 'other'],
+        choices: [
+          'alp',
+          'pobpack',
+          'next.js',
+          'remix',
+          'node',
+          'alp-node',
+          'other',
+        ],
       },
       {
         type: 'confirm',
@@ -154,44 +162,46 @@ export default class PobAppGenerator extends Generator {
         ) {
           return './src';
         }
-        // if (this.appConfig.type === 'next.js') return '.';
+        if (this.appConfig.type === 'remix') return '.';
         return '';
       })(),
     });
 
     this.composeWith('pob:common:remove-old-dependencies');
 
-    this.composeWith('pob:common:testing', {
-      enable: this.appConfig.testing,
-      testing: this.appConfig.testing,
-      typescript: babel,
-      documentation: false,
-      codecov: this.appConfig.codecov,
-      ci: this.appConfig.ci,
-      packageManager: this.options.packageManager,
-      isApp: true,
-    });
+    if (this.appConfig.type !== 'remix') {
+      this.composeWith('pob:common:testing', {
+        enable: this.appConfig.testing,
+        testing: this.appConfig.testing,
+        typescript: babel,
+        documentation: false,
+        codecov: this.appConfig.codecov,
+        ci: this.appConfig.ci,
+        packageManager: this.options.packageManager,
+        isApp: true,
+      });
 
-    this.composeWith('pob:common:format-lint', {
-      documentation: false,
-      testing: this.appConfig.testing,
-      babel,
-      node,
-      browser,
-      // nextjs now supports src rootAsSrc: this.appConfig.type === 'next.js',
-      enableSrcResolver: true,
-      packageManager: this.options.packageManager,
-      yarnNodeLinker: this.options.yarnNodeLinker,
-      ignorePaths: ignorePaths.join('\n'),
-      buildDirectory: 'build',
-    });
+      this.composeWith('pob:common:format-lint', {
+        documentation: false,
+        testing: this.appConfig.testing,
+        babel,
+        node,
+        browser,
+        // nextjs now supports src rootAsSrc: this.appConfig.type === 'next.js',
+        enableSrcResolver: true,
+        packageManager: this.options.packageManager,
+        yarnNodeLinker: this.options.yarnNodeLinker,
+        ignorePaths: ignorePaths.join('\n'),
+        buildDirectory: 'build',
+      });
 
-    this.composeWith('pob:common:release', {
-      enable: !inLerna && this.appConfig.testing && this.appConfig.ci,
-      withBabel: babel,
-      documentation: false,
-      updateOnly: this.options.updateOnly,
-    });
+      this.composeWith('pob:common:release', {
+        enable: !inLerna && this.appConfig.testing && this.appConfig.ci,
+        withBabel: babel,
+        documentation: false,
+        updateOnly: this.options.updateOnly,
+      });
+    }
 
     this.composeWith('pob:core:vscode', {
       root: !inLerna,
@@ -223,6 +233,9 @@ export default class PobAppGenerator extends Generator {
         this.composeWith('pob:app:nextjs', {
           export: this.appConfig.export,
         });
+        break;
+      case 'remix':
+        this.composeWith('pob:app:remix', {});
         break;
     }
 
