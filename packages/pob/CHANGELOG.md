@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.4.1](https://github.com/christophehurpeau/pob/compare/pob@10.4.0...pob@10.4.1) (2022-03-05)
+
+
+### Bug Fixes
+
+* alp-rollup-plugin-config in devDependencies ([40e6a09](https://github.com/christophehurpeau/pob/commit/40e6a09a8bb9a78412a75834635c813bf377f756))
+
+
+
+
+
 # [10.4.0](https://github.com/christophehurpeau/pob/compare/pob@10.3.1...pob@10.4.0) (2022-03-05)
 
 
