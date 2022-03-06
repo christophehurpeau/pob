@@ -59,7 +59,7 @@
     "rollup": "2.69.2",
     "semver": "7.3.5",
     "standard-version": "9.3.2",
-    "typedoc": "0.22.12",
+    "typedoc": "0.22.13",
     "typescript": "4.5.5"
   }
 }
