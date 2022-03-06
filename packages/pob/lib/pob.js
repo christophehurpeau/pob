@@ -218,7 +218,9 @@ env.registerStub(
 
 const projectPkg = readJson(path.resolve('./package.json'));
 let monorepo =
-  argv._[0] === 'lerna' || argv._[0] === 'monorepo' || !!projectPkg.workspaces;
+  argv._[0] === 'lerna' ||
+  argv._[0] === 'monorepo' ||
+  !!(projectPkg && projectPkg.workspaces);
 const action = monorepo ? argv._[1] : argv._[0];
 
 if (action === 'add') {
