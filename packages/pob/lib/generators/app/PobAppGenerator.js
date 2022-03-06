@@ -1,7 +1,6 @@
 import { execSync } from 'child_process';
 import Generator from 'yeoman-generator';
 import inLerna from '../../utils/inLerna.js';
-import inNpmLerna from '../../utils/inNpmLerna.js';
 import * as packageUtils from '../../utils/package.js';
 import { appIgnorePaths } from './ignorePaths.js';
 
@@ -250,10 +249,11 @@ export default class PobAppGenerator extends Generator {
     // Re-read the content at this point because a composed generator might modify it.
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
-    if (inNpmLerna) {
-      if (!pkg.engines) pkg.engines = {};
-      pkg.engines.yarn = '< 0.0.0';
-    } else if (pkg.engines) {
+    // if (isNpm) {
+    //   if (!pkg.engines) pkg.engines = {};
+    //   pkg.engines.yarn = '< 0.0.0';
+    // } else
+    if (pkg.engines) {
       delete pkg.engines.yarn;
     }
 

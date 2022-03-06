@@ -23,7 +23,7 @@ const getInLernaThings = () => {
 
   return {
     rootMonorepoPkg,
-    lernaJsonPath,
+    lernaJsonPath: lernaJsonPath || path.resolve('lerna.json'),
     rootPath: rootMonorepo,
     root: rootMonorepo === cwd,
     rootPackageManager:
@@ -44,6 +44,9 @@ const getInLernaThings = () => {
   };
 };
 
-export default !(rootMonorepoPkg && (rootMonorepoPkg.lerna || !!lernaJsonPath))
+export default !(
+  rootMonorepoPkg &&
+  (rootMonorepoPkg.workspaces || rootMonorepoPkg.lerna || !!lernaJsonPath)
+)
   ? false
   : getInLernaThings();
