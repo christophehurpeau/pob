@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.6.0](https://github.com/christophehurpeau/pob/compare/pob@10.5.0...pob@10.6.0) (2022-03-09)
+
+
+### Bug Fixes
+
+* autodetect monorepo ([6057838](https://github.com/christophehurpeau/pob/commit/60578383b053635808473aa165234b13747be4bf))
+* remove inNpmLerna ([154ba42](https://github.com/christophehurpeau/pob/commit/154ba4248c1f59c0d37967dee8b5aa3df91928d1))
+* when projectPkg doesnt exists ([12598fe](https://github.com/christophehurpeau/pob/commit/12598fe8079ab5f577bf1299ae12ef29c57f6036))
+
+
+### Features
+
+* add remix app ([104756a](https://github.com/christophehurpeau/pob/commit/104756a3dce93e23b1fc48825425903d9763e550))
+
+
+
+
+
 # [10.5.0](https://github.com/christophehurpeau/pob/compare/pob@10.4.1...pob@10.5.0) (2022-03-05)
 
 

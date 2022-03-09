@@ -9,21 +9,21 @@ interface Dependencies {
   '@pob/eslint-config-typescript-react': '49.0.1';
   '@pob/lerna-light': '5.1.0';
   '@pob/pretty-pkg': '^4.0.1';
-  '@pob/root': '6.11.0';
+  '@pob/root': '6.12.0';
   '@types/jest': '27.4.1';
   'alp-rollup-plugin-config': '1.0.2';
   'babel-preset-modern-browsers': '15.0.2';
   eslint: '8.10.0';
   jest: '27.5.1';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '32.2.0';
+  'pob-babel': '32.3.0';
   prettier: '2.5.1';
   'repository-check-dirty': '^4.0.0';
-  rollup: '2.69.1';
+  rollup: '2.70.0';
   semver: '7.3.5';
   'standard-version': '9.3.2';
-  typedoc: '0.22.12';
-  typescript: '4.5.5';
+  typedoc: '0.22.13';
+  typescript: '4.6.2';
 }
 
 declare const dependencies: Dependencies;
