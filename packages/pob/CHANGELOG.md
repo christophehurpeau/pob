@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.7.0](https://github.com/christophehurpeau/pob/compare/pob@10.6.0...pob@10.7.0) (2022-03-13)
+
+
+### Bug Fixes
+
+* **pob:** update option in monorepo ([ddb2129](https://github.com/christophehurpeau/pob/commit/ddb21299e99ae7e1044cbb9f480a94f94a6bcd7d))
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.11.0 ([#1234](https://github.com/christophehurpeau/pob/issues/1234)) ([4f41e09](https://github.com/christophehurpeau/pob/commit/4f41e094c9f9e3cade7c72347a50477617b220d4))
+
+
+
+
+
 # [10.6.0](https://github.com/christophehurpeau/pob/compare/pob@10.5.0...pob@10.6.0) (2022-03-09)
 
 

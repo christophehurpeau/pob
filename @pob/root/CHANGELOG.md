@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.13.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.12.1...@pob/root@6.13.0) (2022-03-13)
+
+
+### Features
+
+* run yarn run checks when changing package.json if exists ([c9c9b82](https://github.com/christophehurpeau/pob/commit/c9c9b82eb50ba0c205e63efee46c826eb950091e))
+
+
+
+
+
 ## [6.12.1](https://github.com/christophehurpeau/pob/compare/@pob/root@6.12.0...@pob/root@6.12.1) (2022-03-09)
 
 **Note:** Version bump only for package @pob/root
