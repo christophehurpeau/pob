@@ -58,6 +58,7 @@ module.exports = function createLintStagedConfig() {
 
       return [
         ...installAndDedupe,
+        pkg.scripts?.checks ? 'yarn run checks' : undefined,
         packagejsonFilenames.length === 0
           ? undefined
           : `pretty-pkg "${packagejsonFilenames.join('" "')}"`,
