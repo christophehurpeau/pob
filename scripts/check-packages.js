@@ -3,7 +3,14 @@ import { createCheckPackageWithWorkspaces } from 'check-package-dependencies';
 createCheckPackageWithWorkspaces()
   .checkRecommended({
     isLibrary: () => true,
-    directDuplicateDependenciesOnlyWarnsFor: ['semver'],
+    onlyWarnsForInMonorepoPackagesDependencies: {
+      'pob-babel': {
+        '*': { duplicateDirectDependency: ['semver'] },
+      },
+      'pob-dependencies': {
+        '*': { duplicateDirectDependency: ['semver'] },
+      },
+    },
   })
   .forRoot((rootPackageCheck) => {
     return rootPackageCheck.checkExactVersions();
