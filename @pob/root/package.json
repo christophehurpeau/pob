@@ -53,7 +53,7 @@
     "json5": "^2.2.0",
     "lint-staged": "12.3.5",
     "pob-dependencies": "6.20.0",
-    "prettier": "2.5.1",
+    "prettier": "2.6.0",
     "repository-check-dirty": "^4.0.0",
     "semver": "^7.1.2",
     "which-pm-runs": "1.1.0"
