@@ -2801,7 +2801,7 @@ __metadata:
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
     pob-dependencies: 6.17.0
-    prettier: 2.5.1
+    prettier: 2.6.0
   languageName: unknown
   linkType: soft
 
@@ -2816,7 +2816,7 @@ __metadata:
     json5: ^2.2.0
     lint-staged: 12.3.5
     pob-dependencies: 6.20.0
-    prettier: 2.5.1
+    prettier: 2.6.0
     repository-check-dirty: ^4.0.0
     semver: ^7.1.2
     which-pm-runs: 1.1.0
@@ -10112,7 +10112,7 @@ __metadata:
     jest: 27.5.1
     jest-junit-reporter: 1.1.0
     pob-babel: 32.4.0
-    prettier: 2.5.1
+    prettier: 2.6.0
     repository-check-dirty: ^4.0.0
     rollup: 2.70.1
     semver: 7.3.5
@@ -10142,7 +10142,7 @@ __metadata:
     eslint: 8.11.0
     jest: 27.5.1
     pob-babel: "workspace:*"
-    prettier: 2.5.1
+    prettier: 2.6.0
     react: 17.0.2
     typescript: 4.6.2
   languageName: unknown
@@ -10175,7 +10175,7 @@ __metadata:
     minimist-argv: ^1.1.0
     parse-author: ^2.0.0
     pob-dependencies: 6.17.0
-    prettier: 2.5.1
+    prettier: 2.6.0
     semver: ^7.3.4
     yeoman-environment: ^3.5.1
     yeoman-generator: ^5.4.0
@@ -10210,12 +10210,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.5.1, prettier@npm:^2.1.2":
-  version: 2.5.1
-  resolution: "prettier@npm:2.5.1"
+"prettier@npm:2.6.0, prettier@npm:^2.1.2":
+  version: 2.6.0
+  resolution: "prettier@npm:2.6.0"
   bin:
     prettier: bin-prettier.js
-  checksum: 21b9408476ea1c544b0e45d51ceb94a84789ff92095abb710942d780c862d0daebdb29972d47f6b4d0f7ebbfb0ffbf56cc2cfa3e3e9d1cca54864af185b15b66
+  checksum: 3e527ad62279676778a8404d18174d7ca2365ada4caba6eebbcdd9907d1187afd3bc6ade5b4e5f5d4549bb9fb71e45ca8930d71500017635524f8fc05bc52e93
   languageName: node
   linkType: hard
 
