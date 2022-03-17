@@ -11,6 +11,7 @@ import replace from '@rollup/plugin-replace';
 import babelPluginModuleResolver from 'babel-plugin-module-resolver';
 import babelPresetEnv from 'babel-preset-pob-env';
 import configExternalDependencies from 'rollup-config-external-dependencies';
+import semver from 'semver';
 import ignoreImport from './rollup-plugin-ignore-browser-only-imports.js';
 
 const browserOnlyExtensions = ['.scss', '.css'];
@@ -55,6 +56,12 @@ export default function createRollupConfig({
         (pkg.dependencies && pkg.dependencies.react) ||
           (pkg.peerDependencies && pkg.peerDependencies.react),
       ));
+
+  const babelRuntimeVersion =
+    pkg.dependencies && pkg.dependencies['@babel/runtime'];
+  const minBabelRuntimeVersion = babelRuntimeVersion
+    ? semver.minVersion(babelRuntimeVersion).raw
+    : undefined;
 
   const nodeVersion = (version) => {
     switch (String(version)) {
@@ -180,6 +187,7 @@ export default function createRollupConfig({
                 corejs: false,
                 useESModules: 'auto',
                 useHelpers: true,
+                version: minBabelRuntimeVersion,
               },
             ],
             [
