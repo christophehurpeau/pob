@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.8.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.7.6...@pob/renovate-config@5.8.0) (2022-03-24)
+
+
+### Features
+
+* **deps:** update dependency prettier to v2.6.0 ([#1240](https://github.com/christophehurpeau/pob/issues/1240)) ([acfaca1](https://github.com/christophehurpeau/pob/commit/acfaca1645a0eeb5e842aa55ae37970da98310ff))
+
+
+
+
+
 ## [5.7.6](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.7.5...@pob/renovate-config@5.7.6) (2022-02-20)
 
 **Note:** Version bump only for package @pob/renovate-config

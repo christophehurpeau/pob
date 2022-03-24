@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.14.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.13.0...@pob/root@6.14.0) (2022-03-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @commitlint/cli to v16.2.3 ([#1239](https://github.com/christophehurpeau/pob/issues/1239)) ([1f8085c](https://github.com/christophehurpeau/pob/commit/1f8085c7bf6583ff4ec16dc8447d31e1d0502749))
+* **deps:** update dependency lint-staged to v12.3.6 ([#1241](https://github.com/christophehurpeau/pob/issues/1241)) ([81da5c2](https://github.com/christophehurpeau/pob/commit/81da5c267fa079b7e331509e4861ce6c9b0c1ca5))
+* **deps:** update dependency lint-staged to v12.3.7 ([#1242](https://github.com/christophehurpeau/pob/issues/1242)) ([b2b1062](https://github.com/christophehurpeau/pob/commit/b2b1062d0ebb6a52065826048cb15c7079497438))
+
+
+### Features
+
+* **deps:** update dependency prettier to v2.6.0 ([#1240](https://github.com/christophehurpeau/pob/issues/1240)) ([acfaca1](https://github.com/christophehurpeau/pob/commit/acfaca1645a0eeb5e842aa55ae37970da98310ff))
+
+
+
+
+
 # [6.13.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.12.1...@pob/root@6.13.0) (2022-03-13)
 
 

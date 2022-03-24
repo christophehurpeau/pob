@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.21.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.20.0...pob-dependencies@6.21.0) (2022-03-24)
+
+
+### Features
+
+* **deps:** update dependency prettier to v2.6.0 ([#1240](https://github.com/christophehurpeau/pob/issues/1240)) ([acfaca1](https://github.com/christophehurpeau/pob/commit/acfaca1645a0eeb5e842aa55ae37970da98310ff))
+* **deps:** update dependency rollup to v2.70.1 ([#1237](https://github.com/christophehurpeau/pob/issues/1237)) ([725ddd2](https://github.com/christophehurpeau/pob/commit/725ddd298e78332e169367ed91a82b65707d3b41))
+
+
+
+
+
 # [6.20.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.19.0...pob-dependencies@6.20.0) (2022-03-13)
 
 

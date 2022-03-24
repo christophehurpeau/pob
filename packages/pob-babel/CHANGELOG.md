@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [32.5.0](https://github.com/christophehurpeau/pob/compare/pob-babel@32.4.0...pob-babel@32.5.0) (2022-03-24)
+
+
+### Bug Fixes
+
+* **pob-babel:** make sure @babel/plugin-transform-runtime use right version ([4fd2c39](https://github.com/christophehurpeau/pob/commit/4fd2c395913ba29f0332f5532d26daf7bcbd1665))
+
+
+### Features
+
+* **deps:** update dependency rollup to v2.70.1 ([#1237](https://github.com/christophehurpeau/pob/issues/1237)) ([725ddd2](https://github.com/christophehurpeau/pob/commit/725ddd298e78332e169367ed91a82b65707d3b41))
+
+
+
+
+
 # [32.4.0](https://github.com/christophehurpeau/pob/compare/pob-babel@32.3.0...pob-babel@32.4.0) (2022-03-09)
 
 
