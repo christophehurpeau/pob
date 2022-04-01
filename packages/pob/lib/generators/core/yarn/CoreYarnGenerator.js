@@ -37,10 +37,9 @@ export default class CoreYarnGenerator extends Generator {
       if (!fs.existsSync('.yarnrc.yml')) {
         // yarn 2 not yet installed
         // https://yarnpkg.com/getting-started/install
-        this.spawnCommandSync('yarn', ['set', 'version', 'berry']);
-        this.spawnCommandSync('yarn', ['set', 'version', 'latest']);
+        this.spawnCommandSync('yarn', ['set', 'version', 'stable']);
       } else {
-        this.spawnCommandSync('yarn', ['set', 'version', 'latest']);
+        this.spawnCommandSync('yarn', ['set', 'version', 'stable']);
         ensureJsonFileFormatted(this.destinationPath('package.json'));
       }
     }
