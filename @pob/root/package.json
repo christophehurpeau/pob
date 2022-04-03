@@ -1,6 +1,6 @@
 {
   "name": "@pob/root",
-  "version": "6.14.0",
+  "version": "6.14.1",
   "description": "root package",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -52,7 +52,7 @@
     "husky": "^7.0.0",
     "json5": "^2.2.0",
     "lint-staged": "12.3.7",
-    "pob-dependencies": "6.21.0",
+    "pob-dependencies": "6.22.0",
     "prettier": "2.6.2",
     "repository-check-dirty": "^4.0.0",
     "semver": "^7.1.2",

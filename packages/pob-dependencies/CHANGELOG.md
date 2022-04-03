@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.22.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.21.0...pob-dependencies@6.22.0) (2022-04-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v2.6.1 ([#1246](https://github.com/christophehurpeau/pob/issues/1246)) ([5eeeee8](https://github.com/christophehurpeau/pob/commit/5eeeee8f08df70077bf38172242365a797732c33))
+* **deps:** update dependency prettier to v2.6.2 ([#1249](https://github.com/christophehurpeau/pob/issues/1249)) ([42f4d13](https://github.com/christophehurpeau/pob/commit/42f4d135b5275185a5f5907f5336a40ebc3148b3))
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.12.0 ([#1247](https://github.com/christophehurpeau/pob/issues/1247)) ([326ee2a](https://github.com/christophehurpeau/pob/commit/326ee2a708ece9249fbeeefd8e8e3a382698d49b))
+
+
+
+
+
 # [6.21.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.20.0...pob-dependencies@6.21.0) (2022-03-24)
 
 
