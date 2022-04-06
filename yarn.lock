@@ -2667,18 +2667,18 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/eslint-config-typescript-react@npm:49.0.1":
-  version: 49.0.1
-  resolution: "@pob/eslint-config-typescript-react@npm:49.0.1"
+"@pob/eslint-config-typescript-react@npm:49.2.0":
+  version: 49.2.0
+  resolution: "@pob/eslint-config-typescript-react@npm:49.2.0"
   dependencies:
-    "@pob/eslint-config": 49.0.0
+    "@pob/eslint-config": 49.1.0
     eslint-config-airbnb: ^19.0.4
     eslint-plugin-import: ^2.25.3
     eslint-plugin-jsx-a11y: ^6.5.1
     eslint-plugin-react: ^7.28.0
     eslint-plugin-react-hooks: ^4.3.0
   peerDependencies:
-    eslint: ^8.4.1
+    eslint: ^8.11.0
     eslint-plugin-import: ^2.25.3
     eslint-plugin-jsx-a11y: ^6.5.1
     eslint-plugin-react: ^7.28.0
@@ -2692,15 +2692,15 @@ __metadata:
       optional: true
     eslint-plugin-react-hooks:
       optional: true
-  checksum: 3c2f9e418d0c0f1aac8cdcf87e7eedd2b704de90c0e6f35565274758d4aa6d001fe909a07c23e58be039eaafd3f18420b379e48d7a8939918d3d24b722562840
+  checksum: d2cb93f200835b9164de5c3daf7b2dc6b2a5427e23a32a259ad133b1da2033e9a0166557256d1abf5f14556125c0c0bc9f5b3de28541b64849ed70e7cb5eda03
   languageName: node
   linkType: hard
 
-"@pob/eslint-config-typescript@npm:49.0.0":
-  version: 49.0.0
-  resolution: "@pob/eslint-config-typescript@npm:49.0.0"
+"@pob/eslint-config-typescript@npm:49.2.0":
+  version: 49.2.0
+  resolution: "@pob/eslint-config-typescript@npm:49.2.0"
   dependencies:
-    "@pob/eslint-config": 49.0.0
+    "@pob/eslint-config": 49.1.0
     "@pob/use-eslint-plugin": 49.0.0
     "@typescript-eslint/eslint-plugin": ^5.3.1
     "@typescript-eslint/parser": ^5.3.1
@@ -2710,7 +2710,7 @@ __metadata:
   peerDependencies:
     "@typescript-eslint/eslint-plugin": ^5.3.1
     "@typescript-eslint/parser": ^5.3.1
-    eslint: ^8.4.1
+    eslint: ^8.11.0
     eslint-plugin-import: ^2.25.3
     eslint-plugin-node: ^11.1.0
   peerDependenciesMeta:
@@ -2722,25 +2722,25 @@ __metadata:
       optional: true
     eslint-plugin-node:
       optional: true
-  checksum: d63b1e5f9545a8093afa4e09ed560113700ad0893d70c985436d2bac9e3e11873c3c04bb7fa0186485e9dc384b4a859e654b40a8b69691ed5b7ab74297298867
+  checksum: 83ff8e9e60e7b88283000ac1adcf1565b74d5af58cb2f6751fbe415f0cfdb7e6084b4e4d46df5de2b9bb820945763d41ad57b2fe737c6fc1b4978b9a5efb7cab
   languageName: node
   linkType: hard
 
-"@pob/eslint-config@npm:49.0.0":
-  version: 49.0.0
-  resolution: "@pob/eslint-config@npm:49.0.0"
+"@pob/eslint-config@npm:49.1.0":
+  version: 49.1.0
+  resolution: "@pob/eslint-config@npm:49.1.0"
   dependencies:
     "@pob/use-eslint-plugin": 49.0.0
     eslint-config-airbnb-base: ^15.0.0
     eslint-config-prettier: ^8.3.0
     eslint-plugin-import: ^2.25.3
     eslint-plugin-node: ^11.1.0
-    eslint-plugin-unicorn: ^40.1.0
+    eslint-plugin-unicorn: ^41.0.0
   peerDependencies:
-    eslint: ^8.4.1
+    eslint: ^8.11.0
     eslint-plugin-import: ^2.25.3
     eslint-plugin-node: ^11.1.0
-    eslint-plugin-unicorn: ^40.1.0
+    eslint-plugin-unicorn: ^41.0.0
   peerDependenciesMeta:
     eslint-plugin-import:
       optional: true
@@ -2748,7 +2748,7 @@ __metadata:
       optional: true
     eslint-plugin-unicorn:
       optional: true
-  checksum: dc9e5f53d0ff737c0344a106c43ca69597c0fa798096f9cb3f76b7ca1d27502ef5589cc7bbd2e4494dfcd97c7cc9f09ea66605ea78e91a29dd9d5e9e3e518190
+  checksum: 1be061e43423e550160f944e85fc42b69a5b2dc5613a96b5d20e264b0a11ea81fd8c0e6219f0004636bae8eeefefbdee7b3f8c90c0b5e26c2867be5195b078a4
   languageName: node
   linkType: hard
 
@@ -5776,9 +5776,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint-plugin-unicorn@npm:^40.1.0":
-  version: 40.1.0
-  resolution: "eslint-plugin-unicorn@npm:40.1.0"
+"eslint-plugin-unicorn@npm:^41.0.0":
+  version: 41.0.1
+  resolution: "eslint-plugin-unicorn@npm:41.0.1"
   dependencies:
     "@babel/helper-validator-identifier": ^7.15.7
     ci-info: ^3.3.0
@@ -5795,8 +5795,8 @@ __metadata:
     semver: ^7.3.5
     strip-indent: ^3.0.0
   peerDependencies:
-    eslint: ">=7.32.0"
-  checksum: b15ffd075080e018da3e5fd2eee059f96fa9575d0218e0db28cc0c5584bc68600e20863f09991fe0a0cc35bf0fe96553cc8bcb844105f212c882808927cf1cb4
+    eslint: ">=8.8.0"
+  checksum: 90c9dd93b57ec2cdd650168364b4e2220e2c72c1ffc8ea43cd1be2dabadc7821ec5077656f44fa4622e284caa39ca497058e1dbe609f530d392bdb2da3d73b70
   languageName: node
   linkType: hard
 
@@ -10097,9 +10097,9 @@ __metadata:
     "@babel/preset-react": 7.16.7
     "@babel/runtime": 7.17.9
     "@pob/commitlint-config": 4.1.0
-    "@pob/eslint-config": 49.0.0
-    "@pob/eslint-config-typescript": 49.0.0
-    "@pob/eslint-config-typescript-react": 49.0.1
+    "@pob/eslint-config": 49.1.0
+    "@pob/eslint-config-typescript": 49.2.0
+    "@pob/eslint-config-typescript-react": 49.2.0
     "@pob/lerna-light": 5.1.0
     "@pob/pretty-pkg": ^4.0.1
     "@pob/root": 6.14.1
@@ -10132,7 +10132,7 @@ __metadata:
   resolution: "pob-monorepo@workspace:."
   dependencies:
     "@babel/core": 7.17.9
-    "@pob/eslint-config": 49.0.0
+    "@pob/eslint-config": 49.1.0
     "@pob/lerna-light": "workspace:*"
     "@pob/root": "workspace:*"
     "@types/jest": 27.4.1
@@ -10152,9 +10152,9 @@ __metadata:
   dependencies:
     "@lerna/package-graph": ^4.0.0
     "@lerna/project": ^4.0.0
-    "@pob/eslint-config": 49.0.0
-    "@pob/eslint-config-typescript": 49.0.0
-    "@pob/eslint-config-typescript-react": 49.0.1
+    "@pob/eslint-config": 49.1.0
+    "@pob/eslint-config-typescript": 49.2.0
+    "@pob/eslint-config-typescript-react": 49.2.0
     "@pob/sort-eslint-config": ^3.0.1
     "@pob/sort-object": ^4.0.1
     "@pob/sort-pkg": ^4.0.1
