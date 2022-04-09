@@ -44,7 +44,7 @@ const printUsage = () => {
 
 const readJson = (filepath) => {
   try {
-    return JSON.parse(readFileSync(filepath, 'utf-8'));
+    return JSON.parse(readFileSync(filepath, 'utf8'));
   } catch {
     return null;
   }

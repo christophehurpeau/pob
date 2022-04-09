@@ -30,9 +30,5 @@ module.exports = function installScripts({ pkg, pm }) {
     addPobRootPostinstallInScript(pkg, 'prepare');
   }
 
-  fs.writeFileSync(
-    'package.json',
-    `${JSON.stringify(pkg, null, 2)}\n`,
-    'utf-8',
-  );
+  fs.writeFileSync('package.json', `${JSON.stringify(pkg, null, 2)}\n`, 'utf8');
 };
