@@ -2764,7 +2764,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/pretty-eslint-config@3.0.2, @pob/pretty-eslint-config@workspace:@pob/pretty-eslint-config":
+"@pob/pretty-eslint-config@3.1.0, @pob/pretty-eslint-config@workspace:@pob/pretty-eslint-config":
   version: 0.0.0-use.local
   resolution: "@pob/pretty-eslint-config@workspace:@pob/pretty-eslint-config"
   dependencies:
@@ -2775,7 +2775,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/pretty-pkg@^4.0.1, @pob/pretty-pkg@workspace:@pob/pretty-pkg":
+"@pob/pretty-pkg@4.1.0, @pob/pretty-pkg@workspace:@pob/pretty-pkg":
   version: 0.0.0-use.local
   resolution: "@pob/pretty-pkg@workspace:@pob/pretty-pkg"
   dependencies:
@@ -2795,19 +2795,19 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/root@6.14.1, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@6.15.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
     "@commitlint/cli": 16.2.3
-    "@pob/pretty-eslint-config": 3.0.2
-    "@pob/pretty-pkg": ^4.0.1
+    "@pob/pretty-eslint-config": 3.1.0
+    "@pob/pretty-pkg": 4.1.0
     husky: ^7.0.0
     json5: ^2.2.0
     lint-staged: 12.3.7
-    pob-dependencies: 6.22.0
+    pob-dependencies: 6.23.0
     prettier: 2.6.2
-    repository-check-dirty: ^4.0.0
+    repository-check-dirty: 4.1.0
     semver: ^7.1.2
     which-pm-runs: 1.1.0
   bin:
@@ -4090,7 +4090,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-pob-env@7.1.11, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
+"babel-preset-pob-env@7.1.12, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
   version: 0.0.0-use.local
   resolution: "babel-preset-pob-env@workspace:packages/babel-preset-pob-env"
   dependencies:
@@ -6009,7 +6009,7 @@ __metadata:
   resolution: "example-typescript-lib@workspace:pob-examples/typescript-lib"
   dependencies:
     "@babel/core": 7.17.9
-    pob-babel: 32.5.1
+    pob-babel: 32.5.2
     typescript: 4.6.3
   languageName: unknown
   linkType: soft
@@ -10083,7 +10083,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@32.5.1, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
+"pob-babel@32.5.2, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -10096,7 +10096,7 @@ __metadata:
     "@rollup/plugin-run": 2.1.0
     babel-plugin-module-resolver: ^4.1.0
     babel-preset-modern-browsers: ^15.0.2
-    babel-preset-pob-env: 7.1.11
+    babel-preset-pob-env: 7.1.12
     rollup: 2.70.1
     rollup-config-external-dependencies: ^2.0.0
     semver: ^7.3.4
@@ -10113,7 +10113,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@6.22.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@6.23.0, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -10126,17 +10126,17 @@ __metadata:
     "@pob/eslint-config-typescript": 49.2.1
     "@pob/eslint-config-typescript-react": 49.2.0
     "@pob/lerna-light": 5.1.0
-    "@pob/pretty-pkg": ^4.0.1
-    "@pob/root": 6.14.1
+    "@pob/pretty-pkg": 4.1.0
+    "@pob/root": 6.15.0
     "@types/jest": 27.4.1
     alp-rollup-plugin-config: 1.0.2
     babel-preset-modern-browsers: 15.0.2
     eslint: 8.13.0
     jest: 27.5.1
     jest-junit-reporter: 1.1.0
-    pob-babel: 32.5.1
+    pob-babel: 32.5.2
     prettier: 2.6.2
-    repository-check-dirty: ^4.0.0
+    repository-check-dirty: 4.1.0
     rollup: 2.70.1
     semver: 7.3.6
     standard-version: 9.3.2
@@ -10709,7 +10709,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"repository-check-dirty@^4.0.0, repository-check-dirty@workspace:packages/repository-check-dirty":
+"repository-check-dirty@4.1.0, repository-check-dirty@workspace:packages/repository-check-dirty":
   version: 0.0.0-use.local
   resolution: "repository-check-dirty@workspace:packages/repository-check-dirty"
   bin:

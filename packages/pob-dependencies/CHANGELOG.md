@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.23.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.22.0...pob-dependencies@6.23.0) (2022-04-09)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config ([#1236](https://github.com/christophehurpeau/pob/issues/1236)) ([e3cc1ad](https://github.com/christophehurpeau/pob/commit/e3cc1ad732f162391cdf4df87bc5f65e9c61e347))
+* **deps:** update dependency eslint to v8.13.0 ([#1253](https://github.com/christophehurpeau/pob/issues/1253)) ([8dcb07c](https://github.com/christophehurpeau/pob/commit/8dcb07c46858dd94fc812cc0cd4c45db41bbdf6c))
+* **deps:** update dependency semver to v7.3.6 ([#1251](https://github.com/christophehurpeau/pob/issues/1251)) ([5f97b35](https://github.com/christophehurpeau/pob/commit/5f97b35e0853413f6728d940a6625a4a39750789))
+* **deps:** update dependency typedoc to v0.22.14 ([#1252](https://github.com/christophehurpeau/pob/issues/1252)) ([f20bca5](https://github.com/christophehurpeau/pob/commit/f20bca549ef85695eec27e5dbbbf49e1453b29b0))
+
+
+
+
+
 # [6.22.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.21.0...pob-dependencies@6.22.0) (2022-04-03)
 
 

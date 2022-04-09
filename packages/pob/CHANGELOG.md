@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.10.0](https://github.com/christophehurpeau/pob/compare/pob@10.9.0...pob@10.10.0) (2022-04-09)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config ([#1236](https://github.com/christophehurpeau/pob/issues/1236)) ([e3cc1ad](https://github.com/christophehurpeau/pob/commit/e3cc1ad732f162391cdf4df87bc5f65e9c61e347))
+* **deps:** update dependency eslint to v8.13.0 ([#1253](https://github.com/christophehurpeau/pob/issues/1253)) ([8dcb07c](https://github.com/christophehurpeau/pob/commit/8dcb07c46858dd94fc812cc0cd4c45db41bbdf6c))
+* **pob:** remove dev dependency prettier now it is reexported from @pob/root ([83caec0](https://github.com/christophehurpeau/pob/commit/83caec02203d3afd2e28c5efac4ff73c169803eb))
+
+
+
+
+
 # [10.9.0](https://github.com/christophehurpeau/pob/compare/pob@10.8.0...pob@10.9.0) (2022-04-03)
 
 

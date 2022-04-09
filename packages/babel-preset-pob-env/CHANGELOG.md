@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.12](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@7.1.11...babel-preset-pob-env@7.1.12) (2022-04-09)
+
+**Note:** Version bump only for package babel-preset-pob-env
+
+
+
+
+
 ## [7.1.11](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@7.1.10...babel-preset-pob-env@7.1.11) (2022-03-24)
 
 **Note:** Version bump only for package babel-preset-pob-env

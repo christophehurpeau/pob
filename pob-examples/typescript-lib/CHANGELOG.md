@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.5.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.4.3...example-typescript-lib@0.5.0) (2022-04-09)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config ([#1236](https://github.com/christophehurpeau/pob/issues/1236)) ([e3cc1ad](https://github.com/christophehurpeau/pob/commit/e3cc1ad732f162391cdf4df87bc5f65e9c61e347))
+
+
+
+
+
 ## [0.4.3](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.4.2...example-typescript-lib@0.4.3) (2022-04-03)
 
 **Note:** Version bump only for package example-typescript-lib

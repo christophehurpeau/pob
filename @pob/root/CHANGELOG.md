@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.15.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.14.1...@pob/root@6.15.0) (2022-04-09)
+
+
+### Bug Fixes
+
+* **@pob/root:** add missing shebang ([c8ef5aa](https://github.com/christophehurpeau/pob/commit/c8ef5aa99423c1055c380689dab442a0bbceda9a))
+
+
+### Features
+
+* **deps:** update @pob/eslint-config ([#1236](https://github.com/christophehurpeau/pob/issues/1236)) ([e3cc1ad](https://github.com/christophehurpeau/pob/commit/e3cc1ad732f162391cdf4df87bc5f65e9c61e347))
+* **pob:** reexport prettier ([0ce5dba](https://github.com/christophehurpeau/pob/commit/0ce5dba7d5a8da4bba22ce1e55ff9b4d08962900))
+
+
+
+
+
 ## [6.14.1](https://github.com/christophehurpeau/pob/compare/@pob/root@6.14.0...@pob/root@6.14.1) (2022-04-03)
 
 
