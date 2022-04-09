@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.11.0](https://github.com/christophehurpeau/pob/compare/pob@10.10.0...pob@10.11.0) (2022-04-09)
+
+
+### Features
+
+* update actions/cache to v3 ([f30c138](https://github.com/christophehurpeau/pob/commit/f30c13878d869bdcc9c5f52603d8154f2ba08524))
+
+
+
+
+
 # [10.10.0](https://github.com/christophehurpeau/pob/compare/pob@10.9.0...pob@10.10.0) (2022-04-09)
 
 
