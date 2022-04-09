@@ -30,10 +30,10 @@ export default function prettyPkg(pkg, prettierOptions = pkg.prettier) {
 
 export function writeSync(pkg, path, prettierOptions) {
   const string = prettyPkg(pkg, prettierOptions);
-  fs.writeFileSync(path, string, 'utf-8');
+  fs.writeFileSync(path, string, 'utf8');
 }
 
 export function overrideSync(path, prettierOptions) {
-  const pkg = fs.readFileSync(path, 'utf-8');
+  const pkg = fs.readFileSync(path, 'utf8');
   return writeSync(pkg, path, prettierOptions);
 }

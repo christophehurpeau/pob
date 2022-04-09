@@ -30,10 +30,10 @@ export default function prettyEslintConfig(eslintConfig, prettierOptions) {
 
 export function writeSync(eslintConfig, path, prettierOptions) {
   const string = prettyEslintConfig(eslintConfig, prettierOptions);
-  fs.writeFileSync(path, string, 'utf-8');
+  fs.writeFileSync(path, string, 'utf8');
 }
 
 export function overrideSync(path, prettierOptions) {
-  const eslintConfig = fs.readFileSync(path, 'utf-8');
+  const eslintConfig = fs.readFileSync(path, 'utf8');
   return writeSync(eslintConfig, path, prettierOptions);
 }

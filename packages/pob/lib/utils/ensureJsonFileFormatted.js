@@ -4,7 +4,7 @@ import prettier from 'prettier';
 
 export default function ensureJsonFileFormatted(path) {
   try {
-    let contentJson = fs.readFileSync(path, 'utf-8');
+    let contentJson = fs.readFileSync(path, 'utf8');
     if (path === 'package.json' || path.endsWith('/package.json')) {
       contentJson = JSON.stringify(sortPkg(JSON.parse(contentJson)), null, 2);
     }

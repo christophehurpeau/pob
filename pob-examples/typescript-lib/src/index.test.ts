@@ -12,7 +12,7 @@ describe('dist', () => {
     expect(
       fs.readFileSync(
         './pob-examples/typescript-lib/dist/index-node14.mjs',
-        'utf-8',
+        'utf8',
       ),
     ).toMatchInlineSnapshot(`
       "function simpleLib() {
