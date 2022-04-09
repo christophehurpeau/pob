@@ -225,11 +225,7 @@ export default class CommonLintGenerator extends Generator {
         true,
       );
     } else {
-      packageUtils.addOrRemoveDevDependencies(
-        pkg,
-        (inLerna && inLerna.root) || this.options.monorepo || !globalEslint,
-        ['prettier'],
-      );
+      packageUtils.removeDevDependencies(pkg, ['prettier']);
       packageUtils.addOrRemoveDevDependencies(
         pkg,
         !globalEslint ||
