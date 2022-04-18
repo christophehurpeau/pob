@@ -69,7 +69,7 @@
     "babel-preset-pob-env": "7.1.12",
     "rollup": "2.70.2",
     "rollup-config-external-dependencies": "^2.0.0",
-    "semver": "^7.3.4"
+    "semver": "^7.3.7"
   },
   "devDependencies": {
     "typescript": "4.6.3"
