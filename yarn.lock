@@ -8877,16 +8877,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimist-argv@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "minimist-argv@npm:1.1.0"
-  dependencies:
-    "@types/minimist": ^1.2.0
-    minimist: ^1.2.0
-  checksum: 588b5a2eeb64894b1e42b7491bd446746a55500334adece53e34a19a5876df93dc9cc3ecdd66de98a0007c3ea5cc26a4c553b83da8e66530dbb8897f72e00c93
-  languageName: node
-  linkType: hard
-
 "minimist-options@npm:4.1.0":
   version: 4.1.0
   resolution: "minimist-options@npm:4.1.0"
@@ -8898,7 +8888,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimist@npm:^1.2.0, minimist@npm:^1.2.5":
+"minimist@npm:1.2.6, minimist@npm:^1.2.0, minimist@npm:^1.2.5":
   version: 1.2.6
   resolution: "minimist@npm:1.2.6"
   checksum: d15428cd1e11eb14e1233bcfb88ae07ed7a147de251441d61158619dfb32c4d7e9061d09cab4825fdee18ecd6fce323228c8c47b5ba7cd20af378ca4048fb3fb
@@ -9807,7 +9797,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"parse-author@npm:^2.0.0":
+"parse-author@npm:2.0.0":
   version: 2.0.0
   resolution: "parse-author@npm:2.0.0"
   dependencies:
@@ -10148,13 +10138,13 @@ __metadata:
     lodash.kebabcase: ^4.1.1
     mem-fs: 2.2.1
     mem-fs-editor: 9.4.0
-    minimist-argv: ^1.1.0
-    parse-author: ^2.0.0
+    minimist: 1.2.6
+    parse-author: 2.0.0
     pob-dependencies: 6.17.0
     prettier: 2.6.2
-    semver: ^7.3.7
-    yeoman-environment: ^3.5.1
-    yeoman-generator: ^5.4.0
+    semver: 7.3.7
+    yeoman-environment: 3.5.1
+    yeoman-generator: 5.4.0
   bin:
     pob: ./lib/pob.js
   languageName: unknown
@@ -12686,7 +12676,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"yeoman-environment@npm:^3.5.1":
+"yeoman-environment@npm:3.5.1":
   version: 3.5.1
   resolution: "yeoman-environment@npm:3.5.1"
   dependencies:
@@ -12733,7 +12723,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"yeoman-generator@npm:^5.4.0":
+"yeoman-generator@npm:5.4.0":
   version: 5.4.0
   resolution: "yeoman-generator@npm:5.4.0"
   dependencies:

@@ -3,7 +3,7 @@
 import { spawnSync } from 'child_process';
 import fs, { existsSync, writeFileSync, readFileSync } from 'fs';
 import path from 'path';
-import argv from 'minimist-argv';
+import minimist from 'minimist';
 import yeoman from 'yeoman-environment';
 import PobAppGenerator from './generators/app/PobAppGenerator.js';
 import AppNextjsGenerator from './generators/app/nextjs/AppNextjsGenerator.js';
@@ -53,6 +53,8 @@ const readJson = (filepath) => {
 // const printVersion = () => {
 //   console.log(pkg.version);
 // };
+
+const argv = minimist(process.argv.slice(2));
 
 if (argv.version) {
   // printVersion();
