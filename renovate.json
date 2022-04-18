@@ -5,6 +5,7 @@
   "masterIssueApproval": false,
   "postUpdateOptions": ["yarnDedupeFewer", "yarnDedupeHighest"],
   "labels": [":vertical_traffic_light: automerge"],
+  "upgradeInRange": true,
   "rangeStrategy": "bump",
   "packageRules": [
     {
