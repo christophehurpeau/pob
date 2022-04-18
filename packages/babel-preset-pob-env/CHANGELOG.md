@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@7.1.12...babel-preset-pob-env@8.0.0) (2022-04-18)
+
+
+### Bug Fixes
+
+* use named imports from pob-babel to avoid typescript conflicts ([2efa2ba](https://github.com/christophehurpeau/pob/commit/2efa2bab7e502d8b2b110d996593c2375178d632))
+
+
+### Features
+
+* update babel ([c488783](https://github.com/christophehurpeau/pob/commit/c488783df9e59c93ad85623bee77291c555f804f))
+
+
+### BREAKING CHANGES
+
+* removed global __DEV__, __POB_TARGET__ and __POB_TARGET_VERSION__, use named import from pob-babel instead ; removed replacements option in pob-env preset and legacy replacements
+
+
+
+
+
 ## [7.1.12](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@7.1.11...babel-preset-pob-env@7.1.12) (2022-04-09)
 
 **Note:** Version bump only for package babel-preset-pob-env

@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [33.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@32.5.2...pob-babel@33.0.0) (2022-04-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @rollup/plugin-node-resolve to v13.2.1 ([#1259](https://github.com/christophehurpeau/pob/issues/1259)) ([822815d](https://github.com/christophehurpeau/pob/commit/822815db09e3343938e5d96099dbb36dfa547fab))
+* remove unused @rollup/plugin-replace ([c14fb36](https://github.com/christophehurpeau/pob/commit/c14fb36ab2c1f10f9933e7431aef4851d53d51c6))
+* update semver ([11a8763](https://github.com/christophehurpeau/pob/commit/11a8763b942e0e9fb348249b126ed4c15d20f2cb))
+* use named imports from pob-babel to avoid typescript conflicts ([2efa2ba](https://github.com/christophehurpeau/pob/commit/2efa2bab7e502d8b2b110d996593c2375178d632))
+
+
+### Features
+
+* **deps:** update dependency @rollup/plugin-node-resolve to v13.2.0 ([#1255](https://github.com/christophehurpeau/pob/issues/1255)) ([54575d4](https://github.com/christophehurpeau/pob/commit/54575d4d8b5fc6defe8a65fce15d68bff5905593))
+* **deps:** update dependency rollup to v2.70.2 ([#1257](https://github.com/christophehurpeau/pob/issues/1257)) ([0f26ce3](https://github.com/christophehurpeau/pob/commit/0f26ce3a421431ee77b5e543f900d4342c0ee0fe))
+* update babel ([c488783](https://github.com/christophehurpeau/pob/commit/c488783df9e59c93ad85623bee77291c555f804f))
+
+
+### BREAKING CHANGES
+
+* removed global __DEV__, __POB_TARGET__ and __POB_TARGET_VERSION__, use named import from pob-babel instead ; removed replacements option in pob-env preset and legacy replacements
+
+
+
+
+
 ## [32.5.2](https://github.com/christophehurpeau/pob/compare/pob-babel@32.5.1...pob-babel@32.5.2) (2022-04-09)
 
 **Note:** Version bump only for package pob-babel

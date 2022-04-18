@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.11.1](https://github.com/christophehurpeau/pob/compare/pob@10.11.0...pob@10.11.1) (2022-04-18)
+
+
+### Bug Fixes
+
+* update codecov-action@v3 ([957ddce](https://github.com/christophehurpeau/pob/commit/957ddce5ea0e162739f752a04e96de9b5237a58d))
+* update semver ([11a8763](https://github.com/christophehurpeau/pob/commit/11a8763b942e0e9fb348249b126ed4c15d20f2cb))
+
+
+
+
+
 # [10.11.0](https://github.com/christophehurpeau/pob/compare/pob@10.10.0...pob@10.11.0) (2022-04-09)
 
 

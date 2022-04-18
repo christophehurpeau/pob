@@ -8,21 +8,21 @@ interface Dependencies {
   '@pob/eslint-config-typescript': '49.2.1';
   '@pob/eslint-config-typescript-react': '49.2.0';
   '@pob/lerna-light': '5.1.0';
-  '@pob/pretty-pkg': '^4.0.1';
-  '@pob/root': '6.14.1';
+  '@pob/pretty-pkg': '4.1.0';
+  '@pob/root': '6.15.0';
   '@types/jest': '27.4.1';
   'alp-rollup-plugin-config': '1.0.2';
   'babel-preset-modern-browsers': '15.0.2';
   eslint: '8.13.0';
   jest: '27.5.1';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '32.5.1';
+  'pob-babel': '32.5.2';
   prettier: '2.6.2';
-  'repository-check-dirty': '^4.0.0';
-  rollup: '2.70.1';
-  semver: '7.3.6';
+  'repository-check-dirty': '4.1.0';
+  rollup: '2.70.2';
+  semver: '7.3.7';
   'standard-version': '9.3.2';
-  typedoc: '0.22.14';
+  typedoc: '0.22.15';
   typescript: '4.6.3';
 }
 

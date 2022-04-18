@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.16.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.15.0...@pob/root@6.16.0) (2022-04-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v12.3.8 ([#1258](https://github.com/christophehurpeau/pob/issues/1258)) ([3411d55](https://github.com/christophehurpeau/pob/commit/3411d558032ef86694d412299f11bb8ff33079c1))
+* update semver ([11a8763](https://github.com/christophehurpeau/pob/commit/11a8763b942e0e9fb348249b126ed4c15d20f2cb))
+
+
+### Features
+
+* update husky ([f8deb6b](https://github.com/christophehurpeau/pob/commit/f8deb6bc0b98ab25c83cd353f5f57d1c3dc500da))
+
+
+
+
+
 # [6.15.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.14.1...@pob/root@6.15.0) (2022-04-09)
 
 
