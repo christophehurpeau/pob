@@ -7,7 +7,6 @@ import babelPluginTransformRuntime from '@babel/plugin-transform-runtime';
 import { babel } from '@rollup/plugin-babel';
 import json from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import replace from '@rollup/plugin-replace';
 import babelPluginModuleResolver from 'babel-plugin-module-resolver';
 import babelPresetEnv from 'babel-preset-pob-env';
 import configExternalDependencies from 'rollup-config-external-dependencies';
@@ -202,13 +201,6 @@ export default function createRollupConfig({
           skipPreflightCheck: true,
           babelHelpers: 'runtime',
           exclude: 'node_modules/**',
-        }),
-
-        replace({
-          preventAssignment: true,
-          values: {
-            __DEV__: '(process.env.NODE_ENV !== "production")',
-          },
         }),
 
         json({

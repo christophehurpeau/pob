@@ -14,12 +14,12 @@ const sayHello = () => {
 
 sayHello();
 
-if ((process.env.NODE_ENV !== \\"production\\")) {
-  console.log('(process.env.NODE_ENV !== \\"production\\") is true');
+if (process.env.NODE_ENV !== \\"production\\") {
+  console.log('__DEV__ is true');
 }
 
 if (!(process.env.NODE_ENV !== \\"production\\")) {
-  console.log('(process.env.NODE_ENV !== \\"production\\") is false');
+  console.log('__DEV__ is false');
 }
 console.log(\`the answer is \${42}\`);
 
@@ -63,12 +63,12 @@ var sayHello = function sayHello() {
 var _t$foo;
 sayHello();
 
-if ((process.env.NODE_ENV !== \\"production\\")) {
-  console.log('(process.env.NODE_ENV !== \\"production\\") is true');
+if (process.env.NODE_ENV !== \\"production\\") {
+  console.log('__DEV__ is true');
 }
 
 if (!(process.env.NODE_ENV !== \\"production\\")) {
-  console.log('(process.env.NODE_ENV !== \\"production\\") is false');
+  console.log('__DEV__ is false');
 }
 console.log(\\"the answer is 42\\");
 
@@ -114,12 +114,12 @@ const sayHello = () => {
 var _t$foo;
 sayHello();
 
-if ((process.env.NODE_ENV !== \\"production\\")) {
-  console.log('(process.env.NODE_ENV !== \\"production\\") is true');
+if (process.env.NODE_ENV !== \\"production\\") {
+  console.log('__DEV__ is true');
 }
 
 if (!(process.env.NODE_ENV !== \\"production\\")) {
-  console.log('(process.env.NODE_ENV !== \\"production\\") is false');
+  console.log('__DEV__ is false');
 }
 console.log(\`the answer is \${42}\`);
 

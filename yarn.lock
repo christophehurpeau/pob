@@ -3948,13 +3948,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-minify-replace@npm:^0.5.0":
-  version: 0.5.0
-  resolution: "babel-plugin-minify-replace@npm:0.5.0"
-  checksum: eca0ef9c9197b55b7c6467fb097fe3f266ca64293eda0c1254303897923df11e9f5a9c25888de98da6a4fc32debe2651d50bdcebb667553013be4875543480f6
-  languageName: node
-  linkType: hard
-
 "babel-plugin-minify-simplify@npm:^0.5.1":
   version: 0.5.1
   resolution: "babel-plugin-minify-simplify@npm:0.5.1"
@@ -4101,7 +4094,6 @@ __metadata:
     "@babel/preset-typescript": ^7.16.0
     babel-plugin-discard-module-references: ^1.1.2
     babel-plugin-fix-class-properties-uninitialized: ^5.0.0
-    babel-plugin-minify-replace: ^0.5.0
     babel-preset-optimizations: ^2.0.0
   peerDependencies:
     "@babel/core": ^7.11.6

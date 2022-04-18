@@ -1,4 +1,4 @@
-/* eslint-disable max-lines */
+ 
 /* eslint-disable complexity */
 
 'use strict';
@@ -17,7 +17,7 @@ module.exports = function (context, opts = {}) {
     }
   });
 
-  ['flow', 'production'].forEach((optionName) => {
+  ['flow', 'production', 'replacements'].forEach((optionName) => {
     if (opts[optionName] !== undefined) {
       throw new Error(`option "${optionName}" is deprecated.`);
     }
@@ -36,36 +36,6 @@ module.exports = function (context, opts = {}) {
       )}.`,
     );
   }
-
-  const replacements =
-    opts.replacements !== undefined
-      ? opts.replacements
-      : {
-          __POB_TARGET__: targetOption,
-          __POB_TARGET_VERSION__: versionOption,
-          BROWSER: targetOption === 'browser',
-          NODEJS: targetOption === 'node',
-          SERVER: targetOption === 'node',
-        };
-
-  if (typeof replacements !== 'object') {
-    throw new TypeError(
-      "Preset pob-env 'replacements' option must be an object or undefined (default)",
-    );
-  }
-
-  const replacementsKeys = Object.keys(replacements);
-  replacementsKeys.forEach((key) => {
-    if (key.toUpperCase() !== key) {
-      console.warn('warning: replacement key should be in uppercase.');
-    }
-    const type = typeof replacements[key];
-    if (type !== 'boolean' && type !== 'string') {
-      throw new TypeError(
-        `Preset pob-env 'replacements.${key}' option must be a boolean or string.`,
-      );
-    }
-  });
 
   const loose = opts.loose !== undefined ? opts.loose : false;
   const optimizations =
@@ -165,15 +135,10 @@ module.exports = function (context, opts = {}) {
       {
         plugins: [
           [
-            require.resolve('babel-plugin-minify-replace'),
+            require.resolve('./pob-babel-replace-plugin'),
             {
-              replacements: replacementsKeys.map((key) => ({
-                identifierName: key,
-                replacement: {
-                  type: `${typeof replacements[key]}Literal`,
-                  value: replacements[key],
-                },
-              })),
+              target: targetOption,
+              targetVersion: versionOption,
             },
           ],
         ],

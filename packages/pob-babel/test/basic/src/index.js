@@ -1,8 +1,9 @@
 import Test from './Test';
+import { POB_TARGET } from 'pob-babel';
 import { sayHello as helloNode } from './helloNode';
 import { sayHello as helloBrowser } from './helloBrowser';
 
-__POB_TARGET__ === 'node' ? helloNode() : helloBrowser();
+POB_TARGET === 'node' ? helloNode() : helloBrowser();
 
 if (__DEV__) {
   console.log('__DEV__ is true');
