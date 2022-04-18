@@ -1,5 +1,5 @@
 import fs from 'fs';
-import yarnParsers from '@yarnpkg/parsers';
+import yml from 'js-yaml';
 import Generator from 'yeoman-generator';
 import ensureJsonFileFormatted from '../../../utils/ensureJsonFileFormatted.js';
 import inLerna from '../../../utils/inLerna.js';
@@ -95,11 +95,14 @@ export default class CoreYarnGenerator extends Generator {
 
       // must be done after plugins installed
       const configString = this.fs.read('.yarnrc.yml');
-      const config = yarnParsers.parseSyml(configString);
+      const config = yml.load(configString, {
+        schema: yml.FAILSAFE_SCHEMA,
+        json: true,
+      });
       config.defaultSemverRangePrefix = this.options.type === 'app' ? '' : '^';
       config.enableMessageNames = false;
       config.nodeLinker = this.options.yarnNodeLinker;
-      writeAndFormat(this.fs, '.yarnrc.yml', yarnParsers.stringifySyml(config));
+      writeAndFormat(this.fs, '.yarnrc.yml', yml.dump(config, {}));
     } else {
       this.fs.delete('.yarn');
       this.fs.delete('.yarnrc.yml');
