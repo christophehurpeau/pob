@@ -37,10 +37,10 @@
     "@babel/core": "^7.11.6"
   },
   "dependencies": {
-    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.16.0",
-    "@babel/plugin-proposal-optional-chaining": "^7.16.0",
-    "@babel/plugin-transform-modules-commonjs": "^7.16.0",
-    "@babel/preset-typescript": "^7.16.0",
+    "@babel/plugin-proposal-nullish-coalescing-operator": "^7.16.7",
+    "@babel/plugin-proposal-optional-chaining": "^7.16.7",
+    "@babel/plugin-transform-modules-commonjs": "^7.17.9",
+    "@babel/preset-typescript": "^7.16.7",
     "babel-plugin-discard-module-references": "^1.1.2",
     "babel-plugin-fix-class-properties-uninitialized": "^5.0.0",
     "babel-preset-optimizations": "^2.0.0"
