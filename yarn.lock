@@ -2707,9 +2707,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/eslint-config-typescript-react@npm:49.2.0":
-  version: 49.2.0
-  resolution: "@pob/eslint-config-typescript-react@npm:49.2.0"
+"@pob/eslint-config-typescript-react@npm:49.3.1":
+  version: 49.3.1
+  resolution: "@pob/eslint-config-typescript-react@npm:49.3.1"
   dependencies:
     "@pob/eslint-config": 49.1.0
     eslint-config-airbnb: ^19.0.4
@@ -2732,13 +2732,13 @@ __metadata:
       optional: true
     eslint-plugin-react-hooks:
       optional: true
-  checksum: d2cb93f200835b9164de5c3daf7b2dc6b2a5427e23a32a259ad133b1da2033e9a0166557256d1abf5f14556125c0c0bc9f5b3de28541b64849ed70e7cb5eda03
+  checksum: 63d84df1e393f68e04da059743fd60f925aa628a30524414400df1fb522ab645f66467b764a5618c34d53c9be7de5f9753cd0db9083942272c5bdcb08df65442
   languageName: node
   linkType: hard
 
-"@pob/eslint-config-typescript@npm:49.2.1":
-  version: 49.2.1
-  resolution: "@pob/eslint-config-typescript@npm:49.2.1"
+"@pob/eslint-config-typescript@npm:49.3.0":
+  version: 49.3.0
+  resolution: "@pob/eslint-config-typescript@npm:49.3.0"
   dependencies:
     "@pob/eslint-config": 49.1.0
     "@pob/use-eslint-plugin": 49.0.0
@@ -2762,7 +2762,7 @@ __metadata:
       optional: true
     eslint-plugin-node:
       optional: true
-  checksum: 95a60f397310f1aac985955a1ea114ee1cecacb291824e99c4b217dd852b412527652adf809d9421facf5fef38c429acd00032dc4c84b38f06adb400c02fbf53
+  checksum: 9fcd079ee96794d530542eca23d75b11936dc8c7c58399b53f75e8aaec5be6bd13d0840d1a2892001b2d778caaebea446eda7bc44311af524f6b83f1b303ddbc
   languageName: node
   linkType: hard
 
@@ -10367,8 +10367,8 @@ __metadata:
     "@babel/runtime": 7.17.9
     "@pob/commitlint-config": 4.1.0
     "@pob/eslint-config": 49.1.0
-    "@pob/eslint-config-typescript": 49.2.1
-    "@pob/eslint-config-typescript-react": 49.2.0
+    "@pob/eslint-config-typescript": 49.3.0
+    "@pob/eslint-config-typescript-react": 49.3.1
     "@pob/lerna-light": 5.1.0
     "@pob/pretty-pkg": 4.1.0
     "@pob/root": 6.16.0
@@ -10422,8 +10422,8 @@ __metadata:
     "@lerna/package-graph": ^4.0.0
     "@lerna/project": ^4.0.0
     "@pob/eslint-config": 49.1.0
-    "@pob/eslint-config-typescript": 49.2.1
-    "@pob/eslint-config-typescript-react": 49.2.0
+    "@pob/eslint-config-typescript": 49.3.0
+    "@pob/eslint-config-typescript-react": 49.3.1
     "@pob/sort-eslint-config": ^3.0.1
     "@pob/sort-object": ^4.0.1
     "@pob/sort-pkg": ^4.0.1
