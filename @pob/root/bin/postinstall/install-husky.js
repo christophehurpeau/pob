@@ -96,7 +96,9 @@ fi`;
   const prePushHook = [];
 
   if (shouldRunTest()) {
-    prePushHook.push(`CI=true ${pm.name} test`);
+    prePushHook.push(
+      `${pm.name} test --watchAll=false --changedSince=origin/main`,
+    );
   }
 
   if (shouldRunChecks()) {
