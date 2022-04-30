@@ -2744,7 +2744,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/commitlint-config@4.1.0, @pob/commitlint-config@workspace:@pob/commitlint-config":
+"@pob/commitlint-config@4.2.0, @pob/commitlint-config@workspace:@pob/commitlint-config":
   version: 0.0.0-use.local
   resolution: "@pob/commitlint-config@workspace:@pob/commitlint-config"
   dependencies:
@@ -2849,7 +2849,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/pretty-eslint-config@3.1.0, @pob/pretty-eslint-config@workspace:@pob/pretty-eslint-config":
+"@pob/pretty-eslint-config@3.2.0, @pob/pretty-eslint-config@workspace:@pob/pretty-eslint-config":
   version: 0.0.0-use.local
   resolution: "@pob/pretty-eslint-config@workspace:@pob/pretty-eslint-config"
   dependencies:
@@ -2860,7 +2860,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/pretty-pkg@4.1.0, @pob/pretty-pkg@workspace:@pob/pretty-pkg":
+"@pob/pretty-pkg@4.2.0, @pob/pretty-pkg@workspace:@pob/pretty-pkg":
   version: 0.0.0-use.local
   resolution: "@pob/pretty-pkg@workspace:@pob/pretty-pkg"
   dependencies:
@@ -2875,22 +2875,22 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: 6.25.0
+    pob-dependencies: 6.25.1
     prettier: 2.6.2
   languageName: unknown
   linkType: soft
 
-"@pob/root@6.17.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@6.18.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
     "@commitlint/cli": 16.2.4
-    "@pob/pretty-eslint-config": 3.1.0
-    "@pob/pretty-pkg": 4.1.0
+    "@pob/pretty-eslint-config": 3.2.0
+    "@pob/pretty-pkg": 4.2.0
     husky: ~7.0.4
     json5: ^2.2.1
     lint-staged: 12.4.1
-    pob-dependencies: 6.25.0
+    pob-dependencies: 6.25.1
     prettier: 2.6.2
     repository-check-dirty: 4.1.0
     semver: ^7.3.7
@@ -6031,7 +6031,7 @@ __metadata:
   resolution: "example-typescript-lib@workspace:pob-examples/typescript-lib"
   dependencies:
     "@babel/core": 7.17.10
-    pob-babel: 33.1.0
+    pob-babel: 33.2.0
     typescript: 4.6.4
   languageName: unknown
   linkType: soft
@@ -10154,7 +10154,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@33.1.0, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
+"pob-babel@33.2.0, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -10183,7 +10183,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@6.25.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@6.25.1, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -10191,20 +10191,20 @@ __metadata:
     "@babel/preset-env": 7.17.10
     "@babel/preset-react": 7.16.7
     "@babel/runtime": 7.17.9
-    "@pob/commitlint-config": 4.1.0
+    "@pob/commitlint-config": 4.2.0
     "@pob/eslint-config": 49.1.0
     "@pob/eslint-config-typescript": 49.3.0
     "@pob/eslint-config-typescript-react": 49.3.1
     "@pob/lerna-light": 5.1.0
-    "@pob/pretty-pkg": 4.1.0
-    "@pob/root": 6.17.0
+    "@pob/pretty-pkg": 4.2.0
+    "@pob/root": 6.18.0
     "@types/jest": 27.4.1
     alp-rollup-plugin-config: 1.0.2
     babel-preset-modern-browsers: 15.0.2
     eslint: 8.14.0
     jest: 28.0.3
     jest-junit-reporter: 1.1.0
-    pob-babel: 33.1.0
+    pob-babel: 33.2.0
     prettier: 2.6.2
     repository-check-dirty: 4.1.0
     rollup: 2.71.0
@@ -10260,7 +10260,7 @@ __metadata:
     mem-fs-editor: 9.4.0
     minimist: 1.2.6
     parse-author: 2.0.0
-    pob-dependencies: 6.25.0
+    pob-dependencies: 6.25.1
     prettier: 2.6.2
     semver: 7.3.7
     yeoman-environment: 3.9.1

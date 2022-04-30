@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.13.0](https://github.com/christophehurpeau/pob/compare/pob@10.12.0...pob@10.13.0) (2022-04-30)
+
+
+### Features
+
+* update dependencies ([38b561f](https://github.com/christophehurpeau/pob/commit/38b561f674dc54f51359c08daa22a64609f70b66))
+
+
+
+
+
 # [10.12.0](https://github.com/christophehurpeau/pob/compare/pob@10.11.1...pob@10.12.0) (2022-04-30)
 
 

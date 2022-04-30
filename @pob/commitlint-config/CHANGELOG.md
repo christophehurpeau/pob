@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.2.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@4.1.0...@pob/commitlint-config@4.2.0) (2022-04-30)
+
+
+### Features
+
+* update dependencies ([38b561f](https://github.com/christophehurpeau/pob/commit/38b561f674dc54f51359c08daa22a64609f70b66))
+
+
+
+
+
 # [4.1.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@4.0.0...@pob/commitlint-config@4.1.0) (2021-12-26)
 
 
