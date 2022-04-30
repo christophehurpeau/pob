@@ -56,7 +56,7 @@
     "pob-babel": "33.0.0",
     "prettier": "2.6.2",
     "repository-check-dirty": "4.1.0",
-    "rollup": "2.70.2",
+    "rollup": "2.71.0",
     "semver": "7.3.7",
     "standard-version": "9.3.2",
     "typedoc": "0.22.15",
