@@ -18,35 +18,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-<% if (packageManager !== 'npm') { -%>
-      - name: Cache dependencies
-        uses: actions/cache@v3
-        with:
 <% if (packageManager === 'yarn') { -%>
-          path: |
-            .yarn/unplugged
-            .yarn/install-state.gz
-<% } else { -%>
-          path: node_modules
-<% } -%>
-          key: v2-dependencies--${{ matrix.node-version }}-${{ runner.OS }}-${{ hashFiles('yarn.lock') }}
-          restore-keys: |
-            v2-dependencies--${{ matrix.node-version }}-${{ runner.OS }}-
-            v2-dependencies--${{ matrix.node-version }}-
-
-<% } -%>
-<% if (packageManager === 'yarn') { -%>
-      - name: Check Dependencies
+      - name: Install Dependencies
         run: yarn install --immutable --immutable-cache
 <% } else if (packageManager === 'npm') { -%>
-      - name: Install Latest Npm
-        run: npm install -g npm@next-7
-
       - name: Install Dependencies
         run: npm ci
-<% } else { -%>
-      - name: Install Dependencies
-        run: yarn install --prefer-offline --pure-lockfile
 <% } -%>
 
 <% if (checks) { -%>
