@@ -1,5 +1,5 @@
 import fs from 'fs';
-import rollup from 'rollup';
+import { rollup } from 'rollup';
 import createRollupConfig from './createRollupConfig.js';
 
 describe('fixtures', () => {
@@ -16,7 +16,7 @@ describe('fixtures', () => {
       configs.forEach((config, index) => {
         test(String(index), async () => {
           // TODO: configure browserslist
-          const bundle = await rollup.rollup(config);
+          const bundle = await rollup(config);
           const {
             output: [{ code: actual }],
           } = await bundle.generate({ format: 'esm' });
