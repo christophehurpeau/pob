@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.19.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.18.1...@pob/root@6.19.0) (2022-04-30)
+
+
+### Features
+
+* **@pob/root:** run tsc on ts file change ([0e63a42](https://github.com/christophehurpeau/pob/commit/0e63a42a22d3b9d0c747fa34df5a55154e8c185a))
+* **@pob/root:** use changedSince on prepush hook ([1d66aa5](https://github.com/christophehurpeau/pob/commit/1d66aa5a4886917cfd4b96809709af738d3f01d0))
+* remove useless dependencies cache ([f84c525](https://github.com/christophehurpeau/pob/commit/f84c52577e90a03ef3adb87b02ee1772b8acc74f))
+
+
+
+
+
 ## [6.18.1](https://github.com/christophehurpeau/pob/compare/@pob/root@6.18.0...@pob/root@6.18.1) (2022-04-30)
 
 **Note:** Version bump only for package @pob/root

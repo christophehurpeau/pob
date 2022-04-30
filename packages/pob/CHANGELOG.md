@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.14.0](https://github.com/christophehurpeau/pob/compare/pob@10.13.1...pob@10.14.0) (2022-04-30)
+
+
+### Bug Fixes
+
+* **pob:** fix readme repository parser ([0aed381](https://github.com/christophehurpeau/pob/commit/0aed3812e753c9affe6b1db4ca3c70812c6182a6))
+
+
+### Features
+
+* **pob:** add rootIgnorePatterns option in format-lint generator ([8baecc3](https://github.com/christophehurpeau/pob/commit/8baecc30735a576b8e60006bbe265aed076d9435))
+* **pob:** initial config for release-please in monorepo ([72f4fc5](https://github.com/christophehurpeau/pob/commit/72f4fc50446a6f455e851f0fda4a351d9921fa74))
+* remove useless dependencies cache ([f84c525](https://github.com/christophehurpeau/pob/commit/f84c52577e90a03ef3adb87b02ee1772b8acc74f))
+
+
+
+
+
 ## [10.13.1](https://github.com/christophehurpeau/pob/compare/pob@10.13.0...pob@10.13.1) (2022-04-30)
 
 **Note:** Version bump only for package pob
