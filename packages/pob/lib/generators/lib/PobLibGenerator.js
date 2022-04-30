@@ -278,7 +278,6 @@ export default class PobLibGenerator extends Generator {
       documentation: !!this.pobjson.documentation,
       testing: !!this.pobjson.testing,
       ci: this.pobjson.testing && this.pobjson.testing.ci,
-      // travisci: this.pobjson.testing && this.pobjson.testing.travisci,
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
     });
 
