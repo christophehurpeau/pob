@@ -150,6 +150,7 @@ export default function createRollupConfig({
           }),
         babel({
           extensions,
+          envName: 'rollup',
           babelrc: false,
           configFile: false,
           presets: [
