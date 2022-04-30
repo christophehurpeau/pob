@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.19.1](https://github.com/christophehurpeau/pob/compare/@pob/root@6.19.0...@pob/root@6.19.1) (2022-04-30)
+
+
+### Bug Fixes
+
+* **@pob/root:** push with no verify ([279faa1](https://github.com/christophehurpeau/pob/commit/279faa1a0d337ee509bfe319aefb48abb9a68959))
+
+
+
+
+
 # [6.19.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.18.1...@pob/root@6.19.0) (2022-04-30)
 
 
