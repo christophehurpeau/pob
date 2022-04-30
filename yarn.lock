@@ -2871,6 +2871,7 @@ __metadata:
     commitlint: ./bin/commitlint.js
     pob-root-lint-staged: ./bin/pob-root-lint-staged.mjs
     pob-root-postinstall: ./bin/pob-root-postinstall.js
+    pob-root-prettier: ./bin/prettier.js
     prettier: ./bin/prettier.js
     pretty-eslint-config: ./bin/pretty-eslint-config.mjs
     pretty-pkg: ./bin/pretty-pkg.mjs
