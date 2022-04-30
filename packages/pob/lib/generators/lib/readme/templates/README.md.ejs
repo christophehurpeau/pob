@@ -11,9 +11,15 @@
 <p align="center">
 <% if (!privatePackage) { -%>
   <a href="https://npmjs.org/package/<%= packageName %>"><img src="https://img.shields.io/npm/v/<%= packageName %>.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/<%= packageName %>"><img src="https://img.shields.io/npm/dw/<%= packageName %>.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/<%= packageName %>"><img src="https://img.shields.io/node/v/<%= packageName %>.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/<%= packageName %>"><img src="https://img.shields.io/npm/types/<%= packageName %>.svg?style=flat-square"></a>
 <% } if (gitHost === 'github') { -%>
 <% if (testing && codecov) { -%>
   <a href="https://codecov.io/gh/<%= gitAccount %>/<%= gitName %>"><img src="https://img.shields.io/codecov/c/github/<%= gitAccount %>/<%= gitName %>/master.svg?style=flat-square"></a>
+<% } -%>
+<% if (documentationUrl) { -%>
+  <a href="<%= documentationUrl %>"><img src="https://img.shields.io/website.svg?down_color=lightgrey&down_message=offline&up_color=blue&up_message=online&url=<%= encodeURIComponent(documentationUrl) %>?style=flat-square"></a>
 <% } -%>
 <% } -%>
 </p>

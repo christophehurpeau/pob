@@ -94,6 +94,10 @@ export default class LibReadmeGenerator extends Generator {
           license: pkg.license,
           codecov: this.options.codecov,
           documentation: this.options.documentation,
+          documentationUrl:
+            this.options.documentation && gitHost === 'github'
+              ? `https://${gitAccount}.github.io/${gitName}/`
+              : undefined,
           testing: this.options.testing,
           content,
         },
