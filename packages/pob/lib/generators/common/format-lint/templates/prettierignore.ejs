@@ -8,6 +8,9 @@ CHANGELOG.md
 /.pnp.*
 <% } -%>
 <% } -%>
+<% for (let ignorePattern of rootIgnorePatterns) { -%>
+<%= ignorePattern %>
+<% } -%>
 <% if (workspaces) { -%>
 <% for (let workspace of workspaces) { -%>
 <% if (ignorePatterns) { -%>

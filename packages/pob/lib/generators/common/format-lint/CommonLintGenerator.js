@@ -60,9 +60,17 @@ export default class CommonLintGenerator extends Generator {
       desc: 'list of app types',
     });
 
+    this.option('rootIgnorePaths', {
+      type: String,
+      required: false,
+      defaults: '',
+      desc: 'list of ignore paths to add',
+    });
+
     this.option('ignorePaths', {
       type: String,
       required: false,
+      defaults: '',
       desc: 'list of ignore paths to add',
     });
 
@@ -125,6 +133,9 @@ export default class CommonLintGenerator extends Generator {
     };
 
     if (!inLerna || inLerna.root || this.options.monorepo) {
+      const rootIgnorePatterns = new Set(
+        this.options.rootIgnorePaths.split('\n').filter(Boolean),
+      );
       const ignorePatterns = new Set(
         this.options.ignorePaths.split('\n').filter(Boolean),
       );
@@ -151,6 +162,7 @@ export default class CommonLintGenerator extends Generator {
           yarnNodeLinker: this.options.yarnNodeLinker,
           workspaces: pkg.workspaces,
           hasApp: this.options.hasApp,
+          rootIgnorePatterns: [...rootIgnorePatterns],
           ignorePatterns: [...ignorePatterns],
         },
       );
