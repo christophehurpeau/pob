@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.2.1](https://github.com/christophehurpeau/pob/compare/pob-babel@33.2.0...pob-babel@33.2.1) (2022-04-30)
+
+
+### Bug Fixes
+
+* **pob-babel:** export index for tests ([184d92a](https://github.com/christophehurpeau/pob/commit/184d92adb92a8982f2a5d173d9e1c32c7acfa2ad))
+
+
+
+
+
 # [33.2.0](https://github.com/christophehurpeau/pob/compare/pob-babel@33.1.0...pob-babel@33.2.0) (2022-04-30)
 
 
