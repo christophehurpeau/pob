@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.15.0](https://github.com/christophehurpeau/pob/compare/pob@10.14.0...pob@10.15.0) (2022-04-30)
+
+
+### Bug Fixes
+
+* **pob:** fix ejs workflow for npm publish ([42ddb67](https://github.com/christophehurpeau/pob/commit/42ddb6791e97cfa06d9b6651c165fa717bfac9b2))
+
+
+### Features
+
+* **pob:** improve readme with more badges ([b766c11](https://github.com/christophehurpeau/pob/commit/b766c11709bb0349beb1492b8f1860b65d87e73f))
+
+
+
+
+
 # [10.14.0](https://github.com/christophehurpeau/pob/compare/pob@10.13.1...pob@10.14.0) (2022-04-30)
 
 
