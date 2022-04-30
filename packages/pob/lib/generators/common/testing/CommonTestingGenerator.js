@@ -19,6 +19,12 @@ export default class CommonTestingGenerator extends Generator {
       desc: 'enable testing',
     });
 
+    this.option('enableReleasePlease', {
+      type: Boolean,
+      defaults: true,
+      desc: 'enable release-please',
+    });
+
     this.option('ci', {
       type: Boolean,
       required: true,
@@ -60,6 +66,7 @@ export default class CommonTestingGenerator extends Generator {
     if (!inLerna || inLerna.root) {
       this.composeWith('pob:core:ci', {
         enable: this.options.ci,
+        enableReleasePlease: this.options.enableReleasePlease,
         testing: this.options.enable,
         build: this.options.typescript,
         typescript: this.options.typescript,

@@ -168,9 +168,13 @@ export default class PobAppGenerator extends Generator {
 
     this.composeWith('pob:common:remove-old-dependencies');
 
+    const enableReleasePlease =
+      !inLerna && this.appConfig.testing && this.appConfig.ci;
+
     if (this.appConfig.type !== 'remix') {
       this.composeWith('pob:common:testing', {
         enable: this.appConfig.testing,
+        enableReleasePlease,
         testing: this.appConfig.testing,
         typescript: babel,
         documentation: false,

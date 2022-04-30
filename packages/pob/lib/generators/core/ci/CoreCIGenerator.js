@@ -1,5 +1,6 @@
 import fs from 'fs';
 import Generator from 'yeoman-generator';
+import inLerna from '../../../utils/inLerna.js';
 import * as packageUtils from '../../../utils/package.js';
 import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
 
@@ -11,6 +12,12 @@ export default class CoreCIGenerator extends Generator {
       type: Boolean,
       defaults: true,
       desc: 'enable ci',
+    });
+
+    this.option('enableReleasePlease', {
+      type: Boolean,
+      defaults: true,
+      desc: 'enable release-please',
     });
 
     this.option('build', {
@@ -62,6 +69,28 @@ export default class CoreCIGenerator extends Generator {
     });
   }
 
+  async prompting() {
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+
+    this.isReleasePleaseEnabled =
+      this.options.enableReleasePlease &&
+      !pkg.devDependencies?.['standard-version'];
+
+    if (
+      this.options.enableReleasePlease &&
+      !process.env.CI &&
+      !this.isReleasePleaseEnabled
+    ) {
+      const { enableReleasePlease } = await this.prompt({
+        type: 'confirm',
+        name: 'enableReleasePlease',
+        message: 'Would you like to enable release please ?',
+        default: true,
+      });
+      this.isReleasePleaseEnabled = enableReleasePlease;
+    }
+  }
+
   default() {
     if (fs.existsSync(this.destinationPath('.circleci'))) {
       fs.rmdirSync(this.destinationPath('.circleci'), { recursive: true });
@@ -83,6 +112,14 @@ export default class CoreCIGenerator extends Generator {
           typescript: this.options.typescript,
           codecov: this.options.codecov,
           supportsNode14: !this.options.isApp,
+
+          isReleasePleaseEnabled: this.isReleasePleaseEnabled,
+          publishSinglePackage: this.isReleasePleaseEnabled && !pkg.private,
+          publishMonorepo:
+            this.isReleasePleaseEnabled &&
+            inLerna &&
+            inLerna.root &&
+            inLerna.pobConfig?.project?.type === 'lib',
         },
       );
     } else {

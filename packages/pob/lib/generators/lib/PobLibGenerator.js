@@ -242,8 +242,12 @@ export default class PobLibGenerator extends Generator {
 
     this.composeWith('pob:common:remove-old-dependencies');
 
+    const enableReleasePlease =
+      !inLerna && this.pobjson.testing && this.pobjson.testing.ci;
+
     this.composeWith('pob:common:testing', {
       enable: this.pobjson.testing,
+      enableReleasePlease,
       testing: this.pobjson.testing,
       typescript: withBabel,
       documentation: !!this.pobjson.documentation,

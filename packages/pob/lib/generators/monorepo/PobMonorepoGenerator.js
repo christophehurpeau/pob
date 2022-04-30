@@ -197,9 +197,15 @@ export default class PobMonorepoGenerator extends Generator {
 
     this.composeWith('pob:common:husky', {});
 
+    const isReleasePleaseEnabled =
+      this.pobLernaConfig.testing &&
+      this.pobLernaConfig.ci &&
+      !pkg.devDependencies?.['@pob/lerna-light'];
+
     this.composeWith('pob:common:testing', {
       monorepo: true,
       enable: this.pobLernaConfig.testing,
+      enableReleasePlease: isReleasePleaseEnabled,
       testing: this.pobLernaConfig.testing,
       typescript: this.pobLernaConfig.typescript,
       documentation: !!this.pobLernaConfig.documentation,
@@ -220,6 +226,11 @@ export default class PobMonorepoGenerator extends Generator {
       ignorePaths: [
         hasDist(this.packages, this.packageConfigs) && '/dist',
         hasBuild(this.packages, this.packageConfigs) && '/build',
+      ]
+        .filter(Boolean)
+        .join('\n'),
+      rootIgnorePaths: [
+        isReleasePleaseEnabled && '/.release-please-manifest.json',
       ]
         .filter(Boolean)
         .join('\n'),
@@ -253,6 +264,14 @@ export default class PobMonorepoGenerator extends Generator {
     });
 
     this.composeWith('pob:common:remove-old-dependencies');
+
+    this.composeWith('pob:common:release', {
+      enable: this.pobLernaConfig.testing && this.pobLernaConfig.ci,
+      isReleasePleaseEnabled,
+      withBabel: this.pobLernaConfig.typescript,
+      documentation: this.pobLernaConfig.documentation,
+      updateOnly: this.options.updateOnly,
+    });
 
     this.composeWith('pob:monorepo:typescript', {
       enable: this.pobLernaConfig.typescript,

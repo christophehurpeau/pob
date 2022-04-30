@@ -1,5 +1,4 @@
 import Generator from 'yeoman-generator';
-import inLerna from '../../../utils/inLerna.js';
 import * as packageUtils from '../../../utils/package.js';
 
 export default class CommonReleaseGenerator extends Generator {
@@ -33,34 +32,11 @@ export default class CommonReleaseGenerator extends Generator {
     });
   }
 
-  async prompting() {
-    this.isReleasePleaseEnabled =
-      this.options.enable &&
-      this.fs.exists(
-        this.destinationPath('.github/workflows/release-please.yml'),
-      );
-
-    if (
-      this.options.enable &&
-      !process.env.CI &&
-      !this.isReleasePleaseEnabled
-    ) {
-      const { enableReleasePlease } = await this.prompt({
-        type: 'confirm',
-        name: 'enableReleasePlease',
-        message: 'Would you like to enable release please ?',
-        default: true,
-      });
-      this.isReleasePleaseEnabled = enableReleasePlease;
-    }
-  }
-
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
-    const isReleasePleaseEnabled = this.isReleasePleaseEnabled;
     const isStandardVersionEnabled =
-      this.options.enable && !isReleasePleaseEnabled;
+      this.options.enable && !!pkg.devDependencies?.['standard-version'];
 
     if (!isStandardVersionEnabled) {
       packageUtils.removeDevDependencies(pkg, ['standard-version']);
@@ -87,24 +63,13 @@ export default class CommonReleaseGenerator extends Generator {
       }
     }
 
-    if (!isReleasePleaseEnabled) {
-      if (
-        this.fs.exists(
-          this.destinationPath('.github/workflows/release-please.yml'),
-        )
-      ) {
-        this.fs.delete(
-          this.destinationPath('.github/workflows/release-please.yml'),
-        );
-      }
-    } else {
-      this.fs.copyTpl(
-        this.templatePath('release-please.yml.ejs'),
+    if (
+      this.fs.exists(
         this.destinationPath('.github/workflows/release-please.yml'),
-        {
-          isLerna: !!inLerna,
-          publish: !pkg.private,
-        },
+      )
+    ) {
+      this.fs.delete(
+        this.destinationPath('.github/workflows/release-please.yml'),
       );
     }
 
