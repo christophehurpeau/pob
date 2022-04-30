@@ -37,58 +37,66 @@ module.exports = function ({ types }, opts) {
     POB_TARGET_VERSION: createNode(targetVersion),
   };
 
+  const replaceVisitor = {
+    ImportDeclaration(path) {
+      const node = path.node;
+      if (node.source.value !== 'pob-babel') return;
+      if (!node.specifiers) {
+        throw path.buildCodeFrameError(
+          'Expecting named import for "pob-babel"',
+        );
+      }
+      node.specifiers.forEach((specifier) => {
+        if (specifier.type === 'ImportDefaultSpecifier') {
+          throw path.buildCodeFrameError('No default import expected');
+        }
+
+        const nodeReplacement = nodeReplacements[specifier.imported.name];
+
+        if (!nodeReplacement) {
+          throw path.buildCodeFrameError(
+            `Unknown "pob-babel" named import: ${specifier.imported.name}`,
+          );
+        }
+
+        path.scope.bindings[specifier.local.name].referencePaths.forEach(
+          (ref) => ref.replaceWith(nodeReplacement),
+        );
+      });
+
+      path.remove();
+    },
+    ReferencedIdentifier(path) {
+      const { node } = path;
+      if (path.parentPath.isMemberExpression({ object: node })) {
+        return;
+      }
+
+      if (node.name === '__DEV__') {
+        path.replaceWith(DEV_EXPRESSION);
+      } else if (
+        [
+          '__POB_TARGET__',
+          '__POB_TARGET_VERSION__',
+          'BROWSER',
+          'NODEJS',
+          'SERVER',
+        ].includes(node.name)
+      ) {
+        throw path.buildCodeFrameError(
+          `Invalid Identifier found: "${node.name}". Import from pob-babel instead.`,
+        );
+      }
+    },
+  };
+
   return {
     name: 'babel-preset-pob-env/replace-plugin',
     visitor: {
-      ImportDeclaration(path) {
-        const node = path.node;
-        if (node.source.value !== 'pob-babel') return;
-        if (!node.specifiers) {
-          throw path.buildCodeFrameError(
-            'Expecting named import for "pob-babel"',
-          );
-        }
-        node.specifiers.forEach((specifier) => {
-          if (specifier.type === 'ImportDefaultSpecifier') {
-            throw path.buildCodeFrameError('No default import expected');
-          }
-
-          const nodeReplacement = nodeReplacements[specifier.imported.name];
-
-          if (!nodeReplacement) {
-            throw path.buildCodeFrameError(
-              `Unknown import: ${specifier.imported.name}`,
-            );
-          }
-
-          path.scope.bindings[specifier.local.name].referencePaths.forEach(
-            (ref) => ref.replaceWith(nodeReplacement),
-          );
-        });
-
-        path.remove();
-      },
-      ReferencedIdentifier(path) {
-        const { node } = path;
-        if (path.parentPath.isMemberExpression({ object: node })) {
-          return;
-        }
-
-        if (node.name === '__DEV__') {
-          path.replaceWith(DEV_EXPRESSION);
-        } else if (
-          [
-            '__POB_TARGET__',
-            '__POB_TARGET_VERSION__',
-            'BROWSER',
-            'NODEJS',
-            'SERVER',
-          ].includes(node.name)
-        ) {
-          throw new Error(
-            `Invalid Identifier found: "${node.name}". Import from pob-babel instead.`,
-          );
-        }
+      Program: {
+        enter(path, state) {
+          path.traverse(replaceVisitor, state);
+        },
       },
     },
   };
