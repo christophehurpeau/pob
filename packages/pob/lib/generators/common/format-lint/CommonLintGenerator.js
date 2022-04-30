@@ -513,7 +513,10 @@ export default class CommonLintGenerator extends Generator {
 
       if (!inLerna) {
         pkg.scripts.lint = `yarn run lint:prettier && ${pkg.scripts.lint}`;
-        packageUtils.addScripts(pkg, { 'lint:prettier': 'prettier --check .' });
+        packageUtils.addScripts(pkg, {
+          'lint:prettier': 'pob-root-prettier --check .',
+          'lint:prettier:fix': 'pob-root-prettier --write .',
+        });
       } else {
         delete pkg.scripts['lint:prettier'];
       }

@@ -155,7 +155,8 @@ export default class MonorepoLernaGenerator extends Generator {
 
     packageUtils.addScripts(pkg, {
       lint: `${packageManager} run lint:prettier && ${packageManager} run lint:eslint`,
-      'lint:prettier': 'prettier --check .',
+      'lint:prettier': 'pob-root-prettier --check .',
+      'lint:prettier:fix': 'pob-root-prettier --write .',
       'lint:eslint':
         monorepoConfig &&
         monorepoConfig.eslint &&
