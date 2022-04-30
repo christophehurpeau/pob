@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.12.0](https://github.com/christophehurpeau/pob/compare/pob@10.11.1...pob@10.12.0) (2022-04-30)
+
+
+### Bug Fixes
+
+* **pob:** use pob-root-prettier ([608b618](https://github.com/christophehurpeau/pob/commit/608b618843607681b8686315b0ecb9e0d8b41f2a))
+
+
+### Features
+
+* add .env.local for nextjs paths ([cd1a4e4](https://github.com/christophehurpeau/pob/commit/cd1a4e40139a75fb3f183bb9dd93fe1877455ec0))
+* **deps:** update @pob/eslint-config ([#1269](https://github.com/christophehurpeau/pob/issues/1269)) ([4f0874f](https://github.com/christophehurpeau/pob/commit/4f0874f0956d2f90a01d5270a482aa62cd02a5e7))
+* **deps:** update dependency eslint to v8.14.0 ([#1262](https://github.com/christophehurpeau/pob/issues/1262)) ([09e27a8](https://github.com/christophehurpeau/pob/commit/09e27a8482b7d11ff47679bbd31f30fd6378b57f))
+* **deps:** update yeoman group ([#1260](https://github.com/christophehurpeau/pob/issues/1260)) ([ecad294](https://github.com/christophehurpeau/pob/commit/ecad2943f63204d537b7de4cba86be260123e69d))
+
+
+
+
+
 ## [10.11.1](https://github.com/christophehurpeau/pob/compare/pob@10.11.0...pob@10.11.1) (2022-04-18)
 
 
