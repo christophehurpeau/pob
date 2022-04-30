@@ -52,7 +52,7 @@
     "@pob/pretty-eslint-config": "3.1.0",
     "@pob/pretty-pkg": "4.1.0",
     "husky": "~7.0.4",
-    "json5": "^2.2.0",
+    "json5": "^2.2.1",
     "lint-staged": "12.4.1",
     "pob-dependencies": "6.25.0",
     "prettier": "2.6.2",

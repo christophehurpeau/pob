@@ -30,7 +30,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/core@npm:7.17.10, @babel/core@npm:^7.11.6, @babel/core@npm:^7.12.3, @babel/core@npm:^7.17.9":
+"@babel/core@npm:7.17.10, @babel/core@npm:^7.11.6, @babel/core@npm:^7.12.3, @babel/core@npm:^7.17.10":
   version: 7.17.10
   resolution: "@babel/core@npm:7.17.10"
   dependencies:
@@ -1417,12 +1417,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@commitlint/config-conventional@npm:^16.0.0":
-  version: 16.0.0
-  resolution: "@commitlint/config-conventional@npm:16.0.0"
+"@commitlint/config-conventional@npm:^16.2.4":
+  version: 16.2.4
+  resolution: "@commitlint/config-conventional@npm:16.2.4"
   dependencies:
     conventional-changelog-conventionalcommits: ^4.3.1
-  checksum: a0c923c506eed8b460503247efcecb64f7376c0fcfd9a05330651334d2b0b38a41db2698b1886198ec1e71bcf67dad4e190253e684a3cb668c7cfc76e9e959d5
+  checksum: 211a322967c1eeee961eb0be9752782d16c025213520b7ada173d6b16050efe477778103f32b62361ad595b79ff6703694569d99705469cb2be0ac5ffba6465e
   languageName: node
   linkType: hard
 
@@ -2748,7 +2748,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/commitlint-config@workspace:@pob/commitlint-config"
   dependencies:
-    "@commitlint/config-conventional": ^16.0.0
+    "@commitlint/config-conventional": ^16.2.4
   languageName: unknown
   linkType: soft
 
@@ -2854,7 +2854,7 @@ __metadata:
   resolution: "@pob/pretty-eslint-config@workspace:@pob/pretty-eslint-config"
   dependencies:
     "@pob/sort-eslint-config": ^3.0.1
-    prettier: ^2.1.2
+    prettier: ^2.6.2
   bin:
     pretty-eslint-config: ./bin/pretty-eslint-config.js
   languageName: unknown
@@ -2865,7 +2865,7 @@ __metadata:
   resolution: "@pob/pretty-pkg@workspace:@pob/pretty-pkg"
   dependencies:
     "@pob/sort-pkg": ^4.0.1
-    prettier: ^2.1.2
+    prettier: ^2.6.2
   bin:
     pretty-pkg: ./bin/pretty-pkg.js
   languageName: unknown
@@ -2875,7 +2875,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: 6.17.0
+    pob-dependencies: 6.25.0
     prettier: 2.6.2
   languageName: unknown
   linkType: soft
@@ -2888,7 +2888,7 @@ __metadata:
     "@pob/pretty-eslint-config": 3.1.0
     "@pob/pretty-pkg": 4.1.0
     husky: ~7.0.4
-    json5: ^2.2.0
+    json5: ^2.2.1
     lint-staged: 12.4.1
     pob-dependencies: 6.25.0
     prettier: 2.6.2
@@ -4391,18 +4391,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cacheable-request@npm:^7.0.1":
-  version: 7.0.1
-  resolution: "cacheable-request@npm:7.0.1"
+"cacheable-request@npm:^7.0.1, cacheable-request@npm:^7.0.2":
+  version: 7.0.2
+  resolution: "cacheable-request@npm:7.0.2"
   dependencies:
     clone-response: ^1.0.2
     get-stream: ^5.1.0
     http-cache-semantics: ^4.0.0
     keyv: ^4.0.0
     lowercase-keys: ^2.0.0
-    normalize-url: ^4.1.0
+    normalize-url: ^6.0.1
     responselike: ^2.0.0
-  checksum: 558cbc4785c9692953c4c62c0afafe3071912a06778b14daa212ef1e220d338c86c956661572c172f73315e0a30ecc8797bae975f3cfd19e2e7c3bf341c6291e
+  checksum: 6152813982945a5c9989cb457a6c499f12edcc7ade323d2fbfd759abc860bdbd1306e08096916bb413c3c47e812f8e4c0a0cc1e112c8ce94381a960f115bc77f
   languageName: node
   linkType: hard
 
@@ -6755,22 +6755,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"got@npm:^11.8.1":
-  version: 11.8.2
-  resolution: "got@npm:11.8.2"
+"got@npm:^11.8.3":
+  version: 11.8.3
+  resolution: "got@npm:11.8.3"
   dependencies:
     "@sindresorhus/is": ^4.0.0
     "@szmarczak/http-timer": ^4.0.5
     "@types/cacheable-request": ^6.0.1
     "@types/responselike": ^1.0.0
     cacheable-lookup: ^5.0.3
-    cacheable-request: ^7.0.1
+    cacheable-request: ^7.0.2
     decompress-response: ^6.0.0
     http2-wrapper: ^1.0.0-beta.5.2
     lowercase-keys: ^2.0.0
     p-cancelable: ^2.0.0
     responselike: ^2.0.0
-  checksum: 41ad7bf74f7ec18bca81997ea0a6c8b6b75405cc3ba76d49c5d9d4658cad200d5a9fa7b0a13058458d0df6bed217baabd122d5d351c6bc6996514a5e428744bb
+  checksum: 3b6db107d9765470b18e4cb22f7c7400381be7425b9be5823f0168d6c21b5d6b28b023c0b3ee208f73f6638c3ce251948ca9b54a1e8f936d3691139ac202d01b
   languageName: node
   linkType: hard
 
@@ -8217,7 +8217,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json5@npm:^2.2.0, json5@npm:^2.2.1":
+"json5@npm:^2.2.1":
   version: 2.2.1
   resolution: "json5@npm:2.2.1"
   bin:
@@ -9312,10 +9312,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"normalize-url@npm:^4.1.0":
-  version: 4.5.1
-  resolution: "normalize-url@npm:4.5.1"
-  checksum: 9a9dee01df02ad23e171171893e56e22d752f7cff86fb96aafeae074819b572ea655b60f8302e2d85dbb834dc885c972cc1c573892fea24df46b2765065dd05a
+"normalize-url@npm:^6.0.1":
+  version: 6.1.0
+  resolution: "normalize-url@npm:6.1.0"
+  checksum: 4a4944631173e7d521d6b80e4c85ccaeceb2870f315584fa30121f505a6dfd86439c5e3fdd8cd9e0e291290c41d0c3599f0cb12ab356722ed242584c30348e50
   languageName: node
   linkType: hard
 
@@ -10158,7 +10158,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
-    "@babel/core": ^7.17.9
+    "@babel/core": ^7.17.10
     "@babel/plugin-transform-runtime": 7.17.10
     "@rollup/plugin-babel": 5.3.1
     "@rollup/plugin-json": 4.1.0
@@ -10215,13 +10215,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@npm:6.17.0":
-  version: 6.17.0
-  resolution: "pob-dependencies@npm:6.17.0"
-  checksum: 008d648847ec3d7b9bb8dc36e3e4fdd7cf4db9975d97d1ff0051f23bcf2f2f4588a65cc66359d89867dd09d8acf40fa8c78383b205efe2598a153021a0f97bdd
-  languageName: node
-  linkType: hard
-
 "pob-monorepo@workspace:.":
   version: 0.0.0-use.local
   resolution: "pob-monorepo@workspace:."
@@ -10257,17 +10250,17 @@ __metadata:
     findup-sync: ^5.0.0
     git-remote-url: ^1.0.1
     github-username: ^6.0.0
-    got: ^11.8.1
+    got: ^11.8.3
     inquirer-npm-name: ^4.0.0
     js-yaml: ^4.1.0
-    json5: ^2.2.0
+    json5: ^2.2.1
     lodash.camelcase: ^4.3.0
     lodash.kebabcase: ^4.1.1
     mem-fs: 2.2.1
     mem-fs-editor: 9.4.0
     minimist: 1.2.6
     parse-author: 2.0.0
-    pob-dependencies: 6.17.0
+    pob-dependencies: 6.25.0
     prettier: 2.6.2
     semver: 7.3.7
     yeoman-environment: 3.9.1
@@ -10296,7 +10289,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:2.6.2, prettier@npm:^2.1.2":
+"prettier@npm:2.6.2, prettier@npm:^2.6.2":
   version: 2.6.2
   resolution: "prettier@npm:2.6.2"
   bin:

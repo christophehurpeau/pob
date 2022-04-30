@@ -37,6 +37,6 @@
   },
   "pob": {},
   "dependencies": {
-    "@commitlint/config-conventional": "^16.0.0"
+    "@commitlint/config-conventional": "^16.2.4"
   }
 }
