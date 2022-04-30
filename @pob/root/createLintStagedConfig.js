@@ -86,5 +86,6 @@ module.exports = function createLintStagedConfig() {
     [`{.storybook,${srcDirectories}}/**/*.css`]: [
       'prettier --parser css --write',
     ],
+    './*.{ts,tsx}': () => ['tsc'],
   };
 };
