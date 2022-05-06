@@ -51,7 +51,7 @@
     "alp-rollup-plugin-config": "1.0.2",
     "babel-preset-modern-browsers": "15.0.2",
     "eslint": "8.14.0",
-    "jest": "28.0.3",
+    "jest": "28.1.0",
     "jest-junit-reporter": "1.1.0",
     "pob-babel": "33.3.0",
     "prettier": "2.6.2",
