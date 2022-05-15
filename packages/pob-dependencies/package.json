@@ -58,7 +58,7 @@
     "repository-check-dirty": "4.1.0",
     "rollup": "2.73.0",
     "semver": "7.3.7",
-    "standard-version": "9.3.2",
+    "standard-version": "9.5.0",
     "typedoc": "0.22.15",
     "typescript": "4.6.4"
   }
