@@ -36,10 +36,10 @@
   },
   "pob": {},
   "devDependencies": {
-    "@babel/core": "7.18.0",
-    "@babel/preset-env": "7.18.0",
+    "@babel/core": "7.18.2",
+    "@babel/preset-env": "7.18.2",
     "@babel/preset-react": "7.17.12",
-    "@babel/runtime": "7.18.0",
+    "@babel/runtime": "7.18.2",
     "@pob/commitlint-config": "4.2.0",
     "@pob/eslint-config": "49.1.0",
     "@pob/eslint-config-typescript": "49.3.0",
