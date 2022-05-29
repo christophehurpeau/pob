@@ -49,7 +49,7 @@
   "pob": {},
   "peerDependencies": {
     "@babel/core": "^7.16.5",
-    "rollup": "2.75.1",
+    "rollup": "2.75.2",
     "typescript": "^4.0.3"
   },
   "peerDependenciesMeta": {
@@ -67,7 +67,7 @@
     "babel-plugin-module-resolver": "^4.1.0",
     "babel-preset-modern-browsers": "^15.0.2",
     "babel-preset-pob-env": "8.1.0",
-    "rollup": "2.75.1",
+    "rollup": "2.75.2",
     "rollup-config-external-dependencies": "^2.0.0",
     "semver": "^7.3.7"
   },
