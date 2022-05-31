@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.20.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.19.1...@pob/root@6.20.0) (2022-05-31)
+
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v12.4.2 ([#1291](https://github.com/christophehurpeau/pob/issues/1291)) ([d805e5b](https://github.com/christophehurpeau/pob/commit/d805e5bdcac330064cdbb739d0a3ae6751881b3d))
+* **deps:** update dependency lint-staged to v12.4.3 ([#1300](https://github.com/christophehurpeau/pob/issues/1300)) ([087991e](https://github.com/christophehurpeau/pob/commit/087991ece48574f4be6feccb7f4a5a6c29c43fc9))
+
+
+### Features
+
+* **deps:** update commitlint monorepo to v17 (major) ([#1285](https://github.com/christophehurpeau/pob/issues/1285)) ([c982250](https://github.com/christophehurpeau/pob/commit/c9822502a35da09cc20976383f851d6a5ae56b87))
+* **deps:** update dependency @commitlint/cli to v16.3.0 ([#1283](https://github.com/christophehurpeau/pob/issues/1283)) ([cf518ba](https://github.com/christophehurpeau/pob/commit/cf518babef07ca5f2c0ceb8d770c39d2a60a55bf))
+* **deps:** update dependency husky to v8 ([#1279](https://github.com/christophehurpeau/pob/issues/1279)) ([9296f09](https://github.com/christophehurpeau/pob/commit/9296f09825dee01581d5eaf78e99050baf4eaf9e))
+* **deps:** update dependency lint-staged to v12.5.0 ([#1303](https://github.com/christophehurpeau/pob/issues/1303)) ([e34df25](https://github.com/christophehurpeau/pob/commit/e34df257d21512cb5cb494b5b5f0181973b37eb1))
+
+
+
+
+
 ## [6.19.1](https://github.com/christophehurpeau/pob/compare/@pob/root@6.19.0...@pob/root@6.19.1) (2022-04-30)
 
 

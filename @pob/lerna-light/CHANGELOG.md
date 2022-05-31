@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/christophehurpeau/pob/compare/@pob/lerna-light@5.1.0...@pob/lerna-light@5.2.0) (2022-05-31)
+
+
+### Features
+
+* **deps:** update lerna monorepo to v5 (major) ([#1292](https://github.com/christophehurpeau/pob/issues/1292)) ([049f8c9](https://github.com/christophehurpeau/pob/commit/049f8c936d6b621077f7da932cf6b271bf93026b))
+
+
+
+
+
 # [5.1.0](https://github.com/christophehurpeau/pob/compare/@pob/lerna-light@5.0.0...@pob/lerna-light@5.1.0) (2021-12-18)
 
 

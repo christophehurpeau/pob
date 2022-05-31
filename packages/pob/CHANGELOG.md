@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.16.0](https://github.com/christophehurpeau/pob/compare/pob@10.15.0...pob@10.16.0) (2022-05-31)
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.15.0 ([#1277](https://github.com/christophehurpeau/pob/issues/1277)) ([245b369](https://github.com/christophehurpeau/pob/commit/245b36992ca45f7f10ebcdb039badafc2740a6fe))
+* **deps:** update dependency eslint to v8.16.0 ([#1290](https://github.com/christophehurpeau/pob/issues/1290)) ([e62d102](https://github.com/christophehurpeau/pob/commit/e62d102178e494d2009d225a365f4e62c692da4c))
+* **deps:** update lerna monorepo to v5 (major) ([#1292](https://github.com/christophehurpeau/pob/issues/1292)) ([049f8c9](https://github.com/christophehurpeau/pob/commit/049f8c936d6b621077f7da932cf6b271bf93026b))
+
+
+
+
+
 # [10.15.0](https://github.com/christophehurpeau/pob/compare/pob@10.14.0...pob@10.15.0) (2022-04-30)
 
 

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [33.4.0](https://github.com/christophehurpeau/pob/compare/pob-babel@33.3.0...pob-babel@33.4.0) (2022-05-31)
+
+
+### Features
+
+* **deps:** update dependency @rollup/plugin-node-resolve to v13.3.0 ([#1273](https://github.com/christophehurpeau/pob/issues/1273)) ([7f37447](https://github.com/christophehurpeau/pob/commit/7f374475eabb5f30f6b702988e19e7e088b9bf75))
+* **deps:** update dependency rollup to v2.72.0 ([#1275](https://github.com/christophehurpeau/pob/issues/1275)) ([3965753](https://github.com/christophehurpeau/pob/commit/3965753eda354c66626c22d0795d057244eec54a))
+* **deps:** update dependency rollup to v2.72.1 ([#1278](https://github.com/christophehurpeau/pob/issues/1278)) ([1ce2855](https://github.com/christophehurpeau/pob/commit/1ce28556ce459a6eae182c075aeb00178de72385))
+* **deps:** update dependency rollup to v2.73.0 ([#1282](https://github.com/christophehurpeau/pob/issues/1282)) ([96994a7](https://github.com/christophehurpeau/pob/commit/96994a736fcf7dbe4dcce7727960720bbe6d8fa9))
+* **deps:** update dependency rollup to v2.74.0 ([#1287](https://github.com/christophehurpeau/pob/issues/1287)) ([b9a446e](https://github.com/christophehurpeau/pob/commit/b9a446e2f1820cc8b99626f9f365e7495d38dfe4))
+* **deps:** update dependency rollup to v2.74.1 ([#1288](https://github.com/christophehurpeau/pob/issues/1288)) ([4d22593](https://github.com/christophehurpeau/pob/commit/4d22593aab84a01cd0bed0377e60b4fc063744d1))
+* **deps:** update dependency rollup to v2.75.0 ([#1296](https://github.com/christophehurpeau/pob/issues/1296)) ([9995dfc](https://github.com/christophehurpeau/pob/commit/9995dfcde135a5f44c1650c224f02b3395c5193c))
+* **deps:** update dependency rollup to v2.75.1 ([#1297](https://github.com/christophehurpeau/pob/issues/1297)) ([89b29f6](https://github.com/christophehurpeau/pob/commit/89b29f6ab998c7ab5b7ff087610afc7fd80875b7))
+* **deps:** update dependency rollup to v2.75.2 ([#1298](https://github.com/christophehurpeau/pob/issues/1298)) ([cd1122b](https://github.com/christophehurpeau/pob/commit/cd1122b204a47b0294a1ed9e672e227d1aa1096c))
+* **deps:** update dependency rollup to v2.75.3 ([#1299](https://github.com/christophehurpeau/pob/issues/1299)) ([ca429e7](https://github.com/christophehurpeau/pob/commit/ca429e7f63c26670e4d7b5ed2632bd0c0007bc61))
+* **deps:** update dependency rollup to v2.75.4 ([#1302](https://github.com/christophehurpeau/pob/issues/1302)) ([450d6af](https://github.com/christophehurpeau/pob/commit/450d6affd3608fdcd0c59477e5843a289332506b))
+
+
+
+
+
 # [33.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@33.2.1...pob-babel@33.3.0) (2022-04-30)
 
 

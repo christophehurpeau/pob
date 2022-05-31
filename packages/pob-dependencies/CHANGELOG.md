@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.27.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.26.1...pob-dependencies@6.27.0) (2022-05-31)
+
+
+### Features
+
+* **deps:** update dependency @babel/runtime to v7.18.3 ([#1295](https://github.com/christophehurpeau/pob/issues/1295)) ([6cfa8d3](https://github.com/christophehurpeau/pob/commit/6cfa8d3860f8a51c762c5df12be55f96b94bd6d4))
+* **deps:** update dependency @types/jest to v27.5.0 ([#1274](https://github.com/christophehurpeau/pob/issues/1274)) ([8815c94](https://github.com/christophehurpeau/pob/commit/8815c94bf7c8d0df521981525c9b47ad490ab924))
+* **deps:** update dependency @types/jest to v27.5.1 ([#1280](https://github.com/christophehurpeau/pob/issues/1280)) ([74eff16](https://github.com/christophehurpeau/pob/commit/74eff16d6e7753cdea4c6e4b6ab9a15f490552e4))
+* **deps:** update dependency eslint to v8.15.0 ([#1277](https://github.com/christophehurpeau/pob/issues/1277)) ([245b369](https://github.com/christophehurpeau/pob/commit/245b36992ca45f7f10ebcdb039badafc2740a6fe))
+* **deps:** update dependency eslint to v8.16.0 ([#1290](https://github.com/christophehurpeau/pob/issues/1290)) ([e62d102](https://github.com/christophehurpeau/pob/commit/e62d102178e494d2009d225a365f4e62c692da4c))
+* **deps:** update dependency jest to v28.1.0 ([#1276](https://github.com/christophehurpeau/pob/issues/1276)) ([6049641](https://github.com/christophehurpeau/pob/commit/6049641526a938aab244ab1a2b5f3c179f76c4e9))
+* **deps:** update dependency rollup to v2.72.0 ([#1275](https://github.com/christophehurpeau/pob/issues/1275)) ([3965753](https://github.com/christophehurpeau/pob/commit/3965753eda354c66626c22d0795d057244eec54a))
+* **deps:** update dependency rollup to v2.72.1 ([#1278](https://github.com/christophehurpeau/pob/issues/1278)) ([1ce2855](https://github.com/christophehurpeau/pob/commit/1ce28556ce459a6eae182c075aeb00178de72385))
+* **deps:** update dependency rollup to v2.73.0 ([#1282](https://github.com/christophehurpeau/pob/issues/1282)) ([96994a7](https://github.com/christophehurpeau/pob/commit/96994a736fcf7dbe4dcce7727960720bbe6d8fa9))
+* **deps:** update dependency rollup to v2.74.0 ([#1287](https://github.com/christophehurpeau/pob/issues/1287)) ([b9a446e](https://github.com/christophehurpeau/pob/commit/b9a446e2f1820cc8b99626f9f365e7495d38dfe4))
+* **deps:** update dependency rollup to v2.74.1 ([#1288](https://github.com/christophehurpeau/pob/issues/1288)) ([4d22593](https://github.com/christophehurpeau/pob/commit/4d22593aab84a01cd0bed0377e60b4fc063744d1))
+* **deps:** update dependency rollup to v2.75.0 ([#1296](https://github.com/christophehurpeau/pob/issues/1296)) ([9995dfc](https://github.com/christophehurpeau/pob/commit/9995dfcde135a5f44c1650c224f02b3395c5193c))
+* **deps:** update dependency rollup to v2.75.1 ([#1297](https://github.com/christophehurpeau/pob/issues/1297)) ([89b29f6](https://github.com/christophehurpeau/pob/commit/89b29f6ab998c7ab5b7ff087610afc7fd80875b7))
+* **deps:** update dependency rollup to v2.75.2 ([#1298](https://github.com/christophehurpeau/pob/issues/1298)) ([cd1122b](https://github.com/christophehurpeau/pob/commit/cd1122b204a47b0294a1ed9e672e227d1aa1096c))
+* **deps:** update dependency rollup to v2.75.3 ([#1299](https://github.com/christophehurpeau/pob/issues/1299)) ([ca429e7](https://github.com/christophehurpeau/pob/commit/ca429e7f63c26670e4d7b5ed2632bd0c0007bc61))
+* **deps:** update dependency rollup to v2.75.4 ([#1302](https://github.com/christophehurpeau/pob/issues/1302)) ([450d6af](https://github.com/christophehurpeau/pob/commit/450d6affd3608fdcd0c59477e5843a289332506b))
+* **deps:** update dependency standard-version to v9.5.0 ([#1284](https://github.com/christophehurpeau/pob/issues/1284)) ([094fe21](https://github.com/christophehurpeau/pob/commit/094fe21ed67f62fc076170c0c949b54eb5b7334a))
+* **deps:** update dependency typedoc to v0.22.16 ([#1301](https://github.com/christophehurpeau/pob/issues/1301)) ([ce60164](https://github.com/christophehurpeau/pob/commit/ce6016460496e6e45527a1993dac6bca71c064df))
+
+
+
+
+
 ## [6.26.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.26.0...pob-dependencies@6.26.1) (2022-04-30)
 
 **Note:** Version bump only for package pob-dependencies
