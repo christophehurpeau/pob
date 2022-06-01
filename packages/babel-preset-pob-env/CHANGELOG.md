@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@8.1.1...babel-preset-pob-env@8.2.0) (2022-06-01)
+
+
+### Features
+
+* **babel-preset-pob-env:** export plugin replace ([e6cf335](https://github.com/christophehurpeau/pob/commit/e6cf33553edcd68481e9e0762bc8074736538be2))
+
+
+
+
+
 ## [8.1.1](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@8.1.0...babel-preset-pob-env@8.1.1) (2022-05-31)
 
 **Note:** Version bump only for package babel-preset-pob-env

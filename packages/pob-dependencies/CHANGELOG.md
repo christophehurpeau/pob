@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.28.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.27.0...pob-dependencies@6.28.0) (2022-06-01)
+
+
+### Features
+
+* **deps:** update dependency @types/jest to v27.5.2 ([#1308](https://github.com/christophehurpeau/pob/issues/1308)) ([5c327da](https://github.com/christophehurpeau/pob/commit/5c327da8e1375b4522fa9cadddcb72f5c100f084))
+* **deps:** update dependency rollup to v2.75.5 ([#1307](https://github.com/christophehurpeau/pob/issues/1307)) ([39d1ca0](https://github.com/christophehurpeau/pob/commit/39d1ca0dd4de2235c51048205892f57e8011e4bf))
+* **deps:** update dependency typedoc to v0.22.17 ([#1305](https://github.com/christophehurpeau/pob/issues/1305)) ([ff72a54](https://github.com/christophehurpeau/pob/commit/ff72a548c06b15e3fc86be199137d0016de2f66c))
+
+
+
+
+
 # [6.27.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.26.1...pob-dependencies@6.27.0) (2022-05-31)
 
 
