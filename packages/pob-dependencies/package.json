@@ -50,7 +50,7 @@
     "@types/jest": "27.5.2",
     "alp-rollup-plugin-config": "1.0.2",
     "babel-preset-modern-browsers": "15.0.2",
-    "eslint": "8.16.0",
+    "eslint": "8.17.0",
     "jest": "28.1.0",
     "jest-junit-reporter": "1.1.0",
     "pob-babel": "33.5.0",
