@@ -54,7 +54,7 @@
     "jest": "28.1.1",
     "jest-junit-reporter": "1.1.0",
     "pob-babel": "33.5.0",
-    "prettier": "2.7.0",
+    "prettier": "2.7.1",
     "repository-check-dirty": "4.1.0",
     "rollup": "2.75.6",
     "semver": "7.3.7",
