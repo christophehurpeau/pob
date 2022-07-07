@@ -6,14 +6,13 @@ const semver = require('semver');
 module.exports = function updateYarn({ pkg, pm }) {
   if (pm.name !== 'yarn' || !pm.version) return;
 
-  if (semver.lt(pm.version, '3.2.0')) {
+  if (semver.lt(pm.version, '3.2.1')) {
     // Upgrade from yarn 1
     if (semver.lt(pm.version, '2.0.0')) {
-      console.log('-- Upgrade from yarn 1 --');
-      execSync('yarn set version berry', { stdio: 'inherit' });
+      console.log('-- Install yarn berry --');
+    } else {
+      console.log('-- Update yarn --');
     }
-
-    console.log('-- Update yarn --');
     execSync('yarn set version stable', { stdio: 'inherit' });
 
     // removes yarn paths (can have 2) to use the newly installed yarn
