@@ -47,7 +47,7 @@
     "@pob/lerna-light": "5.2.0",
     "@pob/pretty-pkg": "4.2.0",
     "@pob/root": "6.20.1",
-    "@types/jest": "27.5.2",
+    "@types/jest": "28.1.4",
     "alp-rollup-plugin-config": "1.0.2",
     "babel-preset-modern-browsers": "15.0.2",
     "eslint": "8.19.0",
