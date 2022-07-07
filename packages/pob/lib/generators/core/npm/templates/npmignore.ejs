@@ -1,4 +1,7 @@
 <% if (!inLerna && ci) { -%>
+/.husky
+<% } -%>
+<% if (!inLerna) { -%>
 /.github
 <% } -%>
 <% if (!inLerna && codeclimate) { -%>
@@ -10,9 +13,12 @@
 /samples
 /test
 /*.config.js
+/*.config.cjs
+/*.config.mjs
 <% if (babel) { -%>
 /tsconfig.json
 /tsconfig.build.json
+/tsconfig.eslint.json
 /dist/tsbuildinfo
 <% if (typedoc) { -%>
 /tsconfig.doc.json
@@ -21,6 +27,7 @@ babel.config.json
 <% } -%>
 <% if (testing) { -%>
 __snapshots__
+/coverage
 <% } -%>
 .yo-rc.json
 <% if (!inLerna) { -%>
