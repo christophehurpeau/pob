@@ -4640,17 +4640,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"check-package-dependencies@npm:3.6.0":
-  version: 3.6.0
-  resolution: "check-package-dependencies@npm:3.6.0"
+"check-package-dependencies@npm:3.7.1":
+  version: 3.7.1
+  resolution: "check-package-dependencies@npm:3.7.1"
   dependencies:
     chalk: ^4.1.0
-    glob: ^7.1.6
+    glob: ^8.0.0
     semver: ^7.3.4
     type-fest: ^2.0.0
   bin:
     check-package-dependencies: bin/check-package-dependencies.js
-  checksum: 5b52dd81c219a66db89b70b6d9f2e3b89e6bc9bf0a2cf410a297cefd288ba8440156cd413cf7d1dcb4ac08cc5ca7cc4a1f415f9b51e5668439b9c2076055811e
+  checksum: 9d02086e3ac13beebc372c10a9882a1d433e8bfde9313b8ea496cc5e8f37a4cfa5a55cafc2f94b0148e6530cd2323797127414714ba1fa8cf6b63b313f4ccf56
   languageName: node
   linkType: hard
 
@@ -6707,7 +6707,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^8.0.1":
+"glob@npm:^8.0.0, glob@npm:^8.0.1":
   version: 8.0.3
   resolution: "glob@npm:8.0.3"
   dependencies:
@@ -10110,7 +10110,7 @@ __metadata:
     "@pob/lerna-light": "workspace:*"
     "@pob/root": "workspace:*"
     "@types/jest": 28.1.6
-    check-package-dependencies: 3.6.0
+    check-package-dependencies: 3.7.1
     eslint: 8.20.0
     jest: 28.1.3
     pob-babel: "workspace:*"
