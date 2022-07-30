@@ -1,6 +1,6 @@
 import { createCheckPackageWithWorkspaces } from 'check-package-dependencies';
 
-createCheckPackageWithWorkspaces()
+await createCheckPackageWithWorkspaces()
   .checkRecommended({
     isLibrary: () => true,
     onlyWarnsForInMonorepoPackagesDependencies: {
@@ -19,4 +19,5 @@ createCheckPackageWithWorkspaces()
     return pkgCheck.checkSatisfiesVersionsFromDependency('yeoman-environment', {
       dependencies: ['mem-fs', 'mem-fs-editor'],
     });
-  });
+  })
+  .run();
