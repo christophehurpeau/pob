@@ -9890,6 +9890,7 @@ __metadata:
     rollup:
       optional: true
   bin:
+    pob-babel-clean-out: ./bin/pob-babel-clean-out.js
     rollup: ./bin/rollup.cjs
   languageName: unknown
   linkType: soft

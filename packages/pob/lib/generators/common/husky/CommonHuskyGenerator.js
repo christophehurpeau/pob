@@ -1,5 +1,4 @@
-import { execSync } from 'child_process';
-import { readlinkSync } from 'fs';
+import { readlinkSync, rmSync } from 'fs';
 import Generator from 'yeoman-generator';
 import inLerna from '../../../utils/inLerna.js';
 import * as packageUtils from '../../../utils/package.js';
@@ -17,7 +16,7 @@ export default class CommonHuskyGenerator extends Generator {
   }
 
   writing() {
-    execSync('rm -Rf git-hooks/');
+    rmSync('git-hooks', { recursive: true, force: true });
 
     const gitHookDestination = this.destinationPath('.git/hooks/pre-commit');
     let isSymlink;

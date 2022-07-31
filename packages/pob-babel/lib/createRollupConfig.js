@@ -24,12 +24,12 @@ const nodeFormatToExt = (format, pkgType) => {
 export default function createRollupConfig({
   cwd = process.cwd(),
   outDirectory = 'dist',
-  pkg = JSON.parse(readFileSync(`${cwd}/package.json`)),
+  pkg = JSON.parse(readFileSync(path.join(cwd, 'package.json'))),
   plugins = [],
   devPlugins,
   prodPlugins,
   pobConfig = pkg.pob ||
-    JSON.parse(readFileSync(`${cwd}/.yo-rc.json`)).pob['pob-config'],
+    JSON.parse(readFileSync(path.join(cwd, '.yo-rc.json'))).pob['pob-config'],
 } = {}) {
   if (devPlugins) {
     throw new Error(

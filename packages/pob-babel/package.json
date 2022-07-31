@@ -33,6 +33,7 @@
   },
   "sideEffects": false,
   "bin": {
+    "pob-babel-clean-out": "./bin/pob-babel-clean-out.js",
     "rollup": "./bin/rollup.cjs"
   },
   "scripts": {

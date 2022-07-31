@@ -1,5 +1,4 @@
-import { execSync } from 'child_process';
-import fs from 'fs';
+import fs, { rmSync } from 'fs';
 import Generator from 'yeoman-generator';
 import inLerna from '../../utils/inLerna.js';
 import * as packageUtils from '../../utils/package.js';
@@ -351,16 +350,17 @@ export default class PobLibGenerator extends Generator {
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-    execSync(
-      `rm -Rf ${[
-        'lib-*',
-        'coverage',
-        this.pobjson.documentation && 'docs',
-        !withBabel && 'dist',
-      ]
-        .filter(Boolean)
-        .join(' ')}`,
-    );
+    [
+      'lib-node14',
+      'lib-node16',
+      'coverage',
+      this.pobjson.documentation && 'docs',
+      !withBabel && 'dist',
+    ]
+      .filter(Boolean)
+      .forEach((path) => {
+        rmSync(path, { recursive: true, force: true });
+      });
 
     const { pobjson } = this;
 
