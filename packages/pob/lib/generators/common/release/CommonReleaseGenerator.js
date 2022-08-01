@@ -45,7 +45,6 @@ export default class CommonReleaseGenerator extends Generator {
         pkg.name === 'pob-dependencies' ? null : 'preversion',
       ]);
     } else {
-      packageUtils.addDevDependencies(pkg, ['standard-version']);
       packageUtils.addScripts(pkg, {
         release:
           "repository-check-dirty && yarn preversion && standard-version -a -m 'chore(release): %s [skip ci]' && git push --follow-tags origin master && npm publish",
