@@ -8,6 +8,7 @@ import {
   pobEslintConfigTypescript,
   pobEslintConfigTypescriptReact,
 } from './dependenciesPackages.cjs';
+import pobPkg from './packagejson.cjs';
 
 export { default as parseAuthor } from 'parse-author';
 
@@ -103,6 +104,12 @@ const getVersionFromDependencyName = (dependency) => {
   ) {
     return pobEslintConfigTypescript.dependencies[dependency];
   }
+
+  // prevents cycle that lerna doesnt like
+  if (dependency === '@pob/root') {
+    return pobPkg.devDependencies[dependency];
+  }
+
   return pobDependencies[dependency];
 };
 

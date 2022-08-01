@@ -66,5 +66,8 @@
     "semver": "7.3.7",
     "yeoman-environment": "3.10.0",
     "yeoman-generator": "5.7.0"
+  },
+  "devDependencies": {
+    "@pob/root": "6.20.1"
   }
 }
