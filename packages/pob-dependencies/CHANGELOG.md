@@ -3,6 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.29.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.28.0...pob-dependencies@6.29.0) (2022-08-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v2.7.1 ([#1322](https://github.com/christophehurpeau/pob/issues/1322)) ([ba6b521](https://github.com/christophehurpeau/pob/commit/ba6b521ccada49f36eb013a02f5eea13613ed593))
+* move pob/root in devdep of pob to avoid dep cycle ([ce9152a](https://github.com/christophehurpeau/pob/commit/ce9152a83106b330a090f1a4d1bce570ec47c90d))
+
+
+### Features
+
+* **deps:** update @pob/eslint-config ([#1341](https://github.com/christophehurpeau/pob/issues/1341)) ([55dc6ea](https://github.com/christophehurpeau/pob/commit/55dc6ea6425c3baa977b6c4224ad71f7b5e69ba4))
+* **deps:** update dependency @types/jest to v28 ([#1309](https://github.com/christophehurpeau/pob/issues/1309)) ([4af0a0b](https://github.com/christophehurpeau/pob/commit/4af0a0b3d98d303e623ad558c9b78411b906f2bc))
+* **deps:** update dependency @types/jest to v28.1.5 ([#1345](https://github.com/christophehurpeau/pob/issues/1345)) ([01aee8b](https://github.com/christophehurpeau/pob/commit/01aee8b1beea0f26fd3ebd2309f3de56113e65fa))
+* **deps:** update dependency @types/jest to v28.1.6 ([#1348](https://github.com/christophehurpeau/pob/issues/1348)) ([a80b666](https://github.com/christophehurpeau/pob/commit/a80b6660ce2ba567afae2234f4ebe567849aa499))
+* **deps:** update dependency eslint to v8.17.0 ([#1311](https://github.com/christophehurpeau/pob/issues/1311)) ([b050c31](https://github.com/christophehurpeau/pob/commit/b050c318ee4a7518e60cde4d07f6ceb9738e5123))
+* **deps:** update dependency eslint to v8.18.0 ([#1324](https://github.com/christophehurpeau/pob/issues/1324)) ([eed6d70](https://github.com/christophehurpeau/pob/commit/eed6d700a7ef5861a99d568b00216a1d2fea4bf7))
+* **deps:** update dependency eslint to v8.19.0 ([#1336](https://github.com/christophehurpeau/pob/issues/1336)) ([47fe9d6](https://github.com/christophehurpeau/pob/commit/47fe9d6180fb27dd6d1acb00dc412f8b6f7e19b4))
+* **deps:** update dependency eslint to v8.20.0 ([#1349](https://github.com/christophehurpeau/pob/issues/1349)) ([de37cf8](https://github.com/christophehurpeau/pob/commit/de37cf8d7cc90ffcee040e4dac872bade940497b))
+* **deps:** update dependency eslint to v8.21.0 ([#1361](https://github.com/christophehurpeau/pob/issues/1361)) ([04ff2df](https://github.com/christophehurpeau/pob/commit/04ff2dfb7074a31de75015bf22ffd3d0983b9f39))
+* **deps:** update dependency jest to v28.1.1 ([#1312](https://github.com/christophehurpeau/pob/issues/1312)) ([b9c2caa](https://github.com/christophehurpeau/pob/commit/b9c2caa77e8dc63fb7feb5e964156918b9dfdf9e))
+* **deps:** update dependency jest to v28.1.2 ([#1333](https://github.com/christophehurpeau/pob/issues/1333)) ([55ba5d8](https://github.com/christophehurpeau/pob/commit/55ba5d83edded3607fabe4b138595e6e20e514b9))
+* **deps:** update dependency jest to v28.1.3 ([#1346](https://github.com/christophehurpeau/pob/issues/1346)) ([b02b785](https://github.com/christophehurpeau/pob/commit/b02b7853510be943b914078c7807a854745d639a))
+* **deps:** update dependency prettier to v2.7.0 ([#1318](https://github.com/christophehurpeau/pob/issues/1318)) ([ee2d9f3](https://github.com/christophehurpeau/pob/commit/ee2d9f313d0be390dd68e83112998960f7517792))
+* **deps:** update dependency rollup to v2.75.6 ([#1313](https://github.com/christophehurpeau/pob/issues/1313)) ([cd2c25b](https://github.com/christophehurpeau/pob/commit/cd2c25b5ee7caf06aa5452193c13c09d5958b959))
+* **deps:** update dependency rollup to v2.75.7 ([#1325](https://github.com/christophehurpeau/pob/issues/1325)) ([8c0478c](https://github.com/christophehurpeau/pob/commit/8c0478ca1100521ff621557bdf9e61cc3d5744f3))
+* **deps:** update dependency rollup to v2.76.0 ([#1343](https://github.com/christophehurpeau/pob/issues/1343)) ([11355c5](https://github.com/christophehurpeau/pob/commit/11355c55e8eb3144b64d6cca8b27fd2829a5f5d0))
+* **deps:** update dependency rollup to v2.77.0 ([#1347](https://github.com/christophehurpeau/pob/issues/1347)) ([1bbdba4](https://github.com/christophehurpeau/pob/commit/1bbdba40ebed1885f5a8321dc1acd930cfd753a6))
+* **deps:** update dependency rollup to v2.77.1 ([#1355](https://github.com/christophehurpeau/pob/issues/1355)) ([737c93c](https://github.com/christophehurpeau/pob/commit/737c93ce789bbfbc856e73ed4f9c0e71d2299eb8))
+* **deps:** update dependency rollup to v2.77.2 ([#1356](https://github.com/christophehurpeau/pob/issues/1356)) ([d8ab28c](https://github.com/christophehurpeau/pob/commit/d8ab28c30ca54a70488e82ae77ccb735df0beb13))
+* **deps:** update dependency typedoc to v0.22.18 ([#1328](https://github.com/christophehurpeau/pob/issues/1328)) ([08b6f20](https://github.com/christophehurpeau/pob/commit/08b6f200bcc07c21f12849b683b0c7dc6885383d))
+* **deps:** update dependency typedoc to v0.23.1 ([#1330](https://github.com/christophehurpeau/pob/issues/1330)) ([193884a](https://github.com/christophehurpeau/pob/commit/193884a2f74a0d1a8b99f166c600cc1b4168202b))
+* **deps:** update dependency typedoc to v0.23.10 ([#1360](https://github.com/christophehurpeau/pob/issues/1360)) ([2a781c6](https://github.com/christophehurpeau/pob/commit/2a781c69f3f9d96609894691eb792bd259e2c13e))
+* **deps:** update dependency typedoc to v0.23.2 ([#1332](https://github.com/christophehurpeau/pob/issues/1332)) ([1f9370f](https://github.com/christophehurpeau/pob/commit/1f9370fc6206a6198ca695906dfbdb9a4582e7d1))
+* **deps:** update dependency typedoc to v0.23.3 ([#1334](https://github.com/christophehurpeau/pob/issues/1334)) ([9a805bf](https://github.com/christophehurpeau/pob/commit/9a805bfcd3f69c2281db37e37a4f5543d25a03ad))
+* **deps:** update dependency typedoc to v0.23.4 ([#1335](https://github.com/christophehurpeau/pob/issues/1335)) ([30d5247](https://github.com/christophehurpeau/pob/commit/30d5247ceb4ab77d09337e01c00ca77b073cf28e))
+* **deps:** update dependency typedoc to v0.23.5 ([#1337](https://github.com/christophehurpeau/pob/issues/1337)) ([5c4fc13](https://github.com/christophehurpeau/pob/commit/5c4fc13750ccea2ae3b4553eb13a80ecc62df814))
+* **deps:** update dependency typedoc to v0.23.6 ([#1342](https://github.com/christophehurpeau/pob/issues/1342)) ([f56588e](https://github.com/christophehurpeau/pob/commit/f56588ef09af02eb7ef49ba7dbcb6f5f985501e4))
+* **deps:** update dependency typedoc to v0.23.7 ([#1344](https://github.com/christophehurpeau/pob/issues/1344)) ([84a544f](https://github.com/christophehurpeau/pob/commit/84a544f23081f7198611e5774c1739053a2016f9))
+* **deps:** update dependency typedoc to v0.23.8 ([#1350](https://github.com/christophehurpeau/pob/issues/1350)) ([55b3b55](https://github.com/christophehurpeau/pob/commit/55b3b5591ef4610e5f979c1e4a898f1181b90e2b))
+* **deps:** update dependency typedoc to v0.23.9 ([#1354](https://github.com/christophehurpeau/pob/issues/1354)) ([36a0090](https://github.com/christophehurpeau/pob/commit/36a00906dc647465ecd34f36ede2d2f9f7f60645))
+* remove standard-version ([9ced070](https://github.com/christophehurpeau/pob/commit/9ced070767e6b9ab04f61cd80496a76b6de1d594))
+
+
+
+
+
 # [6.28.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.27.0...pob-dependencies@6.28.0) (2022-06-01)
 
 

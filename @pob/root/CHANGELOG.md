@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.21.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.20.1...@pob/root@6.21.0) (2022-08-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @commitlint/cli to v17.0.3 ([#1329](https://github.com/christophehurpeau/pob/issues/1329)) ([ac6e845](https://github.com/christophehurpeau/pob/commit/ac6e845ba4be42728b78d607da5b034d5eb3e6a3))
+* **deps:** update dependency prettier to v2.7.1 ([#1322](https://github.com/christophehurpeau/pob/issues/1322)) ([ba6b521](https://github.com/christophehurpeau/pob/commit/ba6b521ccada49f36eb013a02f5eea13613ed593))
+* fix prettier workflow push in no verify ([81cb977](https://github.com/christophehurpeau/pob/commit/81cb9779e4cd119b21ae543ba0a739d3495d0029))
+* update husky ([e66246b](https://github.com/christophehurpeau/pob/commit/e66246b72a4b43814e56d7f73dba61e1cba0b389))
+
+
+### Features
+
+* **deps:** update dependency lint-staged to v13 ([#1306](https://github.com/christophehurpeau/pob/issues/1306)) ([093d848](https://github.com/christophehurpeau/pob/commit/093d848bf0be31c677db161f2d6e86a7490a4533))
+* **deps:** update dependency prettier to v2.7.0 ([#1318](https://github.com/christophehurpeau/pob/issues/1318)) ([ee2d9f3](https://github.com/christophehurpeau/pob/commit/ee2d9f313d0be390dd68e83112998960f7517792))
+* update to yarn 3.2.1 ([f8126b9](https://github.com/christophehurpeau/pob/commit/f8126b9ebb0c606b0e0f5b5e59fc9e8e6dbd5a99))
+
+
+
+
+
 ## [6.20.1](https://github.com/christophehurpeau/pob/compare/@pob/root@6.20.0...@pob/root@6.20.1) (2022-06-01)
 
 

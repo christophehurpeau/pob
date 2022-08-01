@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.17.0](https://github.com/christophehurpeau/pob/compare/pob@10.16.0...pob@10.17.0) (2022-08-01)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v2.7.1 ([#1322](https://github.com/christophehurpeau/pob/issues/1322)) ([ba6b521](https://github.com/christophehurpeau/pob/commit/ba6b521ccada49f36eb013a02f5eea13613ed593))
+* move pob/root in devdep of pob to avoid dep cycle ([ce9152a](https://github.com/christophehurpeau/pob/commit/ce9152a83106b330a090f1a4d1bce570ec47c90d))
+* **pob:** better support windows in rollup config ([b8a266b](https://github.com/christophehurpeau/pob/commit/b8a266b0a0b5515fda1bce6be8ddf9158c66a408))
+* update check-package-dependencies ([79a6e7f](https://github.com/christophehurpeau/pob/commit/79a6e7f32240efbaff7e3f3eb831f5d1a0fd8174))
+* update check-packages template ([9e498db](https://github.com/christophehurpeau/pob/commit/9e498db17ffc0078f5a0e04c28a14ff5831bf8a9))
+
+
+### Features
+
+* configure newLine in tsconfig.build.json for windows compat ([e5f9710](https://github.com/christophehurpeau/pob/commit/e5f97101e19c6184cc9a3c95ee8bf565df2900ac))
+* **deps:** update @pob/eslint-config ([#1341](https://github.com/christophehurpeau/pob/issues/1341)) ([55dc6ea](https://github.com/christophehurpeau/pob/commit/55dc6ea6425c3baa977b6c4224ad71f7b5e69ba4))
+* **deps:** update dependency eslint to v8.17.0 ([#1311](https://github.com/christophehurpeau/pob/issues/1311)) ([b050c31](https://github.com/christophehurpeau/pob/commit/b050c318ee4a7518e60cde4d07f6ceb9738e5123))
+* **deps:** update dependency eslint to v8.18.0 ([#1324](https://github.com/christophehurpeau/pob/issues/1324)) ([eed6d70](https://github.com/christophehurpeau/pob/commit/eed6d700a7ef5861a99d568b00216a1d2fea4bf7))
+* **deps:** update dependency eslint to v8.19.0 ([#1336](https://github.com/christophehurpeau/pob/issues/1336)) ([47fe9d6](https://github.com/christophehurpeau/pob/commit/47fe9d6180fb27dd6d1acb00dc412f8b6f7e19b4))
+* **deps:** update dependency eslint to v8.20.0 ([#1349](https://github.com/christophehurpeau/pob/issues/1349)) ([de37cf8](https://github.com/christophehurpeau/pob/commit/de37cf8d7cc90ffcee040e4dac872bade940497b))
+* **deps:** update dependency eslint to v8.21.0 ([#1361](https://github.com/christophehurpeau/pob/issues/1361)) ([04ff2df](https://github.com/christophehurpeau/pob/commit/04ff2dfb7074a31de75015bf22ffd3d0983b9f39))
+* **deps:** update dependency prettier to v2.7.0 ([#1318](https://github.com/christophehurpeau/pob/issues/1318)) ([ee2d9f3](https://github.com/christophehurpeau/pob/commit/ee2d9f313d0be390dd68e83112998960f7517792))
+* **deps:** update yeoman group ([#1358](https://github.com/christophehurpeau/pob/issues/1358)) ([fdc8bfb](https://github.com/christophehurpeau/pob/commit/fdc8bfb88c84312bf9597003f30cbd528359551e))
+* **pob:** add missing stuff in npmignore ([1748198](https://github.com/christophehurpeau/pob/commit/1748198e70ebae2f9825ad5a4e02ade7e1973eb8))
+* remove lerna-light in pob-monorepo-test-repository ([7e5c34c](https://github.com/christophehurpeau/pob/commit/7e5c34c3c865b70c4c9330d2f466231c80a329ac))
+* remove standard-version ([9ced070](https://github.com/christophehurpeau/pob/commit/9ced070767e6b9ab04f61cd80496a76b6de1d594))
+
+
+
+
+
 # [10.16.0](https://github.com/christophehurpeau/pob/compare/pob@10.15.0...pob@10.16.0) (2022-05-31)
 
 

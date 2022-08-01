@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.3.0](https://github.com/christophehurpeau/pob/compare/@pob/lerna-light@5.2.0...@pob/lerna-light@5.3.0) (2022-08-01)
+
+
+### Bug Fixes
+
+* **deps:** update lerna monorepo to v5.1.1 ([#1315](https://github.com/christophehurpeau/pob/issues/1315)) ([cd6806f](https://github.com/christophehurpeau/pob/commit/cd6806fffa678bfe5b4eb75d71c702bf2adb0a5b))
+* **deps:** update lerna monorepo to v5.1.2 ([#1317](https://github.com/christophehurpeau/pob/issues/1317)) ([3adba86](https://github.com/christophehurpeau/pob/commit/3adba86cf36fc26441388b1f32d08e9b9da5052d))
+* **deps:** update lerna monorepo to v5.1.3 ([#1320](https://github.com/christophehurpeau/pob/issues/1320)) ([801a59b](https://github.com/christophehurpeau/pob/commit/801a59b45445450117ca8be8d993ad99bd0cea93))
+* **deps:** update lerna monorepo to v5.1.4 ([#1321](https://github.com/christophehurpeau/pob/issues/1321)) ([08fd033](https://github.com/christophehurpeau/pob/commit/08fd033335a2809b4f5ec5a2f79e368b315d9355))
+* **deps:** update lerna monorepo to v5.1.5 ([#1326](https://github.com/christophehurpeau/pob/issues/1326)) ([034ffd5](https://github.com/christophehurpeau/pob/commit/034ffd570785d77a7847f40331a6fabcaf0b9904))
+* **deps:** update lerna monorepo to v5.1.6 ([#1327](https://github.com/christophehurpeau/pob/issues/1327)) ([56a8a71](https://github.com/christophehurpeau/pob/commit/56a8a715ff0bbc4655461fce891d8a283a63d693))
+* **deps:** update lerna monorepo to v5.1.7 ([#1338](https://github.com/christophehurpeau/pob/issues/1338)) ([b761009](https://github.com/christophehurpeau/pob/commit/b761009e6af2df4ff2cca0ba63a73afb6daa5035))
+* **deps:** update lerna monorepo to v5.1.8 ([#1339](https://github.com/christophehurpeau/pob/issues/1339)) ([1fdac0b](https://github.com/christophehurpeau/pob/commit/1fdac0b0f59f5b2b9954f1ec19b68a2915b6973b))
+
+
+### Features
+
+* **deps:** update lerna monorepo to v5.1.0 ([#1314](https://github.com/christophehurpeau/pob/issues/1314)) ([a6979ef](https://github.com/christophehurpeau/pob/commit/a6979efe68ce95a6273327d715152efe8c4ffe8d))
+* **deps:** update lerna monorepo to v5.2.0 ([#1353](https://github.com/christophehurpeau/pob/issues/1353)) ([8a4bc28](https://github.com/christophehurpeau/pob/commit/8a4bc2808f8cdd202078043840bb53f92705da00))
+* **deps:** update lerna monorepo to v5.3.0 ([#1357](https://github.com/christophehurpeau/pob/issues/1357)) ([ef36631](https://github.com/christophehurpeau/pob/commit/ef3663185455d4dc9439774d9848b33ee803cce0))
+
+
+
+
+
 # [5.2.0](https://github.com/christophehurpeau/pob/compare/@pob/lerna-light@5.1.0...@pob/lerna-light@5.2.0) (2022-05-31)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "@pob/renovate-config",
-  "version": "5.9.2",
+  "version": "5.10.0",
   "description": "renovate pob config",
   "type": "module",
   "engines": {
@@ -18,7 +18,7 @@
     "arrowParens": "always"
   },
   "devDependencies": {
-    "pob-dependencies": "6.28.0",
+    "pob-dependencies": "6.29.0",
     "prettier": "2.7.1"
   },
   "renovate-config": {
@@ -59,8 +59,7 @@
           "groupName": "Pob Dependencies",
           "packageNames": [
             "alp-rollup-plugin-config",
-            "pob-babel",
-            "standard-version"
+            "pob-babel"
           ],
           "schedule": [
             "before 3am on Friday"

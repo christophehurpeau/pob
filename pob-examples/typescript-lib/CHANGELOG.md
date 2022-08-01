@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.6.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.5.7...example-typescript-lib@0.6.0) (2022-08-01)
+
+
+### Features
+
+* configure newLine in tsconfig.build.json for windows compat ([e5f9710](https://github.com/christophehurpeau/pob/commit/e5f97101e19c6184cc9a3c95ee8bf565df2900ac))
+
+
+
+
+
 ## [0.5.7](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.5.6...example-typescript-lib@0.5.7) (2022-06-01)
 
 **Note:** Version bump only for package example-typescript-lib
