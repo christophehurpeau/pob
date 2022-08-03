@@ -5474,14 +5474,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ejs@npm:^3.1.6":
-  version: 3.1.7
-  resolution: "ejs@npm:3.1.7"
+"ejs@npm:^3.1.8":
+  version: 3.1.8
+  resolution: "ejs@npm:3.1.8"
   dependencies:
     jake: ^10.8.5
   bin:
     ejs: bin/cli.js
-  checksum: fe40764af39955ce8f8b116716fc8b911959946698edb49ecab85df597746c07aa65d5b74ead28a1e2ffa75b0f92d9bedd752f1c29437da6137b3518271e988c
+  checksum: 1d40d198ad52e315ccf37e577bdec06e24eefdc4e3c27aafa47751a03a0c7f0ec4310254c9277a5f14763c3cd4bbacce27497332b2d87c74232b9b1defef8efc
   languageName: node
   linkType: hard
 
@@ -6650,7 +6650,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globby@npm:^11.0.1, globby@npm:^11.0.2, globby@npm:^11.0.3, globby@npm:^11.0.4, globby@npm:^11.1.0":
+"globby@npm:^11.0.1, globby@npm:^11.0.2, globby@npm:^11.0.4, globby@npm:^11.1.0":
   version: 11.1.0
   resolution: "globby@npm:11.1.0"
   dependencies:
@@ -8603,17 +8603,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mem-fs-editor@npm:9.4.0, mem-fs-editor@npm:^8.1.2 || ^9.0.0":
-  version: 9.4.0
-  resolution: "mem-fs-editor@npm:9.4.0"
+"mem-fs-editor@npm:9.5.0, mem-fs-editor@npm:^8.1.2 || ^9.0.0":
+  version: 9.5.0
+  resolution: "mem-fs-editor@npm:9.5.0"
   dependencies:
     binaryextensions: ^4.16.0
     commondir: ^1.0.1
     deep-extend: ^0.6.0
-    ejs: ^3.1.6
-    globby: ^11.0.3
+    ejs: ^3.1.8
+    globby: ^11.1.0
     isbinaryfile: ^4.0.8
-    minimatch: ^3.0.4
+    minimatch: ^3.1.2
     multimatch: ^5.0.0
     normalize-path: ^3.0.0
     textextensions: ^5.13.0
@@ -8622,7 +8622,7 @@ __metadata:
   peerDependenciesMeta:
     mem-fs:
       optional: true
-  checksum: 427b71d59a4bd7032b12ef22e8f69fdf3165ec7cc4350f1a1fca190c4211ba8a01e14a04d9a7db8cb44f74034de2bc6e42f0d5ffb5b20590e71646baac5a8a0c
+  checksum: 65919d02f596c14245cc75f0493e0221973753ce9bd490b6eb47026e7d64cb18cb17c8760441c65c56c51d83bf6fbc2e6c0a858fa162dfd2054ee3d0210d3579
   languageName: node
   linkType: hard
 
@@ -10020,7 +10020,7 @@ __metadata:
     lodash.camelcase: ^4.3.0
     lodash.kebabcase: ^4.1.1
     mem-fs: 2.2.1
-    mem-fs-editor: 9.4.0
+    mem-fs-editor: 9.5.0
     minimist: 1.2.6
     parse-author: 2.0.0
     pob-dependencies: 6.29.0
