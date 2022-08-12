@@ -144,7 +144,7 @@ export { foo, operator, spreadTest, t };
 
 exports[`fixtures react 0 1`] = `
 "import { render } from 'react-dom';
-import { jsx } from 'react/jsx-runtime.js';
+import { jsx } from 'react/jsx-runtime';
 
 const Component = () => /*#__PURE__*/jsx(\\"div\\", {});
 
@@ -155,7 +155,7 @@ render( /*#__PURE__*/jsx(Component, {}), document.getElementById('react-containe
 exports[`fixtures react 1 1`] = `
 "import { render } from 'react-dom';
 import './styles.css';
-import { jsx } from 'react/jsx-runtime.js';
+import { jsx } from 'react/jsx-runtime';
 
 const Component = () => /*#__PURE__*/jsx(\\"div\\", {});
 

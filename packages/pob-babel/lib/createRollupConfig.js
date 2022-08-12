@@ -7,7 +7,6 @@ import babelPluginTransformRuntime from '@babel/plugin-transform-runtime';
 import { babel } from '@rollup/plugin-babel';
 import json from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import babelPluginModuleResolver from 'babel-plugin-module-resolver';
 import babelPresetEnv from 'babel-preset-pob-env';
 import configExternalDependencies from 'rollup-config-external-dependencies';
 import semver from 'semver';
@@ -188,14 +187,6 @@ export default function createRollupConfig({
                 useESModules: 'auto',
                 useHelpers: true,
                 version: minBabelRuntimeVersion,
-              },
-            ],
-            [
-              babelPluginModuleResolver,
-              {
-                alias: {
-                  'react/jsx-runtime': 'react/jsx-runtime.js',
-                },
               },
             ],
           ],
