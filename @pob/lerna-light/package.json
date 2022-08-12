@@ -1,6 +1,6 @@
 {
   "name": "@pob/lerna-light",
-  "version": "5.3.0",
+  "version": "5.4.0",
   "description": "import only required commands from lerna",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",

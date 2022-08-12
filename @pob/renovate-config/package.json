@@ -1,6 +1,6 @@
 {
   "name": "@pob/renovate-config",
-  "version": "5.10.0",
+  "version": "5.10.1",
   "description": "renovate pob config",
   "type": "module",
   "engines": {
@@ -18,7 +18,7 @@
     "arrowParens": "always"
   },
   "devDependencies": {
-    "pob-dependencies": "6.29.0",
+    "pob-dependencies": "6.30.0",
     "prettier": "2.7.1"
   },
   "renovate-config": {
@@ -63,7 +63,11 @@
           "matchUpdateTypes": [
             "patch"
           ],
-          "semanticCommitType": "fix"
+          "semanticCommitType": "fix",
+          "packageNames": [
+            "alp-rollup-plugin-config",
+            "pob-babel"
+          ]
         },
         {
           "groupName": "Pob Dependencies",

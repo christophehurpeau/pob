@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.10.1](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.10.0...@pob/renovate-config@5.10.1) (2022-08-12)
+
+
+### Bug Fixes
+
+* configure renovate semanticCommitType for patch ([cd0bad3](https://github.com/christophehurpeau/pob/commit/cd0bad39d4e83036631bd95be0c4de26f25b7cfc))
+
+
+
+
+
 # [5.10.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.9.2...@pob/renovate-config@5.10.0) (2022-08-01)
 
 

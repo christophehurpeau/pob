@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [34.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@33.6.0...pob-babel@34.0.0) (2022-08-12)
+
+
+### Features
+
+* **deps:** update dependency rollup to v2.77.3 ([#1365](https://github.com/christophehurpeau/pob/issues/1365)) ([98a865b](https://github.com/christophehurpeau/pob/commit/98a865be85f3b4960f962e22877d48bee7c34e74))
+* **pob-babel:** upgrade for react 18 ([300649d](https://github.com/christophehurpeau/pob/commit/300649df0102e694e1d409f4bf96a9efc552a853))
+
+
+### BREAKING CHANGES
+
+* **pob-babel:** delete fallback for jsx-runtime for react 17 which doesnt work with react 18
+
+
+
+
+
 # [33.6.0](https://github.com/christophehurpeau/pob/compare/pob-babel@33.5.0...pob-babel@33.6.0) (2022-08-01)
 
 

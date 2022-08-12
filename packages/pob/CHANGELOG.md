@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.18.0](https://github.com/christophehurpeau/pob/compare/pob@10.17.0...pob@10.18.0) (2022-08-12)
+
+
+### Features
+
+* **deps:** update dependency mem-fs-editor to v9.5.0 ([#1363](https://github.com/christophehurpeau/pob/issues/1363)) ([bc1d1bf](https://github.com/christophehurpeau/pob/commit/bc1d1bfcdb093d75b3be4d07ede463f2a37a5491))
+
+
+
+
+
 # [10.17.0](https://github.com/christophehurpeau/pob/compare/pob@10.16.0...pob@10.17.0) (2022-08-01)
 
 
