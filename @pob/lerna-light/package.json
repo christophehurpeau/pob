@@ -39,8 +39,8 @@
   },
   "pob": {},
   "dependencies": {
-    "@lerna/cli": "5.4.0",
-    "@lerna/publish": "5.4.0",
-    "@lerna/version": "5.4.0"
+    "@lerna/cli": "5.4.1",
+    "@lerna/publish": "5.4.1",
+    "@lerna/version": "5.4.1"
   }
 }
