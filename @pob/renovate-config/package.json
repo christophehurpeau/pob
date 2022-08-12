@@ -45,15 +45,25 @@
       "internalChecksFilter": "strict",
       "packageRules": [
         {
-          "depTypeList": [
+          "matchDepTypes": [
             "dependencies",
             "peerDependencies"
           ],
-          "updateTypes": [
+          "matchUpdateTypes": [
             "major",
             "minor"
           ],
           "semanticCommitType": "feat"
+        },
+        {
+          "matchDepTypes": [
+            "dependencies",
+            "peerDependencies"
+          ],
+          "matchUpdateTypes": [
+            "patch"
+          ],
+          "semanticCommitType": "fix"
         },
         {
           "groupName": "Pob Dependencies",
