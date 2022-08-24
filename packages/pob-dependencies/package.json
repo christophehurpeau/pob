@@ -46,7 +46,7 @@
     "@pob/eslint-config-typescript-react": "49.3.2",
     "@pob/lerna-light": "5.4.0",
     "@pob/pretty-pkg": "4.2.0",
-    "@types/jest": "28.1.7",
+    "@types/jest": "28.1.8",
     "alp-rollup-plugin-config": "1.0.2",
     "babel-preset-modern-browsers": "15.0.2",
     "eslint": "8.22.0",
