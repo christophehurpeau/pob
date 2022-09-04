@@ -14,11 +14,11 @@ const sayHello = () => {
 
 sayHello();
 
-if (process.env.NODE_ENV !== \\"production\\") {
+if (process.env.NODE_ENV !== "production") {
   console.log('__DEV__ is true');
 }
 
-if (!(process.env.NODE_ENV !== \\"production\\")) {
+if (!(process.env.NODE_ENV !== "production")) {
   console.log('__DEV__ is false');
 }
 console.log(\`the answer is \${42}\`);
@@ -63,14 +63,14 @@ var sayHello = function sayHello() {
 var _t$foo;
 sayHello();
 
-if (process.env.NODE_ENV !== \\"production\\") {
+if (process.env.NODE_ENV !== "production") {
   console.log('__DEV__ is true');
 }
 
-if (!(process.env.NODE_ENV !== \\"production\\")) {
+if (!(process.env.NODE_ENV !== "production")) {
   console.log('__DEV__ is false');
 }
-console.log(\\"the answer is 42\\");
+console.log("the answer is 42");
 
 var Test2 = /*#__PURE__*/function (_Test) {
   _inheritsLoose(Test2, _Test);
@@ -114,11 +114,11 @@ const sayHello = () => {
 var _t$foo;
 sayHello();
 
-if (process.env.NODE_ENV !== \\"production\\") {
+if (process.env.NODE_ENV !== "production") {
   console.log('__DEV__ is true');
 }
 
-if (!(process.env.NODE_ENV !== \\"production\\")) {
+if (!(process.env.NODE_ENV !== "production")) {
   console.log('__DEV__ is false');
 }
 console.log(\`the answer is \${42}\`);
@@ -146,7 +146,7 @@ exports[`fixtures react 0 1`] = `
 "import { render } from 'react-dom';
 import { jsx } from 'react/jsx-runtime';
 
-const Component = () => /*#__PURE__*/jsx(\\"div\\", {});
+const Component = () => /*#__PURE__*/jsx("div", {});
 
 render( /*#__PURE__*/jsx(Component, {}), document.getElementById('react-container'));
 "
@@ -157,7 +157,7 @@ exports[`fixtures react 1 1`] = `
 import './styles.css';
 import { jsx } from 'react/jsx-runtime';
 
-const Component = () => /*#__PURE__*/jsx(\\"div\\", {});
+const Component = () => /*#__PURE__*/jsx("div", {});
 
 render( /*#__PURE__*/jsx(Component, {}), document.getElementById('react-container'));
 "
@@ -202,7 +202,7 @@ var Test = function Test() {
   this.args = args;
 };
 
-console.log(\\"the answer is 42\\");
+console.log("the answer is 42");
 
 var Test2 = /*#__PURE__*/function (_Test) {
   _inheritsLoose(Test2, _Test);
