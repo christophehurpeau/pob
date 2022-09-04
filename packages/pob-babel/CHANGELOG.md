@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [34.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@34.0.0...pob-babel@34.1.0) (2022-09-04)
+
+
+### Bug Fixes
+
+* change mode pob-babel-clean-out ([a5114f6](https://github.com/christophehurpeau/pob/commit/a5114f643148675f2c597458bc6dd43ed007f9db))
+
+
+### Features
+
+* add pob-babel-clean-out for better windows support ([1503de8](https://github.com/christophehurpeau/pob/commit/1503de8d31c7f6a288013860ba87ce047fa85456))
+* **deps:** update dependency rollup to v2.78.0 ([#1368](https://github.com/christophehurpeau/pob/issues/1368)) ([52c1cdb](https://github.com/christophehurpeau/pob/commit/52c1cdb7dc406d0b3f3ae8762484fdc51ce49f85))
+* **deps:** update dependency rollup to v2.78.1 ([#1372](https://github.com/christophehurpeau/pob/issues/1372)) ([bfa6597](https://github.com/christophehurpeau/pob/commit/bfa6597008655c09182704725511b346b0624576))
+* **deps:** update dependency rollup to v2.79.0 ([#1384](https://github.com/christophehurpeau/pob/issues/1384)) ([b1c1f22](https://github.com/christophehurpeau/pob/commit/b1c1f2294ea1ff87bd1016f7499fd138163b41fc))
+
+
+
+
+
 # [34.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@33.6.0...pob-babel@34.0.0) (2022-08-12)
 
 

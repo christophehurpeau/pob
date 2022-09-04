@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.22.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.21.1...@pob/root@6.22.0) (2022-09-04)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @commitlint/cli to v17.1.1 ([#1381](https://github.com/christophehurpeau/pob/issues/1381)) ([0553fd7](https://github.com/christophehurpeau/pob/commit/0553fd736fbab37679344a516b863c0df2226c43))
+* **deps:** update dependency @commitlint/cli to v17.1.2 ([#1382](https://github.com/christophehurpeau/pob/issues/1382)) ([d66aec6](https://github.com/christophehurpeau/pob/commit/d66aec61606910412becebe5616e65f0a5ecad30))
+* fix condition to run tsc when ts or tsx file changed ([5a3eed6](https://github.com/christophehurpeau/pob/commit/5a3eed6b7a59360d6bcf74ac1945a675591cda09))
+
+
+### Features
+
+* **deps:** update dependency @commitlint/cli to v17.1.0 ([#1380](https://github.com/christophehurpeau/pob/issues/1380)) ([f77de31](https://github.com/christophehurpeau/pob/commit/f77de311e9bd07f8e127581c621d74b2789e226f))
+
+
+
+
+
 ## [6.21.1](https://github.com/christophehurpeau/pob/compare/@pob/root@6.21.0...@pob/root@6.21.1) (2022-08-12)
 
 **Note:** Version bump only for package @pob/root

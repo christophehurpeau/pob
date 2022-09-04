@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.5.0](https://github.com/christophehurpeau/pob/compare/@pob/lerna-light@5.4.0...@pob/lerna-light@5.5.0) (2022-09-04)
+
+
+### Bug Fixes
+
+* **deps:** update lerna monorepo to v5.4.2 ([#1369](https://github.com/christophehurpeau/pob/issues/1369)) ([19fc93b](https://github.com/christophehurpeau/pob/commit/19fc93b04843573c27d79aff30eef504d7b11e3c))
+* **deps:** update lerna monorepo to v5.4.3 ([#1371](https://github.com/christophehurpeau/pob/issues/1371)) ([2545b15](https://github.com/christophehurpeau/pob/commit/2545b1562ed56ebac7a831bb67b207e3ebaf4ce4))
+
+
+### Features
+
+* **deps:** update lerna monorepo to v5.5.0 ([#1385](https://github.com/christophehurpeau/pob/issues/1385)) ([d22a25f](https://github.com/christophehurpeau/pob/commit/d22a25f5c480d5dfd7dfb0e84b1405739764ac8c))
+
+
+
+
+
 # [5.4.0](https://github.com/christophehurpeau/pob/compare/@pob/lerna-light@5.3.0...@pob/lerna-light@5.4.0) (2022-08-12)
 
 

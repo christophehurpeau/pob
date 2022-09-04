@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.19.0](https://github.com/christophehurpeau/pob/compare/pob@10.18.0...pob@10.19.0) (2022-09-04)
+
+
+### Features
+
+* add pob-babel-clean-out for better windows support ([1503de8](https://github.com/christophehurpeau/pob/commit/1503de8d31c7f6a288013860ba87ce047fa85456))
+* **deps:** update dependency eslint to v8.22.0 ([#1367](https://github.com/christophehurpeau/pob/issues/1367)) ([3b540b5](https://github.com/christophehurpeau/pob/commit/3b540b56c5db66d510c6015bbff36fa2ac230357))
+* **deps:** update dependency eslint to v8.23.0 ([#1379](https://github.com/christophehurpeau/pob/issues/1379)) ([839ad12](https://github.com/christophehurpeau/pob/commit/839ad12628057e03af53b0b787768574f781ecc2))
+
+
+
+
+
 # [10.18.0](https://github.com/christophehurpeau/pob/compare/pob@10.17.0...pob@10.18.0) (2022-08-12)
 
 

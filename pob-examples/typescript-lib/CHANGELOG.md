@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.6.1...example-typescript-lib@0.7.0) (2022-09-04)
+
+
+### Features
+
+* add pob-babel-clean-out for better windows support ([1503de8](https://github.com/christophehurpeau/pob/commit/1503de8d31c7f6a288013860ba87ce047fa85456))
+
+
+
+
+
 ## [0.6.1](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.6.0...example-typescript-lib@0.6.1) (2022-08-12)
 
 **Note:** Version bump only for package example-typescript-lib

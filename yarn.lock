@@ -3027,7 +3027,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pob/lerna-light@5.4.0, @pob/lerna-light@workspace:*, @pob/lerna-light@workspace:@pob/lerna-light":
+"@pob/lerna-light@5.5.0, @pob/lerna-light@workspace:*, @pob/lerna-light@workspace:@pob/lerna-light":
   version: 0.0.0-use.local
   resolution: "@pob/lerna-light@workspace:@pob/lerna-light"
   dependencies:
@@ -3065,12 +3065,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: 6.30.0
+    pob-dependencies: 6.31.0
     prettier: 2.7.1
   languageName: unknown
   linkType: soft
 
-"@pob/root@6.21.1, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@6.22.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -3080,7 +3080,7 @@ __metadata:
     husky: ~8.0.1
     json5: ^2.2.1
     lint-staged: 13.0.3
-    pob-dependencies: 6.30.0
+    pob-dependencies: 6.31.0
     prettier: 2.7.1
     repository-check-dirty: 4.1.0
     semver: ^7.3.7
@@ -4306,7 +4306,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-pob-env@8.2.1, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
+"babel-preset-pob-env@8.2.2, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
   version: 0.0.0-use.local
   resolution: "babel-preset-pob-env@workspace:packages/babel-preset-pob-env"
   dependencies:
@@ -6021,7 +6021,7 @@ __metadata:
   resolution: "example-typescript-lib@workspace:pob-examples/typescript-lib"
   dependencies:
     "@babel/core": 7.18.13
-    pob-babel: 34.0.0
+    pob-babel: 34.1.0
     typescript: 4.8.2
   languageName: unknown
   linkType: soft
@@ -9866,7 +9866,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@34.0.0, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
+"pob-babel@34.1.0, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -9877,7 +9877,7 @@ __metadata:
     "@rollup/plugin-node-resolve": 13.3.0
     "@rollup/plugin-run": 2.1.0
     babel-preset-modern-browsers: ^15.0.2
-    babel-preset-pob-env: 8.2.1
+    babel-preset-pob-env: 8.2.2
     rollup: 2.79.0
     rollup-config-external-dependencies: ^2.0.0
     semver: ^7.3.7
@@ -9895,7 +9895,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@6.30.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@6.31.0, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -9907,7 +9907,7 @@ __metadata:
     "@pob/eslint-config": 49.3.2
     "@pob/eslint-config-typescript": 49.3.3
     "@pob/eslint-config-typescript-react": 49.3.2
-    "@pob/lerna-light": 5.4.0
+    "@pob/lerna-light": 5.5.0
     "@pob/pretty-pkg": 4.2.0
     "@types/jest": 28.1.8
     alp-rollup-plugin-config: 1.0.2
@@ -9915,7 +9915,7 @@ __metadata:
     eslint: 8.23.0
     jest: 28.1.3
     jest-junit-reporter: 1.1.0
-    pob-babel: 34.0.0
+    pob-babel: 34.1.0
     prettier: 2.7.1
     repository-check-dirty: 4.1.0
     rollup: 2.79.0
@@ -9953,7 +9953,7 @@ __metadata:
     "@pob/eslint-config": 49.3.2
     "@pob/eslint-config-typescript": 49.3.3
     "@pob/eslint-config-typescript-react": 49.3.2
-    "@pob/root": 6.21.1
+    "@pob/root": 6.22.0
     "@pob/sort-eslint-config": ^3.0.1
     "@pob/sort-object": ^4.0.1
     "@pob/sort-pkg": ^4.0.1
@@ -9971,7 +9971,7 @@ __metadata:
     mem-fs-editor: 9.5.0
     minimist: 1.2.6
     parse-author: 2.0.0
-    pob-dependencies: 6.30.0
+    pob-dependencies: 6.31.0
     prettier: 2.7.1
     semver: 7.3.7
     yeoman-environment: 3.10.0
