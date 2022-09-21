@@ -63,7 +63,7 @@
     "@pob/lerna-light": "workspace:*",
     "@pob/root": "workspace:*",
     "@types/jest": "29.0.3",
-    "check-package-dependencies": "3.9.2",
+    "check-package-dependencies": "3.10.0",
     "eslint": "8.23.1",
     "jest": "29.0.3",
     "pob-babel": "workspace:*",
