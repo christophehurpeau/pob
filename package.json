@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.19.3",
-    "@pob/eslint-config": "49.3.2",
+    "@pob/eslint-config": "49.4.0",
     "@pob/lerna-light": "workspace:*",
     "@pob/root": "workspace:*",
     "@types/jest": "29.0.3",
