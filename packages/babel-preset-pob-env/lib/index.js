@@ -42,9 +42,7 @@ module.exports = function (context, opts = {}) {
   const typescript = opts.typescript !== undefined ? opts.typescript : true;
   const modules = opts.modules !== undefined ? opts.modules : false;
 
-  const resolvePreset = opts.resolvePreset
-    ? opts.resolvePreset
-    : (preset) => preset;
+  const resolvePreset = opts.resolvePreset || ((preset) => preset);
 
   if (opts.exportDefaultName !== undefined) {
     throw new TypeError("Preset pob-env 'exportDefaultName' was removed.");
