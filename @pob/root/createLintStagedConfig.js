@@ -31,6 +31,16 @@ const getSrcDirectories = () => {
   return '{src,lib}';
 };
 
+const getDistDirectories = () => {
+  if (workspaces) {
+    return `${
+      workspaces.length === 1 ? workspaces[0] : `{${workspaces.join(',')}}`
+    }/dist`;
+  }
+
+  return 'dist';
+};
+
 const generateInstallAndDedupe = () => {
   if (pm.name === 'npm') {
     return ['npm install', 'npm dedupe'];
@@ -86,6 +96,13 @@ module.exports = function createLintStagedConfig() {
     [`{.storybook,${srcDirectories}}/**/*.css`]: [
       'prettier --parser css --write',
     ],
-    [`${srcDirectories}/**/*.{ts,tsx}`]: () => ['tsc'],
+    [`${srcDirectories}/**/*.{ts,tsx}`]: () =>
+      pkg.devDependencies && pkg.devDependencies['pob-babel']
+        ? [
+            'rollup --config rollup.config.mjs',
+            'tsc -b tsconfig.build.json',
+            `git --glob-pathspecs add ${getDistDirectories()}/**/*`,
+          ]
+        : ['tsc'],
   };
 };
