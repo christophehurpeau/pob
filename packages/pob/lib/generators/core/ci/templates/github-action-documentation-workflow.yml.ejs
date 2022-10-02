@@ -18,6 +18,9 @@ jobs:
         run: yarn install --immutable --immutable-cache
 
 <% if (typedoc) { -%>
+      - name: Run tsc for tsc cache
+        run: yarn tsc
+
       - name: Generate Typedoc
         run: yarn typedoc --tsconfig tsconfig.doc.json
 <% } -%>
