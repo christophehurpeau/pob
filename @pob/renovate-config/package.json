@@ -12,11 +12,7 @@
   "scripts": {
     "preversion": "node generate-package.json.js && git add package.json"
   },
-  "prettier": {
-    "trailingComma": "all",
-    "singleQuote": true,
-    "arrowParens": "always"
-  },
+  "prettier": "@pob/root/prettier-config",
   "devDependencies": {
     "pob-dependencies": "6.31.0",
     "prettier": "2.7.1"

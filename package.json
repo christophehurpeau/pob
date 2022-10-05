@@ -30,11 +30,7 @@
     "tsc": "tsc -b",
     "watch": "yarn workspaces foreach --parallel --jobs unlimited --interlaced --exclude \"*-example\" -Av run watch"
   },
-  "prettier": {
-    "trailingComma": "all",
-    "singleQuote": true,
-    "arrowParens": "always"
-  },
+  "prettier": "@pob/root/prettier-config",
   "commitlint": {
     "extends": [
       "@pob/commitlint-config"

@@ -23,6 +23,8 @@
     ".": "./lib/index.js",
     "./createLintStagedConfig": "./createLintStagedConfig.js",
     "./createLintStagedConfig.js": "./createLintStagedConfig.js",
+    "./prettier-config": "./prettier-config.js",
+    "./prettier-config.js": "./prettier-config.js",
     "./package.json": "./package.json"
   },
   "sideEffects": false,
@@ -41,11 +43,7 @@
     "lint": "yarn run lint:eslint",
     "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet @pob/root"
   },
-  "prettier": {
-    "trailingComma": "all",
-    "singleQuote": true,
-    "arrowParens": "always"
-  },
+  "prettier": "@pob/root/prettier-config",
   "pob": {},
   "dependencies": {
     "@commitlint/cli": "17.1.2",

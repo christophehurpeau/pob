@@ -3,9 +3,9 @@ on:
   workflow_dispatch:
     inputs:
       dry-run:
-        description: 'Dry run? (y/N)'
+        description: "Dry run? (y/N)"
         required: true
-        default: 'N'
+        default: "N"
 
 jobs:
   publish:
@@ -53,7 +53,7 @@ jobs:
           && contains(github.event.inputs.dry-run, 'y') == false
         with:
           node-version: 14
-          registry-url: 'https://registry.npmjs.org'
+          registry-url: "https://registry.npmjs.org"
 
       - run: lerna publish from-git --no-verify-access --yes
         if: |

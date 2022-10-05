@@ -125,12 +125,7 @@ export default class CommonLintGenerator extends Generator {
 
     delete pkg.standard;
 
-    pkg.prettier = {
-      trailingComma: 'all',
-      singleQuote: true,
-      // https://github.com/airbnb/javascript/pull/1863
-      arrowParens: 'always',
-    };
+    pkg.prettier = '@pob/root/prettier-config';
 
     if (!inLerna || inLerna.root || this.options.monorepo) {
       const rootIgnorePatterns = new Set(
