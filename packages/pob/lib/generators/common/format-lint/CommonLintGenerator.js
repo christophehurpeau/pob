@@ -340,7 +340,10 @@ export default class CommonLintGenerator extends Generator {
         return [
           '@pob/eslint-config-typescript',
           useNodeOnly && '@pob/eslint-config-typescript/node',
-          hasReact && '@pob/eslint-config-typescript-react',
+          hasReact &&
+            `@pob/eslint-config-typescript-react${
+              pkg.dependencies?.['react-native-web'] ? '/react-native-web' : ''
+            }`,
         ].filter(Boolean);
       }
 

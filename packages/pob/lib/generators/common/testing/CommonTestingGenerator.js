@@ -101,7 +101,11 @@ export default class CommonTestingGenerator extends Generator {
     const transpileWithBabel = this.options.monorepo
       ? yoConfigPobMonorepo.typescript
       : pkg.pob && pkg.pob.babelEnvs && pkg.pob.babelEnvs.length > 0;
-    let hasReact = transpileWithBabel && packageUtils.hasReact(pkg);
+    let hasReact =
+      transpileWithBabel &&
+      (this.options.monorepo
+        ? yoConfigPobMonorepo.react ?? packageUtils.hasReact(pkg)
+        : packageUtils.hasReact(pkg));
 
     if (!this.options.enable) {
       packageUtils.removeDevDependencies(pkg, ['jest', '@types/jest']);

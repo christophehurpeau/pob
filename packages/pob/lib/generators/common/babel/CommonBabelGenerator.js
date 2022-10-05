@@ -258,7 +258,14 @@ export default class CommonBabelGenerator extends Generator {
     if (this.entries) {
       this.entries.forEach((entry) => {
         const entryDestPath = this.destinationPath(`${entry}.js`);
-        this.fs.delete(entryDestPath);
+        if (this.options.isApp && entry !== 'index') {
+          this.fs.write(
+            entryDestPath,
+            `// resolution for eslint-plugin-import\nexport * from './src/${entry}/index.ts';\n`,
+          );
+        } else {
+          this.fs.delete(entryDestPath);
+        }
       });
     }
     //
