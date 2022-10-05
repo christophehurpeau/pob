@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [34.2.0](https://github.com/christophehurpeau/pob/compare/pob-babel@34.1.0...pob-babel@34.2.0) (2022-10-05)
+
+
+### Features
+
+* better prettier config ([329d560](https://github.com/christophehurpeau/pob/commit/329d560594cade521e35a6f3237888db49f67b87))
+* **deps:** update dependency rollup to v2.79.1 ([#1402](https://github.com/christophehurpeau/pob/issues/1402)) ([b47b632](https://github.com/christophehurpeau/pob/commit/b47b6329d6dbbe667a8e88455f59437350b50efc))
+* **deps:** update jest monorepo to v29 (major) ([#1376](https://github.com/christophehurpeau/pob/issues/1376)) ([8b3c022](https://github.com/christophehurpeau/pob/commit/8b3c022bc81dcd999cc842e71fe8db48c8c75f66))
+
+
+
+
+
 # [34.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@34.0.0...pob-babel@34.1.0) (2022-09-04)
 
 

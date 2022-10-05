@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.8.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.7.0...example-typescript-lib@0.8.0) (2022-10-05)
+
+
+### Bug Fixes
+
+* use fileURLToPath ([94e5c56](https://github.com/christophehurpeau/pob/commit/94e5c56d91689205a938cb9c35d4a34eb03d3893))
+
+
+### Features
+
+* better prettier config ([329d560](https://github.com/christophehurpeau/pob/commit/329d560594cade521e35a6f3237888db49f67b87))
+
+
+
+
+
 # [0.7.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.6.1...example-typescript-lib@0.7.0) (2022-09-04)
 
 

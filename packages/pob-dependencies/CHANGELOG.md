@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.32.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.31.0...pob-dependencies@6.32.0) (2022-10-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency eslint to v8.23.1 ([#1395](https://github.com/christophehurpeau/pob/issues/1395)) ([3a80c50](https://github.com/christophehurpeau/pob/commit/3a80c501ee492bf248304529488e71feb8154ff4))
+* **deps:** update dependency semver to v7.3.8 ([#1417](https://github.com/christophehurpeau/pob/issues/1417)) ([b9d4913](https://github.com/christophehurpeau/pob/commit/b9d4913b70e930d02a59c5ae753688fd08954f12))
+
+
+### Features
+
+* better prettier config ([329d560](https://github.com/christophehurpeau/pob/commit/329d560594cade521e35a6f3237888db49f67b87))
+* **deps:** update @pob/eslint-config to v49.4.0 ([#1390](https://github.com/christophehurpeau/pob/issues/1390)) ([a7db8f0](https://github.com/christophehurpeau/pob/commit/a7db8f09a0bee265458ce0f0fa2518fd46adcfbb))
+* **deps:** update dependency @types/jest to v29.0.1 ([#1394](https://github.com/christophehurpeau/pob/issues/1394)) ([be65269](https://github.com/christophehurpeau/pob/commit/be65269ff83b345016c6a0f33ca1f940b7e55f75))
+* **deps:** update dependency @types/jest to v29.0.2 ([#1396](https://github.com/christophehurpeau/pob/issues/1396)) ([7071073](https://github.com/christophehurpeau/pob/commit/7071073fe732e743e3e4e3f2e62c9508eddaeb0a))
+* **deps:** update dependency @types/jest to v29.0.3 ([#1398](https://github.com/christophehurpeau/pob/issues/1398)) ([1df5f19](https://github.com/christophehurpeau/pob/commit/1df5f19634467dd06d2719fe7bd96082eca482bc))
+* **deps:** update dependency @types/jest to v29.1.0 ([#1411](https://github.com/christophehurpeau/pob/issues/1411)) ([1914696](https://github.com/christophehurpeau/pob/commit/1914696a0d335c80536256167ac3bab774b2729f))
+* **deps:** update dependency @types/jest to v29.1.1 ([#1413](https://github.com/christophehurpeau/pob/issues/1413)) ([6be804a](https://github.com/christophehurpeau/pob/commit/6be804a064be20f537b4b38a5fcf0f0579d5f46f))
+* **deps:** update dependency eslint to v8.24.0 ([#1403](https://github.com/christophehurpeau/pob/issues/1403)) ([1c0d9e4](https://github.com/christophehurpeau/pob/commit/1c0d9e495292610235b9c6fbcb726f5e4cea586f))
+* **deps:** update dependency jest to v29.0.3 ([#1393](https://github.com/christophehurpeau/pob/issues/1393)) ([782a9be](https://github.com/christophehurpeau/pob/commit/782a9bee17892495aeb89079dbf74aac33a479b8))
+* **deps:** update dependency jest to v29.1.1 ([#1409](https://github.com/christophehurpeau/pob/issues/1409)) ([8b97e3d](https://github.com/christophehurpeau/pob/commit/8b97e3db8429b2544bd65866d942d910684b24bc))
+* **deps:** update dependency jest to v29.1.2 ([#1414](https://github.com/christophehurpeau/pob/issues/1414)) ([1bdb78f](https://github.com/christophehurpeau/pob/commit/1bdb78f84dae644c024b76ff1cb905f276dc0813))
+* **deps:** update dependency rollup to v2.79.1 ([#1402](https://github.com/christophehurpeau/pob/issues/1402)) ([b47b632](https://github.com/christophehurpeau/pob/commit/b47b6329d6dbbe667a8e88455f59437350b50efc))
+* **deps:** update dependency typedoc to v0.23.15 ([#1399](https://github.com/christophehurpeau/pob/issues/1399)) ([392217c](https://github.com/christophehurpeau/pob/commit/392217caf73c080535b59880fb6b91272cfee607))
+* **deps:** update jest monorepo to v29 (major) ([#1376](https://github.com/christophehurpeau/pob/issues/1376)) ([8b3c022](https://github.com/christophehurpeau/pob/commit/8b3c022bc81dcd999cc842e71fe8db48c8c75f66))
+
+
+
+
+
 # [6.31.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.30.0...pob-dependencies@6.31.0) (2022-09-04)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.11.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.10.2...@pob/renovate-config@5.11.0) (2022-10-05)
+
+
+### Bug Fixes
+
+* downgrade lerna ([0202226](https://github.com/christophehurpeau/pob/commit/0202226fe6491a2ae18527759436593ab96cbb8e))
+
+
+### Features
+
+* better prettier config ([329d560](https://github.com/christophehurpeau/pob/commit/329d560594cade521e35a6f3237888db49f67b87))
+
+
+
+
+
 ## [5.10.2](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.10.1...@pob/renovate-config@5.10.2) (2022-09-04)
 
 **Note:** Version bump only for package @pob/renovate-config

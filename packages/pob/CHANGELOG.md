@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.20.0](https://github.com/christophehurpeau/pob/compare/pob@10.19.0...pob@10.20.0) (2022-10-05)
+
+
+### Bug Fixes
+
+* **deps:** update dependency eslint to v8.23.1 ([#1395](https://github.com/christophehurpeau/pob/issues/1395)) ([3a80c50](https://github.com/christophehurpeau/pob/commit/3a80c501ee492bf248304529488e71feb8154ff4))
+* **deps:** update dependency semver to v7.3.8 ([#1417](https://github.com/christophehurpeau/pob/issues/1417)) ([b9d4913](https://github.com/christophehurpeau/pob/commit/b9d4913b70e930d02a59c5ae753688fd08954f12))
+* **deps:** update dependency yeoman-environment to v3.11.1 ([#1405](https://github.com/christophehurpeau/pob/issues/1405)) ([bea37d3](https://github.com/christophehurpeau/pob/commit/bea37d39d2707b4eff73b1bc99b3750d35c35e23))
+* disable husky when commiting release ([8239cea](https://github.com/christophehurpeau/pob/commit/8239cea55adf2b624fe6f957ac8511245d3d9710))
+* typedoc ci fix cache tsc ([5954146](https://github.com/christophehurpeau/pob/commit/5954146ab24942f792ca6deb11f00da58daa1605))
+* use fileURLToPath ([94e5c56](https://github.com/christophehurpeau/pob/commit/94e5c56d91689205a938cb9c35d4a34eb03d3893))
+
+
+### Features
+
+* better prettier config ([329d560](https://github.com/christophehurpeau/pob/commit/329d560594cade521e35a6f3237888db49f67b87))
+* **deps:** update @pob/eslint-config to v49.4.0 ([#1390](https://github.com/christophehurpeau/pob/issues/1390)) ([a7db8f0](https://github.com/christophehurpeau/pob/commit/a7db8f09a0bee265458ce0f0fa2518fd46adcfbb))
+* **deps:** update dependency eslint to v8.24.0 ([#1403](https://github.com/christophehurpeau/pob/issues/1403)) ([1c0d9e4](https://github.com/christophehurpeau/pob/commit/1c0d9e495292610235b9c6fbcb726f5e4cea586f))
+* **deps:** update dependency yeoman-environment to v3.11.0 ([#1404](https://github.com/christophehurpeau/pob/issues/1404)) ([4f78cd4](https://github.com/christophehurpeau/pob/commit/4f78cd4f829aa88252e7f7617e5bfcf866c4842b))
+* **deps:** update dependency yeoman-environment to v3.12.0 ([#1416](https://github.com/christophehurpeau/pob/issues/1416)) ([8256499](https://github.com/christophehurpeau/pob/commit/8256499ce99b7e6b2cb954a12580c6718cef9d10))
+
+
+
+
+
 # [10.19.0](https://github.com/christophehurpeau/pob/compare/pob@10.18.0...pob@10.19.0) (2022-09-04)
 
 

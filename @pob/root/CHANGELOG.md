@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.23.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.22.0...@pob/root@6.23.0) (2022-10-05)
+
+
+### Features
+
+* **@pob/root:** always build in pre-commit ([ca17fc0](https://github.com/christophehurpeau/pob/commit/ca17fc022dd366ffafed0bdf410f328e13f0f867))
+* better prettier config ([329d560](https://github.com/christophehurpeau/pob/commit/329d560594cade521e35a6f3237888db49f67b87))
+
+
+
+
+
 # [6.22.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.21.1...@pob/root@6.22.0) (2022-09-04)
 
 

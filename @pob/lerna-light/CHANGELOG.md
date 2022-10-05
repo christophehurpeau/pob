@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.6.0](https://github.com/christophehurpeau/pob/compare/@pob/lerna-light@5.5.0...@pob/lerna-light@5.6.0) (2022-10-05)
+
+
+### Bug Fixes
+
+* **deps:** update lerna monorepo to v5.5.1 ([#1392](https://github.com/christophehurpeau/pob/issues/1392)) ([15ff6ec](https://github.com/christophehurpeau/pob/commit/15ff6eca75987c25f48b19241d1ddd07278e6116))
+* **deps:** update lerna monorepo to v5.5.2 ([#1400](https://github.com/christophehurpeau/pob/issues/1400)) ([1556f7f](https://github.com/christophehurpeau/pob/commit/1556f7f67b51ccd2e41e10b19e13438ec6f27db8))
+* **deps:** update lerna monorepo to v5.5.4 ([#1410](https://github.com/christophehurpeau/pob/issues/1410)) ([e84a600](https://github.com/christophehurpeau/pob/commit/e84a600de1fb33eba1528f41073e3de59fbbe243))
+* **deps:** update lerna monorepo to v5.6.1 ([#1415](https://github.com/christophehurpeau/pob/issues/1415)) ([1a629a7](https://github.com/christophehurpeau/pob/commit/1a629a7eb601b727f9bdf215a6d8686d5a37420f))
+* downgrade lerna ([0202226](https://github.com/christophehurpeau/pob/commit/0202226fe6491a2ae18527759436593ab96cbb8e))
+
+
+### Features
+
+* better prettier config ([329d560](https://github.com/christophehurpeau/pob/commit/329d560594cade521e35a6f3237888db49f67b87))
+* **deps:** update lerna monorepo to v5.6.0 ([#1412](https://github.com/christophehurpeau/pob/issues/1412)) ([3363fef](https://github.com/christophehurpeau/pob/commit/3363fef3d8ab228fa789470387ce4eb20026dc37))
+
+
+
+
+
 # [5.5.0](https://github.com/christophehurpeau/pob/compare/@pob/lerna-light@5.4.0...@pob/lerna-light@5.5.0) (2022-09-04)
 
 

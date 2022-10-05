@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-object@4.0.1...@pob/sort-object@4.1.0) (2022-10-05)
+
+
+### Features
+
+* better prettier config ([329d560](https://github.com/christophehurpeau/pob/commit/329d560594cade521e35a6f3237888db49f67b87))
+
+
+
+
+
 ## [4.0.1](https://github.com/christophehurpeau/pob/compare/@pob/sort-object@4.0.0...@pob/sort-object@4.0.1) (2021-12-12)
 
 

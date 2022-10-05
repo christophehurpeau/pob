@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.1.2...example-simple-lib@0.2.0) (2022-10-05)
+
+
+### Features
+
+* better prettier config ([329d560](https://github.com/christophehurpeau/pob/commit/329d560594cade521e35a6f3237888db49f67b87))
+
+
+
+
+
 ## [0.1.2](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.1.1...example-simple-lib@0.1.2) (2021-12-18)
 
 **Note:** Version bump only for package example-simple-lib

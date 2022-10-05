@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.3.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@8.2.2...babel-preset-pob-env@8.3.0) (2022-10-05)
+
+
+### Features
+
+* better prettier config ([329d560](https://github.com/christophehurpeau/pob/commit/329d560594cade521e35a6f3237888db49f67b87))
+* **deps:** update @pob/eslint-config to v49.4.0 ([#1390](https://github.com/christophehurpeau/pob/issues/1390)) ([a7db8f0](https://github.com/christophehurpeau/pob/commit/a7db8f09a0bee265458ce0f0fa2518fd46adcfbb))
+
+
+
+
+
 ## [8.2.2](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@8.2.1...babel-preset-pob-env@8.2.2) (2022-09-04)
 
 **Note:** Version bump only for package babel-preset-pob-env
