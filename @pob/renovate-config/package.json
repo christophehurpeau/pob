@@ -158,8 +158,9 @@
           ]
         },
         {
-          "packagePatterns": [
-            "^@pob/root"
+          "packageNames": [
+            "@pob/root",
+            "yarn"
           ],
           "stabilityDays": 0,
           "schedule": [
