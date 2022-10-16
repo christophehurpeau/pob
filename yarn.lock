@@ -3241,14 +3241,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-run@npm:2.1.0":
-  version: 2.1.0
-  resolution: "@rollup/plugin-run@npm:2.1.0"
+"@rollup/plugin-run@npm:3.0.0":
+  version: 3.0.0
+  resolution: "@rollup/plugin-run@npm:3.0.0"
   dependencies:
-    "@types/node": 14.0.26
+    "@types/node": 14.18.30
   peerDependencies:
-    rollup: ^2.0.0
-  checksum: b5a338615022caa8e39b3a71c2c9f41e5cad3c94ed2b41c6470d82decdef778709d585cc3497d4d3b50d1e4521c8c82ee31d6c0bcfe01ee25c99880757fdd5ac
+    rollup: ^2.0.0||^3.0.0
+  peerDependenciesMeta:
+    rollup:
+      optional: true
+  checksum: 9e82d5f4926849e05e052ffb3dcc4ffe3fd57ff1fdfcc0181f85955874501291fc18d086c9d5f109cc3d750b8e77043372aa3b7c52f2a61772b8f0dcdf9c5d8b
   languageName: node
   linkType: hard
 
@@ -3527,17 +3530,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:14.0.26":
-  version: 14.0.26
-  resolution: "@types/node@npm:14.0.26"
-  checksum: f23255d21725db1ec26ca3f992ce7fbf03cdb8556ea4dce3464ea94da868cf5e3404ff2242ded49c05474b80f57f58e11e934870e83dc8badf2b80c42936dd6b
-  languageName: node
-  linkType: hard
-
-"@types/node@npm:^14.0.0":
-  version: 14.18.26
-  resolution: "@types/node@npm:14.18.26"
-  checksum: c6ac3f9d4f6f77c0fa5ac17757779ad4d9835abfe3af5708b7552597cb5c7c1103e83499ccaf767a1cfa70040990bcf3f58761c547051dc8d5077f3c419091b1
+"@types/node@npm:14.18.30, @types/node@npm:^14.0.0":
+  version: 14.18.30
+  resolution: "@types/node@npm:14.18.30"
+  checksum: 347b2aa53631a2b2056f5d7b98e695eac40e8a83cbc4ee40ab7b2684f1fd4ada3d6522343a3f1ab610fbcd8457c4ad77103240474d568c905d62c1b5d6666589
   languageName: node
   linkType: hard
 
@@ -9966,7 +9962,7 @@ __metadata:
     "@rollup/plugin-babel": 5.3.1
     "@rollup/plugin-json": 5.0.0
     "@rollup/plugin-node-resolve": 15.0.0
-    "@rollup/plugin-run": 2.1.0
+    "@rollup/plugin-run": 3.0.0
     babel-preset-modern-browsers: ^15.0.2
     babel-preset-pob-env: 8.3.0
     rollup: 2.79.1
