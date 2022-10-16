@@ -80,7 +80,6 @@ export default class LibReadmeGenerator extends Generator {
         {
           privatePackage: pkg.private,
           packageName: pkg.name,
-          packagePath: `${pkg.name[0] === '@' ? '' : 'packages/'}${pkg.name}`,
           camelCaseProjectName: camelCase(pkg.name),
           description: pkg.description,
           inLerna,

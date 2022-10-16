@@ -19,6 +19,13 @@ export default class CommonLintGenerator extends Generator {
       description: 'Is root monorepo',
     });
 
+    this.option('isApp', {
+      type: Boolean,
+      required: false,
+      defaults: false,
+      description: 'Is app',
+    });
+
     this.option('babel', {
       type: String,
       required: false,
@@ -338,7 +345,7 @@ export default class CommonLintGenerator extends Generator {
 
       if (useBabel) {
         return [
-          '@pob/eslint-config-typescript',
+          `@pob/eslint-config-typescript${this.options.isApp ? '/app' : ''}`,
           useNodeOnly && '@pob/eslint-config-typescript/node',
           hasReact &&
             `@pob/eslint-config-typescript-react${

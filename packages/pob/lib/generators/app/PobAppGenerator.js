@@ -185,6 +185,7 @@ export default class PobAppGenerator extends Generator {
       });
 
       this.composeWith('pob:common:format-lint', {
+        isApp: true,
         documentation: false,
         testing: this.appConfig.testing,
         babel,

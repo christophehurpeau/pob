@@ -109,7 +109,12 @@ export default class CommonTypescriptGenerator extends Generator {
                 packageName,
                 `../../${
                   packageName[0] === '@'
-                    ? packageName
+                    ? // eslint-disable-next-line unicorn/no-nested-ternary
+                      yoConfig.pob.project.type === 'app'
+                      ? `packages/${packageName.slice(
+                          packageName.indexOf('/') + 1,
+                        )}`
+                      : packageName
                     : `packages/${packageName}`
                 }`,
               ]),
@@ -119,7 +124,9 @@ export default class CommonTypescriptGenerator extends Generator {
             ([packageName, packageLocation]) => [
               packageName,
               `${packageLocation}/${
-                existsSync(`${packageLocation}/src`) ? 'src' : 'lib'
+                existsSync(`${packageLocations.get(packageName)}/tsconfig.json`)
+                  ? 'src'
+                  : 'lib'
               }`,
             ],
           );
