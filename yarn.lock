@@ -3810,13 +3810,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"alp-rollup-plugin-config@npm:1.0.2":
-  version: 1.0.2
-  resolution: "alp-rollup-plugin-config@npm:1.0.2"
+"alp-rollup-plugin-config@npm:1.1.0":
+  version: 1.1.0
+  resolution: "alp-rollup-plugin-config@npm:1.1.0"
   dependencies:
     "@guanghechen/rollup-plugin-copy": 1.8.6
     js-yaml: 4.1.0
-  checksum: dbfd2743055863fcd69052c682e6e62dff2815930f60a4c6be21866a0b6b6da7238c638bf5923dc708d5ccae36ffa1d7d87202faa2be13e094b063b7d84e0b23
+  peerDependencies:
+    rollup: ^2.64.0
+  checksum: c2a5507745e4dadea39433ad0d6b95c99b9aa13bde6786f7032c54ab0680364df6c82a23ec00ff69af49a2d79b8653137baed1ef805df8ba3936ac286a8857f9
   languageName: node
   linkType: hard
 
@@ -9963,7 +9965,7 @@ __metadata:
     "@pob/lerna-light": 5.6.0
     "@pob/pretty-pkg": 4.3.0
     "@types/jest": 29.1.2
-    alp-rollup-plugin-config: 1.0.2
+    alp-rollup-plugin-config: 1.1.0
     babel-preset-modern-browsers: 15.0.2
     eslint: 8.25.0
     jest: 29.2.0
