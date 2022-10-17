@@ -35,8 +35,8 @@
   "prettier": "@pob/root/prettier-config",
   "pob": {},
   "dependencies": {
-    "@lerna/cli": "5.5.4",
-    "@lerna/publish": "5.5.4",
-    "@lerna/version": "5.5.4"
+    "@lerna/cli": "6.0.1",
+    "@lerna/publish": "6.0.1",
+    "@lerna/version": "6.0.1"
   }
 }
