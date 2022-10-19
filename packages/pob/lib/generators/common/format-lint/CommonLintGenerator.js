@@ -345,8 +345,9 @@ export default class CommonLintGenerator extends Generator {
 
       if (useBabel) {
         return [
-          `@pob/eslint-config-typescript${this.options.isApp ? '/app' : ''}`,
+          '@pob/eslint-config-typescript',
           useNodeOnly && '@pob/eslint-config-typescript/node',
+          this.options.isApp && '@pob/eslint-config-typescript/app',
           hasReact &&
             `@pob/eslint-config-typescript-react${
               pkg.dependencies?.['react-native-web'] ? '/react-native-web' : ''
