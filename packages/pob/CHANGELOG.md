@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.21.0](https://github.com/christophehurpeau/pob/compare/pob@10.20.0...pob@10.21.0) (2022-10-19)
+
+
+### Bug Fixes
+
+* **deps:** update dependency minimist to v1.2.7 ([#1429](https://github.com/christophehurpeau/pob/issues/1429)) ([273c62d](https://github.com/christophehurpeau/pob/commit/273c62dddc85d92be1dbdb1d304ca15da0af2362))
+* **deps:** update dependency yeoman-environment to v3.12.1 ([#1430](https://github.com/christophehurpeau/pob/issues/1430)) ([b188b91](https://github.com/christophehurpeau/pob/commit/b188b9130527a570e39efa95f79e1769fb72ee69))
+* **pob:** fix config app eslint ([dbec241](https://github.com/christophehurpeau/pob/commit/dbec2410e2c339f2a25860968d32345b272f9b9f))
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.25.0 ([#1421](https://github.com/christophehurpeau/pob/issues/1421)) ([a517b35](https://github.com/christophehurpeau/pob/commit/a517b35bfd3bd8c966538774b45eebf2199bb08c))
+* improve generator for react-native-web monorepo ([49f0cd0](https://github.com/christophehurpeau/pob/commit/49f0cd0c55b842a9d5781cf062923dfc62d91e9e))
+* **pob:** add support for cjs in extraEntries ([d46794a](https://github.com/christophehurpeau/pob/commit/d46794ac20555e3d54536f063f3b1edb5281d854))
+* **pob:** improve config for apps ([50dbce0](https://github.com/christophehurpeau/pob/commit/50dbce05a34a04da9a216260a92e5286b8010a18))
+
+
+
+
+
 # [10.20.0](https://github.com/christophehurpeau/pob/compare/pob@10.19.0...pob@10.20.0) (2022-10-05)
 
 

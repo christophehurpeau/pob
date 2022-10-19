@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.12.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.11.0...@pob/renovate-config@5.12.0) (2022-10-19)
+
+
+### Features
+
+* **@pob/renovate-config:** auto approve yarn ([080daca](https://github.com/christophehurpeau/pob/commit/080daca33dc593591eddc898ff88a6069dedff87))
+
+
+
+
+
 # [5.11.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.10.2...@pob/renovate-config@5.11.0) (2022-10-05)
 
 

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.33.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.32.0...pob-dependencies@6.33.0) (2022-10-19)
+
+
+### Features
+
+* **deps:** update dependency @types/jest to v29.2.0 ([#1435](https://github.com/christophehurpeau/pob/issues/1435)) ([d37bc07](https://github.com/christophehurpeau/pob/commit/d37bc0726ee78443a3949e7044c9910f66c5e532))
+* **deps:** update dependency alp-rollup-plugin-config to v1.1.0 ([#1431](https://github.com/christophehurpeau/pob/issues/1431)) ([6542ef8](https://github.com/christophehurpeau/pob/commit/6542ef87130ecc7e75f5728c791397dbfed2b658))
+* **deps:** update dependency eslint to v8.25.0 ([#1421](https://github.com/christophehurpeau/pob/issues/1421)) ([a517b35](https://github.com/christophehurpeau/pob/commit/a517b35bfd3bd8c966538774b45eebf2199bb08c))
+* **deps:** update dependency jest to v29.2.1 ([#1436](https://github.com/christophehurpeau/pob/issues/1436)) ([04ac8bf](https://github.com/christophehurpeau/pob/commit/04ac8bf27a0e65daf0f636b557d1f66a13590840))
+* **deps:** update dependency typedoc to v0.23.16 ([#1428](https://github.com/christophehurpeau/pob/issues/1428)) ([bc18682](https://github.com/christophehurpeau/pob/commit/bc1868214c3eb641e678feadd956fe681c2e1720))
+* **deps:** update dependency typedoc to v0.23.17 ([#1434](https://github.com/christophehurpeau/pob/issues/1434)) ([8d407a2](https://github.com/christophehurpeau/pob/commit/8d407a2c1648be308471d32be5fb643b7297c4f9))
+* **deps:** update jest monorepo ([#1420](https://github.com/christophehurpeau/pob/issues/1420)) ([9b5c748](https://github.com/christophehurpeau/pob/commit/9b5c74800aa70d302b686b2e84c286267e5f680c))
+
+
+
+
+
 # [6.32.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@6.31.0...pob-dependencies@6.32.0) (2022-10-05)
 
 
