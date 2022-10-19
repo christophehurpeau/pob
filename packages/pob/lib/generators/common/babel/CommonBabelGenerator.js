@@ -674,7 +674,10 @@ export default class CommonBabelGenerator extends Generator {
         pkg.pob.extraEntries.forEach((exportName) => {
           pkg.exports[`./${exportName}`] =
             pkg.type === 'module'
-              ? `./${exportName}.js`
+              ? // eslint-disable-next-line unicorn/no-nested-ternary
+                exportName.endsWith('cjs')
+                ? `./${exportName}`
+                : `./${exportName}.js`
               : {
                   import: `./${exportName}.mjs`,
                   require: `./${exportName}.js`,
