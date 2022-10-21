@@ -3183,12 +3183,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-babel@npm:6.0.0":
-  version: 6.0.0
-  resolution: "@rollup/plugin-babel@npm:6.0.0"
+"@rollup/plugin-babel@npm:6.0.1":
+  version: 6.0.1
+  resolution: "@rollup/plugin-babel@npm:6.0.1"
   dependencies:
     "@babel/helper-module-imports": ^7.18.6
-    "@rollup/pluginutils": ^4.2.1
+    "@rollup/pluginutils": ^5.0.1
   peerDependencies:
     "@babel/core": ^7.0.0
     "@types/babel__core": ^7.1.9
@@ -3198,7 +3198,7 @@ __metadata:
       optional: true
     rollup:
       optional: true
-  checksum: 8557db5bbc0b4142da7611df463f80459c483308b41fe88241d9d1de212cb7e3bcce9da6d861baba34c01f6a941f486d80b1bf1d25fa9d2b6ac6248636c329d9
+  checksum: 041be72a919f8dfee6bee7e6fe2ded7a06c84911a4722e11041cf40a6e34f08dd0c50068b68c6dde69e4f4d2204ad9f9dd6fb27513ef96a4fa3ca9a333ea5b2e
   languageName: node
   linkType: hard
 
@@ -3256,6 +3256,22 @@ __metadata:
     estree-walker: ^2.0.1
     picomatch: ^2.2.2
   checksum: 6bc41f22b1a0f1efec3043899e4d3b6b1497b3dea4d94292d8f83b4cf07a1073ecbaedd562a22d11913ff7659f459677b01b09e9598a98936e746780ecc93a12
+  languageName: node
+  linkType: hard
+
+"@rollup/pluginutils@npm:^5.0.1":
+  version: 5.0.1
+  resolution: "@rollup/pluginutils@npm:5.0.1"
+  dependencies:
+    "@types/estree": ^1.0.0
+    estree-walker: ^2.0.2
+    picomatch: ^2.3.1
+  peerDependencies:
+    rollup: ^1.20.0||^2.0.0||^3.0.0
+  peerDependenciesMeta:
+    rollup:
+      optional: true
+  checksum: c96c8041436842d6a13dfb5ef066625185546b93da2b0a1b135c19b2722d073a5075a842240531a12befb0d05d1856a270f00a655014bd54cfe19c8279ed5322
   languageName: node
   linkType: hard
 
@@ -3399,6 +3415,13 @@ __metadata:
     "@types/node": "*"
     "@types/responselike": "*"
   checksum: c25b1bfa2f4f2cc1ca8e1bebad99f2e2c502a3fc09b5270765bfd6b57b1b73b9fab7127acb618beb04c646534a21c62b052aa6942bdfc461ee49387ec9975cd5
+  languageName: node
+  linkType: hard
+
+"@types/estree@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@types/estree@npm:1.0.0"
+  checksum: 910d97fb7092c6738d30a7430ae4786a38542023c6302b95d46f49420b797f21619cdde11fa92b338366268795884111c2eb10356e4bd2c8ad5b92941e9e6443
   languageName: node
   linkType: hard
 
@@ -6037,7 +6060,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"estree-walker@npm:^2.0.1":
+"estree-walker@npm:^2.0.1, estree-walker@npm:^2.0.2":
   version: 2.0.2
   resolution: "estree-walker@npm:2.0.2"
   checksum: 6151e6f9828abe2259e57f5fd3761335bb0d2ebd76dc1a01048ccee22fabcfef3c0859300f6d83ff0d1927849368775ec5a6d265dde2f6de5a1be1721cd94efc
@@ -9927,7 +9950,7 @@ __metadata:
   dependencies:
     "@babel/core": ^7.17.10
     "@babel/plugin-transform-runtime": 7.19.1
-    "@rollup/plugin-babel": 6.0.0
+    "@rollup/plugin-babel": 6.0.1
     "@rollup/plugin-json": 5.0.0
     "@rollup/plugin-node-resolve": 15.0.0
     "@rollup/plugin-run": 3.0.0
