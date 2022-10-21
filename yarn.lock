@@ -3235,9 +3235,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-run@npm:3.0.0":
-  version: 3.0.0
-  resolution: "@rollup/plugin-run@npm:3.0.0"
+"@rollup/plugin-run@npm:3.0.1":
+  version: 3.0.1
+  resolution: "@rollup/plugin-run@npm:3.0.1"
   dependencies:
     "@types/node": 14.18.30
   peerDependencies:
@@ -3245,7 +3245,7 @@ __metadata:
   peerDependenciesMeta:
     rollup:
       optional: true
-  checksum: 9e82d5f4926849e05e052ffb3dcc4ffe3fd57ff1fdfcc0181f85955874501291fc18d086c9d5f109cc3d750b8e77043372aa3b7c52f2a61772b8f0dcdf9c5d8b
+  checksum: f07d234ce09c118c863aa09e690061d3aaeec13aab9c161b386c7baf2fc91cb5c6598b000e94dccb98efd8f9fec82119ec37795afb9d57f794a8f162f90c9c0d
   languageName: node
   linkType: hard
 
@@ -9943,7 +9943,7 @@ __metadata:
     "@rollup/plugin-babel": 6.0.2
     "@rollup/plugin-json": 5.0.1
     "@rollup/plugin-node-resolve": 15.0.1
-    "@rollup/plugin-run": 3.0.0
+    "@rollup/plugin-run": 3.0.1
     babel-preset-modern-browsers: ^15.0.2
     babel-preset-pob-env: 8.3.0
     rollup: 2.79.1
