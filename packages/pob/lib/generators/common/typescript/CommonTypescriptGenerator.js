@@ -26,6 +26,24 @@ export default class CommonTypescriptGenerator extends Generator {
       desc: 'enable jsx with typescript',
     });
 
+    this.option('jsxPreserve', {
+      type: Boolean,
+      defaults: true,
+      desc: 'force jsx preserve in tsconfig for legacy apps (nextjs, CRA)',
+    });
+
+    this.option('forceExcludeNodeModules', {
+      type: Boolean,
+      defaults: true,
+      desc: 'force exclude node_modules for legacy apps (nextjs, CRA)',
+    });
+
+    this.option('forceAllowJs', {
+      type: Boolean,
+      defaults: true,
+      desc: 'force allow js for legacy apps (nextjs, CRA)',
+    });
+
     this.option('dom', {
       type: Boolean,
       defaults: true,
@@ -154,10 +172,13 @@ export default class CommonTypescriptGenerator extends Generator {
           monorepoPackageReferences,
           rootDir: this.options.rootDir,
           jsx,
+          jsxPreserve: this.options.jsxPreserve,
           composite,
           dom,
           baseUrl: this.options.baseUrl,
           resolveJsonModule: this.options.resolveJsonModule,
+          forceExcludeNodeModules: this.options.forceExcludeNodeModules,
+          forceAllowJs: this.options.forceAllowJs,
         },
       );
       copyAndFormatTpl(

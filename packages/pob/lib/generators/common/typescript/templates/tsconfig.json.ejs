@@ -3,7 +3,7 @@
     "<%= rootDir %>/**/*.ts"<% if (jsx) { -%>,
     "<%= rootDir %>/**/*.tsx"<% } %>
   ],
-<% if(rootDir === '.') { -%>
+<% if(rootDir === '.' || forceExcludeNodeModules) { -%>
   "exclude": [
     "node_modules"
   ],
@@ -31,8 +31,11 @@
     "target": "esnext",                       /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */
     "module": "esnext",                       /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */
     "lib": [<%- dom ? '"dom", ' : '' %>"esnext"],                 /* Polyfills are imported either by babel or with polyfill.io */
-    <%= jsx ? '' : '// ' %>"jsx": "react-jsx",                     /* 'react-jsx' is used with react/jsx-runtime (react >=17 || >= 16.14.0 | >= 15.7.0) */
+    <%= jsx ? '' : '// ' %>"jsx": "<%= jsxPreserve ? 'preserve' : 'react-jsx' %>",                     /* 'react-jsx' is used with react/jsx-runtime (react >=17 || >= 16.14.0 | >= 15.7.0) */
     "isolatedModules": true,                  /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
+<% if(forceAllowJs) { -%>
+    "allowJs": true,
+<% } -%>
 
     /* Enable all strict type-checking options. */
     "strict": true,

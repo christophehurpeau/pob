@@ -149,6 +149,9 @@ export default class PobAppGenerator extends Generator {
       builddefs: false,
       dom: browser,
       jsx,
+      jsxPreserve: this.appConfig.type === 'next.js',
+      forceExcludeNodeModules: this.appConfig.type === 'next.js',
+      forceAllowJs: this.appConfig.type === 'next.js',
       updateOnly: this.options.updateOnly,
       resolveJsonModule: true,
       baseUrl: (() => {
