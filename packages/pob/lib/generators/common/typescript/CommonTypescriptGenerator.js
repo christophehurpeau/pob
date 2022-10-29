@@ -28,19 +28,19 @@ export default class CommonTypescriptGenerator extends Generator {
 
     this.option('jsxPreserve', {
       type: Boolean,
-      defaults: true,
+      defaults: false,
       desc: 'force jsx preserve in tsconfig for legacy apps (nextjs, CRA)',
     });
 
     this.option('forceExcludeNodeModules', {
       type: Boolean,
-      defaults: true,
+      defaults: false,
       desc: 'force exclude node_modules for legacy apps (nextjs, CRA)',
     });
 
     this.option('forceAllowJs', {
       type: Boolean,
-      defaults: true,
+      defaults: false,
       desc: 'force allow js for legacy apps (nextjs, CRA)',
     });
 
