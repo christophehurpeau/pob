@@ -7,7 +7,7 @@ export function writeAndFormat(fs, destinationPath, content, { parser } = {}) {
       parser,
       filepath: destinationPath,
       trailingComma: 'all',
-      singleQuote: true,
+      singleQuote: !destinationPath.endsWith('.yml'),
       arrowParens: 'always',
     }),
   );
