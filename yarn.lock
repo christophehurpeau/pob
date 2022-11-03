@@ -9996,7 +9996,7 @@ __metadata:
     repository-check-dirty: 4.2.0
     rollup: 2.79.1
     semver: 7.3.8
-    typedoc: 0.23.19
+    typedoc: 0.23.20
     typescript: 4.8.4
   languageName: unknown
   linkType: soft
@@ -11656,9 +11656,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"typedoc@npm:0.23.19":
-  version: 0.23.19
-  resolution: "typedoc@npm:0.23.19"
+"typedoc@npm:0.23.20":
+  version: 0.23.20
+  resolution: "typedoc@npm:0.23.20"
   dependencies:
     lunr: ^2.3.9
     marked: ^4.0.19
@@ -11668,7 +11668,7 @@ resolve@^2.0.0-next.3:
     typescript: 4.6.x || 4.7.x || 4.8.x
   bin:
     typedoc: bin/typedoc
-  checksum: 4659dce4e8550a3f0d4739b6c9c583d8f2afba9c37e2fe38325e3cff781a50daf57afe10cbcc27f11b56da0623d502628e0713c55f30eae619c4427d18ce1064
+  checksum: 8dbe046794a827b87e186523df86573673520ea5c706e1dfc2a820360bda5e998c23fd2ced91299ef060339f6ebba1086776e4e7423769da9b135a13edee10ec
   languageName: node
   linkType: hard
 
