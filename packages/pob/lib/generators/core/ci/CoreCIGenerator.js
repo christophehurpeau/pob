@@ -111,9 +111,10 @@ export default class CoreCIGenerator extends Generator {
           build: this.options.build,
           typescript: this.options.typescript,
           codecov: this.options.codecov,
-          supportsNode14:
-            !this.options.isApp ||
-            inLerna.pobConfig?.project?.supportsNode14 !== false,
+          onlyLatestLTS:
+            this.options.isApp ||
+            inLerna.pobConfig?.project?.supportsNode14 === false ||
+            inLerna.pobConfig?.project?.onlyLatestLTS !== false,
 
           isReleasePleaseEnabled: this.isReleasePleaseEnabled,
           publishSinglePackage: this.isReleasePleaseEnabled && !pkg.private,

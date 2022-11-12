@@ -1,17 +1,15 @@
-'use strict';
-
-exports.presetOptions = {
+export const presetOptions = {
   target: 'node',
   version: '14',
   module: false,
 };
 
-exports.actual = `
+export const actual = `
 const b = await import('./b.js');
 console.log(b);
 `;
 
-exports.expected = `
+export const expected = `
 const b = await import('./b.js');
 console.log(b);
 `;

@@ -31,15 +31,15 @@ const getSrcDirectories = () => {
   return '{src,lib}';
 };
 
-const getDistDirectories = () => {
-  if (workspaces) {
-    return `${
-      workspaces.length === 1 ? workspaces[0] : `{${workspaces.join(',')}}`
-    }/dist`;
-  }
+// const getDistDirectories = () => {
+//   if (workspaces) {
+//     return `${
+//       workspaces.length === 1 ? workspaces[0] : `{${workspaces.join(',')}}`
+//     }/dist`;
+//   }
 
-  return 'dist';
-};
+//   return 'dist';
+// };
 
 const generateInstallAndDedupe = () => {
   if (pm.name === 'npm') {
@@ -101,7 +101,7 @@ module.exports = function createLintStagedConfig() {
         ? [
             'rollup --config rollup.config.mjs',
             'tsc -b tsconfig.build.json',
-            `git --glob-pathspecs add ${getDistDirectories()}/**/*`,
+            // `git --glob-pathspecs add ${getDistDirectories()}/**/*`,
           ]
         : ['tsc'],
   };

@@ -8,6 +8,9 @@
 
 <p align="center">
   <a href="https://npmjs.org/package/@pob/check-lib-dependency-in-root-dev-dependencies"><img src="https://img.shields.io/npm/v/@pob/check-lib-dependency-in-root-dev-dependencies.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/@pob/check-lib-dependency-in-root-dev-dependencies"><img src="https://img.shields.io/npm/dw/@pob/check-lib-dependency-in-root-dev-dependencies.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/@pob/check-lib-dependency-in-root-dev-dependencies"><img src="https://img.shields.io/node/v/@pob/check-lib-dependency-in-root-dev-dependencies.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/@pob/check-lib-dependency-in-root-dev-dependencies"><img src="https://img.shields.io/npm/types/@pob/check-lib-dependency-in-root-dev-dependencies.svg?style=flat-square"></a>
 </p>
 
 ## Install

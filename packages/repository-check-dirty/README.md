@@ -8,6 +8,9 @@
 
 <p align="center">
   <a href="https://npmjs.org/package/repository-check-dirty"><img src="https://img.shields.io/npm/v/repository-check-dirty.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/repository-check-dirty"><img src="https://img.shields.io/npm/dw/repository-check-dirty.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/repository-check-dirty"><img src="https://img.shields.io/node/v/repository-check-dirty.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/repository-check-dirty"><img src="https://img.shields.io/npm/types/repository-check-dirty.svg?style=flat-square"></a>
 </p>
 
 ### Install

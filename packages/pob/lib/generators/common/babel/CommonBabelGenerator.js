@@ -93,9 +93,16 @@ export default class CommonBabelGenerator extends Generator {
       babelEnvs.some((env) => env.target === 'node') ? 'node' : undefined,
       babelEnvs.some((env) => env.target === 'browser') ? 'browser' : undefined,
     ].filter(Boolean);
-    const nodeVersions = babelEnvs
-      .filter((env) => env.target === 'node')
-      .map((env) => env.version);
+    const nodeVersions = [
+      ...new Set(
+        babelEnvs
+          .filter((env) => env.target === 'node')
+          .map((env) => {
+            if (env.version === '14') return '16';
+            return env.version;
+          }),
+      ),
+    ];
     const browserVersions = babelEnvs
       .filter((env) => env.target === 'browser')
       .map((env) => (env.version === undefined ? 'supported' : env.version));
@@ -139,8 +146,8 @@ export default class CommonBabelGenerator extends Generator {
           default: nodeVersions,
           choices: [
             {
-              name: '14 (Maintenance LTS)',
-              value: '14',
+              name: '16 (Maintenance LTS)',
+              value: '16',
             },
           ],
         },
@@ -160,25 +167,6 @@ export default class CommonBabelGenerator extends Generator {
             {
               name: 'Supported (@babel/preset-env)',
               value: 'supported',
-            },
-          ],
-        },
-
-        {
-          type: 'checkbox',
-          name: 'formats',
-          message: 'Babel formats',
-          when: ({ targets = [] }) => targets.length > 0,
-          validate: (targets = []) => targets.length > 0,
-          default: formats,
-          choices: [
-            {
-              name: 'commonjs',
-              value: 'cjs',
-            },
-            {
-              name: 'ES2015 module',
-              value: 'es',
             },
           ],
         },
@@ -209,12 +197,13 @@ export default class CommonBabelGenerator extends Generator {
       ...(babelConfig.nodeVersions || []).map((version) => ({
         target: 'node',
         version,
-        formats: babelConfig.formats.includes('cjs')
-          ? // eslint-disable-next-line unicorn/no-nested-ternary
-            version === '14'
-            ? babelConfig.formats
-            : ['es']
-          : babelConfig.formats,
+        formats:
+          babelConfig.formats && babelConfig.formats.includes('cjs')
+            ? // eslint-disable-next-line unicorn/no-nested-ternary
+              version === '16'
+              ? babelConfig.formats
+              : ['es']
+            : babelConfig.formats || ['es'],
       })),
       ...(babelConfig.browserVersions || []).map((version) => ({
         target: 'browser',
@@ -224,7 +213,7 @@ export default class CommonBabelGenerator extends Generator {
             version === 'supported'
             ? babelConfig.formats
             : ['es']
-          : babelConfig.formats,
+          : babelConfig.formats || ['es'],
       })),
     ];
 
@@ -396,7 +385,7 @@ export default class CommonBabelGenerator extends Generator {
         case '10':
         case '12':
         case '14':
-          pkg.engines.node = '^14.13.1 || >=16.0.0';
+          pkg.engines.node = '>=16.0.0';
           break;
         case '16':
           pkg.engines.node = '>=16.0.0';
@@ -422,7 +411,7 @@ export default class CommonBabelGenerator extends Generator {
       packageUtils.removeDependencies(pkg, ['@types/node']);
       packageUtils.removeDevDependencies(pkg, ['@types/node']);
       // Supported LTS versions of node, that supports ESM modules.
-      pkg.engines.node = '^14.13.1 || >=16.0.0';
+      pkg.engines.node = '>=16.0.0';
     }
 
     /* browserslist */
@@ -505,7 +494,7 @@ export default class CommonBabelGenerator extends Generator {
           '14.13.1',
         )
       ) {
-        pkg.engines.node = '^14.13.1 || >=16.0.0';
+        pkg.engines.node = '>=16.0.0';
       }
     }
 

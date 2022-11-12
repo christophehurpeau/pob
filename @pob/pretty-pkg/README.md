@@ -8,6 +8,9 @@
 
 <p align="center">
   <a href="https://npmjs.org/package/@pob/pretty-pkg"><img src="https://img.shields.io/npm/v/@pob/pretty-pkg.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/@pob/pretty-pkg"><img src="https://img.shields.io/npm/dw/@pob/pretty-pkg.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/@pob/pretty-pkg"><img src="https://img.shields.io/node/v/@pob/pretty-pkg.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/@pob/pretty-pkg"><img src="https://img.shields.io/npm/types/@pob/pretty-pkg.svg?style=flat-square"></a>
 </p>
 
 ## Install

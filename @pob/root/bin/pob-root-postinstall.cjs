@@ -36,11 +36,11 @@ if (pm.name !== 'yarn' && pm.name !== 'npm') {
   process.exit(1);
 }
 
-require('./postinstall/update-yarn')({ pkg, pm });
-require('./postinstall/install-husky')({ pkg, pm });
-require('./postinstall/install-github-workflows')({ pkg, pm });
-require('./postinstall/install-scripts')({ pkg, pm });
+require('./postinstall/update-yarn.cjs')({ pkg, pm });
+require('./postinstall/install-husky.cjs')({ pkg, pm });
+require('./postinstall/install-github-workflows.cjs')({ pkg, pm });
+require('./postinstall/install-scripts.cjs')({ pkg, pm });
 
 if (process.env.POB_EXPERIMENTAL_VSCODE_TASKS) {
-  require('./postinstall/install-vscode-tasks')({ pkg, pm });
+  require('./postinstall/install-vscode-tasks.cjs')({ pkg, pm });
 }

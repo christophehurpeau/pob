@@ -1,3 +1,4 @@
-'use strict';
+import replacePlugin from './lib/pob-babel-replace-plugin.js';
 
-module.exports = require('./lib/pob-babel-replace-plugin');
+// eslint-disable-next-line unicorn/prefer-export-from
+export default replacePlugin;

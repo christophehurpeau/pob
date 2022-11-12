@@ -1,17 +1,15 @@
-'use strict';
-
-exports.presetOptions = {
+export const presetOptions = {
   target: 'node',
   version: '14',
   module: false,
 };
 
-exports.actual = `
+export const actual = `
 const p = new Promise((resolve) => setTimeout(resolve, 200));
 await p;
 `;
 
-exports.expected = `
+export const expected = `
 const p = new Promise(resolve => setTimeout(resolve, 200));
 await p;
 `;

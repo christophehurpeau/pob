@@ -1,9 +1,10 @@
 import fs from 'fs';
+import { fileURLToPath } from 'url';
 import { rollup } from 'rollup';
 import createRollupConfig from './createRollupConfig.js';
 
 describe('fixtures', () => {
-  const testsPath = `${new URL('../test', import.meta.url).pathname}/`;
+  const testsPath = `${fileURLToPath(new URL('../test', import.meta.url))}/`;
   const tests = fs.readdirSync(testsPath);
 
   tests.forEach((dirname) => {

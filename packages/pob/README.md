@@ -8,6 +8,9 @@
 
 <p align="center">
   <a href="https://npmjs.org/package/pob"><img src="https://img.shields.io/npm/v/pob.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/pob"><img src="https://img.shields.io/npm/dw/pob.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/pob"><img src="https://img.shields.io/node/v/pob.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/pob"><img src="https://img.shields.io/npm/types/pob.svg?style=flat-square"></a>
 </p>
 
 ## How to install

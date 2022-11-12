@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [<% if (supportsNode14) { -%>14.x, <% } -%>16.x]
+        node-version: [<% if (!onlyLatestLTS) { -%>18.x, <% } -%>18.x]
 
     steps:
       - uses: actions/checkout@v3
@@ -35,27 +35,27 @@ jobs:
 <% if (build) { -%>
       - name: Build
         run: yarn run build
-        if: startsWith(matrix.node-version, '16.')
+        if: startsWith(matrix.node-version, '18.')
 
 <% } -%>
       - name: Prettier
         run: <%= packageManager %> run lint:prettier
-        if: startsWith(matrix.node-version, '16.')
+        if: startsWith(matrix.node-version, '18.')
 <% if (typescript) { -%>
 
       - name: Typescript
         run: yarn run tsc
-        if: startsWith(matrix.node-version, '16.')
+        if: startsWith(matrix.node-version, '18.')
 <% } -%>
 
       - name: Eslint
         run: <%= packageManager %> run lint:eslint
-        if: startsWith(matrix.node-version, '16.')
+        if: startsWith(matrix.node-version, '18.')
 <% if (codecov) { -%>
 
       - name: Generate Test Coverage
         run: <%= packageManager %> run test --coverage --coverageReporters=json --coverageReporters=text
-        if: startsWith(matrix.node-version, '16.')
+        if: startsWith(matrix.node-version, '18.')
         env:
           CI: true
 
@@ -63,7 +63,7 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           token: ${{ secrets.CODECOV_TOKEN }}
-        if: startsWith(matrix.node-version, '16.')
+        if: startsWith(matrix.node-version, '18.')
 <% } else if (testing) { -%>
 
       - name: Test
@@ -74,13 +74,13 @@ jobs:
 <% if (true) { -%>
 
       - name: Check nothing was forgotten before commit
-        if: startsWith(matrix.node-version, '16.')
+        if: startsWith(matrix.node-version, '18.')
         run: <%= packageManager === 'npm' ? 'npx' : 'yarn run' %> repository-check-dirty
 <% } -%>
 
 <% if (isReleasePleaseEnabled) { -%>
       - uses: GoogleCloudPlatform/release-please-action@v3
-        if: ${{ startsWith(matrix.node-version, '16.') && github.ref == 'refs/heads/main' }}
+        if: ${{ startsWith(matrix.node-version, '18.') && github.ref == 'refs/heads/main' }}
         id: release
         with:
           token: ${{ secrets.GH_TOKEN }}
@@ -91,7 +91,7 @@ jobs:
 
       # publish:
       - run: npm publish
-        if: ${{ startsWith(matrix.node-version, '16.') && github.ref == 'refs/heads/main' && steps.release.outputs.release_created }}
+        if: ${{ startsWith(matrix.node-version, '18.') && github.ref == 'refs/heads/main' && steps.release.outputs.release_created }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 <% } -%>

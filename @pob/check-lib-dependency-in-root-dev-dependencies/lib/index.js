@@ -1,8 +1,10 @@
 /* eslint-disable import/no-dynamic-require */
+import { createRequire } from 'module';
 
-'use strict';
-
-const checkLibDependencyInRootDevDependencies = (dependencyPackage) => {
+export default function checkLibDependencyInRootDevDependencies(
+  dependencyPackage,
+) {
+  const require = createRequire(import.meta.url);
   let pluginRootPackage;
   try {
     pluginRootPackage = require(require.resolve(
@@ -23,6 +25,4 @@ const checkLibDependencyInRootDevDependencies = (dependencyPackage) => {
       `Invalid version ${pluginRootPackage.version} of ${dependencyPackage.name}, expected ${dependencyPackage.version}`,
     );
   }
-};
-
-module.exports = checkLibDependencyInRootDevDependencies;
+}

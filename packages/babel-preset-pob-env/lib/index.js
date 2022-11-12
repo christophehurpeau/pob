@@ -1,10 +1,14 @@
 /* eslint-disable complexity */
 
-'use strict';
+import { createRequire } from 'module';
+import fixClassPropertiesUninitialized from 'babel-plugin-fix-class-properties-uninitialized';
+import replacePlugin from './pob-babel-replace-plugin.js';
 
 const validTargetOption = [false, 'node', 'browser'];
 
-module.exports = function (context, opts = {}) {
+export default function (context, opts = {}) {
+  const require = createRequire(import.meta.url);
+
   ['loose', 'optimizations', 'typescript'].forEach((optionName) => {
     if (
       opts[optionName] !== undefined &&
@@ -109,7 +113,7 @@ module.exports = function (context, opts = {}) {
       typescript && {
         plugins: [
           // class properties with fix
-          require.resolve('babel-plugin-fix-class-properties-uninitialized'),
+          fixClassPropertiesUninitialized,
         ],
       },
 
@@ -132,7 +136,7 @@ module.exports = function (context, opts = {}) {
       {
         plugins: [
           [
-            require.resolve('./pob-babel-replace-plugin'),
+            replacePlugin,
             {
               target: targetOption,
               targetVersion: versionOption,
@@ -163,4 +167,4 @@ module.exports = function (context, opts = {}) {
       .reverse()
       .filter(Boolean),
   };
-};
+}

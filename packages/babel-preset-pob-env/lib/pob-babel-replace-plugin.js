@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = function ({ types }, opts) {
+export default function ({ types }, opts) {
   const { target, targetVersion } = opts;
 
   const createNodeEnvExpression = (nodeEnvValue, not) => {
@@ -100,4 +98,4 @@ module.exports = function ({ types }, opts) {
       },
     },
   };
-};
+}

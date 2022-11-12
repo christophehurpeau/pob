@@ -8,7 +8,7 @@ module.exports = function babelConfig(api) {
   return {
     only: [<%- only %>],
     presets: [
-      [require.resolve('pob-babel/preset.cjs')<% if (!jestExperimentalESM) { %>, { modules: 'commonjs' }<% } %>]
+      [require.resolve('pob-babel/preset.js')<% if (!jestExperimentalESM) { %>, { modules: 'commonjs' }<% } %>]
       <% if (hasReact) { %>, [
         '@babel/preset-react',
         {

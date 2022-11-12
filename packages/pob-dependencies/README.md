@@ -8,6 +8,9 @@
 
 <p align="center">
   <a href="https://npmjs.org/package/pob-dependencies"><img src="https://img.shields.io/npm/v/pob-dependencies.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/pob-dependencies"><img src="https://img.shields.io/npm/dw/pob-dependencies.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/pob-dependencies"><img src="https://img.shields.io/node/v/pob-dependencies.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/pob-dependencies"><img src="https://img.shields.io/npm/types/pob-dependencies.svg?style=flat-square"></a>
 </p>
 
 ## Install

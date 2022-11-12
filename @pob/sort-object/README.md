@@ -8,6 +8,9 @@
 
 <p align="center">
   <a href="https://npmjs.org/package/@pob/sort-object"><img src="https://img.shields.io/npm/v/@pob/sort-object.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/@pob/sort-object"><img src="https://img.shields.io/npm/dw/@pob/sort-object.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/@pob/sort-object"><img src="https://img.shields.io/node/v/@pob/sort-object.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/@pob/sort-object"><img src="https://img.shields.io/npm/types/@pob/sort-object.svg?style=flat-square"></a>
 </p>
 
 ## Install

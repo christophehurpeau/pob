@@ -20,10 +20,10 @@
         "@pob/pretty-eslint-config",
         "@pob/pretty-pkg",
         "pob-babel",
-        "@pob/root",
         "example-typescript-lib",
         "pob-dependencies",
         "@pob/renovate-config",
+        "@pob/root",
         "pob"
       ]
     },

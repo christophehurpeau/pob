@@ -14,7 +14,11 @@
       "type": "npm",
       "script": "build",
       "group": "build",
-      "presentation": { "panel": "dedicated", "group": "build", "clear": true }
+      "presentation": {
+        "panel": "dedicated",
+        "group": "build",
+        "clear": true
+      }
     },
     {
       "label": "build:definitions",
@@ -22,21 +26,31 @@
       "type": "npm",
       "script": "build:definitions",
       "group": "build",
-      "presentation": { "panel": "dedicated", "group": "build", "clear": true }
+      "presentation": {
+        "panel": "dedicated",
+        "group": "build",
+        "clear": true
+      }
     },
     {
       "label": "checks",
       "problemMatcher": [],
       "type": "npm",
       "script": "checks",
-      "presentation": { "panel": "dedicated", "clear": true }
+      "presentation": {
+        "panel": "dedicated",
+        "clear": true
+      }
     },
     {
       "label": "clean:build",
       "problemMatcher": [],
       "type": "npm",
       "script": "clean:build",
-      "presentation": { "panel": "dedicated", "clear": true }
+      "presentation": {
+        "panel": "dedicated",
+        "clear": true
+      }
     },
     {
       "label": "lint",
@@ -49,7 +63,11 @@
       "type": "npm",
       "script": "lint:eslint",
       "group": "lint",
-      "presentation": { "panel": "dedicated", "group": "lint", "clear": true }
+      "presentation": {
+        "panel": "dedicated",
+        "group": "lint",
+        "clear": true
+      }
     },
     {
       "label": "lint:prettier",
@@ -57,7 +75,11 @@
       "type": "npm",
       "script": "lint:prettier",
       "group": "lint",
-      "presentation": { "panel": "dedicated", "group": "lint", "clear": true }
+      "presentation": {
+        "panel": "dedicated",
+        "group": "lint",
+        "clear": true
+      }
     },
     {
       "label": "lint:prettier:fix",
@@ -65,7 +87,11 @@
       "type": "npm",
       "script": "lint:prettier:fix",
       "group": "lint",
-      "presentation": { "panel": "dedicated", "group": "lint", "clear": true }
+      "presentation": {
+        "panel": "dedicated",
+        "group": "lint",
+        "clear": true
+      }
     },
     {
       "label": "test",
@@ -73,7 +99,11 @@
       "type": "npm",
       "script": "test",
       "group": "test",
-      "presentation": { "panel": "dedicated", "group": "test", "clear": true }
+      "presentation": {
+        "panel": "dedicated",
+        "group": "test",
+        "clear": true
+      }
     },
     {
       "label": "tsc",
@@ -81,14 +111,21 @@
       "type": "npm",
       "script": "tsc",
       "group": "lint",
-      "presentation": { "panel": "dedicated", "group": "lint", "clear": true }
+      "presentation": {
+        "panel": "dedicated",
+        "group": "lint",
+        "clear": true
+      }
     },
     {
       "label": "watch",
       "problemMatcher": [],
       "type": "npm",
       "script": "watch",
-      "presentation": { "panel": "dedicated", "clear": true },
+      "presentation": {
+        "panel": "dedicated",
+        "clear": true
+      },
       "isBackground": true
     }
   ]

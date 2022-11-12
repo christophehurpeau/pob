@@ -1,31 +1,27 @@
-'use strict';
-
-const fs = require('fs');
-const { transformSync } = require('@babel/core');
+import fs from 'fs';
+import { transform } from '@babel/core';
+import preset from '.';
 
 describe('fixtures', () => {
-  // const presetPath = new URL('..', import.meta.url).pathname;
-  const presetPath = require.resolve(`${__dirname}/..`);
-
   const tests = fs
-    // .readdirSync(new URL('__tests_fixtures__', import.meta.url))
-    .readdirSync(`${__dirname}/__tests_fixtures__`)
+    .readdirSync(new URL('./__tests_fixtures__', import.meta.url))
     .filter((name) => name.endsWith('.js'));
 
   tests.forEach((filename) => {
-    // eslint-disable-next-line import/no-dynamic-require
-    const testContent = require(`${__dirname}/__tests_fixtures__/${filename}`);
-    const expected = testContent.expected && testContent.expected.trim();
-    const expectedSyntaxError =
-      testContent.expectedSyntaxError && testContent.expectedSyntaxError.trim();
+    test(filename, async () => {
+      // eslint-disable-next-line node/no-unsupported-features/es-syntax
+      const testContent = await import(`./__tests_fixtures__/${filename}`);
+      const expected = testContent.expected && testContent.expected.trim();
+      const expectedSyntaxError =
+        testContent.expectedSyntaxError &&
+        testContent.expectedSyntaxError.trim();
 
-    test(testContent.name || filename, () => {
       try {
-        const output = transformSync(testContent.actual, {
+        const output = await transform(testContent.actual, {
           filename: 'file.ts',
           babelrc: false,
           configFile: false,
-          presets: [[presetPath, testContent.presetOptions || {}]],
+          presets: [[preset, testContent.presetOptions || {}]],
         });
 
         const actual = output.code.trim();

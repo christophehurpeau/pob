@@ -8,6 +8,9 @@
 
 <p align="center">
   <a href="https://npmjs.org/package/pob-babel"><img src="https://img.shields.io/npm/v/pob-babel.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/pob-babel"><img src="https://img.shields.io/npm/dw/pob-babel.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/pob-babel"><img src="https://img.shields.io/node/v/pob-babel.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/pob-babel"><img src="https://img.shields.io/npm/types/pob-babel.svg?style=flat-square"></a>
 </p>
 
 ### What it does

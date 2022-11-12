@@ -1,8 +1,6 @@
 #!/usr/bin/env node
 
-'use strict';
-
-const { execSync } = require('child_process');
+import { execSync } from 'child_process';
 
 try {
   const stdout = execSync('git status --porcelain', { encoding: 'utf8' });

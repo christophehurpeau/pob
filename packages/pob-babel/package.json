@@ -13,7 +13,7 @@
   "homepage": "https://github.com/christophehurpeau/pob",
   "type": "module",
   "engines": {
-    "node": "^14.13.1 || >=16.0.0"
+    "node": ">=16.0.0"
   },
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
@@ -21,9 +21,9 @@
     ".": "./lib/index.js",
     "./createRollupConfig": "./lib/createRollupConfig.js",
     "./createRollupConfig.js": "./lib/createRollupConfig.js",
-    "./preset": "./preset.cjs",
-    "./preset.js": "./preset.cjs",
-    "./preset.cjs": "./preset.cjs",
+    "./preset": "./preset.js",
+    "./preset.js": "./preset.js",
+    "./preset.cjs": "./preset.js",
     "./setup-jest": "./setup-jest.cjs",
     "./setup-jest.js": "./setup-jest.cjs",
     "./setup-jest.cjs": "./setup-jest.cjs",

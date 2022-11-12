@@ -8,10 +8,10 @@ describe('index', () => {
 });
 
 describe('dist', () => {
-  it('should build node14 mjs', () => {
+  it('should build node16 mjs', () => {
     expect(
       fs.readFileSync(
-        './pob-examples/typescript-lib/dist/index-node14.mjs',
+        './pob-examples/typescript-lib/dist/index-node16.mjs',
         'utf8',
       ),
     ).toMatchInlineSnapshot(`
@@ -20,7 +20,7 @@ describe('dist', () => {
       }
 
       export { simpleLib as default };
-      //# sourceMappingURL=index-node14.mjs.map
+      //# sourceMappingURL=index-node16.mjs.map
       "
     `);
   });

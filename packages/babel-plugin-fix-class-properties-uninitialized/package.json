@@ -11,9 +11,9 @@
     "directory": "packages/babel-plugin-fix-class-properties-uninitialized"
   },
   "homepage": "https://github.com/christophehurpeau/pob",
-  "type": "commonjs",
+  "type": "module",
   "engines": {
-    "node": "^14.13.1 || >=16.0.0"
+    "node": ">=16.0.0"
   },
   "main": "./lib/index.js",
   "exports": {

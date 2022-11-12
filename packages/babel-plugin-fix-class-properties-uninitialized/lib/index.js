@@ -1,6 +1,4 @@
-'use strict';
-
-module.exports = function () {
+export default function () {
   return {
     name: 'babel-plugin-fix-class-properties-uninitialized',
     visitor: {
@@ -15,4 +13,4 @@ module.exports = function () {
       },
     },
   };
-};
+}

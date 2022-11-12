@@ -13,16 +13,16 @@
     "directory": "@pob/commitlint-config"
   },
   "homepage": "https://github.com/christophehurpeau/pob",
-  "type": "commonjs",
+  "type": "module",
   "engines": {
-    "node": "^14.13.1 || >=16.0.0"
+    "node": ">=16.0.0"
   },
   "publishConfig": {
     "access": "public"
   },
-  "main": "./lib/index.js",
+  "main": "./lib/index.cjs",
   "exports": {
-    ".": "./lib/index.js",
+    ".": "./lib/index.cjs",
     "./package.json": "./package.json"
   },
   "sideEffects": false,
@@ -33,6 +33,6 @@
   "prettier": "@pob/root/prettier-config",
   "pob": {},
   "dependencies": {
-    "@commitlint/config-conventional": "^17.0.0"
+    "@commitlint/config-conventional": "^17.2.0"
   }
 }

@@ -11,22 +11,22 @@
     "directory": "@pob/lerna-light"
   },
   "homepage": "https://github.com/christophehurpeau/pob",
-  "type": "commonjs",
+  "type": "module",
   "engines": {
-    "node": "^14.13.1 || >=16.0.0"
+    "node": ">=16.0.0"
   },
   "publishConfig": {
     "access": "public"
   },
-  "main": "./lib/index.js",
+  "main": "./lib/index.cjs",
   "exports": {
-    ".": "./lib/index.js",
-    "./bin/cli.js": "./bin/cli.js",
+    ".": "./lib/index.cjs",
+    "./bin/cli.js": "./bin/cli.cjs",
     "./package.json": "./package.json"
   },
   "sideEffects": false,
   "bin": {
-    "lerna": "bin/cli.js"
+    "lerna": "bin/cli.cjs"
   },
   "scripts": {
     "lint": "yarn run lint:eslint",
