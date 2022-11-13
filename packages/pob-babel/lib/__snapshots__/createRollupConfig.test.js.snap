@@ -5,7 +5,6 @@ exports[`fixtures basic 0 1`] = `
   constructor(...args) {
     this.args = args;
   }
-
 }
 
 const sayHello = () => {
@@ -13,25 +12,21 @@ const sayHello = () => {
 };
 
 sayHello();
-
 if (process.env.NODE_ENV !== "production") {
   console.log('__DEV__ is true');
 }
-
 if (!(process.env.NODE_ENV !== "production")) {
   console.log('__DEV__ is false');
 }
 console.log(\`the answer is \${42}\`);
-
 class Test2 extends Test {
   constructor(...args) {
     super(...args);
   }
-
 }
-
 const t = new Test2(1, 2, 3);
-const spreadTest = { ...{
+const spreadTest = {
+  ...{
     test: 'spread'
   }
 };
@@ -48,11 +43,9 @@ import _inheritsLoose from '@babel/runtime/helpers/esm/inheritsLoose';
 
 var Test = function Test() {
   var _len, args, _key;
-
   for (_len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
     args[_key] = arguments[_key];
   }
-
   this.args = args;
 };
 
@@ -62,32 +55,24 @@ var sayHello = function sayHello() {
 
 var _t$foo;
 sayHello();
-
 if (process.env.NODE_ENV !== "production") {
   console.log('__DEV__ is true');
 }
-
 if (!(process.env.NODE_ENV !== "production")) {
   console.log('__DEV__ is false');
 }
 console.log("the answer is 42");
-
 var Test2 = /*#__PURE__*/function (_Test) {
   _inheritsLoose(Test2, _Test);
-
   function Test2() {
     var _len, args, _key;
-
     for (_len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
-
     return _Test.call.apply(_Test, [this].concat(args)) || this;
   }
-
   return Test2;
 }(Test);
-
 var t = new Test2(1, 2, 3);
 var spreadTest = _extends({}, {
   test: 'spread'
@@ -104,7 +89,6 @@ exports[`fixtures basic 2 1`] = `
   constructor(...args) {
     this.args = args;
   }
-
 }
 
 const sayHello = () => {
@@ -113,25 +97,21 @@ const sayHello = () => {
 
 var _t$foo;
 sayHello();
-
 if (process.env.NODE_ENV !== "production") {
   console.log('__DEV__ is true');
 }
-
 if (!(process.env.NODE_ENV !== "production")) {
   console.log('__DEV__ is false');
 }
 console.log(\`the answer is \${42}\`);
-
 class Test2 extends Test {
   constructor(...args) {
     super(...args);
   }
-
 }
-
 const t = new Test2(1, 2, 3);
-const spreadTest = { ...{
+const spreadTest = {
+  ...{
     test: 'spread'
   }
 };
@@ -147,7 +127,6 @@ exports[`fixtures react 0 1`] = `
 import { jsx } from 'react/jsx-runtime';
 
 const Component = () => /*#__PURE__*/jsx("div", {});
-
 render( /*#__PURE__*/jsx(Component, {}), document.getElementById('react-container'));
 "
 `;
@@ -158,7 +137,6 @@ import './styles.css';
 import { jsx } from 'react/jsx-runtime';
 
 const Component = () => /*#__PURE__*/jsx("div", {});
-
 render( /*#__PURE__*/jsx(Component, {}), document.getElementById('react-container'));
 "
 `;
@@ -168,20 +146,15 @@ exports[`fixtures ts 0 1`] = `
   constructor(...args) {
     this.args = args;
   }
-
 }
 
 console.log(\`the answer is \${42}\`);
-
 class Test2 extends Test {
   constructor(...args) {
     super(...args);
   }
-
 }
-
 class Foo {}
-
 const t = new Test2(1, 2, 3);
 t.foo = new Foo();
 
@@ -194,34 +167,25 @@ exports[`fixtures ts 1 1`] = `
 
 var Test = function Test() {
   var _len, args, _key;
-
   for (_len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
     args[_key] = arguments[_key];
   }
-
   this.args = args;
 };
 
 console.log("the answer is 42");
-
 var Test2 = /*#__PURE__*/function (_Test) {
   _inheritsLoose(Test2, _Test);
-
   function Test2() {
     var _len, args, _key;
-
     for (_len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
     }
-
     return _Test.call.apply(_Test, [this].concat(args)) || this;
   }
-
   return Test2;
 }(Test);
-
 var Foo = function Foo() {};
-
 var t = new Test2(1, 2, 3);
 t.foo = new Foo();
 
