@@ -155,9 +155,15 @@ export default class PobBaseGenerator extends Generator {
       yarnNodeLinker: this.projectConfig.yarnNodeLinker,
     });
 
+    const onlyLatestLTS =
+      this.projectConfig.type === 'app' ||
+      (inLerna &&
+        (inLerna.pobConfig?.project?.supportsNode14 === false ||
+          inLerna.pobConfig?.project?.onlyLatestLTS === true));
+
     if (!this.inLerna) {
       this.composeWith('pob:core:git', {
-        isApp: this.projectConfig.type === 'app',
+        onlyLatestLTS,
       });
     } else {
       if (this.fs.exists('.git-hooks')) this.fs.delete('.git-hooks');

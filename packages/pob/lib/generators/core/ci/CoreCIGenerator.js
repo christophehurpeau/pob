@@ -67,6 +67,12 @@ export default class CoreCIGenerator extends Generator {
       required: true,
       desc: 'is app',
     });
+
+    this.option('onlyLatestLTS', {
+      type: String,
+      required: true,
+      desc: 'only latest lts',
+    });
   }
 
   async prompting() {
@@ -111,11 +117,7 @@ export default class CoreCIGenerator extends Generator {
           build: this.options.build,
           typescript: this.options.typescript,
           codecov: this.options.codecov,
-          onlyLatestLTS:
-            this.options.isApp ||
-            inLerna.pobConfig?.project?.supportsNode14 === false ||
-            inLerna.pobConfig?.project?.onlyLatestLTS !== false,
-
+          onlyLatestLTS: this.options.onlyLatestLTS,
           isReleasePleaseEnabled: this.isReleasePleaseEnabled,
           publishSinglePackage: this.isReleasePleaseEnabled && !pkg.private,
           publishMonorepo:

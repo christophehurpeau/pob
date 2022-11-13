@@ -14,10 +14,10 @@ export default class CoreGitGenerator extends Generator {
       desc: 'Should create the repo on github',
     });
 
-    this.option('isApp', {
+    this.option('onlyLatestLTS', {
       type: String,
       required: true,
-      desc: 'is app',
+      desc: 'only latest lts',
     });
   }
 
@@ -100,7 +100,7 @@ export default class CoreGitGenerator extends Generator {
         shouldCreate: !this.originUrl,
         gitHostAccount: this.gitHostAccount,
         repoName: this.repoName,
-        isApp: this.options.isApp,
+        onlyLatestLTS: this.options.onlyLatestLTS,
       });
     }
   }

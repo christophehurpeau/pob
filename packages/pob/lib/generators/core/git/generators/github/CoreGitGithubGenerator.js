@@ -24,15 +24,15 @@ const putJson = (url, jsonBody) =>
     },
   }).then((res) => (res.ok ? res.json() : null));
 
-const configureProtectionRule = async (owner, repo, isApp) => {
+const configureProtectionRule = async (owner, repo, onlyLatestLTS) => {
   for (const branch of ['main', 'master']) {
     try {
       await putJson(`repos/${owner}/${repo}/branches/${branch}/protection`, {
         required_status_checks: {
           strict: false,
           contexts: [
-            !isApp && 'build (14.x)',
-            'build (16.x)',
+            !onlyLatestLTS && 'build (16.x)',
+            'build (18.x)',
             'reviewflow',
           ].filter(Boolean),
         },
@@ -78,10 +78,10 @@ export default class CoreGitGithubGenerator extends Generator {
       desc: 'repo name',
     });
 
-    this.option('isApp', {
+    this.option('onlyLatestLTS', {
       type: String,
       required: true,
-      desc: 'is app',
+      desc: 'only latest lts',
     });
 
     if (!GITHUB_TOKEN && process.env.CI !== 'true') {
@@ -152,7 +152,7 @@ export default class CoreGitGithubGenerator extends Generator {
           cwd,
         });
 
-        configureProtectionRule(owner, repo, this.options.isApp);
+        configureProtectionRule(owner, repo, this.options.onlyLatestLTS);
 
         // await gh.put(`/repos/${owner}/${repo}/topics`, {
         //   names: pkg.keywords,
@@ -162,7 +162,7 @@ export default class CoreGitGithubGenerator extends Generator {
         console.error(err.stack || err.message || err);
       }
     } else {
-      console.log('sync github info', { repo, description: pkg.description });
+      console.log('sync github info');
 
       await postJson(`repos/${owner}/${repo}`, {
         name: repo,
@@ -176,7 +176,7 @@ export default class CoreGitGithubGenerator extends Generator {
         allow_rebase_merge: true,
       });
 
-      configureProtectionRule(owner, repo, this.options.isApp);
+      configureProtectionRule(owner, repo, this.options.onlyLatestLTS);
     }
   }
 }
