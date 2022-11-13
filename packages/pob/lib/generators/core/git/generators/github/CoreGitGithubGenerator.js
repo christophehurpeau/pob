@@ -1,40 +1,47 @@
 /* eslint-disable camelcase */
 
-import got from 'got';
+import fetch from 'node-fetch';
 import Generator from 'yeoman-generator';
 // const packageUtils = require('../../../../../utils/package');
 
 const GITHUB_TOKEN = process.env.POB_GITHUB_TOKEN;
 
-const gh = got.extend({
-  prefixUrl: 'https://api.github.com/',
-  responseType: 'json',
-  resolveBodyOnly: true,
-  headers: {
-    authorization: `token ${GITHUB_TOKEN}`,
-  },
-});
+const postJson = (url, jsonBody) =>
+  fetch(`https://api.github.com/${url}`, {
+    method: 'POST',
+    body: JSON.stringify(jsonBody),
+    headers: {
+      authorization: `token ${GITHUB_TOKEN}`,
+    },
+  }).then((res) => (res.ok ? res.json() : null));
 
-const configureProtectionRule = async (owner, repo, isApp) => {
+const putJson = (url, jsonBody) =>
+  fetch(`https://api.github.com/${url}`, {
+    method: 'PUT',
+    body: JSON.stringify(jsonBody),
+    headers: {
+      authorization: `token ${GITHUB_TOKEN}`,
+    },
+  }).then((res) => (res.ok ? res.json() : null));
+
+const configureProtectionRule = async (owner, repo, onlyLatestLTS) => {
   for (const branch of ['main', 'master']) {
     try {
-      await gh.put(`repos/${owner}/${repo}/branches/${branch}/protection`, {
-        json: {
-          required_status_checks: {
-            strict: false,
-            contexts: [
-              !isApp && 'build (14.x)',
-              'build (16.x)',
-              'reviewflow',
-            ].filter(Boolean),
-          },
-          enforce_admins: false, // true,
-          required_pull_request_reviews: null,
-          restrictions: null,
-          required_linear_history: true,
-          allow_force_pushes: true, // false
-          allow_deletions: false,
+      await putJson(`repos/${owner}/${repo}/branches/${branch}/protection`, {
+        required_status_checks: {
+          strict: false,
+          contexts: [
+            !onlyLatestLTS && 'build (16.x)',
+            'build (18.x)',
+            'reviewflow',
+          ].filter(Boolean),
         },
+        enforce_admins: false, // true,
+        required_pull_request_reviews: null,
+        restrictions: null,
+        required_linear_history: true,
+        allow_force_pushes: true, // false
+        allow_deletions: false,
       });
       if (branch === 'master') {
         console.warn('You should rename your "master" branch to "main"');
@@ -71,10 +78,10 @@ export default class CoreGitGithubGenerator extends Generator {
       desc: 'repo name',
     });
 
-    this.option('isApp', {
+    this.option('onlyLatestLTS', {
       type: String,
       required: true,
-      desc: 'is app',
+      desc: 'only latest lts',
     });
 
     if (!GITHUB_TOKEN && process.env.CI !== 'true') {
@@ -98,17 +105,15 @@ export default class CoreGitGithubGenerator extends Generator {
       try {
         if (this.options.shouldCreate) {
           try {
-            await gh.post('user/repos', {
-              json: {
-                name,
-                description: pkg.description,
-                homepage: null,
-                private: false,
-                auto_init: false,
-                allow_squash_merge: true,
-                allow_merge_commit: false,
-                allow_rebase_merge: true,
-              },
+            await postJson('user/repos', {
+              name,
+              description: pkg.description,
+              homepage: null,
+              private: false,
+              auto_init: false,
+              allow_squash_merge: true,
+              allow_merge_commit: false,
+              allow_rebase_merge: true,
             });
           } catch (err) {
             console.error('Failed to create repository');
@@ -147,7 +152,7 @@ export default class CoreGitGithubGenerator extends Generator {
           cwd,
         });
 
-        configureProtectionRule(owner, repo, this.options.isApp);
+        configureProtectionRule(owner, repo, this.options.onlyLatestLTS);
 
         // await gh.put(`/repos/${owner}/${repo}/topics`, {
         //   names: pkg.keywords,
@@ -158,21 +163,20 @@ export default class CoreGitGithubGenerator extends Generator {
       }
     } else {
       console.log('sync github info');
-      await gh.post(`repos/${owner}/${repo}`, {
-        json: {
-          name: repo,
-          /* pkg.name
+
+      await postJson(`repos/${owner}/${repo}`, {
+        name: repo,
+        /* pkg.name
             .replace(/-(lerna|monorepo)$/, '')
             .replace(/^@([^-]*)-/, '$1-') */
-          description: pkg.description,
-          // homepage: null,
-          allow_squash_merge: true,
-          allow_merge_commit: false,
-          allow_rebase_merge: true,
-        },
+        description: pkg.description,
+        // homepage: null,
+        allow_squash_merge: true,
+        allow_merge_commit: false,
+        allow_rebase_merge: true,
       });
 
-      configureProtectionRule(owner, repo, this.options.isApp);
+      configureProtectionRule(owner, repo, this.options.onlyLatestLTS);
     }
   }
 }
