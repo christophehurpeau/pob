@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@6.23.1...@pob/root@7.0.0) (2022-11-13)
+
+
+### Bug Fixes
+
+* fix repository-check-dirty ([93ff29d](https://github.com/christophehurpeau/pob/commit/93ff29d0d1d44f79e59e049213e6caa6a1fedf22))
+
+
+### Features
+
+* **deps:** update dependency @commitlint/cli to v17.2.0 ([#1447](https://github.com/christophehurpeau/pob/issues/1447)) ([e5b9440](https://github.com/christophehurpeau/pob/commit/e5b9440ba6f2c052e93cc9db69904e697707bad7))
+* update to node 16 and ESM ([fcdc84f](https://github.com/christophehurpeau/pob/commit/fcdc84f423ac27fd6324b673b9da340b0d22a738))
+
+
+### BREAKING CHANGES
+
+* drop node 14
+
+
+
+
+
 ## [6.23.1](https://github.com/christophehurpeau/pob/compare/@pob/root@6.23.0...@pob/root@6.23.1) (2022-10-19)
 
 **Note:** Version bump only for package @pob/root

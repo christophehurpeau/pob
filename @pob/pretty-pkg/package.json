@@ -1,6 +1,6 @@
 {
   "name": "@pob/pretty-pkg",
-  "version": "4.3.0",
+  "version": "5.0.0",
   "description": "prettier and sort package.json",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -33,7 +33,7 @@
   "prettier": "@pob/root/prettier-config",
   "pob": {},
   "dependencies": {
-    "@pob/sort-pkg": "4.1.0",
+    "@pob/sort-pkg": "5.0.0",
     "prettier": "^2.6.2"
   }
 }

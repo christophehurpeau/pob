@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0](https://github.com/christophehurpeau/pob/compare/pob@10.21.0...pob@11.0.0) (2022-11-13)
+
+
+### Bug Fixes
+
+* onlyLatestLTS option ([09dc340](https://github.com/christophehurpeau/pob/commit/09dc34022ec86ba2a432306d4eebb60fdaa938b0))
+* **pob:** fix tsconfig for nextjs ([3fb68ad](https://github.com/christophehurpeau/pob/commit/3fb68ad3e6170e020aaaff22ea45147c791b8439))
+* **pob:** writeAndFormat yml singleQuote config ([d5e8ffd](https://github.com/christophehurpeau/pob/commit/d5e8ffd2cdf28ac7ac63eb242e9f1cb11e825247))
+* **true:** dont default to true new options in typescript generator ([76e6a95](https://github.com/christophehurpeau/pob/commit/76e6a95dc58f24465e68dc52bf636c7ca6a5c814))
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.26.0 ([#1443](https://github.com/christophehurpeau/pob/issues/1443)) ([1c85a56](https://github.com/christophehurpeau/pob/commit/1c85a56de76fe98a33ab120b10af635f5576c091))
+* **deps:** update dependency eslint to v8.27.0 ([#1451](https://github.com/christophehurpeau/pob/issues/1451)) ([27f6965](https://github.com/christophehurpeau/pob/commit/27f6965e3575b06576b08a3d1cca4697e1b9f6c0))
+* **pob:** publish update to node 16 ([389acd1](https://github.com/christophehurpeau/pob/commit/389acd1c247dbd7a83ed285b4a56592effeec7b3))
+* update to node 16 and ESM ([fcdc84f](https://github.com/christophehurpeau/pob/commit/fcdc84f423ac27fd6324b673b9da340b0d22a738))
+
+
+### BREAKING CHANGES
+
+* drop node 14
+
+
+
+
+
 # [10.21.0](https://github.com/christophehurpeau/pob/compare/pob@10.20.0...pob@10.21.0) (2022-10-19)
 
 

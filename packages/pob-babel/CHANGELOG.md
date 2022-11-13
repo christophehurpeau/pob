@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [35.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@34.3.0...pob-babel@35.0.0) (2022-11-13)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @rollup/plugin-babel to v6.0.1 ([#1438](https://github.com/christophehurpeau/pob/issues/1438)) ([b338109](https://github.com/christophehurpeau/pob/commit/b3381095a867962e297f436edfe9b47433810e28))
+* **deps:** update dependency @rollup/plugin-babel to v6.0.2 ([#1439](https://github.com/christophehurpeau/pob/issues/1439)) ([71e4dc5](https://github.com/christophehurpeau/pob/commit/71e4dc5b33aad8a916429076a3444340bba4b70a))
+* **deps:** update dependency @rollup/plugin-json to v5.0.1 ([#1440](https://github.com/christophehurpeau/pob/issues/1440)) ([2421ab9](https://github.com/christophehurpeau/pob/commit/2421ab91d0e0b5cd648f87d1c13ae79cc3b05204))
+* **deps:** update dependency @rollup/plugin-node-resolve to v15.0.1 ([#1441](https://github.com/christophehurpeau/pob/issues/1441)) ([856bf02](https://github.com/christophehurpeau/pob/commit/856bf02d843efcdc11f73ae6cbd59ad648a44504))
+* **deps:** update dependency @rollup/plugin-run to v3.0.1 ([#1442](https://github.com/christophehurpeau/pob/issues/1442)) ([5c6dbc7](https://github.com/christophehurpeau/pob/commit/5c6dbc7353bd7008a27c1d0766dc4f057abf6bc9))
+
+
+### Features
+
+* update to node 16 and ESM ([fcdc84f](https://github.com/christophehurpeau/pob/commit/fcdc84f423ac27fd6324b673b9da340b0d22a738))
+
+
+### BREAKING CHANGES
+
+* drop node 14
+
+
+
+
+
 # [34.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@34.2.0...pob-babel@34.3.0) (2022-10-19)
 
 

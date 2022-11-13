@@ -1,7 +1,7 @@
 {
   "name": "example-simple-lib",
   "private": true,
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": {

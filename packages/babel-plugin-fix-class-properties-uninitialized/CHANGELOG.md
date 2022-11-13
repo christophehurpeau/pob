@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@5.1.0...babel-plugin-fix-class-properties-uninitialized@6.0.0) (2022-11-13)
+
+
+### Features
+
+* update to node 16 and ESM ([fcdc84f](https://github.com/christophehurpeau/pob/commit/fcdc84f423ac27fd6324b673b9da340b0d22a738))
+
+
+### BREAKING CHANGES
+
+* drop node 14
+
+
+
+
+
 # [5.1.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@5.0.0...babel-plugin-fix-class-properties-uninitialized@5.1.0) (2022-10-05)
 
 
