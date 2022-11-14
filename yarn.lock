@@ -2987,7 +2987,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/commitlint-config@4.4.0, @pob/commitlint-config@workspace:@pob/commitlint-config":
+"@pob/commitlint-config@5.0.0, @pob/commitlint-config@workspace:@pob/commitlint-config":
   version: 0.0.0-use.local
   resolution: "@pob/commitlint-config@workspace:@pob/commitlint-config"
   dependencies:
@@ -3080,7 +3080,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pob/lerna-light@5.6.0, @pob/lerna-light@workspace:*, @pob/lerna-light@workspace:@pob/lerna-light":
+"@pob/lerna-light@6.0.0, @pob/lerna-light@workspace:*, @pob/lerna-light@workspace:@pob/lerna-light":
   version: 0.0.0-use.local
   resolution: "@pob/lerna-light@workspace:@pob/lerna-light"
   dependencies:
@@ -3092,22 +3092,22 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/pretty-eslint-config@3.3.0, @pob/pretty-eslint-config@workspace:@pob/pretty-eslint-config":
+"@pob/pretty-eslint-config@4.0.0, @pob/pretty-eslint-config@workspace:@pob/pretty-eslint-config":
   version: 0.0.0-use.local
   resolution: "@pob/pretty-eslint-config@workspace:@pob/pretty-eslint-config"
   dependencies:
-    "@pob/sort-eslint-config": 3.1.0
+    "@pob/sort-eslint-config": 4.0.0
     prettier: ^2.6.2
   bin:
     pretty-eslint-config: ./bin/pretty-eslint-config.js
   languageName: unknown
   linkType: soft
 
-"@pob/pretty-pkg@4.3.0, @pob/pretty-pkg@workspace:@pob/pretty-pkg":
+"@pob/pretty-pkg@5.0.0, @pob/pretty-pkg@workspace:@pob/pretty-pkg":
   version: 0.0.0-use.local
   resolution: "@pob/pretty-pkg@workspace:@pob/pretty-pkg"
   dependencies:
-    "@pob/sort-pkg": 4.1.0
+    "@pob/sort-pkg": 5.0.0
     prettier: ^2.6.2
   bin:
     pretty-pkg: ./bin/pretty-pkg.js
@@ -3118,24 +3118,24 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: 6.33.0
+    pob-dependencies: 7.0.0
     prettier: 2.7.1
   languageName: unknown
   linkType: soft
 
-"@pob/root@6.23.1, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@7.0.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
     "@commitlint/cli": 17.2.0
-    "@pob/pretty-eslint-config": 3.3.0
-    "@pob/pretty-pkg": 4.3.0
+    "@pob/pretty-eslint-config": 4.0.0
+    "@pob/pretty-pkg": 5.0.0
     husky: ~8.0.1
     json5: ^2.2.1
     lint-staged: 13.0.3
-    pob-dependencies: 6.33.0
+    pob-dependencies: 7.0.0
     prettier: 2.7.1
-    repository-check-dirty: 4.2.0
+    repository-check-dirty: 5.0.0
     semver: ^7.3.7
     which-pm-runs: 1.1.0
   bin:
@@ -3150,25 +3150,25 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/sort-eslint-config@3.1.0, @pob/sort-eslint-config@workspace:@pob/sort-eslint-config":
+"@pob/sort-eslint-config@4.0.0, @pob/sort-eslint-config@workspace:@pob/sort-eslint-config":
   version: 0.0.0-use.local
   resolution: "@pob/sort-eslint-config@workspace:@pob/sort-eslint-config"
   dependencies:
-    "@pob/sort-object": 4.1.0
+    "@pob/sort-object": 5.0.0
   languageName: unknown
   linkType: soft
 
-"@pob/sort-object@4.1.0, @pob/sort-object@workspace:@pob/sort-object":
+"@pob/sort-object@5.0.0, @pob/sort-object@workspace:@pob/sort-object":
   version: 0.0.0-use.local
   resolution: "@pob/sort-object@workspace:@pob/sort-object"
   languageName: unknown
   linkType: soft
 
-"@pob/sort-pkg@4.1.0, @pob/sort-pkg@workspace:@pob/sort-pkg":
+"@pob/sort-pkg@5.0.0, @pob/sort-pkg@workspace:@pob/sort-pkg":
   version: 0.0.0-use.local
   resolution: "@pob/sort-pkg@workspace:@pob/sort-pkg"
   dependencies:
-    "@pob/sort-object": 4.1.0
+    "@pob/sort-object": 5.0.0
   languageName: unknown
   linkType: soft
 
@@ -4165,7 +4165,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-fix-class-properties-uninitialized@5.1.0, babel-plugin-fix-class-properties-uninitialized@workspace:packages/babel-plugin-fix-class-properties-uninitialized":
+"babel-plugin-fix-class-properties-uninitialized@6.0.0, babel-plugin-fix-class-properties-uninitialized@workspace:packages/babel-plugin-fix-class-properties-uninitialized":
   version: 0.0.0-use.local
   resolution: "babel-plugin-fix-class-properties-uninitialized@workspace:packages/babel-plugin-fix-class-properties-uninitialized"
   languageName: unknown
@@ -4349,7 +4349,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-pob-env@8.3.0, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
+"babel-preset-pob-env@9.0.0, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
   version: 0.0.0-use.local
   resolution: "babel-preset-pob-env@workspace:packages/babel-preset-pob-env"
   dependencies:
@@ -4359,7 +4359,7 @@ __metadata:
     "@babel/plugin-transform-modules-commonjs": ^7.17.9
     "@babel/preset-typescript": ^7.16.7
     babel-plugin-discard-module-references: ^1.1.2
-    babel-plugin-fix-class-properties-uninitialized: 5.1.0
+    babel-plugin-fix-class-properties-uninitialized: 6.0.0
     babel-preset-optimizations: ^2.0.0
   peerDependencies:
     "@babel/core": ^7.11.6
@@ -6061,7 +6061,7 @@ __metadata:
   resolution: "example-typescript-lib@workspace:pob-examples/typescript-lib"
   dependencies:
     "@babel/core": 7.20.2
-    pob-babel: 34.3.0
+    pob-babel: 35.0.0
     typescript: 4.8.4
   languageName: unknown
   linkType: soft
@@ -9921,7 +9921,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@34.3.0, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
+"pob-babel@35.0.0, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -9932,7 +9932,7 @@ __metadata:
     "@rollup/plugin-node-resolve": 15.0.1
     "@rollup/plugin-run": 3.0.1
     babel-preset-modern-browsers: ^15.0.2
-    babel-preset-pob-env: 8.3.0
+    babel-preset-pob-env: 9.0.0
     rollup: 2.79.1
     rollup-config-external-dependencies: ^2.0.0
     semver: ^7.3.7
@@ -9950,7 +9950,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@6.33.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@7.0.0, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -9958,24 +9958,24 @@ __metadata:
     "@babel/preset-env": 7.20.2
     "@babel/preset-react": 7.18.6
     "@babel/runtime": 7.20.1
-    "@pob/commitlint-config": 4.4.0
+    "@pob/commitlint-config": 5.0.0
     "@pob/eslint-config": 49.4.0
     "@pob/eslint-config-typescript": 49.4.0
     "@pob/eslint-config-typescript-react": 49.4.0
-    "@pob/lerna-light": 5.6.0
-    "@pob/pretty-pkg": 4.3.0
+    "@pob/lerna-light": 6.0.0
+    "@pob/pretty-pkg": 5.0.0
     "@types/jest": 29.2.2
     alp-rollup-plugin-config: 1.1.1
     babel-preset-modern-browsers: 15.0.2
     eslint: 8.27.0
     jest: 29.3.1
     jest-junit-reporter: 1.1.0
-    pob-babel: 34.3.0
+    pob-babel: 35.0.0
     prettier: 2.7.1
-    repository-check-dirty: 4.2.0
+    repository-check-dirty: 5.0.0
     rollup: 2.79.1
     semver: 7.3.8
-    typedoc: 0.23.20
+    typedoc: 0.23.21
     typescript: 4.8.4
   languageName: unknown
   linkType: soft
@@ -10008,10 +10008,10 @@ __metadata:
     "@pob/eslint-config": 49.4.0
     "@pob/eslint-config-typescript": 49.4.0
     "@pob/eslint-config-typescript-react": 49.4.0
-    "@pob/root": 6.23.1
-    "@pob/sort-eslint-config": 3.1.0
-    "@pob/sort-object": 4.1.0
-    "@pob/sort-pkg": 4.1.0
+    "@pob/root": 7.0.0
+    "@pob/sort-eslint-config": 4.0.0
+    "@pob/sort-object": 5.0.0
+    "@pob/sort-pkg": 5.0.0
     eslint: 8.27.0
     findup-sync: ^5.0.0
     git-remote-url: ^1.0.1
@@ -10026,7 +10026,7 @@ __metadata:
     minimist: 1.2.7
     node-fetch: 3.3.0
     parse-author: 2.0.0
-    pob-dependencies: 6.33.0
+    pob-dependencies: 7.0.0
     prettier: 2.7.1
     semver: 7.3.8
     yeoman-environment: 3.12.1
@@ -10496,7 +10496,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"repository-check-dirty@4.2.0, repository-check-dirty@workspace:packages/repository-check-dirty":
+"repository-check-dirty@5.0.0, repository-check-dirty@workspace:packages/repository-check-dirty":
   version: 0.0.0-use.local
   resolution: "repository-check-dirty@workspace:packages/repository-check-dirty"
   bin:
@@ -11621,19 +11621,19 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"typedoc@npm:0.23.20":
-  version: 0.23.20
-  resolution: "typedoc@npm:0.23.20"
+"typedoc@npm:0.23.21":
+  version: 0.23.21
+  resolution: "typedoc@npm:0.23.21"
   dependencies:
     lunr: ^2.3.9
     marked: ^4.0.19
     minimatch: ^5.1.0
     shiki: ^0.11.1
   peerDependencies:
-    typescript: 4.6.x || 4.7.x || 4.8.x
+    typescript: 4.6.x || 4.7.x || 4.8.x || 4.9.x
   bin:
     typedoc: bin/typedoc
-  checksum: 8dbe046794a827b87e186523df86573673520ea5c706e1dfc2a820360bda5e998c23fd2ced91299ef060339f6ebba1086776e4e7423769da9b135a13edee10ec
+  checksum: 931520b21ae25ba8ea86111ea7c66f474468bb83cbe1d04c0ea19490f130ea44ba58b7ee4d12f7f02368cfe053ed1fa291c8843c466c8af383ef956de177360d
   languageName: node
   linkType: hard
 
