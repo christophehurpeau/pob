@@ -15,7 +15,6 @@ const excludePkgNames = [
   '@pob/lerna-light',
   'prettier',
   'typescript',
-  'rollup',
   'semver',
   'repository-check-dirty',
   'jest',

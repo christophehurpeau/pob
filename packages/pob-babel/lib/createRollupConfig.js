@@ -129,7 +129,9 @@ export default function createRollupConfig({
         format,
         sourcemap: true,
         exports: 'named',
-        preferConst,
+        generatedCode: {
+          constBindings: preferConst,
+        },
         externalLiveBindings: false,
         freeze: false,
       })),

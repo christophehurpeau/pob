@@ -19,7 +19,6 @@ interface Dependencies {
   'pob-babel': '34.3.0';
   'prettier': '2.7.1';
   'repository-check-dirty': '4.2.0';
-  'rollup': '2.79.1';
   'semver': '7.3.8';
   'typedoc': '0.23.20';
   'typescript': '4.8.4';

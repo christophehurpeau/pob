@@ -44,6 +44,13 @@
         "formats": [
           "es"
         ]
+      },
+      {
+        "target": "browser",
+        "version": "modern",
+        "formats": [
+          "es"
+        ]
       }
     ],
     "entries": [
