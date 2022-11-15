@@ -106,8 +106,10 @@ export default class CommonBabelGenerator extends Generator {
       .filter((env) => env.target === 'browser')
       .map((env) => (env.version === undefined ? 'supported' : env.version));
     const formats = [
-      babelEnvs.some((env) => env.formats.includes('cjs')) ? 'cjs' : undefined,
-      babelEnvs.some((env) => env.formats.includes('es')) ? 'es' : undefined,
+      babelEnvs.some((env) => env.formats?.includes('cjs')) ? 'cjs' : undefined,
+      babelEnvs.some((env) => !env.formats || env.formats.includes('es'))
+        ? 'es'
+        : undefined,
     ].filter(Boolean);
     const jsx =
       (pkg.pob.jsx || pkg.pob.withReact) === undefined
