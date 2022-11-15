@@ -67,8 +67,7 @@ export default class CommonBabelGenerator extends Generator {
       ) {
         babelEnvs.unshift({
           target: 'node',
-          version: '14',
-          formats: ['cjs', 'es'],
+          version: '16',
         });
       }
       babelEnvs = babelEnvs.filter(
@@ -208,12 +207,13 @@ export default class CommonBabelGenerator extends Generator {
       ...(babelConfig.browserVersions || []).map((version) => ({
         target: 'browser',
         version: version === 'supported' ? undefined : version,
-        formats: babelConfig.formats.includes('cjs')
-          ? // eslint-disable-next-line unicorn/no-nested-ternary
-            version === 'supported'
-            ? babelConfig.formats
-            : ['es']
-          : babelConfig.formats || ['es'],
+        formats:
+          babelConfig.formats && babelConfig.formats.includes('cjs')
+            ? // eslint-disable-next-line unicorn/no-nested-ternary
+              version === 'supported'
+              ? babelConfig.formats
+              : ['es']
+            : babelConfig.formats || ['es'],
       })),
     ];
 
@@ -523,6 +523,7 @@ export default class CommonBabelGenerator extends Generator {
     delete pkg['module:browser'];
     delete pkg['module:browser-dev'];
     delete pkg['module:modern-browsers-dev'];
+    delete pkg['module:node'];
     delete pkg['module:node-dev'];
 
     /* webpack 4 */
@@ -540,13 +541,6 @@ export default class CommonBabelGenerator extends Generator {
       ] = `./${this.options.buildDirectory}/index-browsermodern.es.js`;
     } else {
       delete pkg['module:modern-browsers'];
-    }
-
-    if (esNodeEnv) {
-      // webpack 4 node
-      pkg[
-        'module:node'
-      ] = `./${this.options.buildDirectory}/index-${esNodeEnv.target}${esNodeEnv.version}.mjs`;
     }
 
     const aliases = (this.entries || []).filter((entry) => entry !== 'index');
@@ -695,11 +689,6 @@ export default class CommonBabelGenerator extends Generator {
         return;
       }
 
-      if (key.startsWith('module:node') && esNodeEnv) return;
-      if (key.startsWith('module:browser') && esAllBrowserEnv) return;
-      if (key.startsWith('module:modern-browsers') && esModernBrowserEnv) {
-        return;
-      }
       if (key.startsWith('module:aliases') && aliases.length > 0) {
         if (key.startsWith('module:aliases-node') && esNodeEnv) return;
         if (key.startsWith('module:aliases-browser') && esAllBrowserEnv) return;

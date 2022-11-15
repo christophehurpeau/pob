@@ -24,7 +24,6 @@
       }
     }
   },
-  "module:node": "./dist/index-node16.mjs",
   "sideEffects": false,
   "scripts": {
     "build": "yarn clean:build && rollup --config rollup.config.mjs && yarn run build:definitions",
@@ -40,17 +39,11 @@
     "babelEnvs": [
       {
         "target": "node",
-        "version": "16",
-        "formats": [
-          "es"
-        ]
+        "version": "16"
       },
       {
         "target": "browser",
-        "version": "modern",
-        "formats": [
-          "es"
-        ]
+        "version": "modern"
       }
     ],
     "entries": [

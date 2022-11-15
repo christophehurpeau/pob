@@ -6,23 +6,14 @@
     "babelEnvs": [
       {
         "target": "node",
-        "version": "10",
-        "formats": [
-          "es"
-        ]
+        "version": "10"
+      },
+      {
+        "target": "browser"
       },
       {
         "target": "browser",
-        "formats": [
-          "es"
-        ]
-      },
-      {
-        "target": "browser",
-        "version": "modern",
-        "formats": [
-          "es"
-        ]
+        "version": "modern"
       }
     ]
   },

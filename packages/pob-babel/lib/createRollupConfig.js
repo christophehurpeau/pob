@@ -114,7 +114,7 @@ export default function createRollupConfig({
 
     return {
       input: entryPath,
-      output: env.formats.map((format) => ({
+      output: (env.formats || ['es']).map((format) => ({
         file: path.relative(
           process.cwd(),
           path.join(

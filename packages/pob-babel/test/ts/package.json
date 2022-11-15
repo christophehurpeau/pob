@@ -13,10 +13,7 @@
         ]
       },
       {
-        "target": "browser",
-        "formats": [
-          "es"
-        ]
+        "target": "browser"
       }
     ]
   },
