@@ -1,3 +1,4 @@
+import path from 'node:path';
 import Generator from 'yeoman-generator';
 import inLerna from '../../../utils/inLerna.js';
 import * as packageUtils from '../../../utils/package.js';
@@ -189,10 +190,14 @@ export default class CommonTestingGenerator extends Generator {
       } else if (globalTesting) {
         delete pkg.jest;
         if (pkg.scripts) {
-          delete pkg.scripts.test;
           delete pkg.scripts['generate:test-coverage'];
           delete pkg.scripts['test:watch'];
         }
+        pkg.addScripts(pkg, {
+          test: `yarn ../../ run test -- ${path
+            .relative('../..', '.')
+            .replace('\\', '/')}`,
+        });
       } else {
         const babelEnvs = pkg.pob.babelEnvs || [];
         const transpileWithBabel = packageUtils.transpileWithBabel(pkg);

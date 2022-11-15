@@ -524,7 +524,7 @@ export default class CommonLintGenerator extends Generator {
 
       packageUtils.addScripts(pkg, {
         'lint:eslint': globalEslint
-          ? `cd ../.. && yarn run eslint ${args} ${path
+          ? `yarn ../.. run eslint ${args} ${path
               .relative('../..', '.')
               .replace('\\', '/')}`
           : `eslint ${args} ${lintPaths.join(' ')}`,
