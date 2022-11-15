@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.3.0](https://github.com/christophehurpeau/pob/compare/pob@11.2.0...pob@11.3.0) (2022-11-15)
+
+
+### Bug Fixes
+
+* **pob:** fix in babel generator when formats is not defined ([8f975c8](https://github.com/christophehurpeau/pob/commit/8f975c84a9ef48475fbd70979b8a86ede5d8f3e6))
+* **pob:** fix in babel generator when formats is not defined ([3a0fe7d](https://github.com/christophehurpeau/pob/commit/3a0fe7d8a5b937b8bdf31486e0d9cd86aa06acee))
+
+
+### Features
+
+* **pob:** improve lint:eslint and add test scripts in monorepo ([3d6c9d5](https://github.com/christophehurpeau/pob/commit/3d6c9d5f462bf11e57683b2fa1fe198503eb4f71))
+* **pob:** remove formats when cjs not in it ([e86d3f4](https://github.com/christophehurpeau/pob/commit/e86d3f4589ea19d32614ba1198018122229b1a45))
+
+
+
+
+
 # [11.2.0](https://github.com/christophehurpeau/pob/compare/pob@11.1.0...pob@11.2.0) (2022-11-15)
 
 
