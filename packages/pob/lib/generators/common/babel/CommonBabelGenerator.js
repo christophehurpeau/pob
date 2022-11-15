@@ -507,14 +507,14 @@ export default class CommonBabelGenerator extends Generator {
       (env) =>
         env.target === 'browser' &&
         env.version === undefined &&
-        env.formats.includes('es'),
+        (!env.formats || env.formats.includes('es')),
     );
 
     const esModernBrowserEnv = this.babelEnvs.find(
       (env) =>
         env.target === 'browser' &&
         env.version === 'modern' &&
-        env.formats.includes('es'),
+        (!env.formats || env.formats.includes('es')),
     );
 
     const esNodeEnv = this.babelEnvs.find(
@@ -624,13 +624,13 @@ export default class CommonBabelGenerator extends Generator {
                     exportTarget.import;
             }
           } else if (target === 'browser') {
-            if (formats.includes('es')) {
+            if (!formats || formats.includes('es')) {
               exportTarget.import = `./${
                 this.options.buildDirectory
               }/${entryDistName}-${target}${version || ''}.es.js`;
             }
 
-            if (formats.includes('cjs')) {
+            if (formats && formats.includes('cjs')) {
               exportTarget.require = `./${
                 this.options.buildDirectory
               }/index-${target}${version || ''}.cjs.js`;
