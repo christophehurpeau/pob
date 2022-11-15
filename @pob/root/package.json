@@ -21,8 +21,8 @@
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
-    "./createLintStagedConfig": "./createLintStagedConfig.cjs",
-    "./createLintStagedConfig.js": "./createLintStagedConfig.cjs",
+    "./createLintStagedConfig": "./createLintStagedConfig.js",
+    "./createLintStagedConfig.js": "./createLintStagedConfig.js",
     "./createLintStagedConfig.cjs": "./createLintStagedConfig.cjs",
     "./prettier-config": "./prettier-config.cjs",
     "./prettier-config.js": "./prettier-config.cjs",

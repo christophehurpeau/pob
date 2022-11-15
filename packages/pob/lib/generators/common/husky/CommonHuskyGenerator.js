@@ -48,10 +48,10 @@ export default class CommonHuskyGenerator extends Generator {
       this.fs.delete(this.destinationPath('husky.config.js'));
     }
 
-    if (this.fs.exists(this.destinationPath('lint-staged.config.js'))) {
+    if (this.fs.exists(this.destinationPath('lint-staged.config.cjs'))) {
       this.fs.move(
-        this.destinationPath('lint-staged.config.js'),
         this.destinationPath('lint-staged.config.cjs'),
+        this.destinationPath('lint-staged.config.js'),
       );
     }
 
@@ -69,10 +69,17 @@ export default class CommonHuskyGenerator extends Generator {
         //   '@commitlint/config-lerna-scopes': '6.1.3',
         // });
 
-        this.fs.copy(
-          this.templatePath('lint-staged.config.cjs.txt'),
-          this.destinationPath('lint-staged.config.cjs'),
-        );
+        if (pkg.type !== 'module') {
+          this.fs.copy(
+            this.templatePath('lint-staged.config.cjs.txt'),
+            this.destinationPath('lint-staged.config.js'),
+          );
+        } else {
+          this.fs.copy(
+            this.templatePath('lint-staged.config.js.txt'),
+            this.destinationPath('lint-staged.config.js'),
+          );
+        }
       }
 
       pkg.commitlint = {
