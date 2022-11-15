@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.1.0](https://github.com/christophehurpeau/pob/compare/pob@11.0.0...pob@11.1.0) (2022-11-15)
+
+
+### Features
+
+* lint-staged config esm ([9a2fc45](https://github.com/christophehurpeau/pob/commit/9a2fc45740eb4374171d1f0de2d73f99df90e243))
+
+
+
+
+
 # [11.0.0](https://github.com/christophehurpeau/pob/compare/pob@10.21.0...pob@11.0.0) (2022-11-13)
 
 

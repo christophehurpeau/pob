@@ -1,6 +1,6 @@
 {
   "name": "@pob/renovate-config",
-  "version": "5.12.1",
+  "version": "5.13.0",
   "description": "renovate pob config",
   "type": "module",
   "engines": {
@@ -14,7 +14,7 @@
   },
   "prettier": "@pob/root/prettier-config",
   "devDependencies": {
-    "pob-dependencies": "7.0.0",
+    "pob-dependencies": "7.1.0",
     "prettier": "2.7.1"
   },
   "renovate-config": {
@@ -62,7 +62,8 @@
           "semanticCommitType": "fix",
           "packageNames": [
             "alp-rollup-plugin-config",
-            "pob-babel"
+            "pob-babel",
+            "rollup"
           ]
         },
         {

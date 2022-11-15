@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [35.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@35.0.0...pob-babel@35.1.0) (2022-11-15)
+
+
+### Features
+
+* update rollup to v3 ([c34a41c](https://github.com/christophehurpeau/pob/commit/c34a41c65c72d81078bf1960878777d7c3c5a3ca))
+
+
+
+
+
 # [35.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@34.3.0...pob-babel@35.0.0) (2022-11-13)
 
 
