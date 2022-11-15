@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.2.0](https://github.com/christophehurpeau/pob/compare/pob@11.1.0...pob@11.2.0) (2022-11-15)
+
+
+### Features
+
+* make formats optional ([ca8a235](https://github.com/christophehurpeau/pob/commit/ca8a23593732a6380f2eb89006914dbe34149e35))
+
+
+
+
+
 # [11.1.0](https://github.com/christophehurpeau/pob/compare/pob@11.0.0...pob@11.1.0) (2022-11-15)
 
 

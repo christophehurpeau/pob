@@ -16,7 +16,7 @@ interface Dependencies {
   'eslint': '8.27.0';
   'jest': '29.3.1';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '35.0.0';
+  'pob-babel': '35.1.0';
   'prettier': '2.7.1';
   'repository-check-dirty': '5.0.0';
   'rollup': '3.3.0';

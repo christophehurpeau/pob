@@ -1,6 +1,6 @@
 {
   "name": "pob-dependencies",
-  "version": "7.1.0",
+  "version": "7.1.1",
   "description": "easier dependencies upgrade with a real package.json",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -48,7 +48,7 @@
     "eslint": "8.27.0",
     "jest": "29.3.1",
     "jest-junit-reporter": "1.1.0",
-    "pob-babel": "35.1.0",
+    "pob-babel": "35.2.0",
     "prettier": "2.7.1",
     "repository-check-dirty": "5.0.0",
     "rollup": "3.3.0",

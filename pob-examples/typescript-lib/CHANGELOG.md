@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.10.0...example-typescript-lib@0.11.0) (2022-11-15)
+
+
+### Features
+
+* make formats optional ([ca8a235](https://github.com/christophehurpeau/pob/commit/ca8a23593732a6380f2eb89006914dbe34149e35))
+
+
+
+
+
 # [0.10.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.9.0...example-typescript-lib@0.10.0) (2022-11-15)
 
 
