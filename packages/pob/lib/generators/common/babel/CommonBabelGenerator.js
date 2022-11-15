@@ -203,8 +203,8 @@ export default class CommonBabelGenerator extends Generator {
             ? // eslint-disable-next-line unicorn/no-nested-ternary
               version === '16'
               ? babelConfig.formats
-              : ['es']
-            : babelConfig.formats || ['es'],
+              : undefined
+            : undefined,
       })),
       ...(babelConfig.browserVersions || []).map((version) => ({
         target: 'browser',
@@ -214,8 +214,8 @@ export default class CommonBabelGenerator extends Generator {
             ? // eslint-disable-next-line unicorn/no-nested-ternary
               version === 'supported'
               ? babelConfig.formats
-              : ['es']
-            : babelConfig.formats || ['es'],
+              : undefined
+            : undefined,
       })),
     ];
 
@@ -518,7 +518,8 @@ export default class CommonBabelGenerator extends Generator {
     );
 
     const esNodeEnv = this.babelEnvs.find(
-      (env) => env.target === 'node' && env.formats.includes('es'),
+      (env) =>
+        env.target === 'node' && (!env.formats || env.formats.includes('es')),
     );
 
     // Legacy "dev" builds
@@ -603,13 +604,13 @@ export default class CommonBabelGenerator extends Generator {
 
           if (target === 'node') {
             const cjsExt = pkg.type === 'module' ? 'cjs' : 'cjs.js';
-            if (formats.includes('es')) {
+            if (!formats || formats.includes('es')) {
               exportTarget.import = `./${this.options.buildDirectory}/${entryDistName}-${target}${version}.mjs`;
 
-              if (formats.includes('cjs')) {
+              if (formats && formats.includes('cjs')) {
                 exportTarget.require = `./${this.options.buildDirectory}/${entryDistName}-${target}${version}.${cjsExt}`;
               }
-            } else if (formats.includes('cjs')) {
+            } else if (formats && formats.includes('cjs')) {
               exportTarget.default = `./${this.options.buildDirectory}/${entryDistName}-${target}${version}.${cjsExt}`;
             }
             // eslint: https://github.com/benmosher/eslint-plugin-import/issues/2132
