@@ -193,7 +193,7 @@ export default class CommonTestingGenerator extends Generator {
           delete pkg.scripts['generate:test-coverage'];
           delete pkg.scripts['test:watch'];
         }
-        pkg.addScripts(pkg, {
+        packageUtils.addScripts(pkg, {
           test: `yarn ../../ run test -- ${path
             .relative('../..', '.')
             .replace('\\', '/')}`,
