@@ -21,6 +21,7 @@
   "exports": {
     ".": "./lib/index.js",
     "./pob-babel-replace-plugin": "./lib/pob-babel-replace-plugin.js",
+    "./pob-babel-replace-plugin.cjs": "./lib/pob-babel-replace-plugin.cjs",
     "./package.json": "./package.json"
   },
   "sideEffects": false,
