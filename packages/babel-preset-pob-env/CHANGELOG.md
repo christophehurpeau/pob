@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.1.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@9.0.0...babel-preset-pob-env@9.1.0) (2022-11-18)
+
+
+### Features
+
+* **babel-preset-pob-env:** export cjs version of pob-babel-replace-plugin ([3fa0085](https://github.com/christophehurpeau/pob/commit/3fa00850901540de2a3cd1980ada90eaec07c594))
+* simplify tsconfig ([83e1ad1](https://github.com/christophehurpeau/pob/commit/83e1ad11dac522c93821fb91dc1b2ccdebd0be16))
+
+
+
+
+
 # [9.0.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@8.3.0...babel-preset-pob-env@9.0.0) (2022-11-13)
 
 

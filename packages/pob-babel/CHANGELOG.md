@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [35.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@35.2.0...pob-babel@35.3.0) (2022-11-18)
+
+
+### Features
+
+* simplify tsconfig ([83e1ad1](https://github.com/christophehurpeau/pob/commit/83e1ad11dac522c93821fb91dc1b2ccdebd0be16))
+
+
+
+
+
 # [35.2.0](https://github.com/christophehurpeau/pob/compare/pob-babel@35.1.0...pob-babel@35.2.0) (2022-11-15)
 
 

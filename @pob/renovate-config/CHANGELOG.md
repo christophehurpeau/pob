@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.13.2](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.13.1...@pob/renovate-config@5.13.2) (2022-11-18)
+
+
+### Bug Fixes
+
+* **renovate-config:** only auto approve @pob/root and yarn if minor or patch ([e0d8f39](https://github.com/christophehurpeau/pob/commit/e0d8f39cf73a779e0df96dc3b252e83a9ed49973))
+
+
+
+
+
 ## [5.13.1](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.13.0...@pob/renovate-config@5.13.1) (2022-11-15)
 
 **Note:** Version bump only for package @pob/renovate-config

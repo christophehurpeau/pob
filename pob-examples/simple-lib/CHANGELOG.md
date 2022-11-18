@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.3.0...example-simple-lib@0.4.0) (2022-11-18)
+
+
+### Features
+
+* simplify tsconfig ([83e1ad1](https://github.com/christophehurpeau/pob/commit/83e1ad11dac522c93821fb91dc1b2ccdebd0be16))
+
+
+
+
+
 # [0.3.0](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.2.0...example-simple-lib@0.3.0) (2022-11-13)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@7.1.1...@pob/root@7.2.0) (2022-11-18)
+
+
+### Features
+
+* simplify tsconfig ([83e1ad1](https://github.com/christophehurpeau/pob/commit/83e1ad11dac522c93821fb91dc1b2ccdebd0be16))
+
+
+
+
+
 ## [7.1.1](https://github.com/christophehurpeau/pob/compare/@pob/root@7.1.0...@pob/root@7.1.1) (2022-11-15)
 
 **Note:** Version bump only for package @pob/root

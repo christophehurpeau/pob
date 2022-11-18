@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.4.0](https://github.com/christophehurpeau/pob/compare/pob@11.3.0...pob@11.4.0) (2022-11-18)
+
+
+### Bug Fixes
+
+* fix clean:build script in workspace ([990dbb9](https://github.com/christophehurpeau/pob/commit/990dbb9815d550fb154d25deb7540e175a58f409))
+* **pob:** fix removed @pob/root ([79f2b1f](https://github.com/christophehurpeau/pob/commit/79f2b1f1ea8e20a60f7ccecf796e1cd8d8fdb706))
+* **pob:** packageUtils ([ce3df65](https://github.com/christophehurpeau/pob/commit/ce3df6583c415b5e59fafdc8ea300730237bdbef))
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.28.0 ([#1458](https://github.com/christophehurpeau/pob/issues/1458)) ([dab9337](https://github.com/christophehurpeau/pob/commit/dab93371c4e8ff4e424e97c6ffad8232ac2e68aa))
+* simplify tsconfig ([83e1ad1](https://github.com/christophehurpeau/pob/commit/83e1ad11dac522c93821fb91dc1b2ccdebd0be16))
+
+
+
+
+
 # [11.3.0](https://github.com/christophehurpeau/pob/compare/pob@11.2.0...pob@11.3.0) (2022-11-15)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@6.0.0...babel-plugin-fix-class-properties-uninitialized@6.1.0) (2022-11-18)
+
+
+### Features
+
+* simplify tsconfig ([83e1ad1](https://github.com/christophehurpeau/pob/commit/83e1ad11dac522c93821fb91dc1b2ccdebd0be16))
+
+
+
+
+
 # [6.0.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@5.1.0...babel-plugin-fix-class-properties-uninitialized@6.0.0) (2022-11-13)
 
 

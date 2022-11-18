@@ -1,6 +1,6 @@
 {
   "name": "@pob/renovate-config",
-  "version": "5.13.1",
+  "version": "5.13.2",
   "description": "renovate pob config",
   "type": "module",
   "engines": {
@@ -14,7 +14,7 @@
   },
   "prettier": "@pob/root/prettier-config",
   "devDependencies": {
-    "pob-dependencies": "7.1.1",
+    "pob-dependencies": "7.2.0",
     "prettier": "2.7.1"
   },
   "renovate-config": {

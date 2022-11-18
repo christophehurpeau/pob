@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@7.1.1...pob-dependencies@7.2.0) (2022-11-18)
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.28.0 ([#1458](https://github.com/christophehurpeau/pob/issues/1458)) ([dab9337](https://github.com/christophehurpeau/pob/commit/dab93371c4e8ff4e424e97c6ffad8232ac2e68aa))
+* simplify tsconfig ([83e1ad1](https://github.com/christophehurpeau/pob/commit/83e1ad11dac522c93821fb91dc1b2ccdebd0be16))
+
+
+
+
+
 ## [7.1.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@7.1.0...pob-dependencies@7.1.1) (2022-11-15)
 
 **Note:** Version bump only for package pob-dependencies

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.1.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-eslint-config@4.0.0...@pob/pretty-eslint-config@4.1.0) (2022-11-18)
+
+
+### Features
+
+* simplify tsconfig ([83e1ad1](https://github.com/christophehurpeau/pob/commit/83e1ad11dac522c93821fb91dc1b2ccdebd0be16))
+
+
+
+
+
 # [4.0.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-eslint-config@3.3.0...@pob/pretty-eslint-config@4.0.0) (2022-11-13)
 
 
