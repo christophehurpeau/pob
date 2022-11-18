@@ -290,8 +290,12 @@ export default class CommonBabelGenerator extends Generator {
       });
     } else {
       packageUtils.removeScripts(['start']);
+      packageUtils.addScripts(pkg, {
+        'clean:build': useBabel
+          ? `pob-babel-clean-out ${this.options.buildDirectory}`
+          : 'true',
+      });
       packageUtils.addOrRemoveScripts(pkg, useBabel, {
-        'clean:build': `pob-babel-clean-out ${this.options.buildDirectory}`,
         build: 'yarn clean:build && rollup --config rollup.config.mjs',
         watch: 'yarn clean:build && rollup --config rollup.config.mjs --watch',
         clean: 'yarn clean:build',
