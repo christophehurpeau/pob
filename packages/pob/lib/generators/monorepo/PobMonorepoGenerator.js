@@ -315,9 +315,7 @@ export default class PobMonorepoGenerator extends Generator {
         this.fs.delete('rollup.config.mjs');
       }
       packageUtils.addOrRemoveScripts(pkg, rollupConfigs.length > 0, {
-        'clean:build': `(${pkg.workspaces
-          .map((workspaces) => `rm -Rf ${workspaces}/dist ${workspaces}/build`)
-          .join(' ; ')}) || true`,
+        'clean:build': 'yarn workspaces foreach run clean:build',
         build: 'yarn clean:build && rollup --config rollup.config.mjs',
         watch: 'yarn clean:build && rollup --config rollup.config.mjs --watch',
       });
