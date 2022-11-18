@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.4.1](https://github.com/christophehurpeau/pob/compare/pob@11.4.0...pob@11.4.1) (2022-11-18)
+
+
+### Bug Fixes
+
+* **pob:** fix clean:build script ([263cc50](https://github.com/christophehurpeau/pob/commit/263cc50f3695e1e20cf73d90a87cef7a087600cc))
+
+
+
+
+
 # [11.4.0](https://github.com/christophehurpeau/pob/compare/pob@11.3.0...pob@11.4.0) (2022-11-18)
 
 
