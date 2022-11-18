@@ -26,7 +26,7 @@
     "build": "yarn run build:definitions",
     "build:definitions": "tsc --lib esnext --noEmit --skipLibCheck ./lib/index.d.ts",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/pob-dependencies",
+    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/pob-dependencies",
     "preversion": "node ./scripts/update-peerdeps.js && node ./scripts/generate.d.ts.js && git add lib/index.d.ts"
   },
   "prettier": "@pob/root/prettier-config",

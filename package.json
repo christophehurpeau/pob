@@ -18,7 +18,7 @@
   ],
   "scripts": {
     "build": "yarn clean:build && rollup --config rollup.config.mjs && yarn run build:definitions",
-    "build:definitions": "tsc -b tsconfig.build.json",
+    "build:definitions": "tsc -b",
     "checks": "node scripts/check-packages.js",
     "clean:build": "(rm -Rf packages/*/dist/* ; rm -Rf @pob/*/dist/* ; rm -Rf pob-examples/*/dist/*) || true",
     "lint": "yarn run lint:prettier && yarn run lint:eslint",
@@ -28,7 +28,7 @@
     "postinstall": "yarn node @pob/root/bin/pob-root-postinstall.cjs",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "tsc": "tsc -b",
-    "watch": "yarn workspaces foreach --parallel --jobs unlimited --interlaced --exclude \"*-example\" -Av run watch"
+    "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
   "prettier": "@pob/root/prettier-config",
   "commitlint": {

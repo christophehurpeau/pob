@@ -100,7 +100,7 @@ module.exports = function createLintStagedConfig() {
       pkg.devDependencies && pkg.devDependencies['pob-babel']
         ? [
             'rollup --config rollup.config.mjs',
-            'tsc -b tsconfig.build.json',
+            'tsc -b',
             // `git --glob-pathspecs add ${getDistDirectories()}/**/*`,
           ]
         : ['tsc'],

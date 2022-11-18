@@ -1,4 +1,3 @@
-import { existsSync } from 'fs';
 import Generator from 'yeoman-generator';
 import * as packageUtils from '../../../utils/package.js';
 import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
@@ -48,14 +47,12 @@ export default class MonorepoTypescriptGenerator extends Generator {
       'typescript',
     ]);
 
-    const tsconfigPath = this.destinationPath('tsconfig.json');
-    const tsconfigBuildPath = this.destinationPath('tsconfig.build.json');
     if (this.options.enable) {
       packageUtils.addScripts(pkg, {
         tsc: 'tsc -b',
       });
       packageUtils.addOrRemoveScripts(pkg, !this.options.isAppProject, {
-        'build:definitions': 'tsc -b tsconfig.build.json',
+        'build:definitions': 'tsc -b',
       });
 
       delete pkg.scripts.postbuild;
@@ -63,7 +60,35 @@ export default class MonorepoTypescriptGenerator extends Generator {
       if (!this.options.isAppProject) {
         pkg.scripts.build += ' && yarn run build:definitions';
       }
+    } else if (pkg.scripts) {
+      delete pkg.scripts.tsc;
+      if (
+        pkg.scripts.postbuild === 'tsc -b tsconfig.build.json' ||
+        pkg.scripts.postbuild === 'tsc -b'
+      ) {
+        delete pkg.scripts.postbuild;
+      }
+      delete pkg.scripts['build:definitions'];
+    }
 
+    if (pkg.scripts) {
+      delete pkg.scripts['typescript-check'];
+    }
+
+    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+  }
+
+  // after pob ran in workspaces
+  end() {
+    const tsconfigPath = this.destinationPath('tsconfig.json');
+    const tsconfigCheckPath = this.destinationPath('tsconfig.check.json');
+    const tsconfigBuildPath = this.destinationPath('tsconfig.build.json');
+
+    if (!this.options.enable) {
+      this.fs.delete(tsconfigPath);
+      this.fs.delete(tsconfigCheckPath);
+      this.fs.delete(tsconfigBuildPath);
+    } else {
       const packagePaths = JSON.parse(this.options.packagePaths);
 
       copyAndFormatTpl(
@@ -74,40 +99,33 @@ export default class MonorepoTypescriptGenerator extends Generator {
           packagePaths,
         },
       );
-      if (this.options.isAppProject) {
-        this.fs.delete(tsconfigBuildPath);
-      } else {
-        copyAndFormatTpl(
-          this.fs,
-          this.templatePath('tsconfig.build.json.ejs'),
-          tsconfigBuildPath,
-          {
-            packagePaths: packagePaths.filter((packagePath) =>
-              existsSync(
-                `${packagePath}/tsconfig${
-                  this.options.isAppProject ? '' : '.build'
-                }.json`,
-              ),
-            ),
-          },
-        );
-      }
-    } else {
-      if (pkg.scripts) {
-        delete pkg.scripts.tsc;
-        if (pkg.scripts.postbuild === 'tsc -b tsconfig.build.json') {
-          delete pkg.scripts.postbuild;
-        }
-        delete pkg.scripts['build:definitions'];
-      }
-      this.fs.delete(tsconfigPath);
+
+      this.fs.delete(tsconfigCheckPath);
       this.fs.delete(tsconfigBuildPath);
-    }
+      // if (this.options.isAppProject) {
+      // } else {
+      //   copyAndFormatTpl(
+      //     this.fs,
+      //     this.templatePath('tsconfig.check.json.ejs'),
+      //     tsconfigCheckPath,
+      //     {
+      //       packagePaths: packagePaths.filter((packagePath) =>
+      //         existsSync(`${packagePath}/tsconfig.check.json`),
+      //       ),
+      //     },
+      //   );
 
-    if (pkg.scripts) {
-      delete pkg.scripts['typescript-check'];
+      //   copyAndFormatTpl(
+      //     this.fs,
+      //     this.templatePath('tsconfig.build.json.ejs'),
+      //     tsconfigBuildPath,
+      //     {
+      //       packagePaths: packagePaths.filter((packagePath) =>
+      //         existsSync(`${packagePath}/tsconfig.build.json`),
+      //       ),
+      //     },
+      //   );
+      // }
     }
-
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 }

@@ -91,13 +91,15 @@ export default class CommonTypescriptGenerator extends Generator {
     );
 
     const tsconfigPath = this.destinationPath('tsconfig.json');
+    const tsconfigCheckPath = this.destinationPath('tsconfig.check.json');
     const tsconfigEslintPath = this.destinationPath('tsconfig.eslint.json');
     const tsconfigBuildPath = this.destinationPath('tsconfig.build.json');
+
     if (this.options.enable) {
       const { jsx, dom } = this.options;
       let composite;
       let monorepoPackageReferences;
-      let monorepoPackageBuildReferences;
+      // let monorepoPackageBuildReferences;
       let monorepoPackageSrcPaths;
 
       if (inLerna && !inLerna.root) {
@@ -153,21 +155,34 @@ export default class CommonTypescriptGenerator extends Generator {
               existsSync(`${packageLocations.get(packageName)}/tsconfig.json`),
             )
             .map((packageName) => packageLocations.get(packageName));
-          monorepoPackageBuildReferences = yoConfig.pob.monorepo.packageNames
-            .filter((packageName) =>
-              existsSync(
-                `${packageLocations.get(packageName)}/tsconfig.build.json`,
-              ),
-            )
-            .map((packageName) => packageLocations.get(packageName));
+          // monorepoPackageBuildReferences = yoConfig.pob.monorepo.packageNames
+          //   .filter((packageName) =>
+          //     existsSync(
+          //       `${packageLocations.get(packageName)}/tsconfig.build.json`,
+          //     ),
+          //   )
+          //   .map((packageName) => packageLocations.get(packageName));
         }
       }
 
+      if (this.fs.exists(tsconfigEslintPath)) {
+        this.fs.delete(tsconfigEslintPath);
+      }
+      if (this.fs.exists(tsconfigCheckPath)) {
+        this.fs.delete(tsconfigCheckPath);
+      }
+
+      /*
+      Only using one file:
+      - allows IDE and typedoc to behave correctly
+      - generate useless definition files for not excluded tests files. However, it also use them for cache.
+      */
       copyAndFormatTpl(
         this.fs,
         this.templatePath('tsconfig.json.ejs'),
         tsconfigPath,
         {
+          emit: this.options.builddefs,
           monorepoPackageSrcPaths,
           monorepoPackageReferences,
           rootDir: this.options.rootDir,
@@ -181,36 +196,32 @@ export default class CommonTypescriptGenerator extends Generator {
           forceAllowJs: this.options.forceAllowJs,
         },
       );
-      copyAndFormatTpl(
-        this.fs,
-        this.templatePath('tsconfig.eslint.json.ejs'),
-        tsconfigEslintPath,
-        {},
-      );
-      if (
-        this.options.builddefs // &&
-        // (!composite || monorepoPackageNames.length !== 0)
-      ) {
-        copyAndFormatTpl(
-          this.fs,
-          this.templatePath('tsconfig.build.json.ejs'),
-          tsconfigBuildPath,
-          {
-            inMonorepo: inLerna && !inLerna.root,
-            jsx,
-            composite,
-            monorepoPackageSrcPaths,
-            monorepoPackageBuildReferences,
-          },
-        );
-      } else {
-        this.fs.delete(tsconfigBuildPath);
-      }
+
+      // if (
+      //   this.options.builddefs // &&
+      //   // (!composite || monorepoPackageNames.length !== 0)
+      // ) {
+      //   copyAndFormatTpl(
+      //     this.fs,
+      //     this.templatePath('tsconfig.build.json.ejs'),
+      //     tsconfigBuildPath,
+      //     {
+      //       inMonorepo: inLerna && !inLerna.root,
+      //       jsx,
+      //       composite,
+      //       monorepoPackageSrcPaths,
+      //       monorepoPackageBuildReferences,
+      //     },
+      //   );
+      // } else {
+      this.fs.delete(tsconfigBuildPath);
+      // }
     } else {
       if (pkg.scripts) delete pkg.scripts.tsc;
       this.fs.delete(tsconfigPath);
-      this.fs.delete(tsconfigEslintPath);
       this.fs.delete(tsconfigBuildPath);
+      this.fs.delete(tsconfigCheckPath);
+      this.fs.delete(tsconfigEslintPath);
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);

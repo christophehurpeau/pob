@@ -23,7 +23,7 @@
   "sideEffects": false,
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/babel-plugin-fix-class-properties-uninitialized"
+    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/babel-plugin-fix-class-properties-uninitialized"
   },
   "prettier": "@pob/root/prettier-config",
   "pob": {}

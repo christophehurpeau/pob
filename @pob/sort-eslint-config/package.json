@@ -26,7 +26,7 @@
   "sideEffects": false,
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet @pob/sort-eslint-config"
+    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet @pob/sort-eslint-config"
   },
   "prettier": "@pob/root/prettier-config",
   "pob": {},

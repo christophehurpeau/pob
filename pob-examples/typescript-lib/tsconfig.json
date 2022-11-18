@@ -2,15 +2,15 @@
   "include": ["src/**/*.ts"],
   "compilerOptions": {
     "rootDir": "src",
-    "incremental": true,
-    "composite": true,
-    "noEmit": false,
+    "newLine": "lf",
+    "outDir": "dist/definitions",
+    "tsBuildInfoFile": "dist/tsbuildinfo",
     "noEmitOnError": true,
     "declaration": true,
     "declarationMap": true,
     "emitDeclarationOnly": true,
-    "outDir": "node_modules/.cache/tsc",
-    "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo",
+    "incremental": true,
+    "composite": true,
 
     /* No need to check .d.ts files */
     "skipLibCheck": true,
@@ -18,6 +18,7 @@
     "target": "esnext" /* Specify ECMAScript target version: 'ES3' (default), 'ES5', 'ES2015', 'ES2016', 'ES2017','ES2018' or 'ESNEXT'. */,
     "module": "esnext" /* Specify module code generation: 'none', 'commonjs', 'amd', 'system', 'umd', 'es2015', or 'ESNext'. */,
     "lib": [
+      "dom",
       "esnext"
     ] /* Polyfills are imported either by babel or with polyfill.io */,
     // "jsx": "react-jsx",                     /* 'react-jsx' is used with react/jsx-runtime (react >=17 || >= 16.14.0 | >= 15.7.0) */

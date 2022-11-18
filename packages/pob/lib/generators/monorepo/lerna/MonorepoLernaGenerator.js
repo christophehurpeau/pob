@@ -109,10 +109,7 @@ export default class MonorepoLernaGenerator extends Generator {
     ];
 
     if (withBabel) {
-      lernaConfig.command.publish.ignoreChanges.push(
-        '**/tsconfig.json',
-        '**/tsconfig.build.json',
-      );
+      lernaConfig.command.publish.ignoreChanges.push('**/tsconfig.json');
     }
 
     writeAndFormatJson(

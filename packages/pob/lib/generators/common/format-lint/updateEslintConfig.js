@@ -38,12 +38,12 @@ function updateParserAndPlugins(
 
     if (!globalEslint) {
       config.parserOptions = {
-        project: './tsconfig.eslint.json',
+        project: './tsconfig.json',
         createDefaultProgram: true, // fix for lint-staged
       };
     } else {
       config.parserOptions = {
-        project: `${relativePath}/tsconfig.eslint.json`,
+        project: `${relativePath}/tsconfig.json`,
       };
     }
   } else {

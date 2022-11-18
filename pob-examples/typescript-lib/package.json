@@ -14,24 +14,37 @@
   "engines": {
     "node": ">=16.0.0"
   },
+  "browserslist": [
+    "defaults",
+    "> 0.2%",
+    "not ie < 12",
+    "not safari < 10",
+    "not ios_saf < 10"
+  ],
   "main": "./dist/index-node16.mjs",
-  "types": "./dist/index.d.ts",
+  "types": "./dist/definitions/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "node": {
         "import": "./dist/index-node16.mjs"
+      },
+      "browser": {
+        "browser:modern": {
+          "import": "./dist/index-browsermodern.es.js"
+        }
       }
     }
   },
   "sideEffects": false,
   "scripts": {
     "build": "yarn clean:build && rollup --config rollup.config.mjs && yarn run build:definitions",
-    "build:definitions": "tsc -p tsconfig.build.json",
+    "build:definitions": "tsc -p",
     "clean": "yarn clean:build",
     "clean:build": "pob-babel-clean-out dist",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet pob-examples/typescript-lib",
+    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet pob-examples/typescript-lib",
+    "test": "yarn ../../ run test -- pob-examples/typescript-lib",
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
   "prettier": "@pob/root/prettier-config",
@@ -52,6 +65,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.20.2",
+    "babel-preset-modern-browsers": "15.0.2",
     "pob-babel": "35.2.0",
     "typescript": "4.9.3"
   }

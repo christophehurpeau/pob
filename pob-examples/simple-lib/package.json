@@ -22,7 +22,8 @@
   "sideEffects": false,
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet pob-examples/simple-lib"
+    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet pob-examples/simple-lib",
+    "test": "yarn ../../ run test -- pob-examples/simple-lib"
   },
   "prettier": "@pob/root/prettier-config",
   "pob": {}

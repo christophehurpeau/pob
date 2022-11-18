@@ -10,19 +10,25 @@
 <% } -%>
   "compilerOptions": {
     "rootDir": "<%= rootDir %>",
-<% if(!composite) { -%>
-    /* No emit in default config file. See build config file for config to build declaration files */
-    "noEmit": true,
+    "newLine": "lf",
+<% if (emit) { -%>
+    "outDir": "dist/definitions",
+    "tsBuildInfoFile": "dist/definitions/tsbuildinfo",
+<% } else if (composite) { -%>
+    "outDir": "node_modules/.cache/tsc",
+    "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo",
 <% } else { -%>
-    "incremental": true,
-    "composite": true,
-    "noEmit": false,
+    "noEmit": true,
+<% } -%>
+<% if (composite || emit) { -%>
     "noEmitOnError": true,
     "declaration": true,
     "declarationMap": true,
     "emitDeclarationOnly": true,
-    "outDir": "node_modules/.cache/tsc",
-    "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo",
+<% } -%>
+<% if(composite) { -%>
+    "incremental": true,
+    "composite": true,
 <% } -%>
 
     /* No need to check .d.ts files */

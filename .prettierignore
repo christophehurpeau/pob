@@ -4,4 +4,3 @@ CHANGELOG.md
 /@pob/*/dist
 /pob-examples/*/dist
 /coverage
-/packages/pob-dependencies/lib/index.d.ts

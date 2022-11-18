@@ -22,7 +22,7 @@
 
   "references": [
 <% packagePaths.forEach((packagePath, index) => { -%>
-    { "path": "<%= packagePath %>/tsconfig.build.json" }<%= index === packagePaths.length -1 ? '' : ',' %>
+    { "path": "<%= packagePath %>/tsconfig.json" }<%= index === packagePaths.length -1 ? '' : ',' %>
 <% }) -%>
   ],
 

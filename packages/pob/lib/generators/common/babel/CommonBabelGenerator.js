@@ -249,14 +249,15 @@ export default class CommonBabelGenerator extends Generator {
     if (this.entries) {
       this.entries.forEach((entry) => {
         const entryDestPath = this.destinationPath(`${entry}.js`);
-        if (this.options.isApp && entry !== 'index') {
-          this.fs.write(
-            entryDestPath,
-            `// resolution for eslint-plugin-import\nexport * from './src/${entry}/index.ts';\n`,
-          );
-        } else {
-          this.fs.delete(entryDestPath);
-        }
+        // TODO check nightingale before uncomment this
+        // if (this.options.isApp && entry !== 'index') {
+        //   this.fs.write(
+        //     entryDestPath,
+        //     `// resolution for eslint-plugin-import\nexport * from './src/${entry}/index.ts';\n`,
+        //   );
+        // } else {
+        this.fs.delete(entryDestPath);
+        // }
       });
     }
     //
@@ -299,7 +300,7 @@ export default class CommonBabelGenerator extends Generator {
 
     const shouldBuildDefinitions = !this.options.isApp && useBabel;
     packageUtils.addOrRemoveScripts(pkg, shouldBuildDefinitions, {
-      'build:definitions': 'tsc -p tsconfig.build.json',
+      'build:definitions': 'tsc -p',
     });
 
     if (shouldBuildDefinitions) {
@@ -469,7 +470,7 @@ export default class CommonBabelGenerator extends Generator {
       // see pkg.exports instead.
       delete pkg.main;
       if (!this.options.isApp) {
-        pkg.types = `./${this.options.buildDirectory}/index.d.ts`;
+        pkg.types = `./${this.options.buildDirectory}/definitions/index.d.ts`;
       }
     } else {
       if (!pkg.main) {

@@ -26,7 +26,8 @@
   "sideEffects": false,
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/babel-preset-pob-env"
+    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/babel-preset-pob-env",
+    "test": "yarn ../../ run test -- packages/babel-preset-pob-env"
   },
   "prettier": "@pob/root/prettier-config",
   "pob": {},

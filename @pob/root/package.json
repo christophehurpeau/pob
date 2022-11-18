@@ -42,7 +42,7 @@
   },
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "cd ../.. && yarn run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet @pob/root"
+    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet @pob/root"
   },
   "prettier": "@pob/root/prettier-config",
   "pob": {},
