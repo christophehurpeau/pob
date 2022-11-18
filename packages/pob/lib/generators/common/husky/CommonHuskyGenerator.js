@@ -103,7 +103,7 @@ export default class CommonHuskyGenerator extends Generator {
       // this.fs.delete('.git/hooks/husky.local.sh');
     } else {
       packageUtils.removeDevDependencies(pkg, [
-        '@pob/root',
+        pkg.name !== 'pob' && '@pob/root',
         '@pob/commitlint-config',
       ]);
       this.fs.delete(this.destinationPath('lint-staged.config.cjs'));
