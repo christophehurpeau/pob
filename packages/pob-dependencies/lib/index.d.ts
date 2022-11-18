@@ -1,4 +1,3 @@
-
 interface Dependencies {
   '@babel/core': '7.20.2';
   '@babel/preset-env': '7.20.2';
@@ -13,16 +12,16 @@ interface Dependencies {
   '@types/jest': '29.2.3';
   'alp-rollup-plugin-config': '1.2.0';
   'babel-preset-modern-browsers': '15.0.2';
-  'eslint': '8.27.0';
-  'jest': '29.3.1';
+  eslint: '8.27.0';
+  jest: '29.3.1';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '35.1.0';
-  'prettier': '2.7.1';
+  'pob-babel': '35.2.0';
+  prettier: '2.7.1';
   'repository-check-dirty': '5.0.0';
-  'rollup': '3.3.0';
-  'semver': '7.3.8';
-  'typedoc': '0.23.21';
-  'typescript': '4.9.3';
+  rollup: '3.3.0';
+  semver: '7.3.8';
+  typedoc: '0.23.21';
+  typescript: '4.9.3';
 }
 
 declare const dependencies: Dependencies;
