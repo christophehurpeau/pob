@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.4.3](https://github.com/christophehurpeau/pob/compare/pob@11.4.2...pob@11.4.3) (2022-11-19)
+
+
+### Bug Fixes
+
+* fix config babel with pob-babel preset esm ([ffb94f0](https://github.com/christophehurpeau/pob/commit/ffb94f09a7014edbb82106db66fff4379d17d2d9))
+
+
+
+
+
 ## [11.4.2](https://github.com/christophehurpeau/pob/compare/pob@11.4.1...pob@11.4.2) (2022-11-19)
 
 
