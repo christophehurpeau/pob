@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.4.2](https://github.com/christophehurpeau/pob/compare/pob@11.4.1...pob@11.4.2) (2022-11-19)
+
+
+### Bug Fixes
+
+* tsc and non composite ([bdfb6a3](https://github.com/christophehurpeau/pob/commit/bdfb6a373cdcab7f0e0f981c0743debab82e31fd))
+
+
+
+
+
 ## [11.4.1](https://github.com/christophehurpeau/pob/compare/pob@11.4.0...pob@11.4.1) (2022-11-18)
 
 
