@@ -304,7 +304,7 @@ export default class CommonBabelGenerator extends Generator {
 
     const shouldBuildDefinitions = !this.options.isApp && useBabel;
     packageUtils.addOrRemoveScripts(pkg, shouldBuildDefinitions, {
-      'build:definitions': 'tsc -p',
+      'build:definitions': 'tsc -p tsconfig.json',
     });
 
     if (shouldBuildDefinitions) {

@@ -13,7 +13,9 @@
     "newLine": "lf",
 <% if (emit) { -%>
     "outDir": "dist/definitions",
+    <% if (composite) { -%>
     "tsBuildInfoFile": "dist/definitions/tsbuildinfo",
+    <% } -%>
 <% } else if (composite) { -%>
     "outDir": "node_modules/.cache/tsc",
     "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo",
