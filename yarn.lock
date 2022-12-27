@@ -2232,7 +2232,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lerna/package-graph@npm:5.6.2, @lerna/package-graph@npm:^5.0.0":
+"@lerna/package-graph@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/package-graph@npm:5.6.2"
   dependencies:
@@ -2265,7 +2265,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@lerna/project@npm:5.6.2, @lerna/project@npm:^5.0.0":
+"@lerna/project@npm:5.6.2":
   version: 5.6.2
   resolution: "@lerna/project@npm:5.6.2"
   dependencies:
@@ -10041,8 +10041,8 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "pob@workspace:packages/pob"
   dependencies:
-    "@lerna/package-graph": ^5.0.0
-    "@lerna/project": ^5.0.0
+    "@lerna/package-graph": 5.6.2
+    "@lerna/project": 5.6.2
     "@pob/eslint-config": 50.0.0
     "@pob/eslint-config-typescript": 50.0.0
     "@pob/eslint-config-typescript-react": 50.0.0

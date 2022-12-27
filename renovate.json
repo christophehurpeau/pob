@@ -7,7 +7,14 @@
   "labels": [":vertical_traffic_light: automerge"],
   "upgradeInRange": true,
   "rangeStrategy": "bump",
-  "ignoreDeps": ["lerna"],
+  "ignoreDeps": [
+    "lerna",
+    "@lerna/cli",
+    "@lerna/publish",
+    "@lerna/version",
+    "@lerna/package-graph",
+    "@lerna/project"
+  ],
   "packageRules": [
     {
       "packagePatterns": ["*"],
