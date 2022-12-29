@@ -160,7 +160,7 @@ export default class CommonTestingGenerator extends Generator {
         const workspacesPattern =
           workspacesWithoutStar.length === 1
             ? workspacesWithoutStar[0]
-            : `(${workspacesWithoutStar.join('|')})`;
+            : `@(${workspacesWithoutStar.join('|')})`;
         hasReact = yoConfigPobMonorepo.packageNames.some((pkgName) =>
           pkgName.startsWith('react-'),
         );
@@ -170,10 +170,10 @@ export default class CommonTestingGenerator extends Generator {
           cacheDirectory: './node_modules/.cache/jest',
           testEnvironment: 'node',
           testMatch: [
-            `<rootDir>/${workspacesPattern}/*/(src|lib)/**/__tests__/**/*.${
+            `<rootDir>/${workspacesPattern}/*/@(src|lib)/**/__tests__/**/*.${
               transpileWithBabel ? '(ts|js|cjs|mjs)' : '(js|cjs|mjs)'
             }${hasReact ? '?(x)' : ''}`,
-            `<rootDir>/${workspacesPattern}/*/(src|lib)/**/*.test.${
+            `<rootDir>/${workspacesPattern}/*/@(src|lib)/**/*.test.${
               transpileWithBabel ? '(ts|js|cjs|mjs)' : '(js|cjs|mjs)'
             }${hasReact ? '?(x)' : ''}`,
           ],
