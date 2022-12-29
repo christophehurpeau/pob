@@ -171,6 +171,15 @@ export default class MonorepoLernaGenerator extends Generator {
           : 'npm run lint:eslint --workspaces',
     });
 
+    packageUtils.addOrRemoveScripts(
+      pkg,
+      this.options.packageManager === 'yarn',
+      {
+        version:
+          'YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn && git add yarn.lock',
+      },
+    );
+
     this.fs.copyTpl(
       this.templatePath('workflow-publish.yml.ejs'),
       this.destinationPath('.github/workflows/publish.yml'),
@@ -208,7 +217,6 @@ export default class MonorepoLernaGenerator extends Generator {
     // }
 
     delete pkg.scripts.postbuild;
-    delete pkg.scripts.version;
     delete pkg.scripts.prepublishOnly;
 
     if (this.npm) {

@@ -36,7 +36,10 @@ const getInLernaThings = () => {
       rootYoConfig.pob &&
       rootYoConfig.pob.project &&
       rootYoConfig.pob.project.yarnNodeLinker,
-    relative: path.relative(rootMonorepo, cwd),
+    relative: path
+      .relative(rootMonorepo, cwd)
+      // transform windows to linux-like paths
+      .replace(/\\+/g, '/'),
     rootYoConfig,
     pobConfig: rootYoConfig && rootYoConfig.pob,
     pobMonorepoConfig:

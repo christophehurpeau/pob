@@ -1,4 +1,5 @@
 import { execSync } from 'child_process';
+import { platform } from 'process';
 import Generator from 'yeoman-generator';
 import inLerna from '../../utils/inLerna.js';
 import * as packageUtils from '../../utils/package.js';
@@ -246,11 +247,13 @@ export default class PobAppGenerator extends Generator {
         break;
     }
 
-    execSync(
-      `rm -Rf ${['lib-*', 'coverage', 'docs', 'dist']
-        .filter(Boolean)
-        .join(' ')}`,
-    );
+    if (platform !== 'win32') {
+      execSync(
+        `rm -Rf ${['lib-*', 'coverage', 'docs', 'dist']
+          .filter(Boolean)
+          .join(' ')}`,
+      );
+    }
   }
 
   writing() {

@@ -1,6 +1,7 @@
 import { execSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
+import { platform } from 'process';
 import { PackageGraph } from '@lerna/package-graph';
 import { Project as LernaProject } from '@lerna/project';
 import Generator from 'yeoman-generator';
@@ -103,7 +104,10 @@ export default class PobMonorepoGenerator extends Generator {
       this.packages.push(...batch.map((node) => node.pkg));
       this.packageLocations.push(
         ...batch.map((node) =>
-          path.relative(this.destinationPath(), node.location),
+          path
+            .relative(this.destinationPath(), node.location)
+            // transform windows path to linux
+            .replace(/\\+/g, '/'),
         ),
       );
 
@@ -282,9 +286,11 @@ export default class PobMonorepoGenerator extends Generator {
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
 
-    execSync(
-      `rm -Rf ${['lib-*', 'coverage', 'docs'].filter(Boolean).join(' ')}`,
-    );
+    if (platform !== 'win32') {
+      execSync(
+        `rm -Rf ${['lib-*', 'coverage', 'docs'].filter(Boolean).join(' ')}`,
+      );
+    }
   }
 
   writing() {
