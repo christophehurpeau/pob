@@ -43,8 +43,8 @@
       ".ts"
     ],
     "testMatch": [
-      "<rootDir>/(packages|@pob|pob-examples)/*/(src|lib)/**/__tests__/**/*.(ts|js|cjs|mjs)",
-      "<rootDir>/(packages|@pob|pob-examples)/*/(src|lib)/**/*.test.(ts|js|cjs|mjs)"
+      "<rootDir>/@(packages|@pob|pob-examples)/*/@(src|lib)/**/__tests__/**/*.(ts|js|cjs|mjs)",
+      "<rootDir>/@(packages|@pob|pob-examples)/*/@(src|lib)/**/*.test.(ts|js|cjs|mjs)"
     ]
   },
   "resolutions": {
