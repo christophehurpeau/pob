@@ -148,9 +148,6 @@ export default class CoreVSCodeGenerator extends Generator {
                 : {}),
               ...(this.options.testing
                 ? {
-                    'jest.nodeEnv': {
-                      NODE_OPTIONS: '--experimental-vm-modules',
-                    },
                     // disable all folders to enable only root.
                     'jest.disabledWorkspaceFolders': folders.map(
                       (folder) => folder.name,

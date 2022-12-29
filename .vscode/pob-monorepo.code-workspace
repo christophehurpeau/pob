@@ -20,9 +20,6 @@
       "source.fixAll.eslint": true,
       "source.organizeImports": false
     },
-    "jest.nodeEnv": {
-      "NODE_OPTIONS": "--experimental-vm-modules"
-    },
     "eslint.workingDirectories": ["."],
     "eslint.options": {
       "resolvePluginsRelativeTo": ".",
