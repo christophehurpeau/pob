@@ -1,0 +1,33 @@
+name: Run Build on renovate update related to build
+
+on:
+  push:
+    branches:
+      - "renovate/rollup-**"
+
+jobs:
+  run-prettier:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+
+      - name: Install Dependencies
+        run: yarn install --immutable --immutable-cache
+
+      - name: Run Build
+        run: yarn build
+
+      - name: Check for added or modified files
+        id: git-check-modified
+        run: echo ::set-output name=modified::$(if [[ -z $(git status -s) ]]; then echo "false"; else echo "true"; fi)
+
+      - name: Commit report
+        if: steps.git-check-modified.outputs.modified == 'true'
+        run: |
+          git add .
+          git -c user.name="Christophe Hurpeau" \
+            -c user.email="christophehurpeau@users.noreply.github.com" \
+            commit -m "build: update dist" --author="github-actions[bot] <actions@github.com>"
+          git push --no-verify
