@@ -1,8 +1,9 @@
 import { createCheckPackageWithWorkspaces } from 'check-package-dependencies';
 
-await createCheckPackageWithWorkspaces()
+await createCheckPackageWithWorkspaces({
+  isLibrary: () => true,
+})
   .checkRecommended({
-    isLibrary: () => true,
     onlyWarnsForInMonorepoPackagesDependencies: {
       'pob-babel': {
         '*': { duplicateDirectDependency: ['semver'] },
