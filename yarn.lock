@@ -3062,12 +3062,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: 7.2.0
+    pob-dependencies: 7.3.0
     prettier: 2.8.1
   languageName: unknown
   linkType: soft
 
-"@pob/root@7.2.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@7.3.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -3077,7 +3077,7 @@ __metadata:
     husky: ~8.0.1
     json5: ^2.2.2
     lint-staged: 13.1.0
-    pob-dependencies: 7.2.0
+    pob-dependencies: 7.3.0
     prettier: 2.8.1
     repository-check-dirty: 5.1.0
     semver: ^7.3.7
@@ -4293,7 +4293,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-pob-env@9.1.0, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
+"babel-preset-pob-env@9.1.1, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
   version: 0.0.0-use.local
   resolution: "babel-preset-pob-env@workspace:packages/babel-preset-pob-env"
   dependencies:
@@ -4628,9 +4628,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"check-package-dependencies@npm:5.0.0":
-  version: 5.0.0
-  resolution: "check-package-dependencies@npm:5.0.0"
+"check-package-dependencies@npm:6.0.0":
+  version: 6.0.0
+  resolution: "check-package-dependencies@npm:6.0.0"
   dependencies:
     chalk: ^5.2.0
     glob: ^8.0.0
@@ -4639,7 +4639,7 @@ __metadata:
     type-fest: ^3.0.0
   bin:
     check-package-dependencies: bin/check-package-dependencies.js
-  checksum: 9704d9eff7e2833ef633961cdc9a4a4f5f533dd006731fe85c5f4e6f29452afb48010d4a5886ad023266d3fb9455ae3d15a168c4e3c3f2fc369b7c797bb41e99
+  checksum: 9edc44c15c494dca5b21b4b3f88839d1b0fec1c5324c21d042bd7725c7b13925b9d71fe0db52322a9bfb62b1361b9f3ea934c035752c2c46f0ac31dfb99bf7a4
   languageName: node
   linkType: hard
 
@@ -6014,7 +6014,7 @@ __metadata:
   dependencies:
     "@babel/core": 7.20.7
     babel-preset-modern-browsers: 15.0.2
-    pob-babel: 35.3.0
+    pob-babel: 35.4.0
     typescript: 4.9.4
   languageName: unknown
   linkType: soft
@@ -9939,7 +9939,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@35.3.0, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
+"pob-babel@35.4.0, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -9950,7 +9950,7 @@ __metadata:
     "@rollup/plugin-node-resolve": 15.0.1
     "@rollup/plugin-run": 3.0.1
     babel-preset-modern-browsers: ^15.0.2
-    babel-preset-pob-env: 9.1.0
+    babel-preset-pob-env: 9.1.1
     rollup: 3.9.0
     rollup-config-external-dependencies: ^2.0.0
     semver: ^7.3.7
@@ -9968,7 +9968,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@7.2.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@7.3.0, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -9988,7 +9988,7 @@ __metadata:
     eslint: 8.30.0
     jest: 29.3.1
     jest-junit-reporter: 1.1.0
-    pob-babel: 35.3.0
+    pob-babel: 35.4.0
     prettier: 2.8.1
     repository-check-dirty: 5.1.0
     rollup: 3.9.0
@@ -10007,7 +10007,7 @@ __metadata:
     "@pob/lerna-light": "workspace:*"
     "@pob/root": "workspace:*"
     "@types/jest": 29.2.4
-    check-package-dependencies: 5.0.0
+    check-package-dependencies: 6.0.0
     eslint: 8.30.0
     jest: 29.3.1
     pob-babel: "workspace:*"
@@ -10026,7 +10026,7 @@ __metadata:
     "@pob/eslint-config": 50.0.0
     "@pob/eslint-config-typescript": 50.0.0
     "@pob/eslint-config-typescript-react": 50.0.0
-    "@pob/root": 7.2.0
+    "@pob/root": 7.3.0
     "@pob/sort-eslint-config": 4.1.0
     "@pob/sort-object": 5.1.0
     "@pob/sort-pkg": 5.1.0
@@ -10044,7 +10044,7 @@ __metadata:
     minimist: 1.2.7
     node-fetch: 3.3.0
     parse-author: 2.0.0
-    pob-dependencies: 7.2.0
+    pob-dependencies: 7.3.0
     prettier: 2.8.1
     semver: 7.3.8
     yeoman-environment: 3.13.0
