@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.5.0](https://github.com/christophehurpeau/pob/compare/pob@11.4.3...pob@11.5.0) (2022-12-30)
+
+
+### Bug Fixes
+
+* add fixes for windows ([930c09e](https://github.com/christophehurpeau/pob/commit/930c09ead7e8757a1a37e7ed92c251917c3d1571))
+* **deps:** update dependency prettier to v2.8.1 ([#1476](https://github.com/christophehurpeau/pob/issues/1476)) ([d9b8ef2](https://github.com/christophehurpeau/pob/commit/d9b8ef2e75c5c9a5e1d0a573a6c2fa81857f3f8e))
+* downgrade lerna and make sure nx is not installed ([45523f1](https://github.com/christophehurpeau/pob/commit/45523f167467bcab9d9435d9089eccc46ae5947d))
+* fixes in jest configs for windows ([b66306f](https://github.com/christophehurpeau/pob/commit/b66306f3e9cdd64b7ed8503ddab6da3947014a3f))
+* remove jest.nodeEnv as yarn test is used by default ([b96d6d6](https://github.com/christophehurpeau/pob/commit/b96d6d6b7fa090b838242728e7d5277ef87b17bd))
+* update json5 ([808e9a5](https://github.com/christophehurpeau/pob/commit/808e9a5f7be5b7460945b9748fd950ed3ddc1e9a))
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v50 (major) ([#1459](https://github.com/christophehurpeau/pob/issues/1459)) ([8180c9b](https://github.com/christophehurpeau/pob/commit/8180c9bbfc09a9101862d2568808d2ea1ad7e72f))
+* **deps:** update dependency eslint to v8.29.0 ([#1472](https://github.com/christophehurpeau/pob/issues/1472)) ([a77364c](https://github.com/christophehurpeau/pob/commit/a77364cd6805b945b2964e1bd1071f390c2408e7))
+* **deps:** update dependency eslint to v8.30.0 ([#1484](https://github.com/christophehurpeau/pob/issues/1484)) ([4e7a2b0](https://github.com/christophehurpeau/pob/commit/4e7a2b0e5adb299c409367490f353d000c475d75))
+* **deps:** update dependency prettier to v2.8.0 ([#1461](https://github.com/christophehurpeau/pob/issues/1461)) ([2ca692d](https://github.com/christophehurpeau/pob/commit/2ca692d78f53a99a3ef43af1a01df626e5bb5d70))
+* **deps:** update dependency yeoman-environment to v3.13.0 ([#1469](https://github.com/christophehurpeau/pob/issues/1469)) ([371b679](https://github.com/christophehurpeau/pob/commit/371b679f6c099497316ca51f00452596216b32a5))
+
+
+
+
+
 ## [11.4.3](https://github.com/christophehurpeau/pob/compare/pob@11.4.2...pob@11.4.3) (2022-11-19)
 
 

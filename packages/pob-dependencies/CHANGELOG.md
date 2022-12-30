@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@7.2.0...pob-dependencies@7.3.0) (2022-12-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v2.8.1 ([#1476](https://github.com/christophehurpeau/pob/issues/1476)) ([d9b8ef2](https://github.com/christophehurpeau/pob/commit/d9b8ef2e75c5c9a5e1d0a573a6c2fa81857f3f8e))
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v50 (major) ([#1459](https://github.com/christophehurpeau/pob/issues/1459)) ([8180c9b](https://github.com/christophehurpeau/pob/commit/8180c9bbfc09a9101862d2568808d2ea1ad7e72f))
+* **deps:** update dependency @types/jest to v29.2.4 ([#1474](https://github.com/christophehurpeau/pob/issues/1474)) ([dcd7599](https://github.com/christophehurpeau/pob/commit/dcd7599a8742da1f7eb9483f1d73ca22fa282aa9))
+* **deps:** update dependency alp-rollup-plugin-config to v2 ([#1466](https://github.com/christophehurpeau/pob/issues/1466)) ([0bcbdd1](https://github.com/christophehurpeau/pob/commit/0bcbdd15aff8464b3753073ecbf14ac9088e5ebd))
+* **deps:** update dependency eslint to v8.29.0 ([#1472](https://github.com/christophehurpeau/pob/issues/1472)) ([a77364c](https://github.com/christophehurpeau/pob/commit/a77364cd6805b945b2964e1bd1071f390c2408e7))
+* **deps:** update dependency eslint to v8.30.0 ([#1484](https://github.com/christophehurpeau/pob/issues/1484)) ([4e7a2b0](https://github.com/christophehurpeau/pob/commit/4e7a2b0e5adb299c409367490f353d000c475d75))
+* **deps:** update dependency prettier to v2.8.0 ([#1461](https://github.com/christophehurpeau/pob/issues/1461)) ([2ca692d](https://github.com/christophehurpeau/pob/commit/2ca692d78f53a99a3ef43af1a01df626e5bb5d70))
+* **deps:** update dependency rollup to v3.4.0 ([#1432](https://github.com/christophehurpeau/pob/issues/1432)) ([54cd47d](https://github.com/christophehurpeau/pob/commit/54cd47d07a22e036558d11725a3feef6032cadff))
+* **deps:** update dependency rollup to v3.5.0 ([#1464](https://github.com/christophehurpeau/pob/issues/1464)) ([7213408](https://github.com/christophehurpeau/pob/commit/7213408fdec65bed69c7d5d0c92e6868ab321d13))
+* **deps:** update dependency rollup to v3.5.1 ([#1471](https://github.com/christophehurpeau/pob/issues/1471)) ([3f5d8c1](https://github.com/christophehurpeau/pob/commit/3f5d8c18c0f9dc91c4ef3c00c36795721b27c335))
+* **deps:** update dependency rollup to v3.6.0 ([#1475](https://github.com/christophehurpeau/pob/issues/1475)) ([df30557](https://github.com/christophehurpeau/pob/commit/df305575f6fe147229c3ff0019774c071eb6a821))
+* **deps:** update dependency rollup to v3.7.0 ([#1478](https://github.com/christophehurpeau/pob/issues/1478)) ([6b21366](https://github.com/christophehurpeau/pob/commit/6b21366b23df9201c745eadee1cf6ad49dd2edf7))
+* **deps:** update dependency rollup to v3.7.1 ([#1479](https://github.com/christophehurpeau/pob/issues/1479)) ([a434c32](https://github.com/christophehurpeau/pob/commit/a434c32753051edefedb5e386cc7ee3cc3fc3702))
+* **deps:** update dependency rollup to v3.7.2 ([#1480](https://github.com/christophehurpeau/pob/issues/1480)) ([2aa9dd1](https://github.com/christophehurpeau/pob/commit/2aa9dd1c61d6d14f31bbecc1be78e4d94ad74ad0))
+* **deps:** update dependency rollup to v3.7.3 ([#1481](https://github.com/christophehurpeau/pob/issues/1481)) ([a615a44](https://github.com/christophehurpeau/pob/commit/a615a44a1de63d05bcaa45d7b0a6908d55b62e0e))
+* **deps:** update dependency rollup to v3.7.4 ([#1483](https://github.com/christophehurpeau/pob/issues/1483)) ([4876049](https://github.com/christophehurpeau/pob/commit/4876049bf1e4101e5993ad8dda32702b3222a34b))
+* **deps:** update dependency rollup to v3.7.5 ([#1485](https://github.com/christophehurpeau/pob/issues/1485)) ([204ba83](https://github.com/christophehurpeau/pob/commit/204ba83a7b54a75087c925bc5e18476bf90212c5))
+* **deps:** update dependency rollup to v3.8.0 ([#1491](https://github.com/christophehurpeau/pob/issues/1491)) ([09398b3](https://github.com/christophehurpeau/pob/commit/09398b34fc20ca7615a4bda0c35c1de966d7beb2))
+* **deps:** update dependency rollup to v3.8.1 ([#1493](https://github.com/christophehurpeau/pob/issues/1493)) ([ed07b98](https://github.com/christophehurpeau/pob/commit/ed07b982c7ab6acdb7cf90910eda800f4c6123f2))
+* **deps:** update dependency rollup to v3.9.0 ([#1494](https://github.com/christophehurpeau/pob/issues/1494)) ([eff5d7c](https://github.com/christophehurpeau/pob/commit/eff5d7c6fcd39ed9b731ddda72ecce23e988e1d8))
+* **deps:** update dependency typedoc to v0.23.22 ([#1482](https://github.com/christophehurpeau/pob/issues/1482)) ([cde8238](https://github.com/christophehurpeau/pob/commit/cde823809b6334477c27cff8af205f1399b8e609))
+* **deps:** update dependency typedoc to v0.23.23 ([#1489](https://github.com/christophehurpeau/pob/issues/1489)) ([2c20e51](https://github.com/christophehurpeau/pob/commit/2c20e51d58c83c294ea807159a17ffc7f3307558))
+
+
+
+
+
 # [7.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@7.1.1...pob-dependencies@7.2.0) (2022-11-18)
 
 

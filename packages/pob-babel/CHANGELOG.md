@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [35.4.0](https://github.com/christophehurpeau/pob/compare/pob-babel@35.3.0...pob-babel@35.4.0) (2022-12-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @rollup/plugin-babel to v6.0.3 ([#1462](https://github.com/christophehurpeau/pob/issues/1462)) ([826e274](https://github.com/christophehurpeau/pob/commit/826e274419d78eef0153b8e65bfce12b972d76ce))
+* **deps:** update dependency @rollup/plugin-json to v5.0.2 ([#1467](https://github.com/christophehurpeau/pob/issues/1467)) ([95a6bb9](https://github.com/christophehurpeau/pob/commit/95a6bb987077465d4e9cbdc33155673dbd7bc230))
+
+
+### Features
+
+* **deps:** update dependency @rollup/plugin-json to v6 ([#1488](https://github.com/christophehurpeau/pob/issues/1488)) ([7a00cf6](https://github.com/christophehurpeau/pob/commit/7a00cf686e6550c5f0f7f256f4bbf0393cd79539))
+* **deps:** update dependency rollup to v3.4.0 ([#1432](https://github.com/christophehurpeau/pob/issues/1432)) ([54cd47d](https://github.com/christophehurpeau/pob/commit/54cd47d07a22e036558d11725a3feef6032cadff))
+* **deps:** update dependency rollup to v3.5.0 ([#1464](https://github.com/christophehurpeau/pob/issues/1464)) ([7213408](https://github.com/christophehurpeau/pob/commit/7213408fdec65bed69c7d5d0c92e6868ab321d13))
+* **deps:** update dependency rollup to v3.5.1 ([#1471](https://github.com/christophehurpeau/pob/issues/1471)) ([3f5d8c1](https://github.com/christophehurpeau/pob/commit/3f5d8c18c0f9dc91c4ef3c00c36795721b27c335))
+* **deps:** update dependency rollup to v3.6.0 ([#1475](https://github.com/christophehurpeau/pob/issues/1475)) ([df30557](https://github.com/christophehurpeau/pob/commit/df305575f6fe147229c3ff0019774c071eb6a821))
+* **deps:** update dependency rollup to v3.7.0 ([#1478](https://github.com/christophehurpeau/pob/issues/1478)) ([6b21366](https://github.com/christophehurpeau/pob/commit/6b21366b23df9201c745eadee1cf6ad49dd2edf7))
+* **deps:** update dependency rollup to v3.7.1 ([#1479](https://github.com/christophehurpeau/pob/issues/1479)) ([a434c32](https://github.com/christophehurpeau/pob/commit/a434c32753051edefedb5e386cc7ee3cc3fc3702))
+* **deps:** update dependency rollup to v3.7.2 ([#1480](https://github.com/christophehurpeau/pob/issues/1480)) ([2aa9dd1](https://github.com/christophehurpeau/pob/commit/2aa9dd1c61d6d14f31bbecc1be78e4d94ad74ad0))
+* **deps:** update dependency rollup to v3.7.3 ([#1481](https://github.com/christophehurpeau/pob/issues/1481)) ([a615a44](https://github.com/christophehurpeau/pob/commit/a615a44a1de63d05bcaa45d7b0a6908d55b62e0e))
+* **deps:** update dependency rollup to v3.7.4 ([#1483](https://github.com/christophehurpeau/pob/issues/1483)) ([4876049](https://github.com/christophehurpeau/pob/commit/4876049bf1e4101e5993ad8dda32702b3222a34b))
+* **deps:** update dependency rollup to v3.7.5 ([#1485](https://github.com/christophehurpeau/pob/issues/1485)) ([204ba83](https://github.com/christophehurpeau/pob/commit/204ba83a7b54a75087c925bc5e18476bf90212c5))
+* **deps:** update dependency rollup to v3.8.0 ([#1491](https://github.com/christophehurpeau/pob/issues/1491)) ([09398b3](https://github.com/christophehurpeau/pob/commit/09398b34fc20ca7615a4bda0c35c1de966d7beb2))
+* **deps:** update dependency rollup to v3.8.1 ([#1493](https://github.com/christophehurpeau/pob/issues/1493)) ([ed07b98](https://github.com/christophehurpeau/pob/commit/ed07b982c7ab6acdb7cf90910eda800f4c6123f2))
+* **deps:** update dependency rollup to v3.9.0 ([#1494](https://github.com/christophehurpeau/pob/issues/1494)) ([eff5d7c](https://github.com/christophehurpeau/pob/commit/eff5d7c6fcd39ed9b731ddda72ecce23e988e1d8))
+
+
+
+
+
 # [35.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@35.2.0...pob-babel@35.3.0) (2022-11-18)
 
 
