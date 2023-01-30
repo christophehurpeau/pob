@@ -159,7 +159,6 @@ export default class PobAppGenerator extends Generator {
         if (
           this.appConfig.type === 'alp' ||
           this.appConfig.type === 'pobpack' ||
-          this.appConfig.type === 'node' ||
           this.appConfig.type === 'alp-node' ||
           this.appConfig.type === 'next.js'
         ) {
