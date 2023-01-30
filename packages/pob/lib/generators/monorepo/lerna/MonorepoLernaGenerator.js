@@ -159,7 +159,7 @@ export default class MonorepoLernaGenerator extends Generator {
         monorepoConfig.eslint &&
         this.packagesConfig.length < 50
           ? `${
-              this.packagesConfig.length > 20
+              this.packagesConfig.length > 15
                 ? 'NODE_OPTIONS=--max_old_space_size=4096 '
                 : ''
             }eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet .`
