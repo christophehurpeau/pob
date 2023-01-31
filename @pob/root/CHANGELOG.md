@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@7.3.0...@pob/root@7.4.0) (2023-01-31)
+
+
+### Bug Fixes
+
+* **@pob/root:** remove remaining cache dependencies in push-renovate-pob_root ([d2eebb7](https://github.com/christophehurpeau/pob/commit/d2eebb765ee6ddf9cd33bb904af0c4e7642ba6f9))
+* **deps:** update dependency @commitlint/cli to v17.4.1 ([#1503](https://github.com/christophehurpeau/pob/issues/1503)) ([9cde2e1](https://github.com/christophehurpeau/pob/commit/9cde2e1b4fb4c4ee46788c91b804443c70959449))
+* **deps:** update dependency @commitlint/cli to v17.4.2 ([#1506](https://github.com/christophehurpeau/pob/issues/1506)) ([05104c5](https://github.com/christophehurpeau/pob/commit/05104c5eb1f85218439fc1491ad240dbbce67b33))
+* **deps:** update dependency prettier to v2.8.2 ([#1501](https://github.com/christophehurpeau/pob/issues/1501)) ([2333652](https://github.com/christophehurpeau/pob/commit/2333652411e30def97d3ca6064af7e1fc880c5df))
+* **deps:** update dependency prettier to v2.8.3 ([#1507](https://github.com/christophehurpeau/pob/issues/1507)) ([862c85a](https://github.com/christophehurpeau/pob/commit/862c85a4127ab6c2de8ad1c410f2f9003f011ef2))
+
+
+### Features
+
+* **deps:** update dependency @commitlint/cli to v17.4.0 ([#1499](https://github.com/christophehurpeau/pob/issues/1499)) ([b722f34](https://github.com/christophehurpeau/pob/commit/b722f34b324aeaa2bfe71cd63002e0c1965ee052))
+
+
+
+
+
 # [7.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@7.2.0...@pob/root@7.3.0) (2022-12-30)
 
 

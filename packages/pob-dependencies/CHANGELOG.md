@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.4.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@7.3.0...pob-dependencies@7.4.0) (2023-01-31)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v2.8.2 ([#1501](https://github.com/christophehurpeau/pob/issues/1501)) ([2333652](https://github.com/christophehurpeau/pob/commit/2333652411e30def97d3ca6064af7e1fc880c5df))
+* **deps:** update dependency prettier to v2.8.3 ([#1507](https://github.com/christophehurpeau/pob/issues/1507)) ([862c85a](https://github.com/christophehurpeau/pob/commit/862c85a4127ab6c2de8ad1c410f2f9003f011ef2))
+
+
+### Features
+
+* **deps:** update dependency @babel/runtime to v7.20.13 ([#1512](https://github.com/christophehurpeau/pob/issues/1512)) ([36420b1](https://github.com/christophehurpeau/pob/commit/36420b16d6170af4407d3f8d54f3ddfe167ef67b))
+* **deps:** update dependency @types/jest to v29.2.5 ([#1496](https://github.com/christophehurpeau/pob/issues/1496)) ([2795278](https://github.com/christophehurpeau/pob/commit/2795278a3bde3c6bb11316e465ecc3f38f5204b6))
+* **deps:** update dependency @types/jest to v29.2.6 ([#1509](https://github.com/christophehurpeau/pob/issues/1509)) ([d711b73](https://github.com/christophehurpeau/pob/commit/d711b73440871006d53fb65ecf9a14b8dacd4603))
+* **deps:** update dependency @types/jest to v29.4.0 ([#1514](https://github.com/christophehurpeau/pob/issues/1514)) ([85ccfab](https://github.com/christophehurpeau/pob/commit/85ccfabb741995c3d8fac609502ab2efc4a5e6dc))
+* **deps:** update dependency eslint to v8.31.0 ([#1497](https://github.com/christophehurpeau/pob/issues/1497)) ([99c2edd](https://github.com/christophehurpeau/pob/commit/99c2edd1da7247c150344b15371ab3518fd432fc))
+* **deps:** update dependency eslint to v8.32.0 ([#1508](https://github.com/christophehurpeau/pob/issues/1508)) ([4549d2f](https://github.com/christophehurpeau/pob/commit/4549d2fd93092e80d2719d11ced34b3d418d77e3))
+* **deps:** update dependency eslint to v8.33.0 ([#1518](https://github.com/christophehurpeau/pob/issues/1518)) ([c8cba58](https://github.com/christophehurpeau/pob/commit/c8cba58bd99201cf368fd1c1d4fc2c6cee12fd06))
+* **deps:** update dependency jest to v29.4.0 ([#1513](https://github.com/christophehurpeau/pob/issues/1513)) ([33fb6f8](https://github.com/christophehurpeau/pob/commit/33fb6f8fc18f6fd5805a152b81501ab75ee793e5))
+* **deps:** update dependency jest to v29.4.1 ([#1516](https://github.com/christophehurpeau/pob/issues/1516)) ([aec58ed](https://github.com/christophehurpeau/pob/commit/aec58ed68eb0c0374ba8e8e50d398ee94c3d385d))
+* **deps:** update dependency rollup to v3.10.0 ([#1505](https://github.com/christophehurpeau/pob/issues/1505)) ([79cc196](https://github.com/christophehurpeau/pob/commit/79cc1961f37793867df5600c39a886808ee30c4f))
+* **deps:** update dependency rollup to v3.10.1 ([#1511](https://github.com/christophehurpeau/pob/issues/1511)) ([933c0c9](https://github.com/christophehurpeau/pob/commit/933c0c9bd4d2e8c80afd3ffed1a73ed59ecd0dbd))
+* **deps:** update dependency rollup to v3.11.0 ([#1515](https://github.com/christophehurpeau/pob/issues/1515)) ([774b34f](https://github.com/christophehurpeau/pob/commit/774b34f6281f81f571f7fac62b9b68e45818857f))
+* **deps:** update dependency rollup to v3.12.0 ([#1517](https://github.com/christophehurpeau/pob/issues/1517)) ([a1aa04e](https://github.com/christophehurpeau/pob/commit/a1aa04e713554b42451d174d27b0cd1cd31f6784))
+* **deps:** update dependency rollup to v3.9.1 ([#1498](https://github.com/christophehurpeau/pob/issues/1498)) ([7427719](https://github.com/christophehurpeau/pob/commit/74277192e4ac4a41da5d40122af4279c65203a1c))
+* **deps:** update dependency typedoc to v0.23.24 ([#1502](https://github.com/christophehurpeau/pob/issues/1502)) ([2bed7fb](https://github.com/christophehurpeau/pob/commit/2bed7fbe7ae18384fcae9d080efd86b6367adca4))
+
+
+
+
+
 # [7.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@7.2.0...pob-dependencies@7.3.0) (2022-12-30)
 
 

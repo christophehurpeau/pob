@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.6.0](https://github.com/christophehurpeau/pob/compare/pob@11.5.0...pob@11.6.0) (2023-01-31)
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v2.8.2 ([#1501](https://github.com/christophehurpeau/pob/issues/1501)) ([2333652](https://github.com/christophehurpeau/pob/commit/2333652411e30def97d3ca6064af7e1fc880c5df))
+* **deps:** update dependency prettier to v2.8.3 ([#1507](https://github.com/christophehurpeau/pob/issues/1507)) ([862c85a](https://github.com/christophehurpeau/pob/commit/862c85a4127ab6c2de8ad1c410f2f9003f011ef2))
+* **pob:** monorepo eslint max_old_space_size for more than 15 packages ([413eda5](https://github.com/christophehurpeau/pob/commit/413eda53dbf574cab80946bbfb69abf271a549d6))
+* **pob:** node app remove ts baseUrl ([b07f2d9](https://github.com/christophehurpeau/pob/commit/b07f2d9f7679683e0903fe0e4826c7a26af7bdb7))
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.31.0 ([#1497](https://github.com/christophehurpeau/pob/issues/1497)) ([99c2edd](https://github.com/christophehurpeau/pob/commit/99c2edd1da7247c150344b15371ab3518fd432fc))
+* **deps:** update dependency eslint to v8.32.0 ([#1508](https://github.com/christophehurpeau/pob/issues/1508)) ([4549d2f](https://github.com/christophehurpeau/pob/commit/4549d2fd93092e80d2719d11ced34b3d418d77e3))
+* **deps:** update dependency eslint to v8.33.0 ([#1518](https://github.com/christophehurpeau/pob/issues/1518)) ([c8cba58](https://github.com/christophehurpeau/pob/commit/c8cba58bd99201cf368fd1c1d4fc2c6cee12fd06))
+* **deps:** update dependency mem-fs-editor to v9.6.0 ([#1510](https://github.com/christophehurpeau/pob/issues/1510)) ([94a18cb](https://github.com/christophehurpeau/pob/commit/94a18cb51f2f3170d974aaf79b78fc74ab84e881))
+
+
+
+
+
 # [11.5.0](https://github.com/christophehurpeau/pob/compare/pob@11.4.3...pob@11.5.0) (2022-12-30)
 
 
