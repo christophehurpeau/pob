@@ -666,7 +666,7 @@ export default class CommonBabelGenerator extends Generator {
           pkg.exports[`./${exportName}`] =
             pkg.type === 'module'
               ? // eslint-disable-next-line unicorn/no-nested-ternary
-                exportName.endsWith('cjs')
+                exportName.endsWith('.cjs') || exportName.endsWith('.d.ts')
                 ? `./${exportName}`
                 : `./${exportName}.js`
               : {
