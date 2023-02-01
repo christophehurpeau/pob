@@ -61,6 +61,12 @@ export default class CommonTestingGenerator extends Generator {
       required: true,
       desc: 'is app',
     });
+
+    this.option('splitCIJobs', {
+      type: Boolean,
+      required: true,
+      desc: 'split CI jobs for faster result',
+    });
   }
 
   default() {
@@ -75,6 +81,7 @@ export default class CommonTestingGenerator extends Generator {
         codecov: this.options.codecov,
         packageManager: this.options.packageManager,
         isApp: this.options.isApp,
+        splitJobs: this.options.splitCIJobs,
       });
     } else {
       this.composeWith('pob:core:ci', {

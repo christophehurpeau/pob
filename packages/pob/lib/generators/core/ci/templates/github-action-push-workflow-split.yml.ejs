@@ -1,0 +1,135 @@
+name: Push CI
+
+on: [push]
+
+jobs:
+<% if (checks) { -%>
+  checks:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: yarn install --immutable --immutable-cache
+
+      - name: Checks
+        run: yarn run checks
+
+<% } -%>
+<% if (build) { -%>
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: yarn install --immutable --immutable-cache
+
+      - name: Build
+        run: yarn run build
+
+      - name: Check nothing was forgotten before commit
+        run: yarn run repository-check-dirty
+
+<% } -%>
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Dependencies
+        run: yarn install --immutable --immutable-cache
+
+      - name: Prettier
+        run: yarn run lint:prettier
+<% if (typescript) { -%>
+
+      - name: Typescript
+        run: yarn run tsc
+<% } -%>
+
+      - name: Eslint
+        run: yarn run lint:eslint
+<% if (testing) { -%>
+
+  test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [16, 18]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: Install Dependencies
+        run: yarn install --immutable --immutable-cache
+
+<% if (codecov) { -%>
+      - name: Test
+        run: <%= packageManager %> run test
+        if: matrix.node-version != 18
+
+      - name: Generate Test Coverage
+        run: <%= packageManager %> run test --coverage --coverageReporters=json --coverageReporters=text
+        if: matrix.node-version == 18
+
+      - name: Send results to codecov
+        uses: codecov/codecov-action@v3
+        if: matrix.node-version == 18
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+<% } else { -%>
+
+      - name: Test
+        run: <%= packageManager %> run test
+<% } -%>
+<% } -%>
+<% if (isReleasePleaseEnabled) { -%>
+  release:
+    runs-on: ubuntu-latest
+
+    needs: [<%= checks ? '"checks", ' : '' -%><%= build ? '"build", ' : '' -%>"lint"<%= testing ? ', "test"' : '' -%>]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - uses: GoogleCloudPlatform/release-please-action@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        id: release
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          release-type: node
+
+<% if (publishSinglePackage) { -%>
+
+      # publish:
+      - run: npm publish
+        if: ${{ github.ref == 'refs/heads/main' && steps.release.outputs.release_created }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+<% } -%>
+<% } -%>

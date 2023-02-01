@@ -19,6 +19,12 @@ export default class CoreGitGenerator extends Generator {
       required: true,
       desc: 'only latest lts',
     });
+
+    this.option('splitCIJobs', {
+      type: Boolean,
+      required: true,
+      desc: 'split CI jobs for faster result',
+    });
   }
 
   async initializing() {
@@ -101,6 +107,7 @@ export default class CoreGitGenerator extends Generator {
         gitHostAccount: this.gitHostAccount,
         repoName: this.repoName,
         onlyLatestLTS: this.options.onlyLatestLTS,
+        splitCIJobs: this.options.splitCIJobs,
       });
     }
   }

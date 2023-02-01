@@ -2,6 +2,7 @@
 
 import fetch from 'node-fetch';
 import Generator from 'yeoman-generator';
+import { ciContexts } from '../../../ci/CoreCIGenerator.js';
 // const packageUtils = require('../../../../../utils/package');
 
 const GITHUB_TOKEN = process.env.POB_GITHUB_TOKEN;
@@ -30,11 +31,7 @@ const configureProtectionRule = async (owner, repo, onlyLatestLTS) => {
       await putJson(`repos/${owner}/${repo}/branches/${branch}/protection`, {
         required_status_checks: {
           strict: false,
-          contexts: [
-            !onlyLatestLTS && 'build (16.x)',
-            'build (18.x)',
-            'reviewflow',
-          ].filter(Boolean),
+          contexts: ciContexts,
         },
         enforce_admins: false, // true,
         required_pull_request_reviews: null,
@@ -82,6 +79,12 @@ export default class CoreGitGithubGenerator extends Generator {
       type: String,
       required: true,
       desc: 'only latest lts',
+    });
+
+    this.option('splitCIJobs', {
+      type: Boolean,
+      required: true,
+      desc: 'split CI jobs for faster result',
     });
 
     if (!GITHUB_TOKEN && process.env.CI !== 'true') {

@@ -206,6 +206,8 @@ export default class PobMonorepoGenerator extends Generator {
       this.pobLernaConfig.ci &&
       !pkg.devDependencies?.['@pob/lerna-light'];
 
+    const splitCIJobs = this.packageNames.length > 8;
+
     this.composeWith('pob:common:testing', {
       monorepo: true,
       enable: this.pobLernaConfig.testing,
@@ -217,6 +219,7 @@ export default class PobMonorepoGenerator extends Generator {
       ci: this.pobLernaConfig.ci,
       packageManager: this.options.packageManager,
       isApp: this.options.isAppProject,
+      splitCIJobs,
     });
 
     this.composeWith('pob:common:format-lint', {

@@ -162,8 +162,11 @@ export default class PobBaseGenerator extends Generator {
           inLerna.pobConfig?.project?.onlyLatestLTS === true));
 
     if (!this.inLerna) {
+      const splitCIJobs =
+        inLerna && inLerna.pobMonorepoConfig.packageNames.length > 8;
       this.composeWith('pob:core:git', {
         onlyLatestLTS,
+        splitCIJobs,
       });
     } else {
       if (this.fs.exists('.git-hooks')) this.fs.delete('.git-hooks');

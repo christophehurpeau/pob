@@ -4,6 +4,8 @@ import inLerna from '../../../utils/inLerna.js';
 import * as packageUtils from '../../../utils/package.js';
 import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
 
+export const ciContexts = [];
+
 export default class CoreCIGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
@@ -73,6 +75,12 @@ export default class CoreCIGenerator extends Generator {
       required: true,
       desc: 'only latest lts',
     });
+
+    this.option('splitJobs', {
+      type: Boolean,
+      required: true,
+      desc: 'split CI jobs for faster result',
+    });
   }
 
   async prompting() {
@@ -105,16 +113,25 @@ export default class CoreCIGenerator extends Generator {
     if (this.options.enable) {
       const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
+      const checks = !!pkg.scripts && !!pkg.scripts.checks;
+      const testing =
+        this.options.testing && !!pkg.scripts && !!pkg.scripts.test;
+      const build = this.options.build;
+
       copyAndFormatTpl(
         this.fs,
-        this.templatePath('github-action-node-workflow.yml.ejs'),
+        this.templatePath(
+          this.options.splitJobs
+            ? 'github-action-push-workflow-split.yml.ejs'
+            : 'github-action-push-workflow.yml.ejs',
+        ),
         this.destinationPath('.github/workflows/push.yml'),
         {
           packageManager: this.options.packageManager,
-          testing: this.options.testing && !!pkg.scripts && !!pkg.scripts.test,
-          checks: !!pkg.scripts && !!pkg.scripts.checks,
+          testing,
+          checks,
           documentation: this.options.documentation,
-          build: this.options.build,
+          build,
           typescript: this.options.typescript,
           codecov: this.options.codecov,
           onlyLatestLTS: this.options.onlyLatestLTS,
@@ -126,6 +143,22 @@ export default class CoreCIGenerator extends Generator {
             inLerna.root &&
             inLerna.pobConfig?.project?.type === 'lib',
         },
+      );
+
+      ciContexts.push(
+        'reviewflow',
+        ...(this.options.splitJobs
+          ? [
+              checks && 'checks',
+              build && 'build',
+              'lint',
+              testing && !this.options.onlyLatestLTS && 'test (16)',
+              testing && 'test (18)',
+            ].filter(Boolean)
+          : [
+              !this.options.onlyLatestLTS && 'build (16.x)',
+              'build (18.x)',
+            ].filter(Boolean)),
       );
     } else {
       this.fs.delete(this.destinationPath('.github/workflows/push.yml'));

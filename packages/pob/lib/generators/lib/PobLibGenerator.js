@@ -254,6 +254,7 @@ export default class PobLibGenerator extends Generator {
       ci: this.pobjson.testing && this.pobjson.testing.ci,
       packageManager: this.options.packageManager,
       isApp: false,
+      splitCIJobs: false,
     });
 
     // must be after testing
