@@ -239,7 +239,9 @@ export default class CommonLintGenerator extends Generator {
         true,
       );
     } else {
-      packageUtils.removeDevDependencies(pkg, ['prettier']);
+      if (pkg.name !== 'pob-monorepo') {
+        packageUtils.removeDevDependencies(pkg, ['prettier']);
+      }
       packageUtils.addOrRemoveDevDependencies(
         pkg,
         !globalEslint ||
