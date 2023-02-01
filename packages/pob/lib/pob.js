@@ -30,7 +30,6 @@ import CoreYarnGenerator from './generators/core/yarn/CoreYarnGenerator.js';
 import PobLibGenerator from './generators/lib/PobLibGenerator.js';
 import LibDocGenerator from './generators/lib/doc/LibDocGenerator.js';
 import LibReadmeGenerator from './generators/lib/readme/LibReadmeGenerator.js';
-import PobMonorepoGenerator from './generators/monorepo/PobMonorepoGenerator.js';
 import MonorepoLernaGenerator from './generators/monorepo/lerna/MonorepoLernaGenerator.js';
 import MonorepoTypescriptGenerator from './generators/monorepo/typescript/MonorepoTypescriptGenerator.js';
 import PobBaseGenerator from './generators/pob/PobBaseGenerator.js';
@@ -201,11 +200,6 @@ env.registerStub(
   LibReadmeGenerator,
   'pob:lib:readme',
   `${__dirname}/generators/lib/readme/LibReadmeGenerator.js`,
-);
-env.registerStub(
-  PobMonorepoGenerator,
-  'pob:monorepo',
-  `${__dirname}/generators/monorepo/PobMonorepoGenerator.js`,
 );
 env.registerStub(
   MonorepoLernaGenerator,

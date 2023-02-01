@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'url';
 import Generator from 'yeoman-generator';
 import ensureJsonFileFormatted from '../../utils/ensureJsonFileFormatted.js';
 import inLerna from '../../utils/inLerna.js';
@@ -189,12 +190,17 @@ export default class PobBaseGenerator extends Generator {
     }
 
     if (this.useLerna) {
-      this.composeWith('pob:monorepo', {
-        updateOnly: this.options.updateOnly,
-        isAppProject: this.projectConfig.type === 'app',
-        packageManager: this.projectConfig.packageManager,
-        yarnNodeLinker: this.projectConfig.yarnNodeLinker,
-      });
+      this.composeWith(
+        fileURLToPath(
+          new URL('../monorepo/PobMonorepoGenerator.js', import.meta.url),
+        ),
+        {
+          updateOnly: this.options.updateOnly,
+          isAppProject: this.projectConfig.type === 'app',
+          packageManager: this.projectConfig.packageManager,
+          yarnNodeLinker: this.projectConfig.yarnNodeLinker,
+        },
+      );
     } else {
       switch (this.projectConfig.type) {
         case 'lib':
