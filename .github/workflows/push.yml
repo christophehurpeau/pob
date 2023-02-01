@@ -79,3 +79,28 @@ jobs:
 
       - name: Test
         run: yarn run test
+
+  release:
+    runs-on: ubuntu-latest
+
+    needs: ["checks", "build", "lint", "test"]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - uses: GoogleCloudPlatform/release-please-action@v3
+        if: ${{ github.ref == 'refs/heads/main' }}
+        id: release
+        with:
+          token: ${{ secrets.GH_TOKEN }}
+          release-type: node
+
+      # publish:
+      - run: yarn workspaces foreach --no-private npm publish --tolerate-republish
+        if: ${{ github.ref == 'refs/heads/main' && steps.release.outputs.release_created }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

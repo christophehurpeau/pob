@@ -1,0 +1,25 @@
+{
+  "plugins": ["node-workspace"],
+  "group-pull-request-title-pattern": "chore: release",
+  "bootstrap-sha": "0760e2265aedc1b5e42f0f3ab672e73c3bb35a08",
+  "packages": {
+    "@pob/check-lib-dependency-in-root-dev-dependencies": {},
+    "@pob/commitlint-config": {},
+    "@pob/lerna-light": {},
+    "@pob/pretty-eslint-config": {},
+    "@pob/pretty-pkg": {},
+    "@pob/renovate-config": {},
+    "@pob/root": {},
+    "@pob/sort-eslint-config": {},
+    "@pob/sort-object": {},
+    "@pob/sort-pkg": {},
+    "packages/babel-plugin-fix-class-properties-uninitialized": {},
+    "packages/babel-preset-pob-env": {},
+    "packages/pob": {},
+    "packages/pob-babel": {},
+    "packages/pob-dependencies": {},
+    "packages/repository-check-dirty": {},
+    "pob-examples/simple-lib": {},
+    "pob-examples/typescript-lib": {}
+  }
+}

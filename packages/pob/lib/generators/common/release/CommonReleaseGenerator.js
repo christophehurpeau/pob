@@ -1,5 +1,6 @@
 import Generator from 'yeoman-generator';
 import * as packageUtils from '../../../utils/package.js';
+import { writeAndFormatJson } from '../../../utils/writeAndFormat.js';
 
 export default class CommonReleaseGenerator extends Generator {
   constructor(args, opts) {
@@ -30,13 +31,33 @@ export default class CommonReleaseGenerator extends Generator {
       defaults: false,
       desc: 'Avoid asking questions',
     });
+
+    this.option('enableReleasePlease', {
+      type: Boolean,
+      required: true,
+      desc: 'enable release-please',
+    });
+
+    this.option('packageNames', {
+      type: String,
+      required: true,
+    });
+
+    this.option('packageLocations', {
+      type: String,
+      required: true,
+    });
   }
 
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
+    const isReleasePleaseEnabled = this.options.enableReleasePlease;
+
     const isStandardVersionEnabled =
-      this.options.enable && !!pkg.devDependencies?.['standard-version'];
+      this.options.enable &&
+      !!pkg.devDependencies?.['standard-version'] &&
+      !isReleasePleaseEnabled;
 
     if (!isStandardVersionEnabled) {
       packageUtils.removeDevDependencies(pkg, ['standard-version']);
@@ -72,6 +93,39 @@ export default class CommonReleaseGenerator extends Generator {
       );
     }
 
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    if (isReleasePleaseEnabled && this.options.packageNames) {
+      const packageLocations = JSON.parse(this.options.packageLocations);
+      packageLocations.sort();
+
+      const releasePleaseConfig = this.fs.readJSON(
+        this.destinationPath('release-please-config.json'),
+        {},
+      );
+
+      const getLastCommitSha = () =>
+        this.spawnCommandSync('git', ['rev-parse', 'HEAD'], { stdio: 'pipe' })
+          .stdout;
+
+      this.fs.writeJSON(this.destinationPath('release-please-config.json'), {
+        plugins: ['node-workspace'],
+        'group-pull-request-title-pattern': 'chore: release',
+        'bootstrap-sha':
+          releasePleaseConfig['bootstrap-sha'] || getLastCommitSha(),
+        packages: Object.fromEntries(
+          packageLocations.map((packagePath) => [packagePath, {}]),
+        ),
+      });
+      this.fs.copyTpl(
+        this.templatePath('push-release-please.yml'),
+        this.destinationPath('.github/workflows/push-release-please.yml'),
+      );
+    } else {
+      this.fs.delete(this.destinationPath('release-please-config.json'));
+      this.fs.delete(
+        this.destinationPath('.github/workflows/push-release-please.yml'),
+      );
+    }
+
+    writeAndFormatJson(this.fs, this.destinationPath('package.json'), pkg);
   }
 }

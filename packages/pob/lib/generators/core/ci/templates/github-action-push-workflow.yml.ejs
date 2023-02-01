@@ -85,11 +85,17 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
           release-type: node
-
 <% if (publishSinglePackage) { -%>
 
       # publish:
       - run: npm publish
+        if: ${{ startsWith(matrix.node-version, '18.') && github.ref == 'refs/heads/main' && steps.release.outputs.release_created }}
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+<% } else if (publishMonorepo) { -%>
+
+      # publish:
+      - run: yarn workspaces foreach --no-private npm publish --tolerate-republish
         if: ${{ startsWith(matrix.node-version, '18.') && github.ref == 'refs/heads/main' && steps.release.outputs.release_created }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
