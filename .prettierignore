@@ -3,4 +3,3 @@ CHANGELOG.md
 /packages/*/dist
 /@pob/*/dist
 /pob-examples/*/dist
-/coverage

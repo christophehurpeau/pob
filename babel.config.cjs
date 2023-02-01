@@ -14,6 +14,6 @@ module.exports = function babelConfig(api) {
       'pob-examples/*/src',
       'pob-examples/*/lib',
     ],
-    presets: ['pob-babel/preset.js'],
+    presets: [['pob-babel/preset.js']],
   };
 };

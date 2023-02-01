@@ -27,6 +27,7 @@
   "sideEffects": false,
   "bin": "./bin/pretty-pkg.js",
   "scripts": {
+    "clean:build": "true",
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet @pob/pretty-pkg"
   },
