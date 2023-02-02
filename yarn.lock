@@ -3024,7 +3024,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pob/lerna-light@6.1.0, @pob/lerna-light@workspace:*, @pob/lerna-light@workspace:@pob/lerna-light":
+"@pob/lerna-light@6.1.0, @pob/lerna-light@workspace:@pob/lerna-light":
   version: 0.0.0-use.local
   resolution: "@pob/lerna-light@workspace:@pob/lerna-light"
   dependencies:
@@ -10029,7 +10029,6 @@ __metadata:
   dependencies:
     "@babel/core": 7.20.12
     "@pob/eslint-config": 50.0.0
-    "@pob/lerna-light": "workspace:*"
     "@pob/root": "workspace:*"
     "@types/jest": 29.4.0
     check-package-dependencies: 6.2.1

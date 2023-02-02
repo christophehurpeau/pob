@@ -1,0 +1,20 @@
+{
+  "@pob/check-lib-dependency-in-root-dev-dependencies": "5.1.0",
+  "@pob/commitlint-config": "5.1.0",
+  "@pob/lerna-light": "6.1.0",
+  "@pob/pretty-eslint-config": "4.1.0",
+  "@pob/pretty-pkg": "5.1.0",
+  "@pob/renovate-config": "5.14.1",
+  "@pob/root": "7.4.0",
+  "@pob/sort-eslint-config": "4.1.0",
+  "@pob/sort-object": "5.1.0",
+  "@pob/sort-pkg": "5.1.0",
+  "packages/babel-plugin-fix-class-properties-uninitialized": "6.1.0",
+  "packages/babel-preset-pob-env": "9.1.2",
+  "packages/pob": "11.6.0",
+  "packages/pob-babel": "35.5.0",
+  "packages/pob-dependencies": "7.4.0",
+  "packages/repository-check-dirty": "5.1.0",
+  "pob-examples/simple-lib": "0.4.0",
+  "pob-examples/typescript-lib": "0.12.2"
+}
