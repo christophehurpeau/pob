@@ -11,7 +11,7 @@
   "@pob/sort-pkg": "5.1.0",
   "packages/babel-plugin-fix-class-properties-uninitialized": "6.1.0",
   "packages/babel-preset-pob-env": "9.1.2",
-  "packages/pob": "11.6.0",
+  "packages/pob": "11.7.0",
   "packages/pob-babel": "35.5.0",
   "packages/pob-dependencies": "7.4.0",
   "packages/repository-check-dirty": "5.1.0",

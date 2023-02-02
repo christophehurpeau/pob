@@ -50,6 +50,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
+## [11.7.0](https://github.com/christophehurpeau/pob/compare/pob@11.6.0...pob-v11.7.0) (2023-02-02)
+
+
+### Features
+
+* try to enable release-please for monorepo ([279ca31](https://github.com/christophehurpeau/pob/commit/279ca3175436b87c50aa5ffaba1d3592257ca607))
+
 ## [11.4.3](https://github.com/christophehurpeau/pob/compare/pob@11.4.2...pob@11.4.3) (2022-11-19)
 
 
