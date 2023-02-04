@@ -274,10 +274,12 @@ export default class PobMonorepoGenerator extends Generator {
 
     this.composeWith('pob:common:release', {
       enable: this.pobLernaConfig.testing && this.pobLernaConfig.ci,
-      isReleasePleaseEnabled,
+      enableReleasePlease: isReleasePleaseEnabled,
       withBabel: this.pobLernaConfig.typescript,
       documentation: this.pobLernaConfig.documentation,
       updateOnly: this.options.updateOnly,
+      packageNames: JSON.stringify(packageNames),
+      packageLocations: JSON.stringify(this.packageLocations),
     });
 
     this.composeWith('pob:monorepo:typescript', {

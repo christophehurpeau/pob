@@ -136,7 +136,8 @@ export default class MonorepoLernaGenerator extends Generator {
     }
 
     if (pkg.name === 'pob-monorepo') {
-      pkg.devDependencies['@pob/lerna-light'] = 'workspace:*';
+      // removed to enable release-please
+      // pkg.devDependencies['@pob/lerna-light'] = 'workspace:*';
     } else if (pkg.name !== 'pob-monorepo-test-repository') {
       packageUtils.addDevDependencies(pkg, ['@pob/lerna-light']);
     }

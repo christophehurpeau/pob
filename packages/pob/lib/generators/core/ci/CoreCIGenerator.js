@@ -136,6 +136,7 @@ export default class CoreCIGenerator extends Generator {
           codecov: this.options.codecov,
           onlyLatestLTS: this.options.onlyLatestLTS,
           isReleasePleaseEnabled: this.isReleasePleaseEnabled,
+          isMonorepo: inLerna && inLerna.root,
           publishSinglePackage: this.isReleasePleaseEnabled && !pkg.private,
           publishMonorepo:
             this.isReleasePleaseEnabled &&
