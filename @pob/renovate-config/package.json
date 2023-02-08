@@ -15,7 +15,7 @@
   "prettier": "@pob/root/prettier-config",
   "devDependencies": {
     "pob-dependencies": "7.4.0",
-    "prettier": "2.8.3"
+    "prettier": "2.8.4"
   },
   "renovate-config": {
     "default": {
