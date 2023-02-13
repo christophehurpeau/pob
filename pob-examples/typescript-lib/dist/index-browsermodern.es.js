@@ -1,5 +1,5 @@
 function simpleLib() {
-  return 'hello world';
+  return `hello world via ${'browser'}`;
 }
 
 export { simpleLib as default };

@@ -13,7 +13,7 @@ interface Dependencies {
   'alp-rollup-plugin-config': '2.0.0';
   'babel-preset-modern-browsers': '15.0.2';
   eslint: '8.33.0';
-  jest: '29.4.1';
+  jest: '29.4.2';
   'jest-junit-reporter': '1.1.0';
   'pob-babel': '35.4.0';
   prettier: '2.8.3';

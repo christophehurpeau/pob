@@ -3,7 +3,7 @@ import simpleLib from '.';
 
 describe('index', () => {
   it('should return hello world', () => {
-    expect(simpleLib()).toBe('hello world');
+    expect(simpleLib()).toBe('hello world via node');
   });
 });
 
@@ -16,7 +16,7 @@ describe('dist', () => {
       ),
     ).toMatchInlineSnapshot(`
       "function simpleLib() {
-        return 'hello world';
+        return \`hello world via \${'node'}\`;
       }
 
       export { simpleLib as default };
