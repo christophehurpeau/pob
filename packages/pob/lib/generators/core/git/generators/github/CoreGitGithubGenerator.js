@@ -76,7 +76,7 @@ export default class CoreGitGithubGenerator extends Generator {
     });
 
     this.option('onlyLatestLTS', {
-      type: String,
+      type: Boolean,
       required: true,
       desc: 'only latest lts',
     });

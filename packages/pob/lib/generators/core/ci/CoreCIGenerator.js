@@ -71,7 +71,7 @@ export default class CoreCIGenerator extends Generator {
     });
 
     this.option('onlyLatestLTS', {
-      type: String,
+      type: Boolean,
       required: true,
       desc: 'only latest lts',
     });

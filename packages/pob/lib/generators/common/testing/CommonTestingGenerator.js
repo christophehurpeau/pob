@@ -67,6 +67,12 @@ export default class CommonTestingGenerator extends Generator {
       required: true,
       desc: 'split CI jobs for faster result',
     });
+
+    this.option('onlyLatestLTS', {
+      type: Boolean,
+      required: true,
+      desc: 'only latest lts',
+    });
   }
 
   default() {
@@ -82,6 +88,7 @@ export default class CommonTestingGenerator extends Generator {
         packageManager: this.options.packageManager,
         isApp: this.options.isApp,
         splitJobs: this.options.splitCIJobs,
+        onlyLatestLTS: this.options.onlyLatestLTS,
       });
     } else {
       this.composeWith('pob:core:ci', {

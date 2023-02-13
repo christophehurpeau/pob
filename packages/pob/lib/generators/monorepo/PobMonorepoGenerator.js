@@ -73,6 +73,12 @@ export default class PobMonorepoGenerator extends Generator {
       defaults: 'pnp',
       desc: 'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
+
+    this.option('onlyLatestLTS', {
+      type: Boolean,
+      required: true,
+      desc: 'only latest lts',
+    });
   }
 
   async initializing() {
@@ -219,6 +225,7 @@ export default class PobMonorepoGenerator extends Generator {
       ci: this.pobLernaConfig.ci,
       packageManager: this.options.packageManager,
       isApp: this.options.isAppProject,
+      onlyLatestLTS: this.options.onlyLatestLTS,
       splitCIJobs,
     });
 
