@@ -43,6 +43,7 @@
       "babel-preset-pob-env",
       "example-simple-lib",
       "example-typescript-lib",
+      "example-webpack-app",
       "pob",
       "pob-babel",
       "pob-dependencies",
@@ -109,6 +110,10 @@
     {
       "name": "example-typescript-lib",
       "path": "../pob-examples/typescript-lib"
+    },
+    {
+      "name": "example-webpack-app",
+      "path": "../pob-examples/webpack-app"
     },
     {
       "name": "pob",

@@ -24,6 +24,7 @@
         "pob-dependencies",
         "@pob/renovate-config",
         "@pob/root",
+        "example-webpack-app",
         "pob"
       ]
     },
