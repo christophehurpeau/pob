@@ -3487,7 +3487,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^15.6.1":
+"@types/node@npm:*, @types/node@npm:^15.6.2":
   version: 15.14.9
   resolution: "@types/node@npm:15.14.9"
   checksum: 49f7f0522a3af4b8389aee660e88426490cd54b86356672a1fedb49919a8797c00d090ec2dcc4a5df34edc2099d57fc2203d796c4e7fbd382f2022ccd789eee7
@@ -9038,15 +9038,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mem-fs@npm:2.2.1, mem-fs@npm:^1.2.0 || ^2.0.0":
-  version: 2.2.1
-  resolution: "mem-fs@npm:2.2.1"
+"mem-fs@npm:2.3.0, mem-fs@npm:^1.2.0 || ^2.0.0":
+  version: 2.3.0
+  resolution: "mem-fs@npm:2.3.0"
   dependencies:
-    "@types/node": ^15.6.1
+    "@types/node": ^15.6.2
     "@types/vinyl": ^2.0.4
     vinyl: ^2.0.1
     vinyl-file: ^3.0.0
-  checksum: e44fb4acf8391a847b9e9494115b27300eda77aa7c6caea533786f43d385253515b0c0ff4f00906744b2bd31010df923cc448bb6efb9593f41df5d40b0e69046
+  checksum: 375c6b81da35b6a73ce98b209f8795fb25d6f8ef6a60b67aa4f9cf32e16078484c1e704e0008b0fc095675af9679dc74a9891cab51cc34433939ae13c706a59c
   languageName: node
   linkType: hard
 
@@ -10445,7 +10445,7 @@ __metadata:
     json5: ^2.2.2
     lodash.camelcase: ^4.3.0
     lodash.kebabcase: ^4.1.1
-    mem-fs: 2.2.1
+    mem-fs: 2.3.0
     mem-fs-editor: 9.6.0
     minimist: 1.2.8
     node-fetch: 3.3.0
