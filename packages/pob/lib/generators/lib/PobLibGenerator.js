@@ -228,7 +228,7 @@ export default class PobLibGenerator extends Generator {
       dom: browser,
       jsx,
       updateOnly: this.options.updateOnly,
-      baseUrl: './src',
+      baseUrl: 'none', // causes issues on dist definition files
       builddefs: true,
     });
 
