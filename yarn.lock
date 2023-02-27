@@ -7782,10 +7782,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isbinaryfile@npm:^4.0.10, isbinaryfile@npm:^4.0.8":
+"isbinaryfile@npm:^4.0.10":
   version: 4.0.10
   resolution: "isbinaryfile@npm:4.0.10"
   checksum: a6b28db7e23ac7a77d3707567cac81356ea18bd602a4f21f424f862a31d0e7ab4f250759c98a559ece35ffe4d99f0d339f1ab884ffa9795172f632ab8f88e686
+  languageName: node
+  linkType: hard
+
+"isbinaryfile@npm:^5.0.0":
+  version: 5.0.0
+  resolution: "isbinaryfile@npm:5.0.0"
+  checksum: 25cc27388d51b8322c103f5894f9e72ec04e017734e57c4b70be2666501ec7e7f6cbb4a5fcfd15260a7cac979bd1ddb7f5231f5a3098c0695c4e7c049513dfaf
   languageName: node
   linkType: hard
 
@@ -9022,17 +9029,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mem-fs-editor@npm:9.6.0, mem-fs-editor@npm:^8.1.2 || ^9.0.0, mem-fs-editor@npm:^9.0.0":
-  version: 9.6.0
-  resolution: "mem-fs-editor@npm:9.6.0"
+"mem-fs-editor@npm:9.7.0, mem-fs-editor@npm:^8.1.2 || ^9.0.0, mem-fs-editor@npm:^9.0.0":
+  version: 9.7.0
+  resolution: "mem-fs-editor@npm:9.7.0"
   dependencies:
     binaryextensions: ^4.16.0
     commondir: ^1.0.1
     deep-extend: ^0.6.0
     ejs: ^3.1.8
     globby: ^11.1.0
-    isbinaryfile: ^4.0.8
-    minimatch: ^3.1.2
+    isbinaryfile: ^5.0.0
+    minimatch: ^7.2.0
     multimatch: ^5.0.0
     normalize-path: ^3.0.0
     textextensions: ^5.13.0
@@ -9041,7 +9048,7 @@ __metadata:
   peerDependenciesMeta:
     mem-fs:
       optional: true
-  checksum: e8bbab0366308725e841c16761560832b9e3525e81253c8d40c2e06512e8ef169227d67ffc8a167715304bbef91126d23d3ed79dade18eb7b6b23a92c7b5a119
+  checksum: 25d566b0a0b841ea347f91196f4486386622070655907dab5cc63c0fd49c0ef9f752a1c3e6384b43e9dbd0518086d4a316d1fbed1f0a002b68f291167d1b9520
   languageName: node
   linkType: hard
 
@@ -9169,7 +9176,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^7.1.3":
+"minimatch@npm:^7.1.3, minimatch@npm:^7.2.0":
   version: 7.2.0
   resolution: "minimatch@npm:7.2.0"
   dependencies:
@@ -10453,7 +10460,7 @@ __metadata:
     lodash.camelcase: ^4.3.0
     lodash.kebabcase: ^4.1.1
     mem-fs: 2.3.0
-    mem-fs-editor: 9.6.0
+    mem-fs-editor: 9.7.0
     minimist: 1.2.8
     node-fetch: 3.3.0
     parse-author: 2.0.0
