@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.7.0](https://github.com/christophehurpeau/pob/compare/pob@11.6.0...pob@11.7.0) (2023-03-13)
+
+
+### Features
+
+* configure conventional-changelog-conventionalcommits for lerna ([77e7a22](https://github.com/christophehurpeau/pob/commit/77e7a223646b067ee554cdec42c1d9a309faced9))
+* **deps:** update dependency eslint to v8.34.0 ([#1536](https://github.com/christophehurpeau/pob/issues/1536)) ([98769e9](https://github.com/christophehurpeau/pob/commit/98769e96ae30b00495b9fb3dd1310591daec84ae))
+* **deps:** update dependency eslint to v8.35.0 ([#1552](https://github.com/christophehurpeau/pob/issues/1552)) ([c621a8b](https://github.com/christophehurpeau/pob/commit/c621a8b396978845ddef2cb058abb1eababde5b1))
+* **deps:** update dependency eslint to v8.36.0 ([#1562](https://github.com/christophehurpeau/pob/issues/1562)) ([1bf4bee](https://github.com/christophehurpeau/pob/commit/1bf4beee1d330002052399a625c10f971c4f3b16))
+* **deps:** update dependency mem-fs to v2.3.0 ([#1542](https://github.com/christophehurpeau/pob/issues/1542)) ([7b549fa](https://github.com/christophehurpeau/pob/commit/7b549fa07ac95bfe1c7d65a5768226d6b7f34e03))
+* **deps:** update dependency mem-fs-editor to v9.7.0 ([#1554](https://github.com/christophehurpeau/pob/issues/1554)) ([afc1687](https://github.com/christophehurpeau/pob/commit/afc16876a6ffc8fbc10600a345e2f255e5486085))
+* **deps:** update dependency yeoman-environment to v3.14.0 ([#1533](https://github.com/christophehurpeau/pob/issues/1533)) ([8426153](https://github.com/christophehurpeau/pob/commit/842615332b19b49d9a16560b4d018a2b01acb5a6))
+* **deps:** update dependency yeoman-environment to v3.15.0 ([#1543](https://github.com/christophehurpeau/pob/issues/1543)) ([f2a186c](https://github.com/christophehurpeau/pob/commit/f2a186c40d090dac4a1c99b724d473131d68a835))
+* **deps:** update dependency yeoman-generator to v5.8.0 ([#1541](https://github.com/christophehurpeau/pob/issues/1541)) ([664efed](https://github.com/christophehurpeau/pob/commit/664efed2802036b48c50bcd15e92c8ffc429cec3))
+* **pob:** split ci for medium-sized monorepo ([bb0bdde](https://github.com/christophehurpeau/pob/commit/bb0bdde501c3da052653b5937b44a1c2a1fda3f0))
+* support .d.ts in extraEntries ([ff348f1](https://github.com/christophehurpeau/pob/commit/ff348f1317947fb66ecb7162e20b4f45d4d79b2e))
+
+
+### Bug Fixes
+
+* **deps:** update dependency minimist to v1.2.8 ([#1532](https://github.com/christophehurpeau/pob/issues/1532)) ([e0eddbe](https://github.com/christophehurpeau/pob/commit/e0eddbe2f0466242278fa3ab208998852ce47115))
+* **deps:** update dependency node-fetch to v3.3.1 ([#1563](https://github.com/christophehurpeau/pob/issues/1563)) ([a86cf2e](https://github.com/christophehurpeau/pob/commit/a86cf2eaf232542910cc477f76cb78250cbaab8e))
+* **deps:** update dependency prettier to v2.8.4 ([#1531](https://github.com/christophehurpeau/pob/issues/1531)) ([a25a94d](https://github.com/christophehurpeau/pob/commit/a25a94d7b144626493275dcc465d6dc2076469b5))
+* **deps:** update dependency yeoman-environment to v3.14.1 ([#1535](https://github.com/christophehurpeau/pob/issues/1535)) ([f317e72](https://github.com/christophehurpeau/pob/commit/f317e7267e99c02314de5e9ea1a129dc6d0d6692))
+* **deps:** update dependency yeoman-environment to v3.15.1 ([#1544](https://github.com/christophehurpeau/pob/issues/1544)) ([adb372c](https://github.com/christophehurpeau/pob/commit/adb372c72556a73543adc03258b5f4b2c312902f))
+* **deps:** update dependency yeoman-generator to v5.7.1 ([#1538](https://github.com/christophehurpeau/pob/issues/1538)) ([a69b624](https://github.com/christophehurpeau/pob/commit/a69b62484ff3a1569b6642d8a3302d28e7f9c833))
+* pass onlyLatestLTS option to testing generator ([c705998](https://github.com/christophehurpeau/pob/commit/c7059984913fa3b0b82b7b7813bc08c7ef525640))
+* **pob:** dont delete prettier for pob monorepo ([7c0cbf7](https://github.com/christophehurpeau/pob/commit/7c0cbf753cbd53266d54fe78533d65753bfc1ebd))
+* **pob:** fix baseUrl for libraries ([dfa705f](https://github.com/christophehurpeau/pob/commit/dfa705fd49d0bdc650719ec22ff25567d0a8a1d6))
+
+
+
 # [11.6.0](https://github.com/christophehurpeau/pob/compare/pob@11.5.0...pob@11.6.0) (2023-01-31)
 
 

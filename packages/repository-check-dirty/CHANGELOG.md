@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.1](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@5.1.0...repository-check-dirty@5.1.1) (2023-03-13)
+
+**Note:** Version bump only for package repository-check-dirty
+
+
+
+
+
 # [5.1.0](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@5.0.0...repository-check-dirty@5.1.0) (2022-11-18)
 
 
