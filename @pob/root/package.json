@@ -51,6 +51,7 @@
     "@commitlint/cli": "17.4.4",
     "@pob/pretty-eslint-config": "4.1.0",
     "@pob/pretty-pkg": "5.1.0",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
     "husky": "~8.0.1",
     "json5": "^2.2.2",
     "lint-staged": "13.2.0",
