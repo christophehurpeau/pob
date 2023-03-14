@@ -1,7 +1,13 @@
 #!/usr/bin/env node
 
-import { spawnSync } from 'child_process';
-import fs, { existsSync, writeFileSync, readFileSync } from 'fs';
+import { execSync, spawnSync } from 'child_process';
+import fs, {
+  existsSync,
+  writeFileSync,
+  readFileSync,
+  mkdirSync,
+  readdirSync,
+} from 'fs';
 import path from 'path';
 import minimist from 'minimist';
 import yeoman from 'yeoman-environment';
@@ -252,6 +258,48 @@ if (action === 'add') {
     stdio: 'inherit',
   });
   process.exit(0);
+}
+
+if (action === 'migrate-to-monorepo') {
+  if (projectPkg.workspaces) {
+    throw new Error('workspaces field already exists in package.json');
+  }
+
+  mkdirSync('packages');
+  mkdirSync(`packages/${projectPkg.name}`);
+
+  readdirSync('.').forEach((filename) => {
+    if (
+      ![
+        '.git',
+        '.vscode',
+        '.github',
+        '.husky',
+        '.yarn',
+        '.yarnrc.yml',
+        'packages',
+        'lint-staged.config.js',
+        'yarn.lock',
+      ].includes(filename)
+    ) {
+      execSync(`mv "${filename}" "packages/${projectPkg.name}/"`);
+    }
+  });
+
+  const monorepoName = `${path.basename(process.cwd())}-monorepo`;
+  const monorepoPkg = {
+    name: monorepoName,
+    version: projectPkg.version,
+    author: projectPkg.author,
+    license: projectPkg.license,
+    repository: projectPkg.repository,
+    engines: projectPkg.engines,
+    packageManager: projectPkg.packageManager,
+  };
+
+  writeFileSync('package.json', JSON.stringify(monorepoPkg, null, 2));
+
+  monorepo = true;
 }
 
 const updateOnly = action === 'update';

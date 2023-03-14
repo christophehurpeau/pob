@@ -164,7 +164,7 @@ export default class PobBaseGenerator extends Generator {
 
     if (!this.inLerna) {
       const splitCIJobs =
-        inLerna && inLerna.pobMonorepoConfig.packageNames.length > 8;
+        inLerna && inLerna.pobMonorepoConfig?.packageNames.length > 8;
       this.composeWith('pob:core:git', {
         onlyLatestLTS,
         splitCIJobs,
