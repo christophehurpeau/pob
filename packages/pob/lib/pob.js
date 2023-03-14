@@ -230,7 +230,7 @@ if (action === 'add') {
     );
   }
 
-  const packageName = monorepo ? argv._[2] : argv._[1];
+  const packageName = monorepoArg ? argv._[2] : argv._[1];
 
   if (!packageName) {
     console.error('Missing argument: packageName');
