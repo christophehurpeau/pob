@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.5.0](https://github.com/christophehurpeau/pob/compare/@pob/root@7.4.0...@pob/root@7.5.0) (2023-03-13)
+
+
+### Features
+
+* configure conventional-changelog-conventionalcommits for lerna ([77e7a22](https://github.com/christophehurpeau/pob/commit/77e7a223646b067ee554cdec42c1d9a309faced9))
+* **deps:** update dependency lint-staged to v13.2.0 ([#1560](https://github.com/christophehurpeau/pob/issues/1560)) ([2b5fcc3](https://github.com/christophehurpeau/pob/commit/2b5fcc32795330a0873fe28a6aadf6d320ba702d))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @commitlint/cli to v17.4.3 ([#1539](https://github.com/christophehurpeau/pob/issues/1539)) ([3358dba](https://github.com/christophehurpeau/pob/commit/3358dba4b67f069527767702d5ff7f8588354738))
+* **deps:** update dependency @commitlint/cli to v17.4.4 ([#1545](https://github.com/christophehurpeau/pob/issues/1545)) ([aa0bf11](https://github.com/christophehurpeau/pob/commit/aa0bf11adf3043f809c50b51829a123b1c57cdaf))
+* **deps:** update dependency lint-staged to v13.1.1 ([#1529](https://github.com/christophehurpeau/pob/issues/1529)) ([7d9351c](https://github.com/christophehurpeau/pob/commit/7d9351cfd592e3ac746d0e0c07b805ad4707012b))
+* **deps:** update dependency lint-staged to v13.1.2 ([#1540](https://github.com/christophehurpeau/pob/issues/1540)) ([808623e](https://github.com/christophehurpeau/pob/commit/808623eb383732900d6cad435d3d0e29ecc094a0))
+* **deps:** update dependency prettier to v2.8.4 ([#1531](https://github.com/christophehurpeau/pob/issues/1531)) ([a25a94d](https://github.com/christophehurpeau/pob/commit/a25a94d7b144626493275dcc465d6dc2076469b5))
+
+
+
 # [7.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@7.3.0...@pob/root@7.4.0) (2023-01-31)
 
 

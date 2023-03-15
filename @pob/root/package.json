@@ -1,6 +1,6 @@
 {
   "name": "@pob/root",
-  "version": "7.4.0",
+  "version": "7.5.0",
   "description": "root package",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -49,14 +49,15 @@
   "pob": {},
   "dependencies": {
     "@commitlint/cli": "17.4.4",
-    "@pob/pretty-eslint-config": "4.1.0",
-    "@pob/pretty-pkg": "5.1.0",
+    "@pob/pretty-eslint-config": "4.1.1",
+    "@pob/pretty-pkg": "5.1.1",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
     "husky": "~8.0.1",
     "json5": "^2.2.2",
-    "lint-staged": "13.1.2",
-    "pob-dependencies": "7.4.0",
+    "lint-staged": "13.2.0",
+    "pob-dependencies": "7.5.0",
     "prettier": "2.8.4",
-    "repository-check-dirty": "5.1.0",
+    "repository-check-dirty": "5.1.1",
     "semver": "^7.3.7",
     "which-pm-runs": "1.1.0"
   }

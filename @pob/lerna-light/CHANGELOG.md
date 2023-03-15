@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.0](https://github.com/christophehurpeau/pob/compare/@pob/lerna-light@6.1.0...@pob/lerna-light@6.2.0) (2023-03-13)
+
+
+### Features
+
+* **deps:** update lerna monorepo to v5.6.2 ([#1486](https://github.com/christophehurpeau/pob/issues/1486)) ([d2ad97c](https://github.com/christophehurpeau/pob/commit/d2ad97c9d8c0632e111ff24af636e1c8f0a07c13))
+
+
+### Bug Fixes
+
+* downgrade lerna and make sure nx is not installed ([45523f1](https://github.com/christophehurpeau/pob/commit/45523f167467bcab9d9435d9089eccc46ae5947d))
+
+
+
 # [6.1.0](https://github.com/christophehurpeau/pob/compare/@pob/lerna-light@6.0.0...@pob/lerna-light@6.1.0) (2022-11-18)
 
 
