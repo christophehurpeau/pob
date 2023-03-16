@@ -106,7 +106,24 @@ fi`;
   }
 
   if (prePushHook.length > 0) {
-    writeHook('pre-push', prePushHook.join(' && '));
+    writeHook(
+      'pre-push',
+      `
+# z40 is the value matching the empty blob/commit/tree SHA (zero x 40)
+z40=0000000000000000000000000000000000000000
+branch_ref=$(git symbolic-ref HEAD)
+
+while read local_ref local_sha remote_ref remote_sha
+do
+  # Skip if branch deletion
+  if [ "$local_sha" != "$z40" ]; then
+    if [ "$local_ref" = "$branch_ref" ]; then
+      ${prePushHook.join(' && ')}
+    fi
+  fi
+done
+`,
+    );
   } else {
     ensureHookDeleted('pre-push');
   }
