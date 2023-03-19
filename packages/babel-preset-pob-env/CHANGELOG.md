@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.5](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@9.1.4...babel-preset-pob-env@9.1.5) (2023-03-19)
+
+
+### Bug Fixes
+
+* configure target in preset to make sure it is applied ([ad4071d](https://github.com/christophehurpeau/pob/commit/ad4071da757291f6eaa63ade4cfc7ea783eeff57))
+
+
+
 ## [9.1.4](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@9.1.3...babel-preset-pob-env@9.1.4) (2023-03-19)
 
 **Note:** Version bump only for package babel-preset-pob-env

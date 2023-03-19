@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.8.1](https://github.com/christophehurpeau/pob/compare/pob@11.8.0...pob@11.8.1) (2023-03-19)
+
+
+### Bug Fixes
+
+* configure target in preset to make sure it is applied ([ad4071d](https://github.com/christophehurpeau/pob/commit/ad4071da757291f6eaa63ade4cfc7ea783eeff57))
+
+
+
 ## [11.8.0](https://github.com/christophehurpeau/pob/compare/pob@11.7.0...pob@11.8.0) (2023-03-19)
 
 

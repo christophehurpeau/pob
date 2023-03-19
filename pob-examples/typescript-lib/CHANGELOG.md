@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.5](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.12.4...example-typescript-lib@0.12.5) (2023-03-19)
+
+
+### Bug Fixes
+
+* configure target in preset to make sure it is applied ([ad4071d](https://github.com/christophehurpeau/pob/commit/ad4071da757291f6eaa63ade4cfc7ea783eeff57))
+
+
+
 ## [0.12.4](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.12.3...example-typescript-lib@0.12.4) (2023-03-19)
 
 **Note:** Version bump only for package example-typescript-lib
