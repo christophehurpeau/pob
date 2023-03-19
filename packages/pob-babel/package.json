@@ -63,7 +63,6 @@
     "@rollup/plugin-json": "6.0.0",
     "@rollup/plugin-node-resolve": "15.0.1",
     "@rollup/plugin-run": "3.0.1",
-    "babel-preset-modern-browsers": "^15.0.2",
     "babel-preset-pob-env": "9.1.3",
     "rollup": "3.19.1",
     "rollup-config-external-dependencies": "^2.0.0",

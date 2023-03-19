@@ -25,14 +25,7 @@
 
 ## Needed dependencies
 
-[babel-preset-modern-browsers](https://www.npmjs.com/package/babel-preset-modern-browsers)
-
-- `target` === "browser" and `version` === "modern"
-
 [@babel/preset-env](https://www.npmjs.com/package/@babel/preset-env)
-
-- `target` === "browser" and `version` !== "modern"
-- `target` === `false`
 
 ## Install
 

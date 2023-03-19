@@ -162,11 +162,11 @@ export default class CommonBabelGenerator extends Generator {
           default: browserVersions,
           choices: [
             {
-              name: 'Modern (babel-preset-modern-browsers)',
+              name: 'Modern',
               value: 'modern',
             },
             {
-              name: 'Supported (@babel/preset-env)',
+              name: 'Supported',
               value: 'supported',
             },
           ],
@@ -361,6 +361,7 @@ export default class CommonBabelGenerator extends Generator {
       'babel-preset-env', // now @babel/preset-env
       'babel-preset-jsdoc',
       'babel-plugin-add-jsdoc-annotations',
+      'babel-preset-modern-browsers',
     ]);
 
     packageUtils.addOrRemoveDevDependencies(
@@ -369,14 +370,6 @@ export default class CommonBabelGenerator extends Generator {
         (env) => env.target === 'browser' && env.version === undefined,
       ),
       ['@babel/preset-env'],
-    );
-
-    packageUtils.addOrRemoveDevDependencies(
-      pkg,
-      this.babelEnvs.find(
-        (env) => env.target === 'browser' && env.version === 'modern',
-      ),
-      ['babel-preset-modern-browsers'],
     );
 
     /* engines */
@@ -424,13 +417,17 @@ export default class CommonBabelGenerator extends Generator {
     /* browserslist */
 
     if (hasTargetBrowser) {
-      pkg.browserslist = [
-        'defaults',
-        '> 0.2%',
-        'not ie < 12',
-        'not safari < 10',
-        'not ios_saf < 10',
-      ];
+      pkg.browserslist = {
+        ...(Array.isArray(pkg.browserslist) ? {} : pkg.browserslist),
+        production: [
+          'defaults',
+          '> 0.2%',
+          'not ie < 12',
+          'not safari < 10',
+          'not ios_saf < 10',
+        ],
+        modern: ['defaults and >1% and supports es6-module'],
+      };
     } else if (this.options.isApp && pkg.browserslist) {
       pkg.browserslist = {
         ...pkg.browserslist,

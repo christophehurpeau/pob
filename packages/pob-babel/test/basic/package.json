@@ -1,4 +1,16 @@
 {
+  "browserslist": {
+    "production": [
+      "defaults",
+      "> 0.2%",
+      "not ie < 12",
+      "not safari < 10",
+      "not ios_saf < 10"
+    ],
+    "modern": [
+      "defaults and >1% and supports es6-module"
+    ]
+  },
   "pob": {
     "entries": [
       "index"

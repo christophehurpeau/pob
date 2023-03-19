@@ -95,7 +95,6 @@ const sayHello = () => {
   console.log('hello browser');
 };
 
-var _t$foo;
 sayHello();
 if (process.env.NODE_ENV !== "production") {
   console.log('__DEV__ is true');
@@ -115,8 +114,8 @@ const spreadTest = {
     test: 'spread'
   }
 };
-const foo = (_t$foo = t.foo) !== null && _t$foo !== void 0 ? _t$foo : 'default';
-const operator = spreadTest === null || spreadTest === void 0 ? void 0 : spreadTest.toString();
+const foo = t.foo ?? 'default';
+const operator = spreadTest?.toString();
 
 export { foo, operator, spreadTest, t };
 "

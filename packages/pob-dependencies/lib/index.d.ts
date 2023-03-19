@@ -11,7 +11,6 @@ interface Dependencies {
   '@pob/pretty-pkg': '5.1.0';
   '@types/jest': '29.4.1';
   'alp-rollup-plugin-config': '2.0.0';
-  'babel-preset-modern-browsers': '15.0.2';
   eslint: '8.36.0';
   jest: '29.5.0';
   'jest-junit-reporter': '1.1.0';

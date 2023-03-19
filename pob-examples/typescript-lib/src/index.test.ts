@@ -11,7 +11,8 @@ describe('dist', () => {
   it('should build node16 mjs', () => {
     expect(
       fs.readFileSync(
-        './pob-examples/typescript-lib/dist/index-node16.mjs',
+        // @ts-expect-error -- browser api conflict
+        new URL('../dist/index-node16.mjs', import.meta.url),
         'utf8',
       ),
     ).toMatchInlineSnapshot(`

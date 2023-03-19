@@ -10,6 +10,8 @@ describe('fixtures', () => {
   tests.forEach((dirname) => {
     if (dirname === '.eslintrc.json') return;
     describe(dirname, () => {
+      const cwd = testsPath + dirname;
+      process.chdir(cwd);
       const configs = createRollupConfig({
         cwd: testsPath + dirname,
       });
