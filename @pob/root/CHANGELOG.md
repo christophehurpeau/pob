@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.6.0](https://github.com/christophehurpeau/pob/compare/@pob/root@7.5.0...@pob/root@7.6.0) (2023-03-19)
+
+
+### Features
+
+* **root:** update-pre-push-hook-to-avoid-running-when-deleting-branches ([#1572](https://github.com/christophehurpeau/pob/issues/1572)) ([f9985f5](https://github.com/christophehurpeau/pob/commit/f9985f5085888e7424e1ee1d598db8881283f7ac))
+
+
+
 ## [7.5.0](https://github.com/christophehurpeau/pob/compare/@pob/root@7.4.0...@pob/root@7.5.0) (2023-03-13)
 
 

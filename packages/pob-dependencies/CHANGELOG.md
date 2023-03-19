@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.6.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@7.5.0...pob-dependencies@7.6.0) (2023-03-19)
+
+
+### Features
+
+* **deps:** update dependency @types/jest to v29.4.2 ([#1566](https://github.com/christophehurpeau/pob/issues/1566)) ([6665c85](https://github.com/christophehurpeau/pob/commit/6665c856fb825ce12030827e1179a21baf57f7b4))
+* **deps:** update dependency @types/jest to v29.4.3 ([#1567](https://github.com/christophehurpeau/pob/issues/1567)) ([bb880ec](https://github.com/christophehurpeau/pob/commit/bb880ec0fae7fcf11f6965f0682c2daedf5aae9c))
+* **deps:** update dependency @types/jest to v29.4.4 ([#1569](https://github.com/christophehurpeau/pob/issues/1569)) ([7ddb0a3](https://github.com/christophehurpeau/pob/commit/7ddb0a3f1edb6a0f222c0b2e6f8412456e1698ab))
+* **deps:** update dependency @types/jest to v29.5.0 ([#1574](https://github.com/christophehurpeau/pob/issues/1574)) ([0d714b7](https://github.com/christophehurpeau/pob/commit/0d714b7c1cf1989c9e3abdaf23654dd0402c2861))
+* **deps:** update dependency typedoc to v0.23.27 ([#1571](https://github.com/christophehurpeau/pob/issues/1571)) ([3d40a92](https://github.com/christophehurpeau/pob/commit/3d40a92a752cb36d400f8a9731b9439701110620))
+
+
+
 ## [7.5.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@7.4.0...pob-dependencies@7.5.0) (2023-03-13)
 
 

@@ -3101,11 +3101,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/pretty-pkg@5.1.1, @pob/pretty-pkg@workspace:@pob/pretty-pkg":
+"@pob/pretty-pkg@5.1.2, @pob/pretty-pkg@workspace:@pob/pretty-pkg":
   version: 0.0.0-use.local
   resolution: "@pob/pretty-pkg@workspace:@pob/pretty-pkg"
   dependencies:
-    "@pob/sort-pkg": 5.1.1
+    "@pob/sort-pkg": 5.2.0
     prettier: ^2.6.2
   bin:
     pretty-pkg: ./bin/pretty-pkg.js
@@ -3116,23 +3116,23 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: 7.5.0
+    pob-dependencies: 7.6.0
     prettier: 2.8.4
   languageName: unknown
   linkType: soft
 
-"@pob/root@7.5.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@7.6.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
     "@commitlint/cli": 17.4.4
     "@pob/pretty-eslint-config": 4.1.1
-    "@pob/pretty-pkg": 5.1.1
+    "@pob/pretty-pkg": 5.1.2
     conventional-changelog-conventionalcommits: ^5.0.0
     husky: ~8.0.1
     json5: ^2.2.2
     lint-staged: 13.2.0
-    pob-dependencies: 7.5.0
+    pob-dependencies: 7.6.0
     prettier: 2.8.4
     repository-check-dirty: 5.1.1
     semver: ^7.3.7
@@ -3163,7 +3163,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/sort-pkg@5.1.1, @pob/sort-pkg@workspace:@pob/sort-pkg":
+"@pob/sort-pkg@5.2.0, @pob/sort-pkg@workspace:@pob/sort-pkg":
   version: 0.0.0-use.local
   resolution: "@pob/sort-pkg@workspace:@pob/sort-pkg"
   dependencies:
@@ -4579,7 +4579,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-pob-env@9.1.3, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
+"babel-preset-pob-env@9.1.4, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
   version: 0.0.0-use.local
   resolution: "babel-preset-pob-env@workspace:packages/babel-preset-pob-env"
   dependencies:
@@ -6362,12 +6362,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-typescript-lib@0.12.3, example-typescript-lib@workspace:pob-examples/typescript-lib":
+"example-typescript-lib@0.12.4, example-typescript-lib@workspace:pob-examples/typescript-lib":
   version: 0.0.0-use.local
   resolution: "example-typescript-lib@workspace:pob-examples/typescript-lib"
   dependencies:
     "@babel/core": 7.21.3
-    pob-babel: 35.6.0
+    pob-babel: 35.6.1
     typescript: 4.9.5
   languageName: unknown
   linkType: soft
@@ -6376,7 +6376,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-webpack-app@workspace:pob-examples/webpack-app"
   dependencies:
-    example-typescript-lib: 0.12.3
+    example-typescript-lib: 0.12.4
     webpack: 5.76.2
     webpack-cli: 5.0.1
   languageName: unknown
@@ -10384,7 +10384,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@35.6.0, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
+"pob-babel@35.6.1, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -10394,7 +10394,7 @@ __metadata:
     "@rollup/plugin-json": 6.0.0
     "@rollup/plugin-node-resolve": 15.0.1
     "@rollup/plugin-run": 3.0.1
-    babel-preset-pob-env: 9.1.3
+    babel-preset-pob-env: 9.1.4
     rollup: 3.19.1
     rollup-config-external-dependencies: ^2.0.0
     semver: ^7.3.7
@@ -10412,7 +10412,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@7.5.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@7.6.0, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -10425,13 +10425,13 @@ __metadata:
     "@pob/eslint-config-typescript": 50.0.0
     "@pob/eslint-config-typescript-react": 50.0.0
     "@pob/lerna-light": 6.2.0
-    "@pob/pretty-pkg": 5.1.1
+    "@pob/pretty-pkg": 5.1.2
     "@types/jest": 29.5.0
     alp-rollup-plugin-config: 2.0.0
     eslint: 8.36.0
     jest: 29.5.0
     jest-junit-reporter: 1.1.0
-    pob-babel: 35.6.0
+    pob-babel: 35.6.1
     prettier: 2.8.4
     repository-check-dirty: 5.1.1
     rollup: 3.19.1
@@ -10469,10 +10469,10 @@ __metadata:
     "@pob/eslint-config": 50.0.0
     "@pob/eslint-config-typescript": 50.0.0
     "@pob/eslint-config-typescript-react": 50.0.0
-    "@pob/root": 7.5.0
+    "@pob/root": 7.6.0
     "@pob/sort-eslint-config": 4.1.1
     "@pob/sort-object": 5.1.1
-    "@pob/sort-pkg": 5.1.1
+    "@pob/sort-pkg": 5.2.0
     eslint: 8.36.0
     findup-sync: ^5.0.0
     git-remote-url: ^1.0.1
@@ -10487,7 +10487,7 @@ __metadata:
     minimist: 1.2.8
     node-fetch: 3.3.1
     parse-author: 2.0.0
-    pob-dependencies: 7.5.0
+    pob-dependencies: 7.6.0
     prettier: 2.8.4
     semver: 7.3.8
     yeoman-environment: 3.15.1

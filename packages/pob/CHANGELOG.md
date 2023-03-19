@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.8.0](https://github.com/christophehurpeau/pob/compare/pob@11.7.0...pob@11.8.0) (2023-03-19)
+
+
+### Features
+
+* add command to help migrate to monorepo ([5274068](https://github.com/christophehurpeau/pob/commit/52740680f63a0949a622831f38268d6d10007a07))
+* drop webpack 4 legacy aliases ([e714540](https://github.com/christophehurpeau/pob/commit/e7145401e52dfe3cc6eff40f2f220b4b81bce561))
+* **pob:** app add "node-library" ([bef77f5](https://github.com/christophehurpeau/pob/commit/bef77f5caee0b89aee5540c82146fea962acf6ff))
+
+
+### Bug Fixes
+
+* fix "pob add" use monorepoArg ([92d4ca5](https://github.com/christophehurpeau/pob/commit/92d4ca5faf27fc1c054fd6c28cb5b8e8256d9f87))
+* fix vscode config jestCommandLine ([434d7ad](https://github.com/christophehurpeau/pob/commit/434d7adfb4e73ba3021d516a149bcd1fb287a479))
+
+
+
 ## [11.7.0](https://github.com/christophehurpeau/pob/compare/pob@11.6.0...pob@11.7.0) (2023-03-13)
 
 

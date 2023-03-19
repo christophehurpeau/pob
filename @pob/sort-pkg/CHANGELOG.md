@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@5.1.1...@pob/sort-pkg@5.2.0) (2023-03-19)
+
+
+### Features
+
+* drop webpack 4 legacy aliases ([e714540](https://github.com/christophehurpeau/pob/commit/e7145401e52dfe3cc6eff40f2f220b4b81bce561))
+
+
+
 ## [5.1.1](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@5.1.0...@pob/sort-pkg@5.1.1) (2023-03-13)
 
 **Note:** Version bump only for package @pob/sort-pkg
