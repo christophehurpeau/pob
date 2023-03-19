@@ -185,7 +185,6 @@ export default class CommonLintGenerator extends Generator {
       '@pob/eslint-config-typescript-node',
       'babel-eslint',
       'eslint-config-pob',
-      'eslint-config-prettier',
       'typescript-eslint-parser',
       'standard',
       'eslint-import-resolver-node',
@@ -196,6 +195,7 @@ export default class CommonLintGenerator extends Generator {
         'eslint-plugin-jsx-a11y',
         'eslint-config-airbnb',
         'eslint-config-airbnb-base',
+        'eslint-config-prettier',
         'eslint-plugin-babel',
         'eslint-plugin-flowtype',
         'eslint-plugin-prefer-class-properties',
@@ -222,23 +222,25 @@ export default class CommonLintGenerator extends Generator {
     }
 
     if (globalEslint && !((inLerna && inLerna.root) || this.options.monorepo)) {
-      packageUtils.removeDevDependencies(
-        pkg,
-        [
-          'eslint',
-          'prettier',
-          '@pob/eslint-config',
-          '@pob/eslint-config-typescript',
-          '@pob/eslint-config-typescript-react',
-          '@pob/eslint-config-react',
-          '@typescript-eslint/eslint-plugin',
-          '@typescript-eslint/parser',
-          'eslint-plugin-node',
-          'eslint-plugin-unicorn',
-          'eslint-plugin-import',
-        ],
-        true,
-      );
+      if (!pkg.name.startsWith('@pob/eslint-config')) {
+        packageUtils.removeDevDependencies(
+          pkg,
+          [
+            'eslint',
+            'prettier',
+            '@pob/eslint-config',
+            '@pob/eslint-config-typescript',
+            '@pob/eslint-config-typescript-react',
+            '@pob/eslint-config-react',
+            '@typescript-eslint/eslint-plugin',
+            '@typescript-eslint/parser',
+            'eslint-plugin-node',
+            'eslint-plugin-unicorn',
+            'eslint-plugin-import',
+          ],
+          true,
+        );
+      }
     } else {
       if (pkg.name !== 'pob-monorepo') {
         packageUtils.removeDevDependencies(pkg, ['prettier']);
