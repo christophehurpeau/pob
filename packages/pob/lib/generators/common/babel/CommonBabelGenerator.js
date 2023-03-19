@@ -515,21 +515,10 @@ export default class CommonBabelGenerator extends Generator {
         (!env.formats || env.formats.includes('es')),
     );
 
-    const esModernBrowserEnv = this.babelEnvs.find(
-      (env) =>
-        env.target === 'browser' &&
-        env.version === 'modern' &&
-        (!env.formats || env.formats.includes('es')),
-    );
-
-    const esNodeEnv = this.babelEnvs.find(
-      (env) =>
-        env.target === 'node' && (!env.formats || env.formats.includes('es')),
-    );
-
     // Legacy "dev" builds
     delete pkg['module:browser'];
     delete pkg['module:browser-dev'];
+    delete pkg['module:modern-browsers'];
     delete pkg['module:modern-browsers-dev'];
     delete pkg['module:node'];
     delete pkg['module:node-dev'];
@@ -541,44 +530,6 @@ export default class CommonBabelGenerator extends Generator {
     } else {
       delete pkg.module;
       delete pkg.browser;
-    }
-
-    if (esModernBrowserEnv) {
-      pkg[
-        'module:modern-browsers'
-      ] = `./${this.options.buildDirectory}/index-browsermodern.es.js`;
-    } else {
-      delete pkg['module:modern-browsers'];
-    }
-
-    const aliases = (this.entries || []).filter((entry) => entry !== 'index');
-
-    if (useBabel && aliases.length > 0 && (esNodeEnv || esAllBrowserEnv)) {
-      [esNodeEnv, esAllBrowserEnv, esModernBrowserEnv]
-        .filter(Boolean)
-        .forEach((env) => {
-          const key = (() => {
-            if (env.target === 'node') return 'node';
-            if (env.version === 'modern') return 'modern-browsers';
-            return 'browser';
-          })();
-
-          const envAliases =
-            this.entries.includes('index') && env.target === 'node'
-              ? aliases.filter((alias) => alias !== 'browser')
-              : aliases;
-          if (envAliases.length === 0) return;
-          pkg[`module:aliases-${key}`] = {};
-
-          envAliases.forEach((aliasName) => {
-            const isBrowserOnly =
-              aliasName === 'browser' && env.target !== 'node';
-            const aliasDistName = isBrowserOnly ? 'index' : aliasName;
-            pkg[`module:aliases-${key}`][`./${aliasName}.js`] = `./${
-              this.options.buildDirectory
-            }/${aliasDistName}-${env.target}${env.version || ''}.es.js`;
-          });
-        });
     }
 
     /* webpack 5 and node with ESM support */
@@ -690,23 +641,6 @@ export default class CommonBabelGenerator extends Generator {
 
     Object.keys(pkg).forEach((key) => {
       if (!key.startsWith('module:') && !key.startsWith('webpack:')) return;
-
-      // legacy
-      if (key.endsWith('-dev')) {
-        delete pkg[key];
-        return;
-      }
-
-      if (key.startsWith('module:aliases') && aliases.length > 0) {
-        if (key.startsWith('module:aliases-node') && esNodeEnv) return;
-        if (key.startsWith('module:aliases-browser') && esAllBrowserEnv) return;
-        if (
-          key.startsWith('module:aliases-modern-browsers') &&
-          esModernBrowserEnv
-        ) {
-          return;
-        }
-      }
       delete pkg[key];
     });
 
@@ -739,12 +673,17 @@ export default class CommonBabelGenerator extends Generator {
           this.destinationPath('rollup.config.mjs'),
           {
             config: this.options.useAppConfig,
+            outDirectory: this.options.buildDirectory,
           },
         );
       } else {
-        this.fs.copy(
-          this.templatePath('lib.rollup.config.mjs.txt'),
+        copyAndFormatTpl(
+          this.fs,
+          this.templatePath('lib.rollup.config.mjs.ejs'),
           this.destinationPath('rollup.config.mjs'),
+          {
+            outDirectory: this.options.buildDirectory,
+          },
         );
       }
     } else {
