@@ -417,6 +417,9 @@ export default class CommonBabelGenerator extends Generator {
     /* browserslist */
 
     if (hasTargetBrowser) {
+      if (pkg.browserslist && pkg.browserslist.modern) {
+        delete pkg.browserslist.modern;
+      }
       pkg.browserslist = {
         ...(Array.isArray(pkg.browserslist) ? {} : pkg.browserslist),
         production: [
@@ -426,7 +429,8 @@ export default class CommonBabelGenerator extends Generator {
           'not safari < 10',
           'not ios_saf < 10',
         ],
-        modern: ['defaults and >1% and supports es6-module'],
+        // configured in babel preset
+        // modern: ['defaults and >1% and supports es6-module'],
       };
     } else if (this.options.isApp && pkg.browserslist) {
       pkg.browserslist = {

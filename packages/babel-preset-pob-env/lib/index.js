@@ -88,13 +88,27 @@ export default function (context, opts = {}) {
             loose,
             shippedProposals: true,
             bugfixes: true,
-            browserslistEnv: 'modern',
+            // does not work for monorepos
+            // browserslistEnv: 'modern',
+            targets: 'defaults and >1% and supports es6-module',
           },
         ];
       } else {
         targetPreset = [
           resolvePreset('@babel/preset-env'),
-          { modules, loose, shippedProposals: true, bugfixes: true },
+          {
+            modules,
+            loose,
+            shippedProposals: true,
+            bugfixes: true,
+            targets: [
+              'defaults',
+              '> 0.2%',
+              'not ie < 12',
+              'not safari < 10',
+              'not ios_saf < 10',
+            ],
+          },
         ];
       }
       break;
