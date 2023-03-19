@@ -73,6 +73,7 @@ export default class PobAppGenerator extends Generator {
           'next.js',
           'remix',
           'node',
+          'node-library', // monorepo library for app. Not a real library
           'alp-node',
           'other',
         ],
@@ -112,10 +113,14 @@ export default class PobAppGenerator extends Generator {
   }
 
   default() {
-    if (this.appConfig.type === 'node' || this.appConfig.type === 'alp-node') {
+    if (
+      this.appConfig.type === 'node' ||
+      this.appConfig.type === 'node-library' ||
+      this.appConfig.type === 'alp-node'
+    ) {
       this.composeWith('pob:common:babel', {
         updateOnly: this.options.updateOnly,
-        isApp: true,
+        isApp: this.appConfig.type !== 'node-library',
         useAppConfig: this.appConfig.type === 'alp-node',
         testing: this.appConfig.testing,
         documentation: false,

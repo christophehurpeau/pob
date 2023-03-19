@@ -10,6 +10,7 @@ export const appIgnorePaths = {
   remix: (config) => ['# remix paths', '/.cache', '/build', '/public/build'],
   pobpack: (config) => ['/build', '/public'],
   node: (config) => ['/build'],
+  'node-library': (config) => ['/build'],
   'alp-node': (config) => ['/build'],
   other: (config) => [],
 };

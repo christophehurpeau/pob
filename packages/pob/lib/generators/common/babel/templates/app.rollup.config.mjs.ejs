@@ -10,7 +10,7 @@ const watch = process.env.ROLLUP_WATCH === 'true';
 
 export default createRollupConfig({
   cwd: dirname(fileURLToPath(import.meta.url)),
-  outDirectory: 'build',
+  outDirectory: '<%= outDirectory %>',
   plugins: [
 <% if (config) { -%>
     config({
