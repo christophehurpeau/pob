@@ -35,7 +35,7 @@
         "christophehurpeau"
       ],
       "lockFileMaintenance": {
-        "enabled": true
+        "enabled": false
       },
       "stabilityDays": 4,
       "internalChecksFilter": "strict",
