@@ -102,6 +102,12 @@ export default class CoreYarnGenerator extends Generator {
       config.defaultSemverRangePrefix = this.options.type === 'app' ? '' : '^';
       config.enableMessageNames = false;
       config.nodeLinker = this.options.yarnNodeLinker;
+      // https://yarnpkg.dev/releases/3-1/
+      // make sure all supported architectures are in yarn cache
+      config.supportedArchitectures = {
+        os: ['linux', 'darwin'],
+        cpu: ['x64', 'arm64'],
+      };
       writeAndFormat(this.fs, '.yarnrc.yml', yml.dump(config, {}));
     } else {
       this.fs.delete('.yarn');
