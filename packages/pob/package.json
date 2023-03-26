@@ -38,9 +38,9 @@
   "dependencies": {
     "@lerna/package-graph": "5.5.4",
     "@lerna/project": "5.5.4",
-    "@pob/eslint-config": "50.0.0",
-    "@pob/eslint-config-typescript": "50.0.0",
-    "@pob/eslint-config-typescript-react": "50.0.0",
+    "@pob/eslint-config": "50.0.4",
+    "@pob/eslint-config-typescript": "50.0.4",
+    "@pob/eslint-config-typescript-react": "50.0.4",
     "@pob/sort-eslint-config": "4.1.1",
     "@pob/sort-object": "5.1.1",
     "@pob/sort-pkg": "5.2.0",
