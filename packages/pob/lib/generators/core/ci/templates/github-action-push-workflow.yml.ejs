@@ -21,7 +21,7 @@ jobs:
 
 <% if (packageManager === 'yarn') { -%>
       - name: Install Dependencies
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
 <% } else if (packageManager === 'npm') { -%>
       - name: Install Dependencies
         run: npm ci

@@ -15,7 +15,7 @@ jobs:
           node-version: 16
 
       - name: Install Dependencies
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
 
 <% if (typedoc) { -%>
       - name: Run tsc for tsc cache

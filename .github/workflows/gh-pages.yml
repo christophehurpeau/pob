@@ -15,7 +15,7 @@ jobs:
           node-version: 16
 
       - name: Install Dependencies
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
 
       - name: Generate Coverage
         run: yarn test --coverage --coverageReporters=lcov --coverageDirectory=docs/coverage/
