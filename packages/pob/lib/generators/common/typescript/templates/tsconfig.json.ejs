@@ -1,9 +1,10 @@
 {
   "include": [
-    "<%= rootDir %>/**/*.ts"<% if (jsx) { -%>,
-    "<%= rootDir %>/**/*.tsx"<% } %>
+    "<%= srcDir %>/**/*.ts"<% if (jsx) { -%>,
+    "<%= srcDir %>/**/*.tsx"<% } %><% if (srcDir !== rootDir) { -%>,
+    "<%= rootDir %>/*.ts"<% } %>
   ],
-<% if(rootDir === '.' || forceExcludeNodeModules) { -%>
+<% if(srcDir === '.' || forceExcludeNodeModules) { -%>
   "exclude": [
     "node_modules"
   ],

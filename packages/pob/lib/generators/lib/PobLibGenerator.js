@@ -248,6 +248,7 @@ export default class PobLibGenerator extends Generator {
       enable: this.pobjson.testing,
       enableReleasePlease,
       testing: this.pobjson.testing,
+      build: withBabel,
       typescript: withBabel,
       documentation: !!this.pobjson.documentation,
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,

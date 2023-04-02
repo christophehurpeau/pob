@@ -38,6 +38,12 @@ export default class CommonTestingGenerator extends Generator {
       desc: 'typescript',
     });
 
+    this.option('build', {
+      type: Boolean,
+      required: true,
+      desc: 'build (with babel or typescript)',
+    });
+
     this.option('codecov', {
       type: Boolean,
       required: true,
@@ -81,7 +87,7 @@ export default class CommonTestingGenerator extends Generator {
         enable: this.options.ci,
         enableReleasePlease: this.options.enableReleasePlease,
         testing: this.options.enable,
-        build: this.options.typescript,
+        build: this.options.build,
         typescript: this.options.typescript,
         documentation: this.options.documentation,
         codecov: this.options.codecov,

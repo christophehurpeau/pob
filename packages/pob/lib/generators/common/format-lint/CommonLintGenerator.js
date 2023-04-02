@@ -421,7 +421,13 @@ export default class CommonLintGenerator extends Generator {
       }
 
       if ((!inLerna || !inLerna.root) && useBabel) {
-        ignorePatterns.add(`/${this.options.buildDirectory}`, '/test');
+        const buildPath = `/${this.options.buildDirectory}`;
+        if (
+          !this.options.ignorePaths ||
+          !this.options.ignorePaths.includes(buildPath)
+        ) {
+          ignorePatterns.add(buildPath);
+        }
       }
       if (inLerna && inLerna.root && this.options.typescript) {
         ignorePatterns.add('/rollup.config.mjs');
@@ -430,7 +436,7 @@ export default class CommonLintGenerator extends Generator {
       if (this.options.ignorePaths) {
         this.options.ignorePaths
           .split('\n')
-          .filter((path) => path !== `/${this.options.buildDirectory}` && path)
+          .filter(Boolean)
           .forEach((ignorePath) => {
             if (ignorePath.startsWith('#')) return;
             ignorePatterns.add(ignorePath);

@@ -219,6 +219,7 @@ export default class PobMonorepoGenerator extends Generator {
       enable: this.pobLernaConfig.testing,
       enableReleasePlease: isReleasePleaseEnabled,
       testing: this.pobLernaConfig.testing,
+      build: this.pobLernaConfig.typescript,
       typescript: this.pobLernaConfig.typescript,
       documentation: !!this.pobLernaConfig.documentation,
       codecov: this.pobLernaConfig.testing && this.pobLernaConfig.codecov,

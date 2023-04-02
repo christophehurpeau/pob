@@ -20,6 +20,12 @@ export default class CommonTypescriptGenerator extends Generator {
       desc: 'customize rootDir',
     });
 
+    this.option('srcDir', {
+      type: String,
+      defaults: 'src',
+      desc: 'customize srcDir, if different than rootDir',
+    });
+
     this.option('jsx', {
       type: Boolean,
       defaults: true,
@@ -186,6 +192,7 @@ export default class CommonTypescriptGenerator extends Generator {
           monorepoPackageSrcPaths,
           monorepoPackageReferences,
           rootDir: this.options.rootDir,
+          srcDir: this.options.srcDir || this.options.rootDir,
           jsx,
           jsxPreserve: this.options.jsxPreserve,
           composite,

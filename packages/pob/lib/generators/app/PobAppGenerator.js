@@ -5,7 +5,7 @@ import inLerna from '../../utils/inLerna.js';
 import * as packageUtils from '../../utils/package.js';
 import { appIgnorePaths } from './ignorePaths.js';
 
-const appsWithTypescript = ['alp', 'next.js', 'remix', 'pobpack'];
+const appsWithTypescript = ['alp', 'next.js', 'remix', 'pobpack', 'expo'];
 const appsWithBrowser = ['alp', 'next.js', 'remix'];
 
 export default class PobAppGenerator extends Generator {
@@ -75,6 +75,7 @@ export default class PobAppGenerator extends Generator {
           'node',
           'node-library', // monorepo library for app. Not a real library
           'alp-node',
+          'expo',
           'other',
         ],
       },
@@ -151,7 +152,9 @@ export default class PobAppGenerator extends Generator {
 
     this.composeWith('pob:common:typescript', {
       enable: babel,
-      // nextjs now supports src rootDir: this.appConfig.type === 'next.js' ? '.' : 'src',
+      // nextjs now supports src
+      rootDir: this.appConfig.type === 'expo' ? '.' : 'src',
+      srcDir: 'src',
       builddefs: false,
       dom: browser,
       jsx,
@@ -165,11 +168,14 @@ export default class PobAppGenerator extends Generator {
           this.appConfig.type === 'alp' ||
           this.appConfig.type === 'pobpack' ||
           this.appConfig.type === 'alp-node' ||
-          this.appConfig.type === 'next.js'
+          this.appConfig.type === 'next.js' ||
+          this.appConfig.type === 'expo'
         ) {
           return './src';
         }
-        if (this.appConfig.type === 'remix') return '.';
+        if (this.appConfig.type === 'remix') {
+          return '.';
+        }
         return '';
       })(),
     });
@@ -185,6 +191,7 @@ export default class PobAppGenerator extends Generator {
         enableReleasePlease,
         testing: this.appConfig.testing,
         typescript: babel,
+        build: babel && this.appConfig.type !== 'expo',
         documentation: false,
         codecov: this.appConfig.codecov,
         ci: this.appConfig.ci,
@@ -206,7 +213,7 @@ export default class PobAppGenerator extends Generator {
         packageManager: this.options.packageManager,
         yarnNodeLinker: this.options.yarnNodeLinker,
         ignorePaths: ignorePaths.join('\n'),
-        buildDirectory: 'build',
+        buildDirectory: this.appConfig.type === 'expo' ? '.expo' : 'build',
       });
 
       this.composeWith('pob:common:release', {
