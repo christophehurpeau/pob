@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.9.0](https://github.com/christophehurpeau/pob/compare/pob@11.8.1...pob@11.9.0) (2023-04-03)
+
+
+### Features
+
+* add expo app ([5b48a8e](https://github.com/christophehurpeau/pob/commit/5b48a8e03b14a414d2e758dbe348be67afc15710))
+* **deps:** update dependency eslint to v8.37.0 ([#1589](https://github.com/christophehurpeau/pob/issues/1589)) ([e9be11e](https://github.com/christophehurpeau/pob/commit/e9be11eefc8f15e591327f7bf12397f30a4f6a4e))
+* **pob:** add supportedArchitectures in .yarnrc.yml ([21c48f5](https://github.com/christophehurpeau/pob/commit/21c48f50ae3867d9ce69e190b1f6a4437a05970a))
+* update tsconfig moduleResolution to bundler with ts 5 ([9f08112](https://github.com/christophehurpeau/pob/commit/9f08112a50c68fc38d119a5ac44cae94f264227f))
+
+
+### Bug Fixes
+
+* **deps:** update @pob/eslint-config to v50.0.4 ([#1576](https://github.com/christophehurpeau/pob/issues/1576)) ([570f4fb](https://github.com/christophehurpeau/pob/commit/570f4fb25410db55d11b29453eecef23950d19ef))
+* **deps:** update dependency prettier to v2.8.5 ([#1578](https://github.com/christophehurpeau/pob/issues/1578)) ([07d8197](https://github.com/christophehurpeau/pob/commit/07d81974a850e43792811622845182d8b36ec4ce))
+* **deps:** update dependency prettier to v2.8.6 ([#1580](https://github.com/christophehurpeau/pob/issues/1580)) ([d351ea0](https://github.com/christophehurpeau/pob/commit/d351ea01238a4899eb69cb4c54274ace45249aed))
+* **deps:** update dependency prettier to v2.8.7 ([#1585](https://github.com/christophehurpeau/pob/issues/1585)) ([742de64](https://github.com/christophehurpeau/pob/commit/742de64a8ccaeb94cea5f2edf9c6003158844934))
+* disable baseUrl for expo for now ([fbbe531](https://github.com/christophehurpeau/pob/commit/fbbe531ee6d2d51c4f4cf43a4142122e02dca7ff))
+* prevent removing eslint-config dev deps ([dec1360](https://github.com/christophehurpeau/pob/commit/dec1360e4814a216b0db50e1bcbe7dbd4c677c26))
+
+
+
 ## [11.8.1](https://github.com/christophehurpeau/pob/compare/pob@11.8.0...pob@11.8.1) (2023-03-19)
 
 

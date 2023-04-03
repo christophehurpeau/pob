@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.15.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.14.4...@pob/renovate-config@5.15.0) (2023-04-03)
+
+
+### Features
+
+* **renovate-config:** disable lockfile maintenance ([a15a19a](https://github.com/christophehurpeau/pob/commit/a15a19ade4ec5f037401b563a2b9ba202016b227))
+
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v2.8.5 ([#1578](https://github.com/christophehurpeau/pob/issues/1578)) ([07d8197](https://github.com/christophehurpeau/pob/commit/07d81974a850e43792811622845182d8b36ec4ce))
+* **deps:** update dependency prettier to v2.8.6 ([#1580](https://github.com/christophehurpeau/pob/issues/1580)) ([d351ea0](https://github.com/christophehurpeau/pob/commit/d351ea01238a4899eb69cb4c54274ace45249aed))
+* **deps:** update dependency prettier to v2.8.7 ([#1585](https://github.com/christophehurpeau/pob/issues/1585)) ([742de64](https://github.com/christophehurpeau/pob/commit/742de64a8ccaeb94cea5f2edf9c6003158844934))
+
+
+
 ## [5.14.4](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.14.3...@pob/renovate-config@5.14.4) (2023-03-19)
 
 **Note:** Version bump only for package @pob/renovate-config

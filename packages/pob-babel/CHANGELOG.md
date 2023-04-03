@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.7.0](https://github.com/christophehurpeau/pob/compare/pob-babel@35.6.2...pob-babel@35.7.0) (2023-04-03)
+
+
+### Features
+
+* **deps:** update dependency rollup to v3.20.0 ([#1579](https://github.com/christophehurpeau/pob/issues/1579)) ([31aad3d](https://github.com/christophehurpeau/pob/commit/31aad3dafe6f6d932ce2d47aac9565c09efbd3c6))
+* **deps:** update dependency rollup to v3.20.1 ([#1583](https://github.com/christophehurpeau/pob/issues/1583)) ([d6907a6](https://github.com/christophehurpeau/pob/commit/d6907a698da690447bed0a3768a171a9f3ba2d93))
+* **deps:** update dependency rollup to v3.20.2 ([#1584](https://github.com/christophehurpeau/pob/issues/1584)) ([eaccb89](https://github.com/christophehurpeau/pob/commit/eaccb89b6c965704ddc3117a261a44c8d7e8d8be))
+
+
+
 ## [35.6.2](https://github.com/christophehurpeau/pob/compare/pob-babel@35.6.1...pob-babel@35.6.2) (2023-03-19)
 
 **Note:** Version bump only for package pob-babel

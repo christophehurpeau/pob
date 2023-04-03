@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.7.0](https://github.com/christophehurpeau/pob/compare/@pob/root@7.6.1...@pob/root@7.7.0) (2023-04-03)
+
+
+### Features
+
+* **deps:** update dependency @commitlint/cli to v17.5.0 ([#1581](https://github.com/christophehurpeau/pob/issues/1581)) ([02aa584](https://github.com/christophehurpeau/pob/commit/02aa584f684ff955572dca32fb1e5f5ec3227e3d))
+
+
+### Bug Fixes
+
+* **@pob/root:** prettier config for lerna.json ([62b1b74](https://github.com/christophehurpeau/pob/commit/62b1b74bd80b04f1c2c964c69228903db8cda298))
+* **deps:** update dependency @commitlint/cli to v17.5.1 ([#1588](https://github.com/christophehurpeau/pob/issues/1588)) ([6142fd7](https://github.com/christophehurpeau/pob/commit/6142fd7c0362733580921b6502c576538b8d851a))
+* **deps:** update dependency prettier to v2.8.5 ([#1578](https://github.com/christophehurpeau/pob/issues/1578)) ([07d8197](https://github.com/christophehurpeau/pob/commit/07d81974a850e43792811622845182d8b36ec4ce))
+* **deps:** update dependency prettier to v2.8.6 ([#1580](https://github.com/christophehurpeau/pob/issues/1580)) ([d351ea0](https://github.com/christophehurpeau/pob/commit/d351ea01238a4899eb69cb4c54274ace45249aed))
+* **deps:** update dependency prettier to v2.8.7 ([#1585](https://github.com/christophehurpeau/pob/issues/1585)) ([742de64](https://github.com/christophehurpeau/pob/commit/742de64a8ccaeb94cea5f2edf9c6003158844934))
+
+
+
 ## [7.6.1](https://github.com/christophehurpeau/pob/compare/@pob/root@7.6.0...@pob/root@7.6.1) (2023-03-19)
 
 **Note:** Version bump only for package @pob/root

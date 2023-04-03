@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.12.5...example-typescript-lib@0.13.0) (2023-04-03)
+
+
+### Features
+
+* update tsconfig moduleResolution to bundler with ts 5 ([9f08112](https://github.com/christophehurpeau/pob/commit/9f08112a50c68fc38d119a5ac44cae94f264227f))
+
+
+
 ## [0.12.5](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.12.4...example-typescript-lib@0.12.5) (2023-03-19)
 
 

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.7.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@7.6.1...pob-dependencies@7.7.0) (2023-04-03)
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.37.0 ([#1589](https://github.com/christophehurpeau/pob/issues/1589)) ([e9be11e](https://github.com/christophehurpeau/pob/commit/e9be11eefc8f15e591327f7bf12397f30a4f6a4e))
+* **deps:** update dependency rollup to v3.20.0 ([#1579](https://github.com/christophehurpeau/pob/issues/1579)) ([31aad3d](https://github.com/christophehurpeau/pob/commit/31aad3dafe6f6d932ce2d47aac9565c09efbd3c6))
+* **deps:** update dependency rollup to v3.20.1 ([#1583](https://github.com/christophehurpeau/pob/issues/1583)) ([d6907a6](https://github.com/christophehurpeau/pob/commit/d6907a698da690447bed0a3768a171a9f3ba2d93))
+* **deps:** update dependency rollup to v3.20.2 ([#1584](https://github.com/christophehurpeau/pob/issues/1584)) ([eaccb89](https://github.com/christophehurpeau/pob/commit/eaccb89b6c965704ddc3117a261a44c8d7e8d8be))
+* **deps:** update dependency typedoc to v0.23.28 ([#1577](https://github.com/christophehurpeau/pob/issues/1577)) ([ef5c5a1](https://github.com/christophehurpeau/pob/commit/ef5c5a180248382cf053cdf0d9d29e20b1cade2c))
+
+
+### Bug Fixes
+
+* **deps:** update @pob/eslint-config to v50.0.4 ([#1576](https://github.com/christophehurpeau/pob/issues/1576)) ([570f4fb](https://github.com/christophehurpeau/pob/commit/570f4fb25410db55d11b29453eecef23950d19ef))
+* **deps:** update dependency prettier to v2.8.5 ([#1578](https://github.com/christophehurpeau/pob/issues/1578)) ([07d8197](https://github.com/christophehurpeau/pob/commit/07d81974a850e43792811622845182d8b36ec4ce))
+* **deps:** update dependency prettier to v2.8.6 ([#1580](https://github.com/christophehurpeau/pob/issues/1580)) ([d351ea0](https://github.com/christophehurpeau/pob/commit/d351ea01238a4899eb69cb4c54274ace45249aed))
+* **deps:** update dependency prettier to v2.8.7 ([#1585](https://github.com/christophehurpeau/pob/issues/1585)) ([742de64](https://github.com/christophehurpeau/pob/commit/742de64a8ccaeb94cea5f2edf9c6003158844934))
+
+
+
 ## [7.6.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@7.6.0...pob-dependencies@7.6.1) (2023-03-19)
 
 **Note:** Version bump only for package pob-dependencies
