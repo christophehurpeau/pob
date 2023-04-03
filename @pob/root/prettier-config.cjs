@@ -7,6 +7,13 @@ module.exports = {
   arrowParens: 'always',
 
   overrides: [
+    // use json-stringify for lerna.json as lerna will reformat it on new version
+    {
+      files: ['lerna.json'],
+      options: {
+        parser: 'json-stringify',
+      },
+    },
     {
       files: ['*.yml'],
       options: {
