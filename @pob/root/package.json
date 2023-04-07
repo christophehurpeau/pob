@@ -54,7 +54,7 @@
     "conventional-changelog-conventionalcommits": "^5.0.0",
     "husky": "~8.0.1",
     "json5": "^2.2.2",
-    "lint-staged": "13.2.0",
+    "lint-staged": "13.2.1",
     "pob-dependencies": "7.7.0",
     "prettier": "2.8.7",
     "repository-check-dirty": "5.1.1",
