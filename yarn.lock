@@ -1679,10 +1679,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/js@npm:8.37.0":
-  version: 8.37.0
-  resolution: "@eslint/js@npm:8.37.0"
-  checksum: 7a07fb085c94ce1538949012c292fd3a6cd734f149bc03af6157dfbd8a7477678899ef57b4a27e15b36470a997389ad79a0533d5880c71e67720ae1a7de7c62d
+"@eslint/js@npm:8.38.0":
+  version: 8.38.0
+  resolution: "@eslint/js@npm:8.38.0"
+  checksum: 1f28987aa8c9cd93e23384e16c7220863b39b5dc4b66e46d7cdbccce868040f455a98d24cd8b567a884f26545a0555b761f7328d4a00c051e7ef689cbea5fce1
   languageName: node
   linkType: hard
 
@@ -6270,14 +6270,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"eslint@npm:8.37.0":
-  version: 8.37.0
-  resolution: "eslint@npm:8.37.0"
+"eslint@npm:8.38.0":
+  version: 8.38.0
+  resolution: "eslint@npm:8.38.0"
   dependencies:
     "@eslint-community/eslint-utils": ^4.2.0
     "@eslint-community/regexpp": ^4.4.0
     "@eslint/eslintrc": ^2.0.2
-    "@eslint/js": 8.37.0
+    "@eslint/js": 8.38.0
     "@humanwhocodes/config-array": ^0.11.8
     "@humanwhocodes/module-importer": ^1.0.1
     "@nodelib/fs.walk": ^1.2.8
@@ -6316,7 +6316,7 @@ __metadata:
     text-table: ^0.2.0
   bin:
     eslint: bin/eslint.js
-  checksum: 80f3d5cdce2d671f4794e392d234a78d039c347673defb0596268bd481e8f30a53d93c01ff4f66a546c87d97ab4122c0e9cafe1371f87cb03cee6b7d5aa97595
+  checksum: 73b6d9b650d0434aa7c07d0a1802f099b086ee70a8d8ba7be730439a26572a5eb71def12125c82942be2ec8ee5be38a6f1b42a13e40d4b67f11a148ec9e263eb
   languageName: node
   linkType: hard
 
@@ -10554,7 +10554,7 @@ __metadata:
     "@pob/pretty-pkg": 5.1.2
     "@types/jest": 29.5.0
     alp-rollup-plugin-config: 2.0.0
-    eslint: 8.37.0
+    eslint: 8.38.0
     jest: 29.5.0
     jest-junit-reporter: 1.1.0
     pob-babel: 35.7.0
@@ -10577,7 +10577,7 @@ __metadata:
     "@pob/root": "workspace:*"
     "@types/jest": 29.5.0
     check-package-dependencies: 6.3.1
-    eslint: 8.37.0
+    eslint: 8.38.0
     jest: 29.5.0
     pob-babel: "workspace:*"
     prettier: 2.8.7
@@ -10599,7 +10599,7 @@ __metadata:
     "@pob/sort-eslint-config": 4.1.1
     "@pob/sort-object": 5.1.1
     "@pob/sort-pkg": 5.2.0
-    eslint: 8.37.0
+    eslint: 8.38.0
     findup-sync: ^5.0.0
     git-remote-url: ^1.0.1
     github-username: ^6.0.0
