@@ -52,7 +52,7 @@
     "prettier": "2.8.7",
     "repository-check-dirty": "5.1.1",
     "rollup": "3.20.2",
-    "semver": "7.3.8",
+    "semver": "7.4.0",
     "typedoc": "0.24.1",
     "typescript": "5.0.4"
   }
