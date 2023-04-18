@@ -170,9 +170,26 @@ export default class PobLibGenerator extends Generator {
               ? this.pobjson.documentation
               : true,
         },
+        {
+          type: 'checkbox',
+          name: 'runner',
+          message: 'Testing runner ?',
+          default: 'jest',
+          choices: [
+            {
+              name: 'Jest',
+              value: 'jest',
+            },
+            {
+              name: 'node:test',
+              value: 'node',
+            },
+          ],
+        },
       ]);
 
       this.pobjson.documentation = !!answers.documentation;
+      this.pobjson.runner = !!answers.runner;
     }
 
     // testing
@@ -248,6 +265,9 @@ export default class PobLibGenerator extends Generator {
       enable: this.pobjson.testing,
       enableReleasePlease,
       testing: this.pobjson.testing,
+      runner: this.pobjson.testing
+        ? this.pobjson.testing.runner || 'jest'
+        : undefined,
       build: withBabel,
       typescript: withBabel,
       documentation: !!this.pobjson.documentation,

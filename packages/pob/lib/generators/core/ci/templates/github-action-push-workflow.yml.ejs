@@ -54,7 +54,7 @@ jobs:
 <% if (codecov) { -%>
 
       - name: Generate Test Coverage
-        run: <%= packageManager %> run test --coverage --coverageReporters=json --coverageReporters=text
+        run: <%= packageManager %> run test:coverage
         if: startsWith(matrix.node-version, '18.')
         env:
           CI: true

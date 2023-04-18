@@ -90,7 +90,7 @@ jobs:
         if: matrix.node-version != 18
 
       - name: Generate Test Coverage
-        run: <%= packageManager %> run test --coverage --coverageReporters=json --coverageReporters=text
+        run: <%= packageManager %> run test:coverage
         if: matrix.node-version == 18
 
       - name: Send results to codecov
