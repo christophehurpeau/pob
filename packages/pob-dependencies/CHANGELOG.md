@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.8.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@7.7.0...pob-dependencies@7.8.0) (2023-04-18)
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.38.0 ([#1596](https://github.com/christophehurpeau/pob/issues/1596)) ([6e0c03b](https://github.com/christophehurpeau/pob/commit/6e0c03b39fe040e9af465fa1e29ec757af3a9311))
+* **deps:** update dependency rollup to v3.20.3 ([#1604](https://github.com/christophehurpeau/pob/issues/1604)) ([03a9cfe](https://github.com/christophehurpeau/pob/commit/03a9cfef145b73edb3344510f23fa112c3c01f84))
+* **deps:** update dependency rollup to v3.20.4 ([#1606](https://github.com/christophehurpeau/pob/issues/1606)) ([2ca28ef](https://github.com/christophehurpeau/pob/commit/2ca28ef431074816dbb22c7253885a9d3b9feee4))
+* **deps:** update dependency rollup to v3.20.5 ([#1611](https://github.com/christophehurpeau/pob/issues/1611)) ([74a1cac](https://github.com/christophehurpeau/pob/commit/74a1cac6bb7142f8bba0a4099d32fa2e2d8008fa))
+* **deps:** update dependency rollup to v3.20.6 ([#1612](https://github.com/christophehurpeau/pob/issues/1612)) ([a467558](https://github.com/christophehurpeau/pob/commit/a4675587d84c9e6fa88223118a3470509086fed3))
+* **deps:** update dependency semver to v7.4.0 ([#1599](https://github.com/christophehurpeau/pob/issues/1599)) ([d71ada7](https://github.com/christophehurpeau/pob/commit/d71ada7ca259ccf83b3226221fb6288e5cf42fcc))
+* **deps:** update dependency semver to v7.5.0 ([#1608](https://github.com/christophehurpeau/pob/issues/1608)) ([1dda98b](https://github.com/christophehurpeau/pob/commit/1dda98b556f670f1316fea18b31a9ce806dd114e))
+* **deps:** update dependency typedoc to v0.24.0 ([#1597](https://github.com/christophehurpeau/pob/issues/1597)) ([e389ca2](https://github.com/christophehurpeau/pob/commit/e389ca2359d9a9367e0b8bd91358d613dabf87d2))
+* **deps:** update dependency typedoc to v0.24.1 ([#1598](https://github.com/christophehurpeau/pob/issues/1598)) ([c299ba2](https://github.com/christophehurpeau/pob/commit/c299ba2d06a445cd611fbe96d661fd4299807f07))
+* **deps:** update dependency typedoc to v0.24.2 ([#1603](https://github.com/christophehurpeau/pob/issues/1603)) ([e070ee2](https://github.com/christophehurpeau/pob/commit/e070ee20671536ec97355ae728bf59f09fdee9e5))
+* **deps:** update dependency typedoc to v0.24.4 ([#1605](https://github.com/christophehurpeau/pob/issues/1605)) ([5f4accc](https://github.com/christophehurpeau/pob/commit/5f4accc4e26063fe42998cd513ea2f83391e33ac))
+
+
+
 ## [7.7.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@7.6.1...pob-dependencies@7.7.0) (2023-04-03)
 
 

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.8.0](https://github.com/christophehurpeau/pob/compare/@pob/root@7.7.0...@pob/root@7.8.0) (2023-04-18)
+
+
+### Features
+
+* **@pob/root:** support node runner for test ([21fbda3](https://github.com/christophehurpeau/pob/commit/21fbda3703db204f0aca9eeb5a68fea7e5f6b906))
+* **deps:** update dependency @commitlint/cli to v17.6.0 ([#1601](https://github.com/christophehurpeau/pob/issues/1601)) ([e574584](https://github.com/christophehurpeau/pob/commit/e57458451087a45072795f43a38241124ae6dbf4))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @commitlint/cli to v17.6.1 ([#1602](https://github.com/christophehurpeau/pob/issues/1602)) ([33aff72](https://github.com/christophehurpeau/pob/commit/33aff72e40cfe7a90d6589e3b7a2dc52c521ba6f))
+* **deps:** update dependency lint-staged to v13.2.1 ([#1594](https://github.com/christophehurpeau/pob/issues/1594)) ([b4a2fdb](https://github.com/christophehurpeau/pob/commit/b4a2fdb43c90dd8c5273ca1fb02d10fcdd2ea9d8))
+
+
+
 ## [7.7.0](https://github.com/christophehurpeau/pob/compare/@pob/root@7.6.1...@pob/root@7.7.0) (2023-04-03)
 
 

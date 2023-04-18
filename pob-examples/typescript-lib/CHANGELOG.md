@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.1](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.13.0...example-typescript-lib@0.13.1) (2023-04-18)
+
+**Note:** Version bump only for package example-typescript-lib
+
+
+
+
+
 ## [0.13.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.12.5...example-typescript-lib@0.13.0) (2023-04-03)
 
 

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.8.0](https://github.com/christophehurpeau/pob/compare/pob-babel@35.7.0...pob-babel@35.8.0) (2023-04-18)
+
+
+### Features
+
+* **deps:** update dependency rollup to v3.20.3 ([#1604](https://github.com/christophehurpeau/pob/issues/1604)) ([03a9cfe](https://github.com/christophehurpeau/pob/commit/03a9cfef145b73edb3344510f23fa112c3c01f84))
+* **deps:** update dependency rollup to v3.20.4 ([#1606](https://github.com/christophehurpeau/pob/issues/1606)) ([2ca28ef](https://github.com/christophehurpeau/pob/commit/2ca28ef431074816dbb22c7253885a9d3b9feee4))
+* **deps:** update dependency rollup to v3.20.5 ([#1611](https://github.com/christophehurpeau/pob/issues/1611)) ([74a1cac](https://github.com/christophehurpeau/pob/commit/74a1cac6bb7142f8bba0a4099d32fa2e2d8008fa))
+* **deps:** update dependency rollup to v3.20.6 ([#1612](https://github.com/christophehurpeau/pob/issues/1612)) ([a467558](https://github.com/christophehurpeau/pob/commit/a4675587d84c9e6fa88223118a3470509086fed3))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @rollup/plugin-node-resolve to v15.0.2 ([#1592](https://github.com/christophehurpeau/pob/issues/1592)) ([51f2231](https://github.com/christophehurpeau/pob/commit/51f2231af27d52cac3bf5714ab1e95230b967e51))
+
+
+
 ## [35.7.0](https://github.com/christophehurpeau/pob/compare/pob-babel@35.6.2...pob-babel@35.7.0) (2023-04-03)
 
 

@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.0](https://github.com/christophehurpeau/pob/compare/pob@11.9.0...pob@12.0.0) (2023-04-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* require node 18 for pob and monorepo
+
+### Features
+
+* **deps:** update dependency eslint to v8.38.0 ([#1596](https://github.com/christophehurpeau/pob/issues/1596)) ([6e0c03b](https://github.com/christophehurpeau/pob/commit/6e0c03b39fe040e9af465fa1e29ec757af3a9311))
+* **deps:** update dependency semver to v7.4.0 ([#1599](https://github.com/christophehurpeau/pob/issues/1599)) ([d71ada7](https://github.com/christophehurpeau/pob/commit/d71ada7ca259ccf83b3226221fb6288e5cf42fcc))
+* **deps:** update dependency semver to v7.5.0 ([#1608](https://github.com/christophehurpeau/pob/issues/1608)) ([1dda98b](https://github.com/christophehurpeau/pob/commit/1dda98b556f670f1316fea18b31a9ce806dd114e))
+* **pob:** add node runner as testing option ([c96f6d8](https://github.com/christophehurpeau/pob/commit/c96f6d888a3cc62a5cba50f069e1c51124acb0d9))
+* require node 18 for pob and monorepo ([5953695](https://github.com/christophehurpeau/pob/commit/5953695fc2a7a440bfaebc8abce8533b05a68f65))
+
+
+### Bug Fixes
+
+* fix rootIgnorePatterns for monorepo ([6731118](https://github.com/christophehurpeau/pob/commit/673111827a0c378febae87f7fefa9917cd8354c3))
+
+
+
 ## [11.9.0](https://github.com/christophehurpeau/pob/compare/pob@11.8.1...pob@11.9.0) (2023-04-03)
 
 

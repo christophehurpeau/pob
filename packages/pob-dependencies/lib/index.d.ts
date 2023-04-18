@@ -11,16 +11,16 @@ interface Dependencies {
   '@pob/pretty-pkg': '5.1.2';
   '@types/jest': '29.5.0';
   'alp-rollup-plugin-config': '2.0.0';
-  eslint: '8.37.0';
+  eslint: '8.38.0';
   jest: '29.5.0';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '35.6.2';
+  'pob-babel': '35.7.0';
   prettier: '2.8.7';
   'repository-check-dirty': '5.1.1';
-  rollup: '3.20.2';
-  semver: '7.3.8';
-  typedoc: '0.23.28';
-  typescript: '5.0.3';
+  rollup: '3.20.6';
+  semver: '7.5.0';
+  typedoc: '0.24.4';
+  typescript: '5.0.4';
 }
 
 declare const dependencies: Dependencies;
