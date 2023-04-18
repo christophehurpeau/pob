@@ -97,7 +97,11 @@ fi`;
 
   if (shouldRunTest()) {
     prePushHook.push(
-      `${pm.name} test --watchAll=false --changedSince=origin/main`,
+      `${pm.name} test${
+        pkg.devDependencies?.jest
+          ? ' --watchAll=false --changedSince=origin/main'
+          : ''
+      }`,
     );
   }
 
