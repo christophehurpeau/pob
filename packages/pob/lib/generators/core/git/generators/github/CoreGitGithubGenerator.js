@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 
-import fetch from 'node-fetch';
 import Generator from 'yeoman-generator';
 import { ciContexts } from '../../../ci/CoreCIGenerator.js';
 // const packageUtils = require('../../../../../utils/package');
