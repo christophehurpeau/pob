@@ -167,7 +167,8 @@ export default class CoreCIGenerator extends Generator {
     if (
       this.options.enable &&
       !this.options.isApp &&
-      (this.options.documentation || this.options.testing)
+      (this.options.documentation ||
+        (this.options.testing && this.options.testing.runner !== 'node'))
     ) {
       copyAndFormatTpl(
         this.fs,
