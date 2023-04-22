@@ -1,1 +1,0 @@
-{"version":3,"file":"index-node16.mjs","sources":["../src/index.ts"],"sourcesContent":["import { POB_TARGET } from 'pob-babel';\n\nexport default function simpleLib(): string {\n  return `hello world via ${POB_TARGET === 'node' ? 'node' : 'browser'}`;\n}\n"],"names":["simpleLib"],"mappings":"AAEe,SAASA,SAASA,GAAW;EAC1C,OAAQ,CAAA,gBAAA,EAA0C,MAAmB,CAAC,CAAA,CAAA;AACxE;;;;"}

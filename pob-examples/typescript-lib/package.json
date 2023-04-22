@@ -12,7 +12,7 @@
   "homepage": "https://github.com/christophehurpeau/pob",
   "type": "module",
   "engines": {
-    "node": ">=16.0.0"
+    "node": ">=18.0.0"
   },
   "browserslist": {
     "production": [
@@ -23,13 +23,13 @@
       "not ios_saf < 10"
     ]
   },
-  "main": "./dist/index-node16.mjs",
+  "main": "./dist/index-node18.mjs",
   "types": "./dist/definitions/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "node": {
-        "import": "./dist/index-node16.mjs"
+        "import": "./dist/index-node18.mjs"
       },
       "browser": {
         "browser:modern": {
@@ -54,7 +54,7 @@
     "babelEnvs": [
       {
         "target": "node",
-        "version": "16"
+        "version": "18"
       },
       {
         "target": "browser",

@@ -54,7 +54,7 @@ export default class CommonBabelGenerator extends Generator {
       let babelEnvs = pkg.pob.babelEnvs;
       if (
         !babelEnvs.some(
-          (env) => env.target === 'node' && String(env.version) === '14',
+          (env) => env.target === 'node' && String(env.version) === '18',
         ) &&
         babelEnvs.some(
           (env) =>
@@ -62,16 +62,18 @@ export default class CommonBabelGenerator extends Generator {
             (String(env.version) === '8' ||
               String(env.version) === '6' ||
               String(env.version) === '10' ||
-              String(env.version) === '12'),
+              String(env.version) === '12' ||
+              String(env.version) === '14' ||
+              String(env.version) === '16'),
         )
       ) {
         babelEnvs.unshift({
           target: 'node',
-          version: '16',
+          version: '18',
         });
       }
       babelEnvs = babelEnvs.filter(
-        (env) => env.target !== 'node' || env.version >= 14,
+        (env) => env.target !== 'node' || env.version >= 18,
       );
 
       pkg.pob.babelEnvs = babelEnvs;
@@ -97,7 +99,7 @@ export default class CommonBabelGenerator extends Generator {
         babelEnvs
           .filter((env) => env.target === 'node')
           .map((env) => {
-            if (env.version === '14') return '16';
+            if (env.version === '14' || env.version === '16') return '18';
             return env.version;
           }),
       ),
@@ -147,8 +149,8 @@ export default class CommonBabelGenerator extends Generator {
           default: nodeVersions,
           choices: [
             {
-              name: '16 (Maintenance LTS)',
-              value: '16',
+              name: '18 (Active LTS)',
+              value: '18',
             },
           ],
         },
@@ -201,7 +203,7 @@ export default class CommonBabelGenerator extends Generator {
         formats:
           babelConfig.formats && babelConfig.formats.includes('cjs')
             ? // eslint-disable-next-line unicorn/no-nested-ternary
-              version === '16'
+              version === '16' || version === '18'
               ? babelConfig.formats
               : undefined
             : undefined,
@@ -385,10 +387,11 @@ export default class CommonBabelGenerator extends Generator {
         case '10':
         case '12':
         case '14':
-          pkg.engines.node = '>=16.0.0';
-          break;
         case '16':
           pkg.engines.node = '>=16.0.0';
+          break;
+        case '18':
+          pkg.engines.node = '>=18.0.0';
           break;
         default:
           throw new Error(`Invalid min node version: ${minNodeVersion}`);
@@ -410,8 +413,8 @@ export default class CommonBabelGenerator extends Generator {
     } else {
       packageUtils.removeDependencies(pkg, ['@types/node']);
       packageUtils.removeDevDependencies(pkg, ['@types/node']);
-      // Supported LTS versions of node, that supports ESM modules.
-      pkg.engines.node = '>=16.0.0';
+      // Supports oldest current or active LTS version of node
+      pkg.engines.node = '>=18.0.0';
     }
 
     /* browserslist */

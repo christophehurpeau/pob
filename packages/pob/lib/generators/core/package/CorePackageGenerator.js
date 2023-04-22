@@ -40,12 +40,12 @@ export default class CorePackageGenerator extends Generator {
     if (
       !pkg.engines.node ||
       !(
-        pkg.engines.node.startsWith('>=14.') ||
+        pkg.engines.node.startsWith('>=18.') ||
         pkg.engines.node.startsWith('>=16.')
       )
     ) {
       // this might be overridden by babel generator
-      pkg.engines.node = '>=14.13.1';
+      pkg.engines.node = '>=18.0.0';
     }
 
     if (!this.options.updateOnly) {
