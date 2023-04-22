@@ -70,8 +70,8 @@
     <% if (monorepoPackageSrcPaths && monorepoPackageSrcPaths.length !== 0) { -%>
     "paths": {
       <% monorepoPackageSrcPaths.forEach(([packageName, packageLocation], index) => { %>
-      "<%= packageName %>": ["../<%= packageLocation %>"],
-      "<%= packageName %>/*": ["../<%= packageLocation %>/*"]<%= index === monorepoPackageSrcPaths.length -1 ? '' : ',' -%>
+      "<%= packageName %>": ["<%= packageLocation %>"],
+      "<%= packageName %>/*": ["<%= packageLocation %>/*"]<%= index === monorepoPackageSrcPaths.length -1 ? '' : ',' -%>
       <% }) %>
     }<% } %>
   }<% if (monorepoPackageReferences && monorepoPackageReferences.length) { -%>,
