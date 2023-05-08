@@ -10,7 +10,7 @@
   "engines": {
     "node": ">=18.0.0"
   },
-  "packageManager": "yarn@3.5.0",
+  "packageManager": "yarn@3.5.1",
   "workspaces": [
     "packages/*",
     "@pob/*",
@@ -27,6 +27,8 @@
     "lint:prettier:fix": "pob-root-prettier --write .",
     "postinstall": "yarn node @pob/root/bin/pob-root-postinstall.cjs",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
+    "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage --coverageReporters=json --coverageReporters=text",
+    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch",
     "tsc": "tsc -b",
     "version": "YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn && git add yarn.lock",
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
@@ -40,12 +42,12 @@
   "jest": {
     "cacheDirectory": "./node_modules/.cache/jest",
     "testEnvironment": "node",
-    "extensionsToTreatAsEsm": [
-      ".ts"
-    ],
     "testMatch": [
       "<rootDir>/@(packages|@pob|pob-examples)/*/@(src|lib)/**/__tests__/**/*.(ts|js|cjs|mjs)",
       "<rootDir>/@(packages|@pob|pob-examples)/*/@(src|lib)/**/*.test.(ts|js|cjs|mjs)"
+    ],
+    "extensionsToTreatAsEsm": [
+      ".ts"
     ]
   },
   "resolutions": {
