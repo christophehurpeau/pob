@@ -105,8 +105,8 @@ export default class CoreYarnGenerator extends Generator {
       // https://yarnpkg.dev/releases/3-1/
       // make sure all supported architectures are in yarn cache
       config.supportedArchitectures = {
-        os: ['linux', 'darwin'],
         cpu: ['x64', 'arm64'],
+        os: ['linux', 'darwin'],
       };
       writeAndFormat(this.fs, '.yarnrc.yml', yml.dump(config, {}));
     } else {
