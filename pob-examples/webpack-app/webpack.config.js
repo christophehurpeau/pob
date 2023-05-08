@@ -7,7 +7,7 @@ export default [
       filename: 'node.js',
       path: fileURLToPath(new URL('./dist/', import.meta.url)),
     },
-    target: 'node16',
+    target: 'node18',
     mode: 'production',
   },
   {
