@@ -8,11 +8,11 @@ describe('index', () => {
 });
 
 describe('dist', () => {
-  it('should build node16 mjs', () => {
+  it('should build node18 mjs', () => {
     expect(
       fs.readFileSync(
         // @ts-expect-error -- browser api conflict
-        new URL('../dist/index-node16.mjs', import.meta.url),
+        new URL('../dist/index-node18.mjs', import.meta.url),
         'utf8',
       ),
     ).toMatchInlineSnapshot(`
@@ -21,7 +21,7 @@ describe('dist', () => {
       }
 
       export { simpleLib as default };
-      //# sourceMappingURL=index-node16.mjs.map
+      //# sourceMappingURL=index-node18.mjs.map
       "
     `);
   });
