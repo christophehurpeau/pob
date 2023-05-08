@@ -48,7 +48,7 @@
   "prettier": "@pob/root/prettier-config",
   "pob": {},
   "dependencies": {
-    "@commitlint/cli": "17.6.1",
+    "@commitlint/cli": "17.6.3",
     "@pob/pretty-eslint-config": "4.1.1",
     "@pob/pretty-pkg": "5.1.2",
     "conventional-changelog-conventionalcommits": "^5.0.0",
