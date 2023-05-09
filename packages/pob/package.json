@@ -60,7 +60,7 @@
     "pob-dependencies": "7.8.0",
     "prettier": "2.8.8",
     "semver": "7.5.0",
-    "yeoman-environment": "3.16.1",
+    "yeoman-environment": "3.16.2",
     "yeoman-generator": "5.8.0"
   },
   "devDependencies": {
