@@ -10864,13 +10864,13 @@ __metadata:
     "@rollup/plugin-node-resolve": 15.0.2
     "@rollup/plugin-run": 3.0.1
     babel-preset-pob-env: 9.1.6
-    rollup: 3.22.0
+    rollup: 3.22.1
     rollup-config-external-dependencies: ^2.0.0
     semver: ^7.3.7
     typescript: 5.0.4
   peerDependencies:
     "@babel/core": ^7.16.5
-    rollup: 3.22.0
+    rollup: 3.22.1
     typescript: ^4.0.3 || ^5.0.0
   peerDependenciesMeta:
     rollup:
@@ -10903,7 +10903,7 @@ __metadata:
     pob-babel: 35.8.0
     prettier: 2.8.8
     repository-check-dirty: 5.1.1
-    rollup: 3.22.0
+    rollup: 3.22.1
     semver: 7.5.1
     typedoc: 0.24.7
     typescript: 5.0.4
@@ -11648,9 +11648,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"rollup@npm:3.22.0":
-  version: 3.22.0
-  resolution: "rollup@npm:3.22.0"
+"rollup@npm:3.22.1":
+  version: 3.22.1
+  resolution: "rollup@npm:3.22.1"
   dependencies:
     fsevents: ~2.3.2
   dependenciesMeta:
@@ -11658,7 +11658,7 @@ resolve@^2.0.0-next.3:
       optional: true
   bin:
     rollup: dist/bin/rollup
-  checksum: 6da2bfe1eb16714ccd4bf56ca92430309dc71b4492a3c38502f68f645433dcc789fb79f3761fc2269aa0cf20ece7821c4d7c95b860b7343c2ed52ed1c36c9a90
+  checksum: 6453a9bbdfacd886d3a9c66db295b59bc2008acd256b116cbf137964a080c8115ffadbf0908852fb6c43294974370df1e3b0635c5daa3e9f9537ffad9f3d9e92
   languageName: node
   linkType: hard
 
