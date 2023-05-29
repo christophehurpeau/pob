@@ -11076,7 +11076,7 @@ __metadata:
     pob-dependencies: 7.8.0
     prettier: 2.8.8
     semver: 7.5.1
-    yeoman-environment: 3.19.1
+    yeoman-environment: 3.19.2
     yeoman-generator: 5.9.0
   bin:
     pob: ./lib/pob.js
@@ -13637,9 +13637,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"yeoman-environment@npm:3.19.1":
-  version: 3.19.1
-  resolution: "yeoman-environment@npm:3.19.1"
+"yeoman-environment@npm:3.19.2":
+  version: 3.19.2
+  resolution: "yeoman-environment@npm:3.19.2"
   dependencies:
     "@npmcli/arborist": ^4.0.4
     are-we-there-yet: ^2.0.0
@@ -13680,7 +13680,7 @@ resolve@^2.0.0-next.3:
     untildify: ^4.0.0
   bin:
     yoe: cli/index.js
-  checksum: 064f84d05408c1ed291fab6a154c8c202b5786ac0ed0190e54e4b7d87d65663a79181aea1f97f3782030e784fb481ddc874218d04143d535e7308960f467ccb6
+  checksum: 506162224c53d668c3aa9652e7fa6bf64bdccf5e613f82ea9e441c3d99d25d8df777a426be60d0e5c2cc94cce96e70eeb9ce44d7533ee80c182afd14364f8fdc
   languageName: node
   linkType: hard
 
