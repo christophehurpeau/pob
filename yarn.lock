@@ -1185,19 +1185,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/plugin-transform-runtime@npm:7.22.2":
-  version: 7.22.2
-  resolution: "@babel/plugin-transform-runtime@npm:7.22.2"
+"@babel/plugin-transform-runtime@npm:7.22.4":
+  version: 7.22.4
+  resolution: "@babel/plugin-transform-runtime@npm:7.22.4"
   dependencies:
     "@babel/helper-module-imports": ^7.21.4
     "@babel/helper-plugin-utils": ^7.21.5
-    babel-plugin-polyfill-corejs2: ^0.4.2
+    babel-plugin-polyfill-corejs2: ^0.4.3
     babel-plugin-polyfill-corejs3: ^0.8.1
     babel-plugin-polyfill-regenerator: ^0.5.0
     semver: ^6.3.0
   peerDependencies:
     "@babel/core": ^7.0.0-0
-  checksum: 1fedc30de67a921edca22505bfb31807b47634e413bb5ee42c194b6c70c32dceab9e4e4d0eaabadda7b45d975bf46cdfc8111c43c090ec8a19b1f722308ba9b1
+  checksum: e51400ffeccfc8875c6d136510aa6145e44d825ee7fb52da462401388b4303a6a274ca94fad4aa46b06870c6fdc6141dafa51f681423160d924a21212daa8792
   languageName: node
   linkType: hard
 
@@ -4718,7 +4718,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-plugin-polyfill-corejs2@npm:^0.4.2, babel-plugin-polyfill-corejs2@npm:^0.4.3":
+"babel-plugin-polyfill-corejs2@npm:^0.4.3":
   version: 0.4.3
   resolution: "babel-plugin-polyfill-corejs2@npm:0.4.3"
   dependencies:
@@ -10976,7 +10976,7 @@ __metadata:
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
     "@babel/core": ^7.17.10
-    "@babel/plugin-transform-runtime": 7.22.2
+    "@babel/plugin-transform-runtime": 7.22.4
     "@rollup/plugin-babel": 6.0.3
     "@rollup/plugin-json": 6.0.0
     "@rollup/plugin-node-resolve": 15.0.2
