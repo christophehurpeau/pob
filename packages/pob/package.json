@@ -59,7 +59,7 @@
     "parse-author": "2.0.0",
     "pob-dependencies": "7.8.0",
     "prettier": "2.8.8",
-    "semver": "7.5.2",
+    "semver": "7.5.3",
     "yeoman-environment": "3.19.3",
     "yeoman-generator": "5.9.0"
   },
