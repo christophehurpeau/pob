@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.1](https://github.com/christophehurpeau/pob/compare/pob@13.0.0...pob@13.0.1) (2023-06-26)
+
+
+### Bug Fixes
+
+* **pob:** fix json formatter for lerna.json ([11f2df0](https://github.com/christophehurpeau/pob/commit/11f2df062abdc4336e7bed588573ba6edd22034c))
+
+
+
 ## [13.0.0](https://github.com/christophehurpeau/pob/compare/pob@12.0.0...pob@13.0.0) (2023-06-26)
 
 
