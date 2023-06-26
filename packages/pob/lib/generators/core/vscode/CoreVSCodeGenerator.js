@@ -1,9 +1,6 @@
 import Generator from 'yeoman-generator';
 import { readJSON5 } from '../../../utils/json5.js';
-import {
-  copyAndFormatTpl,
-  writeAndFormatJson,
-} from '../../../utils/writeAndFormat.js';
+import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
 
 export default class CoreVSCodeGenerator extends Generator {
   constructor(args, opts) {
@@ -106,69 +103,14 @@ export default class CoreVSCodeGenerator extends Generator {
       );
 
       if (this.options.monorepo) {
-        const packageNames = JSON.parse(this.options.packageNames);
-        const packageLocations = JSON.parse(this.options.packageLocations);
-        const folders = packageLocations.map((location, i) => ({
-          name: packageNames[i],
-          path: `../${location}`,
-        }));
-        folders.sort((a, b) => a.name.localeCompare(b.name, 'en'));
-
-        packageLocations.forEach((location) => {
-          writeAndFormatJson(
-            this.fs,
-            this.destinationPath(`${location}/.vscode/settings.json`),
-            {
-              'eslint.workingDirectories': ['../../'],
-            },
-          );
-        });
-
-        const extensions = readJSON5(
-          this.fs,
-          this.destinationPath('.vscode/extensions.json'),
-          {},
-        );
-        const settings = readJSON5(
-          this.fs,
-          this.destinationPath('.vscode/settings.json'),
-          {},
-        );
-
         const projectName = pkg.name.replace('/', '-');
-        writeAndFormatJson(
-          this.fs,
+        // legacy project code-workspace
+        this.fs.delete(
           this.destinationPath(`.vscode/${projectName}.code-workspace`),
-          {
-            extensions,
-            settings: {
-              ...settings,
-              ...(settings['typescript.tsdk']
-                ? { 'typescript.tsdk': '✨ root/node_modules/typescript/lib' }
-                : {}),
-              ...(this.options.testing
-                ? {
-                    'jest.jestCommandLine':
-                      'NODE_OPTIONS=--experimental-vm-modules node_modules/.bin/jest',
-                    // disable all folders to enable only root.
-                    'jest.disabledWorkspaceFolders': folders.map(
-                      (folder) => folder.name,
-                    ),
-                  }
-                : {}),
-            },
-            folders: [
-              {
-                name: '✨ root',
-                path: '..',
-              },
-              ...folders,
-            ],
-          },
         );
       }
     } else {
-      // this.fs.delete('.vscode');
+      this.fs.delete('.vscode');
     }
   }
 }
