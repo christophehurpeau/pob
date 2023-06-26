@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.2](https://github.com/christophehurpeau/pob/compare/pob@13.0.1...pob@13.0.2) (2023-06-26)
+
+
+### Bug Fixes
+
+* fix yarn call in ci lerna publish ([55d5dd2](https://github.com/christophehurpeau/pob/commit/55d5dd29bcf9d96d732d60f08e1ea1d780acd946))
+
+
+
 ## [13.0.1](https://github.com/christophehurpeau/pob/compare/pob@13.0.0...pob@13.0.1) (2023-06-26)
 
 
