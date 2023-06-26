@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@7.8.0...pob-dependencies@8.0.0) (2023-06-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* requires node 18
+
+### Features
+
+* **deps:** update babel monorepo to v7.22.3 ([#1654](https://github.com/christophehurpeau/pob/issues/1654)) ([d525c1d](https://github.com/christophehurpeau/pob/commit/d525c1d2c53993a0f9d94177609a72dd14a0f4cd))
+* **deps:** update dependency @babel/preset-env to v7.22.4 ([#1655](https://github.com/christophehurpeau/pob/issues/1655)) ([f3f7505](https://github.com/christophehurpeau/pob/commit/f3f750552c26a87a2e7e0bd9b4f6929753b14a2b))
+* **deps:** update dependency @types/jest to v29.5.1 ([#1613](https://github.com/christophehurpeau/pob/issues/1613)) ([c1975c2](https://github.com/christophehurpeau/pob/commit/c1975c2567dec6b40ef4325855d5b683d4a0ba34))
+* **deps:** update dependency @types/jest to v29.5.2 ([#1663](https://github.com/christophehurpeau/pob/issues/1663)) ([756411f](https://github.com/christophehurpeau/pob/commit/756411f4314251d9d2dacbf3178f30a8c756945a))
+* **deps:** update dependency eslint to v8.39.0 ([#1617](https://github.com/christophehurpeau/pob/issues/1617)) ([b42979d](https://github.com/christophehurpeau/pob/commit/b42979d8586e55afee60b1280059916293879711))
+* **deps:** update dependency eslint to v8.40.0 ([#1627](https://github.com/christophehurpeau/pob/issues/1627)) ([6d5dfe6](https://github.com/christophehurpeau/pob/commit/6d5dfe6a3576c53b9da773605e35729dcd8e5610))
+* **deps:** update dependency eslint to v8.41.0 ([#1646](https://github.com/christophehurpeau/pob/issues/1646)) ([11c8395](https://github.com/christophehurpeau/pob/commit/11c8395a08bd281c8960b6ba62999f67b21334aa))
+* **deps:** update dependency rollup to v3.20.7 ([#1615](https://github.com/christophehurpeau/pob/issues/1615)) ([088662f](https://github.com/christophehurpeau/pob/commit/088662fe33774fb01ad23be73075ba8e6e21680a))
+* **deps:** update dependency rollup to v3.21.5 ([#1620](https://github.com/christophehurpeau/pob/issues/1620)) ([c05bafe](https://github.com/christophehurpeau/pob/commit/c05bafeadb20d81993afa4f6c077b6c42485164f))
+* **deps:** update dependency rollup to v3.21.6 ([#1633](https://github.com/christophehurpeau/pob/issues/1633)) ([838ebf1](https://github.com/christophehurpeau/pob/commit/838ebf109d23dfac4d360a4cc01722c6325933fa))
+* **deps:** update dependency rollup to v3.21.7 ([#1637](https://github.com/christophehurpeau/pob/issues/1637)) ([540a9ab](https://github.com/christophehurpeau/pob/commit/540a9ab81b169bd5c9bad7a6cd4d3de322c9d369))
+* **deps:** update dependency rollup to v3.21.8 ([#1639](https://github.com/christophehurpeau/pob/issues/1639)) ([1cf0415](https://github.com/christophehurpeau/pob/commit/1cf0415f2a72cf74540c912ac2eb5de090c35889))
+* **deps:** update dependency rollup to v3.22.0 ([#1640](https://github.com/christophehurpeau/pob/issues/1640)) ([21dc549](https://github.com/christophehurpeau/pob/commit/21dc549991e5fa0e2532c6b86c5d36bc4d1f31e5))
+* **deps:** update dependency rollup to v3.22.1 ([#1647](https://github.com/christophehurpeau/pob/issues/1647)) ([0a9b1dd](https://github.com/christophehurpeau/pob/commit/0a9b1ddca3a5de6fb7f97b353da1cdd191041f0b))
+* **deps:** update dependency rollup to v3.23.0 ([#1648](https://github.com/christophehurpeau/pob/issues/1648)) ([1bb3765](https://github.com/christophehurpeau/pob/commit/1bb3765b5b7ec26aa6de0135d55339e575aca86e))
+* **deps:** update dependency rollup to v3.23.1 ([#1670](https://github.com/christophehurpeau/pob/issues/1670)) ([a73032d](https://github.com/christophehurpeau/pob/commit/a73032d72f1e1a916a802ec805b6f4cab2fee86c))
+* **deps:** update dependency rollup to v3.24.0 ([#1674](https://github.com/christophehurpeau/pob/issues/1674)) ([ce874e9](https://github.com/christophehurpeau/pob/commit/ce874e9b96a8dcab867d6f78ed150bf3956ccc91))
+* **deps:** update dependency rollup to v3.25.1 ([#1678](https://github.com/christophehurpeau/pob/issues/1678)) ([3d20b39](https://github.com/christophehurpeau/pob/commit/3d20b39e52c03a0cc351be7f383e55ba2074572d))
+* **deps:** update dependency rollup to v3.25.2 ([#1684](https://github.com/christophehurpeau/pob/issues/1684)) ([2ec2705](https://github.com/christophehurpeau/pob/commit/2ec270522a46881a0b054cd9575ce9c41c441f1e))
+* **deps:** update dependency rollup to v3.25.3 ([#1685](https://github.com/christophehurpeau/pob/issues/1685)) ([91fa4a4](https://github.com/christophehurpeau/pob/commit/91fa4a49fd047457aad1eee9b91ad3be39b31e14))
+* **deps:** update dependency typedoc to v0.24.7 ([#1618](https://github.com/christophehurpeau/pob/issues/1618)) ([67dd1c3](https://github.com/christophehurpeau/pob/commit/67dd1c312ab91c95ab8e4cca283a022c3173fe83))
+* **deps:** update dependency typedoc to v0.24.8 ([#1671](https://github.com/christophehurpeau/pob/issues/1671)) ([434b850](https://github.com/christophehurpeau/pob/commit/434b8503037a42ff376b130b306fccef4a33851b))
+* requires node 18 ([bd35158](https://github.com/christophehurpeau/pob/commit/bd351582c2c3977d8d22c15b831e277acc97a00e))
+
+
+### Bug Fixes
+
+* **deps:** update @pob/eslint-config to v50.0.5 ([#1629](https://github.com/christophehurpeau/pob/issues/1629)) ([c7065bc](https://github.com/christophehurpeau/pob/commit/c7065bc1757c12fadb848ddd8333c0684b8880e4))
+* **deps:** update dependency prettier to v2.8.8 ([#1619](https://github.com/christophehurpeau/pob/issues/1619)) ([40f1313](https://github.com/christophehurpeau/pob/commit/40f13138243c0b53c52293314111458e6c8d2d6a))
+* **deps:** update dependency semver to v7.5.1 ([#1636](https://github.com/christophehurpeau/pob/issues/1636)) ([9556202](https://github.com/christophehurpeau/pob/commit/95562027a2cdb674b7081c614235e4a07bbc1a22))
+* **deps:** update dependency semver to v7.5.2 ([#1680](https://github.com/christophehurpeau/pob/issues/1680)) ([312c2b2](https://github.com/christophehurpeau/pob/commit/312c2b2c2e2149dbd6a99203fdbe579ffddff98e))
+* **deps:** update dependency semver to v7.5.3 ([#1682](https://github.com/christophehurpeau/pob/issues/1682)) ([8e8b2ef](https://github.com/christophehurpeau/pob/commit/8e8b2efa7ad39077299c5bcdb2c55941038e989a))
+
+
+
 ## [7.8.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@7.7.0...pob-dependencies@7.8.0) (2023-04-18)
 
 

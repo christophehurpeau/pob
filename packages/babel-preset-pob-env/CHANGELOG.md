@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@9.1.6...babel-preset-pob-env@10.0.0) (2023-06-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* requires node 18
+
+### Features
+
+* requires node 18 ([bd35158](https://github.com/christophehurpeau/pob/commit/bd351582c2c3977d8d22c15b831e277acc97a00e))
+
+
+
 ## [9.1.6](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@9.1.5...babel-preset-pob-env@9.1.6) (2023-04-03)
 
 **Note:** Version bump only for package babel-preset-pob-env

@@ -3,6 +3,48 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.0](https://github.com/christophehurpeau/pob/compare/pob@12.0.0...pob@13.0.0) (2023-06-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* requires node 18
+
+### Features
+
+* **deps:** update dependency eslint to v8.39.0 ([#1617](https://github.com/christophehurpeau/pob/issues/1617)) ([b42979d](https://github.com/christophehurpeau/pob/commit/b42979d8586e55afee60b1280059916293879711))
+* **deps:** update dependency eslint to v8.40.0 ([#1627](https://github.com/christophehurpeau/pob/issues/1627)) ([6d5dfe6](https://github.com/christophehurpeau/pob/commit/6d5dfe6a3576c53b9da773605e35729dcd8e5610))
+* **deps:** update dependency eslint to v8.41.0 ([#1646](https://github.com/christophehurpeau/pob/issues/1646)) ([11c8395](https://github.com/christophehurpeau/pob/commit/11c8395a08bd281c8960b6ba62999f67b21334aa))
+* **deps:** update dependency yeoman-environment to v3.16.1 ([#1630](https://github.com/christophehurpeau/pob/issues/1630)) ([5ca9ad5](https://github.com/christophehurpeau/pob/commit/5ca9ad515ead63c31c10dccac40c5942974f5760))
+* **deps:** update dependency yeoman-environment to v3.17.0 ([#1638](https://github.com/christophehurpeau/pob/issues/1638)) ([3d1a154](https://github.com/christophehurpeau/pob/commit/3d1a1546d088b4020873eca0ae566ae3ac41a45d))
+* **deps:** update dependency yeoman-environment to v3.18.1 ([#1643](https://github.com/christophehurpeau/pob/issues/1643)) ([e1144ed](https://github.com/christophehurpeau/pob/commit/e1144ed11f476729f90634b7e6c7530af1f959f4))
+* **deps:** update dependency yeoman-environment to v3.19.0 ([#1656](https://github.com/christophehurpeau/pob/issues/1656)) ([82b613f](https://github.com/christophehurpeau/pob/commit/82b613f2ada3ecef8c47b247d32b677a88b596e9))
+* remove legacy code-workspace ([c5bcdc7](https://github.com/christophehurpeau/pob/commit/c5bcdc7735dfda0b369a3045ecc618f8ea11794d))
+* requires node 18 ([bd35158](https://github.com/christophehurpeau/pob/commit/bd351582c2c3977d8d22c15b831e277acc97a00e))
+* update ci to node 18 ([1e4cf82](https://github.com/christophehurpeau/pob/commit/1e4cf828521d24c7142544de3dc3b1dbd62dc9a8))
+
+
+### Bug Fixes
+
+* **deps:** update @pob/eslint-config to v50.0.5 ([#1629](https://github.com/christophehurpeau/pob/issues/1629)) ([c7065bc](https://github.com/christophehurpeau/pob/commit/c7065bc1757c12fadb848ddd8333c0684b8880e4))
+* **deps:** update dependency prettier to v2.8.8 ([#1619](https://github.com/christophehurpeau/pob/issues/1619)) ([40f1313](https://github.com/christophehurpeau/pob/commit/40f13138243c0b53c52293314111458e6c8d2d6a))
+* **deps:** update dependency semver to v7.5.1 ([#1636](https://github.com/christophehurpeau/pob/issues/1636)) ([9556202](https://github.com/christophehurpeau/pob/commit/95562027a2cdb674b7081c614235e4a07bbc1a22))
+* **deps:** update dependency semver to v7.5.2 ([#1680](https://github.com/christophehurpeau/pob/issues/1680)) ([312c2b2](https://github.com/christophehurpeau/pob/commit/312c2b2c2e2149dbd6a99203fdbe579ffddff98e))
+* **deps:** update dependency semver to v7.5.3 ([#1682](https://github.com/christophehurpeau/pob/issues/1682)) ([8e8b2ef](https://github.com/christophehurpeau/pob/commit/8e8b2efa7ad39077299c5bcdb2c55941038e989a))
+* **deps:** update dependency yeoman-environment to v3.16.2 ([#1632](https://github.com/christophehurpeau/pob/issues/1632)) ([feb4f3a](https://github.com/christophehurpeau/pob/commit/feb4f3a1a819a67444261d1731d39e1fcb62b77d))
+* **deps:** update dependency yeoman-environment to v3.18.2 ([#1644](https://github.com/christophehurpeau/pob/issues/1644)) ([a64dede](https://github.com/christophehurpeau/pob/commit/a64dede35c0b698409644061539bd6f40a0f3c09))
+* **deps:** update dependency yeoman-environment to v3.18.4 ([#1649](https://github.com/christophehurpeau/pob/issues/1649)) ([51059b6](https://github.com/christophehurpeau/pob/commit/51059b64357b32f32f0dc85735111dff3f980fd4))
+* **deps:** update dependency yeoman-environment to v3.19.1 ([#1658](https://github.com/christophehurpeau/pob/issues/1658)) ([0d9ccf7](https://github.com/christophehurpeau/pob/commit/0d9ccf777d0b1216ea9db2bb27c3fec19f0317e2))
+* **deps:** update dependency yeoman-environment to v3.19.2 ([#1659](https://github.com/christophehurpeau/pob/issues/1659)) ([94d5b8b](https://github.com/christophehurpeau/pob/commit/94d5b8be10fd16e07cb7fd56d28393276814a92e))
+* **deps:** update dependency yeoman-environment to v3.19.3 ([#1660](https://github.com/christophehurpeau/pob/issues/1660)) ([9e0452e](https://github.com/christophehurpeau/pob/commit/9e0452e04fc6eab054d949b7954b02eb39c33e8f))
+* **deps:** update yeoman group ([#1645](https://github.com/christophehurpeau/pob/issues/1645)) ([1686097](https://github.com/christophehurpeau/pob/commit/1686097cfb644bbb5ae78a647b1cd9cc07e1f440))
+* dont enable gh-pages with node testing runner ([f1d0fe5](https://github.com/christophehurpeau/pob/commit/f1d0fe512bf4f1d014d2fa7959bb1fbadac48025))
+* fix tsconfig paths ([5aaa499](https://github.com/christophehurpeau/pob/commit/5aaa499fc5fb3a69e33705e1a72e49dbb69739db))
+* sort supportedArchitectures in yarn.yml alpha ([045c7a6](https://github.com/christophehurpeau/pob/commit/045c7a6d9e3697f68debe68a47300bbf239df58e))
+* update github ci required ([fd5afbf](https://github.com/christophehurpeau/pob/commit/fd5afbf935095fb0613f85496d1d2eb2e81ed8ea))
+
+
+
 ## [12.0.0](https://github.com/christophehurpeau/pob/compare/pob@11.9.0...pob@12.0.0) (2023-04-18)
 
 

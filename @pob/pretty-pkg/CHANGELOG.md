@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@5.1.2...@pob/pretty-pkg@6.0.0) (2023-06-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* requires node 18
+
+### Features
+
+* requires node 18 ([bd35158](https://github.com/christophehurpeau/pob/commit/bd351582c2c3977d8d22c15b831e277acc97a00e))
+
+
+
 ## [5.1.2](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@5.1.1...@pob/pretty-pkg@5.1.2) (2023-03-19)
 
 **Note:** Version bump only for package @pob/pretty-pkg

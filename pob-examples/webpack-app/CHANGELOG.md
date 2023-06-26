@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.0](https://github.com/christophehurpeau/pob/compare/example-webpack-app@0.0.5...example-webpack-app@0.1.0) (2023-06-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* requires node 18
+
+### Features
+
+* requires node 18 ([bd35158](https://github.com/christophehurpeau/pob/commit/bd351582c2c3977d8d22c15b831e277acc97a00e))
+
+
+
 ## [0.0.5](https://github.com/christophehurpeau/pob/compare/example-webpack-app@0.0.4...example-webpack-app@0.0.5) (2023-04-18)
 
 **Note:** Version bump only for package example-webpack-app

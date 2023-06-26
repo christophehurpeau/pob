@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@7.8.0...@pob/root@8.0.0) (2023-06-26)
+
+
+### ⚠ BREAKING CHANGES
+
+* requires node 18
+
+### Features
+
+* **deps:** update dependency conventional-changelog-conventionalcommits to v6 ([#1673](https://github.com/christophehurpeau/pob/issues/1673)) ([d0dca97](https://github.com/christophehurpeau/pob/commit/d0dca9746e75f01e602c349fcf292c64cff3fcb8))
+* requires node 18 ([bd35158](https://github.com/christophehurpeau/pob/commit/bd351582c2c3977d8d22c15b831e277acc97a00e))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @commitlint/cli to v17.6.3 ([#1625](https://github.com/christophehurpeau/pob/issues/1625)) ([b90c5cd](https://github.com/christophehurpeau/pob/commit/b90c5cd50271a0dff599bd60e086c3edecc07ccf))
+* **deps:** update dependency @commitlint/cli to v17.6.5 ([#1661](https://github.com/christophehurpeau/pob/issues/1661)) ([b092230](https://github.com/christophehurpeau/pob/commit/b0922308b0d35810733b5e3011dec784dbda18b2))
+* **deps:** update dependency @commitlint/cli to v17.6.6 ([#1683](https://github.com/christophehurpeau/pob/issues/1683)) ([9190667](https://github.com/christophehurpeau/pob/commit/9190667ccafa3d1ca742c3b52bbf449e1f5f4fb2))
+* **deps:** update dependency lint-staged to v13.2.2 ([#1621](https://github.com/christophehurpeau/pob/issues/1621)) ([3552b13](https://github.com/christophehurpeau/pob/commit/3552b13dff847cb285b4db69828a07e7cb699374))
+* **deps:** update dependency prettier to v2.8.8 ([#1619](https://github.com/christophehurpeau/pob/issues/1619)) ([40f1313](https://github.com/christophehurpeau/pob/commit/40f13138243c0b53c52293314111458e6c8d2d6a))
+
+
+
 ## [7.8.0](https://github.com/christophehurpeau/pob/compare/@pob/root@7.7.0...@pob/root@7.8.0) (2023-04-18)
 
 
