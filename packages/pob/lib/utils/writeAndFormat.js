@@ -13,10 +13,21 @@ export function writeAndFormat(fs, destinationPath, content, { parser } = {}) {
   );
 }
 
+function getParserFromDestinationPath(destinationPath) {
+  if (destinationPath.endsWith('/lerna.json')) {
+    return 'json-stringify';
+  }
+  if (destinationPath.endsWith('json')) {
+    return undefined;
+  }
+
+  return 'json';
+}
+
 export function writeAndFormatJson(fs, destinationPath, value) {
   writeAndFormat(fs, destinationPath, JSON.stringify(value, null, 2), {
     // project.code-workspace is json
-    parser: destinationPath.endsWith('json') ? undefined : 'json',
+    parser: getParserFromDestinationPath(destinationPath),
   });
 }
 export function copyAndFormatTpl(fs, templatePath, destinationPath, options) {
