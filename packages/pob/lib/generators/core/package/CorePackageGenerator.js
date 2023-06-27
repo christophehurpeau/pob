@@ -217,8 +217,11 @@ export default class CorePackageGenerator extends Generator {
         this.fs.copyTpl(
           this.templatePath('check-package.js.ejs'),
           this.destinationPath('scripts/check-package.js'),
-          {},
+          {
+            isLibrary: pkg.private !== true,
+          },
         );
+        packageUtils.addDevDependencies(pkg, ['check-package-dependencies']);
       }
 
       packageUtils.addOrRemoveScripts(
