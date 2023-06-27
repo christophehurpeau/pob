@@ -159,11 +159,22 @@
           ]
         },
         {
+          "groupName": "pob root",
+          "description": "pob root",
           "packageNames": [
             "@pob/root",
+            "@pob/lerna-light"
+          ],
+          "stabilityDays": 1,
+          "schedule": [
+            "at any time"
+          ]
+        },
+        {
+          "packageNames": [
             "yarn"
           ],
-          "stabilityDays": 0,
+          "stabilityDays": 1,
           "schedule": [
             "at any time"
           ]
@@ -171,12 +182,14 @@
         {
           "packageNames": [
             "@pob/root",
+            "@pob/lerna-light",
             "yarn"
           ],
           "updateTypes": [
             "patch",
             "minor"
           ],
+          "stabilityDays": 0,
           "addLabels": [
             ":ok_hand: code/approved"
           ]
