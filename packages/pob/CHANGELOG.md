@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.1.0](https://github.com/christophehurpeau/pob/compare/pob@13.0.2...pob@13.1.0) (2023-06-27)
+
+
+### Features
+
+* **pob:** fix check-package-dependencies template ([6a2f6ed](https://github.com/christophehurpeau/pob/commit/6a2f6ed50f5d04811d59a4b90f25cba0f6b72505))
+* **pob:** improve github repo config ([bfe8c29](https://github.com/christophehurpeau/pob/commit/bfe8c2992987a501f2bfe44bae26f9049002427a))
+
+
+### Bug Fixes
+
+* update to first node 18 lts version ([139fe7d](https://github.com/christophehurpeau/pob/commit/139fe7d1ac70aaae2144f1263a1a3c6c22dd26ab))
+
+
+
 ## [13.0.2](https://github.com/christophehurpeau/pob/compare/pob@13.0.1...pob@13.0.2) (2023-06-26)
 
 

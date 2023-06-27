@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.0.0...pob-dependencies@8.1.0) (2023-06-27)
+
+
+### Features
+
+* **pob:** fix check-package-dependencies template ([6a2f6ed](https://github.com/christophehurpeau/pob/commit/6a2f6ed50f5d04811d59a4b90f25cba0f6b72505))
+
+
+
 ## [8.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@7.8.0...pob-dependencies@8.0.0) (2023-06-26)
 
 

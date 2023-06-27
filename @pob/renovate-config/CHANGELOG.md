@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.16.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.15.2...@pob/renovate-config@5.16.0) (2023-06-27)
+
+
+### Features
+
+* group pob root and increase stability days for yarn and pob root ([6a7adbe](https://github.com/christophehurpeau/pob/commit/6a7adbe4f58d477845c775abccf01061edfa1d0d))
+
+
+
 ## [5.15.2](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.15.1...@pob/renovate-config@5.15.2) (2023-06-26)
 
 

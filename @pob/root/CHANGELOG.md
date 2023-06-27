@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.1](https://github.com/christophehurpeau/pob/compare/@pob/root@8.0.0...@pob/root@8.0.1) (2023-06-27)
+
+**Note:** Version bump only for package @pob/root
+
+
+
+
+
 ## [8.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@7.8.0...@pob/root@8.0.0) (2023-06-26)
 
 
