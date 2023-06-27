@@ -51,6 +51,17 @@ const configureProtectionRule = async (owner, repo, onlyLatestLTS) => {
   }
 };
 
+const githubRepoConfig = {
+  allow_squash_merge: true,
+  allow_merge_commit: false,
+  allow_rebase_merge: true,
+  allow_auto_merge: true,
+  delete_branch_on_merge: true,
+  use_squash_pr_title_as_default: true,
+  squash_merge_commit_title: 'PR_TITLE',
+  squash_merge_commit_message: 'BLANK',
+};
+
 export default class CoreGitGithubGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
@@ -113,9 +124,7 @@ export default class CoreGitGithubGenerator extends Generator {
               homepage: null,
               private: false,
               auto_init: false,
-              allow_squash_merge: true,
-              allow_merge_commit: false,
-              allow_rebase_merge: true,
+              ...githubRepoConfig,
             });
           } catch (err) {
             console.error('Failed to create repository');
@@ -173,9 +182,7 @@ export default class CoreGitGithubGenerator extends Generator {
             .replace(/^@([^-]*)-/, '$1-') */
         description: pkg.description,
         // homepage: null,
-        allow_squash_merge: true,
-        allow_merge_commit: false,
-        allow_rebase_merge: true,
+        ...githubRepoConfig,
       });
 
       configureProtectionRule(owner, repo, this.options.onlyLatestLTS);
