@@ -55,6 +55,6 @@
     "rollup": "3.25.3",
     "semver": "7.5.3",
     "typedoc": "0.24.8",
-    "typescript": "5.1.5"
+    "typescript": "5.1.6"
   }
 }
