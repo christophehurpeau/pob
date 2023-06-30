@@ -12,21 +12,21 @@ export default class CorePackageGenerator extends Generator {
     this.option('monorepo', {
       type: Boolean,
       required: true,
-      defaults: false,
+      default: false,
       desc: 'is monorepo',
     });
 
     this.option('isRoot', {
       type: Boolean,
       required: true,
-      defaults: false,
+      default: false,
       desc: 'is root',
     });
 
     this.option('private', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       desc: 'private package',
     });
   }
@@ -105,13 +105,13 @@ export default class CorePackageGenerator extends Generator {
           name: 'authorName',
           message: "Author's Name",
           when: !author || !author.name,
-          default: this.user.git.name(),
+          default: this.git.name(),
         },
         {
           name: 'authorEmail',
           message: "Author's Email",
           when: !author || !author.email,
-          default: this.user.git.email(),
+          default: this.git.email(),
         },
         {
           name: 'authorUrl',

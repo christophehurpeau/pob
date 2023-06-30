@@ -10,67 +10,67 @@ export default class CommonTypescriptGenerator extends Generator {
 
     this.option('enable', {
       type: Boolean,
-      defaults: true,
+      default: true,
       desc: 'enable typescript',
     });
 
     this.option('rootDir', {
       type: String,
-      defaults: 'src',
+      default: 'src',
       desc: 'customize rootDir',
     });
 
     this.option('srcDir', {
       type: String,
-      defaults: 'src',
+      default: 'src',
       desc: 'customize srcDir, if different than rootDir',
     });
 
     this.option('jsx', {
       type: Boolean,
-      defaults: true,
+      default: true,
       desc: 'enable jsx with typescript',
     });
 
     this.option('jsxPreserve', {
       type: Boolean,
-      defaults: false,
+      default: false,
       desc: 'force jsx preserve in tsconfig for legacy apps (nextjs, CRA)',
     });
 
     this.option('forceExcludeNodeModules', {
       type: Boolean,
-      defaults: false,
+      default: false,
       desc: 'force exclude node_modules for legacy apps (nextjs, CRA)',
     });
 
     this.option('forceAllowJs', {
       type: Boolean,
-      defaults: false,
+      default: false,
       desc: 'force allow js for legacy apps (nextjs, CRA)',
     });
 
     this.option('dom', {
       type: Boolean,
-      defaults: true,
+      default: true,
       desc: 'enable dom with typescript',
     });
 
     this.option('baseUrl', {
       type: String,
-      defaults: '',
+      default: '',
       desc: 'baseUrl option',
     });
 
     this.option('resolveJsonModule', {
       type: Boolean,
-      defaults: false,
+      default: false,
       desc: 'resolveJsonModule option',
     });
 
     this.option('builddefs', {
       type: Boolean,
-      defaults: true,
+      default: true,
       desc: 'build .d.ts option',
     });
   }

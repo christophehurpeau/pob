@@ -10,25 +10,25 @@ export default class CommonTestingGenerator extends Generator {
 
     this.option('monorepo', {
       type: Boolean,
-      defaults: false,
+      default: false,
       desc: 'is root monorepo',
     });
 
     this.option('enable', {
       type: Boolean,
-      defaults: true,
+      default: true,
       desc: 'enable testing',
     });
 
     this.option('runner', {
       type: String,
-      defaults: 'jest',
+      default: 'jest',
       desc: 'test runner (jest or node)',
     });
 
     this.option('enableReleasePlease', {
       type: Boolean,
-      defaults: true,
+      default: true,
       desc: 'enable release-please',
     });
 
@@ -64,7 +64,7 @@ export default class CommonTestingGenerator extends Generator {
 
     this.option('packageManager', {
       type: String,
-      defaults: 'yarn',
+      default: 'yarn',
       desc: 'yarn or npm',
     });
 

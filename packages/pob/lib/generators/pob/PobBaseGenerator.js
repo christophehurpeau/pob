@@ -231,10 +231,6 @@ export default class PobBaseGenerator extends Generator {
     }
   }
 
-  writing() {
-    this.composeWith('pob:core:sort-package');
-  }
-
   install() {
     if (this.options.fromPob) return;
 

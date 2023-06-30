@@ -11,13 +11,4 @@ export default class CoreSortPackageGenerator extends Generator {
       packageUtils.sort(pkg),
     );
   }
-
-  end() {
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
-    writeAndFormatJson(
-      this.fs,
-      this.destinationPath('package.json'),
-      packageUtils.sort(pkg),
-    );
-  }
 }

@@ -10,7 +10,7 @@ export default class CommonHuskyGenerator extends Generator {
     this.option('destination', {
       type: String,
       required: false,
-      defaults: '',
+      default: '',
       desc: 'Destination of the generated files.',
     });
   }

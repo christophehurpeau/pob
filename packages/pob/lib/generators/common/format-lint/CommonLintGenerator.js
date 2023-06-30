@@ -15,49 +15,49 @@ export default class CommonLintGenerator extends Generator {
     this.option('monorepo', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       description: 'Is root monorepo',
     });
 
     this.option('isApp', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       description: 'Is app',
     });
 
     this.option('babel', {
       type: String,
       required: false,
-      defaults: 'undefined',
+      default: 'undefined',
       desc: 'Use babel.',
     });
 
     this.option('documentation', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       desc: 'Documentation enabled',
     });
 
     this.option('typescript', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       desc: 'Typescript enabled',
     });
 
     this.option('enableSrcResolver', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       desc: 'Enable resolving from src directory',
     });
 
     this.option('rootAsSrc', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       desc: 'src directory is root',
     });
 
@@ -70,34 +70,34 @@ export default class CommonLintGenerator extends Generator {
     this.option('rootIgnorePaths', {
       type: String,
       required: false,
-      defaults: '',
+      default: '',
       desc: 'list of ignore paths to add',
     });
 
     this.option('ignorePaths', {
       type: String,
       required: false,
-      defaults: '',
+      default: '',
       desc: 'list of ignore paths to add',
     });
 
     this.option('packageManager', {
       type: String,
-      defaults: 'yarn',
+      default: 'yarn',
       desc: 'yarn or npm',
     });
 
     this.option('yarnNodeLinker', {
       type: String,
       required: false,
-      defaults: 'node-modules',
+      default: 'node-modules',
       desc: 'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
 
     this.option('buildDirectory', {
       type: String,
       required: false,
-      defaults: 'dist',
+      default: 'dist',
     });
   }
 

@@ -10,7 +10,7 @@ import fs, {
 } from 'node:fs';
 import path from 'node:path';
 import minimist from 'minimist';
-import yeoman from 'yeoman-environment';
+import * as yeoman from 'yeoman-environment';
 import PobAppGenerator from './generators/app/PobAppGenerator.js';
 import AppNextjsGenerator from './generators/app/nextjs/AppNextjsGenerator.js';
 import AppRemixGenerator from './generators/app/remix/AppRemixGenerator.js';

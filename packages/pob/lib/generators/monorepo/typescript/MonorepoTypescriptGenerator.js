@@ -8,13 +8,13 @@ export default class MonorepoTypescriptGenerator extends Generator {
 
     this.option('enable', {
       type: Boolean,
-      defaults: true,
+      default: true,
       desc: 'enable typescript',
     });
 
     this.option('isAppProject', {
       type: Boolean,
-      defaults: true,
+      default: true,
       desc: 'app project, no building definitions',
     });
 

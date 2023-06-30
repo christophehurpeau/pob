@@ -14,7 +14,7 @@ export default class CommonReleaseGenerator extends Generator {
     this.option('withBabel', {
       type: Boolean,
       required: false,
-      defaults: undefined,
+      default: undefined,
       desc: 'Babel enabled.',
     });
 
@@ -27,7 +27,7 @@ export default class CommonReleaseGenerator extends Generator {
     this.option('updateOnly', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       desc: 'Avoid asking questions',
     });
   }

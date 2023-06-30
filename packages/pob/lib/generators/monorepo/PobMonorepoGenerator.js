@@ -50,27 +50,27 @@ export default class PobMonorepoGenerator extends Generator {
     this.option('updateOnly', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       desc: 'Avoid asking questions',
     });
 
     this.option('isAppProject', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       desc: 'app project, no pusblishing on npm',
     });
 
     this.option('packageManager', {
       type: String,
-      defaults: 'yarn',
+      default: 'yarn',
       desc: 'yarn or npm',
     });
 
     this.option('yarnNodeLinker', {
       type: String,
       required: false,
-      defaults: 'pnp',
+      default: 'pnp',
       desc: 'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
 
@@ -134,6 +134,7 @@ export default class PobMonorepoGenerator extends Generator {
 
   async prompting() {
     const config = this.config.get('monorepo');
+
     if (this.options.updateOnly && config) {
       this.pobLernaConfig = config;
       this.pobLernaConfig.packageNames = this.packageNames;
@@ -342,6 +343,8 @@ export default class PobMonorepoGenerator extends Generator {
       ]);
       this.fs.writeJSON(this.destinationPath('package.json'), pkg);
     }
+
+    this.composeWith('pob:core:sort-package');
   }
 
   end() {

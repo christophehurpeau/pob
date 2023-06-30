@@ -12,31 +12,31 @@ export default class CoreCIGenerator extends Generator {
 
     this.option('enable', {
       type: Boolean,
-      defaults: true,
+      default: true,
       desc: 'enable ci',
     });
 
     this.option('enableReleasePlease', {
       type: Boolean,
-      defaults: true,
+      default: true,
       desc: 'enable release-please',
     });
 
     this.option('build', {
       type: Boolean,
-      defaults: true,
+      default: true,
       desc: 'enable build',
     });
 
     this.option('typescript', {
       type: Boolean,
-      defaults: true,
+      default: true,
       desc: 'enable typescript',
     });
 
     this.option('testing', {
       type: Boolean,
-      defaults: true,
+      default: true,
       desc: 'enable testing',
     });
 
