@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.2.1](https://github.com/christophehurpeau/pob/compare/pob@13.2.0...pob@13.2.1) (2023-06-30)
+
+
+### Bug Fixes
+
+* update template with node: prefix ([00514a7](https://github.com/christophehurpeau/pob/commit/00514a7b30c213b70bad5b77ef9145fcad85b09e))
+
+
+
 ## [13.2.0](https://github.com/christophehurpeau/pob/compare/pob@13.1.0...pob@13.2.0) (2023-06-30)
 
 
