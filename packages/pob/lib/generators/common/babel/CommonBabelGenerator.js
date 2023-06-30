@@ -388,10 +388,10 @@ export default class CommonBabelGenerator extends Generator {
         case '12':
         case '14':
         case '16':
-          pkg.engines.node = '>=16.0.0';
+          pkg.engines.node = '>=16.12.0';
           break;
         case '18':
-          pkg.engines.node = '>=18.0.0';
+          pkg.engines.node = '>=18.12.0';
           break;
         default:
           throw new Error(`Invalid min node version: ${minNodeVersion}`);
@@ -414,7 +414,7 @@ export default class CommonBabelGenerator extends Generator {
       packageUtils.removeDependencies(pkg, ['@types/node']);
       packageUtils.removeDevDependencies(pkg, ['@types/node']);
       // Supports oldest current or active LTS version of node
-      pkg.engines.node = '>=18.0.0';
+      pkg.engines.node = '>=18.12.0';
     }
 
     /* browserslist */
