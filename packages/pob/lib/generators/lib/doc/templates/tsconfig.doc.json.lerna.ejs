@@ -1,9 +1,5 @@
 {
-  "include": [
-<% workspaces.forEach((workspace, i) => { -%>
-    "packages/*/src/**/*.ts<%= jsx ? 'x?' : '' %>"<% if (i + 1 !== workspaces.length) { %>,<% } -%>
-<% }) %>
-  ],
+  "files": [],
 
   "exclude": [
     "**/node_modules/**",
