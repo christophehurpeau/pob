@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import prettyPkg from '@pob/pretty-pkg';
 import semver from 'semver';
 import { pkgPath, requireIfPossible } from './helper.cjs';

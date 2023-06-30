@@ -1,14 +1,14 @@
 #!/usr/bin/env node
 
-import { execSync, spawnSync } from 'child_process';
+import { execSync, spawnSync } from 'node:child_process';
 import fs, {
   existsSync,
   writeFileSync,
   readFileSync,
   mkdirSync,
   readdirSync,
-} from 'fs';
-import path from 'path';
+} from 'node:fs';
+import path from 'node:path';
 import minimist from 'minimist';
 import yeoman from 'yeoman-environment';
 import PobAppGenerator from './generators/app/PobAppGenerator.js';
@@ -330,9 +330,9 @@ const options = {
 
 try {
   await env.run('pob', options);
-} catch (err) {
-  if (err) {
-    console.error(err.stack || err.message || err);
+} catch (error) {
+  if (error) {
+    console.error(error.stack || error.message || error);
     process.exit(1);
   }
 }

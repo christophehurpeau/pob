@@ -101,9 +101,9 @@ export default class LibReadmeGenerator extends Generator {
           content,
         },
       );
-    } catch (err) {
-      console.log(err.stack || err.message || err);
-      throw err;
+    } catch (error) {
+      console.log(error.stack || error.message || error);
+      throw error;
     }
   }
 }

@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import Generator from 'yeoman-generator';
 import ensureJsonFileFormatted from '../../../utils/ensureJsonFileFormatted.js';
 import inLerna from '../../../utils/inLerna.js';
@@ -466,8 +466,8 @@ export default class CommonLintGenerator extends Generator {
         );
 
         writeAndFormatJson(this.fs, rootEslintrcPath, rootEslintrcConfig);
-      } catch (err) {
-        console.warn(`Could not parse/edit ${rootEslintrcPath}: `, err);
+      } catch (error) {
+        console.warn(`Could not parse/edit ${rootEslintrcPath}: `, error);
       }
     }
     // no else: dont delete root eslintrc, src is root
@@ -512,8 +512,8 @@ export default class CommonLintGenerator extends Generator {
         );
 
         writeAndFormatJson(this.fs, srcEslintrcPath, srcEslintrcConfig);
-      } catch (err) {
-        console.warn(`Could not parse/edit ${srcEslintrcPath}: `, err);
+      } catch (error) {
+        console.warn(`Could not parse/edit ${srcEslintrcPath}: `, error);
       }
     }
 

@@ -5,9 +5,9 @@ exports.pkgPath = require.resolve('../package.json');
 exports.requireIfPossible = (packageJsonPath) => {
   try {
     return require(packageJsonPath);
-  } catch (err) {
+  } catch (error) {
     console.error(`Failed to require ${packageJsonPath}`);
-    console.error(err.message);
+    console.error(error.message);
     return {};
   }
 };

@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import semver from 'semver';
 import Generator from 'yeoman-generator';
 import * as packageUtils from '../../../utils/package.js';

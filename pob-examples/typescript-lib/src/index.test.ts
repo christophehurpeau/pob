@@ -1,4 +1,4 @@
-import * as fs from 'fs';
+import * as fs from 'node:fs';
 import simpleLib from '.';
 
 describe('index', () => {
@@ -11,7 +11,6 @@ describe('dist', () => {
   it('should build node18 mjs', () => {
     expect(
       fs.readFileSync(
-        // @ts-expect-error -- browser api conflict
         new URL('../dist/index-node18.mjs', import.meta.url),
         'utf8',
       ),

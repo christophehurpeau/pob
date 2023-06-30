@@ -1,8 +1,8 @@
 /* eslint-disable max-lines */
 /* eslint-disable complexity */
 
-import { readFileSync, existsSync } from 'fs';
-import path from 'path';
+import { readFileSync, existsSync } from 'node:fs';
+import path from 'node:path';
 import babelPluginTransformRuntime from '@babel/plugin-transform-runtime';
 import { babel } from '@rollup/plugin-babel';
 import json from '@rollup/plugin-json';

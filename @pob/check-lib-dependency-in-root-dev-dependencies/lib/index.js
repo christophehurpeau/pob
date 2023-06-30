@@ -1,5 +1,5 @@
 /* eslint-disable import/no-dynamic-require */
-import { createRequire } from 'module';
+import { createRequire } from 'node:module';
 
 export default function checkLibDependencyInRootDevDependencies(
   dependencyPackage,
@@ -13,11 +13,11 @@ export default function checkLibDependencyInRootDevDependencies(
         paths: [process.cwd()],
       },
     ));
-  } catch (err) {
+  } catch (error) {
     console.error(
       `It seems the package ${dependencyPackage.name} is not in your devDependencies`,
     );
-    throw err;
+    throw error;
   }
 
   if (dependencyPackage.version !== pluginRootPackage.version) {

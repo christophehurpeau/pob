@@ -1,4 +1,4 @@
-import { fileURLToPath } from 'url';
+import { fileURLToPath } from 'node:url';
 import Generator from 'yeoman-generator';
 import ensureJsonFileFormatted from '../../utils/ensureJsonFileFormatted.js';
 import inLerna from '../../utils/inLerna.js';

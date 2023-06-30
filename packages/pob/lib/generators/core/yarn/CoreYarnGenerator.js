@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import yml from 'js-yaml';
 import Generator from 'yeoman-generator';
 import ensureJsonFileFormatted from '../../../utils/ensureJsonFileFormatted.js';
