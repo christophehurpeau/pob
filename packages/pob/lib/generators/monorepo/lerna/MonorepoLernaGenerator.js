@@ -13,13 +13,13 @@ export default class MonorepoLernaGenerator extends Generator {
 
     this.option('isAppProject', {
       type: Boolean,
-      defaults: true,
+      default: true,
       desc: 'is app project',
     });
 
     this.option('packageManager', {
       type: String,
-      defaults: 'yarn',
+      default: 'yarn',
       desc: 'yarn or npm',
     });
   }

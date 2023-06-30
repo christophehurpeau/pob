@@ -69,7 +69,7 @@ export default class CoreGitGithubGenerator extends Generator {
     this.option('shouldCreate', {
       type: Boolean,
       required: false,
-      defaults: '',
+      default: '',
       desc: 'Should create the repo on github',
     });
 

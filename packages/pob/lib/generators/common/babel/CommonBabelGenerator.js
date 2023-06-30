@@ -11,39 +11,39 @@ export default class CommonBabelGenerator extends Generator {
     this.option('updateOnly', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       desc: 'Avoid asking questions',
     });
 
     this.option('testing', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       desc: 'Has testing.',
     });
 
     this.option('fromPob', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
     });
 
     this.option('isApp', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
     });
 
     this.option('useAppConfig', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
     });
 
     this.option('buildDirectory', {
       type: String,
       required: false,
-      defaults: 'dist',
+      default: 'dist',
     });
   }
 

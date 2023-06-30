@@ -9,42 +9,42 @@ export default class CoreVSCodeGenerator extends Generator {
     this.option('root', {
       type: Boolean,
       required: false,
-      defaults: '',
+      default: '',
       desc: 'Is root',
     });
 
     this.option('packageManager', {
       type: String,
       required: false,
-      defaults: 'yarn',
+      default: 'yarn',
       desc: 'yarn|npm.',
     });
 
     this.option('monorepo', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       desc: 'is monorepo',
     });
 
     this.option('testing', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       desc: 'Testing enabled',
     });
 
     this.option('yarnNodeLinker', {
       type: String,
       required: false,
-      defaults: 'node-modules',
+      default: 'node-modules',
       desc: 'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
 
     this.option('typescript', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       desc: 'Typescript enabled',
     });
 

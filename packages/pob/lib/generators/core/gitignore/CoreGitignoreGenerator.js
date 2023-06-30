@@ -7,49 +7,49 @@ export default class CoreGitignoreGenerator extends Generator {
     this.option('root', {
       type: Boolean,
       required: false,
-      defaults: true,
+      default: true,
       desc: 'Root package.',
     });
 
     this.option('documentation', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       desc: 'Documentation enabled.',
     });
 
     this.option('testing', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       desc: 'Testing enabled.',
     });
 
     this.option('withBabel', {
       type: Boolean,
       required: false,
-      defaults: undefined,
+      default: undefined,
       desc: 'Babel enabled.',
     });
 
     this.option('paths', {
       type: String,
       required: false,
-      defaults: '',
+      default: '',
       desc: 'Paths ignored.',
     });
 
     this.option('typescript', {
       type: Boolean,
       required: false,
-      defaults: true,
+      default: true,
       desc: 'Typescript use.',
     });
 
     this.option('buildInGit', {
       type: Boolean,
       required: false,
-      defaults: true,
+      default: true,
       desc: 'Build is saved in git.',
     });
   }

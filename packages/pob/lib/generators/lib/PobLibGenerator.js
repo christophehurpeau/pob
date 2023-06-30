@@ -10,26 +10,26 @@ export default class PobLibGenerator extends Generator {
     this.option('updateOnly', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
       desc: 'Avoid asking questions',
     });
 
     this.option('fromPob', {
       type: Boolean,
       required: false,
-      defaults: false,
+      default: false,
     });
 
     this.option('packageManager', {
       type: String,
-      defaults: 'yarn',
+      default: 'yarn',
       desc: 'yarn or npm',
     });
 
     this.option('yarnNodeLinker', {
       type: String,
       required: false,
-      defaults: 'node-modules',
+      default: 'node-modules',
       desc: 'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
   }
@@ -397,5 +397,7 @@ export default class PobLibGenerator extends Generator {
 
     this.config.set('lib', pobjson);
     this.config.save();
+
+    this.composeWith('pob:core:sort-package');
   }
 }

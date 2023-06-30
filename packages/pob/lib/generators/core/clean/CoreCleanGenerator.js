@@ -7,7 +7,7 @@ export default class CoreCleanGenerator extends Generator {
     this.option('root', {
       type: Boolean,
       required: false,
-      defaults: true,
+      default: true,
       desc: 'Root package.',
     });
   }

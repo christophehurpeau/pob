@@ -8,7 +8,7 @@ export default class AppNextjsGenerator extends Generator {
     this.option('export', {
       type: Boolean,
       required: false,
-      defaults: true,
+      default: true,
       desc: 'Use next export.',
     });
   }

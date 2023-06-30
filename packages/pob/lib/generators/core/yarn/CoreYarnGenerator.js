@@ -13,7 +13,7 @@ export default class CoreYarnGenerator extends Generator {
     this.option('type', {
       type: String,
       required: false,
-      defaults: 'app',
+      default: 'app',
       desc: 'Project type',
     });
 
@@ -26,7 +26,7 @@ export default class CoreYarnGenerator extends Generator {
     this.option('yarnNodeLinker', {
       type: String,
       required: false,
-      defaults: 'node-modules',
+      default: 'node-modules',
       desc: 'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
   }

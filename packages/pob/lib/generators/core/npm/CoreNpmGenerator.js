@@ -9,19 +9,19 @@ export default class CoreNpmGenerator extends Generator {
     this.option('enable', {
       type: Boolean,
       required: false,
-      defaults: true,
+      default: true,
       desc: 'Enable npm',
     });
     this.option('ci', {
       type: Boolean,
       required: false,
-      defaults: true,
+      default: true,
       desc: 'Enabled ci',
     });
     this.option('testing', {
       type: Boolean,
       required: false,
-      defaults: true,
+      default: true,
       desc: 'Enabled testing',
     });
   }
