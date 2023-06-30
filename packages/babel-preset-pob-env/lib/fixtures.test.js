@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import { transform } from '@babel/core';
 import preset from '.';
 
@@ -31,18 +31,18 @@ describe('fixtures', () => {
         } else if (expectedSyntaxError) {
           expect(actual).toBe(expectedSyntaxError);
         }
-      } catch (err) {
-        if (!expected && err instanceof SyntaxError && expectedSyntaxError) {
-          expect(err.message.split('\n', 2)[0]).toBe(expectedSyntaxError);
+      } catch (error) {
+        if (!expected && error instanceof SyntaxError && expectedSyntaxError) {
+          expect(error.message.split('\n', 2)[0]).toBe(expectedSyntaxError);
           return;
         }
-        if (err._babel && err instanceof SyntaxError) {
+        if (error._babel && error instanceof SyntaxError) {
           console.error(`Unexpected error in test: ${test.name || filename}`);
-          console.error(`${err.name}: ${err.message}\n${err.codeFrame}`);
+          console.error(`${error.name}: ${error.message}\n${error.codeFrame}`);
           // eslint-disable-next-line unicorn/no-process-exit
           process.exit(1);
         } else {
-          throw err;
+          throw error;
         }
       }
     });

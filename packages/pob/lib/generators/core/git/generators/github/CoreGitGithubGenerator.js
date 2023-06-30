@@ -42,10 +42,10 @@ const configureProtectionRule = async (owner, repo, onlyLatestLTS) => {
       if (branch === 'master') {
         console.warn('You should rename your "master" branch to "main"');
       }
-    } catch (err) {
+    } catch (error) {
       if (branch === 'main') {
         console.error(`Failed to configure ${branch} branch protection`);
-        console.error(err.stack || err.message || err);
+        console.error(error.stack || error.message || error);
       }
     }
   }
@@ -126,16 +126,16 @@ export default class CoreGitGithubGenerator extends Generator {
               auto_init: false,
               ...githubRepoConfig,
             });
-          } catch (err) {
+          } catch (error) {
             console.error('Failed to create repository');
-            console.error(err.stack || err.message || err);
+            console.error(error.stack || error.message || error);
           }
         }
 
         const cwd = this.destinationPath();
         try {
           this.spawnCommandSync('git', ['add', '--all', '.'], { cwd });
-        } catch (err) {
+        } catch (error) {
           this.spawnCommandSync('git', ['init'], { cwd });
           this.spawnCommandSync('git', ['add', '--all', '.'], { cwd });
           this.spawnCommandSync(
@@ -149,7 +149,7 @@ export default class CoreGitGithubGenerator extends Generator {
             { cwd },
           );
           console.error('Failed to create repository');
-          console.error(err.stack || err.message || err);
+          console.error(error.stack || error.message || error);
         }
         this.spawnCommandSync(
           'git',
@@ -168,9 +168,9 @@ export default class CoreGitGithubGenerator extends Generator {
         // await gh.put(`/repos/${owner}/${repo}/topics`, {
         //   names: pkg.keywords,
         // });
-      } catch (err) {
+      } catch (error) {
         console.error('Failed to create github repository');
-        console.error(err.stack || err.message || err);
+        console.error(error.stack || error.message || error);
       }
     } else {
       console.log('sync github info');

@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import prettier from 'prettier';
 import { pkgPath } from './helper.cjs';
 

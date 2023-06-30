@@ -1,5 +1,5 @@
-import fs from 'fs';
-import { fileURLToPath } from 'url';
+import fs from 'node:fs';
+import { fileURLToPath } from 'node:url';
 import { rollup } from 'rollup';
 import createRollupConfig from './createRollupConfig.js';
 

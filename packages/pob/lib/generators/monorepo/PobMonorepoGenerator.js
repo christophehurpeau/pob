@@ -1,7 +1,7 @@
-import { execSync } from 'child_process';
-import fs from 'fs';
-import path from 'path';
-import { platform } from 'process';
+import { execSync } from 'node:child_process';
+import fs from 'node:fs';
+import path from 'node:path';
+import { platform } from 'node:process';
 import { PackageGraph } from '@lerna/package-graph';
 import { Project as LernaProject } from '@lerna/project';
 import Generator from 'yeoman-generator';

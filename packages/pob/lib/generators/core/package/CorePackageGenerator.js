@@ -1,5 +1,5 @@
-import fs from 'fs';
-import path from 'path';
+import fs from 'node:fs';
+import path from 'node:path';
 import askName from 'inquirer-npm-name';
 import Generator from 'yeoman-generator';
 import inLerna from '../../../utils/inLerna.js';

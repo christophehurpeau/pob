@@ -1,5 +1,5 @@
-import { execSync } from 'child_process';
-import { platform } from 'process';
+import { execSync } from 'node:child_process';
+import { platform } from 'node:process';
 import Generator from 'yeoman-generator';
 import inLerna from '../../utils/inLerna.js';
 import * as packageUtils from '../../utils/package.js';

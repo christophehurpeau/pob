@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { execSync } from 'child_process';
+import { execSync } from 'node:child_process';
 
 try {
   const stdout = execSync('git status --porcelain', { encoding: 'utf8' });
@@ -11,7 +11,7 @@ try {
     console.log(stdout);
     process.exit(1);
   }
-} catch (err) {
-  console.error(err.message);
+} catch (error) {
+  console.error(error.message);
   process.exit(1);
 }

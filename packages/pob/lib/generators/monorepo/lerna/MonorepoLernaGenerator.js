@@ -1,5 +1,5 @@
-import { spawnSync } from 'child_process';
-import { readdirSync, existsSync } from 'fs';
+import { spawnSync } from 'node:child_process';
+import { readdirSync, existsSync } from 'node:fs';
 import Generator from 'yeoman-generator';
 import * as packageUtils from '../../../utils/package.js';
 import {

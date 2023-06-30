@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import sortPkg from '@pob/sort-pkg';
 import prettier from 'prettier';
 

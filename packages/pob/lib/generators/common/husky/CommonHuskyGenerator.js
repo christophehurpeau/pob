@@ -1,4 +1,4 @@
-import { readlinkSync, rmSync } from 'fs';
+import { readlinkSync, rmSync } from 'node:fs';
 import Generator from 'yeoman-generator';
 import inLerna from '../../../utils/inLerna.js';
 import * as packageUtils from '../../../utils/package.js';

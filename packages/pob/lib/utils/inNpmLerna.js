@@ -1,4 +1,4 @@
-import { readFileSync } from 'fs';
+import { readFileSync } from 'node:fs';
 import inLerna from './inLerna.js';
 
 export default inLerna &&

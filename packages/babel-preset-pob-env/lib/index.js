@@ -1,6 +1,6 @@
 /* eslint-disable complexity */
 
-import { createRequire } from 'module';
+import { createRequire } from 'node:module';
 import fixClassPropertiesUninitialized from 'babel-plugin-fix-class-properties-uninitialized';
 import replacePlugin from './pob-babel-replace-plugin.js';
 

@@ -1,4 +1,4 @@
-import fs from 'fs';
+import fs from 'node:fs';
 import Generator from 'yeoman-generator';
 import inLerna from '../../../utils/inLerna.js';
 
