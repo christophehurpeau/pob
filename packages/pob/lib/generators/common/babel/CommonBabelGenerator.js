@@ -552,7 +552,9 @@ export default class CommonBabelGenerator extends Generator {
         const entryDistName = isBrowserOnly ? 'index' : entry;
         const exportName = entry === 'index' ? '.' : `./${entry}`;
 
-        const targets = {};
+        const targets = {
+          types: `./${this.options.buildDirectory}/definitions/index.d.ts`,
+        };
 
         const defaultNodeEnv = this.babelEnvs.find(
           (env) => env.target === 'node',
