@@ -370,7 +370,9 @@ export default class CommonBabelGenerator extends Generator {
       pkg,
       this.babelEnvs.find(
         (env) => env.target === 'browser' && env.version === undefined,
-      ),
+      ) ||
+        (pkg.devDependencies?.['@babel/preset-env'] &&
+          pkg.name.includes('rollup-plugin')),
       ['@babel/preset-env'],
     );
 
