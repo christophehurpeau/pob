@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@7.0.0...babel-plugin-fix-class-properties-uninitialized@7.0.1) (2023-06-30)
+
+
+### Bug Fixes
+
+* requires first node 18 lts version, 18.12 ([70c105a](https://github.com/christophehurpeau/pob/commit/70c105a72a328498dd20804ade6f1622b4430835))
+
+
+
 ## [7.0.0](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@6.1.1...babel-plugin-fix-class-properties-uninitialized@7.0.0) (2023-06-26)
 
 

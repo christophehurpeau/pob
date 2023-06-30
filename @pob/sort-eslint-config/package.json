@@ -1,6 +1,6 @@
 {
   "name": "@pob/sort-eslint-config",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "sort eslint config",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -32,6 +32,6 @@
   "prettier": "@pob/root/prettier-config",
   "pob": {},
   "dependencies": {
-    "@pob/sort-object": "6.0.0"
+    "@pob/sort-object": "6.0.1"
   }
 }

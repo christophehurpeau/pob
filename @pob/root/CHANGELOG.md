@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.0.1...@pob/root@8.1.0) (2023-06-30)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v51 (major) ([#1686](https://github.com/christophehurpeau/pob/issues/1686)) ([108057c](https://github.com/christophehurpeau/pob/commit/108057c620330ca0c86ffe4af49a25cddb571acf))
+
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v13.2.3 ([#1688](https://github.com/christophehurpeau/pob/issues/1688)) ([21d9983](https://github.com/christophehurpeau/pob/commit/21d998316758260fb4471eedff6a1bb739b1f77c))
+* requires first node 18 lts version, 18.12 ([70c105a](https://github.com/christophehurpeau/pob/commit/70c105a72a328498dd20804ade6f1622b4430835))
+
+
+
 ## [8.0.1](https://github.com/christophehurpeau/pob/compare/@pob/root@8.0.0...@pob/root@8.0.1) (2023-06-27)
 
 **Note:** Version bump only for package @pob/root

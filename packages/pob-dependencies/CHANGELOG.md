@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.1.0...pob-dependencies@8.2.0) (2023-06-30)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v51 (major) ([#1686](https://github.com/christophehurpeau/pob/issues/1686)) ([108057c](https://github.com/christophehurpeau/pob/commit/108057c620330ca0c86ffe4af49a25cddb571acf))
+* **deps:** update dependency eslint to v8.43.0 ([#1667](https://github.com/christophehurpeau/pob/issues/1667)) ([3b134d6](https://github.com/christophehurpeau/pob/commit/3b134d6a26ac43e55c05688eddc94dd32ba8feaf))
+* **deps:** update dependency rollup to v3.26.0 ([#1691](https://github.com/christophehurpeau/pob/issues/1691)) ([c08ad48](https://github.com/christophehurpeau/pob/commit/c08ad482803b053b3ceb0d80982db1742e954342))
+
+
+### Bug Fixes
+
+* requires first node 18 lts version, 18.12 ([70c105a](https://github.com/christophehurpeau/pob/commit/70c105a72a328498dd20804ade6f1622b4430835))
+
+
+
 ## [8.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.0.0...pob-dependencies@8.1.0) (2023-06-27)
 
 

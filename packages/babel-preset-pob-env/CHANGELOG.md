@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@10.0.0...babel-preset-pob-env@10.1.0) (2023-06-30)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v51 (major) ([#1686](https://github.com/christophehurpeau/pob/issues/1686)) ([108057c](https://github.com/christophehurpeau/pob/commit/108057c620330ca0c86ffe4af49a25cddb571acf))
+
+
+### Bug Fixes
+
+* requires first node 18 lts version, 18.12 ([70c105a](https://github.com/christophehurpeau/pob/commit/70c105a72a328498dd20804ade6f1622b4430835))
+
+
+
 ## [10.0.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@9.1.6...babel-preset-pob-env@10.0.0) (2023-06-26)
 
 
