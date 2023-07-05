@@ -33,7 +33,11 @@ module.exports = function installGithubWorkflows({ pkg, pm }) {
     installWorkflow('push-renovate-pob_root');
     installWorkflow('push-renovate-prettier');
     ensureWorkflowUninstalled('push-renovate-typedoc');
-    if (pkg.devDependencies && pkg.devDependencies.rollup) {
+    if (
+      pkg.devDependencies &&
+      pkg.devDependencies.rollup &&
+      pkg.scripts?.build
+    ) {
       installWorkflow('push-renovate-build');
     } else {
       ensureWorkflowUninstalled('push-renovate-build');
