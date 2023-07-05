@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.2.0...pob-dependencies@8.3.0) (2023-07-05)
+
+
+### Features
+
+* **deps:** update dependency check-package-dependencies to v6.6.0 ([#1699](https://github.com/christophehurpeau/pob/issues/1699)) ([9f1feea](https://github.com/christophehurpeau/pob/commit/9f1feea13d92ba57de03fc325f5e530d6ef84f60))
+* **deps:** update dependency eslint to v8.44.0 ([#1694](https://github.com/christophehurpeau/pob/issues/1694)) ([1b75923](https://github.com/christophehurpeau/pob/commit/1b75923242c12b624c7c74585d3484c191c913ec))
+* **deps:** update dependency jest to v29.6.0 ([#1696](https://github.com/christophehurpeau/pob/issues/1696)) ([652d7ca](https://github.com/christophehurpeau/pob/commit/652d7ca0c14157d778ac0fcfddf70a48916c9bb0))
+* **deps:** update dependency rollup to v3.26.1 ([#1697](https://github.com/christophehurpeau/pob/issues/1697)) ([b965541](https://github.com/christophehurpeau/pob/commit/b965541f5bf86ff823bc34de55b99058d154799b))
+
+
+
 ## [8.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.1.0...pob-dependencies@8.2.0) (2023-06-30)
 
 

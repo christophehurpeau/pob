@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.1](https://github.com/christophehurpeau/pob/compare/@pob/root@8.1.0...@pob/root@8.1.1) (2023-07-05)
+
+
+### Bug Fixes
+
+* **@pob/root:** only add workflow build if a build script exists ([a4cc71c](https://github.com/christophehurpeau/pob/commit/a4cc71cca028edad8a0dc9fcb37c2187c1804273))
+
+
+
 ## [8.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.0.1...@pob/root@8.1.0) (2023-06-30)
 
 

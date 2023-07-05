@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.3.0](https://github.com/christophehurpeau/pob/compare/pob@13.2.3...pob@13.3.0) (2023-07-05)
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.44.0 ([#1694](https://github.com/christophehurpeau/pob/issues/1694)) ([1b75923](https://github.com/christophehurpeau/pob/commit/1b75923242c12b624c7c74585d3484c191c913ec))
+* **pob:** add config for yarn-plugin app ([c18d783](https://github.com/christophehurpeau/pob/commit/c18d783621291bd22ea367bf6ca77b7cd84ec661))
+
+
+
 ## [13.2.3](https://github.com/christophehurpeau/pob/compare/pob@13.2.2...pob@13.2.3) (2023-06-30)
 
 
