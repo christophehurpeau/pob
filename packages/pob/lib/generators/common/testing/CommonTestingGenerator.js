@@ -85,6 +85,12 @@ export default class CommonTestingGenerator extends Generator {
       required: true,
       desc: 'only latest lts',
     });
+
+    this.option('srcDir', {
+      type: String,
+      default: 'src',
+      desc: 'customize srcDir, if different than rootDir',
+    });
   }
 
   default() {
@@ -207,14 +213,15 @@ export default class CommonTestingGenerator extends Generator {
           );
 
           if (!pkg.jest) pkg.jest = {};
+          const srcDir = this.options.srcDir;
           Object.assign(pkg.jest, {
             cacheDirectory: './node_modules/.cache/jest',
             testEnvironment: 'node',
             testMatch: [
-              `<rootDir>/${workspacesPattern}/*/@(src|lib)/**/__tests__/**/*.${
+              `<rootDir>/${workspacesPattern}/*/@(${srcDir}|lib)/**/__tests__/**/*.${
                 transpileWithBabel ? '(ts|js|cjs|mjs)' : '(js|cjs|mjs)'
               }${hasReact ? '?(x)' : ''}`,
-              `<rootDir>/${workspacesPattern}/*/@(src|lib)/**/*.test.${
+              `<rootDir>/${workspacesPattern}/*/@(${srcDir}|lib)/**/*.test.${
                 transpileWithBabel ? '(ts|js|cjs|mjs)' : '(js|cjs|mjs)'
               }${hasReact ? '?(x)' : ''}`,
             ],
@@ -242,7 +249,7 @@ export default class CommonTestingGenerator extends Generator {
             .replace('\\', '/')}`,
         });
       } else {
-        const babelEnvs = pkg.pob.babelEnvs || [];
+        const babelEnvs = pkg.pob?.babelEnvs || [];
         const transpileWithBabel = packageUtils.transpileWithBabel(pkg);
 
         const shouldUseExperimentalVmModules =
@@ -267,7 +274,7 @@ export default class CommonTestingGenerator extends Generator {
         });
 
         if (this.options.runner === 'jest') {
-          const srcDirectory = transpileWithBabel ? 'src' : 'lib';
+          const srcDirectory = transpileWithBabel ? this.options.srcDir : 'lib';
 
           if (!pkg.jest) pkg.jest = {};
           Object.assign(pkg.jest, {
@@ -334,10 +341,10 @@ export default class CommonTestingGenerator extends Generator {
         this.destinationPath('babel.config.cjs'),
         {
           only: !this.options.monorepo
-            ? "'src'"
+            ? `'${this.options.srcDir}'`
             : pkg.workspaces
                 .flatMap((workspace) => [
-                  `'${workspace}/src'`,
+                  `'${workspace}/${this.options.srcDir}'`,
                   `'${workspace}/lib'`,
                 ])
                 .join(', '),

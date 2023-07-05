@@ -29,6 +29,7 @@ export const transpileWithBabel = (pkg) =>
     (pkg.devDependencies &&
       (pkg.devDependencies['pob-babel'] ||
         pkg.devDependencies.next ||
+        pkg.devDependencies['@yarnpkg/builder'] ||
         pkg.devDependencies['alp-dev'])) ||
     // alp-dev has pob-babel in dependencies
     (pkg.dependencies &&

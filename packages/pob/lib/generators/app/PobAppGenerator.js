@@ -5,7 +5,14 @@ import inLerna from '../../utils/inLerna.js';
 import * as packageUtils from '../../utils/package.js';
 import { appIgnorePaths } from './ignorePaths.js';
 
-const appsWithTypescript = ['alp', 'next.js', 'remix', 'pobpack', 'expo'];
+const appsWithTypescript = [
+  'alp',
+  'next.js',
+  'remix',
+  'pobpack',
+  'expo',
+  'yarn-plugin',
+];
 const appsWithBrowser = ['alp', 'next.js', 'remix'];
 
 export default class PobAppGenerator extends Generator {
@@ -114,6 +121,7 @@ export default class PobAppGenerator extends Generator {
   }
 
   default() {
+    const srcDir = this.appConfig.type === 'yarn-plugin' ? 'sources' : 'src';
     if (
       this.appConfig.type === 'node' ||
       this.appConfig.type === 'node-library' ||
@@ -146,6 +154,10 @@ export default class PobAppGenerator extends Generator {
         ? pkg.pob.jsx
         : packageUtils.hasReact(pkg);
 
+    if (!appIgnorePaths[this.appConfig.type]) {
+      throw new Error(`Unknown app type: ${this.appConfig.type}`);
+    }
+
     const ignorePaths = appIgnorePaths[this.appConfig.type](
       this.appConfig,
     ).filter(Boolean);
@@ -153,8 +165,8 @@ export default class PobAppGenerator extends Generator {
     this.composeWith('pob:common:typescript', {
       enable: babel,
       // nextjs now supports src
-      rootDir: this.appConfig.type === 'expo' ? '.' : 'src',
-      srcDir: 'src',
+      rootDir: this.appConfig.type === 'expo' ? '.' : srcDir,
+      srcDir,
       builddefs: false,
       dom: browser,
       jsx,
@@ -198,6 +210,7 @@ export default class PobAppGenerator extends Generator {
         isApp: true,
         splitCIJobs: false,
         onlyLatestLTS: true,
+        srcDir,
       });
 
       this.composeWith('pob:common:format-lint', {
