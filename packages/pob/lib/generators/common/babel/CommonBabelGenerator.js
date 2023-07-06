@@ -355,9 +355,14 @@ export default class CommonBabelGenerator extends Generator {
       packageUtils.addDependencies(pkg, ['@babel/runtime'], '^');
     }
 
-    packageUtils.addOrRemoveDevDependencies(pkg, useBabel && pkg.pob.jsx, [
-      '@babel/preset-react',
-    ]);
+    const isLibraryRollupPlugin = pkg.name.includes('rollup-plugin');
+
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      (useBabel && pkg.pob.jsx) ||
+        (pkg.devDependencies?.['@babel/preset-react'] && isLibraryRollupPlugin),
+      ['@babel/preset-react'],
+    );
 
     packageUtils.removeDevDependencies(pkg, [
       'babel-preset-env', // now @babel/preset-env
@@ -371,8 +376,7 @@ export default class CommonBabelGenerator extends Generator {
       this.babelEnvs.find(
         (env) => env.target === 'browser' && env.version === undefined,
       ) ||
-        (pkg.devDependencies?.['@babel/preset-env'] &&
-          pkg.name.includes('rollup-plugin')),
+        (pkg.devDependencies?.['@babel/preset-env'] && isLibraryRollupPlugin),
       ['@babel/preset-env'],
     );
 
