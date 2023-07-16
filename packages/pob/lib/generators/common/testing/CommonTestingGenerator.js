@@ -131,9 +131,13 @@ export default class CommonTestingGenerator extends Generator {
     const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
     const globalTesting = yoConfigPobMonorepo && yoConfigPobMonorepo.testing;
     const enableForMonorepo = this.options.monorepo && globalTesting;
-    const transpileWithBabel = this.options.monorepo
+    const transpileWithEsbuild = packageUtils.transpileWithEsbuild(pkg);
+    const transpileWithBabel = transpileWithEsbuild
+      ? false
+      : // eslint-disable-next-line unicorn/no-nested-ternary
+      this.options.monorepo
       ? yoConfigPobMonorepo.typescript
-      : pkg.pob && pkg.pob.babelEnvs && pkg.pob.babelEnvs.length > 0;
+      : packageUtils.transpileWithBabel(pkg);
     let hasReact =
       transpileWithBabel &&
       (this.options.monorepo
@@ -303,7 +307,18 @@ export default class CommonTestingGenerator extends Generator {
             //   [`^.+\\.ts${hasReact ? 'x?' : ''}$`]: 'babel-jest',
             // },
           });
-          delete pkg.jest.transform;
+          if (transpileWithEsbuild) {
+            pkg.jest.transform = {
+              [hasReact ? '^.+\\.tsx?$' : '^.+\\.ts$']: [
+                'jest-esbuild',
+                {
+                  format: shouldUseExperimentalVmModules ? 'esm' : 'cjs',
+                },
+              ],
+            };
+          } else {
+            delete pkg.jest.transform;
+          }
 
           if (shouldUseExperimentalVmModules) {
             pkg.jest.extensionsToTreatAsEsm = [

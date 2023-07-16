@@ -24,6 +24,9 @@ export const hasBabel = (pkg) =>
     (pkg.devDependencies['pob-babel'] || pkg.devDependencies['@babel/core'])
   );
 
+export const transpileWithEsbuild = (pkg) =>
+  !!(pkg.devDependencies && pkg.devDependencies['jest-esbuild']);
+
 export const transpileWithBabel = (pkg) =>
   !!(
     (pkg.devDependencies &&
