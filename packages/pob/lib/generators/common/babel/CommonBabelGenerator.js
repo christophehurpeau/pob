@@ -625,17 +625,44 @@ export default class CommonBabelGenerator extends Generator {
       });
 
       if (pkg.pob.extraEntries) {
-        pkg.pob.extraEntries.forEach((exportName) => {
-          pkg.exports[`./${exportName}`] =
-            pkg.type === 'module'
-              ? // eslint-disable-next-line unicorn/no-nested-ternary
-                exportName.endsWith('.cjs') || exportName.endsWith('.d.ts')
-                ? `./${exportName}`
-                : `./${exportName}.js`
-              : {
-                  import: `./${exportName}.mjs`,
-                  require: `./${exportName}.js`,
-                };
+        pkg.pob.extraEntries.forEach((extraEntryConfig) => {
+          if (typeof extraEntryConfig === 'string') {
+            extraEntryConfig = {
+              name: extraEntryConfig,
+            };
+          }
+
+          const calcExport = () => {
+            if (pkg.type === 'module') {
+              return extraEntryConfig.name.endsWith('.cjs') ||
+                extraEntryConfig.name.endsWith('.d.ts')
+                ? `./${extraEntryConfig.name}`
+                : `./${extraEntryConfig.name}.js`;
+            }
+
+            return {
+              import: `./${extraEntryConfig.name}.mjs`,
+              require: `./${extraEntryConfig.name}.js`,
+            };
+          };
+
+          let exportValue = calcExport();
+
+          if (extraEntryConfig.types) {
+            if (typeof exportValue === 'string') {
+              exportValue = {
+                types: `./${extraEntryConfig.types}`,
+                default: exportValue,
+              };
+            } else {
+              exportValue = {
+                types: `./${extraEntryConfig.types}`,
+                ...exportValue,
+              };
+            }
+          }
+
+          pkg.exports[`./${extraEntryConfig.name}`] = exportValue;
         });
       }
     } else if (!pkg.exports) {
