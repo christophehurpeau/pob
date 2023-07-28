@@ -20,7 +20,7 @@
     <% if (composite) { -%>
     "tsBuildInfoFile": "dist/definitions/tsbuildinfo",
     <% } -%>
-<% } else if (composite) { -%>
+<% } else if (composite && cacheEnabled) { -%>
     "outDir": "node_modules/.cache/tsc",
     "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo",
 <% } else { -%>

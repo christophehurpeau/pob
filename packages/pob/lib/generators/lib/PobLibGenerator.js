@@ -242,6 +242,7 @@ export default class PobLibGenerator extends Generator {
 
     this.composeWith('pob:common:typescript', {
       enable: withBabel,
+      isApp: false,
       dom: browser,
       jsx,
       updateOnly: this.options.updateOnly,

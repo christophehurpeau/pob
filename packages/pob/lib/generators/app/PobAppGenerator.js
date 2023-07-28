@@ -122,6 +122,8 @@ export default class PobAppGenerator extends Generator {
 
   default() {
     const srcDir = this.appConfig.type === 'yarn-plugin' ? 'sources' : 'src';
+    const isApp = this.appConfig.type !== 'node-library';
+
     if (
       this.appConfig.type === 'node' ||
       this.appConfig.type === 'node-library' ||
@@ -129,7 +131,7 @@ export default class PobAppGenerator extends Generator {
     ) {
       this.composeWith('pob:common:babel', {
         updateOnly: this.options.updateOnly,
-        isApp: this.appConfig.type !== 'node-library',
+        isApp,
         useAppConfig: this.appConfig.type === 'alp-node',
         testing: this.appConfig.testing,
         documentation: false,
@@ -164,6 +166,7 @@ export default class PobAppGenerator extends Generator {
 
     this.composeWith('pob:common:typescript', {
       enable: babel,
+      isApp,
       // nextjs now supports src
       rootDir: this.appConfig.type === 'expo' ? '.' : srcDir,
       srcDir,

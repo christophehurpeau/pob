@@ -14,6 +14,12 @@ export default class CommonTypescriptGenerator extends Generator {
       desc: 'enable typescript',
     });
 
+    this.option('isApp', {
+      type: Boolean,
+      required: true,
+      desc: 'is app',
+    });
+
     this.option('rootDir', {
       type: String,
       default: 'src',
@@ -189,6 +195,7 @@ export default class CommonTypescriptGenerator extends Generator {
         tsconfigPath,
         {
           emit: this.options.builddefs,
+          cacheEnabled: !this.options.isApp,
           monorepoPackageSrcPaths,
           monorepoPackageReferences,
           rootDir: this.options.rootDir,
