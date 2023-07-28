@@ -33,7 +33,9 @@
     "emitDeclarationOnly": true,
 <% } -%>
 <% if(composite) { -%>
+<% if(cacheEnabled) { -%>
     "incremental": true,
+<% } -%>
     "composite": true,
 <% } -%>
 
