@@ -20,8 +20,12 @@
     <% if (composite) { -%>
     "tsBuildInfoFile": "dist/definitions/tsbuildinfo",
     <% } -%>
-<% } else if (composite && cacheEnabled) { -%>
+<% } else if (composite) { -%>
+<% if (cacheEnabled) { -%>
     "outDir": "node_modules/.cache/tsc",
+<% } else { -%>
+    "noEmit": true,
+<% } -%>
     "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo",
 <% } else { -%>
     "noEmit": true,
@@ -33,9 +37,7 @@
     "emitDeclarationOnly": true,
 <% } -%>
 <% if(composite) { -%>
-<% if(cacheEnabled) { -%>
     "incremental": true,
-<% } -%>
     "composite": true,
 <% } -%>
 
