@@ -38,7 +38,7 @@ export const transpileWithBabel = (pkg) =>
     (pkg.dependencies &&
       (pkg.dependencies['pob-babel'] ||
         pkg.dependencies.next ||
-        pkg.devDependencies['alp-dev']))
+        pkg.dependencies['alp-dev']))
   );
 
 export const hasReact = (pkg) =>
