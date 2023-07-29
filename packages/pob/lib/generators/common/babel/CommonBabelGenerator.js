@@ -34,6 +34,12 @@ export default class CommonBabelGenerator extends Generator {
       default: false,
     });
 
+    this.option('isAppLibrary', {
+      type: Boolean,
+      required: false,
+      default: false,
+    });
+
     this.option('useAppConfig', {
       type: Boolean,
       required: false,
@@ -441,7 +447,11 @@ export default class CommonBabelGenerator extends Generator {
         // configured in babel preset
         // modern: ['defaults and >1% and supports es6-module'],
       };
-    } else if (this.options.isApp && pkg.browserslist) {
+    } else if (
+      this.options.isApp &&
+      !this.options.isAppLibrary &&
+      pkg.browserslist
+    ) {
       pkg.browserslist = {
         ...pkg.browserslist,
         production: [
@@ -458,7 +468,7 @@ export default class CommonBabelGenerator extends Generator {
 
     /* side effects */
 
-    if (this.options.isApp) {
+    if (this.options.isApp && !this.options.isAppLibrary) {
       delete pkg.sideEffects;
     } else if (!('sideEffects' in pkg)) {
       pkg.sideEffects = true;
@@ -557,9 +567,10 @@ export default class CommonBabelGenerator extends Generator {
         const exportName = entry === 'index' ? '.' : `./${entry}`;
 
         const targets = {
-          types: pkg.private
-            ? `./src/${entryDistName}.ts`
-            : `./${this.options.buildDirectory}/definitions/${entryDistName}.d.ts`,
+          types:
+            pkg.private || this.options.isAppLibrary
+              ? `./src/${entryDistName}.ts`
+              : `./${this.options.buildDirectory}/definitions/${entryDistName}.d.ts`,
         };
 
         const defaultNodeEnv = this.babelEnvs.find(
@@ -703,6 +714,7 @@ export default class CommonBabelGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
     const useBabel = this.babelEnvs && this.babelEnvs.length > 0;
+    const entries = pkg.pob.entries || ['index'];
 
     /* pob-babel config */
 
@@ -710,7 +722,10 @@ export default class CommonBabelGenerator extends Generator {
     packageUtils.removeDependencies(pkg, ['alp-rollup-plugin-config']);
     packageUtils.addOrRemoveDevDependencies(
       pkg,
-      useBabel && this.options.isApp && this.options.useAppConfig,
+      useBabel &&
+        this.options.isApp &&
+        !this.options.isAppLibrary &&
+        this.options.useAppConfig,
       ['alp-rollup-plugin-config'],
     );
 
@@ -724,6 +739,7 @@ export default class CommonBabelGenerator extends Generator {
           {
             config: this.options.useAppConfig,
             outDirectory: this.options.buildDirectory,
+            enableRun: !this.options.isAppLibrary && entries.includes('index'),
           },
         );
       } else {

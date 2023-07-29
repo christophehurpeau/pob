@@ -4,9 +4,11 @@ import { fileURLToPath } from 'node:url';
 import config from 'alp-rollup-plugin-config';
 <% } -%>
 import createRollupConfig from 'pob-babel/createRollupConfig.js';
+<% if (enableRun) { -%>
 import run from 'pob-babel/plugin-run.cjs';
 
 const watch = process.env.ROLLUP_WATCH === 'true';
+<% } -%>
 
 export default createRollupConfig({
   cwd: dirname(fileURLToPath(import.meta.url)),
@@ -17,5 +19,8 @@ export default createRollupConfig({
       targets: [{ src: 'src/config/**/*.yml' }],
     }),
 <% } -%>
-    watch && run({ execArgv: ['--enable-source-maps'] })],
+<% if (enableRun) { -%>
+    watch && run({ execArgv: ['--enable-source-maps'] }),
+<% } -%>
+  ],
 });
