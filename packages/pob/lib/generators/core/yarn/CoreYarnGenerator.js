@@ -37,9 +37,9 @@ export default class CoreYarnGenerator extends Generator {
       if (!fs.existsSync('.yarnrc.yml')) {
         // yarn 2 not yet installed
         // https://yarnpkg.com/getting-started/install
-        this.spawnCommandSync('yarn', ['set', 'version', 'stable']);
+        this.spawnSync('yarn', ['set', 'version', 'stable']);
       } else {
-        this.spawnCommandSync('yarn', ['set', 'version', 'stable']);
+        this.spawnSync('yarn', ['set', 'version', 'stable']);
         ensureJsonFileFormatted(this.destinationPath('package.json'));
       }
     }
@@ -55,7 +55,7 @@ export default class CoreYarnGenerator extends Generator {
         {},
       );
 
-      const { stdout } = this.spawnCommandSync(
+      const { stdout } = this.spawnSync(
         'yarn',
         ['plugin', 'runtime', '--json'],
         { stdio: 'pipe' },
@@ -66,10 +66,10 @@ export default class CoreYarnGenerator extends Generator {
         installedPlugins.some((plugin) => plugin.name === name);
 
       const installPlugin = (nameOrUrl) => {
-        this.spawnCommandSync('yarn', ['plugin', 'import', nameOrUrl]);
+        this.spawnSync('yarn', ['plugin', 'import', nameOrUrl]);
       };
       const removePlugin = (name) => {
-        this.spawnCommandSync('yarn', ['plugin', 'remove', name]);
+        this.spawnSync('yarn', ['plugin', 'remove', name]);
       };
 
       const postinstallDevPluginName = '@yarnpkg/plugin-postinstall-dev';
@@ -123,28 +123,28 @@ export default class CoreYarnGenerator extends Generator {
     this.fs.delete(this.destinationPath('.yarn/build-state.yml'));
     if (this.options.enable) {
       if (this.options.yarnNodeLinker === 'pnp') {
-        this.spawnCommandSync('yarn', ['dlx', '@yarnpkg/sdks', 'vscode']);
+        this.spawnSync('yarn', ['dlx', '@yarnpkg/sdks', 'vscode']);
       } else {
         this.fs.delete('.yarn/sdks');
       }
-      this.spawnCommandSync('yarn', ['install'], {
+      this.spawnSync('yarn', ['install'], {
         env: {
           YARN_ENABLE_IMMUTABLE_INSTALLS: 'false',
         },
       });
-      this.spawnCommandSync('yarn', ['dedupe']);
+      this.spawnSync('yarn', ['dedupe']);
 
-      this.spawnCommandSync('yarn', ['prettier', '--write', '.vscode']);
+      this.spawnSync('yarn', ['prettier', '--write', '.vscode']);
 
       const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
       if (pkg.scripts.preversion) {
         try {
-          this.spawnCommandSync('yarn', ['run', 'preversion']);
+          this.spawnSync('yarn', ['run', 'preversion']);
         } catch {}
       } else if (pkg.scripts.build) {
         try {
-          this.spawnCommandSync('yarn', ['run', 'build']);
+          this.spawnSync('yarn', ['run', 'build']);
         } catch {}
       }
     }
