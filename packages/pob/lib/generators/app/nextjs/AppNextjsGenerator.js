@@ -19,7 +19,8 @@ export default class AppNextjsGenerator extends Generator {
     packageUtils.addScripts(pkg, {
       start: 'next dev',
       'start:prod': 'next start',
-      build: 'next build',
+      // NODE_ENV=production is for tamagui
+      build: 'NODE_ENV=production next build',
     });
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);

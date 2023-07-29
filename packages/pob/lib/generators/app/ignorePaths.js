@@ -1,12 +1,15 @@
 export const appIgnorePaths = {
   alp: (config) => ['# alp paths', '/build', '/public', '/data'],
-  'next.js': (config) => [
-    '# next.js paths',
-    '/.next',
-    '/out',
-    '/build',
-    '/.env.local',
-  ],
+  'next.js': (config, pkg) =>
+    [
+      '# next.js paths',
+      '/.next',
+      '/out',
+      '/build',
+      '/.env.local',
+      pkg?.dependencies?.tamagui ? '# tamagui' : undefined,
+      pkg?.dependencies?.tamagui ? '/.tamagui' : undefined,
+    ].filter(Boolean),
   remix: (config) => ['# remix paths', '/.cache', '/build', '/public/build'],
   pobpack: (config) => ['/build', '/public'],
   node: (config) => ['/build'],

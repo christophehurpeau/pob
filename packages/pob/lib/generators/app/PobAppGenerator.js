@@ -162,6 +162,7 @@ export default class PobAppGenerator extends Generator {
 
     const ignorePaths = appIgnorePaths[this.appConfig.type](
       this.appConfig,
+      pkg,
     ).filter(Boolean);
 
     this.composeWith('pob:common:typescript', {
