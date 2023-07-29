@@ -194,14 +194,7 @@ export default class CoreCIGenerator extends Generator {
     if (!this.options.enable) {
       packageUtils.removeDevDependencies(pkg, ['jest-junit-reporter']);
     } else {
-      // this.babelEnvs = JSON.parse(this.options.babelEnvs);
-
       packageUtils.removeDevDependencies(pkg, ['jest-junit-reporter']);
-      // packageUtils.addOrRemoveDevDependencies(
-      //   pkg,
-      //   this.options.circleci && pkg.jest,
-      //   ['jest-junit-reporter'],
-      // );
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);

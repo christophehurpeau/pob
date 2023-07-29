@@ -2,7 +2,10 @@ import path from 'node:path';
 import Generator from 'yeoman-generator';
 import inLerna from '../../../utils/inLerna.js';
 import * as packageUtils from '../../../utils/package.js';
-import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
+import {
+  copyAndFormatTpl,
+  writeAndFormatJson,
+} from '../../../utils/writeAndFormat.js';
 
 export default class CommonTestingGenerator extends Generator {
   constructor(args, opts) {
@@ -144,10 +147,20 @@ export default class CommonTestingGenerator extends Generator {
         ? yoConfigPobMonorepo.react ?? packageUtils.hasReact(pkg)
         : packageUtils.hasReact(pkg));
 
-    if (this.options.enable || this.options.runner !== 'jest') {
+    const isJestRunner = this.options.runner === 'jest';
+
+    if (
+      !this.options.enable ||
+      !isJestRunner ||
+      (globalTesting && !enableForMonorepo)
+    ) {
       packageUtils.removeDevDependencies(pkg, ['jest', '@types/jest']);
 
       delete pkg.jest;
+      this.fs.delete(this.destinationPath('jest.config.js'));
+      this.fs.delete(this.destinationPath('jest.config.mjs'));
+      this.fs.delete(this.destinationPath('jest.config.cjs'));
+      this.fs.delete(this.destinationPath('jest.config.json'));
     }
 
     if (!this.options.enable) {
@@ -164,8 +177,9 @@ export default class CommonTestingGenerator extends Generator {
         delete pkg.scripts['test:coverage'];
       }
 
-      this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+      writeAndFormatJson(this.fs, this.destinationPath('package.json'), pkg);
     } else {
+      const jestConfigPath = this.destinationPath('jest.config.json');
       if (this.options.runner === 'jest') {
         packageUtils.addOrRemoveDevDependencies(
           pkg,
@@ -176,7 +190,6 @@ export default class CommonTestingGenerator extends Generator {
 
       packageUtils.removeScripts(['test:coverage']);
       if (this.options.monorepo && !globalTesting) {
-        delete pkg.jest;
         packageUtils.addScripts(pkg, {
           test: 'yarn workspaces foreach --parallel -Av run test',
         });
@@ -201,7 +214,7 @@ export default class CommonTestingGenerator extends Generator {
               : testCommand, // not yet configured
         });
 
-        if (this.options.runner === 'jest') {
+        if (isJestRunner) {
           const workspacesWithoutStar = pkg.workspaces.map((workspace) => {
             if (!workspace.endsWith('/*')) {
               throw new Error(`Invalid workspace format: ${workspace}`);
@@ -216,9 +229,11 @@ export default class CommonTestingGenerator extends Generator {
             pkgName.startsWith('react-'),
           );
 
-          if (!pkg.jest) pkg.jest = {};
+          const jestConfig = this.fs.readJSON(jestConfigPath, pkg.jest ?? {});
+          delete pkg.jest;
+
           const srcDir = this.options.srcDir;
-          Object.assign(pkg.jest, {
+          Object.assign(jestConfig, {
             cacheDirectory: './node_modules/.cache/jest',
             testEnvironment: 'node',
             testMatch: [
@@ -232,16 +247,16 @@ export default class CommonTestingGenerator extends Generator {
           });
 
           if (shouldUseExperimentalVmModules) {
-            pkg.jest.extensionsToTreatAsEsm = [
+            jestConfig.extensionsToTreatAsEsm = [
               transpileWithBabel && '.ts',
               transpileWithBabel && hasReact && '.tsx',
             ].filter(Boolean);
           } else {
-            delete pkg.jest.extensionsToTreatAsEsm;
+            delete jestConfig.extensionsToTreatAsEsm;
           }
+          writeAndFormatJson(this.fs, jestConfigPath, jestConfig);
         }
       } else if (globalTesting) {
-        delete pkg.jest;
         if (pkg.scripts) {
           delete pkg.scripts['generate:test-coverage'];
           delete pkg.scripts['test:watch'];
@@ -280,8 +295,9 @@ export default class CommonTestingGenerator extends Generator {
         if (this.options.runner === 'jest') {
           const srcDirectory = transpileWithBabel ? this.options.srcDir : 'lib';
 
-          if (!pkg.jest) pkg.jest = {};
-          Object.assign(pkg.jest, {
+          const jestConfig = this.fs.readJSON(jestConfigPath, pkg.jest ?? {});
+          delete pkg.jest;
+          Object.assign(jestConfig, {
             cacheDirectory: './node_modules/.cache/jest',
             testMatch: [
               `<rootDir>/${srcDirectory}/**/__tests__/**/*.${
@@ -308,7 +324,7 @@ export default class CommonTestingGenerator extends Generator {
             // },
           });
           if (transpileWithEsbuild) {
-            pkg.jest.transform = {
+            jestConfig.transform = {
               [hasReact ? '^.+\\.tsx?$' : '^.+\\.ts$']: [
                 'jest-esbuild',
                 {
@@ -316,31 +332,44 @@ export default class CommonTestingGenerator extends Generator {
                 },
               ],
             };
-          } else {
-            delete pkg.jest.transform;
+          } else if (!transpileWithBabel) {
+            delete jestConfig.transform;
+          } else if (jestConfig.transform) {
+            jestConfig.transform = Object.fromEntries(
+              Object.entries(jestConfig.transform).filter(
+                ([key, value]) =>
+                  !(
+                    value &&
+                    Array.isArray(value) &&
+                    value[0] === 'jest-esbuild'
+                  ),
+              ),
+            );
+            if (Object.keys(jestConfig.transform).length === 0) {
+              delete jestConfig.transform;
+            }
           }
 
           if (shouldUseExperimentalVmModules) {
-            pkg.jest.extensionsToTreatAsEsm = [
+            jestConfig.extensionsToTreatAsEsm = [
               transpileWithBabel && '.ts',
               transpileWithBabel && hasReact && '.tsx',
             ].filter(Boolean);
           } else {
-            delete pkg.jest.extensionsToTreatAsEsm;
+            delete jestConfig.extensionsToTreatAsEsm;
           }
 
           if (
             babelEnvs.length === 0 ||
             babelEnvs.some((env) => env.target === 'node')
           ) {
-            pkg.jest.testEnvironment = 'node';
+            // jestConfig.testEnvironment = 'node'; this is the default now
+            delete jestConfig.testEnvironment;
           } else {
-            delete pkg.jest.testEnvironment;
+            delete jestConfig.testEnvironment;
           }
 
-          if (!transpileWithBabel) delete pkg.jest.transform;
-        } else {
-          delete pkg.jest;
+          writeAndFormatJson(this.fs, jestConfigPath, jestConfig);
         }
       }
     }
@@ -375,6 +404,6 @@ export default class CommonTestingGenerator extends Generator {
       this.fs.delete('babel.config.cjs');
     }
 
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    writeAndFormatJson(this.fs, this.destinationPath('package.json'), pkg);
   }
 }

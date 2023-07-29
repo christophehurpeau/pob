@@ -1,25 +1,28 @@
 import sortConfig from '@pob/sort-eslint-config';
 
-function updateOverrides(config, jestOverride) {
-  const existingJestOverrideIndex = !config.overrides
+function updateOverrides(config, testsOverride) {
+  const existingTestsOverrideIndex = !config.overrides
     ? -1
     : config.overrides.findIndex(
         (override) => override.env && override.env.jest,
       );
-  if (!jestOverride) {
-    if (existingJestOverrideIndex !== -1) {
-      config.overrides.splice(existingJestOverrideIndex, 1);
+  if (!testsOverride) {
+    if (existingTestsOverrideIndex !== -1) {
+      config.overrides.splice(existingTestsOverrideIndex, 1);
       if (config.overrides.length === 0) {
         delete config.overrides;
       }
     }
   } else {
     // eslint-disable-next-line no-lonely-if
-    if (existingJestOverrideIndex !== -1) {
-      Object.assign(config.overrides[existingJestOverrideIndex], jestOverride);
+    if (existingTestsOverrideIndex !== -1) {
+      Object.assign(
+        config.overrides[existingTestsOverrideIndex],
+        testsOverride,
+      );
     } else {
       if (!config.overrides) config.overrides = [];
-      config.overrides.push(jestOverride);
+      config.overrides.push(testsOverride);
     }
   }
   return config;
@@ -103,7 +106,7 @@ export default function updateEslintConfig(
   config,
   {
     extendsConfig,
-    jestOverride,
+    testsOverride,
     useTypescript,
     globalEslint,
     settings,
@@ -128,7 +131,7 @@ export default function updateEslintConfig(
     globalEslint,
     relativePath,
   );
-  config = updateOverrides(config, jestOverride);
+  config = updateOverrides(config, testsOverride);
   if (settings) {
     config = updateSettings(config, settings);
   }

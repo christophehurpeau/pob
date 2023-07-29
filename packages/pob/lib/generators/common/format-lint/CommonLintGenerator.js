@@ -40,6 +40,12 @@ export default class CommonLintGenerator extends Generator {
       desc: 'Documentation enabled',
     });
 
+    this.option('testing', {
+      type: Boolean,
+      required: true,
+      desc: 'Testing enabled',
+    });
+
     this.option('typescript', {
       type: Boolean,
       required: false,
@@ -371,10 +377,9 @@ export default class CommonLintGenerator extends Generator {
       ? `{${pkg.type === 'commonjs' ? 'mjs' : 'cjs'},js}`
       : `${hasReact ? '{ts,tsx}' : 'ts'}`;
 
-    const jestOverride =
-      !pkg.jest && !globalTesting
-        ? null
-        : {
+    const testsOverride =
+      this.options.testing || globalTesting
+        ? {
             files: [`**/*.test.${ext}`, `__tests__/**/*.${ext}`],
             env: { jest: true },
             rules: {
@@ -383,15 +388,16 @@ export default class CommonLintGenerator extends Generator {
                 { devDependencies: true },
               ],
             },
-          };
+          }
+        : null;
 
-    if (jestOverride) {
+    if (testsOverride) {
       // if (!useBabel) {
-      //   jestOverride.extends = ['pob/babel'];
+      //   testsOverride.extends = ['pob/babel'];
       // }
 
       if (useBabel) {
-        jestOverride.extends = ['@pob/eslint-config-typescript/test'];
+        testsOverride.extends = ['@pob/eslint-config-typescript/test'];
       }
     }
 
@@ -493,7 +499,7 @@ export default class CommonLintGenerator extends Generator {
           this.fs.readJSON(srcEslintrcPath, {}),
           {
             extendsConfig: extendsConfigSrc,
-            jestOverride,
+            testsOverride,
             useTypescript: useBabel,
             globalEslint,
             ignorePatterns:
