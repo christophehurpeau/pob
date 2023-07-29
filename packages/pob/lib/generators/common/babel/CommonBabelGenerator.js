@@ -676,6 +676,15 @@ export default class CommonBabelGenerator extends Generator {
       if (!pkg.exports['./package.json']) {
         pkg.exports['./package.json'] = './package.json';
       }
+
+      if (pkg.types && !pkg.exports['.'].types) {
+        if (typeof pkg.exports['.'] === 'string') {
+          pkg.exports['.'] = {
+            default: pkg.exports['.'],
+          };
+        }
+        pkg.exports['.'] = { types: pkg.types, ...pkg.exports['.'] };
+      }
     }
 
     Object.keys(pkg).forEach((key) => {
