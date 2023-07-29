@@ -557,7 +557,9 @@ export default class CommonBabelGenerator extends Generator {
         const exportName = entry === 'index' ? '.' : `./${entry}`;
 
         const targets = {
-          types: `./${this.options.buildDirectory}/definitions/index.d.ts`,
+          types: pkg.private
+            ? `./src/${entryDistName}.ts`
+            : `./${this.options.buildDirectory}/definitions/${entryDistName}.d.ts`,
         };
 
         const defaultNodeEnv = this.babelEnvs.find(
