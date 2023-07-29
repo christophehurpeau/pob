@@ -228,7 +228,7 @@ export default class PobAppGenerator extends Generator {
         enableSrcResolver: true,
         packageManager: this.options.packageManager,
         yarnNodeLinker: this.options.yarnNodeLinker,
-        ignorePaths: ignorePaths.join('\n'),
+        rootIgnorePaths: ignorePaths.join('\n'),
         buildDirectory: this.appConfig.type === 'expo' ? '.expo' : 'build',
       });
 
