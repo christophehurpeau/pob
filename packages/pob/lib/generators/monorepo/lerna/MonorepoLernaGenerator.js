@@ -138,8 +138,8 @@ export default class MonorepoLernaGenerator extends Generator {
     if (pkg.name === 'pob-monorepo') {
       pkg.devDependencies['@pob/lerna-light'] = 'workspace:*';
     } else if (
-      pkg.name !== 'pob-monorepo-test-repository' &&
-      pkg.name !== '@pob/eslint-config-monorepo'
+      pkg.name !== 'pob-monorepo-test-repository'
+      // pkg.name !== '@pob/eslint-config-monorepo'
     ) {
       packageUtils.addDevDependencies(pkg, ['@pob/lerna-light']);
     }
