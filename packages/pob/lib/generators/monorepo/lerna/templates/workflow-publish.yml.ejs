@@ -63,7 +63,8 @@ jobs:
 <% if (publish) { -%>
 
 <% if (enableYarnVersion) { -%>
-      - run: |
+      - name: Publish to npm
+        run: |
           echo npmAuthToken: "$NODE_AUTH_TOKEN" >> ./.yarnrc.yml
           yarn workspaces foreach --no-private npm publish --tolerate-republish
 <% } else { -%>
