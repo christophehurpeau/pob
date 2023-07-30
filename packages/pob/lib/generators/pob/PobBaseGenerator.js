@@ -118,15 +118,15 @@ export default class PobBaseGenerator extends Generator {
 
     this.projectConfig = { ...config, ...responses };
     this.config.set('project', this.projectConfig);
+  }
 
+  default() {
     this.composeWith('pob:core:yarn', {
       type: this.projectConfig.type,
       enable: this.isRoot && this.projectConfig.packageManager === 'yarn',
       yarnNodeLinker: this.projectConfig.yarnNodeLinker,
     });
-  }
 
-  default() {
     this.composeWith('pob:core:package', {
       updateOnly: this.options.updateOnly,
       private: this.useLerna,
