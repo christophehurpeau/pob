@@ -52,7 +52,7 @@ jobs:
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
 <% if (enableYarnVersion) { -%>
-          yarn version --create-release=github --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }} -m 'chore: release [skip ci]\n\n%t'
+          yarn version --create-release=github --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }} -m 'chore: release <%- isIndependent ? '' : '%v ' %>[skip ci]<%- isIndependent ? '\\n\\n%t' : '' %>'
 <% } else { -%>
           yarn lerna version --yes --push --exact --conventional-commits --conventional-graduate --changelog-preset conventional-changelog-conventionalcommits --create-release=github -m 'chore: release [skip ci]'
 <% } -%>
@@ -65,7 +65,8 @@ jobs:
 <% if (enableYarnVersion) { -%>
       - name: Publish to npm
         run: |
-          echo npmAuthToken: "$NODE_AUTH_TOKEN" >> ./.yarnrc.yml
+          echo >> ./.yarnrc.yml
+          echo "npmAuthToken: $NODE_AUTH_TOKEN" >> ./.yarnrc.yml
           yarn workspaces foreach --no-private npm publish --tolerate-republish
 <% } else { -%>
       - uses: actions/setup-node@v3

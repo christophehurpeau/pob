@@ -182,7 +182,7 @@ export default class MonorepoLernaGenerator extends Generator {
 
     packageUtils.addOrRemoveScripts(
       pkg,
-      this.options.packageManager === 'yarn',
+      this.options.packageManager === 'yarn' && !isYarnVersionEnabled,
       {
         version:
           'YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn && git add yarn.lock',
@@ -196,6 +196,7 @@ export default class MonorepoLernaGenerator extends Generator {
       {
         publish: !this.options.isAppProject,
         enableYarnVersion: isYarnVersionEnabled,
+        isIndependent: lernaConfig.version === 'independent',
       },
     );
 
