@@ -137,11 +137,14 @@ export default class MonorepoLernaGenerator extends Generator {
 
     if (pkg.name === 'pob-monorepo') {
       pkg.devDependencies['@pob/lerna-light'] = 'workspace:*';
-    } else if (
-      pkg.name !== 'pob-monorepo-test-repository'
-      // pkg.name !== '@pob/eslint-config-monorepo'
-    ) {
-      packageUtils.addDevDependencies(pkg, ['@pob/lerna-light']);
+    } else {
+      packageUtils.addOrRemoveDevDependencies(
+        pkg,
+        pkg.name !== 'pob-monorepo-test-repository' &&
+          pkg.name !== 'use-react-intl-formatters-monorepo',
+        // pkg.name !== '@pob/eslint-config-monorepo'
+        ['@pob/lerna-light'],
+      );
     }
 
     // TODO remove lerna completely

@@ -62,15 +62,17 @@ jobs:
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
 <% if (publish) { -%>
 
+<% if (enableYarnVersion) { -%>
+      - run: |
+          echo npmAuthToken: "$NODE_AUTH_TOKEN" >> ./.yarnrc.yml
+          yarn workspaces foreach --no-private npm publish --tolerate-republish
+<% } else { -%>
       - uses: actions/setup-node@v3
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         with:
           node-version: 18
           registry-url: "https://registry.npmjs.org"
 
-<% if (enableYarnVersion) { -%>
-      - run: yarn workspaces foreach --no-private npm publish --tolerate-republish
-<% } else { -%>
       - run: yarn lerna publish from-git --no-verify-access --yes
 <% } -%>
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
