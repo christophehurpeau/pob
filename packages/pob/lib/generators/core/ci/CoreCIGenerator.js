@@ -22,6 +22,12 @@ export default class CoreCIGenerator extends Generator {
       desc: 'enable release-please',
     });
 
+    this.option('enableYarnVersion', {
+      type: Boolean,
+      default: true,
+      desc: 'enable yarn version conventional commits',
+    });
+
     this.option('build', {
       type: Boolean,
       default: true,
@@ -88,12 +94,14 @@ export default class CoreCIGenerator extends Generator {
 
     this.isReleasePleaseEnabled =
       this.options.enableReleasePlease &&
+      !this.options.enableYarnVersion &&
       !pkg.devDependencies?.['standard-version'];
 
     if (
       this.options.enableReleasePlease &&
       !process.env.CI &&
-      !this.isReleasePleaseEnabled
+      !this.isReleasePleaseEnabled &&
+      !this.options.enableYarnVersion
     ) {
       const { enableReleasePlease } = await this.prompt({
         type: 'confirm',

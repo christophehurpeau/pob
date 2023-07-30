@@ -141,6 +141,9 @@ export default class MonorepoLernaGenerator extends Generator {
       packageUtils.addDevDependencies(pkg, ['@pob/lerna-light']);
     }
 
+    // TODO remove lerna completely
+    const isYarnVersionEnabled = !pkg.devDependencies?.['@pob/lerna-light'];
+
     if (pkg.name !== 'pob-monorepo') {
       packageUtils.addDevDependencies(pkg, ['repository-check-dirty']);
     }
@@ -180,11 +183,13 @@ export default class MonorepoLernaGenerator extends Generator {
       },
     );
 
+    // TODO rename release (release = version + publish)
     this.fs.copyTpl(
       this.templatePath('workflow-publish.yml.ejs'),
       this.destinationPath('.github/workflows/publish.yml'),
       {
         publish: !this.options.isAppProject,
+        enableYarnVersion: isYarnVersionEnabled,
       },
     );
 

@@ -72,25 +72,41 @@ export default class CoreYarnGenerator extends Generator {
         this.spawnSync('yarn', ['plugin', 'remove', name]);
       };
 
+      const installPluginIfNotInstalled = (name, nameOrUrl = name) => {
+        if (!isPluginInstalled(name)) {
+          installPlugin(nameOrUrl);
+        }
+      };
+
+      const removePluginIfInstalled = (name) => {
+        if (isPluginInstalled(name)) {
+          removePlugin(name);
+        }
+      };
+
       const postinstallDevPluginName = '@yarnpkg/plugin-postinstall-dev';
       const workspacesPluginName = '@yarnpkg/plugin-workspace-tools';
+      const versionPluginName = '@yarnpkg/plugin-conventional-version';
 
       if (!inLerna && !pkg.private) {
-        if (!isPluginInstalled(postinstallDevPluginName)) {
-          installPlugin(
-            'https://raw.githubusercontent.com/sachinraja/yarn-plugin-postinstall-dev/main/bundles/%40yarnpkg/plugin-postinstall-dev.js',
-          );
-        }
-      } else if (isPluginInstalled(postinstallDevPluginName)) {
-        removePlugin(postinstallDevPluginName);
+        installPluginIfNotInstalled(
+          postinstallDevPluginName,
+          'https://raw.githubusercontent.com/sachinraja/yarn-plugin-postinstall-dev/main/bundles/%40yarnpkg/plugin-postinstall-dev.js',
+        );
+      } else {
+        removePluginIfInstalled(postinstallDevPluginName);
       }
 
       if (pkg.workspaces) {
-        if (!isPluginInstalled(workspacesPluginName)) {
-          installPlugin(workspacesPluginName);
+        installPluginIfNotInstalled(workspacesPluginName);
+        if (!pkg.devDependencies?.['@pob/lerna-light']) {
+          installPluginIfNotInstalled(
+            versionPluginName,
+            'https://raw.githubusercontent.com/christophehurpeau/yarn-plugin-conventional-version/main/bundles/plugin-conventional-version.cjs',
+          );
         }
-      } else if (isPluginInstalled(workspacesPluginName)) {
-        removePlugin(workspacesPluginName);
+      } else {
+        removePluginIfInstalled(workspacesPluginName);
       }
 
       // must be done after plugins installed

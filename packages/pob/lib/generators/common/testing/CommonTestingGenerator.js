@@ -35,6 +35,12 @@ export default class CommonTestingGenerator extends Generator {
       desc: 'enable release-please',
     });
 
+    this.option('enableYarnVersion', {
+      type: Boolean,
+      default: true,
+      desc: 'enable yarn version conventional commits',
+    });
+
     this.option('ci', {
       type: Boolean,
       required: true,
@@ -101,6 +107,7 @@ export default class CommonTestingGenerator extends Generator {
       this.composeWith('pob:core:ci', {
         enable: this.options.ci,
         enableReleasePlease: this.options.enableReleasePlease,
+        enableYarnVersion: this.options.enableYarnVersion,
         testing: this.options.enable,
         build: this.options.build,
         typescript: this.options.typescript,

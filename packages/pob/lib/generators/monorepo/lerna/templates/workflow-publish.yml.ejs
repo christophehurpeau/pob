@@ -3,9 +3,21 @@ on:
   workflow_dispatch:
     inputs:
       dry-run:
-        description: "Dry run? (y/N)"
+        description: "Dry run"
         required: true
-        default: "N"
+        type: boolean
+        default: false
+<% if (enableYarnVersion) { -%>
+      bump-dependents-highest-as:
+        description: "Bump dependents highest as"
+        required: false
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+        default: "major"
+<% } -%>
 
 jobs:
   publish:
@@ -24,25 +36,26 @@ jobs:
         run: yarn install --immutable --immutable-cache
 
       - name: New version (dry run)
-        if: |
-          github.ref == 'refs/heads/main'
-          && contains(github.event.inputs.dry-run, 'y')
+        if: github.ref == 'refs/heads/main' && inputs.dry-run
+<% if (enableYarnVersion) { -%>
+        run: yarn version --dry-run
+<% } else { -%>
         run: yarn lerna version --yes --no-push --exact --conventional-commits --conventional-graduate --changelog-preset conventional-changelog-conventionalcommits --no-git-tag-version --loglevel=verbose
-
+<% } -%>
       - name: Configure Git user
-        if: |
-          github.ref == 'refs/heads/main'
-          && contains(github.event.inputs.dry-run, 'y') == false
+        if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@users.noreply.github.com'
 
       - name: New version
-        if: |
-          github.ref == 'refs/heads/main'
-          && contains(github.event.inputs.dry-run, 'y') == false
+        if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
+<% if (enableYarnVersion) { -%>
+          yarn version --create-release=github --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }} -m 'chore: release [skip ci]\n\n%t'
+<% } else { -%>
           yarn lerna version --yes --push --exact --conventional-commits --conventional-graduate --changelog-preset conventional-changelog-conventionalcommits --create-release=github -m 'chore: release [skip ci]'
+<% } -%>
         env:
           HUSKY: 0
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -50,17 +63,17 @@ jobs:
 <% if (publish) { -%>
 
       - uses: actions/setup-node@v3
-        if: |
-          github.ref == 'refs/heads/main'
-          && contains(github.event.inputs.dry-run, 'y') == false
+        if: github.ref == 'refs/heads/main' && !inputs.dry-run
         with:
           node-version: 18
           registry-url: "https://registry.npmjs.org"
 
+<% if (enableYarnVersion) { -%>
+      - run: yarn workspaces foreach --no-private npm publish --tolerate-republish
+<% } else { -%>
       - run: yarn lerna publish from-git --no-verify-access --yes
-        if: |
-          github.ref == 'refs/heads/main'
-          && contains(github.event.inputs.dry-run, 'y') == false
+<% } -%>
+        if: github.ref == 'refs/heads/main' && !inputs.dry-run
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 <% } -%>

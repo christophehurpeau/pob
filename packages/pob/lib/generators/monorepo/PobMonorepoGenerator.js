@@ -208,7 +208,7 @@ export default class PobMonorepoGenerator extends Generator {
 
     this.composeWith('pob:common:husky', {});
 
-    const isReleasePleaseEnabled =
+    const isYarnVersionEnabled =
       this.pobLernaConfig.testing &&
       this.pobLernaConfig.ci &&
       !pkg.devDependencies?.['@pob/lerna-light'];
@@ -218,7 +218,8 @@ export default class PobMonorepoGenerator extends Generator {
     this.composeWith('pob:common:testing', {
       monorepo: true,
       enable: this.pobLernaConfig.testing,
-      enableReleasePlease: isReleasePleaseEnabled,
+      enableReleasePlease: false,
+      enableYarnVersion: isYarnVersionEnabled,
       testing: this.pobLernaConfig.testing,
       build: this.pobLernaConfig.typescript,
       typescript: this.pobLernaConfig.typescript,
@@ -245,11 +246,7 @@ export default class PobMonorepoGenerator extends Generator {
       ]
         .filter(Boolean)
         .join('\n'),
-      rootIgnorePaths: [
-        isReleasePleaseEnabled && '/.release-please-manifest.json',
-      ]
-        .filter(Boolean)
-        .join('\n'),
+      rootIgnorePaths: [],
     });
 
     this.composeWith('pob:lib:doc', {
@@ -283,7 +280,7 @@ export default class PobMonorepoGenerator extends Generator {
 
     this.composeWith('pob:common:release', {
       enable: this.pobLernaConfig.testing && this.pobLernaConfig.ci,
-      isReleasePleaseEnabled,
+      isYarnVersionEnabled,
       withBabel: this.pobLernaConfig.typescript,
       documentation: this.pobLernaConfig.documentation,
       updateOnly: this.options.updateOnly,

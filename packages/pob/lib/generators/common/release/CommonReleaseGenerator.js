@@ -72,6 +72,8 @@ export default class CommonReleaseGenerator extends Generator {
       );
     }
 
+    this.fs.delete(this.destinationPath('.release-please-manifest.json'));
+
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 }
