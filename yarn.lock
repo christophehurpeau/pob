@@ -11382,7 +11382,7 @@ __metadata:
     prettier: 2.8.8
     semver: 7.5.4
     yeoman-environment: 4.0.0-beta.3
-    yeoman-generator: 6.0.0-rc.2
+    yeoman-generator: 6.0.0-rc.3
   bin:
     pob: ./lib/pob.js
   languageName: unknown
@@ -14075,9 +14075,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"yeoman-generator@npm:6.0.0-rc.2":
-  version: 6.0.0-rc.2
-  resolution: "yeoman-generator@npm:6.0.0-rc.2"
+"yeoman-generator@npm:6.0.0-rc.3":
+  version: 6.0.0-rc.3
+  resolution: "yeoman-generator@npm:6.0.0-rc.3"
   dependencies:
     "@types/lodash-es": ^4.17.7
     "@types/node": ^16.18.3
@@ -14102,7 +14102,7 @@ resolve@^2.0.0-next.3:
   peerDependenciesMeta:
     yeoman-environment:
       optional: true
-  checksum: 0a00d30f7badfa092f97062c80af45c06c9fc998b9ff23e92dcdf30fd9df938421fd4753c9d626edf9ad37d784a5edf71a2ffb48ff3ac21dadc6719141a10f8d
+  checksum: bbc28a1636ecef4e868ed729fde8079d42859e592c3c06f52eb8c1dbf874ae9a873908172d953fd6b69fd1e317c07e3723a302bcf6d4c38833ca8183d79ff6fe
   languageName: node
   linkType: hard
 
