@@ -65,6 +65,10 @@ jobs:
 <% if (enableYarnVersion) { -%>
       - name: Publish to npm
         run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "Missing env variable NODE_AUTH_TOKEN"
+            exit 1
+          fi
           echo >> ./.yarnrc.yml
           echo "npmAuthToken: $NODE_AUTH_TOKEN" >> ./.yarnrc.yml
           yarn workspaces foreach --no-private npm publish --tolerate-republish
