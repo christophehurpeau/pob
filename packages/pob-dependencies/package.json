@@ -33,10 +33,10 @@
   "prettier": "@pob/root/prettier-config",
   "pob": {},
   "devDependencies": {
-    "@babel/core": "7.22.9",
-    "@babel/preset-env": "7.22.9",
+    "@babel/core": "7.22.10",
+    "@babel/preset-env": "7.22.10",
     "@babel/preset-react": "7.22.5",
-    "@babel/runtime": "7.22.6",
+    "@babel/runtime": "7.22.10",
     "@pob/commitlint-config": "6.0.1",
     "@pob/eslint-config": "51.0.0",
     "@pob/eslint-config-typescript": "51.0.0",
