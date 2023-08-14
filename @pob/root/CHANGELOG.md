@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.1.1...@pob/root@8.2.0) (2023-08-14)
+
+
+### Features
+
+* **deps:** update dependency @commitlint/cli to v17.7.0 ([#1730](https://github.com/christophehurpeau/pob/issues/1730)) ([ecb0c37](https://github.com/christophehurpeau/pob/commit/ecb0c3706ab47f1323ab6aef8b11ddca1de4a03a))
+* **deps:** update dependency lint-staged to v13.3.0 ([#1734](https://github.com/christophehurpeau/pob/issues/1734)) ([dd973c3](https://github.com/christophehurpeau/pob/commit/dd973c316ce9a5eaab197ab366ce81869cc80b0c))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @commitlint/cli to v17.6.7 ([#1711](https://github.com/christophehurpeau/pob/issues/1711)) ([9d169c8](https://github.com/christophehurpeau/pob/commit/9d169c85e64c8229543045a1ea0baba65fc2445a))
+* **deps:** update dependency @commitlint/cli to v17.7.1 ([#1731](https://github.com/christophehurpeau/pob/issues/1731)) ([22bbd15](https://github.com/christophehurpeau/pob/commit/22bbd15fdc9b14acb023c12c68b527d841c889a4))
+
+
+
 ## [8.1.1](https://github.com/christophehurpeau/pob/compare/@pob/root@8.1.0...@pob/root@8.1.1) (2023-07-05)
 
 

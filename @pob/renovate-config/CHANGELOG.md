@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.18.0](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.17.1...@pob/renovate-config@5.18.0) (2023-08-14)
+
+
+### Features
+
+* **renovate-config:** group tamagui ([1c16740](https://github.com/christophehurpeau/pob/commit/1c16740cd0023d838225cf0384ad1d8192894f58))
+
+
+
 ## [5.17.1](https://github.com/christophehurpeau/pob/compare/@pob/renovate-config@5.17.0...@pob/renovate-config@5.17.1) (2023-07-05)
 
 **Note:** Version bump only for package @pob/renovate-config

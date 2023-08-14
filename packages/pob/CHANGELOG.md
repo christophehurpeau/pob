@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.4.0](https://github.com/christophehurpeau/pob/compare/pob@13.3.0...pob@13.4.0) (2023-08-14)
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.45.0 ([#1708](https://github.com/christophehurpeau/pob/issues/1708)) ([9113ab1](https://github.com/christophehurpeau/pob/commit/9113ab18fe809614382d9e2fbb8180892f31962e))
+* **deps:** update dependency eslint to v8.46.0 ([#1717](https://github.com/christophehurpeau/pob/issues/1717)) ([e40f88b](https://github.com/christophehurpeau/pob/commit/e40f88b7db84e544e9a5992f654f79bfd0d1aaf8))
+* **deps:** update dependency eslint to v8.47.0 ([#1732](https://github.com/christophehurpeau/pob/issues/1732)) ([333b820](https://github.com/christophehurpeau/pob/commit/333b820c07d500d6aba8f4af3e62125787ab8c22))
+* improve jest config ([8243486](https://github.com/christophehurpeau/pob/commit/82434867b2ba54e1f6eb9faee0a56e38e218d4bf))
+* **pob:** add name in publish job ([4a2bc0f](https://github.com/christophehurpeau/pob/commit/4a2bc0f44bd195425227bfe7e340b0a6169715f2))
+* **pob:** ci plugin yarn version ([7ee583e](https://github.com/christophehurpeau/pob/commit/7ee583eba40a1a609c7c98e459f4e36b394d447e))
+* **pob:** configure types in extraEntries ([10548e2](https://github.com/christophehurpeau/pob/commit/10548e2a55a51f1541412ce8149587c58391a9e7))
+* **pob:** disable tsc cache for apps ([f7b3c46](https://github.com/christophehurpeau/pob/commit/f7b3c46640e68719cbf6c1c08d5b43393d6102f1))
+* **pob:** improve config for app node-library ([3812f31](https://github.com/christophehurpeau/pob/commit/3812f31bd9ed48467f7f31a2d7e29ce1daa04074))
+* **pob:** support esbuild ([a0ece75](https://github.com/christophehurpeau/pob/commit/a0ece756603ca84bcdf2f0c45dde3123ca9b90f7))
+* support tamagui ([8a8e9d4](https://github.com/christophehurpeau/pob/commit/8a8e9d4b87ae5809120e42b04de10729c8a81d94))
+
+
+### Bug Fixes
+
+* add early return if token is missing ([afeff46](https://github.com/christophehurpeau/pob/commit/afeff4685a6031fbb1aeaecc4e8a551f1ea3938d))
+* configure types in exports for non babel libraries ([e1ed4cf](https://github.com/christophehurpeau/pob/commit/e1ed4cf8634daa5ecb69f64baf97af8bec8a7311))
+* **deps:** update dependency semver to v7.5.4 ([#1703](https://github.com/christophehurpeau/pob/issues/1703)) ([0656af8](https://github.com/christophehurpeau/pob/commit/0656af8a33c72353bc94596478620cec1fff373d))
+* **deps:** update dependency yeoman-generator to v6.0.0-rc.3 ([#1720](https://github.com/christophehurpeau/pob/issues/1720)) ([f397a89](https://github.com/christophehurpeau/pob/commit/f397a890efbe842d82721131f3812dfdc1ed22a3))
+* fix ignore paths for apps ([be6b9c1](https://github.com/christophehurpeau/pob/commit/be6b9c19792a973cce2b77525fecabb56192d53d))
+* fixes for publish workflow ([101ecdb](https://github.com/christophehurpeau/pob/commit/101ecdb32c60875f5b1bac9fa07cd2358485b42e))
+* intialize yarn before getting cached package.json ([ef595bc](https://github.com/christophehurpeau/pob/commit/ef595bc01296ee5b119ec93e64cd89e5e87cfcdc))
+* keep @babel/preset-react for rollup plugins ([f44881e](https://github.com/christophehurpeau/pob/commit/f44881e676afc4a23d7df19e798d293c7a476e98))
+* **pob:** dont use yarn plugin for eslint-config as it is a monorepo with fixed version ([a93cb1f](https://github.com/christophehurpeau/pob/commit/a93cb1fbbed480280d83ffcd40d1ad2adbb17578))
+* **pob:** export types for private package ([c0e78d1](https://github.com/christophehurpeau/pob/commit/c0e78d1d4c066d9c8e86c9d7aa8b7bfc613e15fc))
+* **pob:** fix alp-dev check in dependencies ([4ebc6bb](https://github.com/christophehurpeau/pob/commit/4ebc6bb3eed9aaee8273e02022957824284d39c7))
+* **pob:** fix publish with yarn ([d683add](https://github.com/christophehurpeau/pob/commit/d683addfb20ba95751f84bdd94dfeda0380ddf13))
+* **pob:** fixes and enable yarn plugin version for eslint-configs ([396ffea](https://github.com/christophehurpeau/pob/commit/396ffea15749afe68be4de3d929d83327ff204ba))
+* **pob:** keep incremental true even when cacheEnabled is false ([3e95d46](https://github.com/christophehurpeau/pob/commit/3e95d4664f90b087dcd42fbabea799e67a0d771d))
+* **pob:** node 20 is not yet lts ([0cd5460](https://github.com/christophehurpeau/pob/commit/0cd54609acb348bc88edd985466bbf5b7b13cfce))
+* **pob:** only enable incremental if cache is enabled ([f7c9d2a](https://github.com/christophehurpeau/pob/commit/f7c9d2af5dbc67a61261184410678546f26881e8))
+* **pob:** remove noEmitOnError when noEmit is enabled ([7d9dfa2](https://github.com/christophehurpeau/pob/commit/7d9dfa2d6666577af4e93f96943ebfdb355fe2a5))
+
+
+
 ## [13.3.0](https://github.com/christophehurpeau/pob/compare/pob@13.2.3...pob@13.3.0) (2023-07-05)
 
 

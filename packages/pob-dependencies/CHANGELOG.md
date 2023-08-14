@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.4.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.3.0...pob-dependencies@8.4.0) (2023-08-14)
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.45.0 ([#1708](https://github.com/christophehurpeau/pob/issues/1708)) ([9113ab1](https://github.com/christophehurpeau/pob/commit/9113ab18fe809614382d9e2fbb8180892f31962e))
+* **deps:** update dependency eslint to v8.46.0 ([#1717](https://github.com/christophehurpeau/pob/issues/1717)) ([e40f88b](https://github.com/christophehurpeau/pob/commit/e40f88b7db84e544e9a5992f654f79bfd0d1aaf8))
+* **deps:** update dependency eslint to v8.47.0 ([#1732](https://github.com/christophehurpeau/pob/issues/1732)) ([333b820](https://github.com/christophehurpeau/pob/commit/333b820c07d500d6aba8f4af3e62125787ab8c22))
+* **deps:** update dependency jest to v29.6.1 ([#1701](https://github.com/christophehurpeau/pob/issues/1701)) ([49c95ed](https://github.com/christophehurpeau/pob/commit/49c95ed3da8f720cf4be3044287a7e7881dd7f45))
+* **deps:** update dependency rollup to v3.26.2 ([#1702](https://github.com/christophehurpeau/pob/issues/1702)) ([92d1da7](https://github.com/christophehurpeau/pob/commit/92d1da761932edb96cbc32d3537a8325de07deaa))
+
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v7.5.4 ([#1703](https://github.com/christophehurpeau/pob/issues/1703)) ([0656af8](https://github.com/christophehurpeau/pob/commit/0656af8a33c72353bc94596478620cec1fff373d))
+
+
+
 ## [8.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.2.0...pob-dependencies@8.3.0) (2023-07-05)
 
 
