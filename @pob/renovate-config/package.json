@@ -160,6 +160,16 @@
           ]
         },
         {
+          "groupName": "tamagui",
+          "description": "tamagui monorepo",
+          "packagePatterns": [
+            "^@tamagui/"
+          ],
+          "packageNames": [
+            "tamagui"
+          ]
+        },
+        {
           "groupName": "pob root",
           "description": "pob root",
           "packageNames": [
