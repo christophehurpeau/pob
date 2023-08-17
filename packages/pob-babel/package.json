@@ -61,7 +61,7 @@
     "@babel/plugin-transform-runtime": "7.22.10",
     "@rollup/plugin-babel": "6.0.3",
     "@rollup/plugin-json": "6.0.0",
-    "@rollup/plugin-node-resolve": "15.1.0",
+    "@rollup/plugin-node-resolve": "15.2.0",
     "@rollup/plugin-run": "3.0.1",
     "babel-preset-pob-env": "10.1.1",
     "rollup": "3.28.0",
