@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.0.1](https://github.com/christophehurpeau/pob/compare/pob@14.0.0...pob@14.0.1) (2023-09-18)
+
+
+### Bug Fixes
+
+* fix yarn publish configuration ([997808f](https://github.com/christophehurpeau/pob/commit/997808fae5154309eacd39d6cc04ee37c1982262))
+
+
+
 ## [14.0.0](https://github.com/christophehurpeau/pob/compare/pob@13.5.0...pob@14.0.0) (2023-09-18)
 
 
