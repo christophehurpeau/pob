@@ -125,6 +125,7 @@ export default class PobBaseGenerator extends Generator {
       type: this.projectConfig.type,
       enable: this.isRoot && this.projectConfig.packageManager === 'yarn',
       yarnNodeLinker: this.projectConfig.yarnNodeLinker,
+      disableYarnGitCache: this.projectConfig.disableYarnGitCache,
     });
 
     this.composeWith('pob:core:package', {
@@ -139,6 +140,7 @@ export default class PobBaseGenerator extends Generator {
         force: this.options.force,
         isAppProject: this.projectConfig.type === 'app',
         packageManager: this.projectConfig.packageManager,
+        disableYarnGitCache: this.projectConfig.disableYarnGitCache,
       });
     }
 

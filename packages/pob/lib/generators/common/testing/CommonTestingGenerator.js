@@ -100,6 +100,13 @@ export default class CommonTestingGenerator extends Generator {
       default: 'src',
       desc: 'customize srcDir, if different than rootDir',
     });
+
+    this.option('disableYarnGitCache', {
+      type: Boolean,
+      required: false,
+      default: false,
+      desc: 'Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.',
+    });
   }
 
   default() {
@@ -108,6 +115,7 @@ export default class CommonTestingGenerator extends Generator {
         enable: this.options.ci,
         enableReleasePlease: this.options.enableReleasePlease,
         enableYarnVersion: this.options.enableYarnVersion,
+        disableYarnGitCache: this.options.disableYarnGitCache,
         testing: this.options.enable,
         build: this.options.build,
         typescript: this.options.typescript,

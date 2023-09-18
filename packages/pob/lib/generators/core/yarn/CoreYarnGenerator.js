@@ -29,6 +29,13 @@ export default class CoreYarnGenerator extends Generator {
       default: 'node-modules',
       desc: 'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
+
+    this.option('disableYarnGitCache', {
+      type: Boolean,
+      required: false,
+      default: false,
+      desc: 'Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.',
+    });
   }
 
   initializing() {
@@ -52,7 +59,9 @@ export default class CoreYarnGenerator extends Generator {
       this.fs.copyTpl(
         this.templatePath('yarn_gitignore.ejs'),
         this.destinationPath('.yarn/.gitignore'),
-        {},
+        {
+          disableYarnGitCache: this.options.disableYarnGitCache,
+        },
       );
 
       const { stdout } = this.spawnSync(

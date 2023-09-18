@@ -22,7 +22,7 @@ jobs:
           node-version: 18
 
       - name: Install Dependencies
-        run: yarn install --immutable --immutable-cache
+        run: yarn install --immutable
 
       - name: New version (dry run)
         if: github.ref == 'refs/heads/main' && inputs.dry-run

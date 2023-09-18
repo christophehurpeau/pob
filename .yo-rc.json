@@ -34,7 +34,8 @@
     "project": {
       "type": "lib",
       "packageManager": "yarn",
-      "yarnNodeLinker": "node-modules"
+      "yarnNodeLinker": "node-modules",
+      "disableYarnGitCache": true
     }
   }
 }

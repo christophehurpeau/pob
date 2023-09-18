@@ -33,7 +33,11 @@ jobs:
           node-version: 18
 
       - name: Install Dependencies
+<% if (disableYarnGitCache) { -%>
+        run: yarn install --immutable
+<% } else { -%>
         run: yarn install --immutable --immutable-cache
+<% } -%>
 
       - name: New version (dry run)
         if: github.ref == 'refs/heads/main' && inputs.dry-run

@@ -22,6 +22,13 @@ export default class MonorepoLernaGenerator extends Generator {
       default: 'yarn',
       desc: 'yarn or npm',
     });
+
+    this.option('disableYarnGitCache', {
+      type: Boolean,
+      required: false,
+      default: false,
+      desc: 'Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.',
+    });
   }
 
   initializing() {
@@ -196,6 +203,7 @@ export default class MonorepoLernaGenerator extends Generator {
       {
         publish: !this.options.isAppProject,
         enableYarnVersion: isYarnVersionEnabled,
+        disableYarnGitCache: this.options.disableYarnGitCache,
         isIndependent: lernaConfig.version === 'independent',
       },
     );

@@ -87,6 +87,13 @@ export default class CoreCIGenerator extends Generator {
       required: true,
       desc: 'split CI jobs for faster result',
     });
+
+    this.option('disableYarnGitCache', {
+      type: Boolean,
+      required: false,
+      default: false,
+      desc: 'Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.',
+    });
   }
 
   async prompting() {
@@ -136,6 +143,7 @@ export default class CoreCIGenerator extends Generator {
         this.destinationPath('.github/workflows/push.yml'),
         {
           packageManager: this.options.packageManager,
+          disableYarnGitCache: this.options.disableYarnGitCache,
           testing,
           checks,
           documentation: this.options.documentation,
@@ -184,6 +192,7 @@ export default class CoreCIGenerator extends Generator {
         this.destinationPath('.github/workflows/gh-pages.yml'),
         {
           packageManager: this.options.packageManager,
+          disableYarnGitCache: this.options.disableYarnGitCache,
           testing: this.options.testing,
           typedoc: this.options.documentation && this.options.typescript,
         },

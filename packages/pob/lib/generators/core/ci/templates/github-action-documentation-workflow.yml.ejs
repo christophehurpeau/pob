@@ -15,7 +15,11 @@ jobs:
           node-version: 18
 
       - name: Install Dependencies
+<% if (disableYarnGitCache) { -%>
+        run: yarn install --immutable
+<% } else { -%>
         run: yarn install --immutable --immutable-cache
+<% } -%>
 
 <% if (typedoc) { -%>
       - name: Run tsc for tsc cache
