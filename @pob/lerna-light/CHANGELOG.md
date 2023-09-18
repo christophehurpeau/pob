@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.0](https://github.com/christophehurpeau/pob/compare/@pob/lerna-light@7.0.1...@pob/lerna-light@8.0.0) (2023-09-18)
+
+
+### ⚠ BREAKING CHANGES
+
+* **lerna-light:** replace yarn lerna publish to yarn workpaces foreach --no-private npm publish --tolerate-republish
+
+### Features
+
+* **lerna-light:** remove publish command ([c838a68](https://github.com/christophehurpeau/pob/commit/c838a680fb03247b3254780e2850cfb4ae07e681))
+
+
+
 ## [7.0.1](https://github.com/christophehurpeau/pob/compare/@pob/lerna-light@7.0.0...@pob/lerna-light@7.0.1) (2023-06-30)
 
 
