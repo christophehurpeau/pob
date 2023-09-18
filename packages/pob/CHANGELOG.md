@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.5.0](https://github.com/christophehurpeau/pob/compare/pob@13.4.0...pob@13.5.0) (2023-09-18)
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.48.0 ([#1753](https://github.com/christophehurpeau/pob/issues/1753)) ([24cf09f](https://github.com/christophehurpeau/pob/commit/24cf09fab37d5897e8e7f8e4b57da225bac2eca7))
+* **deps:** update dependency eslint to v8.49.0 ([#1766](https://github.com/christophehurpeau/pob/issues/1766)) ([061b3df](https://github.com/christophehurpeau/pob/commit/061b3dfb1aeb30cae10776d9c21c675ddeec740e))
+
+
+### Bug Fixes
+
+* **deps:** update dependency yeoman-environment to v4.0.0-beta.4 ([#1768](https://github.com/christophehurpeau/pob/issues/1768)) ([9798aef](https://github.com/christophehurpeau/pob/commit/9798aef1a5ccb2d7c752fd5f13253bf614ea1e5f))
+* **deps:** update dependency yeoman-generator to v6.0.0-rc.4 ([#1737](https://github.com/christophehurpeau/pob/issues/1737)) ([ec4b155](https://github.com/christophehurpeau/pob/commit/ec4b155b948e4474fa740661c0fe496b56f44616))
+
+
+
 ## [13.4.0](https://github.com/christophehurpeau/pob/compare/pob@13.3.0...pob@13.4.0) (2023-08-14)
 
 
