@@ -39,17 +39,6 @@
       "@pob/commitlint-config"
     ]
   },
-  "jest": {
-    "cacheDirectory": "./node_modules/.cache/jest",
-    "testEnvironment": "node",
-    "testMatch": [
-      "<rootDir>/@(packages|@pob|pob-examples)/*/@(src|lib)/**/__tests__/**/*.(ts|js|cjs|mjs)",
-      "<rootDir>/@(packages|@pob|pob-examples)/*/@(src|lib)/**/*.test.(ts|js|cjs|mjs)"
-    ],
-    "extensionsToTreatAsEsm": [
-      ".ts"
-    ]
-  },
   "resolutions": {
     "npm-package-arg@8.1.2": "patch:npm-package-arg@npm:8.1.2#.yarn/patches/npm-package-arg-npm-8.1.2-1de2ee4bd8"
   },
