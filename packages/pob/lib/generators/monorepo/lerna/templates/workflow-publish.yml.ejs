@@ -62,7 +62,6 @@ jobs:
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
 <% if (publish) { -%>
 
-<% if (enableYarnVersion) { -%>
       - name: Publish to npm
         run: |
           if [ -z "$NODE_AUTH_TOKEN" ]; then
@@ -72,15 +71,6 @@ jobs:
           echo >> ./.yarnrc.yml
           echo "npmAuthToken: $NODE_AUTH_TOKEN" >> ./.yarnrc.yml
           yarn workspaces foreach --no-private npm publish --tolerate-republish
-<% } else { -%>
-      - uses: actions/setup-node@v3
-        if: github.ref == 'refs/heads/main' && !inputs.dry-run
-        with:
-          node-version: 18
-          registry-url: "https://registry.npmjs.org"
-
-      - run: yarn workspaces foreach --no-private npm publish --tolerate-republish
-<% } -%>
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
