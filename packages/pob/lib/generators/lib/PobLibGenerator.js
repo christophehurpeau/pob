@@ -32,6 +32,13 @@ export default class PobLibGenerator extends Generator {
       default: 'node-modules',
       desc: 'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
+
+    this.option('disableYarnGitCache', {
+      type: Boolean,
+      required: false,
+      default: false,
+      desc: 'Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.',
+    });
   }
 
   initializing() {
@@ -264,6 +271,7 @@ export default class PobLibGenerator extends Generator {
 
     this.composeWith('pob:common:testing', {
       enable: this.pobjson.testing,
+      disableYarnGitCache: this.options.disableYarnGitCache,
       enableReleasePlease,
       testing: this.pobjson.testing,
       runner: this.pobjson.testing

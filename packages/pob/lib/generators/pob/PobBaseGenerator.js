@@ -199,6 +199,7 @@ export default class PobBaseGenerator extends Generator {
         ),
         {
           updateOnly: this.options.updateOnly,
+          disableYarnGitCache: this.projectConfig.disableYarnGitCache,
           isAppProject: this.projectConfig.type === 'app',
           packageManager: this.projectConfig.packageManager,
           yarnNodeLinker: this.projectConfig.yarnNodeLinker,
@@ -211,6 +212,7 @@ export default class PobBaseGenerator extends Generator {
           this.composeWith('pob:lib', {
             monorepo: this.useLerna,
             isRoot: this.isRoot,
+            disableYarnGitCache: this.projectConfig.disableYarnGitCache,
             updateOnly: this.options.updateOnly,
             fromPob: this.options.fromPob,
             packageManager: this.projectConfig.packageManager,
@@ -221,6 +223,7 @@ export default class PobBaseGenerator extends Generator {
           this.composeWith('pob:app', {
             monorepo: this.useLerna,
             isRoot: this.isRoot,
+            disableYarnGitCache: this.projectConfig.disableYarnGitCache,
             updateOnly: this.options.updateOnly,
             fromPob: this.options.fromPob,
             packageManager: this.projectConfig.packageManager,

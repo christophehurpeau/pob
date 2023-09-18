@@ -79,6 +79,13 @@ export default class PobMonorepoGenerator extends Generator {
       required: true,
       desc: 'only latest lts',
     });
+
+    this.option('disableYarnGitCache', {
+      type: Boolean,
+      required: false,
+      default: false,
+      desc: 'Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.',
+    });
   }
 
   async initializing() {
@@ -218,6 +225,7 @@ export default class PobMonorepoGenerator extends Generator {
     this.composeWith('pob:common:testing', {
       monorepo: true,
       enable: this.pobLernaConfig.testing,
+      disableYarnGitCache: this.options.disableYarnGitCache,
       enableReleasePlease: false,
       enableYarnVersion: isYarnVersionEnabled,
       testing: this.pobLernaConfig.testing,

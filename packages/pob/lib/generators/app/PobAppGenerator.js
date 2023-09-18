@@ -44,6 +44,13 @@ export default class PobAppGenerator extends Generator {
       default: 'node-modules',
       desc: 'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
+
+    this.option('disableYarnGitCache', {
+      type: Boolean,
+      required: false,
+      default: false,
+      desc: 'Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.',
+    });
   }
 
   initializing() {
@@ -205,6 +212,7 @@ export default class PobAppGenerator extends Generator {
     if (this.appConfig.type !== 'remix') {
       this.composeWith('pob:common:testing', {
         enable: this.appConfig.testing,
+        disableYarnGitCache: this.options.disableYarnGitCache,
         enableReleasePlease,
         testing: this.appConfig.testing,
         typescript: babel,
