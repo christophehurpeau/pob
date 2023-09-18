@@ -18,7 +18,10 @@
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "exports": {
-    ".": "./lib/index.js",
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
     "./createRollupConfig": "./lib/createRollupConfig.js",
     "./createRollupConfig.js": "./lib/createRollupConfig.js",
     "./preset": "./preset.js",

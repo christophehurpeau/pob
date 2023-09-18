@@ -28,6 +28,7 @@
   "exports": {
     "./package.json": "./package.json",
     ".": {
+      "types": "./src/index.ts",
       "node": {
         "import": "./dist/index-node18.mjs"
       },
