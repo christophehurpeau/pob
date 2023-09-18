@@ -82,7 +82,7 @@ module.exports = function installHusky({ pkg, pm }) {
 if [ -n "$(git diff HEAD@{1}..HEAD@{0} -- yarn.lock)" ]; then
   yarn install ${
     isYarnBerry
-      ? '--immutable --immutable-cache'
+      ? '--immutable'
       : '--prefer-offline --pure-lockfile --ignore-optional'
   } || true
 fi`;
