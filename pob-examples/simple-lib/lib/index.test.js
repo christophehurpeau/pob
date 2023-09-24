@@ -1,4 +1,4 @@
-import simpleLib from '.';
+import simpleLib from './index.js';
 
 describe('index', () => {
   it('should return hello world', () => {

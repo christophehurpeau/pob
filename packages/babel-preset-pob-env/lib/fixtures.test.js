@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import { transform } from '@babel/core';
-import preset from '.';
+import preset from './index.js';
 
 describe('fixtures', () => {
   const tests = fs
