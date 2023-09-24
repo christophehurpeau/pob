@@ -7,12 +7,12 @@ interface Dependencies {
   '@pob/eslint-config': '51.0.0';
   '@pob/eslint-config-typescript': '51.0.0';
   '@pob/eslint-config-typescript-react': '51.0.0';
-  '@pob/lerna-light': '7.0.1';
+  '@pob/lerna-light': '8.0.0';
   '@pob/pretty-pkg': '6.1.0';
   '@types/jest': '29.5.5';
   'alp-rollup-plugin-config': '2.1.0';
   'check-package-dependencies': '6.8.0';
-  eslint: '8.49.0';
+  eslint: '8.50.0';
   jest: '29.7.0';
   'jest-junit-reporter': '1.1.0';
   'pob-babel': '36.4.0';

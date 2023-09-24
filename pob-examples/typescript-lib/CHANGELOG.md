@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.4](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.15.3...example-typescript-lib@0.15.4) (2023-09-24)
+
+
+### Bug Fixes
+
+* add missing types in package.json ([1e24a2f](https://github.com/christophehurpeau/pob/commit/1e24a2fa7569a5f0aa006c009111300dac9a90e3))
+
+
+
 ## [0.15.3](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.15.2...example-typescript-lib@0.15.3) (2023-09-18)
 
 **Note:** Version bump only for package example-typescript-lib

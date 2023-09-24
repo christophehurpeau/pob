@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.2.2...@pob/root@8.3.0) (2023-09-24)
+
+
+### Features
+
+* add option to disable yarn cache ([761436f](https://github.com/christophehurpeau/pob/commit/761436fb7946c52a4d02b61b5c81ea122d64dc05))
+* **deps:** update dependency conventional-changelog-conventionalcommits to v7 ([#1755](https://github.com/christophehurpeau/pob/issues/1755)) ([ad7ea41](https://github.com/christophehurpeau/pob/commit/ad7ea4103723156ed08ad49f50577c033ddcff29))
+* **deps:** update dependency lint-staged to v14 ([#1736](https://github.com/christophehurpeau/pob/issues/1736)) ([8b88ecd](https://github.com/christophehurpeau/pob/commit/8b88ecdf2eaed7fe3073bceaf54864d076fcd9b5))
+* update actions/checkout ([f040a5d](https://github.com/christophehurpeau/pob/commit/f040a5d3a87d8e3f5b5ae890ec49db37e435d22b))
+
+
+### Bug Fixes
+
+* **@pob/root:** remove immutable-cache in postcheckout ([658d6be](https://github.com/christophehurpeau/pob/commit/658d6be5a6ef801fdf687f3acec4659e92507d9a))
+
+
+### Reverts
+
+* feat(deps): update dependency conventional-changelog-conventionalcommits to v7 ([#1779](https://github.com/christophehurpeau/pob/issues/1779)) ([154459f](https://github.com/christophehurpeau/pob/commit/154459fbd42bb1cf536f41e2fb54f937ff5c2f80))
+
+
+
 ## [8.2.2](https://github.com/christophehurpeau/pob/compare/@pob/root@8.2.1...@pob/root@8.2.2) (2023-09-18)
 
 **Note:** Version bump only for package @pob/root

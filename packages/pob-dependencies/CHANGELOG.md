@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.6.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.5.1...pob-dependencies@8.6.0) (2023-09-24)
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.50.0 ([#1778](https://github.com/christophehurpeau/pob/issues/1778)) ([9002346](https://github.com/christophehurpeau/pob/commit/9002346e6f50bf455a47e63141d2f4fdf8689f8e))
+
+
+### Bug Fixes
+
+* add missing types in package.json ([1e24a2f](https://github.com/christophehurpeau/pob/commit/1e24a2fa7569a5f0aa006c009111300dac9a90e3))
+
+
+
 ## [8.5.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.5.0...pob-dependencies@8.5.1) (2023-09-18)
 
 **Note:** Version bump only for package pob-dependencies

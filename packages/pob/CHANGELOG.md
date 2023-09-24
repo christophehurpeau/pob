@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.1.0](https://github.com/christophehurpeau/pob/compare/pob@14.0.1...pob@14.1.0) (2023-09-24)
+
+
+### Features
+
+* add option to disable yarn cache ([761436f](https://github.com/christophehurpeau/pob/commit/761436fb7946c52a4d02b61b5c81ea122d64dc05))
+* **deps:** update dependency eslint to v8.50.0 ([#1778](https://github.com/christophehurpeau/pob/issues/1778)) ([9002346](https://github.com/christophehurpeau/pob/commit/9002346e6f50bf455a47e63141d2f4fdf8689f8e))
+* update actions/checkout ([f040a5d](https://github.com/christophehurpeau/pob/commit/f040a5d3a87d8e3f5b5ae890ec49db37e435d22b))
+
+
+### Bug Fixes
+
+* add missing options to disable yarn cache ([2138584](https://github.com/christophehurpeau/pob/commit/21385841d31755f44a5661a282d094dc994f7404))
+
+
+
 ## [14.0.1](https://github.com/christophehurpeau/pob/compare/pob@14.0.0...pob@14.0.1) (2023-09-18)
 
 

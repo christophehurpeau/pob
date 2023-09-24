@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.4.1](https://github.com/christophehurpeau/pob/compare/pob-babel@36.4.0...pob-babel@36.4.1) (2023-09-24)
+
+
+### Bug Fixes
+
+* add missing types in package.json ([1e24a2f](https://github.com/christophehurpeau/pob/commit/1e24a2fa7569a5f0aa006c009111300dac9a90e3))
+
+
+
 ## [36.4.0](https://github.com/christophehurpeau/pob/compare/pob-babel@36.3.0...pob-babel@36.4.0) (2023-09-18)
 
 
