@@ -315,7 +315,10 @@ if (!existsSync('.yo-rc.json')) {
   writeFileSync('.yo-rc.json', '{}');
 }
 
-if (existsSync('lerna.json') || (projectPkg && projectPkg.lerna)) {
+if (
+  existsSync('lerna.json') ||
+  (projectPkg && (projectPkg.lerna || projectPkg.workspaces))
+) {
   monorepo = true;
 }
 
