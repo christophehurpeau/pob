@@ -4064,9 +4064,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yeoman/conflicter@npm:^1.0.7":
-  version: 1.0.8
-  resolution: "@yeoman/conflicter@npm:1.0.8"
+"@yeoman/conflicter@npm:^1.0.10":
+  version: 1.0.10
+  resolution: "@yeoman/conflicter@npm:1.0.10"
   dependencies:
     "@types/node": ^16.18.28
     "@yeoman/transform": ^1.2.0
@@ -4083,7 +4083,7 @@ __metadata:
     textextensions: ^5.16.0
   peerDependencies:
     "@yeoman/types": ^1.0.0
-  checksum: 69f4a493b63d9beb473710f59de75ada943a50e4ca9482a36b339291611c36290692c476d7eb58a383258fcc805c3aa7ab0fad3632833d6319c5683cca556595
+  checksum: 3643753abb2be82469811b4259eb3ccea0e62a709437c2f6b74b2fdf518654e8982e442eb7c6484d08c8305ba0eafab46cab945937b909ac39f276a39a86ab49
   languageName: node
   linkType: hard
 
@@ -11179,7 +11179,7 @@ __metadata:
     pob-dependencies: 8.6.0
     prettier: 2.8.8
     semver: 7.5.4
-    yeoman-environment: 4.0.0-beta.4
+    yeoman-environment: 4.0.0-beta.5
     yeoman-generator: 6.0.0-rc.4
   bin:
     pob: ./lib/pob.js
@@ -13833,12 +13833,12 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"yeoman-environment@npm:4.0.0-beta.4":
-  version: 4.0.0-beta.4
-  resolution: "yeoman-environment@npm:4.0.0-beta.4"
+"yeoman-environment@npm:4.0.0-beta.5":
+  version: 4.0.0-beta.5
+  resolution: "yeoman-environment@npm:4.0.0-beta.5"
   dependencies:
     "@yeoman/adapter": ^1.1.0
-    "@yeoman/conflicter": ^1.0.7
+    "@yeoman/conflicter": ^1.0.10
     "@yeoman/namespace": ^1.0.0
     "@yeoman/transform": ^1.2.0
     arrify: ^3.0.0
@@ -13862,7 +13862,7 @@ resolve@^2.0.0-next.3:
     mem-fs: ^3.0.0
   bin:
     yoe: bin/bin.cjs
-  checksum: 9b513e7ea7f19487cf450ee70baa8debcfe9bc1e9c97548e25faa9a25083e50e4451d109613da34269b592a51c7f463f39ec8346b9d06c1f6dc1054e20ce39ef
+  checksum: 70ab516c0ee7fae89d95a1d8edd849f172d6235763cf11ab49da891f16138645acb0188cb51662f838a53476d246bb4f366ba87fb53596edc0679ceb81c81752
   languageName: node
   linkType: hard
 
