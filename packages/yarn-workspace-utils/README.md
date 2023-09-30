@@ -22,7 +22,10 @@ npm install --save yarn-workspace-utils
 ## Usage
 
 ```js
-import yarnWorkspaceUtils from 'yarn-workspace-utils';
-
-console.log(yarnWorkspaceUtils);
+import {
+  getWorkspaceName,
+  buildDependentsMaps,
+  buildDependenciesMaps,
+  buildTopologicalOrderBatches,
+} from 'yarn-workspace-utils';
 ```
