@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.6.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.6.0...pob-dependencies@8.6.1) (2023-09-30)
+
+
+### Bug Fixes
+
+* **deps:** update @pob/eslint-config to v51.0.2 ([#1718](https://github.com/christophehurpeau/pob/issues/1718)) ([18a8330](https://github.com/christophehurpeau/pob/commit/18a8330c54729273d091cfbe49e387916fbde3ba))
+
+
+
 ## [8.6.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.5.1...pob-dependencies@8.6.0) (2023-09-24)
 
 

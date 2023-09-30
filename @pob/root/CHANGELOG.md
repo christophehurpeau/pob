@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.1](https://github.com/christophehurpeau/pob/compare/@pob/root@8.3.0...@pob/root@8.3.1) (2023-09-30)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @commitlint/cli to v17.7.2 ([#1790](https://github.com/christophehurpeau/pob/issues/1790)) ([e5b30a8](https://github.com/christophehurpeau/pob/commit/e5b30a841f1cbccffcc33fc0fcc71b6efb87935f))
+
+
+
 ## [8.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.2.2...@pob/root@8.3.0) (2023-09-24)
 
 

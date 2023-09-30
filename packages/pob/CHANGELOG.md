@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.2.0](https://github.com/christophehurpeau/pob/compare/pob@14.1.0...pob@14.2.0) (2023-09-30)
+
+
+### Features
+
+* improve monorepo detection ([c7e43ef](https://github.com/christophehurpeau/pob/commit/c7e43efd767e1cc7d786c22f47796fc5106be84b))
+* **pob:** split yarn workspaces and legacy lerna ; use yarn to build graph ([4f3f77a](https://github.com/christophehurpeau/pob/commit/4f3f77a60a4e755815a836f76d53624573edcff4))
+
+
+### Bug Fixes
+
+* **deps:** update @pob/eslint-config to v51.0.2 ([#1718](https://github.com/christophehurpeau/pob/issues/1718)) ([18a8330](https://github.com/christophehurpeau/pob/commit/18a8330c54729273d091cfbe49e387916fbde3ba))
+* **deps:** update dependency yeoman-environment to v4.0.0-beta.5 ([#1785](https://github.com/christophehurpeau/pob/issues/1785)) ([deb0019](https://github.com/christophehurpeau/pob/commit/deb00197a177fdddb1037538969351ed8f2e1925))
+* **deps:** update dependency yeoman-generator to v6.0.0-rc.5 ([#1786](https://github.com/christophehurpeau/pob/issues/1786)) ([6ebbde9](https://github.com/christophehurpeau/pob/commit/6ebbde9db265b44e8807fd4a83526b49984e5d33))
+
+
+
 ## [14.1.0](https://github.com/christophehurpeau/pob/compare/pob@14.0.1...pob@14.1.0) (2023-09-24)
 
 
