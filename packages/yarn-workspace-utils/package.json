@@ -1,0 +1,53 @@
+{
+  "name": "yarn-workspace-utils",
+  "version": "1.0.0-pre",
+  "description": "workspace utils for yarn berry",
+  "keywords": [],
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "license": "MIT",
+  "type": "module",
+  "engines": {
+    "node": ">=18.12.0"
+  },
+  "main": "./dist/index-node18.mjs",
+  "types": "./dist/definitions/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/definitions/index.d.ts",
+      "node": {
+        "import": "./dist/index-node18.mjs"
+      }
+    }
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "yarn clean:build && rollup --config rollup.config.mjs && yarn run build:definitions",
+    "build:definitions": "tsc -p tsconfig.json",
+    "clean": "yarn clean:build",
+    "clean:build": "pob-babel-clean-out dist",
+    "lint": "yarn run lint:eslint",
+    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/yarn-workspace-utils",
+    "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
+  },
+  "prettier": "@pob/root/prettier-config",
+  "pob": {
+    "babelEnvs": [
+      {
+        "target": "node",
+        "version": "18"
+      }
+    ],
+    "entries": [
+      "index"
+    ]
+  },
+  "dependencies": {
+    "@yarnpkg/core": "3.5.3"
+  },
+  "devDependencies": {
+    "@babel/core": "7.23.0",
+    "pob-babel": "36.4.1",
+    "typescript": "5.2.2"
+  }
+}

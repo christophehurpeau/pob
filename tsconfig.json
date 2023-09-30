@@ -1,4 +1,7 @@
 {
   "files": [],
-  "references": [{ "path": "pob-examples/typescript-lib/tsconfig.json" }]
+  "references": [
+    { "path": "pob-examples/typescript-lib/tsconfig.json" },
+    { "path": "packages/yarn-workspace-utils/tsconfig.json" }
+  ]
 }
