@@ -1,12 +1,30 @@
 import { execSync } from 'node:child_process';
 import fs from 'node:fs';
-import path from 'node:path';
 import { platform } from 'node:process';
-import { PackageGraph } from '@lerna/package-graph';
-import { Project as LernaProject } from '@lerna/project';
+import { getPluginConfiguration } from '@yarnpkg/cli';
+import { Configuration, Project } from '@yarnpkg/core';
+import { ppath } from '@yarnpkg/fslib';
+import {
+  buildTopologicalOrderBatches,
+  buildDependenciesMaps,
+  getWorkspaceName,
+} from 'yarn-workspace-utils';
 import Generator from 'yeoman-generator';
 import * as packageUtils from '../../utils/package.js';
 import { copyAndFormatTpl } from '../../utils/writeAndFormat.js';
+
+export const createYarnProject = async () => {
+  const portablePath = ppath.cwd();
+
+  const configuration = await Configuration.find(
+    portablePath,
+    // eslint-disable-next-line unicorn/no-array-method-this-argument -- not an array
+    getPluginConfiguration(),
+  );
+  // eslint-disable-next-line unicorn/no-array-method-this-argument -- not an array
+  const { project } = await Project.find(configuration, portablePath);
+  return project;
+};
 
 const getAppTypes = (configs) => {
   const appConfigs = configs.filter(
@@ -26,9 +44,9 @@ const hasDist = (packages, configs) =>
     (config, index) =>
       !!(config && config.project && config.project.type === 'lib') &&
       !!(
-        packages[index].get('pob') &&
-        packages[index].get('pob').babelEnvs &&
-        packages[index].get('pob').babelEnvs.length > 0
+        packages[index].pob &&
+        packages[index].pob.babelEnvs &&
+        packages[index].pob.babelEnvs.length > 0
       ),
   );
 
@@ -89,43 +107,28 @@ export default class PobMonorepoGenerator extends Generator {
   }
 
   async initializing() {
-    this.lernaProject = new LernaProject(this.destinationPath());
-    const packages = await this.lernaProject.getPackages();
-    const graph = new PackageGraph(packages);
-    const [cyclePaths] = graph.partitionCycles();
-
-    if (cyclePaths.size > 0) {
-      const cycleMessage = [
-        'Dependency cycles detected, you should fix these!',
-        ...cyclePaths.map((cycle) => cycle.join(' -> ')),
-      ].join('\n');
-
-      console.warn(cycleMessage);
-    }
+    const yarnProject = await createYarnProject(this.destinationPath());
+    const batches = buildTopologicalOrderBatches(
+      yarnProject,
+      buildDependenciesMaps(yarnProject),
+    );
 
     this.packages = [];
     this.packageLocations = [];
 
-    while (graph.size > 0) {
-      // pick the current set of nodes _without_ localDependencies (aka it is a "source" node)
-      const batch = [...graph.values()].filter(
-        (node) => node.localDependencies.size === 0,
-      );
-      batch.sort((a, b) => a.name.localeCompare(b.name, 'en'));
-
-      // batches are composed of Package instances, not PackageGraphNodes
-      this.packages.push(...batch.map((node) => node.pkg));
-      this.packageLocations.push(
-        ...batch.map((node) =>
-          path
-            .relative(this.destinationPath(), node.location)
-            // transform windows path to linux
-            .replace(/\\+/g, '/'),
-        ),
+    for (const batch of batches) {
+      // sort by name to ensure consistent ordering
+      batch.sort((a, b) =>
+        getWorkspaceName(a).localeCompare(getWorkspaceName(b), 'en'),
       );
 
-      // pruning the graph changes the node.localDependencies.size test
-      graph.prune(...batch);
+      batch.forEach((workspace) => {
+        if (workspace === yarnProject.topLevelWorkspace) {
+          return;
+        }
+        this.packages.push(workspace.manifest.raw);
+        this.packageLocations.push(workspace.relativeCwd.toString());
+      });
     }
 
     this.packageNames = this.packages.map((pkg) => pkg.name);

@@ -1,11 +1,7 @@
-import { spawnSync } from 'node:child_process';
 import { readdirSync, existsSync } from 'node:fs';
 import Generator from 'yeoman-generator';
 import * as packageUtils from '../../../utils/package.js';
-import {
-  copyAndFormatTpl,
-  writeAndFormatJson,
-} from '../../../utils/writeAndFormat.js';
+import { writeAndFormatJson } from '../../../utils/writeAndFormat.js';
 
 export default class MonorepoLernaGenerator extends Generator {
   constructor(args, opts) {
@@ -31,6 +27,7 @@ export default class MonorepoLernaGenerator extends Generator {
     });
   }
 
+  // TODO pass packages as options ?
   initializing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     const packagesPaths = pkg.workspaces
@@ -128,64 +125,15 @@ export default class MonorepoLernaGenerator extends Generator {
     // package.json
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     delete pkg.lerna;
-    packageUtils.removeDependencies(pkg, ['lerna', '@pob/lerna-light']);
+    packageUtils.removeDependencies(pkg, ['lerna']);
     packageUtils.removeDevDependencies(pkg, ['lerna']);
 
     if (this.fs.exists(this.destinationPath('lerna-debug.log'))) {
       this.fs.delete(this.destinationPath('lerna-debug.log'));
     }
-    if (this.npm) {
-      if (!pkg.engines) pkg.engines = {};
-      pkg.engines.yarn = '< 0.0.0';
-      pkg.engines.npm = '>= 6.4.0';
-    } else if (pkg.engines) {
-      delete pkg.engines.yarn;
-    }
-
-    if (pkg.name === 'pob-monorepo') {
-      pkg.devDependencies['@pob/lerna-light'] = 'workspace:*';
-    } else {
-      packageUtils.addOrRemoveDevDependencies(
-        pkg,
-        pkg.name !== 'pob-monorepo-test-repository' &&
-          pkg.name !== 'use-react-intl-formatters-monorepo',
-        // pkg.name !== '@pob/eslint-config-monorepo'
-        ['@pob/lerna-light'],
-      );
-    }
 
     // TODO remove lerna completely
     const isYarnVersionEnabled = !pkg.devDependencies?.['@pob/lerna-light'];
-
-    if (pkg.name !== 'pob-monorepo') {
-      packageUtils.addDevDependencies(pkg, ['repository-check-dirty']);
-    }
-
-    packageUtils.removeDevDependencies(pkg, ['standard-version']);
-
-    const monorepoConfig = this.config.get('monorepo');
-    const packageManager = this.npm ? 'npm' : 'yarn';
-
-    packageUtils.addScripts(pkg, {
-      lint: `${packageManager} run lint:prettier && ${packageManager} run lint:eslint`,
-      'lint:prettier': 'pob-root-prettier --check .',
-      'lint:prettier:fix': 'pob-root-prettier --write .',
-      'lint:eslint':
-        monorepoConfig &&
-        monorepoConfig.eslint &&
-        this.packagesConfig.length < 50
-          ? `${
-              this.packagesConfig.length > 15
-                ? 'NODE_OPTIONS=--max_old_space_size=4096 '
-                : ''
-            }eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet .`
-          : // eslint-disable-next-line unicorn/no-nested-ternary
-          this.options.packageManager === 'yarn'
-          ? `NODE_OPTIONS=--max_old_space_size=4096 eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet . --ignore-pattern ${pkg.workspaces.join(
-              ',',
-            )} && yarn workspaces foreach --parallel -Av run lint:eslint`
-          : 'npm run lint:eslint --workspaces',
-    });
 
     packageUtils.addOrRemoveScripts(
       pkg,
@@ -196,113 +144,6 @@ export default class MonorepoLernaGenerator extends Generator {
       },
     );
 
-    // TODO rename release (release = version + publish)
-    this.fs.copyTpl(
-      this.templatePath('workflow-publish.yml.ejs'),
-      this.destinationPath('.github/workflows/publish.yml'),
-      {
-        publish: !this.options.isAppProject,
-        enableYarnVersion: isYarnVersionEnabled,
-        disableYarnGitCache: this.options.disableYarnGitCache,
-        isIndependent: lernaConfig.version === 'independent',
-      },
-    );
-
-    packageUtils.removeScripts(
-      pkg,
-      [pkg.name !== 'pob-dependencies' && 'preversion', 'release'].filter(
-        Boolean,
-      ),
-    );
-
-    packageUtils.addOrRemoveScripts(pkg, withBabel, {
-      build:
-        'yarn workspaces foreach --parallel --topological-dev -Av run build',
-      watch:
-        'yarn workspaces foreach --parallel --jobs unlimited --interlaced --exclude "*-example" -Av run watch',
-    });
-
-    // packageUtils.addOrRemoveScripts(pkg, withTypescript, {
-    //   'build:definitions': `${
-    //     useYarnWorkspacesCommand
-    //       ? 'yarn workspaces foreach --parallel --exclude "*-example" -Av run'
-    //       : 'lerna run --stream'
-    //   } build:definitions`,
-    // });
-
-    // if (withTypescript) {
-    //   pkg.scripts.build += `${packageManager} run build:definitions${
-    //     useYarnWorkspacesCommand ? '' : ' --since'
-    //   }`;
-    // }
-
-    delete pkg.scripts.postbuild;
-    delete pkg.scripts.prepublishOnly;
-
-    if (this.npm) {
-      delete pkg.workspaces;
-      packageUtils.addScripts(pkg, {
-        postinstall: 'lerna link',
-      });
-    } else if (!pkg.workspaces) {
-      pkg.workspaces = ['packages/*'];
-    }
-
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-
-    // README.md
-    const readmePath = this.destinationPath('README.md');
-
-    let content = '';
-
-    if (this.fs.exists(readmePath)) {
-      const readmeFullContent = this.fs.read(readmePath);
-      content = readmeFullContent.match(/^<h3[^#*]+([^]+)$/);
-      if (!content) content = readmeFullContent.match(/^#[^#*]+([^]+)$/);
-      content = content ? content[1].trim() : readmeFullContent;
-    }
-
-    copyAndFormatTpl(this.fs, this.templatePath('README.md.ejs'), readmePath, {
-      projectName: pkg.name,
-      description: pkg.description,
-      packages: this.packages,
-      ci: this.fs.exists(this.destinationPath('.github/workflows/push.yml')),
-      content,
-    });
-  }
-
-  end() {
-    this.packagePaths.forEach((packagePath) => {
-      if (
-        !existsSync(`${packagePath}/.yo-rc.json`) &&
-        !existsSync(`${packagePath}/.pob.json`)
-      ) {
-        return;
-      }
-      console.log(`=> update ${packagePath}`);
-      spawnSync(
-        process.argv[0],
-        [
-          process.argv[1],
-          'update',
-          'from-pob',
-          this.options.force ? '--force' : undefined,
-        ].filter(Boolean),
-        {
-          cwd: packagePath,
-          stdio: 'inherit',
-        },
-      );
-    });
-
-    switch (this.options.packageManager) {
-      case 'npm':
-        this.spawnCommandSync('npm', ['install']);
-        this.spawnCommandSync('npm', ['run', 'preversion']);
-        break;
-      case 'yarn':
-        // see CoreYarnGenerator
-        break;
-    }
   }
 }

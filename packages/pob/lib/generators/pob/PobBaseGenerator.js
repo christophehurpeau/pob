@@ -136,6 +136,12 @@ export default class PobBaseGenerator extends Generator {
     });
 
     if (this.useLerna) {
+      this.composeWith('pob:monorepo:workspaces', {
+        force: this.options.force,
+        isAppProject: this.projectConfig.type === 'app',
+        packageManager: this.projectConfig.packageManager,
+        disableYarnGitCache: this.projectConfig.disableYarnGitCache,
+      });
       this.composeWith('pob:monorepo:lerna', {
         force: this.options.force,
         isAppProject: this.projectConfig.type === 'app',

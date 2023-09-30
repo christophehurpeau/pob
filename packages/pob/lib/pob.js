@@ -209,6 +209,11 @@ env.registerStub(
 );
 env.registerStub(
   MonorepoLernaGenerator,
+  'pob:monorepo:workspaces',
+  `${__dirname}/generators/monorepo/workspaces/MonorepoWorkspacesGenerator.js`,
+);
+env.registerStub(
+  MonorepoLernaGenerator,
   'pob:monorepo:lerna',
   `${__dirname}/generators/monorepo/lerna/MonorepoLernaGenerator.js`,
 );
