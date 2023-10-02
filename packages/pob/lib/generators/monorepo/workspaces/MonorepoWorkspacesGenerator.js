@@ -4,7 +4,7 @@ import Generator from 'yeoman-generator';
 import * as packageUtils from '../../../utils/package.js';
 import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
 
-export default class MonorepoLernaGenerator extends Generator {
+export default class MonorepoWorkspacesGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 

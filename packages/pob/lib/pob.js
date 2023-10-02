@@ -38,6 +38,7 @@ import LibDocGenerator from './generators/lib/doc/LibDocGenerator.js';
 import LibReadmeGenerator from './generators/lib/readme/LibReadmeGenerator.js';
 import MonorepoLernaGenerator from './generators/monorepo/lerna/MonorepoLernaGenerator.js';
 import MonorepoTypescriptGenerator from './generators/monorepo/typescript/MonorepoTypescriptGenerator.js';
+import MonorepoWorkspacesGenerator from './generators/monorepo/workspaces/MonorepoWorkspacesGenerator.js';
 import PobBaseGenerator from './generators/pob/PobBaseGenerator.js';
 import { __dirname } from './pob-dirname.cjs';
 
@@ -208,7 +209,7 @@ env.registerStub(
   `${__dirname}/generators/lib/readme/LibReadmeGenerator.js`,
 );
 env.registerStub(
-  MonorepoLernaGenerator,
+  MonorepoWorkspacesGenerator,
   'pob:monorepo:workspaces',
   `${__dirname}/generators/monorepo/workspaces/MonorepoWorkspacesGenerator.js`,
 );
