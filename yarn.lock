@@ -3173,7 +3173,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/root@8.3.1, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@8.3.2, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -11908,7 +11908,7 @@ __metadata:
     "@pob/eslint-config": 51.0.2
     "@pob/eslint-config-typescript": 51.0.2
     "@pob/eslint-config-typescript-react": 51.0.2
-    "@pob/root": 8.3.1
+    "@pob/root": 8.3.2
     "@pob/sort-eslint-config": 5.0.1
     "@pob/sort-object": 6.0.1
     "@pob/sort-pkg": 6.0.1
@@ -11933,7 +11933,7 @@ __metadata:
     pob-dependencies: 8.6.1
     prettier: 2.8.8
     semver: 7.5.4
-    yarn-workspace-utils: 1.0.0
+    yarn-workspace-utils: 1.0.1
     yeoman-environment: 4.0.0-beta.5
     yeoman-generator: 6.0.0-rc.5
   bin:
@@ -14730,7 +14730,7 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"yarn-workspace-utils@1.0.0, yarn-workspace-utils@workspace:packages/yarn-workspace-utils":
+"yarn-workspace-utils@1.0.1, yarn-workspace-utils@workspace:packages/yarn-workspace-utils":
   version: 0.0.0-use.local
   resolution: "yarn-workspace-utils@workspace:packages/yarn-workspace-utils"
   dependencies:

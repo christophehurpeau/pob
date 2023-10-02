@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.2](https://github.com/christophehurpeau/pob/compare/@pob/root@8.3.1...@pob/root@8.3.2) (2023-10-02)
+
+
+### Bug Fixes
+
+* **@pob/root:** fix renovate branch ([e32ce00](https://github.com/christophehurpeau/pob/commit/e32ce0067f11ac7d4f643c6a5edc3d5600fc31b0))
+
+
+
 ## [8.3.1](https://github.com/christophehurpeau/pob/compare/@pob/root@8.3.0...@pob/root@8.3.1) (2023-09-30)
 
 

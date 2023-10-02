@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.3.0](https://github.com/christophehurpeau/pob/compare/pob@14.2.0...pob@14.3.0) (2023-10-02)
+
+
+### Features
+
+* rename publish job to Release ([cc6b66b](https://github.com/christophehurpeau/pob/commit/cc6b66b05469720faa6cb0a05d0a29843dd676cb))
+
+
+
 ## [14.2.0](https://github.com/christophehurpeau/pob/compare/pob@14.1.0...pob@14.2.0) (2023-09-30)
 
 
