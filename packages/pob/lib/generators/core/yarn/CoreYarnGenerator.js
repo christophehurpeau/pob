@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import yml from 'js-yaml';
 import Generator from 'yeoman-generator';
 import ensureJsonFileFormatted from '../../../utils/ensureJsonFileFormatted.js';
-import inLerna from '../../../utils/inLerna.js';
+import inMonorepo from '../../../utils/inMonorepo.js';
 import * as packageUtils from '../../../utils/package.js';
 import { writeAndFormat } from '../../../utils/writeAndFormat.js';
 
@@ -97,7 +97,7 @@ export default class CoreYarnGenerator extends Generator {
       const workspacesPluginName = '@yarnpkg/plugin-workspace-tools';
       const versionPluginName = '@yarnpkg/plugin-conventional-version';
 
-      if (!inLerna && !pkg.private) {
+      if (!inMonorepo && !pkg.private) {
         installPluginIfNotInstalled(
           postinstallDevPluginName,
           'https://raw.githubusercontent.com/sachinraja/yarn-plugin-postinstall-dev/main/bundles/%40yarnpkg/plugin-postinstall-dev.js',

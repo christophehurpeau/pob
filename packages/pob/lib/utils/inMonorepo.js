@@ -2,7 +2,6 @@ import fs from 'node:fs';
 import path from 'node:path';
 import findup from 'findup-sync';
 
-const lernaJsonPath = findup('lerna.json');
 const lintStagedConfigPath = findup('lint-staged.config.js');
 const lintStagedConfigCjsPath = findup('lint-staged.config.cjs');
 
@@ -15,7 +14,7 @@ const rootMonorepoPkg =
   rootMonorepo &&
   JSON.parse(fs.readFileSync(path.resolve(rootMonorepo, 'package.json')));
 
-const getInLernaThings = () => {
+const getInMonorepoThings = () => {
   const rootYoConfig = JSON.parse(
     fs.readFileSync(path.resolve(rootMonorepo, '.yo-rc.json')),
   );
@@ -23,7 +22,6 @@ const getInLernaThings = () => {
 
   return {
     rootMonorepoPkg,
-    lernaJsonPath: lernaJsonPath || path.resolve('lerna.json'),
     rootPath: rootMonorepo,
     root: rootMonorepo === cwd,
     rootPackageManager:
@@ -49,7 +47,7 @@ const getInLernaThings = () => {
 
 export default !(
   rootMonorepoPkg &&
-  (rootMonorepoPkg.workspaces || rootMonorepoPkg.lerna || !!lernaJsonPath)
+  (rootMonorepoPkg.workspaces || rootMonorepoPkg.lerna)
 )
   ? false
-  : getInLernaThings();
+  : getInMonorepoThings();

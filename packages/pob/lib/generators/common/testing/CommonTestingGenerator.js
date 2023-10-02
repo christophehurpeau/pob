@@ -1,6 +1,6 @@
 import path from 'node:path';
 import Generator from 'yeoman-generator';
-import inLerna from '../../../utils/inLerna.js';
+import inMonorepo from '../../../utils/inMonorepo.js';
 import * as packageUtils from '../../../utils/package.js';
 import {
   copyAndFormatTpl,
@@ -110,7 +110,7 @@ export default class CommonTestingGenerator extends Generator {
   }
 
   default() {
-    if (!inLerna || inLerna.root) {
+    if (!inMonorepo || inMonorepo.root) {
       this.composeWith('pob:core:ci', {
         enable: this.options.ci,
         enableReleasePlease: this.options.enableReleasePlease,
@@ -146,7 +146,7 @@ export default class CommonTestingGenerator extends Generator {
       'pob-lcov-reporter',
     ]);
 
-    const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
+    const yoConfigPobMonorepo = inMonorepo && inMonorepo.pobMonorepoConfig;
     const globalTesting = yoConfigPobMonorepo && yoConfigPobMonorepo.testing;
     const enableForMonorepo = this.options.monorepo && globalTesting;
     const transpileWithEsbuild = packageUtils.transpileWithEsbuild(pkg);
@@ -179,7 +179,7 @@ export default class CommonTestingGenerator extends Generator {
     }
 
     if (!this.options.enable) {
-      // if (inLerna) {
+      // if (inMonorepo) {
       //   if (pkg.scripts.test === 'echo "No tests"') {
       //     delete pkg.scripts.test;
       //   }
@@ -287,7 +287,7 @@ export default class CommonTestingGenerator extends Generator {
         const transpileWithBabel = packageUtils.transpileWithBabel(pkg);
 
         const shouldUseExperimentalVmModules =
-          pkg.type === 'module' && !inLerna;
+          pkg.type === 'module' && !inMonorepo;
 
         const testCommand =
           this.options.runner === 'jest'

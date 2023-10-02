@@ -1,6 +1,6 @@
 import fs, { rmSync } from 'node:fs';
 import Generator from 'yeoman-generator';
-import inLerna from '../../utils/inLerna.js';
+import inMonorepo from '../../utils/inMonorepo.js';
 import * as packageUtils from '../../utils/package.js';
 
 export default class PobLibGenerator extends Generator {
@@ -164,7 +164,7 @@ export default class PobLibGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
     // documentation
-    if (inLerna && !inLerna.root) {
+    if (inMonorepo && !inMonorepo.root) {
       this.pobjson.documentation = false;
     } else if (!this.updateOnly) {
       const answers = await this.prompt([
@@ -209,7 +209,7 @@ export default class PobLibGenerator extends Generator {
       });
       this.pobjson.testing = !testing ? false : this.pobjson.testing || {};
 
-      if (this.pobjson.testing && !(inLerna || inLerna.root)) {
+      if (this.pobjson.testing && !(inMonorepo || inMonorepo.root)) {
         const testingPrompts = await this.prompt([
           {
             type: 'confirm',
@@ -267,7 +267,7 @@ export default class PobLibGenerator extends Generator {
     this.composeWith('pob:common:remove-old-dependencies');
 
     const enableReleasePlease =
-      !inLerna && this.pobjson.testing && this.pobjson.testing.ci;
+      !inMonorepo && this.pobjson.testing && this.pobjson.testing.ci;
 
     this.composeWith('pob:common:testing', {
       enable: this.pobjson.testing,
@@ -312,14 +312,14 @@ export default class PobLibGenerator extends Generator {
     });
 
     this.composeWith('pob:common:release', {
-      enable: !inLerna && this.pobjson.testing && this.pobjson.testing.ci,
+      enable: !inMonorepo && this.pobjson.testing && this.pobjson.testing.ci,
       withBabel: babelEnvs.length > 0,
       documentation: !!this.pobjson.documentation,
       updateOnly: this.options.updateOnly,
     });
 
     this.composeWith('pob:core:vscode', {
-      root: !inLerna,
+      root: !inMonorepo,
       monorepo: false,
       packageManager: this.options.packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
@@ -329,7 +329,7 @@ export default class PobLibGenerator extends Generator {
 
     // must be after doc, testing
     this.composeWith('pob:core:gitignore', {
-      root: !inLerna,
+      root: !inMonorepo,
       withBabel: babelEnvs.length > 0,
       typescript: babelEnvs.length > 0,
       documentation: this.pobjson.documentation,
@@ -358,7 +358,7 @@ export default class PobLibGenerator extends Generator {
     const withBabel = Boolean(pkg.pob.babelEnvs);
 
     packageUtils.removeDevDependencies(pkg, ['lerna', '@pob/lerna-light']);
-    if (inLerna) {
+    if (inMonorepo) {
       if (pkg.scripts) {
         if (pkg.name !== 'pob-dependencies') {
           delete pkg.scripts.preversion;

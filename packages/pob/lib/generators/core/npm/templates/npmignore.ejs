@@ -1,10 +1,10 @@
-<% if (!inLerna && ci) { -%>
+<% if (!inMonorepo && ci) { -%>
 /.husky
 <% } -%>
-<% if (!inLerna) { -%>
+<% if (!inMonorepo) { -%>
 /.github
 <% } -%>
-<% if (!inLerna && codeclimate) { -%>
+<% if (!inMonorepo && codeclimate) { -%>
 /.codeclimate.yml
 <% } -%>
 /build
@@ -28,7 +28,7 @@ __snapshots__
 /coverage
 <% } -%>
 .yo-rc.json
-<% if (!inLerna) { -%>
+<% if (!inMonorepo) { -%>
 /renovate.json
 <% if (yarn) { -%>
 /yarn.lock

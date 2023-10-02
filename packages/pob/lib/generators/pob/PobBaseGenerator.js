@@ -1,19 +1,12 @@
 import { fileURLToPath } from 'node:url';
 import Generator from 'yeoman-generator';
 import ensureJsonFileFormatted from '../../utils/ensureJsonFileFormatted.js';
-import inLerna from '../../utils/inLerna.js';
+import inMonorepo from '../../utils/inMonorepo.js';
 import * as packageUtils from '../../utils/package.js';
 
 export default class PobBaseGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts, { customInstallTask: true });
-
-    /** @deprecated use monorepo option instead */
-    this.option('lerna', {
-      type: Boolean,
-      required: false,
-      desc: 'Lerna monorepo',
-    });
 
     this.option('monorepo', {
       type: Boolean,
@@ -54,14 +47,14 @@ export default class PobBaseGenerator extends Generator {
     // prettier package.json to ensure diff is correct
     ensureJsonFileFormatted(this.destinationPath('package.json'));
 
-    if (this.options.monorepo || this.options.lerna) {
-      this.useLerna = true;
-      this.inLerna = false;
+    if (this.options.monorepo) {
+      this.isMonorepo = true;
+      this.hasAncestor = false;
       this.isRoot = true;
     } else {
-      this.useLerna = inLerna && inLerna.root;
-      this.inLerna = inLerna && !inLerna.root;
-      this.isRoot = !inLerna || this.useLerna;
+      this.isMonorepo = inMonorepo && inMonorepo.root;
+      this.hasAncestor = inMonorepo && !inMonorepo.root;
+      this.isRoot = !inMonorepo || this.isMonorepo;
     }
   }
 
@@ -130,12 +123,12 @@ export default class PobBaseGenerator extends Generator {
 
     this.composeWith('pob:core:package', {
       updateOnly: this.options.updateOnly,
-      private: this.useLerna,
-      monorepo: this.useLerna,
+      private: this.isMonorepo,
+      monorepo: this.isMonorepo,
       isRoot: this.isRoot,
     });
 
-    if (this.useLerna) {
+    if (this.isMonorepo) {
       this.composeWith('pob:monorepo:workspaces', {
         force: this.options.force,
         isAppProject: this.projectConfig.type === 'app',
@@ -166,13 +159,13 @@ export default class PobBaseGenerator extends Generator {
 
     const onlyLatestLTS =
       this.projectConfig.type === 'app' ||
-      (inLerna &&
-        (inLerna.pobConfig?.project?.supportsNode14 === false ||
-          inLerna.pobConfig?.project?.onlyLatestLTS === true));
+      (inMonorepo &&
+        (inMonorepo.pobConfig?.project?.supportsNode14 === false ||
+          inMonorepo.pobConfig?.project?.onlyLatestLTS === true));
 
-    if (!this.inLerna) {
+    if (!this.hasAncestor) {
       const splitCIJobs =
-        inLerna && inLerna.pobMonorepoConfig?.packageNames.length > 8;
+        inMonorepo && inMonorepo.pobMonorepoConfig?.packageNames.length > 8;
       this.composeWith('pob:core:git', {
         onlyLatestLTS,
         splitCIJobs,
@@ -197,7 +190,7 @@ export default class PobBaseGenerator extends Generator {
       this.fs.writeJSON(this.destinationPath('package.json'), pkg);
     }
 
-    if (this.useLerna) {
+    if (this.isMonorepo) {
       this.composeWith(
         // pob:monorepo <= for searching PobMonorepoGenerator.js
         fileURLToPath(
@@ -216,7 +209,7 @@ export default class PobBaseGenerator extends Generator {
       switch (this.projectConfig.type) {
         case 'lib':
           this.composeWith('pob:lib', {
-            monorepo: this.useLerna,
+            monorepo: this.isMonorepo,
             isRoot: this.isRoot,
             disableYarnGitCache: this.projectConfig.disableYarnGitCache,
             updateOnly: this.options.updateOnly,
@@ -227,7 +220,7 @@ export default class PobBaseGenerator extends Generator {
           break;
         case 'app':
           this.composeWith('pob:app', {
-            monorepo: this.useLerna,
+            monorepo: this.isMonorepo,
             isRoot: this.isRoot,
             disableYarnGitCache: this.projectConfig.disableYarnGitCache,
             updateOnly: this.options.updateOnly,
@@ -256,7 +249,7 @@ export default class PobBaseGenerator extends Generator {
   }
 
   end() {
-    if (this.useLerna && !this.options.updateOnly) {
+    if (this.isMonorepo && !this.options.updateOnly) {
       console.log('To create a new lerna package: ');
       console.log(' pob add <packageName>');
     }

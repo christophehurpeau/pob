@@ -1,6 +1,6 @@
 import camelCase from 'lodash.camelcase';
 import Generator from 'yeoman-generator';
-import inLerna from '../../../utils/inLerna.js';
+import inMonorepo from '../../../utils/inMonorepo.js';
 import * as packageUtils from '../../../utils/package.js';
 import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
 
@@ -81,7 +81,7 @@ export default class LibReadmeGenerator extends Generator {
           packageName: pkg.name,
           camelCaseProjectName: camelCase(pkg.name),
           description: pkg.description,
-          inLerna,
+          inMonorepo,
           gitHost,
           gitAccount,
           gitName,

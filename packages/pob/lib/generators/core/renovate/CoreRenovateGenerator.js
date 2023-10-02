@@ -1,5 +1,5 @@
 import Generator from 'yeoman-generator';
-import inLerna from '../../../utils/inLerna.js';
+import inMonorepo from '../../../utils/inMonorepo.js';
 import { writeAndFormatJson } from '../../../utils/writeAndFormat.js';
 
 export default class CoreRenovateGenerator extends Generator {
@@ -29,7 +29,7 @@ export default class CoreRenovateGenerator extends Generator {
   }
 
   initializing() {
-    if (inLerna && !inLerna.root) {
+    if (inMonorepo && !inMonorepo.root) {
       this.enableRenovate = false;
       this.config.delete('renovate');
       return;
@@ -39,7 +39,7 @@ export default class CoreRenovateGenerator extends Generator {
   }
 
   async prompting() {
-    if (inLerna && !inLerna.root) {
+    if (inMonorepo && !inMonorepo.root) {
       return;
     }
 

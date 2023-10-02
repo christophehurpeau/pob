@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import Generator from 'yeoman-generator';
-import inLerna from '../../../utils/inLerna.js';
+import inMonorepo from '../../../utils/inMonorepo.js';
 import * as packageUtils from '../../../utils/package.js';
 import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
 
@@ -155,9 +155,9 @@ export default class CoreCIGenerator extends Generator {
           publishSinglePackage: this.isReleasePleaseEnabled && !pkg.private,
           publishMonorepo:
             this.isReleasePleaseEnabled &&
-            inLerna &&
-            inLerna.root &&
-            inLerna.pobConfig?.project?.type === 'lib',
+            inMonorepo &&
+            inMonorepo.root &&
+            inMonorepo.pobConfig?.project?.type === 'lib',
         },
       );
 

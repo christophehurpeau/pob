@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import Generator from 'yeoman-generator';
 import ensureJsonFileFormatted from '../../../utils/ensureJsonFileFormatted.js';
-import inLerna from '../../../utils/inLerna.js';
+import inMonorepo from '../../../utils/inMonorepo.js';
 import * as packageUtils from '../../../utils/package.js';
 import { writeAndFormatJson } from '../../../utils/writeAndFormat.js';
 import { appIgnorePaths } from '../../app/ignorePaths.js';
@@ -140,7 +140,7 @@ export default class CommonLintGenerator extends Generator {
 
     pkg.prettier = '@pob/root/prettier-config';
 
-    if (!inLerna || inLerna.root || this.options.monorepo) {
+    if (!inMonorepo || inMonorepo.root || this.options.monorepo) {
       const rootIgnorePatterns = new Set(
         this.options.rootIgnorePaths.split('\n').filter(Boolean),
       );
@@ -164,7 +164,7 @@ export default class CommonLintGenerator extends Generator {
         this.templatePath('prettierignore.ejs'),
         this.destinationPath('.prettierignore'),
         {
-          inRoot: !inLerna || inLerna.root || this.options.monorepo,
+          inRoot: !inMonorepo || inMonorepo.root || this.options.monorepo,
           documentation: this.options.documentation,
           packageManager: this.options.packageManager,
           yarnNodeLinker: this.options.yarnNodeLinker,
@@ -211,23 +211,26 @@ export default class CommonLintGenerator extends Generator {
       ]);
     }
 
-    const yoConfigPobMonorepo = inLerna && inLerna.pobMonorepoConfig;
+    const yoConfigPobMonorepo = inMonorepo && inMonorepo.pobMonorepoConfig;
     const globalEslint =
       this.options.monorepo ||
       (yoConfigPobMonorepo && yoConfigPobMonorepo.eslint !== false);
     const globalTesting = yoConfigPobMonorepo && yoConfigPobMonorepo.testing;
     const composite = yoConfigPobMonorepo && yoConfigPobMonorepo.typescript;
-    const { rootPackageManager, rootYarnNodeLinker } = inLerna || {};
+    const { rootPackageManager, rootYarnNodeLinker } = inMonorepo || {};
     const lernaProjectType =
-      inLerna.pobConfig &&
-      inLerna.pobConfig.project &&
-      inLerna.pobConfig.project.type;
+      inMonorepo.pobConfig &&
+      inMonorepo.pobConfig.project &&
+      inMonorepo.pobConfig.project.type;
 
     if (this.options.monorepo && !globalEslint) {
       throw new Error('Please enable global eslint');
     }
 
-    if (globalEslint && !((inLerna && inLerna.root) || this.options.monorepo)) {
+    if (
+      globalEslint &&
+      !((inMonorepo && inMonorepo.root) || this.options.monorepo)
+    ) {
       if (!pkg.name.startsWith('@pob/eslint-config')) {
         packageUtils.removeDevDependencies(
           pkg,
@@ -254,7 +257,7 @@ export default class CommonLintGenerator extends Generator {
       packageUtils.addOrRemoveDevDependencies(
         pkg,
         !globalEslint ||
-          (inLerna && inLerna.root) ||
+          (inMonorepo && inMonorepo.root) ||
           this.options.monorepo ||
           lernaProjectType === 'app' ||
           (rootPackageManager === 'yarn' &&
@@ -283,7 +286,7 @@ export default class CommonLintGenerator extends Generator {
           ['eslint-plugin-node'],
         );
 
-        if ((inLerna && inLerna.root) || this.options.monorepo) {
+        if ((inMonorepo && inMonorepo.root) || this.options.monorepo) {
           if (this.options.typescript) {
             packageUtils.updateDevDependenciesIfPresent(pkg, [
               '@pob/eslint-config-typescript',
@@ -418,15 +421,19 @@ export default class CommonLintGenerator extends Generator {
     const getRootIgnorePatterns = () => {
       const ignorePatterns = new Set();
 
-      if (inLerna && !inLerna.root && (this.options.typescript || pkg.types)) {
+      if (
+        inMonorepo &&
+        !inMonorepo.root &&
+        (this.options.typescript || pkg.types)
+      ) {
         ignorePatterns.add('*.d.ts');
       }
 
-      if (inLerna && inLerna.root && this.options.documentation) {
+      if (inMonorepo && inMonorepo.root && this.options.documentation) {
         ignorePatterns.add('/docs');
       }
 
-      if ((!inLerna || !inLerna.root) && useBabel) {
+      if ((!inMonorepo || !inMonorepo.root) && useBabel) {
         const buildPath = `/${this.options.buildDirectory}`;
         if (
           !this.options.rootIgnorePaths ||
@@ -435,7 +442,7 @@ export default class CommonLintGenerator extends Generator {
           ignorePatterns.add(buildPath);
         }
       }
-      if (inLerna && inLerna.root && this.options.typescript) {
+      if (inMonorepo && inMonorepo.root && this.options.typescript) {
         ignorePatterns.add('/rollup.config.mjs');
       }
 
@@ -478,7 +485,7 @@ export default class CommonLintGenerator extends Generator {
     }
     // no else: dont delete root eslintrc, src is root
 
-    if ((inLerna && inLerna.root) || this.options.monorepo) {
+    if ((inMonorepo && inMonorepo.root) || this.options.monorepo) {
       if (this.fs.exists(srcEslintrcPath)) {
         this.fs.delete(srcEslintrcPath);
       }
@@ -513,7 +520,7 @@ export default class CommonLintGenerator extends Generator {
                   }
                 : false,
             },
-            relativePath: inLerna ? inLerna.relative : undefined,
+            relativePath: inMonorepo ? inMonorepo.relative : undefined,
           },
         );
 
@@ -524,9 +531,9 @@ export default class CommonLintGenerator extends Generator {
     }
 
     // see monorepo/lerna/index.js
-    if (!(inLerna && inLerna.root) && !this.options.monorepo) {
+    if (!(inMonorepo && inMonorepo.root) && !this.options.monorepo) {
       const srcDirectory = useBabel ? 'src' : 'lib';
-      const lintRootJsFiles = (useBabel && useNode) || !inLerna;
+      const lintRootJsFiles = (useBabel && useNode) || !inMonorepo;
 
       const lintPaths = [srcDirectory, 'bin', 'scripts', 'migrations'].filter(
         (dir) => fs.existsSync(this.destinationPath(dir)),
@@ -548,7 +555,7 @@ export default class CommonLintGenerator extends Generator {
         lint: `${useBabel && !composite ? 'tsc && ' : ''}yarn run lint:eslint`,
       });
 
-      if (!inLerna) {
+      if (!inMonorepo) {
         pkg.scripts.lint = `yarn run lint:prettier && ${pkg.scripts.lint}`;
         packageUtils.addScripts(pkg, {
           'lint:prettier': 'pob-root-prettier --check .',

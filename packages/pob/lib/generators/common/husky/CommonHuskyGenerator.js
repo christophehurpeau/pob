@@ -1,6 +1,6 @@
 import { readlinkSync, rmSync } from 'node:fs';
 import Generator from 'yeoman-generator';
-import inLerna from '../../../utils/inLerna.js';
+import inMonorepo from '../../../utils/inMonorepo.js';
 import * as packageUtils from '../../../utils/package.js';
 
 export default class CommonHuskyGenerator extends Generator {
@@ -58,14 +58,14 @@ export default class CommonHuskyGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     packageUtils.removeDevDependencies(pkg, ['husky']);
 
-    if (!inLerna || inLerna.root) {
+    if (!inMonorepo || inMonorepo.root) {
       if (pkg.name !== 'pob-monorepo') {
         packageUtils.removeDevDependencies(pkg, [
           '@pob/repo-config',
           'repository-check-dirty',
         ]);
         packageUtils.addDevDependencies(pkg, ['@pob/root']);
-        // packageUtils.addOrRemoveDevDependencies(pkg, inLerna, {
+        // packageUtils.addOrRemoveDevDependencies(pkg, inMonorepo, {
         //   '@commitlint/config-lerna-scopes': '6.1.3',
         // });
 

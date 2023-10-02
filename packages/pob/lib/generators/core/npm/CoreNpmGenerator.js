@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 import Generator from 'yeoman-generator';
-import inLerna from '../../../utils/inLerna.js';
+import inMonorepo from '../../../utils/inMonorepo.js';
 
 export default class CoreNpmGenerator extends Generator {
   constructor(args, opts) {
@@ -37,7 +37,7 @@ export default class CoreNpmGenerator extends Generator {
         this.templatePath('npmignore.ejs'),
         this.destinationPath('.npmignore'),
         {
-          inLerna,
+          inMonorepo,
           ci: this.options.ci,
           testing: this.options.testing,
           babel: withBabel,

@@ -1,5 +1,5 @@
 import Generator from 'yeoman-generator';
-import inLerna from '../../../utils/inLerna.js';
+import inMonorepo from '../../../utils/inMonorepo.js';
 import * as packageUtils from '../../../utils/package.js';
 import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
 
@@ -50,7 +50,7 @@ export default class LibDocGenerator extends Generator {
           ? pkg.pob.jsx
           : packageUtils.hasReact(pkg);
 
-      if (inLerna && inLerna.root) {
+      if (inMonorepo && inMonorepo.root) {
         const existingConfig = this.fs.readJSON(
           this.destinationPath('tsconfig.doc.json'),
           { typedocOptions: {} },
@@ -133,12 +133,12 @@ export default class LibDocGenerator extends Generator {
 
     // packageUtils.addOrRemoveDevDependencies(
     //   pkg,
-    //   this.options.enabled && inLerna && inLerna.root,
+    //   this.options.enabled && inMonorepo && inMonorepo.root,
     //   ['@chrp/typedoc-plugin-lerna-packages'],
     // );
     // packageUtils.addOrRemoveDependenciesMeta(
     //   pkg,
-    //   this.options.enabled && inLerna && inLerna.root,
+    //   this.options.enabled && inMonorepo && inMonorepo.root,
     //   {
     //     'typedoc-neo-theme': {
     //       unplugged: true,

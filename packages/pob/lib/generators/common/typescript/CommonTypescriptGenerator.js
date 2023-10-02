@@ -1,6 +1,6 @@
 import { existsSync } from 'node:fs';
 import Generator from 'yeoman-generator';
-import inLerna from '../../../utils/inLerna.js';
+import inMonorepo from '../../../utils/inMonorepo.js';
 import * as packageUtils from '../../../utils/package.js';
 import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
 
@@ -120,8 +120,8 @@ export default class CommonTypescriptGenerator extends Generator {
       // let monorepoPackageBuildReferences;
       let monorepoPackageSrcPaths;
 
-      if (inLerna && !inLerna.root) {
-        const yoConfig = inLerna.rootYoConfig;
+      if (inMonorepo && !inMonorepo.root) {
+        const yoConfig = inMonorepo.rootYoConfig;
 
         composite =
           yoConfig.pob &&
@@ -131,7 +131,7 @@ export default class CommonTypescriptGenerator extends Generator {
         if (composite) {
           packageUtils.addOrRemoveDevDependencies(
             pkg,
-            inLerna.rootPackageManager === 'yarn',
+            inMonorepo.rootPackageManager === 'yarn',
             ['typescript'],
           );
 
@@ -226,7 +226,7 @@ export default class CommonTypescriptGenerator extends Generator {
       //     this.templatePath('tsconfig.build.json.ejs'),
       //     tsconfigBuildPath,
       //     {
-      //       inMonorepo: inLerna && !inLerna.root,
+      //       inMonorepo: inMonorepo && !inMonorepo.root,
       //       jsx,
       //       composite,
       //       monorepoPackageSrcPaths,

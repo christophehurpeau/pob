@@ -1,7 +1,7 @@
 import { execSync } from 'node:child_process';
 import { platform } from 'node:process';
 import Generator from 'yeoman-generator';
-import inLerna from '../../utils/inLerna.js';
+import inMonorepo from '../../utils/inMonorepo.js';
 import * as packageUtils from '../../utils/package.js';
 import { appIgnorePaths } from './ignorePaths.js';
 
@@ -119,7 +119,7 @@ export default class PobAppGenerator extends Generator {
         name: 'ci',
         message: 'Do you want ci ?',
         default: !config || config.ci === undefined ? true : config.ci,
-        when: () => !inLerna,
+        when: () => !inMonorepo,
       },
     ]);
 
@@ -150,7 +150,7 @@ export default class PobAppGenerator extends Generator {
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
-    if (!inLerna || inLerna.root) {
+    if (!inMonorepo || inMonorepo.root) {
       this.composeWith('pob:common:husky', {});
     }
 
@@ -207,7 +207,7 @@ export default class PobAppGenerator extends Generator {
     this.composeWith('pob:common:remove-old-dependencies');
 
     const enableReleasePlease =
-      !inLerna && this.appConfig.testing && this.appConfig.ci;
+      !inMonorepo && this.appConfig.testing && this.appConfig.ci;
 
     if (this.appConfig.type !== 'remix') {
       this.composeWith('pob:common:testing', {
@@ -243,7 +243,7 @@ export default class PobAppGenerator extends Generator {
       });
 
       this.composeWith('pob:common:release', {
-        enable: !inLerna && this.appConfig.testing && this.appConfig.ci,
+        enable: !inMonorepo && this.appConfig.testing && this.appConfig.ci,
         withBabel: babel,
         documentation: false,
         updateOnly: this.options.updateOnly,
@@ -251,7 +251,7 @@ export default class PobAppGenerator extends Generator {
     }
 
     this.composeWith('pob:core:vscode', {
-      root: !inLerna,
+      root: !inMonorepo,
       monorepo: false,
       packageManager: this.options.packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
@@ -265,7 +265,7 @@ export default class PobAppGenerator extends Generator {
     }
 
     this.composeWith('pob:core:gitignore', {
-      root: !inLerna || inLerna.root,
+      root: !inMonorepo || inMonorepo.root,
       documentation: false,
       testing: this.appConfig.testing,
       withBabel: babel,

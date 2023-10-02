@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import askName from 'inquirer-npm-name';
 import Generator from 'yeoman-generator';
-import inLerna from '../../../utils/inLerna.js';
+import inMonorepo from '../../../utils/inMonorepo.js';
 import * as packageUtils from '../../../utils/package.js';
 
 export default class CorePackageGenerator extends Generator {
@@ -136,7 +136,11 @@ export default class CorePackageGenerator extends Generator {
     );
 
     if (!pkg.type) pkg.type = props.type;
-    if (inLerna && !inLerna.root && inLerna.rootMonorepoPkg.type === 'module') {
+    if (
+      inMonorepo &&
+      !inMonorepo.root &&
+      inMonorepo.rootMonorepoPkg.type === 'module'
+    ) {
       pkg.type = 'module';
     }
 
@@ -145,7 +149,7 @@ export default class CorePackageGenerator extends Generator {
       : props.description || pkg.description;
 
     if (this.options.monorepo && !this.options.isRoot) {
-      const rootMonorepoPkg = inLerna.rootMonorepoPkg;
+      const rootMonorepoPkg = inMonorepo.rootMonorepoPkg;
       const rootRepositoryUrl =
         typeof rootMonorepoPkg.repository === 'string'
           ? rootMonorepoPkg.repository
@@ -153,7 +157,7 @@ export default class CorePackageGenerator extends Generator {
       pkg.repository = {
         type: 'git',
         url: rootRepositoryUrl,
-        directory: process.cwd().slice(inLerna.rootPath.length + 1),
+        directory: process.cwd().slice(inMonorepo.rootPath.length + 1),
       };
       pkg.homepage = rootMonorepoPkg.homepage;
 
@@ -193,7 +197,7 @@ export default class CorePackageGenerator extends Generator {
           }`,
         },
       );
-    } else if (inLerna && !inLerna.root) {
+    } else if (inMonorepo && !inMonorepo.root) {
       if (this.fs.exists('scripts/check-package.js')) {
         this.fs.delete('scripts/check-package.js');
       }
@@ -303,7 +307,7 @@ export default class CorePackageGenerator extends Generator {
         }
       }
     };
-    if (this.options.monorepo || inLerna || pkg.private) {
+    if (this.options.monorepo || inMonorepo || pkg.private) {
       uninstallPostinstallScript('postinstallDev');
       if (this.options.isRoot) {
         installPostinstallScript('postinstall');
