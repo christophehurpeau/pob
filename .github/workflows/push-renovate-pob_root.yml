@@ -3,6 +3,7 @@ name: Commit changes on @pob/root update
 on:
   push:
     branches:
+      - "renovate/pob-root"
       - "renovate/pob-root-**"
 
 jobs:
