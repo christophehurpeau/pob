@@ -27,6 +27,10 @@
   },
   "sideEffects": false,
   "bin": "./lib/pob.js",
+  "files": [
+    "lib",
+    "bin"
+  ],
   "scripts": {
     "clean:build": "true",
     "format": "prettier --write",

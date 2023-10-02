@@ -28,6 +28,10 @@
   "bin": {
     "lerna": "bin/cli.cjs"
   },
+  "files": [
+    "lib",
+    "bin"
+  ],
   "scripts": {
     "clean:build": "true",
     "lint": "yarn run lint:eslint",

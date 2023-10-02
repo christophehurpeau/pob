@@ -1,6 +1,4 @@
-import fs from 'node:fs';
 import Generator from 'yeoman-generator';
-import inMonorepo from '../../../utils/inMonorepo.js';
 
 export default class CoreNpmGenerator extends Generator {
   constructor(args, opts) {
@@ -12,43 +10,56 @@ export default class CoreNpmGenerator extends Generator {
       default: true,
       desc: 'Enable npm',
     });
-    this.option('ci', {
-      type: Boolean,
-      required: false,
-      default: true,
-      desc: 'Enabled ci',
+
+    this.option('srcDirectory', {
+      type: String,
+      required: true,
+      default: 'lib',
+      desc: 'src directory to include in published files',
     });
-    this.option('testing', {
-      type: Boolean,
+
+    this.option('distDirectory', {
+      type: String,
       required: false,
-      default: true,
-      desc: 'Enabled testing',
+      desc: 'dist directory to include in published files',
     });
   }
 
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
-    if (!pkg.private && this.options.enable) {
-      const babelEnvs = pkg.pob.babelEnvs || [];
-      const withBabel = babelEnvs.length > 0;
-
-      this.fs.copyTpl(
-        this.templatePath('npmignore.ejs'),
-        this.destinationPath('.npmignore'),
-        {
-          inMonorepo,
-          ci: this.options.ci,
-          testing: this.options.testing,
-          babel: withBabel,
-          typedoc: pkg.devDependencies && pkg.devDependencies.typedoc,
-          yarn: fs.existsSync('.yarnrc.yml'),
-          npm: this.fs.exists('package-lock.json'),
-          codeclimate: this.fs.exists('.codeclimate.yml'),
-        },
-      );
-    } else if (this.fs.exists(this.destinationPath('.npmignore'))) {
+    if (this.fs.exists(this.destinationPath('.npmignore'))) {
       this.fs.delete(this.destinationPath('.npmignore'));
     }
+
+    if (!pkg.private && this.options.enable) {
+      const files = new Set([
+        this.options.srcDirectory,
+        this.options.distDirectory,
+      ]);
+
+      if (pkg.bin) {
+        files.add('bin');
+      }
+
+      if (pkg.exports) {
+        Object.values(pkg.exports).forEach((value) => {
+          if (
+            typeof value === 'string' &&
+            value.startsWith('./') &&
+            value !== './package.json' &&
+            ![...files].some((file) => value.startsWith(`./${file}/`))
+          ) {
+            files.add(value.slice('./'.length));
+          }
+        });
+      }
+
+      pkg.files = [...files].filter(Boolean);
+    } else {
+      delete pkg.files;
+    }
+
+    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
   }
 }

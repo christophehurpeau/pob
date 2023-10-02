@@ -26,6 +26,10 @@
   },
   "sideEffects": false,
   "bin": "./bin/pretty-pkg.js",
+  "files": [
+    "lib",
+    "bin"
+  ],
   "scripts": {
     "clean:build": "true",
     "lint": "yarn run lint:eslint",

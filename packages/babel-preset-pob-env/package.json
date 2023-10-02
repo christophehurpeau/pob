@@ -25,6 +25,9 @@
     "./package.json": "./package.json"
   },
   "sideEffects": false,
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "clean:build": "true",
     "lint": "yarn run lint:eslint",

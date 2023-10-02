@@ -229,16 +229,16 @@ export default class PobLibGenerator extends Generator {
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
-  }
 
-  default() {
     this.composeWith('pob:common:babel', {
       updateOnly: this.options.updateOnly,
       testing: !!this.pobjson.testing,
       documentation: !!this.pobjson.documentation,
       fromPob: this.options.fromPob,
     });
+  }
 
+  default() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     const babelEnvs = pkg.pob.babelEnvs || [];
 
@@ -338,8 +338,8 @@ export default class PobLibGenerator extends Generator {
 
     this.composeWith('pob:core:npm', {
       enable: !pkg.private,
-      testing: !!this.pobjson.testing,
-      ci: this.pobjson.testing && this.pobjson.testing.ci,
+      srcDirectory: withBabel ? 'src' : 'lib',
+      distDirectory: withBabel ? 'dist' : '',
     });
   }
 

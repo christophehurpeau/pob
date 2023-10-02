@@ -39,6 +39,13 @@
     "pob-babel-clean-out": "./bin/pob-babel-clean-out.js",
     "rollup": "./bin/rollup.cjs"
   },
+  "files": [
+    "lib",
+    "bin",
+    "preset.js",
+    "setup-jest.cjs",
+    "plugin-run.cjs"
+  ],
   "scripts": {
     "build": "yarn run build:definitions",
     "build:definitions": "tsc --lib esnext --noEmit --skipLibCheck ./lib/index.d.ts",
