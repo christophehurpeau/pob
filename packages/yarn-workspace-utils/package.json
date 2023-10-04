@@ -47,7 +47,7 @@
     ]
   },
   "dependencies": {
-    "@yarnpkg/core": "3.5.3"
+    "@yarnpkg/core": "3.5.4"
   },
   "devDependencies": {
     "@babel/core": "7.23.0",

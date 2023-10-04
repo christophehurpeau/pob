@@ -4098,15 +4098,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/cli@npm:3.6.3":
-  version: 3.6.3
-  resolution: "@yarnpkg/cli@npm:3.6.3"
+"@yarnpkg/cli@npm:3.6.4":
+  version: 3.6.4
+  resolution: "@yarnpkg/cli@npm:3.6.4"
   dependencies:
-    "@yarnpkg/core": ^3.5.3
+    "@yarnpkg/core": ^3.5.4
     "@yarnpkg/fslib": ^2.10.3
     "@yarnpkg/libzip": ^2.3.0
     "@yarnpkg/parsers": ^2.5.1
-    "@yarnpkg/plugin-compat": ^3.1.14
+    "@yarnpkg/plugin-compat": ^3.1.15
     "@yarnpkg/plugin-dlx": ^3.1.4
     "@yarnpkg/plugin-essentials": ^3.3.0
     "@yarnpkg/plugin-file": ^2.3.1
@@ -4131,14 +4131,14 @@ __metadata:
     typanion: ^3.3.0
     yup: ^0.32.9
   peerDependencies:
-    "@yarnpkg/core": ^3.5.3
-  checksum: 3aca30943f030c1d0ecaadfe2529d31ec32ec4ecc447394dc707b8e1c06f4bda4a99801d86665b5e4a4a159478f4634adba7dac6b95a99b40bde44e8d6e50611
+    "@yarnpkg/core": ^3.5.4
+  checksum: cde228b9725175d9704512394635d92728d2dd67b9232ea446bd7bf44d0f011f5cc4bac531436c25585d15f3d06da15f5af8e8e7fb913d9b96f5a2b46fa310fb
   languageName: node
   linkType: hard
 
-"@yarnpkg/core@npm:3.5.3, @yarnpkg/core@npm:^3.3.0, @yarnpkg/core@npm:^3.5.3":
-  version: 3.5.3
-  resolution: "@yarnpkg/core@npm:3.5.3"
+"@yarnpkg/core@npm:3.5.4, @yarnpkg/core@npm:^3.3.0, @yarnpkg/core@npm:^3.5.4":
+  version: 3.5.4
+  resolution: "@yarnpkg/core@npm:3.5.4"
   dependencies:
     "@arcanis/slice-ansi": ^1.1.1
     "@types/semver": ^7.1.0
@@ -4147,7 +4147,7 @@ __metadata:
     "@yarnpkg/json-proxy": ^2.1.1
     "@yarnpkg/libzip": ^2.3.0
     "@yarnpkg/parsers": ^2.5.1
-    "@yarnpkg/pnp": ^3.3.4
+    "@yarnpkg/pnp": ^3.3.5
     "@yarnpkg/shell": ^3.2.5
     camelcase: ^5.3.1
     chalk: ^3.0.0
@@ -4172,7 +4172,7 @@ __metadata:
     treeify: ^1.1.0
     tslib: ^1.13.0
     tunnel: ^0.0.6
-  checksum: 203abb513eead0bbe048f56dd2f9f9f0e744fa17362ae1228ca77a9e353e794ec5cbefb09bdb738aecb3a12416b92d5e179bd1627455b1dd6dc27dbd792086f0
+  checksum: 15ace56421687f06d75ab1faa90123b8202391a988c69b6d2c90f3710d483036297ae8907292250bea197cc84bc10066c667fab1c048933cab7368ea7447c8d3
   languageName: node
   linkType: hard
 
@@ -4236,15 +4236,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/plugin-compat@npm:^3.1.14":
-  version: 3.1.14
-  resolution: "@yarnpkg/plugin-compat@npm:3.1.14"
+"@yarnpkg/plugin-compat@npm:^3.1.15":
+  version: 3.1.15
+  resolution: "@yarnpkg/plugin-compat@npm:3.1.15"
   dependencies:
     "@yarnpkg/extensions": ^1.1.2
   peerDependencies:
-    "@yarnpkg/core": ^3.5.3
+    "@yarnpkg/core": ^3.5.4
     "@yarnpkg/plugin-patch": ^3.2.4
-  checksum: d99ae283a62fdf38164d376136318fbca34825bb9f6a371b73768d9971c6f7d48745dea6eeb488e7b55c37a8db3375f2c63ca7e06673b94365dc4c5392143d5a
+  checksum: 46b2d1515693ca25d400252cd6c9153080fc56b41b7686daf2475a0b687af619ab4a48612368fba7ab34f1072324d86a9a067e1c8d9975ada0b70c599c49284f
   languageName: node
   linkType: hard
 
@@ -4505,7 +4505,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yarnpkg/pnp@npm:^3.2.5, @yarnpkg/pnp@npm:^3.3.4, @yarnpkg/pnp@npm:^3.3.5":
+"@yarnpkg/pnp@npm:^3.2.5, @yarnpkg/pnp@npm:^3.3.5":
   version: 3.3.5
   resolution: "@yarnpkg/pnp@npm:3.3.5"
   dependencies:
@@ -11913,8 +11913,8 @@ __metadata:
     "@pob/sort-object": 6.0.1
     "@pob/sort-pkg": 6.0.1
     "@types/inquirer": 9.0.3
-    "@yarnpkg/cli": 3.6.3
-    "@yarnpkg/core": 3.5.3
+    "@yarnpkg/cli": 3.6.4
+    "@yarnpkg/core": 3.5.4
     "@yarnpkg/fslib": 2.10.3
     "@yeoman/types": 1.0.1
     eslint: 8.50.0
@@ -14735,7 +14735,7 @@ resolve@^2.0.0-next.3:
   resolution: "yarn-workspace-utils@workspace:packages/yarn-workspace-utils"
   dependencies:
     "@babel/core": 7.23.0
-    "@yarnpkg/core": 3.5.3
+    "@yarnpkg/core": 3.5.4
     pob-babel: 36.4.2
     typescript: 5.2.2
   languageName: unknown
