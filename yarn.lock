@@ -11937,7 +11937,7 @@ __metadata:
     semver: 7.5.4
     yarn-workspace-utils: 1.0.1
     yeoman-environment: 4.0.0-beta.5
-    yeoman-generator: 6.0.0-rc.5
+    yeoman-generator: 6.0.0-rc.6
   bin:
     pob: ./lib/pob.js
   languageName: unknown
@@ -14783,9 +14783,9 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"yeoman-generator@npm:6.0.0-rc.5":
-  version: 6.0.0-rc.5
-  resolution: "yeoman-generator@npm:6.0.0-rc.5"
+"yeoman-generator@npm:6.0.0-rc.6":
+  version: 6.0.0-rc.6
+  resolution: "yeoman-generator@npm:6.0.0-rc.6"
   dependencies:
     "@types/lodash-es": ^4.17.7
     "@types/node": ^16.18.3
@@ -14810,7 +14810,7 @@ resolve@^2.0.0-next.3:
   peerDependenciesMeta:
     yeoman-environment:
       optional: true
-  checksum: 0a59d7384669740e99de793913f850bbb89c74d8dd4c62c0e248c96b9c4073a80546e82aa0bf919234ead6d591977215a8402160e8f26fbd30f65c00e90a6f89
+  checksum: cbbfe3400cf49f35cd7af708576c9bbe11df44f26b1aa3c7e66b785b3b8c9e7f089c1232fd5c9417ae8743defb246d48ccec2404b4213b2ca46b457a1d9d16f6
   languageName: node
   linkType: hard
 
