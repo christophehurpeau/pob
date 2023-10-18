@@ -3168,12 +3168,12 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: 8.7.0
+    pob-dependencies: 8.7.1
     prettier: 2.8.8
   languageName: unknown
   linkType: soft
 
-"@pob/root@8.4.1, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@8.4.2, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -3184,7 +3184,7 @@ __metadata:
     husky: ~8.0.1
     json5: ^2.2.2
     lint-staged: 15.0.1
-    pob-dependencies: 8.7.0
+    pob-dependencies: 8.7.1
     prettier: 2.8.8
     repository-check-dirty: 6.1.1
     semver: ^7.3.7
@@ -7356,13 +7356,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-typescript-lib@0.15.6, example-typescript-lib@workspace:pob-examples/typescript-lib":
+"example-typescript-lib@0.15.7, example-typescript-lib@workspace:pob-examples/typescript-lib":
   version: 0.0.0-use.local
   resolution: "example-typescript-lib@workspace:pob-examples/typescript-lib"
   dependencies:
     "@babel/core": 7.23.2
     "@types/node": 20.8.7
-    pob-babel: 36.4.3
+    pob-babel: 36.4.4
     typescript: 5.2.2
   languageName: unknown
   linkType: soft
@@ -7371,7 +7371,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-webpack-app@workspace:pob-examples/webpack-app"
   dependencies:
-    example-typescript-lib: 0.15.6
+    example-typescript-lib: 0.15.7
     webpack: 5.89.0
     webpack-cli: 5.1.4
   languageName: unknown
@@ -11821,7 +11821,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@36.4.3, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
+"pob-babel@36.4.4, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -11849,7 +11849,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@8.7.0, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@8.7.1, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -11869,7 +11869,7 @@ __metadata:
     eslint: 8.51.0
     jest: 29.7.0
     jest-junit-reporter: 1.1.0
-    pob-babel: 36.4.3
+    pob-babel: 36.4.4
     prettier: 2.8.8
     repository-check-dirty: 6.1.1
     rollup: 3.29.4
@@ -11905,7 +11905,7 @@ __metadata:
     "@pob/eslint-config": 51.1.1
     "@pob/eslint-config-typescript": 51.1.1
     "@pob/eslint-config-typescript-react": 51.1.1
-    "@pob/root": 8.4.1
+    "@pob/root": 8.4.2
     "@pob/sort-eslint-config": 5.0.2
     "@pob/sort-object": 6.0.2
     "@pob/sort-pkg": 6.0.2
@@ -11927,10 +11927,10 @@ __metadata:
     mem-fs-editor: 10.0.3
     minimist: 1.2.8
     parse-author: 2.0.0
-    pob-dependencies: 8.7.0
+    pob-dependencies: 8.7.1
     prettier: 2.8.8
     semver: 7.5.4
-    yarn-workspace-utils: 1.0.2
+    yarn-workspace-utils: 1.0.3
     yeoman-environment: 4.0.0-beta.5
     yeoman-generator: 6.0.0-rc.6
   bin:
@@ -14734,13 +14734,13 @@ resolve@^2.0.0-next.3:
   languageName: node
   linkType: hard
 
-"yarn-workspace-utils@1.0.2, yarn-workspace-utils@workspace:packages/yarn-workspace-utils":
+"yarn-workspace-utils@1.0.3, yarn-workspace-utils@workspace:packages/yarn-workspace-utils":
   version: 0.0.0-use.local
   resolution: "yarn-workspace-utils@workspace:packages/yarn-workspace-utils"
   dependencies:
     "@babel/core": 7.23.2
     "@yarnpkg/core": 3.5.4
-    pob-babel: 36.4.3
+    pob-babel: 36.4.4
     typescript: 5.2.2
   languageName: unknown
   linkType: soft

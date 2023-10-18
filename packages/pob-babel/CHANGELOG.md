@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.4.4](https://github.com/christophehurpeau/pob/compare/pob-babel@36.4.3...pob-babel@36.4.4) (2023-10-18)
+
+
+### Bug Fixes
+
+* **pob-babel:** export root createRollupConfig ([3341835](https://github.com/christophehurpeau/pob/commit/3341835ef1ba334cc9b09e4fce69b4bf6961f8cd))
+
+
+
 ## [36.4.3](https://github.com/christophehurpeau/pob/compare/pob-babel@36.4.2...pob-babel@36.4.3) (2023-10-18)
 
 

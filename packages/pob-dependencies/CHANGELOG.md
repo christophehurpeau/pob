@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.7.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.7.0...pob-dependencies@8.7.1) (2023-10-18)
+
+
+### Bug Fixes
+
+* **pob-babel:** export root createRollupConfig ([3341835](https://github.com/christophehurpeau/pob/commit/3341835ef1ba334cc9b09e4fce69b4bf6961f8cd))
+
+
+
 ## [8.7.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.6.1...pob-dependencies@8.7.0) (2023-10-18)
 
 
