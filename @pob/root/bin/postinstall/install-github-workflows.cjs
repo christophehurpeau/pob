@@ -15,7 +15,7 @@ const installWorkflow = (workflowName, condition = true) => {
     fs.writeFileSync(
       path.resolve(`.github/workflows/${workflowName}.yml`),
       fs.readFileSync(
-        path.resolve(__dirname, `../../github-workflows/${workflowName}.yml`),
+        path.resolve(__dirname, `github-workflows/${workflowName}.yml`),
       ),
     );
   } else {
