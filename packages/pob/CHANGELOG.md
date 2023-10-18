@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.4.0](https://github.com/christophehurpeau/pob/compare/pob@14.3.0...pob@14.4.0) (2023-10-18)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v51.1.0 ([#1796](https://github.com/christophehurpeau/pob/issues/1796)) ([076afb2](https://github.com/christophehurpeau/pob/commit/076afb27c2225caa416d2160739dc408b6e0ca3a))
+* **deps:** update dependency @yeoman/types to v1.1.1 ([#1811](https://github.com/christophehurpeau/pob/issues/1811)) ([e258f5e](https://github.com/christophehurpeau/pob/commit/e258f5e718d7a5b4723b90d2aa1c1017609489e0))
+* **deps:** update dependency eslint to v8.51.0 ([#1802](https://github.com/christophehurpeau/pob/issues/1802)) ([a116098](https://github.com/christophehurpeau/pob/commit/a1160986eba0dd3be8f0b3ba2f08da2389156ba3))
+
+
+### Bug Fixes
+
+* change tsBuildInfoFile ([3807a34](https://github.com/christophehurpeau/pob/commit/3807a34652fa4f3b6aa6f1e88d0ce323af5d8265))
+* **deps:** update dependency @types/inquirer to v9.0.4 ([#1806](https://github.com/christophehurpeau/pob/issues/1806)) ([c4df08f](https://github.com/christophehurpeau/pob/commit/c4df08fb1ba7d9ec35f19e01405d2535d4410454))
+* **deps:** update dependency @types/inquirer to v9.0.5 ([#1821](https://github.com/christophehurpeau/pob/issues/1821)) ([6e6d1c0](https://github.com/christophehurpeau/pob/commit/6e6d1c0fea5e2e9fc059146ad5fb207dbfa5fe11))
+* **deps:** update dependency @types/inquirer to v9.0.6 ([#1823](https://github.com/christophehurpeau/pob/issues/1823)) ([d7414f2](https://github.com/christophehurpeau/pob/commit/d7414f2407a5feb6e4727d228a414906b12902b2))
+* **deps:** update dependency mem-fs-editor to v10.0.3 ([#1819](https://github.com/christophehurpeau/pob/issues/1819)) ([a7dfdfc](https://github.com/christophehurpeau/pob/commit/a7dfdfc962c73c7303f4fe89fe0fbc8c2f2a9639))
+* **deps:** update dependency yeoman-generator to v6.0.0-rc.6 ([#1808](https://github.com/christophehurpeau/pob/issues/1808)) ([a044760](https://github.com/christophehurpeau/pob/commit/a044760f7ab299c009fdd41451620f0b8d79be08))
+* **deps:** update yarn monorepo ([#1795](https://github.com/christophehurpeau/pob/issues/1795)) ([c893a31](https://github.com/christophehurpeau/pob/commit/c893a315a1e382e14c5270c4fdc3b3488ddefa30))
+* **pob:** bring back npmignore ([3ac3841](https://github.com/christophehurpeau/pob/commit/3ac38415362e8a6ba3c23db41f404287a82356eb))
+* **pob:** fix monorepo workspaces generator not called ([0baab7c](https://github.com/christophehurpeau/pob/commit/0baab7ccb430cc7f052b343b7d6989cb733a252c))
+* **pob:** fix package generator not working in monorepo ([1c63705](https://github.com/christophehurpeau/pob/commit/1c63705cd809fde7813ef7ac5d2a85c92a53693f))
+* run npm publish in parallel ([7f22704](https://github.com/christophehurpeau/pob/commit/7f22704e7f37c7f6d2907f620e21dcbf8b184fb4))
+
+
+
 ## [14.3.0](https://github.com/christophehurpeau/pob/compare/pob@14.2.0...pob@14.3.0) (2023-10-02)
 
 

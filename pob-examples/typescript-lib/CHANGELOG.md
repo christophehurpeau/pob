@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.6](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.15.5...example-typescript-lib@0.15.6) (2023-10-18)
+
+
+### Bug Fixes
+
+* change tsBuildInfoFile ([3807a34](https://github.com/christophehurpeau/pob/commit/3807a34652fa4f3b6aa6f1e88d0ce323af5d8265))
+
+
+
 ## [0.15.5](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.15.4...example-typescript-lib@0.15.5) (2023-09-30)
 
 **Note:** Version bump only for package example-typescript-lib

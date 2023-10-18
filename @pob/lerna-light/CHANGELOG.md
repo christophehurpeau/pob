@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.1](https://github.com/christophehurpeau/pob/compare/@pob/lerna-light@8.0.0...@pob/lerna-light@8.0.1) (2023-10-18)
+
+**Note:** Version bump only for package @pob/lerna-light
+
+
+
+
+
 ## [8.0.0](https://github.com/christophehurpeau/pob/compare/@pob/lerna-light@7.0.1...@pob/lerna-light@8.0.0) (2023-09-18)
 
 

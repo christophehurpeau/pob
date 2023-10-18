@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.4.3](https://github.com/christophehurpeau/pob/compare/pob-babel@36.4.2...pob-babel@36.4.3) (2023-10-18)
+
+
+### Bug Fixes
+
+* clean out directory should clean tsc cache too ([42b4885](https://github.com/christophehurpeau/pob/commit/42b4885b23ed6d9534bb2ebff36c0ed406408f3b))
+* **deps:** update dependency @rollup/plugin-babel to v6.0.4 ([#1797](https://github.com/christophehurpeau/pob/issues/1797)) ([3912cfb](https://github.com/christophehurpeau/pob/commit/3912cfba8abb74e3ad06b4a364648f46a21dbd15))
+* **deps:** update dependency @rollup/plugin-json to v6.0.1 ([#1798](https://github.com/christophehurpeau/pob/issues/1798)) ([0f84b1b](https://github.com/christophehurpeau/pob/commit/0f84b1b3ad47d1326cb61086f65ced6a79f54101))
+* **deps:** update dependency @rollup/plugin-node-resolve to v15.2.2 ([#1799](https://github.com/christophehurpeau/pob/issues/1799)) ([5431f1e](https://github.com/christophehurpeau/pob/commit/5431f1e1f7f6c5767873adeeaab71ef7b145ddc7))
+* **deps:** update dependency @rollup/plugin-node-resolve to v15.2.3 ([#1805](https://github.com/christophehurpeau/pob/issues/1805)) ([b9597a0](https://github.com/christophehurpeau/pob/commit/b9597a057e7aface4cbf5168fedb9a4d4cb60879))
+* **deps:** update dependency @rollup/plugin-run to v3.0.2 ([#1800](https://github.com/christophehurpeau/pob/issues/1800)) ([e85601e](https://github.com/christophehurpeau/pob/commit/e85601e7d80b332eccd71689e7de7e6c0c8221e4))
+
+
+
 ## [36.4.2](https://github.com/christophehurpeau/pob/compare/pob-babel@36.4.1...pob-babel@36.4.2) (2023-09-30)
 
 **Note:** Version bump only for package pob-babel

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.2](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@1.0.1...yarn-workspace-utils@1.0.2) (2023-10-18)
+
+
+### Bug Fixes
+
+* change tsBuildInfoFile ([3807a34](https://github.com/christophehurpeau/pob/commit/3807a34652fa4f3b6aa6f1e88d0ce323af5d8265))
+* **deps:** update yarn monorepo ([#1795](https://github.com/christophehurpeau/pob/issues/1795)) ([c893a31](https://github.com/christophehurpeau/pob/commit/c893a315a1e382e14c5270c4fdc3b3488ddefa30))
+
+
+
 ## [1.0.1](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@1.0.0...yarn-workspace-utils@1.0.1) (2023-10-02)
 
 **Note:** Version bump only for package yarn-workspace-utils
