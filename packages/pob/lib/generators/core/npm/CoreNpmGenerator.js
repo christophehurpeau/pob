@@ -28,7 +28,13 @@ export default class CoreNpmGenerator extends Generator {
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
-    if (this.fs.exists(this.destinationPath('.npmignore'))) {
+    if (!pkg.private && this.options.enable) {
+      this.fs.copyTpl(
+        this.templatePath('npmignore.ejs'),
+        this.destinationPath('.npmignore'),
+        {},
+      );
+    } else if (this.fs.exists(this.destinationPath('.npmignore'))) {
       this.fs.delete(this.destinationPath('.npmignore'));
     }
 
