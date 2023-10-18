@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.4.1](https://github.com/christophehurpeau/pob/compare/@pob/root@8.4.0...@pob/root@8.4.1) (2023-10-18)
+
+
+### Bug Fixes
+
+* **@pob/root:** move template folder ([e157b4a](https://github.com/christophehurpeau/pob/commit/e157b4ac951d1de14c8c3cc178577d8cb4ccb46c))
+
+
+
 ## [8.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.3.2...@pob/root@8.4.0) (2023-10-18)
 
 
