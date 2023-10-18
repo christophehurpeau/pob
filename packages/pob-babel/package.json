@@ -22,8 +22,8 @@
       "types": "./lib/index.d.ts",
       "default": "./lib/index.js"
     },
-    "./createRollupConfig": "./lib/createRollupConfig.js",
-    "./createRollupConfig.js": "./lib/createRollupConfig.js",
+    "./createRollupConfig": "./createRollupConfig.js",
+    "./createRollupConfig.js": "./createRollupConfig.js",
     "./preset": "./preset.js",
     "./preset.js": "./preset.js",
     "./preset.cjs": "./preset.js",
@@ -42,6 +42,7 @@
   "files": [
     "lib",
     "bin",
+    "createRollupConfig.js",
     "preset.js",
     "setup-jest.cjs",
     "plugin-run.cjs"
