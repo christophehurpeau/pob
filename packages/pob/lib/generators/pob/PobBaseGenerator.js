@@ -124,7 +124,8 @@ export default class PobBaseGenerator extends Generator {
     this.composeWith('pob:core:package', {
       updateOnly: this.options.updateOnly,
       private: this.isMonorepo,
-      monorepo: this.isMonorepo,
+      isMonorepo: this.isMonorepo,
+      inMonorepo: !!inMonorepo,
       isRoot: this.isRoot,
     });
 

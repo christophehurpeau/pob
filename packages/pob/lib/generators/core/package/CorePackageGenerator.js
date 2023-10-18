@@ -9,11 +9,18 @@ export default class CorePackageGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option('monorepo', {
+    this.option('isMonorepo', {
       type: Boolean,
       required: true,
       default: false,
       desc: 'is monorepo',
+    });
+
+    this.option('inMonorepo', {
+      type: Boolean,
+      required: true,
+      default: false,
+      desc: 'in monorepo',
     });
 
     this.option('isRoot', {
@@ -46,7 +53,7 @@ export default class CorePackageGenerator extends Generator {
     }
 
     if (!this.options.updateOnly) {
-      if (this.options.monorepo && this.options.isRoot) {
+      if (this.options.isMonorepo && this.options.isRoot) {
         pkg.private = true;
       } else if (this.options.private) {
         pkg.private = true;
@@ -65,7 +72,7 @@ export default class CorePackageGenerator extends Generator {
       }
     }
 
-    if (this.options.monorepo && this.options.isRoot) {
+    if (this.options.isMonorepo && this.options.isRoot) {
       if (!pkg.name) {
         const { name } = await this.prompt({
           name: 'name',
@@ -96,7 +103,7 @@ export default class CorePackageGenerator extends Generator {
     const props = await this.prompt(
       [
         !this.options.updateOnly &&
-          !(this.options.monorepo && this.options.isRoot) && {
+          !(this.options.isMonorepo && this.options.isRoot) && {
             name: 'description',
             message: 'Description',
             default: pkg.description,
@@ -148,7 +155,7 @@ export default class CorePackageGenerator extends Generator {
       ? pkg.description
       : props.description || pkg.description;
 
-    if (this.options.monorepo && !this.options.isRoot) {
+    if (this.options.inMonorepo && !this.options.isRoot) {
       const rootMonorepoPkg = inMonorepo.rootMonorepoPkg;
       const rootRepositoryUrl =
         typeof rootMonorepoPkg.repository === 'string'
@@ -169,9 +176,9 @@ export default class CorePackageGenerator extends Generator {
       fs.unlinkSync(this.destinationPath('yarn-error.log'));
     }
 
-    if (this.options.monorepo && !this.options.isRoot) {
+    if (this.options.inMonorepo && !this.options.isRoot) {
       packageUtils.removeScripts(pkg, ['checks']);
-    } else if (this.options.monorepo && this.options.isRoot) {
+    } else if (this.options.isMonorepo && this.options.isRoot) {
       const doesMjsCheckPackagesExists = this.fs.exists(
         this.destinationPath('scripts/check-packages.mjs'),
       );
@@ -307,7 +314,7 @@ export default class CorePackageGenerator extends Generator {
         }
       }
     };
-    if (this.options.monorepo || inMonorepo || pkg.private) {
+    if (this.options.inMonorepo || inMonorepo || pkg.private) {
       uninstallPostinstallScript('postinstallDev');
       if (this.options.isRoot) {
         installPostinstallScript('postinstall');
