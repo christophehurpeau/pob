@@ -17,8 +17,10 @@
     "newLine": "lf",
 <% if (emit) { -%>
     "outDir": "dist/definitions",
-    <% if (composite) { -%>
-    "tsBuildInfoFile": "dist/definitions/tsbuildinfo",
+    <% if (composite) {
+      // dont emit in dist/definitions to avoid publish to npm
+       -%>
+    "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo",
     <% } -%>
 <% } else if (composite) { -%>
 <% if (cacheEnabled) { -%>
