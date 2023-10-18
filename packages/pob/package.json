@@ -46,7 +46,7 @@
     "@pob/sort-eslint-config": "5.0.1",
     "@pob/sort-object": "6.0.1",
     "@pob/sort-pkg": "6.0.1",
-    "@types/inquirer": "9.0.5",
+    "@types/inquirer": "9.0.6",
     "@yarnpkg/cli": "3.6.4",
     "@yarnpkg/core": "3.5.4",
     "@yarnpkg/fslib": "2.10.3",
