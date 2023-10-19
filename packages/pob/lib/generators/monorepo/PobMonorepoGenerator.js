@@ -295,7 +295,7 @@ export default class PobMonorepoGenerator extends Generator {
       withBabel: this.pobLernaConfig.typescript,
       isMonorepo: true,
       enableYarnVersion: isYarnVersionEnabled,
-      ci: this.pobLernaConfig.testing && this.pobLernaConfig.ci,
+      ci: this.pobLernaConfig.ci,
       disableYarnGitCache: this.options.disableYarnGitCache,
       updateOnly: this.options.updateOnly,
     });
