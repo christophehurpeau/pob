@@ -94,8 +94,6 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       packageUtils.addDevDependencies(pkg, ['repository-check-dirty']);
     }
 
-    packageUtils.removeDevDependencies(pkg, ['standard-version']);
-
     const monorepoConfig = this.config.get('monorepo');
     const packageManager = this.npm ? 'npm' : 'yarn';
 
@@ -127,25 +125,6 @@ export default class MonorepoWorkspacesGenerator extends Generator {
         version:
           'YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn && git add yarn.lock',
       },
-    );
-
-    // TODO rename release (release = version + publish)
-    this.fs.copyTpl(
-      this.templatePath('workflow-publish.yml.ejs'),
-      this.destinationPath('.github/workflows/publish.yml'),
-      {
-        publish: !this.options.isAppProject,
-        enableYarnVersion: isYarnVersionEnabled,
-        disableYarnGitCache: this.options.disableYarnGitCache,
-        isIndependent: !pkg.version || pkg.version === '0.0.0',
-      },
-    );
-
-    packageUtils.removeScripts(
-      pkg,
-      [pkg.name !== 'pob-dependencies' && 'preversion', 'release'].filter(
-        Boolean,
-      ),
     );
 
     packageUtils.addOrRemoveScripts(pkg, withBabel, {

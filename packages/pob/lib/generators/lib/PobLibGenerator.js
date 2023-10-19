@@ -312,9 +312,13 @@ export default class PobLibGenerator extends Generator {
     });
 
     this.composeWith('pob:common:release', {
-      enable: !inMonorepo && this.pobjson.testing && this.pobjson.testing.ci,
+      enable: !inMonorepo && this.pobjson.testing,
+      enablePublish: true,
       withBabel: babelEnvs.length > 0,
-      documentation: !!this.pobjson.documentation,
+      isMonorepo: false,
+      enableYarnVersion: true,
+      ci: this.pobjson.testing && this.pobjson.testing.ci,
+      disableYarnGitCache: this.options.disableYarnGitCache,
       updateOnly: this.options.updateOnly,
     });
 

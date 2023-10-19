@@ -290,10 +290,13 @@ export default class PobMonorepoGenerator extends Generator {
     this.composeWith('pob:common:remove-old-dependencies');
 
     this.composeWith('pob:common:release', {
-      enable: this.pobLernaConfig.testing && this.pobLernaConfig.ci,
-      isYarnVersionEnabled,
+      enable: true,
+      enablePublish: !this.options.isAppProject,
       withBabel: this.pobLernaConfig.typescript,
-      documentation: this.pobLernaConfig.documentation,
+      isMonorepo: true,
+      enableYarnVersion: isYarnVersionEnabled,
+      ci: this.pobLernaConfig.testing && this.pobLernaConfig.ci,
+      disableYarnGitCache: this.options.disableYarnGitCache,
       updateOnly: this.options.updateOnly,
     });
 

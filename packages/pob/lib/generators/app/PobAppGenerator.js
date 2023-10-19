@@ -243,9 +243,13 @@ export default class PobAppGenerator extends Generator {
       });
 
       this.composeWith('pob:common:release', {
-        enable: !inMonorepo && this.appConfig.testing && this.appConfig.ci,
+        enable: !inMonorepo && this.appConfig.testing,
+        enablePublish: false,
         withBabel: babel,
-        documentation: false,
+        isMonorepo: false,
+        enableYarnVersion: true,
+        ci: this.appConfig.ci,
+        disableYarnGitCache: this.options.disableYarnGitCache,
         updateOnly: this.options.updateOnly,
       });
     }

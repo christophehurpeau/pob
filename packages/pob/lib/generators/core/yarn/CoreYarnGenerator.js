@@ -104,6 +104,7 @@ export default class CoreYarnGenerator extends Generator {
         );
       } else {
         removePluginIfInstalled(postinstallDevPluginName);
+        removePluginIfInstalled(versionPluginName);
       }
 
       if (pkg.workspaces) {
@@ -115,8 +116,10 @@ export default class CoreYarnGenerator extends Generator {
           );
         }
       } else {
-        removePluginIfInstalled(workspacesPluginName);
-        removePluginIfInstalled(versionPluginName);
+        installPluginIfNotInstalled(
+          versionPluginName,
+          'https://raw.githubusercontent.com/christophehurpeau/yarn-plugin-conventional-version/main/bundles/%40yarnpkg/plugin-conventional-version.cjs',
+        );
       }
 
       // must be done after plugins installed
@@ -160,7 +163,7 @@ export default class CoreYarnGenerator extends Generator {
       });
       this.spawnSync('yarn', ['dedupe']);
 
-      this.spawnSync('yarn', ['prettier', '--write', '.vscode']);
+      this.spawnSync('yarn', ['prettier', '--write', '.vscode', '.yarnrc.yml']);
 
       const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
