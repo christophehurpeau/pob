@@ -7,7 +7,7 @@ on:
         required: true
         type: boolean
         default: false
-<% if (enableYarnVersion && isMonorepo) { -%>
+<% if (enableYarnVersion && isMonorepo && isMonorepoIndependent) { -%>
       bump-dependents-highest-as:
         description: "Bump dependents highest as"
         required: false
@@ -42,7 +42,7 @@ jobs:
       - name: New version (dry run)
         if: github.ref == 'refs/heads/main' && inputs.dry-run
 <% if (enableYarnVersion) { -%>
-        run: yarn version --dry-run<% if (isMonorepo) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %>
+        run: yarn version --dry-run<% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %>
 <% } else { -%>
         run: yarn lerna version --yes --no-push --exact --conventional-commits --conventional-graduate --changelog-preset conventional-changelog-conventionalcommits --no-git-tag-version --loglevel=verbose
 <% } -%>
@@ -56,7 +56,7 @@ jobs:
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
 <% if (enableYarnVersion) { -%>
-          yarn version --create-release=github <% if (isMonorepo) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %> -m 'chore: release <%- isMonorepoIndependent ? '' : '%v ' %>[skip ci]<%- isMonorepoIndependent ? '\\n\\n%t' : '' %>'
+          yarn version --create-release=github <% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %> -m 'chore: release <%- isMonorepoIndependent ? '' : '%v ' %>[skip ci]<%- isMonorepoIndependent ? '\\n\\n%t' : '' %>'
 <% } else { -%>
           yarn lerna version --yes --push --exact --conventional-commits --conventional-graduate --changelog-preset conventional-changelog-conventionalcommits --create-release=github -m 'chore: release [skip ci]'
 <% } -%>
