@@ -104,7 +104,6 @@ export default class CoreYarnGenerator extends Generator {
         );
       } else {
         removePluginIfInstalled(postinstallDevPluginName);
-        removePluginIfInstalled(versionPluginName);
       }
 
       if (pkg.workspaces) {
@@ -114,6 +113,8 @@ export default class CoreYarnGenerator extends Generator {
             versionPluginName,
             'https://raw.githubusercontent.com/christophehurpeau/yarn-plugin-conventional-version/main/bundles/%40yarnpkg/plugin-conventional-version.cjs',
           );
+        } else {
+          removePluginIfInstalled(versionPluginName);
         }
       } else {
         installPluginIfNotInstalled(
