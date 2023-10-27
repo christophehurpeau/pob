@@ -37,6 +37,6 @@
   "prettier": "@pob/root/prettier-config",
   "pob": {},
   "dependencies": {
-    "@commitlint/config-conventional": "^17.2.0"
+    "@commitlint/config-conventional": "^18.0.0"
   }
 }
