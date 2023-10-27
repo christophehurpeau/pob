@@ -5,6 +5,12 @@
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "packages/yarn-workspace-utils"
+  },
+  "homepage": "https://github.com/christophehurpeau/pob",
   "type": "module",
   "engines": {
     "node": ">=18.12.0"

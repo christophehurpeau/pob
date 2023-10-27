@@ -4,6 +4,12 @@
   "version": "0.2.7",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "pob-examples/webpack-app"
+  },
+  "homepage": "https://github.com/christophehurpeau/pob",
   "type": "module",
   "engines": {
     "node": ">=18.12.0"
