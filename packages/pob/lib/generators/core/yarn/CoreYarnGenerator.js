@@ -1,5 +1,7 @@
 import fs from 'node:fs';
+import sortObject from '@pob/sort-object';
 import yml from 'js-yaml';
+import { lt } from 'semver';
 import Generator from 'yeoman-generator';
 import ensureJsonFileFormatted from '../../../utils/ensureJsonFileFormatted.js';
 import inMonorepo from '../../../utils/inMonorepo.js';
@@ -45,9 +47,10 @@ export default class CoreYarnGenerator extends Generator {
         // yarn 2 not yet installed
         // https://yarnpkg.com/getting-started/install
         this.spawnSync('yarn', ['set', 'version', 'stable']);
-      } else {
-        this.spawnSync('yarn', ['set', 'version', 'stable']);
         ensureJsonFileFormatted(this.destinationPath('package.json'));
+      } else {
+        // disabled now that corepack is supposed to set the version used
+        // this.spawnSync('yarn', ['set', 'version', 'stable']);)
       }
     }
   }
@@ -94,7 +97,6 @@ export default class CoreYarnGenerator extends Generator {
       };
 
       const postinstallDevPluginName = '@yarnpkg/plugin-postinstall-dev';
-      const workspacesPluginName = '@yarnpkg/plugin-workspace-tools';
       const versionPluginName = '@yarnpkg/plugin-conventional-version';
 
       if (!inMonorepo && !pkg.private) {
@@ -107,7 +109,6 @@ export default class CoreYarnGenerator extends Generator {
       }
 
       if (pkg.workspaces) {
-        installPluginIfNotInstalled(workspacesPluginName);
         if (!pkg.devDependencies?.['@pob/lerna-light']) {
           installPluginIfNotInstalled(
             versionPluginName,
@@ -123,22 +124,43 @@ export default class CoreYarnGenerator extends Generator {
         );
       }
 
+      if (
+        !pkg.packageManager ||
+        !pkg.packageManager.startsWith('yarn@') ||
+        lt(pkg.packageManager.slice('yarn@'.length), '4.0.0')
+      ) {
+        pkg.packageManager = 'yarn@4.0.0';
+      }
+
       // must be done after plugins installed
       const configString = this.fs.read('.yarnrc.yml');
       const config = yml.load(configString, {
         schema: yml.FAILSAFE_SCHEMA,
         json: true,
       });
+      if (this.options.disableYarnGitCache) {
+        config.compressionLevel = 'mixed'; // optimized for size
+        config.enableGlobalCache = true;
+      } else {
+        config.compressionLevel = 0; // optimized for github config
+        config.enableGlobalCache = false;
+        // https://yarnpkg.dev/releases/3-1/
+        // make sure all supported architectures are in yarn cache
+        config.supportedArchitectures = {
+          cpu: ['x64', 'arm64'],
+          os: ['linux', 'darwin'],
+        };
+      }
       config.defaultSemverRangePrefix = this.options.type === 'app' ? '' : '^';
       config.enableMessageNames = false;
       config.nodeLinker = this.options.yarnNodeLinker;
-      // https://yarnpkg.dev/releases/3-1/
-      // make sure all supported architectures are in yarn cache
-      config.supportedArchitectures = {
-        cpu: ['x64', 'arm64'],
-        os: ['linux', 'darwin'],
-      };
-      writeAndFormat(this.fs, '.yarnrc.yml', yml.dump(config, {}));
+
+      if (config.yarnPath) {
+        this.fs.delete(config.yarnPath);
+        delete config.yarnPath;
+      }
+
+      writeAndFormat(this.fs, '.yarnrc.yml', yml.dump(sortObject(config), {}));
     } else {
       this.fs.delete('.yarn');
       this.fs.delete('.yarnrc.yml');

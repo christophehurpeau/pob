@@ -19,6 +19,9 @@ jobs:
           node-version: ${{ matrix.node-version }}
           registry-url: 'https://registry.npmjs.org'
 
+      - name: Enable Corepack
+        run: corepack enable
+
 <% if (packageManager === 'yarn') { -%>
       - name: Install Dependencies
 <% if (disableYarnGitCache) { -%>
