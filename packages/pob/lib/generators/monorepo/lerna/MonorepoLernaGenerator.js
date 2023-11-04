@@ -93,6 +93,15 @@ export default class MonorepoLernaGenerator extends Generator {
   }
 
   writing() {
+    // package.json
+    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+    delete pkg.lerna;
+    packageUtils.removeDependencies(pkg, ['lerna']);
+    packageUtils.removeDevDependencies(pkg, ['lerna']);
+
+    // TODO remove lerna completely
+    const isYarnVersionEnabled = !pkg.devDependencies?.['@pob/lerna-light'];
+
     const getPackagePobConfig = (config) => ({
       babelEnvs: [],
       ...(config && config.pob),
@@ -107,6 +116,7 @@ export default class MonorepoLernaGenerator extends Generator {
       {},
     );
 
+    // TODO pass that to yarn plugin
     lernaConfig.command.publish.ignoreChanges = [
       '**/.yo-rc.json',
       '**/.eslintrc.json',
@@ -116,24 +126,26 @@ export default class MonorepoLernaGenerator extends Generator {
       lernaConfig.command.publish.ignoreChanges.push('**/tsconfig.json');
     }
 
-    writeAndFormatJson(
-      this.fs,
-      this.destinationPath('lerna.json'),
-      lernaConfig,
-    );
-
-    // package.json
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-    delete pkg.lerna;
-    packageUtils.removeDependencies(pkg, ['lerna']);
-    packageUtils.removeDevDependencies(pkg, ['lerna']);
+    if (isYarnVersionEnabled) {
+      if (pkg.version === '0.0.0' && lernaConfig && lernaConfig.version) {
+        if (lernaConfig.version === 'independent') {
+          delete pkg.version;
+        } else {
+          pkg.version = lernaConfig.version;
+        }
+      }
+      this.fs.delete(this.destinationPath('lerna.json'));
+    } else {
+      writeAndFormatJson(
+        this.fs,
+        this.destinationPath('lerna.json'),
+        lernaConfig,
+      );
+    }
 
     if (this.fs.exists(this.destinationPath('lerna-debug.log'))) {
       this.fs.delete(this.destinationPath('lerna-debug.log'));
     }
-
-    // TODO remove lerna completely
-    const isYarnVersionEnabled = !pkg.devDependencies?.['@pob/lerna-light'];
 
     packageUtils.addOrRemoveScripts(
       pkg,
