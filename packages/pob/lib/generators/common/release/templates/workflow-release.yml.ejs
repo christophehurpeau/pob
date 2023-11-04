@@ -78,7 +78,7 @@ jobs:
           echo >> ./.yarnrc.yml
           echo "npmAuthToken: $NODE_AUTH_TOKEN" >> ./.yarnrc.yml
 <% if (isMonorepo) { -%>
-          yarn workspaces foreach --parallel --no-private npm publish --tolerate-republish
+          yarn workspaces foreach --all --parallel --no-private npm publish --tolerate-republish
 <% } else { -%>
           yarn npm publish
 <% } -%>
