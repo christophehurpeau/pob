@@ -3531,13 +3531,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jest@npm:29.5.6":
-  version: 29.5.6
-  resolution: "@types/jest@npm:29.5.6"
+"@types/jest@npm:29.5.7":
+  version: 29.5.7
+  resolution: "@types/jest@npm:29.5.7"
   dependencies:
     expect: "npm:^29.0.0"
     pretty-format: "npm:^29.0.0"
-  checksum: 7d4ca3664a20b62d2b0d509987b2039a924236bfc35477eae9c1903b2d9d12d737261e7894ecf662251e946a34ba920ac0d5b232492d37b06f297e220c09f057
+  checksum: 64a31afa2c8bd003c7e637c36933170f731341957150274e518564e513d6dd7cb8dae61afea29ff703c2c8d3bdbbc8fb97095029a4fc91f55707f26753557583
   languageName: node
   linkType: hard
 
@@ -11785,7 +11785,7 @@ __metadata:
     "@pob/eslint-config-typescript-react": "npm:51.1.2"
     "@pob/lerna-light": "npm:8.0.1"
     "@pob/pretty-pkg": "npm:6.1.1"
-    "@types/jest": "npm:29.5.6"
+    "@types/jest": "npm:29.5.7"
     alp-rollup-plugin-config: "npm:2.1.0"
     check-package-dependencies: "npm:6.8.0"
     eslint: "npm:8.52.0"
@@ -11809,7 +11809,7 @@ __metadata:
     "@pob/eslint-config": "npm:51.1.2"
     "@pob/lerna-light": "workspace:*"
     "@pob/root": "workspace:*"
-    "@types/jest": "npm:29.5.6"
+    "@types/jest": "npm:29.5.7"
     check-package-dependencies: "npm:6.8.0"
     eslint: "npm:8.52.0"
     jest: "npm:29.7.0"
