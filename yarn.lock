@@ -3254,15 +3254,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/renovate-config@workspace:@pob/renovate-config":
-  version: 0.0.0-use.local
-  resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
-  dependencies:
-    pob-dependencies: "workspace:*"
-    prettier: "npm:2.8.8"
-  languageName: unknown
-  linkType: soft
-
 "@pob/root@npm:8.4.2, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
