@@ -14,6 +14,11 @@ await createCheckPackageWithWorkspaces({
           // invalidPeerDependencyVersion: ['rollup'],
         },
       },
+      pob: {
+        '@yeoman/types': {
+          invalidPeerDependencyVersion: ['mem-fs', 'mem-fs-editor'],
+        },
+      },
     },
   })
   .forRoot((rootPackageCheck) => {
@@ -21,7 +26,7 @@ await createCheckPackageWithWorkspaces({
   })
   .for('pob', (pkgCheck) => {
     return pkgCheck.checkSatisfiesVersionsFromDependency('yeoman-environment', {
-      dependencies: ['mem-fs', 'mem-fs-editor'],
+      dependencies: ['mem-fs-editor'],
     });
   })
   .run();
