@@ -25,6 +25,7 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
           fetch-depth: 200
+          fetch-tags: true
 
       - uses: actions/setup-node@v4
         with:
