@@ -103,7 +103,6 @@ export default class CommonBabelGenerator extends Generator {
     if (!hasInitialPkgPob) pkg.pob = {};
 
     const babelEnvs = pkg.pob.babelEnvs || [];
-    console.log({ babelEnvs });
 
     const targets = [
       babelEnvs.some((env) => env.target === 'node') ? 'node' : undefined,
