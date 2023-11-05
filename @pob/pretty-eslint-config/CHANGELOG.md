@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 5.2.0 (2023-11-05)
+
+
+### Features
+
+* improve jest config ([8243486](https://github.com/christophehurpeau/pob/commit/82434867b2ba54e1f6eb9faee0a56e38e218d4bf))
+
+Version bump for dependency: sort-eslint-config
+
+
 ## [5.1.2](https://github.com/christophehurpeau/pob/compare/@pob/pretty-eslint-config@5.1.1...@pob/pretty-eslint-config@5.1.2) (2023-11-05)
 
 Note: no notable changes

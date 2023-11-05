@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 7.1.0 (2023-11-05)
+
+
+### Features
+
+* improve jest config ([8243486](https://github.com/christophehurpeau/pob/commit/82434867b2ba54e1f6eb9faee0a56e38e218d4bf))
+
+
+
+
 ## [7.0.3](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@7.0.2...babel-plugin-fix-class-properties-uninitialized@7.0.3) (2023-11-05)
 
 Note: no notable changes

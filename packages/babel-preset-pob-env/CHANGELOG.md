@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 10.2.0 (2023-11-05)
+
+
+### Features
+
+* improve jest config ([8243486](https://github.com/christophehurpeau/pob/commit/82434867b2ba54e1f6eb9faee0a56e38e218d4bf))
+
+
+### Bug Fixes
+
+* **deps:** update @pob/eslint-config to v51.0.2 ([#1718](https://github.com/christophehurpeau/pob/issues/1718)) ([18a8330](https://github.com/christophehurpeau/pob/commit/18a8330c54729273d091cfbe49e387916fbde3ba))
+
+Version bump for dependency: babel-plugin-fix-class-properties-uninitialized
+
+
 ## [10.1.5](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@10.1.4...babel-preset-pob-env@10.1.5) (2023-11-05)
 
 Note: no notable changes

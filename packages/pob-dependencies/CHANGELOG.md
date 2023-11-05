@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 8.9.0 (2023-11-05)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v51.1.0 ([#1796](https://github.com/christophehurpeau/pob/issues/1796)) ([076afb2](https://github.com/christophehurpeau/pob/commit/076afb27c2225caa416d2160739dc408b6e0ca3a))
+* **deps:** update dependency eslint to v8.47.0 ([#1732](https://github.com/christophehurpeau/pob/issues/1732)) ([333b820](https://github.com/christophehurpeau/pob/commit/333b820c07d500d6aba8f4af3e62125787ab8c22))
+* **deps:** update dependency eslint to v8.48.0 ([#1753](https://github.com/christophehurpeau/pob/issues/1753)) ([24cf09f](https://github.com/christophehurpeau/pob/commit/24cf09fab37d5897e8e7f8e4b57da225bac2eca7))
+* **deps:** update dependency eslint to v8.49.0 ([#1766](https://github.com/christophehurpeau/pob/issues/1766)) ([061b3df](https://github.com/christophehurpeau/pob/commit/061b3dfb1aeb30cae10776d9c21c675ddeec740e))
+* **deps:** update dependency eslint to v8.50.0 ([#1778](https://github.com/christophehurpeau/pob/issues/1778)) ([9002346](https://github.com/christophehurpeau/pob/commit/9002346e6f50bf455a47e63141d2f4fdf8689f8e))
+* **deps:** update dependency eslint to v8.51.0 ([#1802](https://github.com/christophehurpeau/pob/issues/1802)) ([a116098](https://github.com/christophehurpeau/pob/commit/a1160986eba0dd3be8f0b3ba2f08da2389156ba3))
+* **deps:** update dependency eslint to v8.52.0 ([#1828](https://github.com/christophehurpeau/pob/issues/1828)) ([d331dda](https://github.com/christophehurpeau/pob/commit/d331ddaad56f5ed0e119c356842192964bf89641))
+* **deps:** update dependency eslint to v8.53.0 ([#1836](https://github.com/christophehurpeau/pob/issues/1836)) ([71e2bcc](https://github.com/christophehurpeau/pob/commit/71e2bccf96bef05db3c4be3e415fd5d20db63a5c))
+* improve jest config ([8243486](https://github.com/christophehurpeau/pob/commit/82434867b2ba54e1f6eb9faee0a56e38e218d4bf))
+* update to rollup 4 ([be684ec](https://github.com/christophehurpeau/pob/commit/be684ec25ad3446ae81a94e61454e932b81b1a82))
+
+
+### Bug Fixes
+
+* add missing types in package.json ([1e24a2f](https://github.com/christophehurpeau/pob/commit/1e24a2fa7569a5f0aa006c009111300dac9a90e3))
+* **deps:** update @pob/eslint-config to v51.0.2 ([#1718](https://github.com/christophehurpeau/pob/issues/1718)) ([18a8330](https://github.com/christophehurpeau/pob/commit/18a8330c54729273d091cfbe49e387916fbde3ba))
+* **deps:** update @pob/eslint-config to v51.1.2 ([#1825](https://github.com/christophehurpeau/pob/issues/1825)) ([cbbccb1](https://github.com/christophehurpeau/pob/commit/cbbccb1a784a0b56fbb3601ef1217a486094cc7a))
+* **pob-babel:** export root createRollupConfig ([3341835](https://github.com/christophehurpeau/pob/commit/3341835ef1ba334cc9b09e4fce69b4bf6961f8cd))
+
+Version bump for dependency: commitlint-config
+Version bump for dependency: pretty-pkg
+Version bump for dependency: pob-babel
+Version bump for dependency: repository-check-dirty
+
+
 ## [8.8.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.8.0...pob-dependencies@8.8.1) (2023-11-05)
 
 Note: no notable changes

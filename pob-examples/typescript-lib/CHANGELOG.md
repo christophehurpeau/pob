@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.17.0 (2023-11-05)
+
+
+### Features
+
+* improve jest config ([8243486](https://github.com/christophehurpeau/pob/commit/82434867b2ba54e1f6eb9faee0a56e38e218d4bf))
+
+
+### Bug Fixes
+
+* add missing types in package.json ([1e24a2f](https://github.com/christophehurpeau/pob/commit/1e24a2fa7569a5f0aa006c009111300dac9a90e3))
+* change tsBuildInfoFile ([3807a34](https://github.com/christophehurpeau/pob/commit/3807a34652fa4f3b6aa6f1e88d0ce323af5d8265))
+
+Version bump for dependency: pob-babel
+
+
 ## [0.16.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.15.7...example-typescript-lib@0.16.0) (2023-11-05)
 
 Note: no notable changes

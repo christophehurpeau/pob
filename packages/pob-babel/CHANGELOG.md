@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 36.6.0 (2023-11-05)
+
+
+### Features
+
+* add option omitVersionInFileName ([b599330](https://github.com/christophehurpeau/pob/commit/b599330cb8c077a9dd412066f6aa843b0e999f4e))
+* **deps:** update dependency @rollup/plugin-node-resolve to v15.2.0 ([#1738](https://github.com/christophehurpeau/pob/issues/1738)) ([429484f](https://github.com/christophehurpeau/pob/commit/429484ff57dd31a3121b4bac9a3b2cb7f782c12d))
+* improve jest config ([8243486](https://github.com/christophehurpeau/pob/commit/82434867b2ba54e1f6eb9faee0a56e38e218d4bf))
+* update to latest lts ([f0f1ef2](https://github.com/christophehurpeau/pob/commit/f0f1ef26e74e39e6ac61bc916f2db672511e281c))
+* update to rollup 4 ([be684ec](https://github.com/christophehurpeau/pob/commit/be684ec25ad3446ae81a94e61454e932b81b1a82))
+
+
+### Bug Fixes
+
+* add missing types in package.json ([1e24a2f](https://github.com/christophehurpeau/pob/commit/1e24a2fa7569a5f0aa006c009111300dac9a90e3))
+* clean out directory should clean tsc cache too ([42b4885](https://github.com/christophehurpeau/pob/commit/42b4885b23ed6d9534bb2ebff36c0ed406408f3b))
+* **deps:** update dependency @rollup/plugin-babel to v6.0.4 ([#1797](https://github.com/christophehurpeau/pob/issues/1797)) ([3912cfb](https://github.com/christophehurpeau/pob/commit/3912cfba8abb74e3ad06b4a364648f46a21dbd15))
+* **deps:** update dependency @rollup/plugin-json to v6.0.1 ([#1798](https://github.com/christophehurpeau/pob/issues/1798)) ([0f84b1b](https://github.com/christophehurpeau/pob/commit/0f84b1b3ad47d1326cb61086f65ced6a79f54101))
+* **deps:** update dependency @rollup/plugin-node-resolve to v15.2.1 ([#1743](https://github.com/christophehurpeau/pob/issues/1743)) ([6010b40](https://github.com/christophehurpeau/pob/commit/6010b40017af641d4b70581a365b018c2bd78f93))
+* **deps:** update dependency @rollup/plugin-node-resolve to v15.2.2 ([#1799](https://github.com/christophehurpeau/pob/issues/1799)) ([5431f1e](https://github.com/christophehurpeau/pob/commit/5431f1e1f7f6c5767873adeeaab71ef7b145ddc7))
+* **deps:** update dependency @rollup/plugin-node-resolve to v15.2.3 ([#1805](https://github.com/christophehurpeau/pob/issues/1805)) ([b9597a0](https://github.com/christophehurpeau/pob/commit/b9597a057e7aface4cbf5168fedb9a4d4cb60879))
+* **deps:** update dependency @rollup/plugin-run to v3.0.2 ([#1800](https://github.com/christophehurpeau/pob/issues/1800)) ([e85601e](https://github.com/christophehurpeau/pob/commit/e85601e7d80b332eccd71689e7de7e6c0c8221e4))
+* **pob-babel:** export root createRollupConfig ([3341835](https://github.com/christophehurpeau/pob/commit/3341835ef1ba334cc9b09e4fce69b4bf6961f8cd))
+
+Version bump for dependency: babel-preset-pob-env
+
+
 ## [36.5.0](https://github.com/christophehurpeau/pob/compare/pob-babel@36.4.4...pob-babel@36.5.0) (2023-11-05)
 
 

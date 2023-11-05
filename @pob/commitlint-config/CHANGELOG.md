@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 6.2.0 (2023-11-05)
+
+
+### Features
+
+* **deps:** update commitlint monorepo to v18 (major) ([#1827](https://github.com/christophehurpeau/pob/issues/1827)) ([81c0e11](https://github.com/christophehurpeau/pob/commit/81c0e118578ab2dd38664c492388d49eca0c9bc1))
+* improve jest config ([8243486](https://github.com/christophehurpeau/pob/commit/82434867b2ba54e1f6eb9faee0a56e38e218d4bf))
+
+
+
+
 ## [6.1.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@6.0.2...@pob/commitlint-config@6.1.0) (2023-11-05)
 
 

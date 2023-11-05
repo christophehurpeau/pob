@@ -1,7 +1,22 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## 0.6.0 (2023-11-05)
+
+
+### Features
+
+* improve jest config ([8243486](https://github.com/christophehurpeau/pob/commit/82434867b2ba54e1f6eb9faee0a56e38e218d4bf))
+
+
+### Bug Fixes
+
+* **deps:** update @pob/eslint-config to v51.0.2 ([#1718](https://github.com/christophehurpeau/pob/issues/1718)) ([18a8330](https://github.com/christophehurpeau/pob/commit/18a8330c54729273d091cfbe49e387916fbde3ba))
+
+
+
 
 ## [0.5.2](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.5.1...example-simple-lib@0.5.2) (2023-09-30)
 

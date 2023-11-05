@@ -3,6 +3,93 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 15.0.0 (2023-11-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* **lerna-light:** replace yarn lerna publish to yarn workpaces foreach --no-private npm publish --tolerate-republish
+
+### Features
+
+* add option omitVersionInFileName ([b599330](https://github.com/christophehurpeau/pob/commit/b599330cb8c077a9dd412066f6aa843b0e999f4e))
+* add option to disable yarn cache ([761436f](https://github.com/christophehurpeau/pob/commit/761436fb7946c52a4d02b61b5c81ea122d64dc05))
+* configure and use yarn 4 ([b272bd1](https://github.com/christophehurpeau/pob/commit/b272bd18df2291e30b5aa062af24547880b3bde0))
+* **deps:** update @pob/eslint-config to v51.1.0 ([#1796](https://github.com/christophehurpeau/pob/issues/1796)) ([076afb2](https://github.com/christophehurpeau/pob/commit/076afb27c2225caa416d2160739dc408b6e0ca3a))
+* **deps:** update dependency @yeoman/types to v1.1.1 ([#1811](https://github.com/christophehurpeau/pob/issues/1811)) ([e258f5e](https://github.com/christophehurpeau/pob/commit/e258f5e718d7a5b4723b90d2aa1c1017609489e0))
+* **deps:** update dependency eslint to v8.47.0 ([#1732](https://github.com/christophehurpeau/pob/issues/1732)) ([333b820](https://github.com/christophehurpeau/pob/commit/333b820c07d500d6aba8f4af3e62125787ab8c22))
+* **deps:** update dependency eslint to v8.48.0 ([#1753](https://github.com/christophehurpeau/pob/issues/1753)) ([24cf09f](https://github.com/christophehurpeau/pob/commit/24cf09fab37d5897e8e7f8e4b57da225bac2eca7))
+* **deps:** update dependency eslint to v8.49.0 ([#1766](https://github.com/christophehurpeau/pob/issues/1766)) ([061b3df](https://github.com/christophehurpeau/pob/commit/061b3dfb1aeb30cae10776d9c21c675ddeec740e))
+* **deps:** update dependency eslint to v8.50.0 ([#1778](https://github.com/christophehurpeau/pob/issues/1778)) ([9002346](https://github.com/christophehurpeau/pob/commit/9002346e6f50bf455a47e63141d2f4fdf8689f8e))
+* **deps:** update dependency eslint to v8.51.0 ([#1802](https://github.com/christophehurpeau/pob/issues/1802)) ([a116098](https://github.com/christophehurpeau/pob/commit/a1160986eba0dd3be8f0b3ba2f08da2389156ba3))
+* **deps:** update dependency eslint to v8.52.0 ([#1828](https://github.com/christophehurpeau/pob/issues/1828)) ([d331dda](https://github.com/christophehurpeau/pob/commit/d331ddaad56f5ed0e119c356842192964bf89641))
+* **deps:** update dependency eslint to v8.53.0 ([#1836](https://github.com/christophehurpeau/pob/issues/1836)) ([71e2bcc](https://github.com/christophehurpeau/pob/commit/71e2bccf96bef05db3c4be3e415fd5d20db63a5c))
+* **deps:** update yarn monorepo (major) ([#1830](https://github.com/christophehurpeau/pob/issues/1830)) ([d3bc3da](https://github.com/christophehurpeau/pob/commit/d3bc3dae88e724fbfb5666aa96a96d8d2bce1f34))
+* improve jest config ([8243486](https://github.com/christophehurpeau/pob/commit/82434867b2ba54e1f6eb9faee0a56e38e218d4bf))
+* improve monorepo detection ([c7e43ef](https://github.com/christophehurpeau/pob/commit/c7e43efd767e1cc7d786c22f47796fc5106be84b))
+* **lerna-light:** remove publish command ([c838a68](https://github.com/christophehurpeau/pob/commit/c838a680fb03247b3254780e2850cfb4ae07e681))
+* limit fetch-depth to 200 commits for faster release ([8685e91](https://github.com/christophehurpeau/pob/commit/8685e91fc79f12fc7ca38fee0fe1d82ce28ea861))
+* **pob:** add name in publish job ([4a2bc0f](https://github.com/christophehurpeau/pob/commit/4a2bc0f44bd195425227bfe7e340b0a6169715f2))
+* **pob:** add schema in renovate config ([56bfa78](https://github.com/christophehurpeau/pob/commit/56bfa7838cf862538ea765af5e69e06d9ba140cc))
+* **pob:** ci plugin yarn version ([7ee583e](https://github.com/christophehurpeau/pob/commit/7ee583eba40a1a609c7c98e459f4e36b394d447e))
+* **pob:** improve config for app node-library ([3812f31](https://github.com/christophehurpeau/pob/commit/3812f31bd9ed48467f7f31a2d7e29ce1daa04074))
+* **pob:** split yarn workspaces and legacy lerna ; use yarn to build graph ([4f3f77a](https://github.com/christophehurpeau/pob/commit/4f3f77a60a4e755815a836f76d53624573edcff4))
+* remove lerna by default ([8af4340](https://github.com/christophehurpeau/pob/commit/8af434081e42300f7b355dfa2ac9e98a44db3338))
+* rename publish job to Release ([cc6b66b](https://github.com/christophehurpeau/pob/commit/cc6b66b05469720faa6cb0a05d0a29843dd676cb))
+* support tamagui ([8a8e9d4](https://github.com/christophehurpeau/pob/commit/8a8e9d4b87ae5809120e42b04de10729c8a81d94))
+* update actions/checkout ([f040a5d](https://github.com/christophehurpeau/pob/commit/f040a5d3a87d8e3f5b5ae890ec49db37e435d22b))
+* update renovate config to use github repo ([0c21d38](https://github.com/christophehurpeau/pob/commit/0c21d38a4e70c8a97e22eddad1f41731fbb17e8c))
+* update to latest lts ([f0f1ef2](https://github.com/christophehurpeau/pob/commit/f0f1ef26e74e39e6ac61bc916f2db672511e281c))
+* use yarn plugin version in common release generator ([4d48101](https://github.com/christophehurpeau/pob/commit/4d48101292ca37e9ffe283453b3ef492f252ddcb))
+
+
+### Bug Fixes
+
+* add early return if token is missing ([afeff46](https://github.com/christophehurpeau/pob/commit/afeff4685a6031fbb1aeaecc4e8a551f1ea3938d))
+* add missing options to disable yarn cache ([2138584](https://github.com/christophehurpeau/pob/commit/21385841d31755f44a5661a282d094dc994f7404))
+* change tsBuildInfoFile ([3807a34](https://github.com/christophehurpeau/pob/commit/3807a34652fa4f3b6aa6f1e88d0ce323af5d8265))
+* correctly identify if ci is used in monorepo generator for release generator ([f152998](https://github.com/christophehurpeau/pob/commit/f1529987dd026a91bd4fb337912ae8156b7ef451))
+* correctly identify if version plugin should be removed ([e262c32](https://github.com/christophehurpeau/pob/commit/e262c323553721622fcb1c9b2abc50c5c299540d))
+* **deps:** update @pob/eslint-config to v51.0.2 ([#1718](https://github.com/christophehurpeau/pob/issues/1718)) ([18a8330](https://github.com/christophehurpeau/pob/commit/18a8330c54729273d091cfbe49e387916fbde3ba))
+* **deps:** update @pob/eslint-config to v51.1.2 ([#1825](https://github.com/christophehurpeau/pob/issues/1825)) ([cbbccb1](https://github.com/christophehurpeau/pob/commit/cbbccb1a784a0b56fbb3601ef1217a486094cc7a))
+* **deps:** update dependency @types/inquirer to v9.0.4 ([#1806](https://github.com/christophehurpeau/pob/issues/1806)) ([c4df08f](https://github.com/christophehurpeau/pob/commit/c4df08fb1ba7d9ec35f19e01405d2535d4410454))
+* **deps:** update dependency @types/inquirer to v9.0.5 ([#1821](https://github.com/christophehurpeau/pob/issues/1821)) ([6e6d1c0](https://github.com/christophehurpeau/pob/commit/6e6d1c0fea5e2e9fc059146ad5fb207dbfa5fe11))
+* **deps:** update dependency @types/inquirer to v9.0.6 ([#1823](https://github.com/christophehurpeau/pob/issues/1823)) ([d7414f2](https://github.com/christophehurpeau/pob/commit/d7414f2407a5feb6e4727d228a414906b12902b2))
+* **deps:** update dependency mem-fs-editor to v10.0.3 ([#1819](https://github.com/christophehurpeau/pob/issues/1819)) ([a7dfdfc](https://github.com/christophehurpeau/pob/commit/a7dfdfc962c73c7303f4fe89fe0fbc8c2f2a9639))
+* **deps:** update dependency yeoman-environment to v4.0.0-beta.4 ([#1768](https://github.com/christophehurpeau/pob/issues/1768)) ([9798aef](https://github.com/christophehurpeau/pob/commit/9798aef1a5ccb2d7c752fd5f13253bf614ea1e5f))
+* **deps:** update dependency yeoman-environment to v4.0.0-beta.5 ([#1785](https://github.com/christophehurpeau/pob/issues/1785)) ([deb0019](https://github.com/christophehurpeau/pob/commit/deb00197a177fdddb1037538969351ed8f2e1925))
+* **deps:** update dependency yeoman-generator to v6.0.0-rc.3 ([#1720](https://github.com/christophehurpeau/pob/issues/1720)) ([f397a89](https://github.com/christophehurpeau/pob/commit/f397a890efbe842d82721131f3812dfdc1ed22a3))
+* **deps:** update dependency yeoman-generator to v6.0.0-rc.4 ([#1737](https://github.com/christophehurpeau/pob/issues/1737)) ([ec4b155](https://github.com/christophehurpeau/pob/commit/ec4b155b948e4474fa740661c0fe496b56f44616))
+* **deps:** update dependency yeoman-generator to v6.0.0-rc.5 ([#1786](https://github.com/christophehurpeau/pob/issues/1786)) ([6ebbde9](https://github.com/christophehurpeau/pob/commit/6ebbde9db265b44e8807fd4a83526b49984e5d33))
+* **deps:** update dependency yeoman-generator to v6.0.0-rc.6 ([#1808](https://github.com/christophehurpeau/pob/issues/1808)) ([a044760](https://github.com/christophehurpeau/pob/commit/a044760f7ab299c009fdd41451620f0b8d79be08))
+* **deps:** update yarn monorepo ([#1795](https://github.com/christophehurpeau/pob/issues/1795)) ([c893a31](https://github.com/christophehurpeau/pob/commit/c893a315a1e382e14c5270c4fdc3b3488ddefa30))
+* enable isYarnVersionEnabled even without testing ([9a10396](https://github.com/christophehurpeau/pob/commit/9a10396c134ee16eddea164feb8ea25d05dde941))
+* fix ignore paths for apps ([be6b9c1](https://github.com/christophehurpeau/pob/commit/be6b9c19792a973cce2b77525fecabb56192d53d))
+* fix publish command for yarn 4 ([fab3b9f](https://github.com/christophehurpeau/pob/commit/fab3b9f46f5a46ab3b2c20fb2a9289cf868f52d5))
+* fix yarn publish configuration ([997808f](https://github.com/christophehurpeau/pob/commit/997808fae5154309eacd39d6cc04ee37c1982262))
+* fixes for publish workflow ([101ecdb](https://github.com/christophehurpeau/pob/commit/101ecdb32c60875f5b1bac9fa07cd2358485b42e))
+* force update plugin if lifecycle script is missing ([1e29b9d](https://github.com/christophehurpeau/pob/commit/1e29b9d8a2eb4108299afba653f66004ed21e49b))
+* intialize yarn before getting cached package.json ([ef595bc](https://github.com/christophehurpeau/pob/commit/ef595bc01296ee5b119ec93e64cd89e5e87cfcdc))
+* only allow to configure bump-dependents-highest-as for independent monorepo ([e56d0eb](https://github.com/christophehurpeau/pob/commit/e56d0eb5ee0f090e35f6274d9d5f2184b53e545f))
+* **pob-babel:** export root createRollupConfig ([3341835](https://github.com/christophehurpeau/pob/commit/3341835ef1ba334cc9b09e4fce69b4bf6961f8cd))
+* **pob:** bring back npmignore ([3ac3841](https://github.com/christophehurpeau/pob/commit/3ac38415362e8a6ba3c23db41f404287a82356eb))
+* **pob:** dont use yarn plugin for eslint-config as it is a monorepo with fixed version ([a93cb1f](https://github.com/christophehurpeau/pob/commit/a93cb1fbbed480280d83ffcd40d1ad2adbb17578))
+* **pob:** export types for private package ([c0e78d1](https://github.com/christophehurpeau/pob/commit/c0e78d1d4c066d9c8e86c9d7aa8b7bfc613e15fc))
+* **pob:** fix monorepo workspaces generator not called ([0baab7c](https://github.com/christophehurpeau/pob/commit/0baab7ccb430cc7f052b343b7d6989cb733a252c))
+* **pob:** fix package generator not working in monorepo ([1c63705](https://github.com/christophehurpeau/pob/commit/1c63705cd809fde7813ef7ac5d2a85c92a53693f))
+* **pob:** fix publish with yarn ([d683add](https://github.com/christophehurpeau/pob/commit/d683addfb20ba95751f84bdd94dfeda0380ddf13))
+* **pob:** fix yarnrc dump options ([bf27b86](https://github.com/christophehurpeau/pob/commit/bf27b86ae1faccff12cbdefd26cdb05166b4b2f2))
+* **pob:** fixes and enable yarn plugin version for eslint-configs ([396ffea](https://github.com/christophehurpeau/pob/commit/396ffea15749afe68be4de3d929d83327ff204ba))
+* remove console.log ([5fb2c16](https://github.com/christophehurpeau/pob/commit/5fb2c1608cd5ddf7439d2eeb5bae65eb897361ad))
+* run npm publish in parallel ([7f22704](https://github.com/christophehurpeau/pob/commit/7f22704e7f37c7f6d2907f620e21dcbf8b184fb4))
+
+Version bump for dependency: sort-eslint-config
+Version bump for dependency: sort-object
+Version bump for dependency: sort-pkg
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: root
+
+
 ## [14.5.1](https://github.com/christophehurpeau/pob/compare/pob@14.5.0...pob@14.5.1) (2023-11-05)
 
 

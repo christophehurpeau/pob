@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 8.6.0 (2023-11-05)
+
+
+### Features
+
+* add option to disable yarn cache ([761436f](https://github.com/christophehurpeau/pob/commit/761436fb7946c52a4d02b61b5c81ea122d64dc05))
+* **deps:** update commitlint monorepo to v18 (major) ([#1827](https://github.com/christophehurpeau/pob/issues/1827)) ([81c0e11](https://github.com/christophehurpeau/pob/commit/81c0e118578ab2dd38664c492388d49eca0c9bc1))
+* **deps:** update dependency @commitlint/cli to v17.7.0 ([#1730](https://github.com/christophehurpeau/pob/issues/1730)) ([ecb0c37](https://github.com/christophehurpeau/pob/commit/ecb0c3706ab47f1323ab6aef8b11ddca1de4a03a))
+* **deps:** update dependency @commitlint/cli to v17.8.0 ([#1815](https://github.com/christophehurpeau/pob/issues/1815)) ([c7c65f0](https://github.com/christophehurpeau/pob/commit/c7c65f0ebb8321d34978b3b355f8e92b5f2a164f))
+* **deps:** update dependency conventional-changelog-conventionalcommits to v7 ([#1755](https://github.com/christophehurpeau/pob/issues/1755)) ([ad7ea41](https://github.com/christophehurpeau/pob/commit/ad7ea4103723156ed08ad49f50577c033ddcff29))
+* **deps:** update dependency conventional-changelog-conventionalcommits to v7 ([#1780](https://github.com/christophehurpeau/pob/issues/1780)) ([ab8a91f](https://github.com/christophehurpeau/pob/commit/ab8a91fd24c0bd8d14541a5147548265248b482d))
+* **deps:** update dependency lint-staged to v13.3.0 ([#1734](https://github.com/christophehurpeau/pob/issues/1734)) ([dd973c3](https://github.com/christophehurpeau/pob/commit/dd973c316ce9a5eaab197ab366ce81869cc80b0c))
+* **deps:** update dependency lint-staged to v14 ([#1736](https://github.com/christophehurpeau/pob/issues/1736)) ([8b88ecd](https://github.com/christophehurpeau/pob/commit/8b88ecdf2eaed7fe3073bceaf54864d076fcd9b5))
+* **deps:** update dependency lint-staged to v15 ([#1816](https://github.com/christophehurpeau/pob/issues/1816)) ([3d5bbfa](https://github.com/christophehurpeau/pob/commit/3d5bbfa64165a52d948dc305eebefdafee9a985c))
+* improve jest config ([8243486](https://github.com/christophehurpeau/pob/commit/82434867b2ba54e1f6eb9faee0a56e38e218d4bf))
+* run lint in pre-push hook ([d1982b0](https://github.com/christophehurpeau/pob/commit/d1982b0fdac322dab9a20385cad2deb143d985de))
+* update actions/checkout ([f040a5d](https://github.com/christophehurpeau/pob/commit/f040a5d3a87d8e3f5b5ae890ec49db37e435d22b))
+
+
+### Bug Fixes
+
+* **@pob/root:** add missing corepack enable ([af14b7e](https://github.com/christophehurpeau/pob/commit/af14b7e43e98493da0b34d5841a79e6ffff21124))
+* **@pob/root:** fix renovate branch ([e32ce00](https://github.com/christophehurpeau/pob/commit/e32ce0067f11ac7d4f643c6a5edc3d5600fc31b0))
+* **@pob/root:** move template folder ([e157b4a](https://github.com/christophehurpeau/pob/commit/e157b4ac951d1de14c8c3cc178577d8cb4ccb46c))
+* **@pob/root:** remove immutable-cache in postcheckout ([658d6be](https://github.com/christophehurpeau/pob/commit/658d6be5a6ef801fdf687f3acec4659e92507d9a))
+* better prettier config for yarnrc.yml ([f371f5c](https://github.com/christophehurpeau/pob/commit/f371f5c71608fc87d7e70058159a93cf0c4eca02))
+* **deps:** update dependency @commitlint/cli to v17.7.1 ([#1731](https://github.com/christophehurpeau/pob/issues/1731)) ([22bbd15](https://github.com/christophehurpeau/pob/commit/22bbd15fdc9b14acb023c12c68b527d841c889a4))
+* **deps:** update dependency @commitlint/cli to v17.7.2 ([#1790](https://github.com/christophehurpeau/pob/issues/1790)) ([e5b30a8](https://github.com/christophehurpeau/pob/commit/e5b30a841f1cbccffcc33fc0fcc71b6efb87935f))
+* **deps:** update dependency @commitlint/cli to v17.8.1 ([#1826](https://github.com/christophehurpeau/pob/issues/1826)) ([b2a7e0b](https://github.com/christophehurpeau/pob/commit/b2a7e0b0639011b64bc398d7dbe7dd4c6feac717))
+* **deps:** update dependency lint-staged to v15.0.2 ([#1824](https://github.com/christophehurpeau/pob/issues/1824)) ([77bbc54](https://github.com/christophehurpeau/pob/commit/77bbc5443bf618a2d51d77368002dff66651e35e))
+
+
+### Reverts
+
+* feat(deps): update dependency conventional-changelog-conventionalcommits to v7 ([#1779](https://github.com/christophehurpeau/pob/issues/1779)) ([154459f](https://github.com/christophehurpeau/pob/commit/154459fbd42bb1cf536f41e2fb54f937ff5c2f80))
+
+Version bump for dependency: pretty-eslint-config
+Version bump for dependency: pretty-pkg
+Version bump for dependency: repository-check-dirty
+
+
 ## [8.5.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.4.2...@pob/root@8.5.0) (2023-11-05)
 
 
