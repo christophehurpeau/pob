@@ -24,11 +24,4 @@ await createCheckPackageWithWorkspaces({
       dependencies: ['mem-fs', 'mem-fs-editor'],
     });
   })
-  .for('@pob/lerna-light', (pkgCheck) => {
-    return pkgCheck.checkSatisfiesVersionsInDependency('@lerna/version', {
-      dependencies: {
-        '@nrwl/devkit': null,
-      },
-    });
-  })
   .run();

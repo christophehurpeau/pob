@@ -218,8 +218,7 @@ export default class PobMonorepoGenerator extends Generator {
 
     this.composeWith('pob:common:husky', {});
 
-    const isYarnVersionEnabled =
-      this.pobLernaConfig.ci && !pkg.devDependencies?.['@pob/lerna-light'];
+    const isYarnVersionEnabled = this.pobLernaConfig.ci;
 
     const splitCIJobs = this.packageNames.length > 8;
 

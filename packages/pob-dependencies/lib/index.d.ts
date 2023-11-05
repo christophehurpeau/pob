@@ -7,7 +7,6 @@ interface Dependencies {
   '@pob/eslint-config': '51.1.2';
   '@pob/eslint-config-typescript': '51.1.2';
   '@pob/eslint-config-typescript-react': '51.1.2';
-  '@pob/lerna-light': '8.0.1';
   '@pob/pretty-pkg': '6.1.1';
   '@types/jest': '29.5.7';
   'alp-rollup-plugin-config': '2.1.0';

@@ -109,14 +109,10 @@ export default class CoreYarnGenerator extends Generator {
       }
 
       if (pkg.workspaces) {
-        if (!pkg.devDependencies?.['@pob/lerna-light']) {
-          installPluginIfNotInstalled(
-            versionPluginName,
-            'https://raw.githubusercontent.com/christophehurpeau/yarn-plugin-conventional-version/main/bundles/%40yarnpkg/plugin-conventional-version.cjs',
-          );
-        } else {
-          removePluginIfInstalled(versionPluginName);
-        }
+        installPluginIfNotInstalled(
+          versionPluginName,
+          'https://raw.githubusercontent.com/christophehurpeau/yarn-plugin-conventional-version/main/bundles/%40yarnpkg/plugin-conventional-version.cjs',
+        );
       } else {
         installPluginIfNotInstalled(
           versionPluginName,

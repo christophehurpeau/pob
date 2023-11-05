@@ -100,7 +100,7 @@ export default class MonorepoLernaGenerator extends Generator {
     packageUtils.removeDevDependencies(pkg, ['lerna']);
 
     // TODO remove lerna completely
-    const isYarnVersionEnabled = !pkg.devDependencies?.['@pob/lerna-light'];
+    const isYarnVersionEnabled = true;
 
     const getPackagePobConfig = (config) => ({
       babelEnvs: [],

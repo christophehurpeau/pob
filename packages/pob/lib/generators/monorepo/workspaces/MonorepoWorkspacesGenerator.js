@@ -67,6 +67,7 @@ export default class MonorepoWorkspacesGenerator extends Generator {
     // package.json
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
     packageUtils.removeDependencies(pkg, ['@pob/lerna-light']);
+    packageUtils.removeDevDependencies(pkg, ['@pob/lerna-light']);
 
     if (this.npm) {
       if (!pkg.engines) pkg.engines = {};
@@ -76,9 +77,7 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       delete pkg.engines.yarn;
     }
 
-    packageUtils.removeDevDependencies(pkg, ['@pob/lerna-light']);
-
-    const isYarnVersionEnabled = !pkg.devDependencies?.['@pob/lerna-light'];
+    const isYarnVersionEnabled = true;
 
     if (pkg.name !== 'pob-monorepo') {
       packageUtils.addDevDependencies(pkg, ['repository-check-dirty']);
