@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.9.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.9.0...pob-dependencies@8.9.1) (2023-11-05)
+
+
+### Bug Fixes
+
+* revert to rollup 3 ([3749633](https://github.com/christophehurpeau/pob/commit/37496338c56c62c67664d206bc974f74fc26e497))
+
+Version bump for dependency: pob-babel
+
+
 ## 8.9.0 (2023-11-05)
 
 

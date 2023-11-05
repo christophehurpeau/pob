@@ -6845,13 +6845,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-typescript-lib@npm:0.17.0, example-typescript-lib@workspace:pob-examples/typescript-lib":
+"example-typescript-lib@npm:0.17.1, example-typescript-lib@workspace:pob-examples/typescript-lib":
   version: 0.0.0-use.local
   resolution: "example-typescript-lib@workspace:pob-examples/typescript-lib"
   dependencies:
     "@babel/core": "npm:7.23.2"
     "@types/node": "npm:20.8.10"
-    pob-babel: "npm:36.6.0"
+    pob-babel: "npm:36.6.1"
     typescript: "npm:5.2.2"
   languageName: unknown
   linkType: soft
@@ -6860,7 +6860,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-webpack-app@workspace:pob-examples/webpack-app"
   dependencies:
-    example-typescript-lib: "npm:0.17.0"
+    example-typescript-lib: "npm:0.17.1"
     webpack: "npm:5.89.0"
     webpack-cli: "npm:5.1.4"
   languageName: unknown
@@ -10987,7 +10987,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@npm:36.6.0, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
+"pob-babel@npm:36.6.1, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -11034,7 +11034,7 @@ __metadata:
     eslint: "npm:8.53.0"
     jest: "npm:29.7.0"
     jest-junit-reporter: "npm:1.1.0"
-    pob-babel: "npm:36.6.0"
+    pob-babel: "npm:36.6.1"
     prettier: "npm:2.8.8"
     repository-check-dirty: "npm:6.2.0"
     rollup: "npm:3.29.4"
@@ -11094,7 +11094,7 @@ __metadata:
     pob-dependencies: "workspace:*"
     prettier: "npm:2.8.8"
     semver: "npm:7.5.4"
-    yarn-workspace-utils: "npm:1.2.0"
+    yarn-workspace-utils: "npm:1.2.1"
     yeoman-environment: "npm:4.0.0-beta.5"
     yeoman-generator: "npm:6.0.0-rc.6"
   bin:
@@ -13667,13 +13667,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yarn-workspace-utils@npm:1.2.0, yarn-workspace-utils@workspace:packages/yarn-workspace-utils":
+"yarn-workspace-utils@npm:1.2.1, yarn-workspace-utils@workspace:packages/yarn-workspace-utils":
   version: 0.0.0-use.local
   resolution: "yarn-workspace-utils@workspace:packages/yarn-workspace-utils"
   dependencies:
     "@babel/core": "npm:7.23.2"
     "@yarnpkg/core": "npm:4.0.1"
-    pob-babel: "npm:36.6.0"
+    pob-babel: "npm:36.6.1"
     typescript: "npm:5.2.2"
   languageName: unknown
   linkType: soft
