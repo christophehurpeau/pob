@@ -63,6 +63,7 @@ module.exports = function installHusky({ pkg, pm }) {
 
   const shouldRunTest = () => pkg.scripts && pkg.scripts.test;
   const shouldRunChecks = () => pkg.scripts && pkg.scripts.checks;
+  const shouldRunLint = () => pkg.scripts && pkg.scripts.lint;
 
   try {
     fs.mkdirSync(path.resolve('.husky'));
@@ -95,6 +96,14 @@ fi`;
 
   const prePushHook = [];
 
+  if (shouldRunChecks()) {
+    prePushHook.push(`${pm.name} run checks`);
+  }
+
+  if (shouldRunLint()) {
+    prePushHook.push(`${pm.name} run lint`);
+  }
+
   if (shouldRunTest()) {
     prePushHook.push(
       `${pm.name} test${
@@ -103,10 +112,6 @@ fi`;
           : ''
       }`,
     );
-  }
-
-  if (shouldRunChecks()) {
-    prePushHook.push(`${pm.name} run checks`);
   }
 
   if (prePushHook.length > 0) {
