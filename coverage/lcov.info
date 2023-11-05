@@ -1,5 +1,5 @@
 TN:
-SF:packages/babel-plugin-fix-class-properties-uninitialized/lib/index.js
+SF:../../../babel-plugin-fix-class-properties-uninitialized/lib/index.js
 FN:1,(anonymous_0)
 FN:5,(anonymous_1)
 FNF:2
@@ -22,7 +22,7 @@ BRF:5
 BRH:5
 end_of_record
 TN:
-SF:packages/babel-preset-pob-env/lib/index.js
+SF:../../../babel-preset-pob-env/lib/index.js
 FN:9,(anonymous_0)
 FN:12,(anonymous_1)
 FN:23,(anonymous_2)
@@ -120,7 +120,7 @@ BRF:48
 BRH:35
 end_of_record
 TN:
-SF:packages/babel-preset-pob-env/lib/pob-babel-replace-plugin.js
+SF:../../../babel-preset-pob-env/lib/pob-babel-replace-plugin.js
 FN:1,(anonymous_0)
 FN:4,(anonymous_1)
 FN:20,(anonymous_2)
@@ -199,7 +199,7 @@ BRF:20
 BRH:14
 end_of_record
 TN:
-SF:packages/babel-preset-pob-env/lib/__tests_fixtures__/node-async-import.js
+SF:../../../babel-preset-pob-env/lib/__tests_fixtures__/node-async-import.js
 FNF:0
 FNH:0
 DA:1,1
@@ -211,7 +211,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:packages/babel-preset-pob-env/lib/__tests_fixtures__/node14.8-top-level-await.js
+SF:../../../babel-preset-pob-env/lib/__tests_fixtures__/node14.8-top-level-await.js
 FNF:0
 FNH:0
 DA:1,1
@@ -223,7 +223,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:packages/pob-babel/lib/createRollupConfig.js
+SF:../../lib/createRollupConfig.js
 FN:17,(anonymous_0)
 FN:24,createRollupConfig
 FN:64,(anonymous_2)
@@ -377,7 +377,7 @@ BRF:78
 BRH:57
 end_of_record
 TN:
-SF:packages/pob-babel/lib/rollup-plugin-ignore-browser-only-imports.js
+SF:../../lib/rollup-plugin-ignore-browser-only-imports.js
 FN:5,ignoreBrowserOnlyImports
 FN:7,(anonymous_1)
 FN:8,(anonymous_2)
@@ -403,7 +403,7 @@ BRF:4
 BRH:4
 end_of_record
 TN:
-SF:pob-examples/simple-lib/lib/index.js
+SF:../../../../pob-examples/simple-lib/lib/index.js
 FN:1,simpleLib
 FNF:1
 FNH:1
@@ -415,7 +415,7 @@ BRF:0
 BRH:0
 end_of_record
 TN:
-SF:pob-examples/typescript-lib/src/index.ts
+SF:../../../../pob-examples/typescript-lib/src/index.ts
 FN:3,simpleLib
 FNF:1
 FNH:1
