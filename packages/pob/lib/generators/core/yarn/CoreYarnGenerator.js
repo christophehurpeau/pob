@@ -84,8 +84,14 @@ export default class CoreYarnGenerator extends Generator {
         this.spawnSync('yarn', ['plugin', 'remove', name]);
       };
 
-      const installPluginIfNotInstalled = (name, nameOrUrl = name) => {
+      const installPluginIfNotInstalled = (
+        name,
+        nameOrUrl = name,
+        forceInstallIfInstalled = () => false,
+      ) => {
         if (!isPluginInstalled(name)) {
+          installPlugin(nameOrUrl);
+        } else if (forceInstallIfInstalled()) {
           installPlugin(nameOrUrl);
         }
       };
@@ -112,6 +118,13 @@ export default class CoreYarnGenerator extends Generator {
         installPluginIfNotInstalled(
           versionPluginName,
           'https://raw.githubusercontent.com/christophehurpeau/yarn-plugin-conventional-version/main/bundles/%40yarnpkg/plugin-conventional-version.cjs',
+          () => {
+            const content = fs.readFileSync(
+              '.yarn/plugins/@yarnpkg/plugin-conventional-version.cjs',
+              'utf8',
+            );
+            return !content.includes('Lifecycle script: preversion');
+          },
         );
       } else {
         installPluginIfNotInstalled(
