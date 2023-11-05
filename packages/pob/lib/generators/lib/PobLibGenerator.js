@@ -230,7 +230,7 @@ export default class PobLibGenerator extends Generator {
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
 
-    this.composeWith('pob:common:babel', {
+    await this.composeWith('pob:common:babel', {
       updateOnly: this.options.updateOnly,
       testing: !!this.pobjson.testing,
       documentation: !!this.pobjson.documentation,
@@ -239,7 +239,7 @@ export default class PobLibGenerator extends Generator {
     });
   }
 
-  default() {
+  async default() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     const babelEnvs = pkg.pob.babelEnvs || [];
 
@@ -248,7 +248,7 @@ export default class PobLibGenerator extends Generator {
     const browser =
       withBabel && babelEnvs.some((env) => env.target === 'browser');
 
-    this.composeWith('pob:common:typescript', {
+    await this.composeWith('pob:common:typescript', {
       enable: withBabel,
       isApp: false,
       dom: browser,
@@ -263,14 +263,14 @@ export default class PobLibGenerator extends Generator {
       fs.mkdirSync(this.destinationPath('lib'), { recursive: true });
     }
 
-    this.composeWith('pob:common:husky', {});
+    await this.composeWith('pob:common:husky', {});
 
-    this.composeWith('pob:common:remove-old-dependencies');
+    await this.composeWith('pob:common:remove-old-dependencies');
 
     const enableReleasePlease =
       !inMonorepo && this.pobjson.testing && this.pobjson.testing.ci;
 
-    this.composeWith('pob:common:testing', {
+    await this.composeWith('pob:common:testing', {
       enable: this.pobjson.testing,
       disableYarnGitCache: this.options.disableYarnGitCache,
       enableReleasePlease,
@@ -289,7 +289,7 @@ export default class PobLibGenerator extends Generator {
     });
 
     // must be after testing
-    this.composeWith('pob:common:format-lint', {
+    await this.composeWith('pob:common:format-lint', {
       documentation:
         !!this.pobjson.documentation ||
         !!(this.pobjson.testing && this.pobjson.testing.codecov),
@@ -299,20 +299,20 @@ export default class PobLibGenerator extends Generator {
       ignorePaths: withBabel ? '/dist' : '',
     });
 
-    this.composeWith('pob:lib:doc', {
+    await this.composeWith('pob:lib:doc', {
       enabled: this.pobjson.documentation,
       testing: this.pobjson.testing,
     });
 
     // must be after doc, testing
-    this.composeWith('pob:lib:readme', {
+    await this.composeWith('pob:lib:readme', {
       documentation: !!this.pobjson.documentation,
       testing: !!this.pobjson.testing,
       ci: this.pobjson.testing && this.pobjson.testing.ci,
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
     });
 
-    this.composeWith('pob:common:release', {
+    await this.composeWith('pob:common:release', {
       enable: !inMonorepo && this.pobjson.testing,
       enablePublish: true,
       withBabel: babelEnvs.length > 0,
@@ -323,7 +323,7 @@ export default class PobLibGenerator extends Generator {
       updateOnly: this.options.updateOnly,
     });
 
-    this.composeWith('pob:core:vscode', {
+    await this.composeWith('pob:core:vscode', {
       root: !inMonorepo,
       monorepo: false,
       packageManager: this.options.packageManager,
@@ -333,7 +333,7 @@ export default class PobLibGenerator extends Generator {
     });
 
     // must be after doc, testing
-    this.composeWith('pob:core:gitignore', {
+    await this.composeWith('pob:core:gitignore', {
       root: !inMonorepo,
       withBabel: babelEnvs.length > 0,
       typescript: babelEnvs.length > 0,
@@ -341,14 +341,14 @@ export default class PobLibGenerator extends Generator {
       testing: !!this.pobjson.testing,
     });
 
-    this.composeWith('pob:core:npm', {
+    await this.composeWith('pob:core:npm', {
       enable: !pkg.private,
       srcDirectory: withBabel ? 'src' : 'lib',
       distDirectory: withBabel ? 'dist' : '',
     });
   }
 
-  writing() {
+  async writing() {
     // Re-read the content at this point because a composed generator might modify it.
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
@@ -412,6 +412,6 @@ export default class PobLibGenerator extends Generator {
     this.config.set('lib', pobjson);
     this.config.save();
 
-    this.composeWith('pob:core:sort-package');
+    await this.composeWith('pob:core:sort-package');
   }
 }

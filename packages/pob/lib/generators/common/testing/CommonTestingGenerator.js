@@ -109,9 +109,9 @@ export default class CommonTestingGenerator extends Generator {
     });
   }
 
-  default() {
+  async default() {
     if (!inMonorepo || inMonorepo.root) {
-      this.composeWith('pob:core:ci', {
+      await this.composeWith('pob:core:ci', {
         enable: this.options.ci,
         enableReleasePlease: this.options.enableReleasePlease,
         enableYarnVersion: this.options.enableYarnVersion,
@@ -127,7 +127,7 @@ export default class CommonTestingGenerator extends Generator {
         onlyLatestLTS: this.options.onlyLatestLTS,
       });
     } else {
-      this.composeWith('pob:core:ci', {
+      await this.composeWith('pob:core:ci', {
         enable: false,
       });
     }

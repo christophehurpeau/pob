@@ -113,15 +113,15 @@ export default class PobBaseGenerator extends Generator {
     this.config.set('project', this.projectConfig);
   }
 
-  default() {
-    this.composeWith('pob:core:yarn', {
+  async default() {
+    await this.composeWith('pob:core:yarn', {
       type: this.projectConfig.type,
       enable: this.isRoot && this.projectConfig.packageManager === 'yarn',
       yarnNodeLinker: this.projectConfig.yarnNodeLinker,
       disableYarnGitCache: this.projectConfig.disableYarnGitCache,
     });
 
-    this.composeWith('pob:core:package', {
+    await this.composeWith('pob:core:package', {
       updateOnly: this.options.updateOnly,
       private: this.isMonorepo,
       isMonorepo: this.isMonorepo,
@@ -130,13 +130,13 @@ export default class PobBaseGenerator extends Generator {
     });
 
     if (this.isMonorepo) {
-      this.composeWith('pob:monorepo:workspaces', {
+      await this.composeWith('pob:monorepo:workspaces', {
         force: this.options.force,
         isAppProject: this.projectConfig.type === 'app',
         packageManager: this.projectConfig.packageManager,
         disableYarnGitCache: this.projectConfig.disableYarnGitCache,
       });
-      this.composeWith('pob:monorepo:lerna', {
+      await this.composeWith('pob:monorepo:lerna', {
         force: this.options.force,
         isAppProject: this.projectConfig.type === 'app',
         packageManager: this.projectConfig.packageManager,
@@ -147,13 +147,13 @@ export default class PobBaseGenerator extends Generator {
     this.fs.delete('Makefile');
     this.fs.delete(this.destinationPath('.commitrc.js'));
 
-    this.composeWith('pob:core:editorconfig');
+    await this.composeWith('pob:core:editorconfig');
 
-    this.composeWith('pob:core:clean', {
+    await this.composeWith('pob:core:clean', {
       root: this.isRoot,
     });
 
-    this.composeWith('pob:core:renovate', {
+    await this.composeWith('pob:core:renovate', {
       updateOnly: this.options.updateOnly,
       app: this.projectConfig.type === 'app',
     });
@@ -167,7 +167,7 @@ export default class PobBaseGenerator extends Generator {
     if (!this.hasAncestor) {
       const splitCIJobs =
         inMonorepo && inMonorepo.pobMonorepoConfig?.packageNames.length > 8;
-      this.composeWith('pob:core:git', {
+      await this.composeWith('pob:core:git', {
         onlyLatestLTS,
         splitCIJobs,
       });
@@ -192,7 +192,7 @@ export default class PobBaseGenerator extends Generator {
     }
 
     if (this.isMonorepo) {
-      this.composeWith(
+      await this.composeWith(
         // pob:monorepo <= for searching PobMonorepoGenerator.js
         fileURLToPath(
           new URL('../monorepo/PobMonorepoGenerator.js', import.meta.url),
@@ -209,7 +209,7 @@ export default class PobBaseGenerator extends Generator {
     } else {
       switch (this.projectConfig.type) {
         case 'lib':
-          this.composeWith('pob:lib', {
+          await this.composeWith('pob:lib', {
             monorepo: this.isMonorepo,
             isRoot: this.isRoot,
             disableYarnGitCache: this.projectConfig.disableYarnGitCache,
@@ -220,7 +220,7 @@ export default class PobBaseGenerator extends Generator {
           });
           break;
         case 'app':
-          this.composeWith('pob:app', {
+          await this.composeWith('pob:app', {
             monorepo: this.isMonorepo,
             isRoot: this.isRoot,
             disableYarnGitCache: this.projectConfig.disableYarnGitCache,

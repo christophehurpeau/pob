@@ -99,9 +99,9 @@ export default class CoreGitGenerator extends Generator {
     }
   }
 
-  default() {
+  async default() {
     if (this.gitHost === 'github') {
-      this.composeWith('pob:core:git:github', {
+      await this.composeWith('pob:core:git:github', {
         shouldCreate: !this.originUrl,
         gitHostAccount: this.gitHostAccount,
         repoName: this.repoName,
