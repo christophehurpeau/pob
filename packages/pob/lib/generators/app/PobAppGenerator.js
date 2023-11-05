@@ -128,7 +128,8 @@ export default class PobAppGenerator extends Generator {
   }
 
   default() {
-    const srcDir = this.appConfig.type === 'yarn-plugin' ? 'sources' : 'src';
+    const srcDirectory =
+      this.appConfig.type === 'yarn-plugin' ? 'sources' : 'src';
     const isAppLibrary = this.appConfig.type === 'node-library';
 
     if (
@@ -179,8 +180,8 @@ export default class PobAppGenerator extends Generator {
       isApp: true,
       isAppLibrary,
       // nextjs now supports src
-      rootDir: this.appConfig.type === 'expo' ? '.' : srcDir,
-      srcDir,
+      rootDir: this.appConfig.type === 'expo' ? '.' : srcDirectory,
+      srcDirectory,
       builddefs: false,
       dom: browser,
       jsx,
@@ -196,7 +197,7 @@ export default class PobAppGenerator extends Generator {
           this.appConfig.type === 'alp-node' ||
           this.appConfig.type === 'next.js'
         ) {
-          return './src';
+          return `./${srcDirectory}`;
         }
         if (this.appConfig.type === 'remix') {
           return '.';
@@ -225,7 +226,7 @@ export default class PobAppGenerator extends Generator {
         isApp: true,
         splitCIJobs: false,
         onlyLatestLTS: true,
-        srcDir,
+        srcDirectory,
       });
 
       this.composeWith('pob:common:format-lint', {
@@ -240,11 +241,15 @@ export default class PobAppGenerator extends Generator {
         packageManager: this.options.packageManager,
         yarnNodeLinker: this.options.yarnNodeLinker,
         rootIgnorePaths: ignorePaths.join('\n'),
+        srcDirectory,
         buildDirectory: this.appConfig.type === 'expo' ? '.expo' : 'build',
       });
 
       this.composeWith('pob:common:release', {
-        enable: !inMonorepo && this.appConfig.testing,
+        enable:
+          !inMonorepo &&
+          this.appConfig.testing &&
+          pkg.name !== 'yarn-plugin-conventional-version',
         enablePublish: false,
         withBabel: babel,
         isMonorepo: false,

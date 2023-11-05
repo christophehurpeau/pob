@@ -100,6 +100,12 @@ export default class CommonLintGenerator extends Generator {
       desc: 'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
     });
 
+    this.option('srcDirectory', {
+      type: String,
+      default: 'src',
+      desc: 'customize src directory. Default to src',
+    });
+
     this.option('buildDirectory', {
       type: String,
       required: false,
@@ -415,7 +421,11 @@ export default class CommonLintGenerator extends Generator {
 
     const srcEslintrcPath = this.options.rootAsSrc
       ? this.destinationPath('.eslintrc.json')
-      : this.destinationPath(`${useBabel ? 'src/' : 'lib/'}.eslintrc.json`);
+      : this.destinationPath(
+          `${
+            useBabel ? `${this.options.srcDirectory}/` : 'lib/'
+          }.eslintrc.json`,
+        );
 
     const useTypescript = useBabel;
     const getRootIgnorePatterns = () => {
@@ -515,7 +525,10 @@ export default class CommonLintGenerator extends Generator {
               'import/resolver': this.options.enableSrcResolver
                 ? {
                     node: {
-                      moduleDirectory: ['node_modules', 'src'],
+                      moduleDirectory: [
+                        'node_modules',
+                        this.options.srcDirectory,
+                      ],
                     },
                   }
                 : false,
@@ -532,7 +545,7 @@ export default class CommonLintGenerator extends Generator {
 
     // see monorepo/lerna/index.js
     if (!(inMonorepo && inMonorepo.root) && !this.options.monorepo) {
-      const srcDirectory = useBabel ? 'src' : 'lib';
+      const srcDirectory = useBabel ? this.options.srcDirectory : 'lib';
       const lintRootJsFiles = (useBabel && useNode) || !inMonorepo;
 
       const lintPaths = [srcDirectory, 'bin', 'scripts', 'migrations'].filter(

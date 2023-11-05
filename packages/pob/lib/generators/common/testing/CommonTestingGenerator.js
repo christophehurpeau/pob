@@ -95,10 +95,10 @@ export default class CommonTestingGenerator extends Generator {
       desc: 'only latest lts',
     });
 
-    this.option('srcDir', {
+    this.option('srcDirectory', {
       type: String,
       default: 'src',
-      desc: 'customize srcDir, if different than rootDir',
+      desc: 'customize srcDirectory, default to "src"',
     });
 
     this.option('disableYarnGitCache', {
@@ -247,15 +247,15 @@ export default class CommonTestingGenerator extends Generator {
           const jestConfig = this.fs.readJSON(jestConfigPath, pkg.jest ?? {});
           delete pkg.jest;
 
-          const srcDir = this.options.srcDir;
+          const srcDirectory = this.options.srcDirectory;
           Object.assign(jestConfig, {
             cacheDirectory: './node_modules/.cache/jest',
             testEnvironment: 'node',
             testMatch: [
-              `<rootDir>/${workspacesPattern}/*/@(${srcDir}|lib)/**/__tests__/**/*.${
+              `<rootDir>/${workspacesPattern}/*/@(${srcDirectory}|lib)/**/__tests__/**/*.${
                 transpileWithBabel ? '(ts|js|cjs|mjs)' : '(js|cjs|mjs)'
               }${hasReact ? '?(x)' : ''}`,
-              `<rootDir>/${workspacesPattern}/*/@(${srcDir}|lib)/**/*.test.${
+              `<rootDir>/${workspacesPattern}/*/@(${srcDirectory}|lib)/**/*.test.${
                 transpileWithBabel ? '(ts|js|cjs|mjs)' : '(js|cjs|mjs)'
               }${hasReact ? '?(x)' : ''}`,
             ],
@@ -308,7 +308,9 @@ export default class CommonTestingGenerator extends Generator {
         });
 
         if (this.options.runner === 'jest') {
-          const srcDirectory = transpileWithBabel ? this.options.srcDir : 'lib';
+          const srcDirectory = transpileWithBabel
+            ? this.options.srcDirectory
+            : 'lib';
 
           const jestConfig = this.fs.readJSON(jestConfigPath, pkg.jest ?? {});
           delete pkg.jest;
@@ -400,10 +402,10 @@ export default class CommonTestingGenerator extends Generator {
         this.destinationPath('babel.config.cjs'),
         {
           only: !this.options.monorepo
-            ? `'${this.options.srcDir}'`
+            ? `'${this.options.srcDirectory}'`
             : pkg.workspaces
                 .flatMap((workspace) => [
-                  `'${workspace}/${this.options.srcDir}'`,
+                  `'${workspace}/${this.options.srcDirectory}'`,
                   `'${workspace}/lib'`,
                 ])
                 .join(', '),
