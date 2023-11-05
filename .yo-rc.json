@@ -23,7 +23,6 @@
         "example-typescript-lib",
         "pob-dependencies",
         "yarn-workspace-utils",
-        "@pob/renovate-config",
         "@pob/root",
         "example-webpack-app",
         "pob"
