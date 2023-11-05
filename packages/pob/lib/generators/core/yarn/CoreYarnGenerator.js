@@ -156,7 +156,13 @@ export default class CoreYarnGenerator extends Generator {
         delete config.yarnPath;
       }
 
-      writeAndFormat(this.fs, '.yarnrc.yml', yml.dump(sortObject(config), {}));
+      writeAndFormat(
+        this.fs,
+        '.yarnrc.yml',
+        yml.dump(sortObject(config), {
+          lineWidth: 9999,
+        }),
+      );
     } else {
       this.fs.delete('.yarn');
       this.fs.delete('.yarnrc.yml');
