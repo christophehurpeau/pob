@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.6.2](https://github.com/christophehurpeau/pob/compare/pob-babel@36.6.1...pob-babel@36.6.2) (2023-11-05)
+
+
+### Bug Fixes
+
+* update babel monorepo ([108605f](https://github.com/christophehurpeau/pob/commit/108605f982a3fc0f38fb7178a1b64683cdb06feb))
+
+Version bump for dependency: babel-preset-pob-env
+
+
 ## [36.6.1](https://github.com/christophehurpeau/pob/compare/pob-babel@36.6.0...pob-babel@36.6.1) (2023-11-05)
 
 

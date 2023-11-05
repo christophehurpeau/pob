@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.1](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@10.2.0...babel-preset-pob-env@10.2.1) (2023-11-05)
+
+
+### Bug Fixes
+
+* update babel monorepo ([108605f](https://github.com/christophehurpeau/pob/commit/108605f982a3fc0f38fb7178a1b64683cdb06feb))
+
+
+
+
 ## 10.2.0 (2023-11-05)
 
 

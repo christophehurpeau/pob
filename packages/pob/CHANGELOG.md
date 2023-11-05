@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.0.3](https://github.com/christophehurpeau/pob/compare/pob@15.0.2...pob@15.0.3) (2023-11-05)
+
+
+### Bug Fixes
+
+* **pob:** ignore install plugin version for source package ([cf5312b](https://github.com/christophehurpeau/pob/commit/cf5312bbc94db00def686337c1e6e32822a584a7))
+* srcDirectory for yarn plugin package ([97a0977](https://github.com/christophehurpeau/pob/commit/97a097721d6296d576bd78521b4313fcbbe28860))
+
+Version bump for dependency: yarn-workspace-utils
+
+
 ## [15.0.2](https://github.com/christophehurpeau/pob/compare/pob@15.0.1...pob@15.0.2) (2023-11-05)
 
 Note: no notable changes
