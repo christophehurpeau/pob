@@ -114,7 +114,7 @@ export default class CoreYarnGenerator extends Generator {
         removePluginIfInstalled(postinstallDevPluginName);
       }
 
-      if (pkg.workspaces) {
+      if (pkg.name !== 'yarn-plugin-conventional-version') {
         installPluginIfNotInstalled(
           versionPluginName,
           'https://raw.githubusercontent.com/christophehurpeau/yarn-plugin-conventional-version/main/bundles/%40yarnpkg/plugin-conventional-version.cjs',
@@ -125,11 +125,6 @@ export default class CoreYarnGenerator extends Generator {
             );
             return !content.includes('Lifecycle script: preversion');
           },
-        );
-      } else {
-        installPluginIfNotInstalled(
-          versionPluginName,
-          'https://raw.githubusercontent.com/christophehurpeau/yarn-plugin-conventional-version/main/bundles/%40yarnpkg/plugin-conventional-version.cjs',
         );
       }
 
