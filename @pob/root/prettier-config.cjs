@@ -20,5 +20,11 @@ module.exports = {
         singleQuote: false,
       },
     },
+    {
+      files: ['.yarnrc.yml'],
+      options: {
+        printWidth: 9999,
+      },
+    },
   ],
 };
