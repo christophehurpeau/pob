@@ -14,7 +14,7 @@
   },
   "prettier": "@pob/root/prettier-config",
   "devDependencies": {
-    "pob-dependencies": "8.7.1",
+    "pob-dependencies": "workspace:*",
     "prettier": "2.8.8"
   },
   "renovate-config": {

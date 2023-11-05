@@ -3258,7 +3258,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/renovate-config@workspace:@pob/renovate-config"
   dependencies:
-    pob-dependencies: "npm:8.7.1"
+    pob-dependencies: "workspace:*"
     prettier: "npm:2.8.8"
   languageName: unknown
   linkType: soft
@@ -3274,7 +3274,7 @@ __metadata:
     husky: "npm:~8.0.1"
     json5: "npm:^2.2.2"
     lint-staged: "npm:15.0.2"
-    pob-dependencies: "npm:8.7.1"
+    pob-dependencies: "workspace:*"
     prettier: "npm:2.8.8"
     repository-check-dirty: "npm:6.1.1"
     semver: "npm:^7.3.7"
@@ -12129,7 +12129,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"pob-dependencies@npm:8.7.1, pob-dependencies@workspace:packages/pob-dependencies":
+"pob-dependencies@workspace:*, pob-dependencies@workspace:packages/pob-dependencies":
   version: 0.0.0-use.local
   resolution: "pob-dependencies@workspace:packages/pob-dependencies"
   dependencies:
@@ -12206,7 +12206,7 @@ __metadata:
     mem-fs-editor: "npm:10.0.3"
     minimist: "npm:1.2.8"
     parse-author: "npm:2.0.0"
-    pob-dependencies: "npm:8.7.1"
+    pob-dependencies: "workspace:*"
     prettier: "npm:2.8.8"
     semver: "npm:7.5.4"
     yarn-workspace-utils: "npm:1.0.3"

@@ -38,12 +38,6 @@
       "@pob/commitlint-config"
     ]
   },
-  "resolutions": {
-    "npm-package-arg@8.1.2": "patch:npm-package-arg@npm:8.1.2#.yarn/patches/npm-package-arg-npm-8.1.2-1de2ee4bd8"
-  },
-  "resolutionsExplained": {
-    "npm-package-arg@8.1.2": "patch to support yarn 'workspace:*'"
-  },
   "devDependencies": {
     "@babel/core": "7.23.2",
     "@pob/eslint-config": "51.1.2",
