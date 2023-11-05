@@ -3550,10 +3550,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ejs@npm:^3.1.2":
-  version: 3.1.2
-  resolution: "@types/ejs@npm:3.1.2"
-  checksum: 8be94c952dc06525a5fb229a469db66f2240425ce137a1f5108a6a11f500cac9190691e924e6d18df34c5c2be40ef36b537921d2833262467ee1dfb7a7c919ac
+"@types/ejs@npm:^3.1.2, @types/ejs@npm:^3.1.3":
+  version: 3.1.4
+  resolution: "@types/ejs@npm:3.1.4"
+  checksum: 9efe68d251a5db17a5d2bd4214d79cae36fc4105bc6199cfcefcd513071e6c46711b6d122785e05589815b04c8e45bfb3688b07cabae64d9c583a1af3cae9696
   languageName: node
   linkType: hard
 
@@ -3735,12 +3735,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^18.11.9, @types/node@npm:^18.15.11, @types/node@npm:^18.17.15":
-  version: 18.18.7
-  resolution: "@types/node@npm:18.18.7"
+"@types/node@npm:^18.11.9, @types/node@npm:^18.15.11, @types/node@npm:^18.17.15, @types/node@npm:^18.18.5":
+  version: 18.18.8
+  resolution: "@types/node@npm:18.18.8"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 4dee54745a6ef13e2904bd1b251687e47d5079996e2e00ae14a0f86d9f236e3966b5cbbbf96ff34317907230be24cf54cb353f2887e6783eab33b9b53c9d23e2
+  checksum: 25346cda374c3bb630a9055cf8b7dd49729d53502b81ba647336f459c751f66c73ae9ba755a63d7bd05b07afa2c90b5627af985998ef5cdb0bafb2db5ec7b520
   languageName: node
   linkType: hard
 
@@ -5590,10 +5590,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"binaryextensions@npm:^4.16.0":
-  version: 4.18.0
-  resolution: "binaryextensions@npm:4.18.0"
-  checksum: 6b2aabe412a7edd6287c3aca6be11a272d2c274c855c739eceff6cb4330dc064fdf1d629588fac6f7108179dbf1acfd81851e6c4a8ca5ff74c943149d0837a7f
+"binaryextensions@npm:^4.16.0, binaryextensions@npm:^4.18.0":
+  version: 4.19.0
+  resolution: "binaryextensions@npm:4.19.0"
+  checksum: dee47ff48379994202e391ee52d8eaf90d7cf94980264a7d01e24f464a80ac0c3b5bffea0bba2ce24dcf4afcc33da1b75a95a05dafb85f880750514576fbbe50
   languageName: node
   linkType: hard
 
@@ -7662,7 +7662,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fast-glob@npm:^3.2.11, fast-glob@npm:^3.2.2, fast-glob@npm:^3.2.9":
+"fast-glob@npm:^3.2.2, fast-glob@npm:^3.2.9, fast-glob@npm:^3.3.0":
   version: 3.3.1
   resolution: "fast-glob@npm:3.3.1"
   dependencies:
@@ -8348,16 +8348,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globby@npm:^13.1.4":
-  version: 13.2.0
-  resolution: "globby@npm:13.2.0"
+"globby@npm:^13.1.4, globby@npm:^13.2.2":
+  version: 13.2.2
+  resolution: "globby@npm:13.2.2"
   dependencies:
     dir-glob: "npm:^3.0.1"
-    fast-glob: "npm:^3.2.11"
-    ignore: "npm:^5.2.0"
+    fast-glob: "npm:^3.3.0"
+    ignore: "npm:^5.2.4"
     merge2: "npm:^1.4.1"
     slash: "npm:^4.0.0"
-  checksum: 13a8311f010858516605d35f2f3a5793318f910f22ceac768d0a9eb01387d13e99fa55ba98b8424ee377185cb407c345853c8c522fcd46ee9f56b147279fd155
+  checksum: 4494a9d2162a7e4d327988b26be66d8eab87d7f59a83219e74b065e2c3ced23698f68fb10482bf9337133819281803fb886d6ae06afbb2affa743623eb0b1949
   languageName: node
   linkType: hard
 
@@ -10645,7 +10645,30 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mem-fs-editor@npm:10.0.3, mem-fs-editor@npm:^10.0.1, mem-fs-editor@npm:^10.0.2":
+"mem-fs-editor@npm:11.0.0":
+  version: 11.0.0
+  resolution: "mem-fs-editor@npm:11.0.0"
+  dependencies:
+    "@types/ejs": "npm:^3.1.3"
+    "@types/node": "npm:^18.18.5"
+    binaryextensions: "npm:^4.18.0"
+    commondir: "npm:^1.0.1"
+    deep-extend: "npm:^0.6.0"
+    ejs: "npm:^3.1.9"
+    globby: "npm:^13.2.2"
+    isbinaryfile: "npm:^5.0.0"
+    minimatch: "npm:^9.0.3"
+    multimatch: "npm:^6.0.0"
+    normalize-path: "npm:^3.0.0"
+    textextensions: "npm:^5.16.0"
+    vinyl: "npm:^3.0.0"
+  peerDependencies:
+    mem-fs: ^4.0.0
+  checksum: a83a88f01c70b4964a1c80619c5eca94e2768cd785b4b315061808201f5303cf34da4cda5cdfc11847700cde7ba23d727d768fc85c63928673f942e1208866c0
+  languageName: node
+  linkType: hard
+
+"mem-fs-editor@npm:^10.0.1, mem-fs-editor@npm:^10.0.2":
   version: 10.0.3
   resolution: "mem-fs-editor@npm:10.0.3"
   dependencies:
@@ -12129,7 +12152,7 @@ __metadata:
     lodash.camelcase: "npm:^4.3.0"
     lodash.kebabcase: "npm:^4.1.1"
     mem-fs: "npm:3.0.0"
-    mem-fs-editor: "npm:10.0.3"
+    mem-fs-editor: "npm:11.0.0"
     minimist: "npm:1.2.8"
     parse-author: "npm:2.0.0"
     pob-dependencies: "npm:8.7.1"
