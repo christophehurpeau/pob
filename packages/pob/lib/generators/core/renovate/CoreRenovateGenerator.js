@@ -66,11 +66,16 @@ export default class CoreRenovateGenerator extends Generator {
       );
 
       if (this.options.app) {
-        renovateConfig.extends = ['config:js-app', '@pob'];
+        renovateConfig.extends = [
+          'config:js-app',
+          'github>christophehurpeau/renovate-presets',
+        ];
       } else {
         renovateConfig.extends = [
           'config:js-lib',
-          pkg.name === 'pob-monorepo' ? undefined : '@pob',
+          pkg.name === 'pob-monorepo'
+            ? undefined
+            : 'github>christophehurpeau/renovate-presets',
         ].filter(Boolean);
       }
 
