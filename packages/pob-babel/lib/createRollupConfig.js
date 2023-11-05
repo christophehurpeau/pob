@@ -65,7 +65,11 @@ export default function createRollupConfig({
     switch (String(version)) {
       case '12':
       case '14':
-        return '14.17';
+      case '16':
+      case '18':
+        return '18.12';
+      case '20':
+        return '20.9';
       default:
         return version;
     }
@@ -119,7 +123,9 @@ export default function createRollupConfig({
           process.cwd(),
           path.join(
             cwd,
-            `${outDirectory}/${entry}-${env.target}${env.version || ''}${
+            `${outDirectory}/${entry}-${env.target}${
+              env.omitVersionInFileName ? '' : env.version || ''
+            }${
               env.target === 'node'
                 ? nodeFormatToExt(format, pkg.type)
                 : `.${format}.js`

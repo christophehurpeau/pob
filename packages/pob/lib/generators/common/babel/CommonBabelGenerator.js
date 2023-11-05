@@ -66,33 +66,28 @@ export default class CommonBabelGenerator extends Generator {
     if (pkg.pob && pkg.pob.babelEnvs) {
       let babelEnvs = pkg.pob.babelEnvs;
       if (
-        !babelEnvs.some((env) =>
-          env.target === 'node' &&
-          String(env.version) === this.options.onlyLatestLTS
-            ? '20'
-            : '18',
+        !babelEnvs.some(
+          (env) =>
+            env.target === 'node' &&
+            String(env.version) === (this.options.onlyLatestLTS ? '20' : '18'),
         ) &&
         babelEnvs.some(
           (env) =>
             env.target === 'node' &&
-            (String(env.version) === '8' ||
-              String(env.version) === '6' ||
-              String(env.version) === '10' ||
-              String(env.version) === '12' ||
-              String(env.version) === '14' ||
-              String(env.version) === '16' ||
+            (['8', '6', '10', '12', '14', '16'].includes(String(env.version)) ||
               (this.options.onlyLatestLTS && String(env.version) === '18')),
         )
       ) {
         babelEnvs.unshift({
           target: 'node',
           version: this.options.onlyLatestLTS ? '20' : '18',
+          omitVersionInFileName: this.options.onlyLatestLTS ? true : undefined,
         });
       }
-      babelEnvs = babelEnvs.filter((env) =>
-        env.target !== 'node' || env.version >= this.options.onlyLatestLTS
-          ? 20
-          : 18,
+      babelEnvs = babelEnvs.filter(
+        (env) =>
+          env.target !== 'node' ||
+          env.version >= (this.options.onlyLatestLTS ? 20 : 18),
       );
 
       pkg.pob.babelEnvs = babelEnvs;
@@ -108,6 +103,7 @@ export default class CommonBabelGenerator extends Generator {
     if (!hasInitialPkgPob) pkg.pob = {};
 
     const babelEnvs = pkg.pob.babelEnvs || [];
+    console.log({ babelEnvs });
 
     const targets = [
       babelEnvs.some((env) => env.target === 'node') ? 'node' : undefined,
@@ -236,6 +232,9 @@ export default class CommonBabelGenerator extends Generator {
               ? babelConfig.formats
               : undefined
             : undefined,
+        omitVersionInFileName:
+          // todo add `|| babelConfig.nodeVersions.length === 1` in next major
+          version === '20' && this.options.onlyLatestLTS ? true : undefined,
       })),
       ...(babelConfig.browserVersions || []).map((version) => ({
         target: 'browser',
