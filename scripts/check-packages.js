@@ -9,7 +9,10 @@ await createCheckPackageWithWorkspaces({
         '*': { duplicateDirectDependency: ['semver'] },
       },
       'pob-dependencies': {
-        '*': { duplicateDirectDependency: ['semver'] },
+        '*': {
+          duplicateDirectDependency: ['semver'],
+          invalidPeerDependencyVersion: ['rollup'],
+        },
       },
     },
   })
