@@ -1,7 +1,41 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [14.5.0](https://github.com/christophehurpeau/pob/compare/pob@14.4.2...pob@14.5.0) (2023-11-05)
+
+
+### Features
+
+* add option omitVersionInFileName ([b599330](https://github.com/christophehurpeau/pob/commit/b599330cb8c077a9dd412066f6aa843b0e999f4e))
+* configure and use yarn 4 ([b272bd1](https://github.com/christophehurpeau/pob/commit/b272bd18df2291e30b5aa062af24547880b3bde0))
+* **deps:** update dependency eslint to v8.52.0 ([#1828](https://github.com/christophehurpeau/pob/issues/1828)) ([d331dda](https://github.com/christophehurpeau/pob/commit/d331ddaad56f5ed0e119c356842192964bf89641))
+* **deps:** update dependency eslint to v8.53.0 ([#1836](https://github.com/christophehurpeau/pob/issues/1836)) ([71e2bcc](https://github.com/christophehurpeau/pob/commit/71e2bccf96bef05db3c4be3e415fd5d20db63a5c))
+* **deps:** update yarn monorepo (major) ([#1830](https://github.com/christophehurpeau/pob/issues/1830)) ([d3bc3da](https://github.com/christophehurpeau/pob/commit/d3bc3dae88e724fbfb5666aa96a96d8d2bce1f34))
+* **pob:** add schema in renovate config ([56bfa78](https://github.com/christophehurpeau/pob/commit/56bfa7838cf862538ea765af5e69e06d9ba140cc))
+* remove lerna by default ([8af4340](https://github.com/christophehurpeau/pob/commit/8af434081e42300f7b355dfa2ac9e98a44db3338))
+* update renovate config to use github repo ([0c21d38](https://github.com/christophehurpeau/pob/commit/0c21d38a4e70c8a97e22eddad1f41731fbb17e8c))
+* update to latest lts ([f0f1ef2](https://github.com/christophehurpeau/pob/commit/f0f1ef26e74e39e6ac61bc916f2db672511e281c))
+* use yarn plugin version in common release generator ([4d48101](https://github.com/christophehurpeau/pob/commit/4d48101292ca37e9ffe283453b3ef492f252ddcb))
+
+
+### Bug Fixes
+
+* correctly identify if ci is used in monorepo generator for release generator ([f152998](https://github.com/christophehurpeau/pob/commit/f1529987dd026a91bd4fb337912ae8156b7ef451))
+* correctly identify if version plugin should be removed ([e262c32](https://github.com/christophehurpeau/pob/commit/e262c323553721622fcb1c9b2abc50c5c299540d))
+* **deps:** update @pob/eslint-config to v51.1.2 ([#1825](https://github.com/christophehurpeau/pob/issues/1825)) ([cbbccb1](https://github.com/christophehurpeau/pob/commit/cbbccb1a784a0b56fbb3601ef1217a486094cc7a))
+* enable isYarnVersionEnabled even without testing ([9a10396](https://github.com/christophehurpeau/pob/commit/9a10396c134ee16eddea164feb8ea25d05dde941))
+* fix publish command for yarn 4 ([fab3b9f](https://github.com/christophehurpeau/pob/commit/fab3b9f46f5a46ab3b2c20fb2a9289cf868f52d5))
+* only allow to configure bump-dependents-highest-as for independent monorepo ([e56d0eb](https://github.com/christophehurpeau/pob/commit/e56d0eb5ee0f090e35f6274d9d5f2184b53e545f))
+* remove console.log ([5fb2c16](https://github.com/christophehurpeau/pob/commit/5fb2c1608cd5ddf7439d2eeb5bae65eb897361ad))
+
+Version bump for dependency: sort-eslint-config
+Version bump for dependency: sort-object
+Version bump for dependency: sort-pkg
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: root
+
 
 ## [14.4.2](https://github.com/christophehurpeau/pob/compare/pob@14.4.1...pob@14.4.2) (2023-10-18)
 

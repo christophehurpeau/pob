@@ -1,7 +1,17 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [1.1.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@1.0.3...yarn-workspace-utils@1.1.0) (2023-11-05)
+
+
+### Features
+
+* **deps:** update yarn monorepo (major) ([#1830](https://github.com/christophehurpeau/pob/issues/1830)) ([d3bc3da](https://github.com/christophehurpeau/pob/commit/d3bc3dae88e724fbfb5666aa96a96d8d2bce1f34))
+
+Version bump for dependency: pob-babel
+
 
 ## [1.0.3](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@1.0.2...yarn-workspace-utils@1.0.3) (2023-10-18)
 

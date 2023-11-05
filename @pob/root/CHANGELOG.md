@@ -1,7 +1,28 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [8.5.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.4.2...@pob/root@8.5.0) (2023-11-05)
+
+
+### Features
+
+* **deps:** update commitlint monorepo to v18 (major) ([#1827](https://github.com/christophehurpeau/pob/issues/1827)) ([81c0e11](https://github.com/christophehurpeau/pob/commit/81c0e118578ab2dd38664c492388d49eca0c9bc1))
+* **deps:** update dependency conventional-changelog-conventionalcommits to v7 ([#1780](https://github.com/christophehurpeau/pob/issues/1780)) ([ab8a91f](https://github.com/christophehurpeau/pob/commit/ab8a91fd24c0bd8d14541a5147548265248b482d))
+* run lint in pre-push hook ([d1982b0](https://github.com/christophehurpeau/pob/commit/d1982b0fdac322dab9a20385cad2deb143d985de))
+
+
+### Bug Fixes
+
+* better prettier config for yarnrc.yml ([f371f5c](https://github.com/christophehurpeau/pob/commit/f371f5c71608fc87d7e70058159a93cf0c4eca02))
+* **deps:** update dependency @commitlint/cli to v17.8.1 ([#1826](https://github.com/christophehurpeau/pob/issues/1826)) ([b2a7e0b](https://github.com/christophehurpeau/pob/commit/b2a7e0b0639011b64bc398d7dbe7dd4c6feac717))
+* **deps:** update dependency lint-staged to v15.0.2 ([#1824](https://github.com/christophehurpeau/pob/issues/1824)) ([77bbc54](https://github.com/christophehurpeau/pob/commit/77bbc5443bf618a2d51d77368002dff66651e35e))
+
+Version bump for dependency: pretty-eslint-config
+Version bump for dependency: pretty-pkg
+Version bump for dependency: repository-check-dirty
+
 
 ## [8.4.2](https://github.com/christophehurpeau/pob/compare/@pob/root@8.4.1...@pob/root@8.4.2) (2023-10-18)
 

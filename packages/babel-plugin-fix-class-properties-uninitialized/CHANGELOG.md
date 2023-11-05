@@ -1,7 +1,14 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [7.0.3](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@7.0.2...babel-plugin-fix-class-properties-uninitialized@7.0.3) (2023-11-05)
+
+Note: no notable changes
+
+
+
 
 ## [7.0.2](https://github.com/christophehurpeau/pob/compare/babel-plugin-fix-class-properties-uninitialized@7.0.1...babel-plugin-fix-class-properties-uninitialized@7.0.2) (2023-10-18)
 

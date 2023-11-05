@@ -1,7 +1,14 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [6.0.3](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@6.0.2...@pob/sort-pkg@6.0.3) (2023-11-05)
+
+Note: no notable changes
+
+Version bump for dependency: sort-object
+
 
 ## [6.0.2](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@6.0.1...@pob/sort-pkg@6.0.2) (2023-10-18)
 

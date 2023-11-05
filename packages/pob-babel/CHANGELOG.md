@@ -1,7 +1,19 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [36.5.0](https://github.com/christophehurpeau/pob/compare/pob-babel@36.4.4...pob-babel@36.5.0) (2023-11-05)
+
+
+### Features
+
+* add option omitVersionInFileName ([b599330](https://github.com/christophehurpeau/pob/commit/b599330cb8c077a9dd412066f6aa843b0e999f4e))
+* update to latest lts ([f0f1ef2](https://github.com/christophehurpeau/pob/commit/f0f1ef26e74e39e6ac61bc916f2db672511e281c))
+* update to rollup 4 ([be684ec](https://github.com/christophehurpeau/pob/commit/be684ec25ad3446ae81a94e61454e932b81b1a82))
+
+Version bump for dependency: babel-preset-pob-env
+
 
 ## [36.4.4](https://github.com/christophehurpeau/pob/compare/pob-babel@36.4.3...pob-babel@36.4.4) (2023-10-18)
 

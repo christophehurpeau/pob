@@ -1,7 +1,14 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [6.1.2](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@6.1.1...repository-check-dirty@6.1.2) (2023-11-05)
+
+Note: no notable changes
+
+
+
 
 ## [6.1.1](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@6.1.0...repository-check-dirty@6.1.1) (2023-10-18)
 

@@ -1,7 +1,28 @@
-# Change Log
+# Changelog
 
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+
+## [8.8.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.7.1...pob-dependencies@8.8.0) (2023-11-05)
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.52.0 ([#1828](https://github.com/christophehurpeau/pob/issues/1828)) ([d331dda](https://github.com/christophehurpeau/pob/commit/d331ddaad56f5ed0e119c356842192964bf89641))
+* **deps:** update dependency eslint to v8.53.0 ([#1836](https://github.com/christophehurpeau/pob/issues/1836)) ([71e2bcc](https://github.com/christophehurpeau/pob/commit/71e2bccf96bef05db3c4be3e415fd5d20db63a5c))
+* update to rollup 4 ([be684ec](https://github.com/christophehurpeau/pob/commit/be684ec25ad3446ae81a94e61454e932b81b1a82))
+
+
+### Bug Fixes
+
+* **deps:** update @pob/eslint-config to v51.1.2 ([#1825](https://github.com/christophehurpeau/pob/issues/1825)) ([cbbccb1](https://github.com/christophehurpeau/pob/commit/cbbccb1a784a0b56fbb3601ef1217a486094cc7a))
+
+Version bump for dependency: commitlint-config
+Version bump for dependency: lerna-light
+Version bump for dependency: pretty-pkg
+Version bump for dependency: pob-babel
+Version bump for dependency: repository-check-dirty
+
 
 ## [8.7.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.7.0...pob-dependencies@8.7.1) (2023-10-18)
 
