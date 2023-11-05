@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.5.1](https://github.com/christophehurpeau/pob/compare/pob@14.5.0...pob@14.5.1) (2023-11-05)
+
+
+### Bug Fixes
+
+* force update plugin if lifecycle script is missing ([1e29b9d](https://github.com/christophehurpeau/pob/commit/1e29b9d8a2eb4108299afba653f66004ed21e49b))
+* **pob:** fix yarnrc dump options ([bf27b86](https://github.com/christophehurpeau/pob/commit/bf27b86ae1faccff12cbdefd26cdb05166b4b2f2))
+
+
+
+
 ## [14.5.0](https://github.com/christophehurpeau/pob/compare/pob@14.4.2...pob@14.5.0) (2023-11-05)
 
 
