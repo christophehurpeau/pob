@@ -60,7 +60,7 @@
     "json5": "^2.2.2",
     "lodash.camelcase": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",
-    "mem-fs": "3.0.0",
+    "mem-fs": "4.0.0",
     "mem-fs-editor": "10.0.3",
     "minimist": "1.2.8",
     "parse-author": "2.0.0",

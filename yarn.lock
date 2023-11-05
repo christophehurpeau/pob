@@ -3594,7 +3594,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:20.8.10":
+"@types/node@npm:*, @types/node@npm:20.8.10, @types/node@npm:^20.8.3":
   version: 20.8.10
   resolution: "@types/node@npm:20.8.10"
   dependencies:
@@ -3693,13 +3693,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/vinyl@npm:^2.0.7":
-  version: 2.0.7
-  resolution: "@types/vinyl@npm:2.0.7"
+"@types/vinyl@npm:^2.0.7, @types/vinyl@npm:^2.0.8":
+  version: 2.0.9
+  resolution: "@types/vinyl@npm:2.0.9"
   dependencies:
     "@types/expect": "npm:^1.20.4"
     "@types/node": "npm:*"
-  checksum: c13002667b4b7ecd5e7a78d3dc15fb2f9d183d985ce89c09b0fd9a5aec4177a11062fb7b5a70a7f3b3d0ce8abf2f5a310c4b2be88720ee80912a12941143b747
+  checksum: eb55486ff872ec5e46f4a6b3548e94949426f86fa62cd31d03332e37a4b7e6392d12f41c48c9c3e74dbd2a434cd0169bc3e0953df136892b27246a2ef9aeac98
   languageName: node
   linkType: hard
 
@@ -10353,7 +10353,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mem-fs@npm:3.0.0, mem-fs@npm:^3.0.0":
+"mem-fs@npm:4.0.0":
+  version: 4.0.0
+  resolution: "mem-fs@npm:4.0.0"
+  dependencies:
+    "@types/node": "npm:^20.8.3"
+    "@types/vinyl": "npm:^2.0.8"
+    vinyl: "npm:^3.0.0"
+    vinyl-file: "npm:^5.0.0"
+  checksum: 19493436003f292e480aafc08980cb510b11ee8a829712674df74cb1f8a674e6017ec3db9c568cfb851c63f5adb9451524992b813bd6b3cc46c5cc61bf0c26a4
+  languageName: node
+  linkType: hard
+
+"mem-fs@npm:^3.0.0":
   version: 3.0.0
   resolution: "mem-fs@npm:3.0.0"
   dependencies:
@@ -11845,7 +11857,7 @@ __metadata:
     json5: "npm:^2.2.2"
     lodash.camelcase: "npm:^4.3.0"
     lodash.kebabcase: "npm:^4.1.1"
-    mem-fs: "npm:3.0.0"
+    mem-fs: "npm:4.0.0"
     mem-fs-editor: "npm:10.0.3"
     minimist: "npm:1.2.8"
     parse-author: "npm:2.0.0"
