@@ -3270,7 +3270,7 @@ __metadata:
     "@commitlint/cli": "npm:18.2.0"
     "@pob/pretty-eslint-config": "npm:5.1.1"
     "@pob/pretty-pkg": "npm:6.1.1"
-    conventional-changelog-conventionalcommits: "npm:^6.0.0"
+    conventional-changelog-conventionalcommits: "npm:^7.0.0"
     husky: "npm:~8.0.1"
     json5: "npm:^2.2.2"
     lint-staged: "npm:15.0.2"
@@ -6448,16 +6448,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"conventional-changelog-conventionalcommits@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "conventional-changelog-conventionalcommits@npm:6.0.0"
-  dependencies:
-    compare-func: "npm:^2.0.0"
-  checksum: 402c5f7bdd3ac38fd8a66df1bc5bade6e38a857242ea67612c32ddc039e6a2c0d2f5c0c2b51369a4b17c93e4488d4cfea1281e5a0c18d02946214b1bda947ce1
-  languageName: node
-  linkType: hard
-
-"conventional-changelog-conventionalcommits@npm:^7.0.2":
+"conventional-changelog-conventionalcommits@npm:^7.0.0, conventional-changelog-conventionalcommits@npm:^7.0.2":
   version: 7.0.2
   resolution: "conventional-changelog-conventionalcommits@npm:7.0.2"
   dependencies:
