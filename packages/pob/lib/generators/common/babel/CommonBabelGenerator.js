@@ -51,6 +51,13 @@ export default class CommonBabelGenerator extends Generator {
       required: false,
       default: 'dist',
     });
+
+    this.option('onlyLatestLTS', {
+      type: Boolean,
+      required: false,
+      default: false,
+      desc: 'only latest lts',
+    });
   }
 
   initializing() {
@@ -59,8 +66,11 @@ export default class CommonBabelGenerator extends Generator {
     if (pkg.pob && pkg.pob.babelEnvs) {
       let babelEnvs = pkg.pob.babelEnvs;
       if (
-        !babelEnvs.some(
-          (env) => env.target === 'node' && String(env.version) === '18',
+        !babelEnvs.some((env) =>
+          env.target === 'node' &&
+          String(env.version) === this.options.onlyLatestLTS
+            ? '20'
+            : '18',
         ) &&
         babelEnvs.some(
           (env) =>
@@ -70,16 +80,19 @@ export default class CommonBabelGenerator extends Generator {
               String(env.version) === '10' ||
               String(env.version) === '12' ||
               String(env.version) === '14' ||
-              String(env.version) === '16'),
+              String(env.version) === '16' ||
+              (this.options.onlyLatestLTS && String(env.version) === '18')),
         )
       ) {
         babelEnvs.unshift({
           target: 'node',
-          version: '18',
+          version: this.options.onlyLatestLTS ? '20' : '18',
         });
       }
-      babelEnvs = babelEnvs.filter(
-        (env) => env.target !== 'node' || env.version >= 18,
+      babelEnvs = babelEnvs.filter((env) =>
+        env.target !== 'node' || env.version >= this.options.onlyLatestLTS
+          ? 20
+          : 18,
       );
 
       pkg.pob.babelEnvs = babelEnvs;
@@ -105,7 +118,13 @@ export default class CommonBabelGenerator extends Generator {
         babelEnvs
           .filter((env) => env.target === 'node')
           .map((env) => {
-            if (env.version === '14' || env.version === '16') return '18';
+            if (
+              env.version === '14' ||
+              env.version === '16' ||
+              (this.options.onlyLatestLTS && env.version === '18')
+            ) {
+              return this.options.onlyLatestLTS ? '20' : '18';
+            }
             return env.version;
           }),
       ),
@@ -155,7 +174,11 @@ export default class CommonBabelGenerator extends Generator {
           default: nodeVersions,
           choices: [
             {
-              name: '18 (Active LTS)',
+              name: '20 (Active LTS)',
+              value: '20',
+            },
+            {
+              name: '18 (Maintenance LTS)',
               value: '18',
             },
           ],
@@ -209,7 +232,7 @@ export default class CommonBabelGenerator extends Generator {
         formats:
           babelConfig.formats && babelConfig.formats.includes('cjs')
             ? // eslint-disable-next-line unicorn/no-nested-ternary
-              version === '16' || version === '18'
+              version === '18' || version === '20'
               ? babelConfig.formats
               : undefined
             : undefined,
@@ -400,10 +423,11 @@ export default class CommonBabelGenerator extends Generator {
         case '12':
         case '14':
         case '16':
-          pkg.engines.node = '>=16.12.0';
-          break;
         case '18':
           pkg.engines.node = '>=18.12.0';
+          break;
+        case '20':
+          pkg.engines.node = '>=20.9.0';
           break;
         default:
           throw new Error(`Invalid min node version: ${minNodeVersion}`);
@@ -426,7 +450,11 @@ export default class CommonBabelGenerator extends Generator {
       packageUtils.removeDependencies(pkg, ['@types/node']);
       packageUtils.removeDevDependencies(pkg, ['@types/node']);
       // Supports oldest current or active LTS version of node
-      pkg.engines.node = '>=18.12.0';
+      if (this.options.onlyLatestLTS) {
+        pkg.engines.node = '>=20.9.0';
+      } else {
+        pkg.engines.node = '>=18.12.0';
+      }
     }
 
     /* browserslist */

@@ -235,6 +235,7 @@ export default class PobLibGenerator extends Generator {
       testing: !!this.pobjson.testing,
       documentation: !!this.pobjson.documentation,
       fromPob: this.options.fromPob,
+      onlyLatestLTS: false,
     });
   }
 

@@ -168,12 +168,12 @@ export default class CoreCIGenerator extends Generator {
               checks && 'checks',
               build && 'build',
               'lint',
-              testing && 'test (18)',
-              testing && !this.options.onlyLatestLTS && 'test (20)',
+              testing && !this.options.onlyLatestLTS && 'test (18)',
+              testing && 'test (20)',
             ].filter(Boolean)
           : [
-              'build (18.x)',
-              !this.options.onlyLatestLTS && 'build (20.x)',
+              !this.options.onlyLatestLTS && 'build (18.x)',
+              'build (20.x)',
             ].filter(Boolean)),
       );
     } else {

@@ -46,7 +46,11 @@ export default class CorePackageGenerator extends Generator {
     // dont override engines if set to latest
     if (
       !pkg.engines.node ||
-      !(pkg.engines.node.startsWith('>=18.') && pkg.engines.node !== '>=18.0.0')
+      !(
+        pkg.engines.node.startsWith('>=20.') &&
+        pkg.engines.node.startsWith('>=18.') &&
+        pkg.engines.node !== '>=18.0.0'
+      )
     ) {
       // this might be overridden by babel generator
       pkg.engines.node = '>=18.12.0'; // .12.0 is the first lts node 18 version

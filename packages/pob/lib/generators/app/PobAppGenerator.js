@@ -138,6 +138,7 @@ export default class PobAppGenerator extends Generator {
     ) {
       this.composeWith('pob:common:babel', {
         updateOnly: this.options.updateOnly,
+        onlyLatestLTS: true,
         isApp: true,
         isAppLibrary,
         useAppConfig: this.appConfig.type === 'alp-node',
