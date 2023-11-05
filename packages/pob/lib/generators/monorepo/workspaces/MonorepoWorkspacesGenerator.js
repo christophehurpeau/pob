@@ -76,11 +76,7 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       delete pkg.engines.yarn;
     }
 
-    if (pkg.name === 'pob-monorepo') {
-      pkg.devDependencies['@pob/lerna-light'] = 'workspace:*';
-    } else {
-      packageUtils.removeDevDependencies(pkg, ['@pob/lerna-light']);
-    }
+    packageUtils.removeDevDependencies(pkg, ['@pob/lerna-light']);
 
     const isYarnVersionEnabled = !pkg.devDependencies?.['@pob/lerna-light'];
 

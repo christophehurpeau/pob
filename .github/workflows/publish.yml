@@ -7,6 +7,15 @@ on:
         required: true
         type: boolean
         default: false
+      bump-dependents-highest-as:
+        description: "Bump dependents highest as"
+        required: false
+        type: choice
+        options:
+          - major
+          - minor
+          - patch
+        default: "major"
 
 jobs:
   release:
@@ -29,7 +38,7 @@ jobs:
 
       - name: New version (dry run)
         if: github.ref == 'refs/heads/main' && inputs.dry-run
-        run: yarn lerna version --yes --no-push --exact --conventional-commits --conventional-graduate --changelog-preset conventional-changelog-conventionalcommits --no-git-tag-version --loglevel=verbose
+        run: yarn version --dry-run --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}
       - name: Configure Git user
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
@@ -39,7 +48,7 @@ jobs:
       - name: New version
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
-          yarn lerna version --yes --push --exact --conventional-commits --conventional-graduate --changelog-preset conventional-changelog-conventionalcommits --create-release=github -m 'chore: release [skip ci]'
+          yarn version --create-release=github  --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }} -m 'chore: release [skip ci]\n\n%t'
         env:
           HUSKY: 0
           GH_TOKEN: ${{ secrets.GH_TOKEN }}

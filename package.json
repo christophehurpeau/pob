@@ -30,7 +30,6 @@
     "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage --coverageReporters=json --coverageReporters=text",
     "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch",
     "tsc": "tsc -b",
-    "version": "YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn && git add yarn.lock",
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
   "prettier": "@pob/root/prettier-config",
@@ -48,7 +47,6 @@
   "devDependencies": {
     "@babel/core": "7.23.2",
     "@pob/eslint-config": "51.1.2",
-    "@pob/lerna-light": "workspace:*",
     "@pob/root": "workspace:*",
     "@types/jest": "29.5.7",
     "check-package-dependencies": "6.8.0",
