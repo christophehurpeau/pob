@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.0.1](https://github.com/christophehurpeau/pob/compare/pob@15.0.0...pob@15.0.1) (2023-11-05)
+
+
+### Bug Fixes
+
+* add missing fetch-tags option ([cc63655](https://github.com/christophehurpeau/pob/commit/cc636551513f03a2f418064e353b980f581c6faf))
+
+
+
+
 ## 15.0.0 (2023-11-05)
 
 
