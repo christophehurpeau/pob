@@ -66,6 +66,8 @@ export default class CoreRenovateGenerator extends Generator {
       );
 
       if (this.options.app) {
+        renovateConfig.$schema =
+          'https://docs.renovatebot.com/renovate-schema.json';
         renovateConfig.extends = [
           'config:js-app',
           'github>christophehurpeau/renovate-presets',
