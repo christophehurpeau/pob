@@ -5440,19 +5440,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"check-package-dependencies@npm:6.8.0":
-  version: 6.8.0
-  resolution: "check-package-dependencies@npm:6.8.0"
+"check-package-dependencies@npm:7.0.0":
+  version: 7.0.0
+  resolution: "check-package-dependencies@npm:7.0.0"
   dependencies:
     chalk: "npm:^5.2.0"
     glob: "npm:^10.0.0"
-    import-meta-resolve: "npm:^3.0.0"
+    import-meta-resolve: "npm:^4.0.0"
     semver: "npm:^7.5.4"
     semver-utils: "npm:^1.1.4"
     type-fest: "npm:^4.0.0"
   bin:
-    check-package-dependencies: bin/check-package-dependencies.mjs
-  checksum: aad06c82c51470103761ce80540cdd97b2c6533c0672b5462b4b280b138d266f8d98cc693f924ec1c1957f0c6342262adecee8adbd51348eb0635f04f1cc1d25
+    check-package-dependencies: ./bin/check-package-dependencies.mjs
+  checksum: 5b1fef8e68378a5de8ee2a6ff13badb398f88e4e50167468c280992b777b3a1f9537dcd8d02ab01f731470a4e3d762eb17b8d66c16b114a73021cf0879121ac8
   languageName: node
   linkType: hard
 
@@ -7972,10 +7972,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"import-meta-resolve@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "import-meta-resolve@npm:3.0.0"
-  checksum: f50697d21c5e4ed00425fc756a84deaf8911954786ce1639874ed6e85565bbecda738dc7554f56f70594bca5c6d67cb329912f97adf4288d216e143f07d6af43
+"import-meta-resolve@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "import-meta-resolve@npm:4.0.0"
+  checksum: 73f0f1d68f7280cb4415e3a212a6e5d57fbfe61ab6f467df3dad5361529fbd89ac7d8ea2b694412b74985a4226d218ad3fb22fd8f06f5429beda521dc9f0229c
   languageName: node
   linkType: hard
 
@@ -10932,7 +10932,7 @@ __metadata:
     "@pob/pretty-pkg": "npm:6.2.0"
     "@types/jest": "npm:29.5.8"
     alp-rollup-plugin-config: "npm:2.1.0"
-    check-package-dependencies: "npm:6.8.0"
+    check-package-dependencies: "npm:7.0.0"
     eslint: "npm:8.53.0"
     jest: "npm:29.7.0"
     jest-junit-reporter: "npm:1.1.0"
@@ -10954,7 +10954,7 @@ __metadata:
     "@pob/eslint-config": "npm:51.1.2"
     "@pob/root": "workspace:*"
     "@types/jest": "npm:29.5.8"
-    check-package-dependencies: "npm:6.8.0"
+    check-package-dependencies: "npm:7.0.0"
     eslint: "npm:8.53.0"
     jest: "npm:29.7.0"
     pob-babel: "workspace:*"
