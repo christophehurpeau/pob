@@ -55,7 +55,6 @@
     "findup-sync": "^5.0.0",
     "git-remote-url": "^1.0.1",
     "github-username": "^7.0.0",
-    "inquirer-npm-name": "^4.0.0",
     "js-yaml": "^4.1.0",
     "json5": "^2.2.2",
     "lodash.camelcase": "^4.3.0",
@@ -67,6 +66,7 @@
     "pob-dependencies": "workspace:*",
     "prettier": "2.8.8",
     "semver": "7.5.4",
+    "validate-npm-package-name": "^3.0.0",
     "yarn-workspace-utils": "1.2.3",
     "yeoman-environment": "4.0.0",
     "yeoman-generator": "7.1.0"

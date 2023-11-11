@@ -1,9 +1,9 @@
 import fs from 'node:fs';
 import path from 'node:path';
-import askName from 'inquirer-npm-name';
 import Generator from 'yeoman-generator';
 import inMonorepo from '../../../utils/inMonorepo.js';
 import * as packageUtils from '../../../utils/package.js';
+import { askName } from './askName.js';
 
 export default class CorePackageGenerator extends Generator {
   constructor(args, opts) {
