@@ -182,6 +182,7 @@ export default class CorePackageGenerator extends Generator {
 
     if (this.options.inMonorepo && !this.options.isRoot) {
       packageUtils.removeScripts(pkg, ['checks']);
+      packageUtils.removeDevDependencies(pkg, ['check-package-dependencies']);
     } else if (this.options.isMonorepo && this.options.isRoot) {
       const doesMjsCheckPackagesExists = this.fs.exists(
         this.destinationPath('scripts/check-packages.mjs'),
@@ -197,6 +198,10 @@ export default class CorePackageGenerator extends Generator {
           this.destinationPath('scripts/check-packages.js'),
           {},
         );
+      }
+
+      if (doesJsCheckPackagesExists || doesMjsCheckPackagesExists) {
+        packageUtils.addDevDependencies(pkg, ['check-package-dependencies']);
       }
 
       packageUtils.addOrRemoveScripts(
@@ -224,15 +229,19 @@ export default class CorePackageGenerator extends Generator {
         this.destinationPath('scripts/check-package.js'),
       );
 
-      if (pkg.type === 'module' && !doesJsCheckPackageExists) {
-        doesJsCheckPackageExists = true;
-        this.fs.copyTpl(
-          this.templatePath('check-package.js.ejs'),
-          this.destinationPath('scripts/check-package.js'),
-          {
-            isLibrary: pkg.private !== true,
-          },
-        );
+      if (pkg.type === 'module') {
+        if (!doesJsCheckPackageExists) {
+          doesJsCheckPackageExists = true;
+          this.fs.copyTpl(
+            this.templatePath('check-package.js.ejs'),
+            this.destinationPath('scripts/check-package.js'),
+            {
+              isLibrary: pkg.private !== true,
+            },
+          );
+        }
+      }
+      if (doesJsCheckPackageExists || doesMjsCheckPackageExists) {
         packageUtils.addDevDependencies(pkg, ['check-package-dependencies']);
       }
 
