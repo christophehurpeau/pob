@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.7.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.6.0...@pob/root@8.7.0) (2023-11-11)
+
+
+### Features
+
+* **deps:** update dependency @commitlint/cli to v18.4.0 ([#1842](https://github.com/christophehurpeau/pob/issues/1842)) ([18cb1d7](https://github.com/christophehurpeau/pob/commit/18cb1d76ad8d90345b9fe6a261d3fa61c58d76fe))
+* **deps:** update dependency lint-staged to v15.1.0 ([#1843](https://github.com/christophehurpeau/pob/issues/1843)) ([1210bc6](https://github.com/christophehurpeau/pob/commit/1210bc6b12809cd85de262841f87c11b4f56671d))
+
+
+### Bug Fixes
+
+* make sure cosmiconfig is up-to-date ([39e62ed](https://github.com/christophehurpeau/pob/commit/39e62ed65fc75a2ca91541a985ad3c62b4f3d07f))
+
+
+
+
 ## 8.6.0 (2023-11-05)
 
 

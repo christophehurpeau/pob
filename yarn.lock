@@ -2782,7 +2782,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/root@npm:8.6.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@npm:8.7.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -5054,7 +5054,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-pob-env@npm:10.2.1, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
+"babel-preset-pob-env@npm:10.2.2, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
   version: 0.0.0-use.local
   resolution: "babel-preset-pob-env@workspace:packages/babel-preset-pob-env"
   dependencies:
@@ -6849,13 +6849,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-typescript-lib@npm:0.17.2, example-typescript-lib@workspace:pob-examples/typescript-lib":
+"example-typescript-lib@npm:0.17.3, example-typescript-lib@workspace:pob-examples/typescript-lib":
   version: 0.0.0-use.local
   resolution: "example-typescript-lib@workspace:pob-examples/typescript-lib"
   dependencies:
     "@babel/core": "npm:7.23.3"
     "@types/node": "npm:20.9.0"
-    pob-babel: "npm:36.6.2"
+    pob-babel: "npm:36.6.3"
     typescript: "npm:5.2.2"
   languageName: unknown
   linkType: soft
@@ -6864,7 +6864,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-webpack-app@workspace:pob-examples/webpack-app"
   dependencies:
-    example-typescript-lib: "npm:0.17.2"
+    example-typescript-lib: "npm:0.17.3"
     webpack: "npm:5.89.0"
     webpack-cli: "npm:5.1.4"
   languageName: unknown
@@ -10895,7 +10895,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@npm:36.6.2, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
+"pob-babel@npm:36.6.3, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -10905,7 +10905,7 @@ __metadata:
     "@rollup/plugin-json": "npm:6.0.1"
     "@rollup/plugin-node-resolve": "npm:15.2.3"
     "@rollup/plugin-run": "npm:3.0.2"
-    babel-preset-pob-env: "npm:10.2.1"
+    babel-preset-pob-env: "npm:10.2.2"
     rollup: "npm:3.29.4"
     rollup-config-external-dependencies: "npm:^2.0.0"
     semver: "npm:^7.3.7"
@@ -10942,7 +10942,7 @@ __metadata:
     eslint: "npm:8.53.0"
     jest: "npm:29.7.0"
     jest-junit-reporter: "npm:1.1.0"
-    pob-babel: "npm:36.6.2"
+    pob-babel: "npm:36.6.3"
     prettier: "npm:2.8.8"
     repository-check-dirty: "npm:6.2.0"
     rollup: "npm:3.29.4"
@@ -10977,7 +10977,7 @@ __metadata:
     "@pob/eslint-config": "npm:51.1.2"
     "@pob/eslint-config-typescript": "npm:51.1.2"
     "@pob/eslint-config-typescript-react": "npm:51.1.2"
-    "@pob/root": "npm:8.6.0"
+    "@pob/root": "npm:8.7.0"
     "@pob/sort-eslint-config": "npm:5.1.0"
     "@pob/sort-object": "npm:6.1.0"
     "@pob/sort-pkg": "npm:6.1.0"
@@ -11002,7 +11002,7 @@ __metadata:
     pob-dependencies: "workspace:*"
     prettier: "npm:2.8.8"
     semver: "npm:7.5.4"
-    yarn-workspace-utils: "npm:1.2.2"
+    yarn-workspace-utils: "npm:1.2.3"
     yeoman-environment: "npm:4.0.0"
     yeoman-generator: "npm:7.1.0"
   bin:
@@ -13565,13 +13565,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yarn-workspace-utils@npm:1.2.2, yarn-workspace-utils@workspace:packages/yarn-workspace-utils":
+"yarn-workspace-utils@npm:1.2.3, yarn-workspace-utils@workspace:packages/yarn-workspace-utils":
   version: 0.0.0-use.local
   resolution: "yarn-workspace-utils@workspace:packages/yarn-workspace-utils"
   dependencies:
     "@babel/core": "npm:7.23.3"
     "@yarnpkg/core": "npm:4.0.1"
-    pob-babel: "npm:36.6.2"
+    pob-babel: "npm:36.6.3"
     typescript: "npm:5.2.2"
   languageName: unknown
   linkType: soft

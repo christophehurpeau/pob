@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.6.3](https://github.com/christophehurpeau/pob/compare/pob-babel@36.6.2...pob-babel@36.6.3) (2023-11-11)
+
+Note: no notable changes
+
+Version bump for dependency: babel-preset-pob-env
+
+
 ## [36.6.2](https://github.com/christophehurpeau/pob/compare/pob-babel@36.6.1...pob-babel@36.6.2) (2023-11-05)
 
 

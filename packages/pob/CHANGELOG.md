@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.1.0](https://github.com/christophehurpeau/pob/compare/pob@15.0.3...pob@15.1.0) (2023-11-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @types/inquirer to v9.0.7 ([#1839](https://github.com/christophehurpeau/pob/issues/1839)) ([0f2bfb3](https://github.com/christophehurpeau/pob/commit/0f2bfb3b020287c49aa6a0ee37254a11ed3089cd))
+* **deps:** update yeoman group ([#1810](https://github.com/christophehurpeau/pob/issues/1810)) ([cd69295](https://github.com/christophehurpeau/pob/commit/cd692950f15e4f64c8e392f282f6981c797773eb))
+* **pob:** add missing async/await with composeWith ([4b679d5](https://github.com/christophehurpeau/pob/commit/4b679d521430af32fcd6bf8f0fe5dce53c1e68e6))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: root
+
+
 ## [15.0.3](https://github.com/christophehurpeau/pob/compare/pob@15.0.2...pob@15.0.3) (2023-11-05)
 
 
