@@ -153,6 +153,7 @@ export default class CoreYarnGenerator extends Generator {
         config.supportedArchitectures = {
           cpu: ['x64', 'arm64'],
           os: ['linux', 'darwin'],
+          libc: ['glibc', 'musl'],
         };
       }
       config.defaultSemverRangePrefix = this.options.type === 'app' ? '' : '^';
