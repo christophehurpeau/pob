@@ -156,7 +156,7 @@ export default class CoreYarnGenerator extends Generator {
         };
       }
       config.defaultSemverRangePrefix = this.options.type === 'app' ? '' : '^';
-      config.enableMessageNames = false;
+      delete config.enableMessageNames; // was a config for yarn < 4
       config.nodeLinker = this.options.yarnNodeLinker;
 
       if (config.yarnPath) {
