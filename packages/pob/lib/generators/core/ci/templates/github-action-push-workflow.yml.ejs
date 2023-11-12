@@ -78,6 +78,11 @@ jobs:
         env:
           CI: true
 <% } -%>
+<% if (e2eTesting) { -%>
+
+      - name: E2E testing
+        run: <%= packageManager %> <%= e2eTesting %> run test:e2e
+<% } -%>
 <% if (true) { -%>
 
       - name: Check nothing was forgotten before commit

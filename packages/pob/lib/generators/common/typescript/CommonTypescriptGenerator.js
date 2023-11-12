@@ -85,6 +85,16 @@ export default class CommonTypescriptGenerator extends Generator {
       default: true,
       desc: 'build .d.ts option',
     });
+    this.option('plugins', {
+      type: String,
+      default: '',
+      desc: 'typescript plugins',
+    });
+    this.option('additionalIncludes', {
+      type: String,
+      default: '',
+      desc: 'typescript additional includes',
+    });
   }
 
   writing() {
@@ -214,6 +224,10 @@ export default class CommonTypescriptGenerator extends Generator {
           resolveJsonModule: this.options.resolveJsonModule,
           forceExcludeNodeModules: this.options.forceExcludeNodeModules,
           forceAllowJs: this.options.forceAllowJs,
+          plugins: this.options.plugins.split(',').filter(Boolean),
+          additionalIncludes: this.options.additionalIncludes
+            .split(',')
+            .filter(Boolean),
         },
       );
 

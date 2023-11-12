@@ -2,7 +2,8 @@
   "include": [
     "<%= srcDirectory %>/**/*.ts"<% if (jsx) { -%>,
     "<%= srcDirectory %>/**/*.tsx"<% } %><% if (srcDirectory !== rootDir) { -%>,
-    "<%= rootDir %>/*.ts"<% } %>
+    "<%= rootDir %>/*.ts"<% } %><% if (additionalIncludes.length > 0) { -%>,
+    <%- additionalIncludes.map(adi => `"${adi}"`).join(',\n    ') %><% } %>
   ],
 <% if(srcDirectory === '.' || forceExcludeNodeModules) { -%>
   "exclude": [
@@ -53,6 +54,9 @@
     "isolatedModules": true,                  /* Transpile each file as a separate module (similar to 'ts.transpileModule'). */
 <% if(forceAllowJs) { -%>
     "allowJs": true,
+<% } -%>
+<% if(plugins && plugins.length > 0) { -%>
+    "plugins": [<%- plugins.map((pluginName) => `{"name": "${pluginName}"}`).join(', ') %>],
 <% } -%>
 
     /* Enable all strict type-checking options. */

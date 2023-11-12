@@ -12,6 +12,7 @@ import path from 'node:path';
 import minimist from 'minimist';
 import * as yeoman from 'yeoman-environment';
 import PobAppGenerator from './generators/app/PobAppGenerator.js';
+import AppE2ETestingGenerator from './generators/app/e2e-testing/AppE2ETestingGenerator.js';
 import AppNextjsGenerator from './generators/app/nextjs/AppNextjsGenerator.js';
 import AppRemixGenerator from './generators/app/remix/AppRemixGenerator.js';
 import CommonBabelGenerator from './generators/common/babel/CommonBabelGenerator.js';
@@ -87,6 +88,11 @@ env.registerStub(
   PobAppGenerator,
   'pob:app',
   `${__dirname}/generators/app/PobAppGenerator.js`,
+);
+env.registerStub(
+  AppE2ETestingGenerator,
+  'pob:app:e2e-testing',
+  `${__dirname}/generators/app/e2e-testing/AppE2ETestingGenerator.js`,
 );
 env.registerStub(
   AppNextjsGenerator,

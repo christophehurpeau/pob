@@ -275,6 +275,7 @@ export default class PobLibGenerator extends Generator {
       disableYarnGitCache: this.options.disableYarnGitCache,
       enableReleasePlease,
       testing: this.pobjson.testing,
+      e2eTesting: false,
       runner: this.pobjson.testing
         ? this.pobjson.testing.runner || 'jest'
         : undefined,

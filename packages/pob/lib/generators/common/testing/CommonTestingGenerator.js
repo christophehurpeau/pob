@@ -83,6 +83,12 @@ export default class CommonTestingGenerator extends Generator {
       desc: 'is app',
     });
 
+    this.option('e2eTesting', {
+      type: String,
+      default: '',
+      desc: 'e2e testing package path',
+    });
+
     this.option('splitCIJobs', {
       type: Boolean,
       required: true,
@@ -117,6 +123,7 @@ export default class CommonTestingGenerator extends Generator {
         enableYarnVersion: this.options.enableYarnVersion,
         disableYarnGitCache: this.options.disableYarnGitCache,
         testing: this.options.enable,
+        e2eTesting: this.options.e2eTesting,
         build: this.options.build,
         typescript: this.options.typescript,
         documentation: this.options.documentation,

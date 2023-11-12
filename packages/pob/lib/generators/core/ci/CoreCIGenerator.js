@@ -46,6 +46,12 @@ export default class CoreCIGenerator extends Generator {
       desc: 'enable testing',
     });
 
+    this.option('e2eTesting', {
+      type: String,
+      default: '',
+      desc: 'e2e testing package path',
+    });
+
     // this.option('babelEnvs', {
     //   type: String,
     //   required: true,
@@ -145,6 +151,7 @@ export default class CoreCIGenerator extends Generator {
           packageManager: this.options.packageManager,
           disableYarnGitCache: this.options.disableYarnGitCache,
           testing,
+          e2eTesting: this.options.e2eTesting,
           checks,
           documentation: this.options.documentation,
           build,

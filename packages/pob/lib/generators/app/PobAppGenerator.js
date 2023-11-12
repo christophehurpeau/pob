@@ -204,6 +204,18 @@ export default class PobAppGenerator extends Generator {
         }
         return '';
       })(),
+      plugins: (() => {
+        if (this.appConfig.type === 'next.js') {
+          return 'next';
+        }
+        return '';
+      })(),
+      additionalIncludes: (() => {
+        if (this.appConfig.type === 'next.js') {
+          return '.next/types/**/*.ts';
+        }
+        return '';
+      })(),
     });
 
     await this.composeWith('pob:common:remove-old-dependencies');
@@ -217,6 +229,7 @@ export default class PobAppGenerator extends Generator {
         disableYarnGitCache: this.options.disableYarnGitCache,
         enableReleasePlease,
         testing: this.appConfig.testing,
+        e2eTesting: this.appConfig.e2e ? '.' : '',
         typescript: babel,
         build: babel && this.appConfig.type !== 'expo',
         documentation: false,
@@ -227,6 +240,10 @@ export default class PobAppGenerator extends Generator {
         splitCIJobs: false,
         onlyLatestLTS: true,
         srcDirectory,
+      });
+
+      await this.composeWith('pob:app:e2e-testing', {
+        enable: this.appConfig.e2e,
       });
 
       await this.composeWith('pob:common:format-lint', {
