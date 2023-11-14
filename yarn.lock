@@ -10883,7 +10883,7 @@ __metadata:
     semver: "npm:7.5.4"
     validate-npm-package-name: "npm:^5.0.0"
     yarn-workspace-utils: "npm:1.2.3"
-    yeoman-environment: "npm:4.0.0"
+    yeoman-environment: "npm:4.1.1"
     yeoman-generator: "npm:7.1.1"
   bin:
     pob: ./lib/pob.js
@@ -13392,9 +13392,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"yeoman-environment@npm:4.0.0":
-  version: 4.0.0
-  resolution: "yeoman-environment@npm:4.0.0"
+"yeoman-environment@npm:4.1.1":
+  version: 4.1.1
+  resolution: "yeoman-environment@npm:4.1.1"
   dependencies:
     "@yeoman/adapter": "npm:^1.4.0"
     "@yeoman/conflicter": "npm:^2.0.0-alpha.2"
@@ -13420,7 +13420,7 @@ __metadata:
     mem-fs: ^4.0.0
   bin:
     yoe: bin/bin.cjs
-  checksum: bb0ffe8f3604ef947c05c3169b2169487db52d8976f7caede8871233231ed7c78bb055b1a3045b457acc9fc2984fe1161b716e2d4dc5f6ae4b207c9c1a3ca36d
+  checksum: 5c7db483d6ec8c2f5d9d11a2ba13c27a3d33c58289e3866b1d6f7ea2c676c78abf587845f5dd99d98eb0e0627705a0b18ece2f2f815a550785d4a00df798a2db
   languageName: node
   linkType: hard
 
