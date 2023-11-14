@@ -163,7 +163,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.12.13, @babel/code-frame@npm:^7.21.4, @babel/code-frame@npm:^7.22.13":
+"@babel/code-frame@npm:^7.0.0, @babel/code-frame@npm:^7.12.13, @babel/code-frame@npm:^7.22.13":
   version: 7.22.13
   resolution: "@babel/code-frame@npm:7.22.13"
   dependencies:
@@ -3291,10 +3291,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/normalize-package-data@npm:^2.4.0, @types/normalize-package-data@npm:^2.4.1":
-  version: 2.4.1
-  resolution: "@types/normalize-package-data@npm:2.4.1"
-  checksum: e87bccbf11f95035c89a132b52b79ce69a1e3652fe55962363063c9c0dae0fe2477ebc585e03a9652adc6f381d24ba5589cc5e51849df4ced3d3e004a7d40ed5
+"@types/normalize-package-data@npm:^2.4.0, @types/normalize-package-data@npm:^2.4.3":
+  version: 2.4.4
+  resolution: "@types/normalize-package-data@npm:2.4.4"
+  checksum: 65dff72b543997b7be8b0265eca7ace0e34b75c3e5fee31de11179d08fa7124a7a5587265d53d0409532ecb7f7fba662c2012807963e1f9b059653ec2c83ee05
   languageName: node
   linkType: hard
 
@@ -6298,7 +6298,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"error-ex@npm:^1.3.1, error-ex@npm:^1.3.2":
+"error-ex@npm:^1.3.1":
   version: 1.3.2
   resolution: "error-ex@npm:1.3.2"
   dependencies:
@@ -7046,6 +7046,13 @@ __metadata:
   dependencies:
     to-regex-range: "npm:^5.0.1"
   checksum: e260f7592fd196b4421504d3597cc76f4a1ca7a9488260d533b611fc3cefd61e9a9be1417cb82d3b01ad9f9c0ff2dbf258e1026d2445e26b0cf5148ff4250429
+  languageName: node
+  linkType: hard
+
+"find-up-simple@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "find-up-simple@npm:1.0.0"
+  checksum: 91c3d51c1111b5eb4e6e6d71d21438f6571a37a69dc288d4222b98996756e2f472fa5393a4dddb5e1a84929405d87e86f4bdce798ba84ee513b79854960ec140
   languageName: node
   linkType: hard
 
@@ -7944,6 +7951,13 @@ __metadata:
   version: 4.0.0
   resolution: "indent-string@npm:4.0.0"
   checksum: cd3f5cbc9ca2d624c6a1f53f12e6b341659aba0e2d3254ae2b4464aaea8b4294cdb09616abbc59458f980531f2429784ed6a420d48d245bcad0811980c9efae9
+  languageName: node
+  linkType: hard
+
+"index-to-position@npm:^0.1.1":
+  version: 0.1.2
+  resolution: "index-to-position@npm:0.1.2"
+  checksum: ae8e2304ed7c959bc6d1121712e9f625634ed884e32ef93fc0795c6aab1131b10198929a50c7d16d470dab37be7438eccb0afe021d79f69116273d500898daee
   languageName: node
   linkType: hard
 
@@ -9272,13 +9286,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lines-and-columns@npm:^2.0.3":
-  version: 2.0.3
-  resolution: "lines-and-columns@npm:2.0.3"
-  checksum: b5bb0d6ee2f82ae834ceddc9251af2060c30db476673e9c817c34c00bed58e0c5d90a6866b64afe7bdcb2c5eb1b418a5b1ee631d2592dc8ff381540901fa4da6
-  languageName: node
-  linkType: hard
-
 "lint-staged@npm:15.1.0":
   version: 15.1.0
   resolution: "lint-staged@npm:15.1.0"
@@ -10594,16 +10601,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"parse-json@npm:^7.0.0":
-  version: 7.1.0
-  resolution: "parse-json@npm:7.1.0"
+"parse-json@npm:^8.0.0":
+  version: 8.0.1
+  resolution: "parse-json@npm:8.0.1"
   dependencies:
-    "@babel/code-frame": "npm:^7.21.4"
-    error-ex: "npm:^1.3.2"
+    "@babel/code-frame": "npm:^7.22.13"
+    index-to-position: "npm:^0.1.1"
     json-parse-even-better-errors: "npm:^3.0.0"
-    lines-and-columns: "npm:^2.0.3"
-    type-fest: "npm:^3.8.0"
-  checksum: bf9bc646e8b8cb9ae638988a303bf09866c13d2829c2ff75ee87c27631dac06d0d6e81913f8824c3c4586015bf3f0a6fee1dece168b37932d175ef0709e8860a
+    type-fest: "npm:^4.7.1"
+  checksum: 59e070cfcf85031443e7d14455ff583c255e465fb70f97cb1913bc99d3a6c0bea376e90d04ab73d26523f2d6b0b20e4c3a3a0ee14075e4f3ac1fd650fee4d08f
   languageName: node
   linkType: hard
 
@@ -10878,7 +10884,7 @@ __metadata:
     validate-npm-package-name: "npm:^5.0.0"
     yarn-workspace-utils: "npm:1.2.3"
     yeoman-environment: "npm:4.0.0"
-    yeoman-generator: "npm:7.1.0"
+    yeoman-generator: "npm:7.1.1"
   bin:
     pob: ./lib/pob.js
   languageName: unknown
@@ -11189,14 +11195,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"read-pkg-up@npm:^10.1.0":
-  version: 10.1.0
-  resolution: "read-pkg-up@npm:10.1.0"
+"read-package-up@npm:^11.0.0":
+  version: 11.0.0
+  resolution: "read-package-up@npm:11.0.0"
   dependencies:
-    find-up: "npm:^6.3.0"
-    read-pkg: "npm:^8.1.0"
-    type-fest: "npm:^4.2.0"
-  checksum: 554470d7ff54026b561f6c851c35470f5bc95a47bfb8645dc13c447d83c42c78b42d47fffdc8f86bffe731215406dab498f75cb27494e1fb3eca7fa8d00fb501
+    find-up-simple: "npm:^1.0.0"
+    read-pkg: "npm:^9.0.0"
+    type-fest: "npm:^4.6.0"
+  checksum: 535b7554d47fae5fb5c2e7aceebd48b5de4142cdfe7b21f942fa9a0f56db03d3b53cce298e19438e1149292279c285e6ba6722eca741d590fd242519c4bdbc17
   languageName: node
   linkType: hard
 
@@ -11223,15 +11229,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"read-pkg@npm:^8.1.0":
-  version: 8.1.0
-  resolution: "read-pkg@npm:8.1.0"
+"read-pkg@npm:^9.0.0":
+  version: 9.0.0
+  resolution: "read-pkg@npm:9.0.0"
   dependencies:
-    "@types/normalize-package-data": "npm:^2.4.1"
+    "@types/normalize-package-data": "npm:^2.4.3"
     normalize-package-data: "npm:^6.0.0"
-    parse-json: "npm:^7.0.0"
-    type-fest: "npm:^4.2.0"
-  checksum: f4cd164f096e78cf3e338a55f800043524e3055f9b0b826143290002fafc951025fc3cbd6ca683ebaf7945efcfb092d31c683dd252a7871a974662985c723b67
+    parse-json: "npm:^8.0.0"
+    type-fest: "npm:^4.6.0"
+  checksum: a5a6233607b09891d8f2a70333a56b04db934a7a61b4e3b235594b9f971556c5ecd5cf9708be1e5a37ad88677ddfd53a94f46851323c1c812aec938c65acc056
   languageName: node
   linkType: hard
 
@@ -12700,17 +12706,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:^3.8.0":
-  version: 3.13.1
-  resolution: "type-fest@npm:3.13.1"
-  checksum: 9a8a2359ada34c9b3affcaf3a8f73ee14c52779e89950db337ce66fb74c3399776c697c99f2532e9b16e10e61cfdba3b1c19daffb93b338b742f0acd0117ce12
-  languageName: node
-  linkType: hard
-
-"type-fest@npm:^4.0.0, type-fest@npm:^4.2.0":
-  version: 4.3.1
-  resolution: "type-fest@npm:4.3.1"
-  checksum: 67ec9bd6fd1b1c5e7361d5ffad639607f60a3d497ff9fa7b1359b9e4c6b08a8f31f1cb0328e633f640adc2b8f692b35719efc328af0aea1d816828e4195519ae
+"type-fest@npm:^4.0.0, type-fest@npm:^4.6.0, type-fest@npm:^4.7.1":
+  version: 4.7.1
+  resolution: "type-fest@npm:4.7.1"
+  checksum: ef21f317738080d71d8603a65bd7136e1e0246980b407e9fe6b4c35cc239b712dd737b06c391e7cde8213d8a733449930b6cc5a3417324b90dddeb84fa167629
   languageName: node
   linkType: hard
 
@@ -13425,9 +13424,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yeoman-generator@npm:7.1.0":
-  version: 7.1.0
-  resolution: "yeoman-generator@npm:7.1.0"
+"yeoman-generator@npm:7.1.1":
+  version: 7.1.1
+  resolution: "yeoman-generator@npm:7.1.1"
   dependencies:
     "@types/lodash-es": "npm:^4.17.9"
     "@types/node": "npm:^18.18.5"
@@ -13441,7 +13440,7 @@ __metadata:
     lodash-es: "npm:^4.17.21"
     mem-fs-editor: "npm:^11.0.0"
     minimist: "npm:^1.2.8"
-    read-pkg-up: "npm:^10.1.0"
+    read-package-up: "npm:^11.0.0"
     semver: "npm:^7.5.4"
     simple-git: "npm:^3.20.0"
     sort-keys: "npm:^5.0.0"
@@ -13453,7 +13452,7 @@ __metadata:
   peerDependenciesMeta:
     yeoman-environment:
       optional: true
-  checksum: a6972ba2bf74bc306f9d3601a26f06b87671ef15fee2125e597b00aafa71a82f7bec180646ddbcb649878f2d48cf32df8540551e7ef925011d714dd4ec3ae3f1
+  checksum: 2815c6617c920e53122a17bdc6eeaf4667ee8742500756650d70087aa2e71ca076762a5179a7b914da69ede2851158d7ade2924b4ec71b687f3f5d458036df52
   languageName: node
   linkType: hard
 
