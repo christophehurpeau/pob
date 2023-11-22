@@ -49,7 +49,7 @@
     "@pob/eslint-config-typescript": "51.1.2",
     "@pob/eslint-config-typescript-react": "51.1.2",
     "@pob/pretty-pkg": "6.2.0",
-    "@types/jest": "29.5.9",
+    "@types/jest": "29.5.10",
     "alp-rollup-plugin-config": "2.1.0",
     "check-package-dependencies": "7.0.0",
     "eslint": "8.54.0",
