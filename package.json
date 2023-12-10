@@ -40,7 +40,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.23.5",
-    "@pob/eslint-config": "51.1.2",
+    "@pob/eslint-config": "51.2.0",
     "@pob/root": "workspace:*",
     "@types/jest": "29.5.11",
     "check-package-dependencies": "7.0.0",
