@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.9.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.8.0...@pob/root@8.9.0) (2023-12-10)
+
+
+### Features
+
+* add target rollup node 20 ([9e99194](https://github.com/christophehurpeau/pob/commit/9e9919491f2b71ab2f91de38d305366fe6f0b79d))
+
+
+
+
 ## [8.8.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.7.0...@pob/root@8.8.0) (2023-12-10)
 
 
