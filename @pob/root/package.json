@@ -60,7 +60,8 @@
     "tsconfigs/targets/node-20.json",
     "tsconfigs/targets/rollup-babel.json",
     "tsconfigs/targets/rollup-babel-with-dom.json",
-    "tsconfigs/targets/rollup-node-18.json"
+    "tsconfigs/targets/rollup-node-18.json",
+    "tsconfigs/targets/rollup-node-20.json"
   ],
   "scripts": {
     "lint": "yarn run lint:eslint",
