@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.0](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.6.0...example-simple-lib@0.7.0) (2023-12-10)
+
+
+### Features
+
+* experimental alternate ways to compile typescript without babel ([4391b03](https://github.com/christophehurpeau/pob/commit/4391b03c89d94ca00d2a54a4662d09a4b25c860d))
+
+
+
+
 ## 0.6.0 (2023-11-05)
 
 

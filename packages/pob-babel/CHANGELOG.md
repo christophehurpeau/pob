@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.7.0](https://github.com/christophehurpeau/pob/compare/pob-babel@36.6.3...pob-babel@36.7.0) (2023-12-10)
+
+
+### Features
+
+* experimental alternate ways to compile typescript without babel ([4391b03](https://github.com/christophehurpeau/pob/commit/4391b03c89d94ca00d2a54a4662d09a4b25c860d))
+
+
+### Bug Fixes
+
+* **deps:** update babel monorepo to v7.23.4 ([#1857](https://github.com/christophehurpeau/pob/issues/1857)) ([9ccf891](https://github.com/christophehurpeau/pob/commit/9ccf8912c17b2f02dd12e7522522b2268822f20a))
+
+Version bump for dependency: rollup
+Version bump for dependency: babel-preset-pob-env
+
+
 ## [36.6.3](https://github.com/christophehurpeau/pob/compare/pob-babel@36.6.2...pob-babel@36.6.3) (2023-11-11)
 
 Note: no notable changes

@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.10.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.9.3...pob-dependencies@8.10.0) (2023-12-10)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config ([#1878](https://github.com/christophehurpeau/pob/issues/1878)) ([f5c1f83](https://github.com/christophehurpeau/pob/commit/f5c1f835fcf98dc963213c7e4620ce02d325d8db))
+* **deps:** update dependency eslint to v8.54.0 ([#1855](https://github.com/christophehurpeau/pob/issues/1855)) ([3baf9c6](https://github.com/christophehurpeau/pob/commit/3baf9c68b9b020f5d069021df8a501d97491250c))
+* **deps:** update dependency eslint to v8.55.0 ([#1872](https://github.com/christophehurpeau/pob/issues/1872)) ([ebee64a](https://github.com/christophehurpeau/pob/commit/ebee64abd61d9e40bd7dd507cd97505861a2496a))
+* experimental alternate ways to compile typescript without babel ([4391b03](https://github.com/christophehurpeau/pob/commit/4391b03c89d94ca00d2a54a4662d09a4b25c860d))
+* support next ts plugin and latest next version ([095fcde](https://github.com/christophehurpeau/pob/commit/095fcde48d866ee146ac9550f04b8f3acea0e887))
+
+
+### Bug Fixes
+
+* **deps:** update babel monorepo to v7.23.4 ([#1857](https://github.com/christophehurpeau/pob/issues/1857)) ([9ccf891](https://github.com/christophehurpeau/pob/commit/9ccf8912c17b2f02dd12e7522522b2268822f20a))
+
+Version bump for dependency: commitlint-config
+Version bump for dependency: pretty-pkg
+Version bump for dependency: rollup-typescript
+Version bump for dependency: pob-babel
+Version bump for dependency: repository-check-dirty
+
+
 ## [8.9.3](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.9.2...pob-dependencies@8.9.3) (2023-11-11)
 
 Note: no notable changes

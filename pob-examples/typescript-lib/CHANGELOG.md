@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.17.3...example-typescript-lib@0.18.0) (2023-12-10)
+
+
+### Features
+
+* experimental alternate ways to compile typescript without babel ([4391b03](https://github.com/christophehurpeau/pob/commit/4391b03c89d94ca00d2a54a4662d09a4b25c860d))
+
+Version bump for dependency: pob-babel
+
+
 ## [0.17.3](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.17.2...example-typescript-lib@0.17.3) (2023-11-11)
 
 Note: no notable changes

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.3.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@1.2.3...yarn-workspace-utils@1.3.0) (2023-12-10)
+
+
+### Features
+
+* experimental alternate ways to compile typescript without babel ([4391b03](https://github.com/christophehurpeau/pob/commit/4391b03c89d94ca00d2a54a4662d09a4b25c860d))
+
+
+### Bug Fixes
+
+* **deps:** update yarn monorepo to v4.0.2 ([#1846](https://github.com/christophehurpeau/pob/issues/1846)) ([1a61fa5](https://github.com/christophehurpeau/pob/commit/1a61fa51058c3a320d3c9e603376b2e189271ddd))
+
+Version bump for dependency: pob-babel
+
+
 ## [1.2.3](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@1.2.2...yarn-workspace-utils@1.2.3) (2023-11-11)
 
 Note: no notable changes

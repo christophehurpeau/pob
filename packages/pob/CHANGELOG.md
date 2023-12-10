@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.2.0](https://github.com/christophehurpeau/pob/compare/pob@15.1.0...pob@15.2.0) (2023-12-10)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config ([#1878](https://github.com/christophehurpeau/pob/issues/1878)) ([f5c1f83](https://github.com/christophehurpeau/pob/commit/f5c1f835fcf98dc963213c7e4620ce02d325d8db))
+* **deps:** update dependency eslint to v8.54.0 ([#1855](https://github.com/christophehurpeau/pob/issues/1855)) ([3baf9c6](https://github.com/christophehurpeau/pob/commit/3baf9c68b9b020f5d069021df8a501d97491250c))
+* **deps:** update dependency eslint to v8.55.0 ([#1872](https://github.com/christophehurpeau/pob/issues/1872)) ([ebee64a](https://github.com/christophehurpeau/pob/commit/ebee64abd61d9e40bd7dd507cd97505861a2496a))
+* **deps:** update dependency validate-npm-package-name to v5 ([#1844](https://github.com/christophehurpeau/pob/issues/1844)) ([6d66f31](https://github.com/christophehurpeau/pob/commit/6d66f317fb9ad82e6c41d190fb1c8dc35198ff3c))
+* **deps:** update dependency yeoman-environment to v4.1.1 ([#1849](https://github.com/christophehurpeau/pob/issues/1849)) ([bf6b70e](https://github.com/christophehurpeau/pob/commit/bf6b70e2b8f345190c03469b5b11417a02a6acdd))
+* experimental alternate ways to compile typescript without babel ([4391b03](https://github.com/christophehurpeau/pob/commit/4391b03c89d94ca00d2a54a4662d09a4b25c860d))
+* make sure check-package-dependencies is up-to-date ([7493e27](https://github.com/christophehurpeau/pob/commit/7493e2709a0a1eae062e3223b3eb64d918db87af))
+* support next ts plugin and latest next version ([095fcde](https://github.com/christophehurpeau/pob/commit/095fcde48d866ee146ac9550f04b8f3acea0e887))
+
+
+### Bug Fixes
+
+* add missing libc in supportedArchitectures ([514c66b](https://github.com/christophehurpeau/pob/commit/514c66bf11a36f503afb6df1a19198527328c6aa))
+* **deps:** update dependency @yeoman/types to v1.1.2 ([#1847](https://github.com/christophehurpeau/pob/issues/1847)) ([7479fe6](https://github.com/christophehurpeau/pob/commit/7479fe6b0d8087dd7318c98918f63d95a4ce851d))
+* **deps:** update dependency yeoman-environment to v4.1.2 ([#1850](https://github.com/christophehurpeau/pob/issues/1850)) ([02ed137](https://github.com/christophehurpeau/pob/commit/02ed13735fd697cfbbe1aee900396ec4b50d31f0))
+* **deps:** update dependency yeoman-environment to v4.1.3 ([#1851](https://github.com/christophehurpeau/pob/issues/1851)) ([06f8cc2](https://github.com/christophehurpeau/pob/commit/06f8cc270be64899f55f99c3584a3b6519a99bbe))
+* **deps:** update dependency yeoman-generator to v7.1.1 ([#1848](https://github.com/christophehurpeau/pob/issues/1848)) ([d176ea7](https://github.com/christophehurpeau/pob/commit/d176ea74f4ee6d885f7fd9c58664a7e2ef699932))
+* **deps:** update yarn monorepo to v4.0.2 ([#1846](https://github.com/christophehurpeau/pob/issues/1846)) ([1a61fa5](https://github.com/christophehurpeau/pob/commit/1a61fa51058c3a320d3c9e603376b2e189271ddd))
+* remove legacy lib inquirer-npm-name ([6aae255](https://github.com/christophehurpeau/pob/commit/6aae25583d5f88f61132144246f2031ccf001018))
+
+Version bump for dependency: sort-eslint-config
+Version bump for dependency: sort-object
+Version bump for dependency: sort-pkg
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: root
+
+
 ## [15.1.0](https://github.com/christophehurpeau/pob/compare/pob@15.0.3...pob@15.1.0) (2023-11-11)
 
 

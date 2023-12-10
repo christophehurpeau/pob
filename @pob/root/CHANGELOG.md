@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.8.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.7.0...@pob/root@8.8.0) (2023-12-10)
+
+
+### Features
+
+* **deps:** update dependency lint-staged to v15.2.0 ([#1873](https://github.com/christophehurpeau/pob/issues/1873)) ([0b21f63](https://github.com/christophehurpeau/pob/commit/0b21f63608b303bc33d6bfa884561081fe294c33))
+* experimental alternate ways to compile typescript without babel ([4391b03](https://github.com/christophehurpeau/pob/commit/4391b03c89d94ca00d2a54a4662d09a4b25c860d))
+
+
+### Bug Fixes
+
+* **deps:** update dependency @commitlint/cli to v18.4.1 ([#1845](https://github.com/christophehurpeau/pob/issues/1845)) ([9777284](https://github.com/christophehurpeau/pob/commit/977728418b30aac236392a9729314996184b4150))
+* **deps:** update dependency @commitlint/cli to v18.4.2 ([#1852](https://github.com/christophehurpeau/pob/issues/1852)) ([d2ecb6d](https://github.com/christophehurpeau/pob/commit/d2ecb6d176ccc68f9f36c504a0aafd8eeec7b9a9))
+* **deps:** update dependency @commitlint/cli to v18.4.3 ([#1861](https://github.com/christophehurpeau/pob/issues/1861)) ([c47cfdd](https://github.com/christophehurpeau/pob/commit/c47cfdda4eeaa43fe161ab263a0754c94feefcb7))
+
+Version bump for dependency: pretty-eslint-config
+Version bump for dependency: pretty-pkg
+Version bump for dependency: repository-check-dirty
+
+
 ## [8.7.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.6.0...@pob/root@8.7.0) (2023-11-11)
 
 
