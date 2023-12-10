@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.0.1](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@1.0.0...@pob/rollup-typescript@1.0.1) (2023-12-10)
+
+
+### Bug Fixes
+
+* add missing plugin-run ([15d3dac](https://github.com/christophehurpeau/pob/commit/15d3dac678cb3c0fa8021c14318257cd6792d5c2))
+
+
+
+
 ## 1.0.0 (2023-12-10)
 
 
