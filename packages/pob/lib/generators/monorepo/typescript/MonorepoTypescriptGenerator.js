@@ -43,9 +43,11 @@ export default class MonorepoTypescriptGenerator extends Generator {
       delete pkg.scripts.flow;
     }
 
-    packageUtils.addOrRemoveDevDependencies(pkg, this.options.enable, [
-      'typescript',
-    ]);
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      pkg.name === '@pob/eslint-config-monorepo' || this.options.enable,
+      ['typescript'],
+    );
 
     if (this.options.enable) {
       packageUtils.addScripts(pkg, {
