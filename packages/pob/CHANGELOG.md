@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.2.2](https://github.com/christophehurpeau/pob/compare/pob@15.2.1...pob@15.2.2) (2023-12-10)
+
+
+### Bug Fixes
+
+* fix typescript devdep for pob eslint-config-monorepo ([d91a3b2](https://github.com/christophehurpeau/pob/commit/d91a3b22bbc41573eca496bd20efb3f5c276e181))
+
+
+
+
 ## [15.2.1](https://github.com/christophehurpeau/pob/compare/pob@15.2.0...pob@15.2.1) (2023-12-10)
 
 
