@@ -27,6 +27,13 @@
     "./prettier-config": "./prettier-config.cjs",
     "./prettier-config.js": "./prettier-config.cjs",
     "./prettier-config.cjs": "./prettier-config.cjs",
+    "./tsconfigs/base.json": "./tsconfigs/base.json",
+    "./tsconfigs/strict.json": "./tsconfigs/strict.json",
+    "./tsconfigs/targets/node-18.json": "./tsconfigs/targets/node-18.json",
+    "./tsconfigs/targets/node-20.json": "./tsconfigs/targets/node-20.json",
+    "./tsconfigs/targets/rollup-babel.json": "./tsconfigs/targets/rollup-babel.json",
+    "./tsconfigs/targets/rollup-babel-with-dom.json": "./tsconfigs/targets/rollup-babel-with-dom.json",
+    "./tsconfigs/targets/rollup-node-18.json": "./tsconfigs/targets/rollup-node-18.json",
     "./package.json": "./package.json"
   },
   "sideEffects": false,
@@ -45,10 +52,16 @@
     "bin",
     "createLintStagedConfig.js",
     "createLintStagedConfig.cjs",
-    "prettier-config.cjs"
+    "prettier-config.cjs",
+    "tsconfigs/base.json",
+    "tsconfigs/strict.json",
+    "tsconfigs/targets/node-18.json",
+    "tsconfigs/targets/node-20.json",
+    "tsconfigs/targets/rollup-babel.json",
+    "tsconfigs/targets/rollup-babel-with-dom.json",
+    "tsconfigs/targets/rollup-node-18.json"
   ],
   "scripts": {
-    "clean:build": "true",
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet @pob/root"
   },

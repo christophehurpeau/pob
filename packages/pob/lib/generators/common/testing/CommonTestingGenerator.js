@@ -163,8 +163,9 @@ export default class CommonTestingGenerator extends Generator {
       this.options.monorepo
       ? yoConfigPobMonorepo.typescript
       : packageUtils.transpileWithBabel(pkg);
+    const withTypescript = transpileWithBabel || pkg.pob?.typescript;
     let hasReact =
-      transpileWithBabel &&
+      withTypescript &&
       (this.options.monorepo
         ? yoConfigPobMonorepo.react ?? packageUtils.hasReact(pkg)
         : packageUtils.hasReact(pkg));
@@ -292,6 +293,7 @@ export default class CommonTestingGenerator extends Generator {
       } else {
         const babelEnvs = pkg.pob?.babelEnvs || [];
         const transpileWithBabel = packageUtils.transpileWithBabel(pkg);
+        const withTypescript = babelEnvs.length > 0 || pkg.pob?.typescript;
 
         const shouldUseExperimentalVmModules =
           pkg.type === 'module' && !inMonorepo;
@@ -315,9 +317,10 @@ export default class CommonTestingGenerator extends Generator {
         });
 
         if (this.options.runner === 'jest') {
-          const srcDirectory = transpileWithBabel
-            ? this.options.srcDirectory
-            : 'lib';
+          const srcDirectory =
+            transpileWithBabel || withTypescript
+              ? this.options.srcDirectory
+              : 'lib';
 
           const jestConfig = this.fs.readJSON(jestConfigPath, pkg.jest ?? {});
           delete pkg.jest;
@@ -325,20 +328,20 @@ export default class CommonTestingGenerator extends Generator {
             cacheDirectory: './node_modules/.cache/jest',
             testMatch: [
               `<rootDir>/${srcDirectory}/**/__tests__/**/*.${
-                transpileWithBabel ? 'ts' : '?(m)js'
+                withTypescript ? 'ts' : '?(m)js'
               }${hasReact ? '?(x)' : ''}`,
               `<rootDir>/${srcDirectory}/**/*.test.${
-                transpileWithBabel ? 'ts' : '?(m)js'
+                withTypescript ? 'ts' : '?(m)js'
               }${hasReact ? '?(x)' : ''}`,
             ],
             collectCoverageFrom: [
-              `${srcDirectory}/**/*.${transpileWithBabel ? 'ts' : '?(m)js'}${
+              `${srcDirectory}/**/*.${withTypescript ? 'ts' : '?(m)js'}${
                 hasReact ? '?(x)' : ''
               }`,
             ],
             moduleFileExtensions: [
-              transpileWithBabel && 'ts',
-              transpileWithBabel && hasReact && 'tsx',
+              withTypescript && 'ts',
+              withTypescript && hasReact && 'tsx',
               'js',
               // 'jsx',
               'json',
@@ -376,8 +379,8 @@ export default class CommonTestingGenerator extends Generator {
 
           if (shouldUseExperimentalVmModules) {
             jestConfig.extensionsToTreatAsEsm = [
-              transpileWithBabel && '.ts',
-              transpileWithBabel && hasReact && '.tsx',
+              withTypescript && '.ts',
+              withTypescript && hasReact && '.tsx',
             ].filter(Boolean);
           } else {
             delete jestConfig.extensionsToTreatAsEsm;

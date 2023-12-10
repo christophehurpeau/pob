@@ -1,0 +1,26 @@
+import { dirname } from 'node:path';
+import { fileURLToPath } from 'node:url';
+<% if (config) { -%>
+import config from 'alp-rollup-plugin-config';
+<% } -%>
+import createRollupConfig from '@pob/rollup-typescript/createRollupConfig.js';
+<% if (enableRun) { -%>
+import run from 'pob-babel/plugin-run.cjs';
+
+const watch = process.env.ROLLUP_WATCH === 'true';
+<% } -%>
+
+export default createRollupConfig({
+  cwd: dirname(fileURLToPath(import.meta.url)),
+  outDirectory: '<%= outDirectory %>',
+  plugins: [
+<% if (config) { -%>
+    config({
+      targets: [{ src: 'src/config/**/*.yml' }],
+    }),
+<% } -%>
+<% if (enableRun) { -%>
+    watch && run({ execArgv: ['--enable-source-maps'] }),
+<% } -%>
+  ],
+});

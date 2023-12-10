@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "@pob:base",
+
+  "compilerOptions": {
+    "newLine": "lf",
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true
+  }
+}

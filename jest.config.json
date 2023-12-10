@@ -5,5 +5,8 @@
     "<rootDir>/@(packages|@pob|pob-examples)/*/@(src|lib)/**/__tests__/**/*.(ts|js|cjs|mjs)",
     "<rootDir>/@(packages|@pob|pob-examples)/*/@(src|lib)/**/*.test.(ts|js|cjs|mjs)"
   ],
-  "extensionsToTreatAsEsm": [".ts"]
+  "extensionsToTreatAsEsm": [".ts"],
+  "moduleNameMapper": {
+    "^(\\.{1,2}/.*)\\.js$": "$1"
+  }
 }

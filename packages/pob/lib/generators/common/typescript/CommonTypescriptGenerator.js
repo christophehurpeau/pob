@@ -95,6 +95,13 @@ export default class CommonTypescriptGenerator extends Generator {
       default: '',
       desc: 'typescript additional includes',
     });
+
+    this.option('onlyLatestLTS', {
+      type: Boolean,
+      required: false,
+      default: false,
+      desc: 'only latest lts',
+    });
   }
 
   writing() {
@@ -104,6 +111,26 @@ export default class CommonTypescriptGenerator extends Generator {
     }
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+
+    const presets = (() => {
+      const babelEnvs = pkg.pob?.babelEnvs || [];
+      const withBabel = babelEnvs.length > 0;
+      const withTypescript = withBabel || pkg.pob?.typescript === true;
+      const jsx = (withBabel || withTypescript) && pkg.pob.jsx === true;
+
+      if (withBabel) {
+        return jsx
+          ? ['@pob/root/tsconfigs/targets/rollup-babel-with-dom.json']
+          : ['@pob/root/tsconfigs/targets/rollup-babel.json'];
+      }
+      if (withTypescript) {
+        const nodeVersion = this.options.onlyLatestLTS ? '20' : '18';
+        return pkg.pob.rollup === false
+          ? [`@pob/root/tsconfigs/targets/node-${nodeVersion}.json`]
+          : [`@pob/root/tsconfigs/targets/rollup-node-${nodeVersion}.json`];
+      }
+      return [];
+    })();
 
     packageUtils.removeDevDependencies(pkg, ['flow-bin']);
 
@@ -210,7 +237,8 @@ export default class CommonTypescriptGenerator extends Generator {
         this.templatePath('tsconfig.json.ejs'),
         tsconfigPath,
         {
-          emit: this.options.builddefs,
+          emitDefinitions: this.options.builddefs,
+          build: pkg.pob?.rollup === false,
           cacheEnabled: !this.options.isApp || this.options.isAppLibrary,
           monorepoPackageSrcPaths,
           monorepoPackageReferences,
@@ -228,6 +256,7 @@ export default class CommonTypescriptGenerator extends Generator {
           additionalIncludes: this.options.additionalIncludes
             .split(',')
             .filter(Boolean),
+          presets,
         },
       );
 

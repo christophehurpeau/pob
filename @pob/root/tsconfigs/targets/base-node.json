@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "@pob:target:BaseNode",
+
+  "compilerOptions": {
+    "module": "node16",
+    "moduleResolution": "node16",
+    "esModuleInterop": true
+  }
+}

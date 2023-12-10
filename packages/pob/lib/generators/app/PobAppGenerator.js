@@ -148,6 +148,17 @@ export default class PobAppGenerator extends Generator {
         fromPob: this.options.fromPob,
         buildDirectory: 'build',
       });
+      await this.composeWith('pob:common:transpiler', {
+        updateOnly: this.options.updateOnly,
+        onlyLatestLTS: true,
+        isApp: true,
+        isAppLibrary,
+        useAppConfig: this.appConfig.type === 'alp-node',
+        testing: this.appConfig.testing,
+        documentation: false,
+        fromPob: this.options.fromPob,
+        buildDirectory: 'build',
+      });
     }
 
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
@@ -159,6 +170,7 @@ export default class PobAppGenerator extends Generator {
     const babelEnvs = (pkg.pob && pkg.pob.babelEnvs) || [];
     const babel =
       babelEnvs.length > 0 || appsWithTypescript.includes(this.appConfig.type);
+    const typescript = babel || pkg.pob?.typescript;
     const node = true;
     const browser = appsWithBrowser.includes(this.appConfig.type);
     const jsx =
@@ -176,7 +188,7 @@ export default class PobAppGenerator extends Generator {
     ).filter(Boolean);
 
     await this.composeWith('pob:common:typescript', {
-      enable: babel,
+      enable: typescript,
       isApp: true,
       isAppLibrary,
       // nextjs now supports src
@@ -190,6 +202,7 @@ export default class PobAppGenerator extends Generator {
       forceAllowJs: this.appConfig.type === 'next.js',
       updateOnly: this.options.updateOnly,
       resolveJsonModule: true,
+      onlyLatestLTS: true,
       baseUrl: (() => {
         if (
           this.appConfig.type === 'alp' ||
@@ -230,8 +243,8 @@ export default class PobAppGenerator extends Generator {
         enableReleasePlease,
         testing: this.appConfig.testing,
         e2eTesting: this.appConfig.e2e ? '.' : '',
-        typescript: babel,
-        build: babel && this.appConfig.type !== 'expo',
+        typescript,
+        build: typescript && this.appConfig.type !== 'expo',
         documentation: false,
         codecov: this.appConfig.codecov,
         ci: this.appConfig.ci,
@@ -251,6 +264,7 @@ export default class PobAppGenerator extends Generator {
         documentation: false,
         testing: this.appConfig.testing,
         babel,
+        typescript,
         node,
         browser,
         // nextjs now supports src rootAsSrc: this.appConfig.type === 'next.js',
@@ -282,7 +296,7 @@ export default class PobAppGenerator extends Generator {
       monorepo: false,
       packageManager: this.options.packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
-      typescript: babel,
+      typescript,
       testing: this.appConfig.testing,
     });
 

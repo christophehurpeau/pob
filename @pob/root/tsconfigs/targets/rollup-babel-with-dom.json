@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "@pob:target:rollup-babel-with-dom",
+
+  "compilerOptions": {
+    "target": "esnext",
+    "module": "esnext",
+    "lib": ["DOM", "esnext"],
+    "isolatedModules": true,
+    "moduleResolution": "bundler",
+    "esModuleInterop": true
+  }
+}

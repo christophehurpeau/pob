@@ -1,4 +1,4 @@
-import fs, { rmSync } from 'node:fs';
+import { rmSync } from 'node:fs';
 import Generator from 'yeoman-generator';
 import inMonorepo from '../../utils/inMonorepo.js';
 import * as packageUtils from '../../utils/package.js';
@@ -151,10 +151,6 @@ export default class PobLibGenerator extends Generator {
       pkg.pob.babelEnvs = babelEnvs;
       pkg.pob.entries = entries;
       pkg.pob.jsx = jsx;
-    } else {
-      delete pkg.pob.babelEnvs;
-      delete pkg.pob.entries;
-      delete pkg.pob.jsx;
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
@@ -237,6 +233,13 @@ export default class PobLibGenerator extends Generator {
       fromPob: this.options.fromPob,
       onlyLatestLTS: false,
     });
+    await this.composeWith('pob:common:transpiler', {
+      updateOnly: this.options.updateOnly,
+      testing: !!this.pobjson.testing,
+      documentation: !!this.pobjson.documentation,
+      fromPob: this.options.fromPob,
+      onlyLatestLTS: false,
+    });
   }
 
   async default() {
@@ -244,24 +247,21 @@ export default class PobLibGenerator extends Generator {
     const babelEnvs = pkg.pob.babelEnvs || [];
 
     const withBabel = babelEnvs.length > 0;
-    const jsx = withBabel && pkg.pob.jsx === true;
+    const withTypescript = withBabel || pkg.pob.typescript === true;
+    const jsx = (withBabel || withTypescript) && pkg.pob.jsx === true;
     const browser =
       withBabel && babelEnvs.some((env) => env.target === 'browser');
 
     await this.composeWith('pob:common:typescript', {
-      enable: withBabel,
+      enable: withTypescript,
       isApp: false,
       dom: browser,
       jsx,
       updateOnly: this.options.updateOnly,
       baseUrl: 'none', // causes issues on dist definition files
       builddefs: true,
+      onlyLatestLTS: false,
     });
-
-    if (!withBabel) {
-      // recursive does not throw if directory already exists
-      fs.mkdirSync(this.destinationPath('lib'), { recursive: true });
-    }
 
     await this.composeWith('pob:common:husky', {});
 
@@ -280,7 +280,7 @@ export default class PobLibGenerator extends Generator {
         ? this.pobjson.testing.runner || 'jest'
         : undefined,
       build: withBabel,
-      typescript: withBabel,
+      typescript: withTypescript,
       documentation: !!this.pobjson.documentation,
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
       ci: this.pobjson.testing && this.pobjson.testing.ci,
@@ -291,13 +291,14 @@ export default class PobLibGenerator extends Generator {
 
     // must be after testing
     await this.composeWith('pob:common:format-lint', {
+      typescript: withTypescript,
       documentation:
         !!this.pobjson.documentation ||
         !!(this.pobjson.testing && this.pobjson.testing.codecov),
       testing: !!this.pobjson.testing,
       packageManager: this.options.packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
-      ignorePaths: withBabel ? '/dist' : '',
+      ignorePaths: withBabel || withTypescript ? '/dist' : '',
     });
 
     await this.composeWith('pob:lib:doc', {
@@ -316,7 +317,8 @@ export default class PobLibGenerator extends Generator {
     await this.composeWith('pob:common:release', {
       enable: !inMonorepo && this.pobjson.testing,
       enablePublish: true,
-      withBabel: babelEnvs.length > 0,
+      withBabel,
+      withTypescript,
       isMonorepo: false,
       enableYarnVersion: true,
       ci: this.pobjson.testing && this.pobjson.testing.ci,
@@ -337,15 +339,15 @@ export default class PobLibGenerator extends Generator {
     await this.composeWith('pob:core:gitignore', {
       root: !inMonorepo,
       withBabel: babelEnvs.length > 0,
-      typescript: babelEnvs.length > 0,
+      typescript: withTypescript,
       documentation: this.pobjson.documentation,
       testing: !!this.pobjson.testing,
     });
 
     await this.composeWith('pob:core:npm', {
       enable: !pkg.private,
-      srcDirectory: withBabel ? 'src' : 'lib',
-      distDirectory: withBabel ? 'dist' : '',
+      srcDirectory: withBabel || withTypescript ? 'src' : 'lib',
+      distDirectory: withBabel || withTypescript ? 'dist' : '',
     });
   }
 
@@ -362,6 +364,7 @@ export default class PobLibGenerator extends Generator {
     }
 
     const withBabel = Boolean(pkg.pob.babelEnvs);
+    const withTypescript = pkg.pob.typescript === true;
 
     packageUtils.removeDevDependencies(pkg, ['lerna', '@pob/lerna-light']);
     if (inMonorepo) {
@@ -374,7 +377,7 @@ export default class PobLibGenerator extends Generator {
       }
     }
 
-    if (!withBabel) {
+    if (!withBabel && !withTypescript) {
       if (
         !this.fs.exists(this.destinationPath('lib/index.js')) &&
         this.fs.exists(this.destinationPath('index.js'))
@@ -392,7 +395,7 @@ export default class PobLibGenerator extends Generator {
       'lib-node16',
       'coverage',
       this.pobjson.documentation && 'docs',
-      !withBabel && 'dist',
+      !(withBabel || withTypescript) && 'dist',
     ]
       .filter(Boolean)
       .forEach((path) => {

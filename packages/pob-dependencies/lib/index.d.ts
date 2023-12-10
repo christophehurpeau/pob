@@ -4,9 +4,9 @@ interface Dependencies {
   '@babel/preset-react': '7.23.3';
   '@babel/runtime': '7.23.2';
   '@pob/commitlint-config': '6.2.0';
-  '@pob/eslint-config': '51.1.2';
-  '@pob/eslint-config-typescript': '51.1.2';
-  '@pob/eslint-config-typescript-react': '51.1.2';
+  '@pob/eslint-config': '51.2.0';
+  '@pob/eslint-config-typescript': '51.2.0';
+  '@pob/eslint-config-typescript-react': '51.2.0';
   '@pob/pretty-pkg': '6.2.0';
   '@types/jest': '29.5.8';
   'alp-rollup-plugin-config': '2.1.0';

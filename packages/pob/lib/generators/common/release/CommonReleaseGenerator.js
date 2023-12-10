@@ -24,6 +24,12 @@ export default class CommonReleaseGenerator extends Generator {
       desc: 'Babel enabled.',
     });
 
+    this.option('withTypescript', {
+      type: Boolean,
+      required: false,
+      default: undefined,
+      desc: 'Typescript enabled.',
+    });
     this.option('isMonorepo', {
       type: Boolean,
       default: false,
@@ -100,7 +106,8 @@ export default class CommonReleaseGenerator extends Generator {
       packageUtils.addScripts(pkg, {
         preversion: [
           'yarn run lint',
-          this.options.withBabel && 'yarn run build',
+          this.options.withBabel ||
+            (this.options.withTypescript && 'yarn run build'),
           'repository-check-dirty',
         ]
           .filter(Boolean)

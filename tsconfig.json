@@ -1,6 +1,10 @@
 {
   "files": [],
   "references": [
+    { "path": "pob-examples/typescript-lib-without-rollup/tsconfig.json" },
+    {
+      "path": "pob-examples/typescript-lib-with-rollup-typescript/tsconfig.json"
+    },
     { "path": "pob-examples/typescript-lib/tsconfig.json" },
     { "path": "packages/yarn-workspace-utils/tsconfig.json" }
   ]

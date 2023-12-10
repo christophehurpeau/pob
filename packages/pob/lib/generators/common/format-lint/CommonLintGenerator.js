@@ -116,11 +116,13 @@ export default class CommonLintGenerator extends Generator {
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
     const babelEnvs = (pkg.pob && pkg.pob.babelEnvs) || [];
+    // const typescriptTargets = (pkg.pob && pkg.pob.typescriptTargets) || [];
     const useBabel =
       this.options.babel !== 'undefined'
         ? this.options.babel === 'true'
         : babelEnvs.length > 0;
-    const hasReact = useBabel && packageUtils.hasReact(pkg);
+    const useTypescript = useBabel || pkg.pob?.typescript;
+    const hasReact = useTypescript && packageUtils.hasReact(pkg);
     const useNode = !useBabel || babelEnvs.some((env) => env.target === 'node');
     const useNodeOnly =
       !useBabel ||
@@ -310,12 +312,12 @@ export default class CommonLintGenerator extends Generator {
             ['@typescript-eslint/eslint-plugin', '@typescript-eslint/parser'],
           );
         } else {
-          packageUtils.addOrRemoveDevDependencies(pkg, useBabel, [
+          packageUtils.addOrRemoveDevDependencies(pkg, useTypescript, [
             '@pob/eslint-config-typescript',
           ]);
           packageUtils.addOrRemoveDevDependencies(
             pkg,
-            useBabel && shouldHavePluginsDependencies,
+            useTypescript && shouldHavePluginsDependencies,
             ['@typescript-eslint/eslint-plugin', '@typescript-eslint/parser'],
           );
 
@@ -363,10 +365,13 @@ export default class CommonLintGenerator extends Generator {
         ];
       }
 
-      if (useBabel) {
+      if (useTypescript) {
         return [
           '@pob/eslint-config-typescript',
           useNodeOnly && '@pob/eslint-config-typescript/node',
+          // useTypescript &&
+          //   pkg.pob?.rollup === false &&
+          //   '@pob/eslint-config-typescript/tsc-emit',
           this.options.isApp && '@pob/eslint-config-typescript/app',
           hasReact &&
             `@pob/eslint-config-typescript-react${
@@ -382,7 +387,7 @@ export default class CommonLintGenerator extends Generator {
       ];
     })();
 
-    const ext = !useBabel
+    const ext = !useTypescript
       ? `{${pkg.type === 'commonjs' ? 'mjs' : 'cjs'},js}`
       : `${hasReact ? '{ts,tsx}' : 'ts'}`;
 
@@ -405,7 +410,7 @@ export default class CommonLintGenerator extends Generator {
       //   testsOverride.extends = ['pob/babel'];
       // }
 
-      if (useBabel) {
+      if (useTypescript) {
         testsOverride.extends = ['@pob/eslint-config-typescript/test'];
       }
     }
@@ -423,19 +428,14 @@ export default class CommonLintGenerator extends Generator {
       ? this.destinationPath('.eslintrc.json')
       : this.destinationPath(
           `${
-            useBabel ? `${this.options.srcDirectory}/` : 'lib/'
+            useTypescript ? `${this.options.srcDirectory}/` : 'lib/'
           }.eslintrc.json`,
         );
 
-    const useTypescript = useBabel;
     const getRootIgnorePatterns = () => {
       const ignorePatterns = new Set();
 
-      if (
-        inMonorepo &&
-        !inMonorepo.root &&
-        (this.options.typescript || pkg.types)
-      ) {
+      if (inMonorepo && !inMonorepo.root && (useTypescript || pkg.types)) {
         ignorePatterns.add('*.d.ts');
       }
 
@@ -443,7 +443,7 @@ export default class CommonLintGenerator extends Generator {
         ignorePatterns.add('/docs');
       }
 
-      if ((!inMonorepo || !inMonorepo.root) && useBabel) {
+      if ((!inMonorepo || !inMonorepo.root) && useTypescript) {
         const buildPath = `/${this.options.buildDirectory}`;
         if (
           !this.options.rootIgnorePaths ||
@@ -517,7 +517,7 @@ export default class CommonLintGenerator extends Generator {
           {
             extendsConfig: extendsConfigSrc,
             testsOverride,
-            useTypescript: useBabel,
+            useTypescript,
             globalEslint,
             ignorePatterns:
               ignorePatterns.size === 0 ? undefined : [...ignorePatterns],

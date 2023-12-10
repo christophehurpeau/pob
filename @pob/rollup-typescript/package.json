@@ -1,0 +1,63 @@
+{
+  "name": "@pob/rollup-typescript",
+  "version": "1.0.0-pre",
+  "description": "rollup configuration with typescript for pob",
+  "keywords": [],
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "@pob/rollup-typescript"
+  },
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "type": "module",
+  "engines": {
+    "node": ">=18.12.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./createRollupConfig": "./createRollupConfig.js",
+    "./createRollupConfig.js": "./createRollupConfig.js",
+    "./plugin-run": "./plugin-run.cjs",
+    "./plugin-run.cjs": "./plugin-run.cjs",
+    "./package.json": "./package.json"
+  },
+  "sideEffects": false,
+  "bin": {
+    "pob-typescript-clean-out": "./bin/pob-typescript-clean-out.js",
+    "rollup": "./bin/rollup.cjs"
+  },
+  "files": [
+    "lib",
+    "bin",
+    "createRollupConfig.js",
+    "plugin-run.cjs"
+  ],
+  "scripts": {
+    "lint": "yarn run lint:eslint",
+    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet @pob/rollup-typescript"
+  },
+  "prettier": "@pob/root/prettier-config",
+  "pob": {},
+  "peerDependencies": {
+    "rollup": "3.29.4",
+    "typescript": "^4.0.3 || ^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "rollup": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "@pob/rollup": "1.0.0-pre",
+    "@rollup/plugin-node-resolve": "15.2.3",
+    "@rollup/plugin-typescript": "11.1.5",
+    "rollup": "3.29.4",
+    "rollup-config-external-dependencies": "^2.0.0"
+  }
+}

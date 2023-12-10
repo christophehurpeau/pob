@@ -31,7 +31,6 @@
   "scripts": {
     "build": "yarn run build:definitions",
     "build:definitions": "tsc --lib esnext --noEmit --skipLibCheck ./lib/index.d.ts",
-    "clean:build": "true",
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/pob-dependencies",
     "preversion": "node ./scripts/update-peerdeps.js && node ./scripts/generate.d.ts.js && git add lib/index.d.ts"
@@ -49,6 +48,7 @@
     "@pob/eslint-config-typescript": "51.2.1",
     "@pob/eslint-config-typescript-react": "51.2.0",
     "@pob/pretty-pkg": "6.2.0",
+    "@pob/rollup-typescript": "1.0.0-pre",
     "@types/jest": "29.5.11",
     "alp-rollup-plugin-config": "2.1.0",
     "check-package-dependencies": "7.0.0",

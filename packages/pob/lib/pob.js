@@ -21,6 +21,7 @@ import CommonHuskyGenerator from './generators/common/husky/CommonHuskyGenerator
 import CommonRemoveOldDependenciesGenerator from './generators/common/old-dependencies/CommonRemoveOldDependenciesGenerator.js';
 import CommonReleaseGenerator from './generators/common/release/CommonReleaseGenerator.js';
 import CommonTestingGenerator from './generators/common/testing/CommonTestingGenerator.js';
+import CommonTranspilerGenerator from './generators/common/transpiler/CommonTranspilerGenerator.js';
 import CommonTypescriptGenerator from './generators/common/typescript/CommonTypescriptGenerator.js';
 import CoreCIGenerator from './generators/core/ci/CoreCIGenerator.js';
 import CoreCleanGenerator from './generators/core/clean/CoreCleanGenerator.js';
@@ -108,6 +109,11 @@ env.registerStub(
   CommonBabelGenerator,
   'pob:common:babel',
   `${__dirname}/generators/common/babel/CommonBabelGenerator.js`,
+);
+env.registerStub(
+  CommonTranspilerGenerator,
+  'pob:common:transpiler',
+  `${__dirname}/generators/common/transpiler/CommonTranspilerGenerator.js`,
 );
 env.registerStub(
   CommonLintGenerator,
