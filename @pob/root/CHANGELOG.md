@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.9.1](https://github.com/christophehurpeau/pob/compare/@pob/root@8.9.0...@pob/root@8.9.1) (2023-12-10)
+
+
+### Bug Fixes
+
+* add missing file ([6693358](https://github.com/christophehurpeau/pob/commit/669335873c2003034cb0fc14253f69642c3908f7))
+
+
+
+
 ## [8.9.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.8.0...@pob/root@8.9.0) (2023-12-10)
 
 

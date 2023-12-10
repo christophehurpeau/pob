@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.3.1](https://github.com/christophehurpeau/pob/compare/pob@15.3.0...pob@15.3.1) (2023-12-10)
+
+Note: no notable changes
+
+
+
+
 ## [15.3.0](https://github.com/christophehurpeau/pob/compare/pob@15.2.2...pob@15.3.0) (2023-12-10)
 
 Note: no notable changes
