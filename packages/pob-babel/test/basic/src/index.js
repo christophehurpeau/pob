@@ -1,4 +1,4 @@
-import Test from './Test';
+import Test from './classTest';
 import { POB_TARGET } from 'pob-babel';
 import { sayHello as helloNode } from './helloNode';
 import { sayHello as helloBrowser } from './helloBrowser';
