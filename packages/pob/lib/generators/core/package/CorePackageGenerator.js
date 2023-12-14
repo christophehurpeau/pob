@@ -56,6 +56,10 @@ export default class CorePackageGenerator extends Generator {
       pkg.engines.node = '>=18.12.0'; // .12.0 is the first lts node 18 version
     }
 
+    if (!this.options.isRoot) {
+      delete pkg.packageManager;
+    }
+
     if (!this.options.updateOnly) {
       if (this.options.isMonorepo && this.options.isRoot) {
         pkg.private = true;
