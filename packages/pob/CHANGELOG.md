@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.0.0](https://github.com/christophehurpeau/pob/compare/pob@15.4.1...pob@16.0.0) (2023-12-14)
+
+
+### Bug Fixes
+
+* **pob:** make sure packageManager is not defined for non-root package.json ([d6d716d](https://github.com/christophehurpeau/pob/commit/d6d716dfa9ce826fed2d589d60b304fc17fe20af))
+
+Version bump for dependency: yarn-workspace-utils
+
+
 ## [15.4.1](https://github.com/christophehurpeau/pob/compare/pob@15.4.0...pob@15.4.1) (2023-12-14)
 
 

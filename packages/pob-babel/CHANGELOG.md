@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [37.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@36.8.0...pob-babel@37.0.0) (2023-12-14)
+
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update babel monorepo to v7.23.6 (#1879)
+
+### Miscellaneous Chores
+
+* **deps:** update babel monorepo to v7.23.6 ([#1879](https://github.com/christophehurpeau/pob/issues/1879)) ([e5693cd](https://github.com/christophehurpeau/pob/commit/e5693cd9abfb29b4fa23a5d8bcebfa69ca8ae301))
+
+Version bump for dependency: babel-preset-pob-env
+
+
 ## [36.8.0](https://github.com/christophehurpeau/pob/compare/pob-babel@36.7.0...pob-babel@36.8.0) (2023-12-14)
 
 
