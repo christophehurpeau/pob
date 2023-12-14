@@ -6,6 +6,12 @@ exports[`fixtures basic 0 1`] = `
     this.args = args;
   }
 }
+class TestWithPrivate extends Test {
+  #args;
+  constructor(...args) {
+    this.#args = args;
+  }
+}
 
 const sayHello = () => {
   console.log('hello node');
@@ -19,7 +25,7 @@ if (!(process.env.NODE_ENV !== "production")) {
   console.log('__DEV__ is false');
 }
 console.log(\`the answer is \${42}\`);
-class Test2 extends Test {
+class Test2 extends TestWithPrivate {
   constructor(...args) {
     super(...args);
   }
@@ -38,12 +44,18 @@ export { foo, operator, spreadTest, t };
 `;
 
 exports[`fixtures basic 1 1`] = `
-"import '@babel/runtime/helpers/esm/classPrivateFieldLooseBase';
-import '@babel/runtime/helpers/esm/classPrivateFieldLooseKey';
+"import _classPrivateFieldLooseBase from '@babel/runtime/helpers/esm/classPrivateFieldLooseBase';
+import _classPrivateFieldLooseKey from '@babel/runtime/helpers/esm/classPrivateFieldLooseKey';
 
 class Test {
   constructor(...args) {
     this.args = args;
+  }
+}
+var _args = /*#__PURE__*/_classPrivateFieldLooseKey("args");
+class TestWithPrivate extends Test {
+  constructor(...args) {
+    _classPrivateFieldLooseBase(this, _args)[_args] = args;
   }
 }
 
@@ -60,7 +72,7 @@ if (!(process.env.NODE_ENV !== "production")) {
   console.log('__DEV__ is false');
 }
 console.log(\`the answer is \${42}\`);
-class Test2 extends Test {
+class Test2 extends TestWithPrivate {
   constructor(...args) {
     super(...args);
   }
@@ -84,6 +96,12 @@ exports[`fixtures basic 2 1`] = `
     this.args = args;
   }
 }
+class TestWithPrivate extends Test {
+  #args;
+  constructor(...args) {
+    this.#args = args;
+  }
+}
 
 const sayHello = () => {
   console.log('hello browser');
@@ -97,7 +115,7 @@ if (!(process.env.NODE_ENV !== "production")) {
   console.log('__DEV__ is false');
 }
 console.log(\`the answer is \${42}\`);
-class Test2 extends Test {
+class Test2 extends TestWithPrivate {
   constructor(...args) {
     super(...args);
   }

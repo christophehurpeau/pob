@@ -1,4 +1,4 @@
-import Test from './classTest';
+import { TestWithPrivate } from './classTest';
 import { POB_TARGET } from 'pob-babel';
 import { sayHello as helloNode } from './helloNode';
 import { sayHello as helloBrowser } from './helloBrowser';
@@ -16,7 +16,7 @@ if (!__DEV__) {
 const answer = 42;
 console.log(`the answer is ${answer}`);
 
-class Test2 extends Test {
+class Test2 extends TestWithPrivate {
   constructor(...args) {
     super(...args);
   }

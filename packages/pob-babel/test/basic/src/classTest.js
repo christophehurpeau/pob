@@ -4,7 +4,7 @@ export default class Test {
   }
 }
 
-export class TestWithPrivate {
+export class TestWithPrivate extends Test {
   #args;
 
   constructor(...args) {
