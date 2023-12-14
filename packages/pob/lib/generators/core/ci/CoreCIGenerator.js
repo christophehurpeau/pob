@@ -151,7 +151,10 @@ export default class CoreCIGenerator extends Generator {
           packageManager: this.options.packageManager,
           disableYarnGitCache: this.options.disableYarnGitCache,
           testing,
-          e2eTesting: this.options.e2eTesting,
+          e2eTesting:
+            this.options.e2eTesting && this.options.e2eTesting !== 'false'
+              ? this.options.e2eTesting
+              : false,
           checks,
           documentation: this.options.documentation,
           build,
