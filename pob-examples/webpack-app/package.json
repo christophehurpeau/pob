@@ -1,7 +1,7 @@
 {
   "name": "example-webpack-app",
   "private": true,
-  "version": "0.5.0",
+  "version": "0.6.0",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "MIT",
   "repository": {
@@ -29,7 +29,7 @@
   },
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "example-typescript-lib": "0.18.0"
+    "example-typescript-lib": "0.19.0"
   },
   "devDependencies": {
     "webpack": "5.89.0",

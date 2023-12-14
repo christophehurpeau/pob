@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.4.0](https://github.com/christophehurpeau/pob/compare/pob@15.3.1...pob@15.4.0) (2023-12-14)
+
+
+### Features
+
+* update vscode settings for latest version ([062100a](https://github.com/christophehurpeau/pob/commit/062100afd89b9d72dcd14eb8582158c53953c3aa))
+
+
+### Bug Fixes
+
+* fix tsconfig jsx with presets ([0a3786b](https://github.com/christophehurpeau/pob/commit/0a3786be26174e68eb7b5ad43fd447672817f6d4))
+
+Version bump for dependency: yarn-workspace-utils
+
+
 ## [15.3.1](https://github.com/christophehurpeau/pob/compare/pob@15.3.0...pob@15.3.1) (2023-12-10)
 
 Note: no notable changes

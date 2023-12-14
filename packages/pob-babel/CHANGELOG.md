@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.8.0](https://github.com/christophehurpeau/pob/compare/pob-babel@36.7.0...pob-babel@36.8.0) (2023-12-14)
+
+
+### Features
+
+* **deps:** update dependency @rollup/plugin-json to v6.1.0 ([#1880](https://github.com/christophehurpeau/pob/issues/1880)) ([ba09744](https://github.com/christophehurpeau/pob/commit/ba09744ec7ea8c2b1d3f22cdce3ac1ffab4886b1))
+
+
+
+
 ## [36.7.0](https://github.com/christophehurpeau/pob/compare/pob-babel@36.6.3...pob-babel@36.7.0) (2023-12-10)
 
 

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.11.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.10.1...pob-dependencies@8.11.0) (2023-12-14)
+
+Note: no notable changes
+
+
+
+
 ## [8.10.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.10.0...pob-dependencies@8.10.1) (2023-12-10)
 
 Note: no notable changes

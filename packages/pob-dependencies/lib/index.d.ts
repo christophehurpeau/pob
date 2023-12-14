@@ -9,7 +9,7 @@ interface Dependencies {
   '@pob/eslint-config-typescript': '51.2.1';
   '@pob/eslint-config-typescript-react': '51.2.0';
   '@pob/pretty-pkg': '6.3.0';
-  '@pob/rollup-typescript': '1.0.0';
+  '@pob/rollup-typescript': '1.0.1';
   '@types/jest': '29.5.11';
   'alp-rollup-plugin-config': '2.1.0';
   'check-package-dependencies': '7.0.0';
