@@ -2803,7 +2803,7 @@ __metadata:
     "@rollup/plugin-run": "npm:3.0.2"
     "@rollup/plugin-typescript": "npm:11.1.5"
     rollup: "npm:3.29.4"
-    rollup-config-external-dependencies: "npm:^2.0.0"
+    rollup-config-external-dependencies: "npm:^3.0.0"
   peerDependencies:
     rollup: 3.29.4
     typescript: ^4.0.3 || ^5.0.0
@@ -10888,7 +10888,7 @@ __metadata:
     "@rollup/plugin-run": "npm:3.0.2"
     babel-preset-pob-env: "npm:11.0.0"
     rollup: "npm:3.29.4"
-    rollup-config-external-dependencies: "npm:^2.0.0"
+    rollup-config-external-dependencies: "npm:^3.0.0"
     semver: "npm:^7.3.7"
     typescript: "npm:5.3.3"
   peerDependencies:
@@ -11736,10 +11736,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup-config-external-dependencies@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "rollup-config-external-dependencies@npm:2.0.0"
-  checksum: a4d164edc8eb4c143c16efe1b7446a9e4f8998e00b9e1580e3079577464a2eb6bc76c2a96de8c1658769e185acea852da960c084a53751575d30de1496381d9a
+"rollup-config-external-dependencies@npm:^3.0.0":
+  version: 3.0.0
+  resolution: "rollup-config-external-dependencies@npm:3.0.0"
+  checksum: 48fcea9a737be0499fa93ea23c7d5218c5bbbfb25756885aa5d58e941500a367ef73aee4f71975879585feabec7cc990a7a56aa5426ea1f3e456787570662007
   languageName: node
   linkType: hard
 
