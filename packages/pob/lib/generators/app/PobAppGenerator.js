@@ -172,7 +172,9 @@ export default class PobAppGenerator extends Generator {
       babelEnvs.length > 0 || appsWithTypescript.includes(this.appConfig.type);
     const typescript = babel || pkg.pob?.typescript;
     const node = true;
-    const browser = appsWithBrowser.includes(this.appConfig.type);
+    const browser =
+      appsWithBrowser.includes(this.appConfig.type) ||
+      (babel && babelEnvs.some((env) => env.target === 'browser'));
     const jsx =
       babelEnvs.length > 0 && pkg.pob.jsx !== undefined
         ? pkg.pob.jsx

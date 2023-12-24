@@ -119,7 +119,7 @@ export default class CommonTypescriptGenerator extends Generator {
       const jsx = (withBabel || withTypescript) && pkg.pob.jsx === true;
 
       if (withBabel) {
-        return jsx
+        return jsx || this.options.dom
           ? ['@pob/root/tsconfigs/targets/rollup-babel-with-dom.json']
           : ['@pob/root/tsconfigs/targets/rollup-babel.json'];
       }
