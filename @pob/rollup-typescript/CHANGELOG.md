@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@1.1.0...@pob/rollup-typescript@2.0.0) (2023-12-25)
+
+
+### ⚠ BREAKING CHANGES
+
+* drop browser modern version
+
+### Features
+
+* drop browser modern version ([99ee1d3](https://github.com/christophehurpeau/pob/commit/99ee1d392fa035773a559c6a81515b1731f70e29))
+
+
+
+
 ## [1.1.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@1.0.1...@pob/rollup-typescript@1.1.0) (2023-12-25)
 
 

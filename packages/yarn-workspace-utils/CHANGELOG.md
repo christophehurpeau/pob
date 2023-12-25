@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@2.1.0...yarn-workspace-utils@3.0.0) (2023-12-25)
+
+Note: no notable changes
+
+
+
+
 ## [2.1.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@2.0.0...yarn-workspace-utils@2.1.0) (2023-12-25)
 
 Note: no notable changes

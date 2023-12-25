@@ -9,14 +9,14 @@ interface Dependencies {
   '@pob/eslint-config-typescript': '51.2.2';
   '@pob/eslint-config-typescript-react': '51.2.2';
   '@pob/pretty-pkg': '6.3.0';
-  '@pob/rollup-typescript': '1.0.1';
+  '@pob/rollup-typescript': '1.1.0';
   '@types/jest': '29.5.11';
   'alp-rollup-plugin-config': '2.1.0';
   'check-package-dependencies': '7.0.0';
   eslint: '8.56.0';
   jest: '29.7.0';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '37.0.0';
+  'pob-babel': '37.1.0';
   prettier: '2.8.8';
   'repository-check-dirty': '6.3.0';
   rollup: '3.29.4';
