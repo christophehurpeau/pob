@@ -76,7 +76,7 @@
     "@rollup/plugin-run": "3.0.2",
     "babel-preset-pob-env": "11.0.0",
     "rollup": "3.29.4",
-    "rollup-config-external-dependencies": "^2.0.0",
+    "rollup-config-external-dependencies": "^3.0.0",
     "semver": "^7.3.7"
   },
   "devDependencies": {
