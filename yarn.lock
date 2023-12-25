@@ -4540,15 +4540,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"alp-rollup-plugin-config@npm:2.1.0":
-  version: 2.1.0
-  resolution: "alp-rollup-plugin-config@npm:2.1.0"
+"alp-rollup-plugin-config@npm:2.2.0":
+  version: 2.2.0
+  resolution: "alp-rollup-plugin-config@npm:2.2.0"
   dependencies:
     "@guanghechen/rollup-plugin-copy": "npm:1.8.6"
     js-yaml: "npm:4.1.0"
   peerDependencies:
-    rollup: ^2.64.0 || ^3.0.0
-  checksum: e19b4d36c748024b405b3b920062feeb31898c6f4e75183fefdf2414e075852a47197828c63a22ce5f1a79766a0d20fa9a61a47f6f3cbdd927c60e672818a81f
+    rollup: ^2.64.0 || ^3.0.0 || ^4.0.0
+  checksum: 14a3e2e2f98cf67a8acdb0bc9d8fe61742fef214ef32507c99d53b945dd1efc8b2ebe7c07755a3d0d824d90f2a38c5ac2e687961dec2dc2348b791245a929534
   languageName: node
   linkType: hard
 
@@ -10921,7 +10921,7 @@ __metadata:
     "@pob/pretty-pkg": "npm:6.3.0"
     "@pob/rollup-typescript": "npm:2.0.0"
     "@types/jest": "npm:29.5.11"
-    alp-rollup-plugin-config: "npm:2.1.0"
+    alp-rollup-plugin-config: "npm:2.2.0"
     check-package-dependencies: "npm:7.0.0"
     eslint: "npm:8.56.0"
     jest: "npm:29.7.0"
