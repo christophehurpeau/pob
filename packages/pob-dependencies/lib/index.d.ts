@@ -13,10 +13,10 @@ interface Dependencies {
   '@types/jest': '29.5.11';
   'alp-rollup-plugin-config': '2.1.0';
   'check-package-dependencies': '7.0.0';
-  eslint: '8.55.0';
+  eslint: '8.56.0';
   jest: '29.7.0';
   'jest-junit-reporter': '1.1.0';
-  'pob-babel': '36.8.0';
+  'pob-babel': '37.0.0';
   prettier: '2.8.8';
   'repository-check-dirty': '6.3.0';
   rollup: '3.29.4';

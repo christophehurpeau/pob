@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.1.0](https://github.com/christophehurpeau/pob/compare/pob@16.0.0...pob@16.1.0) (2023-12-25)
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.56.0 ([#1883](https://github.com/christophehurpeau/pob/issues/1883)) ([8c81687](https://github.com/christophehurpeau/pob/commit/8c81687ffbc7bb3b0b3bcf277c0d2db853ff637c))
+* update to yarn 4.0.2 ([57bb760](https://github.com/christophehurpeau/pob/commit/57bb7608ed2b18d3a7e125f12590d1df787df2db))
+
+
+### Bug Fixes
+
+* fix option e2eTesting false ([6411c73](https://github.com/christophehurpeau/pob/commit/6411c73e45c67ddc4bade92b19242c630fa5f972))
+* **pob:** fix browser and jsx detection ([dfa0c81](https://github.com/christophehurpeau/pob/commit/dfa0c8133d36f0144d55c0f44f8a1d321468b26a))
+* **pob:** use 20.x by default ([412eb85](https://github.com/christophehurpeau/pob/commit/412eb85c4670bc5744e34c5f831544a2b6bc7a90))
+
+Version bump for dependency: yarn-workspace-utils
+
+
 ## [16.0.0](https://github.com/christophehurpeau/pob/compare/pob@15.4.1...pob@16.0.0) (2023-12-14)
 
 

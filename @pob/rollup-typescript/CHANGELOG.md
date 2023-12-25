@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@1.0.1...@pob/rollup-typescript@1.1.0) (2023-12-25)
+
+
+### Features
+
+* **deps:** update dependency rollup-config-external-dependencies to v3 ([#1882](https://github.com/christophehurpeau/pob/issues/1882)) ([228fc40](https://github.com/christophehurpeau/pob/commit/228fc4093f02b365ae59066ea202af8ce5a4ef80))
+
+
+
+
 ## [1.0.1](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@1.0.0...@pob/rollup-typescript@1.0.1) (2023-12-10)
 
 

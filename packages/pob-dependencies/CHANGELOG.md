@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@9.0.0...pob-dependencies@9.1.0) (2023-12-25)
+
+
+### Features
+
+* **deps:** update dependency eslint to v8.56.0 ([#1883](https://github.com/christophehurpeau/pob/issues/1883)) ([8c81687](https://github.com/christophehurpeau/pob/commit/8c81687ffbc7bb3b0b3bcf277c0d2db853ff637c))
+
+Version bump for dependency: rollup-typescript
+Version bump for dependency: pob-babel
+
+
 ## [9.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@8.11.1...pob-dependencies@9.0.0) (2023-12-14)
 
 
