@@ -178,24 +178,24 @@ export default class CommonBabelGenerator extends Generator {
           ],
         },
 
-        {
-          type: 'checkbox',
-          name: 'browserVersions',
-          message: 'Babel browser versions',
-          when: ({ targets = [] }) => targets.includes('browser'),
-          validate: (versions) => versions.length > 0,
-          default: browserVersions,
-          choices: [
-            {
-              name: 'Modern',
-              value: 'modern',
-            },
-            {
-              name: 'Supported',
-              value: 'supported',
-            },
-          ],
-        },
+        // {
+        //   type: 'checkbox',
+        //   name: 'browserVersions',
+        //   message: 'Babel browser versions',
+        //   when: ({ targets = [] }) => targets.includes('browser'),
+        //   validate: (versions) => versions.length > 0,
+        //   default: browserVersions,
+        //   choices: [
+        //     {
+        //       name: 'Modern',
+        //       value: 'modern',
+        //     },
+        //     {
+        //       name: 'Supported',
+        //       value: 'supported',
+        //     },
+        //   ],
+        // },
 
         {
           type: 'confirm',
@@ -205,6 +205,10 @@ export default class CommonBabelGenerator extends Generator {
           default: jsx,
         },
       ]);
+    }
+
+    if (babelConfig.targets.includes('browser')) {
+      babelConfig.browserVersions = ['supported'];
     }
 
     if (hasInitialPkgPob && pkg.main && !pkg.exports) {

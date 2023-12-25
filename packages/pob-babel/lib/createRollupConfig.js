@@ -114,7 +114,7 @@ export default function createRollupConfig({
         ? ['.ts', jsx && '.tsx', '.json']
         : ['.js', jsx && '.jsx', '.json']
     ).filter(Boolean);
-    const preferConst = !(env.target === 'browser' && env.version !== 'modern');
+    const preferConst = true;
 
     return {
       input: entryPath,

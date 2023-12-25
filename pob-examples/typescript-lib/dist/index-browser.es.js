@@ -3,4 +3,4 @@ function simpleLib() {
 }
 
 export { simpleLib as default };
-//# sourceMappingURL=index-browsermodern.es.js.map
+//# sourceMappingURL=index-browser.es.js.map

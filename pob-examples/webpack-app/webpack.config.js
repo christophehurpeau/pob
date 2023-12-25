@@ -19,7 +19,7 @@ export default [
     target: 'browserslist',
     mode: 'production',
     resolve: {
-      conditionNames: ['browser:modern', 'browser', 'module', 'import'],
+      conditionNames: ['browser', 'module', 'import'],
     },
   },
 ];

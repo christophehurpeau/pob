@@ -6901,6 +6901,7 @@ __metadata:
   resolution: "example-typescript-lib@workspace:pob-examples/typescript-lib"
   dependencies:
     "@babel/core": "npm:7.23.6"
+    "@babel/preset-env": "npm:7.23.6"
     "@types/node": "npm:20.10.5"
     pob-babel: "npm:37.1.0"
     typescript: "npm:5.3.3"
