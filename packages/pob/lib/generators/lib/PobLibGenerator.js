@@ -279,7 +279,7 @@ export default class PobLibGenerator extends Generator {
       runner: this.pobjson.testing
         ? this.pobjson.testing.runner || 'jest'
         : undefined,
-      build: withBabel,
+      build: withBabel || withTypescript,
       typescript: withTypescript,
       documentation: !!this.pobjson.documentation,
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
