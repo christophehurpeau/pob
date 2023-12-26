@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@10.0.0...pob-dependencies@10.1.0) (2023-12-26)
+
+
+### Features
+
+* add tsimp ([60726ae](https://github.com/christophehurpeau/pob/commit/60726aee8b8626de16013f8305e4e2ba57355cf4))
+
+
+
+
 ## [10.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@9.1.0...pob-dependencies@10.0.0) (2023-12-25)
 
 Note: no notable changes

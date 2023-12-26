@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.10.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.9.1...@pob/root@8.10.0) (2023-12-26)
+
+
+### Features
+
+* **@pob/root:** add target rollup es2015 ([12dae93](https://github.com/christophehurpeau/pob/commit/12dae939569226322273740f06c74ad28609d340))
+
+
+
+
 ## [8.9.1](https://github.com/christophehurpeau/pob/compare/@pob/root@8.9.0...@pob/root@8.9.1) (2023-12-10)
 
 

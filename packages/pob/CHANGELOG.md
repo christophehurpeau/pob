@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.1.0](https://github.com/christophehurpeau/pob/compare/pob@17.0.0...pob@17.1.0) (2023-12-26)
+
+
+### Bug Fixes
+
+* delete config.supportedArchitectures if option disableYarnGitCache is true ([9905b3b](https://github.com/christophehurpeau/pob/commit/9905b3bef1feb10f6867d2f2625480aaee63b56f))
+* fix tsconfig when presets is empty ([63ce876](https://github.com/christophehurpeau/pob/commit/63ce8762ac960d89cbdff9970dbc34670c0cd365))
+* **pob:** correctly detects if build is required ([d3e13e6](https://github.com/christophehurpeau/pob/commit/d3e13e6d052ecaed070a93c3f45ca83622750643))
+
+Version bump for dependency: root
+
+
 ## [17.0.0](https://github.com/christophehurpeau/pob/compare/pob@16.1.0...pob@17.0.0) (2023-12-25)
 
 
