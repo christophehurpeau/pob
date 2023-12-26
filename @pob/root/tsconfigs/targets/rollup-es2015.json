@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "@pob:target:RollupES2015",
+
+  "compilerOptions": {
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2023"],
+    "moduleResolution": "bundler",
+    "esModuleInterop": true
+  }
+}

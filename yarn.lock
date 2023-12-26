@@ -1936,6 +1936,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@isaacs/cached@npm:^1.0.1":
+  version: 1.0.1
+  resolution: "@isaacs/cached@npm:1.0.1"
+  dependencies:
+    "@isaacs/catcher": "npm:^1.0.0"
+  checksum: ed866b5996bc2807d75e2a88391e486448228be94f94bf881594b5a485d3efd7fa627dfa937c81adbcc238c93169bc2c46ac20372896bf38c951243fad8d1dee
+  languageName: node
+  linkType: hard
+
+"@isaacs/catcher@npm:^1.0.0, @isaacs/catcher@npm:^1.0.4":
+  version: 1.0.4
+  resolution: "@isaacs/catcher@npm:1.0.4"
+  checksum: 9fdb02eef502d08d440b88a1ff9725a963b88ca83edb64d44520848bc681071a5c2d8266aaf1e98336a2be83af0c2795d7a600763a66cafe30294a8c484f5422
+  languageName: node
+  linkType: hard
+
 "@isaacs/cliui@npm:^8.0.2":
   version: 8.0.2
   resolution: "@isaacs/cliui@npm:8.0.2"
@@ -7220,7 +7236,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"foreground-child@npm:^3.1.0":
+"foreground-child@npm:^3.1.0, foreground-child@npm:^3.1.1":
   version: 3.1.1
   resolution: "foreground-child@npm:3.1.1"
   dependencies:
@@ -7527,7 +7543,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^10.0.0, glob@npm:^10.2.2, glob@npm:^10.3.10":
+"glob@npm:^10.0.0, glob@npm:^10.2.2, glob@npm:^10.3.10, glob@npm:^10.3.7":
   version: 10.3.10
   resolution: "glob@npm:10.3.10"
   dependencies:
@@ -10017,6 +10033,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"mkdirp@npm:^3.0.1":
+  version: 3.0.1
+  resolution: "mkdirp@npm:3.0.1"
+  bin:
+    mkdirp: dist/cjs/src/bin.js
+  checksum: 16fd79c28645759505914561e249b9a1f5fe3362279ad95487a4501e4467abeb714fd35b95307326b8fd03f3c7719065ef11a6f97b7285d7888306d1bd2232ba
+  languageName: node
+  linkType: hard
+
 "ms@npm:2.1.2, ms@npm:^2.0.0, ms@npm:^2.1.1":
   version: 2.1.2
   resolution: "ms@npm:2.1.2"
@@ -10829,10 +10854,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pirates@npm:^4.0.4":
-  version: 4.0.4
-  resolution: "pirates@npm:4.0.4"
-  checksum: 8eaea8aa6387c9ed7f505f7d82a34c14e2e6fa42011b9f7ccef900976eb275287e4de27f0ebfdbfb71c0a93934aff542cf5939d32136bc85ed7d3ba1bc9f2fd8
+"pirates@npm:^4.0.4, pirates@npm:^4.0.6":
+  version: 4.0.6
+  resolution: "pirates@npm:4.0.6"
+  checksum: d02dda76f4fec1cbdf395c36c11cf26f76a644f9f9a1bfa84d3167d0d3154d5289aacc72677aa20d599bb4a6937a471de1b65c995e2aea2d8687cbcd7e43ea5f
   languageName: node
   linkType: hard
 
@@ -10931,6 +10956,7 @@ __metadata:
     repository-check-dirty: "npm:6.3.0"
     rollup: "npm:3.29.4"
     semver: "npm:7.5.4"
+    tsimp: "npm:2.0.10"
     typedoc: "npm:0.25.4"
     typescript: "npm:5.3.3"
   languageName: unknown
@@ -11737,6 +11763,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"rimraf@npm:^5.0.5":
+  version: 5.0.5
+  resolution: "rimraf@npm:5.0.5"
+  dependencies:
+    glob: "npm:^10.3.7"
+  bin:
+    rimraf: dist/esm/bin.mjs
+  checksum: a612c7184f96258b7d1328c486b12ca7b60aa30e04229a08bbfa7e964486deb1e9a1b52d917809311bdc39a808a4055c0f950c0280fba194ba0a09e6f0d404f6
+  languageName: node
+  linkType: hard
+
 "rollup-config-external-dependencies@npm:^3.0.0":
   version: 3.0.0
   resolution: "rollup-config-external-dependencies@npm:3.0.0"
@@ -12059,6 +12096,25 @@ __metadata:
   version: 4.2.0
   resolution: "smart-buffer@npm:4.2.0"
   checksum: 927484aa0b1640fd9473cee3e0a0bcad6fce93fd7bbc18bac9ad0c33686f5d2e2c422fba24b5899c184524af01e11dd2bd051c2bf2b07e47aff8ca72cbfc60d2
+  languageName: node
+  linkType: hard
+
+"sock-daemon@npm:^1.4.1":
+  version: 1.4.1
+  resolution: "sock-daemon@npm:1.4.1"
+  dependencies:
+    mkdirp: "npm:^3.0.1"
+    rimraf: "npm:^5.0.5"
+    signal-exit: "npm:^4.1.0"
+    socket-post-message: "npm:^1.0.3"
+  checksum: 198ab6110e0e02674e88afb070edd061ecca1bd1f1fa6a1673529f0311a5aa7ff139fba338acb909929fc2e945577ec69252d823eaa898f8d56fd4743e14ad9e
+  languageName: node
+  linkType: hard
+
+"socket-post-message@npm:^1.0.3":
+  version: 1.0.3
+  resolution: "socket-post-message@npm:1.0.3"
+  checksum: c84ef769dd17b97f06976d79eabc4447e2ae0d6ca60abda308c502b4aa2cc6901bf56deff86d8281558251195b954b49eafefcdcb33edb8d01770b9f979665f7
   languageName: node
   linkType: hard
 
@@ -12724,6 +12780,27 @@ __metadata:
     minimist: "npm:^1.2.6"
     strip-bom: "npm:^3.0.0"
   checksum: 2041beaedc6c271fc3bedd12e0da0cc553e65d030d4ff26044b771fac5752d0460944c0b5e680f670c2868c95c664a256cec960ae528888db6ded83524e33a14
+  languageName: node
+  linkType: hard
+
+"tsimp@npm:2.0.10":
+  version: 2.0.10
+  resolution: "tsimp@npm:2.0.10"
+  dependencies:
+    "@isaacs/cached": "npm:^1.0.1"
+    "@isaacs/catcher": "npm:^1.0.4"
+    foreground-child: "npm:^3.1.1"
+    mkdirp: "npm:^3.0.1"
+    pirates: "npm:^4.0.6"
+    rimraf: "npm:^5.0.5"
+    signal-exit: "npm:^4.1.0"
+    sock-daemon: "npm:^1.4.1"
+    walk-up-path: "npm:^3.0.1"
+  peerDependencies:
+    typescript: ^5.1.0
+  bin:
+    tsimp: dist/esm/bin.mjs
+  checksum: 2239f7663a3522a907661363be4f3643210f0860ee38a307d66ca291af3c0b77acd5b7fd74ec139c53d2f0d1b107eb75472e44a4f1195e8bf2224e9e04dca7bf
   languageName: node
   linkType: hard
 
