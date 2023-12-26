@@ -60,6 +60,7 @@
     "repository-check-dirty": "6.3.0",
     "rollup": "3.29.4",
     "semver": "7.5.4",
+    "tsimp": "2.0.10",
     "typedoc": "0.25.4",
     "typescript": "5.3.3"
   }
