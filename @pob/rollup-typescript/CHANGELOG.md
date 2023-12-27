@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@2.0.0...@pob/rollup-typescript@2.1.0) (2023-12-27)
+
+
+### Features
+
+* improve experimental typescript compiler ([c46d8f2](https://github.com/christophehurpeau/pob/commit/c46d8f2ea003fd1721ba481cfb42bc35e22e7537))
+
+
+
+
 ## [2.0.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@1.1.0...@pob/rollup-typescript@2.0.0) (2023-12-25)
 
 

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.11.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.10.0...@pob/root@8.11.0) (2023-12-27)
+
+
+### Features
+
+* improve experimental typescript compiler ([c46d8f2](https://github.com/christophehurpeau/pob/commit/c46d8f2ea003fd1721ba481cfb42bc35e22e7537))
+
+
+
+
 ## [8.10.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.9.1...@pob/root@8.10.0) (2023-12-26)
 
 

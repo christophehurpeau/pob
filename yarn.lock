@@ -2810,7 +2810,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/rollup-typescript@npm:2.0.0, @pob/rollup-typescript@workspace:@pob/rollup-typescript":
+"@pob/rollup-typescript@npm:2.1.0, @pob/rollup-typescript@workspace:@pob/rollup-typescript":
   version: 0.0.0-use.local
   resolution: "@pob/rollup-typescript@workspace:@pob/rollup-typescript"
   dependencies:
@@ -2843,7 +2843,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/root@npm:8.10.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@npm:8.11.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -6899,7 +6899,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-typescript-lib-with-rollup-typescript@workspace:pob-examples/typescript-lib-with-rollup-typescript"
   dependencies:
-    "@pob/rollup-typescript": "npm:2.0.0"
+    "@pob/rollup-typescript": "npm:2.1.0"
     typescript: "npm:5.3.3"
   languageName: unknown
   linkType: soft
@@ -10944,7 +10944,7 @@ __metadata:
     "@pob/eslint-config-typescript": "npm:51.2.2"
     "@pob/eslint-config-typescript-react": "npm:51.2.2"
     "@pob/pretty-pkg": "npm:6.3.0"
-    "@pob/rollup-typescript": "npm:2.0.0"
+    "@pob/rollup-typescript": "npm:2.1.0"
     "@types/jest": "npm:29.5.11"
     alp-rollup-plugin-config: "npm:2.2.0"
     check-package-dependencies: "npm:7.0.0"
@@ -10987,7 +10987,7 @@ __metadata:
     "@pob/eslint-config": "npm:51.2.2"
     "@pob/eslint-config-typescript": "npm:51.2.2"
     "@pob/eslint-config-typescript-react": "npm:51.2.2"
-    "@pob/root": "npm:8.10.0"
+    "@pob/root": "npm:8.11.0"
     "@pob/sort-eslint-config": "npm:5.2.0"
     "@pob/sort-object": "npm:6.2.0"
     "@pob/sort-pkg": "npm:6.2.0"
