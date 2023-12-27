@@ -232,9 +232,9 @@ export default class CommonTranspilerGenerator extends Generator {
       // see pkg.exports instead.
       delete pkg.main;
       if (!this.options.isApp) {
-        pkg.types = `./${this.options.buildDirectory}/${
-          withTypescript && !useRollup ? '' : 'definitions/'
-        }index.d.ts`;
+        pkg.types = `./${
+          this.options.buildDirectory
+        }/${'definitions/'}index.d.ts`;
       }
     } else {
       if (!pkg.main) {

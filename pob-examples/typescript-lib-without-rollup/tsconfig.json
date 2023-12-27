@@ -7,6 +7,7 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "dist",
+    "declarationDir": "dist/definitions",
     "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo",
     "noEmitOnError": true,
     "declaration": true,

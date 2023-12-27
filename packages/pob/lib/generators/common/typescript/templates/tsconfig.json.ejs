@@ -21,6 +21,9 @@
 <% } -%>
 <% if (emitDefinitions || build) { -%>
     "outDir": "<%= build ? 'dist' : 'dist/definitions' %>",
+    <% if (build) { -%>
+      "declarationDir": "dist/definitions",
+    <% } -%>
     <% if (composite) {
       // dont emit in dist/definitions to avoid publish to npm
        -%>
