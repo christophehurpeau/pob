@@ -1,11 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "@pob:target:BaseNode",
+  "display": "@pob:target:BaseRollup",
 
   "compilerOptions": {
     "importHelpers": true,
-    "module": "node16",
-    "moduleResolution": "node16",
+    "module": "esnext",
+    "moduleResolution": "bundler",
     "esModuleInterop": true
   }
 }

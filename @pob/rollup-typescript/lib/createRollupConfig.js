@@ -25,13 +25,11 @@ export default function createRollupConfig({
     );
   }
 
-  // const tslibVersion = pkg.dependencies && pkg.dependencies.tslib;
+  const tslibVersion = pkg.dependencies && pkg.dependencies.tslib;
 
-  // if (!tslibVersion) {
-  //   throw new Error(
-  //     '@pob/rollup-typescript does not supports babel, use `pob-babel` package instead.',
-  //   );
-  // }
+  if (!tslibVersion) {
+    throw new Error('@pob/rollup-typescript requires "tslib" in dependencies.');
+  }
 
   const resolveEntry = (entryName, target) => {
     let entryPath;
@@ -96,7 +94,7 @@ export default function createRollupConfig({
         typescript({
           module: 'ES2022', // rollup will convert module to cjs if needed
           moduleResolution: 'bundler', // todo should not specify that
-          tsconfig: path.resolve(cwd, 'tsconfig.json'),
+          tsconfig: path.resolve(cwd, env.tsconfig || 'tsconfig.json'),
           cacheDir: path.resolve(
             cwd,
             'node_modules',
@@ -118,12 +116,15 @@ export default function createRollupConfig({
   };
 
   return pobConfig.entries.flatMap((entry) => {
-    const envs = entry.envs || [
-      {
-        target: 'node',
-      },
-    ];
-    const entryPath = resolveEntry(entry);
-    return envs.map((env) => createConfigForEnv(entry, entryPath, env));
+    const entryName = typeof entry === 'string' ? entry : entry.name;
+    const envs = entry.envs ||
+      pobConfig.envs || [
+        {
+          target: 'node',
+          version: '18',
+        },
+      ];
+    const entryPath = resolveEntry(entryName);
+    return envs.map((env) => createConfigForEnv(entryName, entryPath, env));
   });
 }

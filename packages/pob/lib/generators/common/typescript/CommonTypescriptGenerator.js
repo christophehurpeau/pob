@@ -125,9 +125,16 @@ export default class CommonTypescriptGenerator extends Generator {
       }
       if (withTypescript) {
         const nodeVersion = this.options.onlyLatestLTS ? '20' : '18';
-        return pkg.pob.rollup === false
-          ? [`@pob/root/tsconfigs/targets/node-${nodeVersion}.json`]
-          : [`@pob/root/tsconfigs/targets/rollup-node-${nodeVersion}.json`];
+        const envs = pkg.pob?.envs;
+        if (pkg.pob.rollup === false) {
+          return [`@pob/root/tsconfigs/targets/node-${nodeVersion}.json`];
+        }
+        if (envs && envs.every((env) => env.target === 'node')) {
+          return [
+            `@pob/root/tsconfigs/targets/rollup-node-${nodeVersion}.json`,
+          ];
+        }
+        return ['@pob/root/tsconfigs/targets/rollup-es2015.json'];
       }
       return [];
     })();

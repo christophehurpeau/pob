@@ -119,19 +119,19 @@ export default class CorePackageGenerator extends Generator {
         {
           name: 'authorName',
           message: "Author's Name",
-          when: !author || !author.name,
+          when: !pkg.authors && (!author || !author.name),
           default: this.git.name(),
         },
         {
           name: 'authorEmail',
           message: "Author's Email",
-          when: !author || !author.email,
+          when: !pkg.authors && (!author || !author.email),
           default: this.git.email(),
         },
         {
           name: 'authorUrl',
           message: "Author's Homepage",
-          when: !author || !author.url,
+          when: !pkg.authors && (!author || !author.url),
         },
         {
           name: 'type',
@@ -260,15 +260,17 @@ export default class CorePackageGenerator extends Generator {
       );
     }
 
-    author = {
-      name: props.authorName || author.name,
-      email: props.authorEmail || author.email,
-      url: props.authorUrl || (author && author.url),
-    };
+    if (!pkg.authors) {
+      author = {
+        name: props.authorName || author.name,
+        email: props.authorEmail || author.email,
+        url: props.authorUrl || (author && author.url),
+      };
 
-    pkg.author = `${author.name} <${author.email}>${
-      author.url ? ` (${author.url})` : ''
-    }`;
+      pkg.author = `${author.name} <${author.email}>${
+        author.url ? ` (${author.url})` : ''
+      }`;
+    }
 
     if (!pkg.license) {
       pkg.license = props.license;

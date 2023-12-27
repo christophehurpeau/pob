@@ -1,10 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "@pob:target:RollupES2015",
-  "extends": "./base-rollup.json",
+  "extends": "./rollup-es2015.json",
 
   "compilerOptions": {
     "target": "es2015",
-    "lib": ["es2023"]
+    "lib": ["DOM", "es2023"]
   }
 }

@@ -186,6 +186,14 @@ export default class CommonTestingGenerator extends Generator {
       this.fs.delete(this.destinationPath('jest.config.json'));
     }
 
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      this.options.enable &&
+        this.options.runner === 'node' &&
+        this.options.typescript,
+      ['tsimp'],
+    );
+
     if (!this.options.enable) {
       // if (inMonorepo) {
       //   if (pkg.scripts.test === 'echo "No tests"') {
@@ -226,7 +234,11 @@ export default class CommonTestingGenerator extends Generator {
                   ? 'NODE_OPTIONS=--experimental-vm-modules '
                   : ''
               }jest`
-            : 'node --test';
+            : `node ${
+                this.options.typescript ? '--import=tsimp/import ' : ''
+              }--test ${
+                this.options.typescript ? '**/*.test.ts' : '**/*.test.js'
+              }`;
 
         packageUtils.addScripts(pkg, {
           test: testCommand,
@@ -305,7 +317,11 @@ export default class CommonTestingGenerator extends Generator {
                   ? 'NODE_OPTIONS=--experimental-vm-modules '
                   : ''
               }jest`
-            : 'node --test';
+            : `node ${
+                this.options.typescript ? '--import=tsimp/import ' : ''
+              }--test ${
+                this.options.typescript ? '**/*.test.ts' : '**/*.test.js'
+              }`;
 
         packageUtils.addScripts(pkg, {
           test: testCommand,

@@ -331,7 +331,7 @@ export default class PobLibGenerator extends Generator {
       monorepo: false,
       packageManager: this.options.packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
-      typescript: withBabel,
+      typescript: withBabel || withTypescript,
       testing: this.pobjson.testing,
     });
 

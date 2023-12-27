@@ -125,7 +125,14 @@ export default class CommonLintGenerator extends Generator {
     const hasReact = useTypescript && packageUtils.hasReact(pkg);
     const useNode = !useBabel || babelEnvs.some((env) => env.target === 'node');
     const useNodeOnly =
-      !useBabel ||
+      (!useBabel && !useTypescript) ||
+      (useTypescript &&
+        pkg.pob?.envs?.every((env) => env.target === 'node') &&
+        pkg.pob?.entries.every(
+          (entry) =>
+            typeof entry === 'string' ||
+            (entry.target && entry.target !== 'node'),
+        )) ||
       (babelEnvs.length > 0 && babelEnvs.every((env) => env.target === 'node'));
 
     if (this.fs.exists(this.destinationPath('.eslintignore'))) {
