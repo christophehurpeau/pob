@@ -27,7 +27,11 @@ yarn-error.log*
 <% } -%>
 <% if (testing) { -%>
 
-# jest default coverage directory
+<% if (typescript && !withBabel) { -%>
+# tsimp cache
+/.tsimp
+<% } -%>
+# default coverage directory
 /coverage
 <% } -%>
 <% if (typescript && buildInGit) { -%>
