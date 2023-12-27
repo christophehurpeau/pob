@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.11.1](https://github.com/christophehurpeau/pob/compare/@pob/root@8.11.0...@pob/root@8.11.1) (2023-12-27)
+
+
+### Bug Fixes
+
+* fix files include all tsconfigs ([eacdc42](https://github.com/christophehurpeau/pob/commit/eacdc42ee98c2b0eecc05780878cda375f18b8e6))
+
+
+
+
 ## [8.11.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.10.0...@pob/root@8.11.0) (2023-12-27)
 
 

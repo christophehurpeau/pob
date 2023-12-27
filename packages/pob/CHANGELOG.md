@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.2.1](https://github.com/christophehurpeau/pob/compare/pob@17.2.0...pob@17.2.1) (2023-12-27)
+
+
+### Bug Fixes
+
+* add tsimp cache in gitignore ([d598fa4](https://github.com/christophehurpeau/pob/commit/d598fa4dfc20556319f204ee43dbefaa5f96f026))
+
+Version bump for dependency: root
+
+
 ## [17.2.0](https://github.com/christophehurpeau/pob/compare/pob@17.1.0...pob@17.2.0) (2023-12-27)
 
 
