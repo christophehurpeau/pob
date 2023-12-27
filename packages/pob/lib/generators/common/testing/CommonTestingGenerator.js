@@ -236,7 +236,7 @@ export default class CommonTestingGenerator extends Generator {
               }jest`
             : `node ${
                 this.options.typescript ? '--import=tsimp/import ' : ''
-              }--test ${
+              }--test ${this.options.srcDirectory}/${
                 this.options.typescript ? '**/*.test.ts' : '**/*.test.js'
               }`;
 
@@ -319,7 +319,7 @@ export default class CommonTestingGenerator extends Generator {
               }jest`
             : `node ${
                 this.options.typescript ? '--import=tsimp/import ' : ''
-              }--test ${
+              }--test ${this.options.srcDirectory}/${
                 this.options.typescript ? '**/*.test.ts' : '**/*.test.js'
               }`;
 
