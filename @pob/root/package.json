@@ -56,16 +56,7 @@
     "createLintStagedConfig.js",
     "createLintStagedConfig.cjs",
     "prettier-config.cjs",
-    "tsconfigs/base.json",
-    "tsconfigs/strict.json",
-    "tsconfigs/targets/node-18.json",
-    "tsconfigs/targets/node-20.json",
-    "tsconfigs/targets/rollup-babel.json",
-    "tsconfigs/targets/rollup-babel-with-dom.json",
-    "tsconfigs/targets/rollup-es2015.json",
-    "tsconfigs/targets/rollup-es2015-with-dom.json",
-    "tsconfigs/targets/rollup-node-18.json",
-    "tsconfigs/targets/rollup-node-20.json"
+    "tsconfigs"
   ],
   "scripts": {
     "lint": "yarn run lint:eslint",
