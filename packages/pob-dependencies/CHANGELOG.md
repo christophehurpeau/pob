@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@10.2.0...pob-dependencies@10.3.0) (2023-12-28)
+
+
+### Features
+
+* use ts-node if needed with rollup-typescript ([9aefca2](https://github.com/christophehurpeau/pob/commit/9aefca2f69ba7bf2ff6f142e5156937d1c9e47fe))
+
+Version bump for dependency: rollup-typescript
+
+
 ## [10.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@10.1.0...pob-dependencies@10.2.0) (2023-12-27)
 
 Note: no notable changes

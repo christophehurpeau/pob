@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.12.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.11.1...@pob/root@8.12.0) (2023-12-28)
+
+
+### Features
+
+* use ts-node if needed with rollup-typescript ([9aefca2](https://github.com/christophehurpeau/pob/commit/9aefca2f69ba7bf2ff6f142e5156937d1c9e47fe))
+
+
+
+
 ## [8.11.1](https://github.com/christophehurpeau/pob/compare/@pob/root@8.11.0...@pob/root@8.11.1) (2023-12-27)
 
 

@@ -1,6 +1,6 @@
 {
   "name": "pob-dependencies",
-  "version": "10.2.0",
+  "version": "10.3.0",
   "description": "easier dependencies upgrade with a real package.json",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -48,7 +48,7 @@
     "@pob/eslint-config-typescript": "51.2.2",
     "@pob/eslint-config-typescript-react": "51.2.2",
     "@pob/pretty-pkg": "6.3.0",
-    "@pob/rollup-typescript": "2.1.0",
+    "@pob/rollup-typescript": "2.2.0",
     "@types/jest": "29.5.11",
     "@types/node": "20.10.5",
     "alp-rollup-plugin-config": "2.2.0",

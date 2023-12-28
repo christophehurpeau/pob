@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@2.1.0...@pob/rollup-typescript@2.2.0) (2023-12-28)
+
+
+### Features
+
+* improve error message ([56f043b](https://github.com/christophehurpeau/pob/commit/56f043bcc29c61849662481497810fdf316151b5))
+
+
+### Bug Fixes
+
+* tslib and rollup-config ([f82923a](https://github.com/christophehurpeau/pob/commit/f82923a47e380af000afa103a350e1cef1a48ae9))
+
+
+
+
 ## [2.1.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@2.0.0...@pob/rollup-typescript@2.1.0) (2023-12-27)
 
 

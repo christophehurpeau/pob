@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.3.0](https://github.com/christophehurpeau/pob/compare/pob@17.2.1...pob@17.3.0) (2023-12-28)
+
+
+### Features
+
+* configure declarationDir ([338a4dc](https://github.com/christophehurpeau/pob/commit/338a4dc7a642e9f8c24f953d5368745467578a38))
+* use ts-node if needed with rollup-typescript ([9aefca2](https://github.com/christophehurpeau/pob/commit/9aefca2f69ba7bf2ff6f142e5156937d1c9e47fe))
+
+
+### Bug Fixes
+
+* add srcdirectory for glob tests ([3902bbd](https://github.com/christophehurpeau/pob/commit/3902bbdc088293df17a328687661a3dcb0a0c2a3))
+* add TS_NODE_PROJECT ([f67673b](https://github.com/christophehurpeau/pob/commit/f67673bd35a4ee84965de229266d5b944f8c49ef))
+
+Version bump for dependency: root
+
+
 ## [17.2.1](https://github.com/christophehurpeau/pob/compare/pob@17.2.0...pob@17.2.1) (2023-12-27)
 
 

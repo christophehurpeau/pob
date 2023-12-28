@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.18.0...example-typescript-lib-without-rollup@0.19.0) (2023-12-28)
+
+
+### Features
+
+* configure declarationDir ([338a4dc](https://github.com/christophehurpeau/pob/commit/338a4dc7a642e9f8c24f953d5368745467578a38))
+
+
+### Bug Fixes
+
+* add missing tslib ([299811f](https://github.com/christophehurpeau/pob/commit/299811fa68a50706b169f82833076e752bb5fb39))
+
+
+
+
 ## 0.18.0 (2023-12-10)
 
 

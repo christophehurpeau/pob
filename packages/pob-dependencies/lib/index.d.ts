@@ -9,8 +9,9 @@ interface Dependencies {
   '@pob/eslint-config-typescript': '51.2.2';
   '@pob/eslint-config-typescript-react': '51.2.2';
   '@pob/pretty-pkg': '6.3.0';
-  '@pob/rollup-typescript': '2.0.0';
+  '@pob/rollup-typescript': '2.1.0';
   '@types/jest': '29.5.11';
+  '@types/node': '20.10.5';
   'alp-rollup-plugin-config': '2.2.0';
   'check-package-dependencies': '7.0.0';
   eslint: '8.56.0';
@@ -21,6 +22,7 @@ interface Dependencies {
   'repository-check-dirty': '6.3.0';
   rollup: '3.29.4';
   semver: '7.5.4';
+  'ts-node': '11.0.0-beta.1';
   tsimp: '2.0.10';
   typedoc: '0.25.4';
   typescript: '5.3.3';
