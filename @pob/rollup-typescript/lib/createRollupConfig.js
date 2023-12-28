@@ -28,7 +28,9 @@ export default function createRollupConfig({
   const tslibVersion = pkg.dependencies && pkg.dependencies.tslib;
 
   if (!tslibVersion) {
-    throw new Error('@pob/rollup-typescript requires "tslib" in dependencies.');
+    throw new Error(
+      `@pob/rollup-typescript: "${pkg.name}" requires "tslib" in dependencies.`,
+    );
   }
 
   const resolveEntry = (entryName, target) => {
