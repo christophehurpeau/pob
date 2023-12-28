@@ -192,7 +192,7 @@ export default class CommonTestingGenerator extends Generator {
         case 'tsimp':
           return '--import=tsimp/import';
         case 'ts-node':
-          return '--loader=ts-node/esm';
+          return '--loader=ts-node/esm --experimental-specifier-resolution=node';
         case '@swc-node/register':
           return '--import=@swc-node/register/esm';
       }

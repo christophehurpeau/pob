@@ -265,6 +265,7 @@ export default class PobAppGenerator extends Generator {
         isApp: true,
         documentation: false,
         testing: this.appConfig.testing,
+        testRunner: this.appConfig.testRunner,
         babel,
         typescript,
         node,
