@@ -228,7 +228,7 @@ export default class CommonTestingGenerator extends Generator {
               ? 'TS_NODE_PROJECT=tsconfig.test.json '
               : ''
           }node ${this.options.typescript ? `${tsTestLoaderOption} ` : ''}${
-            coverage ? ' --experimental-test-coverage' : ''
+            coverage ? '--experimental-test-coverage ' : ''
           }--test ${this.options.srcDirectory}/${
             this.options.typescript ? '**/*.test.ts' : '**/*.test.js'
           }`;
