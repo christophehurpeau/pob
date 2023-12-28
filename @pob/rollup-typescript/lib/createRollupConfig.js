@@ -101,6 +101,7 @@ export default function createRollupConfig({
             'node_modules',
             '.cache',
             'rollup-typescript',
+            `${env.target}_${env.version}`,
           ),
         }),
 
