@@ -223,11 +223,15 @@ export default class CommonTestingGenerator extends Generator {
           }`;
         }
         case 'node': {
-          return `${tsTestUtil === 'tsimp' ? 'TSIMP_DIAG=ignore ' : ''}node ${
-            this.options.typescript ? `${tsTestLoaderOption} ` : ''
-          }${coverage ? ' --experimental-test-coverage' : ''}--test ${
-            this.options.srcDirectory
-          }/${this.options.typescript ? '**/*.test.ts' : '**/*.test.js'}`;
+          return `${tsTestUtil === 'tsimp' ? 'TSIMP_DIAG=ignore ' : ''}${
+            tsTestUtil === 'ts-node'
+              ? 'TS_NODE_PROJECT=tsconfig.test.json '
+              : ''
+          }node ${this.options.typescript ? `${tsTestLoaderOption} ` : ''}${
+            coverage ? ' --experimental-test-coverage' : ''
+          }--test ${this.options.srcDirectory}/${
+            this.options.typescript ? '**/*.test.ts' : '**/*.test.js'
+          }`;
         }
         default: {
           throw new Error('Invalid runner');
