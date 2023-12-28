@@ -4,7 +4,10 @@ function updateOverrides(config, testsOverride) {
   const existingTestsOverrideIndex = !config.overrides
     ? -1
     : config.overrides.findIndex(
-        (override) => override.env && override.env.jest,
+        testsOverride.env?.jest
+          ? (override) => override.env && override.env.jest
+          : (override) =>
+              override.extends.includes(testsOverride.env.extends[0]),
       );
   if (!testsOverride) {
     if (existingTestsOverrideIndex !== -1) {
