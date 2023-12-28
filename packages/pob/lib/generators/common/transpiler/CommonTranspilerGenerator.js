@@ -264,7 +264,15 @@ export default class CommonTranspilerGenerator extends Generator {
     delete pkg['browser-dev'];
     delete pkg['module-dev'];
 
-    const esAllBrowserEnv = this.babelEnvs.find(
+    const envs = pkg.pob.babelEnvs ||
+      pkg.pob.envs || [
+        {
+          target: 'node',
+          version: '18',
+        },
+      ];
+
+    const esAllBrowserEnv = envs.find(
       (env) =>
         env.target === 'browser' &&
         env.version === undefined &&
@@ -298,7 +306,7 @@ export default class CommonTranspilerGenerator extends Generator {
         const isBrowserOnly =
           withBabel &&
           entry === 'browser' &&
-          (this.babelEnvs.every((env) => env.target === 'browser') ||
+          (envs?.every((env) => env.target === 'browser') ||
             (this.entries.length === 2 && this.entries.includes('index')));
         const entryDistName = isBrowserOnly ? 'index' : entry;
         const exportName = entry === 'index' ? '.' : `./${entry}`;
@@ -313,73 +321,67 @@ export default class CommonTranspilerGenerator extends Generator {
         };
 
         const defaultNodeEnv =
-          withBabel && this.babelEnvs.find((env) => env.target === 'node');
+          withBabel || withTypescript
+            ? envs.find((env) => env.target === 'node')
+            : undefined;
 
         const defaultNodeEnvVersion = defaultNodeEnv && defaultNodeEnv.version;
 
-        if (withTypescript) {
-          if (useRollup) {
-            targets.import = `./${this.options.buildDirectory}/${entryDistName}-node.mjs`;
-          } else {
-            targets.import = `./${this.options.buildDirectory}/${entryDistName}.js`;
-          }
-        } else {
-          this.babelEnvs.forEach(({ target, version, formats }) => {
-            if (target === 'node' && entry === 'browser') return;
+        envs.forEach(({ target, version, formats }) => {
+          if (target === 'node' && entry === 'browser') return;
 
-            const exportTarget = {};
+          const exportTarget = {};
 
-            if (target === 'node') {
-              const cjsExt = pkg.type === 'module' ? 'cjs' : 'cjs.js';
-              if (!formats || formats.includes('es')) {
-                exportTarget.import = `./${this.options.buildDirectory}/${entryDistName}-${target}${version}.mjs`;
-
-                if (formats && formats.includes('cjs')) {
-                  exportTarget.require = `./${this.options.buildDirectory}/${entryDistName}-${target}${version}.${cjsExt}`;
-                }
-              } else if (formats && formats.includes('cjs')) {
-                exportTarget.default = `./${this.options.buildDirectory}/${entryDistName}-${target}${version}.${cjsExt}`;
-              }
-              // eslint: https://github.com/benmosher/eslint-plugin-import/issues/2132
-              // jest: https://github.com/facebook/jest/issues/9771
-              if (!pkg.main && exportName === '.') {
-                pkg.main =
-                  pkg.type === 'module'
-                    ? exportTarget.import
-                    : exportTarget.default ||
-                      exportTarget.require ||
-                      exportTarget.import;
-              }
-            } else if (target === 'browser') {
-              if (!formats || formats.includes('es')) {
-                exportTarget.import = `./${
-                  this.options.buildDirectory
-                }/${entryDistName}-${target}${version || ''}.es.js`;
-              }
+          if (target === 'node') {
+            const cjsExt = pkg.type === 'module' ? 'cjs' : 'cjs.js';
+            if (!formats || formats.includes('es')) {
+              exportTarget.import = `./${this.options.buildDirectory}/${entryDistName}-${target}${version}.mjs`;
 
               if (formats && formats.includes('cjs')) {
-                exportTarget.require = `./${
-                  this.options.buildDirectory
-                }/index-${target}${version || ''}.cjs.js`;
+                exportTarget.require = `./${this.options.buildDirectory}/${entryDistName}-${target}${version}.${cjsExt}`;
               }
+            } else if (formats && formats.includes('cjs')) {
+              exportTarget.default = `./${this.options.buildDirectory}/${entryDistName}-${target}${version}.${cjsExt}`;
+            }
+            // eslint: https://github.com/benmosher/eslint-plugin-import/issues/2132
+            // jest: https://github.com/facebook/jest/issues/9771
+            if (!pkg.main && exportName === '.') {
+              pkg.main =
+                pkg.type === 'module'
+                  ? exportTarget.import
+                  : exportTarget.default ||
+                    exportTarget.require ||
+                    exportTarget.import;
+            }
+          } else if (target === 'browser') {
+            if (!formats || formats.includes('es')) {
+              exportTarget.import = `./${
+                this.options.buildDirectory
+              }/${entryDistName}-${target}${version || ''}.es.js`;
             }
 
-            if (
-              !version ||
-              (target === 'node' && version === defaultNodeEnvVersion)
-            ) {
-              targets[target] = {
-                ...targets[target],
-                ...exportTarget,
-              };
-            } else {
-              targets[target] = {
-                [`${target}:${version}`]: exportTarget,
-                ...targets[target],
-              };
+            if (formats && formats.includes('cjs')) {
+              exportTarget.require = `./${
+                this.options.buildDirectory
+              }/index-${target}${version || ''}.cjs.js`;
             }
-          });
-        }
+          }
+
+          if (
+            !version ||
+            (target === 'node' && version === defaultNodeEnvVersion)
+          ) {
+            targets[target] = {
+              ...targets[target],
+              ...exportTarget,
+            };
+          } else {
+            targets[target] = {
+              [`${target}:${version}`]: exportTarget,
+              ...targets[target],
+            };
+          }
+        });
 
         pkg.exports[exportName] = targets;
       });

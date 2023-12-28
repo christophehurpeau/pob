@@ -296,6 +296,7 @@ export default class PobLibGenerator extends Generator {
         !!this.pobjson.documentation ||
         !!(this.pobjson.testing && this.pobjson.testing.codecov),
       testing: !!this.pobjson.testing,
+      testRunner: this.pobjson.testing?.runner,
       packageManager: this.options.packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
       ignorePaths: withBabel || withTypescript ? '/dist' : '',

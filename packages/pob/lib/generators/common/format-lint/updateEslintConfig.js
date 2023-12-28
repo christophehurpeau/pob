@@ -14,12 +14,21 @@ function updateOverrides(config, testsOverride) {
       }
     }
   } else {
-    // eslint-disable-next-line no-lonely-if
+    if (testsOverride.rules && Object.keys(testsOverride.rules).length === 0) {
+      delete testsOverride.rules;
+    }
+
     if (existingTestsOverrideIndex !== -1) {
-      Object.assign(
-        config.overrides[existingTestsOverrideIndex],
-        testsOverride,
-      );
+      const existingTestsOverride =
+        config.overrides[existingTestsOverrideIndex];
+      Object.assign(existingTestsOverride, testsOverride);
+
+      if (
+        existingTestsOverride.rules &&
+        Object.keys(existingTestsOverride.rules).length === 0
+      ) {
+        delete existingTestsOverride.rules;
+      }
     } else {
       if (!config.overrides) config.overrides = [];
       config.overrides.push(testsOverride);

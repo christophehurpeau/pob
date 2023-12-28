@@ -45,6 +45,12 @@ export default class CommonLintGenerator extends Generator {
       required: true,
       desc: 'Testing enabled',
     });
+    this.option('testRunner', {
+      type: String,
+      required: false,
+      default: 'jest',
+      desc: 'test runner: jest | node',
+    });
 
     this.option('typescript', {
       type: Boolean,
@@ -402,7 +408,10 @@ export default class CommonLintGenerator extends Generator {
       this.options.testing || globalTesting
         ? {
             files: [`**/*.test.${ext}`, `__tests__/**/*.${ext}`],
-            env: { jest: true },
+            ...(this.options.testRunner == null ||
+            this.options.testRunner === 'jest'
+              ? { env: { jest: true } }
+              : {}),
             rules: {
               'import/no-extraneous-dependencies': [
                 'error',
@@ -419,6 +428,7 @@ export default class CommonLintGenerator extends Generator {
 
       if (useTypescript) {
         testsOverride.extends = ['@pob/eslint-config-typescript/test'];
+        delete testsOverride.rules['import/no-extraneous-dependencies'];
       }
     }
 

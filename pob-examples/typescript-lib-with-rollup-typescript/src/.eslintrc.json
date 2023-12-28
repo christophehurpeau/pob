@@ -5,10 +5,7 @@
     "project": "pob-examples/typescript-lib-with-rollup-typescript/tsconfig.json"
   },
   "plugins": ["@typescript-eslint"],
-  "extends": [
-    "@pob/eslint-config-typescript",
-    "@pob/eslint-config-typescript/node"
-  ],
+  "extends": ["@pob/eslint-config-typescript"],
   "ignorePatterns": ["*.d.ts"],
   "overrides": [
     {
@@ -16,14 +13,6 @@
       "extends": ["@pob/eslint-config-typescript/test"],
       "env": {
         "jest": true
-      },
-      "rules": {
-        "import/no-extraneous-dependencies": [
-          "error",
-          {
-            "devDependencies": true
-          }
-        ]
       }
     }
   ]
