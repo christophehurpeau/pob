@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.19.0...example-typescript-lib-without-rollup@0.20.0) (2023-12-28)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v53 (major) ([#1886](https://github.com/christophehurpeau/pob/issues/1886)) ([de65f51](https://github.com/christophehurpeau/pob/commit/de65f51549afac0be03a124dba04dbb3a76f1b4e))
+* keep configuring ts-node and typescript for ts without babel ([8483dc0](https://github.com/christophehurpeau/pob/commit/8483dc080170befe5a3be3e4dfc8fe7d8e74d0ae))
+
+
+
+
 ## [0.19.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.18.0...example-typescript-lib-without-rollup@0.19.0) (2023-12-28)
 
 

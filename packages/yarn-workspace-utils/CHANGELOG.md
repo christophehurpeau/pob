@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@3.0.0...yarn-workspace-utils@3.1.0) (2023-12-28)
+
+
+### Features
+
+* keep configuring ts-node and typescript for ts without babel ([8483dc0](https://github.com/christophehurpeau/pob/commit/8483dc080170befe5a3be3e4dfc8fe7d8e74d0ae))
+
+
+
+
 ## [3.0.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@2.1.0...yarn-workspace-utils@3.0.0) (2023-12-25)
 
 Note: no notable changes

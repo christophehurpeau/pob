@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.4.0](https://github.com/christophehurpeau/pob/compare/pob@17.3.0...pob@17.4.0) (2023-12-28)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v53 (major) ([#1886](https://github.com/christophehurpeau/pob/issues/1886)) ([de65f51](https://github.com/christophehurpeau/pob/commit/de65f51549afac0be03a124dba04dbb3a76f1b4e))
+* **deps:** update dependency @pob/eslint-config-typescript to v53.1.0 ([#1887](https://github.com/christophehurpeau/pob/issues/1887)) ([cca20c4](https://github.com/christophehurpeau/pob/commit/cca20c4e44aafdf05ba7928e02b290d2445d00cb))
+* keep configuring ts-node and typescript for ts without babel ([8483dc0](https://github.com/christophehurpeau/pob/commit/8483dc080170befe5a3be3e4dfc8fe7d8e74d0ae))
+
+Version bump for dependency: yarn-workspace-utils
+
+
 ## [17.3.0](https://github.com/christophehurpeau/pob/compare/pob@17.2.1...pob@17.3.0) (2023-12-28)
 
 
