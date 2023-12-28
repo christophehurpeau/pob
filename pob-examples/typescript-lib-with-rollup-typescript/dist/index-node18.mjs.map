@@ -1,0 +1,1 @@
+{"version":3,"file":"index-node18.mjs","sources":["../../src/index.ts"],"sourcesContent":["export default function simpleLib(): string {\n  return `hello world via ${'node'}`;\n}\n"],"names":[],"mappings":"AAAc,SAAU,SAAS,GAAA;IAC/B,OAAO,CAAA,gBAAA,EAAmB,MAAM,CAAA,CAAE,CAAC;AACrC;;;;"}

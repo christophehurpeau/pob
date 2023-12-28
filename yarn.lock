@@ -6975,6 +6975,7 @@ __metadata:
   resolution: "example-typescript-lib-with-rollup-typescript@workspace:pob-examples/typescript-lib-with-rollup-typescript"
   dependencies:
     "@pob/rollup-typescript": "npm:2.1.0"
+    tslib: "npm:^2.6.2"
     typescript: "npm:5.3.3"
   languageName: unknown
   linkType: soft

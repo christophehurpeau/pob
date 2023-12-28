@@ -94,9 +94,8 @@ export default function createRollupConfig({
       external: externalByPackageJson,
       plugins: [
         typescript({
-          module: 'ES2022', // rollup will convert module to cjs if needed
-          moduleResolution: 'bundler', // todo should not specify that
           tsconfig: path.resolve(cwd, env.tsconfig || 'tsconfig.json'),
+          allowImportingTsExtensions: false,
           cacheDir: path.resolve(
             cwd,
             'node_modules',

@@ -3,4 +3,4 @@ function simpleLib() {
 }
 
 export { simpleLib as default };
-//# sourceMappingURL=index-node.mjs.map
+//# sourceMappingURL=index-node18.mjs.map
