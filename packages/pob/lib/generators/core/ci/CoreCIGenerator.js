@@ -45,6 +45,12 @@ export default class CoreCIGenerator extends Generator {
       default: true,
       desc: 'enable testing',
     });
+    this.option('testRunner', {
+      type: String,
+      required: false,
+      default: 'jest',
+      desc: 'test runner: jest | node',
+    });
 
     this.option('e2eTesting', {
       type: String,
@@ -204,6 +210,7 @@ export default class CoreCIGenerator extends Generator {
           packageManager: this.options.packageManager,
           disableYarnGitCache: this.options.disableYarnGitCache,
           testing: this.options.testing,
+          testRunner: this.options.runner,
           typedoc: this.options.documentation && this.options.typescript,
         },
       );

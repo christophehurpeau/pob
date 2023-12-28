@@ -123,6 +123,7 @@ export default class CommonTestingGenerator extends Generator {
         enableYarnVersion: this.options.enableYarnVersion,
         disableYarnGitCache: this.options.disableYarnGitCache,
         testing: this.options.enable,
+        testRunner: this.options.runner,
         e2eTesting: this.options.e2eTesting,
         build: this.options.build,
         typescript: this.options.typescript,
