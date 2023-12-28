@@ -27,7 +27,7 @@ yarn-error.log*
 <% } -%>
 <% if (testing) { -%>
 
-<% if (typescript && !withBabel) { -%>
+<% if (typescript && !withBabel && tsTestUtil === 'tsimp') { -%>
 # tsimp cache
 /.tsimp
 <% } -%>

@@ -186,13 +186,54 @@ export default class CommonTestingGenerator extends Generator {
       this.fs.delete(this.destinationPath('jest.config.json'));
     }
 
+    const tsTestUtil = 'ts-node'; // : 'tsimp' | 'ts-node' | 'swc
+    const tsTestLoaderOption = (() => {
+      switch (tsTestUtil) {
+        case 'tsimp':
+          return '--import=tsimp/import';
+        case 'ts-node':
+          return '--loader=ts-node/esm';
+        case '@swc-node/register':
+          return '--import=@swc-node/register/esm';
+      }
+    })();
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.options.enable &&
         this.options.runner === 'node' &&
         this.options.typescript,
-      ['tsimp'],
+      [tsTestUtil],
     );
+
+    const createTestCommand = ({
+      coverage,
+      watch,
+      shouldUseExperimentalVmModules,
+    }) => {
+      switch (this.options.runner) {
+        case 'jest': {
+          return `${
+            shouldUseExperimentalVmModules
+              ? 'NODE_OPTIONS=--experimental-vm-modules '
+              : ''
+          }jest${watch ? ' --watch' : ''}${
+            coverage
+              ? ' --coverage --coverageReporters=json --coverageReporters=text'
+              : ''
+          }`;
+        }
+        case 'node': {
+          return `${tsTestUtil === 'tsimp' ? 'TSIMP_DIAG=ignore ' : ''}node ${
+            this.options.typescript ? `${tsTestLoaderOption} ` : ''
+          }${coverage ? ' --experimental-test-coverage' : ''}--test ${
+            this.options.srcDirectory
+          }/${this.options.typescript ? '**/*.test.ts' : '**/*.test.js'}`;
+        }
+        default: {
+          throw new Error('Invalid runner');
+        }
+      }
+    };
 
     if (!this.options.enable) {
       // if (inMonorepo) {
@@ -227,26 +268,16 @@ export default class CommonTestingGenerator extends Generator {
       } else if (this.options.monorepo) {
         const shouldUseExperimentalVmModules = pkg.type === 'module';
 
-        const testCommand =
-          this.options.runner === 'jest'
-            ? `${
-                shouldUseExperimentalVmModules
-                  ? 'NODE_OPTIONS=--experimental-vm-modules '
-                  : ''
-              }jest`
-            : `node ${
-                this.options.typescript ? '--import=tsimp/import ' : ''
-              }--test ${this.options.srcDirectory}/${
-                this.options.typescript ? '**/*.test.ts' : '**/*.test.js'
-              }`;
-
         packageUtils.addScripts(pkg, {
-          test: testCommand,
-          'test:watch': `${testCommand} --watch`,
-          'test:coverage':
-            this.options.runner === 'jest'
-              ? `${testCommand} --coverage --coverageReporters=json --coverageReporters=text`
-              : testCommand, // not yet configured
+          test: createTestCommand({ shouldUseExperimentalVmModules }),
+          'test:watch': createTestCommand({
+            shouldUseExperimentalVmModules,
+            watch: true,
+          }),
+          'test:coverage': createTestCommand({
+            shouldUseExperimentalVmModules,
+            coverage: true,
+          }),
         });
 
         if (isJestRunner) {
@@ -310,26 +341,16 @@ export default class CommonTestingGenerator extends Generator {
         const shouldUseExperimentalVmModules =
           pkg.type === 'module' && !inMonorepo;
 
-        const testCommand =
-          this.options.runner === 'jest'
-            ? `${
-                shouldUseExperimentalVmModules
-                  ? 'NODE_OPTIONS=--experimental-vm-modules '
-                  : ''
-              }jest`
-            : `node ${
-                this.options.typescript ? '--import=tsimp/import ' : ''
-              }--test ${this.options.srcDirectory}/${
-                this.options.typescript ? '**/*.test.ts' : '**/*.test.js'
-              }`;
-
         packageUtils.addScripts(pkg, {
-          test: testCommand,
-          'test:watch': `${testCommand} --watch`,
-          'test:coverage':
-            this.options.runner === 'jest'
-              ? `${testCommand}  --coverage --coverageReporters=json --coverageReporters=text`
-              : testCommand, // not yet configured,
+          test: createTestCommand({ shouldUseExperimentalVmModules }),
+          'test:watch': createTestCommand({
+            shouldUseExperimentalVmModules,
+            watch: true,
+          }),
+          'test:coverage': createTestCommand({
+            shouldUseExperimentalVmModules,
+            coverage: true,
+          }),
         });
 
         if (this.options.runner === 'jest') {

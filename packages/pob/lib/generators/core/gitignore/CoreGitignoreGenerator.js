@@ -75,6 +75,7 @@ export default class CoreGitignoreGenerator extends Generator {
         documentation: this.options.documentation,
         testing: this.options.testing,
         withBabel,
+        tsTestUtil: 'ts-node',
         typescript: withBabel || this.options.typescript,
         paths: this.options.paths,
         buildInGit: this.options.buildInGit,
