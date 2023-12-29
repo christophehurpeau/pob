@@ -15,24 +15,24 @@
   "engines": {
     "node": ">=20.9.0"
   },
-  "publishConfig": {
-    "access": "public"
+  "bin": {
+    "pob-migrate": "./bin/migrate.mjs"
   },
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
     "./package.json": "./package.json"
   },
-  "bin": {
-    "pob-migrate": "./bin/migrate.mjs"
+  "publishConfig": {
+    "access": "public"
   },
   "scripts": {
     "install-bin": "ln -s $PWD/bin/migrate.mjs /usr/local/bin/pob-migrate",
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet @pob/codemods"
   },
-  "prettier": "@pob/root/prettier-config",
   "pob": {},
+  "prettier": "@pob/root/prettier-config",
   "dependencies": {
     "glob": "10.3.10",
     "jscodeshift": "0.15.1"

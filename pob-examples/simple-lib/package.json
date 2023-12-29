@@ -14,17 +14,17 @@
   "engines": {
     "node": ">=18.12.0"
   },
+  "sideEffects": false,
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
     "./package.json": "./package.json"
   },
-  "sideEffects": false,
   "scripts": {
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet pob-examples/simple-lib",
     "test": "yarn ../../ run test -- pob-examples/simple-lib"
   },
-  "prettier": "@pob/root/prettier-config",
-  "pob": {}
+  "pob": {},
+  "prettier": "@pob/root/prettier-config"
 }

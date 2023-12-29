@@ -15,12 +15,12 @@
   "engines": {
     "node": ">=18.12.0"
   },
+  "sideEffects": false,
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
     "./package.json": "./package.json"
   },
-  "sideEffects": false,
   "files": [
     "lib"
   ],
@@ -28,6 +28,6 @@
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/babel-plugin-fix-class-properties-uninitialized"
   },
-  "prettier": "@pob/root/prettier-config",
-  "pob": {}
+  "pob": {},
+  "prettier": "@pob/root/prettier-config"
 }

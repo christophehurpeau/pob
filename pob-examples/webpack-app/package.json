@@ -14,6 +14,12 @@
   "engines": {
     "node": ">=18.12.0"
   },
+  "scripts": {
+    "build": "webpack",
+    "lint": "yarn run lint:eslint",
+    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet pob-examples/webpack-app",
+    "test": "yarn ../../ run test -- pob-examples/webpack-app"
+  },
   "browserslist": [
     "defaults",
     "> 0.2%",
@@ -21,12 +27,6 @@
     "not safari < 10",
     "not ios_saf < 10"
   ],
-  "scripts": {
-    "build": "webpack",
-    "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet pob-examples/webpack-app",
-    "test": "yarn ../../ run test -- pob-examples/webpack-app"
-  },
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
     "example-typescript-lib": "0.23.0"

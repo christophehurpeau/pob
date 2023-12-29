@@ -15,6 +15,11 @@
   "engines": {
     "node": ">=18.12.0"
   },
+  "sideEffects": false,
+  "bin": {
+    "pob-babel-clean-out": "./bin/pob-babel-clean-out.js",
+    "rollup": "./bin/rollup.cjs"
+  },
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
   "exports": {
@@ -34,11 +39,6 @@
     "./plugin-run.cjs": "./plugin-run.cjs",
     "./package.json": "./package.json"
   },
-  "sideEffects": false,
-  "bin": {
-    "pob-babel-clean-out": "./bin/pob-babel-clean-out.js",
-    "rollup": "./bin/rollup.cjs"
-  },
   "files": [
     "lib",
     "bin",
@@ -54,8 +54,8 @@
     "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/pob-babel",
     "test": "yarn ../../ run test -- packages/pob-babel"
   },
-  "prettier": "@pob/root/prettier-config",
   "pob": {},
+  "prettier": "@pob/root/prettier-config",
   "peerDependencies": {
     "@babel/core": "^7.23.2",
     "rollup": "3.29.4",

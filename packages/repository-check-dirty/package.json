@@ -15,14 +15,14 @@
   "engines": {
     "node": ">=18.12.0"
   },
+  "sideEffects": false,
+  "bin": "./bin/repository-check-dirty.js",
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
     "./bin/repository-check-dirty.js": "./bin/repository-check-dirty.js",
     "./package.json": "./package.json"
   },
-  "sideEffects": false,
-  "bin": "./bin/repository-check-dirty.js",
   "files": [
     "lib",
     "bin"
@@ -31,6 +31,6 @@
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/repository-check-dirty"
   },
-  "prettier": "@pob/root/prettier-config",
-  "pob": {}
+  "pob": {},
+  "prettier": "@pob/root/prettier-config"
 }
