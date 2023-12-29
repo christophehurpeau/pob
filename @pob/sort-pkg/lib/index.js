@@ -10,6 +10,7 @@ export default function sortPkg(pkg) {
     'description',
     'keywords',
     'author',
+    'authors',
     'contributors',
     'license',
     'repository',
