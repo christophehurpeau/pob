@@ -242,7 +242,7 @@ export default class CommonTranspilerGenerator extends Generator {
           this.options.buildDirectory
         }/${'definitions/'}index.d.ts`;
       } else if (this.options.isAppLibrary) {
-        pkg.types = `./${this.options.srcDirectory}/${'definitions/'}index.ts`;
+        pkg.types = `./${this.options.srcDirectory}/index.ts`;
       }
     } else {
       if (!pkg.main) {
