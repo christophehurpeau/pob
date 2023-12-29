@@ -208,6 +208,8 @@ export default class CommonTestingGenerator extends Generator {
 
     const createTestCommand = ({
       coverage,
+      coverageLcov,
+      coverageJson,
       watch,
       shouldUseExperimentalVmModules,
     }) => {
@@ -218,8 +220,14 @@ export default class CommonTestingGenerator extends Generator {
               ? 'NODE_OPTIONS=--experimental-vm-modules '
               : ''
           }jest${watch ? ' --watch' : ''}${
-            coverage
-              ? ' --coverage --coverageReporters=json --coverageReporters=text'
+            coverage || coverageJson || coverageLcov
+              ? ` --coverage ${
+                  coverageLcov
+                    ? '--coverageReporters=lcov'
+                    : `--coverageReporters=json${
+                        coverageJson ? '' : ' --coverageReporters=text'
+                      }`
+                }`
               : ''
           }`;
         }
@@ -228,8 +236,16 @@ export default class CommonTestingGenerator extends Generator {
             tsTestUtil === 'ts-node'
               ? 'TS_NODE_PROJECT=tsconfig.test.json '
               : ''
-          }node ${this.options.typescript ? `${tsTestLoaderOption} ` : ''}${
-            coverage ? '--experimental-test-coverage ' : ''
+          }${
+            coverage || coverageJson || coverageLcov
+              ? `npx c8${
+                  coverageLcov || coverageJson
+                    ? ` --reporter=${coverageJson ? 'json' : 'lcov'}`
+                    : ''
+                } --src ./${this.options.srcDirectory} `
+              : ''
+          }node ${
+            this.options.typescript ? `${tsTestLoaderOption} ` : ''
           }--test ${this.options.srcDirectory}/${
             this.options.typescript ? '**/*.test.ts' : '**/*.test.js'
           }`;
@@ -252,6 +268,8 @@ export default class CommonTestingGenerator extends Generator {
         delete pkg.scripts['generate:test-coverage'];
         delete pkg.scripts['test:watch'];
         delete pkg.scripts['test:coverage'];
+        delete pkg.scripts['test:coverage:json'];
+        delete pkg.scripts['test:coverage:lcov'];
       }
 
       writeAndFormatJson(this.fs, this.destinationPath('package.json'), pkg);
@@ -282,6 +300,14 @@ export default class CommonTestingGenerator extends Generator {
           'test:coverage': createTestCommand({
             shouldUseExperimentalVmModules,
             coverage: true,
+          }),
+          'test:coverage:lcov': createTestCommand({
+            shouldUseExperimentalVmModules,
+            coverageLcov: true,
+          }),
+          'test:coverage:json': createTestCommand({
+            shouldUseExperimentalVmModules,
+            coverageJson: true,
           }),
         });
 
@@ -355,6 +381,14 @@ export default class CommonTestingGenerator extends Generator {
           'test:coverage': createTestCommand({
             shouldUseExperimentalVmModules,
             coverage: true,
+          }),
+          'test:coverage:lcov': createTestCommand({
+            shouldUseExperimentalVmModules,
+            coverageLcov: true,
+          }),
+          'test:coverage:json': createTestCommand({
+            shouldUseExperimentalVmModules,
+            coverageJson: true,
           }),
         });
 

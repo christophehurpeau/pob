@@ -35,7 +35,7 @@ jobs:
 <% if (testing && testRunner === 'jest') { -%>
 
       - name: Generate Coverage
-        run: yarn test --coverage --coverageReporters=lcov --coverageDirectory=docs/coverage/
+        run: yarn test:coverage:lcov --coverageDirectory=docs/coverage/
 <% } -%>
 
       - name: Create nojekyll
