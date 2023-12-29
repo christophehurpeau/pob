@@ -162,22 +162,49 @@ export default class PobLibGenerator extends Generator {
     // documentation
     if (inMonorepo && !inMonorepo.root) {
       this.pobjson.documentation = false;
-    } else if (!this.updateOnly) {
+    } else {
       const answers = await this.prompt([
         {
           type: 'confirm',
           name: 'documentation',
           message: 'Would you like documentation (manually generated) ?',
+          when: !this.updateOnly || this.pobjson.documentation === undefined,
           default:
             this.pobjson.documentation != null
               ? this.pobjson.documentation
               : true,
         },
+      ]);
+
+      Object.assign(this.pobjson, answers);
+    }
+
+    // testing
+    if (!this.updateOnly || this.pobjson.testing === undefined) {
+      const { testing } = await this.prompt({
+        type: 'confirm',
+        name: 'testing',
+        message: 'Would you like testing ?',
+        default: this.pobjson.testing || false,
+      });
+      this.pobjson.testing = !testing ? false : this.pobjson.testing || {};
+    }
+
+    if (this.pobjson.testing && !(inMonorepo || inMonorepo.root)) {
+      const testingPrompts = await this.prompt([
         {
-          type: 'checkbox',
+          type: 'confirm',
+          name: 'ci',
+          message: 'Would you like ci with github actions ?',
+          when: !this.updateOnly || this.pobjson.testing?.ci === undefined,
+          default: this.pobjson.testing.ci !== false,
+        },
+        {
+          type: 'list',
           name: 'runner',
           message: 'Testing runner ?',
-          default: 'jest',
+          when: !this.updateOnly || this.pobjson.testing?.runner === undefined,
+          default: this.pobjson.testing?.runner || 'jest',
           choices: [
             {
               name: 'Jest',
@@ -189,39 +216,15 @@ export default class PobLibGenerator extends Generator {
             },
           ],
         },
+        {
+          type: 'confirm',
+          name: 'codecov',
+          message: 'Would you like codecov ?',
+          when: !this.updateOnly || this.pobjson.testing?.codecov === undefined,
+          default: this.pobjson.testing.codecov === true,
+        },
       ]);
-
-      this.pobjson.documentation = !!answers.documentation;
-      this.pobjson.runner = !!answers.runner;
-    }
-
-    // testing
-    if (!this.updateOnly) {
-      const { testing } = await this.prompt({
-        type: 'confirm',
-        name: 'testing',
-        message: 'Would you like testing ?',
-        default: this.pobjson.testing || false,
-      });
-      this.pobjson.testing = !testing ? false : this.pobjson.testing || {};
-
-      if (this.pobjson.testing && !(inMonorepo || inMonorepo.root)) {
-        const testingPrompts = await this.prompt([
-          {
-            type: 'confirm',
-            name: 'ci',
-            message: 'Would you like ci with github actions ?',
-            default: this.pobjson.testing.ci !== false,
-          },
-          {
-            type: 'confirm',
-            name: 'codecov',
-            message: 'Would you like codecov ?',
-            default: this.pobjson.testing.codecov === true,
-          },
-        ]);
-        Object.assign(this.pobjson.testing, testingPrompts);
-      }
+      Object.assign(this.pobjson.testing, testingPrompts);
     }
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
