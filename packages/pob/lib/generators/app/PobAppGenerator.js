@@ -157,6 +157,7 @@ export default class PobAppGenerator extends Generator {
         testing: this.appConfig.testing,
         documentation: false,
         fromPob: this.options.fromPob,
+        srcDirectory,
         buildDirectory: 'build',
       });
     }

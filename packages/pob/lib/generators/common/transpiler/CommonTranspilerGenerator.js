@@ -46,6 +46,12 @@ export default class CommonTranspilerGenerator extends Generator {
       default: false,
     });
 
+    this.option('srcDirectory', {
+      type: String,
+      required: false,
+      default: 'src',
+    });
+
     this.option('buildDirectory', {
       type: String,
       required: false,
@@ -219,7 +225,7 @@ export default class CommonTranspilerGenerator extends Generator {
 
     /* main / aliases / typing */
 
-    if (this.options.isApp) {
+    if (this.options.isApp && !this.options.isAppLibrary) {
       delete pkg.types;
       delete pkg.typings;
     } else if (pkg.typings) {
@@ -235,6 +241,8 @@ export default class CommonTranspilerGenerator extends Generator {
         pkg.types = `./${
           this.options.buildDirectory
         }/${'definitions/'}index.d.ts`;
+      } else if (this.options.isAppLibrary) {
+        pkg.types = `./${this.options.srcDirectory}/${'definitions/'}index.ts`;
       }
     } else {
       if (!pkg.main) {
@@ -245,7 +253,7 @@ export default class CommonTranspilerGenerator extends Generator {
       } else {
         pkg.main = './lib/index.js';
       }
-      if (!this.options.isApp) {
+      if (!this.options.isApp || this.options.isAppLibrary) {
         if (this.fs.exists('./lib/index.ts')) {
           pkg.types = './lib/index.ts';
         } else if (this.fs.exists('./lib/index.d.ts') || pkg.types) {
