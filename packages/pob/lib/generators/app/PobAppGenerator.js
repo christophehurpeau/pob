@@ -127,7 +127,7 @@ export default class PobAppGenerator extends Generator {
     this.config.save();
   }
 
-  async default() {
+  default() {
     const srcDirectory =
       this.appConfig.type === 'yarn-plugin' ? 'sources' : 'src';
     const isAppLibrary = this.appConfig.type === 'node-library';
@@ -137,7 +137,7 @@ export default class PobAppGenerator extends Generator {
       this.appConfig.type === 'node-library' ||
       this.appConfig.type === 'alp-node'
     ) {
-      await this.composeWith('pob:common:babel', {
+      this.composeWith('pob:common:babel', {
         updateOnly: this.options.updateOnly,
         onlyLatestLTS: true,
         isApp: true,
@@ -148,7 +148,7 @@ export default class PobAppGenerator extends Generator {
         fromPob: this.options.fromPob,
         buildDirectory: 'build',
       });
-      await this.composeWith('pob:common:transpiler', {
+      this.composeWith('pob:common:transpiler', {
         updateOnly: this.options.updateOnly,
         onlyLatestLTS: true,
         isApp: true,
@@ -165,7 +165,7 @@ export default class PobAppGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
     if (!inMonorepo || inMonorepo.root) {
-      await this.composeWith('pob:common:husky', {});
+      this.composeWith('pob:common:husky', {});
     }
 
     const babelEnvs = (pkg.pob && pkg.pob.babelEnvs) || [];
@@ -190,7 +190,7 @@ export default class PobAppGenerator extends Generator {
       pkg,
     ).filter(Boolean);
 
-    await this.composeWith('pob:common:typescript', {
+    this.composeWith('pob:common:typescript', {
       enable: typescript,
       isApp: true,
       isAppLibrary,
@@ -235,17 +235,22 @@ export default class PobAppGenerator extends Generator {
       })(),
     });
 
-    await this.composeWith('pob:common:remove-old-dependencies');
+    this.composeWith('pob:common:remove-old-dependencies');
 
     const enableReleasePlease =
       !inMonorepo && this.appConfig.testing && this.appConfig.ci;
 
     if (this.appConfig.type !== 'remix') {
-      await this.composeWith('pob:common:testing', {
+      this.composeWith('pob:common:testing', {
         enable: this.appConfig.testing,
         disableYarnGitCache: this.options.disableYarnGitCache,
         enableReleasePlease,
         testing: this.appConfig.testing,
+        runner: this.appConfig.testing
+          ? (inMonorepo
+              ? inMonorepo.pobMonorepoConfig.testRunner
+              : this.appConfig.testRunner) || 'jest'
+          : undefined,
         e2eTesting: this.appConfig.e2e ? '.' : '',
         typescript,
         build: typescript && this.appConfig.type !== 'expo',
@@ -259,11 +264,11 @@ export default class PobAppGenerator extends Generator {
         srcDirectory,
       });
 
-      await this.composeWith('pob:app:e2e-testing', {
+      this.composeWith('pob:app:e2e-testing', {
         enable: this.appConfig.e2e,
       });
 
-      await this.composeWith('pob:common:format-lint', {
+      this.composeWith('pob:common:format-lint', {
         isApp: true,
         documentation: false,
         testing: this.appConfig.testing,
@@ -281,7 +286,7 @@ export default class PobAppGenerator extends Generator {
         buildDirectory: this.appConfig.type === 'expo' ? '.expo' : 'build',
       });
 
-      await this.composeWith('pob:common:release', {
+      this.composeWith('pob:common:release', {
         enable:
           !inMonorepo &&
           this.appConfig.testing &&
@@ -296,7 +301,7 @@ export default class PobAppGenerator extends Generator {
       });
     }
 
-    await this.composeWith('pob:core:vscode', {
+    this.composeWith('pob:core:vscode', {
       root: !inMonorepo,
       monorepo: false,
       packageManager: this.options.packageManager,
@@ -310,7 +315,7 @@ export default class PobAppGenerator extends Generator {
       ignorePaths.push('/.env*', '!/.env.example');
     }
 
-    await this.composeWith('pob:core:gitignore', {
+    this.composeWith('pob:core:gitignore', {
       root: !inMonorepo || inMonorepo.root,
       documentation: false,
       testing: this.appConfig.testing,
@@ -319,16 +324,16 @@ export default class PobAppGenerator extends Generator {
       buildInGit: false,
     });
 
-    await this.composeWith('pob:core:npm', { enable: false });
+    this.composeWith('pob:core:npm', { enable: false });
 
     switch (this.appConfig.type) {
       case 'next.js':
-        await this.composeWith('pob:app:nextjs', {
+        this.composeWith('pob:app:nextjs', {
           export: this.appConfig.export,
         });
         break;
       case 'remix':
-        await this.composeWith('pob:app:remix', {});
+        this.composeWith('pob:app:remix', {});
         break;
     }
 
@@ -341,7 +346,7 @@ export default class PobAppGenerator extends Generator {
     }
   }
 
-  async writing() {
+  writing() {
     // Re-read the content at this point because a composed generator might modify it.
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
 
@@ -355,6 +360,6 @@ export default class PobAppGenerator extends Generator {
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);
 
-    await this.composeWith('pob:core:sort-package');
+    this.composeWith('pob:core:sort-package');
   }
 }

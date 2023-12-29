@@ -115,9 +115,9 @@ export default class CommonTestingGenerator extends Generator {
     });
   }
 
-  async default() {
+  default() {
     if (!inMonorepo || inMonorepo.root) {
-      await this.composeWith('pob:core:ci', {
+      this.composeWith('pob:core:ci', {
         enable: this.options.ci,
         enableReleasePlease: this.options.enableReleasePlease,
         enableYarnVersion: this.options.enableYarnVersion,
@@ -135,7 +135,7 @@ export default class CommonTestingGenerator extends Generator {
         onlyLatestLTS: this.options.onlyLatestLTS,
       });
     } else {
-      await this.composeWith('pob:core:ci', {
+      this.composeWith('pob:core:ci', {
         enable: false,
       });
     }
@@ -173,6 +173,16 @@ export default class CommonTestingGenerator extends Generator {
 
     const isJestRunner = this.options.runner === 'jest';
 
+    const tsTestUtil = 'ts-node'; // : 'tsimp' | 'ts-node' | 'swc'
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      this.options.enable &&
+        (!inMonorepo || inMonorepo.root) &&
+        this.options.runner === 'node' &&
+        this.options.typescript,
+      [tsTestUtil],
+    );
+
     if (
       !this.options.enable ||
       !isJestRunner ||
@@ -187,7 +197,6 @@ export default class CommonTestingGenerator extends Generator {
       this.fs.delete(this.destinationPath('jest.config.json'));
     }
 
-    const tsTestUtil = 'ts-node'; // : 'tsimp' | 'ts-node' | 'swc
     const tsTestLoaderOption = (() => {
       switch (tsTestUtil) {
         case 'tsimp':
@@ -198,13 +207,6 @@ export default class CommonTestingGenerator extends Generator {
           return '--import=@swc-node/register/esm';
       }
     })();
-    packageUtils.addOrRemoveDevDependencies(
-      pkg,
-      this.options.enable &&
-        this.options.runner === 'node' &&
-        this.options.typescript,
-      [tsTestUtil],
-    );
 
     const createTestCommand = ({
       coverage,
@@ -275,13 +277,11 @@ export default class CommonTestingGenerator extends Generator {
       writeAndFormatJson(this.fs, this.destinationPath('package.json'), pkg);
     } else {
       const jestConfigPath = this.destinationPath('jest.config.json');
-      if (this.options.runner === 'jest') {
-        packageUtils.addOrRemoveDevDependencies(
-          pkg,
-          enableForMonorepo || !globalTesting,
-          ['jest', '@types/jest'],
-        );
-      }
+      packageUtils.addOrRemoveDevDependencies(
+        pkg,
+        (enableForMonorepo || !globalTesting) && this.options.runner === 'jest',
+        ['jest', '@types/jest'],
+      );
 
       packageUtils.removeScripts(['test:coverage']);
       if (this.options.monorepo && !globalTesting) {

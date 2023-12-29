@@ -201,7 +201,7 @@ export default class PobMonorepoGenerator extends Generator {
     this.config.delete('pob-config');
   }
 
-  async default() {
+  default() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
     const packageNames = this.packageNames;
@@ -216,15 +216,16 @@ export default class PobMonorepoGenerator extends Generator {
       throw new Error('packages should not be empty');
     }
 
-    await this.composeWith('pob:common:husky', {});
+    this.composeWith('pob:common:husky', {});
 
     const isYarnVersionEnabled = this.pobLernaConfig.ci;
 
     const splitCIJobs = this.packageNames.length > 8;
 
-    await this.composeWith('pob:common:testing', {
+    this.composeWith('pob:common:testing', {
       monorepo: true,
       enable: this.pobLernaConfig.testing,
+      testRunner: this.pobLernaConfig.testRunner,
       disableYarnGitCache: this.options.disableYarnGitCache,
       enableReleasePlease: false,
       enableYarnVersion: isYarnVersionEnabled,
@@ -241,7 +242,7 @@ export default class PobMonorepoGenerator extends Generator {
       splitCIJobs,
     });
 
-    await this.composeWith('pob:common:format-lint', {
+    this.composeWith('pob:common:format-lint', {
       monorepo: true,
       documentation: this.pobLernaConfig.documentation,
       typescript: this.pobLernaConfig.typescript,
@@ -259,7 +260,7 @@ export default class PobMonorepoGenerator extends Generator {
       rootIgnorePaths: [],
     });
 
-    await this.composeWith('pob:lib:doc', {
+    this.composeWith('pob:lib:doc', {
       enabled: this.pobLernaConfig.documentation,
       testing: this.pobLernaConfig.testing,
       packageNames: JSON.stringify(packageNames),
@@ -267,7 +268,7 @@ export default class PobMonorepoGenerator extends Generator {
       packageManager: this.options.packageManager,
     });
 
-    await this.composeWith('pob:core:vscode', {
+    this.composeWith('pob:core:vscode', {
       root: true,
       monorepo: true,
       packageManager: this.options.packageManager,
@@ -279,16 +280,16 @@ export default class PobMonorepoGenerator extends Generator {
     });
 
     // Always add a gitignore, because npm publish uses it.
-    await this.composeWith('pob:core:gitignore', {
+    this.composeWith('pob:core:gitignore', {
       root: true,
       typescript: this.pobLernaConfig.typescript,
       documentation: this.pobLernaConfig.documentation,
       testing: this.pobLernaConfig.testing,
     });
 
-    await this.composeWith('pob:common:remove-old-dependencies');
+    this.composeWith('pob:common:remove-old-dependencies');
 
-    await this.composeWith('pob:common:release', {
+    this.composeWith('pob:common:release', {
       enable: true,
       enablePublish: !this.options.isAppProject,
       withBabel: this.pobLernaConfig.typescript,
@@ -299,7 +300,7 @@ export default class PobMonorepoGenerator extends Generator {
       updateOnly: this.options.updateOnly,
     });
 
-    await this.composeWith('pob:monorepo:typescript', {
+    this.composeWith('pob:monorepo:typescript', {
       enable: this.pobLernaConfig.typescript,
       isAppProject: this.options.isAppProject,
       packageNames: JSON.stringify(packageNames),
@@ -315,7 +316,7 @@ export default class PobMonorepoGenerator extends Generator {
     }
   }
 
-  async writing() {
+  writing() {
     if (!this.options.isAppProject) {
       const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
 
@@ -354,7 +355,7 @@ export default class PobMonorepoGenerator extends Generator {
       this.fs.writeJSON(this.destinationPath('package.json'), pkg);
     }
 
-    await this.composeWith('pob:core:sort-package');
+    this.composeWith('pob:core:sort-package');
   }
 
   end() {
