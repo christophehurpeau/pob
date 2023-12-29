@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.1.1](https://github.com/christophehurpeau/pob/compare/pob@18.1.0...pob@18.1.1) (2023-12-29)
+
+
+### Bug Fixes
+
+* fix definition path for app library ([4f0c265](https://github.com/christophehurpeau/pob/commit/4f0c2652a7fb498e541a1615aea15849e8cb0032))
+
+
+
+
 ## [18.1.0](https://github.com/christophehurpeau/pob/compare/pob@18.0.0...pob@18.1.0) (2023-12-29)
 
 
