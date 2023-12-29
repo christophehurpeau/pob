@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "@pob:target:RollupNode20",
-  "extends": "./base-rollup.json",
+  "extends": "./base-bundler.json",
 
   "compilerOptions": {
     "target": "es2022",

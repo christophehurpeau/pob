@@ -90,6 +90,10 @@ export default class CommonTypescriptGenerator extends Generator {
       default: '',
       desc: 'typescript plugins',
     });
+    this.option('nextConfig', {
+      type: Boolean,
+      default: false,
+    });
     this.option('additionalIncludes', {
       type: String,
       default: '',
@@ -140,6 +144,10 @@ export default class CommonTypescriptGenerator extends Generator {
           ];
         }
         return ['@pob/root/tsconfigs/targets/rollup-es2015.json'];
+      }
+
+      if (this.options.dom) {
+        return ['@pob/root/tsconfigs/targets/webpack.json'];
       }
       return [];
     })();
@@ -258,6 +266,7 @@ export default class CommonTypescriptGenerator extends Generator {
           srcDirectory: this.options.srcDirectory || this.options.rootDir,
           jsx,
           jsxPreserve: this.options.jsxPreserve,
+          nextConfig: this.options.nextConfig,
           composite,
           dom,
           baseUrl: this.options.baseUrl,

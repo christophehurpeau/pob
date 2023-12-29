@@ -1,9 +1,10 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "@pob:target:rollup-babel",
-  "extends": "./base-rollup.json",
+  "extends": "./base-bundler.json",
 
   "compilerOptions": {
+    "isolatedModules": true,
     "target": "esnext",
     "lib": ["esnext"]
   }

@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "@pob:target:BaseRollup",
+  "display": "@pob:target:BaseBundler",
 
   "compilerOptions": {
     "importHelpers": true,

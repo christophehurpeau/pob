@@ -1,11 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "@pob:target:rollup-babel-with-dom",
+  "display": "@pob:target:Webpack",
   "extends": "./base-bundler.json",
 
   "compilerOptions": {
     "isolatedModules": true,
-    "target": "esnext",
-    "lib": ["DOM", "esnext"]
+    "target": "ESNext",
+    "lib": ["DOM", "ESNext"]
   }
 }

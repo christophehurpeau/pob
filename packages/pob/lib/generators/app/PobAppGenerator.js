@@ -193,6 +193,7 @@ export default class PobAppGenerator extends Generator {
       enable: typescript,
       isApp: true,
       isAppLibrary,
+      nextConfig: this.appConfig.type === 'next.js',
       // nextjs now supports src
       rootDir: this.appConfig.type === 'expo' ? '.' : srcDirectory,
       srcDirectory,
