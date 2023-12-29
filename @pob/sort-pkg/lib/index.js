@@ -4,6 +4,7 @@ import sortObject from '@pob/sort-object';
 
 export default function sortPkg(pkg) {
   sortObject(pkg, [
+    /* information on the package */
     'name',
     'private',
     'version',
@@ -16,16 +17,21 @@ export default function sortPkg(pkg) {
     'repository',
     'homepage',
     'bugs',
-    'preferGlobal',
+    /* package type */
     'type',
+    /* corepack */ 'packageManager',
+    /* package env and configuration */
     'engines',
     'engineStrict',
     'os',
     'cpu',
-    /* yarn berry */ 'packageManager',
-    'publishConfig',
+    'libc',
+    'sideEffects',
+    'config',
+    /* workspaces */
     'workspaces',
-    'browserslist',
+    /* exports */
+    'bin',
     'main',
     'types',
     'typesVersions',
@@ -34,23 +40,29 @@ export default function sortPkg(pkg) {
     'browser',
     'browserify',
     'exports',
-    'sideEffects',
-    'config',
-    'style',
-    'bin',
+    'style', // https://stackoverflow.com/questions/32037150/style-field-in-package-json
+    /* documentation */
     'man',
+    /* publish */
+    'publishConfig',
     'directories',
     'files',
+    /* scripts */
     'scripts',
-    'husky',
-    'lint-staged',
+    /* dependencies configs */
     'babel',
-    'prettier',
+    'browserslist',
     'commitlint',
     'eslintConfig',
-    'stylelint',
+    'husky',
     'jest',
+    'lint-staged',
     'pob',
+    'prettier',
+    'stylelint',
+    /* dependencies */
+    'overrides',
+    'overridesExplained',
     'resolutions',
     'resolutionsExplained',
     'peerDependencies',
@@ -65,6 +77,8 @@ export default function sortPkg(pkg) {
   ]);
 
   if (pkg.scripts) sortObject(pkg.scripts);
+  if (pkg.overrides) sortObject(pkg.overrides);
+  if (pkg.overridesExplained) sortObject(pkg.overridesExplained);
   if (pkg.resolutions) sortObject(pkg.resolutions);
   if (pkg.resolutionsExplained) sortObject(pkg.resolutionsExplained);
   if (pkg.peerDependencies) sortObject(pkg.peerDependencies);
