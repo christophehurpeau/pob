@@ -2,7 +2,7 @@ import fs from 'node:fs';
 import sortPkg from '@pob/sort-pkg';
 import prettier from 'prettier';
 
-export default function prettyPkg(pkg, prettierOptions = pkg.prettier) {
+export default function prettyPkg(pkg, prettierOptions) {
   if (typeof pkg === 'string') {
     pkg = JSON.parse(pkg);
     if (typeof pkg !== 'object') {

@@ -15,17 +15,17 @@
   "engines": {
     "node": ">=18.12.0"
   },
-  "publishConfig": {
-    "access": "public"
-  },
+  "sideEffects": false,
+  "bin": "./bin/pretty-pkg.js",
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
     "./bin/pretty-pkg.js": "./bin/pretty-pkg.js",
     "./package.json": "./package.json"
   },
-  "sideEffects": false,
-  "bin": "./bin/pretty-pkg.js",
+  "publishConfig": {
+    "access": "public"
+  },
   "files": [
     "lib",
     "bin"
@@ -34,10 +34,11 @@
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet @pob/pretty-pkg"
   },
-  "prettier": "@pob/root/prettier-config",
   "pob": {},
+  "prettier": "@pob/root/prettier-config",
   "dependencies": {
     "@pob/sort-pkg": "6.2.0",
+    "glob": "^10.0.0",
     "prettier": "^2.6.2"
   }
 }

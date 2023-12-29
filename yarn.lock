@@ -2893,6 +2893,7 @@ __metadata:
   resolution: "@pob/pretty-pkg@workspace:@pob/pretty-pkg"
   dependencies:
     "@pob/sort-pkg": "npm:6.2.0"
+    glob: "npm:^10.0.0"
     prettier: "npm:^2.6.2"
   bin:
     pretty-pkg: ./bin/pretty-pkg.js
