@@ -1,0 +1,11 @@
+{
+  "pob": {
+    "app": {
+      "type": "node",
+      "testing": false
+    },
+    "project": {
+      "type": "app"
+    }
+  }
+}

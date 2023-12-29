@@ -1,5 +1,8 @@
 CHANGELOG.md
 /.yarn/**/*
 /packages/*/dist
+/packages/*/build
 /@pob/*/dist
+/@pob/*/build
 /pob-examples/*/dist
+/pob-examples/*/build

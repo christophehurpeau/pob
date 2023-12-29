@@ -28,6 +28,8 @@
     "postinstall": "yarn node @pob/root/bin/pob-root-postinstall.cjs",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage --coverageReporters=json --coverageReporters=text",
+    "test:coverage:json": "NODE_OPTIONS=--experimental-vm-modules jest --coverage --coverageReporters=json",
+    "test:coverage:lcov": "NODE_OPTIONS=--experimental-vm-modules jest --coverage --coverageReporters=lcov",
     "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch",
     "tsc": "tsc -b",
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
