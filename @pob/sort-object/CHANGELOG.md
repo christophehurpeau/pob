@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.1](https://github.com/christophehurpeau/pob/compare/@pob/sort-object@6.2.0...@pob/sort-object@6.2.1) (2023-12-29)
+
+Note: no notable changes
+
+
+
+
 ## [6.2.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-object@6.1.0...@pob/sort-object@6.2.0) (2023-12-10)
 
 

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@6.3.0...@pob/pretty-pkg@7.0.0) (2023-12-29)
+
+
+### Features
+
+* **@pob/pretty-pkg:** read workspaces ([11313e7](https://github.com/christophehurpeau/pob/commit/11313e737d701b180b0460e8fcb822436944d9d1))
+
+Version bump for dependency: sort-pkg
+
+
 ## [6.3.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@6.2.0...@pob/pretty-pkg@6.3.0) (2023-12-10)
 
 

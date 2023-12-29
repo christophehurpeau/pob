@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.12.0...@pob/root@9.0.0) (2023-12-29)
+
+
+### Features
+
+* improve tsconfigs ([9112fb1](https://github.com/christophehurpeau/pob/commit/9112fb13dd1ed9ab5191a39c92140a0d8653ff3a))
+
+Version bump for dependency: pretty-eslint-config
+Version bump for dependency: pretty-pkg
+Version bump for dependency: repository-check-dirty
+
+
 ## [8.12.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.11.1...@pob/root@8.12.0) (2023-12-28)
 
 

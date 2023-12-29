@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.1](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@11.0.0...babel-preset-pob-env@11.0.1) (2023-12-29)
+
+Note: no notable changes
+
+Version bump for dependency: babel-plugin-fix-class-properties-uninitialized
+
+
 ## [11.0.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@10.3.0...babel-preset-pob-env@11.0.0) (2023-12-14)
 
 

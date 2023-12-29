@@ -1,6 +1,6 @@
 {
   "name": "@pob/rollup-typescript",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "rollup configuration with typescript for pob",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -54,7 +54,7 @@
     }
   },
   "dependencies": {
-    "@pob/rollup": "1.0.0",
+    "@pob/rollup": "1.0.1",
     "@rollup/plugin-node-resolve": "15.2.3",
     "@rollup/plugin-run": "3.0.2",
     "@rollup/plugin-typescript": "11.1.5",

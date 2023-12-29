@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@6.2.0...@pob/sort-pkg@7.0.0) (2023-12-29)
+
+
+### ⚠ BREAKING CHANGES
+
+* **@pob/sort-pkg:** resort fields and add some missing fields
+
+### Features
+
+* **@pob/sort-pkg:** resort fields and add some missing fields ([4e4c521](https://github.com/christophehurpeau/pob/commit/4e4c5219cdf6dd65abf70a0d9fb5b564127cdf51))
+
+
+### Bug Fixes
+
+* add missing authors field ([3d70b07](https://github.com/christophehurpeau/pob/commit/3d70b0793836d83200bffedfebbff48a86231a89))
+
+Version bump for dependency: sort-object
+
+
 ## [6.2.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@6.1.0...@pob/sort-pkg@6.2.0) (2023-12-10)
 
 

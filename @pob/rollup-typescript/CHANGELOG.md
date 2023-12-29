@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.1](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@2.2.0...@pob/rollup-typescript@2.2.1) (2023-12-29)
+
+
+### Bug Fixes
+
+* add env target + version in cache path ([48a1e3f](https://github.com/christophehurpeau/pob/commit/48a1e3fa7cc99c27affa8f0f9a943f9573bd89de))
+
+Version bump for dependency: rollup
+
+
 ## [2.2.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@2.1.0...@pob/rollup-typescript@2.2.0) (2023-12-28)
 
 

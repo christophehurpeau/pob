@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.0.0](https://github.com/christophehurpeau/pob/compare/pob@17.4.0...pob@18.0.0) (2023-12-29)
+
+
+### Features
+
+* improve tsconfigs ([9112fb1](https://github.com/christophehurpeau/pob/commit/9112fb13dd1ed9ab5191a39c92140a0d8653ff3a))
+
+
+### Bug Fixes
+
+* fix documentation lcov ([ff6166f](https://github.com/christophehurpeau/pob/commit/ff6166f77ad4faf6039d0dc69337ac6e20fa10af))
+* fix experimental-test-coverage option ([d598efd](https://github.com/christophehurpeau/pob/commit/d598efd3818cd1e26dfb34f4f636bc2469400fe7))
+* fix test override existing detection ([744d556](https://github.com/christophehurpeau/pob/commit/744d5569541d27c5c4beee84a620f0e40f369b29))
+* **pob:** fix node test runner coverage ([e9ba7b1](https://github.com/christophehurpeau/pob/commit/e9ba7b1f035bb318fe9e20cddd93df295a4df1d1))
+* **pob:** fix test override existing detection ([5916c16](https://github.com/christophehurpeau/pob/commit/5916c16162a28e333410315d8d82fbf3bea2f5cc))
+* **pob:** update test runner ([29f7f0c](https://github.com/christophehurpeau/pob/commit/29f7f0c539401fcb9086fa913beb7935da7a8857))
+
+Version bump for dependency: sort-eslint-config
+Version bump for dependency: sort-object
+Version bump for dependency: sort-pkg
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: root
+
+
 ## [17.4.0](https://github.com/christophehurpeau/pob/compare/pob@17.3.0...pob@17.4.0) (2023-12-28)
 
 
