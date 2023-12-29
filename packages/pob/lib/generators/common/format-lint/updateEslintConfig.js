@@ -6,7 +6,7 @@ function updateOverrides(config, testsOverride) {
     : config.overrides.findIndex(
         testsOverride.env?.jest
           ? (override) => override.env && override.env.jest
-          : (override) => override.extends.includes(testsOverride.extends[0]),
+          : (override) => override.extends?.includes(testsOverride.extends[0]),
       );
   if (!testsOverride) {
     if (existingTestsOverrideIndex !== -1) {
