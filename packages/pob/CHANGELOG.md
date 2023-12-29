@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.1.0](https://github.com/christophehurpeau/pob/compare/pob@18.0.0...pob@18.1.0) (2023-12-29)
+
+
+### Features
+
+* enable typescript-eslint EXPERIMENTAL_useProjectService option ([4bccf68](https://github.com/christophehurpeau/pob/commit/4bccf68b4f743dba5211432ea1dba056e901bc93))
+
+
+### Bug Fixes
+
+* fix package.type for app library ([d5df9d7](https://github.com/christophehurpeau/pob/commit/d5df9d72f2325c042e3ff2d610a2d3d4c378c950))
+
+
+
+
 ## [18.0.0](https://github.com/christophehurpeau/pob/compare/pob@17.4.0...pob@18.0.0) (2023-12-29)
 
 
