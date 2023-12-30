@@ -103,15 +103,15 @@ module.exports = (file, api, options) => {
           propertiesMap[propertyName][not ? 'not' : 'default'];
         const callExpressionPath = memberExpressionPathToReplace.parentPath;
 
-        const argument0 = callExpressionPath.value.arguments[0];
-        const argument1 = memberExpression.object.arguments[0];
+        const value = memberExpression.object.arguments[0];
+        const expected = callExpressionPath.value.arguments[0];
 
         hasAssertions = true;
         callExpressionPath.value.callee = j.memberExpression(
           j.identifier('assert'),
           j.identifier(assertPropertyName),
         );
-        callExpressionPath.value.arguments = [argument0, argument1];
+        callExpressionPath.value.arguments = [value, expected];
       });
 
     if (hasAssertions) {
