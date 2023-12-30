@@ -1,3 +1,4 @@
+import { existsSync } from 'node:fs';
 import Generator from 'yeoman-generator';
 import * as packageUtils from '../../../utils/package.js';
 import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
@@ -26,6 +27,12 @@ export default class MonorepoTypescriptGenerator extends Generator {
     this.option('packagePaths', {
       type: String,
       required: true,
+    });
+
+    this.option('testRunner', {
+      type: String,
+      required: false,
+      default: 'jest',
     });
   }
 
@@ -85,11 +92,13 @@ export default class MonorepoTypescriptGenerator extends Generator {
     const tsconfigPath = this.destinationPath('tsconfig.json');
     const tsconfigCheckPath = this.destinationPath('tsconfig.check.json');
     const tsconfigBuildPath = this.destinationPath('tsconfig.build.json');
+    const tsconfigTestPath = this.destinationPath('tsconfig.test.json');
 
     if (!this.options.enable) {
       this.fs.delete(tsconfigPath);
       this.fs.delete(tsconfigCheckPath);
       this.fs.delete(tsconfigBuildPath);
+      this.fs.delete(tsconfigTestPath);
     } else {
       const packagePaths = JSON.parse(this.options.packagePaths);
 
@@ -99,8 +108,23 @@ export default class MonorepoTypescriptGenerator extends Generator {
         tsconfigPath,
         {
           packagePaths,
+          tsConfigSuffix: false,
         },
       );
+
+      if (this.options.testRunner === 'node') {
+        copyAndFormatTpl(
+          this.fs,
+          this.templatePath('tsconfig.json.ejs'),
+          tsconfigTestPath,
+          {
+            packagePaths: packagePaths.filter((packagePath) =>
+              existsSync(`${packagePath}/tsconfig.test.json`),
+            ),
+            tsConfigSuffix: 'test',
+          },
+        );
+      }
 
       this.fs.delete(tsconfigCheckPath);
       this.fs.delete(tsconfigBuildPath);

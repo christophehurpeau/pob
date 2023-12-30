@@ -1,0 +1,10 @@
+{
+  "extends": [
+    "./tsconfig.json",
+    "@pob/root/tsconfigs/targets/node-<%= nodeVersion %>.json"
+  ],
+  "ts-node": {
+    "esm": true,
+    "transpileOnly": true
+  }
+}

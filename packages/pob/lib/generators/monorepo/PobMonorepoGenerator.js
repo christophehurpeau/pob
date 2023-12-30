@@ -225,7 +225,7 @@ export default class PobMonorepoGenerator extends Generator {
     this.composeWith('pob:common:testing', {
       monorepo: true,
       enable: this.pobLernaConfig.testing,
-      runner: this.pobLernaConfig.testRunner,
+      runner: this.pobLernaConfig.testRunner || 'jest',
       disableYarnGitCache: this.options.disableYarnGitCache,
       enableReleasePlease: false,
       enableYarnVersion: isYarnVersionEnabled,
@@ -305,6 +305,7 @@ export default class PobMonorepoGenerator extends Generator {
       isAppProject: this.options.isAppProject,
       packageNames: JSON.stringify(packageNames),
       packagePaths: JSON.stringify(packagePaths),
+      testRunner: this.pobLernaConfig.testRunner,
     });
 
     this.fs.writeJSON(this.destinationPath('package.json'), pkg);

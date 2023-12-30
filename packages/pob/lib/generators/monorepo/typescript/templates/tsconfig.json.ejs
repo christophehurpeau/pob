@@ -2,7 +2,7 @@
   "files": [],
   "references": [
 <% packagePaths.forEach((packagePath, index) => { -%>
-    { "path": "<%= packagePath %>/tsconfig.json" }<%= index === packagePaths.length -1 ? '' : ',' %>
+    { "path": "<%= packagePath %>/tsconfig<%= tsConfigSuffix ? `.${tsConfigSuffix}` : '' %>.json" }<%= index === packagePaths.length -1 ? '' : ',' %>
 <% }) -%>
   ]
 }
