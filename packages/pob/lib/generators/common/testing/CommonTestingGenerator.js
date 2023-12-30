@@ -214,6 +214,8 @@ export default class CommonTestingGenerator extends Generator {
       coverageJson,
       watch,
       shouldUseExperimentalVmModules,
+      workspacesPattern,
+      hasReact,
     }) => {
       switch (this.options.runner) {
         case 'jest': {
@@ -234,6 +236,9 @@ export default class CommonTestingGenerator extends Generator {
           }`;
         }
         case 'node': {
+          if (!workspacesPattern && this.options.monorepo) {
+            throw new Error('Invalid workspacesPattern');
+          }
           return `${tsTestUtil === 'tsimp' ? 'TSIMP_DIAG=ignore ' : ''}${
             tsTestUtil === 'ts-node'
               ? 'TS_NODE_PROJECT=tsconfig.test.json '
@@ -248,15 +253,24 @@ export default class CommonTestingGenerator extends Generator {
               : ''
           }node ${
             this.options.typescript ? `${tsTestLoaderOption} ` : ''
-          }--test ${this.options.srcDirectory}/${
-            this.options.typescript ? '**/*.test.ts' : '**/*.test.js'
-          }`;
+          }--test ${
+            this.options.monorepo
+              ? workspacesPattern
+              : this.options.srcDirectory
+          }/${this.options.typescript ? '**/*.test.ts' : '**/*.test.js'}`;
         }
         default: {
           throw new Error('Invalid runner');
         }
       }
     };
+
+    const jestConfigPath = this.destinationPath('jest.config.json');
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      (enableForMonorepo || !globalTesting) && this.options.runner === 'jest',
+      ['jest', '@types/jest'],
+    );
 
     if (!this.options.enable) {
       // if (inMonorepo) {
@@ -265,25 +279,33 @@ export default class CommonTestingGenerator extends Generator {
       //   }
       //   delete pkg.scripts['generate:test-coverage'];
       // }
-      if (pkg.scripts) {
-        delete pkg.scripts.test;
-        delete pkg.scripts['generate:test-coverage'];
-        delete pkg.scripts['test:watch'];
-        delete pkg.scripts['test:coverage'];
-        delete pkg.scripts['test:coverage:json'];
-        delete pkg.scripts['test:coverage:lcov'];
-      }
+      packageUtils.removeScripts([
+        'test',
+        'test:coverage',
+        'generate:test-coverage',
+        'test:watch',
+        'test:coverage',
+        'test:coverage:json',
+        'test:coverage:lcov',
+      ]);
 
       writeAndFormatJson(this.fs, this.destinationPath('package.json'), pkg);
     } else {
-      const jestConfigPath = this.destinationPath('jest.config.json');
-      packageUtils.addOrRemoveDevDependencies(
-        pkg,
-        (enableForMonorepo || !globalTesting) && this.options.runner === 'jest',
-        ['jest', '@types/jest'],
-      );
+      let workspacesPattern;
+      if (this.options.monorepo) {
+        const workspacesWithoutStar = pkg.workspaces.map((workspace) => {
+          if (!workspace.endsWith('/*')) {
+            throw new Error(`Invalid workspace format: ${workspace}`);
+          }
+          return workspace.slice(0, -2);
+        });
+        workspacesPattern =
+          workspacesWithoutStar.length === 1
+            ? workspacesWithoutStar[0]
+            : `@(${workspacesWithoutStar.join('|')})`;
+      }
+      console.log({ workspacesPattern });
 
-      packageUtils.removeScripts(['test:coverage']);
       if (this.options.monorepo && !globalTesting) {
         packageUtils.addScripts(pkg, {
           test: 'yarn workspaces foreach --parallel -Av run test',
@@ -292,36 +314,33 @@ export default class CommonTestingGenerator extends Generator {
         const shouldUseExperimentalVmModules = pkg.type === 'module';
 
         packageUtils.addScripts(pkg, {
-          test: createTestCommand({ shouldUseExperimentalVmModules }),
+          test: createTestCommand({
+            workspacesPattern,
+            shouldUseExperimentalVmModules,
+          }),
           'test:watch': createTestCommand({
+            workspacesPattern,
             shouldUseExperimentalVmModules,
             watch: true,
           }),
           'test:coverage': createTestCommand({
+            workspacesPattern,
             shouldUseExperimentalVmModules,
             coverage: true,
           }),
           'test:coverage:lcov': createTestCommand({
+            workspacesPattern,
             shouldUseExperimentalVmModules,
             coverageLcov: true,
           }),
           'test:coverage:json': createTestCommand({
+            workspacesPattern,
             shouldUseExperimentalVmModules,
             coverageJson: true,
           }),
         });
 
         if (isJestRunner) {
-          const workspacesWithoutStar = pkg.workspaces.map((workspace) => {
-            if (!workspace.endsWith('/*')) {
-              throw new Error(`Invalid workspace format: ${workspace}`);
-            }
-            return workspace.slice(0, -2);
-          });
-          const workspacesPattern =
-            workspacesWithoutStar.length === 1
-              ? workspacesWithoutStar[0]
-              : `@(${workspacesWithoutStar.join('|')})`;
           hasReact = yoConfigPobMonorepo.packageNames.some((pkgName) =>
             pkgName.startsWith('react-'),
           );
@@ -479,7 +498,8 @@ export default class CommonTestingGenerator extends Generator {
 
     if (
       transpileWithBabel &&
-      ((this.options.monorepo && globalTesting) || !globalTesting)
+      ((this.options.monorepo && globalTesting) || !globalTesting) &&
+      this.options.runner === 'jest'
     ) {
       // cjs for jest compat
       copyAndFormatTpl(

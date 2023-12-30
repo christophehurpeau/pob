@@ -7,7 +7,7 @@ function updateOverrides(config, testsOverride) {
         testsOverride.env?.jest
           ? (override) => override.env && override.env.jest
           : (override) =>
-              override?.env.jest ||
+              override?.env?.jest ||
               override.extends?.includes(testsOverride.extends[0]),
       );
   if (!testsOverride) {

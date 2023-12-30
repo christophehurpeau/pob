@@ -404,12 +404,14 @@ export default class CommonLintGenerator extends Generator {
       ? `{${pkg.type === 'commonjs' ? 'mjs' : 'cjs'},js}`
       : `${hasReact ? '{ts,tsx}' : 'ts'}`;
 
+    const testRunner = globalTesting
+      ? inMonorepo.pobConfig.monorepo.testRunner
+      : this.options.testRunner;
     const testsOverride =
       this.options.testing || globalTesting
         ? {
             files: [`**/*.test.${ext}`, `__tests__/**/*.${ext}`],
-            ...(this.options.testRunner == null ||
-            this.options.testRunner === 'jest'
+            ...(testRunner == null || testRunner === 'jest'
               ? { env: { jest: true } }
               : {}),
             rules: {

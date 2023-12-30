@@ -225,7 +225,7 @@ export default class PobMonorepoGenerator extends Generator {
     this.composeWith('pob:common:testing', {
       monorepo: true,
       enable: this.pobLernaConfig.testing,
-      testRunner: this.pobLernaConfig.testRunner,
+      runner: this.pobLernaConfig.testRunner,
       disableYarnGitCache: this.options.disableYarnGitCache,
       enableReleasePlease: false,
       enableYarnVersion: isYarnVersionEnabled,
