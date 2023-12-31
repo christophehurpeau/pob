@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.2](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@3.1.1...yarn-workspace-utils@3.1.2) (2023-12-31)
+
+Note: no notable changes
+
+Version bump for dependency: pob-babel
+
+
 ## [3.1.1](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@3.1.0...yarn-workspace-utils@3.1.1) (2023-12-29)
 
 Note: no notable changes

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@9.0.0...@pob/root@9.1.0) (2023-12-31)
+
+
+### Features
+
+* improve renovate branch naming support ([2e3ded4](https://github.com/christophehurpeau/pob/commit/2e3ded4ff6cf6a2991f50bab9d76ed3b3b8d5a28))
+
+
+
+
 ## [9.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@8.12.0...@pob/root@9.0.0) (2023-12-29)
 
 

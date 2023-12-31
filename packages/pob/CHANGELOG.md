@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.2.0](https://github.com/christophehurpeau/pob/compare/pob@18.1.1...pob@18.2.0) (2023-12-31)
+
+
+### Features
+
+* initial work for monorepo node test runner ([c013532](https://github.com/christophehurpeau/pob/commit/c013532d6f204eb59861a95d946604f858cabe1a))
+
+
+### Bug Fixes
+
+* monorepo test runner ([d0d443f](https://github.com/christophehurpeau/pob/commit/d0d443ff95c03671378bb1f7a2c947075b982a04))
+* **pob:** fix test override existing detection ([a030544](https://github.com/christophehurpeau/pob/commit/a03054400ded303aa8129f271a5abf1ee0701355))
+* **pob:** fix test override existing detection ([4c54e86](https://github.com/christophehurpeau/pob/commit/4c54e86ba53e0cdad4ffa784ee8d89b96a139a4f))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: root
+
+
 ## [18.1.1](https://github.com/christophehurpeau/pob/compare/pob@18.1.0...pob@18.1.1) (2023-12-29)
 
 
