@@ -1,3 +1,4 @@
+import fs from 'node:fs';
 import path from 'node:path';
 import Generator from 'yeoman-generator';
 import inMonorepo from '../../../utils/inMonorepo.js';
@@ -211,6 +212,9 @@ export default class CommonTestingGenerator extends Generator {
       }
     })();
 
+    const hasTestFolder =
+      !this.options.monorepo && fs.existsSync(this.destinationPath('test'));
+
     const createTestCommand = ({
       coverage,
       coverageLcov,
@@ -256,11 +260,9 @@ export default class CommonTestingGenerator extends Generator {
               : ''
           }node ${
             this.options.typescript ? `${tsTestLoaderOption} ` : ''
-          }--test ${
-            this.options.monorepo
-              ? workspacesPattern
-              : this.options.srcDirectory
-          }/${this.options.typescript ? '**/*.test.ts' : '**/*.test.js'}`;
+          }--test ${this.options.monorepo ? `${workspacesPattern}/` : ''}${`${
+            hasTestFolder ? 'test/*' : `${this.options.srcDirectory}/**/*.test`
+          }.${this.options.typescript ? 'ts' : 'js'}`}`;
         }
         default: {
           throw new Error(`Invalid runner: "${testRunner}"`);
