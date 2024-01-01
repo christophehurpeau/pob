@@ -63,7 +63,7 @@
     "semver": "7.5.4",
     "ts-node": "11.0.0-beta.1",
     "tsimp": "2.0.10",
-    "typedoc": "0.25.4",
+    "typedoc": "0.25.6",
     "typescript": "5.3.3"
   }
 }
