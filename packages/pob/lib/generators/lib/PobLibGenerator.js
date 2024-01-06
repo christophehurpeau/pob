@@ -292,6 +292,7 @@ export default class PobLibGenerator extends Generator {
       packageManager: this.options.packageManager,
       isApp: false,
       splitCIJobs: false,
+      srcDirectory: withBabel || withTypescript ? 'src' : 'lib',
     });
 
     // must be after testing
