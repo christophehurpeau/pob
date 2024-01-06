@@ -335,21 +335,24 @@ export default class CommonTranspilerGenerator extends Generator {
 
         const defaultNodeEnvVersion = defaultNodeEnv && defaultNodeEnv.version;
 
-        envs.forEach(({ target, version, formats }) => {
+        envs.forEach(({ target, version, formats, omitVersionInFileName }) => {
           if (target === 'node' && entry === 'browser') return;
 
           const exportTarget = {};
 
           if (target === 'node') {
             const cjsExt = pkg.type === 'module' ? 'cjs' : 'cjs.js';
+            const filenameWithoutExt = `${entryDistName}-${target}${
+              omitVersionInFileName ? '' : version
+            }`;
             if (!formats || formats.includes('es')) {
-              exportTarget.import = `./${this.options.buildDirectory}/${entryDistName}-${target}${version}.mjs`;
+              exportTarget.import = `./${this.options.buildDirectory}/${filenameWithoutExt}.mjs`;
 
               if (formats && formats.includes('cjs')) {
-                exportTarget.require = `./${this.options.buildDirectory}/${entryDistName}-${target}${version}.${cjsExt}`;
+                exportTarget.require = `./${this.options.buildDirectory}/${filenameWithoutExt}.${cjsExt}`;
               }
             } else if (formats && formats.includes('cjs')) {
-              exportTarget.default = `./${this.options.buildDirectory}/${entryDistName}-${target}${version}.${cjsExt}`;
+              exportTarget.default = `./${this.options.buildDirectory}/${filenameWithoutExt}.${cjsExt}`;
             }
             // eslint: https://github.com/benmosher/eslint-plugin-import/issues/2132
             // jest: https://github.com/facebook/jest/issues/9771
