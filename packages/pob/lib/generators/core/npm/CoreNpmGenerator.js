@@ -60,6 +60,13 @@ export default class CoreNpmGenerator extends Generator {
           }
         });
       }
+      if (pkg.pob?.extraEntries) {
+        pkg.pob?.extraEntries.forEach((extraEntry) => {
+          if (extraEntry.directory) {
+            files.add(extraEntry.directory);
+          }
+        });
+      }
 
       pkg.files = [...files].filter(Boolean);
     } else {
