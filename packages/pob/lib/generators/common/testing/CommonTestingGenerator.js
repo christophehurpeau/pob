@@ -273,7 +273,9 @@ export default class CommonTestingGenerator extends Generator {
     const jestConfigPath = this.destinationPath('jest.config.json');
     packageUtils.addOrRemoveDevDependencies(
       pkg,
-      (enableForMonorepo || !globalTesting) && testRunner === 'jest',
+      this.options.enable &&
+        (enableForMonorepo || !globalTesting) &&
+        testRunner === 'jest',
       ['jest', '@types/jest'],
     );
 
