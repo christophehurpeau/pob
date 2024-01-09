@@ -57,7 +57,7 @@
     "@pob/rollup": "1.0.1",
     "@rollup/plugin-node-resolve": "15.2.3",
     "@rollup/plugin-run": "3.0.2",
-    "@rollup/plugin-typescript": "11.1.5",
+    "@rollup/plugin-typescript": "11.1.6",
     "rollup": "3.29.4",
     "rollup-config-external-dependencies": "^3.0.0"
   }
