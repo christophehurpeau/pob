@@ -3460,12 +3460,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:20.11.3, @types/node@npm:^20.8.3":
-  version: 20.11.3
-  resolution: "@types/node@npm:20.11.3"
+"@types/node@npm:*, @types/node@npm:20.11.4, @types/node@npm:^20.8.3":
+  version: 20.11.4
+  resolution: "@types/node@npm:20.11.4"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: dff64333435bbda87e200e24e2103f40692d0a01849db685ecb31db7c589f2556843a03dd351ddaee9981020263939c026557b36df49154efd910c610deefe78
+  checksum: 207e17fa3aa7047ba729e0faf0eae5ae547132fd189eb64feb4427bcaa58d4f00354409008df305f84da49007d850890df8826548d5989f1a914eb182f77346d
   languageName: node
   linkType: hard
 
@@ -7115,7 +7115,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:7.23.7"
     "@babel/preset-env": "npm:7.23.8"
-    "@types/node": "npm:20.11.3"
+    "@types/node": "npm:20.11.4"
     pob-babel: "npm:38.0.2"
     typescript: "npm:5.3.3"
   languageName: unknown
@@ -11329,7 +11329,7 @@ __metadata:
     "@pob/pretty-pkg": "npm:7.0.0"
     "@pob/rollup-typescript": "npm:2.2.1"
     "@types/jest": "npm:29.5.11"
-    "@types/node": "npm:20.11.3"
+    "@types/node": "npm:20.11.4"
     alp-rollup-plugin-config: "npm:2.2.1"
     check-package-dependencies: "npm:7.0.0"
     eslint: "npm:8.56.0"
