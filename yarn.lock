@@ -2932,7 +2932,7 @@ __metadata:
     "@pob/pretty-pkg": "npm:7.0.0"
     conventional-changelog-conventionalcommits: "npm:^7.0.0"
     cosmiconfig: "npm:^8.3.6"
-    husky: "npm:~8.0.1"
+    husky: "npm:~9.0.0"
     json5: "npm:^2.2.2"
     lint-staged: "npm:15.2.2"
     pob-dependencies: "workspace:*"
@@ -8207,12 +8207,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:~8.0.1":
-  version: 8.0.1
-  resolution: "husky@npm:8.0.1"
+"husky@npm:~9.0.0":
+  version: 9.0.7
+  resolution: "husky@npm:9.0.7"
   bin:
-    husky: lib/bin.js
-  checksum: 10/0f4c1162845cd8c4ecf13af85fe62a1c9de3d4277053004a59dae90a36346fe7eeb7eff3bc7a8484c4f365f6eccf7fd17aa6935198028980c9d6e95306455f3c
+    husky: bin.js
+  checksum: 10/c5673acb9f224b6d2b36ee4892c6b99dbe9a077b041aee6013efeacb71d2d2cbe6ab7fac061f68fa5653c7dbe93aacfeed69eea01f755688e4c36c4044dcc5c0
   languageName: node
   linkType: hard
 
