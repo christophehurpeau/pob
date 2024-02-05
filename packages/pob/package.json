@@ -64,7 +64,7 @@
     "parse-author": "2.0.0",
     "pob-dependencies": "workspace:*",
     "prettier": "2.8.8",
-    "semver": "7.5.4",
+    "semver": "7.6.0",
     "validate-npm-package-name": "^5.0.0",
     "yarn-workspace-utils": "3.1.2",
     "yeoman-environment": "4.3.0",
