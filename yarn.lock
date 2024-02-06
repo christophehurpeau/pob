@@ -11334,7 +11334,7 @@ __metadata:
     rollup: "npm:3.29.4"
     semver: "npm:7.6.0"
     ts-node: "npm:11.0.0-beta.1"
-    tsimp: "npm:2.0.10"
+    tsimp: "npm:2.0.11"
     typedoc: "npm:0.25.7"
     typescript: "npm:5.3.3"
   languageName: unknown
@@ -12536,15 +12536,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"sock-daemon@npm:^1.4.1":
-  version: 1.4.1
-  resolution: "sock-daemon@npm:1.4.1"
+"sock-daemon@npm:^1.4.2":
+  version: 1.4.2
+  resolution: "sock-daemon@npm:1.4.2"
   dependencies:
-    mkdirp: "npm:^3.0.1"
     rimraf: "npm:^5.0.5"
     signal-exit: "npm:^4.1.0"
     socket-post-message: "npm:^1.0.3"
-  checksum: 10/198ab6110e0e02674e88afb070edd061ecca1bd1f1fa6a1673529f0311a5aa7ff139fba338acb909929fc2e945577ec69252d823eaa898f8d56fd4743e14ad9e
+  checksum: 10/9a77fb402c3f86fe013217a86e79642d01ce1ea86620f142ba7bfa3fa5ca97b5bd8207c37f3e87b25293269fe56bd5a02646dd7f40368522700af266fb1676bf
   languageName: node
   linkType: hard
 
@@ -13264,9 +13263,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tsimp@npm:2.0.10":
-  version: 2.0.10
-  resolution: "tsimp@npm:2.0.10"
+"tsimp@npm:2.0.11":
+  version: 2.0.11
+  resolution: "tsimp@npm:2.0.11"
   dependencies:
     "@isaacs/cached": "npm:^1.0.1"
     "@isaacs/catcher": "npm:^1.0.4"
@@ -13275,13 +13274,13 @@ __metadata:
     pirates: "npm:^4.0.6"
     rimraf: "npm:^5.0.5"
     signal-exit: "npm:^4.1.0"
-    sock-daemon: "npm:^1.4.1"
+    sock-daemon: "npm:^1.4.2"
     walk-up-path: "npm:^3.0.1"
   peerDependencies:
     typescript: ^5.1.0
   bin:
     tsimp: dist/esm/bin.mjs
-  checksum: 10/2239f7663a3522a907661363be4f3643210f0860ee38a307d66ca291af3c0b77acd5b7fd74ec139c53d2f0d1b107eb75472e44a4f1195e8bf2224e9e04dca7bf
+  checksum: 10/a4989478d3c2d45fbc2391939e95234c19976d7cea65103ea932ded70fee6ed8c93d7aab2efa25672aa9790663a75b7115fe5eec5064710c5422bbd917bcb38e
   languageName: node
   linkType: hard
 
