@@ -9,7 +9,6 @@ describe('fixtures', () => {
 
   tests.forEach((filename) => {
     test(filename, async () => {
-      // eslint-disable-next-line node/no-unsupported-features/es-syntax
       const testContent = await import(`./__tests_fixtures__/${filename}`);
       const expected = testContent.expected && testContent.expected.trim();
       const expectedSyntaxError =
