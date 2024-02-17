@@ -2932,7 +2932,7 @@ __metadata:
     "@pob/pretty-pkg": "npm:7.0.0"
     conventional-changelog-conventionalcommits: "npm:^7.0.0"
     cosmiconfig: "npm:^8.3.6"
-    husky: "npm:~9.0.0"
+    husky: "npm:~9.0.11"
     json5: "npm:^2.2.2"
     lint-staged: "npm:15.2.2"
     pob-dependencies: "workspace:*"
@@ -2943,7 +2943,7 @@ __metadata:
   bin:
     commitlint: ./bin/commitlint.cjs
     pob-root-lint-staged: ./bin/pob-root-lint-staged.js
-    pob-root-postinstall: ./bin/pob-root-postinstall.cjs
+    pob-root-postinstall: ./bin/pob-root-postinstall.js
     pob-root-prettier: ./bin/prettier.cjs
     prettier: ./bin/prettier.cjs
     pretty-eslint-config: ./bin/pretty-eslint-config.js
@@ -8207,12 +8207,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"husky@npm:~9.0.0":
-  version: 9.0.7
-  resolution: "husky@npm:9.0.7"
+"husky@npm:~9.0.11":
+  version: 9.0.11
+  resolution: "husky@npm:9.0.11"
   bin:
-    husky: bin.js
-  checksum: 10/c5673acb9f224b6d2b36ee4892c6b99dbe9a077b041aee6013efeacb71d2d2cbe6ab7fac061f68fa5653c7dbe93aacfeed69eea01f755688e4c36c4044dcc5c0
+    husky: bin.mjs
+  checksum: 10/8a9b7cb9dc8494b470b3b47b386e65d579608c6206da80d3cc8b71d10e37947264af3dfe00092368dad9673b51d2a5ee87afb4b2291e77ba9e7ec1ac36e56cd1
   languageName: node
   linkType: hard
 

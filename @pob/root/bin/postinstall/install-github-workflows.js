@@ -1,8 +1,7 @@
-'use strict';
-
-const fs = require('node:fs');
-const path = require('node:path');
-const semver = require('semver');
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import semver from 'semver';
 
 const ensureWorkflowUninstalled = (workflowName) => {
   try {
@@ -15,7 +14,10 @@ const installWorkflow = (workflowName, condition = true) => {
     fs.writeFileSync(
       path.resolve(`.github/workflows/${workflowName}.yml`),
       fs.readFileSync(
-        path.resolve(__dirname, `github-workflows/${workflowName}.yml`),
+        path.resolve(
+          path.dirname(fileURLToPath(import.meta.url)),
+          `github-workflows/${workflowName}.yml`,
+        ),
       ),
     );
   } else {
@@ -23,7 +25,7 @@ const installWorkflow = (workflowName, condition = true) => {
   }
 };
 
-module.exports = function installGithubWorkflows({ pkg, pm }) {
+export default function installGithubWorkflows({ pkg, pm }) {
   const yarnMajorVersion = pm.name === 'yarn' && semver.major(pm.version);
   const isYarnBerry = pm.name === 'yarn' && yarnMajorVersion >= 2;
 
@@ -43,4 +45,4 @@ module.exports = function installGithubWorkflows({ pkg, pm }) {
       ensureWorkflowUninstalled('push-renovate-build');
     }
   }
-};
+}
