@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@11.0.1...pob-dependencies@11.1.0) (2024-02-17)
+
+
+### Features
+
+* **deps:** update dependency semver to v7.6.0 ([#1930](https://github.com/christophehurpeau/pob/issues/1930)) ([dfc8761](https://github.com/christophehurpeau/pob/commit/dfc8761b8123fbb5a9bdf25ba296a20043e25aae))
+
+Version bump for dependency: rollup-typescript
+Version bump for dependency: pob-babel
+
+
 ## [11.0.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@11.0.0...pob-dependencies@11.0.1) (2023-12-31)
 
 Note: no notable changes

@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.3.0](https://github.com/christophehurpeau/pob/compare/pob@18.2.0...pob@18.3.0) (2024-02-17)
+
+
+### Features
+
+* add directory in extraEntries for usage in files ([17839e6](https://github.com/christophehurpeau/pob/commit/17839e65d6a4f5c50e8f7e4e9da635fc3e0b7382))
+* custom test folder ([f3214b9](https://github.com/christophehurpeau/pob/commit/f3214b9554dd2ce057786dad762a9eef07a25c41))
+* **deps:** update dependency semver to v7.6.0 ([#1930](https://github.com/christophehurpeau/pob/issues/1930)) ([dfc8761](https://github.com/christophehurpeau/pob/commit/dfc8761b8123fbb5a9bdf25ba296a20043e25aae))
+* **deps:** update dependency yeoman-environment to v4.2.1 ([#1901](https://github.com/christophehurpeau/pob/issues/1901)) ([e8bb372](https://github.com/christophehurpeau/pob/commit/e8bb372cd141cedc2736913b84e861768636f26e))
+* **deps:** update dependency yeoman-environment to v4.3.0 ([#1917](https://github.com/christophehurpeau/pob/issues/1917)) ([453fdd9](https://github.com/christophehurpeau/pob/commit/453fdd96725e740306c9341595f1b9e1af15f3fc))
+* **deps:** update yarn monorepo ([#1918](https://github.com/christophehurpeau/pob/issues/1918)) ([288ed84](https://github.com/christophehurpeau/pob/commit/288ed84945daa7813dcfb692ee459676a119b9bf))
+
+
+### Bug Fixes
+
+* fix export when omitVersionInFileName is set ([501367f](https://github.com/christophehurpeau/pob/commit/501367f0072f9ac41ace22312c0576afd7b1645a))
+* fix jest enabled condition ([c10f8b1](https://github.com/christophehurpeau/pob/commit/c10f8b19139d41ef1565a5e7314dbdee5d67cdba))
+* fix srcDirectory for app library ([7df6ba1](https://github.com/christophehurpeau/pob/commit/7df6ba14228326ee9b00b3fa2ec7af1204398860))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: root
+
+
 ## [18.2.0](https://github.com/christophehurpeau/pob/compare/pob@18.1.1...pob@18.2.0) (2023-12-31)
 
 
