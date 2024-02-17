@@ -1,9 +1,7 @@
-'use strict';
+import { execSync } from 'node:child_process';
+import semver from 'semver';
 
-const { execSync } = require('node:child_process');
-const semver = require('semver');
-
-module.exports = function updateYarn({ pkg, pm }) {
+export default function updateYarn({ pkg, pm }) {
   if (pm.name !== 'yarn' || !pm.version) return;
 
   if (semver.lt(pm.version, '3.2.1')) {
@@ -28,4 +26,4 @@ module.exports = function updateYarn({ pkg, pm }) {
     });
     console.log('Yarn update success !');
   }
-};
+}

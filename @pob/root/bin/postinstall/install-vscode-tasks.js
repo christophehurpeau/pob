@@ -1,8 +1,6 @@
-'use strict';
-
-const fs = require('node:fs');
-const JSON5 = require('json5');
-const prettier = require('prettier');
+import fs from 'node:fs';
+import JSON5 from 'json5';
+import prettier from 'prettier';
 
 function readJSON5(path, defaults = null) {
   try {
@@ -28,7 +26,7 @@ function getProblemMatcherFromScriptName(scriptName) {
   return [];
 }
 
-module.exports = function installVscodeTasks({ pkg }) {
+export default function installVscodeTasks({ pkg }) {
   const existingConfig = readJSON5('.vscode/tasks.json');
   const existingTasks = existingConfig?.tasks || [];
 
@@ -90,4 +88,4 @@ module.exports = function installVscodeTasks({ pkg }) {
       },
     ),
   );
-};
+}

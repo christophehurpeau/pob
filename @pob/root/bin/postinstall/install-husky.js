@@ -1,11 +1,9 @@
 /* eslint-disable complexity */
 
-'use strict';
-
-const fs = require('node:fs');
-const path = require('node:path');
-const husky = require('husky');
-const semver = require('semver');
+import fs from 'node:fs';
+import path from 'node:path';
+import husky from 'husky';
+import semver from 'semver';
 
 const ensureLegacyHuskyConfigDeleted = () => {
   try {
@@ -27,7 +25,7 @@ const ensureHuskyNotInDevDependencies = (pkg) => {
 const writeHook = (hookName, hookContent) => {
   fs.writeFileSync(
     path.resolve(`.husky/${hookName}`),
-    `#!/usr/bin/env sh\n. "$(dirname "$0")/_/husky.sh"\n\n${hookContent.trim()}\n`,
+    `#!/usr/bin/env sh\n\n${hookContent.trim()}\n`,
     {
       mode: '755',
     },
@@ -48,7 +46,7 @@ const readYarnConfigFile = () => {
   }
 };
 
-module.exports = function installHusky({ pkg, pm }) {
+export default function installHusky({ pkg, pm }) {
   const yarnMajorVersion = pm.name === 'yarn' && semver.major(pm.version);
   const isYarnBerry = pm.name === 'yarn' && yarnMajorVersion >= 2;
   const isYarnPnp =
@@ -137,5 +135,5 @@ done
     ensureHookDeleted('pre-push');
   }
 
-  husky.install('.husky');
-};
+  process.stdout.write(husky('.husky'));
+}

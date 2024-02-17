@@ -1,10 +1,9 @@
 #!/usr/bin/env node
+/* eslint-disable unicorn/no-await-expression-member */
 
-'use strict';
-
-const fs = require('node:fs');
-const path = require('node:path');
-const whichPmRuns = require('which-pm-runs');
+import fs from 'node:fs';
+import path from 'node:path';
+import whichPmRuns from 'which-pm-runs';
 
 if (!process.env.INIT_CWD) {
   console.error(
@@ -36,11 +35,14 @@ if (pm.name !== 'yarn' && pm.name !== 'npm') {
   process.exit(1);
 }
 
-require('./postinstall/update-yarn.cjs')({ pkg, pm });
-require('./postinstall/install-husky.cjs')({ pkg, pm });
-require('./postinstall/install-github-workflows.cjs')({ pkg, pm });
-require('./postinstall/install-scripts.cjs')({ pkg, pm });
+(await import('./postinstall/update-yarn.js')).default({ pkg, pm });
+(await import('./postinstall/install-husky.js')).default({ pkg, pm });
+(await import('./postinstall/install-github-workflows.js')).default({
+  pkg,
+  pm,
+});
+(await import('./postinstall/install-scripts.js')).default({ pkg, pm });
 
 if (process.env.POB_EXPERIMENTAL_VSCODE_TASKS) {
-  require('./postinstall/install-vscode-tasks.cjs')({ pkg, pm });
+  (await import('./postinstall/install-vscode-tasks.js')).default({ pkg, pm });
 }

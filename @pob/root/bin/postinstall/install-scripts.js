@@ -1,6 +1,4 @@
-'use strict';
-
-const fs = require('node:fs');
+import fs from 'node:fs';
 
 const addPobRootPostinstallInScript = (pkg, scriptName) => {
   if (!pkg.scripts[scriptName]) {
@@ -12,7 +10,7 @@ const addPobRootPostinstallInScript = (pkg, scriptName) => {
   }
 };
 
-module.exports = function installScripts({ pkg, pm }) {
+export default function installScripts({ pkg, pm }) {
   if (!pkg.scripts) pkg.scripts = {};
   if (pkg.name === 'pob-monorepo') return;
 
@@ -31,4 +29,4 @@ module.exports = function installScripts({ pkg, pm }) {
   }
 
   fs.writeFileSync('package.json', `${JSON.stringify(pkg, null, 2)}\n`, 'utf8');
-};
+}

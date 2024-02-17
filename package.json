@@ -25,7 +25,7 @@
     "lint:eslint": "NODE_OPTIONS=--max_old_space_size=4096 eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet .",
     "lint:prettier": "pob-root-prettier --check .",
     "lint:prettier:fix": "pob-root-prettier --write .",
-    "postinstall": "yarn node @pob/root/bin/pob-root-postinstall.cjs",
+    "postinstall": "yarn node @pob/root/bin/pob-root-postinstall.js",
     "test": "NODE_OPTIONS=--experimental-vm-modules jest",
     "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage --coverageReporters=json --coverageReporters=text",
     "test:coverage:json": "NODE_OPTIONS=--experimental-vm-modules jest --coverage --coverageReporters=json",
