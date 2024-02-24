@@ -42,7 +42,7 @@
   "prettier": "@pob/root/prettier-config",
   "devDependencies": {
     "@babel/core": "7.23.9",
-    "@pob/eslint-config": "54.0.0",
+    "@pob/eslint-config": "54.0.1",
     "@pob/root": "workspace:*",
     "@types/jest": "29.5.12",
     "check-package-dependencies": "7.0.0",
