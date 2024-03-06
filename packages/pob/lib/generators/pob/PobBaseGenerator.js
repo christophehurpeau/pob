@@ -81,6 +81,13 @@ export default class PobBaseGenerator extends Generator {
       delete config.yarn2;
     }
 
+    if (!config.type) {
+      const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+      if (pkg.dependencies?.next) {
+        config.type = 'app';
+      }
+    }
+
     const responses = await this.prompt([
       {
         when: () => !config.type,
@@ -123,10 +130,11 @@ export default class PobBaseGenerator extends Generator {
 
     this.composeWith('pob:core:package', {
       updateOnly: this.options.updateOnly,
-      private: this.isMonorepo,
+      private: this.isMonorepo || this.projectConfig.type === 'app',
       isMonorepo: this.isMonorepo,
       inMonorepo: !!inMonorepo,
       isRoot: this.isRoot,
+      packageType: this.projectConfig.type === 'app' ? 'module' : undefined,
     });
 
     if (this.isMonorepo) {

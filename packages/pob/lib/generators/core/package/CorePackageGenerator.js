@@ -36,6 +36,12 @@ export default class CorePackageGenerator extends Generator {
       default: false,
       desc: 'private package',
     });
+
+    this.option('packageType', {
+      type: String,
+      required: false,
+      desc: 'package type',
+    });
   }
 
   async initializing() {
@@ -104,6 +110,10 @@ export default class CorePackageGenerator extends Generator {
         ? this.prompt([prompt])
         : askName(prompt, this));
       pkg.name = name;
+    }
+
+    if (this.options.packageType) {
+      pkg.type = this.options.packageType;
     }
 
     let author = packageUtils.parsePkgAuthor(pkg);

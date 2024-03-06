@@ -132,7 +132,7 @@ export default function updateEslintConfig(
   config.root = true;
   config.extends = [
     ...extendsConfig,
-    ...(config?.extends
+    ...(config?.extends && Array.isArray(config.extends)
       ? config.extends.filter(
           (extendsValue) =>
             extendsValue === '@pob/eslint-config-typescript/allow-unsafe',

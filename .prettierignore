@@ -6,3 +6,4 @@ CHANGELOG.md
 /@pob/*/build
 /pob-examples/*/dist
 /pob-examples/*/build
+/pob-examples/*/.next

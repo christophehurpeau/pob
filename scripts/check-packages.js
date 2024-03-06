@@ -1,7 +1,7 @@
 import { createCheckPackageWithWorkspaces } from 'check-package-dependencies';
 
 await createCheckPackageWithWorkspaces({
-  isLibrary: () => true,
+  isLibrary: (pkg) => !['@pob-example/next-app'].includes(pkg.name),
 })
   .checkRecommended({
     onlyWarnsForInMonorepoPackagesDependencies: {

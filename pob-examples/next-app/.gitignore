@@ -1,0 +1,6 @@
+
+# next.js paths
+/.next
+/out
+/build
+/.env.local

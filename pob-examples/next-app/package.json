@@ -1,0 +1,38 @@
+{
+  "name": "@pob-example/next-app",
+  "private": true,
+  "version": "0.1.0",
+  "description": "pob nextjs app example",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "pob-examples/next-app"
+  },
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "type": "module",
+  "engines": {
+    "node": ">=18.12.0"
+  },
+  "scripts": {
+    "build": "NODE_ENV=production next build",
+    "dev": "next dev",
+    "lint": "yarn run lint:eslint",
+    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet pob-examples/next-app",
+    "start": "next dev",
+    "start:prod": "next start"
+  },
+  "prettier": "@pob/root/prettier-config",
+  "dependencies": {
+    "next": "14.1.3",
+    "react": "18.2.0",
+    "react-dom": "18.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "20.11.25",
+    "@types/react": "18.2.64",
+    "@types/react-dom": "18.2.20",
+    "typescript": "5.3.3"
+  }
+}
