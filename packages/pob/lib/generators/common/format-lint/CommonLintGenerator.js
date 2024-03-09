@@ -566,7 +566,8 @@ export default class CommonLintGenerator extends Generator {
 
     // see monorepo/lerna/index.js
     if (!(inMonorepo && inMonorepo.root) && !this.options.monorepo) {
-      const srcDirectory = useBabel ? this.options.srcDirectory : 'lib';
+      const srcDirectory =
+        useBabel || this.options.typescript ? this.options.srcDirectory : 'lib';
       const lintRootJsFiles = (useBabel && useNode) || !inMonorepo;
 
       const lintPaths = [srcDirectory, 'bin', 'scripts', 'migrations'].filter(
