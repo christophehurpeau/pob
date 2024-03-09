@@ -67,7 +67,7 @@
     "semver": "7.6.0",
     "validate-npm-package-name": "^5.0.0",
     "yarn-workspace-utils": "3.2.0",
-    "yeoman-environment": "4.3.0",
+    "yeoman-environment": "4.4.0",
     "yeoman-generator": "7.1.1"
   },
   "devDependencies": {
