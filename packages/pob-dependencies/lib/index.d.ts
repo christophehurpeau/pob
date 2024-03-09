@@ -23,7 +23,6 @@ interface Dependencies {
   rollup: '3.29.4';
   semver: '7.6.0';
   'ts-node': '11.0.0-beta.1';
-  tsimp: '2.0.11';
   typedoc: '0.25.8';
   typescript: '5.3.3';
 }

@@ -49,6 +49,9 @@
     "@pob/eslint-config-typescript-react": "54.0.1",
     "@pob/pretty-pkg": "7.0.0",
     "@pob/rollup-typescript": "2.2.2",
+    "@swc-node/register": "1.8.0",
+    "@swc/core": "1.4.2",
+    "@swc/jest": "0.2.36",
     "@types/jest": "29.5.12",
     "@types/node": "20.11.25",
     "alp-rollup-plugin-config": "2.2.1",
@@ -62,7 +65,6 @@
     "rollup": "3.29.4",
     "semver": "7.6.0",
     "ts-node": "npm:ts-node-lite@11.0.0-beta.1",
-    "tsimp": "2.0.11",
     "typedoc": "0.25.11",
     "typescript": "5.3.3"
   }

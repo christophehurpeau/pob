@@ -114,6 +114,13 @@ export default class CommonTestingGenerator extends Generator {
       default: false,
       desc: 'Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.',
     });
+
+    this.option('swc', {
+      type: Boolean,
+      required: false,
+      default: false,
+      desc: 'Use swc to transpile code.',
+    });
   }
 
   default() {
@@ -177,14 +184,57 @@ export default class CommonTestingGenerator extends Generator {
 
     const isJestRunner = testRunner === 'jest';
 
-    const tsTestUtil = 'ts-node'; // : 'babel' | 'tsimp' | 'ts-node' | 'swc'
-    packageUtils.addOrRemoveDevDependencies(
-      pkg,
-      this.options.enable &&
-        (!inMonorepo || inMonorepo.root) &&
-        testRunner === 'node' &&
-        this.options.typescript,
-      [tsTestUtil],
+    const tsTestUtil = this.options.swc || isJestRunner ? 'swc' : 'ts-node';
+    const dependenciesForTestUtil = {
+      'ts-node': { devDependenciesShared: ['ts-node'] },
+      swc: {
+        devDependenciesShared: ['@swc/core'],
+        devDependenciesWithJest: ['@swc/jest'],
+        devDependenciesWithNode: ['@swc-node/register'],
+      },
+    };
+
+    Object.entries(dependenciesForTestUtil).forEach(
+      ([
+        key,
+        {
+          devDependenciesShared,
+          devDependenciesWithJest,
+          devDependenciesWithNode,
+        },
+      ]) => {
+        const sharedCondition =
+          this.options.enable &&
+          (!inMonorepo || inMonorepo.root) &&
+          this.options.typescript &&
+          key === tsTestUtil;
+        packageUtils.addOrRemoveDevDependencies(
+          pkg,
+          sharedCondition &&
+            (testRunner === 'node' || (withTypescript && !transpileWithBabel)),
+          devDependenciesShared,
+        );
+        if (devDependenciesWithJest) {
+          packageUtils.addOrRemoveDevDependencies(
+            pkg,
+            sharedCondition &&
+              withTypescript &&
+              !transpileWithBabel &&
+              testRunner === 'jest',
+            devDependenciesWithJest,
+          );
+        }
+        if (devDependenciesWithNode) {
+          packageUtils.addOrRemoveDevDependencies(
+            pkg,
+            sharedCondition &&
+              withTypescript &&
+              !transpileWithBabel &&
+              testRunner === 'node',
+            devDependenciesWithNode,
+          );
+        }
+      },
     );
 
     if (
@@ -203,11 +253,9 @@ export default class CommonTestingGenerator extends Generator {
 
     const tsTestLoaderOption = (() => {
       switch (tsTestUtil) {
-        case 'tsimp':
-          return '--import=tsimp/import';
         case 'ts-node':
           return '--loader=ts-node/esm --experimental-specifier-resolution=node';
-        case '@swc-node/register':
+        case 'swc':
           return '--import=@swc-node/register/esm';
       }
     })();
@@ -246,7 +294,7 @@ export default class CommonTestingGenerator extends Generator {
           if (!workspacesPattern && this.options.monorepo) {
             throw new Error('Invalid workspacesPattern');
           }
-          return `${tsTestUtil === 'tsimp' ? 'TSIMP_DIAG=ignore ' : ''}${
+          return `${
             tsTestUtil === 'ts-node'
               ? 'TS_NODE_PROJECT=tsconfig.test.json '
               : ''
@@ -376,6 +424,24 @@ export default class CommonTestingGenerator extends Generator {
           } else {
             delete jestConfig.extensionsToTreatAsEsm;
           }
+
+          if (tsTestUtil === 'swc' && !transpileWithBabel && withTypescript) {
+            jestConfig.transform = {
+              [hasReact ? '^.+\\.tsx?$' : '^.+\\.ts$']: ['@swc/jest'],
+            };
+          } else if (jestConfig.transform) {
+            jestConfig.transform = Object.fromEntries(
+              Object.entries(jestConfig.transform).filter(
+                ([key, value]) =>
+                  value !== '@swc/jest' &&
+                  !(Array.isArray(value) && value[0] === '@swc/jest'),
+              ),
+            );
+            if (Object.keys(jestConfig.transform).length === 0) {
+              delete jestConfig.transform;
+            }
+          }
+
           writeAndFormatJson(this.fs, jestConfigPath, jestConfig);
         }
       } else {
@@ -476,21 +542,44 @@ export default class CommonTestingGenerator extends Generator {
                   },
                 ],
               };
-            } else if (!transpileWithBabel) {
+            } else if (!transpileWithBabel && !withTypescript) {
               delete jestConfig.transform;
-            } else if (jestConfig.transform) {
-              jestConfig.transform = Object.fromEntries(
-                Object.entries(jestConfig.transform).filter(
-                  ([key, value]) =>
-                    !(
-                      value &&
-                      Array.isArray(value) &&
-                      value[0] === 'jest-esbuild'
-                    ),
-                ),
-              );
-              if (Object.keys(jestConfig.transform).length === 0) {
-                delete jestConfig.transform;
+            } else {
+              if (
+                tsTestUtil === 'swc' &&
+                !transpileWithBabel &&
+                withTypescript
+              ) {
+                jestConfig.transform = {
+                  [hasReact ? '^.+\\.tsx?$' : '^.+\\.ts$']: ['@swc/jest'],
+                };
+              } else if (jestConfig.transform) {
+                jestConfig.transform = Object.fromEntries(
+                  Object.entries(jestConfig.transform).filter(
+                    ([key, value]) =>
+                      value !== '@swc/jest' &&
+                      !(Array.isArray(value) && value[0] === '@swc/jest'),
+                  ),
+                );
+                if (Object.keys(jestConfig.transform).length === 0) {
+                  delete jestConfig.transform;
+                }
+              }
+
+              if (jestConfig.transform) {
+                jestConfig.transform = Object.fromEntries(
+                  Object.entries(jestConfig.transform).filter(
+                    ([key, value]) =>
+                      !(
+                        value &&
+                        Array.isArray(value) &&
+                        value[0] === 'jest-esbuild'
+                      ),
+                  ),
+                );
+                if (Object.keys(jestConfig.transform).length === 0) {
+                  delete jestConfig.transform;
+                }
               }
             }
 
