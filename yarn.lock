@@ -4795,9 +4795,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yeoman/types@npm:1.1.2, @yeoman/types@npm:^1.1.1":
-  version: 1.1.2
-  resolution: "@yeoman/types@npm:1.1.2"
+"@yeoman/types@npm:1.2.0, @yeoman/types@npm:^1.1.1":
+  version: 1.2.0
+  resolution: "@yeoman/types@npm:1.2.0"
   dependencies:
     "@types/node": "npm:^16.18.26"
   peerDependencies:
@@ -4811,7 +4811,7 @@ __metadata:
       optional: true
     mem-fs-editor:
       optional: true
-  checksum: 10/534d8ed3d588659d0f62209f12e876f4ffd6f02fc901ab02649fb66a90bf2f77d62d620ec22cb7885839d481f006b431ee0fe4aa6bce928831ef1dbd958e9aec
+  checksum: 10/e69fe33e73c62d2d59199d4ae385fc554a85523f7419985b92a491151524089b2853c1a726b83bc16ba95482b689f10b1f52ad6e34c75b293d89ddec0233d9df
   languageName: node
   linkType: hard
 
@@ -11955,7 +11955,7 @@ __metadata:
     "@yarnpkg/cli": "npm:4.1.1"
     "@yarnpkg/core": "npm:4.0.3"
     "@yarnpkg/fslib": "npm:3.0.2"
-    "@yeoman/types": "npm:1.1.2"
+    "@yeoman/types": "npm:1.2.0"
     eslint: "npm:8.57.0"
     findup-sync: "npm:^5.0.0"
     git-remote-url: "npm:^1.0.1"
