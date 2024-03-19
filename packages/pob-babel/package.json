@@ -68,7 +68,7 @@
   },
   "dependencies": {
     "@babel/core": "^7.23.2",
-    "@babel/plugin-transform-runtime": "7.24.0",
+    "@babel/plugin-transform-runtime": "7.24.1",
     "@pob/rollup": "1.0.1",
     "@rollup/plugin-babel": "6.0.4",
     "@rollup/plugin-json": "6.1.0",
