@@ -306,6 +306,7 @@ if (action === 'migrate-to-monorepo') {
 
   const monorepoName = `${path.basename(process.cwd())}-monorepo`;
   const monorepoPkg = {
+    private: true,
     name: monorepoName,
     version: projectPkg.version,
     author: projectPkg.author,
@@ -313,6 +314,7 @@ if (action === 'migrate-to-monorepo') {
     repository: projectPkg.repository,
     engines: projectPkg.engines,
     packageManager: projectPkg.packageManager,
+    workspaces: ['packages/*'],
   };
 
   writeFileSync('package.json', JSON.stringify(monorepoPkg, null, 2));

@@ -162,7 +162,8 @@ export default class CommonTestingGenerator extends Generator {
       'pob-lcov-reporter',
     ]);
 
-    const yoConfigPobMonorepo = inMonorepo && inMonorepo.pobMonorepoConfig;
+    const yoConfigPobMonorepo =
+      (inMonorepo && inMonorepo.pobMonorepoConfig) || {};
     const globalTesting = yoConfigPobMonorepo && yoConfigPobMonorepo.testing;
     const enableForMonorepo = this.options.monorepo && globalTesting;
     const transpileWithEsbuild = packageUtils.transpileWithEsbuild(pkg);
