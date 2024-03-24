@@ -88,6 +88,7 @@ export default class PobAppGenerator extends Generator {
           'remix',
           'node',
           'node-library', // monorepo library for app. Not a real library
+          'untranspiled-library', // monorepo library for app. Not a real library
           'alp-node',
           'expo',
           'other',
@@ -130,7 +131,9 @@ export default class PobAppGenerator extends Generator {
   default() {
     const srcDirectory =
       this.appConfig.type === 'yarn-plugin' ? 'sources' : 'src';
-    const isAppLibrary = this.appConfig.type === 'node-library';
+    const isAppLibrary =
+      this.appConfig.type === 'node-library' ||
+      this.appConfig.type === 'untranspiled-library';
 
     if (
       this.appConfig.type === 'node' ||

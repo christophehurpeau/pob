@@ -15,7 +15,7 @@ CHANGELOG.md
 <% for (let workspace of workspaces) { -%>
 <% if (ignorePatterns) { -%>
 <% for (let ignorePattern of ignorePatterns) { -%>
-<%= '/' + workspace + ignorePattern %>
+<%= ignorePattern.startsWith('*') ? ignorePattern : '/' + workspace + ignorePattern %>
 <% } -%>
 <% } -%>
 <% } -%>

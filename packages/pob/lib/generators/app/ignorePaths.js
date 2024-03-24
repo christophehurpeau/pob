@@ -14,6 +14,7 @@ export const appIgnorePaths = {
   pobpack: (config) => ['/build', '/public'],
   node: (config) => ['/build'],
   'node-library': (config) => ['/build'],
+  'untranspiled-library': (config) => [],
   'alp-node': (config) => ['/build'],
   other: (config) => [],
   expo: (config) => [
@@ -27,7 +28,7 @@ export const appIgnorePaths = {
     '/web-build/',
 
     '# Temporary files created by Metro to check the health of the file watcher',
-    '.metro-health-check*',
+    '/.metro-health-check*',
   ],
   'yarn-plugin': (config) => [],
 };
