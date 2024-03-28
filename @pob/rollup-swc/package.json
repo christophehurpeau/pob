@@ -46,7 +46,7 @@
   "prettier": "@pob/root/prettier-config",
   "peerDependencies": {
     "@swc/core": "*",
-    "rollup": "3.29.4"
+    "rollup": "4.13.2"
   },
   "peerDependenciesMeta": {
     "rollup": {
@@ -58,7 +58,7 @@
     "@rollup/plugin-node-resolve": "15.2.3",
     "@rollup/plugin-run": "3.0.2",
     "@rollup/plugin-swc": "0.3.0",
-    "rollup": "3.29.4",
+    "rollup": "4.13.2",
     "rollup-config-external-dependencies": "^3.0.0"
   }
 }
