@@ -457,14 +457,6 @@ export default class CommonBabelGenerator extends Generator {
 
     packageUtils.removeDevDependencies(pkg, ['@rollup/plugin-run']);
     packageUtils.removeDependencies(pkg, ['alp-rollup-plugin-config']);
-    packageUtils.addOrRemoveDevDependencies(
-      pkg,
-      useBabel &&
-        this.options.isApp &&
-        !this.options.isAppLibrary &&
-        this.options.useAppConfig,
-      ['alp-rollup-plugin-config'],
-    );
 
     this.fs.delete('rollup.config.js');
     if (useBabel) {
