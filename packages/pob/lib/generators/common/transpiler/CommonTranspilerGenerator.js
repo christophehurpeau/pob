@@ -209,7 +209,6 @@ export default class CommonTranspilerGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       useRollup &&
-        withTypescript &&
         this.options.isApp &&
         !this.options.isAppLibrary &&
         this.options.useAppConfig,
