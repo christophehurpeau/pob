@@ -2815,7 +2815,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob-example/next-app@workspace:pob-examples/next-app"
   dependencies:
-    "@types/node": "npm:20.12.2"
+    "@types/node": "npm:20.12.3"
     "@types/react": "npm:18.2.74"
     "@types/react-dom": "npm:18.2.23"
     next: "npm:14.1.4"
@@ -3719,12 +3719,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:20.12.2, @types/node@npm:^20.8.3":
-  version: 20.12.2
-  resolution: "@types/node@npm:20.12.2"
+"@types/node@npm:*, @types/node@npm:20.12.3, @types/node@npm:^20.8.3":
+  version: 20.12.3
+  resolution: "@types/node@npm:20.12.3"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10/f1f0ebfe475aefa183763b856e0023b81b76554196e8676a45b9fcfd1012cdd20d32adefb3c0330001c0011e074676603c34c24821a4924228250ea13a75da43
+  checksum: 10/3f3c5c6ba118a18aa997c51cdc3c66259d69021f87475a99ed6c913a6956e22de49748e09843bf6447a7a63ae474e61945a6dbcca93e23b2359fc0b6f9914f7a
   languageName: node
   linkType: hard
 
@@ -7556,7 +7556,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:7.24.3"
     "@babel/preset-env": "npm:7.24.3"
-    "@types/node": "npm:20.12.2"
+    "@types/node": "npm:20.12.3"
     pob-babel: "npm:38.0.3"
     typescript: "npm:5.4.3"
   languageName: unknown
@@ -11897,7 +11897,7 @@ __metadata:
     "@swc/core": "npm:1.4.11"
     "@swc/jest": "npm:0.2.36"
     "@types/jest": "npm:29.5.12"
-    "@types/node": "npm:20.12.2"
+    "@types/node": "npm:20.12.3"
     alp-rollup-plugin-config: "npm:2.2.1"
     check-package-dependencies: "npm:7.1.1"
     eslint: "npm:8.57.0"
