@@ -70,6 +70,6 @@
     "@babel/preset-env": "7.24.4",
     "@types/node": "20.12.4",
     "pob-babel": "38.0.3",
-    "typescript": "5.4.3"
+    "typescript": "5.4.4"
   }
 }
