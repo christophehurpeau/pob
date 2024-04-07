@@ -206,6 +206,10 @@ export default class CommonTranspilerGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(pkg, useRollup && withTypescript, [
       '@pob/rollup-typescript',
     ]);
+    packageUtils.addOrRemoveDependencies(pkg, useRollup && withTypescript, [
+      'tslib',
+    ]);
+
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       useRollup &&
