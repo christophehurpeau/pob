@@ -103,13 +103,16 @@ fi`;
   }
 
   if (shouldRunTest()) {
-    prePushHook.push(
-      `${pm.name} test${
-        pkg.devDependencies?.jest
-          ? ' --watchAll=false --changedSince=origin/main'
-          : ''
-      }`,
-    );
+    const getTestCommand = () => {
+      if (pkg.devDependencies?.jest) {
+        return 'test --watchAll=false --changedSince=origin/main';
+      }
+      if (pkg.devDependencies?.vitest) {
+        return 'test --changed origin/main';
+      }
+      return 'test';
+    };
+    prePushHook.push(`${pm.name} ${getTestCommand()}`);
   }
 
   if (prePushHook.length > 0) {
