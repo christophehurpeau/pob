@@ -7,6 +7,7 @@
       "eslint": true,
       "typescript": true,
       "packageNames": [
+        "@pob-example/next-app",
         "@pob/check-lib-dependency-in-root-dev-dependencies",
         "@pob/codemods",
         "@pob/commitlint-config",

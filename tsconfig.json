@@ -1,6 +1,7 @@
 {
   "files": [],
   "references": [
+    { "path": "pob-examples/next-app/tsconfig.json" },
     { "path": "pob-examples/typescript-lib-without-rollup/tsconfig.json" },
     {
       "path": "pob-examples/typescript-lib-with-rollup-typescript/tsconfig.json"
