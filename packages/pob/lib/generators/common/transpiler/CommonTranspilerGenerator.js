@@ -203,12 +203,17 @@ export default class CommonTranspilerGenerator extends Generator {
 
     /* dependencies */
 
+    const useEsbuild = false;
+
     packageUtils.addOrRemoveDevDependencies(pkg, useRollup && withTypescript, [
       '@pob/rollup-typescript',
     ]);
-    packageUtils.addOrRemoveDependencies(pkg, useRollup && withTypescript, [
-      'tslib',
-    ]);
+    packageUtils.addOrRemoveDependencies(
+      pkg,
+      withTypescript && (!useRollup || !useEsbuild),
+      ['tslib'],
+      '^',
+    );
 
     packageUtils.addOrRemoveDevDependencies(
       pkg,

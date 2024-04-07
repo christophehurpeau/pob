@@ -222,8 +222,8 @@ export function removeDevDependencies(pkg, dependencies, forceEvenIfInPeerDep) {
   );
 }
 
-export function addOrRemoveDependencies(pkg, condition, dependencies) {
-  if (condition) return addDependencies(pkg, dependencies);
+export function addOrRemoveDependencies(pkg, condition, dependencies, prefix) {
+  if (condition) return addDependencies(pkg, dependencies, prefix);
   return removeDependencies(pkg, dependencies);
 }
 
