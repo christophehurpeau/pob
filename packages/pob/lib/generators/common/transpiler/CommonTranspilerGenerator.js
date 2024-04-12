@@ -130,15 +130,21 @@ export default class CommonTranspilerGenerator extends Generator {
 
   default() {
     const pkg = this.fs.readJSON(this.destinationPath('package.json'));
-    const withTypescript = pkg.pob.typescript;
     const withBabel = this.babelEnvs && this.babelEnvs.length > 0;
-    const useRollup = (withBabel || withTypescript) && pkg.pob.rollup !== false;
+    const withTypescript = pkg.pob.typescript || withBabel || !!pkg.pob.bundler;
+    const bundler =
+      withTypescript &&
+      (pkg.pob.rollup === false
+        ? 'tsc'
+        : pkg.pob.bundler ??
+          (pkg.pob.typescript ? 'rollup-typescript' : 'rollup'));
 
     const cleanCommand = (() => {
-      if (useRollup) {
-        if (withTypescript) return 'pob-typescript-clean-out';
+      if (bundler === 'rollup-typescript') return 'pob-typescript-clean-out';
+      if (bundler === 'rollup') {
         return 'pob-babel-clean-out';
       }
+      if (bundler === 'esbuild') return 'pob-esbuild-clean-out';
       return null;
     })();
 
@@ -146,36 +152,47 @@ export default class CommonTranspilerGenerator extends Generator {
 
     if (this.options.isApp) {
       packageUtils.removeScripts(['watch']);
-      packageUtils.addOrRemoveScripts(pkg, useRollup, {
+      packageUtils.addOrRemoveScripts(pkg, bundler && bundler !== 'tsc', {
         'clean:build': `${cleanCommand} ${this.options.buildDirectory}`,
         clean: 'yarn clean:build',
       });
 
-      packageUtils.addOrRemoveScripts(pkg, useRollup || withTypescript, {
-        start: useRollup
-          ? 'yarn clean:build && rollup --config rollup.config.mjs --watch'
-          : 'tsc --watch',
+      packageUtils.addOrRemoveScripts(pkg, bundler, {
+        start: (() => {
+          if (bundler && bundler.startsWith('rollup')) {
+            return 'yarn clean:build && rollup --config rollup.config.mjs --watch';
+          }
+          if (bundler === 'tsc') return 'tsc --watch';
+          if (bundler === 'esbuild') return 'pob-esbuild-watch';
+        })(),
       });
     } else {
       packageUtils.removeScripts(['start']);
-      packageUtils.addOrRemoveScripts(pkg, useRollup, {
+      packageUtils.addOrRemoveScripts(pkg, bundler && bundler !== 'tsc', {
         'clean:build': `${cleanCommand} ${this.options.buildDirectory}`,
       });
     }
-    packageUtils.addOrRemoveScripts(pkg, useRollup || withTypescript, {
-      build: useRollup
-        ? 'yarn clean:build && rollup --config rollup.config.mjs'
-        : 'tsc',
+
+    packageUtils.addOrRemoveScripts(pkg, bundler, {
+      build: (() => {
+        if (bundler && bundler.startsWith('rollup')) {
+          return 'yarn clean:build && rollup --config rollup.config.mjs';
+        }
+        if (bundler === 'tsc') return 'tsc';
+        if (bundler === 'esbuild') return 'pob-esbuild-build';
+      })(),
     });
 
-    const shouldBuildDefinitions = !this.options.isApp && useRollup;
+    const shouldBuildDefinitions =
+      !this.options.isApp && withTypescript && bundler !== 'tsc';
+
     packageUtils.addOrRemoveScripts(pkg, shouldBuildDefinitions, {
       'build:definitions': 'tsc -p tsconfig.json',
     });
 
     if (shouldBuildDefinitions) {
       pkg.scripts.build += ' && yarn run build:definitions';
-    } else if (!this.options.isApp && !useRollup && !withTypescript) {
+    } else if (!this.options.isApp && !bundler && !withTypescript) {
       // check definitions, but also force lerna to execute build:definitions in right order
       // example: nightingale-types depends on nightingale-levels
       if (this.fs.exists(this.destinationPath('lib/index.d.ts'))) {
@@ -203,21 +220,26 @@ export default class CommonTranspilerGenerator extends Generator {
 
     /* dependencies */
 
-    const useEsbuild = false;
-
-    packageUtils.addOrRemoveDevDependencies(pkg, useRollup && withTypescript, [
-      '@pob/rollup-typescript',
-    ]);
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      bundler === 'rollup-typescript',
+      ['@pob/rollup-typescript'],
+    );
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      bundler === 'esbuild' && withTypescript,
+      ['@pob/esbuild'],
+    );
     packageUtils.addOrRemoveDependencies(
       pkg,
-      withTypescript && (!useRollup || !useEsbuild),
+      (bundler === 'tsc' || bundler === 'rollup-typescript') && withTypescript,
       ['tslib'],
       '^',
     );
 
     packageUtils.addOrRemoveDevDependencies(
       pkg,
-      useRollup &&
+      bundler === 'rollup' &&
         this.options.isApp &&
         !this.options.isAppLibrary &&
         this.options.useAppConfig,
@@ -251,7 +273,7 @@ export default class CommonTranspilerGenerator extends Generator {
     }
 
     // if (!pkg.main || pkg.main.startsWith('./lib/')) {
-    if (useRollup || withTypescript) {
+    if (bundler || withTypescript) {
       // see pkg.exports instead.
       delete pkg.main;
       if (!this.options.isApp) {
@@ -322,12 +344,14 @@ export default class CommonTranspilerGenerator extends Generator {
     }
 
     /* webpack 5 and node with ESM support */
-    if (useRollup || withTypescript) {
+    if (bundler || withTypescript) {
+      const omitTarget = bundler === 'esbuild';
       pkg.exports = {
         './package.json': './package.json',
       };
 
-      this.entries.forEach((entry) => {
+      this.entries.forEach((entryWithOptionalExt) => {
+        const entry = entryWithOptionalExt.replace(/\.[jt]sx?$/, '');
         const isBrowserOnly =
           withBabel &&
           entry === 'browser' &&
@@ -341,7 +365,7 @@ export default class CommonTranspilerGenerator extends Generator {
             pkg.private || this.options.isAppLibrary
               ? `./src/${entryDistName}.ts`
               : `./${this.options.buildDirectory}/${
-                  useRollup ? 'definitions/' : ''
+                  bundler !== 'tsc' ? 'definitions/' : ''
                 }${entryDistName}.d.ts`,
         };
 
@@ -359,8 +383,10 @@ export default class CommonTranspilerGenerator extends Generator {
 
           if (target === 'node') {
             const cjsExt = pkg.type === 'module' ? 'cjs' : 'cjs.js';
-            const filenameWithoutExt = `${entryDistName}-${target}${
-              omitVersionInFileName ? '' : version
+            const filenameWithoutExt = `${entryDistName}${
+              omitTarget
+                ? ''
+                : `-${target}${omitVersionInFileName ? '' : version}`
             }`;
             if (!formats || formats.includes('es')) {
               exportTarget.import = `./${this.options.buildDirectory}/${filenameWithoutExt}.mjs`;
@@ -490,7 +516,11 @@ export default class CommonTranspilerGenerator extends Generator {
     const entries = pkg.pob.entries || ['index'];
 
     this.fs.delete('rollup.config.js');
-    if (pkg.pob.typescript && pkg.pob.rollup !== false) {
+    if (
+      pkg.pob.typescript &&
+      pkg.pob.rollup !== false &&
+      (!pkg.pob.bundler || pkg.pob.bundler.startsWith('rollup'))
+    ) {
       if (this.options.isApp) {
         copyAndFormatTpl(
           this.fs,
@@ -512,7 +542,11 @@ export default class CommonTranspilerGenerator extends Generator {
           },
         );
       }
-    } else if (!pkg.pob.babelEnvs || pkg.pob.babelEnvs.length === 0) {
+    } else if (
+      !pkg.pob.babelEnvs ||
+      pkg.pob.babelEnvs.length === 0 ||
+      pkg.pob?.bundler === 'esbuild'
+    ) {
       this.fs.delete('rollup.config.mjs');
     }
 

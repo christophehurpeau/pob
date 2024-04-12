@@ -1,0 +1,53 @@
+{
+  "name": "@pob/esbuild",
+  "version": "1.0.0-pre",
+  "description": "esbuild configuration for pob",
+  "keywords": [],
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "@pob/esbuild"
+  },
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "type": "module",
+  "engines": {
+    "node": ">=18.12.0"
+  },
+  "sideEffects": false,
+  "bin": {
+    "pob-esbuild-build": "./bin/pob-esbuild-build.js",
+    "pob-esbuild-clean-out": "./bin/pob-esbuild-clean-out.js",
+    "pob-esbuild-watch": "./bin/pob-esbuild-watch.js"
+  },
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "files": [
+    "lib",
+    "bin"
+  ],
+  "scripts": {
+    "lint": "yarn run lint:eslint",
+    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet @pob/esbuild"
+  },
+  "pob": {},
+  "prettier": "@pob/root/prettier-config",
+  "peerDependencies": {
+    "typescript": "^4.0.3 || ^5.0.0"
+  },
+  "peerDependenciesMeta": {
+    "rollup": {
+      "optional": true
+    }
+  },
+  "dependencies": {
+    "esbuild": "0.20.2"
+  }
+}
