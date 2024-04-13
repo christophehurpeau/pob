@@ -2,8 +2,8 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { nodeFormatToExt, resolveEntry } from '@pob/rollup';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
-import typescript from '@rollup/plugin-typescript';
 import configExternalDependencies from 'rollup-config-external-dependencies';
+import esbuild from 'rollup-plugin-esbuild';
 
 export default function createRollupConfig({
   cwd = process.cwd(),
@@ -15,15 +15,7 @@ export default function createRollupConfig({
 
   if (pobConfig.babelEnvs) {
     throw new Error(
-      '@pob/rollup-typescript does not supports babel, use `pob-babel` package instead.',
-    );
-  }
-
-  const tslibVersion = pkg.dependencies && pkg.dependencies.tslib;
-
-  if (!tslibVersion) {
-    throw new Error(
-      `@pob/rollup-typescript: "${pkg.name}" requires "tslib" in dependencies.`,
+      '@pob/rollup-esbuild does not supports babel, use `pob-babel` package instead.',
     );
   }
 
@@ -61,16 +53,10 @@ export default function createRollupConfig({
       })),
       external: externalByPackageJson,
       plugins: [
-        typescript({
+        esbuild({
+          sourceMap: true,
+          minify: false,
           tsconfig: path.resolve(cwd, env.tsconfig || 'tsconfig.json'),
-          allowImportingTsExtensions: false,
-          cacheDir: path.resolve(
-            cwd,
-            'node_modules',
-            '.cache',
-            'rollup-typescript',
-            `${env.target}_${env.version}`,
-          ),
         }),
 
         nodeResolve({

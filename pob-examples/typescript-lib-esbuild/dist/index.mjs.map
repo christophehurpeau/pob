@@ -1,7 +1,0 @@
-{
-  "version": 3,
-  "sources": ["../src/index.ts"],
-  "sourcesContent": ["export default function simpleLib(): string {\n  // eslint-disable-next-line @typescript-eslint/no-useless-template-literals -- checking template string here\n  return `hello world via ${'typescript'}`;\n}\n"],
-  "mappings": ";;;;AAAe,SAAR,YAAqC;AAE1C,SAAO;AACT;AAHwB;",
-  "names": []
-}

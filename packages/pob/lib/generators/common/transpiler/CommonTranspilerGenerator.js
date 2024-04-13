@@ -138,9 +138,11 @@ export default class CommonTranspilerGenerator extends Generator {
         ? 'tsc'
         : pkg.pob.bundler ??
           (pkg.pob.typescript ? 'rollup-typescript' : 'rollup'));
+    this.bundler = bundler;
 
     const cleanCommand = (() => {
       if (bundler === 'rollup-typescript') return 'pob-typescript-clean-out';
+      if (bundler === 'rollup-esbuild') return 'pob-esbuild-clean-out';
       if (bundler === 'rollup') {
         return 'pob-babel-clean-out';
       }
@@ -229,6 +231,11 @@ export default class CommonTranspilerGenerator extends Generator {
       pkg,
       bundler === 'esbuild' && withTypescript,
       ['@pob/esbuild'],
+    );
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      bundler === 'rollup-esbuild' && withTypescript,
+      ['@pob/rollup-esbuild'],
     );
     packageUtils.addOrRemoveDependencies(
       pkg,
@@ -527,6 +534,7 @@ export default class CommonTranspilerGenerator extends Generator {
           this.templatePath('app.rollup.config.mjs.ejs'),
           this.destinationPath('rollup.config.mjs'),
           {
+            rollupConfigLib: this.bundler,
             config: this.options.useAppConfig,
             outDirectory: this.options.buildDirectory,
             enableRun: !this.options.isAppLibrary && entries.includes('index'),
@@ -538,6 +546,7 @@ export default class CommonTranspilerGenerator extends Generator {
           this.templatePath('lib.rollup.config.mjs.ejs'),
           this.destinationPath('rollup.config.mjs'),
           {
+            rollupConfigLib: this.bundler,
             outDirectory: this.options.buildDirectory,
           },
         );

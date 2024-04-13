@@ -3,9 +3,9 @@ import { fileURLToPath } from 'node:url';
 <% if (config) { -%>
 import config from 'alp-rollup-plugin-config';
 <% } -%>
-import createRollupConfig from '@pob/rollup-typescript/createRollupConfig.js';
+import createRollupConfig from '@pob/<%= rollupConfigLib %>/createRollupConfig.js';
 <% if (enableRun) { -%>
-import run from '@pob/rollup-typescript/plugin-run.cjs';
+import run from '@pob/<%= rollupConfigLib %>/plugin-run.cjs';
 
 const watch = process.env.ROLLUP_WATCH === 'true';
 <% } -%>

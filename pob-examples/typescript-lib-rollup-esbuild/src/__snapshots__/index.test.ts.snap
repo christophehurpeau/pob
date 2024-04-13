@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`dist should build index.mjs 1`] = `
+"function simpleLib() {
+  return \`hello world via \${"typescript"}\`;
+}
+
+export { simpleLib as default };
+//# sourceMappingURL=index-node18.mjs.map
+"
+`;
