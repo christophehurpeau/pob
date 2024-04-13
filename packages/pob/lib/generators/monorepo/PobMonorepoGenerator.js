@@ -275,6 +275,7 @@ export default class PobMonorepoGenerator extends Generator {
       yarnNodeLinker: this.options.yarnNodeLinker,
       typescript: this.pobLernaConfig.typescript,
       testing: this.pobLernaConfig.testing,
+      testRunner: this.pobLernaConfig.testRunner,
       packageNames: JSON.stringify(packageNames),
       packageLocations: JSON.stringify(this.packageLocations),
     });

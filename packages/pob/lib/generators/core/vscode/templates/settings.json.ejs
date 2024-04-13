@@ -35,7 +35,7 @@
   },
 
 
-<% if (testing && module) { -%>
+<% if (testing && module && (!testRunner || testRunner === 'jest')) { -%>
   // jest
   "jest.jestCommandLine": "NODE_OPTIONS=--experimental-vm-modules node_modules/.bin/jest",
 <% } -%>

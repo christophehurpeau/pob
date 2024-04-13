@@ -185,7 +185,12 @@ export default class CommonTestingGenerator extends Generator {
 
     const isJestRunner = testRunner === 'jest';
 
-    const tsTestUtil = this.options.swc || isJestRunner ? 'swc' : 'ts-node';
+    const tsTestUtil = (() => {
+      if (testRunner === 'vitest') return undefined;
+      if (this.options.swc || isJestRunner) return 'swc';
+      return 'ts-node';
+    })();
+
     const dependenciesForTestUtil = {
       'ts-node': { devDependenciesShared: ['ts-node'] },
       swc: {
@@ -312,6 +317,15 @@ export default class CommonTestingGenerator extends Generator {
           }--test ${this.options.monorepo ? `${workspacesPattern}/` : ''}${`${
             hasTestFolder ? 'test/*' : `${this.options.srcDirectory}/**/*.test`
           }.${this.options.typescript ? 'ts' : 'js'}`}`;
+        }
+        case 'vitest': {
+          return `${
+            coverage || coverageJson || coverageLcov
+              ? `POB_VITEST_COVERAGE=${
+                  coverageLcov ? 'lcov' : `json${coverageJson ? '' : ',text'} `
+                }`
+              : ''
+          }vitest${watch ? ' --watch' : ''}`;
         }
         default: {
           throw new Error(`Invalid runner: "${testRunner}"`);

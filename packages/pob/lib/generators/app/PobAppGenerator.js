@@ -311,6 +311,7 @@ export default class PobAppGenerator extends Generator {
       yarnNodeLinker: this.options.yarnNodeLinker,
       typescript,
       testing: this.appConfig.testing,
+      testRunner: this.appConfig.testRunner,
     });
 
     // only for gitignore

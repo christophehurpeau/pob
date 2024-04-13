@@ -342,6 +342,7 @@ export default class PobLibGenerator extends Generator {
       yarnNodeLinker: this.options.yarnNodeLinker,
       typescript: withBabel || withTypescript,
       testing: this.pobjson.testing,
+      testRunner: this.pobjson.testRunner,
     });
 
     // must be after doc, testing

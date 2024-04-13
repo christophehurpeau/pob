@@ -34,6 +34,12 @@ export default class CoreVSCodeGenerator extends Generator {
       desc: 'Testing enabled',
     });
 
+    this.option('testRunner', {
+      type: String,
+      required: false,
+      desc: 'Test runner (jest, vitest, ...)',
+    });
+
     this.option('yarnNodeLinker', {
       type: String,
       required: false,
@@ -81,6 +87,7 @@ export default class CoreVSCodeGenerator extends Generator {
           npm: this.options.packageManager === 'npm',
           typescript: this.options.typescript,
           testing: this.options.testing,
+          testRunner: this.options.testRunner,
           module: pkg.type === 'module',
         },
       );
