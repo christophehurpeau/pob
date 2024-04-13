@@ -4,6 +4,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import babelPluginTransformRuntime from '@babel/plugin-transform-runtime';
+import { nodeFormatToExt } from '@pob/rollup';
 import { babel } from '@rollup/plugin-babel';
 import json from '@rollup/plugin-json';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
@@ -13,13 +14,6 @@ import semver from 'semver';
 import ignoreImport from './rollup-plugin-ignore-browser-only-imports.js';
 
 const browserOnlyExtensions = ['.scss', '.css'];
-
-const nodeFormatToExt = (format, pkgType) => {
-  if (format === 'cjs' && pkgType === 'module') return '.cjs';
-  if (format === 'cjs') return '.cjs.js';
-  if (format === 'es') return '.mjs';
-  return `.${format}.js`;
-};
 
 export default function createRollupConfig({
   cwd = process.cwd(),

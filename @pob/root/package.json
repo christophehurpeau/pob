@@ -46,6 +46,8 @@
     "./tsconfigs/targets/webpack.json": "./tsconfigs/targets/webpack.json",
     "./tsconfigs/targets/rollup-node-18.json": "./tsconfigs/targets/rollup-node-18.json",
     "./tsconfigs/targets/rollup-node-20.json": "./tsconfigs/targets/rollup-node-20.json",
+    "./tsconfigs/targets/esbuild-node-18.json": "./tsconfigs/targets/esbuild-node-18.json",
+    "./tsconfigs/targets/esbuild-node-20.json": "./tsconfigs/targets/esbuild-node-20.json",
     "./package.json": "./package.json"
   },
   "publishConfig": {

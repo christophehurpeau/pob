@@ -3,7 +3,7 @@
     "@pob/root/tsconfigs/strict.json",
     "@pob/root/tsconfigs/targets/webpack.json"
   ],
-  "include": ["src/**/*.ts", "src/**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules"],
   "compilerOptions": {
     "rootDir": "src",

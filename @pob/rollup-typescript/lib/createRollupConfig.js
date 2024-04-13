@@ -1,15 +1,9 @@
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync } from 'node:fs';
 import path from 'node:path';
+import { nodeFormatToExt, resolveEntry } from '@pob/rollup';
 import { nodeResolve } from '@rollup/plugin-node-resolve';
 import typescript from '@rollup/plugin-typescript';
 import configExternalDependencies from 'rollup-config-external-dependencies';
-
-const nodeFormatToExt = (format, pkgType) => {
-  if (format === 'cjs' && pkgType === 'module') return '.cjs';
-  if (format === 'cjs') return '.cjs.js';
-  if (format === 'es') return '.mjs';
-  return `.${format}.js`;
-};
 
 export default function createRollupConfig({
   cwd = process.cwd(),
@@ -32,32 +26,6 @@ export default function createRollupConfig({
       `@pob/rollup-typescript: "${pkg.name}" requires "tslib" in dependencies.`,
     );
   }
-
-  const resolveEntry = (entryName, target) => {
-    let entryPath;
-    ['ts', 'tsx', 'js', 'jsx'].some((extension) => {
-      const potentialEntryPath = path.resolve(
-        cwd,
-        'src',
-        `${entryName}.${extension}`,
-      );
-
-      if (existsSync(potentialEntryPath)) {
-        entryPath = potentialEntryPath;
-        return true;
-      }
-
-      return false;
-    });
-
-    if (!entryPath) {
-      throw new Error(
-        `Could not find entry "src/${entryName}" in path "${cwd}"`,
-      );
-    }
-
-    return entryPath;
-  };
 
   const jsx = pobConfig.jsx;
   const externalByPackageJson = configExternalDependencies(pkg);
@@ -126,7 +94,7 @@ export default function createRollupConfig({
           version: '18',
         },
       ];
-    const entryPath = resolveEntry(entryName);
+    const entryPath = resolveEntry(cwd, entryName);
     return envs.map((env) => createConfigForEnv(entryName, entryPath, env));
   });
 }

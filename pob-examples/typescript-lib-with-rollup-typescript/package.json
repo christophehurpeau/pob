@@ -38,6 +38,7 @@
   },
   "pob": {
     "typescript": true,
+    "bundler": "rollup-typescript",
     "entries": [
       "index"
     ]
@@ -48,6 +49,6 @@
   },
   "devDependencies": {
     "@pob/rollup-typescript": "2.2.2",
-    "typescript": "5.4.4"
+    "typescript": "5.4.5"
   }
 }

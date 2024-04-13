@@ -1,0 +1,51 @@
+{
+  "name": "example-typescript-lib-esbuild",
+  "private": true,
+  "version": "0.20.1",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "pob-examples/typescript-lib-esbuild"
+  },
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "type": "module",
+  "engines": {
+    "node": ">=18.12.0"
+  },
+  "sideEffects": false,
+  "main": "./dist/index.mjs",
+  "types": "./dist/definitions/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./src/index.ts",
+      "node": {
+        "import": "./dist/index.mjs"
+      }
+    }
+  },
+  "scripts": {
+    "build": "pob-esbuild-build && yarn run build:definitions",
+    "build:definitions": "tsc -p tsconfig.json",
+    "clean": "yarn clean:build",
+    "clean:build": "pob-esbuild-clean-out dist",
+    "lint": "yarn run lint:eslint",
+    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet pob-examples/typescript-lib-esbuild",
+    "test": "yarn ../../ run test -- pob-examples/typescript-lib-esbuild",
+    "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
+  },
+  "pob": {
+    "typescript": true,
+    "bundler": "esbuild",
+    "entries": [
+      "index.ts"
+    ]
+  },
+  "prettier": "@pob/root/prettier-config",
+  "devDependencies": {
+    "@pob/esbuild": "1.0.0-pre",
+    "typescript": "5.4.5"
+  }
+}

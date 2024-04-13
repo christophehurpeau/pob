@@ -231,9 +231,9 @@ export default class PobAppGenerator extends Generator {
         return '';
       })(),
       additionalIncludes: (() => {
-        if (this.appConfig.type === 'next.js') {
-          return '.next/types/**/*.ts';
-        }
+        // if (this.appConfig.type === 'next.js') {
+        //   return '.next/types/**/*.ts';
+        // }
         return '';
       })(),
     });

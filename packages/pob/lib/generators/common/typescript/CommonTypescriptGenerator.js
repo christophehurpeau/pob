@@ -135,12 +135,16 @@ export default class CommonTypescriptGenerator extends Generator {
             version: '18',
           },
         ];
-        if (pkg.pob.rollup === false) {
+        if (pkg.pob.rollup === false || pkg.pob.bundler === false) {
           return [`@pob/root/tsconfigs/targets/node-${nodeVersion}.json`];
         }
         if (envs && envs.every((env) => env.target === 'node')) {
           return [
-            `@pob/root/tsconfigs/targets/rollup-node-${nodeVersion}.json`,
+            `@pob/root/tsconfigs/targets/${
+              !pkg.pob.bundler || pkg.pob.bundler.startsWith('rollup')
+                ? 'rollup'
+                : pkg.pob.bundler
+            }-node-${nodeVersion}.json`,
           ];
         }
         return ['@pob/root/tsconfigs/targets/rollup-es2015.json'];
@@ -258,7 +262,7 @@ export default class CommonTypescriptGenerator extends Generator {
         tsconfigPath,
         {
           emitDefinitions: this.options.builddefs,
-          build: pkg.pob?.rollup === false,
+          build: pkg.pob?.rollup === false || pkg.pob?.bundler === false,
           cacheEnabled: !this.options.isApp || this.options.isAppLibrary,
           monorepoPackageSrcPaths,
           monorepoPackageReferences,
