@@ -3042,11 +3042,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/eslint-config-typescript-react@npm:55.0.1":
-  version: 55.0.1
-  resolution: "@pob/eslint-config-typescript-react@npm:55.0.1"
+"@pob/eslint-config-typescript-react@npm:55.2.1":
+  version: 55.2.1
+  resolution: "@pob/eslint-config-typescript-react@npm:55.2.1"
   dependencies:
-    "@pob/eslint-config": "npm:55.0.1"
+    "@pob/eslint-config": "npm:55.2.1"
     eslint-plugin-import: "npm:2.29.1"
     eslint-plugin-jsx-a11y: "npm:6.8.0"
     eslint-plugin-react: "npm:7.34.1"
@@ -3066,15 +3066,15 @@ __metadata:
       optional: true
     eslint-plugin-react-hooks:
       optional: true
-  checksum: 10/e315203585749d6a4c7c1081cfd65ae7b993fa0c52144324bb4c603e4eaf094142bb9c8a287fc64825de93863d8cf47be203d1b7139cd28ee352cc52d4e6f0c5
+  checksum: 10/485f2edeeee59236443d501e1f570c653e52ceb0d6f95a108fccf192f5a51261b1755aa12db06634aad77feb116e0f2ebe4a366ab21bb41de83a0083a442fca8
   languageName: node
   linkType: hard
 
-"@pob/eslint-config-typescript@npm:55.0.1":
-  version: 55.0.1
-  resolution: "@pob/eslint-config-typescript@npm:55.0.1"
+"@pob/eslint-config-typescript@npm:55.2.1":
+  version: 55.2.1
+  resolution: "@pob/eslint-config-typescript@npm:55.2.1"
   dependencies:
-    "@pob/eslint-config": "npm:55.0.1"
+    "@pob/eslint-config": "npm:55.2.1"
     "@typescript-eslint/eslint-plugin": "npm:^7.7.0"
     "@typescript-eslint/parser": "npm:^7.7.0"
     eslint-plugin-import: "npm:^2.29.1"
@@ -3094,13 +3094,13 @@ __metadata:
       optional: true
     eslint-plugin-n:
       optional: true
-  checksum: 10/3e37afe0f297a4513f4b42d2a881ee085299dd3919fc5548387ffa04b1f412ec2f589aebb37a58eb5bcd5bd70cae8e0e36f188ec835ec95f8ed3436535f162cb
+  checksum: 10/acbd58dd7af62d95164617db3bc3e50a268b44fe33c91c348111dd0c6ec41f16a4d9eb1bf1a21853ffe32015d719919d152e67fccc5344ea4ed39160b5d4342d
   languageName: node
   linkType: hard
 
-"@pob/eslint-config@npm:55.0.1":
-  version: 55.0.1
-  resolution: "@pob/eslint-config@npm:55.0.1"
+"@pob/eslint-config@npm:55.2.1":
+  version: 55.2.1
+  resolution: "@pob/eslint-config@npm:55.2.1"
   dependencies:
     confusing-browser-globals: "npm:^1.0.11"
     eslint-plugin-import: "npm:^2.29.1"
@@ -3118,7 +3118,7 @@ __metadata:
       optional: true
     eslint-plugin-unicorn:
       optional: true
-  checksum: 10/796ad936918374f5eab47aa7529e58d6deb4c174fa744458d821c87831af1c705da0ca149cb1da53fe1c98e6cb5b86835cb8b5ebe2ee0b0e4e6abe46d84851ac
+  checksum: 10/449cf59fe36eacb6949bc4639984c8b857ad5545e58a3ec911f60d00a8586a311733edae42888406ca8675c6a2b0d34f869f8e450af4263c1b7a1b99a7188688
   languageName: node
   linkType: hard
 
@@ -12148,9 +12148,9 @@ __metadata:
     "@playwright/test": "npm:1.43.1"
     "@pob/commitlint-config": "npm:6.3.1"
     "@pob/esbuild": "npm:1.0.0-pre"
-    "@pob/eslint-config": "npm:55.0.1"
-    "@pob/eslint-config-typescript": "npm:55.0.1"
-    "@pob/eslint-config-typescript-react": "npm:55.0.1"
+    "@pob/eslint-config": "npm:55.2.1"
+    "@pob/eslint-config-typescript": "npm:55.2.1"
+    "@pob/eslint-config-typescript-react": "npm:55.2.1"
     "@pob/pretty-pkg": "npm:7.0.0"
     "@pob/rollup-esbuild": "npm:1.0.0-pre"
     "@pob/rollup-typescript": "npm:2.2.2"
@@ -12181,7 +12181,7 @@ __metadata:
   resolution: "pob-monorepo@workspace:."
   dependencies:
     "@babel/core": "npm:7.24.4"
-    "@pob/eslint-config": "npm:55.0.1"
+    "@pob/eslint-config": "npm:55.2.1"
     "@pob/root": "workspace:*"
     "@types/jest": "npm:29.5.12"
     check-package-dependencies: "npm:7.1.1"
@@ -12198,9 +12198,9 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "pob@workspace:packages/pob"
   dependencies:
-    "@pob/eslint-config": "npm:55.0.1"
-    "@pob/eslint-config-typescript": "npm:55.0.1"
-    "@pob/eslint-config-typescript-react": "npm:55.0.1"
+    "@pob/eslint-config": "npm:55.2.1"
+    "@pob/eslint-config-typescript": "npm:55.2.1"
+    "@pob/eslint-config-typescript-react": "npm:55.2.1"
     "@pob/root": "npm:9.2.0"
     "@pob/sort-eslint-config": "npm:5.2.1"
     "@pob/sort-object": "npm:6.2.1"
