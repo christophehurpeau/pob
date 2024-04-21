@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-with-rollup-typescript@0.23.2...example-typescript-lib-with-rollup-typescript@0.24.0) (2024-04-21)
+
+
+### Features
+
+* simple esbuild bundler ([80659fa](https://github.com/christophehurpeau/pob/commit/80659fadb42190463585ff54e865af09e31fdc0d))
+
+Version bump for dependency: rollup-typescript
+
+
 ## [0.23.2](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-with-rollup-typescript@0.23.1...example-typescript-lib-with-rollup-typescript@0.23.2) (2024-02-17)
 
 Note: no notable changes

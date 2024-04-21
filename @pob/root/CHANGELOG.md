@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@9.2.0...@pob/root@9.3.0) (2024-04-21)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v55 (major) ([#2020](https://github.com/christophehurpeau/pob/issues/2020)) ([434d5b3](https://github.com/christophehurpeau/pob/commit/434d5b3dce53b1925091138444881a13e2a962d9))
+* simple esbuild bundler ([80659fa](https://github.com/christophehurpeau/pob/commit/80659fadb42190463585ff54e865af09e31fdc0d))
+* support vitest ([2fe540e](https://github.com/christophehurpeau/pob/commit/2fe540e6ab66255735910745062a92636c87f21e))
+
+Version bump for dependency: pretty-eslint-config
+Version bump for dependency: pretty-pkg
+
+
 ## [9.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@9.1.0...@pob/root@9.2.0) (2024-02-17)
 
 

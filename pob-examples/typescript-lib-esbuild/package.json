@@ -1,7 +1,7 @@
 {
   "name": "example-typescript-lib-esbuild",
   "private": true,
-  "version": "0.20.1",
+  "version": "0.21.0",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": {
@@ -45,7 +45,7 @@
   },
   "prettier": "@pob/root/prettier-config",
   "devDependencies": {
-    "@pob/esbuild": "1.0.0-pre",
+    "@pob/esbuild": "1.0.0",
     "typescript": "5.4.5"
   }
 }

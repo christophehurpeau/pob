@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@7.0.0...@pob/pretty-pkg@7.1.0) (2024-04-21)
+
+Note: no notable changes
+
+
+
+
 ## [7.0.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@6.3.0...@pob/pretty-pkg@7.0.0) (2023-12-29)
 
 

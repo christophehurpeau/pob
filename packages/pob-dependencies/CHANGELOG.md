@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@11.1.0...pob-dependencies@11.2.0) (2024-04-21)
+
+
+### Features
+
+* add rollup-esbuild ([a1085db](https://github.com/christophehurpeau/pob/commit/a1085dbe6ea69767596dd46813044b96fbf713dd))
+* add swc support and improve jest without babel ([e7b050d](https://github.com/christophehurpeau/pob/commit/e7b050d3b7ac5ab2ec68d98095bb9832fdbc88bb))
+* **deps:** update @pob/eslint-config to v55 (major) ([#2020](https://github.com/christophehurpeau/pob/issues/2020)) ([434d5b3](https://github.com/christophehurpeau/pob/commit/434d5b3dce53b1925091138444881a13e2a962d9))
+* **deps:** update @pob/eslint-config to v55.2.1 ([#2021](https://github.com/christophehurpeau/pob/issues/2021)) ([cdfe421](https://github.com/christophehurpeau/pob/commit/cdfe42126842ac1cb46d233ca7203fd241863a81))
+* **deps:** update dependency eslint to v8.57.0 ([#1942](https://github.com/christophehurpeau/pob/issues/1942)) ([69753af](https://github.com/christophehurpeau/pob/commit/69753aff1bea9e5801bd4deaa22d6d4eefba8e62))
+* **pob:** add tslib ([fb4ead7](https://github.com/christophehurpeau/pob/commit/fb4ead72f5ae31ae894b4f7e9f65fdc05c5e6be0))
+* simple esbuild bundler ([80659fa](https://github.com/christophehurpeau/pob/commit/80659fadb42190463585ff54e865af09e31fdc0d))
+* use ts-node-lite ([ccbbb5e](https://github.com/christophehurpeau/pob/commit/ccbbb5e178d816191589cfa378ec99fcf5caec20))
+
+
+### Bug Fixes
+
+* **deps:** update @pob/eslint-config to v54.0.1 ([#1943](https://github.com/christophehurpeau/pob/issues/1943)) ([309437f](https://github.com/christophehurpeau/pob/commit/309437f195bfdfc9a6c00eec039fd74cba0a6ef8))
+* **deps:** update @pob/eslint-config to v54.0.2 ([#2000](https://github.com/christophehurpeau/pob/issues/2000)) ([04366c3](https://github.com/christophehurpeau/pob/commit/04366c3fe1917595a4b52369837ba31868e84164))
+
+Version bump for dependency: esbuild
+Version bump for dependency: pretty-pkg
+Version bump for dependency: rollup-esbuild
+Version bump for dependency: rollup-typescript
+Version bump for dependency: pob-babel
+
+
 ## [11.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@11.0.1...pob-dependencies@11.1.0) (2024-02-17)
 
 

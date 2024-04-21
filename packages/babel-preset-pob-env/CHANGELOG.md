@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.1.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@11.0.3...babel-preset-pob-env@11.1.0) (2024-04-21)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v55 (major) ([#2020](https://github.com/christophehurpeau/pob/issues/2020)) ([434d5b3](https://github.com/christophehurpeau/pob/commit/434d5b3dce53b1925091138444881a13e2a962d9))
+
+
+
+
 ## [11.0.3](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@11.0.2...babel-preset-pob-env@11.0.3) (2024-02-17)
 
 Note: no notable changes

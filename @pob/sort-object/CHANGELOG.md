@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-object@6.2.1...@pob/sort-object@6.3.0) (2024-04-21)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v55 (major) ([#2020](https://github.com/christophehurpeau/pob/issues/2020)) ([434d5b3](https://github.com/christophehurpeau/pob/commit/434d5b3dce53b1925091138444881a13e2a962d9))
+
+
+
+
 ## [6.2.1](https://github.com/christophehurpeau/pob/compare/@pob/sort-object@6.2.0...@pob/sort-object@6.2.1) (2023-12-29)
 
 Note: no notable changes

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [38.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@38.0.3...pob-babel@38.1.0) (2024-04-21)
+
+
+### Features
+
+* add rollup-esbuild ([a1085db](https://github.com/christophehurpeau/pob/commit/a1085dbe6ea69767596dd46813044b96fbf713dd))
+* **deps:** update @pob/eslint-config to v55.2.1 ([#2021](https://github.com/christophehurpeau/pob/issues/2021)) ([cdfe421](https://github.com/christophehurpeau/pob/commit/cdfe42126842ac1cb46d233ca7203fd241863a81))
+
+Version bump for dependency: rollup
+Version bump for dependency: babel-preset-pob-env
+
+
 ## [38.0.3](https://github.com/christophehurpeau/pob/compare/pob-babel@38.0.2...pob-babel@38.0.3) (2024-02-17)
 
 Note: no notable changes

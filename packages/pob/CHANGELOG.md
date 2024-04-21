@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.4.0](https://github.com/christophehurpeau/pob/compare/pob@18.3.0...pob@18.4.0) (2024-04-21)
+
+
+### Features
+
+* add app untranspiled-library ([c702f3e](https://github.com/christophehurpeau/pob/commit/c702f3e8170809b8c7b9ac5fe6cad4f6f7e70779))
+* add rollup-esbuild ([a1085db](https://github.com/christophehurpeau/pob/commit/a1085dbe6ea69767596dd46813044b96fbf713dd))
+* add swc support and improve jest without babel ([e7b050d](https://github.com/christophehurpeau/pob/commit/e7b050d3b7ac5ab2ec68d98095bb9832fdbc88bb))
+* add vitest support ([db3344c](https://github.com/christophehurpeau/pob/commit/db3344c45197f4b1bdfaa78df7dff25b37d291e2))
+* better support next and add example ([a60ce83](https://github.com/christophehurpeau/pob/commit/a60ce83d8277efb0eef65c5b3372ff89570919fb))
+* **deps:** update @pob/eslint-config to v55 (major) ([#2020](https://github.com/christophehurpeau/pob/issues/2020)) ([434d5b3](https://github.com/christophehurpeau/pob/commit/434d5b3dce53b1925091138444881a13e2a962d9))
+* **deps:** update @pob/eslint-config to v55.2.1 ([#2021](https://github.com/christophehurpeau/pob/issues/2021)) ([cdfe421](https://github.com/christophehurpeau/pob/commit/cdfe42126842ac1cb46d233ca7203fd241863a81))
+* **deps:** update dependency @yeoman/types to v1.2.0 ([#1962](https://github.com/christophehurpeau/pob/issues/1962)) ([3566bfd](https://github.com/christophehurpeau/pob/commit/3566bfdbc71ee07662d4b10ec76887c5407118e7))
+* **deps:** update dependency eslint to v8.57.0 ([#1942](https://github.com/christophehurpeau/pob/issues/1942)) ([69753af](https://github.com/christophehurpeau/pob/commit/69753aff1bea9e5801bd4deaa22d6d4eefba8e62))
+* **deps:** update dependency mem-fs to v4.1.0 ([#1945](https://github.com/christophehurpeau/pob/issues/1945)) ([c5c31cf](https://github.com/christophehurpeau/pob/commit/c5c31cfdf15018fbdfa9a4511d86fd6a9d72f277))
+* **deps:** update dependency yeoman-environment to v4.4.0 ([#1963](https://github.com/christophehurpeau/pob/issues/1963)) ([1a7dbb8](https://github.com/christophehurpeau/pob/commit/1a7dbb8fde589f3ad9e6e870cc767b9821832170))
+* **pob:** add tslib ([fb4ead7](https://github.com/christophehurpeau/pob/commit/fb4ead72f5ae31ae894b4f7e9f65fdc05c5e6be0))
+* simple esbuild bundler ([80659fa](https://github.com/christophehurpeau/pob/commit/80659fadb42190463585ff54e865af09e31fdc0d))
+* update peaceiris/actions-gh-pages to v4 ([a67c672](https://github.com/christophehurpeau/pob/commit/a67c672c539c2662650e7b1c00bbc95a4c53fca3))
+
+
+### Bug Fixes
+
+* **deps:** update @pob/eslint-config to v54.0.1 ([#1943](https://github.com/christophehurpeau/pob/issues/1943)) ([309437f](https://github.com/christophehurpeau/pob/commit/309437f195bfdfc9a6c00eec039fd74cba0a6ef8))
+* **deps:** update @pob/eslint-config to v54.0.2 ([#2000](https://github.com/christophehurpeau/pob/issues/2000)) ([04366c3](https://github.com/christophehurpeau/pob/commit/04366c3fe1917595a4b52369837ba31868e84164))
+* **deps:** update yarn monorepo to v4.1.1 ([#1955](https://github.com/christophehurpeau/pob/issues/1955)) ([872ccc1](https://github.com/christophehurpeau/pob/commit/872ccc1c51462a42edbce7b50c6d44dbf625647b))
+* few fixes for monorepo migrate ([a36ab40](https://github.com/christophehurpeau/pob/commit/a36ab408456ced31d8512a1b30391273dffcbe73))
+* fix previous commit ([cd870dc](https://github.com/christophehurpeau/pob/commit/cd870dccce1e4d80ed38e854915407084e8b0001))
+* missing dependency alp-rollup-plugin-config ([9cdc4e4](https://github.com/christophehurpeau/pob/commit/9cdc4e40fb7fa9ee2140618da5eef978de0f5f31))
+* **pob:** fix lint src directory with typescript and no babel ([b7d32a4](https://github.com/christophehurpeau/pob/commit/b7d32a4753ecf20742c8c4158f50f96e5d225e6d))
+* properly determine node only with typescript and no babel ([3a8d958](https://github.com/christophehurpeau/pob/commit/3a8d9584ecb9c6810e577891f4c040b338364c10))
+* tslib prefix ([b86d5e4](https://github.com/christophehurpeau/pob/commit/b86d5e47912fb16d0f58157d228772af43f00e80))
+
+Version bump for dependency: sort-eslint-config
+Version bump for dependency: sort-object
+Version bump for dependency: sort-pkg
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: root
+
+
 ## [18.3.0](https://github.com/christophehurpeau/pob/compare/pob@18.2.0...pob@18.3.0) (2024-02-17)
 
 
