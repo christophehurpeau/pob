@@ -1,4 +1,3 @@
-/* eslint-disable max-lines */
 /* eslint-disable complexity */
 
 import { readFileSync, existsSync } from 'node:fs';
