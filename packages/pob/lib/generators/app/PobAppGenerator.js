@@ -339,6 +339,7 @@ export default class PobAppGenerator extends Generator {
       case 'remix':
         this.composeWith('pob:app:remix', {});
         break;
+      // no default
     }
 
     if (platform !== 'win32') {
