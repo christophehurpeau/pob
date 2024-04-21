@@ -4,7 +4,7 @@ export default function sortObject(obj, keys = []) {
   const objKeys = Object.keys(obj);
   objKeys.forEach((key) => delete obj[key]);
   [
-    ...keys.filter((key) => Object.hasOwnProperty.call(objCopy, key)),
+    ...keys.filter((key) => Object.hasOwn(objCopy, key)),
     ...objKeys.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase())),
   ].forEach((key) => {
     obj[key] = objCopy[key];

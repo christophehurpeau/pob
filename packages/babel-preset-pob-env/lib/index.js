@@ -116,6 +116,9 @@ export default function (context, opts = {}) {
     case false:
       targetPreset = null;
       break;
+
+    default:
+      throw new Error('Invalid target');
   }
 
   return {

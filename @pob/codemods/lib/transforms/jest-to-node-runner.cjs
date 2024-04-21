@@ -119,6 +119,7 @@ module.exports = (file, api, options) => {
         .find(j.ImportDeclaration, { source: { value: 'node:assert' } })
         .remove();
       if (
+        // eslint-disable-next-line no-constant-condition
         (!root.find(j.ImportDeclaration),
         { source: { value: 'node:assert/strict' } })
       ) {

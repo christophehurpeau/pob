@@ -199,6 +199,8 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       case 'yarn':
         // see CoreYarnGenerator
         break;
+      default:
+        throw new Error('Invalid packageManager');
     }
   }
 }

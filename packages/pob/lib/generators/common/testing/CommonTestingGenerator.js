@@ -263,6 +263,8 @@ export default class CommonTestingGenerator extends Generator {
           return '--loader=ts-node/esm --experimental-specifier-resolution=node';
         case 'swc':
           return '--import=@swc-node/register/esm';
+
+        // no default
       }
     })();
 
