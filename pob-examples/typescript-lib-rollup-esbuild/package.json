@@ -24,6 +24,12 @@
       "node": {
         "import": "./dist/index-node18.mjs"
       }
+    },
+    "./run-await": {
+      "types": "./src/run-await.ts",
+      "node": {
+        "import": "./dist/run-await-node18.mjs"
+      }
     }
   },
   "scripts": {
@@ -40,7 +46,8 @@
     "typescript": true,
     "bundler": "rollup-esbuild",
     "entries": [
-      "index"
+      "index",
+      "run-await"
     ]
   },
   "prettier": "@pob/root/prettier-config",

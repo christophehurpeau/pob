@@ -57,6 +57,7 @@ export default function createRollupConfig({
           sourceMap: true,
           minify: false,
           tsconfig: path.resolve(cwd, env.tsconfig || 'tsconfig.json'),
+          target: env.target === 'node' ? `node${env.version}` : undefined,
         }),
 
         nodeResolve({
