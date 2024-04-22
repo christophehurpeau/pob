@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.3.1](https://github.com/christophehurpeau/pob/compare/@pob/root@9.3.0...@pob/root@9.3.1) (2024-04-22)
+
+
+### Bug Fixes
+
+* **rollup-esbuild:** configure node target ([840c9df](https://github.com/christophehurpeau/pob/commit/840c9df8b0d07e5624494661884f559aee70e4db))
+
+
+
+
 ## [9.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@9.2.0...@pob/root@9.3.0) (2024-04-21)
 
 

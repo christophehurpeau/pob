@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.1](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild@0.21.0...example-typescript-lib-rollup-esbuild@0.21.1) (2024-04-22)
+
+
+### Bug Fixes
+
+* **rollup-esbuild:** configure node target ([840c9df](https://github.com/christophehurpeau/pob/commit/840c9df8b0d07e5624494661884f559aee70e4db))
+
+Version bump for dependency: rollup-esbuild
+
+
 ## 0.21.0 (2024-04-21)
 
 
