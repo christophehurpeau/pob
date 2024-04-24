@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.2.2](https://github.com/christophehurpeau/pob/compare/pob-dependencies@11.2.1...pob-dependencies@11.2.2) (2024-04-24)
+
+Note: no notable changes
+
+
+
+
 ## [11.2.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@11.2.0...pob-dependencies@11.2.1) (2024-04-22)
 
 Note: no notable changes

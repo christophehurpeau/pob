@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.1](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.2.0...@pob-example/next-app@0.2.1) (2024-04-24)
+
+
+### Bug Fixes
+
+* **deps:** update dependency next to v14.2.3 ([#2024](https://github.com/christophehurpeau/pob/issues/2024)) ([0ba3639](https://github.com/christophehurpeau/pob/commit/0ba36391910c2ce6318bb405674256e2d06ba42a))
+
+
+
+
 ## 0.2.0 (2024-04-21)
 
 

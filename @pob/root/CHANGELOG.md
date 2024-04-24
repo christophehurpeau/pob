@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.3.2](https://github.com/christophehurpeau/pob/compare/@pob/root@9.3.1...@pob/root@9.3.2) (2024-04-24)
+
+
+### Bug Fixes
+
+* **@pob/root:** vitest --run option to disable watch mode ([d7e8640](https://github.com/christophehurpeau/pob/commit/d7e86404e2c17fe24bb3ad27468e52c6a6b4c1da))
+
+
+
+
 ## [9.3.1](https://github.com/christophehurpeau/pob/compare/@pob/root@9.3.0...@pob/root@9.3.1) (2024-04-22)
 
 

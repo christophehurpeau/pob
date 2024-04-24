@@ -10,10 +10,10 @@ interface Dependencies {
   '@pob/eslint-config-typescript': '55.2.1';
   '@pob/eslint-config-typescript-react': '55.2.1';
   '@pob/pretty-pkg': '7.1.0';
-  '@pob/rollup-esbuild': '1.0.0';
+  '@pob/rollup-esbuild': '1.0.1';
   '@pob/rollup-typescript': '2.3.0';
   '@swc-node/register': '1.9.0';
-  '@swc/core': '1.4.16';
+  '@swc/core': '1.5.0';
   '@swc/jest': '0.2.36';
   '@types/jest': '29.5.12';
   '@types/node': '20.12.7';
