@@ -108,7 +108,7 @@ fi`;
         return 'test --watchAll=false --changedSince=origin/main';
       }
       if (pkg.devDependencies?.vitest) {
-        return 'test --changed origin/main';
+        return 'test --run --changed origin/main';
       }
       return 'test';
     };
