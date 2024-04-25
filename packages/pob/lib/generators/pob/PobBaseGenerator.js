@@ -125,7 +125,7 @@ export default class PobBaseGenerator extends Generator {
       type: this.projectConfig.type,
       enable: this.isRoot && this.projectConfig.packageManager === 'yarn',
       yarnNodeLinker: this.projectConfig.yarnNodeLinker,
-      disableYarnGitCache: this.projectConfig.disableYarnGitCache,
+      disableYarnGitCache: this.projectConfig.disableYarnGitCache !== false,
     });
 
     this.composeWith('pob:core:package', {
@@ -142,13 +142,13 @@ export default class PobBaseGenerator extends Generator {
         force: this.options.force,
         isAppProject: this.projectConfig.type === 'app',
         packageManager: this.projectConfig.packageManager,
-        disableYarnGitCache: this.projectConfig.disableYarnGitCache,
+        disableYarnGitCache: this.projectConfig.disableYarnGitCache !== false,
       });
       this.composeWith('pob:monorepo:lerna', {
         force: this.options.force,
         isAppProject: this.projectConfig.type === 'app',
         packageManager: this.projectConfig.packageManager,
-        disableYarnGitCache: this.projectConfig.disableYarnGitCache,
+        disableYarnGitCache: this.projectConfig.disableYarnGitCache !== false,
       });
     }
 
@@ -207,7 +207,7 @@ export default class PobBaseGenerator extends Generator {
         ),
         {
           updateOnly: this.options.updateOnly,
-          disableYarnGitCache: this.projectConfig.disableYarnGitCache,
+          disableYarnGitCache: this.projectConfig.disableYarnGitCache !== false,
           isAppProject: this.projectConfig.type === 'app',
           packageManager: this.projectConfig.packageManager,
           yarnNodeLinker: this.projectConfig.yarnNodeLinker,
@@ -220,7 +220,8 @@ export default class PobBaseGenerator extends Generator {
           this.composeWith('pob:lib', {
             monorepo: this.isMonorepo,
             isRoot: this.isRoot,
-            disableYarnGitCache: this.projectConfig.disableYarnGitCache,
+            disableYarnGitCache:
+              this.projectConfig.disableYarnGitCache !== false,
             updateOnly: this.options.updateOnly,
             fromPob: this.options.fromPob,
             packageManager: this.projectConfig.packageManager,
@@ -231,7 +232,8 @@ export default class PobBaseGenerator extends Generator {
           this.composeWith('pob:app', {
             monorepo: this.isMonorepo,
             isRoot: this.isRoot,
-            disableYarnGitCache: this.projectConfig.disableYarnGitCache,
+            disableYarnGitCache:
+              this.projectConfig.disableYarnGitCache !== false,
             updateOnly: this.options.updateOnly,
             fromPob: this.options.fromPob,
             packageManager: this.projectConfig.packageManager,
