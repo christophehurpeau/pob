@@ -587,7 +587,9 @@ export default class CommonLintGenerator extends Generator {
               .relative('../..', '.')
               .replace('\\', '/')}`
           : `eslint ${args} ${lintPaths.join(' ')}`,
-        lint: `${useBabel && !composite ? 'tsc && ' : ''}yarn run lint:eslint`,
+        lint: `${
+          useTypescript && !composite ? 'tsc && ' : ''
+        }yarn run lint:eslint`,
       });
 
       if (!inMonorepo) {
