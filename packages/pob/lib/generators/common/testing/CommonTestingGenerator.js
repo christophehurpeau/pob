@@ -327,7 +327,9 @@ export default class CommonTestingGenerator extends Generator {
                   coverageLcov ? 'lcov' : `json${coverageJson ? '' : ',text'} `
                 }`
               : ''
-          }vitest${watch ? ' --watch' : ''}`;
+          }vitest${watch ? ' --watch' : ''}${
+            coverage || coverageJson || coverageLcov ? ' run --coverage' : ''
+          }`;
         }
         default: {
           throw new Error(`Invalid runner: "${testRunner}"`);
