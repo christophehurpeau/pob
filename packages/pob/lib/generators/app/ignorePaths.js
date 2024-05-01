@@ -27,8 +27,9 @@ export const appIgnorePaths = {
     '*.orig.*',
     '/web-build/',
 
-    '# Temporary files created by Metro to check the health of the file watcher',
-    '/.metro-health-check*',
+    // only if option is enabled which is not by default
+    // '# Temporary files created by Metro to check the health of the file watcher',
+    // '/.metro-health-check*',
   ],
   'yarn-plugin': (config) => [],
 };
