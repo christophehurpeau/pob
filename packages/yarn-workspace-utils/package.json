@@ -53,7 +53,7 @@
   },
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "@yarnpkg/core": "4.0.3"
+    "@yarnpkg/core": "4.0.5"
   },
   "devDependencies": {
     "@babel/core": "7.24.5",
