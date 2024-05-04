@@ -26,7 +26,7 @@ const { lockfile, installAndDedupe } = (() => {
   if (pm.name === 'bun') {
     return {
       lockfile: 'bun.lockb',
-      installAndDedupe: ['bun'],
+      installAndDedupe: ['bun i'],
     };
   }
 
