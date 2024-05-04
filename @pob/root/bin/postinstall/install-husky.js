@@ -67,7 +67,37 @@ export default function installHusky({ pkg, pm }) {
     fs.mkdirSync(path.resolve('.husky'));
   } catch {}
 
-  const pmExec = pm.name === 'npm' ? 'npx --no-install' : pm.name;
+  const { lockfile, pmExec, installOnDiffCommand } = (() => {
+    if (pm.name === 'yarn') {
+      return {
+        lockfile: 'yarn.lock',
+        pmExec: 'yarn',
+        installOnDiffCommand: `yarn install ${
+          isYarnBerry
+            ? '--immutable'
+            : '--prefer-offline --pure-lockfile --ignore-optional'
+        }`,
+      };
+    }
+    if (pm.name === 'npm') {
+      return {
+        lockfile: 'package-lock.json',
+        pmExec: 'npx --no-install',
+        installOnDiffCommand: 'npm i',
+      };
+    }
+    if (pm.name === 'bun') {
+      return {
+        lockfile: 'bun.lockb',
+        pmExec: 'bun run',
+        installOnDiffCommand: 'bun i',
+      };
+    }
+
+    throw new Error(
+      `Package manager not supported: ${pm.name}. Please run with yarn, npm or bun !`,
+    );
+  })();
 
   writeHook('commit-msg', `${pmExec} commitlint --edit $1`);
   writeHook('pre-commit', `${pmExec} pob-root-lint-staged`);
@@ -77,19 +107,17 @@ export default function installHusky({ pkg, pm }) {
     ensureHookDeleted('post-merge');
     ensureHookDeleted('post-rewrite');
   } else {
-    const runYarnInstallOnDiff = `
-if [ -n "$(git diff HEAD@{1}..HEAD@{0} -- yarn.lock)" ]; then
-  yarn install ${
-    isYarnBerry
-      ? '--immutable'
-      : '--prefer-offline --pure-lockfile --ignore-optional'
-  } || true
+    const runInstallOnDiff = (() => {
+      return `
+if [ -n "$(git diff HEAD@{1}..HEAD@{0} -- ${lockfile})" ]; then
+  ${installOnDiffCommand} || true
 fi`;
+    })();
 
     // https://yarnpkg.com/features/zero-installs
-    writeHook('post-checkout', runYarnInstallOnDiff);
-    writeHook('post-merge', runYarnInstallOnDiff);
-    writeHook('post-rewrite', runYarnInstallOnDiff);
+    writeHook('post-checkout', runInstallOnDiff);
+    writeHook('post-merge', runInstallOnDiff);
+    writeHook('post-rewrite', runInstallOnDiff);
   }
 
   const prePushHook = [];
@@ -112,7 +140,7 @@ fi`;
       }
       return 'test';
     };
-    prePushHook.push(`${pm.name} ${getTestCommand()}`);
+    prePushHook.push(`${pmExec} ${getTestCommand()}`);
   }
 
   if (prePushHook.length > 0) {
