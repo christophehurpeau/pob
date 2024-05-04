@@ -9,13 +9,31 @@ const pm =
   whichPmRuns() ||
   (fs.existsSync('package-lock.json') ? { name: 'npm' } : undefined);
 
-if (pm.name !== 'yarn' && pm.name !== 'npm') {
-  throw new Error(
-    `Package manager not supported: ${pm.name}. Please run with yarn or npm !`,
-  );
-}
 const yarnMajorVersion = pm.name === 'yarn' && semver.major(pm.version);
-const lockfile = pm.name === 'yarn' ? 'yarn.lock' : 'package-lock.json';
+const { lockfile, installAndDedupe } = (() => {
+  if (pm.name === 'yarn') {
+    return {
+      lockfile: 'yarn.lock',
+      installAndDedupe: ['yarn', 'yarn dedupe'],
+    };
+  }
+  if (pm.name === 'npm') {
+    return {
+      lockfile: 'package-lock.json',
+      installAndDedupe: ['npm install', 'npm dedupe'],
+    };
+  }
+  if (pm.name === 'bun') {
+    return {
+      lockfile: 'bun.lockb',
+      installAndDedupe: ['bun'],
+    };
+  }
+
+  throw new Error(
+    `Package manager not supported: ${pm.name}. Please run with yarn, npm or bun !`,
+  );
+})();
 
 // eslint-disable-next-line import/no-dynamic-require
 const pkg = require(path.resolve('package.json'));
@@ -41,18 +59,8 @@ const getSrcDirectories = () => {
 //   return 'dist';
 // };
 
-const generateInstallAndDedupe = () => {
-  if (pm.name === 'npm') {
-    return ['npm install', 'npm dedupe'];
-  }
-
-  return ['yarn', 'yarn dedupe'];
-};
-
 module.exports = function createLintStagedConfig() {
   const srcDirectories = getSrcDirectories();
-
-  const installAndDedupe = generateInstallAndDedupe();
 
   return {
     [`{${lockfile},package.json${
