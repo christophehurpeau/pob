@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.0.0](https://github.com/christophehurpeau/pob/compare/pob@18.4.2...pob@19.0.0) (2024-05-04)
+
+
+### ⚠ BREAKING CHANGES
+
+* enable "disableYarnGitCache" by default
+
+### Features
+
+* **deps:** update yarn monorepo ([#2032](https://github.com/christophehurpeau/pob/issues/2032)) ([d2b7b8a](https://github.com/christophehurpeau/pob/commit/d2b7b8adc11a13f4b4d96cdd08851ad66f3c83a0))
+* enable "disableYarnGitCache" by default ([b7ce323](https://github.com/christophehurpeau/pob/commit/b7ce323c51e0e875228478d708f27511325b844c))
+* **pob:** remove metro-health-check in gitignore as I dont use them ([dc09df0](https://github.com/christophehurpeau/pob/commit/dc09df0ae0600294ae4ecdc0fb571797f5cc7b43))
+* use codecov-action v4 ([73174bd](https://github.com/christophehurpeau/pob/commit/73174bd93ce1b0b9f93e360a7ea29478d7550400))
+
+
+### Bug Fixes
+
+* **pob:** fix vitest coverage commands ([770f995](https://github.com/christophehurpeau/pob/commit/770f995a2f679e63771ca5b1d30a386a66fd2f05))
+* run tsc with typescript and no babel ([96d1283](https://github.com/christophehurpeau/pob/commit/96d1283d2f79dfdeabc1c39ad57d299419ec44ed))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: root
+
+
 ## [18.4.2](https://github.com/christophehurpeau/pob/compare/pob@18.4.1...pob@18.4.2) (2024-04-24)
 
 Note: no notable changes

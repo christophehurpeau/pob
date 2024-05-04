@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@9.3.2...@pob/root@9.4.0) (2024-05-04)
+
+
+### Features
+
+* initial bun support ([0f0d36d](https://github.com/christophehurpeau/pob/commit/0f0d36db4cb5532a8976cba368cbc2fbe29e7802))
+
+
+
+
 ## [9.3.2](https://github.com/christophehurpeau/pob/compare/@pob/root@9.3.1...@pob/root@9.3.2) (2024-04-24)
 
 

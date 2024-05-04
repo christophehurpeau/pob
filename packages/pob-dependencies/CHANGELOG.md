@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.2.3](https://github.com/christophehurpeau/pob/compare/pob-dependencies@11.2.2...pob-dependencies@11.2.3) (2024-05-04)
+
+Note: no notable changes
+
+Version bump for dependency: pob-babel
+
+
 ## [11.2.2](https://github.com/christophehurpeau/pob/compare/pob-dependencies@11.2.1...pob-dependencies@11.2.2) (2024-04-24)
 
 Note: no notable changes

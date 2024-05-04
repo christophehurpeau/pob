@@ -1,8 +1,8 @@
 interface Dependencies {
-  '@babel/core': '7.24.4';
-  '@babel/preset-env': '7.24.4';
+  '@babel/core': '7.24.5';
+  '@babel/preset-env': '7.24.5';
   '@babel/preset-react': '7.24.1';
-  '@babel/runtime': '7.24.4';
+  '@babel/runtime': '7.24.5';
   '@playwright/test': '1.43.1';
   '@pob/commitlint-config': '6.3.1';
   '@pob/esbuild': '1.0.0';
@@ -16,7 +16,7 @@ interface Dependencies {
   '@swc/core': '1.5.0';
   '@swc/jest': '0.2.36';
   '@types/jest': '29.5.12';
-  '@types/node': '20.12.7';
+  '@types/node': '20.12.8';
   'alp-rollup-plugin-config': '2.2.1';
   'check-package-dependencies': '7.1.1';
   eslint: '8.57.0';

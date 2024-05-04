@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.2.2](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.2.1...@pob-example/next-app@0.2.2) (2024-05-04)
+
+
+### Bug Fixes
+
+* **deps:** update react monorepo to v18.3.1 ([#2026](https://github.com/christophehurpeau/pob/issues/2026)) ([ba29f51](https://github.com/christophehurpeau/pob/commit/ba29f51309c6839cc445386303e20619ebf50498))
+
+
+
+
 ## [0.2.1](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.2.0...@pob-example/next-app@0.2.1) (2024-04-24)
 
 

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.11.1](https://github.com/christophehurpeau/pob/compare/example-webpack-app@0.11.0...example-webpack-app@0.11.1) (2024-05-04)
+
+Note: no notable changes
+
+
+
+
 ## [0.11.0](https://github.com/christophehurpeau/pob/compare/example-webpack-app@0.10.3...example-webpack-app@0.11.0) (2024-04-21)
 
 Note: no notable changes
