@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.4.3](https://github.com/christophehurpeau/pob/compare/@pob/root@9.4.2...@pob/root@9.4.3) (2024-05-04)
+
+
+### Bug Fixes
+
+* fix checks run using pm ([12f955e](https://github.com/christophehurpeau/pob/commit/12f955e7b00f16d0b2b4f9f1090a4bde2c755442))
+
+
+
+
 ## [9.4.2](https://github.com/christophehurpeau/pob/compare/@pob/root@9.4.1...@pob/root@9.4.2) (2024-05-04)
 
 
