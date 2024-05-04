@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.4.1](https://github.com/christophehurpeau/pob/compare/@pob/root@9.4.0...@pob/root@9.4.1) (2024-05-04)
+
+
+### Bug Fixes
+
+* fix bun command to install ([5585fa3](https://github.com/christophehurpeau/pob/commit/5585fa3aa073a0194891677e4a33d7d71b96588b))
+
+
+
+
 ## [9.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@9.3.2...@pob/root@9.4.0) (2024-05-04)
 
 

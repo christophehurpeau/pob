@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.0.1](https://github.com/christophehurpeau/pob/compare/pob@19.0.0...pob@19.0.1) (2024-05-04)
+
+Note: no notable changes
+
+
+
+
 ## [19.0.0](https://github.com/christophehurpeau/pob/compare/pob@18.4.2...pob@19.0.0) (2024-05-04)
 
 
