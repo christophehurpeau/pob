@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.7.2 (2024-05-05)
+
+
+### Bug Fixes
+
+* fix package.type for app library ([d5df9d7](https://github.com/christophehurpeau/pob/commit/d5df9d72f2325c042e3ff2d610a2d3d4c378c950))
+
+
+
+
 ## [0.7.1](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.7.0...example-simple-lib@0.7.1) (2023-12-29)
 
 Note: no notable changes

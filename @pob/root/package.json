@@ -1,6 +1,6 @@
 {
   "name": "@pob/root",
-  "version": "9.4.3",
+  "version": "9.5.0",
   "description": "root package",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -78,7 +78,7 @@
     "lint-staged": "15.2.2",
     "pob-dependencies": "workspace:*",
     "prettier": "2.8.8",
-    "repository-check-dirty": "6.3.1",
+    "repository-check-dirty": "6.3.2",
     "semver": "^7.3.7",
     "which-pm-runs": "1.1.0"
   }

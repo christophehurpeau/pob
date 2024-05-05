@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.2](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.24.1...example-typescript-lib@0.24.2) (2024-05-05)
+
+Note: no notable changes
+
+
+
+
 ## [0.24.1](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.24.0...example-typescript-lib@0.24.1) (2024-05-04)
 
 Note: no notable changes

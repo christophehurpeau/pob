@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.1.0](https://github.com/christophehurpeau/pob/compare/pob@19.0.3...pob@19.1.0) (2024-05-05)
+
+
+### Features
+
+* support yarn nodeLinker pnpm ([340e5ab](https://github.com/christophehurpeau/pob/commit/340e5aba71f6943614445f50b20f1c3d3e68f01a))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: root
+
+
 ## [19.0.3](https://github.com/christophehurpeau/pob/compare/pob@19.0.2...pob@19.0.3) (2024-05-04)
 
 Note: no notable changes
