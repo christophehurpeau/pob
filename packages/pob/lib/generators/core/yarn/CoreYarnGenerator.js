@@ -191,6 +191,11 @@ export default class CoreYarnGenerator extends Generator {
       } else {
         this.fs.delete('.yarn/sdks');
       }
+      if (this.options.disableYarnGitCache) {
+        try {
+          this.spawnSync('rm', ['-rf', '.yarn/cache']);
+        } catch {}
+      }
       this.spawnSync('yarn', ['install'], {
         env: {
           YARN_ENABLE_IMMUTABLE_INSTALLS: 'false',
