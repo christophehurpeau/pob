@@ -111,7 +111,7 @@ export default class PobBaseGenerator extends Generator {
         name: 'yarnNodeLinker',
         message: 'Witch Linker do you want to use ?',
         type: 'list',
-        choices: ['node-modules', 'pnp'],
+        choices: ['node-modules', 'pnp', 'pnpm'],
         default: config.yarnNodeLinker || 'node-modules',
       },
     ]);

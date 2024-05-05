@@ -49,8 +49,10 @@ const readYarnConfigFile = () => {
 export default function installHusky({ pkg, pm }) {
   const yarnMajorVersion = pm.name === 'yarn' && semver.major(pm.version);
   const isYarnBerry = pm.name === 'yarn' && yarnMajorVersion >= 2;
+  const yarnConfig = isYarnBerry && readYarnConfigFile();
   const isYarnPnp =
-    isYarnBerry && !readYarnConfigFile().includes('nodeLinker: node-modules');
+    !yarnConfig.includes('nodeLinker: node-modules') &&
+    !yarnConfig.includes('nodeLinker: pnpm');
 
   /* Check legacy */
 
