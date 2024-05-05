@@ -394,7 +394,7 @@ export default class PobLibGenerator extends Generator {
       ) {
         this.fs.move(
           this.destinationPath("index.js"),
-          this.destinationPath("lib/index.js")
+          this.destinationPath("lib/index.js"),
         );
       }
     }

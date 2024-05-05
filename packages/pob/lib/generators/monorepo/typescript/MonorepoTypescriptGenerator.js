@@ -53,7 +53,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       pkg.name === "@pob/eslint-config-monorepo" || this.options.enable,
-      ["typescript"]
+      ["typescript"],
     );
 
     if (this.options.enable) {
@@ -109,7 +109,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
         {
           packagePaths,
           tsConfigSuffix: false,
-        }
+        },
       );
 
       if (this.options.testRunner === "node") {
@@ -119,10 +119,10 @@ export default class MonorepoTypescriptGenerator extends Generator {
           tsconfigTestPath,
           {
             packagePaths: packagePaths.filter((packagePath) =>
-              existsSync(`${packagePath}/tsconfig.test.json`)
+              existsSync(`${packagePath}/tsconfig.test.json`),
             ),
             tsConfigSuffix: "test",
-          }
+          },
         );
       }
 

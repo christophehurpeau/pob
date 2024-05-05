@@ -7,7 +7,7 @@ import whichPmRuns from "which-pm-runs";
 
 if (!process.env.INIT_CWD) {
   console.error(
-    "Missing process.env.INIT_CWD. Did you use postinstall script ?"
+    "Missing process.env.INIT_CWD. Did you use postinstall script ?",
   );
   process.exit(1);
 }
@@ -30,7 +30,7 @@ if (!pm) {
 
 if (pm.name !== "yarn" && pm.name !== "npm" && pm.name !== "bun") {
   console.error(
-    `Package manager not supported: ${pm.name}. Please run with yarn or npm!`
+    `Package manager not supported: ${pm.name}. Please run with yarn or npm!`,
   );
   process.exit(1);
 }

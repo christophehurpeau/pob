@@ -190,7 +190,7 @@ export default class PobAppGenerator extends Generator {
 
     const ignorePaths = appIgnorePaths[this.appConfig.type](
       this.appConfig,
-      pkg
+      pkg,
     ).filter(Boolean);
 
     this.composeWith("pob:common:typescript", {
@@ -346,7 +346,7 @@ export default class PobAppGenerator extends Generator {
       execSync(
         `rm -Rf ${["lib-*", "coverage", "docs", "dist"]
           .filter(Boolean)
-          .join(" ")}`
+          .join(" ")}`,
       );
     }
   }

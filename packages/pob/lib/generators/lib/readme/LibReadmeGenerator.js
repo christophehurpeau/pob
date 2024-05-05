@@ -68,7 +68,7 @@ export default class LibReadmeGenerator extends Generator {
     const match =
       repository &&
       repository.match(
-        /^(?:git@|https?:\/\/)(?:([^./:]+)(?:\.com)?[/:])?([^/:]+)\/([^./:]+)(?:.git)?/
+        /^(?:git@|https?:\/\/)(?:([^./:]+)(?:\.com)?[/:])?([^/:]+)\/([^./:]+)(?:.git)?/,
       );
     const [, gitHost, gitAccount, gitName] = match || [];
     try {
@@ -98,7 +98,7 @@ export default class LibReadmeGenerator extends Generator {
               : undefined,
           testing: this.options.testing,
           content,
-        }
+        },
       );
     } catch (error) {
       console.log(error.stack || error.message || error);

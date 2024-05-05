@@ -15,7 +15,7 @@ export default function (context, opts = {}) {
       typeof opts[optionName] !== "boolean"
     ) {
       throw new Error(
-        `Preset pob-env '${optionName}' option must be a boolean.`
+        `Preset pob-env '${optionName}' option must be a boolean.`,
       );
     }
   });
@@ -35,8 +35,8 @@ export default function (context, opts = {}) {
   if (targetOption && !validTargetOption.includes(targetOption)) {
     throw new Error(
       `Preset pob-env 'target' option must one of ${validTargetOption.join(
-        ", "
-      )}.`
+        ", ",
+      )}.`,
     );
   }
 
@@ -55,7 +55,7 @@ export default function (context, opts = {}) {
   if (modules !== false && modules !== "commonjs") {
     throw new Error(
       "Preset pob-env 'modules' option must be 'false' to indicate no modules\n" +
-        "or 'commonjs' (default)"
+        "or 'commonjs' (default)",
     );
   }
 

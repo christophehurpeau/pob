@@ -64,13 +64,13 @@ export default class CoreYarnGenerator extends Generator {
         this.destinationPath(".yarn/.gitignore"),
         {
           disableYarnGitCache: this.options.disableYarnGitCache,
-        }
+        },
       );
 
       const { stdout } = this.spawnSync(
         "yarn",
         ["plugin", "runtime", "--json"],
-        { stdio: "pipe" }
+        { stdio: "pipe" },
       );
       const installedPlugins = stdout.split("\n").map(JSON.parse);
 
@@ -87,7 +87,7 @@ export default class CoreYarnGenerator extends Generator {
       const installPluginIfNotInstalled = (
         name,
         nameOrUrl = name,
-        forceInstallIfInstalled = () => false
+        forceInstallIfInstalled = () => false,
       ) => {
         if (!isPluginInstalled(name)) {
           installPlugin(nameOrUrl);
@@ -108,7 +108,7 @@ export default class CoreYarnGenerator extends Generator {
       if (!inMonorepo && !pkg.private) {
         installPluginIfNotInstalled(
           postinstallDevPluginName,
-          "https://raw.githubusercontent.com/sachinraja/yarn-plugin-postinstall-dev/main/bundles/%40yarnpkg/plugin-postinstall-dev.js"
+          "https://raw.githubusercontent.com/sachinraja/yarn-plugin-postinstall-dev/main/bundles/%40yarnpkg/plugin-postinstall-dev.js",
         );
       } else {
         removePluginIfInstalled(postinstallDevPluginName);
@@ -121,10 +121,10 @@ export default class CoreYarnGenerator extends Generator {
           () => {
             const content = fs.readFileSync(
               ".yarn/plugins/@yarnpkg/plugin-conventional-version.cjs",
-              "utf8"
+              "utf8",
             );
             return !content.includes("Lifecycle script: preversion");
-          }
+          },
         );
       }
 
@@ -171,7 +171,7 @@ export default class CoreYarnGenerator extends Generator {
         ".yarnrc.yml",
         yml.dump(sortObject(config), {
           lineWidth: 9999,
-        })
+        }),
       );
     } else {
       this.fs.delete(".yarn");

@@ -75,7 +75,7 @@ export default class CoreVSCodeGenerator extends Generator {
         {
           yarn: this.options.packageManager === "yarn",
           pnp: this.options.yarnNodeLinker === "pnp",
-        }
+        },
       );
       copyAndFormatTpl(
         this.fs,
@@ -89,13 +89,13 @@ export default class CoreVSCodeGenerator extends Generator {
           testing: this.options.testing,
           testRunner: this.options.testRunner,
           module: pkg.type === "module",
-        }
+        },
       );
 
       const tasksConfig = readJSON5(
         this.fs,
         this.destinationPath(".vscode/tasks.json"),
-        {}
+        {},
       );
       const tasks = tasksConfig.tasks || [];
 
@@ -106,14 +106,14 @@ export default class CoreVSCodeGenerator extends Generator {
         {
           typescript: this.options.typescript,
           tasks: JSON.stringify(tasks, null, 2),
-        }
+        },
       );
 
       if (this.options.monorepo) {
         const projectName = pkg.name.replace("/", "-");
         // legacy project code-workspace
         this.fs.delete(
-          this.destinationPath(`.vscode/${projectName}.code-workspace`)
+          this.destinationPath(`.vscode/${projectName}.code-workspace`),
         );
       }
     } else {

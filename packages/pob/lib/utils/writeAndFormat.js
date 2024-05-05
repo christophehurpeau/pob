@@ -9,7 +9,7 @@ export function writeAndFormat(fs, destinationPath, content, { parser } = {}) {
       trailingComma: "all",
       arrowParens: "always",
       printWidth: destinationPath === ".yarnrc.yml" ? 9999 : undefined,
-    })
+    }),
   );
 }
 

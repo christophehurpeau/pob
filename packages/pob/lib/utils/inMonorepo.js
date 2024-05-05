@@ -16,7 +16,7 @@ const rootMonorepoPkg =
 
 const getInMonorepoThings = () => {
   const rootYoConfig = JSON.parse(
-    fs.readFileSync(path.resolve(rootMonorepo, ".yo-rc.json"))
+    fs.readFileSync(path.resolve(rootMonorepo, ".yo-rc.json")),
   );
   const cwd = process.cwd();
 

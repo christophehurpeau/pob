@@ -77,7 +77,7 @@ module.exports = (file, api, options) => {
         !node.specifiers.some(
           (specifier) =>
             specifier.type === "ImportSpecifier" &&
-            specifier.imported.name === "ReactNode"
+            specifier.imported.name === "ReactNode",
         )
       ) {
         node.specifiers.push(j.importSpecifier(j.identifier("ReactNode")));

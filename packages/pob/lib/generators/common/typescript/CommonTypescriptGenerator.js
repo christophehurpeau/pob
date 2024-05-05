@@ -166,7 +166,7 @@ export default class CommonTypescriptGenerator extends Generator {
       pkg,
       this.options.enable ||
         this.fs.exists(this.destinationPath("lib/index.d.ts")),
-      ["typescript"]
+      ["typescript"],
     );
 
     const tsconfigPath = this.destinationPath("tsconfig.json");
@@ -193,7 +193,7 @@ export default class CommonTypescriptGenerator extends Generator {
           packageUtils.addOrRemoveDevDependencies(
             pkg,
             inMonorepo.rootPackageManager === "yarn",
-            ["typescript"]
+            ["typescript"],
           );
 
           const packageLocations = new Map(
@@ -202,7 +202,7 @@ export default class CommonTypescriptGenerator extends Generator {
                 (packageName) =>
                   (pkg.dependencies && pkg.dependencies[packageName]) ||
                   (pkg.devDependencies && pkg.devDependencies[packageName]) ||
-                  (pkg.peerDependencies && pkg.peerDependencies[packageName])
+                  (pkg.peerDependencies && pkg.peerDependencies[packageName]),
               )
               .map((packageName) => [
                 packageName,
@@ -211,12 +211,12 @@ export default class CommonTypescriptGenerator extends Generator {
                     ? // eslint-disable-next-line unicorn/no-nested-ternary
                       yoConfig.pob.project.type === "app"
                       ? `packages/${packageName.slice(
-                          packageName.indexOf("/") + 1
+                          packageName.indexOf("/") + 1,
                         )}`
                       : packageName
                     : `packages/${packageName}`
                 }`,
-              ])
+              ]),
           );
 
           monorepoPackageSrcPaths = [...packageLocations.entries()].map(
@@ -227,11 +227,11 @@ export default class CommonTypescriptGenerator extends Generator {
                   ? "src"
                   : "lib"
               }`,
-            ]
+            ],
           );
           monorepoPackageReferences = yoConfig.pob.monorepo.packageNames
             .filter((packageName) =>
-              existsSync(`${packageLocations.get(packageName)}/tsconfig.json`)
+              existsSync(`${packageLocations.get(packageName)}/tsconfig.json`),
             )
             .map((packageName) => packageLocations.get(packageName));
           // monorepoPackageBuildReferences = yoConfig.pob.monorepo.packageNames
@@ -282,7 +282,7 @@ export default class CommonTypescriptGenerator extends Generator {
             .split(",")
             .filter(Boolean),
           presets,
-        }
+        },
       );
 
       // if (

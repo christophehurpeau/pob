@@ -20,7 +20,7 @@ type WorkspacesDependenciesMap = Map<
 >;
 
 export const buildDependentsMaps = (
-  project: Project
+  project: Project,
 ): WorkspacesDependenciesMap => {
   const dependentsMap: WorkspacesDependenciesMap = new Map<
     Workspace,
@@ -42,7 +42,7 @@ export const buildDependentsMaps = (
 
         const dependents = miscUtils.getArrayWithDefault(
           dependentsMap,
-          workspace
+          workspace,
         );
         dependents.push([dependent, set, descriptor]);
       }
@@ -53,7 +53,7 @@ export const buildDependentsMaps = (
 };
 
 export const buildDependenciesMaps = (
-  project: Project
+  project: Project,
 ): WorkspacesDependenciesMap => {
   const dependenciesMap: WorkspacesDependenciesMap = new Map<
     Workspace,
@@ -75,7 +75,7 @@ export const buildDependenciesMaps = (
 
         const dependencies = miscUtils.getArrayWithDefault(
           dependenciesMap,
-          dependent
+          dependent,
         );
         dependencies.push([workspace, set, descriptor]);
       }
@@ -87,7 +87,7 @@ export const buildDependenciesMaps = (
 
 export const buildTopologicalOrderBatches = (
   project: Project,
-  dependenciesMap: WorkspacesDependenciesMap
+  dependenciesMap: WorkspacesDependenciesMap,
 ): Workspace[][] => {
   const batches: Workspace[][] = [];
 

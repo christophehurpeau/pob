@@ -19,7 +19,7 @@ export const createYarnProject = async () => {
   const configuration = await Configuration.find(
     portablePath,
     // eslint-disable-next-line unicorn/no-array-method-this-argument -- not an array
-    getPluginConfiguration()
+    getPluginConfiguration(),
   );
   // eslint-disable-next-line unicorn/no-array-method-this-argument -- not an array
   const { project } = await Project.find(configuration, portablePath);
@@ -28,7 +28,7 @@ export const createYarnProject = async () => {
 
 const getAppTypes = (configs) => {
   const appConfigs = configs.filter(
-    (config) => config && config.project && config.project.type === "app"
+    (config) => config && config.project && config.project.type === "app",
   );
 
   const appTypes = new Set();
@@ -47,7 +47,7 @@ const hasDist = (packages, configs) =>
         packages[index].pob &&
         packages[index].pob.babelEnvs &&
         packages[index].pob.babelEnvs.length > 0
-      )
+      ),
   );
 
 const hasBuild = (packages, configs) =>
@@ -58,7 +58,7 @@ const hasBuild = (packages, configs) =>
         config.project &&
         config.project.type === "app" &&
         config.app.type === "alp-node"
-      )
+      ),
   );
 
 export default class PobMonorepoGenerator extends Generator {
@@ -110,7 +110,7 @@ export default class PobMonorepoGenerator extends Generator {
     const yarnProject = await createYarnProject(this.destinationPath());
     const batches = buildTopologicalOrderBatches(
       yarnProject,
-      buildDependenciesMaps(yarnProject)
+      buildDependenciesMaps(yarnProject),
     );
 
     this.packages = [];
@@ -119,7 +119,7 @@ export default class PobMonorepoGenerator extends Generator {
     for (const batch of batches) {
       // sort by name to ensure consistent ordering
       batch.sort((a, b) =>
-        getWorkspaceName(a).localeCompare(getWorkspaceName(b), "en")
+        getWorkspaceName(a).localeCompare(getWorkspaceName(b), "en"),
       );
 
       batch.forEach((workspace) => {
@@ -208,7 +208,7 @@ export default class PobMonorepoGenerator extends Generator {
     const packagePaths = this.packageLocations.filter(
       this.pobLernaConfig.typescript
         ? (packagePath) => fs.existsSync(`${packagePath}/tsconfig.json`)
-        : Boolean
+        : Boolean,
     );
 
     if (packagePaths.length === 0 && packageNames.length > 0) {
@@ -313,7 +313,7 @@ export default class PobMonorepoGenerator extends Generator {
 
     if (platform !== "win32") {
       execSync(
-        `rm -Rf ${["lib-*", "coverage", "docs"].filter(Boolean).join(" ")}`
+        `rm -Rf ${["lib-*", "coverage", "docs"].filter(Boolean).join(" ")}`,
       );
     }
   }
@@ -340,7 +340,7 @@ export default class PobMonorepoGenerator extends Generator {
           this.destinationPath("rollup.config.mjs"),
           {
             configLocations: rollupConfigs,
-          }
+          },
         );
       } else {
         this.fs.delete("rollup.config.mjs");

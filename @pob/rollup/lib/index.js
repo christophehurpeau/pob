@@ -14,7 +14,7 @@ export const resolveEntry = (cwd, entryName) => {
     const potentialEntryPath = path.resolve(
       cwd,
       "src",
-      `${entryName}.${extension}`
+      `${entryName}.${extension}`,
     );
 
     if (fs.existsSync(potentialEntryPath)) {

@@ -10,12 +10,12 @@ module.exports = function ({ types }, opts) {
         types.memberExpression(
           types.identifier("process"),
           types.identifier("env"),
-          false
+          false,
         ),
         types.identifier("NODE_ENV"),
-        false
+        false,
       ),
-      types.stringLiteral(nodeEnvValue)
+      types.stringLiteral(nodeEnvValue),
     );
   };
 
@@ -43,7 +43,7 @@ module.exports = function ({ types }, opts) {
       if (node.source.value !== "pob-babel") return;
       if (!node.specifiers) {
         throw path.buildCodeFrameError(
-          'Expecting named import for "pob-babel"'
+          'Expecting named import for "pob-babel"',
         );
       }
       node.specifiers.forEach((specifier) => {
@@ -55,12 +55,12 @@ module.exports = function ({ types }, opts) {
 
         if (!nodeReplacement) {
           throw path.buildCodeFrameError(
-            `Unknown "pob-babel" named import: ${specifier.imported.name}`
+            `Unknown "pob-babel" named import: ${specifier.imported.name}`,
           );
         }
 
         path.scope.bindings[specifier.local.name].referencePaths.forEach(
-          (ref) => ref.replaceWith(nodeReplacement)
+          (ref) => ref.replaceWith(nodeReplacement),
         );
       });
 
@@ -84,7 +84,7 @@ module.exports = function ({ types }, opts) {
         ].includes(node.name)
       ) {
         throw path.buildCodeFrameError(
-          `Invalid Identifier found: "${node.name}". Import from pob-babel instead.`
+          `Invalid Identifier found: "${node.name}". Import from pob-babel instead.`,
         );
       }
     },

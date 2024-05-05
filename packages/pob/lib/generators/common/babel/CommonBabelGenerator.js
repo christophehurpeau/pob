@@ -68,13 +68,13 @@ export default class CommonBabelGenerator extends Generator {
         !babelEnvs.some(
           (env) =>
             env.target === "node" &&
-            String(env.version) === (this.options.onlyLatestLTS ? "20" : "18")
+            String(env.version) === (this.options.onlyLatestLTS ? "20" : "18"),
         ) &&
         babelEnvs.some(
           (env) =>
             env.target === "node" &&
             (["8", "6", "10", "12", "14", "16"].includes(String(env.version)) ||
-              (this.options.onlyLatestLTS && String(env.version) === "18"))
+              (this.options.onlyLatestLTS && String(env.version) === "18")),
         )
       ) {
         babelEnvs.unshift({
@@ -86,7 +86,7 @@ export default class CommonBabelGenerator extends Generator {
       babelEnvs = babelEnvs.filter(
         (env) =>
           env.target !== "node" ||
-          env.version >= (this.options.onlyLatestLTS ? 20 : 18)
+          env.version >= (this.options.onlyLatestLTS ? 20 : 18),
       );
 
       pkg.pob.babelEnvs = babelEnvs;
@@ -120,7 +120,7 @@ export default class CommonBabelGenerator extends Generator {
               return this.options.onlyLatestLTS ? "20" : "18";
             }
             return env.version;
-          })
+          }),
       ),
     ];
     const browserVersions = babelEnvs
@@ -308,7 +308,7 @@ export default class CommonBabelGenerator extends Generator {
       ? this.babelEnvs.find((env) => env.target === "node")
       : useTypescript; // todo pkg.pob.typescriptTargets
     const hasTargetBrowser = this.babelEnvs.find(
-      (env) => env.target === "browser"
+      (env) => env.target === "browser",
     );
 
     /* dependencies */
@@ -316,7 +316,7 @@ export default class CommonBabelGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       useBabel || (pkg.peerDependencies && pkg.peerDependencies["@babel/core"]),
-      ["@babel/core"]
+      ["@babel/core"],
     );
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel, ["pob-babel"]);
 
@@ -335,7 +335,7 @@ export default class CommonBabelGenerator extends Generator {
       pkg,
       (useBabel && pkg.pob.jsx) ||
         (pkg.devDependencies?.["@babel/preset-react"] && isLibraryRollupPlugin),
-      ["@babel/preset-react"]
+      ["@babel/preset-react"],
     );
 
     packageUtils.removeDevDependencies(pkg, [
@@ -348,10 +348,10 @@ export default class CommonBabelGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.babelEnvs.find(
-        (env) => env.target === "browser" && env.version === undefined
+        (env) => env.target === "browser" && env.version === undefined,
       ) ||
         (pkg.devDependencies?.["@babel/preset-env"] && isLibraryRollupPlugin),
-      ["@babel/preset-env"]
+      ["@babel/preset-env"],
     );
 
     /* engines */
@@ -362,7 +362,7 @@ export default class CommonBabelGenerator extends Generator {
         ? Math.min(
             ...this.babelEnvs
               .filter((env) => env.target === "node")
-              .map((env) => env.version)
+              .map((env) => env.version),
           )
         : // eslint-disable-next-line unicorn/no-unreadable-iife
           (() => (this.options.onlyLatestLTS ? "20" : "18"))();
@@ -389,7 +389,7 @@ export default class CommonBabelGenerator extends Generator {
         pkg.devDependencies["@types/node"] &&
         !semver.satisfies(
           pkg.devDependencies["@types/node"],
-          `>=${minNodeVersion}.0.0`
+          `>=${minNodeVersion}.0.0`,
         )
       ) {
         pkg.devDependencies["@types/node"] = `>=${minNodeVersion}.0.0`;
@@ -469,7 +469,7 @@ export default class CommonBabelGenerator extends Generator {
             config: this.options.useAppConfig,
             outDirectory: this.options.buildDirectory,
             enableRun: !this.options.isAppLibrary && entries.includes("index"),
-          }
+          },
         );
       } else {
         copyAndFormatTpl(
@@ -478,7 +478,7 @@ export default class CommonBabelGenerator extends Generator {
           this.destinationPath("rollup.config.mjs"),
           {
             outDirectory: this.options.buildDirectory,
-          }
+          },
         );
       }
     } else if (!pkg.pob.typescript && pkg.pob.rollup !== false) {
@@ -493,7 +493,7 @@ export default class CommonBabelGenerator extends Generator {
     if (this.fs.exists(this.destinationPath("babel.config.js"))) {
       this.fs.move(
         this.destinationPath("babel.config.js"),
-        this.destinationPath("babel.config.cjs")
+        this.destinationPath("babel.config.cjs"),
       );
     }
 

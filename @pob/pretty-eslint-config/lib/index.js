@@ -7,7 +7,7 @@ export default function prettyEslintConfig(eslintConfig, prettierOptions) {
     eslintConfig = JSON.parse(eslintConfig);
     if (typeof eslintConfig !== "object") {
       throw new TypeError(
-        "Invalid eslint config: not an object after parsing string"
+        "Invalid eslint config: not an object after parsing string",
       );
     }
   } else if (typeof eslintConfig !== "object") {
@@ -16,7 +16,7 @@ export default function prettyEslintConfig(eslintConfig, prettierOptions) {
 
   if (typeof prettierOptions === "string") {
     throw new TypeError(
-      `Please import "${prettierOptions}" and pass it as the second argument of prettyPkg`
+      `Please import "${prettierOptions}" and pass it as the second argument of prettyPkg`,
     );
   }
 

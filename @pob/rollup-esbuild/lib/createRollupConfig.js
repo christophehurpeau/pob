@@ -15,7 +15,7 @@ export default function createRollupConfig({
 
   if (pobConfig.babelEnvs) {
     throw new Error(
-      "@pob/rollup-esbuild does not supports babel, use `pob-babel` package instead."
+      "@pob/rollup-esbuild does not supports babel, use `pob-babel` package instead.",
     );
   }
 
@@ -39,8 +39,8 @@ export default function createRollupConfig({
               env.target === "node"
                 ? nodeFormatToExt(format, pkg.type)
                 : `.${format}.js`
-            }`
-          )
+            }`,
+          ),
         ),
         format,
         sourcemap: true,

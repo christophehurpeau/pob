@@ -99,7 +99,7 @@ export default class CoreGitGithubGenerator extends Generator {
 
     if (!GITHUB_TOKEN && process.env.CI !== "true") {
       throw new Error(
-        "Missing POB_GITHUB_TOKEN. Create one with https://github.com/settings/tokens/new?scopes=repo&description=POB%20Generator and add it in your env variables."
+        "Missing POB_GITHUB_TOKEN. Create one with https://github.com/settings/tokens/new?scopes=repo&description=POB%20Generator and add it in your env variables.",
       );
     }
   }
@@ -146,7 +146,7 @@ export default class CoreGitGithubGenerator extends Generator {
               "origin",
               `git@github.com:christophehurpeau/${name}.git`,
             ],
-            { cwd }
+            { cwd },
           );
           console.error("Failed to create repository");
           console.error(error.stack || error.message || error);
@@ -154,7 +154,7 @@ export default class CoreGitGithubGenerator extends Generator {
         this.spawnCommandSync(
           "git",
           ["commit", "-m", "chore: initial commit [skip ci]"],
-          { cwd }
+          { cwd },
         );
         this.spawnCommandSync("git", ["branch", "-M", "main"], {
           cwd,

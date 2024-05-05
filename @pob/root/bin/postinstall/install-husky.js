@@ -17,7 +17,7 @@ const ensureLegacyHuskyConfigDeleted = () => {
 const ensureHuskyNotInDevDependencies = (pkg) => {
   if (pkg.devDependencies && pkg.devDependencies.husky) {
     throw new Error(
-      "Found husky in devDependencies. Husky is provided by @pob/root, please remove"
+      "Found husky in devDependencies. Husky is provided by @pob/root, please remove",
     );
   }
 };
@@ -28,7 +28,7 @@ const writeHook = (hookName, hookContent) => {
     `#!/usr/bin/env sh\n\n${hookContent.trim()}\n`,
     {
       mode: "755",
-    }
+    },
   );
 };
 
@@ -97,7 +97,7 @@ export default function installHusky({ pkg, pm }) {
     }
 
     throw new Error(
-      `Package manager not supported: ${pm.name}. Please run with yarn, npm or bun !`
+      `Package manager not supported: ${pm.name}. Please run with yarn, npm or bun !`,
     );
   })();
 
@@ -162,7 +162,7 @@ do
     fi
   fi
 done
-`
+`,
     );
   } else {
     ensureHookDeleted("pre-push");

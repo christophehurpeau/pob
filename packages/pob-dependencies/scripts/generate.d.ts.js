@@ -22,6 +22,6 @@ fs.writeFileSync(
       trailingComma: "all",
       singleQuote: true,
       arrowParens: "always",
-    }
-  )
+    },
+  ),
 );

@@ -51,7 +51,7 @@ export default class CommonHuskyGenerator extends Generator {
     if (this.fs.exists(this.destinationPath("lint-staged.config.cjs"))) {
       this.fs.move(
         this.destinationPath("lint-staged.config.cjs"),
-        this.destinationPath("lint-staged.config.js")
+        this.destinationPath("lint-staged.config.js"),
       );
     }
 
@@ -72,12 +72,12 @@ export default class CommonHuskyGenerator extends Generator {
         if (pkg.type !== "module") {
           this.fs.copy(
             this.templatePath("lint-staged.config.cjs.txt"),
-            this.destinationPath("lint-staged.config.js")
+            this.destinationPath("lint-staged.config.js"),
           );
         } else {
           this.fs.copy(
             this.templatePath("lint-staged.config.js.txt"),
-            this.destinationPath("lint-staged.config.js")
+            this.destinationPath("lint-staged.config.js"),
           );
         }
       }

@@ -7,7 +7,7 @@ export default function prettyPkg(pkg, prettierOptions) {
     pkg = JSON.parse(pkg);
     if (typeof pkg !== "object") {
       throw new TypeError(
-        "Invalid package: not an object after parsing string"
+        "Invalid package: not an object after parsing string",
       );
     }
   } else if (typeof pkg !== "object") {
@@ -16,7 +16,7 @@ export default function prettyPkg(pkg, prettierOptions) {
 
   if (typeof prettierOptions === "string") {
     throw new TypeError(
-      `Please import "${prettierOptions}" and pass it as the second argument of prettyPkg`
+      `Please import "${prettierOptions}" and pass it as the second argument of prettyPkg`,
     );
   }
 

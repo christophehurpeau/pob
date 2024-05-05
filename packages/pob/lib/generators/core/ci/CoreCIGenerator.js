@@ -150,7 +150,7 @@ export default class CoreCIGenerator extends Generator {
         this.templatePath(
           this.options.splitJobs
             ? "github-action-push-workflow-split.yml.ejs"
-            : "github-action-push-workflow.yml.ejs"
+            : "github-action-push-workflow.yml.ejs",
         ),
         this.destinationPath(".github/workflows/push.yml"),
         {
@@ -174,7 +174,7 @@ export default class CoreCIGenerator extends Generator {
             inMonorepo &&
             inMonorepo.root &&
             inMonorepo.pobConfig?.project?.type === "lib",
-        }
+        },
       );
 
       ciContexts.push(
@@ -190,7 +190,7 @@ export default class CoreCIGenerator extends Generator {
           : [
               !this.options.onlyLatestLTS && "build (18.x)",
               "build (20.x)",
-            ].filter(Boolean))
+            ].filter(Boolean)),
       );
     } else {
       this.fs.delete(this.destinationPath(".github/workflows/push.yml"));
@@ -212,7 +212,7 @@ export default class CoreCIGenerator extends Generator {
           testing: this.options.testing,
           testRunner: this.options.testRunner,
           typedoc: this.options.documentation && this.options.typescript,
-        }
+        },
       );
     } else {
       this.fs.delete(this.destinationPath(".github/workflows/gh-pages.yml"));

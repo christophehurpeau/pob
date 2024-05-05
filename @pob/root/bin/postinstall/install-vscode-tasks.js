@@ -46,7 +46,7 @@ export default function installVscodeTasks({ pkg }) {
               (name !== "lint" &&
                 name.startsWith("lint") &&
                 !name.endsWith(":fix")) ||
-              name === "tsc"
+              name === "tsc",
           ),
         });
         return;
@@ -85,7 +85,7 @@ export default function installVscodeTasks({ pkg }) {
 `,
       {
         filepath: ".vscode/tasks.json",
-      }
-    )
+      },
+    ),
   );
 }
