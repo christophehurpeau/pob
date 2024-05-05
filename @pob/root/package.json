@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "bin": {
-    "commitlint": "./bin/commitlint.cjs",
+    "commitlint": "./bin/commitlint.js",
     "pob-root-lint-staged": "./bin/pob-root-lint-staged.js",
     "pob-root-postinstall": "./bin/pob-root-postinstall.js",
     "pob-root-prettier": "./bin/prettier.cjs",
@@ -68,11 +68,11 @@
   "pob": {},
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "@commitlint/cli": "18.6.1",
+    "@commitlint/cli": "19.3.0",
     "@pob/pretty-eslint-config": "5.4.1",
     "@pob/pretty-pkg": "7.1.1",
-    "conventional-changelog-conventionalcommits": "^7.0.0",
-    "cosmiconfig": "^8.3.6",
+    "conventional-changelog-conventionalcommits": "^8.0.0",
+    "cosmiconfig": "^9.0.0",
     "husky": "~9.0.11",
     "json5": "^2.2.2",
     "lint-staged": "15.2.2",
