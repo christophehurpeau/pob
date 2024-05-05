@@ -38,6 +38,6 @@
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
     "@pob/sort-eslint-config": "5.3.1",
-    "prettier": "^2.6.2"
+    "prettier": "^3.0.0"
   }
 }
