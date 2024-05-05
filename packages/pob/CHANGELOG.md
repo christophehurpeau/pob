@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.1.1](https://github.com/christophehurpeau/pob/compare/pob@19.1.0...pob@19.1.1) (2024-05-05)
+
+
+### Bug Fixes
+
+* make sure .yarn/cache is deleted when disableYarnGitCache is enabled ([242c678](https://github.com/christophehurpeau/pob/commit/242c678a26b49b617d401b598c466cdeb88ad497))
+
+
+
+
 ## [19.1.0](https://github.com/christophehurpeau/pob/compare/pob@19.0.3...pob@19.1.0) (2024-05-05)
 
 
