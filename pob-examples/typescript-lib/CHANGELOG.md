@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.24.2...example-typescript-lib@0.25.0) (2024-05-05)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v55.3.0 ([#2035](https://github.com/christophehurpeau/pob/issues/2035)) ([0f05da8](https://github.com/christophehurpeau/pob/commit/0f05da803035953e8b32c87bab59649cdb448aa5))
+
+
+
+
 ## [0.24.2](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.24.1...example-typescript-lib@0.24.2) (2024-05-05)
 
 Note: no notable changes

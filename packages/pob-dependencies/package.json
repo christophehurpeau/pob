@@ -1,6 +1,6 @@
 {
   "name": "pob-dependencies",
-  "version": "11.2.4",
+  "version": "11.3.0",
   "description": "easier dependencies upgrade with a real package.json",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",

@@ -7740,7 +7740,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-typescript-lib@npm:0.24.2, example-typescript-lib@workspace:pob-examples/typescript-lib":
+"example-typescript-lib@npm:0.25.0, example-typescript-lib@workspace:pob-examples/typescript-lib":
   version: 0.0.0-use.local
   resolution: "example-typescript-lib@workspace:pob-examples/typescript-lib"
   dependencies:
@@ -7756,7 +7756,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-webpack-app@workspace:pob-examples/webpack-app"
   dependencies:
-    example-typescript-lib: "npm:0.24.2"
+    example-typescript-lib: "npm:0.25.0"
     webpack: "npm:5.91.0"
     webpack-cli: "npm:5.1.4"
   languageName: unknown
@@ -12167,7 +12167,7 @@ __metadata:
     prettier: "npm:2.8.8"
     semver: "npm:7.6.0"
     validate-npm-package-name: "npm:^5.0.0"
-    yarn-workspace-utils: "npm:3.4.1"
+    yarn-workspace-utils: "npm:3.5.0"
     yeoman-environment: "npm:4.4.0"
     yeoman-generator: "npm:7.1.1"
   bin:
@@ -14945,7 +14945,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yarn-workspace-utils@npm:3.4.1, yarn-workspace-utils@workspace:packages/yarn-workspace-utils":
+"yarn-workspace-utils@npm:3.5.0, yarn-workspace-utils@workspace:packages/yarn-workspace-utils":
   version: 0.0.0-use.local
   resolution: "yarn-workspace-utils@workspace:packages/yarn-workspace-utils"
   dependencies:

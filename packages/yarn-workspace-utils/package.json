@@ -1,6 +1,6 @@
 {
   "name": "yarn-workspace-utils",
-  "version": "3.4.1",
+  "version": "3.5.0",
   "description": "workspace utils for yarn berry",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",

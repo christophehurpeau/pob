@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.2.0](https://github.com/christophehurpeau/pob/compare/pob@19.1.1...pob@19.2.0) (2024-05-05)
+
+
+### Features
+
+* add tsconfig template for js ([237ad7a](https://github.com/christophehurpeau/pob/commit/237ad7a54abe14d8f49db8057adffe00d1b823cd))
+* **deps:** update @pob/eslint-config to v55.3.0 ([#2035](https://github.com/christophehurpeau/pob/issues/2035)) ([0f05da8](https://github.com/christophehurpeau/pob/commit/0f05da803035953e8b32c87bab59649cdb448aa5))
+
+Version bump for dependency: yarn-workspace-utils
+
+
 ## [19.1.1](https://github.com/christophehurpeau/pob/compare/pob@19.1.0...pob@19.1.1) (2024-05-05)
 
 

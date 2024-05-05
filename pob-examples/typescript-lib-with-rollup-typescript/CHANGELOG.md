@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.25.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-with-rollup-typescript@0.24.0...example-typescript-lib-with-rollup-typescript@0.25.0) (2024-05-05)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v55.3.0 ([#2035](https://github.com/christophehurpeau/pob/issues/2035)) ([0f05da8](https://github.com/christophehurpeau/pob/commit/0f05da803035953e8b32c87bab59649cdb448aa5))
+
+
+
+
 ## [0.24.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-with-rollup-typescript@0.23.2...example-typescript-lib-with-rollup-typescript@0.24.0) (2024-04-21)
 
 

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.5.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@3.4.1...yarn-workspace-utils@3.5.0) (2024-05-05)
+
+
+### Features
+
+* **deps:** update @pob/eslint-config to v55.3.0 ([#2035](https://github.com/christophehurpeau/pob/issues/2035)) ([0f05da8](https://github.com/christophehurpeau/pob/commit/0f05da803035953e8b32c87bab59649cdb448aa5))
+
+
+
+
 ## [3.4.1](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@3.4.0...yarn-workspace-utils@3.4.1) (2024-05-05)
 
 Note: no notable changes
