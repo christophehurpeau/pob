@@ -53,7 +53,7 @@ export default class LibDocGenerator extends Generator {
       if (inMonorepo && inMonorepo.root) {
         const existingConfig = this.fs.readJSON(
           this.destinationPath("tsconfig.doc.json"),
-          { typedocOptions: {} }
+          { typedocOptions: {} },
         );
         // "external-modulemap": ".*packages/([^/]+)/.*",
         const packagePaths = JSON.parse(this.options.packagePaths);
@@ -64,7 +64,7 @@ export default class LibDocGenerator extends Generator {
             return {
               path: pkgPath,
               packageJSON: this.fs.readJSON(
-                this.destinationPath(`${pkgPath}/package.json`)
+                this.destinationPath(`${pkgPath}/package.json`),
               ),
             };
           });
@@ -79,7 +79,7 @@ export default class LibDocGenerator extends Generator {
             // unshift:https://typedoc.org/guides/project-references/
             entryPoints.unshift(
               // `${path}/src/`,
-              ...entries.map((entry) => `${path}/src/${entry}.ts`)
+              ...entries.map((entry) => `${path}/src/${entry}.ts`),
             );
           }
         }
@@ -95,17 +95,17 @@ export default class LibDocGenerator extends Generator {
             repositoryUrl: pkg.homepage, // or pkg.repository.replace(/\.git$/, '')
             packageManager: this.options.packageManager,
             readme: existingConfig.typedocOptions.readme || "README.md",
-          }
+          },
         );
       } else {
         const entryPoints = ((pkg.pob && pkg.pob.entries) || []).map(
-          (entryName) => `src/${entryName}.ts`
+          (entryName) => `src/${entryName}.ts`,
         );
         copyAndFormatTpl(
           this.fs,
           this.templatePath("tsconfig.doc.json.ejs"),
           this.destinationPath("tsconfig.doc.json"),
-          { jsx, readme: "README.md", entryPoints }
+          { jsx, readme: "README.md", entryPoints },
         );
       }
     } else {

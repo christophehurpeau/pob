@@ -37,18 +37,18 @@ export default class MonorepoWorkspacesGenerator extends Generator {
     this.packagePaths = packagesPaths.flatMap((packagesPath) =>
       existsSync(`${packagesPath}/`)
         ? readdirSync(`${packagesPath}/`).map(
-            (packageName) => `${packagesPath}/${packageName}`
+            (packageName) => `${packagesPath}/${packageName}`,
           )
-        : []
+        : [],
     );
     this.packages = this.packagePaths
       .map((packagePath) =>
-        this.fs.readJSON(this.destinationPath(`${packagePath}/package.json`))
+        this.fs.readJSON(this.destinationPath(`${packagePath}/package.json`)),
       )
       .filter(Boolean);
     this.packagesConfig = this.packagePaths
       .map((packagePath) =>
-        this.fs.readJSON(this.destinationPath(`${packagePath}/.yo-rc.json`))
+        this.fs.readJSON(this.destinationPath(`${packagePath}/.yo-rc.json`)),
       )
       .filter(Boolean);
   }
@@ -61,7 +61,7 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       ...(config && config.pob),
     });
     const withBabel = this.packages.some(
-      (config) => getPackagePobConfig(config).babelEnvs.length > 0
+      (config) => getPackagePobConfig(config).babelEnvs.length > 0,
     );
 
     // package.json
@@ -100,11 +100,11 @@ export default class MonorepoWorkspacesGenerator extends Generator {
                 : ""
             }eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet .`
           : // eslint-disable-next-line unicorn/no-nested-ternary
-          this.options.packageManager === "yarn"
-          ? `NODE_OPTIONS=--max_old_space_size=4096 eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet . --ignore-pattern ${pkg.workspaces.join(
-              ","
-            )} && yarn workspaces foreach --parallel -Av run lint:eslint`
-          : "npm run lint:eslint --workspaces",
+            this.options.packageManager === "yarn"
+            ? `NODE_OPTIONS=--max_old_space_size=4096 eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet . --ignore-pattern ${pkg.workspaces.join(
+                ",",
+              )} && yarn workspaces foreach --parallel -Av run lint:eslint`
+            : "npm run lint:eslint --workspaces",
     });
 
     packageUtils.addOrRemoveScripts(
@@ -113,7 +113,7 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       {
         version:
           "YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn && git add yarn.lock",
-      }
+      },
     );
 
     packageUtils.addOrRemoveScripts(pkg, withBabel, {
@@ -187,7 +187,7 @@ export default class MonorepoWorkspacesGenerator extends Generator {
         {
           cwd: packagePath,
           stdio: "inherit",
-        }
+        },
       );
     });
 

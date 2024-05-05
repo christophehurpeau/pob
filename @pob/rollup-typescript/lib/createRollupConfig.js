@@ -15,7 +15,7 @@ export default function createRollupConfig({
 
   if (pobConfig.babelEnvs) {
     throw new Error(
-      "@pob/rollup-typescript does not supports babel, use `pob-babel` package instead."
+      "@pob/rollup-typescript does not supports babel, use `pob-babel` package instead.",
     );
   }
 
@@ -23,7 +23,7 @@ export default function createRollupConfig({
 
   if (!tslibVersion) {
     throw new Error(
-      `@pob/rollup-typescript: "${pkg.name}" requires "tslib" in dependencies.`
+      `@pob/rollup-typescript: "${pkg.name}" requires "tslib" in dependencies.`,
     );
   }
 
@@ -47,8 +47,8 @@ export default function createRollupConfig({
               env.target === "node"
                 ? nodeFormatToExt(format, pkg.type)
                 : `.${format}.js`
-            }`
-          )
+            }`,
+          ),
         ),
         format,
         sourcemap: true,
@@ -69,7 +69,7 @@ export default function createRollupConfig({
             "node_modules",
             ".cache",
             "rollup-typescript",
-            `${env.target}_${env.version}`
+            `${env.target}_${env.version}`,
           ),
         }),
 

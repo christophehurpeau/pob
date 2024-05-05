@@ -8,7 +8,7 @@ export default class CoreSortPackageGenerator extends Generator {
     writeAndFormatJson(
       this.fs,
       this.destinationPath("package.json"),
-      packageUtils.sort(pkg)
+      packageUtils.sort(pkg),
     );
   }
 }

@@ -29,7 +29,7 @@ export default class CoreGitGenerator extends Generator {
 
   async initializing() {
     let originUrl = await remoteUrl(this.destinationPath(), "origin").catch(
-      () => ""
+      () => "",
     );
 
     if (!originUrl) {
@@ -42,7 +42,7 @@ export default class CoreGitGenerator extends Generator {
       originUrl &&
       typeof originUrl === "string" &&
       originUrl.match(
-        /^(?:git@|https?:\/\/)(?:([^./:]+)(?:\.com)?[/:])?([^/:]+)\/([^./:]+)(?:.git)?/
+        /^(?:git@|https?:\/\/)(?:([^./:]+)(?:\.com)?[/:])?([^/:]+)\/([^./:]+)(?:.git)?/,
       );
     if (!match) return;
     const [, gitHost, gitAccount, repoName] = match;
@@ -83,7 +83,7 @@ export default class CoreGitGenerator extends Generator {
         const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
         const author = packageUtils.parsePkgAuthor(pkg);
         this.gitHostAccount = await githubUsername(author.email).catch(
-          () => ""
+          () => "",
         );
       }
     }

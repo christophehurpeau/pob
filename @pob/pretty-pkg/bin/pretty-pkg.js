@@ -3,17 +3,20 @@
 import fs from "node:fs";
 import path from "node:path";
 import { glob } from "glob";
-import { overrideSync, writeSync } from "../lib/index.js";
+import { override, write } from "../lib/index.js";
 
 const packageJsonPathnames = process.argv.slice(2);
 
 if (packageJsonPathnames.length > 0) {
-  packageJsonPathnames.forEach((packageJsonPathname) => {
-    overrideSync(packageJsonPathname);
-  });
+  await Promise.all(
+    packageJsonPathnames.map((packageJsonPathname) => {
+      return override(packageJsonPathname);
+    }),
+  );
 } else {
   const pkg = JSON.parse(fs.readFileSync("package.json"));
-  writeSync(pkg, "package.json");
+
+  const promises = [write(pkg, "package.json")];
 
   if (pkg.workspaces && pkg.workspaces.length > 0) {
     const patterns = pkg.workspaces;
@@ -29,9 +32,11 @@ if (packageJsonPathnames.length > 0) {
       for (const match of matches) {
         const packageJsonPathname = path.join(match, "package.json");
         if (fs.existsSync(packageJsonPathname)) {
-          overrideSync(packageJsonPathname);
+          promises.push(override(packageJsonPathname));
         }
       }
     }
   }
+
+  await Promise.all(promises);
 }

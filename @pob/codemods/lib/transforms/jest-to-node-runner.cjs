@@ -56,7 +56,7 @@ module.exports = (file, api, options) => {
 
         return j.callExpression(
           j.identifier(jestToNodeGlobalMethods[value.callee.name]),
-          value.arguments
+          value.arguments,
         );
       });
 
@@ -66,10 +66,10 @@ module.exports = (file, api, options) => {
         root,
         j.importDeclaration(
           [...topLevelMethodsUsed].map((method) =>
-            j.importSpecifier(j.identifier(method))
+            j.importSpecifier(j.identifier(method)),
           ),
-          j.stringLiteral("node:test")
-        )
+          j.stringLiteral("node:test"),
+        ),
       );
     }
   }
@@ -109,7 +109,7 @@ module.exports = (file, api, options) => {
         hasAssertions = true;
         callExpressionPath.value.callee = j.memberExpression(
           j.identifier("assert"),
-          j.identifier(assertPropertyName)
+          j.identifier(assertPropertyName),
         );
         callExpressionPath.value.arguments = [value, expected];
       });
@@ -128,8 +128,8 @@ module.exports = (file, api, options) => {
           root,
           j.importDeclaration(
             [j.importDefaultSpecifier(j.identifier("assert"))],
-            j.stringLiteral("node:assert/strict")
-          )
+            j.stringLiteral("node:assert/strict"),
+          ),
         );
       }
     }

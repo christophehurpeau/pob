@@ -139,7 +139,7 @@ export default class CommonLintGenerator extends Generator {
           pkg.pob?.entries.every(
             (entry) =>
               typeof entry === "string" ||
-              (entry.target && entry.target !== "node")
+              (entry.target && entry.target !== "node"),
           ))) ||
       (babelEnvs.length > 0 && babelEnvs.every((env) => env.target === "node"));
 
@@ -165,10 +165,10 @@ export default class CommonLintGenerator extends Generator {
 
     if (!inMonorepo || inMonorepo.root || this.options.monorepo) {
       const rootIgnorePatterns = new Set(
-        this.options.rootIgnorePaths.split("\n").filter(Boolean)
+        this.options.rootIgnorePaths.split("\n").filter(Boolean),
       );
       const ignorePatterns = new Set(
-        this.options.ignorePaths.split("\n").filter(Boolean)
+        this.options.ignorePaths.split("\n").filter(Boolean),
       );
 
       if (this.options.appTypes) {
@@ -195,7 +195,7 @@ export default class CommonLintGenerator extends Generator {
           hasApp: this.options.hasApp,
           rootIgnorePatterns: [...rootIgnorePatterns],
           ignorePatterns: [...ignorePatterns],
-        }
+        },
       );
     } else if (this.fs.exists(this.destinationPath(".prettierignore"))) {
       this.fs.delete(this.destinationPath(".prettierignore"));
@@ -270,7 +270,7 @@ export default class CommonLintGenerator extends Generator {
             "eslint-plugin-unicorn",
             "eslint-plugin-import",
           ],
-          true
+          true,
         );
       }
     } else {
@@ -286,7 +286,7 @@ export default class CommonLintGenerator extends Generator {
           (rootPackageManager === "yarn" &&
             rootYarnNodeLinker !== "node-modules") ||
           !!(pkg.peerDependencies && pkg.peerDependencies.eslint),
-        ["eslint"]
+        ["eslint"],
       );
       const shouldHavePluginsDependencies =
         rootPackageManager === "yarn" && rootYarnNodeLinker !== "node-modules";
@@ -300,13 +300,13 @@ export default class CommonLintGenerator extends Generator {
         packageUtils.addOrRemoveDevDependencies(
           pkg,
           shouldHavePluginsDependencies,
-          ["eslint-plugin-import", "eslint-plugin-unicorn"]
+          ["eslint-plugin-import", "eslint-plugin-unicorn"],
         );
 
         packageUtils.addOrRemoveDevDependencies(
           pkg,
           shouldHavePluginsDependencies,
-          ["eslint-plugin-node"]
+          ["eslint-plugin-node"],
         );
 
         if ((inMonorepo && inMonorepo.root) || this.options.monorepo) {
@@ -324,7 +324,7 @@ export default class CommonLintGenerator extends Generator {
           packageUtils.addOrRemoveDevDependencies(
             pkg,
             this.options.typescript && shouldHavePluginsDependencies,
-            ["@typescript-eslint/eslint-plugin", "@typescript-eslint/parser"]
+            ["@typescript-eslint/eslint-plugin", "@typescript-eslint/parser"],
           );
         } else {
           packageUtils.addOrRemoveDevDependencies(pkg, useTypescript, [
@@ -333,7 +333,7 @@ export default class CommonLintGenerator extends Generator {
           packageUtils.addOrRemoveDevDependencies(
             pkg,
             useTypescript && shouldHavePluginsDependencies,
-            ["@typescript-eslint/eslint-plugin", "@typescript-eslint/parser"]
+            ["@typescript-eslint/eslint-plugin", "@typescript-eslint/parser"],
           );
 
           packageUtils.addOrRemoveDevDependencies(pkg, hasReact, [
@@ -450,7 +450,7 @@ export default class CommonLintGenerator extends Generator {
       : this.destinationPath(
           `${
             useTypescript ? `${this.options.srcDirectory}/` : "lib/"
-          }.eslintrc.json`
+          }.eslintrc.json`,
         );
 
     const getRootIgnorePatterns = () => {
@@ -506,7 +506,7 @@ export default class CommonLintGenerator extends Generator {
               rootIgnorePatterns.size === 0
                 ? undefined
                 : [...rootIgnorePatterns],
-          }
+          },
         );
 
         writeAndFormatJson(this.fs, rootEslintrcPath, rootEslintrcConfig);
@@ -555,7 +555,7 @@ export default class CommonLintGenerator extends Generator {
                 : false,
             },
             relativePath: inMonorepo ? inMonorepo.relative : undefined,
-          }
+          },
         );
 
         writeAndFormatJson(this.fs, srcEslintrcPath, srcEslintrcConfig);
@@ -571,7 +571,7 @@ export default class CommonLintGenerator extends Generator {
       const lintRootJsFiles = (useBabel && useNode) || !inMonorepo;
 
       const lintPaths = [srcDirectory, "bin", "scripts", "migrations"].filter(
-        (dir) => fs.existsSync(this.destinationPath(dir))
+        (dir) => fs.existsSync(this.destinationPath(dir)),
       );
 
       if (lintRootJsFiles) {

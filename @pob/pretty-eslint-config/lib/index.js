@@ -1,4 +1,4 @@
-import fs from "node:fs";
+import fs from "node:fs/promises";
 import sortEslintConfig from "@pob/sort-eslint-config";
 import prettier from "prettier";
 
@@ -7,7 +7,7 @@ export default function prettyEslintConfig(eslintConfig, prettierOptions) {
     eslintConfig = JSON.parse(eslintConfig);
     if (typeof eslintConfig !== "object") {
       throw new TypeError(
-        "Invalid eslint config: not an object after parsing string"
+        "Invalid eslint config: not an object after parsing string",
       );
     }
   } else if (typeof eslintConfig !== "object") {
@@ -16,7 +16,7 @@ export default function prettyEslintConfig(eslintConfig, prettierOptions) {
 
   if (typeof prettierOptions === "string") {
     throw new TypeError(
-      `Please import "${prettierOptions}" and pass it as the second argument of prettyPkg`
+      `Please import "${prettierOptions}" and pass it as the second argument of prettyPkg`,
     );
   }
 
@@ -28,12 +28,12 @@ export default function prettyEslintConfig(eslintConfig, prettierOptions) {
   });
 }
 
-export function writeSync(eslintConfig, path, prettierOptions) {
-  const string = prettyEslintConfig(eslintConfig, prettierOptions);
-  fs.writeFileSync(path, string, "utf8");
+export async function write(eslintConfig, path, prettierOptions) {
+  const string = await prettyEslintConfig(eslintConfig, prettierOptions);
+  await fs.writeFile(path, string, "utf8");
 }
 
-export function overrideSync(path, prettierOptions) {
-  const eslintConfig = fs.readFileSync(path, "utf8");
-  return writeSync(eslintConfig, path, prettierOptions);
+export async function override(path, prettierOptions) {
+  const eslintConfig = await fs.readFile(path, "utf8");
+  return write(eslintConfig, path, prettierOptions);
 }

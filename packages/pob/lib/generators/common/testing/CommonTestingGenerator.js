@@ -170,9 +170,9 @@ export default class CommonTestingGenerator extends Generator {
     const transpileWithBabel = transpileWithEsbuild
       ? false
       : // eslint-disable-next-line unicorn/no-nested-ternary
-      this.options.monorepo
-      ? yoConfigPobMonorepo.typescript
-      : packageUtils.transpileWithBabel(pkg);
+        this.options.monorepo
+        ? yoConfigPobMonorepo.typescript
+        : packageUtils.transpileWithBabel(pkg);
     const withTypescript = transpileWithBabel || pkg.pob?.typescript;
     let hasReact =
       withTypescript &&
@@ -218,7 +218,7 @@ export default class CommonTestingGenerator extends Generator {
           pkg,
           sharedCondition &&
             (testRunner === "node" || (withTypescript && !transpileWithBabel)),
-          devDependenciesShared
+          devDependenciesShared,
         );
         if (devDependenciesWithJest) {
           packageUtils.addOrRemoveDevDependencies(
@@ -227,7 +227,7 @@ export default class CommonTestingGenerator extends Generator {
               withTypescript &&
               !transpileWithBabel &&
               testRunner === "jest",
-            devDependenciesWithJest
+            devDependenciesWithJest,
           );
         }
         if (devDependenciesWithNode) {
@@ -237,10 +237,10 @@ export default class CommonTestingGenerator extends Generator {
               withTypescript &&
               !transpileWithBabel &&
               testRunner === "node",
-            devDependenciesWithNode
+            devDependenciesWithNode,
           );
         }
-      }
+      },
     );
 
     if (
@@ -343,7 +343,7 @@ export default class CommonTestingGenerator extends Generator {
       this.options.enable &&
         (enableForMonorepo || !globalTesting) &&
         testRunner === "jest",
-      ["jest", "@types/jest"]
+      ["jest", "@types/jest"],
     );
 
     if (!this.options.enable) {
@@ -415,7 +415,7 @@ export default class CommonTestingGenerator extends Generator {
 
         if (isJestRunner) {
           hasReact = yoConfigPobMonorepo.packageNames.some((pkgName) =>
-            pkgName.startsWith("react-")
+            pkgName.startsWith("react-"),
           );
 
           const jestConfig = this.fs.readJSON(jestConfigPath, pkg.jest ?? {});
@@ -453,8 +453,8 @@ export default class CommonTestingGenerator extends Generator {
               Object.entries(jestConfig.transform).filter(
                 ([key, value]) =>
                   value !== "@swc/jest" &&
-                  !(Array.isArray(value) && value[0] === "@swc/jest")
-              )
+                  !(Array.isArray(value) && value[0] === "@swc/jest"),
+              ),
             );
             if (Object.keys(jestConfig.transform).length === 0) {
               delete jestConfig.transform;
@@ -473,7 +473,7 @@ export default class CommonTestingGenerator extends Generator {
             tsconfigTestPath,
             {
               nodeVersion,
-            }
+            },
           );
         } else {
           this.fs.delete(tsconfigTestPath);
@@ -577,8 +577,8 @@ export default class CommonTestingGenerator extends Generator {
                   Object.entries(jestConfig.transform).filter(
                     ([key, value]) =>
                       value !== "@swc/jest" &&
-                      !(Array.isArray(value) && value[0] === "@swc/jest")
-                  )
+                      !(Array.isArray(value) && value[0] === "@swc/jest"),
+                  ),
                 );
                 if (Object.keys(jestConfig.transform).length === 0) {
                   delete jestConfig.transform;
@@ -593,8 +593,8 @@ export default class CommonTestingGenerator extends Generator {
                         value &&
                         Array.isArray(value) &&
                         value[0] === "jest-esbuild"
-                      )
-                  )
+                      ),
+                  ),
                 );
                 if (Object.keys(jestConfig.transform).length === 0) {
                   delete jestConfig.transform;
@@ -652,7 +652,7 @@ export default class CommonTestingGenerator extends Generator {
             !!pkg.devDependencies?.["alp-dev"],
           testing: this.options.testing,
           jestExperimentalESM: pkg.type === "module",
-        }
+        },
       );
     } else {
       this.fs.delete("babel.config.cjs");

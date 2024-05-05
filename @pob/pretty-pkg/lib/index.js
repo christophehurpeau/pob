@@ -1,4 +1,4 @@
-import fs from "node:fs";
+import fs from "node:fs/promises";
 import sortPkg from "@pob/sort-pkg";
 import prettier from "prettier";
 
@@ -7,7 +7,7 @@ export default function prettyPkg(pkg, prettierOptions) {
     pkg = JSON.parse(pkg);
     if (typeof pkg !== "object") {
       throw new TypeError(
-        "Invalid package: not an object after parsing string"
+        "Invalid package: not an object after parsing string",
       );
     }
   } else if (typeof pkg !== "object") {
@@ -16,7 +16,7 @@ export default function prettyPkg(pkg, prettierOptions) {
 
   if (typeof prettierOptions === "string") {
     throw new TypeError(
-      `Please import "${prettierOptions}" and pass it as the second argument of prettyPkg`
+      `Please import "${prettierOptions}" and pass it as the second argument of prettyPkg`,
     );
   }
 
@@ -28,12 +28,12 @@ export default function prettyPkg(pkg, prettierOptions) {
   });
 }
 
-export function writeSync(pkg, path, prettierOptions) {
-  const string = prettyPkg(pkg, prettierOptions);
-  fs.writeFileSync(path, string, "utf8");
+export async function write(pkg, path, prettierOptions) {
+  const string = await prettyPkg(pkg, prettierOptions);
+  await fs.writeFile(path, string, "utf8");
 }
 
-export function overrideSync(path, prettierOptions) {
-  const pkg = fs.readFileSync(path, "utf8");
-  return writeSync(pkg, path, prettierOptions);
+export async function override(path, prettierOptions) {
+  const pkg = await fs.readFile(path, "utf8");
+  await write(pkg, path, prettierOptions);
 }

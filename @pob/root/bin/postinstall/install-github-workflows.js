@@ -16,9 +16,9 @@ const installWorkflow = (workflowName, condition = true) => {
       fs.readFileSync(
         path.resolve(
           path.dirname(fileURLToPath(import.meta.url)),
-          `github-workflows/${workflowName}.yml`
-        )
-      )
+          `github-workflows/${workflowName}.yml`,
+        ),
+      ),
     );
   } else {
     ensureWorkflowUninstalled(workflowName);

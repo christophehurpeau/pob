@@ -8,7 +8,7 @@ function updateOverrides(config, testsOverride) {
           ? (override) => override.env && override.env.jest
           : (override) =>
               override?.env?.jest ||
-              override.extends?.includes(testsOverride.extends[0])
+              override.extends?.includes(testsOverride.extends[0]),
       );
   if (!testsOverride) {
     if (existingTestsOverrideIndex !== -1) {
@@ -45,7 +45,7 @@ function updateParserAndPlugins(
   config,
   useTypescript,
   globalEslint,
-  relativePath
+  relativePath,
 ) {
   if (useTypescript) {
     // webstorm uses this to detect eslint .ts compat
@@ -126,7 +126,7 @@ export default function updateEslintConfig(
     settings,
     ignorePatterns,
     relativePath,
-  }
+  },
 ) {
   config.root = true;
   config.extends = [
@@ -134,7 +134,7 @@ export default function updateEslintConfig(
     ...(config?.extends && Array.isArray(config.extends)
       ? config.extends.filter(
           (extendsValue) =>
-            extendsValue === "@pob/eslint-config-typescript/allow-unsafe"
+            extendsValue === "@pob/eslint-config-typescript/allow-unsafe",
         )
       : []),
   ];
@@ -143,7 +143,7 @@ export default function updateEslintConfig(
     config,
     useTypescript,
     globalEslint,
-    relativePath
+    relativePath,
   );
   config = updateOverrides(config, testsOverride);
   if (settings) {

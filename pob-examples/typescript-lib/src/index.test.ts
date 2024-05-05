@@ -12,8 +12,8 @@ describe("dist", () => {
     expect(
       fs.readFileSync(
         new URL("../dist/index-node18.mjs", import.meta.url),
-        "utf8"
-      )
+        "utf8",
+      ),
     ).toMatchInlineSnapshot(`
       "function simpleLib() {
         return \`hello world via \${"node"}\`;

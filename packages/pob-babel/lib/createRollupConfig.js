@@ -26,12 +26,12 @@ export default function createRollupConfig({
 } = {}) {
   if (devPlugins) {
     throw new Error(
-      '"devPlugins" option is no longer supported, use "plugins" instead'
+      '"devPlugins" option is no longer supported, use "plugins" instead',
     );
   }
   if (prodPlugins) {
     throw new Error(
-      '"prodPlugins" option is no longer supported, use "plugins" instead'
+      '"prodPlugins" option is no longer supported, use "plugins" instead',
     );
   }
   const isIndexBrowserEntry =
@@ -45,7 +45,7 @@ export default function createRollupConfig({
     (pobConfig.jsx !== false &&
       Boolean(
         (pkg.dependencies && pkg.dependencies.react) ||
-          (pkg.peerDependencies && pkg.peerDependencies.react)
+          (pkg.peerDependencies && pkg.peerDependencies.react),
       ));
 
   const babelRuntimeVersion =
@@ -80,7 +80,7 @@ export default function createRollupConfig({
       const potentialEntryPath = path.resolve(
         cwd,
         "src",
-        `${entryName}.${extension}`
+        `${entryName}.${extension}`,
       );
 
       if (existsSync(potentialEntryPath)) {
@@ -93,7 +93,7 @@ export default function createRollupConfig({
 
     if (!entryPath) {
       throw new Error(
-        `Could not find entry "src/${entryName}" in path "${cwd}"`
+        `Could not find entry "src/${entryName}" in path "${cwd}"`,
       );
     }
 
@@ -122,8 +122,8 @@ export default function createRollupConfig({
               env.target === "node"
                 ? nodeFormatToExt(format, pkg.type)
                 : `.${format}.js`
-            }`
-          )
+            }`,
+          ),
         ),
         format,
         sourcemap: true,

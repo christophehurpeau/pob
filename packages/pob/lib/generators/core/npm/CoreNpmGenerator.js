@@ -32,7 +32,7 @@ export default class CoreNpmGenerator extends Generator {
       this.fs.copyTpl(
         this.templatePath("npmignore.ejs"),
         this.destinationPath(".npmignore"),
-        {}
+        {},
       );
     } else if (this.fs.exists(this.destinationPath(".npmignore"))) {
       this.fs.delete(this.destinationPath(".npmignore"));

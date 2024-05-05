@@ -4,9 +4,8 @@ const addPobRootPostinstallInScript = (pkg, scriptName) => {
   if (!pkg.scripts[scriptName]) {
     pkg.scripts[scriptName] = "pob-root-postinstall";
   } else if (!pkg.scripts[scriptName].includes("pob-root-postinstall")) {
-    pkg.scripts[
-      scriptName
-    ] = `pob-root-postinstall ; ${pkg.scripts.postinstall}`;
+    pkg.scripts[scriptName] =
+      `pob-root-postinstall ; ${pkg.scripts.postinstall}`;
   }
 };
 

@@ -26,7 +26,7 @@ function getProblemMatcherFromScriptName(scriptName) {
   return [];
 }
 
-export default function installVscodeTasks({ pkg }) {
+export default async function installVscodeTasks({ pkg }) {
   const existingConfig = readJSON5(".vscode/tasks.json");
   const existingTasks = existingConfig?.tasks || [];
 
@@ -46,7 +46,7 @@ export default function installVscodeTasks({ pkg }) {
               (name !== "lint" &&
                 name.startsWith("lint") &&
                 !name.endsWith(":fix")) ||
-              name === "tsc"
+              name === "tsc",
           ),
         });
         return;
@@ -75,7 +75,7 @@ export default function installVscodeTasks({ pkg }) {
 
   fs.writeFileSync(
     ".vscode/tasks.json",
-    prettier.format(
+    await prettier.format(
       `{
   // See https://go.microsoft.com/fwlink/?LinkId=733558
   // for the documentation about the tasks.json format
@@ -85,7 +85,7 @@ export default function installVscodeTasks({ pkg }) {
 `,
       {
         filepath: ".vscode/tasks.json",
-      }
-    )
+      },
+    ),
   );
 }

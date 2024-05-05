@@ -31,7 +31,7 @@ const { lockfile, installAndDedupe } = (() => {
   }
 
   throw new Error(
-    `Package manager not supported: ${pm.name}. Please run with yarn, npm or bun !`
+    `Package manager not supported: ${pm.name}. Please run with yarn, npm or bun !`,
   );
 })();
 
@@ -71,7 +71,7 @@ module.exports = function createLintStagedConfig() {
         : ""
     }}`]: (filenames) => {
       const packagejsonFilenames = filenames.filter((filename) =>
-        filename.endsWith(".json")
+        filename.endsWith(".json"),
       );
 
       return [

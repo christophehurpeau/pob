@@ -7,7 +7,7 @@ import whichPmRuns from "which-pm-runs";
 
 if (!process.env.INIT_CWD) {
   console.error(
-    "Missing process.env.INIT_CWD. Did you use postinstall script ?"
+    "Missing process.env.INIT_CWD. Did you use postinstall script ?",
   );
   process.exit(1);
 }
@@ -30,7 +30,7 @@ if (!pm) {
 
 if (pm.name !== "yarn" && pm.name !== "npm" && pm.name !== "bun") {
   console.error(
-    `Package manager not supported: ${pm.name}. Please run with yarn or npm!`
+    `Package manager not supported: ${pm.name}. Please run with yarn or npm!`,
   );
   process.exit(1);
 }
@@ -44,5 +44,7 @@ if (pm.name !== "yarn" && pm.name !== "npm" && pm.name !== "bun") {
 (await import("./postinstall/install-scripts.js")).default({ pkg, pm });
 
 if (process.env.POB_EXPERIMENTAL_VSCODE_TASKS) {
-  (await import("./postinstall/install-vscode-tasks.js")).default({ pkg, pm });
+  await (
+    await import("./postinstall/install-vscode-tasks.js")
+  ).default({ pkg, pm });
 }

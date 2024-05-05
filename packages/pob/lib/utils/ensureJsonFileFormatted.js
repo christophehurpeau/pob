@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import sortPkg from "@pob/sort-pkg";
-import prettier from "prettier";
+import prettier from "@prettier/sync";
 
 export default function ensureJsonFileFormatted(path) {
   try {

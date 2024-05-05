@@ -62,7 +62,7 @@ export default class CoreRenovateGenerator extends Generator {
       const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
       const renovateConfig = this.fs.readJSON(
         this.destinationPath("renovate.json"),
-        {}
+        {},
       );
 
       if (this.options.app) {
@@ -84,7 +84,7 @@ export default class CoreRenovateGenerator extends Generator {
       writeAndFormatJson(
         this.fs,
         this.destinationPath("renovate.json"),
-        renovateConfig
+        renovateConfig,
       );
     } else if (this.fs.exists(this.destinationPath("renovate.json"))) {
       this.fs.delete(this.destinationPath("renovate.json"));

@@ -157,7 +157,7 @@ export default class CorePackageGenerator extends Generator {
           choices: ["MIT", "ISC", "UNLICENSED"],
           when: !pkg.license,
         },
-      ].filter(Boolean)
+      ].filter(Boolean),
     );
 
     if (!pkg.type) pkg.type = props.type;
@@ -199,10 +199,10 @@ export default class CorePackageGenerator extends Generator {
       packageUtils.removeDevDependencies(pkg, ["check-package-dependencies"]);
     } else if (this.options.isMonorepo && this.options.isRoot) {
       const doesMjsCheckPackagesExists = this.fs.exists(
-        this.destinationPath("scripts/check-packages.mjs")
+        this.destinationPath("scripts/check-packages.mjs"),
       );
       let doesJsCheckPackagesExists = this.fs.exists(
-        this.destinationPath("scripts/check-packages.js")
+        this.destinationPath("scripts/check-packages.js"),
       );
 
       if (pkg.type === "module" && !doesJsCheckPackagesExists) {
@@ -210,7 +210,7 @@ export default class CorePackageGenerator extends Generator {
         this.fs.copyTpl(
           this.templatePath("check-packages.js.ejs"),
           this.destinationPath("scripts/check-packages.js"),
-          {}
+          {},
         );
       }
 
@@ -225,7 +225,7 @@ export default class CorePackageGenerator extends Generator {
           checks: `node scripts/check-packages.${
             doesMjsCheckPackagesExists ? "mjs" : "js"
           }`,
-        }
+        },
       );
     } else if (inMonorepo && !inMonorepo.root) {
       if (this.fs.exists("scripts/check-package.js")) {
@@ -237,10 +237,10 @@ export default class CorePackageGenerator extends Generator {
       packageUtils.removeScripts(pkg, ["checks"]);
     } else {
       const doesMjsCheckPackageExists = this.fs.exists(
-        this.destinationPath("scripts/check-package.mjs")
+        this.destinationPath("scripts/check-package.mjs"),
       );
       let doesJsCheckPackageExists = this.fs.exists(
-        this.destinationPath("scripts/check-package.js")
+        this.destinationPath("scripts/check-package.js"),
       );
 
       if (pkg.type === "module") {
@@ -251,7 +251,7 @@ export default class CorePackageGenerator extends Generator {
             this.destinationPath("scripts/check-package.js"),
             {
               isLibrary: pkg.private !== true,
-            }
+            },
           );
         }
       }
@@ -266,7 +266,7 @@ export default class CorePackageGenerator extends Generator {
           checks: `node scripts/check-package.${
             doesMjsCheckPackageExists ? "mjs" : "js"
           }`,
-        }
+        },
       );
     }
 
@@ -290,7 +290,7 @@ export default class CorePackageGenerator extends Generator {
         {
           year: new Date().getFullYear(),
           author: pkg.author,
-        }
+        },
       );
     }
 
@@ -336,7 +336,7 @@ export default class CorePackageGenerator extends Generator {
           pkg.scripts[scriptName].startsWith("pob-root-postinstall && ")
         ) {
           pkg.scripts[scriptName] = pkg.scripts[scriptName].slice(
-            "pob-root-postinstall && ".length - 1
+            "pob-root-postinstall && ".length - 1,
           );
         } else if (pkg.scripts[scriptName].includes("pob-root-postinstall")) {
           throw new Error("Could not remove pob-root-postinstall");

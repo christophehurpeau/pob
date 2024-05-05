@@ -68,7 +68,7 @@ export default class CommonReleaseGenerator extends Generator {
 
     if (this.options.enable && this.options.ci) {
       const useLegacyName = this.fs.exists(
-        this.destinationPath(".github/workflows/publish.yml")
+        this.destinationPath(".github/workflows/publish.yml"),
       );
 
       const name = useLegacyName ? "publish.yml" : "release.yml";
@@ -85,7 +85,7 @@ export default class CommonReleaseGenerator extends Generator {
           isMonorepoIndependent:
             this.options.isMonorepo &&
             (!pkg.version || pkg.version === "0.0.0"),
-        }
+        },
       );
     } else {
       this.fs.delete(this.destinationPath(".github/workflows/publish.yml"));
@@ -117,11 +117,11 @@ export default class CommonReleaseGenerator extends Generator {
 
     if (
       this.fs.exists(
-        this.destinationPath(".github/workflows/release-please.yml")
+        this.destinationPath(".github/workflows/release-please.yml"),
       )
     ) {
       this.fs.delete(
-        this.destinationPath(".github/workflows/release-please.yml")
+        this.destinationPath(".github/workflows/release-please.yml"),
       );
     }
 

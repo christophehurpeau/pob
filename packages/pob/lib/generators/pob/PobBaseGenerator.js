@@ -203,7 +203,7 @@ export default class PobBaseGenerator extends Generator {
       this.composeWith(
         // pob:monorepo <= for searching PobMonorepoGenerator.js
         fileURLToPath(
-          new URL("../monorepo/PobMonorepoGenerator.js", import.meta.url)
+          new URL("../monorepo/PobMonorepoGenerator.js", import.meta.url),
         ),
         {
           updateOnly: this.options.updateOnly,
@@ -212,7 +212,7 @@ export default class PobBaseGenerator extends Generator {
           packageManager: this.projectConfig.packageManager,
           yarnNodeLinker: this.projectConfig.yarnNodeLinker,
           onlyLatestLTS,
-        }
+        },
       );
     } else {
       switch (this.projectConfig.type) {

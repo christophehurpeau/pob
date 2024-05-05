@@ -225,23 +225,23 @@ export default class CommonTranspilerGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       bundler === "rollup-typescript",
-      ["@pob/rollup-typescript"]
+      ["@pob/rollup-typescript"],
     );
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       bundler === "esbuild" && withTypescript,
-      ["@pob/esbuild"]
+      ["@pob/esbuild"],
     );
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       bundler === "rollup-esbuild" && withTypescript,
-      ["@pob/rollup-esbuild"]
+      ["@pob/rollup-esbuild"],
     );
     packageUtils.addOrRemoveDependencies(
       pkg,
       (bundler === "tsc" || bundler === "rollup-typescript") && withTypescript,
       ["tslib"],
-      "^"
+      "^",
     );
 
     packageUtils.addOrRemoveDevDependencies(
@@ -250,7 +250,7 @@ export default class CommonTranspilerGenerator extends Generator {
         this.options.isApp &&
         !this.options.isAppLibrary &&
         this.options.useAppConfig,
-      ["alp-rollup-plugin-config"]
+      ["alp-rollup-plugin-config"],
     );
 
     /* engines */
@@ -265,7 +265,7 @@ export default class CommonTranspilerGenerator extends Generator {
       console.warn("Setting pkg.sideEffects to true, as it was not defined");
     } else if (pkg.sideEffects) {
       console.warn(
-        "pkg.sideEffects is true, are you sure you can't set it to false ?"
+        "pkg.sideEffects is true, are you sure you can't set it to false ?",
       );
     }
 
@@ -284,9 +284,7 @@ export default class CommonTranspilerGenerator extends Generator {
       // see pkg.exports instead.
       delete pkg.main;
       if (!this.options.isApp) {
-        pkg.types = `./${
-          this.options.buildDirectory
-        }/${"definitions/"}index.d.ts`;
+        pkg.types = `./${this.options.buildDirectory}/${"definitions/"}index.d.ts`;
       } else if (this.options.isAppLibrary) {
         pkg.types = `./${this.options.srcDirectory}/index.ts`;
       }
@@ -330,7 +328,7 @@ export default class CommonTranspilerGenerator extends Generator {
       (env) =>
         env.target === "browser" &&
         env.version === undefined &&
-        (!env.formats || env.formats.includes("es"))
+        (!env.formats || env.formats.includes("es")),
     );
 
     // Legacy "dev" builds
@@ -538,7 +536,7 @@ export default class CommonTranspilerGenerator extends Generator {
             config: this.options.useAppConfig,
             outDirectory: this.options.buildDirectory,
             enableRun: !this.options.isAppLibrary && entries.includes("index"),
-          }
+          },
         );
       } else {
         copyAndFormatTpl(
@@ -548,7 +546,7 @@ export default class CommonTranspilerGenerator extends Generator {
           {
             rollupConfigLib: this.bundler,
             outDirectory: this.options.buildDirectory,
-          }
+          },
         );
       }
     } else if (

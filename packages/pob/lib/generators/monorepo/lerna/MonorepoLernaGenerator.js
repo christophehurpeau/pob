@@ -37,18 +37,18 @@ export default class MonorepoLernaGenerator extends Generator {
     this.packagePaths = packagesPaths.flatMap((packagesPath) =>
       existsSync(`${packagesPath}/`)
         ? readdirSync(`${packagesPath}/`).map(
-            (packageName) => `${packagesPath}/${packageName}`
+            (packageName) => `${packagesPath}/${packageName}`,
           )
-        : []
+        : [],
     );
     this.packages = this.packagePaths
       .map((packagePath) =>
-        this.fs.readJSON(this.destinationPath(`${packagePath}/package.json`))
+        this.fs.readJSON(this.destinationPath(`${packagePath}/package.json`)),
       )
       .filter(Boolean);
     this.packagesConfig = this.packagePaths
       .map((packagePath) =>
-        this.fs.readJSON(this.destinationPath(`${packagePath}/.yo-rc.json`))
+        this.fs.readJSON(this.destinationPath(`${packagePath}/.yo-rc.json`)),
       )
       .filter(Boolean);
   }
@@ -58,7 +58,7 @@ export default class MonorepoLernaGenerator extends Generator {
 
     const lernaCurrentConfig = this.fs.readJSON(
       this.destinationPath("lerna.json"),
-      pkg.lerna || {}
+      pkg.lerna || {},
     );
 
     this.npm =
@@ -88,7 +88,7 @@ export default class MonorepoLernaGenerator extends Generator {
     writeAndFormatJson(
       this.fs,
       this.destinationPath("lerna.json"),
-      lernaConfig
+      lernaConfig,
     );
   }
 
@@ -107,13 +107,13 @@ export default class MonorepoLernaGenerator extends Generator {
       ...(config && config.pob),
     });
     const withBabel = this.packages.some(
-      (config) => getPackagePobConfig(config).babelEnvs.length > 0
+      (config) => getPackagePobConfig(config).babelEnvs.length > 0,
     );
 
     // lerna.json
     const lernaConfig = this.fs.readJSON(
       this.destinationPath("lerna.json"),
-      {}
+      {},
     );
 
     // TODO pass that to yarn plugin
@@ -139,7 +139,7 @@ export default class MonorepoLernaGenerator extends Generator {
       writeAndFormatJson(
         this.fs,
         this.destinationPath("lerna.json"),
-        lernaConfig
+        lernaConfig,
       );
     }
 
@@ -153,7 +153,7 @@ export default class MonorepoLernaGenerator extends Generator {
       {
         version:
           "YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn && git add yarn.lock",
-      }
+      },
     );
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);

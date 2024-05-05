@@ -83,157 +83,157 @@ process.on("uncaughtException", (err) => {
 env.registerStub(
   PobBaseGenerator,
   "pob",
-  `${__dirname}/generators/app/PobAppGenerator.js`
+  `${__dirname}/generators/app/PobAppGenerator.js`,
 );
 env.registerStub(
   PobAppGenerator,
   "pob:app",
-  `${__dirname}/generators/app/PobAppGenerator.js`
+  `${__dirname}/generators/app/PobAppGenerator.js`,
 );
 env.registerStub(
   AppE2ETestingGenerator,
   "pob:app:e2e-testing",
-  `${__dirname}/generators/app/e2e-testing/AppE2ETestingGenerator.js`
+  `${__dirname}/generators/app/e2e-testing/AppE2ETestingGenerator.js`,
 );
 env.registerStub(
   AppNextjsGenerator,
   "pob:app:nextjs",
-  `${__dirname}/generators/app/nextjs/AppNextjsGenerator.js`
+  `${__dirname}/generators/app/nextjs/AppNextjsGenerator.js`,
 );
 env.registerStub(
   AppRemixGenerator,
   "pob:app:remix",
-  `${__dirname}/generators/app/nextjs/AppRemixGenerator.js`
+  `${__dirname}/generators/app/nextjs/AppRemixGenerator.js`,
 );
 env.registerStub(
   CommonBabelGenerator,
   "pob:common:babel",
-  `${__dirname}/generators/common/babel/CommonBabelGenerator.js`
+  `${__dirname}/generators/common/babel/CommonBabelGenerator.js`,
 );
 env.registerStub(
   CommonTranspilerGenerator,
   "pob:common:transpiler",
-  `${__dirname}/generators/common/transpiler/CommonTranspilerGenerator.js`
+  `${__dirname}/generators/common/transpiler/CommonTranspilerGenerator.js`,
 );
 env.registerStub(
   CommonLintGenerator,
   "pob:common:format-lint",
-  `${__dirname}/generators/common/format-lint/CommonLintGenerator.js`
+  `${__dirname}/generators/common/format-lint/CommonLintGenerator.js`,
 );
 env.registerStub(
   CommonHuskyGenerator,
   "pob:common:husky",
-  `${__dirname}/generators/common/husky/CommonHuskyGenerator.js`
+  `${__dirname}/generators/common/husky/CommonHuskyGenerator.js`,
 );
 env.registerStub(
   CommonRemoveOldDependenciesGenerator,
   "pob:common:remove-old-dependencies",
-  `${__dirname}/generators/common/old-dependencies/CommonRemoveOldDependenciesGenerator.js`
+  `${__dirname}/generators/common/old-dependencies/CommonRemoveOldDependenciesGenerator.js`,
 );
 env.registerStub(
   CommonReleaseGenerator,
   "pob:common:release",
-  `${__dirname}/generators/common/release/CommonReleaseGenerator.js`
+  `${__dirname}/generators/common/release/CommonReleaseGenerator.js`,
 );
 env.registerStub(
   CommonTestingGenerator,
   "pob:common:testing",
-  `${__dirname}/generators/common/testing/CommonTestingGenerator.js`
+  `${__dirname}/generators/common/testing/CommonTestingGenerator.js`,
 );
 env.registerStub(
   CommonTypescriptGenerator,
   "pob:common:typescript",
-  `${__dirname}/generators/common/typescript/CommonTypescriptGenerator.js`
+  `${__dirname}/generators/common/typescript/CommonTypescriptGenerator.js`,
 );
 env.registerStub(
   CoreCIGenerator,
   "pob:core:ci",
-  `${__dirname}/generators/core/ci/CoreCIGenerator.js`
+  `${__dirname}/generators/core/ci/CoreCIGenerator.js`,
 );
 env.registerStub(
   CoreCleanGenerator,
   "pob:core:clean",
-  `${__dirname}/generators/core/clean/CoreCleanGenerator.js`
+  `${__dirname}/generators/core/clean/CoreCleanGenerator.js`,
 );
 env.registerStub(
   CoreEditorConfigGenerator,
   "pob:core:editorconfig",
-  `${__dirname}/generators/core/editorconfig/CoreEditorConfigGenerator.js`
+  `${__dirname}/generators/core/editorconfig/CoreEditorConfigGenerator.js`,
 );
 env.registerStub(
   CoreGitGenerator,
   "pob:core:git",
-  `${__dirname}/generators/core/git/CoreGitGenerator.js`
+  `${__dirname}/generators/core/git/CoreGitGenerator.js`,
 );
 env.registerStub(
   CoreGitGithubGenerator,
   "pob:core:git:github",
-  `${__dirname}/generators/core/git/generators/github/CoreGitGithubGenerator.js`
+  `${__dirname}/generators/core/git/generators/github/CoreGitGithubGenerator.js`,
 );
 env.registerStub(
   CoreGitignoreGenerator,
   "pob:core:gitignore",
-  `${__dirname}/generators/core/gitignore/CoreGitignoreGenerator.js`
+  `${__dirname}/generators/core/gitignore/CoreGitignoreGenerator.js`,
 );
 env.registerStub(
   CoreNpmGenerator,
   "pob:core:npm",
-  `${__dirname}/generators/core/npm/CoreNpmGenerator.js`
+  `${__dirname}/generators/core/npm/CoreNpmGenerator.js`,
 );
 env.registerStub(
   CorePackageGenerator,
   "pob:core:package",
-  `${__dirname}/generators/core/package/CorePackageGenerator.js`
+  `${__dirname}/generators/core/package/CorePackageGenerator.js`,
 );
 env.registerStub(
   CoreRenovateGenerator,
   "pob:core:renovate",
-  `${__dirname}/generators/core/renovate/CoreRenovateGenerator.js`
+  `${__dirname}/generators/core/renovate/CoreRenovateGenerator.js`,
 );
 env.registerStub(
   CoreSortPackageGenerator,
   "pob:core:sort-package",
-  `${__dirname}/generators/core/sort-package/CoreSortPackageGenerator.js`
+  `${__dirname}/generators/core/sort-package/CoreSortPackageGenerator.js`,
 );
 env.registerStub(
   CoreVSCodeGenerator,
   "pob:core:vscode",
-  `${__dirname}/generators/core/vscode/CoreVSCodeGenerator.js`
+  `${__dirname}/generators/core/vscode/CoreVSCodeGenerator.js`,
 );
 env.registerStub(
   CoreYarnGenerator,
   "pob:core:yarn",
-  `${__dirname}/generators/core/yarn/CoreYarnGenerator.js`
+  `${__dirname}/generators/core/yarn/CoreYarnGenerator.js`,
 );
 env.registerStub(
   PobLibGenerator,
   "pob:lib",
-  `${__dirname}/generators/lib/PobLibGenerator.js`
+  `${__dirname}/generators/lib/PobLibGenerator.js`,
 );
 env.registerStub(
   LibDocGenerator,
   "pob:lib:doc",
-  `${__dirname}/generators/lib/doc/LibDocGenerator.js`
+  `${__dirname}/generators/lib/doc/LibDocGenerator.js`,
 );
 env.registerStub(
   LibReadmeGenerator,
   "pob:lib:readme",
-  `${__dirname}/generators/lib/readme/LibReadmeGenerator.js`
+  `${__dirname}/generators/lib/readme/LibReadmeGenerator.js`,
 );
 env.registerStub(
   MonorepoWorkspacesGenerator,
   "pob:monorepo:workspaces",
-  `${__dirname}/generators/monorepo/workspaces/MonorepoWorkspacesGenerator.js`
+  `${__dirname}/generators/monorepo/workspaces/MonorepoWorkspacesGenerator.js`,
 );
 env.registerStub(
   MonorepoLernaGenerator,
   "pob:monorepo:lerna",
-  `${__dirname}/generators/monorepo/lerna/MonorepoLernaGenerator.js`
+  `${__dirname}/generators/monorepo/lerna/MonorepoLernaGenerator.js`,
 );
 env.registerStub(
   MonorepoTypescriptGenerator,
   "pob:monorepo:typescript",
-  `${__dirname}/generators/monorepo/typescript/MonorepoTypescriptGenerator.js`
+  `${__dirname}/generators/monorepo/typescript/MonorepoTypescriptGenerator.js`,
 );
 
 const projectPkg = readJson(path.resolve("./package.json"));
@@ -244,7 +244,7 @@ const action = monorepoArg ? argv._[1] : argv._[0];
 if (action === "add") {
   if (!projectPkg.workspaces) {
     throw new Error(
-      "Missing workspaces field in package.json: not a lerna repo"
+      "Missing workspaces field in package.json: not a lerna repo",
     );
   }
 
@@ -263,7 +263,7 @@ if (action === "add") {
   writeFileSync(`${packagesPath}/${packageName}/.yo-rc.json`, "{}");
   writeFileSync(
     `${packagesPath}/${packageName}/package.json`,
-    JSON.stringify({ name: packageName, version: "1.0.0-pre" }, null, 2)
+    JSON.stringify({ name: packageName, version: "1.0.0-pre" }, null, 2),
   );
   console.log("> Creating new Package");
   spawnSync(process.argv[0], [process.argv[1]], {

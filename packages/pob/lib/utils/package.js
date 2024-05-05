@@ -63,7 +63,7 @@ function internalAddToObject(pkg, key, object) {
   const value = pkg[key];
   if (typeof value !== "object") {
     throw new TypeError(
-      `Invalid type value ${typeof value} for package key "${key}"`
+      `Invalid type value ${typeof value} for package key "${key}"`,
     );
   }
   Object.assign(value, object);
@@ -103,7 +103,7 @@ const getVersionFromDependencyName = (dependency) => {
   }
   if (
     ["@typescript-eslint/eslint-plugin", "@typescript-eslint/parser"].includes(
-      dependency
+      dependency,
     )
   ) {
     return pobEslintConfigTypescript.dependencies[dependency];
@@ -169,7 +169,7 @@ const internalAddDependencies = (pkg, type, dependencies, cleaned, prefix) => {
           filtredDependencies[dependency] = getNewVersion();
         } else if (potentialNewVersion !== currentVersion) {
           console.warn(
-            `dependency "${dependency}" has a higher version: expected ${potentialNewVersion}, actual: ${currentVersion}.`
+            `dependency "${dependency}" has a higher version: expected ${potentialNewVersion}, actual: ${currentVersion}.`,
           );
         }
       } catch {
@@ -218,7 +218,7 @@ export function removeDevDependencies(pkg, dependencies, forceEvenIfInPeerDep) {
     "devDependencies",
     pkg.peerDependencies && !forceEvenIfInPeerDep
       ? dependencies.filter((d) => !pkg.peerDependencies[d])
-      : dependencies
+      : dependencies,
   );
 }
 
@@ -235,7 +235,7 @@ export function addOrRemoveDevDependencies(pkg, condition, dependencies) {
 export function removeDevAndNotDevDependencies(
   pkg,
   dependencies,
-  forceEvenIfInPeerDep
+  forceEvenIfInPeerDep,
 ) {
   removeDevDependencies(pkg, dependencies, forceEvenIfInPeerDep);
   removeDependencies(pkg, dependencies, forceEvenIfInPeerDep);
@@ -245,7 +245,7 @@ export function updateDevDependenciesIfPresent(pkg, dependencies) {
   if (!pkg.devDependencies) return;
   return addDevDependencies(
     pkg,
-    dependencies.filter((d) => pkg.devDependencies[d])
+    dependencies.filter((d) => pkg.devDependencies[d]),
   );
 }
 
