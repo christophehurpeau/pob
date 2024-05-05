@@ -10,7 +10,7 @@ fs.writeFileSync(
     `
   interface Dependencies {
     ${Object.keys(pkg.devDependencies)
-      .map((dep) => `'${dep}': '${pkg.devDependencies[dep]}'`)
+      .map((dep) => `"${dep}": "${pkg.devDependencies[dep]}"`)
       .join(";\n  ")};
   }
 
