@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [38.1.3](https://github.com/christophehurpeau/pob/compare/pob-babel@38.1.2...pob-babel@38.1.3) (2024-05-05)
+
+Note: no notable changes
+
+Version bump for dependency: rollup
+Version bump for dependency: babel-preset-pob-env
+
+
 ## [38.1.2](https://github.com/christophehurpeau/pob/compare/pob-babel@38.1.1...pob-babel@38.1.2) (2024-05-05)
 
 Note: no notable changes

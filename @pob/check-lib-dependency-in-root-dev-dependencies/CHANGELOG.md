@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.3](https://github.com/christophehurpeau/pob/compare/@pob/check-lib-dependency-in-root-dev-dependencies@6.3.2...@pob/check-lib-dependency-in-root-dev-dependencies@6.3.3) (2024-05-05)
+
+Note: no notable changes
+
+
+
+
 ## 6.3.2 (2024-05-05)
 
 

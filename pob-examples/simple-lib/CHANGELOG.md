@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.3](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.7.2...example-simple-lib@0.7.3) (2024-05-05)
+
+Note: no notable changes
+
+
+
+
 ## 0.7.2 (2024-05-05)
 
 

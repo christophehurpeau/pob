@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.0.0](https://github.com/christophehurpeau/pob/compare/pob@19.2.0...pob@20.0.0) (2024-05-05)
+
+Note: no notable changes
+
+Version bump for dependency: sort-eslint-config
+Version bump for dependency: sort-object
+Version bump for dependency: sort-pkg
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: root
+
+
 ## [19.2.0](https://github.com/christophehurpeau/pob/compare/pob@19.1.1...pob@19.2.0) (2024-05-05)
 
 

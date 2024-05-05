@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.3.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@11.3.0...pob-dependencies@11.3.1) (2024-05-05)
+
+Note: no notable changes
+
+Version bump for dependency: commitlint-config
+Version bump for dependency: esbuild
+Version bump for dependency: pretty-pkg
+Version bump for dependency: rollup-esbuild
+Version bump for dependency: rollup-typescript
+Version bump for dependency: pob-babel
+Version bump for dependency: repository-check-dirty
+
+
 ## [11.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@11.2.4...pob-dependencies@11.3.0) (2024-05-05)
 
 

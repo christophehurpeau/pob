@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@9.5.0...@pob/root@10.0.0) (2024-05-05)
+
+
+### ⚠ BREAKING CHANGES
+
+* change prettier config to get closer to default
+
+### Features
+
+* change prettier config to get closer to default ([8e472a9](https://github.com/christophehurpeau/pob/commit/8e472a98b0a722c5cd779e4731ff625b0bfa07bb))
+
+Version bump for dependency: pretty-eslint-config
+Version bump for dependency: pretty-pkg
+Version bump for dependency: repository-check-dirty
+
+
 ## [9.5.0](https://github.com/christophehurpeau/pob/compare/@pob/root@9.4.3...@pob/root@9.5.0) (2024-05-05)
 
 

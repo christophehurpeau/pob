@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.1](https://github.com/christophehurpeau/pob/compare/@pob/pretty-eslint-config@5.4.0...@pob/pretty-eslint-config@5.4.1) (2024-05-05)
+
+Note: no notable changes
+
+Version bump for dependency: sort-eslint-config
+
+
 ## [5.4.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-eslint-config@5.3.1...@pob/pretty-eslint-config@5.4.0) (2024-04-21)
 
 Note: no notable changes
