@@ -59,8 +59,7 @@ function updateParserAndPlugins(
       };
     } else {
       config.parserOptions = {
-        // eslint-disable-next-line camelcase
-        EXPERIMENTAL_useProjectService: true,
+        // EXPERIMENTAL_useProjectService: true,
         project: `${relativePath}/tsconfig.json`,
       };
     }

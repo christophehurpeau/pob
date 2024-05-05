@@ -2,7 +2,6 @@
   "root": true,
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "EXPERIMENTAL_useProjectService": true,
     "project": "pob-examples/next-app/tsconfig.json"
   },
   "plugins": ["@typescript-eslint"],
