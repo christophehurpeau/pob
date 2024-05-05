@@ -1,3 +1,3 @@
-'use strict';
+"use strict";
 
-module.exports = require('@rollup/plugin-run');
+module.exports = require("@rollup/plugin-run");

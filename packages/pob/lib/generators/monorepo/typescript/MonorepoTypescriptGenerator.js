@@ -1,50 +1,50 @@
-import { existsSync } from 'node:fs';
-import Generator from 'yeoman-generator';
-import * as packageUtils from '../../../utils/package.js';
-import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
+import { existsSync } from "node:fs";
+import Generator from "yeoman-generator";
+import * as packageUtils from "../../../utils/package.js";
+import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
 export default class MonorepoTypescriptGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option('enable', {
+    this.option("enable", {
       type: Boolean,
       default: true,
-      desc: 'enable typescript',
+      desc: "enable typescript",
     });
 
-    this.option('isAppProject', {
+    this.option("isAppProject", {
       type: Boolean,
       default: true,
-      desc: 'app project, no building definitions',
+      desc: "app project, no building definitions",
     });
 
-    this.option('packageNames', {
+    this.option("packageNames", {
       type: String,
       required: true,
     });
 
-    this.option('packagePaths', {
+    this.option("packagePaths", {
       type: String,
       required: true,
     });
 
-    this.option('testRunner', {
+    this.option("testRunner", {
       type: String,
       required: false,
-      default: 'jest',
+      default: "jest",
     });
   }
 
   writing() {
-    if (this.fs.exists('flow-typed')) this.fs.delete('flow-typed');
-    if (this.fs.exists(this.destinationPath('.flowconfig'))) {
-      this.fs.delete(this.destinationPath('.flowconfig'));
+    if (this.fs.exists("flow-typed")) this.fs.delete("flow-typed");
+    if (this.fs.exists(this.destinationPath(".flowconfig"))) {
+      this.fs.delete(this.destinationPath(".flowconfig"));
     }
 
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
-    packageUtils.removeDevDependencies(pkg, ['flow-bin']);
+    packageUtils.removeDevDependencies(pkg, ["flow-bin"]);
 
     if (pkg.scripts) {
       delete pkg.scripts.flow;
@@ -52,47 +52,47 @@ export default class MonorepoTypescriptGenerator extends Generator {
 
     packageUtils.addOrRemoveDevDependencies(
       pkg,
-      pkg.name === '@pob/eslint-config-monorepo' || this.options.enable,
-      ['typescript'],
+      pkg.name === "@pob/eslint-config-monorepo" || this.options.enable,
+      ["typescript"]
     );
 
     if (this.options.enable) {
       packageUtils.addScripts(pkg, {
-        tsc: 'tsc -b',
+        tsc: "tsc -b",
       });
       packageUtils.addOrRemoveScripts(pkg, !this.options.isAppProject, {
-        'build:definitions': 'tsc -b',
+        "build:definitions": "tsc -b",
       });
 
       delete pkg.scripts.postbuild;
 
       if (!this.options.isAppProject) {
-        pkg.scripts.build += ' && yarn run build:definitions';
+        pkg.scripts.build += " && yarn run build:definitions";
       }
     } else if (pkg.scripts) {
       delete pkg.scripts.tsc;
       if (
-        pkg.scripts.postbuild === 'tsc -b tsconfig.build.json' ||
-        pkg.scripts.postbuild === 'tsc -b'
+        pkg.scripts.postbuild === "tsc -b tsconfig.build.json" ||
+        pkg.scripts.postbuild === "tsc -b"
       ) {
         delete pkg.scripts.postbuild;
       }
-      delete pkg.scripts['build:definitions'];
+      delete pkg.scripts["build:definitions"];
     }
 
     if (pkg.scripts) {
-      delete pkg.scripts['typescript-check'];
+      delete pkg.scripts["typescript-check"];
     }
 
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    this.fs.writeJSON(this.destinationPath("package.json"), pkg);
   }
 
   // after pob ran in workspaces
   end() {
-    const tsconfigPath = this.destinationPath('tsconfig.json');
-    const tsconfigCheckPath = this.destinationPath('tsconfig.check.json');
-    const tsconfigBuildPath = this.destinationPath('tsconfig.build.json');
-    const tsconfigTestPath = this.destinationPath('tsconfig.test.json');
+    const tsconfigPath = this.destinationPath("tsconfig.json");
+    const tsconfigCheckPath = this.destinationPath("tsconfig.check.json");
+    const tsconfigBuildPath = this.destinationPath("tsconfig.build.json");
+    const tsconfigTestPath = this.destinationPath("tsconfig.test.json");
 
     if (!this.options.enable) {
       this.fs.delete(tsconfigPath);
@@ -104,25 +104,25 @@ export default class MonorepoTypescriptGenerator extends Generator {
 
       copyAndFormatTpl(
         this.fs,
-        this.templatePath('tsconfig.json.ejs'),
+        this.templatePath("tsconfig.json.ejs"),
         tsconfigPath,
         {
           packagePaths,
           tsConfigSuffix: false,
-        },
+        }
       );
 
-      if (this.options.testRunner === 'node') {
+      if (this.options.testRunner === "node") {
         copyAndFormatTpl(
           this.fs,
-          this.templatePath('tsconfig.json.ejs'),
+          this.templatePath("tsconfig.json.ejs"),
           tsconfigTestPath,
           {
             packagePaths: packagePaths.filter((packagePath) =>
-              existsSync(`${packagePath}/tsconfig.test.json`),
+              existsSync(`${packagePath}/tsconfig.test.json`)
             ),
-            tsConfigSuffix: 'test',
-          },
+            tsConfigSuffix: "test",
+          }
         );
       }
 

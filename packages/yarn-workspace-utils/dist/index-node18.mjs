@@ -70,7 +70,7 @@ const buildTopologicalOrderBatches = (project, dependenciesMap) => {
       toAdd.delete(workspace);
     }
     if (batch.size === 0) {
-      throw new Error('Circular dependency detected');
+      throw new Error("Circular dependency detected");
     }
     batches.push([...batch]);
   }

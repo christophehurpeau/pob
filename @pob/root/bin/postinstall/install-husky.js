@@ -1,23 +1,23 @@
 /* eslint-disable complexity */
 
-import fs from 'node:fs';
-import path from 'node:path';
-import husky from 'husky';
-import semver from 'semver';
+import fs from "node:fs";
+import path from "node:path";
+import husky from "husky";
+import semver from "semver";
 
 const ensureLegacyHuskyConfigDeleted = () => {
   try {
-    fs.unlinkSync(path.resolve('husky.config.js'));
+    fs.unlinkSync(path.resolve("husky.config.js"));
   } catch {}
   try {
-    fs.unlinkSync(path.resolve('.huskyrc'));
+    fs.unlinkSync(path.resolve(".huskyrc"));
   } catch {}
 };
 
 const ensureHuskyNotInDevDependencies = (pkg) => {
   if (pkg.devDependencies && pkg.devDependencies.husky) {
     throw new Error(
-      'Found husky in devDependencies. Husky is provided by @pob/root, please remove',
+      "Found husky in devDependencies. Husky is provided by @pob/root, please remove"
     );
   }
 };
@@ -27,8 +27,8 @@ const writeHook = (hookName, hookContent) => {
     path.resolve(`.husky/${hookName}`),
     `#!/usr/bin/env sh\n\n${hookContent.trim()}\n`,
     {
-      mode: '755',
-    },
+      mode: "755",
+    }
   );
 };
 
@@ -40,19 +40,19 @@ const ensureHookDeleted = (hookName) => {
 
 const readYarnConfigFile = () => {
   try {
-    return fs.readFileSync(path.resolve('.yarnrc.yml'));
+    return fs.readFileSync(path.resolve(".yarnrc.yml"));
   } catch {
-    return '';
+    return "";
   }
 };
 
 export default function installHusky({ pkg, pm }) {
-  const yarnMajorVersion = pm.name === 'yarn' && semver.major(pm.version);
-  const isYarnBerry = pm.name === 'yarn' && yarnMajorVersion >= 2;
+  const yarnMajorVersion = pm.name === "yarn" && semver.major(pm.version);
+  const isYarnBerry = pm.name === "yarn" && yarnMajorVersion >= 2;
   const yarnConfig = isYarnBerry && readYarnConfigFile();
   const isYarnPnp =
-    !yarnConfig.includes('nodeLinker: node-modules') &&
-    !yarnConfig.includes('nodeLinker: pnpm');
+    !yarnConfig.includes("nodeLinker: node-modules") &&
+    !yarnConfig.includes("nodeLinker: pnpm");
 
   /* Check legacy */
 
@@ -66,48 +66,48 @@ export default function installHusky({ pkg, pm }) {
   const shouldRunLint = () => pkg.scripts && pkg.scripts.lint;
 
   try {
-    fs.mkdirSync(path.resolve('.husky'));
+    fs.mkdirSync(path.resolve(".husky"));
   } catch {}
 
   const { lockfile, pmExec, installOnDiffCommand } = (() => {
-    if (pm.name === 'yarn') {
+    if (pm.name === "yarn") {
       return {
-        lockfile: 'yarn.lock',
-        pmExec: 'yarn',
+        lockfile: "yarn.lock",
+        pmExec: "yarn",
         installOnDiffCommand: `yarn install ${
           isYarnBerry
-            ? '--immutable'
-            : '--prefer-offline --pure-lockfile --ignore-optional'
+            ? "--immutable"
+            : "--prefer-offline --pure-lockfile --ignore-optional"
         }`,
       };
     }
-    if (pm.name === 'npm') {
+    if (pm.name === "npm") {
       return {
-        lockfile: 'package-lock.json',
-        pmExec: 'npx --no-install',
-        installOnDiffCommand: 'npm i',
+        lockfile: "package-lock.json",
+        pmExec: "npx --no-install",
+        installOnDiffCommand: "npm i",
       };
     }
-    if (pm.name === 'bun') {
+    if (pm.name === "bun") {
       return {
-        lockfile: 'bun.lockb',
-        pmExec: 'bun run',
-        installOnDiffCommand: 'bun i',
+        lockfile: "bun.lockb",
+        pmExec: "bun run",
+        installOnDiffCommand: "bun i",
       };
     }
 
     throw new Error(
-      `Package manager not supported: ${pm.name}. Please run with yarn, npm or bun !`,
+      `Package manager not supported: ${pm.name}. Please run with yarn, npm or bun !`
     );
   })();
 
-  writeHook('commit-msg', `${pmExec} commitlint --edit $1`);
-  writeHook('pre-commit', `${pmExec} pob-root-lint-staged`);
+  writeHook("commit-msg", `${pmExec} commitlint --edit $1`);
+  writeHook("pre-commit", `${pmExec} pob-root-lint-staged`);
 
   if (isYarnPnp) {
-    ensureHookDeleted('post-checkout');
-    ensureHookDeleted('post-merge');
-    ensureHookDeleted('post-rewrite');
+    ensureHookDeleted("post-checkout");
+    ensureHookDeleted("post-merge");
+    ensureHookDeleted("post-rewrite");
   } else {
     const runInstallOnDiff = (() => {
       return `
@@ -117,9 +117,9 @@ fi`;
     })();
 
     // https://yarnpkg.com/features/zero-installs
-    writeHook('post-checkout', runInstallOnDiff);
-    writeHook('post-merge', runInstallOnDiff);
-    writeHook('post-rewrite', runInstallOnDiff);
+    writeHook("post-checkout", runInstallOnDiff);
+    writeHook("post-merge", runInstallOnDiff);
+    writeHook("post-rewrite", runInstallOnDiff);
   }
 
   const prePushHook = [];
@@ -135,19 +135,19 @@ fi`;
   if (shouldRunTest()) {
     const getTestCommand = () => {
       if (pkg.devDependencies?.jest) {
-        return 'test --watchAll=false --changedSince=origin/main';
+        return "test --watchAll=false --changedSince=origin/main";
       }
       if (pkg.devDependencies?.vitest) {
-        return 'test --run --changed origin/main';
+        return "test --run --changed origin/main";
       }
-      return 'test';
+      return "test";
     };
     prePushHook.push(`${pmExec} ${getTestCommand()}`);
   }
 
   if (prePushHook.length > 0) {
     writeHook(
-      'pre-push',
+      "pre-push",
       `
 # z40 is the value matching the empty blob/commit/tree SHA (zero x 40)
 z40=0000000000000000000000000000000000000000
@@ -158,15 +158,15 @@ do
   # Skip if branch deletion
   if [ "$local_sha" != "$z40" ]; then
     if [ "$local_ref" = "$branch_ref" ]; then
-      ${prePushHook.join(' && ')}
+      ${prePushHook.join(" && ")}
     fi
   fi
 done
-`,
+`
     );
   } else {
-    ensureHookDeleted('pre-push');
+    ensureHookDeleted("pre-push");
   }
 
-  process.stdout.write(husky('.husky'));
+  process.stdout.write(husky(".husky"));
 }

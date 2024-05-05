@@ -1,4 +1,4 @@
-import * as fs from 'node:fs';
+import * as fs from "node:fs";
 // import simpleLib from './index.js';
 
 // describe('index', () => {
@@ -7,10 +7,10 @@ import * as fs from 'node:fs';
 //   });
 // });
 
-describe('dist', () => {
-  it('should build index.js', () => {
+describe("dist", () => {
+  it("should build index.js", () => {
     expect(
-      fs.readFileSync(new URL('../dist/index.js', import.meta.url), 'utf8'),
+      fs.readFileSync(new URL("../dist/index.js", import.meta.url), "utf8")
       // note that inline snapshot does not work with ESM currently
     ).toMatchSnapshot();
   });

@@ -1,14 +1,14 @@
 /* eslint-disable camelcase */
 
-import Generator from 'yeoman-generator';
-import { ciContexts } from '../../../ci/CoreCIGenerator.js';
+import Generator from "yeoman-generator";
+import { ciContexts } from "../../../ci/CoreCIGenerator.js";
 // const packageUtils = require('../../../../../utils/package');
 
 const GITHUB_TOKEN = process.env.POB_GITHUB_TOKEN;
 
 const postJson = (url, jsonBody) =>
   fetch(`https://api.github.com/${url}`, {
-    method: 'POST',
+    method: "POST",
     body: JSON.stringify(jsonBody),
     headers: {
       authorization: `token ${GITHUB_TOKEN}`,
@@ -17,7 +17,7 @@ const postJson = (url, jsonBody) =>
 
 const putJson = (url, jsonBody) =>
   fetch(`https://api.github.com/${url}`, {
-    method: 'PUT',
+    method: "PUT",
     body: JSON.stringify(jsonBody),
     headers: {
       authorization: `token ${GITHUB_TOKEN}`,
@@ -25,7 +25,7 @@ const putJson = (url, jsonBody) =>
   }).then((res) => (res.ok ? res.json() : null));
 
 const configureProtectionRule = async (owner, repo, onlyLatestLTS) => {
-  for (const branch of ['main', 'master']) {
+  for (const branch of ["main", "master"]) {
     try {
       await putJson(`repos/${owner}/${repo}/branches/${branch}/protection`, {
         required_status_checks: {
@@ -39,11 +39,11 @@ const configureProtectionRule = async (owner, repo, onlyLatestLTS) => {
         allow_force_pushes: true, // false
         allow_deletions: false,
       });
-      if (branch === 'master') {
+      if (branch === "master") {
         console.warn('You should rename your "master" branch to "main"');
       }
     } catch (error) {
-      if (branch === 'main') {
+      if (branch === "main") {
         console.error(`Failed to configure ${branch} branch protection`);
         console.error(error.stack || error.message || error);
       }
@@ -58,48 +58,48 @@ const githubRepoConfig = {
   allow_auto_merge: true,
   delete_branch_on_merge: true,
   use_squash_pr_title_as_default: true,
-  squash_merge_commit_title: 'PR_TITLE',
-  squash_merge_commit_message: 'BLANK',
+  squash_merge_commit_title: "PR_TITLE",
+  squash_merge_commit_message: "BLANK",
 };
 
 export default class CoreGitGithubGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option('shouldCreate', {
+    this.option("shouldCreate", {
       type: Boolean,
       required: false,
-      default: '',
-      desc: 'Should create the repo on github',
+      default: "",
+      desc: "Should create the repo on github",
     });
 
-    this.option('gitHostAccount', {
+    this.option("gitHostAccount", {
       type: String,
       required: true,
-      desc: 'host account',
+      desc: "host account",
     });
 
-    this.option('repoName', {
+    this.option("repoName", {
       type: String,
       required: true,
-      desc: 'repo name',
+      desc: "repo name",
     });
 
-    this.option('onlyLatestLTS', {
+    this.option("onlyLatestLTS", {
       type: Boolean,
       required: true,
-      desc: 'only latest lts',
+      desc: "only latest lts",
     });
 
-    this.option('splitCIJobs', {
+    this.option("splitCIJobs", {
       type: Boolean,
       required: true,
-      desc: 'split CI jobs for faster result',
+      desc: "split CI jobs for faster result",
     });
 
-    if (!GITHUB_TOKEN && process.env.CI !== 'true') {
+    if (!GITHUB_TOKEN && process.env.CI !== "true") {
       throw new Error(
-        'Missing POB_GITHUB_TOKEN. Create one with https://github.com/settings/tokens/new?scopes=repo&description=POB%20Generator and add it in your env variables.',
+        "Missing POB_GITHUB_TOKEN. Create one with https://github.com/settings/tokens/new?scopes=repo&description=POB%20Generator and add it in your env variables."
       );
     }
   }
@@ -109,16 +109,16 @@ export default class CoreGitGithubGenerator extends Generator {
     const owner = this.options.gitHostAccount;
     const repo = this.options.repoName;
 
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
-    const name = pkg.name.endsWith('-monorepo')
-      ? pkg.name.slice(0, -'-monorepo'.length)
+    const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
+    const name = pkg.name.endsWith("-monorepo")
+      ? pkg.name.slice(0, -"-monorepo".length)
       : pkg.name;
 
     if (this.options.shouldCreate) {
       try {
         if (this.options.shouldCreate) {
           try {
-            await postJson('user/repos', {
+            await postJson("user/repos", {
               name,
               description: pkg.description,
               homepage: null,
@@ -127,39 +127,39 @@ export default class CoreGitGithubGenerator extends Generator {
               ...githubRepoConfig,
             });
           } catch (error) {
-            console.error('Failed to create repository');
+            console.error("Failed to create repository");
             console.error(error.stack || error.message || error);
           }
         }
 
         const cwd = this.destinationPath();
         try {
-          this.spawnCommandSync('git', ['add', '--all', '.'], { cwd });
+          this.spawnCommandSync("git", ["add", "--all", "."], { cwd });
         } catch (error) {
-          this.spawnCommandSync('git', ['init'], { cwd });
-          this.spawnCommandSync('git', ['add', '--all', '.'], { cwd });
+          this.spawnCommandSync("git", ["init"], { cwd });
+          this.spawnCommandSync("git", ["add", "--all", "."], { cwd });
           this.spawnCommandSync(
-            'git',
+            "git",
             [
-              'remote',
-              'add',
-              'origin',
+              "remote",
+              "add",
+              "origin",
               `git@github.com:christophehurpeau/${name}.git`,
             ],
-            { cwd },
+            { cwd }
           );
-          console.error('Failed to create repository');
+          console.error("Failed to create repository");
           console.error(error.stack || error.message || error);
         }
         this.spawnCommandSync(
-          'git',
-          ['commit', '-m', 'chore: initial commit [skip ci]'],
-          { cwd },
+          "git",
+          ["commit", "-m", "chore: initial commit [skip ci]"],
+          { cwd }
         );
-        this.spawnCommandSync('git', ['branch', '-M', 'main'], {
+        this.spawnCommandSync("git", ["branch", "-M", "main"], {
           cwd,
         });
-        this.spawnCommandSync('git', ['push', '-u', 'origin', 'main'], {
+        this.spawnCommandSync("git", ["push", "-u", "origin", "main"], {
           cwd,
         });
 
@@ -169,11 +169,11 @@ export default class CoreGitGithubGenerator extends Generator {
         //   names: pkg.keywords,
         // });
       } catch (error) {
-        console.error('Failed to create github repository');
+        console.error("Failed to create github repository");
         console.error(error.stack || error.message || error);
       }
     } else {
-      console.log('sync github info');
+      console.log("sync github info");
 
       await postJson(`repos/${owner}/${repo}`, {
         name: repo,

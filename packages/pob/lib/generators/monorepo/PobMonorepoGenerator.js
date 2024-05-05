@@ -1,17 +1,17 @@
-import { execSync } from 'node:child_process';
-import fs from 'node:fs';
-import { platform } from 'node:process';
-import { getPluginConfiguration } from '@yarnpkg/cli';
-import { Configuration, Project } from '@yarnpkg/core';
-import { ppath } from '@yarnpkg/fslib';
+import { execSync } from "node:child_process";
+import fs from "node:fs";
+import { platform } from "node:process";
+import { getPluginConfiguration } from "@yarnpkg/cli";
+import { Configuration, Project } from "@yarnpkg/core";
+import { ppath } from "@yarnpkg/fslib";
 import {
   buildTopologicalOrderBatches,
   buildDependenciesMaps,
   getWorkspaceName,
-} from 'yarn-workspace-utils';
-import Generator from 'yeoman-generator';
-import * as packageUtils from '../../utils/package.js';
-import { copyAndFormatTpl } from '../../utils/writeAndFormat.js';
+} from "yarn-workspace-utils";
+import Generator from "yeoman-generator";
+import * as packageUtils from "../../utils/package.js";
+import { copyAndFormatTpl } from "../../utils/writeAndFormat.js";
 
 export const createYarnProject = async () => {
   const portablePath = ppath.cwd();
@@ -19,7 +19,7 @@ export const createYarnProject = async () => {
   const configuration = await Configuration.find(
     portablePath,
     // eslint-disable-next-line unicorn/no-array-method-this-argument -- not an array
-    getPluginConfiguration(),
+    getPluginConfiguration()
   );
   // eslint-disable-next-line unicorn/no-array-method-this-argument -- not an array
   const { project } = await Project.find(configuration, portablePath);
@@ -28,7 +28,7 @@ export const createYarnProject = async () => {
 
 const getAppTypes = (configs) => {
   const appConfigs = configs.filter(
-    (config) => config && config.project && config.project.type === 'app',
+    (config) => config && config.project && config.project.type === "app"
   );
 
   const appTypes = new Set();
@@ -42,12 +42,12 @@ const getAppTypes = (configs) => {
 const hasDist = (packages, configs) =>
   configs.some(
     (config, index) =>
-      !!(config && config.project && config.project.type === 'lib') &&
+      !!(config && config.project && config.project.type === "lib") &&
       !!(
         packages[index].pob &&
         packages[index].pob.babelEnvs &&
         packages[index].pob.babelEnvs.length > 0
-      ),
+      )
   );
 
 const hasBuild = (packages, configs) =>
@@ -56,53 +56,53 @@ const hasBuild = (packages, configs) =>
       !!(
         config &&
         config.project &&
-        config.project.type === 'app' &&
-        config.app.type === 'alp-node'
-      ),
+        config.project.type === "app" &&
+        config.app.type === "alp-node"
+      )
   );
 
 export default class PobMonorepoGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option('updateOnly', {
+    this.option("updateOnly", {
       type: Boolean,
       required: false,
       default: false,
-      desc: 'Avoid asking questions',
+      desc: "Avoid asking questions",
     });
 
-    this.option('isAppProject', {
+    this.option("isAppProject", {
       type: Boolean,
       required: false,
       default: false,
-      desc: 'app project, no pusblishing on npm',
+      desc: "app project, no pusblishing on npm",
     });
 
-    this.option('packageManager', {
+    this.option("packageManager", {
       type: String,
-      default: 'yarn',
-      desc: 'yarn or npm',
+      default: "yarn",
+      desc: "yarn or npm",
     });
 
-    this.option('yarnNodeLinker', {
+    this.option("yarnNodeLinker", {
       type: String,
       required: false,
-      default: 'pnp',
-      desc: 'Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.',
+      default: "pnp",
+      desc: "Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.",
     });
 
-    this.option('onlyLatestLTS', {
+    this.option("onlyLatestLTS", {
       type: Boolean,
       required: true,
-      desc: 'only latest lts',
+      desc: "only latest lts",
     });
 
-    this.option('disableYarnGitCache', {
+    this.option("disableYarnGitCache", {
       type: Boolean,
       required: false,
       default: false,
-      desc: 'Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.',
+      desc: "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
   }
 
@@ -110,7 +110,7 @@ export default class PobMonorepoGenerator extends Generator {
     const yarnProject = await createYarnProject(this.destinationPath());
     const batches = buildTopologicalOrderBatches(
       yarnProject,
-      buildDependenciesMaps(yarnProject),
+      buildDependenciesMaps(yarnProject)
     );
 
     this.packages = [];
@@ -119,7 +119,7 @@ export default class PobMonorepoGenerator extends Generator {
     for (const batch of batches) {
       // sort by name to ensure consistent ordering
       batch.sort((a, b) =>
-        getWorkspaceName(a).localeCompare(getWorkspaceName(b), 'en'),
+        getWorkspaceName(a).localeCompare(getWorkspaceName(b), "en")
       );
 
       batch.forEach((workspace) => {
@@ -143,89 +143,89 @@ export default class PobMonorepoGenerator extends Generator {
   }
 
   async prompting() {
-    const config = this.config.get('monorepo');
+    const config = this.config.get("monorepo");
 
     if (this.options.updateOnly && config) {
       this.pobLernaConfig = config;
       this.pobLernaConfig.packageNames = this.packageNames;
-      this.config.set('monorepo', this.pobLernaConfig);
+      this.config.set("monorepo", this.pobLernaConfig);
       return;
     }
 
     this.pobLernaConfig = await this.prompt([
       {
-        type: 'confirm',
-        name: 'ci',
-        message: 'Would you like ci with github actions ?',
+        type: "confirm",
+        name: "ci",
+        message: "Would you like ci with github actions ?",
         default: config
           ? config.ci
-          : this.fs.exists(this.destinationPath('.circleci/config.yml')) ||
-            this.fs.exists(this.destinationPath('.github/workflows')),
+          : this.fs.exists(this.destinationPath(".circleci/config.yml")) ||
+            this.fs.exists(this.destinationPath(".github/workflows")),
       },
       {
-        type: 'confirm',
-        name: 'testing',
-        message: 'Would you like testing ?',
+        type: "confirm",
+        name: "testing",
+        message: "Would you like testing ?",
         when: (answers) => answers.ci,
         default: config ? config.testing : true,
       },
       {
-        type: 'confirm',
-        name: 'codecov',
-        message: 'Would you like code coverage ?',
+        type: "confirm",
+        name: "codecov",
+        message: "Would you like code coverage ?",
         when: (answers) => answers.ci && answers.testing,
         default: config ? config.codecov : true,
       },
       {
-        type: 'confirm',
-        name: 'documentation',
-        message: 'Would you like documentation ?',
+        type: "confirm",
+        name: "documentation",
+        message: "Would you like documentation ?",
         when: (answers) => answers.ci && !this.options.isAppProject,
         default: config ? config.documentation : true,
       },
       {
-        type: 'confirm',
-        name: 'typescript',
-        message: 'Would you like typescript monorepo ?',
+        type: "confirm",
+        name: "typescript",
+        message: "Would you like typescript monorepo ?",
         default: config ? config.typescript : true,
       },
       {
-        type: 'confirm',
-        name: 'eslint',
-        message: 'Would you like eslint in monorepo ?',
+        type: "confirm",
+        name: "eslint",
+        message: "Would you like eslint in monorepo ?",
         default: config ? config.eslint : true,
       },
     ]);
     this.pobLernaConfig.packageNames = this.packageNames;
-    this.config.set('monorepo', this.pobLernaConfig);
-    this.config.delete('pob-config');
+    this.config.set("monorepo", this.pobLernaConfig);
+    this.config.delete("pob-config");
   }
 
   default() {
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+    const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
 
     const packageNames = this.packageNames;
     const packagePaths = this.packageLocations.filter(
       this.pobLernaConfig.typescript
         ? (packagePath) => fs.existsSync(`${packagePath}/tsconfig.json`)
-        : Boolean,
+        : Boolean
     );
 
     if (packagePaths.length === 0 && packageNames.length > 0) {
       console.log(packageNames, packagePaths);
-      throw new Error('packages should not be empty');
+      throw new Error("packages should not be empty");
     }
 
-    this.composeWith('pob:common:husky', {});
+    this.composeWith("pob:common:husky", {});
 
     const isYarnVersionEnabled = this.pobLernaConfig.ci;
 
     const splitCIJobs = this.packageNames.length > 8;
 
-    this.composeWith('pob:common:testing', {
+    this.composeWith("pob:common:testing", {
       monorepo: true,
       enable: this.pobLernaConfig.testing,
-      runner: this.pobLernaConfig.testRunner || 'jest',
+      runner: this.pobLernaConfig.testRunner || "jest",
       disableYarnGitCache: this.options.disableYarnGitCache,
       enableReleasePlease: false,
       enableYarnVersion: isYarnVersionEnabled,
@@ -242,7 +242,7 @@ export default class PobMonorepoGenerator extends Generator {
       splitCIJobs,
     });
 
-    this.composeWith('pob:common:format-lint', {
+    this.composeWith("pob:common:format-lint", {
       monorepo: true,
       documentation: this.pobLernaConfig.documentation,
       typescript: this.pobLernaConfig.typescript,
@@ -252,15 +252,15 @@ export default class PobMonorepoGenerator extends Generator {
       yarnNodeLinker: this.options.yarnNodeLinker,
       appTypes: JSON.stringify(getAppTypes(this.packageConfigs)),
       ignorePaths: [
-        hasDist(this.packages, this.packageConfigs) && '/dist',
-        hasBuild(this.packages, this.packageConfigs) && '/build',
+        hasDist(this.packages, this.packageConfigs) && "/dist",
+        hasBuild(this.packages, this.packageConfigs) && "/build",
       ]
         .filter(Boolean)
-        .join('\n'),
+        .join("\n"),
       rootIgnorePaths: [],
     });
 
-    this.composeWith('pob:lib:doc', {
+    this.composeWith("pob:lib:doc", {
       enabled: this.pobLernaConfig.documentation,
       testing: this.pobLernaConfig.testing,
       packageNames: JSON.stringify(packageNames),
@@ -268,7 +268,7 @@ export default class PobMonorepoGenerator extends Generator {
       packageManager: this.options.packageManager,
     });
 
-    this.composeWith('pob:core:vscode', {
+    this.composeWith("pob:core:vscode", {
       root: true,
       monorepo: true,
       packageManager: this.options.packageManager,
@@ -281,16 +281,16 @@ export default class PobMonorepoGenerator extends Generator {
     });
 
     // Always add a gitignore, because npm publish uses it.
-    this.composeWith('pob:core:gitignore', {
+    this.composeWith("pob:core:gitignore", {
       root: true,
       typescript: this.pobLernaConfig.typescript,
       documentation: this.pobLernaConfig.documentation,
       testing: this.pobLernaConfig.testing,
     });
 
-    this.composeWith('pob:common:remove-old-dependencies');
+    this.composeWith("pob:common:remove-old-dependencies");
 
-    this.composeWith('pob:common:release', {
+    this.composeWith("pob:common:release", {
       enable: true,
       enablePublish: !this.options.isAppProject,
       withBabel: this.pobLernaConfig.typescript,
@@ -301,7 +301,7 @@ export default class PobMonorepoGenerator extends Generator {
       updateOnly: this.options.updateOnly,
     });
 
-    this.composeWith('pob:monorepo:typescript', {
+    this.composeWith("pob:monorepo:typescript", {
       enable: this.pobLernaConfig.typescript,
       isAppProject: this.options.isAppProject,
       packageNames: JSON.stringify(packageNames),
@@ -309,18 +309,18 @@ export default class PobMonorepoGenerator extends Generator {
       testRunner: this.pobLernaConfig.testRunner,
     });
 
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    this.fs.writeJSON(this.destinationPath("package.json"), pkg);
 
-    if (platform !== 'win32') {
+    if (platform !== "win32") {
       execSync(
-        `rm -Rf ${['lib-*', 'coverage', 'docs'].filter(Boolean).join(' ')}`,
+        `rm -Rf ${["lib-*", "coverage", "docs"].filter(Boolean).join(" ")}`
       );
     }
   }
 
   writing() {
     if (!this.options.isAppProject) {
-      const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+      const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
 
       const rollupConfigs = [];
       this.packageLocations.forEach((location) => {
@@ -336,32 +336,32 @@ export default class PobMonorepoGenerator extends Generator {
       if (rollupConfigs.length > 0) {
         copyAndFormatTpl(
           this.fs,
-          this.templatePath('monorepo.rollup.config.mjs.ejs'),
-          this.destinationPath('rollup.config.mjs'),
+          this.templatePath("monorepo.rollup.config.mjs.ejs"),
+          this.destinationPath("rollup.config.mjs"),
           {
             configLocations: rollupConfigs,
-          },
+          }
         );
       } else {
-        this.fs.delete('rollup.config.mjs');
+        this.fs.delete("rollup.config.mjs");
       }
       packageUtils.addOrRemoveScripts(pkg, rollupConfigs.length > 0, {
-        'clean:build': 'yarn workspaces foreach --parallel -A run clean:build',
-        build: 'yarn clean:build && rollup --config rollup.config.mjs',
-        watch: 'yarn clean:build && rollup --config rollup.config.mjs --watch',
+        "clean:build": "yarn workspaces foreach --parallel -A run clean:build",
+        build: "yarn clean:build && rollup --config rollup.config.mjs",
+        watch: "yarn clean:build && rollup --config rollup.config.mjs --watch",
       });
       packageUtils.addOrRemoveDevDependencies(pkg, rollupConfigs.length, [
-        '@babel/core',
-        'pob-babel',
+        "@babel/core",
+        "pob-babel",
       ]);
-      this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+      this.fs.writeJSON(this.destinationPath("package.json"), pkg);
     }
 
-    this.composeWith('pob:core:sort-package');
+    this.composeWith("pob:core:sort-package");
   }
 
   end() {
-    console.log('save config');
+    console.log("save config");
     this.config.save();
   }
 }

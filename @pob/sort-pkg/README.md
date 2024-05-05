@@ -22,10 +22,10 @@ npm install --save @pob/sort-pkg
 ## Usage
 
 ```js
-const fs = require('fs');
-const sortPkg = require('@pob/sort-pkg');
+const fs = require("fs");
+const sortPkg = require("@pob/sort-pkg");
 
-const pkg = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
+const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
 sortPkg(pkg);
 fs.writeFileSync(JSON.stringify(pkg, null, 2), pkg);
 ```

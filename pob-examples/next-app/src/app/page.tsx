@@ -1,6 +1,6 @@
-import Image from 'next/image';
-import type { ReactNode } from 'react';
-import styles from './page.module.css';
+import Image from "next/image";
+import type { ReactNode } from "react";
+import styles from "./page.module.css";
 
 export default function Home(): ReactNode {
   return (
@@ -16,7 +16,7 @@ export default function Home(): ReactNode {
             target="_blank"
             rel="noopener noreferrer"
           >
-            By{' '}
+            By{" "}
             <Image
               priority
               src="/vercel.svg"

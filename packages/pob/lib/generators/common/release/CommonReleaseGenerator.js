@@ -1,81 +1,81 @@
-import Generator from 'yeoman-generator';
-import * as packageUtils from '../../../utils/package.js';
+import Generator from "yeoman-generator";
+import * as packageUtils from "../../../utils/package.js";
 
 export default class CommonReleaseGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option('enable', {
+    this.option("enable", {
       type: Boolean,
       required: true,
-      desc: 'If releasing is enabled',
+      desc: "If releasing is enabled",
     });
 
-    this.option('enablePublish', {
+    this.option("enablePublish", {
       type: Boolean,
       required: true,
-      desc: 'If publish on npm is enabled',
+      desc: "If publish on npm is enabled",
     });
 
-    this.option('withBabel', {
+    this.option("withBabel", {
       type: Boolean,
       required: false,
       default: undefined,
-      desc: 'Babel enabled.',
+      desc: "Babel enabled.",
     });
 
-    this.option('withTypescript', {
+    this.option("withTypescript", {
       type: Boolean,
       required: false,
       default: undefined,
-      desc: 'Typescript enabled.',
+      desc: "Typescript enabled.",
     });
-    this.option('isMonorepo', {
+    this.option("isMonorepo", {
       type: Boolean,
       default: false,
-      desc: 'is monorepo',
+      desc: "is monorepo",
     });
 
-    this.option('enableYarnVersion', {
+    this.option("enableYarnVersion", {
       type: Boolean,
       default: true,
-      desc: 'enable yarn version conventional commits',
+      desc: "enable yarn version conventional commits",
     });
 
-    this.option('ci', {
+    this.option("ci", {
       type: Boolean,
       required: true,
-      desc: 'ci with github actions',
+      desc: "ci with github actions",
     });
 
-    this.option('disableYarnGitCache', {
+    this.option("disableYarnGitCache", {
       type: Boolean,
       required: false,
       default: false,
-      desc: 'Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.',
+      desc: "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
 
-    this.option('updateOnly', {
+    this.option("updateOnly", {
       type: Boolean,
       required: false,
       default: false,
-      desc: 'Avoid asking questions',
+      desc: "Avoid asking questions",
     });
   }
 
   writing() {
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
     if (this.options.enable && this.options.ci) {
       const useLegacyName = this.fs.exists(
-        this.destinationPath('.github/workflows/publish.yml'),
+        this.destinationPath(".github/workflows/publish.yml")
       );
 
-      const name = useLegacyName ? 'publish.yml' : 'release.yml';
+      const name = useLegacyName ? "publish.yml" : "release.yml";
 
       // TODO rename release (release = version + publish)
       this.fs.copyTpl(
-        this.templatePath('workflow-release.yml.ejs'),
+        this.templatePath("workflow-release.yml.ejs"),
         this.destinationPath(`.github/workflows/${name}`),
         {
           enablePublish: this.options.enablePublish,
@@ -84,49 +84,49 @@ export default class CommonReleaseGenerator extends Generator {
           isMonorepo: this.options.isMonorepo,
           isMonorepoIndependent:
             this.options.isMonorepo &&
-            (!pkg.version || pkg.version === '0.0.0'),
-        },
+            (!pkg.version || pkg.version === "0.0.0"),
+        }
       );
     } else {
-      this.fs.delete(this.destinationPath('.github/workflows/publish.yml'));
-      this.fs.delete(this.destinationPath('.github/workflows/release.yml'));
+      this.fs.delete(this.destinationPath(".github/workflows/publish.yml"));
+      this.fs.delete(this.destinationPath(".github/workflows/release.yml"));
     }
 
-    packageUtils.removeDevDependencies(pkg, ['standard-version']);
+    packageUtils.removeDevDependencies(pkg, ["standard-version"]);
     packageUtils.removeScripts(pkg, [
-      'release',
-      pkg.name === 'pob-dependencies' ? null : 'preversion',
+      "release",
+      pkg.name === "pob-dependencies" ? null : "preversion",
     ]);
 
-    if (pkg.scripts.version === 'pob-version') {
+    if (pkg.scripts.version === "pob-version") {
       delete pkg.scripts.version;
     }
 
     if (this.options.enable && !this.options.ci) {
       packageUtils.addScripts(pkg, {
         preversion: [
-          'yarn run lint',
+          "yarn run lint",
           this.options.withBabel ||
-            (this.options.withTypescript && 'yarn run build'),
-          'repository-check-dirty',
+            (this.options.withTypescript && "yarn run build"),
+          "repository-check-dirty",
         ]
           .filter(Boolean)
-          .join(' && '),
+          .join(" && "),
       });
     }
 
     if (
       this.fs.exists(
-        this.destinationPath('.github/workflows/release-please.yml'),
+        this.destinationPath(".github/workflows/release-please.yml")
       )
     ) {
       this.fs.delete(
-        this.destinationPath('.github/workflows/release-please.yml'),
+        this.destinationPath(".github/workflows/release-please.yml")
       );
     }
 
-    this.fs.delete(this.destinationPath('.release-please-manifest.json'));
+    this.fs.delete(this.destinationPath(".release-please-manifest.json"));
 
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    this.fs.writeJSON(this.destinationPath("package.json"), pkg);
   }
 }

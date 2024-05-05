@@ -1,51 +1,51 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import Generator from 'yeoman-generator';
-import inMonorepo from '../../../utils/inMonorepo.js';
-import * as packageUtils from '../../../utils/package.js';
-import { askName } from './askName.js';
+import fs from "node:fs";
+import path from "node:path";
+import Generator from "yeoman-generator";
+import inMonorepo from "../../../utils/inMonorepo.js";
+import * as packageUtils from "../../../utils/package.js";
+import { askName } from "./askName.js";
 
 export default class CorePackageGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option('isMonorepo', {
+    this.option("isMonorepo", {
       type: Boolean,
       required: true,
       default: false,
-      desc: 'is monorepo',
+      desc: "is monorepo",
     });
 
-    this.option('inMonorepo', {
+    this.option("inMonorepo", {
       type: Boolean,
       required: true,
       default: false,
-      desc: 'in monorepo',
+      desc: "in monorepo",
     });
 
-    this.option('isRoot', {
+    this.option("isRoot", {
       type: Boolean,
       required: true,
       default: false,
-      desc: 'is root',
+      desc: "is root",
     });
 
-    this.option('private', {
+    this.option("private", {
       type: Boolean,
       required: false,
       default: false,
-      desc: 'private package',
+      desc: "private package",
     });
 
-    this.option('packageType', {
+    this.option("packageType", {
       type: String,
       required: false,
-      desc: 'package type',
+      desc: "package type",
     });
   }
 
   async initializing() {
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+    const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
 
     if (!pkg.engines) pkg.engines = {};
 
@@ -53,13 +53,13 @@ export default class CorePackageGenerator extends Generator {
     if (
       !pkg.engines.node ||
       !(
-        pkg.engines.node.startsWith('>=20.') &&
-        pkg.engines.node.startsWith('>=18.') &&
-        pkg.engines.node !== '>=18.0.0'
+        pkg.engines.node.startsWith(">=20.") &&
+        pkg.engines.node.startsWith(">=18.") &&
+        pkg.engines.node !== ">=18.0.0"
       )
     ) {
       // this might be overridden by babel generator
-      pkg.engines.node = '>=18.12.0'; // .12.0 is the first lts node 18 version
+      pkg.engines.node = ">=18.12.0"; // .12.0 is the first lts node 18 version
     }
 
     if (!this.options.isRoot) {
@@ -73,9 +73,9 @@ export default class CorePackageGenerator extends Generator {
         pkg.private = true;
       } else {
         const { isPrivate } = await this.prompt({
-          type: 'confirm',
-          name: 'isPrivate',
-          message: 'Private package ?',
+          type: "confirm",
+          name: "isPrivate",
+          message: "Private package ?",
           default: pkg.private === true,
         });
         if (isPrivate) {
@@ -89,19 +89,19 @@ export default class CorePackageGenerator extends Generator {
     if (this.options.isMonorepo && this.options.isRoot) {
       if (!pkg.name) {
         const { name } = await this.prompt({
-          name: 'name',
-          message: 'Monorepo Name',
+          name: "name",
+          message: "Monorepo Name",
           default: path.basename(process.cwd()),
           validate: (str) => str.length > 0,
         });
         pkg.name = name;
-      } else if (pkg.name.endsWith('-lerna')) {
-        pkg.name = pkg.name.replace('-lerna', '-monorepo');
+      } else if (pkg.name.endsWith("-lerna")) {
+        pkg.name = pkg.name.replace("-lerna", "-monorepo");
       }
     } else if (!pkg.name) {
       const prompt = {
-        name: 'name',
-        message: 'Module Name',
+        name: "name",
+        message: "Module Name",
         default: path.basename(process.cwd()),
         validate: (str) => str.length > 0,
       };
@@ -122,51 +122,51 @@ export default class CorePackageGenerator extends Generator {
       [
         !this.options.updateOnly &&
           !(this.options.isMonorepo && this.options.isRoot) && {
-            name: 'description',
-            message: 'Description',
+            name: "description",
+            message: "Description",
             default: pkg.description,
           },
         {
-          name: 'authorName',
+          name: "authorName",
           message: "Author's Name",
           when: !pkg.authors && (!author || !author.name),
           default: this.git.name(),
         },
         {
-          name: 'authorEmail',
+          name: "authorEmail",
           message: "Author's Email",
           when: !pkg.authors && (!author || !author.email),
           default: this.git.email(),
         },
         {
-          name: 'authorUrl',
+          name: "authorUrl",
           message: "Author's Homepage",
           when: !pkg.authors && (!author || !author.url),
         },
         {
-          name: 'type',
-          message: 'Package Type',
-          type: 'list',
-          choices: ['commonjs', 'module'],
+          name: "type",
+          message: "Package Type",
+          type: "list",
+          choices: ["commonjs", "module"],
           when: !pkg.type,
         },
         {
-          name: 'license',
-          message: 'License Type',
-          type: 'list',
-          choices: ['MIT', 'ISC', 'UNLICENSED'],
+          name: "license",
+          message: "License Type",
+          type: "list",
+          choices: ["MIT", "ISC", "UNLICENSED"],
           when: !pkg.license,
         },
-      ].filter(Boolean),
+      ].filter(Boolean)
     );
 
     if (!pkg.type) pkg.type = props.type;
     if (
       inMonorepo &&
       !inMonorepo.root &&
-      inMonorepo.rootMonorepoPkg.type === 'module'
+      inMonorepo.rootMonorepoPkg.type === "module"
     ) {
-      pkg.type = 'module';
+      pkg.type = "module";
     }
 
     pkg.description = this.options.updateOnly
@@ -176,46 +176,46 @@ export default class CorePackageGenerator extends Generator {
     if (this.options.inMonorepo && !this.options.isRoot) {
       const rootMonorepoPkg = inMonorepo.rootMonorepoPkg;
       const rootRepositoryUrl =
-        typeof rootMonorepoPkg.repository === 'string'
+        typeof rootMonorepoPkg.repository === "string"
           ? rootMonorepoPkg.repository
           : rootMonorepoPkg.repository.url;
       pkg.repository = {
-        type: 'git',
+        type: "git",
         url: rootRepositoryUrl,
         directory: process.cwd().slice(inMonorepo.rootPath.length + 1),
       };
       pkg.homepage = rootMonorepoPkg.homepage;
 
-      if (this.fs.exists(this.destinationPath('yarn.lock'))) {
-        fs.unlinkSync(this.destinationPath('yarn.lock'));
+      if (this.fs.exists(this.destinationPath("yarn.lock"))) {
+        fs.unlinkSync(this.destinationPath("yarn.lock"));
       }
     }
-    if (this.fs.exists(this.destinationPath('yarn-error.log'))) {
-      fs.unlinkSync(this.destinationPath('yarn-error.log'));
+    if (this.fs.exists(this.destinationPath("yarn-error.log"))) {
+      fs.unlinkSync(this.destinationPath("yarn-error.log"));
     }
 
     if (this.options.inMonorepo && !this.options.isRoot) {
-      packageUtils.removeScripts(pkg, ['checks']);
-      packageUtils.removeDevDependencies(pkg, ['check-package-dependencies']);
+      packageUtils.removeScripts(pkg, ["checks"]);
+      packageUtils.removeDevDependencies(pkg, ["check-package-dependencies"]);
     } else if (this.options.isMonorepo && this.options.isRoot) {
       const doesMjsCheckPackagesExists = this.fs.exists(
-        this.destinationPath('scripts/check-packages.mjs'),
+        this.destinationPath("scripts/check-packages.mjs")
       );
       let doesJsCheckPackagesExists = this.fs.exists(
-        this.destinationPath('scripts/check-packages.js'),
+        this.destinationPath("scripts/check-packages.js")
       );
 
-      if (pkg.type === 'module' && !doesJsCheckPackagesExists) {
+      if (pkg.type === "module" && !doesJsCheckPackagesExists) {
         doesJsCheckPackagesExists = true;
         this.fs.copyTpl(
-          this.templatePath('check-packages.js.ejs'),
-          this.destinationPath('scripts/check-packages.js'),
-          {},
+          this.templatePath("check-packages.js.ejs"),
+          this.destinationPath("scripts/check-packages.js"),
+          {}
         );
       }
 
       if (doesJsCheckPackagesExists || doesMjsCheckPackagesExists) {
-        packageUtils.addDevDependencies(pkg, ['check-package-dependencies']);
+        packageUtils.addDevDependencies(pkg, ["check-package-dependencies"]);
       }
 
       packageUtils.addOrRemoveScripts(
@@ -223,40 +223,40 @@ export default class CorePackageGenerator extends Generator {
         doesMjsCheckPackagesExists || doesJsCheckPackagesExists,
         {
           checks: `node scripts/check-packages.${
-            doesMjsCheckPackagesExists ? 'mjs' : 'js'
+            doesMjsCheckPackagesExists ? "mjs" : "js"
           }`,
-        },
+        }
       );
     } else if (inMonorepo && !inMonorepo.root) {
-      if (this.fs.exists('scripts/check-package.js')) {
-        this.fs.delete('scripts/check-package.js');
+      if (this.fs.exists("scripts/check-package.js")) {
+        this.fs.delete("scripts/check-package.js");
       }
-      if (this.fs.exists('scripts/check-package.mjs')) {
-        this.fs.delete('scripts/check-package.mjs');
+      if (this.fs.exists("scripts/check-package.mjs")) {
+        this.fs.delete("scripts/check-package.mjs");
       }
-      packageUtils.removeScripts(pkg, ['checks']);
+      packageUtils.removeScripts(pkg, ["checks"]);
     } else {
       const doesMjsCheckPackageExists = this.fs.exists(
-        this.destinationPath('scripts/check-package.mjs'),
+        this.destinationPath("scripts/check-package.mjs")
       );
       let doesJsCheckPackageExists = this.fs.exists(
-        this.destinationPath('scripts/check-package.js'),
+        this.destinationPath("scripts/check-package.js")
       );
 
-      if (pkg.type === 'module') {
+      if (pkg.type === "module") {
         if (!doesJsCheckPackageExists) {
           doesJsCheckPackageExists = true;
           this.fs.copyTpl(
-            this.templatePath('check-package.js.ejs'),
-            this.destinationPath('scripts/check-package.js'),
+            this.templatePath("check-package.js.ejs"),
+            this.destinationPath("scripts/check-package.js"),
             {
               isLibrary: pkg.private !== true,
-            },
+            }
           );
         }
       }
       if (doesJsCheckPackageExists || doesMjsCheckPackageExists) {
-        packageUtils.addDevDependencies(pkg, ['check-package-dependencies']);
+        packageUtils.addDevDependencies(pkg, ["check-package-dependencies"]);
       }
 
       packageUtils.addOrRemoveScripts(
@@ -264,9 +264,9 @@ export default class CorePackageGenerator extends Generator {
         doesMjsCheckPackageExists || doesJsCheckPackageExists,
         {
           checks: `node scripts/check-package.${
-            doesMjsCheckPackageExists ? 'mjs' : 'js'
+            doesMjsCheckPackageExists ? "mjs" : "js"
           }`,
-        },
+        }
       );
     }
 
@@ -278,7 +278,7 @@ export default class CorePackageGenerator extends Generator {
       };
 
       pkg.author = `${author.name} <${author.email}>${
-        author.url ? ` (${author.url})` : ''
+        author.url ? ` (${author.url})` : ""
       }`;
     }
 
@@ -286,11 +286,11 @@ export default class CorePackageGenerator extends Generator {
       pkg.license = props.license;
       this.fs.copyTpl(
         this.templatePath(`licenses/${props.license}.ejs`),
-        this.destinationPath('LICENSE'),
+        this.destinationPath("LICENSE"),
         {
           year: new Date().getFullYear(),
           author: pkg.author,
-        },
+        }
       );
     }
 
@@ -303,58 +303,58 @@ export default class CorePackageGenerator extends Generator {
 
     if (!pkg.private && !pkg.version) {
       // lerna root pkg should not have version
-      pkg.version = '0.0.0';
+      pkg.version = "0.0.0";
     }
 
-    if (!pkg.private && !pkg.publishConfig && pkg.name[0] === '@') {
+    if (!pkg.private && !pkg.publishConfig && pkg.name[0] === "@") {
       pkg.publishConfig = {
-        access: 'public',
+        access: "public",
       };
     }
 
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    this.fs.writeJSON(this.destinationPath("package.json"), pkg);
   }
 
   writing() {
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+    const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
     if (!pkg.scripts) pkg.scripts = {};
 
     const installPostinstallScript = (scriptName) => {
       if (
         !pkg.scripts[scriptName] ||
-        !pkg.scripts[scriptName].includes('pob-root-postinstall')
+        !pkg.scripts[scriptName].includes("pob-root-postinstall")
       ) {
-        pkg.scripts[scriptName] = 'pob-root-postinstall';
+        pkg.scripts[scriptName] = "pob-root-postinstall";
       }
     };
 
     const uninstallPostinstallScript = (scriptName) => {
       if (pkg.scripts && pkg.scripts[scriptName]) {
-        if (pkg.scripts[scriptName] === 'pob-root-postinstall') {
+        if (pkg.scripts[scriptName] === "pob-root-postinstall") {
           delete pkg.scripts[scriptName];
         } else if (
-          pkg.scripts[scriptName].startsWith('pob-root-postinstall && ')
+          pkg.scripts[scriptName].startsWith("pob-root-postinstall && ")
         ) {
           pkg.scripts[scriptName] = pkg.scripts[scriptName].slice(
-            'pob-root-postinstall && '.length - 1,
+            "pob-root-postinstall && ".length - 1
           );
-        } else if (pkg.scripts[scriptName].includes('pob-root-postinstall')) {
-          throw new Error('Could not remove pob-root-postinstall');
+        } else if (pkg.scripts[scriptName].includes("pob-root-postinstall")) {
+          throw new Error("Could not remove pob-root-postinstall");
         }
       }
     };
     if (this.options.inMonorepo || inMonorepo || pkg.private) {
-      uninstallPostinstallScript('postinstallDev');
+      uninstallPostinstallScript("postinstallDev");
       if (this.options.isRoot) {
-        installPostinstallScript('postinstall');
+        installPostinstallScript("postinstall");
       } else {
-        uninstallPostinstallScript('postinstall');
+        uninstallPostinstallScript("postinstall");
       }
     } else {
-      uninstallPostinstallScript('postinstall');
-      installPostinstallScript('postinstallDev');
+      uninstallPostinstallScript("postinstall");
+      installPostinstallScript("postinstallDev");
     }
 
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    this.fs.writeJSON(this.destinationPath("package.json"), pkg);
   }
 }

@@ -1,20 +1,20 @@
-import Generator from 'yeoman-generator';
+import Generator from "yeoman-generator";
 
 export default class CoreCleanGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option('root', {
+    this.option("root", {
       type: Boolean,
       required: false,
       default: true,
-      desc: 'Root package.',
+      desc: "Root package.",
     });
   }
 
   writing() {
     if (!this.options.root) {
-      this.fs.delete('.idea');
+      this.fs.delete(".idea");
     }
   }
 }

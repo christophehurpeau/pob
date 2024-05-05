@@ -1,9 +1,9 @@
-import fs from 'node:fs';
-import path from 'node:path';
-import findup from 'findup-sync';
+import fs from "node:fs";
+import path from "node:path";
+import findup from "findup-sync";
 
-const lintStagedConfigPath = findup('lint-staged.config.js');
-const lintStagedConfigCjsPath = findup('lint-staged.config.cjs');
+const lintStagedConfigPath = findup("lint-staged.config.js");
+const lintStagedConfigCjsPath = findup("lint-staged.config.cjs");
 
 const rootMonorepo =
   lintStagedConfigPath || lintStagedConfigCjsPath
@@ -12,11 +12,11 @@ const rootMonorepo =
 
 const rootMonorepoPkg =
   rootMonorepo &&
-  JSON.parse(fs.readFileSync(path.resolve(rootMonorepo, 'package.json')));
+  JSON.parse(fs.readFileSync(path.resolve(rootMonorepo, "package.json")));
 
 const getInMonorepoThings = () => {
   const rootYoConfig = JSON.parse(
-    fs.readFileSync(path.resolve(rootMonorepo, '.yo-rc.json')),
+    fs.readFileSync(path.resolve(rootMonorepo, ".yo-rc.json"))
   );
   const cwd = process.cwd();
 
@@ -37,7 +37,7 @@ const getInMonorepoThings = () => {
     relative: path
       .relative(rootMonorepo, cwd)
       // transform windows to linux-like paths
-      .replace(/\\+/g, '/'),
+      .replace(/\\+/g, "/"),
     rootYoConfig,
     pobConfig: rootYoConfig && rootYoConfig.pob,
     pobMonorepoConfig:

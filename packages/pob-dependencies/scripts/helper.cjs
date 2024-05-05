@@ -1,6 +1,6 @@
-'use strict';
+"use strict";
 
-exports.pkgPath = require.resolve('../package.json');
+exports.pkgPath = require.resolve("../package.json");
 
 exports.requireIfPossible = (packageJsonPath) => {
   try {

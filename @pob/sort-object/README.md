@@ -22,9 +22,9 @@ npm install --save @pob/sort-object
 ## Usage
 
 ```js
-import sortObject from '@pob/sort-object';
+import sortObject from "@pob/sort-object";
 
 sortObject({ b: 2, a: 1 });
 
-sortObject({ b: 2, a: 1 }, ['b', 'a']);
+sortObject({ b: 2, a: 1 }, ["b", "a"]);
 ```

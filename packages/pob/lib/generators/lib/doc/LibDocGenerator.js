@@ -1,48 +1,48 @@
-import Generator from 'yeoman-generator';
-import inMonorepo from '../../../utils/inMonorepo.js';
-import * as packageUtils from '../../../utils/package.js';
-import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
+import Generator from "yeoman-generator";
+import inMonorepo from "../../../utils/inMonorepo.js";
+import * as packageUtils from "../../../utils/package.js";
+import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
 export default class LibDocGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option('enabled', {
+    this.option("enabled", {
       type: Boolean,
       required: false,
       default: true,
-      desc: 'Enabled.',
+      desc: "Enabled.",
     });
 
-    this.option('testing', {
+    this.option("testing", {
       type: Boolean,
       required: false,
       default: false,
-      desc: 'Coverage.',
+      desc: "Coverage.",
     });
 
-    this.option('packageManager', {
+    this.option("packageManager", {
       type: String,
-      default: 'yarn',
-      desc: 'yarn or npm',
+      default: "yarn",
+      desc: "yarn or npm",
     });
 
-    this.option('packageNames', {
+    this.option("packageNames", {
       type: String,
       required: false,
-      default: '{}',
+      default: "{}",
     });
   }
 
   writing() {
-    if (this.fs.exists(this.destinationPath('jsdoc.conf.json'))) {
-      this.fs.delete(this.destinationPath('jsdoc.conf.json'));
+    if (this.fs.exists(this.destinationPath("jsdoc.conf.json"))) {
+      this.fs.delete(this.destinationPath("jsdoc.conf.json"));
     }
-    if (this.fs.exists(this.destinationPath('jsdoc.conf.js'))) {
-      this.fs.delete(this.destinationPath('jsdoc.conf.js'));
+    if (this.fs.exists(this.destinationPath("jsdoc.conf.js"))) {
+      this.fs.delete(this.destinationPath("jsdoc.conf.js"));
     }
 
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
     if (this.options.enabled) {
       const jsx =
@@ -52,19 +52,19 @@ export default class LibDocGenerator extends Generator {
 
       if (inMonorepo && inMonorepo.root) {
         const existingConfig = this.fs.readJSON(
-          this.destinationPath('tsconfig.doc.json'),
-          { typedocOptions: {} },
+          this.destinationPath("tsconfig.doc.json"),
+          { typedocOptions: {} }
         );
         // "external-modulemap": ".*packages/([^/]+)/.*",
         const packagePaths = JSON.parse(this.options.packagePaths);
 
         const filteredPackages = packagePaths
-          .filter((pkgPath) => !pkgPath.endsWith('-example'))
+          .filter((pkgPath) => !pkgPath.endsWith("-example"))
           .map((pkgPath) => {
             return {
               path: pkgPath,
               packageJSON: this.fs.readJSON(
-                this.destinationPath(`${pkgPath}/package.json`),
+                this.destinationPath(`${pkgPath}/package.json`)
               ),
             };
           });
@@ -79,14 +79,14 @@ export default class LibDocGenerator extends Generator {
             // unshift:https://typedoc.org/guides/project-references/
             entryPoints.unshift(
               // `${path}/src/`,
-              ...entries.map((entry) => `${path}/src/${entry}.ts`),
+              ...entries.map((entry) => `${path}/src/${entry}.ts`)
             );
           }
         }
         copyAndFormatTpl(
           this.fs,
-          this.templatePath('tsconfig.doc.json.lerna.ejs'),
-          this.destinationPath('tsconfig.doc.json'),
+          this.templatePath("tsconfig.doc.json.lerna.ejs"),
+          this.destinationPath("tsconfig.doc.json"),
           {
             jsx,
             workspaces: pkg.workspaces,
@@ -94,41 +94,41 @@ export default class LibDocGenerator extends Generator {
             packagePaths: filteredPackages.map((p) => p.path),
             repositoryUrl: pkg.homepage, // or pkg.repository.replace(/\.git$/, '')
             packageManager: this.options.packageManager,
-            readme: existingConfig.typedocOptions.readme || 'README.md',
-          },
+            readme: existingConfig.typedocOptions.readme || "README.md",
+          }
         );
       } else {
         const entryPoints = ((pkg.pob && pkg.pob.entries) || []).map(
-          (entryName) => `src/${entryName}.ts`,
+          (entryName) => `src/${entryName}.ts`
         );
         copyAndFormatTpl(
           this.fs,
-          this.templatePath('tsconfig.doc.json.ejs'),
-          this.destinationPath('tsconfig.doc.json'),
-          { jsx, readme: 'README.md', entryPoints },
+          this.templatePath("tsconfig.doc.json.ejs"),
+          this.destinationPath("tsconfig.doc.json"),
+          { jsx, readme: "README.md", entryPoints }
         );
       }
     } else {
       // this.fs.delete(this.destinationPath('jsdoc.conf.js'));
-      if (this.fs.exists(this.destinationPath('docs'))) {
-        this.fs.delete(this.destinationPath('docs'));
+      if (this.fs.exists(this.destinationPath("docs"))) {
+        this.fs.delete(this.destinationPath("docs"));
       }
 
-      if (this.fs.exists(this.destinationPath('tsconfig.doc.json'))) {
-        this.fs.delete(this.destinationPath('tsconfig.doc.json'));
+      if (this.fs.exists(this.destinationPath("tsconfig.doc.json"))) {
+        this.fs.delete(this.destinationPath("tsconfig.doc.json"));
       }
     }
 
     packageUtils.removeDevDependencies(pkg, [
-      'jsdoc',
-      'minami',
-      'jaguarjs-jsdoc',
-      'typedoc-plugin-lerna-packages',
-      '@chrp/typedoc-plugin-lerna-packages',
+      "jsdoc",
+      "minami",
+      "jaguarjs-jsdoc",
+      "typedoc-plugin-lerna-packages",
+      "@chrp/typedoc-plugin-lerna-packages",
     ]);
 
     packageUtils.addOrRemoveDevDependencies(pkg, this.options.enabled, [
-      'typedoc',
+      "typedoc",
     ]);
 
     // packageUtils.addOrRemoveDevDependencies(
@@ -147,17 +147,17 @@ export default class LibDocGenerator extends Generator {
     // );
 
     if (pkg.scripts) {
-      delete pkg.scripts['generate:docs'];
+      delete pkg.scripts["generate:docs"];
     }
 
     if (this.options.enabled) {
       packageUtils.addScripts(pkg, {
-        'generate:api': 'typedoc --tsconfig tsconfig.doc.json',
+        "generate:api": "typedoc --tsconfig tsconfig.doc.json",
       });
     } else {
-      delete pkg.scripts['generate:api'];
+      delete pkg.scripts["generate:api"];
     }
 
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    this.fs.writeJSON(this.destinationPath("package.json"), pkg);
   }
 }

@@ -1,48 +1,48 @@
-import camelCase from 'lodash.camelcase';
-import Generator from 'yeoman-generator';
-import inMonorepo from '../../../utils/inMonorepo.js';
-import * as packageUtils from '../../../utils/package.js';
-import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
+import camelCase from "lodash.camelcase";
+import Generator from "yeoman-generator";
+import inMonorepo from "../../../utils/inMonorepo.js";
+import * as packageUtils from "../../../utils/package.js";
+import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
 export default class LibReadmeGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option('privatePackage', {
+    this.option("privatePackage", {
       type: Boolean,
       required: true,
-      desc: 'If the project is private',
+      desc: "If the project is private",
     });
 
-    this.option('documentation', {
+    this.option("documentation", {
       type: Boolean,
       required: true,
-      desc: 'Include documentation',
+      desc: "Include documentation",
     });
 
-    this.option('testing', {
+    this.option("testing", {
       type: Boolean,
       required: true,
-      desc: 'Include testing badge',
+      desc: "Include testing badge",
     });
 
-    this.option('codecov', {
+    this.option("codecov", {
       type: Boolean,
       required: true,
-      desc: 'Include codecov badge',
+      desc: "Include codecov badge",
     });
 
-    this.option('content', {
+    this.option("content", {
       type: String,
       required: false,
-      desc: 'Readme content',
+      desc: "Readme content",
     });
   }
 
   writing() {
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
-    const readmePath = this.destinationPath('README.md');
+    const readmePath = this.destinationPath("README.md");
     let content = this.options.content;
 
     if (this.fs.exists(readmePath)) {
@@ -68,13 +68,13 @@ export default class LibReadmeGenerator extends Generator {
     const match =
       repository &&
       repository.match(
-        /^(?:git@|https?:\/\/)(?:([^./:]+)(?:\.com)?[/:])?([^/:]+)\/([^./:]+)(?:.git)?/,
+        /^(?:git@|https?:\/\/)(?:([^./:]+)(?:\.com)?[/:])?([^/:]+)\/([^./:]+)(?:.git)?/
       );
     const [, gitHost, gitAccount, gitName] = match || [];
     try {
       copyAndFormatTpl(
         this.fs,
-        this.templatePath('README.md.ejs'),
+        this.templatePath("README.md.ejs"),
         readmePath,
         {
           privatePackage: pkg.private,
@@ -93,12 +93,12 @@ export default class LibReadmeGenerator extends Generator {
           codecov: this.options.codecov,
           documentation: this.options.documentation,
           documentationUrl:
-            this.options.documentation && gitHost === 'github'
+            this.options.documentation && gitHost === "github"
               ? `https://${gitAccount}.github.io/${gitName}/`
               : undefined,
           testing: this.options.testing,
           content,
-        },
+        }
       );
     } catch (error) {
       console.log(error.stack || error.message || error);

@@ -1,6 +1,6 @@
-const emptyFile = 'export default {}';
+const emptyFile = "export default {}";
 const emptyFileName =
-  '\0rollup_plugin_ignoreBrowserOnlyImports_empty_module_placeholder';
+  "\0rollup_plugin_ignoreBrowserOnlyImports_empty_module_placeholder";
 
 export default function ignoreBrowserOnlyImports({ extensions }) {
   return {

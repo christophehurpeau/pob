@@ -1,11 +1,11 @@
-import fs from 'node:fs';
-import { transform } from '@babel/core';
-import preset from './index.js';
+import fs from "node:fs";
+import { transform } from "@babel/core";
+import preset from "./index.js";
 
-describe('fixtures', () => {
+describe("fixtures", () => {
   const tests = fs
-    .readdirSync(new URL('./__tests_fixtures__', import.meta.url))
-    .filter((name) => name.endsWith('.js'));
+    .readdirSync(new URL("./__tests_fixtures__", import.meta.url))
+    .filter((name) => name.endsWith(".js"));
 
   tests.forEach((filename) => {
     test(filename, async () => {
@@ -17,7 +17,7 @@ describe('fixtures', () => {
 
       try {
         const output = await transform(testContent.actual, {
-          filename: 'file.ts',
+          filename: "file.ts",
           babelrc: false,
           configFile: false,
           presets: [[preset, testContent.presetOptions || {}]],
@@ -32,7 +32,7 @@ describe('fixtures', () => {
         }
       } catch (error) {
         if (!expected && error instanceof SyntaxError && expectedSyntaxError) {
-          expect(error.message.split('\n', 2)[0]).toBe(expectedSyntaxError);
+          expect(error.message.split("\n", 2)[0]).toBe(expectedSyntaxError);
           return;
         }
         if (error._babel && error instanceof SyntaxError) {

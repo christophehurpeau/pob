@@ -14,7 +14,7 @@ npm install --save example-typescript-lib-esbuild
 ## Usage
 
 ```js
-import exampleTsLib from 'example-typescript-lib-esbuild';
+import exampleTsLib from "example-typescript-lib-esbuild";
 
 console.log(exampleTsLib);
 ```

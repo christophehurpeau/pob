@@ -1,20 +1,20 @@
-import fs from 'node:fs';
-import path from 'node:path';
+import fs from "node:fs";
+import path from "node:path";
 
 export const nodeFormatToExt = (format, pkgType) => {
-  if (format === 'cjs' && pkgType === 'module') return '.cjs';
-  if (format === 'cjs') return '.cjs.js';
-  if (format === 'es') return '.mjs';
+  if (format === "cjs" && pkgType === "module") return ".cjs";
+  if (format === "cjs") return ".cjs.js";
+  if (format === "es") return ".mjs";
   return `.${format}.js`;
 };
 
 export const resolveEntry = (cwd, entryName) => {
   let entryPath;
-  ['ts', 'tsx', 'js', 'jsx'].some((extension) => {
+  ["ts", "tsx", "js", "jsx"].some((extension) => {
     const potentialEntryPath = path.resolve(
       cwd,
-      'src',
-      `${entryName}.${extension}`,
+      "src",
+      `${entryName}.${extension}`
     );
 
     if (fs.existsSync(potentialEntryPath)) {

@@ -1,5 +1,5 @@
 export default function sortObject(obj, keys = []) {
-  if (typeof obj !== 'object') throw new Error('Invalid object passed');
+  if (typeof obj !== "object") throw new Error("Invalid object passed");
   const objCopy = { ...obj };
   const objKeys = Object.keys(obj);
   objKeys.forEach((key) => delete obj[key]);

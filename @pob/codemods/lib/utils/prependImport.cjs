@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 exports.prependImport = (j, source, importDeclaration) => {
   const existingImports = source.find(j.ImportDeclaration);
@@ -14,7 +14,7 @@ exports.prependImport = (j, source, importDeclaration) => {
     return;
   }
 
-  const firstNode = source.find(j.Program).get('body', 0).node;
+  const firstNode = source.find(j.Program).get("body", 0).node;
   const { comments } = firstNode;
   if (comments?.length) {
     const comment = comments[0];
@@ -23,13 +23,13 @@ exports.prependImport = (j, source, importDeclaration) => {
     // line-level and JSDoc-style comments because these probably belong
     // to the first node, rather than the file.
     if (
-      (comment.type === 'Block' || comment.type === 'CommentBlock') &&
-      !comment.value.startsWith('*')
+      (comment.type === "Block" || comment.type === "CommentBlock") &&
+      !comment.value.startsWith("*")
     ) {
       importDeclaration.comments = comments;
       firstNode.comments = null;
     }
   }
 
-  source.get('program', 'body').unshift(importDeclaration);
+  source.get("program", "body").unshift(importDeclaration);
 };

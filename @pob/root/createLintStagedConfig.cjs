@@ -1,52 +1,52 @@
-'use strict';
+"use strict";
 
-const fs = require('node:fs');
-const path = require('node:path');
-const semver = require('semver');
-const whichPmRuns = require('which-pm-runs');
+const fs = require("node:fs");
+const path = require("node:path");
+const semver = require("semver");
+const whichPmRuns = require("which-pm-runs");
 
 const pm =
   whichPmRuns() ||
-  (fs.existsSync('package-lock.json') ? { name: 'npm' } : undefined);
+  (fs.existsSync("package-lock.json") ? { name: "npm" } : undefined);
 
-const yarnMajorVersion = pm.name === 'yarn' && semver.major(pm.version);
+const yarnMajorVersion = pm.name === "yarn" && semver.major(pm.version);
 const { lockfile, installAndDedupe } = (() => {
-  if (pm.name === 'yarn') {
+  if (pm.name === "yarn") {
     return {
-      lockfile: 'yarn.lock',
-      installAndDedupe: ['yarn', 'yarn dedupe'],
+      lockfile: "yarn.lock",
+      installAndDedupe: ["yarn", "yarn dedupe"],
     };
   }
-  if (pm.name === 'npm') {
+  if (pm.name === "npm") {
     return {
-      lockfile: 'package-lock.json',
-      installAndDedupe: ['npm install', 'npm dedupe'],
+      lockfile: "package-lock.json",
+      installAndDedupe: ["npm install", "npm dedupe"],
     };
   }
-  if (pm.name === 'bun') {
+  if (pm.name === "bun") {
     return {
-      lockfile: 'bun.lockb',
-      installAndDedupe: ['bun i'],
+      lockfile: "bun.lockb",
+      installAndDedupe: ["bun i"],
     };
   }
 
   throw new Error(
-    `Package manager not supported: ${pm.name}. Please run with yarn, npm or bun !`,
+    `Package manager not supported: ${pm.name}. Please run with yarn, npm or bun !`
   );
 })();
 
 // eslint-disable-next-line import/no-dynamic-require
-const pkg = require(path.resolve('package.json'));
+const pkg = require(path.resolve("package.json"));
 const workspaces = pkg.workspaces || false;
 
 const getSrcDirectories = () => {
   if (workspaces) {
     return `${
-      workspaces.length === 1 ? workspaces[0] : `{${workspaces.join(',')}}`
+      workspaces.length === 1 ? workspaces[0] : `{${workspaces.join(",")}}`
     }/{src,lib}`;
   }
 
-  return '{src,lib}';
+  return "{src,lib}";
 };
 
 // const getDistDirectories = () => {
@@ -67,11 +67,11 @@ module.exports = function createLintStagedConfig() {
       workspaces
         ? `,${workspaces
             .map((workspacePath) => `${workspacePath}/package.json`)
-            .join(',')}`
-        : ''
+            .join(",")}`
+        : ""
     }}`]: (filenames) => {
       const packagejsonFilenames = filenames.filter((filename) =>
-        filename.endsWith('.json'),
+        filename.endsWith(".json")
       );
 
       return [
@@ -81,36 +81,36 @@ module.exports = function createLintStagedConfig() {
           ? undefined
           : `pretty-pkg "${packagejsonFilenames.join('" "')}"`,
         `git add ${lockfile}${
-          pm.name === 'yarn' && yarnMajorVersion >= 2
-            ? ' .yarn .yarnrc.yml'
-            : ''
+          pm.name === "yarn" && yarnMajorVersion >= 2
+            ? " .yarn .yarnrc.yml"
+            : ""
         }`,
       ].filter(Boolean);
     },
-    '!(package|package-lock|.eslintrc).json': ['prettier --write'],
-    '.eslintrc.json': ['pretty-eslint-config'],
+    "!(package|package-lock|.eslintrc).json": ["prettier --write"],
+    ".eslintrc.json": ["pretty-eslint-config"],
     [`{scripts,config,${srcDirectories}}/**/*.{yml,yaml,md}`]: [
-      'prettier --write',
+      "prettier --write",
     ],
-    './*.{yml,yaml,md}': ['prettier --write'],
+    "./*.{yml,yaml,md}": ["prettier --write"],
     [`${srcDirectories}/**/*.{js,ts,tsx}`]: [
-      'prettier --write',
-      'eslint --fix --quiet --report-unused-disable-directives --resolve-plugins-relative-to .',
+      "prettier --write",
+      "eslint --fix --quiet --report-unused-disable-directives --resolve-plugins-relative-to .",
     ],
-    '{scripts,config,.storyboook}/**/*.{js,mjs,cjs}': [
-      'prettier --write',
-      'eslint --fix --quiet --report-unused-disable-directives --resolve-plugins-relative-to .',
+    "{scripts,config,.storyboook}/**/*.{js,mjs,cjs}": [
+      "prettier --write",
+      "eslint --fix --quiet --report-unused-disable-directives --resolve-plugins-relative-to .",
     ],
     [`{.storybook,${srcDirectories}}/**/*.css`]: [
-      'prettier --parser css --write',
+      "prettier --parser css --write",
     ],
     [`${srcDirectories}/**/*.{ts,tsx}`]: () =>
-      pkg.devDependencies && pkg.devDependencies['pob-babel']
+      pkg.devDependencies && pkg.devDependencies["pob-babel"]
         ? [
-            'rollup --config rollup.config.mjs',
-            'tsc -b',
+            "rollup --config rollup.config.mjs",
+            "tsc -b",
             // `git --glob-pathspecs add ${getDistDirectories()}/**/*`,
           ]
-        : ['tsc'],
+        : ["tsc"],
   };
 };

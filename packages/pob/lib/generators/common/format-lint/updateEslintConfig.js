@@ -1,4 +1,4 @@
-import sortConfig from '@pob/sort-eslint-config';
+import sortConfig from "@pob/sort-eslint-config";
 
 function updateOverrides(config, testsOverride) {
   const existingTestsOverrideIndex = !config.overrides
@@ -8,7 +8,7 @@ function updateOverrides(config, testsOverride) {
           ? (override) => override.env && override.env.jest
           : (override) =>
               override?.env?.jest ||
-              override.extends?.includes(testsOverride.extends[0]),
+              override.extends?.includes(testsOverride.extends[0])
       );
   if (!testsOverride) {
     if (existingTestsOverrideIndex !== -1) {
@@ -45,16 +45,16 @@ function updateParserAndPlugins(
   config,
   useTypescript,
   globalEslint,
-  relativePath,
+  relativePath
 ) {
   if (useTypescript) {
     // webstorm uses this to detect eslint .ts compat
-    config.parser = '@typescript-eslint/parser';
-    config.plugins = ['@typescript-eslint'];
+    config.parser = "@typescript-eslint/parser";
+    config.plugins = ["@typescript-eslint"];
 
     if (!globalEslint) {
       config.parserOptions = {
-        project: './tsconfig.json',
+        project: "./tsconfig.json",
         createDefaultProgram: true, // fix for lint-staged
       };
     } else {
@@ -65,8 +65,8 @@ function updateParserAndPlugins(
     }
   } else {
     if (
-      config.parser === 'typescript-eslint-parser' ||
-      config.parser === '@typescript-eslint/parser'
+      config.parser === "typescript-eslint-parser" ||
+      config.parser === "@typescript-eslint/parser"
     ) {
       delete config.parser;
     }
@@ -75,8 +75,8 @@ function updateParserAndPlugins(
     }
     if (
       config.plugins &&
-      (config.plugins[0] === 'typescript' ||
-        config.plugins[0] === '@typescript-eslint')
+      (config.plugins[0] === "typescript" ||
+        config.plugins[0] === "@typescript-eslint")
     ) {
       config.plugins.splice(0, 1);
     }
@@ -126,7 +126,7 @@ export default function updateEslintConfig(
     settings,
     ignorePatterns,
     relativePath,
-  },
+  }
 ) {
   config.root = true;
   config.extends = [
@@ -134,7 +134,7 @@ export default function updateEslintConfig(
     ...(config?.extends && Array.isArray(config.extends)
       ? config.extends.filter(
           (extendsValue) =>
-            extendsValue === '@pob/eslint-config-typescript/allow-unsafe',
+            extendsValue === "@pob/eslint-config-typescript/allow-unsafe"
         )
       : []),
   ];
@@ -143,7 +143,7 @@ export default function updateEslintConfig(
     config,
     useTypescript,
     globalEslint,
-    relativePath,
+    relativePath
   );
   config = updateOverrides(config, testsOverride);
   if (settings) {

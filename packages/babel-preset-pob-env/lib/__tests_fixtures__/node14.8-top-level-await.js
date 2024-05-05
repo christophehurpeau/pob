@@ -1,6 +1,6 @@
 export const presetOptions = {
-  target: 'node',
-  version: '14',
+  target: "node",
+  version: "14",
   module: false,
 };
 

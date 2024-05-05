@@ -22,9 +22,9 @@ npm install --save @pob/check-lib-dependency-in-root-dev-dependencies
 ## Usage
 
 ```js
-import checkDep from '@pob/check-lib-dependency-in-root-dev-dependencies';
+import checkDep from "@pob/check-lib-dependency-in-root-dev-dependencies";
 
-checkDep(require('package-name/package.json'));
+checkDep(require("package-name/package.json"));
 ```
 
 ## Use Cases
@@ -59,18 +59,18 @@ checkDep(require('package-name/package.json'));
 > index.js
 
 ```js
-'use strict';
+"use strict";
 
-const checkDep = require('@pob/check-lib-dependency-in-root-dev-dependencies');
+const checkDep = require("@pob/check-lib-dependency-in-root-dev-dependencies");
 
-checkDep(require('rollup/package.json'));
+checkDep(require("rollup/package.json"));
 
 module.exports = {
-  plugins: ['prettier'],
-  extends: ['eslint-config-prettier'].map(require.resolve),
+  plugins: ["prettier"],
+  extends: ["eslint-config-prettier"].map(require.resolve),
 
   rules: {
-    'prettier/prettier': 'error',
+    "prettier/prettier": "error",
   },
 };
 ```
@@ -94,17 +94,17 @@ Use case for a lib wrapping rollup
 ```
 
 ```js
-'use strict';
+"use strict";
 
-const path = require('path');
-const { spawnSync } = require('child_process');
-const checkDep = require('@pob/check-lib-dependency-in-root-dev-dependencies');
+const path = require("path");
+const { spawnSync } = require("child_process");
+const checkDep = require("@pob/check-lib-dependency-in-root-dev-dependencies");
 
-checkDep(require('rollup/package.json'));
+checkDep(require("rollup/package.json"));
 
-const configPath = path.resolve('rollup.config.js');
+const configPath = path.resolve("rollup.config.js");
 
-spawnSync('yarn', ['rollup', '--config', configPath], {
-  stdio: 'inherit',
+spawnSync("yarn", ["rollup", "--config", configPath], {
+  stdio: "inherit",
 });
 ```

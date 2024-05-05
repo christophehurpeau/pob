@@ -1,4 +1,4 @@
-import prettier from 'prettier';
+import prettier from "prettier";
 
 export function writeAndFormat(fs, destinationPath, content, { parser } = {}) {
   fs.write(
@@ -6,23 +6,22 @@ export function writeAndFormat(fs, destinationPath, content, { parser } = {}) {
     prettier.format(content, {
       parser,
       filepath: destinationPath,
-      trailingComma: 'all',
-      singleQuote: !destinationPath.endsWith('.yml'),
-      arrowParens: 'always',
-      printWidth: destinationPath === '.yarnrc.yml' ? 9999 : undefined,
-    }),
+      trailingComma: "all",
+      arrowParens: "always",
+      printWidth: destinationPath === ".yarnrc.yml" ? 9999 : undefined,
+    })
   );
 }
 
 function getParserFromDestinationPath(destinationPath) {
-  if (destinationPath.endsWith('/lerna.json')) {
-    return 'json-stringify';
+  if (destinationPath.endsWith("/lerna.json")) {
+    return "json-stringify";
   }
-  if (destinationPath.endsWith('json')) {
+  if (destinationPath.endsWith("json")) {
     return undefined;
   }
 
-  return 'json';
+  return "json";
 }
 
 export function writeAndFormatJson(fs, destinationPath, value) {

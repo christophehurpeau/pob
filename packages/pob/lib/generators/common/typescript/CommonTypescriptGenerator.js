@@ -1,120 +1,120 @@
-import { existsSync } from 'node:fs';
-import Generator from 'yeoman-generator';
-import inMonorepo from '../../../utils/inMonorepo.js';
-import * as packageUtils from '../../../utils/package.js';
-import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
+import { existsSync } from "node:fs";
+import Generator from "yeoman-generator";
+import inMonorepo from "../../../utils/inMonorepo.js";
+import * as packageUtils from "../../../utils/package.js";
+import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
 export default class CommonTypescriptGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option('enable', {
+    this.option("enable", {
       type: Boolean,
       default: true,
-      desc: 'enable typescript',
+      desc: "enable typescript",
     });
 
-    this.option('isApp', {
+    this.option("isApp", {
       type: Boolean,
       required: true,
-      desc: 'is app',
+      desc: "is app",
     });
 
-    this.option('isAppLibrary', {
+    this.option("isAppLibrary", {
       type: Boolean,
       required: false,
       default: false,
     });
 
-    this.option('rootDir', {
+    this.option("rootDir", {
       type: String,
-      default: 'src',
-      desc: 'customize rootDir',
+      default: "src",
+      desc: "customize rootDir",
     });
 
-    this.option('srcDirectory', {
+    this.option("srcDirectory", {
       type: String,
-      default: 'src',
-      desc: 'customize srcDirectory, if different than rootDir',
+      default: "src",
+      desc: "customize srcDirectory, if different than rootDir",
     });
 
-    this.option('jsx', {
+    this.option("jsx", {
       type: Boolean,
       default: true,
-      desc: 'enable jsx with typescript',
+      desc: "enable jsx with typescript",
     });
 
-    this.option('jsxPreserve', {
+    this.option("jsxPreserve", {
       type: Boolean,
       default: false,
-      desc: 'force jsx preserve in tsconfig for legacy apps (nextjs, CRA)',
+      desc: "force jsx preserve in tsconfig for legacy apps (nextjs, CRA)",
     });
 
-    this.option('forceExcludeNodeModules', {
+    this.option("forceExcludeNodeModules", {
       type: Boolean,
       default: false,
-      desc: 'force exclude node_modules for legacy apps (nextjs, CRA)',
+      desc: "force exclude node_modules for legacy apps (nextjs, CRA)",
     });
 
-    this.option('forceAllowJs', {
+    this.option("forceAllowJs", {
       type: Boolean,
       default: false,
-      desc: 'force allow js for legacy apps (nextjs, CRA)',
+      desc: "force allow js for legacy apps (nextjs, CRA)",
     });
 
-    this.option('dom', {
+    this.option("dom", {
       type: Boolean,
       default: true,
-      desc: 'enable dom with typescript',
+      desc: "enable dom with typescript",
     });
 
-    this.option('baseUrl', {
+    this.option("baseUrl", {
       type: String,
-      default: '',
-      desc: 'baseUrl option',
+      default: "",
+      desc: "baseUrl option",
     });
 
-    this.option('resolveJsonModule', {
+    this.option("resolveJsonModule", {
       type: Boolean,
       default: false,
-      desc: 'resolveJsonModule option',
+      desc: "resolveJsonModule option",
     });
 
-    this.option('builddefs', {
+    this.option("builddefs", {
       type: Boolean,
       default: true,
-      desc: 'build .d.ts option',
+      desc: "build .d.ts option",
     });
-    this.option('plugins', {
+    this.option("plugins", {
       type: String,
-      default: '',
-      desc: 'typescript plugins',
+      default: "",
+      desc: "typescript plugins",
     });
-    this.option('nextConfig', {
+    this.option("nextConfig", {
       type: Boolean,
       default: false,
     });
-    this.option('additionalIncludes', {
+    this.option("additionalIncludes", {
       type: String,
-      default: '',
-      desc: 'typescript additional includes',
+      default: "",
+      desc: "typescript additional includes",
     });
 
-    this.option('onlyLatestLTS', {
+    this.option("onlyLatestLTS", {
       type: Boolean,
       required: false,
       default: false,
-      desc: 'only latest lts',
+      desc: "only latest lts",
     });
   }
 
   writing() {
-    if (this.fs.exists('flow-typed')) this.fs.delete('flow-typed');
-    if (this.fs.exists(this.destinationPath('.flowconfig'))) {
-      this.fs.delete(this.destinationPath('.flowconfig'));
+    if (this.fs.exists("flow-typed")) this.fs.delete("flow-typed");
+    if (this.fs.exists(this.destinationPath(".flowconfig"))) {
+      this.fs.delete(this.destinationPath(".flowconfig"));
     }
 
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
     const presets = (() => {
       const babelEnvs = pkg.pob?.babelEnvs || [];
@@ -124,39 +124,39 @@ export default class CommonTypescriptGenerator extends Generator {
 
       if (withBabel) {
         return jsx || this.options.dom
-          ? ['@pob/root/tsconfigs/targets/rollup-babel-with-dom.json']
-          : ['@pob/root/tsconfigs/targets/rollup-babel.json'];
+          ? ["@pob/root/tsconfigs/targets/rollup-babel-with-dom.json"]
+          : ["@pob/root/tsconfigs/targets/rollup-babel.json"];
       }
       if (withTypescript) {
-        const nodeVersion = this.options.onlyLatestLTS ? '20' : '18';
+        const nodeVersion = this.options.onlyLatestLTS ? "20" : "18";
         const envs = pkg.pob?.envs || [
           {
-            target: 'node',
-            version: '18',
+            target: "node",
+            version: "18",
           },
         ];
         if (pkg.pob.rollup === false || pkg.pob.bundler === false) {
           return [`@pob/root/tsconfigs/targets/node-${nodeVersion}.json`];
         }
-        if (envs && envs.every((env) => env.target === 'node')) {
+        if (envs && envs.every((env) => env.target === "node")) {
           return [
             `@pob/root/tsconfigs/targets/${
-              !pkg.pob.bundler || pkg.pob.bundler.startsWith('rollup')
-                ? 'rollup'
+              !pkg.pob.bundler || pkg.pob.bundler.startsWith("rollup")
+                ? "rollup"
                 : pkg.pob.bundler
             }-node-${nodeVersion}.json`,
           ];
         }
-        return ['@pob/root/tsconfigs/targets/rollup-es2015.json'];
+        return ["@pob/root/tsconfigs/targets/rollup-es2015.json"];
       }
 
       if (this.options.dom) {
-        return ['@pob/root/tsconfigs/targets/webpack.json'];
+        return ["@pob/root/tsconfigs/targets/webpack.json"];
       }
       return [];
     })();
 
-    packageUtils.removeDevDependencies(pkg, ['flow-bin']);
+    packageUtils.removeDevDependencies(pkg, ["flow-bin"]);
 
     if (pkg.scripts) {
       delete pkg.scripts.flow;
@@ -165,14 +165,14 @@ export default class CommonTypescriptGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.options.enable ||
-        this.fs.exists(this.destinationPath('lib/index.d.ts')),
-      ['typescript'],
+        this.fs.exists(this.destinationPath("lib/index.d.ts")),
+      ["typescript"]
     );
 
-    const tsconfigPath = this.destinationPath('tsconfig.json');
-    const tsconfigCheckPath = this.destinationPath('tsconfig.check.json');
-    const tsconfigEslintPath = this.destinationPath('tsconfig.eslint.json');
-    const tsconfigBuildPath = this.destinationPath('tsconfig.build.json');
+    const tsconfigPath = this.destinationPath("tsconfig.json");
+    const tsconfigCheckPath = this.destinationPath("tsconfig.check.json");
+    const tsconfigEslintPath = this.destinationPath("tsconfig.eslint.json");
+    const tsconfigBuildPath = this.destinationPath("tsconfig.build.json");
 
     if (this.options.enable) {
       const { jsx, dom } = this.options;
@@ -192,8 +192,8 @@ export default class CommonTypescriptGenerator extends Generator {
         if (composite) {
           packageUtils.addOrRemoveDevDependencies(
             pkg,
-            inMonorepo.rootPackageManager === 'yarn',
-            ['typescript'],
+            inMonorepo.rootPackageManager === "yarn",
+            ["typescript"]
           );
 
           const packageLocations = new Map(
@@ -202,21 +202,21 @@ export default class CommonTypescriptGenerator extends Generator {
                 (packageName) =>
                   (pkg.dependencies && pkg.dependencies[packageName]) ||
                   (pkg.devDependencies && pkg.devDependencies[packageName]) ||
-                  (pkg.peerDependencies && pkg.peerDependencies[packageName]),
+                  (pkg.peerDependencies && pkg.peerDependencies[packageName])
               )
               .map((packageName) => [
                 packageName,
                 `../../${
-                  packageName[0] === '@'
+                  packageName[0] === "@"
                     ? // eslint-disable-next-line unicorn/no-nested-ternary
-                      yoConfig.pob.project.type === 'app'
+                      yoConfig.pob.project.type === "app"
                       ? `packages/${packageName.slice(
-                          packageName.indexOf('/') + 1,
+                          packageName.indexOf("/") + 1
                         )}`
                       : packageName
                     : `packages/${packageName}`
                 }`,
-              ]),
+              ])
           );
 
           monorepoPackageSrcPaths = [...packageLocations.entries()].map(
@@ -224,14 +224,14 @@ export default class CommonTypescriptGenerator extends Generator {
               packageName,
               `${packageLocation}/${
                 existsSync(`${packageLocations.get(packageName)}/tsconfig.json`)
-                  ? 'src'
-                  : 'lib'
+                  ? "src"
+                  : "lib"
               }`,
-            ],
+            ]
           );
           monorepoPackageReferences = yoConfig.pob.monorepo.packageNames
             .filter((packageName) =>
-              existsSync(`${packageLocations.get(packageName)}/tsconfig.json`),
+              existsSync(`${packageLocations.get(packageName)}/tsconfig.json`)
             )
             .map((packageName) => packageLocations.get(packageName));
           // monorepoPackageBuildReferences = yoConfig.pob.monorepo.packageNames
@@ -258,7 +258,7 @@ export default class CommonTypescriptGenerator extends Generator {
       */
       copyAndFormatTpl(
         this.fs,
-        this.templatePath('tsconfig.json.ejs'),
+        this.templatePath("tsconfig.json.ejs"),
         tsconfigPath,
         {
           emitDefinitions: this.options.builddefs,
@@ -277,12 +277,12 @@ export default class CommonTypescriptGenerator extends Generator {
           resolveJsonModule: this.options.resolveJsonModule,
           forceExcludeNodeModules: this.options.forceExcludeNodeModules,
           forceAllowJs: this.options.forceAllowJs,
-          plugins: this.options.plugins.split(',').filter(Boolean),
+          plugins: this.options.plugins.split(",").filter(Boolean),
           additionalIncludes: this.options.additionalIncludes
-            .split(',')
+            .split(",")
             .filter(Boolean),
           presets,
-        },
+        }
       );
 
       // if (
@@ -312,6 +312,6 @@ export default class CommonTypescriptGenerator extends Generator {
       this.fs.delete(tsconfigEslintPath);
     }
 
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    this.fs.writeJSON(this.destinationPath("package.json"), pkg);
   }
 }

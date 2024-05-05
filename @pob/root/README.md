@@ -22,7 +22,7 @@ npm install --save @pob/root
 ## Usage
 
 ```js
-import pobRoot from '@pob/root';
+import pobRoot from "@pob/root";
 
 console.log(pobRoot);
 ```

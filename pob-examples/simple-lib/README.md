@@ -14,7 +14,7 @@ npm install --save simple-lib
 ## Usage
 
 ```js
-import simpleLib from 'simple-lib';
+import simpleLib from "simple-lib";
 
 console.log(simpleLib);
 ```

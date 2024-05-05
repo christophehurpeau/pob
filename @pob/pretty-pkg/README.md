@@ -44,32 +44,32 @@ yarn pretty-pkg package.json
 #### overrideSync
 
 ```js
-const { overrideSync } = require('@pob/pretty-pkg');
+const { overrideSync } = require("@pob/pretty-pkg");
 
-overrideSync('package.json');
+overrideSync("package.json");
 ```
 
 #### writeSync
 
 ```js
-const fs = require('fs');
-const { writeSync } = require('@pob/pretty-pkg');
+const fs = require("fs");
+const { writeSync } = require("@pob/pretty-pkg");
 
-const pkg = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
-writeSync(pkg, 'package.json');
+const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
+writeSync(pkg, "package.json");
 ```
 
 #### default
 
 ```js
-const fs = require('fs');
-const prettyPkg = require('@pob/pretty-pkg');
+const fs = require("fs");
+const prettyPkg = require("@pob/pretty-pkg");
 
 // parsing yourself
-const pkg = JSON.parse(fs.readFileSync('package.json', 'utf-8'));
-fs.writeFileSync(prettyPkg(pkg), 'package.json');
+const pkg = JSON.parse(fs.readFileSync("package.json", "utf-8"));
+fs.writeFileSync(prettyPkg(pkg), "package.json");
 
 // let prettyPkg parse
-const pkgContent = fs.readFileSync('package.json', 'utf-8');
-fs.writeFileSync(prettyPkg(pkgContent), 'package.json');
+const pkgContent = fs.readFileSync("package.json", "utf-8");
+fs.writeFileSync(prettyPkg(pkgContent), "package.json");
 ```

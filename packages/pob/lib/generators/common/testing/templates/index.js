@@ -1,4 +1,4 @@
-test('ok', () => {
-  const ok = 'ok';
-  expect(ok).toBe('ok');
+test("ok", () => {
+  const ok = "ok";
+  expect(ok).toBe("ok");
 });

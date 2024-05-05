@@ -5,8 +5,8 @@ import type {
   Descriptor,
   Workspace,
   Project,
-} from '@yarnpkg/core';
-import { Manifest, miscUtils, structUtils } from '@yarnpkg/core';
+} from "@yarnpkg/core";
+import { Manifest, miscUtils, structUtils } from "@yarnpkg/core";
 
 export const getWorkspaceName = (workspace: Workspace): string => {
   return workspace.manifest.name
@@ -20,7 +20,7 @@ type WorkspacesDependenciesMap = Map<
 >;
 
 export const buildDependentsMaps = (
-  project: Project,
+  project: Project
 ): WorkspacesDependenciesMap => {
   const dependentsMap: WorkspacesDependenciesMap = new Map<
     Workspace,
@@ -42,7 +42,7 @@ export const buildDependentsMaps = (
 
         const dependents = miscUtils.getArrayWithDefault(
           dependentsMap,
-          workspace,
+          workspace
         );
         dependents.push([dependent, set, descriptor]);
       }
@@ -53,7 +53,7 @@ export const buildDependentsMaps = (
 };
 
 export const buildDependenciesMaps = (
-  project: Project,
+  project: Project
 ): WorkspacesDependenciesMap => {
   const dependenciesMap: WorkspacesDependenciesMap = new Map<
     Workspace,
@@ -75,7 +75,7 @@ export const buildDependenciesMaps = (
 
         const dependencies = miscUtils.getArrayWithDefault(
           dependenciesMap,
-          dependent,
+          dependent
         );
         dependencies.push([workspace, set, descriptor]);
       }
@@ -87,7 +87,7 @@ export const buildDependenciesMaps = (
 
 export const buildTopologicalOrderBatches = (
   project: Project,
-  dependenciesMap: WorkspacesDependenciesMap,
+  dependenciesMap: WorkspacesDependenciesMap
 ): Workspace[][] => {
   const batches: Workspace[][] = [];
 
@@ -114,7 +114,7 @@ export const buildTopologicalOrderBatches = (
     }
 
     if (batch.size === 0) {
-      throw new Error('Circular dependency detected');
+      throw new Error("Circular dependency detected");
     }
     batches.push([...batch]);
   }

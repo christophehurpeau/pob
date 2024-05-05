@@ -1,7 +1,7 @@
-import validatePackageName from 'validate-npm-package-name';
+import validatePackageName from "validate-npm-package-name";
 
 const defaults = {
-  message: 'Module Name',
+  message: "Module Name",
   validate() {
     return true;
   },
@@ -10,7 +10,7 @@ const defaults = {
 const ucFirst = (str) => str.charAt(0).toUpperCase() + str.slice(1);
 
 export const askName = (prompt, inquirer) => {
-  if (typeof prompt === 'string') {
+  if (typeof prompt === "string") {
     prompt = {
       name: prompt,
     };
@@ -32,7 +32,7 @@ export const askName = (prompt, inquirer) => {
 
         return (
           ucFirst(packageNameValidity.errors[0]) ||
-          'The provided value is not a valid npm package name'
+          "The provided value is not a valid npm package name"
         );
       },
     },

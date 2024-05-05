@@ -22,7 +22,7 @@ npm install --save pob-dependencies
 ## Usage
 
 ```js
-import pobDependencies from 'pob-dependencies';
+import pobDependencies from "pob-dependencies";
 
 console.log(pobDependencies);
 ```

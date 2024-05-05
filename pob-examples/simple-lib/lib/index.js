@@ -1,3 +1,3 @@
 export default function simpleLib() {
-  return 'hello world';
+  return "hello world";
 }

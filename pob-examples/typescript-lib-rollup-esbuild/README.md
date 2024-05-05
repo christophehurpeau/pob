@@ -14,7 +14,7 @@ npm install --save example-typescript-lib-rollup-esbuild
 ## Usage
 
 ```js
-import exampleTsLib from 'example-typescript-lib-rollup-esbuild';
+import exampleTsLib from "example-typescript-lib-rollup-esbuild";
 
 console.log(exampleTsLib);
 ```

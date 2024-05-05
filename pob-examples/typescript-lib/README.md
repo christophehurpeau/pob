@@ -14,7 +14,7 @@ npm install --save example-typescript-lib
 ## Usage
 
 ```js
-import exampleTsLib from 'example-typescript-lib';
+import exampleTsLib from "example-typescript-lib";
 
 console.log(exampleTsLib);
 ```

@@ -1,54 +1,54 @@
-import remoteUrl from 'git-remote-url';
-import githubUsername from 'github-username';
-import Generator from 'yeoman-generator';
-import * as packageUtils from '../../../utils/package.js';
+import remoteUrl from "git-remote-url";
+import githubUsername from "github-username";
+import Generator from "yeoman-generator";
+import * as packageUtils from "../../../utils/package.js";
 
 export default class CoreGitGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option('shouldCreate', {
+    this.option("shouldCreate", {
       type: Boolean,
       required: false,
-      default: '',
-      desc: 'Should create the repo on github',
+      default: "",
+      desc: "Should create the repo on github",
     });
 
-    this.option('onlyLatestLTS', {
+    this.option("onlyLatestLTS", {
       type: Boolean,
       required: true,
-      desc: 'only latest lts',
+      desc: "only latest lts",
     });
 
-    this.option('splitCIJobs', {
+    this.option("splitCIJobs", {
       type: Boolean,
       required: true,
-      desc: 'split CI jobs for faster result',
+      desc: "split CI jobs for faster result",
     });
   }
 
   async initializing() {
-    let originUrl = await remoteUrl(this.destinationPath(), 'origin').catch(
-      () => '',
+    let originUrl = await remoteUrl(this.destinationPath(), "origin").catch(
+      () => ""
     );
 
     if (!originUrl) {
-      const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+      const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
       originUrl = pkg.repository;
     }
 
     this.originUrl = originUrl;
     const match =
       originUrl &&
-      typeof originUrl === 'string' &&
+      typeof originUrl === "string" &&
       originUrl.match(
-        /^(?:git@|https?:\/\/)(?:([^./:]+)(?:\.com)?[/:])?([^/:]+)\/([^./:]+)(?:.git)?/,
+        /^(?:git@|https?:\/\/)(?:([^./:]+)(?:\.com)?[/:])?([^/:]+)\/([^./:]+)(?:.git)?/
       );
     if (!match) return;
     const [, gitHost, gitAccount, repoName] = match;
-    this.gitHost = gitHost || 'github';
+    this.gitHost = gitHost || "github";
     this.gitHostAccount = gitAccount;
-    if (repoName !== 'undefined') {
+    if (repoName !== "undefined") {
       this.repoName = repoName;
     }
   }
@@ -63,15 +63,15 @@ export default class CoreGitGenerator extends Generator {
 
     const { gitHost } = await this.prompt([
       {
-        type: 'list',
-        name: 'gitHost',
-        message: 'Which git host service would you like ?',
-        default: this.gitHost || (this.originUrl ? 'none' : 'github'),
+        type: "list",
+        name: "gitHost",
+        message: "Which git host service would you like ?",
+        default: this.gitHost || (this.originUrl ? "none" : "github"),
         choices: [
-          { value: 'none', name: !this.originUrl ? 'none' : "don't change" },
-          'github',
-          'bitbucket',
-          'gitlab',
+          { value: "none", name: !this.originUrl ? "none" : "don't change" },
+          "github",
+          "bitbucket",
+          "gitlab",
         ],
       },
     ]);
@@ -79,19 +79,19 @@ export default class CoreGitGenerator extends Generator {
     this.gitHost = gitHost;
 
     if (!this.gitHostAccount) {
-      if (this.gitHost === 'github') {
-        const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+      if (this.gitHost === "github") {
+        const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
         const author = packageUtils.parsePkgAuthor(pkg);
         this.gitHostAccount = await githubUsername(author.email).catch(
-          () => '',
+          () => ""
         );
       }
     }
 
-    if (this.gitHost !== 'none') {
+    if (this.gitHost !== "none") {
       const { gitHostAccount } = await this.prompt({
-        name: 'gitHostAccount',
-        message: 'username or organization',
+        name: "gitHostAccount",
+        message: "username or organization",
         default: this.gitHostAccount,
       });
 
@@ -100,8 +100,8 @@ export default class CoreGitGenerator extends Generator {
   }
 
   default() {
-    if (this.gitHost === 'github') {
-      this.composeWith('pob:core:git:github', {
+    if (this.gitHost === "github") {
+      this.composeWith("pob:core:git:github", {
         shouldCreate: !this.originUrl,
         gitHostAccount: this.gitHostAccount,
         repoName: this.repoName,
@@ -112,13 +112,13 @@ export default class CoreGitGenerator extends Generator {
   }
 
   writing() {
-    console.log('git: writing');
+    console.log("git: writing");
 
-    if (this.gitHost === 'none') {
+    if (this.gitHost === "none") {
       return;
     }
 
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'), {});
+    const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
     const repoName = this.repoName || this.options.name || pkg.name;
 
     if (!pkg.homepage && this.gitHostAccount) {
@@ -131,22 +131,22 @@ export default class CoreGitGenerator extends Generator {
       pkg.repository = repository;
     }
 
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    this.fs.writeJSON(this.destinationPath("package.json"), pkg);
 
     const cwd = this.destinationPath();
 
     this.initGitRepository =
-      this.spawnCommandSync('git', ['status'], {
+      this.spawnCommandSync("git", ["status"], {
         cwd,
-        stdio: 'ignore',
+        stdio: "ignore",
         reject: false,
       }).status === 128;
     if (this.initGitRepository) {
-      this.spawnCommandSync('git', ['init'], { cwd });
+      this.spawnCommandSync("git", ["init"], { cwd });
 
       if (!this.originUrl) {
         let repoSSH = pkg.repository;
-        if (pkg.repository && !pkg.repository.includes('.git')) {
+        if (pkg.repository && !pkg.repository.includes(".git")) {
           /* this.spawnCommandSync('curl', [
                         '--silent',
                         '--write-out',
@@ -163,7 +163,7 @@ export default class CoreGitGenerator extends Generator {
           repoSSH = pkg.repository;
         }
 
-        this.spawnCommandSync('git', ['remote', 'add', 'origin', repoSSH], {
+        this.spawnCommandSync("git", ["remote", "add", "origin", repoSSH], {
           cwd,
         });
       }

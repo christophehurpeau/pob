@@ -14,7 +14,7 @@ npm install --save example-typescript-lib-with-rollup-typescript
 ## Usage
 
 ```js
-import exampleTsLib from 'example-typescript-lib-with-rollup-typescript';
+import exampleTsLib from "example-typescript-lib-with-rollup-typescript";
 
 console.log(exampleTsLib);
 ```

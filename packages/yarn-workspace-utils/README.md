@@ -27,5 +27,5 @@ import {
   buildDependentsMaps,
   buildDependenciesMaps,
   buildTopologicalOrderBatches,
-} from 'yarn-workspace-utils';
+} from "yarn-workspace-utils";
 ```

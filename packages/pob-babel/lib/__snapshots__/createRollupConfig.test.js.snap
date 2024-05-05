@@ -14,15 +14,15 @@ class TestWithPrivate extends Test {
 }
 
 const sayHello = () => {
-  console.log('hello node');
+  console.log("hello node");
 };
 
 sayHello();
 if (process.env.NODE_ENV !== "production") {
-  console.log('__DEV__ is true');
+  console.log("__DEV__ is true");
 }
 if (!(process.env.NODE_ENV !== "production")) {
-  console.log('__DEV__ is false');
+  console.log("__DEV__ is false");
 }
 console.log(\`the answer is \${42}\`);
 class Test2 extends TestWithPrivate {
@@ -33,10 +33,10 @@ class Test2 extends TestWithPrivate {
 const t = new Test2(1, 2, 3);
 const spreadTest = {
   ...{
-    test: 'spread'
+    test: "spread"
   }
 };
-const foo = t.foo ?? 'default';
+const foo = t.foo ?? "default";
 const operator = spreadTest?.toString();
 
 export { foo, operator, spreadTest, t };
@@ -60,16 +60,16 @@ class TestWithPrivate extends Test {
 }
 
 const sayHello = () => {
-  console.log('hello browser');
+  console.log("hello browser");
 };
 
 var _t$foo;
 sayHello();
 if (process.env.NODE_ENV !== "production") {
-  console.log('__DEV__ is true');
+  console.log("__DEV__ is true");
 }
 if (!(process.env.NODE_ENV !== "production")) {
-  console.log('__DEV__ is false');
+  console.log("__DEV__ is false");
 }
 console.log(\`the answer is \${42}\`);
 class Test2 extends TestWithPrivate {
@@ -80,10 +80,10 @@ class Test2 extends TestWithPrivate {
 const t = new Test2(1, 2, 3);
 const spreadTest = {
   ...{
-    test: 'spread'
+    test: "spread"
   }
 };
-const foo = (_t$foo = t.foo) != null ? _t$foo : 'default';
+const foo = (_t$foo = t.foo) != null ? _t$foo : "default";
 const operator = spreadTest == null ? void 0 : spreadTest.toString();
 
 export { foo, operator, spreadTest, t };
@@ -104,15 +104,15 @@ class TestWithPrivate extends Test {
 }
 
 const sayHello = () => {
-  console.log('hello browser');
+  console.log("hello browser");
 };
 
 sayHello();
 if (process.env.NODE_ENV !== "production") {
-  console.log('__DEV__ is true');
+  console.log("__DEV__ is true");
 }
 if (!(process.env.NODE_ENV !== "production")) {
-  console.log('__DEV__ is false');
+  console.log("__DEV__ is false");
 }
 console.log(\`the answer is \${42}\`);
 class Test2 extends TestWithPrivate {
@@ -123,10 +123,10 @@ class Test2 extends TestWithPrivate {
 const t = new Test2(1, 2, 3);
 const spreadTest = {
   ...{
-    test: 'spread'
+    test: "spread"
   }
 };
-const foo = t.foo ?? 'default';
+const foo = t.foo ?? "default";
 const operator = spreadTest?.toString();
 
 export { foo, operator, spreadTest, t };
@@ -138,7 +138,7 @@ exports[`fixtures react 0 1`] = `
 import { jsx } from 'react/jsx-runtime';
 
 const Component = () => /*#__PURE__*/jsx("div", {});
-render( /*#__PURE__*/jsx(Component, {}), document.getElementById('react-container'));
+render( /*#__PURE__*/jsx(Component, {}), document.getElementById("react-container"));
 "
 `;
 
@@ -148,7 +148,7 @@ import './styles.css';
 import { jsx } from 'react/jsx-runtime';
 
 const Component = () => /*#__PURE__*/jsx("div", {});
-render( /*#__PURE__*/jsx(Component, {}), document.getElementById('react-container'));
+render( /*#__PURE__*/jsx(Component, {}), document.getElementById("react-container"));
 "
 `;
 

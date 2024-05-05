@@ -1,4 +1,4 @@
 export default function simpleLib() {
     // eslint-disable-next-line @typescript-eslint/no-useless-template-literals -- checking template string here
-    return `hello world via ${'typescript'}`;
+    return `hello world via ${"typescript"}`;
 }

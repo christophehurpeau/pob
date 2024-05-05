@@ -1,42 +1,42 @@
 /* eslint-disable complexity */
 
-import { createRequire } from 'node:module';
-import fixClassPropertiesUninitialized from 'babel-plugin-fix-class-properties-uninitialized';
-import replacePlugin from './pob-babel-replace-plugin.js';
+import { createRequire } from "node:module";
+import fixClassPropertiesUninitialized from "babel-plugin-fix-class-properties-uninitialized";
+import replacePlugin from "./pob-babel-replace-plugin.js";
 
-const validTargetOption = [false, 'node', 'browser'];
+const validTargetOption = [false, "node", "browser"];
 
 export default function (context, opts = {}) {
   const require = createRequire(import.meta.url);
 
-  ['loose', 'optimizations', 'typescript'].forEach((optionName) => {
+  ["loose", "optimizations", "typescript"].forEach((optionName) => {
     if (
       opts[optionName] !== undefined &&
-      typeof opts[optionName] !== 'boolean'
+      typeof opts[optionName] !== "boolean"
     ) {
       throw new Error(
-        `Preset pob-env '${optionName}' option must be a boolean.`,
+        `Preset pob-env '${optionName}' option must be a boolean.`
       );
     }
   });
 
-  ['flow', 'production', 'replacements'].forEach((optionName) => {
+  ["flow", "production", "replacements"].forEach((optionName) => {
     if (opts[optionName] !== undefined) {
       throw new Error(`option "${optionName}" is deprecated.`);
     }
   });
 
-  const targetOption = opts.target !== undefined ? opts.target : 'node';
+  const targetOption = opts.target !== undefined ? opts.target : "node";
   const versionOption =
-    opts.target !== undefined ? String(opts.version) : 'current';
+    opts.target !== undefined ? String(opts.version) : "current";
 
-  if (versionOption === 'jest') throw new Error('Invalid version "jest"');
+  if (versionOption === "jest") throw new Error('Invalid version "jest"');
 
   if (targetOption && !validTargetOption.includes(targetOption)) {
     throw new Error(
       `Preset pob-env 'target' option must one of ${validTargetOption.join(
-        ', ',
-      )}.`,
+        ", "
+      )}.`
     );
   }
 
@@ -52,10 +52,10 @@ export default function (context, opts = {}) {
     throw new TypeError("Preset pob-env 'exportDefaultName' was removed.");
   }
 
-  if (modules !== false && modules !== 'commonjs') {
+  if (modules !== false && modules !== "commonjs") {
     throw new Error(
       "Preset pob-env 'modules' option must be 'false' to indicate no modules\n" +
-        "or 'commonjs' (default)",
+        "or 'commonjs' (default)"
     );
   }
 
@@ -63,26 +63,26 @@ export default function (context, opts = {}) {
   let targetPlugins;
 
   switch (targetOption) {
-    case 'node':
+    case "node":
       // No need for preset
       // targetPreset = [
       //   '@babel/preset-env',
       //   { modules, loose, targets: { node: versionOption } },
       // ];
-      if (modules === 'commonjs') {
+      if (modules === "commonjs") {
         targetPlugins = [
           [
-            require('@babel/plugin-transform-modules-commonjs'),
-            { loose, importInterop: 'node' },
+            require("@babel/plugin-transform-modules-commonjs"),
+            { loose, importInterop: "node" },
           ],
         ];
       }
       break;
 
-    case 'browser':
-      if (versionOption === 'modern') {
+    case "browser":
+      if (versionOption === "modern") {
         targetPreset = [
-          resolvePreset('@babel/preset-env'),
+          resolvePreset("@babel/preset-env"),
           {
             modules,
             loose,
@@ -90,23 +90,23 @@ export default function (context, opts = {}) {
             bugfixes: true,
             // does not work for monorepos
             // browserslistEnv: 'modern',
-            targets: 'defaults and >1% and supports es6-module',
+            targets: "defaults and >1% and supports es6-module",
           },
         ];
       } else {
         targetPreset = [
-          resolvePreset('@babel/preset-env'),
+          resolvePreset("@babel/preset-env"),
           {
             modules,
             loose,
             shippedProposals: true,
             bugfixes: true,
             targets: [
-              'defaults',
-              '> 0.2%',
-              'not ie < 12',
-              'not safari < 10',
-              'not ios_saf < 10',
+              "defaults",
+              "> 0.2%",
+              "not ie < 12",
+              "not safari < 10",
+              "not ios_saf < 10",
             ],
           },
         ];
@@ -118,7 +118,7 @@ export default function (context, opts = {}) {
       break;
 
     default:
-      throw new Error('Invalid target');
+      throw new Error("Invalid target");
   }
 
   return {
@@ -134,7 +134,7 @@ export default function (context, opts = {}) {
 
       // typescript
       typescript && [
-        require.resolve('@babel/preset-typescript'),
+        require.resolve("@babel/preset-typescript"),
         {
           // disabled because fixed by babel-plugin-fix-class-properties-uninitialized
           allowDeclareFields: false,
@@ -162,7 +162,7 @@ export default function (context, opts = {}) {
 
       // optimizations: remove dead-code
       optimizations && [
-        require.resolve('babel-preset-optimizations'),
+        require.resolve("babel-preset-optimizations"),
         {
           keepFnName: true,
           keepClassName: true,
@@ -173,7 +173,7 @@ export default function (context, opts = {}) {
 
       // discard unused imports (like production-only or node-only imports)
       {
-        plugins: [[require.resolve('babel-plugin-discard-module-references')]],
+        plugins: [[require.resolve("babel-plugin-discard-module-references")]],
       },
 
       // transpile for specified target

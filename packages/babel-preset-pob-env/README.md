@@ -63,13 +63,13 @@ babel script.js --presets pob
 ### Via Node API
 
 ```javascript
-require('babel-core').transform('code', {
-  presets: [require('babel-preset-pob-env')],
+require("babel-core").transform("code", {
+  presets: [require("babel-preset-pob-env")],
 });
 ```
 
 ```javascript
-require('babel-core').transform('code', {
-  presets: [[require('babel-preset-pob-env'), { loose: true }]],
+require("babel-core").transform("code", {
+  presets: [[require("babel-preset-pob-env"), { loose: true }]],
 });
 ```

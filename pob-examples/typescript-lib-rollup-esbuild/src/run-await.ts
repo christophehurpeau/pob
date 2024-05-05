@@ -1,4 +1,4 @@
 await new Promise<void>((resolve) => {
-  console.log('awaited');
+  console.log("awaited");
   resolve();
 });

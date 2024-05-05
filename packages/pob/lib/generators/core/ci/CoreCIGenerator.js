@@ -1,8 +1,8 @@
-import fs from 'node:fs';
-import Generator from 'yeoman-generator';
-import inMonorepo from '../../../utils/inMonorepo.js';
-import * as packageUtils from '../../../utils/package.js';
-import { copyAndFormatTpl } from '../../../utils/writeAndFormat.js';
+import fs from "node:fs";
+import Generator from "yeoman-generator";
+import inMonorepo from "../../../utils/inMonorepo.js";
+import * as packageUtils from "../../../utils/package.js";
+import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
 export const ciContexts = [];
 
@@ -10,52 +10,52 @@ export default class CoreCIGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
-    this.option('enable', {
+    this.option("enable", {
       type: Boolean,
       default: true,
-      desc: 'enable ci',
+      desc: "enable ci",
     });
 
-    this.option('enableReleasePlease', {
+    this.option("enableReleasePlease", {
       type: Boolean,
       default: true,
-      desc: 'enable release-please',
+      desc: "enable release-please",
     });
 
-    this.option('enableYarnVersion', {
+    this.option("enableYarnVersion", {
       type: Boolean,
       default: true,
-      desc: 'enable yarn version conventional commits',
+      desc: "enable yarn version conventional commits",
     });
 
-    this.option('build', {
+    this.option("build", {
       type: Boolean,
       default: true,
-      desc: 'enable build',
+      desc: "enable build",
     });
 
-    this.option('typescript', {
+    this.option("typescript", {
       type: Boolean,
       default: true,
-      desc: 'enable typescript',
+      desc: "enable typescript",
     });
 
-    this.option('testing', {
+    this.option("testing", {
       type: Boolean,
       default: true,
-      desc: 'enable testing',
+      desc: "enable testing",
     });
-    this.option('testRunner', {
+    this.option("testRunner", {
       type: String,
       required: false,
-      default: 'jest',
-      desc: 'test runner: jest | node',
+      default: "jest",
+      desc: "test runner: jest | node",
     });
 
-    this.option('e2eTesting', {
+    this.option("e2eTesting", {
       type: String,
-      default: '',
-      desc: 'e2e testing package path',
+      default: "",
+      desc: "e2e testing package path",
     });
 
     // this.option('babelEnvs', {
@@ -64,57 +64,57 @@ export default class CoreCIGenerator extends Generator {
     //   desc: 'Babel Envs',
     // });
 
-    this.option('ci', {
+    this.option("ci", {
       type: Boolean,
       required: true,
-      desc: 'ci with github actions',
+      desc: "ci with github actions",
     });
 
-    this.option('codecov', {
+    this.option("codecov", {
       type: Boolean,
       required: true,
-      desc: 'Include codecov report',
+      desc: "Include codecov report",
     });
 
-    this.option('documentation', {
+    this.option("documentation", {
       type: Boolean,
       required: true,
-      desc: 'Include documentation generation',
+      desc: "Include documentation generation",
     });
 
-    this.option('isApp', {
+    this.option("isApp", {
       type: Boolean,
       required: true,
-      desc: 'is app',
+      desc: "is app",
     });
 
-    this.option('onlyLatestLTS', {
+    this.option("onlyLatestLTS", {
       type: Boolean,
       required: true,
-      desc: 'only latest lts',
+      desc: "only latest lts",
     });
 
-    this.option('splitJobs', {
+    this.option("splitJobs", {
       type: Boolean,
       required: true,
-      desc: 'split CI jobs for faster result',
+      desc: "split CI jobs for faster result",
     });
 
-    this.option('disableYarnGitCache', {
+    this.option("disableYarnGitCache", {
       type: Boolean,
       required: false,
       default: false,
-      desc: 'Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.',
+      desc: "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
   }
 
   async prompting() {
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
     this.isReleasePleaseEnabled =
       this.options.enableReleasePlease &&
       !this.options.enableYarnVersion &&
-      !pkg.devDependencies?.['standard-version'];
+      !pkg.devDependencies?.["standard-version"];
 
     if (
       this.options.enableReleasePlease &&
@@ -123,9 +123,9 @@ export default class CoreCIGenerator extends Generator {
       !this.options.enableYarnVersion
     ) {
       const { enableReleasePlease } = await this.prompt({
-        type: 'confirm',
-        name: 'enableReleasePlease',
-        message: 'Would you like to enable release please ?',
+        type: "confirm",
+        name: "enableReleasePlease",
+        message: "Would you like to enable release please ?",
         default: true,
       });
       this.isReleasePleaseEnabled = enableReleasePlease;
@@ -133,12 +133,12 @@ export default class CoreCIGenerator extends Generator {
   }
 
   default() {
-    if (fs.existsSync(this.destinationPath('.circleci'))) {
-      fs.rmdirSync(this.destinationPath('.circleci'), { recursive: true });
+    if (fs.existsSync(this.destinationPath(".circleci"))) {
+      fs.rmdirSync(this.destinationPath(".circleci"), { recursive: true });
     }
 
     if (this.options.enable) {
-      const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+      const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
       const checks = !!pkg.scripts && !!pkg.scripts.checks;
       const testing =
@@ -149,16 +149,16 @@ export default class CoreCIGenerator extends Generator {
         this.fs,
         this.templatePath(
           this.options.splitJobs
-            ? 'github-action-push-workflow-split.yml.ejs'
-            : 'github-action-push-workflow.yml.ejs',
+            ? "github-action-push-workflow-split.yml.ejs"
+            : "github-action-push-workflow.yml.ejs"
         ),
-        this.destinationPath('.github/workflows/push.yml'),
+        this.destinationPath(".github/workflows/push.yml"),
         {
           packageManager: this.options.packageManager,
           disableYarnGitCache: this.options.disableYarnGitCache,
           testing,
           e2eTesting:
-            this.options.e2eTesting && this.options.e2eTesting !== 'false'
+            this.options.e2eTesting && this.options.e2eTesting !== "false"
               ? this.options.e2eTesting
               : false,
           checks,
@@ -173,64 +173,64 @@ export default class CoreCIGenerator extends Generator {
             this.isReleasePleaseEnabled &&
             inMonorepo &&
             inMonorepo.root &&
-            inMonorepo.pobConfig?.project?.type === 'lib',
-        },
+            inMonorepo.pobConfig?.project?.type === "lib",
+        }
       );
 
       ciContexts.push(
-        'reviewflow',
+        "reviewflow",
         ...(this.options.splitJobs
           ? [
-              checks && 'checks',
-              build && 'build',
-              'lint',
-              testing && !this.options.onlyLatestLTS && 'test (18)',
-              testing && 'test (20)',
+              checks && "checks",
+              build && "build",
+              "lint",
+              testing && !this.options.onlyLatestLTS && "test (18)",
+              testing && "test (20)",
             ].filter(Boolean)
           : [
-              !this.options.onlyLatestLTS && 'build (18.x)',
-              'build (20.x)',
-            ].filter(Boolean)),
+              !this.options.onlyLatestLTS && "build (18.x)",
+              "build (20.x)",
+            ].filter(Boolean))
       );
     } else {
-      this.fs.delete(this.destinationPath('.github/workflows/push.yml'));
+      this.fs.delete(this.destinationPath(".github/workflows/push.yml"));
     }
 
     if (
       this.options.enable &&
       !this.options.isApp &&
       (this.options.documentation ||
-        (this.options.testing && this.options.testing.runner !== 'node'))
+        (this.options.testing && this.options.testing.runner !== "node"))
     ) {
       copyAndFormatTpl(
         this.fs,
-        this.templatePath('github-action-documentation-workflow.yml.ejs'),
-        this.destinationPath('.github/workflows/gh-pages.yml'),
+        this.templatePath("github-action-documentation-workflow.yml.ejs"),
+        this.destinationPath(".github/workflows/gh-pages.yml"),
         {
           packageManager: this.options.packageManager,
           disableYarnGitCache: this.options.disableYarnGitCache,
           testing: this.options.testing,
           testRunner: this.options.testRunner,
           typedoc: this.options.documentation && this.options.typescript,
-        },
+        }
       );
     } else {
-      this.fs.delete(this.destinationPath('.github/workflows/gh-pages.yml'));
+      this.fs.delete(this.destinationPath(".github/workflows/gh-pages.yml"));
     }
   }
 
   writing() {
-    const pkg = this.fs.readJSON(this.destinationPath('package.json'));
+    const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
-    this.fs.delete(this.destinationPath('.travis.yml'));
-    this.fs.delete(this.destinationPath('circle.yml'));
+    this.fs.delete(this.destinationPath(".travis.yml"));
+    this.fs.delete(this.destinationPath("circle.yml"));
 
     if (!this.options.enable) {
-      packageUtils.removeDevDependencies(pkg, ['jest-junit-reporter']);
+      packageUtils.removeDevDependencies(pkg, ["jest-junit-reporter"]);
     } else {
-      packageUtils.removeDevDependencies(pkg, ['jest-junit-reporter']);
+      packageUtils.removeDevDependencies(pkg, ["jest-junit-reporter"]);
     }
 
-    this.fs.writeJSON(this.destinationPath('package.json'), pkg);
+    this.fs.writeJSON(this.destinationPath("package.json"), pkg);
   }
 }

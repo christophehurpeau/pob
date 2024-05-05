@@ -1,23 +1,23 @@
 /* eslint-disable unicorn/prefer-array-some */
 /* eslint-disable unicorn/no-array-method-this-argument */
 
-'use strict';
+"use strict";
 
-const { prependImport } = require('../utils/prependImport.cjs');
+const { prependImport } = require("../utils/prependImport.cjs");
 
 const jestToNodeGlobalMethods = {
-  test: 'test',
-  describe: 'describe',
-  it: 'it',
-  beforeAll: 'before',
-  afterAll: 'after',
-  beforeEach: 'beforeEach',
-  afterEach: 'afterEach',
+  test: "test",
+  describe: "describe",
+  it: "it",
+  beforeAll: "before",
+  afterAll: "after",
+  beforeEach: "beforeEach",
+  afterEach: "afterEach",
 };
 const propertiesMap = {
-  toBe: { default: 'equal', not: 'notEqual' },
-  toStrictEqual: { default: 'equal', not: 'notEqual' },
-  toEqual: { default: 'equal', not: 'notEqual' },
+  toBe: { default: "equal", not: "notEqual" },
+  toStrictEqual: { default: "equal", not: "notEqual" },
+  toEqual: { default: "equal", not: "notEqual" },
 };
 
 // const mocks = {
@@ -29,15 +29,15 @@ const propertiesMap = {
 module.exports = (file, api, options) => {
   if (
     !(
-      file.path.endsWith('.test.js') ||
-      file.path.endsWith('.test.ts') ||
-      file.path.endsWith('.test.tsx')
+      file.path.endsWith(".test.js") ||
+      file.path.endsWith(".test.ts") ||
+      file.path.endsWith(".test.tsx")
     )
   ) {
     throw new Error(`Invalid file: "${file.path}"`);
   }
 
-  const j = api.jscodeshift.withParser('tsx');
+  const j = api.jscodeshift.withParser("tsx");
   const root = j(file.source);
 
   function updateTopLevelMethods() {
@@ -56,7 +56,7 @@ module.exports = (file, api, options) => {
 
         return j.callExpression(
           j.identifier(jestToNodeGlobalMethods[value.callee.name]),
-          value.arguments,
+          value.arguments
         );
       });
 
@@ -66,10 +66,10 @@ module.exports = (file, api, options) => {
         root,
         j.importDeclaration(
           [...topLevelMethodsUsed].map((method) =>
-            j.importSpecifier(j.identifier(method)),
+            j.importSpecifier(j.identifier(method))
           ),
-          j.stringLiteral('node:test'),
-        ),
+          j.stringLiteral("node:test")
+        )
       );
     }
   }
@@ -80,7 +80,7 @@ module.exports = (file, api, options) => {
     root
       .find(j.MemberExpression, {
         object: {
-          callee: { name: 'expect' },
+          callee: { name: "expect" },
         },
       })
       .forEach((memberExpressionPath) => {
@@ -88,7 +88,7 @@ module.exports = (file, api, options) => {
         let memberExpressionPathToReplace = memberExpressionPath;
         let propertyName = memberExpression.property.name;
         let not = false;
-        if (propertyName === 'not') {
+        if (propertyName === "not") {
           not = true;
           memberExpressionPathToReplace = parentPath;
           propertyName = parentPath.value.property.name;
@@ -100,7 +100,7 @@ module.exports = (file, api, options) => {
         }
 
         const assertPropertyName =
-          propertiesMap[propertyName][not ? 'not' : 'default'];
+          propertiesMap[propertyName][not ? "not" : "default"];
         const callExpressionPath = memberExpressionPathToReplace.parentPath;
 
         const value = memberExpression.object.arguments[0];
@@ -108,28 +108,28 @@ module.exports = (file, api, options) => {
 
         hasAssertions = true;
         callExpressionPath.value.callee = j.memberExpression(
-          j.identifier('assert'),
-          j.identifier(assertPropertyName),
+          j.identifier("assert"),
+          j.identifier(assertPropertyName)
         );
         callExpressionPath.value.arguments = [value, expected];
       });
 
     if (hasAssertions) {
       root
-        .find(j.ImportDeclaration, { source: { value: 'node:assert' } })
+        .find(j.ImportDeclaration, { source: { value: "node:assert" } })
         .remove();
       if (
         // eslint-disable-next-line no-constant-condition
         (!root.find(j.ImportDeclaration),
-        { source: { value: 'node:assert/strict' } })
+        { source: { value: "node:assert/strict" } })
       ) {
         prependImport(
           j,
           root,
           j.importDeclaration(
-            [j.importDefaultSpecifier(j.identifier('assert'))],
-            j.stringLiteral('node:assert/strict'),
-          ),
+            [j.importDefaultSpecifier(j.identifier("assert"))],
+            j.stringLiteral("node:assert/strict")
+          )
         );
       }
     }
@@ -139,7 +139,7 @@ module.exports = (file, api, options) => {
   updateAssertions();
 
   root
-    .find(j.ImportDeclaration, { source: { value: '@jest/globals' } })
+    .find(j.ImportDeclaration, { source: { value: "@jest/globals" } })
     .remove();
 
   return root.toSource(options);

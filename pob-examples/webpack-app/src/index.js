@@ -1,3 +1,3 @@
-import typescriptLib from 'example-typescript-lib';
+import typescriptLib from "example-typescript-lib";
 
 console.log(typescriptLib());

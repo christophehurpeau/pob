@@ -1,5 +1,5 @@
 #!/usr/bin/env node
 
-'use strict';
+"use strict";
 
-require('rollup/dist/bin/rollup');
+require("rollup/dist/bin/rollup");
