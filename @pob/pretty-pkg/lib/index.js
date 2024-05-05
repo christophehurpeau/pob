@@ -1,4 +1,4 @@
-import fs from "node:fs";
+import fs from "node:fs/promises";
 import sortPkg from "@pob/sort-pkg";
 import prettier from "prettier";
 
@@ -28,12 +28,12 @@ export default function prettyPkg(pkg, prettierOptions) {
   });
 }
 
-export function writeSync(pkg, path, prettierOptions) {
-  const string = prettyPkg(pkg, prettierOptions);
-  fs.writeFileSync(path, string, "utf8");
+export async function write(pkg, path, prettierOptions) {
+  const string = await prettyPkg(pkg, prettierOptions);
+  await fs.writeFile(path, string, "utf8");
 }
 
-export function overrideSync(path, prettierOptions) {
-  const pkg = fs.readFileSync(path, "utf8");
-  return writeSync(pkg, path, prettierOptions);
+export async function override(path, prettierOptions) {
+  const pkg = await fs.readFile(path, "utf8");
+  await write(pkg, path, prettierOptions);
 }

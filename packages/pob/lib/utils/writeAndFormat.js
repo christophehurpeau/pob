@@ -1,4 +1,4 @@
-import prettier from "prettier";
+import prettier from "@prettier/sync";
 
 export function writeAndFormat(fs, destinationPath, content, { parser } = {}) {
   fs.write(

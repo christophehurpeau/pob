@@ -44,5 +44,7 @@ if (pm.name !== "yarn" && pm.name !== "npm" && pm.name !== "bun") {
 (await import("./postinstall/install-scripts.js")).default({ pkg, pm });
 
 if (process.env.POB_EXPERIMENTAL_VSCODE_TASKS) {
-  (await import("./postinstall/install-vscode-tasks.js")).default({ pkg, pm });
+  await (
+    await import("./postinstall/install-vscode-tasks.js")
+  ).default({ pkg, pm });
 }

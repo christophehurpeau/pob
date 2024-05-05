@@ -3090,7 +3090,7 @@ __metadata:
   resolution: "@pob/pretty-eslint-config@workspace:@pob/pretty-eslint-config"
   dependencies:
     "@pob/sort-eslint-config": "npm:5.3.1"
-    prettier: "npm:^3.0.0"
+    prettier: "npm:^3.2.5"
   bin:
     pretty-eslint-config: ./bin/pretty-eslint-config.js
   languageName: unknown
@@ -3102,7 +3102,7 @@ __metadata:
   dependencies:
     "@pob/sort-pkg": "npm:7.1.1"
     glob: "npm:^10.0.0"
-    prettier: "npm:^3.0.0"
+    prettier: "npm:^3.2.5"
   bin:
     pretty-pkg: ./bin/pretty-pkg.js
   languageName: unknown
@@ -3214,6 +3214,17 @@ __metadata:
     "@pob/sort-object": "npm:6.3.1"
   languageName: unknown
   linkType: soft
+
+"@prettier/sync@npm:0.5.2":
+  version: 0.5.2
+  resolution: "@prettier/sync@npm:0.5.2"
+  dependencies:
+    make-synchronized: "npm:^0.2.8"
+  peerDependencies:
+    prettier: "*"
+  checksum: 10/172cdc62f4103b022f8e8d0a63839350d97bc51468ea476594bce651c2cda311e4810417f16a3c967941a8493a68468a5df27beea4c85eaeaa37e84be3acf399
+  languageName: node
+  linkType: hard
 
 "@rollup/plugin-babel@npm:6.0.4":
   version: 6.0.4
@@ -10697,6 +10708,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"make-synchronized@npm:^0.2.8":
+  version: 0.2.9
+  resolution: "make-synchronized@npm:0.2.9"
+  checksum: 10/d12c540719641f05f4e40bae5625b7e5ac9dded364e7f97ef3fd8baa1bcbd016f873c5281e4719e321a612635accf0a9e2c07a37d215240b549b99ed0d8a1b3f
+  languageName: node
+  linkType: hard
+
 "makeerror@npm:1.0.12":
   version: 1.0.12
   resolution: "makeerror@npm:1.0.12"
@@ -12051,6 +12069,7 @@ __metadata:
     "@pob/sort-eslint-config": "npm:5.3.1"
     "@pob/sort-object": "npm:6.3.1"
     "@pob/sort-pkg": "npm:7.1.1"
+    "@prettier/sync": "npm:0.5.2"
     "@types/inquirer": "npm:9.0.7"
     "@yarnpkg/cli": "npm:4.2.1"
     "@yarnpkg/core": "npm:4.0.5"
@@ -12115,7 +12134,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.2.5, prettier@npm:^3.0.0":
+"prettier@npm:3.2.5, prettier@npm:^3.2.5":
   version: 3.2.5
   resolution: "prettier@npm:3.2.5"
   bin:

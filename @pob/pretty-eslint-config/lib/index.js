@@ -1,4 +1,4 @@
-import fs from "node:fs";
+import fs from "node:fs/promises";
 import sortEslintConfig from "@pob/sort-eslint-config";
 import prettier from "prettier";
 
@@ -28,12 +28,12 @@ export default function prettyEslintConfig(eslintConfig, prettierOptions) {
   });
 }
 
-export function writeSync(eslintConfig, path, prettierOptions) {
-  const string = prettyEslintConfig(eslintConfig, prettierOptions);
-  fs.writeFileSync(path, string, "utf8");
+export async function write(eslintConfig, path, prettierOptions) {
+  const string = await prettyEslintConfig(eslintConfig, prettierOptions);
+  await fs.writeFile(path, string, "utf8");
 }
 
-export function overrideSync(path, prettierOptions) {
-  const eslintConfig = fs.readFileSync(path, "utf8");
-  return writeSync(eslintConfig, path, prettierOptions);
+export async function override(path, prettierOptions) {
+  const eslintConfig = await fs.readFile(path, "utf8");
+  return write(eslintConfig, path, prettierOptions);
 }

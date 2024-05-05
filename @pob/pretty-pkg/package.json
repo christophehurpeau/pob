@@ -39,6 +39,6 @@
   "dependencies": {
     "@pob/sort-pkg": "7.1.1",
     "glob": "^10.0.0",
-    "prettier": "^3.0.0"
+    "prettier": "^3.2.5"
   }
 }
