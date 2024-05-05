@@ -435,43 +435,43 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable complexity */
 &nbsp;
-import { createRequire } from 'node:module';
-import fixClassPropertiesUninitialized from 'babel-plugin-fix-class-properties-uninitialized';
-import replacePlugin from './pob-babel-replace-plugin.js';
+import { createRequire } from "node:module";
+import fixClassPropertiesUninitialized from "babel-plugin-fix-class-properties-uninitialized";
+import replacePlugin from "./pob-babel-replace-plugin.js";
 &nbsp;
-const validTargetOption = [false, 'node', 'browser'];
+const validTargetOption = [false, "node", "browser"];
 &nbsp;
 export default function (context, opts = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
   const require = createRequire(import.meta.url);
 &nbsp;
-  ['loose', 'optimizations', 'typescript'].forEach((optionName) =&gt; {
+  ["loose", "optimizations", "typescript"].forEach((optionName) =&gt; {
     <span class="missing-if-branch" title="if path not taken" >I</span>if (
       opts[optionName] !== undefined &amp;&amp;
-      typeof opts[optionName] !== 'boolean'
+      typeof opts[optionName] !== "boolean"
     ) {
 <span class="cstat-no" title="statement not covered" >      throw new Error(</span>
-        `Preset pob-env '${optionName}' option must be a boolean.`,
+        `Preset pob-env '${optionName}' option must be a boolean.`
       );
     }
   });
 &nbsp;
-  ['flow', 'production', 'replacements'].forEach((optionName) =&gt; {
+  ["flow", "production", "replacements"].forEach((optionName) =&gt; {
     <span class="missing-if-branch" title="if path not taken" >I</span>if (opts[optionName] !== undefined) {
 <span class="cstat-no" title="statement not covered" >      throw new Error(`option "${optionName}" is deprecated.`);</span>
     }
   });
 &nbsp;
-  const targetOption = opts.target !== undefined ? opts.target : <span class="branch-1 cbranch-no" title="branch not covered" >'node';</span>
+  const targetOption = opts.target !== undefined ? opts.target : <span class="branch-1 cbranch-no" title="branch not covered" >"node";</span>
   const versionOption =
-    opts.target !== undefined ? String(opts.version) : <span class="branch-1 cbranch-no" title="branch not covered" >'current';</span>
+    opts.target !== undefined ? String(opts.version) : <span class="branch-1 cbranch-no" title="branch not covered" >"current";</span>
 &nbsp;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (versionOption === 'jest') <span class="cstat-no" title="statement not covered" >throw new Error('Invalid version "jest"');</span>
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (versionOption === "jest") <span class="cstat-no" title="statement not covered" >throw new Error('Invalid version "jest"');</span>
 &nbsp;
   <span class="missing-if-branch" title="if path not taken" >I</span>if (targetOption &amp;&amp; !validTargetOption.includes(targetOption)) {
 <span class="cstat-no" title="statement not covered" >    throw new Error(</span>
       `Preset pob-env 'target' option must one of ${validTargetOption.join(
-        ', ',
-      )}.`,
+        ", "
+      )}.`
     );
   }
 &nbsp;
@@ -487,10 +487,10 @@ export default function (context, opts = <span class="branch-0 cbranch-no" title
 <span class="cstat-no" title="statement not covered" >    throw new TypeError("Preset pob-env 'exportDefaultName' was removed.");</span>
   }
 &nbsp;
-  <span class="missing-if-branch" title="if path not taken" >I</span>if (modules !== false &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >modules !== 'commonjs')</span> {
+  <span class="missing-if-branch" title="if path not taken" >I</span>if (modules !== false &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >modules !== "commonjs")</span> {
 <span class="cstat-no" title="statement not covered" >    throw new Error(</span>
       "Preset pob-env 'modules' option must be 'false' to indicate no modules\n" +
-        "or 'commonjs' (default)",
+        "or 'commonjs' (default)"
     );
   }
 &nbsp;
@@ -498,26 +498,26 @@ export default function (context, opts = <span class="branch-0 cbranch-no" title
   let targetPlugins;
 &nbsp;
   switch (targetOption) {
-    case 'node':
+    case "node":
       // No need for preset
       // targetPreset = [
       //   '@babel/preset-env',
       //   { modules, loose, targets: { node: versionOption } },
       // ];
-      <span class="missing-if-branch" title="if path not taken" >I</span>if (modules === 'commonjs') {
+      <span class="missing-if-branch" title="if path not taken" >I</span>if (modules === "commonjs") {
 <span class="cstat-no" title="statement not covered" >        targetPlugins = [</span>
           [
-            require('@babel/plugin-transform-modules-commonjs'),
-            { loose, importInterop: 'node' },
+            require("@babel/plugin-transform-modules-commonjs"),
+            { loose, importInterop: "node" },
           ],
         ];
       }
       break;
 &nbsp;
-    case 'browser':
-      if (versionOption === 'modern') {
+    case "browser":
+      if (versionOption === "modern") {
         targetPreset = [
-          resolvePreset('@babel/preset-env'),
+          resolvePreset("@babel/preset-env"),
           {
             modules,
             loose,
@@ -525,23 +525,23 @@ export default function (context, opts = <span class="branch-0 cbranch-no" title
             bugfixes: true,
             // does not work for monorepos
             // browserslistEnv: 'modern',
-            targets: 'defaults and &gt;1% and supports es6-module',
+            targets: "defaults and &gt;1% and supports es6-module",
           },
         ];
       } else {
         targetPreset = [
-          resolvePreset('@babel/preset-env'),
+          resolvePreset("@babel/preset-env"),
           {
             modules,
             loose,
             shippedProposals: true,
             bugfixes: true,
             targets: [
-              'defaults',
-              '&gt; 0.2%',
-              'not ie &lt; 12',
-              'not safari &lt; 10',
-              'not ios_saf &lt; 10',
+              "defaults",
+              "&gt; 0.2%",
+              "not ie &lt; 12",
+              "not safari &lt; 10",
+              "not ios_saf &lt; 10",
             ],
           },
         ];
@@ -553,7 +553,7 @@ export default function (context, opts = <span class="branch-0 cbranch-no" title
 <span class="cstat-no" title="statement not covered" >      break;</span>
 &nbsp;
 <span class="branch-3 cbranch-no" title="branch not covered" >    default:</span>
-<span class="cstat-no" title="statement not covered" >      throw new Error('Invalid target');</span>
+<span class="cstat-no" title="statement not covered" >      throw new Error("Invalid target");</span>
   }
 &nbsp;
   return {
@@ -569,7 +569,7 @@ export default function (context, opts = <span class="branch-0 cbranch-no" title
 &nbsp;
       // typescript
       typescript &amp;&amp; [
-        require.resolve('@babel/preset-typescript'),
+        require.resolve("@babel/preset-typescript"),
         {
           // disabled because fixed by babel-plugin-fix-class-properties-uninitialized
           allowDeclareFields: false,
@@ -597,7 +597,7 @@ export default function (context, opts = <span class="branch-0 cbranch-no" title
 &nbsp;
       // optimizations: remove dead-code
       optimizations &amp;&amp; [
-        require.resolve('babel-preset-optimizations'),
+        require.resolve("babel-preset-optimizations"),
         {
           keepFnName: true,
           keepClassName: true,
@@ -608,7 +608,7 @@ export default function (context, opts = <span class="branch-0 cbranch-no" title
 &nbsp;
       // discard unused imports (like production-only or node-only imports)
       {
-        plugins: [[require.resolve('babel-plugin-discard-module-references')]],
+        plugins: [[require.resolve("babel-plugin-discard-module-references")]],
       },
 &nbsp;
       // transpile for specified target
@@ -625,7 +625,7 @@ export default function (context, opts = <span class="branch-0 cbranch-no" title
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sun May 05 2024 13:24:19 GMT+0000 (Coordinated Universal Time)
+                at Sun May 05 2024 13:35:11 GMT+0000 (Coordinated Universal Time)
             </div>
         <script src="../../../prettify.js"></script>
         <script>

@@ -511,44 +511,44 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">/* eslint-disable complexity */
 &nbsp;
-import { readFileSync, existsSync } from 'node:fs';
-import path from 'node:path';
-import babelPluginTransformRuntime from '@babel/plugin-transform-runtime';
-import { nodeFormatToExt } from '@pob/rollup';
-import { babel } from '@rollup/plugin-babel';
-import json from '@rollup/plugin-json';
-import { nodeResolve } from '@rollup/plugin-node-resolve';
-import babelPresetEnv from 'babel-preset-pob-env';
-import configExternalDependencies from 'rollup-config-external-dependencies';
-import semver from 'semver';
-import ignoreImport from './rollup-plugin-ignore-browser-only-imports.js';
+import { readFileSync, existsSync } from "node:fs";
+import path from "node:path";
+import babelPluginTransformRuntime from "@babel/plugin-transform-runtime";
+import { nodeFormatToExt } from "@pob/rollup";
+import { babel } from "@rollup/plugin-babel";
+import json from "@rollup/plugin-json";
+import { nodeResolve } from "@rollup/plugin-node-resolve";
+import babelPresetEnv from "babel-preset-pob-env";
+import configExternalDependencies from "rollup-config-external-dependencies";
+import semver from "semver";
+import ignoreImport from "./rollup-plugin-ignore-browser-only-imports.js";
 &nbsp;
-const browserOnlyExtensions = ['.scss', '.css'];
+const browserOnlyExtensions = [".scss", ".css"];
 &nbsp;
 export default function createRollupConfig({
   cwd = <span class="branch-0 cbranch-no" title="branch not covered" >process.cwd(),</span>
-  outDirectory = 'dist',
-  pkg = JSON.parse(readFileSync(path.join(cwd, 'package.json'))),
+  outDirectory = "dist",
+  pkg = JSON.parse(readFileSync(path.join(cwd, "package.json"))),
   plugins = [],
   devPlugins,
   prodPlugins,
   pobConfig = pkg.pob ||
-<span class="branch-1 cbranch-no" title="branch not covered" >    JSON.parse(readFileSync(path.join(cwd, '.yo-rc.json'))).pob['pob-config'],</span>
+<span class="branch-1 cbranch-no" title="branch not covered" >    JSON.parse(readFileSync(path.join(cwd, ".yo-rc.json"))).pob["pob-config"],</span>
 } = <span class="branch-0 cbranch-no" title="branch not covered" >{})</span> {
   <span class="missing-if-branch" title="if path not taken" >I</span>if (devPlugins) {
 <span class="cstat-no" title="statement not covered" >    throw new Error(</span>
-      '"devPlugins" option is no longer supported, use "plugins" instead',
+      '"devPlugins" option is no longer supported, use "plugins" instead'
     );
   }
   <span class="missing-if-branch" title="if path not taken" >I</span>if (prodPlugins) {
 <span class="cstat-no" title="statement not covered" >    throw new Error(</span>
-      '"prodPlugins" option is no longer supported, use "plugins" instead',
+      '"prodPlugins" option is no longer supported, use "plugins" instead'
     );
   }
   const isIndexBrowserEntry =
-    pobConfig.entries[0] === 'index' &amp;&amp; pobConfig.entries[1] === 'browser';
+    pobConfig.entries[0] === "index" &amp;&amp; pobConfig.entries[1] === "browser";
   const entries = isIndexBrowserEntry
-    ? <span class="branch-0 cbranch-no" title="branch not covered" >['index', ...pobConfig.entries.slice(2)]</span>
+    ? <span class="branch-0 cbranch-no" title="branch not covered" >["index", ...pobConfig.entries.slice(2)]</span>
     : pobConfig.entries;
 &nbsp;
   const jsx =
@@ -556,24 +556,24 @@ export default function createRollupConfig({
     (pobConfig.jsx !== false &amp;&amp;
       Boolean(
         (pkg.dependencies &amp;&amp; pkg.dependencies.react) ||
-          (pkg.peerDependencies &amp;&amp; <span class="branch-3 cbranch-no" title="branch not covered" >pkg.peerDependencies.react)</span>,
+          (pkg.peerDependencies &amp;&amp; <span class="branch-3 cbranch-no" title="branch not covered" >pkg.peerDependencies.react)</span>
       ));
 &nbsp;
   const babelRuntimeVersion =
-    pkg.dependencies &amp;&amp; pkg.dependencies['@babel/runtime'];
+    pkg.dependencies &amp;&amp; pkg.dependencies["@babel/runtime"];
   const minBabelRuntimeVersion = babelRuntimeVersion
     ? semver.minVersion(babelRuntimeVersion).raw
     : <span class="branch-1 cbranch-no" title="branch not covered" >undefined;</span>
 &nbsp;
   const nodeVersion = (version) =&gt; {
     switch (String(version)) {
-<span class="branch-0 cbranch-no" title="branch not covered" >      case '12':</span>
-<span class="branch-1 cbranch-no" title="branch not covered" >      case '14':</span>
-<span class="branch-2 cbranch-no" title="branch not covered" >      case '16':</span>
-<span class="branch-3 cbranch-no" title="branch not covered" >      case '18':</span>
-<span class="cstat-no" title="statement not covered" >        return '18.12';</span>
-      case '20':
-        return '20.9';
+<span class="branch-0 cbranch-no" title="branch not covered" >      case "12":</span>
+<span class="branch-1 cbranch-no" title="branch not covered" >      case "14":</span>
+<span class="branch-2 cbranch-no" title="branch not covered" >      case "16":</span>
+<span class="branch-3 cbranch-no" title="branch not covered" >      case "18":</span>
+<span class="cstat-no" title="statement not covered" >        return "18.12";</span>
+      case "20":
+        return "20.9";
 <span class="branch-5 cbranch-no" title="branch not covered" >      default:</span>
 <span class="cstat-no" title="statement not covered" >        return version;</span>
     }
@@ -583,15 +583,15 @@ export default function createRollupConfig({
 &nbsp;
   const resolveEntry = (entry, target) =&gt; {
     const entryName =
-      isIndexBrowserEntry &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >entry === 'index' </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >target === 'browser'</span>
-        ? <span class="branch-0 cbranch-no" title="branch not covered" >'browser'</span>
+      isIndexBrowserEntry &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >entry === "index" </span>&amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >target === "browser"</span>
+        ? <span class="branch-0 cbranch-no" title="branch not covered" >"browser"</span>
         : entry;
     let entryPath;
-    ['ts', 'tsx', 'js', 'jsx'].some((extension) =&gt; {
+    ["ts", "tsx", "js", "jsx"].some((extension) =&gt; {
       const potentialEntryPath = path.resolve(
         cwd,
-        'src',
-        `${entryName}.${extension}`,
+        "src",
+        `${entryName}.${extension}`
       );
 &nbsp;
       if (existsSync(potentialEntryPath)) {
@@ -604,7 +604,7 @@ export default function createRollupConfig({
 &nbsp;
     <span class="missing-if-branch" title="if path not taken" >I</span>if (!entryPath) {
 <span class="cstat-no" title="statement not covered" >      throw new Error(</span>
-        `Could not find entry "src/${entryName}" in path "${cwd}"`,
+        `Could not find entry "src/${entryName}" in path "${cwd}"`
       );
     }
 &nbsp;
@@ -612,33 +612,33 @@ export default function createRollupConfig({
   };
 &nbsp;
   const createConfigForEnv = (entry, entryPath, env) =&gt; {
-    const typescript = entryPath.endsWith('.ts') || entryPath.endsWith('.tsx');
+    const typescript = entryPath.endsWith(".ts") || entryPath.endsWith(".tsx");
     const extensions = (
       typescript
-        ? ['.ts', jsx &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >'.tsx',</span> '.json']
-        : ['.js', jsx &amp;&amp; '.jsx', '.json']
+        ? [".ts", jsx &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >".tsx",</span> ".json"]
+        : [".js", jsx &amp;&amp; ".jsx", ".json"]
     ).filter(Boolean);
     const preferConst = true;
 &nbsp;
     return {
       input: entryPath,
-      output: (env.formats || ['es']).map((format) =&gt; ({
+      output: (env.formats || ["es"]).map((format) =&gt; ({
         file: path.relative(
           process.cwd(),
           path.join(
             cwd,
             `${outDirectory}/${entry}-${env.target}${
-              env.omitVersionInFileName ? <span class="branch-0 cbranch-no" title="branch not covered" >'' </span>: env.version || ''
+              env.omitVersionInFileName ? <span class="branch-0 cbranch-no" title="branch not covered" >"" </span>: env.version || ""
             }${
-              env.target === 'node'
+              env.target === "node"
                 ? nodeFormatToExt(format, pkg.type)
                 : `.${format}.js`
-            }`,
-          ),
+            }`
+          )
         ),
         format,
         sourcemap: true,
-        exports: 'named',
+        exports: "named",
         generatedCode: {
           constBindings: preferConst,
         },
@@ -646,7 +646,7 @@ export default function createRollupConfig({
         freeze: false,
       })),
       external:
-        env.target === 'browser'
+        env.target === "browser"
           ? (path) =&gt; {
               if (browserOnlyExtensions.some((ext) =&gt; path.endsWith(ext))) {
                 return true;
@@ -655,20 +655,20 @@ export default function createRollupConfig({
             }
           : externalByPackageJson,
       plugins: [
-        env.target !== 'browser' &amp;&amp;
+        env.target !== "browser" &amp;&amp;
           ignoreImport({
             extensions: browserOnlyExtensions,
           }),
         babel({
           extensions,
-          envName: 'rollup',
+          envName: "rollup",
           babelrc: false,
           configFile: false,
           presets: [
             jsx &amp;&amp; [
-              '@babel/preset-react',
+              "@babel/preset-react",
               {
-                runtime: 'automatic',
+                runtime: "automatic",
                 // always disable development: babel-plugin-transform-react-jsx-source compiles with filename full path, resulting in non reproducible builds
                 development: false,
                 useBuiltIns: true,
@@ -684,7 +684,7 @@ export default function createRollupConfig({
                 typescript,
                 target: env.target,
                 version:
-                  env.target === 'node'
+                  env.target === "node"
                     ? nodeVersion(env.version)
                     : env.version,
               },
@@ -696,15 +696,15 @@ export default function createRollupConfig({
               babelPluginTransformRuntime,
               {
                 corejs: false,
-                useESModules: 'auto',
+                useESModules: "auto",
                 useHelpers: true,
                 version: minBabelRuntimeVersion,
               },
             ],
           ],
           skipPreflightCheck: true,
-          babelHelpers: 'runtime',
-          exclude: 'node_modules/**',
+          babelHelpers: "runtime",
+          exclude: "node_modules/**",
         }),
 &nbsp;
         json({
@@ -716,7 +716,7 @@ export default function createRollupConfig({
         nodeResolve({
           extensions,
           customResolveOptions: {
-            moduleDirectories: ['src'], // don't resolve node_modules, but allow src (see baseUrl in tsconfig)
+            moduleDirectories: ["src"], // don't resolve node_modules, but allow src (see baseUrl in tsconfig)
           },
         }),
 &nbsp;
@@ -739,7 +739,7 @@ export default function createRollupConfig({
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Sun May 05 2024 13:24:19 GMT+0000 (Coordinated Universal Time)
+                at Sun May 05 2024 13:35:11 GMT+0000 (Coordinated Universal Time)
             </div>
         <script src="../../../prettify.js"></script>
         <script>
