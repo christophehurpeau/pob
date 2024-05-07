@@ -57,7 +57,7 @@
     "@pob/rollup": "1.1.1",
     "@rollup/plugin-node-resolve": "15.2.3",
     "@rollup/plugin-run": "3.0.2",
-    "esbuild": "0.21.0",
+    "esbuild": "0.21.1",
     "rollup": "3.29.4",
     "rollup-config-external-dependencies": "^3.0.0",
     "rollup-plugin-esbuild": "6.1.1"
