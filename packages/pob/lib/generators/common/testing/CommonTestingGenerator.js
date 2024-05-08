@@ -613,6 +613,7 @@ export default class CommonTestingGenerator extends Generator {
             }
 
             if (
+              !pkg.pob?.envs ||
               pkg.pob?.envs.length === 0 ||
               pkg.pob?.envs.some((env) => env.target === "node")
             ) {
