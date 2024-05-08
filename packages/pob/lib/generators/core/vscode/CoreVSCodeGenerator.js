@@ -10,48 +10,49 @@ export default class CoreVSCodeGenerator extends Generator {
       type: Boolean,
       required: false,
       default: "",
-      desc: "Is root",
+      description: "Is root",
     });
 
     this.option("packageManager", {
       type: String,
       required: false,
       default: "yarn",
-      desc: "yarn|npm.",
+      description: "yarn|npm.",
     });
 
     this.option("monorepo", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "is monorepo",
+      description: "is monorepo",
     });
 
     this.option("testing", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Testing enabled",
+      description: "Testing enabled",
     });
 
     this.option("testRunner", {
       type: String,
       required: false,
-      desc: "Test runner (jest, vitest, ...)",
+      description: "Test runner (jest, vitest, ...)",
     });
 
     this.option("yarnNodeLinker", {
       type: String,
       required: false,
       default: "node-modules",
-      desc: "Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.",
+      description:
+        "Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.",
     });
 
     this.option("typescript", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Typescript enabled",
+      description: "Typescript enabled",
     });
 
     this.option("packageNames", {

@@ -12,14 +12,14 @@ export default class CommonTranspilerGenerator extends Generator {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Avoid asking questions",
+      description: "Avoid asking questions",
     });
 
     this.option("testing", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Has testing.",
+      description: "Has testing.",
     });
 
     this.option("fromPob", {
@@ -62,7 +62,7 @@ export default class CommonTranspilerGenerator extends Generator {
       type: Boolean,
       required: false,
       default: false,
-      desc: "only latest lts",
+      description: "only latest lts",
     });
   }
 
@@ -137,15 +137,13 @@ export default class CommonTranspilerGenerator extends Generator {
       (pkg.pob.rollup === false
         ? "tsc"
         : pkg.pob.bundler ??
-          (pkg.pob.typescript ? "rollup-typescript" : "rollup"));
+          (pkg.pob.typescript ? "rollup-typescript" : "rollup-babel"));
     this.bundler = bundler;
 
     const cleanCommand = (() => {
       if (bundler === "rollup-typescript") return "pob-typescript-clean-out";
       if (bundler === "rollup-esbuild") return "pob-esbuild-clean-out";
-      if (bundler === "rollup") {
-        return "pob-babel-clean-out";
-      }
+      if (bundler === "rollup-babel") return "pob-babel-clean-out";
       if (bundler === "esbuild") return "pob-esbuild-clean-out";
       return null;
     })();
@@ -246,7 +244,7 @@ export default class CommonTranspilerGenerator extends Generator {
 
     packageUtils.addOrRemoveDevDependencies(
       pkg,
-      bundler === "rollup" &&
+      bundler === "rollup-babel" &&
         this.options.isApp &&
         !this.options.isAppLibrary &&
         this.options.useAppConfig,
@@ -519,6 +517,7 @@ export default class CommonTranspilerGenerator extends Generator {
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
     const entries = pkg.pob.entries || ["index"];
+    const envs = pkg.pob.envs || pkg.pob.babelEnvs;
 
     this.fs.delete("rollup.config.js");
     if (
@@ -549,11 +548,7 @@ export default class CommonTranspilerGenerator extends Generator {
           },
         );
       }
-    } else if (
-      !pkg.pob.babelEnvs ||
-      pkg.pob.babelEnvs.length === 0 ||
-      pkg.pob?.bundler === "esbuild"
-    ) {
+    } else if (!envs || envs.length === 0 || pkg.pob?.bundler === "esbuild") {
       this.fs.delete("rollup.config.mjs");
     }
 

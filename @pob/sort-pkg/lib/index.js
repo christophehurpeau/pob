@@ -76,6 +76,7 @@ export default function sortPkg(pkg) {
     "bundleDependencies",
   ]);
 
+  if (pkg.pob) sortObject(pkg.pob);
   if (pkg.scripts) sortObject(pkg.scripts);
   if (pkg.overrides) sortObject(pkg.overrides);
   if (pkg.overridesExplained) sortObject(pkg.overridesExplained);

@@ -10,13 +10,13 @@ export default class AppE2ETestingGenerator extends Generator {
     this.option("enable", {
       type: Boolean,
       default: true,
-      desc: "enable e2e testing",
+      description: "enable e2e testing",
     });
 
     this.option("ci", {
       type: Boolean,
       required: true,
-      desc: "ci",
+      description: "ci",
     });
   }
 

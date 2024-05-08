@@ -16,27 +16,29 @@ export default class CoreYarnGenerator extends Generator {
       type: String,
       required: false,
       default: "app",
-      desc: "Project type",
+      description: "Project type",
     });
 
     this.option("enable", {
       type: Boolean,
       required: true,
-      desc: "Enable yarn",
+      description: "Enable yarn",
     });
 
     this.option("yarnNodeLinker", {
       type: String,
       required: false,
       default: "node-modules",
-      desc: "Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.",
+      description:
+        "Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.",
     });
 
     this.option("disableYarnGitCache", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
+      description:
+        "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
   }
 

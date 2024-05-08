@@ -30,86 +30,87 @@ export default class CommonLintGenerator extends Generator {
       type: String,
       required: false,
       default: "undefined",
-      desc: "Use babel.",
+      description: "Use babel.",
     });
 
     this.option("documentation", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Documentation enabled",
+      description: "Documentation enabled",
     });
 
     this.option("testing", {
       type: Boolean,
       required: true,
-      desc: "Testing enabled",
+      description: "Testing enabled",
     });
     this.option("testRunner", {
       type: String,
       required: false,
       default: "jest",
-      desc: "test runner: jest | node",
+      description: "test runner: jest | node",
     });
 
     this.option("typescript", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Typescript enabled",
+      description: "Typescript enabled",
     });
 
     this.option("enableSrcResolver", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Enable resolving from src directory",
+      description: "Enable resolving from src directory",
     });
 
     this.option("rootAsSrc", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "src directory is root",
+      description: "src directory is root",
     });
 
     this.option("appTypes", {
       type: String,
       required: false,
-      desc: "list of app types",
+      description: "list of app types",
     });
 
     this.option("rootIgnorePaths", {
       type: String,
       required: false,
       default: "",
-      desc: "list of ignore paths to add",
+      description: "list of ignore paths to add",
     });
 
     this.option("ignorePaths", {
       type: String,
       required: false,
       default: "",
-      desc: "list of ignore paths to add",
+      description: "list of ignore paths to add",
     });
 
     this.option("packageManager", {
       type: String,
       default: "yarn",
-      desc: "yarn or npm",
+      description: "yarn or npm",
     });
 
     this.option("yarnNodeLinker", {
       type: String,
       required: false,
       default: "node-modules",
-      desc: "Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.",
+      description:
+        "Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.",
     });
 
     this.option("srcDirectory", {
       type: String,
       default: "src",
-      desc: "customize src directory. Default to src",
+      description: "customize src directory. Default to src",
     });
 
     this.option("buildDirectory", {
@@ -121,7 +122,11 @@ export default class CommonLintGenerator extends Generator {
 
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
-    const babelEnvs = (pkg.pob && pkg.pob.babelEnvs) || [];
+    const babelEnvs =
+      (pkg.pob &&
+        (pkg.pob.babelEnvs ||
+          (pkg.pob.bundler === "rollup-babel" && pkg.pob.envs))) ||
+      [];
     // const typescriptTargets = (pkg.pob && pkg.pob.typescriptTargets) || [];
     const useBabel =
       this.options.babel !== "undefined"

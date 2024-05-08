@@ -34,7 +34,8 @@
   "scripts": {
     "format": "prettier --write",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/pob"
+    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/pob",
+    "tsc": "tsc -p ./tsconfig.json"
   },
   "pob": {},
   "prettier": "@pob/root/prettier-config",
@@ -72,6 +73,8 @@
     "yeoman-generator": "7.1.1"
   },
   "devDependencies": {
-    "@pob/root": "10.0.0"
+    "@pob/root": "10.0.0",
+    "@types/node": "20.12.11",
+    "typescript": "5.4.5"
   }
 }

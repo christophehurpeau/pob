@@ -11,31 +11,31 @@ export default class LibReadmeGenerator extends Generator {
     this.option("privatePackage", {
       type: Boolean,
       required: true,
-      desc: "If the project is private",
+      description: "If the project is private",
     });
 
     this.option("documentation", {
       type: Boolean,
       required: true,
-      desc: "Include documentation",
+      description: "Include documentation",
     });
 
     this.option("testing", {
       type: Boolean,
       required: true,
-      desc: "Include testing badge",
+      description: "Include testing badge",
     });
 
     this.option("codecov", {
       type: Boolean,
       required: true,
-      desc: "Include codecov badge",
+      description: "Include codecov badge",
     });
 
     this.option("content", {
       type: String,
       required: false,
-      desc: "Readme content",
+      description: "Readme content",
     });
   }
 

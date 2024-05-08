@@ -13,34 +13,34 @@ export default class CorePackageGenerator extends Generator {
       type: Boolean,
       required: true,
       default: false,
-      desc: "is monorepo",
+      description: "is monorepo",
     });
 
     this.option("inMonorepo", {
       type: Boolean,
       required: true,
       default: false,
-      desc: "in monorepo",
+      description: "in monorepo",
     });
 
     this.option("isRoot", {
       type: Boolean,
       required: true,
       default: false,
-      desc: "is root",
+      description: "is root",
     });
 
     this.option("private", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "private package",
+      description: "private package",
     });
 
     this.option("packageType", {
       type: String,
       required: false,
-      desc: "package type",
+      description: "package type",
     });
   }
 

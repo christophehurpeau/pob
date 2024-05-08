@@ -13,98 +13,93 @@ export default class CoreCIGenerator extends Generator {
     this.option("enable", {
       type: Boolean,
       default: true,
-      desc: "enable ci",
+      description: "enable ci",
     });
 
     this.option("enableReleasePlease", {
       type: Boolean,
       default: true,
-      desc: "enable release-please",
+      description: "enable release-please",
     });
 
     this.option("enableYarnVersion", {
       type: Boolean,
       default: true,
-      desc: "enable yarn version conventional commits",
+      description: "enable yarn version conventional commits",
     });
 
     this.option("build", {
       type: Boolean,
       default: true,
-      desc: "enable build",
+      description: "enable build",
     });
 
     this.option("typescript", {
       type: Boolean,
       default: true,
-      desc: "enable typescript",
+      description: "enable typescript",
     });
 
     this.option("testing", {
       type: Boolean,
       default: true,
-      desc: "enable testing",
+      description: "enable testing",
     });
     this.option("testRunner", {
       type: String,
       required: false,
       default: "jest",
-      desc: "test runner: jest | node",
+      description: "test runner: jest | node",
     });
 
     this.option("e2eTesting", {
       type: String,
       default: "",
-      desc: "e2e testing package path",
+      description: "e2e testing package path",
     });
-
-    // this.option('babelEnvs', {
-    //   type: String,
-    //   required: true,
-    //   desc: 'Babel Envs',
-    // });
 
     this.option("ci", {
       type: Boolean,
       required: true,
-      desc: "ci with github actions",
+      description: "ci with github actions",
     });
 
     this.option("codecov", {
       type: Boolean,
       required: true,
-      desc: "Include codecov report",
+      description: "Include codecov report",
     });
 
     this.option("documentation", {
       type: Boolean,
       required: true,
-      desc: "Include documentation generation",
+      description: "Include documentation generation",
     });
 
     this.option("isApp", {
       type: Boolean,
       required: true,
-      desc: "is app",
+      description: "is app",
     });
 
     this.option("onlyLatestLTS", {
       type: Boolean,
       required: true,
-      desc: "only latest lts",
+      description: "only latest lts",
     });
 
     this.option("splitJobs", {
       type: Boolean,
       required: true,
-      desc: "split CI jobs for faster result",
+      description: "split CI jobs for faster result",
     });
 
     this.option("disableYarnGitCache", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
+      description:
+        "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
   }
 

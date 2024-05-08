@@ -37,11 +37,11 @@
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
   "pob": {
-    "typescript": true,
     "bundler": "rollup-typescript",
     "entries": [
       "index"
-    ]
+    ],
+    "typescript": true
   },
   "prettier": "@pob/root/prettier-config",
   "dependencies": {

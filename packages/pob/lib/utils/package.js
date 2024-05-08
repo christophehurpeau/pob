@@ -8,7 +8,7 @@ import {
   pobEslintConfigTypescript,
   pobEslintConfigTypescriptReact,
 } from "./dependenciesPackages.cjs";
-import pobPkg from "./packagejson.cjs";
+import pobPkg from "./packagejson.js";
 
 export { default as parseAuthor } from "parse-author";
 

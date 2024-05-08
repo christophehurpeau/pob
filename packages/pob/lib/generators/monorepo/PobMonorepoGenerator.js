@@ -44,9 +44,8 @@ const hasDist = (packages, configs) =>
     (config, index) =>
       !!(config && config.project && config.project.type === "lib") &&
       !!(
-        packages[index].pob &&
-        packages[index].pob.babelEnvs &&
-        packages[index].pob.babelEnvs.length > 0
+        packages[index].pob?.babelEnvs?.length > 0 ||
+        packages[index].pob?.envs?.length > 0
       ),
   );
 
@@ -69,40 +68,42 @@ export default class PobMonorepoGenerator extends Generator {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Avoid asking questions",
+      description: "Avoid asking questions",
     });
 
     this.option("isAppProject", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "app project, no pusblishing on npm",
+      description: "app project, no pusblishing on npm",
     });
 
     this.option("packageManager", {
       type: String,
       default: "yarn",
-      desc: "yarn or npm",
+      description: "yarn or npm",
     });
 
     this.option("yarnNodeLinker", {
       type: String,
       required: false,
       default: "pnp",
-      desc: "Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.",
+      description:
+        "Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.",
     });
 
     this.option("onlyLatestLTS", {
       type: Boolean,
       required: true,
-      desc: "only latest lts",
+      description: "only latest lts",
     });
 
     this.option("disableYarnGitCache", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
+      description:
+        "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
   }
 

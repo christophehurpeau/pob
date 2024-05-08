@@ -8,58 +8,59 @@ export default class CommonReleaseGenerator extends Generator {
     this.option("enable", {
       type: Boolean,
       required: true,
-      desc: "If releasing is enabled",
+      description: "If releasing is enabled",
     });
 
     this.option("enablePublish", {
       type: Boolean,
       required: true,
-      desc: "If publish on npm is enabled",
+      description: "If publish on npm is enabled",
     });
 
     this.option("withBabel", {
       type: Boolean,
       required: false,
       default: undefined,
-      desc: "Babel enabled.",
+      description: "Babel enabled.",
     });
 
     this.option("withTypescript", {
       type: Boolean,
       required: false,
       default: undefined,
-      desc: "Typescript enabled.",
+      description: "Typescript enabled.",
     });
     this.option("isMonorepo", {
       type: Boolean,
       default: false,
-      desc: "is monorepo",
+      description: "is monorepo",
     });
 
     this.option("enableYarnVersion", {
       type: Boolean,
       default: true,
-      desc: "enable yarn version conventional commits",
+      description: "enable yarn version conventional commits",
     });
 
     this.option("ci", {
       type: Boolean,
       required: true,
-      desc: "ci with github actions",
+      description: "ci with github actions",
     });
 
     this.option("disableYarnGitCache", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
+      description:
+        "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
 
     this.option("updateOnly", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Avoid asking questions",
+      description: "Avoid asking questions",
     });
   }
 

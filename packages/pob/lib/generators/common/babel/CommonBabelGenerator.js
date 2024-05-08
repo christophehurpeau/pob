@@ -3,6 +3,7 @@ import Generator from "yeoman-generator";
 import * as packageUtils from "../../../utils/package.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
+/** @deprecated */
 export default class CommonBabelGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
@@ -11,14 +12,14 @@ export default class CommonBabelGenerator extends Generator {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Avoid asking questions",
+      description: "Avoid asking questions",
     });
 
     this.option("testing", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Has testing.",
+      description: "Has testing.",
     });
 
     this.option("fromPob", {
@@ -55,15 +56,19 @@ export default class CommonBabelGenerator extends Generator {
       type: Boolean,
       required: false,
       default: false,
-      desc: "only latest lts",
+      description: "only latest lts",
     });
   }
 
   initializing() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
-    if (pkg.pob && pkg.pob.babelEnvs) {
-      let babelEnvs = pkg.pob.babelEnvs;
+    if (
+      pkg.pob &&
+      (pkg.pob.babelEnvs ||
+        (pkg.pob.envs && pkg.pob.bundler === "rollup-babel"))
+    ) {
+      let babelEnvs = pkg.pob.babelEnvs || pkg.pob.envs;
       if (
         !babelEnvs.some(
           (env) =>
@@ -89,7 +94,9 @@ export default class CommonBabelGenerator extends Generator {
           env.version >= (this.options.onlyLatestLTS ? 20 : 18),
       );
 
-      pkg.pob.babelEnvs = babelEnvs;
+      delete pkg.pob.babelEnvs;
+      pkg.pob.bundler = "rollup-babel";
+      pkg.pob.envs = babelEnvs;
       this.fs.writeJSON(this.destinationPath("package.json"), pkg);
     }
   }
@@ -98,10 +105,12 @@ export default class CommonBabelGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
     const hasInitialPkgPob = !!pkg.pob;
-
     if (!hasInitialPkgPob) pkg.pob = {};
 
-    const babelEnvs = pkg.pob.babelEnvs || [];
+    const babelEnvs =
+      pkg.pob.babelEnvs ||
+      (pkg.pob.bundler === "rollup-babel" && pkg.pob.envs) ||
+      [];
 
     const targets = [
       babelEnvs.some((env) => env.target === "node") ? "node" : undefined,
@@ -253,13 +262,17 @@ export default class CommonBabelGenerator extends Generator {
 
     delete pkg.pob.withReact;
     if (newBabelEnvs.length === 0) {
-      delete pkg.pob.babelEnvs;
-      if (!pkg.pob.typescript) {
-        delete pkg.pob.entries;
-        delete pkg.pob.jsx;
+      if (!pkg.pob.bundler || pkg.pob.bundler === "rollup-babel") {
+        delete pkg.pob.envs;
+        delete pkg.pob.babelEnvs;
+        if (!pkg.pob.typescript) {
+          delete pkg.pob.entries;
+          delete pkg.pob.jsx;
+        }
       }
     } else {
-      pkg.pob.babelEnvs = newBabelEnvs;
+      pkg.pob.bundler = "rollup-babel";
+      pkg.pob.envs = newBabelEnvs;
       pkg.pob.entries = pkg.pob.entries || ["index"];
       if (pkg.pob.jsx) {
         pkg.pob.jsx = jsx;
@@ -274,7 +287,10 @@ export default class CommonBabelGenerator extends Generator {
   configuring() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
     this.entries = pkg.pob.entries;
-    this.babelEnvs = pkg.pob.babelEnvs || [];
+    this.babelEnvs =
+      pkg.pob.babelEnvs ||
+      (pkg.pob.bundler === "rollup-babel" && pkg.pob.envs) ||
+      [];
 
     if (this.entries) {
       this.entries.forEach((entry) => {

@@ -9,7 +9,7 @@ export default class AppNextjsGenerator extends Generator {
       type: Boolean,
       required: false,
       default: true,
-      desc: "Use next export.",
+      description: "Use next export.",
     });
   }
 

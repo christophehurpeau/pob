@@ -8,20 +8,20 @@ export default class CoreNpmGenerator extends Generator {
       type: Boolean,
       required: false,
       default: true,
-      desc: "Enable npm",
+      description: "Enable npm",
     });
 
     this.option("srcDirectory", {
       type: String,
       required: true,
       default: "lib",
-      desc: "src directory to include in published files",
+      description: "src directory to include in published files",
     });
 
     this.option("distDirectory", {
       type: String,
       required: false,
-      desc: "dist directory to include in published files",
+      description: "dist directory to include in published files",
     });
   }
 

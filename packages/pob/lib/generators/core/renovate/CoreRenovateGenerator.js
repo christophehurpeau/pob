@@ -10,21 +10,21 @@ export default class CoreRenovateGenerator extends Generator {
       type: Boolean,
       required: false,
       default: false,
-      desc: "disable",
+      description: "disable",
     });
 
     this.option("app", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "is app (instead of lib)",
+      description: "is app (instead of lib)",
     });
 
     this.option("updateOnly", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Avoid asking questions",
+      description: "Avoid asking questions",
     });
   }
 

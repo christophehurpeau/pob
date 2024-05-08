@@ -11,20 +11,21 @@ export default class MonorepoWorkspacesGenerator extends Generator {
     this.option("isAppProject", {
       type: Boolean,
       default: true,
-      desc: "is app project",
+      description: "is app project",
     });
 
     this.option("packageManager", {
       type: String,
       default: "yarn",
-      desc: "yarn or npm",
+      description: "yarn or npm",
     });
 
     this.option("disableYarnGitCache", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
+      description:
+        "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
   }
 
@@ -60,16 +61,19 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       babelEnvs: [],
       ...(config && config.pob),
     });
-    const withBabel = this.packages.some(
-      (config) => getPackagePobConfig(config).babelEnvs.length > 0,
-    );
+    const withBabel = this.packages.some((config) => {
+      const pobConfig = getPackagePobConfig(config);
+      return (
+        pobConfig.babelEnvs.length > 0 || pobConfig.bundler === "rollup-babel"
+      );
+    });
 
     // package.json
     const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
     packageUtils.removeDependencies(pkg, ["@pob/lerna-light"]);
     packageUtils.removeDevDependencies(pkg, ["@pob/lerna-light"]);
 
-    if (this.npm) {
+    if (this.options.packageManager === "npm") {
       if (!pkg.engines) pkg.engines = {};
       pkg.engines.yarn = "< 0.0.0";
       pkg.engines.npm = ">= 6.4.0";
@@ -84,7 +88,7 @@ export default class MonorepoWorkspacesGenerator extends Generator {
     }
 
     const monorepoConfig = this.config.get("monorepo");
-    const packageManager = this.npm ? "npm" : "yarn";
+    const packageManager = this.options.packageManager;
 
     packageUtils.addScripts(pkg, {
       lint: `${packageManager} run lint:prettier && ${packageManager} run lint:eslint`,

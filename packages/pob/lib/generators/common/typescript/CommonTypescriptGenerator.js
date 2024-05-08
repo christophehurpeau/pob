@@ -11,13 +11,13 @@ export default class CommonTypescriptGenerator extends Generator {
     this.option("enable", {
       type: Boolean,
       default: true,
-      desc: "enable typescript",
+      description: "enable typescript",
     });
 
     this.option("isApp", {
       type: Boolean,
       required: true,
-      desc: "is app",
+      description: "is app",
     });
 
     this.option("isAppLibrary", {
@@ -29,66 +29,67 @@ export default class CommonTypescriptGenerator extends Generator {
     this.option("rootDir", {
       type: String,
       default: "src",
-      desc: "customize rootDir",
+      description: "customize rootDir",
     });
 
     this.option("srcDirectory", {
       type: String,
       default: "src",
-      desc: "customize srcDirectory, if different than rootDir",
+      description: "customize srcDirectory, if different than rootDir",
     });
 
     this.option("jsx", {
       type: Boolean,
       default: true,
-      desc: "enable jsx with typescript",
+      description: "enable jsx with typescript",
     });
 
     this.option("jsxPreserve", {
       type: Boolean,
       default: false,
-      desc: "force jsx preserve in tsconfig for legacy apps (nextjs, CRA)",
+      description:
+        "force jsx preserve in tsconfig for legacy apps (nextjs, CRA)",
     });
 
     this.option("forceExcludeNodeModules", {
       type: Boolean,
       default: false,
-      desc: "force exclude node_modules for legacy apps (nextjs, CRA)",
+      description: "force exclude node_modules for legacy apps (nextjs, CRA)",
     });
 
     this.option("forceAllowJs", {
       type: Boolean,
       default: false,
-      desc: "force allow js for legacy apps (nextjs, CRA)",
+      description: "force allow js for legacy apps (nextjs, CRA)",
     });
 
     this.option("dom", {
       type: Boolean,
       default: true,
-      desc: "enable dom with typescript",
+      description: "enable dom with typescript",
     });
 
     this.option("baseUrl", {
       type: String,
       default: "",
-      desc: "baseUrl option",
+      description: "baseUrl option",
     });
 
     this.option("resolveJsonModule", {
       type: Boolean,
       default: false,
-      desc: "resolveJsonModule option",
+      description: "resolveJsonModule option",
     });
 
     this.option("builddefs", {
       type: Boolean,
       default: true,
-      desc: "build .d.ts option",
+      description: "build .d.ts option",
     });
     this.option("plugins", {
       type: String,
       default: "",
-      desc: "typescript plugins",
+      description: "typescript plugins",
     });
     this.option("nextConfig", {
       type: Boolean,
@@ -97,14 +98,14 @@ export default class CommonTypescriptGenerator extends Generator {
     this.option("additionalIncludes", {
       type: String,
       default: "",
-      desc: "typescript additional includes",
+      description: "typescript additional includes",
     });
 
     this.option("onlyLatestLTS", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "only latest lts",
+      description: "only latest lts",
     });
   }
 
@@ -117,7 +118,10 @@ export default class CommonTypescriptGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
     const presets = (() => {
-      const babelEnvs = pkg.pob?.babelEnvs || [];
+      const babelEnvs =
+        pkg.pob?.babelEnvs ||
+        (pkg.pob?.bundler === "rollup-babel" && pkg.pob.envs) ||
+        [];
       const withBabel = babelEnvs.length > 0;
       const withTypescript = withBabel || pkg.pob?.typescript === true;
       const jsx = (withBabel || withTypescript) && pkg.pob.jsx === true;

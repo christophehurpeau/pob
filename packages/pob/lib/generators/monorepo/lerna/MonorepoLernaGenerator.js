@@ -10,20 +10,21 @@ export default class MonorepoLernaGenerator extends Generator {
     this.option("isAppProject", {
       type: Boolean,
       default: true,
-      desc: "is app project",
+      description: "is app project",
     });
 
     this.option("packageManager", {
       type: String,
       default: "yarn",
-      desc: "yarn or npm",
+      description: "yarn or npm",
     });
 
     this.option("disableYarnGitCache", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
+      description:
+        "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
   }
 
@@ -106,9 +107,12 @@ export default class MonorepoLernaGenerator extends Generator {
       babelEnvs: [],
       ...(config && config.pob),
     });
-    const withBabel = this.packages.some(
-      (config) => getPackagePobConfig(config).babelEnvs.length > 0,
-    );
+    const withBabel = this.packages.some((config) => {
+      const pobConfig = getPackagePobConfig(config);
+      return (
+        pobConfig.babelEnvs.length > 0 || pobConfig.bundler === "rollup-babel"
+      );
+    });
 
     // lerna.json
     const lernaConfig = this.fs.readJSON(

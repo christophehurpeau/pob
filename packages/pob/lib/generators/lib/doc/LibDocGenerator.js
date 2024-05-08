@@ -11,20 +11,20 @@ export default class LibDocGenerator extends Generator {
       type: Boolean,
       required: false,
       default: true,
-      desc: "Enabled.",
+      description: "Enabled.",
     });
 
     this.option("testing", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Coverage.",
+      description: "Coverage.",
     });
 
     this.option("packageManager", {
       type: String,
       default: "yarn",
-      desc: "yarn or npm",
+      description: "yarn or npm",
     });
 
     this.option("packageNames", {

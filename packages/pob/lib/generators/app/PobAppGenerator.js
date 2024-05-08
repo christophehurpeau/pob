@@ -23,7 +23,7 @@ export default class PobAppGenerator extends Generator {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Avoid asking questions",
+      description: "Avoid asking questions",
     });
 
     this.option("fromPob", {
@@ -35,21 +35,23 @@ export default class PobAppGenerator extends Generator {
     this.option("packageManager", {
       type: String,
       default: "yarn",
-      desc: "yarn or npm",
+      description: "yarn or npm",
     });
 
     this.option("yarnNodeLinker", {
       type: String,
       required: false,
       default: "node-modules",
-      desc: "Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.",
+      description:
+        "Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.",
     });
 
     this.option("disableYarnGitCache", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
+      description:
+        "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
   }
 
@@ -171,16 +173,16 @@ export default class PobAppGenerator extends Generator {
       this.composeWith("pob:common:husky", {});
     }
 
-    const babelEnvs = (pkg.pob && pkg.pob.babelEnvs) || [];
+    const envs = (pkg.pob && (pkg.pob.babelEnvs || pkg.pob.envs)) || [];
     const babel =
-      babelEnvs.length > 0 || appsWithTypescript.includes(this.appConfig.type);
+      envs.length > 0 || appsWithTypescript.includes(this.appConfig.type);
     const typescript = babel || pkg.pob?.typescript;
     const node = true;
     const browser =
       appsWithBrowser.includes(this.appConfig.type) ||
-      (babel && babelEnvs.some((env) => env.target === "browser"));
+      (babel && envs.some((env) => env.target === "browser"));
     const jsx =
-      babelEnvs.length > 0 && pkg.pob.jsx !== undefined
+      envs.length > 0 && pkg.pob.jsx !== undefined
         ? pkg.pob.jsx
         : packageUtils.hasReact(pkg);
 

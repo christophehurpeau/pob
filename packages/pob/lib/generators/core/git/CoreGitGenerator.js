@@ -11,19 +11,19 @@ export default class CoreGitGenerator extends Generator {
       type: Boolean,
       required: false,
       default: "",
-      desc: "Should create the repo on github",
+      description: "Should create the repo on github",
     });
 
     this.option("onlyLatestLTS", {
       type: Boolean,
       required: true,
-      desc: "only latest lts",
+      description: "only latest lts",
     });
 
     this.option("splitCIJobs", {
       type: Boolean,
       required: true,
-      desc: "split CI jobs for faster result",
+      description: "split CI jobs for faster result",
     });
   }
 

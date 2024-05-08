@@ -11,7 +11,7 @@ export default class CommonHuskyGenerator extends Generator {
       type: String,
       required: false,
       default: "",
-      desc: "Destination of the generated files.",
+      description: "Destination of the generated files.",
     });
   }
 

@@ -214,7 +214,7 @@ export default function createRollupConfig({
     };
   };
 
-  return pobConfig.babelEnvs.flatMap((env) => {
+  return (pobConfig.envs || pobConfig.babelEnvs).flatMap((env) => {
     return entries.map((entry) => {
       const entryPath = resolveEntry(entry, env.target);
       return createConfigForEnv(entry, entryPath, env);

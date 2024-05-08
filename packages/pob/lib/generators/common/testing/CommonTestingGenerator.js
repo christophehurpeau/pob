@@ -15,111 +15,112 @@ export default class CommonTestingGenerator extends Generator {
     this.option("monorepo", {
       type: Boolean,
       default: false,
-      desc: "is root monorepo",
+      description: "is root monorepo",
     });
 
     this.option("enable", {
       type: Boolean,
       default: true,
-      desc: "enable testing",
+      description: "enable testing",
     });
 
     this.option("runner", {
       type: String,
       default: "jest",
-      desc: "test runner (jest or node)",
+      description: "test runner (jest or node)",
     });
 
     this.option("enableReleasePlease", {
       type: Boolean,
       default: true,
-      desc: "enable release-please",
+      description: "enable release-please",
     });
 
     this.option("enableYarnVersion", {
       type: Boolean,
       default: true,
-      desc: "enable yarn version conventional commits",
+      description: "enable yarn version conventional commits",
     });
 
     this.option("ci", {
       type: Boolean,
       required: true,
-      desc: "ci",
+      description: "ci",
     });
 
     this.option("typescript", {
       type: Boolean,
       required: true,
-      desc: "typescript",
+      description: "typescript",
     });
 
     this.option("build", {
       type: Boolean,
       required: true,
-      desc: "build (with babel or typescript)",
+      description: "build (with babel or typescript)",
     });
 
     this.option("codecov", {
       type: Boolean,
       required: true,
-      desc: "Include codecov report",
+      description: "Include codecov report",
     });
 
     this.option("documentation", {
       type: Boolean,
       required: true,
-      desc: "Include documentation generation",
+      description: "Include documentation generation",
     });
 
     this.option("packageManager", {
       type: String,
       default: "yarn",
-      desc: "yarn or npm",
+      description: "yarn or npm",
     });
 
     this.option("isApp", {
       type: Boolean,
       required: true,
-      desc: "is app",
+      description: "is app",
     });
 
     this.option("e2eTesting", {
       type: String,
       default: "",
-      desc: "e2e testing package path",
+      description: "e2e testing package path",
     });
 
     this.option("splitCIJobs", {
       type: Boolean,
       required: true,
-      desc: "split CI jobs for faster result",
+      description: "split CI jobs for faster result",
     });
 
     this.option("onlyLatestLTS", {
       type: Boolean,
       required: true,
-      desc: "only latest lts",
+      description: "only latest lts",
     });
 
     this.option("srcDirectory", {
       type: String,
       default: "src",
-      desc: 'customize srcDirectory, default to "src"',
+      description: 'customize srcDirectory, default to "src"',
     });
 
     this.option("disableYarnGitCache", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
+      description:
+        "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
 
     this.option("swc", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Use swc to transpile code.",
+      description: "Use swc to transpile code.",
     });
   }
 
@@ -491,9 +492,10 @@ export default class CommonTestingGenerator extends Generator {
               .replace("\\", "/")}`,
           });
         } else {
-          const babelEnvs = pkg.pob?.babelEnvs || [];
-          const transpileWithBabel = packageUtils.transpileWithBabel(pkg);
-          const withTypescript = babelEnvs.length > 0 || pkg.pob?.typescript;
+          const withTypescript =
+            pkg.pob?.envs?.length > 0 ||
+            pkg.pob?.bundler === "rollup-babel" ||
+            pkg.pob?.typescript;
 
           const shouldUseExperimentalVmModules =
             pkg.type === "module" && !inMonorepo;
@@ -519,10 +521,9 @@ export default class CommonTestingGenerator extends Generator {
           });
 
           if (testRunner === "jest") {
-            const srcDirectory =
-              transpileWithBabel || withTypescript
-                ? this.options.srcDirectory
-                : "lib";
+            const srcDirectory = this.options.build
+              ? this.options.srcDirectory
+              : "lib";
 
             const jestConfig = this.fs.readJSON(jestConfigPath, pkg.jest ?? {});
             delete pkg.jest;
@@ -612,8 +613,8 @@ export default class CommonTestingGenerator extends Generator {
             }
 
             if (
-              babelEnvs.length === 0 ||
-              babelEnvs.some((env) => env.target === "node")
+              pkg.pob?.envs.length === 0 ||
+              pkg.pob?.envs.some((env) => env.target === "node")
             ) {
               // jestConfig.testEnvironment = 'node'; this is the default now
               delete jestConfig.testEnvironment;

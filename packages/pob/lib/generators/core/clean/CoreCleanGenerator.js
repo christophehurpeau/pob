@@ -8,7 +8,7 @@ export default class CoreCleanGenerator extends Generator {
       type: Boolean,
       required: false,
       default: true,
-      desc: "Root package.",
+      description: "Root package.",
     });
   }
 

@@ -11,31 +11,31 @@ export default class PobBaseGenerator extends Generator {
     this.option("monorepo", {
       type: Boolean,
       required: false,
-      desc: "monorepo",
+      description: "monorepo",
     });
 
     this.option("type", {
       type: String,
       required: true,
-      desc: "Type of generator",
+      description: "Type of generator",
     });
 
     this.option("updateOnly", {
       type: Boolean,
       required: true,
-      desc: "Don't ask questions if we already have the answers",
+      description: "Don't ask questions if we already have the answers",
     });
 
     this.option("fromPob", {
       type: Boolean,
       required: true,
-      desc: "Don't run yarn or build",
+      description: "Don't run yarn or build",
     });
 
     this.option("force", {
       type: Boolean,
       required: true,
-      desc: "Don't check diff",
+      description: "Don't check diff",
     });
   }
 

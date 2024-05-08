@@ -11,7 +11,7 @@ export default class PobLibGenerator extends Generator {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Avoid asking questions",
+      description: "Avoid asking questions",
     });
 
     this.option("fromPob", {
@@ -23,21 +23,23 @@ export default class PobLibGenerator extends Generator {
     this.option("packageManager", {
       type: String,
       default: "yarn",
-      desc: "yarn or npm",
+      description: "yarn or npm",
     });
 
     this.option("yarnNodeLinker", {
       type: String,
       required: false,
       default: "node-modules",
-      desc: "Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.",
+      description:
+        "Defines what linker should be used for installing Node packages (useful to enable the node-modules plugin), one of: pnp, node-modules.",
     });
 
     this.option("disableYarnGitCache", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
+      description:
+        "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
   }
 
@@ -72,7 +74,10 @@ export default class PobLibGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
     const pobPkgConfig = pkg.pob || {};
 
-    let babelEnvs = this.pobjson.envs || pobPkgConfig.babelEnvs;
+    let babelEnvs =
+      this.pobjson.envs ||
+      pobPkgConfig.babelEnvs ||
+      (pobPkgConfig.bundler === "rollup-babel" && pobPkgConfig.envs);
     const entries = this.pobjson.entries || pobPkgConfig.entries;
     const jsx =
       this.pobjson.withReact || pobPkgConfig.withReact || pobPkgConfig.jsx;
@@ -148,7 +153,9 @@ export default class PobLibGenerator extends Generator {
 
     delete pkg.pob.withReact;
     if (babelEnvs && babelEnvs.length > 0) {
-      pkg.pob.babelEnvs = babelEnvs;
+      delete pkg.pob.babelEnvs;
+      pkg.pob.bundler = "rollup-babel";
+      pkg.pob.envs = babelEnvs;
       pkg.pob.entries = entries;
       pkg.pob.jsx = jsx;
     }
@@ -247,13 +254,15 @@ export default class PobLibGenerator extends Generator {
 
   default() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
-    const babelEnvs = pkg.pob.babelEnvs || [];
+    const babelEnvs =
+      pkg.pob.babelEnvs ||
+      (pkg.pob.bundler === "rollup-babel" && pkg.pob.envs) ||
+      [];
 
     const withBabel = babelEnvs.length > 0;
     const withTypescript = withBabel || pkg.pob.typescript === true;
     const jsx = (withBabel || withTypescript) && pkg.pob.jsx === true;
-    const browser =
-      withBabel && babelEnvs.some((env) => env.target === "browser");
+    const browser = pkg.pob.envs?.some((env) => env.target === "browser");
 
     this.composeWith("pob:common:typescript", {
       enable: withTypescript,
@@ -373,7 +382,9 @@ export default class PobLibGenerator extends Generator {
       pkg.sideEffects = false;
     }
 
-    const withBabel = Boolean(pkg.pob.babelEnvs);
+    const withBabel = Boolean(
+      pkg.pob.babelEnvs || pkg.pob.bundler === "rollup-babel",
+    );
     const withTypescript = pkg.pob.typescript === true;
 
     packageUtils.removeDevDependencies(pkg, ["lerna", "@pob/lerna-light"]);
@@ -413,15 +424,6 @@ export default class PobLibGenerator extends Generator {
       });
 
     const { pobjson } = this;
-
-    // .includes('node6') && 'node6',
-    //   this.babelEnvs.includes('node8') && 'node8',
-    //   this.babelEnvs.includes('olderNode') && 'older-node',
-    //   this.babelEnvs.includes('moduleModernBrowsers') && 'module-modern-browsers',
-    //   this.babelEnvs.includes('moduleAllBrowsers') && 'module',
-    //   this.babelEnvs.includes('moduleNode8') && 'module-node8',
-    //   this.babelEnvs.includes('browsers') && 'browsers',
-    // ].filter(Boolean);
 
     this.config.set("lib", pobjson);
     this.config.save();

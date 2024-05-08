@@ -8,59 +8,55 @@ export default class CoreGitignoreGenerator extends Generator {
       type: Boolean,
       required: false,
       default: true,
-      desc: "Root package.",
+      description: "Root package.",
     });
 
     this.option("documentation", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Documentation enabled.",
+      description: "Documentation enabled.",
     });
 
     this.option("testing", {
       type: Boolean,
       required: false,
       default: false,
-      desc: "Testing enabled.",
+      description: "Testing enabled.",
     });
 
     this.option("withBabel", {
       type: Boolean,
       required: false,
       default: undefined,
-      desc: "Babel enabled.",
+      description: "Babel enabled.",
     });
 
     this.option("paths", {
       type: String,
       required: false,
       default: "",
-      desc: "Paths ignored.",
+      description: "Paths ignored.",
     });
 
     this.option("typescript", {
       type: Boolean,
       required: false,
       default: true,
-      desc: "Typescript use.",
+      description: "Typescript use.",
     });
 
     this.option("buildInGit", {
       type: Boolean,
       required: false,
       default: true,
-      desc: "Build is saved in git.",
+      description: "Build is saved in git.",
     });
   }
 
   writing() {
     const dest = this.destinationPath(".gitignore");
     const withBabel = this.options.withBabel;
-    // if (withBabel === undefined) {
-    //   const babelEnvs = (pkg.pob && pkg.pob.babelEnvs) || [];
-    //   withBabel = babelEnvs.length !== 0;
-    // }
 
     if (
       !this.options.root &&

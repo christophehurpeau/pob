@@ -41,14 +41,14 @@
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
   "pob": {
-    "babelEnvs": [
+    "entries": [
+      "index"
+    ],
+    "envs": [
       {
         "target": "node",
         "version": "18"
       }
-    ],
-    "entries": [
-      "index"
     ]
   },
   "prettier": "@pob/root/prettier-config",
