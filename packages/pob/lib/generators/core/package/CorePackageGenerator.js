@@ -130,13 +130,13 @@ export default class CorePackageGenerator extends Generator {
           name: "authorName",
           message: "Author's Name",
           when: !pkg.authors && (!author || !author.name),
-          default: this.git.name(),
+          default: await this.git.name(),
         },
         {
           name: "authorEmail",
           message: "Author's Email",
           when: !pkg.authors && (!author || !author.email),
-          default: this.git.email(),
+          default: await this.git.email(),
         },
         {
           name: "authorUrl",
