@@ -6975,7 +6975,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ejs@npm:^3.1.9":
+"ejs@npm:^3.1.10":
   version: 3.1.10
   resolution: "ejs@npm:3.1.10"
   dependencies:
@@ -9503,10 +9503,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isbinaryfile@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "isbinaryfile@npm:5.0.0"
-  checksum: 10/511bb5ce54c903e9881ca46fe7fe06759b29d9d01d6929f3c46cb95a4bf369320d9de858943d5bf4ac446a442b53be095b325b1deebca0e67ccd9f466c53ef74
+"isbinaryfile@npm:5.0.2, isbinaryfile@npm:^5.0.0":
+  version: 5.0.2
+  resolution: "isbinaryfile@npm:5.0.2"
+  checksum: 10/515d7c963b35c2c443457d18c9152d1f655f3a0e2dceb548448e482145c1897e57a92fc024dece7de98c85c2909f5528e34e3d720c307887529cd689d7a7cd36
   languageName: node
   linkType: hard
 
@@ -10742,18 +10742,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mem-fs-editor@npm:11.0.0, mem-fs-editor@npm:^11.0.0":
-  version: 11.0.0
-  resolution: "mem-fs-editor@npm:11.0.0"
+"mem-fs-editor@npm:11.0.1, mem-fs-editor@npm:^11.0.0":
+  version: 11.0.1
+  resolution: "mem-fs-editor@npm:11.0.1"
   dependencies:
     "@types/ejs": "npm:^3.1.3"
     "@types/node": "npm:^18.18.5"
     binaryextensions: "npm:^4.18.0"
     commondir: "npm:^1.0.1"
     deep-extend: "npm:^0.6.0"
-    ejs: "npm:^3.1.9"
+    ejs: "npm:^3.1.10"
     globby: "npm:^13.2.2"
-    isbinaryfile: "npm:^5.0.0"
+    isbinaryfile: "npm:5.0.2"
     minimatch: "npm:^9.0.3"
     multimatch: "npm:^6.0.0"
     normalize-path: "npm:^3.0.0"
@@ -10761,7 +10761,7 @@ __metadata:
     vinyl: "npm:^3.0.0"
   peerDependencies:
     mem-fs: ^4.0.0
-  checksum: 10/a83a88f01c70b4964a1c80619c5eca94e2768cd785b4b315061808201f5303cf34da4cda5cdfc11847700cde7ba23d727d768fc85c63928673f942e1208866c0
+  checksum: 10/b186c15be44e33c76d8aaa222dcd03499847c802802b5693206aef67b32f79ea0f953defddebbb942c3d4b7ae2017c40ac19a55ce174eecac1f8ffe06587841b
   languageName: node
   linkType: hard
 
@@ -12101,7 +12101,7 @@ __metadata:
     lodash.camelcase: "npm:^4.3.0"
     lodash.kebabcase: "npm:^4.1.1"
     mem-fs: "npm:4.1.0"
-    mem-fs-editor: "npm:11.0.0"
+    mem-fs-editor: "npm:11.0.1"
     minimist: "npm:1.2.8"
     parse-author: "npm:2.0.0"
     pob-dependencies: "workspace:*"
