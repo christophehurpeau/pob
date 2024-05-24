@@ -10742,7 +10742,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mem-fs-editor@npm:11.0.1, mem-fs-editor@npm:^11.0.0":
+"mem-fs-editor@npm:11.0.1, mem-fs-editor@npm:^11.0.0, mem-fs-editor@npm:^11.0.1":
   version: 11.0.1
   resolution: "mem-fs-editor@npm:11.0.1"
   dependencies:
@@ -12111,7 +12111,7 @@ __metadata:
     validate-npm-package-name: "npm:^5.0.0"
     yarn-workspace-utils: "npm:3.5.1"
     yeoman-environment: "npm:4.4.0"
-    yeoman-generator: "npm:7.1.1"
+    yeoman-generator: "npm:7.2.0"
   bin:
     pob: ./lib/pob.js
   languageName: unknown
@@ -14867,9 +14867,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yeoman-generator@npm:7.1.1":
-  version: 7.1.1
-  resolution: "yeoman-generator@npm:7.1.1"
+"yeoman-generator@npm:7.2.0":
+  version: 7.2.0
+  resolution: "yeoman-generator@npm:7.2.0"
   dependencies:
     "@types/lodash-es": "npm:^4.17.9"
     "@types/node": "npm:^18.18.5"
@@ -14881,7 +14881,7 @@ __metadata:
     json-schema: "npm:^0.4.0"
     latest-version: "npm:^7.0.0"
     lodash-es: "npm:^4.17.21"
-    mem-fs-editor: "npm:^11.0.0"
+    mem-fs-editor: "npm:^11.0.1"
     minimist: "npm:^1.2.8"
     read-package-up: "npm:^11.0.0"
     semver: "npm:^7.5.4"
@@ -14895,7 +14895,7 @@ __metadata:
   peerDependenciesMeta:
     yeoman-environment:
       optional: true
-  checksum: 10/2815c6617c920e53122a17bdc6eeaf4667ee8742500756650d70087aa2e71ca076762a5179a7b914da69ede2851158d7ade2924b4ec71b687f3f5d458036df52
+  checksum: 10/ccf0e145bc6758933c9e4de49932bebfdc156121adf2ad5b018072d93c092d29610ece4423791940b7721e25b8c41040ab7cdffc4d3271fa40733a98ab88f31f
   languageName: node
   linkType: hard
 
