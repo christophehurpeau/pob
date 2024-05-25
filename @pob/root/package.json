@@ -75,7 +75,7 @@
     "cosmiconfig": "^9.0.0",
     "husky": "~9.0.11",
     "json5": "^2.2.2",
-    "lint-staged": "15.2.4",
+    "lint-staged": "15.2.5",
     "pob-dependencies": "workspace:*",
     "prettier": "3.2.5",
     "repository-check-dirty": "6.3.3",
