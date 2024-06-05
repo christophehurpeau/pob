@@ -3114,7 +3114,7 @@ __metadata:
   dependencies:
     "@pob/rollup": "npm:1.1.1"
     "@rollup/plugin-node-resolve": "npm:15.2.3"
-    "@rollup/plugin-run": "npm:3.0.2"
+    "@rollup/plugin-run": "npm:3.1.0"
     esbuild: "npm:0.21.4"
     rollup: "npm:3.29.4"
     rollup-config-external-dependencies: "npm:^3.0.0"
@@ -3137,7 +3137,7 @@ __metadata:
   dependencies:
     "@pob/rollup": "npm:1.1.1"
     "@rollup/plugin-node-resolve": "npm:15.2.3"
-    "@rollup/plugin-run": "npm:3.0.2"
+    "@rollup/plugin-run": "npm:3.1.0"
     "@rollup/plugin-typescript": "npm:11.1.6"
     rollup: "npm:3.29.4"
     rollup-config-external-dependencies: "npm:^3.0.0"
@@ -3278,9 +3278,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-run@npm:3.0.2":
-  version: 3.0.2
-  resolution: "@rollup/plugin-run@npm:3.0.2"
+"@rollup/plugin-run@npm:3.1.0":
+  version: 3.1.0
+  resolution: "@rollup/plugin-run@npm:3.1.0"
   dependencies:
     "@types/node": "npm:14.18.30"
   peerDependencies:
@@ -3288,7 +3288,7 @@ __metadata:
   peerDependenciesMeta:
     rollup:
       optional: true
-  checksum: 10/7016091c124633264d14b7f03bbf443ed151c7ac06b544ae1633cc9baf8607ae1885ff10c8c348a408b7453e12dd9e009097de18219789c13685fdc2fa86e5fe
+  checksum: 10/89d05ff83018512d597685c4869de882062b58f02bea171d1821813f98db4da3f1fb7f6c05c384e401a873403ecada6f9a292699c3d6379b87b690daffddb8a9
   languageName: node
   linkType: hard
 
@@ -11991,7 +11991,7 @@ __metadata:
     "@rollup/plugin-babel": "npm:6.0.4"
     "@rollup/plugin-json": "npm:6.1.0"
     "@rollup/plugin-node-resolve": "npm:15.2.3"
-    "@rollup/plugin-run": "npm:3.0.2"
+    "@rollup/plugin-run": "npm:3.1.0"
     babel-preset-pob-env: "npm:11.1.3"
     rollup: "npm:3.29.4"
     rollup-config-external-dependencies: "npm:^3.0.0"
