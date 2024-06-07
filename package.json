@@ -17,7 +17,7 @@
     "pob-examples/*"
   ],
   "scripts": {
-    "build": "yarn clean:build && rollup --config rollup.config.mjs && yarn run build:definitions",
+    "build": "yarn clean:build && rollup --config rollup.config.mjs && yarn run build:definitions && chmod a+x packages/yarn-version/build/index-node18.mjs",
     "build:definitions": "tsc -b",
     "checks": "node scripts/check-packages.js && ./scripts/run-self-on-examples.sh",
     "clean:build": "yarn workspaces foreach --parallel -A run clean:build",

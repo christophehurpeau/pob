@@ -15,7 +15,7 @@ yarn add --dev yarn-version conventional-changelog-conventionalcommits
 ## Usage
 
 ```bash
-yarn yarn-version --help
+yarn yarn-version version --help
 ```
 
 ## Options
@@ -56,7 +56,7 @@ jobs:
 
       - name: New version (dry run)
         if: github.ref == 'refs/heads/main' && inputs.dry-run
-        run: yarn yarn-version --dry-run
+        run: yarn yarn-version version --dry-run
 
       - name: Configure Git user
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
@@ -67,7 +67,7 @@ jobs:
       - name: New version
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
-          yarn yarn-version --create-release=github  -m 'chore: release %v [skip ci]'
+          yarn yarn-version version --create-release=github  -m 'chore: release %v [skip ci]'
         env:
           HUSKY: 0
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
@@ -130,7 +130,7 @@ jobs:
 
       - name: New version (dry run)
         if: github.ref == 'refs/heads/main' && inputs.dry-run
-        run: yarn yarn-version --dry-run --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}
+        run: yarn yarn-version version --dry-run --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}
       - name: Configure Git user
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
@@ -140,7 +140,7 @@ jobs:
       - name: New version
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
-          yarn yarn-version --create-release=github  --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }} -m 'chore: release [skip ci]\n\n%t'
+          yarn yarn-version version --create-release=github  --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }} -m 'chore: release [skip ci]\n\n%t'
         env:
           HUSKY: 0
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
