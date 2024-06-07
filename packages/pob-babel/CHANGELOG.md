@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@39.0.0...pob-babel@40.0.0) (2024-06-07)
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update dependency rollup to v4 (#1801)
+
+### Features
+
+* **deps:** update dependency rollup to v4 ([#1801](https://github.com/christophehurpeau/pob/issues/1801)) ([93ce1ef](https://github.com/christophehurpeau/pob/commit/93ce1ef6a83a37e1482b1f7f58723a76872bed4f))
+
+Version bump for dependency: @pob/rollup
+
+
 ## [39.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@38.1.3...pob-babel@39.0.0) (2024-06-07)
 
 ### ⚠ BREAKING CHANGES

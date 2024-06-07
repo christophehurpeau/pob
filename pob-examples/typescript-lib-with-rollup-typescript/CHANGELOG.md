@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.27.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-with-rollup-typescript@0.26.0...example-typescript-lib-with-rollup-typescript@0.27.0) (2024-06-07)
+
+Version bump for dependency: @pob/rollup-typescript
+
+
 ## [0.26.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-with-rollup-typescript@0.25.1...example-typescript-lib-with-rollup-typescript@0.26.0) (2024-06-07)
 
 ### ⚠ BREAKING CHANGES
