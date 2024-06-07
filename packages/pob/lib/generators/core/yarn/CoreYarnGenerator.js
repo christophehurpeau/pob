@@ -105,7 +105,7 @@ export default class CoreYarnGenerator extends Generator {
       };
 
       const postinstallDevPluginName = "@yarnpkg/plugin-postinstall-dev";
-      const versionPluginName = "@yarnpkg/plugin-conventional-version";
+      const legacyVersionPluginName = "@yarnpkg/plugin-conventional-version";
 
       if (!inMonorepo && !pkg.private) {
         installPluginIfNotInstalled(
@@ -117,17 +117,18 @@ export default class CoreYarnGenerator extends Generator {
       }
 
       if (pkg.name !== "yarn-plugin-conventional-version") {
-        installPluginIfNotInstalled(
-          versionPluginName,
-          "https://raw.githubusercontent.com/christophehurpeau/yarn-plugin-conventional-version/main/bundles/%40yarnpkg/plugin-conventional-version.cjs",
-          () => {
-            const content = fs.readFileSync(
-              ".yarn/plugins/@yarnpkg/plugin-conventional-version.cjs",
-              "utf8",
-            );
-            return !content.includes("Lifecycle script: preversion");
-          },
-        );
+        removePluginIfInstalled(legacyVersionPluginName);
+        //   installPluginIfNotInstalled(
+        //     versionPluginName,
+        //     "https://raw.githubusercontent.com/christophehurpeau/yarn-plugin-conventional-version/main/bundles/%40yarnpkg/plugin-conventional-version.cjs",
+        //     () => {
+        //       const content = fs.readFileSync(
+        //         ".yarn/plugins/@yarnpkg/plugin-conventional-version.cjs",
+        //         "utf8",
+        //       );
+        //       return !content.includes("Lifecycle script: preversion");
+        //     },
+        //   );
       }
 
       if (
@@ -139,11 +140,12 @@ export default class CoreYarnGenerator extends Generator {
       }
 
       // must be done after plugins installed
-      const configString = this.fs.read(".yarnrc.yml");
-      const config = yml.load(configString, {
-        schema: yml.FAILSAFE_SCHEMA,
-        json: true,
-      });
+      const configString = this.fs.read(".yarnrc.yml", { defaults: "" });
+      const config =
+        yml.load(configString, {
+          schema: yml.FAILSAFE_SCHEMA,
+          json: true,
+        }) || {};
       if (this.options.disableYarnGitCache) {
         // leave default compressionLevel instead of this next line
         // config.compressionLevel = "mixed"; // optimized for size

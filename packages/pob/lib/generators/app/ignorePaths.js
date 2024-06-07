@@ -17,6 +17,7 @@ export const appIgnorePaths = {
   "untranspiled-library": (config) => [],
   "alp-node": (config) => ["/build"],
   other: (config) => [],
+  storybook: (config) => [],
   expo: (config) => [
     "/.expo/",
     "*.jks",

@@ -1,0 +1,7 @@
+{
+  "name": "with-lifecycle",
+  "version": "1.0.0",
+  "scripts": {
+    "preversion": "echo preversion"
+  }
+}
