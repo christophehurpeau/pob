@@ -71,6 +71,10 @@ export const generateChangelog = (
       currentTag: newTag,
       previousTag,
     },
+    // @ts-expect-error -- path is required to filter commits by path. It does not work if it is only provided in options.
+    {
+      path,
+    },
   );
 
   return text(stream);
