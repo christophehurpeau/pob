@@ -1,5 +1,4 @@
 {
   "root": true,
-  "extends": ["@pob/eslint-config/root-module"],
-  "ignorePatterns": ["bin/yarn-version.js"]
+  "extends": ["@pob/eslint-config/root-module"]
 }
