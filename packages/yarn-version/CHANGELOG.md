@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.1.0](https://github.com/christophehurpeau/pob/compare/yarn-version@1.0.0...yarn-version@1.1.0) (2024-06-07)
+
+### Features
+
+* **deps:** update dependency @octokit/rest to v20.1.1 ([#2081](https://github.com/christophehurpeau/pob/issues/2081)) ([7574e48](https://github.com/christophehurpeau/pob/commit/7574e48d05826d8ff7793820239d0263abb81ffe))
+* **deps:** update dependency commander to v12.1.0 ([#2082](https://github.com/christophehurpeau/pob/issues/2082)) ([1662d13](https://github.com/christophehurpeau/pob/commit/1662d13e665ce2efacc891f338ab77b1d0893bee))
+
+### Bug Fixes
+
+* **yarn-version:** fix missing bump reason for dependency ([24a21e9](https://github.com/christophehurpeau/pob/commit/24a21e9517e7da62dabdb60246150ec5134e52ae))
+* **yarn-version:** fix missing path filter commits ([97f7de5](https://github.com/christophehurpeau/pob/commit/97f7de5b9d0b65dc9eeaebca3ac5fadc9613df6d))
+
 ## 1.0.0 (2024-06-07)
 
 ### ⚠ BREAKING CHANGES

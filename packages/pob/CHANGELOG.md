@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.1.0](https://github.com/christophehurpeau/pob/compare/pob@21.0.0...pob@21.1.0) (2024-06-07)
+
+Version bump for dependency: @pob/root
+
+
 ## [21.0.0](https://github.com/christophehurpeau/pob/compare/pob@20.0.0...pob@21.0.0) (2024-06-07)
 
 ### ⚠ BREAKING CHANGES
