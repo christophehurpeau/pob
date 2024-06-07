@@ -767,7 +767,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
             currentVersion,
             bumpType,
             bumpReason,
-            bumpForDependenciesReasons: bumpReasons.slice(1),
+            bumpForDependenciesReasons: changedWorkspace ? bumpReasons.slice(1) : bumpReasons,
             newVersion,
             newTag: tagName,
             hasChanged: changedWorkspace !== void 0,
@@ -910,11 +910,15 @@ There are uncommitted changes in the git repository. Please commit or stash them
             lernaPackage: rootWorkspace === workspace || !isMonorepoVersionIndependent ? void 0 : getWorkspaceName(workspace)
           }
         );
-        if (changelog.slice(changelog.indexOf("\n")).trim().length === 0) {
-          changelog += "Note: no notable changes\n\n";
-        }
         if (bumpForDependenciesReasons && workspace !== rootWorkspace) {
-          changelog += `${bumpForDependenciesReasons.join("\n")}
+          if (bumpForDependenciesReasons.length > 0) {
+            changelog += `${!changelog.endsWith("\n\n") ? "\n" : ""}${bumpForDependenciesReasons.join("\n")}
+
+`;
+          }
+        }
+        if (changelog.slice(changelog.indexOf("\n")).trim().length === 0) {
+          changelog += `${!changelog.endsWith("\n\n") ? "\n" : ""}Note: no notable changes
 
 `;
         }

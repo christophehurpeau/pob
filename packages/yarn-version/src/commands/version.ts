@@ -456,7 +456,9 @@ export const versionCommandAction = async (
             currentVersion,
             bumpType,
             bumpReason,
-            bumpForDependenciesReasons: bumpReasons.slice(1),
+            bumpForDependenciesReasons: changedWorkspace
+              ? bumpReasons.slice(1)
+              : bumpReasons,
             newVersion,
             newTag: tagName,
             hasChanged: changedWorkspace !== undefined,
@@ -650,12 +652,14 @@ export const versionCommandAction = async (
           },
         );
 
-        if (changelog.slice(changelog.indexOf("\n")).trim().length === 0) {
-          changelog += "Note: no notable changes\n\n";
+        if (bumpForDependenciesReasons && workspace !== rootWorkspace) {
+          if (bumpForDependenciesReasons.length > 0) {
+            changelog += `${!changelog.endsWith("\n\n") ? "\n" : ""}${bumpForDependenciesReasons.join("\n")}\n\n`;
+          }
         }
 
-        if (bumpForDependenciesReasons && workspace !== rootWorkspace) {
-          changelog += `${bumpForDependenciesReasons.join("\n")}\n\n`;
+        if (changelog.slice(changelog.indexOf("\n")).trim().length === 0) {
+          changelog += `${!changelog.endsWith("\n\n") ? "\n" : ""}Note: no notable changes\n\n`;
         }
 
         changelogs.set(workspace, changelog);
