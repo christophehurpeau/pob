@@ -148,6 +148,7 @@ export default class CoreYarnGenerator extends Generator {
         }) || {};
       if (this.options.disableYarnGitCache) {
         // leave default compressionLevel instead of this next line
+        delete config.compressionLevel;
         // config.compressionLevel = "mixed"; // optimized for size
         config.enableGlobalCache = true;
         delete config.supportedArchitectures;
