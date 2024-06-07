@@ -31,6 +31,7 @@
         "pob-babel",
         "example-typescript-lib",
         "pob-dependencies",
+        "yarn-version",
         "yarn-workspace-utils",
         "@pob/root",
         "example-webpack-app",

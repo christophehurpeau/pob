@@ -9,6 +9,8 @@
       "path": "pob-examples/typescript-lib-with-rollup-typescript/tsconfig.json"
     },
     { "path": "pob-examples/typescript-lib/tsconfig.json" },
-    { "path": "packages/yarn-workspace-utils/tsconfig.json" }
+    { "path": "packages/yarn-version/tsconfig.json" },
+    { "path": "packages/yarn-workspace-utils/tsconfig.json" },
+    { "path": "packages/pob/tsconfig.json" }
   ]
 }
