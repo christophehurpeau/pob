@@ -417,7 +417,11 @@ export default class CommonLintGenerator extends Generator {
     const testsOverride =
       this.options.testing || globalTesting
         ? {
-            files: [`**/*.test.${ext}`, `__tests__/**/*.${ext}`],
+            files: [
+              `**/*.test.${ext}`,
+              `__tests__/**/*.${ext}`,
+              `**/__mocks__/**/*.${ext}`,
+            ],
             ...(testRunner == null || testRunner === "jest"
               ? { env: { jest: true } }
               : {}),

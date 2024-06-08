@@ -21,7 +21,11 @@
   "ignorePatterns": ["*.d.ts"],
   "overrides": [
     {
-      "files": ["**/*.test.{ts,tsx}", "__tests__/**/*.{ts,tsx}"],
+      "files": [
+        "**/*.test.{ts,tsx}",
+        "__tests__/**/*.{ts,tsx}",
+        "**/__mocks__/**/*.{ts,tsx}"
+      ],
       "extends": ["@pob/eslint-config-typescript/test"],
       "env": {
         "jest": true
