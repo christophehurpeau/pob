@@ -948,7 +948,9 @@ ${changelog}`
       stdio: "inherit"
     });
     console.log();
-    logger.info("Commit, tag and push");
+    logger.info("Commit, tag and push", {
+      changedFiles: getDirtyFiles(rootWorkspace)
+    });
     const tagsSet = new Set(
       [...bumpedWorkspaces.values()].map(({ newTag }) => newTag).filter((newTag) => newTag !== null)
     );
@@ -968,17 +970,17 @@ ${tagsInCommitMessage}` : rootNewVersion
       logger.error("Remote is ahead, aborting");
       process.exit(1);
     }
+    await pushCommitsAndTags(
+      rootWorkspace,
+      options.gitRemote,
+      gitCurrentBranch
+    );
     if (rootWorkspace.pkg.scripts?.postversion) {
       spawnSync("yarn run postversion", {
         cwd: rootWorkspace.cwd,
         stdio: "inherit"
       });
     }
-    await pushCommitsAndTags(
-      rootWorkspace,
-      options.gitRemote,
-      gitCurrentBranch
-    );
     if (options.createRelease && githubClient && parsedRepoUrl) {
       logger.info("Create git release");
       await Promise.all(

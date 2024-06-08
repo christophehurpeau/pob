@@ -697,7 +697,9 @@ export const versionCommandAction = async (
     // TODO nightingale separator
     console.log();
 
-    logger.info("Commit, tag and push");
+    logger.info("Commit, tag and push", {
+      changedFiles: getDirtyFiles(rootWorkspace),
+    });
 
     const tagsSet = new Set<string>(
       [...bumpedWorkspaces.values()]
@@ -719,6 +721,7 @@ export const versionCommandAction = async (
       .replace(/%s/g, rootNewTag)
       .replace(/%v/g, rootNewVersion)
       .replace(/%t/g, tagsInCommitMessage);
+
     await createGitCommit(rootWorkspace, message);
 
     for (const [workspace, { newTag }] of bumpedWorkspaces.entries()) {
