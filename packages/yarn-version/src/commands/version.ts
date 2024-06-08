@@ -1,5 +1,4 @@
 /* eslint-disable complexity */
-import { spawnSync } from "node:child_process";
 import path from "node:path";
 // eslint-disable-next-line import/no-unresolved
 import { ConventionalGitClient } from "@conventional-changelog/git-client";
@@ -20,6 +19,7 @@ import {
   generateChangelog,
 } from "../utils/conventionalChangelogUtils";
 import { loadConventionalCommitConfig } from "../utils/conventionalCommitConfigUtils";
+import { execCommand } from "../utils/execCommand";
 import { asyncIterableToArray } from "../utils/generatorUtils";
 import {
   createGitCommit,
@@ -547,25 +547,19 @@ export const versionCommandAction = async (
 
   // Update yarn.lock ; must be done to make sure preversion script can be ran
   logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-  spawnSync("yarn install", { cwd: options.cwd, stdio: "inherit" });
+  await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
 
   logger.info("Lifecycle script: preversion");
 
   if (isMonorepoVersionIndependent && rootWorkspace.pkg.scripts?.preversion) {
-    spawnSync("yarn run preversion", {
-      cwd: rootWorkspace.cwd,
-      stdio: "inherit",
-    });
+    await execCommand(rootWorkspace, ["yarn", "run", "preversion"], "inherit");
   }
 
   if (!options.dryRun) {
     // lifecycle: preversion
     for (const workspace of bumpedWorkspaces.keys()) {
       if (workspace.pkg.scripts?.preversion) {
-        spawnSync("yarn run preversion", {
-          cwd: workspace.cwd,
-          stdio: "inherit",
-        });
+        await execCommand(workspace, ["yarn", "run", "preversion"], "inherit");
       }
     }
 
@@ -598,28 +592,19 @@ export const versionCommandAction = async (
 
     // Update yarn.lock ; must be done before running again lifecycle scripts
     logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-    spawnSync("yarn install", {
-      cwd: options.cwd,
-      stdio: "inherit",
-    });
+    await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
 
     // lifecycle: version
     logger.info("Lifecycle script: version");
     for (const workspace of bumpedWorkspaces.keys()) {
       if (workspace.pkg.scripts?.version) {
-        spawnSync("yarn run version", {
-          cwd: workspace.cwd,
-          stdio: "inherit",
-        });
+        await execCommand(workspace, ["yarn", "run", "version"], "inherit");
       }
     }
   }
 
   if (isMonorepoVersionIndependent && rootWorkspace.pkg.scripts?.version) {
-    spawnSync("yarn run version", {
-      cwd: rootWorkspace.cwd,
-      stdio: "inherit",
-    });
+    await execCommand(rootWorkspace, ["yarn", "run", "version"], "inherit");
   }
 
   const changelogs = new Map<Workspace, string>();
@@ -689,10 +674,7 @@ export const versionCommandAction = async (
 
     // install to update versions in lock file
     logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-    spawnSync("yarn install", {
-      cwd: options.cwd,
-      stdio: "inherit",
-    });
+    await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
 
     // TODO nightingale separator
     console.log();
@@ -745,10 +727,11 @@ export const versionCommandAction = async (
 
     // run postversion
     if (rootWorkspace.pkg.scripts?.postversion) {
-      spawnSync("yarn run postversion", {
-        cwd: rootWorkspace.cwd,
-        stdio: "inherit",
-      });
+      await execCommand(
+        rootWorkspace,
+        ["yarn", "run", "postversion"],
+        "inherit",
+      );
     }
 
     // TODO open github PR

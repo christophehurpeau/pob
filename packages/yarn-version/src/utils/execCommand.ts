@@ -27,11 +27,13 @@ async function execvp<const Strict extends boolean>(
     env = process.env,
     encoding,
     strict,
+    stdo = "pipe",
   }: {
     cwd?: string;
     env?: typeof process.env;
     encoding?: BufferEncoding;
     strict?: Strict;
+    stdo?: "inherit" | "pipe";
   },
 ): Promise<ExecResult<Strict>> {
   const stdoutChunks: Uint8Array[] = [];
@@ -42,12 +44,12 @@ async function execvp<const Strict extends boolean>(
   const subprocess = childProcess.spawn(command, args, {
     cwd,
     env,
-    stdio: ["ignore", "pipe", "pipe"],
+    stdio: ["ignore", stdo, stdo],
   });
-  subprocess.stdout.on("data", (chunk) => {
+  subprocess.stdout?.on("data", (chunk) => {
     stdoutChunks.push(chunk);
   });
-  subprocess.stderr.on("data", (chunk) => {
+  subprocess.stderr?.on("data", (chunk) => {
     stderrChunks.push(chunk);
   });
   return new Promise((resolve, reject) => {
@@ -55,8 +57,12 @@ async function execvp<const Strict extends boolean>(
       reject(new Error(`Process ${command} failed to spawn`));
     });
     subprocess.on("close", (code, signal) => {
-      const stdout = Buffer.concat(stdoutChunks).toString(encoding ?? "utf8");
-      const stderr = Buffer.concat(stderrChunks).toString(encoding ?? "utf8");
+      const chunksToString = (chunks: Uint8Array[]): string =>
+        stdo === "inherit"
+          ? ""
+          : Buffer.concat(chunks).toString(encoding ?? "utf8");
+      const stdout = chunksToString(stdoutChunks);
+      const stderr = chunksToString(stderrChunks);
       if (code === 0 || !strict) {
         resolve({
           code,
@@ -78,10 +84,12 @@ async function execvp<const Strict extends boolean>(
 export const execCommand = (
   workspace: Workspace,
   commandAndArgs: string[] = [],
+  stdo: "inherit" | "pipe" = "pipe",
 ): ReturnType<typeof execvp> => {
   const [command, ...args] = commandAndArgs;
   return execvp(command, args, {
     cwd: workspace.cwd,
     strict: true,
+    stdo,
   });
 };
