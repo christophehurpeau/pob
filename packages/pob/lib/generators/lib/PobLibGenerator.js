@@ -214,6 +214,10 @@ export default class PobLibGenerator extends Generator {
           default: this.pobjson.testing?.runner || "jest",
           choices: [
             {
+              name: "Vitest",
+              value: "vitest",
+            },
+            {
               name: "Jest",
               value: "jest",
             },

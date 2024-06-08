@@ -249,7 +249,11 @@ export default class CommonTestingGenerator extends Generator {
       !isJestRunner ||
       (globalTesting && !enableForMonorepo)
     ) {
-      packageUtils.removeDevDependencies(pkg, ["jest", "@types/jest"]);
+      packageUtils.removeDevDependencies(pkg, [
+        "jest",
+        "@types/jest",
+        "vitest",
+      ]);
 
       delete pkg.jest;
       this.fs.delete(this.destinationPath("jest.config.js"));
@@ -339,12 +343,21 @@ export default class CommonTestingGenerator extends Generator {
     };
 
     const jestConfigPath = this.destinationPath("jest.config.json");
+    const vitestConfigPath = this.destinationPath("vite.config.js");
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.options.enable &&
         (enableForMonorepo || !globalTesting) &&
         testRunner === "jest",
       ["jest", "@types/jest"],
+    );
+
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      this.options.enable &&
+        (enableForMonorepo || !globalTesting) &&
+        testRunner === "vitest",
+      ["vitest"],
     );
 
     if (!this.options.enable) {
@@ -384,246 +397,262 @@ export default class CommonTestingGenerator extends Generator {
         packageUtils.addScripts(pkg, {
           test: "yarn workspaces foreach --parallel -Av run test",
         });
-      } else if (this.options.monorepo) {
-        const shouldUseExperimentalVmModules = pkg.type === "module";
-
-        packageUtils.addScripts(pkg, {
-          test: createTestCommand({
-            workspacesPattern,
-            shouldUseExperimentalVmModules,
-          }),
-          "test:watch": createTestCommand({
-            workspacesPattern,
-            shouldUseExperimentalVmModules,
-            watch: true,
-          }),
-          "test:coverage": createTestCommand({
-            workspacesPattern,
-            shouldUseExperimentalVmModules,
-            coverage: true,
-          }),
-          "test:coverage:lcov": createTestCommand({
-            workspacesPattern,
-            shouldUseExperimentalVmModules,
-            coverageLcov: true,
-          }),
-          "test:coverage:json": createTestCommand({
-            workspacesPattern,
-            shouldUseExperimentalVmModules,
-            coverageJson: true,
-          }),
-        });
-
-        if (isJestRunner) {
-          hasReact = yoConfigPobMonorepo.packageNames.some((pkgName) =>
-            pkgName.startsWith("react-"),
-          );
-
-          const jestConfig = this.fs.readJSON(jestConfigPath, pkg.jest ?? {});
-          delete pkg.jest;
-
-          const srcDirectory = this.options.srcDirectory;
-          Object.assign(jestConfig, {
-            cacheDirectory: "./node_modules/.cache/jest",
-            testEnvironment: "node",
-            testMatch: [
-              `<rootDir>/${workspacesPattern}/*/@(${srcDirectory}|lib)/**/__tests__/**/*.${
-                transpileWithBabel ? "(ts|js|cjs|mjs)" : "(js|cjs|mjs)"
-              }${hasReact ? "?(x)" : ""}`,
-              `<rootDir>/${workspacesPattern}/*/@(${srcDirectory}|lib)/**/*.test.${
-                transpileWithBabel ? "(ts|js|cjs|mjs)" : "(js|cjs|mjs)"
-              }${hasReact ? "?(x)" : ""}`,
-            ],
-          });
-
-          if (shouldUseExperimentalVmModules) {
-            jestConfig.extensionsToTreatAsEsm = [
-              transpileWithBabel && ".ts",
-              transpileWithBabel && hasReact && ".tsx",
-            ].filter(Boolean);
-          } else {
-            delete jestConfig.extensionsToTreatAsEsm;
-          }
-
-          if (tsTestUtil === "swc" && !transpileWithBabel && withTypescript) {
-            jestConfig.transform = {
-              [hasReact ? "^.+\\.tsx?$" : "^.+\\.ts$"]: ["@swc/jest"],
-            };
-          } else if (jestConfig.transform) {
-            jestConfig.transform = Object.fromEntries(
-              Object.entries(jestConfig.transform).filter(
-                ([key, value]) =>
-                  value !== "@swc/jest" &&
-                  !(Array.isArray(value) && value[0] === "@swc/jest"),
-              ),
-            );
-            if (Object.keys(jestConfig.transform).length === 0) {
-              delete jestConfig.transform;
-            }
-          }
-
-          writeAndFormatJson(this.fs, jestConfigPath, jestConfig);
-        }
       } else {
-        const tsconfigTestPath = this.destinationPath("tsconfig.test.json");
-        if (testRunner === "node" && withTypescript) {
-          const nodeVersion = this.options.onlyLatestLTS ? "20" : "18";
+        if (this.testRunner === "vitest") {
           copyAndFormatTpl(
             this.fs,
-            this.templatePath("tsconfig.test.json.ejs"),
-            tsconfigTestPath,
+            this.templatePath("vite.config.js.ejs"),
+            vitestConfigPath,
             {
-              nodeVersion,
+              srcDirectory: this.options.srcDirectory,
             },
           );
-        } else {
-          this.fs.delete(tsconfigTestPath);
         }
 
-        if (globalTesting) {
-          if (pkg.scripts) {
-            delete pkg.scripts["generate:test-coverage"];
-            delete pkg.scripts["test:watch"];
-            delete pkg.scripts["test:coverage"];
-          }
-          packageUtils.addScripts(pkg, {
-            test: `yarn ../../ run test -- ${path
-              .relative("../..", ".")
-              .replace("\\", "/")}`,
-          });
-        } else {
-          const withTypescript =
-            pkg.pob?.envs?.length > 0 ||
-            pkg.pob?.bundler === "rollup-babel" ||
-            pkg.pob?.typescript;
-
-          const shouldUseExperimentalVmModules =
-            pkg.type === "module" && !inMonorepo;
+        if (this.options.monorepo) {
+          const shouldUseExperimentalVmModules = pkg.type === "module";
 
           packageUtils.addScripts(pkg, {
-            test: createTestCommand({ shouldUseExperimentalVmModules }),
+            test: createTestCommand({
+              workspacesPattern,
+              shouldUseExperimentalVmModules,
+            }),
             "test:watch": createTestCommand({
+              workspacesPattern,
               shouldUseExperimentalVmModules,
               watch: true,
             }),
             "test:coverage": createTestCommand({
+              workspacesPattern,
               shouldUseExperimentalVmModules,
               coverage: true,
             }),
             "test:coverage:lcov": createTestCommand({
+              workspacesPattern,
               shouldUseExperimentalVmModules,
               coverageLcov: true,
             }),
             "test:coverage:json": createTestCommand({
+              workspacesPattern,
               shouldUseExperimentalVmModules,
               coverageJson: true,
             }),
           });
 
-          if (testRunner === "jest") {
-            const srcDirectory = this.options.build
-              ? this.options.srcDirectory
-              : "lib";
+          if (isJestRunner) {
+            hasReact = yoConfigPobMonorepo.packageNames.some((pkgName) =>
+              pkgName.startsWith("react-"),
+            );
 
             const jestConfig = this.fs.readJSON(jestConfigPath, pkg.jest ?? {});
             delete pkg.jest;
+
+            const srcDirectory = this.options.srcDirectory;
             Object.assign(jestConfig, {
               cacheDirectory: "./node_modules/.cache/jest",
+              testEnvironment: "node",
               testMatch: [
-                `<rootDir>/${srcDirectory}/**/__tests__/**/*.${
-                  withTypescript ? "ts" : "?(m)js"
+                `<rootDir>/${workspacesPattern}/*/@(${srcDirectory}|lib)/**/__tests__/**/*.${
+                  transpileWithBabel ? "(ts|js|cjs|mjs)" : "(js|cjs|mjs)"
                 }${hasReact ? "?(x)" : ""}`,
-                `<rootDir>/${srcDirectory}/**/*.test.${
-                  withTypescript ? "ts" : "?(m)js"
+                `<rootDir>/${workspacesPattern}/*/@(${srcDirectory}|lib)/**/*.test.${
+                  transpileWithBabel ? "(ts|js|cjs|mjs)" : "(js|cjs|mjs)"
                 }${hasReact ? "?(x)" : ""}`,
               ],
-              collectCoverageFrom: [
-                `${srcDirectory}/**/*.${withTypescript ? "ts" : "?(m)js"}${
-                  hasReact ? "?(x)" : ""
-                }`,
-              ],
-              moduleFileExtensions: [
-                withTypescript && "ts",
-                withTypescript && hasReact && "tsx",
-                "js",
-                // 'jsx',
-                "json",
-              ].filter(Boolean),
-              // transform: {
-              //   [`^.+\\.ts${hasReact ? 'x?' : ''}$`]: 'babel-jest',
-              // },
             });
-            if (transpileWithEsbuild) {
-              jestConfig.transform = {
-                [hasReact ? "^.+\\.tsx?$" : "^.+\\.ts$"]: [
-                  "jest-esbuild",
-                  {
-                    format: shouldUseExperimentalVmModules ? "esm" : "cjs",
-                  },
-                ],
-              };
-            } else if (!transpileWithBabel && !withTypescript) {
-              delete jestConfig.transform;
-            } else {
-              if (
-                tsTestUtil === "swc" &&
-                !transpileWithBabel &&
-                withTypescript
-              ) {
-                jestConfig.transform = {
-                  [hasReact ? "^.+\\.tsx?$" : "^.+\\.ts$"]: ["@swc/jest"],
-                };
-              } else if (jestConfig.transform) {
-                jestConfig.transform = Object.fromEntries(
-                  Object.entries(jestConfig.transform).filter(
-                    ([key, value]) =>
-                      value !== "@swc/jest" &&
-                      !(Array.isArray(value) && value[0] === "@swc/jest"),
-                  ),
-                );
-                if (Object.keys(jestConfig.transform).length === 0) {
-                  delete jestConfig.transform;
-                }
-              }
-
-              if (jestConfig.transform) {
-                jestConfig.transform = Object.fromEntries(
-                  Object.entries(jestConfig.transform).filter(
-                    ([key, value]) =>
-                      !(
-                        value &&
-                        Array.isArray(value) &&
-                        value[0] === "jest-esbuild"
-                      ),
-                  ),
-                );
-                if (Object.keys(jestConfig.transform).length === 0) {
-                  delete jestConfig.transform;
-                }
-              }
-            }
 
             if (shouldUseExperimentalVmModules) {
               jestConfig.extensionsToTreatAsEsm = [
-                withTypescript && ".ts",
-                withTypescript && hasReact && ".tsx",
+                transpileWithBabel && ".ts",
+                transpileWithBabel && hasReact && ".tsx",
               ].filter(Boolean);
             } else {
               delete jestConfig.extensionsToTreatAsEsm;
             }
 
-            if (
-              !pkg.pob?.envs ||
-              pkg.pob?.envs.length === 0 ||
-              pkg.pob?.envs.some((env) => env.target === "node")
-            ) {
-              // jestConfig.testEnvironment = 'node'; this is the default now
-              delete jestConfig.testEnvironment;
-            } else {
-              delete jestConfig.testEnvironment;
+            if (tsTestUtil === "swc" && !transpileWithBabel && withTypescript) {
+              jestConfig.transform = {
+                [hasReact ? "^.+\\.tsx?$" : "^.+\\.ts$"]: ["@swc/jest"],
+              };
+            } else if (jestConfig.transform) {
+              jestConfig.transform = Object.fromEntries(
+                Object.entries(jestConfig.transform).filter(
+                  ([key, value]) =>
+                    value !== "@swc/jest" &&
+                    !(Array.isArray(value) && value[0] === "@swc/jest"),
+                ),
+              );
+              if (Object.keys(jestConfig.transform).length === 0) {
+                delete jestConfig.transform;
+              }
             }
 
             writeAndFormatJson(this.fs, jestConfigPath, jestConfig);
+          }
+        } else {
+          const tsconfigTestPath = this.destinationPath("tsconfig.test.json");
+          if (testRunner === "node" && withTypescript) {
+            const nodeVersion = this.options.onlyLatestLTS ? "20" : "18";
+            copyAndFormatTpl(
+              this.fs,
+              this.templatePath("tsconfig.test.json.ejs"),
+              tsconfigTestPath,
+              {
+                nodeVersion,
+              },
+            );
+          } else {
+            this.fs.delete(tsconfigTestPath);
+          }
+
+          if (globalTesting) {
+            if (pkg.scripts) {
+              delete pkg.scripts["generate:test-coverage"];
+              delete pkg.scripts["test:watch"];
+              delete pkg.scripts["test:coverage"];
+            }
+            packageUtils.addScripts(pkg, {
+              test: `yarn ../../ run test -- ${path
+                .relative("../..", ".")
+                .replace("\\", "/")}`,
+            });
+          } else {
+            const withTypescript =
+              pkg.pob?.envs?.length > 0 ||
+              pkg.pob?.bundler === "rollup-babel" ||
+              pkg.pob?.typescript;
+
+            const shouldUseExperimentalVmModules =
+              pkg.type === "module" && !inMonorepo;
+
+            packageUtils.addScripts(pkg, {
+              test: createTestCommand({ shouldUseExperimentalVmModules }),
+              "test:watch": createTestCommand({
+                shouldUseExperimentalVmModules,
+                watch: true,
+              }),
+              "test:coverage": createTestCommand({
+                shouldUseExperimentalVmModules,
+                coverage: true,
+              }),
+              "test:coverage:lcov": createTestCommand({
+                shouldUseExperimentalVmModules,
+                coverageLcov: true,
+              }),
+              "test:coverage:json": createTestCommand({
+                shouldUseExperimentalVmModules,
+                coverageJson: true,
+              }),
+            });
+
+            if (testRunner === "jest") {
+              const srcDirectory = this.options.build
+                ? this.options.srcDirectory
+                : "lib";
+
+              const jestConfig = this.fs.readJSON(
+                jestConfigPath,
+                pkg.jest ?? {},
+              );
+              delete pkg.jest;
+              Object.assign(jestConfig, {
+                cacheDirectory: "./node_modules/.cache/jest",
+                testMatch: [
+                  `<rootDir>/${srcDirectory}/**/__tests__/**/*.${
+                    withTypescript ? "ts" : "?(m)js"
+                  }${hasReact ? "?(x)" : ""}`,
+                  `<rootDir>/${srcDirectory}/**/*.test.${
+                    withTypescript ? "ts" : "?(m)js"
+                  }${hasReact ? "?(x)" : ""}`,
+                ],
+                collectCoverageFrom: [
+                  `${srcDirectory}/**/*.${withTypescript ? "ts" : "?(m)js"}${
+                    hasReact ? "?(x)" : ""
+                  }`,
+                ],
+                moduleFileExtensions: [
+                  withTypescript && "ts",
+                  withTypescript && hasReact && "tsx",
+                  "js",
+                  // 'jsx',
+                  "json",
+                ].filter(Boolean),
+                // transform: {
+                //   [`^.+\\.ts${hasReact ? 'x?' : ''}$`]: 'babel-jest',
+                // },
+              });
+              if (transpileWithEsbuild) {
+                jestConfig.transform = {
+                  [hasReact ? "^.+\\.tsx?$" : "^.+\\.ts$"]: [
+                    "jest-esbuild",
+                    {
+                      format: shouldUseExperimentalVmModules ? "esm" : "cjs",
+                    },
+                  ],
+                };
+              } else if (!transpileWithBabel && !withTypescript) {
+                delete jestConfig.transform;
+              } else {
+                if (
+                  tsTestUtil === "swc" &&
+                  !transpileWithBabel &&
+                  withTypescript
+                ) {
+                  jestConfig.transform = {
+                    [hasReact ? "^.+\\.tsx?$" : "^.+\\.ts$"]: ["@swc/jest"],
+                  };
+                } else if (jestConfig.transform) {
+                  jestConfig.transform = Object.fromEntries(
+                    Object.entries(jestConfig.transform).filter(
+                      ([key, value]) =>
+                        value !== "@swc/jest" &&
+                        !(Array.isArray(value) && value[0] === "@swc/jest"),
+                    ),
+                  );
+                  if (Object.keys(jestConfig.transform).length === 0) {
+                    delete jestConfig.transform;
+                  }
+                }
+
+                if (jestConfig.transform) {
+                  jestConfig.transform = Object.fromEntries(
+                    Object.entries(jestConfig.transform).filter(
+                      ([key, value]) =>
+                        !(
+                          value &&
+                          Array.isArray(value) &&
+                          value[0] === "jest-esbuild"
+                        ),
+                    ),
+                  );
+                  if (Object.keys(jestConfig.transform).length === 0) {
+                    delete jestConfig.transform;
+                  }
+                }
+              }
+
+              if (shouldUseExperimentalVmModules) {
+                jestConfig.extensionsToTreatAsEsm = [
+                  withTypescript && ".ts",
+                  withTypescript && hasReact && ".tsx",
+                ].filter(Boolean);
+              } else {
+                delete jestConfig.extensionsToTreatAsEsm;
+              }
+
+              if (
+                !pkg.pob?.envs ||
+                pkg.pob?.envs.length === 0 ||
+                pkg.pob?.envs.some((env) => env.target === "node")
+              ) {
+                // jestConfig.testEnvironment = 'node'; this is the default now
+                delete jestConfig.testEnvironment;
+              } else {
+                delete jestConfig.testEnvironment;
+              }
+
+              writeAndFormatJson(this.fs, jestConfigPath, jestConfig);
+            }
           }
         }
       }
