@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.0](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.7.3...example-simple-lib@0.8.0) (2024-06-08)
+
+### Features
+
+* **pob:** add __mocks__ folder in eslint config ([0b1b337](https://github.com/christophehurpeau/pob/commit/0b1b3373cb9fbe6abf1f520f5a84bc4de26d7756))
+
 ## [0.7.3](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.7.2...example-simple-lib@0.7.3) (2024-05-05)
 
 Note: no notable changes

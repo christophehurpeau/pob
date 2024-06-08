@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.0](https://github.com/christophehurpeau/pob/compare/yarn-version@2.0.0...yarn-version@2.1.0) (2024-06-08)
+
+### Features
+
+* **yarn-version:** log changed files ([ddab3b5](https://github.com/christophehurpeau/pob/commit/ddab3b5d58b3f0b7a5b28f489afd0e68dba18211))
+
+### Bug Fixes
+
+* **yarn-version:** add missing await in previous commit ([88fe64c](https://github.com/christophehurpeau/pob/commit/88fe64c2f85de1c66c010128d5f5eb8bc848d501))
+* **yarn-version:** run postversion after pushing commits and tags ([a119fea](https://github.com/christophehurpeau/pob/commit/a119feaca102fbadc93587237906c0f3ce4068e5))
+
 ## [2.0.0](https://github.com/christophehurpeau/pob/compare/yarn-version@1.1.0...yarn-version@2.0.0) (2024-06-07)
 
 Version bump for dependency: @pob/rollup-esbuild

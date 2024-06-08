@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.1.0](https://github.com/christophehurpeau/pob/compare/pob@22.0.0...pob@22.1.0) (2024-06-08)
+
+### Features
+
+* **pob:** add __mocks__ folder in eslint config ([0b1b337](https://github.com/christophehurpeau/pob/commit/0b1b3373cb9fbe6abf1f520f5a84bc4de26d7756))
+* **pob:** add vitest dependency and very basic vite config ([ea23527](https://github.com/christophehurpeau/pob/commit/ea23527fa6c69b6e9c89a1f1287dd8aac696a3f3))
+
+Version bump for dependency: @pob/root
+
+
 ## [22.0.0](https://github.com/christophehurpeau/pob/compare/pob@21.1.0...pob@22.0.0) (2024-06-07)
 
 ### Bug Fixes

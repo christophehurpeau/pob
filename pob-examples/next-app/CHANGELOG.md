@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.0](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.4.0...@pob-example/next-app@0.5.0) (2024-06-08)
+
+### Features
+
+* **pob:** add __mocks__ folder in eslint config ([0b1b337](https://github.com/christophehurpeau/pob/commit/0b1b3373cb9fbe6abf1f520f5a84bc4de26d7756))
+
 ## [0.4.0](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.3.1...@pob-example/next-app@0.4.0) (2024-06-07)
 
 ### ⚠ BREAKING CHANGES

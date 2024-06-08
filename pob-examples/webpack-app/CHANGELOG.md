@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.0](https://github.com/christophehurpeau/pob/compare/example-webpack-app@0.14.0...example-webpack-app@0.15.0) (2024-06-08)
+
+### Features
+
+* **pob:** add __mocks__ folder in eslint config ([0b1b337](https://github.com/christophehurpeau/pob/commit/0b1b3373cb9fbe6abf1f520f5a84bc4de26d7756))
+
+Version bump for dependency: example-typescript-lib
+
+
 ## [0.14.0](https://github.com/christophehurpeau/pob/compare/example-webpack-app@0.13.0...example-webpack-app@0.14.0) (2024-06-07)
 
 Version bump for dependency: example-typescript-lib

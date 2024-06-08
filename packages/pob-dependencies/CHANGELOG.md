@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@13.0.0...pob-dependencies@13.1.0) (2024-06-08)
+
+### Features
+
+* **pob:** add vitest dependency and very basic vite config ([ea23527](https://github.com/christophehurpeau/pob/commit/ea23527fa6c69b6e9c89a1f1287dd8aac696a3f3))
+
 ## [13.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@12.0.0...pob-dependencies@13.0.0) (2024-06-07)
 
 ### ⚠ BREAKING CHANGES
