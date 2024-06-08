@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.1](https://github.com/christophehurpeau/pob/compare/yarn-version@2.1.0...yarn-version@2.1.1) (2024-06-08)
+
+### Bug Fixes
+
+* **yarn-version:** use execCommand to run yarn commands ([b0d4d31](https://github.com/christophehurpeau/pob/commit/b0d4d3105de310aafc10f8de2e14ecb5d760fbe4))
+
 ## [2.1.0](https://github.com/christophehurpeau/pob/compare/yarn-version@2.0.0...yarn-version@2.1.0) (2024-06-08)
 
 ### Features
