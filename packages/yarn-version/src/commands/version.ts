@@ -698,7 +698,7 @@ export const versionCommandAction = async (
     console.log();
 
     logger.info("Commit, tag and push", {
-      changedFiles: getDirtyFiles(rootWorkspace),
+      changedFiles: await getDirtyFiles(rootWorkspace),
     });
 
     const tagsSet = new Set<string>(
