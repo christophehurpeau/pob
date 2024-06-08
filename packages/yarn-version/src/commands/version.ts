@@ -734,6 +734,12 @@ export const versionCommandAction = async (
       process.exit(1);
     }
 
+    await pushCommitsAndTags(
+      rootWorkspace,
+      options.gitRemote,
+      gitCurrentBranch,
+    );
+
     // run postversion
     if (rootWorkspace.pkg.scripts?.postversion) {
       spawnSync("yarn run postversion", {
@@ -741,12 +747,6 @@ export const versionCommandAction = async (
         stdio: "inherit",
       });
     }
-
-    await pushCommitsAndTags(
-      rootWorkspace,
-      options.gitRemote,
-      gitCurrentBranch,
-    );
 
     // TODO open github PR
 
