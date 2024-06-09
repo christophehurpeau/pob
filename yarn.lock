@@ -6820,9 +6820,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"check-package-dependencies@npm:7.1.1":
-  version: 7.1.1
-  resolution: "check-package-dependencies@npm:7.1.1"
+"check-package-dependencies@npm:7.1.2":
+  version: 7.1.2
+  resolution: "check-package-dependencies@npm:7.1.2"
   dependencies:
     chalk: "npm:^5.2.0"
     glob: "npm:^10.0.0"
@@ -6832,7 +6832,7 @@ __metadata:
     type-fest: "npm:^4.0.0"
   bin:
     check-package-dependencies: ./bin/check-package-dependencies.mjs
-  checksum: 10/d71df0c2f218a4c35adf000c21b743836254f11f717516db71485859b89a3261a23a0cfdd2d792da9efc5ddc61129bebd64d4b796086ea8b7a7829c7aa642858
+  checksum: 10/0287f3ab7c5e849cad5f5f119b7852e4e9389c5241991c065ed18df089b086a27e574013fb0fead8aa36549cbce68bca76a80e975a1d2bd02bf3f7a78dd5df62
   languageName: node
   linkType: hard
 
@@ -13153,7 +13153,7 @@ __metadata:
     "@types/jest": "npm:29.5.12"
     "@types/node": "npm:20.14.2"
     alp-rollup-plugin-config: "npm:2.2.1"
-    check-package-dependencies: "npm:7.1.1"
+    check-package-dependencies: "npm:7.1.2"
     eslint: "npm:8.57.0"
     jest: "npm:29.7.0"
     jest-junit-reporter: "npm:1.1.0"
@@ -13178,7 +13178,7 @@ __metadata:
     "@pob/eslint-config": "npm:56.0.0"
     "@pob/root": "workspace:*"
     "@types/jest": "npm:29.5.12"
-    check-package-dependencies: "npm:7.1.1"
+    check-package-dependencies: "npm:7.1.2"
     eslint: "npm:8.57.0"
     jest: "npm:29.7.0"
     pob-babel: "workspace:*"
