@@ -65,7 +65,7 @@
     "minimist": "1.2.8",
     "parse-author": "2.0.0",
     "pob-dependencies": "workspace:*",
-    "prettier": "3.3.1",
+    "prettier": "3.3.2",
     "semver": "7.6.2",
     "validate-npm-package-name": "^5.0.0",
     "yarn-workspace-utils": "5.0.0",
