@@ -70,7 +70,7 @@
     "validate-npm-package-name": "^5.0.0",
     "yarn-workspace-utils": "5.0.0",
     "yeoman-environment": "4.4.1",
-    "yeoman-generator": "7.3.0"
+    "yeoman-generator": "7.3.1"
   },
   "devDependencies": {
     "@pob/root": "12.1.1",
