@@ -55,7 +55,7 @@
     "@swc/core": "1.6.1",
     "@swc/jest": "0.2.36",
     "@types/jest": "29.5.12",
-    "@types/node": "20.14.3",
+    "@types/node": "20.14.5",
     "alp-rollup-plugin-config": "2.2.1",
     "check-package-dependencies": "7.1.2",
     "eslint": "8.57.0",
