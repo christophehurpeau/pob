@@ -34,7 +34,7 @@
   "pob": {},
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "glob": "10.4.1",
+    "glob": "10.4.2",
     "jscodeshift": "0.15.2"
   },
   "devDependencies": {
