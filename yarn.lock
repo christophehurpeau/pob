@@ -3306,7 +3306,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob-example/next-app@workspace:pob-examples/next-app"
   dependencies:
-    "@types/node": "npm:20.14.5"
+    "@types/node": "npm:20.14.6"
     "@types/react": "npm:18.3.3"
     "@types/react-dom": "npm:18.3.0"
     next: "npm:14.2.4"
@@ -4345,12 +4345,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:20.14.5, @types/node@npm:>=18.0.0, @types/node@npm:^20.8.3":
-  version: 20.14.5
-  resolution: "@types/node@npm:20.14.5"
+"@types/node@npm:*, @types/node@npm:20.14.6, @types/node@npm:>=18.0.0, @types/node@npm:^20.8.3":
+  version: 20.14.6
+  resolution: "@types/node@npm:20.14.6"
   dependencies:
     undici-types: "npm:~5.26.4"
-  checksum: 10/74c7974a8c75280f9397f22ce34d10d5575668e3c357a165f385c9365c39b3ccda3aa2e7237e7e907fc72e515afb93cc0be1f3e2074cc1889c1ffeb01d2843cc
+  checksum: 10/1dcfeeb03ce3c3a1d8a537fefee7cd0cffb78f89e9535b74ee12940559566b57c39dad20d1b165b60b5727408dd44e1a52e5c01cf02d0a99d93ef3da8062c86e
   languageName: node
   linkType: hard
 
@@ -8580,7 +8580,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:7.24.5"
     "@babel/preset-env": "npm:7.24.5"
-    "@types/node": "npm:20.14.5"
+    "@types/node": "npm:20.14.6"
     pob-babel: "npm:40.0.0"
     typescript: "npm:5.4.5"
   languageName: unknown
@@ -13159,7 +13159,7 @@ __metadata:
     "@swc/core": "npm:1.6.3"
     "@swc/jest": "npm:0.2.36"
     "@types/jest": "npm:29.5.12"
-    "@types/node": "npm:20.14.5"
+    "@types/node": "npm:20.14.6"
     alp-rollup-plugin-config: "npm:2.2.1"
     check-package-dependencies: "npm:7.1.2"
     eslint: "npm:8.57.0"
@@ -13209,7 +13209,7 @@ __metadata:
     "@pob/sort-pkg": "npm:7.2.0"
     "@prettier/sync": "npm:0.5.2"
     "@types/inquirer": "npm:9.0.7"
-    "@types/node": "npm:20.14.5"
+    "@types/node": "npm:20.14.6"
     "@yarnpkg/cli": "npm:4.3.0"
     "@yarnpkg/core": "npm:4.1.0"
     "@yarnpkg/fslib": "npm:3.1.0"
@@ -16205,7 +16205,7 @@ __metadata:
     "@pob/pretty-pkg": "npm:8.0.0"
     "@pob/rollup-esbuild": "npm:3.0.0"
     "@types/hosted-git-info": "npm:3.0.5"
-    "@types/node": "npm:20.14.5"
+    "@types/node": "npm:20.14.6"
     "@types/npmcli__map-workspaces": "npm:3.0.4"
     commander: "npm:12.1.0"
     conventional-changelog-conventionalcommits: "npm:8.0.0"
