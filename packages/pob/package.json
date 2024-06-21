@@ -74,7 +74,7 @@
   },
   "devDependencies": {
     "@pob/root": "12.1.1",
-    "@types/node": "20.14.6",
+    "@types/node": "20.14.7",
     "typescript": "5.4.5"
   }
 }
