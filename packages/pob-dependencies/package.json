@@ -64,7 +64,7 @@
     "pob-babel": "40.0.0",
     "prettier": "3.3.2",
     "repository-check-dirty": "7.0.0",
-    "rollup": "4.18.0",
+    "rollup": "4.18.1",
     "semver": "7.6.2",
     "ts-node": "npm:ts-node-lite@11.0.0-beta.1",
     "tslib": "2.6.2",
