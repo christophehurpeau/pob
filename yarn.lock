@@ -15229,10 +15229,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:4.21.0, type-fest@npm:^4.0.0, type-fest@npm:^4.6.0, type-fest@npm:^4.7.1":
-  version: 4.21.0
-  resolution: "type-fest@npm:4.21.0"
-  checksum: 10/a4dc074b25239fff4062495c58554dcec15845622d753092d2bf24fc3b1c49f85805ed74f151976d666056ff122b3a5a988e85226575b7fbbc8e92d2db210137
+"type-fest@npm:4.23.0, type-fest@npm:^4.0.0, type-fest@npm:^4.6.0, type-fest@npm:^4.7.1":
+  version: 4.23.0
+  resolution: "type-fest@npm:4.23.0"
+  checksum: 10/c411dea83262f9a4453e09ff82e3ac729dd26afc2e68b7a9fe93dd633b1a2bf7bf2bf3e041676497ae8b8411266019b3add91d4fe34b926a82ba09eb41e9e52b
   languageName: node
   linkType: hard
 
@@ -16178,7 +16178,7 @@ __metadata:
     nightingale-console: "npm:15.0.0"
     nightingale-string: "npm:15.0.0"
     semver: "npm:7.6.3"
-    type-fest: "npm:4.21.0"
+    type-fest: "npm:4.23.0"
     typescript: "npm:5.4.5"
   bin:
     yarn-version: ./build/index-node18.mjs
