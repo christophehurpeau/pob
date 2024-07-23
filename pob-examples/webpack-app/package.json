@@ -32,7 +32,7 @@
     "example-typescript-lib": "0.28.0"
   },
   "devDependencies": {
-    "webpack": "5.92.1",
+    "webpack": "5.93.0",
     "webpack-cli": "5.1.4"
   }
 }
