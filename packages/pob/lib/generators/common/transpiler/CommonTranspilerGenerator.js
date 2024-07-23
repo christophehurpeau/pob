@@ -136,8 +136,8 @@ export default class CommonTranspilerGenerator extends Generator {
       withTypescript &&
       (pkg.pob.rollup === false
         ? "tsc"
-        : pkg.pob.bundler ??
-          (pkg.pob.typescript ? "rollup-typescript" : "rollup-babel"));
+        : (pkg.pob.bundler ??
+          (pkg.pob.typescript ? "rollup-typescript" : "rollup-babel")));
     this.bundler = bundler;
 
     const cleanCommand = (() => {

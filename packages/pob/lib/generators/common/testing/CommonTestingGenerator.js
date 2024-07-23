@@ -178,7 +178,7 @@ export default class CommonTestingGenerator extends Generator {
     let hasReact =
       withTypescript &&
       (this.options.monorepo
-        ? yoConfigPobMonorepo.react ?? packageUtils.hasReact(pkg)
+        ? (yoConfigPobMonorepo.react ?? packageUtils.hasReact(pkg))
         : packageUtils.hasReact(pkg));
     const testRunner = globalTesting
       ? inMonorepo.pobConfig.monorepo.testRunner || "jest"
