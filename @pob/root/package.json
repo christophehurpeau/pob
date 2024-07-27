@@ -1,6 +1,6 @@
 {
   "name": "@pob/root",
-  "version": "12.1.1",
+  "version": "12.2.0",
   "description": "root package",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -71,7 +71,7 @@
   "dependencies": {
     "@commitlint/cli": "19.3.0",
     "@pob/pretty-eslint-config": "6.0.0",
-    "@pob/pretty-pkg": "8.0.0",
+    "@pob/pretty-pkg": "8.1.0",
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "cosmiconfig": "^9.0.0",
     "husky": "~9.1.0",
@@ -82,6 +82,6 @@
     "repository-check-dirty": "7.0.0",
     "semver": "^7.3.7",
     "which-pm-runs": "1.1.0",
-    "yarn-version": "2.1.1"
+    "yarn-version": "2.2.0"
   }
 }

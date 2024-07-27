@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.2.0](https://github.com/christophehurpeau/pob/compare/pob@22.1.1...pob@22.2.0) (2024-07-27)
+
+### Features
+
+* **deps:** update dependency yeoman-generator to v7.3.0 ([#2098](https://github.com/christophehurpeau/pob/issues/2098)) ([5e2295b](https://github.com/christophehurpeau/pob/commit/5e2295b2e983752f7eaf42c22d30cced22c5fce6))
+* **deps:** update yarn monorepo ([#2087](https://github.com/christophehurpeau/pob/issues/2087)) ([fa9d77b](https://github.com/christophehurpeau/pob/commit/fa9d77bf2cfe11d736d288362ad5df9255533e65))
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v3.3.2 ([#2089](https://github.com/christophehurpeau/pob/issues/2089)) ([cc20ddd](https://github.com/christophehurpeau/pob/commit/cc20ddd10f743f57b0f13e3630b2945cdb1104a9))
+* **deps:** update dependency prettier to v3.3.3 ([#2140](https://github.com/christophehurpeau/pob/issues/2140)) ([c44959e](https://github.com/christophehurpeau/pob/commit/c44959ed852e087419bf5b61f9460e6a3e02b789))
+* **deps:** update dependency semver to v7.6.3 ([#2141](https://github.com/christophehurpeau/pob/issues/2141)) ([047d95c](https://github.com/christophehurpeau/pob/commit/047d95c38ce1e5b267be78579400620b99c7de64))
+* **deps:** update dependency yeoman-generator to v7.3.1 ([#2099](https://github.com/christophehurpeau/pob/issues/2099)) ([a632c39](https://github.com/christophehurpeau/pob/commit/a632c39899b44a4222e9e48fe1f5c1b038b60824))
+* **deps:** update dependency yeoman-generator to v7.3.2 ([#2118](https://github.com/christophehurpeau/pob/issues/2118)) ([f385316](https://github.com/christophehurpeau/pob/commit/f3853160b128a36843e14ef63a3d8d58d53dd08a))
+* **deps:** update yarn monorepo ([#2111](https://github.com/christophehurpeau/pob/issues/2111)) ([7abc59d](https://github.com/christophehurpeau/pob/commit/7abc59d18cf9f3ea2ca9b763be4d4c9477253bcb))
+
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [22.1.1](https://github.com/christophehurpeau/pob/compare/pob@22.1.0...pob@22.1.1) (2024-06-08)
 
 Version bump for dependency: @pob/root

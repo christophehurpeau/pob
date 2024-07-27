@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@8.0.0...@pob/pretty-pkg@8.1.0) (2024-07-27)
+
+Version bump for dependency: @pob/sort-pkg
+
+
 ## [8.0.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@7.1.1...@pob/pretty-pkg@8.0.0) (2024-06-07)
 
 ### ⚠ BREAKING CHANGES

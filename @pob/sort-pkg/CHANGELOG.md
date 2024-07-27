@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@7.2.0...@pob/sort-pkg@7.3.0) (2024-07-27)
+
+### Features
+
+* **@pob/sort-pkg:** add react-native field ([fee6d10](https://github.com/christophehurpeau/pob/commit/fee6d1056915c682a1ac84a0b31607e9e15b839f))
+
 ## [7.2.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@7.1.1...@pob/sort-pkg@7.2.0) (2024-06-07)
 
 ### ⚠ BREAKING CHANGES

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.0](https://github.com/christophehurpeau/pob/compare/yarn-version@2.1.1...yarn-version@2.2.0) (2024-07-27)
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v7.6.3 ([#2141](https://github.com/christophehurpeau/pob/issues/2141)) ([047d95c](https://github.com/christophehurpeau/pob/commit/047d95c38ce1e5b267be78579400620b99c7de64))
+* **yarn-version:** fix changelog generator for dependent workspace ([86d51f6](https://github.com/christophehurpeau/pob/commit/86d51f60908c72d43a8ada31d9808488e8e71d9f))
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [2.1.1](https://github.com/christophehurpeau/pob/compare/yarn-version@2.1.0...yarn-version@2.1.1) (2024-06-08)
 
 ### Bug Fixes

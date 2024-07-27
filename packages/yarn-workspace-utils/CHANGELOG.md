@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@5.0.0...yarn-workspace-utils@5.1.0) (2024-07-27)
+
+### Features
+
+* **deps:** update yarn monorepo ([#2087](https://github.com/christophehurpeau/pob/issues/2087)) ([fa9d77b](https://github.com/christophehurpeau/pob/commit/fa9d77bf2cfe11d736d288362ad5df9255533e65))
+
+### Bug Fixes
+
+* **deps:** update yarn monorepo ([#2111](https://github.com/christophehurpeau/pob/issues/2111)) ([7abc59d](https://github.com/christophehurpeau/pob/commit/7abc59d18cf9f3ea2ca9b763be4d4c9477253bcb))
+
+Version bump for dependency: pob-babel
+
+
 ## [5.0.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@4.0.0...yarn-workspace-utils@5.0.0) (2024-06-07)
 
 Version bump for dependency: pob-babel

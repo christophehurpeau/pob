@@ -1,6 +1,6 @@
 {
   "name": "@pob/rollup-esbuild",
-  "version": "3.0.0",
+  "version": "3.1.0",
   "description": "rollup configuration with typescript for pob",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -54,7 +54,7 @@
     }
   },
   "dependencies": {
-    "@pob/rollup": "3.0.0",
+    "@pob/rollup": "3.0.1",
     "@rollup/plugin-node-resolve": "15.2.3",
     "@rollup/plugin-run": "3.1.0",
     "esbuild": "0.23.0",

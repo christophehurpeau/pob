@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@12.1.1...@pob/root@12.2.0) (2024-07-27)
+
+### Features
+
+* **deps:** update dependency husky to ~9.1.0 ([#2146](https://github.com/christophehurpeau/pob/issues/2146)) ([2a3f168](https://github.com/christophehurpeau/pob/commit/2a3f16842941dbd86f537eed5f7a7b3d1239077a))
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v15.2.6 ([#2090](https://github.com/christophehurpeau/pob/issues/2090)) ([8543d90](https://github.com/christophehurpeau/pob/commit/8543d90fe9f9abdd17a910a2ba6e55cf60602271))
+* **deps:** update dependency lint-staged to v15.2.7 ([#2093](https://github.com/christophehurpeau/pob/issues/2093)) ([d8836c6](https://github.com/christophehurpeau/pob/commit/d8836c649c6a954670f72189056056139f99522a))
+* **deps:** update dependency prettier to v3.3.2 ([#2089](https://github.com/christophehurpeau/pob/issues/2089)) ([cc20ddd](https://github.com/christophehurpeau/pob/commit/cc20ddd10f743f57b0f13e3630b2945cdb1104a9))
+* **deps:** update dependency prettier to v3.3.3 ([#2140](https://github.com/christophehurpeau/pob/issues/2140)) ([c44959e](https://github.com/christophehurpeau/pob/commit/c44959ed852e087419bf5b61f9460e6a3e02b789))
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: yarn-version
+
+
 ## [12.1.1](https://github.com/christophehurpeau/pob/compare/@pob/root@12.1.0...@pob/root@12.1.1) (2024-06-08)
 
 Version bump for dependency: yarn-version
