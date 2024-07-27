@@ -25,7 +25,7 @@ const ensureHuskyNotInDevDependencies = (pkg) => {
 const writeHook = (hookName, hookContent) => {
   fs.writeFileSync(
     path.resolve(`.husky/${hookName}`),
-    `#!/usr/bin/env sh\n\n${hookContent.trim()}\n`,
+    `${hookContent.trim()}\n`,
     {
       mode: "755",
     },
