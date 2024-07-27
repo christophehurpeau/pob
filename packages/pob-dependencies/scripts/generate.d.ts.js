@@ -20,7 +20,6 @@ fs.writeFileSync(
     {
       filepath: "index.d.ts",
       trailingComma: "all",
-      singleQuote: true,
       arrowParens: "always",
     },
   ),
