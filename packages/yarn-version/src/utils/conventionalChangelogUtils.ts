@@ -50,7 +50,9 @@ export const generateChangelog = (
   } = {},
   // eslint-disable-next-line @typescript-eslint/max-params
 ): Promise<string> => {
-  if (!newTag) throw new Error("Missing new tag");
+  if (!newTag) {
+    throw new Error(`Missing new tag for package "${pkg.name ?? ""}"`);
+  }
   const stream: Readable = conventionalChangelogCore(
     {
       cwd: workspace.cwd,

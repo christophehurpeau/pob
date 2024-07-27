@@ -624,14 +624,14 @@ export const versionCommandAction = async (
           rootWorkspace,
           workspace.pkg,
           conventionalCommitConfig,
-          newTag,
+          isMonorepoVersionIndependent ? newTag : rootNewTag,
           {
             path: workspaceRelativePath,
             previousTag: previousTagByWorkspace.get(workspace),
             verbose: options.verbose,
             tagPrefix: options.tagVersionPrefix,
             lernaPackage:
-              rootWorkspace === workspace || !isMonorepoVersionIndependent
+              rootWorkspace === workspace
                 ? undefined
                 : getWorkspaceName(workspace),
           },

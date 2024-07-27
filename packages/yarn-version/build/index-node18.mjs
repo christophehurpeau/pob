@@ -213,7 +213,9 @@ const generateChangelog = (workspace, pkg, config, newTag, {
   path = "",
   lernaPackage
 } = {}) => {
-  if (!newTag) throw new Error("Missing new tag");
+  if (!newTag) {
+    throw new Error(`Missing new tag for package "${pkg.name ?? ""}"`);
+  }
   const stream = conventionalChangelogCore(
     {
       cwd: workspace.cwd,
@@ -889,13 +891,13 @@ There are uncommitted changes in the git repository. Please commit or stash them
           rootWorkspace,
           workspace.pkg,
           conventionalCommitConfig,
-          newTag,
+          isMonorepoVersionIndependent ? newTag : rootNewTag,
           {
             path: workspaceRelativePath,
             previousTag: previousTagByWorkspace.get(workspace),
             verbose: options.verbose,
             tagPrefix: options.tagVersionPrefix,
-            lernaPackage: rootWorkspace === workspace || !isMonorepoVersionIndependent ? void 0 : getWorkspaceName(workspace)
+            lernaPackage: rootWorkspace === workspace ? void 0 : getWorkspaceName(workspace)
           }
         );
         if (bumpForDependenciesReasons && workspace !== rootWorkspace) {
