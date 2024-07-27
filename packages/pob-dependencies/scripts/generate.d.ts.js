@@ -5,8 +5,8 @@ import { pkgPath } from "./helper.cjs";
 const pkg = JSON.parse(fs.readFileSync(pkgPath));
 
 fs.writeFileSync(
-  "./lib/index.d.ts",
-  prettier.format(
+  new URL("../lib/index.d.ts", import.meta.url),
+  await prettier.format(
     `
   interface Dependencies {
     ${Object.keys(pkg.devDependencies)
