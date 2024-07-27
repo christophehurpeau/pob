@@ -74,7 +74,7 @@
     "@pob/pretty-pkg": "8.0.0",
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "cosmiconfig": "^9.0.0",
-    "husky": "~9.0.11",
+    "husky": "~9.1.0",
     "json5": "^2.2.2",
     "lint-staged": "15.2.7",
     "pob-dependencies": "workspace:*",
