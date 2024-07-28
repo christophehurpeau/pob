@@ -80,6 +80,6 @@
     "conventional-recommended-bump": "10.0.0",
     "nightingale-string": "15.0.0",
     "type-fest": "4.23.0",
-    "typescript": "5.4.5"
+    "typescript": "5.5.4"
   }
 }
