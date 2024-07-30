@@ -8666,7 +8666,7 @@ __metadata:
   resolution: "example-typescript-lib-with-rollup-typescript@workspace:pob-examples/typescript-lib-with-rollup-typescript"
   dependencies:
     "@pob/rollup-typescript": "npm:4.0.1"
-    tslib: "npm:^2.6.2"
+    tslib: "npm:^2.6.3"
     typescript: "npm:5.5.4"
   languageName: unknown
   linkType: soft
@@ -8675,7 +8675,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-typescript-lib-without-rollup@workspace:pob-examples/typescript-lib-without-rollup"
   dependencies:
-    tslib: "npm:^2.6.2"
+    tslib: "npm:^2.6.3"
     typescript: "npm:5.5.4"
   languageName: unknown
   linkType: soft
@@ -13261,7 +13261,7 @@ __metadata:
     rollup: "npm:4.19.1"
     semver: "npm:7.6.3"
     ts-node: "npm:ts-node-lite@11.0.0-beta.1"
-    tslib: "npm:2.6.2"
+    tslib: "npm:2.6.3"
     typedoc: "npm:0.26.5"
     typescript: "npm:5.5.4"
     vitest: "npm:2.0.4"
@@ -15316,10 +15316,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:2.6.2, tslib@npm:^2.0.1, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.6.2":
-  version: 2.6.2
-  resolution: "tslib@npm:2.6.2"
-  checksum: 10/bd26c22d36736513980091a1e356378e8b662ded04204453d353a7f34a4c21ed0afc59b5f90719d4ba756e581a162ecbf93118dc9c6be5acf70aa309188166ca
+"tslib@npm:2.6.3, tslib@npm:^2.0.1, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.6.2, tslib@npm:^2.6.3":
+  version: 2.6.3
+  resolution: "tslib@npm:2.6.3"
+  checksum: 10/52109bb681f8133a2e58142f11a50e05476de4f075ca906d13b596ae5f7f12d30c482feb0bff167ae01cfc84c5803e575a307d47938999246f5a49d174fc558c
   languageName: node
   linkType: hard
 
