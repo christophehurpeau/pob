@@ -686,7 +686,7 @@ export const versionCommandAction = async (
     const tagsSet = new Set<string>(
       [...bumpedWorkspaces.values()]
         .map(({ newTag }) => newTag)
-        .filter((newTag) => newTag !== null) as string[],
+        .filter((newTag) => newTag !== null),
     );
 
     const tagsInCommitMessage = [...tagsSet]
