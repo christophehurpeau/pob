@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.28.1...example-typescript-lib@0.29.0) (2024-07-30)
+
+### Features
+
+* **deps:** update dependency jscodeshift to v0.16.1 ([#2103](https://github.com/christophehurpeau/pob/issues/2103)) ([d8505fb](https://github.com/christophehurpeau/pob/commit/d8505fbc438749f7904c15e6a493fb6cf4c8f79a))
+
+Version bump for dependency: pob-babel
+
+
 ## [0.28.1](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.28.0...example-typescript-lib@0.28.1) (2024-07-27)
 
 Version bump for dependency: pob-babel

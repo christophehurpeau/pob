@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.3.0](https://github.com/christophehurpeau/pob/compare/pob@22.2.0...pob@22.3.0) (2024-07-30)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v56.1.0 ([#2149](https://github.com/christophehurpeau/pob/issues/2149)) ([061b9d7](https://github.com/christophehurpeau/pob/commit/061b9d7d43bc1826e1d7fdbebd0c812f37d2c91b))
+* **pob:** move more stuff from commonbabel to commontranspiler ([fad5d29](https://github.com/christophehurpeau/pob/commit/fad5d2902ea91370af3a4218b0624c34e691bad3))
+
+### Bug Fixes
+
+* **pob:** fix template ([035eff7](https://github.com/christophehurpeau/pob/commit/035eff78368cca1e3c60be4ddf44b16eae8b28c2))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [22.2.0](https://github.com/christophehurpeau/pob/compare/pob@22.1.1...pob@22.2.0) (2024-07-27)
 
 ### Features

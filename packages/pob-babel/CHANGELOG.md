@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.0.2](https://github.com/christophehurpeau/pob/compare/pob-babel@40.0.1...pob-babel@40.0.2) (2024-07-30)
+
+Version bump for dependency: @pob/rollup
+Version bump for dependency: babel-preset-pob-env
+
+
 ## [40.0.1](https://github.com/christophehurpeau/pob/compare/pob-babel@40.0.0...pob-babel@40.0.1) (2024-07-27)
 
 Version bump for dependency: @pob/rollup

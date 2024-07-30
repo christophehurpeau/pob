@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@13.2.0...pob-dependencies@13.3.0) (2024-07-30)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v56.1.0 ([#2149](https://github.com/christophehurpeau/pob/issues/2149)) ([061b9d7](https://github.com/christophehurpeau/pob/commit/061b9d7d43bc1826e1d7fdbebd0c812f37d2c91b))
+
+### Bug Fixes
+
+* fix prettier config ([65cb480](https://github.com/christophehurpeau/pob/commit/65cb48098d0aea44ce99b18e71fdceec80ceabe6))
+
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: @pob/rollup-typescript
+Version bump for dependency: pob-babel
+
+
 ## [13.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@13.1.0...pob-dependencies@13.2.0) (2024-07-27)
 
 ### Bug Fixes
