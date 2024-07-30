@@ -1,4 +1,3 @@
-import semver from "semver";
 import Generator from "yeoman-generator";
 import * as packageUtils from "../../../utils/package.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
@@ -220,18 +219,6 @@ export default class CommonBabelGenerator extends Generator {
       babelConfig.browserVersions = ["supported"];
     }
 
-    if (hasInitialPkgPob && pkg.main && !pkg.exports) {
-      const result = await this.prompt({
-        type: "confirm",
-        name: "setupExports",
-        message: 'Setup package.json "exports" field based on "main" ?',
-      });
-
-      if (result.setupExports) {
-        pkg.exports = pkg.main;
-      }
-    }
-
     const newBabelEnvs = [
       ...(babelConfig.nodeVersions || []).map((version) => ({
         target: "node",
@@ -260,7 +247,6 @@ export default class CommonBabelGenerator extends Generator {
       })),
     ];
 
-    delete pkg.pob.withReact;
     if (newBabelEnvs.length === 0) {
       if (!pkg.pob.bundler || pkg.pob.bundler === "rollup-babel") {
         delete pkg.pob.envs;
@@ -319,10 +305,6 @@ export default class CommonBabelGenerator extends Generator {
   default() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
     const useBabel = this.babelEnvs && this.babelEnvs.length > 0;
-    const useTypescript = useBabel || pkg.pob?.typescript;
-    const hasTargetNode = useBabel
-      ? this.babelEnvs.find((env) => env.target === "node")
-      : useTypescript; // todo pkg.pob.typescriptTargets
     const hasTargetBrowser = this.babelEnvs.find(
       (env) => env.target === "browser",
     );
@@ -369,57 +351,6 @@ export default class CommonBabelGenerator extends Generator {
         (pkg.devDependencies?.["@babel/preset-env"] && isLibraryRollupPlugin),
       ["@babel/preset-env"],
     );
-
-    /* engines */
-
-    if (hasTargetNode) {
-      if (!pkg.engines) pkg.engines = {};
-      const minNodeVersion = useBabel
-        ? Math.min(
-            ...this.babelEnvs
-              .filter((env) => env.target === "node")
-              .map((env) => env.version),
-          )
-        : // eslint-disable-next-line unicorn/no-unreadable-iife
-          (() => (this.options.onlyLatestLTS ? "20" : "18"))();
-      switch (String(minNodeVersion)) {
-        case "10":
-        case "12":
-        case "14":
-        case "16":
-        case "18":
-          pkg.engines.node = ">=18.12.0";
-          break;
-        case "20":
-          pkg.engines.node = ">=20.9.0";
-          break;
-        default:
-          throw new Error(`Invalid min node version: ${minNodeVersion}`);
-      }
-
-      if (pkg.dependencies && pkg.dependencies["@types/node"]) {
-        pkg.dependencies["@types/node"] = `>=${minNodeVersion}.0.0`;
-      }
-      if (
-        pkg.devDependencies &&
-        pkg.devDependencies["@types/node"] &&
-        !semver.satisfies(
-          pkg.devDependencies["@types/node"],
-          `>=${minNodeVersion}.0.0`,
-        )
-      ) {
-        pkg.devDependencies["@types/node"] = `>=${minNodeVersion}.0.0`;
-      }
-    } else {
-      packageUtils.removeDependencies(pkg, ["@types/node"]);
-      packageUtils.removeDevDependencies(pkg, ["@types/node"]);
-      // Supports oldest current or active LTS version of node
-      if (this.options.onlyLatestLTS) {
-        pkg.engines.node = ">=20.9.0";
-      } else {
-        pkg.engines.node = ">=18.12.0";
-      }
-    }
 
     /* browserslist */
 

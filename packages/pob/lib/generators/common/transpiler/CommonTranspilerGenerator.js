@@ -302,13 +302,6 @@ export default class CommonTranspilerGenerator extends Generator {
           pkg.types = "./lib/index.d.ts";
         }
       }
-      if (!pkg.engines) pkg.engines = {};
-      if (
-        !pkg.engines.node ||
-        semver.lt(semver.minVersion(pkg.engines.node), "18.0.0")
-      ) {
-        pkg.engines.node = ">=18.0.0";
-      }
     }
 
     delete pkg["browser-dev"];
@@ -518,6 +511,64 @@ export default class CommonTranspilerGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
     const entries = pkg.pob.entries || ["index"];
     const envs = pkg.pob.envs || pkg.pob.babelEnvs;
+    delete pkg.pob.withReact;
+
+    const hasTargetNode = envs && envs.some((env) => env.target === "node");
+
+    if (!pkg.engines) pkg.engines = {};
+
+    if (hasTargetNode || !envs) {
+      const minNodeVersion = envs
+        ? Math.min(
+            ...envs
+              .filter((env) => env.target === "node")
+              .map((env) => env.version),
+          )
+        : // eslint-disable-next-line unicorn/no-unreadable-iife
+          (() => (this.options.onlyLatestLTS ? "20" : "18"))();
+
+      switch (String(minNodeVersion)) {
+        case "10":
+        case "12":
+        case "14":
+        case "16":
+        case "18":
+          pkg.engines.node = ">=18.12.0";
+          break;
+        case "20":
+          pkg.engines.node = ">=20.9.0";
+          break;
+        default:
+          throw new Error(`Invalid min node version: ${minNodeVersion}`);
+      }
+
+      if (pkg.dependencies && pkg.dependencies["@types/node"]) {
+        pkg.dependencies["@types/node"] = `>=${minNodeVersion}.0.0`;
+      }
+      if (
+        pkg.devDependencies &&
+        pkg.devDependencies["@types/node"] &&
+        !semver.satisfies(
+          pkg.devDependencies["@types/node"],
+          `>=${minNodeVersion}.0.0`,
+        )
+      ) {
+        pkg.devDependencies["@types/node"] = `>=${minNodeVersion}.0.0`;
+      }
+    } else {
+      packageUtils.removeDependencies(pkg, ["@types/node"]);
+      packageUtils.removeDevDependencies(pkg, ["@types/node"]);
+
+      // Supports oldest current or active LTS version of node
+      const minVersion = this.options.onlyLatestLTS ? "20.9.0" : "18.12.0";
+
+      if (
+        !pkg.engines.node ||
+        semver.lt(semver.minVersion(pkg.engines.node), minVersion)
+      ) {
+        pkg.engines.node = `>=${minVersion}`;
+      }
+    }
 
     this.fs.delete("rollup.config.js");
     if (

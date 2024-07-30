@@ -66,6 +66,18 @@ export default class CorePackageGenerator extends Generator {
       delete pkg.packageManager;
     }
 
+    if (pkg.pob && pkg.main && !pkg.exports) {
+      const result = await this.prompt({
+        type: "confirm",
+        name: "setupExports",
+        message: 'Setup package.json "exports" field based on "main" ?',
+      });
+
+      if (result.setupExports) {
+        pkg.exports = pkg.main;
+      }
+    }
+
     if (!this.options.updateOnly) {
       if (this.options.isMonorepo && this.options.isRoot) {
         pkg.private = true;

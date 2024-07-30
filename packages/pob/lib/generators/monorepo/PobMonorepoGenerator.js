@@ -322,6 +322,13 @@ export default class PobMonorepoGenerator extends Generator {
   writing() {
     if (!this.options.isAppProject) {
       const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
+      const rollupKinds = new Set();
+
+      this.packages.forEach((pkg) => {
+        if (pkg.pob?.bundler && pkg.pob.bundler.startsWith("rollup-")) {
+          rollupKinds.add(pkg.pob.bundler.slice("rollup-".length));
+        }
+      });
 
       const rollupConfigs = [];
       this.packageLocations.forEach((location) => {
@@ -351,10 +358,12 @@ export default class PobMonorepoGenerator extends Generator {
         build: "yarn clean:build && rollup --config rollup.config.mjs",
         watch: "yarn clean:build && rollup --config rollup.config.mjs --watch",
       });
-      packageUtils.addOrRemoveDevDependencies(pkg, rollupConfigs.length, [
-        "@babel/core",
-        "pob-babel",
-      ]);
+      packageUtils.addOrRemoveDevDependencies(
+        pkg,
+        rollupConfigs.length > 0 &&
+          (rollupKinds.size === 0 || rollupKinds.has("babel")),
+        ["@babel/core", "pob-babel"],
+      );
       this.fs.writeJSON(this.destinationPath("package.json"), pkg);
     }
 
