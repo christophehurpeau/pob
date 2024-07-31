@@ -253,6 +253,7 @@ export default class CommonTestingGenerator extends Generator {
         "jest",
         "@types/jest",
         "vitest",
+        "@vitest/coverage-v8",
       ]);
 
       delete pkg.jest;
@@ -357,7 +358,7 @@ export default class CommonTestingGenerator extends Generator {
       this.options.enable &&
         (enableForMonorepo || !globalTesting) &&
         testRunner === "vitest",
-      ["vitest"],
+      ["vitest", "@vitest/coverage-v8"],
     );
 
     if (!this.options.enable) {
