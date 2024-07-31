@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.48% </span>
+                <span class="strong">47.03% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>104/219</span>
+                <span class='fraction'>103/219</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.05% </span>
+                <span class="strong">40.52% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>78/190</span>
+                <span class='fraction'>77/190</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">48.14% </span>
+                <span class="strong">47.68% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>104/216</span>
+                <span class='fraction'>103/216</span>
             </div>
         
             
@@ -57,7 +57,7 @@
         <template id="filterTemplate">
             <div class="quiet">
                 Filter:
-                <input oninput="onInput()" type="search" id="fileSearch">
+                <input type="search" id="fileSearch">
             </div>
         </template>
     </div>
@@ -1581,7 +1581,7 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -2011,7 +2011,7 @@ export const versionCommandAction = async (
     const version = workspace.pkg.version;
 &nbsp;
     if (!version || version === "0.0.0") {
-      if (
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (
         (isRoot || <span class="branch-1 cbranch-no" title="branch not covered" >isMonorepoVersionIndependent)</span> &amp;&amp;
         (!isMonorepo || <span class="branch-3 cbranch-no" title="branch not covered" >!isMonorepoVersionIndependent)</span>
       ) {
@@ -2032,7 +2032,7 @@ export const versionCommandAction = async (
     });
   }
 &nbsp;
-  if (bumpableWorkspaces.length &gt; 0) {
+  <span class="missing-if-branch" title="else path not taken" >E</span>if (bumpableWorkspaces.length &gt; 0) {
     logger.info("Found bumpable workspaces", {
       count: bumpableWorkspaces.length,
     });
@@ -2115,7 +2115,7 @@ export const versionCommandAction = async (
       }
     }
 &nbsp;
-    if (bumpType) {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (bumpType) {
       <span class="missing-if-branch" title="if path not taken" >I</span>if (isMonorepo &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >!workspace.pkg.name)</span> {
 <span class="cstat-no" title="statement not covered" >        throw new Error("Workspace name is required");</span>
       }
@@ -2166,7 +2166,7 @@ export const versionCommandAction = async (
       const bumpReasons: string[] = [];
       const dependenciesToBump: BumpedWorkspace["dependenciesToBump"] = [];
 &nbsp;
-      if (changedWorkspace) {
+      <span class="missing-if-branch" title="else path not taken" >E</span>if (changedWorkspace) {
         bumpType = changedWorkspace.bumpType;
         bumpReasons.push(changedWorkspace.bumpReason || <span class="branch-1 cbranch-no" title="branch not covered" >"by commits")</span>;
       }
@@ -2254,12 +2254,12 @@ export const versionCommandAction = async (
 &nbsp;
         const tagName = buildTagName(workspace, newVersion);
 &nbsp;
-        if (workspace === rootWorkspace) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (workspace === rootWorkspace) {
           rootNewVersion = newVersion;
           rootNewTag = tagName;
         }
 &nbsp;
-        if (workspace !== rootWorkspace || !isMonorepo) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (workspace !== rootWorkspace || !isMonorepo) {
           const bumpReason = bumpReasons.join("\n");
           bumpedWorkspaces.set(workspace, {
             currentVersion,
@@ -2452,13 +2452,13 @@ export const versionCommandAction = async (
           }
         }
 &nbsp;
-        if (changelog.slice(changelog.indexOf("\n")).trim().length === 0) {
-          changelog += `${!changelog.endsWith("\n\n") ? "\n" : <span class="branch-1 cbranch-no" title="branch not covered" >""}</span>Note: no notable changes\n\n`;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (changelog.slice(changelog.indexOf("\n")).trim().length === 0) {
+<span class="cstat-no" title="statement not covered" >          changelog += `${!changelog.endsWith("\n\n") ? "\n" : ""}Note: no notable changes\n\n`;</span>
         }
 &nbsp;
         changelogs.set(workspace, changelog);
 &nbsp;
-        if (options.changelog) {
+        <span class="missing-if-branch" title="else path not taken" >E</span>if (options.changelog) {
           if (options.dryRun) {
             logger.info(
               `${getWorkspaceName(workspace)}: ${
@@ -2686,7 +2686,7 @@ export default program
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Tue Jul 30 2024 16:31:55 GMT+0000 (Coordinated Universal Time)
+                at 2024-07-31T09:25:07.708Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
