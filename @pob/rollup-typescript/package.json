@@ -45,7 +45,7 @@
   "pob": {},
   "prettier": "@pob/root/prettier-config",
   "peerDependencies": {
-    "rollup": "4.19.1",
+    "rollup": "4.19.2",
     "typescript": "^4.0.3 || ^5.0.0"
   },
   "peerDependenciesMeta": {
@@ -58,7 +58,7 @@
     "@rollup/plugin-node-resolve": "15.2.3",
     "@rollup/plugin-run": "3.1.0",
     "@rollup/plugin-typescript": "11.1.6",
-    "rollup": "4.19.1",
+    "rollup": "4.19.2",
     "rollup-config-external-dependencies": "^3.0.0"
   }
 }
