@@ -8,6 +8,7 @@ const whichPmRuns = require("which-pm-runs");
 const pm =
   whichPmRuns() ||
   (fs.existsSync("package-lock.json") ? { name: "npm" } : undefined);
+const isEslintFlatConfig = fs.existsSync("eslint.config.js");
 
 const yarnMajorVersion = pm.name === "yarn" && semver.major(pm.version);
 const { lockfile, installAndDedupe } = (() => {
@@ -95,11 +96,19 @@ module.exports = function createLintStagedConfig() {
     "./*.{yml,yaml,md}": ["prettier --write"],
     [`${srcDirectories}/**/*.{js,ts,tsx}`]: [
       "prettier --write",
-      "eslint --fix --quiet --report-unused-disable-directives --resolve-plugins-relative-to .",
+      `eslint --fix --quiet${
+        isEslintFlatConfig
+          ? " --report-unused-disable-directives --resolve-plugins-relative-to ."
+          : ""
+      }`,
     ],
     "{scripts,config,.storyboook}/**/*.{js,mjs,cjs}": [
       "prettier --write",
-      "eslint --fix --quiet --report-unused-disable-directives --resolve-plugins-relative-to .",
+      `eslint --fix --quiet${
+        isEslintFlatConfig
+          ? " --report-unused-disable-directives --resolve-plugins-relative-to ."
+          : ""
+      }`,
     ],
     [`{.storybook,${srcDirectories}}/**/*.css`]: [
       "prettier --parser css --write",
