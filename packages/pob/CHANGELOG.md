@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.4.1](https://github.com/christophehurpeau/pob/compare/pob@22.4.0...pob@22.4.1) (2024-08-04)
+
+Version bump for dependency: @pob/root
+
+
 ## [22.4.0](https://github.com/christophehurpeau/pob/compare/pob@22.3.0...pob@22.4.0) (2024-08-04)
 
 ### Features
