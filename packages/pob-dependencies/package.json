@@ -52,7 +52,7 @@
     "@pob/rollup-esbuild": "3.1.1",
     "@pob/rollup-typescript": "4.0.2",
     "@swc-node/register": "1.10.9",
-    "@swc/core": "1.7.5",
+    "@swc/core": "1.7.6",
     "@swc/jest": "0.2.36",
     "@types/jest": "29.5.12",
     "@types/node": "20.14.14",
