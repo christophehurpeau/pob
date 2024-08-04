@@ -1,7 +1,7 @@
 {
   "name": "example-typescript-lib-with-rollup-typescript",
   "private": true,
-  "version": "0.28.2",
+  "version": "0.28.3",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": {
@@ -48,7 +48,7 @@
     "tslib": "^2.6.3"
   },
   "devDependencies": {
-    "@pob/rollup-typescript": "4.0.2",
+    "@pob/rollup-typescript": "4.0.3",
     "typescript": "5.5.4"
   }
 }

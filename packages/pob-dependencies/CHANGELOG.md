@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.4.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@13.3.0...pob-dependencies@13.4.0) (2024-08-04)
+
+### Features
+
+* add update for @vitest/coverage-v8 ([187f66e](https://github.com/christophehurpeau/pob/commit/187f66e3949df1f18beea70bbc7077f74e1bd1ae))
+
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: @pob/rollup-typescript
+Version bump for dependency: pob-babel
+
+
 ## [13.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@13.2.0...pob-dependencies@13.3.0) (2024-07-30)
 
 ### Features

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@12.2.1...@pob/root@12.3.0) (2024-08-04)
+
+### Features
+
+* **@pob/root:** add support for flat eslint config ([44f7994](https://github.com/christophehurpeau/pob/commit/44f7994214f177ccb1611a3afb99a667b5268d6c))
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v15.2.8 ([#2159](https://github.com/christophehurpeau/pob/issues/2159)) ([e1695b6](https://github.com/christophehurpeau/pob/commit/e1695b6f479ca99674d697bf5116002596055fa6))
+
+Version bump for dependency: yarn-version
+
+
 ## [12.2.1](https://github.com/christophehurpeau/pob/compare/@pob/root@12.2.0...@pob/root@12.2.1) (2024-07-30)
 
 Version bump for dependency: yarn-version
