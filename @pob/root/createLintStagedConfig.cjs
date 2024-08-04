@@ -98,16 +98,16 @@ module.exports = function createLintStagedConfig() {
       "prettier --write",
       `eslint --fix --quiet${
         isEslintFlatConfig
-          ? " --report-unused-disable-directives --resolve-plugins-relative-to ."
-          : ""
+          ? ""
+          : " --report-unused-disable-directives --resolve-plugins-relative-to ."
       }`,
     ],
     "{scripts,config,.storyboook}/**/*.{js,mjs,cjs}": [
       "prettier --write",
       `eslint --fix --quiet${
         isEslintFlatConfig
-          ? " --report-unused-disable-directives --resolve-plugins-relative-to ."
-          : ""
+          ? ""
+          : " --report-unused-disable-directives --resolve-plugins-relative-to ."
       }`,
     ],
     [`{.storybook,${srcDirectories}}/**/*.css`]: [
