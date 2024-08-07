@@ -69,7 +69,7 @@
   "pob": {},
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "@commitlint/cli": "19.3.0",
+    "@commitlint/cli": "19.4.0",
     "@pob/pretty-eslint-config": "6.0.0",
     "@pob/pretty-pkg": "8.1.0",
     "conventional-changelog-conventionalcommits": "^8.0.0",
