@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">47.48% </span>
+                <span class="strong">47.05% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>104/219</span>
+                <span class='fraction'>104/221</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">41.05% </span>
+                <span class="strong">40.6% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>78/190</span>
+                <span class='fraction'>80/197</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">48.14% </span>
+                <span class="strong">47.7% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>104/216</span>
+                <span class='fraction'>104/218</span>
             </div>
         
             
@@ -935,7 +935,11 @@
 <a name='L870'></a><a href='#L870'>870</a>
 <a name='L871'></a><a href='#L871'>871</a>
 <a name='L872'></a><a href='#L872'>872</a>
-<a name='L873'></a><a href='#L873'>873</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
+<a name='L873'></a><a href='#L873'>873</a>
+<a name='L874'></a><a href='#L874'>874</a>
+<a name='L875'></a><a href='#L875'>875</a>
+<a name='L876'></a><a href='#L876'>876</a>
+<a name='L877'></a><a href='#L877'>877</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -1581,7 +1585,11 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
@@ -1950,7 +1958,7 @@ export const versionCommandAction = async (
   const isMonorepo = rootWorkspaceChildren.length &gt; 0;
   const isMonorepoVersionIndependent = isMonorepo &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >!rootWorkspace.pkg.version;</span>
   const workspaces =
-    !isMonorepo || <span class="branch-1 cbranch-no" title="branch not covered" >options.includesRoot</span>
+    !(isMonorepo &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >!rootWorkspaceChildren)</span> || <span class="branch-1 cbranch-no" title="branch not covered" >options.includesRoot</span>
       ? [rootWorkspace, ...rootWorkspaceChildren]
       : <span class="branch-1 cbranch-no" title="branch not covered" >rootWorkspaceChildren;</span>
 &nbsp;
@@ -2006,7 +2014,7 @@ export const versionCommandAction = async (
   for (const workspace of workspaces) {
     const workspaceName = getWorkspaceName(workspace);
     const isRoot = workspace === rootWorkspace;
-    <span class="missing-if-branch" title="if path not taken" >I</span>if (isRoot &amp;&amp; isMonorepo) <span class="cstat-no" title="statement not covered" >continue;</span>
+    <span class="missing-if-branch" title="if path not taken" >I</span>if (isRoot &amp;&amp; isMonorepo &amp;&amp; <span class="branch-2 cbranch-no" title="branch not covered" >isMonorepoVersionIndependent)</span> <span class="cstat-no" title="statement not covered" >continue;</span>
 &nbsp;
     const version = workspace.pkg.version;
 &nbsp;
@@ -2452,8 +2460,12 @@ export const versionCommandAction = async (
           }
         }
 &nbsp;
-        <span class="missing-if-branch" title="else path not taken" >E</span>if (changelog.slice(changelog.indexOf("\n")).trim().length === 0) {
-          changelog += `${!changelog.endsWith("\n\n") ? "\n" : <span class="branch-1 cbranch-no" title="branch not covered" >""}</span>Note: no notable changes\n\n`;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (changelog.slice(changelog.indexOf("\n")).trim().length === 0) {
+<span class="cstat-no" title="statement not covered" >          changelog += `${!changelog.endsWith("\n\n") ? "\n" : ""}Note: no notable changes\n\n`;</span>
+        }
+&nbsp;
+        <span class="missing-if-branch" title="if path not taken" >I</span>if (!changelog &amp;&amp; <span class="branch-1 cbranch-no" title="branch not covered" >rootWorkspace === workspace)</span> {
+<span class="cstat-no" title="statement not covered" >          throw new Error("No changelog found for root workspace");</span>
         }
 &nbsp;
         changelogs.set(workspace, changelog);
@@ -2686,7 +2698,7 @@ export default program
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-08-09T22:27:07.551Z
+                at 2024-08-11T10:09:39.602Z
             </div>
         <script src="../../../../prettify.js"></script>
         <script>
