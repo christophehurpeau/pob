@@ -238,6 +238,7 @@ const generateChangelog = (workspace, pkg, config, newTag, {
     },
     // @ts-expect-error -- path is required to filter commits by path. It does not work if it is only provided in options.
     {
+      from: previousTag,
       path
     }
   );
@@ -548,7 +549,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
   let rootNewTag = "";
   const isMonorepo = rootWorkspaceChildren.length > 0;
   const isMonorepoVersionIndependent = isMonorepo && !rootWorkspace.pkg.version;
-  const workspaces = !isMonorepo || options.includesRoot ? [rootWorkspace, ...rootWorkspaceChildren] : rootWorkspaceChildren;
+  const workspaces = !(isMonorepo && !rootWorkspaceChildren) || options.includesRoot ? [rootWorkspace, ...rootWorkspaceChildren] : rootWorkspaceChildren;
   if (options.prerelease) {
     throw new UsageError("--prerelease is not supported yet.");
   }
@@ -582,7 +583,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
   for (const workspace of workspaces) {
     const workspaceName = getWorkspaceName(workspace);
     const isRoot = workspace === rootWorkspace;
-    if (isRoot && isMonorepo) continue;
+    if (isRoot && isMonorepo && isMonorepoVersionIndependent) continue;
     const version = workspace.pkg.version;
     if (!version || version === "0.0.0") {
       if ((isRoot || isMonorepoVersionIndependent) && (!isMonorepo || !isMonorepoVersionIndependent)) {
@@ -911,6 +912,9 @@ There are uncommitted changes in the git repository. Please commit or stash them
           changelog += `${!changelog.endsWith("\n\n") ? "\n" : ""}Note: no notable changes
 
 `;
+        }
+        if (!changelog && rootWorkspace === workspace) {
+          throw new Error("No changelog found for root workspace");
         }
         changelogs.set(workspace, changelog);
         if (options.changelog) {
