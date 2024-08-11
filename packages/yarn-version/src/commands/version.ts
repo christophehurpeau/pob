@@ -141,7 +141,7 @@ export const versionCommandAction = async (
   const isMonorepo = rootWorkspaceChildren.length > 0;
   const isMonorepoVersionIndependent = isMonorepo && !rootWorkspace.pkg.version;
   const workspaces =
-    !isMonorepo || options.includesRoot
+    !(isMonorepo && !rootWorkspaceChildren) || options.includesRoot
       ? [rootWorkspace, ...rootWorkspaceChildren]
       : rootWorkspaceChildren;
 
@@ -197,7 +197,7 @@ export const versionCommandAction = async (
   for (const workspace of workspaces) {
     const workspaceName = getWorkspaceName(workspace);
     const isRoot = workspace === rootWorkspace;
-    if (isRoot && isMonorepo) continue;
+    if (isRoot && isMonorepo && isMonorepoVersionIndependent) continue;
 
     const version = workspace.pkg.version;
 
@@ -645,6 +645,10 @@ export const versionCommandAction = async (
 
         if (changelog.slice(changelog.indexOf("\n")).trim().length === 0) {
           changelog += `${!changelog.endsWith("\n\n") ? "\n" : ""}Note: no notable changes\n\n`;
+        }
+
+        if (!changelog && rootWorkspace === workspace) {
+          throw new Error("No changelog found for root workspace");
         }
 
         changelogs.set(workspace, changelog);
