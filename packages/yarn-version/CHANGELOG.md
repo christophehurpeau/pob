@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.2.3](https://github.com/christophehurpeau/pob/compare/yarn-version@2.2.2...yarn-version@2.2.3) (2024-08-11)
+
+### Bug Fixes
+
+* **yarn-version:** fix changelog generation for dependent mode ([47273f9](https://github.com/christophehurpeau/pob/commit/47273f9228189034749c0481d0f1bd9780285f92))
+
 ## [2.2.2](https://github.com/christophehurpeau/pob/compare/yarn-version@2.2.1...yarn-version@2.2.2) (2024-08-04)
 
 Version bump for dependency: @pob/rollup-esbuild

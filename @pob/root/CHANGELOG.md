@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@12.3.1...@pob/root@12.4.0) (2024-08-11)
+
+### Features
+
+* **deps:** update dependency @commitlint/cli to v19.4.0 ([#2163](https://github.com/christophehurpeau/pob/issues/2163)) ([62a813d](https://github.com/christophehurpeau/pob/commit/62a813d9e9456ff7cb71e53361968deb8619b0fb))
+
+Version bump for dependency: yarn-version
+
+
 ## [12.3.1](https://github.com/christophehurpeau/pob/compare/@pob/root@12.3.0...@pob/root@12.3.1) (2024-08-04)
 
 ### Bug Fixes

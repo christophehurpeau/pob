@@ -1,6 +1,6 @@
 {
   "name": "yarn-version",
-  "version": "2.2.2",
+  "version": "2.2.3",
   "description": "yarn berry versioning using conventional commits",
   "keywords": [
     "semantic-release",
