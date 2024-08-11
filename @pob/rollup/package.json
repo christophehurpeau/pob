@@ -35,7 +35,7 @@
   ],
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet @pob/rollup"
+    "lint:eslint": "yarn ../.. run eslint --quiet @pob/rollup"
   },
   "pob": {},
   "prettier": "@pob/root/prettier-config",

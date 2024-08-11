@@ -8,7 +8,6 @@ describe("fixtures", () => {
   const tests = fs.readdirSync(testsPath);
 
   tests.forEach((dirname) => {
-    if (dirname === ".eslintrc.json") return;
     describe(dirname, () => {
       const cwd = testsPath + dirname;
       process.chdir(cwd);

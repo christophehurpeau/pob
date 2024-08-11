@@ -1,12 +1,8 @@
-import fs from "node:fs";
 import path from "node:path";
 import Generator from "yeoman-generator";
-import ensureJsonFileFormatted from "../../../utils/ensureJsonFileFormatted.js";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import * as packageUtils from "../../../utils/package.js";
-import { writeAndFormatJson } from "../../../utils/writeAndFormat.js";
 import { appIgnorePaths } from "../../app/ignorePaths.js";
-import updateEslintConfig from "./updateEslintConfig.js";
 
 export default class CommonLintGenerator extends Generator {
   constructor(args, opts) {
@@ -57,6 +53,12 @@ export default class CommonLintGenerator extends Generator {
       required: false,
       default: false,
       description: "Typescript enabled",
+    });
+
+    this.option("build", {
+      type: Boolean,
+      required: false,
+      description: "Build",
     });
 
     this.option("enableSrcResolver", {
@@ -132,7 +134,7 @@ export default class CommonLintGenerator extends Generator {
       this.options.babel !== "undefined"
         ? this.options.babel === "true"
         : babelEnvs.length > 0;
-    const useTypescript = useBabel || pkg.pob?.typescript;
+    const useTypescript = this.options.typescript;
     const hasReact = useTypescript && packageUtils.hasReact(pkg);
     const useNode = !useBabel || babelEnvs.some((env) => env.target === "node");
     const useNodeOnly =
@@ -243,7 +245,6 @@ export default class CommonLintGenerator extends Generator {
     const globalEslint =
       this.options.monorepo ||
       (yoConfigPobMonorepo && yoConfigPobMonorepo.eslint !== false);
-    const globalTesting = yoConfigPobMonorepo && yoConfigPobMonorepo.testing;
     const composite = yoConfigPobMonorepo && yoConfigPobMonorepo.typescript;
     const { rootPackageManager, rootYarnNodeLinker } = inMonorepo || {};
     const lernaProjectType =
@@ -259,7 +260,10 @@ export default class CommonLintGenerator extends Generator {
       globalEslint &&
       !((inMonorepo && inMonorepo.root) || this.options.monorepo)
     ) {
-      if (!pkg.name.startsWith("@pob/eslint-config")) {
+      if (
+        !pkg.name.startsWith("@pob/eslint-config") &&
+        !pkg.name.startsWith("@pob/eslint-plugin")
+      ) {
         packageUtils.removeDevDependencies(
           pkg,
           [
@@ -348,113 +352,71 @@ export default class CommonLintGenerator extends Generator {
       }
     }
 
-    const isPobEslintConfig =
-      pkg.name === "eslint-config-pob" ||
-      pkg.name.startsWith("@pob/eslint-config") ||
-      pkg.name === "@pob/use-eslint-plugin";
+    const { imports, flatCascade } = (() => {
+      if (pkg.name === "@pob/eslint-config-monorepo") {
+        return {
+          imports: [
+            'import pobTypescriptConfig from "@pob/eslint-config-typescript"',
+            'import pobTypescriptConfigReact from "@pob/eslint-config-typescript-react"',
+          ],
+          flatCascade: [
+            // TODO
+          ],
+        };
+      }
 
-    const extendsConfigRoot = (() => {
-      if (isPobEslintConfig) {
-        if (pkg.name === "@pob/eslint-config-monorepo") {
+      return {
+        imports: [
+          useTypescript
+            ? 'import pobTypescriptConfig from "@pob/eslint-config-typescript"'
+            : 'import pobConfig from "@pob/eslint-config"',
+          useTypescript &&
+            hasReact &&
+            'import pobTypescriptConfigReact from "@pob/eslint-config-typescript-react"',
+        ].filter(Boolean),
+        flatCascade: (() => {
+          // TODO do something with useNodeOnly ?
+          console.log({ useNodeOnly });
+
+          if (!useTypescript) {
+            return [
+              useNode
+                ? "...pobConfig(import.meta.url).configs.nodeModule"
+                : "...pobConfig(import.meta.url).configs.baseModule",
+            ];
+          }
+          if (!hasReact) {
+            return [
+              useNode
+                ? "...pobTypescriptConfig(import.meta.url).configs.node"
+                : "...pobTypescriptConfig(import.meta.url).configs.base",
+            ];
+          }
+
           return [
-            pkg.type === "commonjs"
-              ? "./@pob/eslint-config/lib/root-commonjs.js"
-              : "./@pob/eslint-config/lib/root-module.js",
-          ];
-        }
-        return [
-          pkg.type === "commonjs"
-            ? "../eslint-config/lib/root-commonjs.js"
-            : "../eslint-config/lib/root-module.js",
-        ];
-      }
-
-      return [
-        pkg.type === "commonjs"
-          ? "@pob/eslint-config/root-commonjs"
-          : "@pob/eslint-config/root-module",
-      ];
-    })();
-
-    const extendsConfigSrc = (() => {
-      if (isPobEslintConfig) {
-        return [
-          pkg.type === "commonjs"
-            ? "../../eslint-config/lib/node-commonjs"
-            : "../../eslint-config/lib/node-module",
-        ];
-      }
-
-      if (useTypescript) {
-        return [
-          "@pob/eslint-config-typescript",
-          useNodeOnly && "@pob/eslint-config-typescript/node",
-          // useTypescript &&
-          //   pkg.pob?.rollup === false &&
-          //   '@pob/eslint-config-typescript/tsc-emit',
-          this.options.isApp && "@pob/eslint-config-typescript/app",
-          hasReact &&
-            `@pob/eslint-config-typescript-react${
+            useNode
+              ? "...pobTypescriptConfig(import.meta.url).configs.node"
+              : "...pobTypescriptConfig(import.meta.url).configs.base",
+            `...pobTypescriptReactConfig(import.meta.url).configs.${
               pkg.dependencies?.["react-native-web"] ? "/react-native-web" : ""
             }`,
-        ].filter(Boolean);
-      }
-
-      return [
-        pkg.type === "commonjs"
-          ? "@pob/eslint-config/node-commonjs"
-          : "@pob/eslint-config/node-module",
-      ];
+            this.options.isApp &&
+              "...pobTypescriptConfig(import.meta.url).configs.app",
+          ];
+        })().filter(Boolean),
+      };
     })();
-
-    const ext = !useTypescript
-      ? `{${pkg.type === "commonjs" ? "mjs" : "cjs"},js}`
-      : `${hasReact ? "{ts,tsx}" : "ts"}`;
-
-    const testRunner = globalTesting
-      ? inMonorepo.pobConfig.monorepo.testRunner
-      : this.options.testRunner;
-    const testsOverride =
-      this.options.testing || globalTesting
-        ? {
-            files: [
-              `**/*.test.${ext}`,
-              `__tests__/**/*.${ext}`,
-              `**/__mocks__/**/*.${ext}`,
-            ],
-            ...(testRunner == null || testRunner === "jest"
-              ? { env: { jest: true } }
-              : {}),
-            rules: {
-              "import/no-extraneous-dependencies": [
-                "error",
-                { devDependencies: true },
-              ],
-            },
-          }
-        : null;
-
-    if (testsOverride) {
-      // if (!useBabel) {
-      //   testsOverride.extends = ['pob/babel'];
-      // }
-
-      if (useTypescript) {
-        testsOverride.extends = ["@pob/eslint-config-typescript/test"];
-        delete testsOverride.rules["import/no-extraneous-dependencies"];
-      }
-    }
 
     const eslintrcBadPath = this.destinationPath(".eslintrc");
     this.fs.delete(eslintrcBadPath);
     this.fs.delete(`${eslintrcBadPath}.yml`);
     this.fs.delete(`${eslintrcBadPath}.js`);
 
-    const rootEslintrcPath = this.options.rootAsSrc
+    const rootLegacyEslintrcPath = this.options.rootAsSrc
       ? false
       : this.destinationPath(".eslintrc.json");
 
-    const srcEslintrcPath = this.options.rootAsSrc
+    const srcLegacyEslintrcPath = this.options.rootAsSrc
       ? this.destinationPath(".eslintrc.json")
       : this.destinationPath(
           `${
@@ -462,96 +424,68 @@ export default class CommonLintGenerator extends Generator {
           }.eslintrc.json`,
         );
 
-    const getRootIgnorePatterns = () => {
-      const ignorePatterns = new Set();
+    if (rootLegacyEslintrcPath) this.fs.delete(rootLegacyEslintrcPath);
+    this.fs.delete(srcLegacyEslintrcPath);
 
-      if (inMonorepo && !inMonorepo.root && (useTypescript || pkg.types)) {
-        ignorePatterns.add("*.d.ts");
-      }
+    const eslintConfigPath = this.destinationPath("eslint.config.js");
 
-      if (inMonorepo && inMonorepo.root && this.options.documentation) {
-        ignorePatterns.add("/docs");
-      }
+    if (!inMonorepo || inMonorepo.root) {
+      const getRootIgnorePatterns = () => {
+        const ignorePatterns = new Set();
 
-      if ((!inMonorepo || !inMonorepo.root) && useTypescript) {
-        const buildPath = `/${this.options.buildDirectory}`;
-        if (
-          !this.options.rootIgnorePaths ||
-          !this.options.rootIgnorePaths.includes(buildPath)
-        ) {
-          ignorePatterns.add(buildPath);
-        }
-      }
-      if (inMonorepo && inMonorepo.root && this.options.typescript) {
-        ignorePatterns.add("/rollup.config.mjs");
-      }
-
-      if (this.options.rootIgnorePaths) {
-        this.options.rootIgnorePaths
-          .split("\n")
-          .filter(Boolean)
-          .forEach((ignorePath) => {
-            if (ignorePath.startsWith("#")) return;
-            ignorePatterns.add(ignorePath);
-          });
-      }
-
-      return ignorePatterns;
-    };
-
-    if (rootEslintrcPath) {
-      try {
-        if (this.fs.exists(rootEslintrcPath)) {
-          ensureJsonFileFormatted(rootEslintrcPath);
-        }
-
-        const rootIgnorePatterns = getRootIgnorePatterns();
-
-        const rootEslintrcConfig = updateEslintConfig(
-          this.fs.readJSON(rootEslintrcPath, {}),
-          {
-            extendsConfig: extendsConfigRoot,
-            ignorePatterns:
-              rootIgnorePatterns.size === 0
-                ? undefined
-                : [...rootIgnorePatterns],
-          },
-        );
-
-        writeAndFormatJson(this.fs, rootEslintrcPath, rootEslintrcConfig);
-      } catch (error) {
-        console.warn(`Could not parse/edit ${rootEslintrcPath}: `, error);
-      }
-    }
-    // no else: dont delete root eslintrc, src is root
-
-    if ((inMonorepo && inMonorepo.root) || this.options.monorepo) {
-      if (this.fs.exists(srcEslintrcPath)) {
-        this.fs.delete(srcEslintrcPath);
-      }
-    } else {
-      try {
-        if (this.fs.exists(srcEslintrcPath)) {
-          ensureJsonFileFormatted(srcEslintrcPath);
-        }
-
-        const ignorePatterns = this.options.rootAsSrc
-          ? getRootIgnorePatterns()
-          : new Set();
-        if (useTypescript || pkg.types) {
+        if (useTypescript) {
           ignorePatterns.add("*.d.ts");
         }
 
-        const srcEslintrcConfig = updateEslintConfig(
-          this.fs.readJSON(srcEslintrcPath, {}),
+        if (inMonorepo && inMonorepo.root && this.options.documentation) {
+          ignorePatterns.add("/docs");
+        }
+
+        if ((!inMonorepo || !inMonorepo.root) && useTypescript) {
+          const buildPath = `/${this.options.buildDirectory}`;
+          if (
+            !this.options.rootIgnorePaths ||
+            !this.options.rootIgnorePaths.includes(buildPath)
+          ) {
+            ignorePatterns.add(buildPath);
+          }
+        }
+        if (inMonorepo && inMonorepo.root && this.options.build) {
+          ignorePatterns.add("/rollup.config.mjs");
+        }
+
+        if (this.options.rootIgnorePaths) {
+          this.options.rootIgnorePaths
+            .split("\n")
+            .filter(Boolean)
+            .forEach((ignorePath) => {
+              if (ignorePath.startsWith("#")) return;
+              ignorePatterns.add(ignorePath);
+            });
+        }
+
+        return ignorePatterns;
+      };
+
+      const ignorePatterns = getRootIgnorePatterns();
+      const srcDirectory =
+        useBabel || this.options.typescript ? this.options.srcDirectory : "lib";
+
+      if (this.fs.exists(eslintConfigPath)) {
+        // TODO update config !
+      } else {
+        this.fs.copyTpl(
+          this.templatePath("eslint.config.js.ejs"),
+          eslintConfigPath,
           {
-            extendsConfig: extendsConfigSrc,
-            testsOverride,
-            useTypescript,
-            globalEslint,
-            ignorePatterns:
-              ignorePatterns.size === 0 ? undefined : [...ignorePatterns],
-            settings: {
+            imports,
+            flatCascade,
+            srcDirectory,
+            ignorePatterns: [...ignorePatterns],
+          },
+        );
+        // TODO
+        /*  settings: {
               "import/resolver": this.options.enableSrcResolver
                 ? {
                     node: {
@@ -563,39 +497,22 @@ export default class CommonLintGenerator extends Generator {
                   }
                 : false,
             },
-            relativePath: inMonorepo ? inMonorepo.relative : undefined,
-          },
-        );
-
-        writeAndFormatJson(this.fs, srcEslintrcPath, srcEslintrcConfig);
-      } catch (error) {
-        console.warn(`Could not parse/edit ${srcEslintrcPath}: `, error);
+            */
       }
+    } else {
+      this.fs.delete(eslintConfigPath);
     }
 
     // see monorepo/lerna/index.js
     if (!(inMonorepo && inMonorepo.root) && !this.options.monorepo) {
-      const srcDirectory =
-        useBabel || this.options.typescript ? this.options.srcDirectory : "lib";
-      const lintRootJsFiles = (useBabel && useNode) || !inMonorepo;
-
-      const lintPaths = [srcDirectory, "bin", "scripts", "migrations"].filter(
-        (dir) => fs.existsSync(this.destinationPath(dir)),
-      );
-
-      if (lintRootJsFiles) {
-        lintPaths.unshift("*.{js,cjs,mjs}");
-      }
-
-      const args =
-        "--report-unused-disable-directives --resolve-plugins-relative-to . --quiet";
+      const args = "--quiet";
 
       packageUtils.addScripts(pkg, {
         "lint:eslint": globalEslint
           ? `yarn ../.. run eslint ${args} ${path
               .relative("../..", ".")
               .replace("\\", "/")}`
-          : `eslint ${args} ${lintPaths.join(" ")}`,
+          : `eslint ${args} .`,
         lint: `${
           useTypescript && !composite ? "tsc && " : ""
         }yarn run lint:eslint`,

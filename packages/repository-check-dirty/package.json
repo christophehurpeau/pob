@@ -29,7 +29,7 @@
   ],
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/repository-check-dirty"
+    "lint:eslint": "yarn ../.. run eslint --quiet packages/repository-check-dirty"
   },
   "pob": {},
   "prettier": "@pob/root/prettier-config"

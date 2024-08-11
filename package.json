@@ -22,7 +22,7 @@
     "checks": "node scripts/check-packages.js && ./scripts/run-self-on-examples.sh",
     "clean:build": "yarn workspaces foreach --parallel -A run clean:build",
     "lint": "yarn run lint:prettier && yarn run lint:eslint",
-    "lint:eslint": "NODE_OPTIONS=--max_old_space_size=4096 eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet .",
+    "lint:eslint": "NODE_OPTIONS=--max_old_space_size=4096 eslint --quiet .",
     "lint:prettier": "pob-root-prettier --check .",
     "lint:prettier:fix": "pob-root-prettier --write .",
     "postinstall": "yarn node @pob/root/bin/pob-root-postinstall.js",
@@ -42,7 +42,7 @@
   "prettier": "@pob/root/prettier-config",
   "devDependencies": {
     "@babel/core": "7.25.2",
-    "@pob/eslint-config": "56.1.0",
+    "@pob/eslint-config-typescript": "57.3.0",
     "@pob/root": "workspace:*",
     "@types/jest": "29.5.12",
     "check-package-dependencies": "7.2.0",

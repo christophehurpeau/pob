@@ -37,7 +37,7 @@
     "clean": "yarn clean:build",
     "clean:build": "pob-babel-clean-out dist",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet pob-examples/typescript-lib",
+    "lint:eslint": "yarn ../.. run eslint --quiet pob-examples/typescript-lib",
     "test": "yarn ../../ run test -- pob-examples/typescript-lib",
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },

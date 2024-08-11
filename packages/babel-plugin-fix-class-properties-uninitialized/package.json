@@ -26,7 +26,7 @@
   ],
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/babel-plugin-fix-class-properties-uninitialized"
+    "lint:eslint": "yarn ../.. run eslint --quiet packages/babel-plugin-fix-class-properties-uninitialized"
   },
   "pob": {},
   "prettier": "@pob/root/prettier-config"

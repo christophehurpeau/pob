@@ -719,7 +719,7 @@ export const versionCommandAction = async (
       await isBehindRemote(rootWorkspace, options.gitRemote, gitCurrentBranch)
     ) {
       logger.error("Remote is ahead, aborting");
-      // eslint-disable-next-line n/no-process-exit, unicorn/no-process-exit
+      // eslint-disable-next-line unicorn/no-process-exit
       process.exit(1);
     }
 
@@ -769,7 +769,7 @@ export const versionCommandAction = async (
 
   if (process.env.NODE_ENV !== "test") {
     // issue in @conventional-changelog/git-client
-    // eslint-disable-next-line n/no-process-exit, unicorn/no-process-exit
+    // eslint-disable-next-line unicorn/no-process-exit
     process.exit(0);
   }
 };

@@ -50,6 +50,9 @@ export default class CoreNpmGenerator extends Generator {
 
       if (pkg.exports) {
         Object.values(pkg.exports).forEach((value) => {
+          if (typeof value === "string" && value.startsWith("./tsconfigs/")) {
+            files.add("tsconfigs");
+          }
           if (
             typeof value === "string" &&
             value.startsWith("./") &&

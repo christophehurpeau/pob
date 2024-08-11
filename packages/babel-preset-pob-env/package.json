@@ -30,7 +30,7 @@
   ],
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet packages/babel-preset-pob-env",
+    "lint:eslint": "yarn ../.. run eslint --quiet packages/babel-preset-pob-env",
     "test": "yarn ../../ run test -- packages/babel-preset-pob-env"
   },
   "pob": {},

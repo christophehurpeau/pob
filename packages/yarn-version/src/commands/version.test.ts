@@ -19,7 +19,7 @@ const presetOption = {
 };
 
 class NightingaleTestHandler extends StringHandler {
-  isHandling = () => true;
+  isHandling = (): true => true;
 }
 
 const executeAction = async (

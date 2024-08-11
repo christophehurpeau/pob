@@ -1,3 +1,4 @@
+/* eslint-disable complexity */
 import fs from "node:fs";
 import { transform } from "@babel/core";
 import preset from "./index.js";
