@@ -2,6 +2,7 @@ import path from "node:path";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import * as packageUtils from "../../../utils/package.js";
+import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 import { appIgnorePaths } from "../../app/ignorePaths.js";
 
 export default class CommonLintGenerator extends Generator {
@@ -474,7 +475,8 @@ export default class CommonLintGenerator extends Generator {
       if (this.fs.exists(eslintConfigPath)) {
         // TODO update config !
       } else {
-        this.fs.copyTpl(
+        copyAndFormatTpl(
+          this.fs,
           this.templatePath("eslint.config.js.ejs"),
           eslintConfigPath,
           {
