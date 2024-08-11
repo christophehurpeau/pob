@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@5.2.0...yarn-workspace-utils@6.0.0) (2024-08-11)
+
+### ⚠ BREAKING CHANGES
+
+* update to eslint flat config
+
+### Features
+
+* update to eslint flat config ([9e9b530](https://github.com/christophehurpeau/pob/commit/9e9b530e1c89ad4f0fafa1af8f4a13816544f16c))
+
+Version bump for dependency: pob-babel
+
+
 ## [5.2.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@5.1.1...yarn-workspace-utils@5.2.0) (2024-08-04)
 
 ### Features

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-with-rollup-typescript@0.28.3...example-typescript-lib-with-rollup-typescript@0.29.0) (2024-08-11)
+
+### ⚠ BREAKING CHANGES
+
+* update to eslint flat config
+
+### Features
+
+* update to eslint flat config ([9e9b530](https://github.com/christophehurpeau/pob/commit/9e9b530e1c89ad4f0fafa1af8f4a13816544f16c))
+
+Version bump for dependency: @pob/rollup-typescript
+
+
 ## [0.28.3](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-with-rollup-typescript@0.28.2...example-typescript-lib-with-rollup-typescript@0.28.3) (2024-08-04)
 
 Version bump for dependency: @pob/rollup-typescript

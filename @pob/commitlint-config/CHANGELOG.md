@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@6.4.0...@pob/commitlint-config@7.0.0) (2024-08-11)
+
+### ⚠ BREAKING CHANGES
+
+* update to eslint flat config
+
+### Features
+
+* update to eslint flat config ([9e9b530](https://github.com/christophehurpeau/pob/commit/9e9b530e1c89ad4f0fafa1af8f4a13816544f16c))
+
 ## [6.4.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@6.3.3...@pob/commitlint-config@6.4.0) (2024-06-07)
 
 ### ⚠ BREAKING CHANGES

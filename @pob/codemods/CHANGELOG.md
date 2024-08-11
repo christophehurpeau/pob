@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.3.0](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.2.0...@pob/codemods@0.3.0) (2024-08-11)
+
+### ⚠ BREAKING CHANGES
+
+* update to eslint flat config
+
+### Features
+
+* **deps:** update dependency jscodeshift to v17 ([#2162](https://github.com/christophehurpeau/pob/issues/2162)) ([3cc8771](https://github.com/christophehurpeau/pob/commit/3cc8771a85374e357f421429bbc54a51bb2c51c6))
+* update to eslint flat config ([9e9b530](https://github.com/christophehurpeau/pob/commit/9e9b530e1c89ad4f0fafa1af8f4a13816544f16c))
+
 ## [0.2.0](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.1.2...@pob/codemods@0.2.0) (2024-07-30)
 
 ### Features

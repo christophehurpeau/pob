@@ -1,7 +1,7 @@
 {
   "name": "@pob-example/next-app",
   "private": true,
-  "version": "0.5.4",
+  "version": "0.6.0",
   "description": "pob nextjs app example",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "MIT",

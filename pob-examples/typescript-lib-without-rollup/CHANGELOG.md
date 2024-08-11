@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.23.1...example-typescript-lib-without-rollup@0.24.0) (2024-08-11)
+
+### ⚠ BREAKING CHANGES
+
+* update to eslint flat config
+
+### Features
+
+* update to eslint flat config ([9e9b530](https://github.com/christophehurpeau/pob/commit/9e9b530e1c89ad4f0fafa1af8f4a13816544f16c))
+
 ## [0.23.1](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.23.0...example-typescript-lib-without-rollup@0.23.1) (2024-07-30)
 
 Note: no notable changes

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-eslint-config@5.3.1...@pob/sort-eslint-config@6.0.0) (2024-08-11)
+
+### ⚠ BREAKING CHANGES
+
+* update to eslint flat config
+
+### Features
+
+* update to eslint flat config ([9e9b530](https://github.com/christophehurpeau/pob/commit/9e9b530e1c89ad4f0fafa1af8f4a13816544f16c))
+
+Version bump for dependency: @pob/sort-object
+
+
 ## [5.3.1](https://github.com/christophehurpeau/pob/compare/@pob/sort-eslint-config@5.3.0...@pob/sort-eslint-config@5.3.1) (2024-05-05)
 
 Note: no notable changes

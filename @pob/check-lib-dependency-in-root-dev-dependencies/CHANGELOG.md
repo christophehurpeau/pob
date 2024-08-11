@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.0](https://github.com/christophehurpeau/pob/compare/@pob/check-lib-dependency-in-root-dev-dependencies@7.0.0...@pob/check-lib-dependency-in-root-dev-dependencies@8.0.0) (2024-08-11)
+
+### ⚠ BREAKING CHANGES
+
+* update to eslint flat config
+
+### Features
+
+* update to eslint flat config ([9e9b530](https://github.com/christophehurpeau/pob/commit/9e9b530e1c89ad4f0fafa1af8f4a13816544f16c))
+
 ## [7.0.0](https://github.com/christophehurpeau/pob/compare/@pob/check-lib-dependency-in-root-dev-dependencies@6.3.3...@pob/check-lib-dependency-in-root-dev-dependencies@7.0.0) (2024-06-07)
 
 ### ⚠ BREAKING CHANGES

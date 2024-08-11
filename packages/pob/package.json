@@ -1,6 +1,6 @@
 {
   "name": "pob",
-  "version": "22.5.0",
+  "version": "23.0.0",
   "description": "Pile of bones, library generator with git/babel/typescript/typedoc/readme/jest",
   "keywords": [
     "skeleton"
@@ -43,9 +43,9 @@
     "@pob/eslint-config": "57.3.0",
     "@pob/eslint-config-typescript": "57.3.0",
     "@pob/eslint-config-typescript-react": "57.3.0",
-    "@pob/sort-eslint-config": "5.3.1",
-    "@pob/sort-object": "6.3.1",
-    "@pob/sort-pkg": "7.3.0",
+    "@pob/sort-eslint-config": "6.0.0",
+    "@pob/sort-object": "7.0.0",
+    "@pob/sort-pkg": "8.0.0",
     "@prettier/sync": "0.5.2",
     "@types/inquirer": "9.0.7",
     "@yarnpkg/cli": "4.4.0",
@@ -68,12 +68,12 @@
     "prettier": "3.3.3",
     "semver": "7.6.3",
     "validate-npm-package-name": "^5.0.0",
-    "yarn-workspace-utils": "5.2.0",
+    "yarn-workspace-utils": "6.0.0",
     "yeoman-environment": "4.4.1",
     "yeoman-generator": "7.3.2"
   },
   "devDependencies": {
-    "@pob/root": "12.4.0",
+    "@pob/root": "13.0.0",
     "@types/node": "20.14.15",
     "typescript": "5.5.4"
   }

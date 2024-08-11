@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@12.0.1...babel-preset-pob-env@13.0.0) (2024-08-11)
+
+### ⚠ BREAKING CHANGES
+
+* update to eslint flat config
+
+### Features
+
+* update to eslint flat config ([9e9b530](https://github.com/christophehurpeau/pob/commit/9e9b530e1c89ad4f0fafa1af8f4a13816544f16c))
+
+Version bump for dependency: babel-plugin-fix-class-properties-uninitialized
+
+
 ## [12.0.1](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@12.0.0...babel-preset-pob-env@12.0.1) (2024-07-30)
 
 Note: no notable changes
