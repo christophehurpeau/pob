@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.0.1](https://github.com/christophehurpeau/pob/compare/pob@23.0.0...pob@23.0.1) (2024-08-12)
+
+### Bug Fixes
+
+* **pob:** use copyAndFormatTpl to auto format eslint.config.js ([06b0707](https://github.com/christophehurpeau/pob/commit/06b0707532223f4c55c070d116f839af5f9aaa45))
+* update pob eslint config ([981c435](https://github.com/christophehurpeau/pob/commit/981c435c6741f672eb96651726c879ace6c1ec63))
+
+Version bump for dependency: yarn-workspace-utils
+
+
 ## [23.0.0](https://github.com/christophehurpeau/pob/compare/pob@22.5.0...pob@23.0.0) (2024-08-11)
 
 ### ⚠ BREAKING CHANGES
