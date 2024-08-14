@@ -44,18 +44,15 @@ export { foo, operator, spreadTest, t };
 `;
 
 exports[`fixtures basic 1 1`] = `
-"import _classPrivateFieldLooseBase from '@babel/runtime/helpers/esm/classPrivateFieldLooseBase';
-import _classPrivateFieldLooseKey from '@babel/runtime/helpers/esm/classPrivateFieldLooseKey';
-
-class Test {
+"class Test {
   constructor(...args) {
     this.args = args;
   }
 }
-var _args = /*#__PURE__*/_classPrivateFieldLooseKey("args");
 class TestWithPrivate extends Test {
+  #args;
   constructor(...args) {
-    _classPrivateFieldLooseBase(this, _args)[_args] = args;
+    this.#args = args;
   }
 }
 
@@ -63,7 +60,6 @@ const sayHello = () => {
   console.log("hello browser");
 };
 
-var _t$foo;
 sayHello();
 if (process.env.NODE_ENV !== "production") {
   console.log("__DEV__ is true");
@@ -83,8 +79,8 @@ const spreadTest = {
     test: "spread"
   }
 };
-const foo = (_t$foo = t.foo) != null ? _t$foo : "default";
-const operator = spreadTest == null ? void 0 : spreadTest.toString();
+const foo = t.foo ?? "default";
+const operator = spreadTest?.toString();
 
 export { foo, operator, spreadTest, t };
 "
