@@ -43,7 +43,7 @@
   "dependencies": {
     "@pob/eslint-config": "57.3.0",
     "@pob/eslint-config-typescript": "57.3.1",
-    "@pob/eslint-config-typescript-react": "57.3.1",
+    "@pob/eslint-config-typescript-react": "58.0.0",
     "@pob/sort-eslint-config": "6.0.0",
     "@pob/sort-object": "7.0.0",
     "@pob/sort-pkg": "8.0.0",
