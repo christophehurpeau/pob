@@ -102,7 +102,7 @@ export default class MonorepoWorkspacesGenerator extends Generator {
               this.packagesConfig.length > 15
                 ? "NODE_OPTIONS=--max_old_space_size=4096 "
                 : ""
-            }eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet .`
+            }eslint --quiet .`
           : // eslint-disable-next-line unicorn/no-nested-ternary
             this.options.packageManager === "yarn"
             ? `NODE_OPTIONS=--max_old_space_size=4096 eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet . --ignore-pattern ${pkg.workspaces.join(
