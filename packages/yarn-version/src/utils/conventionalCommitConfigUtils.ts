@@ -11,7 +11,7 @@ export const loadConventionalCommitConfig = async (
   preset: string,
 ): Promise<ConventionalChangelogConfig> => {
   try {
-    return loadPreset<ConventionalChangelogConfig>(preset);
+    return await loadPreset<ConventionalChangelogConfig>(preset);
   } catch (error: any) {
     throw new UsageError(
       `Failed to require preset "${preset}": ${error.message as string}`,

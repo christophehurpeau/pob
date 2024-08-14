@@ -247,7 +247,7 @@ const generateChangelog = (workspace, pkg, config, newTag, {
 
 const loadConventionalCommitConfig = async (rootWorkspace, preset) => {
   try {
-    return loadPreset(preset);
+    return await loadPreset(preset);
   } catch (error) {
     throw new UsageError(
       `Failed to require preset "${preset}": ${error.message}`
