@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.1.0](https://github.com/christophehurpeau/pob/compare/yarn-version@3.0.0...yarn-version@3.1.0) (2024-08-14)
+
+### Features
+
+* update eslint 9 ([7542a8c](https://github.com/christophehurpeau/pob/commit/7542a8c009f65fbde196139e7e9e88ec2790e9f5))
+
 ## [3.0.0](https://github.com/christophehurpeau/pob/compare/yarn-version@2.2.3...yarn-version@3.0.0) (2024-08-11)
 
 ### ⚠ BREAKING CHANGES

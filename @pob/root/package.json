@@ -1,6 +1,6 @@
 {
   "name": "@pob/root",
-  "version": "13.0.0",
+  "version": "13.1.0",
   "description": "root package",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -82,6 +82,6 @@
     "repository-check-dirty": "8.0.0",
     "semver": "^7.3.7",
     "which-pm-runs": "1.1.0",
-    "yarn-version": "3.0.0"
+    "yarn-version": "3.1.0"
   }
 }

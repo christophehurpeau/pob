@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.1.0](https://github.com/christophehurpeau/pob/compare/pob@23.0.1...pob@23.1.0) (2024-08-14)
+
+### Features
+
+* support commonjs eslint config ([d69b1c0](https://github.com/christophehurpeau/pob/commit/d69b1c09e397a576b19ab4e25784a90f855b87b2))
+* update eslint 9 ([7542a8c](https://github.com/christophehurpeau/pob/commit/7542a8c009f65fbde196139e7e9e88ec2790e9f5))
+
+### Bug Fixes
+
+* eslint command for flat config ([0250f19](https://github.com/christophehurpeau/pob/commit/0250f19c252f47ba2523a98e8d1e20400743dc0c))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [23.0.1](https://github.com/christophehurpeau/pob/compare/pob@23.0.0...pob@23.0.1) (2024-08-12)
 
 ### Bug Fixes
