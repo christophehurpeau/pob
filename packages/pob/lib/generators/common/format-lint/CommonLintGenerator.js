@@ -382,8 +382,8 @@ export default class CommonLintGenerator extends Generator {
           if (!useTypescript) {
             return [
               useNode
-                ? "...pobConfig(import.meta.url).configs.nodeModule"
-                : "...pobConfig(import.meta.url).configs.baseModule",
+                ? `...pobConfig(import.meta.url).configs.node${pkg.type === "commonjs" ? "Commonjs" : "Module"}`
+                : `...pobConfig(import.meta.url).configs.base${pkg.type === "commonjs" ? "Commonjs" : "Module"}`,
             ];
           }
           if (!hasReact) {
@@ -428,7 +428,14 @@ export default class CommonLintGenerator extends Generator {
     if (rootLegacyEslintrcPath) this.fs.delete(rootLegacyEslintrcPath);
     this.fs.delete(srcLegacyEslintrcPath);
 
-    const eslintConfigPath = this.destinationPath("eslint.config.js");
+    const eslintConfigPath = this.destinationPath(
+      pkg.type === "commonjs" ? "eslint.config.mjs" : "eslint.config.js",
+    );
+
+    const invalidEslintConfigPath = this.destinationPath(
+      pkg.type !== "commonjs" ? "eslint.config.mjs" : "eslint.config.js",
+    );
+    this.fs.delete(invalidEslintConfigPath);
 
     if (!inMonorepo || inMonorepo.root) {
       const getRootIgnorePatterns = () => {
