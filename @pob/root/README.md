@@ -21,10 +21,8 @@ npm install --save @pob/root
 
 ## Usage
 
-```js
-import pobRoot from "@pob/root";
-
-console.log(pobRoot);
+```bash
+npx pob
 ```
 
 ## Latest forced update for pob
