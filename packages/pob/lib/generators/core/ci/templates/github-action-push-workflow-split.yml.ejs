@@ -118,7 +118,12 @@ jobs:
         if: matrix.node-version != 18
 
       - name: Generate Test Coverage
-        run: <%= packageManager %> run test:coverage:json
+        run: |
+          if [ -z "$CODECOV_TOKEN" ]; then
+            echo "Missing env variable CODECOV_TOKEN"
+            exit 1
+          fi
+          <%= packageManager %> run test:coverage:json
         if: matrix.node-version == 18
         env:
           CI: true
