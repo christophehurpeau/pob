@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.2.0](https://github.com/christophehurpeau/pob/compare/pob@23.1.0...pob@23.2.0) (2024-08-15)
+
+### Features
+
+* codecov fail_ci_if_error: true ([0dc2f0d](https://github.com/christophehurpeau/pob/commit/0dc2f0d6f87e1871c65fa36be7a33df2c9bf3dae))
+* fail ci if codecov token is missing ([40725d6](https://github.com/christophehurpeau/pob/commit/40725d6dd9c82cfe666006b8d21f641617ca8d59))
+* typescript check-only ([688fe59](https://github.com/christophehurpeau/pob/commit/688fe59d8a857e8b94a7af78349f909f7ed4d6e7))
+
+### Bug Fixes
+
+* disable ts test util config when no ts is used ([d5cf807](https://github.com/christophehurpeau/pob/commit/d5cf807fb7604cf1e0d4355ebe069323156ce0ef))
+* fix coverage config ([3621c92](https://github.com/christophehurpeau/pob/commit/3621c9246d44219c6d64f34079b254074181d782))
+
+Version bump for dependency: @pob/root
+
+
 ## [23.1.0](https://github.com/christophehurpeau/pob/compare/pob@23.0.1...pob@23.1.0) (2024-08-14)
 
 ### Features
