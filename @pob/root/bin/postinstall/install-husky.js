@@ -69,7 +69,13 @@ export default function installHusky({ pkg, pm }) {
     fs.mkdirSync(path.resolve(".husky"));
   } catch {}
 
-  const { lockfile, pmExec, installOnDiffCommand } = (() => {
+  const {
+    lockfile,
+    pmExec,
+    installOnDiffCommand,
+    beforeDiffCommand = "",
+    afterDiffCommand = "",
+  } = (() => {
     if (pm.name === "yarn") {
       return {
         lockfile: "yarn.lock",
@@ -79,6 +85,20 @@ export default function installHusky({ pkg, pm }) {
             ? "--immutable"
             : "--prefer-offline --pure-lockfile --ignore-optional"
         }`,
+        beforeDiffCommand: isYarnBerry
+          ? `yarn config set logFilters --json '[
+    {"code": "YN0002","level": "discard"},
+    {"code": "YN0007","level": "discard"},
+    {"code": "YN0008","level": "discard"},
+    {"code": "YN0013","level": "discard"},
+    {"code": "YN0018","level": "discard"},
+    {"code": "YN0060","level": "discard"},
+    {"code": "YN0061","level": "discard"}
+  ]' > /dev/null`
+          : "",
+        afterDiffCommand: isYarnBerry
+          ? "yarn config unset logFilters > /dev/null"
+          : "",
       };
     }
     if (pm.name === "npm") {
@@ -105,21 +125,21 @@ export default function installHusky({ pkg, pm }) {
   writeHook("pre-commit", `${pmExec} pob-root-lint-staged`);
 
   if (isYarnPnp) {
+    // https://yarnpkg.com/features/zero-installs
     ensureHookDeleted("post-checkout");
     ensureHookDeleted("post-merge");
     ensureHookDeleted("post-rewrite");
   } else {
-    const runInstallOnDiff = (() => {
+    const runInstallOnDiff = (additionalConditionInstall = "") => {
       return `
-if [ -n "$(git diff HEAD@{1}..HEAD@{0} -- ${lockfile})" ]; then
-  ${installOnDiffCommand} || true
+if [ -n "$(git diff HEAD@{1}..HEAD@{0} -- ${lockfile})" ]${additionalConditionInstall}; then
+  ${beforeDiffCommand ? `${beforeDiffCommand}\n  ` : ""}${installOnDiffCommand} || true${afterDiffCommand ? `\n  ${afterDiffCommand}` : ""}
 fi`;
-    })();
+    };
 
-    // https://yarnpkg.com/features/zero-installs
-    writeHook("post-checkout", runInstallOnDiff);
-    writeHook("post-merge", runInstallOnDiff);
-    writeHook("post-rewrite", runInstallOnDiff);
+    writeHook("post-checkout", runInstallOnDiff());
+    writeHook("post-merge", runInstallOnDiff());
+    writeHook("post-rewrite", runInstallOnDiff(' | [ "$1" = "rebase" ]'));
   }
 
   const prePushHook = [];
