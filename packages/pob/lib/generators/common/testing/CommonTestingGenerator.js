@@ -191,6 +191,7 @@ export default class CommonTestingGenerator extends Generator {
 
     const tsTestUtil = (() => {
       if (testRunner === "vitest") return undefined;
+      if (!withTypescript) return undefined;
       if (this.options.swc || isJestRunner) return "swc";
       return "ts-node";
     })();
