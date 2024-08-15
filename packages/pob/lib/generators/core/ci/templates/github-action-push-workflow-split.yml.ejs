@@ -118,8 +118,11 @@ jobs:
         if: matrix.node-version != 18
 
       - name: Generate Test Coverage
-        run: <%= packageManager %> run test:coverage
+        run: <%= packageManager %> run test:coverage:json
         if: matrix.node-version == 18
+        env:
+          CI: true
+          NODE_V8_COVERAGE: coverage/
 
       - name: Send results to codecov
         uses: codecov/codecov-action@v4

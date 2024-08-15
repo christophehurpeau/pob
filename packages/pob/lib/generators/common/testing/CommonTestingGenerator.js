@@ -283,7 +283,6 @@ export default class CommonTestingGenerator extends Generator {
 
     const createTestCommand = ({
       coverage,
-      coverageLcov,
       coverageJson,
       watch,
       shouldUseExperimentalVmModules,
@@ -297,14 +296,10 @@ export default class CommonTestingGenerator extends Generator {
               ? "NODE_OPTIONS=--experimental-vm-modules "
               : ""
           }jest${watch ? " --watch" : ""}${
-            coverage || coverageJson || coverageLcov
-              ? ` --coverage ${
-                  coverageLcov
-                    ? "--coverageReporters=lcov"
-                    : `--coverageReporters=json${
-                        coverageJson ? "" : " --coverageReporters=text"
-                      }`
-                }`
+            coverage || coverageJson
+              ? ` --coverage ${`--coverageReporters=json${
+                  coverageJson ? "" : " --coverageReporters=text"
+                }`}`
               : ""
           }`;
         }
@@ -312,33 +307,32 @@ export default class CommonTestingGenerator extends Generator {
           if (!workspacesPattern && this.options.monorepo) {
             throw new Error("Invalid workspacesPattern");
           }
+          const experimentalTestCoverage = false; // todo configure src directory and remove test files
           return `${
             tsTestUtil === "ts-node"
               ? "TS_NODE_PROJECT=tsconfig.test.json "
               : ""
           }${
-            coverage || coverageJson || coverageLcov
+            coverage || coverageJson
               ? `npx c8${
-                  coverageLcov || coverageJson
+                  coverageJson
                     ? ` --reporter=${coverageJson ? "json" : "lcov"}`
                     : ""
-                } --src ./${this.options.srcDirectory} `
+                } --all --src ./${this.options.srcDirectory} `
               : ""
           }node ${
             this.options.typescript ? `${tsTestLoaderOption} ` : ""
-          }--test ${this.options.monorepo ? `${workspacesPattern}/` : ""}${`${
+          }--test${experimentalTestCoverage && (coverage || coverageJson) ? " --experimental-test-coverage" : ""} ${this.options.monorepo ? `${workspacesPattern}/` : ""}${`${
             hasTestFolder ? "test/*" : `${this.options.srcDirectory}/**/*.test`
           }.${this.options.typescript ? "ts" : "js"}`}`;
         }
         case "vitest": {
           return `${
-            coverage || coverageJson || coverageLcov
-              ? `POB_VITEST_COVERAGE=${
-                  coverageLcov ? "lcov" : `json${coverageJson ? "" : ",text"} `
-                }`
+            coverage || coverageJson
+              ? `POB_VITEST_COVERAGE=${`json${coverageJson ? "" : ",text"} `}`
               : ""
           }vitest${watch ? " --watch" : ""}${
-            coverage || coverageJson || coverageLcov ? " run --coverage" : ""
+            coverage || coverageJson ? " run --coverage" : ""
           }`;
         }
         default: {
@@ -417,6 +411,7 @@ export default class CommonTestingGenerator extends Generator {
         if (this.options.monorepo) {
           const shouldUseExperimentalVmModules = pkg.type === "module";
 
+          packageUtils.removeScripts(["test:coverage:lcov"]);
           packageUtils.addScripts(pkg, {
             test: createTestCommand({
               workspacesPattern,
@@ -431,11 +426,6 @@ export default class CommonTestingGenerator extends Generator {
               workspacesPattern,
               shouldUseExperimentalVmModules,
               coverage: true,
-            }),
-            "test:coverage:lcov": createTestCommand({
-              workspacesPattern,
-              shouldUseExperimentalVmModules,
-              coverageLcov: true,
             }),
             "test:coverage:json": createTestCommand({
               workspacesPattern,
@@ -530,6 +520,7 @@ export default class CommonTestingGenerator extends Generator {
             const shouldUseExperimentalVmModules =
               pkg.type === "module" && !inMonorepo;
 
+            packageUtils.removeScripts(["test:coverage:lcov"]);
             packageUtils.addScripts(pkg, {
               test: createTestCommand({ shouldUseExperimentalVmModules }),
               "test:watch": createTestCommand({
@@ -539,10 +530,6 @@ export default class CommonTestingGenerator extends Generator {
               "test:coverage": createTestCommand({
                 shouldUseExperimentalVmModules,
                 coverage: true,
-              }),
-              "test:coverage:lcov": createTestCommand({
-                shouldUseExperimentalVmModules,
-                coverageLcov: true,
               }),
               "test:coverage:json": createTestCommand({
                 shouldUseExperimentalVmModules,

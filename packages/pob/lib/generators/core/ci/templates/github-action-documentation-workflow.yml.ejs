@@ -32,10 +32,16 @@ jobs:
         run: yarn typedoc --tsconfig tsconfig.doc.json
 <% } -%>
 
-<% if (testing && testRunner === 'jest') { -%>
+<% if (testing) { -%>
+<% if (testRunner === 'node') { -%>
 
       - name: Generate Coverage
-        run: yarn test:coverage:lcov --coverageDirectory=docs/coverage/
+        run: NODE_V8_COVERAGE=./docs/coverage yarn test:coverage
+<% } else {-%>
+
+      - name: Generate Coverage
+        run: yarn test:coverage:json<%- testRunner === 'jest' ? " --coverageDirectory=docs/coverage/" : "" %>
+<% } -%>
 <% } -%>
 
       - name: Create nojekyll

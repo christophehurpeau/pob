@@ -21,7 +21,7 @@ jobs:
         run: yarn install --immutable
 
       - name: Generate Coverage
-        run: yarn test:coverage:lcov --coverageDirectory=docs/coverage/
+        run: yarn test:coverage:json --coverageDirectory=docs/coverage/
 
       - name: Create nojekyll
         run: touch docs/.nojekyll
