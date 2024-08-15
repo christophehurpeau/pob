@@ -61,20 +61,15 @@ jobs:
 <% if (codecov) { -%>
 
       - name: Generate Test Coverage
-        run: |
-          if [ -z "$CODECOV_TOKEN" ]; then
-            echo "Missing env variable CODECOV_TOKEN"
-            exit 1
-          fi
-          <%= packageManager %> run test:coverage:json
+        run: <%= packageManager %> run test:coverage:json
         if: startsWith(matrix.node-version, '20.')
         env:
           CI: true
-          NODE_V8_COVERAGE: coverage/
 
       - name: Send results to codecov
         uses: codecov/codecov-action@v4
         with:
+          fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
         if: startsWith(matrix.node-version, '20.')
 <% } else if (testing) { -%>
