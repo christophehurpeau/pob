@@ -232,7 +232,7 @@ export default class PobMonorepoGenerator extends Generator {
       enableYarnVersion: isYarnVersionEnabled,
       testing: this.pobLernaConfig.testing,
       e2eTesting: this.pobLernaConfig.e2eTesting,
-      build: this.pobLernaConfig.typescript,
+      build: this.pobLernaConfig.typescript === true,
       typescript: this.pobLernaConfig.typescript,
       documentation: !!this.pobLernaConfig.documentation,
       codecov: this.pobLernaConfig.testing && this.pobLernaConfig.codecov,
@@ -247,6 +247,7 @@ export default class PobMonorepoGenerator extends Generator {
       monorepo: true,
       documentation: this.pobLernaConfig.documentation,
       typescript: this.pobLernaConfig.typescript,
+      build: this.pobLernaConfig.typescript === true,
       testing: this.pobLernaConfig.testing,
       testRunner: this.pobLernaConfig.testRunner,
       packageManager: this.options.packageManager,
@@ -304,6 +305,7 @@ export default class PobMonorepoGenerator extends Generator {
 
     this.composeWith("pob:monorepo:typescript", {
       enable: this.pobLernaConfig.typescript,
+      checkOnly: this.pobLernaConfig.typescript === "check-only",
       isAppProject: this.options.isAppProject,
       packageNames: JSON.stringify(packageNames),
       packagePaths: JSON.stringify(packagePaths),

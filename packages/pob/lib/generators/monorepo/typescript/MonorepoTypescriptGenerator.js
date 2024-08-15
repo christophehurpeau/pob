@@ -34,6 +34,12 @@ export default class MonorepoTypescriptGenerator extends Generator {
       required: false,
       default: "jest",
     });
+
+    this.option("checkOnly", {
+      type: Boolean,
+      required: false,
+      default: false,
+    });
   }
 
   writing() {
@@ -60,13 +66,17 @@ export default class MonorepoTypescriptGenerator extends Generator {
       packageUtils.addScripts(pkg, {
         tsc: "tsc -b",
       });
-      packageUtils.addOrRemoveScripts(pkg, !this.options.isAppProject, {
-        "build:definitions": "tsc -b",
-      });
+      packageUtils.addOrRemoveScripts(
+        pkg,
+        !this.options.isAppProject && !this.options.checkOnly,
+        {
+          "build:definitions": "tsc -b",
+        },
+      );
 
       delete pkg.scripts.postbuild;
 
-      if (!this.options.isAppProject) {
+      if (!this.options.isAppProject && !this.options.checkOnly) {
         pkg.scripts.build += " && yarn run build:definitions";
       }
     } else if (pkg.scripts) {

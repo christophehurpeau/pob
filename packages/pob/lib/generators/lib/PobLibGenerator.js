@@ -260,7 +260,9 @@ export default class PobLibGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
     const babelEnvs =
       pkg.pob.babelEnvs ||
-      (pkg.pob.bundler === "rollup-babel" && pkg.pob.envs) ||
+      (((!pkg.pob.bundler && pkg.pob.typescript !== true) ||
+        pkg.pob.bundler === "rollup-babel") &&
+        pkg.pob.envs) ||
       [];
 
     const withBabel = babelEnvs.length > 0;
@@ -269,7 +271,15 @@ export default class PobLibGenerator extends Generator {
     const browser = pkg.pob.envs?.some((env) => env.target === "browser");
 
     this.composeWith("pob:common:typescript", {
-      enable: withTypescript,
+      enable:
+        withTypescript ||
+        pkg.pob.typescript === "check-only" ||
+        (inMonorepo &&
+          inMonorepo.pobMonorepoConfig.typescript === "check-only"),
+      onlyCheck:
+        pkg.pob.typescript === "check-only" ||
+        (inMonorepo &&
+          inMonorepo.pobMonorepoConfig.typescript === "check-only"),
       isApp: false,
       dom: browser,
       jsx,
@@ -277,6 +287,7 @@ export default class PobLibGenerator extends Generator {
       baseUrl: "none", // causes issues on dist definition files
       builddefs: true,
       onlyLatestLTS: false,
+      srcDirectory: withTypescript ? "src" : "lib",
     });
 
     this.composeWith("pob:common:husky", {});
@@ -311,6 +322,7 @@ export default class PobLibGenerator extends Generator {
     // must be after testing
     this.composeWith("pob:common:format-lint", {
       typescript: withTypescript,
+      build: withTypescript,
       documentation:
         !!this.pobjson.documentation ||
         !!(this.pobjson.testing && this.pobjson.testing.codecov),
@@ -387,9 +399,11 @@ export default class PobLibGenerator extends Generator {
     }
 
     const withBabel = Boolean(
-      pkg.pob.babelEnvs || pkg.pob.bundler === "rollup-babel",
+      pkg.pob.babelEnvs ||
+        (!pkg.pob.bundler && pkg.pob.typescript !== true && pkg.pob.envs) ||
+        pkg.pob.bundler === "rollup-babel",
     );
-    const withTypescript = pkg.pob.typescript === true;
+    const withTypescript = withBabel || pkg.pob.typescript === true;
 
     packageUtils.removeDevDependencies(pkg, ["lerna", "@pob/lerna-light"]);
     if (inMonorepo) {

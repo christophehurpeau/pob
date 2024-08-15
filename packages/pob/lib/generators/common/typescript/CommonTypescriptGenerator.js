@@ -107,6 +107,13 @@ export default class CommonTypescriptGenerator extends Generator {
       default: false,
       description: "only latest lts",
     });
+
+    this.option("onlyCheck", {
+      type: Boolean,
+      required: false,
+      default: false,
+      description: "only check js",
+    });
   }
 
   writing() {
@@ -262,7 +269,9 @@ export default class CommonTypescriptGenerator extends Generator {
       */
       copyAndFormatTpl(
         this.fs,
-        this.templatePath("tsconfig.json.ejs"),
+        this.options.onlyCheck
+          ? this.templatePath("tsconfig.check-js.json.ejs")
+          : this.templatePath("tsconfig.json.ejs"),
         tsconfigPath,
         {
           emitDefinitions: this.options.builddefs,

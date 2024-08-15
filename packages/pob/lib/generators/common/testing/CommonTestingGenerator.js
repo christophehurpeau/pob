@@ -172,9 +172,12 @@ export default class CommonTestingGenerator extends Generator {
       ? false
       : // eslint-disable-next-line unicorn/no-nested-ternary
         this.options.monorepo
-        ? yoConfigPobMonorepo.typescript
+        ? yoConfigPobMonorepo.typescript &&
+          yoConfigPobMonorepo.typescript !== "check-only"
         : packageUtils.transpileWithBabel(pkg);
-    const withTypescript = transpileWithBabel || pkg.pob?.typescript;
+    const withTypescript =
+      transpileWithBabel ||
+      (pkg.pob?.typescript && pkg.pob.typescript !== "check-only");
     let hasReact =
       withTypescript &&
       (this.options.monorepo

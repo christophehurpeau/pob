@@ -65,7 +65,9 @@ export default class CommonBabelGenerator extends Generator {
     if (
       pkg.pob &&
       (pkg.pob.babelEnvs ||
-        (pkg.pob.envs && pkg.pob.bundler === "rollup-babel"))
+        (pkg.pob.envs &&
+          ((!pkg.pob.bundler && pkg.pob.typescript !== true) ||
+            pkg.pob.bundler === "rollup-babel")))
     ) {
       let babelEnvs = pkg.pob.babelEnvs || pkg.pob.envs;
       if (
@@ -108,7 +110,10 @@ export default class CommonBabelGenerator extends Generator {
 
     const babelEnvs =
       pkg.pob.babelEnvs ||
-      (pkg.pob.bundler === "rollup-babel" && pkg.pob.envs) ||
+      ((!pkg.pob.bundler && pkg.pob.typescript !== true) ||
+      pkg.pob.bundler === "rollup-babel"
+        ? pkg.pob.envs
+        : []) ||
       [];
 
     const targets = [
@@ -248,10 +253,13 @@ export default class CommonBabelGenerator extends Generator {
     ];
 
     if (newBabelEnvs.length === 0) {
-      if (!pkg.pob.bundler || pkg.pob.bundler === "rollup-babel") {
-        delete pkg.pob.envs;
+      if (
+        (!pkg.pob.bundler && pkg.pob.typescript !== true) ||
+        pkg.pob.bundler === "rollup-babel"
+      ) {
         delete pkg.pob.babelEnvs;
-        if (!pkg.pob.typescript) {
+        if (pkg.pob.typescript !== true) {
+          delete pkg.pob.envs;
           delete pkg.pob.entries;
           delete pkg.pob.jsx;
         }
@@ -275,7 +283,9 @@ export default class CommonBabelGenerator extends Generator {
     this.entries = pkg.pob.entries;
     this.babelEnvs =
       pkg.pob.babelEnvs ||
-      (pkg.pob.bundler === "rollup-babel" && pkg.pob.envs) ||
+      (((!pkg.pob.bundler && pkg.pob.typescript !== true) ||
+        pkg.pob.bundler === "rollup-babel") &&
+        pkg.pob.envs) ||
       [];
 
     if (this.entries) {
@@ -428,7 +438,7 @@ export default class CommonBabelGenerator extends Generator {
           },
         );
       }
-    } else if (!pkg.pob.typescript && pkg.pob.rollup !== false) {
+    } else if (pkg.pob.typescript !== true && pkg.pob.rollup !== false) {
       this.fs.delete("rollup.config.mjs");
     }
 

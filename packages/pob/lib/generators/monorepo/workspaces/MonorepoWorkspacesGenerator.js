@@ -61,7 +61,7 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       babelEnvs: [],
       ...(config && config.pob),
     });
-    const withBabel = this.packages.some((config) => {
+    const withBundler = this.packages.some((config) => {
       const pobConfig = getPackagePobConfig(config);
       return (
         pobConfig.babelEnvs.length > 0 || pobConfig.bundler === "rollup-babel"
@@ -120,12 +120,14 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       },
     );
 
-    packageUtils.addOrRemoveScripts(pkg, withBabel, {
-      build:
-        "yarn workspaces foreach --parallel --topological-dev -Av run build",
-      watch:
-        'yarn workspaces foreach --parallel --jobs unlimited --interlaced --exclude "*-example" -Av run watch',
-    });
+    if (this.options.isAppProject) {
+      packageUtils.addOrRemoveScripts(pkg, withBundler, {
+        build:
+          "yarn workspaces foreach --parallel --topological-dev -Av run build",
+        watch:
+          'yarn workspaces foreach --parallel --jobs unlimited --interlaced --exclude "*-example" -Av run watch',
+      });
+    }
 
     // packageUtils.addOrRemoveScripts(pkg, withTypescript, {
     //   'build:definitions': `${

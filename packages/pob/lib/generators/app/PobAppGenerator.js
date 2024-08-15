@@ -196,7 +196,15 @@ export default class PobAppGenerator extends Generator {
     ).filter(Boolean);
 
     this.composeWith("pob:common:typescript", {
-      enable: typescript,
+      enable:
+        typescript ||
+        pkg.pob?.typescript === "check-only" ||
+        (inMonorepo &&
+          inMonorepo.pobMonorepoConfig?.typescript === "check-only"),
+      onlyCheck:
+        pkg.pob?.typescript === "check-only" ||
+        (inMonorepo &&
+          inMonorepo.pobMonorepoConfig?.typescript === "check-only"),
       isApp: true,
       isAppLibrary,
       nextConfig: this.appConfig.type === "next.js",
@@ -258,7 +266,7 @@ export default class PobAppGenerator extends Generator {
           : undefined,
         e2eTesting: this.appConfig.e2e ? "." : "",
         typescript,
-        build: typescript && this.appConfig.type !== "expo",
+        build: typescript === true && this.appConfig.type !== "expo",
         documentation: false,
         codecov: this.appConfig.codecov,
         ci: this.appConfig.ci,
@@ -280,6 +288,7 @@ export default class PobAppGenerator extends Generator {
         testRunner: this.appConfig.testRunner,
         babel,
         typescript,
+        build: typescript === true,
         node,
         browser,
         // nextjs now supports src rootAsSrc: this.appConfig.type === 'next.js',

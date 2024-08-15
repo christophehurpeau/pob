@@ -120,7 +120,7 @@ export default class CommonTranspilerGenerator extends Generator {
     this.entries = pkg.pob.entries;
     this.babelEnvs = pkg.pob.babelEnvs || [];
 
-    if (this.babelEnvs.length > 0 || pkg.pob.typescript) {
+    if (this.babelEnvs.length > 0 || pkg.pob.typescript === true) {
       fs.mkdirSync(this.destinationPath("src"), { recursive: true });
     } else {
       // recursive does not throw if directory already exists
@@ -131,13 +131,17 @@ export default class CommonTranspilerGenerator extends Generator {
   default() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
     const withBabel = this.babelEnvs && this.babelEnvs.length > 0;
-    const withTypescript = pkg.pob.typescript || withBabel || !!pkg.pob.bundler;
+    const withTypescript =
+      pkg.pob.typescript === true || withBabel || !!pkg.pob.bundler;
     const bundler =
       withTypescript &&
-      (pkg.pob.rollup === false
+      (pkg.pob.rollup === false ||
+      (!pkg.pob.bundler && !pkg.pob.typescript === true)
         ? "tsc"
         : (pkg.pob.bundler ??
-          (pkg.pob.typescript ? "rollup-typescript" : "rollup-babel")));
+          (pkg.pob.typescript === true
+            ? "rollup-typescript"
+            : "rollup-babel")));
     this.bundler = bundler;
 
     const cleanCommand = (() => {
@@ -572,9 +576,10 @@ export default class CommonTranspilerGenerator extends Generator {
 
     this.fs.delete("rollup.config.js");
     if (
-      pkg.pob.typescript &&
+      pkg.pob.typescript === true &&
       pkg.pob.rollup !== false &&
-      (!pkg.pob.bundler || pkg.pob.bundler.startsWith("rollup"))
+      ((!pkg.pob.bundler && pkg.pob.typescript !== true) ||
+        pkg.pob.bundler?.startsWith("rollup"))
     ) {
       if (this.options.isApp) {
         copyAndFormatTpl(
