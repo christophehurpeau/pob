@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.2.1](https://github.com/christophehurpeau/pob/compare/pob@23.2.0...pob@23.2.1) (2024-08-15)
+
+Version bump for dependency: yarn-workspace-utils
+
+
 ## [23.2.0](https://github.com/christophehurpeau/pob/compare/pob@23.1.0...pob@23.2.0) (2024-08-15)
 
 ### Features

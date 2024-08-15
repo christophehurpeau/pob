@@ -23,7 +23,7 @@ interface Dependencies {
   eslint: "9.9.0";
   jest: "29.7.0";
   "jest-junit-reporter": "1.1.0";
-  "pob-babel": "41.0.0";
+  "pob-babel": "41.0.1";
   prettier: "3.3.3";
   "repository-check-dirty": "8.0.0";
   rollup: "4.20.0";

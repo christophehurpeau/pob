@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [41.0.2](https://github.com/christophehurpeau/pob/compare/pob-babel@41.0.1...pob-babel@41.0.2) (2024-08-15)
+
+Version bump for dependency: babel-preset-pob-env
+
+
 ## [41.0.1](https://github.com/christophehurpeau/pob/compare/pob-babel@41.0.0...pob-babel@41.0.1) (2024-08-14)
 
 Note: no notable changes
