@@ -79,7 +79,7 @@
     "@types/npmcli__map-workspaces": "3.0.4",
     "conventional-recommended-bump": "10.0.0",
     "nightingale-string": "15.0.0",
-    "type-fest": "4.24.0",
+    "type-fest": "4.25.0",
     "typescript": "5.5.4"
   }
 }
