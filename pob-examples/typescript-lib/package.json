@@ -68,7 +68,7 @@
   "prettier": "@pob/root/prettier-config",
   "devDependencies": {
     "@babel/core": "7.25.2",
-    "@babel/preset-env": "7.25.3",
+    "@babel/preset-env": "7.25.4",
     "@types/node": "20.16.1",
     "pob-babel": "41.0.2",
     "typescript": "5.5.4"
