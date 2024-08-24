@@ -49,7 +49,7 @@
     "@pob/sort-pkg": "8.0.0",
     "@prettier/sync": "0.5.2",
     "@types/inquirer": "9.0.7",
-    "@yarnpkg/cli": "4.4.0",
+    "@yarnpkg/cli": "4.4.1",
     "@yarnpkg/core": "4.1.2",
     "@yarnpkg/fslib": "3.1.0",
     "@yeoman/types": "1.2.0",
