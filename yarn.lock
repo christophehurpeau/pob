@@ -8694,7 +8694,7 @@ __metadata:
   resolution: "example-typescript-lib-with-rollup-typescript@workspace:pob-examples/typescript-lib-with-rollup-typescript"
   dependencies:
     "@pob/rollup-typescript": "npm:5.0.0"
-    tslib: "npm:^2.6.3"
+    tslib: "npm:^2.7.0"
     typescript: "npm:5.5.4"
   languageName: unknown
   linkType: soft
@@ -8703,7 +8703,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-typescript-lib-without-rollup@workspace:pob-examples/typescript-lib-without-rollup"
   dependencies:
-    tslib: "npm:^2.6.3"
+    tslib: "npm:^2.7.0"
     typescript: "npm:5.5.4"
   languageName: unknown
   linkType: soft
@@ -13337,6 +13337,7 @@ __metadata:
   resolution: "pob-monorepo@workspace:."
   dependencies:
     "@babel/core": "npm:7.25.2"
+    "@pob/eslint-config": "npm:58.0.0"
     "@pob/eslint-config-typescript": "npm:58.0.0"
     "@pob/root": "workspace:*"
     "@types/jest": "npm:29.5.12"
@@ -15430,7 +15431,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tslib@npm:2.7.0, tslib@npm:^2.0.1, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.6.3":
+"tslib@npm:2.7.0, tslib@npm:^2.0.1, tslib@npm:^2.1.0, tslib@npm:^2.4.0, tslib@npm:^2.6.3, tslib@npm:^2.7.0":
   version: 2.7.0
   resolution: "tslib@npm:2.7.0"
   checksum: 10c0/469e1d5bf1af585742128827000711efa61010b699cb040ab1800bcd3ccdd37f63ec30642c9e07c4439c1db6e46345582614275daca3e0f4abae29b0083f04a6
