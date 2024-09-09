@@ -69,7 +69,7 @@
     "semver": "7.6.3",
     "ts-node": "npm:ts-node-lite@11.0.0-beta.1",
     "tslib": "2.7.0",
-    "typedoc": "0.26.6",
+    "typedoc": "0.26.7",
     "typescript": "5.5.4",
     "vitest": "2.0.5"
   }
