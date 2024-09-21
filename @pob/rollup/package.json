@@ -40,6 +40,6 @@
   "pob": {},
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "rollup": "4.22.2"
+    "rollup": "4.22.4"
   }
 }
