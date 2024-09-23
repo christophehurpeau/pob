@@ -3555,7 +3555,7 @@ __metadata:
   resolution: "@pob/rollup-esbuild@workspace:@pob/rollup-esbuild"
   dependencies:
     "@pob/rollup": "npm:4.0.0"
-    "@rollup/plugin-node-resolve": "npm:15.2.3"
+    "@rollup/plugin-node-resolve": "npm:15.2.4"
     "@rollup/plugin-run": "npm:3.1.0"
     esbuild: "npm:0.24.0"
     rollup: "npm:4.22.4"
@@ -3578,7 +3578,7 @@ __metadata:
   resolution: "@pob/rollup-typescript@workspace:@pob/rollup-typescript"
   dependencies:
     "@pob/rollup": "npm:4.0.0"
-    "@rollup/plugin-node-resolve": "npm:15.2.3"
+    "@rollup/plugin-node-resolve": "npm:15.2.4"
     "@rollup/plugin-run": "npm:3.1.0"
     "@rollup/plugin-typescript": "npm:11.1.6"
     rollup: "npm:4.22.4"
@@ -3703,14 +3703,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@rollup/plugin-node-resolve@npm:15.2.3":
-  version: 15.2.3
-  resolution: "@rollup/plugin-node-resolve@npm:15.2.3"
+"@rollup/plugin-node-resolve@npm:15.2.4":
+  version: 15.2.4
+  resolution: "@rollup/plugin-node-resolve@npm:15.2.4"
   dependencies:
     "@rollup/pluginutils": "npm:^5.0.1"
     "@types/resolve": "npm:1.20.2"
     deepmerge: "npm:^4.2.2"
-    is-builtin-module: "npm:^3.2.1"
     is-module: "npm:^1.0.0"
     resolve: "npm:^1.22.1"
   peerDependencies:
@@ -3718,7 +3717,7 @@ __metadata:
   peerDependenciesMeta:
     rollup:
       optional: true
-  checksum: 10c0/598c15615086f26e28c4b3dbf966682af7fb0e5bc277cc4e57f559668a3be675a63ab261eb34729ce9569c3a51342c48863e50b5efe02e0fc1571828f0113f9d
+  checksum: 10c0/d6afc8ac076aafaf30506941982e9b78015c6e48af859f297e697cd9d825f8e542e8546cf8878348f6e7c0731e16fe60d562be09270689aa7e4d2091d86f1d54
   languageName: node
   linkType: hard
 
@@ -13327,7 +13326,7 @@ __metadata:
     "@pob/rollup": "npm:4.0.0"
     "@rollup/plugin-babel": "npm:6.0.4"
     "@rollup/plugin-json": "npm:6.1.0"
-    "@rollup/plugin-node-resolve": "npm:15.2.3"
+    "@rollup/plugin-node-resolve": "npm:15.2.4"
     "@rollup/plugin-run": "npm:3.1.0"
     babel-preset-pob-env: "npm:13.0.1"
     rollup: "npm:4.22.4"
