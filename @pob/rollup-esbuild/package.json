@@ -55,7 +55,7 @@
   },
   "dependencies": {
     "@pob/rollup": "4.0.0",
-    "@rollup/plugin-node-resolve": "15.2.3",
+    "@rollup/plugin-node-resolve": "15.2.4",
     "@rollup/plugin-run": "3.1.0",
     "esbuild": "0.24.0",
     "rollup": "4.22.4",
