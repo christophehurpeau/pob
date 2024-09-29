@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.1](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.24.0...example-typescript-lib-without-rollup@0.24.1) (2024-09-29)
+
+Note: no notable changes
+
+
 ## [0.24.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.23.1...example-typescript-lib-without-rollup@0.24.0) (2024-08-11)
 
 ### ⚠ BREAKING CHANGES

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@13.2.0...@pob/root@13.3.0) (2024-09-29)
+
+### Features
+
+* **deps:** update dependency @commitlint/cli to v19.5.0 ([#2223](https://github.com/christophehurpeau/pob/issues/2223)) ([e3a93eb](https://github.com/christophehurpeau/pob/commit/e3a93eb130a069b08a04feee6a19deb04794261a))
+
+### Bug Fixes
+
+* **deps:** update dependency @commitlint/cli to v19.4.1 ([#2198](https://github.com/christophehurpeau/pob/issues/2198)) ([78c52e8](https://github.com/christophehurpeau/pob/commit/78c52e8eef2ef2c953c890192da5dc19649c10bc))
+* **deps:** update dependency lint-staged to v15.2.10 ([#2207](https://github.com/christophehurpeau/pob/issues/2207)) ([b47f2f4](https://github.com/christophehurpeau/pob/commit/b47f2f4497f2a1b43d7bc42f6bad11a3e966a24c))
+* disable yarn config set in hooks ([8c4c881](https://github.com/christophehurpeau/pob/commit/8c4c8815f4607ab2f1ca3d98da1c28861b7e8148))
+
+Version bump for dependency: yarn-version
+
+
 ## [13.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@13.1.0...@pob/root@13.2.0) (2024-08-15)
 
 ### Features

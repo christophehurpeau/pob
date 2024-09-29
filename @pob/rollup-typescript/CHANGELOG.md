@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@5.0.0...@pob/rollup-typescript@5.1.0) (2024-09-29)
+
+### Features
+
+* **deps:** update dependency @rollup/plugin-node-resolve to v15.3.0 ([#2249](https://github.com/christophehurpeau/pob/issues/2249)) ([6d4ab0b](https://github.com/christophehurpeau/pob/commit/6d4ab0b4ad635ca689d56a9f8aefebc21cafe616))
+
+### Bug Fixes
+
+* **deps:** update dependency @rollup/plugin-node-resolve to v15.2.4 ([#2246](https://github.com/christophehurpeau/pob/issues/2246)) ([b5bd6aa](https://github.com/christophehurpeau/pob/commit/b5bd6aaf8941313ba63e33bf8441d5d2dd3ad614))
+
+Version bump for dependency: @pob/rollup
+
+
 ## [5.0.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@4.0.3...@pob/rollup-typescript@5.0.0) (2024-08-11)
 
 ### ⚠ BREAKING CHANGES

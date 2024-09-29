@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.0](https://github.com/christophehurpeau/pob/compare/yarn-version@3.1.0...yarn-version@3.2.0) (2024-09-29)
+
+### Features
+
+* **deps:** update dependency @npmcli/map-workspaces to v4 ([#2258](https://github.com/christophehurpeau/pob/issues/2258)) ([aaa83c6](https://github.com/christophehurpeau/pob/commit/aaa83c6f60d02a8b162bacdbcd0789e9764c59c0))
+* **deps:** update dependency @octokit/rest to v21 ([#2110](https://github.com/christophehurpeau/pob/issues/2110)) ([b0ef154](https://github.com/christophehurpeau/pob/commit/b0ef1545df0ed6c021c5d3f93e60b73c2ade6ee3))
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [3.1.0](https://github.com/christophehurpeau/pob/compare/yarn-version@3.0.0...yarn-version@3.1.0) (2024-08-14)
 
 ### Features

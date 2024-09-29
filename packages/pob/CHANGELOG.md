@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.3.0](https://github.com/christophehurpeau/pob/compare/pob@23.2.1...pob@23.3.0) (2024-09-29)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v58.1.0 ([#2221](https://github.com/christophehurpeau/pob/issues/2221)) ([f9ebbcf](https://github.com/christophehurpeau/pob/commit/f9ebbcfb5eae25a16771d1d2bb6df7c97002ab26))
+* **deps:** update dependency @yeoman/types to v1.3.0 ([#2194](https://github.com/christophehurpeau/pob/issues/2194)) ([8e5b274](https://github.com/christophehurpeau/pob/commit/8e5b2746ef13db50a48d9a5a18af64179b993ffb))
+* **deps:** update dependency eslint to v9.10.0 ([#2214](https://github.com/christophehurpeau/pob/issues/2214)) ([da9e539](https://github.com/christophehurpeau/pob/commit/da9e5396d3fa2f1a5d13726fa4cbfebc3081ddbc))
+* **deps:** update dependency eslint to v9.11.0 ([#2243](https://github.com/christophehurpeau/pob/issues/2243)) ([521792a](https://github.com/christophehurpeau/pob/commit/521792a67cf787c5b59ffcf233c13d3195cf6de3))
+* **deps:** update dependency mem-fs-editor to v11.1.1 ([#2178](https://github.com/christophehurpeau/pob/issues/2178)) ([5df57e4](https://github.com/christophehurpeau/pob/commit/5df57e4f1adb863eab0ccbd694620ec1350d4993))
+* **deps:** update dependency validate-npm-package-name to v6 ([#2256](https://github.com/christophehurpeau/pob/issues/2256)) ([6ffd7d7](https://github.com/christophehurpeau/pob/commit/6ffd7d72f2d522498e3cd320883f330ed7f20b33))
+* **deps:** update yarn monorepo ([#2232](https://github.com/christophehurpeau/pob/issues/2232)) ([1af03f3](https://github.com/christophehurpeau/pob/commit/1af03f3d7383061780b70f29dbb5119a80b863fc))
+
+### Bug Fixes
+
+* checkjs config file support composite ([414b144](https://github.com/christophehurpeau/pob/commit/414b1449146e4b1626f0338944bff8a27ebb1589))
+* **deps:** update @pob/eslint-config to v58.0.1 ([#2191](https://github.com/christophehurpeau/pob/issues/2191)) ([5a574b5](https://github.com/christophehurpeau/pob/commit/5a574b573e0a90b267890df341fde2dcdfad7e14))
+* **deps:** update @pob/eslint-config to v58.0.2 ([#2215](https://github.com/christophehurpeau/pob/issues/2215)) ([a6076ec](https://github.com/christophehurpeau/pob/commit/a6076ecacd2233d3c9a51a44b4ecff8388b119b5))
+* **deps:** update dependency @yeoman/types to v1.2.1 ([#2192](https://github.com/christophehurpeau/pob/issues/2192)) ([3a237f8](https://github.com/christophehurpeau/pob/commit/3a237f8c3ccbec98f41081d2e537a52e1b0b4cba))
+* **deps:** update dependency eslint to v9.11.1 ([#2248](https://github.com/christophehurpeau/pob/issues/2248)) ([8c904f5](https://github.com/christophehurpeau/pob/commit/8c904f54d698a8718acc63cd723a353e37642d26))
+* **deps:** update dependency eslint to v9.9.1 ([#2187](https://github.com/christophehurpeau/pob/issues/2187)) ([b7b72fe](https://github.com/christophehurpeau/pob/commit/b7b72fe362688a457a10f8a4ed6cc506b9da1d24))
+* **deps:** update yarn monorepo to v4.4.1 ([#2190](https://github.com/christophehurpeau/pob/issues/2190)) ([1ff2d31](https://github.com/christophehurpeau/pob/commit/1ff2d3164660814f3516f280827fe78f6b059773))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [23.2.1](https://github.com/christophehurpeau/pob/compare/pob@23.2.0...pob@23.2.1) (2024-08-15)
 
 Version bump for dependency: yarn-workspace-utils

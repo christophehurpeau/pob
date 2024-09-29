@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@4.0.0...@pob/rollup-esbuild@4.1.0) (2024-09-29)
+
+### Features
+
+* **deps:** update dependency @rollup/plugin-node-resolve to v15.3.0 ([#2249](https://github.com/christophehurpeau/pob/issues/2249)) ([6d4ab0b](https://github.com/christophehurpeau/pob/commit/6d4ab0b4ad635ca689d56a9f8aefebc21cafe616))
+* **deps:** update dependency esbuild to v0.24.0 ([#2245](https://github.com/christophehurpeau/pob/issues/2245)) ([37684d8](https://github.com/christophehurpeau/pob/commit/37684d80354653911572482dfd528cfd317a47c2))
+
+### Bug Fixes
+
+* **deps:** update dependency @rollup/plugin-node-resolve to v15.2.4 ([#2246](https://github.com/christophehurpeau/pob/issues/2246)) ([b5bd6aa](https://github.com/christophehurpeau/pob/commit/b5bd6aaf8941313ba63e33bf8441d5d2dd3ad614))
+* **deps:** update dependency esbuild to v0.23.1 ([#2173](https://github.com/christophehurpeau/pob/issues/2173)) ([3878dad](https://github.com/christophehurpeau/pob/commit/3878dade35dcf92d75ed56280565e466b7dfb679))
+
+Version bump for dependency: @pob/rollup
+
+
 ## [4.0.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@3.1.2...@pob/rollup-esbuild@4.0.0) (2024-08-11)
 
 ### ⚠ BREAKING CHANGES

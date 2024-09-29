@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.1](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.6.0...@pob-example/next-app@0.6.1) (2024-09-29)
+
+### Bug Fixes
+
+* **deps:** update dependency next to v14.2.10 ([#2225](https://github.com/christophehurpeau/pob/issues/2225)) ([a93936d](https://github.com/christophehurpeau/pob/commit/a93936d36fa5fc4dd55fadd509c84fa49e0b1879))
+* **deps:** update dependency next to v14.2.11 ([#2229](https://github.com/christophehurpeau/pob/issues/2229)) ([9a48599](https://github.com/christophehurpeau/pob/commit/9a485995191644458c7c65380a667f90bab94f6d))
+* **deps:** update dependency next to v14.2.12 ([#2236](https://github.com/christophehurpeau/pob/issues/2236)) ([9bee1ba](https://github.com/christophehurpeau/pob/commit/9bee1ba90073ddc026ae6d75ecec089fbbae70f1))
+* **deps:** update dependency next to v14.2.13 ([#2239](https://github.com/christophehurpeau/pob/issues/2239)) ([fc24d33](https://github.com/christophehurpeau/pob/commit/fc24d33219f445c64b1446bde6202da2c383203c))
+* **deps:** update dependency next to v14.2.6 ([#2183](https://github.com/christophehurpeau/pob/issues/2183)) ([ea7f92a](https://github.com/christophehurpeau/pob/commit/ea7f92afb5a07132dfeb07b4b2a243305596a78d))
+* **deps:** update dependency next to v14.2.7 ([#2195](https://github.com/christophehurpeau/pob/issues/2195)) ([e7403aa](https://github.com/christophehurpeau/pob/commit/e7403aac362d360a1c3103f6a5de7aa6f1597978))
+* **deps:** update dependency next to v14.2.8 ([#2211](https://github.com/christophehurpeau/pob/issues/2211)) ([373992a](https://github.com/christophehurpeau/pob/commit/373992a176e30dccb73d9b528866d3199bbb8e6e))
+* **deps:** update dependency next to v14.2.9 ([#2220](https://github.com/christophehurpeau/pob/issues/2220)) ([2527f61](https://github.com/christophehurpeau/pob/commit/2527f61522d510efb029bb8d8b93de0be8fc6859))
+
 ## [0.6.0](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.5.4...@pob-example/next-app@0.6.0) (2024-08-11)
 
 ### ⚠ BREAKING CHANGES

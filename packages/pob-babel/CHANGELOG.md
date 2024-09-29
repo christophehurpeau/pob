@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [41.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@41.0.2...pob-babel@41.1.0) (2024-09-29)
+
+### Features
+
+* **deps:** update babel monorepo to v7.25.4 ([#2184](https://github.com/christophehurpeau/pob/issues/2184)) ([529a112](https://github.com/christophehurpeau/pob/commit/529a1121362e1328cfa7d76740d5c4a2f385faf6))
+* **deps:** update dependency @rollup/plugin-node-resolve to v15.3.0 ([#2249](https://github.com/christophehurpeau/pob/issues/2249)) ([6d4ab0b](https://github.com/christophehurpeau/pob/commit/6d4ab0b4ad635ca689d56a9f8aefebc21cafe616))
+
+### Bug Fixes
+
+* **deps:** update dependency @rollup/plugin-node-resolve to v15.2.4 ([#2246](https://github.com/christophehurpeau/pob/issues/2246)) ([b5bd6aa](https://github.com/christophehurpeau/pob/commit/b5bd6aaf8941313ba63e33bf8441d5d2dd3ad614))
+
+Version bump for dependency: @pob/rollup
+
+
 ## [41.0.2](https://github.com/christophehurpeau/pob/compare/pob-babel@41.0.1...pob-babel@41.0.2) (2024-08-15)
 
 Version bump for dependency: babel-preset-pob-env
