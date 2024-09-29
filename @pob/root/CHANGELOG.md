@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.4.1](https://github.com/christophehurpeau/pob/compare/@pob/root@13.4.0...@pob/root@13.4.1) (2024-09-29)
+
+### Reverts
+
+* Revert "fix: disable yarn config set in hooks" ([350a698](https://github.com/christophehurpeau/pob/commit/350a698194aab7159b3a07c675ce1d81d5f13cf9))
+
 ## [13.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@13.3.0...@pob/root@13.4.0) (2024-09-29)
 
 ### Features

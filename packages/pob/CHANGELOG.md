@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.4.1](https://github.com/christophehurpeau/pob/compare/pob@23.4.0...pob@23.4.1) (2024-09-29)
+
+### Bug Fixes
+
+* add yarnrc.yml in prettier ignore ([3be4353](https://github.com/christophehurpeau/pob/commit/3be4353b3f5baf06c894e8269aec1d8570b0b429))
+* only try to update yarnrc on changes ([2390c71](https://github.com/christophehurpeau/pob/commit/2390c71bc8363ee48aab0790068265a363714b32))
+
+Version bump for dependency: @pob/root
+
+
 ## [23.4.0](https://github.com/christophehurpeau/pob/compare/pob@23.3.0...pob@23.4.0) (2024-09-29)
 
 Version bump for dependency: @pob/root
