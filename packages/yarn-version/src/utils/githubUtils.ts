@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-unresolved -- esm-only package which is not supported by import plugin.
 import { Octokit } from "@octokit/rest";
 import { UsageError } from "./UsageError";
 import type { Workspace } from "./packageUtils";
