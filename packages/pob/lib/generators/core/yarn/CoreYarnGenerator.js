@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { isDeepStrictEqual } from "node:util";
 import sortObject from "@pob/sort-object";
 import yml from "js-yaml";
 import { lt } from "semver";
@@ -146,15 +147,16 @@ export default class CoreYarnGenerator extends Generator {
           schema: yml.FAILSAFE_SCHEMA,
           json: true,
         }) || {};
+      const previousConfig = { ...config };
       if (this.options.disableYarnGitCache) {
         // leave default compressionLevel instead of this next line
         delete config.compressionLevel;
         // config.compressionLevel = "mixed"; // optimized for size
-        config.enableGlobalCache = true;
+        config.enableGlobalCache = "true";
         delete config.supportedArchitectures;
       } else {
         config.compressionLevel = 0; // optimized for github config
-        config.enableGlobalCache = false;
+        config.enableGlobalCache = "false";
         // https://yarnpkg.dev/releases/3-1/
         // make sure all supported architectures are in yarn cache
         config.supportedArchitectures = {
@@ -172,13 +174,15 @@ export default class CoreYarnGenerator extends Generator {
         delete config.yarnPath;
       }
 
-      writeAndFormat(
-        this.fs,
-        ".yarnrc.yml",
-        yml.dump(sortObject(config), {
-          lineWidth: 9999,
-        }),
-      );
+      if (!isDeepStrictEqual(config, previousConfig)) {
+        writeAndFormat(
+          this.fs,
+          ".yarnrc.yml",
+          yml.dump(sortObject(config), {
+            lineWidth: 9999,
+          }),
+        );
+      }
     } else {
       this.fs.delete(".yarn");
       this.fs.delete(".yarnrc.yml");
