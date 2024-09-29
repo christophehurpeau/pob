@@ -58,7 +58,7 @@
   "dependencies": {
     "@conventional-changelog/git-client": "1.0.1",
     "@npmcli/map-workspaces": "4.0.0",
-    "@octokit/rest": "20.1.1",
+    "@octokit/rest": "21.0.2",
     "@pob/pretty-pkg": "9.0.0",
     "commander": "12.1.0",
     "conventional-changelog-conventionalcommits": "8.0.0",
