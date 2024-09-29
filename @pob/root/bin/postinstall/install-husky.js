@@ -85,21 +85,20 @@ export default function installHusky({ pkg, pm }) {
             ? "--immutable"
             : "--prefer-offline --pure-lockfile --ignore-optional"
         }`,
-        // cause issues with git because of formatting issue with prettier.
-        //       beforeDiffCommand: isYarnBerry
-        //         ? `yarn config set logFilters --json '[
-        //   {"code": "YN0002","level": "discard"},
-        //   {"code": "YN0007","level": "discard"},
-        //   {"code": "YN0008","level": "discard"},
-        //   {"code": "YN0013","level": "discard"},
-        //   {"code": "YN0018","level": "discard"},
-        //   {"code": "YN0060","level": "discard"},
-        //   {"code": "YN0061","level": "discard"}
-        // ]' > /dev/null`
-        //         : "",
-        //       afterDiffCommand: isYarnBerry
-        //         ? "yarn config unset logFilters > /dev/null"
-        //         : "",
+        beforeDiffCommand: isYarnBerry
+          ? `yarn config set logFilters --json '[
+    {"code": "YN0002","level": "discard"},
+    {"code": "YN0007","level": "discard"},
+    {"code": "YN0008","level": "discard"},
+    {"code": "YN0013","level": "discard"},
+    {"code": "YN0018","level": "discard"},
+    {"code": "YN0060","level": "discard"},
+    {"code": "YN0061","level": "discard"}
+  ]' > /dev/null`
+          : "",
+        afterDiffCommand: isYarnBerry
+          ? "yarn config unset logFilters > /dev/null"
+          : "",
       };
     }
     if (pm.name === "npm") {
