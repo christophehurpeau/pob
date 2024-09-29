@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@13.3.0...@pob/root@13.4.0) (2024-09-29)
+
+### Features
+
+* remove deprecated ::set-output in github actions ([a42232e](https://github.com/christophehurpeau/pob/commit/a42232eb28d66b8b4c7083fb323d6c9018e0a517))
+* update yarn min version ([c354641](https://github.com/christophehurpeau/pob/commit/c354641dc234f7a0d7b0b4990e0fed665d1d066c))
+
 ## [13.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@13.2.0...@pob/root@13.3.0) (2024-09-29)
 
 ### Features
