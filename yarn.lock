@@ -3495,7 +3495,7 @@ __metadata:
     next: "npm:14.2.15"
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
-    typescript: "npm:5.6.2"
+    typescript: "npm:5.6.3"
   languageName: unknown
   linkType: soft
 
@@ -8821,7 +8821,7 @@ __metadata:
   resolution: "example-typescript-lib-esbuild@workspace:pob-examples/typescript-lib-esbuild"
   dependencies:
     "@pob/esbuild": "npm:2.1.0"
-    typescript: "npm:5.6.2"
+    typescript: "npm:5.6.3"
   languageName: unknown
   linkType: soft
 
@@ -8830,7 +8830,7 @@ __metadata:
   resolution: "example-typescript-lib-rollup-esbuild@workspace:pob-examples/typescript-lib-rollup-esbuild"
   dependencies:
     "@pob/rollup-esbuild": "npm:4.1.0"
-    typescript: "npm:5.6.2"
+    typescript: "npm:5.6.3"
   languageName: unknown
   linkType: soft
 
@@ -8840,7 +8840,7 @@ __metadata:
   dependencies:
     "@pob/rollup-typescript": "npm:5.1.0"
     tslib: "npm:^2.7.0"
-    typescript: "npm:5.6.2"
+    typescript: "npm:5.6.3"
   languageName: unknown
   linkType: soft
 
@@ -8849,7 +8849,7 @@ __metadata:
   resolution: "example-typescript-lib-without-rollup@workspace:pob-examples/typescript-lib-without-rollup"
   dependencies:
     tslib: "npm:^2.7.0"
-    typescript: "npm:5.6.2"
+    typescript: "npm:5.6.3"
   languageName: unknown
   linkType: soft
 
@@ -8861,7 +8861,7 @@ __metadata:
     "@babel/preset-env": "npm:7.25.4"
     "@types/node": "npm:20.16.11"
     pob-babel: "npm:41.1.0"
-    typescript: "npm:5.6.2"
+    typescript: "npm:5.6.3"
   languageName: unknown
   linkType: soft
 
@@ -13489,7 +13489,7 @@ __metadata:
     rollup: "npm:4.24.0"
     rollup-config-external-dependencies: "npm:^3.0.0"
     semver: "npm:^7.3.7"
-    typescript: "npm:5.6.2"
+    typescript: "npm:5.6.3"
   peerDependencies:
     "@babel/core": ^7.23.2
     rollup: 4.24.0
@@ -13539,7 +13539,7 @@ __metadata:
     ts-node: "npm:ts-node-lite@11.0.0-beta.1"
     tslib: "npm:2.7.0"
     typedoc: "npm:0.26.8"
-    typescript: "npm:5.6.2"
+    typescript: "npm:5.6.3"
     vitest: "npm:2.1.2"
   languageName: unknown
   linkType: soft
@@ -13559,7 +13559,7 @@ __metadata:
     pob-babel: "workspace:*"
     prettier: "npm:3.3.3"
     react: "npm:18.3.1"
-    typescript: "npm:5.6.2"
+    typescript: "npm:5.6.3"
   languageName: unknown
   linkType: soft
 
@@ -13596,7 +13596,7 @@ __metadata:
     pob-dependencies: "workspace:*"
     prettier: "npm:3.3.3"
     semver: "npm:7.6.3"
-    typescript: "npm:5.6.2"
+    typescript: "npm:5.6.3"
     validate-npm-package-name: "npm:^6.0.0"
     yarn-workspace-utils: "npm:6.1.0"
     yeoman-environment: "npm:4.4.1"
@@ -15839,23 +15839,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.6.2":
-  version: 5.6.2
-  resolution: "typescript@npm:5.6.2"
+"typescript@npm:5.6.3":
+  version: 5.6.3
+  resolution: "typescript@npm:5.6.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10c0/3ed8297a8c7c56b7fec282532503d1ac795239d06e7c4966b42d4330c6cf433a170b53bcf93a130a7f14ccc5235de5560df4f1045eb7f3550b46ebed16d3c5e5
+  checksum: 10c0/44f61d3fb15c35359bc60399cb8127c30bae554cd555b8e2b46d68fa79d680354b83320ad419ff1b81a0bdf324197b29affe6cc28988cd6a74d4ac60c94f9799
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A5.6.2#optional!builtin<compat/typescript>":
-  version: 5.6.2
-  resolution: "typescript@patch:typescript@npm%3A5.6.2#optional!builtin<compat/typescript>::version=5.6.2&hash=8c6c40"
+"typescript@patch:typescript@npm%3A5.6.3#optional!builtin<compat/typescript>":
+  version: 5.6.3
+  resolution: "typescript@patch:typescript@npm%3A5.6.3#optional!builtin<compat/typescript>::version=5.6.3&hash=8c6c40"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10c0/94eb47e130d3edd964b76da85975601dcb3604b0c848a36f63ac448d0104e93819d94c8bdf6b07c00120f2ce9c05256b8b6092d23cf5cf1c6fa911159e4d572f
+  checksum: 10c0/7c9d2e07c81226d60435939618c91ec2ff0b75fbfa106eec3430f0fcf93a584bc6c73176676f532d78c3594fe28a54b36eb40b3d75593071a7ec91301533ace7
   languageName: node
   linkType: hard
 
@@ -16680,7 +16680,7 @@ __metadata:
     nightingale-string: "npm:15.0.0"
     semver: "npm:7.6.3"
     type-fest: "npm:4.26.1"
-    typescript: "npm:5.6.2"
+    typescript: "npm:5.6.3"
   bin:
     yarn-version: ./build/index-node18.mjs
   languageName: unknown
@@ -16693,7 +16693,7 @@ __metadata:
     "@babel/core": "npm:7.25.2"
     "@yarnpkg/core": "npm:4.1.3"
     pob-babel: "npm:41.1.0"
-    typescript: "npm:5.6.2"
+    typescript: "npm:5.6.3"
   languageName: unknown
   linkType: soft
 
