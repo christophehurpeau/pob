@@ -13599,7 +13599,7 @@ __metadata:
     typescript: "npm:5.6.3"
     validate-npm-package-name: "npm:^6.0.0"
     yarn-workspace-utils: "npm:6.1.0"
-    yeoman-environment: "npm:4.4.1"
+    yeoman-environment: "npm:4.4.2"
     yeoman-generator: "npm:7.3.2"
   bin:
     pob: ./lib/pob.js
@@ -16697,9 +16697,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"yeoman-environment@npm:4.4.1":
-  version: 4.4.1
-  resolution: "yeoman-environment@npm:4.4.1"
+"yeoman-environment@npm:4.4.2":
+  version: 4.4.2
+  resolution: "yeoman-environment@npm:4.4.2"
   dependencies:
     "@yeoman/adapter": "npm:^1.4.0"
     "@yeoman/conflicter": "npm:^2.0.0-alpha.2"
@@ -16727,7 +16727,7 @@ __metadata:
     mem-fs: ^4.0.0
   bin:
     yoe: bin/bin.cjs
-  checksum: 10c0/a46aa2729793637c7d4b5bff484b3dcf4a9b5c4b2f778d555bf0d0e1a5c48712c73c5d7154cbd7cf28cacb7b5147305d56f540407f7ca588baf6b37b87fc0434
+  checksum: 10c0/b6ef63d40b1eca887772dc62be4730afef4c6794e2142d45fa45ca4f45122d24cb5cfd8326017e6e0c6e800221d651797db79d6064223f4b10134bf4b39548a0
   languageName: node
   linkType: hard
 
