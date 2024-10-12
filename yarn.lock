@@ -4559,12 +4559,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:20.16.11, @types/node@npm:>=18.0.0, @types/node@npm:^20.8.3":
-  version: 20.16.11
-  resolution: "@types/node@npm:20.16.11"
+"@types/node@npm:*, @types/node@npm:>=18, @types/node@npm:>=18.0.0":
+  version: 22.7.5
+  resolution: "@types/node@npm:22.7.5"
   dependencies:
     undici-types: "npm:~6.19.2"
-  checksum: 10c0/bba43f447c3c80548513954dae174e18132e9149d572c09df4a282772960d33e229d05680fb5364997c03489c22fe377d1dbcd018a3d4ff1cfbcfcdaa594a9c3
+  checksum: 10c0/cf11f74f1a26053ec58066616e3a8685b6bcd7259bc569738b8f752009f9f0f7f85a1b2d24908e5b0f752482d1e8b6babdf1fbb25758711ec7bb9500bfcd6e60
   languageName: node
   linkType: hard
 
@@ -4572,6 +4572,15 @@ __metadata:
   version: 14.18.30
   resolution: "@types/node@npm:14.18.30"
   checksum: 10c0/d3c800a4ea6124c4a055453f37fb45b3530d857c1852e76efb513515c329eedbd99a60531ba4cb066fe24361ead1cd2a70d8d092f50344427e1b2d91fd43f32e
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:20.16.11":
+  version: 20.16.11
+  resolution: "@types/node@npm:20.16.11"
+  dependencies:
+    undici-types: "npm:~6.19.2"
+  checksum: 10c0/bba43f447c3c80548513954dae174e18132e9149d572c09df4a282772960d33e229d05680fb5364997c03489c22fe377d1dbcd018a3d4ff1cfbcfcdaa594a9c3
   languageName: node
   linkType: hard
 
@@ -12004,15 +12013,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mem-fs@npm:4.1.0, mem-fs@npm:^4.0.0":
-  version: 4.1.0
-  resolution: "mem-fs@npm:4.1.0"
+"mem-fs@npm:4.1.1, mem-fs@npm:^4.0.0":
+  version: 4.1.1
+  resolution: "mem-fs@npm:4.1.1"
   dependencies:
-    "@types/node": "npm:^20.8.3"
+    "@types/node": "npm:>=18"
     "@types/vinyl": "npm:^2.0.8"
     vinyl: "npm:^3.0.0"
     vinyl-file: "npm:^5.0.0"
-  checksum: 10c0/acc525c83faacadca9fe188594ff66ff50eb61c3097de54607130eea772fd4835805a1bc82d01140fe82c5ca1402c84bf6cb53c390fa032cd02fee146126fd55
+  checksum: 10c0/5c80a09b9c529d035e523eefa7e4b90c494de6c3ac554a4ccdc6a5de6aca02299ed85a54214f09c2d299a6377b7c08ceece6dc08e707e78cc714a02dcd7e2e1a
   languageName: node
   linkType: hard
 
@@ -13589,7 +13598,7 @@ __metadata:
     json5: "npm:^2.2.3"
     lodash.camelcase: "npm:^4.3.0"
     lodash.kebabcase: "npm:^4.1.1"
-    mem-fs: "npm:4.1.0"
+    mem-fs: "npm:4.1.1"
     mem-fs-editor: "npm:11.1.1"
     minimist: "npm:1.2.8"
     parse-author: "npm:2.0.0"
