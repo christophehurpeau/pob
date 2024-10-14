@@ -70,8 +70,8 @@
     "semver": "7.6.3",
     "validate-npm-package-name": "^6.0.0",
     "yarn-workspace-utils": "6.1.0",
-    "yeoman-environment": "4.4.2",
-    "yeoman-generator": "7.3.2"
+    "yeoman-environment": "4.4.3",
+    "yeoman-generator": "7.3.3"
   },
   "devDependencies": {
     "@pob/root": "13.4.1",
