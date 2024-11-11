@@ -133,6 +133,7 @@ export default class PobAppGenerator extends Generator {
   default() {
     const srcDirectory =
       this.appConfig.type === "yarn-plugin" ? "sources" : "src";
+    const buildDirectory = this.appConfig.distribute ? "dist" : "build";
     const isAppLibrary =
       this.appConfig.type === "node-library" ||
       this.appConfig.type === "untranspiled-library";
@@ -151,7 +152,7 @@ export default class PobAppGenerator extends Generator {
         testing: this.appConfig.testing,
         documentation: false,
         fromPob: this.options.fromPob,
-        buildDirectory: "build",
+        buildDirectory,
       });
       this.composeWith("pob:common:transpiler", {
         updateOnly: this.options.updateOnly,
@@ -163,7 +164,7 @@ export default class PobAppGenerator extends Generator {
         documentation: false,
         fromPob: this.options.fromPob,
         srcDirectory,
-        buildDirectory: "build",
+        buildDirectory,
       });
     }
 

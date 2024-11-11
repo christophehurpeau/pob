@@ -21,21 +21,21 @@
   "engines": {
     "node": ">=20.9.0"
   },
-  "bin": "./build/index-node.mjs",
-  "main": "./build/index-node.mjs",
+  "bin": "./dist/index-node.mjs",
+  "main": "./dist/index-node.mjs",
   "exports": {
     "./package.json": "./package.json",
     ".": {
-      "types": "./build/definitions/index.d.ts",
+      "types": "./dist/definitions/index.d.ts",
       "node": {
-        "import": "./build/index-node.mjs"
+        "import": "./dist/index-node.mjs"
       }
     }
   },
   "scripts": {
-    "build": "yarn clean:build && rollup --config rollup.config.mjs && chmod a+x build/index-node.mjs",
+    "build": "yarn clean:build && rollup --config rollup.config.mjs && chmod a+x dist/index-node.mjs",
     "clean": "yarn clean:build",
-    "clean:build": "pob-esbuild-clean-out build",
+    "clean:build": "pob-esbuild-clean-out dist",
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn ../.. run eslint --quiet packages/yarn-version",
     "start": "yarn clean:build && rollup --config rollup.config.mjs --watch",

@@ -7,6 +7,6 @@ const watch = process.env.ROLLUP_WATCH === "true";
 
 export default createRollupConfig({
   cwd: dirname(fileURLToPath(import.meta.url)),
-  outDirectory: "build",
+  outDirectory: "dist",
   plugins: [watch && run({ execArgv: ["--enable-source-maps"] })],
 });

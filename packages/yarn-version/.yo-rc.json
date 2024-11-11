@@ -3,7 +3,8 @@
     "app": {
       "type": "node",
       "testing": true,
-      "codecov": true
+      "codecov": true,
+      "distribute": true
     },
     "project": {
       "type": "app"
