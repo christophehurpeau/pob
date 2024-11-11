@@ -1,6 +1,6 @@
 {
   "name": "yarn-version",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "description": "yarn berry versioning using conventional commits",
   "keywords": [
     "semantic-release",
@@ -60,7 +60,7 @@
     "@conventional-changelog/git-client": "1.0.1",
     "@npmcli/map-workspaces": "4.0.1",
     "@octokit/rest": "21.0.2",
-    "@pob/pretty-pkg": "9.0.0",
+    "@pob/pretty-pkg": "10.0.0",
     "commander": "12.1.0",
     "conventional-changelog-conventionalcommits": "8.0.0",
     "conventional-changelog-core": "8.0.0",
@@ -73,7 +73,7 @@
     "semver": "7.6.3"
   },
   "devDependencies": {
-    "@pob/rollup-esbuild": "4.1.0",
+    "@pob/rollup-esbuild": "5.0.0",
     "@types/node": "22.9.0",
     "@types/npmcli__map-workspaces": "3.0.4",
     "conventional-recommended-bump": "10.0.0",

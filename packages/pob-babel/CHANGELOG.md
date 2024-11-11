@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [42.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@41.1.0...pob-babel@42.0.0) (2024-11-11)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+Version bump for dependency: @pob/rollup
+Version bump for dependency: babel-preset-pob-env
+
+
 ## [41.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@41.0.2...pob-babel@41.1.0) (2024-09-29)
 
 ### Features

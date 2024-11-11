@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.0.0](https://github.com/christophehurpeau/pob/compare/pob@23.4.1...pob@24.0.0) (2024-11-11)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* app distribute ([5f0869f](https://github.com/christophehurpeau/pob/commit/5f0869f6e363de6c709132ddcd859955c5a6d8ec))
+* **deps:** update dependency @yeoman/types to v1.5.0 ([#2200](https://github.com/christophehurpeau/pob/issues/2200)) ([7c03bf2](https://github.com/christophehurpeau/pob/commit/7c03bf2237a8221061fd05b8f25e20feb2808aa7))
+* **deps:** update dependency eslint to v9.12.0 ([#2271](https://github.com/christophehurpeau/pob/issues/2271)) ([e0d67e6](https://github.com/christophehurpeau/pob/commit/e0d67e63ddb9415c4be366d4c196304c25aae7a2))
+* **deps:** update dependency eslint to v9.13.0 ([#2290](https://github.com/christophehurpeau/pob/issues/2290)) ([b7728e1](https://github.com/christophehurpeau/pob/commit/b7728e111a881ef7fcf1bf71da350492f71c712c))
+* **deps:** update dependency github-username to v8 ([#1726](https://github.com/christophehurpeau/pob/issues/1726)) ([83927e1](https://github.com/christophehurpeau/pob/commit/83927e14472c9bb77b2c0b8dd75e3866248ac344))
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+### Bug Fixes
+
+* **deps:** update dependency mem-fs to v4.1.1 ([#2280](https://github.com/christophehurpeau/pob/issues/2280)) ([092b564](https://github.com/christophehurpeau/pob/commit/092b564b6c689f6b7896eec809ff47a68bb20f64))
+* **deps:** update dependency mem-fs-editor to v11.1.3 ([#2281](https://github.com/christophehurpeau/pob/issues/2281)) ([8968978](https://github.com/christophehurpeau/pob/commit/8968978c2b36e4dac94c111d9c8be1e1de0333f8))
+* **deps:** update dependency yeoman-environment to v4.4.2 ([#2279](https://github.com/christophehurpeau/pob/issues/2279)) ([53a78eb](https://github.com/christophehurpeau/pob/commit/53a78ebb4fe6f301862655d1ab691e94a8bb9425))
+* **deps:** update yarn monorepo ([#2289](https://github.com/christophehurpeau/pob/issues/2289)) ([ca24ce6](https://github.com/christophehurpeau/pob/commit/ca24ce664fc2dc7b1b9788df324a4047fbd4045d))
+* **deps:** update yeoman group ([#2283](https://github.com/christophehurpeau/pob/issues/2283)) ([0737c2b](https://github.com/christophehurpeau/pob/commit/0737c2b05a937507d6fe2edf233067c4bddd6b76))
+
+Version bump for dependency: @pob/sort-eslint-config
+Version bump for dependency: @pob/sort-object
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [23.4.1](https://github.com/christophehurpeau/pob/compare/pob@23.4.0...pob@23.4.1) (2024-09-29)
 
 ### Bug Fixes
