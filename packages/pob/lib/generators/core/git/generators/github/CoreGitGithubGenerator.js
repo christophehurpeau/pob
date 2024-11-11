@@ -25,6 +25,10 @@ const putJson = (url, jsonBody) =>
   }).then((res) => (res.ok ? res.json() : null));
 
 const configureProtectionRule = async (owner, repo, onlyLatestLTS) => {
+  if (!ciContexts || ciContexts.length === 0) {
+    throw new Error("Invalid ciContexts: []");
+  }
+
   for (const branch of ["main", "master"]) {
     try {
       await putJson(`repos/${owner}/${repo}/branches/${branch}/protection`, {

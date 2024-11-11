@@ -1,6 +1,7 @@
 import { existsSync } from "node:fs";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
+import { latestLTS, maintenanceLTS } from "../../../utils/node.js";
 import * as packageUtils from "../../../utils/package.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
@@ -139,11 +140,13 @@ export default class CommonTypescriptGenerator extends Generator {
           : ["@pob/root/tsconfigs/targets/rollup-babel.json"];
       }
       if (withTypescript) {
-        const nodeVersion = this.options.onlyLatestLTS ? "20" : "18";
+        const nodeVersion = this.options.onlyLatestLTS
+          ? `${latestLTS}`
+          : `${maintenanceLTS}`;
         const envs = pkg.pob?.envs || [
           {
             target: "node",
-            version: "18",
+            version: `${maintenanceLTS}`,
           },
         ];
         if (pkg.pob.rollup === false || pkg.pob.bundler === false) {

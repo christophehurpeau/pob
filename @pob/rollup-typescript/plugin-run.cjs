@@ -1,3 +1,3 @@
 "use strict";
 
-module.exports = require("@rollup/plugin-run");
+throw new Error("Use @pob/rollup-esbuild instead");

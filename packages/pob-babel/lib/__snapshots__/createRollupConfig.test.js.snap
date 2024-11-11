@@ -134,7 +134,7 @@ exports[`fixtures react 0 1`] = `
 import { jsx } from 'react/jsx-runtime';
 
 const Component = () => /*#__PURE__*/jsx("div", {});
-render( /*#__PURE__*/jsx(Component, {}), document.getElementById("react-container"));
+render(/*#__PURE__*/jsx(Component, {}), document.getElementById("react-container"));
 "
 `;
 
@@ -144,7 +144,7 @@ import './styles.css';
 import { jsx } from 'react/jsx-runtime';
 
 const Component = () => /*#__PURE__*/jsx("div", {});
-render( /*#__PURE__*/jsx(Component, {}), document.getElementById("react-container"));
+render(/*#__PURE__*/jsx(Component, {}), document.getElementById("react-container"));
 "
 `;
 

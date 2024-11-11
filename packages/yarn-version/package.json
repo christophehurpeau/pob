@@ -19,21 +19,21 @@
   "homepage": "https://github.com/christophehurpeau/pob",
   "type": "module",
   "engines": {
-    "node": ">=18.12.0"
+    "node": ">=20.9.0"
   },
-  "bin": "./build/index-node18.mjs",
-  "main": "./build/index-node18.mjs",
+  "bin": "./build/index-node.mjs",
+  "main": "./build/index-node.mjs",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "types": "./build/definitions/index.d.ts",
       "node": {
-        "import": "./build/index-node18.mjs"
+        "import": "./build/index-node.mjs"
       }
     }
   },
   "scripts": {
-    "build": "yarn clean:build && rollup --config rollup.config.mjs && chmod a+x build/index-node18.mjs",
+    "build": "yarn clean:build && rollup --config rollup.config.mjs && chmod a+x build/index-node.mjs",
     "clean": "yarn clean:build",
     "clean:build": "pob-esbuild-clean-out build",
     "lint": "yarn run lint:eslint",
@@ -49,7 +49,8 @@
     "envs": [
       {
         "target": "node",
-        "version": "18"
+        "version": "20",
+        "omitVersionInFileName": true
       }
     ],
     "typescript": true
@@ -67,15 +68,13 @@
     "conventional-changelog-writer": "8.0.0",
     "conventional-commits-filter": "5.0.0",
     "conventional-commits-parser": "6.0.0",
-    "hosted-git-info": "^8.0.0",
     "nightingale": "15.0.0",
     "nightingale-console": "15.0.0",
     "semver": "7.6.3"
   },
   "devDependencies": {
     "@pob/rollup-esbuild": "4.1.0",
-    "@types/hosted-git-info": "3.0.5",
-    "@types/node": "20.16.15",
+    "@types/node": "22.9.0",
     "@types/npmcli__map-workspaces": "3.0.4",
     "conventional-recommended-bump": "10.0.0",
     "nightingale-string": "15.0.0",

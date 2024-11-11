@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import semver from "semver";
 import Generator from "yeoman-generator";
+import { latestLTS, maintenanceLTS } from "../../../utils/node.js";
 import * as packageUtils from "../../../utils/package.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
@@ -514,8 +515,50 @@ export default class CommonTranspilerGenerator extends Generator {
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
     const entries = pkg.pob.entries || ["index"];
-    const envs = pkg.pob.envs || pkg.pob.babelEnvs;
+    let envs = pkg.pob.envs || pkg.pob.babelEnvs;
     delete pkg.pob.withReact;
+
+    if (envs) {
+      if (
+        !envs.some(
+          (env) =>
+            env.target === "node" &&
+            String(env.version) ===
+              (this.options.onlyLatestLTS
+                ? `${latestLTS}`
+                : `${maintenanceLTS}`),
+        ) &&
+        envs.some(
+          (env) =>
+            env.target === "node" &&
+            (["8", "6", "10", "12", "14", "16", "18"].includes(
+              String(env.version),
+            ) ||
+              (this.options.onlyLatestLTS &&
+                String(env.version) === `${maintenanceLTS}`)),
+        )
+      ) {
+        envs.unshift({
+          target: "node",
+          version: this.options.onlyLatestLTS
+            ? `${latestLTS}`
+            : `${maintenanceLTS}`,
+          omitVersionInFileName: this.options.onlyLatestLTS ? true : undefined,
+        });
+      }
+      envs = envs.filter(
+        (env) =>
+          env.target !== "node" ||
+          env.version >=
+            (this.options.onlyLatestLTS ? latestLTS : maintenanceLTS),
+      );
+
+      if (pkg.pob.babelEnvs) {
+        pkg.pob.babelEnvs = envs;
+      } else {
+        pkg.pob.envs = envs;
+      }
+    }
 
     const hasTargetNode = envs && envs.some((env) => env.target === "node");
 
@@ -528,8 +571,10 @@ export default class CommonTranspilerGenerator extends Generator {
               .filter((env) => env.target === "node")
               .map((env) => env.version),
           )
-        : // eslint-disable-next-line unicorn/no-unreadable-iife
-          (() => (this.options.onlyLatestLTS ? "20" : "18"))();
+        : (() =>
+            this.options.onlyLatestLTS
+              ? `${latestLTS}`
+              : `${maintenanceLTS}`)();
 
       switch (String(minNodeVersion)) {
         case "10":
@@ -537,10 +582,17 @@ export default class CommonTranspilerGenerator extends Generator {
         case "14":
         case "16":
         case "18":
-          pkg.engines.node = ">=18.12.0";
-          break;
         case "20":
-          pkg.engines.node = ">=20.9.0";
+          if (
+            envs ||
+            !pkg.engines.node ||
+            !pkg.engines.node.startsWith(">=22")
+          ) {
+            pkg.engines.node = ">=20.9.0";
+          }
+          break;
+        case "22":
+          pkg.engines.node = ">=22.11.0";
           break;
         default:
           throw new Error(`Invalid min node version: ${minNodeVersion}`);
@@ -564,7 +616,7 @@ export default class CommonTranspilerGenerator extends Generator {
       packageUtils.removeDevDependencies(pkg, ["@types/node"]);
 
       // Supports oldest current or active LTS version of node
-      const minVersion = this.options.onlyLatestLTS ? "20.9.0" : "18.12.0";
+      const minVersion = this.options.onlyLatestLTS ? "22.11.0" : "20.9.0";
 
       if (
         !pkg.engines.node ||

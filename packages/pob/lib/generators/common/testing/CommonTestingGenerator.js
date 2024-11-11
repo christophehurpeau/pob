@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
+import { latestLTS, maintenanceLTS } from "../../../utils/node.js";
 import * as packageUtils from "../../../utils/package.js";
 import {
   copyAndFormatTpl,
@@ -487,7 +488,9 @@ export default class CommonTestingGenerator extends Generator {
         } else {
           const tsconfigTestPath = this.destinationPath("tsconfig.test.json");
           if (testRunner === "node" && withTypescript) {
-            const nodeVersion = this.options.onlyLatestLTS ? "20" : "18";
+            const nodeVersion = this.options.onlyLatestLTS
+              ? `${latestLTS}`
+              : `${maintenanceLTS}`;
             copyAndFormatTpl(
               this.fs,
               this.templatePath("tsconfig.test.json.ejs"),

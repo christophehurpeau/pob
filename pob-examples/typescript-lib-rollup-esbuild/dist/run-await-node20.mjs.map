@@ -1,0 +1,1 @@
+{"version":3,"file":"run-await-node20.mjs","sources":["../src/run-await.ts"],"sourcesContent":["await new Promise<void>((resolve) => {\n  console.log(\"awaited\");\n  resolve();\n});\n"],"names":[],"mappings":"AAAA,MAAM,IAAI,OAAc,CAAA,CAAC,OAAY,KAAA;AACnC,EAAA,OAAA,CAAQ,IAAI,SAAS,CAAA,CAAA;AACrB,EAAQ,OAAA,EAAA,CAAA;AACV,CAAC,CAAA"}

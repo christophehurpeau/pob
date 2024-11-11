@@ -2,4 +2,4 @@
 
 "use strict";
 
-require("rollup/dist/bin/rollup");
+throw new Error("Use @pob/rollup-esbuild instead");

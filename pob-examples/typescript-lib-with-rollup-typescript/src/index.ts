@@ -1,4 +1,0 @@
-export default function simpleLib(): string {
-  // eslint-disable-next-line @typescript-eslint/no-unnecessary-template-expression -- checking template string here
-  return `hello world via ${"node"}`;
-}

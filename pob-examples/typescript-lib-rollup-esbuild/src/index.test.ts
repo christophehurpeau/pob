@@ -11,7 +11,7 @@ describe("dist", () => {
   it("should build index.mjs", () => {
     expect(
       fs.readFileSync(
-        new URL("../dist/index-node18.mjs", import.meta.url),
+        new URL("../dist/index-node20.mjs", import.meta.url),
         "utf8",
       ),
       // note that inline snapshot does not work with ESM currently

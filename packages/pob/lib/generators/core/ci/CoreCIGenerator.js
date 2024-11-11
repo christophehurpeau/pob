@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
+import { latestLTS, maintenanceLTS } from "../../../utils/node.js";
 import * as packageUtils from "../../../utils/package.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
@@ -179,12 +180,12 @@ export default class CoreCIGenerator extends Generator {
               checks && "checks",
               build && "build",
               "lint",
-              testing && !this.options.onlyLatestLTS && "test (18)",
-              testing && "test (20)",
+              testing && !this.options.onlyLatestLTS && `test (${latestLTS})`,
+              testing && `test (${maintenanceLTS})`,
             ].filter(Boolean)
           : [
-              !this.options.onlyLatestLTS && "build (18.x)",
-              "build (20.x)",
+              !this.options.onlyLatestLTS && `build (${maintenanceLTS}.x)`,
+              `build (${maintenanceLTS}.x)`,
             ].filter(Boolean)),
       );
     } else {

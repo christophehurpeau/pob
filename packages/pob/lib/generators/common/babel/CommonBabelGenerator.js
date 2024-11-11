@@ -1,4 +1,5 @@
 import Generator from "yeoman-generator";
+import { latestLTS, maintenanceLTS } from "../../../utils/node.js";
 import * as packageUtils from "../../../utils/package.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
@@ -69,32 +70,7 @@ export default class CommonBabelGenerator extends Generator {
           ((!pkg.pob.bundler && pkg.pob.typescript !== true) ||
             pkg.pob.bundler === "rollup-babel")))
     ) {
-      let babelEnvs = pkg.pob.babelEnvs || pkg.pob.envs;
-      if (
-        !babelEnvs.some(
-          (env) =>
-            env.target === "node" &&
-            String(env.version) === (this.options.onlyLatestLTS ? "20" : "18"),
-        ) &&
-        babelEnvs.some(
-          (env) =>
-            env.target === "node" &&
-            (["8", "6", "10", "12", "14", "16"].includes(String(env.version)) ||
-              (this.options.onlyLatestLTS && String(env.version) === "18")),
-        )
-      ) {
-        babelEnvs.unshift({
-          target: "node",
-          version: this.options.onlyLatestLTS ? "20" : "18",
-          omitVersionInFileName: this.options.onlyLatestLTS ? true : undefined,
-        });
-      }
-      babelEnvs = babelEnvs.filter(
-        (env) =>
-          env.target !== "node" ||
-          env.version >= (this.options.onlyLatestLTS ? 20 : 18),
-      );
-
+      const babelEnvs = pkg.pob.babelEnvs || pkg.pob.envs;
       delete pkg.pob.babelEnvs;
       pkg.pob.bundler = "rollup-babel";
       pkg.pob.envs = babelEnvs;
@@ -128,9 +104,14 @@ export default class CommonBabelGenerator extends Generator {
             if (
               env.version === "14" ||
               env.version === "16" ||
-              (this.options.onlyLatestLTS && env.version === "18")
+              env.version === "18" ||
+              env.version === "20" ||
+              (this.options.onlyLatestLTS &&
+                env.version === `${maintenanceLTS}`)
             ) {
-              return this.options.onlyLatestLTS ? "20" : "18";
+              return this.options.onlyLatestLTS
+                ? `${latestLTS}`
+                : `${maintenanceLTS}`;
             }
             return env.version;
           }),
@@ -181,12 +162,12 @@ export default class CommonBabelGenerator extends Generator {
           default: nodeVersions,
           choices: [
             {
-              name: "20 (Active LTS)",
-              value: "20",
+              name: "22 (Active LTS)",
+              value: `${latestLTS}`,
             },
             {
-              name: "18 (Maintenance LTS)",
-              value: "18",
+              name: "20 (Maintenance LTS)",
+              value: `${maintenanceLTS}`,
             },
           ],
         },
@@ -231,13 +212,15 @@ export default class CommonBabelGenerator extends Generator {
         formats:
           babelConfig.formats && babelConfig.formats.includes("cjs")
             ? // eslint-disable-next-line unicorn/no-nested-ternary
-              version === "18" || version === "20"
+              version === `${latestLTS}` || version === `${maintenanceLTS}`
               ? babelConfig.formats
               : undefined
             : undefined,
         omitVersionInFileName:
           // todo add `|| babelConfig.nodeVersions.length === 1` in next major
-          version === "20" && this.options.onlyLatestLTS ? true : undefined,
+          version === `${latestLTS}` && this.options.onlyLatestLTS
+            ? true
+            : undefined,
       })),
       ...(babelConfig.browserVersions || []).map((version) => ({
         target: "browser",

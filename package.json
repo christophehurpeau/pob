@@ -9,7 +9,7 @@
   "type": "module",
   "packageManager": "yarn@4.5.1",
   "engines": {
-    "node": ">=18.12.0"
+    "node": ">=20.9.0"
   },
   "workspaces": [
     "packages/*",
@@ -17,7 +17,7 @@
     "pob-examples/*"
   ],
   "scripts": {
-    "build": "yarn clean:build && rollup --config rollup.config.mjs && yarn run build:definitions && chmod a+x packages/yarn-version/build/index-node18.mjs",
+    "build": "yarn clean:build && rollup --config rollup.config.mjs && yarn run build:definitions && chmod a+x packages/yarn-version/build/index-node.mjs",
     "build:definitions": "tsc -b",
     "checks": "node scripts/check-packages.js && ./scripts/run-self-on-examples.sh",
     "clean:build": "yarn workspaces foreach --parallel -A run clean:build",

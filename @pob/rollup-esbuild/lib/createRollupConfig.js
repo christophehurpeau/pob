@@ -78,7 +78,7 @@ export default function createRollupConfig({
       pobConfig.envs || [
         {
           target: "node",
-          version: "18",
+          version: "20",
         },
       ];
     const entryPath = resolveEntry(cwd, entryName);

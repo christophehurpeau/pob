@@ -18,7 +18,7 @@
   },
   "type": "module",
   "engines": {
-    "node": ">=18.12.0"
+    "node": ">=22.11.0"
   },
   "sideEffects": false,
   "bin": "./lib/pob.js",
@@ -56,7 +56,7 @@
     "eslint": "9.13.0",
     "findup-sync": "^5.0.0",
     "git-remote-url": "^1.0.1",
-    "github-username": "^8.0.0",
+    "github-username": "^7.0.0",
     "js-yaml": "^4.1.0",
     "json5": "^2.2.3",
     "lodash.camelcase": "^4.3.0",
@@ -75,7 +75,7 @@
   },
   "devDependencies": {
     "@pob/root": "13.4.1",
-    "@types/node": "20.16.15",
+    "@types/node": "22.9.0",
     "typescript": "5.6.3"
   }
 }

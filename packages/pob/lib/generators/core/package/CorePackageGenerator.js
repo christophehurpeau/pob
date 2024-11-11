@@ -53,13 +53,12 @@ export default class CorePackageGenerator extends Generator {
     if (
       !pkg.engines.node ||
       !(
-        pkg.engines.node.startsWith(">=20.") &&
-        pkg.engines.node.startsWith(">=18.") &&
-        pkg.engines.node !== ">=18.0.0"
+        pkg.engines.node.startsWith(">=22.") ||
+        pkg.engines.node.startsWith(">=20.")
       )
     ) {
       // this might be overridden by babel generator
-      pkg.engines.node = ">=18.12.0"; // .12.0 is the first lts node 18 version
+      pkg.engines.node = ">=20.9.0"; // .9.0 is the first lts node 20 version
     }
 
     if (!this.options.isRoot) {

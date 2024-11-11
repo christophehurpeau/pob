@@ -1,3 +1,3 @@
 #!/usr/bin/env node
 
-import "@pob/rollup/bin/pob-rollup-clean-out.js";
+throw new Error("Use @pob/rollup-esbuild instead");

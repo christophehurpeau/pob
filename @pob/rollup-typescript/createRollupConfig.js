@@ -1,1 +1,1 @@
-export { default } from "./lib/createRollupConfig.js";
+throw new Error("Use @pob/rollup-esbuild instead");
