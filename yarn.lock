@@ -4862,7 +4862,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=18, @types/node@npm:>=18.0.0":
+"@types/node@npm:*, @types/node@npm:>=18, @types/node@npm:>=18.0.0, @types/node@npm:>=18.18.5":
   version: 22.7.5
   resolution: "@types/node@npm:22.7.5"
   dependencies:
@@ -14008,8 +14008,8 @@ __metadata:
     typescript: "npm:5.6.3"
     validate-npm-package-name: "npm:^6.0.0"
     yarn-workspace-utils: "npm:6.1.0"
-    yeoman-environment: "npm:4.4.2"
-    yeoman-generator: "npm:7.3.2"
+    yeoman-environment: "npm:4.4.3"
+    yeoman-generator: "npm:7.3.3"
   bin:
     pob: ./lib/pob.js
   languageName: unknown
@@ -17183,9 +17183,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"yeoman-environment@npm:4.4.2":
-  version: 4.4.2
-  resolution: "yeoman-environment@npm:4.4.2"
+"yeoman-environment@npm:4.4.3":
+  version: 4.4.3
+  resolution: "yeoman-environment@npm:4.4.3"
   dependencies:
     "@yeoman/adapter": "npm:^1.4.0"
     "@yeoman/conflicter": "npm:^2.0.0-alpha.2"
@@ -17213,16 +17213,16 @@ __metadata:
     mem-fs: ^4.0.0
   bin:
     yoe: bin/bin.cjs
-  checksum: 10c0/b6ef63d40b1eca887772dc62be4730afef4c6794e2142d45fa45ca4f45122d24cb5cfd8326017e6e0c6e800221d651797db79d6064223f4b10134bf4b39548a0
+  checksum: 10c0/61bdc49707f60d4b9a0f6a73c3bf08ac03a43a752c61d9707c12dcef3f27d089777207fe4c2408a9a2b7833e4e51baa6086098c8b0f3d8b0f8de23ddd2b5a99f
   languageName: node
   linkType: hard
 
-"yeoman-generator@npm:7.3.2":
-  version: 7.3.2
-  resolution: "yeoman-generator@npm:7.3.2"
+"yeoman-generator@npm:7.3.3":
+  version: 7.3.3
+  resolution: "yeoman-generator@npm:7.3.3"
   dependencies:
     "@types/lodash-es": "npm:^4.17.9"
-    "@types/node": "npm:^18.18.5"
+    "@types/node": "npm:>=18.18.5"
     "@yeoman/namespace": "npm:^1.0.0"
     chalk: "npm:^5.3.0"
     debug: "npm:^4.1.1"
@@ -17241,11 +17241,7 @@ __metadata:
   peerDependencies:
     "@yeoman/types": ^1.1.1
     mem-fs: ^4.0.0
-    yeoman-environment: ^4.0.0
-  peerDependenciesMeta:
-    yeoman-environment:
-      optional: true
-  checksum: 10c0/34018bbd3b6cf232ad6ece07c8c7781035da8e4242732d611baedd3f11d0316a19e7cd28c30e8088666d199ff33429d6f900901dc7e8deaed468c25cd91ba8cb
+  checksum: 10c0/8adfb64211a3bb80589f3c881d6b06a1cb8fa25220d5c4ee99bf3edb4c46c426ba242befae7164c65f367d04cce2a6ad1e4b29c4da6c0e2d21044e100eb39cf9
   languageName: node
   linkType: hard
 
