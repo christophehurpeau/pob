@@ -11045,10 +11045,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isbinaryfile@npm:5.0.2, isbinaryfile@npm:^5.0.0":
-  version: 5.0.2
-  resolution: "isbinaryfile@npm:5.0.2"
-  checksum: 10c0/9696f20cf995e375ba8bfdba3ff7d1c0435346f6fc5dd9c049a55514c56e9f49342bbf8c240dc9f56e104bd3a69176c0421922bcb34d72b3c943f4117ade3f53
+"isbinaryfile@npm:5.0.3, isbinaryfile@npm:^5.0.0":
+  version: 5.0.3
+  resolution: "isbinaryfile@npm:5.0.3"
+  checksum: 10c0/b27ff6f4018f8189e810e78cc20c2bee0d301e359e763182ea3b5b1abfc41afa3e0f85c2d32c0d5c9f2dd5c777793998e782678a4b37c78ba084de22f4e64f0e
   languageName: node
   linkType: hard
 
@@ -12368,18 +12368,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mem-fs-editor@npm:11.1.1, mem-fs-editor@npm:^11.0.0, mem-fs-editor@npm:^11.0.1":
-  version: 11.1.1
-  resolution: "mem-fs-editor@npm:11.1.1"
+"mem-fs-editor@npm:11.1.3, mem-fs-editor@npm:^11.0.0, mem-fs-editor@npm:^11.0.1":
+  version: 11.1.3
+  resolution: "mem-fs-editor@npm:11.1.3"
   dependencies:
     "@types/ejs": "npm:^3.1.4"
-    "@types/node": "npm:^18.18.5"
+    "@types/node": "npm:>=18"
     binaryextensions: "npm:^6.11.0"
     commondir: "npm:^1.0.1"
     deep-extend: "npm:^0.6.0"
     ejs: "npm:^3.1.10"
     globby: "npm:^14.0.2"
-    isbinaryfile: "npm:5.0.2"
+    isbinaryfile: "npm:5.0.3"
     minimatch: "npm:^9.0.3"
     multimatch: "npm:^7.0.0"
     normalize-path: "npm:^3.0.0"
@@ -12387,7 +12387,7 @@ __metadata:
     vinyl: "npm:^3.0.0"
   peerDependencies:
     mem-fs: ^4.0.0
-  checksum: 10c0/eed8a6611b59a25fdb2ffedc185e440980d98d9dbc5dfb12521fbba5d5a55e3d9207de959d18283b18b8c56987074484f7b75ebbb3e7edb2be6b19852f2b7eb9
+  checksum: 10c0/1ce467fd81800ca1cd4e8cccadc4cdc7656941a29049bf65d3916cfa817830980518887149eda8c44100d0bd3b2725bd26399523007f82ba890778ecb8277280
   languageName: node
   linkType: hard
 
@@ -13999,7 +13999,7 @@ __metadata:
     lodash.camelcase: "npm:^4.3.0"
     lodash.kebabcase: "npm:^4.1.1"
     mem-fs: "npm:4.1.1"
-    mem-fs-editor: "npm:11.1.1"
+    mem-fs-editor: "npm:11.1.3"
     minimist: "npm:1.2.8"
     parse-author: "npm:2.0.0"
     pob-dependencies: "workspace:*"
