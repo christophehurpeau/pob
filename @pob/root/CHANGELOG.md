@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.0.1](https://github.com/christophehurpeau/pob/compare/@pob/root@14.0.0...@pob/root@14.0.1) (2024-11-12)
+
+### Bug Fixes
+
+* fix GITHUB_OUTPUT when modified ([8666e1f](https://github.com/christophehurpeau/pob/commit/8666e1fdd84a1ed4ea22365d56e7f4bce7bc9b12))
+
 ## [14.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@13.4.1...@pob/root@14.0.0) (2024-11-11)
 
 ### ⚠ BREAKING CHANGES

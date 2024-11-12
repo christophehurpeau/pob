@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.1.0](https://github.com/christophehurpeau/pob/compare/pob@24.0.0...pob@24.1.0) (2024-11-12)
+
+### Features
+
+* **deps:** update dependency eslint to v9.14.0 ([#2304](https://github.com/christophehurpeau/pob/issues/2304)) ([c13cf99](https://github.com/christophehurpeau/pob/commit/c13cf992bab0f261969e258e79aaaa267512a661))
+
+Version bump for dependency: @pob/root
+
+
 ## [24.0.0](https://github.com/christophehurpeau/pob/compare/pob@23.4.1...pob@24.0.0) (2024-11-11)
 
 ### ⚠ BREAKING CHANGES
