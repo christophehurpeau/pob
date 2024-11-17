@@ -58,6 +58,12 @@ jobs:
       - name: Eslint
         run: <%= packageManager %> run lint:eslint
         if: startsWith(matrix.node-version, '22.')
+<% if (true) { -%>
+
+      - name: Check nothing was forgotten before commit
+        if: startsWith(matrix.node-version, '22.')
+        run: <%= packageManager === 'npm' ? 'npx' : 'yarn run' %> repository-check-dirty
+<% } -%>
 <% if (codecov) { -%>
 
       - name: Generate Test Coverage
@@ -84,14 +90,8 @@ jobs:
       - name: E2E testing
         run: <%= packageManager %> <%= e2eTesting %> run test:e2e
 <% } -%>
-<% if (true) { -%>
-
-      - name: Check nothing was forgotten before commit
-        if: startsWith(matrix.node-version, '22.')
-        run: <%= packageManager === 'npm' ? 'npx' : 'yarn run' %> repository-check-dirty
-<% } -%>
-
 <% if (isReleasePleaseEnabled) { -%>
+
       - uses: GoogleCloudPlatform/release-please-action@v3
         if: ${{ startsWith(matrix.node-version, '22.') && github.ref == 'refs/heads/main' }}
         id: release
