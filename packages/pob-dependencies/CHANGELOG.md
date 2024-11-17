@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.1.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@15.1.0...pob-dependencies@15.1.1) (2024-11-17)
+
+Note: no notable changes
+
+
 ## [15.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@15.0.0...pob-dependencies@15.1.0) (2024-11-12)
 
 ### Features

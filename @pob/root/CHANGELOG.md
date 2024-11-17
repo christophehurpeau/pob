@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@14.0.1...@pob/root@14.1.0) (2024-11-17)
+
+### Features
+
+* update to yarn 4.5.1 ([f6ad4fb](https://github.com/christophehurpeau/pob/commit/f6ad4fb07fc31c5c24e95dd2692ce6556e6ab59a))
+
+Version bump for dependency: yarn-version
+
+
 ## [14.0.1](https://github.com/christophehurpeau/pob/compare/@pob/root@14.0.0...@pob/root@14.0.1) (2024-11-12)
 
 ### Bug Fixes

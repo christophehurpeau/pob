@@ -17,7 +17,7 @@ interface Dependencies {
   "@swc/jest": "0.2.37";
   "@types/jest": "29.5.14";
   "@types/node": "22.9.0";
-  "@vitest/coverage-v8": "2.1.3";
+  "@vitest/coverage-v8": "2.1.5";
   "alp-rollup-plugin-config": "2.2.1";
   "check-package-dependencies": "7.2.0";
   eslint: "9.14.0";
@@ -32,7 +32,7 @@ interface Dependencies {
   tslib: "2.8.1";
   typedoc: "0.26.10";
   typescript: "5.6.3";
-  vitest: "2.1.3";
+  vitest: "2.1.5";
 }
 
 declare const dependencies: Dependencies;

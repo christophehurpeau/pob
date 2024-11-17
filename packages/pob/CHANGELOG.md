@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.2.0](https://github.com/christophehurpeau/pob/compare/pob@24.1.0...pob@24.2.0) (2024-11-17)
+
+### Bug Fixes
+
+* update codecov-action to v5 ([ff8610c](https://github.com/christophehurpeau/pob/commit/ff8610cfcc65aa5b19dc259b347d6b6b8fe821c3))
+
+Version bump for dependency: @pob/root
+
+
 ## [24.1.0](https://github.com/christophehurpeau/pob/compare/pob@24.0.0...pob@24.1.0) (2024-11-12)
 
 ### Features
