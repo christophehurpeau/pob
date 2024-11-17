@@ -1,9 +1,13 @@
+import { fileURLToPath } from "node:url";
 import remoteUrl from "git-remote-url";
 import githubUsername from "github-username";
 import Generator from "yeoman-generator";
 import * as packageUtils from "../../../utils/package.js";
+import CoreGitGithubGenerator from "./generators/github/CoreGitGithubGenerator.js";
 
 export default class CoreGitGenerator extends Generator {
+  static path = fileURLToPath(import.meta.url);
+
   constructor(args, opts) {
     super(args, opts);
 
@@ -101,13 +105,19 @@ export default class CoreGitGenerator extends Generator {
 
   default() {
     if (this.gitHost === "github") {
-      this.composeWith("pob:core:git:github", {
-        shouldCreate: !this.originUrl,
-        gitHostAccount: this.gitHostAccount,
-        repoName: this.repoName,
-        onlyLatestLTS: this.options.onlyLatestLTS,
-        splitCIJobs: this.options.splitCIJobs,
-      });
+      this.composeWith(
+        {
+          Generator: CoreGitGithubGenerator,
+          path: CoreGitGithubGenerator.path,
+        },
+        {
+          shouldCreate: !this.originUrl,
+          gitHostAccount: this.gitHostAccount,
+          repoName: this.repoName,
+          onlyLatestLTS: this.options.onlyLatestLTS,
+          splitCIJobs: this.options.splitCIJobs,
+        },
+      );
     }
   }
 

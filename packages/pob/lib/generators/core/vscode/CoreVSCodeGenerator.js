@@ -1,8 +1,11 @@
+import { fileURLToPath } from "node:url";
 import Generator from "yeoman-generator";
 import { readJSON5 } from "../../../utils/json5.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
 export default class CoreVSCodeGenerator extends Generator {
+  static path = fileURLToPath(import.meta.url);
+
   constructor(args, opts) {
     super(args, opts);
 

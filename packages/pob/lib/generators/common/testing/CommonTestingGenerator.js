@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import { latestLTS, maintenanceLTS } from "../../../utils/node.js";
@@ -8,8 +9,11 @@ import {
   copyAndFormatTpl,
   writeAndFormatJson,
 } from "../../../utils/writeAndFormat.js";
+import CoreCIGenerator from "../../core/ci/CoreCIGenerator.js";
 
 export default class CommonTestingGenerator extends Generator {
+  static path = fileURLToPath(import.meta.url);
+
   constructor(args, opts) {
     super(args, opts);
 
@@ -127,27 +131,39 @@ export default class CommonTestingGenerator extends Generator {
 
   default() {
     if (!inMonorepo || inMonorepo.root) {
-      this.composeWith("pob:core:ci", {
-        enable: this.options.ci,
-        enableReleasePlease: this.options.enableReleasePlease,
-        enableYarnVersion: this.options.enableYarnVersion,
-        disableYarnGitCache: this.options.disableYarnGitCache,
-        testing: this.options.enable,
-        testRunner: this.options.runner,
-        e2eTesting: this.options.e2eTesting,
-        build: this.options.build,
-        typescript: this.options.typescript,
-        documentation: this.options.documentation,
-        codecov: this.options.codecov,
-        packageManager: this.options.packageManager,
-        isApp: this.options.isApp,
-        splitJobs: this.options.splitCIJobs,
-        onlyLatestLTS: this.options.onlyLatestLTS,
-      });
+      this.composeWith(
+        {
+          Generator: CoreCIGenerator,
+          path: CoreCIGenerator.path,
+        },
+        {
+          enable: this.options.ci,
+          enableReleasePlease: this.options.enableReleasePlease,
+          enableYarnVersion: this.options.enableYarnVersion,
+          disableYarnGitCache: this.options.disableYarnGitCache,
+          testing: this.options.enable,
+          testRunner: this.options.runner,
+          e2eTesting: this.options.e2eTesting,
+          build: this.options.build,
+          typescript: this.options.typescript,
+          documentation: this.options.documentation,
+          codecov: this.options.codecov,
+          packageManager: this.options.packageManager,
+          isApp: this.options.isApp,
+          splitJobs: this.options.splitCIJobs,
+          onlyLatestLTS: this.options.onlyLatestLTS,
+        },
+      );
     } else {
-      this.composeWith("pob:core:ci", {
-        enable: false,
-      });
+      this.composeWith(
+        {
+          Generator: CoreCIGenerator,
+          path: CoreCIGenerator.path,
+        },
+        {
+          enable: false,
+        },
+      );
     }
   }
 

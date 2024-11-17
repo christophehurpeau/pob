@@ -1,4 +1,5 @@
 import path from "node:path";
+import { fileURLToPath } from "node:url";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import * as packageUtils from "../../../utils/package.js";
@@ -6,6 +7,8 @@ import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 import { appIgnorePaths } from "../../app/ignorePaths.js";
 
 export default class CommonLintGenerator extends Generator {
+  static path = fileURLToPath(import.meta.url);
+
   constructor(args, opts) {
     super(args, opts);
 

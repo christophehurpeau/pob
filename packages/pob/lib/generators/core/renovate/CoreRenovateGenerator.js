@@ -1,8 +1,11 @@
+import { fileURLToPath } from "node:url";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import { writeAndFormatJson } from "../../../utils/writeAndFormat.js";
 
 export default class CoreRenovateGenerator extends Generator {
+  static path = fileURLToPath(import.meta.url);
+
   constructor(args, opts) {
     super(args, opts);
 

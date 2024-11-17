@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { fileURLToPath } from "node:url";
 import { isDeepStrictEqual } from "node:util";
 import sortObject from "@pob/sort-object";
 import yml from "js-yaml";
@@ -10,6 +11,8 @@ import * as packageUtils from "../../../utils/package.js";
 import { writeAndFormat } from "../../../utils/writeAndFormat.js";
 
 export default class CoreYarnGenerator extends Generator {
+  static path = fileURLToPath(import.meta.url);
+
   constructor(args, opts) {
     super(args, opts);
 
