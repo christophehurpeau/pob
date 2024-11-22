@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@14.0.1...@pob/root@14.1.0) (2024-11-17)
+
+### Features
+
+* update to yarn 4.5.1 ([f6ad4fb](https://github.com/christophehurpeau/pob/commit/f6ad4fb07fc31c5c24e95dd2692ce6556e6ab59a))
+
+Version bump for dependency: yarn-version
+
+
+## [14.0.1](https://github.com/christophehurpeau/pob/compare/@pob/root@14.0.0...@pob/root@14.0.1) (2024-11-12)
+
+### Bug Fixes
+
+* fix GITHUB_OUTPUT when modified ([8666e1f](https://github.com/christophehurpeau/pob/commit/8666e1fdd84a1ed4ea22365d56e7f4bce7bc9b12))
+
+## [14.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@13.4.1...@pob/root@14.0.0) (2024-11-11)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+Version bump for dependency: @pob/pretty-eslint-config
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: repository-check-dirty
+Version bump for dependency: yarn-version
+
+
 ## [13.4.1](https://github.com/christophehurpeau/pob/compare/@pob/root@13.4.0...@pob/root@13.4.1) (2024-09-29)
 
 ### Reverts

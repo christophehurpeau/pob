@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@9.0.0...@pob/pretty-pkg@10.0.0) (2024-11-11)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* **deps:** update dependency glob to v11 ([#2134](https://github.com/christophehurpeau/pob/issues/2134)) ([a275e1c](https://github.com/christophehurpeau/pob/commit/a275e1c1b9e49734ee1054b0757eba8007eb3c42))
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+Version bump for dependency: @pob/sort-pkg
+
+
 ## [9.0.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@8.1.0...@pob/pretty-pkg@9.0.0) (2024-08-11)
 
 ### ⚠ BREAKING CHANGES

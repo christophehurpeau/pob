@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@6.1.0...yarn-workspace-utils@7.0.0) (2024-11-11)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+### Bug Fixes
+
+* **deps:** update yarn monorepo ([#2289](https://github.com/christophehurpeau/pob/issues/2289)) ([ca24ce6](https://github.com/christophehurpeau/pob/commit/ca24ce664fc2dc7b1b9788df324a4047fbd4045d))
+
+Version bump for dependency: pob-babel
+
+
 ## [6.1.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@6.0.3...yarn-workspace-utils@6.1.0) (2024-09-29)
 
 ### Features

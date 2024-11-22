@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.1](https://github.com/christophehurpeau/pob/compare/example-webpack-app@0.19.0...example-webpack-app@0.19.1) (2024-11-12)
+
+Note: no notable changes
+
+
+## [0.19.0](https://github.com/christophehurpeau/pob/compare/example-webpack-app@0.18.0...example-webpack-app@0.19.0) (2024-11-11)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+Version bump for dependency: example-typescript-lib
+
+
 ## [0.18.0](https://github.com/christophehurpeau/pob/compare/example-webpack-app@0.17.2...example-webpack-app@0.18.0) (2024-09-29)
 
 Version bump for dependency: example-typescript-lib

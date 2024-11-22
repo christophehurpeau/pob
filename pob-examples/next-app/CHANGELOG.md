@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.0](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.6.1...@pob-example/next-app@0.7.0) (2024-11-11)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* **deps:** update dependency next to v15 ([#2292](https://github.com/christophehurpeau/pob/issues/2292)) ([cafc498](https://github.com/christophehurpeau/pob/commit/cafc498a21b8b11f8c2140c47cec4896ed687172))
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+### Bug Fixes
+
+* **deps:** update dependency next to v14.2.14 ([#2264](https://github.com/christophehurpeau/pob/issues/2264)) ([6039230](https://github.com/christophehurpeau/pob/commit/60392309f7cb2b87ac6bc3da20974d1c49144b5a))
+* **deps:** update dependency next to v14.2.15 ([#2274](https://github.com/christophehurpeau/pob/issues/2274)) ([9716de2](https://github.com/christophehurpeau/pob/commit/9716de2a6bdd1885cac02b691c094ffcb432509a))
+
 ## [0.6.1](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.6.0...@pob-example/next-app@0.6.1) (2024-09-29)
 
 ### Bug Fixes

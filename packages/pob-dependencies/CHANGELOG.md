@@ -3,6 +3,38 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.1.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@15.1.0...pob-dependencies@15.1.1) (2024-11-17)
+
+Note: no notable changes
+
+
+## [15.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@15.0.0...pob-dependencies@15.1.0) (2024-11-12)
+
+### Features
+
+* **deps:** update dependency eslint to v9.14.0 ([#2304](https://github.com/christophehurpeau/pob/issues/2304)) ([c13cf99](https://github.com/christophehurpeau/pob/commit/c13cf992bab0f261969e258e79aaaa267512a661))
+
+## [15.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@14.2.0...pob-dependencies@15.0.0) (2024-11-11)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* **deps:** update dependency eslint to v9.12.0 ([#2271](https://github.com/christophehurpeau/pob/issues/2271)) ([e0d67e6](https://github.com/christophehurpeau/pob/commit/e0d67e63ddb9415c4be366d4c196304c25aae7a2))
+* **deps:** update dependency eslint to v9.13.0 ([#2290](https://github.com/christophehurpeau/pob/issues/2290)) ([b7728e1](https://github.com/christophehurpeau/pob/commit/b7728e111a881ef7fcf1bf71da350492f71c712c))
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+Version bump for dependency: @pob/commitlint-config
+Version bump for dependency: @pob/esbuild
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: @pob/rollup-typescript
+Version bump for dependency: pob-babel
+Version bump for dependency: repository-check-dirty
+
+
 ## [14.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@14.1.1...pob-dependencies@14.2.0) (2024-09-29)
 
 ### Features

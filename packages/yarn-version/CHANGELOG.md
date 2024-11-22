@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/christophehurpeau/pob/compare/yarn-version@4.0.0...yarn-version@4.0.1) (2024-11-17)
+
+Note: no notable changes
+
+
+## [4.0.0](https://github.com/christophehurpeau/pob/compare/yarn-version@3.2.0...yarn-version@4.0.0) (2024-11-11)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* app distribute ([5f0869f](https://github.com/christophehurpeau/pob/commit/5f0869f6e363de6c709132ddcd859955c5a6d8ec))
+* **deps:** update dependency hosted-git-info to v8 ([#2212](https://github.com/christophehurpeau/pob/issues/2212)) ([c8f05fd](https://github.com/christophehurpeau/pob/commit/c8f05fd7bf50c9053a9a3f5748fe0828f5fb5b42))
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+### Bug Fixes
+
+* add yarn-version build in dist ([d5d6893](https://github.com/christophehurpeau/pob/commit/d5d68936995aee4c376c73acce6c8d4c507c3786))
+* **deps:** update dependency @npmcli/map-workspaces to v4.0.1 ([#2269](https://github.com/christophehurpeau/pob/issues/2269)) ([bb3e8ae](https://github.com/christophehurpeau/pob/commit/bb3e8ae2f9d7d91713514f69dcb069cc02d8b189))
+* make yarn-version executable ([ee75705](https://github.com/christophehurpeau/pob/commit/ee7570541f92adb7204deaba1618eb888d7cef58))
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [3.2.0](https://github.com/christophehurpeau/pob/compare/yarn-version@3.1.0...yarn-version@3.2.0) (2024-09-29)
 
 ### Features

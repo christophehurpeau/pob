@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@5.1.0...@pob/rollup-typescript@6.0.0) (2024-11-11)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* **deps:** update dependency @rollup/plugin-typescript to v12 ([#2247](https://github.com/christophehurpeau/pob/issues/2247)) ([3c1224a](https://github.com/christophehurpeau/pob/commit/3c1224a45c19caf7f721b632b7258a4eca529489))
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
 ## [5.1.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@5.0.0...@pob/rollup-typescript@5.1.0) (2024-09-29)
 
 ### Features

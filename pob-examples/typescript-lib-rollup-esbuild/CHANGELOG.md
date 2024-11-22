@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild@0.28.0...example-typescript-lib-rollup-esbuild@0.29.0) (2024-11-11)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [0.28.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild@0.27.0...example-typescript-lib-rollup-esbuild@0.28.0) (2024-09-29)
 
 Version bump for dependency: @pob/rollup-esbuild
