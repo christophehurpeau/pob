@@ -1,6 +1,5 @@
 /* eslint-disable camelcase */
 
-import { fileURLToPath } from "node:url";
 import Generator from "yeoman-generator";
 import { ciContexts } from "../../../ci/CoreCIGenerator.js";
 // const packageUtils = require('../../../../../utils/package');
@@ -68,8 +67,6 @@ const githubRepoConfig = {
 };
 
 export default class CoreGitGithubGenerator extends Generator {
-  static path = fileURLToPath(import.meta.url);
-
   constructor(args, opts) {
     super(args, opts);
 
