@@ -12,7 +12,7 @@ function readJSON5(path, defaults = null) {
 }
 
 function getGroupNameFromScriptName(scriptName) {
-  if (scriptName.startsWith("lint") || scriptName === "tsc") return "lint";
+  if (scriptName.startsWith("lint") || scriptName === "tsc") return "test";
   if (scriptName.startsWith("test")) return "test";
   if (scriptName.startsWith("start") || scriptName.startsWith("build")) {
     return "build";
