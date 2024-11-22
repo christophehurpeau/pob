@@ -382,7 +382,7 @@ export default class PobMonorepoGenerator extends Generator {
     }
   }
 
-  async writing() {
+  writing() {
     if (!this.options.isAppProject) {
       const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
       const rollupKinds = new Set();
@@ -430,7 +430,7 @@ export default class PobMonorepoGenerator extends Generator {
       this.fs.writeJSON(this.destinationPath("package.json"), pkg);
     }
 
-    await this.composeWith({
+    this.composeWith({
       Generator: CoreSortPackageGenerator,
       path: CoreSortPackageGenerator.path,
     });
