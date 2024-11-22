@@ -12,16 +12,6 @@ import {
 import Generator from "yeoman-generator";
 import * as packageUtils from "../../utils/package.js";
 import { copyAndFormatTpl } from "../../utils/writeAndFormat.js";
-import CommonLintGenerator from "../common/format-lint/CommonLintGenerator.js";
-import CommonHuskyGenerator from "../common/husky/CommonHuskyGenerator.js";
-import CommonRemoveOldDependenciesGenerator from "../common/old-dependencies/CommonRemoveOldDependenciesGenerator.js";
-import CommonReleaseGenerator from "../common/release/CommonReleaseGenerator.js";
-import CommonTestingGenerator from "../common/testing/CommonTestingGenerator.js";
-import CoreGitignoreGenerator from "../core/gitignore/CoreGitignoreGenerator.js";
-import CoreSortPackageGenerator from "../core/sort-package/CoreSortPackageGenerator.js";
-import CoreVSCodeGenerator from "../core/vscode/CoreVSCodeGenerator.js";
-import LibDocGenerator from "../lib/doc/LibDocGenerator.js";
-import MonorepoTypescriptGenerator from "./typescript/MonorepoTypescriptGenerator.js";
 
 export const createYarnProject = async () => {
   const portablePath = ppath.cwd();
@@ -227,151 +217,100 @@ export default class PobMonorepoGenerator extends Generator {
       throw new Error("packages should not be empty");
     }
 
-    this.composeWith(
-      {
-        Generator: CommonHuskyGenerator,
-        path: CommonHuskyGenerator.path,
-      },
-      {},
-    );
+    this.composeWith("pob:common:husky", {});
 
     const isYarnVersionEnabled = this.pobLernaConfig.ci;
 
     const splitCIJobs = this.packageNames.length > 8;
 
-    this.composeWith(
-      {
-        Generator: CommonTestingGenerator,
-        path: CommonTestingGenerator.path,
-      },
-      {
-        monorepo: true,
-        enable: this.pobLernaConfig.testing,
-        runner: this.pobLernaConfig.testRunner || "jest",
-        disableYarnGitCache: this.options.disableYarnGitCache,
-        enableReleasePlease: false,
-        enableYarnVersion: isYarnVersionEnabled,
-        testing: this.pobLernaConfig.testing,
-        e2eTesting: this.pobLernaConfig.e2eTesting,
-        build: this.pobLernaConfig.typescript === true,
-        typescript: this.pobLernaConfig.typescript,
-        documentation: !!this.pobLernaConfig.documentation,
-        codecov: this.pobLernaConfig.testing && this.pobLernaConfig.codecov,
-        ci: this.pobLernaConfig.ci,
-        packageManager: this.options.packageManager,
-        isApp: this.options.isAppProject,
-        onlyLatestLTS: this.options.onlyLatestLTS,
-        splitCIJobs,
-      },
-    );
-
-    this.composeWith(
-      {
-        Generator: CommonLintGenerator,
-        path: CommonLintGenerator.path,
-      },
-      {
-        monorepo: true,
-        documentation: this.pobLernaConfig.documentation,
-        typescript: this.pobLernaConfig.typescript,
-        build: this.pobLernaConfig.typescript === true,
-        testing: this.pobLernaConfig.testing,
-        testRunner: this.pobLernaConfig.testRunner,
-        packageManager: this.options.packageManager,
-        yarnNodeLinker: this.options.yarnNodeLinker,
-        appTypes: JSON.stringify(getAppTypes(this.packageConfigs)),
-        ignorePaths: [
-          hasDist(this.packages, this.packageConfigs) && "/dist",
-          hasBuild(this.packages, this.packageConfigs) && "/build",
-        ]
-          .filter(Boolean)
-          .join("\n"),
-        rootIgnorePaths: [],
-      },
-    );
-
-    this.composeWith(
-      {
-        Generator: LibDocGenerator,
-        path: LibDocGenerator.path,
-      },
-      {
-        enabled: this.pobLernaConfig.documentation,
-        testing: this.pobLernaConfig.testing,
-        packageNames: JSON.stringify(packageNames),
-        packagePaths: JSON.stringify(packagePaths),
-        packageManager: this.options.packageManager,
-      },
-    );
-
-    this.composeWith(
-      {
-        Generator: CoreVSCodeGenerator,
-        path: CoreVSCodeGenerator.path,
-      },
-      {
-        root: true,
-        monorepo: true,
-        packageManager: this.options.packageManager,
-        yarnNodeLinker: this.options.yarnNodeLinker,
-        typescript: this.pobLernaConfig.typescript,
-        testing: this.pobLernaConfig.testing,
-        testRunner: this.pobLernaConfig.testRunner,
-        packageNames: JSON.stringify(packageNames),
-        packageLocations: JSON.stringify(this.packageLocations),
-      },
-    );
-
-    // Always add a gitignore, because npm publish uses it.
-    this.composeWith(
-      {
-        Generator: CoreGitignoreGenerator,
-        path: CoreGitignoreGenerator.path,
-      },
-      {
-        root: true,
-        typescript: this.pobLernaConfig.typescript,
-        documentation: this.pobLernaConfig.documentation,
-        testing: this.pobLernaConfig.testing,
-      },
-    );
-
-    this.composeWith({
-      Generator: CommonRemoveOldDependenciesGenerator,
-      path: CommonRemoveOldDependenciesGenerator.path,
+    this.composeWith("pob:common:testing", {
+      monorepo: true,
+      enable: this.pobLernaConfig.testing,
+      runner: this.pobLernaConfig.testRunner || "jest",
+      disableYarnGitCache: this.options.disableYarnGitCache,
+      enableReleasePlease: false,
+      enableYarnVersion: isYarnVersionEnabled,
+      testing: this.pobLernaConfig.testing,
+      e2eTesting: this.pobLernaConfig.e2eTesting,
+      build: this.pobLernaConfig.typescript === true,
+      typescript: this.pobLernaConfig.typescript,
+      documentation: !!this.pobLernaConfig.documentation,
+      codecov: this.pobLernaConfig.testing && this.pobLernaConfig.codecov,
+      ci: this.pobLernaConfig.ci,
+      packageManager: this.options.packageManager,
+      isApp: this.options.isAppProject,
+      onlyLatestLTS: this.options.onlyLatestLTS,
+      splitCIJobs,
     });
 
-    this.composeWith(
-      {
-        Generator: CommonReleaseGenerator,
-        path: CommonReleaseGenerator.path,
-      },
-      {
-        enable: true,
-        enablePublish: !this.options.isAppProject,
-        withBabel: this.pobLernaConfig.typescript,
-        isMonorepo: true,
-        enableYarnVersion: isYarnVersionEnabled,
-        ci: this.pobLernaConfig.ci,
-        disableYarnGitCache: this.options.disableYarnGitCache,
-        updateOnly: this.options.updateOnly,
-      },
-    );
+    this.composeWith("pob:common:format-lint", {
+      monorepo: true,
+      documentation: this.pobLernaConfig.documentation,
+      typescript: this.pobLernaConfig.typescript,
+      build: this.pobLernaConfig.typescript === true,
+      testing: this.pobLernaConfig.testing,
+      testRunner: this.pobLernaConfig.testRunner,
+      packageManager: this.options.packageManager,
+      yarnNodeLinker: this.options.yarnNodeLinker,
+      appTypes: JSON.stringify(getAppTypes(this.packageConfigs)),
+      ignorePaths: [
+        hasDist(this.packages, this.packageConfigs) && "/dist",
+        hasBuild(this.packages, this.packageConfigs) && "/build",
+      ]
+        .filter(Boolean)
+        .join("\n"),
+      rootIgnorePaths: [],
+    });
 
-    this.composeWith(
-      {
-        Generator: MonorepoTypescriptGenerator,
-        path: MonorepoTypescriptGenerator.path,
-      },
-      {
-        enable: this.pobLernaConfig.typescript,
-        checkOnly: this.pobLernaConfig.typescript === "check-only",
-        isAppProject: this.options.isAppProject,
-        packageNames: JSON.stringify(packageNames),
-        packagePaths: JSON.stringify(packagePaths),
-        testRunner: this.pobLernaConfig.testRunner,
-      },
-    );
+    this.composeWith("pob:lib:doc", {
+      enabled: this.pobLernaConfig.documentation,
+      testing: this.pobLernaConfig.testing,
+      packageNames: JSON.stringify(packageNames),
+      packagePaths: JSON.stringify(packagePaths),
+      packageManager: this.options.packageManager,
+    });
+
+    this.composeWith("pob:core:vscode", {
+      root: true,
+      monorepo: true,
+      packageManager: this.options.packageManager,
+      yarnNodeLinker: this.options.yarnNodeLinker,
+      typescript: this.pobLernaConfig.typescript,
+      testing: this.pobLernaConfig.testing,
+      testRunner: this.pobLernaConfig.testRunner,
+      packageNames: JSON.stringify(packageNames),
+      packageLocations: JSON.stringify(this.packageLocations),
+    });
+
+    // Always add a gitignore, because npm publish uses it.
+    this.composeWith("pob:core:gitignore", {
+      root: true,
+      typescript: this.pobLernaConfig.typescript,
+      documentation: this.pobLernaConfig.documentation,
+      testing: this.pobLernaConfig.testing,
+    });
+
+    this.composeWith("pob:common:remove-old-dependencies");
+
+    this.composeWith("pob:common:release", {
+      enable: true,
+      enablePublish: !this.options.isAppProject,
+      withBabel: this.pobLernaConfig.typescript,
+      isMonorepo: true,
+      enableYarnVersion: isYarnVersionEnabled,
+      ci: this.pobLernaConfig.ci,
+      disableYarnGitCache: this.options.disableYarnGitCache,
+      updateOnly: this.options.updateOnly,
+    });
+
+    this.composeWith("pob:monorepo:typescript", {
+      enable: this.pobLernaConfig.typescript,
+      checkOnly: this.pobLernaConfig.typescript === "check-only",
+      isAppProject: this.options.isAppProject,
+      packageNames: JSON.stringify(packageNames),
+      packagePaths: JSON.stringify(packagePaths),
+      testRunner: this.pobLernaConfig.testRunner,
+    });
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
 
@@ -382,7 +321,7 @@ export default class PobMonorepoGenerator extends Generator {
     }
   }
 
-  async writing() {
+  writing() {
     if (!this.options.isAppProject) {
       const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
       const rollupKinds = new Set();
@@ -430,10 +369,7 @@ export default class PobMonorepoGenerator extends Generator {
       this.fs.writeJSON(this.destinationPath("package.json"), pkg);
     }
 
-    await this.composeWith({
-      Generator: CoreSortPackageGenerator,
-      path: CoreSortPackageGenerator.path,
-    });
+    this.composeWith("pob:core:sort-package");
   }
 
   end() {

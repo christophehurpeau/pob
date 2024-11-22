@@ -1,14 +1,11 @@
 import fs from "node:fs";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import * as packageUtils from "../../../utils/package.js";
 import { askName } from "./askName.js";
 
 export default class CorePackageGenerator extends Generator {
-  static path = fileURLToPath(import.meta.url);
-
   constructor(args, opts) {
     super(args, opts);
 

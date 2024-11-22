@@ -3,20 +3,8 @@ import Generator from "yeoman-generator";
 import ensureJsonFileFormatted from "../../utils/ensureJsonFileFormatted.js";
 import inMonorepo from "../../utils/inMonorepo.js";
 import * as packageUtils from "../../utils/package.js";
-import PobAppGenerator from "../app/PobAppGenerator.js";
-import CoreCleanGenerator from "../core/clean/CoreCleanGenerator.js";
-import CoreEditorConfigGenerator from "../core/editorconfig/CoreEditorConfigGenerator.js";
-import CoreGitGenerator from "../core/git/CoreGitGenerator.js";
-import CorePackageGenerator from "../core/package/CorePackageGenerator.js";
-import CoreRenovateGenerator from "../core/renovate/CoreRenovateGenerator.js";
-import CoreYarnGenerator from "../core/yarn/CoreYarnGenerator.js";
-import PobLibGenerator from "../lib/PobLibGenerator.js";
-import MonorepoLernaGenerator from "../monorepo/lerna/MonorepoLernaGenerator.js";
-import MonorepoWorkspacesGenerator from "../monorepo/workspaces/MonorepoWorkspacesGenerator.js";
 
 export default class PobBaseGenerator extends Generator {
-  static path = fileURLToPath(import.meta.url);
-
   constructor(args, opts) {
     super(args, opts, { customInstallTask: true });
 
@@ -133,89 +121,50 @@ export default class PobBaseGenerator extends Generator {
   }
 
   default() {
-    this.composeWith(
-      {
-        Generator: CoreYarnGenerator,
-        path: CoreYarnGenerator.path,
-      },
-      {
-        type: this.projectConfig.type,
-        enable: this.isRoot && this.projectConfig.packageManager === "yarn",
-        yarnNodeLinker: this.projectConfig.yarnNodeLinker,
-        disableYarnGitCache: this.projectConfig.disableYarnGitCache !== false,
-      },
-    );
+    this.composeWith("pob:core:yarn", {
+      type: this.projectConfig.type,
+      enable: this.isRoot && this.projectConfig.packageManager === "yarn",
+      yarnNodeLinker: this.projectConfig.yarnNodeLinker,
+      disableYarnGitCache: this.projectConfig.disableYarnGitCache !== false,
+    });
 
-    this.composeWith(
-      {
-        Generator: CorePackageGenerator,
-        path: CorePackageGenerator.path,
-      },
-      {
-        updateOnly: this.options.updateOnly,
-        private: this.isMonorepo || this.projectConfig.type === "app",
-        isMonorepo: this.isMonorepo,
-        inMonorepo: !!inMonorepo,
-        isRoot: this.isRoot,
-        packageType: this.projectConfig.type === "app" ? "module" : undefined,
-      },
-    );
+    this.composeWith("pob:core:package", {
+      updateOnly: this.options.updateOnly,
+      private: this.isMonorepo || this.projectConfig.type === "app",
+      isMonorepo: this.isMonorepo,
+      inMonorepo: !!inMonorepo,
+      isRoot: this.isRoot,
+      packageType: this.projectConfig.type === "app" ? "module" : undefined,
+    });
 
     if (this.isMonorepo) {
-      this.composeWith(
-        {
-          Generator: MonorepoWorkspacesGenerator,
-          path: MonorepoWorkspacesGenerator.path,
-        },
-        {
-          force: this.options.force,
-          isAppProject: this.projectConfig.type === "app",
-          packageManager: this.projectConfig.packageManager,
-          disableYarnGitCache: this.projectConfig.disableYarnGitCache !== false,
-        },
-      );
-      this.composeWith(
-        {
-          Generator: MonorepoLernaGenerator,
-          path: MonorepoLernaGenerator.path,
-        },
-        {
-          force: this.options.force,
-          isAppProject: this.projectConfig.type === "app",
-          packageManager: this.projectConfig.packageManager,
-          disableYarnGitCache: this.projectConfig.disableYarnGitCache !== false,
-        },
-      );
+      this.composeWith("pob:monorepo:workspaces", {
+        force: this.options.force,
+        isAppProject: this.projectConfig.type === "app",
+        packageManager: this.projectConfig.packageManager,
+        disableYarnGitCache: this.projectConfig.disableYarnGitCache !== false,
+      });
+      this.composeWith("pob:monorepo:lerna", {
+        force: this.options.force,
+        isAppProject: this.projectConfig.type === "app",
+        packageManager: this.projectConfig.packageManager,
+        disableYarnGitCache: this.projectConfig.disableYarnGitCache !== false,
+      });
     }
 
     this.fs.delete("Makefile");
     this.fs.delete(this.destinationPath(".commitrc.js"));
 
-    this.composeWith({
-      Generator: CoreEditorConfigGenerator,
-      path: CoreEditorConfigGenerator.path,
+    this.composeWith("pob:core:editorconfig");
+
+    this.composeWith("pob:core:clean", {
+      root: this.isRoot,
     });
 
-    this.composeWith(
-      {
-        Generator: CoreCleanGenerator,
-        path: CoreCleanGenerator.path,
-      },
-      {
-        root: this.isRoot,
-      },
-    );
-
-    this.composeWith(
-      {
-        Generator: CoreRenovateGenerator,
-        path: CoreRenovateGenerator.path,
-      },
-      {
-        updateOnly: this.options.updateOnly,
-        app: this.projectConfig.type === "app",
-      },
-    );
+    this.composeWith("pob:core:renovate", {
+      updateOnly: this.options.updateOnly,
+      app: this.projectConfig.type === "app",
+    });
 
     const onlyLatestLTS =
       this.projectConfig.type === "app" ||
@@ -226,16 +175,10 @@ export default class PobBaseGenerator extends Generator {
     if (!this.hasAncestor) {
       const splitCIJobs =
         inMonorepo && inMonorepo.pobMonorepoConfig?.packageNames.length > 8;
-      this.composeWith(
-        {
-          Generator: CoreGitGenerator,
-          path: CoreGitGenerator.path,
-        },
-        {
-          onlyLatestLTS,
-          splitCIJobs,
-        },
-      );
+      this.composeWith("pob:core:git", {
+        onlyLatestLTS,
+        splitCIJobs,
+      });
     } else {
       if (this.fs.exists(".git-hooks")) this.fs.delete(".git-hooks");
       if (this.fs.exists("git-hooks")) this.fs.delete("git-hooks");
@@ -274,40 +217,28 @@ export default class PobBaseGenerator extends Generator {
     } else {
       switch (this.projectConfig.type) {
         case "lib":
-          this.composeWith(
-            {
-              Generator: PobLibGenerator,
-              path: PobLibGenerator.path,
-            },
-            {
-              monorepo: this.isMonorepo,
-              isRoot: this.isRoot,
-              disableYarnGitCache:
-                this.projectConfig.disableYarnGitCache !== false,
-              updateOnly: this.options.updateOnly,
-              fromPob: this.options.fromPob,
-              packageManager: this.projectConfig.packageManager,
-              yarnNodeLinker: this.projectConfig.yarnNodeLinker,
-            },
-          );
+          this.composeWith("pob:lib", {
+            monorepo: this.isMonorepo,
+            isRoot: this.isRoot,
+            disableYarnGitCache:
+              this.projectConfig.disableYarnGitCache !== false,
+            updateOnly: this.options.updateOnly,
+            fromPob: this.options.fromPob,
+            packageManager: this.projectConfig.packageManager,
+            yarnNodeLinker: this.projectConfig.yarnNodeLinker,
+          });
           break;
         case "app":
-          this.composeWith(
-            {
-              Generator: PobAppGenerator,
-              path: PobAppGenerator.path,
-            },
-            {
-              monorepo: this.isMonorepo,
-              isRoot: this.isRoot,
-              disableYarnGitCache:
-                this.projectConfig.disableYarnGitCache !== false,
-              updateOnly: this.options.updateOnly,
-              fromPob: this.options.fromPob,
-              packageManager: this.projectConfig.packageManager,
-              yarnNodeLinker: this.projectConfig.yarnNodeLinker,
-            },
-          );
+          this.composeWith("pob:app", {
+            monorepo: this.isMonorepo,
+            isRoot: this.isRoot,
+            disableYarnGitCache:
+              this.projectConfig.disableYarnGitCache !== false,
+            updateOnly: this.options.updateOnly,
+            fromPob: this.options.fromPob,
+            packageManager: this.projectConfig.packageManager,
+            yarnNodeLinker: this.projectConfig.yarnNodeLinker,
+          });
           break;
         default:
           throw new Error(`Invalid type: ${this.options.type}`);

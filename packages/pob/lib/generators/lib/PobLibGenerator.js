@@ -1,26 +1,9 @@
 import { rmSync } from "node:fs";
-import { fileURLToPath } from "node:url";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../utils/inMonorepo.js";
 import * as packageUtils from "../../utils/package.js";
-import CommonBabelGenerator from "../common/babel/CommonBabelGenerator.js";
-import CommonLintGenerator from "../common/format-lint/CommonLintGenerator.js";
-import CommonHuskyGenerator from "../common/husky/CommonHuskyGenerator.js";
-import CommonRemoveOldDependenciesGenerator from "../common/old-dependencies/CommonRemoveOldDependenciesGenerator.js";
-import CommonReleaseGenerator from "../common/release/CommonReleaseGenerator.js";
-import CommonTestingGenerator from "../common/testing/CommonTestingGenerator.js";
-import CommonTranspilerGenerator from "../common/transpiler/CommonTranspilerGenerator.js";
-import CommonTypescriptGenerator from "../common/typescript/CommonTypescriptGenerator.js";
-import CoreGitignoreGenerator from "../core/gitignore/CoreGitignoreGenerator.js";
-import CoreNpmGenerator from "../core/npm/CoreNpmGenerator.js";
-import CoreSortPackageGenerator from "../core/sort-package/CoreSortPackageGenerator.js";
-import CoreVSCodeGenerator from "../core/vscode/CoreVSCodeGenerator.js";
-import LibDocGenerator from "./doc/LibDocGenerator.js";
-import LibReadmeGenerator from "./readme/LibReadmeGenerator.js";
 
 export default class PobLibGenerator extends Generator {
-  static path = fileURLToPath(import.meta.url);
-
   constructor(args, opts) {
     super(args, opts);
 
@@ -257,32 +240,20 @@ export default class PobLibGenerator extends Generator {
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
 
-    this.composeWith(
-      {
-        Generator: CommonBabelGenerator,
-        path: CommonBabelGenerator.path,
-      },
-      {
-        updateOnly: this.options.updateOnly,
-        testing: !!this.pobjson.testing,
-        documentation: !!this.pobjson.documentation,
-        fromPob: this.options.fromPob,
-        onlyLatestLTS: false,
-      },
-    );
-    this.composeWith(
-      {
-        Generator: CommonTranspilerGenerator,
-        path: CommonTranspilerGenerator.path,
-      },
-      {
-        updateOnly: this.options.updateOnly,
-        testing: !!this.pobjson.testing,
-        documentation: !!this.pobjson.documentation,
-        fromPob: this.options.fromPob,
-        onlyLatestLTS: false,
-      },
-    );
+    this.composeWith("pob:common:babel", {
+      updateOnly: this.options.updateOnly,
+      testing: !!this.pobjson.testing,
+      documentation: !!this.pobjson.documentation,
+      fromPob: this.options.fromPob,
+      onlyLatestLTS: false,
+    });
+    this.composeWith("pob:common:transpiler", {
+      updateOnly: this.options.updateOnly,
+      testing: !!this.pobjson.testing,
+      documentation: !!this.pobjson.documentation,
+      fromPob: this.options.fromPob,
+      onlyLatestLTS: false,
+    });
   }
 
   default() {
@@ -299,183 +270,120 @@ export default class PobLibGenerator extends Generator {
     const jsx = (withBabel || withTypescript) && pkg.pob.jsx === true;
     const browser = pkg.pob.envs?.some((env) => env.target === "browser");
 
-    this.composeWith(
-      {
-        Generator: CommonTypescriptGenerator,
-        path: CommonTypescriptGenerator.path,
-      },
-      {
-        enable:
-          withTypescript ||
-          pkg.pob.typescript === "check-only" ||
-          (inMonorepo &&
-            inMonorepo.pobMonorepoConfig.typescript === "check-only"),
-        onlyCheck:
-          pkg.pob.typescript === "check-only" ||
-          (inMonorepo &&
-            inMonorepo.pobMonorepoConfig.typescript === "check-only"),
-        isApp: false,
-        dom: browser,
-        jsx,
-        updateOnly: this.options.updateOnly,
-        baseUrl: "none", // causes issues on dist definition files
-        builddefs: true,
-        onlyLatestLTS: false,
-        srcDirectory: withTypescript ? "src" : "lib",
-      },
-    );
-
-    this.composeWith(
-      {
-        Generator: CommonHuskyGenerator,
-        path: CommonHuskyGenerator.path,
-      },
-      {},
-    );
-
-    this.composeWith({
-      Generator: CommonRemoveOldDependenciesGenerator,
-      path: CommonRemoveOldDependenciesGenerator.path,
+    this.composeWith("pob:common:typescript", {
+      enable:
+        withTypescript ||
+        pkg.pob.typescript === "check-only" ||
+        (inMonorepo &&
+          inMonorepo.pobMonorepoConfig.typescript === "check-only"),
+      onlyCheck:
+        pkg.pob.typescript === "check-only" ||
+        (inMonorepo &&
+          inMonorepo.pobMonorepoConfig.typescript === "check-only"),
+      isApp: false,
+      dom: browser,
+      jsx,
+      updateOnly: this.options.updateOnly,
+      baseUrl: "none", // causes issues on dist definition files
+      builddefs: true,
+      onlyLatestLTS: false,
+      srcDirectory: withTypescript ? "src" : "lib",
     });
+
+    this.composeWith("pob:common:husky", {});
+
+    this.composeWith("pob:common:remove-old-dependencies");
 
     const enableReleasePlease =
       !inMonorepo && this.pobjson.testing && this.pobjson.testing.ci;
 
-    this.composeWith(
-      {
-        Generator: CommonTestingGenerator,
-        path: CommonTestingGenerator.path,
-      },
-      {
-        enable: this.pobjson.testing,
-        disableYarnGitCache: this.options.disableYarnGitCache,
-        enableReleasePlease,
-        testing: this.pobjson.testing,
-        e2eTesting: false,
-        runner: this.pobjson.testing
-          ? (inMonorepo
-              ? inMonorepo.pobMonorepoConfig.testRunner
-              : this.pobjson.testing.runner) || "jest"
-          : undefined,
-        build: withBabel || withTypescript,
-        typescript: withTypescript,
-        documentation: !!this.pobjson.documentation,
-        codecov: this.pobjson.testing && this.pobjson.testing.codecov,
-        ci: this.pobjson.testing && this.pobjson.testing.ci,
-        packageManager: this.options.packageManager,
-        isApp: false,
-        splitCIJobs: false,
-        srcDirectory: withBabel || withTypescript ? "src" : "lib",
-      },
-    );
+    this.composeWith("pob:common:testing", {
+      enable: this.pobjson.testing,
+      disableYarnGitCache: this.options.disableYarnGitCache,
+      enableReleasePlease,
+      testing: this.pobjson.testing,
+      e2eTesting: false,
+      runner: this.pobjson.testing
+        ? (inMonorepo
+            ? inMonorepo.pobMonorepoConfig.testRunner
+            : this.pobjson.testing.runner) || "jest"
+        : undefined,
+      build: withBabel || withTypescript,
+      typescript: withTypescript,
+      documentation: !!this.pobjson.documentation,
+      codecov: this.pobjson.testing && this.pobjson.testing.codecov,
+      ci: this.pobjson.testing && this.pobjson.testing.ci,
+      packageManager: this.options.packageManager,
+      isApp: false,
+      splitCIJobs: false,
+      srcDirectory: withBabel || withTypescript ? "src" : "lib",
+    });
 
     // must be after testing
-    this.composeWith(
-      {
-        Generator: CommonLintGenerator,
-        path: CommonLintGenerator.path,
-      },
-      {
-        typescript: withTypescript,
-        build: withTypescript,
-        documentation:
-          !!this.pobjson.documentation ||
-          !!(this.pobjson.testing && this.pobjson.testing.codecov),
-        testing: !!this.pobjson.testing,
-        testRunner: inMonorepo
-          ? inMonorepo.pobMonorepoConfig.testRunner
-          : this.pobjson.testing?.runner,
-        packageManager: this.options.packageManager,
-        yarnNodeLinker: this.options.yarnNodeLinker,
-        ignorePaths: withBabel || withTypescript ? "/dist" : "",
-      },
-    );
+    this.composeWith("pob:common:format-lint", {
+      typescript: withTypescript,
+      build: withTypescript,
+      documentation:
+        !!this.pobjson.documentation ||
+        !!(this.pobjson.testing && this.pobjson.testing.codecov),
+      testing: !!this.pobjson.testing,
+      testRunner: inMonorepo
+        ? inMonorepo.pobMonorepoConfig.testRunner
+        : this.pobjson.testing?.runner,
+      packageManager: this.options.packageManager,
+      yarnNodeLinker: this.options.yarnNodeLinker,
+      ignorePaths: withBabel || withTypescript ? "/dist" : "",
+    });
 
-    this.composeWith(
-      {
-        Generator: LibDocGenerator,
-        path: LibDocGenerator.path,
-      },
-      {
-        enabled: this.pobjson.documentation,
-        testing: this.pobjson.testing,
-      },
-    );
+    this.composeWith("pob:lib:doc", {
+      enabled: this.pobjson.documentation,
+      testing: this.pobjson.testing,
+    });
 
     // must be after doc, testing
-    this.composeWith(
-      {
-        Generator: LibReadmeGenerator,
-        path: LibReadmeGenerator.path,
-      },
-      {
-        documentation: !!this.pobjson.documentation,
-        testing: !!this.pobjson.testing,
-        ci: this.pobjson.testing && this.pobjson.testing.ci,
-        codecov: this.pobjson.testing && this.pobjson.testing.codecov,
-      },
-    );
+    this.composeWith("pob:lib:readme", {
+      documentation: !!this.pobjson.documentation,
+      testing: !!this.pobjson.testing,
+      ci: this.pobjson.testing && this.pobjson.testing.ci,
+      codecov: this.pobjson.testing && this.pobjson.testing.codecov,
+    });
 
-    this.composeWith(
-      {
-        Generator: CommonReleaseGenerator,
-        path: CommonReleaseGenerator.path,
-      },
-      {
-        enable: !inMonorepo && this.pobjson.testing,
-        enablePublish: true,
-        withBabel,
-        withTypescript,
-        isMonorepo: false,
-        enableYarnVersion: true,
-        ci: this.pobjson.testing && this.pobjson.testing.ci,
-        disableYarnGitCache: this.options.disableYarnGitCache,
-        updateOnly: this.options.updateOnly,
-      },
-    );
+    this.composeWith("pob:common:release", {
+      enable: !inMonorepo && this.pobjson.testing,
+      enablePublish: true,
+      withBabel,
+      withTypescript,
+      isMonorepo: false,
+      enableYarnVersion: true,
+      ci: this.pobjson.testing && this.pobjson.testing.ci,
+      disableYarnGitCache: this.options.disableYarnGitCache,
+      updateOnly: this.options.updateOnly,
+    });
 
-    this.composeWith(
-      {
-        Generator: CoreVSCodeGenerator,
-        path: CoreVSCodeGenerator.path,
-      },
-      {
-        root: !inMonorepo,
-        monorepo: false,
-        packageManager: this.options.packageManager,
-        yarnNodeLinker: this.options.yarnNodeLinker,
-        typescript: withBabel || withTypescript,
-        testing: this.pobjson.testing,
-        testRunner: this.pobjson.testRunner,
-      },
-    );
+    this.composeWith("pob:core:vscode", {
+      root: !inMonorepo,
+      monorepo: false,
+      packageManager: this.options.packageManager,
+      yarnNodeLinker: this.options.yarnNodeLinker,
+      typescript: withBabel || withTypescript,
+      testing: this.pobjson.testing,
+      testRunner: this.pobjson.testRunner,
+    });
 
     // must be after doc, testing
-    this.composeWith(
-      {
-        Generator: CoreGitignoreGenerator,
-        path: CoreGitignoreGenerator.path,
-      },
-      {
-        root: !inMonorepo,
-        withBabel: babelEnvs.length > 0,
-        typescript: withTypescript,
-        documentation: this.pobjson.documentation,
-        testing: !!this.pobjson.testing,
-      },
-    );
+    this.composeWith("pob:core:gitignore", {
+      root: !inMonorepo,
+      withBabel: babelEnvs.length > 0,
+      typescript: withTypescript,
+      documentation: this.pobjson.documentation,
+      testing: !!this.pobjson.testing,
+    });
 
-    this.composeWith(
-      {
-        Generator: CoreNpmGenerator,
-        path: CoreNpmGenerator.path,
-      },
-      {
-        enable: !pkg.private,
-        srcDirectory: withBabel || withTypescript ? "src" : "lib",
-        distDirectory: withBabel || withTypescript ? "dist" : "",
-      },
-    );
+    this.composeWith("pob:core:npm", {
+      enable: !pkg.private,
+      srcDirectory: withBabel || withTypescript ? "src" : "lib",
+      distDirectory: withBabel || withTypescript ? "dist" : "",
+    });
   }
 
   writing() {
@@ -538,9 +446,6 @@ export default class PobLibGenerator extends Generator {
     this.config.set("lib", pobjson);
     this.config.save();
 
-    this.composeWith({
-      Generator: CoreSortPackageGenerator,
-      path: CoreSortPackageGenerator.path,
-    });
+    this.composeWith("pob:core:sort-package");
   }
 }

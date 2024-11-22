@@ -1,25 +1,9 @@
 import { execSync } from "node:child_process";
 import { platform } from "node:process";
-import { fileURLToPath } from "node:url";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../utils/inMonorepo.js";
 import * as packageUtils from "../../utils/package.js";
-import CommonBabelGenerator from "../common/babel/CommonBabelGenerator.js";
-import CommonLintGenerator from "../common/format-lint/CommonLintGenerator.js";
-import CommonHuskyGenerator from "../common/husky/CommonHuskyGenerator.js";
-import CommonRemoveOldDependenciesGenerator from "../common/old-dependencies/CommonRemoveOldDependenciesGenerator.js";
-import CommonReleaseGenerator from "../common/release/CommonReleaseGenerator.js";
-import CommonTestingGenerator from "../common/testing/CommonTestingGenerator.js";
-import CommonTranspilerGenerator from "../common/transpiler/CommonTranspilerGenerator.js";
-import CommonTypescriptGenerator from "../common/typescript/CommonTypescriptGenerator.js";
-import CoreGitignoreGenerator from "../core/gitignore/CoreGitignoreGenerator.js";
-import CoreNpmGenerator from "../core/npm/CoreNpmGenerator.js";
-import CoreSortPackageGenerator from "../core/sort-package/CoreSortPackageGenerator.js";
-import CoreVSCodeGenerator from "../core/vscode/CoreVSCodeGenerator.js";
-import AppE2ETestingGenerator from "./e2e-testing/AppE2ETestingGenerator.js";
 import { appIgnorePaths } from "./ignorePaths.js";
-import AppNextjsGenerator from "./nextjs/AppNextjsGenerator.js";
-import AppRemixGenerator from "./remix/AppRemixGenerator.js";
 
 const appsWithTypescript = [
   "alp",
@@ -32,8 +16,6 @@ const appsWithTypescript = [
 const appsWithBrowser = ["alp", "next.js", "remix"];
 
 export default class PobAppGenerator extends Generator {
-  static path = fileURLToPath(import.meta.url);
-
   constructor(args, opts) {
     super(args, opts);
 
@@ -161,53 +143,35 @@ export default class PobAppGenerator extends Generator {
       this.appConfig.type === "node-library" ||
       this.appConfig.type === "alp-node"
     ) {
-      this.composeWith(
-        {
-          Generator: CommonBabelGenerator,
-          path: CommonBabelGenerator.path,
-        },
-        {
-          updateOnly: this.options.updateOnly,
-          onlyLatestLTS: true,
-          isApp: true,
-          isAppLibrary,
-          useAppConfig: this.appConfig.type === "alp-node",
-          testing: this.appConfig.testing,
-          documentation: false,
-          fromPob: this.options.fromPob,
-          buildDirectory,
-        },
-      );
-      this.composeWith(
-        {
-          Generator: CommonTranspilerGenerator,
-          path: CommonTranspilerGenerator.path,
-        },
-        {
-          updateOnly: this.options.updateOnly,
-          onlyLatestLTS: true,
-          isApp: true,
-          isAppLibrary,
-          useAppConfig: this.appConfig.type === "alp-node",
-          testing: this.appConfig.testing,
-          documentation: false,
-          fromPob: this.options.fromPob,
-          srcDirectory,
-          buildDirectory,
-        },
-      );
+      this.composeWith("pob:common:babel", {
+        updateOnly: this.options.updateOnly,
+        onlyLatestLTS: true,
+        isApp: true,
+        isAppLibrary,
+        useAppConfig: this.appConfig.type === "alp-node",
+        testing: this.appConfig.testing,
+        documentation: false,
+        fromPob: this.options.fromPob,
+        buildDirectory,
+      });
+      this.composeWith("pob:common:transpiler", {
+        updateOnly: this.options.updateOnly,
+        onlyLatestLTS: true,
+        isApp: true,
+        isAppLibrary,
+        useAppConfig: this.appConfig.type === "alp-node",
+        testing: this.appConfig.testing,
+        documentation: false,
+        fromPob: this.options.fromPob,
+        srcDirectory,
+        buildDirectory,
+      });
     }
 
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
     if (!inMonorepo || inMonorepo.root) {
-      this.composeWith(
-        {
-          Generator: CommonHuskyGenerator,
-          path: CommonHuskyGenerator.path,
-        },
-        {},
-      );
+      this.composeWith("pob:common:husky", {});
     }
 
     const envs = (pkg.pob && (pkg.pob.babelEnvs || pkg.pob.envs)) || [];
@@ -232,223 +196,160 @@ export default class PobAppGenerator extends Generator {
       pkg,
     ).filter(Boolean);
 
-    this.composeWith(
-      {
-        Generator: CommonTypescriptGenerator,
-        path: CommonTypescriptGenerator.path,
-      },
-      {
-        enable:
-          typescript ||
-          pkg.pob?.typescript === "check-only" ||
-          (inMonorepo &&
-            inMonorepo.pobMonorepoConfig?.typescript === "check-only"),
-        onlyCheck:
-          pkg.pob?.typescript === "check-only" ||
-          (inMonorepo &&
-            inMonorepo.pobMonorepoConfig?.typescript === "check-only"),
-        isApp: true,
-        isAppLibrary,
-        nextConfig: this.appConfig.type === "next.js",
-        // nextjs now supports src
-        rootDir: this.appConfig.type === "expo" ? "." : srcDirectory,
-        srcDirectory,
-        builddefs: false,
-        dom: browser,
-        jsx,
-        jsxPreserve: this.appConfig.type === "next.js",
-        forceExcludeNodeModules: this.appConfig.type === "next.js",
-        forceAllowJs: this.appConfig.type === "next.js",
-        updateOnly: this.options.updateOnly,
-        resolveJsonModule: true,
-        onlyLatestLTS: true,
-        baseUrl: (() => {
-          if (
-            this.appConfig.type === "alp" ||
-            this.appConfig.type === "pobpack" ||
-            this.appConfig.type === "alp-node" ||
-            this.appConfig.type === "next.js"
-          ) {
-            return `./${srcDirectory}`;
-          }
-          if (this.appConfig.type === "remix") {
-            return ".";
-          }
-          return "";
-        })(),
-        plugins: (() => {
-          if (this.appConfig.type === "next.js") {
-            return "next";
-          }
-          return "";
-        })(),
-        additionalIncludes: (() => {
-          // if (this.appConfig.type === 'next.js') {
-          //   return '.next/types/**/*.ts';
-          // }
-          return "";
-        })(),
-      },
-    );
-
-    this.composeWith({
-      Generator: CommonRemoveOldDependenciesGenerator,
-      path: CommonRemoveOldDependenciesGenerator.path,
+    this.composeWith("pob:common:typescript", {
+      enable:
+        typescript ||
+        pkg.pob?.typescript === "check-only" ||
+        (inMonorepo &&
+          inMonorepo.pobMonorepoConfig?.typescript === "check-only"),
+      onlyCheck:
+        pkg.pob?.typescript === "check-only" ||
+        (inMonorepo &&
+          inMonorepo.pobMonorepoConfig?.typescript === "check-only"),
+      isApp: true,
+      isAppLibrary,
+      nextConfig: this.appConfig.type === "next.js",
+      // nextjs now supports src
+      rootDir: this.appConfig.type === "expo" ? "." : srcDirectory,
+      srcDirectory,
+      builddefs: false,
+      dom: browser,
+      jsx,
+      jsxPreserve: this.appConfig.type === "next.js",
+      forceExcludeNodeModules: this.appConfig.type === "next.js",
+      forceAllowJs: this.appConfig.type === "next.js",
+      updateOnly: this.options.updateOnly,
+      resolveJsonModule: true,
+      onlyLatestLTS: true,
+      baseUrl: (() => {
+        if (
+          this.appConfig.type === "alp" ||
+          this.appConfig.type === "pobpack" ||
+          this.appConfig.type === "alp-node" ||
+          this.appConfig.type === "next.js"
+        ) {
+          return `./${srcDirectory}`;
+        }
+        if (this.appConfig.type === "remix") {
+          return ".";
+        }
+        return "";
+      })(),
+      plugins: (() => {
+        if (this.appConfig.type === "next.js") {
+          return "next";
+        }
+        return "";
+      })(),
+      additionalIncludes: (() => {
+        // if (this.appConfig.type === 'next.js') {
+        //   return '.next/types/**/*.ts';
+        // }
+        return "";
+      })(),
     });
+
+    this.composeWith("pob:common:remove-old-dependencies");
 
     const enableReleasePlease =
       !inMonorepo && this.appConfig.testing && this.appConfig.ci;
 
     if (this.appConfig.type !== "remix") {
-      this.composeWith(
-        {
-          Generator: CommonTestingGenerator,
-          path: CommonTestingGenerator.path,
-        },
-        {
-          enable: this.appConfig.testing,
-          disableYarnGitCache: this.options.disableYarnGitCache,
-          enableReleasePlease,
-          testing: this.appConfig.testing,
-          runner: this.appConfig.testing
-            ? (inMonorepo
-                ? inMonorepo.pobMonorepoConfig.testRunner
-                : this.appConfig.testRunner) || "jest"
-            : undefined,
-          e2eTesting: this.appConfig.e2e ? "." : "",
-          typescript,
-          build: typescript === true && this.appConfig.type !== "expo",
-          documentation: false,
-          codecov: this.appConfig.codecov,
-          ci: this.appConfig.ci,
-          packageManager: this.options.packageManager,
-          isApp: true,
-          splitCIJobs: false,
-          onlyLatestLTS: true,
-          srcDirectory,
-        },
-      );
-
-      this.composeWith(
-        {
-          Generator: AppE2ETestingGenerator,
-          path: AppE2ETestingGenerator.path,
-        },
-        {
-          enable: this.appConfig.e2e,
-        },
-      );
-
-      this.composeWith(
-        {
-          Generator: CommonLintGenerator,
-          path: CommonLintGenerator.path,
-        },
-        {
-          isApp: true,
-          documentation: false,
-          testing: this.appConfig.testing,
-          testRunner: this.appConfig.testRunner,
-          babel,
-          typescript,
-          build: typescript === true,
-          node,
-          browser,
-          // nextjs now supports src rootAsSrc: this.appConfig.type === 'next.js',
-          enableSrcResolver: true,
-          packageManager: this.options.packageManager,
-          yarnNodeLinker: this.options.yarnNodeLinker,
-          rootIgnorePaths: ignorePaths.join("\n"),
-          srcDirectory,
-          buildDirectory: this.appConfig.type === "expo" ? ".expo" : "build",
-        },
-      );
-
-      this.composeWith(
-        {
-          Generator: CommonReleaseGenerator,
-          path: CommonReleaseGenerator.path,
-        },
-        {
-          enable:
-            !inMonorepo &&
-            this.appConfig.testing &&
-            pkg.name !== "yarn-plugin-conventional-version",
-          enablePublish: false,
-          withBabel: babel,
-          isMonorepo: false,
-          enableYarnVersion: true,
-          ci: this.appConfig.ci,
-          disableYarnGitCache: this.options.disableYarnGitCache,
-          updateOnly: this.options.updateOnly,
-        },
-      );
-    }
-
-    this.composeWith(
-      {
-        Generator: CoreVSCodeGenerator,
-        path: CoreVSCodeGenerator.path,
-      },
-      {
-        root: !inMonorepo,
-        monorepo: false,
-        packageManager: this.options.packageManager,
-        yarnNodeLinker: this.options.yarnNodeLinker,
+      this.composeWith("pob:common:testing", {
+        enable: this.appConfig.testing,
+        disableYarnGitCache: this.options.disableYarnGitCache,
+        enableReleasePlease,
+        testing: this.appConfig.testing,
+        runner: this.appConfig.testing
+          ? (inMonorepo
+              ? inMonorepo.pobMonorepoConfig.testRunner
+              : this.appConfig.testRunner) || "jest"
+          : undefined,
+        e2eTesting: this.appConfig.e2e ? "." : "",
         typescript,
+        build: typescript === true && this.appConfig.type !== "expo",
+        documentation: false,
+        codecov: this.appConfig.codecov,
+        ci: this.appConfig.ci,
+        packageManager: this.options.packageManager,
+        isApp: true,
+        splitCIJobs: false,
+        onlyLatestLTS: true,
+        srcDirectory,
+      });
+
+      this.composeWith("pob:app:e2e-testing", {
+        enable: this.appConfig.e2e,
+      });
+
+      this.composeWith("pob:common:format-lint", {
+        isApp: true,
+        documentation: false,
         testing: this.appConfig.testing,
         testRunner: this.appConfig.testRunner,
-      },
-    );
+        babel,
+        typescript,
+        build: typescript === true,
+        node,
+        browser,
+        // nextjs now supports src rootAsSrc: this.appConfig.type === 'next.js',
+        enableSrcResolver: true,
+        packageManager: this.options.packageManager,
+        yarnNodeLinker: this.options.yarnNodeLinker,
+        rootIgnorePaths: ignorePaths.join("\n"),
+        srcDirectory,
+        buildDirectory: this.appConfig.type === "expo" ? ".expo" : "build",
+      });
+
+      this.composeWith("pob:common:release", {
+        enable:
+          !inMonorepo &&
+          this.appConfig.testing &&
+          pkg.name !== "yarn-plugin-conventional-version",
+        enablePublish: false,
+        withBabel: babel,
+        isMonorepo: false,
+        enableYarnVersion: true,
+        ci: this.appConfig.ci,
+        disableYarnGitCache: this.options.disableYarnGitCache,
+        updateOnly: this.options.updateOnly,
+      });
+    }
+
+    this.composeWith("pob:core:vscode", {
+      root: !inMonorepo,
+      monorepo: false,
+      packageManager: this.options.packageManager,
+      yarnNodeLinker: this.options.yarnNodeLinker,
+      typescript,
+      testing: this.appConfig.testing,
+      testRunner: this.appConfig.testRunner,
+    });
 
     // only for gitignore
     if (this.fs.exists(".env.example")) {
       ignorePaths.push("/.env*", "!/.env.example");
     }
 
-    this.composeWith(
-      {
-        Generator: CoreGitignoreGenerator,
-        path: CoreGitignoreGenerator.path,
-      },
-      {
-        root: !inMonorepo || inMonorepo.root,
-        documentation: false,
-        testing: this.appConfig.testing,
-        withBabel: babel,
-        paths: ignorePaths.join("\n"),
-        buildInGit: false,
-      },
-    );
+    this.composeWith("pob:core:gitignore", {
+      root: !inMonorepo || inMonorepo.root,
+      documentation: false,
+      testing: this.appConfig.testing,
+      withBabel: babel,
+      paths: ignorePaths.join("\n"),
+      buildInGit: false,
+    });
 
-    this.composeWith(
-      {
-        Generator: CoreNpmGenerator,
-        path: CoreNpmGenerator.path,
-      },
-      { enable: false },
-    );
+    this.composeWith("pob:core:npm", { enable: false });
 
     switch (this.appConfig.type) {
       case "next.js":
-        this.composeWith(
-          {
-            Generator: AppNextjsGenerator,
-            path: AppNextjsGenerator.path,
-          },
-          {
-            export: this.appConfig.export,
-          },
-        );
+        this.composeWith("pob:app:nextjs", {
+          export: this.appConfig.export,
+        });
         break;
       case "remix":
-        this.composeWith(
-          {
-            Generator: AppRemixGenerator,
-            path: AppRemixGenerator.path,
-          },
-          {},
-        );
+        this.composeWith("pob:app:remix", {});
         break;
       // no default
     }
@@ -476,9 +377,6 @@ export default class PobAppGenerator extends Generator {
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
 
-    this.composeWith({
-      Generator: CoreSortPackageGenerator,
-      path: CoreSortPackageGenerator.path,
-    });
+    this.composeWith("pob:core:sort-package");
   }
 }

@@ -1,9 +1,6 @@
-import { fileURLToPath } from "node:url";
 import Generator from "yeoman-generator";
 
 export default class CoreNpmGenerator extends Generator {
-  static path = fileURLToPath(import.meta.url);
-
   constructor(args, opts) {
     super(args, opts);
 

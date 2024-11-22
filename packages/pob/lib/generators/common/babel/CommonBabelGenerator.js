@@ -1,4 +1,3 @@
-import { fileURLToPath } from "node:url";
 import Generator from "yeoman-generator";
 import { latestLTS, maintenanceLTS } from "../../../utils/node.js";
 import * as packageUtils from "../../../utils/package.js";
@@ -6,8 +5,6 @@ import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
 /** @deprecated */
 export default class CommonBabelGenerator extends Generator {
-  static path = fileURLToPath(import.meta.url);
-
   constructor(args, opts) {
     super(args, opts);
 
