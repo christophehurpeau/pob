@@ -3645,7 +3645,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob-example/next-app@workspace:pob-examples/next-app"
   dependencies:
-    "@types/node": "npm:22.9.0"
+    "@types/node": "npm:22.9.1"
     "@types/react": "npm:18.3.12"
     "@types/react-dom": "npm:18.3.1"
     next: "npm:15.0.3"
@@ -4777,12 +4777,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:22.9.0, @types/node@npm:>=16.18.31, @types/node@npm:>=18, @types/node@npm:>=18.0.0, @types/node@npm:>=18.18.5":
-  version: 22.9.0
-  resolution: "@types/node@npm:22.9.0"
+"@types/node@npm:*, @types/node@npm:22.9.1, @types/node@npm:>=16.18.31, @types/node@npm:>=18, @types/node@npm:>=18.0.0, @types/node@npm:>=18.18.5":
+  version: 22.9.1
+  resolution: "@types/node@npm:22.9.1"
   dependencies:
     undici-types: "npm:~6.19.8"
-  checksum: 10c0/3f46cbe0a49bab4ba30494025e4c8a6e699b98ac922857aa1f0209ce11a1313ee46e6808b8f13fe5b8b960a9d7796b77c8d542ad4e9810e85ef897d5593b5d51
+  checksum: 10c0/ea489ae603aa8874e4e88980aab6f2dad09c755da779c88dd142983bfe9609803c89415ca7781f723072934066f63daf2b3339ef084a8ad1a8079cf3958be243
   languageName: node
   linkType: hard
 
@@ -9114,7 +9114,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:7.26.0"
     "@babel/preset-env": "npm:7.26.0"
-    "@types/node": "npm:22.9.0"
+    "@types/node": "npm:22.9.1"
     pob-babel: "npm:42.0.0"
     typescript: "npm:5.6.3"
   languageName: unknown
@@ -13959,7 +13959,7 @@ __metadata:
     "@swc/core": "npm:1.9.3"
     "@swc/jest": "npm:0.2.37"
     "@types/jest": "npm:29.5.14"
-    "@types/node": "npm:22.9.0"
+    "@types/node": "npm:22.9.1"
     "@vitest/coverage-v8": "npm:2.1.5"
     alp-rollup-plugin-config: "npm:2.2.1"
     check-package-dependencies: "npm:7.2.0"
@@ -14011,7 +14011,7 @@ __metadata:
     "@pob/sort-pkg": "npm:9.0.0"
     "@prettier/sync": "npm:0.5.2"
     "@types/inquirer": "npm:9.0.7"
-    "@types/node": "npm:22.9.0"
+    "@types/node": "npm:22.9.1"
     "@yarnpkg/cli": "npm:4.5.1"
     "@yarnpkg/core": "npm:4.1.4"
     "@yarnpkg/fslib": "npm:3.1.0"
@@ -17284,7 +17284,7 @@ __metadata:
     "@octokit/rest": "npm:21.0.2"
     "@pob/pretty-pkg": "npm:10.0.0"
     "@pob/rollup-esbuild": "npm:5.0.0"
-    "@types/node": "npm:22.9.0"
+    "@types/node": "npm:22.9.1"
     "@types/npmcli__map-workspaces": "npm:3.0.4"
     commander: "npm:12.1.0"
     conventional-changelog-conventionalcommits: "npm:8.0.0"
