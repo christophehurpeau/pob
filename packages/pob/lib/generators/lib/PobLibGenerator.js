@@ -1,6 +1,7 @@
 import { rmSync } from "node:fs";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../utils/inMonorepo.js";
+import { latestLTS } from "../../utils/node.js";
 import * as packageUtils from "../../utils/package.js";
 
 export default class PobLibGenerator extends Generator {
@@ -160,6 +161,12 @@ export default class PobLibGenerator extends Generator {
       pkg.pob.jsx = jsx;
     }
 
+    this.onlyLatestLTS = pkg.pob.envs
+      ? pkg.pob.envs
+          .filter((env) => env.target === "node")
+          .every((env) => env.version === latestLTS)
+      : false;
+
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
   }
 
@@ -245,14 +252,14 @@ export default class PobLibGenerator extends Generator {
       testing: !!this.pobjson.testing,
       documentation: !!this.pobjson.documentation,
       fromPob: this.options.fromPob,
-      onlyLatestLTS: false,
+      onlyLatestLTS: this.onlyLatestLTS,
     });
     this.composeWith("pob:common:transpiler", {
       updateOnly: this.options.updateOnly,
       testing: !!this.pobjson.testing,
       documentation: !!this.pobjson.documentation,
       fromPob: this.options.fromPob,
-      onlyLatestLTS: false,
+      onlyLatestLTS: this.onlyLatestLTS,
     });
   }
 
@@ -286,7 +293,7 @@ export default class PobLibGenerator extends Generator {
       updateOnly: this.options.updateOnly,
       baseUrl: "none", // causes issues on dist definition files
       builddefs: true,
-      onlyLatestLTS: false,
+      onlyLatestLTS: this.onlyLatestLTS,
       srcDirectory: withTypescript ? "src" : "lib",
     });
 
