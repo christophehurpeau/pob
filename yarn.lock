@@ -3686,7 +3686,7 @@ __metadata:
     json5: "npm:^2.2.2"
     lint-staged: "npm:15.2.10"
     pob-dependencies: "workspace:*"
-    prettier: "npm:3.4.0"
+    prettier: "npm:3.4.1"
     repository-check-dirty: "npm:9.0.0"
     semver: "npm:^7.3.7"
     which-pm-runs: "npm:1.1.0"
@@ -13726,7 +13726,7 @@ __metadata:
     jest: "npm:29.7.0"
     jest-junit-reporter: "npm:1.1.0"
     pob-babel: "npm:42.0.0"
-    prettier: "npm:3.4.0"
+    prettier: "npm:3.4.1"
     repository-check-dirty: "npm:9.0.0"
     rollup: "npm:4.27.4"
     semver: "npm:7.6.3"
@@ -13751,7 +13751,7 @@ __metadata:
     eslint: "npm:9.14.0"
     jest: "npm:29.7.0"
     pob-babel: "workspace:*"
-    prettier: "npm:3.4.0"
+    prettier: "npm:3.4.1"
     react: "npm:18.3.1"
     typescript: "npm:5.6.3"
   languageName: unknown
@@ -13788,7 +13788,7 @@ __metadata:
     minimist: "npm:1.2.8"
     parse-author: "npm:2.0.0"
     pob-dependencies: "workspace:*"
-    prettier: "npm:3.4.0"
+    prettier: "npm:3.4.1"
     semver: "npm:7.6.3"
     typescript: "npm:5.6.3"
     validate-npm-package-name: "npm:^6.0.0"
@@ -13846,12 +13846,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:3.4.0, prettier@npm:^3.2.5":
-  version: 3.4.0
-  resolution: "prettier@npm:3.4.0"
+"prettier@npm:3.4.1, prettier@npm:^3.2.5":
+  version: 3.4.1
+  resolution: "prettier@npm:3.4.1"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10c0/00974e5053dcf04cefe8d6bdef16d6a311d834ff074e927dcb85a425c8a300113fe60dc269373c892edb58e0e57749541f2a7a91ee51cdd40ab3092587772cae
+  checksum: 10c0/2d6cc3101ad9de72b49c59339480b0983e6ff6742143da0c43f476bf3b5ef88ede42ebd9956d7a0a8fa59f7a5990e8ef03c9ad4c37f7e4c9e5db43ee0853156c
   languageName: node
   linkType: hard
 
