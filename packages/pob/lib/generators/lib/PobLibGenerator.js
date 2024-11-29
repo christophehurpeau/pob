@@ -273,7 +273,8 @@ export default class PobLibGenerator extends Generator {
       [];
 
     const withBabel = babelEnvs.length > 0;
-    const withTypescript = withBabel || pkg.pob.typescript === true;
+    const withTypescript =
+      withBabel || pkg.pob.typescript === true || pkg.pob.bundler === "tsc";
     const jsx = (withBabel || withTypescript) && pkg.pob.jsx === true;
     const browser = pkg.pob.envs?.some((env) => env.target === "browser");
 
@@ -324,6 +325,7 @@ export default class PobLibGenerator extends Generator {
       isApp: false,
       splitCIJobs: false,
       srcDirectory: withBabel || withTypescript ? "src" : "lib",
+      onlyLatestLTS: this.onlyLatestLTS,
     });
 
     // must be after testing
@@ -410,7 +412,8 @@ export default class PobLibGenerator extends Generator {
         (!pkg.pob.bundler && pkg.pob.typescript !== true && pkg.pob.envs) ||
         pkg.pob.bundler === "rollup-babel",
     );
-    const withTypescript = withBabel || pkg.pob.typescript === true;
+    const withTypescript =
+      withBabel || pkg.pob.typescript === true || pkg.pob.bundler === "tsc";
 
     packageUtils.removeDevDependencies(pkg, ["lerna", "@pob/lerna-light"]);
     if (inMonorepo) {

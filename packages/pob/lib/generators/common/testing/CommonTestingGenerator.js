@@ -178,6 +178,7 @@ export default class CommonTestingGenerator extends Generator {
         : packageUtils.transpileWithBabel(pkg);
     const withTypescript =
       transpileWithBabel ||
+      pkg.pob?.bundler === "tsc" ||
       (pkg.pob?.typescript && pkg.pob.typescript !== "check-only");
     let hasReact =
       withTypescript &&
@@ -194,6 +195,7 @@ export default class CommonTestingGenerator extends Generator {
       if (testRunner === "vitest") return undefined;
       if (!withTypescript) return undefined;
       if (this.options.swc || isJestRunner) return "swc";
+      if (this.options.onlyLatestLTS) return "node";
       return "ts-node";
     })();
 
@@ -270,6 +272,8 @@ export default class CommonTestingGenerator extends Generator {
 
     const tsTestLoaderOption = (() => {
       switch (tsTestUtil) {
+        case "node":
+          return "--disable-warning=ExperimentalWarning --experimental-strip-types";
         case "ts-node":
           return "--loader=ts-node/esm --experimental-specifier-resolution=node";
         case "swc":

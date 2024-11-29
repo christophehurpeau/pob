@@ -149,7 +149,11 @@ export default class CommonTypescriptGenerator extends Generator {
             version: `${maintenanceLTS}`,
           },
         ];
-        if (pkg.pob.rollup === false || pkg.pob.bundler === false) {
+        if (
+          pkg.pob.rollup === false ||
+          pkg.pob.bundler === false ||
+          pkg.pob.bundler === "tsc"
+        ) {
           return [`@pob/root/tsconfigs/targets/node-${nodeVersion}.json`];
         }
         if (envs && envs.every((env) => env.target === "node")) {
@@ -278,7 +282,10 @@ export default class CommonTypescriptGenerator extends Generator {
         tsconfigPath,
         {
           emitDefinitions: this.options.builddefs,
-          build: pkg.pob?.rollup === false || pkg.pob?.bundler === false,
+          build:
+            pkg.pob?.rollup === false ||
+            pkg.pob?.bundler === false ||
+            pkg.pob?.bundler === "tsc",
           cacheEnabled: !this.options.isApp || this.options.isAppLibrary,
           monorepoPackageSrcPaths,
           monorepoPackageReferences,

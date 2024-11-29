@@ -121,7 +121,11 @@ export default class CommonTranspilerGenerator extends Generator {
     this.entries = pkg.pob.entries;
     this.babelEnvs = pkg.pob.babelEnvs || [];
 
-    if (this.babelEnvs.length > 0 || pkg.pob.typescript === true) {
+    if (
+      this.babelEnvs.length > 0 ||
+      pkg.pob.typescript === true ||
+      pkg.pob.bundler
+    ) {
       fs.mkdirSync(this.destinationPath("src"), { recursive: true });
     } else {
       // recursive does not throw if directory already exists
@@ -137,6 +141,7 @@ export default class CommonTranspilerGenerator extends Generator {
     const bundler =
       withTypescript &&
       (pkg.pob.rollup === false ||
+      pkg.pob.bundler === "tsc" ||
       (!pkg.pob.bundler && !pkg.pob.typescript === true)
         ? "tsc"
         : (pkg.pob.bundler ??
@@ -150,7 +155,8 @@ export default class CommonTranspilerGenerator extends Generator {
       if (bundler === "rollup-esbuild") return "pob-esbuild-clean-out";
       if (bundler === "rollup-babel") return "pob-babel-clean-out";
       if (bundler === "esbuild") return "pob-esbuild-clean-out";
-      return null;
+      if (bundler === "tsc") return "rm -Rf";
+      if (bundler) throw new Error(`Invalid bundler: ${bundler}`);
     })();
 
     /* scripts */
@@ -346,7 +352,7 @@ export default class CommonTranspilerGenerator extends Generator {
 
     /* webpack 5 and node with ESM support */
     if (bundler || withTypescript) {
-      const omitTarget = bundler === "esbuild";
+      const omitTarget = bundler === "esbuild" || bundler === "tsc";
       pkg.exports = {
         "./package.json": "./package.json",
       };
@@ -365,9 +371,7 @@ export default class CommonTranspilerGenerator extends Generator {
           types:
             pkg.private || this.options.isAppLibrary
               ? `./src/${entryDistName}.ts`
-              : `./${this.options.buildDirectory}/${
-                  bundler !== "tsc" ? "definitions/" : ""
-                }${entryDistName}.d.ts`,
+              : `./${this.options.buildDirectory}/definitions/${entryDistName}.d.ts`,
         };
 
         const defaultNodeEnv =
@@ -377,66 +381,78 @@ export default class CommonTranspilerGenerator extends Generator {
 
         const defaultNodeEnvVersion = defaultNodeEnv && defaultNodeEnv.version;
 
-        envs.forEach(({ target, version, formats, omitVersionInFileName }) => {
-          if (target === "node" && entry === "browser") return;
+        envs.forEach(
+          ({
+            target,
+            version,
+            formats,
+            omitVersionInFileName = bundler === "tsc",
+          }) => {
+            if (target === "node" && entry === "browser") return;
 
-          const exportTarget = {};
+            const exportTarget = {};
 
-          if (target === "node") {
-            const cjsExt = pkg.type === "module" ? "cjs" : "cjs.js";
-            const filenameWithoutExt = `${entryDistName}${
-              omitTarget
-                ? ""
-                : `-${target}${omitVersionInFileName ? "" : version}`
-            }`;
-            if (!formats || formats.includes("es")) {
-              exportTarget.import = `./${this.options.buildDirectory}/${filenameWithoutExt}.mjs`;
+            if (target === "node") {
+              const cjsExt = pkg.type === "module" ? "cjs" : "cjs.js";
+              const filenameWithoutExt = `${entryDistName}${
+                omitTarget
+                  ? ""
+                  : `-${target}${omitVersionInFileName ? "" : version}`
+              }`;
+              if (bundler === "tsc") {
+                if (formats) {
+                  throw new Error("tsc does not support formats");
+                }
+                exportTarget.import = `./${this.options.buildDirectory}/${filenameWithoutExt}.js`;
+              } else if (!formats || formats.includes("es")) {
+                exportTarget.import = `./${this.options.buildDirectory}/${filenameWithoutExt}.mjs`;
+
+                if (formats && formats.includes("cjs")) {
+                  exportTarget.require = `./${this.options.buildDirectory}/${filenameWithoutExt}.${cjsExt}`;
+                }
+              } else if (formats && formats.includes("cjs")) {
+                exportTarget.default = `./${this.options.buildDirectory}/${filenameWithoutExt}.${cjsExt}`;
+              }
+              // eslint: https://github.com/benmosher/eslint-plugin-import/issues/2132
+              // jest: https://github.com/facebook/jest/issues/9771
+              if (!pkg.main && exportName === ".") {
+                pkg.main =
+                  pkg.type === "module"
+                    ? exportTarget.import
+                    : exportTarget.default ||
+                      exportTarget.require ||
+                      exportTarget.import;
+              }
+            } else if (target === "browser") {
+              if (!formats || formats.includes("es")) {
+                exportTarget.import = `./${
+                  this.options.buildDirectory
+                }/${entryDistName}-${target}${version || ""}.es.js`;
+              }
 
               if (formats && formats.includes("cjs")) {
-                exportTarget.require = `./${this.options.buildDirectory}/${filenameWithoutExt}.${cjsExt}`;
+                exportTarget.require = `./${
+                  this.options.buildDirectory
+                }/index-${target}${version || ""}.cjs.js`;
               }
-            } else if (formats && formats.includes("cjs")) {
-              exportTarget.default = `./${this.options.buildDirectory}/${filenameWithoutExt}.${cjsExt}`;
-            }
-            // eslint: https://github.com/benmosher/eslint-plugin-import/issues/2132
-            // jest: https://github.com/facebook/jest/issues/9771
-            if (!pkg.main && exportName === ".") {
-              pkg.main =
-                pkg.type === "module"
-                  ? exportTarget.import
-                  : exportTarget.default ||
-                    exportTarget.require ||
-                    exportTarget.import;
-            }
-          } else if (target === "browser") {
-            if (!formats || formats.includes("es")) {
-              exportTarget.import = `./${
-                this.options.buildDirectory
-              }/${entryDistName}-${target}${version || ""}.es.js`;
             }
 
-            if (formats && formats.includes("cjs")) {
-              exportTarget.require = `./${
-                this.options.buildDirectory
-              }/index-${target}${version || ""}.cjs.js`;
+            if (
+              !version ||
+              (target === "node" && version === defaultNodeEnvVersion)
+            ) {
+              targets[target] = {
+                ...targets[target],
+                ...exportTarget,
+              };
+            } else {
+              targets[target] = {
+                [`${target}:${version}`]: exportTarget,
+                ...targets[target],
+              };
             }
-          }
-
-          if (
-            !version ||
-            (target === "node" && version === defaultNodeEnvVersion)
-          ) {
-            targets[target] = {
-              ...targets[target],
-              ...exportTarget,
-            };
-          } else {
-            targets[target] = {
-              [`${target}:${version}`]: exportTarget,
-              ...targets[target],
-            };
-          }
-        });
+          },
+        );
 
         pkg.exports[exportName] = targets;
       });
@@ -656,7 +672,12 @@ export default class CommonTranspilerGenerator extends Generator {
           },
         );
       }
-    } else if (!envs || envs.length === 0 || pkg.pob?.bundler === "esbuild") {
+    } else if (
+      !envs ||
+      envs.length === 0 ||
+      pkg.pob?.bundler === "esbuild" ||
+      pkg.pob?.bundler === "tsc"
+    ) {
       this.fs.delete("rollup.config.mjs");
     }
 

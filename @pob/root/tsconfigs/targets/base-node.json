@@ -6,6 +6,9 @@
     "importHelpers": true,
     "module": "node16",
     "moduleResolution": "node16",
-    "esModuleInterop": true
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+    "esModuleInterop": true,
+    "sourceMap": true
   }
 }

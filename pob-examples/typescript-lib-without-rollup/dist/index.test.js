@@ -10,3 +10,4 @@ describe("dist", () => {
         expect(fs.readFileSync(new URL("../dist/index.js", import.meta.url), "utf8")).toMatchSnapshot();
     });
 });
+//# sourceMappingURL=index.test.js.map
