@@ -1,6 +1,6 @@
 {
   "name": "pob-dependencies",
-  "version": "15.2.0",
+  "version": "15.2.1",
   "description": "easier dependencies upgrade with a real package.json",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -43,7 +43,7 @@
     "@babel/preset-react": "7.25.9",
     "@babel/runtime": "7.26.0",
     "@playwright/test": "1.49.0",
-    "@pob/commitlint-config": "8.0.0",
+    "@pob/commitlint-config": "8.0.1",
     "@pob/esbuild": "3.0.0",
     "@pob/eslint-config": "58.1.0",
     "@pob/eslint-config-typescript": "58.1.0",

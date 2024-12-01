@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.2.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@15.2.0...pob-dependencies@15.2.1) (2024-12-01)
+
+Version bump for dependency: @pob/commitlint-config
+
+
 ## [15.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@15.1.1...pob-dependencies@15.2.0) (2024-12-01)
 
 ### Features

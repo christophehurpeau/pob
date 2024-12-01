@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.1](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@8.0.0...@pob/commitlint-config@8.0.1) (2024-12-01)
+
+### Bug Fixes
+
+* commitlint disable max length ([5e4b344](https://github.com/christophehurpeau/pob/commit/5e4b3444dcde5d7797381235a1f4b0ec22980e0d))
+
 ## [8.0.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@7.0.0...@pob/commitlint-config@8.0.0) (2024-11-11)
 
 ### ⚠ BREAKING CHANGES

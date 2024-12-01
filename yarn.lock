@@ -3523,7 +3523,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/commitlint-config@npm:8.0.0, @pob/commitlint-config@workspace:@pob/commitlint-config":
+"@pob/commitlint-config@npm:8.0.1, @pob/commitlint-config@workspace:@pob/commitlint-config":
   version: 0.0.0-use.local
   resolution: "@pob/commitlint-config@workspace:@pob/commitlint-config"
   dependencies:
@@ -13529,7 +13529,7 @@ __metadata:
     "@babel/preset-react": "npm:7.25.9"
     "@babel/runtime": "npm:7.26.0"
     "@playwright/test": "npm:1.49.0"
-    "@pob/commitlint-config": "npm:8.0.0"
+    "@pob/commitlint-config": "npm:8.0.1"
     "@pob/esbuild": "npm:3.0.0"
     "@pob/eslint-config": "npm:58.1.0"
     "@pob/eslint-config-typescript": "npm:58.1.0"
