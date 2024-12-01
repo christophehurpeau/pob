@@ -1,7 +1,7 @@
 {
   "name": "example-typescript-lib",
   "private": true,
-  "version": "0.32.0",
+  "version": "0.32.1",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": {
@@ -70,7 +70,7 @@
     "@babel/core": "7.26.0",
     "@babel/preset-env": "7.26.0",
     "@types/node": "22.10.1",
-    "pob-babel": "42.0.0",
+    "pob-babel": "42.0.1",
     "typescript": "5.7.2"
   }
 }

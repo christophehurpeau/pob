@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@15.1.1...pob-dependencies@15.2.0) (2024-12-01)
+
+### Features
+
+* **deps:** update dependency prettier to v3.4.0 ([#2325](https://github.com/christophehurpeau/pob/issues/2325)) ([367f1dc](https://github.com/christophehurpeau/pob/commit/367f1dcebf3b47b61c024380b6358894dcb6514a))
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v3.4.1 ([#2328](https://github.com/christophehurpeau/pob/issues/2328)) ([cf236ba](https://github.com/christophehurpeau/pob/commit/cf236bac297964115e0b7bb463f923ea78c51ca8))
+
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: pob-babel
+
+
 ## [15.1.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@15.1.0...pob-dependencies@15.1.1) (2024-11-17)
 
 Note: no notable changes

@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.1](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@5.0.0...@pob/rollup-esbuild@5.0.1) (2024-12-01)
+
+Version bump for dependency: @pob/rollup
+
+
 ## [5.0.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@4.1.0...@pob/rollup-esbuild@5.0.0) (2024-11-11)
 
 ### ⚠ BREAKING CHANGES

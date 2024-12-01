@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@14.1.0...@pob/root@14.2.0) (2024-12-01)
+
+### Features
+
+* bundler tsc using experimental-strip-types ([98002f8](https://github.com/christophehurpeau/pob/commit/98002f832c1869e23c5c93c3f5e61b4915e1263b))
+* **deps:** update dependency @commitlint/cli to v19.6.0 ([#2311](https://github.com/christophehurpeau/pob/issues/2311)) ([1698005](https://github.com/christophehurpeau/pob/commit/1698005fae2a81a6bfd18010e0d242592bc0faee))
+* **deps:** update dependency prettier to v3.4.0 ([#2325](https://github.com/christophehurpeau/pob/issues/2325)) ([367f1dc](https://github.com/christophehurpeau/pob/commit/367f1dcebf3b47b61c024380b6358894dcb6514a))
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v3.4.1 ([#2328](https://github.com/christophehurpeau/pob/issues/2328)) ([cf236ba](https://github.com/christophehurpeau/pob/commit/cf236bac297964115e0b7bb463f923ea78c51ca8))
+* update to yarn 4.5.3 ([c35c763](https://github.com/christophehurpeau/pob/commit/c35c763684d2c72196f0f0a8c92020d239e0d04d))
+
+Version bump for dependency: yarn-version
+
+
 ## [14.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@14.0.1...@pob/root@14.1.0) (2024-11-17)
 
 ### Features

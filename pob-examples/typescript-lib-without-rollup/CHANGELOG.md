@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.26.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.25.0...example-typescript-lib-without-rollup@0.26.0) (2024-12-01)
+
+### Features
+
+* bundler tsc using experimental-strip-types ([98002f8](https://github.com/christophehurpeau/pob/commit/98002f832c1869e23c5c93c3f5e61b4915e1263b))
+
 ## [0.25.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.24.1...example-typescript-lib-without-rollup@0.25.0) (2024-11-11)
 
 ### ⚠ BREAKING CHANGES

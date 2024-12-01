@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.3.0](https://github.com/christophehurpeau/pob/compare/pob@24.2.0...pob@24.3.0) (2024-12-01)
+
+### Features
+
+* allow lib to use latest lts ([2c7d51f](https://github.com/christophehurpeau/pob/commit/2c7d51f4bab9e64af469afc1c2b59b74c7c7a8fa))
+* bundler tsc using experimental-strip-types ([98002f8](https://github.com/christophehurpeau/pob/commit/98002f832c1869e23c5c93c3f5e61b4915e1263b))
+* **deps:** update dependency prettier to v3.4.0 ([#2325](https://github.com/christophehurpeau/pob/issues/2325)) ([367f1dc](https://github.com/christophehurpeau/pob/commit/367f1dcebf3b47b61c024380b6358894dcb6514a))
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v3.4.1 ([#2328](https://github.com/christophehurpeau/pob/issues/2328)) ([cf236ba](https://github.com/christophehurpeau/pob/commit/cf236bac297964115e0b7bb463f923ea78c51ca8))
+* **deps:** update yarn monorepo ([#2314](https://github.com/christophehurpeau/pob/issues/2314)) ([a175402](https://github.com/christophehurpeau/pob/commit/a17540280c524ceeed748625c94b7b4c717e0ba2))
+* **deps:** update yarn monorepo ([#2322](https://github.com/christophehurpeau/pob/issues/2322)) ([ec71e81](https://github.com/christophehurpeau/pob/commit/ec71e8101df4a3bace9ec3c02874165af7580df6))
+
+### Reverts
+
+* Revert "refactor: properly import generators" ([e1e2d46](https://github.com/christophehurpeau/pob/commit/e1e2d468729e3cae03637e8f7169c65e3ba85d4b))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [24.2.0](https://github.com/christophehurpeau/pob/compare/pob@24.1.0...pob@24.2.0) (2024-11-17)
 
 ### Bug Fixes
