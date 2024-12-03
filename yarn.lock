@@ -3128,15 +3128,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@npmcli/map-workspaces@npm:4.0.1":
-  version: 4.0.1
-  resolution: "@npmcli/map-workspaces@npm:4.0.1"
+"@npmcli/map-workspaces@npm:4.0.2":
+  version: 4.0.2
+  resolution: "@npmcli/map-workspaces@npm:4.0.2"
   dependencies:
     "@npmcli/name-from-folder": "npm:^3.0.0"
     "@npmcli/package-json": "npm:^6.0.0"
     glob: "npm:^10.2.2"
     minimatch: "npm:^9.0.0"
-  checksum: 10c0/adcd53b79a4df239938b25fecdfdc79aaba1cdd470287c582881f13da1216634015d26b3d037af90f59945b7a577a46da3bf8b94d06fcc7992aafb4c1f0d41c8
+  checksum: 10c0/26af5e5271c52d0986228583218fa04fcea2e0e1052f0c50f5c7941bbfb7be487cc98c2e6732f0a3f515f6d9228d7dc04414f0471f40a33b748e2b4cbb350b86
   languageName: node
   linkType: hard
 
@@ -16992,7 +16992,7 @@ __metadata:
   resolution: "yarn-version@workspace:packages/yarn-version"
   dependencies:
     "@conventional-changelog/git-client": "npm:1.0.1"
-    "@npmcli/map-workspaces": "npm:4.0.1"
+    "@npmcli/map-workspaces": "npm:4.0.2"
     "@octokit/rest": "npm:21.0.2"
     "@pob/pretty-pkg": "npm:10.0.0"
     "@pob/rollup-esbuild": "npm:5.0.2"
