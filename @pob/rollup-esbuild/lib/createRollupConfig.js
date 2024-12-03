@@ -67,7 +67,7 @@ export default function createRollupConfig({
           },
         }),
 
-        ...plugins,
+        ...(typeof plugins === "function" ? plugins(env) : plugins),
       ].filter(Boolean),
     };
   };
