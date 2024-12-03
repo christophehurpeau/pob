@@ -10,6 +10,7 @@ export default function createRollupConfig({
   outDirectory = "dist",
   pkg = JSON.parse(readFileSync(path.join(cwd, "package.json"))),
   plugins = [],
+  getExtensions = (v) => v,
 }) {
   const pobConfig = pkg.pob;
 
@@ -23,7 +24,10 @@ export default function createRollupConfig({
   const externalByPackageJson = configExternalDependencies(pkg);
 
   const createConfigForEnv = (entry, entryPath, env) => {
-    const extensions = [".ts", jsx && ".tsx", ".json"].filter(Boolean);
+    const extensions = getExtensions(
+      [".ts", jsx && ".tsx", ".json"],
+      env,
+    ).filter(Boolean);
     const preferConst = true;
 
     return {
