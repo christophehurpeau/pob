@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@15.2.2...pob-dependencies@15.3.0) (2024-12-03)
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [15.2.2](https://github.com/christophehurpeau/pob/compare/pob-dependencies@15.2.1...pob-dependencies@15.2.2) (2024-12-03)
 
 Version bump for dependency: @pob/rollup-esbuild

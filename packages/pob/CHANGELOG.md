@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.4.0](https://github.com/christophehurpeau/pob/compare/pob@24.3.1...pob@24.4.0) (2024-12-03)
+
+Version bump for dependency: @pob/root
+
+
 ## [24.3.1](https://github.com/christophehurpeau/pob/compare/pob@24.3.0...pob@24.3.1) (2024-12-03)
 
 Version bump for dependency: yarn-workspace-utils

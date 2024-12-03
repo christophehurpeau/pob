@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.0](https://github.com/christophehurpeau/pob/compare/yarn-version@4.0.3...yarn-version@4.1.0) (2024-12-03)
+
+### Bug Fixes
+
+* **deps:** update dependency @npmcli/map-workspaces to v4.0.2 ([#2313](https://github.com/christophehurpeau/pob/issues/2313)) ([edc2965](https://github.com/christophehurpeau/pob/commit/edc296558a19af196a96e72392cfb335d5e538ab))
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [4.0.3](https://github.com/christophehurpeau/pob/compare/yarn-version@4.0.2...yarn-version@4.0.3) (2024-12-03)
 
 Version bump for dependency: @pob/rollup-esbuild

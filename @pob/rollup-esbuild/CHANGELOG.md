@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@5.0.2...@pob/rollup-esbuild@5.1.0) (2024-12-03)
+
+### Features
+
+* **rollup:** allow plugins to be a function in createRollupConfig ([67f72d8](https://github.com/christophehurpeau/pob/commit/67f72d83471220199b65e4ffb0fabe7bca048bd2))
+
 ## [5.0.2](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@5.0.1...@pob/rollup-esbuild@5.0.2) (2024-12-03)
 
 Version bump for dependency: @pob/rollup

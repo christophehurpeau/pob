@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@14.2.1...@pob/root@14.3.0) (2024-12-03)
+
+Version bump for dependency: yarn-version
+
+
 ## [14.2.1](https://github.com/christophehurpeau/pob/compare/@pob/root@14.2.0...@pob/root@14.2.1) (2024-12-03)
 
 Version bump for dependency: yarn-version

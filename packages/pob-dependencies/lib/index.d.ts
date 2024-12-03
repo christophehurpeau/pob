@@ -10,7 +10,7 @@ interface Dependencies {
   "@pob/eslint-config-typescript": "58.1.0";
   "@pob/eslint-config-typescript-react": "58.1.0";
   "@pob/pretty-pkg": "10.0.0";
-  "@pob/rollup-esbuild": "5.0.1";
+  "@pob/rollup-esbuild": "5.0.2";
   "@pob/rollup-typescript": "6.0.0";
   "@swc-node/register": "1.10.9";
   "@swc/core": "1.9.3";
@@ -23,7 +23,7 @@ interface Dependencies {
   eslint: "9.14.0";
   jest: "29.7.0";
   "jest-junit-reporter": "1.1.0";
-  "pob-babel": "42.0.1";
+  "pob-babel": "42.0.2";
   prettier: "3.4.1";
   "repository-check-dirty": "9.0.0";
   rollup: "4.28.0";
