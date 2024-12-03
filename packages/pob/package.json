@@ -1,6 +1,6 @@
 {
   "name": "pob",
-  "version": "24.3.0",
+  "version": "24.3.1",
   "description": "Pile of bones, library generator with git/babel/typescript/typedoc/readme/jest",
   "keywords": [
     "skeleton"
@@ -69,12 +69,12 @@
     "prettier": "3.4.1",
     "semver": "7.6.3",
     "validate-npm-package-name": "^6.0.0",
-    "yarn-workspace-utils": "7.0.1",
+    "yarn-workspace-utils": "7.0.2",
     "yeoman-environment": "4.4.3",
     "yeoman-generator": "7.3.3"
   },
   "devDependencies": {
-    "@pob/root": "14.2.0",
+    "@pob/root": "14.2.1",
     "@types/node": "22.10.1",
     "typescript": "5.7.2"
   }
