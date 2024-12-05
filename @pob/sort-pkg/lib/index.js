@@ -39,7 +39,6 @@ export default function sortPkg(pkg) {
     "module",
     "browser",
     "browserify",
-    "react-native", // react-native doesnt use exports field in stable yet
     "exports",
     "style", // https://stackoverflow.com/questions/32037150/style-field-in-package-json
     /* documentation */

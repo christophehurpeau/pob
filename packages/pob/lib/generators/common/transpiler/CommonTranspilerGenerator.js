@@ -315,9 +315,6 @@ export default class CommonTranspilerGenerator extends Generator {
       }
     }
 
-    delete pkg["browser-dev"];
-    delete pkg["module-dev"];
-
     const envs = pkg.pob.babelEnvs ||
       pkg.pob.envs || [
         {
@@ -326,13 +323,6 @@ export default class CommonTranspilerGenerator extends Generator {
         },
       ];
 
-    const esAllBrowserEnv = envs.find(
-      (env) =>
-        env.target === "browser" &&
-        env.version === undefined &&
-        (!env.formats || env.formats.includes("es")),
-    );
-
     // Legacy "dev" builds
     delete pkg["module:browser"];
     delete pkg["module:browser-dev"];
@@ -340,15 +330,11 @@ export default class CommonTranspilerGenerator extends Generator {
     delete pkg["module:modern-browsers-dev"];
     delete pkg["module:node"];
     delete pkg["module:node-dev"];
-
-    /* webpack 4 */
-    if (esAllBrowserEnv) {
-      pkg.module = `./${this.options.buildDirectory}/index-browser.es.js`;
-      pkg.browser = `./${this.options.buildDirectory}/index-browser.es.js`;
-    } else {
-      delete pkg.module;
-      delete pkg.browser;
-    }
+    delete pkg["react-native"];
+    delete pkg.module;
+    delete pkg["module-dev"];
+    delete pkg.browser;
+    delete pkg["browser-dev"];
 
     /* webpack 5 and node with ESM support */
     if (bundler || withTypescript) {
@@ -423,7 +409,7 @@ export default class CommonTranspilerGenerator extends Generator {
                       exportTarget.require ||
                       exportTarget.import;
               }
-            } else if (target === "browser") {
+            } else {
               if (!formats || formats.includes("es")) {
                 exportTarget.import = `./${
                   this.options.buildDirectory
