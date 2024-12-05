@@ -419,7 +419,7 @@ export default class CommonTranspilerGenerator extends Generator {
               if (formats && formats.includes("cjs")) {
                 exportTarget.require = `./${
                   this.options.buildDirectory
-                }/index-${target}${version || ""}.cjs.js`;
+                }/${entryDistName}-${target}${version || ""}.cjs.js`;
               }
             }
 
