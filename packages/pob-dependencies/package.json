@@ -1,6 +1,6 @@
 {
   "name": "pob-dependencies",
-  "version": "15.3.0",
+  "version": "15.4.0",
   "description": "easier dependencies upgrade with a real package.json",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -49,7 +49,7 @@
     "@pob/eslint-config-typescript": "58.1.0",
     "@pob/eslint-config-typescript-react": "58.1.0",
     "@pob/pretty-pkg": "10.0.0",
-    "@pob/rollup-esbuild": "5.1.0",
+    "@pob/rollup-esbuild": "5.2.0",
     "@pob/rollup-typescript": "6.0.0",
     "@swc-node/register": "1.10.9",
     "@swc/core": "1.10.0",

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@14.3.0...@pob/root@14.4.0) (2024-12-05)
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v3.4.2 ([#2342](https://github.com/christophehurpeau/pob/issues/2342)) ([9f74b5a](https://github.com/christophehurpeau/pob/commit/9f74b5a733416a0f32c666149f47c2d7df81ffe5))
+
+Version bump for dependency: yarn-version
+
+
 ## [14.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@14.2.1...@pob/root@14.3.0) (2024-12-03)
 
 Version bump for dependency: yarn-version

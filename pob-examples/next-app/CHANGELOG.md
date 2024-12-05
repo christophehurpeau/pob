@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.2](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.7.1...@pob-example/next-app@0.7.2) (2024-12-05)
+
+Note: no notable changes
+
+
 ## [0.7.1](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.7.0...@pob-example/next-app@0.7.1) (2024-12-01)
 
 Note: no notable changes

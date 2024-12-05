@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@5.1.0...@pob/rollup-esbuild@5.2.0) (2024-12-05)
+
+### Features
+
+* getExtensions ([d2b9f72](https://github.com/christophehurpeau/pob/commit/d2b9f72775f59eda2380f2bd9c8596c1daaa7598))
+
+### Bug Fixes
+
+* **rollup-esbuild:** fix extensions order using loaders ([33fdaee](https://github.com/christophehurpeau/pob/commit/33fdaeeb14e17e7f622ab346cd15621f4c4ed0ae))
+
 ## [5.1.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@5.0.2...@pob/rollup-esbuild@5.1.0) (2024-12-03)
 
 ### Features
