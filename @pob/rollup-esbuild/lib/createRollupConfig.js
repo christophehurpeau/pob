@@ -58,6 +58,19 @@ export default function createRollupConfig({
       external: externalByPackageJson,
       plugins: [
         esbuild({
+          loaders: {
+            // https://github.com/egoist/rollup-plugin-esbuild/issues/384
+            js: false,
+            jsx: false,
+            ts: false,
+            tsx: false,
+            ...Object.fromEntries(
+              extensions.map((ext) => [
+                ext,
+                path.extname(`filename${ext}`).slice(1),
+              ]),
+            ),
+          },
           sourceMap: true,
           minify: false,
           tsconfig: path.resolve(cwd, env.tsconfig || "tsconfig.json"),
