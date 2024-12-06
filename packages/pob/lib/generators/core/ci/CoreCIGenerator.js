@@ -184,7 +184,7 @@ export default class CoreCIGenerator extends Generator {
               testing && `test (${maintenanceLTS})`,
             ].filter(Boolean)
           : [
-              !this.options.onlyLatestLTS && `build (${maintenanceLTS}.x)`,
+              !this.options.onlyLatestLTS && `build (${latestLTS}.x)`,
               `build (${maintenanceLTS}.x)`,
             ].filter(Boolean)),
       );
