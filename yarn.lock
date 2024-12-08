@@ -7239,19 +7239,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"check-package-dependencies@npm:7.2.0":
-  version: 7.2.0
-  resolution: "check-package-dependencies@npm:7.2.0"
+"check-package-dependencies@npm:8.0.1":
+  version: 8.0.1
+  resolution: "check-package-dependencies@npm:8.0.1"
   dependencies:
     chalk: "npm:^5.2.0"
-    glob: "npm:^10.0.0"
-    import-meta-resolve: "npm:^4.0.0"
+    import-meta-resolve: "npm:^4.1.0"
+    jsonc-parser: "npm:^3.3.1"
     semver: "npm:^7.5.4"
     semver-utils: "npm:^1.1.4"
+    tslib: "npm:^2.8.1"
     type-fest: "npm:^4.0.0"
   bin:
     check-package-dependencies: ./bin/check-package-dependencies.mjs
-  checksum: 10c0/4f10e53953f5f3888f6e3769e5df405909e3eaffb1c82807c209de6e07684080887586b16f0e8671ff44b33f3c0adf2c45b94f45f753606e5cbe1dcabacb34f4
+  checksum: 10c0/402e4db2a1b6965b2f922992ffee2a41f7f189e7818bc57c2d2e96ea2658b5a46cbf993006723c9f2796c7f025753c9618165f9a6a3de66f4e3cb1c5c1e71918
   languageName: node
   linkType: hard
 
@@ -9764,7 +9765,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"glob@npm:^10.0.0, glob@npm:^10.2.2, glob@npm:^10.3.10, glob@npm:^10.4.1":
+"glob@npm:^10.2.2, glob@npm:^10.3.10, glob@npm:^10.4.1":
   version: 10.4.5
   resolution: "glob@npm:10.4.5"
   dependencies:
@@ -10273,7 +10274,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"import-meta-resolve@npm:^4.0.0":
+"import-meta-resolve@npm:^4.0.0, import-meta-resolve@npm:^4.1.0":
   version: 4.1.0
   resolution: "import-meta-resolve@npm:4.1.0"
   checksum: 10c0/42f3284b0460635ddf105c4ad99c6716099c3ce76702602290ad5cbbcd295700cbc04e4bdf47bacf9e3f1a4cec2e1ff887dabc20458bef398f9de22ddff45ef5
@@ -11680,7 +11681,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsonc-parser@npm:^3.2.0":
+"jsonc-parser@npm:^3.2.0, jsonc-parser@npm:^3.3.1":
   version: 3.3.1
   resolution: "jsonc-parser@npm:3.3.1"
   checksum: 10c0/269c3ae0a0e4f907a914bf334306c384aabb9929bd8c99f909275ebd5c2d3bc70b9bcd119ad794f339dec9f24b6a4ee9cd5a8ab2e6435e730ad4075388fc2ab6
@@ -13792,7 +13793,7 @@ __metadata:
     "@types/node": "npm:22.10.1"
     "@vitest/coverage-v8": "npm:2.1.8"
     alp-rollup-plugin-config: "npm:2.2.1"
-    check-package-dependencies: "npm:7.2.0"
+    check-package-dependencies: "npm:8.0.1"
     eslint: "npm:9.14.0"
     jest: "npm:29.7.0"
     jest-junit-reporter: "npm:1.1.0"
@@ -13818,7 +13819,7 @@ __metadata:
     "@pob/eslint-config-typescript": "npm:58.1.0"
     "@pob/root": "workspace:*"
     "@types/jest": "npm:29.5.14"
-    check-package-dependencies: "npm:7.2.0"
+    check-package-dependencies: "npm:8.0.1"
     eslint: "npm:9.14.0"
     jest: "npm:29.7.0"
     pob-babel: "workspace:*"
