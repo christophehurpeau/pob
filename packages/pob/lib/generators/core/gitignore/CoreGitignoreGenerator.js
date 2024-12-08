@@ -52,10 +52,18 @@ export default class CoreGitignoreGenerator extends Generator {
       default: true,
       description: "Build is saved in git.",
     });
+
+    this.option("buildDirectory", {
+      type: String,
+      required: false,
+      default: "",
+      description: "Build directory.",
+    });
   }
 
   writing() {
-    const dest = this.destinationPath(".gitignore");
+    const gitignorePath = this.destinationPath(".gitignore");
+    const cursorignorePath = this.destinationPath(".cursorignore");
     const withBabel = this.options.withBabel;
 
     if (
@@ -64,9 +72,9 @@ export default class CoreGitignoreGenerator extends Generator {
       !this.options.paths &&
       !withBabel
     ) {
-      this.fs.delete(dest);
+      this.fs.delete(gitignorePath);
     } else {
-      this.fs.copyTpl(this.templatePath("gitignore.ejs"), dest, {
+      this.fs.copyTpl(this.templatePath("gitignore.ejs"), gitignorePath, {
         root: this.options.root,
         documentation: this.options.documentation,
         testing: this.options.testing,
@@ -77,5 +85,14 @@ export default class CoreGitignoreGenerator extends Generator {
         buildInGit: this.options.buildInGit,
       });
     }
+
+    // if (!this.options.root) {
+    this.fs.delete(cursorignorePath);
+    // } else {
+    //   this.fs.write(
+    //     cursorignorePath,
+    //     `${["/.yarn", this.options.buildDirectory].join("\n")}\n`,
+    //   );
+    // }
   }
 }

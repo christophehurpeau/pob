@@ -338,6 +338,7 @@ export default class PobAppGenerator extends Generator {
       withBabel: babel,
       paths: ignorePaths.join("\n"),
       buildInGit: false,
+      buildDirectory,
     });
 
     this.composeWith("pob:core:npm", { enable: false });

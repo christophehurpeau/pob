@@ -379,6 +379,8 @@ export default class PobLibGenerator extends Generator {
       testRunner: this.pobjson.testRunner,
     });
 
+    const buildDirectory = withBabel || withTypescript ? "dist" : "";
+
     // must be after doc, testing
     this.composeWith("pob:core:gitignore", {
       root: !inMonorepo,
@@ -386,12 +388,13 @@ export default class PobLibGenerator extends Generator {
       typescript: withTypescript,
       documentation: this.pobjson.documentation,
       testing: !!this.pobjson.testing,
+      buildDirectory,
     });
 
     this.composeWith("pob:core:npm", {
       enable: !pkg.private,
       srcDirectory: withBabel || withTypescript ? "src" : "lib",
-      distDirectory: withBabel || withTypescript ? "dist" : "",
+      distDirectory: buildDirectory,
     });
   }
 

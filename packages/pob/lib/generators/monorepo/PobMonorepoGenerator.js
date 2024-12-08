@@ -288,6 +288,8 @@ export default class PobMonorepoGenerator extends Generator {
       typescript: this.pobLernaConfig.typescript,
       documentation: this.pobLernaConfig.documentation,
       testing: this.pobLernaConfig.testing,
+      // todo: fix this using workspaces
+      // buildDirectory: this.pobLernaConfig.typescript ? `/*/build` : "",
     });
 
     this.composeWith("pob:common:remove-old-dependencies");
