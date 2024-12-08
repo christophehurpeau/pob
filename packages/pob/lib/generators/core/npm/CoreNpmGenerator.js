@@ -39,39 +39,43 @@ export default class CoreNpmGenerator extends Generator {
     }
 
     if (!pkg.private && this.options.enable) {
-      const files = new Set([
-        this.options.srcDirectory,
-        this.options.distDirectory,
-      ]);
+      if (pkg.files.length === 1 && pkg.files[0] === "lib/index.js") {
+        // see rollup-plugin-svgr
+      } else {
+        const files = new Set([
+          this.options.srcDirectory,
+          this.options.distDirectory,
+        ]);
 
-      if (pkg.bin) {
-        files.add("bin");
-      }
+        if (pkg.bin) {
+          files.add("bin");
+        }
 
-      if (pkg.exports) {
-        Object.values(pkg.exports).forEach((value) => {
-          if (typeof value === "string" && value.startsWith("./tsconfigs/")) {
-            files.add("tsconfigs");
-          }
-          if (
-            typeof value === "string" &&
-            value.startsWith("./") &&
-            value !== "./package.json" &&
-            ![...files].some((file) => value.startsWith(`./${file}/`))
-          ) {
-            files.add(value.slice("./".length));
-          }
-        });
-      }
-      if (pkg.pob?.extraEntries) {
-        pkg.pob?.extraEntries.forEach((extraEntry) => {
-          if (extraEntry.directory) {
-            files.add(extraEntry.directory);
-          }
-        });
-      }
+        if (pkg.exports) {
+          Object.values(pkg.exports).forEach((value) => {
+            if (typeof value === "string" && value.startsWith("./tsconfigs/")) {
+              files.add("tsconfigs");
+            }
+            if (
+              typeof value === "string" &&
+              value.startsWith("./") &&
+              value !== "./package.json" &&
+              ![...files].some((file) => value.startsWith(`./${file}/`))
+            ) {
+              files.add(value.slice("./".length));
+            }
+          });
+        }
+        if (pkg.pob?.extraEntries) {
+          pkg.pob?.extraEntries.forEach((extraEntry) => {
+            if (extraEntry.directory) {
+              files.add(extraEntry.directory);
+            }
+          });
+        }
 
-      pkg.files = [...files].filter(Boolean);
+        pkg.files = [...files].filter(Boolean);
+      }
     } else {
       delete pkg.files;
     }
