@@ -125,8 +125,8 @@ const buildTopologicalOrderBatches = (project, dependenciesMap) => {
 };
 
 const SUPPORTED_UPGRADE_REGEXP = (
-  // eslint-disable-next-line unicorn/better-regex -- note that autofix cause issues https://github.com/sindresorhus/eslint-plugin-unicorn/issues/1626
-  /^(>=|[~^]|)(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$/
+  // eslint-disable-next-line regexp/no-unused-capturing-group
+  /^((?:>=|[~^])?)(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(\.(0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i
 );
 const yarnWorkspaceProtocol = "workspace:";
 const calcBumpRange = (workspace, range, newVersion) => {

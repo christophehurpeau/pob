@@ -1,6 +1,6 @@
 /* eslint-disable complexity */
 
-import { readFileSync, existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import babelPluginTransformRuntime from "@babel/plugin-transform-runtime";
 import { nodeFormatToExt } from "@pob/rollup";

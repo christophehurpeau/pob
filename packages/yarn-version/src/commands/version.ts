@@ -3,7 +3,7 @@ import path from "node:path";
 // eslint-disable-next-line import/no-unresolved
 import { ConventionalGitClient } from "@conventional-changelog/git-client";
 import { Option, program } from "commander";
-import { addConfig, Level, Logger } from "nightingale";
+import { Level, Logger, addConfig } from "nightingale";
 import { ConsoleHandler } from "nightingale-console";
 import { satisfies } from "semver";
 import { UsageError } from "../utils/UsageError";
@@ -15,8 +15,8 @@ import {
   incrementVersion,
 } from "../utils/bumpTypeUtils";
 import {
-  recommendBump,
   generateChangelog,
+  recommendBump,
 } from "../utils/conventionalChangelogUtils";
 import { loadConventionalCommitConfig } from "../utils/conventionalCommitConfigUtils";
 import { execCommand } from "../utils/execCommand";
@@ -37,8 +37,8 @@ import {
 import {
   PackageDependencyDescriptorUtils,
   PackageDescriptorNameUtils,
-  type PackageDependencyDescriptor,
 } from "../utils/packageDependenciesUtils";
+import type { PackageDependencyDescriptor } from "../utils/packageDependenciesUtils";
 import type { Workspace } from "../utils/packageUtils";
 import {
   createProjectWorkspace,

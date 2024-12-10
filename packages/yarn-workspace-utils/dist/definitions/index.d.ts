@@ -1,4 +1,4 @@
-import type { AllDependencies as DependencyType, Descriptor, Workspace, Project } from "@yarnpkg/core";
+import type { AllDependencies as DependencyType, Descriptor, Project, Workspace } from "@yarnpkg/core";
 export declare const getWorkspaceName: (workspace: Workspace) => string;
 type WorkspacesDependenciesMap = Map<Workspace, [
     Workspace,

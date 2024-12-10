@@ -8,8 +8,8 @@ export type BumpType = "major" | "minor" | "patch";
 // https://github.com/yarnpkg/berry/blob/506ded5f5f5a89553435940c74f1d857fd685a42/packages/plugin-version/sources/versionUtils.ts#L10
 // Basically we only support auto-upgrading the ranges that are very simple (^x.y.z, ~x.y.z, >=x.y.z, and of course x.y.z)
 const SUPPORTED_UPGRADE_REGEXP =
-  // eslint-disable-next-line unicorn/better-regex -- note that autofix cause issues https://github.com/sindresorhus/eslint-plugin-unicorn/issues/1626
-  /^(>=|[~^]|)(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*)(\.(0|[1-9]\d*|\d*[a-zA-Z-][0-9a-zA-Z-]*))*)?(\+[0-9a-zA-Z-]+(\.[0-9a-zA-Z-]+)*)?$/;
+  // eslint-disable-next-line regexp/no-unused-capturing-group
+  /^((?:>=|[~^])?)(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)(-(0|[1-9]\d*|\d*[a-z-][0-9a-z-]*)(\.(0|[1-9]\d*|\d*[a-z-][0-9a-z-]*))*)?(\+[0-9a-z-]+(\.[0-9a-z-]+)*)?$/i;
 
 const yarnWorkspaceProtocol = "workspace:";
 

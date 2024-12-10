@@ -3,10 +3,10 @@
 import { execSync, spawnSync } from "node:child_process";
 import fs, {
   existsSync,
-  writeFileSync,
-  readFileSync,
   mkdirSync,
+  readFileSync,
   readdirSync,
+  writeFileSync,
 } from "node:fs";
 import path from "node:path";
 import minimist from "minimist";
