@@ -37,6 +37,7 @@ jobs:
 <% if (checks) { -%>
       - name: Checks
         run: <%= packageManager %> run checks
+        if: startsWith(matrix.node-version, '22.')
 
 <% } -%>
 <% if (build) { -%>
