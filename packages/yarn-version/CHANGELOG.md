@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.0](https://github.com/christophehurpeau/pob/compare/yarn-version@4.2.0...yarn-version@5.0.0) (2024-12-10)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v59 (major) ([#2329](https://github.com/christophehurpeau/pob/issues/2329)) ([5019b13](https://github.com/christophehurpeau/pob/commit/5019b13dba092342eee72f0d6d766cf2de864555))
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [4.2.0](https://github.com/christophehurpeau/pob/compare/yarn-version@4.1.0...yarn-version@4.2.0) (2024-12-05)
 
 Version bump for dependency: @pob/rollup-esbuild

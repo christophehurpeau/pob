@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [42.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@42.0.2...pob-babel@42.1.0) (2024-12-10)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v59 (major) ([#2329](https://github.com/christophehurpeau/pob/issues/2329)) ([5019b13](https://github.com/christophehurpeau/pob/commit/5019b13dba092342eee72f0d6d766cf2de864555))
+
+Version bump for dependency: @pob/rollup
+Version bump for dependency: babel-preset-pob-env
+
+
 ## [42.0.2](https://github.com/christophehurpeau/pob/compare/pob-babel@42.0.1...pob-babel@42.0.2) (2024-12-03)
 
 Version bump for dependency: @pob/rollup

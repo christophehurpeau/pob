@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.33.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.32.2...example-typescript-lib@0.33.0) (2024-12-10)
+
+### ⚠ BREAKING CHANGES
+
+* drop legacy module/browser/react-native replaced by exports
+
+### Features
+
+* drop legacy module/browser/react-native replaced by exports ([b1363ca](https://github.com/christophehurpeau/pob/commit/b1363ca254fb08179a019d2b2f329936cb7dae2d))
+
+### Reverts
+
+* Revert "feat!: drop legacy module/browser/react-native replaced by exports" ([5971c66](https://github.com/christophehurpeau/pob/commit/5971c669ffd534843a3ea9979a70a0cb1d3d51f8))
+
+Version bump for dependency: pob-babel
+
+
 ## [0.32.2](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.32.1...example-typescript-lib@0.32.2) (2024-12-03)
 
 Version bump for dependency: pob-babel

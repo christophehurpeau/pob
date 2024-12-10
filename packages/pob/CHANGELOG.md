@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.0.0](https://github.com/christophehurpeau/pob/compare/pob@24.5.0...pob@25.0.0) (2024-12-10)
+
+### ⚠ BREAKING CHANGES
+
+* drop legacy module/browser/react-native replaced by exports
+
+### Features
+
+* add src/test-setup.ts support ([d469e23](https://github.com/christophehurpeau/pob/commit/d469e23a31b2ebd0477daf06a01e1c95b1809c9d))
+* **deps:** update @pob/eslint-config to v59 (major) ([#2329](https://github.com/christophehurpeau/pob/issues/2329)) ([5019b13](https://github.com/christophehurpeau/pob/commit/5019b13dba092342eee72f0d6d766cf2de864555))
+* **deps:** update dependency eslint to v9.16.0 ([#2308](https://github.com/christophehurpeau/pob/issues/2308)) ([78afd96](https://github.com/christophehurpeau/pob/commit/78afd962ab7d5ed1d735d6a90097f8b010c1621d))
+* drop legacy module/browser/react-native replaced by exports ([b1363ca](https://github.com/christophehurpeau/pob/commit/b1363ca254fb08179a019d2b2f329936cb7dae2d))
+* start preparing cursorignore ([6cec7ef](https://github.com/christophehurpeau/pob/commit/6cec7ef24ef29074b447eb33d3a27951f0a14237))
+* support files lib/index.js rollup-plugin-svgr ([e7c3348](https://github.com/christophehurpeau/pob/commit/e7c3348daf1585ea467e29a6b460c97c280904c2))
+
+### Bug Fixes
+
+* fix entryDistName ([1e3d4e4](https://github.com/christophehurpeau/pob/commit/1e3d4e46ceb7afa7bc4b3683b788cbbf5d0816ae))
+* fix github ci required check for node 22.x ([4852f1b](https://github.com/christophehurpeau/pob/commit/4852f1b6ea097e156e27606b09e7bf17c6da44a8))
+* only run checks on latest lts version ([1b5ff47](https://github.com/christophehurpeau/pob/commit/1b5ff47050eed0f6e200120a321167c647f70e03))
+
+### Reverts
+
+* Revert "feat!: drop legacy module/browser/react-native replaced by exports" ([5971c66](https://github.com/christophehurpeau/pob/commit/5971c669ffd534843a3ea9979a70a0cb1d3d51f8))
+
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [24.5.0](https://github.com/christophehurpeau/pob/compare/pob@24.4.0...pob@24.5.0) (2024-12-05)
 
 ### Bug Fixes

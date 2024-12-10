@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@9.0.0...@pob/sort-pkg@10.0.0) (2024-12-10)
+
+### ⚠ BREAKING CHANGES
+
+* drop legacy module/browser/react-native replaced by exports
+
+### Features
+
+* drop legacy module/browser/react-native replaced by exports ([b1363ca](https://github.com/christophehurpeau/pob/commit/b1363ca254fb08179a019d2b2f329936cb7dae2d))
+
+### Reverts
+
+* Revert "feat!: drop legacy module/browser/react-native replaced by exports" ([5971c66](https://github.com/christophehurpeau/pob/commit/5971c669ffd534843a3ea9979a70a0cb1d3d51f8))
+
 ## [9.0.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@8.0.0...@pob/sort-pkg@9.0.0) (2024-11-11)
 
 ### ⚠ BREAKING CHANGES

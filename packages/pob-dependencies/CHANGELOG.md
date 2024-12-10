@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@15.4.0...pob-dependencies@16.0.0) (2024-12-10)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v59 (major) ([#2329](https://github.com/christophehurpeau/pob/issues/2329)) ([5019b13](https://github.com/christophehurpeau/pob/commit/5019b13dba092342eee72f0d6d766cf2de864555))
+* **deps:** update dependency eslint to v9.16.0 ([#2308](https://github.com/christophehurpeau/pob/issues/2308)) ([78afd96](https://github.com/christophehurpeau/pob/commit/78afd962ab7d5ed1d735d6a90097f8b010c1621d))
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: pob-babel
+
+
 ## [15.4.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@15.3.0...pob-dependencies@15.4.0) (2024-12-05)
 
 ### Bug Fixes

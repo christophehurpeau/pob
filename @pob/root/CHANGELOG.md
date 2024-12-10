@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@14.4.0...@pob/root@15.0.0) (2024-12-10)
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v15.2.11 ([#2356](https://github.com/christophehurpeau/pob/issues/2356)) ([077e6e2](https://github.com/christophehurpeau/pob/commit/077e6e288030f01e195060dde7632ef22010f289))
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: yarn-version
+
+
 ## [14.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@14.3.0...@pob/root@14.4.0) (2024-12-05)
 
 ### Bug Fixes
