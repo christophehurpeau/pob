@@ -1,5 +1,5 @@
 import { spawnSync } from "node:child_process";
-import { readdirSync, existsSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import Generator from "yeoman-generator";
 import * as packageUtils from "../../../utils/package.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
@@ -159,7 +159,9 @@ export default class MonorepoWorkspacesGenerator extends Generator {
 
     if (this.fs.exists(readmePath)) {
       const readmeFullContent = this.fs.read(readmePath);
+      // eslint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
       content = readmeFullContent.match(/^<h3[^#*]+([^]+)$/);
+      // eslint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
       if (!content) content = readmeFullContent.match(/^#[^#*]+([^]+)$/);
       content = content ? content[1].trim() : readmeFullContent;
     }

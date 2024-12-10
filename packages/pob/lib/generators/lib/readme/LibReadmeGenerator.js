@@ -1,3 +1,5 @@
+/* eslint-disable regexp/match-any */
+/* eslint-disable regexp/no-super-linear-backtracking */
 import camelCase from "lodash.camelcase";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
@@ -47,16 +49,16 @@ export default class LibReadmeGenerator extends Generator {
 
     if (this.fs.exists(readmePath)) {
       const readmeFullContent = this.fs.read(readmePath);
-      content = readmeFullContent.match(/^<h3[^#*]+([^]+)\[npm-image]:/);
+      content = readmeFullContent.match(/^<h3[^#*]+([^]+)\[npm-image\]:/);
       if (!content) {
-        content = readmeFullContent.match(/^<h3[^#*]+([^]+)\[daviddm-image]:/);
+        content = readmeFullContent.match(/^<h3[^#*]+([^]+)\[daviddm-image\]:/);
       }
       if (!content) content = readmeFullContent.match(/^<h3[^#*]+([^]+)$/);
       if (!content) {
-        content = readmeFullContent.match(/^#[^#*]+([^]+)\[npm-image]:/);
+        content = readmeFullContent.match(/^#[^#*]+([^]+)\[npm-image\]:/);
       }
       if (!content) {
-        content = readmeFullContent.match(/^#[^#*]+([^]+)\[daviddm-image]:/);
+        content = readmeFullContent.match(/^#[^#*]+([^]+)\[daviddm-image\]:/);
       }
       if (!content) content = readmeFullContent.match(/^#[^#*]+([^]+)$/);
       content = content ? content[1].trim() : readmeFullContent;

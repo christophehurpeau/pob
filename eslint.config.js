@@ -2,8 +2,9 @@ import pobTypescriptConfig, {
   apply,
   extensions,
 } from "@pob/eslint-config-typescript";
+import pluginJest from "eslint-plugin-jest";
 
-const { configs, compat } = pobTypescriptConfig(import.meta.url);
+const { configs } = pobTypescriptConfig();
 
 export default [
   ...configs.node,
@@ -30,6 +31,13 @@ export default [
   }),
   ...apply({
     files: ["**/*.test.js"],
-    configs: compat.env({ jest: true }),
+    configs: [
+      pluginJest.configs["flat/recommended"],
+      {
+        languageOptions: {
+          globals: pluginJest.environments.globals.globals,
+        },
+      },
+    ],
   }),
 ];

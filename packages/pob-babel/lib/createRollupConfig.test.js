@@ -8,6 +8,7 @@ describe("fixtures", () => {
   const tests = fs.readdirSync(testsPath);
 
   tests.forEach((dirname) => {
+    // eslint-disable-next-line jest/valid-title
     describe(dirname, () => {
       const cwd = testsPath + dirname;
       process.chdir(cwd);
@@ -16,6 +17,7 @@ describe("fixtures", () => {
       });
 
       configs.forEach((config, index) => {
+        // eslint-disable-next-line jest/valid-title
         test(String(index), async () => {
           // TODO: configure browserslist
           const bundle = await rollup(config);

@@ -3,8 +3,8 @@
 import type {
   AllDependencies as DependencyType,
   Descriptor,
-  Workspace,
   Project,
+  Workspace,
 } from "@yarnpkg/core";
 import { Manifest, miscUtils, structUtils } from "@yarnpkg/core";
 

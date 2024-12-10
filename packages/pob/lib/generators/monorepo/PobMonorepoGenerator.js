@@ -5,8 +5,8 @@ import { getPluginConfiguration } from "@yarnpkg/cli";
 import { Configuration, Project } from "@yarnpkg/core";
 import { ppath } from "@yarnpkg/fslib";
 import {
-  buildTopologicalOrderBatches,
   buildDependenciesMaps,
+  buildTopologicalOrderBatches,
   getWorkspaceName,
 } from "yarn-workspace-utils";
 import Generator from "yeoman-generator";
