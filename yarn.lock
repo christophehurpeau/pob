@@ -12299,15 +12299,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mem-fs@npm:4.1.1, mem-fs@npm:^4.0.0":
-  version: 4.1.1
-  resolution: "mem-fs@npm:4.1.1"
+"mem-fs@npm:4.1.2, mem-fs@npm:^4.0.0":
+  version: 4.1.2
+  resolution: "mem-fs@npm:4.1.2"
   dependencies:
     "@types/node": "npm:>=18"
     "@types/vinyl": "npm:^2.0.8"
     vinyl: "npm:^3.0.0"
     vinyl-file: "npm:^5.0.0"
-  checksum: 10c0/5c80a09b9c529d035e523eefa7e4b90c494de6c3ac554a4ccdc6a5de6aca02299ed85a54214f09c2d299a6377b7c08ceece6dc08e707e78cc714a02dcd7e2e1a
+  checksum: 10c0/4e6ed371304389fef07a04770128833e6e47c98d9f8a8e2a2e918be9fa08305c9005eb9f4137b5b088a5ab392f4a6b1829106012f94f730a339a1a01a638f346
   languageName: node
   linkType: hard
 
@@ -13903,7 +13903,7 @@ __metadata:
     json5: "npm:^2.2.3"
     lodash.camelcase: "npm:^4.3.0"
     lodash.kebabcase: "npm:^4.1.1"
-    mem-fs: "npm:4.1.1"
+    mem-fs: "npm:4.1.2"
     mem-fs-editor: "npm:11.1.3"
     minimist: "npm:1.2.8"
     parse-author: "npm:2.0.0"
