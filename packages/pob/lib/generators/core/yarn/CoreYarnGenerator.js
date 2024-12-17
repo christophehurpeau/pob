@@ -211,6 +211,7 @@ export default class CoreYarnGenerator extends Generator {
           YARN_ENABLE_IMMUTABLE_INSTALLS: "false",
         },
       });
+      this.fs.delete("package-lock.json");
       this.spawnSync("yarn", ["dedupe"]);
 
       this.spawnSync("yarn", ["prettier", "--write", ".vscode", ".yarnrc.yml"]);
