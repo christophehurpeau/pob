@@ -24,6 +24,7 @@ const installWorkflow = (
             path.dirname(fileURLToPath(import.meta.url)),
             `github-workflows/${workflowName}.yml`,
           ),
+          { encoding: "utf8" },
         )
         .replaceAll("$pmExec$", pmExec)
         .replaceAll("$ciPreStep$", ciPreStep)

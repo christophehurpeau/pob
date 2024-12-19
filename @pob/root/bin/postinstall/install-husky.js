@@ -77,7 +77,7 @@ export default function installHusky({ pkg, pm }) {
     installOnDiffCommand,
     beforeDiffCommand = "",
     afterDiffCommand = "",
-  } = getPackageManagerCommands(pm);
+  } = getPackageManagerCommands(pm, isYarnBerry);
 
   writeHook("commit-msg", `${pmExec} commitlint --edit $1`);
   writeHook("pre-commit", `${pmExec} pob-root-lint-staged`);

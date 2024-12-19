@@ -4,7 +4,7 @@ export const getPackageManagerCommands = (pm, isYarnBerry) => {
       lockfile: "yarn.lock",
       pmExec: "yarn",
       ciPreStep: `name: Enable Corepack
-        run: corepack enable\n`,
+        run: corepack enable`,
       installOnCICommand: "yarn install --immutable",
       installMutableCommand: "yarn install",
       installOnDiffCommand: `yarn install ${
@@ -43,7 +43,7 @@ export const getPackageManagerCommands = (pm, isYarnBerry) => {
       lockfile: "bun.lock",
       pmExec: "bun run",
       ciPreStep: `name: Install bun
-        uses: oven-sh/setup-bun@v1\n`,
+        uses: oven-sh/setup-bun@v1`,
       installOnCICommand: "bun i --frozen-lockfile",
       installMutableCommand: "bun i",
       installOnDiffCommand: "bun i --frozen-lockfile",

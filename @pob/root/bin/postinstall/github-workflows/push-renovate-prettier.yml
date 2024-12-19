@@ -14,14 +14,13 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
 
-      - name: Enable Corepack
-        run: corepack enable
+      - $ciPreStep$
 
       - name: Install Dependencies
         run: $installOnCICommand$
 
       - name: Run Prettier
-        run: yarn prettier --write .
+        run: $pmExec$ prettier --write .
 
       - name: Check for added or modified files
         id: git-check-modified
