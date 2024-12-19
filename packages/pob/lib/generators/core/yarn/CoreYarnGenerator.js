@@ -184,6 +184,9 @@ export default class CoreYarnGenerator extends Generator {
         );
       }
     } else {
+      if (pkg.packageManager?.startsWith("yarn@")) {
+        delete pkg.packageManager;
+      }
       this.fs.delete(".yarn");
       this.fs.delete(".yarnrc.yml");
       this.fs.delete(".yarn.lock");

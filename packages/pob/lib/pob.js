@@ -23,6 +23,7 @@ import CommonReleaseGenerator from "./generators/common/release/CommonReleaseGen
 import CommonTestingGenerator from "./generators/common/testing/CommonTestingGenerator.js";
 import CommonTranspilerGenerator from "./generators/common/transpiler/CommonTranspilerGenerator.js";
 import CommonTypescriptGenerator from "./generators/common/typescript/CommonTypescriptGenerator.js";
+import CoreBunGenerator from "./generators/core/bun/CoreBunGenerator.js";
 import CoreCIGenerator from "./generators/core/ci/CoreCIGenerator.js";
 import CoreCleanGenerator from "./generators/core/clean/CoreCleanGenerator.js";
 import CoreEditorConfigGenerator from "./generators/core/editorconfig/CoreEditorConfigGenerator.js";
@@ -204,6 +205,11 @@ env.registerStub(
   CoreYarnGenerator,
   "pob:core:yarn",
   `${__dirname}/generators/core/yarn/CoreYarnGenerator.js`,
+);
+env.registerStub(
+  CoreBunGenerator,
+  "pob:core:bun",
+  `${__dirname}/generators/core/bun/CoreBunGenerator.js`,
 );
 env.registerStub(
   PobLibGenerator,

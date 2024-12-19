@@ -20,7 +20,7 @@ jobs:
 
       - name: Install Dependencies
         # no immutable here
-        run: yarn install
+        run: $installMutableCommand$
         env:
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
 

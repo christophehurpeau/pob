@@ -121,6 +121,11 @@ export default class PobBaseGenerator extends Generator {
   }
 
   default() {
+    this.composeWith("pob:core:bun", {
+      type: this.projectConfig.type,
+      enable: this.isRoot && this.projectConfig.packageManager === "bun",
+    });
+
     this.composeWith("pob:core:yarn", {
       type: this.projectConfig.type,
       enable: this.isRoot && this.projectConfig.packageManager === "yarn",
@@ -135,6 +140,7 @@ export default class PobBaseGenerator extends Generator {
       inMonorepo: !!inMonorepo,
       isRoot: this.isRoot,
       packageType: this.projectConfig.type === "app" ? "module" : undefined,
+      packageManager: this.projectConfig.packageManager,
     });
 
     if (this.isMonorepo) {

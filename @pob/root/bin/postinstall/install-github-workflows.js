@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import semver from "semver";
+import { getPackageManagerCommands } from "./packageManagerHelpers.js";
 
 const ensureWorkflowUninstalled = (workflowName) => {
   try {
@@ -9,16 +10,25 @@ const ensureWorkflowUninstalled = (workflowName) => {
   } catch {}
 };
 
-const installWorkflow = (workflowName, condition = true) => {
+const installWorkflow = (
+  workflowName,
+  { pmExec, installOnCICommand, installMutableCommand, ciPreStep },
+  condition = true,
+) => {
   if (condition) {
     fs.writeFileSync(
       path.resolve(`.github/workflows/${workflowName}.yml`),
-      fs.readFileSync(
-        path.resolve(
-          path.dirname(fileURLToPath(import.meta.url)),
-          `github-workflows/${workflowName}.yml`,
-        ),
-      ),
+      fs
+        .readFileSync(
+          path.resolve(
+            path.dirname(fileURLToPath(import.meta.url)),
+            `github-workflows/${workflowName}.yml`,
+          ),
+        )
+        .replaceAll("$pmExec$", pmExec)
+        .replaceAll("$ciPreStep$", ciPreStep)
+        .replaceAll("$installOnCICommand$", installOnCICommand)
+        .replaceAll("$installMutableCommand$", installMutableCommand),
     );
   } else {
     ensureWorkflowUninstalled(workflowName);
@@ -29,18 +39,18 @@ export default function installGithubWorkflows({ pkg, pm }) {
   const yarnMajorVersion = pm.name === "yarn" && semver.major(pm.version);
   const isYarnBerry = pm.name === "yarn" && yarnMajorVersion >= 2;
 
-  if (!isYarnBerry) return;
+  const pmCommands = getPackageManagerCommands(pm, isYarnBerry);
 
   if (fs.existsSync(".github")) {
-    installWorkflow("push-renovate-pob_root");
-    installWorkflow("push-renovate-prettier");
+    installWorkflow("push-renovate-pob_root", pmCommands);
+    installWorkflow("push-renovate-prettier", pmCommands);
     ensureWorkflowUninstalled("push-renovate-typedoc");
     if (
       pkg.devDependencies &&
       pkg.devDependencies.rollup &&
       pkg.scripts?.build
     ) {
-      installWorkflow("push-renovate-build");
+      installWorkflow("push-renovate-build", pmCommands);
     } else {
       ensureWorkflowUninstalled("push-renovate-build");
     }

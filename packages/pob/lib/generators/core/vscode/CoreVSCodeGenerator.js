@@ -17,7 +17,7 @@ export default class CoreVSCodeGenerator extends Generator {
       type: String,
       required: false,
       default: "yarn",
-      description: "yarn|npm.",
+      description: "yarn|npm|bun",
     });
 
     this.option("monorepo", {
@@ -86,6 +86,7 @@ export default class CoreVSCodeGenerator extends Generator {
           yarn: this.options.packageManager === "yarn",
           pnp: this.options.yarnNodeLinker === "pnp",
           npm: this.options.packageManager === "npm",
+          bun: this.options.packageManager === "bun",
           typescript: this.options.typescript,
           testing: this.options.testing,
           testRunner: this.options.testRunner,

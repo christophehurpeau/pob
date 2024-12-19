@@ -13,14 +13,13 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
 
-      - name: Enable Corepack
-        run: corepack enable
+      - $ciPreStep$
 
       - name: Install Dependencies
-        run: yarn install --immutable
+        run: $installOnCICommand$
 
       - name: Run Build
-        run: yarn build
+        run: $pmExec$ build
 
       - name: Check for added or modified files
         id: git-check-modified
