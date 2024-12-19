@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.1.1](https://github.com/christophehurpeau/pob/compare/@pob/root@15.1.0...@pob/root@15.1.1) (2024-12-19)
+
+### Bug Fixes
+
+* bun.lock in lint-staged config ([f7d7213](https://github.com/christophehurpeau/pob/commit/f7d7213f4d05c71ed11c2b1964e841a1c0f8625b))
+
 ## [15.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@15.0.0...@pob/root@15.1.0) (2024-12-19)
 
 ### Features

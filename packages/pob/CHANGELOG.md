@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.2.0](https://github.com/christophehurpeau/pob/compare/pob@25.1.0...pob@25.2.0) (2024-12-19)
+
+### Features
+
+* **deps:** update dependency yeoman-generator to v7.4.0 ([#2366](https://github.com/christophehurpeau/pob/issues/2366)) ([1311555](https://github.com/christophehurpeau/pob/commit/1311555caecacf9a85f006ccf0e69680749070b4))
+
+### Bug Fixes
+
+* fixes for bun packageManager ([0f3cd37](https://github.com/christophehurpeau/pob/commit/0f3cd37c1f72f04cb2e84093a4b6b04996038e01))
+* if yarn is deleted remove yarn.lock ([e05b8f3](https://github.com/christophehurpeau/pob/commit/e05b8f3f8eb8840ecd282044e1a97efff59819cc))
+
+Version bump for dependency: @pob/root
+
+
 ## [25.1.0](https://github.com/christophehurpeau/pob/compare/pob@25.0.0...pob@25.1.0) (2024-12-19)
 
 ### Features
