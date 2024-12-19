@@ -398,11 +398,10 @@ export default class CommonLintGenerator extends Generator {
             useNode
               ? "...pobTypescriptConfig(import.meta.url).configs.node"
               : "...pobTypescriptConfig(import.meta.url).configs.base",
-            `...pobTypescriptReactConfig(import.meta.url).configs.${
-              pkg.dependencies?.["react-native-web"] ? "/react-native-web" : ""
-            }`,
             this.options.isApp &&
               "...pobTypescriptConfig(import.meta.url).configs.app",
+            pkg.dependencies?.["react-native-web"] &&
+              '...pobTypescriptConfigReact(import.meta.url).configs["react-native-web"]',
           ];
         })().filter(Boolean),
       };
