@@ -14,6 +14,7 @@ jobs:
         with:
           node-version: 22
 
+<% if (packageManager === 'yarn') { -%>
       - name: Enable Corepack
         run: corepack enable
 
@@ -22,6 +23,13 @@ jobs:
         run: yarn install --immutable
 <% } else { -%>
         run: yarn install --immutable --immutable-cache
+<% } -%>
+<% } else if (packageManager === 'bun') { -%>
+      - name: Install bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
 <% } -%>
 
 <% if (typedoc) { -%>

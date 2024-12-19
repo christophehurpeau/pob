@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.0](https://github.com/christophehurpeau/pob/compare/yarn-version@5.0.0...yarn-version@5.1.0) (2024-12-19)
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [5.0.0](https://github.com/christophehurpeau/pob/compare/yarn-version@4.2.0...yarn-version@5.0.0) (2024-12-10)
 
 ### Features

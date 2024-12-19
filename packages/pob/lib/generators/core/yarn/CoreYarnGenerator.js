@@ -184,6 +184,9 @@ export default class CoreYarnGenerator extends Generator {
         );
       }
     } else {
+      if (pkg.packageManager?.startsWith("yarn@")) {
+        delete pkg.packageManager;
+      }
       this.fs.delete(".yarn");
       this.fs.delete(".yarnrc.yml");
       this.fs.delete(".yarn.lock");
@@ -211,6 +214,7 @@ export default class CoreYarnGenerator extends Generator {
           YARN_ENABLE_IMMUTABLE_INSTALLS: "false",
         },
       });
+      this.fs.delete("package-lock.json");
       this.spawnSync("yarn", ["dedupe"]);
 
       this.spawnSync("yarn", ["prettier", "--write", ".vscode", ".yarnrc.yml"]);

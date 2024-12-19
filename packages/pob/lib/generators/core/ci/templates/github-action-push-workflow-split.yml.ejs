@@ -18,10 +18,14 @@ jobs:
         run: corepack enable
 
       - name: Install Dependencies
+<% if (packageManager === 'yarn') { -%>
 <% if (disableYarnGitCache) { -%>
         run: yarn install --immutable
 <% } else { -%>
         run: yarn install --immutable --immutable-cache
+<% } -%>
+<% } else if (packageManager === 'bun') { -%>
+        run: bun install --frozen-lockfile
 <% } -%>
 
       - name: Checks
@@ -43,10 +47,14 @@ jobs:
         run: corepack enable
 
       - name: Install Dependencies
+<% if (packageManager === 'yarn') { -%>
 <% if (disableYarnGitCache) { -%>
         run: yarn install --immutable
 <% } else { -%>
         run: yarn install --immutable --immutable-cache
+<% } -%>
+<% } else if (packageManager === 'bun') { -%>
+        run: bun install --frozen-lockfile
 <% } -%>
 
       - name: Build
@@ -102,6 +110,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
+<% if (packageManager === 'yarn') { -%>
       - name: Enable Corepack
         run: corepack enable
 
@@ -110,6 +119,13 @@ jobs:
         run: yarn install --immutable
 <% } else { -%>
         run: yarn install --immutable --immutable-cache
+<% } -%>
+<% } else if (packageManager === 'bun') { -%>
+      - name: Install bun
+        uses: oven-sh/setup-bun@v1
+
+      - name: Install Dependencies
+        run: bun install --frozen-lockfile
 <% } -%>
 
 <% if (codecov) { -%>

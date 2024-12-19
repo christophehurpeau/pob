@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.1.0](https://github.com/christophehurpeau/pob/compare/pob@25.0.0...pob@25.1.0) (2024-12-19)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v59.2.0 ([#2376](https://github.com/christophehurpeau/pob/issues/2376)) ([02738e0](https://github.com/christophehurpeau/pob/commit/02738e07f6788010f5097e0e8f2005aa86199664))
+* **deps:** update dependency eslint to v9.17.0 ([#2368](https://github.com/christophehurpeau/pob/issues/2368)) ([6976c32](https://github.com/christophehurpeau/pob/commit/6976c32b4812107b611f2ff5698db47202e857a1))
+* improve bun support ([24accc2](https://github.com/christophehurpeau/pob/commit/24accc26c5fbf429befdecdc0da663fa10cd00a6))
+
+### Bug Fixes
+
+* **deps:** update dependency mem-fs to v4.1.2 ([#2364](https://github.com/christophehurpeau/pob/issues/2364)) ([9e4251c](https://github.com/christophehurpeau/pob/commit/9e4251cfc5d7b73896767b54f92656a4ae4e0b01))
+* **deps:** update dependency mem-fs-editor to v11.1.4 ([#2365](https://github.com/christophehurpeau/pob/issues/2365)) ([0efde48](https://github.com/christophehurpeau/pob/commit/0efde48c739dd4b9a6d06f1338bc45f652a6fd26))
+* **pob:** delete package-lock.json for yarn ([fdadfbc](https://github.com/christophehurpeau/pob/commit/fdadfbc5bcdfc8957fde3a3d9d533a0b38e0fcb6))
+* remove gh-pages for coverage only ([a2a875f](https://github.com/christophehurpeau/pob/commit/a2a875f6acf228edd9f009e0ef777d62fb892c9a))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [25.0.0](https://github.com/christophehurpeau/pob/compare/pob@24.5.0...pob@25.0.0) (2024-12-10)
 
 ### ⚠ BREAKING CHANGES

@@ -15,17 +15,16 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
 
-      - name: Enable Corepack
-        run: corepack enable
+      - $ciPreStep$
 
       - name: Install Dependencies
         # no immutable here
-        run: yarn install
+        run: $installMutableCommand$
         env:
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
       - name: Run pob-root-postinstall
-        run: yarn run pob-root-postinstall
+        run: $pmExec$ pob-root-postinstall
 
       - name: Run pob update
         run: npx pob update --force

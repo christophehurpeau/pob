@@ -42,6 +42,12 @@ export default class CorePackageGenerator extends Generator {
       required: false,
       description: "package type",
     });
+
+    this.option("packageManager", {
+      type: String,
+      required: false,
+      description: "package manager",
+    });
   }
 
   async initializing() {
@@ -361,9 +367,12 @@ export default class CorePackageGenerator extends Generator {
       } else {
         uninstallPostinstallScript("postinstall");
       }
-    } else {
+    } else if (this.options.packageManager === "yarn") {
       uninstallPostinstallScript("postinstall");
       installPostinstallScript("postinstallDev");
+    } else {
+      uninstallPostinstallScript("postinstallDev");
+      installPostinstallScript("postinstall");
     }
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);

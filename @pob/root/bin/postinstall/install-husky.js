@@ -4,6 +4,7 @@ import fs from "node:fs";
 import path from "node:path";
 import husky from "husky";
 import semver from "semver";
+import { getPackageManagerCommands } from "./packageManagerHelpers.js";
 
 const ensureLegacyHuskyConfigDeleted = () => {
   try {
@@ -50,9 +51,10 @@ export default function installHusky({ pkg, pm }) {
   const yarnMajorVersion = pm.name === "yarn" && semver.major(pm.version);
   const isYarnBerry = pm.name === "yarn" && yarnMajorVersion >= 2;
   const yarnConfig = isYarnBerry && readYarnConfigFile();
-  const isYarnPnp =
-    !yarnConfig.includes("nodeLinker: node-modules") &&
-    !yarnConfig.includes("nodeLinker: pnpm");
+  const isYarnPnp = yarnConfig
+    ? !yarnConfig.includes("nodeLinker: node-modules") &&
+      !yarnConfig.includes("nodeLinker: pnpm")
+    : false;
 
   /* Check legacy */
 
@@ -75,51 +77,7 @@ export default function installHusky({ pkg, pm }) {
     installOnDiffCommand,
     beforeDiffCommand = "",
     afterDiffCommand = "",
-  } = (() => {
-    if (pm.name === "yarn") {
-      return {
-        lockfile: "yarn.lock",
-        pmExec: "yarn",
-        installOnDiffCommand: `yarn install ${
-          isYarnBerry
-            ? "--immutable"
-            : "--prefer-offline --pure-lockfile --ignore-optional"
-        }`,
-        beforeDiffCommand: isYarnBerry
-          ? `yarn config set logFilters --json '[
-    {"code": "YN0002","level": "discard"},
-    {"code": "YN0007","level": "discard"},
-    {"code": "YN0008","level": "discard"},
-    {"code": "YN0013","level": "discard"},
-    {"code": "YN0018","level": "discard"},
-    {"code": "YN0060","level": "discard"},
-    {"code": "YN0061","level": "discard"}
-  ]' > /dev/null`
-          : "",
-        afterDiffCommand: isYarnBerry
-          ? "yarn config unset logFilters > /dev/null"
-          : "",
-      };
-    }
-    if (pm.name === "npm") {
-      return {
-        lockfile: "package-lock.json",
-        pmExec: "npx --no-install",
-        installOnDiffCommand: "npm i",
-      };
-    }
-    if (pm.name === "bun") {
-      return {
-        lockfile: "bun.lockb",
-        pmExec: "bun run",
-        installOnDiffCommand: "bun i",
-      };
-    }
-
-    throw new Error(
-      `Package manager not supported: ${pm.name}. Please run with yarn, npm or bun !`,
-    );
-  })();
+  } = getPackageManagerCommands(pm, isYarnBerry);
 
   writeHook("commit-msg", `${pmExec} commitlint --edit $1`);
   writeHook("pre-commit", `${pmExec} pob-root-lint-staged`);
