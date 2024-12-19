@@ -68,6 +68,7 @@
     "pob-dependencies": "workspace:*",
     "prettier": "3.4.2",
     "semver": "7.6.3",
+    "typescript": "5.7.2",
     "validate-npm-package-name": "^6.0.0",
     "yarn-workspace-utils": "7.1.0",
     "yeoman-environment": "4.4.3",
@@ -75,7 +76,6 @@
   },
   "devDependencies": {
     "@pob/root": "15.0.0",
-    "@types/node": "22.10.2",
-    "typescript": "5.7.2"
+    "@types/node": "22.10.2"
   }
 }
