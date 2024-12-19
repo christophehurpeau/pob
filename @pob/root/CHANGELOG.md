@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@15.0.0...@pob/root@15.1.0) (2024-12-19)
+
+### Features
+
+* improve bun support ([24accc2](https://github.com/christophehurpeau/pob/commit/24accc26c5fbf429befdecdc0da663fa10cd00a6))
+
+### Bug Fixes
+
+* **deps:** update dependency @commitlint/cli to v19.6.1 ([#2370](https://github.com/christophehurpeau/pob/issues/2370)) ([b78c1d5](https://github.com/christophehurpeau/pob/commit/b78c1d53c5a155c622256f724b7f5c3f2ca46954))
+* install workflow ([b2b7bf7](https://github.com/christophehurpeau/pob/commit/b2b7bf76011ba8a6173ec49c6d357582ef810c61))
+
+Version bump for dependency: yarn-version
+
+
 ## [15.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@14.4.0...@pob/root@15.0.0) (2024-12-10)
 
 ### Bug Fixes
