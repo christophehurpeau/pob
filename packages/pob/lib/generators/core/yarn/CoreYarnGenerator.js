@@ -189,7 +189,7 @@ export default class CoreYarnGenerator extends Generator {
       }
       this.fs.delete(".yarn");
       this.fs.delete(".yarnrc.yml");
-      this.fs.delete(".yarn.lock");
+      this.fs.delete("yarn.lock");
     }
 
     packageUtils.removeDevDependencies(pkg, ["@yarnpkg/pnpify"]);
