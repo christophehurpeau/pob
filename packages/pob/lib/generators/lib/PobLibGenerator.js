@@ -359,6 +359,7 @@ export default class PobLibGenerator extends Generator {
 
     this.composeWith("pob:common:release", {
       enable: !inMonorepo && this.pobjson.testing,
+      packageManager: this.options.packageManager,
       enablePublish: true,
       withBabel,
       withTypescript,

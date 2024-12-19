@@ -62,6 +62,12 @@ export default class CommonReleaseGenerator extends Generator {
       default: false,
       description: "Avoid asking questions",
     });
+
+    this.option("packageManager", {
+      type: String,
+      required: true,
+      description: "Package manager",
+    });
   }
 
   writing() {
@@ -79,6 +85,7 @@ export default class CommonReleaseGenerator extends Generator {
         this.templatePath("workflow-release.yml.ejs"),
         this.destinationPath(`.github/workflows/${name}`),
         {
+          packageManager: this.options.packageManager,
           enablePublish: this.options.enablePublish,
           enableYarnVersion: this.options.enableYarnVersion,
           disableYarnGitCache: this.options.disableYarnGitCache,

@@ -296,6 +296,7 @@ export default class PobMonorepoGenerator extends Generator {
 
     this.composeWith("pob:common:release", {
       enable: true,
+      packageManager: this.options.packageManager,
       enablePublish: !this.options.isAppProject,
       withBabel: this.pobLernaConfig.typescript,
       isMonorepo: true,

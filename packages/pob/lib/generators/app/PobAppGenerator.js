@@ -313,6 +313,7 @@ export default class PobAppGenerator extends Generator {
         ci: this.appConfig.ci,
         disableYarnGitCache: this.options.disableYarnGitCache,
         updateOnly: this.options.updateOnly,
+        packageManager: this.options.packageManager,
       });
     }
 
