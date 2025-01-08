@@ -3673,7 +3673,7 @@ __metadata:
     next: "npm:15.1.4"
     react: "npm:18.3.1"
     react-dom: "npm:18.3.1"
-    typescript: "npm:5.7.2"
+    typescript: "npm:5.7.3"
   languageName: unknown
   linkType: soft
 
@@ -8958,7 +8958,7 @@ __metadata:
   resolution: "example-typescript-lib-esbuild@workspace:pob-examples/typescript-lib-esbuild"
   dependencies:
     "@pob/esbuild": "npm:3.0.0"
-    typescript: "npm:5.7.2"
+    typescript: "npm:5.7.3"
   languageName: unknown
   linkType: soft
 
@@ -8967,7 +8967,7 @@ __metadata:
   resolution: "example-typescript-lib-rollup-esbuild@workspace:pob-examples/typescript-lib-rollup-esbuild"
   dependencies:
     "@pob/rollup-esbuild": "npm:5.3.0"
-    typescript: "npm:5.7.2"
+    typescript: "npm:5.7.3"
   languageName: unknown
   linkType: soft
 
@@ -8976,7 +8976,7 @@ __metadata:
   resolution: "example-typescript-lib-without-rollup@workspace:pob-examples/typescript-lib-without-rollup"
   dependencies:
     tslib: "npm:^2.8.1"
-    typescript: "npm:5.7.2"
+    typescript: "npm:5.7.3"
   languageName: unknown
   linkType: soft
 
@@ -8988,7 +8988,7 @@ __metadata:
     "@babel/preset-env": "npm:7.26.0"
     "@types/node": "npm:22.10.5"
     pob-babel: "npm:42.2.0"
-    typescript: "npm:5.7.2"
+    typescript: "npm:5.7.3"
   languageName: unknown
   linkType: soft
 
@@ -13644,7 +13644,7 @@ __metadata:
     rollup: "npm:4.29.2"
     rollup-config-external-dependencies: "npm:^3.0.0"
     semver: "npm:^7.3.7"
-    typescript: "npm:5.7.2"
+    typescript: "npm:5.7.3"
   peerDependencies:
     "@babel/core": ^7.23.2
     rollup: 4.29.2
@@ -13694,7 +13694,7 @@ __metadata:
     ts-node: "npm:ts-node-lite@11.0.0-beta.1"
     tslib: "npm:2.8.1"
     typedoc: "npm:0.27.6"
-    typescript: "npm:5.7.2"
+    typescript: "npm:5.7.3"
     vitest: "npm:2.1.8"
   languageName: unknown
   linkType: soft
@@ -13715,7 +13715,7 @@ __metadata:
     pob-babel: "workspace:*"
     prettier: "npm:3.4.2"
     react: "npm:18.3.1"
-    typescript: "npm:5.7.2"
+    typescript: "npm:5.7.3"
   languageName: unknown
   linkType: soft
 
@@ -13752,7 +13752,7 @@ __metadata:
     pob-dependencies: "workspace:*"
     prettier: "npm:3.4.2"
     semver: "npm:7.6.3"
-    typescript: "npm:5.7.2"
+    typescript: "npm:5.7.3"
     validate-npm-package-name: "npm:^6.0.0"
     yarn-workspace-utils: "npm:7.2.0"
     yeoman-environment: "npm:4.4.3"
@@ -16112,23 +16112,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typescript@npm:5.7.2":
-  version: 5.7.2
-  resolution: "typescript@npm:5.7.2"
+"typescript@npm:5.7.3":
+  version: 5.7.3
+  resolution: "typescript@npm:5.7.3"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10c0/a873118b5201b2ef332127ef5c63fb9d9c155e6fdbe211cbd9d8e65877283797cca76546bad742eea36ed7efbe3424a30376818f79c7318512064e8625d61622
+  checksum: 10c0/b7580d716cf1824736cc6e628ab4cd8b51877408ba2be0869d2866da35ef8366dd6ae9eb9d0851470a39be17cbd61df1126f9e211d8799d764ea7431d5435afa
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@npm%3A5.7.2#optional!builtin<compat/typescript>":
-  version: 5.7.2
-  resolution: "typescript@patch:typescript@npm%3A5.7.2#optional!builtin<compat/typescript>::version=5.7.2&hash=5786d5"
+"typescript@patch:typescript@npm%3A5.7.3#optional!builtin<compat/typescript>":
+  version: 5.7.3
+  resolution: "typescript@patch:typescript@npm%3A5.7.3#optional!builtin<compat/typescript>::version=5.7.3&hash=5786d5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 10c0/f3b8082c9d1d1629a215245c9087df56cb784f9fb6f27b5d55577a20e68afe2a889c040aacff6d27e35be165ecf9dca66e694c42eb9a50b3b2c451b36b5675cb
+  checksum: 10c0/6fd7e0ed3bf23a81246878c613423730c40e8bdbfec4c6e4d7bf1b847cbb39076e56ad5f50aa9d7ebd89877999abaee216002d3f2818885e41c907caaa192cc4
   languageName: node
   linkType: hard
 
@@ -16959,7 +16959,7 @@ __metadata:
     nightingale-string: "npm:15.0.0"
     semver: "npm:7.6.3"
     type-fest: "npm:4.31.0"
-    typescript: "npm:5.7.2"
+    typescript: "npm:5.7.3"
   bin:
     yarn-version: ./dist/index-node.mjs
   languageName: unknown
@@ -16972,7 +16972,7 @@ __metadata:
     "@babel/core": "npm:7.26.0"
     "@yarnpkg/core": "npm:4.2.0"
     pob-babel: "npm:42.2.0"
-    typescript: "npm:5.7.2"
+    typescript: "npm:5.7.3"
   languageName: unknown
   linkType: soft
 
