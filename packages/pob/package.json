@@ -53,7 +53,7 @@
     "@yarnpkg/core": "4.2.0",
     "@yarnpkg/fslib": "3.1.1",
     "@yeoman/types": "1.5.0",
-    "eslint": "9.17.0",
+    "eslint": "9.18.0",
     "findup-sync": "^5.0.0",
     "git-remote-url": "^1.0.1",
     "github-username": "^8.0.0",
