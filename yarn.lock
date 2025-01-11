@@ -3690,7 +3690,7 @@ __metadata:
   dependencies:
     "@types/jscodeshift": "npm:0.12.0"
     glob: "npm:11.0.1"
-    jscodeshift: "npm:17.1.1"
+    jscodeshift: "npm:17.1.2"
   bin:
     pob-migrate: ./bin/migrate.mjs
   languageName: unknown
@@ -11458,9 +11458,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jscodeshift@npm:17.1.1":
-  version: 17.1.1
-  resolution: "jscodeshift@npm:17.1.1"
+"jscodeshift@npm:17.1.2":
+  version: 17.1.2
+  resolution: "jscodeshift@npm:17.1.2"
   dependencies:
     "@babel/core": "npm:^7.24.7"
     "@babel/parser": "npm:^7.24.7"
@@ -11487,7 +11487,7 @@ __metadata:
       optional: true
   bin:
     jscodeshift: bin/jscodeshift.js
-  checksum: 10c0/bd41e86e6cb6cd7dedb9a5b34740d1a44356e77c22fe70bd6ea20beb5bb4075c8bb2a372ba3d20a798931d678576895ec026f47b368677e0d2a29c5b5e6307bd
+  checksum: 10c0/1212b9fc24bbd0ca5df531ec9a2e389e09c977dbba9a91ac9ce87a947056d957bf66149e0633f1298b7baeb9a98b406028f610f92d4370f7c0d9b0a739eab2fe
   languageName: node
   linkType: hard
 
