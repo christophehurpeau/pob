@@ -658,6 +658,7 @@ export default class CommonTestingGenerator extends Generator {
     }
 
     if (
+      this.options.enable &&
       transpileWithBabel &&
       ((this.options.monorepo && globalTesting) || !globalTesting) &&
       testRunner === "jest"
