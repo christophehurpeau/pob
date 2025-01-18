@@ -60,6 +60,17 @@ const hasBuild = (packages, configs) =>
       ),
   );
 
+const hasTamagui = (packages, configs) =>
+  configs.some(
+    (config, index) =>
+      !!(
+        config &&
+        config.project &&
+        config.project.type === "app" &&
+        ["storybook"].includes(config.app.type)
+      ),
+  );
+
 export default class PobMonorepoGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
@@ -256,6 +267,7 @@ export default class PobMonorepoGenerator extends Generator {
       ignorePaths: [
         hasDist(this.packages, this.packageConfigs) && "/dist",
         hasBuild(this.packages, this.packageConfigs) && "/build",
+        hasTamagui(this.packages, this.packageConfigs) && "/.tamagui",
       ]
         .filter(Boolean)
         .join("\n"),
