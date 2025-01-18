@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [42.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@42.2.0...pob-babel@42.3.0) (2025-01-18)
+
+### Features
+
+* **deps:** update dependency rollup to v4.29.0 ([#2384](https://github.com/christophehurpeau/pob/issues/2384)) ([22c2aa3](https://github.com/christophehurpeau/pob/commit/22c2aa3b0f798e3806e846f3b1c8a32011c4f696))
+* **deps:** update dependency rollup to v4.30.1 ([#2400](https://github.com/christophehurpeau/pob/issues/2400)) ([5923997](https://github.com/christophehurpeau/pob/commit/59239978fe3d2bea1ca088cdb69f3efbe2643ae4))
+
+### Bug Fixes
+
+* **deps:** update dependency rollup to v4.29.1 ([#2385](https://github.com/christophehurpeau/pob/issues/2385)) ([818f7de](https://github.com/christophehurpeau/pob/commit/818f7de57b559349572ddc98e8a9fdf2f095b953))
+* **deps:** update dependency rollup to v4.29.2 ([#2399](https://github.com/christophehurpeau/pob/issues/2399)) ([3fd89d6](https://github.com/christophehurpeau/pob/commit/3fd89d6923025d00c660b299c02368cae7b16387))
+* **deps:** update dependency typescript to v5.7.3 ([#2403](https://github.com/christophehurpeau/pob/issues/2403)) ([958d3c6](https://github.com/christophehurpeau/pob/commit/958d3c6f03d2d49b9f9f5b1c857ddf04a4ae7e4f))
+
+Version bump for dependency: @pob/rollup
+
+
 ## [42.2.0](https://github.com/christophehurpeau/pob/compare/pob-babel@42.1.0...pob-babel@42.2.0) (2024-12-19)
 
 ### Features

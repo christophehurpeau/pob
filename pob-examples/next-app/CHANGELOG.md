@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.1](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.8.0...@pob-example/next-app@0.8.1) (2025-01-18)
+
+### Bug Fixes
+
+* **deps:** update dependency next to v15.1.3 ([#2389](https://github.com/christophehurpeau/pob/issues/2389)) ([788d8b1](https://github.com/christophehurpeau/pob/commit/788d8b11b82a99214d955539ab9a989497c6de01))
+* **deps:** update dependency next to v15.1.4 ([#2402](https://github.com/christophehurpeau/pob/issues/2402)) ([adbb16b](https://github.com/christophehurpeau/pob/commit/adbb16b04908dafdbbecb09aa95de0a13b26648d))
+* **deps:** update dependency next to v15.1.5 ([#2414](https://github.com/christophehurpeau/pob/issues/2414)) ([0b43eda](https://github.com/christophehurpeau/pob/commit/0b43eda6265f663e7a02c25c2b6c0e6ff5bdb880))
+* **deps:** update dependency typescript to v5.7.3 ([#2403](https://github.com/christophehurpeau/pob/issues/2403)) ([958d3c6](https://github.com/christophehurpeau/pob/commit/958d3c6f03d2d49b9f9f5b1c857ddf04a4ae7e4f))
+
 ## [0.8.0](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.7.3...@pob-example/next-app@0.8.0) (2024-12-19)
 
 ### Features

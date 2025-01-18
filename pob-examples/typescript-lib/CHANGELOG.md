@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.35.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.34.0...example-typescript-lib@0.35.0) (2025-01-18)
+
+### Bug Fixes
+
+* **deps:** update dependency typescript to v5.7.3 ([#2403](https://github.com/christophehurpeau/pob/issues/2403)) ([958d3c6](https://github.com/christophehurpeau/pob/commit/958d3c6f03d2d49b9f9f5b1c857ddf04a4ae7e4f))
+
+Version bump for dependency: pob-babel
+
+
 ## [0.34.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.33.0...example-typescript-lib@0.34.0) (2024-12-19)
 
 Version bump for dependency: pob-babel

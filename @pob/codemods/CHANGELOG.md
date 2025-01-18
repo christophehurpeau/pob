@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.5.1](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.5.0...@pob/codemods@0.5.1) (2025-01-18)
+
+### Bug Fixes
+
+* **deps:** update dependency glob to v11.0.1 ([#2407](https://github.com/christophehurpeau/pob/issues/2407)) ([449721c](https://github.com/christophehurpeau/pob/commit/449721cd4b8422322585156e2134c042a9c3b213))
+* **deps:** update dependency jscodeshift to v17.1.2 ([#2408](https://github.com/christophehurpeau/pob/issues/2408)) ([620f28d](https://github.com/christophehurpeau/pob/commit/620f28dd49a1311bd2a00b47835b907ebc283911))
+
 ## [0.5.0](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.4.0...@pob/codemods@0.5.0) (2024-11-12)
 
 ### Features

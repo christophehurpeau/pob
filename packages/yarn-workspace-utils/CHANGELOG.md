@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@7.2.0...yarn-workspace-utils@7.3.0) (2025-01-18)
+
+### Features
+
+* **deps:** update yarn monorepo ([#2393](https://github.com/christophehurpeau/pob/issues/2393)) ([8340af5](https://github.com/christophehurpeau/pob/commit/8340af55093e7a3150d2df0dc01022782294349b))
+
+### Bug Fixes
+
+* **deps:** update dependency typescript to v5.7.3 ([#2403](https://github.com/christophehurpeau/pob/issues/2403)) ([958d3c6](https://github.com/christophehurpeau/pob/commit/958d3c6f03d2d49b9f9f5b1c857ddf04a4ae7e4f))
+
+Version bump for dependency: pob-babel
+
+
 ## [7.2.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@7.1.0...yarn-workspace-utils@7.2.0) (2024-12-19)
 
 Version bump for dependency: pob-babel

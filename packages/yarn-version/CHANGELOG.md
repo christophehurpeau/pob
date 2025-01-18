@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.0](https://github.com/christophehurpeau/pob/compare/yarn-version@5.1.0...yarn-version@5.2.0) (2025-01-18)
+
+### Features
+
+* **deps:** update dependency @octokit/rest to v21.1.0 ([#2404](https://github.com/christophehurpeau/pob/issues/2404)) ([bc6fefe](https://github.com/christophehurpeau/pob/commit/bc6fefe4ee5676682a29715fae49a6e8992ec591))
+* **deps:** update dependency rollup to v4.30.1 ([#2400](https://github.com/christophehurpeau/pob/issues/2400)) ([5923997](https://github.com/christophehurpeau/pob/commit/59239978fe3d2bea1ca088cdb69f3efbe2643ae4))
+
+### Bug Fixes
+
+* **deps:** update dependency typescript to v5.7.3 ([#2403](https://github.com/christophehurpeau/pob/issues/2403)) ([958d3c6](https://github.com/christophehurpeau/pob/commit/958d3c6f03d2d49b9f9f5b1c857ddf04a4ae7e4f))
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [5.1.0](https://github.com/christophehurpeau/pob/compare/yarn-version@5.0.0...yarn-version@5.1.0) (2024-12-19)
 
 Version bump for dependency: @pob/rollup-esbuild

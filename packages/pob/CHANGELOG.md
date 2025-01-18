@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.3.0](https://github.com/christophehurpeau/pob/compare/pob@25.2.0...pob@25.3.0) (2025-01-18)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v59.3.2 ([#2391](https://github.com/christophehurpeau/pob/issues/2391)) ([7c0b03c](https://github.com/christophehurpeau/pob/commit/7c0b03c56c2da1a27993c4488a2e661de51732fe))
+* **deps:** update @pob/eslint-config to v59.4.0 ([#2415](https://github.com/christophehurpeau/pob/issues/2415)) ([7fe3423](https://github.com/christophehurpeau/pob/commit/7fe34235a3ed6500b43e75d6159b23523ebf708e))
+* **deps:** update dependency eslint to v9.18.0 ([#2409](https://github.com/christophehurpeau/pob/issues/2409)) ([4e73796](https://github.com/christophehurpeau/pob/commit/4e737964a27f660413e98972c7943f70bb2165f0))
+* **deps:** update yarn monorepo ([#2393](https://github.com/christophehurpeau/pob/issues/2393)) ([8340af5](https://github.com/christophehurpeau/pob/commit/8340af55093e7a3150d2df0dc01022782294349b))
+* has tamagui ([f88d976](https://github.com/christophehurpeau/pob/commit/f88d976ae8422c97cb864800521839a8dd5ac880))
+
+### Bug Fixes
+
+* **deps:** update dependency typescript to v5.7.3 ([#2403](https://github.com/christophehurpeau/pob/issues/2403)) ([958d3c6](https://github.com/christophehurpeau/pob/commit/958d3c6f03d2d49b9f9f5b1c857ddf04a4ae7e4f))
+* **pob:** fix eslint config react-native-web ([7c5a489](https://github.com/christophehurpeau/pob/commit/7c5a489dd5904a7ce5a52bdd220d833323f5ce17))
+* stop creating babel config if testing is disabled ([d04794b](https://github.com/christophehurpeau/pob/commit/d04794bf682e6dffc0f4ef075d89458092a685b3))
+* vscode config compatible with eslint linting json files ([d83e473](https://github.com/christophehurpeau/pob/commit/d83e4737a365446ce9b8fbe56618a281de6e4b56))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [25.2.0](https://github.com/christophehurpeau/pob/compare/pob@25.1.0...pob@25.2.0) (2024-12-19)
 
 ### Features
