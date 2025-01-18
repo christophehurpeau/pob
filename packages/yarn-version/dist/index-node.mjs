@@ -23,7 +23,7 @@ class UsageError extends Error {
 
 function getMapArrayItemForKey(map, key) {
   let value = map.get(key);
-  if (value === void 0) {
+  if (value === undefined) {
     map.set(key, value = []);
   }
   return value;
@@ -38,7 +38,7 @@ const PackageDescriptorNameUtils = {
     return { name: value };
   },
   stringify: (descriptor) => {
-    return descriptor.scope === void 0 ? descriptor.name : `@${descriptor.scope}/${descriptor.name}`;
+    return descriptor.scope === undefined ? descriptor.name : `@${descriptor.scope}/${descriptor.name}`;
   }
 };
 const PackageDependencyDescriptorUtils = {
@@ -264,7 +264,7 @@ async function execvp(command, args, {
 }) {
   const stdoutChunks = [];
   const stderrChunks = [];
-  if (env.PWD !== void 0) {
+  if (env.PWD !== undefined) {
     env = { ...env, PWD: cwd };
   }
   const subprocess = childProcess.spawn(command, args, {
@@ -469,7 +469,7 @@ const createWorkspace = async (path2) => {
   const pkg = await readPkg(path2);
   return { cwd: path2, pkg };
 };
-async function writePkg(workspace, prettierOptions = void 0) {
+async function writePkg(workspace, prettierOptions = undefined) {
   const string = await prettyPkg(workspace.pkg, prettierOptions);
   await fs.writeFile(getPackageJsonPath(workspace.cwd), string, "utf8");
 }
@@ -569,8 +569,8 @@ There are uncommitted changes in the git repository. Please commit or stash them
   ] = await Promise.all([
     loadConventionalCommitConfig(rootWorkspace, options.preset),
     // create client early to fail fast if necessary
-    options.createRelease ? createGitHubClient() : void 0,
-    options.createRelease ? parseGithubRepoUrl(rootWorkspace) : void 0,
+    options.createRelease ? createGitHubClient() : undefined,
+    options.createRelease ? parseGithubRepoUrl(rootWorkspace) : undefined,
     getGitCurrentBranch(rootWorkspace)
   ]);
   const buildTagName = (workspace, version) => `${isMonorepo && workspace !== rootWorkspace ? `${getWorkspaceName(workspace)}@` : options.tagVersionPrefix}${version}`;
@@ -609,17 +609,17 @@ There are uncommitted changes in the git repository. Please commit or stash them
   const previousTagByWorkspace = new Map(
     await Promise.all(
       bumpableWorkspaces.map(async ({ workspace, workspaceName, isRoot }) => {
-        const packageOption = isMonorepo && isMonorepoVersionIndependent ? workspaceName : void 0;
+        const packageOption = isMonorepo && isMonorepoVersionIndependent ? workspaceName : undefined;
         const previousVersionTagPrefix = packageOption ? `${packageOption}@` : options.tagVersionPrefix;
         const previousTag = await (isRoot || !isMonorepoVersionIndependent ? rootPreviousVersionTagPromise : conventionalGitClient.getLastSemverTag({
           prefix: previousVersionTagPrefix,
           skipUnstable: true
         }));
-        return [workspace, previousTag || void 0];
+        return [workspace, previousTag || undefined];
       })
     )
   );
-  const commitsByWorkspace = options.force ? void 0 : new Map(
+  const commitsByWorkspace = options.force ? undefined : new Map(
     await Promise.all(
       bumpableWorkspaces.map(async ({ workspace }) => {
         const previousTag = previousTagByWorkspace.get(workspace);
@@ -776,7 +776,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
             bumpForDependenciesReasons: changedWorkspace ? bumpReasons.slice(1) : bumpReasons,
             newVersion,
             newTag: tagName,
-            hasChanged: changedWorkspace !== void 0,
+            hasChanged: changedWorkspace !== undefined,
             dependenciesToBump
           });
           logger.info(
@@ -887,7 +887,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
         workspace,
         { newTag, hasChanged, bumpReason, bumpForDependenciesReasons }
       ]) => {
-        const workspaceRelativePath = rootWorkspace === workspace ? void 0 : path.relative(rootWorkspace.cwd, workspace.cwd);
+        const workspaceRelativePath = rootWorkspace === workspace ? undefined : path.relative(rootWorkspace.cwd, workspace.cwd);
         let changelog = await generateChangelog(
           rootWorkspace,
           workspace.pkg,
@@ -898,7 +898,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
             previousTag: previousTagByWorkspace.get(workspace),
             verbose: options.verbose,
             tagPrefix: options.tagVersionPrefix,
-            lernaPackage: rootWorkspace === workspace ? void 0 : getWorkspaceName(workspace)
+            lernaPackage: rootWorkspace === workspace ? undefined : getWorkspaceName(workspace)
           }
         );
         if (bumpForDependenciesReasons && workspace !== rootWorkspace) {
@@ -977,7 +977,7 @@ ${tagsInCommitMessage}` : rootNewVersion
       logger.info("Create git release");
       await Promise.all(
         [...bumpedWorkspaces.entries()].map(([workspace, { newTag }]) => {
-          if (newTag === null) return void 0;
+          if (newTag === null) return undefined;
           const changelog = changelogs.get(workspace);
           if (!changelog) {
             logger.warn(
@@ -985,7 +985,7 @@ ${tagsInCommitMessage}` : rootNewVersion
                 workspace
               )}`
             );
-            return void 0;
+            return undefined;
           }
           return createGitRelease(
             githubClient,
