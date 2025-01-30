@@ -76,6 +76,6 @@
   },
   "devDependencies": {
     "@pob/root": "15.2.0",
-    "@types/node": "22.10.7"
+    "@types/node": "22.12.0"
   }
 }
