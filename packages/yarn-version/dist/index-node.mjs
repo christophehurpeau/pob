@@ -549,7 +549,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
   let rootNewTag = "";
   const isMonorepo = rootWorkspaceChildren.length > 0;
   const isMonorepoVersionIndependent = isMonorepo && !rootWorkspace.pkg.version;
-  const workspaces = !(isMonorepo && !rootWorkspaceChildren) || options.includesRoot ? [rootWorkspace, ...rootWorkspaceChildren] : rootWorkspaceChildren;
+  const workspaces = [rootWorkspace, ...rootWorkspaceChildren] ;
   if (options.prerelease) {
     throw new UsageError("--prerelease is not supported yet.");
   }
