@@ -44,3 +44,5 @@ jobs:
             -c user.email="christophehurpeau@users.noreply.github.com" \
             commit -m "chore: update pob root" --author="github-actions[bot] <github-actions[bot]@users.noreply.github.com>"
           git push --no-verify
+        env:
+          YARN_ENABLE_IMMUTABLE_INSTALLS: false
