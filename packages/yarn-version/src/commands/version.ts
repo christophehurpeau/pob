@@ -253,6 +253,17 @@ export const versionCommandAction = async (
     ),
   );
 
+  if (options.dryRun) {
+    logger.info("Previous tags", {
+      previousTagByWorkspace: [...previousTagByWorkspace.entries()].map(
+        ([workspace, previousTag]) => ({
+          workspace: getWorkspaceName(workspace),
+          previousTag,
+        }),
+      ),
+    });
+  }
+
   const commitsByWorkspace = options.force
     ? undefined
     : new Map(

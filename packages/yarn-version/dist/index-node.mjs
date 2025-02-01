@@ -619,6 +619,16 @@ There are uncommitted changes in the git repository. Please commit or stash them
       })
     )
   );
+  if (options.dryRun) {
+    logger.info("Previous tags", {
+      previousTagByWorkspace: [...previousTagByWorkspace.entries()].map(
+        ([workspace, previousTag]) => ({
+          workspace: getWorkspaceName(workspace),
+          previousTag
+        })
+      )
+    });
+  }
   const commitsByWorkspace = options.force ? undefined : new Map(
     await Promise.all(
       bumpableWorkspaces.map(async ({ workspace }) => {
@@ -835,13 +845,17 @@ There are uncommitted changes in the git repository. Please commit or stash them
       //   newVersion, },
     );
   }
-  logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-  await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
-  logger.info("Lifecycle script: preversion");
-  if (isMonorepoVersionIndependent && rootWorkspace.pkg.scripts?.preversion) {
-    await execCommand(rootWorkspace, ["yarn", "run", "preversion"], "inherit");
-  }
   if (!options.dryRun) {
+    logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
+    await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
+    logger.info("Lifecycle script: preversion");
+    if (isMonorepoVersionIndependent && rootWorkspace.pkg.scripts?.preversion) {
+      await execCommand(
+        rootWorkspace,
+        ["yarn", "run", "preversion"],
+        "inherit"
+      );
+    }
     for (const workspace of bumpedWorkspaces.keys()) {
       if (workspace.pkg.scripts?.preversion) {
         await execCommand(workspace, ["yarn", "run", "preversion"], "inherit");
