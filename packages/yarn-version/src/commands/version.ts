@@ -229,7 +229,7 @@ export const versionCommandAction = async (
     });
   }
 
-  const previousTagByWorkspace = new Map<Workspace, string | undefined>(
+  const previousTagByWorkspace = new Map<Workspace, string | null>(
     await Promise.all(
       bumpableWorkspaces.map(async ({ workspace, workspaceName, isRoot }) => {
         const packageOption =
@@ -248,7 +248,7 @@ export const versionCommandAction = async (
               skipUnstable: true,
             }));
 
-        return [workspace, previousTag || undefined] as const;
+        return [workspace, previousTag || null] as const;
       }),
     ),
   );
@@ -279,7 +279,10 @@ export const versionCommandAction = async (
               workspace,
               await asyncIterableToArray(
                 conventionalGitClient.getCommits(
-                  { path: workspaceRelativePath, from: previousTag },
+                  {
+                    path: workspaceRelativePath,
+                    from: previousTag || undefined,
+                  },
                   conventionalCommitConfig.parser,
                 ),
               ),
@@ -643,7 +646,7 @@ export const versionCommandAction = async (
           isMonorepoVersionIndependent ? newTag : rootNewTag,
           {
             path: workspaceRelativePath,
-            previousTag: previousTagByWorkspace.get(workspace),
+            previousTag: previousTagByWorkspace.get(workspace) || undefined,
             verbose: options.verbose,
             tagPrefix: options.tagVersionPrefix,
             lernaPackage:

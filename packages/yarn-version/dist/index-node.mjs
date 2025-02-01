@@ -615,7 +615,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
           prefix: previousVersionTagPrefix,
           skipUnstable: true
         }));
-        return [workspace, previousTag || undefined];
+        return [workspace, previousTag || null];
       })
     )
   );
@@ -641,7 +641,10 @@ There are uncommitted changes in the git repository. Please commit or stash them
           workspace,
           await asyncIterableToArray(
             conventionalGitClient.getCommits(
-              { path: workspaceRelativePath, from: previousTag },
+              {
+                path: workspaceRelativePath,
+                from: previousTag || undefined
+              },
               conventionalCommitConfig.parser
             )
           )
@@ -909,7 +912,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
           isMonorepoVersionIndependent ? newTag : rootNewTag,
           {
             path: workspaceRelativePath,
-            previousTag: previousTagByWorkspace.get(workspace),
+            previousTag: previousTagByWorkspace.get(workspace) || undefined,
             verbose: options.verbose,
             tagPrefix: options.tagVersionPrefix,
             lernaPackage: rootWorkspace === workspace ? undefined : getWorkspaceName(workspace)
