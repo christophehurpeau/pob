@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 43.0.0 (2025-02-01)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* **deps:** update @pob/eslint-config to v59 (major) ([#2329](https://github.com/christophehurpeau/pob/issues/2329)) ([5019b13](https://github.com/christophehurpeau/pob/commit/5019b13dba092342eee72f0d6d766cf2de864555))
+* **deps:** update dependency @rollup/plugin-node-resolve to v16 ([#2372](https://github.com/christophehurpeau/pob/issues/2372)) ([5ddef90](https://github.com/christophehurpeau/pob/commit/5ddef90c5d03b5d41d585642af592203c5c4aa30))
+* **deps:** update dependency rollup to v4.29.0 ([#2384](https://github.com/christophehurpeau/pob/issues/2384)) ([22c2aa3](https://github.com/christophehurpeau/pob/commit/22c2aa3b0f798e3806e846f3b1c8a32011c4f696))
+* **deps:** update dependency rollup to v4.30.1 ([#2400](https://github.com/christophehurpeau/pob/issues/2400)) ([5923997](https://github.com/christophehurpeau/pob/commit/59239978fe3d2bea1ca088cdb69f3efbe2643ae4))
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+### Bug Fixes
+
+* **deps:** update dependency @rollup/plugin-node-resolve to v15.3.1 ([#2371](https://github.com/christophehurpeau/pob/issues/2371)) ([b53b3fc](https://github.com/christophehurpeau/pob/commit/b53b3fce45213122217ea63b80016cacaea45ddd))
+* **deps:** update dependency rollup to v4.29.1 ([#2385](https://github.com/christophehurpeau/pob/issues/2385)) ([818f7de](https://github.com/christophehurpeau/pob/commit/818f7de57b559349572ddc98e8a9fdf2f095b953))
+* **deps:** update dependency rollup to v4.29.2 ([#2399](https://github.com/christophehurpeau/pob/issues/2399)) ([3fd89d6](https://github.com/christophehurpeau/pob/commit/3fd89d6923025d00c660b299c02368cae7b16387))
+* **deps:** update dependency typescript to v5.7.3 ([#2403](https://github.com/christophehurpeau/pob/issues/2403)) ([958d3c6](https://github.com/christophehurpeau/pob/commit/958d3c6f03d2d49b9f9f5b1c857ddf04a4ae7e4f))
+
+Version bump for dependency: @pob/rollup
+Version bump for dependency: babel-preset-pob-env
+
+
 ## [42.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@42.2.0...pob-babel@42.3.0) (2025-01-18)
 
 ### Features

@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 17.0.0 (2025-02-01)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* **deps:** update @pob/eslint-config to v59 (major) ([#2329](https://github.com/christophehurpeau/pob/issues/2329)) ([5019b13](https://github.com/christophehurpeau/pob/commit/5019b13dba092342eee72f0d6d766cf2de864555))
+* **deps:** update @pob/eslint-config to v59.2.0 ([#2376](https://github.com/christophehurpeau/pob/issues/2376)) ([02738e0](https://github.com/christophehurpeau/pob/commit/02738e07f6788010f5097e0e8f2005aa86199664))
+* **deps:** update @pob/eslint-config to v59.3.2 ([#2391](https://github.com/christophehurpeau/pob/issues/2391)) ([7c0b03c](https://github.com/christophehurpeau/pob/commit/7c0b03c56c2da1a27993c4488a2e661de51732fe))
+* **deps:** update @pob/eslint-config to v59.4.0 ([#2415](https://github.com/christophehurpeau/pob/issues/2415)) ([7fe3423](https://github.com/christophehurpeau/pob/commit/7fe34235a3ed6500b43e75d6159b23523ebf708e))
+* **deps:** update dependency eslint to v9.13.0 ([#2290](https://github.com/christophehurpeau/pob/issues/2290)) ([b7728e1](https://github.com/christophehurpeau/pob/commit/b7728e111a881ef7fcf1bf71da350492f71c712c))
+* **deps:** update dependency eslint to v9.14.0 ([#2304](https://github.com/christophehurpeau/pob/issues/2304)) ([c13cf99](https://github.com/christophehurpeau/pob/commit/c13cf992bab0f261969e258e79aaaa267512a661))
+* **deps:** update dependency eslint to v9.16.0 ([#2308](https://github.com/christophehurpeau/pob/issues/2308)) ([78afd96](https://github.com/christophehurpeau/pob/commit/78afd962ab7d5ed1d735d6a90097f8b010c1621d))
+* **deps:** update dependency eslint to v9.17.0 ([#2368](https://github.com/christophehurpeau/pob/issues/2368)) ([6976c32](https://github.com/christophehurpeau/pob/commit/6976c32b4812107b611f2ff5698db47202e857a1))
+* **deps:** update dependency eslint to v9.18.0 ([#2409](https://github.com/christophehurpeau/pob/issues/2409)) ([4e73796](https://github.com/christophehurpeau/pob/commit/4e737964a27f660413e98972c7943f70bb2165f0))
+* **deps:** update dependency eslint to v9.19.0 ([#2427](https://github.com/christophehurpeau/pob/issues/2427)) ([eca24e4](https://github.com/christophehurpeau/pob/commit/eca24e4ffc9679f9dd0469895ca5f1ea0fdb9f43))
+* **deps:** update dependency prettier to v3.4.0 ([#2325](https://github.com/christophehurpeau/pob/issues/2325)) ([367f1dc](https://github.com/christophehurpeau/pob/commit/367f1dcebf3b47b61c024380b6358894dcb6514a))
+* **deps:** update dependency rollup to v4.29.0 ([#2384](https://github.com/christophehurpeau/pob/issues/2384)) ([22c2aa3](https://github.com/christophehurpeau/pob/commit/22c2aa3b0f798e3806e846f3b1c8a32011c4f696))
+* **deps:** update dependency rollup to v4.30.1 ([#2400](https://github.com/christophehurpeau/pob/issues/2400)) ([5923997](https://github.com/christophehurpeau/pob/commit/59239978fe3d2bea1ca088cdb69f3efbe2643ae4))
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v3.4.1 ([#2328](https://github.com/christophehurpeau/pob/issues/2328)) ([cf236ba](https://github.com/christophehurpeau/pob/commit/cf236bac297964115e0b7bb463f923ea78c51ca8))
+* **deps:** update dependency prettier to v3.4.2 ([#2342](https://github.com/christophehurpeau/pob/issues/2342)) ([9f74b5a](https://github.com/christophehurpeau/pob/commit/9f74b5a733416a0f32c666149f47c2d7df81ffe5))
+* **deps:** update dependency rollup to v4.29.1 ([#2385](https://github.com/christophehurpeau/pob/issues/2385)) ([818f7de](https://github.com/christophehurpeau/pob/commit/818f7de57b559349572ddc98e8a9fdf2f095b953))
+* **deps:** update dependency rollup to v4.29.2 ([#2399](https://github.com/christophehurpeau/pob/issues/2399)) ([3fd89d6](https://github.com/christophehurpeau/pob/commit/3fd89d6923025d00c660b299c02368cae7b16387))
+* **deps:** update dependency typescript to v5.7.3 ([#2403](https://github.com/christophehurpeau/pob/issues/2403)) ([958d3c6](https://github.com/christophehurpeau/pob/commit/958d3c6f03d2d49b9f9f5b1c857ddf04a4ae7e4f))
+
+Version bump for dependency: @pob/commitlint-config
+Version bump for dependency: @pob/esbuild
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: @pob/rollup-typescript
+Version bump for dependency: pob-babel
+Version bump for dependency: repository-check-dirty
+
+
 ## [16.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@16.1.0...pob-dependencies@16.2.0) (2025-01-18)
 
 ### Features

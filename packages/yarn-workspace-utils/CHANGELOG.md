@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 8.0.0 (2025-02-01)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* **deps:** update @pob/eslint-config to v59 (major) ([#2329](https://github.com/christophehurpeau/pob/issues/2329)) ([5019b13](https://github.com/christophehurpeau/pob/commit/5019b13dba092342eee72f0d6d766cf2de864555))
+* **deps:** update yarn monorepo ([#2393](https://github.com/christophehurpeau/pob/issues/2393)) ([8340af5](https://github.com/christophehurpeau/pob/commit/8340af55093e7a3150d2df0dc01022782294349b))
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+### Bug Fixes
+
+* **deps:** update dependency typescript to v5.7.3 ([#2403](https://github.com/christophehurpeau/pob/issues/2403)) ([958d3c6](https://github.com/christophehurpeau/pob/commit/958d3c6f03d2d49b9f9f5b1c857ddf04a4ae7e4f))
+* **deps:** update yarn monorepo ([#2289](https://github.com/christophehurpeau/pob/issues/2289)) ([ca24ce6](https://github.com/christophehurpeau/pob/commit/ca24ce664fc2dc7b1b9788df324a4047fbd4045d))
+* **deps:** update yarn monorepo ([#2314](https://github.com/christophehurpeau/pob/issues/2314)) ([a175402](https://github.com/christophehurpeau/pob/commit/a17540280c524ceeed748625c94b7b4c717e0ba2))
+* **deps:** update yarn monorepo ([#2322](https://github.com/christophehurpeau/pob/issues/2322)) ([ec71e81](https://github.com/christophehurpeau/pob/commit/ec71e8101df4a3bace9ec3c02874165af7580df6))
+
+Version bump for dependency: pob-babel
+
+
 ## [7.3.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@7.2.0...yarn-workspace-utils@7.3.0) (2025-01-18)
 
 ### Features

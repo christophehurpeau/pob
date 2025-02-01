@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 6.0.0 (2025-02-01)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* app distribute ([5f0869f](https://github.com/christophehurpeau/pob/commit/5f0869f6e363de6c709132ddcd859955c5a6d8ec))
+* **deps:** update @pob/eslint-config to v59 (major) ([#2329](https://github.com/christophehurpeau/pob/issues/2329)) ([5019b13](https://github.com/christophehurpeau/pob/commit/5019b13dba092342eee72f0d6d766cf2de864555))
+* **deps:** update dependency @octokit/rest to v21.1.0 ([#2404](https://github.com/christophehurpeau/pob/issues/2404)) ([bc6fefe](https://github.com/christophehurpeau/pob/commit/bc6fefe4ee5676682a29715fae49a6e8992ec591))
+* **deps:** update dependency hosted-git-info to v8 ([#2212](https://github.com/christophehurpeau/pob/issues/2212)) ([c8f05fd](https://github.com/christophehurpeau/pob/commit/c8f05fd7bf50c9053a9a3f5748fe0828f5fb5b42))
+* **deps:** update dependency rollup to v4.30.1 ([#2400](https://github.com/christophehurpeau/pob/issues/2400)) ([5923997](https://github.com/christophehurpeau/pob/commit/59239978fe3d2bea1ca088cdb69f3efbe2643ae4))
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+### Bug Fixes
+
+* add yarn-version build in dist ([d5d6893](https://github.com/christophehurpeau/pob/commit/d5d68936995aee4c376c73acce6c8d4c507c3786))
+* **deps:** update dependency @npmcli/map-workspaces to v4.0.2 ([#2313](https://github.com/christophehurpeau/pob/issues/2313)) ([edc2965](https://github.com/christophehurpeau/pob/commit/edc296558a19af196a96e72392cfb335d5e538ab))
+* **deps:** update dependency typescript to v5.7.3 ([#2403](https://github.com/christophehurpeau/pob/issues/2403)) ([958d3c6](https://github.com/christophehurpeau/pob/commit/958d3c6f03d2d49b9f9f5b1c857ddf04a4ae7e4f))
+* make yarn-version executable ([ee75705](https://github.com/christophehurpeau/pob/commit/ee7570541f92adb7204deaba1618eb888d7cef58))
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [5.2.0](https://github.com/christophehurpeau/pob/compare/yarn-version@5.1.0...yarn-version@5.2.0) (2025-01-18)
 
 ### Features

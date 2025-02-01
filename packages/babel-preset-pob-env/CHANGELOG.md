@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 15.0.0 (2025-02-01)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* **deps:** update @pob/eslint-config to v59 (major) ([#2329](https://github.com/christophehurpeau/pob/issues/2329)) ([5019b13](https://github.com/christophehurpeau/pob/commit/5019b13dba092342eee72f0d6d766cf2de864555))
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+Version bump for dependency: babel-plugin-fix-class-properties-uninitialized
+
+
 ## [14.1.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@14.0.0...babel-preset-pob-env@14.1.0) (2024-12-10)
 
 ### Features

@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 4.0.0 (2025-02-01)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+### Bug Fixes
+
+* **deps:** update dependency esbuild to v0.24.1 ([#2381](https://github.com/christophehurpeau/pob/issues/2381)) ([a626bd6](https://github.com/christophehurpeau/pob/commit/a626bd6982a0322142574097155184b99a46bbb4))
+* **deps:** update dependency esbuild to v0.24.2 ([#2383](https://github.com/christophehurpeau/pob/issues/2383)) ([af9d702](https://github.com/christophehurpeau/pob/commit/af9d7021989d848cbd97012da1b08a00a2109538))
+
 ## [3.0.1](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@3.0.0...@pob/esbuild@3.0.1) (2025-01-18)
 
 ### Bug Fixes

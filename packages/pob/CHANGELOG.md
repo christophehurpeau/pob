@@ -3,6 +3,74 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 26.0.0 (2025-02-01)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* add src/test-setup.ts support ([d469e23](https://github.com/christophehurpeau/pob/commit/d469e23a31b2ebd0477daf06a01e1c95b1809c9d))
+* allow lib to use latest lts ([2c7d51f](https://github.com/christophehurpeau/pob/commit/2c7d51f4bab9e64af469afc1c2b59b74c7c7a8fa))
+* app distribute ([5f0869f](https://github.com/christophehurpeau/pob/commit/5f0869f6e363de6c709132ddcd859955c5a6d8ec))
+* bundler tsc using experimental-strip-types ([98002f8](https://github.com/christophehurpeau/pob/commit/98002f832c1869e23c5c93c3f5e61b4915e1263b))
+* **deps:** update @pob/eslint-config to v59 (major) ([#2329](https://github.com/christophehurpeau/pob/issues/2329)) ([5019b13](https://github.com/christophehurpeau/pob/commit/5019b13dba092342eee72f0d6d766cf2de864555))
+* **deps:** update @pob/eslint-config to v59.2.0 ([#2376](https://github.com/christophehurpeau/pob/issues/2376)) ([02738e0](https://github.com/christophehurpeau/pob/commit/02738e07f6788010f5097e0e8f2005aa86199664))
+* **deps:** update @pob/eslint-config to v59.3.2 ([#2391](https://github.com/christophehurpeau/pob/issues/2391)) ([7c0b03c](https://github.com/christophehurpeau/pob/commit/7c0b03c56c2da1a27993c4488a2e661de51732fe))
+* **deps:** update @pob/eslint-config to v59.4.0 ([#2415](https://github.com/christophehurpeau/pob/issues/2415)) ([7fe3423](https://github.com/christophehurpeau/pob/commit/7fe34235a3ed6500b43e75d6159b23523ebf708e))
+* **deps:** update dependency @yeoman/types to v1.5.0 ([#2200](https://github.com/christophehurpeau/pob/issues/2200)) ([7c03bf2](https://github.com/christophehurpeau/pob/commit/7c03bf2237a8221061fd05b8f25e20feb2808aa7))
+* **deps:** update dependency eslint to v9.13.0 ([#2290](https://github.com/christophehurpeau/pob/issues/2290)) ([b7728e1](https://github.com/christophehurpeau/pob/commit/b7728e111a881ef7fcf1bf71da350492f71c712c))
+* **deps:** update dependency eslint to v9.14.0 ([#2304](https://github.com/christophehurpeau/pob/issues/2304)) ([c13cf99](https://github.com/christophehurpeau/pob/commit/c13cf992bab0f261969e258e79aaaa267512a661))
+* **deps:** update dependency eslint to v9.16.0 ([#2308](https://github.com/christophehurpeau/pob/issues/2308)) ([78afd96](https://github.com/christophehurpeau/pob/commit/78afd962ab7d5ed1d735d6a90097f8b010c1621d))
+* **deps:** update dependency eslint to v9.17.0 ([#2368](https://github.com/christophehurpeau/pob/issues/2368)) ([6976c32](https://github.com/christophehurpeau/pob/commit/6976c32b4812107b611f2ff5698db47202e857a1))
+* **deps:** update dependency eslint to v9.18.0 ([#2409](https://github.com/christophehurpeau/pob/issues/2409)) ([4e73796](https://github.com/christophehurpeau/pob/commit/4e737964a27f660413e98972c7943f70bb2165f0))
+* **deps:** update dependency eslint to v9.19.0 ([#2427](https://github.com/christophehurpeau/pob/issues/2427)) ([eca24e4](https://github.com/christophehurpeau/pob/commit/eca24e4ffc9679f9dd0469895ca5f1ea0fdb9f43))
+* **deps:** update dependency github-username to v8 ([#1726](https://github.com/christophehurpeau/pob/issues/1726)) ([83927e1](https://github.com/christophehurpeau/pob/commit/83927e14472c9bb77b2c0b8dd75e3866248ac344))
+* **deps:** update dependency prettier to v3.4.0 ([#2325](https://github.com/christophehurpeau/pob/issues/2325)) ([367f1dc](https://github.com/christophehurpeau/pob/commit/367f1dcebf3b47b61c024380b6358894dcb6514a))
+* **deps:** update dependency yeoman-generator to v7.4.0 ([#2366](https://github.com/christophehurpeau/pob/issues/2366)) ([1311555](https://github.com/christophehurpeau/pob/commit/1311555caecacf9a85f006ccf0e69680749070b4))
+* **deps:** update yarn monorepo ([#2393](https://github.com/christophehurpeau/pob/issues/2393)) ([8340af5](https://github.com/christophehurpeau/pob/commit/8340af55093e7a3150d2df0dc01022782294349b))
+* has tamagui ([f88d976](https://github.com/christophehurpeau/pob/commit/f88d976ae8422c97cb864800521839a8dd5ac880))
+* improve bun support ([24accc2](https://github.com/christophehurpeau/pob/commit/24accc26c5fbf429befdecdc0da663fa10cd00a6))
+* start preparing cursorignore ([6cec7ef](https://github.com/christophehurpeau/pob/commit/6cec7ef24ef29074b447eb33d3a27951f0a14237))
+* support files lib/index.js rollup-plugin-svgr ([e7c3348](https://github.com/christophehurpeau/pob/commit/e7c3348daf1585ea467e29a6b460c97c280904c2))
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+### Bug Fixes
+
+* **deps:** update dependency mem-fs to v4.1.2 ([#2364](https://github.com/christophehurpeau/pob/issues/2364)) ([9e4251c](https://github.com/christophehurpeau/pob/commit/9e4251cfc5d7b73896767b54f92656a4ae4e0b01))
+* **deps:** update dependency mem-fs-editor to v11.1.3 ([#2281](https://github.com/christophehurpeau/pob/issues/2281)) ([8968978](https://github.com/christophehurpeau/pob/commit/8968978c2b36e4dac94c111d9c8be1e1de0333f8))
+* **deps:** update dependency mem-fs-editor to v11.1.4 ([#2365](https://github.com/christophehurpeau/pob/issues/2365)) ([0efde48](https://github.com/christophehurpeau/pob/commit/0efde48c739dd4b9a6d06f1338bc45f652a6fd26))
+* **deps:** update dependency prettier to v3.4.1 ([#2328](https://github.com/christophehurpeau/pob/issues/2328)) ([cf236ba](https://github.com/christophehurpeau/pob/commit/cf236bac297964115e0b7bb463f923ea78c51ca8))
+* **deps:** update dependency prettier to v3.4.2 ([#2342](https://github.com/christophehurpeau/pob/issues/2342)) ([9f74b5a](https://github.com/christophehurpeau/pob/commit/9f74b5a733416a0f32c666149f47c2d7df81ffe5))
+* **deps:** update dependency typescript to v5.7.3 ([#2403](https://github.com/christophehurpeau/pob/issues/2403)) ([958d3c6](https://github.com/christophehurpeau/pob/commit/958d3c6f03d2d49b9f9f5b1c857ddf04a4ae7e4f))
+* **deps:** update yarn monorepo ([#2289](https://github.com/christophehurpeau/pob/issues/2289)) ([ca24ce6](https://github.com/christophehurpeau/pob/commit/ca24ce664fc2dc7b1b9788df324a4047fbd4045d))
+* **deps:** update yarn monorepo ([#2314](https://github.com/christophehurpeau/pob/issues/2314)) ([a175402](https://github.com/christophehurpeau/pob/commit/a17540280c524ceeed748625c94b7b4c717e0ba2))
+* **deps:** update yarn monorepo ([#2322](https://github.com/christophehurpeau/pob/issues/2322)) ([ec71e81](https://github.com/christophehurpeau/pob/commit/ec71e8101df4a3bace9ec3c02874165af7580df6))
+* **deps:** update yeoman group ([#2283](https://github.com/christophehurpeau/pob/issues/2283)) ([0737c2b](https://github.com/christophehurpeau/pob/commit/0737c2b05a937507d6fe2edf233067c4bddd6b76))
+* fix entryDistName ([1e3d4e4](https://github.com/christophehurpeau/pob/commit/1e3d4e46ceb7afa7bc4b3683b788cbbf5d0816ae))
+* fix github ci required check for node 22.x ([4852f1b](https://github.com/christophehurpeau/pob/commit/4852f1b6ea097e156e27606b09e7bf17c6da44a8))
+* fixes for bun packageManager ([0f3cd37](https://github.com/christophehurpeau/pob/commit/0f3cd37c1f72f04cb2e84093a4b6b04996038e01))
+* if yarn is deleted remove yarn.lock ([e05b8f3](https://github.com/christophehurpeau/pob/commit/e05b8f3f8eb8840ecd282044e1a97efff59819cc))
+* only run checks on latest lts version ([1b5ff47](https://github.com/christophehurpeau/pob/commit/1b5ff47050eed0f6e200120a321167c647f70e03))
+* **pob:** delete package-lock.json for yarn ([fdadfbc](https://github.com/christophehurpeau/pob/commit/fdadfbc5bcdfc8957fde3a3d9d533a0b38e0fcb6))
+* **pob:** fix eslint config react-native-web ([7c5a489](https://github.com/christophehurpeau/pob/commit/7c5a489dd5904a7ce5a52bdd220d833323f5ce17))
+* remove gh-pages for coverage only ([a2a875f](https://github.com/christophehurpeau/pob/commit/a2a875f6acf228edd9f009e0ef777d62fb892c9a))
+* stop creating babel config if testing is disabled ([d04794b](https://github.com/christophehurpeau/pob/commit/d04794bf682e6dffc0f4ef075d89458092a685b3))
+* update codecov-action to v5 ([ff8610c](https://github.com/christophehurpeau/pob/commit/ff8610cfcc65aa5b19dc259b347d6b6b8fe821c3))
+* vscode config compatible with eslint linting json files ([d83e473](https://github.com/christophehurpeau/pob/commit/d83e4737a365446ce9b8fbe56618a281de6e4b56))
+
+### Reverts
+
+* Revert "refactor: properly import generators" ([e1e2d46](https://github.com/christophehurpeau/pob/commit/e1e2d468729e3cae03637e8f7169c65e3ba85d4b))
+
+Version bump for dependency: @pob/sort-eslint-config
+Version bump for dependency: @pob/sort-object
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [25.3.0](https://github.com/christophehurpeau/pob/compare/pob@25.2.0...pob@25.3.0) (2025-01-18)
 
 ### Features

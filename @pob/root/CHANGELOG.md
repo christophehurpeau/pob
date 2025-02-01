@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 16.0.0 (2025-02-01)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* bundler tsc using experimental-strip-types ([98002f8](https://github.com/christophehurpeau/pob/commit/98002f832c1869e23c5c93c3f5e61b4915e1263b))
+* **deps:** update dependency @commitlint/cli to v19.6.0 ([#2311](https://github.com/christophehurpeau/pob/issues/2311)) ([1698005](https://github.com/christophehurpeau/pob/commit/1698005fae2a81a6bfd18010e0d242592bc0faee))
+* **deps:** update dependency lint-staged to v15.3.0 ([#2392](https://github.com/christophehurpeau/pob/issues/2392)) ([16887f2](https://github.com/christophehurpeau/pob/commit/16887f2c08a5b8b76d9a1c02f7fe55c1c64899df))
+* **deps:** update dependency lint-staged to v15.4.1 ([#2412](https://github.com/christophehurpeau/pob/issues/2412)) ([af8827a](https://github.com/christophehurpeau/pob/commit/af8827a848afcc881689be861710d2e3b4e5278c))
+* **deps:** update dependency prettier to v3.4.0 ([#2325](https://github.com/christophehurpeau/pob/issues/2325)) ([367f1dc](https://github.com/christophehurpeau/pob/commit/367f1dcebf3b47b61c024380b6358894dcb6514a))
+* improve bun support ([24accc2](https://github.com/christophehurpeau/pob/commit/24accc26c5fbf429befdecdc0da663fa10cd00a6))
+* update to yarn 4.5.1 ([f6ad4fb](https://github.com/christophehurpeau/pob/commit/f6ad4fb07fc31c5c24e95dd2692ce6556e6ab59a))
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+* yarn update 4.6.0 ([b9cb4d0](https://github.com/christophehurpeau/pob/commit/b9cb4d0336a3792ae3f0b905484206fab357c93b))
+
+### Bug Fixes
+
+* add YARN_ENABLE_IMMUTABLE_INSTALLS for final git add ([9a274d6](https://github.com/christophehurpeau/pob/commit/9a274d6f74c20b5cb846931e6a416e2af5a87e54))
+* bun.lock in lint-staged config ([f7d7213](https://github.com/christophehurpeau/pob/commit/f7d7213f4d05c71ed11c2b1964e841a1c0f8625b))
+* **deps:** update dependency @commitlint/cli to v19.6.1 ([#2370](https://github.com/christophehurpeau/pob/issues/2370)) ([b78c1d5](https://github.com/christophehurpeau/pob/commit/b78c1d53c5a155c622256f724b7f5c3f2ca46954))
+* **deps:** update dependency lint-staged to v15.2.11 ([#2356](https://github.com/christophehurpeau/pob/issues/2356)) ([077e6e2](https://github.com/christophehurpeau/pob/commit/077e6e288030f01e195060dde7632ef22010f289))
+* **deps:** update dependency lint-staged to v15.4.3 ([#2424](https://github.com/christophehurpeau/pob/issues/2424)) ([743992b](https://github.com/christophehurpeau/pob/commit/743992b1278f07a2a3e5eb9e575a6bbc53c5f277))
+* **deps:** update dependency prettier to v3.4.1 ([#2328](https://github.com/christophehurpeau/pob/issues/2328)) ([cf236ba](https://github.com/christophehurpeau/pob/commit/cf236bac297964115e0b7bb463f923ea78c51ca8))
+* **deps:** update dependency prettier to v3.4.2 ([#2342](https://github.com/christophehurpeau/pob/issues/2342)) ([9f74b5a](https://github.com/christophehurpeau/pob/commit/9f74b5a733416a0f32c666149f47c2d7df81ffe5))
+* fix GITHUB_OUTPUT when modified ([8666e1f](https://github.com/christophehurpeau/pob/commit/8666e1fdd84a1ed4ea22365d56e7f4bce7bc9b12))
+* install workflow ([b2b7bf7](https://github.com/christophehurpeau/pob/commit/b2b7bf76011ba8a6173ec49c6d357582ef810c61))
+* update to yarn 4.5.3 ([c35c763](https://github.com/christophehurpeau/pob/commit/c35c763684d2c72196f0f0a8c92020d239e0d04d))
+
+Version bump for dependency: @pob/pretty-eslint-config
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: repository-check-dirty
+Version bump for dependency: yarn-version
+
+
 ## [15.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@15.1.1...@pob/root@15.2.0) (2025-01-18)
 
 ### Features

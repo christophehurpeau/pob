@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.9.0 (2025-02-01)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* **deps:** update dependency next to v15 ([#2292](https://github.com/christophehurpeau/pob/issues/2292)) ([cafc498](https://github.com/christophehurpeau/pob/commit/cafc498a21b8b11f8c2140c47cec4896ed687172))
+* **deps:** update dependency next to v15.1.0 ([#2359](https://github.com/christophehurpeau/pob/issues/2359)) ([a5a8a1f](https://github.com/christophehurpeau/pob/commit/a5a8a1f95cb13035fb9531d73e1f1386fdcabdd6))
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+### Bug Fixes
+
+* **deps:** update dependency next to v15.0.4 ([#2349](https://github.com/christophehurpeau/pob/issues/2349)) ([a5a7d5c](https://github.com/christophehurpeau/pob/commit/a5a7d5c95b5d2afaa91745c43ffc7d869176b67c))
+* **deps:** update dependency next to v15.1.1 ([#2375](https://github.com/christophehurpeau/pob/issues/2375)) ([b041b09](https://github.com/christophehurpeau/pob/commit/b041b09c3184c3fa96368df32e201a680ba77ba5))
+* **deps:** update dependency next to v15.1.2 ([#2377](https://github.com/christophehurpeau/pob/issues/2377)) ([fe6811d](https://github.com/christophehurpeau/pob/commit/fe6811d252b916cdec17fd38fd166ab687a9ec57))
+* **deps:** update dependency next to v15.1.3 ([#2389](https://github.com/christophehurpeau/pob/issues/2389)) ([788d8b1](https://github.com/christophehurpeau/pob/commit/788d8b11b82a99214d955539ab9a989497c6de01))
+* **deps:** update dependency next to v15.1.4 ([#2402](https://github.com/christophehurpeau/pob/issues/2402)) ([adbb16b](https://github.com/christophehurpeau/pob/commit/adbb16b04908dafdbbecb09aa95de0a13b26648d))
+* **deps:** update dependency next to v15.1.5 ([#2414](https://github.com/christophehurpeau/pob/issues/2414)) ([0b43eda](https://github.com/christophehurpeau/pob/commit/0b43eda6265f663e7a02c25c2b6c0e6ff5bdb880))
+* **deps:** update dependency next to v15.1.6 ([#2422](https://github.com/christophehurpeau/pob/issues/2422)) ([17641ed](https://github.com/christophehurpeau/pob/commit/17641edfcad5d605a4a131ac40becacc30de8d94))
+* **deps:** update dependency typescript to v5.7.3 ([#2403](https://github.com/christophehurpeau/pob/issues/2403)) ([958d3c6](https://github.com/christophehurpeau/pob/commit/958d3c6f03d2d49b9f9f5b1c857ddf04a4ae7e4f))
+
 ## [0.8.1](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.8.0...@pob-example/next-app@0.8.1) (2025-01-18)
 
 ### Bug Fixes

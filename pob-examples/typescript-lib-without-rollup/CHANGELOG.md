@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 0.27.0 (2025-02-01)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 18 and drop @pob/rollup-typescript
+
+### Features
+
+* bundler tsc using experimental-strip-types ([98002f8](https://github.com/christophehurpeau/pob/commit/98002f832c1869e23c5c93c3f5e61b4915e1263b))
+* upgrade to node 20/22 ([56661ea](https://github.com/christophehurpeau/pob/commit/56661eafd5bd804ff3b1531be2943bb3cd2e13ce))
+
+### Bug Fixes
+
+* **deps:** update dependency typescript to v5.7.3 ([#2403](https://github.com/christophehurpeau/pob/issues/2403)) ([958d3c6](https://github.com/christophehurpeau/pob/commit/958d3c6f03d2d49b9f9f5b1c857ddf04a4ae7e4f))
+
 ## [0.26.2](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.26.1...example-typescript-lib-without-rollup@0.26.2) (2025-01-18)
 
 ### Bug Fixes
