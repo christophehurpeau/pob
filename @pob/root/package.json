@@ -75,7 +75,7 @@
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "cosmiconfig": "^9.0.0",
     "husky": "~9.1.7",
-    "json5": "^2.2.2",
+    "json5": "^2.2.3",
     "lint-staged": "15.4.3",
     "pob-dependencies": "workspace:*",
     "prettier": "3.4.2",

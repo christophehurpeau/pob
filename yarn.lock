@@ -3865,7 +3865,7 @@ __metadata:
     conventional-changelog-conventionalcommits: "npm:^8.0.0"
     cosmiconfig: "npm:^9.0.0"
     husky: "npm:~9.1.7"
-    json5: "npm:^2.2.2"
+    json5: "npm:^2.2.3"
     lint-staged: "npm:15.4.3"
     pob-dependencies: "workspace:*"
     prettier: "npm:3.4.2"
@@ -11596,7 +11596,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"json5@npm:^2.2.2, json5@npm:^2.2.3":
+"json5@npm:^2.2.3":
   version: 2.2.3
   resolution: "json5@npm:2.2.3"
   bin:
