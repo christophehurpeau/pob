@@ -615,17 +615,25 @@ There are uncommitted changes in the git repository. Please commit or stash them
           prefix: previousVersionTagPrefix,
           skipUnstable: true
         }));
+        console.log({
+          workspaceName,
+          isRoot,
+          previousVersionTagPrefix,
+          previousTag
+        });
         return [workspace, previousTag || null];
       })
     )
   );
   if (options.dryRun) {
     logger.info("Previous tags", {
-      previousTagByWorkspace: [...previousTagByWorkspace.entries()].map(
-        ([workspace, previousTag]) => ({
-          workspace: getWorkspaceName(workspace),
-          previousTag
-        })
+      previousTagByWorkspace: Object.fromEntries(
+        [...previousTagByWorkspace.entries()].map(
+          ([workspace, previousTag]) => [
+            getWorkspaceName(workspace),
+            previousTag
+          ]
+        )
       )
     });
   }

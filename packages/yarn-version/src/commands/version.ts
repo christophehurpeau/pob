@@ -248,6 +248,13 @@ export const versionCommandAction = async (
               skipUnstable: true,
             }));
 
+        console.log({
+          workspaceName,
+          isRoot,
+          previousVersionTagPrefix,
+          previousTag,
+        });
+
         return [workspace, previousTag || null] as const;
       }),
     ),
@@ -255,11 +262,13 @@ export const versionCommandAction = async (
 
   if (options.dryRun) {
     logger.info("Previous tags", {
-      previousTagByWorkspace: [...previousTagByWorkspace.entries()].map(
-        ([workspace, previousTag]) => ({
-          workspace: getWorkspaceName(workspace),
-          previousTag,
-        }),
+      previousTagByWorkspace: Object.fromEntries(
+        [...previousTagByWorkspace.entries()].map(
+          ([workspace, previousTag]) => [
+            getWorkspaceName(workspace),
+            previousTag,
+          ],
+        ),
       ),
     });
   }
