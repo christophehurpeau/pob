@@ -546,16 +546,21 @@ export const versionCommandAction = async (
   // do modifications
 
   // Update yarn.lock ; must be done to make sure preversion script can be ran
-  logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-  await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
-
-  logger.info("Lifecycle script: preversion");
-
-  if (isMonorepoVersionIndependent && rootWorkspace.pkg.scripts?.preversion) {
-    await execCommand(rootWorkspace, ["yarn", "run", "preversion"], "inherit");
-  }
 
   if (!options.dryRun) {
+    logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
+    await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
+
+    logger.info("Lifecycle script: preversion");
+
+    if (isMonorepoVersionIndependent && rootWorkspace.pkg.scripts?.preversion) {
+      await execCommand(
+        rootWorkspace,
+        ["yarn", "run", "preversion"],
+        "inherit",
+      );
+    }
+
     // lifecycle: preversion
     for (const workspace of bumpedWorkspaces.keys()) {
       if (workspace.pkg.scripts?.preversion) {
