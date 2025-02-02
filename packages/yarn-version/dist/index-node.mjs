@@ -305,77 +305,12 @@ stderr: ${stderr.toString()}`
     });
   });
 }
-async function* spawnStreamStdout(command, args, {
-  cwd = process.cwd(),
-  env = process.env,
-  encoding,
-  strict,
-  separator
-}) {
-  const stderrChunks = [];
-  if (env.PWD !== undefined) {
-    env = { ...env, PWD: cwd };
-  }
-  const subprocess = childProcess.spawn(command, args, {
-    cwd,
-    env,
-    stdio: ["ignore", "pipe", "pipe"]
-  });
-  subprocess.stderr.on("data", (chunk2) => {
-    stderrChunks.push(chunk2);
-  });
-  let chunk;
-  let payload;
-  let buffer = "";
-  for await (chunk of subprocess.stdout) {
-    buffer += chunk.toString();
-    if (buffer.includes(separator)) {
-      payload = buffer.split(separator);
-      buffer = payload.pop() || "";
-      yield* payload;
-    }
-  }
-  if (buffer) {
-    yield buffer;
-  }
-  return new Promise((resolve, reject) => {
-    subprocess.on("error", (err) => {
-      reject(new Error(`Process ${command} failed to spawn`));
-    });
-    subprocess.on("close", (code, signal) => {
-      const chunksToString = (chunks) => Buffer.concat(chunks).toString(encoding ?? "utf8");
-      const stderr = chunksToString(stderrChunks);
-      if (code === 0 || !strict) {
-        resolve({
-          code,
-          signal,
-          stderr
-        });
-      } else {
-        reject(
-          new Error(
-            `Process ${[command, ...args].join(" ")} exited ${code !== null ? `with code ${code}` : `with signal ${signal || ""}`}:
-stderr: ${stderr.toString()}`
-          )
-        );
-      }
-    });
-  });
-}
 const execCommand = (workspace, commandAndArgs = [], stdo = "pipe") => {
   const [command, ...args] = commandAndArgs;
   return execvp(command, args, {
     cwd: workspace.cwd,
     strict: true,
     stdo
-  });
-};
-const execCommandStreamStdout = (workspace, commandAndArgs = [], separator = "\n") => {
-  const [command, ...args] = commandAndArgs;
-  return spawnStreamStdout(command, args, {
-    cwd: workspace.cwd,
-    strict: true,
-    separator
   });
 };
 
@@ -443,32 +378,6 @@ const getDirtyFiles = async (workspace) => {
     "--porcelain"
   ]);
   return dirtyFiles;
-};
-const getGitLatestTagVersion = async (workspace, currentBranch, {
-  prefix,
-  skipUnstable
-} = {}) => {
-  for await (const tag of execCommandStreamStdout(workspace, [
-    "git",
-    "tag",
-    "--merged",
-    currentBranch,
-    // - means reverse order
-    "--sort=-creatordate",
-    ...prefix ? ["--list", `${prefix}*`] : []
-  ])) {
-    if (tag) {
-      const version = prefix ? tag.slice(prefix.length) : tag;
-      if (!semver.valid(version)) {
-        continue;
-      }
-      if (skipUnstable && semver.prerelease(version)) {
-        continue;
-      }
-      return { tag, version };
-    }
-  }
-  return null;
 };
 
 async function createGitHubClient() {
@@ -660,7 +569,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
     options.createRelease ? parseGithubRepoUrl(rootWorkspace) : undefined,
     getGitCurrentBranch(rootWorkspace)
   ]);
-  const rootPreviousVersionTagPromise = options.force ? null : getGitLatestTagVersion(rootWorkspace, gitCurrentBranch, {
+  const rootPreviousVersionTagPromise = options.force ? null : conventionalGitClient.getLastSemverTag({
     prefix: options.tagVersionPrefix,
     skipUnstable: true
   });
@@ -702,7 +611,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
       bumpableWorkspaces.map(async ({ workspace, workspaceName, isRoot }) => {
         const packageOption = isMonorepo && isMonorepoVersionIndependent ? workspaceName : undefined;
         const previousVersionTagPrefix = packageOption ? `${packageOption}@` : options.tagVersionPrefix;
-        const previousTagAndVersion = await (isRoot || !isMonorepoVersionIndependent ? rootPreviousVersionTagPromise : getGitLatestTagVersion(workspace, gitCurrentBranch, {
+        const previousTagAndVersion = await (isRoot || !isMonorepoVersionIndependent ? rootPreviousVersionTagPromise : conventionalGitClient.getLastSemverTag({
           prefix: previousVersionTagPrefix,
           skipUnstable: true
         }));
@@ -736,7 +645,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
             conventionalGitClient.getCommits(
               {
                 path: workspaceRelativePath,
-                from: previousTag?.tag || undefined
+                from: previousTag || undefined
               },
               conventionalCommitConfig.parser
             )
@@ -1005,7 +914,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
           isMonorepoVersionIndependent ? newTag : rootNewTag,
           {
             path: workspaceRelativePath,
-            previousTag: previousTagByWorkspace.get(workspace)?.tag || undefined,
+            previousTag: previousTagByWorkspace.get(workspace) || undefined,
             verbose: options.verbose,
             tagPrefix: options.tagVersionPrefix,
             lernaPackage: rootWorkspace === workspace ? undefined : getWorkspaceName(workspace)

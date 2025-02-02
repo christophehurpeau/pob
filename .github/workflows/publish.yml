@@ -7,6 +7,11 @@ on:
         required: true
         type: boolean
         default: false
+      allow-no-tags:
+        description: "Allow no tags"
+        required: false
+        type: boolean
+        default: false
       bump-dependents-highest-as:
         description: "Bump dependents highest as"
         required: false
@@ -37,8 +42,14 @@ jobs:
       - name: Install Dependencies
         run: yarn install --immutable
 
-      - name: List git tags
-        run: git tag
+      - name: Check git tags
+        if: github.ref == 'refs/heads/main' && !inputs.allow-no-tags
+        run: |
+          tags=$(git tag)
+          if [ -z "$tags" ]; then
+            echo "No git tags found"
+            exit 1
+          fi
 
       - name: New version (dry run)
         if: github.ref == 'refs/heads/main' && inputs.dry-run

@@ -26,7 +26,6 @@ import {
   createGitTag,
   getDirtyFiles,
   getGitCurrentBranch,
-  getGitLatestTagVersion,
   isBehindRemote,
   pushCommitsAndTags,
 } from "../utils/gitUtils";
@@ -170,7 +169,7 @@ export const versionCommandAction = async (
 
   const rootPreviousVersionTagPromise = options.force
     ? null
-    : getGitLatestTagVersion(rootWorkspace, gitCurrentBranch, {
+    : conventionalGitClient.getLastSemverTag({
         prefix: options.tagVersionPrefix,
         skipUnstable: true,
       });
@@ -230,10 +229,7 @@ export const versionCommandAction = async (
     });
   }
 
-  const previousTagByWorkspace = new Map<
-    Workspace,
-    { tag: string; version: string } | null
-  >(
+  const previousTagByWorkspace = new Map<Workspace, string | null>(
     await Promise.all(
       bumpableWorkspaces.map(async ({ workspace, workspaceName, isRoot }) => {
         const packageOption =
@@ -248,7 +244,7 @@ export const versionCommandAction = async (
         const previousTagAndVersion = await (isRoot ||
         !isMonorepoVersionIndependent
           ? rootPreviousVersionTagPromise
-          : getGitLatestTagVersion(workspace, gitCurrentBranch, {
+          : conventionalGitClient.getLastSemverTag({
               prefix: previousVersionTagPrefix,
               skipUnstable: true,
             }));
@@ -288,7 +284,7 @@ export const versionCommandAction = async (
                 conventionalGitClient.getCommits(
                   {
                     path: workspaceRelativePath,
-                    from: previousTag?.tag || undefined,
+                    from: previousTag || undefined,
                   },
                   conventionalCommitConfig.parser,
                 ),
@@ -653,8 +649,7 @@ export const versionCommandAction = async (
           isMonorepoVersionIndependent ? newTag : rootNewTag,
           {
             path: workspaceRelativePath,
-            previousTag:
-              previousTagByWorkspace.get(workspace)?.tag || undefined,
+            previousTag: previousTagByWorkspace.get(workspace) || undefined,
             verbose: options.verbose,
             tagPrefix: options.tagVersionPrefix,
             lernaPackage:
