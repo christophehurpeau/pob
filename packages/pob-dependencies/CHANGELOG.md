@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@17.2.0...pob-dependencies@17.3.0) (2025-02-02)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v59.5.0 ([#2431](https://github.com/christophehurpeau/pob/issues/2431)) ([98cab38](https://github.com/christophehurpeau/pob/commit/98cab38d7b284e94b74ac87049cf0f06c7031982))
+
 ## [17.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@17.1.0...pob-dependencies@17.2.0) (2025-02-02)
 
 Version bump for dependency: @pob/rollup-esbuild
