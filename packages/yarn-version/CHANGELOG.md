@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.0](https://github.com/christophehurpeau/pob/compare/yarn-version@6.0.0...yarn-version@6.1.0) (2025-02-02)
+
+### Features
+
+* **deps:** update dependency semver to v7.7.0 ([#2430](https://github.com/christophehurpeau/pob/issues/2430)) ([0bb2964](https://github.com/christophehurpeau/pob/commit/0bb29647211a664eb61380bb0ec4e7cfee146f35))
+* try to fix version on ci ([aa98c81](https://github.com/christophehurpeau/pob/commit/aa98c8164c0683c3d470455c87ffa24b4d3418c3))
+* update rollup ([91f49c7](https://github.com/christophehurpeau/pob/commit/91f49c7e80138d26b27715edf71709ce7132eff7))
+* **yarn-version:** dry run show previous tags ([7651794](https://github.com/christophehurpeau/pob/commit/765179401a94c319e512c0740a795633a84f7a50))
+
+### Bug Fixes
+
+* proper fix for version command ([601b94b](https://github.com/christophehurpeau/pob/commit/601b94b41d3d1d6a37685aa2b6e3dd4fc8176255))
+* **yarn-version:** dont run yarn install or preversion when dry run mode ([2d8ae00](https://github.com/christophehurpeau/pob/commit/2d8ae00045d9cfc51375624bbd4a85141f777d26))
+* **yarn-version:** mark previous tag as null instead of undefined ([575f599](https://github.com/christophehurpeau/pob/commit/575f59926649fd942bdac4efc56d3dbb4c42fd03))
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## 6.0.0 (2025-02-01)
 
 ### ⚠ BREAKING CHANGES

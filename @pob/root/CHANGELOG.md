@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@16.0.0...@pob/root@16.1.0) (2025-02-02)
+
+### Features
+
+* **deps:** update json5 to 2.2.3 ([3c982b0](https://github.com/christophehurpeau/pob/commit/3c982b04e402043c972ed334430f249357466ae5))
+* update husky ([cf76f09](https://github.com/christophehurpeau/pob/commit/cf76f09f1e01fe964dca52d807c6f95014df003c))
+
+Version bump for dependency: yarn-version
+
+
 ## 16.0.0 (2025-02-01)
 
 ### ⚠ BREAKING CHANGES

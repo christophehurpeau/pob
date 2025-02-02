@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@9.0.0...@pob/commitlint-config@9.1.0) (2025-02-02)
+
+### Features
+
+* update commitlint ([075a0a1](https://github.com/christophehurpeau/pob/commit/075a0a170bc6f2e347832710eeca57371f3c8592))
+
 ## 9.0.0 (2025-02-01)
 
 ### ⚠ BREAKING CHANGES

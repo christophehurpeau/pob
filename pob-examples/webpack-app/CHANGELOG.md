@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.24.0](https://github.com/christophehurpeau/pob/compare/example-webpack-app@0.23.0...example-webpack-app@0.24.0) (2025-02-02)
+
+Version bump for dependency: example-typescript-lib
+
+
 ## 0.23.0 (2025-02-01)
 
 ### ⚠ BREAKING CHANGES

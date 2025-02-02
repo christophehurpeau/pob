@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.1.0](https://github.com/christophehurpeau/pob/compare/pob@26.0.0...pob@26.1.0) (2025-02-02)
+
+### Features
+
+* **deps:** update dependency semver to v7.7.0 ([#2430](https://github.com/christophehurpeau/pob/issues/2430)) ([0bb2964](https://github.com/christophehurpeau/pob/commit/0bb29647211a664eb61380bb0ec4e7cfee146f35))
+
+### Bug Fixes
+
+* proper fix for version command ([601b94b](https://github.com/christophehurpeau/pob/commit/601b94b41d3d1d6a37685aa2b6e3dd4fc8176255))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## 26.0.0 (2025-02-01)
 
 ### ⚠ BREAKING CHANGES

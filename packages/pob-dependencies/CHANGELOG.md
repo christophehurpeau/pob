@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@17.0.0...pob-dependencies@17.1.0) (2025-02-02)
+
+### Features
+
+* **deps:** update dependency semver to v7.7.0 ([#2430](https://github.com/christophehurpeau/pob/issues/2430)) ([0bb2964](https://github.com/christophehurpeau/pob/commit/0bb29647211a664eb61380bb0ec4e7cfee146f35))
+* update rollup ([91f49c7](https://github.com/christophehurpeau/pob/commit/91f49c7e80138d26b27715edf71709ce7132eff7))
+
+Version bump for dependency: @pob/commitlint-config
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: pob-babel
+
+
 ## 17.0.0 (2025-02-01)
 
 ### ⚠ BREAKING CHANGES
