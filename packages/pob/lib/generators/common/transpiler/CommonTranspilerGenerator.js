@@ -392,48 +392,73 @@ export default class CommonTranspilerGenerator extends Generator {
 
             const exportTarget = {};
 
-            if (target === "node") {
-              const cjsExt = pkg.type === "module" ? "cjs" : "cjs.js";
-              const filenameWithoutExt = `${entryDistName}${
-                omitTarget
-                  ? ""
-                  : `-${target}${omitVersionInFileName ? "" : version}`
-              }`;
-              if (bundler === "tsc") {
-                if (formats) {
-                  throw new Error("tsc does not support formats");
+            switch (target) {
+              case "node": {
+                const cjsExt = pkg.type === "module" ? "cjs" : "cjs.js";
+                const filenameWithoutExt = `${entryDistName}${
+                  omitTarget
+                    ? ""
+                    : `-${target}${omitVersionInFileName ? "" : version}`
+                }`;
+                if (bundler === "tsc") {
+                  if (formats) {
+                    throw new Error("tsc does not support formats");
+                  }
+                  exportTarget.import = `./${this.options.buildDirectory}/${filenameWithoutExt}.js`;
+                } else if (!formats || formats.includes("es")) {
+                  exportTarget.import = `./${this.options.buildDirectory}/${filenameWithoutExt}.mjs`;
+
+                  if (formats && formats.includes("cjs")) {
+                    exportTarget.require = `./${this.options.buildDirectory}/${filenameWithoutExt}.${cjsExt}`;
+                  }
+                } else if (formats && formats.includes("cjs")) {
+                  exportTarget.default = `./${this.options.buildDirectory}/${filenameWithoutExt}.${cjsExt}`;
                 }
-                exportTarget.import = `./${this.options.buildDirectory}/${filenameWithoutExt}.js`;
-              } else if (!formats || formats.includes("es")) {
-                exportTarget.import = `./${this.options.buildDirectory}/${filenameWithoutExt}.mjs`;
+                // eslint: https://github.com/benmosher/eslint-plugin-import/issues/2132
+                // jest: https://github.com/facebook/jest/issues/9771
+                if (!pkg.main && exportName === ".") {
+                  pkg.main =
+                    pkg.type === "module"
+                      ? exportTarget.import
+                      : exportTarget.default ||
+                        exportTarget.require ||
+                        exportTarget.import;
+                }
+
+                break;
+              }
+              case "browser": {
+                if (!formats || formats.includes("es")) {
+                  exportTarget.import = `./${
+                    this.options.buildDirectory
+                  }/${entryDistName}-${target}${version || ""}.es.js`;
+                }
 
                 if (formats && formats.includes("cjs")) {
-                  exportTarget.require = `./${this.options.buildDirectory}/${filenameWithoutExt}.${cjsExt}`;
+                  exportTarget.require = `./${
+                    this.options.buildDirectory
+                  }/${entryDistName}-${target}${version || ""}.cjs.js`;
                 }
-              } else if (formats && formats.includes("cjs")) {
-                exportTarget.default = `./${this.options.buildDirectory}/${filenameWithoutExt}.${cjsExt}`;
-              }
-              // eslint: https://github.com/benmosher/eslint-plugin-import/issues/2132
-              // jest: https://github.com/facebook/jest/issues/9771
-              if (!pkg.main && exportName === ".") {
-                pkg.main =
-                  pkg.type === "module"
-                    ? exportTarget.import
-                    : exportTarget.default ||
-                      exportTarget.require ||
-                      exportTarget.import;
-              }
-            } else if (target === "browser") {
-              if (!formats || formats.includes("es")) {
-                exportTarget.import = `./${
-                  this.options.buildDirectory
-                }/${entryDistName}-${target}${version || ""}.es.js`;
-              }
 
-              if (formats && formats.includes("cjs")) {
-                exportTarget.require = `./${
-                  this.options.buildDirectory
-                }/${entryDistName}-${target}${version || ""}.cjs.js`;
+                break;
+              }
+              case "react-native": {
+                if (!formats || formats.includes("es")) {
+                  exportTarget.import = `./${
+                    this.options.buildDirectory
+                  }/${entryDistName}-${target}.es.js`;
+                }
+
+                if (formats && formats.includes("cjs")) {
+                  exportTarget.require = `./${
+                    this.options.buildDirectory
+                  }/${entryDistName}-${target}.cjs.js`;
+                }
+
+                break;
+              }
+              default: {
+                throw new Error(`Invalid target: ${target}`);
               }
             }
 
