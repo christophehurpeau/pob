@@ -241,7 +241,7 @@ export default class CommonBabelGenerator extends Generator {
         pkg.pob.bundler === "rollup-babel"
       ) {
         delete pkg.pob.babelEnvs;
-        if (pkg.pob.typescript !== true) {
+        if (!pkg.pob.typescript) {
           delete pkg.pob.envs;
           delete pkg.pob.entries;
           delete pkg.pob.jsx;
@@ -308,14 +308,9 @@ export default class CommonBabelGenerator extends Generator {
       useBabel ||
       (pkg.peerDependencies && pkg.peerDependencies["@babel/core"])
     ) {
-      packageUtils.addDevDependencies(
-        pkg,
-        useBabel ||
-          (pkg.peerDependencies && pkg.peerDependencies["@babel/core"]),
-        ["@babel/core"],
-      );
+      packageUtils.addDevDependencies(pkg, ["@babel/core"]);
     } else if (pkg.dependencies && pkg.dependencies["pob-babel"] && !useBabel) {
-      packageUtils.removeDevDependencies("@babel/core");
+      packageUtils.removeDevDependencies(pkg, ["@babel/core"]);
     }
     packageUtils.addOrRemoveDevDependencies(pkg, useBabel, ["pob-babel"]);
 
@@ -333,7 +328,8 @@ export default class CommonBabelGenerator extends Generator {
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       (useBabel && pkg.pob.jsx) ||
-        (pkg.devDependencies?.["@babel/preset-react"] && isLibraryRollupPlugin),
+        (pkg.devDependencies?.["@babel/preset-react"] &&
+          (isLibraryRollupPlugin || pkg.name === "alouette-icons")),
       ["@babel/preset-react"],
     );
 

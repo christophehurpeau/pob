@@ -136,10 +136,10 @@ export default class CommonTranspilerGenerator extends Generator {
   default() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
     const withBabel = this.babelEnvs && this.babelEnvs.length > 0;
-    const withTypescript =
-      pkg.pob.typescript === true || withBabel || !!pkg.pob.bundler;
+    const withTypescript = pkg.pob.typescript || withBabel || !!pkg.pob.bundler;
     const bundler =
       withTypescript &&
+      pkg.pob?.typescript !== "check-only" &&
       (pkg.pob.rollup === false ||
       pkg.pob.bundler === "tsc" ||
       (!pkg.pob.bundler && !pkg.pob.typescript === true)
@@ -202,7 +202,11 @@ export default class CommonTranspilerGenerator extends Generator {
     });
 
     if (shouldBuildDefinitions) {
-      pkg.scripts.build += " && yarn run build:definitions";
+      if (pkg.scripts.build) {
+        pkg.scripts.build += " && yarn run build:definitions";
+      } else {
+        pkg.scripts.build = "yarn run build:definitions";
+      }
     } else if (!this.options.isApp && !bundler && !withTypescript) {
       // check definitions, but also force lerna to execute build:definitions in right order
       // example: nightingale-types depends on nightingale-levels
@@ -238,17 +242,23 @@ export default class CommonTranspilerGenerator extends Generator {
     );
     packageUtils.addOrRemoveDevDependencies(
       pkg,
-      bundler === "esbuild" && withTypescript,
+      bundler === "esbuild" &&
+        withTypescript &&
+        pkg.pob?.typescript !== "check-only",
       ["@pob/esbuild"],
     );
     packageUtils.addOrRemoveDevDependencies(
       pkg,
-      bundler === "rollup-esbuild" && withTypescript,
+      bundler === "rollup-esbuild" &&
+        withTypescript &&
+        pkg.pob?.typescript !== "check-only",
       ["@pob/rollup-esbuild"],
     );
     packageUtils.addOrRemoveDependencies(
       pkg,
-      (bundler === "tsc" || bundler === "rollup-typescript") && withTypescript,
+      (bundler === "tsc" || bundler === "rollup-typescript") &&
+        withTypescript &&
+        pkg.pob?.typescript !== "check-only",
       ["tslib"],
       "^",
     );
@@ -289,7 +299,7 @@ export default class CommonTranspilerGenerator extends Generator {
     }
 
     // if (!pkg.main || pkg.main.startsWith('./lib/')) {
-    if (bundler || withTypescript) {
+    if (bundler || (withTypescript && pkg.pob?.typescript !== "check-only")) {
       // see pkg.exports instead.
       delete pkg.main;
       if (!this.options.isApp) {
@@ -298,12 +308,12 @@ export default class CommonTranspilerGenerator extends Generator {
         pkg.types = `./${this.options.srcDirectory}/index.ts`;
       }
     } else {
-      if (!pkg.main) {
+      if (!pkg.main && !pkg.pob.entries) {
         pkg.exports = "./lib/index.js";
       }
       if (pkg.type === "module" && this.fs.exists("./lib/index.cjs")) {
         pkg.main = "./lib/index.cjs";
-      } else {
+      } else if (!pkg.pob?.entries || pkg.pob.entries.includes("index")) {
         pkg.main = "./lib/index.js";
       }
       if (!this.options.isApp || this.options.isAppLibrary) {
@@ -351,7 +361,7 @@ export default class CommonTranspilerGenerator extends Generator {
     }
 
     /* webpack 5 and node with ESM support */
-    if (bundler || withTypescript) {
+    if (bundler || (withTypescript && pkg.pob?.typescript !== "check-only")) {
       const omitTarget = bundler === "esbuild" || bundler === "tsc";
       pkg.exports = {
         "./package.json": "./package.json",
@@ -375,7 +385,7 @@ export default class CommonTranspilerGenerator extends Generator {
         };
 
         const defaultNodeEnv =
-          withBabel || withTypescript
+          withBabel || (withTypescript && pkg.pob?.typescript !== "check-only")
             ? envs.find((env) => env.target === "node")
             : undefined;
 

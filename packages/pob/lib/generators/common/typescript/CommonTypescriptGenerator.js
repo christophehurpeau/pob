@@ -237,20 +237,27 @@ export default class CommonTypescriptGenerator extends Generator {
               ]),
           );
 
+          const isTypescriptPackageMap = new Map(
+            [...packageLocations.entries()].map(
+              ([packageName, packageLocation]) => [
+                packageName,
+                existsSync(
+                  `${packageLocations.get(packageName)}/tsconfig.json`,
+                ) && existsSync(`${packageLocations.get(packageName)}/src`),
+              ],
+            ),
+          );
+
           monorepoPackageSrcPaths = [...packageLocations.entries()].map(
             ([packageName, packageLocation]) => [
               packageName,
               `${packageLocation}/${
-                existsSync(`${packageLocations.get(packageName)}/tsconfig.json`)
-                  ? "src"
-                  : "lib"
+                isTypescriptPackageMap.get(packageName) ? "src" : "lib"
               }`,
             ],
           );
           monorepoPackageReferences = yoConfig.pob.monorepo.packageNames
-            .filter((packageName) =>
-              existsSync(`${packageLocations.get(packageName)}/tsconfig.json`),
-            )
+            .filter((packageName) => isTypescriptPackageMap.get(packageName))
             .map((packageName) => packageLocations.get(packageName));
           // monorepoPackageBuildReferences = yoConfig.pob.monorepo.packageNames
           //   .filter((packageName) =>
