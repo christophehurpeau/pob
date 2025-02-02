@@ -1,5 +1,6 @@
+import semver from "semver";
 import { UsageError } from "./UsageError";
-import { execCommand } from "./execCommand";
+import { execCommand, execCommandStreamStdout } from "./execCommand";
 import type { Workspace } from "./packageUtils";
 
 export const getGitCurrentBranch = async (
@@ -84,4 +85,42 @@ export const getDirtyFiles = async (workspace: Workspace): Promise<string> => {
     "--porcelain",
   ]);
   return dirtyFiles;
+};
+
+// TODO fix this method as it is not safe : it sorts by creator date and does not look for real commits order.
+// Also we could avoid this method and just look for previous commits (for the changelog) until we find a valid tag.
+// eslint-disable-next-line complexity
+export const getGitLatestTagVersion = async (
+  workspace: Workspace,
+  currentBranch: string,
+  {
+    prefix,
+    skipUnstable,
+  }: {
+    prefix?: string;
+    skipUnstable?: boolean;
+  } = {},
+): Promise<{ tag: string; version: string } | null> => {
+  for await (const tag of execCommandStreamStdout(workspace, [
+    "git",
+    "tag",
+    "--merged",
+    currentBranch,
+    // - means reverse order
+    "--sort=-creatordate",
+    ...(prefix ? ["--list", `${prefix}*`] : []),
+  ])) {
+    if (tag) {
+      const version = prefix ? tag.slice(prefix.length) : tag;
+      if (!semver.valid(version)) {
+        continue;
+      }
+      if (skipUnstable && semver.prerelease(version)) {
+        continue;
+      }
+      return { tag, version };
+    }
+  }
+
+  return null;
 };

@@ -81,6 +81,81 @@ async function execvp<const Strict extends boolean>(
   });
 }
 
+async function* spawnStreamStdout<const Strict extends boolean>(
+  command: string,
+  args: string[],
+  {
+    cwd = process.cwd(),
+    env = process.env,
+    encoding,
+    strict,
+    separator,
+  }: {
+    cwd?: string;
+    env?: typeof process.env;
+    encoding?: BufferEncoding;
+    strict?: Strict;
+    separator: string;
+  },
+): AsyncGenerator<string, ExecResult<Strict>, unknown> {
+  const stderrChunks: Uint8Array[] = [];
+  if (env.PWD !== undefined) {
+    env = { ...env, PWD: cwd };
+  }
+  const subprocess = childProcess.spawn(command, args, {
+    cwd,
+    env,
+    stdio: ["ignore", "pipe", "pipe"],
+  });
+
+  subprocess.stderr.on("data", (chunk) => {
+    stderrChunks.push(chunk);
+  });
+
+  let chunk: Buffer;
+  let payload: string[];
+  let buffer = "";
+
+  for await (chunk of subprocess.stdout) {
+    buffer += chunk.toString();
+
+    if (buffer.includes(separator)) {
+      payload = buffer.split(separator);
+      buffer = payload.pop() || "";
+
+      yield* payload;
+    }
+  }
+
+  if (buffer) {
+    yield buffer;
+  }
+
+  return new Promise((resolve, reject) => {
+    subprocess.on("error", (err) => {
+      reject(new Error(`Process ${command} failed to spawn`));
+    });
+    subprocess.on("close", (code, signal) => {
+      const chunksToString = (chunks: Uint8Array[]): string =>
+        Buffer.concat(chunks).toString(encoding ?? "utf8");
+      const stderr = chunksToString(stderrChunks);
+      if (code === 0 || !strict) {
+        resolve({
+          code,
+          signal,
+          stderr,
+        } as ExecResult<Strict>);
+      } else {
+        reject(
+          new Error(
+            `Process ${[command, ...args].join(" ")} exited ${code !== null ? `with code ${code}` : `with signal ${signal || ""}`}:\nstderr: ${stderr.toString()}`,
+          ),
+        );
+      }
+    });
+  });
+}
+
 export const execCommand = (
   workspace: Workspace,
   commandAndArgs: string[] = [],
@@ -91,5 +166,18 @@ export const execCommand = (
     cwd: workspace.cwd,
     strict: true,
     stdo,
+  });
+};
+
+export const execCommandStreamStdout = (
+  workspace: Workspace,
+  commandAndArgs: string[] = [],
+  separator = "\n",
+): AsyncGenerator<string, ExecResult<true>, unknown> => {
+  const [command, ...args] = commandAndArgs;
+  return spawnStreamStdout(command, args, {
+    cwd: workspace.cwd,
+    strict: true,
+    separator,
   });
 };
