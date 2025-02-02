@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.3.0](https://github.com/christophehurpeau/pob/compare/pob@26.2.0...pob@26.3.0) (2025-02-02)
+
+### Features
+
+* add mjs and cjs to checkonly ([2666924](https://github.com/christophehurpeau/pob/commit/2666924e72980b7c9a5c1315ff7f8680642171ff))
+* improve typescript checkonly support ([3355104](https://github.com/christophehurpeau/pob/commit/3355104897428d9014b11402ed771a10b1b94064))
+
+### Bug Fixes
+
+* avoid deleting @babel/core ([022d74d](https://github.com/christophehurpeau/pob/commit/022d74d8e462962432cf0bc53d5f3b0d79f86769))
+
 ## [26.2.0](https://github.com/christophehurpeau/pob/compare/pob@26.1.1...pob@26.2.0) (2025-02-02)
 
 ### Features
