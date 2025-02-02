@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.1.1](https://github.com/christophehurpeau/pob/compare/@pob/root@16.1.0...@pob/root@16.1.1) (2025-02-02)
+
+### Bug Fixes
+
+* add missing actions/setup-node in ci configs ([0eaf1cb](https://github.com/christophehurpeau/pob/commit/0eaf1cb6a080bb380d83e678b565a0d6b68f180f))
+
 ## [16.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@16.0.0...@pob/root@16.1.0) (2025-02-02)
 
 ### Features
