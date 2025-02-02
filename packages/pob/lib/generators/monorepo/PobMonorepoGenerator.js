@@ -61,13 +61,12 @@ const hasBuild = (packages, configs) =>
   );
 
 const hasTamagui = (packages, configs) =>
-  configs.some(
-    (config, index) =>
+  packages.some(
+    (pkg) =>
       !!(
-        config &&
-        config.project &&
-        config.project.type === "app" &&
-        ["storybook"].includes(config.app.type)
+        pkg.dependencies?.tamagui ||
+        pkg.dependencies?.["@tamagui/core"] ||
+        pkg.dependencies?.alouette
       ),
   );
 
@@ -254,6 +253,10 @@ export default class PobMonorepoGenerator extends Generator {
       splitCIJobs,
     });
 
+    const gitignorePaths = [
+      hasTamagui(this.packages, this.packageConfigs) && ".tamagui",
+    ].filter(Boolean);
+
     this.composeWith("pob:common:format-lint", {
       monorepo: true,
       documentation: this.pobLernaConfig.documentation,
@@ -265,9 +268,9 @@ export default class PobMonorepoGenerator extends Generator {
       yarnNodeLinker: this.options.yarnNodeLinker,
       appTypes: JSON.stringify(getAppTypes(this.packageConfigs)),
       ignorePaths: [
+        ...gitignorePaths.map((path) => `/${path}`),
         hasDist(this.packages, this.packageConfigs) && "/dist",
         hasBuild(this.packages, this.packageConfigs) && "/build",
-        hasTamagui(this.packages, this.packageConfigs) && "/.tamagui",
       ]
         .filter(Boolean)
         .join("\n"),
@@ -300,6 +303,8 @@ export default class PobMonorepoGenerator extends Generator {
       typescript: this.pobLernaConfig.typescript,
       documentation: this.pobLernaConfig.documentation,
       testing: this.pobLernaConfig.testing,
+      // TODO add workspaces paths like we do in format-lint
+      paths: gitignorePaths.join("\n"),
       // todo: fix this using workspaces
       // buildDirectory: this.pobLernaConfig.typescript ? `/*/build` : "",
     });
