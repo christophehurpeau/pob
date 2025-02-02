@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@6.1.0...@pob/rollup-esbuild@6.2.0) (2025-02-02)
+
+### Features
+
+* **rollup-esbuild:** supports .web extensions by default and replace react-native to react-native-web ([9e1b7f8](https://github.com/christophehurpeau/pob/commit/9e1b7f8566e5dbb1d898e2798d96e9bfd0cdf43c))
+
 ## [6.1.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@6.0.0...@pob/rollup-esbuild@6.1.0) (2025-02-02)
 
 ### Features

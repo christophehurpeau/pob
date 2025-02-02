@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.2.0](https://github.com/christophehurpeau/pob/compare/pob@26.1.1...pob@26.2.0) (2025-02-02)
+
+### Features
+
+* better tamagui support ([7af3a16](https://github.com/christophehurpeau/pob/commit/7af3a161ed462135bb562fff46ad0ca8d606faf1))
+* support react-native target ([7e374f8](https://github.com/christophehurpeau/pob/commit/7e374f842c5aaf78f886722c305ac52f9a6aa5db))
+
+Version bump for dependency: @pob/root
+
+
 ## [26.1.1](https://github.com/christophehurpeau/pob/compare/pob@26.1.0...pob@26.1.1) (2025-02-02)
 
 Version bump for dependency: @pob/root

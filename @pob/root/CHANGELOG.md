@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@16.1.1...@pob/root@16.2.0) (2025-02-02)
+
+Version bump for dependency: yarn-version
+
+
 ## [16.1.1](https://github.com/christophehurpeau/pob/compare/@pob/root@16.1.0...@pob/root@16.1.1) (2025-02-02)
 
 ### Bug Fixes
