@@ -2,6 +2,7 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 import { nodeFormatToExt, resolveEntry } from "@pob/rollup";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
+import replace from "@rollup/plugin-replace";
 import configExternalDependencies from "rollup-config-external-dependencies";
 import esbuild from "rollup-plugin-esbuild";
 
@@ -10,7 +11,12 @@ export default function createRollupConfig({
   outDirectory = "dist",
   pkg = JSON.parse(readFileSync(path.join(cwd, "package.json"))),
   plugins = [],
-  getExtensions = (v) => v,
+  getExtensions = (extensions, { target }) => {
+    if (target === "browser") {
+      return extensions.flatMap((ext) => [`.web${ext}`, `${ext}`]);
+    }
+    return extensions;
+  },
 }) {
   const pobConfig = pkg.pob;
 
@@ -83,6 +89,15 @@ export default function createRollupConfig({
             moduleDirectories: ["src"], // don't resolve node_modules, but allow src (see baseUrl in tsconfig)
           },
         }),
+        ...(env.target === "browser"
+          ? [
+              replace({
+                preventAssignment: true,
+                delimiters: ['"', '"'],
+                "react-native": '"react-native-web"',
+              }),
+            ]
+          : []),
 
         ...(typeof plugins === "function" ? plugins(env) : plugins),
       ].filter(Boolean),
