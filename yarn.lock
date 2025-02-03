@@ -13721,7 +13721,7 @@ __metadata:
     prettier: "npm:3.4.2"
     repository-check-dirty: "npm:10.0.0"
     rollup: "npm:4.33.0"
-    semver: "npm:7.7.0"
+    semver: "npm:7.7.1"
     ts-node: "npm:ts-node-lite@11.0.0-beta.1"
     tslib: "npm:2.8.1"
     typedoc: "npm:0.27.6"
@@ -13782,7 +13782,7 @@ __metadata:
     parse-author: "npm:2.0.0"
     pob-dependencies: "workspace:*"
     prettier: "npm:3.4.2"
-    semver: "npm:7.7.0"
+    semver: "npm:7.7.1"
     typescript: "npm:5.7.3"
     validate-npm-package-name: "npm:^6.0.0"
     yarn-workspace-utils: "npm:8.1.0"
@@ -14840,12 +14840,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:7.7.0, semver@npm:^7.1.1, semver@npm:^7.1.2, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.5.2, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.6.0, semver@npm:^7.6.3":
-  version: 7.7.0
-  resolution: "semver@npm:7.7.0"
+"semver@npm:7.7.1, semver@npm:^7.1.1, semver@npm:^7.1.2, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.5.2, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.6.0, semver@npm:^7.6.3":
+  version: 7.7.1
+  resolution: "semver@npm:7.7.1"
   bin:
     semver: bin/semver.js
-  checksum: 10c0/bcd1c03209b4be7d8ca86c976a0410beba7d4ec1d49d846a4be154b958db1ff5eaee50760c1d4f4070b19dee3236b8672d3e09642c53ea23740398bba2538a2d
+  checksum: 10c0/fd603a6fb9c399c6054015433051bdbe7b99a940a8fb44b85c2b524c4004b023d7928d47cb22154f8d054ea7ee8597f586605e05b52047f048278e4ac56ae958
   languageName: node
   linkType: hard
 
@@ -16988,7 +16988,7 @@ __metadata:
     nightingale: "npm:15.0.0"
     nightingale-console: "npm:15.0.0"
     nightingale-string: "npm:15.0.0"
-    semver: "npm:7.7.0"
+    semver: "npm:7.7.1"
     type-fest: "npm:4.33.0"
     typescript: "npm:5.7.3"
   bin:
