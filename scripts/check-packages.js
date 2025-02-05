@@ -30,4 +30,9 @@ await createCheckPackageWithWorkspaces({
       dependencies: ["mem-fs-editor"],
     });
   })
+  .for("pob-dependencies", (pkgCheck) => {
+    return pkgCheck.checkIdenticalVersions({
+      devDependencies: { vitest: ["@vitest/coverage-v8"] },
+    });
+  })
   .run();
