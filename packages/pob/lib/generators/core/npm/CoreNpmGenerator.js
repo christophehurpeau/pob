@@ -39,7 +39,7 @@ export default class CoreNpmGenerator extends Generator {
     }
 
     if (!pkg.private && this.options.enable) {
-      if (pkg.files.length === 1 && pkg.files[0] === "lib/index.js") {
+      if (pkg.files?.length === 1 && pkg.files[0] === "lib/index.js") {
         // see rollup-plugin-svgr
       } else {
         const files = new Set([
