@@ -102,7 +102,7 @@ export default class PobBaseGenerator extends Generator {
         name: "packageManager",
         message: "Witch package manager do you want to use ?",
         type: "list",
-        choices: ["yarn", "npm"],
+        choices: ["yarn", "npm", "bun"],
         default: config.packageManager || "yarn",
       },
       {
