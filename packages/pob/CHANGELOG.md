@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.5.0](https://github.com/christophehurpeau/pob/compare/pob@26.4.0...pob@26.5.0) (2025-02-06)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v59.6.0 ([#2442](https://github.com/christophehurpeau/pob/issues/2442)) ([22ae88f](https://github.com/christophehurpeau/pob/commit/22ae88f941ced7bb7329169a2ca28ef39d1eced3))
+* improve bun support ([6869f9e](https://github.com/christophehurpeau/pob/commit/6869f9e171a8217c5b4f14767eef41877565664b))
+
+### Bug Fixes
+
+* **deps:** update @pob/eslint-config to v59.5.1 ([#2433](https://github.com/christophehurpeau/pob/issues/2433)) ([60da520](https://github.com/christophehurpeau/pob/commit/60da520fffed22ee33e55b6c5467cced729141d5))
+* **deps:** update dependency semver to v7.7.1 ([#2435](https://github.com/christophehurpeau/pob/issues/2435)) ([935072a](https://github.com/christophehurpeau/pob/commit/935072a0a3e2ffe0dec0f9b0b9ef3d8118c8b81c))
+
+Version bump for dependency: @pob/root
+
+
 ## [26.4.0](https://github.com/christophehurpeau/pob/compare/pob@26.3.0...pob@26.4.0) (2025-02-02)
 
 ### Features

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.3.1](https://github.com/christophehurpeau/pob/compare/@pob/root@16.3.0...@pob/root@16.3.1) (2025-02-06)
+
+### Bug Fixes
+
+* support eslint.config.mjs ([e70054d](https://github.com/christophehurpeau/pob/commit/e70054db67101c0d42e6af22889a348ae80e492e))
+
+Version bump for dependency: yarn-version
+
+
 ## [16.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@16.2.0...@pob/root@16.3.0) (2025-02-02)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.1](https://github.com/christophehurpeau/pob/compare/yarn-version@6.2.0...yarn-version@6.2.1) (2025-02-06)
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v7.7.1 ([#2435](https://github.com/christophehurpeau/pob/issues/2435)) ([935072a](https://github.com/christophehurpeau/pob/commit/935072a0a3e2ffe0dec0f9b0b9ef3d8118c8b81c))
+
 ## [6.2.0](https://github.com/christophehurpeau/pob/compare/yarn-version@6.1.0...yarn-version@6.2.0) (2025-02-02)
 
 Version bump for dependency: @pob/rollup-esbuild

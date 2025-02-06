@@ -3703,7 +3703,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/root@npm:16.3.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@npm:16.3.1, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -3720,7 +3720,7 @@ __metadata:
     repository-check-dirty: "npm:10.0.0"
     semver: "npm:^7.3.7"
     which-pm-runs: "npm:1.1.0"
-    yarn-version: "npm:6.2.0"
+    yarn-version: "npm:6.2.1"
   bin:
     commitlint: ./bin/commitlint.js
     pob-root-lint-staged: ./bin/pob-root-lint-staged.js
@@ -8770,7 +8770,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-typescript-lib@npm:0.37.0, example-typescript-lib@workspace:pob-examples/typescript-lib":
+"example-typescript-lib@npm:0.37.1, example-typescript-lib@workspace:pob-examples/typescript-lib":
   version: 0.0.0-use.local
   resolution: "example-typescript-lib@workspace:pob-examples/typescript-lib"
   dependencies:
@@ -8786,7 +8786,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-webpack-app@workspace:pob-examples/webpack-app"
   dependencies:
-    example-typescript-lib: "npm:0.37.0"
+    example-typescript-lib: "npm:0.37.1"
     webpack: "npm:5.97.1"
     webpack-cli: "npm:6.0.1"
   languageName: unknown
@@ -13523,7 +13523,7 @@ __metadata:
     "@pob/eslint-config": "npm:59.6.0"
     "@pob/eslint-config-typescript": "npm:59.6.0"
     "@pob/eslint-config-typescript-react": "npm:59.6.0"
-    "@pob/root": "npm:16.3.0"
+    "@pob/root": "npm:16.3.1"
     "@pob/sort-eslint-config": "npm:8.0.0"
     "@pob/sort-object": "npm:9.0.0"
     "@pob/sort-pkg": "npm:11.0.0"
@@ -16744,7 +16744,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yarn-version@npm:6.2.0, yarn-version@workspace:packages/yarn-version":
+"yarn-version@npm:6.2.1, yarn-version@workspace:packages/yarn-version":
   version: 0.0.0-use.local
   resolution: "yarn-version@workspace:packages/yarn-version"
   dependencies:
