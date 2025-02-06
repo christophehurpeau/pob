@@ -8,7 +8,8 @@ const whichPmRuns = require("which-pm-runs");
 const pm =
   whichPmRuns() ||
   (fs.existsSync("package-lock.json") ? { name: "npm" } : undefined);
-const isEslintFlatConfig = fs.existsSync("eslint.config.js");
+const isEslintFlatConfig =
+  fs.existsSync("eslint.config.js") || fs.existsSync("eslint.config.mjs");
 
 const yarnMajorVersion = pm.name === "yarn" && semver.major(pm.version);
 const { lockfile, installAndDedupe } = (() => {
