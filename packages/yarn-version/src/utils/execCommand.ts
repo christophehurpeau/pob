@@ -162,6 +162,9 @@ export const execCommand = (
   stdo: "inherit" | "pipe" = "pipe",
 ): ReturnType<typeof execvp> => {
   const [command, ...args] = commandAndArgs;
+  if (command === undefined) {
+    throw new Error("Command is required");
+  }
   return execvp(command, args, {
     cwd: workspace.cwd,
     strict: true,
@@ -175,6 +178,9 @@ export const execCommandStreamStdout = (
   separator = "\n",
 ): AsyncGenerator<string, ExecResult<true>, unknown> => {
   const [command, ...args] = commandAndArgs;
+  if (command === undefined) {
+    throw new Error("Command is required");
+  }
   return spawnStreamStdout(command, args, {
     cwd: workspace.cwd,
     strict: true,

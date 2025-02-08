@@ -75,7 +75,7 @@ export const isBehindRemote = async (
 
   const [behind] = stdout.split("\t").map((val) => parseInt(val, 10));
 
-  return behind > 0;
+  return behind ? behind > 0 : false;
 };
 
 export const getDirtyFiles = async (workspace: Workspace): Promise<string> => {

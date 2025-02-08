@@ -55,6 +55,9 @@ export const parseGithubRepoUrl = (workspace: Workspace): ParsedGithubUrl => {
     throw new Error(`Invalid GitHub repository URL: "${url}"`);
   }
   const [, username, reponame] = match;
+  if (!username || !reponame) {
+    throw new Error(`Invalid GitHub repository URL: ${url}`);
+  }
   return { username, reponame };
 };
 

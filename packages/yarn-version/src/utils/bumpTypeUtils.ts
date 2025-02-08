@@ -41,7 +41,7 @@ export const calcBumpRange = (
   }
 
   const parsed = SUPPORTED_UPGRADE_REGEXP.exec(range);
-  if (!parsed) {
+  if (!parsed?.[1]) {
     const workspaceName = getWorkspaceName(workspace);
     throw new Error(`Couldn't bump range ${range} in ${workspaceName}`);
   }

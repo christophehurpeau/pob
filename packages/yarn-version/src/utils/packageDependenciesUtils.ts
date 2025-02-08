@@ -18,6 +18,9 @@ export const PackageDescriptorNameUtils: DescriptorUtils<PackageDescriptorName> 
     parse: (value) => {
       if (value.startsWith("@")) {
         const [scope, name] = value.slice(1).split("/", 2);
+        if (!scope || !name) {
+          throw new Error(`Invalid package descriptor name: ${value}`);
+        }
         return { scope, name };
       }
       return { name: value };
@@ -56,6 +59,9 @@ export const PackageDependencyDescriptorUtils: PackageDependencyDescriptorUtils 
             const [packageNameWithoutFirstChar, selector] = v
               .slice(1)
               .split("@", 2);
+            if (!packageNameWithoutFirstChar || !selector) {
+              throw new Error(`Invalid package descriptor: ${dependencyValue}`);
+            }
             return [`@${packageNameWithoutFirstChar}`, selector];
           })()
         : [dependencyKey, dependencyValue];

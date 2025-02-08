@@ -33,6 +33,9 @@ const PackageDescriptorNameUtils = {
   parse: (value) => {
     if (value.startsWith("@")) {
       const [scope, name] = value.slice(1).split("/", 2);
+      if (!scope || !name) {
+        throw new Error(`Invalid package descriptor name: ${value}`);
+      }
       return { scope, name };
     }
     return { name: value };
@@ -50,6 +53,9 @@ const PackageDependencyDescriptorUtils = {
       const v = dependencyValue.slice("npm:".length);
       if (!v.startsWith("@")) v.split("@", 2);
       const [packageNameWithoutFirstChar, selector2] = v.slice(1).split("@", 2);
+      if (!packageNameWithoutFirstChar || !selector2) {
+        throw new Error(`Invalid package descriptor: ${dependencyValue}`);
+      }
       return [`@${packageNameWithoutFirstChar}`, selector2];
     })() : [dependencyKey, dependencyValue];
     return {
@@ -146,7 +152,7 @@ const calcBumpRange = (workspace, range, newVersion) => {
     useWorkspaceProtocol = true;
   }
   const parsed = SUPPORTED_UPGRADE_REGEXP.exec(range);
-  if (!parsed) {
+  if (!parsed?.[1]) {
     const workspaceName = getWorkspaceName(workspace);
     throw new Error(`Couldn't bump range ${range} in ${workspaceName}`);
   }
@@ -307,6 +313,9 @@ stderr: ${stderr.toString()}`
 }
 const execCommand = (workspace, commandAndArgs = [], stdo = "pipe") => {
   const [command, ...args] = commandAndArgs;
+  if (command === undefined) {
+    throw new Error("Command is required");
+  }
   return execvp(command, args, {
     cwd: workspace.cwd,
     strict: true,
@@ -369,7 +378,7 @@ const isBehindRemote = async (workspace, gitRemote, currentBranch) => {
     `${gitRemote}/${currentBranch}..${currentBranch}`
   ]);
   const [behind] = stdout.split("	").map((val) => parseInt(val, 10));
-  return behind > 0;
+  return behind ? behind > 0 : false;
 };
 const getDirtyFiles = async (workspace) => {
   const { stdout: dirtyFiles } = await execCommand(workspace, [
@@ -414,6 +423,9 @@ const parseGithubRepoUrl = (workspace) => {
     throw new Error(`Invalid GitHub repository URL: "${url}"`);
   }
   const [, username, reponame] = match;
+  if (!username || !reponame) {
+    throw new Error(`Invalid GitHub repository URL: ${url}`);
+  }
   return { username, reponame };
 };
 const createGitRelease = async (githubClient, parsedRepoUrl, tag, body, prerelease) => {
