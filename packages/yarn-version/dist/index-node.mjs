@@ -51,7 +51,7 @@ const PackageDependencyDescriptorUtils = {
   parse: (dependencyKey, dependencyValue) => {
     const [name, selector] = dependencyValue.startsWith("npm:") ? (() => {
       const v = dependencyValue.slice("npm:".length);
-      if (!v.startsWith("@")) v.split("@", 2);
+      if (!v.startsWith("@")) return v.split("@", 2);
       const [packageNameWithoutFirstChar, selector2] = v.slice(1).split("@", 2);
       if (!packageNameWithoutFirstChar || !selector2) {
         throw new Error(`Invalid package descriptor: ${dependencyValue}`);
@@ -152,11 +152,11 @@ const calcBumpRange = (workspace, range, newVersion) => {
     useWorkspaceProtocol = true;
   }
   const parsed = SUPPORTED_UPGRADE_REGEXP.exec(range);
-  if (!parsed?.[1]) {
+  if (!parsed) {
     const workspaceName = getWorkspaceName(workspace);
     throw new Error(`Couldn't bump range ${range} in ${workspaceName}`);
   }
-  return `${useWorkspaceProtocol ? yarnWorkspaceProtocol : ""}${parsed[1]}${newVersion}`;
+  return `${useWorkspaceProtocol ? yarnWorkspaceProtocol : ""}${parsed[1] ?? ""}${newVersion}`;
 };
 const getHighestBumpType = (bumpTypes) => {
   if (bumpTypes.includes("major")) {

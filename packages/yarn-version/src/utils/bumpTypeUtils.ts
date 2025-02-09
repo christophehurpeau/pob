@@ -41,13 +41,13 @@ export const calcBumpRange = (
   }
 
   const parsed = SUPPORTED_UPGRADE_REGEXP.exec(range);
-  if (!parsed?.[1]) {
+  if (!parsed) {
     const workspaceName = getWorkspaceName(workspace);
     throw new Error(`Couldn't bump range ${range} in ${workspaceName}`);
   }
 
   return `${useWorkspaceProtocol ? yarnWorkspaceProtocol : ""}${
-    parsed[1]
+    parsed[1] ?? ""
   }${newVersion}`;
 };
 

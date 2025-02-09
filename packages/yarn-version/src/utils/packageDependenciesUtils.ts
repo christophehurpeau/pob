@@ -55,7 +55,7 @@ export const PackageDependencyDescriptorUtils: PackageDependencyDescriptorUtils 
       const [name, selector] = dependencyValue.startsWith("npm:")
         ? (() => {
             const v = dependencyValue.slice("npm:".length);
-            if (!v.startsWith("@")) v.split("@", 2);
+            if (!v.startsWith("@")) return v.split("@", 2) as [string, string];
             const [packageNameWithoutFirstChar, selector] = v
               .slice(1)
               .split("@", 2);
