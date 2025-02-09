@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.6.0](https://github.com/christophehurpeau/pob/compare/pob@26.5.0...pob@26.6.0) (2025-02-09)
+
+### Features
+
+* **deps:** update dependency eslint to v9.20.0 ([#2443](https://github.com/christophehurpeau/pob/issues/2443)) ([48a8737](https://github.com/christophehurpeau/pob/commit/48a8737c0433d17b42733bef44fc08c9141127f6))
+* **deps:** update dependency prettier to v3.5.0 ([#2448](https://github.com/christophehurpeau/pob/issues/2448)) ([c0cb492](https://github.com/christophehurpeau/pob/commit/c0cb49243240d0c744aeca862c1d3584b1b1cfa3))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [26.5.0](https://github.com/christophehurpeau/pob/compare/pob@26.4.0...pob@26.5.0) (2025-02-06)
 
 ### Features

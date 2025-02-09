@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@16.3.1...@pob/root@16.4.0) (2025-02-09)
+
+### Features
+
+* **deps:** update dependency prettier to v3.5.0 ([#2448](https://github.com/christophehurpeau/pob/issues/2448)) ([c0cb492](https://github.com/christophehurpeau/pob/commit/c0cb49243240d0c744aeca862c1d3584b1b1cfa3))
+* enable noUncheckedIndexedAccess ([8fa86ca](https://github.com/christophehurpeau/pob/commit/8fa86ca8a641a26393ee80f2547740540fafc80a))
+
+Version bump for dependency: yarn-version
+
+
 ## [16.3.1](https://github.com/christophehurpeau/pob/compare/@pob/root@16.3.0...@pob/root@16.3.1) (2025-02-06)
 
 ### Bug Fixes

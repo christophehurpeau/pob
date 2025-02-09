@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.0](https://github.com/christophehurpeau/pob/compare/yarn-version@6.2.1...yarn-version@6.3.0) (2025-02-09)
+
+### Features
+
+* enable noUncheckedIndexedAccess ([8fa86ca](https://github.com/christophehurpeau/pob/commit/8fa86ca8a641a26393ee80f2547740540fafc80a))
+
+### Bug Fixes
+
+* fixes for bugs introduced in 8fa86ca8a641a26393ee80f2547740540fafc80a ([ee7de47](https://github.com/christophehurpeau/pob/commit/ee7de47e174f0a6328ae96b897333cd3d9a8e33d))
+
 ## [6.2.1](https://github.com/christophehurpeau/pob/compare/yarn-version@6.2.0...yarn-version@6.2.1) (2025-02-06)
 
 ### Bug Fixes
