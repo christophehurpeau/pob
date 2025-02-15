@@ -7054,21 +7054,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"check-package-dependencies@npm:9.1.0":
-  version: 9.1.0
-  resolution: "check-package-dependencies@npm:9.1.0"
+"check-package-dependencies@npm:9.2.0":
+  version: 9.2.0
+  resolution: "check-package-dependencies@npm:9.2.0"
   dependencies:
     "@eslint/plugin-kit": "npm:^0.2.5"
-    chalk: "npm:^5.2.0"
+    chalk: "npm:^5.4.1"
     import-meta-resolve: "npm:^4.1.0"
     jsonc-parser: "npm:^3.3.1"
-    semver: "npm:^7.5.4"
+    semver: "npm:^7.7.1"
     semver-utils: "npm:^1.1.4"
     tslib: "npm:^2.8.1"
-    type-fest: "npm:^4.0.0"
+    type-fest: "npm:^4.34.0"
   bin:
     check-package-dependencies: ./bin/check-package-dependencies.mjs
-  checksum: 10c0/ce63434da26f0b33382edeaf1f24e0d902732cdb5cd3f5631fc74e6bdc20354a14741f27e1c0eba2bbe8eb6f26a6ff2bfceb9002dc4fb203cfc016eebbbda40d
+  checksum: 10c0/c5f7f45bb920224a96bb43fd5ef3a39b13105dca8486fa38bc236b56e69e5d9399ea0db86ed772575a088a010e7428171c4927182af5136236a46940287f991f
   languageName: node
   linkType: hard
 
@@ -13500,7 +13500,7 @@ __metadata:
     "@types/node": "npm:22.13.1"
     "@vitest/coverage-v8": "npm:3.0.5"
     alp-rollup-plugin-config: "npm:2.2.1"
-    check-package-dependencies: "npm:9.1.0"
+    check-package-dependencies: "npm:9.2.0"
     eslint: "npm:9.20.1"
     jest: "npm:29.7.0"
     jest-junit-reporter: "npm:1.1.0"
@@ -13526,7 +13526,7 @@ __metadata:
     "@pob/eslint-config-typescript": "npm:59.6.0"
     "@pob/root": "workspace:*"
     "@types/jest": "npm:29.5.14"
-    check-package-dependencies: "npm:9.1.0"
+    check-package-dependencies: "npm:9.2.0"
     eslint: "npm:9.20.1"
     eslint-plugin-jest: "npm:28.11.0"
     jest: "npm:29.7.0"
@@ -14627,7 +14627,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:7.7.1, semver@npm:^7.1.1, semver@npm:^7.1.2, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.5.2, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.6.0, semver@npm:^7.6.3":
+"semver@npm:7.7.1, semver@npm:^7.1.1, semver@npm:^7.1.2, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.5.2, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.6.0, semver@npm:^7.6.3, semver@npm:^7.7.1":
   version: 7.7.1
   resolution: "semver@npm:7.7.1"
   bin:
@@ -15804,7 +15804,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:4.34.0, type-fest@npm:^4.0.0, type-fest@npm:^4.6.0, type-fest@npm:^4.7.1":
+"type-fest@npm:4.34.0":
   version: 4.34.0
   resolution: "type-fest@npm:4.34.0"
   checksum: 10c0/a73b83af35dc803ce321ab3275fd753761d8d55bb4d37d87ad9bbf986288a973dee13ba25b47101a3259be520101631854ac1bbfbffa69b370cde1947967e47f
@@ -15843,6 +15843,13 @@ __metadata:
   version: 0.8.1
   resolution: "type-fest@npm:0.8.1"
   checksum: 10c0/dffbb99329da2aa840f506d376c863bd55f5636f4741ad6e65e82f5ce47e6914108f44f340a0b74009b0cb5d09d6752ae83203e53e98b1192cf80ecee5651636
+  languageName: node
+  linkType: hard
+
+"type-fest@npm:^4.34.0, type-fest@npm:^4.6.0, type-fest@npm:^4.7.1":
+  version: 4.34.1
+  resolution: "type-fest@npm:4.34.1"
+  checksum: 10c0/4aa016be91f4225b772d77da91415cd25961a937f84e68d763b2dfeb936ef1671b039bbb0f75019affb8f591c26d65966024343aae75b17ab49db6f9c50c38a8
   languageName: node
   linkType: hard
 
