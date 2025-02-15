@@ -57,7 +57,7 @@
     "@yarnpkg/core": "4.2.0"
   },
   "devDependencies": {
-    "@babel/core": "7.26.8",
+    "@babel/core": "7.26.9",
     "pob-babel": "43.2.0",
     "typescript": "5.7.3"
   }
