@@ -1,6 +1,6 @@
-<h3 align="center">
-  <%= packageName %>
-</h3>
+<h1 align="center">
+  <%= title %>
+</h1>
 <% if (description) { -%>
 
 <p align="center">
@@ -10,10 +10,10 @@
 
 <p align="center">
 <% if (!privatePackage) { -%>
-  <a href="https://npmjs.org/package/<%= packageName %>"><img src="https://img.shields.io/npm/v/<%= packageName %>.svg?style=flat-square"></a>
-  <a href="https://npmjs.org/package/<%= packageName %>"><img src="https://img.shields.io/npm/dw/<%= packageName %>.svg?style=flat-square"></a>
-  <a href="https://npmjs.org/package/<%= packageName %>"><img src="https://img.shields.io/node/v/<%= packageName %>.svg?style=flat-square"></a>
-  <a href="https://npmjs.org/package/<%= packageName %>"><img src="https://img.shields.io/npm/types/<%= packageName %>.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/<%= packageName %>"><img src="https://img.shields.io/npm/v/<%= packageName %>.svg?style=flat-square" alt="npm version"></a>
+  <a href="https://npmjs.org/package/<%= packageName %>"><img src="https://img.shields.io/npm/dw/<%= packageName %>.svg?style=flat-square" alt="npm downloads"></a>
+  <a href="https://npmjs.org/package/<%= packageName %>"><img src="https://img.shields.io/node/v/<%= packageName %>.svg?style=flat-square" alt="node version"></a>
+  <a href="https://npmjs.org/package/<%= packageName %>"><img src="https://img.shields.io/npm/types/<%= packageName %>.svg?style=flat-square" alt="types"></a>
 <% } if (gitHost === 'github') { -%>
 <% if (testing && codecov) { -%>
   <a href="https://codecov.io/gh/<%= gitAccount %>/<%= gitName %>"><img src="https://img.shields.io/codecov/c/github/<%= gitAccount %>/<%= gitName %>/master.svg?style=flat-square"></a>

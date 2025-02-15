@@ -49,9 +49,29 @@ export default class LibReadmeGenerator extends Generator {
 
     if (this.fs.exists(readmePath)) {
       const readmeFullContent = this.fs.read(readmePath);
-      content = readmeFullContent.match(/^<h3[^#*]+([^]+)\[npm-image\]:/);
+      content = readmeFullContent.match(
+        /^<h1 align="center"[^#*]+([^]+)\[npm-image\]:/,
+      );
       if (!content) {
-        content = readmeFullContent.match(/^<h3[^#*]+([^]+)\[daviddm-image\]:/);
+        content = readmeFullContent.match(
+          /^<h1 align="center"[^#*]+([^]+)\[daviddm-image\]:/,
+        );
+      }
+      if (!content) {
+        content = readmeFullContent.match(
+          /^<h3 align="center"[^#*]+([^]+)\[npm-image\]:/,
+        );
+      }
+      if (!content) {
+        content = readmeFullContent.match(
+          /^<h3 align="center"[^#*]+([^]+)\[daviddm-image\]:/,
+        );
+      }
+      if (!content) {
+        content = readmeFullContent.match(/^<h1 align="center"[^#*]+([^]+)$/);
+      }
+      if (!content) {
+        content = readmeFullContent.match(/^<h3 align="center"[^#*]+([^]+)$/);
       }
       if (!content) content = readmeFullContent.match(/^<h3[^#*]+([^]+)$/);
       if (!content) {
@@ -79,10 +99,11 @@ export default class LibReadmeGenerator extends Generator {
         this.templatePath("README.md.ejs"),
         readmePath,
         {
+          title: pkg.name.replace(/-monorepo$/, ""),
           privatePackage: pkg.private,
           packageName: pkg.name,
           camelCaseProjectName: camelCase(pkg.name),
-          description: pkg.description,
+          description: pkg.description || undefined,
           inMonorepo,
           gitHost,
           gitAccount,

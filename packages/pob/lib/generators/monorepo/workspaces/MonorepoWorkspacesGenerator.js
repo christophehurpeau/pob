@@ -160,15 +160,23 @@ export default class MonorepoWorkspacesGenerator extends Generator {
     if (this.fs.exists(readmePath)) {
       const readmeFullContent = this.fs.read(readmePath);
       // eslint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
-      content = readmeFullContent.match(/^<h3[^#*]+([^]+)$/);
+      content = readmeFullContent.match(/^<h1 align="center"[^#*]+([^]+)$/);
+      if (!content) {
+        // eslint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
+        content = readmeFullContent.match(/^<h3 align="center"[^#*]+([^]+)$/);
+      }
+      if (!content) {
+        // eslint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
+        content = readmeFullContent.match(/^<h3[^#*]+([^]+)$/);
+      }
       // eslint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
       if (!content) content = readmeFullContent.match(/^#[^#*]+([^]+)$/);
       content = content ? content[1].trim() : readmeFullContent;
     }
 
     copyAndFormatTpl(this.fs, this.templatePath("README.md.ejs"), readmePath, {
-      projectName: pkg.name,
-      description: pkg.description,
+      title: pkg.description,
+      description: "",
       packages: this.packages,
       ci: this.fs.exists(this.destinationPath(".github/workflows/push.yml")),
       content,
