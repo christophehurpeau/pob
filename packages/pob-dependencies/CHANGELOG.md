@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.5.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@17.5.0...pob-dependencies@17.5.1) (2025-02-17)
+
+### Bug Fixes
+
+* **deps:** update dependency eslint to v9.20.1 ([#2453](https://github.com/christophehurpeau/pob/issues/2453)) ([d215189](https://github.com/christophehurpeau/pob/commit/d215189752bb3a1e60410912dcbc4e91946fa609))
+* **deps:** update dependency prettier to v3.5.1 ([#2461](https://github.com/christophehurpeau/pob/issues/2461)) ([38daf8a](https://github.com/christophehurpeau/pob/commit/38daf8a0185d615595d6c233b4c8bb1d0645926d))
+
+Version bump for dependency: @pob/commitlint-config
+Version bump for dependency: pob-babel
+
+
 ## [17.5.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@17.4.0...pob-dependencies@17.5.0) (2025-02-09)
 
 ### Features

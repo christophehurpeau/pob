@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.0](https://github.com/christophehurpeau/pob/compare/yarn-version@6.3.0...yarn-version@6.4.0) (2025-02-17)
+
+### Features
+
+* **deps:** update dependency conventional-commits-parser to v6.1.0 ([#2463](https://github.com/christophehurpeau/pob/issues/2463)) ([8d7de1d](https://github.com/christophehurpeau/pob/commit/8d7de1d7410c67e395f7c725be6d9bc4c4c2c393))
+
+### Bug Fixes
+
+* **deps:** update @octokit/rest to v21.1.1 ([65b9265](https://github.com/christophehurpeau/pob/commit/65b9265baaf16423a19f816566d3b5d2f555ecc0))
+
 ## [6.3.0](https://github.com/christophehurpeau/pob/compare/yarn-version@6.2.1...yarn-version@6.3.0) (2025-02-09)
 
 ### Features

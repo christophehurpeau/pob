@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.1](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-esbuild@0.29.0...example-typescript-lib-esbuild@0.29.1) (2025-02-17)
+
+Note: no notable changes
+
+
 ## 0.29.0 (2025-02-01)
 
 ### ⚠ BREAKING CHANGES
