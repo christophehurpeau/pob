@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.8.0](https://github.com/christophehurpeau/pob/compare/pob@26.7.0...pob@26.8.0) (2025-02-17)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v59.7.0 ([#2468](https://github.com/christophehurpeau/pob/issues/2468)) ([dbb4715](https://github.com/christophehurpeau/pob/commit/dbb47156a20d69047fe56f1476bd734849dd1891))
+* update node ci usage to 22.14 ([fc4186e](https://github.com/christophehurpeau/pob/commit/fc4186ecabbba5fb162be99ece77e0389d66380b))
+* update to node 22.14 ([9f5e485](https://github.com/christophehurpeau/pob/commit/9f5e485f5044fd402de2c6b178990a6ba49e935c))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [26.7.0](https://github.com/christophehurpeau/pob/compare/pob@26.6.0...pob@26.7.0) (2025-02-17)
 
 ### Bug Fixes

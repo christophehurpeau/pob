@@ -1,6 +1,6 @@
 {
   "name": "yarn-workspace-utils",
-  "version": "8.2.1",
+  "version": "8.3.0",
   "description": "workspace utils for yarn berry",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -58,7 +58,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.26.9",
-    "pob-babel": "43.2.1",
+    "pob-babel": "43.3.0",
     "typescript": "5.7.3"
   }
 }

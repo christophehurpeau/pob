@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@8.2.1...yarn-workspace-utils@8.3.0) (2025-02-17)
+
+Version bump for dependency: pob-babel
+
+
 ## [8.2.1](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@8.2.0...yarn-workspace-utils@8.2.1) (2025-02-17)
 
 Version bump for dependency: pob-babel

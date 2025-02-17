@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [43.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@43.2.1...pob-babel@43.3.0) (2025-02-17)
+
+### Features
+
+* update to node 22.14 ([9f5e485](https://github.com/christophehurpeau/pob/commit/9f5e485f5044fd402de2c6b178990a6ba49e935c))
+
 ## [43.2.1](https://github.com/christophehurpeau/pob/compare/pob-babel@43.2.0...pob-babel@43.2.1) (2025-02-17)
 
 Version bump for dependency: babel-preset-pob-env

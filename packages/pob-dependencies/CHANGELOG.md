@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.6.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@17.5.1...pob-dependencies@17.6.0) (2025-02-17)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v59.7.0 ([#2468](https://github.com/christophehurpeau/pob/issues/2468)) ([dbb4715](https://github.com/christophehurpeau/pob/commit/dbb47156a20d69047fe56f1476bd734849dd1891))
+
+Version bump for dependency: pob-babel
+
+
 ## [17.5.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@17.5.0...pob-dependencies@17.5.1) (2025-02-17)
 
 ### Bug Fixes

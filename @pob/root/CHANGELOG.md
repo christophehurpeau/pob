@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.6.0](https://github.com/christophehurpeau/pob/compare/@pob/root@16.5.0...@pob/root@16.6.0) (2025-02-17)
+
+### Features
+
+* update node ci usage to 22.14 ([fc4186e](https://github.com/christophehurpeau/pob/commit/fc4186ecabbba5fb162be99ece77e0389d66380b))
+
 ## [16.5.0](https://github.com/christophehurpeau/pob/compare/@pob/root@16.4.0...@pob/root@16.5.0) (2025-02-17)
 
 ### Bug Fixes
