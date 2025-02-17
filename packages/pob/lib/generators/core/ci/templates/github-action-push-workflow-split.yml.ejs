@@ -12,7 +12,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 22.14
 
       - name: Enable Corepack
         run: corepack enable
@@ -41,7 +41,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 22.14
 
       - name: Enable Corepack
         run: corepack enable
@@ -72,7 +72,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 22.14
 
       - name: Enable Corepack
         run: corepack enable
@@ -101,7 +101,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20, 22]
+        node-version: [20, 22.14]
 
     steps:
       - uses: actions/checkout@v4
@@ -131,17 +131,17 @@ jobs:
 <% if (codecov) { -%>
       - name: Test
         run: <%= packageManager %> run test
-        if: matrix.node-version != 22
+        if: matrix.node-version != '22.14'
 
       - name: Generate Test Coverage
         run: <%= packageManager %> run test:coverage:json
-        if: matrix.node-version == 22
+        if: matrix.node-version == '22.14'
         env:
           CI: true
 
       - name: Send results to codecov
         uses: codecov/codecov-action@v5
-        if: matrix.node-version == 22 && github.actor != 'dependabot[bot]'
+        if: matrix.node-version == '22.14' && github.actor != 'dependabot[bot]'
         with:
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -158,7 +158,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [22]
+        node-version: [22.14]
 
     steps:
       - uses: actions/checkout@v4
@@ -191,7 +191,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: 22.14
 
       - uses: GoogleCloudPlatform/release-please-action@v3
         if: ${{ github.ref == 'refs/heads/main' }}

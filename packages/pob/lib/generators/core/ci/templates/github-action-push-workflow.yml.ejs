@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [<% if (!onlyLatestLTS) { -%>20.x, <% } -%>22.x]
+        node-version: [<% if (!onlyLatestLTS) { -%>20.x, <% } -%>22.14]
 
     steps:
       - uses: actions/checkout@v4
