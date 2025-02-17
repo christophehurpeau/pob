@@ -63,7 +63,7 @@ export default function createRollupConfig({
       case "20":
         return "20.9";
       case "22":
-        return "22.11";
+        return "22.14";
       default:
         return version;
     }

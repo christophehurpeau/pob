@@ -13,7 +13,7 @@
   "homepage": "https://github.com/christophehurpeau/pob",
   "type": "module",
   "engines": {
-    "node": ">=22.11.0"
+    "node": ">=22.14.0"
   },
   "bin": {
     "pob-migrate": "./bin/migrate.mjs"
