@@ -7070,21 +7070,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"check-package-dependencies@npm:9.2.0":
-  version: 9.2.0
-  resolution: "check-package-dependencies@npm:9.2.0"
+"check-package-dependencies@npm:10.0.0":
+  version: 10.0.0
+  resolution: "check-package-dependencies@npm:10.0.0"
   dependencies:
     "@eslint/plugin-kit": "npm:^0.2.5"
-    chalk: "npm:^5.4.1"
-    import-meta-resolve: "npm:^4.1.0"
     jsonc-parser: "npm:^3.3.1"
     semver: "npm:^7.7.1"
     semver-utils: "npm:^1.1.4"
     tslib: "npm:^2.8.1"
-    type-fest: "npm:^4.34.0"
+    type-fest: "npm:^4.35.0"
   bin:
     check-package-dependencies: ./bin/check-package-dependencies.mjs
-  checksum: 10c0/c5f7f45bb920224a96bb43fd5ef3a39b13105dca8486fa38bc236b56e69e5d9399ea0db86ed772575a088a010e7428171c4927182af5136236a46940287f991f
+  checksum: 10c0/b9acdff03d4545e65158c022f1e358973e3f9b840b776c70f551fd521da6a46d6ae844398cd222d90b362b4f11bd785a7ae369332a8b818ce712609dcf6bc073
   languageName: node
   linkType: hard
 
@@ -10010,7 +10008,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"import-meta-resolve@npm:^4.0.0, import-meta-resolve@npm:^4.1.0":
+"import-meta-resolve@npm:^4.0.0":
   version: 4.1.0
   resolution: "import-meta-resolve@npm:4.1.0"
   checksum: 10c0/42f3284b0460635ddf105c4ad99c6716099c3ce76702602290ad5cbbcd295700cbc04e4bdf47bacf9e3f1a4cec2e1ff887dabc20458bef398f9de22ddff45ef5
@@ -13504,7 +13502,7 @@ __metadata:
     "@types/node": "npm:22.13.4"
     "@vitest/coverage-v8": "npm:3.0.5"
     alp-rollup-plugin-config: "npm:2.2.1"
-    check-package-dependencies: "npm:9.2.0"
+    check-package-dependencies: "npm:10.0.0"
     eslint: "npm:9.20.1"
     jest: "npm:29.7.0"
     jest-junit-reporter: "npm:1.1.0"
@@ -13530,7 +13528,7 @@ __metadata:
     "@pob/eslint-config-typescript": "npm:59.7.0"
     "@pob/root": "workspace:*"
     "@types/jest": "npm:29.5.14"
-    check-package-dependencies: "npm:9.2.0"
+    check-package-dependencies: "npm:10.0.0"
     eslint: "npm:9.20.1"
     eslint-plugin-jest: "npm:28.11.0"
     jest: "npm:29.7.0"
@@ -15786,7 +15784,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:4.35.0, type-fest@npm:^4.34.0, type-fest@npm:^4.6.0, type-fest@npm:^4.7.1":
+"type-fest@npm:4.35.0, type-fest@npm:^4.35.0, type-fest@npm:^4.6.0, type-fest@npm:^4.7.1":
   version: 4.35.0
   resolution: "type-fest@npm:4.35.0"
   checksum: 10c0/7032a8a940c33d45947a4ff0f74e3aa43b6fd8bb4745b32bba8e61ee47c0dd088cacd102f8377e9e889362e1ae8e0292b64a4c0698c1e42fd297bf6f8899d220
