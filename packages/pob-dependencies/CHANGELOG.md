@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.7.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@17.6.0...pob-dependencies@17.7.0) (2025-02-22)
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [17.6.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@17.5.1...pob-dependencies@17.6.0) (2025-02-17)
 
 ### Features

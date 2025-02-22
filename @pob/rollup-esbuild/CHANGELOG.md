@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@6.2.0...@pob/rollup-esbuild@6.3.0) (2025-02-22)
+
+### Features
+
+* **deps:** update dependency rollup-plugin-esbuild to v6.2.0 ([#2441](https://github.com/christophehurpeau/pob/issues/2441)) ([2654f58](https://github.com/christophehurpeau/pob/commit/2654f588ee2a4b435fbf67f2ff18b65ebfdd27df))
+
 ## [6.2.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@6.1.0...@pob/rollup-esbuild@6.2.0) (2025-02-02)
 
 ### Features

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.9.0](https://github.com/christophehurpeau/pob/compare/pob@26.8.0...pob@26.9.0) (2025-02-22)
+
+### Features
+
+* use option check-latest: true in setup-node ci action ([63bdec9](https://github.com/christophehurpeau/pob/commit/63bdec956723a872f0bde486a9212c4cf60d2de0))
+
+### Reverts
+
+* Revert "feat: update node ci usage to 22.14" ([dab8648](https://github.com/christophehurpeau/pob/commit/dab86485e6eb0d833521660943b0db37aaa3d9f8))
+
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: @pob/root
+
+
 ## [26.8.0](https://github.com/christophehurpeau/pob/compare/pob@26.7.0...pob@26.8.0) (2025-02-17)
 
 ### Features

@@ -13,18 +13,18 @@ interface Dependencies {
   "@pob/rollup-esbuild": "6.2.0";
   "@pob/rollup-typescript": "7.0.0";
   "@swc-node/register": "1.10.9";
-  "@swc/core": "1.10.16";
+  "@swc/core": "1.10.18";
   "@swc/jest": "0.2.37";
   "@types/jest": "29.5.14";
-  "@types/node": "22.13.4";
-  "@vitest/coverage-v8": "3.0.5";
+  "@types/node": "22.13.5";
+  "@vitest/coverage-v8": "3.0.6";
   "alp-rollup-plugin-config": "2.2.1";
-  "check-package-dependencies": "9.2.0";
+  "check-package-dependencies": "10.0.0";
   eslint: "9.20.1";
   jest: "29.7.0";
   "jest-junit-reporter": "1.1.0";
-  "pob-babel": "43.2.1";
-  prettier: "3.5.1";
+  "pob-babel": "43.3.0";
+  prettier: "3.5.2";
   "repository-check-dirty": "10.0.0";
   rollup: "4.33.0";
   semver: "7.7.1";
@@ -32,7 +32,7 @@ interface Dependencies {
   tslib: "2.8.1";
   typedoc: "0.27.7";
   typescript: "5.7.3";
-  vitest: "3.0.5";
+  vitest: "3.0.6";
 }
 
 declare const dependencies: Dependencies;

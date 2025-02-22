@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.0](https://github.com/christophehurpeau/pob/compare/yarn-version@6.4.0...yarn-version@6.5.0) (2025-02-22)
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [6.4.0](https://github.com/christophehurpeau/pob/compare/yarn-version@6.3.0...yarn-version@6.4.0) (2025-02-17)
 
 ### Features

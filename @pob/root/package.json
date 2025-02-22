@@ -1,6 +1,6 @@
 {
   "name": "@pob/root",
-  "version": "16.6.0",
+  "version": "16.7.0",
   "description": "root package",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -69,7 +69,7 @@
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
     "@commitlint/cli": "19.7.1",
-    "@pob/pretty-pkg": "12.0.0",
+    "@pob/pretty-pkg": "12.0.1",
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "cosmiconfig": "^9.0.0",
     "husky": "~9.1.7",
@@ -80,6 +80,6 @@
     "repository-check-dirty": "10.0.0",
     "semver": "^7.3.7",
     "which-pm-runs": "1.1.0",
-    "yarn-version": "6.4.0"
+    "yarn-version": "6.5.0"
   }
 }
