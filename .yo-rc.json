@@ -24,7 +24,6 @@
         "@pob/sort-pkg",
         "babel-preset-pob-env",
         "example-typescript-lib-esbuild",
-        "@pob/pretty-eslint-config",
         "@pob/pretty-pkg",
         "example-typescript-lib-rollup-esbuild",
         "pob-babel",

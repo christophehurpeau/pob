@@ -34,4 +34,3 @@ fs.writeFileSync(JSON.stringify(pkg, null, 2), pkg);
 
 - [@pob/sort-pkg](https://npmjs.org/package/@pob/sort-pkg)
 - [@pob/pretty-pkg](https://npmjs.org/package/@pob/pretty-pkg)
-- [@pob/pretty-eslint-config](https://npmjs.org/package/@pob/pretty-eslint-config)

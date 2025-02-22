@@ -90,7 +90,6 @@ module.exports = function createLintStagedConfig() {
       ].filter(Boolean);
     },
     "!(package|package-lock|.eslintrc).json": ["prettier --write"],
-    ".eslintrc.json": ["pretty-eslint-config"],
     [`{scripts,config,${srcDirectories}}/**/*.{yml,yaml,md}`]: [
       "prettier --write",
     ],
