@@ -3730,14 +3730,6 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/sort-eslint-config@npm:8.0.0, @pob/sort-eslint-config@workspace:@pob/sort-eslint-config":
-  version: 0.0.0-use.local
-  resolution: "@pob/sort-eslint-config@workspace:@pob/sort-eslint-config"
-  dependencies:
-    "@pob/sort-object": "npm:9.0.0"
-  languageName: unknown
-  linkType: soft
-
 "@pob/sort-object@npm:9.0.0, @pob/sort-object@workspace:@pob/sort-object":
   version: 0.0.0-use.local
   resolution: "@pob/sort-object@workspace:@pob/sort-object"
@@ -13534,7 +13526,6 @@ __metadata:
     "@pob/eslint-config-typescript": "npm:59.7.0"
     "@pob/eslint-config-typescript-react": "npm:59.7.0"
     "@pob/root": "npm:16.6.0"
-    "@pob/sort-eslint-config": "npm:8.0.0"
     "@pob/sort-object": "npm:9.0.0"
     "@pob/sort-pkg": "npm:11.0.0"
     "@prettier/sync": "npm:0.5.2"

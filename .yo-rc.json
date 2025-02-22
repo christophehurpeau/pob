@@ -20,7 +20,6 @@
         "example-typescript-lib-without-rollup",
         "repository-check-dirty",
         "@pob/rollup-esbuild",
-        "@pob/sort-eslint-config",
         "@pob/sort-pkg",
         "babel-preset-pob-env",
         "example-typescript-lib-esbuild",
