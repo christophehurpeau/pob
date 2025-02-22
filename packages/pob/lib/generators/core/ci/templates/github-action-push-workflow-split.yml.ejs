@@ -13,6 +13,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          check-latest: true
 
       - name: Enable Corepack
         run: corepack enable
@@ -42,6 +43,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          check-latest: true
 
       - name: Enable Corepack
         run: corepack enable
@@ -73,6 +75,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          check-latest: true
 
       - name: Enable Corepack
         run: corepack enable
@@ -109,6 +112,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+          check-latest: true
 
 <% if (packageManager === 'yarn') { -%>
       - name: Enable Corepack
@@ -166,6 +170,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
+          check-latest: true
 
       - name: Enable Corepack
         run: corepack enable
@@ -192,6 +197,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: 22
+          check-latest: true
 
       - uses: GoogleCloudPlatform/release-please-action@v3
         if: ${{ github.ref == 'refs/heads/main' }}
