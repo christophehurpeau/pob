@@ -24,27 +24,45 @@ const putJson = (url, jsonBody) =>
     },
   }).then((res) => (res.ok ? res.json() : null));
 
-const configureProtectionRule = async (owner, repo, onlyLatestLTS) => {
+const configureProtectionRule = async (
+  owner,
+  repo,
+  onlyLatestLTS,
+  spawnCommandSync,
+) => {
   if (!ciContexts || ciContexts.length === 0) {
     throw new Error("Invalid ciContexts: []");
   }
 
   for (const branch of ["main", "master"]) {
     try {
-      await putJson(`repos/${owner}/${repo}/branches/${branch}/protection`, {
-        required_status_checks: {
-          strict: false,
-          contexts: ciContexts,
-        },
-        enforce_admins: false, // true,
-        required_pull_request_reviews: null,
-        restrictions: null,
-        required_linear_history: true,
-        allow_force_pushes: true, // false
-        allow_deletions: false,
-      });
-      if (branch === "master") {
-        console.warn('You should rename your "master" branch to "main"');
+      const result = spawnCommandSync(
+        "git",
+        ["ls-remote", "--heads", `git@github.com:${owner}/${repo}.git`, branch],
+        { stdio: "pipe" },
+      );
+
+      const isBranchExists =
+        result.exitCode === 0 && result.stdout.toString().trim() !== "";
+
+      if (isBranchExists) {
+        await putJson(`repos/${owner}/${repo}/branches/${branch}/protection`, {
+          required_status_checks: {
+            strict: false,
+            contexts: ciContexts,
+          },
+          enforce_admins: false, // true,
+          required_pull_request_reviews: null,
+          restrictions: null,
+          required_linear_history: true,
+          allow_force_pushes: true, // false
+          allow_deletions: false,
+        });
+        if (branch === "master") {
+          console.warn('You should rename your "master" branch to "main"');
+        }
+      } else if (branch === "main") {
+        throw new Error(`Branch ${branch} does not exist`);
       }
     } catch (error) {
       if (branch === "main") {
@@ -167,7 +185,12 @@ export default class CoreGitGithubGenerator extends Generator {
           cwd,
         });
 
-        configureProtectionRule(owner, repo, this.options.onlyLatestLTS);
+        await configureProtectionRule(
+          owner,
+          repo,
+          this.options.onlyLatestLTS,
+          this.spawnCommandSync.bind(this),
+        );
 
         // await gh.put(`/repos/${owner}/${repo}/topics`, {
         //   names: pkg.keywords,
@@ -189,7 +212,12 @@ export default class CoreGitGithubGenerator extends Generator {
         ...githubRepoConfig,
       });
 
-      configureProtectionRule(owner, repo, this.options.onlyLatestLTS);
+      await configureProtectionRule(
+        owner,
+        repo,
+        this.options.onlyLatestLTS,
+        this.spawnCommandSync.bind(this),
+      );
     }
   }
 }
