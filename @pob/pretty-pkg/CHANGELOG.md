@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.2](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@12.0.1...@pob/pretty-pkg@12.0.2) (2025-03-14)
+
+Note: no notable changes
+
+
 ## [12.0.1](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@12.0.0...@pob/pretty-pkg@12.0.1) (2025-02-22)
 
 Version bump for dependency: @pob/sort-pkg

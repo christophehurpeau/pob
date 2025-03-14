@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.38.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild@0.37.0...example-typescript-lib-rollup-esbuild@0.38.0) (2025-03-14)
+
+### Features
+
+* upgrade typescript to version 5.8.2 ([b12f103](https://github.com/christophehurpeau/pob/commit/b12f103cdf8baf93b1a0023ea1a100fc77bdb76b))
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [0.37.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild@0.36.1...example-typescript-lib-rollup-esbuild@0.37.0) (2025-02-22)
 
 Version bump for dependency: @pob/rollup-esbuild

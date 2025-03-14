@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@6.3.0...@pob/rollup-esbuild@6.4.0) (2025-03-14)
+
+### Features
+
+* update @rollup/plugin-node-resolve to version 16.0.1 ([1eb5f6c](https://github.com/christophehurpeau/pob/commit/1eb5f6c16b417438a1e1297a84f51e7b42de3475))
+
 ## [6.3.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@6.2.0...@pob/rollup-esbuild@6.3.0) (2025-02-22)
 
 ### Features

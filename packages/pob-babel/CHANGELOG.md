@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [43.4.0](https://github.com/christophehurpeau/pob/compare/pob-babel@43.3.0...pob-babel@43.4.0) (2025-03-14)
+
+### Features
+
+* update @rollup/plugin-node-resolve to version 16.0.1 ([1eb5f6c](https://github.com/christophehurpeau/pob/commit/1eb5f6c16b417438a1e1297a84f51e7b42de3475))
+* upgrade typescript to version 5.8.2 ([b12f103](https://github.com/christophehurpeau/pob/commit/b12f103cdf8baf93b1a0023ea1a100fc77bdb76b))
+
+Version bump for dependency: babel-preset-pob-env
+
+
 ## [43.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@43.2.1...pob-babel@43.3.0) (2025-02-17)
 
 ### Features

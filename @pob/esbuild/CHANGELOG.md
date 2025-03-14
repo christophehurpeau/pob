@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.1](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@4.0.0...@pob/esbuild@4.0.1) (2025-03-14)
+
+Note: no notable changes
+
+
 ## 4.0.0 (2025-02-01)
 
 ### ⚠ BREAKING CHANGES

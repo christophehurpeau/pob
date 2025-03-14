@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.28.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.27.1...example-typescript-lib-without-rollup@0.28.0) (2025-03-14)
+
+### Features
+
+* upgrade typescript to version 5.8.2 ([b12f103](https://github.com/christophehurpeau/pob/commit/b12f103cdf8baf93b1a0023ea1a100fc77bdb76b))
+
 ## [0.27.1](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.27.0...example-typescript-lib-without-rollup@0.27.1) (2025-02-17)
 
 Note: no notable changes

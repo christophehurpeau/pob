@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.2.2](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@15.2.1...babel-preset-pob-env@15.2.2) (2025-03-14)
+
+Note: no notable changes
+
+
 ## [15.2.1](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@15.2.0...babel-preset-pob-env@15.2.1) (2025-02-17)
 
 Note: no notable changes

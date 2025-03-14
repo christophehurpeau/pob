@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.4.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@8.3.0...yarn-workspace-utils@8.4.0) (2025-03-14)
+
+### Features
+
+* upgrade typescript to version 5.8.2 ([b12f103](https://github.com/christophehurpeau/pob/commit/b12f103cdf8baf93b1a0023ea1a100fc77bdb76b))
+
+Version bump for dependency: pob-babel
+
+
 ## [8.3.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@8.2.1...yarn-workspace-utils@8.3.0) (2025-02-17)
 
 Version bump for dependency: pob-babel

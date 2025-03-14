@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.8.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@17.7.0...pob-dependencies@17.8.0) (2025-03-14)
+
+### Features
+
+* update swc ([329565a](https://github.com/christophehurpeau/pob/commit/329565a26c7d8b27d4c554479fd86b71b54c87d8))
+* upgrade typescript to version 5.8.2 ([b12f103](https://github.com/christophehurpeau/pob/commit/b12f103cdf8baf93b1a0023ea1a100fc77bdb76b))
+
+Version bump for dependency: @pob/commitlint-config
+Version bump for dependency: @pob/esbuild
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: pob-babel
+
+
 ## [17.7.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@17.6.0...pob-dependencies@17.7.0) (2025-02-22)
 
 Version bump for dependency: @pob/pretty-pkg
