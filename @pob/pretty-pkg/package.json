@@ -38,7 +38,7 @@
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
     "@pob/sort-pkg": "11.0.1",
-    "glob": "^11.0.0",
+    "glob": "^11.0.1",
     "prettier": "^3.5.3"
   }
 }
