@@ -61,6 +61,6 @@
     "esbuild": "0.25.1",
     "rollup": "4.33.0",
     "rollup-config-external-dependencies": "^3.0.1",
-    "rollup-plugin-esbuild": "6.2.0"
+    "rollup-plugin-esbuild": "6.2.1"
   }
 }

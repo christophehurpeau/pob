@@ -3702,7 +3702,7 @@ __metadata:
     esbuild: "npm:0.25.1"
     rollup: "npm:4.33.0"
     rollup-config-external-dependencies: "npm:^3.0.1"
-    rollup-plugin-esbuild: "npm:6.2.0"
+    rollup-plugin-esbuild: "npm:6.2.1"
   peerDependencies:
     rollup: 4.33.0
     typescript: ^4.0.3 || ^5.0.0
@@ -14528,18 +14528,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"rollup-plugin-esbuild@npm:6.2.0":
-  version: 6.2.0
-  resolution: "rollup-plugin-esbuild@npm:6.2.0"
+"rollup-plugin-esbuild@npm:6.2.1":
+  version: 6.2.1
+  resolution: "rollup-plugin-esbuild@npm:6.2.1"
   dependencies:
     debug: "npm:^4.4.0"
     es-module-lexer: "npm:^1.6.0"
     get-tsconfig: "npm:^4.10.0"
-    unplugin-utils: "npm:^0.2.3"
+    unplugin-utils: "npm:^0.2.4"
   peerDependencies:
     esbuild: ">=0.18.0"
     rollup: ^1.20.0 || ^2.0.0 || ^3.0.0 || ^4.0.0
-  checksum: 10c0/4d74f7de837ddf06b711361bfc7b5bcd532c7abc17df4016b8d08ed4cc0589ec8566ee62564e4b16b7c667b5117a88edafb622616d3c403e0a60816cd6a77133
+  checksum: 10c0/cbde8deb1926756b02ba6d5c4b400a54e8a7636669fb74f4350138091a31d58df8423cf7b2b16315a5118476d3789aca2942eab37c66adfeb7ec209bb61566cf
   languageName: node
   linkType: hard
 
@@ -16182,13 +16182,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"unplugin-utils@npm:^0.2.3":
-  version: 0.2.3
-  resolution: "unplugin-utils@npm:0.2.3"
+"unplugin-utils@npm:^0.2.4":
+  version: 0.2.4
+  resolution: "unplugin-utils@npm:0.2.4"
   dependencies:
     pathe: "npm:^2.0.2"
     picomatch: "npm:^4.0.2"
-  checksum: 10c0/be00170b71040f7e53d00eafd25dd2c8675948091bb6a2dd225b7d6c0cde15ecda55e19d389ecb8c5b53bd7c6af17ee82e8bf90afa1a66b0691b70d4a5426938
+  checksum: 10c0/b5ab2db37823f5b4c8ee8719caa4b5a50b2da33c74c8110d46deb7a2399dfa15cbcaa0cff62aa6400c76e778e42becd9195c09b6502c0c007d03610f432c875f
   languageName: node
   linkType: hard
 
