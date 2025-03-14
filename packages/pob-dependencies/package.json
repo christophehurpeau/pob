@@ -38,10 +38,10 @@
   "pob": {},
   "prettier": "@pob/root/prettier-config",
   "devDependencies": {
-    "@babel/core": "7.26.9",
+    "@babel/core": "7.26.10",
     "@babel/preset-env": "7.26.9",
     "@babel/preset-react": "7.26.3",
-    "@babel/runtime": "7.26.9",
+    "@babel/runtime": "7.26.10",
     "@playwright/test": "1.50.1",
     "@pob/commitlint-config": "9.1.1",
     "@pob/esbuild": "4.0.0",
