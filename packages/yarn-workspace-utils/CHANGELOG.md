@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.5.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@8.4.0...yarn-workspace-utils@8.5.0) (2025-03-15)
+
+### Features
+
+* **deps:** update yarn monorepo ([#2478](https://github.com/christophehurpeau/pob/issues/2478)) ([8b2de64](https://github.com/christophehurpeau/pob/commit/8b2de64cb6899a76ea716963911644a7b08182ae))
+
 ## [8.4.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@8.3.0...yarn-workspace-utils@8.4.0) (2025-03-14)
 
 ### Features

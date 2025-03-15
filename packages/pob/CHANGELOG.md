@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.11.0](https://github.com/christophehurpeau/pob/compare/pob@26.10.0...pob@26.11.0) (2025-03-15)
+
+### Features
+
+* **deps:** update yarn monorepo ([#2478](https://github.com/christophehurpeau/pob/issues/2478)) ([8b2de64](https://github.com/christophehurpeau/pob/commit/8b2de64cb6899a76ea716963911644a7b08182ae))
+* yarn 4.7 ([c9fcb63](https://github.com/christophehurpeau/pob/commit/c9fcb6322b8c14393c7632b501f2c48c80c308e9))
+
+### Bug Fixes
+
+* fix configure protection rule ([78c4ad3](https://github.com/christophehurpeau/pob/commit/78c4ad331cc820616246cc87374a27cdb0aecc8d))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [26.10.0](https://github.com/christophehurpeau/pob/compare/pob@26.9.0...pob@26.10.0) (2025-03-14)
 
 ### Features

@@ -3738,7 +3738,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/root@npm:16.8.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@npm:16.9.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -13683,7 +13683,7 @@ __metadata:
     "@pob/eslint-config": "npm:59.8.0"
     "@pob/eslint-config-typescript": "npm:59.8.0"
     "@pob/eslint-config-typescript-react": "npm:59.8.0"
-    "@pob/root": "npm:16.8.0"
+    "@pob/root": "npm:16.9.0"
     "@pob/sort-object": "npm:9.0.0"
     "@pob/sort-pkg": "npm:11.0.1"
     "@prettier/sync": "npm:0.5.2"
@@ -13710,7 +13710,7 @@ __metadata:
     semver: "npm:7.7.1"
     typescript: "npm:5.8.2"
     validate-npm-package-name: "npm:^6.0.0"
-    yarn-workspace-utils: "npm:8.4.0"
+    yarn-workspace-utils: "npm:8.5.0"
     yeoman-environment: "npm:4.4.3"
     yeoman-generator: "npm:7.5.0"
   bin:
@@ -16900,7 +16900,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"yarn-workspace-utils@npm:8.4.0, yarn-workspace-utils@workspace:packages/yarn-workspace-utils":
+"yarn-workspace-utils@npm:8.5.0, yarn-workspace-utils@workspace:packages/yarn-workspace-utils":
   version: 0.0.0-use.local
   resolution: "yarn-workspace-utils@workspace:packages/yarn-workspace-utils"
   dependencies:

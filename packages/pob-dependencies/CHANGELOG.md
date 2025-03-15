@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.8.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@17.8.0...pob-dependencies@17.8.1) (2025-03-15)
+
+Note: no notable changes
+
+
 ## [17.8.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@17.7.0...pob-dependencies@17.8.0) (2025-03-14)
 
 ### Features

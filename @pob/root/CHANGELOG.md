@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.9.0](https://github.com/christophehurpeau/pob/compare/@pob/root@16.8.0...@pob/root@16.9.0) (2025-03-15)
+
+### Features
+
+* yarn 4.7 ([c9fcb63](https://github.com/christophehurpeau/pob/commit/c9fcb6322b8c14393c7632b501f2c48c80c308e9))
+
 ## [16.8.0](https://github.com/christophehurpeau/pob/compare/@pob/root@16.7.0...@pob/root@16.8.0) (2025-03-14)
 
 Version bump for dependency: @pob/pretty-pkg
