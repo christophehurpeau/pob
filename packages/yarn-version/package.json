@@ -76,7 +76,7 @@
     "@pob/rollup-esbuild": "6.4.0",
     "@types/node": "22.13.10",
     "@types/npmcli__map-workspaces": "3.0.4",
-    "conventional-recommended-bump": "10.0.0",
+    "conventional-recommended-bump": "11.0.0",
     "nightingale-string": "15.0.0",
     "type-fest": "4.37.0",
     "typescript": "5.8.2"
