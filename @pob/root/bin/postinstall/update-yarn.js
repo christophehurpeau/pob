@@ -4,7 +4,7 @@ import semver from "semver";
 export default function updateYarn({ pkg, pm }) {
   if (pm.name !== "yarn" || !pm.version) return;
 
-  if (semver.lt(pm.version, "4.6.0")) {
+  if (semver.lt(pm.version, "4.7.0")) {
     // Upgrade from yarn 1
     if (semver.lt(pm.version, "2.0.0")) {
       console.log("-- Install yarn berry --");
