@@ -34,7 +34,6 @@ export default function createRollupConfig({
       [".ts", jsx && ".tsx", ".json"],
       env,
     ).filter(Boolean);
-    const preferConst = true;
 
     return {
       input: entryPath,
@@ -55,12 +54,24 @@ export default function createRollupConfig({
         format,
         sourcemap: true,
         exports: "named",
-        generatedCode: {
-          constBindings: preferConst,
-        },
+        generatedCode: { preset: "es2015" },
         externalLiveBindings: false,
         freeze: false,
       })),
+      onwarn(warning, warn) {
+        // throw on certain warnings
+        if (
+          warning.code === "NON_EXISTENT_EXPORT" ||
+          warning.code === "UNUSED_EXTERNAL_IMPORT" ||
+          warning.code === "UNRESOLVED_IMPORT"
+        ) {
+          throw new Error(warning.message);
+        }
+
+        // Use default for everything else
+        warn(warning);
+      },
+
       external: externalByPackageJson,
       plugins: [
         esbuild({

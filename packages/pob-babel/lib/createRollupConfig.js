@@ -108,7 +108,6 @@ export default function createRollupConfig({
         ? [".ts", jsx && ".tsx", ".json"]
         : [".js", jsx && ".jsx", ".json"]
     ).filter(Boolean);
-    const preferConst = true;
 
     return {
       input: entryPath,
@@ -129,9 +128,7 @@ export default function createRollupConfig({
         format,
         sourcemap: true,
         exports: "named",
-        generatedCode: {
-          constBindings: preferConst,
-        },
+        generatedCode: { preset: "es2015" },
         externalLiveBindings: false,
         freeze: false,
       })),
@@ -198,7 +195,7 @@ export default function createRollupConfig({
         }),
 
         json({
-          preferConst,
+          preferConst: true,
           compact: true,
           namedExports: true, // allow tree shaking
         }),
