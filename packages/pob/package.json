@@ -32,6 +32,8 @@
     "bin"
   ],
   "scripts": {
+    "build": "yarn run build:definitions",
+    "build:definitions": "tsc -p tsconfig.json",
     "format": "prettier --write",
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn ../.. run eslint --quiet packages/pob"
