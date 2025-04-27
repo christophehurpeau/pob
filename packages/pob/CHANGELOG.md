@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.0.0](https://github.com/christophehurpeau/pob/compare/pob@27.1.0...pob@28.0.0) (2025-04-27)
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update @pob/eslint-config to v60 (major) (#2501)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v60 (major) ([#2501](https://github.com/christophehurpeau/pob/issues/2501)) ([853ba41](https://github.com/christophehurpeau/pob/commit/853ba41a2d29036f45acba272f30ffb34ec99dd2))
+* **deps:** update dependency eslint to v9.25.1 ([#2500](https://github.com/christophehurpeau/pob/issues/2500)) ([8b4a0e2](https://github.com/christophehurpeau/pob/commit/8b4a0e25684355b89ade0186b2ad8fbea8726bc1))
+
+### Bug Fixes
+
+* **deps:** update dependency typescript to v5.8.3 ([#2497](https://github.com/christophehurpeau/pob/issues/2497)) ([3c7473b](https://github.com/christophehurpeau/pob/commit/3c7473bfce5df93a8686d9aaf290e5bc52d77032))
+* **pob:** only use tsconfig.test.json if tsTestUtil is ts-node ([ce24468](https://github.com/christophehurpeau/pob/commit/ce244681d8f4fe84da81aa48e07cc603d807b0c5))
+* **pob:** use @pob/rollup-esbuild in monorepo to avoid having wrong rollup version ([340edc0](https://github.com/christophehurpeau/pob/commit/340edc0ead936b731c719d7c23010ec63da0b732))
+
+Version bump for dependency: @pob/sort-object
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [27.1.0](https://github.com/christophehurpeau/pob/compare/pob@27.0.0...pob@27.1.0) (2025-04-27)
 
 ### Features

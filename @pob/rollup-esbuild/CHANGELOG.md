@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@6.4.2...@pob/rollup-esbuild@6.5.0) (2025-04-27)
+
+### Features
+
+* better rollup configuration for generatedCode using preset ([d03e893](https://github.com/christophehurpeau/pob/commit/d03e893afca3fabc107e2bf8739a054e06359a09))
+* **deps:** update dependency rollup to v4.40.0 ([#2419](https://github.com/christophehurpeau/pob/issues/2419)) ([03f789e](https://github.com/christophehurpeau/pob/commit/03f789ea8007bc8ffa162b18cf829d3f275e7d54))
+
+Version bump for dependency: @pob/rollup
+
+
 ## [6.4.2](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@6.4.1...@pob/rollup-esbuild@6.4.2) (2025-04-27)
 
 ### Bug Fixes

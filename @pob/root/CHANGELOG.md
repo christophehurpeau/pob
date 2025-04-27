@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@17.1.0...@pob/root@18.0.0) (2025-04-27)
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update @pob/eslint-config to v60 (major) (#2501)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v60 (major) ([#2501](https://github.com/christophehurpeau/pob/issues/2501)) ([853ba41](https://github.com/christophehurpeau/pob/commit/853ba41a2d29036f45acba272f30ffb34ec99dd2))
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: repository-check-dirty
+Version bump for dependency: yarn-version
+
+
 ## [17.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@17.0.0...@pob/root@17.1.0) (2025-04-27)
 
 ### Bug Fixes

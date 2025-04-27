@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [43.5.0](https://github.com/christophehurpeau/pob/compare/pob-babel@43.4.1...pob-babel@43.5.0) (2025-04-27)
+
+### Features
+
+* better rollup configuration for generatedCode using preset ([d03e893](https://github.com/christophehurpeau/pob/commit/d03e893afca3fabc107e2bf8739a054e06359a09))
+* **deps:** update dependency rollup to v4.40.0 ([#2419](https://github.com/christophehurpeau/pob/issues/2419)) ([03f789e](https://github.com/christophehurpeau/pob/commit/03f789ea8007bc8ffa162b18cf829d3f275e7d54))
+
+### Bug Fixes
+
+* **deps:** update dependency typescript to v5.8.3 ([#2497](https://github.com/christophehurpeau/pob/issues/2497)) ([3c7473b](https://github.com/christophehurpeau/pob/commit/3c7473bfce5df93a8686d9aaf290e5bc52d77032))
+
+Version bump for dependency: @pob/rollup
+Version bump for dependency: babel-preset-pob-env
+
+
 ## [43.4.1](https://github.com/christophehurpeau/pob/compare/pob-babel@43.4.0...pob-babel@43.4.1) (2025-04-27)
 
 Version bump for dependency: @pob/rollup

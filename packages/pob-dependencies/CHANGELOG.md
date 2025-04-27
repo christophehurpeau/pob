@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@18.1.0...pob-dependencies@19.0.0) (2025-04-27)
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update @pob/eslint-config to v60 (major) (#2501)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v60 (major) ([#2501](https://github.com/christophehurpeau/pob/issues/2501)) ([853ba41](https://github.com/christophehurpeau/pob/commit/853ba41a2d29036f45acba272f30ffb34ec99dd2))
+* **deps:** update dependency eslint to v9.25.1 ([#2500](https://github.com/christophehurpeau/pob/issues/2500)) ([8b4a0e2](https://github.com/christophehurpeau/pob/commit/8b4a0e25684355b89ade0186b2ad8fbea8726bc1))
+* **deps:** update dependency rollup to v4.40.0 ([#2419](https://github.com/christophehurpeau/pob/issues/2419)) ([03f789e](https://github.com/christophehurpeau/pob/commit/03f789ea8007bc8ffa162b18cf829d3f275e7d54))
+
+### Bug Fixes
+
+* **deps:** update dependency typescript to v5.8.3 ([#2497](https://github.com/christophehurpeau/pob/issues/2497)) ([3c7473b](https://github.com/christophehurpeau/pob/commit/3c7473bfce5df93a8686d9aaf290e5bc52d77032))
+
+Version bump for dependency: @pob/commitlint-config
+Version bump for dependency: @pob/esbuild
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: @pob/rollup-typescript
+Version bump for dependency: pob-babel
+Version bump for dependency: repository-check-dirty
+
+
 ## [18.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@18.0.0...pob-dependencies@18.1.0) (2025-04-27)
 
 ### Features

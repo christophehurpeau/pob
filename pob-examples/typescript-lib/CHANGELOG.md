@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.42.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.41.0...example-typescript-lib@0.42.0) (2025-04-27)
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update @pob/eslint-config to v60 (major) (#2501)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v60 (major) ([#2501](https://github.com/christophehurpeau/pob/issues/2501)) ([853ba41](https://github.com/christophehurpeau/pob/commit/853ba41a2d29036f45acba272f30ffb34ec99dd2))
+
+### Bug Fixes
+
+* **deps:** update dependency typescript to v5.8.3 ([#2497](https://github.com/christophehurpeau/pob/issues/2497)) ([3c7473b](https://github.com/christophehurpeau/pob/commit/3c7473bfce5df93a8686d9aaf290e5bc52d77032))
+
+Version bump for dependency: pob-babel
+
+
 ## [0.41.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.40.0...example-typescript-lib@0.41.0) (2025-04-27)
 
 ### Features
