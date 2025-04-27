@@ -7549,21 +7549,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"conventional-changelog-core@npm:8.0.0":
-  version: 8.0.0
-  resolution: "conventional-changelog-core@npm:8.0.0"
+"conventional-changelog-core@npm:9.0.0":
+  version: 9.0.0
+  resolution: "conventional-changelog-core@npm:9.0.0"
   dependencies:
     "@hutson/parse-repository-url": "npm:^5.0.0"
     add-stream: "npm:^1.0.0"
-    conventional-changelog-writer: "npm:^8.0.0"
-    conventional-commits-parser: "npm:^6.0.0"
+    conventional-changelog-writer: "npm:^8.0.1"
+    conventional-commits-parser: "npm:^6.1.0"
+    fd-package-json: "npm:^1.2.0"
     git-raw-commits: "npm:^5.0.0"
     git-semver-tags: "npm:^8.0.0"
-    hosted-git-info: "npm:^7.0.0"
-    normalize-package-data: "npm:^6.0.0"
-    read-package-up: "npm:^11.0.0"
-    read-pkg: "npm:^9.0.0"
-  checksum: 10c0/8e70459b4fde54be1cd2d8ce31302bbe19a2cf7b150236191a2ce6fb22d4992c2aee2e2ec088d0c945fd667cf3f04df47efe22cd6f858a3174bc5cb7d6b17df2
+    hosted-git-info: "npm:^8.0.0"
+    normalize-package-data: "npm:^7.0.0"
+  checksum: 10c0/d0d76bc69edb0cdd063a9f4cb567a27c0fab683b2755be0c2b2af191cfdf84501c7771f7cc49c5598f2d2c142188021b3f5b139ae23ba197aa234e8c4b91f4de
   languageName: node
   linkType: hard
 
@@ -7574,7 +7573,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"conventional-changelog-writer@npm:8.0.0, conventional-changelog-writer@npm:^8.0.0":
+"conventional-changelog-writer@npm:8.0.0":
   version: 8.0.0
   resolution: "conventional-changelog-writer@npm:8.0.0"
   dependencies:
@@ -7589,6 +7588,20 @@ __metadata:
   languageName: node
   linkType: hard
 
+"conventional-changelog-writer@npm:^8.0.1":
+  version: 8.0.1
+  resolution: "conventional-changelog-writer@npm:8.0.1"
+  dependencies:
+    conventional-commits-filter: "npm:^5.0.0"
+    handlebars: "npm:^4.7.7"
+    meow: "npm:^13.0.0"
+    semver: "npm:^7.5.2"
+  bin:
+    conventional-changelog-writer: dist/cli/index.js
+  checksum: 10c0/2cd1904f9dc37d1b1ad336fbab3bda8da2f939776adf8acb1bc056c3f7138b925f54bc7ec6bde02a7ac142c9f7e64792eb91a04ab9a22266e286bfc90326c28a
+  languageName: node
+  linkType: hard
+
 "conventional-commits-filter@npm:5.0.0, conventional-commits-filter@npm:^5.0.0":
   version: 5.0.0
   resolution: "conventional-commits-filter@npm:5.0.0"
@@ -7596,7 +7609,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"conventional-commits-parser@npm:6.1.0, conventional-commits-parser@npm:^6.0.0":
+"conventional-commits-parser@npm:6.1.0, conventional-commits-parser@npm:^6.0.0, conventional-commits-parser@npm:^6.1.0":
   version: 6.1.0
   resolution: "conventional-commits-parser@npm:6.1.0"
   dependencies:
@@ -9052,6 +9065,15 @@ __metadata:
   dependencies:
     bser: "npm:2.1.1"
   checksum: 10c0/feae89ac148adb8f6ae8ccd87632e62b13563e6fb114cacb5265c51f585b17e2e268084519fb2edd133872f1d47a18e6bfd7e5e08625c0d41b93149694187581
+  languageName: node
+  linkType: hard
+
+"fd-package-json@npm:^1.2.0":
+  version: 1.2.0
+  resolution: "fd-package-json@npm:1.2.0"
+  dependencies:
+    walk-up-path: "npm:^3.0.1"
+  checksum: 10c0/712a78a12bd8ec8482867b26bbcb2ff1dca9b096a416150c138e1512f1879c6d23dfb41b03b8e9226afc1e58a35df4738e9f9ae57032ff1dbbae75acfb70343b
   languageName: node
   linkType: hard
 
@@ -16900,7 +16922,7 @@ __metadata:
     "@types/npmcli__map-workspaces": "npm:3.0.4"
     commander: "npm:12.1.0"
     conventional-changelog-conventionalcommits: "npm:8.0.0"
-    conventional-changelog-core: "npm:8.0.0"
+    conventional-changelog-core: "npm:9.0.0"
     conventional-changelog-preset-loader: "npm:5.0.0"
     conventional-changelog-writer: "npm:8.0.0"
     conventional-commits-filter: "npm:5.0.0"
