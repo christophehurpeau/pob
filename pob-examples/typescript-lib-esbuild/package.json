@@ -46,6 +46,6 @@
   "prettier": "@pob/root/prettier-config",
   "devDependencies": {
     "@pob/esbuild": "4.0.3",
-    "typescript": "5.8.2"
+    "typescript": "5.8.3"
   }
 }
