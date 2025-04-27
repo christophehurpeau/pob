@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { program } from "commander";
 
-import "./commands/version";
+import "./commands/version.ts";
 
 // relative to dist directory
 const pkg = JSON.parse(

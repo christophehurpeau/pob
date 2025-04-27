@@ -1,8 +1,8 @@
 import { URL, fileURLToPath } from "node:url";
 import { Level } from "nightingale";
 import { StringHandler } from "nightingale-string";
-import type { VersionCommandOptions } from "./version";
-import { Defaults, versionCommandAction } from "./version";
+import type { VersionCommandOptions } from "./version.ts";
+import { Defaults, versionCommandAction } from "./version.ts";
 
 interface ExecuteCommandResult {
   exitCode: number;

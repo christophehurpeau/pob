@@ -6,21 +6,21 @@ import { Option, program } from "commander";
 import { Level, Logger, addConfig } from "nightingale";
 import { ConsoleHandler } from "nightingale-console";
 import { satisfies } from "semver";
-import { UsageError } from "../utils/UsageError";
-import type { BumpType } from "../utils/bumpTypeUtils";
+import { UsageError } from "../utils/UsageError.ts";
+import type { BumpType } from "../utils/bumpTypeUtils.ts";
 import {
   calcBumpRange,
   calcBumpType,
   getHighestBumpType,
   incrementVersion,
-} from "../utils/bumpTypeUtils";
+} from "../utils/bumpTypeUtils.ts";
 import {
   generateChangelog,
   recommendBump,
-} from "../utils/conventionalChangelogUtils";
-import { loadConventionalCommitConfig } from "../utils/conventionalCommitConfigUtils";
-import { execCommand } from "../utils/execCommand";
-import { asyncIterableToArray } from "../utils/generatorUtils";
+} from "../utils/conventionalChangelogUtils.ts";
+import { loadConventionalCommitConfig } from "../utils/conventionalCommitConfigUtils.ts";
+import { execCommand } from "../utils/execCommand.ts";
+import { asyncIterableToArray } from "../utils/generatorUtils.ts";
 import {
   createGitCommit,
   createGitTag,
@@ -28,31 +28,31 @@ import {
   getGitCurrentBranch,
   isBehindRemote,
   pushCommitsAndTags,
-} from "../utils/gitUtils";
+} from "../utils/gitUtils.ts";
 import {
   createGitHubClient,
   createGitRelease,
   parseGithubRepoUrl,
-} from "../utils/githubUtils";
+} from "../utils/githubUtils.ts";
 import {
   PackageDependencyDescriptorUtils,
   PackageDescriptorNameUtils,
-} from "../utils/packageDependenciesUtils";
-import type { PackageDependencyDescriptor } from "../utils/packageDependenciesUtils";
-import type { Workspace } from "../utils/packageUtils";
+} from "../utils/packageDependenciesUtils.ts";
+import type { PackageDependencyDescriptor } from "../utils/packageDependenciesUtils.ts";
+import type { Workspace } from "../utils/packageUtils.ts";
 import {
   createProjectWorkspace,
   createWorkspace,
   findRootWorkspace,
   writePkg,
-} from "../utils/packageUtils";
-import { updateChangelogFile } from "../utils/updateChangelog";
-import type { DependencyType } from "../utils/workspaceUtils";
+} from "../utils/packageUtils.ts";
+import { updateChangelogFile } from "../utils/updateChangelog.ts";
+import type { DependencyType } from "../utils/workspaceUtils.ts";
 import {
   buildDependenciesMaps,
   buildTopologicalOrderBatches,
   getWorkspaceName,
-} from "../utils/workspaceUtils";
+} from "../utils/workspaceUtils.ts";
 
 export interface VersionCommandOptions {
   cwd: string;

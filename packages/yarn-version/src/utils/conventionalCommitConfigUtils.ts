@@ -1,8 +1,8 @@
 // eslint-disable-next-line import/no-unresolved
 import { loadPreset } from "conventional-changelog-preset-loader";
 import type { Preset } from "conventional-recommended-bump";
-import { UsageError } from "./UsageError";
-import type { Workspace } from "./packageUtils";
+import { UsageError } from "./UsageError.ts";
+import type { Workspace } from "./packageUtils.ts";
 
 export type ConventionalChangelogConfig = Preset;
 

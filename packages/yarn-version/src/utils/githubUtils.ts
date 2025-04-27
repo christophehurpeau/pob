@@ -1,7 +1,7 @@
 // eslint-disable-next-line import/no-unresolved -- esm-only package which is not supported by import plugin.
 import { Octokit } from "@octokit/rest";
-import { UsageError } from "./UsageError";
-import type { Workspace } from "./packageUtils";
+import { UsageError } from "./UsageError.ts";
+import type { Workspace } from "./packageUtils.ts";
 
 export async function createGitHubClient(): Promise<Octokit> {
   const { GH_TOKEN, GHE_API_URL, GHE_VERSION } = process.env;
