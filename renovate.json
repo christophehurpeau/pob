@@ -75,6 +75,13 @@
         ":vertical_traffic_light: automerge"
       ],
       "schedule": ["at any time"]
+    },
+    {
+      "groupName": "conventional changelog",
+      "description": "conventional-changelog monorepo",
+      "sourceUrlPrefixes": [
+        "https://github.com/conventional-changelog/conventional-changelog"
+      ]
     }
   ]
 }
