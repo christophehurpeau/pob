@@ -5861,7 +5861,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yeoman/adapter@npm:^1.4.0, @yeoman/adapter@npm:^1.6.0":
+"@yeoman/adapter@npm:^1.4.0":
   version: 1.6.0
   resolution: "@yeoman/adapter@npm:1.6.0"
   dependencies:
@@ -5918,22 +5918,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yeoman/types@npm:1.5.0, @yeoman/types@npm:^1.1.1":
-  version: 1.5.0
-  resolution: "@yeoman/types@npm:1.5.0"
-  dependencies:
-    "@yeoman/adapter": "npm:^1.6.0"
+"@yeoman/types@npm:1.6.0, @yeoman/types@npm:^1.1.1":
+  version: 1.6.0
+  resolution: "@yeoman/types@npm:1.6.0"
   peerDependencies:
     "@types/node": ">=16.18.26"
-    "@yeoman/adapter": ^1.6.0
-    mem-fs: ^3.0.0
-    mem-fs-editor: ^10.0.2
+    "@yeoman/adapter": ^1.6.0 || ^2.0.0-beta.0
+    mem-fs: ^3.0.0 || ^4.0.0-beta.1
+    mem-fs-editor: ^10.0.2 || >=10.0.2
   peerDependenciesMeta:
+    "@yeoman/adapter":
+      optional: true
     mem-fs:
       optional: true
     mem-fs-editor:
       optional: true
-  checksum: 10c0/e99212ac848d03f405491aede6337f77070aff3de8f7a20daadb710ff1b005cfcb55206482bb336f5e4b434ceede8a25b007ba50e92a98fd013990f2ac296ac0
+  checksum: 10c0/87cf07103f2a5e3b9d460da1c00e0772834385b81cf1ffbc21be19ae73bd64e06b8c15904910ce9a6a110a8b52a6683db6b34ca8e2fce91afc342c9ebc9639f3
   languageName: node
   linkType: hard
 
@@ -13637,7 +13637,7 @@ __metadata:
     "@yarnpkg/cli": "npm:4.9.1"
     "@yarnpkg/core": "npm:4.4.1"
     "@yarnpkg/fslib": "npm:3.1.2"
-    "@yeoman/types": "npm:1.5.0"
+    "@yeoman/types": "npm:1.6.0"
     eslint: "npm:9.25.1"
     findup-sync: "npm:^5.0.0"
     git-remote-url: "npm:^1.0.1"

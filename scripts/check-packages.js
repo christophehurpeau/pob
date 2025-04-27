@@ -16,8 +16,7 @@ await createCheckPackageWithWorkspaces({
       },
       pob: {
         "@yeoman/types": {
-          invalidPeerDependencyVersion: ["mem-fs", "mem-fs-editor"],
-          missingPeerDependency: ["@types/node", "@yeoman/adapter"],
+          missingPeerDependency: ["@types/node"],
         },
       },
     },
