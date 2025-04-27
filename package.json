@@ -9,7 +9,7 @@
   "type": "module",
   "packageManager": "yarn@4.7.0",
   "engines": {
-    "node": ">=20.9.0"
+    "node": ">=20.11.0"
   },
   "workspaces": [
     "packages/*",

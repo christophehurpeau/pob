@@ -64,7 +64,7 @@ export default class CorePackageGenerator extends Generator {
       )
     ) {
       // this might be overridden by babel generator
-      pkg.engines.node = ">=20.9.0"; // .9.0 is the first lts node 20 version
+      pkg.engines.node = ">=20.11.0"; // .9.0 is the first lts node 20 version, 20.11.0 is the version with backported import.meta feature
     }
 
     if (!this.options.isRoot) {
