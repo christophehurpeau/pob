@@ -89,15 +89,19 @@ export default function createRollupConfig({
             moduleDirectories: ["src"], // don't resolve node_modules, but allow src (see baseUrl in tsconfig)
           },
         }),
-        ...(env.target === "browser"
-          ? [
+        ...(() => {
+          if (env.target === "browser") {
+            return [
               replace({
                 preventAssignment: true,
                 delimiters: ['"', '"'],
                 "react-native": '"react-native-web"',
               }),
-            ]
-          : []),
+            ];
+          }
+
+          return [];
+        })(),
 
         ...(typeof plugins === "function" ? plugins(env) : plugins),
       ].filter(Boolean),
