@@ -368,8 +368,8 @@ export default class CorePackageGenerator extends Generator {
         uninstallPostinstallScript("postinstall");
       }
     } else if (this.options.packageManager === "yarn") {
-      uninstallPostinstallScript("postinstall");
-      installPostinstallScript("postinstallDev");
+      uninstallPostinstallScript("postinstallDev");
+      installPostinstallScript("postinstall");
     } else {
       uninstallPostinstallScript("postinstallDev");
       installPostinstallScript("postinstall");

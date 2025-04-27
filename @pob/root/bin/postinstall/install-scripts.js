@@ -14,15 +14,8 @@ export default function installScripts({ pkg, pm }) {
   if (pkg.name === "pob-monorepo") return;
 
   if (pm.name === "yarn") {
-    if (pkg.private) {
-      delete pkg.scripts.postinstallDev;
-      addPobRootPostinstallInScript(pkg, "postinstall");
-    } else {
-      if (pkg.scripts.postinstall === "pob-root-postinstall") {
-        delete pkg.scripts.postinstall;
-      }
-      pkg.scripts.postinstallDev = "pob-root-postinstall";
-    }
+    delete pkg.scripts.postinstallDev;
+    addPobRootPostinstallInScript(pkg, "postinstall");
   } else {
     addPobRootPostinstallInScript(pkg, "prepare");
   }

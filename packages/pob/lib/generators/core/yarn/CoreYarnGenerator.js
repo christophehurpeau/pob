@@ -80,24 +80,24 @@ export default class CoreYarnGenerator extends Generator {
       const isPluginInstalled = (name) =>
         installedPlugins.some((plugin) => plugin.name === name);
 
-      const installPlugin = (nameOrUrl) => {
-        this.spawnSync("yarn", ["plugin", "import", nameOrUrl]);
-      };
+      // const installPlugin = (nameOrUrl) => {
+      //   this.spawnSync("yarn", ["plugin", "import", nameOrUrl]);
+      // };
       const removePlugin = (name) => {
         this.spawnSync("yarn", ["plugin", "remove", name]);
       };
 
-      const installPluginIfNotInstalled = (
-        name,
-        nameOrUrl = name,
-        forceInstallIfInstalled = () => false,
-      ) => {
-        if (!isPluginInstalled(name)) {
-          installPlugin(nameOrUrl);
-        } else if (forceInstallIfInstalled()) {
-          installPlugin(nameOrUrl);
-        }
-      };
+      // const installPluginIfNotInstalled = (
+      //   name,
+      //   nameOrUrl = name,
+      //   forceInstallIfInstalled = () => false,
+      // ) => {
+      //   if (!isPluginInstalled(name)) {
+      //     installPlugin(nameOrUrl);
+      //   } else if (forceInstallIfInstalled()) {
+      //     installPlugin(nameOrUrl);
+      //   }
+      // };
 
       const removePluginIfInstalled = (name) => {
         if (isPluginInstalled(name)) {
@@ -108,13 +108,20 @@ export default class CoreYarnGenerator extends Generator {
       const postinstallDevPluginName = "@yarnpkg/plugin-postinstall-dev";
       const legacyVersionPluginName = "@yarnpkg/plugin-conventional-version";
 
+      removePluginIfInstalled(postinstallDevPluginName);
       if (!inMonorepo && !pkg.private) {
-        installPluginIfNotInstalled(
-          postinstallDevPluginName,
-          "https://raw.githubusercontent.com/sachinraja/yarn-plugin-postinstall-dev/main/bundles/%40yarnpkg/plugin-postinstall-dev.js",
-        );
+        packageUtils.addDevDependencies(pkg, ["pinst"]);
+        packageUtils.addScripts(pkg, {
+          prepack: "pinst --disable",
+          postpack: "pinst --enable",
+        });
       } else {
-        removePluginIfInstalled(postinstallDevPluginName);
+        if (pkg.scripts.prepack === "pinst --disable") {
+          delete pkg.scripts.prepack;
+        }
+        if (pkg.scripts.postpack === "pinst --enable") {
+          delete pkg.scripts.postpack;
+        }
       }
 
       if (pkg.name !== "yarn-plugin-conventional-version") {
