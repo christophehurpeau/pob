@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.0.0](https://github.com/christophehurpeau/pob/compare/pob@26.11.0...pob@27.0.0) (2025-04-27)
+
+### ⚠ BREAKING CHANGES
+
+* remove postinstallDev plugin
+
+### Features
+
+* remove postinstallDev plugin ([a0ddde0](https://github.com/christophehurpeau/pob/commit/a0ddde0cbd970bf7e4b698f735b849ca5440607e))
+
+Version bump for dependency: @pob/root
+
+
 ## [26.11.0](https://github.com/christophehurpeau/pob/compare/pob@26.10.0...pob@26.11.0) (2025-03-15)
 
 ### Features

@@ -3421,7 +3421,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/esbuild@npm:4.0.1, @pob/esbuild@workspace:@pob/esbuild":
+"@pob/esbuild@npm:4.0.2, @pob/esbuild@workspace:@pob/esbuild":
   version: 0.0.0-use.local
   resolution: "@pob/esbuild@workspace:@pob/esbuild"
   dependencies:
@@ -3518,7 +3518,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/rollup-esbuild@npm:6.4.0, @pob/rollup-esbuild@workspace:@pob/rollup-esbuild":
+"@pob/rollup-esbuild@npm:6.4.1, @pob/rollup-esbuild@workspace:@pob/rollup-esbuild":
   version: 0.0.0-use.local
   resolution: "@pob/rollup-esbuild@workspace:@pob/rollup-esbuild"
   dependencies:
@@ -3565,7 +3565,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/root@npm:16.9.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@npm:17.0.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -3581,7 +3581,7 @@ __metadata:
     repository-check-dirty: "npm:10.0.0"
     semver: "npm:^7.3.7"
     which-pm-runs: "npm:1.1.0"
-    yarn-version: "npm:6.6.0"
+    yarn-version: "npm:6.6.1"
   bin:
     commitlint: ./bin/commitlint.js
     pob-root-lint-staged: ./bin/pob-root-lint-staged.js
@@ -8825,7 +8825,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-typescript-lib-esbuild@workspace:pob-examples/typescript-lib-esbuild"
   dependencies:
-    "@pob/esbuild": "npm:4.0.1"
+    "@pob/esbuild": "npm:4.0.2"
     typescript: "npm:5.8.2"
   languageName: unknown
   linkType: soft
@@ -8834,7 +8834,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-typescript-lib-rollup-esbuild@workspace:pob-examples/typescript-lib-rollup-esbuild"
   dependencies:
-    "@pob/rollup-esbuild": "npm:6.4.0"
+    "@pob/rollup-esbuild": "npm:6.4.1"
     typescript: "npm:5.8.2"
   languageName: unknown
   linkType: soft
@@ -13552,12 +13552,12 @@ __metadata:
     "@babel/runtime": "npm:7.26.10"
     "@playwright/test": "npm:1.51.1"
     "@pob/commitlint-config": "npm:9.1.2"
-    "@pob/esbuild": "npm:4.0.1"
+    "@pob/esbuild": "npm:4.0.2"
     "@pob/eslint-config": "npm:59.8.0"
     "@pob/eslint-config-typescript": "npm:59.8.0"
     "@pob/eslint-config-typescript-react": "npm:59.8.0"
     "@pob/pretty-pkg": "npm:12.0.2"
-    "@pob/rollup-esbuild": "npm:6.4.0"
+    "@pob/rollup-esbuild": "npm:6.4.1"
     "@pob/rollup-typescript": "npm:7.0.0"
     "@swc-node/register": "npm:1.10.10"
     "@swc/core": "npm:1.11.21"
@@ -13611,7 +13611,7 @@ __metadata:
     "@pob/eslint-config": "npm:59.8.0"
     "@pob/eslint-config-typescript": "npm:59.8.0"
     "@pob/eslint-config-typescript-react": "npm:59.8.0"
-    "@pob/root": "npm:16.9.0"
+    "@pob/root": "npm:17.0.0"
     "@pob/sort-object": "npm:9.0.0"
     "@pob/sort-pkg": "npm:11.0.1"
     "@prettier/sync": "npm:0.5.2"
@@ -16886,7 +16886,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yarn-version@npm:6.6.0, yarn-version@workspace:packages/yarn-version":
+"yarn-version@npm:6.6.1, yarn-version@workspace:packages/yarn-version":
   version: 0.0.0-use.local
   resolution: "yarn-version@workspace:packages/yarn-version"
   dependencies:
@@ -16894,7 +16894,7 @@ __metadata:
     "@npmcli/map-workspaces": "npm:4.0.2"
     "@octokit/rest": "npm:21.1.1"
     "@pob/pretty-pkg": "npm:12.0.2"
-    "@pob/rollup-esbuild": "npm:6.4.0"
+    "@pob/rollup-esbuild": "npm:6.4.1"
     "@types/node": "npm:22.13.10"
     "@types/npmcli__map-workspaces": "npm:3.0.4"
     commander: "npm:12.1.0"

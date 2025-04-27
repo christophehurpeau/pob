@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@17.8.1...pob-dependencies@18.0.0) (2025-04-27)
+
+### ⚠ BREAKING CHANGES
+
+* remove postinstallDev plugin
+
+### Features
+
+* remove postinstallDev plugin ([a0ddde0](https://github.com/christophehurpeau/pob/commit/a0ddde0cbd970bf7e4b698f735b849ca5440607e))
+
+Version bump for dependency: @pob/esbuild
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [17.8.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@17.8.0...pob-dependencies@17.8.1) (2025-03-15)
 
 Note: no notable changes

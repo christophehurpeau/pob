@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@16.9.0...@pob/root@17.0.0) (2025-04-27)
+
+### ⚠ BREAKING CHANGES
+
+* remove postinstallDev plugin
+
+### Features
+
+* remove postinstallDev plugin ([a0ddde0](https://github.com/christophehurpeau/pob/commit/a0ddde0cbd970bf7e4b698f735b849ca5440607e))
+
+Version bump for dependency: yarn-version
+
+
 ## [16.9.0](https://github.com/christophehurpeau/pob/compare/@pob/root@16.8.0...@pob/root@16.9.0) (2025-03-15)
 
 ### Features

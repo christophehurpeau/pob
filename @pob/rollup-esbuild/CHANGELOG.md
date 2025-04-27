@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.1](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@6.4.0...@pob/rollup-esbuild@6.4.1) (2025-04-27)
+
+Note: no notable changes
+
+
 ## [6.4.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@6.3.0...@pob/rollup-esbuild@6.4.0) (2025-03-14)
 
 ### Features
