@@ -386,6 +386,13 @@ export default class PobMonorepoGenerator extends Generator {
           (rollupKinds.size === 0 || rollupKinds.has("babel")),
         ["@babel/core", "pob-babel"],
       );
+
+      packageUtils.addOrRemoveDevDependencies(pkg, rollupKinds.has("esbuild"), [
+        "@pob/rollup-esbuild",
+      ]);
+      if (rollupKinds.has("esbuild")) {
+        packageUtils.removeDevDependencies(pkg, ["rollup"]);
+      }
       this.fs.writeJSON(this.destinationPath("package.json"), pkg);
     }
 
