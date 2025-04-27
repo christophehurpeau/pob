@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.0.2](https://github.com/christophehurpeau/pob/compare/@pob/root@18.0.1...@pob/root@18.0.2) (2025-04-27)
+
+### Bug Fixes
+
+* **tsconfig:** update moduleResolution to 'bundler' for base-bundler ([3f8a873](https://github.com/christophehurpeau/pob/commit/3f8a8733c98b4a4f2ce39bcdddc2a180f3ba1c19))
+
 ## [18.0.1](https://github.com/christophehurpeau/pob/compare/@pob/root@18.0.0...@pob/root@18.0.1) (2025-04-27)
 
 Version bump for dependency: yarn-version
