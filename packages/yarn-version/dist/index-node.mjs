@@ -23,7 +23,7 @@ class UsageError extends Error {
 
 function getMapArrayItemForKey(map, key) {
   let value = map.get(key);
-  if (value === undefined) {
+  if (value === void 0) {
     map.set(key, value = []);
   }
   return value;
@@ -41,7 +41,7 @@ const PackageDescriptorNameUtils = {
     return { name: value };
   },
   stringify: (descriptor) => {
-    return descriptor.scope === undefined ? descriptor.name : `@${descriptor.scope}/${descriptor.name}`;
+    return descriptor.scope === void 0 ? descriptor.name : `@${descriptor.scope}/${descriptor.name}`;
   }
 };
 const PackageDependencyDescriptorUtils = {
@@ -270,7 +270,7 @@ async function execvp(command, args, {
 }) {
   const stdoutChunks = [];
   const stderrChunks = [];
-  if (env.PWD !== undefined) {
+  if (env.PWD !== void 0) {
     env = { ...env, PWD: cwd };
   }
   const subprocess = childProcess.spawn(command, args, {
@@ -292,7 +292,7 @@ async function execvp(command, args, {
       const chunksToString = (chunks) => stdo === "inherit" ? "" : Buffer.concat(chunks).toString(encoding ?? "utf8");
       const stdout = chunksToString(stdoutChunks);
       const stderr = chunksToString(stderrChunks);
-      if (code === 0 || !strict) {
+      if (code === 0 || false) {
         resolve({
           code,
           signal,
@@ -313,7 +313,7 @@ stderr: ${stderr.toString()}`
 }
 const execCommand = (workspace, commandAndArgs = [], stdo = "pipe") => {
   const [command, ...args] = commandAndArgs;
-  if (command === undefined) {
+  if (command === void 0) {
     throw new Error("Command is required");
   }
   return execvp(command, args, {
@@ -481,7 +481,7 @@ const createWorkspace = async (path2) => {
   const pkg = await readPkg(path2);
   return { cwd: path2, pkg };
 };
-async function writePkg(workspace, prettierOptions = undefined) {
+async function writePkg(workspace, prettierOptions = void 0) {
   const string = await prettyPkg(workspace.pkg, prettierOptions);
   await fs.writeFile(getPackageJsonPath(workspace.cwd), string, "utf8");
 }
@@ -561,7 +561,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
   let rootNewTag = "";
   const isMonorepo = rootWorkspaceChildren.length > 0;
   const isMonorepoVersionIndependent = isMonorepo && !rootWorkspace.pkg.version;
-  const workspaces = [rootWorkspace, ...rootWorkspaceChildren] ;
+  const workspaces = !(isMonorepo && !rootWorkspaceChildren) || options.includesRoot ? [rootWorkspace, ...rootWorkspaceChildren] : rootWorkspaceChildren;
   if (options.prerelease) {
     throw new UsageError("--prerelease is not supported yet.");
   }
@@ -577,8 +577,8 @@ There are uncommitted changes in the git repository. Please commit or stash them
   ] = await Promise.all([
     loadConventionalCommitConfig(rootWorkspace, options.preset),
     // create client early to fail fast if necessary
-    options.createRelease ? createGitHubClient() : undefined,
-    options.createRelease ? parseGithubRepoUrl(rootWorkspace) : undefined,
+    options.createRelease ? createGitHubClient() : void 0,
+    options.createRelease ? parseGithubRepoUrl(rootWorkspace) : void 0,
     getGitCurrentBranch(rootWorkspace)
   ]);
   const rootPreviousVersionTagPromise = options.force ? null : conventionalGitClient.getLastSemverTag({
@@ -621,7 +621,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
   const previousTagByWorkspace = new Map(
     await Promise.all(
       bumpableWorkspaces.map(async ({ workspace, workspaceName, isRoot }) => {
-        const packageOption = isMonorepo && isMonorepoVersionIndependent ? workspaceName : undefined;
+        const packageOption = isMonorepo && isMonorepoVersionIndependent ? workspaceName : void 0;
         const previousVersionTagPrefix = packageOption ? `${packageOption}@` : options.tagVersionPrefix;
         const previousTagAndVersion = await (isRoot || !isMonorepoVersionIndependent ? rootPreviousVersionTagPromise : conventionalGitClient.getLastSemverTag({
           prefix: previousVersionTagPrefix,
@@ -643,7 +643,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
       )
     });
   }
-  const commitsByWorkspace = options.force ? undefined : new Map(
+  const commitsByWorkspace = options.force ? void 0 : new Map(
     await Promise.all(
       bumpableWorkspaces.map(async ({ workspace }) => {
         const previousTag = previousTagByWorkspace.get(workspace);
@@ -657,7 +657,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
             conventionalGitClient.getCommits(
               {
                 path: workspaceRelativePath,
-                from: previousTag || undefined
+                from: previousTag || void 0
               },
               conventionalCommitConfig.parser
             )
@@ -803,7 +803,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
             bumpForDependenciesReasons: changedWorkspace ? bumpReasons.slice(1) : bumpReasons,
             newVersion,
             newTag: tagName,
-            hasChanged: changedWorkspace !== undefined,
+            hasChanged: changedWorkspace !== void 0,
             dependenciesToBump
           });
           logger.info(
@@ -918,7 +918,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
         workspace,
         { newTag, hasChanged, bumpReason, bumpForDependenciesReasons }
       ]) => {
-        const workspaceRelativePath = rootWorkspace === workspace ? undefined : path.relative(rootWorkspace.cwd, workspace.cwd);
+        const workspaceRelativePath = rootWorkspace === workspace ? void 0 : path.relative(rootWorkspace.cwd, workspace.cwd);
         let changelog = await generateChangelog(
           rootWorkspace,
           workspace.pkg,
@@ -926,10 +926,10 @@ There are uncommitted changes in the git repository. Please commit or stash them
           isMonorepoVersionIndependent ? newTag : rootNewTag,
           {
             path: workspaceRelativePath,
-            previousTag: previousTagByWorkspace.get(workspace) || undefined,
+            previousTag: previousTagByWorkspace.get(workspace) || void 0,
             verbose: options.verbose,
             tagPrefix: options.tagVersionPrefix,
-            lernaPackage: rootWorkspace === workspace ? undefined : getWorkspaceName(workspace)
+            lernaPackage: rootWorkspace === workspace ? void 0 : getWorkspaceName(workspace)
           }
         );
         if (bumpForDependenciesReasons && workspace !== rootWorkspace) {
@@ -1008,7 +1008,7 @@ ${tagsInCommitMessage}` : rootNewVersion
       logger.info("Create git release");
       await Promise.all(
         [...bumpedWorkspaces.entries()].map(([workspace, { newTag }]) => {
-          if (newTag === null) return undefined;
+          if (newTag === null) return void 0;
           const changelog = changelogs.get(workspace);
           if (!changelog) {
             logger.warn(
@@ -1016,7 +1016,7 @@ ${tagsInCommitMessage}` : rootNewVersion
                 workspace
               )}`
             );
-            return undefined;
+            return void 0;
           }
           return createGitRelease(
             githubClient,
@@ -1037,12 +1037,9 @@ const Defaults = {
   cwd: process.cwd(),
   includesRoot: false,
   dryRun: false,
-  json: false,
-  preset: "conventional-changelog-conventionalcommits",
   tagVersionPrefix: "v",
   changelog: "CHANGELOG.md",
   commitMessage: "chore: release %a",
-  createRelease: false,
   bumpDependentsHighestAs: "major",
   alwaysBumpPeerDependencies: false,
   gitRemote: "origin",
