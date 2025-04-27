@@ -48,7 +48,9 @@ export default function installGithubWorkflows({ pkg, pm }) {
     ensureWorkflowUninstalled("push-renovate-typedoc");
     if (
       pkg.devDependencies &&
-      pkg.devDependencies.rollup &&
+      (pkg.devDependencies.rollup ||
+        pkg.devDependencies["@pob/rollup-esbuild"] ||
+        pkg.devDependencies["@pob/rollup-typescript"]) &&
       pkg.scripts?.build
     ) {
       installWorkflow("push-renovate-build", pmCommands);
