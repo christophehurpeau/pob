@@ -3385,7 +3385,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob-example/next-app@workspace:pob-examples/next-app"
   dependencies:
-    "@types/node": "npm:22.13.10"
+    "@types/node": "npm:22.15.2"
     "@types/react": "npm:18.3.18"
     "@types/react-dom": "npm:18.3.5"
     next: "npm:15.2.4"
@@ -3406,7 +3406,7 @@ __metadata:
   resolution: "@pob/codemods@workspace:@pob/codemods"
   dependencies:
     "@types/jscodeshift": "npm:0.12.0"
-    glob: "npm:11.0.1"
+    "@types/node": "npm:22.15.2"
     jscodeshift: "npm:17.1.2"
   bin:
     pob-migrate: ./bin/migrate.mjs
@@ -3511,7 +3511,6 @@ __metadata:
   resolution: "@pob/pretty-pkg@workspace:@pob/pretty-pkg"
   dependencies:
     "@pob/sort-pkg": "npm:11.0.1"
-    glob: "npm:^11.0.1"
     prettier: "npm:^3.5.3"
   bin:
     pretty-pkg: ./bin/pretty-pkg.js
@@ -4642,12 +4641,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:22.13.10, @types/node@npm:>=16.18.31, @types/node@npm:>=18, @types/node@npm:>=18.0.0":
-  version: 22.13.10
-  resolution: "@types/node@npm:22.13.10"
+"@types/node@npm:*, @types/node@npm:22.15.2, @types/node@npm:>=16.18.31, @types/node@npm:>=18, @types/node@npm:>=18.0.0":
+  version: 22.15.2
+  resolution: "@types/node@npm:22.15.2"
   dependencies:
-    undici-types: "npm:~6.20.0"
-  checksum: 10c0/a3865f9503d6f718002374f7b87efaadfae62faa499c1a33b12c527cfb9fd86f733e1a1b026b80c5a0e4a965701174bc3305595a7d36078aa1abcf09daa5dee9
+    undici-types: "npm:~6.21.0"
+  checksum: 10c0/39da31d5fc63b14fabd217bb8a921c4a7fc3d99f233440209f9fc2d5d736e8773f7efc65223e2fd0e8db8390b0baab9c0cd2e951c2ece8b237f07313ab3cf295
   languageName: node
   linkType: hard
 
@@ -8854,7 +8853,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:7.26.10"
     "@babel/preset-env": "npm:7.26.9"
-    "@types/node": "npm:22.13.10"
+    "@types/node": "npm:22.15.2"
     pob-babel: "npm:43.4.0"
     typescript: "npm:5.8.2"
   languageName: unknown
@@ -9571,22 +9570,6 @@ __metadata:
   version: 0.4.1
   resolution: "glob-to-regexp@npm:0.4.1"
   checksum: 10c0/0486925072d7a916f052842772b61c3e86247f0a80cc0deb9b5a3e8a1a9faad5b04fb6f58986a09f34d3e96cd2a22a24b7e9882fb1cf904c31e9a310de96c429
-  languageName: node
-  linkType: hard
-
-"glob@npm:11.0.1, glob@npm:^11.0.1":
-  version: 11.0.1
-  resolution: "glob@npm:11.0.1"
-  dependencies:
-    foreground-child: "npm:^3.1.0"
-    jackspeak: "npm:^4.0.1"
-    minimatch: "npm:^10.0.0"
-    minipass: "npm:^7.1.2"
-    package-json-from-dist: "npm:^1.0.0"
-    path-scurry: "npm:^2.0.0"
-  bin:
-    glob: dist/esm/bin.mjs
-  checksum: 10c0/2b32588be52e9e90f914c7d8dec32f3144b81b84054b0f70e9adfebf37cd7014570489f2a79d21f7801b9a4bd4cca94f426966bfd00fb64a5b705cfe10da3a03
   languageName: node
   linkType: hard
 
@@ -10809,15 +10792,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jackspeak@npm:^4.0.1":
-  version: 4.0.2
-  resolution: "jackspeak@npm:4.0.2"
-  dependencies:
-    "@isaacs/cliui": "npm:^8.0.2"
-  checksum: 10c0/b26039d11c0163a95b1e58851b9ac453cce64ad6d1eb98a00b303ad5eeb761b29d33c9419d1e16c016d3f7151c8edf7df223e6cf93a1907655fd95d6ce85c0de
-  languageName: node
-  linkType: hard
-
 "jake@npm:^10.8.5":
   version: 10.9.2
   resolution: "jake@npm:10.9.2"
@@ -11863,13 +11837,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lru-cache@npm:^11.0.0":
-  version: 11.0.2
-  resolution: "lru-cache@npm:11.0.2"
-  checksum: 10c0/c993b8e06ead0b24b969c1dbb5b301716aed66e320e9014a80012f5febe280b438f28ff50046b2c55ff404e889351ccb332ff91f8dd175a21f5eae80e3fb155f
-  languageName: node
-  linkType: hard
-
 "lru-cache@npm:^5.1.1":
   version: 5.1.1
   resolution: "lru-cache@npm:5.1.1"
@@ -12151,15 +12118,6 @@ __metadata:
   version: 1.0.1
   resolution: "min-indent@npm:1.0.1"
   checksum: 10c0/7e207bd5c20401b292de291f02913230cb1163abca162044f7db1d951fa245b174dc00869d40dd9a9f32a885ad6a5f3e767ee104cf278f399cb4e92d3f582d5c
-  languageName: node
-  linkType: hard
-
-"minimatch@npm:^10.0.0":
-  version: 10.0.1
-  resolution: "minimatch@npm:10.0.1"
-  dependencies:
-    brace-expansion: "npm:^2.0.1"
-  checksum: 10c0/e6c29a81fe83e1877ad51348306be2e8aeca18c88fdee7a99df44322314279e15799e41d7cb274e4e8bb0b451a3bc622d6182e157dfa1717d6cda75e9cd8cd5d
   languageName: node
   linkType: hard
 
@@ -13373,16 +13331,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"path-scurry@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "path-scurry@npm:2.0.0"
-  dependencies:
-    lru-cache: "npm:^11.0.0"
-    minipass: "npm:^7.1.2"
-  checksum: 10c0/3da4adedaa8e7ef8d6dc4f35a0ff8f05a9b4d8365f2b28047752b62d4c1ad73eec21e37b1579ef2d075920157856a3b52ae8309c480a6f1a8bbe06ff8e52b33c
-  languageName: node
-  linkType: hard
-
 "path-type@npm:^4.0.0":
   version: 4.0.0
   resolution: "path-type@npm:4.0.0"
@@ -13563,7 +13511,7 @@ __metadata:
     "@swc/core": "npm:1.11.22"
     "@swc/jest": "npm:0.2.38"
     "@types/jest": "npm:29.5.14"
-    "@types/node": "npm:22.13.10"
+    "@types/node": "npm:22.15.2"
     "@vitest/coverage-v8": "npm:3.1.2"
     alp-rollup-plugin-config: "npm:2.2.1"
     check-package-dependencies: "npm:10.1.0"
@@ -13616,7 +13564,7 @@ __metadata:
     "@pob/sort-pkg": "npm:11.0.1"
     "@prettier/sync": "npm:0.5.5"
     "@types/inquirer": "npm:9.0.7"
-    "@types/node": "npm:22.13.10"
+    "@types/node": "npm:22.15.2"
     "@yarnpkg/cli": "npm:4.7.0"
     "@yarnpkg/core": "npm:4.2.1"
     "@yarnpkg/fslib": "npm:3.1.2"
@@ -16100,10 +16048,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"undici-types@npm:~6.20.0":
-  version: 6.20.0
-  resolution: "undici-types@npm:6.20.0"
-  checksum: 10c0/68e659a98898d6a836a9a59e6adf14a5d799707f5ea629433e025ac90d239f75e408e2e5ff086afc3cace26f8b26ee52155293564593fbb4a2f666af57fc59bf
+"undici-types@npm:~6.21.0":
+  version: 6.21.0
+  resolution: "undici-types@npm:6.21.0"
+  checksum: 10c0/c01ed51829b10aa72fc3ce64b747f8e74ae9b60eafa19a7b46ef624403508a54c526ffab06a14a26b3120d055e1104d7abe7c9017e83ced038ea5cf52f8d5e04
   languageName: node
   linkType: hard
 
@@ -16896,7 +16844,7 @@ __metadata:
     "@octokit/rest": "npm:21.1.1"
     "@pob/pretty-pkg": "npm:12.0.2"
     "@pob/rollup-esbuild": "npm:6.4.1"
-    "@types/node": "npm:22.13.10"
+    "@types/node": "npm:22.15.2"
     "@types/npmcli__map-workspaces": "npm:3.0.4"
     commander: "npm:13.1.0"
     conventional-changelog-conventionalcommits: "npm:8.0.0"

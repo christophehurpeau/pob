@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
 import fs from "node:fs";
+// eslint-disable-next-line n/no-unsupported-features/node-builtins
+import { glob } from "node:fs/promises";
 import path from "node:path";
-import { glob } from "glob";
 import { override, write } from "../lib/index.js";
 
 const packageJsonPathnames = process.argv.slice(2);
@@ -29,7 +30,7 @@ if (packageJsonPathnames.length > 0) {
         ignore: ["**/node_modules/**"],
       });
 
-      for (const match of matches) {
+      for await (const match of matches) {
         const packageJsonPathname = path.join(match, "package.json");
         if (fs.existsSync(packageJsonPathname)) {
           promises.push(override(packageJsonPathname));

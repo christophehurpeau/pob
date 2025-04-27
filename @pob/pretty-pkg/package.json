@@ -13,7 +13,7 @@
   "homepage": "https://github.com/christophehurpeau/pob",
   "type": "module",
   "engines": {
-    "node": ">=20.11.0"
+    "node": ">=22.14.0"
   },
   "sideEffects": false,
   "bin": "./bin/pretty-pkg.js",
@@ -38,7 +38,6 @@
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
     "@pob/sort-pkg": "11.0.1",
-    "glob": "^11.0.1",
     "prettier": "^3.5.3"
   }
 }

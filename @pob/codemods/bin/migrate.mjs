@@ -1,8 +1,9 @@
 #!/usr/bin/env node
 
 import { readdirSync } from "node:fs";
+// eslint-disable-next-line n/no-unsupported-features/node-builtins
+import { glob } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
-import { glob } from "glob";
 import runJscodeshift from "../lib/runJscodeshift.cjs";
 
 const argv = process.argv.slice(2);
@@ -24,7 +25,7 @@ if (!transformerName || !globPaths) {
 const transformPath = fileURLToPath(
   new URL(`../lib/transforms/${transformerName}.cjs`, import.meta.url),
 );
-const paths = glob.sync(globPaths);
+const paths = await Array.fromAsync(glob(globPaths));
 
 if (paths.length === 0) {
   throw new Error(`No files found matching ${globPaths}`);

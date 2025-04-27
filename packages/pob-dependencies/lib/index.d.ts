@@ -16,7 +16,7 @@ interface Dependencies {
   "@swc/core": "1.11.21";
   "@swc/jest": "0.2.37";
   "@types/jest": "29.5.14";
-  "@types/node": "22.13.10";
+  "@types/node": "22.15.2";
   "@vitest/coverage-v8": "3.0.8";
   "alp-rollup-plugin-config": "2.2.1";
   "check-package-dependencies": "10.1.0";
