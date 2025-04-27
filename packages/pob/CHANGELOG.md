@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.1.0](https://github.com/christophehurpeau/pob/compare/pob@28.0.0...pob@28.1.0) (2025-04-27)
+
+### Features
+
+* **deps:** update dependency @yeoman/types to v1.6.0 ([#2506](https://github.com/christophehurpeau/pob/issues/2506)) ([cb74360](https://github.com/christophehurpeau/pob/commit/cb743603418a9854930b7d0a57ff36655f2e3b6d))
+* **deps:** update yarn monorepo ([#2508](https://github.com/christophehurpeau/pob/issues/2508)) ([c2b37b6](https://github.com/christophehurpeau/pob/commit/c2b37b6b5422fa39c224043cb863217bc83a1c05))
+
+### Bug Fixes
+
+* **deps:** update dependency yeoman-generator to v7.5.1 ([#2502](https://github.com/christophehurpeau/pob/issues/2502)) ([a09c1a0](https://github.com/christophehurpeau/pob/commit/a09c1a0b53258a720789f8d3774fc4c0a10ba32b))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [28.0.0](https://github.com/christophehurpeau/pob/compare/pob@27.1.0...pob@28.0.0) (2025-04-27)
 
 ### ⚠ BREAKING CHANGES

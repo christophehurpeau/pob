@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.0.1](https://github.com/christophehurpeau/pob/compare/@pob/root@18.0.0...@pob/root@18.0.1) (2025-04-27)
+
+Version bump for dependency: yarn-version
+
+
 ## [18.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@17.1.0...@pob/root@18.0.0) (2025-04-27)
 
 ### ⚠ BREAKING CHANGES

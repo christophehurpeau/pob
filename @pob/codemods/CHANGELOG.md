@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.9.0](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.8.0...@pob/codemods@0.9.0) (2025-04-27)
+
+### Features
+
+* **deps:** update dependency jscodeshift to v17.3.0 ([#2509](https://github.com/christophehurpeau/pob/issues/2509)) ([19d1848](https://github.com/christophehurpeau/pob/commit/19d1848160aaa6c20af854d39114b9883a5de39c))
+
 ## [0.8.0](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.7.0...@pob/codemods@0.8.0) (2025-04-27)
 
 ### Features

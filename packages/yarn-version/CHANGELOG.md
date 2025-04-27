@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/christophehurpeau/pob/compare/yarn-version@7.0.0...yarn-version@7.0.1) (2025-04-27)
+
+Note: no notable changes
+
+
 ## [7.0.0](https://github.com/christophehurpeau/pob/compare/yarn-version@6.7.0...yarn-version@7.0.0) (2025-04-27)
 
 ### ⚠ BREAKING CHANGES

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.0](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.12.1...@pob-example/next-app@0.13.0) (2025-04-27)
+
+### Features
+
+* **deps:** update dependency next to v15.3.1 ([#2507](https://github.com/christophehurpeau/pob/issues/2507)) ([f1a0368](https://github.com/christophehurpeau/pob/commit/f1a03685ea7c618ec3ea9a22b675e891dccd63e1))
+
 ## [0.12.1](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.12.0...@pob-example/next-app@0.12.1) (2025-04-27)
 
 ### Bug Fixes
