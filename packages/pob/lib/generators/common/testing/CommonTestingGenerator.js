@@ -491,7 +491,7 @@ export default class CommonTestingGenerator extends Generator {
           }
         } else {
           const tsconfigTestPath = this.destinationPath("tsconfig.test.json");
-          if (testRunner === "node" && withTypescript) {
+          if (tsTestUtil === "ts-node" && withTypescript) {
             const nodeVersion = this.options.onlyLatestLTS
               ? `${latestLTS}`
               : `${maintenanceLTS}`;
