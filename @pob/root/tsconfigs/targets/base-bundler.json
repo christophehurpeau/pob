@@ -4,8 +4,8 @@
 
   "compilerOptions": {
     "importHelpers": true,
-    "module": "esnext",
-    "moduleResolution": "bundler",
+    "module": "node18",
+    "moduleResolution": "node16",
     "moduleDetection": "force",
     "allowImportingTsExtensions": true,
     "esModuleInterop": true

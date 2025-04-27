@@ -4,8 +4,8 @@ import conventionalChangelogCore from "conventional-changelog-core";
 import type { Commit } from "conventional-commits-parser";
 import type { BumperRecommendation } from "conventional-recommended-bump";
 import type { PackageJson } from "type-fest";
-import type { ConventionalChangelogConfig } from "./conventionalCommitConfigUtils";
-import type { Workspace } from "./packageUtils";
+import type { ConventionalChangelogConfig } from "./conventionalCommitConfigUtils.ts";
+import type { Workspace } from "./packageUtils.ts";
 
 const versions: BumperRecommendation["releaseType"][] = [
   "major",

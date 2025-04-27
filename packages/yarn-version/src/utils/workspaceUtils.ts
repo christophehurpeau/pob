@@ -1,12 +1,12 @@
 /* eslint-disable complexity */
 import path from "node:path";
-import { getMapArrayItemForKey } from "./mapUtils";
-import type { PackageDependencyDescriptor } from "./packageDependenciesUtils";
+import { getMapArrayItemForKey } from "./mapUtils.ts";
+import type { PackageDependencyDescriptor } from "./packageDependenciesUtils.ts";
 import {
   PackageDependencyDescriptorUtils,
   PackageDescriptorNameUtils,
-} from "./packageDependenciesUtils";
-import type { ProjectWorkspace, Workspace } from "./packageUtils";
+} from "./packageDependenciesUtils.ts";
+import type { ProjectWorkspace, Workspace } from "./packageUtils.ts";
 
 const allDependenciesTypes = [
   "dependencies",

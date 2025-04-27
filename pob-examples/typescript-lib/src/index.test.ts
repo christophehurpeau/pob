@@ -1,5 +1,5 @@
 import * as fs from "node:fs";
-import simpleLib from ".";
+import simpleLib from "./index.ts";
 
 describe("index", () => {
   it("should return hello world", () => {

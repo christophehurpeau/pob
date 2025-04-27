@@ -1,5 +1,5 @@
 import childProcess from "node:child_process";
-import type { Workspace } from "./packageUtils";
+import type { Workspace } from "./packageUtils.ts";
 
 interface ExecResultIfFailed {
   code: number | null;

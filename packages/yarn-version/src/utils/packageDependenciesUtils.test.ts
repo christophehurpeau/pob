@@ -1,4 +1,4 @@
-import { PackageDependencyDescriptorUtils } from "./packageDependenciesUtils";
+import { PackageDependencyDescriptorUtils } from "./packageDependenciesUtils.ts";
 
 describe("PackageDependencyDescriptorUtils.parse", () => {
   it.each([

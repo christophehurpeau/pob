@@ -1,7 +1,7 @@
 import semver from "semver";
-import { UsageError } from "./UsageError";
-import { execCommand, execCommandStreamStdout } from "./execCommand";
-import type { Workspace } from "./packageUtils";
+import { UsageError } from "./UsageError.ts";
+import { execCommand, execCommandStreamStdout } from "./execCommand.ts";
+import type { Workspace } from "./packageUtils.ts";
 
 export const getGitCurrentBranch = async (
   workspace: Workspace,

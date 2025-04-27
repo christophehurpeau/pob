@@ -1,7 +1,7 @@
 import semver from "semver";
-import { UsageError } from "./UsageError";
-import type { Workspace } from "./packageUtils";
-import { getWorkspaceName } from "./workspaceUtils";
+import { UsageError } from "./UsageError.ts";
+import type { Workspace } from "./packageUtils.ts";
+import { getWorkspaceName } from "./workspaceUtils.ts";
 
 export type BumpType = "major" | "minor" | "patch";
 
