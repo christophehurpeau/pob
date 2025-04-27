@@ -1,16 +1,16 @@
-<h3 align="center">
+<h1 align="center">
   pob
-</h3>
+</h1>
 
 <p align="center">
   Pile of bones, library generator with git/babel/typescript/typedoc/readme/jest
 </p>
 
 <p align="center">
-  <a href="https://npmjs.org/package/pob"><img src="https://img.shields.io/npm/v/pob.svg?style=flat-square"></a>
-  <a href="https://npmjs.org/package/pob"><img src="https://img.shields.io/npm/dw/pob.svg?style=flat-square"></a>
-  <a href="https://npmjs.org/package/pob"><img src="https://img.shields.io/node/v/pob.svg?style=flat-square"></a>
-  <a href="https://npmjs.org/package/pob"><img src="https://img.shields.io/npm/types/pob.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/pob"><img src="https://img.shields.io/npm/v/pob.svg?style=flat-square" alt="npm version"></a>
+  <a href="https://npmjs.org/package/pob"><img src="https://img.shields.io/npm/dw/pob.svg?style=flat-square" alt="npm downloads"></a>
+  <a href="https://npmjs.org/package/pob"><img src="https://img.shields.io/node/v/pob.svg?style=flat-square" alt="node version"></a>
+  <a href="https://npmjs.org/package/pob"><img src="https://img.shields.io/npm/types/pob.svg?style=flat-square" alt="types"></a>
 </p>
 
 ## How to install

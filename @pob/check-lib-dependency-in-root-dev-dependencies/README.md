@@ -1,16 +1,16 @@
-<h3 align="center">
+<h1 align="center">
   @pob/check-lib-dependency-in-root-dev-dependencies
-</h3>
+</h1>
 
 <p align="center">
   Checks an lib dependency in root dev dependency. Ensures you have the version you want ! Very useful with yarn berry.
 </p>
 
 <p align="center">
-  <a href="https://npmjs.org/package/@pob/check-lib-dependency-in-root-dev-dependencies"><img src="https://img.shields.io/npm/v/@pob/check-lib-dependency-in-root-dev-dependencies.svg?style=flat-square"></a>
-  <a href="https://npmjs.org/package/@pob/check-lib-dependency-in-root-dev-dependencies"><img src="https://img.shields.io/npm/dw/@pob/check-lib-dependency-in-root-dev-dependencies.svg?style=flat-square"></a>
-  <a href="https://npmjs.org/package/@pob/check-lib-dependency-in-root-dev-dependencies"><img src="https://img.shields.io/node/v/@pob/check-lib-dependency-in-root-dev-dependencies.svg?style=flat-square"></a>
-  <a href="https://npmjs.org/package/@pob/check-lib-dependency-in-root-dev-dependencies"><img src="https://img.shields.io/npm/types/@pob/check-lib-dependency-in-root-dev-dependencies.svg?style=flat-square"></a>
+  <a href="https://npmjs.org/package/@pob/check-lib-dependency-in-root-dev-dependencies"><img src="https://img.shields.io/npm/v/@pob/check-lib-dependency-in-root-dev-dependencies.svg?style=flat-square" alt="npm version"></a>
+  <a href="https://npmjs.org/package/@pob/check-lib-dependency-in-root-dev-dependencies"><img src="https://img.shields.io/npm/dw/@pob/check-lib-dependency-in-root-dev-dependencies.svg?style=flat-square" alt="npm downloads"></a>
+  <a href="https://npmjs.org/package/@pob/check-lib-dependency-in-root-dev-dependencies"><img src="https://img.shields.io/node/v/@pob/check-lib-dependency-in-root-dev-dependencies.svg?style=flat-square" alt="node version"></a>
+  <a href="https://npmjs.org/package/@pob/check-lib-dependency-in-root-dev-dependencies"><img src="https://img.shields.io/npm/types/@pob/check-lib-dependency-in-root-dev-dependencies.svg?style=flat-square" alt="types"></a>
 </p>
 
 ## Install
