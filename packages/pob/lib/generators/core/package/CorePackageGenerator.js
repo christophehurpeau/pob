@@ -67,6 +67,10 @@ export default class CorePackageGenerator extends Generator {
       pkg.engines.node = ">=20.11.0"; // .9.0 is the first lts node 20 version, 20.11.0 is the version with backported import.meta feature
     }
 
+    if (pkg.engines.node.startsWith(">=22.11.")) {
+      pkg.engines.node = ">=22.14.0"; // 22.14 is the first version with findPackageJSON
+    }
+
     if (!this.options.isRoot) {
       delete pkg.packageManager;
     }
