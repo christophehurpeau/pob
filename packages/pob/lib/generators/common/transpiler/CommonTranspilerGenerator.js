@@ -639,7 +639,7 @@ export default class CommonTranspilerGenerator extends Generator {
             !pkg.engines.node ||
             !pkg.engines.node.startsWith(">=22")
           ) {
-            pkg.engines.node = ">=20.9.0";
+            pkg.engines.node = ">=20.11.0";
           }
           break;
         case "22":
@@ -667,7 +667,7 @@ export default class CommonTranspilerGenerator extends Generator {
       packageUtils.removeDevDependencies(pkg, ["@types/node"]);
 
       // Supports oldest current or active LTS version of node
-      const minVersion = this.options.onlyLatestLTS ? "22.14.0" : "20.9.0";
+      const minVersion = this.options.onlyLatestLTS ? "22.14.0" : "20.11.0";
 
       if (
         !pkg.engines.node ||
