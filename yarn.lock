@@ -7118,19 +7118,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"check-package-dependencies@npm:10.1.0":
-  version: 10.1.0
-  resolution: "check-package-dependencies@npm:10.1.0"
+"check-package-dependencies@npm:10.2.0":
+  version: 10.2.0
+  resolution: "check-package-dependencies@npm:10.2.0"
   dependencies:
-    "@eslint/plugin-kit": "npm:^0.2.5"
+    "@eslint/plugin-kit": "npm:^0.2.7"
     jsonc-parser: "npm:^3.3.1"
     semver: "npm:^7.7.1"
     semver-utils: "npm:^1.1.4"
     tslib: "npm:^2.8.1"
-    type-fest: "npm:^4.35.0"
+    type-fest: "npm:^4.37.0"
   bin:
     check-package-dependencies: ./bin/check-package-dependencies.mjs
-  checksum: 10c0/405549157c24012545a7dede1b3e7389d54749874d44322c6cb109992f8b46f38412f414f6aa632c5a6e956d4df5ac74be72c2fd94658fd1f66f897a5a96efed
+  checksum: 10c0/1552355b679bae712ac3692d73f805779b8a5bcf1bb05fde713737340c26faea44cbdc45d6bd2ae072c904c061b88d0e38ce4ef5ea15e6a08294981a2a29a1bd
   languageName: node
   linkType: hard
 
@@ -13514,7 +13514,7 @@ __metadata:
     "@types/node": "npm:22.15.2"
     "@vitest/coverage-v8": "npm:3.1.2"
     alp-rollup-plugin-config: "npm:2.2.1"
-    check-package-dependencies: "npm:10.1.0"
+    check-package-dependencies: "npm:10.2.0"
     eslint: "npm:9.22.0"
     jest: "npm:29.7.0"
     jest-junit-reporter: "npm:1.1.0"
@@ -13541,7 +13541,7 @@ __metadata:
     "@pob/eslint-config-typescript": "npm:59.8.1"
     "@pob/root": "workspace:*"
     "@types/jest": "npm:29.5.14"
-    check-package-dependencies: "npm:10.1.0"
+    check-package-dependencies: "npm:10.2.0"
     eslint: "npm:9.22.0"
     eslint-plugin-jest: "npm:28.11.0"
     jest: "npm:29.7.0"
@@ -15881,7 +15881,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:4.37.0, type-fest@npm:^4.35.0, type-fest@npm:^4.6.0, type-fest@npm:^4.7.1":
+"type-fest@npm:4.37.0":
   version: 4.37.0
   resolution: "type-fest@npm:4.37.0"
   checksum: 10c0/5bad189f66fbe3431e5d36befa08cab6010e56be68b7467530b7ef94c3cf81ef775a8ac3047c8bbda4dd3159929285870357498d7bc1df062714f9c5c3a84926
@@ -15906,6 +15906,13 @@ __metadata:
   version: 0.21.3
   resolution: "type-fest@npm:0.21.3"
   checksum: 10c0/902bd57bfa30d51d4779b641c2bc403cdf1371fb9c91d3c058b0133694fcfdb817aef07a47f40faf79039eecbaa39ee9d3c532deff244f3a19ce68cea71a61e8
+  languageName: node
+  linkType: hard
+
+"type-fest@npm:^4.37.0, type-fest@npm:^4.6.0, type-fest@npm:^4.7.1":
+  version: 4.40.1
+  resolution: "type-fest@npm:4.40.1"
+  checksum: 10c0/590cb7d4dcd3da83efe49b5b52cd041661f6fa29f18cb76650fe1fdeb4090688e92955656e9d981e606abb13d25c0418be8c6c6504d80e87fe18dc9ca0888392
   languageName: node
   linkType: hard
 
