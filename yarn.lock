@@ -15688,10 +15688,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:4.37.0":
-  version: 4.37.0
-  resolution: "type-fest@npm:4.37.0"
-  checksum: 10c0/5bad189f66fbe3431e5d36befa08cab6010e56be68b7467530b7ef94c3cf81ef775a8ac3047c8bbda4dd3159929285870357498d7bc1df062714f9c5c3a84926
+"type-fest@npm:4.40.1, type-fest@npm:^4.37.0, type-fest@npm:^4.6.0, type-fest@npm:^4.7.1":
+  version: 4.40.1
+  resolution: "type-fest@npm:4.40.1"
+  checksum: 10c0/590cb7d4dcd3da83efe49b5b52cd041661f6fa29f18cb76650fe1fdeb4090688e92955656e9d981e606abb13d25c0418be8c6c6504d80e87fe18dc9ca0888392
   languageName: node
   linkType: hard
 
@@ -15713,13 +15713,6 @@ __metadata:
   version: 0.21.3
   resolution: "type-fest@npm:0.21.3"
   checksum: 10c0/902bd57bfa30d51d4779b641c2bc403cdf1371fb9c91d3c058b0133694fcfdb817aef07a47f40faf79039eecbaa39ee9d3c532deff244f3a19ce68cea71a61e8
-  languageName: node
-  linkType: hard
-
-"type-fest@npm:^4.37.0, type-fest@npm:^4.6.0, type-fest@npm:^4.7.1":
-  version: 4.40.1
-  resolution: "type-fest@npm:4.40.1"
-  checksum: 10c0/590cb7d4dcd3da83efe49b5b52cd041661f6fa29f18cb76650fe1fdeb4090688e92955656e9d981e606abb13d25c0418be8c6c6504d80e87fe18dc9ca0888392
   languageName: node
   linkType: hard
 
@@ -16673,7 +16666,7 @@ __metadata:
     nightingale-console: "npm:15.0.0"
     nightingale-string: "npm:15.0.0"
     semver: "npm:7.7.1"
-    type-fest: "npm:4.37.0"
+    type-fest: "npm:4.40.1"
     typescript: "npm:5.8.3"
   bin:
     yarn-version: ./dist/index-node.mjs
