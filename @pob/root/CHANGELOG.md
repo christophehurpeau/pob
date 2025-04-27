@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [17.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@17.0.0...@pob/root@17.1.0) (2025-04-27)
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v15.5.1 ([#2491](https://github.com/christophehurpeau/pob/issues/2491)) ([357ca5c](https://github.com/christophehurpeau/pob/commit/357ca5cddd2e04074c5921a23b3f6339894b7d26))
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: repository-check-dirty
+Version bump for dependency: yarn-version
+
+
 ## [17.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@16.9.0...@pob/root@17.0.0) (2025-04-27)
 
 ### ⚠ BREAKING CHANGES

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.0](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.7.0...@pob/codemods@0.8.0) (2025-04-27)
+
+### Features
+
+* use glob from nodejs ([2ffacbe](https://github.com/christophehurpeau/pob/commit/2ffacbebb7ea1f13d6e8761a7a223c62841e993b))
+
 ## [0.7.0](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.6.0...@pob/codemods@0.7.0) (2025-02-17)
 
 ### Features

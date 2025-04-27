@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.41.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.40.0...example-typescript-lib@0.41.0) (2025-04-27)
+
+### Features
+
+* use glob from nodejs ([2ffacbe](https://github.com/christophehurpeau/pob/commit/2ffacbebb7ea1f13d6e8761a7a223c62841e993b))
+
+Version bump for dependency: pob-babel
+
+
 ## [0.40.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.39.1...example-typescript-lib@0.40.0) (2025-03-14)
 
 ### Features

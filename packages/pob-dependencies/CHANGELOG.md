@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@18.0.0...pob-dependencies@18.1.0) (2025-04-27)
+
+### Features
+
+* use glob from nodejs ([2ffacbe](https://github.com/christophehurpeau/pob/commit/2ffacbebb7ea1f13d6e8761a7a223c62841e993b))
+
+### Bug Fixes
+
+* **deps:** update @pob/eslint-config to v59.8.1 ([#2479](https://github.com/christophehurpeau/pob/issues/2479)) ([253120f](https://github.com/christophehurpeau/pob/commit/253120f7e45e74f8ed2f55319fdfee96a35aa3f1))
+
+Version bump for dependency: @pob/commitlint-config
+Version bump for dependency: @pob/esbuild
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: @pob/rollup-typescript
+Version bump for dependency: pob-babel
+Version bump for dependency: repository-check-dirty
+
+
 ## [18.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@17.8.1...pob-dependencies@18.0.0) (2025-04-27)
 
 ### ⚠ BREAKING CHANGES

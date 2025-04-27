@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.0](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.11.1...@pob-example/next-app@0.12.0) (2025-04-27)
+
+### Features
+
+* use glob from nodejs ([2ffacbe](https://github.com/christophehurpeau/pob/commit/2ffacbebb7ea1f13d6e8761a7a223c62841e993b))
+
 ## [0.11.1](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.11.0...@pob-example/next-app@0.11.1) (2025-04-27)
 
 ### Bug Fixes

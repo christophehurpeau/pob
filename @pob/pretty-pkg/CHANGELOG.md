@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@12.0.2...@pob/pretty-pkg@12.1.0) (2025-04-27)
+
+### Features
+
+* use glob from nodejs ([2ffacbe](https://github.com/christophehurpeau/pob/commit/2ffacbebb7ea1f13d6e8761a7a223c62841e993b))
+
+Version bump for dependency: @pob/sort-pkg
+
+
 ## [12.0.2](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@12.0.1...@pob/pretty-pkg@12.0.2) (2025-03-14)
 
 Note: no notable changes

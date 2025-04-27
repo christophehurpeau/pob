@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.1](https://github.com/christophehurpeau/pob/compare/@pob/rollup@6.1.0...@pob/rollup@6.1.1) (2025-04-27)
+
+Note: no notable changes
+
+
 ## [6.1.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup@6.0.0...@pob/rollup@6.1.0) (2025-02-02)
 
 ### Features

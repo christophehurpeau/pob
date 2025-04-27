@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.7.0](https://github.com/christophehurpeau/pob/compare/yarn-version@6.6.1...yarn-version@6.7.0) (2025-04-27)
+
+### Features
+
+* **deps:** update dependency commander to v13 ([#2395](https://github.com/christophehurpeau/pob/issues/2395)) ([5a678c4](https://github.com/christophehurpeau/pob/commit/5a678c4fddb2e9f2b09a243747aaad43dda3de9f))
+* use glob from nodejs ([2ffacbe](https://github.com/christophehurpeau/pob/commit/2ffacbebb7ea1f13d6e8761a7a223c62841e993b))
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [6.6.1](https://github.com/christophehurpeau/pob/compare/yarn-version@6.6.0...yarn-version@6.6.1) (2025-04-27)
 
 Version bump for dependency: @pob/rollup-esbuild

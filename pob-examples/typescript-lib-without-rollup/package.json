@@ -1,7 +1,7 @@
 {
   "name": "example-typescript-lib-without-rollup",
   "private": true,
-  "version": "0.28.0",
+  "version": "0.28.1",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": {

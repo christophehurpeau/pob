@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.1.0](https://github.com/christophehurpeau/pob/compare/pob@27.0.0...pob@27.1.0) (2025-04-27)
+
+### Features
+
+* use glob from nodejs ([2ffacbe](https://github.com/christophehurpeau/pob/commit/2ffacbebb7ea1f13d6e8761a7a223c62841e993b))
+
+### Bug Fixes
+
+* **deps:** update @pob/eslint-config to v59.8.1 ([#2479](https://github.com/christophehurpeau/pob/issues/2479)) ([253120f](https://github.com/christophehurpeau/pob/commit/253120f7e45e74f8ed2f55319fdfee96a35aa3f1))
+* **deps:** update dependency @prettier/sync to v0.5.5 ([#2493](https://github.com/christophehurpeau/pob/issues/2493)) ([f2dc529](https://github.com/christophehurpeau/pob/commit/f2dc529398d8c3525a865d27f682de6e372d81a4))
+* make sure we use node 22 >= 22.14 ([2fe4ec5](https://github.com/christophehurpeau/pob/commit/2fe4ec525e73793e3af520cf6243be5b8bec8de3))
+* use node 20.11.0 with backported import.meta ([d8d1c3b](https://github.com/christophehurpeau/pob/commit/d8d1c3b0d9e53536846b3d337f1530de71ebbf8d))
+
+Version bump for dependency: @pob/sort-object
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [27.0.0](https://github.com/christophehurpeau/pob/compare/pob@26.11.0...pob@27.0.0) (2025-04-27)
 
 ### ⚠ BREAKING CHANGES

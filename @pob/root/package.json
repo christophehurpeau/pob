@@ -1,6 +1,6 @@
 {
   "name": "@pob/root",
-  "version": "17.0.0",
+  "version": "17.1.0",
   "description": "root package",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -69,7 +69,7 @@
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
     "@commitlint/cli": "19.8.0",
-    "@pob/pretty-pkg": "12.0.2",
+    "@pob/pretty-pkg": "12.1.0",
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "cosmiconfig": "^9.0.0",
     "husky": "~9.1.7",
@@ -77,9 +77,9 @@
     "lint-staged": "15.5.1",
     "pob-dependencies": "workspace:*",
     "prettier": "3.5.3",
-    "repository-check-dirty": "10.0.0",
+    "repository-check-dirty": "10.0.1",
     "semver": "^7.3.7",
     "which-pm-runs": "1.1.0",
-    "yarn-version": "6.6.1"
+    "yarn-version": "6.7.0"
   }
 }
