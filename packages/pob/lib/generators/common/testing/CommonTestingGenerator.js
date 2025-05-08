@@ -296,7 +296,7 @@ export default class CommonTestingGenerator extends Generator {
     }) => {
       switch (testRunner) {
         case "jest": {
-          return `${
+          return `TZ=UTC ${
             shouldUseExperimentalVmModules
               ? "NODE_OPTIONS=--experimental-vm-modules "
               : ""
@@ -313,7 +313,7 @@ export default class CommonTestingGenerator extends Generator {
             throw new Error("Invalid workspacesPattern");
           }
           const experimentalTestCoverage = false; // todo configure src directory and remove test files
-          return `${
+          return `TZ=UTC ${
             tsTestUtil === "ts-node"
               ? "TS_NODE_PROJECT=tsconfig.test.json "
               : ""
@@ -332,7 +332,7 @@ export default class CommonTestingGenerator extends Generator {
           }.${this.options.typescript ? "ts" : "js"}`}`;
         }
         case "vitest": {
-          return `${
+          return `TZ=UTC ${
             coverage || coverageJson
               ? `POB_VITEST_COVERAGE=${`json${coverageJson ? "" : ",text"} `}`
               : ""
