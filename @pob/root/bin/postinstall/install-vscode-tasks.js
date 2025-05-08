@@ -52,13 +52,17 @@ export default async function installVscodeTasks({ pkg }) {
         return;
       }
 
+      const problemMatcher = getProblemMatcherFromScriptName(scriptName);
       const task = {
         label: scriptName,
-        problemMatcher: getProblemMatcherFromScriptName(scriptName),
+        problemMatcher,
         type: "npm",
         script: scriptName,
         group: getGroupNameFromScriptName(scriptName),
         presentation: {
+          ...(problemMatcher.length > 0
+            ? { close: true, revealProblems: "onProblem" }
+            : {}),
           panel: "dedicated",
           group: getGroupNameFromScriptName(scriptName),
           clear: true,
