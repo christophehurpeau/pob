@@ -222,18 +222,9 @@ export default class CorePackageGenerator extends Generator {
       const doesMjsCheckPackagesExists = this.fs.exists(
         this.destinationPath("scripts/check-packages.mjs"),
       );
-      let doesJsCheckPackagesExists = this.fs.exists(
+      const doesJsCheckPackagesExists = this.fs.exists(
         this.destinationPath("scripts/check-packages.js"),
       );
-
-      if (pkg.type === "module" && !doesJsCheckPackagesExists) {
-        doesJsCheckPackagesExists = true;
-        this.fs.copyTpl(
-          this.templatePath("check-packages.js.ejs"),
-          this.destinationPath("scripts/check-packages.js"),
-          {},
-        );
-      }
 
       if (doesJsCheckPackagesExists || doesMjsCheckPackagesExists) {
         packageUtils.addDevDependencies(pkg, ["check-package-dependencies"]);
