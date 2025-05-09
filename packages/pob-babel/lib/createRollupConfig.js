@@ -19,6 +19,12 @@ export default function createRollupConfig({
   outDirectory = "dist",
   pkg = JSON.parse(readFileSync(path.join(cwd, "package.json"))),
   plugins = [],
+  getExtensions = (extensions, { target }) => {
+    if (target === "browser") {
+      return extensions.flatMap((ext) => [`.web${ext}`, `${ext}`]);
+    }
+    return extensions;
+  },
   devPlugins,
   prodPlugins,
   pobConfig = pkg.pob ||
@@ -105,8 +111,8 @@ export default function createRollupConfig({
     const typescript = entryPath.endsWith(".ts") || entryPath.endsWith(".tsx");
     const extensions = (
       typescript
-        ? [".ts", jsx && ".tsx", ".json"]
-        : [".js", jsx && ".jsx", ".json"]
+        ? getExtensions([".ts", jsx && ".tsx", ".json"], env)
+        : getExtensions([".js", jsx && ".jsx", ".json"], env)
     ).filter(Boolean);
 
     return {
