@@ -13602,7 +13602,7 @@ __metadata:
     semver: "npm:7.7.1"
     ts-node: "npm:ts-node-lite@11.0.0-beta.1"
     tslib: "npm:2.8.1"
-    typedoc: "npm:0.28.3"
+    typedoc: "npm:0.28.5"
     typescript: "npm:5.8.3"
     vitest: "npm:3.1.3"
   languageName: unknown
@@ -15996,9 +15996,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"typedoc@npm:0.28.3":
-  version: 0.28.3
-  resolution: "typedoc@npm:0.28.3"
+"typedoc@npm:0.28.5":
+  version: 0.28.5
+  resolution: "typedoc@npm:0.28.5"
   dependencies:
     "@gerrit0/mini-shiki": "npm:^3.2.2"
     lunr: "npm:^2.3.9"
@@ -16009,7 +16009,7 @@ __metadata:
     typescript: 5.0.x || 5.1.x || 5.2.x || 5.3.x || 5.4.x || 5.5.x || 5.6.x || 5.7.x || 5.8.x
   bin:
     typedoc: bin/typedoc
-  checksum: 10c0/05cd7c26de0d760743c99a2c00e03eb1500c4fd5d355e5f0c7f9d29d514cb21b1064e436f82add431413ca93ff8dcd4c062b06bfd04337e9a75a3a879147b7dc
+  checksum: 10c0/fc8235dbe8f14da24fdb088467b01887b3f1375b27d5caf0276ae405f03aa1f523e94aea52fe8ce1a3d477ae9e3f4f69fdc28614275445a828a77db88784e6ce
   languageName: node
   linkType: hard
 
