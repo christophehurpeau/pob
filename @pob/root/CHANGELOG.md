@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.1.1](https://github.com/christophehurpeau/pob/compare/@pob/root@18.1.0...@pob/root@18.1.1) (2025-06-08)
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v15.5.2 ([#2528](https://github.com/christophehurpeau/pob/issues/2528)) ([555ad62](https://github.com/christophehurpeau/pob/commit/555ad62a4b47deb1030e94fa1228f6442f74ebfd))
+
+Version bump for dependency: yarn-version
+
+
 ## [18.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@18.0.2...@pob/root@18.1.0) (2025-06-08)
 
 ### Features

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.2.1](https://github.com/christophehurpeau/pob/compare/pob@28.2.0...pob@28.2.1) (2025-06-08)
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v7.7.2 ([#2530](https://github.com/christophehurpeau/pob/issues/2530)) ([9f9282c](https://github.com/christophehurpeau/pob/commit/9f9282ccafd69b9de83c6129d8f74702dd1300e2))
+* fix svg codecov ([8916de4](https://github.com/christophehurpeau/pob/commit/8916de46835dddd3977f10fa56bd50f6c9f670bc))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [28.2.0](https://github.com/christophehurpeau/pob/compare/pob@28.1.1...pob@28.2.0) (2025-06-08)
 
 ### Features

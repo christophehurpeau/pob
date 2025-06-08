@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [15.2.5](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@15.2.4...babel-preset-pob-env@15.2.5) (2025-06-08)
+
+### Bug Fixes
+
+* fix svg codecov ([8916de4](https://github.com/christophehurpeau/pob/commit/8916de46835dddd3977f10fa56bd50f6c9f670bc))
+
 ## [15.2.4](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@15.2.3...babel-preset-pob-env@15.2.4) (2025-04-27)
 
 Version bump for dependency: babel-plugin-fix-class-properties-uninitialized

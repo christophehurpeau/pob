@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.43.1](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.43.0...example-typescript-lib@0.43.1) (2025-06-08)
+
+Version bump for dependency: pob-babel
+
+
 ## [0.43.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.42.0...example-typescript-lib@0.43.0) (2025-06-08)
 
 Version bump for dependency: pob-babel
