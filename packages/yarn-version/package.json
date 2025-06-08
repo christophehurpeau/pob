@@ -70,7 +70,7 @@
     "conventional-commits-parser": "6.1.0",
     "nightingale": "15.0.0",
     "nightingale-console": "15.0.0",
-    "semver": "7.7.1"
+    "semver": "7.7.2"
   },
   "devDependencies": {
     "@pob/rollup-esbuild": "6.5.1",
