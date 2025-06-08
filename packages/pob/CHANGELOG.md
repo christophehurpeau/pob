@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.2.0](https://github.com/christophehurpeau/pob/compare/pob@28.1.1...pob@28.2.0) (2025-06-08)
+
+### Features
+
+* **deps:** update dependency eslint to v9.28.0 ([#2518](https://github.com/christophehurpeau/pob/issues/2518)) ([24dad7a](https://github.com/christophehurpeau/pob/commit/24dad7a25e08ec319097ea365230885f20105096))
+* prepare for check-packages removal ([b322e12](https://github.com/christophehurpeau/pob/commit/b322e123d95729840878b25cadfc001c6769f104))
+* set tz for tests ([f427efd](https://github.com/christophehurpeau/pob/commit/f427efdd887a7b1f474828bedabdc5e2656e5662))
+
+### Bug Fixes
+
+* **deps:** update dependency @types/inquirer to v9.0.8 ([#2523](https://github.com/christophehurpeau/pob/issues/2523)) ([1145895](https://github.com/christophehurpeau/pob/commit/1145895ee9d9e2e246bcef7f41680e4d8d7271ee))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [28.1.1](https://github.com/christophehurpeau/pob/compare/pob@28.1.0...pob@28.1.1) (2025-04-27)
 
 Version bump for dependency: @pob/root

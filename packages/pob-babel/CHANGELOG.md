@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [43.6.0](https://github.com/christophehurpeau/pob/compare/pob-babel@43.5.0...pob-babel@43.6.0) (2025-06-08)
+
+### Features
+
+* add getExtensions like it exists in rollup-esbuild ([769c7a5](https://github.com/christophehurpeau/pob/commit/769c7a5f5f1a03111db2fa62ade6b7e090ee617d))
+
+### Bug Fixes
+
+* **deps:** update dependency rollup to v4.40.2 ([#2512](https://github.com/christophehurpeau/pob/issues/2512)) ([0deeadf](https://github.com/christophehurpeau/pob/commit/0deeadfd91d2770f47af6b8be2ebc887f9885129))
+
+Version bump for dependency: @pob/rollup
+
+
 ## [43.5.0](https://github.com/christophehurpeau/pob/compare/pob-babel@43.4.1...pob-babel@43.5.0) (2025-04-27)
 
 ### Features

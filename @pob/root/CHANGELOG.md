@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@18.0.2...@pob/root@18.1.0) (2025-06-08)
+
+### Features
+
+* improve presentation based on problem matcher ([3cf0439](https://github.com/christophehurpeau/pob/commit/3cf0439a8af56ea38cb093b560a9fba311bff6ac))
+* prefer using corepack to update yarn ([98507d0](https://github.com/christophehurpeau/pob/commit/98507d028f3cb1003c876d3641c1245d378315e3))
+* update yarn to 4.9.2 ([5784269](https://github.com/christophehurpeau/pob/commit/5784269f885b4e918a43040d17056d8abe2c6d1b))
+
+### Bug Fixes
+
+* **deps:** update dependency @commitlint/cli to v19.8.1 ([#2522](https://github.com/christophehurpeau/pob/issues/2522)) ([046243c](https://github.com/christophehurpeau/pob/commit/046243c275d18e99dfab38a15008fc22d2fd1458))
+* install workflow push-renovate-build if @pob/rollup-* is used ([d9ca414](https://github.com/christophehurpeau/pob/commit/d9ca4142294ac724e99e04a73288c341aa7f8697))
+
+Version bump for dependency: yarn-version
+
+
 ## [18.0.2](https://github.com/christophehurpeau/pob/compare/@pob/root@18.0.1...@pob/root@18.0.2) (2025-04-27)
 
 ### Bug Fixes

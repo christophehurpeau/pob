@@ -1,6 +1,6 @@
 {
   "name": "yarn-version",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "description": "yarn berry versioning using conventional commits",
   "keywords": [
     "semantic-release",
@@ -73,7 +73,7 @@
     "semver": "7.7.1"
   },
   "devDependencies": {
-    "@pob/rollup-esbuild": "6.5.0",
+    "@pob/rollup-esbuild": "6.5.1",
     "@types/node": "22.15.17",
     "@types/npmcli__map-workspaces": "3.0.4",
     "conventional-recommended-bump": "10.0.0",
