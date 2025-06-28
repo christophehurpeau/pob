@@ -48,7 +48,7 @@
     "@pob/eslint-config-typescript-react": "60.1.0",
     "@pob/sort-object": "9.0.2",
     "@pob/sort-pkg": "11.0.3",
-    "@prettier/sync": "0.5.5",
+    "@prettier/sync": "0.6.1",
     "@types/inquirer": "9.0.8",
     "@yarnpkg/cli": "4.9.2",
     "@yarnpkg/core": "4.4.2",

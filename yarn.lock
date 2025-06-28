@@ -3664,14 +3664,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@prettier/sync@npm:0.5.5":
-  version: 0.5.5
-  resolution: "@prettier/sync@npm:0.5.5"
+"@prettier/sync@npm:0.6.1":
+  version: 0.6.1
+  resolution: "@prettier/sync@npm:0.6.1"
   dependencies:
-    make-synchronized: "npm:^0.4.2"
+    make-synchronized: "npm:^0.8.0"
   peerDependencies:
     prettier: "*"
-  checksum: 10c0/65d6854a58f47f42fe734d192b9c67ab5651bbab462cc5f8f1121e9259dd3ab91a77b8cd4b4a32baf4ba0a25148dad052732efe483b76fcdd6692d0cc48fb262
+  checksum: 10c0/4cf6dd8c27f6425924ac749ca980693b447d39162b530e103f4613df470c1ec877f691d10796556b748ce8c954cc76e0f2a73e18e02b125d295168012c25df71
   languageName: node
   linkType: hard
 
@@ -11990,10 +11990,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"make-synchronized@npm:^0.4.2":
-  version: 0.4.2
-  resolution: "make-synchronized@npm:0.4.2"
-  checksum: 10c0/29015b2101dfbed9dcb486d3fe557d86305887952b47a632bfba70d5a69fe31d02d713c55224f0efb7bd10d3bcb28adb026902b951e727f657d017adb9093b39
+"make-synchronized@npm:^0.8.0":
+  version: 0.8.0
+  resolution: "make-synchronized@npm:0.8.0"
+  checksum: 10c0/b8293d79e8752840a8103034866296b781c754286bf54864f4014b01f4b46710c5eaa04ffdabd7167513a4e72e7fec4396b36fb5aef16222fd5a268d1b4c041e
   languageName: node
   linkType: hard
 
@@ -13656,7 +13656,7 @@ __metadata:
     "@pob/root": "npm:18.1.1"
     "@pob/sort-object": "npm:9.0.2"
     "@pob/sort-pkg": "npm:11.0.3"
-    "@prettier/sync": "npm:0.5.5"
+    "@prettier/sync": "npm:0.6.1"
     "@types/inquirer": "npm:9.0.8"
     "@types/node": "npm:22.15.32"
     "@yarnpkg/cli": "npm:4.9.2"
