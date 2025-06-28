@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [43.7.0](https://github.com/christophehurpeau/pob/compare/pob-babel@43.6.1...pob-babel@43.7.0) (2025-06-28)
+
+### Features
+
+* **deps:** upgrade rollup to v4.44.1 ([b438bb0](https://github.com/christophehurpeau/pob/commit/b438bb02e70bc4aaea4d891562eb4f426ca9f45f))
+* update babel ([8e0c98d](https://github.com/christophehurpeau/pob/commit/8e0c98d2a5888b0bffc9da76ad8723d971a971d3))
+
+Version bump for dependency: @pob/rollup
+Version bump for dependency: babel-preset-pob-env
+
+
 ## [43.6.1](https://github.com/christophehurpeau/pob/compare/pob-babel@43.6.0...pob-babel@43.6.1) (2025-06-08)
 
 Version bump for dependency: babel-preset-pob-env

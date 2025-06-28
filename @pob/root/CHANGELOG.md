@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@18.1.1...@pob/root@18.2.0) (2025-06-28)
+
+### Features
+
+* add transcrypt support ([16b6cea](https://github.com/christophehurpeau/pob/commit/16b6ceab9dba23293af954d475a8bb4aa3197a9c))
+* **deps:** upgrade prettier to v3.6.2 ([c5648ab](https://github.com/christophehurpeau/pob/commit/c5648ab7a87da2e2b56d2589d4f574283f6eb1e9))
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: yarn-version
+
+
 ## [18.1.1](https://github.com/christophehurpeau/pob/compare/@pob/root@18.1.0...@pob/root@18.1.1) (2025-06-08)
 
 ### Bug Fixes

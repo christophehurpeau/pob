@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.2.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@12.1.1...@pob/pretty-pkg@12.2.0) (2025-06-28)
+
+### Features
+
+* **deps:** upgrade prettier to v3.6.2 ([c5648ab](https://github.com/christophehurpeau/pob/commit/c5648ab7a87da2e2b56d2589d4f574283f6eb1e9))
+
 ## [12.1.1](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@12.1.0...@pob/pretty-pkg@12.1.1) (2025-04-27)
 
 Version bump for dependency: @pob/sort-pkg

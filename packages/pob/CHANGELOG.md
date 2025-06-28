@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.3.0](https://github.com/christophehurpeau/pob/compare/pob@28.2.1...pob@28.3.0) (2025-06-28)
+
+### Features
+
+* **deps:** update @pob/eslint-config and related packages to v60.1.0 ([2b3e3a3](https://github.com/christophehurpeau/pob/commit/2b3e3a36b08d2cd4d321084a05832550b833f033))
+* **deps:** update @prettier/sync to v0.6.1 ([c56e8ce](https://github.com/christophehurpeau/pob/commit/c56e8ce36996d72857f9887e214285b5d28cc46c))
+* **deps:** upgrade prettier to v3.6.2 ([c5648ab](https://github.com/christophehurpeau/pob/commit/c5648ab7a87da2e2b56d2589d4f574283f6eb1e9))
+
+### Bug Fixes
+
+* **deps:** update yarn monorepo ([#2531](https://github.com/christophehurpeau/pob/issues/2531)) ([02459e8](https://github.com/christophehurpeau/pob/commit/02459e8a094f9e014cd36fdbe5dbc16e46a69099))
+* **deps:** upgrade validate-npm-package-name to v6.0.1 ([d162b03](https://github.com/christophehurpeau/pob/commit/d162b03083a789f4aff98cb8c640508e78e23f25))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [28.2.1](https://github.com/christophehurpeau/pob/compare/pob@28.2.0...pob@28.2.1) (2025-06-08)
 
 ### Bug Fixes

@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@19.1.1...pob-dependencies@19.2.0) (2025-06-28)
+
+### Features
+
+* **deps:** update @pob/eslint-config and related packages to v60.1.0 ([2b3e3a3](https://github.com/christophehurpeau/pob/commit/2b3e3a36b08d2cd4d321084a05832550b833f033))
+* **deps:** upgrade prettier to v3.6.2 ([c5648ab](https://github.com/christophehurpeau/pob/commit/c5648ab7a87da2e2b56d2589d4f574283f6eb1e9))
+* **deps:** upgrade rollup to v4.44.1 ([b438bb0](https://github.com/christophehurpeau/pob/commit/b438bb02e70bc4aaea4d891562eb4f426ca9f45f))
+* update babel ([8e0c98d](https://github.com/christophehurpeau/pob/commit/8e0c98d2a5888b0bffc9da76ad8723d971a971d3))
+
+Version bump for dependency: @pob/commitlint-config
+Version bump for dependency: @pob/esbuild
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: pob-babel
+
+
 ## [19.1.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@19.1.0...pob-dependencies@19.1.1) (2025-06-08)
 
 ### Bug Fixes

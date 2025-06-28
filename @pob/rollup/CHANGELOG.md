@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup@6.2.1...@pob/rollup@6.3.0) (2025-06-28)
+
+### Features
+
+* **deps:** upgrade rollup to v4.44.1 ([b438bb0](https://github.com/christophehurpeau/pob/commit/b438bb02e70bc4aaea4d891562eb4f426ca9f45f))
+
 ## [6.2.1](https://github.com/christophehurpeau/pob/compare/@pob/rollup@6.2.0...@pob/rollup@6.2.1) (2025-06-08)
 
 ### Bug Fixes

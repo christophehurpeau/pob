@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.9.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@8.8.1...yarn-workspace-utils@8.9.0) (2025-06-28)
+
+### Features
+
+* **deps:** upgrade rollup to v4.44.1 ([b438bb0](https://github.com/christophehurpeau/pob/commit/b438bb02e70bc4aaea4d891562eb4f426ca9f45f))
+* update babel ([8e0c98d](https://github.com/christophehurpeau/pob/commit/8e0c98d2a5888b0bffc9da76ad8723d971a971d3))
+
+### Bug Fixes
+
+* **deps:** update yarn monorepo ([#2531](https://github.com/christophehurpeau/pob/issues/2531)) ([02459e8](https://github.com/christophehurpeau/pob/commit/02459e8a094f9e014cd36fdbe5dbc16e46a69099))
+
+Version bump for dependency: pob-babel
+
+
 ## [8.8.1](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@8.8.0...yarn-workspace-utils@8.8.1) (2025-06-08)
 
 Version bump for dependency: pob-babel

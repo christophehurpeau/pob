@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.0](https://github.com/christophehurpeau/pob/compare/yarn-version@7.0.3...yarn-version@7.1.0) (2025-06-28)
+
+### Features
+
+* **deps:** upgrade rollup to v4.44.1 ([b438bb0](https://github.com/christophehurpeau/pob/commit/b438bb02e70bc4aaea4d891562eb4f426ca9f45f))
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [7.0.3](https://github.com/christophehurpeau/pob/compare/yarn-version@7.0.2...yarn-version@7.0.3) (2025-06-08)
 
 ### Bug Fixes
