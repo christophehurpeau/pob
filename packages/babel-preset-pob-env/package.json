@@ -39,13 +39,13 @@
     "@babel/core": "^7.23.2"
   },
   "dependencies": {
-    "@babel/plugin-transform-modules-commonjs": "^7.26.3",
-    "@babel/preset-typescript": "^7.26.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.27.1",
+    "@babel/preset-typescript": "^7.27.1",
     "babel-plugin-discard-module-references": "^1.1.2",
     "babel-plugin-fix-class-properties-uninitialized": "10.0.2",
     "babel-preset-optimizations": "^2.0.0"
   },
   "devDependencies": {
-    "@babel/core": "7.26.10"
+    "@babel/core": "7.27.7"
   }
 }
