@@ -291,7 +291,7 @@ async function execvp(command, args, {
       const chunksToString = (chunks) => stdo === "inherit" ? "" : Buffer.concat(chunks).toString(encoding ?? "utf8");
       const stdout = chunksToString(stdoutChunks);
       const stderr = chunksToString(stderrChunks);
-      if (code === 0 || false) {
+      if (code === 0 || !strict) {
         resolve({
           code,
           signal,
