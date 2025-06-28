@@ -142,9 +142,9 @@ export default class CoreYarnGenerator extends Generator {
       if (
         !pkg.packageManager ||
         !pkg.packageManager.startsWith("yarn@") ||
-        lt(pkg.packageManager.slice("yarn@".length), "4.7.0")
+        lt(pkg.packageManager.slice("yarn@".length), "4.9.2")
       ) {
-        pkg.packageManager = "yarn@4.7.0";
+        pkg.packageManager = "yarn@4.9.2";
       }
 
       // must be done after plugins installed
