@@ -46,7 +46,7 @@
     "@pob/eslint-config-typescript": "60.1.0",
     "@pob/root": "workspace:*",
     "@types/jest": "30.0.0",
-    "check-package-dependencies": "10.2.1",
+    "check-package-dependencies": "10.3.0",
     "eslint": "9.28.0",
     "eslint-plugin-jest": "28.13.3",
     "jest": "30.0.3",
