@@ -66,6 +66,8 @@ export default function installHusky({ pkg, pm }) {
   const shouldRunTest = () => pkg.scripts && pkg.scripts.test;
   const shouldRunChecks = () => pkg.scripts && pkg.scripts.checks;
   const shouldRunLint = () => pkg.scripts && pkg.scripts.lint;
+  const shouldEnableTranscrypt = () =>
+    fs.existsSync(path.resolve("scripts/transcrypt"));
 
   try {
     fs.mkdirSync(path.resolve(".husky"));
@@ -80,7 +82,19 @@ export default function installHusky({ pkg, pm }) {
   } = getPackageManagerCommands(pm, isYarnBerry);
 
   writeHook("commit-msg", `${pmExec} commitlint --edit $1`);
-  writeHook("pre-commit", `${pmExec} pob-root-lint-staged`);
+  writeHook(
+    "pre-commit",
+    `${pmExec} pob-root-lint-staged${
+      shouldEnableTranscrypt()
+        ? `
+# Transcrypt pre-commit hook: fail if secret file in staging lacks the magic prefix "Salted" in B64
+RELATIVE_GIT_DIR=$(git rev-parse --git-dir 2>/dev/null || printf '')
+CRYPT_DIR=$(git config transcrypt.crypt-dir 2>/dev/null || printf '%s/crypt' "\${RELATIVE_GIT_DIR}")
+"\${CRYPT_DIR}/transcrypt" pre_commit
+`
+        : ""
+    }`,
+  );
 
   if (isYarnPnp) {
     // https://yarnpkg.com/features/zero-installs
