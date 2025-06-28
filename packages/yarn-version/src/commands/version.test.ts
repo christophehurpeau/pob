@@ -1,6 +1,5 @@
 import { URL, fileURLToPath } from "node:url";
-import { Level } from "nightingale";
-import { StringHandler } from "nightingale-string";
+import { Level, StringHandler } from "nightingale";
 import type { VersionCommandOptions } from "./version.ts";
 import { Defaults, versionCommandAction } from "./version.ts";
 

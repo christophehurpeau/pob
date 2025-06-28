@@ -3,8 +3,7 @@ import path from "node:path";
 // eslint-disable-next-line import/no-unresolved
 import { ConventionalGitClient } from "@conventional-changelog/git-client";
 import { Option, program } from "commander";
-import { Level, Logger, addConfig } from "nightingale";
-import { ConsoleHandler } from "nightingale-console";
+import { ConsoleHandler, Level, Logger, addConfig } from "nightingale";
 import { satisfies } from "semver";
 import { UsageError } from "../utils/UsageError.ts";
 import type { BumpType } from "../utils/bumpTypeUtils.ts";
