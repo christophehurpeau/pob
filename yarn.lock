@@ -3561,9 +3561,9 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/eslint-config-typescript-react@npm:60.1.0":
-  version: 60.1.0
-  resolution: "@pob/eslint-config-typescript-react@npm:60.1.0"
+"@pob/eslint-config-typescript-react@npm:61.0.0":
+  version: 61.0.0
+  resolution: "@pob/eslint-config-typescript-react@npm:61.0.0"
   dependencies:
     "@pob/eslint-config": "npm:60.1.0"
     "@pob/eslint-config-typescript": "npm:60.1.0"
@@ -3575,7 +3575,7 @@ __metadata:
   peerDependencies:
     eslint: ^9.22.0
     typescript: ">=5.0.0 <6.0.0"
-  checksum: 10c0/f0b2a1cae3d96cc709cdc8399a5e7df6d41f6b67a2e959e9228bc33de1450f1e6a7695e6c58c8d5ad4e5da950ae2a1ed691c2d705a9395b51fd41d2e7cb5c9ab
+  checksum: 10c0/c2ea1736712b5ef2e94bab5b69c8768d6152bc4500396d7405344621531666fdc60044d96e448b8b74397cd4ef8b3852dae11eadea487b199a70872c885bfc16
   languageName: node
   linkType: hard
 
@@ -13708,7 +13708,7 @@ __metadata:
     "@pob/esbuild": "npm:4.0.5"
     "@pob/eslint-config": "npm:60.1.0"
     "@pob/eslint-config-typescript": "npm:60.1.0"
-    "@pob/eslint-config-typescript-react": "npm:60.1.0"
+    "@pob/eslint-config-typescript-react": "npm:61.0.0"
     "@pob/pretty-pkg": "npm:12.2.0"
     "@pob/rollup-esbuild": "npm:6.6.0"
     "@pob/rollup-typescript": "npm:7.0.2"
@@ -13763,7 +13763,7 @@ __metadata:
   dependencies:
     "@pob/eslint-config": "npm:60.1.0"
     "@pob/eslint-config-typescript": "npm:60.1.0"
-    "@pob/eslint-config-typescript-react": "npm:60.1.0"
+    "@pob/eslint-config-typescript-react": "npm:61.0.0"
     "@pob/root": "npm:18.2.0"
     "@pob/sort-object": "npm:9.0.2"
     "@pob/sort-pkg": "npm:11.0.3"

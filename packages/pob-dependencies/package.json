@@ -47,7 +47,7 @@
     "@pob/esbuild": "4.0.5",
     "@pob/eslint-config": "60.1.0",
     "@pob/eslint-config-typescript": "60.1.0",
-    "@pob/eslint-config-typescript-react": "60.1.0",
+    "@pob/eslint-config-typescript-react": "61.0.0",
     "@pob/pretty-pkg": "12.2.0",
     "@pob/rollup-esbuild": "6.6.0",
     "@pob/rollup-typescript": "7.0.2",
