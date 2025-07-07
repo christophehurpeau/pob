@@ -43,9 +43,9 @@
   },
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "@pob/eslint-config": "60.1.0",
-    "@pob/eslint-config-typescript": "60.1.0",
-    "@pob/eslint-config-typescript-react": "60.1.0",
+    "@pob/eslint-config": "61.1.0",
+    "@pob/eslint-config-typescript": "61.1.0",
+    "@pob/eslint-config-typescript-react": "61.1.0",
     "@pob/sort-object": "9.0.2",
     "@pob/sort-pkg": "11.0.3",
     "@prettier/sync": "0.6.1",
