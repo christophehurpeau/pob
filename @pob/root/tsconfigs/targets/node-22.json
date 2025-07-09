@@ -1,6 +1,6 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "@pob:target:Node12",
+  "display": "@pob:target:Node22",
   "extends": "./base-node.json",
 
   "compilerOptions": {
