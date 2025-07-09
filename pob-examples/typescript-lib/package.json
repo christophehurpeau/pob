@@ -69,7 +69,7 @@
   "devDependencies": {
     "@babel/core": "7.28.0",
     "@babel/preset-env": "7.28.0",
-    "@types/node": "22.15.32",
+    "@types/node": "22.16.2",
     "pob-babel": "43.7.0",
     "typescript": "5.8.3"
   }
