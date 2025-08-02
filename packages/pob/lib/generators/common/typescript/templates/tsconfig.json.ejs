@@ -29,8 +29,8 @@
        -%>
     "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo",
     <% } -%>
-<% } else if (composite) { -%>
-<% if (cacheEnabled) { -%>
+<% } else if (composite || incremental) { -%>
+<% if (composite && cacheEnabled) { -%>
     "outDir": "node_modules/.cache/tsc",
 <% } else { -%>
     "noEmit": true,
@@ -48,6 +48,8 @@
 <% if(composite) { -%>
     "incremental": true,
     "composite": true,
+<% } else if(incremental) { -%>
+    "incremental": true,
 <% } -%>
 
 <% if(!presets || presets.length === 0) { -%>

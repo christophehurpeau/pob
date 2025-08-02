@@ -194,7 +194,7 @@ export default class CommonTypescriptGenerator extends Generator {
 
     if (this.options.enable) {
       const { jsx, dom } = this.options;
-      let composite;
+      let monorepoComposite;
       let monorepoPackageReferences;
       // let monorepoPackageBuildReferences;
       let monorepoPackageSrcPaths;
@@ -202,12 +202,12 @@ export default class CommonTypescriptGenerator extends Generator {
       if (inMonorepo && !inMonorepo.root) {
         const yoConfig = inMonorepo.rootYoConfig;
 
-        composite =
+        monorepoComposite =
           yoConfig.pob &&
           yoConfig.pob.monorepo &&
           yoConfig.pob.monorepo.typescript;
 
-        if (composite) {
+        if (monorepoComposite) {
           packageUtils.addOrRemoveDevDependencies(
             pkg,
             inMonorepo.rootPackageManager === "yarn",
@@ -301,7 +301,11 @@ export default class CommonTypescriptGenerator extends Generator {
           jsx,
           jsxPreserve: this.options.jsxPreserve,
           nextConfig: this.options.nextConfig,
-          composite,
+          // for apps, only enable incremental. Composite is meant for libraries to build and export before the ones depending on them.
+          composite:
+            monorepoComposite &&
+            (!this.options.isApp || this.options.isAppLibrary),
+          incremental: monorepoComposite,
           dom,
           baseUrl: this.options.baseUrl,
           resolveJsonModule: this.options.resolveJsonModule,
