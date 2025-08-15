@@ -42,6 +42,13 @@ export default class PobLibGenerator extends Generator {
       description:
         "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
+
+    this.option("ci", {
+      type: Boolean,
+      required: false,
+      default: true,
+      description: "ci enabled",
+    });
   }
 
   initializing() {
@@ -134,8 +141,10 @@ export default class PobLibGenerator extends Generator {
     } else if (this.pobjson.testing) {
       delete this.pobjson.testing.travisci;
       if ("circleci" in this.pobjson.testing) {
-        this.pobjson.testing.ci = this.pobjson.testing.circleci;
         delete this.pobjson.testing.circleci;
+      }
+      if ("ci" in this.pobjson.testing) {
+        delete this.pobjson.testing.ci;
       }
     }
 
@@ -206,13 +215,6 @@ export default class PobLibGenerator extends Generator {
 
     if (this.pobjson.testing && !(inMonorepo || inMonorepo.root)) {
       const testingPrompts = await this.prompt([
-        {
-          type: "confirm",
-          name: "ci",
-          message: "Would you like ci with github actions ?",
-          when: !this.updateOnly || this.pobjson.testing?.ci === undefined,
-          default: this.pobjson.testing.ci !== false,
-        },
         {
           type: "list",
           name: "runner",
@@ -302,8 +304,7 @@ export default class PobLibGenerator extends Generator {
 
     this.composeWith("pob:common:remove-old-dependencies");
 
-    const enableReleasePlease =
-      !inMonorepo && this.pobjson.testing && this.pobjson.testing.ci;
+    const enableReleasePlease = !inMonorepo && this.options.ci;
 
     this.composeWith("pob:common:testing", {
       enable: this.pobjson.testing,
@@ -320,7 +321,7 @@ export default class PobLibGenerator extends Generator {
       typescript: withTypescript,
       documentation: !!this.pobjson.documentation,
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
-      ci: this.pobjson.testing && this.pobjson.testing.ci,
+      ci: this.options.ci,
       packageManager: this.options.packageManager,
       isApp: false,
       splitCIJobs: false,
@@ -353,7 +354,7 @@ export default class PobLibGenerator extends Generator {
     this.composeWith("pob:lib:readme", {
       documentation: !!this.pobjson.documentation,
       testing: !!this.pobjson.testing,
-      ci: this.pobjson.testing && this.pobjson.testing.ci,
+      ci: this.options.ci,
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
     });
 
@@ -365,7 +366,7 @@ export default class PobLibGenerator extends Generator {
       withTypescript,
       isMonorepo: false,
       enableYarnVersion: true,
-      ci: this.pobjson.testing && this.pobjson.testing.ci,
+      ci: this.options.ci,
       disableYarnGitCache: this.options.disableYarnGitCache,
       updateOnly: this.options.updateOnly,
     });

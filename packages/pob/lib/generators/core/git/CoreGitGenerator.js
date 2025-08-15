@@ -25,6 +25,12 @@ export default class CoreGitGenerator extends Generator {
       required: true,
       description: "split CI jobs for faster result",
     });
+
+    this.option("ciEnabled", {
+      type: Boolean,
+      required: true,
+      description: "ci enabled",
+    });
   }
 
   async initializing() {
@@ -107,6 +113,7 @@ export default class CoreGitGenerator extends Generator {
         repoName: this.repoName,
         onlyLatestLTS: this.options.onlyLatestLTS,
         splitCIJobs: this.options.splitCIJobs,
+        ciEnabled: this.options.ciEnabled,
       });
     }
   }

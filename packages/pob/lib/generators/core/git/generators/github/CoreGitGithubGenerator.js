@@ -212,12 +212,14 @@ export default class CoreGitGithubGenerator extends Generator {
         ...githubRepoConfig,
       });
 
-      await configureProtectionRule(
-        owner,
-        repo,
-        this.options.onlyLatestLTS,
-        this.spawnCommandSync.bind(this),
-      );
+      if (this.options.ci) {
+        await configureProtectionRule(
+          owner,
+          repo,
+          this.options.onlyLatestLTS,
+          this.spawnCommandSync.bind(this),
+        );
+      }
     }
   }
 }

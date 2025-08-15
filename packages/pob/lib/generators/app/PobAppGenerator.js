@@ -9,11 +9,11 @@ const appsWithTypescript = [
   "alp",
   "next.js",
   "remix",
-  "pobpack",
+  "vite",
   "expo",
   "yarn-plugin",
 ];
-const appsWithBrowser = ["alp", "next.js", "remix"];
+const appsWithBrowser = ["alp", "next.js", "remix", "vite"];
 
 export default class PobAppGenerator extends Generator {
   constructor(args, opts) {
@@ -53,6 +53,13 @@ export default class PobAppGenerator extends Generator {
       description:
         "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
+
+    this.option("ci", {
+      type: Boolean,
+      required: false,
+      default: true,
+      description: "ci enabled",
+    });
   }
 
   initializing() {
@@ -71,6 +78,10 @@ export default class PobAppGenerator extends Generator {
   async prompting() {
     const config = this.appConfig;
 
+    if (config.ci !== undefined) {
+      delete config.ci;
+    }
+
     if (config && this.options.updateOnly) {
       this.config.set("app", this.appConfig);
       this.config.save();
@@ -85,7 +96,7 @@ export default class PobAppGenerator extends Generator {
         default: (config && config.type) || "alp",
         choices: [
           "alp",
-          "pobpack",
+          "vite",
           "next.js",
           "remix",
           "node",
@@ -117,13 +128,6 @@ export default class PobAppGenerator extends Generator {
         default: !config || false,
         when: (values) => values.testing,
       },
-      {
-        type: "confirm",
-        name: "ci",
-        message: "Do you want ci ?",
-        default: !config || config.ci === undefined ? true : config.ci,
-        when: () => !inMonorepo,
-      },
     ]);
 
     this.config.set("app", this.appConfig);
@@ -133,6 +137,11 @@ export default class PobAppGenerator extends Generator {
   default() {
     const srcDirectory =
       this.appConfig.type === "yarn-plugin" ? "sources" : "src";
+
+    if (this.appConfig.type === "pobpack") {
+      throw new Error("pobpack is no longer supported.");
+    }
+
     const buildDirectory = this.appConfig.distribute ? "dist" : "build";
     const isAppLibrary =
       this.appConfig.type === "node-library" ||
@@ -224,7 +233,7 @@ export default class PobAppGenerator extends Generator {
       baseUrl: (() => {
         if (
           this.appConfig.type === "alp" ||
-          this.appConfig.type === "pobpack" ||
+          this.appConfig.type === "vite" ||
           this.appConfig.type === "alp-node" ||
           this.appConfig.type === "next.js"
         ) {
@@ -252,7 +261,7 @@ export default class PobAppGenerator extends Generator {
     this.composeWith("pob:common:remove-old-dependencies");
 
     const enableReleasePlease =
-      !inMonorepo && this.appConfig.testing && this.appConfig.ci;
+      !inMonorepo && this.appConfig.testing && this.options.ci;
 
     if (this.appConfig.type !== "remix") {
       this.composeWith("pob:common:testing", {
@@ -270,7 +279,7 @@ export default class PobAppGenerator extends Generator {
         build: typescript === true && this.appConfig.type !== "expo",
         documentation: false,
         codecov: this.appConfig.codecov,
-        ci: this.appConfig.ci,
+        ci: this.options.ci,
         packageManager: this.options.packageManager,
         isApp: true,
         splitCIJobs: false,
@@ -310,7 +319,7 @@ export default class PobAppGenerator extends Generator {
         withBabel: babel,
         isMonorepo: false,
         enableYarnVersion: true,
-        ci: this.appConfig.ci,
+        ci: this.options.ci,
         disableYarnGitCache: this.options.disableYarnGitCache,
         updateOnly: this.options.updateOnly,
         packageManager: this.options.packageManager,
@@ -352,6 +361,9 @@ export default class PobAppGenerator extends Generator {
         break;
       case "remix":
         this.composeWith("pob:app:remix", {});
+        break;
+      case "vite":
+        this.composeWith("pob:app:vite", {});
         break;
       // no default
     }

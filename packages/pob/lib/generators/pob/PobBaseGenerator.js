@@ -60,7 +60,12 @@ export default class PobBaseGenerator extends Generator {
 
   async prompting() {
     let config = this.config.get("project");
-    if (config && config.type && config.packageManager) {
+    if (
+      config &&
+      config.type &&
+      config.packageManager &&
+      config.ci !== undefined
+    ) {
       this.projectConfig = config;
       return;
     }
@@ -113,6 +118,21 @@ export default class PobBaseGenerator extends Generator {
         type: "list",
         choices: ["node-modules", "pnp", "pnpm"],
         default: config.yarnNodeLinker || "node-modules",
+      },
+      {
+        when: () => {
+          if (this.hasAncestor) {
+            return false;
+          }
+          if (this.options.updateOnly) {
+            return config.ci === undefined;
+          }
+          return true;
+        },
+        name: "ci",
+        message: "Would you like ci with github actions ?",
+        type: "confirm",
+        default: !config || config.ci === undefined ? true : config.ci,
       },
     ]);
 
@@ -184,6 +204,7 @@ export default class PobBaseGenerator extends Generator {
       this.composeWith("pob:core:git", {
         onlyLatestLTS,
         splitCIJobs,
+        ciEnabled: this.options.ci,
       });
     } else {
       if (this.fs.exists(".git-hooks")) this.fs.delete(".git-hooks");
@@ -232,6 +253,7 @@ export default class PobBaseGenerator extends Generator {
             fromPob: this.options.fromPob,
             packageManager: this.projectConfig.packageManager,
             yarnNodeLinker: this.projectConfig.yarnNodeLinker,
+            ci: this.options.ci,
           });
           break;
         case "app":
@@ -244,6 +266,7 @@ export default class PobBaseGenerator extends Generator {
             fromPob: this.options.fromPob,
             packageManager: this.projectConfig.packageManager,
             yarnNodeLinker: this.projectConfig.yarnNodeLinker,
+            ci: this.options.ci,
           });
           break;
         default:

@@ -11,7 +11,6 @@
     "noEmit": true,
     "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo",
     "incremental": true,
-    "composite": true,
 
     "jsx": "preserve" /* 'react-jsx' is used with react/jsx-runtime (react >=17 || >= 16.14.0 | >= 15.7.0) */,
     "allowJs": true,
