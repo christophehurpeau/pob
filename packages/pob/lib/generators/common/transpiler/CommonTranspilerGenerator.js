@@ -612,6 +612,8 @@ export default class CommonTranspilerGenerator extends Generator {
     }
 
     const hasTargetNode = envs && envs.some((env) => env.target === "node");
+    const hasTargetBrowser =
+      envs && envs.some((env) => env.target === "browser");
 
     if (!pkg.engines) pkg.engines = {};
 
@@ -678,9 +680,13 @@ export default class CommonTranspilerGenerator extends Generator {
     }
 
     this.fs.delete("rollup.config.js");
+    if (!pkg.pob.typescript && pkg.pob.bundler?.startsWith("rollup-")) {
+      pkg.pob.typescript = true;
+    }
     if (
       pkg.pob.typescript === true &&
       pkg.pob.rollup !== false &&
+      pkg.pob.bundler !== false &&
       ((!pkg.pob.bundler && pkg.pob.typescript !== true) ||
         pkg.pob.bundler?.startsWith("rollup"))
     ) {
@@ -714,6 +720,41 @@ export default class CommonTranspilerGenerator extends Generator {
       pkg.pob?.bundler === "tsc"
     ) {
       this.fs.delete("rollup.config.mjs");
+    }
+
+    /* browserslist */
+
+    if (hasTargetBrowser) {
+      if (pkg.browserslist && pkg.browserslist.modern) {
+        delete pkg.browserslist.modern;
+      }
+      pkg.browserslist = {
+        ...(Array.isArray(pkg.browserslist) ? {} : pkg.browserslist),
+        production: [
+          "defaults",
+          "> 0.2%",
+          "not ie < 12",
+          "not safari < 10",
+          "not ios_saf < 10",
+        ],
+      };
+    } else if (
+      this.options.isApp &&
+      !this.options.isAppLibrary &&
+      pkg.browserslist
+    ) {
+      pkg.browserslist = {
+        ...pkg.browserslist,
+        production: [
+          "defaults",
+          "> 0.2%",
+          "not ie < 12",
+          "not safari < 10",
+          "not ios_saf < 10",
+        ],
+      };
+    } else {
+      delete pkg.browserslist;
     }
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
