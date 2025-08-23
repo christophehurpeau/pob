@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.4.0](https://github.com/christophehurpeau/pob/compare/pob@28.3.0...pob@28.4.0) (2025-08-23)
+
+### Features
+
+* add browser support to CommonTranspilerGenerator and update browserslist configuration ([3998b43](https://github.com/christophehurpeau/pob/commit/3998b43fda998d21cfebb6c3fc76bffdd28d74ae))
+* add support for browser target in CommonTypescriptGenerator ([ef8b376](https://github.com/christophehurpeau/pob/commit/ef8b376a3c46338df7c7699d72b922094f404a10))
+* add vite generator and remove legacy pobpack ([fe1fbd7](https://github.com/christophehurpeau/pob/commit/fe1fbd775aba7f3b7ef84d75ea810ca3c981b1b7))
+* disable composite for apps ([ef68e9c](https://github.com/christophehurpeau/pob/commit/ef68e9c22dc6b0880e6fa642fc30732eccc5be52))
+* update pob-eslint ([2be1db0](https://github.com/christophehurpeau/pob/commit/2be1db0467fd3b446a5e296db14cd2e940244403))
+* update yarn ([a70a7f5](https://github.com/christophehurpeau/pob/commit/a70a7f5275293b43f53905584311d13fa1e39786))
+
+### Bug Fixes
+
+* **deps:** update dependency @types/inquirer to v9.0.9 ([#2552](https://github.com/christophehurpeau/pob/issues/2552)) ([0110216](https://github.com/christophehurpeau/pob/commit/01102163321e162d81d0f2f39484916bfdd59b9c))
+* refine bundler check in CommonTranspilerGenerator to exclude rollup-babel ([4ca64c7](https://github.com/christophehurpeau/pob/commit/4ca64c7d77aa33d9f5bea2259396bfc7623f1c81))
+* remove polyfill.io reference ([1a1d8fd](https://github.com/christophehurpeau/pob/commit/1a1d8fd6452cf73fc4742c671e0ee1a3bca45d90))
+* update to node 22 ([212c133](https://github.com/christophehurpeau/pob/commit/212c133a06a1e361aadab5c01357a5a330e14007))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [28.3.0](https://github.com/christophehurpeau/pob/compare/pob@28.2.1...pob@28.3.0) (2025-06-28)
 
 ### Features

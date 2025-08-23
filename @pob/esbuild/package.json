@@ -1,6 +1,6 @@
 {
   "name": "@pob/esbuild",
-  "version": "4.0.5",
+  "version": "4.0.6",
   "description": "esbuild configuration for pob",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",

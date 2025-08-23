@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.6](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@4.0.5...@pob/esbuild@4.0.6) (2025-08-23)
+
+### Bug Fixes
+
+* **deps:** update dependency esbuild to v0.25.9 ([#2549](https://github.com/christophehurpeau/pob/issues/2549)) ([c43cba4](https://github.com/christophehurpeau/pob/commit/c43cba4845747d03f8200cdead9625b82fd0b88a))
+
 ## [4.0.5](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@4.0.4...@pob/esbuild@4.0.5) (2025-06-28)
 
 ### Bug Fixes

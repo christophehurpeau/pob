@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@18.2.0...@pob/root@18.3.0) (2025-08-23)
+
+### Features
+
+* run eslint on package.json change ([e2de0ed](https://github.com/christophehurpeau/pob/commit/e2de0edb7e404023415a5f3fb1b2fecfa73af166))
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v16.1.5 ([#2553](https://github.com/christophehurpeau/pob/issues/2553)) ([d82b99c](https://github.com/christophehurpeau/pob/commit/d82b99c900482bf51e033f88dba59ac0ee141ec9))
+* update to node 22 ([212c133](https://github.com/christophehurpeau/pob/commit/212c133a06a1e361aadab5c01357a5a330e14007))
+
+Version bump for dependency: yarn-version
+
+
 ## [18.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@18.1.1...@pob/root@18.2.0) (2025-06-28)
 
 ### Features

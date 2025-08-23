@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.0](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.13.3...@pob-example/next-app@0.14.0) (2025-08-23)
+
+### Features
+
+* add vite generator and remove legacy pobpack ([fe1fbd7](https://github.com/christophehurpeau/pob/commit/fe1fbd775aba7f3b7ef84d75ea810ca3c981b1b7))
+* **deps:** update dependency next to v15.4.5 ([#2538](https://github.com/christophehurpeau/pob/issues/2538)) ([1bd5a1f](https://github.com/christophehurpeau/pob/commit/1bd5a1fdd1acb414eef38b70a913638e4b56423f))
+
 ## [0.13.3](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.13.2...@pob-example/next-app@0.13.3) (2025-06-28)
 
 ### Bug Fixes

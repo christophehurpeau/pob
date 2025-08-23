@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.7.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@6.6.0...@pob/rollup-esbuild@6.7.0) (2025-08-23)
+
+### Features
+
+* enhance createRollupConfig to support environment-specific extensions ([d7f0d50](https://github.com/christophehurpeau/pob/commit/d7f0d50d139d8b92c56c6f6df24433e219c81fb7))
+
+### Bug Fixes
+
+* **deps:** update dependency esbuild to v0.25.9 ([#2549](https://github.com/christophehurpeau/pob/issues/2549)) ([c43cba4](https://github.com/christophehurpeau/pob/commit/c43cba4845747d03f8200cdead9625b82fd0b88a))
+
 ## [6.6.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@6.5.1...@pob/rollup-esbuild@6.6.0) (2025-06-28)
 
 ### Features

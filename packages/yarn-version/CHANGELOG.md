@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.0](https://github.com/christophehurpeau/pob/compare/yarn-version@7.1.0...yarn-version@7.2.0) (2025-08-23)
+
+### Features
+
+* update octokit/rest ([ddc23ce](https://github.com/christophehurpeau/pob/commit/ddc23ce4703965fd80b8cff814ddc4e3f60b0395))
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [7.1.0](https://github.com/christophehurpeau/pob/compare/yarn-version@7.0.3...yarn-version@7.1.0) (2025-06-28)
 
 ### Features

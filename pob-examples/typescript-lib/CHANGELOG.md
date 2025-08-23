@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.45.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.44.0...example-typescript-lib@0.45.0) (2025-08-23)
+
+### Features
+
+* update babel ([3a471d9](https://github.com/christophehurpeau/pob/commit/3a471d9177e9b2af256982e14dbb12ee90f92f4a))
+
+### Bug Fixes
+
+* **deps:** update babel monorepo to v7.28.3 ([#2550](https://github.com/christophehurpeau/pob/issues/2550)) ([3b8a85b](https://github.com/christophehurpeau/pob/commit/3b8a85bdb43e87eaa5f5f4866460c06fba9a64ec))
+
+Version bump for dependency: pob-babel
+
+
 ## [0.44.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.43.1...example-typescript-lib@0.44.0) (2025-06-28)
 
 ### Features
