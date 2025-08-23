@@ -31,7 +31,10 @@ export default function createRollupConfig({
 
   const createConfigForEnv = (entry, entryPath, env) => {
     const extensions = getExtensions(
-      [".ts", jsx && ".tsx", ".json"],
+      [".ts", jsx && ".tsx", ".json"].flatMap((ext) => [
+        `.target-${env.target}${ext}`,
+        `${ext}`,
+      ]),
       env,
     ).filter(Boolean);
 
