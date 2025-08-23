@@ -680,7 +680,11 @@ export default class CommonTranspilerGenerator extends Generator {
     }
 
     this.fs.delete("rollup.config.js");
-    if (!pkg.pob.typescript && pkg.pob.bundler?.startsWith("rollup-")) {
+    if (
+      !pkg.pob.typescript &&
+      pkg.pob.bundler?.startsWith("rollup-") &&
+      pkg.pob.bundler !== "rollup-babel"
+    ) {
       pkg.pob.typescript = true;
     }
     if (
