@@ -3654,7 +3654,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob-example/next-app@workspace:pob-examples/next-app"
   dependencies:
-    "@types/node": "npm:22.16.2"
+    "@types/node": "npm:22.17.2"
     "@types/react": "npm:18.3.20"
     "@types/react-dom": "npm:18.3.6"
     next: "npm:15.4.5"
@@ -3675,7 +3675,7 @@ __metadata:
   resolution: "@pob/codemods@workspace:@pob/codemods"
   dependencies:
     "@types/jscodeshift": "npm:17.3.0"
-    "@types/node": "npm:22.16.2"
+    "@types/node": "npm:22.17.2"
     jscodeshift: "npm:17.3.0"
   bin:
     pob-migrate: ./bin/migrate.mjs
@@ -4845,12 +4845,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:22.16.2, @types/node@npm:>=16.18.31, @types/node@npm:>=18, @types/node@npm:>=20.0.0":
-  version: 22.16.2
-  resolution: "@types/node@npm:22.16.2"
+"@types/node@npm:*, @types/node@npm:22.17.2, @types/node@npm:>=16.18.31, @types/node@npm:>=18, @types/node@npm:>=20.0.0":
+  version: 22.17.2
+  resolution: "@types/node@npm:22.17.2"
   dependencies:
     undici-types: "npm:~6.21.0"
-  checksum: 10c0/4b5e34ca73cceb2630ae2ca46cc8fe1173e0026edb24dcd203cb7cfa788f0bab84b0d8599c32aedbc506a519acc5027177ce8b47a4f63e4f7887808499fec6a3
+  checksum: 10c0/23cd13aa35da6322a6d66cf4b3a45dbd40764ba726ab8681960270156c3abba776dd8dc173250c467f708d40612ecd725755d7659b775b513904680d5205eaff
   languageName: node
   linkType: hard
 
@@ -9265,7 +9265,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:7.28.3"
     "@babel/preset-env": "npm:7.28.3"
-    "@types/node": "npm:22.16.2"
+    "@types/node": "npm:22.17.2"
     pob-babel: "npm:43.7.0"
     typescript: "npm:5.8.3"
   languageName: unknown
@@ -13937,7 +13937,7 @@ __metadata:
     "@swc/core": "npm:1.13.3"
     "@swc/jest": "npm:0.2.39"
     "@types/jest": "npm:30.0.0"
-    "@types/node": "npm:22.16.2"
+    "@types/node": "npm:22.17.2"
     "@vitest/coverage-v8": "npm:3.2.4"
     alp-rollup-plugin-config: "npm:2.2.1"
     check-package-dependencies: "npm:10.3.0"
@@ -13990,7 +13990,7 @@ __metadata:
     "@pob/sort-pkg": "npm:11.0.3"
     "@prettier/sync": "npm:0.6.1"
     "@types/inquirer": "npm:9.0.9"
-    "@types/node": "npm:22.16.2"
+    "@types/node": "npm:22.17.2"
     "@yarnpkg/cli": "npm:4.9.2"
     "@yarnpkg/core": "npm:4.4.2"
     "@yarnpkg/fslib": "npm:3.1.2"
@@ -17324,7 +17324,7 @@ __metadata:
     "@octokit/rest": "npm:22.0.0"
     "@pob/pretty-pkg": "npm:12.2.0"
     "@pob/rollup-esbuild": "npm:6.6.0"
-    "@types/node": "npm:22.16.2"
+    "@types/node": "npm:22.17.2"
     "@types/npmcli__map-workspaces": "npm:3.0.4"
     commander: "npm:14.0.0"
     conventional-changelog-conventionalcommits: "npm:8.0.0"
