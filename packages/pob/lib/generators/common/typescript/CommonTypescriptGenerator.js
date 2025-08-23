@@ -165,6 +165,9 @@ export default class CommonTypescriptGenerator extends Generator {
             }-node-${nodeVersion}.json`,
           ];
         }
+        if (envs && envs.some((env) => env.target === "browser")) {
+          return ["@pob/root/tsconfigs/targets/rollup-es2015-with-dom.json"];
+        }
         return ["@pob/root/tsconfigs/targets/rollup-es2015.json"];
       }
 
