@@ -29,7 +29,6 @@ interface Dependencies {
   "repository-check-dirty": "10.0.2";
   rollup: "4.44.1";
   semver: "7.7.2";
-  "ts-node": "npm:ts-node-lite@11.0.0-beta.1";
   tslib: "2.8.1";
   typedoc: "0.28.10";
   typescript: "5.8.3";

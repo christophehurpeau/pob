@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { chmodSync, readFileSync } from "node:fs";
 import path from "node:path";
 import { nodeFormatToExt, resolveEntry } from "@pob/rollup";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
@@ -118,6 +118,24 @@ export default function createRollupConfig({
         })(),
 
         ...(typeof plugins === "function" ? plugins(env) : plugins),
+
+        env.executable
+          ? [
+              {
+                name: "@pob/rollup-esbuild/executable-plugin",
+                writeBundle(options, bundle) {
+                  Object.entries(bundle).forEach(([key, value]) => {
+                    if (value.isEntry) {
+                      chmodSync(
+                        path.join(cwd, outDirectory, value.fileName),
+                        0o755,
+                      );
+                    }
+                  });
+                },
+              },
+            ]
+          : [],
       ].filter(Boolean),
     };
   };
@@ -128,7 +146,7 @@ export default function createRollupConfig({
       pobConfig.envs || [
         {
           target: "node",
-          version: "20",
+          version: "22",
         },
       ];
     const entryPath = resolveEntry(cwd, entryName);

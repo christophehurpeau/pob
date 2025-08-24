@@ -67,7 +67,6 @@ export default function createRollupConfig({
       case "16":
       case "18":
       case "20":
-        return "20.9";
       case "22":
         return "22.14";
       default:

@@ -1,5 +1,5 @@
 import Generator from "yeoman-generator";
-import { latestLTS } from "../../../utils/node.js";
+import { latestLTS } from "../../../utils/nodeVersions.js";
 import * as packageUtils from "../../../utils/package.js";
 
 export default class CommonReleaseGenerator extends Generator {

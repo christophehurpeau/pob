@@ -1,5 +1,5 @@
 import Generator from "yeoman-generator";
-import { latestLTS, maintenanceLTS } from "../../../utils/node.js";
+import { latestLTS, maintenanceLTS } from "../../../utils/nodeVersions.js";
 import * as packageUtils from "../../../utils/package.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
@@ -106,7 +106,9 @@ export default class CommonBabelGenerator extends Generator {
               env.version === "16" ||
               env.version === "18" ||
               env.version === "20" ||
+              env.version === "22" ||
               (this.options.onlyLatestLTS &&
+                maintenanceLTS !== latestLTS &&
                 env.version === `${maintenanceLTS}`)
             ) {
               return this.options.onlyLatestLTS
@@ -162,14 +164,14 @@ export default class CommonBabelGenerator extends Generator {
           default: nodeVersions,
           choices: [
             {
-              name: "22 (Active LTS)",
+              name: `${latestLTS} (Active LTS)`,
               value: `${latestLTS}`,
             },
-            {
-              name: "20 (Maintenance LTS)",
+            latestLTS !== maintenanceLTS && {
+              name: `${maintenanceLTS} (Maintenance LTS)`,
               value: `${maintenanceLTS}`,
             },
-          ],
+          ].filter(Boolean),
         },
 
         // {

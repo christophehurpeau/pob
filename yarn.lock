@@ -1841,15 +1841,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@cspotcode/source-map-support@npm:^0.8.0":
-  version: 0.8.1
-  resolution: "@cspotcode/source-map-support@npm:0.8.1"
-  dependencies:
-    "@jridgewell/trace-mapping": "npm:0.3.9"
-  checksum: 10c0/05c5368c13b662ee4c122c7bfbe5dc0b613416672a829f3e78bc49a357a197e0218d6e74e7c66cfcd04e15a179acab080bd3c69658c9fbefd0e1ccd950a07fc6
-  languageName: node
-  linkType: hard
-
 "@discoveryjs/json-ext@npm:^0.6.1":
   version: 0.6.3
   resolution: "@discoveryjs/json-ext@npm:0.6.3"
@@ -2822,7 +2813,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jridgewell/resolve-uri@npm:^3.0.3, @jridgewell/resolve-uri@npm:^3.1.0":
+"@jridgewell/resolve-uri@npm:^3.1.0":
   version: 3.1.2
   resolution: "@jridgewell/resolve-uri@npm:3.1.2"
   checksum: 10c0/d502e6fb516b35032331406d4e962c21fe77cdf1cbdb49c6142bcbd9e30507094b18972778a6e27cbad756209cfe34b1a27729e6fa08a2eb92b33943f680cf1e
@@ -2839,20 +2830,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@jridgewell/sourcemap-codec@npm:^1.4.10, @jridgewell/sourcemap-codec@npm:^1.4.14, @jridgewell/sourcemap-codec@npm:^1.5.0":
+"@jridgewell/sourcemap-codec@npm:^1.4.14, @jridgewell/sourcemap-codec@npm:^1.5.0":
   version: 1.5.0
   resolution: "@jridgewell/sourcemap-codec@npm:1.5.0"
   checksum: 10c0/2eb864f276eb1096c3c11da3e9bb518f6d9fc0023c78344cdc037abadc725172c70314bdb360f2d4b7bffec7f5d657ce006816bc5d4ecb35e61b66132db00c18
-  languageName: node
-  linkType: hard
-
-"@jridgewell/trace-mapping@npm:0.3.9":
-  version: 0.3.9
-  resolution: "@jridgewell/trace-mapping@npm:0.3.9"
-  dependencies:
-    "@jridgewell/resolve-uri": "npm:^3.0.3"
-    "@jridgewell/sourcemap-codec": "npm:^1.4.10"
-  checksum: 10c0/fa425b606d7c7ee5bfa6a31a7b050dd5814b4082f318e0e4190f991902181b4330f43f4805db1dd4f2433fd0ed9cc7a7b9c2683f1deeab1df1b0a98b1e24055b
   languageName: node
   linkType: hard
 
@@ -6662,13 +6643,6 @@ __metadata:
     delegates: "npm:^1.0.0"
     readable-stream: "npm:^2.0.6"
   checksum: 10c0/56234fa447056b6acc70419a4434db0aff5a17dba4fa034561d4c83882abd690bf5a6face9d0160dee2e20035c10a7b31d3562726512321ef49db41cc04c8dd8
-  languageName: node
-  linkType: hard
-
-"arg@npm:^4.1.0":
-  version: 4.1.3
-  resolution: "arg@npm:4.1.3"
-  checksum: 10c0/070ff801a9d236a6caa647507bdcc7034530604844d64408149a26b9e87c2f97650055c0f049abd1efc024b334635c01f29e0b632b371ac3f26130f4cf65997a
   languageName: node
   linkType: hard
 
@@ -13950,7 +13924,6 @@ __metadata:
     repository-check-dirty: "npm:10.0.2"
     rollup: "npm:4.44.1"
     semver: "npm:7.7.2"
-    ts-node: "npm:ts-node-lite@11.0.0-beta.1"
     tslib: "npm:2.8.1"
     typedoc: "npm:0.28.10"
     typescript: "npm:5.8.3"
@@ -13965,6 +13938,7 @@ __metadata:
     "@babel/core": "npm:7.28.3"
     "@pob/eslint-config": "npm:61.1.0"
     "@pob/eslint-config-typescript": "npm:61.1.0"
+    "@pob/rollup-esbuild": "npm:6.7.0"
     "@pob/root": "workspace:*"
     "@types/jest": "npm:30.0.0"
     check-package-dependencies: "npm:10.3.0"
@@ -16189,25 +16163,6 @@ __metadata:
   peerDependencies:
     typescript: ">=4.0.0"
   checksum: 10c0/b579b7630907052cc174b051dffdb169424824d887d8fb5abdc61e7ab0eede348c2b71c998727b9e4b314c0436f5003a15bb7eedb1c851afe96e12499f159630
-  languageName: node
-  linkType: hard
-
-"ts-node@npm:ts-node-lite@11.0.0-beta.1":
-  version: 11.0.0-beta.1
-  resolution: "ts-node-lite@npm:11.0.0-beta.1"
-  dependencies:
-    "@cspotcode/source-map-support": "npm:^0.8.0"
-    arg: "npm:^4.1.0"
-  peerDependencies:
-    "@types/node": "*"
-    typescript: ">=4.4"
-  bin:
-    ts-node: dist/bin.js
-    ts-node-cwd: dist/bin-cwd.js
-    ts-node-esm: dist/bin-esm.js
-    ts-node-script: dist/bin-script.js
-    ts-node-transpile-only: dist/bin-transpile.js
-  checksum: 10c0/778998b9f1e9478462d0093a617c25c30f3be96c88a3bb777be2437f07f93f0354b715b5b4b20f81633200453d5f2988ad32e29b3b70f8de1a8eeaeec23ffd70
   languageName: node
   linkType: hard
 

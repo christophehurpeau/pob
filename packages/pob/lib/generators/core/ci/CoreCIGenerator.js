@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
-import { latestLTS, maintenanceLTS } from "../../../utils/node.js";
+import { latestLTS, maintenanceLTS } from "../../../utils/nodeVersions.js";
 import * as packageUtils from "../../../utils/package.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 

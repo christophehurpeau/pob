@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import semver from "semver";
 import Generator from "yeoman-generator";
-import { latestLTS, maintenanceLTS } from "../../../utils/node.js";
+import { latestLTS, maintenanceLTS } from "../../../utils/nodeVersions.js";
 import * as packageUtils from "../../../utils/package.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
@@ -332,7 +332,7 @@ export default class CommonTranspilerGenerator extends Generator {
       pkg.pob.envs || [
         {
           target: "node",
-          version: "18",
+          version: "22",
         },
       ];
 
@@ -582,7 +582,7 @@ export default class CommonTranspilerGenerator extends Generator {
         envs.some(
           (env) =>
             env.target === "node" &&
-            (["8", "6", "10", "12", "14", "16", "18"].includes(
+            (["8", "6", "10", "12", "14", "16", "18", "20"].includes(
               String(env.version),
             ) ||
               (this.options.onlyLatestLTS &&
@@ -594,7 +594,8 @@ export default class CommonTranspilerGenerator extends Generator {
           version: this.options.onlyLatestLTS
             ? `${latestLTS}`
             : `${maintenanceLTS}`,
-          omitVersionInFileName: this.options.onlyLatestLTS ? true : undefined,
+          omitVersionInFileName:
+            this.options.onlyLatestLTS || envs.length === 1 ? true : undefined,
         });
       }
       envs = envs.filter(
@@ -636,16 +637,17 @@ export default class CommonTranspilerGenerator extends Generator {
         case "16":
         case "18":
         case "20":
+        case "22":
           if (
             envs ||
             !pkg.engines.node ||
-            !pkg.engines.node.startsWith(">=22")
+            !pkg.engines.node.startsWith(">=24")
           ) {
-            pkg.engines.node = ">=20.11.0";
+            pkg.engines.node = ">=22.18.0";
           }
           break;
-        case "22":
-          pkg.engines.node = ">=22.14.0";
+        case "24":
+          pkg.engines.node = ">=24.0.0";
           break;
         default:
           throw new Error(`Invalid min node version: ${minNodeVersion}`);
@@ -669,7 +671,7 @@ export default class CommonTranspilerGenerator extends Generator {
       packageUtils.removeDevDependencies(pkg, ["@types/node"]);
 
       // Supports oldest current or active LTS version of node
-      const minVersion = this.options.onlyLatestLTS ? "22.14.0" : "20.11.0";
+      const minVersion = this.options.onlyLatestLTS ? "22.18.0" : "22.18.0";
 
       if (
         !pkg.engines.node ||

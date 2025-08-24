@@ -13,7 +13,7 @@
   "homepage": "https://github.com/christophehurpeau/pob",
   "type": "module",
   "engines": {
-    "node": ">=20.11.0"
+    "node": ">=22.18.0"
   },
   "sideEffects": false,
   "bin": {
@@ -37,16 +37,13 @@
     "./prettier-config.cjs": "./prettier-config.cjs",
     "./tsconfigs/base.json": "./tsconfigs/base.json",
     "./tsconfigs/strict.json": "./tsconfigs/strict.json",
-    "./tsconfigs/targets/node-20.json": "./tsconfigs/targets/node-20.json",
     "./tsconfigs/targets/node-22.json": "./tsconfigs/targets/node-22.json",
     "./tsconfigs/targets/rollup-babel.json": "./tsconfigs/targets/rollup-babel.json",
     "./tsconfigs/targets/rollup-babel-with-dom.json": "./tsconfigs/targets/rollup-babel-with-dom.json",
     "./tsconfigs/targets/rollup-es2015.json": "./tsconfigs/targets/rollup-es2015.json",
     "./tsconfigs/targets/rollup-es2015-with-dom.json": "./tsconfigs/targets/rollup-es2015-with-dom.json",
     "./tsconfigs/targets/webpack.json": "./tsconfigs/targets/webpack.json",
-    "./tsconfigs/targets/rollup-node-20.json": "./tsconfigs/targets/rollup-node-20.json",
     "./tsconfigs/targets/rollup-node-22.json": "./tsconfigs/targets/rollup-node-22.json",
-    "./tsconfigs/targets/esbuild-node-20.json": "./tsconfigs/targets/esbuild-node-20.json",
     "./tsconfigs/targets/esbuild-node-22.json": "./tsconfigs/targets/esbuild-node-22.json",
     "./package.json": "./package.json"
   },

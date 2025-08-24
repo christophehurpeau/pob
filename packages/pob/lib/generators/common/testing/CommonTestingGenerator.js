@@ -2,7 +2,6 @@ import fs from "node:fs";
 import path from "node:path";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
-import { latestLTS, maintenanceLTS } from "../../../utils/node.js";
 import * as packageUtils from "../../../utils/package.js";
 import {
   copyAndFormatTpl,
@@ -195,12 +194,10 @@ export default class CommonTestingGenerator extends Generator {
       if (testRunner === "vitest") return undefined;
       if (!withTypescript) return undefined;
       if (this.options.swc || isJestRunner) return "swc";
-      if (this.options.onlyLatestLTS) return "node";
-      return "ts-node";
+      return "node";
     })();
 
     const dependenciesForTestUtil = {
-      "ts-node": { devDependenciesShared: ["ts-node"] },
       swc: {
         devDependenciesShared: ["@swc/core"],
         devDependenciesWithJest: ["@swc/jest"],
@@ -273,9 +270,7 @@ export default class CommonTestingGenerator extends Generator {
     const tsTestLoaderOption = (() => {
       switch (tsTestUtil) {
         case "node":
-          return "--disable-warning=ExperimentalWarning --experimental-strip-types";
-        case "ts-node":
-          return "--loader=ts-node/esm --experimental-specifier-resolution=node";
+          return "";
         case "swc":
           return "--import=@swc-node/register/esm";
 
@@ -314,10 +309,6 @@ export default class CommonTestingGenerator extends Generator {
           }
           const experimentalTestCoverage = false; // todo configure src directory and remove test files
           return `TZ=UTC ${
-            tsTestUtil === "ts-node"
-              ? "TS_NODE_PROJECT=tsconfig.test.json "
-              : ""
-          }${
             coverage || coverageJson
               ? `npx c8${
                   coverageJson
@@ -491,21 +482,7 @@ export default class CommonTestingGenerator extends Generator {
           }
         } else {
           const tsconfigTestPath = this.destinationPath("tsconfig.test.json");
-          if (tsTestUtil === "ts-node" && withTypescript) {
-            const nodeVersion = this.options.onlyLatestLTS
-              ? `${latestLTS}`
-              : `${maintenanceLTS}`;
-            copyAndFormatTpl(
-              this.fs,
-              this.templatePath("tsconfig.test.json.ejs"),
-              tsconfigTestPath,
-              {
-                nodeVersion,
-              },
-            );
-          } else {
-            this.fs.delete(tsconfigTestPath);
-          }
+          this.fs.delete(tsconfigTestPath);
 
           if (globalTesting) {
             if (pkg.scripts) {

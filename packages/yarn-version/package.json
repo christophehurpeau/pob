@@ -19,7 +19,7 @@
   "homepage": "https://github.com/christophehurpeau/pob",
   "type": "module",
   "engines": {
-    "node": ">=20.11.0"
+    "node": ">=22.18.0"
   },
   "bin": "./dist/index-node.mjs",
   "main": "./dist/index-node.mjs",
@@ -33,7 +33,7 @@
     }
   },
   "scripts": {
-    "build": "yarn clean:build && rollup --config rollup.config.mjs && chmod a+x dist/index-node.mjs",
+    "build": "yarn clean:build && rollup --config rollup.config.mjs",
     "clean": "yarn clean:build",
     "clean:build": "pob-esbuild-clean-out dist",
     "lint": "yarn run lint:eslint",
@@ -49,8 +49,9 @@
     "envs": [
       {
         "target": "node",
-        "version": "20",
-        "omitVersionInFileName": true
+        "version": "22",
+        "omitVersionInFileName": true,
+        "executable": true
       }
     ],
     "typescript": true

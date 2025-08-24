@@ -1,7 +1,7 @@
 import { rmSync } from "node:fs";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../utils/inMonorepo.js";
-import { latestLTS } from "../../utils/node.js";
+import { latestLTS } from "../../utils/nodeVersions.js";
 import * as packageUtils from "../../utils/package.js";
 
 export default class PobLibGenerator extends Generator {
