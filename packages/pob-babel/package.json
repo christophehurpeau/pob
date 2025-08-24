@@ -80,6 +80,6 @@
     "semver": "^7.3.7"
   },
   "devDependencies": {
-    "typescript": "5.8.3"
+    "typescript": "5.9.2"
   }
 }
