@@ -16,7 +16,7 @@
     "allowJs": true,
     "strictNullChecks": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "lib": ["dom", "esnext"],
     "esModuleInterop": true,
     "isolatedModules": true,
