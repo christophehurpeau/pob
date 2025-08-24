@@ -47,7 +47,7 @@
     "@pob/root": "workspace:*",
     "@types/jest": "30.0.0",
     "check-package-dependencies": "10.3.0",
-    "eslint": "9.30.0",
+    "eslint": "9.34.0",
     "eslint-plugin-jest": "29.0.1",
     "jest": "30.0.5",
     "pob-babel": "workspace:*",
