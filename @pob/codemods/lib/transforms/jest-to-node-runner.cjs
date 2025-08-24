@@ -52,12 +52,10 @@ module.exports = (file, api, options) => {
       })
       .replaceWith((p) => {
         const { value } = p;
-        topLevelMethodsUsed.add(value.callee.name);
+        const replaceValue = jestToNodeGlobalMethods[value.callee.name];
+        topLevelMethodsUsed.add(replaceValue);
 
-        return j.callExpression(
-          j.identifier(jestToNodeGlobalMethods[value.callee.name]),
-          value.arguments,
-        );
+        return j.callExpression(j.identifier(replaceValue), value.arguments);
       });
 
     if (topLevelMethodsUsed.size > 0) {
