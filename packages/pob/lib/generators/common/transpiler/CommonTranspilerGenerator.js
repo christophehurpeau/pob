@@ -328,7 +328,7 @@ export default class CommonTranspilerGenerator extends Generator {
     delete pkg["browser-dev"];
     delete pkg["module-dev"];
 
-    const envs = pkg.pob.babelEnvs ||
+    let envs = pkg.pob.babelEnvs ||
       pkg.pob.envs || [
         {
           target: "node",
@@ -554,19 +554,19 @@ export default class CommonTranspilerGenerator extends Generator {
         pkg.exports["."] = { types: pkg.types, ...pkg.exports["."] };
       }
     }
+    if (
+      !pkg.pob.typescript &&
+      pkg.pob.bundler?.startsWith("rollup-") &&
+      pkg.pob.bundler !== "rollup-babel"
+    ) {
+      pkg.pob.typescript = true;
+    }
 
     Object.keys(pkg).forEach((key) => {
       if (!key.startsWith("module:") && !key.startsWith("webpack:")) return;
       delete pkg[key];
     });
 
-    this.fs.writeJSON(this.destinationPath("package.json"), pkg);
-  }
-
-  writing() {
-    const pkg = this.fs.readJSON(this.destinationPath("package.json"));
-    const entries = pkg.pob.entries || ["index"];
-    let envs = pkg.pob.envs || pkg.pob.babelEnvs;
     delete pkg.pob.withReact;
 
     if (envs) {
@@ -611,6 +611,14 @@ export default class CommonTranspilerGenerator extends Generator {
         pkg.pob.envs = envs;
       }
     }
+
+    this.fs.writeJSON(this.destinationPath("package.json"), pkg);
+  }
+
+  writing() {
+    const pkg = this.fs.readJSON(this.destinationPath("package.json"));
+    const entries = pkg.pob.entries || ["index"];
+    const envs = pkg.pob.envs || pkg.pob.babelEnvs;
 
     const hasTargetNode = envs && envs.some((env) => env.target === "node");
     const hasTargetBrowser =
@@ -682,13 +690,6 @@ export default class CommonTranspilerGenerator extends Generator {
     }
 
     this.fs.delete("rollup.config.js");
-    if (
-      !pkg.pob.typescript &&
-      pkg.pob.bundler?.startsWith("rollup-") &&
-      pkg.pob.bundler !== "rollup-babel"
-    ) {
-      pkg.pob.typescript = true;
-    }
     if (
       pkg.pob.typescript === true &&
       pkg.pob.rollup !== false &&

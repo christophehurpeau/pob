@@ -314,7 +314,12 @@ export default class CommonBabelGenerator extends Generator {
     } else if (pkg.dependencies && pkg.dependencies["pob-babel"] && !useBabel) {
       packageUtils.removeDevDependencies(pkg, ["@babel/core"]);
     }
-    packageUtils.addOrRemoveDevDependencies(pkg, useBabel, ["pob-babel"]);
+    if (!useBabel && pkg.devDependencies && pkg.devDependencies["pob-babel"]) {
+      packageUtils.removeDevDependencies(pkg, ["pob-babel", "@babel/core"]);
+      packageUtils.removeDependencies(pkg, ["@babel/runtime"]);
+    } else {
+      packageUtils.addOrRemoveDevDependencies(pkg, useBabel, ["pob-babel"]);
+    }
 
     if (pkg.dependencies && pkg.dependencies["pob-babel"]) {
       // update pob-babel in alp-dev
