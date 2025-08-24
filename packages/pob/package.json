@@ -53,7 +53,7 @@
     "@yarnpkg/cli": "4.9.3",
     "@yarnpkg/core": "4.4.3",
     "@yarnpkg/fslib": "3.1.2",
-    "@yeoman/types": "1.6.0",
+    "@yeoman/types": "1.7.1",
     "eslint": "9.34.0",
     "findup-sync": "^5.0.0",
     "git-remote-url": "^1.0.1",
