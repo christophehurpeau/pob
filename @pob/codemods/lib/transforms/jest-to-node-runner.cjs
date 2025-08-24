@@ -93,7 +93,9 @@ module.exports = (file, api, options) => {
         }
 
         if (!propertiesMap[propertyName]) {
-          console.warn(`Unsupported expect property: ${propertyName}`);
+          console.warn(
+            `Unsupported expect property: ${propertyName} in ${file.path}`,
+          );
           return;
         }
 
