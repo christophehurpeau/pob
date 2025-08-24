@@ -204,7 +204,7 @@ export default class PobBaseGenerator extends Generator {
       this.composeWith("pob:core:git", {
         onlyLatestLTS,
         splitCIJobs,
-        ciEnabled: this.options.ci,
+        ciEnabled: this.projectConfig.ci,
       });
     } else {
       if (this.fs.exists(".git-hooks")) this.fs.delete(".git-hooks");
@@ -253,7 +253,7 @@ export default class PobBaseGenerator extends Generator {
             fromPob: this.options.fromPob,
             packageManager: this.projectConfig.packageManager,
             yarnNodeLinker: this.projectConfig.yarnNodeLinker,
-            ci: this.options.ci,
+            ci: this.projectConfig.ci,
           });
           break;
         case "app":
@@ -266,7 +266,7 @@ export default class PobBaseGenerator extends Generator {
             fromPob: this.options.fromPob,
             packageManager: this.projectConfig.packageManager,
             yarnNodeLinker: this.projectConfig.yarnNodeLinker,
-            ci: this.options.ci,
+            ci: this.projectConfig.ci,
           });
           break;
         default:
