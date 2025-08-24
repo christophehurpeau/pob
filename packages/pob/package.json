@@ -69,7 +69,7 @@
     "pob-dependencies": "workspace:*",
     "prettier": "3.6.2",
     "semver": "7.7.2",
-    "typescript": "5.8.3",
+    "typescript": "5.9.2",
     "validate-npm-package-name": "^6.0.1",
     "yarn-workspace-utils": "9.0.0",
     "yeoman-environment": "4.4.3",
