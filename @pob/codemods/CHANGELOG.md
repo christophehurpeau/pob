@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.1](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.10.0...@pob/codemods@0.10.1) (2025-08-24)
+
+### Bug Fixes
+
+* exclude node_modules from glob search in migrate script for improved file matching ([46b951d](https://github.com/christophehurpeau/pob/commit/46b951dcfd953e7300c2214c25d208a5b27c2be0))
+
 ## [0.10.0](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.9.4...@pob/codemods@0.10.0) (2025-08-24)
 
 ### ⚠ BREAKING CHANGES

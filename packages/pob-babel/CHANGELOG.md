@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.1.0](https://github.com/christophehurpeau/pob/compare/pob-babel@44.0.0...pob-babel@44.1.0) (2025-08-24)
+
+### Features
+
+* update typescript ([fbe3295](https://github.com/christophehurpeau/pob/commit/fbe3295071c209e4bd58d8b2030607a19e3ccb54))
+
 ## [44.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@43.8.0...pob-babel@44.0.0) (2025-08-24)
 
 ### ⚠ BREAKING CHANGES

@@ -1,6 +1,6 @@
 {
   "name": "pob-dependencies",
-  "version": "20.0.0",
+  "version": "20.1.0",
   "description": "easier dependencies upgrade with a real package.json",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -63,7 +63,7 @@
     "jest": "30.0.5",
     "jest-junit-reporter": "1.1.0",
     "pinst": "3.0.0",
-    "pob-babel": "44.0.0",
+    "pob-babel": "44.1.0",
     "prettier": "3.6.2",
     "repository-check-dirty": "11.0.0",
     "rollup": "4.44.1",

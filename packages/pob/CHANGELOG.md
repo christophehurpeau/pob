@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.1.0](https://github.com/christophehurpeau/pob/compare/pob@29.0.0...pob@29.1.0) (2025-08-24)
+
+### Features
+
+* **deps:** update dependency eslint to v9.34.0 ([#2559](https://github.com/christophehurpeau/pob/issues/2559)) ([54fa249](https://github.com/christophehurpeau/pob/commit/54fa249bb7fbe343f0bfb1d94d05b59d70f7b39e))
+* **deps:** upgrade yarn to version 4.9.3 and update related dependencies ([1edd0bf](https://github.com/christophehurpeau/pob/commit/1edd0bf4cedb355171d395fc27a91cf7ce92d966))
+* update typescript ([fbe3295](https://github.com/christophehurpeau/pob/commit/fbe3295071c209e4bd58d8b2030607a19e3ccb54))
+* upgrade actions/checkout from v4 to v5 across multiple workflow files ([d699e07](https://github.com/christophehurpeau/pob/commit/d699e079f2247fbc3a5378cdce782e174185cd43))
+
+### Bug Fixes
+
+* adjust config import logic in Rollup config template for better handling of conditional imports ([8220667](https://github.com/christophehurpeau/pob/commit/8220667a4622a6db98b72b8414c712e6ddaae255))
+* refine bundler condition to ensure it checks for string type before applying startsWith for better reliability ([29ebf3f](https://github.com/christophehurpeau/pob/commit/29ebf3f37698eee638e171e2d0296f12b97ef8c3))
+* update bundler condition to use startsWith for improved compatibility ([1c47fab](https://github.com/christophehurpeau/pob/commit/1c47fab91e1e77162fb88644e5a83e80182edf83))
+* update CI configuration references in PobBaseGenerator to use projectConfig ([1e4582f](https://github.com/christophehurpeau/pob/commit/1e4582f20a06ced6b7830943b9a002335ee495ad))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [29.0.0](https://github.com/christophehurpeau/pob/compare/pob@28.4.0...pob@29.0.0) (2025-08-24)
 
 ### ⚠ BREAKING CHANGES

@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.0](https://github.com/christophehurpeau/pob/compare/yarn-version@8.0.0...yarn-version@8.1.0) (2025-08-24)
+
+### Features
+
+* update typescript ([fbe3295](https://github.com/christophehurpeau/pob/commit/fbe3295071c209e4bd58d8b2030607a19e3ccb54))
+* upgrade actions/checkout from v4 to v5 across multiple workflow files ([d699e07](https://github.com/christophehurpeau/pob/commit/d699e079f2247fbc3a5378cdce782e174185cd43))
+
 ## [8.0.0](https://github.com/christophehurpeau/pob/compare/yarn-version@7.2.0...yarn-version@8.0.0) (2025-08-24)
 
 ### ⚠ BREAKING CHANGES

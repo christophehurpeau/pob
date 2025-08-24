@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@19.0.0...@pob/root@19.1.0) (2025-08-24)
+
+### Features
+
+* **deps:** upgrade yarn to version 4.9.3 and update related dependencies ([1edd0bf](https://github.com/christophehurpeau/pob/commit/1edd0bf4cedb355171d395fc27a91cf7ce92d966))
+* upgrade actions/checkout from v4 to v5 across multiple workflow files ([d699e07](https://github.com/christophehurpeau/pob/commit/d699e079f2247fbc3a5378cdce782e174185cd43))
+
+Version bump for dependency: yarn-version
+
+
 ## [19.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@18.3.0...@pob/root@19.0.0) (2025-08-24)
 
 ### ⚠ BREAKING CHANGES

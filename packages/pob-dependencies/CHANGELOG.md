@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@20.0.0...pob-dependencies@20.1.0) (2025-08-24)
+
+### Features
+
+* **deps:** update dependency eslint to v9.34.0 ([#2559](https://github.com/christophehurpeau/pob/issues/2559)) ([54fa249](https://github.com/christophehurpeau/pob/commit/54fa249bb7fbe343f0bfb1d94d05b59d70f7b39e))
+* update swc ([8efd42d](https://github.com/christophehurpeau/pob/commit/8efd42d4e1ce997ed6b981506819431e87957262))
+* update typescript ([fbe3295](https://github.com/christophehurpeau/pob/commit/fbe3295071c209e4bd58d8b2030607a19e3ccb54))
+
+Version bump for dependency: pob-babel
+
+
 ## [20.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@19.3.0...pob-dependencies@20.0.0) (2025-08-24)
 
 ### ⚠ BREAKING CHANGES

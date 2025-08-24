@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@9.0.0...yarn-workspace-utils@9.1.0) (2025-08-24)
+
+### Features
+
+* **deps:** upgrade yarn to version 4.9.3 and update related dependencies ([1edd0bf](https://github.com/christophehurpeau/pob/commit/1edd0bf4cedb355171d395fc27a91cf7ce92d966))
+* update typescript ([fbe3295](https://github.com/christophehurpeau/pob/commit/fbe3295071c209e4bd58d8b2030607a19e3ccb54))
+
+Version bump for dependency: pob-babel
+
+
 ## [9.0.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@8.10.0...yarn-workspace-utils@9.0.0) (2025-08-24)
 
 ### ⚠ BREAKING CHANGES

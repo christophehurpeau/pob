@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.47.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.46.0...example-typescript-lib@0.47.0) (2025-08-24)
+
+### Features
+
+* update typescript ([fbe3295](https://github.com/christophehurpeau/pob/commit/fbe3295071c209e4bd58d8b2030607a19e3ccb54))
+
+Version bump for dependency: pob-babel
+
+
 ## [0.46.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib@0.45.0...example-typescript-lib@0.46.0) (2025-08-24)
 
 ### ⚠ BREAKING CHANGES

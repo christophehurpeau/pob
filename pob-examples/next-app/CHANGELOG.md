@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.16.0](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.15.0...@pob-example/next-app@0.16.0) (2025-08-24)
+
+### Features
+
+* **deps:** update dependency next to v15.5.0 ([#2560](https://github.com/christophehurpeau/pob/issues/2560)) ([9e7cb84](https://github.com/christophehurpeau/pob/commit/9e7cb8421b3e0a57ff59944f9d266e56d6380663))
+* update typescript ([fbe3295](https://github.com/christophehurpeau/pob/commit/fbe3295071c209e4bd58d8b2030607a19e3ccb54))
+
 ## [0.15.0](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.14.0...@pob-example/next-app@0.15.0) (2025-08-24)
 
 ### ⚠ BREAKING CHANGES
