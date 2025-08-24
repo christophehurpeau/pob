@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.0](https://github.com/christophehurpeau/pob/compare/yarn-version@7.2.0...yarn-version@8.0.0) (2025-08-24)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 20
+
+### Features
+
+* drop node 20 ([bb57350](https://github.com/christophehurpeau/pob/commit/bb573502c71f7316a54b4ce75203c05c0ba2e681))
+* update CI node version references ([df90418](https://github.com/christophehurpeau/pob/commit/df9041811b28c88e6334288f308f7a5d9b4bdd07))
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [7.2.0](https://github.com/christophehurpeau/pob/compare/yarn-version@7.1.0...yarn-version@7.2.0) (2025-08-23)
 
 ### Features

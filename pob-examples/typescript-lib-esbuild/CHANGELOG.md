@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.31.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-esbuild@0.30.5...example-typescript-lib-esbuild@0.31.0) (2025-08-24)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 20
+
+### Features
+
+* drop node 20 ([bb57350](https://github.com/christophehurpeau/pob/commit/bb573502c71f7316a54b4ce75203c05c0ba2e681))
+
+Version bump for dependency: @pob/esbuild
+
+
 ## [0.30.5](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-esbuild@0.30.4...example-typescript-lib-esbuild@0.30.5) (2025-08-23)
 
 Version bump for dependency: @pob/esbuild

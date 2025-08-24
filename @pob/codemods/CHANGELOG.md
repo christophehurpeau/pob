@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.0](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.9.4...@pob/codemods@0.10.0) (2025-08-24)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 20
+
+### Features
+
+* drop node 20 ([bb57350](https://github.com/christophehurpeau/pob/commit/bb573502c71f7316a54b4ce75203c05c0ba2e681))
+
+### Bug Fixes
+
+* enhance warning for unsupported expect properties in jest-to-node-runner transform ([f297134](https://github.com/christophehurpeau/pob/commit/f29713468a8fa7dcdf44b104f336d511b461e6bd))
+* properly import before instead of beforeAll ([9c5fbd1](https://github.com/christophehurpeau/pob/commit/9c5fbd171ad9f9a39adc06f0f3a53ba9fbec4fdb))
+
 ## [0.9.4](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.9.3...@pob/codemods@0.9.4) (2025-08-23)
 
 Note: no notable changes

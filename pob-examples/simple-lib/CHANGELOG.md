@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.0](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.11.2...example-simple-lib@0.12.0) (2025-08-24)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 20
+
+### Features
+
+* drop node 20 ([bb57350](https://github.com/christophehurpeau/pob/commit/bb573502c71f7316a54b4ce75203c05c0ba2e681))
+
 ## [0.11.2](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.11.1...example-simple-lib@0.11.2) (2025-04-27)
 
 Note: no notable changes

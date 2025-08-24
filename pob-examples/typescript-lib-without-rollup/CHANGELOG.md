@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.29.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.28.2...example-typescript-lib-without-rollup@0.29.0) (2025-08-24)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 20
+
+### Features
+
+* drop node 20 ([bb57350](https://github.com/christophehurpeau/pob/commit/bb573502c71f7316a54b4ce75203c05c0ba2e681))
+
 ## [0.28.2](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.28.1...example-typescript-lib-without-rollup@0.28.2) (2025-04-27)
 
 ### Bug Fixes

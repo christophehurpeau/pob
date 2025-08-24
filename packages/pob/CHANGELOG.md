@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.0.0](https://github.com/christophehurpeau/pob/compare/pob@28.4.0...pob@29.0.0) (2025-08-24)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 20
+
+### Features
+
+* drop node 20 ([bb57350](https://github.com/christophehurpeau/pob/commit/bb573502c71f7316a54b4ce75203c05c0ba2e681))
+* update CI node version references ([df90418](https://github.com/christophehurpeau/pob/commit/df9041811b28c88e6334288f308f7a5d9b4bdd07))
+
+### Bug Fixes
+
+* comment out removal of alp-rollup-plugin-config dependency in CommonBabelGenerator ([8e496f5](https://github.com/christophehurpeau/pob/commit/8e496f5d1981e5875aee148c063a0c0002a097b2))
+* only apply tsconfig.test.ts if this.options.onlyLatestLTS is disabled ([da85d7a](https://github.com/christophehurpeau/pob/commit/da85d7a9077d2b23cbf35406a364b5500f942c10))
+* refactor environment handling in CommonTranspilerGenerator to use envsWithDefault for improved clarity and maintainability ([4421be3](https://github.com/christophehurpeau/pob/commit/4421be37a8098fc13ad29175288a2d036a99264d))
+* remove unnecessary tsconfig.test.json handling in MonorepoTypescriptGenerator ([453c5da](https://github.com/christophehurpeau/pob/commit/453c5da00a8269a8451e61ffb8b729d28169a020))
+* update moduleResolution in tsconfig to use 'bundler' for better compatibility ([141e0d3](https://github.com/christophehurpeau/pob/commit/141e0d39b62894b1dadd9aef7256f8060c9cc1bf))
+* update pkg options before to allow proper order and remove @babel/core @babel/runtime on pob-babel disable ([560002c](https://github.com/christophehurpeau/pob/commit/560002c2076e6f263cabd78c1a0dc9540a2f2b0a))
+
+Version bump for dependency: @pob/sort-object
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [28.4.0](https://github.com/christophehurpeau/pob/compare/pob@28.3.0...pob@28.4.0) (2025-08-23)
 
 ### Features

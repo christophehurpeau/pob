@@ -5,12 +5,12 @@ interface Dependencies {
   "@babel/runtime": "7.28.3";
   "@playwright/test": "1.55.0";
   "@pob/commitlint-config": "9.2.0";
-  "@pob/esbuild": "4.0.5";
+  "@pob/esbuild": "4.0.6";
   "@pob/eslint-config": "61.1.0";
   "@pob/eslint-config-typescript": "61.1.0";
   "@pob/eslint-config-typescript-react": "61.1.0";
   "@pob/pretty-pkg": "12.2.0";
-  "@pob/rollup-esbuild": "6.6.0";
+  "@pob/rollup-esbuild": "6.7.0";
   "@pob/rollup-typescript": "7.0.2";
   "@swc-node/register": "1.10.10";
   "@swc/core": "1.13.3";
@@ -24,7 +24,7 @@ interface Dependencies {
   jest: "30.0.5";
   "jest-junit-reporter": "1.1.0";
   pinst: "3.0.0";
-  "pob-babel": "43.7.0";
+  "pob-babel": "43.8.0";
   prettier: "3.6.2";
   "repository-check-dirty": "10.0.2";
   rollup: "4.44.1";

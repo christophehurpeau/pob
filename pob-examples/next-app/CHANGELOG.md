@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.0](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.14.0...@pob-example/next-app@0.15.0) (2025-08-24)
+
+### ⚠ BREAKING CHANGES
+
+* drop node 20
+
+### Features
+
+* drop node 20 ([bb57350](https://github.com/christophehurpeau/pob/commit/bb573502c71f7316a54b4ce75203c05c0ba2e681))
+
+### Bug Fixes
+
+* update moduleResolution in tsconfig to use 'bundler' for better compatibility ([141e0d3](https://github.com/christophehurpeau/pob/commit/141e0d39b62894b1dadd9aef7256f8060c9cc1bf))
+
 ## [0.14.0](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.13.3...@pob-example/next-app@0.14.0) (2025-08-23)
 
 ### Features
