@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: actions/setup-node@v4
         with:
@@ -38,7 +38,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: actions/setup-node@v4
         with:
@@ -70,7 +70,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: actions/setup-node@v4
         with:
@@ -107,7 +107,7 @@ jobs:
         node-version: [<% if (!onlyLatestLTS && nodeMaintenanceMajorVersion !== nodeLatestMajorVersion) { -%><%= nodeMaintenanceMajorVersion %>, <% } -%><%= nodeLatestMajorVersion %>]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: actions/setup-node@v4
         with:
@@ -165,7 +165,7 @@ jobs:
         node-version: [<%= nodeLatestMajorVersion %>]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: actions/setup-node@v4
         with:
@@ -192,7 +192,7 @@ jobs:
     needs: [<%= checks ? '"checks", ' : '' -%><%= build ? '"build", ' : '' -%>"lint"<%= testing ? ', "test"' : '' -%>]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
 
       - uses: actions/setup-node@v4
         with:

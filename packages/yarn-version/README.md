@@ -39,7 +39,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           token: ${{ secrets.GH_TOKEN }}
           fetch-depth: 0
@@ -113,7 +113,7 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
         with:
           token: ${{ secrets.GH_TOKEN }}
           fetch-depth: 0
