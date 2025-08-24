@@ -25,7 +25,11 @@ if (!transformerName || !globPaths) {
 const transformPath = fileURLToPath(
   new URL(`../lib/transforms/${transformerName}.cjs`, import.meta.url),
 );
-const paths = await Array.fromAsync(glob(globPaths));
+const paths = await Array.fromAsync(
+  glob(globPaths, {
+    exclude: ["**/node_modules/**"],
+  }),
+);
 
 if (paths.length === 0) {
   throw new Error(`No files found matching ${globPaths}`);
