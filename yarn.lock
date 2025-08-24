@@ -3760,32 +3760,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/rollup-esbuild@npm:6.7.0":
-  version: 6.7.0
-  resolution: "@pob/rollup-esbuild@npm:6.7.0"
-  dependencies:
-    "@pob/rollup": "npm:6.3.0"
-    "@rollup/plugin-node-resolve": "npm:16.0.1"
-    "@rollup/plugin-replace": "npm:6.0.2"
-    "@rollup/plugin-run": "npm:3.1.0"
-    esbuild: "npm:0.25.9"
-    rollup: "npm:4.44.1"
-    rollup-config-external-dependencies: "npm:^3.0.1"
-    rollup-plugin-esbuild: "npm:6.2.1"
-  peerDependencies:
-    rollup: 4.44.1
-    typescript: ^4.0.3 || ^5.0.0
-  peerDependenciesMeta:
-    rollup:
-      optional: true
-  bin:
-    pob-esbuild-clean-out: ./bin/pob-esbuild-clean-out.js
-    rollup: ./bin/rollup.cjs
-  checksum: 10c0/deef9aca8cee351f854ec75c2d83d7bab3f3075d06b387eb8b996c8a1ae925d0f5675d5e9665efd035690e5ad0ca68f8536a75c46c777d73deb638ebff2e4dea
-  languageName: node
-  linkType: hard
-
-"@pob/rollup-esbuild@npm:7.0.0, @pob/rollup-esbuild@workspace:@pob/rollup-esbuild":
+"@pob/rollup-esbuild@npm:7.0.0, @pob/rollup-esbuild@workspace:*, @pob/rollup-esbuild@workspace:@pob/rollup-esbuild":
   version: 0.0.0-use.local
   resolution: "@pob/rollup-esbuild@workspace:@pob/rollup-esbuild"
   dependencies:
@@ -3820,18 +3795,6 @@ __metadata:
     rollup: ./bin/rollup.cjs
   languageName: unknown
   linkType: soft
-
-"@pob/rollup@npm:6.3.0":
-  version: 6.3.0
-  resolution: "@pob/rollup@npm:6.3.0"
-  dependencies:
-    rollup: "npm:4.44.1"
-  bin:
-    pob-rollup-clean-out: ./bin/pob-rollup-clean-out.js
-    rollup: ./bin/rollup.cjs
-  checksum: 10c0/2a6c6cdc24bec1f5448445eb30d4023009af1d0b8c8802d6ace748298cc5a5629d1395a5bf512ca8102c3568c27453bb2543f73902f1851dfacd0e49680d17ec
-  languageName: node
-  linkType: hard
 
 "@pob/rollup@npm:7.0.0, @pob/rollup@workspace:@pob/rollup":
   version: 0.0.0-use.local
@@ -13968,7 +13931,7 @@ __metadata:
     "@babel/core": "npm:7.28.3"
     "@pob/eslint-config": "npm:61.1.0"
     "@pob/eslint-config-typescript": "npm:61.1.0"
-    "@pob/rollup-esbuild": "npm:6.7.0"
+    "@pob/rollup-esbuild": "workspace:*"
     "@pob/root": "workspace:*"
     "@types/jest": "npm:30.0.0"
     check-package-dependencies: "npm:10.3.0"
