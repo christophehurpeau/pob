@@ -265,7 +265,7 @@ export default class CommonTranspilerGenerator extends Generator {
 
     packageUtils.addOrRemoveDevDependencies(
       pkg,
-      bundler === "rollup-babel" &&
+      bundler.startsWith("rollup") &&
         this.options.isApp &&
         !this.options.isAppLibrary &&
         this.options.useAppConfig,
