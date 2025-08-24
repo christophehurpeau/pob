@@ -10,7 +10,6 @@
     "noEmit": true,
     "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo",
     "incremental": true,
-    "composite": true,
 
     "resolveJsonModule": true,
 

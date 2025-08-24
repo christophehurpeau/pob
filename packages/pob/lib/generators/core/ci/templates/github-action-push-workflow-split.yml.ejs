@@ -12,7 +12,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: <%= nodeLatestMajorVersion %>
           check-latest: true
 
       - name: Enable Corepack
@@ -42,7 +42,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: <%= nodeLatestMajorVersion %>
           check-latest: true
 
       - name: Enable Corepack
@@ -74,7 +74,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: <%= nodeLatestMajorVersion %>
           check-latest: true
 
       - name: Enable Corepack
@@ -104,7 +104,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [20, 22]
+        node-version: [<% if (!onlyLatestLTS && nodeMaintenanceMajorVersion !== nodeLatestMajorVersion) { -%><%= nodeMaintenanceMajorVersion %>, <% } -%><%= nodeLatestMajorVersion %>]
 
     steps:
       - uses: actions/checkout@v4
@@ -135,17 +135,17 @@ jobs:
 <% if (codecov) { -%>
       - name: Test
         run: <%= packageManager %> run test
-        if: matrix.node-version != 22
+        if: matrix.node-version != <%= nodeLatestMajorVersion %>
 
       - name: Generate Test Coverage
         run: <%= packageManager %> run test:coverage:json
-        if: matrix.node-version == 22
+        if: matrix.node-version == <%= nodeLatestMajorVersion %>
         env:
           CI: true
 
       - name: Send results to codecov
         uses: codecov/codecov-action@v5
-        if: matrix.node-version == 22 && github.actor != 'dependabot[bot]'
+        if: matrix.node-version == <%= nodeLatestMajorVersion %> && github.actor != 'dependabot[bot]'
         with:
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
@@ -162,7 +162,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [22]
+        node-version: [<%= nodeLatestMajorVersion %>]
 
     steps:
       - uses: actions/checkout@v4
@@ -196,7 +196,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 22
+          node-version: <%= nodeLatestMajorVersion %>
           check-latest: true
 
       - uses: GoogleCloudPlatform/release-please-action@v3

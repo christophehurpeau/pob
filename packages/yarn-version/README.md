@@ -46,7 +46,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 24
 
       - name: Enable Corepack
         run: corepack enable
@@ -120,7 +120,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 18
+          node-version: 24
 
       - name: Enable Corepack
         run: corepack enable

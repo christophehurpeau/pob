@@ -8,7 +8,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [<% if (!onlyLatestLTS) { -%>20.x, <% } -%>22.x]
+        node-version: [<% if (!onlyLatestLTS && nodeMaintenanceMajorVersion !== nodeLatestMajorVersion) { -%><%= nodeMaintenanceMajorVersion %>.x, <% } -%><%= nodeLatestMajorVersion %>.x]
 
     steps:
       - uses: actions/checkout@v4
@@ -44,39 +44,39 @@ jobs:
 <% if (checks) { -%>
       - name: Checks
         run: <%= packageManager %> run checks
-        if: startsWith(matrix.node-version, '22.')
+        if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
 
 <% } -%>
 <% if (build) { -%>
       - name: Build
         run: yarn run build
-        if: startsWith(matrix.node-version, '22.')
+        if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
 
 <% } -%>
       - name: Prettier
         run: <%= packageManager %> run lint:prettier
-        if: startsWith(matrix.node-version, '22.')
+        if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
 <% if (typescript) { -%>
 
       - name: Typescript
         run: yarn run tsc
-        if: startsWith(matrix.node-version, '22.')
+        if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
 <% } -%>
 
       - name: Eslint
         run: <%= packageManager %> run lint:eslint
-        if: startsWith(matrix.node-version, '22.')
+        if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
 <% if (true) { -%>
 
       - name: Check nothing was forgotten before commit
-        if: startsWith(matrix.node-version, '22.')
+        if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
         run: <%= packageManager === 'npm' ? 'npx' : 'yarn run' %> repository-check-dirty
 <% } -%>
 <% if (codecov) { -%>
 
       - name: Generate Test Coverage
         run: <%= packageManager %> run test:coverage:json
-        if: startsWith(matrix.node-version, '22.')
+        if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
         env:
           CI: true
 
@@ -85,7 +85,7 @@ jobs:
         with:
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
-        if: startsWith(matrix.node-version, '22.') && github.actor != 'dependabot[bot]'
+        if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.') && github.actor != 'dependabot[bot]'
 <% } else if (testing) { -%>
 
       - name: Test
@@ -101,7 +101,7 @@ jobs:
 <% if (isReleasePleaseEnabled) { -%>
 
       - uses: GoogleCloudPlatform/release-please-action@v3
-        if: ${{ startsWith(matrix.node-version, '22.') && github.ref == 'refs/heads/main' }}
+        if: ${{ startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.') && github.ref == 'refs/heads/main' }}
         id: release
         with:
           token: ${{ secrets.GH_TOKEN }}
@@ -111,7 +111,7 @@ jobs:
 
       # publish:
       - run: npm publish
-        if: ${{ startsWith(matrix.node-version, '22.') && github.ref == 'refs/heads/main' && steps.release.outputs.release_created }}
+        if: ${{ startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.') && github.ref == 'refs/heads/main' && steps.release.outputs.release_created }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 <% } -%>

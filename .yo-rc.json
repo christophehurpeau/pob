@@ -42,7 +42,8 @@
       "type": "lib",
       "packageManager": "yarn",
       "yarnNodeLinker": "node-modules",
-      "disableYarnGitCache": true
+      "disableYarnGitCache": true,
+      "ci": true
     }
   }
 }

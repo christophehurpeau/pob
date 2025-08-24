@@ -170,6 +170,8 @@ export default class CoreCIGenerator extends Generator {
             inMonorepo &&
             inMonorepo.root &&
             inMonorepo.pobConfig?.project?.type === "lib",
+          nodeLatestMajorVersion: latestLTS,
+          nodeMaintenanceMajorVersion: maintenanceLTS,
         },
       );
 
@@ -207,6 +209,7 @@ export default class CoreCIGenerator extends Generator {
           testing: this.options.testing,
           testRunner: this.options.testRunner,
           typedoc: this.options.documentation && this.options.typescript,
+          nodeLatestMajorVersion: latestLTS,
         },
       );
     } else {
