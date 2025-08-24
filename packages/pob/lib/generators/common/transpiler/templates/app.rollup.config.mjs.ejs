@@ -1,13 +1,15 @@
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-<% if (config) { -%>
-import config from 'alp-rollup-plugin-config';
-<% } -%>
 import createRollupConfig from '@pob/<%= rollupConfigLib %>/createRollupConfig.js';
 <% if (enableRun) { -%>
 import run from '@pob/<%= rollupConfigLib %>/plugin-run.cjs';
+<% if (config) { -%>
+import config from 'alp-rollup-plugin-config';
+<% } -%>
 
 const watch = process.env.ROLLUP_WATCH === 'true';
+<% } else if (config) { -%>
+import config from 'alp-rollup-plugin-config';
 <% } -%>
 
 export default createRollupConfig({
