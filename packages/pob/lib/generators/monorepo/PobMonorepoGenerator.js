@@ -330,6 +330,7 @@ export default class PobMonorepoGenerator extends Generator {
       packageNames: JSON.stringify(packageNames),
       packagePaths: JSON.stringify(packagePaths),
       testRunner: this.pobLernaConfig.testRunner,
+      onlyLatestLTS: this.options.onlyLatestLTS,
     });
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);

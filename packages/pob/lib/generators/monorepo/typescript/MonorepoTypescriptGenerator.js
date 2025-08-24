@@ -40,6 +40,12 @@ export default class MonorepoTypescriptGenerator extends Generator {
       required: false,
       default: false,
     });
+
+    this.option("onlyLatestLTS", {
+      type: Boolean,
+      required: false,
+      default: false,
+    });
   }
 
   writing() {
@@ -122,7 +128,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
         },
       );
 
-      if (this.options.testRunner === "node") {
+      if (this.options.testRunner === "node" && !this.options.onlyLatestLTS) {
         copyAndFormatTpl(
           this.fs,
           this.templatePath("tsconfig.json.ejs"),
