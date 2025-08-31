@@ -6608,15 +6608,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"alp-rollup-plugin-config@npm:2.2.1":
-  version: 2.2.1
-  resolution: "alp-rollup-plugin-config@npm:2.2.1"
+"alp-rollup-plugin-config@npm:3.0.0":
+  version: 3.0.0
+  resolution: "alp-rollup-plugin-config@npm:3.0.0"
   dependencies:
     "@guanghechen/rollup-plugin-copy": "npm:1.8.6"
     js-yaml: "npm:4.1.0"
   peerDependencies:
     rollup: ^2.64.0 || ^3.0.0 || ^4.0.0
-  checksum: 10c0/44c07ddfba252b2c4d7def4f2dc87b27951db0f6cf154a43c081382e87a7b47a0fa29277a117fd5935661fa858b4a39a49181eb54ecd11cd06a8b4cc680b5b3d
+  checksum: 10c0/017ec54cfb17de5b6df4371b3ca3e1d2ca4a18c6ed813b96ce44999b751837786b50b169ac2a72355331d303934ad2af57ec42db19f46ef9d0fc947a807e8474
   languageName: node
   linkType: hard
 
@@ -14029,7 +14029,7 @@ __metadata:
     "@types/jest": "npm:30.0.0"
     "@types/node": "npm:22.17.2"
     "@vitest/coverage-v8": "npm:3.2.4"
-    alp-rollup-plugin-config: "npm:2.2.1"
+    alp-rollup-plugin-config: "npm:3.0.0"
     check-package-dependencies: "npm:10.3.0"
     eslint: "npm:9.34.0"
     jest: "npm:30.0.5"
