@@ -7594,9 +7594,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"check-package-dependencies@npm:10.3.0":
-  version: 10.3.0
-  resolution: "check-package-dependencies@npm:10.3.0"
+"check-package-dependencies@npm:10.4.1":
+  version: 10.4.1
+  resolution: "check-package-dependencies@npm:10.4.1"
   dependencies:
     "@eslint/plugin-kit": "npm:^0.3.1"
     jsonc-parser: "npm:^3.3.1"
@@ -7606,7 +7606,7 @@ __metadata:
     type-fest: "npm:^4.37.0"
   bin:
     check-package-dependencies: ./bin/check-package-dependencies.mjs
-  checksum: 10c0/25178e33bcfc8280f8b76c1adfe39d5db344567a1dbcd5f5efc24195d1c4244d82ece64dc21a834737de1fd63701a29527c31a787e087092b533bad9c06ec144
+  checksum: 10c0/664f253ab1dbe2482c2bfb73cc77f61271daf55db9e72a2e6449e69e21e14dea0b862f5075bbac72909417f68a874b7410554551cd5a3afbbbdebb85d15b15bb
   languageName: node
   linkType: hard
 
@@ -14039,7 +14039,7 @@ __metadata:
     "@types/node": "npm:22.18.1"
     "@vitest/coverage-v8": "npm:3.2.4"
     alp-rollup-plugin-config: "npm:3.0.0"
-    check-package-dependencies: "npm:10.3.0"
+    check-package-dependencies: "npm:10.4.1"
     eslint: "npm:9.34.0"
     jest: "npm:30.0.5"
     jest-junit-reporter: "npm:1.1.0"
@@ -14066,7 +14066,7 @@ __metadata:
     "@pob/rollup-esbuild": "workspace:*"
     "@pob/root": "workspace:*"
     "@types/jest": "npm:30.0.0"
-    check-package-dependencies: "npm:10.3.0"
+    check-package-dependencies: "npm:10.4.1"
     eslint: "npm:9.34.0"
     eslint-plugin-jest: "npm:29.0.1"
     jest: "npm:30.0.5"
