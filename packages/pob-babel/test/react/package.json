@@ -19,7 +19,7 @@
     "babelEnvs": [
       {
         "target": "node",
-        "version": "20",
+        "version": "22",
         "formats": [
           "es",
           "cjs"

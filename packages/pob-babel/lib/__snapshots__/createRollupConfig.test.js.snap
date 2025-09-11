@@ -1,4 +1,4 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
 
 exports[`fixtures basic 0 1`] = `
 "class Test {
@@ -44,15 +44,19 @@ export { foo, operator, spreadTest, t };
 `;
 
 exports[`fixtures basic 1 1`] = `
-"class Test {
+"import _extends from '@babel/runtime/helpers/esm/extends';
+import _classPrivateFieldLooseBase from '@babel/runtime/helpers/esm/classPrivateFieldLooseBase';
+import _classPrivateFieldLooseKey from '@babel/runtime/helpers/esm/classPrivateFieldLooseKey';
+
+class Test {
   constructor(...args) {
     this.args = args;
   }
 }
+var _args = /*#__PURE__*/_classPrivateFieldLooseKey("args");
 class TestWithPrivate extends Test {
-  #args;
   constructor(...args) {
-    this.#args = args;
+    _classPrivateFieldLooseBase(this, _args)[_args] = args;
   }
 }
 
@@ -60,6 +64,7 @@ const sayHello = () => {
   console.log("hello browser");
 };
 
+var _t$foo;
 sayHello();
 if (process.env.NODE_ENV !== "production") {
   console.log("__DEV__ is true");
@@ -74,13 +79,11 @@ class Test2 extends TestWithPrivate {
   }
 }
 const t = new Test2(1, 2, 3);
-const spreadTest = {
-  ...{
-    test: "spread"
-  }
-};
-const foo = t.foo ?? "default";
-const operator = spreadTest?.toString();
+const spreadTest = _extends({}, {
+  test: "spread"
+});
+const foo = (_t$foo = t.foo) != null ? _t$foo : "default";
+const operator = spreadTest == null ? void 0 : spreadTest.toString();
 
 export { foo, operator, spreadTest, t };
 "
