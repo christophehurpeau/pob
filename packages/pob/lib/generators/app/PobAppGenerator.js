@@ -78,7 +78,7 @@ export default class PobAppGenerator extends Generator {
   async prompting() {
     const config = this.appConfig;
 
-    if (config.ci !== undefined) {
+    if (config?.ci !== undefined) {
       delete config.ci;
     }
 
