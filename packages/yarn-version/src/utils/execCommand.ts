@@ -73,7 +73,7 @@ async function execvp<const Strict extends boolean>(
       } else {
         reject(
           new Error(
-            `Process ${[command, ...args].join(" ")} exited ${code !== null ? `with code ${code}` : `with signal ${signal || ""}`}:\nstdout: ${stdout.toString()}\nstderr: ${stderr.toString()}`,
+            `Process ${[command, ...args].join(" ")} exited ${code !== null ? `with code ${code}` : `with signal ${signal || ""}`}:\nstdout: ${stdout}\nstderr: ${stderr}`,
           ),
         );
       }
@@ -148,7 +148,7 @@ async function* spawnStreamStdout<const Strict extends boolean>(
       } else {
         reject(
           new Error(
-            `Process ${[command, ...args].join(" ")} exited ${code !== null ? `with code ${code}` : `with signal ${signal || ""}`}:\nstderr: ${stderr.toString()}`,
+            `Process ${[command, ...args].join(" ")} exited ${code !== null ? `with code ${code}` : `with signal ${signal || ""}`}:\nstderr: ${stderr}`,
           ),
         );
       }

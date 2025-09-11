@@ -5,7 +5,9 @@ export default function sortObject(obj, keys = []) {
   objKeys.forEach((key) => delete obj[key]);
   [
     ...keys.filter((key) => Object.hasOwn(objCopy, key)),
-    ...objKeys.sort((a, b) => a.toLowerCase().localeCompare(b.toLowerCase())),
+    ...objKeys.toSorted((a, b) =>
+      a.toLowerCase().localeCompare(b.toLowerCase()),
+    ),
   ].forEach((key) => {
     obj[key] = objCopy[key];
   });

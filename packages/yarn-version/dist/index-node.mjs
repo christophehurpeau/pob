@@ -302,8 +302,8 @@ async function execvp(command, args, {
         reject(
           new Error(
             `Process ${[command, ...args].join(" ")} exited ${code !== null ? `with code ${code}` : `with signal ${signal || ""}`}:
-stdout: ${stdout.toString()}
-stderr: ${stderr.toString()}`
+stdout: ${stdout}
+stderr: ${stderr}`
           )
         );
       }

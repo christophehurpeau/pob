@@ -8,6 +8,7 @@ export default class CoreSortPackageGenerator extends Generator {
     writeAndFormatJson(
       this.fs,
       this.destinationPath("package.json"),
+      // eslint-disable-next-line unicorn/no-array-sort
       packageUtils.sort(pkg),
     );
   }

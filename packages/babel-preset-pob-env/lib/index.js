@@ -179,7 +179,7 @@ export default function (context, opts = {}) {
       // transpile for specified target
       targetPreset,
     ]
-      .reverse()
+      .toReversed()
       .filter(Boolean),
   };
 }
