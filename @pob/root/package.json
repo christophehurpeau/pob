@@ -17,7 +17,7 @@
   },
   "sideEffects": false,
   "bin": {
-    "commitlint": "./bin/commitlint.js",
+    "pob-check-commit-msg": "./bin/pob-check-commit-msg.js",
     "pob-root-lint-staged": "./bin/pob-root-lint-staged.js",
     "pob-root-postinstall": "./bin/pob-root-postinstall.js",
     "pob-root-prettier": "./bin/prettier.cjs",
@@ -29,7 +29,6 @@
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
-    "./commitlint-config": "./commitlint-config.cjs",
     "./createLintStagedConfig": "./createLintStagedConfig.js",
     "./createLintStagedConfig.js": "./createLintStagedConfig.js",
     "./createLintStagedConfig.cjs": "./createLintStagedConfig.cjs",
@@ -66,7 +65,9 @@
   "pob": {},
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "@commitlint/cli": "19.8.1",
+    "@commitlint/format": "19.8.1",
+    "@commitlint/lint": "19.8.1",
+    "@commitlint/types": "19.8.1",
     "@pob/pretty-pkg": "13.0.0",
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "cosmiconfig": "^9.0.0",

@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-
 import fs from "node:fs";
 import path from "node:path";
 import husky from "husky";
@@ -81,7 +79,7 @@ export default function installHusky({ pkg, pm }) {
     afterDiffCommand = "",
   } = getPackageManagerCommands(pm, isYarnBerry);
 
-  writeHook("commit-msg", `${pmExec} commitlint --edit $1`);
+  writeHook("commit-msg", `${pmExec} pob-check-commit-msg $1`);
   writeHook(
     "pre-commit",
     `${pmExec} pob-root-lint-staged${
