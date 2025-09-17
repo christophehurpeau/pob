@@ -62,7 +62,7 @@
     "@npmcli/map-workspaces": "4.0.2",
     "@octokit/rest": "22.0.0",
     "@pob/pretty-pkg": "13.0.0",
-    "commander": "14.0.0",
+    "commander": "14.0.1",
     "conventional-changelog-conventionalcommits": "8.0.0",
     "conventional-changelog-core": "8.0.0",
     "conventional-changelog-preset-loader": "5.0.0",
