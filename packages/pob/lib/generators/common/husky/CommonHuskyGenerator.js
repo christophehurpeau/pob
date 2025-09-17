@@ -84,14 +84,12 @@ export default class CommonHuskyGenerator extends Generator {
 
       pkg.commitlint = {
         extends: [
-          "@pob/commitlint-config",
+          "@pob/root/commitlint-config",
           // '@commitlint/config-lerna-scopes',
         ].filter(Boolean),
       };
 
-      if (pkg.name !== "pob-monorepo") {
-        packageUtils.addDevDependencies(pkg, ["@pob/commitlint-config"]);
-      }
+      packageUtils.removeDevDependencies(pkg, ["@pob/commitlint-config"]);
 
       // if (packageUtils.hasLerna(pkg)) {
       //   packageUtils.addScripts(pkg, {

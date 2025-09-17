@@ -36,7 +36,7 @@
   },
   "commitlint": {
     "extends": [
-      "@pob/commitlint-config"
+      "@pob/root/commitlint-config"
     ]
   },
   "prettier": "@pob/root/prettier-config",

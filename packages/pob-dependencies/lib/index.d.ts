@@ -4,7 +4,6 @@ interface Dependencies {
   "@babel/preset-react": "7.27.1";
   "@babel/runtime": "7.28.3";
   "@playwright/test": "1.55.0";
-  "@pob/commitlint-config": "10.0.0";
   "@pob/esbuild": "5.0.0";
   "@pob/eslint-config": "61.1.0";
   "@pob/eslint-config-typescript": "61.1.0";

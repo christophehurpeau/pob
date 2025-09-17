@@ -29,6 +29,7 @@
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
+    "./commitlint-config": "./commitlint-config.cjs",
     "./createLintStagedConfig": "./createLintStagedConfig.js",
     "./createLintStagedConfig.js": "./createLintStagedConfig.js",
     "./createLintStagedConfig.cjs": "./createLintStagedConfig.cjs",
