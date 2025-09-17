@@ -407,7 +407,7 @@ export default class CommonTestingGenerator extends Generator {
         if (this.options.monorepo) {
           const shouldUseExperimentalVmModules = pkg.type === "module";
 
-          packageUtils.removeScripts(["test:coverage:lcov"]);
+          packageUtils.removeScripts(pkg, ["test:coverage:lcov"]);
           packageUtils.addScripts(pkg, {
             test: createTestCommand({
               workspacesPattern,
@@ -504,7 +504,7 @@ export default class CommonTestingGenerator extends Generator {
             const shouldUseExperimentalVmModules =
               pkg.type === "module" && !inMonorepo;
 
-            packageUtils.removeScripts(["test:coverage:lcov"]);
+            packageUtils.removeScripts(pkg, ["test:coverage:lcov"]);
             packageUtils.addScripts(pkg, {
               test: createTestCommand({ shouldUseExperimentalVmModules }),
               "test:watch": createTestCommand({

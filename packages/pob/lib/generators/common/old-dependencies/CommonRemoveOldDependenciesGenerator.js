@@ -8,6 +8,7 @@ export default class CommonRemoveOldDependenciesGenerator extends Generator {
     // old pob dependencies
     packageUtils.removeDependencies(pkg, ["flow-runtime"]);
     packageUtils.removeDevDependencies(pkg, [
+      "ts-node",
       "tcomb",
       "tcomb-forked",
       "flow-runtime",
