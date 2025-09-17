@@ -74,7 +74,7 @@
   },
   "devDependencies": {
     "@pob/rollup-esbuild": "7.0.0",
-    "@types/node": "22.18.1",
+    "@types/node": "22.18.5",
     "@types/npmcli__map-workspaces": "3.0.4",
     "conventional-recommended-bump": "10.0.0",
     "type-fest": "4.41.0",
