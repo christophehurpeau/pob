@@ -13,12 +13,12 @@ jobs:
         with:
           token: ${{ secrets.GH_TOKEN }}
 
-      - uses: actions/setup-node@v4
+      - $ciPreStep$
+
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
           check-latest: true
-
-      - $ciPreStep$
 
       - name: Install Dependencies
         run: $installOnCICommand$

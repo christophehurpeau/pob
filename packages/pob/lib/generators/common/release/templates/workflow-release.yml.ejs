@@ -33,8 +33,12 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           fetch-depth: 0
           fetch-tags: true
+<% if (packageManager === 'yarn') { -%>
 
-      - uses: actions/setup-node@v4
+      - name: Enable Corepack
+        run: corepack enable
+<% } -%>
+      - uses: actions/setup-node@v5
         with:
           node-version: <%= nodeLatestMajorVersion %>
           check-latest: true
@@ -49,8 +53,6 @@ jobs:
           fi
 
 <% if (packageManager === 'yarn') { -%>
-      - name: Enable Corepack
-        run: corepack enable
 
       - name: Install Dependencies
 <% if (disableYarnGitCache) { -%>

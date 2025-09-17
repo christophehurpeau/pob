@@ -44,12 +44,12 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           fetch-depth: 0
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 24
-
       - name: Enable Corepack
         run: corepack enable
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 24
 
       - name: Install Dependencies
         run: yarn install --immutable --immutable-cache
@@ -118,12 +118,12 @@ jobs:
           token: ${{ secrets.GH_TOKEN }}
           fetch-depth: 0
 
+      - name: Enable Corepack
+        run: corepack enable
+
       - uses: actions/setup-node@v3
         with:
           node-version: 24
-
-      - name: Enable Corepack
-        run: corepack enable
 
       - name: Install Dependencies
         run: yarn install --immutable --immutable-cache

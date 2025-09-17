@@ -10,13 +10,13 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - name: Enable Corepack
+        run: corepack enable
+
+      - uses: actions/setup-node@v5
         with:
           node-version: <%= nodeLatestMajorVersion %>
           check-latest: true
-
-      - name: Enable Corepack
-        run: corepack enable
 
       - name: Install Dependencies
 <% if (packageManager === 'yarn') { -%>
@@ -40,13 +40,13 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - name: Enable Corepack
+        run: corepack enable
+
+      - uses: actions/setup-node@v5
         with:
           node-version: <%= nodeLatestMajorVersion %>
           check-latest: true
-
-      - name: Enable Corepack
-        run: corepack enable
 
       - name: Install Dependencies
 <% if (packageManager === 'yarn') { -%>
@@ -72,13 +72,13 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - name: Enable Corepack
+        run: corepack enable
+
+      - uses: actions/setup-node@v5
         with:
           node-version: <%= nodeLatestMajorVersion %>
           check-latest: true
-
-      - name: Enable Corepack
-        run: corepack enable
 
       - name: Install Dependencies
 <% if (disableYarnGitCache) { -%>
@@ -109,15 +109,17 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+<% if (packageManager === 'yarn') { -%>
+      - name: Enable Corepack
+        run: corepack enable
+
+<% } -%>
+      - uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node-version }}
           check-latest: true
 
 <% if (packageManager === 'yarn') { -%>
-      - name: Enable Corepack
-        run: corepack enable
-
       - name: Install Dependencies
 <% if (disableYarnGitCache) { -%>
         run: yarn install --immutable
@@ -167,13 +169,13 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - name: Enable Corepack
+        run: corepack enable
+
+      - uses: actions/setup-node@v5
         with:
           node-version: ${{ matrix.node-version }}
           check-latest: true
-
-      - name: Enable Corepack
-        run: corepack enable
 
       - name: Install Dependencies
 <% if (disableYarnGitCache) { -%>
@@ -194,7 +196,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v5
         with:
           node-version: <%= nodeLatestMajorVersion %>
           check-latest: true
