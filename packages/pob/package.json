@@ -77,6 +77,6 @@
   },
   "devDependencies": {
     "@pob/root": "19.1.0",
-    "@types/node": "22.18.1"
+    "@types/node": "22.18.5"
   }
 }
