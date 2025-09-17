@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-object@10.0.0...@pob/sort-object@10.1.0) (2025-09-17)
+
+### Features
+
+* update dependencies ([ef7157a](https://github.com/christophehurpeau/pob/commit/ef7157a6db8fc3b6b927cf8d739b65c8f590d3fc))
+
 ## [10.0.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-object@9.0.2...@pob/sort-object@10.0.0) (2025-08-24)
 
 ### ⚠ BREAKING CHANGES

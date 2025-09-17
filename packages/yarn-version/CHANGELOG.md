@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.2.0](https://github.com/christophehurpeau/pob/compare/yarn-version@8.1.0...yarn-version@8.2.0) (2025-09-17)
+
+### Features
+
+* **deps:** update dependency @npmcli/map-workspaces to v5 ([#2574](https://github.com/christophehurpeau/pob/issues/2574)) ([da08e04](https://github.com/christophehurpeau/pob/commit/da08e04abe88294083d390ed244e5953f1431d73))
+* **deps:** update dependency rollup to v4.50.2 ([#2561](https://github.com/christophehurpeau/pob/issues/2561)) ([c206fd3](https://github.com/christophehurpeau/pob/commit/c206fd37900be3f00f33db69a150a316d009383d))
+* update actions/setup-node to v5 ([#2580](https://github.com/christophehurpeau/pob/issues/2580)) ([c93f9bb](https://github.com/christophehurpeau/pob/commit/c93f9bb8b0969ec2c0884109994c39f9e9773368))
+* update dependencies ([ef7157a](https://github.com/christophehurpeau/pob/commit/ef7157a6db8fc3b6b927cf8d739b65c8f590d3fc))
+
+### Bug Fixes
+
+* **deps:** update dependency commander to v14.0.1 ([#2576](https://github.com/christophehurpeau/pob/issues/2576)) ([9a22f07](https://github.com/christophehurpeau/pob/commit/9a22f07065366da0f3e98f2f28f9c4ea1ce3992a))
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [8.1.0](https://github.com/christophehurpeau/pob/compare/yarn-version@8.0.0...yarn-version@8.1.0) (2025-08-24)
 
 ### Features

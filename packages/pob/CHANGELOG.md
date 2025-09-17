@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.2.0](https://github.com/christophehurpeau/pob/compare/pob@29.1.0...pob@29.2.0) (2025-09-17)
+
+### Features
+
+* **deps:** update dependency @yeoman/types to v1.7.1 ([#2558](https://github.com/christophehurpeau/pob/issues/2558)) ([0067f0f](https://github.com/christophehurpeau/pob/commit/0067f0f95af5ecba55967229605f776ddcc49293))
+* update actions/setup-node to v5 ([#2580](https://github.com/christophehurpeau/pob/issues/2580)) ([c93f9bb](https://github.com/christophehurpeau/pob/commit/c93f9bb8b0969ec2c0884109994c39f9e9773368))
+* update dependencies ([ef7157a](https://github.com/christophehurpeau/pob/commit/ef7157a6db8fc3b6b927cf8d739b65c8f590d3fc))
+* use @pob/root/commitlint-config ([c0a9daa](https://github.com/christophehurpeau/pob/commit/c0a9daa689397134eba9ac11ac4c72c0819b13f9))
+
+### Bug Fixes
+
+* config can be undefined ([a1b70c4](https://github.com/christophehurpeau/pob/commit/a1b70c4a2e31669a96ce56495d416d1a10b1827a))
+* **deps:** update yarn monorepo to v4.9.4 ([#2554](https://github.com/christophehurpeau/pob/issues/2554)) ([60218ed](https://github.com/christophehurpeau/pob/commit/60218ed2f22e77ab5c0a6828b4151b798fef8324))
+
+Version bump for dependency: @pob/sort-object
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [29.1.0](https://github.com/christophehurpeau/pob/compare/pob@29.0.0...pob@29.1.0) (2025-08-24)
 
 ### Features

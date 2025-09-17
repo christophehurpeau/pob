@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@20.1.0...pob-dependencies@20.2.0) (2025-09-17)
+
+### Features
+
+* **deps:** update dependency rollup to v4.50.2 ([#2561](https://github.com/christophehurpeau/pob/issues/2561)) ([c206fd3](https://github.com/christophehurpeau/pob/commit/c206fd37900be3f00f33db69a150a316d009383d))
+* update dependencies ([ef7157a](https://github.com/christophehurpeau/pob/commit/ef7157a6db8fc3b6b927cf8d739b65c8f590d3fc))
+* use @pob/root/commitlint-config ([c0a9daa](https://github.com/christophehurpeau/pob/commit/c0a9daa689397134eba9ac11ac4c72c0819b13f9))
+
+Version bump for dependency: @pob/esbuild
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: pob-babel
+
+
 ## [20.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@20.0.0...pob-dependencies@20.1.0) (2025-08-24)
 
 ### Features

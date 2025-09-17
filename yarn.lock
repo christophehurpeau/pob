@@ -3629,7 +3629,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/esbuild@npm:5.0.0, @pob/esbuild@workspace:@pob/esbuild":
+"@pob/esbuild@npm:5.0.1, @pob/esbuild@workspace:@pob/esbuild":
   version: 0.0.0-use.local
   resolution: "@pob/esbuild@workspace:@pob/esbuild"
   dependencies:
@@ -3714,22 +3714,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pob/pretty-pkg@npm:13.0.0, @pob/pretty-pkg@workspace:@pob/pretty-pkg":
+"@pob/pretty-pkg@npm:13.1.0, @pob/pretty-pkg@workspace:@pob/pretty-pkg":
   version: 0.0.0-use.local
   resolution: "@pob/pretty-pkg@workspace:@pob/pretty-pkg"
   dependencies:
-    "@pob/sort-pkg": "npm:12.0.0"
+    "@pob/sort-pkg": "npm:12.1.0"
     prettier: "npm:^3.6.2"
   bin:
     pretty-pkg: ./bin/pretty-pkg.js
   languageName: unknown
   linkType: soft
 
-"@pob/rollup-esbuild@npm:7.0.0, @pob/rollup-esbuild@workspace:*, @pob/rollup-esbuild@workspace:@pob/rollup-esbuild":
+"@pob/rollup-esbuild@npm:7.1.0, @pob/rollup-esbuild@workspace:*, @pob/rollup-esbuild@workspace:@pob/rollup-esbuild":
   version: 0.0.0-use.local
   resolution: "@pob/rollup-esbuild@workspace:@pob/rollup-esbuild"
   dependencies:
-    "@pob/rollup": "npm:7.0.0"
+    "@pob/rollup": "npm:7.1.0"
     "@rollup/plugin-node-resolve": "npm:16.0.1"
     "@rollup/plugin-replace": "npm:6.0.2"
     "@rollup/plugin-run": "npm:3.1.0"
@@ -3761,7 +3761,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/rollup@npm:7.0.0, @pob/rollup@workspace:@pob/rollup":
+"@pob/rollup@npm:7.1.0, @pob/rollup@workspace:@pob/rollup":
   version: 0.0.0-use.local
   resolution: "@pob/rollup@workspace:@pob/rollup"
   dependencies:
@@ -3772,14 +3772,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/root@npm:19.1.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@npm:19.2.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
     "@commitlint/format": "npm:19.8.1"
     "@commitlint/lint": "npm:19.8.1"
     "@commitlint/types": "npm:19.8.1"
-    "@pob/pretty-pkg": "npm:13.0.0"
+    "@pob/pretty-pkg": "npm:13.1.0"
     conventional-changelog-conventionalcommits: "npm:^8.0.0"
     cosmiconfig: "npm:^9.0.0"
     husky: "npm:~9.1.7"
@@ -3790,7 +3790,7 @@ __metadata:
     repository-check-dirty: "npm:11.0.0"
     semver: "npm:^7.3.7"
     which-pm-runs: "npm:1.1.0"
-    yarn-version: "npm:8.1.0"
+    yarn-version: "npm:8.2.0"
   bin:
     pob-check-commit-msg: ./bin/pob-check-commit-msg.js
     pob-root-lint-staged: ./bin/pob-root-lint-staged.js
@@ -3803,17 +3803,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/sort-object@npm:10.0.0, @pob/sort-object@workspace:@pob/sort-object":
+"@pob/sort-object@npm:10.1.0, @pob/sort-object@workspace:@pob/sort-object":
   version: 0.0.0-use.local
   resolution: "@pob/sort-object@workspace:@pob/sort-object"
   languageName: unknown
   linkType: soft
 
-"@pob/sort-pkg@npm:12.0.0, @pob/sort-pkg@workspace:@pob/sort-pkg":
+"@pob/sort-pkg@npm:12.1.0, @pob/sort-pkg@workspace:@pob/sort-pkg":
   version: 0.0.0-use.local
   resolution: "@pob/sort-pkg@workspace:@pob/sort-pkg"
   dependencies:
-    "@pob/sort-object": "npm:10.0.0"
+    "@pob/sort-object": "npm:10.1.0"
   languageName: unknown
   linkType: soft
 
@@ -7031,7 +7031,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-pob-env@npm:16.0.0, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
+"babel-preset-pob-env@npm:16.1.0, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
   version: 0.0.0-use.local
   resolution: "babel-preset-pob-env@workspace:packages/babel-preset-pob-env"
   dependencies:
@@ -9096,7 +9096,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-typescript-lib-esbuild@workspace:pob-examples/typescript-lib-esbuild"
   dependencies:
-    "@pob/esbuild": "npm:5.0.0"
+    "@pob/esbuild": "npm:5.0.1"
     typescript: "npm:5.9.2"
   languageName: unknown
   linkType: soft
@@ -9105,7 +9105,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-typescript-lib-rollup-esbuild@workspace:pob-examples/typescript-lib-rollup-esbuild"
   dependencies:
-    "@pob/rollup-esbuild": "npm:7.0.0"
+    "@pob/rollup-esbuild": "npm:7.1.0"
     typescript: "npm:5.9.2"
   languageName: unknown
   linkType: soft
@@ -9119,14 +9119,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-typescript-lib@npm:0.47.0, example-typescript-lib@workspace:pob-examples/typescript-lib":
+"example-typescript-lib@npm:0.48.0, example-typescript-lib@workspace:pob-examples/typescript-lib":
   version: 0.0.0-use.local
   resolution: "example-typescript-lib@workspace:pob-examples/typescript-lib"
   dependencies:
     "@babel/core": "npm:7.28.4"
     "@babel/preset-env": "npm:7.28.3"
     "@types/node": "npm:22.18.5"
-    pob-babel: "npm:44.1.0"
+    pob-babel: "npm:44.2.0"
     typescript: "npm:5.9.2"
   languageName: unknown
   linkType: soft
@@ -9135,7 +9135,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-webpack-app@workspace:pob-examples/webpack-app"
   dependencies:
-    example-typescript-lib: "npm:0.47.0"
+    example-typescript-lib: "npm:0.48.0"
     webpack: "npm:5.101.3"
     webpack-cli: "npm:6.0.1"
   languageName: unknown
@@ -13753,18 +13753,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@npm:44.1.0, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
+"pob-babel@npm:44.2.0, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
     "@babel/core": "npm:^7.28.0"
     "@babel/plugin-transform-runtime": "npm:7.28.3"
-    "@pob/rollup": "npm:7.0.0"
+    "@pob/rollup": "npm:7.1.0"
     "@rollup/plugin-babel": "npm:6.0.4"
     "@rollup/plugin-json": "npm:6.1.0"
     "@rollup/plugin-node-resolve": "npm:16.0.1"
     "@rollup/plugin-run": "npm:3.1.0"
-    babel-preset-pob-env: "npm:16.0.0"
+    babel-preset-pob-env: "npm:16.1.0"
     rollup: "npm:4.50.2"
     rollup-config-external-dependencies: "npm:^3.0.1"
     semver: "npm:^7.3.7"
@@ -13791,12 +13791,12 @@ __metadata:
     "@babel/preset-react": "npm:7.27.1"
     "@babel/runtime": "npm:7.28.4"
     "@playwright/test": "npm:1.55.0"
-    "@pob/esbuild": "npm:5.0.0"
+    "@pob/esbuild": "npm:5.0.1"
     "@pob/eslint-config": "npm:62.0.0"
     "@pob/eslint-config-typescript": "npm:62.0.0"
     "@pob/eslint-config-typescript-react": "npm:62.0.0"
-    "@pob/pretty-pkg": "npm:13.0.0"
-    "@pob/rollup-esbuild": "npm:7.0.0"
+    "@pob/pretty-pkg": "npm:13.1.0"
+    "@pob/rollup-esbuild": "npm:7.1.0"
     "@pob/rollup-typescript": "npm:8.0.0"
     "@swc-node/register": "npm:1.11.1"
     "@swc/core": "npm:1.13.5"
@@ -13810,7 +13810,7 @@ __metadata:
     jest: "npm:30.1.3"
     jest-junit-reporter: "npm:1.1.0"
     pinst: "npm:3.0.0"
-    pob-babel: "npm:44.1.0"
+    pob-babel: "npm:44.2.0"
     prettier: "npm:3.6.2"
     repository-check-dirty: "npm:11.0.0"
     rollup: "npm:4.50.2"
@@ -13850,9 +13850,9 @@ __metadata:
     "@pob/eslint-config": "npm:62.0.0"
     "@pob/eslint-config-typescript": "npm:62.0.0"
     "@pob/eslint-config-typescript-react": "npm:62.0.0"
-    "@pob/root": "npm:19.1.0"
-    "@pob/sort-object": "npm:10.0.0"
-    "@pob/sort-pkg": "npm:12.0.0"
+    "@pob/root": "npm:19.2.0"
+    "@pob/sort-object": "npm:10.1.0"
+    "@pob/sort-pkg": "npm:12.1.0"
     "@prettier/sync": "npm:0.6.1"
     "@types/inquirer": "npm:9.0.9"
     "@types/node": "npm:22.18.5"
@@ -13877,7 +13877,7 @@ __metadata:
     semver: "npm:7.7.2"
     typescript: "npm:5.9.2"
     validate-npm-package-name: "npm:^6.0.2"
-    yarn-workspace-utils: "npm:9.1.0"
+    yarn-workspace-utils: "npm:9.2.0"
     yeoman-environment: "npm:4.4.3"
     yeoman-generator: "npm:7.5.1"
   bin:
@@ -17154,15 +17154,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yarn-version@npm:8.1.0, yarn-version@workspace:packages/yarn-version":
+"yarn-version@npm:8.2.0, yarn-version@workspace:packages/yarn-version":
   version: 0.0.0-use.local
   resolution: "yarn-version@workspace:packages/yarn-version"
   dependencies:
     "@conventional-changelog/git-client": "npm:1.0.1"
     "@npmcli/map-workspaces": "npm:5.0.0"
     "@octokit/rest": "npm:22.0.0"
-    "@pob/pretty-pkg": "npm:13.0.0"
-    "@pob/rollup-esbuild": "npm:7.0.0"
+    "@pob/pretty-pkg": "npm:13.1.0"
+    "@pob/rollup-esbuild": "npm:7.1.0"
     "@types/node": "npm:22.18.5"
     "@types/npmcli__map-workspaces": "npm:3.0.4"
     commander: "npm:14.0.1"
@@ -17182,13 +17182,13 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"yarn-workspace-utils@npm:9.1.0, yarn-workspace-utils@workspace:packages/yarn-workspace-utils":
+"yarn-workspace-utils@npm:9.2.0, yarn-workspace-utils@workspace:packages/yarn-workspace-utils":
   version: 0.0.0-use.local
   resolution: "yarn-workspace-utils@workspace:packages/yarn-workspace-utils"
   dependencies:
     "@babel/core": "npm:7.28.4"
     "@yarnpkg/core": "npm:4.4.3"
-    pob-babel: "npm:44.1.0"
+    pob-babel: "npm:44.2.0"
     typescript: "npm:5.9.2"
   languageName: unknown
   linkType: soft

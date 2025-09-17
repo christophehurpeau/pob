@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@19.1.0...@pob/root@19.2.0) (2025-09-17)
+
+### Features
+
+* remove @commitlint/cli ([cabad17](https://github.com/christophehurpeau/pob/commit/cabad17eae4eeba02aea42975536eea9131dfb45))
+* update actions/setup-node to v5 ([#2580](https://github.com/christophehurpeau/pob/issues/2580)) ([c93f9bb](https://github.com/christophehurpeau/pob/commit/c93f9bb8b0969ec2c0884109994c39f9e9773368))
+* update dependencies ([ef7157a](https://github.com/christophehurpeau/pob/commit/ef7157a6db8fc3b6b927cf8d739b65c8f590d3fc))
+* use @pob/root/commitlint-config ([c0a9daa](https://github.com/christophehurpeau/pob/commit/c0a9daa689397134eba9ac11ac4c72c0819b13f9))
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: yarn-version
+
+
 ## [19.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@19.0.0...@pob/root@19.1.0) (2025-08-24)
 
 ### Features

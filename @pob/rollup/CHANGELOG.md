@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup@7.0.0...@pob/rollup@7.1.0) (2025-09-17)
+
+### Features
+
+* **deps:** update dependency rollup to v4.50.2 ([#2561](https://github.com/christophehurpeau/pob/issues/2561)) ([c206fd3](https://github.com/christophehurpeau/pob/commit/c206fd37900be3f00f33db69a150a316d009383d))
+
 ## [7.0.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup@6.3.0...@pob/rollup@7.0.0) (2025-08-24)
 
 ### ⚠ BREAKING CHANGES
