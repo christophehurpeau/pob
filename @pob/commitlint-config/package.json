@@ -34,8 +34,5 @@
     "lint:eslint": "yarn ../.. run eslint --quiet @pob/commitlint-config"
   },
   "pob": {},
-  "prettier": "@pob/root/prettier-config",
-  "dependencies": {
-    "@commitlint/config-conventional": "^19.8.1"
-  }
+  "prettier": "@pob/root/prettier-config"
 }
