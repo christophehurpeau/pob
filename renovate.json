@@ -1,75 +1,76 @@
 {
   "extends": ["config:js-lib"],
   "prConcurrentLimit": 10,
-  "masterIssue": true,
-  "masterIssueApproval": false,
+  "dependencyDashboard": true,
+  "dependencyDashboardApproval": false,
   "postUpdateOptions": ["yarnDedupeFewer", "yarnDedupeHighest"],
   "labels": [":vertical_traffic_light: automerge"],
-  "upgradeInRange": true,
   "rangeStrategy": "bump",
   "packageRules": [
     {
-      "packagePatterns": ["*"],
-      "semanticCommitType": "chore"
+      "semanticCommitType": "chore",
+      "matchPackageNames": ["*"]
     },
     {
-      "depTypeList": ["dependencies"],
-      "updateTypes": ["patch"],
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["patch"],
       "semanticCommitType": "fix"
     },
     {
-      "depTypeList": ["dependencies"],
-      "updateTypes": ["minor", "major"],
+      "matchDepTypes": ["dependencies"],
+      "matchUpdateTypes": ["minor", "major"],
       "semanticCommitType": "feat"
     },
     {
-      "paths": ["packages/pob-dependencies"],
-      "depTypeList": ["devDependencies"],
+      "matchFileNames": ["packages/pob-dependencies"],
+      "matchDepTypes": ["devDependencies"],
       "semanticCommitType": "feat"
     },
     {
       "groupName": "react",
       "description": "react monorepo",
-      "sourceUrlPrefixes": ["https://github.com/facebook/react"],
-      "packageNames": [
+      "matchPackageNames": [
         "@hot-loader/react-dom",
         "@types/react",
         "@types/react-dom"
-      ]
+      ],
+      "matchSourceUrls": ["https://github.com/facebook/react{/,}**"]
     },
     {
       "groupName": "nightingale",
       "description": "nightingale monorepo",
-      "sourceUrlPrefixes": ["https://github.com/christophehurpeau/nightingale"]
+      "matchSourceUrls": [
+        "https://github.com/christophehurpeau/nightingale{/,}**"
+      ]
     },
     {
       "groupName": "alp",
       "description": "alp monorepo",
-      "sourceUrlPrefixes": ["https://github.com/christophehurpeau/alp"]
+      "matchSourceUrls": ["https://github.com/christophehurpeau/alp{/,}**"]
     },
     {
       "groupName": "liwi",
       "description": "liwi monorepo",
-      "sourceUrlPrefixes": ["https://github.com/liwijs/liwi"]
+      "matchSourceUrls": ["https://github.com/liwijs/liwi{/,}**"]
     },
     {
       "groupName": "@pob/eslint-config",
       "description": "@pob eslint configs",
-      "packagePatterns": ["^@pob/eslint-config"]
+      "matchPackageNames": ["/^@pob/eslint-config/"]
     },
     {
       "groupName": "yeoman group",
-      "packagePatterns": ["^yeoman-"]
+      "matchPackageNames": ["/^yeoman-/"]
     },
     {
-      "updateTypes": ["patch", "minor"],
+      "matchUpdateTypes": ["patch", "minor"],
       "labels": [
         ":ok_hand: code/approved",
         ":vertical_traffic_light: automerge"
       ]
     },
     {
-      "updateTypes": ["pin"],
+      "matchUpdateTypes": ["pin"],
       "labels": [
         ":ok_hand: code/approved",
         ":vertical_traffic_light: automerge"
@@ -79,8 +80,8 @@
     {
       "groupName": "conventional changelog",
       "description": "conventional-changelog monorepo",
-      "sourceUrlPrefixes": [
-        "https://github.com/conventional-changelog/conventional-changelog"
+      "matchSourceUrls": [
+        "https://github.com/conventional-changelog/conventional-changelog{/,}**"
       ]
     }
   ]
