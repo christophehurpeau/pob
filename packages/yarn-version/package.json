@@ -59,7 +59,7 @@
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
     "@conventional-changelog/git-client": "1.0.1",
-    "@npmcli/map-workspaces": "4.0.2",
+    "@npmcli/map-workspaces": "5.0.0",
     "@octokit/rest": "22.0.0",
     "@pob/pretty-pkg": "13.0.0",
     "commander": "14.0.1",
