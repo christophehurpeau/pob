@@ -65,9 +65,9 @@
   "pob": {},
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "@commitlint/format": "19.8.1",
-    "@commitlint/lint": "19.8.1",
-    "@commitlint/types": "19.8.1",
+    "@commitlint/format": "20.0.0",
+    "@commitlint/lint": "20.0.0",
+    "@commitlint/types": "20.0.0",
     "@pob/pretty-pkg": "13.1.0",
     "conventional-changelog-conventionalcommits": "^8.0.0",
     "cosmiconfig": "^9.0.0",
