@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.3.1](https://github.com/christophehurpeau/pob/compare/pob-babel@44.3.0...pob-babel@44.3.1) (2025-10-12)
+
+Note: no notable changes
+
+
 ## [44.3.0](https://github.com/christophehurpeau/pob/compare/pob-babel@44.2.0...pob-babel@44.3.0) (2025-10-12)
 
 ### Features

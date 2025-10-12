@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.3.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@20.3.0...pob-dependencies@20.3.1) (2025-10-12)
+
+Version bump for dependency: pob-babel
+
+
 ## [20.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@20.2.0...pob-dependencies@20.3.0) (2025-10-12)
 
 ### Features
