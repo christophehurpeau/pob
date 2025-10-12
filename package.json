@@ -54,6 +54,6 @@
     "pob-babel": "workspace:*",
     "prettier": "3.6.2",
     "react": "19.1.1",
-    "typescript": "5.9.2"
+    "typescript": "5.9.3"
   }
 }
