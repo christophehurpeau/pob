@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@20.2.0...pob-dependencies@20.3.0) (2025-10-12)
+
+### Features
+
+* **deps:** update dependency eslint to v9.37.0 ([#2585](https://github.com/christophehurpeau/pob/issues/2585)) ([46eb44a](https://github.com/christophehurpeau/pob/commit/46eb44a56a89df5fcca0d40c3738e38ceb07c038))
+* **deps:** update dependency rollup to v4.52.4 ([#2584](https://github.com/christophehurpeau/pob/issues/2584)) ([667f436](https://github.com/christophehurpeau/pob/commit/667f436af7faf34a33c5a51ee4a2f7ef8583d1a1))
+
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: pob-babel
+
+
 ## [20.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@20.1.0...pob-dependencies@20.2.0) (2025-09-17)
 
 ### Features

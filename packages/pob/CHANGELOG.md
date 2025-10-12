@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.3.0](https://github.com/christophehurpeau/pob/compare/pob@29.2.0...pob@29.3.0) (2025-10-12)
+
+### Features
+
+* **deps:** update dependency eslint to v9.37.0 ([#2585](https://github.com/christophehurpeau/pob/issues/2585)) ([46eb44a](https://github.com/christophehurpeau/pob/commit/46eb44a56a89df5fcca0d40c3738e38ceb07c038))
+* **deps:** update yarn monorepo ([#2583](https://github.com/christophehurpeau/pob/issues/2583)) ([2775830](https://github.com/christophehurpeau/pob/commit/2775830b30a964577f05457e8ffd2810265abd9f))
+
+### Bug Fixes
+
+* properly remove test:coverage:lcov script ([5d14307](https://github.com/christophehurpeau/pob/commit/5d143070d46c76e5b9313fd46e11213a6c1201de))
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [29.2.0](https://github.com/christophehurpeau/pob/compare/pob@29.1.0...pob@29.2.0) (2025-09-17)
 
 ### Features

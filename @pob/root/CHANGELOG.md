@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@19.2.0...@pob/root@19.3.0) (2025-10-12)
+
+### Features
+
+* **deps:** update dependency lint-staged to v16.2.4 ([#2586](https://github.com/christophehurpeau/pob/issues/2586)) ([07654d7](https://github.com/christophehurpeau/pob/commit/07654d702e9211c224a1490c9686baaaa985769f))
+* update yarn to 4.10.3 ([b90b07a](https://github.com/christophehurpeau/pob/commit/b90b07a07333b7ea3b33f4347a2f575694f55c16))
+
+Version bump for dependency: yarn-version
+
+
 ## [19.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@19.1.0...@pob/root@19.2.0) (2025-09-17)
 
 ### Features

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.3.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@9.2.0...yarn-workspace-utils@9.3.0) (2025-10-12)
+
+### Features
+
+* **deps:** update yarn monorepo ([#2583](https://github.com/christophehurpeau/pob/issues/2583)) ([2775830](https://github.com/christophehurpeau/pob/commit/2775830b30a964577f05457e8ffd2810265abd9f))
+
+Version bump for dependency: pob-babel
+
+
 ## [9.2.0](https://github.com/christophehurpeau/pob/compare/yarn-workspace-utils@9.1.0...yarn-workspace-utils@9.2.0) (2025-09-17)
 
 ### Features
