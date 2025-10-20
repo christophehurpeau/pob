@@ -66,9 +66,9 @@
     "conventional-changelog-conventionalcommits": "8.0.0",
     "conventional-changelog-core": "8.0.0",
     "conventional-changelog-preset-loader": "5.0.0",
-    "conventional-changelog-writer": "8.0.0",
+    "conventional-changelog-writer": "8.2.0",
     "conventional-commits-filter": "5.0.0",
-    "conventional-commits-parser": "6.1.0",
+    "conventional-commits-parser": "6.2.1",
     "nightingale": "16.2.0",
     "semver": "7.7.3"
   },
