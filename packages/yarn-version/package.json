@@ -63,8 +63,8 @@
     "@octokit/rest": "22.0.0",
     "@pob/pretty-pkg": "13.1.0",
     "commander": "14.0.1",
-    "conventional-changelog-conventionalcommits": "8.0.0",
-    "conventional-changelog-core": "8.0.0",
+    "conventional-changelog-conventionalcommits": "9.1.0",
+    "conventional-changelog-core": "9.0.0",
     "conventional-changelog-preset-loader": "5.0.0",
     "conventional-changelog-writer": "8.0.0",
     "conventional-commits-filter": "5.0.0",
@@ -76,7 +76,7 @@
     "@pob/rollup-esbuild": "7.2.0",
     "@types/node": "22.18.10",
     "@types/npmcli__map-workspaces": "3.0.4",
-    "conventional-recommended-bump": "10.0.0",
+    "conventional-recommended-bump": "11.2.0",
     "type-fest": "5.1.0",
     "typescript": "5.9.3"
   }
