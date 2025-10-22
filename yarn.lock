@@ -1725,7 +1725,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@conventional-changelog/git-client@npm:1.0.1, @conventional-changelog/git-client@npm:^1.0.0":
+"@conventional-changelog/git-client@npm:2.0.0":
+  version: 2.0.0
+  resolution: "@conventional-changelog/git-client@npm:2.0.0"
+  dependencies:
+    semver: "npm:^7.5.2"
+  peerDependencies:
+    conventional-commits-filter: ^5.0.0
+    conventional-commits-parser: ^6.1.0
+  peerDependenciesMeta:
+    conventional-commits-filter:
+      optional: true
+    conventional-commits-parser:
+      optional: true
+  checksum: 10c0/d74b8ae1927322c187ad99f6563cfabe2e3e4ed3e6cbb8be1e15c821247c53bb553aec4b0a4a6542af31b6dff95544bee3c733b766943a70688a577aac982bc1
+  languageName: node
+  linkType: hard
+
+"@conventional-changelog/git-client@npm:^1.0.0":
   version: 1.0.1
   resolution: "@conventional-changelog/git-client@npm:1.0.1"
   dependencies:
@@ -17213,7 +17230,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "yarn-version@workspace:packages/yarn-version"
   dependencies:
-    "@conventional-changelog/git-client": "npm:1.0.1"
+    "@conventional-changelog/git-client": "npm:2.0.0"
     "@npmcli/map-workspaces": "npm:5.0.0"
     "@octokit/rest": "npm:22.0.0"
     "@pob/pretty-pkg": "npm:13.1.0"
