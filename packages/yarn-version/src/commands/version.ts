@@ -99,6 +99,14 @@ interface BumpedWorkspace extends ChangedWorkspace, NoVersionToUpdateWorkspace {
   newTag: string | null;
 }
 
+const todayInYYYYMMDD = (): string => {
+  // sv-SEis used for yyyy-mm-dd format
+  const dateFormatter = Intl.DateTimeFormat("sv-SE", {
+    timeZone: "UTC",
+  });
+  return dateFormatter.format(new Date());
+};
+
 export const versionCommandAction = async (
   options: VersionCommandOptions,
   { nightingaleHandler = new ConsoleHandler(Level.INFO) } = {},
@@ -636,26 +644,31 @@ export const versionCommandAction = async (
         workspace,
         { newTag, hasChanged, bumpReason, bumpForDependenciesReasons },
       ]) => {
-        const workspaceRelativePath =
-          rootWorkspace === workspace
-            ? undefined
-            : path.relative(rootWorkspace.cwd, workspace.cwd);
+        // const workspaceRelativePath =
+        //   rootWorkspace === workspace
+        //     ? undefined
+        //     : path.relative(rootWorkspace.cwd, workspace.cwd);
+
+        const commits = commitsByWorkspace?.get(workspace);
 
         let changelog = await generateChangelog(
           rootWorkspace,
           workspace.pkg,
           conventionalCommitConfig,
+          previousTagByWorkspace.get(workspace) || null,
           isMonorepoVersionIndependent ? newTag : rootNewTag,
-          {
-            path: workspaceRelativePath,
-            previousTag: previousTagByWorkspace.get(workspace) || undefined,
-            verbose: options.verbose,
-            tagPrefix: options.tagVersionPrefix,
-            lernaPackage:
-              rootWorkspace === workspace
-                ? undefined
-                : getWorkspaceName(workspace),
-          },
+          commits,
+          todayInYYYYMMDD(),
+          // {
+          //   path: workspaceRelativePath,
+          //   previousTag: previousTagByWorkspace.get(workspace) || undefined,
+          //   verbose: options.verbose,
+          //   tagPrefix: options.tagVersionPrefix,
+          //   lernaPackage:
+          //     rootWorkspace === workspace
+          //       ? undefined
+          //       : getWorkspaceName(workspace),
+          // },
         );
 
         if (bumpForDependenciesReasons && workspace !== rootWorkspace) {

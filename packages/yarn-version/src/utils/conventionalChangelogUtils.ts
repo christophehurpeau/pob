@@ -1,7 +1,4 @@
-import type { Readable } from "node:stream";
-import { text } from "node:stream/consumers";
-import conventionalChangelogCore from "conventional-changelog-core";
-import type { Commit } from "conventional-commits-parser";
+import { writeChangelogString } from "conventional-changelog-writer";
 import type { BumperRecommendation } from "conventional-recommended-bump";
 import type { PackageJson } from "type-fest";
 import type { ConventionalChangelogConfig } from "./conventionalCommitConfigUtils.ts";
@@ -12,73 +9,68 @@ const versions: BumperRecommendation["releaseType"][] = [
   "minor",
   "patch",
 ];
+
 export const recommendBump = async (
-  commits: Commit[],
+  commits: Parameters<ConventionalChangelogConfig["whatBump"]>[0],
   config: ConventionalChangelogConfig,
-): Promise<BumperRecommendation> => {
+): Promise<Partial<BumperRecommendation>> => {
   const whatBump = config.whatBump;
   if (!whatBump) {
     throw new Error("whatBump method is missing in config");
   }
-  let result: BumperRecommendation = { ...(await whatBump(commits)) };
-  if (result.level != null) {
-    result.releaseType = versions[result.level];
-  } else if (result == null) {
-    result = {};
-  }
+  const result = { ...(await whatBump(commits)) };
 
-  return result;
+  return {
+    ...result,
+    releaseType: result.level != null ? versions[result.level] : undefined,
+  };
 };
+
+export type Commits = Parameters<ConventionalChangelogConfig["whatBump"]>[0];
 
 export const generateChangelog = (
   workspace: Workspace,
   pkg: PackageJson,
   config: ConventionalChangelogConfig,
+  previousTag: string | null,
   newTag: string | null,
-  {
-    previousTag = "",
-    verbose = false,
-    tagPrefix = "v",
-    path = "",
-    lernaPackage,
-  }: {
-    previousTag?: string;
-    verbose?: boolean;
-    tagPrefix?: string;
-    path?: string;
-    lernaPackage?: string;
-  } = {},
+  commits: Commits | undefined,
+  date: string,
   // eslint-disable-next-line @typescript-eslint/max-params
 ): Promise<string> => {
   if (!newTag) {
     throw new Error(`Missing new tag for package "${pkg.name ?? ""}"`);
   }
-  const stream: Readable = conventionalChangelogCore(
-    {
-      cwd: workspace.cwd,
-      config,
-      pkg,
-      path,
-      append: !!previousTag,
-      releaseCount: !previousTag ? 0 : 1,
-      skipUnstable: true,
-      lernaPackage,
-      tagPrefix,
-      verbose,
-      previousTag,
-      currentTag: newTag,
-    },
-    {
-      version: pkg.version,
-      currentTag: newTag,
-      previousTag,
-    },
-    // @ts-expect-error -- path is required to filter commits by path. It does not work if it is only provided in options.
-    {
-      from: previousTag,
-      path,
-    },
-  );
 
-  return text(stream);
+  const originUrl =
+    typeof pkg.repository === "string" ? pkg.repository : pkg.repository?.url;
+  const match =
+    originUrl &&
+    typeof originUrl === "string" &&
+    /^(?:git@|https?:\/\/)(?:([^./:]+(?:\.com)?)[/:])?([^/:]+)\/([^./:]+)(?:.git)?/.exec(
+      originUrl,
+    );
+  const [, gitHost, gitAccount, repoName] = match || [
+    undefined,
+    undefined,
+    undefined,
+    undefined,
+  ];
+
+  return writeChangelogString(
+    commits ?? [],
+    {
+      // @ts-expect-error - missing types
+      previousTag,
+      currentTag: newTag,
+      linkCompare: previousTag != null,
+      version: pkg.version,
+      host: gitHost ? `https://${gitHost}` : undefined,
+      owner: gitAccount,
+      repository: repoName,
+      date,
+    },
+    // @ts-expect-error - missing types
+    config.writer,
+  );
 };

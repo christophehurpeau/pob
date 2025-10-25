@@ -39,7 +39,8 @@
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn ../.. run eslint --quiet packages/yarn-version",
     "start": "yarn clean:build && rollup --config rollup.config.mjs --watch",
-    "test": "yarn ../../ run test -- packages/yarn-version"
+    "test": "vitest run",
+    "test:watch": "vitest"
   },
   "pob": {
     "bundler": "rollup-esbuild",
@@ -58,17 +59,14 @@
   },
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "@conventional-changelog/git-client": "1.0.1",
+    "@conventional-changelog/git-client": "2.5.1",
     "@npmcli/map-workspaces": "5.0.0",
     "@octokit/rest": "22.0.0",
     "@pob/pretty-pkg": "13.1.0",
     "commander": "14.0.1",
-    "conventional-changelog-conventionalcommits": "8.0.0",
-    "conventional-changelog-core": "8.0.0",
+    "conventional-changelog-conventionalcommits": "9.1.0",
     "conventional-changelog-preset-loader": "5.0.0",
-    "conventional-changelog-writer": "8.0.0",
-    "conventional-commits-filter": "5.0.0",
-    "conventional-commits-parser": "6.1.0",
+    "conventional-changelog-writer": "8.2.0",
     "nightingale": "16.2.0",
     "semver": "7.7.3"
   },
@@ -76,8 +74,9 @@
     "@pob/rollup-esbuild": "7.2.0",
     "@types/node": "22.18.10",
     "@types/npmcli__map-workspaces": "3.0.4",
-    "conventional-recommended-bump": "10.0.0",
+    "conventional-recommended-bump": "11.2.0",
     "type-fest": "5.1.0",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vitest": "3.2.4"
   }
 }

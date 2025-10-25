@@ -4,8 +4,7 @@ import path from 'node:path';
 import { ConventionalGitClient } from '@conventional-changelog/git-client';
 import { addConfig, ConsoleHandler, Logger, Level } from 'nightingale';
 import semver, { satisfies } from 'semver';
-import { text } from 'node:stream/consumers';
-import conventionalChangelogCore from 'conventional-changelog-core';
+import { writeChangelogString } from 'conventional-changelog-writer';
 import { loadPreset } from 'conventional-changelog-preset-loader';
 import childProcess from 'node:child_process';
 import { Octokit } from '@octokit/rest';
@@ -203,51 +202,42 @@ const recommendBump = async (commits, config) => {
   if (!whatBump) {
     throw new Error("whatBump method is missing in config");
   }
-  let result = { ...await whatBump(commits) };
-  if (result.level != null) {
-    result.releaseType = versions[result.level];
-  } else if (result == null) {
-    result = {};
-  }
-  return result;
+  const result = { ...await whatBump(commits) };
+  return {
+    ...result,
+    releaseType: result.level != null ? versions[result.level] : void 0
+  };
 };
-const generateChangelog = (workspace, pkg, config, newTag, {
-  previousTag = "",
-  verbose = false,
-  tagPrefix = "v",
-  path = "",
-  lernaPackage
-} = {}) => {
+const generateChangelog = (workspace, pkg, config, previousTag, newTag, commits, date) => {
   if (!newTag) {
     throw new Error(`Missing new tag for package "${pkg.name ?? ""}"`);
   }
-  const stream = conventionalChangelogCore(
-    {
-      cwd: workspace.cwd,
-      config,
-      pkg,
-      path,
-      append: !!previousTag,
-      releaseCount: !previousTag ? 0 : 1,
-      skipUnstable: true,
-      lernaPackage,
-      tagPrefix,
-      verbose,
-      previousTag,
-      currentTag: newTag
-    },
-    {
-      version: pkg.version,
-      currentTag: newTag,
-      previousTag
-    },
-    // @ts-expect-error -- path is required to filter commits by path. It does not work if it is only provided in options.
-    {
-      from: previousTag,
-      path
-    }
+  const originUrl = typeof pkg.repository === "string" ? pkg.repository : pkg.repository?.url;
+  const match = originUrl && typeof originUrl === "string" && /^(?:git@|https?:\/\/)(?:([^./:]+(?:\.com)?)[/:])?([^/:]+)\/([^./:]+)(?:.git)?/.exec(
+    originUrl
   );
-  return text(stream);
+  const [, gitHost, gitAccount, repoName] = match || [
+    void 0,
+    void 0,
+    void 0,
+    void 0
+  ];
+  return writeChangelogString(
+    commits ?? [],
+    {
+      // @ts-expect-error - missing types
+      previousTag,
+      currentTag: newTag,
+      linkCompare: previousTag != null,
+      version: pkg.version,
+      host: gitHost ? `https://${gitHost}` : void 0,
+      owner: gitAccount,
+      repository: repoName,
+      date
+    },
+    // @ts-expect-error - missing types
+    config.writer
+  );
 };
 
 const loadConventionalCommitConfig = async (rootWorkspace, preset) => {
@@ -530,6 +520,12 @@ ${oldContent}`
   );
 };
 
+const todayInYYYYMMDD = () => {
+  const dateFormatter = Intl.DateTimeFormat("sv-SE", {
+    timeZone: "UTC"
+  });
+  return dateFormatter.format(/* @__PURE__ */ new Date());
+};
 const versionCommandAction = async (options, { nightingaleHandler = new ConsoleHandler(Level.INFO) } = {}) => {
   if (options.json) {
     process.env.NIGHTINGALE_CONSOLE_FORMATTER = "json";
@@ -917,19 +913,25 @@ There are uncommitted changes in the git repository. Please commit or stash them
         workspace,
         { newTag, hasChanged, bumpReason, bumpForDependenciesReasons }
       ]) => {
-        const workspaceRelativePath = rootWorkspace === workspace ? void 0 : path.relative(rootWorkspace.cwd, workspace.cwd);
+        const commits = commitsByWorkspace?.get(workspace);
         let changelog = await generateChangelog(
           rootWorkspace,
           workspace.pkg,
           conventionalCommitConfig,
+          previousTagByWorkspace.get(workspace) || null,
           isMonorepoVersionIndependent ? newTag : rootNewTag,
-          {
-            path: workspaceRelativePath,
-            previousTag: previousTagByWorkspace.get(workspace) || void 0,
-            verbose: options.verbose,
-            tagPrefix: options.tagVersionPrefix,
-            lernaPackage: rootWorkspace === workspace ? void 0 : getWorkspaceName(workspace)
-          }
+          commits,
+          todayInYYYYMMDD()
+          // {
+          //   path: workspaceRelativePath,
+          //   previousTag: previousTagByWorkspace.get(workspace) || undefined,
+          //   verbose: options.verbose,
+          //   tagPrefix: options.tagVersionPrefix,
+          //   lernaPackage:
+          //     rootWorkspace === workspace
+          //       ? undefined
+          //       : getWorkspaceName(workspace),
+          // },
         );
         if (bumpForDependenciesReasons && workspace !== rootWorkspace) {
           if (bumpForDependenciesReasons.length > 0) {
