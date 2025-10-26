@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.4.0](https://github.com/christophehurpeau/pob/compare/pob-babel@44.3.1...pob-babel@44.4.0) (2025-10-26)
+
+### Features
+
+* update deps
+
+### Bug Fixes
+
+* **deps:** update dependency @rollup/plugin-node-resolve to v16.0.2 ([#2591](https://github.com/christophehurpeau/pob/issues/2591))
+* **deps:** update dependency rollup to v4.52.5 ([#2603](https://github.com/christophehurpeau/pob/issues/2603))
+
+Version bump for dependency: @pob/rollup
+
+
 ## [44.3.1](https://github.com/christophehurpeau/pob/compare/pob-babel@44.3.0...pob-babel@44.3.1) (2025-10-12)
 
 Note: no notable changes

@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.4.0](https://github.com/christophehurpeau/pob/compare/pob@29.3.1...pob@29.4.0) (2025-10-26)
+
+### Features
+
+* **deps:** update dependency eslint to v9.38.0 ([#2602](https://github.com/christophehurpeau/pob/issues/2602))
+* update deps
+* update yeoman-env
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [29.3.1](https://github.com/christophehurpeau/pob/compare/pob@29.3.0...pob@29.3.1) (2025-10-12)
 
 Version bump for dependency: yarn-workspace-utils

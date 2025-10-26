@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.1.0](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@5.0.1...@pob/esbuild@5.1.0) (2025-10-26)
+
+### Features
+
+* update deps
+
 ## [5.0.1](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@5.0.0...@pob/esbuild@5.0.1) (2025-09-17)
 
 ### Bug Fixes
