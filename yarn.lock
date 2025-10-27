@@ -3275,15 +3275,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@npmcli/map-workspaces@npm:5.0.0, @npmcli/map-workspaces@npm:^5.0.0":
-  version: 5.0.0
-  resolution: "@npmcli/map-workspaces@npm:5.0.0"
+"@npmcli/map-workspaces@npm:5.0.1, @npmcli/map-workspaces@npm:^5.0.0":
+  version: 5.0.1
+  resolution: "@npmcli/map-workspaces@npm:5.0.1"
   dependencies:
-    "@npmcli/name-from-folder": "npm:^3.0.0"
+    "@npmcli/name-from-folder": "npm:^4.0.0"
     "@npmcli/package-json": "npm:^7.0.0"
     glob: "npm:^11.0.3"
     minimatch: "npm:^10.0.3"
-  checksum: 10c0/b172d88136ea0c0377b97f511e600bb222ae92a7981fb72d7b8f895ce02268ea0b56d0c4c9d1c97f4c56955f6f731b7330c988862653460a37d6c2929c297447
+  checksum: 10c0/5bff2e21b49a7ef23fc2968204db20436342d05e55eec1011535d4b0acb3b6657495a43d2f8ac5b2abaddf3837f6b3bc496dc27d8e98d26a98e9c86800ce126f
   languageName: node
   linkType: hard
 
@@ -3314,6 +3314,13 @@ __metadata:
   version: 3.0.0
   resolution: "@npmcli/name-from-folder@npm:3.0.0"
   checksum: 10c0/d6a508c5b4920fb28c752718b906b36fc2374873eba804668afdac8b3c322e8b97a5f1a74f3448d847c615a10828446821d90caf7cdf603d424a9f40f3a733df
+  languageName: node
+  linkType: hard
+
+"@npmcli/name-from-folder@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@npmcli/name-from-folder@npm:4.0.0"
+  checksum: 10c0/edaeb4a4098f920e373cddd7f765347f1013e3a84e1cdb16da4b83144bc377fe7cd4fa37562596a53a9e46dfca381c2b8706c2661014921bc1bf710303dff713
   languageName: node
   linkType: hard
 
@@ -17141,7 +17148,7 @@ __metadata:
   resolution: "yarn-version@workspace:packages/yarn-version"
   dependencies:
     "@conventional-changelog/git-client": "npm:2.5.1"
-    "@npmcli/map-workspaces": "npm:5.0.0"
+    "@npmcli/map-workspaces": "npm:5.0.1"
     "@octokit/rest": "npm:22.0.0"
     "@pob/pretty-pkg": "npm:13.1.0"
     "@pob/rollup-esbuild": "npm:7.3.0"
