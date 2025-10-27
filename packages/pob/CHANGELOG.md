@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.5.0](https://github.com/christophehurpeau/pob/compare/pob@29.4.0...pob@29.5.0) (2025-10-27)
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [29.4.0](https://github.com/christophehurpeau/pob/compare/pob@29.3.1...pob@29.4.0) (2025-10-26)
 
 ### Features

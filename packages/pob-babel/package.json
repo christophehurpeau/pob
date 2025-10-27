@@ -1,6 +1,6 @@
 {
   "name": "pob-babel",
-  "version": "44.4.0",
+  "version": "44.4.1",
   "description": "Build and watch with babel and typescript",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
@@ -74,7 +74,7 @@
     "@rollup/plugin-json": "6.1.0",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-run": "3.1.0",
-    "babel-preset-pob-env": "16.1.0",
+    "babel-preset-pob-env": "16.1.1",
     "rollup": "4.52.5",
     "rollup-config-external-dependencies": "^3.0.1",
     "semver": "^7.7.3"

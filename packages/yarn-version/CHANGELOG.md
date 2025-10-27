@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.5.0](https://github.com/christophehurpeau/pob/compare/yarn-version@8.4.0...yarn-version@8.5.0) (2025-10-27)
+
+### Features
+
+* **deps:** update dependency nightingale to v17 ([#2612](https://github.com/christophehurpeau/pob/issues/2612))
+
+### Bug Fixes
+
+* **deps:** update dependency @npmcli/map-workspaces to v5.0.1 ([#2606](https://github.com/christophehurpeau/pob/issues/2606))
+* **deps:** update dependency commander to v14.0.2 ([#2607](https://github.com/christophehurpeau/pob/issues/2607))
+
 ## [8.4.0](https://github.com/christophehurpeau/pob/compare/yarn-version@8.3.1...yarn-version@8.4.0) (2025-10-26)
 
 ### Features

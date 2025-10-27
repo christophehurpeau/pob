@@ -1,29 +1,29 @@
 interface Dependencies {
-  "@babel/core": "7.28.4";
-  "@babel/preset-env": "7.28.3";
-  "@babel/preset-react": "7.27.1";
+  "@babel/core": "7.28.5";
+  "@babel/preset-env": "7.28.5";
+  "@babel/preset-react": "7.28.5";
   "@babel/runtime": "7.28.4";
   "@playwright/test": "1.56.1";
-  "@pob/esbuild": "5.0.1";
+  "@pob/esbuild": "5.1.0";
   "@pob/eslint-config": "62.0.0";
   "@pob/eslint-config-typescript": "62.0.0";
   "@pob/eslint-config-typescript-react": "62.0.0";
   "@pob/pretty-pkg": "13.1.0";
-  "@pob/rollup-esbuild": "7.2.0";
+  "@pob/rollup-esbuild": "7.3.0";
   "@pob/rollup-typescript": "8.0.0";
   "@swc-node/register": "1.11.1";
-  "@swc/core": "1.13.20";
+  "@swc/core": "1.13.21";
   "@swc/jest": "0.2.39";
   "@types/jest": "30.0.0";
   "@types/node": "22.18.12";
-  "@vitest/coverage-v8": "3.2.4";
+  "@vitest/coverage-v8": "4.0.4";
   "alp-rollup-plugin-config": "3.0.0";
-  "check-package-dependencies": "10.4.1";
+  "check-package-dependencies": "10.5.0";
   eslint: "9.38.0";
   jest: "30.2.0";
   "jest-junit-reporter": "1.1.0";
   pinst: "3.0.0";
-  "pob-babel": "44.3.1";
+  "pob-babel": "44.4.0";
   prettier: "3.6.2";
   "repository-check-dirty": "11.0.0";
   rollup: "4.52.5";
@@ -31,7 +31,7 @@ interface Dependencies {
   tslib: "2.8.1";
   typedoc: "0.28.14";
   typescript: "5.9.3";
-  vitest: "3.2.4";
+  vitest: "4.0.4";
 }
 
 declare const dependencies: Dependencies;

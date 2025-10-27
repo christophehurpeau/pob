@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.4.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@20.4.0...pob-dependencies@20.4.1) (2025-10-27)
+
+### Bug Fixes
+
+* **deps:** update babel monorepo to v7.28.5 ([#2605](https://github.com/christophehurpeau/pob/issues/2605))
+
+Version bump for dependency: pob-babel
+
+
 ## [20.4.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@20.3.1...pob-dependencies@20.4.0) (2025-10-26)
 
 ### Features
