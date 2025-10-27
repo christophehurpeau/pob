@@ -2060,7 +2060,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@eslint/plugin-kit@npm:^0.3.1, @eslint/plugin-kit@npm:^0.3.3, @eslint/plugin-kit@npm:^0.3.5":
+"@eslint/plugin-kit@npm:^0.3.3, @eslint/plugin-kit@npm:^0.3.5":
   version: 0.3.5
   resolution: "@eslint/plugin-kit@npm:0.3.5"
   dependencies:
@@ -7663,19 +7663,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"check-package-dependencies@npm:10.4.1":
-  version: 10.4.1
-  resolution: "check-package-dependencies@npm:10.4.1"
+"check-package-dependencies@npm:10.5.0":
+  version: 10.5.0
+  resolution: "check-package-dependencies@npm:10.5.0"
   dependencies:
-    "@eslint/plugin-kit": "npm:^0.3.1"
+    "@eslint/plugin-kit": "npm:^0.4.0"
     jsonc-parser: "npm:^3.3.1"
-    semver: "npm:^7.0.0"
+    semver: "npm:^7.7.3"
     semver-utils: "npm:^1.1.4"
     tslib: "npm:^2.8.1"
-    type-fest: "npm:^4.37.0"
+    type-fest: "npm:^4.37.0 || ^5.1.0"
   bin:
     check-package-dependencies: ./bin/check-package-dependencies.mjs
-  checksum: 10c0/664f253ab1dbe2482c2bfb73cc77f61271daf55db9e72a2e6449e69e21e14dea0b862f5075bbac72909417f68a874b7410554551cd5a3afbbbdebb85d15b15bb
+  checksum: 10c0/20bb8514455bd9d327cde8b4aee873e052110707fe6c47488558fd5895ddf0dd32cdab10aca05331bf8b92d143a34b9517babe064596289e7bf32bf5d8a47bd4
   languageName: node
   linkType: hard
 
@@ -13870,7 +13870,7 @@ __metadata:
     "@types/node": "npm:22.18.12"
     "@vitest/coverage-v8": "npm:3.2.4"
     alp-rollup-plugin-config: "npm:3.0.0"
-    check-package-dependencies: "npm:10.4.1"
+    check-package-dependencies: "npm:10.5.0"
     eslint: "npm:9.38.0"
     jest: "npm:30.2.0"
     jest-junit-reporter: "npm:1.1.0"
@@ -13897,7 +13897,7 @@ __metadata:
     "@pob/rollup-esbuild": "workspace:*"
     "@pob/root": "workspace:*"
     "@types/jest": "npm:30.0.0"
-    check-package-dependencies: "npm:10.4.1"
+    check-package-dependencies: "npm:10.5.0"
     eslint: "npm:9.38.0"
     eslint-plugin-jest: "npm:29.0.1"
     jest: "npm:30.2.0"
@@ -14902,7 +14902,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"semver@npm:7.7.3, semver@npm:^7.0.0, semver@npm:^7.1.1, semver@npm:^7.1.2, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.5.2, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.6.0, semver@npm:^7.6.3, semver@npm:^7.7.2, semver@npm:^7.7.3":
+"semver@npm:7.7.3, semver@npm:^7.1.1, semver@npm:^7.1.2, semver@npm:^7.3.5, semver@npm:^7.3.7, semver@npm:^7.5.2, semver@npm:^7.5.3, semver@npm:^7.5.4, semver@npm:^7.6.0, semver@npm:^7.6.3, semver@npm:^7.7.2, semver@npm:^7.7.3":
   version: 7.7.3
   resolution: "semver@npm:7.7.3"
   bin:
@@ -16143,7 +16143,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:5.1.0":
+"type-fest@npm:5.1.0, type-fest@npm:^4.37.0 || ^5.1.0":
   version: 5.1.0
   resolution: "type-fest@npm:5.1.0"
   dependencies:
@@ -16173,7 +16173,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:^4.37.0, type-fest@npm:^4.6.0, type-fest@npm:^4.7.1":
+"type-fest@npm:^4.6.0, type-fest@npm:^4.7.1":
   version: 4.41.0
   resolution: "type-fest@npm:4.41.0"
   checksum: 10c0/f5ca697797ed5e88d33ac8f1fec21921839871f808dc59345c9cf67345bfb958ce41bd821165dbf3ae591cedec2bf6fe8882098dfdd8dc54320b859711a2c1e4
