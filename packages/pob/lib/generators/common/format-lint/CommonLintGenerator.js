@@ -203,6 +203,7 @@ export default class CommonLintGenerator extends Generator {
           hasApp: this.options.hasApp,
           rootIgnorePatterns: [...rootIgnorePatterns],
           ignorePatterns: [...ignorePatterns],
+          storybook: !!pkg.devDependencies?.storybook,
         },
       );
     } else if (this.fs.exists(this.destinationPath(".prettierignore"))) {
