@@ -20,13 +20,14 @@ export const appIgnorePaths = {
   storybook: (config) => [],
   expo: (config) => [
     "/.expo/",
+    "/.src/tamagui-web.css",
+    "/dist/",
     "*.jks",
     "*.p8",
     "*.p12",
     "*.key",
     "*.mobileprovision",
     "*.orig.*",
-    "/web-build/",
 
     // only if option is enabled which is not by default
     // '# Temporary files created by Metro to check the health of the file watcher',
