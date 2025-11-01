@@ -38,6 +38,6 @@
   },
   "devDependencies": {
     "@types/jscodeshift": "17.3.0",
-    "@types/node": "22.18.12"
+    "@types/node": "22.18.13"
   }
 }
