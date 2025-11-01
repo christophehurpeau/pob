@@ -20,7 +20,7 @@ export const appIgnorePaths = {
   storybook: (config) => [],
   expo: (config) => [
     "/.expo/",
-    "/.src/tamagui-web.css",
+    "/src/tamagui-web.css",
     "/dist/",
     "*.jks",
     "*.p8",

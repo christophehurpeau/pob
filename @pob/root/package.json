@@ -43,6 +43,7 @@
     "./tsconfigs/targets/rollup-es2015.json": "./tsconfigs/targets/rollup-es2015.json",
     "./tsconfigs/targets/rollup-es2015-with-dom.json": "./tsconfigs/targets/rollup-es2015-with-dom.json",
     "./tsconfigs/targets/webpack.json": "./tsconfigs/targets/webpack.json",
+    "./tsconfigs/targets/expo.json": "./tsconfigs/targets/expo.json",
     "./tsconfigs/targets/rollup-node-22.json": "./tsconfigs/targets/rollup-node-22.json",
     "./tsconfigs/targets/esbuild-node-22.json": "./tsconfigs/targets/esbuild-node-22.json",
     "./package.json": "./package.json"

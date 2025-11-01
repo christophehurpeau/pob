@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "@pob:target:Expo",
+  "extends": "./base-bundler.json",
+
+  "compilerOptions": {
+    "isolatedModules": true,
+    "target": "ESNext",
+    "lib": ["DOM", "ESNext"]
+  }
+}
