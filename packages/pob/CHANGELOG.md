@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.6.0](https://github.com/christophehurpeau/pob/compare/pob@29.5.0...pob@29.6.0) (2025-11-01)
+
+### Features
+
+* add storybook.requires.ts in prettierignore
+* add tamagui-web.css and replace web-build by dist
+* expo tsconfig
+* update packageManager
+
+Version bump for dependency: @pob/root
+
+
 ## [29.5.0](https://github.com/christophehurpeau/pob/compare/pob@29.4.0...pob@29.5.0) (2025-10-27)
 
 Version bump for dependency: yarn-workspace-utils

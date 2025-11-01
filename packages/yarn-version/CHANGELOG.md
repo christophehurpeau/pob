@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.5.1](https://github.com/christophehurpeau/pob/compare/yarn-version@8.5.0...yarn-version@8.5.1) (2025-11-01)
+
+### Bug Fixes
+
+* **deps:** update dependency @octokit/rest to v22.0.1 ([#2621](https://github.com/christophehurpeau/pob/issues/2621))
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [8.5.0](https://github.com/christophehurpeau/pob/compare/yarn-version@8.4.0...yarn-version@8.5.0) (2025-10-27)
 
 ### Features

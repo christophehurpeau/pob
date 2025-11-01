@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.6.0](https://github.com/christophehurpeau/pob/compare/@pob/root@19.5.0...@pob/root@19.6.0) (2025-11-01)
+
+### Features
+
+* expo tsconfig
+
+### Bug Fixes
+
+* add deps to try to fix node_modules priority installation
+
+Version bump for dependency: yarn-version
+
+
 ## [19.5.0](https://github.com/christophehurpeau/pob/compare/@pob/root@19.4.0...@pob/root@19.5.0) (2025-10-27)
 
 ### Bug Fixes
