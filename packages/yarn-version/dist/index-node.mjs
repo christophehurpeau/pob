@@ -1,10 +1,10 @@
 import fs$1 from 'node:fs';
 import { program, Option } from 'commander';
-import path from 'node:path';
-import { ConventionalGitClient } from '@conventional-changelog/git-client';
 import { addConfig, ConsoleHandler, Logger, Level } from 'nightingale';
 import semver, { satisfies } from 'semver';
+import path from 'node:path';
 import { writeChangelogString } from 'conventional-changelog-writer';
+import { parseCommits } from 'conventional-commits-parser';
 import { loadPreset } from 'conventional-changelog-preset-loader';
 import childProcess from 'node:child_process';
 import { Octokit } from '@octokit/rest';
@@ -239,6 +239,9 @@ const generateChangelog = (workspace, pkg, config, previousTag, newTag, commits,
     config.writer
   );
 };
+const createCommitsParser = (config) => {
+  return parseCommits(config.parser);
+};
 
 const loadConventionalCommitConfig = async (rootWorkspace, preset) => {
   try {
@@ -300,6 +303,63 @@ stderr: ${stderr}`
     });
   });
 }
+async function* spawnStreamStdout(command, args, {
+  cwd = process.cwd(),
+  env = process.env,
+  encoding,
+  strict,
+  separator
+}) {
+  const stderrChunks = [];
+  if (env.PWD !== void 0) {
+    env = { ...env, PWD: cwd };
+  }
+  const subprocess = childProcess.spawn(command, args, {
+    cwd,
+    env,
+    stdio: ["ignore", "pipe", "pipe"]
+  });
+  subprocess.stderr.on("data", (chunk2) => {
+    stderrChunks.push(chunk2);
+  });
+  let chunk;
+  let payload;
+  let buffer = "";
+  for await (chunk of subprocess.stdout) {
+    buffer += chunk.toString();
+    if (buffer.includes(separator)) {
+      payload = buffer.split(separator);
+      buffer = payload.pop() || "";
+      yield* payload;
+    }
+  }
+  if (buffer) {
+    yield buffer;
+  }
+  return new Promise((resolve, reject) => {
+    subprocess.on("error", (err) => {
+      reject(new Error(`Process ${command} failed to spawn`));
+    });
+    subprocess.on("close", (code, signal) => {
+      const chunksToString = (chunks) => Buffer.concat(chunks).toString(encoding ?? "utf8");
+      const stderr = chunksToString(stderrChunks);
+      if (code === 0 || !strict) {
+        resolve({
+          code,
+          signal,
+          stderr
+        });
+      } else {
+        reject(
+          new Error(
+            `Process ${[command, ...args].join(" ")} exited ${code !== null ? `with code ${code}` : `with signal ${signal || ""}`}:
+stderr: ${stderr}`
+          )
+        );
+      }
+    });
+  });
+}
 const execCommand = (workspace, commandAndArgs = [], stdo = "pipe") => {
   const [command, ...args] = commandAndArgs;
   if (command === void 0) {
@@ -309,6 +369,17 @@ const execCommand = (workspace, commandAndArgs = [], stdo = "pipe") => {
     cwd: workspace.cwd,
     strict: true,
     stdo
+  });
+};
+const execCommandStreamStdout = (workspace, commandAndArgs = [], separator = "\n") => {
+  const [command, ...args] = commandAndArgs;
+  if (command === void 0) {
+    throw new Error("Command is required");
+  }
+  return spawnStreamStdout(command, args, {
+    cwd: workspace.cwd,
+    strict: true,
+    separator
   });
 };
 
@@ -376,6 +447,73 @@ const getDirtyFiles = async (workspace) => {
     "--porcelain"
   ]);
   return dirtyFiles;
+};
+const toArray = (input) => Array.isArray(input) ? input : [input];
+const getGitLatestTagVersion = async (workspace, {
+  prefix,
+  skipUnstable,
+  since,
+  from = "",
+  to = "HEAD",
+  path
+} = {}) => {
+  const tagRegex = /tag:\s*(.+?)[,)]/gi;
+  for await (const chunk of execCommandStreamStdout(workspace, [
+    "git",
+    "log",
+    "--no-color",
+    "--date-order",
+    "--format=%d",
+    ...since ? [`--since=${since instanceof Date ? since.toISOString() : since}`] : [],
+    [from, to].filter(Boolean).join(".."),
+    ...path ? ["--", ...toArray(path)] : []
+  ])) {
+    const trimmed = chunk.trim();
+    if (!trimmed) continue;
+    const matches = trimmed.matchAll(tagRegex);
+    for (const match of matches) {
+      const tag = match[1];
+      if (!tag) continue;
+      if (prefix && !tag.startsWith(prefix)) {
+        continue;
+      }
+      const version = prefix ? tag.slice(prefix.length) : tag;
+      if (!semver.valid(version)) {
+        continue;
+      }
+      if (skipUnstable && semver.prerelease(version)) {
+        continue;
+      }
+      return { tag, version };
+    }
+  }
+  return null;
+};
+const GIT_COMMIT_SEPARATOR = "------------------------ >8 ------------------------";
+const getGitCommits = (workspace, {
+  path,
+  from = "",
+  to = "HEAD",
+  format = "%B",
+  reverse,
+  merges,
+  since
+} = {}) => {
+  return execCommandStreamStdout(
+    workspace,
+    [
+      "git",
+      "log",
+      `--format=${format}%n${GIT_COMMIT_SEPARATOR}`,
+      ...since ? [`--since=${since instanceof Date ? since.toISOString() : since}`] : [],
+      ...reverse ? ["--reverse"] : [],
+      ...merges ? ["--merges"] : [],
+      ...merges === false ? ["--no-merges"] : [],
+      [from, to].filter(Boolean).join(".."),
+      ...path ? ["--", ...toArray(path)] : []
+    ],
+    GIT_COMMIT_SEPARATOR
+  );
 };
 
 async function createGitHubClient() {
@@ -563,7 +701,6 @@ There are uncommitted changes in the git repository. Please commit or stash them
   if (options.ignoreChanges) {
     throw new UsageError("--ignore-changes is not supported yet.");
   }
-  const conventionalGitClient = new ConventionalGitClient(rootWorkspace.cwd);
   const [
     conventionalCommitConfig,
     githubClient,
@@ -576,7 +713,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
     options.createRelease ? parseGithubRepoUrl(rootWorkspace) : void 0,
     getGitCurrentBranch(rootWorkspace)
   ]);
-  const rootPreviousVersionTagPromise = options.force ? null : conventionalGitClient.getLastSemverTag({
+  const rootPreviousVersionTagPromise = options.force || isMonorepoVersionIndependent ? null : getGitLatestTagVersion(rootWorkspace, {
     prefix: options.tagVersionPrefix,
     skipUnstable: true
   });
@@ -613,51 +750,46 @@ There are uncommitted changes in the git repository. Please commit or stash them
       count: bumpableWorkspaces.length
     });
   }
-  const previousTagByWorkspace = new Map(
+  const previousTagVersionByWorkspace = new Map(
     await Promise.all(
       bumpableWorkspaces.map(async ({ workspace, workspaceName, isRoot }) => {
         const packageOption = isMonorepo && isMonorepoVersionIndependent ? workspaceName : void 0;
-        const previousVersionTagPrefix = packageOption ? `${packageOption}@` : options.tagVersionPrefix;
-        const previousTagAndVersion = await (isRoot || !isMonorepoVersionIndependent ? rootPreviousVersionTagPromise : conventionalGitClient.getLastSemverTag({
-          prefix: previousVersionTagPrefix,
+        const tagPrefix = packageOption ? `${packageOption}@` : options.tagVersionPrefix;
+        const previousTagAndVersion = await (isRoot || !isMonorepoVersionIndependent ? rootPreviousVersionTagPromise : getGitLatestTagVersion(rootWorkspace, {
+          path: workspace.relativeCwd,
+          prefix: tagPrefix,
           skipUnstable: true
         }));
-        return [workspace, previousTagAndVersion || null];
+        return [workspace, previousTagAndVersion];
       })
     )
   );
   if (options.dryRun) {
     logger.info("Previous tags", {
       previousTagByWorkspace: Object.fromEntries(
-        [...previousTagByWorkspace.entries()].map(
-          ([workspace, previousTag]) => [
+        [...previousTagVersionByWorkspace.entries()].map(
+          ([workspace, previousTagVersion]) => [
             getWorkspaceName(workspace),
-            previousTag
+            previousTagVersion?.tag
           ]
         )
       )
     });
   }
+  const parseCommits = createCommitsParser(conventionalCommitConfig);
   const commitsByWorkspace = options.force ? void 0 : new Map(
     await Promise.all(
       bumpableWorkspaces.map(async ({ workspace }) => {
-        const previousTag = previousTagByWorkspace.get(workspace);
-        const workspaceRelativePath = path.relative(
-          rootWorkspace.cwd,
-          workspace.cwd
-        );
-        return [
-          workspace,
-          await asyncIterableToArray(
-            conventionalGitClient.getCommits(
-              {
-                path: workspaceRelativePath,
-                from: previousTag || void 0
-              },
-              conventionalCommitConfig.parser
-            )
+        const previousTagVersion = previousTagVersionByWorkspace.get(workspace);
+        const commits = await asyncIterableToArray(
+          parseCommits(
+            getGitCommits(rootWorkspace, {
+              path: workspace.relativeCwd,
+              from: previousTagVersion?.tag || void 0
+            })
           )
-        ];
+        );
+        return [workspace, commits];
       })
     )
   );
@@ -918,7 +1050,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
           rootWorkspace,
           workspace.pkg,
           conventionalCommitConfig,
-          previousTagByWorkspace.get(workspace) || null,
+          previousTagVersionByWorkspace.get(workspace)?.tag || null,
           isMonorepoVersionIndependent ? newTag : rootNewTag,
           commits,
           todayInYYYYMMDD()
@@ -1029,9 +1161,6 @@ ${tagsInCommitMessage}` : rootNewVersion
         })
       );
     }
-  }
-  if (process.env.NODE_ENV !== "test") {
-    process.exit(0);
   }
 };
 const Defaults = {

@@ -59,7 +59,6 @@
   },
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "@conventional-changelog/git-client": "2.5.1",
     "@npmcli/map-workspaces": "5.0.1",
     "@octokit/rest": "22.0.1",
     "@pob/pretty-pkg": "13.1.0",
@@ -74,7 +73,6 @@
     "@pob/rollup-esbuild": "7.3.1",
     "@types/node": "22.18.13",
     "@types/npmcli__map-workspaces": "3.0.4",
-    "conventional-recommended-bump": "11.2.0",
     "type-fest": "5.1.0",
     "typescript": "5.9.3",
     "vitest": "4.0.6"

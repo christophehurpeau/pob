@@ -2,8 +2,8 @@ import { fileURLToPath } from "node:url";
 import { loadPreset } from "conventional-changelog-preset-loader";
 import { parseCommits } from "conventional-commits-parser";
 import type { Commit } from "conventional-commits-parser";
-import type { Preset } from "conventional-recommended-bump";
 import type { PackageJson } from "type-fest";
+import type { Preset } from "./conventionalChangelogUtils.ts";
 // import { beforeAll, describe, expect, it } from "vitest";
 import {
   generateChangelog,

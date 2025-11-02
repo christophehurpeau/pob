@@ -87,30 +87,55 @@ export const getDirtyFiles = async (workspace: Workspace): Promise<string> => {
   return dirtyFiles;
 };
 
-// TODO fix this method as it is not safe : it sorts by creator date and does not look for real commits order.
-// Also we could avoid this method and just look for previous commits (for the changelog) until we find a valid tag.
-// eslint-disable-next-line complexity
+const toArray = <T>(input: T | T[]): T[] =>
+  Array.isArray(input) ? input : [input];
+
+export interface GitTagVersion {
+  tag: string;
+  version: string;
+}
+
 export const getGitLatestTagVersion = async (
   workspace: Workspace,
-  currentBranch: string,
   {
     prefix,
     skipUnstable,
+    since,
+    from = "",
+    to = "HEAD",
+    path,
   }: {
     prefix?: string;
     skipUnstable?: boolean;
+    since?: Date | string;
+    from?: string;
+    to?: string;
+    path?: string[] | string;
   } = {},
-): Promise<{ tag: string; version: string } | null> => {
-  for await (const tag of execCommandStreamStdout(workspace, [
+): Promise<GitTagVersion | null> => {
+  // eslint-disable-next-line regexp/no-super-linear-backtracking
+  const tagRegex = /tag:\s*(.+?)[,)]/gi;
+  for await (const chunk of execCommandStreamStdout(workspace, [
     "git",
-    "tag",
-    "--merged",
-    currentBranch,
-    // - means reverse order
-    "--sort=-creatordate",
-    ...(prefix ? ["--list", `${prefix}*`] : []),
+    "log",
+    "--no-color",
+    "--date-order",
+    "--format=%d",
+    ...(since
+      ? [`--since=${since instanceof Date ? since.toISOString() : since}`]
+      : []),
+    [from, to].filter(Boolean).join(".."),
+    ...(path ? ["--", ...toArray(path)] : []),
   ])) {
-    if (tag) {
+    const trimmed = chunk.trim();
+    if (!trimmed) continue;
+    const matches = trimmed.matchAll(tagRegex);
+    for (const match of matches) {
+      const tag = match[1];
+      if (!tag) continue;
+      if (prefix && !tag.startsWith(prefix)) {
+        continue;
+      }
       const version = prefix ? tag.slice(prefix.length) : tag;
       if (!semver.valid(version)) {
         continue;
@@ -123,4 +148,46 @@ export const getGitLatestTagVersion = async (
   }
 
   return null;
+};
+
+const GIT_COMMIT_SEPARATOR =
+  "------------------------ >8 ------------------------";
+
+export const getGitCommits = (
+  workspace: Workspace,
+  {
+    path,
+    from = "",
+    to = "HEAD",
+    format = "%B",
+    reverse,
+    merges,
+    since,
+  }: {
+    format?: string;
+    path?: string[] | string;
+    from?: string;
+    to?: string;
+    reverse?: boolean;
+    merges?: boolean;
+    since?: Date | string;
+  } = {},
+) => {
+  return execCommandStreamStdout(
+    workspace,
+    [
+      "git",
+      "log",
+      `--format=${format}%n${GIT_COMMIT_SEPARATOR}`,
+      ...(since
+        ? [`--since=${since instanceof Date ? since.toISOString() : since}`]
+        : []),
+      ...(reverse ? ["--reverse"] : []),
+      ...(merges ? ["--merges"] : []),
+      ...(merges === false ? ["--no-merges"] : []),
+      [from, to].filter(Boolean).join(".."),
+      ...(path ? ["--", ...toArray(path)] : []),
+    ],
+    GIT_COMMIT_SEPARATOR,
+  );
 };

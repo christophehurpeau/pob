@@ -1,8 +1,32 @@
 import { writeChangelogString } from "conventional-changelog-writer";
-import type { BumperRecommendation } from "conventional-recommended-bump";
+import { parseCommits as createConventionalCommitsParser } from "conventional-commits-parser";
+import type { Commit, ParserStreamOptions } from "conventional-commits-parser";
 import type { PackageJson } from "type-fest";
 import type { ConventionalChangelogConfig } from "./conventionalCommitConfigUtils.ts";
 import type { Workspace } from "./packageUtils.ts";
+
+export interface WhatBump {
+  level: 0 | 1 | 2;
+  reason: string;
+}
+export type WhatBumpResult = WhatBump | null | undefined;
+export interface BumperRecommendation extends WhatBump {
+  releaseType: "major" | "minor" | "patch";
+  commits: Commit[];
+}
+export interface EmptyBumperRecommendation {
+  commits: Commit[];
+}
+export type BumperRecommendationResult =
+  | BumperRecommendation
+  | EmptyBumperRecommendation;
+
+export interface Preset {
+  whatBump: (commits: Commit[]) => Promise<WhatBumpResult> | WhatBumpResult;
+  tags?: unknown;
+  commits?: unknown;
+  parser?: ParserStreamOptions;
+}
 
 const versions: BumperRecommendation["releaseType"][] = [
   "major",
@@ -73,4 +97,8 @@ export const generateChangelog = (
     // @ts-expect-error - missing types
     config.writer,
   );
+};
+
+export const createCommitsParser = (config: ConventionalChangelogConfig) => {
+  return createConventionalCommitsParser(config.parser);
 };

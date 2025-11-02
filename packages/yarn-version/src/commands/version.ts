@@ -1,7 +1,5 @@
 /* eslint-disable complexity */
-import path from "node:path";
-// eslint-disable-next-line import/no-unresolved
-import { ConventionalGitClient } from "@conventional-changelog/git-client";
+
 import { Option, program } from "commander";
 import { ConsoleHandler, Level, Logger, addConfig } from "nightingale";
 import { satisfies } from "semver";
@@ -14,17 +12,21 @@ import {
   incrementVersion,
 } from "../utils/bumpTypeUtils.ts";
 import {
+  createCommitsParser,
   generateChangelog,
   recommendBump,
 } from "../utils/conventionalChangelogUtils.ts";
 import { loadConventionalCommitConfig } from "../utils/conventionalCommitConfigUtils.ts";
 import { execCommand } from "../utils/execCommand.ts";
 import { asyncIterableToArray } from "../utils/generatorUtils.ts";
+import type { GitTagVersion } from "../utils/gitUtils.ts";
 import {
   createGitCommit,
   createGitTag,
   getDirtyFiles,
+  getGitCommits,
   getGitCurrentBranch,
+  getGitLatestTagVersion,
   isBehindRemote,
   pushCommitsAndTags,
 } from "../utils/gitUtils.ts";
@@ -159,8 +161,6 @@ export const versionCommandAction = async (
     throw new UsageError("--ignore-changes is not supported yet.");
   }
 
-  const conventionalGitClient = new ConventionalGitClient(rootWorkspace.cwd);
-
   const [
     conventionalCommitConfig,
     githubClient,
@@ -174,12 +174,13 @@ export const versionCommandAction = async (
     getGitCurrentBranch(rootWorkspace),
   ]);
 
-  const rootPreviousVersionTagPromise = options.force
-    ? null
-    : conventionalGitClient.getLastSemverTag({
-        prefix: options.tagVersionPrefix,
-        skipUnstable: true,
-      });
+  const rootPreviousVersionTagPromise =
+    options.force || isMonorepoVersionIndependent
+      ? null
+      : getGitLatestTagVersion(rootWorkspace, {
+          prefix: options.tagVersionPrefix,
+          skipUnstable: true,
+        });
 
   const buildTagName = (workspace: Workspace, version: string): string =>
     `${
@@ -236,7 +237,10 @@ export const versionCommandAction = async (
     });
   }
 
-  const previousTagByWorkspace = new Map<Workspace, string | null>(
+  const previousTagVersionByWorkspace = new Map<
+    Workspace,
+    GitTagVersion | null
+  >(
     await Promise.all(
       bumpableWorkspaces.map(async ({ workspace, workspaceName, isRoot }) => {
         const packageOption =
@@ -244,19 +248,20 @@ export const versionCommandAction = async (
             ? workspaceName
             : undefined;
 
-        const previousVersionTagPrefix = packageOption
+        const tagPrefix = packageOption
           ? `${packageOption}@`
           : options.tagVersionPrefix;
 
         const previousTagAndVersion = await (isRoot ||
         !isMonorepoVersionIndependent
           ? rootPreviousVersionTagPromise
-          : conventionalGitClient.getLastSemverTag({
-              prefix: previousVersionTagPrefix,
+          : getGitLatestTagVersion(rootWorkspace, {
+              path: workspace.relativeCwd,
+              prefix: tagPrefix,
               skipUnstable: true,
             }));
 
-        return [workspace, previousTagAndVersion || null] as const;
+        return [workspace, previousTagAndVersion] as const;
       }),
     ),
   );
@@ -264,39 +269,36 @@ export const versionCommandAction = async (
   if (options.dryRun) {
     logger.info("Previous tags", {
       previousTagByWorkspace: Object.fromEntries(
-        [...previousTagByWorkspace.entries()].map(
-          ([workspace, previousTag]) => [
+        [...previousTagVersionByWorkspace.entries()].map(
+          ([workspace, previousTagVersion]) => [
             getWorkspaceName(workspace),
-            previousTag,
+            previousTagVersion?.tag,
           ],
         ),
       ),
     });
   }
 
+  const parseCommits = createCommitsParser(conventionalCommitConfig);
+
   const commitsByWorkspace = options.force
     ? undefined
     : new Map(
         await Promise.all(
           bumpableWorkspaces.map(async ({ workspace }) => {
-            const previousTag = previousTagByWorkspace.get(workspace);
+            const previousTagVersion =
+              previousTagVersionByWorkspace.get(workspace);
 
-            const workspaceRelativePath = path.relative(
-              rootWorkspace.cwd,
-              workspace.cwd,
-            );
-            return [
-              workspace,
-              await asyncIterableToArray(
-                conventionalGitClient.getCommits(
-                  {
-                    path: workspaceRelativePath,
-                    from: previousTag || undefined,
-                  },
-                  conventionalCommitConfig.parser,
-                ),
+            const commits = await asyncIterableToArray(
+              parseCommits(
+                getGitCommits(rootWorkspace, {
+                  path: workspace.relativeCwd,
+                  from: previousTagVersion?.tag || undefined,
+                }),
               ),
-            ] as const;
+            );
+
+            return [workspace, commits] as const;
           }),
         ),
       );
@@ -655,7 +657,7 @@ export const versionCommandAction = async (
           rootWorkspace,
           workspace.pkg,
           conventionalCommitConfig,
-          previousTagByWorkspace.get(workspace) || null,
+          previousTagVersionByWorkspace.get(workspace)?.tag || null,
           isMonorepoVersionIndependent ? newTag : rootNewTag,
           commits,
           todayInYYYYMMDD(),
@@ -799,12 +801,6 @@ export const versionCommandAction = async (
         }),
       );
     }
-  }
-
-  if (process.env.NODE_ENV !== "test") {
-    // issue in @conventional-changelog/git-client
-    // eslint-disable-next-line unicorn/no-process-exit
-    process.exit(0);
   }
 };
 
