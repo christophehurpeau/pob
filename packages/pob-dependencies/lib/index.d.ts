@@ -9,7 +9,7 @@ interface Dependencies {
   "@pob/eslint-config-typescript": "62.0.0";
   "@pob/eslint-config-typescript-react": "62.0.0";
   "@pob/pretty-pkg": "13.1.0";
-  "@pob/rollup-esbuild": "7.3.0";
+  "@pob/rollup-esbuild": "7.3.1";
   "@pob/rollup-typescript": "8.0.0";
   "@swc-node/register": "1.11.1";
   "@swc/core": "1.14.0";
@@ -17,9 +17,9 @@ interface Dependencies {
   "@types/jest": "30.0.0";
   "@types/node": "22.18.13";
   "@vitest/coverage-v8": "4.0.6";
-  "alp-rollup-plugin-config": "3.0.0";
+  "alp-rollup-plugin-config": "4.0.0";
   "check-package-dependencies": "10.5.0";
-  eslint: "9.38.0";
+  eslint: "9.39.0";
   jest: "30.2.0";
   "jest-junit-reporter": "1.1.0";
   pinst: "3.0.0";
