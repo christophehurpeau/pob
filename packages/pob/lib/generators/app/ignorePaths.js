@@ -21,6 +21,8 @@ export const appIgnorePaths = {
   expo: (config) => [
     "/.expo/",
     "/src/tamagui-web.css",
+    "/android/",
+    "/ios/",
     "/dist/",
     "*.jks",
     "*.p8",
