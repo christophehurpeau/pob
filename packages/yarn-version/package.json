@@ -73,7 +73,7 @@
     "@pob/rollup-esbuild": "7.3.2",
     "@types/node": "22.18.13",
     "@types/npmcli__map-workspaces": "3.0.4",
-    "type-fest": "5.1.0",
+    "type-fest": "5.2.0",
     "typescript": "5.9.3",
     "vitest": "4.0.6"
   }
