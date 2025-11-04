@@ -3972,7 +3972,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/root@npm:19.7.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@npm:19.7.1, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -3993,7 +3993,7 @@ __metadata:
     repository-check-dirty: "npm:11.0.0"
     semver: "npm:^7.7.3"
     which-pm-runs: "npm:1.1.0"
-    yarn-version: "npm:8.6.0"
+    yarn-version: "npm:8.6.1"
   bin:
     pob-check-commit-msg: ./bin/pob-check-commit-msg.js
     pob-root-lint-staged: ./bin/pob-root-lint-staged.js
@@ -9209,7 +9209,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-typescript-lib@npm:0.50.2, example-typescript-lib@workspace:pob-examples/typescript-lib":
+"example-typescript-lib@npm:0.50.3, example-typescript-lib@workspace:pob-examples/typescript-lib":
   version: 0.0.0-use.local
   resolution: "example-typescript-lib@workspace:pob-examples/typescript-lib"
   dependencies:
@@ -9225,7 +9225,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-webpack-app@workspace:pob-examples/webpack-app"
   dependencies:
-    example-typescript-lib: "npm:0.50.2"
+    example-typescript-lib: "npm:0.50.3"
     webpack: "npm:5.102.1"
     webpack-cli: "npm:6.0.1"
   languageName: unknown
@@ -13795,7 +13795,7 @@ __metadata:
     "@pob/eslint-config": "npm:62.0.0"
     "@pob/eslint-config-typescript": "npm:62.0.0"
     "@pob/eslint-config-typescript-react": "npm:62.0.0"
-    "@pob/root": "npm:19.7.0"
+    "@pob/root": "npm:19.7.1"
     "@pob/sort-object": "npm:10.1.0"
     "@pob/sort-pkg": "npm:12.1.0"
     "@prettier/sync": "npm:0.6.1"
@@ -16990,7 +16990,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"yarn-version@npm:8.6.0, yarn-version@workspace:packages/yarn-version":
+"yarn-version@npm:8.6.1, yarn-version@workspace:packages/yarn-version":
   version: 0.0.0-use.local
   resolution: "yarn-version@workspace:packages/yarn-version"
   dependencies:

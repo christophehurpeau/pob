@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.8.0](https://github.com/christophehurpeau/pob/compare/pob@29.7.0...pob@29.8.0) (2025-11-04)
+
+### Features
+
+* add ios and android folder in gitignore for expo project
+
+### Bug Fixes
+
+* **deps:** update dependency eslint to v9.39.1 ([#2626](https://github.com/christophehurpeau/pob/issues/2626))
+
+Version bump for dependency: @pob/root
+
+
 ## [29.7.0](https://github.com/christophehurpeau/pob/compare/pob@29.6.0...pob@29.7.0) (2025-11-02)
 
 ### Features

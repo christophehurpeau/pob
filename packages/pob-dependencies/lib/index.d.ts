@@ -4,22 +4,22 @@ interface Dependencies {
   "@babel/preset-react": "7.28.5";
   "@babel/runtime": "7.28.4";
   "@playwright/test": "1.56.1";
-  "@pob/esbuild": "5.1.0";
+  "@pob/esbuild": "5.1.1";
   "@pob/eslint-config": "62.0.0";
   "@pob/eslint-config-typescript": "62.0.0";
   "@pob/eslint-config-typescript-react": "62.0.0";
   "@pob/pretty-pkg": "13.1.0";
-  "@pob/rollup-esbuild": "7.3.1";
+  "@pob/rollup-esbuild": "7.3.2";
   "@pob/rollup-typescript": "8.0.0";
   "@swc-node/register": "1.11.1";
-  "@swc/core": "1.14.0";
+  "@swc/core": "1.15.0";
   "@swc/jest": "0.2.39";
   "@types/jest": "30.0.0";
-  "@types/node": "22.18.13";
-  "@vitest/coverage-v8": "4.0.6";
+  "@types/node": "22.19.0";
+  "@vitest/coverage-v8": "4.0.7";
   "alp-rollup-plugin-config": "4.0.0";
   "check-package-dependencies": "10.5.0";
-  eslint: "9.39.0";
+  eslint: "9.39.1";
   jest: "30.2.0";
   "jest-junit-reporter": "1.1.0";
   pinst: "3.0.0";
@@ -31,7 +31,7 @@ interface Dependencies {
   tslib: "2.8.1";
   typedoc: "0.28.14";
   typescript: "5.9.3";
-  vitest: "4.0.6";
+  vitest: "4.0.7";
 }
 
 declare const dependencies: Dependencies;

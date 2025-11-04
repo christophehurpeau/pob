@@ -1,7 +1,7 @@
 {
   "name": "example-typescript-lib",
   "private": true,
-  "version": "0.50.2",
+  "version": "0.50.3",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": {

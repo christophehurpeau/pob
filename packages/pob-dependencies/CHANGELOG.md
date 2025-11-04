@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.5.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@20.5.0...pob-dependencies@20.5.1) (2025-11-04)
+
+### Bug Fixes
+
+* **deps:** update dependency eslint to v9.39.1 ([#2626](https://github.com/christophehurpeau/pob/issues/2626))
+
 ## [20.5.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@20.4.2...pob-dependencies@20.5.0) (2025-11-02)
 
 ### Features
