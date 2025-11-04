@@ -54,7 +54,7 @@
     "@swc/core": "1.15.0",
     "@swc/jest": "0.2.39",
     "@types/jest": "30.0.0",
-    "@types/node": "22.18.13",
+    "@types/node": "22.19.0",
     "@vitest/coverage-v8": "4.0.7",
     "alp-rollup-plugin-config": "4.0.0",
     "check-package-dependencies": "10.5.0",
