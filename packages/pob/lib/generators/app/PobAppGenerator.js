@@ -128,6 +128,13 @@ export default class PobAppGenerator extends Generator {
         default: !config || false,
         when: (values) => values.testing,
       },
+      {
+        type: "confirm",
+        name: "storybook",
+        message: "Do you want storybook ?",
+        default: (config && config.storybook) || false,
+        when: (values) => values.type === "expo",
+      },
     ]);
 
     this.config.set("app", this.appConfig);
@@ -235,7 +242,8 @@ export default class PobAppGenerator extends Generator {
           this.appConfig.type === "alp" ||
           this.appConfig.type === "vite" ||
           this.appConfig.type === "alp-node" ||
-          this.appConfig.type === "next.js"
+          this.appConfig.type === "next.js" ||
+          this.appConfig.type === "expo"
         ) {
           return `./${srcDirectory}`;
         }
@@ -260,14 +268,10 @@ export default class PobAppGenerator extends Generator {
 
     this.composeWith("pob:common:remove-old-dependencies");
 
-    const enableReleasePlease =
-      !inMonorepo && this.appConfig.testing && this.options.ci;
-
     if (this.appConfig.type !== "remix") {
       this.composeWith("pob:common:testing", {
         enable: this.appConfig.testing,
         disableYarnGitCache: this.options.disableYarnGitCache,
-        enableReleasePlease,
         testing: this.appConfig.testing,
         runner: this.appConfig.testing
           ? (inMonorepo
@@ -294,6 +298,7 @@ export default class PobAppGenerator extends Generator {
       this.composeWith("pob:common:format-lint", {
         isApp: true,
         documentation: false,
+        storybook: pkg?.devDependencies?.storybook,
         testing: this.appConfig.testing,
         testRunner: this.appConfig.testRunner,
         babel,
@@ -318,7 +323,6 @@ export default class PobAppGenerator extends Generator {
         enablePublish: false,
         withBabel: babel,
         isMonorepo: false,
-        enableYarnVersion: true,
         ci: this.options.ci,
         disableYarnGitCache: this.options.disableYarnGitCache,
         updateOnly: this.options.updateOnly,

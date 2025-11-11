@@ -30,18 +30,6 @@ export default class CommonTestingGenerator extends Generator {
       description: "test runner (jest or node)",
     });
 
-    this.option("enableReleasePlease", {
-      type: Boolean,
-      default: true,
-      description: "enable release-please",
-    });
-
-    this.option("enableYarnVersion", {
-      type: Boolean,
-      default: true,
-      description: "enable yarn version conventional commits",
-    });
-
     this.option("ci", {
       type: Boolean,
       required: true,
@@ -128,8 +116,6 @@ export default class CommonTestingGenerator extends Generator {
     if (!inMonorepo || inMonorepo.root) {
       this.composeWith("pob:core:ci", {
         enable: this.options.ci,
-        enableReleasePlease: this.options.enableReleasePlease,
-        enableYarnVersion: this.options.enableYarnVersion,
         disableYarnGitCache: this.options.disableYarnGitCache,
         testing: this.options.enable,
         testRunner: this.options.runner,

@@ -60,6 +60,17 @@ const hasBuild = (packages, configs) =>
       ),
   );
 
+const hasData = (packages, configs) =>
+  configs.some(
+    (config, index) =>
+      !!(
+        config &&
+        config.project &&
+        config.project.type === "app" &&
+        config.app.type === "alp-node"
+      ),
+  );
+
 const hasTamagui = (packages, configs) =>
   packages.some(
     (pkg) =>
@@ -182,6 +193,13 @@ export default class PobMonorepoGenerator extends Generator {
       },
       {
         type: "confirm",
+        name: "e2eTesting",
+        message: "Would you like e2e testing ?",
+        when: (answers) => answers.ci,
+        default: config ? config.e2eTesting : true,
+      },
+      {
+        type: "confirm",
         name: "codecov",
         message: "Would you like code coverage ?",
         when: (answers) => answers.ci && answers.testing,
@@ -229,8 +247,6 @@ export default class PobMonorepoGenerator extends Generator {
 
     this.composeWith("pob:common:husky", {});
 
-    const isYarnVersionEnabled = this.pobLernaConfig.ci;
-
     const splitCIJobs = this.packageNames.length > 8;
 
     this.composeWith("pob:common:testing", {
@@ -238,8 +254,6 @@ export default class PobMonorepoGenerator extends Generator {
       enable: this.pobLernaConfig.testing,
       runner: this.pobLernaConfig.testRunner || "jest",
       disableYarnGitCache: this.options.disableYarnGitCache,
-      enableReleasePlease: false,
-      enableYarnVersion: isYarnVersionEnabled,
       testing: this.pobLernaConfig.testing,
       e2eTesting: this.pobLernaConfig.e2eTesting,
       build: this.pobLernaConfig.typescript === true,
@@ -253,6 +267,11 @@ export default class PobMonorepoGenerator extends Generator {
       splitCIJobs,
     });
 
+    const rootIgnorePaths = [
+      this.pobLernaConfig.e2eTesting && "/playwright-report/",
+      this.pobLernaConfig.e2eTesting && "/test-results/",
+    ].filter(Boolean);
+
     const gitignorePaths = [
       hasTamagui(this.packages, this.packageConfigs) && ".tamagui",
     ].filter(Boolean);
@@ -260,6 +279,7 @@ export default class PobMonorepoGenerator extends Generator {
     this.composeWith("pob:common:format-lint", {
       monorepo: true,
       documentation: this.pobLernaConfig.documentation,
+      storybook: pkg?.devDependencies?.storybook,
       typescript: this.pobLernaConfig.typescript,
       build: this.pobLernaConfig.typescript === true,
       testing: this.pobLernaConfig.testing,
@@ -271,10 +291,11 @@ export default class PobMonorepoGenerator extends Generator {
         ...gitignorePaths.map((path) => `/${path}`),
         hasDist(this.packages, this.packageConfigs) && "/dist",
         hasBuild(this.packages, this.packageConfigs) && "/build",
+        hasData(this.packages, this.packageConfigs) && "/data",
       ]
         .filter(Boolean)
         .join("\n"),
-      rootIgnorePaths: [],
+      rootIgnorePaths: rootIgnorePaths.join("\n"),
     });
 
     this.composeWith("pob:lib:doc", {
@@ -304,7 +325,11 @@ export default class PobMonorepoGenerator extends Generator {
       documentation: this.pobLernaConfig.documentation,
       testing: this.pobLernaConfig.testing,
       // TODO add workspaces paths like we do in format-lint
-      paths: gitignorePaths.join("\n"),
+      paths: [
+        // TODO remove gitignorePaths
+        ...gitignorePaths,
+        ...rootIgnorePaths,
+      ].join("\n"),
       // todo: fix this using workspaces
       // buildDirectory: this.pobLernaConfig.typescript ? `/*/build` : "",
     });
@@ -317,7 +342,6 @@ export default class PobMonorepoGenerator extends Generator {
       enablePublish: !this.options.isAppProject,
       withBabel: this.pobLernaConfig.typescript,
       isMonorepo: true,
-      enableYarnVersion: isYarnVersionEnabled,
       ci: this.pobLernaConfig.ci,
       disableYarnGitCache: this.options.disableYarnGitCache,
       updateOnly: this.options.updateOnly,

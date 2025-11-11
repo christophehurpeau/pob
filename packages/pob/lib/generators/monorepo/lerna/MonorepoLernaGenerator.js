@@ -100,9 +100,6 @@ export default class MonorepoLernaGenerator extends Generator {
     packageUtils.removeDependencies(pkg, ["lerna"]);
     packageUtils.removeDevDependencies(pkg, ["lerna"]);
 
-    // TODO remove lerna completely
-    const isYarnVersionEnabled = true;
-
     const getPackagePobConfig = (config) => ({
       babelEnvs: [],
       ...(config && config.pob),
@@ -130,35 +127,25 @@ export default class MonorepoLernaGenerator extends Generator {
       lernaConfig.command.publish.ignoreChanges.push("**/tsconfig.json");
     }
 
-    if (isYarnVersionEnabled) {
-      if (pkg.version === "0.0.0" && lernaConfig && lernaConfig.version) {
-        if (lernaConfig.version === "independent") {
-          delete pkg.version;
-        } else {
-          pkg.version = lernaConfig.version;
-        }
+    if (pkg.version === "0.0.0" && lernaConfig && lernaConfig.version) {
+      if (lernaConfig.version === "independent") {
+        delete pkg.version;
+      } else {
+        pkg.version = lernaConfig.version;
       }
-      this.fs.delete(this.destinationPath("lerna.json"));
-    } else {
-      writeAndFormatJson(
-        this.fs,
-        this.destinationPath("lerna.json"),
-        lernaConfig,
-      );
     }
+    this.fs.delete(this.destinationPath("lerna.json"));
 
     if (this.fs.exists(this.destinationPath("lerna-debug.log"))) {
       this.fs.delete(this.destinationPath("lerna-debug.log"));
     }
 
-    packageUtils.addOrRemoveScripts(
-      pkg,
-      this.options.packageManager === "yarn" && !isYarnVersionEnabled,
-      {
-        version:
-          "YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn && git add yarn.lock",
-      },
-    );
+    if (
+      pkg.scripts?.version ===
+      "YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn && git add yarn.lock"
+    ) {
+      delete pkg.scripts.version;
+    }
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
   }

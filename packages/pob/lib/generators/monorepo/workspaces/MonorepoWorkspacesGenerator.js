@@ -81,8 +81,6 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       delete pkg.engines.yarn;
     }
 
-    const isYarnVersionEnabled = true;
-
     if (pkg.name !== "pob-monorepo") {
       packageUtils.addDevDependencies(pkg, ["repository-check-dirty"]);
     }
@@ -111,14 +109,12 @@ export default class MonorepoWorkspacesGenerator extends Generator {
             : "npm run lint:eslint --workspaces",
     });
 
-    packageUtils.addOrRemoveScripts(
-      pkg,
-      this.options.packageManager === "yarn" && !isYarnVersionEnabled,
-      {
-        version:
-          "YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn && git add yarn.lock",
-      },
-    );
+    if (
+      pkg.scripts?.version ===
+      "YARN_ENABLE_IMMUTABLE_INSTALLS=false yarn && git add yarn.lock"
+    ) {
+      delete pkg.scripts.version;
+    }
 
     if (this.options.isAppProject) {
       packageUtils.addOrRemoveScripts(pkg, withBundler, {

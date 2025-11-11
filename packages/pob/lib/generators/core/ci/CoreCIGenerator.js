@@ -17,18 +17,6 @@ export default class CoreCIGenerator extends Generator {
       description: "enable ci",
     });
 
-    this.option("enableReleasePlease", {
-      type: Boolean,
-      default: true,
-      description: "enable release-please",
-    });
-
-    this.option("enableYarnVersion", {
-      type: Boolean,
-      default: true,
-      description: "enable yarn version conventional commits",
-    });
-
     this.option("build", {
       type: Boolean,
       default: true,
@@ -102,30 +90,6 @@ export default class CoreCIGenerator extends Generator {
       description:
         "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
-  }
-
-  async prompting() {
-    const pkg = this.fs.readJSON(this.destinationPath("package.json"));
-
-    this.isReleasePleaseEnabled =
-      this.options.enableReleasePlease &&
-      !this.options.enableYarnVersion &&
-      !pkg.devDependencies?.["standard-version"];
-
-    if (
-      this.options.enableReleasePlease &&
-      !process.env.CI &&
-      !this.isReleasePleaseEnabled &&
-      !this.options.enableYarnVersion
-    ) {
-      const { enableReleasePlease } = await this.prompt({
-        type: "confirm",
-        name: "enableReleasePlease",
-        message: "Would you like to enable release please ?",
-        default: true,
-      });
-      this.isReleasePleaseEnabled = enableReleasePlease;
-    }
   }
 
   default() {

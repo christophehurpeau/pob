@@ -3,9 +3,6 @@ CHANGELOG.md
 <% if (documentation) { -%>
 /docs
 <% } -%>
-<% if (storybook) { -%>
-storybook.requires.ts
-<% } -%>
 <% if (packageManager === 'yarn' && inRoot) { -%>
 /.yarn/**/*
 <% if (yarnNodeLinker === 'pnp') { -%>

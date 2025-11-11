@@ -5,7 +5,7 @@ import * as packageUtils from "../../../utils/package.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 import { appIgnorePaths } from "../../app/ignorePaths.js";
 
-export default class CommonLintGenerator extends Generator {
+export default class CommonFormatLintGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
@@ -67,6 +67,13 @@ export default class CommonLintGenerator extends Generator {
       required: false,
       default: false,
       description: "Enable resolving from src directory",
+    });
+
+    this.option("storybook", {
+      type: Boolean,
+      required: false,
+      default: false,
+      description: "Enable storybook",
     });
 
     this.option("rootAsSrc", {
@@ -203,7 +210,7 @@ export default class CommonLintGenerator extends Generator {
           hasApp: this.options.hasApp,
           rootIgnorePatterns: [...rootIgnorePatterns],
           ignorePatterns: [...ignorePatterns],
-          storybook: !!pkg.devDependencies?.storybook,
+          storybook: this.options.storybook,
         },
       );
     } else if (this.fs.exists(this.destinationPath(".prettierignore"))) {
@@ -438,6 +445,9 @@ export default class CommonLintGenerator extends Generator {
     this.fs.delete(invalidEslintConfigPath);
 
     if (!inMonorepo || inMonorepo.root) {
+      const rootIgnorePaths = this.options.rootIgnorePaths
+        .split("\n")
+        .filter(Boolean);
       const getRootIgnorePatterns = () => {
         const ignorePatterns = new Set();
 
@@ -451,10 +461,7 @@ export default class CommonLintGenerator extends Generator {
 
         if ((!inMonorepo || !inMonorepo.root) && useTypescript) {
           const buildPath = `/${this.options.buildDirectory}`;
-          if (
-            !this.options.rootIgnorePaths ||
-            !this.options.rootIgnorePaths.includes(buildPath)
-          ) {
+          if (!rootIgnorePaths.includes(buildPath)) {
             ignorePatterns.add(buildPath);
           }
         }
@@ -462,14 +469,11 @@ export default class CommonLintGenerator extends Generator {
           ignorePatterns.add("/rollup.config.mjs");
         }
 
-        if (this.options.rootIgnorePaths) {
-          this.options.rootIgnorePaths
-            .split("\n")
-            .filter(Boolean)
-            .forEach((ignorePath) => {
-              if (ignorePath.startsWith("#")) return;
-              ignorePatterns.add(ignorePath);
-            });
+        if (rootIgnorePaths) {
+          rootIgnorePaths.forEach((ignorePath) => {
+            if (ignorePath.startsWith("#")) return;
+            ignorePatterns.add(ignorePath);
+          });
         }
 
         return ignorePatterns;

@@ -304,12 +304,9 @@ export default class PobLibGenerator extends Generator {
 
     this.composeWith("pob:common:remove-old-dependencies");
 
-    const enableReleasePlease = !inMonorepo && this.options.ci;
-
     this.composeWith("pob:common:testing", {
       enable: this.pobjson.testing,
       disableYarnGitCache: this.options.disableYarnGitCache,
-      enableReleasePlease,
       testing: this.pobjson.testing,
       e2eTesting: false,
       runner: this.pobjson.testing
@@ -336,6 +333,7 @@ export default class PobLibGenerator extends Generator {
       documentation:
         !!this.pobjson.documentation ||
         !!(this.pobjson.testing && this.pobjson.testing.codecov),
+      storybook: pkg?.devDependencies?.storybook,
       testing: !!this.pobjson.testing,
       testRunner: inMonorepo
         ? inMonorepo.pobMonorepoConfig.testRunner
@@ -365,7 +363,6 @@ export default class PobLibGenerator extends Generator {
       withBabel,
       withTypescript,
       isMonorepo: false,
-      enableYarnVersion: true,
       ci: this.options.ci,
       disableYarnGitCache: this.options.disableYarnGitCache,
       updateOnly: this.options.updateOnly,

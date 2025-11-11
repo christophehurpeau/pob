@@ -37,12 +37,6 @@ export default class CommonReleaseGenerator extends Generator {
       description: "is monorepo",
     });
 
-    this.option("enableYarnVersion", {
-      type: Boolean,
-      default: true,
-      description: "enable yarn version conventional commits",
-    });
-
     this.option("ci", {
       type: Boolean,
       required: true,
@@ -88,7 +82,6 @@ export default class CommonReleaseGenerator extends Generator {
         {
           packageManager: this.options.packageManager,
           enablePublish: this.options.enablePublish,
-          enableYarnVersion: this.options.enableYarnVersion,
           disableYarnGitCache: this.options.disableYarnGitCache,
           isMonorepo: this.options.isMonorepo,
           isMonorepoIndependent:

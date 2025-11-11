@@ -17,7 +17,7 @@ export const appIgnorePaths = {
   "untranspiled-library": (config) => [],
   "alp-node": (config) => ["/build"],
   other: (config) => [],
-  storybook: (config) => [],
+  storybook: (config) => ["/.storybook/storybook.requires.ts"],
   expo: (config) => [
     "/.expo/",
     "/src/tamagui-web.css",
@@ -30,6 +30,7 @@ export const appIgnorePaths = {
     "*.key",
     "*.mobileprovision",
     "*.orig.*",
+    "*.icon/",
 
     // only if option is enabled which is not by default
     // '# Temporary files created by Metro to check the health of the file watcher',

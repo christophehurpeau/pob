@@ -171,7 +171,7 @@ export default class CommonTypescriptGenerator extends Generator {
         return ["@pob/root/tsconfigs/targets/rollup-es2015.json"];
       }
 
-      if (this.options.isApp && pkg.devDependencies?.expo) {
+      if (this.options.isApp && pkg.dependencies?.expo) {
         return ["@pob/root/tsconfigs/targets/expo.json"];
       }
 

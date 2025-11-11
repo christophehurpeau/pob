@@ -291,7 +291,7 @@ export default class PobBaseGenerator extends Generator {
 
   end() {
     if (this.isMonorepo && !this.options.updateOnly) {
-      console.log("To create a new lerna package: ");
+      console.log("To create a new monorepo package: ");
       console.log(" pob add <packageName>");
     }
   }
