@@ -253,8 +253,10 @@ export default class PobMonorepoGenerator extends Generator {
     });
 
     const rootIgnorePaths = [
-      this.pobLernaConfig.e2eTesting && "/playwright-report/",
-      this.pobLernaConfig.e2eTesting && "/test-results/",
+      this.pobLernaConfig.e2eTesting &&
+        `${this.pobLernaConfig.e2eTesting === "." || this.pobLernaConfig.e2eTesting === true ? "" : `/${this.pobLernaConfig.e2eTesting}`}/playwright-report/`,
+      this.pobLernaConfig.e2eTesting &&
+        `${this.pobLernaConfig.e2eTesting === "." || this.pobLernaConfig.e2eTesting === true ? "" : `/${this.pobLernaConfig.e2eTesting}`}/test-results/`,
     ].filter(Boolean);
 
     const gitignorePaths = [

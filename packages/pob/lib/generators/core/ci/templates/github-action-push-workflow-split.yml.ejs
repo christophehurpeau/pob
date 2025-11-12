@@ -189,7 +189,7 @@ jobs:
 <% } -%>
 
       - name: E2E testing
-        run: <%= packageManager %> <%= e2eTesting === '.' ? '.' : `./${e2eTesting}` %> run test:e2e
+        run: <%= packageManager %> <%= e2eTesting === '.' || e2eTesting === true ? '.' : `./${e2eTesting}` %> run test:e2e
 <% } -%>
 <% if (isReleasePleaseEnabled) { -%>
   release:
