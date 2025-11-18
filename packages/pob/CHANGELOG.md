@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [29.9.0](https://github.com/christophehurpeau/pob/compare/pob@29.8.0...pob@29.9.0) (2025-11-18)
+
+### Features
+
+* **deps:** update yarn monorepo ([#2631](https://github.com/christophehurpeau/pob/issues/2631))
+* improve config for expo/storybook/e2e
+
+Version bump for dependency: yarn-workspace-utils
+Version bump for dependency: @pob/root
+
+
 ## [29.8.0](https://github.com/christophehurpeau/pob/compare/pob@29.7.0...pob@29.8.0) (2025-11-04)
 
 ### Features

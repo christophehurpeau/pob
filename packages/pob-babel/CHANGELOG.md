@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.5.0](https://github.com/christophehurpeau/pob/compare/pob-babel@44.4.1...pob-babel@44.5.0) (2025-11-18)
+
+### Features
+
+* **deps:** update dependency rollup to v4.53.1 ([#2630](https://github.com/christophehurpeau/pob/issues/2630))
+
+Version bump for dependency: @pob/rollup
+
+
 ## [44.4.1](https://github.com/christophehurpeau/pob/compare/pob-babel@44.4.0...pob-babel@44.4.1) (2025-10-27)
 
 ### Bug Fixes

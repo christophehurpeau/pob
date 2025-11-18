@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.6.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@20.5.1...pob-dependencies@20.6.0) (2025-11-18)
+
+### Features
+
+* **deps:** update dependency rollup to v4.53.1 ([#2630](https://github.com/christophehurpeau/pob/issues/2630))
+
+### Bug Fixes
+
+* **deps:** update alp-rollup-plugin-config to v4.0.2
+
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: pob-babel
+
+
 ## [20.5.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@20.5.0...pob-dependencies@20.5.1) (2025-11-04)
 
 ### Bug Fixes

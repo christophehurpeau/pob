@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [19.8.0](https://github.com/christophehurpeau/pob/compare/@pob/root@19.7.1...@pob/root@19.8.0) (2025-11-18)
+
+Version bump for dependency: yarn-version
+
+
 ## [19.7.1](https://github.com/christophehurpeau/pob/compare/@pob/root@19.7.0...@pob/root@19.7.1) (2025-11-04)
 
 Version bump for dependency: yarn-version

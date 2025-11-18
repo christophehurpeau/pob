@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.4.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@7.3.2...@pob/rollup-esbuild@7.4.0) (2025-11-18)
+
+### Features
+
+* **deps:** update dependency rollup to v4.53.1 ([#2630](https://github.com/christophehurpeau/pob/issues/2630))
+
+Version bump for dependency: @pob/rollup
+
+
 ## [7.3.2](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@7.3.1...@pob/rollup-esbuild@7.3.2) (2025-11-02)
 
 ### Bug Fixes
