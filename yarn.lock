@@ -6650,15 +6650,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"alp-rollup-plugin-config@npm:4.0.0":
-  version: 4.0.0
-  resolution: "alp-rollup-plugin-config@npm:4.0.0"
+"alp-rollup-plugin-config@npm:4.0.2":
+  version: 4.0.2
+  resolution: "alp-rollup-plugin-config@npm:4.0.2"
   dependencies:
     "@guanghechen/rollup-plugin-copy": "npm:1.8.6"
-    js-yaml: "npm:4.1.0"
+    js-yaml: "npm:4.1.1"
   peerDependencies:
     rollup: ^2.64.0 || ^3.0.0 || ^4.0.0
-  checksum: 10c0/2b53361135794fb9fe28019fed68565c88b1573638fb6524118be8566ad6fefdcf74b09dd56e6f7317bcccf4863c11e3e85df8ddfdcd04c6df49d41d8837d257
+  checksum: 10c0/e5ae76d7eb8f5a16ed9607650a1ce15284b2c387f33860293faae6f7495c2d80bf3fce6fe1475f027c07c706697fe827446cf678fcbaaf76bd8ea7fd15e3413e
   languageName: node
   linkType: hard
 
@@ -11594,14 +11594,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"js-yaml@npm:4.1.0, js-yaml@npm:^4.1.0":
-  version: 4.1.0
-  resolution: "js-yaml@npm:4.1.0"
+"js-yaml@npm:4.1.1, js-yaml@npm:^4.1.0":
+  version: 4.1.1
+  resolution: "js-yaml@npm:4.1.1"
   dependencies:
     argparse: "npm:^2.0.1"
   bin:
     js-yaml: bin/js-yaml.js
-  checksum: 10c0/184a24b4eaacfce40ad9074c64fd42ac83cf74d8c8cd137718d456ced75051229e5061b8633c3366b8aada17945a7a356b337828c19da92b51ae62126575018f
+  checksum: 10c0/561c7d7088c40a9bb53cc75becbfb1df6ae49b34b5e6e5a81744b14ae8667ec564ad2527709d1a6e7d5e5fa6d483aa0f373a50ad98d42fde368ec4a190d4fae7
   languageName: node
   linkType: hard
 
@@ -13748,7 +13748,7 @@ __metadata:
     "@types/jest": "npm:30.0.0"
     "@types/node": "npm:22.19.1"
     "@vitest/coverage-v8": "npm:4.0.8"
-    alp-rollup-plugin-config: "npm:4.0.0"
+    alp-rollup-plugin-config: "npm:4.0.2"
     check-package-dependencies: "npm:10.5.0"
     eslint: "npm:9.39.1"
     jest: "npm:30.2.0"
