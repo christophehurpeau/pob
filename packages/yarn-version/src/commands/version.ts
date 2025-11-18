@@ -1,7 +1,7 @@
 /* eslint-disable complexity */
 
 import { Option, program } from "commander";
-import { ConsoleHandler, Level, Logger, addConfig } from "nightingale";
+import { LoggerCLI } from "nightingale";
 import { satisfies } from "semver";
 import { UsageError } from "../utils/UsageError.ts";
 import type { BumpType } from "../utils/bumpTypeUtils.ts";
@@ -111,20 +111,8 @@ const todayInYYYYMMDD = (): string => {
 
 export const versionCommandAction = async (
   options: VersionCommandOptions,
-  { nightingaleHandler = new ConsoleHandler(Level.INFO) } = {},
+  { logger = new LoggerCLI("yarn-version", { json: options.json }) } = {},
 ): Promise<void> => {
-  // todo nightingale-cli
-  if (options.json) {
-    process.env.NIGHTINGALE_CONSOLE_FORMATTER = "json";
-  }
-
-  addConfig({
-    pattern: /^yarn-version/,
-    handler: nightingaleHandler,
-  });
-
-  const logger = new Logger("yarn-version");
-
   const rootWorkspace = await (options.cwdIsRoot
     ? createWorkspace(options.cwd)
     : findRootWorkspace(options.cwd));
@@ -192,50 +180,51 @@ export const versionCommandAction = async (
   const changedWorkspaces = new Map<Workspace, ChangedWorkspace>();
   const dependenciesMap = isMonorepo ? buildDependenciesMaps(project) : null;
 
-  // todo logger.group
-  logger.info(
+  const bumpableWorkspaces: BumpableWorkspace[] = [];
+
+  logger.group(
     options.force
       ? "Check all workspaces (force option)"
       : "Finding changed workspaces",
-  );
+    () => {
+      // check workspaces and create bumpableWorkspaces
 
-  // check workspaces and create bumpableWorkspaces
+      for (const workspace of workspaces) {
+        const workspaceName = getWorkspaceName(workspace);
+        const isRoot = workspace === rootWorkspace;
+        if (isRoot && isMonorepo && isMonorepoVersionIndependent) continue;
 
-  const bumpableWorkspaces: BumpableWorkspace[] = [];
-  for (const workspace of workspaces) {
-    const workspaceName = getWorkspaceName(workspace);
-    const isRoot = workspace === rootWorkspace;
-    if (isRoot && isMonorepo && isMonorepoVersionIndependent) continue;
+        const version = workspace.pkg.version;
 
-    const version = workspace.pkg.version;
+        if (!version || version === "0.0.0") {
+          if (
+            (isRoot || isMonorepoVersionIndependent) &&
+            (!isMonorepo || !isMonorepoVersionIndependent)
+          ) {
+            throw new UsageError(
+              'package.json has no version in its manifest. For the first release, set to "1.0.0-pre" or "0.1.0-pre".',
+            );
+          }
 
-    if (!version || version === "0.0.0") {
-      if (
-        (isRoot || isMonorepoVersionIndependent) &&
-        (!isMonorepo || !isMonorepoVersionIndependent)
-      ) {
-        throw new UsageError(
-          'package.json has no version in its manifest. For the first release, set to "1.0.0-pre" or "0.1.0-pre".',
-        );
+          logger.info(`${workspaceName}: skipped (no version)`);
+          continue;
+        }
+
+        bumpableWorkspaces.push({
+          workspace,
+          workspaceName,
+          isRoot,
+          version,
+        });
       }
 
-      logger.info(`${workspaceName}: skipped (no version)`);
-      continue;
-    }
-
-    bumpableWorkspaces.push({
-      workspace,
-      workspaceName,
-      isRoot,
-      version,
-    });
-  }
-
-  if (bumpableWorkspaces.length > 0) {
-    logger.info("Found bumpable workspaces", {
-      count: bumpableWorkspaces.length,
-    });
-  }
+      if (bumpableWorkspaces.length > 0) {
+        logger.info("Found bumpable workspaces", {
+          count: bumpableWorkspaces.length,
+        });
+      }
+    },
+  );
 
   const previousTagVersionByWorkspace = new Map<
     Workspace,
@@ -303,61 +292,58 @@ export const versionCommandAction = async (
         ),
       );
 
-  // find changed workspaces
+  await logger.group("Finding changed workspaces", async () => {
+    for (const { workspace, workspaceName } of bumpableWorkspaces) {
+      let bumpType: BumpType | null = null;
+      let bumpReason: string | undefined;
 
-  for (const { workspace, workspaceName } of bumpableWorkspaces) {
-    let bumpType: BumpType | null = null;
-    let bumpReason: string | undefined;
+      if (options.force) {
+        bumpType = options.force;
+        bumpReason = "forced by --force flag";
+      } else {
+        const commits = commitsByWorkspace?.get(workspace);
 
-    if (options.force) {
-      bumpType = options.force;
-      bumpReason = "forced by --force flag";
-    } else {
-      const commits = commitsByWorkspace?.get(workspace);
+        // No changes found for this package
+        if (!commits || commits.length === 0) {
+          logger.info(`${workspaceName}: skipped (no changes)`);
+          continue;
+        }
 
-      // No changes found for this package
-      if (!commits || commits.length === 0) {
-        logger.info(`${workspaceName}: skipped (no changes)`);
-        continue;
-      }
-
-      const { releaseType, reason } = await recommendBump(
-        commits,
-        conventionalCommitConfig,
-      );
-      bumpReason = reason;
-
-      if (releaseType) {
-        bumpType = releaseType as BumpType;
-      }
-    }
-
-    if (bumpType) {
-      if (isMonorepo && !workspace.pkg.name) {
-        throw new Error("Workspace name is required");
-      }
-
-      const currentVersion = workspace.pkg.version;
-
-      if (!currentVersion) {
-        throw new UsageError(
-          `Invalid "${getWorkspaceName(workspace)}" version`,
+        const { releaseType, reason } = await recommendBump(
+          commits,
+          conventionalCommitConfig,
         );
+        bumpReason = reason;
+
+        if (releaseType) {
+          bumpType = releaseType as BumpType;
+        }
       }
 
-      changedWorkspaces.set(workspace, {
-        bumpType,
-        bumpReason,
-      });
+      if (bumpType) {
+        if (isMonorepo && !workspace.pkg.name) {
+          throw new Error("Workspace name is required");
+        }
+
+        const currentVersion = workspace.pkg.version;
+
+        if (!currentVersion) {
+          throw new UsageError(
+            `Invalid "${getWorkspaceName(workspace)}" version`,
+          );
+        }
+
+        changedWorkspaces.set(workspace, {
+          bumpType,
+          bumpReason,
+        });
+      }
     }
-  }
 
-  if (changedWorkspaces.size === 0) {
-    logger.info("No changed workspaces");
-    return;
-  }
-
-  logger.info("Preparing bumping");
+    if (changedWorkspaces.size === 0) {
+      logger.info("No changed workspaces");
+    }
+  });
 
   const bumpedWorkspaces = new Map<Workspace, BumpedWorkspace>();
   const noVersionToUpdateWorkspaces = new Map<
@@ -368,147 +354,151 @@ export const versionCommandAction = async (
     ? buildTopologicalOrderBatches(project, dependenciesMap)
     : [[rootWorkspace]];
 
-  for (const batch of batches) {
-    for (const workspace of batch) {
-      const currentVersion = workspace.pkg.version;
+  logger.group("Preparing bumping", () => {
+    for (const batch of batches) {
+      for (const workspace of batch) {
+        const currentVersion = workspace.pkg.version;
 
-      if (!currentVersion && !workspace.pkg.private) {
-        throw new UsageError(
-          `Invalid "${getWorkspaceName(workspace)}" version`,
-        );
-      }
-
-      const changedWorkspace = changedWorkspaces.get(workspace);
-      let bumpType: BumpType | null = null;
-      const bumpReasons: string[] = [];
-      const dependenciesToBump: BumpedWorkspace["dependenciesToBump"] = [];
-
-      if (changedWorkspace) {
-        bumpType = changedWorkspace.bumpType;
-        bumpReasons.push(changedWorkspace.bumpReason || "by commits");
-      }
-
-      const dependencies = dependenciesMap?.get(workspace);
-
-      if (dependencies) {
-        for (const [
-          dependencyWorkspace,
-          dependencyType,
-          dependencyDescriptor,
-        ] of dependencies) {
-          const dependencyBumpedWorkspace =
-            bumpedWorkspaces.get(dependencyWorkspace);
-
-          if (!dependencyBumpedWorkspace) {
-            continue;
-          }
-
-          if (
-            dependencyType === "peerDependencies" &&
-            !options.alwaysBumpPeerDependencies &&
-            // skip when peerdependency with a new version satisfied by the existing range.
-            satisfies(
-              dependencyBumpedWorkspace.newVersion,
-              dependencyDescriptor.selector,
-              { includePrerelease: true },
-            )
-          ) {
-            continue;
-          }
-
-          const newRange = calcBumpRange(
-            workspace,
-            dependencyDescriptor.selector,
-            dependencyBumpedWorkspace.newVersion,
+        if (!currentVersion && !workspace.pkg.private) {
+          throw new UsageError(
+            `Invalid "${getWorkspaceName(workspace)}" version`,
           );
+        }
 
-          if (dependencyDescriptor.selector === newRange) {
-            continue;
-          }
+        const changedWorkspace = changedWorkspaces.get(workspace);
+        let bumpType: BumpType | null = null;
+        const bumpReasons: string[] = [];
+        const dependenciesToBump: BumpedWorkspace["dependenciesToBump"] = [];
 
-          dependenciesToBump.push([
+        if (changedWorkspace) {
+          bumpType = changedWorkspace.bumpType;
+          bumpReasons.push(changedWorkspace.bumpReason || "by commits");
+        }
+
+        const dependencies = dependenciesMap?.get(workspace);
+
+        if (dependencies) {
+          for (const [
+            dependencyWorkspace,
             dependencyType,
             dependencyDescriptor,
-            newRange,
-          ]);
+          ] of dependencies) {
+            const dependencyBumpedWorkspace =
+              bumpedWorkspaces.get(dependencyWorkspace);
 
-          bumpType = getHighestBumpType([
-            bumpType ?? "patch",
-            calcBumpType(
-              dependencyBumpedWorkspace.bumpType,
-              options.bumpDependentsHighestAs,
-            ),
-          ]);
+            if (!dependencyBumpedWorkspace) {
+              continue;
+            }
 
-          bumpReasons.push(
-            `Version bump for dependency: ${PackageDescriptorNameUtils.stringify(dependencyDescriptor.name)}`,
+            if (
+              dependencyType === "peerDependencies" &&
+              !options.alwaysBumpPeerDependencies &&
+              // skip when peerdependency with a new version satisfied by the existing range.
+              satisfies(
+                dependencyBumpedWorkspace.newVersion,
+                dependencyDescriptor.selector,
+                { includePrerelease: true },
+              )
+            ) {
+              continue;
+            }
+
+            const newRange = calcBumpRange(
+              workspace,
+              dependencyDescriptor.selector,
+              dependencyBumpedWorkspace.newVersion,
+            );
+
+            if (dependencyDescriptor.selector === newRange) {
+              continue;
+            }
+
+            dependenciesToBump.push([
+              dependencyType,
+              dependencyDescriptor,
+              newRange,
+            ]);
+
+            bumpType = getHighestBumpType([
+              bumpType ?? "patch",
+              calcBumpType(
+                dependencyBumpedWorkspace.bumpType,
+                options.bumpDependentsHighestAs,
+              ),
+            ]);
+
+            bumpReasons.push(
+              `Version bump for dependency: ${PackageDescriptorNameUtils.stringify(dependencyDescriptor.name)}`,
+            );
+          }
+        }
+
+        const workspaceName = getWorkspaceName(workspace);
+        if (!currentVersion) {
+          logger.info(`${workspaceName}: skipped (no version)`);
+          if (workspace !== rootWorkspace) {
+            noVersionToUpdateWorkspaces.set(workspace, {
+              dependenciesToBump,
+            });
+          }
+        } else if (!bumpType) {
+          logger.info(
+            `${workspaceName}: skipped (${
+              changedWorkspace
+                ? `no bump recommended by ${options.preset}`
+                : "no changes"
+            })`,
           );
-        }
-      }
-
-      const workspaceName = getWorkspaceName(workspace);
-      if (!currentVersion) {
-        logger.info(`${workspaceName}: skipped (no version)`);
-        if (workspace !== rootWorkspace) {
-          noVersionToUpdateWorkspaces.set(workspace, {
-            dependenciesToBump,
-          });
-        }
-      } else if (!bumpType) {
-        logger.info(
-          `${workspaceName}: skipped (${
-            changedWorkspace
-              ? `no bump recommended by ${options.preset}`
-              : "no changes"
-          })`,
-        );
-      } else {
-        const newVersion = incrementVersion(
-          workspace,
-          currentVersion,
-          bumpType,
-        );
-
-        const tagName = buildTagName(workspace, newVersion);
-
-        if (workspace === rootWorkspace) {
-          rootNewVersion = newVersion;
-          rootNewTag = tagName;
-        }
-
-        if (workspace !== rootWorkspace || !isMonorepo) {
-          const bumpReason = bumpReasons.join("\n");
-          bumpedWorkspaces.set(workspace, {
+        } else {
+          const newVersion = incrementVersion(
+            workspace,
             currentVersion,
             bumpType,
-            bumpReason,
-            bumpForDependenciesReasons: changedWorkspace
-              ? bumpReasons.slice(1)
-              : bumpReasons,
-            newVersion,
-            newTag: tagName,
-            hasChanged: changedWorkspace !== undefined,
-            dependenciesToBump,
-          });
-
-          logger.info(
-            `${workspaceName}: ${currentVersion} -> ${
-              !isMonorepo || isMonorepoVersionIndependent ? newVersion : "bump"
-            } (${bumpReason.replace("\n", " ; ")})`,
           );
-          // TODO Json only:
-          // logger.info({
-          //   cwd: npath.fromPortablePath(workspace.cwd),
-          //   ident: workspaceName,
-          //   oldVersion: currentVersion,
-          //   ...(isMonorepoVersionIndependent ? { newVersion } : {}),
-          //   bumpType,
-          //   bumpReasons,
-          // });
+
+          const tagName = buildTagName(workspace, newVersion);
+
+          if (workspace === rootWorkspace) {
+            rootNewVersion = newVersion;
+            rootNewTag = tagName;
+          }
+
+          if (workspace !== rootWorkspace || !isMonorepo) {
+            const bumpReason = bumpReasons.join("\n");
+            bumpedWorkspaces.set(workspace, {
+              currentVersion,
+              bumpType,
+              bumpReason,
+              bumpForDependenciesReasons: changedWorkspace
+                ? bumpReasons.slice(1)
+                : bumpReasons,
+              newVersion,
+              newTag: tagName,
+              hasChanged: changedWorkspace !== undefined,
+              dependenciesToBump,
+            });
+
+            logger.info(
+              `${workspaceName}: ${currentVersion} -> ${
+                !isMonorepo || isMonorepoVersionIndependent
+                  ? newVersion
+                  : "bump"
+              } (${bumpReason.replace("\n", " ; ")})`,
+            );
+            // TODO Json only:
+            // logger.info({
+            //   cwd: npath.fromPortablePath(workspace.cwd),
+            //   ident: workspaceName,
+            //   oldVersion: currentVersion,
+            //   ...(isMonorepoVersionIndependent ? { newVersion } : {}),
+            //   bumpType,
+            //   bumpReasons,
+            // });
+          }
         }
       }
     }
-  }
+  });
 
   // TODO ask for confirmation
   // if (!this.yes) {
@@ -569,74 +559,81 @@ export const versionCommandAction = async (
     );
   }
 
-  // do modifications
+  await logger.group("Applying changes", async () => {
+    // Update yarn.lock ; must be done to make sure preversion script can be ran
 
-  // Update yarn.lock ; must be done to make sure preversion script can be ran
+    if (!options.dryRun) {
+      logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
+      await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
 
-  if (!options.dryRun) {
-    logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-    await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
+      logger.info("Lifecycle script: preversion");
 
-    logger.info("Lifecycle script: preversion");
-
-    if (isMonorepoVersionIndependent && rootWorkspace.pkg.scripts?.preversion) {
-      await execCommand(
-        rootWorkspace,
-        ["yarn", "run", "preversion"],
-        "inherit",
-      );
-    }
-
-    // lifecycle: preversion
-    for (const workspace of bumpedWorkspaces.keys()) {
-      if (workspace.pkg.scripts?.preversion) {
-        await execCommand(workspace, ["yarn", "run", "preversion"], "inherit");
+      if (
+        isMonorepoVersionIndependent &&
+        rootWorkspace.pkg.scripts?.preversion
+      ) {
+        await execCommand(
+          rootWorkspace,
+          ["yarn", "run", "preversion"],
+          "inherit",
+        );
       }
-    }
 
-    logger.info("Modifying versions in package.json");
-    // update versions
+      // lifecycle: preversion
+      for (const workspace of bumpedWorkspaces.keys()) {
+        if (workspace.pkg.scripts?.preversion) {
+          await execCommand(
+            workspace,
+            ["yarn", "run", "preversion"],
+            "inherit",
+          );
+        }
+      }
 
-    await Promise.all(
-      [...bumpedWorkspaces.entries()].map(
-        ([workspace, { newVersion, dependenciesToBump }]) => {
-          workspace.pkg.version = newVersion;
+      logger.info("Modifying versions in package.json");
+      // update versions
 
-          for (const [
-            dependencyType,
-            dependencyDescriptor,
-            dependencyNewRange,
-          ] of dependenciesToBump) {
-            const newDescriptor = PackageDependencyDescriptorUtils.make(
+      await Promise.all(
+        [...bumpedWorkspaces.entries()].map(
+          ([workspace, { newVersion, dependenciesToBump }]) => {
+            workspace.pkg.version = newVersion;
+
+            for (const [
+              dependencyType,
               dependencyDescriptor,
               dependencyNewRange,
-            );
-            const [key, newValue] =
-              PackageDependencyDescriptorUtils.stringify(newDescriptor);
-            workspace.pkg[dependencyType]![key] = newValue;
-          }
+            ] of dependenciesToBump) {
+              const newDescriptor = PackageDependencyDescriptorUtils.make(
+                dependencyDescriptor,
+                dependencyNewRange,
+              );
+              const [key, newValue] =
+                PackageDependencyDescriptorUtils.stringify(newDescriptor);
+              workspace.pkg[dependencyType]![key] = newValue;
+            }
 
-          return writePkg(workspace);
-        },
-      ),
-    );
+            return writePkg(workspace);
+          },
+        ),
+      );
 
-    // Update yarn.lock ; must be done before running again lifecycle scripts
-    logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-    await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
+      // Update yarn.lock ; must be done before running again lifecycle scripts
+      logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
+      await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
 
-    // lifecycle: version
-    logger.info("Lifecycle script: version");
-    for (const workspace of bumpedWorkspaces.keys()) {
-      if (workspace.pkg.scripts?.version) {
-        await execCommand(workspace, ["yarn", "run", "version"], "inherit");
+      // lifecycle: version
+      logger.info("Lifecycle script: version");
+      for (const workspace of bumpedWorkspaces.keys()) {
+        if (workspace.pkg.scripts?.version) {
+          await execCommand(workspace, ["yarn", "run", "version"], "inherit");
+        }
       }
     }
-  }
 
-  if (isMonorepoVersionIndependent && rootWorkspace.pkg.scripts?.version) {
-    await execCommand(rootWorkspace, ["yarn", "run", "version"], "inherit");
-  }
+    if (isMonorepoVersionIndependent && rootWorkspace.pkg.scripts?.version) {
+      await execCommand(rootWorkspace, ["yarn", "run", "version"], "inherit");
+    }
+  });
 
   const changelogs = new Map<Workspace, string>();
 
@@ -709,15 +706,13 @@ export const versionCommandAction = async (
   );
 
   if (!options.dryRun) {
-    // TODO nightingale separator
-    console.log();
+    logger.separator();
 
     // install to update versions in lock file
     logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
     await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
 
-    // TODO nightingale separator
-    console.log();
+    logger.separator();
 
     logger.info("Commit, tag and push", {
       changedFiles: await getDirtyFiles(rootWorkspace),
@@ -903,4 +898,5 @@ export default program
       'Ignore changes in files matching the glob. Example: "**/*.test.js"',
     ),
   )
+  .addOption(new Option("--json", "Logger json"))
   .action((options) => versionCommandAction(options));

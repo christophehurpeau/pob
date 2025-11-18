@@ -1,5 +1,5 @@
 import { URL, fileURLToPath } from "node:url";
-import { Level, StringHandler } from "nightingale";
+import { Level, LoggerCLI, StringHandler } from "nightingale";
 import type { VersionCommandOptions } from "./version.ts";
 import { Defaults, versionCommandAction } from "./version.ts";
 
@@ -17,21 +17,26 @@ const presetOption = {
   // ),
 };
 
-class NightingaleTestHandler extends StringHandler {
-  isHandling = (): true => true;
+class TesteableLoggerCLI extends LoggerCLI {
+  stringHandler = new StringHandler(Level.ALL);
+
+  protected override getHandlersAndProcessors(recordLevel: number) {
+    return {
+      handlers: [this.stringHandler],
+      processors: [],
+    };
+  }
 }
 
 const executeAction = async (
   options: Partial<VersionCommandOptions>,
 ): Promise<ExecuteCommandResult> => {
-  const nightingaleHandler = new NightingaleTestHandler(Level.ALL);
-
+  const logger = new TesteableLoggerCLI("yarn-version", {});
+  const nightingaleHandler = logger.stringHandler;
   try {
     await versionCommandAction(
       { ...Defaults, ...options, cwdIsRoot: true },
-      {
-        nightingaleHandler,
-      },
+      { logger },
     );
   } catch (error) {
     return {
