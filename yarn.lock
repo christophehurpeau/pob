@@ -3246,15 +3246,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@npmcli/map-workspaces@npm:5.0.1, @npmcli/map-workspaces@npm:^5.0.0":
-  version: 5.0.1
-  resolution: "@npmcli/map-workspaces@npm:5.0.1"
+"@npmcli/map-workspaces@npm:5.0.2, @npmcli/map-workspaces@npm:^5.0.0":
+  version: 5.0.2
+  resolution: "@npmcli/map-workspaces@npm:5.0.2"
   dependencies:
     "@npmcli/name-from-folder": "npm:^4.0.0"
     "@npmcli/package-json": "npm:^7.0.0"
-    glob: "npm:^11.0.3"
+    glob: "npm:^12.0.0"
     minimatch: "npm:^10.0.3"
-  checksum: 10c0/5bff2e21b49a7ef23fc2968204db20436342d05e55eec1011535d4b0acb3b6657495a43d2f8ac5b2abaddf3837f6b3bc496dc27d8e98d26a98e9c86800ce126f
+  checksum: 10c0/a0e42e7ff3d9193de0673b939a0adda6dcfefbbe513ed2e668565875aa883672b2a8bc11c5d1bfd18dc9ac00b554be8101827381dc644c73f6908894bd6e2b38
   languageName: node
   linkType: hard
 
@@ -9941,6 +9941,22 @@ __metadata:
   languageName: node
   linkType: hard
 
+"glob@npm:^12.0.0":
+  version: 12.0.0
+  resolution: "glob@npm:12.0.0"
+  dependencies:
+    foreground-child: "npm:^3.3.1"
+    jackspeak: "npm:^4.1.1"
+    minimatch: "npm:^10.1.1"
+    minipass: "npm:^7.1.2"
+    package-json-from-dist: "npm:^1.0.0"
+    path-scurry: "npm:^2.0.0"
+  bin:
+    glob: dist/esm/bin.mjs
+  checksum: 10c0/923fbb7e30913496dc1c30191edb7ebb610a26edac81710a5f697c718b08694bce7fb0245baceba5383472778a8431ff7c36571703507cc6563602d3c139c993
+  languageName: node
+  linkType: hard
+
 "glob@npm:^7.1.3, glob@npm:^7.1.4":
   version: 7.2.3
   resolution: "glob@npm:7.2.3"
@@ -12396,12 +12412,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^10.0.3":
-  version: 10.0.3
-  resolution: "minimatch@npm:10.0.3"
+"minimatch@npm:^10.0.3, minimatch@npm:^10.1.1":
+  version: 10.1.1
+  resolution: "minimatch@npm:10.1.1"
   dependencies:
     "@isaacs/brace-expansion": "npm:^5.0.0"
-  checksum: 10c0/e43e4a905c5d70ac4cec8530ceaeccb9c544b1ba8ac45238e2a78121a01c17ff0c373346472d221872563204eabe929ad02669bb575cb1f0cc30facab369f70f
+  checksum: 10c0/c85d44821c71973d636091fddbfbffe62370f5ee3caf0241c5b60c18cd289e916200acb2361b7e987558cd06896d153e25d505db9fc1e43e6b4b6752e2702902
   languageName: node
   linkType: hard
 
@@ -16993,7 +17009,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "yarn-version@workspace:packages/yarn-version"
   dependencies:
-    "@npmcli/map-workspaces": "npm:5.0.1"
+    "@npmcli/map-workspaces": "npm:5.0.2"
     "@octokit/rest": "npm:22.0.1"
     "@pob/pretty-pkg": "npm:13.1.0"
     "@pob/rollup-esbuild": "npm:7.3.2"
