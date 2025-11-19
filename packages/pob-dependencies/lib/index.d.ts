@@ -11,9 +11,6 @@ interface Dependencies {
   "@pob/pretty-pkg": "13.1.0";
   "@pob/rollup-esbuild": "7.3.2";
   "@pob/rollup-typescript": "8.0.0";
-  "@swc-node/register": "1.11.1";
-  "@swc/core": "1.15.2";
-  "@swc/jest": "0.2.39";
   "@types/jest": "30.0.0";
   "@types/node": "22.19.1";
   "@vitest/coverage-v8": "4.0.8";

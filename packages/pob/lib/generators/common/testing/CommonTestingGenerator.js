@@ -103,13 +103,6 @@ export default class CommonTestingGenerator extends Generator {
       description:
         "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
-
-    this.option("swc", {
-      type: Boolean,
-      required: false,
-      default: false,
-      description: "Use swc to transpile code.",
-    });
   }
 
   default() {
@@ -179,17 +172,13 @@ export default class CommonTestingGenerator extends Generator {
     const tsTestUtil = (() => {
       if (testRunner === "vitest") return undefined;
       if (!withTypescript) return undefined;
-      if (this.options.swc || isJestRunner) return "swc";
+      if (isJestRunner && !transpileWithBabel && withTypescript) {
+        throw new Error("SWC is no longer supported. Migrate to vitest.");
+      }
       return "node";
     })();
 
-    const dependenciesForTestUtil = {
-      swc: {
-        devDependenciesShared: ["@swc/core"],
-        devDependenciesWithJest: ["@swc/jest"],
-        devDependenciesWithNode: ["@swc-node/register"],
-      },
-    };
+    const dependenciesForTestUtil = {};
 
     Object.entries(dependenciesForTestUtil).forEach(
       ([
@@ -257,9 +246,6 @@ export default class CommonTestingGenerator extends Generator {
       switch (tsTestUtil) {
         case "node":
           return "";
-        case "swc":
-          return "--import=@swc-node/register/esm";
-
         // no default
       }
     })();
@@ -447,23 +433,6 @@ export default class CommonTestingGenerator extends Generator {
               delete jestConfig.extensionsToTreatAsEsm;
             }
 
-            if (tsTestUtil === "swc" && !transpileWithBabel && withTypescript) {
-              jestConfig.transform = {
-                [hasReact ? "^.+\\.tsx?$" : "^.+\\.ts$"]: ["@swc/jest"],
-              };
-            } else if (jestConfig.transform) {
-              jestConfig.transform = Object.fromEntries(
-                Object.entries(jestConfig.transform).filter(
-                  ([key, value]) =>
-                    value !== "@swc/jest" &&
-                    !(Array.isArray(value) && value[0] === "@swc/jest"),
-                ),
-              );
-              if (Object.keys(jestConfig.transform).length === 0) {
-                delete jestConfig.transform;
-              }
-            }
-
             writeAndFormatJson(this.fs, jestConfigPath, jestConfig);
           }
         } else {
@@ -554,42 +523,19 @@ export default class CommonTestingGenerator extends Generator {
                 };
               } else if (!transpileWithBabel && !withTypescript) {
                 delete jestConfig.transform;
-              } else {
-                if (
-                  tsTestUtil === "swc" &&
-                  !transpileWithBabel &&
-                  withTypescript
-                ) {
-                  jestConfig.transform = {
-                    [hasReact ? "^.+\\.tsx?$" : "^.+\\.ts$"]: ["@swc/jest"],
-                  };
-                } else if (jestConfig.transform) {
-                  jestConfig.transform = Object.fromEntries(
-                    Object.entries(jestConfig.transform).filter(
-                      ([key, value]) =>
-                        value !== "@swc/jest" &&
-                        !(Array.isArray(value) && value[0] === "@swc/jest"),
-                    ),
-                  );
-                  if (Object.keys(jestConfig.transform).length === 0) {
-                    delete jestConfig.transform;
-                  }
-                }
-
-                if (jestConfig.transform) {
-                  jestConfig.transform = Object.fromEntries(
-                    Object.entries(jestConfig.transform).filter(
-                      ([key, value]) =>
-                        !(
-                          value &&
-                          Array.isArray(value) &&
-                          value[0] === "jest-esbuild"
-                        ),
-                    ),
-                  );
-                  if (Object.keys(jestConfig.transform).length === 0) {
-                    delete jestConfig.transform;
-                  }
+              } else if (jestConfig.transform) {
+                jestConfig.transform = Object.fromEntries(
+                  Object.entries(jestConfig.transform).filter(
+                    ([key, value]) =>
+                      !(
+                        value &&
+                        Array.isArray(value) &&
+                        value[0] === "jest-esbuild"
+                      ),
+                  ),
+                );
+                if (Object.keys(jestConfig.transform).length === 0) {
+                  delete jestConfig.transform;
                 }
               }
 
