@@ -1,4 +1,14 @@
-// Jest Snapshot v1, https://jestjs.io/docs/snapshot-testing
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`dist > should build index-node22.mjs 1`] = `
+"function simpleLib() {
+  return \`hello world via \${"typescript"}\`;
+}
+
+export { simpleLib as default };
+//# sourceMappingURL=index-node22.mjs.map
+"
+`;
 
 exports[`dist should build index-node22.mjs 1`] = `
 "function simpleLib() {

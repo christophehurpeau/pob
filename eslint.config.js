@@ -30,12 +30,12 @@ export default [
     ],
   }),
   ...apply({
-    files: ["**/*.test.js"],
+    files: ["**/*.test.{js,ts}"],
     configs: [
       pluginJest.configs["flat/recommended"],
       {
-        languageOptions: {
-          globals: pluginJest.environments.globals.globals,
+        settings: {
+          "import/core-modules": ["vitest"],
         },
       },
     ],

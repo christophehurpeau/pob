@@ -7,11 +7,3 @@ exports[`dist > should build index.js 1`] = `
 }
 //# sourceMappingURL=index.js.map"
 `;
-
-exports[`dist should build index.js 1`] = `
-"export default function simpleLib() {
-    // eslint-disable-next-line @typescript-eslint/no-unnecessary-template-expression -- checking template string here
-    return \`hello world via \${"typescript"}\`;
-}
-//# sourceMappingURL=index.js.map"
-`;

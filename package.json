@@ -26,11 +26,10 @@
     "lint:prettier": "pob-root-prettier --check .",
     "lint:prettier:fix": "pob-root-prettier --write .",
     "postinstall": "yarn node @pob/root/bin/pob-root-postinstall.js",
-    "test": "NODE_OPTIONS=--experimental-vm-modules jest --forceExit",
-    "test:coverage": "NODE_OPTIONS=--experimental-vm-modules jest --coverage --coverageReporters=json --coverageReporters=text --forceExit",
-    "test:coverage:json": "NODE_OPTIONS=--experimental-vm-modules jest --coverage --coverageReporters=json --forceExit",
-    "test:coverage:lcov": "NODE_OPTIONS=--experimental-vm-modules jest --coverage --coverageReporters=lcov --forceExit",
-    "test:watch": "NODE_OPTIONS=--experimental-vm-modules jest --watch --forceExit",
+    "test": "TZ=UTC vitest",
+    "test:coverage": "TZ=UTC POB_VITEST_COVERAGE=json,text vitest run --coverage",
+    "test:coverage:json": "TZ=UTC POB_VITEST_COVERAGE=json vitest run --coverage",
+    "test:watch": "TZ=UTC vitest --watch",
     "tsc": "tsc -b",
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
@@ -46,14 +45,14 @@
     "@pob/eslint-config-typescript": "62.0.0",
     "@pob/rollup-esbuild": "workspace:*",
     "@pob/root": "workspace:*",
-    "@types/jest": "30.0.0",
+    "@vitest/coverage-v8": "4.0.10",
     "check-package-dependencies": "10.5.0",
     "eslint": "9.39.1",
     "eslint-plugin-jest": "29.1.0",
-    "jest": "30.2.0",
     "pob-babel": "workspace:*",
     "prettier": "3.6.2",
     "react": "19.2.0",
-    "typescript": "5.9.3"
+    "typescript": "5.9.3",
+    "vitest": "4.0.10"
   }
 }

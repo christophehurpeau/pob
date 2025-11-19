@@ -1,5 +1,5 @@
 import * as fs from "node:fs";
-// import simpleLib from './index.js';
+import { describe, expect, it } from "vitest"; // import simpleLib from './index.js';
 
 // describe('index', () => {
 //   it('should return hello world', () => {

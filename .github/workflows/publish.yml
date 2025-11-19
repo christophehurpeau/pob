@@ -55,6 +55,7 @@ jobs:
       - name: New version (dry run)
         if: github.ref == 'refs/heads/main' && inputs.dry-run
         run: yarn yarn-version version --dry-run --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}
+
       - name: Configure Git user
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |

@@ -1,6 +1,5 @@
-/* eslint-disable jest/no-conditional-expect */
-/* eslint-disable complexity */
 import fs from "node:fs";
+import { describe, expect, test } from "vitest";
 import { transform } from "@babel/core";
 import preset from "./index.js";
 
@@ -10,7 +9,6 @@ describe("fixtures", () => {
     .filter((name) => name.endsWith(".js"));
 
   tests.forEach((filename) => {
-    // eslint-disable-next-line jest/valid-title
     test(filename, async () => {
       const testContent = await import(`./__tests_fixtures__/${filename}`);
       const expected = testContent.expected && testContent.expected.trim();

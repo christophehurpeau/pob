@@ -1,4 +1,5 @@
 import { URL, fileURLToPath } from "node:url";
+import { describe, expect, it } from "vitest";
 import { Level, LoggerCLI, StringHandler } from "nightingale";
 import type { VersionCommandOptions } from "./version.ts";
 import { Defaults, versionCommandAction } from "./version.ts";

@@ -39,8 +39,7 @@
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn ../.. run eslint --quiet packages/yarn-version",
     "start": "yarn clean:build && rollup --config rollup.config.mjs --watch",
-    "test": "vitest run",
-    "test:watch": "vitest"
+    "test": "yarn ../../ run test -- packages/yarn-version"
   },
   "pob": {
     "bundler": "rollup-esbuild",
@@ -75,7 +74,6 @@
     "@types/node": "22.19.1",
     "@types/npmcli__map-workspaces": "3.0.4",
     "type-fest": "5.2.0",
-    "typescript": "5.9.3",
-    "vitest": "4.0.10"
+    "typescript": "5.9.3"
   }
 }

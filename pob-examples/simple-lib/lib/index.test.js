@@ -1,3 +1,4 @@
+import { describe, expect, it } from "vitest";
 import simpleLib from "./index.js";
 
 describe("index", () => {

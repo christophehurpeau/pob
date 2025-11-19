@@ -3,6 +3,7 @@
     "monorepo": {
       "ci": true,
       "testing": true,
+      "testRunner": "vitest",
       "documentation": false,
       "eslint": true,
       "typescript": true,

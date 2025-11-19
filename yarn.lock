@@ -13334,15 +13334,15 @@ __metadata:
     "@pob/eslint-config-typescript": "npm:62.0.0"
     "@pob/rollup-esbuild": "workspace:*"
     "@pob/root": "workspace:*"
-    "@types/jest": "npm:30.0.0"
+    "@vitest/coverage-v8": "npm:4.0.10"
     check-package-dependencies: "npm:10.5.0"
     eslint: "npm:9.39.1"
     eslint-plugin-jest: "npm:29.1.0"
-    jest: "npm:30.2.0"
     pob-babel: "workspace:*"
     prettier: "npm:3.6.2"
     react: "npm:19.2.0"
     typescript: "npm:5.9.3"
+    vitest: "npm:4.0.10"
   languageName: unknown
   linkType: soft
 
@@ -16567,7 +16567,6 @@ __metadata:
     semver: "npm:7.7.3"
     type-fest: "npm:5.2.0"
     typescript: "npm:5.9.3"
-    vitest: "npm:4.0.10"
   bin:
     yarn-version: ./dist/index-node.mjs
   languageName: unknown
