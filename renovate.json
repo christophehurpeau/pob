@@ -60,7 +60,7 @@
     },
     {
       "groupName": "yeoman group",
-      "matchPackageNames": ["/^yeoman-/"]
+      "matchPackageNames": ["yeoman-*", "@yeoman/*"]
     },
     {
       "matchUpdateTypes": ["patch", "minor"],
