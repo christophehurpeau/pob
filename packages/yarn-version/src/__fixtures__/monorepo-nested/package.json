@@ -1,0 +1,9 @@
+{
+  "name": "monorepo-nested",
+  "version": "1.0.0",
+  "workspaces": [
+    "packages/*",
+    "packages/nested-1/packages/*",
+    "packages/**"
+  ]
+}
