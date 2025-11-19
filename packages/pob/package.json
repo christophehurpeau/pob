@@ -50,7 +50,7 @@
     "@pob/sort-pkg": "12.1.0",
     "@prettier/sync": "0.6.1",
     "@types/inquirer": "9.0.9",
-    "@yeoman/adapter": "3.1.0",
+    "@yeoman/adapter": "3.1.1",
     "@yeoman/types": "1.8.0",
     "eslint": "9.39.1",
     "findup-sync": "^5.0.0",
