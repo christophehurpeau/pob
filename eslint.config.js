@@ -9,7 +9,11 @@ const { configs } = pobTypescriptConfig();
 export default [
   ...configs.node,
   {
-    ignores: ["packages/pob-babel/test/**/*"],
+    ignores: [
+      "packages/pob-babel/test/**/*",
+      "packages/yarn-version/src/__fixtures__/monorepo-invalid-package-json/packages/pkg-with-invalid-json/package.json",
+      "**/__fixtures__/**",
+    ],
   },
   ...apply({
     files: ["packages/yarn-version/"],

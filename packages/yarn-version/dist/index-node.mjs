@@ -8,8 +8,7 @@ import { parseCommits } from 'conventional-commits-parser';
 import { loadPreset } from 'conventional-changelog-preset-loader';
 import childProcess from 'node:child_process';
 import { Octokit } from '@octokit/rest';
-import fs from 'node:fs/promises';
-import mapWorkspaces from '@npmcli/map-workspaces';
+import fs, { glob } from 'node:fs/promises';
 import prettyPkg from '@pob/pretty-pkg';
 
 class UsageError extends Error {
@@ -568,20 +567,46 @@ const createGitRelease = async (githubClient, parsedRepoUrl, tag, body, prerelea
   });
 };
 
+async function mapWorkspacesFromPkg({
+  cwd,
+  pkg
+}) {
+  const workspacesPatterns = Array.isArray(pkg.workspaces) ? pkg.workspaces : pkg.workspaces?.packages || [];
+  const map = /* @__PURE__ */ new Map();
+  for (const pattern of workspacesPatterns) {
+    const normalized = pattern.endsWith("package.json") ? pattern : `${pattern.replace(/\/*$/, "")}/package.json`;
+    const files = glob(normalized, { cwd });
+    for await (const file of files) {
+      const packageDir = path.join(cwd, path.dirname(file));
+      const packageJson = await readPkg(packageDir);
+      const workspaceName = packageJson.name || path.basename(packageDir);
+      if (map.has(workspaceName)) {
+        const existingWorkspace = map.get(workspaceName);
+        if (existingWorkspace && existingWorkspace.cwd !== packageDir) {
+          throw new Error(
+            `must not have multiple workspaces with the same name
+package '${workspaceName}' has conflicts in the following paths:
+    ${existingWorkspace.cwd}
+    ${packageDir}`
+          );
+        }
+        if (existingWorkspace && existingWorkspace.cwd === packageDir) continue;
+      }
+      map.set(workspaceName, { cwd: packageDir, pkg: packageJson });
+    }
+  }
+  return map;
+}
 const createProjectWorkspace = async (root) => {
-  const map = root.pkg.workspaces ? await mapWorkspaces({ cwd: root.cwd, pkg: root.pkg }) : /* @__PURE__ */ new Map();
+  const map = root.pkg.workspaces ? await mapWorkspacesFromPkg({ cwd: root.cwd, pkg: root.pkg }) : /* @__PURE__ */ new Map();
   const children = new Map(
-    await Promise.all(
-      [...map.entries()].map(
-        async ([packageName, packagePath]) => [
-          packageName,
-          {
-            ...await createWorkspace(packagePath),
-            relativeCwd: path.relative(root.cwd, packagePath)
-          }
-        ]
-      )
-    )
+    [...map.entries()].map(([packageName, workspace]) => {
+      const w = {
+        ...workspace,
+        relativeCwd: path.relative(root.cwd, workspace.cwd)
+      };
+      return [packageName, w];
+    })
   );
   return { root, children };
 };

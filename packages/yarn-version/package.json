@@ -19,7 +19,7 @@
   "homepage": "https://github.com/christophehurpeau/pob",
   "type": "module",
   "engines": {
-    "node": ">=22.18.0"
+    "node": ">=24.11.0"
   },
   "bin": "./dist/index-node.mjs",
   "main": "./dist/index-node.mjs",
@@ -58,7 +58,6 @@
   },
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "@npmcli/map-workspaces": "5.0.1",
     "@octokit/rest": "22.0.1",
     "@pob/pretty-pkg": "13.1.0",
     "commander": "14.0.2",
@@ -72,7 +71,6 @@
   "devDependencies": {
     "@pob/rollup-esbuild": "7.4.0",
     "@types/node": "22.19.1",
-    "@types/npmcli__map-workspaces": "3.0.4",
     "type-fest": "5.2.0",
     "typescript": "5.9.3"
   }

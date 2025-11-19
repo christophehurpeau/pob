@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-import fs from "node:fs/promises";
+// eslint-disable-next-line n/no-unsupported-features/node-builtins
+import fs, { glob } from "node:fs/promises";
 import path from "node:path";
-import mapWorkspaces from "@npmcli/map-workspaces";
 import prettyPkg from "@pob/pretty-pkg";
 import type { PackageJson } from "type-fest";
 
@@ -16,26 +16,60 @@ export interface ProjectWorkspace {
   readonly children: Map<string, Workspace>;
 }
 
+async function mapWorkspacesFromPkg({
+  cwd,
+  pkg,
+}: {
+  cwd: string;
+  pkg: PackageJson;
+}): Promise<Map<string, Workspace>> {
+  const workspacesPatterns: string[] = Array.isArray(pkg.workspaces)
+    ? pkg.workspaces
+    : pkg.workspaces?.packages || [];
+
+  const map = new Map<string, Workspace>();
+
+  for (const pattern of workspacesPatterns) {
+    const normalized = pattern.endsWith("package.json")
+      ? pattern
+      : `${pattern.replace(/\/*$/, "")}/package.json`;
+
+    const files = glob(normalized, { cwd });
+    for await (const file of files) {
+      const packageDir = path.join(cwd, path.dirname(file));
+      const packageJson: PackageJson = await readPkg(packageDir);
+      const workspaceName = packageJson.name || path.basename(packageDir);
+      if (map.has(workspaceName)) {
+        const existingWorkspace = map.get(workspaceName);
+        if (existingWorkspace && existingWorkspace.cwd !== packageDir) {
+          throw new Error(
+            `must not have multiple workspaces with the same name\npackage '${workspaceName}' has conflicts in the following paths:\n    ${existingWorkspace.cwd}\n    ${packageDir}`,
+          );
+        }
+        // if it's the same package dir, ignore duplicate match
+        if (existingWorkspace && existingWorkspace.cwd === packageDir) continue;
+      }
+      map.set(workspaceName, { cwd: packageDir, pkg: packageJson });
+    }
+  }
+  return map;
+}
+
 export const createProjectWorkspace = async (
   root: Workspace,
 ): Promise<ProjectWorkspace> => {
-  const map: Map<string, string> = root.pkg.workspaces
-    ? await mapWorkspaces({ cwd: root.cwd, pkg: root.pkg })
+  const map: Map<string, Workspace> = root.pkg.workspaces
+    ? await mapWorkspacesFromPkg({ cwd: root.cwd, pkg: root.pkg })
     : new Map();
 
   const children = new Map<string, Workspace>(
-    await Promise.all(
-      [...map.entries()].map(
-        async ([packageName, packagePath]) =>
-          [
-            packageName,
-            {
-              ...(await createWorkspace(packagePath)),
-              relativeCwd: path.relative(root.cwd, packagePath),
-            } satisfies Workspace,
-          ] as const,
-      ),
-    ),
+    [...map.entries()].map(([packageName, workspace]) => {
+      const w: Workspace = {
+        ...workspace,
+        relativeCwd: path.relative(root.cwd, workspace.cwd),
+      };
+      return [packageName, w] as const;
+    }),
   );
   return { root, children };
 };

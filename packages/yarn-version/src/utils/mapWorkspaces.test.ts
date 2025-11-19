@@ -81,4 +81,9 @@ describe("mapWorkspaces - baseline checks", () => {
       expect(keys).not.toContain("invalid-json-package");
     }
   });
+
+  it("should have node:fs/promises glob available (engine requirement)", async () => {
+    const fsp = await import("node:fs/promises");
+    expect(typeof (fsp as any).glob).toBe("function");
+  });
 });

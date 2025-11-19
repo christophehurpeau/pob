@@ -16,3 +16,4 @@ CHANGELOG.md
 /pob-examples/*/out
 /pob-examples/*/build
 /pob-examples/*/.env.local
+**/__fixtures__/**
