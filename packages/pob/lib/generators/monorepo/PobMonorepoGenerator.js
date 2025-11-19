@@ -1,30 +1,15 @@
 import { execSync } from "node:child_process";
 import fs from "node:fs";
 import { platform } from "node:process";
-import { getPluginConfiguration } from "@yarnpkg/cli";
-import { Configuration, Project } from "@yarnpkg/core";
-import { ppath } from "@yarnpkg/fslib";
+import Generator from "yeoman-generator";
+import * as packageUtils from "../../utils/package.js";
 import {
   buildDependenciesMaps,
   buildTopologicalOrderBatches,
+  discoverWorkspaces,
   getWorkspaceName,
-} from "yarn-workspace-utils";
-import Generator from "yeoman-generator";
-import * as packageUtils from "../../utils/package.js";
+} from "../../utils/workspaceUtils.js";
 import { copyAndFormatTpl } from "../../utils/writeAndFormat.js";
-
-export const createYarnProject = async () => {
-  const portablePath = ppath.cwd();
-
-  const configuration = await Configuration.find(
-    portablePath,
-    // eslint-disable-next-line unicorn/no-array-method-this-argument -- not an array
-    getPluginConfiguration(),
-  );
-  // eslint-disable-next-line unicorn/no-array-method-this-argument -- not an array
-  const { project } = await Project.find(configuration, portablePath);
-  return project;
-};
 
 const getAppTypes = (configs) => {
   const appConfigs = configs.filter(
@@ -129,10 +114,10 @@ export default class PobMonorepoGenerator extends Generator {
   }
 
   async initializing() {
-    const yarnProject = await createYarnProject(this.destinationPath());
+    const workspaces = await discoverWorkspaces(this.destinationPath());
     const batches = buildTopologicalOrderBatches(
-      yarnProject,
-      buildDependenciesMaps(yarnProject),
+      workspaces,
+      buildDependenciesMaps(workspaces),
     );
 
     this.packages = [];
@@ -145,7 +130,7 @@ export default class PobMonorepoGenerator extends Generator {
       );
 
       batch.forEach((workspace) => {
-        if (workspace === yarnProject.topLevelWorkspace) {
+        if (workspace.isRoot) {
           return;
         }
         this.packages.push(workspace.manifest.raw);

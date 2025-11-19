@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-
 import type {
   AllDependencies as DependencyType,
   Descriptor,

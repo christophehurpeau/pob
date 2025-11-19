@@ -1,7 +1,5 @@
 import { structUtils, Manifest, miscUtils } from '@yarnpkg/core';
 
-/* eslint-disable complexity */
-
 const getWorkspaceName = workspace => {
   return workspace.manifest.name ? structUtils.stringifyIdent(workspace.manifest.name) : workspace.computeCandidateName();
 };

@@ -1,0 +1,167 @@
+import fs from "node:fs";
+// eslint-disable-next-line n/no-unsupported-features/node-builtins
+import { glob } from "node:fs/promises";
+import path from "node:path";
+import type { PackageJson } from "type-fest";
+import {
+  PackageDependencyDescriptorUtils,
+  PackageDescriptorNameUtils,
+} from "./packageDependencyDescriptorUtils";
+import type { PackageDependencyDescriptor } from "./packageDependencyDescriptorUtils.ts";
+
+export interface Workspace {
+  name?: string;
+  location: string;
+  manifest: { raw: PackageJson };
+  relativeCwd: { toString: () => string };
+  isRoot?: boolean;
+}
+
+export const getWorkspaceName = (workspace: Workspace): string => {
+  if (workspace?.manifest?.raw?.name) return workspace.manifest.raw.name;
+  return path.basename(workspace.location) || "unnamed-workspace";
+};
+
+export type DependencyType =
+  | "dependencies"
+  | "devDependencies"
+  | "peerDependencies";
+
+type WorkspacesDependenciesMap = Map<
+  Workspace,
+  [Workspace, DependencyType, PackageDependencyDescriptor][]
+>;
+
+export const discoverWorkspaces = async (
+  rootPath: string,
+): Promise<Workspace[]> => {
+  const rootPackageJSONPath = path.join(rootPath, "package.json");
+  const rootPkg: PackageJson = JSON.parse(fs.readFileSync(rootPackageJSONPath));
+
+  let workspaceGlobs: string[] = [];
+  if (Array.isArray((rootPkg as any).workspaces)) {
+    workspaceGlobs = (rootPkg as any).workspaces;
+  } else if (typeof (rootPkg as any).workspaces === "object") {
+    workspaceGlobs = (rootPkg as any).workspaces.packages || [];
+  }
+
+  // include root as workspace
+  const workspaces: Workspace[] = [
+    {
+      name: rootPkg.name,
+      location: ".",
+      manifest: { raw: rootPkg },
+      relativeCwd: { toString: () => "." },
+      isRoot: true,
+    } as Workspace,
+  ];
+
+  const patternPackageJsons = workspaceGlobs.map((globPattern) =>
+    path.join(globPattern, "package.json"),
+  );
+  const found = new Set<string>();
+  for (const pattern of patternPackageJsons) {
+    for await (const match of glob(pattern, { cwd: rootPath, nodir: true })) {
+      if (found.has(match)) continue;
+      found.add(match);
+      const filePath = path.join(rootPath, match);
+      const content = JSON.parse(fs.readFileSync(filePath));
+      const dir = path.dirname(match);
+      workspaces.push({
+        name: content.name,
+        location: dir || ".",
+        manifest: { raw: content },
+        relativeCwd: { toString: () => dir || "." },
+      });
+    }
+  }
+
+  return workspaces;
+};
+
+export const buildDependenciesMaps = (
+  workspaces: Workspace[],
+): WorkspacesDependenciesMap => {
+  const dependenciesMap: WorkspacesDependenciesMap = new Map();
+
+  const workspacesByName = new Map<string, Workspace>(
+    workspaces.filter((w) => !!w.name).map((w) => [w.name, w]),
+  );
+
+  const dependencyTypes: DependencyType[] = [
+    "dependencies",
+    "devDependencies",
+    "peerDependencies",
+  ];
+
+  for (const dependent of workspaces) {
+    for (const set of dependencyTypes) {
+      const deps = (dependent.manifest.raw as any)[set] || {};
+      for (const [dependencyKey, dependencyValue] of Object.entries(deps)) {
+        if (!dependencyValue) continue;
+        const descriptor = PackageDependencyDescriptorUtils.parse(
+          dependencyKey,
+          String(dependencyValue),
+        );
+        const workspace = workspacesByName.get(descriptor.npmName);
+        if (!workspace) continue;
+
+        const entries = dependenciesMap.get(dependent) || [];
+        entries.push([workspace, set, descriptor]);
+        dependenciesMap.set(dependent, entries);
+      }
+    }
+  }
+
+  return dependenciesMap;
+};
+
+export const buildTopologicalOrderBatches = (
+  workspaces: Workspace[],
+  dependenciesMap: WorkspacesDependenciesMap,
+): Workspace[][] => {
+  const batches: Workspace[][] = [];
+
+  const added = new Set<Workspace>();
+  const toAdd = new Set<Workspace>(workspaces);
+
+  while (toAdd.size > 0) {
+    const batch = new Set<Workspace>();
+    for (const workspace of toAdd) {
+      // skip root workspace until the end when there are others
+      if (workspace.isRoot && toAdd.size > 1) continue;
+
+      const dependencies = dependenciesMap.get(workspace);
+      if (!dependencies || dependencies.every((w) => added.has(w[0]))) {
+        batch.add(workspace);
+      }
+    }
+
+    for (const workspace of batch) {
+      added.add(workspace);
+      toAdd.delete(workspace);
+    }
+
+    if (batch.size === 0) {
+      throw new Error("Circular dependency detected");
+    }
+    batches.push([...batch]);
+  }
+
+  return batches;
+};
+
+export const buildDependentsMaps = (
+  workspaces: Workspace[],
+): WorkspacesDependenciesMap => {
+  const dependentsMap: WorkspacesDependenciesMap = new Map();
+  const dependenciesMap = buildDependenciesMaps(workspaces);
+  for (const [dependent, relations] of dependenciesMap) {
+    for (const [workspace, set, descriptor] of relations) {
+      const cmd = dependentsMap.get(workspace) || [];
+      cmd.push([dependent, set, descriptor]);
+      dependentsMap.set(workspace, cmd);
+    }
+  }
+  return dependentsMap;
+};
