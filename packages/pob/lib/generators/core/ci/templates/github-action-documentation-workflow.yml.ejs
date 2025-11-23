@@ -14,6 +14,12 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
 
+<% } else if (packageManager === 'bun') { -%>
+      - name: Install bun
+        uses: oven-sh/setup-bun@v2
+        with:
+          bun-version: latest
+
 <% } -%>
       - uses: actions/setup-node@v6
         with:
@@ -28,9 +34,6 @@ jobs:
         run: yarn install --immutable --immutable-cache
 <% } -%>
 <% } else if (packageManager === 'bun') { -%>
-      - name: Install bun
-        uses: oven-sh/setup-bun@v1
-
       - name: Install Dependencies
         run: bun install --frozen-lockfile
 <% } -%>
