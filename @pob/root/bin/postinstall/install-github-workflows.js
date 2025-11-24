@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { assertYarnBerry } from "./lib/assert-yarn-berry.js";
+import { assertYarnBerry } from "../../lib/assert-yarn-berry.js";
 import { getPackageManagerCommands } from "./packageManagerHelpers.js";
 
 const ensureWorkflowUninstalled = (workflowName) => {
