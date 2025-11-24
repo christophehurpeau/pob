@@ -15,9 +15,7 @@
 
     "paths": {
       "@pob/rollup-esbuild": ["../../@pob/rollup-esbuild/lib"],
-      "@pob/rollup-esbuild/*": ["../../@pob/rollup-esbuild/lib/*"],
-      "@pob/pretty-pkg": ["../../@pob/pretty-pkg/lib"],
-      "@pob/pretty-pkg/*": ["../../@pob/pretty-pkg/lib/*"]
+      "@pob/rollup-esbuild/*": ["../../@pob/rollup-esbuild/lib/*"]
     }
   }
 }

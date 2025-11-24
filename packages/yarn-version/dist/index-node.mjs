@@ -9,7 +9,6 @@ import { loadPreset } from 'conventional-changelog-preset-loader';
 import childProcess from 'node:child_process';
 import { Octokit } from '@octokit/rest';
 import fs, { glob } from 'node:fs/promises';
-import prettyPkg from '@pob/pretty-pkg';
 
 class UsageError extends Error {
   constructor(message) {
@@ -633,8 +632,9 @@ const createWorkspace = async (path2) => {
   const pkg = await readPkg(path2);
   return { cwd: path2, pkg };
 };
-async function writePkg(workspace, prettierOptions = void 0) {
-  const string = await prettyPkg(workspace.pkg, prettierOptions);
+async function writePkg(workspace) {
+  const string = `${JSON.stringify(workspace.pkg, null, 2)}
+`;
   await fs.writeFile(getPackageJsonPath(workspace.cwd), string, "utf8");
 }
 async function readPkg(cwd) {

@@ -15132,7 +15132,6 @@ __metadata:
   resolution: "yarn-version@workspace:packages/yarn-version"
   dependencies:
     "@octokit/rest": "npm:22.0.1"
-    "@pob/pretty-pkg": "npm:13.1.0"
     "@pob/rollup-esbuild": "npm:7.4.0"
     "@types/node": "npm:22.19.1"
     commander: "npm:14.0.2"

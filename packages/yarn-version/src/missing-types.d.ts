@@ -8,4 +8,3 @@
 //     gitRawExecOpts?: any,
 //   ): Readable;
 // }
-declare module "@pob/pretty-pkg";

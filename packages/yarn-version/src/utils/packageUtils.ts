@@ -2,7 +2,6 @@
 // eslint-disable-next-line n/no-unsupported-features/node-builtins
 import fs, { glob } from "node:fs/promises";
 import path from "node:path";
-import prettyPkg from "@pob/pretty-pkg";
 import type { PackageJson } from "type-fest";
 
 export interface Workspace {
@@ -105,11 +104,8 @@ export const createWorkspace = async (path: string): Promise<Workspace> => {
   return { cwd: path, pkg };
 };
 
-export async function writePkg(
-  workspace: Workspace,
-  prettierOptions = undefined,
-): Promise<void> {
-  const string = await prettyPkg(workspace.pkg, prettierOptions);
+export async function writePkg(workspace: Workspace): Promise<void> {
+  const string = `${JSON.stringify(workspace.pkg, null, 2)}\n`;
   await fs.writeFile(getPackageJsonPath(workspace.cwd), string, "utf8");
 }
 
