@@ -1,9 +1,9 @@
 CHANGELOG.md
-/.yarnrc.yml
 <% if (documentation) { -%>
 /docs
 <% } -%>
 <% if (packageManager === 'yarn' && inRoot) { -%>
+/.yarnrc.yml
 /.yarn/**/*
 <% if (yarnNodeLinker === 'pnp') { -%>
 /.pnp.*
