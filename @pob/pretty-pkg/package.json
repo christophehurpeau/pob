@@ -37,7 +37,6 @@
   "pob": {},
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "@pob/sort-pkg": "12.1.0",
-    "prettier": "^3.6.2"
+    "@pob/sort-pkg": "12.1.0"
   }
 }

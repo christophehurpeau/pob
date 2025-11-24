@@ -1,6 +1,5 @@
 import fs from "node:fs/promises";
 import sortPkg from "@pob/sort-pkg";
-import prettier from "prettier";
 
 export default function prettyPkg(pkg, prettierOptions) {
   if (typeof pkg === "string") {
@@ -14,18 +13,12 @@ export default function prettyPkg(pkg, prettierOptions) {
     throw new TypeError("expected pkg to be object or string");
   }
 
-  if (typeof prettierOptions === "string") {
-    throw new TypeError(
-      `Please import "${prettierOptions}" and pass it as the second argument of prettyPkg`,
-    );
+  if (prettierOptions !== undefined) {
+    console.warn("prettierOptions is deprecated and has no effect.");
   }
 
   sortPkg(pkg);
-  return prettier.format(JSON.stringify(pkg, undefined, 2), {
-    filepath: "package.json",
-    printWidth: 80,
-    ...prettierOptions,
-  });
+  return `${JSON.stringify(pkg, undefined, 2)}\n`;
 }
 
 export async function write(pkg, path, prettierOptions) {
