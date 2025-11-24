@@ -31,7 +31,6 @@
     ".": "./lib/index.js",
     "./createLintStagedConfig": "./createLintStagedConfig.js",
     "./createLintStagedConfig.js": "./createLintStagedConfig.js",
-    "./createLintStagedConfig.cjs": "./createLintStagedConfig.cjs",
     "./prettier-config": "./prettier-config.cjs",
     "./prettier-config.js": "./prettier-config.cjs",
     "./prettier-config.cjs": "./prettier-config.cjs",
@@ -55,7 +54,6 @@
     "lib",
     "bin",
     "createLintStagedConfig.js",
-    "createLintStagedConfig.cjs",
     "prettier-config.cjs",
     "tsconfigs"
   ],

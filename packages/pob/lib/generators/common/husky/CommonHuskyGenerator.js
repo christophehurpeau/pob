@@ -69,17 +69,14 @@ export default class CommonHuskyGenerator extends Generator {
         //   '@commitlint/config-lerna-scopes': '6.1.3',
         // });
 
-        if (pkg.type !== "module") {
-          this.fs.copy(
-            this.templatePath("lint-staged.config.cjs.txt"),
-            this.destinationPath("lint-staged.config.js"),
-          );
-        } else {
-          this.fs.copy(
-            this.templatePath("lint-staged.config.js.txt"),
-            this.destinationPath("lint-staged.config.js"),
-          );
-        }
+        this.fs.copy(
+          this.templatePath("lint-staged.config.js.txt"),
+          this.destinationPath(
+            pkg.type !== "module"
+              ? "lint-staged.config.mjs"
+              : "lint-staged.config.js",
+          ),
+        );
       }
 
       pkg.commitlint = {
