@@ -77,7 +77,6 @@
     "lint-staged": "16.2.7",
     "pob-dependencies": "workspace:*",
     "prettier": "3.6.2",
-    "repository-check-dirty": "11.0.0",
     "semver": "^7.7.3",
     "yarn-version": "8.7.0"
   }
