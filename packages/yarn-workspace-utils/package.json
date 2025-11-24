@@ -1,6 +1,6 @@
 {
   "name": "yarn-workspace-utils",
-  "version": "9.5.0",
+  "version": "9.6.0",
   "description": "workspace utils for yarn berry",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@babel/core": "7.28.5",
-    "pob-babel": "44.5.0",
+    "pob-babel": "44.5.1",
     "typescript": "5.9.3"
   }
 }

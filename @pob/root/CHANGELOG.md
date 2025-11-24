@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@19.8.0...@pob/root@20.0.0) (2025-11-24)
+
+### ⚠ BREAKING CHANGES
+
+* migrate createLintStagedConfig to ES module and remove CommonJS version
+
+### Features
+
+* implement assertYarnBerry function to enforce Yarn v2 or later
+* implement repository check for uncommitted changes in @pob//root directly
+* migrate createLintStagedConfig to ES module and remove CommonJS version
+* update yarn to 4.12.0
+
+### Bug Fixes
+
+* **deps:** update lint-staged to version 16.2.7
+* fix assert-yarn-berry.js path
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: yarn-version
+
+
 ## [19.8.0](https://github.com/christophehurpeau/pob/compare/@pob/root@19.7.1...@pob/root@19.8.0) (2025-11-18)
 
 Version bump for dependency: yarn-version

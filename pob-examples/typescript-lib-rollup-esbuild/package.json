@@ -1,7 +1,7 @@
 {
   "name": "example-typescript-lib-rollup-esbuild",
   "private": true,
-  "version": "0.47.0",
+  "version": "0.47.1",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "license": "ISC",
   "repository": {
@@ -52,7 +52,7 @@
   },
   "prettier": "@pob/root/prettier-config",
   "devDependencies": {
-    "@pob/rollup-esbuild": "7.4.0",
+    "@pob/rollup-esbuild": "7.4.1",
     "typescript": "5.9.3"
   }
 }

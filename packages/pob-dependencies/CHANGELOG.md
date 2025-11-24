@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@20.6.0...pob-dependencies@21.0.0) (2025-11-24)
+
+### ⚠ BREAKING CHANGES
+
+* drop swc with jest support
+
+### Features
+
+* drop swc with jest support
+
+### Bug Fixes
+
+* **deps:** update dependency rollup to v4.53.2 ([#2634](https://github.com/christophehurpeau/pob/issues/2634))
+* **deps:** update dependency rollup to v4.53.3 ([#2652](https://github.com/christophehurpeau/pob/issues/2652))
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: pob-babel
+
+
 ## [20.6.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@20.5.1...pob-dependencies@20.6.0) (2025-11-18)
 
 ### Features

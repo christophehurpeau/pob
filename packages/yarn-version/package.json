@@ -1,6 +1,6 @@
 {
   "name": "yarn-version",
-  "version": "8.7.0",
+  "version": "8.7.1",
   "description": "yarn berry versioning using conventional commits",
   "keywords": [
     "semantic-release",
@@ -68,7 +68,7 @@
     "semver": "7.7.3"
   },
   "devDependencies": {
-    "@pob/rollup-esbuild": "7.4.0",
+    "@pob/rollup-esbuild": "7.4.1",
     "@types/node": "22.19.1",
     "type-fest": "5.2.0",
     "typescript": "5.9.3"

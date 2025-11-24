@@ -1,6 +1,6 @@
 {
   "name": "@pob/rollup",
-  "version": "7.3.0",
+  "version": "7.3.1",
   "description": "rollup configuration for pob",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",

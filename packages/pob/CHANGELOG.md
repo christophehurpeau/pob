@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.0.0](https://github.com/christophehurpeau/pob/compare/pob@29.9.0...pob@30.0.0) (2025-11-24)
+
+### ⚠ BREAKING CHANGES
+
+* migrate createLintStagedConfig to ES module and remove CommonJS version
+* drop swc with jest support
+
+### Features
+
+* add ci permissions
+* drop swc with jest support
+* implement package dependency descriptor utilities and workspace management to replace yarn packages and better support bun
+* migrate createLintStagedConfig to ES module and remove CommonJS version
+* update templates for bun v2
+* update yarn to 4.12.0
+
+### Bug Fixes
+
+* add rollup-plugin-copy to the list of removed dependencies
+* **deps:** update js-yaml to version 4.1.1
+* move /.yarnrc.yml to yarn section
+* update E2E testing paths to handle boolean and string values correctly
+
+Version bump for dependency: @pob/root
+
+
 ## [29.9.0](https://github.com/christophehurpeau/pob/compare/pob@29.8.0...pob@29.9.0) (2025-11-18)
 
 ### Features
