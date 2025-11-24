@@ -3,7 +3,7 @@
 
 import fs from "node:fs";
 import path from "node:path";
-import whichPmRuns from "which-pm-runs";
+import { whichPmRuns } from "../lib/which-pm-runs.js";
 
 if (!process.env.INIT_CWD) {
   console.error(

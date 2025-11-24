@@ -81,7 +81,6 @@
     "prettier": "3.6.2",
     "repository-check-dirty": "11.0.0",
     "semver": "^7.7.3",
-    "which-pm-runs": "1.1.0",
     "yarn-version": "8.7.0"
   }
 }

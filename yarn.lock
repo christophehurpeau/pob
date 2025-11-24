@@ -3663,7 +3663,6 @@ __metadata:
     prettier: "npm:3.6.2"
     repository-check-dirty: "npm:11.0.0"
     semver: "npm:^7.7.3"
-    which-pm-runs: "npm:1.1.0"
     yarn-version: "npm:8.7.0"
   bin:
     pob-check-commit-msg: ./bin/pob-check-commit-msg.js
@@ -14917,13 +14916,6 @@ __metadata:
     find-up: "npm:^7.0.0"
     micromatch: "npm:^4.0.8"
   checksum: 10c0/f9493fc72dcbc8792546cd9a9eea2c218cf0ced4c4817ad492591ba7bd2ad6acebf5b1b1731ac41f9ed047f535597af8594d493eab664a8d7f28c6e07d3e324e
-  languageName: node
-  linkType: hard
-
-"which-pm-runs@npm:1.1.0":
-  version: 1.1.0
-  resolution: "which-pm-runs@npm:1.1.0"
-  checksum: 10c0/b8f2f230aa49babe21cb93f169f5da13937f940b8cc7a47d2078d9d200950c0dba5ac5659bc01bdbe401e6db3adec6a97b6115215a4ca8e87fd714aebd0cabc6
   languageName: node
   linkType: hard
 

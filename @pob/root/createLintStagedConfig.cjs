@@ -3,7 +3,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const semver = require("semver");
-const whichPmRuns = require("which-pm-runs");
+const { whichPmRuns } = require("./lib/which-pm-runs.js");
 
 const pm =
   whichPmRuns() ||
