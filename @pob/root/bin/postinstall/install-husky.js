@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import husky from "husky";
-import semver from "semver";
+import { assertYarnBerry } from "../../lib/assert-yarn-berry.js";
 import { getPackageManagerCommands } from "./packageManagerHelpers.js";
 
 const ensureLegacyHuskyConfigDeleted = () => {
@@ -46,9 +46,8 @@ const readYarnConfigFile = () => {
 };
 
 export default function installHusky({ pkg, pm }) {
-  const yarnMajorVersion = pm.name === "yarn" && semver.major(pm.version);
-  const isYarnBerry = pm.name === "yarn" && yarnMajorVersion >= 2;
-  const yarnConfig = isYarnBerry && readYarnConfigFile();
+  assertYarnBerry(pm);
+  const yarnConfig = readYarnConfigFile();
   const isYarnPnp = yarnConfig
     ? !yarnConfig.includes("nodeLinker: node-modules") &&
       !yarnConfig.includes("nodeLinker: pnpm")
@@ -77,7 +76,7 @@ export default function installHusky({ pkg, pm }) {
     installOnDiffCommand,
     beforeDiffCommand = "",
     afterDiffCommand = "",
-  } = getPackageManagerCommands(pm, isYarnBerry);
+  } = getPackageManagerCommands(pm, true);
 
   writeHook("commit-msg", `${pmExec} pob-check-commit-msg $1`);
   writeHook(

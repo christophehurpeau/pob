@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import semver from "semver";
+import { assertYarnBerry } from "./lib/assert-yarn-berry.js";
 import { getPackageManagerCommands } from "./packageManagerHelpers.js";
 
 const ensureWorkflowUninstalled = (workflowName) => {
@@ -37,10 +37,9 @@ const installWorkflow = (
 };
 
 export default function installGithubWorkflows({ pkg, pm }) {
-  const yarnMajorVersion = pm.name === "yarn" && semver.major(pm.version);
-  const isYarnBerry = pm.name === "yarn" && yarnMajorVersion >= 2;
+  assertYarnBerry(pm);
 
-  const pmCommands = getPackageManagerCommands(pm, isYarnBerry);
+  const pmCommands = getPackageManagerCommands(pm, true);
 
   if (fs.existsSync(".github")) {
     installWorkflow("push-renovate-pob_root", pmCommands);

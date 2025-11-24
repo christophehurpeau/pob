@@ -2,7 +2,7 @@
 
 const fs = require("node:fs");
 const path = require("node:path");
-const semver = require("semver");
+const { assertYarnBerry } = require("./lib/assert-yarn-berry.js");
 const { whichPmRuns } = require("./lib/which-pm-runs.js");
 
 const pm =
@@ -11,7 +11,8 @@ const pm =
 const isEslintFlatConfig =
   fs.existsSync("eslint.config.js") || fs.existsSync("eslint.config.mjs");
 
-const yarnMajorVersion = pm.name === "yarn" && semver.major(pm.version);
+assertYarnBerry(pm);
+
 const { lockfile, installAndDedupe } = (() => {
   if (pm.name === "yarn") {
     return {
@@ -83,11 +84,7 @@ module.exports = function createLintStagedConfig() {
         packagejsonFilenames.length === 0
           ? undefined
           : `pretty-pkg "${packagejsonFilenames.join('" "')}"`,
-        `git add ${lockfile}${
-          pm.name === "yarn" && yarnMajorVersion >= 2
-            ? " .yarn .yarnrc.yml"
-            : ""
-        }`,
+        `git add ${lockfile}${pm.name === "yarn" ? " .yarn .yarnrc.yml" : ""}`,
       ].filter(Boolean);
     },
     "!(package|package-lock|.eslintrc).json": ["prettier --write"],
