@@ -4,8 +4,10 @@ import { BunPackageManager } from "./BunPackageManager.ts";
 import { YarnPackageManager } from "./YarnPackageManager.ts";
 
 export interface PackageManager {
-  install: (rootWorkspace: Workspace) => Promise<void>;
+  installOnPackageContentChange?: (rootWorkspace: Workspace) => Promise<void>;
   runScript: (workspace: Workspace, scriptName: string) => Promise<void>;
+  publish: (workspace: Workspace) => Promise<void>;
+  publishWorkspaces?: (rootWorkspace: Workspace) => Promise<void>;
 }
 
 export const autoDetectPackageManager = (

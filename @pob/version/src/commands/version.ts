@@ -77,6 +77,7 @@ export interface VersionCommandOptions {
   verbose?: boolean;
   cwdIsRoot?: boolean;
   packageManager?: "bun" | "yarn";
+  publish?: boolean;
 }
 
 interface BumpableWorkspace {
@@ -571,8 +572,10 @@ export const versionCommandAction = async (
     // Update lockfile ; must be done to make sure preversion script can be ran
 
     if (!options.dryRun) {
-      logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-      await packageManager.install(rootWorkspace);
+      if (packageManager.installOnPackageContentChange) {
+        logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
+        await packageManager.installOnPackageContentChange(rootWorkspace);
+      }
 
       logger.info("Lifecycle script: preversion");
 
@@ -617,9 +620,11 @@ export const versionCommandAction = async (
         ),
       );
 
-      // Update lockfile ; must be done before running again lifecycle scripts
-      logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-      await packageManager.install(rootWorkspace);
+      if (packageManager.installOnPackageContentChange) {
+        // Update lockfile ; must be done before running again lifecycle scripts
+        logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
+        await packageManager.installOnPackageContentChange(rootWorkspace);
+      }
 
       // lifecycle: version
       logger.info("Lifecycle script: version");
@@ -708,9 +713,11 @@ export const versionCommandAction = async (
   if (!options.dryRun) {
     logger.separator();
 
-    // install to update versions in lock file
-    logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-    await packageManager.install(rootWorkspace);
+    if (packageManager.installOnPackageContentChange) {
+      // install to update versions in lock file
+      logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
+      await packageManager.installOnPackageContentChange(rootWorkspace);
+    }
 
     logger.separator();
 
@@ -793,6 +800,27 @@ export const versionCommandAction = async (
         }),
       );
     }
+
+    if (!options.publish) {
+      return;
+    }
+    await logger.group("Publishing packages", async () => {
+      if (packageManager.publishWorkspaces) {
+        await packageManager.publishWorkspaces(rootWorkspace);
+      } else {
+        for (const [workspace] of bumpedWorkspaces.entries()) {
+          if (workspace.pkg.private) {
+            logger.info(
+              `Skipping private workspace ${getWorkspaceName(workspace)}`,
+            );
+            continue;
+          }
+
+          logger.info(`Publishing ${getWorkspaceName(workspace)}`);
+          await packageManager.publish(workspace);
+        }
+      }
+    });
   }
 };
 
@@ -810,6 +838,7 @@ export const Defaults: VersionCommandOptions = {
   alwaysBumpPeerDependencies: false,
   gitRemote: "origin",
   verbose: false,
+  publish: false,
 };
 
 export default program
@@ -902,4 +931,5 @@ export default program
       "Specify the package manager to use (bun or yarn). Autodetected if not specified.",
     ).choices(["bun", "yarn"]),
   )
+  .addOption(new Option("--publish", "Publish after versioning").default(false))
   .action((options) => versionCommandAction(options));

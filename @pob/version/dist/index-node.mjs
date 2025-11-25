@@ -141,20 +141,39 @@ const execCommandStreamStdout = (workspace, commandAndArgs = [], separator = "\n
 };
 
 const BunPackageManager = {
-  async install(rootWorkspace) {
-    await execCommand(rootWorkspace, ["bun", "install"], "inherit");
-  },
   async runScript(workspace, scriptName) {
     await execCommand(workspace, ["bun", "run", scriptName], "inherit");
+  },
+  async publish(workspace) {
+    await execCommand(workspace, ["bun", "publish"], "inherit");
   }
 };
 
 const YarnPackageManager = {
-  async install(rootWorkspace) {
+  async installOnPackageContentChange(rootWorkspace) {
     await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
   },
   async runScript(workspace, scriptName) {
     await execCommand(workspace, ["yarn", "run", scriptName], "inherit");
+  },
+  async publish(workspace) {
+    await execCommand(workspace, ["yarn", "npm", "publish"], "inherit");
+  },
+  async publishWorkspaces(rootWorkspace) {
+    await execCommand(
+      rootWorkspace,
+      [
+        "yarn",
+        "workspaces",
+        "foreach",
+        "--all",
+        "--parallel",
+        "--no-private",
+        "npm",
+        "publish"
+      ],
+      "inherit"
+    );
   }
 };
 
@@ -1072,8 +1091,10 @@ There are uncommitted changes in the git repository. Please commit or stash them
   }
   await logger.group("Applying changes", async () => {
     if (!options.dryRun) {
-      logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-      await packageManager.install(rootWorkspace);
+      if (packageManager.installOnPackageContentChange) {
+        logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
+        await packageManager.installOnPackageContentChange(rootWorkspace);
+      }
       logger.info("Lifecycle script: preversion");
       if (isMonorepoVersionIndependent && rootWorkspace.pkg.scripts?.preversion) {
         await packageManager.runScript(rootWorkspace, "preversion");
@@ -1104,8 +1125,10 @@ There are uncommitted changes in the git repository. Please commit or stash them
           }
         )
       );
-      logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-      await packageManager.install(rootWorkspace);
+      if (packageManager.installOnPackageContentChange) {
+        logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
+        await packageManager.installOnPackageContentChange(rootWorkspace);
+      }
       logger.info("Lifecycle script: version");
       for (const workspace of bumpedWorkspaces.keys()) {
         if (workspace.pkg.scripts?.version) {
@@ -1179,8 +1202,10 @@ ${changelog}`
   );
   if (!options.dryRun) {
     logger.separator();
-    logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-    await packageManager.install(rootWorkspace);
+    if (packageManager.installOnPackageContentChange) {
+      logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
+      await packageManager.installOnPackageContentChange(rootWorkspace);
+    }
     logger.separator();
     logger.info("Commit, tag and push", {
       changedFiles: await getDirtyFiles(rootWorkspace)
@@ -1237,6 +1262,25 @@ ${tagsInCommitMessage}` : rootNewVersion
         })
       );
     }
+    if (!options.publish) {
+      return;
+    }
+    await logger.group("Publishing packages", async () => {
+      if (packageManager.publishWorkspaces) {
+        await packageManager.publishWorkspaces(rootWorkspace);
+      } else {
+        for (const [workspace] of bumpedWorkspaces.entries()) {
+          if (workspace.pkg.private) {
+            logger.info(
+              `Skipping private workspace ${getWorkspaceName(workspace)}`
+            );
+            continue;
+          }
+          logger.info(`Publishing ${getWorkspaceName(workspace)}`);
+          await packageManager.publish(workspace);
+        }
+      }
+    });
   }
 };
 const Defaults = {
@@ -1249,8 +1293,7 @@ const Defaults = {
   bumpDependentsHighestAs: "major",
   alwaysBumpPeerDependencies: false,
   gitRemote: "origin",
-  verbose: false
-};
+  verbose: false};
 program.command("version", { isDefault: true }).usage("Bump package version using conventional commit").addOption(
   new Option("--includes-root", "Release root workspace [untested]").default(
     Defaults.includesRoot
@@ -1319,7 +1362,7 @@ program.command("version", { isDefault: true }).usage("Bump package version usin
     "--package-manager <manager>",
     "Specify the package manager to use (bun or yarn). Autodetected if not specified."
   ).choices(["bun", "yarn"])
-).action((options) => versionCommandAction(options));
+).addOption(new Option("--publish", "Publish after versioning").default(false)).action((options) => versionCommandAction(options));
 
 const pkg = JSON.parse(
   // eslint-disable-next-line unicorn/prefer-json-parse-buffer
