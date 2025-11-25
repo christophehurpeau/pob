@@ -42,7 +42,7 @@
     "@babel/preset-env": "7.28.5",
     "@babel/preset-react": "7.28.5",
     "@babel/runtime": "7.28.4",
-    "@playwright/test": "1.56.1",
+    "@playwright/test": "1.57.0",
     "@pob/esbuild": "5.1.1",
     "@pob/eslint-config": "62.0.0",
     "@pob/eslint-config-typescript": "62.0.0",
