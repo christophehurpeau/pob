@@ -159,7 +159,7 @@ export default class CoreYarnGenerator extends Generator {
         // leave default compressionLevel instead of this next line
         delete config.compressionLevel;
         // config.compressionLevel = "mixed"; // optimized for size
-        config.enableGlobalCache = "true";
+        config.enableGlobalCache = true;
         delete config.supportedArchitectures;
       } else {
         config.compressionLevel = 0; // optimized for github config
@@ -175,6 +175,7 @@ export default class CoreYarnGenerator extends Generator {
       config.defaultSemverRangePrefix = this.options.type === "app" ? "" : "^";
       delete config.enableMessageNames; // was a config for yarn < 4
       config.nodeLinker = this.options.yarnNodeLinker;
+      config.npmMinimalAgeGate = 1440 * 3; // 3 days
 
       if (config.yarnPath) {
         this.fs.delete(config.yarnPath);
