@@ -12,14 +12,14 @@ const fixturesRoot = path.resolve(
 
 describe("packageUtils integration", () => {
   it("findRootWorkspace finds root from subpackage path", async () => {
-    const subPath = path.join(fixturesRoot, "monorepo/packages/package-1");
+    const subPath = path.join(fixturesRoot, "yarn-monorepo/packages/package-1");
     const root = await findRootWorkspace(subPath);
     expect(root).toBeTruthy();
-    expect(root!.pkg.name).toBe("monorepo");
+    expect(root!.pkg.name).toBe("yarn-monorepo");
   });
 
   it("createProjectWorkspace returns children and correct relativeCwd", async () => {
-    const rootPath = path.join(fixturesRoot, "monorepo");
+    const rootPath = path.join(fixturesRoot, "yarn-monorepo");
     const rootWorkspace = await createWorkspace(rootPath);
     const project = await createProjectWorkspace(rootWorkspace);
     const children = [...project.children.values()];

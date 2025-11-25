@@ -17,7 +17,7 @@
     "pob-examples/*"
   ],
   "scripts": {
-    "build": "yarn clean:build && rollup --config rollup.config.mjs && yarn run build:definitions && chmod a+x packages/yarn-version/dist/index-node.mjs",
+    "build": "yarn clean:build && rollup --config rollup.config.mjs && yarn run build:definitions && chmod a+x @pob/version/dist/index-node.mjs",
     "build:definitions": "tsc -b",
     "checks": "node scripts/check-packages.js && ./scripts/run-self-on-examples.sh",
     "clean:build": "yarn workspaces foreach --parallel -A run clean:build",
@@ -45,6 +45,7 @@
     "@pob/eslint-config-typescript": "62.0.0",
     "@pob/rollup-esbuild": "workspace:*",
     "@pob/root": "workspace:*",
+    "@pob/version": "workspace:*",
     "@vitest/coverage-v8": "4.0.10",
     "check-package-dependencies": "10.5.0",
     "eslint": "9.39.1",

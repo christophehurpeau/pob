@@ -1,0 +1,13 @@
+{
+  "pob": {
+    "app": {
+      "type": "node",
+      "testing": true,
+      "codecov": true,
+      "distribute": true
+    },
+    "project": {
+      "type": "app"
+    }
+  }
+}

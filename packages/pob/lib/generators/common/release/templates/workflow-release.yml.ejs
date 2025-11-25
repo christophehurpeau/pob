@@ -73,7 +73,7 @@ jobs:
 
       - name: New version (dry run)
         if: github.ref == 'refs/heads/main' && inputs.dry-run
-        run: yarn yarn-version version --dry-run<% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %>
+        run: <%= packageManager %> run pob-version --dry-run<% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %>
 
       - name: Configure Git user
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
@@ -84,7 +84,7 @@ jobs:
       - name: New version
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
-          yarn yarn-version version --create-release=github <% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %> -m 'chore: release <%- isMonorepoIndependent ? '' : '%v ' %>[skip ci]<%- isMonorepoIndependent ? '\\n\\n%t' : '' %>'
+          <%= packageManager %> run pob-version --create-release=github <% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %> -m 'chore: release <%- isMonorepoIndependent ? '' : '%v ' %>[skip ci]<%- isMonorepoIndependent ? '\\n\\n%t' : '' %>'
         env:
           HUSKY: 0
           GH_TOKEN: ${{ secrets.GH_TOKEN }}

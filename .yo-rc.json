@@ -25,6 +25,7 @@
         "babel-preset-pob-env",
         "example-typescript-lib-esbuild",
         "@pob/pretty-pkg",
+        "@pob/version",
         "example-typescript-lib-rollup-esbuild",
         "pob-babel",
         "example-typescript-lib",

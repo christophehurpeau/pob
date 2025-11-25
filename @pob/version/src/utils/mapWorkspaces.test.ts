@@ -9,8 +9,8 @@ const fixturesRoot = path.resolve(
 );
 
 describe("mapWorkspaces - baseline checks", () => {
-  it("should map packages for array workspaces (monorepo)", async () => {
-    const root = path.join(fixturesRoot, "monorepo");
+  it("should map packages for array workspaces (yarn-monorepo)", async () => {
+    const root = path.join(fixturesRoot, "yarn-monorepo");
 
     const rootWorkspace = await createWorkspace(root);
     const project = await createProjectWorkspace(rootWorkspace);
@@ -25,7 +25,7 @@ describe("mapWorkspaces - baseline checks", () => {
   });
 
   it("should map packages for object workspaces (monorepo-object-form)", async () => {
-    const root = path.join(fixturesRoot, "monorepo-object-form");
+    const root = path.join(fixturesRoot, "yarn-monorepo-object-form");
     const rootWorkspace = await createWorkspace(root);
     const project = await createProjectWorkspace(rootWorkspace);
     const keys = [...project.children.keys()].toSorted();
@@ -33,7 +33,7 @@ describe("mapWorkspaces - baseline checks", () => {
   });
 
   it("should map nested patterns and double star patterns", async () => {
-    const root = path.join(fixturesRoot, "monorepo-nested");
+    const root = path.join(fixturesRoot, "yarn-monorepo-nested");
     const rootWorkspace = await createWorkspace(root);
     const project = await createProjectWorkspace(rootWorkspace);
     const keys = [...project.children.keys()];
@@ -43,7 +43,7 @@ describe("mapWorkspaces - baseline checks", () => {
   });
 
   it("should fallback to folder name when package.json has no name", async () => {
-    const root = path.join(fixturesRoot, "monorepo-no-name");
+    const root = path.join(fixturesRoot, "yarn-monorepo-no-name");
     const rootWorkspace = await createWorkspace(root);
     const project = await createProjectWorkspace(rootWorkspace);
     const keys = [...project.children.keys()];
@@ -51,7 +51,7 @@ describe("mapWorkspaces - baseline checks", () => {
   });
 
   it("should throw when duplicate workspace names exist (baseline behavior)", async () => {
-    const root = path.join(fixturesRoot, "monorepo-duplicate-names");
+    const root = path.join(fixturesRoot, "yarn-monorepo-duplicate-names");
     const rootWorkspace = await createWorkspace(root);
     let thrown = false;
     try {
@@ -63,7 +63,7 @@ describe("mapWorkspaces - baseline checks", () => {
   });
 
   it("should expose an error or skip invalid package.json (baseline behavior)", async () => {
-    const root = path.join(fixturesRoot, "monorepo-invalid-package-json");
+    const root = path.join(fixturesRoot, "yarn-monorepo-invalid-package-json");
     const rootWorkspace = await createWorkspace(root);
     // Ensure it throws or skips: we'll try to call createProjectWorkspace and assert throw
     let thrown = false;

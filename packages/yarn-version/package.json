@@ -21,14 +21,14 @@
   "engines": {
     "node": ">=24.11.0"
   },
-  "bin": "./dist/index-node.mjs",
-  "main": "./dist/index-node.mjs",
+  "bin": "./yarn-version.mjs",
+  "main": "./yarn-version.mjs",
   "exports": {
     "./package.json": "./package.json",
     ".": {
       "types": "./dist/definitions/index.d.ts",
       "node": {
-        "import": "./dist/index-node.mjs"
+        "import": "./yarn-version.mjs"
       }
     }
   },
@@ -38,39 +38,13 @@
     "clean:build": "pob-esbuild-clean-out dist",
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn ../.. run eslint --quiet packages/yarn-version",
-    "start": "yarn clean:build && rollup --config rollup.config.mjs --watch",
-    "test": "yarn ../../ run test -- packages/yarn-version"
-  },
-  "pob": {
-    "bundler": "rollup-esbuild",
-    "entries": [
-      "index"
-    ],
-    "envs": [
-      {
-        "target": "node",
-        "version": "22",
-        "omitVersionInFileName": true,
-        "executable": true
-      }
-    ],
-    "typescript": true
+    "start": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "@octokit/rest": "22.0.1",
-    "commander": "14.0.2",
-    "conventional-changelog-conventionalcommits": "9.1.0",
-    "conventional-changelog-preset-loader": "5.0.0",
-    "conventional-changelog-writer": "8.2.0",
-    "conventional-commits-parser": "6.2.1",
-    "nightingale": "18.1.0",
-    "semver": "7.7.3"
+    "@pob/version": "1.0.0-pre"
   },
   "devDependencies": {
-    "@pob/rollup-esbuild": "7.4.1",
-    "@types/node": "22.19.1",
-    "type-fest": "5.2.0",
-    "typescript": "5.9.3"
+    "@types/node": "22.19.1"
   }
 }

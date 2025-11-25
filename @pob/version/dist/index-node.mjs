@@ -1,14 +1,203 @@
-import fs$1 from 'node:fs';
+import fs$1, { existsSync } from 'node:fs';
 import { program, Option } from 'commander';
 import { LoggerCLI } from 'nightingale';
 import semver, { satisfies } from 'semver';
+import childProcess from 'node:child_process';
 import path from 'node:path';
 import { writeChangelogString } from 'conventional-changelog-writer';
 import { parseCommits } from 'conventional-commits-parser';
 import { loadPreset } from 'conventional-changelog-preset-loader';
-import childProcess from 'node:child_process';
 import { Octokit } from '@octokit/rest';
 import fs, { glob } from 'node:fs/promises';
+
+async function execvp(command, args, {
+  cwd = process.cwd(),
+  env = process.env,
+  encoding,
+  strict,
+  stdo = "pipe"
+}) {
+  const stdoutChunks = [];
+  const stderrChunks = [];
+  if (env.PWD !== void 0) {
+    env = { ...env, PWD: cwd };
+  }
+  const subprocess = childProcess.spawn(command, args, {
+    cwd,
+    env,
+    stdio: ["ignore", stdo, stdo]
+  });
+  subprocess.stdout?.on("data", (chunk) => {
+    stdoutChunks.push(chunk);
+  });
+  subprocess.stderr?.on("data", (chunk) => {
+    stderrChunks.push(chunk);
+  });
+  return new Promise((resolve, reject) => {
+    subprocess.on("error", (err) => {
+      reject(new Error(`Process ${command} failed to spawn`));
+    });
+    subprocess.on("close", (code, signal) => {
+      const chunksToString = (chunks) => stdo === "inherit" ? "" : Buffer.concat(chunks).toString(encoding ?? "utf8");
+      const stdout = chunksToString(stdoutChunks);
+      const stderr = chunksToString(stderrChunks);
+      if (code === 0 || !strict) {
+        resolve({
+          code,
+          signal,
+          stdout,
+          stderr
+        });
+      } else {
+        reject(
+          new Error(
+            `Process ${[command, ...args].join(" ")} exited ${code !== null ? `with code ${code}` : `with signal ${signal || ""}`}:
+stdout: ${stdout}
+stderr: ${stderr}`
+          )
+        );
+      }
+    });
+  });
+}
+async function* spawnStreamStdout(command, args, {
+  cwd = process.cwd(),
+  env = process.env,
+  encoding,
+  strict,
+  separator
+}) {
+  const stderrChunks = [];
+  if (env.PWD !== void 0) {
+    env = { ...env, PWD: cwd };
+  }
+  const subprocess = childProcess.spawn(command, args, {
+    cwd,
+    env,
+    stdio: ["ignore", "pipe", "pipe"]
+  });
+  subprocess.stderr.on("data", (chunk2) => {
+    stderrChunks.push(chunk2);
+  });
+  let chunk;
+  let payload;
+  let buffer = "";
+  for await (chunk of subprocess.stdout) {
+    buffer += chunk.toString();
+    if (buffer.includes(separator)) {
+      payload = buffer.split(separator);
+      buffer = payload.pop() || "";
+      yield* payload;
+    }
+  }
+  if (buffer) {
+    yield buffer;
+  }
+  return new Promise((resolve, reject) => {
+    subprocess.on("error", (err) => {
+      reject(new Error(`Process ${command} failed to spawn`));
+    });
+    subprocess.on("close", (code, signal) => {
+      const chunksToString = (chunks) => Buffer.concat(chunks).toString(encoding ?? "utf8");
+      const stderr = chunksToString(stderrChunks);
+      if (code === 0 || !strict) {
+        resolve({
+          code,
+          signal,
+          stderr
+        });
+      } else {
+        reject(
+          new Error(
+            `Process ${[command, ...args].join(" ")} exited ${code !== null ? `with code ${code}` : `with signal ${signal || ""}`}:
+stderr: ${stderr}`
+          )
+        );
+      }
+    });
+  });
+}
+const execCommand = (workspace, commandAndArgs = [], stdo = "pipe") => {
+  const [command, ...args] = commandAndArgs;
+  if (command === void 0) {
+    throw new Error("Command is required");
+  }
+  return execvp(command, args, {
+    cwd: workspace.cwd,
+    strict: true,
+    stdo
+  });
+};
+const execCommandStreamStdout = (workspace, commandAndArgs = [], separator = "\n") => {
+  const [command, ...args] = commandAndArgs;
+  if (command === void 0) {
+    throw new Error("Command is required");
+  }
+  return spawnStreamStdout(command, args, {
+    cwd: workspace.cwd,
+    strict: true,
+    separator
+  });
+};
+
+const BunPackageManager = {
+  async install(rootWorkspace) {
+    await execCommand(rootWorkspace, ["bun", "install"], "inherit");
+  },
+  async runScript(workspace, scriptName) {
+    await execCommand(workspace, ["bun", "run", scriptName], "inherit");
+  }
+};
+
+const YarnPackageManager = {
+  async install(rootWorkspace) {
+    await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
+  },
+  async runScript(workspace, scriptName) {
+    await execCommand(workspace, ["yarn", "run", scriptName], "inherit");
+  }
+};
+
+const autoDetectPackageManager = (rootWorkspace) => {
+  const hasYarnLock = existsSync(`${rootWorkspace.cwd}/yarn.lock`);
+  const hasBunLockLegacy = existsSync(`${rootWorkspace.cwd}/bun.lockb`);
+  const hasBunLock = existsSync(`${rootWorkspace.cwd}/bun.lock`);
+  const hasNpmPackageLock = existsSync(
+    `${rootWorkspace.cwd}/package-lock.json`
+  );
+  if ([hasYarnLock, hasBunLockLegacy, hasBunLock, hasNpmPackageLock].filter(
+    Boolean
+  ).length > 1) {
+    throw new Error(
+      `Multiple lock files detected in workspace at ${rootWorkspace.cwd}. Please ensure only one lock file is present, or pass --package-manager option to bypass auto-detection.`
+    );
+  }
+  if (hasYarnLock) {
+    return YarnPackageManager;
+  }
+  if (hasBunLockLegacy || hasBunLock) {
+    return BunPackageManager;
+  }
+  if (hasNpmPackageLock) {
+    throw new Error(
+      "NPM is not currently supported as a package manager. Please migrate to Yarn or Bun, or open an issue to request support."
+    );
+  }
+  throw new Error(
+    `No lock file detected in workspace at ${rootWorkspace.cwd}. Please ensure a supported lock file is present, or pass --package-manager option to bypass auto-detection.`
+  );
+};
+const getPackageManager = (rootWorkspace, specifiedPackageManager) => {
+  if (specifiedPackageManager === "bun") {
+    return BunPackageManager;
+  }
+  if (specifiedPackageManager === "yarn") {
+    return YarnPackageManager;
+  }
+  throw new Error(
+    "Invalid package manager specified. Supported values are 'bun' and 'yarn'."
+  );
+};
 
 class UsageError extends Error {
   constructor(message) {
@@ -249,136 +438,6 @@ const loadConventionalCommitConfig = async (rootWorkspace, preset) => {
       `Failed to require preset "${preset}": ${error.message}`
     );
   }
-};
-
-async function execvp(command, args, {
-  cwd = process.cwd(),
-  env = process.env,
-  encoding,
-  strict,
-  stdo = "pipe"
-}) {
-  const stdoutChunks = [];
-  const stderrChunks = [];
-  if (env.PWD !== void 0) {
-    env = { ...env, PWD: cwd };
-  }
-  const subprocess = childProcess.spawn(command, args, {
-    cwd,
-    env,
-    stdio: ["ignore", stdo, stdo]
-  });
-  subprocess.stdout?.on("data", (chunk) => {
-    stdoutChunks.push(chunk);
-  });
-  subprocess.stderr?.on("data", (chunk) => {
-    stderrChunks.push(chunk);
-  });
-  return new Promise((resolve, reject) => {
-    subprocess.on("error", (err) => {
-      reject(new Error(`Process ${command} failed to spawn`));
-    });
-    subprocess.on("close", (code, signal) => {
-      const chunksToString = (chunks) => stdo === "inherit" ? "" : Buffer.concat(chunks).toString(encoding ?? "utf8");
-      const stdout = chunksToString(stdoutChunks);
-      const stderr = chunksToString(stderrChunks);
-      if (code === 0 || !strict) {
-        resolve({
-          code,
-          signal,
-          stdout,
-          stderr
-        });
-      } else {
-        reject(
-          new Error(
-            `Process ${[command, ...args].join(" ")} exited ${code !== null ? `with code ${code}` : `with signal ${signal || ""}`}:
-stdout: ${stdout}
-stderr: ${stderr}`
-          )
-        );
-      }
-    });
-  });
-}
-async function* spawnStreamStdout(command, args, {
-  cwd = process.cwd(),
-  env = process.env,
-  encoding,
-  strict,
-  separator
-}) {
-  const stderrChunks = [];
-  if (env.PWD !== void 0) {
-    env = { ...env, PWD: cwd };
-  }
-  const subprocess = childProcess.spawn(command, args, {
-    cwd,
-    env,
-    stdio: ["ignore", "pipe", "pipe"]
-  });
-  subprocess.stderr.on("data", (chunk2) => {
-    stderrChunks.push(chunk2);
-  });
-  let chunk;
-  let payload;
-  let buffer = "";
-  for await (chunk of subprocess.stdout) {
-    buffer += chunk.toString();
-    if (buffer.includes(separator)) {
-      payload = buffer.split(separator);
-      buffer = payload.pop() || "";
-      yield* payload;
-    }
-  }
-  if (buffer) {
-    yield buffer;
-  }
-  return new Promise((resolve, reject) => {
-    subprocess.on("error", (err) => {
-      reject(new Error(`Process ${command} failed to spawn`));
-    });
-    subprocess.on("close", (code, signal) => {
-      const chunksToString = (chunks) => Buffer.concat(chunks).toString(encoding ?? "utf8");
-      const stderr = chunksToString(stderrChunks);
-      if (code === 0 || !strict) {
-        resolve({
-          code,
-          signal,
-          stderr
-        });
-      } else {
-        reject(
-          new Error(
-            `Process ${[command, ...args].join(" ")} exited ${code !== null ? `with code ${code}` : `with signal ${signal || ""}`}:
-stderr: ${stderr}`
-          )
-        );
-      }
-    });
-  });
-}
-const execCommand = (workspace, commandAndArgs = [], stdo = "pipe") => {
-  const [command, ...args] = commandAndArgs;
-  if (command === void 0) {
-    throw new Error("Command is required");
-  }
-  return execvp(command, args, {
-    cwd: workspace.cwd,
-    strict: true,
-    stdo
-  });
-};
-const execCommandStreamStdout = (workspace, commandAndArgs = [], separator = "\n") => {
-  const [command, ...args] = commandAndArgs;
-  if (command === void 0) {
-    throw new Error("Command is required");
-  }
-  return spawnStreamStdout(command, args, {
-    cwd: workspace.cwd,
-    strict: true,
-    separator
-  });
 };
 
 async function asyncIterableToArray(asyncIterable) {
@@ -641,14 +700,14 @@ async function readPkg(cwd) {
   const packagePath = getPackageJsonPath(cwd);
   const pkg = await fs.readFile(packagePath, "utf8").catch((error) => {
     throw new Error(
-      `Failed to read package.json in "${cwd}": ${error instanceof Error ? error.message : String(error)}`
+      `Failed to read "${packagePath}": ${error instanceof Error ? error.message : String(error)}`
     );
   });
   try {
     return JSON.parse(pkg);
   } catch (error) {
     throw new Error(
-      `Failed to parse package.json in "${cwd}": ${error instanceof Error ? error.message : String(error)}`
+      `Failed to parse "${packagePath}": ${error instanceof Error ? error.message : String(error)}`
     );
   }
 }
@@ -689,11 +748,12 @@ const todayInYYYYMMDD = () => {
   });
   return dateFormatter.format(/* @__PURE__ */ new Date());
 };
-const versionCommandAction = async (options, { logger = new LoggerCLI("yarn-version", { json: options.json }) } = {}) => {
+const versionCommandAction = async (options, { logger = new LoggerCLI("@pob/version", { json: options.json }) } = {}) => {
   const rootWorkspace = await (options.cwdIsRoot ? createWorkspace(options.cwd) : findRootWorkspace(options.cwd));
   if (!rootWorkspace) {
     throw new UsageError("Could not find root workspace from this path.");
   }
+  const packageManager = options.packageManager ? getPackageManager(rootWorkspace, options.packageManager) : autoDetectPackageManager(rootWorkspace);
   const project = await createProjectWorkspace(rootWorkspace);
   if (!options.dryRun) {
     const dirtyFiles = await getDirtyFiles(project.root);
@@ -1013,22 +1073,14 @@ There are uncommitted changes in the git repository. Please commit or stash them
   await logger.group("Applying changes", async () => {
     if (!options.dryRun) {
       logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-      await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
+      await packageManager.install(rootWorkspace);
       logger.info("Lifecycle script: preversion");
       if (isMonorepoVersionIndependent && rootWorkspace.pkg.scripts?.preversion) {
-        await execCommand(
-          rootWorkspace,
-          ["yarn", "run", "preversion"],
-          "inherit"
-        );
+        await packageManager.runScript(rootWorkspace, "preversion");
       }
       for (const workspace of bumpedWorkspaces.keys()) {
         if (workspace.pkg.scripts?.preversion) {
-          await execCommand(
-            workspace,
-            ["yarn", "run", "preversion"],
-            "inherit"
-          );
+          await packageManager.runScript(workspace, "preversion");
         }
       }
       logger.info("Modifying versions in package.json");
@@ -1053,16 +1105,16 @@ There are uncommitted changes in the git repository. Please commit or stash them
         )
       );
       logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-      await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
+      await packageManager.install(rootWorkspace);
       logger.info("Lifecycle script: version");
       for (const workspace of bumpedWorkspaces.keys()) {
         if (workspace.pkg.scripts?.version) {
-          await execCommand(workspace, ["yarn", "run", "version"], "inherit");
+          await packageManager.runScript(workspace, "version");
         }
       }
     }
     if (isMonorepoVersionIndependent && rootWorkspace.pkg.scripts?.version) {
-      await execCommand(rootWorkspace, ["yarn", "run", "version"], "inherit");
+      await packageManager.runScript(rootWorkspace, "version");
     }
   });
   const changelogs = /* @__PURE__ */ new Map();
@@ -1128,7 +1180,7 @@ ${changelog}`
   if (!options.dryRun) {
     logger.separator();
     logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-    await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
+    await packageManager.install(rootWorkspace);
     logger.separator();
     logger.info("Commit, tag and push", {
       changedFiles: await getDirtyFiles(rootWorkspace)
@@ -1158,11 +1210,8 @@ ${tagsInCommitMessage}` : rootNewVersion
       gitCurrentBranch
     );
     if (rootWorkspace.pkg.scripts?.postversion) {
-      await execCommand(
-        rootWorkspace,
-        ["yarn", "run", "postversion"],
-        "inherit"
-      );
+      logger.info("Lifecycle script: postversion");
+      await packageManager.runScript(rootWorkspace, "postversion");
     }
     if (options.createRelease && githubClient && parsedRepoUrl) {
       logger.info("Create git release");
@@ -1202,7 +1251,7 @@ const Defaults = {
   gitRemote: "origin",
   verbose: false
 };
-program.command("version").usage("Bump package version using conventional commit").addOption(
+program.command("version", { isDefault: true }).usage("Bump package version using conventional commit").addOption(
   new Option("--includes-root", "Release root workspace [untested]").default(
     Defaults.includesRoot
   )
@@ -1265,7 +1314,12 @@ program.command("version").usage("Bump package version using conventional commit
     "--ignore-changes <glob>",
     'Ignore changes in files matching the glob. Example: "**/*.test.js"'
   )
-).addOption(new Option("--json", "Logger json")).action((options) => versionCommandAction(options));
+).addOption(new Option("--json", "Logger json")).addOption(
+  new Option(
+    "--package-manager <manager>",
+    "Specify the package manager to use (bun or yarn). Autodetected if not specified."
+  ).choices(["bun", "yarn"])
+).action((options) => versionCommandAction(options));
 
 const pkg = JSON.parse(
   // eslint-disable-next-line unicorn/prefer-json-parse-buffer

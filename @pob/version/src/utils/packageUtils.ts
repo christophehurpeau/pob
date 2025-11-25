@@ -114,14 +114,14 @@ export async function readPkg(cwd: string): Promise<PackageJson> {
   // eslint-disable-next-line @typescript-eslint/use-unknown-in-catch-callback-variable
   const pkg = await fs.readFile(packagePath, "utf8").catch((error: Error) => {
     throw new Error(
-      `Failed to read package.json in "${cwd}": ${error instanceof Error ? error.message : String(error)}`,
+      `Failed to read "${packagePath}": ${error instanceof Error ? error.message : String(error)}`,
     );
   });
   try {
     return JSON.parse(pkg);
   } catch (error: unknown) {
     throw new Error(
-      `Failed to parse package.json in "${cwd}": ${error instanceof Error ? error.message : String(error)}`,
+      `Failed to parse "${packagePath}": ${error instanceof Error ? error.message : String(error)}`,
     );
   }
 }

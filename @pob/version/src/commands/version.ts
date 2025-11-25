@@ -3,6 +3,10 @@
 import { Option, program } from "commander";
 import { LoggerCLI } from "nightingale";
 import { satisfies } from "semver";
+import {
+  autoDetectPackageManager,
+  getPackageManager,
+} from "../pm/PackageManager.ts";
 import { UsageError } from "../utils/UsageError.ts";
 import type { BumpType } from "../utils/bumpTypeUtils.ts";
 import {
@@ -17,7 +21,6 @@ import {
   recommendBump,
 } from "../utils/conventionalChangelogUtils.ts";
 import { loadConventionalCommitConfig } from "../utils/conventionalCommitConfigUtils.ts";
-import { execCommand } from "../utils/execCommand.ts";
 import { asyncIterableToArray } from "../utils/generatorUtils.ts";
 import type { GitTagVersion } from "../utils/gitUtils.ts";
 import {
@@ -73,6 +76,7 @@ export interface VersionCommandOptions {
   ignoreChanges?: string;
   verbose?: boolean;
   cwdIsRoot?: boolean;
+  packageManager?: "bun" | "yarn";
 }
 
 interface BumpableWorkspace {
@@ -111,7 +115,7 @@ const todayInYYYYMMDD = (): string => {
 
 export const versionCommandAction = async (
   options: VersionCommandOptions,
-  { logger = new LoggerCLI("yarn-version", { json: options.json }) } = {},
+  { logger = new LoggerCLI("@pob/version", { json: options.json }) } = {},
 ): Promise<void> => {
   const rootWorkspace = await (options.cwdIsRoot
     ? createWorkspace(options.cwd)
@@ -120,6 +124,10 @@ export const versionCommandAction = async (
   if (!rootWorkspace) {
     throw new UsageError("Could not find root workspace from this path.");
   }
+
+  const packageManager = options.packageManager
+    ? getPackageManager(rootWorkspace, options.packageManager)
+    : autoDetectPackageManager(rootWorkspace);
 
   const project = await createProjectWorkspace(rootWorkspace);
 
@@ -560,11 +568,11 @@ export const versionCommandAction = async (
   }
 
   await logger.group("Applying changes", async () => {
-    // Update yarn.lock ; must be done to make sure preversion script can be ran
+    // Update lockfile ; must be done to make sure preversion script can be ran
 
     if (!options.dryRun) {
       logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-      await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
+      await packageManager.install(rootWorkspace);
 
       logger.info("Lifecycle script: preversion");
 
@@ -572,21 +580,13 @@ export const versionCommandAction = async (
         isMonorepoVersionIndependent &&
         rootWorkspace.pkg.scripts?.preversion
       ) {
-        await execCommand(
-          rootWorkspace,
-          ["yarn", "run", "preversion"],
-          "inherit",
-        );
+        await packageManager.runScript(rootWorkspace, "preversion");
       }
 
       // lifecycle: preversion
       for (const workspace of bumpedWorkspaces.keys()) {
         if (workspace.pkg.scripts?.preversion) {
-          await execCommand(
-            workspace,
-            ["yarn", "run", "preversion"],
-            "inherit",
-          );
+          await packageManager.runScript(workspace, "preversion");
         }
       }
 
@@ -617,21 +617,21 @@ export const versionCommandAction = async (
         ),
       );
 
-      // Update yarn.lock ; must be done before running again lifecycle scripts
+      // Update lockfile ; must be done before running again lifecycle scripts
       logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-      await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
+      await packageManager.install(rootWorkspace);
 
       // lifecycle: version
       logger.info("Lifecycle script: version");
       for (const workspace of bumpedWorkspaces.keys()) {
         if (workspace.pkg.scripts?.version) {
-          await execCommand(workspace, ["yarn", "run", "version"], "inherit");
+          await packageManager.runScript(workspace, "version");
         }
       }
     }
 
     if (isMonorepoVersionIndependent && rootWorkspace.pkg.scripts?.version) {
-      await execCommand(rootWorkspace, ["yarn", "run", "version"], "inherit");
+      await packageManager.runScript(rootWorkspace, "version");
     }
   });
 
@@ -710,7 +710,7 @@ export const versionCommandAction = async (
 
     // install to update versions in lock file
     logger.info(`${getWorkspaceName(rootWorkspace)}: Running install`);
-    await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
+    await packageManager.install(rootWorkspace);
 
     logger.separator();
 
@@ -762,11 +762,8 @@ export const versionCommandAction = async (
 
     // run postversion
     if (rootWorkspace.pkg.scripts?.postversion) {
-      await execCommand(
-        rootWorkspace,
-        ["yarn", "run", "postversion"],
-        "inherit",
-      );
+      logger.info("Lifecycle script: postversion");
+      await packageManager.runScript(rootWorkspace, "postversion");
     }
 
     // TODO open github PR
@@ -816,7 +813,7 @@ export const Defaults: VersionCommandOptions = {
 };
 
 export default program
-  .command("version")
+  .command("version", { isDefault: true })
   .usage("Bump package version using conventional commit")
   .addOption(
     new Option("--includes-root", "Release root workspace [untested]").default(
@@ -899,4 +896,10 @@ export default program
     ),
   )
   .addOption(new Option("--json", "Logger json"))
+  .addOption(
+    new Option(
+      "--package-manager <manager>",
+      "Specify the package manager to use (bun or yarn). Autodetected if not specified.",
+    ).choices(["bun", "yarn"]),
+  )
   .action((options) => versionCommandAction(options));

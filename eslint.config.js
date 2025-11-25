@@ -11,12 +11,12 @@ export default [
   {
     ignores: [
       "packages/pob-babel/test/**/*",
-      "packages/yarn-version/src/__fixtures__/monorepo-invalid-package-json/packages/pkg-with-invalid-json/package.json",
+      "@pob/version/src/__fixtures__/monorepo-invalid-package-json/packages/pkg-with-invalid-json/package.json",
       "**/__fixtures__/**",
     ],
   },
   ...apply({
-    files: ["packages/yarn-version/"],
+    files: ["@pob/version/"],
     mode: "directory",
     extensions,
     configs: [...configs.allowUnsafe, ...configs.app],

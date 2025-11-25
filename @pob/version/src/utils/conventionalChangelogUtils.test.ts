@@ -307,7 +307,7 @@ describe("recommendBump", () => {
 
 describe("generateChangelog", () => {
   const mockCwd = fileURLToPath(
-    new URL("../__fixtures__/basic", import.meta.url),
+    new URL("../__fixtures__/yarn-basic", import.meta.url),
   );
 
   describe("single package scenarios", () => {

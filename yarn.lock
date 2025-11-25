@@ -3687,6 +3687,27 @@ __metadata:
   languageName: unknown
   linkType: soft
 
+"@pob/version@npm:1.0.0-pre, @pob/version@workspace:*, @pob/version@workspace:@pob/version":
+  version: 0.0.0-use.local
+  resolution: "@pob/version@workspace:@pob/version"
+  dependencies:
+    "@octokit/rest": "npm:22.0.1"
+    "@pob/rollup-esbuild": "npm:7.4.1"
+    "@types/node": "npm:22.19.1"
+    commander: "npm:14.0.2"
+    conventional-changelog-conventionalcommits: "npm:9.1.0"
+    conventional-changelog-preset-loader: "npm:5.0.0"
+    conventional-changelog-writer: "npm:8.2.0"
+    conventional-commits-parser: "npm:6.2.1"
+    nightingale: "npm:18.1.0"
+    semver: "npm:7.7.3"
+    type-fest: "npm:5.2.0"
+    typescript: "npm:5.9.3"
+  bin:
+    pob-version: ./dist/index-node.mjs
+  languageName: unknown
+  linkType: soft
+
 "@prettier/sync@npm:0.6.1":
   version: 0.6.1
   resolution: "@prettier/sync@npm:0.6.1"
@@ -12159,6 +12180,7 @@ __metadata:
     "@pob/eslint-config-typescript": "npm:62.0.0"
     "@pob/rollup-esbuild": "workspace:*"
     "@pob/root": "workspace:*"
+    "@pob/version": "workspace:*"
     "@vitest/coverage-v8": "npm:4.0.10"
     check-package-dependencies: "npm:10.5.0"
     eslint: "npm:9.39.1"
@@ -15130,20 +15152,10 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "yarn-version@workspace:packages/yarn-version"
   dependencies:
-    "@octokit/rest": "npm:22.0.1"
-    "@pob/rollup-esbuild": "npm:7.4.1"
+    "@pob/version": "npm:1.0.0-pre"
     "@types/node": "npm:22.19.1"
-    commander: "npm:14.0.2"
-    conventional-changelog-conventionalcommits: "npm:9.1.0"
-    conventional-changelog-preset-loader: "npm:5.0.0"
-    conventional-changelog-writer: "npm:8.2.0"
-    conventional-commits-parser: "npm:6.2.1"
-    nightingale: "npm:18.1.0"
-    semver: "npm:7.7.3"
-    type-fest: "npm:5.2.0"
-    typescript: "npm:5.9.3"
   bin:
-    yarn-version: ./dist/index-node.mjs
+    yarn-version: ./yarn-version.mjs
   languageName: unknown
   linkType: soft
 
