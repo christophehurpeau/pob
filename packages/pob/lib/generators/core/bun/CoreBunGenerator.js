@@ -27,8 +27,14 @@ export default class CoreBunGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
     if (this.options.enable) {
+      this.fs.copyTpl(
+        this.templatePath("bunfig.toml.ejs"),
+        this.destinationPath("bunfig.toml"),
+        {},
+      );
     } else {
       this.fs.delete("bun.lock");
+      this.fs.delete("bunfig.toml");
     }
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
