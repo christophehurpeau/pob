@@ -24,6 +24,10 @@ on:
         default: "major"
 <% } -%>
 
+permissions:
+  id-token: write  # Required for OIDC
+  contents: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -84,30 +88,18 @@ jobs:
       - name: New version
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
-          <%= packageManager %> run pob-version <% if (enablePublish && packageManager === "bun") { %> --publish<% } %>--create-release=github <% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %> -m 'chore: release <%- isMonorepoIndependent ? '' : '%v ' %>[skip ci]<%- isMonorepoIndependent ? '\\n\\n%t' : '' %>'
+          <%= packageManager %> run pob-version <% if (enablePublish && packageManager === "bun") { %>--publish <% } %>--create-release=github <% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %> -m 'chore: release <%- isMonorepoIndependent ? '' : '%v ' %>[skip ci]<%- isMonorepoIndependent ? '\\n\\n%t' : '' %>'
         env:
           HUSKY: 0
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
-<% if (enablePublish && packageManager === "bun") { -%>
-          NPM_CONFIG_TOKEN: ${{ secrets.NPM_TOKEN }}
-<% } -%>
 <% if (enablePublish && packageManager === "yarn") { -%>
 
       - name: Publish to npm
+        if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
-          if [ -z "$NODE_AUTH_TOKEN" ]; then
-            echo "Missing env variable NODE_AUTH_TOKEN"
-            exit 1
-          fi
-          echo >> ./.yarnrc.yml
-          echo "npmAuthToken: $NODE_AUTH_TOKEN" >> ./.yarnrc.yml
 <% if (isMonorepo) { -%>
           yarn workspaces foreach --all --parallel --no-private npm publish --tolerate-republish
 <% } else { -%>
           yarn npm publish
 <% } -%>
-        if: github.ref == 'refs/heads/main' && !inputs.dry-run
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 <% } -%>

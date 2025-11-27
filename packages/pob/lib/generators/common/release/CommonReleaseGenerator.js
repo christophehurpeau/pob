@@ -69,16 +69,11 @@ export default class CommonReleaseGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
     if (this.options.enable && this.options.ci) {
-      const useLegacyName = this.fs.exists(
-        this.destinationPath(".github/workflows/publish.yml"),
-      );
+      this.fs.delete(this.destinationPath(".github/workflows/publish.yml"));
 
-      const name = useLegacyName ? "publish.yml" : "release.yml";
-
-      // TODO rename release (release = version + publish)
       this.fs.copyTpl(
         this.templatePath("workflow-release.yml.ejs"),
-        this.destinationPath(`.github/workflows/${name}`),
+        this.destinationPath(".github/workflows/release.yml"),
         {
           packageManager: this.options.packageManager,
           enablePublish: this.options.enablePublish,

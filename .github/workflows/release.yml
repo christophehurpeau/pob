@@ -22,6 +22,10 @@ on:
           - patch
         default: "major"
 
+permissions:
+  id-token: write # Required for OIDC
+  contents: write
+
 jobs:
   release:
     runs-on: ubuntu-latest
@@ -68,18 +72,9 @@ jobs:
           yarn run pob-version --create-release=github  --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }} -m 'chore: release [skip ci]\n\n%t'
         env:
           HUSKY: 0
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
       - name: Publish to npm
-        run: |
-          if [ -z "$NODE_AUTH_TOKEN" ]; then
-            echo "Missing env variable NODE_AUTH_TOKEN"
-            exit 1
-          fi
-          echo >> ./.yarnrc.yml
-          echo "npmAuthToken: $NODE_AUTH_TOKEN" >> ./.yarnrc.yml
-          yarn workspaces foreach --all --parallel --no-private npm publish --tolerate-republish
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: |
+          yarn workspaces foreach --all --parallel --no-private npm publish --tolerate-republish
