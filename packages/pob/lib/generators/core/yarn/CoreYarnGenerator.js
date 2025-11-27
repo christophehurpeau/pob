@@ -176,7 +176,13 @@ export default class CoreYarnGenerator extends Generator {
       delete config.enableMessageNames; // was a config for yarn < 4
       config.nodeLinker = this.options.yarnNodeLinker;
       config.npmMinimalAgeGate = 1440 * 3; // 3 days
-      config.npmMinimumReleaseAgeExclude = ["@pob/*"];
+      config.npmPreapprovedPackages = [
+        "@pob/*",
+        "alouette",
+        "alouette-icons",
+        "nightingale",
+        "nightingale-logger",
+      ];
 
       if (config.yarnPath) {
         this.fs.delete(config.yarnPath);
