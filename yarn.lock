@@ -5213,24 +5213,24 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yeoman/adapter@npm:3.1.0, @yeoman/adapter@npm:^3.1.0":
-  version: 3.1.0
-  resolution: "@yeoman/adapter@npm:3.1.0"
+"@yeoman/adapter@npm:3.1.1, @yeoman/adapter@npm:^3.1.0":
+  version: 3.1.1
+  resolution: "@yeoman/adapter@npm:3.1.1"
   dependencies:
     "@inquirer/core": "npm:^10.0.0"
     chalk: "npm:^5.2.0"
     inquirer: "npm:^12.0.0"
     log-symbols: "npm:^7.0.0"
     ora: "npm:^9.0.0"
-    p-queue: "npm:^8.0.1"
+    p-queue: "npm:^9.0.0"
     text-table: "npm:^0.2.0"
-  checksum: 10c0/f781cb0c7cacc0bd8985eb2249ac48b6272fa3ab5b71d2b0c7169d718596b52da4dcbc10eee580ad09d0022cc67d35e2017ed15ec10402f613be92d7d8d4d4e8
+  checksum: 10c0/6681ad788c79c6cf9f23015d3c8b01a4f2d708dc05732c0280526b73c597256463b455bf27b524484fb24f90d388ec0a2123923fc058fa8dede02c03fc1d391d
   languageName: node
   linkType: hard
 
-"@yeoman/conflicter@npm:^3.0.0":
-  version: 3.0.0
-  resolution: "@yeoman/conflicter@npm:3.0.0"
+"@yeoman/conflicter@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@yeoman/conflicter@npm:4.0.0"
   dependencies:
     "@yeoman/transform": "npm:^2.1.0"
     binary-extensions: "npm:^3.1.0"
@@ -5248,7 +5248,7 @@ __metadata:
     "@types/node": ">=20.14.8"
     "@yeoman/types": ^1.0.0
     mem-fs: ^4.0.0
-  checksum: 10c0/a1923015970ec34bbf016b42d41469c15be4f4007d9f4ccb12b41d4b166be77414542f1cc29e8ad4d63ab225758a3a15810f5d85fee3f36896fbcc73d6f91287
+  checksum: 10c0/7cb55b522e0dbbe64f108d7682a0c962471597f5581421058000db501d014b60e877b169590a72c3452690ef1140dc8c538c4d86536c11f43005de69a0923c05
   languageName: node
   linkType: hard
 
@@ -5270,12 +5270,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yeoman/types@npm:1.8.0, @yeoman/types@npm:^1.8.0":
-  version: 1.8.0
-  resolution: "@yeoman/types@npm:1.8.0"
+"@yeoman/types@npm:1.9.1, @yeoman/types@npm:^1.8.0":
+  version: 1.9.1
+  resolution: "@yeoman/types@npm:1.9.1"
   peerDependencies:
     "@types/node": ">=16.18.26"
-    "@yeoman/adapter": ^1.6.0 || ^2.0.0-beta.0 || ^3.0.0
+    "@yeoman/adapter": ^1.6.0 || ^2.0.0-beta.0 || ^3.0.0 || ^4.0.0
     mem-fs: ^3.0.0 || ^4.0.0-beta.1
     mem-fs-editor: ^10.0.2 || >=10.0.2
   peerDependenciesMeta:
@@ -5285,7 +5285,7 @@ __metadata:
       optional: true
     mem-fs-editor:
       optional: true
-  checksum: 10c0/48d12a337eddfe804486505e971ff07624e4e170e12a845803edbe5edcfe0c204adcc55c9b3418cd770c16652c2813f6154fac9e2d7291ba7a2aa7fd9852f79a
+  checksum: 10c0/c3adce9e0e6372f99a9ec11187f69ae9d8f536c292831549b43bf9d8765bd239cae23575650251fdc17b56a54565f66ea8e76a627e3b76c654a57b814b931777
   languageName: node
   linkType: hard
 
@@ -8639,7 +8639,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globby@npm:^14.0.2, globby@npm:^14.1.0":
+"globby@npm:^14.0.2":
   version: 14.1.0
   resolution: "globby@npm:14.1.0"
   dependencies:
@@ -8650,6 +8650,20 @@ __metadata:
     slash: "npm:^5.1.0"
     unicorn-magic: "npm:^0.3.0"
   checksum: 10c0/527a1063c5958255969620c6fa4444a2b2e9278caddd571d46dfbfa307cb15977afb746e84d682ba5b6c94fc081e8997f80ff05dd235441ba1cb16f86153e58e
+  languageName: node
+  linkType: hard
+
+"globby@npm:^16.0.0":
+  version: 16.0.0
+  resolution: "globby@npm:16.0.0"
+  dependencies:
+    "@sindresorhus/merge-streams": "npm:^4.0.0"
+    fast-glob: "npm:^3.3.3"
+    ignore: "npm:^7.0.5"
+    is-path-inside: "npm:^4.0.0"
+    slash: "npm:^5.1.0"
+    unicorn-magic: "npm:^0.4.0"
+  checksum: 10c0/70f3fe767491d7add94e9152577e883d7d800d7dd147781cf3e99fa41f1f87aaf34ab17490c59e3841cf76bc00b38840042241c654ae572dca72b1a5c77e7379
   languageName: node
   linkType: hard
 
@@ -8984,7 +8998,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ignore@npm:^7.0.0, ignore@npm:^7.0.3":
+"ignore@npm:^7.0.0, ignore@npm:^7.0.3, ignore@npm:^7.0.5":
   version: 7.0.5
   resolution: "ignore@npm:7.0.5"
   checksum: 10c0/ae00db89fe873064a093b8999fe4cc284b13ef2a178636211842cceb650b9c3e390d3339191acb145d81ed5379d2074840cf0c33a20bdbd6f32821f79eb4ad5d
@@ -9341,6 +9355,13 @@ __metadata:
   version: 2.0.0
   resolution: "is-obj@npm:2.0.0"
   checksum: 10c0/85044ed7ba8bd169e2c2af3a178cacb92a97aa75de9569d02efef7f443a824b5e153eba72b9ae3aca6f8ce81955271aa2dc7da67a8b720575d3e38104208cb4e
+  languageName: node
+  linkType: hard
+
+"is-path-inside@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "is-path-inside@npm:4.0.0"
+  checksum: 10c0/51188d7e2b1d907a9a5f7c18d99a90b60870b951ed87cf97595d9aaa429d4c010652c3350bcbf31182e7f4b0eab9a1860b43e16729b13cb1a44baaa6cdb64c46
   languageName: node
   linkType: hard
 
@@ -11778,10 +11799,27 @@ __metadata:
   languageName: node
   linkType: hard
 
+"p-queue@npm:^9.0.0":
+  version: 9.0.1
+  resolution: "p-queue@npm:9.0.1"
+  dependencies:
+    eventemitter3: "npm:^5.0.1"
+    p-timeout: "npm:^7.0.0"
+  checksum: 10c0/912bd0c09ec910e6851973757afd23b80e12210948b4e235ebaa752e32e782d7664438c948cd343e2620cf26340665ccdaa2715e4e3c52cf02fe11c5152c225f
+  languageName: node
+  linkType: hard
+
 "p-timeout@npm:^6.1.2":
   version: 6.1.3
   resolution: "p-timeout@npm:6.1.3"
   checksum: 10c0/6dcd1efc1a18afac08dd4f8e09797bbe635110e597d27026b478f884b867616871499427643a6b2e11f0404b2936d17db69da2b5e58d5fe99e1fac80a53f0250
+  languageName: node
+  linkType: hard
+
+"p-timeout@npm:^7.0.0":
+  version: 7.0.1
+  resolution: "p-timeout@npm:7.0.1"
+  checksum: 10c0/87d96529d1096d506607218dba6f9ec077c6dbedd0c2e2788c748e33bcd05faae8a81009fd9d22ec0b3c95fc83f4717306baba223f6e464737d8b99294c3e863
   languageName: node
   linkType: hard
 
@@ -12207,8 +12245,8 @@ __metadata:
     "@prettier/sync": "npm:0.6.1"
     "@types/inquirer": "npm:9.0.9"
     "@types/node": "npm:22.19.1"
-    "@yeoman/adapter": "npm:3.1.0"
-    "@yeoman/types": "npm:1.8.0"
+    "@yeoman/adapter": "npm:3.1.1"
+    "@yeoman/types": "npm:1.9.1"
     eslint: "npm:9.39.1"
     findup-sync: "npm:^5.0.0"
     git-remote-url: "npm:^1.0.1"
@@ -12226,7 +12264,7 @@ __metadata:
     semver: "npm:7.7.3"
     typescript: "npm:5.9.3"
     validate-npm-package-name: "npm:^6.0.2"
-    yeoman-environment: "npm:5.0.0"
+    yeoman-environment: "npm:5.1.1"
     yeoman-generator: "npm:7.5.1"
   bin:
     pob: ./lib/pob.js
@@ -14416,6 +14454,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"unicorn-magic@npm:^0.4.0":
+  version: 0.4.0
+  resolution: "unicorn-magic@npm:0.4.0"
+  checksum: 10c0/cd6eff90967a5528dfa2016bdb5b38b0cd64c8558f9ba04fb5c2c23f3a232a67dfe2bfa4c45af3685d5f1a40dbac6a36d48e053f80f97ae4da1e0f6a55431685
+  languageName: node
+  linkType: hard
+
 "unique-filename@npm:^1.1.1":
   version: 1.1.1
   resolution: "unique-filename@npm:1.1.1"
@@ -15171,12 +15216,12 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"yeoman-environment@npm:5.0.0":
-  version: 5.0.0
-  resolution: "yeoman-environment@npm:5.0.0"
+"yeoman-environment@npm:5.1.1":
+  version: 5.1.1
+  resolution: "yeoman-environment@npm:5.1.1"
   dependencies:
     "@yeoman/adapter": "npm:^3.1.0"
-    "@yeoman/conflicter": "npm:^3.0.0"
+    "@yeoman/conflicter": "npm:^4.0.0"
     "@yeoman/namespace": "npm:^1.0.1"
     "@yeoman/transform": "npm:^2.1.0"
     "@yeoman/types": "npm:^1.8.0"
@@ -15186,7 +15231,7 @@ __metadata:
     debug: "npm:^4.4.1"
     execa: "npm:^9.6.0"
     fly-import: "npm:^1.0.0"
-    globby: "npm:^14.1.0"
+    globby: "npm:^16.0.0"
     grouped-queue: "npm:^2.1.0"
     locate-path: "npm:^8.0.0"
     lodash-es: "npm:^4.17.21"
@@ -15202,7 +15247,7 @@ __metadata:
     mem-fs: ^4.1.2
   bin:
     yoe: bin/bin.cjs
-  checksum: 10c0/4138673ca17c5878fdfbe420ea8d79fffce0ee77ecadf7653bd3d87fc612986eda72d8bbf127ec9e3383e9067373c497a3fcf1d96e17ba0182233e74e94c7476
+  checksum: 10c0/0515cfc29ed3c552ccba29c82d206bd26d1dc72889534629f836a6174242469b850cba49f219d2719bd82f209f9f59b9427f92855b41ef172a302c5209d50a32
   languageName: node
   linkType: hard
 
