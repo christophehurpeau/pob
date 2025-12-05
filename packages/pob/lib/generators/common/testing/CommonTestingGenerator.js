@@ -446,9 +446,7 @@ export default class CommonTestingGenerator extends Generator {
               delete pkg.scripts["test:coverage"];
             }
             packageUtils.addScripts(pkg, {
-              test: `yarn ../../ run test -- ${path
-                .relative("../..", ".")
-                .replace("\\", "/")}`,
+              test: `yarn ../../ run test -- ${path.relative("../..", ".")}`,
             });
           } else {
             const withTypescript =

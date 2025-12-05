@@ -522,9 +522,7 @@ export default class CommonFormatLintGenerator extends Generator {
 
       packageUtils.addScripts(pkg, {
         "lint:eslint": globalEslint
-          ? `yarn ../.. run eslint ${args} ${path
-              .relative("../..", ".")
-              .replace("\\", "/")}`
+          ? `yarn ../.. run eslint ${args} ${path.relative("../..", ".")}`
           : `eslint ${args} .`,
         lint: `${
           useTypescript && !composite ? "tsc && " : ""
