@@ -1033,7 +1033,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
               dependenciesToBump
             });
             logger.info(
-              `${workspaceName}: ${currentVersion} -> ${!isMonorepo || isMonorepoVersionIndependent ? newVersion : "bump"} (${bumpReason.replace("\n", " ; ")})`
+              `${workspaceName}: ${currentVersion} -> ${!isMonorepo || isMonorepoVersionIndependent ? newVersion : "bump"} (${bumpReason.replaceAll("\n", " ; ")})`
             );
           }
         }

@@ -492,7 +492,7 @@ export const versionCommandAction = async (
                 !isMonorepo || isMonorepoVersionIndependent
                   ? newVersion
                   : "bump"
-              } (${bumpReason.replace("\n", " ; ")})`,
+              } (${bumpReason.replaceAll("\n", " ; ")})`,
             );
             // TODO Json only:
             // logger.info({
