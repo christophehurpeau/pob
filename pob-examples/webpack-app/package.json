@@ -17,8 +17,8 @@
   "scripts": {
     "build": "webpack",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --quiet pob-examples/webpack-app",
-    "test": "yarn ../../ run test -- pob-examples/webpack-app"
+    "lint:eslint": "yarn ../.. run eslint --quiet 'pob-examples/webpack-app'",
+    "test": "yarn ../../ run test -- 'pob-examples/webpack-app'"
   },
   "browserslist": [
     "defaults",

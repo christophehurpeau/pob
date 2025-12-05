@@ -30,8 +30,8 @@
     "build": "tsc",
     "clean": "yarn clean:build",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --quiet pob-examples/typescript-lib-without-rollup",
-    "test": "yarn ../../ run test -- pob-examples/typescript-lib-without-rollup",
+    "lint:eslint": "yarn ../.. run eslint --quiet 'pob-examples/typescript-lib-without-rollup'",
+    "test": "yarn ../../ run test -- 'pob-examples/typescript-lib-without-rollup'",
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
   "pob": {

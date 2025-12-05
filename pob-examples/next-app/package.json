@@ -19,7 +19,7 @@
     "build": "NODE_ENV=production next build",
     "dev": "next dev",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --quiet pob-examples/next-app",
+    "lint:eslint": "yarn ../.. run eslint --quiet 'pob-examples/next-app'",
     "start": "next dev",
     "start:prod": "next start"
   },

@@ -22,8 +22,8 @@
   },
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --quiet pob-examples/simple-lib",
-    "test": "yarn ../../ run test -- pob-examples/simple-lib"
+    "lint:eslint": "yarn ../.. run eslint --quiet 'pob-examples/simple-lib'",
+    "test": "yarn ../../ run test -- 'pob-examples/simple-lib'"
   },
   "pob": {},
   "prettier": "@pob/root/prettier-config"
