@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import Generator from "yeoman-generator";
+import { quoteArg } from "../../../utils/execUtils.js";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import * as packageUtils from "../../../utils/package.js";
 import {
@@ -446,7 +447,7 @@ export default class CommonTestingGenerator extends Generator {
               delete pkg.scripts["test:coverage"];
             }
             packageUtils.addScripts(pkg, {
-              test: `yarn ../../ run test -- ${path.relative("../..", ".")}`,
+              test: `yarn ../../ run test -- ${quoteArg(path.relative("../..", "."))}`,
             });
           } else {
             const withTypescript =

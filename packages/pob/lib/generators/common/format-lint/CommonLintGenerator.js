@@ -1,5 +1,6 @@
 import path from "node:path";
 import Generator from "yeoman-generator";
+import { quoteArg } from "../../../utils/execUtils.js";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import * as packageUtils from "../../../utils/package.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
@@ -522,7 +523,7 @@ export default class CommonFormatLintGenerator extends Generator {
 
       packageUtils.addScripts(pkg, {
         "lint:eslint": globalEslint
-          ? `yarn ../.. run eslint ${args} ${path.relative("../..", ".")}`
+          ? `yarn ../.. run eslint ${args} ${quoteArg(path.relative("../..", "."))}`
           : `eslint ${args} .`,
         lint: `${
           useTypescript && !composite ? "tsc && " : ""
