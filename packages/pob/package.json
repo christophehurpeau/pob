@@ -36,7 +36,7 @@
     "build:definitions": "tsc -p tsconfig.json",
     "format": "prettier --write",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --quiet packages/pob"
+    "lint:eslint": "yarn ../.. run eslint --quiet 'packages/pob'"
   },
   "pob": {
     "typescript": "check-only"

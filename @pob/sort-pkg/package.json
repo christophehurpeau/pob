@@ -29,7 +29,7 @@
   ],
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --quiet @pob/sort-pkg"
+    "lint:eslint": "yarn ../.. run eslint --quiet '@pob/sort-pkg'"
   },
   "pob": {},
   "prettier": "@pob/root/prettier-config",

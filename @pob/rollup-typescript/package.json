@@ -40,7 +40,7 @@
   ],
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --quiet @pob/rollup-typescript"
+    "lint:eslint": "yarn ../.. run eslint --quiet '@pob/rollup-typescript'"
   },
   "pob": {},
   "prettier": "@pob/root/prettier-config",

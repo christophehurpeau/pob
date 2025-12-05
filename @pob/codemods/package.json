@@ -29,7 +29,7 @@
   "scripts": {
     "install-bin": "ln -s $PWD/bin/migrate.mjs /usr/local/bin/pob-migrate",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --quiet @pob/codemods"
+    "lint:eslint": "yarn ../.. run eslint --quiet '@pob/codemods'"
   },
   "pob": {},
   "prettier": "@pob/root/prettier-config",

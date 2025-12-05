@@ -43,9 +43,9 @@
     "clean": "yarn clean:build",
     "clean:build": "pob-esbuild-clean-out dist",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --quiet @pob/version",
+    "lint:eslint": "yarn ../.. run eslint --quiet '@pob/version'",
     "start": "yarn clean:build && rollup --config rollup.config.mjs --watch",
-    "test": "yarn ../../ run test -- @pob/version"
+    "test": "yarn ../../ run test -- '@pob/version'"
   },
   "pob": {
     "bundler": "rollup-esbuild",

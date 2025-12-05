@@ -40,6 +40,7 @@
     "lint:eslint": "yarn ../.. run eslint --quiet packages/yarn-version",
     "start": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
+  "pob": {},
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
     "@pob/version": "workspace:*"

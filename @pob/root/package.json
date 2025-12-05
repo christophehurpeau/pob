@@ -60,7 +60,7 @@
   ],
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --quiet @pob/root"
+    "lint:eslint": "yarn ../.. run eslint --quiet '@pob/root'"
   },
   "pob": {},
   "prettier": "@pob/root/prettier-config",
