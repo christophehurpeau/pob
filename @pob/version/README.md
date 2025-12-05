@@ -35,13 +35,16 @@ on:
         type: boolean
         default: false
 
+permissions:
+  id-token: write # Required for OIDC
+  contents: write # Required to create release
+
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
         with:
-          token: ${{ secrets.GH_TOKEN }}
           fetch-depth: 0
 
       - name: Enable Corepack
@@ -70,7 +73,7 @@ jobs:
           yarn pob-version --create-release=github  -m 'chore: release %v [skip ci]'
         env:
           HUSKY: 0
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
       - name: Publish to npm
@@ -115,7 +118,6 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          token: ${{ secrets.GH_TOKEN }}
           fetch-depth: 0
 
       - name: Enable Corepack
@@ -143,7 +145,7 @@ jobs:
           yarn pob-version --create-release=github  --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }} -m 'chore: release [skip ci]\n\n%t'
         env:
           HUSKY: 0
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
       - name: Publish to npm
