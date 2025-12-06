@@ -355,7 +355,12 @@ export default class PobAppGenerator extends Generator {
       buildDirectory,
     });
 
-    this.composeWith("pob:core:npm", { enable: false });
+    // some apps can be published as npm packages, like @pob/version
+    this.composeWith("pob:core:npm", {
+      enable: !pkg.private,
+      srcDirectory,
+      distDirectory: buildDirectory,
+    });
 
     switch (this.appConfig.type) {
       case "next.js":

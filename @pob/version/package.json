@@ -38,6 +38,11 @@
   "publishConfig": {
     "access": "public"
   },
+  "files": [
+    "src",
+    "dist",
+    "bin"
+  ],
   "scripts": {
     "build": "yarn clean:build && rollup --config rollup.config.mjs",
     "clean": "yarn clean:build",
