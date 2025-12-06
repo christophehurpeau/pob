@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.0.1](https://github.com/christophehurpeau/pob/compare/pob@31.0.0...pob@31.0.1) (2025-12-06)
+
+### Bug Fixes
+
+* update all workflows
+* update workflow-release ejs
+
+Version bump for dependency: @pob/root
+
+
 ## [31.0.0](https://github.com/christophehurpeau/pob/compare/pob@30.0.0...pob@31.0.0) (2025-12-06)
 
 ### ⚠ BREAKING CHANGES
