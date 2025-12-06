@@ -71,7 +71,7 @@ export default function createLintStagedConfig() {
       ].filter(Boolean);
     },
     "!(package|package-lock|.eslintrc).json": ["prettier --write"],
-    [`{scripts,config,${srcDirectories}}/**/*.{yml,yaml,md}`]: [
+    [`{.github,scripts,config,${srcDirectories}}/**/*.{yml,yaml,md}`]: [
       "prettier --write",
     ],
     "./*.{yml,yaml,md}": ["prettier --write"],
