@@ -34,8 +34,8 @@ import {
   pushCommitsAndTags,
 } from "../utils/gitUtils.ts";
 import {
-  createGitHubClient,
-  createGitRelease,
+  createGhRelease,
+  ensureGhCliAvailable,
   parseGithubRepoUrl,
 } from "../utils/githubUtils.ts";
 import {
@@ -158,18 +158,14 @@ export const versionCommandAction = async (
     throw new UsageError("--ignore-changes is not supported yet.");
   }
 
-  const [
-    conventionalCommitConfig,
-    githubClient,
-    parsedRepoUrl,
-    gitCurrentBranch,
-  ] = await Promise.all([
-    loadConventionalCommitConfig(rootWorkspace, options.preset),
-    // create client early to fail fast if necessary
-    options.createRelease ? createGitHubClient() : undefined,
-    options.createRelease ? parseGithubRepoUrl(rootWorkspace) : undefined,
-    getGitCurrentBranch(rootWorkspace),
-  ]);
+  const [conventionalCommitConfig, parsedRepoUrl, gitCurrentBranch] =
+    await Promise.all([
+      loadConventionalCommitConfig(rootWorkspace, options.preset),
+      options.createRelease ? parseGithubRepoUrl(rootWorkspace) : undefined,
+      getGitCurrentBranch(rootWorkspace),
+      // ensure gh CLI is available early to fail fast if necessary
+      options.createRelease ? ensureGhCliAvailable(rootWorkspace) : undefined,
+    ]);
 
   const rootPreviousVersionTagPromise =
     options.force || isMonorepoVersionIndependent
@@ -775,7 +771,7 @@ export const versionCommandAction = async (
 
     // TODO open github PR
 
-    if (options.createRelease && githubClient && parsedRepoUrl) {
+    if (options.createRelease && parsedRepoUrl) {
       logger.info("Create git release");
 
       await Promise.all(
@@ -790,13 +786,12 @@ export const versionCommandAction = async (
             );
             return undefined;
           }
-          return createGitRelease(
-            githubClient,
+          return createGhRelease(workspace, {
             parsedRepoUrl,
-            newTag,
-            changelog,
-            !!options.prerelease,
-          );
+            tag: newTag,
+            body: changelog,
+            prerelease: !!options.prerelease,
+          });
         }),
       );
     }

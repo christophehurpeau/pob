@@ -7,7 +7,6 @@ import path from 'node:path';
 import { writeChangelogString } from 'conventional-changelog-writer';
 import { parseCommits } from 'conventional-commits-parser';
 import { loadPreset } from 'conventional-changelog-preset-loader';
-import { Octokit } from '@octokit/rest';
 import fs, { glob } from 'node:fs/promises';
 
 async function execvp(command, args, {
@@ -15,7 +14,8 @@ async function execvp(command, args, {
   env = process.env,
   encoding,
   strict,
-  stdo = "pipe"
+  stdo = "pipe",
+  input
 }) {
   const stdoutChunks = [];
   const stderrChunks = [];
@@ -25,8 +25,12 @@ async function execvp(command, args, {
   const subprocess = childProcess.spawn(command, args, {
     cwd,
     env,
-    stdio: ["ignore", stdo, stdo]
+    stdio: [input ? "pipe" : "ignore", stdo, stdo]
   });
+  if (input && subprocess.stdin) {
+    subprocess.stdin.write(input);
+    subprocess.stdin.end();
+  }
   subprocess.stdout?.on("data", (chunk) => {
     stdoutChunks.push(chunk);
   });
@@ -117,7 +121,7 @@ stderr: ${stderr}`
     });
   });
 }
-const execCommand = (workspace, commandAndArgs = [], stdo = "pipe") => {
+const execCommand = (workspace, commandAndArgs, stdo = "pipe") => {
   const [command, ...args] = commandAndArgs;
   if (command === void 0) {
     throw new Error("Command is required");
@@ -128,7 +132,19 @@ const execCommand = (workspace, commandAndArgs = [], stdo = "pipe") => {
     stdo
   });
 };
-const execCommandStreamStdout = (workspace, commandAndArgs = [], separator = "\n") => {
+const execCommandWithInput = (workspace, commandAndArgs, input, stdo = "pipe") => {
+  const [command, ...args] = commandAndArgs;
+  if (command === void 0) {
+    throw new Error("Command is required");
+  }
+  return execvp(command, args, {
+    cwd: workspace.cwd,
+    strict: true,
+    stdo,
+    input
+  });
+};
+const execCommandStreamStdout = (workspace, commandAndArgs, separator = "\n") => {
   const [command, ...args] = commandAndArgs;
   if (command === void 0) {
     throw new Error("Command is required");
@@ -139,6 +155,13 @@ const execCommandStreamStdout = (workspace, commandAndArgs = [], separator = "\n
     separator
   });
 };
+
+const execCommand$1 = /*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  execCommand,
+  execCommandStreamStdout,
+  execCommandWithInput
+}, Symbol.toStringTag, { value: 'Module' });
 
 const BunPackageManager = {
   async runScript(workspace, scriptName) {
@@ -592,25 +615,19 @@ const getGitCommits = (workspace, {
   );
 };
 
-async function createGitHubClient() {
-  const { GH_TOKEN, GHE_API_URL, GHE_VERSION } = process.env;
+async function ensureGhCliAvailable(workspace) {
+  const { GH_TOKEN } = process.env;
   if (!GH_TOKEN) {
+    throw new UsageError('"GH_TOKEN" environment variable required');
+  }
+  try {
+    const { execCommand } = await Promise.resolve().then(() => execCommand$1);
+    await execCommand(workspace, ["gh", "--version"]);
+  } catch {
     throw new UsageError(
-      '"GH_TOKEN" environment variable required when "createRelease" is set to "github"'
+      'The "gh" CLI is required. Please install GitHub CLI: https://cli.github.com/'
     );
   }
-  if (GHE_VERSION) {
-    Octokit.plugin(
-      await import(`@octokit/plugin-enterprise-rest/ghe-${GHE_VERSION}`)
-    );
-  }
-  const options = {
-    auth: `token ${GH_TOKEN}`
-  };
-  if (GHE_API_URL) {
-    options.baseUrl = GHE_API_URL;
-  }
-  return new Octokit(options);
 }
 const githubRegex = /^https?:\/\/github.com\/([^#/]+)\/([^#/]+?)(?:\.git)?$/;
 const parseGithubRepoUrl = (workspace) => {
@@ -627,21 +644,51 @@ const parseGithubRepoUrl = (workspace) => {
   }
   const [, username, reponame] = match;
   if (!username || !reponame) {
-    throw new Error(`Invalid GitHub repository URL: ${url}`);
+    throw new Error(`Invalid GitHub repository URL: "${url}"`);
   }
   return { username, reponame };
 };
-const createGitRelease = async (githubClient, parsedRepoUrl, tag, body, prerelease) => {
-  await githubClient.repos.createRelease({
-    owner: parsedRepoUrl.username,
-    repo: parsedRepoUrl.reponame,
-    // eslint-disable-next-line camelcase
-    tag_name: tag,
-    name: tag,
-    body,
-    draft: false,
-    prerelease
-  });
+const extractHostnameFromGheApiUrl = (gheApiUrl) => {
+  try {
+    const url = new URL(gheApiUrl);
+    return url.hostname || null;
+  } catch {
+    const m = /^https?:\/\/([^/]+)/.exec(gheApiUrl);
+    return m?.[1] || null;
+  }
+};
+const createGhRelease = async (workspace, opts) => {
+  const { parsedRepoUrl, tag, body, prerelease } = opts;
+  const { GH_TOKEN, GHE_API_URL } = process.env;
+  if (!GH_TOKEN) {
+    await ensureGhCliAvailable(workspace);
+    return;
+  }
+  const args = [
+    "release",
+    "create",
+    tag,
+    "--repo",
+    `${parsedRepoUrl.username}/${parsedRepoUrl.reponame}`,
+    "--notes",
+    "-"
+  ];
+  if (prerelease) {
+    args.push("--prerelease");
+  }
+  if (GHE_API_URL) {
+    const hostname = extractHostnameFromGheApiUrl(GHE_API_URL);
+    if (hostname) {
+      args.push("--hostname", hostname);
+    }
+  }
+  try {
+    await execCommandWithInput(workspace, ["gh", ...args], body);
+  } catch (error) {
+    throw new Error(
+      `gh release create failed: ${String(error instanceof Error ? error.message : error)}`
+    );
+  }
 };
 
 async function mapWorkspacesFromPkg({
@@ -797,17 +844,12 @@ There are uncommitted changes in the git repository. Please commit or stash them
   if (options.ignoreChanges) {
     throw new UsageError("--ignore-changes is not supported yet.");
   }
-  const [
-    conventionalCommitConfig,
-    githubClient,
-    parsedRepoUrl,
-    gitCurrentBranch
-  ] = await Promise.all([
+  const [conventionalCommitConfig, parsedRepoUrl, gitCurrentBranch] = await Promise.all([
     loadConventionalCommitConfig(rootWorkspace, options.preset),
-    // create client early to fail fast if necessary
-    options.createRelease ? createGitHubClient() : void 0,
     options.createRelease ? parseGithubRepoUrl(rootWorkspace) : void 0,
-    getGitCurrentBranch(rootWorkspace)
+    getGitCurrentBranch(rootWorkspace),
+    // ensure gh CLI is available early to fail fast if necessary
+    options.createRelease ? ensureGhCliAvailable(rootWorkspace) : void 0
   ]);
   const rootPreviousVersionTagPromise = options.force || isMonorepoVersionIndependent ? null : getGitLatestTagVersion(rootWorkspace, {
     prefix: options.tagVersionPrefix,
@@ -1238,7 +1280,7 @@ ${tagsInCommitMessage}` : rootNewVersion
       logger.info("Lifecycle script: postversion");
       await packageManager.runScript(rootWorkspace, "postversion");
     }
-    if (options.createRelease && githubClient && parsedRepoUrl) {
+    if (options.createRelease && parsedRepoUrl) {
       logger.info("Create git release");
       await Promise.all(
         [...bumpedWorkspaces.entries()].map(([workspace, { newTag }]) => {
@@ -1252,13 +1294,12 @@ ${tagsInCommitMessage}` : rootNewVersion
             );
             return void 0;
           }
-          return createGitRelease(
-            githubClient,
+          return createGhRelease(workspace, {
             parsedRepoUrl,
-            newTag,
-            changelog,
-            !!options.prerelease
-          );
+            tag: newTag,
+            body: changelog,
+            prerelease: !!options.prerelease
+          });
         })
       );
     }

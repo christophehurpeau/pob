@@ -28,12 +28,14 @@ async function execvp<const Strict extends boolean>(
     encoding,
     strict,
     stdo = "pipe",
+    input,
   }: {
     cwd?: string;
     env?: typeof process.env;
     encoding?: BufferEncoding;
     strict?: Strict;
     stdo?: "inherit" | "pipe";
+    input?: string;
   },
 ): Promise<ExecResult<Strict>> {
   const stdoutChunks: Uint8Array[] = [];
@@ -44,8 +46,13 @@ async function execvp<const Strict extends boolean>(
   const subprocess = childProcess.spawn(command, args, {
     cwd,
     env,
-    stdio: ["ignore", stdo, stdo],
+    stdio: [input ? "pipe" : "ignore", stdo, stdo],
   });
+  if (input && subprocess.stdin) {
+    // write input to stdin and close it
+    subprocess.stdin.write(input);
+    subprocess.stdin.end();
+  }
   subprocess.stdout?.on("data", (chunk) => {
     stdoutChunks.push(chunk);
   });
@@ -158,7 +165,7 @@ async function* spawnStreamStdout<const Strict extends boolean>(
 
 export const execCommand = (
   workspace: Workspace,
-  commandAndArgs: string[] = [],
+  commandAndArgs: string[],
   stdo: "inherit" | "pipe" = "pipe",
 ): ReturnType<typeof execvp> => {
   const [command, ...args] = commandAndArgs;
@@ -172,9 +179,27 @@ export const execCommand = (
   });
 };
 
+export const execCommandWithInput = (
+  workspace: Workspace,
+  commandAndArgs: string[],
+  input: string,
+  stdo: "inherit" | "pipe" = "pipe",
+): ReturnType<typeof execvp> => {
+  const [command, ...args] = commandAndArgs;
+  if (command === undefined) {
+    throw new Error("Command is required");
+  }
+  return execvp(command, args, {
+    cwd: workspace.cwd,
+    strict: true,
+    stdo,
+    input,
+  });
+};
+
 export const execCommandStreamStdout = (
   workspace: Workspace,
-  commandAndArgs: string[] = [],
+  commandAndArgs: string[],
   separator = "\n",
 ): AsyncGenerator<string, ExecResult<true>, unknown> => {
   const [command, ...args] = commandAndArgs;
