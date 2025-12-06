@@ -61,6 +61,22 @@ export default class CoreYarnGenerator extends Generator {
   writing() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
+    if (this.options.enable && !inMonorepo && !pkg.private) {
+      packageUtils.addDevDependencies(pkg, ["pinst"]);
+      packageUtils.addScripts(pkg, {
+        prepack: "pinst --disable",
+        postpack: "pinst --enable",
+      });
+    } else {
+      packageUtils.removeDevDependencies(pkg, ["pinst"]);
+      if (pkg.scripts.prepack === "pinst --disable") {
+        delete pkg.scripts.prepack;
+      }
+      if (pkg.scripts.postpack === "pinst --enable") {
+        delete pkg.scripts.postpack;
+      }
+    }
+
     if (this.options.enable) {
       this.fs.copyTpl(
         this.templatePath("yarn_gitignore.ejs"),
@@ -109,20 +125,6 @@ export default class CoreYarnGenerator extends Generator {
       const legacyVersionPluginName = "@yarnpkg/plugin-conventional-version";
 
       removePluginIfInstalled(postinstallDevPluginName);
-      if (!inMonorepo && !pkg.private) {
-        packageUtils.addDevDependencies(pkg, ["pinst"]);
-        packageUtils.addScripts(pkg, {
-          prepack: "pinst --disable",
-          postpack: "pinst --enable",
-        });
-      } else {
-        if (pkg.scripts.prepack === "pinst --disable") {
-          delete pkg.scripts.prepack;
-        }
-        if (pkg.scripts.postpack === "pinst --enable") {
-          delete pkg.scripts.postpack;
-        }
-      }
 
       if (pkg.name !== "yarn-plugin-conventional-version") {
         removePluginIfInstalled(legacyVersionPluginName);

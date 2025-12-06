@@ -172,7 +172,6 @@ export default class CommonFormatLintGenerator extends Generator {
       delete pkg.scripts.preparecommitmsg;
       delete pkg.scripts.prepublish;
       delete pkg.scripts.postpublish;
-      delete pkg.scripts.prepare;
     }
 
     delete pkg.standard;

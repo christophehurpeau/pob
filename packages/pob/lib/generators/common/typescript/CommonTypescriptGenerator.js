@@ -311,6 +311,7 @@ export default class CommonTypescriptGenerator extends Generator {
           // for apps, only enable incremental. Composite is meant for libraries to build and export before the ones depending on them.
           composite:
             monorepoComposite &&
+            monorepoComposite !== "check-only" &&
             (!this.options.isApp || this.options.isAppLibrary),
           incremental: monorepoComposite,
           dom,
