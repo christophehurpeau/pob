@@ -97,18 +97,9 @@ jobs:
 
       - name: Publish to npm
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
-        run: |
-          if [ -z "$NPM_AUTH_TOKEN" ]; then
-            echo "Missing env variable NPM_AUTH_TOKEN"
-            exit 1
-          fi
-          echo >> ./.yarnrc.yml
-          echo "npmAuthToken: $NPM_AUTH_TOKEN" >> ./.yarnrc.yml
 <% if (isMonorepo) { -%>
-          yarn workspaces foreach --all --parallel --no-private npm publish --tolerate-republish
+        run: yarn workspaces foreach --all --parallel --no-private npm publish --tolerate-republish --provenance
 <% } else { -%>
-          yarn npm publish
+        run: yarn npm publish --provenance
 <% } -%>
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 <% } -%>

@@ -116,9 +116,7 @@ jobs:
 <% if (publishSinglePackage) { -%>
 
       # publish:
-      - run: npm publish
+      - run: npm publish --provenance
         if: ${{ startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.') && github.ref == 'refs/heads/main' && steps.release.outputs.release_created }}
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 <% } -%>
 <% } -%>
