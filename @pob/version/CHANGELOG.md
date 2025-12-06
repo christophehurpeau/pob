@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [1.4.2](https://github.com/christophehurpeau/pob/compare/@pob/version@1.4.1...@pob/version@1.4.2) (2025-12-06)
+
+### Bug Fixes
+
+* bun pm pack not bun pack
+
 ## [1.4.1](https://github.com/christophehurpeau/pob/compare/@pob/version@1.4.0...@pob/version@1.4.1) (2025-12-06)
 
 ### Reverts
