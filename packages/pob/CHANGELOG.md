@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.3.0](https://github.com/christophehurpeau/pob/compare/pob@31.2.3...pob@31.3.0) (2025-12-06)
+
+Version bump for dependency: @pob/root
+
+
 ## [31.2.3](https://github.com/christophehurpeau/pob/compare/pob@31.2.2...pob@31.2.3) (2025-12-06)
 
 ### Bug Fixes
