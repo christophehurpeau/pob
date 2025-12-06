@@ -43,7 +43,7 @@ export const getPackageManagerCommands = (pm, isYarnBerry) => {
       lockfile: "bun.lock",
       pmExec: "bun run",
       ciPreStep: `name: Install bun
-        uses: oven-sh/setup-bun@v1`,
+        uses: oven-sh/setup-bun@v2`,
       installOnCICommand: "bun i --frozen-lockfile",
       installMutableCommand: "bun i",
       installOnDiffCommand: "bun i --frozen-lockfile",
