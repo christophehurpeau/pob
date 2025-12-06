@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.2.0](https://github.com/christophehurpeau/pob/compare/pob@31.1.0...pob@31.2.0) (2025-12-06)
+
+### Features
+
+* refine script management for yarn and improve handling of postinstall and prepare scripts
+
+Version bump for dependency: @pob/root
+
+
 ## [31.1.0](https://github.com/christophehurpeau/pob/compare/pob@31.0.2...pob@31.1.0) (2025-12-06)
 
 ### Features
