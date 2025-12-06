@@ -5,7 +5,7 @@ import { createProjectWorkspace, createWorkspace } from "./packageUtils.ts";
 const toAbs = (p: string) => path.resolve(p);
 
 const fixturesRoot = path.resolve(
-  new URL("../__fixtures__", import.meta.url).pathname,
+  new URL("../../__fixtures__", import.meta.url).pathname,
 );
 
 describe("mapWorkspaces - baseline checks", () => {

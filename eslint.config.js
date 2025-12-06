@@ -11,7 +11,7 @@ export default [
   {
     ignores: [
       "packages/pob-babel/test/**/*",
-      "@pob/version/src/__fixtures__/monorepo-invalid-package-json/packages/pkg-with-invalid-json/package.json",
+      "@pob/version/__fixtures__/monorepo-invalid-package-json/packages/pkg-with-invalid-json/package.json",
       "**/__fixtures__/**",
     ],
   },

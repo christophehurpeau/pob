@@ -63,7 +63,7 @@ describe("version", () => {
         packageManager,
         cwd: fileURLToPath(
           new URL(
-            `../__fixtures__/${packageManager}-no-version`,
+            `../../__fixtures__/${packageManager}-no-version`,
             import.meta.url,
           ),
         ),
@@ -85,7 +85,10 @@ describe("version", () => {
         dryRun: true,
         packageManager,
         cwd: fileURLToPath(
-          new URL(`../__fixtures__/${packageManager}-basic`, import.meta.url),
+          new URL(
+            `../../__fixtures__/${packageManager}-basic`,
+            import.meta.url,
+          ),
         ),
       });
       expect(exitCode).toBe(1);
@@ -103,7 +106,10 @@ describe("version", () => {
         dryRun: true,
         packageManager,
         cwd: fileURLToPath(
-          new URL(`../__fixtures__/${packageManager}-basic`, import.meta.url),
+          new URL(
+            `../../__fixtures__/${packageManager}-basic`,
+            import.meta.url,
+          ),
         ),
       });
       expect(stderr).toBeFalsy();
