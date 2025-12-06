@@ -60,7 +60,7 @@
     "jest-junit-reporter": "1.1.0",
     "pinst": "3.0.0",
     "pob-babel": "44.5.3",
-    "prettier": "3.6.2",
+    "prettier": "3.7.4",
     "repository-check-dirty": "11.0.1",
     "rollup": "4.53.3",
     "semver": "7.7.3",
