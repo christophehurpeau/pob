@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.0.3](https://github.com/christophehurpeau/pob/compare/@pob/root@20.0.2...@pob/root@20.0.3) (2025-12-06)
+
+### Bug Fixes
+
+* better bun support
+
 ## [20.0.2](https://github.com/christophehurpeau/pob/compare/@pob/root@20.0.1...@pob/root@20.0.2) (2025-12-06)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [16.1.4](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@16.1.3...babel-preset-pob-env@16.1.4) (2025-12-06)
+
+### Bug Fixes
+
+* add missing URL import in fixtures test
+
 ## [16.1.3](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@16.1.2...babel-preset-pob-env@16.1.3) (2025-12-06)
 
 Version bump for dependency: babel-plugin-fix-class-properties-uninitialized

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.0.2](https://github.com/christophehurpeau/pob/compare/pob@31.0.1...pob@31.0.2) (2025-12-06)
+
+### Bug Fixes
+
+* better bun support
+* change error throw to warning for missing GITHUB_TOKEN
+
+Version bump for dependency: @pob/root
+
+
 ## [31.0.1](https://github.com/christophehurpeau/pob/compare/pob@31.0.0...pob@31.0.1) (2025-12-06)
 
 ### Bug Fixes

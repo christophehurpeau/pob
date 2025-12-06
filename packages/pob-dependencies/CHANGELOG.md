@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.0.2](https://github.com/christophehurpeau/pob/compare/pob-dependencies@21.0.1...pob-dependencies@21.0.2) (2025-12-06)
+
+Version bump for dependency: pob-babel
+
+
 ## [21.0.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@21.0.0...pob-dependencies@21.0.1) (2025-12-06)
 
 Version bump for dependency: @pob/esbuild

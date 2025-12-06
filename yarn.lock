@@ -3519,7 +3519,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/root@npm:20.0.2, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@npm:20.0.3, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -5873,7 +5873,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"babel-preset-pob-env@npm:16.1.3, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
+"babel-preset-pob-env@npm:16.1.4, babel-preset-pob-env@workspace:packages/babel-preset-pob-env":
   version: 0.0.0-use.local
   resolution: "babel-preset-pob-env@workspace:packages/babel-preset-pob-env"
   dependencies:
@@ -7717,14 +7717,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-typescript-lib@npm:0.51.2, example-typescript-lib@workspace:pob-examples/typescript-lib":
+"example-typescript-lib@npm:0.51.3, example-typescript-lib@workspace:pob-examples/typescript-lib":
   version: 0.0.0-use.local
   resolution: "example-typescript-lib@workspace:pob-examples/typescript-lib"
   dependencies:
     "@babel/core": "npm:7.28.5"
     "@babel/preset-env": "npm:7.28.5"
     "@types/node": "npm:22.19.1"
-    pob-babel: "npm:44.5.2"
+    pob-babel: "npm:44.5.3"
     typescript: "npm:5.9.3"
   languageName: unknown
   linkType: soft
@@ -7733,7 +7733,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-webpack-app@workspace:pob-examples/webpack-app"
   dependencies:
-    example-typescript-lib: "npm:0.51.2"
+    example-typescript-lib: "npm:0.51.3"
     webpack: "npm:5.103.0"
     webpack-cli: "npm:6.0.1"
   languageName: unknown
@@ -11967,7 +11967,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@npm:44.5.2, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
+"pob-babel@npm:44.5.3, pob-babel@workspace:*, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   dependencies:
@@ -11978,7 +11978,7 @@ __metadata:
     "@rollup/plugin-json": "npm:6.1.0"
     "@rollup/plugin-node-resolve": "npm:16.0.3"
     "@rollup/plugin-run": "npm:3.1.0"
-    babel-preset-pob-env: "npm:16.1.3"
+    babel-preset-pob-env: "npm:16.1.4"
     rollup: "npm:4.53.3"
     rollup-config-external-dependencies: "npm:^3.0.1"
     semver: "npm:^7.7.3"
@@ -12021,7 +12021,7 @@ __metadata:
     jest: "npm:30.2.0"
     jest-junit-reporter: "npm:1.1.0"
     pinst: "npm:3.0.0"
-    pob-babel: "npm:44.5.2"
+    pob-babel: "npm:44.5.3"
     prettier: "npm:3.6.2"
     repository-check-dirty: "npm:11.0.1"
     rollup: "npm:4.53.3"
@@ -12062,7 +12062,7 @@ __metadata:
     "@pob/eslint-config": "npm:62.0.0"
     "@pob/eslint-config-typescript": "npm:62.0.0"
     "@pob/eslint-config-typescript-react": "npm:62.0.0"
-    "@pob/root": "npm:20.0.2"
+    "@pob/root": "npm:20.0.3"
     "@pob/sort-object": "npm:10.1.1"
     "@pob/sort-pkg": "npm:12.1.1"
     "@prettier/sync": "npm:0.6.1"
@@ -15027,7 +15027,7 @@ __metadata:
   dependencies:
     "@babel/core": "npm:7.28.5"
     "@yarnpkg/core": "npm:4.5.0"
-    pob-babel: "npm:44.5.2"
+    pob-babel: "npm:44.5.3"
     typescript: "npm:5.9.3"
   languageName: unknown
   linkType: soft
