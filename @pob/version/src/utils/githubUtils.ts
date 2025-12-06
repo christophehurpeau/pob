@@ -88,8 +88,6 @@ export const createGhRelease = async (
     tag,
     "--repo",
     `${parsedRepoUrl.username}/${parsedRepoUrl.reponame}`,
-    "--notes",
-    "-",
   ];
 
   if (prerelease) {
@@ -104,7 +102,11 @@ export const createGhRelease = async (
   }
 
   try {
-    await execCommandWithInput(workspace, ["gh", ...args], body);
+    await execCommandWithInput(
+      workspace,
+      ["gh", ...args, "--notes-file", "-"],
+      body,
+    );
   } catch (error) {
     // execCommandWithInput will include stdout/stderr in its error message when strict
     throw new Error(

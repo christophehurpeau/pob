@@ -669,9 +669,7 @@ const createGhRelease = async (workspace, opts) => {
     "create",
     tag,
     "--repo",
-    `${parsedRepoUrl.username}/${parsedRepoUrl.reponame}`,
-    "--notes",
-    "-"
+    `${parsedRepoUrl.username}/${parsedRepoUrl.reponame}`
   ];
   if (prerelease) {
     args.push("--prerelease");
@@ -683,7 +681,11 @@ const createGhRelease = async (workspace, opts) => {
     }
   }
   try {
-    await execCommandWithInput(workspace, ["gh", ...args], body);
+    await execCommandWithInput(
+      workspace,
+      ["gh", ...args, "--notes-file", "-"],
+      body
+    );
   } catch (error) {
     throw new Error(
       `gh release create failed: ${String(error instanceof Error ? error.message : error)}`
