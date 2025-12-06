@@ -65,9 +65,9 @@
   "pob": {},
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "@commitlint/format": "20.0.0",
-    "@commitlint/lint": "20.0.0",
-    "@commitlint/types": "20.0.0",
+    "@commitlint/format": "20.2.0",
+    "@commitlint/lint": "20.2.0",
+    "@commitlint/types": "20.2.0",
     "@pob/pretty-pkg": "13.2.1",
     "@pob/version": "workspace:*",
     "conventional-changelog-conventionalcommits": "^9.1.0",
