@@ -77,8 +77,17 @@ jobs:
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
       - name: Publish to npm
-        run: yarn npm publish --provenance
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "Missing env variable NODE_AUTH_TOKEN"
+            exit 1
+          fi
+          echo >> ./.yarnrc.yml
+          echo "npmAuthToken: $NODE_AUTH_TOKEN" >> ./.yarnrc.yml
+          yarn npm publish
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 ```
 
 ## Example with Github Action, for a monorepo
@@ -140,6 +149,15 @@ jobs:
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
 
       - name: Publish to npm
-        run: yarn workspaces foreach --parallel --no-private npm publish --tolerate-republish --provenance
+        run: |
+          if [ -z "$NODE_AUTH_TOKEN" ]; then
+            echo "Missing env variable NODE_AUTH_TOKEN"
+            exit 1
+          fi
+          echo >> ./.yarnrc.yml
+          echo "npmAuthToken: $NODE_AUTH_TOKEN" >> ./.yarnrc.yml
+          yarn workspaces foreach --parallel --no-private npm publish --tolerate-republish
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 ```
