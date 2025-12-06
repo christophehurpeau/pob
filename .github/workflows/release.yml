@@ -75,6 +75,10 @@ jobs:
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Update npm
+        if: github.ref == 'refs/heads/main' && !inputs.dry-run
+        run: npm install -g npm@latest
+
       - name: Publish to npm
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
