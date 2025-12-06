@@ -78,6 +78,7 @@ export interface VersionCommandOptions {
   cwdIsRoot?: boolean;
   packageManager?: "bun" | "yarn";
   publish?: boolean;
+  publishProvenance?: boolean;
 }
 
 interface BumpableWorkspace {
@@ -807,7 +808,9 @@ export const versionCommandAction = async (
       }
       await logger.group("Publishing packages", async () => {
         if (packageManager.publishWorkspaces) {
-          await packageManager.publishWorkspaces(rootWorkspace);
+          await packageManager.publishWorkspaces(rootWorkspace, {
+            provenance: options.publishProvenance,
+          });
         } else {
           for (const [workspace] of bumpedWorkspaces.entries()) {
             if (workspace.pkg.private) {
@@ -818,7 +821,9 @@ export const versionCommandAction = async (
             }
 
             logger.info(`Publishing ${getWorkspaceName(workspace)}`);
-            await packageManager.publish(workspace);
+            await packageManager.publish(workspace, {
+              provenance: options.publishProvenance,
+            });
           }
         }
       });
@@ -843,6 +848,7 @@ export const Defaults: VersionCommandOptions = {
   gitRemote: "origin",
   verbose: false,
   publish: false,
+  publishProvenance: false,
 };
 
 export default program
@@ -936,4 +942,10 @@ export default program
     ).choices(["bun", "yarn"]),
   )
   .addOption(new Option("--publish", "Publish after versioning").default(false))
+  .addOption(
+    new Option(
+      "--publish-provenance",
+      "Generate provenance attestation when publishing (if supported by package manager)",
+    ).default(false),
+  )
   .action((options) => versionCommandAction(options));

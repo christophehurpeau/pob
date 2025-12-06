@@ -1,6 +1,9 @@
 import { execCommand } from "../utils/execCommand.ts";
 import type { Workspace } from "../utils/packageUtils.ts";
-import type { PackageManager } from "./PackageManager.ts";
+import type {
+  PackageManager,
+  PackageManagerPublishOptions,
+} from "./PackageManager.ts";
 
 export const YarnPackageManager: PackageManager = {
   async installOnPackageContentChange(rootWorkspace: Workspace) {
@@ -11,24 +14,31 @@ export const YarnPackageManager: PackageManager = {
     await execCommand(workspace, ["yarn", "run", scriptName], "inherit");
   },
 
-  async publish(workspace: Workspace) {
-    await execCommand(workspace, ["yarn", "npm", "publish"], "inherit");
+  async publish(workspace: Workspace, options?: PackageManagerPublishOptions) {
+    const publishArgs = ["yarn", "npm", "publish"];
+    if (options?.provenance) {
+      publishArgs.push("--provenance");
+    }
+    await execCommand(workspace, publishArgs, "inherit");
   },
 
-  async publishWorkspaces(rootWorkspace: Workspace) {
-    await execCommand(
-      rootWorkspace,
-      [
-        "yarn",
-        "workspaces",
-        "foreach",
-        "--all",
-        "--parallel",
-        "--no-private",
-        "npm",
-        "publish",
-      ],
-      "inherit",
-    );
+  async publishWorkspaces(
+    rootWorkspace: Workspace,
+    options?: PackageManagerPublishOptions,
+  ) {
+    const publishArgs = [
+      "yarn",
+      "workspaces",
+      "foreach",
+      "--all",
+      "--parallel",
+      "--no-private",
+      "npm",
+      "publish",
+    ];
+    if (options?.provenance) {
+      publishArgs.push("--provenance");
+    }
+    await execCommand(rootWorkspace, publishArgs, "inherit");
   },
 };

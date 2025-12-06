@@ -167,8 +167,18 @@ const BunPackageManager = {
   async runScript(workspace, scriptName) {
     await execCommand(workspace, ["bun", "run", scriptName], "inherit");
   },
-  async publish(workspace) {
-    await execCommand(workspace, ["bun", "publish"], "inherit");
+  async publish(workspace, options) {
+    if (options?.provenance) {
+      const packResult = await execCommand(workspace, ["bun", "pack"]);
+      const lines = packResult.stdout.trim().split("\n");
+      const tgzPath = lines.find((line) => line.endsWith(".tgz")) ?? lines.at(-1);
+      if (!tgzPath) {
+        throw new Error("Failed to extract .tgz path from bun pack output");
+      }
+      await execCommand(workspace, ["npm", "publish", "--provenance", tgzPath]);
+    } else {
+      await execCommand(workspace, ["bun", "publish"], "inherit");
+    }
   }
 };
 
@@ -179,24 +189,28 @@ const YarnPackageManager = {
   async runScript(workspace, scriptName) {
     await execCommand(workspace, ["yarn", "run", scriptName], "inherit");
   },
-  async publish(workspace) {
-    await execCommand(workspace, ["yarn", "npm", "publish"], "inherit");
+  async publish(workspace, options) {
+    const publishArgs = ["yarn", "npm", "publish"];
+    if (options?.provenance) {
+      publishArgs.push("--provenance");
+    }
+    await execCommand(workspace, publishArgs, "inherit");
   },
-  async publishWorkspaces(rootWorkspace) {
-    await execCommand(
-      rootWorkspace,
-      [
-        "yarn",
-        "workspaces",
-        "foreach",
-        "--all",
-        "--parallel",
-        "--no-private",
-        "npm",
-        "publish"
-      ],
-      "inherit"
-    );
+  async publishWorkspaces(rootWorkspace, options) {
+    const publishArgs = [
+      "yarn",
+      "workspaces",
+      "foreach",
+      "--all",
+      "--parallel",
+      "--no-private",
+      "npm",
+      "publish"
+    ];
+    if (options?.provenance) {
+      publishArgs.push("--provenance");
+    }
+    await execCommand(rootWorkspace, publishArgs, "inherit");
   }
 };
 
@@ -1313,7 +1327,9 @@ ${tagsInCommitMessage}` : rootNewVersion
       }
       await logger.group("Publishing packages", async () => {
         if (packageManager.publishWorkspaces) {
-          await packageManager.publishWorkspaces(rootWorkspace);
+          await packageManager.publishWorkspaces(rootWorkspace, {
+            provenance: options.publishProvenance
+          });
         } else {
           for (const [workspace] of bumpedWorkspaces.entries()) {
             if (workspace.pkg.private) {
@@ -1323,7 +1339,9 @@ ${tagsInCommitMessage}` : rootNewVersion
               continue;
             }
             logger.info(`Publishing ${getWorkspaceName(workspace)}`);
-            await packageManager.publish(workspace);
+            await packageManager.publish(workspace, {
+              provenance: options.publishProvenance
+            });
           }
         }
       });
@@ -1411,7 +1429,12 @@ program.command("version", { isDefault: true }).usage("Bump package version usin
     "--package-manager <manager>",
     "Specify the package manager to use (bun or yarn). Autodetected if not specified."
   ).choices(["bun", "yarn"])
-).addOption(new Option("--publish", "Publish after versioning").default(false)).action((options) => versionCommandAction(options));
+).addOption(new Option("--publish", "Publish after versioning").default(false)).addOption(
+  new Option(
+    "--publish-provenance",
+    "Generate provenance attestation when publishing (if supported by package manager)"
+  ).default(false)
+).action((options) => versionCommandAction(options));
 
 const pkg = JSON.parse(
   // eslint-disable-next-line unicorn/prefer-json-parse-buffer

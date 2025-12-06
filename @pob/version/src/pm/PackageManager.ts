@@ -3,11 +3,21 @@ import type { Workspace } from "../utils/packageUtils.ts";
 import { BunPackageManager } from "./BunPackageManager.ts";
 import { YarnPackageManager } from "./YarnPackageManager.ts";
 
+export interface PackageManagerPublishOptions {
+  provenance?: boolean;
+}
+
 export interface PackageManager {
   installOnPackageContentChange?: (rootWorkspace: Workspace) => Promise<void>;
   runScript: (workspace: Workspace, scriptName: string) => Promise<void>;
-  publish: (workspace: Workspace) => Promise<void>;
-  publishWorkspaces?: (rootWorkspace: Workspace) => Promise<void>;
+  publish: (
+    workspace: Workspace,
+    options?: PackageManagerPublishOptions,
+  ) => Promise<void>;
+  publishWorkspaces?: (
+    rootWorkspace: Workspace,
+    options?: PackageManagerPublishOptions,
+  ) => Promise<void>;
 }
 
 export const autoDetectPackageManager = (
