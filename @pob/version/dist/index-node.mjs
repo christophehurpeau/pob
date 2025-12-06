@@ -1022,7 +1022,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
               dependencyDescriptor.selector,
               dependencyBumpedWorkspace.newVersion
             );
-            if (dependencyDescriptor.selector === newRange) {
+            if (dependencyDescriptor.selector === newRange && newRange !== "workspace:*") {
               continue;
             }
             dependenciesToBump.push([

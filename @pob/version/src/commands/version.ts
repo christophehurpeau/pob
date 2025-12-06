@@ -414,7 +414,10 @@ export const versionCommandAction = async (
               dependencyBumpedWorkspace.newVersion,
             );
 
-            if (dependencyDescriptor.selector === newRange) {
+            if (
+              dependencyDescriptor.selector === newRange &&
+              newRange !== "workspace:*"
+            ) {
               continue;
             }
 
