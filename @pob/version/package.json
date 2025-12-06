@@ -1,6 +1,6 @@
 {
   "name": "@pob/version",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "simple versioning using conventional commits",
   "keywords": [
     "semantic-release",
