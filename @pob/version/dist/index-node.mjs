@@ -1249,79 +1249,84 @@ ${changelog}`
       await packageManager.installOnPackageContentChange(rootWorkspace);
     }
     logger.separator();
-    logger.info("Commit, tag and push", {
-      changedFiles: await getDirtyFiles(rootWorkspace)
-    });
-    const tagsSet = new Set(
-      [...bumpedWorkspaces.values()].map(({ newTag }) => newTag).filter((newTag) => newTag !== null)
-    );
-    const tagsInCommitMessage = [...tagsSet].map((tag) => `- ${tag}`).join("\n");
-    const message = options.commitMessage.replace(/\\n/g, "\n").replace(
-      /%a/g,
-      isMonorepoVersionIndependent ? `
+    const changedFiles = await getDirtyFiles(project.root);
+    if (changedFiles) {
+      logger.info("Commit, tag and push", {
+        changedFiles
+      });
+      const tagsSet = new Set(
+        [...bumpedWorkspaces.values()].map(({ newTag }) => newTag).filter((newTag) => newTag !== null)
+      );
+      const tagsInCommitMessage = [...tagsSet].map((tag) => `- ${tag}`).join("\n");
+      const message = options.commitMessage.replace(/\\n/g, "\n").replace(
+        /%a/g,
+        isMonorepoVersionIndependent ? `
 
 ${tagsInCommitMessage}` : rootNewVersion
-    ).replace(/%s/g, rootNewTag).replace(/%v/g, rootNewVersion).replace(/%t/g, tagsInCommitMessage);
-    await createGitCommit(rootWorkspace, message);
-    for (const [workspace, { newTag }] of bumpedWorkspaces.entries()) {
-      if (newTag === null) continue;
-      await createGitTag(workspace, newTag);
-    }
-    if (await isBehindRemote(rootWorkspace, options.gitRemote, gitCurrentBranch)) {
-      logger.error("Remote is ahead, aborting");
-      process.exit(1);
-    }
-    await pushCommitsAndTags(
-      rootWorkspace,
-      options.gitRemote,
-      gitCurrentBranch
-    );
-    if (rootWorkspace.pkg.scripts?.postversion) {
-      logger.info("Lifecycle script: postversion");
-      await packageManager.runScript(rootWorkspace, "postversion");
-    }
-    if (options.createRelease && parsedRepoUrl) {
-      logger.info("Create git release");
-      await Promise.all(
-        [...bumpedWorkspaces.entries()].map(([workspace, { newTag }]) => {
-          if (newTag === null) return void 0;
-          const changelog = changelogs.get(workspace);
-          if (!changelog) {
-            logger.warn(
-              `No changelog found for workspace: ${getWorkspaceName(
-                workspace
-              )}`
-            );
-            return void 0;
-          }
-          return createGhRelease(workspace, {
-            parsedRepoUrl,
-            tag: newTag,
-            body: changelog,
-            prerelease: !!options.prerelease
-          });
-        })
-      );
-    }
-    if (!options.publish) {
-      return;
-    }
-    await logger.group("Publishing packages", async () => {
-      if (packageManager.publishWorkspaces) {
-        await packageManager.publishWorkspaces(rootWorkspace);
-      } else {
-        for (const [workspace] of bumpedWorkspaces.entries()) {
-          if (workspace.pkg.private) {
-            logger.info(
-              `Skipping private workspace ${getWorkspaceName(workspace)}`
-            );
-            continue;
-          }
-          logger.info(`Publishing ${getWorkspaceName(workspace)}`);
-          await packageManager.publish(workspace);
-        }
+      ).replace(/%s/g, rootNewTag).replace(/%v/g, rootNewVersion).replace(/%t/g, tagsInCommitMessage);
+      await createGitCommit(rootWorkspace, message);
+      for (const [workspace, { newTag }] of bumpedWorkspaces.entries()) {
+        if (newTag === null) continue;
+        await createGitTag(workspace, newTag);
       }
-    });
+      if (await isBehindRemote(rootWorkspace, options.gitRemote, gitCurrentBranch)) {
+        logger.error("Remote is ahead, aborting");
+        process.exit(1);
+      }
+      await pushCommitsAndTags(
+        rootWorkspace,
+        options.gitRemote,
+        gitCurrentBranch
+      );
+      if (rootWorkspace.pkg.scripts?.postversion) {
+        logger.info("Lifecycle script: postversion");
+        await packageManager.runScript(rootWorkspace, "postversion");
+      }
+      if (options.createRelease && parsedRepoUrl) {
+        logger.info("Create git release");
+        await Promise.all(
+          [...bumpedWorkspaces.entries()].map(([workspace, { newTag }]) => {
+            if (newTag === null) return void 0;
+            const changelog = changelogs.get(workspace);
+            if (!changelog) {
+              logger.warn(
+                `No changelog found for workspace: ${getWorkspaceName(
+                  workspace
+                )}`
+              );
+              return void 0;
+            }
+            return createGhRelease(workspace, {
+              parsedRepoUrl,
+              tag: newTag,
+              body: changelog,
+              prerelease: !!options.prerelease
+            });
+          })
+        );
+      }
+      if (!options.publish) {
+        return;
+      }
+      await logger.group("Publishing packages", async () => {
+        if (packageManager.publishWorkspaces) {
+          await packageManager.publishWorkspaces(rootWorkspace);
+        } else {
+          for (const [workspace] of bumpedWorkspaces.entries()) {
+            if (workspace.pkg.private) {
+              logger.info(
+                `Skipping private workspace ${getWorkspaceName(workspace)}`
+              );
+              continue;
+            }
+            logger.info(`Publishing ${getWorkspaceName(workspace)}`);
+            await packageManager.publish(workspace);
+          }
+        }
+      });
+    } else {
+      logger.warn("No changes made. Nothing to commit.");
+    }
   }
 };
 const Defaults = {
