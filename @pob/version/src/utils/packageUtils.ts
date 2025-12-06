@@ -87,6 +87,7 @@ export const findRootWorkspace = async (
     const isRootIfOneOfThesePathsExists = await Promise.all([
       isAccessible(path.join(currentPath, ".yarnrc.yml")),
       isAccessible(path.join(currentPath, "yarn.lock")),
+      isAccessible(path.join(currentPath, "bun.lock")),
     ]);
     if (isRootIfOneOfThesePathsExists.some(Boolean)) {
       return createWorkspace(currentPath);
