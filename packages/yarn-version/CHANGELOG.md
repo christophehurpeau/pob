@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.0](https://github.com/christophehurpeau/pob/compare/yarn-version@8.7.1...yarn-version@9.0.0) (2025-12-06)
+
+### ⚠ BREAKING CHANGES
+
+* migrate pob-version to @pob/version and add initial bun support
+
+### Features
+
+* migrate pob-version to @pob/version and add initial bun support
+
+### Bug Fixes
+
+* properly import pob/version in pob/root
+
 ## [8.7.1](https://github.com/christophehurpeau/pob/compare/yarn-version@8.7.0...yarn-version@8.7.1) (2025-11-24)
 
 Version bump for dependency: @pob/rollup-esbuild

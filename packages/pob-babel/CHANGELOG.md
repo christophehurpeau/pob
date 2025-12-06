@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.5.2](https://github.com/christophehurpeau/pob/compare/pob-babel@44.5.1...pob-babel@44.5.2) (2025-12-06)
+
+Version bump for dependency: @pob/rollup
+Version bump for dependency: babel-preset-pob-env
+
+
 ## [44.5.1](https://github.com/christophehurpeau/pob/compare/pob-babel@44.5.0...pob-babel@44.5.1) (2025-11-24)
 
 ### Bug Fixes

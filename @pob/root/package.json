@@ -1,6 +1,6 @@
 {
   "name": "@pob/root",
-  "version": "20.0.0",
+  "version": "20.0.1",
   "description": "root package",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -68,7 +68,7 @@
     "@commitlint/format": "20.0.0",
     "@commitlint/lint": "20.0.0",
     "@commitlint/types": "20.0.0",
-    "@pob/pretty-pkg": "13.2.0",
+    "@pob/pretty-pkg": "13.2.1",
     "@pob/version": "workspace:*",
     "conventional-changelog-conventionalcommits": "^9.1.0",
     "conventional-changelog-writer": "^8.2.0",

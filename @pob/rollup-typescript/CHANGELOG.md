@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.1](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@8.0.0...@pob/rollup-typescript@8.0.1) (2025-12-06)
+
+Note: no notable changes
+
+
 ## [8.0.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@7.0.2...@pob/rollup-typescript@8.0.0) (2025-08-24)
 
 ### ⚠ BREAKING CHANGES

@@ -1,6 +1,6 @@
 {
   "name": "@pob/sort-pkg",
-  "version": "12.1.0",
+  "version": "12.1.1",
   "description": "sort package.json",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
@@ -34,6 +34,6 @@
   "pob": {},
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "@pob/sort-object": "10.1.0"
+    "@pob/sort-object": "10.1.1"
   }
 }

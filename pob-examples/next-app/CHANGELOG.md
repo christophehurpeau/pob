@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.2](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.20.1...@pob-example/next-app@0.20.2) (2025-12-06)
+
+### Bug Fixes
+
+* update next.js version to 16.0.6 in package.json and yarn.lock
+
 ## [0.20.1](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.20.0...@pob-example/next-app@0.20.1) (2025-11-24)
 
 ### Bug Fixes

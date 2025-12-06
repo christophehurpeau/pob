@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.0.0](https://github.com/christophehurpeau/pob/compare/pob@30.0.0...pob@31.0.0) (2025-12-06)
+
+### ⚠ BREAKING CHANGES
+
+* migrate pob-version to @pob/version and add initial bun support
+
+### Features
+
+* add bunfig.toml with minimumReleaseAge
+* add npmMinimalAgeGate in yarn config
+* add npmMinimumReleaseAgeExclude option to CoreYarnGenerator
+* add quoteArg utility function and update script paths in generators
+* migrate pob-version to @pob/version and add initial bun support
+* try to implement publish with bun
+* update npmPreapprovedPackages in CoreYarnGenerator
+
+### Bug Fixes
+
+* simplify script path handling in CommonLintGenerator and CommonTestingGenerator
+
+Version bump for dependency: @pob/sort-object
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: @pob/root
+
+
 ## [30.0.0](https://github.com/christophehurpeau/pob/compare/pob@29.9.0...pob@30.0.0) (2025-11-24)
 
 ### ⚠ BREAKING CHANGES

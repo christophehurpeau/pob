@@ -1,6 +1,6 @@
 {
   "name": "babel-preset-pob-env",
-  "version": "16.1.2",
+  "version": "16.1.3",
   "description": "pob babel preset env",
   "keywords": [
     "babel-preset"
@@ -42,7 +42,7 @@
     "@babel/plugin-transform-modules-commonjs": "^7.27.1",
     "@babel/preset-typescript": "^7.27.1",
     "babel-plugin-discard-module-references": "^1.1.2",
-    "babel-plugin-fix-class-properties-uninitialized": "11.0.0",
+    "babel-plugin-fix-class-properties-uninitialized": "11.0.1",
     "babel-preset-optimizations": "^2.0.0"
   },
   "devDependencies": {

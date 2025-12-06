@@ -3,13 +3,13 @@ interface Dependencies {
   "@babel/preset-env": "7.28.5";
   "@babel/preset-react": "7.28.5";
   "@babel/runtime": "7.28.4";
-  "@playwright/test": "1.56.1";
+  "@playwright/test": "1.57.0";
   "@pob/esbuild": "5.1.1";
   "@pob/eslint-config": "62.0.0";
   "@pob/eslint-config-typescript": "62.0.0";
   "@pob/eslint-config-typescript-react": "62.0.0";
-  "@pob/pretty-pkg": "13.1.0";
-  "@pob/rollup-esbuild": "7.4.0";
+  "@pob/pretty-pkg": "13.2.0";
+  "@pob/rollup-esbuild": "7.4.1";
   "@pob/rollup-typescript": "8.0.0";
   "@types/jest": "30.0.0";
   "@types/node": "22.19.1";
@@ -20,7 +20,7 @@ interface Dependencies {
   jest: "30.2.0";
   "jest-junit-reporter": "1.1.0";
   pinst: "3.0.0";
-  "pob-babel": "44.5.0";
+  "pob-babel": "44.5.1";
   prettier: "3.6.2";
   "repository-check-dirty": "11.0.0";
   rollup: "4.53.3";

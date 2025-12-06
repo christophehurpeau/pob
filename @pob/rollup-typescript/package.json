@@ -1,6 +1,6 @@
 {
   "name": "@pob/rollup-typescript",
-  "version": "8.0.0",
+  "version": "8.0.1",
   "description": "rollup configuration with typescript for pob",
   "keywords": [],
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.0.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@21.0.0...pob-dependencies@21.0.1) (2025-12-06)
+
+Version bump for dependency: @pob/esbuild
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: @pob/rollup-typescript
+Version bump for dependency: pob-babel
+Version bump for dependency: repository-check-dirty
+
+
 ## [21.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@20.6.0...pob-dependencies@21.0.0) (2025-11-24)
 
 ### ⚠ BREAKING CHANGES

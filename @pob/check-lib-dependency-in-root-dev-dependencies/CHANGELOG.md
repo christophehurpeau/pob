@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.1](https://github.com/christophehurpeau/pob/compare/@pob/check-lib-dependency-in-root-dev-dependencies@11.0.0...@pob/check-lib-dependency-in-root-dev-dependencies@11.0.1) (2025-12-06)
+
+Note: no notable changes
+
+
 ## [11.0.0](https://github.com/christophehurpeau/pob/compare/@pob/check-lib-dependency-in-root-dev-dependencies@10.0.2...@pob/check-lib-dependency-in-root-dev-dependencies@11.0.0) (2025-08-24)
 
 ### ⚠ BREAKING CHANGES

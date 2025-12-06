@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.1](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@11.0.0...repository-check-dirty@11.0.1) (2025-12-06)
+
+Note: no notable changes
+
+
 ## [11.0.0](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@10.0.2...repository-check-dirty@11.0.0) (2025-08-24)
 
 ### ⚠ BREAKING CHANGES
