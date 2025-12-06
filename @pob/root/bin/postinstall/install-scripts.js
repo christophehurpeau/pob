@@ -15,8 +15,10 @@ export default function installScripts({ pkg, pm }) {
 
   if (pm.name === "yarn") {
     delete pkg.scripts.postinstallDev;
+    delete pkg.scripts.prepare;
     addPobRootPostinstallInScript(pkg, "postinstall");
   } else {
+    delete pkg.scripts.postinstall;
     addPobRootPostinstallInScript(pkg, "prepare");
   }
 

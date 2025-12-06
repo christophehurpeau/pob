@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@20.1.0...@pob/root@20.2.0) (2025-12-06)
+
+### Features
+
+* refine script management for yarn and improve handling of postinstall and prepare scripts
+
+## [20.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@20.0.3...@pob/root@20.1.0) (2025-12-06)
+
+### Features
+
+* include .github directory in lint-staged config for YAML and Markdown files
+* update actions/checkout from v5 to v6 in workflow files
+
 ## [20.0.3](https://github.com/christophehurpeau/pob/compare/@pob/root@20.0.2...@pob/root@20.0.3) (2025-12-06)
 
 ### Bug Fixes

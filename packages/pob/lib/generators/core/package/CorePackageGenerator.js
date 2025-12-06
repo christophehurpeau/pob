@@ -357,17 +357,29 @@ export default class CorePackageGenerator extends Generator {
     };
     if (this.options.inMonorepo || inMonorepo || pkg.private) {
       uninstallPostinstallScript("postinstallDev");
-      if (this.options.isRoot) {
-        installPostinstallScript("postinstall");
+      if (this.options.packageManager === "yarn") {
+        uninstallPostinstallScript("prepare");
+        if (this.options.isRoot) {
+          installPostinstallScript("postinstall");
+        } else {
+          uninstallPostinstallScript("postinstall");
+        }
       } else {
         uninstallPostinstallScript("postinstall");
+        if (this.options.isRoot) {
+          installPostinstallScript("prepare");
+        } else {
+          uninstallPostinstallScript("prepare");
+        }
       }
     } else if (this.options.packageManager === "yarn") {
       uninstallPostinstallScript("postinstallDev");
+      uninstallPostinstallScript("prepare");
       installPostinstallScript("postinstall");
     } else {
       uninstallPostinstallScript("postinstallDev");
-      installPostinstallScript("postinstall");
+      uninstallPostinstallScript("postinstall");
+      installPostinstallScript("prepare");
     }
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);

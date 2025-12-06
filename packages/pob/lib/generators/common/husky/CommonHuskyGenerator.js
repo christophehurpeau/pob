@@ -110,7 +110,6 @@ export default class CommonHuskyGenerator extends Generator {
       delete pkg.scripts.commitmsg;
       delete pkg.scripts.precommit;
       delete pkg.scripts.prepublish;
-      delete pkg.scripts.prepare;
       delete pkg.scripts.preparecommitmsg;
       delete pkg.scripts.postcheckout;
       delete pkg.scripts.postmerge;
