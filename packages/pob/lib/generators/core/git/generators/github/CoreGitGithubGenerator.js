@@ -120,7 +120,7 @@ export default class CoreGitGithubGenerator extends Generator {
     });
 
     if (!GITHUB_TOKEN && process.env.CI !== "true") {
-      throw new Error(
+      console.warn(
         "Missing POB_GITHUB_TOKEN. Create one with https://github.com/settings/tokens/new?scopes=repo&description=POB%20Generator and add it in your env variables.",
       );
     }
