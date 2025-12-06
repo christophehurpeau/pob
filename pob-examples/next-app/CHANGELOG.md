@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.20.3](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.20.2...@pob-example/next-app@0.20.3) (2025-12-06)
+
+### Bug Fixes
+
+* **deps:** update dependency next to v16.0.7 [security] ([#2668](https://github.com/christophehurpeau/pob/issues/2668))
+
 ## [0.20.2](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.20.1...@pob-example/next-app@0.20.2) (2025-12-06)
 
 ### Bug Fixes
