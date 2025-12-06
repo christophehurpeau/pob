@@ -34,7 +34,7 @@ jobs:
     steps:
       - uses: actions/checkout@v5
         with:
-          token: ${{ secrets.GH_TOKEN }}
+          ssh-key: ${{ secrets.PUSH_DEPLOY_KEY }}
           fetch-depth: 0
           fetch-tags: true
 <% if (packageManager === 'yarn') { -%>

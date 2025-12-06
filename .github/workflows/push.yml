@@ -9,6 +9,8 @@ jobs:
 
     steps:
       - uses: actions/checkout@v5
+        with:
+          ssh-key: ${{ secrets.PUSH_DEPLOY_KEY }}
 
       - name: Enable Corepack
         run: corepack enable
