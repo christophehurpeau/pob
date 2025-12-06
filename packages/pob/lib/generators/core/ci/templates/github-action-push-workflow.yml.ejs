@@ -12,7 +12,7 @@ jobs:
         node-version: [<% if (!onlyLatestLTS && nodeMaintenanceMajorVersion !== nodeLatestMajorVersion) { -%><%= nodeMaintenanceMajorVersion %>.x, <% } -%><%= nodeLatestMajorVersion %>.x]
 
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
 
 <% if (packageManager === 'yarn') { -%>
       - name: Enable Corepack
