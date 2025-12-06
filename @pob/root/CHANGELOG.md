@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [20.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@20.3.0...@pob/root@20.4.0) (2025-12-06)
+
+Version bump for dependency: @pob/version
+
+
 ## [20.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@20.2.2...@pob/root@20.3.0) (2025-12-06)
 
 Version bump for dependency: @pob/version
