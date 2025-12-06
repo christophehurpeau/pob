@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.1.0](https://github.com/christophehurpeau/pob/compare/pob@31.0.2...pob@31.1.0) (2025-12-06)
+
+### Features
+
+* update actions/checkout from v5 to v6 in workflow files
+
+Version bump for dependency: @pob/root
+
+
 ## [31.0.2](https://github.com/christophehurpeau/pob/compare/pob@31.0.1...pob@31.0.2) (2025-12-06)
 
 ### Bug Fixes

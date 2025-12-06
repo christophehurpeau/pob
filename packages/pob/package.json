@@ -1,6 +1,6 @@
 {
   "name": "pob",
-  "version": "31.0.2",
+  "version": "31.1.0",
   "description": "Pile of bones, library generator with git/babel/typescript/typedoc/readme/jest",
   "keywords": [
     "skeleton"
@@ -73,7 +73,7 @@
     "yeoman-generator": "7.5.1"
   },
   "devDependencies": {
-    "@pob/root": "20.0.3",
+    "@pob/root": "20.1.0",
     "@types/node": "22.19.1"
   }
 }
