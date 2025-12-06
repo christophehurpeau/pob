@@ -411,8 +411,8 @@ export default class PobLibGenerator extends Generator {
 
     const withBabel = Boolean(
       pkg.pob.babelEnvs ||
-        (!pkg.pob.bundler && pkg.pob.typescript !== true && pkg.pob.envs) ||
-        pkg.pob.bundler === "rollup-babel",
+      (!pkg.pob.bundler && pkg.pob.typescript !== true && pkg.pob.envs) ||
+      pkg.pob.bundler === "rollup-babel",
     );
     const withTypescript =
       withBabel || pkg.pob.typescript === true || pkg.pob.bundler === "tsc";

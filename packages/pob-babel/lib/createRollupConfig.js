@@ -51,7 +51,7 @@ export default function createRollupConfig({
     (pobConfig.jsx !== false &&
       Boolean(
         (pkg.dependencies && pkg.dependencies.react) ||
-          (pkg.peerDependencies && pkg.peerDependencies.react),
+        (pkg.peerDependencies && pkg.peerDependencies.react),
       ));
 
   const babelRuntimeVersion =
