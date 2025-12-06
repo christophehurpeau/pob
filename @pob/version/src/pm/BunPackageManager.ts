@@ -13,7 +13,7 @@ export const BunPackageManager: PackageManager = {
     if (options?.provenance) {
       // Use bun pack for provenance support
       // See: https://github.com/oven-sh/bun/issues/15601
-      const packResult = await execCommand(workspace, ["bun", "pack"]);
+      const packResult = await execCommand(workspace, ["bun", "pm", "pack"]);
       // Extract .tgz filename from output (find line ending with .tgz)
       const lines = packResult.stdout.trim().split("\n");
       const tgzPath =

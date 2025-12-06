@@ -169,7 +169,7 @@ const BunPackageManager = {
   },
   async publish(workspace, options) {
     if (options?.provenance) {
-      const packResult = await execCommand(workspace, ["bun", "pack"]);
+      const packResult = await execCommand(workspace, ["bun", "pm", "pack"]);
       const lines = packResult.stdout.trim().split("\n");
       const tgzPath = lines.find((line) => line.endsWith(".tgz")) ?? lines.at(-1);
       if (!tgzPath) {
