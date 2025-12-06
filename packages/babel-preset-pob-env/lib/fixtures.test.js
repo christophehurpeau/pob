@@ -1,4 +1,5 @@
 import fs from "node:fs";
+import { URL } from "node:url";
 import { describe, expect, test } from "vitest";
 import { transform } from "@babel/core";
 import preset from "./index.js";
