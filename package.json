@@ -41,8 +41,8 @@
   "prettier": "@pob/root/prettier-config",
   "devDependencies": {
     "@babel/core": "7.28.5",
-    "@pob/eslint-config": "62.0.0",
-    "@pob/eslint-config-typescript": "62.0.0",
+    "@pob/eslint-config": "64.2.0",
+    "@pob/eslint-config-typescript": "64.2.0",
     "@pob/rollup-esbuild": "workspace:*",
     "@pob/root": "workspace:*",
     "@pob/version": "workspace:*",
