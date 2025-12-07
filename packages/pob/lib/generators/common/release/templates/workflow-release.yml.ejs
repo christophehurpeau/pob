@@ -53,6 +53,7 @@ jobs:
         with:
           node-version: <%= nodeLatestMajorVersion %>
           check-latest: true
+          registry-url: "https://registry.npmjs.org"
 
       - name: Check git tags
         if: github.ref == 'refs/heads/main' && !inputs.allow-no-tags
@@ -88,6 +89,9 @@ jobs:
       - name: New version
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
+<% if (packageManager === "bun") { -%>
+          npm install -g npm@latest
+<% } -%>
           <%= packageManager %> run pob-version <% if (enablePublish && packageManager === "bun") { %>--publish <% } %>--create-release=github <% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %> -m 'chore: release <%- isMonorepoIndependent ? '' : '%v ' %>[skip ci]<%- isMonorepoIndependent ? '\\n\\n%t' : '' %>'
         env:
           HUSKY: 0
