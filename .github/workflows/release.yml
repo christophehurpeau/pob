@@ -71,7 +71,7 @@ jobs:
         run: |
           yarn run pob-version --create-release=github  --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }} -m 'chore: release [skip ci]\n\n%t'
         env:
-          HUSKY: 0
+          POB_GIT_HOOKS: 0
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 

@@ -36,7 +36,7 @@ if (pm.name !== "yarn" && pm.name !== "npm" && pm.name !== "bun") {
 }
 
 (await import("./postinstall/update-yarn.js")).default({ pkg, pm });
-(await import("./postinstall/install-husky.js")).default({ pkg, pm });
+(await import("./postinstall/install-githooks.js")).default({ pkg, pm });
 (await import("./postinstall/install-github-workflows.js")).default({
   pkg,
   pm,

@@ -73,7 +73,6 @@
     "conventional-changelog-conventionalcommits": "^9.1.0",
     "conventional-changelog-writer": "^8.2.0",
     "conventional-commits-parser": "^6.2.1",
-    "husky": "~9.1.7",
     "json5": "^2.2.3",
     "lint-staged": "16.2.7",
     "pob-dependencies": "workspace:*",

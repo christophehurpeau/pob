@@ -1,6 +1,6 @@
+import { spawnSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
-import husky from "husky";
 import { assertYarnBerry } from "../../lib/assert-yarn-berry.js";
 import { getPackageManagerCommands } from "./packageManagerHelpers.js";
 
@@ -11,29 +11,37 @@ const ensureLegacyHuskyConfigDeleted = () => {
   try {
     fs.unlinkSync(path.resolve(".huskyrc"));
   } catch {}
+  try {
+    fs.rmSync(path.resolve(".husky"), { recursive: true });
+  } catch {}
 };
 
 const ensureHuskyNotInDevDependencies = (pkg) => {
   if (pkg.devDependencies && pkg.devDependencies.husky) {
     throw new Error(
-      "Found husky in devDependencies. Husky is provided by @pob/root, please remove",
+      "Found husky in devDependencies. Husky is in conflict with @pob/root, please remove",
     );
   }
 };
 
 const writeHook = (hookName, hookContent) => {
   fs.writeFileSync(
-    path.resolve(`.husky/${hookName}`),
-    `${hookContent.trim()}\n`,
+    path.resolve(`.git-hooks/${hookName}`),
+    `#!/usr/bin/env sh
+[ "$POB_GIT_HOOKS" = "2" ] && set -x
+[ "$POB_GIT_HOOKS" = "0" ] && exit 0
+[ "$HUSKY" = "0" ] && exit 0
+
+${hookContent.trim()}\n`,
     {
-      mode: "755",
+      mode: 0o755,
     },
   );
 };
 
 const ensureHookDeleted = (hookName) => {
   try {
-    fs.unlinkSync(path.resolve(`.husky/${hookName}`));
+    fs.unlinkSync(path.resolve(`.git-hooks/${hookName}`));
   } catch {}
 };
 
@@ -45,7 +53,16 @@ const readYarnConfigFile = () => {
   }
 };
 
-export default function installHusky({ pkg, pm }) {
+export default function installGitHooks({ pkg, pm }) {
+  if (
+    process.env.POB_GIT_HOOKS === "0" ||
+    process.env.POB_GIT_HOOKS === "false"
+  ) {
+    console.log(
+      "Skipping git hooks installation due to POB_GIT_HOOKS environment variable",
+    );
+    return;
+  }
   assertYarnBerry(pm);
   const yarnConfig = readYarnConfigFile();
   const isYarnPnp = yarnConfig
@@ -67,7 +84,7 @@ export default function installHusky({ pkg, pm }) {
     fs.existsSync(path.resolve("scripts/transcrypt"));
 
   try {
-    fs.mkdirSync(path.resolve(".husky"));
+    fs.mkdirSync(path.resolve(".git-hooks"));
   } catch {}
 
   const {
@@ -157,5 +174,18 @@ done
     ensureHookDeleted("pre-push");
   }
 
-  process.stdout.write(husky(".husky"));
+  const { status, stderr } = spawnSync("git", [
+    "config",
+    "core.hooksPath",
+    ".git-hooks",
+  ]);
+  if (status == null) {
+    console.error(
+      "@pob/root postinstall: Failed to set git core.hooksPath: git command not found",
+    );
+  } else if (status) {
+    console.error(
+      `@pob/root postinstall: Failed to set git core.hooksPath: ${stderr.toString()}`,
+    );
+  }
 }

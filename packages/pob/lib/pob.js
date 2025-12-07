@@ -305,6 +305,8 @@ if (action === "migrate-to-monorepo") {
         ".vscode",
         ".github",
         ".husky",
+        ".git-hooks",
+        ".cursor",
         ".yarn",
         ".yarnrc.yml",
         "eslint.config.js",
@@ -313,6 +315,7 @@ if (action === "migrate-to-monorepo") {
         "renovate.json",
         "packages",
         "lint-staged.config.js",
+        "lint-staged.config.mjs",
         "yarn.lock",
       ].includes(filename)
     ) {
