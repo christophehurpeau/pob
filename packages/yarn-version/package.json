@@ -46,6 +46,6 @@
     "@pob/version": "workspace:*"
   },
   "devDependencies": {
-    "@types/node": "22.19.1"
+    "@types/node": "22.19.3"
   }
 }
