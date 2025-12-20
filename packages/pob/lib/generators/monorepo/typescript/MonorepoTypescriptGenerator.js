@@ -1,5 +1,6 @@
 import Generator from "yeoman-generator";
 import * as packageUtils from "../../../utils/package.js";
+import { packageManagerRun } from "../../../utils/packageManagerUtils.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
 export default class MonorepoTypescriptGenerator extends Generator {
@@ -45,6 +46,12 @@ export default class MonorepoTypescriptGenerator extends Generator {
       required: false,
       default: false,
     });
+
+    this.option("packageManager", {
+      type: String,
+      required: false,
+      default: "yarn",
+    });
   }
 
   writing() {
@@ -82,7 +89,14 @@ export default class MonorepoTypescriptGenerator extends Generator {
       delete pkg.scripts.postbuild;
 
       if (!this.options.isAppProject && !this.options.checkOnly) {
-        pkg.scripts.build += " && yarn run build:definitions";
+        if (pkg.scripts.build) {
+          pkg.scripts.build += ` && ${packageManagerRun(this.options.packageManager, "build:definitions")}`;
+        } else {
+          pkg.scripts.build = packageManagerRun(
+            this.options.packageManager,
+            "build:definitions",
+          );
+        }
       }
     } else if (pkg.scripts) {
       delete pkg.scripts.tsc;

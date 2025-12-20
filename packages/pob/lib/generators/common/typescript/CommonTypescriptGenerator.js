@@ -131,7 +131,8 @@ export default class CommonTypescriptGenerator extends Generator {
         (pkg.pob?.bundler === "rollup-babel" && pkg.pob.envs) ||
         [];
       const withBabel = babelEnvs.length > 0;
-      const withTypescript = withBabel || pkg.pob?.typescript === true;
+      const withTypescript =
+        withBabel || pkg.pob?.typescript === true || pkg.pob?.bundler === "tsc";
       const jsx = (withBabel || withTypescript) && pkg.pob.jsx === true;
 
       if (withBabel) {

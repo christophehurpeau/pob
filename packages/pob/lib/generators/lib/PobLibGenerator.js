@@ -24,7 +24,7 @@ export default class PobLibGenerator extends Generator {
     this.option("packageManager", {
       type: String,
       default: "yarn",
-      description: "yarn or npm",
+      description: "yarn, bun or npm",
     });
 
     this.option("yarnNodeLinker", {
@@ -274,6 +274,11 @@ export default class PobLibGenerator extends Generator {
         pkg.pob.envs) ||
       [];
 
+    const packageManager =
+      inMonorepo && !inMonorepo.root
+        ? inMonorepo.rootPackageManager
+        : this.options.packageManager;
+
     const withBabel = babelEnvs.length > 0;
     const withTypescript =
       withBabel || pkg.pob.typescript === true || pkg.pob.bundler === "tsc";
@@ -319,7 +324,7 @@ export default class PobLibGenerator extends Generator {
       documentation: !!this.pobjson.documentation,
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
       ci: this.options.ci,
-      packageManager: this.options.packageManager,
+      packageManager,
       isApp: false,
       splitCIJobs: false,
       srcDirectory: withBabel || withTypescript ? "src" : "lib",
@@ -338,7 +343,7 @@ export default class PobLibGenerator extends Generator {
       testRunner: inMonorepo
         ? inMonorepo.pobMonorepoConfig.testRunner
         : this.pobjson.testing?.runner,
-      packageManager: this.options.packageManager,
+      packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
       ignorePaths: withBabel || withTypescript ? "/dist" : "",
     });
@@ -358,7 +363,7 @@ export default class PobLibGenerator extends Generator {
 
     this.composeWith("pob:common:release", {
       enable: !inMonorepo && this.pobjson.testing,
-      packageManager: this.options.packageManager,
+      packageManager,
       enablePublish: true,
       withBabel,
       withTypescript,
@@ -371,7 +376,7 @@ export default class PobLibGenerator extends Generator {
     this.composeWith("pob:core:vscode", {
       root: !inMonorepo,
       monorepo: false,
-      packageManager: this.options.packageManager,
+      packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
       typescript: withBabel || withTypescript,
       testing: this.pobjson.testing,
@@ -411,8 +416,8 @@ export default class PobLibGenerator extends Generator {
 
     const withBabel = Boolean(
       pkg.pob.babelEnvs ||
-      (!pkg.pob.bundler && pkg.pob.typescript !== true && pkg.pob.envs) ||
-      pkg.pob.bundler === "rollup-babel",
+        (!pkg.pob.bundler && pkg.pob.typescript !== true && pkg.pob.envs) ||
+        pkg.pob.bundler === "rollup-babel",
     );
     const withTypescript =
       withBabel || pkg.pob.typescript === true || pkg.pob.bundler === "tsc";

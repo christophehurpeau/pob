@@ -87,7 +87,7 @@ export default class PobMonorepoGenerator extends Generator {
     this.option("packageManager", {
       type: String,
       default: "yarn",
-      description: "yarn or npm",
+      description: "yarn, bun or npm",
     });
 
     this.option("yarnNodeLinker", {
@@ -342,6 +342,7 @@ export default class PobMonorepoGenerator extends Generator {
       packagePaths: JSON.stringify(packagePaths),
       testRunner: this.pobLernaConfig.testRunner,
       onlyLatestLTS: this.options.onlyLatestLTS,
+      packageManager: this.options.packageManager,
     });
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);

@@ -4,6 +4,7 @@ import Generator from "yeoman-generator";
 import { quoteArg } from "../../../utils/execUtils.js";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import * as packageUtils from "../../../utils/package.js";
+import { packageManagerRunWithCwd } from "../../../utils/packageManagerUtils.js";
 import {
   copyAndFormatTpl,
   writeAndFormatJson,
@@ -64,7 +65,7 @@ export default class CommonTestingGenerator extends Generator {
     this.option("packageManager", {
       type: String,
       default: "yarn",
-      description: "yarn or npm",
+      description: "yarn, bun or npm",
     });
 
     this.option("isApp", {
@@ -277,6 +278,11 @@ export default class CommonTestingGenerator extends Generator {
           }`;
         }
         case "node": {
+          if (this.options.packageManager === "bun") {
+            throw new Error(
+              "'node' test runner is configured with the 'bun' package manager. Please set to 'bun' instead.",
+            );
+          }
           if (!workspacesPattern && this.options.monorepo) {
             throw new Error("Invalid workspacesPattern");
           }
@@ -294,6 +300,19 @@ export default class CommonTestingGenerator extends Generator {
           }${this.fs.exists("src/test-setup.ts") ? "--import ./src/test-setup.ts " : ""}--test${experimentalTestCoverage && (coverage || coverageJson) ? " --experimental-test-coverage" : ""} ${this.options.monorepo ? `${workspacesPattern}/*/` : ""}${`${
             hasTestFolder ? "test/*" : `${this.options.srcDirectory}/**/*.test`
           }.${this.options.typescript ? "ts" : "js"}`}`;
+        }
+        case "bun": {
+          if (this.options.packageManager !== "bun") {
+            throw new Error(
+              "'bun' test runner cannot be set without bun as packageManager.",
+            );
+          }
+
+          return `TZ=UTC bun test${watch ? " --watch" : ""}${
+            coverage || coverageJson
+              ? ` --coverage ${coverageJson ? "--coverage-report=json" : ""}`
+              : ""
+          }`;
         }
         case "vitest": {
           return `TZ=UTC ${
@@ -447,7 +466,11 @@ export default class CommonTestingGenerator extends Generator {
               delete pkg.scripts["test:coverage"];
             }
             packageUtils.addScripts(pkg, {
-              test: `yarn ../../ run test -- ${quoteArg(path.relative("../..", "."))}`,
+              test: `${packageManagerRunWithCwd(
+                this.options.packageManager,
+                "../..",
+                "test",
+              )} -- ${quoteArg(path.relative("../..", "."))}`,
             });
           } else {
             const withTypescript =

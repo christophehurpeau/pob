@@ -3,6 +3,10 @@ import Generator from "yeoman-generator";
 import { quoteArg } from "../../../utils/execUtils.js";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import * as packageUtils from "../../../utils/package.js";
+import {
+  packageManagerRun,
+  packageManagerRunWithCwd,
+} from "../../../utils/packageManagerUtils.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 import { appIgnorePaths } from "../../app/ignorePaths.js";
 
@@ -107,7 +111,7 @@ export default class CommonFormatLintGenerator extends Generator {
     this.option("packageManager", {
       type: String,
       default: "yarn",
-      description: "yarn or npm",
+      description: "yarn, bun or npm",
     });
 
     this.option("yarnNodeLinker", {
@@ -522,15 +526,15 @@ export default class CommonFormatLintGenerator extends Generator {
 
       packageUtils.addScripts(pkg, {
         "lint:eslint": globalEslint
-          ? `yarn ../.. run eslint ${args} ${quoteArg(path.relative("../..", "."))}`
+          ? `${packageManagerRunWithCwd(this.options.packageManager, "../..", "eslint")} ${args} ${quoteArg(path.relative("../..", "."))}`
           : `eslint ${args} .`,
         lint: `${
           useTypescript && !composite ? "tsc && " : ""
-        }yarn run lint:eslint`,
+        }${packageManagerRun(this.options.packageManager, "lint:eslint")}`,
       });
 
       if (!inMonorepo) {
-        pkg.scripts.lint = `yarn run lint:prettier && ${pkg.scripts.lint}`;
+        pkg.scripts.lint = `${this.options.packageManager} run lint:prettier && ${pkg.scripts.lint}`;
         packageUtils.addScripts(pkg, {
           "lint:prettier": "pob-root-prettier --check .",
           "lint:prettier:fix": "pob-root-prettier --write .",
