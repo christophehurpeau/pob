@@ -40,21 +40,21 @@ jobs:
 
 <% if (typedoc) { -%>
       - name: Run tsc for tsc cache
-        run: yarn tsc
+        run: <%= packageManager %> tsc
 
       - name: Generate Typedoc
-        run: yarn typedoc --tsconfig tsconfig.doc.json
+        run: <%= packageManager %> typedoc --tsconfig tsconfig.doc.json
 <% } -%>
 
 <% if (testing) { -%>
 <% if (testRunner === 'node') { -%>
 
       - name: Generate Coverage
-        run: NODE_V8_COVERAGE=./docs/coverage yarn test:coverage
+        run: NODE_V8_COVERAGE=./docs/coverage <%= packageManager %> run test:coverage
 <% } else {-%>
 
       - name: Generate Coverage
-        run: yarn test:coverage:json<%- testRunner === 'jest' ? " --coverageDirectory=docs/coverage/" : "" %>
+        run: <%= packageManager %> run test:coverage:json<%- testRunner === 'jest' ? " --coverageDirectory=docs/coverage/" : "" %>
 <% } -%>
 <% } -%>
 
