@@ -65,7 +65,7 @@ jobs:
 <% if (typescript) { -%>
 
       - name: Typescript
-        run: yarn run tsc
+        run: <%= packageManager %> run tsc
         if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
 <% } -%>
 
@@ -76,7 +76,7 @@ jobs:
 
       - name: Check nothing was forgotten before commit
         if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
-        run: <%= packageManager === 'npm' ? 'npx' : 'yarn run' %> repository-check-dirty
+        run: <%= packageManager === 'npm' ? 'npx' : packageManager + ' run' %> repository-check-dirty
 <% } -%>
 <% if (codecov) { -%>
 
