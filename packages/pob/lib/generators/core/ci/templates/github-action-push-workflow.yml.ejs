@@ -55,7 +55,7 @@ jobs:
 <% } -%>
 <% if (build) { -%>
       - name: Build
-        run: yarn run build
+        run: <% packageManager %> run build
         if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
 
 <% } -%>
