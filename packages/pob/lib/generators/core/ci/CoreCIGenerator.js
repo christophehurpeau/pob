@@ -83,6 +83,12 @@ export default class CoreCIGenerator extends Generator {
       description: "split CI jobs for faster result",
     });
 
+    this.option("packageManager", {
+      type: String,
+      default: "yarn",
+      description: "yarn, npm or bun",
+    });
+
     this.option("disableYarnGitCache", {
       type: Boolean,
       required: false,
