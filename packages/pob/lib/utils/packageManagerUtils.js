@@ -2,6 +2,7 @@ import { quoteArg } from "./execUtils.js";
 
 export const packageManagerRun = (packageManager, script) => {
   switch (packageManager) {
+    case undefined:
     case "yarn":
       return `yarn run ${script}`;
     case "npm":
