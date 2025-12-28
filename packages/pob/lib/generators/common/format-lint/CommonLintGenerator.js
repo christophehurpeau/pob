@@ -221,16 +221,11 @@ export default class CommonFormatLintGenerator extends Generator {
       this.fs.delete(this.destinationPath(".prettierignore"));
     }
 
-    if (pkg.devDependencies) {
-      if (pkg.devDependencies["@pob/eslint-config-babel"]) {
-        packageUtils.addDevDependencies(pkg, ["@pob/eslint-config-typescript"]);
-      }
-    }
-
     packageUtils.removeDevDependencies(pkg, [
       "@pob/eslint-config-babel",
       "@pob/eslint-config-babel-node",
       "@pob/eslint-config-node",
+      "@pob/eslint-config-typescript",
       "@pob/eslint-config-typescript-node",
       "babel-eslint",
       "eslint-config-pob",
@@ -334,12 +329,10 @@ export default class CommonFormatLintGenerator extends Generator {
         if ((inMonorepo && inMonorepo.root) || this.options.monorepo) {
           if (this.options.typescript) {
             packageUtils.updateDevDependenciesIfPresent(pkg, [
-              "@pob/eslint-config-typescript",
               "@pob/eslint-config-typescript-react",
             ]);
           } else if (pkg.name !== "@pob/eslint-config-monorepo") {
             packageUtils.removeDevDependencies(pkg, [
-              "@pob/eslint-config-typescript",
               "@pob/eslint-config-typescript-react",
             ]);
           }
@@ -349,9 +342,6 @@ export default class CommonFormatLintGenerator extends Generator {
             ["@typescript-eslint/eslint-plugin", "@typescript-eslint/parser"],
           );
         } else {
-          packageUtils.addOrRemoveDevDependencies(pkg, useTypescript, [
-            "@pob/eslint-config-typescript",
-          ]);
           packageUtils.addOrRemoveDevDependencies(
             pkg,
             useTypescript && shouldHavePluginsDependencies,
@@ -369,7 +359,7 @@ export default class CommonFormatLintGenerator extends Generator {
       if (pkg.name === "@pob/eslint-config-monorepo") {
         return {
           imports: [
-            'import pobTypescriptConfig from "@pob/eslint-config-typescript"',
+            'import pobConfig from "@pob/eslint-config"',
             'import pobTypescriptConfigReact from "@pob/eslint-config-typescript-react"',
           ],
           flatCascade: [
@@ -380,9 +370,7 @@ export default class CommonFormatLintGenerator extends Generator {
 
       return {
         imports: [
-          useTypescript
-            ? 'import pobTypescriptConfig from "@pob/eslint-config-typescript"'
-            : 'import pobConfig from "@pob/eslint-config"',
+          'import pobConfig from "@pob/eslint-config"',
           useTypescript &&
             hasReact &&
             'import pobTypescriptConfigReact from "@pob/eslint-config-typescript-react"',
@@ -401,17 +389,16 @@ export default class CommonFormatLintGenerator extends Generator {
           if (!hasReact) {
             return [
               useNode
-                ? "...pobTypescriptConfig(import.meta.url).configs.node"
-                : "...pobTypescriptConfig(import.meta.url).configs.base",
+                ? "...pobConfig(import.meta.url).configs.node"
+                : "...pobConfig(import.meta.url).configs.base",
             ];
           }
 
           return [
             useNode
-              ? "...pobTypescriptConfig(import.meta.url).configs.node"
-              : "...pobTypescriptConfig(import.meta.url).configs.base",
-            this.options.isApp &&
-              "...pobTypescriptConfig(import.meta.url).configs.app",
+              ? "...pobConfig(import.meta.url).configs.node"
+              : "...pobConfig(import.meta.url).configs.base",
+            this.options.isApp && "...pobConfig(import.meta.url).configs.app",
             pkg.dependencies?.["react-native-web"] &&
               '...pobTypescriptConfigReact(import.meta.url).configs["react-native-web"]',
           ];

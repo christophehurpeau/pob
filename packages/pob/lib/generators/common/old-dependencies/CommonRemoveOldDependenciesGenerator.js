@@ -8,6 +8,7 @@ export default class CommonRemoveOldDependenciesGenerator extends Generator {
     // old pob dependencies
     packageUtils.removeDependencies(pkg, ["flow-runtime"]);
     packageUtils.removeDevDependencies(pkg, [
+      "@pob/eslint-config-typescript", // integrated in @pob/eslint-config now that node supports ts by default.
       "ts-node",
       "tcomb",
       "tcomb-forked",
