@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import { readdirSync } from "node:fs";
-// eslint-disable-next-line n/no-unsupported-features/node-builtins
 import { glob } from "node:fs/promises";
 import { fileURLToPath } from "node:url";
 import runJscodeshift from "../lib/runJscodeshift.cjs";

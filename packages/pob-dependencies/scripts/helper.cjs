@@ -4,7 +4,7 @@ exports.pkgPath = require.resolve("../package.json");
 
 exports.requireIfPossible = (packageJsonPath) => {
   try {
-    // eslint-disable-next-line import/no-dynamic-require
+    // eslint-disable-next-line import-x/no-dynamic-require
     return require(packageJsonPath);
   } catch (error) {
     console.error(`Failed to require ${packageJsonPath}`);

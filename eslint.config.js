@@ -1,10 +1,7 @@
-import pobTypescriptConfig, {
-  apply,
-  extensions,
-} from "@pob/eslint-config-typescript";
+import pobConfig, { apply, tsExtensions } from "@pob/eslint-config";
 import pluginJest from "eslint-plugin-jest";
 
-const { configs } = pobTypescriptConfig();
+const { configs } = pobConfig();
 
 export default [
   ...configs.node,
@@ -18,7 +15,7 @@ export default [
   ...apply({
     files: ["@pob/version/"],
     mode: "directory",
-    extensions,
+    extensions: tsExtensions,
     configs: [...configs.allowUnsafe, ...configs.app],
   }),
   ...apply({
@@ -34,12 +31,12 @@ export default [
     ],
   }),
   ...apply({
-    files: ["**/*.test.{js,ts}"],
+    files: ["**/*.test.{js,ts}", "vitest.config.js"],
     configs: [
       pluginJest.configs["flat/recommended"],
       {
         settings: {
-          "import/core-modules": ["vitest"],
+          "import-x/core-modules": ["vitest"],
         },
       },
     ],

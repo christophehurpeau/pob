@@ -6,7 +6,6 @@ interface Dependencies {
   "@playwright/test": "1.57.0";
   "@pob/esbuild": "5.1.2";
   "@pob/eslint-config": "62.0.0";
-  "@pob/eslint-config-typescript": "62.0.0";
   "@pob/eslint-config-typescript-react": "62.0.0";
   "@pob/pretty-pkg": "13.2.1";
   "@pob/rollup-esbuild": "7.4.2";

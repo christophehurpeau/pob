@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-use-before-define */
-// eslint-disable-next-line n/no-unsupported-features/node-builtins
 import fs, { glob } from "node:fs/promises";
 import path from "node:path";
 import type { PackageJson } from "type-fest";

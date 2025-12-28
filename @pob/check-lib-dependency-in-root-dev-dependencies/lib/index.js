@@ -1,4 +1,4 @@
-/* eslint-disable import/no-dynamic-require */
+/* eslint-disable import-x/no-dynamic-require */
 import { createRequire } from "node:module";
 
 export default function checkLibDependencyInRootDevDependencies(

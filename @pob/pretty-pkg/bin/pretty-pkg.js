@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
 import fs from "node:fs";
-// eslint-disable-next-line n/no-unsupported-features/node-builtins
 import { glob } from "node:fs/promises";
 import path from "node:path";
 import { override, write } from "../lib/index.js";

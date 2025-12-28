@@ -5,7 +5,6 @@ import pobDependencies from "pob-dependencies";
 import semver from "semver";
 import {
   pobEslintConfig,
-  pobEslintConfigTypescript,
   pobEslintConfigTypescriptReact,
 } from "./dependenciesPackages.cjs";
 import pobPkg from "./packagejson.js";
@@ -106,7 +105,7 @@ const getVersionFromDependencyName = (dependency) => {
       dependency,
     )
   ) {
-    return pobEslintConfigTypescript.dependencies[dependency];
+    return pobEslintConfig.dependencies[dependency];
   }
 
   // prevents cycle that lerna doesnt like

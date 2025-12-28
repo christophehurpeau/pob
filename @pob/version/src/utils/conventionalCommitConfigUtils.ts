@@ -1,4 +1,3 @@
-// eslint-disable-next-line import/no-unresolved
 import { loadPreset } from "conventional-changelog-preset-loader";
 import { UsageError } from "./UsageError.ts";
 import type { Preset } from "./conventionalChangelogUtils.ts";

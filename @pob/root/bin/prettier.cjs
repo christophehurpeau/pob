@@ -5,7 +5,7 @@
 const path = require("node:path");
 const pkg = require("prettier/package.json");
 
-// eslint-disable-next-line import/no-dynamic-require
+// eslint-disable-next-line import-x/no-dynamic-require
 require(
   path.join(
     "prettier",
