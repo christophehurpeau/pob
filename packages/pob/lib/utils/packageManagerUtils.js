@@ -15,6 +15,7 @@ export const packageManagerRun = (packageManager, script) => {
 
 export const packageManagerRunWithCwd = (packageManager, cwd, script) => {
   switch (packageManager) {
+    case undefined:
     case "yarn":
       return `yarn ${quoteArg(cwd)} run ${script}`;
     case "npm":

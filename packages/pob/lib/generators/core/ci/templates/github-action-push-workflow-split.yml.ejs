@@ -31,7 +31,7 @@ jobs:
 <% } -%>
 
       - name: Checks
-        run: <% packageManager %> run checks
+        run: <%= packageManager %> run checks
 
 <% } -%>
 <% if (build) { -%>
@@ -61,10 +61,10 @@ jobs:
 <% } -%>
 
       - name: Build
-        run: <% packageManager %> run build
+        run: <%= packageManager %> run build
 
       - name: Check nothing was forgotten before commit
-        run: <% packageManager %> run repository-check-dirty
+        run: <%= packageManager %> run repository-check-dirty
 
 <% } -%>
   lint:
@@ -89,15 +89,15 @@ jobs:
 <% } -%>
 
       - name: Prettier
-        run: <% packageManager %> run lint:prettier
+        run: <%= packageManager %> run lint:prettier
 <% if (typescript) { -%>
 
       - name: Typescript
-        run: <% packageManager %> run tsc
+        run: <%= packageManager %> run tsc
 <% } -%>
 
       - name: Eslint
-        run: <% packageManager %> run lint:eslint
+        run: <%= packageManager %> run lint:eslint
 <% if (testing) { -%>
 
   test:

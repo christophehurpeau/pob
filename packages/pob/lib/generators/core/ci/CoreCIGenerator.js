@@ -120,7 +120,7 @@ export default class CoreCIGenerator extends Generator {
         ),
         this.destinationPath(".github/workflows/push.yml"),
         {
-          packageManager: this.options.packageManager,
+          packageManager: this.options.packageManager || "yarn",
           disableYarnGitCache: this.options.disableYarnGitCache,
           testing,
           e2eTesting:
