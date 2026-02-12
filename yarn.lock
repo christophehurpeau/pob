@@ -3547,7 +3547,7 @@ __metadata:
     conventional-commits-parser: "npm:6.2.1"
     nightingale: "npm:18.1.0"
     semver: "npm:7.7.3"
-    type-fest: "npm:5.3.0"
+    type-fest: "npm:5.4.4"
     typescript: "npm:5.9.3"
   bin:
     pob-version: ./dist/index-node.mjs
@@ -13953,12 +13953,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"type-fest@npm:5.3.0, type-fest@npm:^4.37.0 || ^5.1.0":
-  version: 5.3.0
-  resolution: "type-fest@npm:5.3.0"
+"type-fest@npm:5.4.4, type-fest@npm:^4.37.0 || ^5.1.0":
+  version: 5.4.4
+  resolution: "type-fest@npm:5.4.4"
   dependencies:
     tagged-tag: "npm:^1.0.0"
-  checksum: 10c0/48fc415cc306ba3b808a9c6cbdab2a4cef9c552d8f12145d2813aec022eac1a04e9bf45bd57cd53b629d5a4aff2c957288e3598897ffdcc18ad285817675d389
+  checksum: 10c0/bf9c6d7df5383fd720aac71da8ce8690ff1c554459d19cf3c72d61eac98255dba57abe20c628f91f4116f66211791462fdafa90b2be2d7405a5a4c295e4d849d
   languageName: node
   linkType: hard
 
