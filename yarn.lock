@@ -3283,7 +3283,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob-example/next-app@workspace:pob-examples/next-app"
   dependencies:
-    "@types/node": "npm:22.19.1"
+    "@types/node": "npm:22.19.13"
     "@types/react": "npm:19.2.14"
     "@types/react-dom": "npm:19.2.3"
     next: "npm:16.1.6"
@@ -3304,7 +3304,7 @@ __metadata:
   resolution: "@pob/codemods@workspace:@pob/codemods"
   dependencies:
     "@types/jscodeshift": "npm:17.3.0"
-    "@types/node": "npm:22.19.1"
+    "@types/node": "npm:22.19.13"
     jscodeshift: "npm:17.3.0"
   bin:
     pob-migrate: ./bin/migrate.mjs
@@ -3498,7 +3498,7 @@ __metadata:
   resolution: "@pob/version@workspace:@pob/version"
   dependencies:
     "@pob/rollup-esbuild": "npm:8.1.0"
-    "@types/node": "npm:22.19.1"
+    "@types/node": "npm:22.19.13"
     "@types/semver": "npm:7.7.1"
     commander: "npm:14.0.2"
     conventional-changelog-conventionalcommits: "npm:9.1.0"
@@ -4146,12 +4146,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:22.19.1, @types/node@npm:>=18, @types/node@npm:>=18.19.0, @types/node@npm:>=22.19.1":
-  version: 22.19.1
-  resolution: "@types/node@npm:22.19.1"
+"@types/node@npm:*, @types/node@npm:22.19.13, @types/node@npm:>=18, @types/node@npm:>=18.19.0, @types/node@npm:>=22.19.1":
+  version: 22.19.13
+  resolution: "@types/node@npm:22.19.13"
   dependencies:
     undici-types: "npm:~6.21.0"
-  checksum: 10c0/6edd93aea86da740cb7872626839cd6f4a67a049d3a3a6639cb592c620ec591408a30989ab7410008d1a0b2d4985ce50f1e488e79c033e4476d3bec6833b0a2f
+  checksum: 10c0/ad8a0b6a69dd8ef663701573eca94ef6d20ce093f54f05bed823c826374eb1ea8b06e6f2c5d7f6cfc203b82dfd60293296bf80ea987ddb77775840bc2ef9f803
   languageName: node
   linkType: hard
 
@@ -11287,7 +11287,7 @@ __metadata:
     "@pob/rollup-esbuild": "npm:8.1.0"
     "@pob/rollup-typescript": "npm:8.0.1"
     "@types/jest": "npm:30.0.0"
-    "@types/node": "npm:22.19.1"
+    "@types/node": "npm:22.19.13"
     "@vitest/coverage-v8": "npm:4.0.18"
     alp-rollup-plugin-config: "npm:4.0.2"
     check-package-dependencies: "npm:10.5.0"
@@ -11337,7 +11337,7 @@ __metadata:
     "@pob/sort-pkg": "npm:12.1.1"
     "@prettier/sync": "npm:0.6.1"
     "@types/inquirer": "npm:9.0.9"
-    "@types/node": "npm:22.19.1"
+    "@types/node": "npm:22.19.13"
     "@yeoman/adapter": "npm:3.1.0"
     "@yeoman/types": "npm:1.8.0"
     eslint: "npm:9.39.3"
@@ -14212,7 +14212,7 @@ __metadata:
   resolution: "yarn-version@workspace:packages/yarn-version"
   dependencies:
     "@pob/version": "workspace:*"
-    "@types/node": "npm:22.19.1"
+    "@types/node": "npm:22.19.13"
   bin:
     yarn-version: ./yarn-version.mjs
   languageName: unknown
