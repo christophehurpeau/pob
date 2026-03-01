@@ -11922,7 +11922,6 @@ __metadata:
     pinst: "npm:3.0.0"
     pob-babel: "npm:44.5.3"
     prettier: "npm:3.7.4"
-    repository-check-dirty: "npm:11.0.1"
     rollup: "npm:4.59.0"
     semver: "npm:7.7.3"
     tslib: "npm:2.8.1"
@@ -12476,7 +12475,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"repository-check-dirty@npm:11.0.1, repository-check-dirty@workspace:packages/repository-check-dirty":
+"repository-check-dirty@workspace:packages/repository-check-dirty":
   version: 0.0.0-use.local
   resolution: "repository-check-dirty@workspace:packages/repository-check-dirty"
   bin:
