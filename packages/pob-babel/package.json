@@ -16,70 +16,21 @@
     "node": ">=22.18.0"
   },
   "sideEffects": false,
-  "bin": {
-    "pob-babel-clean-out": "./bin/pob-babel-clean-out.js",
-    "rollup": "./bin/rollup.cjs"
-  },
   "main": "./lib/index.js",
-  "types": "./lib/index.d.ts",
   "exports": {
     ".": {
-      "types": "./lib/index.d.ts",
       "default": "./lib/index.js"
     },
-    "./createRollupConfig": "./createRollupConfig.js",
-    "./createRollupConfig.js": "./createRollupConfig.js",
-    "./preset": "./preset.js",
-    "./preset.js": "./preset.js",
-    "./preset.cjs": "./preset.js",
-    "./setup-jest": "./setup-jest.cjs",
-    "./setup-jest.js": "./setup-jest.cjs",
-    "./setup-jest.cjs": "./setup-jest.cjs",
-    "./plugin-run": "./plugin-run.cjs",
-    "./plugin-run.cjs": "./plugin-run.cjs",
     "./package.json": "./package.json"
   },
   "files": [
-    "lib",
-    "bin",
-    "createRollupConfig.js",
-    "preset.js",
-    "setup-jest.cjs",
-    "plugin-run.cjs"
+    "lib"
   ],
   "scripts": {
-    "build": "yarn run build:definitions",
-    "build:definitions": "tsc --lib esnext --noEmit --skipLibCheck ./lib/index.d.ts",
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn ../.. run eslint --quiet 'packages/pob-babel'",
     "test": "yarn ../../ run test -- 'packages/pob-babel'"
   },
   "pob": {},
-  "prettier": "@pob/root/prettier-config",
-  "peerDependencies": {
-    "@babel/core": "^7.28.4",
-    "rollup": "4.59.0",
-    "typescript": "^4.0.3 || ^5.0.0"
-  },
-  "peerDependenciesMeta": {
-    "rollup": {
-      "optional": true
-    }
-  },
-  "dependencies": {
-    "@babel/core": "^7.28.4",
-    "@babel/plugin-transform-runtime": "7.28.5",
-    "@pob/rollup": "7.3.3",
-    "@rollup/plugin-babel": "6.1.0",
-    "@rollup/plugin-json": "6.1.0",
-    "@rollup/plugin-node-resolve": "16.0.3",
-    "@rollup/plugin-run": "3.1.0",
-    "babel-preset-pob-env": "16.1.4",
-    "rollup": "4.59.0",
-    "rollup-config-external-dependencies": "^3.0.1",
-    "semver": "^7.7.3"
-  },
-  "devDependencies": {
-    "typescript": "5.9.3"
-  }
+  "prettier": "@pob/root/prettier-config"
 }

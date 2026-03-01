@@ -21,9 +21,7 @@ export default function createRollupConfig({
   const pobConfig = pkg.pob;
 
   if (pobConfig.babelEnvs) {
-    throw new Error(
-      "@pob/rollup-esbuild does not supports babel, use `pob-babel` package instead.",
-    );
+    throw new Error("@pob/rollup-esbuild does not supports babel.");
   }
 
   const jsx = pobConfig.jsx;

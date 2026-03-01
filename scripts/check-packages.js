@@ -5,9 +5,6 @@ await createCheckPackageWithWorkspaces({
 })
   .checkRecommended({
     onlyWarnsForInMonorepoPackagesDependencies: {
-      "pob-babel": {
-        "*": { duplicateDirectDependency: ["semver"] },
-      },
       "pob-dependencies": {
         "*": {
           duplicateDirectDependency: ["semver"],

@@ -87,7 +87,7 @@ export default function createLintStagedConfig() {
       "prettier --parser css --write",
     ],
     [`${srcDirectories}/**/*.{ts,tsx}`]: () =>
-      pkg.devDependencies && pkg.devDependencies["pob-babel"]
+      pkg.devDependencies && pkg.devDependencies["@pob/rollup-esbuild"]
         ? ["rollup --config rollup.config.mjs", "tsc -b"]
         : ["tsc"],
   };

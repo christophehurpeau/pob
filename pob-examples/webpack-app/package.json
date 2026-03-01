@@ -29,7 +29,7 @@
   ],
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "example-typescript-lib": "0.52.0"
+    "example-typescript-lib-rollup-esbuild": "0.47.3"
   },
   "devDependencies": {
     "webpack": "5.105.3",

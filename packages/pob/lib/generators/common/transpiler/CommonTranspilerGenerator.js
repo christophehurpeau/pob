@@ -774,4 +774,10 @@ export default class CommonTranspilerGenerator extends Generator {
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
   }
+
+  end() {
+    if (this.bundler) {
+      this.spawnSync("yarn", ["run", "build"]);
+    }
+  }
 }

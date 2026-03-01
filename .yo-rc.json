@@ -16,7 +16,6 @@
         "@pob/rollup",
         "@pob/rollup-typescript",
         "@pob/sort-object",
-        "babel-plugin-fix-class-properties-uninitialized",
         "example-simple-lib",
         "example-typescript-lib-without-rollup",
         "repository-check-dirty",
@@ -31,7 +30,6 @@
         "example-typescript-lib",
         "pob-dependencies",
         "yarn-version",
-        "yarn-workspace-utils",
         "@pob/root",
         "example-webpack-app",
         "pob"
