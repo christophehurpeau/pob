@@ -1,5 +1,4 @@
 import pobConfig, { apply, tsExtensions } from "@pob/eslint-config";
-import pluginJest from "eslint-plugin-jest";
 
 const { configs } = pobConfig();
 
@@ -33,7 +32,6 @@ export default [
   ...apply({
     files: ["**/*.test.{js,ts}", "vitest.config.js"],
     configs: [
-      pluginJest.configs["flat/recommended"],
       {
         settings: {
           "import-x/core-modules": ["vitest"],
