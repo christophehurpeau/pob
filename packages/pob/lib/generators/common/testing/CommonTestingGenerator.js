@@ -107,6 +107,26 @@ export default class CommonTestingGenerator extends Generator {
     });
   }
 
+  async prompting() {
+    if (this.options.runner === "jest") {
+      const { confirm } = await this.prompt([
+        {
+          type: "confirm",
+          name: "confirm",
+          message:
+            "jest will soon be deprecated. Are you sure you want to continue using jest?",
+          default: false,
+        },
+      ]);
+
+      if (!confirm) {
+        throw new Error(
+          "Jest is deprecated. Please consider using an alternative test runner.",
+        );
+      }
+    }
+  }
+
   default() {
     if (!inMonorepo || inMonorepo.root) {
       this.composeWith("pob:core:ci", {
