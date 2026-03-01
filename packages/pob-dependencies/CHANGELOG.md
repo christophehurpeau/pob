@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@21.0.2...pob-dependencies@21.1.0) (2026-03-01)
+
+### Features
+
+* **deps:** update dependency prettier to v3.7.4 ([#2665](https://github.com/christophehurpeau/pob/issues/2665))
+* update prettier
+
+### Bug Fixes
+
+* **deps:** update dependency eslint to v9.39.3 ([#2677](https://github.com/christophehurpeau/pob/issues/2677))
+* update rollup
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: pob-babel
+
+
 ## [21.0.2](https://github.com/christophehurpeau/pob/compare/pob-dependencies@21.0.1...pob-dependencies@21.0.2) (2025-12-06)
 
 Version bump for dependency: pob-babel

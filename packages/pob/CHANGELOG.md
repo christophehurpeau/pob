@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.0.0](https://github.com/christophehurpeau/pob/compare/pob@31.4.2...pob@32.0.0) (2026-03-01)
+
+### ⚠ BREAKING CHANGES
+
+* replace husky by small fast custom scripts
+
+### Features
+
+* add packageManager option to CoreCIGenerator for flexible CI job configuration
+* **deps:** update dependency prettier to v3.7.4 ([#2665](https://github.com/christophehurpeau/pob/issues/2665))
+* **deps:** update dependency validate-npm-package-name to v7 ([#2613](https://github.com/christophehurpeau/pob/issues/2613))
+* improve bun support
+* prepare for jest deprecation
+* replace husky by small fast custom scripts
+* update prettier
+
+### Bug Fixes
+
+* **deps:** update dependency eslint to v9.39.3 ([#2677](https://github.com/christophehurpeau/pob/issues/2677))
+* handle undefined packageManager in CoreCIGenerator and packageManagerUtils for improved CI compatibility
+* replace hardcoded yarn commands with packageManager variable in CI templates
+* use packageManager variable for commands in documentation workflow
+* use packageManager variable for running TypeScript and repository check commands
+* workflow release for bun
+
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [31.4.2](https://github.com/christophehurpeau/pob/compare/pob@31.4.1...pob@31.4.2) (2025-12-06)
 
 Version bump for dependency: @pob/root

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [44.6.0](https://github.com/christophehurpeau/pob/compare/pob-babel@44.5.3...pob-babel@44.6.0) (2026-03-01)
+
+### Features
+
+* **deps:** update dependency prettier to v3.7.4 ([#2665](https://github.com/christophehurpeau/pob/issues/2665))
+
+### Bug Fixes
+
+* update rollup
+
+Version bump for dependency: @pob/rollup
+
+
 ## [44.5.3](https://github.com/christophehurpeau/pob/compare/pob-babel@44.5.2...pob-babel@44.5.3) (2025-12-06)
 
 Version bump for dependency: babel-preset-pob-env

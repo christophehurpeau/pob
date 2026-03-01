@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@20.4.2...@pob/root@21.0.0) (2026-03-01)
+
+### ⚠ BREAKING CHANGES
+
+* replace husky by small fast custom scripts
+
+### Features
+
+* **deps:** update dependency prettier to v3.7.4 ([#2665](https://github.com/christophehurpeau/pob/issues/2665))
+* replace husky by small fast custom scripts
+* update commitlint
+* update prettier
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [20.4.2](https://github.com/christophehurpeau/pob/compare/@pob/root@20.4.1...@pob/root@20.4.2) (2025-12-06)
 
 Version bump for dependency: @pob/version

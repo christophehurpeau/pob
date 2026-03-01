@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.12.3](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.12.2...example-simple-lib@0.12.3) (2026-03-01)
+
+Note: no notable changes
+
+
 ## [0.12.2](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.12.1...example-simple-lib@0.12.2) (2025-12-06)
 
 Note: no notable changes

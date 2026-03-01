@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.21.0](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.20.4...@pob-example/next-app@0.21.0) (2026-03-01)
+
+### Features
+
+* **deps:** update dependency next to v16.1.5 [security] ([#2676](https://github.com/christophehurpeau/pob/issues/2676))
+
+### Bug Fixes
+
+* **deps:** update react monorepo ([#2678](https://github.com/christophehurpeau/pob/issues/2678))
+
 ## [0.20.4](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.20.3...@pob-example/next-app@0.20.4) (2025-12-06)
 
 ### Bug Fixes
