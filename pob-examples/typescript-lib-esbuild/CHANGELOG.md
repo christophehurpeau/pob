@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.35.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-esbuild@0.34.0...example-typescript-lib-esbuild@0.35.0) (2026-03-01)
+
+Version bump for dependency: @pob/esbuild
+
+
 ## [0.34.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-esbuild@0.33.4...example-typescript-lib-esbuild@0.34.0) (2026-03-01)
 
 ### ⚠ BREAKING CHANGES

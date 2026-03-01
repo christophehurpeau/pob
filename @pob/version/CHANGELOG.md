@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.1.0](https://github.com/christophehurpeau/pob/compare/@pob/version@2.0.0...@pob/version@2.1.0) (2026-03-01)
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v7.7.4 ([#2696](https://github.com/christophehurpeau/pob/issues/2696))
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [2.0.0](https://github.com/christophehurpeau/pob/compare/@pob/version@1.4.3...@pob/version@2.0.0) (2026-03-01)
 
 ### ⚠ BREAKING CHANGES
