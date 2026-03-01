@@ -180,6 +180,7 @@ export default class CoreYarnGenerator extends Generator {
       config.npmMinimalAgeGate = 1440 * 3; // 3 days
       config.npmPreapprovedPackages = [
         "@pob/*",
+        "pob-dependencies",
         "alouette",
         "alouette-icons",
         "nightingale",
