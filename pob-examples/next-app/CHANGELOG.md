@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.22.0](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.21.0...@pob-example/next-app@0.22.0) (2026-03-01)
+
+### ⚠ BREAKING CHANGES
+
+* deprecate pob-babel and babel-preset-pob-env
+
+### Features
+
+* deprecate pob-babel and babel-preset-pob-env
+
 ## [0.21.0](https://github.com/christophehurpeau/pob/compare/@pob-example/next-app@0.20.4...@pob-example/next-app@0.21.0) (2026-03-01)
 
 ### Features

@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@21.0.0...@pob/root@22.0.0) (2026-03-01)
+
+### ⚠ BREAKING CHANGES
+
+* deprecate pob-babel and babel-preset-pob-env
+
+### Features
+
+* deprecate pob-babel and babel-preset-pob-env
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [21.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@20.4.2...@pob/root@21.0.0) (2026-03-01)
 
 ### ⚠ BREAKING CHANGES

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.40.0](https://github.com/christophehurpeau/pob/compare/example-webpack-app@0.39.0...example-webpack-app@0.40.0) (2026-03-01)
+
+### ⚠ BREAKING CHANGES
+
+* deprecate pob-babel and babel-preset-pob-env
+
+### Features
+
+* deprecate pob-babel and babel-preset-pob-env
+
+Version bump for dependency: example-typescript-lib-rollup-esbuild
+
+
 ## [0.39.0](https://github.com/christophehurpeau/pob/compare/example-webpack-app@0.38.3...example-webpack-app@0.39.0) (2026-03-01)
 
 ### Bug Fixes

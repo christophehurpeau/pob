@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.0.0](https://github.com/christophehurpeau/pob/compare/@pob/version@1.4.3...@pob/version@2.0.0) (2026-03-01)
+
+### ⚠ BREAKING CHANGES
+
+* deprecate pob-babel and babel-preset-pob-env
+
+### Features
+
+* deprecate pob-babel and babel-preset-pob-env
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [1.4.3](https://github.com/christophehurpeau/pob/compare/@pob/version@1.4.2...@pob/version@1.4.3) (2026-03-01)
 
 Version bump for dependency: @pob/rollup-esbuild

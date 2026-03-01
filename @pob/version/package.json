@@ -1,6 +1,6 @@
 {
   "name": "@pob/version",
-  "version": "1.4.3",
+  "version": "2.0.0",
   "description": "simple versioning using conventional commits",
   "keywords": [
     "semantic-release",
@@ -78,7 +78,7 @@
     "semver": "7.7.3"
   },
   "devDependencies": {
-    "@pob/rollup-esbuild": "7.4.3",
+    "@pob/rollup-esbuild": "8.0.0",
     "@types/node": "22.19.1",
     "@types/semver": "7.7.1",
     "type-fest": "5.4.4",

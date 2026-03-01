@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@7.4.3...@pob/rollup-esbuild@8.0.0) (2026-03-01)
+
+### ⚠ BREAKING CHANGES
+
+* deprecate pob-babel and babel-preset-pob-env
+
+### Features
+
+* deprecate pob-babel and babel-preset-pob-env
+
 ## [7.4.3](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@7.4.2...@pob/rollup-esbuild@7.4.3) (2026-03-01)
 
 ### Bug Fixes

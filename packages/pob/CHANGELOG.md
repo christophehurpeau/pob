@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.0.0](https://github.com/christophehurpeau/pob/compare/pob@32.0.0...pob@33.0.0) (2026-03-01)
+
+### ⚠ BREAKING CHANGES
+
+* deprecate pob-babel and babel-preset-pob-env
+
+### Features
+
+* deprecate pob-babel and babel-preset-pob-env
+
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [32.0.0](https://github.com/christophehurpeau/pob/compare/pob@31.4.2...pob@32.0.0) (2026-03-01)
 
 ### ⚠ BREAKING CHANGES

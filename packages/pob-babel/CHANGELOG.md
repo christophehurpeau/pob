@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [45.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@44.6.0...pob-babel@45.0.0) (2026-03-01)
+
+### ⚠ BREAKING CHANGES
+
+* deprecate pob-babel and babel-preset-pob-env
+
+### Features
+
+* deprecate pob-babel and babel-preset-pob-env
+
 ## [44.6.0](https://github.com/christophehurpeau/pob/compare/pob-babel@44.5.3...pob-babel@44.6.0) (2026-03-01)
 
 ### Features
