@@ -51,7 +51,7 @@
     "@types/inquirer": "9.0.9",
     "@yeoman/adapter": "3.1.0",
     "@yeoman/types": "1.8.0",
-    "eslint": "9.39.3",
+    "eslint": "10.0.2",
     "findup-sync": "^5.0.0",
     "git-remote-url": "^1.0.1",
     "github-username": "^9.0.0",
