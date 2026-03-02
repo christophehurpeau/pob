@@ -316,7 +316,9 @@ export default class CommonTestingGenerator extends Generator {
                 } --all --src ./${this.options.srcDirectory} `
               : ""
           }node ${
-            this.options.typescript ? `${tsTestLoaderOption} ` : ""
+            this.options.typescript
+              ? `${tsTestLoaderOption ? `${tsTestLoaderOption} ` : ""}`
+              : ""
           }${this.fs.exists("src/test-setup.ts") ? "--import ./src/test-setup.ts " : ""}--test${experimentalTestCoverage && (coverage || coverageJson) ? " --experimental-test-coverage" : ""} ${this.options.monorepo ? `${workspacesPattern}/*/` : ""}${`${
             hasTestFolder ? "test/*" : `${this.options.srcDirectory}/**/*.test`
           }.${this.options.typescript ? "ts" : "js"}`}`;
