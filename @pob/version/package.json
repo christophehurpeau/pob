@@ -69,7 +69,7 @@
   },
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "commander": "14.0.2",
+    "commander": "14.0.3",
     "conventional-changelog-conventionalcommits": "9.1.0",
     "conventional-changelog-preset-loader": "5.0.0",
     "conventional-changelog-writer": "8.2.0",
