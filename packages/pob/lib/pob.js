@@ -13,8 +13,6 @@ import minimist from "minimist";
 import * as yeoman from "yeoman-environment";
 import PobAppGenerator from "./generators/app/PobAppGenerator.js";
 import AppE2ETestingGenerator from "./generators/app/e2e-testing/AppE2ETestingGenerator.js";
-import AppNextjsGenerator from "./generators/app/nextjs/AppNextjsGenerator.js";
-import AppRemixGenerator from "./generators/app/remix/AppRemixGenerator.js";
 import AppViteGenerator from "./generators/app/vite/AppViteGenerator.js";
 import CommonBabelGenerator from "./generators/common/babel/CommonBabelGenerator.js";
 import CommonLintGenerator from "./generators/common/format-lint/CommonLintGenerator.js";
@@ -96,16 +94,6 @@ env.registerStub(
   AppE2ETestingGenerator,
   "pob:app:e2e-testing",
   `${__dirname}/generators/app/e2e-testing/AppE2ETestingGenerator.js`,
-);
-env.registerStub(
-  AppNextjsGenerator,
-  "pob:app:nextjs",
-  `${__dirname}/generators/app/nextjs/AppNextjsGenerator.js`,
-);
-env.registerStub(
-  AppRemixGenerator,
-  "pob:app:remix",
-  `${__dirname}/generators/app/nextjs/AppRemixGenerator.js`,
 );
 env.registerStub(
   AppViteGenerator,

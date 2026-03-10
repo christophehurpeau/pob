@@ -368,13 +368,13 @@ export default class PobAppGenerator extends Generator {
 
     switch (this.appConfig.type) {
       case "next.js":
-        this.composeWith("pob:app:nextjs", {
-          export: this.appConfig.export,
-        });
-        break;
+        throw new Error(
+          "nextjs has been removed. Please migrate to 'vite' or 'expo'.",
+        );
       case "remix":
-        this.composeWith("pob:app:remix", {});
-        break;
+        throw new Error(
+          "remix has been removed. Please migrate to 'vite' or 'expo'.",
+        );
       case "vite":
         this.composeWith("pob:app:vite", {});
         break;
