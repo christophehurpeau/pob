@@ -162,10 +162,14 @@ export const versionCommandAction = async (
   const [conventionalCommitConfig, parsedRepoUrl, gitCurrentBranch] =
     await Promise.all([
       loadConventionalCommitConfig(rootWorkspace, options.preset),
-      options.createRelease ? parseGithubRepoUrl(rootWorkspace) : undefined,
+      options.createRelease
+        ? parseGithubRepoUrl(rootWorkspace)
+        : Promise.resolve(null),
       getGitCurrentBranch(rootWorkspace),
       // ensure gh CLI is available early to fail fast if necessary
-      options.createRelease ? ensureGhCliAvailable(rootWorkspace) : undefined,
+      options.createRelease
+        ? ensureGhCliAvailable(rootWorkspace)
+        : Promise.resolve(undefined),
     ]);
 
   const rootPreviousVersionTagPromise =
@@ -783,7 +787,7 @@ export const versionCommandAction = async (
 
         await Promise.all(
           [...bumpedWorkspaces.entries()].map(([workspace, { newTag }]) => {
-            if (newTag === null) return undefined;
+            if (newTag === null) return Promise.resolve(undefined);
             const changelog = changelogs.get(workspace);
             if (!changelog) {
               logger.warn(
@@ -791,7 +795,7 @@ export const versionCommandAction = async (
                   workspace,
                 )}`,
               );
-              return undefined;
+              return Promise.resolve(undefined);
             }
             return createGhRelease(workspace, {
               parsedRepoUrl,

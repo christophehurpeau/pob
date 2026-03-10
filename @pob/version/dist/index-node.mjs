@@ -702,7 +702,8 @@ const createGhRelease = async (workspace, opts) => {
     );
   } catch (error) {
     throw new Error(
-      `gh release create failed: ${String(error instanceof Error ? error.message : error)}`
+      `gh release create failed: ${String(error instanceof Error ? error.message : error)}`,
+      { cause: error }
     );
   }
 };
@@ -730,7 +731,7 @@ package '${workspaceName}' has conflicts in the following paths:
     ${packageDir}`
           );
         }
-        if (existingWorkspace && existingWorkspace.cwd === packageDir) continue;
+        if (existingWorkspace?.cwd === packageDir) continue;
       }
       map.set(workspaceName, { cwd: packageDir, pkg: packageJson });
     }
@@ -790,7 +791,8 @@ async function readPkg(cwd) {
     return JSON.parse(pkg);
   } catch (error) {
     throw new Error(
-      `Failed to parse "${packagePath}": ${error instanceof Error ? error.message : String(error)}`
+      `Failed to parse "${packagePath}": ${error instanceof Error ? error.message : String(error)}`,
+      { cause: error }
     );
   }
 }
@@ -863,10 +865,10 @@ There are uncommitted changes in the git repository. Please commit or stash them
   }
   const [conventionalCommitConfig, parsedRepoUrl, gitCurrentBranch] = await Promise.all([
     loadConventionalCommitConfig(rootWorkspace, options.preset),
-    options.createRelease ? parseGithubRepoUrl(rootWorkspace) : void 0,
+    options.createRelease ? parseGithubRepoUrl(rootWorkspace) : Promise.resolve(null),
     getGitCurrentBranch(rootWorkspace),
     // ensure gh CLI is available early to fail fast if necessary
-    options.createRelease ? ensureGhCliAvailable(rootWorkspace) : void 0
+    options.createRelease ? ensureGhCliAvailable(rootWorkspace) : Promise.resolve(void 0)
   ]);
   const rootPreviousVersionTagPromise = options.force || isMonorepoVersionIndependent ? null : getGitLatestTagVersion(rootWorkspace, {
     prefix: options.tagVersionPrefix,
@@ -1303,7 +1305,7 @@ ${tagsInCommitMessage}` : rootNewVersion
         logger.info("Create git release");
         await Promise.all(
           [...bumpedWorkspaces.entries()].map(([workspace, { newTag }]) => {
-            if (newTag === null) return void 0;
+            if (newTag === null) return Promise.resolve(void 0);
             const changelog = changelogs.get(workspace);
             if (!changelog) {
               logger.warn(
@@ -1311,7 +1313,7 @@ ${tagsInCommitMessage}` : rootNewVersion
                   workspace
                 )}`
               );
-              return void 0;
+              return Promise.resolve(void 0);
             }
             return createGhRelease(workspace, {
               parsedRepoUrl,

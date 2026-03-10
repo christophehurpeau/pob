@@ -45,7 +45,7 @@ async function mapWorkspacesFromPkg({
           );
         }
         // if it's the same package dir, ignore duplicate match
-        if (existingWorkspace && existingWorkspace.cwd === packageDir) continue;
+        if (existingWorkspace?.cwd === packageDir) continue;
       }
       map.set(workspaceName, { cwd: packageDir, pkg: packageJson });
     }
@@ -122,6 +122,7 @@ export async function readPkg(cwd: string): Promise<PackageJson> {
   } catch (error: unknown) {
     throw new Error(
       `Failed to parse "${packagePath}": ${error instanceof Error ? error.message : String(error)}`,
+      { cause: error },
     );
   }
 }

@@ -5,8 +5,8 @@ interface Dependencies {
   "@babel/runtime": "7.28.6";
   "@playwright/test": "1.58.2";
   "@pob/esbuild": "5.1.2";
-  "@pob/eslint-config": "65.0.2";
-  "@pob/eslint-config-typescript-react": "65.0.2";
+  "@pob/eslint-config": "65.2.0";
+  "@pob/eslint-config-typescript-react": "65.2.0";
   "@pob/pretty-pkg": "13.2.2";
   "@pob/rollup-esbuild": "8.0.0";
   "@pob/rollup-typescript": "8.0.1";

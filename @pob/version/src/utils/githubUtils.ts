@@ -111,6 +111,7 @@ export const createGhRelease = async (
     // execCommandWithInput will include stdout/stderr in its error message when strict
     throw new Error(
       `gh release create failed: ${String(error instanceof Error ? error.message : error)}`,
+      { cause: error },
     );
   }
 };
