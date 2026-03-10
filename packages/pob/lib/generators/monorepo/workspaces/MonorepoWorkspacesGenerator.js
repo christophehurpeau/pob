@@ -81,10 +81,6 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       delete pkg.engines.yarn;
     }
 
-    if (pkg.name !== "pob-monorepo") {
-      packageUtils.addDevDependencies(pkg, ["repository-check-dirty"]);
-    }
-
     const monorepoConfig = this.config.get("monorepo");
     const packageManager = this.options.packageManager;
 
