@@ -89,9 +89,6 @@ jobs:
       - name: New version
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
-<% if (packageManager === "bun") { -%>
-          npm install -g npm@latest
-<% } -%>
           <%= packageManager %> run pob-version <% if (enablePublish && packageManager === "bun") { %>--publish <% } %>--create-release=github <% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %> -m 'chore: release <%- isMonorepoIndependent ? '' : '%v ' %>[skip ci]<%- isMonorepoIndependent ? '\\n\\n%t' : '' %>'
         env:
           POB_GIT_HOOKS: 0
@@ -102,17 +99,9 @@ jobs:
       - name: Publish to npm
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
-          if [ -z "$NPM_AUTH_TOKEN" ]; then
-            echo "Missing env variable NPM_AUTH_TOKEN"
-            exit 1
-          fi
-          echo >> ./.yarnrc.yml
-          echo "npmAuthToken: $NPM_AUTH_TOKEN" >> ./.yarnrc.yml
 <% if (isMonorepo) { -%>
           yarn workspaces foreach --all --parallel --no-private npm publish --tolerate-republish
 <% } else { -%>
           yarn npm publish
 <% } -%>
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 <% } -%>
