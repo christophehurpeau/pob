@@ -7,11 +7,26 @@ const pm = whichPmRuns();
 
 assertYarnBerry(pm);
 
-const { lockfile, installAndDedupe } = (() => {
+const { lockfile, configfile, installAndDedupe } = (() => {
   if (pm.name === "yarn") {
     return {
       lockfile: "yarn.lock",
-      installAndDedupe: ["yarn", "yarn dedupe"],
+      configfile: ".yarnrc.yml",
+      installAndDedupe: [
+        // suppress useless error codes and reformat and sort yarnrc.yml.
+        `yarn config set logFilters --json '[
+    {"code": "YN0002","level": "discard"},
+    {"code": "YN0007","level": "discard"},
+    {"code": "YN0008","level": "discard"},
+    {"code": "YN0013","level": "discard"},
+    {"code": "YN0018","level": "discard"},
+    {"code": "YN0060","level": "discard"},
+    {"code": "YN0061","level": "discard"}
+  ]'`,
+        "yarn",
+        "yarn dedupe",
+        "yarn config unset logFilters",
+      ],
     };
   }
   if (pm.name === "npm") {
@@ -49,7 +64,7 @@ export default function createLintStagedConfig() {
   const srcDirectories = getSrcDirectories();
 
   return {
-    [`{${lockfile},package.json${
+    [`{${lockfile},${configfile ? `${configfile},` : ""}package.json${
       workspaces
         ? `,${workspaces
             .map((workspacePath) => `${workspacePath}/package.json`)
@@ -67,7 +82,7 @@ export default function createLintStagedConfig() {
         packagejsonFilenames.length === 0
           ? undefined
           : `pretty-pkg "${packagejsonFilenames.join('" "')}"`,
-        `git add ${lockfile}${pm.name === "yarn" ? " .yarn .yarnrc.yml" : ""}`,
+        `git add ${lockfile}${configfile ? ` ${configfile}` : ""}${pm.name === "yarn" ? " .yarn" : ""}`,
       ].filter(Boolean);
     },
     "!(package|package-lock|.eslintrc).json": ["prettier --write"],
