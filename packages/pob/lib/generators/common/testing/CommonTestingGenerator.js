@@ -108,7 +108,7 @@ export default class CommonTestingGenerator extends Generator {
   }
 
   async prompting() {
-    if (this.options.runner === "jest") {
+    if (this.options.enable && this.options.runner === "jest") {
       const { confirm } = await this.prompt([
         {
           type: "confirm",
