@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.2.0](https://github.com/christophehurpeau/pob/compare/pob@33.1.0...pob@33.2.0) (2026-03-12)
+
+### Features
+
+* remove nextjs and remix
+* update pob/eslint-config
+* use OIDC publishing
+
+### Bug Fixes
+
+* handle optional TypeScript test loader in test command
+* remove unnecessary dev dependency for non-monorepo packages
+
+Version bump for dependency: @pob/sort-object
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [33.1.0](https://github.com/christophehurpeau/pob/compare/pob@33.0.1...pob@33.1.0) (2026-03-01)
 
 ### Bug Fixes

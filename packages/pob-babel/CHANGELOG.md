@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [45.0.1](https://github.com/christophehurpeau/pob/compare/pob-babel@45.0.0...pob-babel@45.0.1) (2026-03-12)
+
+Note: no notable changes
+
+
 ## [45.0.0](https://github.com/christophehurpeau/pob/compare/pob-babel@44.6.0...pob-babel@45.0.0) (2026-03-01)
 
 ### ⚠ BREAKING CHANGES

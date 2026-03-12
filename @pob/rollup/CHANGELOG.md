@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.3.4](https://github.com/christophehurpeau/pob/compare/@pob/rollup@7.3.3...@pob/rollup@7.3.4) (2026-03-12)
+
+Note: no notable changes
+
+
 ## [7.3.3](https://github.com/christophehurpeau/pob/compare/@pob/rollup@7.3.2...@pob/rollup@7.3.3) (2026-03-01)
 
 ### Bug Fixes
