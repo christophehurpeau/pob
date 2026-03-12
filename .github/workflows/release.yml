@@ -32,17 +32,18 @@ jobs:
     steps:
       - uses: actions/checkout@v6
         with:
+          ssh-key: ${{ secrets.PUSH_DEPLOY_KEY }}
           fetch-depth: 0
           fetch-tags: true
-          ssh-key: ${{ secrets.PUSH_DEPLOY_KEY }}
 
       - name: Enable Corepack
         run: corepack enable
 
       - uses: actions/setup-node@v6
         with:
-          node-version: 22
+          node-version: 24
           check-latest: true
+          registry-url: "https://registry.npmjs.org"
 
       - name: Check git tags
         if: github.ref == 'refs/heads/main' && !inputs.allow-no-tags
@@ -78,12 +79,4 @@ jobs:
       - name: Publish to npm
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
-          if [ -z "$NPM_AUTH_TOKEN" ]; then
-            echo "Missing env variable NPM_AUTH_TOKEN"
-            exit 1
-          fi
-          echo >> ./.yarnrc.yml
-          echo "npmAuthToken: $NPM_AUTH_TOKEN" >> ./.yarnrc.yml
           yarn workspaces foreach --all --parallel --no-private npm publish --tolerate-republish
-        env:
-          NPM_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
