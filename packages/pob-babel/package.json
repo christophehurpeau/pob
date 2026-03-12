@@ -28,8 +28,8 @@
   ],
   "scripts": {
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --quiet 'packages/pob-babel'",
-    "test": "yarn ../../ run test -- 'packages/pob-babel'"
+    "lint:eslint": "yarn '../..' run eslint --quiet 'packages/pob-babel'",
+    "test": "yarn '../..' run test -- 'packages/pob-babel'"
   },
   "pob": {},
   "prettier": "@pob/root/prettier-config"
