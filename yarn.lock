@@ -3004,7 +3004,7 @@ __metadata:
   resolution: "@pob/codemods@workspace:@pob/codemods"
   dependencies:
     "@types/jscodeshift": "npm:17.3.0"
-    "@types/node": "npm:22.19.13"
+    "@types/node": "npm:22.19.15"
     jscodeshift: "npm:17.3.0"
   bin:
     pob-migrate: ./bin/migrate.mjs
@@ -3198,7 +3198,7 @@ __metadata:
   resolution: "@pob/version@workspace:@pob/version"
   dependencies:
     "@pob/rollup-esbuild": "npm:8.1.1"
-    "@types/node": "npm:22.19.13"
+    "@types/node": "npm:22.19.15"
     "@types/semver": "npm:7.7.1"
     commander: "npm:14.0.3"
     conventional-changelog-conventionalcommits: "npm:9.1.0"
@@ -3845,12 +3845,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:22.19.13, @types/node@npm:>=18, @types/node@npm:>=18.19.0, @types/node@npm:>=22.19.1":
-  version: 22.19.13
-  resolution: "@types/node@npm:22.19.13"
+"@types/node@npm:*, @types/node@npm:22.19.15, @types/node@npm:>=18, @types/node@npm:>=18.19.0, @types/node@npm:>=22.19.1":
+  version: 22.19.15
+  resolution: "@types/node@npm:22.19.15"
   dependencies:
     undici-types: "npm:~6.21.0"
-  checksum: 10c0/ad8a0b6a69dd8ef663701573eca94ef6d20ce093f54f05bed823c826374eb1ea8b06e6f2c5d7f6cfc203b82dfd60293296bf80ea987ddb77775840bc2ef9f803
+  checksum: 10c0/f17eaf3d0d1da5e93ad9e287efb78201f8a5282973c004c5f70d91675c5c6b926a23acaa7b158a42b3d7e27e36b349d65a531710c91c308fca53dd7fa280ef98
   languageName: node
   linkType: hard
 
@@ -10418,7 +10418,7 @@ __metadata:
     "@pob/rollup-esbuild": "npm:8.1.1"
     "@pob/rollup-typescript": "npm:8.0.2"
     "@types/jest": "npm:30.0.0"
-    "@types/node": "npm:22.19.13"
+    "@types/node": "npm:22.19.15"
     "@vitest/coverage-v8": "npm:4.0.18"
     alp-rollup-plugin-config: "npm:4.0.2"
     check-package-dependencies: "npm:10.5.0"
@@ -10468,7 +10468,7 @@ __metadata:
     "@pob/sort-pkg": "npm:12.1.2"
     "@prettier/sync": "npm:0.6.1"
     "@types/inquirer": "npm:9.0.9"
-    "@types/node": "npm:22.19.13"
+    "@types/node": "npm:22.19.15"
     "@yeoman/adapter": "npm:3.1.0"
     "@yeoman/types": "npm:1.8.0"
     eslint: "npm:10.0.3"
@@ -13057,7 +13057,7 @@ __metadata:
   resolution: "yarn-version@workspace:packages/yarn-version"
   dependencies:
     "@pob/version": "workspace:*"
-    "@types/node": "npm:22.19.13"
+    "@types/node": "npm:22.19.15"
   bin:
     yarn-version: ./yarn-version.mjs
   languageName: unknown
