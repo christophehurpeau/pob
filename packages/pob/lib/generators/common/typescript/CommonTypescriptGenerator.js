@@ -306,6 +306,9 @@ export default class CommonTypescriptGenerator extends Generator {
           monorepoPackageReferences,
           rootDir: this.options.rootDir,
           srcDirectory: this.options.srcDirectory || this.options.rootDir,
+          scriptsDirectory: this.fs.exists(this.destinationPath("scripts"))
+            ? "scripts"
+            : undefined,
           jsx,
           jsxPreserve: this.options.jsxPreserve,
           nextConfig: this.options.nextConfig,

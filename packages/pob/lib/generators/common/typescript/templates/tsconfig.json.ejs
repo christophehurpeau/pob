@@ -4,7 +4,8 @@
     <%- presets.map(p => `"${p}"`).join(',\n    ') %><% } %>
   ],
   "include": [
-    "<%= srcDirectory %>/**/*.ts"<% if (jsx) { -%>,
+    "<%= srcDirectory %>/**/*.ts"<% if (scriptsDirectory) { -%>,
+    "<%= scriptsDirectory %>/**/*.ts",<% } %><% if (jsx) { -%>,
     "<%= srcDirectory %>/**/*.tsx"<% } %><% if (srcDirectory !== rootDir) { -%>,
     "<%= rootDir %>/*.ts"<% } %><% if (additionalIncludes.length > 0) { -%>,
     <%- additionalIncludes.map(adi => `"${adi}"`).join(',\n    ') %><% } %>
