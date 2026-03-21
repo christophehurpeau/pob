@@ -254,30 +254,41 @@ export default class CorePackageGenerator extends Generator {
       let doesJsCheckPackageExists = this.fs.exists(
         this.destinationPath("scripts/check-package.js"),
       );
+      const doesTsCheckPackageExists = this.fs.exists(
+        this.destinationPath("scripts/check-package.ts"),
+      );
 
       if (pkg.type === "module") {
-        if (!doesJsCheckPackageExists) {
+        if (!doesJsCheckPackageExists && !doesTsCheckPackageExists) {
           doesJsCheckPackageExists = true;
           this.fs.copyTpl(
             this.templatePath("check-package.js.ejs"),
-            this.destinationPath("scripts/check-package.js"),
+            this.destinationPath("scripts/check-package.ts"),
             {
               isLibrary: pkg.private !== true,
             },
           );
         }
       }
-      if (doesJsCheckPackageExists || doesMjsCheckPackageExists) {
+      if (
+        doesJsCheckPackageExists ||
+        doesMjsCheckPackageExists ||
+        doesTsCheckPackageExists
+      ) {
         packageUtils.addDevDependencies(pkg, ["check-package-dependencies"]);
       }
 
       packageUtils.addOrRemoveScripts(
         pkg,
-        doesMjsCheckPackageExists || doesJsCheckPackageExists,
+        doesMjsCheckPackageExists ||
+          doesJsCheckPackageExists ||
+          doesTsCheckPackageExists,
         {
-          checks: `node scripts/check-package.${
-            doesMjsCheckPackageExists ? "mjs" : "js"
-          }`,
+          checks: `node scripts/check-package.${(() => {
+            if (doesMjsCheckPackageExists) return "mjs";
+            if (doesTsCheckPackageExists) return "ts";
+            return "js";
+          })()}`,
         },
       );
     }
