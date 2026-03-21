@@ -5,6 +5,7 @@
   "compilerOptions": {
     "importHelpers": true,
     "module": "ESNext",
+    "target": "esnext",
     "moduleResolution": "bundler",
     "moduleDetection": "force",
     "allowImportingTsExtensions": true,
