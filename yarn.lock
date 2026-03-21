@@ -3017,7 +3017,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/esbuild@npm:5.2.1, @pob/esbuild@workspace:@pob/esbuild":
+"@pob/esbuild@npm:5.2.2, @pob/esbuild@workspace:@pob/esbuild":
   version: 0.0.0-use.local
   resolution: "@pob/esbuild@workspace:@pob/esbuild"
   dependencies:
@@ -3102,7 +3102,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/rollup-esbuild@npm:8.1.1, @pob/rollup-esbuild@workspace:*, @pob/rollup-esbuild@workspace:@pob/rollup-esbuild":
+"@pob/rollup-esbuild@npm:8.1.2, @pob/rollup-esbuild@workspace:*, @pob/rollup-esbuild@workspace:@pob/rollup-esbuild":
   version: 0.0.0-use.local
   resolution: "@pob/rollup-esbuild@workspace:@pob/rollup-esbuild"
   dependencies:
@@ -3149,7 +3149,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/root@npm:22.2.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@npm:22.3.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -3197,7 +3197,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/version@workspace:@pob/version"
   dependencies:
-    "@pob/rollup-esbuild": "npm:8.1.1"
+    "@pob/rollup-esbuild": "npm:8.1.2"
     "@types/node": "npm:22.19.15"
     "@types/semver": "npm:7.7.1"
     commander: "npm:14.0.3"
@@ -6679,11 +6679,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-typescript-lib-rollup-esbuild@npm:0.49.1, example-typescript-lib-rollup-esbuild@workspace:pob-examples/typescript-lib-rollup-esbuild":
+"example-typescript-lib-rollup-esbuild@npm:0.49.2, example-typescript-lib-rollup-esbuild@workspace:pob-examples/typescript-lib-rollup-esbuild":
   version: 0.0.0-use.local
   resolution: "example-typescript-lib-rollup-esbuild@workspace:pob-examples/typescript-lib-rollup-esbuild"
   dependencies:
-    "@pob/rollup-esbuild": "npm:8.1.1"
+    "@pob/rollup-esbuild": "npm:8.1.2"
     typescript: "npm:5.9.3"
   languageName: unknown
   linkType: soft
@@ -6701,7 +6701,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-webpack-app@workspace:pob-examples/webpack-app"
   dependencies:
-    example-typescript-lib-rollup-esbuild: "npm:0.49.1"
+    example-typescript-lib-rollup-esbuild: "npm:0.49.2"
     webpack: "npm:5.105.4"
     webpack-cli: "npm:6.0.1"
   languageName: unknown
@@ -10384,11 +10384,11 @@ __metadata:
     "@babel/preset-react": "npm:7.28.5"
     "@babel/runtime": "npm:7.28.6"
     "@playwright/test": "npm:1.58.2"
-    "@pob/esbuild": "npm:5.2.1"
+    "@pob/esbuild": "npm:5.2.2"
     "@pob/eslint-config": "npm:65.2.0"
     "@pob/eslint-config-typescript-react": "npm:65.2.0"
     "@pob/pretty-pkg": "npm:13.2.3"
-    "@pob/rollup-esbuild": "npm:8.1.1"
+    "@pob/rollup-esbuild": "npm:8.1.2"
     "@pob/rollup-typescript": "npm:8.0.2"
     "@types/jest": "npm:30.0.0"
     "@types/node": "npm:22.19.15"
@@ -10436,7 +10436,7 @@ __metadata:
   dependencies:
     "@pob/eslint-config": "npm:65.2.0"
     "@pob/eslint-config-typescript-react": "npm:65.2.0"
-    "@pob/root": "npm:22.2.0"
+    "@pob/root": "npm:22.3.0"
     "@pob/sort-object": "npm:10.1.2"
     "@pob/sort-pkg": "npm:12.1.2"
     "@prettier/sync": "npm:0.6.1"

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.2](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@8.1.1...@pob/rollup-esbuild@8.1.2) (2026-03-21)
+
+### Bug Fixes
+
+* **deps:** update dependency esbuild to v0.27.4 ([#2711](https://github.com/christophehurpeau/pob/issues/2711))
+
 ## [8.1.1](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@8.1.0...@pob/rollup-esbuild@8.1.1) (2026-03-12)
 
 Version bump for dependency: @pob/rollup

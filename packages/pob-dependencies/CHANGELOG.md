@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.2.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@22.2.0...pob-dependencies@22.2.1) (2026-03-21)
+
+Version bump for dependency: @pob/esbuild
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [22.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@22.1.0...pob-dependencies@22.2.0) (2026-03-12)
 
 ### Features

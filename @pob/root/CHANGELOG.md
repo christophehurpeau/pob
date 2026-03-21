@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@22.2.0...@pob/root@22.3.0) (2026-03-21)
+
+### Features
+
+* **deps:** update dependency lint-staged to v16.4.0 ([#2701](https://github.com/christophehurpeau/pob/issues/2701))
+
+### Bug Fixes
+
+* ensure target is set to esnext in base-bundler tsconfig
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [22.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@22.1.0...@pob/root@22.2.0) (2026-03-12)
 
 ### Bug Fixes

@@ -1,6 +1,6 @@
 {
   "name": "@pob/codemods",
-  "version": "0.10.10",
+  "version": "0.10.11",
   "description": "codemods for pob",
   "keywords": [],
   "author": "Christophe Hurpeau <302891+christophehurpeau@users.noreply.github.com> (https://christophe.hurpeau.com)",

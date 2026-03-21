@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.11](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.10.10...@pob/codemods@0.10.11) (2026-03-21)
+
+Note: no notable changes
+
+
 ## [0.10.10](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.10.9...@pob/codemods@0.10.10) (2026-03-12)
 
 Note: no notable changes
