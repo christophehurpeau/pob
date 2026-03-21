@@ -33,13 +33,13 @@ export default class CommonHuskyGenerator extends Generator {
       this.fs.delete(".git/hooks/post-checkout");
       this.fs.delete(".git/hooks/post-merge");
       this.fs.delete(".git/hooks/pre-commit");
-    }
 
-    this.fs.delete(".git-hooks/prepare-commit-msg");
-    this.fs.delete(".git-hooks/post-checkout");
-    this.fs.delete(".git-hooks/post-merge");
-    this.fs.delete(".git-hooks/pre-commit");
-    if (this.fs.exists(".git-hooks")) this.fs.delete(".git-hooks");
+      this.fs.delete(".git-hooks/prepare-commit-msg");
+      this.fs.delete(".git-hooks/post-checkout");
+      this.fs.delete(".git-hooks/post-merge");
+      this.fs.delete(".git-hooks/pre-commit");
+      if (this.fs.exists(".git-hooks")) this.fs.delete(".git-hooks");
+    }
 
     if (this.fs.exists(this.destinationPath(".huskyrc.js"))) {
       this.fs.delete(this.destinationPath(".huskyrc.js"));
