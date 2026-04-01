@@ -81,7 +81,7 @@
     "@pob/rollup-esbuild": "8.1.2",
     "@types/node": "22.19.15",
     "@types/semver": "7.7.1",
-    "type-fest": "5.4.4",
+    "type-fest": "5.5.0",
     "typescript": "5.9.3"
   }
 }
