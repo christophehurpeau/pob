@@ -23,6 +23,19 @@ function getGroupNameFromScriptName(scriptName) {
 function getProblemMatcherFromScriptName(scriptName) {
   if (scriptName === "lint:eslint") return ["$eslint-stylish"];
   if (scriptName === "tsc") return ["$tsc"];
+  if (scriptName === "test:watch") {
+    return {
+      owner: "vitest-watch",
+      pattern: {
+        regexp: ".*",
+      },
+      background: {
+        activeOnStart: true,
+        beginsPattern: "RERUN",
+        endsPattern: "Waiting for file changes",
+      },
+    };
+  }
   return [];
 }
 
@@ -66,6 +79,7 @@ export default async function installVscodeTasks({ pkg }) {
           panel: "dedicated",
           group: getGroupNameFromScriptName(scriptName),
           clear: true,
+          isBackground: scriptName === "start" || scriptName.endsWith(":watch"),
         },
       };
 
