@@ -17,7 +17,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: <%= nodeLatestMajorVersion %>
-          check-latest: true
 
       - name: Install Dependencies
 <% if (packageManager === 'yarn') { -%>
@@ -47,7 +46,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: <%= nodeLatestMajorVersion %>
-          check-latest: true
 
       - name: Install Dependencies
 <% if (packageManager === 'yarn') { -%>
@@ -79,7 +77,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: <%= nodeLatestMajorVersion %>
-          check-latest: true
 
       - name: Install Dependencies
 <% if (disableYarnGitCache) { -%>
@@ -124,7 +121,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
-          check-latest: true
 
 <% if (packageManager === 'yarn') { -%>
       - name: Install Dependencies
@@ -179,7 +175,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
-          check-latest: true
 
       - name: Install Dependencies
 <% if (disableYarnGitCache) { -%>
@@ -203,7 +198,6 @@ jobs:
       - uses: actions/setup-node@v6
         with:
           node-version: <%= nodeLatestMajorVersion %>
-          check-latest: true
 
       - uses: GoogleCloudPlatform/release-please-action@v3
         if: ${{ github.ref == 'refs/heads/main' }}

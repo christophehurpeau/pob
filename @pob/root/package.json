@@ -37,7 +37,10 @@
     "./prettier-config.cjs": "./prettier-config.cjs",
     "./tsconfigs/base.json": "./tsconfigs/base.json",
     "./tsconfigs/strict.json": "./tsconfigs/strict.json",
+    "./tsconfigs/targets/esbuild-node-22.json": "./tsconfigs/targets/esbuild-node-22.json",
+    "./tsconfigs/targets/esbuild-node-24.json": "./tsconfigs/targets/esbuild-node-24.json",
     "./tsconfigs/targets/node-22.json": "./tsconfigs/targets/node-22.json",
+    "./tsconfigs/targets/node-24.json": "./tsconfigs/targets/node-22.json",
     "./tsconfigs/targets/rollup-babel.json": "./tsconfigs/targets/rollup-babel.json",
     "./tsconfigs/targets/rollup-babel-with-dom.json": "./tsconfigs/targets/rollup-babel-with-dom.json",
     "./tsconfigs/targets/rollup-es2015.json": "./tsconfigs/targets/rollup-es2015.json",
@@ -45,7 +48,7 @@
     "./tsconfigs/targets/webpack.json": "./tsconfigs/targets/webpack.json",
     "./tsconfigs/targets/expo.json": "./tsconfigs/targets/expo.json",
     "./tsconfigs/targets/rollup-node-22.json": "./tsconfigs/targets/rollup-node-22.json",
-    "./tsconfigs/targets/esbuild-node-22.json": "./tsconfigs/targets/esbuild-node-22.json",
+    "./tsconfigs/targets/rollup-node-24.json": "./tsconfigs/targets/rollup-node-22.json",
     "./package.json": "./package.json"
   },
   "publishConfig": {

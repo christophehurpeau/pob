@@ -3,6 +3,9 @@ import pobConfig, { apply, tsExtensions } from "@pob/eslint-config";
 const { configs } = pobConfig();
 
 export default [
+  {
+    ignores: ["**/.zed/**"],
+  },
   ...configs.node,
   {
     ignores: [
