@@ -177,6 +177,14 @@ export default class PobMonorepoGenerator extends Generator {
         default: config ? config.testing : true,
       },
       {
+        type: "list",
+        name: "testRunner",
+        message: "What testing runner would you like ?",
+        when: (answers) => answers.testing,
+        default: config ? config.testRunner : "node",
+        choices: ["node", "vitest"],
+      },
+      {
         type: "confirm",
         name: "e2eTesting",
         message: "Would you like e2e testing ?",
@@ -237,7 +245,7 @@ export default class PobMonorepoGenerator extends Generator {
     this.composeWith("pob:common:testing", {
       monorepo: true,
       enable: this.pobLernaConfig.testing,
-      runner: this.pobLernaConfig.testRunner || "jest",
+      runner: this.pobLernaConfig.testRunner,
       disableYarnGitCache: this.options.disableYarnGitCache,
       testing: this.pobLernaConfig.testing,
       e2eTesting: this.pobLernaConfig.e2eTesting,

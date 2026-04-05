@@ -28,7 +28,7 @@ export default class CommonTestingGenerator extends Generator {
 
     this.option("runner", {
       type: String,
-      default: "jest",
+      default: "node",
       description: "test runner (jest or node)",
     });
 
