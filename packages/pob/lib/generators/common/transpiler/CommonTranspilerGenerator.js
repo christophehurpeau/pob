@@ -663,7 +663,16 @@ export default class CommonTranspilerGenerator extends Generator {
           }
           break;
         case "24":
-          pkg.engines.node = ">=24.0.0";
+          if (
+            envs ||
+            !pkg.engines.node ||
+            !pkg.engines.node.startsWith(">=26")
+          ) {
+            pkg.engines.node = ">=24.14.1";
+          }
+          break;
+        case "26":
+          pkg.engines.node = ">=26.0.0";
           break;
         default:
           throw new Error(`Invalid min node version: ${minNodeVersion}`);
@@ -687,7 +696,7 @@ export default class CommonTranspilerGenerator extends Generator {
       packageUtils.removeDevDependencies(pkg, ["@types/node"]);
 
       // Supports oldest current or active LTS version of node
-      const minVersion = this.options.onlyLatestLTS ? "22.18.0" : "22.18.0";
+      const minVersion = this.options.onlyLatestLTS ? "24.14.1" : "22.18.0";
 
       if (
         !pkg.engines.node ||
