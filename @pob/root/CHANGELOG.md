@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@22.3.0...@pob/root@22.4.0) (2026-04-05)
+
+### Features
+
+* **deps:** update commitlint monorepo to v20.5.0 ([#2707](https://github.com/christophehurpeau/pob/issues/2707))
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [22.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@22.2.0...@pob/root@22.3.0) (2026-03-21)
 
 ### Features

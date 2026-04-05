@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [2.4.0](https://github.com/christophehurpeau/pob/compare/@pob/version@2.3.0...@pob/version@2.4.0) (2026-04-05)
+
+### Features
+
+* **deps:** update conventional changelog ([#2719](https://github.com/christophehurpeau/pob/issues/2719))
+
 ## [2.3.0](https://github.com/christophehurpeau/pob/compare/@pob/version@2.2.0...@pob/version@2.3.0) (2026-03-21)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [33.4.0](https://github.com/christophehurpeau/pob/compare/pob@33.3.0...pob@33.4.0) (2026-04-05)
+
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [33.3.0](https://github.com/christophehurpeau/pob/compare/pob@33.2.0...pob@33.3.0) (2026-03-21)
 
 ### Features
