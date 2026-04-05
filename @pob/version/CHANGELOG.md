@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.0.0](https://github.com/christophehurpeau/pob/compare/@pob/version@2.4.0...@pob/version@3.0.0) (2026-04-05)
+
+### ⚠ BREAKING CHANGES
+
+* node 24
+
+### Features
+
+* node 24
+
 ## [2.4.0](https://github.com/christophehurpeau/pob/compare/@pob/version@2.3.0...@pob/version@2.4.0) (2026-04-05)
 
 ### Features

@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@22.4.0...@pob/root@23.0.0) (2026-04-05)
+
+### ⚠ BREAKING CHANGES
+
+* node 24
+
+### Features
+
+* node 24
+
+### Bug Fixes
+
+* watch background tasks in VSCode configuration
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [22.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@22.3.0...@pob/root@22.4.0) (2026-04-05)
 
 ### Features

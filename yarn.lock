@@ -3139,7 +3139,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/root@npm:22.4.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@npm:23.0.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
@@ -10426,7 +10426,7 @@ __metadata:
   dependencies:
     "@pob/eslint-config": "npm:65.2.0"
     "@pob/eslint-config-typescript-react": "npm:65.2.0"
-    "@pob/root": "npm:22.4.0"
+    "@pob/root": "npm:23.0.0"
     "@pob/sort-object": "npm:10.1.2"
     "@pob/sort-pkg": "npm:12.1.2"
     "@prettier/sync": "npm:0.6.1"

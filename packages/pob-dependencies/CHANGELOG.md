@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@22.2.2...pob-dependencies@23.0.0) (2026-04-05)
+
+### ⚠ BREAKING CHANGES
+
+* node 24
+
+### Features
+
+* node 24
+
 ## [22.2.2](https://github.com/christophehurpeau/pob/compare/pob-dependencies@22.2.1...pob-dependencies@22.2.2) (2026-04-05)
 
 Note: no notable changes
