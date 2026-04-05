@@ -69,10 +69,10 @@ export default class CoreYarnGenerator extends Generator {
       });
     } else {
       packageUtils.removeDevDependencies(pkg, ["pinst"]);
-      if (pkg.scripts.prepack === "pinst --disable") {
+      if (pkg.scripts?.prepack === "pinst --disable") {
         delete pkg.scripts.prepack;
       }
-      if (pkg.scripts.postpack === "pinst --enable") {
+      if (pkg.scripts?.postpack === "pinst --enable") {
         delete pkg.scripts.postpack;
       }
     }
