@@ -3700,7 +3700,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ejs@npm:^3.1.4":
+"@types/ejs@npm:^3.1.4, @types/ejs@npm:^3.1.5":
   version: 3.1.5
   resolution: "@types/ejs@npm:3.1.5"
   checksum: 10c0/13d994cf0323d7e0ad33b9384914ccd3b4cd8bf282eced3649b1621b66ee7c784ac2d120a9d7b1f43d6f873518248fb8c3221b06a649b847860b9c2389a0b0ed
@@ -3855,6 +3855,13 @@ __metadata:
   version: 2.4.4
   resolution: "@types/normalize-package-data@npm:2.4.4"
   checksum: 10c0/aef7bb9b015883d6f4119c423dd28c4bdc17b0e8a0ccf112c78b4fe0e91fbc4af7c6204b04bba0e199a57d2f3fbbd5b4a14bf8739bf9d2a39b2a0aad545e0f86
+  languageName: node
+  linkType: hard
+
+"@types/picomatch@npm:^4.0.2":
+  version: 4.0.3
+  resolution: "@types/picomatch@npm:4.0.3"
+  checksum: 10c0/974107ec98ea9a8b437f36bdf6ac9c57772fd66d9d746e43f6da2a7b97f6e03bc48226e5cdf2beb0b73b7a843cf486e7336ae15ab9017e47287dcb49d78499a2
   languageName: node
   linkType: hard
 
@@ -5921,6 +5928,17 @@ __metadata:
   bin:
     ejs: bin/cli.js
   checksum: 10c0/52eade9e68416ed04f7f92c492183340582a36482836b11eab97b159fcdcfdedc62233a1bf0bf5e5e1851c501f2dca0e2e9afd111db2599e4e7f53ee29429ae1
+  languageName: node
+  linkType: hard
+
+"ejs@npm:^4.0.1":
+  version: 4.0.1
+  resolution: "ejs@npm:4.0.1"
+  dependencies:
+    jake: "npm:^10.9.1"
+  bin:
+    ejs: bin/cli.js
+  checksum: 10c0/e937a011c5776e6a4775d79317caa9d5b4c64331d62214ff82de97de555ed338bc435d4fa54798ccc0a6e8a2e9096395cbeb79940ab2c3b29f11213ea79b48d6
   languageName: node
   linkType: hard
 
@@ -8148,7 +8166,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isbinaryfile@npm:^5.0.4":
+"isbinaryfile@npm:5.0.7, isbinaryfile@npm:^5.0.4":
   version: 5.0.7
   resolution: "isbinaryfile@npm:5.0.7"
   checksum: 10c0/4cd98a91aaf969d7cae91f74d041dd1df35d9e140c522b7879180035f7eab9ba9c0c3d678e00e72a2777ee7245fd8f20b60c0787132c5fdbf6fc113492325e11
@@ -8255,7 +8273,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jake@npm:^10.8.5":
+"jake@npm:^10.8.5, jake@npm:^10.9.1":
   version: 10.9.4
   resolution: "jake@npm:10.9.4"
   dependencies:
@@ -9310,7 +9328,35 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mem-fs-editor@npm:11.1.4, mem-fs-editor@npm:^11.0.1, mem-fs-editor@npm:^11.1.4":
+"mem-fs-editor@npm:12.0.3":
+  version: 12.0.3
+  resolution: "mem-fs-editor@npm:12.0.3"
+  dependencies:
+    "@types/ejs": "npm:^3.1.5"
+    "@types/picomatch": "npm:^4.0.2"
+    binaryextensions: "npm:^6.11.0"
+    commondir: "npm:^1.0.1"
+    debug: "npm:^4.4.3"
+    deep-extend: "npm:^0.6.0"
+    ejs: "npm:^4.0.1"
+    isbinaryfile: "npm:5.0.7"
+    minimatch: "npm:^10.2.4"
+    multimatch: "npm:^8.0.0"
+    normalize-path: "npm:^3.0.0"
+    textextensions: "npm:^6.11.0"
+    tinyglobby: "npm:^0.2.15"
+    vinyl: "npm:^3.0.1"
+  peerDependencies:
+    "@types/node": ">=20"
+    mem-fs: ^4.0.0
+  peerDependenciesMeta:
+    "@types/node":
+      optional: true
+  checksum: 10c0/c1d838fef4f9d3b7a4a180a3bdf579b944ef8f93aa8ca93530560715704c9d9adf0caa8f104afc4573100683ded80238b98f16e399b632c4e8a070e334633525
+  languageName: node
+  linkType: hard
+
+"mem-fs-editor@npm:^11.0.1, mem-fs-editor@npm:^11.1.4":
   version: 11.1.4
   resolution: "mem-fs-editor@npm:11.1.4"
   dependencies:
@@ -9547,6 +9593,17 @@ __metadata:
     array-union: "npm:^3.0.1"
     minimatch: "npm:^9.0.3"
   checksum: 10c0/ce5b6e8a8d114830dd621b128a4a5364792bab281d861e68c7d719d2c04e8f9a4a0a566b37cbbc0a3cbaa0a62eb50e869c9d43ab439a314186b113a34c91a9c7
+  languageName: node
+  linkType: hard
+
+"multimatch@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "multimatch@npm:8.0.0"
+  dependencies:
+    array-differ: "npm:^4.0.0"
+    array-union: "npm:^3.0.1"
+    minimatch: "npm:^10.2.2"
+  checksum: 10c0/de12fe93c713eab11d5375d5a46d51180193ec5a0b002b1230f38d77fc1a1eda54dbbe7af7edfeccb9c9a6a4c273c9377e8d69d4c9b3096e2891af4392edb429
   languageName: node
   linkType: hard
 
@@ -10443,7 +10500,7 @@ __metadata:
     lodash.camelcase: "npm:^4.3.0"
     lodash.kebabcase: "npm:^4.1.1"
     mem-fs: "npm:4.1.2"
-    mem-fs-editor: "npm:11.1.4"
+    mem-fs-editor: "npm:12.0.3"
     minimist: "npm:1.2.8"
     parse-author: "npm:2.0.0"
     pob-dependencies: "workspace:*"
@@ -12504,7 +12561,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vinyl@npm:^3.0.0":
+"vinyl@npm:^3.0.0, vinyl@npm:^3.0.1":
   version: 3.0.1
   resolution: "vinyl@npm:3.0.1"
   dependencies:
