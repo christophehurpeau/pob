@@ -672,7 +672,7 @@ const extractHostnameFromGheApiUrl = (gheApiUrl) => {
   }
 };
 const createGhRelease = async (workspace, opts) => {
-  const { parsedRepoUrl, tag, body, prerelease } = opts;
+  const { parsedRepoUrl, tag, title, body, prerelease } = opts;
   const { GH_TOKEN, GHE_API_URL } = process.env;
   if (!GH_TOKEN) {
     await ensureGhCliAvailable(workspace);
@@ -682,6 +682,8 @@ const createGhRelease = async (workspace, opts) => {
     "release",
     "create",
     tag,
+    "--title",
+    title,
     "--repo",
     `${parsedRepoUrl.username}/${parsedRepoUrl.reponame}`
   ];
@@ -1317,6 +1319,7 @@ ${tagsInCommitMessage}` : rootNewVersion
             }
             return createGhRelease(workspace, {
               parsedRepoUrl,
+              title: newTag,
               tag: newTag,
               body: changelog,
               prerelease: !!options.prerelease

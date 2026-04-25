@@ -799,6 +799,7 @@ export const versionCommandAction = async (
             }
             return createGhRelease(workspace, {
               parsedRepoUrl,
+              title: newTag,
               tag: newTag,
               body: changelog,
               prerelease: !!options.prerelease,

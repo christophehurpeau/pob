@@ -68,11 +68,12 @@ export const createGhRelease = async (
   opts: {
     parsedRepoUrl: ParsedGithubUrl;
     tag: string;
+    title: string; // title is not necessary but slack release bot shows "undefined" if not provided
     body: string;
     prerelease: boolean;
   },
 ): Promise<void> => {
-  const { parsedRepoUrl, tag, body, prerelease } = opts;
+  const { parsedRepoUrl, tag, title, body, prerelease } = opts;
 
   const { GH_TOKEN, GHE_API_URL } = process.env;
 
@@ -86,6 +87,8 @@ export const createGhRelease = async (
     "release",
     "create",
     tag,
+    "--title",
+    title,
     "--repo",
     `${parsedRepoUrl.username}/${parsedRepoUrl.reponame}`,
   ];
