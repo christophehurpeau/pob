@@ -40,7 +40,7 @@
   "pob": {},
   "prettier": "@pob/root/prettier-config",
   "peerDependencies": {
-    "typescript": "^4.0.3 || ^5.0.0"
+    "typescript": "^4.0.3 || ^5.0.0 || ^6.0.0"
   },
   "peerDependenciesMeta": {
     "rollup": {

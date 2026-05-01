@@ -326,7 +326,7 @@ export const versionCommandAction = async (
         bumpReason = reason;
 
         if (releaseType) {
-          bumpType = releaseType as BumpType;
+          bumpType = releaseType satisfies BumpType;
         }
       }
 
