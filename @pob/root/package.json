@@ -79,7 +79,7 @@
     "json5": "^2.2.3",
     "lint-staged": "16.4.0",
     "pob-dependencies": "workspace:*",
-    "prettier": "3.8.1",
+    "prettier": "3.8.3",
     "semver": "^7.7.3"
   }
 }
