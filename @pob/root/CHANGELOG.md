@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@23.0.0...@pob/root@23.1.0) (2026-05-01)
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v3.8.3 ([#2732](https://github.com/christophehurpeau/pob/issues/2732))
+* **tsconfig:** update module and moduleResolution to nodenext
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [23.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@22.4.0...@pob/root@23.0.0) (2026-04-05)
 
 ### ⚠ BREAKING CHANGES

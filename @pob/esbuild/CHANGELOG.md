@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.0](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@5.2.2...@pob/esbuild@5.3.0) (2026-05-01)
+
+### Features
+
+* **deps:** update dependency esbuild to v0.28.0 ([#2720](https://github.com/christophehurpeau/pob/issues/2720))
+
 ## [5.2.2](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@5.2.1...@pob/esbuild@5.2.2) (2026-03-21)
 
 ### Bug Fixes

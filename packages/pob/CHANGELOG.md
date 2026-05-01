@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.1.0](https://github.com/christophehurpeau/pob/compare/pob@34.0.0...pob@34.1.0) (2026-05-01)
+
+### Features
+
+* update packageManager to yarn@4.14.1 in CoreYarnGenerator
+
+### Bug Fixes
+
+* **deps:** update dependency mem-fs to v4.1.4 ([#2691](https://github.com/christophehurpeau/pob/issues/2691))
+* **deps:** update dependency prettier to v3.8.3 ([#2732](https://github.com/christophehurpeau/pob/issues/2732))
+* ignore *.tsbuildinfo instead of tsbuildinfo
+* **tsconfig:** set noImplicitAny to false in tsconfig.check-js.json.ejs to support ts 6
+
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [34.0.0](https://github.com/christophehurpeau/pob/compare/pob@33.4.0...pob@34.0.0) (2026-04-05)
 
 ### ⚠ BREAKING CHANGES

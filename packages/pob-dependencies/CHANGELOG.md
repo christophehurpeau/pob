@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@23.0.0...pob-dependencies@23.1.0) (2026-05-01)
+
+### Features
+
+* **deps:** update dependency rollup to v4.60.1 ([#2713](https://github.com/christophehurpeau/pob/issues/2713))
+
+### Bug Fixes
+
+* **deps:** update dependency prettier to v3.8.3 ([#2732](https://github.com/christophehurpeau/pob/issues/2732))
+
+Version bump for dependency: @pob/esbuild
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [23.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@22.2.2...pob-dependencies@23.0.0) (2026-04-05)
 
 ### ⚠ BREAKING CHANGES

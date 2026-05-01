@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.42.0](https://github.com/christophehurpeau/pob/compare/example-webpack-app@0.41.2...example-webpack-app@0.42.0) (2026-05-01)
+
+Version bump for dependency: example-typescript-lib-rollup-esbuild
+
+
 ## [0.41.2](https://github.com/christophehurpeau/pob/compare/example-webpack-app@0.41.1...example-webpack-app@0.41.2) (2026-03-21)
 
 Version bump for dependency: example-typescript-lib-rollup-esbuild
