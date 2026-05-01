@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [23.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@23.1.0...@pob/root@23.2.0) (2026-05-01)
+
+### Features
+
+* add types configuration for Node in base-node.json
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [23.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@23.0.0...@pob/root@23.1.0) (2026-05-01)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.5.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup@7.4.0...@pob/rollup@7.5.0) (2026-05-01)
+
+### Features
+
+* update rollup
+
 ## [7.4.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup@7.3.4...@pob/rollup@7.4.0) (2026-05-01)
 
 ### Features

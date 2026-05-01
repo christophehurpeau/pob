@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [3.2.0](https://github.com/christophehurpeau/pob/compare/@pob/version@3.1.0...@pob/version@3.2.0) (2026-05-01)
+
+### Features
+
+* bump eslint-config and eslint-config-typescript-react to version 65.3.0
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [3.1.0](https://github.com/christophehurpeau/pob/compare/@pob/version@3.0.0...@pob/version@3.1.0) (2026-05-01)
 
 ### Features

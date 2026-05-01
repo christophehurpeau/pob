@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.51.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild@0.50.0...example-typescript-lib-rollup-esbuild@0.51.0) (2026-05-01)
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [0.50.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild@0.49.2...example-typescript-lib-rollup-esbuild@0.50.0) (2026-05-01)
 
 Version bump for dependency: @pob/rollup-esbuild

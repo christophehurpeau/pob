@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@8.2.0...@pob/rollup-esbuild@8.3.0) (2026-05-01)
+
+### Features
+
+* bump eslint-config and eslint-config-typescript-react to version 65.3.0
+* update rollup
+
+Version bump for dependency: @pob/rollup
+
+
 ## [8.2.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@8.1.2...@pob/rollup-esbuild@8.2.0) (2026-05-01)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.4.0](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@5.3.0...@pob/esbuild@5.4.0) (2026-05-01)
+
+### Features
+
+* bump eslint-config and eslint-config-typescript-react to version 65.3.0
+
 ## [5.3.0](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@5.2.2...@pob/esbuild@5.3.0) (2026-05-01)
 
 ### Features

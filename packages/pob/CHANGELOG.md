@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.2.0](https://github.com/christophehurpeau/pob/compare/pob@34.1.0...pob@34.2.0) (2026-05-01)
+
+### Features
+
+* add types node
+* bump eslint-config and eslint-config-typescript-react to version 65.3.0
+* update eslint config
+* update eslint to version 10.2.1 across all packages
+
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [34.1.0](https://github.com/christophehurpeau/pob/compare/pob@34.0.0...pob@34.1.0) (2026-05-01)
 
 ### Features
