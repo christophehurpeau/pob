@@ -11,6 +11,9 @@
 <% if (composite) { -%>
     "composite": true,
 <% } -%>
+<% if (node) { -%>
+    "types": ["node"],
+<% } -%>
     "noEmit": true
   },
   "include": ["<%= srcDirectory %>/**/*.js","<%= srcDirectory %>/**/*.mjs","<%= srcDirectory %>/**/*.cjs", "<%= srcDirectory %>/**/*.d.ts"]

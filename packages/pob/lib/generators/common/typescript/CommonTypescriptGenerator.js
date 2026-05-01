@@ -124,6 +124,13 @@ export default class CommonTypescriptGenerator extends Generator {
     }
 
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
+    const envs = pkg.pob?.envs || [
+      {
+        target: "node",
+        version: `${maintenanceLTS}`,
+      },
+    ];
+    const withNode = envs.some((env) => env.target === "node");
 
     const presets = (() => {
       const babelEnvs =
@@ -144,12 +151,7 @@ export default class CommonTypescriptGenerator extends Generator {
         const nodeVersion = this.options.onlyLatestLTS
           ? `${latestLTS}`
           : `${maintenanceLTS}`;
-        const envs = pkg.pob?.envs || [
-          {
-            target: "node",
-            version: `${maintenanceLTS}`,
-          },
-        ];
+
         if (
           pkg.pob.rollup === false ||
           pkg.pob.bundler === false ||
@@ -327,6 +329,7 @@ export default class CommonTypescriptGenerator extends Generator {
           additionalIncludes: this.options.additionalIncludes
             .split(",")
             .filter(Boolean),
+          node: withNode,
           presets,
         },
       );
