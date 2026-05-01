@@ -54,7 +54,7 @@
     "@vitest/coverage-v8": "4.0.18",
     "alp-rollup-plugin-config": "4.0.2",
     "check-package-dependencies": "10.5.0",
-    "eslint": "10.0.3",
+    "eslint": "10.2.1",
     "jest": "30.3.0",
     "jest-junit-reporter": "1.1.0",
     "pinst": "3.0.0",
