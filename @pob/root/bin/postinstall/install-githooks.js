@@ -125,7 +125,7 @@ fi`;
 
     writeHook("post-checkout", runInstallOnDiff());
     writeHook("post-merge", runInstallOnDiff());
-    writeHook("post-rewrite", runInstallOnDiff(' | [ "$1" = "rebase" ]'));
+    writeHook("post-rewrite", runInstallOnDiff(' || [ "$1" = "rebase" ]'));
   }
 
   const prePushHook = [];
