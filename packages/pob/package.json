@@ -65,7 +65,7 @@
   },
   "devDependencies": {
     "@pob/root": "23.2.0",
-    "@types/node": "24.12.2"
+    "@types/node": "24.12.4"
   },
   "engines": {
     "node": ">=22.18.0"

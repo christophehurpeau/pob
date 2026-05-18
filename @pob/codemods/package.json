@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@types/jscodeshift": "17.3.0",
-    "@types/node": "24.12.2"
+    "@types/node": "24.12.4"
   },
   "engines": {
     "node": ">=24.14.1"

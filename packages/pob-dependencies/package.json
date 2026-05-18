@@ -45,7 +45,7 @@
     "@pob/rollup-esbuild": "8.3.0",
     "@pob/rollup-typescript": "8.0.2",
     "@types/jest": "30.0.0",
-    "@types/node": "24.12.2",
+    "@types/node": "24.12.4",
     "@vitest/coverage-v8": "4.1.6",
     "alp-rollup-plugin-config": "4.0.2",
     "check-package-dependencies": "11.1.1",
