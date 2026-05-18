@@ -32,7 +32,6 @@ export default class MonorepoTypescriptGenerator extends Generator {
     this.option("testRunner", {
       type: String,
       required: false,
-      default: "jest",
     });
 
     this.option("checkOnly", {

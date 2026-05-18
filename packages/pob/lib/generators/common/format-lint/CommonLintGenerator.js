@@ -50,8 +50,7 @@ export default class CommonFormatLintGenerator extends Generator {
     this.option("testRunner", {
       type: String,
       required: false,
-      default: "jest",
-      description: "test runner: jest | node",
+      description: "test runner: vitest | node",
     });
 
     this.option("typescript", {

@@ -280,7 +280,7 @@ export default class PobAppGenerator extends Generator {
         runner: this.appConfig.testing
           ? (inMonorepo
               ? inMonorepo.pobMonorepoConfig.testRunner
-              : this.appConfig.testRunner) || "jest"
+              : this.appConfig.testRunner) || ""
           : undefined,
         e2eTesting: this.appConfig.e2e ? "." : "",
         typescript,

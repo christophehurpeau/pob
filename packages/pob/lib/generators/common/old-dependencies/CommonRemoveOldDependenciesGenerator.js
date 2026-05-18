@@ -50,6 +50,9 @@ export default class CommonRemoveOldDependenciesGenerator extends Generator {
       "eslint-plugin-typescript",
       "xunit-file",
       "rollup-plugin-copy",
+      "jest",
+      "@types/jest",
+      "jest-junit-reporter",
     ]);
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);

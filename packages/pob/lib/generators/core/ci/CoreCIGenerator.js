@@ -2,7 +2,6 @@ import fs from "node:fs";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import { latestLTS, maintenanceLTS } from "../../../utils/nodeVersions.js";
-import * as packageUtils from "../../../utils/package.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
 export const ciContexts = [];
@@ -37,8 +36,7 @@ export default class CoreCIGenerator extends Generator {
     this.option("testRunner", {
       type: String,
       required: false,
-      default: "jest",
-      description: "test runner: jest | node",
+      description: "test runner: vitest | node",
     });
 
     this.option("e2eTesting", {
@@ -192,12 +190,6 @@ export default class CoreCIGenerator extends Generator {
 
     this.fs.delete(this.destinationPath(".travis.yml"));
     this.fs.delete(this.destinationPath("circle.yml"));
-
-    if (!this.options.enable) {
-      packageUtils.removeDevDependencies(pkg, ["jest-junit-reporter"]);
-    } else {
-      packageUtils.removeDevDependencies(pkg, ["jest-junit-reporter"]);
-    }
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
   }

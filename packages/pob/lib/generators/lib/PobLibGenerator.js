@@ -220,15 +220,11 @@ export default class PobLibGenerator extends Generator {
           name: "runner",
           message: "Testing runner ?",
           when: !this.updateOnly || this.pobjson.testing?.runner === undefined,
-          default: this.pobjson.testing?.runner || "jest",
+          default: this.pobjson.testing?.runner,
           choices: [
             {
               name: "Vitest",
               value: "vitest",
-            },
-            {
-              name: "Jest",
-              value: "jest",
             },
             {
               name: "node:test",
@@ -317,7 +313,7 @@ export default class PobLibGenerator extends Generator {
       runner: this.pobjson.testing
         ? (inMonorepo
             ? inMonorepo.pobMonorepoConfig.testRunner
-            : this.pobjson.testing.runner) || "jest"
+            : this.pobjson.testing.runner) || ""
         : undefined,
       build: withBabel || withTypescript,
       typescript: withTypescript,
