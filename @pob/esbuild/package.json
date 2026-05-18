@@ -3,24 +3,25 @@
   "version": "5.4.0",
   "description": "esbuild configuration for pob",
   "keywords": [],
-  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "homepage": "https://github.com/christophehurpeau/pob",
   "license": "MIT",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "repository": {
     "type": "git",
     "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "@pob/esbuild"
   },
-  "homepage": "https://github.com/christophehurpeau/pob",
-  "type": "module",
-  "engines": {
-    "node": ">=22.18.0"
-  },
-  "sideEffects": false,
   "bin": {
     "pob-esbuild-build": "./bin/pob-esbuild-build.js",
     "pob-esbuild-clean-out": "./bin/pob-esbuild-clean-out.js",
     "pob-esbuild-watch": "./bin/pob-esbuild-watch.js"
   },
+  "files": [
+    "lib",
+    "bin"
+  ],
+  "type": "module",
+  "sideEffects": false,
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
@@ -29,16 +30,13 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": [
-    "lib",
-    "bin"
-  ],
   "scripts": {
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn '../..' run eslint --quiet '@pob/esbuild'"
   },
-  "pob": {},
-  "prettier": "@pob/root/prettier-config",
+  "dependencies": {
+    "esbuild": "0.28.0"
+  },
   "peerDependencies": {
     "typescript": "^4.0.3 || ^5.0.0 || ^6.0.0"
   },
@@ -47,7 +45,8 @@
       "optional": true
     }
   },
-  "dependencies": {
-    "esbuild": "0.28.0"
-  }
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pob": {}
 }

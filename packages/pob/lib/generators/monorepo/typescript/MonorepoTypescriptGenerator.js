@@ -116,7 +116,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
   }
 
   // after pob ran in workspaces
-  end() {
+  async end() {
     const tsconfigPath = this.destinationPath("tsconfig.json");
     const tsconfigCheckPath = this.destinationPath("tsconfig.check.json");
     const tsconfigBuildPath = this.destinationPath("tsconfig.build.json");
@@ -130,7 +130,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
     } else {
       const packagePaths = JSON.parse(this.options.packagePaths);
 
-      copyAndFormatTpl(
+      await copyAndFormatTpl(
         this.fs,
         this.templatePath("tsconfig.json.ejs"),
         tsconfigPath,
@@ -144,7 +144,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
       this.fs.delete(tsconfigBuildPath);
       // if (this.options.isAppProject) {
       // } else {
-      //   copyAndFormatTpl(
+      //   await copyAndFormatTpl(
       //     this.fs,
       //     this.templatePath('tsconfig.check.json.ejs'),
       //     tsconfigCheckPath,
@@ -155,7 +155,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
       //     },
       //   );
 
-      //   copyAndFormatTpl(
+      //   await copyAndFormatTpl(
       //     this.fs,
       //     this.templatePath('tsconfig.build.json.ejs'),
       //     tsconfigBuildPath,

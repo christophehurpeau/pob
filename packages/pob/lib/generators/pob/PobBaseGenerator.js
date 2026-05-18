@@ -1,6 +1,6 @@
 import { fileURLToPath } from "node:url";
 import Generator from "yeoman-generator";
-import ensureJsonFileFormatted from "../../utils/ensureJsonFileFormatted.js";
+import { ensureJsonFileFormatted } from "../../utils/ensureJsonFileFormatted.js";
 import inMonorepo from "../../utils/inMonorepo.js";
 import * as packageUtils from "../../utils/package.js";
 
@@ -43,9 +43,9 @@ export default class PobBaseGenerator extends Generator {
     return "pob";
   }
 
-  initializing() {
-    // prettier package.json to ensure diff is correct
-    ensureJsonFileFormatted(this.destinationPath("package.json"));
+  async initializing() {
+    // format package.json to ensure diff is correct
+    await ensureJsonFileFormatted(this.destinationPath("package.json"));
 
     if (this.options.monorepo) {
       this.isMonorepo = true;

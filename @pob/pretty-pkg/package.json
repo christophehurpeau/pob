@@ -3,20 +3,21 @@
   "version": "13.2.3",
   "description": "prettier and sort package.json",
   "keywords": [],
-  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "homepage": "https://github.com/christophehurpeau/pob",
   "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "repository": {
     "type": "git",
     "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "@pob/pretty-pkg"
   },
-  "homepage": "https://github.com/christophehurpeau/pob",
-  "type": "module",
-  "engines": {
-    "node": ">=22.18.0"
-  },
-  "sideEffects": false,
   "bin": "./bin/pretty-pkg.js",
+  "files": [
+    "lib",
+    "bin"
+  ],
+  "type": "module",
+  "sideEffects": false,
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
@@ -26,17 +27,15 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": [
-    "lib",
-    "bin"
-  ],
   "scripts": {
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn '../..' run eslint --quiet '@pob/pretty-pkg'"
   },
-  "pob": {},
-  "prettier": "@pob/root/prettier-config",
   "dependencies": {
-    "@pob/sort-pkg": "12.1.2"
-  }
+    "oxfmt": "0.50.0"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pob": {}
 }

@@ -2,29 +2,25 @@
   "name": "pob-monorepo",
   "private": true,
   "description": "library generator/tools/scripts",
-  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
-  "license": "ISC",
-  "repository": "https://github.com/christophehurpeau/pob.git",
   "homepage": "https://github.com/christophehurpeau/pob",
-  "type": "module",
-  "packageManager": "yarn@4.14.1",
-  "engines": {
-    "node": ">=22.18.0"
-  },
+  "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "repository": "https://github.com/christophehurpeau/pob.git",
   "workspaces": [
     "packages/*",
     "@pob/*",
     "pob-examples/*"
   ],
+  "type": "module",
   "scripts": {
     "build": "yarn clean:build && rollup --config rollup.config.mjs && yarn run build:definitions && chmod a+x @pob/version/dist/index-node.mjs",
     "build:definitions": "tsc -b",
     "checks": "node scripts/check-packages.js && ./scripts/run-self-on-examples.sh",
     "clean:build": "yarn workspaces foreach --parallel -A run clean:build",
-    "lint": "yarn run lint:prettier && yarn run lint:eslint",
+    "format": "oxfmt",
+    "format:check": "oxfmt --check",
+    "lint": "yarn run lint:eslint",
     "lint:eslint": "NODE_OPTIONS=--max_old_space_size=4096 eslint --quiet .",
-    "lint:prettier": "pob-root-prettier --check .",
-    "lint:prettier:fix": "pob-root-prettier --write .",
     "postinstall": "yarn node @pob/root/bin/pob-root-postinstall.js",
     "test": "TZ=UTC vitest",
     "test:coverage": "TZ=UTC POB_VITEST_COVERAGE=json,text vitest run --coverage",
@@ -33,12 +29,6 @@
     "tsc": "tsc -b",
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
-  "commitlint": {
-    "extends": [
-      "@pob/root/commitlint-config"
-    ]
-  },
-  "prettier": "@pob/root/prettier-config",
   "devDependencies": {
     "@babel/core": "7.29.0",
     "@pob/eslint-config": "65.4.3",
@@ -48,10 +38,18 @@
     "@vitest/coverage-v8": "4.1.6",
     "check-package-dependencies": "11.1.1",
     "eslint": "10.4.0",
-    "pob-babel": "workspace:*",
-    "prettier": "3.8.3",
+    "oxfmt": "0.50.0",
     "react": "19.2.6",
     "typescript": "5.9.3",
     "vitest": "4.1.6"
-  }
+  },
+  "commitlint": {
+    "extends": [
+      "@pob/root/commitlint-config"
+    ]
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "packageManager": "yarn@4.14.1"
 }

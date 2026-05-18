@@ -1,36 +1,21 @@
-import prettier from "@prettier/sync";
+import { format } from "oxfmt";
 
-export function writeAndFormat(fs, destinationPath, content, { parser } = {}) {
-  fs.write(
-    destinationPath,
-    prettier.format(content, {
-      parser,
-      filepath: destinationPath,
-      trailingComma: "all",
-      arrowParens: "always",
-      printWidth: destinationPath === ".yarnrc.yml" ? 9999 : undefined,
-    }),
-  );
-}
-
-function getParserFromDestinationPath(destinationPath) {
-  if (destinationPath.endsWith("/lerna.json")) {
-    return "json-stringify";
-  }
-  if (destinationPath.endsWith("json")) {
-    return undefined;
-  }
-
-  return "json";
-}
-
-export function writeAndFormatJson(fs, destinationPath, value) {
-  writeAndFormat(fs, destinationPath, JSON.stringify(value, null, 2), {
-    // project.code-workspace is json
-    parser: getParserFromDestinationPath(destinationPath),
+export async function writeAndFormat(fs, destinationPath, content) {
+  const { code: formatted } = await format(destinationPath, content, {
+    printWidth: 80,
   });
+  return fs.write(destinationPath, formatted);
 }
-export function copyAndFormatTpl(fs, templatePath, destinationPath, options) {
-  fs.copyTpl(templatePath, destinationPath, options);
-  writeAndFormat(fs, destinationPath, fs.read(destinationPath));
+
+export async function writeAndFormatJson(fs, destinationPath, value) {
+  await writeAndFormat(fs, destinationPath, JSON.stringify(value, null, 2));
+}
+export async function copyAndFormatTpl(
+  fs,
+  templatePath,
+  destinationPath,
+  options,
+) {
+  await fs.copyTpl(templatePath, destinationPath, options);
+  await writeAndFormat(fs, destinationPath, fs.read(destinationPath));
 }

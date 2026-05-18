@@ -45,11 +45,7 @@ export default function createRollupConfig({
             cwd,
             `${outDirectory}/${entry}-${env.target}${
               env.omitVersionInFileName ? "" : env.version || ""
-            }${
-              env.target === "node"
-                ? nodeFormatToExt(format, pkg.type)
-                : `.${format}.js`
-            }`,
+            }${env.target === "node" ? nodeFormatToExt(format, pkg.type) : `.${format}.js`}`,
           ),
         ),
         format,

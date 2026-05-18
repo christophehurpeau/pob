@@ -407,7 +407,9 @@ export const versionCommandAction = async (
               satisfies(
                 dependencyBumpedWorkspace.newVersion,
                 dependencyDescriptor.selector,
-                { includePrerelease: true },
+                {
+                  includePrerelease: true,
+                },
               )
             ) {
               continue;
@@ -698,9 +700,7 @@ export const versionCommandAction = async (
         if (options.changelog) {
           if (options.dryRun) {
             logger.info(
-              `${getWorkspaceName(workspace)}: ${
-                options.changelog
-              }\n${changelog}`,
+              `${getWorkspaceName(workspace)}: ${options.changelog}\n${changelog}`,
             );
           } else {
             await updateChangelogFile(
@@ -791,9 +791,7 @@ export const versionCommandAction = async (
             const changelog = changelogs.get(workspace);
             if (!changelog) {
               logger.warn(
-                `No changelog found for workspace: ${getWorkspaceName(
-                  workspace,
-                )}`,
+                `No changelog found for workspace: ${getWorkspaceName(workspace)}`,
               );
               return Promise.resolve(undefined);
             }

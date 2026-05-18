@@ -86,7 +86,7 @@ export default class MonorepoLernaGenerator extends Generator {
         lernaCurrentConfig.command.publish.ignoreChanges) ||
       [];
 
-    writeAndFormatJson(
+    return writeAndFormatJson(
       this.fs,
       this.destinationPath("lerna.json"),
       lernaConfig,

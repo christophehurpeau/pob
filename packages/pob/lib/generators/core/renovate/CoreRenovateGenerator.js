@@ -81,7 +81,7 @@ export default class CoreRenovateGenerator extends Generator {
         ].filter(Boolean);
       }
 
-      writeAndFormatJson(
+      return writeAndFormatJson(
         this.fs,
         this.destinationPath("renovate.json"),
         renovateConfig,

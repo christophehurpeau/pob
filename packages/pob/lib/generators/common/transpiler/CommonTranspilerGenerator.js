@@ -623,7 +623,7 @@ export default class CommonTranspilerGenerator extends Generator {
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
   }
 
-  writing() {
+  async writing() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
     const entries = pkg.pob.entries || ["index"];
     const envs = pkg.pob.envs || pkg.pob.babelEnvs;
@@ -715,7 +715,7 @@ export default class CommonTranspilerGenerator extends Generator {
         pkg.pob.bundler?.startsWith("rollup"))
     ) {
       if (this.options.isApp) {
-        copyAndFormatTpl(
+        await copyAndFormatTpl(
           this.fs,
           this.templatePath("app.rollup.config.mjs.ejs"),
           this.destinationPath("rollup.config.mjs"),
@@ -727,7 +727,7 @@ export default class CommonTranspilerGenerator extends Generator {
           },
         );
       } else {
-        copyAndFormatTpl(
+        await copyAndFormatTpl(
           this.fs,
           this.templatePath("lib.rollup.config.mjs.ejs"),
           this.destinationPath("rollup.config.mjs"),

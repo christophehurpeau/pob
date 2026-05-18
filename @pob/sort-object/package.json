@@ -3,18 +3,18 @@
   "version": "10.1.2",
   "description": "sort object",
   "keywords": [],
-  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "homepage": "https://github.com/christophehurpeau/pob",
   "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "repository": {
     "type": "git",
     "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "@pob/sort-object"
   },
-  "homepage": "https://github.com/christophehurpeau/pob",
+  "files": [
+    "lib"
+  ],
   "type": "module",
-  "engines": {
-    "node": ">=22.18.0"
-  },
   "sideEffects": false,
   "main": "./lib/index.js",
   "exports": {
@@ -24,13 +24,12 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": [
-    "lib"
-  ],
   "scripts": {
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn '../..' run eslint --quiet '@pob/sort-object'"
   },
-  "pob": {},
-  "prettier": "@pob/root/prettier-config"
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pob": {}
 }

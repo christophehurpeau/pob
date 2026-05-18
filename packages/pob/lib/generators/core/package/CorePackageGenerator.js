@@ -234,9 +234,7 @@ export default class CorePackageGenerator extends Generator {
         pkg,
         doesMjsCheckPackagesExists || doesJsCheckPackagesExists,
         {
-          checks: `node scripts/check-packages.${
-            doesMjsCheckPackagesExists ? "mjs" : "js"
-          }`,
+          checks: `node scripts/check-packages.${doesMjsCheckPackagesExists ? "mjs" : "js"}`,
         },
       );
     } else if (inMonorepo && !inMonorepo.root) {
@@ -300,9 +298,7 @@ export default class CorePackageGenerator extends Generator {
         url: props.authorUrl || (author && author.url),
       };
 
-      pkg.author = `${author.name} <${author.email}>${
-        author.url ? ` (${author.url})` : ""
-      }`;
+      pkg.author = `${author.name} <${author.email}>${author.url ? ` (${author.url})` : ""}`;
     }
 
     if (!pkg.license) {

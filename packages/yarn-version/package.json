@@ -3,25 +3,22 @@
   "version": "11.2.0",
   "description": "yarn berry versioning using conventional commits",
   "keywords": [
-    "semantic-release",
     "conventional-commits",
-    "yarn",
+    "semantic-release",
+    "version",
     "versioning",
-    "version"
+    "yarn"
   ],
-  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "homepage": "https://github.com/christophehurpeau/pob",
   "license": "MIT",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "repository": {
     "type": "git",
     "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "packages/yarn-version"
   },
-  "homepage": "https://github.com/christophehurpeau/pob",
-  "type": "module",
-  "engines": {
-    "node": ">=24.11.0"
-  },
   "bin": "./yarn-version.mjs",
+  "type": "module",
   "main": "./yarn-version.mjs",
   "exports": {
     "./package.json": "./package.json",
@@ -40,12 +37,14 @@
     "lint:eslint": "yarn ../.. run eslint --quiet packages/yarn-version",
     "start": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
-  "pob": {},
-  "prettier": "@pob/root/prettier-config",
   "dependencies": {
     "@pob/version": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "24.12.2"
-  }
+  },
+  "engines": {
+    "node": ">=24.11.0"
+  },
+  "pob": {}
 }

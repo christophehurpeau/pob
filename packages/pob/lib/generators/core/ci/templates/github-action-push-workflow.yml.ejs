@@ -58,8 +58,8 @@ jobs:
         if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
 
 <% } -%>
-      - name: Prettier
-        run: <%= packageManager %> run lint:prettier
+      - name: Format
+        run: <%= packageManager %> run format:check
         if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
 <% if (typescript) { -%>
 

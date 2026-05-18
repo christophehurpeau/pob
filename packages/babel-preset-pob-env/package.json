@@ -5,32 +5,31 @@
   "keywords": [
     "babel-preset"
   ],
-  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "homepage": "https://github.com/christophehurpeau/pob",
   "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "repository": {
     "type": "git",
     "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "packages/babel-preset-pob-env"
   },
-  "homepage": "https://github.com/christophehurpeau/pob",
+  "files": [
+    "lib"
+  ],
   "type": "module",
-  "engines": {
-    "node": ">=22.18.0"
-  },
   "sideEffects": false,
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
     "./package.json": "./package.json"
   },
-  "files": [
-    "lib"
-  ],
   "scripts": {
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn '../..' run eslint --quiet 'packages/babel-preset-pob-env'",
     "test": "yarn '../..' run test -- 'packages/babel-preset-pob-env'"
   },
-  "pob": {},
-  "prettier": "@pob/root/prettier-config"
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pob": {}
 }

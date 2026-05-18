@@ -12,6 +12,7 @@
         "@pob/codemods",
         "@pob/commitlint-config",
         "@pob/esbuild",
+        "@pob/pretty-pkg",
         "@pob/rollup",
         "@pob/rollup-typescript",
         "@pob/sort-object",
@@ -22,13 +23,12 @@
         "repository-check-dirty",
         "@pob/rollup-esbuild",
         "@pob/sort-pkg",
-        "@pob/pretty-pkg",
         "@pob/version",
         "example-typescript-lib-rollup-esbuild",
-        "example-webpack-app",
         "pob-dependencies",
-        "yarn-version",
         "@pob/root",
+        "example-webpack-app",
+        "yarn-version",
         "pob"
       ]
     },

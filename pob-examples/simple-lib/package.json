@@ -1,19 +1,16 @@
 {
   "name": "example-simple-lib",
-  "private": true,
   "version": "0.12.3",
-  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "private": true,
+  "homepage": "https://github.com/christophehurpeau/pob",
   "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "repository": {
     "type": "git",
     "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "pob-examples/simple-lib"
   },
-  "homepage": "https://github.com/christophehurpeau/pob",
   "type": "module",
-  "engines": {
-    "node": ">=22.18.0"
-  },
   "sideEffects": false,
   "main": "./lib/index.js",
   "exports": {
@@ -25,6 +22,8 @@
     "lint:eslint": "yarn '../..' run eslint --quiet 'pob-examples/simple-lib'",
     "test": "yarn '../..' run test -- 'pob-examples/simple-lib'"
   },
-  "pob": {},
-  "prettier": "@pob/root/prettier-config"
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pob": {}
 }

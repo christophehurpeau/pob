@@ -66,10 +66,10 @@ export default class CoreVSCodeGenerator extends Generator {
     });
   }
 
-  writing() {
+  async writing() {
     if (this.options.root) {
       const pkg = this.fs.readJSON(this.destinationPath("package.json"));
-      copyAndFormatTpl(
+      await copyAndFormatTpl(
         this.fs,
         this.templatePath("extensions.json.ejs"),
         this.destinationPath(".vscode/extensions.json"),
@@ -78,7 +78,7 @@ export default class CoreVSCodeGenerator extends Generator {
           pnp: this.options.yarnNodeLinker === "pnp",
         },
       );
-      copyAndFormatTpl(
+      await copyAndFormatTpl(
         this.fs,
         this.templatePath("settings.json.ejs"),
         this.destinationPath(".vscode/settings.json"),
@@ -101,7 +101,7 @@ export default class CoreVSCodeGenerator extends Generator {
       );
       const tasks = tasksConfig.tasks || [];
 
-      copyAndFormatTpl(
+      await copyAndFormatTpl(
         this.fs,
         this.templatePath("tasks.json.ejs"),
         this.destinationPath(".vscode/tasks.json"),

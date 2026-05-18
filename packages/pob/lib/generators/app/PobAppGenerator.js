@@ -383,9 +383,7 @@ export default class PobAppGenerator extends Generator {
 
     if (platform !== "win32") {
       execSync(
-        `rm -Rf ${["lib-*", "coverage", "docs", "dist"]
-          .filter(Boolean)
-          .join(" ")}`,
+        `rm -Rf ${["lib-*", "coverage", "docs", "dist"].filter(Boolean).join(" ")}`,
       );
     }
   }

@@ -1,27 +1,34 @@
-CHANGELOG.md
+{
+  "$schema": "./node_modules/oxfmt/configuration_schema.json",
+  "printWidth": 80,
+  "sortPackageJson": { "sortScripts": true },
+  "ignorePatterns": [
 <% if (documentation) { -%>
-/docs
+    "/docs",
 <% } -%>
 <% if (packageManager === 'yarn' && inRoot) { -%>
-/.yarnrc.yml
-/.yarn/**/*
+    "/.yarnrc.yml",
+    "/.yarn/**/*",
 <% if (yarnNodeLinker === 'pnp') { -%>
-/.pnp.*
+    "/.pnp.*",
 <% } -%>
 <% } -%>
 <% for (let ignorePattern of rootIgnorePatterns) { -%>
-<%= ignorePattern %>
+    "<%= ignorePattern %>",
 <% } -%>
 <% if (workspaces) { -%>
 <% for (let workspace of workspaces) { -%>
 <% if (ignorePatterns) { -%>
 <% for (let ignorePattern of ignorePatterns) { -%>
-<%= ignorePattern.startsWith('*') ? ignorePattern : '/' + workspace + ignorePattern %>
+    "<%= ignorePattern.startsWith('*') ? ignorePattern : '/' + workspace + ignorePattern %>",
 <% } -%>
 <% } -%>
 <% } -%>
 <% } else { -%>
 <% for (let ignorePattern of ignorePatterns) { -%>
-<%= ignorePattern %>
+    "<%= ignorePattern %>",
 <% } -%>
 <% } -%>
+    "CHANGELOG.md"
+  ]
+}

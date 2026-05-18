@@ -61,8 +61,8 @@ jobs:
       - name: Install Dependencies
         run: yarn install --immutable
 
-      - name: Prettier
-        run: yarn run lint:prettier
+      - name: Format
+        run: yarn run format:check
 
       - name: Typescript
         run: yarn run tsc

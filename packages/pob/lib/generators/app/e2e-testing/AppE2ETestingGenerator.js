@@ -40,6 +40,10 @@ export default class AppE2ETestingGenerator extends Generator {
     if (this.options.enable) {
     }
 
-    writeAndFormatJson(this.fs, this.destinationPath("package.json"), pkg);
+    return writeAndFormatJson(
+      this.fs,
+      this.destinationPath("package.json"),
+      pkg,
+    );
   }
 }

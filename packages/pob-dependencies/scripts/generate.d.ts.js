@@ -1,13 +1,13 @@
 import fs from "node:fs";
-import prettier from "prettier";
+// eslint-disable-next-line import-x/no-extraneous-dependencies
+import { format } from "oxfmt";
 import { pkgPath } from "./helper.cjs";
 
 const pkg = JSON.parse(fs.readFileSync(pkgPath));
 
-fs.writeFileSync(
-  new URL("../lib/index.d.ts", import.meta.url),
-  await prettier.format(
-    `
+const { code: formatted } = await format(
+  "index.d.ts",
+  `
   interface Dependencies {
     ${Object.keys(pkg.devDependencies)
       .map((dep) => `"${dep}": "${pkg.devDependencies[dep]}"`)
@@ -17,10 +17,7 @@ fs.writeFileSync(
   declare const dependencies: Dependencies;
   export = dependencies;
   `,
-    {
-      filepath: "index.d.ts",
-      trailingComma: "all",
-      arrowParens: "always",
-    },
-  ),
+  { printWidth: 80 },
 );
+
+fs.writeFileSync(new URL("../lib/index.d.ts", import.meta.url), formatted);

@@ -3,18 +3,18 @@
   "version": "45.0.1",
   "description": "Build and watch with babel and typescript",
   "keywords": [],
-  "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
+  "homepage": "https://github.com/christophehurpeau/pob",
   "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "repository": {
     "type": "git",
     "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "packages/pob-babel"
   },
-  "homepage": "https://github.com/christophehurpeau/pob",
+  "files": [
+    "lib"
+  ],
   "type": "module",
-  "engines": {
-    "node": ">=22.18.0"
-  },
   "sideEffects": false,
   "main": "./lib/index.js",
   "exports": {
@@ -23,14 +23,13 @@
     },
     "./package.json": "./package.json"
   },
-  "files": [
-    "lib"
-  ],
   "scripts": {
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn '../..' run eslint --quiet 'packages/pob-babel'",
     "test": "yarn '../..' run test -- 'packages/pob-babel'"
   },
-  "pob": {},
-  "prettier": "@pob/root/prettier-config"
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pob": {}
 }

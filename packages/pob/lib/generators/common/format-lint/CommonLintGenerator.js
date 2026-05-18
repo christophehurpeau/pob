@@ -134,7 +134,7 @@ export default class CommonFormatLintGenerator extends Generator {
     });
   }
 
-  writing() {
+  async writing() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
     const babelEnvs =
       (pkg.pob &&
@@ -178,8 +178,7 @@ export default class CommonFormatLintGenerator extends Generator {
     }
 
     delete pkg.standard;
-
-    pkg.prettier = "@pob/root/prettier-config";
+    delete pkg.prettier;
 
     if (!inMonorepo || inMonorepo.root || this.options.monorepo) {
       const rootIgnorePatterns = new Set(
@@ -202,8 +201,8 @@ export default class CommonFormatLintGenerator extends Generator {
       }
 
       this.fs.copyTpl(
-        this.templatePath("prettierignore.ejs"),
-        this.destinationPath(".prettierignore"),
+        this.templatePath("oxfmtrc.jsonc.ejs"),
+        this.destinationPath(".oxfmtrc.jsonc"),
         {
           inRoot: !inMonorepo || inMonorepo.root || this.options.monorepo,
           documentation: this.options.documentation,
@@ -216,7 +215,11 @@ export default class CommonFormatLintGenerator extends Generator {
           storybook: this.options.storybook,
         },
       );
-    } else if (this.fs.exists(this.destinationPath(".prettierignore"))) {
+    } else if (this.fs.exists(this.destinationPath(".oxfmtrc.jsonc"))) {
+      this.fs.delete(this.destinationPath(".oxfmtrc.jsonc"));
+    }
+
+    if (this.fs.exists(this.destinationPath(".prettierignore"))) {
       this.fs.delete(this.destinationPath(".prettierignore"));
     }
 
@@ -290,8 +293,8 @@ export default class CommonFormatLintGenerator extends Generator {
         );
       }
     } else {
-      if (pkg.name !== "pob-monorepo") {
-        packageUtils.removeDevDependencies(pkg, ["prettier"]);
+      if (pkg.name !== "pob-monorepo" && pkg.name !== "pob") {
+        packageUtils.removeDevDependencies(pkg, ["oxfmt"]);
       }
       packageUtils.addOrRemoveDevDependencies(
         pkg,
@@ -417,9 +420,7 @@ export default class CommonFormatLintGenerator extends Generator {
     const srcLegacyEslintrcPath = this.options.rootAsSrc
       ? this.destinationPath(".eslintrc.json")
       : this.destinationPath(
-          `${
-            useTypescript ? `${this.options.srcDirectory}/` : "lib/"
-          }.eslintrc.json`,
+          `${useTypescript ? `${this.options.srcDirectory}/` : "lib/"}.eslintrc.json`,
         );
 
     if (rootLegacyEslintrcPath) this.fs.delete(rootLegacyEslintrcPath);
@@ -476,7 +477,7 @@ export default class CommonFormatLintGenerator extends Generator {
       if (this.fs.exists(eslintConfigPath)) {
         // TODO update config !
       } else {
-        copyAndFormatTpl(
+        await copyAndFormatTpl(
           this.fs,
           this.templatePath("eslint.config.js.ejs"),
           eslintConfigPath,
@@ -520,10 +521,10 @@ export default class CommonFormatLintGenerator extends Generator {
       });
 
       if (!inMonorepo) {
-        pkg.scripts.lint = `${this.options.packageManager} run lint:prettier && ${pkg.scripts.lint}`;
+        pkg.scripts.lint = `${this.options.packageManager} run format && ${pkg.scripts.lint}`;
         packageUtils.addScripts(pkg, {
-          "lint:prettier": "pob-root-prettier --check .",
-          "lint:prettier:fix": "pob-root-prettier --write .",
+          format: "oxfmt",
+          "format:check": "oxfmt --check .",
         });
       } else {
         delete pkg.scripts["lint:prettier"];

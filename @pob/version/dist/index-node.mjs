@@ -1031,7 +1031,9 @@ There are uncommitted changes in the git repository. Please commit or stash them
             satisfies(
               dependencyBumpedWorkspace.newVersion,
               dependencyDescriptor.selector,
-              { includePrerelease: true }
+              {
+                includePrerelease: true
+              }
             )) {
               continue;
             }
@@ -1311,9 +1313,7 @@ ${tagsInCommitMessage}` : rootNewVersion
             const changelog = changelogs.get(workspace);
             if (!changelog) {
               logger.warn(
-                `No changelog found for workspace: ${getWorkspaceName(
-                  workspace
-                )}`
+                `No changelog found for workspace: ${getWorkspaceName(workspace)}`
               );
               return Promise.resolve(void 0);
             }

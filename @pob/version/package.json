@@ -3,28 +3,30 @@
   "version": "3.2.0",
   "description": "simple versioning using conventional commits",
   "keywords": [
-    "semantic-release",
-    "conventional-commits",
-    "yarn",
     "bun",
+    "conventional-commits",
+    "semantic-release",
+    "version",
     "versioning",
-    "version"
+    "yarn"
   ],
-  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "homepage": "https://github.com/christophehurpeau/pob",
   "license": "MIT",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "repository": {
     "type": "git",
     "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "@pob/version"
   },
-  "homepage": "https://github.com/christophehurpeau/pob",
-  "type": "module",
-  "engines": {
-    "node": ">=24.0.0"
-  },
   "bin": {
     "pob-version": "./dist/index-node.mjs"
   },
+  "files": [
+    "src",
+    "dist",
+    "bin"
+  ],
+  "type": "module",
   "main": "./dist/index-node.mjs",
   "exports": {
     "./package.json": "./package.json",
@@ -38,36 +40,15 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": [
-    "src",
-    "dist",
-    "bin"
-  ],
   "scripts": {
     "build": "yarn clean:build && rollup --config rollup.config.mjs",
     "clean": "yarn clean:build",
     "clean:build": "pob-esbuild-clean-out dist",
     "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ''../..'' run eslint --quiet '@pob/version'",
+    "lint:eslint": "yarn '../..' run eslint --quiet '@pob/version'",
     "start": "yarn clean:build && rollup --config rollup.config.mjs --watch",
     "test": "yarn '../..' run test -- '@pob/version'"
   },
-  "pob": {
-    "bundler": "rollup-esbuild",
-    "entries": [
-      "index"
-    ],
-    "envs": [
-      {
-        "target": "node",
-        "version": "24",
-        "omitVersionInFileName": true,
-        "executable": true
-      }
-    ],
-    "typescript": true
-  },
-  "prettier": "@pob/root/prettier-config",
   "dependencies": {
     "commander": "14.0.3",
     "conventional-changelog-conventionalcommits": "9.3.1",
@@ -83,5 +64,23 @@
     "@types/semver": "7.7.1",
     "type-fest": "5.6.0",
     "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=24.14.1"
+  },
+  "pob": {
+    "bundler": "rollup-esbuild",
+    "entries": [
+      "index"
+    ],
+    "envs": [
+      {
+        "target": "node",
+        "version": "24",
+        "omitVersionInFileName": true,
+        "executable": true
+      }
+    ],
+    "typescript": true
   }
 }

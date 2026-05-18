@@ -7,7 +7,6 @@ interface Dependencies {
   "@pob/esbuild": "5.3.0";
   "@pob/eslint-config": "65.4.1";
   "@pob/eslint-config-typescript-react": "65.4.1";
-  "@pob/pretty-pkg": "13.2.3";
   "@pob/rollup-esbuild": "8.2.0";
   "@pob/rollup-typescript": "8.0.2";
   "@types/jest": "30.0.0";

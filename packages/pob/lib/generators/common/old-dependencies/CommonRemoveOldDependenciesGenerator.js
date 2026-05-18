@@ -45,7 +45,6 @@ export default class CommonRemoveOldDependenciesGenerator extends Generator {
       "yarn-deduplicate", // in @pob/root (for yarn 1)
       "yarn-berry-deduplicate", // use yarn dedupe with yarn 2
       "yarn-update-lock",
-      "@pob/version",
       "pob-release",
       "eslint-plugin-typescript",
       "xunit-file",
@@ -54,6 +53,9 @@ export default class CommonRemoveOldDependenciesGenerator extends Generator {
       "@types/jest",
       "jest-junit-reporter",
     ]);
+    if (pkg.name !== "pob-monorepo") {
+      packageUtils.removeDevDependencies(pkg, ["@pob/version"]);
+    }
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
   }

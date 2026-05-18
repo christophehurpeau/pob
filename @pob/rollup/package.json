@@ -3,23 +3,24 @@
   "version": "7.5.0",
   "description": "rollup configuration for pob",
   "keywords": [],
-  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "homepage": "https://github.com/christophehurpeau/pob",
   "license": "MIT",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "repository": {
     "type": "git",
     "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "@pob/rollup"
   },
-  "homepage": "https://github.com/christophehurpeau/pob",
-  "type": "module",
-  "engines": {
-    "node": ">=22.18.0"
-  },
-  "sideEffects": false,
   "bin": {
     "pob-rollup-clean-out": "./bin/pob-rollup-clean-out.js",
     "rollup": "./bin/rollup.cjs"
   },
+  "files": [
+    "lib",
+    "bin"
+  ],
+  "type": "module",
+  "sideEffects": false,
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
@@ -29,17 +30,15 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": [
-    "lib",
-    "bin"
-  ],
   "scripts": {
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn '../..' run eslint --quiet '@pob/rollup'"
   },
-  "pob": {},
-  "prettier": "@pob/root/prettier-config",
   "dependencies": {
     "rollup": "4.60.4"
-  }
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pob": {}
 }

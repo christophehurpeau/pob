@@ -52,9 +52,7 @@ const workspaces = pkg.workspaces || false;
 
 const getSrcDirectories = () => {
   if (workspaces) {
-    return `${
-      workspaces.length === 1 ? workspaces[0] : `{${workspaces.join(",")}}`
-    }/{src,lib}`;
+    return `${workspaces.length === 1 ? workspaces[0] : `{${workspaces.join(",")}}`}/{src,lib}`;
   }
 
   return "{src,lib}";
@@ -66,9 +64,7 @@ export default function createLintStagedConfig() {
   return {
     [`{${lockfile},${configfile ? `${configfile},` : ""}package.json${
       workspaces
-        ? `,${workspaces
-            .map((workspacePath) => `${workspacePath}/package.json`)
-            .join(",")}`
+        ? `,${workspaces.map((workspacePath) => `${workspacePath}/package.json`).join(",")}`
         : ""
     }}`]: (filenames) => {
       const packagejsonFilenames = filenames.filter((filename) =>
@@ -81,25 +77,27 @@ export default function createLintStagedConfig() {
         "eslint --fix --quiet",
         packagejsonFilenames.length === 0
           ? undefined
-          : `pretty-pkg "${packagejsonFilenames.join('" "')}"`,
+          : `oxfmt "${packagejsonFilenames.join('" "')}"`,
         `git add ${lockfile}${configfile ? ` ${configfile}` : ""}${pm.name === "yarn" ? " .yarn" : ""}`,
       ].filter(Boolean);
     },
-    "!(package|package-lock|.eslintrc).json": ["prettier --write"],
-    [`{.github,scripts,config,${srcDirectories}}/**/*.{yml,yaml,md}`]: [
-      "prettier --write",
+    "!(package|package-lock|.eslintrc).json": [
+      "oxfmt --no-error-on-unmatched-pattern",
     ],
-    "./*.{yml,yaml,md}": ["prettier --write"],
+    [`{.github,scripts,config,${srcDirectories}}/**/*.{yml,yaml,md}`]: [
+      "oxfmt --no-error-on-unmatched-pattern",
+    ],
+    "./*.{yml,yaml,md}": ["oxfmt --no-error-on-unmatched-pattern"],
     [`${srcDirectories}/**/*.{js,ts,tsx}`]: [
-      "prettier --write",
+      "oxfmt --no-error-on-unmatched-pattern",
       "eslint --fix --quiet",
     ],
     "{scripts,config,.storyboook}/**/*.{js,mjs,cjs}": [
-      "prettier --write",
+      "oxfmt --no-error-on-unmatched-pattern",
       "eslint --fix --quiet",
     ],
     [`{.storybook,${srcDirectories}}/**/*.css`]: [
-      "prettier --parser css --write",
+      "oxfmt --no-error-on-unmatched-pattern",
     ],
     [`${srcDirectories}/**/*.{ts,tsx}`]: () =>
       pkg.devDependencies && pkg.devDependencies["@pob/rollup-esbuild"]

@@ -117,7 +117,7 @@ export default class CommonTypescriptGenerator extends Generator {
     });
   }
 
-  writing() {
+  async writing() {
     if (this.fs.exists("flow-typed")) this.fs.delete("flow-typed");
     if (this.fs.exists(this.destinationPath(".flowconfig"))) {
       this.fs.delete(this.destinationPath(".flowconfig"));
@@ -238,9 +238,7 @@ export default class CommonTypescriptGenerator extends Generator {
                   packageName[0] === "@"
                     ? // eslint-disable-next-line unicorn/no-nested-ternary
                       yoConfig.pob.project.type === "app"
-                      ? `packages/${packageName.slice(
-                          packageName.indexOf("/") + 1,
-                        )}`
+                      ? `packages/${packageName.slice(packageName.indexOf("/") + 1)}`
                       : packageName
                     : `packages/${packageName}`
                 }`,
@@ -261,9 +259,7 @@ export default class CommonTypescriptGenerator extends Generator {
           monorepoPackageSrcPaths = [...packageLocations.entries()].map(
             ([packageName, packageLocation]) => [
               packageName,
-              `${packageLocation}/${
-                isTypescriptPackageMap.get(packageName) ? "src" : "lib"
-              }`,
+              `${packageLocation}/${isTypescriptPackageMap.get(packageName) ? "src" : "lib"}`,
             ],
           );
           monorepoPackageReferences = yoConfig.pob.monorepo.packageNames
@@ -291,7 +287,7 @@ export default class CommonTypescriptGenerator extends Generator {
       - allows IDE and typedoc to behave correctly
       - generate useless definition files for not excluded tests files. However, it also use them for cache.
       */
-      copyAndFormatTpl(
+      await copyAndFormatTpl(
         this.fs,
         this.options.onlyCheck
           ? this.templatePath("tsconfig.check-js.json.ejs")
@@ -338,7 +334,7 @@ export default class CommonTypescriptGenerator extends Generator {
       //   this.options.builddefs // &&
       //   // (!composite || monorepoPackageNames.length !== 0)
       // ) {
-      //   copyAndFormatTpl(
+      //   await copyAndFormatTpl(
       //     this.fs,
       //     this.templatePath('tsconfig.build.json.ejs'),
       //     tsconfigBuildPath,

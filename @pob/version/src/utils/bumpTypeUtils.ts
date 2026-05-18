@@ -46,9 +46,7 @@ export const calcBumpRange = (
     throw new Error(`Couldn't bump range ${range} in ${workspaceName}`);
   }
 
-  return `${useWorkspaceProtocol ? yarnWorkspaceProtocol : ""}${
-    parsed[1] ?? ""
-  }${newVersion}`;
+  return `${useWorkspaceProtocol ? yarnWorkspaceProtocol : ""}${parsed[1] ?? ""}${newVersion}`;
 };
 
 export const getHighestBumpType = (bumpTypes: BumpType[]): BumpType => {

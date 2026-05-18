@@ -3,23 +3,26 @@
   "version": "8.0.2",
   "description": "rollup configuration with typescript for pob",
   "keywords": [],
-  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "homepage": "https://github.com/christophehurpeau/pob",
   "license": "MIT",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "repository": {
     "type": "git",
     "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "@pob/rollup-typescript"
   },
-  "homepage": "https://github.com/christophehurpeau/pob",
-  "type": "module",
-  "engines": {
-    "node": ">=22.18.0"
-  },
-  "sideEffects": false,
   "bin": {
     "pob-typescript-clean-out": "./bin/pob-typescript-clean-out.js",
     "rollup": "./bin/rollup.cjs"
   },
+  "files": [
+    "lib",
+    "bin",
+    "createRollupConfig.js",
+    "plugin-run.cjs"
+  ],
+  "type": "module",
+  "sideEffects": false,
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
@@ -32,21 +35,17 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": [
-    "lib",
-    "bin",
-    "createRollupConfig.js",
-    "plugin-run.cjs"
-  ],
   "scripts": {
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn '../..' run eslint --quiet '@pob/rollup-typescript'"
   },
-  "pob": {},
-  "prettier": "@pob/root/prettier-config",
   "peerDependenciesMeta": {
     "rollup": {
       "optional": true
     }
-  }
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pob": {}
 }

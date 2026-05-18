@@ -1,19 +1,16 @@
 {
   "name": "example-typescript-lib-rollup-esbuild",
-  "private": true,
   "version": "0.51.0",
-  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "private": true,
+  "homepage": "https://github.com/christophehurpeau/pob",
   "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "repository": {
     "type": "git",
     "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "pob-examples/typescript-lib-rollup-esbuild"
   },
-  "homepage": "https://github.com/christophehurpeau/pob",
   "type": "module",
-  "engines": {
-    "node": ">=22.18.0"
-  },
   "sideEffects": false,
   "main": "./dist/index-node22.mjs",
   "types": "./dist/definitions/index.d.ts",
@@ -42,6 +39,13 @@
     "test": "yarn '../..' run test -- 'pob-examples/typescript-lib-rollup-esbuild'",
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
+  "devDependencies": {
+    "@pob/rollup-esbuild": "8.3.0",
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
   "pob": {
     "bundler": "rollup-esbuild",
     "entries": [
@@ -49,10 +53,5 @@
       "run-await"
     ],
     "typescript": true
-  },
-  "prettier": "@pob/root/prettier-config",
-  "devDependencies": {
-    "@pob/rollup-esbuild": "8.3.0",
-    "typescript": "5.9.3"
   }
 }

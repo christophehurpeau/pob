@@ -396,7 +396,7 @@ export default class CommonBabelGenerator extends Generator {
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
   }
 
-  writing() {
+  async writing() {
     this.fs.delete("types.js");
 
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
@@ -412,7 +412,7 @@ export default class CommonBabelGenerator extends Generator {
     this.fs.delete("rollup.config.js");
     if (useBabel) {
       if (this.options.isApp) {
-        copyAndFormatTpl(
+        await copyAndFormatTpl(
           this.fs,
           this.templatePath("app.rollup.config.mjs.ejs"),
           this.destinationPath("rollup.config.mjs"),
@@ -423,7 +423,7 @@ export default class CommonBabelGenerator extends Generator {
           },
         );
       } else {
-        copyAndFormatTpl(
+        await copyAndFormatTpl(
           this.fs,
           this.templatePath("lib.rollup.config.mjs.ejs"),
           this.destinationPath("rollup.config.mjs"),

@@ -3,34 +3,33 @@
   "version": "11.0.2",
   "description": "check that a git repository is not dirty",
   "keywords": [],
-  "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
+  "homepage": "https://github.com/christophehurpeau/pob",
   "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "repository": {
     "type": "git",
     "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "packages/repository-check-dirty"
   },
-  "homepage": "https://github.com/christophehurpeau/pob",
-  "type": "module",
-  "engines": {
-    "node": ">=22.18.0"
-  },
-  "sideEffects": false,
   "bin": "./bin/repository-check-dirty.js",
+  "files": [
+    "lib",
+    "bin"
+  ],
+  "type": "module",
+  "sideEffects": false,
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
     "./bin/repository-check-dirty.js": "./bin/repository-check-dirty.js",
     "./package.json": "./package.json"
   },
-  "files": [
-    "lib",
-    "bin"
-  ],
   "scripts": {
     "lint": "yarn run lint:eslint",
     "lint:eslint": "yarn '../..' run eslint --quiet 'packages/repository-check-dirty'"
   },
-  "pob": {},
-  "prettier": "@pob/root/prettier-config"
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pob": {}
 }

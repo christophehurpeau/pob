@@ -1,6 +1,6 @@
 import fs from "node:fs";
 import JSON5 from "json5";
-import prettier from "prettier";
+import { format } from "oxfmt";
 
 function readJSON5(path, defaults = null) {
   try {
@@ -91,19 +91,16 @@ export default async function installVscodeTasks({ pkg }) {
     });
   }
 
-  fs.writeFileSync(
+  const { code: formattedTasksFile } = await format(
     ".vscode/tasks.json",
-    await prettier.format(
-      `{
+    `{
   // See https://go.microsoft.com/fwlink/?LinkId=733558
   // for the documentation about the tasks.json format
   "version": "2.0.0",
   "tasks": ${JSON.stringify(tasks)}
 }
 `,
-      {
-        filepath: ".vscode/tasks.json",
-      },
-    ),
+    { printWidth: 80 },
   );
+  fs.writeFileSync(".vscode/tasks.json", formattedTasksFile);
 }

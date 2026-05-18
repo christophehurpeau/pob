@@ -96,7 +96,7 @@ export default class CoreCIGenerator extends Generator {
     });
   }
 
-  default() {
+  async default() {
     if (fs.existsSync(this.destinationPath(".circleci"))) {
       fs.rmdirSync(this.destinationPath(".circleci"), { recursive: true });
     }
@@ -109,7 +109,7 @@ export default class CoreCIGenerator extends Generator {
         this.options.testing && !!pkg.scripts && !!pkg.scripts.test;
       const build = this.options.build;
 
-      copyAndFormatTpl(
+      await copyAndFormatTpl(
         this.fs,
         this.templatePath(
           this.options.splitJobs
@@ -167,7 +167,7 @@ export default class CoreCIGenerator extends Generator {
       !this.options.isApp &&
       this.options.documentation
     ) {
-      copyAndFormatTpl(
+      await copyAndFormatTpl(
         this.fs,
         this.templatePath("github-action-documentation-workflow.yml.ejs"),
         this.destinationPath(".github/workflows/gh-pages.yml"),

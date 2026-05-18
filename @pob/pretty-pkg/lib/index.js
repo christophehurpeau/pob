@@ -1,7 +1,7 @@
 import fs from "node:fs/promises";
-import sortPkg from "@pob/sort-pkg";
+import { format } from "oxfmt";
 
-export default function prettyPkg(pkg, prettierOptions) {
+export default async function prettyPkg(pkg, prettierOptions) {
   if (typeof pkg === "string") {
     pkg = JSON.parse(pkg);
     if (typeof pkg !== "object") {
@@ -17,8 +17,12 @@ export default function prettyPkg(pkg, prettierOptions) {
     console.warn("prettierOptions is deprecated and has no effect.");
   }
 
-  sortPkg(pkg);
-  return `${JSON.stringify(pkg, undefined, 2)}\n`;
+  const { code: formatted } = await format(
+    "package.json",
+    `${JSON.stringify(pkg, undefined, 2)}\n`,
+    { printWidth: 80 },
+  );
+  return formatted;
 }
 
 export async function write(pkg, path, prettierOptions) {

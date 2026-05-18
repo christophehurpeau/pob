@@ -139,7 +139,7 @@ export default class CommonTestingGenerator extends Generator {
     }
   }
 
-  writing() {
+  async writing() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
     packageUtils.removeDevDependencies(pkg, [
@@ -293,9 +293,7 @@ export default class CommonTestingGenerator extends Generator {
             coverage || coverageJson
               ? `POB_VITEST_COVERAGE=${`json${coverageJson ? "" : ",text"} `}`
               : ""
-          }vitest${watch ? " --watch" : ""}${
-            coverage || coverageJson ? " run --coverage" : ""
-          }`;
+          }vitest${watch ? " --watch" : ""}${coverage || coverageJson ? " run --coverage" : ""}`;
         }
         default: {
           throw new Error(`Invalid runner: "${testRunner}"`);
@@ -331,7 +329,11 @@ export default class CommonTestingGenerator extends Generator {
         "test:coverage:lcov",
       ]);
 
-      writeAndFormatJson(this.fs, this.destinationPath("package.json"), pkg);
+      await writeAndFormatJson(
+        this.fs,
+        this.destinationPath("package.json"),
+        pkg,
+      );
     } else {
       let workspacesPattern;
       if (this.options.monorepo) {
@@ -353,7 +355,7 @@ export default class CommonTestingGenerator extends Generator {
         });
       } else {
         if (this.testRunner === "vitest") {
-          copyAndFormatTpl(
+          await copyAndFormatTpl(
             this.fs,
             this.templatePath("vite.config.js.ejs"),
             vitestConfigPath,
@@ -494,7 +496,7 @@ export default class CommonTestingGenerator extends Generator {
                 delete jestConfig.testEnvironment;
               }
 
-              writeAndFormatJson(this.fs, jestConfigPath, jestConfig);
+              await writeAndFormatJson(this.fs, jestConfigPath, jestConfig);
             }
           }
         }
@@ -504,6 +506,10 @@ export default class CommonTestingGenerator extends Generator {
     // legacy jest babel config
     this.fs.delete("babel.config.cjs");
 
-    writeAndFormatJson(this.fs, this.destinationPath("package.json"), pkg);
+    return writeAndFormatJson(
+      this.fs,
+      this.destinationPath("package.json"),
+      pkg,
+    );
   }
 }

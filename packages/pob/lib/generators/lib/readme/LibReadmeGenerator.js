@@ -41,7 +41,7 @@ export default class LibReadmeGenerator extends Generator {
     });
   }
 
-  writing() {
+  async writing() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
     const readmePath = this.destinationPath("README.md");
@@ -94,7 +94,7 @@ export default class LibReadmeGenerator extends Generator {
       );
     const [, gitHost, gitAccount, gitName] = match || [];
     try {
-      copyAndFormatTpl(
+      await copyAndFormatTpl(
         this.fs,
         this.templatePath("README.md.ejs"),
         readmePath,

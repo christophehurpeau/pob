@@ -85,9 +85,9 @@ export default class MonorepoWorkspacesGenerator extends Generator {
     const packageManager = this.options.packageManager;
 
     packageUtils.addScripts(pkg, {
-      lint: `${packageManager} run lint:prettier && ${packageManager} run lint:eslint`,
-      "lint:prettier": "pob-root-prettier --check .",
-      "lint:prettier:fix": "pob-root-prettier --write .",
+      lint: `${packageManager} run format && ${packageManager} run lint:eslint`,
+      format: "oxfmt",
+      "format:check": "oxfmt --check .",
       "lint:eslint":
         monorepoConfig &&
         monorepoConfig.eslint &&
@@ -166,13 +166,18 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       content = content ? content[1].trim() : readmeFullContent;
     }
 
-    copyAndFormatTpl(this.fs, this.templatePath("README.md.ejs"), readmePath, {
-      title: pkg.description,
-      description: "",
-      packages: this.packages,
-      ci: this.fs.exists(this.destinationPath(".github/workflows/push.yml")),
-      content,
-    });
+    return copyAndFormatTpl(
+      this.fs,
+      this.templatePath("README.md.ejs"),
+      readmePath,
+      {
+        title: pkg.description,
+        description: "",
+        packages: this.packages,
+        ci: this.fs.exists(this.destinationPath(".github/workflows/push.yml")),
+        content,
+      },
+    );
   }
 
   end() {

@@ -34,7 +34,7 @@ export default class LibDocGenerator extends Generator {
     });
   }
 
-  writing() {
+  async writing() {
     if (this.fs.exists(this.destinationPath("jsdoc.conf.json"))) {
       this.fs.delete(this.destinationPath("jsdoc.conf.json"));
     }
@@ -53,7 +53,9 @@ export default class LibDocGenerator extends Generator {
       if (inMonorepo && inMonorepo.root) {
         const existingConfig = this.fs.readJSON(
           this.destinationPath("tsconfig.doc.json"),
-          { typedocOptions: {} },
+          {
+            typedocOptions: {},
+          },
         );
         // "external-modulemap": ".*packages/([^/]+)/.*",
         const packagePaths = JSON.parse(this.options.packagePaths);
@@ -83,7 +85,7 @@ export default class LibDocGenerator extends Generator {
             );
           }
         }
-        copyAndFormatTpl(
+        await copyAndFormatTpl(
           this.fs,
           this.templatePath("tsconfig.doc.json.lerna.ejs"),
           this.destinationPath("tsconfig.doc.json"),
@@ -101,7 +103,7 @@ export default class LibDocGenerator extends Generator {
         const entryPoints = ((pkg.pob && pkg.pob.entries) || []).map(
           (entryName) => `src/${entryName}.ts`,
         );
-        copyAndFormatTpl(
+        await copyAndFormatTpl(
           this.fs,
           this.templatePath("tsconfig.doc.json.ejs"),
           this.destinationPath("tsconfig.doc.json"),

@@ -1,19 +1,16 @@
 {
   "name": "example-typescript-lib-without-rollup",
-  "private": true,
   "version": "0.30.5",
-  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "private": true,
+  "homepage": "https://github.com/christophehurpeau/pob",
   "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "repository": {
     "type": "git",
     "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "pob-examples/typescript-lib-without-rollup"
   },
-  "homepage": "https://github.com/christophehurpeau/pob",
   "type": "module",
-  "engines": {
-    "node": ">=22.18.0"
-  },
   "sideEffects": false,
   "main": "./dist/index.js",
   "types": "./dist/definitions/index.d.ts",
@@ -34,18 +31,20 @@
     "test": "yarn '../..' run test -- 'pob-examples/typescript-lib-without-rollup'",
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
+  "dependencies": {
+    "tslib": "^2.8.1"
+  },
+  "devDependencies": {
+    "typescript": "5.9.3"
+  },
+  "engines": {
+    "node": ">=22.18.0"
+  },
   "pob": {
     "entries": [
       "index"
     ],
     "rollup": false,
     "typescript": true
-  },
-  "prettier": "@pob/root/prettier-config",
-  "dependencies": {
-    "tslib": "^2.8.1"
-  },
-  "devDependencies": {
-    "typescript": "5.9.3"
   }
 }

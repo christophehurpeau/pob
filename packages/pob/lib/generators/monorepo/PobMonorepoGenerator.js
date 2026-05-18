@@ -362,7 +362,7 @@ export default class PobMonorepoGenerator extends Generator {
     }
   }
 
-  writing() {
+  async writing() {
     if (!this.options.isAppProject) {
       const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
       const rollupKinds = new Set();
@@ -385,7 +385,7 @@ export default class PobMonorepoGenerator extends Generator {
       });
 
       if (rollupConfigs.length > 0) {
-        copyAndFormatTpl(
+        await copyAndFormatTpl(
           this.fs,
           this.templatePath("monorepo.rollup.config.mjs.ejs"),
           this.destinationPath("rollup.config.mjs"),

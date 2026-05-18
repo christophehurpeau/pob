@@ -1,19 +1,15 @@
-import fs from "node:fs";
-import sortPkg from "@pob/sort-pkg";
-import prettier from "@prettier/sync";
+import fs from "node:fs/promises";
+import { format } from "oxfmt";
 
-export default function ensureJsonFileFormatted(path) {
+export async function ensureJsonFileFormatted(path) {
   try {
-    let contentJson = fs.readFileSync(path, "utf8");
-    if (path === "package.json" || path.endsWith("/package.json")) {
-      contentJson = JSON.stringify(sortPkg(JSON.parse(contentJson)), null, 2);
-    }
-    const formattedPkg = prettier.format(contentJson, {
-      filepath: path,
+    const contentJson = await fs.readFile(path, "utf8");
+    const { code: formattedPkg } = await format(path, contentJson, {
+      printWidth: 80,
     });
     if (contentJson !== formattedPkg) {
       console.warn(`formatted json file ${path}`);
-      fs.writeFileSync(path, formattedPkg);
+      await fs.writeFile(path, formattedPkg);
     }
   } catch {}
 }

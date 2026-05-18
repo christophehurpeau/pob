@@ -4,7 +4,7 @@ import sortObject from "@pob/sort-object";
 import yml from "js-yaml";
 import { lt } from "semver";
 import Generator from "yeoman-generator";
-import ensureJsonFileFormatted from "../../../utils/ensureJsonFileFormatted.js";
+import { ensureJsonFileFormatted } from "../../../utils/ensureJsonFileFormatted.js";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import * as packageUtils from "../../../utils/package.js";
 import { writeAndFormat } from "../../../utils/writeAndFormat.js";
@@ -43,14 +43,14 @@ export default class CoreYarnGenerator extends Generator {
     });
   }
 
-  initializing() {
+  async initializing() {
     if (this.options.enable) {
       // dont use this.fs here, as it will cache the result
       if (!fs.existsSync(".yarnrc.yml")) {
         // yarn 2 not yet installed
         // https://yarnpkg.com/getting-started/install
         this.spawnSync("yarn", ["set", "version", "stable"]);
-        ensureJsonFileFormatted(this.destinationPath("package.json"));
+        await ensureJsonFileFormatted(this.destinationPath("package.json"));
       } else {
         // disabled now that corepack is supposed to set the version used
         // this.spawnSync('yarn', ['set', 'version', 'stable']);)
@@ -58,7 +58,7 @@ export default class CoreYarnGenerator extends Generator {
     }
   }
 
-  writing() {
+  async writing() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
     if (this.options.enable && !inMonorepo && !pkg.private) {
@@ -193,7 +193,7 @@ export default class CoreYarnGenerator extends Generator {
       }
 
       if (!isDeepStrictEqual(config, previousConfig)) {
-        writeAndFormat(
+        await writeAndFormat(
           this.fs,
           ".yarnrc.yml",
           yml.dump(sortObject(config), {
@@ -235,7 +235,7 @@ export default class CoreYarnGenerator extends Generator {
       this.fs.delete("package-lock.json");
       this.spawnSync("yarn", ["dedupe"]);
 
-      this.spawnSync("yarn", ["prettier", "--write", ".vscode", ".yarnrc.yml"]);
+      this.spawnSync("yarn", ["oxfmt", ".vscode", ".yarnrc.yml"]);
 
       const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
