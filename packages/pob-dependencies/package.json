@@ -54,7 +54,7 @@
     "@vitest/coverage-v8": "4.1.6",
     "alp-rollup-plugin-config": "4.0.2",
     "check-package-dependencies": "11.1.1",
-    "eslint": "10.2.1",
+    "eslint": "10.4.0",
     "pinst": "3.0.0",
     "pob-babel": "45.0.1",
     "prettier": "3.8.3",
