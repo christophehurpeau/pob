@@ -69,7 +69,7 @@
   "prettier": "@pob/root/prettier-config",
   "dependencies": {
     "@commitlint/format": "20.5.0",
-    "@commitlint/lint": "20.5.0",
+    "@commitlint/lint": "20.5.3",
     "@commitlint/types": "20.5.0",
     "@pob/pretty-pkg": "13.2.3",
     "@pob/version": "workspace:*",
