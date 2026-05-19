@@ -60,9 +60,9 @@
     "lint:eslint": "yarn '../..' run eslint --quiet '@pob/root'"
   },
   "dependencies": {
-    "@commitlint/format": "20.5.0",
-    "@commitlint/lint": "20.5.0",
-    "@commitlint/types": "20.5.0",
+    "@commitlint/format": "21.0.1",
+    "@commitlint/lint": "21.0.1",
+    "@commitlint/types": "21.0.1",
     "@pob/pretty-pkg": "13.2.3",
     "@pob/version": "workspace:*",
     "conventional-changelog-conventionalcommits": "^9.1.0",
