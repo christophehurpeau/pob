@@ -5,15 +5,8 @@ import inMonorepo from "../../utils/inMonorepo.js";
 import * as packageUtils from "../../utils/package.js";
 import { appIgnorePaths } from "./ignorePaths.js";
 
-const appsWithTypescript = [
-  "alp",
-  "next.js",
-  "remix",
-  "vite",
-  "expo",
-  "yarn-plugin",
-];
-const appsWithBrowser = ["alp", "next.js", "remix", "vite"];
+const appsWithTypescript = ["alp", "next.js", "vite", "expo", "yarn-plugin"];
+const appsWithBrowser = ["alp", "next.js", "vite"];
 
 export default class PobAppGenerator extends Generator {
   constructor(args, opts) {
@@ -98,7 +91,6 @@ export default class PobAppGenerator extends Generator {
           "alp",
           "vite",
           "next.js",
-          "remix",
           "node",
           "node-library", // monorepo library for app. Not a real library
           "untranspiled-library", // monorepo library for app. Not a real library
@@ -142,6 +134,11 @@ export default class PobAppGenerator extends Generator {
   }
 
   default() {
+    if (this.appConfig.type === "remix") {
+      throw new Error(
+        "remix has been removed. Please migrate to 'vite' or 'expo'.",
+      );
+    }
     const srcDirectory =
       this.appConfig.type === "yarn-plugin" ? "sources" : "src";
     const packageManager =
@@ -251,9 +248,6 @@ export default class PobAppGenerator extends Generator {
         ) {
           return `./${srcDirectory}`;
         }
-        if (this.appConfig.type === "remix") {
-          return ".";
-        }
         return "";
       })(),
       plugins: (() => {
@@ -272,67 +266,65 @@ export default class PobAppGenerator extends Generator {
 
     this.composeWith("pob:common:remove-old-dependencies");
 
-    if (this.appConfig.type !== "remix") {
-      this.composeWith("pob:common:testing", {
-        enable: this.appConfig.testing,
-        disableYarnGitCache: this.options.disableYarnGitCache,
-        testing: this.appConfig.testing,
-        runner: this.appConfig.testing
-          ? (inMonorepo
-              ? inMonorepo.pobMonorepoConfig.testRunner
-              : this.appConfig.testRunner) || ""
-          : undefined,
-        e2eTesting: this.appConfig.e2e ? "." : "",
-        typescript,
-        build: typescript === true && this.appConfig.type !== "expo",
-        documentation: false,
-        codecov: this.appConfig.codecov,
-        ci: this.options.ci,
-        packageManager,
-        isApp: true,
-        splitCIJobs: false,
-        onlyLatestLTS: true,
-        srcDirectory,
-      });
+    this.composeWith("pob:common:testing", {
+      enable: this.appConfig.testing,
+      disableYarnGitCache: this.options.disableYarnGitCache,
+      testing: this.appConfig.testing,
+      runner: this.appConfig.testing
+        ? (inMonorepo
+            ? inMonorepo.pobMonorepoConfig.testRunner
+            : this.appConfig.testRunner) || ""
+        : undefined,
+      e2eTesting: this.appConfig.e2e ? "." : "",
+      typescript,
+      build: typescript === true && this.appConfig.type !== "expo",
+      documentation: false,
+      codecov: this.appConfig.codecov,
+      ci: this.options.ci,
+      packageManager,
+      isApp: true,
+      splitCIJobs: false,
+      onlyLatestLTS: true,
+      srcDirectory,
+    });
 
-      this.composeWith("pob:app:e2e-testing", {
-        enable: this.appConfig.e2e,
-      });
+    this.composeWith("pob:app:e2e-testing", {
+      enable: this.appConfig.e2e,
+    });
 
-      this.composeWith("pob:common:format-lint", {
-        isApp: true,
-        documentation: false,
-        storybook: pkg?.devDependencies?.storybook,
-        testing: this.appConfig.testing,
-        testRunner: this.appConfig.testRunner,
-        babel,
-        typescript,
-        build: typescript === true,
-        node,
-        browser,
-        // nextjs now supports src rootAsSrc: this.appConfig.type === 'next.js',
-        enableSrcResolver: true,
-        packageManager,
-        yarnNodeLinker: this.options.yarnNodeLinker,
-        rootIgnorePaths: ignorePaths.join("\n"),
-        srcDirectory,
-        buildDirectory: this.appConfig.type === "expo" ? ".expo" : "build",
-      });
+    this.composeWith("pob:common:format-lint", {
+      isApp: true,
+      documentation: false,
+      storybook: pkg?.devDependencies?.storybook,
+      testing: this.appConfig.testing,
+      testRunner: this.appConfig.testRunner,
+      babel,
+      typescript,
+      build: typescript === true,
+      node,
+      browser,
+      // nextjs now supports src rootAsSrc: this.appConfig.type === 'next.js',
+      enableSrcResolver: true,
+      packageManager,
+      yarnNodeLinker: this.options.yarnNodeLinker,
+      rootIgnorePaths: ignorePaths.join("\n"),
+      srcDirectory,
+      buildDirectory: this.appConfig.type === "expo" ? ".expo" : "build",
+    });
 
-      this.composeWith("pob:common:release", {
-        enable:
-          !inMonorepo &&
-          this.appConfig.testing &&
-          pkg.name !== "yarn-plugin-conventional-version",
-        enablePublish: false,
-        withBabel: babel,
-        isMonorepo: false,
-        ci: this.options.ci,
-        disableYarnGitCache: this.options.disableYarnGitCache,
-        updateOnly: this.options.updateOnly,
-        packageManager,
-      });
-    }
+    this.composeWith("pob:common:release", {
+      enable:
+        !inMonorepo &&
+        this.appConfig.testing &&
+        pkg.name !== "yarn-plugin-conventional-version",
+      enablePublish: false,
+      withBabel: babel,
+      isMonorepo: false,
+      ci: this.options.ci,
+      disableYarnGitCache: this.options.disableYarnGitCache,
+      updateOnly: this.options.updateOnly,
+      packageManager,
+    });
 
     this.composeWith("pob:core:vscode", {
       root: !inMonorepo,

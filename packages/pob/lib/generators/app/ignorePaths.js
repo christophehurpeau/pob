@@ -10,7 +10,6 @@ export const appIgnorePaths = {
       pkg?.dependencies?.tamagui ? "# tamagui" : undefined,
       pkg?.dependencies?.tamagui ? "/.tamagui" : undefined,
     ].filter(Boolean),
-  remix: (config) => ["# remix paths", "/.cache", "/build", "/public/build"],
   vite: (config) => ["/dist"],
   node: (config) => (config.distribute ? [] : ["/build"]),
   "node-library": (config) => ["/build"],
