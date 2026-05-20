@@ -27,7 +27,7 @@
     "example-typescript-lib-rollup-esbuild": "0.51.0"
   },
   "devDependencies": {
-    "typescript": "5.9.3",
+    "typescript": "6.0.3",
     "vite": "8.0.13"
   },
   "engines": {
