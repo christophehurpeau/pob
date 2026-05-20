@@ -13,6 +13,8 @@
   "type": "module",
   "sideEffects": false,
   "main": "./dist/index-node22.mjs",
+  "module": "./dist/index-browser.es.js",
+  "browser": "./dist/index-browser.es.js",
   "types": "./dist/definitions/index.d.ts",
   "exports": {
     "./package.json": "./package.json",
@@ -20,12 +22,18 @@
       "types": "./src/index.ts",
       "node": {
         "import": "./dist/index-node22.mjs"
+      },
+      "browser": {
+        "import": "./dist/index-browser.es.js"
       }
     },
     "./run-await": {
       "types": "./src/run-await.ts",
       "node": {
         "import": "./dist/run-await-node22.mjs"
+      },
+      "browser": {
+        "import": "./dist/run-await-browser.es.js"
       }
     }
   },
@@ -43,6 +51,15 @@
     "@pob/rollup-esbuild": "8.3.0",
     "typescript": "5.9.3"
   },
+  "browserslist": {
+    "production": [
+      "defaults",
+      "> 0.2%",
+      "not ie < 12",
+      "not safari < 10",
+      "not ios_saf < 10"
+    ]
+  },
   "engines": {
     "node": ">=22.18.0"
   },
@@ -51,6 +68,15 @@
     "entries": [
       "index",
       "run-await"
+    ],
+    "envs": [
+      {
+        "target": "node",
+        "version": "22"
+      },
+      {
+        "target": "browser"
+      }
     ],
     "typescript": true
   }

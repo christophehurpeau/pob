@@ -27,7 +27,7 @@
         "example-typescript-lib-rollup-esbuild",
         "pob-dependencies",
         "@pob/root",
-        "example-webpack-app",
+        "example-vite-app",
         "yarn-version",
         "pob"
       ]

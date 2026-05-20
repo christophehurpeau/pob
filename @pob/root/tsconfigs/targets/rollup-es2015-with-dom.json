@@ -4,7 +4,6 @@
   "extends": "./rollup-es2015.json",
 
   "compilerOptions": {
-    "target": "es2015",
     "lib": ["DOM", "es2023"]
   }
 }

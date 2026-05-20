@@ -1,9 +1,11 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
-  "display": "@pob:target:RollupES2015",
+  "display": "@pob:target:Vite",
   "extends": "./base-bundler.json",
 
   "compilerOptions": {
-    "lib": ["es2023"]
+    "isolatedModules": true,
+    "target": "ESNext",
+    "lib": ["DOM", "ESNext"]
   }
 }

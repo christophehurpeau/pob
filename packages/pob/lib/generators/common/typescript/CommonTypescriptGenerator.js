@@ -179,6 +179,9 @@ export default class CommonTypescriptGenerator extends Generator {
       }
 
       if (this.options.dom) {
+        if (this.options.isApp && pkg.devDependencies?.vite) {
+          return ["@pob/root/tsconfigs/targets/vite.json"];
+        }
         return ["@pob/root/tsconfigs/targets/webpack.json"];
       }
       return [];
