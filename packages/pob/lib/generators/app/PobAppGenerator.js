@@ -7,6 +7,16 @@ import { appIgnorePaths } from "./ignorePaths.js";
 
 const appsWithTypescript = ["alp", "next.js", "vite", "expo", "yarn-plugin"];
 const appsWithBrowser = ["alp", "next.js", "vite"];
+const shouldEnableHashSlash = (appType) =>
+  appType === "alp" ||
+  appType === "vite" ||
+  appType === "alp-node" ||
+  appType === "next.js" ||
+  appType === "expo";
+
+const srcDirectoriesFromAppType = {
+  "yarn-plugin": "sources",
+};
 
 export default class PobAppGenerator extends Generator {
   constructor(args, opts) {
@@ -140,7 +150,7 @@ export default class PobAppGenerator extends Generator {
       );
     }
     const srcDirectory =
-      this.appConfig.type === "yarn-plugin" ? "sources" : "src";
+      srcDirectoriesFromAppType[this.appConfig.type] || "src";
     const packageManager =
       inMonorepo && !inMonorepo.root
         ? inMonorepo.pobMonorepoConfig.packageManager
@@ -213,6 +223,8 @@ export default class PobAppGenerator extends Generator {
       pkg,
     ).filter(Boolean);
 
+    const enableHashSlash = shouldEnableHashSlash(this.appConfig.type);
+
     this.composeWith("pob:common:typescript", {
       enable:
         typescript ||
@@ -238,18 +250,7 @@ export default class PobAppGenerator extends Generator {
       updateOnly: this.options.updateOnly,
       resolveJsonModule: true,
       onlyLatestLTS: true,
-      baseUrl: (() => {
-        if (
-          this.appConfig.type === "alp" ||
-          this.appConfig.type === "vite" ||
-          this.appConfig.type === "alp-node" ||
-          this.appConfig.type === "next.js" ||
-          this.appConfig.type === "expo"
-        ) {
-          return `./${srcDirectory}`;
-        }
-        return "";
-      })(),
+      enableHashSlash,
       plugins: (() => {
         if (this.appConfig.type === "next.js") {
           return "next";
@@ -390,6 +391,18 @@ export default class PobAppGenerator extends Generator {
     // } else
     if (pkg.engines) {
       delete pkg.engines.yarn;
+    }
+
+    const srcDirectory =
+      srcDirectoriesFromAppType[this.appConfig.type] || "src";
+    if (shouldEnableHashSlash(this.appConfig.type)) {
+      pkg.imports = pkg.imports || {};
+      pkg.imports["#/*"] = `./${srcDirectory}/*`;
+    } else if (pkg.imports) {
+      delete pkg.imports["#/*"];
+      if (Object.keys(pkg.imports).length === 0) {
+        delete pkg.imports;
+      }
     }
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);

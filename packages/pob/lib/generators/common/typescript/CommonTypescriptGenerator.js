@@ -115,6 +115,21 @@ export default class CommonTypescriptGenerator extends Generator {
       default: false,
       description: "only check js",
     });
+
+    this.option("enableHashSlash", {
+      type: Boolean,
+      required: false,
+      default: false,
+      description: "enable #/ in paths",
+    });
+  }
+
+  default() {
+    if (this.options.baseUrl) {
+      throw new Error(
+        "baseUrl option is not longer supported. Use enableHashSlash instead.",
+      );
+    }
   }
 
   async writing() {
@@ -307,6 +322,7 @@ export default class CommonTypescriptGenerator extends Generator {
           monorepoPackageReferences,
           rootDir: this.options.rootDir,
           srcDirectory: this.options.srcDirectory || this.options.rootDir,
+          enableHashSlash: this.options.enableHashSlash,
           scriptsDirectory: this.fs.exists(this.destinationPath("scripts"))
             ? "scripts"
             : undefined,
@@ -320,7 +336,6 @@ export default class CommonTypescriptGenerator extends Generator {
             (!this.options.isApp || this.options.isAppLibrary),
           incremental: monorepoComposite,
           dom,
-          baseUrl: this.options.baseUrl,
           resolveJsonModule: this.options.resolveJsonModule,
           forceExcludeNodeModules: this.options.forceExcludeNodeModules,
           forceAllowJs: this.options.forceAllowJs,

@@ -94,7 +94,7 @@ export default function createRollupConfig({
         nodeResolve({
           extensions,
           customResolveOptions: {
-            moduleDirectories: ["src"], // don't resolve node_modules, but allow src (see baseUrl in tsconfig)
+            moduleDirectories: [], // don't resolve node_modules or src.
           },
         }),
         ...(() => {

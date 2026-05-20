@@ -11,6 +11,9 @@
     "directory": "pob-examples/vite-app"
   },
   "type": "module",
+  "imports": {
+    "#/*": "./src/*"
+  },
   "scripts": {
     "build": "vite build",
     "build:analyze": "ENABLE_ANALYZER=true vite build",

@@ -17,9 +17,6 @@
 <% } -%>
   "compilerOptions": {
     "rootDir": "<%= rootDir %>",
-<% if (baseUrl !== 'none') { -%>
-    "baseUrl": "<%= baseUrl %>", /* Base directory to resolve non-absolute module names. */
-<% } -%>
 <% if (emitDefinitions || build) { -%>
     "outDir": "<%= build ? 'dist' : 'dist/definitions' %>",
     <% if (build) { -%>
@@ -87,12 +84,16 @@
     "esModuleInterop": true<% if (monorepoPackageSrcPaths) { %>,<% } %>                  /* Enables emit interoperability between CommonJS and ES Modules via creation of namespace objects for all imports. Implies 'allowSyntheticDefaultImports'. */
 <% } -%>
 
-    <% if (monorepoPackageSrcPaths && monorepoPackageSrcPaths.length !== 0) { -%>
+    <% if (monorepoPackageSrcPaths && monorepoPackageSrcPaths.length !== 0 || enableHashSlash) { -%>
     "paths": {
-      <% monorepoPackageSrcPaths.forEach(([packageName, packageLocation], index) => { %>
+      <% if (enableHashSlash) { -%>
+        "#/*": ["./<%= srcDirectory %>/*"]<% if (monorepoPackageSrcPaths && monorepoPackageSrcPaths.length !== 0) { -%>,<% } %>
+      <% }  if (monorepoPackageSrcPaths && monorepoPackageSrcPaths.length !== 0) { -%>
+      <% monorepoPackageSrcPaths.forEach(([packageName, packageLocation], index) => { -%>
       "<%= packageName %>": ["<%= packageLocation %>"],
       "<%= packageName %>/*": ["<%= packageLocation %>/*"]<%= index === monorepoPackageSrcPaths.length -1 ? '' : ',' -%>
       <% }) %>
+      <% } %>
     }<% } %>
   }<% if (monorepoPackageReferences && monorepoPackageReferences.length) { -%>,
   "references": [

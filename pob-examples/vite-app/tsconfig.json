@@ -6,7 +6,6 @@
   "include": ["src/**/*.ts"],
   "compilerOptions": {
     "rootDir": "src",
-    "baseUrl": "./src" /* Base directory to resolve non-absolute module names. */,
     "noEmit": true,
     "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo",
     "incremental": true,
@@ -14,6 +13,7 @@
     "resolveJsonModule": true,
 
     "paths": {
+      "#/*": ["./src/*"],
       "example-typescript-lib-rollup-esbuild": [
         "../../packages/example-typescript-lib-rollup-esbuild/lib"
       ],

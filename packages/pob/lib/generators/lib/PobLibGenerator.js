@@ -295,7 +295,6 @@ export default class PobLibGenerator extends Generator {
       dom: browser,
       jsx,
       updateOnly: this.options.updateOnly,
-      baseUrl: "none", // causes issues on dist definition files
       builddefs: true,
       onlyLatestLTS: this.onlyLatestLTS,
       srcDirectory: withTypescript ? "src" : "lib",
