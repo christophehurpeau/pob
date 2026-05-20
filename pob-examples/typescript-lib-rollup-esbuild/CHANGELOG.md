@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.52.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild@0.51.0...example-typescript-lib-rollup-esbuild@0.52.0) (2026-05-20)
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update dependency typescript to v6 (#2752)
+* use oxfmt
+
+### Features
+
+* **deps:** update dependency typescript to v6 ([#2752](https://github.com/christophehurpeau/pob/issues/2752))
+* replace webpack example by vite example and add tsconfig target vite
+* use oxfmt
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [0.51.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild@0.50.0...example-typescript-lib-rollup-esbuild@0.51.0) (2026-05-01)
 
 Version bump for dependency: @pob/rollup-esbuild

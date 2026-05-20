@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.0.0](https://github.com/christophehurpeau/pob/compare/pob@34.2.0...pob@35.0.0) (2026-05-20)
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update dependency typescript to v6 (#2752)
+* stop using baseUrl replaced by hash slash import
+* use oxfmt
+* drop jest
+
+### Features
+
+* **deps:** update dependency eslint to v10.4.0 ([#2747](https://github.com/christophehurpeau/pob/issues/2747))
+* **deps:** update dependency semver to v7.8.0 ([#2748](https://github.com/christophehurpeau/pob/issues/2748))
+* **deps:** update dependency typescript to v6 ([#2752](https://github.com/christophehurpeau/pob/issues/2752))
+* drop jest
+* remove support for remix in PobAppGenerator and update ignorePaths
+* replace webpack example by vite example and add tsconfig target vite
+* stop using baseUrl replaced by hash slash import
+* use oxfmt
+
+### Bug Fixes
+
+* **deps:** update @pob/eslint-config to v65.4.3 ([#2722](https://github.com/christophehurpeau/pob/issues/2722))
+
+Version bump for dependency: @pob/sort-object
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [34.2.0](https://github.com/christophehurpeau/pob/compare/pob@34.1.0...pob@34.2.0) (2026-05-01)
 
 ### Features

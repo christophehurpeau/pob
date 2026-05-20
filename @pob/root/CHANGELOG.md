@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@23.2.0...@pob/root@24.0.0) (2026-05-20)
+
+### ⚠ BREAKING CHANGES
+
+* specify types in tsconfigs
+* use oxfmt
+
+### Features
+
+* **deps:** update commitlint monorepo to v21 ([#2750](https://github.com/christophehurpeau/pob/issues/2750))
+* replace webpack example by vite example and add tsconfig target vite
+* specify types in tsconfigs
+* update lint-staged
+* use oxfmt
+
+### Bug Fixes
+
+* fix post-rewrite hook
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [23.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@23.1.0...@pob/root@23.2.0) (2026-05-01)
 
 ### Features

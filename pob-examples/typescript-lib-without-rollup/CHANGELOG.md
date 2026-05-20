@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.31.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.30.5...example-typescript-lib-without-rollup@0.31.0) (2026-05-20)
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update dependency typescript to v6 (#2752)
+* use oxfmt
+
+### Features
+
+* **deps:** update dependency typescript to v6 ([#2752](https://github.com/christophehurpeau/pob/issues/2752))
+* use oxfmt
+
 ## [0.30.5](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.30.4...example-typescript-lib-without-rollup@0.30.5) (2026-03-01)
 
 Note: no notable changes

@@ -1,6 +1,6 @@
 {
   "name": "example-typescript-lib-rollup-esbuild",
-  "version": "0.51.0",
+  "version": "0.52.0",
   "private": true,
   "homepage": "https://github.com/christophehurpeau/pob",
   "license": "ISC",
@@ -48,7 +48,7 @@
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
   "devDependencies": {
-    "@pob/rollup-esbuild": "8.3.0",
+    "@pob/rollup-esbuild": "9.0.0",
     "typescript": "6.0.3"
   },
   "browserslist": {

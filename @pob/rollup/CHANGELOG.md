@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup@7.5.0...@pob/rollup@8.0.0) (2026-05-20)
+
+### ⚠ BREAKING CHANGES
+
+* use oxfmt
+
+### Features
+
+* use oxfmt
+
+### Bug Fixes
+
+* **deps:** update dependency rollup to v4.60.4 ([#2742](https://github.com/christophehurpeau/pob/issues/2742))
+
 ## [7.5.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup@7.4.0...@pob/rollup@7.5.0) (2026-05-01)
 
 ### Features

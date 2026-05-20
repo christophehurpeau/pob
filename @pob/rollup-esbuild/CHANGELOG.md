@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@8.3.0...@pob/rollup-esbuild@9.0.0) (2026-05-20)
+
+### ⚠ BREAKING CHANGES
+
+* stop using baseUrl replaced by hash slash import
+* use oxfmt
+
+### Features
+
+* stop using baseUrl replaced by hash slash import
+* use oxfmt
+
+### Bug Fixes
+
+* **deps:** update dependency rollup to v4.60.4 ([#2742](https://github.com/christophehurpeau/pob/issues/2742))
+
+Version bump for dependency: @pob/rollup
+
+
 ## [8.3.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@8.2.0...@pob/rollup-esbuild@8.3.0) (2026-05-01)
 
 ### Features

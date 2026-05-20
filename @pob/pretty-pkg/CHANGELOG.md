@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.0.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@13.2.3...@pob/pretty-pkg@14.0.0) (2026-05-20)
+
+### ⚠ BREAKING CHANGES
+
+* use oxfmt
+
+### Features
+
+* use oxfmt
+
 ## [13.2.3](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@13.2.2...@pob/pretty-pkg@13.2.3) (2026-03-12)
 
 Version bump for dependency: @pob/sort-pkg

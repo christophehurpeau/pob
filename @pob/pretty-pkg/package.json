@@ -1,6 +1,6 @@
 {
   "name": "@pob/pretty-pkg",
-  "version": "13.2.3",
+  "version": "14.0.0",
   "description": "prettier and sort package.json",
   "keywords": [],
   "homepage": "https://github.com/christophehurpeau/pob",

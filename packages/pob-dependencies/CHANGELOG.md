@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@23.2.0...pob-dependencies@24.0.0) (2026-05-20)
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update dependency typescript to v6 (#2752)
+* use oxfmt
+* drop jest
+
+### Features
+
+* **deps:** update dependency eslint to v10.4.0 ([#2747](https://github.com/christophehurpeau/pob/issues/2747))
+* **deps:** update dependency semver to v7.8.0 ([#2748](https://github.com/christophehurpeau/pob/issues/2748))
+* **deps:** update dependency typescript to v6 ([#2752](https://github.com/christophehurpeau/pob/issues/2752))
+* drop jest
+* use oxfmt
+
+### Bug Fixes
+
+* **deps:** update @pob/eslint-config to v65.4.3 ([#2722](https://github.com/christophehurpeau/pob/issues/2722))
+* **deps:** update dependency rollup to v4.60.4 ([#2742](https://github.com/christophehurpeau/pob/issues/2742))
+
+Version bump for dependency: @pob/esbuild
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: @pob/rollup-typescript
+Version bump for dependency: pob-babel
+
+
 ## [23.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@23.1.0...pob-dependencies@23.2.0) (2026-05-01)
 
 ### Features

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.0.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@8.0.2...@pob/rollup-typescript@9.0.0) (2026-05-20)
+
+### ⚠ BREAKING CHANGES
+
+* use oxfmt
+
+### Features
+
+* use oxfmt
+
 ## [8.0.2](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@8.0.1...@pob/rollup-typescript@8.0.2) (2026-03-12)
 
 Note: no notable changes

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.0](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@5.4.0...@pob/esbuild@6.0.0) (2026-05-20)
+
+### ⚠ BREAKING CHANGES
+
+* use oxfmt
+
+### Features
+
+* use oxfmt
+
 ## [5.4.0](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@5.3.0...@pob/esbuild@5.4.0) (2026-05-01)
 
 ### Features

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.0](https://github.com/christophehurpeau/pob/compare/yarn-version@11.2.0...yarn-version@12.0.0) (2026-05-20)
+
+### ⚠ BREAKING CHANGES
+
+* use oxfmt
+
+### Features
+
+* use oxfmt
+
+Version bump for dependency: @pob/version
+
+
 ## [11.2.0](https://github.com/christophehurpeau/pob/compare/yarn-version@11.1.0...yarn-version@11.2.0) (2026-05-01)
 
 Version bump for dependency: @pob/version

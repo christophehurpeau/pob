@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.0.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@11.0.2...@pob/commitlint-config@12.0.0) (2026-05-20)
+
+### ⚠ BREAKING CHANGES
+
+* use oxfmt
+
+### Features
+
+* use oxfmt
+
 ## [11.0.2](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@11.0.1...@pob/commitlint-config@11.0.2) (2026-03-12)
 
 Note: no notable changes

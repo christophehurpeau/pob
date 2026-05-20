@@ -1,6 +1,6 @@
 {
   "name": "example-vite-app",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "homepage": "https://github.com/christophehurpeau/pob",
   "license": "MIT",
@@ -24,7 +24,7 @@
     "test": "yarn '../..' run test -- 'pob-examples/vite-app'"
   },
   "dependencies": {
-    "example-typescript-lib-rollup-esbuild": "0.51.0"
+    "example-typescript-lib-rollup-esbuild": "0.52.0"
   },
   "devDependencies": {
     "typescript": "6.0.3",

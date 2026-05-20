@@ -2734,7 +2734,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/esbuild@npm:5.4.0, @pob/esbuild@workspace:@pob/esbuild":
+"@pob/esbuild@npm:6.0.0, @pob/esbuild@workspace:@pob/esbuild":
   version: 0.0.0-use.local
   resolution: "@pob/esbuild@workspace:@pob/esbuild"
   dependencies:
@@ -2809,7 +2809,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@pob/pretty-pkg@npm:13.2.3, @pob/pretty-pkg@workspace:@pob/pretty-pkg":
+"@pob/pretty-pkg@npm:14.0.0, @pob/pretty-pkg@workspace:@pob/pretty-pkg":
   version: 0.0.0-use.local
   resolution: "@pob/pretty-pkg@workspace:@pob/pretty-pkg"
   dependencies:
@@ -2819,11 +2819,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/rollup-esbuild@npm:8.3.0, @pob/rollup-esbuild@workspace:*, @pob/rollup-esbuild@workspace:@pob/rollup-esbuild":
+"@pob/rollup-esbuild@npm:9.0.0, @pob/rollup-esbuild@workspace:*, @pob/rollup-esbuild@workspace:@pob/rollup-esbuild":
   version: 0.0.0-use.local
   resolution: "@pob/rollup-esbuild@workspace:@pob/rollup-esbuild"
   dependencies:
-    "@pob/rollup": "npm:7.5.0"
+    "@pob/rollup": "npm:8.0.0"
     "@rollup/plugin-node-resolve": "npm:16.0.3"
     "@rollup/plugin-replace": "npm:6.0.3"
     "@rollup/plugin-run": "npm:3.1.0"
@@ -2843,7 +2843,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/rollup-typescript@npm:8.0.2, @pob/rollup-typescript@workspace:@pob/rollup-typescript":
+"@pob/rollup-typescript@npm:9.0.0, @pob/rollup-typescript@workspace:@pob/rollup-typescript":
   version: 0.0.0-use.local
   resolution: "@pob/rollup-typescript@workspace:@pob/rollup-typescript"
   peerDependenciesMeta:
@@ -2855,7 +2855,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/rollup@npm:7.5.0, @pob/rollup@workspace:@pob/rollup":
+"@pob/rollup@npm:8.0.0, @pob/rollup@workspace:@pob/rollup":
   version: 0.0.0-use.local
   resolution: "@pob/rollup@workspace:@pob/rollup"
   dependencies:
@@ -2866,14 +2866,14 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/root@npm:23.2.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
+"@pob/root@npm:24.0.0, @pob/root@workspace:*, @pob/root@workspace:@pob/root":
   version: 0.0.0-use.local
   resolution: "@pob/root@workspace:@pob/root"
   dependencies:
     "@commitlint/format": "npm:21.0.1"
     "@commitlint/lint": "npm:21.0.1"
     "@commitlint/types": "npm:21.0.1"
-    "@pob/pretty-pkg": "npm:13.2.3"
+    "@pob/pretty-pkg": "npm:14.0.0"
     "@pob/version": "workspace:*"
     conventional-changelog-conventionalcommits: "npm:^9.1.0"
     conventional-changelog-writer: "npm:^8.2.0"
@@ -2894,17 +2894,17 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@pob/sort-object@npm:10.1.2, @pob/sort-object@workspace:@pob/sort-object":
+"@pob/sort-object@npm:11.0.0, @pob/sort-object@workspace:@pob/sort-object":
   version: 0.0.0-use.local
   resolution: "@pob/sort-object@workspace:@pob/sort-object"
   languageName: unknown
   linkType: soft
 
-"@pob/sort-pkg@npm:12.1.2, @pob/sort-pkg@workspace:@pob/sort-pkg":
+"@pob/sort-pkg@npm:13.0.0, @pob/sort-pkg@workspace:@pob/sort-pkg":
   version: 0.0.0-use.local
   resolution: "@pob/sort-pkg@workspace:@pob/sort-pkg"
   dependencies:
-    "@pob/sort-object": "npm:10.1.2"
+    "@pob/sort-object": "npm:11.0.0"
   languageName: unknown
   linkType: soft
 
@@ -2912,7 +2912,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@pob/version@workspace:@pob/version"
   dependencies:
-    "@pob/rollup-esbuild": "npm:8.3.0"
+    "@pob/rollup-esbuild": "npm:9.0.0"
     "@types/node": "npm:24.12.4"
     "@types/semver": "npm:7.7.1"
     commander: "npm:14.0.3"
@@ -5919,11 +5919,11 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"example-typescript-lib-rollup-esbuild@npm:0.51.0, example-typescript-lib-rollup-esbuild@workspace:pob-examples/typescript-lib-rollup-esbuild":
+"example-typescript-lib-rollup-esbuild@npm:0.52.0, example-typescript-lib-rollup-esbuild@workspace:pob-examples/typescript-lib-rollup-esbuild":
   version: 0.0.0-use.local
   resolution: "example-typescript-lib-rollup-esbuild@workspace:pob-examples/typescript-lib-rollup-esbuild"
   dependencies:
-    "@pob/rollup-esbuild": "npm:8.3.0"
+    "@pob/rollup-esbuild": "npm:9.0.0"
     typescript: "npm:6.0.3"
   languageName: unknown
   linkType: soft
@@ -5941,7 +5941,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "example-vite-app@workspace:pob-examples/vite-app"
   dependencies:
-    example-typescript-lib-rollup-esbuild: "npm:0.51.0"
+    example-typescript-lib-rollup-esbuild: "npm:0.52.0"
     typescript: "npm:6.0.3"
     vite: "npm:8.0.13"
   languageName: unknown
@@ -8974,7 +8974,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"pob-babel@npm:45.0.1, pob-babel@workspace:packages/pob-babel":
+"pob-babel@npm:46.0.0, pob-babel@workspace:packages/pob-babel":
   version: 0.0.0-use.local
   resolution: "pob-babel@workspace:packages/pob-babel"
   languageName: unknown
@@ -8989,12 +8989,12 @@ __metadata:
     "@babel/preset-react": "npm:7.28.5"
     "@babel/runtime": "npm:7.29.2"
     "@playwright/test": "npm:1.60.0"
-    "@pob/esbuild": "npm:5.4.0"
+    "@pob/esbuild": "npm:6.0.0"
     "@pob/eslint-config": "npm:65.4.3"
     "@pob/eslint-config-typescript-react": "npm:65.4.3"
-    "@pob/pretty-pkg": "npm:13.2.3"
-    "@pob/rollup-esbuild": "npm:8.3.0"
-    "@pob/rollup-typescript": "npm:8.0.2"
+    "@pob/pretty-pkg": "npm:14.0.0"
+    "@pob/rollup-esbuild": "npm:9.0.0"
+    "@pob/rollup-typescript": "npm:9.0.0"
     "@types/jest": "npm:30.0.0"
     "@types/node": "npm:24.12.4"
     "@vitest/coverage-v8": "npm:4.1.6"
@@ -9002,7 +9002,7 @@ __metadata:
     check-package-dependencies: "npm:11.1.1"
     eslint: "npm:10.4.0"
     pinst: "npm:3.0.0"
-    pob-babel: "npm:45.0.1"
+    pob-babel: "npm:46.0.0"
     rollup: "npm:4.60.4"
     semver: "npm:7.8.0"
     tslib: "npm:2.8.1"
@@ -9038,9 +9038,9 @@ __metadata:
   dependencies:
     "@pob/eslint-config": "npm:65.4.3"
     "@pob/eslint-config-typescript-react": "npm:65.4.3"
-    "@pob/root": "npm:23.2.0"
-    "@pob/sort-object": "npm:10.1.2"
-    "@pob/sort-pkg": "npm:12.1.2"
+    "@pob/root": "npm:24.0.0"
+    "@pob/sort-object": "npm:11.0.0"
+    "@pob/sort-pkg": "npm:13.0.0"
     "@types/inquirer": "npm:9.0.9"
     "@types/node": "npm:24.12.4"
     "@yeoman/adapter": "npm:3.1.0"

@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.0](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.12.3...example-simple-lib@0.13.0) (2026-05-20)
+
+### ⚠ BREAKING CHANGES
+
+* use oxfmt
+
+### Features
+
+* use oxfmt
+
 ## [0.12.3](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.12.2...example-simple-lib@0.12.3) (2026-03-01)
 
 Note: no notable changes

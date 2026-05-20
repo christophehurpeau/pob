@@ -1,6 +1,6 @@
 {
   "name": "@pob/version",
-  "version": "3.2.0",
+  "version": "4.0.0",
   "description": "simple versioning using conventional commits",
   "keywords": [
     "bun",
@@ -59,7 +59,7 @@
     "semver": "7.8.0"
   },
   "devDependencies": {
-    "@pob/rollup-esbuild": "8.3.0",
+    "@pob/rollup-esbuild": "9.0.0",
     "@types/node": "24.12.4",
     "@types/semver": "7.7.1",
     "type-fest": "5.6.0",

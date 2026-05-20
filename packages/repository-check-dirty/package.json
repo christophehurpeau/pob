@@ -1,6 +1,6 @@
 {
   "name": "repository-check-dirty",
-  "version": "11.0.2",
+  "version": "12.0.0",
   "description": "check that a git repository is not dirty",
   "keywords": [],
   "homepage": "https://github.com/christophehurpeau/pob",

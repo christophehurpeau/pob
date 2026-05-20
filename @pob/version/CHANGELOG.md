@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.0.0](https://github.com/christophehurpeau/pob/compare/@pob/version@3.2.0...@pob/version@4.0.0) (2026-05-20)
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** update dependency typescript to v6 (#2752)
+* stop using baseUrl replaced by hash slash import
+* use oxfmt
+
+### Features
+
+* **deps:** update dependency semver to v7.8.0 ([#2748](https://github.com/christophehurpeau/pob/issues/2748))
+* **deps:** update dependency typescript to v6 ([#2752](https://github.com/christophehurpeau/pob/issues/2752))
+* stop using baseUrl replaced by hash slash import
+* use oxfmt
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [3.2.0](https://github.com/christophehurpeau/pob/compare/@pob/version@3.1.0...@pob/version@3.2.0) (2026-05-01)
 
 ### Features
