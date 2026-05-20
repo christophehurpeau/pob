@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "display": "@pob:target:BaseBundlerNode",
+  "extends": "./base-bundler.json",
+
+  "compilerOptions": {
+    "types": ["node"]
+  }
+}

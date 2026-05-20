@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/tsconfig",
   "display": "@pob:target:Expo",
-  "extends": "./base-bundler.json",
+  "extends": "./base-bundler-node.json",
 
   "compilerOptions": {
     "isolatedModules": true,
