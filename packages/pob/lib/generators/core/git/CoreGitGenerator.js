@@ -143,13 +143,13 @@ export default class CoreGitGenerator extends Generator {
     const cwd = this.destinationPath();
 
     this.initGitRepository =
-      this.spawnCommandSync("git", ["status"], {
+      this.spawnCommandSync("git status", {
         cwd,
         stdio: "ignore",
         reject: false,
       }).status === 128;
     if (this.initGitRepository) {
-      this.spawnCommandSync("git", ["init"], { cwd });
+      this.spawnCommandSync("git init", { cwd });
 
       if (!this.originUrl) {
         let repoSSH = pkg.repository;
@@ -170,7 +170,7 @@ export default class CoreGitGenerator extends Generator {
           repoSSH = pkg.repository;
         }
 
-        this.spawnCommandSync("git", ["remote", "add", "origin", repoSSH], {
+        this.spawnCommandSync(`git remote add origin ${repoSSH}`, {
           cwd,
         });
       }
