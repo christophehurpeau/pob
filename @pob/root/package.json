@@ -50,7 +50,7 @@
     "./tsconfigs/targets/webpack.json": "./tsconfigs/targets/webpack.json",
     "./tsconfigs/targets/expo.json": "./tsconfigs/targets/expo.json",
     "./tsconfigs/targets/rollup-node-22.json": "./tsconfigs/targets/rollup-node-22.json",
-    "./tsconfigs/targets/rollup-node-24.json": "./tsconfigs/targets/rollup-node-22.json",
+    "./tsconfigs/targets/rollup-node-24.json": "./tsconfigs/targets/rollup-node-24.json",
     "./package.json": "./package.json"
   },
   "publishConfig": {
