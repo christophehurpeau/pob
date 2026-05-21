@@ -3417,13 +3417,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sindresorhus/merge-streams@npm:^2.1.0":
-  version: 2.3.0
-  resolution: "@sindresorhus/merge-streams@npm:2.3.0"
-  checksum: 10c0/69ee906f3125fb2c6bb6ec5cdd84e8827d93b49b3892bce8b62267116cc7e197b5cccf20c160a1d32c26014ecd14470a72a5e3ee37a58f1d6dadc0db1ccf3894
-  languageName: node
-  linkType: hard
-
 "@sindresorhus/merge-streams@npm:^4.0.0":
   version: 4.0.0
   resolution: "@sindresorhus/merge-streams@npm:4.0.0"
@@ -3490,7 +3483,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/ejs@npm:^3.1.4, @types/ejs@npm:^3.1.5":
+"@types/ejs@npm:^3.1.5":
   version: 3.1.5
   resolution: "@types/ejs@npm:3.1.5"
   checksum: 10c0/13d994cf0323d7e0ad33b9384914ccd3b4cd8bf282eced3649b1621b66ee7c784ac2d120a9d7b1f43d6f873518248fb8c3221b06a649b847860b9c2389a0b0ed
@@ -4139,26 +4132,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@yeoman/types@npm:1.8.0":
-  version: 1.8.0
-  resolution: "@yeoman/types@npm:1.8.0"
-  peerDependencies:
-    "@types/node": ">=16.18.26"
-    "@yeoman/adapter": ^1.6.0 || ^2.0.0-beta.0 || ^3.0.0
-    mem-fs: ^3.0.0 || ^4.0.0-beta.1
-    mem-fs-editor: ^10.0.2 || >=10.0.2
-  peerDependenciesMeta:
-    "@yeoman/adapter":
-      optional: true
-    mem-fs:
-      optional: true
-    mem-fs-editor:
-      optional: true
-  checksum: 10c0/48d12a337eddfe804486505e971ff07624e4e170e12a845803edbe5edcfe0c204adcc55c9b3418cd770c16652c2813f6154fac9e2d7291ba7a2aa7fd9852f79a
-  languageName: node
-  linkType: hard
-
-"@yeoman/types@npm:^1.11.0":
+"@yeoman/types@npm:1.11.1, @yeoman/types@npm:^1.11.0":
   version: 1.11.1
   resolution: "@yeoman/types@npm:1.11.1"
   peerDependencies:
@@ -4458,13 +4432,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"async@npm:^3.2.6":
-  version: 3.2.6
-  resolution: "async@npm:3.2.6"
-  checksum: 10c0/36484bb15ceddf07078688d95e27076379cc2f87b10c03b6dd8a83e89475a3c8df5848859dd06a4c95af1e4c16fc973de0171a77f18ea00be899aca2a4f85e70
-  languageName: node
-  linkType: hard
-
 "author-regex@npm:^1.0.0":
   version: 1.0.0
   resolution: "author-regex@npm:1.0.0"
@@ -4630,7 +4597,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"brace-expansion@npm:^2.0.1, brace-expansion@npm:^2.0.2":
+"brace-expansion@npm:^2.0.2":
   version: 2.1.0
   resolution: "brace-expansion@npm:2.1.0"
   dependencies:
@@ -5239,17 +5206,6 @@ __metadata:
   dependencies:
     version-range: "npm:^4.15.0"
   checksum: 10c0/566edfdea81c5b9e9e366e4ceea7d0911095cc7689640e31113c49530762daaa39df4c60b2811ba05c769c485051592bf136325da019e1642bbead7d60bb7c1a
-  languageName: node
-  linkType: hard
-
-"ejs@npm:^3.1.10":
-  version: 3.1.10
-  resolution: "ejs@npm:3.1.10"
-  dependencies:
-    jake: "npm:^10.8.5"
-  bin:
-    ejs: bin/cli.js
-  checksum: 10c0/52eade9e68416ed04f7f92c492183340582a36482836b11eab97b159fcdcfdedc62233a1bf0bf5e5e1851c501f2dca0e2e9afd111db2599e4e7f53ee29429ae1
   languageName: node
   linkType: hard
 
@@ -6161,15 +6117,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"filelist@npm:^1.0.4":
-  version: 1.0.6
-  resolution: "filelist@npm:1.0.6"
-  dependencies:
-    minimatch: "npm:^5.0.1"
-  checksum: 10c0/6ee725bec3e1936d680a45f14439b224d9f7c71658c145addcf551dd82f03d608522eb6b191aa086b392bc3e52ed4ce0ed8d78e24b203e6c5e867560a05d1121
-  languageName: node
-  linkType: hard
-
 "fill-range@npm:^7.1.1":
   version: 7.1.1
   resolution: "fill-range@npm:7.1.1"
@@ -6577,20 +6524,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"globby@npm:^14.0.2":
-  version: 14.1.0
-  resolution: "globby@npm:14.1.0"
-  dependencies:
-    "@sindresorhus/merge-streams": "npm:^2.1.0"
-    fast-glob: "npm:^3.3.3"
-    ignore: "npm:^7.0.3"
-    path-type: "npm:^6.0.0"
-    slash: "npm:^5.1.0"
-    unicorn-magic: "npm:^0.3.0"
-  checksum: 10c0/527a1063c5958255969620c6fa4444a2b2e9278caddd571d46dfbfa307cb15977afb746e84d682ba5b6c94fc081e8997f80ff05dd235441ba1cb16f86153e58e
-  languageName: node
-  linkType: hard
-
 "globby@npm:^16.2.0":
   version: 16.2.0
   resolution: "globby@npm:16.2.0"
@@ -6799,7 +6732,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ignore@npm:^7.0.3, ignore@npm:^7.0.5":
+"ignore@npm:^7.0.5":
   version: 7.0.5
   resolution: "ignore@npm:7.0.5"
   checksum: 10c0/ae00db89fe873064a093b8999fe4cc284b13ef2a178636211842cceb650b9c3e390d3339191acb145d81ed5379d2074840cf0c33a20bdbd6f32821f79eb4ad5d
@@ -7223,13 +7156,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"isbinaryfile@npm:5.0.3":
-  version: 5.0.3
-  resolution: "isbinaryfile@npm:5.0.3"
-  checksum: 10c0/b27ff6f4018f8189e810e78cc20c2bee0d301e359e763182ea3b5b1abfc41afa3e0f85c2d32c0d5c9f2dd5c777793998e782678a4b37c78ba084de22f4e64f0e
-  languageName: node
-  linkType: hard
-
 "isbinaryfile@npm:5.0.7, isbinaryfile@npm:^5.0.4":
   version: 5.0.7
   resolution: "isbinaryfile@npm:5.0.7"
@@ -7297,19 +7223,6 @@ __metadata:
     has-symbols: "npm:^1.1.0"
     set-function-name: "npm:^2.0.2"
   checksum: 10c0/f7a262808e1b41049ab55f1e9c29af7ec1025a000d243b83edf34ce2416eedd56079b117fa59376bb4a724110690f13aa8427f2ee29a09eec63a7e72367626d0
-  languageName: node
-  linkType: hard
-
-"jake@npm:^10.8.5":
-  version: 10.9.4
-  resolution: "jake@npm:10.9.4"
-  dependencies:
-    async: "npm:^3.2.6"
-    filelist: "npm:^1.0.4"
-    picocolors: "npm:^1.1.1"
-  bin:
-    jake: bin/cli.js
-  checksum: 10c0/bb52f000340d4a32f1a3893b9abe56ef2b77c25da4dbf2c0c874a8159d082dddda50a5ad10e26060198bd645b928ba8dba3b362710f46a247e335321188c5a9c
   languageName: node
   linkType: hard
 
@@ -7985,30 +7898,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"mem-fs-editor@npm:11.1.4":
-  version: 11.1.4
-  resolution: "mem-fs-editor@npm:11.1.4"
-  dependencies:
-    "@types/ejs": "npm:^3.1.4"
-    "@types/node": "npm:>=18"
-    binaryextensions: "npm:^6.11.0"
-    commondir: "npm:^1.0.1"
-    deep-extend: "npm:^0.6.0"
-    ejs: "npm:^3.1.10"
-    globby: "npm:^14.0.2"
-    isbinaryfile: "npm:5.0.3"
-    minimatch: "npm:^9.0.3"
-    multimatch: "npm:^7.0.0"
-    normalize-path: "npm:^3.0.0"
-    textextensions: "npm:^6.11.0"
-    vinyl: "npm:^3.0.0"
-  peerDependencies:
-    mem-fs: ^4.0.0
-  checksum: 10c0/618affc8a831f53139ecf1020c221825258efdcd69c6c3edbdea306ca922cec8100e74d3b76152be520665be7945c3855eff93d3c916e84d72d8f643d01e832b
-  languageName: node
-  linkType: hard
-
-"mem-fs-editor@npm:^12.0.4":
+"mem-fs-editor@npm:12.0.4, mem-fs-editor@npm:^12.0.4":
   version: 12.0.4
   resolution: "mem-fs-editor@npm:12.0.4"
   dependencies:
@@ -8097,16 +7987,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"minimatch@npm:^5.0.1":
-  version: 5.1.9
-  resolution: "minimatch@npm:5.1.9"
-  dependencies:
-    brace-expansion: "npm:^2.0.1"
-  checksum: 10c0/4202718683815a7288b13e470160a4f9560cf392adef4f453927505817e01ef6b3476ecde13cfcaed17e7326dd3b69ad44eb2daeb19a217c5500f9277893f1d6
-  languageName: node
-  linkType: hard
-
-"minimatch@npm:^9.0.3, minimatch@npm:^9.0.9":
+"minimatch@npm:^9.0.9":
   version: 9.0.9
   resolution: "minimatch@npm:9.0.9"
   dependencies:
@@ -8202,17 +8083,6 @@ __metadata:
   version: 2.1.3
   resolution: "ms@npm:2.1.3"
   checksum: 10c0/d924b57e7312b3b63ad21fc5b3dc0af5e78d61a1fc7cfb5457edaf26326bf62be5307cc87ffb6862ef1c2b33b0233cdb5d4f01c4c958cc0d660948b65a287a48
-  languageName: node
-  linkType: hard
-
-"multimatch@npm:^7.0.0":
-  version: 7.0.0
-  resolution: "multimatch@npm:7.0.0"
-  dependencies:
-    array-differ: "npm:^4.0.0"
-    array-union: "npm:^3.0.1"
-    minimatch: "npm:^9.0.3"
-  checksum: 10c0/ce5b6e8a8d114830dd621b128a4a5364792bab281d861e68c7d719d2c04e8f9a4a0a566b37cbbc0a3cbaa0a62eb50e869c9d43ab439a314186b113a34c91a9c7
   languageName: node
   linkType: hard
 
@@ -8923,13 +8793,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"path-type@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "path-type@npm:6.0.0"
-  checksum: 10c0/55baa8b1187d6dc683d5a9cfcc866168d6adff58e5db91126795376d818eee46391e00b2a4d53e44d844c7524a7d96aa68cc68f4f3e500d3d069a39e6535481c
-  languageName: node
-  linkType: hard
-
 "pathe@npm:^2.0.3":
   version: 2.0.3
   resolution: "pathe@npm:2.0.3"
@@ -9091,7 +8954,7 @@ __metadata:
     "@types/inquirer": "npm:9.0.9"
     "@types/node": "npm:24.12.4"
     "@yeoman/adapter": "npm:4.0.2"
-    "@yeoman/types": "npm:1.8.0"
+    "@yeoman/types": "npm:1.11.1"
     eslint: "npm:10.4.0"
     findup-sync: "npm:^5.0.0"
     git-remote-url: "npm:^1.0.1"
@@ -9101,7 +8964,7 @@ __metadata:
     lodash.camelcase: "npm:^4.3.0"
     lodash.kebabcase: "npm:^4.1.1"
     mem-fs: "npm:4.1.4"
-    mem-fs-editor: "npm:11.1.4"
+    mem-fs-editor: "npm:12.0.4"
     minimist: "npm:1.2.8"
     oxfmt: "npm:0.50.0"
     parse-author: "npm:2.0.0"
