@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@24.0.0...@pob/root@24.1.0) (2026-05-21)
+
+### Features
+
+* add jsonc in lint-staged
+* update yarn version
+
 ## [24.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@23.2.0...@pob/root@24.0.0) (2026-05-20)
 
 ### ⚠ BREAKING CHANGES

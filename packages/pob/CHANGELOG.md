@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.1.0](https://github.com/christophehurpeau/pob/compare/pob@35.0.0...pob@35.1.0) (2026-05-21)
+
+### Features
+
+* **deps:** update dependency validate-npm-package-name to v8 ([#2758](https://github.com/christophehurpeau/pob/issues/2758))
+* update yarn version
+
+### Bug Fixes
+
+* add missing vite dependency when using vitest
+* cleanup lint:prettier scripts
+* improve vitest dependency management in CommonTestingGenerator
+* update codecov action to version 6 in CI workflows
+
+Version bump for dependency: @pob/root
+
+
 ## [35.0.0](https://github.com/christophehurpeau/pob/compare/pob@34.2.0...pob@35.0.0) (2026-05-20)
 
 ### ⚠ BREAKING CHANGES
