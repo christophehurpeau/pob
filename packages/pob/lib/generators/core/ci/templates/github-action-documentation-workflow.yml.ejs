@@ -20,6 +20,12 @@ jobs:
         with:
           bun-version: latest
 
+<% } else if (packageManager === 'pnpm') { -%>
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
+
 <% } -%>
       - uses: actions/setup-node@v6
         with:
@@ -35,6 +41,9 @@ jobs:
 <% } else if (packageManager === 'bun') { -%>
       - name: Install Dependencies
         run: bun install --frozen-lockfile
+<% } else if (packageManager === 'pnpm') { -%>
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
 <% } -%>
 
 <% if (typedoc) { -%>

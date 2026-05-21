@@ -87,6 +87,7 @@ export default class CoreVSCodeGenerator extends Generator {
           pnp: this.options.yarnNodeLinker === "pnp",
           npm: this.options.packageManager === "npm",
           bun: this.options.packageManager === "bun",
+          pnpm: this.options.packageManager === "pnpm",
           typescript: this.options.typescript,
           testing: this.options.testing,
           testRunner: this.options.testRunner,

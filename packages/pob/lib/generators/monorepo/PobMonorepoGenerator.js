@@ -3,6 +3,8 @@ import fs from "node:fs";
 import { platform } from "node:process";
 import Generator from "yeoman-generator";
 import * as packageUtils from "../../utils/package.js";
+import { packageManagerRun } from "../../utils/packageManagerUtils.js";
+import { workspacesRun } from "../../utils/packageManagerWorkspacesUtils.js";
 import {
   buildDependenciesMaps,
   buildTopologicalOrderBatches,
@@ -87,7 +89,7 @@ export default class PobMonorepoGenerator extends Generator {
     this.option("packageManager", {
       type: String,
       default: "yarn",
-      description: "yarn, bun or npm",
+      description: "yarn, npm, bun, or pnpm",
     });
 
     this.option("yarnNodeLinker", {
@@ -397,9 +399,9 @@ export default class PobMonorepoGenerator extends Generator {
         this.fs.delete("rollup.config.mjs");
       }
       packageUtils.addOrRemoveScripts(pkg, rollupConfigs.length > 0, {
-        "clean:build": "yarn workspaces foreach --parallel -A run clean:build",
-        build: "yarn clean:build && rollup --config rollup.config.mjs",
-        watch: "yarn clean:build && rollup --config rollup.config.mjs --watch",
+        "clean:build": workspacesRun(this.options.packageManager, "clean:build"),
+        build: `${packageManagerRun(this.options.packageManager, "clean:build")} && rollup --config rollup.config.mjs`,
+        watch: `${packageManagerRun(this.options.packageManager, "clean:build")} && rollup --config rollup.config.mjs --watch`,
       });
       packageUtils.addOrRemoveDevDependencies(
         pkg,

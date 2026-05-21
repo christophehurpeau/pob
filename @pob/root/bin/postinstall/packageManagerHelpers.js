@@ -49,8 +49,21 @@ export const getPackageManagerCommands = (pm, isYarnBerry) => {
       installOnDiffCommand: "bun i --frozen-lockfile",
     };
   }
+  if (pm.name === "pnpm") {
+    return {
+      lockfile: "pnpm-lock.yaml",
+      pmExec: "pnpm run",
+      ciPreStep: `name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11`,
+      installOnCICommand: "pnpm install --frozen-lockfile",
+      installMutableCommand: "pnpm install",
+      installOnDiffCommand: "pnpm install --frozen-lockfile",
+    };
+  }
 
   throw new Error(
-    `Package manager not supported: ${pm.name}. Please run with yarn, npm or bun !`,
+    `Package manager not supported: ${pm.name}. Please run with yarn, npm, bun or pnpm !`,
   );
 };

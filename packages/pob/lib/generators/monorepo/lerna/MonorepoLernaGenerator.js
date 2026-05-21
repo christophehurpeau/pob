@@ -16,7 +16,7 @@ export default class MonorepoLernaGenerator extends Generator {
     this.option("packageManager", {
       type: String,
       default: "yarn",
-      description: "yarn or npm",
+      description: "yarn, npm, bun, or pnpm",
     });
 
     this.option("disableYarnGitCache", {

@@ -24,6 +24,7 @@ import CommonTranspilerGenerator from "./generators/common/transpiler/CommonTran
 import CommonTypescriptGenerator from "./generators/common/typescript/CommonTypescriptGenerator.js";
 import CoreBunGenerator from "./generators/core/bun/CoreBunGenerator.js";
 import CoreCIGenerator from "./generators/core/ci/CoreCIGenerator.js";
+import CorePnpmGenerator from "./generators/core/pnpm/CorePnpmGenerator.js";
 import CoreCleanGenerator from "./generators/core/clean/CoreCleanGenerator.js";
 import CoreEditorConfigGenerator from "./generators/core/editorconfig/CoreEditorConfigGenerator.js";
 import CoreGitGenerator from "./generators/core/git/CoreGitGenerator.js";
@@ -206,6 +207,11 @@ env.registerStub(
   `${__dirname}/generators/core/bun/CoreBunGenerator.js`,
 );
 env.registerStub(
+  CorePnpmGenerator,
+  "pob:core:pnpm",
+  `${__dirname}/generators/core/pnpm/CorePnpmGenerator.js`,
+);
+env.registerStub(
   PobLibGenerator,
   "pob:lib",
   `${__dirname}/generators/lib/PobLibGenerator.js`,
@@ -299,6 +305,7 @@ if (action === "migrate-to-monorepo") {
         ".yarnrc.yml",
         "eslint.config.js",
         "bun.lock",
+        "pnpm-lock.yaml",
         ".prettierignore",
         "renovate.json",
         "packages",

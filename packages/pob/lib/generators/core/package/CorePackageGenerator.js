@@ -210,6 +210,9 @@ export default class CorePackageGenerator extends Generator {
       if (this.fs.exists(this.destinationPath("yarn.lock"))) {
         fs.unlinkSync(this.destinationPath("yarn.lock"));
       }
+      if (this.fs.exists(this.destinationPath("pnpm-lock.yaml"))) {
+        fs.unlinkSync(this.destinationPath("pnpm-lock.yaml"));
+      }
     }
     if (this.fs.exists(this.destinationPath("yarn-error.log"))) {
       fs.unlinkSync(this.destinationPath("yarn-error.log"));

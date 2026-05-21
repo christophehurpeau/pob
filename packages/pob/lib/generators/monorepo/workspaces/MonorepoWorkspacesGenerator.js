@@ -2,6 +2,11 @@ import { spawnSync } from "node:child_process";
 import { existsSync, readdirSync } from "node:fs";
 import Generator from "yeoman-generator";
 import * as packageUtils from "../../../utils/package.js";
+import {
+  workspacesRun,
+  workspacesRunExcluding,
+  workspacesRunTopological,
+} from "../../../utils/packageManagerWorkspacesUtils.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
 export default class MonorepoWorkspacesGenerator extends Generator {
@@ -17,7 +22,7 @@ export default class MonorepoWorkspacesGenerator extends Generator {
     this.option("packageManager", {
       type: String,
       default: "yarn",
-      description: "yarn or npm",
+      description: "yarn, npm, bun, or pnpm",
     });
 
     this.option("disableYarnGitCache", {
@@ -77,6 +82,10 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       if (!pkg.engines) pkg.engines = {};
       pkg.engines.yarn = "< 0.0.0";
       pkg.engines.npm = ">= 6.4.0";
+    } else if (this.options.packageManager === "pnpm") {
+      if (!pkg.engines) pkg.engines = {};
+      pkg.engines.pnpm = ">= 10.0.0";
+      delete pkg.engines.yarn;
     } else if (pkg.engines) {
       delete pkg.engines.yarn;
     }
@@ -97,12 +106,11 @@ export default class MonorepoWorkspacesGenerator extends Generator {
                 ? "NODE_OPTIONS=--max_old_space_size=4096 "
                 : ""
             }eslint --quiet .`
-          : // eslint-disable-next-line unicorn/no-nested-ternary
-            this.options.packageManager === "yarn"
+          : this.options.packageManager === "yarn"
             ? `NODE_OPTIONS=--max_old_space_size=4096 eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet . --ignore-pattern ${pkg.workspaces.join(
                 ",",
-              )} && yarn workspaces foreach --parallel -Av run lint:eslint`
-            : "npm run lint:eslint --workspaces",
+              )} && ${workspacesRun(packageManager, "lint:eslint")}`
+            : workspacesRun(packageManager, "lint:eslint"),
     });
 
     if (
@@ -114,10 +122,8 @@ export default class MonorepoWorkspacesGenerator extends Generator {
 
     if (this.options.isAppProject) {
       packageUtils.addOrRemoveScripts(pkg, withBundler, {
-        build:
-          "yarn workspaces foreach --parallel --topological-dev -Av run build",
-        watch:
-          'yarn workspaces foreach --parallel --jobs unlimited --interlaced --exclude "*-example" -Av run watch',
+        build: workspacesRunTopological(packageManager, "build"),
+        watch: workspacesRunExcluding(packageManager, "watch", "*-example"),
       });
     }
 
@@ -208,6 +214,9 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       case "npm":
         this.spawnCommandSync("npm", ["install"]);
         this.spawnCommandSync("npm", ["run", "preversion"]);
+        break;
+      case "pnpm":
+        // see CorePnpmGenerator
         break;
       case "yarn":
         // see CoreYarnGenerator

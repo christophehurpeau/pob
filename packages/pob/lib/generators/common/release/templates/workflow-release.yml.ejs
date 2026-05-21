@@ -47,6 +47,12 @@ jobs:
         uses: oven-sh/setup-bun@v2
         with:
           bun-version: latest
+<% } else if (packageManager === 'pnpm') { -%>
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
 <% } -%>
 
       - uses: actions/setup-node@v6
@@ -73,6 +79,9 @@ jobs:
 <% } else if (packageManager === 'bun') { -%>
       - name: Install Dependencies
         run: bun install --frozen-lockfile
+<% } else if (packageManager === 'pnpm') { -%>
+      - name: Install Dependencies
+        run: pnpm install --frozen-lockfile
 <% } -%>
 
       - name: New version (dry run)
@@ -93,14 +102,22 @@ jobs:
           POB_GIT_HOOKS: 0
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-<% if (enablePublish && packageManager === "yarn") { -%>
+<% if (enablePublish && (packageManager === "yarn" || packageManager === "pnpm")) { -%>
 
       - name: Publish to npm
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
+<% if (packageManager === 'yarn') { -%>
 <% if (isMonorepo) { -%>
           yarn workspaces foreach --all --parallel --no-private npm publish --tolerate-republish
 <% } else { -%>
           yarn npm publish
+<% } -%>
+<% } else if (packageManager === 'pnpm') { -%>
+<% if (isMonorepo) { -%>
+          pnpm -r publish --no-git-checks
+<% } else { -%>
+          pnpm publish --no-git-checks
+<% } -%>
 <% } -%>
 <% } -%>

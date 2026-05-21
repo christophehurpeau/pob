@@ -27,6 +27,9 @@
 <% } else if (bun) { -%>
   // set bun as package manager to run scripts and tasks
   "npm.packageManager": "bun",
+<% } else if (pnpm) { -%>
+  // set pnpm as package manager to run scripts and tasks
+  "npm.packageManager": "pnpm",
 <% } -%>
 
   // save config

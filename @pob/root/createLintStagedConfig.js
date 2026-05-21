@@ -41,9 +41,15 @@ const { lockfile, configfile, installAndDedupe } = (() => {
       installAndDedupe: ["bun i"],
     };
   }
+  if (pm.name === "pnpm") {
+    return {
+      lockfile: "pnpm-lock.yaml",
+      installAndDedupe: ["pnpm install", "pnpm dedupe"],
+    };
+  }
 
   throw new Error(
-    `Package manager not supported: ${pm.name}. Please run with yarn, npm or bun !`,
+    `Package manager not supported: ${pm.name}. Please run with yarn, npm, bun or pnpm !`,
   );
 })();
 

@@ -5,6 +5,7 @@ import { quoteArg } from "../../../utils/execUtils.js";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import * as packageUtils from "../../../utils/package.js";
 import { packageManagerRunWithCwd } from "../../../utils/packageManagerUtils.js";
+import { workspacesRun } from "../../../utils/packageManagerWorkspacesUtils.js";
 import {
   copyAndFormatTpl,
   writeAndFormatJson,
@@ -65,7 +66,7 @@ export default class CommonTestingGenerator extends Generator {
     this.option("packageManager", {
       type: String,
       default: "yarn",
-      description: "yarn, bun or npm",
+      description: "yarn, npm, bun, or pnpm",
     });
 
     this.option("isApp", {
@@ -355,7 +356,7 @@ export default class CommonTestingGenerator extends Generator {
 
       if (this.options.monorepo && !globalTesting) {
         packageUtils.addScripts(pkg, {
-          test: "yarn workspaces foreach --parallel -Av run test",
+          test: workspacesRun(this.options.packageManager, "test"),
         });
       } else {
         if (this.testRunner === "vitest") {

@@ -107,7 +107,7 @@ export default class PobBaseGenerator extends Generator {
         name: "packageManager",
         message: "Witch package manager do you want to use ?",
         type: "list",
-        choices: ["yarn", "npm", "bun"],
+        choices: ["yarn", "npm", "bun", "pnpm"],
         default: config.packageManager || "yarn",
       },
       {
@@ -144,6 +144,11 @@ export default class PobBaseGenerator extends Generator {
     this.composeWith("pob:core:bun", {
       type: this.projectConfig.type,
       enable: this.isRoot && this.projectConfig.packageManager === "bun",
+    });
+
+    this.composeWith("pob:core:pnpm", {
+      type: this.projectConfig.type,
+      enable: this.isRoot && this.projectConfig.packageManager === "pnpm",
     });
 
     this.composeWith("pob:core:yarn", {
@@ -282,9 +287,10 @@ export default class PobBaseGenerator extends Generator {
       case "npm":
         this.spawnCommandSync("npm", ["install"]);
         break;
+      case "pnpm":
       case "yarn":
       default:
-        // see CoreYarnGenerator
+        // see CorePnpmGenerator / CoreYarnGenerator
         break;
     }
   }

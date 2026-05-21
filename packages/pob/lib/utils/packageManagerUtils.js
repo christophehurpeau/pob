@@ -9,6 +9,8 @@ export const packageManagerRun = (packageManager, script) => {
       return `npm run ${script}`;
     case "bun":
       return `bun run ${script}`;
+    case "pnpm":
+      return `pnpm run ${script}`;
     default:
       throw new Error(`Unsupported package manager: ${packageManager}`);
   }
@@ -23,6 +25,8 @@ export const packageManagerRunWithCwd = (packageManager, cwd, script) => {
       return `npm --prefix ${quoteArg(cwd)} run ${script}`;
     case "bun":
       return `bun run --cwd ${quoteArg(cwd)} ${script}`;
+    case "pnpm":
+      return `pnpm run --dir ${quoteArg(cwd)} ${script}`;
     default:
       throw new Error(`Unsupported package manager: ${packageManager}`);
   }
