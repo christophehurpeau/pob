@@ -527,9 +527,12 @@ export default class CommonFormatLintGenerator extends Generator {
           "format:check": "oxfmt --check .",
         });
       } else {
-        delete pkg.scripts["lint:prettier"];
+        delete pkg.scripts.format;
+        delete pkg.scripts["format:check"];
       }
 
+      delete pkg.scripts["lint:prettier"];
+      delete pkg.scripts["lint:prettier:fix"];
       delete pkg.scripts["typescript-check"];
     }
 
