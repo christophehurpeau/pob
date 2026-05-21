@@ -304,13 +304,17 @@ export default class CommonTestingGenerator extends Generator {
     const jestConfigPath = this.destinationPath("jest.config.json");
     const vitestConfigPath = this.destinationPath("vite.config.js");
 
-    packageUtils.addOrRemoveDevDependencies(
-      pkg,
+    const isVitestUsed =
       this.options.enable &&
-        (enableForMonorepo || !globalTesting) &&
-        testRunner === "vitest",
-      ["vitest", "vite", "@vitest/coverage-v8"],
-    );
+      (enableForMonorepo || !globalTesting) &&
+      testRunner === "vitest";
+    packageUtils.addOrRemoveDevDependencies(pkg, isVitestUsed, [
+      "vitest",
+      "@vitest/coverage-v8",
+    ]);
+    if (isVitestUsed) {
+      packageUtils.addDependencies(pkg, ["vite"]);
+    }
 
     if (!this.options.enable) {
       // if (inMonorepo) {
