@@ -9061,7 +9061,7 @@ __metadata:
     pob-dependencies: "workspace:*"
     semver: "npm:7.8.0"
     typescript: "npm:6.0.3"
-    validate-npm-package-name: "npm:^7.0.0"
+    validate-npm-package-name: "npm:^8.0.0"
     yeoman-environment: "npm:5.0.0"
     yeoman-generator: "npm:7.5.1"
   bin:
@@ -10929,6 +10929,13 @@ __metadata:
   version: 7.0.2
   resolution: "validate-npm-package-name@npm:7.0.2"
   checksum: 10c0/adf32e943148e13e8df13d06b855493908e6ae7a847610e8543c6291cbf42f40e653249a5b2275e2e615e3224c574ade5a9064a9e2d1ab629386284ea99e8f39
+  languageName: node
+  linkType: hard
+
+"validate-npm-package-name@npm:^8.0.0":
+  version: 8.0.0
+  resolution: "validate-npm-package-name@npm:8.0.0"
+  checksum: 10c0/ec44abe7f8dd39f263d2571a538973e9c1864a99a0b0899092e50cae914fd9d7d25d69f52d3c9a422f04e75d2fa6d4a6bae8dc24cd6ae3a20e60d3d92e1b752e
   languageName: node
   linkType: hard
 
