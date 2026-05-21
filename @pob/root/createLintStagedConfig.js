@@ -87,7 +87,7 @@ export default function createLintStagedConfig() {
     [`{.github,scripts,config,${srcDirectories}}/**/*.{yml,yaml,md}`]: [
       "oxfmt --no-error-on-unmatched-pattern",
     ],
-    "./*.{yml,yaml,md}": ["oxfmt --no-error-on-unmatched-pattern"],
+    "./*.{yml,yaml,md,jsonc}": ["oxfmt --no-error-on-unmatched-pattern"],
     [`${srcDirectories}/**/*.{js,ts,tsx}`]: [
       "oxfmt --no-error-on-unmatched-pattern",
       "eslint --fix --quiet",
