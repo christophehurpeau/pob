@@ -309,7 +309,7 @@ export default class CommonTestingGenerator extends Generator {
       this.options.enable &&
         (enableForMonorepo || !globalTesting) &&
         testRunner === "vitest",
-      ["vitest", "@vitest/coverage-v8"],
+      ["vitest", "vite", "@vitest/coverage-v8"],
     );
 
     if (!this.options.enable) {
