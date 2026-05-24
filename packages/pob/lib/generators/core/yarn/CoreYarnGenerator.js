@@ -159,6 +159,9 @@ export default class CoreYarnGenerator extends Generator {
           schema: yml.FAILSAFE_SCHEMA,
           json: true,
         }) || {};
+      if (config.enableScripts === "true") {
+        config.enableScripts = true;
+      }
       const previousConfig = { ...config };
       if (this.options.disableYarnGitCache) {
         // leave default compressionLevel instead of this next line
@@ -168,7 +171,7 @@ export default class CoreYarnGenerator extends Generator {
         delete config.supportedArchitectures;
       } else {
         config.compressionLevel = 0; // optimized for github config
-        config.enableGlobalCache = "false";
+        config.enableGlobalCache = false;
         // https://yarnpkg.dev/releases/3-1/
         // make sure all supported architectures are in yarn cache
         config.supportedArchitectures = {

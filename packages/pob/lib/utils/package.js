@@ -1,3 +1,5 @@
+import fs from "node:fs";
+import { fileURLToPath } from "node:url";
 import sortObject from "@pob/sort-object";
 import sortPkg from "@pob/sort-pkg";
 import parseAuthor from "parse-author";
@@ -108,12 +110,23 @@ const getVersionFromDependencyName = (dependency) => {
     return pobEslintConfig.dependencies[dependency];
   }
 
+  let value = pobDependencies[dependency];
   // prevents cycle that lerna doesnt like
   if (dependency === "@pob/root") {
-    return pobPkg.devDependencies[dependency];
+    value = pobPkg.devDependencies[dependency];
   }
 
-  return pobDependencies[dependency];
+  if (value === "workspace:*") {
+    const pkgJson = JSON.parse(
+      fs.readFileSync(
+        fileURLToPath(
+          import.meta.resolve(`${dependency}/package.json`, import.meta.url),
+        ),
+      ),
+    );
+    return pkgJson.version;
+  }
+  return value;
 };
 
 const internalAddDependencies = (pkg, type, dependencies, cleaned, prefix) => {
@@ -145,6 +158,7 @@ const internalAddDependencies = (pkg, type, dependencies, cleaned, prefix) => {
   } else {
     dependenciesToCheck.forEach((dependency) => {
       const potentialNewVersion = getVersionFromDependencyName(dependency);
+      console.log({ dependency, potentialNewVersion });
       if (!potentialNewVersion) {
         throw new Error(`Missing pobDependency: ${dependency}`);
       }
