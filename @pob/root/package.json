@@ -68,7 +68,7 @@
     "conventional-commits-parser": "^6.2.1",
     "json5": "^2.2.3",
     "lint-staged": "17.0.5",
-    "oxfmt": "0.50.0",
+    "oxfmt": "0.51.0",
     "pob-dependencies": "workspace:*",
     "semver": "^7.7.3"
   },

@@ -32,7 +32,7 @@
     "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/pretty-pkg'"
   },
   "dependencies": {
-    "oxfmt": "0.50.0"
+    "oxfmt": "0.51.0"
   },
   "engines": {
     "node": ">=22.18.0"
