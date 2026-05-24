@@ -182,6 +182,23 @@ const BunPackageManager = {
   }
 };
 
+const PnpmPackageManager = {
+  async runScript(workspace, scriptName) {
+    await execCommand(workspace, ["pnpm", "run", scriptName], "inherit");
+  },
+  async publish(workspace, options) {
+    if (options?.provenance) {
+      await execCommand(
+        workspace,
+        ["pnpm", "publish", "--provenance"],
+        "inherit"
+      );
+    } else {
+      await execCommand(workspace, ["pnpm", "publish"], "inherit");
+    }
+  }
+};
+
 const YarnPackageManager = {
   async installOnPackageContentChange(rootWorkspace) {
     await execCommand(rootWorkspace, ["yarn", "install"], "inherit");
@@ -221,9 +238,14 @@ const autoDetectPackageManager = (rootWorkspace) => {
   const hasNpmPackageLock = existsSync(
     `${rootWorkspace.cwd}/package-lock.json`
   );
-  if ([hasYarnLock, hasBunLockLegacy, hasBunLock, hasNpmPackageLock].filter(
-    Boolean
-  ).length > 1) {
+  const hasPnpmLock = existsSync(`${rootWorkspace.cwd}/pnpm-lock.yaml`);
+  if ([
+    hasYarnLock,
+    hasBunLockLegacy,
+    hasBunLock,
+    hasNpmPackageLock,
+    hasPnpmLock
+  ].filter(Boolean).length > 1) {
     throw new Error(
       `Multiple lock files detected in workspace at ${rootWorkspace.cwd}. Please ensure only one lock file is present, or pass --package-manager option to bypass auto-detection.`
     );
@@ -233,6 +255,9 @@ const autoDetectPackageManager = (rootWorkspace) => {
   }
   if (hasBunLockLegacy || hasBunLock) {
     return BunPackageManager;
+  }
+  if (hasPnpmLock) {
+    return PnpmPackageManager;
   }
   if (hasNpmPackageLock) {
     throw new Error(
@@ -244,15 +269,20 @@ const autoDetectPackageManager = (rootWorkspace) => {
   );
 };
 const getPackageManager = (rootWorkspace, specifiedPackageManager) => {
-  if (specifiedPackageManager === "bun") {
-    return BunPackageManager;
+  switch (specifiedPackageManager) {
+    case "bun":
+      return BunPackageManager;
+    case "yarn":
+      return YarnPackageManager;
+    case "pnpm":
+      return PnpmPackageManager;
+    case void 0:
+    default: {
+      throw new Error(
+        "Invalid package manager specified. Supported values are 'bun' and 'yarn'."
+      );
+    }
   }
-  if (specifiedPackageManager === "yarn") {
-    return YarnPackageManager;
-  }
-  throw new Error(
-    "Invalid package manager specified. Supported values are 'bun' and 'yarn'."
-  );
 };
 
 class UsageError extends Error {

@@ -1,6 +1,7 @@
 import { existsSync } from "node:fs";
 import type { Workspace } from "../utils/packageUtils.ts";
 import { BunPackageManager } from "./BunPackageManager.ts";
+import { PnpmPackageManager } from "./PnpmPackageManager.ts";
 import { YarnPackageManager } from "./YarnPackageManager.ts";
 
 export interface PackageManagerPublishOptions {
@@ -29,11 +30,16 @@ export const autoDetectPackageManager = (
   const hasNpmPackageLock = existsSync(
     `${rootWorkspace.cwd}/package-lock.json`,
   );
+  const hasPnpmLock = existsSync(`${rootWorkspace.cwd}/pnpm-lock.yaml`);
 
   if (
-    [hasYarnLock, hasBunLockLegacy, hasBunLock, hasNpmPackageLock].filter(
-      Boolean,
-    ).length > 1
+    [
+      hasYarnLock,
+      hasBunLockLegacy,
+      hasBunLock,
+      hasNpmPackageLock,
+      hasPnpmLock,
+    ].filter(Boolean).length > 1
   ) {
     throw new Error(
       `Multiple lock files detected in workspace at ${rootWorkspace.cwd}. Please ensure only one lock file is present, or pass --package-manager option to bypass auto-detection.`,
@@ -46,6 +52,10 @@ export const autoDetectPackageManager = (
 
   if (hasBunLockLegacy || hasBunLock) {
     return BunPackageManager;
+  }
+
+  if (hasPnpmLock) {
+    return PnpmPackageManager;
   }
 
   if (hasNpmPackageLock) {
@@ -61,16 +71,20 @@ export const autoDetectPackageManager = (
 
 export const getPackageManager = (
   rootWorkspace: Workspace,
-  specifiedPackageManager?: "bun" | "yarn",
+  specifiedPackageManager?: "bun" | "pnpm" | "yarn",
 ): PackageManager => {
-  if (specifiedPackageManager === "bun") {
-    return BunPackageManager;
+  switch (specifiedPackageManager) {
+    case "bun":
+      return BunPackageManager;
+    case "yarn":
+      return YarnPackageManager;
+    case "pnpm":
+      return PnpmPackageManager;
+    case undefined:
+    default: {
+      throw new Error(
+        "Invalid package manager specified. Supported values are 'bun' and 'yarn'.",
+      );
+    }
   }
-
-  if (specifiedPackageManager === "yarn") {
-    return YarnPackageManager;
-  }
-  throw new Error(
-    "Invalid package manager specified. Supported values are 'bun' and 'yarn'.",
-  );
 };
