@@ -137,6 +137,9 @@ export default class PobBaseGenerator extends Generator {
     ]);
 
     this.projectConfig = { ...config, ...responses };
+    if (this.projectConfig.packageManager !== "yarn") {
+      delete this.projectConfig.yarnNodeLinker;
+    }
     this.config.set("project", this.projectConfig);
   }
 
