@@ -40,7 +40,7 @@ export default class CorePnpmGenerator extends Generator {
         (!pkg.packageManager.startsWith("pnpm@") ||
           lt(pkg.packageManager.slice("pnpm@".length), "11.0.0"))
       ) {
-        pkg.packageManager = "pnpm@11.0.0";
+        delete pkg.packageManager;
       }
 
       const configString = this.fs.read(
@@ -50,8 +50,16 @@ export default class CorePnpmGenerator extends Generator {
       const config =
         yml.load(configString, {
           schema: yml.FAILSAFE_SCHEMA,
-          json: true,
         }) || {};
+
+      if (config.allowBuilds) {
+        config.allowBuilds = Object.fromEntries(
+          Object.entries(config.allowBuilds).map(([key, value]) => [
+            key,
+            value === "true" ? true : value,
+          ]),
+        );
+      }
 
       if (pkg.workspaces) {
         config.packages = pkg.workspaces;
