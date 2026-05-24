@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.1.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-object@11.0.0...@pob/sort-object@11.1.0) (2026-05-24)
+
+### Features
+
+* pnpm support ([#2761](https://github.com/christophehurpeau/pob/issues/2761))
+
 ## [11.0.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-object@10.1.2...@pob/sort-object@11.0.0) (2026-05-20)
 
 ### ⚠ BREAKING CHANGES

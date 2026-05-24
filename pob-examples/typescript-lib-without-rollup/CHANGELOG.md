@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.32.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.31.0...example-typescript-lib-without-rollup@0.32.0) (2026-05-24)
+
+### Features
+
+* pnpm support ([#2761](https://github.com/christophehurpeau/pob/issues/2761))
+* update release workflow to use packageManagerExec for pob-version commands
+
 ## [0.31.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.30.5...example-typescript-lib-without-rollup@0.31.0) (2026-05-20)
 
 ### ⚠ BREAKING CHANGES

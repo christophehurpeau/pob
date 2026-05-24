@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.2.0](https://github.com/christophehurpeau/pob/compare/pob@35.1.0...pob@35.2.0) (2026-05-24)
+
+### Features
+
+* add experimental pnpm support
+* **deps:** update dependency oxfmt to v0.51.0 ([#2757](https://github.com/christophehurpeau/pob/issues/2757))
+* **deps:** update yeoman group (major) ([#2656](https://github.com/christophehurpeau/pob/issues/2656))
+* pnpm support ([#2761](https://github.com/christophehurpeau/pob/issues/2761))
+* update pnpm/action-setup to v6
+* update release workflow to use packageManagerExec for pob-version commands
+
+### Bug Fixes
+
+* add missing comma in oxfmtrc.jsonc.ejs
+* add missing tsBuildInfoFile in noEmit condition in tsconfig.json.ejs
+
+Version bump for dependency: @pob/sort-object
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [35.1.0](https://github.com/christophehurpeau/pob/compare/pob@35.0.0...pob@35.1.0) (2026-05-21)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.0](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.13.0...example-simple-lib@0.14.0) (2026-05-24)
+
+### Features
+
+* pnpm support ([#2761](https://github.com/christophehurpeau/pob/issues/2761))
+
 ## [0.13.0](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.12.3...example-simple-lib@0.13.0) (2026-05-20)
 
 ### ⚠ BREAKING CHANGES

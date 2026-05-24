@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.0](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@12.0.0...repository-check-dirty@12.1.0) (2026-05-24)
+
+### Features
+
+* pnpm support ([#2761](https://github.com/christophehurpeau/pob/issues/2761))
+
 ## [12.0.0](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@11.0.2...repository-check-dirty@12.0.0) (2026-05-20)
 
 ### ⚠ BREAKING CHANGES

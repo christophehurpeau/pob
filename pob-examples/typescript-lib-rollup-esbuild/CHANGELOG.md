@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.53.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild@0.52.0...example-typescript-lib-rollup-esbuild@0.53.0) (2026-05-24)
+
+### Features
+
+* pnpm support ([#2761](https://github.com/christophehurpeau/pob/issues/2761))
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [0.52.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild@0.51.0...example-typescript-lib-rollup-esbuild@0.52.0) (2026-05-20)
 
 ### ⚠ BREAKING CHANGES

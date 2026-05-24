@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.1.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@14.0.0...@pob/pretty-pkg@14.1.0) (2026-05-24)
+
+### Features
+
+* **deps:** update dependency oxfmt to v0.51.0 ([#2757](https://github.com/christophehurpeau/pob/issues/2757))
+* pnpm support ([#2761](https://github.com/christophehurpeau/pob/issues/2761))
+
 ## [14.0.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@13.2.3...@pob/pretty-pkg@14.0.0) (2026-05-20)
 
 ### ⚠ BREAKING CHANGES

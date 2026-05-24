@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.13.0](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.12.0...@pob/codemods@0.13.0) (2026-05-24)
+
+### Features
+
+* pnpm support ([#2761](https://github.com/christophehurpeau/pob/issues/2761))
+
 ## [0.12.0](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.11.1...@pob/codemods@0.12.0) (2026-05-20)
 
 ### ⚠ BREAKING CHANGES

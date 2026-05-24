@@ -1,6 +1,6 @@
 {
   "name": "pob-babel",
-  "version": "46.0.0",
+  "version": "46.1.0",
   "description": "Build and watch with babel and typescript",
   "keywords": [],
   "homepage": "https://github.com/christophehurpeau/pob",

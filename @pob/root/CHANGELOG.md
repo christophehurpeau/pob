@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.2.0](https://github.com/christophehurpeau/pob/compare/@pob/root@24.1.0...@pob/root@24.2.0) (2026-05-24)
+
+### Features
+
+* add experimental pnpm support
+* **deps:** update dependency oxfmt to v0.51.0 ([#2757](https://github.com/christophehurpeau/pob/issues/2757))
+* pnpm support ([#2761](https://github.com/christophehurpeau/pob/issues/2761))
+* update pnpm/action-setup to v6
+
+### Bug Fixes
+
+* correct target path for rollup-node-24.json in package.json
+
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [24.1.0](https://github.com/christophehurpeau/pob/compare/@pob/root@24.0.0...@pob/root@24.1.0) (2026-05-21)
 
 ### Features

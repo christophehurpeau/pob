@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.1.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@12.0.0...@pob/commitlint-config@12.1.0) (2026-05-24)
+
+### Features
+
+* pnpm support ([#2761](https://github.com/christophehurpeau/pob/issues/2761))
+
 ## [12.0.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@11.0.2...@pob/commitlint-config@12.0.0) (2026-05-20)
 
 ### ⚠ BREAKING CHANGES

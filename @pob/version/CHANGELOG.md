@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.1.0](https://github.com/christophehurpeau/pob/compare/@pob/version@4.0.0...@pob/version@4.1.0) (2026-05-24)
+
+### Features
+
+* add pnpm support
+* add support for pnpm-lock.yaml in findRootWorkspace
+* pnpm support ([#2761](https://github.com/christophehurpeau/pob/issues/2761))
+* update release workflow to use packageManagerExec for pob-version commands
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [4.0.0](https://github.com/christophehurpeau/pob/compare/@pob/version@3.2.0...@pob/version@4.0.0) (2026-05-20)
 
 ### ⚠ BREAKING CHANGES

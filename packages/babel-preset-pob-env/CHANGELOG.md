@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.1.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@18.0.0...babel-preset-pob-env@18.1.0) (2026-05-24)
+
+### Features
+
+* pnpm support ([#2761](https://github.com/christophehurpeau/pob/issues/2761))
+
 ## [18.0.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env@17.0.1...babel-preset-pob-env@18.0.0) (2026-05-20)
 
 ### ⚠ BREAKING CHANGES

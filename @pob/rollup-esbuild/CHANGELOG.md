@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@9.0.0...@pob/rollup-esbuild@9.1.0) (2026-05-24)
+
+### Features
+
+* pnpm support ([#2761](https://github.com/christophehurpeau/pob/issues/2761))
+
+Version bump for dependency: @pob/rollup
+
+
 ## [9.0.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@8.3.0...@pob/rollup-esbuild@9.0.0) (2026-05-20)
 
 ### ⚠ BREAKING CHANGES

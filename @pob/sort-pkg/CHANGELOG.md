@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.1.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@13.0.0...@pob/sort-pkg@13.1.0) (2026-05-24)
+
+### Features
+
+* pnpm support ([#2761](https://github.com/christophehurpeau/pob/issues/2761))
+
+Version bump for dependency: @pob/sort-object
+
+
 ## [13.0.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@12.1.2...@pob/sort-pkg@13.0.0) (2026-05-20)
 
 ### ⚠ BREAKING CHANGES
