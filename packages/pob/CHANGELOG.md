@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.2.1](https://github.com/christophehurpeau/pob/compare/pob@35.2.0...pob@35.2.1) (2026-05-24)
+
+### Bug Fixes
+
+* improve package version due to pnpm requiring workspace
+* remove debug log and add tsc script
+* remove debug log from internalAddDependencies function
+* remove packageManager assignment and enhance allowBuilds configuration handling
+* remove yarnNodeLinker from projectConfig if packageManager is not yarn
+
+Version bump for dependency: @pob/root
+
+
 ## [35.2.0](https://github.com/christophehurpeau/pob/compare/pob@35.1.0...pob@35.2.0) (2026-05-24)
 
 ### Features
