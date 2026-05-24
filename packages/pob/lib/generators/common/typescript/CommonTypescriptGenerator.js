@@ -208,8 +208,6 @@ export default class CommonTypescriptGenerator extends Generator {
       delete pkg.scripts.flow;
     }
 
-    console.log({ enableTypescript: this.options.enable });
-
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.options.enable ||
@@ -364,11 +362,14 @@ export default class CommonTypescriptGenerator extends Generator {
       this.fs.delete(tsconfigBuildPath);
       // }
     } else {
-      if (pkg.scripts) delete pkg.scripts.tsc;
       this.fs.delete(tsconfigPath);
       this.fs.delete(tsconfigBuildPath);
       this.fs.delete(tsconfigCheckPath);
       this.fs.delete(tsconfigEslintPath);
+    }
+
+    if (!pkg.workspaces || !this.options.enable) {
+      packageUtils.addOrRemoveScripts(pkg, this.options.enable, { tsc: "tsc" });
     }
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
