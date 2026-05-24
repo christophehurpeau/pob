@@ -1,0 +1,14 @@
+dedupePeerDependents: true
+minimumReleaseAge: 4320
+minimumReleaseAgeExclude:
+  - "@pob/*"
+  - pob-dependencies
+  - alouette
+  - alouette-icons
+  - nightingale
+  - nightingale-logger
+packages:
+  - packages/*
+  - "@pob/*"
+  - pob-examples/*
+savePrefix: ^

@@ -3,7 +3,6 @@ import { existsSync, readdirSync } from "node:fs";
 import Generator from "yeoman-generator";
 import * as packageUtils from "../../../utils/package.js";
 import {
-  workspacesRun,
   workspacesRunExcluding,
   workspacesRunTopological,
 } from "../../../utils/packageManagerWorkspacesUtils.js";
@@ -84,7 +83,7 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       pkg.engines.npm = ">= 6.4.0";
     } else if (this.options.packageManager === "pnpm") {
       if (!pkg.engines) pkg.engines = {};
-      pkg.engines.pnpm = ">= 10.0.0";
+      pkg.engines.pnpm = ">= 11.0.0";
       delete pkg.engines.yarn;
     } else if (pkg.engines) {
       delete pkg.engines.yarn;
@@ -100,17 +99,11 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       "lint:eslint":
         monorepoConfig &&
         monorepoConfig.eslint &&
-        this.packagesConfig.length < 50
-          ? `${
-              this.packagesConfig.length > 15
-                ? "NODE_OPTIONS=--max_old_space_size=4096 "
-                : ""
-            }eslint --quiet .`
-          : this.options.packageManager === "yarn"
-            ? `NODE_OPTIONS=--max_old_space_size=4096 eslint --report-unused-disable-directives --resolve-plugins-relative-to . --quiet . --ignore-pattern ${pkg.workspaces.join(
-                ",",
-              )} && ${workspacesRun(packageManager, "lint:eslint")}`
-            : workspacesRun(packageManager, "lint:eslint"),
+        `${
+          this.packagesConfig.length > 15
+            ? "NODE_OPTIONS=--max_old_space_size=4096 "
+            : ""
+        }eslint --quiet .`,
     });
 
     if (

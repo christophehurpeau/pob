@@ -2,6 +2,7 @@ export const getPackageManagerCommands = (pm, isYarnBerry) => {
   if (pm.name === "yarn") {
     return {
       lockfile: "yarn.lock",
+      pmRun: "yarn run",
       pmExec: "yarn",
       ciPreStep: `name: Enable Corepack
         run: corepack enable`,
@@ -31,6 +32,7 @@ export const getPackageManagerCommands = (pm, isYarnBerry) => {
   if (pm.name === "npm") {
     return {
       lockfile: "package-lock.json",
+      pmRun: "npm run",
       pmExec: "npx --no-install",
       ciPreStep: "",
       installOnCICommand: "npm i",
@@ -41,6 +43,7 @@ export const getPackageManagerCommands = (pm, isYarnBerry) => {
   if (pm.name === "bun") {
     return {
       lockfile: "bun.lock",
+      pmRun: "bun run",
       pmExec: "bun run",
       ciPreStep: `name: Install bun
         uses: oven-sh/setup-bun@v2`,
@@ -52,7 +55,8 @@ export const getPackageManagerCommands = (pm, isYarnBerry) => {
   if (pm.name === "pnpm") {
     return {
       lockfile: "pnpm-lock.yaml",
-      pmExec: "pnpm run",
+      pmRun: "pnpm run",
+      pmExec: "pnpm exec",
       ciPreStep: `name: Install pnpm
         uses: pnpm/action-setup@v4
         with:

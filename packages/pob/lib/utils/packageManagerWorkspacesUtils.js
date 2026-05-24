@@ -42,21 +42,31 @@ export const workspacesRunTopological = (packageManager, script) => {
  * Run a script in all workspaces in parallel, excluding packages matching the given patterns.
  * Use for watch commands where example/demo packages should be skipped.
  */
-export const workspacesRunExcluding = (packageManager, script, ...excludePatterns) => {
+export const workspacesRunExcluding = (
+  packageManager,
+  script,
+  ...excludePatterns
+) => {
   switch (packageManager) {
     case undefined:
     case "yarn": {
-      const excludeArgs = excludePatterns.map((p) => `--exclude "${p}"`).join(" ");
+      const excludeArgs = excludePatterns
+        .map((p) => `--exclude "${p}"`)
+        .join(" ");
       return `yarn workspaces foreach --parallel --jobs unlimited --interlaced ${excludeArgs} -Av run ${script}`;
     }
     case "pnpm": {
-      const filterArgs = excludePatterns.map((p) => `--filter "!${p}"`).join(" ");
+      const filterArgs = excludePatterns
+        .map((p) => `--filter "!${p}"`)
+        .join(" ");
       return `pnpm -r --parallel ${filterArgs} run ${script}`;
     }
     case "npm":
       return `npm run ${script} --workspaces`;
     case "bun": {
-      const filterArgs = excludePatterns.map((p) => `--filter '!${p}'`).join(" ");
+      const filterArgs = excludePatterns
+        .map((p) => `--filter '!${p}'`)
+        .join(" ");
       return `bun ${filterArgs} run ${script}`;
     }
     default:

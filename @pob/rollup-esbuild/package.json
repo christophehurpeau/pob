@@ -36,8 +36,8 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn '../..' run eslint --quiet '@pob/rollup-esbuild'"
+    "lint": "pnpm run lint:eslint",
+    "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/rollup-esbuild'"
   },
   "dependencies": {
     "@pob/rollup": "8.0.0",

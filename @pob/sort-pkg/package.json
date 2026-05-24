@@ -25,8 +25,8 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn '../..' run eslint --quiet '@pob/sort-pkg'"
+    "lint": "pnpm run lint:eslint",
+    "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/sort-pkg'"
   },
   "dependencies": {
     "@pob/sort-object": "11.0.0"

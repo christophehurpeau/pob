@@ -13,24 +13,23 @@
   ],
   "type": "module",
   "scripts": {
-    "build": "yarn clean:build && rollup --config rollup.config.mjs && yarn run build:definitions && chmod a+x @pob/version/dist/index-node.mjs",
+    "build": "pnpm run clean:build && rollup --config rollup.config.mjs && pnpm run build:definitions",
     "build:definitions": "tsc -b",
-    "checks": "node scripts/check-packages.js && ./scripts/run-self-on-examples.sh",
-    "clean:build": "yarn workspaces foreach --parallel -A run clean:build",
+    "checks": "node scripts/check-packages.js",
+    "clean:build": "pnpm -r --parallel run clean:build",
     "format": "oxfmt",
-    "format:check": "oxfmt --check",
-    "lint": "yarn run lint:eslint",
+    "format:check": "oxfmt --check .",
+    "lint": "pnpm run format && pnpm run lint:eslint",
     "lint:eslint": "NODE_OPTIONS=--max_old_space_size=4096 eslint --quiet .",
-    "postinstall": "yarn node @pob/root/bin/pob-root-postinstall.js",
+    "prepare": "node @pob/root/bin/pob-root-postinstall.js",
     "test": "TZ=UTC vitest",
     "test:coverage": "TZ=UTC POB_VITEST_COVERAGE=json,text vitest run --coverage",
     "test:coverage:json": "TZ=UTC POB_VITEST_COVERAGE=json vitest run --coverage",
     "test:watch": "TZ=UTC vitest --watch",
     "tsc": "tsc -b",
-    "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
+    "watch": "pnpm run clean:build && rollup --config rollup.config.mjs --watch"
   },
   "devDependencies": {
-    "@babel/core": "7.29.0",
     "@pob/eslint-config": "65.4.3",
     "@pob/rollup-esbuild": "workspace:*",
     "@pob/root": "workspace:*",
@@ -41,6 +40,7 @@
     "oxfmt": "0.50.0",
     "react": "19.2.6",
     "typescript": "6.0.3",
+    "vite": "8.0.13",
     "vitest": "4.1.6"
   },
   "commitlint": {
@@ -49,7 +49,7 @@
     ]
   },
   "engines": {
-    "node": ">=22.18.0"
-  },
-  "packageManager": "yarn@4.15.0"
+    "node": ">=22.18.0",
+    "pnpm": ">= 11.0.0"
+  }
 }

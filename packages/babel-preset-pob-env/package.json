@@ -24,9 +24,9 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn '../..' run eslint --quiet 'packages/babel-preset-pob-env'",
-    "test": "yarn '../..' run test -- 'packages/babel-preset-pob-env'"
+    "lint": "pnpm run lint:eslint",
+    "lint:eslint": "pnpm run --dir '../..' eslint --quiet 'packages/babel-preset-pob-env'",
+    "test": "pnpm run --dir '../..' test -- 'packages/babel-preset-pob-env'"
   },
   "engines": {
     "node": ">=22.18.0"

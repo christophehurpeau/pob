@@ -1,6 +1,7 @@
 import Generator from "yeoman-generator";
 // import { latestLTS } from "../../../utils/nodeVersions.js";
 import * as packageUtils from "../../../utils/package.js";
+import { packageManagerRun } from "../../../utils/packageManagerUtils.js";
 
 export default class CommonReleaseGenerator extends Generator {
   constructor(args, opts) {
@@ -103,9 +104,10 @@ export default class CommonReleaseGenerator extends Generator {
     if (this.options.enable && !this.options.ci) {
       packageUtils.addScripts(pkg, {
         preversion: [
-          "yarn run lint",
+          packageManagerRun(this.options.packageManager, "lint"),
           this.options.withBabel ||
-            (this.options.withTypescript && "yarn run build"),
+            (this.options.withTypescript &&
+              packageManagerRun(this.options.packageManager, "build")),
           "repository-check-dirty",
         ]
           .filter(Boolean)

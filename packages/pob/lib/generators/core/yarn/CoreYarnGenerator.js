@@ -91,7 +91,10 @@ export default class CoreYarnGenerator extends Generator {
         ["plugin", "runtime", "--json"],
         { stdio: "pipe" },
       );
-      const installedPlugins = stdout.split("\n").map(JSON.parse);
+      const installedPlugins = stdout
+        .split("\n")
+        .filter(Boolean)
+        .map(JSON.parse);
 
       const isPluginInstalled = (name) =>
         installedPlugins.some((plugin) => plugin.name === name);

@@ -33,9 +33,6 @@
     ".": "./lib/index.js",
     "./createLintStagedConfig": "./createLintStagedConfig.js",
     "./createLintStagedConfig.js": "./createLintStagedConfig.js",
-    "./prettier-config": "./prettier-config.cjs",
-    "./prettier-config.js": "./prettier-config.cjs",
-    "./prettier-config.cjs": "./prettier-config.cjs",
     "./tsconfigs/base.json": "./tsconfigs/base.json",
     "./tsconfigs/strict.json": "./tsconfigs/strict.json",
     "./tsconfigs/targets/esbuild-node-22.json": "./tsconfigs/targets/esbuild-node-22.json",
@@ -57,8 +54,8 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn '../..' run eslint --quiet '@pob/root'"
+    "lint": "pnpm run lint:eslint",
+    "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/root'"
   },
   "dependencies": {
     "@commitlint/format": "21.0.1",

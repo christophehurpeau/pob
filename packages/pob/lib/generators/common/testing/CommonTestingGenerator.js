@@ -314,7 +314,7 @@ export default class CommonTestingGenerator extends Generator {
       "@vitest/coverage-v8",
     ]);
     if (isVitestUsed) {
-      packageUtils.addDependencies(pkg, ["vite"]);
+      packageUtils.addDevDependencies(pkg, ["vite"]);
     }
 
     if (!this.options.enable) {

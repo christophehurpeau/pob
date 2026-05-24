@@ -17,14 +17,14 @@
   "scripts": {
     "build": "vite build",
     "build:analyze": "ENABLE_ANALYZER=true vite build",
-    "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn '../..' run eslint --quiet 'pob-examples/vite-app'",
+    "lint": "pnpm run lint:eslint",
+    "lint:eslint": "pnpm run --dir '../..' eslint --quiet 'pob-examples/vite-app'",
     "serve": "vite preview",
     "start": "vite",
     "test": "yarn '../..' run test -- 'pob-examples/vite-app'"
   },
   "dependencies": {
-    "example-typescript-lib-rollup-esbuild": "0.52.0"
+    "example-typescript-lib-rollup-esbuild": "workspace:*"
   },
   "devDependencies": {
     "typescript": "6.0.3",
