@@ -29,7 +29,7 @@
     "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/sort-pkg'"
   },
   "dependencies": {
-    "@pob/sort-object": "11.0.0"
+    "@pob/sort-object": "workspace:*"
   },
   "engines": {
     "node": ">=22.18.0"

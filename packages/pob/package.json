@@ -37,8 +37,8 @@
   "dependencies": {
     "@pob/eslint-config": "65.4.3",
     "@pob/eslint-config-typescript-react": "65.4.3",
-    "@pob/sort-object": "11.0.0",
-    "@pob/sort-pkg": "13.0.0",
+    "@pob/sort-object": "workspace:*",
+    "@pob/sort-pkg": "workspace:*",
     "@types/inquirer": "9.0.9",
     "@yeoman/adapter": "4.0.2",
     "@yeoman/types": "1.11.1",
@@ -63,7 +63,7 @@
     "yeoman-generator": "8.2.2"
   },
   "devDependencies": {
-    "@pob/root": "24.1.0",
+    "@pob/root": "workspace:*",
     "@types/node": "24.12.4"
   },
   "engines": {

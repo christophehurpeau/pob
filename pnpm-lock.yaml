@@ -86,8 +86,8 @@ importers:
   '@pob/rollup-esbuild':
     dependencies:
       '@pob/rollup':
-        specifier: 8.0.0
-        version: 8.0.0
+        specifier: workspace:*
+        version: link:../rollup
       '@rollup/plugin-node-resolve':
         specifier: 16.0.3
         version: 16.0.3(rollup@4.60.4)
@@ -127,8 +127,8 @@ importers:
         specifier: 21.0.1
         version: 21.0.1
       '@pob/pretty-pkg':
-        specifier: 14.0.0
-        version: 14.0.0
+        specifier: workspace:*
+        version: link:../pretty-pkg
       '@pob/version':
         specifier: workspace:*
         version: link:../version
@@ -162,8 +162,8 @@ importers:
   '@pob/sort-pkg':
     dependencies:
       '@pob/sort-object':
-        specifier: 11.0.0
-        version: 11.0.0
+        specifier: workspace:*
+        version: link:../sort-object
 
   '@pob/version':
     dependencies:
@@ -216,11 +216,11 @@ importers:
         specifier: 65.4.3
         version: 65.4.3(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)
       '@pob/sort-object':
-        specifier: 11.0.0
-        version: 11.0.0
+        specifier: workspace:*
+        version: link:../../@pob/sort-object
       '@pob/sort-pkg':
-        specifier: 13.0.0
-        version: 13.0.0
+        specifier: workspace:*
+        version: link:../../@pob/sort-pkg
       '@types/inquirer':
         specifier: 9.0.9
         version: 9.0.9
@@ -289,8 +289,8 @@ importers:
         version: 8.2.2(@types/node@24.12.4)(@yeoman/types@1.11.1(@types/node@24.12.4)(@yeoman/adapter@4.0.2(@types/node@24.12.4))(mem-fs@4.1.4))(mem-fs@4.1.4)
     devDependencies:
       '@pob/root':
-        specifier: 24.1.0
-        version: 24.1.0
+        specifier: workspace:*
+        version: link:../../@pob/root
       '@types/node':
         specifier: 24.12.4
         version: 24.12.4
@@ -324,8 +324,8 @@ importers:
         specifier: 65.4.3
         version: 65.4.3(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)
       '@pob/pretty-pkg':
-        specifier: 14.0.0
-        version: 14.0.0
+        specifier: workspace:*
+        version: link:../../@pob/pretty-pkg
       '@pob/rollup-esbuild':
         specifier: workspace:*
         version: link:../../@pob/rollup-esbuild
@@ -1792,34 +1792,6 @@ packages:
     peerDependenciesMeta:
       typescript:
         optional: true
-
-  '@pob/pretty-pkg@14.0.0':
-    resolution: {integrity: sha512-8E7/soItD55gr1jKcDV0m3NeEO/w7lMj2HC+MELKfPAeHGjOgv1IhmP6hw0gIGyePLNpixXOn6HBPQq3km04yw==}
-    engines: {node: '>=22.18.0'}
-    hasBin: true
-
-  '@pob/rollup@8.0.0':
-    resolution: {integrity: sha512-dWRp2pAWNUVxo082vzGNKcDIEye0aH2gdGCp1vCO8NoUD0MfLY61pBNDpu7VB1YuNSq945cNpNN75Yph91xKbQ==}
-    engines: {node: '>=22.18.0'}
-    hasBin: true
-
-  '@pob/root@24.1.0':
-    resolution: {integrity: sha512-lvhTpV+b+LO7Z2T2r85cRpE/didylQVUMM+xOaz70iKjJKzkMOzLNvrP1LxrDeQ/9raap9sAiHD/pHK7nLDO3g==}
-    engines: {node: '>=22.18.0'}
-    hasBin: true
-
-  '@pob/sort-object@11.0.0':
-    resolution: {integrity: sha512-qP2zQgKw7ccCpD5uo5V5UgWn/oDeXGB9df3PsNVZz3orSycb4xT05cuzv05OUzwOxL56xeIfm+fxnnNxP0rflw==}
-    engines: {node: '>=22.18.0'}
-
-  '@pob/sort-pkg@13.0.0':
-    resolution: {integrity: sha512-EPFK29TrFCp1dBNYS8uX8iW6nATesfVtOLa4R/+dHL0Yd+0IhrbDzt0W750vMlPD+sQsLiwSM0jfS3V8H6YJlg==}
-    engines: {node: '>=22.18.0'}
-
-  '@pob/version@4.0.0':
-    resolution: {integrity: sha512-QDdwJNu46tzR+9oWftpuoVTkAyrm3XFf8nZSRdh4BIm588KJsxiC9vjZcO9IZLZW/YpMh+2uLd9BGKxpzSXoaQ==}
-    engines: {node: '>=24.14.1'}
-    hasBin: true
 
   '@rolldown/binding-android-arm64@1.0.2':
     resolution: {integrity: sha512-ZS4D1JPGn/MYQN/SYDWftIE/nVsM8j/AFOYEzAoOE2O3NktQOZru+/vYXGbR/qtdLdIfGCP0lcoJiYVzsEz+iQ==}
@@ -4451,10 +4423,6 @@ packages:
     resolution: {integrity: sha512-Nc3IT5yHzflTfbjgqWcCPpo7DaKy4FnpB0l/zCAW0Tc7jxAiuqSxHasntB3D7887LSrA93kDJ9IXovxJYxyLCA==}
     engines: {node: '>=4'}
 
-  pob-dependencies@24.0.0:
-    resolution: {integrity: sha512-twxmIxTOIgpfHhuEzqjuqePhjRroqUJ+QPOS2xupO+jUznVU7DbNjfKlAiOlbVloySjbB7Ggx4QWvbq7Uqkfpw==}
-    engines: {node: '>=22.18.0'}
-
   possible-typed-array-names@1.1.0:
     resolution: {integrity: sha512-/+5VFTchJDoVj3bhoqi6UeymcD00DAwb1nJwamzPvHEszJ4FpF6SNNbUbOS8yI56qHzdV8eK0qEfOSiodkTdxg==}
     engines: {node: '>= 0.4'}
@@ -6820,50 +6788,6 @@ snapshots:
       typescript: 6.0.3
     transitivePeerDependencies:
       - supports-color
-
-  '@pob/pretty-pkg@14.0.0':
-    dependencies:
-      oxfmt: 0.50.0
-    transitivePeerDependencies:
-      - svelte
-
-  '@pob/rollup@8.0.0':
-    dependencies:
-      rollup: 4.60.4
-
-  '@pob/root@24.1.0':
-    dependencies:
-      '@commitlint/format': 21.0.1
-      '@commitlint/lint': 21.0.1
-      '@commitlint/types': 21.0.1
-      '@pob/pretty-pkg': 14.0.0
-      '@pob/version': 4.0.0
-      conventional-changelog-conventionalcommits: 9.3.1
-      conventional-changelog-writer: 8.4.0
-      conventional-commits-parser: 6.4.0
-      json5: 2.2.3
-      lint-staged: 17.0.5
-      oxfmt: 0.50.0
-      pob-dependencies: 24.0.0
-      semver: 7.8.0
-    transitivePeerDependencies:
-      - svelte
-
-  '@pob/sort-object@11.0.0': {}
-
-  '@pob/sort-pkg@13.0.0':
-    dependencies:
-      '@pob/sort-object': 11.0.0
-
-  '@pob/version@4.0.0':
-    dependencies:
-      commander: 14.0.3
-      conventional-changelog-conventionalcommits: 9.3.1
-      conventional-changelog-preset-loader: 5.0.0
-      conventional-changelog-writer: 8.4.0
-      conventional-commits-parser: 6.4.0
-      nightingale: 18.1.0
-      semver: 7.8.0
 
   '@rolldown/binding-android-arm64@1.0.2':
     optional: true
@@ -9630,8 +9554,6 @@ snapshots:
       fsevents: 2.3.2
 
   pluralize@8.0.0: {}
-
-  pob-dependencies@24.0.0: {}
 
   possible-typed-array-names@1.1.0: {}
 

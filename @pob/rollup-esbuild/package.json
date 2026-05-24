@@ -40,7 +40,7 @@
     "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/rollup-esbuild'"
   },
   "dependencies": {
-    "@pob/rollup": "8.0.0",
+    "@pob/rollup": "workspace:*",
     "@rollup/plugin-node-resolve": "16.0.3",
     "@rollup/plugin-replace": "6.0.3",
     "@rollup/plugin-run": "3.1.0",

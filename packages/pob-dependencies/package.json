@@ -41,7 +41,7 @@
     "@pob/esbuild": "workspace:*",
     "@pob/eslint-config": "65.4.3",
     "@pob/eslint-config-typescript-react": "65.4.3",
-    "@pob/pretty-pkg": "14.0.0",
+    "@pob/pretty-pkg": "workspace:*",
     "@pob/rollup-esbuild": "workspace:*",
     "@pob/rollup-typescript": "workspace:*",
     "@types/jest": "30.0.0",
