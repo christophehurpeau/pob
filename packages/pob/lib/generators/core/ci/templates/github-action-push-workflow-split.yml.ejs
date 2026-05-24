@@ -94,7 +94,7 @@ jobs:
         run: <%= packageManager %> run build
 
       - name: Check nothing was forgotten before commit
-        run: <%= packageManager %> run repository-check-dirty
+        run: <%= packageManagerExec(packageManager, 'repository-check-dirty') %>
 
 <% } -%>
   lint:

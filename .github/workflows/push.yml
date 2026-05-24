@@ -47,7 +47,7 @@ jobs:
         run: pnpm run build
 
       - name: Check nothing was forgotten before commit
-        run: pnpm run repository-check-dirty
+        run: pnpm exec repository-check-dirty
 
   lint:
     runs-on: ubuntu-latest

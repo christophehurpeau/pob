@@ -25,7 +25,6 @@ const pm = process.env.POB_ROOT_FAKE_PM
 
 if (!pm) {
   console.error("Invalid pm, please run with postinstall hook!");
-  console.log(process.env);
   process.exit(1);
 }
 

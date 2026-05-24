@@ -36,9 +36,9 @@ export default class CorePnpmGenerator extends Generator {
 
     if (this.options.enable) {
       if (
-        !pkg.packageManager ||
-        !pkg.packageManager.startsWith("pnpm@") ||
-        lt(pkg.packageManager.slice("pnpm@".length), "11.0.0")
+        pkg.packageManager &&
+        (!pkg.packageManager.startsWith("pnpm@") ||
+          lt(pkg.packageManager.slice("pnpm@".length), "11.0.0"))
       ) {
         pkg.packageManager = "pnpm@11.0.0";
       }
@@ -66,7 +66,7 @@ export default class CorePnpmGenerator extends Generator {
       await writeAndFormat(
         this.fs,
         this.destinationPath("pnpm-workspace.yaml"),
-        yml.dump(sortObject(config), { lineWidth: 9999 }),
+        yml.dump(sortObject(config), { lineWidth: 9999, noCompatMode: true }),
       );
     } else {
       if (pkg.packageManager?.startsWith("pnpm@")) {
