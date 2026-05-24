@@ -61,7 +61,6 @@
     "@commitlint/format": "21.0.1",
     "@commitlint/lint": "21.0.1",
     "@commitlint/types": "21.0.1",
-    "@pob/pretty-pkg": "workspace:*",
     "@pob/version": "workspace:*",
     "conventional-changelog-conventionalcommits": "^9.1.0",
     "conventional-changelog-writer": "^8.2.0",

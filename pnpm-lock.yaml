@@ -126,9 +126,6 @@ importers:
       '@commitlint/types':
         specifier: 21.0.1
         version: 21.0.1
-      '@pob/pretty-pkg':
-        specifier: workspace:*
-        version: link:../pretty-pkg
       '@pob/version':
         specifier: workspace:*
         version: link:../version
