@@ -44,12 +44,12 @@
     "clean:build": "pob-esbuild-clean-out dist",
     "lint": "pnpm run lint:eslint",
     "lint:eslint": "pnpm run --dir '../..' eslint --quiet 'pob-examples/typescript-lib-rollup-esbuild'",
-    "prepare": "pob-root-postinstall",
     "test": "pnpm run --dir '../..' test -- 'pob-examples/typescript-lib-rollup-esbuild'",
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
   "devDependencies": {
     "@pob/rollup-esbuild": "workspace:*",
+    "@types/node": "24.12.4",
     "typescript": "6.0.3"
   },
   "browserslist": {
