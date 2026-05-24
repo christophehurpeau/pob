@@ -12,6 +12,7 @@
       "ESNext.Error",
       "ESNext.Iterator",
       "ESNext.Promise"
-    ]
+    ],
+    "allowImportingTsExtensions": true
   }
 }
