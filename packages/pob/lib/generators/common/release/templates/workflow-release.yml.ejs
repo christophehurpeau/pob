@@ -86,7 +86,7 @@ jobs:
 
       - name: New version (dry run)
         if: github.ref == 'refs/heads/main' && inputs.dry-run
-        run: <%= packageManager %> run pob-version --dry-run<% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %>
+        run: <%= packageManagerExec(packageManager, 'pob-version') %> --dry-run<% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %>
 
       - name: Configure Git user
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
@@ -97,7 +97,7 @@ jobs:
       - name: New version
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
-          <%= packageManager %> run pob-version <% if (enablePublish && packageManager === "bun") { %>--publish <% } %>--create-release=github <% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %> -m 'chore: release <%- isMonorepoIndependent ? '' : '%v ' %>[skip ci]<%- isMonorepoIndependent ? '\\n\\n%t' : '' %>'
+          <%= packageManagerExec(packageManager, 'pob-version') %> <% if (enablePublish && packageManager === "bun") { %>--publish <% } %>--create-release=github <% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %> -m 'chore: release <%- isMonorepoIndependent ? '' : '%v ' %>[skip ci]<%- isMonorepoIndependent ? '\\n\\n%t' : '' %>'
         env:
           POB_GIT_HOOKS: 0
           YARN_ENABLE_IMMUTABLE_INSTALLS: false

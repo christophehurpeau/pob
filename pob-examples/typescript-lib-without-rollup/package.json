@@ -28,7 +28,6 @@
     "clean": "yarn clean:build",
     "lint": "pnpm run lint:eslint",
     "lint:eslint": "pnpm run --dir '../..' eslint --quiet 'pob-examples/typescript-lib-without-rollup'",
-    "prepare": "pob-root-postinstall",
     "test": "pnpm run --dir '../..' test -- 'pob-examples/typescript-lib-without-rollup'",
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },

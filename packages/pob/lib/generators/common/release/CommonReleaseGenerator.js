@@ -1,7 +1,10 @@
 import Generator from "yeoman-generator";
 // import { latestLTS } from "../../../utils/nodeVersions.js";
 import * as packageUtils from "../../../utils/package.js";
-import { packageManagerRun } from "../../../utils/packageManagerUtils.js";
+import {
+  packageManagerExec,
+  packageManagerRun,
+} from "../../../utils/packageManagerUtils.js";
 
 export default class CommonReleaseGenerator extends Generator {
   constructor(args, opts) {
@@ -84,6 +87,7 @@ export default class CommonReleaseGenerator extends Generator {
             this.options.isMonorepo &&
             (!pkg.version || pkg.version === "0.0.0"),
           nodeLatestMajorVersion: 24, // TODO use latestLTS, when latest is updated to 24
+          packageManagerExec,
         },
       );
     } else {
