@@ -37,7 +37,7 @@ export default class PobAppGenerator extends Generator {
 
     this.option("packageManager", {
       type: String,
-      default: "yarn",
+      required: true,
       description: "yarn or npm",
     });
 
@@ -151,10 +151,6 @@ export default class PobAppGenerator extends Generator {
     }
     const srcDirectory =
       srcDirectoriesFromAppType[this.appConfig.type] || "src";
-    const packageManager =
-      inMonorepo && !inMonorepo.root
-        ? inMonorepo.pobMonorepoConfig.packageManager
-        : this.options.packageManager;
 
     if (this.appConfig.type === "pobpack") {
       throw new Error("pobpack is no longer supported.");
@@ -192,6 +188,7 @@ export default class PobAppGenerator extends Generator {
         fromPob: this.options.fromPob,
         srcDirectory,
         buildDirectory,
+        packageManager: this.options.packageManager,
       });
     }
 
@@ -282,7 +279,7 @@ export default class PobAppGenerator extends Generator {
       documentation: false,
       codecov: this.appConfig.codecov,
       ci: this.options.ci,
-      packageManager,
+      packageManager: this.options.packageManager,
       isApp: true,
       splitCIJobs: false,
       onlyLatestLTS: true,
@@ -306,7 +303,7 @@ export default class PobAppGenerator extends Generator {
       browser,
       // nextjs now supports src rootAsSrc: this.appConfig.type === 'next.js',
       enableSrcResolver: true,
-      packageManager,
+      packageManager: this.options.packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
       rootIgnorePaths: ignorePaths.join("\n"),
       srcDirectory,
@@ -324,13 +321,13 @@ export default class PobAppGenerator extends Generator {
       ci: this.options.ci,
       disableYarnGitCache: this.options.disableYarnGitCache,
       updateOnly: this.options.updateOnly,
-      packageManager,
+      packageManager: this.options.packageManager,
     });
 
     this.composeWith("pob:core:vscode", {
       root: !inMonorepo,
       monorepo: false,
-      packageManager,
+      packageManager: this.options.packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
       typescript,
       testing: this.appConfig.testing,

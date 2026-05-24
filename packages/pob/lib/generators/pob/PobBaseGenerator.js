@@ -140,20 +140,28 @@ export default class PobBaseGenerator extends Generator {
     this.config.set("project", this.projectConfig);
   }
 
+  getPackageManager() {
+    return inMonorepo && !inMonorepo.root
+      ? inMonorepo.rootPackageManager
+      : (this.projectConfig?.packageManager ?? "yarn");
+  }
+
   default() {
+    const packageManager = this.getPackageManager();
+
     this.composeWith("pob:core:bun", {
       type: this.projectConfig.type,
-      enable: this.isRoot && this.projectConfig.packageManager === "bun",
+      enable: this.isRoot && packageManager === "bun",
     });
 
     this.composeWith("pob:core:pnpm", {
       type: this.projectConfig.type,
-      enable: this.isRoot && this.projectConfig.packageManager === "pnpm",
+      enable: this.isRoot && packageManager === "pnpm",
     });
 
     this.composeWith("pob:core:yarn", {
       type: this.projectConfig.type,
-      enable: this.isRoot && this.projectConfig.packageManager === "yarn",
+      enable: this.isRoot && packageManager === "yarn",
       yarnNodeLinker: this.projectConfig.yarnNodeLinker,
       disableYarnGitCache: this.projectConfig.disableYarnGitCache !== false,
     });
@@ -165,20 +173,20 @@ export default class PobBaseGenerator extends Generator {
       inMonorepo: !!inMonorepo,
       isRoot: this.isRoot,
       packageType: this.projectConfig.type === "app" ? "module" : undefined,
-      packageManager: this.projectConfig.packageManager,
+      packageManager,
     });
 
     if (this.isMonorepo) {
       this.composeWith("pob:monorepo:workspaces", {
         force: this.options.force,
         isAppProject: this.projectConfig.type === "app",
-        packageManager: this.projectConfig.packageManager,
+        packageManager,
         disableYarnGitCache: this.projectConfig.disableYarnGitCache !== false,
       });
       this.composeWith("pob:monorepo:lerna", {
         force: this.options.force,
         isAppProject: this.projectConfig.type === "app",
-        packageManager: this.projectConfig.packageManager,
+        packageManager,
         disableYarnGitCache: this.projectConfig.disableYarnGitCache !== false,
       });
     }
@@ -241,7 +249,7 @@ export default class PobBaseGenerator extends Generator {
           updateOnly: this.options.updateOnly,
           disableYarnGitCache: this.projectConfig.disableYarnGitCache !== false,
           isAppProject: this.projectConfig.type === "app",
-          packageManager: this.projectConfig.packageManager,
+          packageManager,
           yarnNodeLinker: this.projectConfig.yarnNodeLinker,
           onlyLatestLTS,
         },
@@ -256,7 +264,7 @@ export default class PobBaseGenerator extends Generator {
               this.projectConfig.disableYarnGitCache !== false,
             updateOnly: this.options.updateOnly,
             fromPob: this.options.fromPob,
-            packageManager: this.projectConfig.packageManager,
+            packageManager,
             yarnNodeLinker: this.projectConfig.yarnNodeLinker,
             ci: this.projectConfig.ci,
           });
@@ -269,7 +277,7 @@ export default class PobBaseGenerator extends Generator {
               this.projectConfig.disableYarnGitCache !== false,
             updateOnly: this.options.updateOnly,
             fromPob: this.options.fromPob,
-            packageManager: this.projectConfig.packageManager,
+            packageManager,
             yarnNodeLinker: this.projectConfig.yarnNodeLinker,
             ci: this.projectConfig.ci,
           });
@@ -283,7 +291,7 @@ export default class PobBaseGenerator extends Generator {
   install() {
     if (this.options.fromPob) return;
 
-    switch (this.projectConfig.packageManager) {
+    switch (this.getPackageManager()) {
       case "npm":
         this.spawnCommandSync("npm", ["install"]);
         break;

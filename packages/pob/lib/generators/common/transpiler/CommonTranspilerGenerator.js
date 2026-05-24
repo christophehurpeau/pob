@@ -3,6 +3,7 @@ import semver from "semver";
 import Generator from "yeoman-generator";
 import { latestLTS, maintenanceLTS } from "../../../utils/nodeVersions.js";
 import * as packageUtils from "../../../utils/package.js";
+import { packageManagerRun } from "../../../utils/packageManagerUtils.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
 export default class CommonTranspilerGenerator extends Generator {
@@ -64,6 +65,12 @@ export default class CommonTranspilerGenerator extends Generator {
       required: false,
       default: false,
       description: "only latest lts",
+    });
+
+    this.option("packageManager", {
+      type: String,
+      required: true,
+      description: "Package manager",
     });
   }
 
@@ -165,13 +172,13 @@ export default class CommonTranspilerGenerator extends Generator {
       packageUtils.removeScripts(["watch"]);
       packageUtils.addOrRemoveScripts(pkg, bundler && bundler !== "tsc", {
         "clean:build": `${cleanCommand} ${this.options.buildDirectory}`,
-        clean: "yarn clean:build",
+        clean: packageManagerRun(this.options.packageManager, "clean:build"),
       });
 
       packageUtils.addOrRemoveScripts(pkg, bundler, {
         start: (() => {
           if (bundler && bundler.startsWith("rollup")) {
-            return "yarn clean:build && rollup --config rollup.config.mjs --watch";
+            return `${packageManagerRun(this.options.packageManager, "clean:build")} && rollup --config rollup.config.mjs --watch`;
           }
           if (bundler === "tsc") return "tsc --watch";
           if (bundler === "esbuild") return "pob-esbuild-watch";
@@ -187,7 +194,7 @@ export default class CommonTranspilerGenerator extends Generator {
     packageUtils.addOrRemoveScripts(pkg, bundler, {
       build: (() => {
         if (bundler && bundler.startsWith("rollup")) {
-          return "yarn clean:build && rollup --config rollup.config.mjs";
+          return `${packageManagerRun(this.options.packageManager, "clean:build")} && rollup --config rollup.config.mjs`;
         }
         if (bundler === "tsc") return "tsc";
         if (bundler === "esbuild") return "pob-esbuild-build";
@@ -203,9 +210,9 @@ export default class CommonTranspilerGenerator extends Generator {
 
     if (shouldBuildDefinitions) {
       if (pkg.scripts.build) {
-        pkg.scripts.build += " && yarn run build:definitions";
+        pkg.scripts.build += ` && ${packageManagerRun(this.options.packageManager, "build:definitions")}`;
       } else {
-        pkg.scripts.build = "yarn run build:definitions";
+        pkg.scripts.build = `${packageManagerRun(this.options.packageManager, "build:definitions")}`;
       }
     } else if (!this.options.isApp && !bundler && !withTypescript) {
       // check definitions, but also force lerna to execute build:definitions in right order
@@ -214,7 +221,10 @@ export default class CommonTranspilerGenerator extends Generator {
         packageUtils.addScripts(pkg, {
           "build:definitions":
             "tsc --lib esnext --noEmit --skipLibCheck ./lib/index.d.ts",
-          build: "yarn run build:definitions",
+          build: packageManagerRun(
+            this.options.packageManager,
+            "build:definitions",
+          ),
         });
       }
 
@@ -222,7 +232,10 @@ export default class CommonTranspilerGenerator extends Generator {
         packageUtils.addScripts(pkg, {
           "build:definitions":
             "tsc --lib esnext --noEmit --skipLibCheck ./lib/index.ts",
-          build: "yarn run build:definitions",
+          build: packageManagerRun(
+            this.options.packageManager,
+            "build:definitions",
+          ),
         });
       }
     }
@@ -786,7 +799,9 @@ export default class CommonTranspilerGenerator extends Generator {
 
   end() {
     if (this.bundler) {
-      this.spawnSync("yarn", ["run", "build"]);
+      this.spawnCommandSync(
+        packageManagerRun(this.options.packageManager, "build"),
+      );
     }
   }
 }

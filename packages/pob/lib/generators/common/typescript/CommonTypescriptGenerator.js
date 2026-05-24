@@ -208,6 +208,8 @@ export default class CommonTypescriptGenerator extends Generator {
       delete pkg.scripts.flow;
     }
 
+    console.log({ enableTypescript: this.options.enable });
+
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.options.enable ||
@@ -236,12 +238,6 @@ export default class CommonTypescriptGenerator extends Generator {
           yoConfig.pob.monorepo.typescript;
 
         if (monorepoComposite) {
-          packageUtils.addOrRemoveDevDependencies(
-            pkg,
-            inMonorepo.rootPackageManager === "yarn",
-            ["typescript"],
-          );
-
           const packageLocations = new Map(
             yoConfig.pob.monorepo.packageNames
               .filter(

@@ -18,9 +18,9 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn '../..' run eslint --quiet 'pob-examples/simple-lib'",
-    "test": "yarn '../..' run test -- 'pob-examples/simple-lib'"
+    "lint": "pnpm run lint:eslint",
+    "lint:eslint": "pnpm run --dir '../..' eslint --quiet 'pob-examples/simple-lib'",
+    "test": "pnpm run --dir '../..' test -- 'pob-examples/simple-lib'"
   },
   "engines": {
     "node": ">=22.18.0"

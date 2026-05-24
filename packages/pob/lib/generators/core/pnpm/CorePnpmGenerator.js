@@ -1,7 +1,17 @@
+import sortObject from "@pob/sort-object";
+import yml from "js-yaml";
 import { lt } from "semver";
 import Generator from "yeoman-generator";
-import * as packageUtils from "../../../utils/package.js";
 import { writeAndFormat } from "../../../utils/writeAndFormat.js";
+
+const minimumReleaseAgeExcludePackages = [
+  "@pob/*",
+  "pob-dependencies",
+  "alouette",
+  "alouette-icons",
+  "nightingale",
+  "nightingale-logger",
+];
 
 export default class CorePnpmGenerator extends Generator {
   constructor(args, opts) {
@@ -26,36 +36,44 @@ export default class CorePnpmGenerator extends Generator {
 
     if (this.options.enable) {
       if (
-        !pkg.packageManager ||
-        !pkg.packageManager.startsWith("pnpm@") ||
-        lt(pkg.packageManager.slice("pnpm@".length), "11.0.0")
+        pkg.packageManager &&
+        (!pkg.packageManager.startsWith("pnpm@") ||
+          lt(pkg.packageManager.slice("pnpm@".length), "11.0.0"))
       ) {
         pkg.packageManager = "pnpm@11.0.0";
       }
 
-      packageUtils.removeDevDependencies(pkg, ["pinst"]);
-      if (pkg.scripts?.prepack === "pinst --disable") {
-        delete pkg.scripts.prepack;
-      }
-      if (pkg.scripts?.postpack === "pinst --enable") {
-        delete pkg.scripts.postpack;
-      }
+      const configString = this.fs.read(
+        this.destinationPath("pnpm-workspace.yaml"),
+        { defaults: "" },
+      );
+      const config =
+        yml.load(configString, {
+          schema: yml.FAILSAFE_SCHEMA,
+          json: true,
+        }) || {};
 
-      const npmrcContent = `save-prefix=${this.options.type === "app" ? "" : "^"}\n`;
-      await writeAndFormat(this.fs, ".npmrc", npmrcContent);
+      if (pkg.workspaces) {
+        config.packages = pkg.workspaces;
+      } else {
+        delete config.packages;
+      }
+      config.savePrefix = this.options.type === "app" ? "" : "^";
+      config.minimumReleaseAge = 1440 * 3; // 3 days in minutes
+      config.minimumReleaseAgeExclude = minimumReleaseAgeExcludePackages;
+      config.dedupePeerDependents = true;
+
+      await writeAndFormat(
+        this.fs,
+        this.destinationPath("pnpm-workspace.yaml"),
+        yml.dump(sortObject(config), { lineWidth: 9999, noCompatMode: true }),
+      );
     } else {
       if (pkg.packageManager?.startsWith("pnpm@")) {
         delete pkg.packageManager;
       }
-      packageUtils.removeDevDependencies(pkg, ["pinst"]);
-      if (pkg.scripts?.prepack === "pinst --disable") {
-        delete pkg.scripts.prepack;
-      }
-      if (pkg.scripts?.postpack === "pinst --enable") {
-        delete pkg.scripts.postpack;
-      }
       this.fs.delete("pnpm-lock.yaml");
-      this.fs.delete(".npmrc");
+      this.fs.delete("pnpm-workspace.yaml");
     }
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);

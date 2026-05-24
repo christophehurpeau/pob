@@ -24,7 +24,6 @@ import CommonTranspilerGenerator from "./generators/common/transpiler/CommonTran
 import CommonTypescriptGenerator from "./generators/common/typescript/CommonTypescriptGenerator.js";
 import CoreBunGenerator from "./generators/core/bun/CoreBunGenerator.js";
 import CoreCIGenerator from "./generators/core/ci/CoreCIGenerator.js";
-import CorePnpmGenerator from "./generators/core/pnpm/CorePnpmGenerator.js";
 import CoreCleanGenerator from "./generators/core/clean/CoreCleanGenerator.js";
 import CoreEditorConfigGenerator from "./generators/core/editorconfig/CoreEditorConfigGenerator.js";
 import CoreGitGenerator from "./generators/core/git/CoreGitGenerator.js";
@@ -32,6 +31,7 @@ import CoreGitGithubGenerator from "./generators/core/git/generators/github/Core
 import CoreGitignoreGenerator from "./generators/core/gitignore/CoreGitignoreGenerator.js";
 import CoreNpmGenerator from "./generators/core/npm/CoreNpmGenerator.js";
 import CorePackageGenerator from "./generators/core/package/CorePackageGenerator.js";
+import CorePnpmGenerator from "./generators/core/pnpm/CorePnpmGenerator.js";
 import CoreRenovateGenerator from "./generators/core/renovate/CoreRenovateGenerator.js";
 import CoreSortPackageGenerator from "./generators/core/sort-package/CoreSortPackageGenerator.js";
 import CoreVSCodeGenerator from "./generators/core/vscode/CoreVSCodeGenerator.js";

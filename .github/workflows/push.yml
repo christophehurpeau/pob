@@ -10,18 +10,20 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Enable Corepack
-        run: corepack enable
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
 
       - uses: actions/setup-node@v6
         with:
           node-version: 24
 
       - name: Install Dependencies
-        run: yarn install --immutable
+        run: pnpm install --frozen-lockfile
 
       - name: Checks
-        run: yarn run checks
+        run: pnpm run checks
 
   build:
     runs-on: ubuntu-latest
@@ -29,21 +31,23 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Enable Corepack
-        run: corepack enable
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
 
       - uses: actions/setup-node@v6
         with:
           node-version: 24
 
       - name: Install Dependencies
-        run: yarn install --immutable
+        run: pnpm install --frozen-lockfile
 
       - name: Build
-        run: yarn run build
+        run: pnpm run build
 
       - name: Check nothing was forgotten before commit
-        run: yarn run repository-check-dirty
+        run: pnpm exec repository-check-dirty
 
   lint:
     runs-on: ubuntu-latest
@@ -51,24 +55,26 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Enable Corepack
-        run: corepack enable
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
 
       - uses: actions/setup-node@v6
         with:
           node-version: 24
 
       - name: Install Dependencies
-        run: yarn install --immutable
+        run: pnpm install --frozen-lockfile
 
       - name: Format
-        run: yarn run format:check
+        run: pnpm run format:check
 
       - name: Typescript
-        run: yarn run tsc
+        run: pnpm run tsc
 
       - name: Eslint
-        run: yarn run lint:eslint
+        run: pnpm run lint:eslint
 
   test:
     runs-on: ubuntu-latest
@@ -80,15 +86,17 @@ jobs:
     steps:
       - uses: actions/checkout@v6
 
-      - name: Enable Corepack
-        run: corepack enable
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
 
       - uses: actions/setup-node@v6
         with:
           node-version: ${{ matrix.node-version }}
 
       - name: Install Dependencies
-        run: yarn install --immutable
+        run: pnpm install --frozen-lockfile
 
       - name: Test
-        run: yarn run test
+        run: pnpm run test

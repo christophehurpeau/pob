@@ -36,8 +36,10 @@ jobs:
           fetch-depth: 0
           fetch-tags: true
 
-      - name: Enable Corepack
-        run: corepack enable
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 11
 
       - uses: actions/setup-node@v6
         with:
@@ -52,13 +54,12 @@ jobs:
             echo "No git tags found"
             exit 1
           fi
-
       - name: Install Dependencies
-        run: yarn install --immutable
+        run: pnpm install --frozen-lockfile
 
       - name: New version (dry run)
         if: github.ref == 'refs/heads/main' && inputs.dry-run
-        run: yarn run pob-version --dry-run --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}
+        run: pnpm run pob-version --dry-run --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}
 
       - name: Configure Git user
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
@@ -69,7 +70,7 @@ jobs:
       - name: New version
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
-          yarn run pob-version --create-release=github  --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }} -m 'chore: release [skip ci]\n\n%t'
+          pnpm run pob-version --create-release=github  --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }} -m 'chore: release [skip ci]\n\n%t'
         env:
           POB_GIT_HOOKS: 0
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
@@ -78,4 +79,4 @@ jobs:
       - name: Publish to npm
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
-          yarn workspaces foreach --all --parallel --no-private npm publish --tolerate-republish
+          pnpm -r publish --no-git-checks

@@ -16,6 +16,22 @@ export const packageManagerRun = (packageManager, script) => {
   }
 };
 
+export const packageManagerExec = (packageManager, command) => {
+  switch (packageManager) {
+    case undefined:
+    case "yarn":
+      return `yarn ${command}`;
+    case "npm":
+      return `npx ${command}`;
+    case "bun":
+      return `bun run ${command}`;
+    case "pnpm":
+      return `pnpm exec ${command}`;
+    default:
+      throw new Error(`Unsupported package manager: ${packageManager}`);
+  }
+};
+
 export const packageManagerRunWithCwd = (packageManager, cwd, script) => {
   switch (packageManager) {
     case undefined:

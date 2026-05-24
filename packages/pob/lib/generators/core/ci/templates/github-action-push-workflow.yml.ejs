@@ -84,7 +84,7 @@ jobs:
 
       - name: Check nothing was forgotten before commit
         if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
-        run: <%= packageManager === 'npm' ? 'npx' : packageManager + ' run' %> repository-check-dirty
+        run: <%= packageManagerExec(packageManager, 'repository-check-dirty') %>
 <% } -%>
 <% if (codecov) { -%>
 

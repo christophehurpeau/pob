@@ -26,15 +26,17 @@
   "scripts": {
     "build": "tsc",
     "clean": "yarn clean:build",
-    "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn '../..' run eslint --quiet 'pob-examples/typescript-lib-without-rollup'",
-    "test": "yarn '../..' run test -- 'pob-examples/typescript-lib-without-rollup'",
+    "lint": "pnpm run lint:eslint",
+    "lint:eslint": "pnpm run --dir '../..' eslint --quiet 'pob-examples/typescript-lib-without-rollup'",
+    "prepare": "pob-root-postinstall",
+    "test": "pnpm run --dir '../..' test -- 'pob-examples/typescript-lib-without-rollup'",
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
   "dependencies": {
     "tslib": "^2.8.1"
   },
   "devDependencies": {
+    "@types/node": "24.12.4",
     "typescript": "6.0.3"
   },
   "engines": {

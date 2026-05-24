@@ -17,9 +17,14 @@
     "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "packages/yarn-version"
   },
-  "bin": "./yarn-version.mjs",
+  "bin": "./bin/yarn-version.mjs",
+  "files": [
+    "src",
+    "dist",
+    "bin"
+  ],
   "type": "module",
-  "main": "./yarn-version.mjs",
+  "main": "./lib/index.js",
   "exports": {
     "./package.json": "./package.json",
     ".": {
@@ -30,12 +35,9 @@
     }
   },
   "scripts": {
-    "build": "yarn clean:build && rollup --config rollup.config.mjs",
-    "clean": "yarn clean:build",
-    "clean:build": "pob-esbuild-clean-out dist",
-    "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn ../.. run eslint --quiet packages/yarn-version",
-    "start": "yarn clean:build && rollup --config rollup.config.mjs --watch"
+    "lint": "pnpm run lint:eslint",
+    "lint:eslint": "pnpm run --dir '../..' eslint --quiet 'packages/yarn-version'",
+    "test": "pnpm run --dir '../..' test -- 'packages/yarn-version'"
   },
   "dependencies": {
     "@pob/version": "workspace:*"
@@ -44,7 +46,7 @@
     "@types/node": "24.12.4"
   },
   "engines": {
-    "node": ">=24.11.0"
+    "node": ">=24.14.1"
   },
   "pob": {}
 }

@@ -41,13 +41,14 @@
     "access": "public"
   },
   "scripts": {
-    "build": "yarn clean:build && rollup --config rollup.config.mjs",
-    "clean": "yarn clean:build",
+    "build": "pnpm run clean:build && rollup --config rollup.config.mjs",
+    "clean": "pnpm run clean:build",
     "clean:build": "pob-esbuild-clean-out dist",
-    "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn '../..' run eslint --quiet '@pob/version'",
-    "start": "yarn clean:build && rollup --config rollup.config.mjs --watch",
-    "test": "yarn '../..' run test -- '@pob/version'"
+    "lint": "pnpm run lint:eslint",
+    "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/version'",
+    "prepare": "pob-root-postinstall",
+    "start": "pnpm run clean:build && rollup --config rollup.config.mjs --watch",
+    "test": "pnpm run --dir '../..' test -- '@pob/version'"
   },
   "dependencies": {
     "commander": "14.0.3",
@@ -59,7 +60,7 @@
     "semver": "7.8.0"
   },
   "devDependencies": {
-    "@pob/rollup-esbuild": "9.0.0",
+    "@pob/rollup-esbuild": "workspace:*",
     "@types/node": "24.12.4",
     "@types/semver": "7.7.1",
     "type-fest": "5.6.0",

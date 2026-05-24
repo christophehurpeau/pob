@@ -2,6 +2,10 @@ import fs from "node:fs";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import { latestLTS, maintenanceLTS } from "../../../utils/nodeVersions.js";
+import {
+  packageManagerExec,
+  packageManagerRun,
+} from "../../../utils/packageManagerUtils.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
 export const ciContexts = [];
@@ -140,6 +144,8 @@ export default class CoreCIGenerator extends Generator {
             inMonorepo.pobConfig?.project?.type === "lib",
           nodeLatestMajorVersion: latestLTS,
           nodeMaintenanceMajorVersion: maintenanceLTS,
+          packageManagerRun,
+          packageManagerExec,
         },
       );
 

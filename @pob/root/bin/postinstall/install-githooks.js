@@ -89,6 +89,7 @@ export default function installGitHooks({ pkg, pm }) {
 
   const {
     lockfile,
+    pmRun,
     pmExec,
     installOnDiffCommand,
     beforeDiffCommand = "",
@@ -148,7 +149,7 @@ fi`;
       }
       return "test";
     };
-    prePushHook.push(`${pmExec} ${getTestCommand()}`);
+    prePushHook.push(`${pmRun} ${getTestCommand()}`);
   }
 
   if (prePushHook.length > 0) {

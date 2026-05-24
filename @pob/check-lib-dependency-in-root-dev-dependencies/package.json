@@ -27,8 +27,8 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn '../..' run eslint --quiet '@pob/check-lib-dependency-in-root-dev-dependencies'"
+    "lint": "pnpm run lint:eslint",
+    "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/check-lib-dependency-in-root-dev-dependencies'"
   },
   "engines": {
     "node": ">=22.18.0"

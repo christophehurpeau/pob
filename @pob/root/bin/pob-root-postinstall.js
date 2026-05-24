@@ -28,9 +28,14 @@ if (!pm) {
   process.exit(1);
 }
 
-if (pm.name !== "yarn" && pm.name !== "npm" && pm.name !== "bun") {
+if (
+  pm.name !== "yarn" &&
+  pm.name !== "npm" &&
+  pm.name !== "bun" &&
+  pm.name !== "pnpm"
+) {
   console.error(
-    `Package manager not supported: ${pm.name}. Please run with yarn or npm!`,
+    `Package manager not supported: ${pm.name}. Please run with yarn, bun, npm or pnpm!`,
   );
   process.exit(1);
 }

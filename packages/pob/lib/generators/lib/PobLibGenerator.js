@@ -23,7 +23,7 @@ export default class PobLibGenerator extends Generator {
 
     this.option("packageManager", {
       type: String,
-      default: "yarn",
+      required: true,
       description: "yarn, bun or npm",
     });
 
@@ -252,12 +252,14 @@ export default class PobLibGenerator extends Generator {
       fromPob: this.options.fromPob,
       onlyLatestLTS: this.onlyLatestLTS,
     });
+
     this.composeWith("pob:common:transpiler", {
       updateOnly: this.options.updateOnly,
       testing: !!this.pobjson.testing,
       documentation: !!this.pobjson.documentation,
       fromPob: this.options.fromPob,
       onlyLatestLTS: this.onlyLatestLTS,
+      packageManager: this.options.packageManager,
     });
   }
 
@@ -270,14 +272,14 @@ export default class PobLibGenerator extends Generator {
         pkg.pob.envs) ||
       [];
 
-    const packageManager =
-      inMonorepo && !inMonorepo.root
-        ? inMonorepo.rootPackageManager
-        : this.options.packageManager;
+    const packageManager = this.options.packageManager;
 
     const withBabel = babelEnvs.length > 0;
     const withTypescript =
-      withBabel || pkg.pob.typescript === true || pkg.pob.bundler === "tsc";
+      withBabel ||
+      pkg.pob.typescript === true ||
+      pkg.pob.bundler === "tsc" ||
+      pkg.pob.bundler === "rollup-esbuild";
     const jsx = (withBabel || withTypescript) && pkg.pob.jsx === true;
     const browser = pkg.pob.envs?.some((env) => env.target === "browser");
 
