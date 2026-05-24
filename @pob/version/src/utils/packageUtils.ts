@@ -87,6 +87,7 @@ export const findRootWorkspace = async (
       isAccessible(path.join(currentPath, ".yarnrc.yml")),
       isAccessible(path.join(currentPath, "yarn.lock")),
       isAccessible(path.join(currentPath, "bun.lock")),
+      isAccessible(path.join(currentPath, "pnpm-lock.yaml")),
     ]);
     if (isRootIfOneOfThesePathsExists.some(Boolean)) {
       return createWorkspace(currentPath);
