@@ -46,6 +46,22 @@ export default async function installVscodeTasks({ pkg }) {
   // filter all npm tasks, we will recreate them right after
   const tasks = existingTasks.filter((task) => task.type !== "npm");
 
+  // add git tasks
+
+  // Git main
+  if (tasks.every((task) => task.label !== "git: main")) {
+    tasks.unshift({
+      label: "git: main",
+      type: "shell",
+      command: "git main",
+      group: { kind: "none" },
+      // eslint-disable-next-line no-template-curly-in-string
+      options: { cwd: "${workspaceFolder}" },
+      presentation: { close: true, panel: "dedicated" },
+      problemMatcher: [],
+    });
+  }
+
   if (pkg.scripts) {
     const scriptNames = Object.keys(pkg.scripts);
     Object.entries(pkg.scripts).forEach(([scriptName, scriptCommand]) => {
