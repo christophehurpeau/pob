@@ -43,8 +43,10 @@ export default async function installVscodeTasks({ pkg }) {
   const existingConfig = readJSON5(".vscode/tasks.json");
   const existingTasks = existingConfig?.tasks || [];
 
-  // filter all npm tasks, we will recreate them right after
-  const tasks = existingTasks.filter((task) => task.type !== "npm");
+  // filter all npm tasks (and groups we create), we will recreate them right after
+  const tasks = existingTasks.filter(
+    (task) => task.type !== "npm" && task.label !== "lint",
+  );
 
   // add git tasks
 
