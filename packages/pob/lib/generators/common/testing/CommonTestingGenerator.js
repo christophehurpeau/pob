@@ -317,17 +317,17 @@ export default class CommonTestingGenerator extends Generator {
       packageUtils.addDevDependencies(pkg, ["vite"]);
     }
 
+    packageUtils.removeScripts(["generate:test-coverage"]);
+
     if (!this.options.enable) {
       // if (inMonorepo) {
       //   if (pkg.scripts.test === 'echo "No tests"') {
       //     delete pkg.scripts.test;
       //   }
-      //   delete pkg.scripts['generate:test-coverage'];
       // }
       packageUtils.removeScripts([
         "test",
         "test:coverage",
-        "generate:test-coverage",
         "test:watch",
         "test:coverage",
         "test:coverage:json",
@@ -395,7 +395,6 @@ export default class CommonTestingGenerator extends Generator {
 
           if (globalTesting) {
             if (pkg.scripts) {
-              delete pkg.scripts["generate:test-coverage"];
               delete pkg.scripts["test:watch"];
               delete pkg.scripts["test:coverage"];
             }
