@@ -200,7 +200,8 @@ export default class CommonFormatLintGenerator extends Generator {
         });
       }
 
-      this.fs.copyTpl(
+      copyAndFormatTpl(
+        this.fs,
         this.templatePath("oxfmtrc.jsonc.ejs"),
         this.destinationPath(".oxfmtrc.jsonc"),
         {
