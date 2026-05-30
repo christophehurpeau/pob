@@ -99,6 +99,8 @@ jobs:
         with:
           fail_ci_if_error: true
           token: ${{ secrets.CODECOV_TOKEN }}
+          files: ./coverage/coverage-final.json
+          disable_search: true
         if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.') && github.actor != 'dependabot[bot]'
 <% } else if (testing) { -%>
 
