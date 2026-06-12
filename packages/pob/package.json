@@ -40,7 +40,7 @@
     "@pob/eslint-config-typescript-react": "65.4.3",
     "@pob/sort-object": "workspace:*",
     "@pob/sort-pkg": "workspace:*",
-    "@types/inquirer": "9.0.9",
+    "@types/inquirer": "9.0.10",
     "@yeoman/adapter": "4.0.2",
     "@yeoman/types": "1.11.1",
     "eslint": "10.4.0",
