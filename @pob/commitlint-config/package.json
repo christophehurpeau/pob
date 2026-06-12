@@ -13,6 +13,9 @@
     "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "@pob/commitlint-config"
   },
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
   "files": [
     "lib"
   ],
