@@ -37,14 +37,14 @@
     "@pob/rollup-esbuild": "workspace:*",
     "@pob/root": "workspace:*",
     "@pob/version": "workspace:*",
-    "@vitest/coverage-v8": "4.1.7",
+    "@vitest/coverage-v8": "4.1.8",
     "check-package-dependencies": "11.1.1",
     "eslint": "10.4.0",
     "oxfmt": "0.51.0",
     "react": "19.2.6",
     "typescript": "6.0.3",
     "vite": "8.0.14",
-    "vitest": "4.1.7"
+    "vitest": "4.1.8"
   },
   "commitlint": {
     "extends": [
