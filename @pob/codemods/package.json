@@ -4,6 +4,9 @@
   "description": "codemods for pob",
   "keywords": [],
   "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
   "license": "UNLICENSED",
   "author": "Christophe Hurpeau <302891+christophehurpeau@users.noreply.github.com> (https://christophe.hurpeau.com)",
   "repository": {

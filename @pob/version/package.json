@@ -11,6 +11,9 @@
     "yarn"
   ],
   "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
   "license": "MIT",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
   "repository": {
@@ -47,7 +50,8 @@
     "lint": "pnpm run lint:eslint",
     "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/version'",
     "start": "pnpm run clean:build && rollup --config rollup.config.mjs --watch",
-    "test": "pnpm run --dir '../..' test -- '@pob/version'"
+    "test": "pnpm run --dir '../..' test -- '@pob/version'",
+    "tsc": "tsc"
   },
   "dependencies": {
     "commander": "14.0.3",

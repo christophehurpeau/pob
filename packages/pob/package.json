@@ -32,7 +32,8 @@
     "build": "pnpm run build:definitions",
     "build:definitions": "tsc -p tsconfig.json",
     "lint": "pnpm run lint:eslint",
-    "lint:eslint": "pnpm run --dir '../..' eslint --quiet 'packages/pob'"
+    "lint:eslint": "pnpm run --dir '../..' eslint --quiet 'packages/pob'",
+    "tsc": "tsc"
   },
   "dependencies": {
     "@pob/eslint-config": "65.4.3",

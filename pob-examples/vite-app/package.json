@@ -21,7 +21,8 @@
     "lint:eslint": "pnpm run --dir '../..' eslint --quiet 'pob-examples/vite-app'",
     "serve": "vite preview",
     "start": "vite",
-    "test": "yarn '../..' run test -- 'pob-examples/vite-app'"
+    "test": "yarn '../..' run test -- 'pob-examples/vite-app'",
+    "tsc": "tsc"
   },
   "dependencies": {
     "example-typescript-lib-rollup-esbuild": "workspace:*"
