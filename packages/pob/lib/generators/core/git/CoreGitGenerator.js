@@ -131,7 +131,7 @@ export default class CoreGitGenerator extends Generator {
     if (!pkg.homepage && this.gitHostAccount) {
       pkg.homepage = `https://${this.gitHost}.com/${this.gitHostAccount}/${repoName}`;
     }
-    if (!pkg.private && this.gitHostAccount) {
+    if (this.gitHostAccount) {
       pkg.bugs = {
         url: `https://${this.gitHost}.com/${this.gitHostAccount}/${repoName}/issues`,
       };
