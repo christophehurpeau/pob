@@ -50,7 +50,7 @@
   },
   "devDependencies": {
     "@pob/rollup-esbuild": "workspace:*",
-    "@types/node": "24.12.4",
+    "@types/node": "24.13.2",
     "typescript": "6.0.3"
   },
   "browserslist": {
