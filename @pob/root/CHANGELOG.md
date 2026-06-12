@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@24.2.1...@pob/root@24.3.0) (2026-06-12)
+
+### Features
+
+* add allowImportingTsExtensions in node 24 tsconfig
+* add git main task
+
+### Bug Fixes
+
+* **deps:** update commitlint monorepo to v21.0.2 ([#2765](https://github.com/christophehurpeau/pob/issues/2765))
+* **deps:** update dependency lint-staged to v17.0.7 ([#2767](https://github.com/christophehurpeau/pob/issues/2767))
+* exclude lint tasks from npm tasks filtering in VSCode tasks setup
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [24.2.1](https://github.com/christophehurpeau/pob/compare/@pob/root@24.2.0...@pob/root@24.2.1) (2026-05-24)
 
 ### Bug Fixes

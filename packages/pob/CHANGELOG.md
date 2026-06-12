@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.3.0](https://github.com/christophehurpeau/pob/compare/pob@35.2.1...pob@35.3.0) (2026-06-12)
+
+### Features
+
+* automate bugs field
+
+### Bug Fixes
+
+* add coverage file and disable search for Codecov results
+* always remove script generate:test-coverage
+* always set bugs field
+* **deps:** update dependency semver to v7.8.1 ([#2760](https://github.com/christophehurpeau/pob/issues/2760))
+* refactor template copying to use copyAndFormatTpl function
+
+Version bump for dependency: @pob/sort-object
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [35.2.1](https://github.com/christophehurpeau/pob/compare/pob@35.2.0...pob@35.2.1) (2026-05-24)
 
 ### Bug Fixes

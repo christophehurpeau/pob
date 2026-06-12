@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.1.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@24.1.0...pob-dependencies@24.1.1) (2026-06-12)
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v7.8.1 ([#2760](https://github.com/christophehurpeau/pob/issues/2760))
+
+Version bump for dependency: @pob/esbuild
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: @pob/rollup-typescript
+Version bump for dependency: pob-babel
+
+
 ## [24.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@24.0.0...pob-dependencies@24.1.0) (2026-05-24)
 
 ### Features

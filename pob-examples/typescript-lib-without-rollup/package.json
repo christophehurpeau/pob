@@ -1,6 +1,6 @@
 {
   "name": "example-typescript-lib-without-rollup",
-  "version": "0.32.0",
+  "version": "0.32.1",
   "private": true,
   "homepage": "https://github.com/christophehurpeau/pob",
   "license": "ISC",
