@@ -206,6 +206,8 @@ export default class CorePackageGenerator extends Generator {
         directory: process.cwd().slice(inMonorepo.rootPath.length + 1),
       };
       pkg.homepage = rootMonorepoPkg.homepage;
+      if (pkg.private) delete pkg.bugs;
+      else if (rootMonorepoPkg.bugs) pkg.bugs = rootMonorepoPkg.bugs;
 
       if (this.fs.exists(this.destinationPath("yarn.lock"))) {
         fs.unlinkSync(this.destinationPath("yarn.lock"));
@@ -214,6 +216,7 @@ export default class CorePackageGenerator extends Generator {
         fs.unlinkSync(this.destinationPath("pnpm-lock.yaml"));
       }
     }
+
     if (this.fs.exists(this.destinationPath("yarn-error.log"))) {
       fs.unlinkSync(this.destinationPath("yarn-error.log"));
     }
