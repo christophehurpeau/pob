@@ -191,6 +191,8 @@ export default class CoreYarnGenerator extends Generator {
         "alouette-icons",
         "nightingale",
         "nightingale-logger",
+        "nightingale-levels",
+        "nightingale-types",
       ];
 
       if (config.yarnPath) {
