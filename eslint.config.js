@@ -1,4 +1,5 @@
 import pobConfig, { apply, tsExtensions } from "@pob/eslint-config";
+import checkPackages from "check-package-dependencies/eslint-plugin";
 
 const { configs } = pobConfig();
 
@@ -6,6 +7,7 @@ export default [
   {
     ignores: ["**/.zed/**"],
   },
+  checkPackages.configs.recommended,
   ...configs.node,
   {
     ignores: [
