@@ -33,7 +33,7 @@
     "watch": "pnpm run clean:build && rollup --config rollup.config.mjs --watch"
   },
   "devDependencies": {
-    "@pob/eslint-config": "65.4.3",
+    "@pob/eslint-config": "65.5.0",
     "@pob/rollup-esbuild": "workspace:*",
     "@pob/root": "workspace:*",
     "@pob/version": "workspace:*",
