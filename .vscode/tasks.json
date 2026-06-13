@@ -4,9 +4,13 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "lint",
-      "group": "lint",
-      "dependsOn": ["lint:eslint", "lint:prettier", "lint:prettier:fix", "tsc"]
+      "label": "git: main",
+      "type": "shell",
+      "command": "git main",
+      "group": { "kind": "none" },
+      "options": { "cwd": "${workspaceFolder}" },
+      "presentation": { "close": true, "panel": "dedicated" },
+      "problemMatcher": []
     },
     {
       "label": "build",
@@ -17,7 +21,8 @@
       "presentation": {
         "panel": "dedicated",
         "group": "build",
-        "clear": true
+        "clear": true,
+        "isBackground": false
       }
     },
     {
@@ -29,7 +34,8 @@
       "presentation": {
         "panel": "dedicated",
         "group": "build",
-        "clear": true
+        "clear": true,
+        "isBackground": false
       }
     },
     {
@@ -39,7 +45,8 @@
       "script": "checks",
       "presentation": {
         "panel": "dedicated",
-        "clear": true
+        "clear": true,
+        "isBackground": false
       }
     },
     {
@@ -49,48 +56,57 @@
       "script": "clean:build",
       "presentation": {
         "panel": "dedicated",
-        "clear": true
+        "clear": true,
+        "isBackground": false
       }
     },
     {
-      "label": "lint",
-      "group": "lint",
-      "dependsOn": ["lint:eslint", "lint:prettier", "tsc"]
+      "label": "format",
+      "problemMatcher": [],
+      "type": "npm",
+      "script": "format",
+      "presentation": {
+        "panel": "dedicated",
+        "clear": true,
+        "isBackground": false
+      }
     },
+    {
+      "label": "format:check",
+      "problemMatcher": [],
+      "type": "npm",
+      "script": "format:check",
+      "presentation": {
+        "panel": "dedicated",
+        "clear": true,
+        "isBackground": false
+      }
+    },
+    { "label": "lint", "group": "test", "dependsOn": ["lint:eslint", "tsc"] },
     {
       "label": "lint:eslint",
       "problemMatcher": ["$eslint-stylish"],
       "type": "npm",
       "script": "lint:eslint",
-      "group": "lint",
+      "group": "test",
       "presentation": {
+        "close": true,
+        "revealProblems": "onProblem",
         "panel": "dedicated",
-        "group": "lint",
-        "clear": true
+        "group": "test",
+        "clear": true,
+        "isBackground": false
       }
     },
     {
-      "label": "lint:prettier",
+      "label": "prepare",
       "problemMatcher": [],
       "type": "npm",
-      "script": "lint:prettier",
-      "group": "lint",
+      "script": "prepare",
       "presentation": {
         "panel": "dedicated",
-        "group": "lint",
-        "clear": true
-      }
-    },
-    {
-      "label": "lint:prettier:fix",
-      "problemMatcher": [],
-      "type": "npm",
-      "script": "lint:prettier:fix",
-      "group": "lint",
-      "presentation": {
-        "panel": "dedicated",
-        "group": "lint",
-        "clear": true
+        "clear": true,
+        "isBackground": false
       }
     },
     {
@@ -102,7 +118,55 @@
       "presentation": {
         "panel": "dedicated",
         "group": "test",
-        "clear": true
+        "clear": true,
+        "isBackground": false
+      }
+    },
+    {
+      "label": "test:coverage",
+      "problemMatcher": [],
+      "type": "npm",
+      "script": "test:coverage",
+      "group": "test",
+      "presentation": {
+        "panel": "dedicated",
+        "group": "test",
+        "clear": true,
+        "isBackground": false
+      }
+    },
+    {
+      "label": "test:coverage:json",
+      "problemMatcher": [],
+      "type": "npm",
+      "script": "test:coverage:json",
+      "group": "test",
+      "presentation": {
+        "panel": "dedicated",
+        "group": "test",
+        "clear": true,
+        "isBackground": false
+      }
+    },
+    {
+      "label": "test:watch",
+      "problemMatcher": {
+        "owner": "vitest-watch",
+        "pattern": { "regexp": ".*" },
+        "background": {
+          "activeOnStart": true,
+          "beginsPattern": "RERUN",
+          "endsPattern": "Waiting for file changes"
+        }
+      },
+      "type": "npm",
+      "script": "test:watch",
+      "group": "test",
+      "presentation": {
+        "panel": "dedicated",
+        "group": "test",
+        "clear": true,
+        "isBackground": true
       }
     },
     {
@@ -110,11 +174,14 @@
       "problemMatcher": ["$tsc"],
       "type": "npm",
       "script": "tsc",
-      "group": "lint",
+      "group": "test",
       "presentation": {
+        "close": true,
+        "revealProblems": "onProblem",
         "panel": "dedicated",
-        "group": "lint",
-        "clear": true
+        "group": "test",
+        "clear": true,
+        "isBackground": false
       }
     },
     {
@@ -124,7 +191,8 @@
       "script": "watch",
       "presentation": {
         "panel": "dedicated",
-        "clear": true
+        "clear": true,
+        "isBackground": false
       },
       "isBackground": true
     }
