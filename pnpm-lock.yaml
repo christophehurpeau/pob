@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@pob/eslint-config':
-        specifier: 65.4.3
-        version: 65.4.3(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)
+        specifier: 65.5.0
+        version: 65.5.0(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)
       '@pob/rollup-esbuild':
         specifier: workspace:*
         version: link:@pob/rollup-esbuild
@@ -207,11 +207,11 @@ importers:
   packages/pob:
     dependencies:
       '@pob/eslint-config':
-        specifier: 65.4.3
-        version: 65.4.3(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)
+        specifier: 65.5.0
+        version: 65.5.0(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)
       '@pob/eslint-config-typescript-react':
-        specifier: 65.4.3
-        version: 65.4.3(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)
+        specifier: 65.5.0
+        version: 65.5.0(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)
       '@pob/sort-object':
         specifier: workspace:*
         version: link:../../@pob/sort-object
@@ -315,11 +315,11 @@ importers:
         specifier: workspace:*
         version: link:../../@pob/esbuild
       '@pob/eslint-config':
-        specifier: 65.4.3
-        version: 65.4.3(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)
+        specifier: 65.5.0
+        version: 65.5.0(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)
       '@pob/eslint-config-typescript-react':
-        specifier: 65.4.3
-        version: 65.4.3(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)
+        specifier: 65.5.0
+        version: 65.5.0(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)
       '@pob/pretty-pkg':
         specifier: workspace:*
         version: link:../../@pob/pretty-pkg
@@ -590,10 +590,6 @@ packages:
 
   '@babel/helper-string-parser@7.29.7':
     resolution: {integrity: sha512-Pb5ijPrZ89GDH8223L4UP8i6QApWxs04RbPQJTeWDV0/keR2E36MeKnyr6LYmUUvqRRI+Iv87SuF1W6ErINzYw==}
-    engines: {node: '>=6.9.0'}
-
-  '@babel/helper-validator-identifier@7.28.5':
-    resolution: {integrity: sha512-qSs4ifwzKJSV39ucNjsvc6WVHs6b7S03sOh2OcHF9UHfVPqWWALUsNUVzhSBiItjRZoLHx7nIarVjqKVusUZ1Q==}
     engines: {node: '>=6.9.0'}
 
   '@babel/helper-validator-identifier@7.29.7':
@@ -1904,15 +1900,15 @@ packages:
     resolution: {integrity: sha512-h104Kh26rR8tm+a3Qkc5S4VLYint3FE48as7+/5oCEcKR2idC/pF1G6AhIXKI+eHPJa/3J9i5z0Al47IeGHPkA==}
     engines: {node: '>=12'}
 
-  '@pob/eslint-config-typescript-react@65.4.3':
-    resolution: {integrity: sha512-kla33fubNV0DWBd98U9tPlGPqyRqYV6nLCe/7hLXWYSVpAA7rd9K/HvRDAh5GjGe9NvV2bsasSu4hUWS9B0X8A==}
+  '@pob/eslint-config-typescript-react@65.5.0':
+    resolution: {integrity: sha512-bl0fEsa2vG7gwqVCjldv93DJ/cMhyhJY1qLOj1qxh+qfg8VObVJ/ke89tjwq/0UGBf9+3P9Zw2UKT+yEGtFPqw==}
     engines: {node: '>=22.18.0'}
     peerDependencies:
       eslint: ^9.39.1 || ^10.0.2
       typescript: '>=5.0.0 <7.0.0'
 
-  '@pob/eslint-config@65.4.3':
-    resolution: {integrity: sha512-jH26z30MhPQyuM34rzi34RkgQXyyEsVa6sN9rk0r6ifQRSdu04XQVML7YY7yFXka05yaCehh5g5zkVx0fw/zkg==}
+  '@pob/eslint-config@65.5.0':
+    resolution: {integrity: sha512-ke+WucF9gQT7OLeoKxNQWcjpj+91pXhRPQWecDYUgx4zipLgrm1Rb5Ag3+PLwFc4blI7I62zwgNFqm9Jcie32A==}
     engines: {node: '>=22.18.0'}
     peerDependencies:
       eslint: ^9.39.1 || ^10.0.2
@@ -1921,8 +1917,8 @@ packages:
       typescript:
         optional: true
 
-  '@pob/eslint-plugin@65.4.1':
-    resolution: {integrity: sha512-/T2vFVyHow2gBf+APplFfpn7AR8fmW9no/EOMnK9l02X+EpATrEA28AmoPzMQ30KKCiZ9cgaBcNUCnRuruPVZQ==}
+  '@pob/eslint-plugin@65.5.0':
+    resolution: {integrity: sha512-DanND2/nqq5al7uvJ3Meo9xEmHZQSZ51B2C0CBHP7HxD4yyxElLRE9iu6Z4hnlQBBu/w1ip3cNGtjzWEmzUVxw==}
     engines: {node: '>=22.18.0'}
     peerDependencies:
       eslint: ^9.39.1 || ^10.0.2
@@ -5448,7 +5444,7 @@ snapshots:
 
   '@babel/code-frame@7.29.0':
     dependencies:
-      '@babel/helper-validator-identifier': 7.28.5
+      '@babel/helper-validator-identifier': 7.29.7
       js-tokens: 4.0.0
       picocolors: 1.1.1
 
@@ -5671,7 +5667,7 @@ snapshots:
     dependencies:
       '@babel/core': 7.29.0
       '@babel/helper-module-imports': 7.28.6
-      '@babel/helper-validator-identifier': 7.28.5
+      '@babel/helper-validator-identifier': 7.29.7
       '@babel/traverse': 7.29.0
     transitivePeerDependencies:
       - supports-color
@@ -5771,8 +5767,6 @@ snapshots:
   '@babel/helper-string-parser@7.27.1': {}
 
   '@babel/helper-string-parser@7.29.7': {}
-
-  '@babel/helper-validator-identifier@7.28.5': {}
 
   '@babel/helper-validator-identifier@7.29.7': {}
 
@@ -7012,7 +7006,7 @@ snapshots:
   '@babel/types@7.29.0':
     dependencies:
       '@babel/helper-string-parser': 7.27.1
-      '@babel/helper-validator-identifier': 7.28.5
+      '@babel/helper-validator-identifier': 7.29.7
 
   '@babel/types@7.29.7':
     dependencies:
@@ -7702,10 +7696,10 @@ snapshots:
       '@pnpm/network.ca-file': 1.0.2
       config-chain: 1.1.13
 
-  '@pob/eslint-config-typescript-react@65.4.3(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)':
+  '@pob/eslint-config-typescript-react@65.5.0(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)':
     dependencies:
-      '@pob/eslint-config': 65.4.3(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)
-      '@pob/eslint-plugin': 65.4.1(eslint@10.4.0)(typescript@6.0.3)
+      '@pob/eslint-config': 65.5.0(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)
+      '@pob/eslint-plugin': 65.5.0(eslint@10.4.0)(typescript@6.0.3)
       eslint: 10.4.0
       eslint-plugin-import-x: 4.16.2(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)
       eslint-plugin-jsx-a11y: 6.10.2(eslint@10.4.0)
@@ -7717,11 +7711,11 @@ snapshots:
       - eslint-import-resolver-node
       - supports-color
 
-  '@pob/eslint-config@65.4.3(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)':
+  '@pob/eslint-config@65.5.0(@typescript-eslint/utils@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)':
     dependencies:
       '@eslint/js': 10.0.1(eslint@10.4.0)
       '@eslint/json': 1.2.0
-      '@pob/eslint-plugin': 65.4.1(eslint@10.4.0)(typescript@6.0.3)
+      '@pob/eslint-plugin': 65.5.0(eslint@10.4.0)(typescript@6.0.3)
       '@typescript-eslint/eslint-plugin': 8.59.4(@typescript-eslint/parser@8.59.4(eslint@10.4.0)(typescript@6.0.3))(eslint@10.4.0)(typescript@6.0.3)
       '@typescript-eslint/parser': 8.59.4(eslint@10.4.0)(typescript@6.0.3)
       confusing-browser-globals: 1.0.11
@@ -7738,7 +7732,7 @@ snapshots:
       - eslint-import-resolver-node
       - supports-color
 
-  '@pob/eslint-plugin@65.4.1(eslint@10.4.0)(typescript@6.0.3)':
+  '@pob/eslint-plugin@65.5.0(eslint@10.4.0)(typescript@6.0.3)':
     dependencies:
       '@typescript-eslint/utils': 8.59.1(eslint@10.4.0)(typescript@6.0.3)
       eslint: 10.4.0
@@ -8167,7 +8161,7 @@ snapshots:
       debug: 4.4.3
       minimatch: 10.2.5
       semver: 7.8.1
-      tinyglobby: 0.2.16
+      tinyglobby: 0.2.17
       ts-api-utils: 2.5.0(typescript@6.0.3)
       typescript: 6.0.3
     transitivePeerDependencies:
@@ -8182,7 +8176,7 @@ snapshots:
       debug: 4.4.3
       minimatch: 10.2.5
       semver: 7.8.1
-      tinyglobby: 0.2.16
+      tinyglobby: 0.2.17
       ts-api-utils: 2.5.0(typescript@6.0.3)
       typescript: 6.0.3
     transitivePeerDependencies:
@@ -9134,7 +9128,7 @@ snapshots:
 
   eslint-plugin-unicorn@64.0.0(eslint@10.4.0):
     dependencies:
-      '@babel/helper-validator-identifier': 7.28.5
+      '@babel/helper-validator-identifier': 7.29.7
       '@eslint-community/eslint-utils': 4.9.1(eslint@10.4.0)
       change-case: 5.4.4
       ci-info: 4.4.0
@@ -10241,7 +10235,7 @@ snapshots:
       proc-log: 6.1.0
       semver: 7.8.1
       tar: 7.5.15
-      tinyglobby: 0.2.16
+      tinyglobby: 0.2.17
       undici: 6.25.0
       which: 6.0.1
 
