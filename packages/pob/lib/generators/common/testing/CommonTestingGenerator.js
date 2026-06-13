@@ -317,7 +317,7 @@ export default class CommonTestingGenerator extends Generator {
       packageUtils.addDevDependencies(pkg, ["vite"]);
     }
 
-    packageUtils.removeScripts(["generate:test-coverage"]);
+    packageUtils.removeScripts(pkg, ["generate:test-coverage"]);
 
     if (!this.options.enable) {
       // if (inMonorepo) {
