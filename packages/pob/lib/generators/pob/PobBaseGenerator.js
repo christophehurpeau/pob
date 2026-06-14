@@ -199,6 +199,10 @@ export default class PobBaseGenerator extends Generator {
 
     this.composeWith("pob:core:editorconfig");
 
+    this.composeWith("pob:core:claude", {
+      root: this.isRoot,
+    });
+
     this.composeWith("pob:core:clean", {
       root: this.isRoot,
     });

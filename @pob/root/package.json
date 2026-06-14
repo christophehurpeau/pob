@@ -17,6 +17,7 @@
   "bin": {
     "oxfmt": "./bin/oxfmt.cjs",
     "pob-check-commit-msg": "./bin/pob-check-commit-msg.js",
+    "pob-claude-run-lint-staged": "./bin/pob-claude-run-lint-staged.js",
     "pob-root-lint-staged": "./bin/pob-root-lint-staged.js",
     "pob-root-postinstall": "./bin/pob-root-postinstall.js",
     "pob-version": "./bin/pob-version.js",
