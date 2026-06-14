@@ -51,7 +51,7 @@
     "@types/node": "24.12.4",
     "@vitest/coverage-v8": "4.1.8",
     "alp-rollup-plugin-config": "4.0.2",
-    "check-package-dependencies": "11.1.1",
+    "check-package-dependencies": "11.2.0",
     "eslint": "10.4.0",
     "pinst": "3.0.0",
     "pob-babel": "workspace:*",
