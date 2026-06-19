@@ -10,6 +10,8 @@ minimumReleaseAgeExclude:
   - alouette-icons
   - nightingale
   - nightingale-logger
+  # Renovate security update: js-yaml@4.2.0
+  - js-yaml@4.2.0
 packages:
   - packages/*
   - "@pob/*"
