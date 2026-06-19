@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
 <% if (packageManager === 'yarn') { -%>
       - name: Enable Corepack
@@ -54,7 +54,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
 <% if (packageManager === 'yarn') { -%>
       - name: Enable Corepack
@@ -101,7 +101,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
 <% if (packageManager === 'yarn') { -%>
       - name: Enable Corepack
@@ -159,7 +159,7 @@ jobs:
         node-version: [<% if (!onlyLatestLTS && nodeMaintenanceMajorVersion !== nodeLatestMajorVersion) { -%><%= nodeMaintenanceMajorVersion %>, <% } -%><%= nodeLatestMajorVersion %>]
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
 <% if (packageManager === 'yarn') { -%>
       - name: Enable Corepack
@@ -230,7 +230,7 @@ jobs:
         node-version: [<%= nodeLatestMajorVersion %>]
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
 <% if (packageManager === 'yarn') { -%>
       - name: Enable Corepack
@@ -278,7 +278,7 @@ jobs:
     needs: [<%= checks ? '"checks", ' : '' -%><%= build ? '"build", ' : '' -%>"lint"<%= testing ? ', "test"' : '' -%>]
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - uses: actions/setup-node@v6
         with:
