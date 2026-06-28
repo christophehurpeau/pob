@@ -80,10 +80,10 @@ export default function createLintStagedConfig() {
       return [
         ...installAndDedupe,
         pkg.scripts?.checks ? `${pm.name} run checks` : undefined,
-        "eslint --fix --quiet",
         packagejsonFilenames.length === 0
           ? undefined
           : `oxfmt "${packagejsonFilenames.join('" "')}"`,
+        "eslint --fix --quiet",
         `git add ${lockfile}${configfile ? ` ${configfile}` : ""}${pm.name === "yarn" ? " .yarn" : ""}`,
       ].filter(Boolean);
     },
