@@ -38,7 +38,7 @@
     "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/esbuild'"
   },
   "dependencies": {
-    "esbuild": "0.28.0"
+    "esbuild": "0.28.1"
   },
   "peerDependencies": {
     "typescript": "^4.0.3 || ^5.0.0 || ^6.0.0"
