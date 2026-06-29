@@ -51,6 +51,10 @@ export default class CoreNpmGenerator extends Generator {
           files.add("bin");
         }
 
+        if (this.fs.exists(this.destinationPath("skills"))) {
+          files.add("skills");
+        }
+
         if (pkg.exports) {
           Object.values(pkg.exports).forEach((value) => {
             if (typeof value === "string" && value.startsWith("./tsconfigs/")) {
