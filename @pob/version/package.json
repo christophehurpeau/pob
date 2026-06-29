@@ -59,7 +59,7 @@
     "conventional-changelog-preset-loader": "5.0.0",
     "conventional-changelog-writer": "8.4.0",
     "conventional-commits-parser": "6.4.0",
-    "nightingale": "18.1.0",
+    "nightingale": "18.2.0",
     "semver": "7.8.5"
   },
   "devDependencies": {

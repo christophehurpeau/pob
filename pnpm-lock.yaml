@@ -180,8 +180,8 @@ importers:
         specifier: 6.4.0
         version: 6.4.0
       nightingale:
-        specifier: 18.1.0
-        version: 18.1.0
+        specifier: 18.2.0
+        version: 18.2.0
       semver:
         specifier: 7.8.5
         version: 7.8.5
@@ -4137,20 +4137,20 @@ packages:
   neo-async@2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
 
-  nightingale-levels@18.0.0:
-    resolution: {integrity: sha512-0n5DFGXACLAbFlJGagWHAyS75Z4oedC3R3cA4VkI1fjhaooixXTcm70/Sz/8t0U/HJmDvffcLFvhPym+sKKQZg==}
+  nightingale-levels@18.2.0:
+    resolution: {integrity: sha512-kl3OKYQCWjcTvlTDgwBq2QcRajmEyD5VV9jf2sHF27SOgY/Fhf2YxSzeqFO6u+GSyU1uNMD9xg2N04949022aA==}
     engines: {node: '>=22.18.0'}
 
-  nightingale-logger@18.1.0:
-    resolution: {integrity: sha512-DJ2L+7c4H5BQ2Y9xPTbevtQYOGD+cYBc3rQGL2Ca3Tc5bYDe8AeLrl39TUC4LsORwfoGXJXGgATvS6G4tPNVLQ==}
+  nightingale-logger@18.2.0:
+    resolution: {integrity: sha512-ni7Qztw3bb2GTuNyyo0YxHEDaUNL14lP/fhJOjNFUqK8nc9ZGpBWmdp3+3MKrZbonEEvK7vkHo8ktTb+grqsOQ==}
     engines: {node: '>=22.18.0'}
 
-  nightingale-types@18.0.0:
-    resolution: {integrity: sha512-M++L17z15mZDUs2IEF0YiC1tOdVlXyJwUbgTwgP8GX+n1Z9oDn6G4FKsEfBeXwsXZP4fRuGy61ikMyVHKIoAag==}
+  nightingale-types@18.2.0:
+    resolution: {integrity: sha512-4eGgasLzIzyeAXz2ASosL3RHZ8awLMLrYV/xCeYbFN+dJFJ9Wx0y/vztFrOno2QmWXiDrYpyaH6Vi3Jdc389QQ==}
     engines: {node: '>=22.18.0'}
 
-  nightingale@18.1.0:
-    resolution: {integrity: sha512-gcXDXprH38JeUmISYk9PxvDe+LROIu+LyKrjCmLHL3UYKY8MOqFVt9NrbVSSblhax/tAkrtG0rOx5tpRRxVVUw==}
+  nightingale@18.2.0:
+    resolution: {integrity: sha512-MGsxgfDURV6LOLc5joCtlD4HjraGQSZcdXz72O8NI+hEy838UhV+BT2bMy7asAB7cbwMfACZL7WyrqoLbHDwbg==}
     engines: {node: '>=22.18.0'}
 
   node-exports-info@1.6.0:
@@ -9228,25 +9228,25 @@ snapshots:
 
   neo-async@2.6.2: {}
 
-  nightingale-levels@18.0.0: {}
+  nightingale-levels@18.2.0: {}
 
-  nightingale-logger@18.1.0:
+  nightingale-logger@18.2.0:
     dependencies:
       '@types/node': 24.12.4
-      nightingale-levels: 18.0.0
-      nightingale-types: 18.0.0
+      nightingale-levels: 18.2.0
+      nightingale-types: 18.2.0
 
-  nightingale-types@18.0.0:
+  nightingale-types@18.2.0:
     dependencies:
-      nightingale-levels: 18.0.0
+      nightingale-levels: 18.2.0
 
-  nightingale@18.1.0:
+  nightingale@18.2.0:
     dependencies:
       '@types/node': 24.12.4
       ansi-styles: 6.2.3
-      nightingale-levels: 18.0.0
-      nightingale-logger: 18.1.0
-      nightingale-types: 18.0.0
+      nightingale-levels: 18.2.0
+      nightingale-logger: 18.2.0
+      nightingale-types: 18.2.0
 
   node-exports-info@1.6.0:
     dependencies:
