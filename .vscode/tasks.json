@@ -136,19 +136,6 @@
       }
     },
     {
-      "label": "test:coverage:json",
-      "problemMatcher": [],
-      "type": "npm",
-      "script": "test:coverage:json",
-      "group": "test",
-      "presentation": {
-        "panel": "dedicated",
-        "group": "test",
-        "clear": true,
-        "isBackground": false
-      }
-    },
-    {
       "label": "test:watch",
       "problemMatcher": {
         "owner": "vitest-watch",
