@@ -3,7 +3,7 @@
   "prConcurrentLimit": 10,
   "dependencyDashboard": true,
   "dependencyDashboardApproval": false,
-  "postUpdateOptions": ["yarnDedupeFewer", "yarnDedupeHighest"],
+  "postUpdateOptions": ["yarnDedupeFewer", "yarnDedupeHighest", "pnpmDedupe"],
   "labels": [":vertical_traffic_light: automerge"],
   "rangeStrategy": "bump",
   "packageRules": [
