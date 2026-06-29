@@ -57,7 +57,7 @@
     "oxfmt": "0.54.0",
     "parse-author": "2.0.0",
     "pob-dependencies": "workspace:*",
-    "semver": "7.8.4",
+    "semver": "7.8.5",
     "typescript": "6.0.3",
     "validate-npm-package-name": "^8.0.0",
     "yeoman-environment": "6.1.0",
