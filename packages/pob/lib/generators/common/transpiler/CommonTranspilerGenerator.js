@@ -521,6 +521,13 @@ export default class CommonTranspilerGenerator extends Generator {
           }
 
           const calcExport = () => {
+            if (extraEntryConfig.name.endsWith(".css")) {
+              return {
+                style: `./${extraEntryConfig.name}`,
+                default: `./${extraEntryConfig.name}`,
+              };
+            }
+
             if (pkg.type === "module") {
               return extraEntryConfig.name.endsWith(".cjs") ||
                 extraEntryConfig.name.endsWith(".d.ts")
