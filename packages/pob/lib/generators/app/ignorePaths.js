@@ -11,6 +11,7 @@ export const appIgnorePaths = {
       pkg?.dependencies?.tamagui ? "/.tamagui" : undefined,
     ].filter(Boolean),
   vite: (config) => ["/dist"],
+  "vite-with-server": (config) => ["/dist"],
   node: (config) => (config.distribute ? [] : ["/build"]),
   "node-library": (config) => ["/build"],
   "untranspiled-library": (config) => [],

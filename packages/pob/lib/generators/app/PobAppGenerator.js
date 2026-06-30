@@ -5,11 +5,19 @@ import inMonorepo from "../../utils/inMonorepo.js";
 import * as packageUtils from "../../utils/package.js";
 import { appIgnorePaths } from "./ignorePaths.js";
 
-const appsWithTypescript = ["alp", "next.js", "vite", "expo", "yarn-plugin"];
-const appsWithBrowser = ["alp", "next.js", "vite"];
+const appsWithTypescript = [
+  "alp",
+  "next.js",
+  "vite",
+  "vite-with-server",
+  "expo",
+  "yarn-plugin",
+];
+const appsWithBrowser = ["alp", "next.js", "vite", "vite-with-server"];
 const shouldEnableHashSlash = (appType) =>
   appType === "alp" ||
   appType === "vite" ||
+  appType === "vite-with-server" ||
   appType === "alp-node" ||
   appType === "next.js" ||
   appType === "expo";
@@ -100,6 +108,7 @@ export default class PobAppGenerator extends Generator {
         choices: [
           "alp",
           "vite",
+          "vite-with-server",
           "next.js",
           "node",
           "node-library", // monorepo library for app. Not a real library
@@ -359,14 +368,17 @@ export default class PobAppGenerator extends Generator {
     switch (this.appConfig.type) {
       case "next.js":
         throw new Error(
-          "nextjs has been removed. Please migrate to 'vite' or 'expo'.",
+          "nextjs has been removed. Please migrate to 'vite', 'vite-with-server' or 'expo'.",
         );
       case "remix":
         throw new Error(
-          "remix has been removed. Please migrate to 'vite' or 'expo'.",
+          "remix has been removed. Please migrate to 'vite', 'vite-with-server' or 'expo'.",
         );
       case "vite":
-        this.composeWith("pob:app:vite", {});
+      case "vite-with-server":
+        this.composeWith("pob:app:vite", {
+          enableServer: this.appConfig.type === "vite-with-server",
+        });
         break;
       // no default
     }
