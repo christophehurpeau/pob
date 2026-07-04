@@ -12,7 +12,14 @@ if (!process.env.INIT_CWD) {
   process.exit(1);
 }
 
-process.chdir(process.env.PROJECT_CWD || process.env.INIT_CWD);
+// PROJECT_CWD (yarn classic) is always the monorepo root, regardless of
+// invocation directory, so honor it explicitly. Without it, npm/pnpm/bun
+// already set cwd to this script's own package (the root) before running
+// the lifecycle script; INIT_CWD instead reflects where the command was
+// invoked (e.g. a sub-package), so it must not be used to chdir here.
+if (process.env.PROJECT_CWD) {
+  process.chdir(process.env.PROJECT_CWD);
+}
 
 const pkg = JSON.parse(fs.readFileSync(path.resolve("package.json")));
 
