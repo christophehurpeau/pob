@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.4.0](https://github.com/christophehurpeau/pob/compare/pob@35.3.0...pob@35.4.0) (2026-07-04)
+
+### Features
+
+* add "nightingale-levels" and "nightingale-types" to minimumReleaseAgeExcludes
+* add support for CSS entry configuration in CommonTranspilerGenerator
+* add support for including 'skills' directory in published files
+* add vite-with-server
+* **deps:** update @pob/eslint-config to v65.5.0 ([#2781](https://github.com/christophehurpeau/pob/issues/2781))
+* **deps:** update dependency oxfmt to v0.54.0 ([#2764](https://github.com/christophehurpeau/pob/issues/2764))
+* update codecov v7
+* upgrade actions/checkout from v6 to v7 across workflow files
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v7.8.4 ([#2777](https://github.com/christophehurpeau/pob/issues/2777))
+* **deps:** update dependency semver to v7.8.5 ([#2788](https://github.com/christophehurpeau/pob/issues/2788))
+* properly remove old script generate:test-coverage
+
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [35.3.0](https://github.com/christophehurpeau/pob/compare/pob@35.2.1...pob@35.3.0) (2026-06-12)
 
 ### Features

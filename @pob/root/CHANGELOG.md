@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@24.3.0...@pob/root@24.4.0) (2026-07-04)
+
+### Features
+
+* **deps:** update dependency oxfmt to v0.54.0 ([#2764](https://github.com/christophehurpeau/pob/issues/2764))
+* upgrade actions/checkout from v6 to v7 across workflow files
+
+### Bug Fixes
+
+* **deps:** update dependency lint-staged to v17.0.8 ([#2787](https://github.com/christophehurpeau/pob/issues/2787))
+* format before lint
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [24.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@24.2.1...@pob/root@24.3.0) (2026-06-12)
 
 ### Features

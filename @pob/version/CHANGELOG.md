@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.2.0](https://github.com/christophehurpeau/pob/compare/@pob/version@4.1.1...@pob/version@4.2.0) (2026-07-04)
+
+### Features
+
+* **deps:** update dependency nightingale to v18.2.0 ([#2783](https://github.com/christophehurpeau/pob/issues/2783))
+* upgrade actions/checkout from v6 to v7 across workflow files
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v7.8.4 ([#2777](https://github.com/christophehurpeau/pob/issues/2777))
+* **deps:** update dependency semver to v7.8.5 ([#2788](https://github.com/christophehurpeau/pob/issues/2788))
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [4.1.1](https://github.com/christophehurpeau/pob/compare/@pob/version@4.1.0...@pob/version@4.1.1) (2026-06-12)
 
 ### Bug Fixes

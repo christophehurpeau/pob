@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@24.1.1...pob-dependencies@24.2.0) (2026-07-04)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v65.5.0 ([#2781](https://github.com/christophehurpeau/pob/issues/2781))
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v7.8.4 ([#2777](https://github.com/christophehurpeau/pob/issues/2777))
+* **deps:** update dependency semver to v7.8.5 ([#2788](https://github.com/christophehurpeau/pob/issues/2788))
+
+Version bump for dependency: @pob/esbuild
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [24.1.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies@24.1.0...pob-dependencies@24.1.1) (2026-06-12)
 
 ### Bug Fixes

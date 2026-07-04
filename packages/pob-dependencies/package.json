@@ -1,6 +1,6 @@
 {
   "name": "pob-dependencies",
-  "version": "24.1.1",
+  "version": "24.2.0",
   "description": "easier dependencies upgrade with a real package.json",
   "keywords": [],
   "homepage": "https://github.com/christophehurpeau/pob",

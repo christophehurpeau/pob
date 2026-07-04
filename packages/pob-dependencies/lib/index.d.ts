@@ -3,10 +3,10 @@ interface Dependencies {
   "@babel/preset-env": "7.29.7";
   "@babel/preset-react": "7.29.7";
   "@babel/runtime": "7.29.7";
-  "@playwright/test": "1.60.0";
+  "@playwright/test": "1.61.1";
   "@pob/esbuild": "workspace:*";
-  "@pob/eslint-config": "65.4.3";
-  "@pob/eslint-config-typescript-react": "65.4.3";
+  "@pob/eslint-config": "65.5.0";
+  "@pob/eslint-config-typescript-react": "65.5.0";
   "@pob/pretty-pkg": "workspace:*";
   "@pob/rollup-esbuild": "workspace:*";
   "@pob/rollup-typescript": "workspace:*";
@@ -19,7 +19,7 @@ interface Dependencies {
   pinst: "3.0.0";
   "pob-babel": "workspace:*";
   rollup: "4.60.4";
-  semver: "7.8.1";
+  semver: "7.8.5";
   tslib: "2.8.1";
   typedoc: "0.28.19";
   typescript: "6.0.3";
