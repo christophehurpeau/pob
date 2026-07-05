@@ -423,7 +423,9 @@ export const versionCommandAction = async (
 
             if (
               dependencyDescriptor.selector === newRange &&
-              newRange !== "workspace:*"
+              newRange !== "workspace:*" &&
+              newRange !== "workspace:^" &&
+              newRange !== "workspace:~"
             ) {
               continue;
             }

@@ -32,7 +32,7 @@ export const calcBumpRange = (
       return range;
     }
 
-    if (slicedRange === "*") {
+    if (slicedRange === "*" || slicedRange === "^" || slicedRange === "~") {
       return range;
     }
 

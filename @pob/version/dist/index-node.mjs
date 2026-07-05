@@ -416,7 +416,7 @@ const calcBumpRange = (workspace, range, newVersion) => {
     if (slicedRange === workspace.relativeCwd) {
       return range;
     }
-    if (slicedRange === "*") {
+    if (slicedRange === "*" || slicedRange === "^" || slicedRange === "~") {
       return range;
     }
     range = slicedRange;
@@ -1073,7 +1073,7 @@ There are uncommitted changes in the git repository. Please commit or stash them
               dependencyDescriptor.selector,
               dependencyBumpedWorkspace.newVersion
             );
-            if (dependencyDescriptor.selector === newRange && newRange !== "workspace:*") {
+            if (dependencyDescriptor.selector === newRange && newRange !== "workspace:*" && newRange !== "workspace:^" && newRange !== "workspace:~") {
               continue;
             }
             dependenciesToBump.push([
