@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.4.1](https://github.com/christophehurpeau/pob/compare/@pob/root@24.4.0...@pob/root@24.4.1) (2026-07-05)
+
+### Bug Fixes
+
+* correct directory change logic in postinstall script
+
 ## [24.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@24.3.0...@pob/root@24.4.0) (2026-07-04)
 
 ### Features
