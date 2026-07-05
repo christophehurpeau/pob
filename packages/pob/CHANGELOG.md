@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.5.0](https://github.com/christophehurpeau/pob/compare/pob@35.4.1...pob@35.5.0) (2026-07-05)
+
+### Bug Fixes
+
+* enhance workspace dependency handling in getVersionFromDependencyName and internalAddDependencies functions
+
+Version bump for dependency: @pob/root
+
+
 ## [35.4.1](https://github.com/christophehurpeau/pob/compare/pob@35.4.0...pob@35.4.1) (2026-07-05)
 
 Version bump for dependency: @pob/root

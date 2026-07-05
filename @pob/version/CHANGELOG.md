@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.3.0](https://github.com/christophehurpeau/pob/compare/@pob/version@4.2.0...@pob/version@4.3.0) (2026-07-05)
+
+### Features
+
+* **@pob/version:** add support for `workspace:^`, and `workspace:~`
+
 ## [4.2.0](https://github.com/christophehurpeau/pob/compare/@pob/version@4.1.1...@pob/version@4.2.0) (2026-07-04)
 
 ### Features
