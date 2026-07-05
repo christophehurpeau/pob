@@ -322,8 +322,7 @@ export default class CommonBabelGenerator extends Generator {
     }
 
     if (pkg.dependencies && pkg.dependencies["pob-babel"]) {
-      // update pob-babel in alp-dev
-      packageUtils.addDependencies(pkg, ["pob-babel"], "^");
+      throw new Error("pob-babel is deprecated.");
     }
     if (pkg.dependencies && pkg.dependencies["@babel/runtime"]) {
       // update pob-babel in alp-dev
