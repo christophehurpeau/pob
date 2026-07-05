@@ -116,11 +116,20 @@ const getVersionFromDependencyName = (dependency) => {
     value = pobPkg.devDependencies[dependency];
   }
 
-  if (value === "workspace:*") {
+  if (
+    value === "workspace:*" ||
+    value === "workspace:^" ||
+    value === "workspace:~"
+  ) {
     const pkgJson = JSON.parse(
       fs.readFileSync(
         fileURLToPath(
-          import.meta.resolve(`${dependency}/package.json`, import.meta.url),
+          import.meta.resolve(
+            `../../../../${dependency.startsWith("@") ? `${dependency}` : `packages/${dependency}`}/package.json`,
+            import.meta.url,
+          ),
+          // import.meta
+          //   .resolve(`${dependency}/package.json`, import.meta.url)
         ),
       ),
     );
@@ -168,7 +177,11 @@ const internalAddDependencies = (pkg, type, dependencies, cleaned, prefix) => {
           ? `${prefix || ""}${potentialNewVersionCleaned}`
           : potentialNewVersion;
       try {
-        if (currentVersion === "workspace:*") {
+        if (
+          currentVersion === "workspace:*" ||
+          currentVersion === "workspace:^" ||
+          currentVersion === "workspace:~"
+        ) {
           // the package is in the monorepo
         } else if (
           !currentVersion ||
