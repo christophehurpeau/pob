@@ -65,7 +65,7 @@
   },
   "devDependencies": {
     "@pob/root": "workspace:*",
-    "@types/node": "24.12.4"
+    "@types/node": "24.13.3"
   },
   "engines": {
     "node": ">=22.18.0"
