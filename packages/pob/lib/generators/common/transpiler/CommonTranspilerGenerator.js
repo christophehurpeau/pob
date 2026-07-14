@@ -524,6 +524,7 @@ export default class CommonTranspilerGenerator extends Generator {
             if (extraEntryConfig.name.endsWith(".css")) {
               return {
                 style: `./${extraEntryConfig.name}`,
+                import: `./${extraEntryConfig.name}`,
                 default: `./${extraEntryConfig.name}`,
               };
             }
