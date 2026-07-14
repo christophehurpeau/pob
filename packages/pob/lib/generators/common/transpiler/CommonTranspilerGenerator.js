@@ -611,7 +611,7 @@ export default class CommonTranspilerGenerator extends Generator {
         envs.some(
           (env) =>
             env.target === "node" &&
-            (["8", "6", "10", "12", "14", "16", "18", "20"].includes(
+            (["4", "6", "8", "10", "12", "14", "16", "18", "20"].includes(
               String(env.version),
             ) ||
               (this.options.onlyLatestLTS &&
@@ -668,6 +668,9 @@ export default class CommonTranspilerGenerator extends Generator {
               : `${maintenanceLTS}`)();
 
       switch (String(minNodeVersion)) {
+        case "4":
+        case "6":
+        case "8":
         case "10":
         case "12":
         case "14":
