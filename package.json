@@ -27,7 +27,7 @@
     "prepare": "node @pob/root/bin/pob-root-postinstall.js",
     "test": "TZ=UTC vitest",
     "test:coverage": "TZ=UTC POB_VITEST_COVERAGE=json,text vitest run --coverage",
-    "test:coverage:json": "TZ=UTC POB_VITEST_COVERAGE=json vitest run --coverage",
+    "test:coverage:generate": "TZ=UTC POB_VITEST_COVERAGE=json vitest run --coverage",
     "test:watch": "TZ=UTC vitest --watch",
     "tsc": "tsc -b",
     "watch": "pnpm run clean:build && rollup --config rollup.config.mjs --watch"

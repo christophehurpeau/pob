@@ -6,7 +6,7 @@ export default defineConfig({
     include: ["<%= srcDirectory %>/**/__tests__/**/*.ts?(x)", "<%= srcDirectory %>/**/*.test.ts?(x)"],
     coverage: {
       include: ["<%= srcDirectory %>/**/*.ts?(x)"],
-      reportsDirectory: "docs/coverage",
+      reportsDirectory: "coverage",
       reporter: (process.env.POB_VITEST_COVERAGE || "json,text").split(","),
     },
   },

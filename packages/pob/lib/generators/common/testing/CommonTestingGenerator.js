@@ -243,9 +243,7 @@ export default class CommonTestingGenerator extends Generator {
 
     const createTestCommand = ({
       coverage,
-      coverageJson,
       watch,
-
       workspacesPattern,
       hasReact,
     }) => {
@@ -259,12 +257,13 @@ export default class CommonTestingGenerator extends Generator {
           if (!workspacesPattern && this.options.monorepo) {
             throw new Error("Invalid workspacesPattern");
           }
-          const experimentalTestCoverage = false; // todo configure src directory and remove test files
+          const experimentalTestCoverage =
+            pkg.name === "check-package-dependencies";
           return `TZ=UTC ${
-            coverage || coverageJson
+            coverage && !experimentalTestCoverage
               ? `npx c8${
-                  coverageJson
-                    ? ` --reporter=${coverageJson ? "json" : "lcov"}`
+                  coverage === "generate"
+                    ? ` --reporter=${coverage === "generate" ? "json" : "lcov"}`
                     : ""
                 } --all --src ./${this.options.srcDirectory} `
               : ""
@@ -272,9 +271,9 @@ export default class CommonTestingGenerator extends Generator {
             this.options.typescript
               ? `${tsTestLoaderOption ? `${tsTestLoaderOption} ` : ""}`
               : ""
-          }${this.fs.exists("src/test-setup.ts") ? "--import ./src/test-setup.ts " : ""}--test${experimentalTestCoverage && (coverage || coverageJson) ? " --experimental-test-coverage" : ""} ${this.options.monorepo ? `${workspacesPattern}/*/` : ""}${`${
+          }${this.fs.exists("src/test-setup.ts") ? "--import ./src/test-setup.ts " : ""}--test${experimentalTestCoverage && coverage ? ` --experimental-test-coverage${coverage === "generate" ? " --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=docs/coverage.lcov" : ""} --test-coverage-include="${this.options.srcDirectory}/**/*.ts"` : ""} '${this.options.monorepo ? `${workspacesPattern}/*/` : ""}${`${
             hasTestFolder ? "test/*" : `${this.options.srcDirectory}/**/*.test`
-          }.${this.options.typescript ? "ts" : "js"}`}`;
+          }.${this.options.typescript ? "ts" : "js"}`}'`;
         }
         case "bun": {
           if (this.options.packageManager !== "bun") {
@@ -284,17 +283,17 @@ export default class CommonTestingGenerator extends Generator {
           }
 
           return `TZ=UTC bun test${watch ? " --watch" : ""}${
-            coverage || coverageJson
-              ? ` --coverage ${coverageJson ? "--coverage-report=json" : ""}`
+            coverage
+              ? ` --coverage ${coverage === "generate" ? "--coverage-report=json" : ""}`
               : ""
           }`;
         }
         case "vitest": {
           return `TZ=UTC ${
-            coverage || coverageJson
-              ? `POB_VITEST_COVERAGE=${`json${coverageJson ? "" : ",text"} `}`
+            coverage
+              ? `POB_VITEST_COVERAGE=${`json${coverage === "generate" ? "" : ",text"} `}`
               : ""
-          }vitest${watch ? " --watch" : ""}${coverage || coverageJson ? " run --coverage" : ""}`;
+          }vitest${watch ? " --watch" : ""}${coverage ? " run --coverage" : ""}`;
         }
         default: {
           throw new Error(`Invalid runner: "${testRunner}"`);
@@ -370,8 +369,12 @@ export default class CommonTestingGenerator extends Generator {
           );
         }
 
+        packageUtils.removeScripts(pkg, [
+          "test:coverage:lcov",
+          "test:coverage:json",
+        ]);
+
         if (this.options.monorepo) {
-          packageUtils.removeScripts(pkg, ["test:coverage:lcov"]);
           packageUtils.addScripts(pkg, {
             test: createTestCommand({
               workspacesPattern,
@@ -384,7 +387,7 @@ export default class CommonTestingGenerator extends Generator {
               workspacesPattern,
               coverage: true,
             }),
-            "test:coverage:json": createTestCommand({
+            "test:coverage:generate": createTestCommand({
               workspacesPattern,
               coverageJson: true,
             }),
@@ -420,8 +423,8 @@ export default class CommonTestingGenerator extends Generator {
               "test:coverage": createTestCommand({
                 coverage: true,
               }),
-              "test:coverage:json": createTestCommand({
-                coverageJson: true,
+              "test:coverage:generate": createTestCommand({
+                coverage: "generate",
               }),
             });
 

@@ -203,7 +203,7 @@ jobs:
         if: matrix.node-version != <%= nodeLatestMajorVersion %>
 
       - name: Generate Test Coverage
-        run: <%= packageManager %> run test:coverage:json
+        run: <%= packageManager %> run test:coverage:generate
         if: matrix.node-version == <%= nodeLatestMajorVersion %>
         env:
           CI: true

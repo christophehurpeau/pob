@@ -58,11 +58,11 @@ jobs:
 <% if (testRunner === 'node') { -%>
 
       - name: Generate Coverage
-        run: NODE_V8_COVERAGE=./docs/coverage <%= packageManager %> run test:coverage
+        run: NODE_V8_COVERAGE=./docs/coverage <%= packageManager %> run test:coverage:generate
 <% } else {-%>
 
       - name: Generate Coverage
-        run: <%= packageManager %> run test:coverage:json<%- testRunner === 'jest' ? " --coverageDirectory=docs/coverage/" : "" %>
+        run: <%= packageManager %> run test:coverage:generate
 <% } -%>
 <% } -%>
 
