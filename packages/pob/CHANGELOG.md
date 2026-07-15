@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.6.0](https://github.com/christophehurpeau/pob/compare/pob@35.5.0...pob@35.6.0) (2026-07-15)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v65.6.0 ([#2793](https://github.com/christophehurpeau/pob/issues/2793))
+
+### Bug Fixes
+
+* add import property for CSS entries in CommonTranspilerGenerator
+* **deps:** update dependency @types/inquirer to v9.0.10 ([#2775](https://github.com/christophehurpeau/pob/issues/2775))
+* rename test coverage script to 'test:coverage:generate' and update related configurations
+* throw error for deprecated pob-babel dependency
+* update legacy Node.js versions in CommonTranspilerGenerator
+
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [35.5.0](https://github.com/christophehurpeau/pob/compare/pob@35.4.1...pob@35.5.0) (2026-07-05)
 
 ### Bug Fixes

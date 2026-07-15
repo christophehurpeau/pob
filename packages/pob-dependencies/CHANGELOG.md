@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@24.2.0...pob-dependencies@24.3.0) (2026-07-15)
+
+### Features
+
+* **deps:** update @pob/eslint-config to v65.6.0 ([#2793](https://github.com/christophehurpeau/pob/issues/2793))
+
 ## [24.2.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@24.1.1...pob-dependencies@24.2.0) (2026-07-04)
 
 ### Features
