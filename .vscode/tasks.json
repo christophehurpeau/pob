@@ -7,9 +7,16 @@
       "label": "git: main",
       "type": "shell",
       "command": "git main",
-      "group": { "kind": "none" },
-      "options": { "cwd": "${workspaceFolder}" },
-      "presentation": { "close": true, "panel": "dedicated" },
+      "group": {
+        "kind": "none"
+      },
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "presentation": {
+        "close": true,
+        "panel": "dedicated"
+      },
       "problemMatcher": []
     },
     {
@@ -82,7 +89,11 @@
         "isBackground": false
       }
     },
-    { "label": "lint", "group": "test", "dependsOn": ["lint:eslint", "tsc"] },
+    {
+      "label": "lint",
+      "group": "test",
+      "dependsOn": ["lint:eslint", "tsc"]
+    },
     {
       "label": "lint:eslint",
       "problemMatcher": ["$eslint-stylish"],
@@ -139,7 +150,9 @@
       "label": "test:watch",
       "problemMatcher": {
         "owner": "vitest-watch",
-        "pattern": { "regexp": ".*" },
+        "pattern": {
+          "regexp": ".*"
+        },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "RERUN",
