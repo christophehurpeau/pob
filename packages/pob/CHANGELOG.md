@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.7.0](https://github.com/christophehurpeau/pob/compare/pob@35.6.0...pob@35.7.0) (2026-07-17)
+
+### Features
+
+* add claude generator
+* **deps:** update dependency eslint to v10.7.0 ([#2766](https://github.com/christophehurpeau/pob/issues/2766))
+* fully deprecated pob-babel
+
+### Bug Fixes
+
+* **deps:** update dependency mem-fs to v4.1.5 ([#2794](https://github.com/christophehurpeau/pob/issues/2794))
+* enhance package configuration checks in MonorepoWorkspacesGenerator
+* update coverage command option in CommonTestingGenerator
+
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [35.6.0](https://github.com/christophehurpeau/pob/compare/pob@35.5.0...pob@35.6.0) (2026-07-15)
 
 ### Features

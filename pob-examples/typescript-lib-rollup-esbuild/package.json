@@ -1,6 +1,6 @@
 {
   "name": "example-typescript-lib-rollup-esbuild",
-  "version": "0.53.3",
+  "version": "0.53.4",
   "private": true,
   "homepage": "https://github.com/christophehurpeau/pob",
   "license": "ISC",

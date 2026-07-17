@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.4.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@24.3.0...pob-dependencies@24.4.0) (2026-07-17)
+
+### Features
+
+* **deps:** update dependency eslint to v10.7.0 ([#2766](https://github.com/christophehurpeau/pob/issues/2766))
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [24.3.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@24.2.0...pob-dependencies@24.3.0) (2026-07-15)
 
 ### Features

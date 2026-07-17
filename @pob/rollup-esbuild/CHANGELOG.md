@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.1.3](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@9.1.2...@pob/rollup-esbuild@9.1.3) (2026-07-17)
+
+Version bump for dependency: @pob/rollup
+
+
 ## [9.1.2](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@9.1.1...@pob/rollup-esbuild@9.1.2) (2026-07-04)
 
 ### Bug Fixes

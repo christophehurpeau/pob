@@ -1,8 +1,4 @@
 interface Dependencies {
-  "@babel/core": "7.29.7";
-  "@babel/preset-env": "7.29.7";
-  "@babel/preset-react": "7.29.7";
-  "@babel/runtime": "7.29.7";
   "@playwright/test": "1.61.1";
   "@pob/esbuild": "workspace:*";
   "@pob/eslint-config": "65.6.0";
@@ -13,8 +9,8 @@ interface Dependencies {
   "@types/node": "24.13.3";
   "@vitest/coverage-v8": "4.1.10";
   "alp-rollup-plugin-config": "4.1.1";
-  "check-package-dependencies": "11.1.1";
-  eslint: "10.4.0";
+  "check-package-dependencies": "11.5.0";
+  eslint: "10.7.0";
   pinst: "3.0.0";
   rollup: "4.60.4";
   semver: "7.8.5";
