@@ -304,6 +304,12 @@ export default class CommonBabelGenerator extends Generator {
       (env) => env.target === "browser",
     );
 
+    if (useBabel) {
+      throw new Error(
+        "pob-babel is deprecated. Use @pob/rollup-esbuild or @pob/rollup-typescript instead.",
+      );
+    }
+
     /* dependencies */
 
     if (
