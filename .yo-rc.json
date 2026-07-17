@@ -8,7 +8,6 @@
       "eslint": true,
       "typescript": true,
       "packageNames": [
-        "@pob/check-lib-dependency-in-root-dev-dependencies",
         "@pob/codemods",
         "@pob/commitlint-config",
         "@pob/esbuild",
