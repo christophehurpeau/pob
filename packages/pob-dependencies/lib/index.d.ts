@@ -10,7 +10,6 @@ interface Dependencies {
   "@pob/pretty-pkg": "workspace:*";
   "@pob/rollup-esbuild": "workspace:*";
   "@pob/rollup-typescript": "workspace:*";
-  "@types/jest": "30.0.0";
   "@types/node": "24.13.3";
   "@vitest/coverage-v8": "4.1.10";
   "alp-rollup-plugin-config": "4.1.1";

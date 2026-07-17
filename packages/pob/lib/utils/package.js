@@ -16,9 +16,6 @@ export { default as parseAuthor } from "parse-author";
 export const parsePkgAuthor = (pkg) =>
   typeof pkg.author === "string" ? parseAuthor(pkg.author) : pkg.author;
 
-export const transpileWithEsbuild = (pkg) =>
-  !!(pkg.devDependencies && pkg.devDependencies["jest-esbuild"]);
-
 export const hasReact = (pkg) =>
   !!(
     (pkg.dependencies && pkg.dependencies.react) ||

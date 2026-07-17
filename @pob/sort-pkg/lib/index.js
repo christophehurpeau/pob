@@ -1,5 +1,3 @@
-/* eslint-disable complexity */
-
 import sortObject from "@pob/sort-object";
 
 export default function sortPkg(pkg) {
@@ -56,7 +54,6 @@ export default function sortPkg(pkg) {
     "commitlint",
     "eslintConfig",
     "husky",
-    "jest",
     "lint-staged",
     "pob",
     "prettier",

@@ -37,7 +37,7 @@ export default class CoreVSCodeGenerator extends Generator {
     this.option("testRunner", {
       type: String,
       required: false,
-      description: "Test runner (jest, vitest, ...)",
+      description: "Test runner (node, vitest, ...)",
     });
 
     this.option("yarnNodeLinker", {

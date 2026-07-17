@@ -30,7 +30,7 @@ export default class CommonTestingGenerator extends Generator {
     this.option("runner", {
       type: String,
       default: "node",
-      description: "test runner (jest or node)",
+      description: "test runner (vitest or node)",
     });
 
     this.option("ci", {
@@ -157,7 +157,7 @@ export default class CommonTestingGenerator extends Generator {
       (inMonorepo && inMonorepo.pobMonorepoConfig) || {};
     const globalTesting = yoConfigPobMonorepo && yoConfigPobMonorepo.testing;
     const enableForMonorepo = this.options.monorepo && globalTesting;
-    const transpileWithEsbuild = packageUtils.transpileWithEsbuild(pkg);
+    const transpileWithEsbuild = false;
     const transpileWithBabel = transpileWithEsbuild
       ? false
       : // eslint-disable-next-line unicorn/no-nested-ternary
