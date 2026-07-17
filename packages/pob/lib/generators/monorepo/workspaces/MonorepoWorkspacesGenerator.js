@@ -63,12 +63,15 @@ export default class MonorepoWorkspacesGenerator extends Generator {
   writing() {
     const getPackagePobConfig = (config) => ({
       babelEnvs: [],
+      envs: [],
       ...(config && config.pob),
     });
     const withBundler = this.packages.some((config) => {
       const pobConfig = getPackagePobConfig(config);
       return (
-        pobConfig.babelEnvs.length > 0 || pobConfig.bundler === "rollup-babel"
+        pobConfig.envs.length > 0 ||
+        pobConfig.babelEnvs.length > 0 ||
+        pobConfig.bundler === "rollup-babel"
       );
     });
 
