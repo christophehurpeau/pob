@@ -10,7 +10,6 @@ export default [
   ...configs.node,
   {
     ignores: [
-      "packages/pob-babel/test/**/*",
       "@pob/version/__fixtures__/monorepo-invalid-package-json/packages/pkg-with-invalid-json/package.json",
       "**/__fixtures__/**",
     ],

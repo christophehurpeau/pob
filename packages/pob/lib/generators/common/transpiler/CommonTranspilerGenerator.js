@@ -160,7 +160,6 @@ export default class CommonTranspilerGenerator extends Generator {
     const cleanCommand = (() => {
       if (bundler === "rollup-typescript") return "pob-typescript-clean-out";
       if (bundler === "rollup-esbuild") return "pob-esbuild-clean-out";
-      if (bundler === "rollup-babel") return "pob-babel-clean-out";
       if (bundler === "esbuild") return "pob-esbuild-clean-out";
       if (bundler === "tsc") return "rm -Rf";
       if (bundler) throw new Error(`Invalid bundler: ${bundler}`);

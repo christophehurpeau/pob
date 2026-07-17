@@ -164,7 +164,7 @@ export default class CommonTestingGenerator extends Generator {
         this.options.monorepo
         ? yoConfigPobMonorepo.typescript &&
           yoConfigPobMonorepo.typescript !== "check-only"
-        : packageUtils.transpileWithBabel(pkg);
+        : false;
     const withTypescript =
       transpileWithBabel ||
       pkg.pob?.bundler === "tsc" ||

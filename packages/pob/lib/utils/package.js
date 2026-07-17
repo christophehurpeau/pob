@@ -16,31 +16,8 @@ export { default as parseAuthor } from "parse-author";
 export const parsePkgAuthor = (pkg) =>
   typeof pkg.author === "string" ? parseAuthor(pkg.author) : pkg.author;
 
-export const hasLerna = (pkg) =>
-  !!(pkg.devDependencies && pkg.devDependencies.lerna);
-
-export const hasBabel = (pkg) =>
-  !!(
-    pkg.devDependencies &&
-    (pkg.devDependencies["pob-babel"] || pkg.devDependencies["@babel/core"])
-  );
-
 export const transpileWithEsbuild = (pkg) =>
   !!(pkg.devDependencies && pkg.devDependencies["jest-esbuild"]);
-
-export const transpileWithBabel = (pkg) =>
-  !!(
-    (pkg.devDependencies &&
-      (pkg.devDependencies["pob-babel"] ||
-        pkg.devDependencies.next ||
-        pkg.devDependencies["@yarnpkg/builder"] ||
-        pkg.devDependencies["alp-dev"])) ||
-    // alp-dev has pob-babel in dependencies
-    (pkg.dependencies &&
-      (pkg.dependencies["pob-babel"] ||
-        pkg.dependencies.next ||
-        pkg.dependencies["alp-dev"]))
-  );
 
 export const hasReact = (pkg) =>
   !!(

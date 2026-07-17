@@ -298,8 +298,6 @@ importers:
         specifier: 24.13.3
         version: 24.13.3
 
-  packages/pob-babel: {}
-
   packages/pob-dependencies:
     devDependencies:
       '@playwright/test':
@@ -344,9 +342,6 @@ importers:
       pinst:
         specifier: 3.0.0
         version: 3.0.0
-      pob-babel:
-        specifier: workspace:*
-        version: link:../pob-babel
       rollup:
         specifier: 4.60.4
         version: 4.60.4

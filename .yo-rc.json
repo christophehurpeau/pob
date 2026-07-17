@@ -19,7 +19,6 @@
         "babel-preset-pob-env",
         "example-simple-lib",
         "example-typescript-lib-without-rollup",
-        "pob-babel",
         "repository-check-dirty",
         "@pob/rollup-esbuild",
         "@pob/sort-pkg",

@@ -18,4 +18,4 @@
 Install one of:
 
 - @pob/rollup-typescript
-- pob-babel
+- @pob/rollup-esbuild

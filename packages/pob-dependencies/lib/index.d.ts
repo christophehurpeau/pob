@@ -17,7 +17,6 @@ interface Dependencies {
   "check-package-dependencies": "11.1.1";
   eslint: "10.4.0";
   pinst: "3.0.0";
-  "pob-babel": "workspace:*";
   rollup: "4.60.4";
   semver: "7.8.5";
   tslib: "2.8.1";
