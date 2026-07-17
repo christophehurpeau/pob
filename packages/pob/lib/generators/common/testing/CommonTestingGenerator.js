@@ -389,7 +389,7 @@ export default class CommonTestingGenerator extends Generator {
             }),
             "test:coverage:generate": createTestCommand({
               workspacesPattern,
-              coverageJson: true,
+              coverage: "generate",
             }),
           });
         } else {
