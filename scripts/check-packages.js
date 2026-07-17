@@ -5,12 +5,6 @@ await createCheckPackageWithWorkspaces({
 })
   .checkRecommended({
     onlyWarnsForInMonorepoPackagesDependencies: {
-      "pob-dependencies": {
-        "*": {
-          duplicateDirectDependency: ["semver"],
-          // invalidPeerDependencyVersion: ['rollup'],
-        },
-      },
       pob: {
         "@yeoman/types": {
           missingPeerDependency: ["@types/node"],

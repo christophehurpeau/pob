@@ -406,12 +406,6 @@ export default class PobMonorepoGenerator extends Generator {
         build: `${packageManagerRun(this.options.packageManager, "clean:build")} && rollup --config rollup.config.mjs`,
         watch: `${packageManagerRun(this.options.packageManager, "clean:build")} && rollup --config rollup.config.mjs --watch`,
       });
-      packageUtils.addOrRemoveDevDependencies(
-        pkg,
-        rollupConfigs.length > 0 &&
-          (rollupKinds.size === 0 || rollupKinds.has("babel")),
-        ["@babel/core", "pob-babel"],
-      );
 
       packageUtils.addOrRemoveDevDependencies(pkg, rollupKinds.has("esbuild"), [
         "@pob/rollup-esbuild",
