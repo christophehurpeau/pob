@@ -7,7 +7,6 @@ export default [
   {
     ignores: ["**/.zed/**"],
   },
-  checkPackages.configs.recommended,
   ...configs.node,
   {
     ignores: [
@@ -44,4 +43,19 @@ export default [
       },
     ],
   }),
+  // must be lowest
+  checkPackages.configs.recommended,
+  {
+    files: ["@pob/root/package.json"],
+    rules: {
+      "check-package-dependencies/satisfies-versions-from-dependencies": [
+        "error",
+        {
+          dependencies: {
+            "lint-staged": { dependencies: ["picomatch"] },
+          },
+        },
+      ],
+    },
+  },
 ];

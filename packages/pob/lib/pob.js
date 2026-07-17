@@ -24,6 +24,7 @@ import CommonTranspilerGenerator from "./generators/common/transpiler/CommonTran
 import CommonTypescriptGenerator from "./generators/common/typescript/CommonTypescriptGenerator.js";
 import CoreBunGenerator from "./generators/core/bun/CoreBunGenerator.js";
 import CoreCIGenerator from "./generators/core/ci/CoreCIGenerator.js";
+import CoreClaudeGenerator from "./generators/core/claude/CoreClaudeGenerator.js";
 import CoreCleanGenerator from "./generators/core/clean/CoreCleanGenerator.js";
 import CoreEditorConfigGenerator from "./generators/core/editorconfig/CoreEditorConfigGenerator.js";
 import CoreGitGenerator from "./generators/core/git/CoreGitGenerator.js";
@@ -155,6 +156,11 @@ env.registerStub(
   CoreEditorConfigGenerator,
   "pob:core:editorconfig",
   `${__dirname}/generators/core/editorconfig/CoreEditorConfigGenerator.js`,
+);
+env.registerStub(
+  CoreClaudeGenerator,
+  "pob:core:claude",
+  `${__dirname}/generators/core/claude/CoreClaudeGenerator.js`,
 );
 env.registerStub(
   CoreGitGenerator,

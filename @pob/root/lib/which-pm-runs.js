@@ -1,3 +1,25 @@
+import { existsSync } from "node:fs";
+import path from "node:path";
+
+function detectFromLockfiles(cwd) {
+  if (existsSync(path.join(cwd, "yarn.lock"))) {
+    return { name: "yarn", version: "unknown" };
+  }
+  if (
+    existsSync(path.join(cwd, "pnpm-lock.yaml")) ||
+    existsSync(path.join(cwd, "pnpm-workspace.yaml"))
+  ) {
+    return { name: "pnpm", version: "unknown" };
+  }
+  if (existsSync(path.join(cwd, "bun.lock"))) {
+    return { name: "bun", version: "unknown" };
+  }
+  if (existsSync(path.join(cwd, "package-lock.json"))) {
+    return { name: "npm", version: "unknown" };
+  }
+  return undefined;
+}
+
 export function whichPmRuns() {
   const userAgent = process.env.npm_config_user_agent;
   if (!userAgent) {
@@ -8,7 +30,7 @@ export function whichPmRuns() {
       return { name: "pnpm", version: "unknown" };
     }
 
-    return undefined;
+    return detectFromLockfiles(process.cwd());
   }
 
   const pmSpec = userAgent.split(" ")[0];
