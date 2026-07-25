@@ -1,7 +1,21 @@
+import { readdirSync } from "node:fs";
 import Generator from "yeoman-generator";
+import { latestLTS } from "../../../utils/nodeVersions.js";
 import * as packageUtils from "../../../utils/package.js";
 import { packageManagerRun } from "../../../utils/packageManagerUtils.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
+
+const rootConfigExtensionsRegex = /\.config\.(?:ts|mts|cts)$/;
+
+const hasRootConfigFiles = (rootPath) => {
+  try {
+    return readdirSync(rootPath).some((name) =>
+      rootConfigExtensionsRegex.test(name),
+    );
+  } catch {
+    return false;
+  }
+};
 
 export default class MonorepoTypescriptGenerator extends Generator {
   constructor(args, opts) {
@@ -121,14 +135,35 @@ export default class MonorepoTypescriptGenerator extends Generator {
     const tsconfigCheckPath = this.destinationPath("tsconfig.check.json");
     const tsconfigBuildPath = this.destinationPath("tsconfig.build.json");
     const tsconfigTestPath = this.destinationPath("tsconfig.test.json");
+    const tsconfigRootConfigsPath = this.destinationPath(
+      "tsconfig.root-configs.json",
+    );
     this.fs.delete(tsconfigTestPath);
 
     if (!this.options.enable) {
       this.fs.delete(tsconfigPath);
       this.fs.delete(tsconfigCheckPath);
       this.fs.delete(tsconfigBuildPath);
+      this.fs.delete(tsconfigRootConfigsPath);
     } else {
       const packagePaths = JSON.parse(this.options.packagePaths);
+
+      // root config files written in typescript (e.g. vitest.config.ts) are not
+      // part of any package tsconfig, so they need a dedicated project for
+      // type-aware linting and tsc -b
+      const hasRootConfigs = hasRootConfigFiles(this.destinationPath());
+      if (hasRootConfigs) {
+        await copyAndFormatTpl(
+          this.fs,
+          this.templatePath("tsconfig.root-configs.json.ejs"),
+          tsconfigRootConfigsPath,
+          {
+            nodeVersion: latestLTS,
+          },
+        );
+      } else {
+        this.fs.delete(tsconfigRootConfigsPath);
+      }
 
       await copyAndFormatTpl(
         this.fs,
@@ -137,6 +172,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
         {
           packagePaths,
           tsConfigSuffix: false,
+          hasRootConfigs,
         },
       );
 

@@ -6,6 +6,7 @@ const { configs } = pobConfig();
 
 export default [
   ...configs.node,
+  ...configs.monorepo,
   {
     ignores: [
       "@pob/version/__fixtures__/monorepo-invalid-package-json/packages/pkg-with-invalid-json/package.json",
@@ -62,6 +63,18 @@ export default [
       },
     ],
   }),
+  {
+    files: ["*.config.{ts,mts,cts}"],
+    languageOptions: {
+      parserOptions: {
+        project: "tsconfig.root-configs.json",
+        tsconfigRootDir: import.meta.dirname,
+      },
+    },
+    settings: {
+      "import-x/core-modules": ["vitest"],
+    },
+  },
   // must be lowest
   checkPackages.configs["recommended-library"],
   {

@@ -1,6 +1,7 @@
 {
   "files": [],
   "references": [
+    { "path": "tsconfig.root-configs.json" },
     { "path": "pob-examples/typescript-lib-without-rollup/tsconfig.json" },
     { "path": "@pob/version/tsconfig.json" },
     { "path": "pob-examples/typescript-lib-rollup-esbuild/tsconfig.json" },
