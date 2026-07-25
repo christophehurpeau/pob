@@ -1,11 +1,6 @@
 import Generator from "yeoman-generator";
 import { writeAndFormatJson } from "../../../utils/writeAndFormat.js";
 
-const claudePostToolUseHook = {
-  matcher: "Edit|Write|MultiEdit",
-  hooks: [{ type: "command", command: "pob-claude-run-lint-staged" }],
-};
-
 export default class CoreClaudeGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
@@ -34,22 +29,19 @@ export default class CoreClaudeGenerator extends Generator {
       "/settings.local.json\n/skills/local.*\n",
     );
 
+    const command =
+      pkg.name === "pob-monorepo"
+        ? "node ./@pob/root/bin/pob-claude-run-lint-staged.js"
+        : "./node_modules/.bin/pob-claude-run-lint-staged";
+
+    const claudePostToolUseHook = {
+      matcher: "Edit|Write|MultiEdit",
+      hooks: [{ type: "command", command }],
+    };
+
     const existing = this.fs.readJSON(claudeSettingsPath, {
       hooks: {
-        PostToolUse: [
-          {
-            matcher: "Edit|Write|MultiEdit",
-            hooks: [
-              {
-                type: "command",
-                command:
-                  pkg.name === "pob-monorepo"
-                    ? "node ./@pob/root/bin/pob-claude-run-lint-staged.js"
-                    : "./node_modules/.bin/pob-claude-run-lint-staged",
-              },
-            ],
-          },
-        ],
+        PostToolUse: [claudePostToolUseHook],
       },
     });
 
