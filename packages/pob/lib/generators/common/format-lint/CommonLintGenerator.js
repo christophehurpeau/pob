@@ -409,6 +409,12 @@ export default class CommonFormatLintGenerator extends Generator {
       };
     })();
 
+    const isMonorepoRoot =
+      this.options.monorepo || Boolean(inMonorepo && inMonorepo.root);
+    if (isMonorepoRoot && useTypescript) {
+      flatCascade.push("...pobConfig(import.meta.url).configs.monorepo");
+    }
+
     const eslintrcBadPath = this.destinationPath(".eslintrc");
     this.fs.delete(eslintrcBadPath);
     this.fs.delete(`${eslintrcBadPath}.yml`);
