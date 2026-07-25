@@ -221,28 +221,29 @@ export default class CorePackageGenerator extends Generator {
       fs.unlinkSync(this.destinationPath("yarn-error.log"));
     }
 
+    if (pkg.name !== "@pob/root") {
+      packageUtils.removeDevDependencies(pkg, ["check-package-dependencies"]);
+    }
+    if (this.fs.exists(this.destinationPath("scripts/check-packages.mjs"))) {
+      this._fs.delete(this.destinationPath("scripts/check-packages.mjs"));
+    }
+    if (this.fs.exists(this.destinationPath("scripts/check-packages.js"))) {
+      this._fs.delete(this.destinationPath("scripts/check-packages.js"));
+    }
+
     if (this.options.inMonorepo && !this.options.isRoot) {
       packageUtils.removeScripts(pkg, ["checks"]);
-      packageUtils.removeDevDependencies(pkg, ["check-package-dependencies"]);
-    } else if (this.options.isMonorepo && this.options.isRoot) {
-      const doesMjsCheckPackagesExists = this.fs.exists(
-        this.destinationPath("scripts/check-packages.mjs"),
-      );
-      const doesJsCheckPackagesExists = this.fs.exists(
-        this.destinationPath("scripts/check-packages.js"),
-      );
-
-      if (doesJsCheckPackagesExists || doesMjsCheckPackagesExists) {
-        packageUtils.addDevDependencies(pkg, ["check-package-dependencies"]);
+    } else if (this.options.isRoot) {
+      const checksScript = pkg.scripts?.checks;
+      if (checksScript && checksScript.includes("node scripts/check-package")) {
+        pkg.scripts.checks = checksScript.replace(
+          /( && )?node scripts\/check-package\.(mjs|js)( && )?/,
+          "",
+        );
+        if (pkg.scripts.checks === "") {
+          delete pkg.scripts.checks;
+        }
       }
-
-      packageUtils.addOrRemoveScripts(
-        pkg,
-        doesMjsCheckPackagesExists || doesJsCheckPackagesExists,
-        {
-          checks: `node scripts/check-packages.${doesMjsCheckPackagesExists ? "mjs" : "js"}`,
-        },
-      );
     } else if (inMonorepo && !inMonorepo.root) {
       if (this.fs.exists("scripts/check-package.js")) {
         this.fs.delete("scripts/check-package.js");
@@ -251,50 +252,6 @@ export default class CorePackageGenerator extends Generator {
         this.fs.delete("scripts/check-package.mjs");
       }
       packageUtils.removeScripts(pkg, ["checks"]);
-    } else {
-      const doesMjsCheckPackageExists = this.fs.exists(
-        this.destinationPath("scripts/check-package.mjs"),
-      );
-      let doesJsCheckPackageExists = this.fs.exists(
-        this.destinationPath("scripts/check-package.js"),
-      );
-      const doesTsCheckPackageExists = this.fs.exists(
-        this.destinationPath("scripts/check-package.ts"),
-      );
-
-      if (pkg.type === "module") {
-        if (!doesJsCheckPackageExists && !doesTsCheckPackageExists) {
-          doesJsCheckPackageExists = true;
-          this.fs.copyTpl(
-            this.templatePath("check-package.js.ejs"),
-            this.destinationPath("scripts/check-package.ts"),
-            {
-              isLibrary: pkg.private !== true,
-            },
-          );
-        }
-      }
-      if (
-        doesJsCheckPackageExists ||
-        doesMjsCheckPackageExists ||
-        doesTsCheckPackageExists
-      ) {
-        packageUtils.addDevDependencies(pkg, ["check-package-dependencies"]);
-      }
-
-      packageUtils.addOrRemoveScripts(
-        pkg,
-        doesMjsCheckPackageExists ||
-          doesJsCheckPackageExists ||
-          doesTsCheckPackageExists,
-        {
-          checks: `node scripts/check-package.${(() => {
-            if (doesMjsCheckPackageExists) return "mjs";
-            if (doesTsCheckPackageExists) return "ts";
-            return "js";
-          })()}`,
-        },
-      );
     }
 
     if (!pkg.authors) {

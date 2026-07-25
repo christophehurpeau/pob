@@ -9,7 +9,6 @@ interface Dependencies {
   "@types/node": "24.13.3";
   "@vitest/coverage-v8": "4.1.10";
   "alp-rollup-plugin-config": "4.1.1";
-  "check-package-dependencies": "11.5.0";
   eslint: "10.7.0";
   pinst: "3.0.0";
   rollup: "4.60.4";
