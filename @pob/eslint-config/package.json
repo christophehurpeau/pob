@@ -3,12 +3,15 @@
   "version": "65.6.0",
   "description": "eslint config files",
   "keywords": [],
-  "homepage": "https://github.com/christophehurpeau/eslint-config-pob",
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
   "license": "ISC",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/christophehurpeau/eslint-config-pob.git",
+    "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "@pob/eslint-config"
   },
   "files": [
@@ -31,8 +34,8 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn '../..' run eslint --quiet '@pob/eslint-config'"
+    "lint": "pnpm run lint:eslint",
+    "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/eslint-config'"
   },
   "dependencies": {
     "@eslint/js": "^10.0.1",
@@ -66,7 +69,6 @@
       "optional": true
     }
   },
-  "prettier": "@pob/root/prettier-config",
   "engines": {
     "node": ">=22.18.0"
   },

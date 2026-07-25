@@ -2,7 +2,10 @@
   "files": [],
   "references": [
     { "path": "tsconfig.root-configs.json" },
+    { "path": "@pob/eslint-plugin/tsconfig.json" },
     { "path": "pob-examples/typescript-lib-without-rollup/tsconfig.json" },
+    { "path": "@pob/eslint-config/tsconfig.json" },
+    { "path": "@pob/eslint-config-typescript-react/tsconfig.json" },
     { "path": "@pob/version/tsconfig.json" },
     { "path": "pob-examples/typescript-lib-rollup-esbuild/tsconfig.json" },
     { "path": "pob-examples/vite-app/tsconfig.json" },

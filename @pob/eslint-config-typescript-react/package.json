@@ -3,12 +3,15 @@
   "version": "65.6.0",
   "description": "eslint config files",
   "keywords": [],
-  "homepage": "https://github.com/christophehurpeau/eslint-config-pob",
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
   "license": "ISC",
   "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
   "repository": {
     "type": "git",
-    "url": "https://github.com/christophehurpeau/eslint-config-pob.git",
+    "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "@pob/eslint-config-typescript-react"
   },
   "files": [
@@ -25,8 +28,8 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "yarn run lint:eslint",
-    "lint:eslint": "yarn '../..' run eslint --quiet '@pob/eslint-config-typescript-react'"
+    "lint": "pnpm run lint:eslint",
+    "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/eslint-config-typescript-react'"
   },
   "dependencies": {
     "@pob/eslint-config": "workspace:*",
@@ -46,7 +49,6 @@
     "eslint": "^10.0.2",
     "typescript": ">=5.0.0 <7.0.0"
   },
-  "prettier": "@pob/root/prettier-config",
   "engines": {
     "node": ">=22.18.0"
   },
