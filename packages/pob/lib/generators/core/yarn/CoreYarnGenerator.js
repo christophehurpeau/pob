@@ -1,7 +1,7 @@
 import fs from "node:fs";
 import { isDeepStrictEqual } from "node:util";
 import sortObject from "@pob/sort-object";
-import yml from "js-yaml";
+import { FAILSAFE_SCHEMA, dump, loadAll } from "js-yaml";
 import { lt } from "semver";
 import Generator from "yeoman-generator";
 import { ensureJsonFileFormatted } from "../../../utils/ensureJsonFileFormatted.js";
@@ -154,11 +154,11 @@ export default class CoreYarnGenerator extends Generator {
 
       // must be done after plugins installed
       const configString = this.fs.read(".yarnrc.yml", { defaults: "" });
-      const config =
-        yml.load(configString, {
-          schema: yml.FAILSAFE_SCHEMA,
-          json: true,
-        }) || {};
+      const [loadedConfig] = loadAll(configString, {
+        schema: FAILSAFE_SCHEMA,
+        json: true,
+      });
+      const config = loadedConfig ?? {};
       if (config.enableScripts === "true") {
         config.enableScripts = true;
       }
@@ -204,7 +204,7 @@ export default class CoreYarnGenerator extends Generator {
         await writeAndFormat(
           this.fs,
           ".yarnrc.yml",
-          yml.dump(sortObject(config), {
+          dump(sortObject(config), {
             lineWidth: 9999,
           }),
         );

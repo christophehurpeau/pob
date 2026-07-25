@@ -1,5 +1,5 @@
 import sortObject from "@pob/sort-object";
-import yml from "js-yaml";
+import { FAILSAFE_SCHEMA, dump, loadAll } from "js-yaml";
 import { lt } from "semver";
 import Generator from "yeoman-generator";
 import { writeAndFormat } from "../../../utils/writeAndFormat.js";
@@ -47,10 +47,10 @@ export default class CorePnpmGenerator extends Generator {
         this.destinationPath("pnpm-workspace.yaml"),
         { defaults: "" },
       );
-      const config =
-        yml.load(configString, {
-          schema: yml.FAILSAFE_SCHEMA,
-        }) || {};
+      const [loadedConfig] = loadAll(configString, {
+        schema: FAILSAFE_SCHEMA,
+      });
+      const config = loadedConfig ?? {};
 
       if (config.allowBuilds) {
         config.allowBuilds = Object.fromEntries(
@@ -75,7 +75,7 @@ export default class CorePnpmGenerator extends Generator {
       await writeAndFormat(
         this.fs,
         this.destinationPath("pnpm-workspace.yaml"),
-        yml.dump(sortObject(config), { lineWidth: 9999, noCompatMode: true }),
+        dump(sortObject(config), { lineWidth: 9999 }),
       );
     } else {
       if (pkg.packageManager?.startsWith("pnpm@")) {
