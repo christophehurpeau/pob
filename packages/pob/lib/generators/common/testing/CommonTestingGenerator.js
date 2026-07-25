@@ -259,21 +259,28 @@ export default class CommonTestingGenerator extends Generator {
           }
           const experimentalTestCoverage =
             pkg.name === "check-package-dependencies";
-          return `TZ=UTC ${
-            coverage && !experimentalTestCoverage
-              ? `npx c8${
-                  coverage === "generate"
-                    ? ` --reporter=${coverage === "generate" ? "json" : "lcov"}`
-                    : ""
-                } --all --src ./${this.options.srcDirectory} `
-              : ""
-          }node ${
-            this.options.typescript
-              ? `${tsTestLoaderOption ? `${tsTestLoaderOption} ` : ""}`
-              : ""
-          }${this.fs.exists("src/test-setup.ts") ? "--import ./src/test-setup.ts " : ""}--test${experimentalTestCoverage && coverage ? ` --experimental-test-coverage${coverage === "generate" ? " --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=docs/coverage.lcov" : ""} --test-coverage-include="${this.options.srcDirectory}/**/*.ts"` : ""} '${this.options.monorepo ? `${workspacesPattern}/*/` : ""}${`${
-            hasTestFolder ? "test/*" : `${this.options.srcDirectory}/**/*.test`
-          }.${this.options.typescript ? "ts" : "js"}`}'`;
+          return [
+            experimentalTestCoverage && coverage === "generate"
+              ? "mkdir -p docs && "
+              : "",
+            `TZ=UTC ${
+              coverage && !experimentalTestCoverage
+                ? `npx c8${
+                    coverage === "generate"
+                      ? ` --reporter=${coverage === "generate" ? "json" : "lcov"}`
+                      : ""
+                  } --all --src ./${this.options.srcDirectory} `
+                : ""
+            }node ${
+              this.options.typescript
+                ? `${tsTestLoaderOption ? `${tsTestLoaderOption} ` : ""}`
+                : ""
+            }${this.fs.exists("src/test-setup.ts") ? "--import ./src/test-setup.ts " : ""}--test${experimentalTestCoverage && coverage ? ` --experimental-test-coverage${coverage === "generate" ? " --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=docs/coverage.lcov" : ""} --test-coverage-include="${this.options.srcDirectory}/**/*.ts"` : ""} '${this.options.monorepo ? `${workspacesPattern}/*/` : ""}${`${
+              hasTestFolder
+                ? "test/*"
+                : `${this.options.srcDirectory}/**/*.test`
+            }.${this.options.typescript ? "ts" : "js"}`}'`,
+          ].join("");
         }
         case "bun": {
           if (this.options.packageManager !== "bun") {
