@@ -1,4 +1,3 @@
-import checkPackages from "check-package-dependencies/eslint-plugin";
 import pobConfig, { apply, tsExtensions } from "@pob/eslint-config";
 import pobTypescriptConfigReact from "@pob/eslint-config-typescript-react";
 
@@ -76,7 +75,14 @@ export default [
     },
   },
   // must be lowest
-  checkPackages.configs["recommended-library"],
+  ...configs.checkPackages,
+  {
+    settings: {
+      "check-package-dependencies": {
+        library: ["*", "!vite-app"],
+      },
+    },
+  },
   {
     files: ["@pob/root/package.json"],
     rules: {
