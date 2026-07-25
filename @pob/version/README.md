@@ -50,7 +50,7 @@ jobs:
       - name: Enable Corepack
         run: corepack enable
 
-      - uses: actions/setup-node@v6
+      - uses: actions/setup-node@v7
         with:
           node-version: 24
 
