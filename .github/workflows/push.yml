@@ -4,27 +4,6 @@ permissions:
 on: [push]
 
 jobs:
-  checks:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v7
-
-      - name: Install pnpm
-        uses: pnpm/action-setup@v6
-        with:
-          version: 11.16.0
-
-      - uses: actions/setup-node@v6
-        with:
-          node-version: 24
-
-      - name: Install Dependencies
-        run: pnpm install --frozen-lockfile
-
-      - name: Checks
-        run: pnpm run checks
-
   build:
     runs-on: ubuntu-latest
 

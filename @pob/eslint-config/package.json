@@ -1,0 +1,74 @@
+{
+  "name": "@pob/eslint-config",
+  "version": "65.6.0",
+  "description": "eslint config files",
+  "keywords": [],
+  "homepage": "https://github.com/christophehurpeau/eslint-config-pob",
+  "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/eslint-config-pob.git",
+    "directory": "@pob/eslint-config"
+  },
+  "files": [
+    "lib",
+    "utils.js"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./lib/rules/best-practices": "./lib/rules/best-practices.js",
+    "./lib/rules/code-quality": "./lib/rules/code-quality.js",
+    "./lib/rules/errors": "./lib/rules/errors.js",
+    "./lib/rules/style": "./lib/rules/style.js",
+    "./utils": "./utils.js",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "yarn run lint:eslint",
+    "lint:eslint": "yarn '../..' run eslint --quiet '@pob/eslint-config'"
+  },
+  "dependencies": {
+    "@eslint/js": "^10.0.1",
+    "@eslint/json": "^1.2.0",
+    "@pob/eslint-plugin": "workspace:*",
+    "@typescript-eslint/eslint-plugin": "8.63.0",
+    "@typescript-eslint/parser": "8.63.0",
+    "confusing-browser-globals": "^1.0.11",
+    "eslint-plugin-import-x": "^4.16.2",
+    "eslint-plugin-n": "^17.24.0",
+    "eslint-plugin-regexp": "^3.1.0",
+    "eslint-plugin-unicorn": "^64.0.0",
+    "typescript-eslint": "^8.63.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.3",
+    "eslint": "10.7.0",
+    "eslint-plugin-import-x": "4.16.2",
+    "eslint-plugin-n": "17.24.0",
+    "eslint-plugin-regexp": "3.1.0",
+    "eslint-plugin-unicorn": "64.0.0",
+    "typescript": "6.0.3",
+    "typescript-eslint": "8.63.0"
+  },
+  "peerDependencies": {
+    "eslint": "^10.0.2",
+    "typescript": ">=5.0.0 <7.0.0"
+  },
+  "peerDependenciesMeta": {
+    "typescript": {
+      "optional": true
+    }
+  },
+  "prettier": "@pob/root/prettier-config",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pob": {}
+}

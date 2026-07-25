@@ -1,0 +1,54 @@
+{
+  "name": "@pob/eslint-config-typescript-react",
+  "version": "65.6.0",
+  "description": "eslint config files",
+  "keywords": [],
+  "homepage": "https://github.com/christophehurpeau/eslint-config-pob",
+  "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/eslint-config-pob.git",
+    "directory": "@pob/eslint-config-typescript-react"
+  },
+  "files": [
+    "lib"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "yarn run lint:eslint",
+    "lint:eslint": "yarn '../..' run eslint --quiet '@pob/eslint-config-typescript-react'"
+  },
+  "dependencies": {
+    "@pob/eslint-config": "workspace:*",
+    "@pob/eslint-plugin": "workspace:*",
+    "eslint-plugin-import-x": "4.16.2",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "5.2.0"
+  },
+  "devDependencies": {
+    "@types/node": "24.13.3",
+    "@types/react": "19.2.14",
+    "react": "19.2.7",
+    "typescript": "6.0.3"
+  },
+  "peerDependencies": {
+    "eslint": "^10.0.2",
+    "typescript": ">=5.0.0 <7.0.0"
+  },
+  "prettier": "@pob/root/prettier-config",
+  "engines": {
+    "node": ">=22.18.0"
+  },
+  "pob": {}
+}

@@ -70,6 +70,7 @@ export default class CorePnpmGenerator extends Generator {
       config.minimumReleaseAge = 1440 * 3; // 3 days in minutes
       config.minimumReleaseAgeExclude = minimumReleaseAgeExcludePackages;
       config.dedupePeerDependents = true;
+      config.nodeLinker = "hoisted";
 
       await writeAndFormat(
         this.fs,

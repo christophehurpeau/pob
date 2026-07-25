@@ -54,11 +54,6 @@
       "matchSourceUrls": ["https://github.com/liwijs/liwi{/,}**"]
     },
     {
-      "groupName": "@pob/eslint-config",
-      "description": "@pob eslint configs",
-      "matchPackageNames": ["/^@pob/eslint-config/"]
-    },
-    {
       "groupName": "yeoman group",
       "matchPackageNames": ["yeoman-*", "@yeoman/*"]
     },
@@ -83,6 +78,18 @@
       "matchSourceUrls": [
         "https://github.com/conventional-changelog/conventional-changelog{/,}**"
       ]
+    },
+    {
+      "matchPackageNames": [
+        "eslint",
+        "typescript",
+        "@typescript-eslint/*",
+        "eslint-*",
+        "typescript-eslint",
+        "@eslint/*"
+      ],
+      "dependencyDashboardApproval": false,
+      "reviewers": ["christophehurpeau"]
     }
   ]
 }

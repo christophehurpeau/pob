@@ -46,17 +46,6 @@
       }
     },
     {
-      "label": "checks",
-      "problemMatcher": [],
-      "type": "npm",
-      "script": "checks",
-      "presentation": {
-        "panel": "dedicated",
-        "clear": true,
-        "isBackground": false
-      }
-    },
-    {
       "label": "clean:build",
       "problemMatcher": [],
       "type": "npm",
