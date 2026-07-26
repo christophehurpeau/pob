@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@25.0.0...pob-dependencies@25.1.0) (2026-07-26)
+
+Version bump for dependency: @pob/eslint-config-typescript-react
+
+
 ## [25.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@24.4.0...pob-dependencies@25.0.0) (2026-07-26)
 
 ### ⚠ BREAKING CHANGES

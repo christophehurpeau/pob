@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [65.8.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config-typescript-react@65.7.0...@pob/eslint-config-typescript-react@65.8.0) (2026-07-26)
+
+### Features
+
+* add monorepo and checkPackages options to typescript-react
+
 ## 65.7.0 (2026-07-26)
 
 ### Features
