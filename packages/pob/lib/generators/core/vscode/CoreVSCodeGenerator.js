@@ -76,6 +76,7 @@ export default class CoreVSCodeGenerator extends Generator {
         {
           yarn: this.options.packageManager === "yarn",
           pnp: this.options.yarnNodeLinker === "pnp",
+          typescript: this.options.typescript,
         },
       );
       await copyAndFormatTpl(
