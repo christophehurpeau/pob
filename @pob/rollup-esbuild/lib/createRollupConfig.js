@@ -54,6 +54,7 @@ export default function createRollupConfig({
         generatedCode: { preset: "es2015" },
         externalLiveBindings: false,
         freeze: false,
+        banner: env.executable ? "#!/usr/bin/env node" : undefined,
       })),
       onwarn(warning, warn) {
         // throw on certain warnings
