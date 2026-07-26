@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@24.4.0...pob-dependencies@25.0.0) (2026-07-26)
+
+### ⚠ BREAKING CHANGES
+
+* remove check-package script in preparation for check-package-dependencies included in @pob/root and as eslint plugin
+
+### Features
+
+* bring in pob monorepo the eslint configs and plugins
+* **eslint-config:** add plugin check-package-dependencies
+* remove check-package script in preparation for check-package-dependencies included in @pob/root and as eslint plugin
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [24.4.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@24.3.0...pob-dependencies@24.4.0) (2026-07-17)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@9.1.3...@pob/rollup-esbuild@9.2.0) (2026-07-26)
+
+### Features
+
+* add shebang to generated config for executable environments
+
 ## [9.1.3](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@9.1.2...@pob/rollup-esbuild@9.1.3) (2026-07-17)
 
 Version bump for dependency: @pob/rollup

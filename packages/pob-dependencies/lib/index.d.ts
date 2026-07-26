@@ -1,8 +1,8 @@
 interface Dependencies {
   "@playwright/test": "1.61.1";
   "@pob/esbuild": "workspace:*";
-  "@pob/eslint-config": "65.6.0";
-  "@pob/eslint-config-typescript-react": "65.6.0";
+  "@pob/eslint-config": "workspace:*";
+  "@pob/eslint-config-typescript-react": "workspace:*";
   "@pob/pretty-pkg": "workspace:*";
   "@pob/rollup-esbuild": "workspace:*";
   "@pob/rollup-typescript": "workspace:*";

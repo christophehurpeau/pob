@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## 65.7.0 (2026-07-26)
+
+### Features
+
+* bring in pob monorepo the eslint configs and plugins
+* **eslint-config:** add plugin check-package-dependencies
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-plugin
+
+
 ## [65.6.0](https://github.com/christophehurpeau/eslint-config-pob/compare/v65.5.1...v65.6.0) (2026-06-28)
 
 ### Bug Fixes

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [25.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@24.7.0...@pob/root@25.0.0) (2026-07-26)
+
+### Features
+
+* update lint-staged
+* upgrade actions/setup-node from v6 to v7 across workflow files
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [24.7.0](https://github.com/christophehurpeau/pob/compare/@pob/root@24.6.0...@pob/root@24.7.0) (2026-07-17)
 
 ### Features

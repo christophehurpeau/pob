@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [36.0.0](https://github.com/christophehurpeau/pob/compare/pob@35.7.0...pob@36.0.0) (2026-07-26)
+
+### ⚠ BREAKING CHANGES
+
+* remove check-package script in preparation for check-package-dependencies included in @pob/root and as eslint plugin
+
+### Features
+
+* add tsconfig.root-configs.json for root typescript config files
+* bring in pob monorepo the eslint configs and plugins
+* include configs.monorepo in generated monorepo root eslint config
+* remove check-package script in preparation for check-package-dependencies included in @pob/root and as eslint plugin
+* upgrade actions/setup-node from v6 to v7 across workflow files
+
+### Bug Fixes
+
+* add missing mkdir for experimental node coverage
+* **pob:** fix claude generator hook for pob-monorepo
+* **pob:** wrong fs
+* update ignorePaths for expo and remove unsupported Tamagui dependency
+* update js-yaml usage to version 5.2.1 and refactor loading/dumping logic
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [35.7.0](https://github.com/christophehurpeau/pob/compare/pob@35.6.0...pob@35.7.0) (2026-07-17)
 
 ### Features
