@@ -1,3 +1,4 @@
+#!/usr/bin/env node
 import fs$1, { existsSync } from 'node:fs';
 import { program, Option } from 'commander';
 import { LoggerCLI } from 'nightingale';
