@@ -90,8 +90,8 @@ importers:
         specifier: 8.63.0
         version: 8.63.0(eslint@10.7.0)(typescript@6.0.3)
       check-package-dependencies:
-        specifier: ^12.0.0
-        version: 12.0.0(eslint@10.7.0)
+        specifier: ^12.1.0
+        version: 12.1.0(eslint@10.7.0)
       confusing-browser-globals:
         specifier: ^1.0.11
         version: 1.0.11
@@ -2700,8 +2700,8 @@ packages:
   chardet@2.1.1:
     resolution: {integrity: sha512-PsezH1rqdV9VvyNhxxOW32/d75r01NY7TQCmOqomRo15ZSOKbpTFVsfjghxo6JloQUCGnH4k1LGu0R4yCLlWQQ==}
 
-  check-package-dependencies@12.0.0:
-    resolution: {integrity: sha512-j5mpRQd6sadNOiwAVA90Xbli/kFBdKSxGZg51SVuhZqNfjiWVRKojew15nPqD9YnB5KIRYc7z1pC6NRK1GlakQ==}
+  check-package-dependencies@12.1.0:
+    resolution: {integrity: sha512-eAlJVQH8J65VUaOQzL9O0n+sYN7hcNcHegGFKY7zgO8WmQPPjyPTP7dMYJzrVm+tOKWDvt6BaGn/Ep1H5+1hNQ==}
     engines: {node: '>=22.18.0'}
     hasBin: true
     peerDependencies:
@@ -7399,7 +7399,7 @@ snapshots:
 
   chardet@2.1.1: {}
 
-  check-package-dependencies@12.0.0(eslint@10.7.0):
+  check-package-dependencies@12.1.0(eslint@10.7.0):
     dependencies:
       '@eslint/plugin-kit': 0.7.2
       jsonc-parser: 3.3.1
