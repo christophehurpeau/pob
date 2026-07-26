@@ -61,11 +61,7 @@ const hasData = (packages, configs) =>
 const hasTamagui = (packages, configs) =>
   packages.some(
     (pkg) =>
-      !!(
-        pkg.dependencies?.tamagui ||
-        pkg.dependencies?.["@tamagui/core"] ||
-        pkg.dependencies?.alouette
-      ),
+      !!(pkg.dependencies?.tamagui || pkg.dependencies?.["@tamagui/core"]),
   );
 
 export default class PobMonorepoGenerator extends Generator {
@@ -269,9 +265,13 @@ export default class PobMonorepoGenerator extends Generator {
         `${this.pobLernaConfig.e2eTesting === "." || this.pobLernaConfig.e2eTesting === true ? "" : `/${this.pobLernaConfig.e2eTesting}`}/test-results/`,
     ].filter(Boolean);
 
-    const gitignorePaths = [
-      hasTamagui(this.packages, this.packageConfigs) && ".tamagui",
-    ].filter(Boolean);
+    if (hasTamagui(this.packages, this.packageConfigs)) {
+      throw new Error(
+        "Tamagui is no longer supported. Please migrate to native-wind.",
+      );
+    }
+
+    const gitignorePaths = [].filter(Boolean);
 
     this.composeWith("pob:common:format-lint", {
       monorepo: true,
