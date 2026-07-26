@@ -7,6 +7,7 @@ import { writeAndFormat } from "../../../utils/writeAndFormat.js";
 const minimumReleaseAgeExcludePackages = [
   "@pob/*",
   "pob-dependencies",
+  "check-package-dependencies",
   "alouette",
   "alouette-icons",
   "nightingale",
