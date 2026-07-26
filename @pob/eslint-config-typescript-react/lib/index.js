@@ -71,6 +71,9 @@ export default () => {
       allowImplicitReturnType: configs.allowImplicitReturnType,
       app: configs.app,
 
+      monorepo: configs.monorepo,
+      checkPackages: configs.checkPackages,
+
       "react-native": [
         {
           settings: {
