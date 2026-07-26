@@ -225,10 +225,10 @@ export default class CorePackageGenerator extends Generator {
       packageUtils.removeDevDependencies(pkg, ["check-package-dependencies"]);
     }
     if (this.fs.exists(this.destinationPath("scripts/check-packages.mjs"))) {
-      this._fs.delete(this.destinationPath("scripts/check-packages.mjs"));
+      this.fs.delete(this.destinationPath("scripts/check-packages.mjs"));
     }
     if (this.fs.exists(this.destinationPath("scripts/check-packages.js"))) {
-      this._fs.delete(this.destinationPath("scripts/check-packages.js"));
+      this.fs.delete(this.destinationPath("scripts/check-packages.js"));
     }
 
     if (this.options.inMonorepo && !this.options.isRoot) {
