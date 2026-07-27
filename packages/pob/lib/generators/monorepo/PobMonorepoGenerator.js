@@ -157,6 +157,12 @@ export default class PobMonorepoGenerator extends Generator {
       return;
     }
 
+    if (this.pobLernaConfig.ciPushWorkflow) {
+      throw new Error(
+        "ciPushWorkflow is deprecated, use disablePushWorkflow instead",
+      );
+    }
+
     this.pobLernaConfig = await this.prompt([
       {
         type: "confirm",
@@ -169,10 +175,10 @@ export default class PobMonorepoGenerator extends Generator {
       },
       {
         type: "confirm",
-        name: "ciPushWorkflow",
-        message: "Would you like ci push workflow ?",
+        name: "disablePushWorkflow",
+        message: "Would you like to DISABLE push workflow ?",
         when: (answers) => answers.ci,
-        default: config.ciPushWorkflow == null ? true : config.ciPushWorkflow,
+        default: config.disablePushWorkflow,
       },
       {
         type: "confirm",
@@ -259,7 +265,7 @@ export default class PobMonorepoGenerator extends Generator {
       documentation: !!this.pobLernaConfig.documentation,
       codecov: this.pobLernaConfig.testing && this.pobLernaConfig.codecov,
       ci: this.pobLernaConfig.ci,
-      ciPushWorkflow: this.pobLernaConfig.ciPushWorkflow,
+      disablePushWorkflow: this.pobLernaConfig.disablePushWorkflow,
       packageManager: this.options.packageManager,
       isApp: this.options.isAppProject,
       onlyLatestLTS: this.options.onlyLatestLTS,

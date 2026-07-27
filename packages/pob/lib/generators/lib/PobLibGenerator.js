@@ -321,7 +321,6 @@ export default class PobLibGenerator extends Generator {
       documentation: !!this.pobjson.documentation,
       codecov: this.pobjson.testing && this.pobjson.testing.codecov,
       ci: this.options.ci,
-      ciPushWorkflow: this.options.ci,
       packageManager,
       isApp: false,
       splitCIJobs: false,

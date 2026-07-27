@@ -288,7 +288,6 @@ export default class PobAppGenerator extends Generator {
       documentation: false,
       codecov: this.appConfig.codecov,
       ci: this.options.ci,
-      ciPushWorkflow: this.options.ci,
       packageManager: this.options.packageManager,
       isApp: true,
       splitCIJobs: false,
