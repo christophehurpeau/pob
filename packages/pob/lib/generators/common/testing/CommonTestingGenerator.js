@@ -39,6 +39,12 @@ export default class CommonTestingGenerator extends Generator {
       description: "ci",
     });
 
+    this.option("ciPushWorkflow", {
+      type: Boolean,
+      required: true,
+      description: "push workflow enabled",
+    });
+
     this.option("typescript", {
       type: Boolean,
       required: true,
@@ -124,6 +130,7 @@ export default class CommonTestingGenerator extends Generator {
         testing: this.options.enable,
         testRunner: this.options.runner,
         e2eTesting: this.options.e2eTesting,
+        push: this.options.pushWorkflow,
         build: this.options.build,
         typescript: this.options.typescript,
         documentation: this.options.documentation,

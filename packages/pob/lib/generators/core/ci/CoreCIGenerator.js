@@ -20,6 +20,12 @@ export default class CoreCIGenerator extends Generator {
       description: "enable ci",
     });
 
+    this.option("push", {
+      type: Boolean,
+      default: true,
+      description: "enable push workflow",
+    });
+
     this.option("build", {
       type: Boolean,
       default: true,
@@ -113,57 +119,60 @@ export default class CoreCIGenerator extends Generator {
         this.options.testing && !!pkg.scripts && !!pkg.scripts.test;
       const build = this.options.build;
 
-      await copyAndFormatTpl(
-        this.fs,
-        this.templatePath(
-          this.options.splitJobs
-            ? "github-action-push-workflow-split.yml.ejs"
-            : "github-action-push-workflow.yml.ejs",
-        ),
-        this.destinationPath(".github/workflows/push.yml"),
-        {
-          packageManager: this.options.packageManager || "yarn",
-          disableYarnGitCache: this.options.disableYarnGitCache,
-          testing,
-          e2eTesting:
-            this.options.e2eTesting && this.options.e2eTesting !== "false"
-              ? this.options.e2eTesting
-              : false,
-          checks,
-          documentation: this.options.documentation,
-          build,
-          typescript: this.options.typescript,
-          codecov: this.options.codecov,
-          onlyLatestLTS: this.options.onlyLatestLTS,
-          isReleasePleaseEnabled: this.isReleasePleaseEnabled,
-          publishSinglePackage: this.isReleasePleaseEnabled && !pkg.private,
-          publishMonorepo:
-            this.isReleasePleaseEnabled &&
-            inMonorepo &&
-            inMonorepo.root &&
-            inMonorepo.pobConfig?.project?.type === "lib",
-          nodeLatestMajorVersion: latestLTS,
-          nodeMaintenanceMajorVersion: maintenanceLTS,
-          packageManagerRun,
-          packageManagerExec,
-        },
-      );
-
-      ciContexts.push(
-        "reviewflow",
-        ...(this.options.splitJobs
-          ? [
-              checks && "checks",
-              build && "build",
-              "lint",
-              testing && !this.options.onlyLatestLTS && `test (${latestLTS})`,
-              testing && `test (${maintenanceLTS})`,
-            ].filter(Boolean)
-          : [
-              !this.options.onlyLatestLTS && `build (${latestLTS}.x)`,
-              `build (${maintenanceLTS}.x)`,
-            ].filter(Boolean)),
-      );
+      if (this.options.push) {
+        await copyAndFormatTpl(
+          this.fs,
+          this.templatePath(
+            this.options.splitJobs
+              ? "github-action-push-workflow-split.yml.ejs"
+              : "github-action-push-workflow.yml.ejs",
+          ),
+          this.destinationPath(".github/workflows/push.yml"),
+          {
+            packageManager: this.options.packageManager || "yarn",
+            disableYarnGitCache: this.options.disableYarnGitCache,
+            testing,
+            e2eTesting:
+              this.options.e2eTesting && this.options.e2eTesting !== "false"
+                ? this.options.e2eTesting
+                : false,
+            checks,
+            documentation: this.options.documentation,
+            build,
+            typescript: this.options.typescript,
+            codecov: this.options.codecov,
+            onlyLatestLTS: this.options.onlyLatestLTS,
+            isReleasePleaseEnabled: this.isReleasePleaseEnabled,
+            publishSinglePackage: this.isReleasePleaseEnabled && !pkg.private,
+            publishMonorepo:
+              this.isReleasePleaseEnabled &&
+              inMonorepo &&
+              inMonorepo.root &&
+              inMonorepo.pobConfig?.project?.type === "lib",
+            nodeLatestMajorVersion: latestLTS,
+            nodeMaintenanceMajorVersion: maintenanceLTS,
+            packageManagerRun,
+            packageManagerExec,
+          },
+        );
+        ciContexts.push(
+          "reviewflow",
+          ...(this.options.splitJobs
+            ? [
+                checks && "checks",
+                build && "build",
+                "lint",
+                testing && !this.options.onlyLatestLTS && `test (${latestLTS})`,
+                testing && `test (${maintenanceLTS})`,
+              ].filter(Boolean)
+            : [
+                !this.options.onlyLatestLTS && `build (${latestLTS}.x)`,
+                `build (${maintenanceLTS}.x)`,
+              ].filter(Boolean)),
+        );
+      } else {
+        this.fs.delete(this.destinationPath(".github/workflows/push.yml"));
+      }
     } else {
       this.fs.delete(this.destinationPath(".github/workflows/push.yml"));
     }

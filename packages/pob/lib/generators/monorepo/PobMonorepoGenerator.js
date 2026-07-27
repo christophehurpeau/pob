@@ -169,6 +169,13 @@ export default class PobMonorepoGenerator extends Generator {
       },
       {
         type: "confirm",
+        name: "ciPushWorkflow",
+        message: "Would you like ci push workflow ?",
+        when: (answers) => answers.ci,
+        default: config.ciPushWorkflow == null ? true : config.ciPushWorkflow,
+      },
+      {
+        type: "confirm",
         name: "testing",
         message: "Would you like testing ?",
         when: (answers) => answers.ci,
@@ -252,6 +259,7 @@ export default class PobMonorepoGenerator extends Generator {
       documentation: !!this.pobLernaConfig.documentation,
       codecov: this.pobLernaConfig.testing && this.pobLernaConfig.codecov,
       ci: this.pobLernaConfig.ci,
+      ciPushWorkflow: this.pobLernaConfig.ciPushWorkflow,
       packageManager: this.options.packageManager,
       isApp: this.options.isAppProject,
       onlyLatestLTS: this.options.onlyLatestLTS,
