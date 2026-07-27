@@ -20,10 +20,10 @@ export default class CoreCIGenerator extends Generator {
       description: "enable ci",
     });
 
-    this.option("push", {
+    this.option("disablePushWorkflow", {
       type: Boolean,
       default: true,
-      description: "enable push workflow",
+      description: "disable push workflow",
     });
 
     this.option("build", {
@@ -119,7 +119,7 @@ export default class CoreCIGenerator extends Generator {
         this.options.testing && !!pkg.scripts && !!pkg.scripts.test;
       const build = this.options.build;
 
-      if (this.options.push) {
+      if (!this.options.disablePushWorkflow) {
         await copyAndFormatTpl(
           this.fs,
           this.templatePath(
