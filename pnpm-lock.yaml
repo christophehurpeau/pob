@@ -373,8 +373,8 @@ importers:
         specifier: 4.1.5
         version: 4.1.5(@types/node@24.13.3)(@types/vinyl@2.0.12)
       mem-fs-editor:
-        specifier: 12.0.4
-        version: 12.0.4(@types/node@24.13.3)(mem-fs@4.1.5(@types/node@24.13.3)(@types/vinyl@2.0.12))(supports-color@7.2.0)
+        specifier: 12.0.6
+        version: 12.0.6(@types/node@24.13.3)(mem-fs@4.1.5(@types/node@24.13.3)(@types/vinyl@2.0.12))(supports-color@7.2.0)
       minimist:
         specifier: 1.2.8
         version: 1.2.8
@@ -3045,8 +3045,8 @@ packages:
     resolution: {integrity: sha512-UgGlf8IW75je7HZjNDpJdCv4cGJWIi6yumFdZ0R7A8/CIhQiWUjyGLCxdHpd8bmyD1gnkfUNK0oeOXqUS2cpfQ==}
     engines: {ecmascript: '>= es5', node: '>=4'}
 
-  ejs@5.0.2:
-    resolution: {integrity: sha512-IpbUaI/CAW86l3f+T8zN0iggSc0LmMZLcIW5eRVStLVNCoTXkE0YlncbbH50fp8Cl6zHIky0sW2uUbhBqGw0Jw==}
+  ejs@6.0.1:
+    resolution: {integrity: sha512-UaaM14yby8U3k02ihS1Bmj5Kz2d7CCQM1scxpgs4Mhkq8F1wR2gl3+Ts4h5Ne4Mnt7M9m4Dw7jsuMr3+xO4vZA==}
     engines: {node: '>=0.12.18'}
     hasBin: true
 
@@ -4035,9 +4035,9 @@ packages:
   mdurl@2.0.0:
     resolution: {integrity: sha512-Lf+9+2r+Tdp5wXDXC4PcIBjTDtq4UKjCPMQhKIuzpJNW0b96kVqSwW0bT7FhRSfmAiFYgP+SCRvdrDozfh0U5w==}
 
-  mem-fs-editor@12.0.4:
-    resolution: {integrity: sha512-gc8b4VlisaGp5W+ot2f4Xc8jUgKnMn5UR2mKsdm8UdbESYCdSiQKqioktPu8gJ0Uxd8gV/m/M16Pp5n1Ge8pjA==}
-    engines: {node: '>=20.0.0'}
+  mem-fs-editor@12.0.6:
+    resolution: {integrity: sha512-I8SCe5xl6kVaoiJTJg33aW/s5wsvjG61kXy3TzH17tr8ZfgkBZFDTBQqwcZMSKx7VBAYgQFJEj3f38qXIWE44Q==}
+    engines: {node: 20 || >=22}
     peerDependencies:
       '@types/node': '>=20'
       mem-fs: ^4.0.0
@@ -7345,7 +7345,7 @@ snapshots:
       diff: 9.0.0
       isbinaryfile: 5.0.7
       mem-fs: 4.1.5(@types/node@24.13.3)(@types/vinyl@2.0.12)
-      mem-fs-editor: 12.0.4(@types/node@24.13.3)(mem-fs@4.1.5(@types/node@24.13.3)(@types/vinyl@2.0.12))(supports-color@7.2.0)
+      mem-fs-editor: 12.0.6(@types/node@24.13.3)(mem-fs@4.1.5(@types/node@24.13.3)(@types/vinyl@2.0.12))(supports-color@7.2.0)
       minimatch: 10.2.5
       p-transform: 5.0.1
       pretty-bytes: 7.1.0
@@ -7788,7 +7788,7 @@ snapshots:
     dependencies:
       version-range: 4.15.0
 
-  ejs@5.0.2: {}
+  ejs@6.0.1: {}
 
   electron-to-chromium@1.5.374: {}
 
@@ -8921,7 +8921,7 @@ snapshots:
 
   mdurl@2.0.0: {}
 
-  mem-fs-editor@12.0.4(@types/node@24.13.3)(mem-fs@4.1.5(@types/node@24.13.3)(@types/vinyl@2.0.12))(supports-color@7.2.0):
+  mem-fs-editor@12.0.6(@types/node@24.13.3)(mem-fs@4.1.5(@types/node@24.13.3)(@types/vinyl@2.0.12))(supports-color@7.2.0):
     dependencies:
       '@types/ejs': 3.1.5
       '@types/picomatch': 4.0.3
@@ -8929,7 +8929,7 @@ snapshots:
       commondir: 1.0.1
       debug: 4.4.3(supports-color@7.2.0)
       deep-extend: 0.6.0
-      ejs: 5.0.2
+      ejs: 6.0.1
       isbinaryfile: 5.0.7
       mem-fs: 4.1.5(@types/node@24.13.3)(@types/vinyl@2.0.12)
       minimatch: 10.2.5
@@ -10322,7 +10322,7 @@ snapshots:
       locate-path: 8.0.0
       lodash-es: 4.18.1
       mem-fs: 4.1.5(@types/node@24.13.3)(@types/vinyl@2.0.12)
-      mem-fs-editor: 12.0.4(@types/node@24.13.3)(mem-fs@4.1.5(@types/node@24.13.3)(@types/vinyl@2.0.12))(supports-color@7.2.0)
+      mem-fs-editor: 12.0.6(@types/node@24.13.3)(mem-fs@4.1.5(@types/node@24.13.3)(@types/vinyl@2.0.12))(supports-color@7.2.0)
       semver: 7.8.5
       slash: 5.1.0
       untildify: 6.0.0
@@ -10345,7 +10345,7 @@ snapshots:
       latest-version: 9.0.0
       lodash-es: 4.18.1
       mem-fs: 4.1.5(@types/node@24.13.3)(@types/vinyl@2.0.12)
-      mem-fs-editor: 12.0.4(@types/node@24.13.3)(mem-fs@4.1.5(@types/node@24.13.3)(@types/vinyl@2.0.12))(supports-color@7.2.0)
+      mem-fs-editor: 12.0.6(@types/node@24.13.3)(mem-fs@4.1.5(@types/node@24.13.3)(@types/vinyl@2.0.12))(supports-color@7.2.0)
       minimist: 1.2.8
       read-package-up: 12.0.0
       semver: 7.8.5
