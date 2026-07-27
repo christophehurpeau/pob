@@ -81,10 +81,13 @@ export default class MonorepoTypescriptGenerator extends Generator {
       delete pkg.scripts.flow;
     }
 
+    // "typescript" is aliased to the typescript 6 api package, still required by
+    // typescript-eslint and typedoc. "@typescript/native" is typescript 7, which
+    // provides the "tsc" binary.
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       pkg.name === "@pob/eslint-config-monorepo" || this.options.enable,
-      ["typescript"],
+      ["typescript", "@typescript/native"],
     );
 
     if (this.options.enable) {

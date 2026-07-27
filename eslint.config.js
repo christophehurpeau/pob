@@ -84,6 +84,15 @@ export default [
     },
   },
   {
+    // "typescript" and "@typescript/native" are installed through npm aliases,
+    // which check-package-dependencies doesn't support yet: it passes the raw
+    // "npm:pkg@version" value to semver, which throws "Invalid comparator".
+    files: ["package.json"],
+    rules: {
+      "check-package-dependencies/consistent-workspace-dependencies": "off",
+    },
+  },
+  {
     files: ["@pob/root/package.json"],
     rules: {
       "check-package-dependencies/satisfies-versions-from-dependencies": [

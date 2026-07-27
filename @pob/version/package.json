@@ -66,8 +66,9 @@
     "@pob/rollup-esbuild": "workspace:*",
     "@types/node": "24.13.3",
     "@types/semver": "7.7.1",
+    "@typescript/native": "npm:typescript@7.0.2",
     "type-fest": "5.8.0",
-    "typescript": "6.0.3"
+    "typescript": "npm:@typescript/typescript6@6.0.2"
   },
   "engines": {
     "node": ">=24.14.1"
