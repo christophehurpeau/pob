@@ -151,19 +151,19 @@ export default class PobMonorepoGenerator extends Generator {
     const config = this.config.get("monorepo");
 
     if (this.options.updateOnly && config) {
-      this.pobLernaConfig = config;
-      this.pobLernaConfig.packageNames = this.packageNames;
-      this.config.set("monorepo", this.pobLernaConfig);
+      this.pobMonorepoConfig = config;
+      this.pobMonorepoConfig.packageNames = this.packageNames;
+      this.config.set("monorepo", this.pobMonorepoConfig);
       return;
     }
 
-    if (this.pobLernaConfig.ciPushWorkflow) {
+    if (this.pobMonorepoConfig.ciPushWorkflow) {
       throw new Error(
         "ciPushWorkflow is deprecated, use disablePushWorkflow instead",
       );
     }
 
-    this.pobLernaConfig = await this.prompt([
+    this.pobMonorepoConfig = await this.prompt([
       {
         type: "confirm",
         name: "ci",
@@ -229,8 +229,8 @@ export default class PobMonorepoGenerator extends Generator {
         default: config ? config.eslint : true,
       },
     ]);
-    this.pobLernaConfig.packageNames = this.packageNames;
-    this.config.set("monorepo", this.pobLernaConfig);
+    this.pobMonorepoConfig.packageNames = this.packageNames;
+    this.config.set("monorepo", this.pobMonorepoConfig);
     this.config.delete("pob-config");
   }
 
@@ -239,7 +239,7 @@ export default class PobMonorepoGenerator extends Generator {
 
     const packageNames = this.packageNames;
     const packagePaths = this.packageLocations.filter(
-      this.pobLernaConfig.typescript
+      this.pobMonorepoConfig.typescript
         ? (packagePath) => fs.existsSync(`${packagePath}/tsconfig.json`)
         : Boolean,
     );
@@ -255,17 +255,17 @@ export default class PobMonorepoGenerator extends Generator {
 
     this.composeWith("pob:common:testing", {
       monorepo: true,
-      enable: this.pobLernaConfig.testing,
-      runner: this.pobLernaConfig.testRunner,
+      enable: this.pobMonorepoConfig.testing,
+      runner: this.pobMonorepoConfig.testRunner,
       disableYarnGitCache: this.options.disableYarnGitCache,
-      testing: this.pobLernaConfig.testing,
-      e2eTesting: this.pobLernaConfig.e2eTesting,
-      build: this.pobLernaConfig.typescript === true,
-      typescript: this.pobLernaConfig.typescript,
-      documentation: !!this.pobLernaConfig.documentation,
-      codecov: this.pobLernaConfig.testing && this.pobLernaConfig.codecov,
-      ci: this.pobLernaConfig.ci,
-      disablePushWorkflow: this.pobLernaConfig.disablePushWorkflow,
+      testing: this.pobMonorepoConfig.testing,
+      e2eTesting: this.pobMonorepoConfig.e2eTesting,
+      build: this.pobMonorepoConfig.typescript === true,
+      typescript: this.pobMonorepoConfig.typescript,
+      documentation: !!this.pobMonorepoConfig.documentation,
+      codecov: this.pobMonorepoConfig.testing && this.pobMonorepoConfig.codecov,
+      ci: this.pobMonorepoConfig.ci,
+      disablePushWorkflow: this.pobMonorepoConfig.disablePushWorkflow,
       packageManager: this.options.packageManager,
       isApp: this.options.isAppProject,
       onlyLatestLTS: this.options.onlyLatestLTS,
@@ -273,10 +273,10 @@ export default class PobMonorepoGenerator extends Generator {
     });
 
     const rootIgnorePaths = [
-      this.pobLernaConfig.e2eTesting &&
-        `${this.pobLernaConfig.e2eTesting === "." || this.pobLernaConfig.e2eTesting === true ? "" : `/${this.pobLernaConfig.e2eTesting}`}/playwright-report/`,
-      this.pobLernaConfig.e2eTesting &&
-        `${this.pobLernaConfig.e2eTesting === "." || this.pobLernaConfig.e2eTesting === true ? "" : `/${this.pobLernaConfig.e2eTesting}`}/test-results/`,
+      this.pobMonorepoConfig.e2eTesting &&
+        `${this.pobMonorepoConfig.e2eTesting === "." || this.pobMonorepoConfig.e2eTesting === true ? "" : `/${this.pobMonorepoConfig.e2eTesting}`}/playwright-report/`,
+      this.pobMonorepoConfig.e2eTesting &&
+        `${this.pobMonorepoConfig.e2eTesting === "." || this.pobMonorepoConfig.e2eTesting === true ? "" : `/${this.pobMonorepoConfig.e2eTesting}`}/test-results/`,
     ].filter(Boolean);
 
     if (hasTamagui(this.packages, this.packageConfigs)) {
@@ -289,12 +289,12 @@ export default class PobMonorepoGenerator extends Generator {
 
     this.composeWith("pob:common:format-lint", {
       monorepo: true,
-      documentation: this.pobLernaConfig.documentation,
+      documentation: this.pobMonorepoConfig.documentation,
       storybook: pkg?.devDependencies?.storybook,
-      typescript: this.pobLernaConfig.typescript,
-      build: this.pobLernaConfig.typescript === true,
-      testing: this.pobLernaConfig.testing,
-      testRunner: this.pobLernaConfig.testRunner,
+      typescript: this.pobMonorepoConfig.typescript,
+      build: this.pobMonorepoConfig.typescript === true,
+      testing: this.pobMonorepoConfig.testing,
+      testRunner: this.pobMonorepoConfig.testRunner,
       packageManager: this.options.packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
       appTypes: JSON.stringify(getAppTypes(this.packageConfigs)),
@@ -310,8 +310,8 @@ export default class PobMonorepoGenerator extends Generator {
     });
 
     this.composeWith("pob:lib:doc", {
-      enabled: this.pobLernaConfig.documentation,
-      testing: this.pobLernaConfig.testing,
+      enabled: this.pobMonorepoConfig.documentation,
+      testing: this.pobMonorepoConfig.testing,
       packageNames: JSON.stringify(packageNames),
       packagePaths: JSON.stringify(packagePaths),
       packageManager: this.options.packageManager,
@@ -322,9 +322,9 @@ export default class PobMonorepoGenerator extends Generator {
       monorepo: true,
       packageManager: this.options.packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
-      typescript: this.pobLernaConfig.typescript,
-      testing: this.pobLernaConfig.testing,
-      testRunner: this.pobLernaConfig.testRunner,
+      typescript: this.pobMonorepoConfig.typescript,
+      testing: this.pobMonorepoConfig.testing,
+      testRunner: this.pobMonorepoConfig.testRunner,
       packageNames: JSON.stringify(packageNames),
       packageLocations: JSON.stringify(this.packageLocations),
     });
@@ -332,9 +332,9 @@ export default class PobMonorepoGenerator extends Generator {
     // Always add a gitignore, because npm publish uses it.
     this.composeWith("pob:core:gitignore", {
       root: true,
-      typescript: this.pobLernaConfig.typescript,
-      documentation: this.pobLernaConfig.documentation,
-      testing: this.pobLernaConfig.testing,
+      typescript: this.pobMonorepoConfig.typescript,
+      documentation: this.pobMonorepoConfig.documentation,
+      testing: this.pobMonorepoConfig.testing,
       // TODO add workspaces paths like we do in format-lint
       paths: [
         // TODO remove gitignorePaths
@@ -342,7 +342,7 @@ export default class PobMonorepoGenerator extends Generator {
         ...rootIgnorePaths,
       ].join("\n"),
       // todo: fix this using workspaces
-      // buildDirectory: this.pobLernaConfig.typescript ? `/*/build` : "",
+      // buildDirectory: this.pobMonorepoConfig.typescript ? `/*/build` : "",
     });
 
     this.composeWith("pob:common:remove-old-dependencies");
@@ -351,20 +351,20 @@ export default class PobMonorepoGenerator extends Generator {
       enable: true,
       packageManager: this.options.packageManager,
       enablePublish: !this.options.isAppProject,
-      withBabel: this.pobLernaConfig.typescript,
+      withBabel: this.pobMonorepoConfig.typescript,
       isMonorepo: true,
-      ci: this.pobLernaConfig.ci,
+      ci: this.pobMonorepoConfig.ci,
       disableYarnGitCache: this.options.disableYarnGitCache,
       updateOnly: this.options.updateOnly,
     });
 
     this.composeWith("pob:monorepo:typescript", {
-      enable: this.pobLernaConfig.typescript,
-      checkOnly: this.pobLernaConfig.typescript === "check-only",
+      enable: this.pobMonorepoConfig.typescript,
+      checkOnly: this.pobMonorepoConfig.typescript === "check-only",
       isAppProject: this.options.isAppProject,
       packageNames: JSON.stringify(packageNames),
       packagePaths: JSON.stringify(packagePaths),
-      testRunner: this.pobLernaConfig.testRunner,
+      testRunner: this.pobMonorepoConfig.testRunner,
       onlyLatestLTS: this.options.onlyLatestLTS,
       packageManager: this.options.packageManager,
     });
