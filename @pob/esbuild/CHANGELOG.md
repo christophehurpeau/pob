@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.0](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@6.1.2...@pob/esbuild@7.0.0) (2026-07-27)
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to typescript 7, keeping typescript 6 for eslint (#2808)
+
+### Features
+
+* upgrade to typescript 7, keeping typescript 6 for eslint ([#2808](https://github.com/christophehurpeau/pob/issues/2808))
+
 ## [6.1.2](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@6.1.1...@pob/esbuild@6.1.2) (2026-07-04)
 
 ### Bug Fixes

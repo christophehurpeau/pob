@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.55.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild@0.54.0...example-typescript-lib-rollup-esbuild@0.55.0) (2026-07-27)
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to typescript 7, keeping typescript 6 for eslint (#2808)
+
+### Features
+
+* upgrade to typescript 7, keeping typescript 6 for eslint ([#2808](https://github.com/christophehurpeau/pob/issues/2808))
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [0.54.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild@0.53.4...example-typescript-lib-rollup-esbuild@0.54.0) (2026-07-26)
 
 Version bump for dependency: @pob/rollup-esbuild

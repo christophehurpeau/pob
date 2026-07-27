@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [37.0.0](https://github.com/christophehurpeau/pob/compare/pob@36.1.0...pob@37.0.0) (2026-07-27)
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to typescript 7, keeping typescript 6 for eslint (#2808)
+
+### Features
+
+* add 'check-package-dependencies' to minimumReleaseAgeExcludePackages
+* add ciPushWorkflow option to various generators
+* upgrade to typescript 7, keeping typescript 6 for eslint ([#2808](https://github.com/christophehurpeau/pob/issues/2808))
+
+### Bug Fixes
+
+* **deps:** update dependency mem-fs-editor to v12.0.6 ([#2795](https://github.com/christophehurpeau/pob/issues/2795))
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [36.1.0](https://github.com/christophehurpeau/pob/compare/pob@36.0.0...pob@36.1.0) (2026-07-26)
 
 Version bump for dependency: @pob/eslint-config-typescript-react

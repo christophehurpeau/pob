@@ -1,6 +1,6 @@
 {
   "name": "@pob/version",
-  "version": "6.0.0-pre",
+  "version": "6.0.0",
   "description": "simple versioning using conventional commits",
   "keywords": [
     "bun",

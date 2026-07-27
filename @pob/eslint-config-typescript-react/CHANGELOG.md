@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.0.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config-typescript-react@65.8.0...@pob/eslint-config-typescript-react@66.0.0) (2026-07-27)
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to typescript 7, keeping typescript 6 for eslint (#2808)
+
+### Features
+
+* upgrade to typescript 7, keeping typescript 6 for eslint ([#2808](https://github.com/christophehurpeau/pob/issues/2808))
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-plugin
+
+
 ## [65.8.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config-typescript-react@65.7.0...@pob/eslint-config-typescript-react@65.8.0) (2026-07-26)
 
 ### Features

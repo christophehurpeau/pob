@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [26.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@25.1.0...pob-dependencies@26.0.0) (2026-07-27)
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to typescript 7, keeping typescript 6 for eslint (#2808)
+
+### Features
+
+* upgrade to typescript 7, keeping typescript 6 for eslint ([#2808](https://github.com/christophehurpeau/pob/issues/2808))
+
+Version bump for dependency: @pob/esbuild
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [25.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@25.0.0...pob-dependencies@25.1.0) (2026-07-26)
 
 Version bump for dependency: @pob/eslint-config-typescript-react

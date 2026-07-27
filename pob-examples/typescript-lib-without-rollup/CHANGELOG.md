@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.33.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.32.2...example-typescript-lib-without-rollup@0.33.0) (2026-07-27)
+
+### ⚠ BREAKING CHANGES
+
+* upgrade to typescript 7, keeping typescript 6 for eslint (#2808)
+
+### Features
+
+* upgrade to typescript 7, keeping typescript 6 for eslint ([#2808](https://github.com/christophehurpeau/pob/issues/2808))
+
 ## [0.32.2](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.32.1...example-typescript-lib-without-rollup@0.32.2) (2026-07-15)
 
 Note: no notable changes
