@@ -332,13 +332,13 @@ export default class CommonBabelGenerator extends Generator {
     }
     const isLibraryRollupPlugin = pkg.name.includes("rollup-plugin");
 
-    packageUtils.addOrRemoveDevDependencies(
-      pkg,
-      (useBabel && pkg.pob.jsx) ||
-        (pkg.devDependencies?.["@babel/preset-react"] &&
-          (isLibraryRollupPlugin || pkg.name === "alouette-icons")),
-      ["@babel/preset-react"],
-    );
+    // packageUtils.addOrRemoveDevDependencies(
+    //   pkg,
+    //   (useBabel && pkg.pob.jsx) ||
+    //     (pkg.devDependencies?.["@babel/preset-react"] &&
+    //       (isLibraryRollupPlugin || pkg.name === "alouette-icons")),
+    //   ["@babel/preset-react"],
+    // );
 
     packageUtils.removeDevDependencies(pkg, [
       "babel-preset-env", // now @babel/preset-env
