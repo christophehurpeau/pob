@@ -11,6 +11,8 @@ minimumReleaseAgeExclude:
   - nightingale
   - nightingale-logger
   - check-package-dependencies
+  # Renovate security update: js-yaml@5.2.2
+  - js-yaml@5.2.2
 packages:
   - packages/*
   - "@pob/*"
