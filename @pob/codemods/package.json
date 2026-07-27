@@ -38,7 +38,7 @@
     "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/codemods'"
   },
   "dependencies": {
-    "jscodeshift": "17.3.0"
+    "jscodeshift": "17.4.0"
   },
   "devDependencies": {
     "@types/jscodeshift": "17.3.0",
