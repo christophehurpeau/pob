@@ -4,7 +4,10 @@ import { platform } from "node:process";
 import Generator from "yeoman-generator";
 import * as packageUtils from "../../utils/package.js";
 import { packageManagerRun } from "../../utils/packageManagerUtils.js";
-import { workspacesRun } from "../../utils/packageManagerWorkspacesUtils.js";
+import {
+  workspacesRun,
+  workspacesRunSequential,
+} from "../../utils/packageManagerWorkspacesUtils.js";
 import {
   buildDependenciesMaps,
   buildTopologicalOrderBatches,
@@ -419,6 +422,16 @@ export default class PobMonorepoGenerator extends Generator {
         ),
         build: `${packageManagerRun(this.options.packageManager, "clean:build")} && rollup --config rollup.config.mjs`,
         watch: `${packageManagerRun(this.options.packageManager, "clean:build")} && rollup --config rollup.config.mjs --watch`,
+      });
+
+      const hasExpoApp = this.packageConfigs.some(
+        (config) => config?.app?.type === "expo",
+      );
+      packageUtils.addOrRemoveScripts(pkg, hasExpoApp, {
+        "upgrade-expo": workspacesRunSequential(
+          this.options.packageManager,
+          "upgrade-expo",
+        ),
       });
 
       packageUtils.addOrRemoveDevDependencies(pkg, rollupKinds.has("esbuild"), [

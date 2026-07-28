@@ -39,6 +39,26 @@ export const workspacesRunTopological = (packageManager, script) => {
 };
 
 /**
+ * Run a script sequentially in every workspace that defines it.
+ * Use when parallel execution is unsafe (e.g. package manager upgrades).
+ */
+export const workspacesRunSequential = (packageManager, script) => {
+  switch (packageManager) {
+    case undefined:
+    case "yarn":
+      return `yarn workspaces foreach -Av run ${script}`;
+    case "pnpm":
+      return `pnpm -r --sequential run ${script}`;
+    case "npm":
+      return `npm run ${script} --workspaces --if-present`;
+    case "bun":
+      return `bun --filter '*' run ${script}`;
+    default:
+      throw new Error(`Unsupported package manager: ${packageManager}`);
+  }
+};
+
+/**
  * Run a script in all workspaces in parallel, excluding packages matching the given patterns.
  * Use for watch commands where example/demo packages should be skipped.
  */
