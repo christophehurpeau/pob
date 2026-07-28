@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.6.0](https://github.com/christophehurpeau/pob/compare/example-vite-app@0.5.0...example-vite-app@0.6.0) (2026-07-28)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-import-x to v4.17.1 ([#2813](https://github.com/christophehurpeau/pob/issues/2813))
+
 ## [0.5.0](https://github.com/christophehurpeau/pob/compare/example-vite-app@0.4.0...example-vite-app@0.5.0) (2026-07-27)
 
 ### ⚠ BREAKING CHANGES

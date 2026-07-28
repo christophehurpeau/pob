@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.1.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config-typescript-react@67.0.0...@pob/eslint-config-typescript-react@67.1.0) (2026-07-28)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-import-x to v4.17.1 ([#2813](https://github.com/christophehurpeau/pob/issues/2813))
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-plugin
+
+
 ## [67.0.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config-typescript-react@66.0.0...@pob/eslint-config-typescript-react@67.0.0) (2026-07-28)
 
 ### ⚠ BREAKING CHANGES

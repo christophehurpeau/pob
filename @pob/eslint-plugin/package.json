@@ -1,6 +1,6 @@
 {
   "name": "@pob/eslint-plugin",
-  "version": "66.0.0",
+  "version": "66.1.0",
   "description": "eslint plugin for react",
   "keywords": [],
   "homepage": "https://github.com/christophehurpeau/pob",
