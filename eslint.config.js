@@ -1,7 +1,7 @@
-import pobConfig, { apply, tsExtensions } from "@pob/eslint-config";
 import pobTypescriptConfigReact from "@pob/eslint-config-typescript-react";
+import pobConfig, { apply, tsExtensions } from "@pob/root/eslint-config";
 
-const { configs } = pobConfig();
+const { configs } = pobConfig;
 
 export default [
   ...configs.node,
@@ -15,7 +15,7 @@ export default [
   ...apply({
     files: ["@pob/eslint-config-typescript-react/test-lint/**/"],
     mode: "directory",
-    configs: pobTypescriptConfigReact(import.meta.url).configs.node,
+    configs: pobTypescriptConfigReact.configs.node,
     extensions: tsExtensions,
   }).map((config) => ({
     ...config,

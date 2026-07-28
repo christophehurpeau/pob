@@ -316,7 +316,12 @@ export default class CommonFormatLintGenerator extends Generator {
         !pkg.name.startsWith("@pob/eslint-config") &&
         pkg.name !== "@pob/use-eslint-plugin"
       ) {
-        packageUtils.addDevDependencies(pkg, ["@pob/eslint-config"]);
+        // @pob/eslint-config is provided through @pob/root (which re-exports it
+        // via "@pob/root/eslint-config"), so projects only need @pob/root.
+        if (pkg.name !== "@pob/root") {
+          packageUtils.addDevDependencies(pkg, ["@pob/root"]);
+        }
+        packageUtils.removeDevDependencies(pkg, ["@pob/eslint-config"]);
         packageUtils.addOrRemoveDevDependencies(
           pkg,
           shouldHavePluginsDependencies,
@@ -373,7 +378,7 @@ export default class CommonFormatLintGenerator extends Generator {
 
       return {
         imports: [
-          'import pobConfig from "@pob/eslint-config"',
+          'import pobConfig from "@pob/root/eslint-config"',
           useTypescript &&
             hasReact &&
             'import pobTypescriptConfigReact from "@pob/eslint-config-typescript-react"',
@@ -385,25 +390,23 @@ export default class CommonFormatLintGenerator extends Generator {
           if (!useTypescript) {
             return [
               useNode
-                ? `...pobConfig(import.meta.url).configs.node${pkg.type === "commonjs" ? "Commonjs" : "Module"}`
-                : `...pobConfig(import.meta.url).configs.base${pkg.type === "commonjs" ? "Commonjs" : "Module"}`,
+                ? `...pobConfig.configs.node${pkg.type === "commonjs" ? "Commonjs" : "Module"}`
+                : `...pobConfig.configs.base${pkg.type === "commonjs" ? "Commonjs" : "Module"}`,
             ];
           }
           if (!hasReact) {
             return [
               useNode
-                ? "...pobConfig(import.meta.url).configs.node"
-                : "...pobConfig(import.meta.url).configs.base",
+                ? "...pobConfig.configs.node"
+                : "...pobConfig.configs.base",
             ];
           }
 
           return [
-            useNode
-              ? "...pobConfig(import.meta.url).configs.node"
-              : "...pobConfig(import.meta.url).configs.base",
-            this.options.isApp && "...pobConfig(import.meta.url).configs.app",
+            useNode ? "...pobConfig.configs.node" : "...pobConfig.configs.base",
+            this.options.isApp && "...pobConfig.configs.app",
             pkg.dependencies?.["react-native-web"] &&
-              '...pobTypescriptConfigReact(import.meta.url).configs["react-native-web"]',
+              '...pobTypescriptConfigReact.configs["react-native-web"]',
           ];
         })().filter(Boolean),
       };
@@ -412,7 +415,7 @@ export default class CommonFormatLintGenerator extends Generator {
     const isMonorepoRoot =
       this.options.monorepo || Boolean(inMonorepo && inMonorepo.root);
     if (isMonorepoRoot && useTypescript) {
-      flatCascade.push("...pobConfig(import.meta.url).configs.monorepo");
+      flatCascade.push("...pobConfig.configs.monorepo");
     }
 
     const eslintrcBadPath = this.destinationPath(".eslintrc");

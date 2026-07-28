@@ -43,157 +43,158 @@ if (!tsFiles) {
   );
 }
 
-export default () => {
-  const extensions = "{js,cjs,mjs}";
+const extensions = "{js,cjs,mjs}";
 
-  const testFiles = [
-    `**/*.{test,test-e2e,spec}.${extensions}`,
-    `**/__tests__/**/*.${extensions}`,
-    `**/__mocks__/**/*.${extensions}`,
-  ];
+const testFiles = [
+  `**/*.{test,test-e2e,spec}.${extensions}`,
+  `**/__tests__/**/*.${extensions}`,
+  `**/__mocks__/**/*.${extensions}`,
+];
 
-  const tsTestFiles = [
-    `**/*.test.${tsExtensions}`,
-    `**/*.test-e2e.${tsExtensions}`,
-    `**/__tests__/**/*.${tsExtensions}`,
-    `**/__mocks__/**/*.${tsExtensions}`,
-  ];
+const tsTestFiles = [
+  `**/*.test.${tsExtensions}`,
+  `**/*.test-e2e.${tsExtensions}`,
+  `**/__tests__/**/*.${tsExtensions}`,
+  `**/__mocks__/**/*.${tsExtensions}`,
+];
 
-  const typescriptConfigs = [
-    ...applyTs({
-      filesOverridesIf: [tsFiles],
-      configs: [
-        ...tseslint.configs.strictTypeChecked,
-        typescriptReplaceUnicornConfig,
-        typescriptReplaceEslintConfig,
-        typescriptPluginRulesConfig,
-        typescriptRulesConfig,
-      ],
-    }),
-    ...apply({
-      files: tsTestFiles,
-      configs: testOverrideConfigsWithTypescript,
-    }),
-  ];
+const typescriptConfigs = [
+  ...applyTs({
+    filesOverridesIf: [tsFiles],
+    configs: [
+      ...tseslint.configs.strictTypeChecked,
+      typescriptReplaceUnicornConfig,
+      typescriptReplaceEslintConfig,
+      typescriptPluginRulesConfig,
+      typescriptRulesConfig,
+    ],
+  }),
+  ...apply({
+    files: tsTestFiles,
+    configs: testOverrideConfigsWithTypescript,
+  }),
+];
 
-  /** @deprecated */
-  const nodeCommonjs = [
-    ...baseConfigs,
-    ...apply({
-      mode: "keep-files-if-exists",
-      files: ["**/*.{js,cjs,mjs,mts,ts,tsx,cts}"],
-      configs: [
-        baseCommonjsConfig,
-        ...importPluginBaseConfigs,
-        importPluginCommonjsConfig,
-        ...nodePluginCommonjsConfigs,
-      ],
-    }),
+/** @deprecated */
+const nodeCommonjs = [
+  ...baseConfigs,
+  ...apply({
+    mode: "keep-files-if-exists",
+    files: ["**/*.{js,cjs,mjs,mts,ts,tsx,cts}"],
+    configs: [
+      baseCommonjsConfig,
+      ...importPluginBaseConfigs,
+      importPluginCommonjsConfig,
+      ...nodePluginCommonjsConfigs,
+    ],
+  }),
 
-    ...apply({
-      extensions,
-      mode: "directory",
-      files: ["**/scripts/"],
-      configs: [scriptsOverrideConfig],
-    }),
+  ...apply({
+    extensions,
+    mode: "directory",
+    files: ["**/scripts/"],
+    configs: [scriptsOverrideConfig],
+  }),
 
-    ...apply({
-      files: ["**/*.{mjs,mts}"],
-      mode: "keep-files-if-exists",
-      configs: [
-        baseModuleConfig,
-        importPluginModuleConfig,
-        ...nodePluginModuleConfigs,
-      ],
-    }),
+  ...apply({
+    files: ["**/*.{mjs,mts}"],
+    mode: "keep-files-if-exists",
+    configs: [
+      baseModuleConfig,
+      importPluginModuleConfig,
+      ...nodePluginModuleConfigs,
+    ],
+  }),
 
-    ...apply({
-      files: testFiles,
-      configs: testOverrideConfigsWithoutTypescript,
-    }),
-  ];
+  ...apply({
+    files: testFiles,
+    configs: testOverrideConfigsWithoutTypescript,
+  }),
+];
 
-  const baseModule = [
-    ...baseConfigs,
-    ...apply({
-      mode: "keep-files-if-exists",
-      files: ["**/*.{js,mjs,cjs,mts,ts,tsx,cts}"],
-      configs: [
-        baseModuleConfig,
-        ...importPluginBaseConfigs,
-        importPluginModuleConfig,
-      ],
-    }),
+const baseModule = [
+  ...baseConfigs,
+  ...apply({
+    mode: "keep-files-if-exists",
+    files: ["**/*.{js,mjs,cjs,mts,ts,tsx,cts}"],
+    configs: [
+      baseModuleConfig,
+      ...importPluginBaseConfigs,
+      importPluginModuleConfig,
+    ],
+  }),
 
-    ...apply({
-      mode: "keep-files-if-exists",
-      files: ["**/*.{cjs,cts}"],
-      configs: [baseCommonjsConfig, importPluginCommonjsConfig],
-    }),
+  ...apply({
+    mode: "keep-files-if-exists",
+    files: ["**/*.{cjs,cts}"],
+    configs: [baseCommonjsConfig, importPluginCommonjsConfig],
+  }),
 
-    ...typescriptConfigs,
-  ];
+  ...typescriptConfigs,
+];
 
-  const nodeModule = [
-    ...baseModule,
-    ...apply({
-      mode: "keep-files-if-exists",
-      files: ["**/*.{js,mjs,mts,ts,tsx}"],
-      configs: [...nodePluginModuleConfigs],
-    }),
+const nodeModule = [
+  ...baseModule,
+  ...apply({
+    mode: "keep-files-if-exists",
+    files: ["**/*.{js,mjs,mts,ts,tsx}"],
+    configs: [...nodePluginModuleConfigs],
+  }),
 
-    ...apply({
-      extensions,
-      mode: "directory",
-      files: ["**/scripts/"],
-      configs: [scriptsOverrideConfig],
-    }),
+  ...apply({
+    extensions,
+    mode: "directory",
+    files: ["**/scripts/"],
+    configs: [scriptsOverrideConfig],
+  }),
 
-    ...apply({
-      mode: "keep-files-if-exists",
-      files: ["**/*.{cjs,cts}"],
-      configs: [...nodePluginCommonjsConfigs],
-    }),
+  ...apply({
+    mode: "keep-files-if-exists",
+    files: ["**/*.{cjs,cts}"],
+    configs: [...nodePluginCommonjsConfigs],
+  }),
 
-    ...nodeTypescriptConfigs,
-  ];
+  ...nodeTypescriptConfigs,
+];
 
-  return {
-    configs: {
-      baseModule: [
-        ...baseModule,
-        ...apply({
-          extensions,
-          mode: "directory",
-          files: ["**/scripts/"],
-          configs: [...nodePluginModuleConfigs, scriptsOverrideConfig],
-        }),
-      ],
-      /** @deprecated */
-      nodeModule,
-      /** @deprecated */
-      nodeCommonjs,
-      node: nodeModule,
-
-      allowImplicitReturnType: applyTs({
-        configs: [allowImplicitReturnTypeConfig],
+/**
+ * @satisfies {{ configs: Record<string, import("typescript-eslint").ConfigArray> }}
+ */
+export default {
+  configs: {
+    baseModule: [
+      ...baseModule,
+      ...apply({
+        extensions,
+        mode: "directory",
+        files: ["**/scripts/"],
+        configs: [...nodePluginModuleConfigs, scriptsOverrideConfig],
       }),
+    ],
+    /** @deprecated */
+    nodeModule,
+    /** @deprecated */
+    nodeCommonjs,
+    node: nodeModule,
 
-      allowUnsafe: applyTs({
-        configs: [allowUnsafeConfig],
-      }),
+    allowImplicitReturnType: applyTs({
+      configs: [allowImplicitReturnTypeConfig],
+    }),
 
-      allowUnsafeAsWarn: applyTs({
-        configs: [allowUnsafeAsWarnConfig],
-      }),
+    allowUnsafe: applyTs({
+      configs: [allowUnsafeConfig],
+    }),
 
-      app: applyTs({
-        configs: [appConfig],
-      }),
+    allowUnsafeAsWarn: applyTs({
+      configs: [allowUnsafeAsWarnConfig],
+    }),
 
-      monorepo: [monorepoRootConfigsConfig],
+    app: applyTs({
+      configs: [appConfig],
+    }),
 
-      checkPackages: checkPackageDependenciesConfigs,
-    },
-  };
+    monorepo: [monorepoRootConfigsConfig],
+
+    checkPackages: checkPackageDependenciesConfigs,
+  },
 };
