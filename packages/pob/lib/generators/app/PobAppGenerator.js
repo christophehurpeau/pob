@@ -420,6 +420,10 @@ export default class PobAppGenerator extends Generator {
       delete pkg.expo;
     }
 
+    packageUtils.addOrRemoveScripts(pkg, this.appConfig.type === "expo", {
+      "upgrade-expo": "expo install expo@57 --fix",
+    });
+
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
 
     this.composeWith("pob:core:sort-package");
