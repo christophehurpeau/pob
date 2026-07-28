@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.0.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config@66.0.0...@pob/eslint-config@67.0.0) (2026-07-28)
+
+### ⚠ BREAKING CHANGES
+
+* refactor ESLint configuration and add root export for @pob/eslint-config
+
+### Features
+
+* refactor ESLint configuration and add root export for @pob/eslint-config
+
 ## [66.0.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config@65.7.0...@pob/eslint-config@66.0.0) (2026-07-27)
 
 ### ⚠ BREAKING CHANGES

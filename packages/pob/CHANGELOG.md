@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [38.0.0](https://github.com/christophehurpeau/pob/compare/pob@37.0.0...pob@38.0.0) (2026-07-28)
+
+### ⚠ BREAKING CHANGES
+
+* refactor ESLint configuration and add root export for @pob/eslint-config
+
+### Features
+
+* refactor ESLint configuration and add root export for @pob/eslint-config
+
+### Bug Fixes
+
+* comment out deprecated addOrRemoveDevDependencies logic in CommonBabelGenerator
+* refactor package manager utility functions and update workflow templates to use new run/exec methods
+* rename ciPushWorkflow to disablePushWorkflow and update related logic
+* rename push option to disablePushWorkflow in core:ci generator
+* update references from pobLernaConfig to pobMonorepoConfig in PobMonorepoGenerator
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [37.0.0](https://github.com/christophehurpeau/pob/compare/pob@36.1.0...pob@37.0.0) (2026-07-27)
 
 ### ⚠ BREAKING CHANGES

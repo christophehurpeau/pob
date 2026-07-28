@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@26.0.0...@pob/root@27.0.0) (2026-07-28)
+
+### ⚠ BREAKING CHANGES
+
+* refactor ESLint configuration and add root export for @pob/eslint-config
+
+### Features
+
+* refactor ESLint configuration and add root export for @pob/eslint-config
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: pob-dependencies
+
+
 ## [26.0.0](https://github.com/christophehurpeau/pob/compare/@pob/root@25.1.0...@pob/root@26.0.0) (2026-07-27)
 
 ### Bug Fixes
