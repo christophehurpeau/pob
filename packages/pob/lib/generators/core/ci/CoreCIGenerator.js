@@ -151,8 +151,20 @@ export default class CoreCIGenerator extends Generator {
               inMonorepo.pobConfig?.project?.type === "lib",
             nodeLatestMajorVersion: latestLTS,
             nodeMaintenanceMajorVersion: maintenanceLTS,
-            packageManagerRun,
-            packageManagerExec,
+            packageManagerRun: (script, packagePath) => {
+              return packageManagerRun(
+                this.options.packageManager,
+                script,
+                packagePath,
+              );
+            },
+            packageManagerExec: (command, packagePath) => {
+              return packageManagerExec(
+                this.options.packageManager,
+                command,
+                packagePath,
+              );
+            },
           },
         );
         ciContexts.push(
@@ -188,6 +200,13 @@ export default class CoreCIGenerator extends Generator {
         this.destinationPath(".github/workflows/gh-pages.yml"),
         {
           packageManager: this.options.packageManager,
+          packageManagerRun: (script, packagePath) => {
+            return packageManagerRun(
+              this.options.packageManager,
+              "docs:build",
+              packagePath,
+            );
+          },
           disableYarnGitCache: this.options.disableYarnGitCache,
           testing: this.options.testing,
           testRunner: this.options.testRunner,

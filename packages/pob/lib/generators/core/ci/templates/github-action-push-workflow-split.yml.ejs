@@ -46,7 +46,7 @@ jobs:
 <% } -%>
 
       - name: Checks
-        run: <%= packageManager %> run checks
+        run: <%= packageManagerRun("checks") %>
 
 <% } -%>
 <% if (build) { -%>
@@ -91,10 +91,10 @@ jobs:
 <% } -%>
 
       - name: Build
-        run: <%= packageManager %> run build
+        run: <%= packageManagerRun("build") %>
 
       - name: Check nothing was forgotten before commit
-        run: <%= packageManagerExec(packageManager, 'repository-check-dirty') %>
+        run: <%= packageManagerExec('repository-check-dirty') %>
 
 <% } -%>
   lint:
@@ -140,15 +140,15 @@ jobs:
 <% } -%>
 
       - name: Format
-        run: <%= packageManager %> run format:check
+        run: <%= packageManagerRun("format:check") %>
 <% if (typescript) { -%>
 
       - name: Typescript
-        run: <%= packageManager %> run tsc
+        run: <%= packageManagerRun("tsc") %>
 <% } -%>
 
       - name: Eslint
-        run: <%= packageManager %> run lint:eslint
+        run: <%= packageManagerRun("lint:eslint") %>
 <% if (testing) { -%>
 
   test:
@@ -199,11 +199,11 @@ jobs:
 
 <% if (codecov) { -%>
       - name: Test
-        run: <%= packageManager %> run test
+        run: <%= packageManagerRun("test") %>
         if: matrix.node-version != <%= nodeLatestMajorVersion %>
 
       - name: Generate Test Coverage
-        run: <%= packageManager %> run test:coverage:generate
+        run: <%= packageManagerRun("test:coverage:generate") %>
         if: matrix.node-version == <%= nodeLatestMajorVersion %>
         env:
           CI: true
@@ -217,7 +217,7 @@ jobs:
 <% } else { -%>
 
       - name: Test
-        run: <%= packageManager %> run test
+        run: <%= packageManagerRun("test") %>
 <% } -%>
 <% } -%>
 <% if (e2eTesting) { -%>
@@ -269,7 +269,7 @@ jobs:
 <% } -%>
 
       - name: E2E testing
-        run: <%= packageManager %> <%= e2eTesting === '.' || e2eTesting === true ? '.' : `./${e2eTesting}` %> run test:e2e
+        run: <%= packageManagerRun("test:e2e", e2eTesting) %>
 <% } -%>
 <% if (isReleasePleaseEnabled) { -%>
   release:

@@ -1,16 +1,18 @@
 import { quoteArg } from "./execUtils.js";
 
-export const packageManagerRun = (packageManager, script) => {
+export const packageManagerRun = (packageManager, script, packagePath) => {
+  const packagePathArg =
+    packagePath === "." || packagePath === true ? "" : packagePath;
   switch (packageManager) {
     case undefined:
     case "yarn":
-      return `yarn run ${script}`;
+      return `yarn${packagePathArg ? ` ${packagePathArg}` : ""} run ${script}`;
     case "npm":
-      return `npm run ${script}`;
+      return `npm run${packagePathArg ? ` --prefix ${packagePathArg}` : ""} ${script}`;
     case "bun":
-      return `bun run ${script}`;
+      return `bun run${packagePathArg ? ` --cwd ${packagePathArg}` : ""} ${script}`;
     case "pnpm":
-      return `pnpm run ${script}`;
+      return `pnpm${packagePathArg ? ` --dir ${packagePathArg}` : ""} run ${script}`;
     default:
       throw new Error(`Unsupported package manager: ${packageManager}`);
   }

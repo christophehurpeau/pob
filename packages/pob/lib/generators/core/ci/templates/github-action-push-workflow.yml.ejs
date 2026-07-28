@@ -84,12 +84,12 @@ jobs:
 
       - name: Check nothing was forgotten before commit
         if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
-        run: <%= packageManagerExec(packageManager, 'repository-check-dirty') %>
+        run: <%= packageManagerExec('repository-check-dirty') %>
 <% } -%>
 <% if (codecov) { -%>
 
       - name: Generate Test Coverage
-        run: <%= packageManager %> run test:coverage:generate
+        run: <%= packageManagerRun("test:coverage:generate) %>
         if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
         env:
           CI: true
@@ -112,7 +112,7 @@ jobs:
 <% if (e2eTesting) { -%>
 
       - name: E2E testing
-        run: <%= packageManager %> <%= e2eTesting %> run test:e2e
+        run: <%= packageManagerRun("test:e2e", e2eTesting) %>
 <% } -%>
 <% if (isReleasePleaseEnabled) { -%>
 
