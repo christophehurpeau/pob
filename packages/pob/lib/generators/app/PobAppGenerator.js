@@ -414,6 +414,12 @@ export default class PobAppGenerator extends Generator {
       }
     }
 
+    if (this.appConfig.type === "expo") {
+      pkg.expo = { install: { exclude: ["typescript"] } };
+    } else if (pkg.expo) {
+      delete pkg.expo;
+    }
+
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
 
     this.composeWith("pob:core:sort-package");
