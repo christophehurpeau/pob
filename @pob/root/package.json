@@ -29,6 +29,7 @@
     "bin",
     "createLintStagedConfig.js",
     "eslint-config.js",
+    "oxfmt.js",
     "tsconfigs"
   ],
   "type": "module",
@@ -40,6 +41,8 @@
     "./createLintStagedConfig.js": "./createLintStagedConfig.js",
     "./eslint-config": "./eslint-config.js",
     "./eslint-config.js": "./eslint-config.js",
+    "./oxfmt": "./oxfmt.js",
+    "./oxfmt.js": "./oxfmt.js",
     "./tsconfigs/base.json": "./tsconfigs/base.json",
     "./tsconfigs/strict.json": "./tsconfigs/strict.json",
     "./tsconfigs/targets/esbuild-node-22.json": "./tsconfigs/targets/esbuild-node-22.json",
