@@ -1,9 +1,10 @@
 import Generator from "yeoman-generator";
 import * as packageUtils from "../../../utils/package.js";
-// import * as templateUtils from '../../../utils/templateUtils.js';
 import { writeAndFormatJson } from "../../../utils/writeAndFormat.js";
 
-export default class AppE2ETestingGenerator extends Generator {
+// Common e2e (Playwright) generator. The .gitignore entries are emitted by
+// pob:core:gitignore (the sole owner of .gitignore), gated on the same e2e flag.
+export default class CommonE2eGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
 
@@ -12,12 +13,6 @@ export default class AppE2ETestingGenerator extends Generator {
       default: true,
       description: "enable e2e testing",
     });
-
-    this.option("ci", {
-      type: Boolean,
-      required: true,
-      description: "ci",
-    });
   }
 
   writing() {
@@ -25,20 +20,12 @@ export default class AppE2ETestingGenerator extends Generator {
 
     packageUtils.addOrRemoveDevDependencies(pkg, this.options.enable, [
       "@playwright/test",
+      "playwright",
     ]);
 
     packageUtils.addOrRemoveScripts(pkg, this.options.enable, {
       "test:e2e": "playwright test",
     });
-
-    // templateUtils.addOrRemoveTemplate(
-    //   this.fs,
-    //   this.options.enable && this.options.ci,
-    //   this.destinationPath('playwright.config.js'),
-    // );
-
-    if (this.options.enable) {
-    }
 
     return writeAndFormatJson(
       this.fs,

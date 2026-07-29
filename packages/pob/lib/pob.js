@@ -12,9 +12,9 @@ import path from "node:path";
 import minimist from "minimist";
 import * as yeoman from "yeoman-environment";
 import PobAppGenerator from "./generators/app/PobAppGenerator.js";
-import AppE2ETestingGenerator from "./generators/app/e2e-testing/AppE2ETestingGenerator.js";
 import AppViteGenerator from "./generators/app/vite/AppViteGenerator.js";
 import CommonBabelGenerator from "./generators/common/babel/CommonBabelGenerator.js";
+import CommonE2eGenerator from "./generators/common/e2e/CommonE2eGenerator.js";
 import CommonLintGenerator from "./generators/common/format-lint/CommonLintGenerator.js";
 import CommonHuskyGenerator from "./generators/common/husky/CommonHuskyGenerator.js";
 import CommonRemoveOldDependenciesGenerator from "./generators/common/old-dependencies/CommonRemoveOldDependenciesGenerator.js";
@@ -93,11 +93,6 @@ env.registerStub(
   `${__dirname}/generators/app/PobAppGenerator.js`,
 );
 env.registerStub(
-  AppE2ETestingGenerator,
-  "pob:app:e2e-testing",
-  `${__dirname}/generators/app/e2e-testing/AppE2ETestingGenerator.js`,
-);
-env.registerStub(
   AppViteGenerator,
   "pob:app:vite",
   `${__dirname}/generators/app/vite/AppViteGenerator.js`,
@@ -126,6 +121,11 @@ env.registerStub(
   CommonRemoveOldDependenciesGenerator,
   "pob:common:remove-old-dependencies",
   `${__dirname}/generators/common/old-dependencies/CommonRemoveOldDependenciesGenerator.js`,
+);
+env.registerStub(
+  CommonE2eGenerator,
+  "pob:common:e2e",
+  `${__dirname}/generators/common/e2e/CommonE2eGenerator.js`,
 );
 env.registerStub(
   CommonReleaseGenerator,

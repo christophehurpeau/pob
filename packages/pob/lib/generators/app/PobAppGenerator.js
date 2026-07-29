@@ -141,6 +141,12 @@ export default class PobAppGenerator extends Generator {
       },
       {
         type: "confirm",
+        name: "e2e",
+        message: "Do you want e2e testing (Playwright) ?",
+        default: (config && config.e2e) || false,
+      },
+      {
+        type: "confirm",
         name: "storybook",
         message: "Do you want storybook ?",
         default: (config && config.storybook) || false,
@@ -295,8 +301,9 @@ export default class PobAppGenerator extends Generator {
       srcDirectory,
     });
 
-    this.composeWith("pob:app:e2e-testing", {
+    this.composeWith("pob:common:e2e", {
       enable: this.appConfig.e2e,
+      ci: this.options.ci,
     });
 
     this.composeWith("pob:common:format-lint", {

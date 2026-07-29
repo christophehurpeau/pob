@@ -59,6 +59,13 @@ export default class CoreGitignoreGenerator extends Generator {
       default: "",
       description: "Build directory.",
     });
+
+    this.option("playwright", {
+      type: Boolean,
+      required: false,
+      default: false,
+      description: "Playwright e2e testing enabled.",
+    });
   }
 
   writing() {
@@ -82,6 +89,7 @@ export default class CoreGitignoreGenerator extends Generator {
         typescript: withBabel || this.options.typescript,
         paths: this.options.paths,
         buildInGit: this.options.buildInGit,
+        playwright: this.options.playwright,
       });
     }
 

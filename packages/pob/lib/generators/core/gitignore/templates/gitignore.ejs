@@ -35,6 +35,12 @@ yarn-error.log*
 # Typescript
 *.tsbuildinfo
 <% } -%>
+<% if (playwright) { -%>
+
+# Playwright
+/test-results
+/playwright-report
+<% } -%>
 
 #*
 *$

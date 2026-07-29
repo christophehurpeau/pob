@@ -243,6 +243,17 @@ export default class PobLibGenerator extends Generator {
       Object.assign(this.pobjson.testing, testingPrompts);
     }
 
+    // e2e
+    if (!this.updateOnly || this.pobjson.e2e === undefined) {
+      const { e2e } = await this.prompt({
+        type: "confirm",
+        name: "e2e",
+        message: "Would you like e2e testing (Playwright) ?",
+        default: this.pobjson.e2e || false,
+      });
+      this.pobjson.e2e = e2e;
+    }
+
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
 
     this.composeWith("pob:common:babel", {
@@ -310,7 +321,7 @@ export default class PobLibGenerator extends Generator {
       enable: this.pobjson.testing,
       disableYarnGitCache: this.options.disableYarnGitCache,
       testing: this.pobjson.testing,
-      e2eTesting: false,
+      e2eTesting: this.pobjson.e2e ? "." : false,
       runner: this.pobjson.testing
         ? (inMonorepo
             ? inMonorepo.pobMonorepoConfig.testRunner
@@ -326,6 +337,11 @@ export default class PobLibGenerator extends Generator {
       splitCIJobs: false,
       srcDirectory: withBabel || withTypescript ? "src" : "lib",
       onlyLatestLTS: this.onlyLatestLTS,
+    });
+
+    this.composeWith("pob:common:e2e", {
+      enable: this.pobjson.e2e,
+      ci: this.options.ci,
     });
 
     // must be after testing
@@ -390,6 +406,7 @@ export default class PobLibGenerator extends Generator {
       documentation: this.pobjson.documentation,
       testing: !!this.pobjson.testing,
       buildDirectory,
+      playwright: this.pobjson.e2e,
     });
 
     this.composeWith("pob:core:npm", {
