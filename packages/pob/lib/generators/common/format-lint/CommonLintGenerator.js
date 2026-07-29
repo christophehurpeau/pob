@@ -412,6 +412,12 @@ export default class CommonFormatLintGenerator extends Generator {
     if (isMonorepoRoot && useTypescript) {
       flatCascade.push("...pobConfig.configs.monorepo");
     }
+    // non-published typescript (scripts/**/*.ts, root *.config.ts) is
+    // type-checked against tsconfig.tools.json rather than the emitting
+    // tsconfig.json; point typed lint at that project
+    if (!isMonorepoRoot && useTypescript) {
+      flatCascade.push("...pobConfig.configs.toolsProject");
+    }
 
     const eslintrcBadPath = this.destinationPath(".eslintrc");
     this.fs.delete(eslintrcBadPath);

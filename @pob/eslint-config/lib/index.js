@@ -15,6 +15,7 @@ import {
   testOverrideConfigsWithTypescript,
   testOverrideConfigsWithoutTypescript,
 } from "./overrides/test.js";
+import toolsProjectConfig from "./overrides/tools-project.js";
 import importPluginBaseConfigs from "./plugins/import/import-base.js";
 import importPluginCommonjsConfig from "./plugins/import/import-commonjs.js";
 import importPluginModuleConfig from "./plugins/import/import-module.js";
@@ -193,5 +194,7 @@ export default {
     }),
 
     monorepo: [monorepoRootConfigsConfig],
+
+    toolsProject: [toolsProjectConfig],
   },
 };

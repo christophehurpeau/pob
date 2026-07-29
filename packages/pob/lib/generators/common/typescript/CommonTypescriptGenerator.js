@@ -222,6 +222,7 @@ export default class CommonTypescriptGenerator extends Generator {
     const tsconfigCheckPath = this.destinationPath("tsconfig.check.json");
     const tsconfigEslintPath = this.destinationPath("tsconfig.eslint.json");
     const tsconfigBuildPath = this.destinationPath("tsconfig.build.json");
+    const tsconfigToolsPath = this.destinationPath("tsconfig.tools.json");
 
     if (this.options.enable) {
       const { jsx, dom } = this.options;
@@ -320,9 +321,6 @@ export default class CommonTypescriptGenerator extends Generator {
           rootDir: this.options.rootDir,
           srcDirectory: this.options.srcDirectory || this.options.rootDir,
           enableHashSlash: this.options.enableHashSlash,
-          scriptsDirectory: this.fs.exists(this.destinationPath("scripts"))
-            ? "scripts"
-            : undefined,
           jsx,
           jsxPreserve: this.options.jsxPreserve,
           nextConfig: this.options.nextConfig,
@@ -364,15 +362,31 @@ export default class CommonTypescriptGenerator extends Generator {
       // } else {
       this.fs.delete(tsconfigBuildPath);
       // }
+
+      // non-published typescript run in place (scripts/**/*.ts, root
+      // *.config.ts) is not part of the emitting tsconfig.json: give it a
+      // dedicated noEmit project so it is type-checked without emitting
+      // definitions nor violating rootDir.
+      await copyAndFormatTpl(
+        this.fs,
+        this.templatePath("tsconfig.tools.json.ejs"),
+        tsconfigToolsPath,
+        {
+          nodeVersion: latestLTS,
+        },
+      );
     } else {
       this.fs.delete(tsconfigPath);
       this.fs.delete(tsconfigBuildPath);
       this.fs.delete(tsconfigCheckPath);
       this.fs.delete(tsconfigEslintPath);
+      this.fs.delete(tsconfigToolsPath);
     }
 
     if (!pkg.workspaces || !this.options.enable) {
-      packageUtils.addOrRemoveScripts(pkg, this.options.enable, { tsc: "tsc" });
+      packageUtils.addOrRemoveScripts(pkg, this.options.enable, {
+        tsc: "tsc && tsc -p tsconfig.tools.json",
+      });
     }
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
