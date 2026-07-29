@@ -385,7 +385,11 @@ export default class CommonTranspilerGenerator extends Generator {
       };
 
       this.entries.forEach((entryWithOptionalExt) => {
-        const entry = entryWithOptionalExt.replace(/\.[jt]sx?$/, "");
+        const entryName =
+          typeof entryWithOptionalExt === "string"
+            ? entryWithOptionalExt
+            : entryWithOptionalExt.name;
+        const entry = entryName.replace(/\.[jt]sx?$/, "");
         const isBrowserOnly =
           withBabel &&
           entry === "browser" &&
@@ -557,7 +561,15 @@ export default class CommonTranspilerGenerator extends Generator {
             }
           }
 
-          pkg.exports[`./${extraEntryConfig.name}`] = exportValue;
+          if (
+            extraEntryConfig.name.startsWith(`${this.options.srcDirectory}/`)
+          ) {
+            pkg.exports[
+              `./${extraEntryConfig.name.slice(this.options.srcDirectory.length + 1)}`
+            ] = exportValue;
+          } else {
+            pkg.exports[`./${extraEntryConfig.name}`] = exportValue;
+          }
         });
       }
     } else if (!pkg.exports) {
