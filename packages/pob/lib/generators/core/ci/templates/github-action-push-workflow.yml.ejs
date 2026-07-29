@@ -89,7 +89,7 @@ jobs:
 <% if (codecov) { -%>
 
       - name: Generate Test Coverage
-        run: <%= packageManagerRun("test:coverage:generate) %>
+        run: <%= packageManagerRun("test:coverage:generate") %>
         if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
         env:
           CI: true
