@@ -264,8 +264,7 @@ export default class CommonTestingGenerator extends Generator {
           if (!workspacesPattern && this.options.monorepo) {
             throw new Error("Invalid workspacesPattern");
           }
-          const experimentalTestCoverage =
-            pkg.name === "check-package-dependencies";
+          const experimentalTestCoverage = true;
           return [
             experimentalTestCoverage && coverage === "generate"
               ? "mkdir -p docs && "
@@ -274,7 +273,7 @@ export default class CommonTestingGenerator extends Generator {
               coverage && !experimentalTestCoverage
                 ? `npx c8${
                     coverage === "generate"
-                      ? ` --reporter=${coverage === "generate" ? "json" : "lcov"}`
+                      ? ` --reporter=${coverage === "generate" ? "lcov" : "lcov"}`
                       : ""
                   } --all --src ./${this.options.srcDirectory} `
                 : ""

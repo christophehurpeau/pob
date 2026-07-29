@@ -54,18 +54,6 @@ jobs:
         run: <%= packageManager %> typedoc --tsconfig tsconfig.doc.json
 <% } -%>
 
-<% if (testing) { -%>
-<% if (testRunner === 'node') { -%>
-
-      - name: Generate Coverage
-        run: NODE_V8_COVERAGE=./docs/coverage <%= packageManagerRun("test:coverage:generate") %>
-<% } else {-%>
-
-      - name: Generate Coverage
-        run: <%= packageManagerRun("test:coverage:generate") %>
-<% } -%>
-<% } -%>
-
       - name: Create nojekyll
         run: touch docs/.nojekyll
 
