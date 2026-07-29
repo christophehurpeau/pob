@@ -321,6 +321,12 @@ export default class CommonTypescriptGenerator extends Generator {
           rootDir: this.options.rootDir,
           srcDirectory: this.options.srcDirectory || this.options.rootDir,
           enableHashSlash: this.options.enableHashSlash,
+          // in a monorepo, keep scripts in the emitting tsconfig (previous
+          // behavior); single repos route them to tsconfig.tools.json instead
+          scriptsDirectory:
+            inMonorepo && this.fs.exists(this.destinationPath("scripts"))
+              ? "scripts"
+              : undefined,
           jsx,
           jsxPreserve: this.options.jsxPreserve,
           nextConfig: this.options.nextConfig,
@@ -366,15 +372,20 @@ export default class CommonTypescriptGenerator extends Generator {
       // non-published typescript run in place (scripts/**/*.ts, root
       // *.config.ts) is not part of the emitting tsconfig.json: give it a
       // dedicated noEmit project so it is type-checked without emitting
-      // definitions nor violating rootDir.
-      await copyAndFormatTpl(
-        this.fs,
-        this.templatePath("tsconfig.tools.json.ejs"),
-        tsconfigToolsPath,
-        {
-          nodeVersion: latestLTS,
-        },
-      );
+      // definitions nor violating rootDir. Monorepos handle this at the root
+      // via tsconfig.root-configs.json, so only single repos get it here.
+      if (inMonorepo) {
+        this.fs.delete(tsconfigToolsPath);
+      } else {
+        await copyAndFormatTpl(
+          this.fs,
+          this.templatePath("tsconfig.tools.json.ejs"),
+          tsconfigToolsPath,
+          {
+            nodeVersion: latestLTS,
+          },
+        );
+      }
     } else {
       this.fs.delete(tsconfigPath);
       this.fs.delete(tsconfigBuildPath);
@@ -385,7 +396,10 @@ export default class CommonTypescriptGenerator extends Generator {
 
     if (!pkg.workspaces || !this.options.enable) {
       packageUtils.addOrRemoveScripts(pkg, this.options.enable, {
-        tsc: "tsc && tsc -p tsconfig.tools.json",
+        tsc:
+          inMonorepo || !this.options.enable
+            ? "tsc"
+            : "tsc && tsc -p tsconfig.tools.json",
       });
     }
 

@@ -414,8 +414,9 @@ export default class CommonFormatLintGenerator extends Generator {
     }
     // non-published typescript (scripts/**/*.ts, root *.config.ts) is
     // type-checked against tsconfig.tools.json rather than the emitting
-    // tsconfig.json; point typed lint at that project
-    if (!isMonorepoRoot && useTypescript) {
+    // tsconfig.json; point typed lint at that project. Single repos only:
+    // monorepos use configs.monorepo + tsconfig.root-configs.json instead.
+    if (!isMonorepoRoot && !inMonorepo && useTypescript) {
       flatCascade.push("...pobConfig.configs.toolsProject");
     }
 
