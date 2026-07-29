@@ -316,12 +316,7 @@ export default class CommonFormatLintGenerator extends Generator {
         !pkg.name.startsWith("@pob/eslint-config") &&
         pkg.name !== "@pob/use-eslint-plugin"
       ) {
-        // @pob/eslint-config is provided through @pob/root (which re-exports it
-        // via "@pob/root/eslint-config"), so projects only need @pob/root.
-        if (pkg.name !== "@pob/root") {
-          packageUtils.addDevDependencies(pkg, ["@pob/root"]);
-        }
-        packageUtils.removeDevDependencies(pkg, ["@pob/eslint-config"]);
+        packageUtils.addDevDependencies(pkg, ["@pob/eslint-config"]);
         packageUtils.addOrRemoveDevDependencies(
           pkg,
           shouldHavePluginsDependencies,
@@ -378,7 +373,7 @@ export default class CommonFormatLintGenerator extends Generator {
 
       return {
         imports: [
-          'import pobConfig from "@pob/root/eslint-config"',
+          'import pobConfig from "@pob/eslint-config"',
           useTypescript &&
             hasReact &&
             'import pobTypescriptConfigReact from "@pob/eslint-config-typescript-react"',

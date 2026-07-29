@@ -28,7 +28,6 @@
     "lib",
     "bin",
     "createLintStagedConfig.js",
-    "eslint-config.js",
     "oxfmt.js",
     "tsconfigs"
   ],
@@ -39,8 +38,6 @@
     ".": "./lib/index.js",
     "./createLintStagedConfig": "./createLintStagedConfig.js",
     "./createLintStagedConfig.js": "./createLintStagedConfig.js",
-    "./eslint-config": "./eslint-config.js",
-    "./eslint-config.js": "./eslint-config.js",
     "./oxfmt": "./oxfmt.js",
     "./oxfmt.js": "./oxfmt.js",
     "./tsconfigs/base.json": "./tsconfigs/base.json",
@@ -71,7 +68,6 @@
     "@commitlint/format": "21.0.1",
     "@commitlint/lint": "21.0.2",
     "@commitlint/types": "21.0.1",
-    "@pob/eslint-config": "workspace:*",
     "@pob/version": "workspace:*",
     "conventional-changelog-conventionalcommits": "^9.1.0",
     "conventional-changelog-writer": "^8.2.0",
@@ -82,14 +78,6 @@
     "picomatch": "^4.0.5",
     "pob-dependencies": "workspace:*",
     "semver": "^7.7.3"
-  },
-  "peerDependencies": {
-    "eslint": "^10.6.0"
-  },
-  "peerDependenciesMeta": {
-    "eslint": {
-      "optional": true
-    }
   },
   "engines": {
     "node": ">=22.18.0"

@@ -1,5 +1,5 @@
+import pobConfig, { apply, tsExtensions } from "@pob/eslint-config";
 import pobTypescriptConfigReact from "@pob/eslint-config-typescript-react";
-import pobConfig, { apply, tsExtensions } from "@pob/root/eslint-config";
 
 const { configs } = pobConfig;
 
