@@ -79,7 +79,6 @@ export default {
     app: configs.app,
 
     monorepo: configs.monorepo,
-    checkPackages: configs.checkPackages,
 
     "react-native": [
       {
