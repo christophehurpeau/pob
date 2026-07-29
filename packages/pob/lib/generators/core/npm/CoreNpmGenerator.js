@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import Generator from "yeoman-generator";
 
 export default class CoreNpmGenerator extends Generator {
@@ -51,7 +52,7 @@ export default class CoreNpmGenerator extends Generator {
           files.add("bin");
         }
 
-        if (this.fs.exists(this.destinationPath("skills"))) {
+        if (fs.existsSync(this.destinationPath("skills"))) {
           files.add("skills");
         }
 
