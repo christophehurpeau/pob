@@ -7,6 +7,13 @@ export default [
   ...configs.node,
   ...configs.monorepo,
   {
+    settings: {
+      "check-package-dependencies": {
+        library: ["*", "!vite-app"],
+      },
+    },
+  },
+  {
     ignores: [
       "@pob/version/__fixtures__/monorepo-invalid-package-json/packages/pkg-with-invalid-json/package.json",
       "**/__fixtures__/**",
@@ -72,15 +79,6 @@ export default [
     },
     settings: {
       "import-x/core-modules": ["vitest"],
-    },
-  },
-  // must be lowest
-  ...configs.checkPackages,
-  {
-    settings: {
-      "check-package-dependencies": {
-        library: ["*", "!vite-app"],
-      },
     },
   },
   {

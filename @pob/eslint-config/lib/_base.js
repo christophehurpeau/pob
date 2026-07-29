@@ -1,5 +1,6 @@
 import js from "@eslint/js";
 import pobPlugin from "@pob/eslint-plugin";
+import checkPackageDependenciesConfigs from "./languages/check-package-dependencies.js";
 import jsonConfigs from "./languages/json.js";
 import regexpPluginConfigs from "./plugins/regexp.js";
 import unicornPluginConfigs from "./plugins/unicorn.js";
@@ -38,6 +39,7 @@ export default [
     ],
   },
   ...jsonConfigs,
+  ...checkPackageDependenciesConfigs,
   ...apply({
     extensions: "{js,mjs,cjs,ts,tsx}",
     mode: "add-extensions",

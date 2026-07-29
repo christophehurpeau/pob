@@ -93,8 +93,8 @@ importers:
         specifier: 8.63.0
         version: 8.63.0(@typescript/typescript6@6.0.2)(eslint@10.8.0(supports-color@7.2.0))(supports-color@7.2.0)
       check-package-dependencies:
-        specifier: ^12.1.0
-        version: 12.1.0(eslint@10.8.0(supports-color@7.2.0))
+        specifier: ^12.2.0
+        version: 12.2.0(eslint@10.8.0(supports-color@7.2.0))
       confusing-browser-globals:
         specifier: ^1.0.11
         version: 1.0.11
@@ -2851,8 +2851,8 @@ packages:
   chardet@2.1.1:
     resolution: {integrity: sha512-PsezH1rqdV9VvyNhxxOW32/d75r01NY7TQCmOqomRo15ZSOKbpTFVsfjghxo6JloQUCGnH4k1LGu0R4yCLlWQQ==}
 
-  check-package-dependencies@12.1.0:
-    resolution: {integrity: sha512-eAlJVQH8J65VUaOQzL9O0n+sYN7hcNcHegGFKY7zgO8WmQPPjyPTP7dMYJzrVm+tOKWDvt6BaGn/Ep1H5+1hNQ==}
+  check-package-dependencies@12.2.0:
+    resolution: {integrity: sha512-hOM5jG/PnqbVt9r9+LYWGC+3YoO+Bm+Yuok4uaocYNWmPvvlU7ZziifE3nCkxlKf2PpbyAl5Lha8BBXJ05YTLA==}
     engines: {node: '>=22.18.0'}
     hasBin: true
     peerDependencies:
@@ -7617,7 +7617,7 @@ snapshots:
 
   chardet@2.1.1: {}
 
-  check-package-dependencies@12.1.0(eslint@10.8.0(supports-color@7.2.0)):
+  check-package-dependencies@12.2.0(eslint@10.8.0(supports-color@7.2.0)):
     dependencies:
       '@eslint/plugin-kit': 0.7.2
       jsonc-parser: 3.3.1
