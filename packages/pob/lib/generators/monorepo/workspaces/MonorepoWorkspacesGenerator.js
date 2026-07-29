@@ -108,6 +108,8 @@ export default class MonorepoWorkspacesGenerator extends Generator {
             : ""
         }eslint --quiet .`,
     });
+    delete pkg.scripts["lint:prettier"];
+    delete pkg.scripts["lint:prettier:fix"];
 
     if (
       pkg.scripts?.version ===

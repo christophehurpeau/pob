@@ -542,11 +542,10 @@ export default class CommonFormatLintGenerator extends Generator {
         delete pkg.scripts.format;
         delete pkg.scripts["format:check"];
       }
-
-      delete pkg.scripts["lint:prettier"];
-      delete pkg.scripts["lint:prettier:fix"];
-      delete pkg.scripts["typescript-check"];
     }
+    delete pkg.scripts["typescript-check"];
+    delete pkg.scripts["lint:prettier"];
+    delete pkg.scripts["lint:prettier:fix"];
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
   }
