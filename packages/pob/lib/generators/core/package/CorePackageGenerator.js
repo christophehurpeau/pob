@@ -233,25 +233,33 @@ export default class CorePackageGenerator extends Generator {
 
     if (this.options.inMonorepo && !this.options.isRoot) {
       packageUtils.removeScripts(pkg, ["checks"]);
-    } else if (this.options.isRoot) {
-      const checksScript = pkg.scripts?.checks;
-      if (checksScript && checksScript.includes("node scripts/check-package")) {
-        pkg.scripts.checks = checksScript.replace(
-          /( && )?node scripts\/check-package\.(mjs|js)( && )?/,
-          "",
-        );
-        if (pkg.scripts.checks === "") {
-          delete pkg.scripts.checks;
-        }
-      }
-    } else if (inMonorepo && !inMonorepo.root) {
+    } else {
       if (this.fs.exists("scripts/check-package.js")) {
         this.fs.delete("scripts/check-package.js");
       }
       if (this.fs.exists("scripts/check-package.mjs")) {
         this.fs.delete("scripts/check-package.mjs");
       }
-      packageUtils.removeScripts(pkg, ["checks"]);
+      if (this.fs.exists("scripts/check-package.ts")) {
+        this.fs.delete("scripts/check-package.ts");
+      }
+      if (this.options.isRoot) {
+        const checksScript = pkg.scripts?.checks;
+        if (
+          checksScript &&
+          checksScript.includes("node scripts/check-package")
+        ) {
+          pkg.scripts.checks = checksScript.replace(
+            /( && )?node scripts\/check-packages?\.(mjs|js|ts)( && )?/,
+            "",
+          );
+          if (pkg.scripts.checks === "") {
+            delete pkg.scripts.checks;
+          }
+        }
+      } else if (inMonorepo && !inMonorepo.root) {
+        packageUtils.removeScripts(pkg, ["checks"]);
+      }
     }
 
     if (!pkg.authors) {
