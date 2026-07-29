@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [38.2.0](https://github.com/christophehurpeau/pob/compare/pob@38.1.0...pob@38.2.0) (2026-07-29)
+
+### Features
+
+* add sequential script execution for workspaces and integrate with expo app type
+* add upgrade-expo script for expo app type in package.json
+* handle expo package configuration in package.json
+
+### Bug Fixes
+
+* correct syntax error in test coverage generation command
+* improve checks script handling for monorepo and root configurations
+* update test coverage generation logic and adjust GitHub Actions workflow
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [38.1.0](https://github.com/christophehurpeau/pob/compare/pob@38.0.0...pob@38.1.0) (2026-07-28)
 
 ### Features

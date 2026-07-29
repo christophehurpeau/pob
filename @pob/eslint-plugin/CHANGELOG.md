@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.1.1](https://github.com/christophehurpeau/pob/compare/@pob/eslint-plugin@66.1.0...@pob/eslint-plugin@66.1.1) (2026-07-29)
+
+Note: no notable changes
+
+
 ## [66.1.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-plugin@66.0.0...@pob/eslint-plugin@66.1.0) (2026-07-28)
 
 ### Features
