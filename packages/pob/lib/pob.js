@@ -12,6 +12,7 @@ import path from "node:path";
 import minimist from "minimist";
 import * as yeoman from "yeoman-environment";
 import PobAppGenerator from "./generators/app/PobAppGenerator.js";
+import AppExpoGenerator from "./generators/app/expo/AppExpoGenerator.js";
 import AppViteGenerator from "./generators/app/vite/AppViteGenerator.js";
 import CommonBabelGenerator from "./generators/common/babel/CommonBabelGenerator.js";
 import CommonE2eGenerator from "./generators/common/e2e/CommonE2eGenerator.js";
@@ -96,6 +97,11 @@ env.registerStub(
   AppViteGenerator,
   "pob:app:vite",
   `${__dirname}/generators/app/vite/AppViteGenerator.js`,
+);
+env.registerStub(
+  AppExpoGenerator,
+  "pob:app:expo",
+  `${__dirname}/generators/app/expo/AppExpoGenerator.js`,
 );
 env.registerStub(
   CommonBabelGenerator,

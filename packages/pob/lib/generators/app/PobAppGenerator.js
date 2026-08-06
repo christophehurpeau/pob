@@ -387,6 +387,9 @@ export default class PobAppGenerator extends Generator {
           enableServer: this.appConfig.type === "vite-with-server",
         });
         break;
+      case "expo":
+        this.composeWith("pob:app:expo", {});
+        break;
       // no default
     }
 
