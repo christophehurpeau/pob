@@ -9,7 +9,6 @@ import allowImplicitReturnTypeConfig from "./overrides/allow-implicit-return-typ
 import allowUnsafeAsWarnConfig from "./overrides/allow-unsafe-as-warn.js";
 import allowUnsafeConfig from "./overrides/allow-unsafe.js";
 import appConfig from "./overrides/app.js";
-import monorepoRootConfigsConfig from "./overrides/monorepo-root-configs.js";
 import scriptsOverrideConfig from "./overrides/scripts.js";
 import {
   testOverrideConfigsWithTypescript,
@@ -193,8 +192,7 @@ export default {
       configs: [appConfig],
     }),
 
-    monorepo: [monorepoRootConfigsConfig],
-
+    monorepo: [toolsProjectConfig],
     toolsProject: [toolsProjectConfig],
   },
 };

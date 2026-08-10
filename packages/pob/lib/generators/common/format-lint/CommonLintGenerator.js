@@ -409,14 +409,13 @@ export default class CommonFormatLintGenerator extends Generator {
 
     const isMonorepoRoot =
       this.options.monorepo || Boolean(inMonorepo && inMonorepo.root);
-    if (isMonorepoRoot && useTypescript) {
-      flatCascade.push("...pobConfig.configs.monorepo");
-    }
     // non-published typescript (scripts/**/*.ts, root *.config.ts) is
-    // type-checked against tsconfig.tools.json rather than the emitting
-    // tsconfig.json; point typed lint at that project. Single repos only:
-    // monorepos use configs.monorepo + tsconfig.root-configs.json instead.
-    if (!isMonorepoRoot && !inMonorepo && useTypescript) {
+    // type-checked against tsconfig.tools.json rather than any emitting
+    // tsconfig.json; point typed lint at that project. The monorepo root owns
+    // the shared tsconfig.tools.json (its **/scripts/** glob covers package
+    // scripts too), and single repos own their own; in-monorepo packages
+    // inherit the root config.
+    if ((isMonorepoRoot || !inMonorepo) && useTypescript) {
       flatCascade.push("...pobConfig.configs.toolsProject");
     }
 

@@ -1,4 +1,4 @@
-import { readdirSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import Generator from "yeoman-generator";
 import { latestLTS } from "../../../utils/nodeVersions.js";
 import * as packageUtils from "../../../utils/package.js";
@@ -138,34 +138,41 @@ export default class MonorepoTypescriptGenerator extends Generator {
     const tsconfigCheckPath = this.destinationPath("tsconfig.check.json");
     const tsconfigBuildPath = this.destinationPath("tsconfig.build.json");
     const tsconfigTestPath = this.destinationPath("tsconfig.test.json");
-    const tsconfigRootConfigsPath = this.destinationPath(
-      "tsconfig.root-configs.json",
-    );
+    const tsconfigToolsPath = this.destinationPath("tsconfig.tools.json");
+    // previous name, migrate to tsconfig.tools.json
+    this.fs.delete(this.destinationPath("tsconfig.root-configs.json"));
     this.fs.delete(tsconfigTestPath);
 
     if (!this.options.enable) {
       this.fs.delete(tsconfigPath);
       this.fs.delete(tsconfigCheckPath);
       this.fs.delete(tsconfigBuildPath);
-      this.fs.delete(tsconfigRootConfigsPath);
+      this.fs.delete(tsconfigToolsPath);
     } else {
       const packagePaths = JSON.parse(this.options.packagePaths);
+      const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
-      // root config files written in typescript (e.g. vitest.config.ts) are not
-      // part of any package tsconfig, so they need a dedicated project for
-      // type-aware linting and tsc -b
+      // non-published typescript run in place is not part of any package's
+      // emitting tsconfig, so it needs a dedicated noEmit project for type-aware
+      // linting and tsc -b: root config files (e.g. vitest.config.ts), a root
+      // scripts/ dir, and each package's scripts/ dir (matched via the
+      // workspace globs so all packages are covered)
       const hasRootConfigs = hasRootConfigFiles(this.destinationPath());
-      if (hasRootConfigs) {
+      const hasRootScripts = existsSync(this.destinationPath("scripts"));
+      const workspaceGlobs = pkg.workspaces || [];
+      const hasTools = hasRootConfigs || hasRootScripts;
+      if (hasTools) {
         await copyAndFormatTpl(
           this.fs,
-          this.templatePath("tsconfig.root-configs.json.ejs"),
-          tsconfigRootConfigsPath,
+          this.templatePath("tsconfig.tools.json.ejs"),
+          tsconfigToolsPath,
           {
             nodeVersion: latestLTS,
+            workspaceGlobs,
           },
         );
       } else {
-        this.fs.delete(tsconfigRootConfigsPath);
+        this.fs.delete(tsconfigToolsPath);
       }
 
       await copyAndFormatTpl(
@@ -175,7 +182,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
         {
           packagePaths,
           tsConfigSuffix: false,
-          hasRootConfigs,
+          hasTools,
         },
       );
 

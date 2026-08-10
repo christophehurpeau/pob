@@ -1,0 +1,25 @@
+{
+  "extends": [
+    "@pob/root/tsconfigs/strict.json",
+    "@pob/root/tsconfigs/targets/node-<%= nodeVersion %>.json"
+  ],
+  "include": [
+    "*.config.ts",
+    "*.config.mts",
+    "*.config.cts",
+    "scripts/**/*.ts",
+    "scripts/**/*.mts",
+    "scripts/**/*.cts",
+<% workspaceGlobs.forEach((workspaceGlob, index) => { -%>
+    "<%= workspaceGlob %>/scripts/**/*.ts",
+    "<%= workspaceGlob %>/scripts/**/*.mts",
+    "<%= workspaceGlob %>/scripts/**/*.cts"<%= index === workspaceGlobs.length - 1 ? '' : ',' %>
+<% }) -%>
+  ],
+  "compilerOptions": {
+    "noEmit": true,
+    "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo-tools",
+    "incremental": true,
+    "resolveJsonModule": true
+  }
+}

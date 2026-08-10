@@ -71,12 +71,6 @@ export default [
   }),
   {
     files: ["*.config.{ts,mts,cts}"],
-    languageOptions: {
-      parserOptions: {
-        project: "tsconfig.root-configs.json",
-        tsconfigRootDir: import.meta.dirname,
-      },
-    },
     settings: {
       "import-x/core-modules": ["vitest"],
     },

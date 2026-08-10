@@ -1,0 +1,29 @@
+{
+  "extends": [
+    "@pob/root/tsconfigs/strict.json",
+    "@pob/root/tsconfigs/targets/node-24.json"
+  ],
+  "include": [
+    "*.config.ts",
+    "*.config.mts",
+    "*.config.cts",
+    "scripts/**/*.ts",
+    "scripts/**/*.mts",
+    "scripts/**/*.cts",
+    "packages/*/scripts/**/*.ts",
+    "packages/*/scripts/**/*.mts",
+    "packages/*/scripts/**/*.cts",
+    "@pob/*/scripts/**/*.ts",
+    "@pob/*/scripts/**/*.mts",
+    "@pob/*/scripts/**/*.cts",
+    "pob-examples/*/scripts/**/*.ts",
+    "pob-examples/*/scripts/**/*.mts",
+    "pob-examples/*/scripts/**/*.cts"
+  ],
+  "compilerOptions": {
+    "noEmit": true,
+    "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo-tools",
+    "incremental": true,
+    "resolveJsonModule": true
+  }
+}

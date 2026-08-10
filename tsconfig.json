@@ -1,7 +1,7 @@
 {
   "files": [],
   "references": [
-    { "path": "tsconfig.root-configs.json" },
+    { "path": "tsconfig.tools.json" },
     { "path": "@pob/eslint-plugin/tsconfig.json" },
     { "path": "pob-examples/typescript-lib-without-rollup/tsconfig.json" },
     { "path": "@pob/eslint-config/tsconfig.json" },
