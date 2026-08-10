@@ -113,6 +113,7 @@ jobs:
 
       - name: E2E testing
         run: <%= packageManagerRun("test:e2e", e2eTesting) %>
+        if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
 <% } -%>
 <% if (isReleasePleaseEnabled) { -%>
 
