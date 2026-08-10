@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [38.3.0](https://github.com/christophehurpeau/pob/compare/pob@38.2.1...pob@38.3.0) (2026-08-10)
+
+### Features
+
+* add common e2e testing generator
+* add Expo app generator to handle package.json configuration
+* add tools project configuration and update TypeScript linting setup
+* decouple eslint config from @pob/root
+
+### Bug Fixes
+
+* improve entry name handling and export path logic in CommonTranspilerGenerator
+* remove unused linting scripts from package.json in CommonFormatLintGenerator and MonorepoWorkspacesGenerator
+* tools project only for non-monorepo
+* use native fs module for file existence check in CoreNpmGenerator
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [38.2.1](https://github.com/christophehurpeau/pob/compare/pob@38.2.0...pob@38.2.1) (2026-07-29)
 
 Version bump for dependency: @pob/root

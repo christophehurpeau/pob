@@ -12,6 +12,7 @@ interface Dependencies {
   "alp-rollup-plugin-config": "4.1.1";
   eslint: "10.8.0";
   pinst: "3.0.0";
+  playwright: "1.61.1";
   rollup: "4.60.4";
   semver: "7.8.5";
   tslib: "2.8.1";

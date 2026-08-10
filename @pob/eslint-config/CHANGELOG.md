@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.2.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config@67.1.1...@pob/eslint-config@67.2.0) (2026-08-10)
+
+### Features
+
+* add tools project configuration and update TypeScript linting setup
+* integrate check-package-dependencies plugin and update configurations
+
+### Bug Fixes
+
+* update check-package-dependencies to version 12.2.0
+
 ## [67.1.1](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config@67.1.0...@pob/eslint-config@67.1.1) (2026-07-29)
 
 Version bump for dependency: @pob/eslint-plugin

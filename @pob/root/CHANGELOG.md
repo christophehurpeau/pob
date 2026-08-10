@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.3.0](https://github.com/christophehurpeau/pob/compare/@pob/root@27.2.1...@pob/root@27.3.0) (2026-08-10)
+
+### Features
+
+* decouple eslint config from @pob/root
+
+Version bump for dependency: pob-dependencies
+
+
 ## [27.2.1](https://github.com/christophehurpeau/pob/compare/@pob/root@27.2.0...@pob/root@27.2.1) (2026-07-29)
 
 ### Bug Fixes
