@@ -111,6 +111,10 @@ jobs:
 <% } -%>
 <% if (e2eTesting) { -%>
 
+      - name: E2E testing prepare
+        run: <%= packageManagerRun("test:e2e:prepare", e2eTesting) %>
+        if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
+
       - name: E2E testing
         run: <%= packageManagerRun("test:e2e", e2eTesting) %>
         if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
