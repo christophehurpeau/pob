@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [38.4.0](https://github.com/christophehurpeau/pob/compare/pob@38.3.0...pob@38.4.0) (2026-08-11)
+
+### Features
+
+* add conditional check for E2E testing in GitHub Actions workflow
+* add E2E testing preparation step in GitHub Actions workflow and update CommonE2eGenerator
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [38.3.0](https://github.com/christophehurpeau/pob/compare/pob@38.2.1...pob@38.3.0) (2026-08-10)
 
 ### Features
