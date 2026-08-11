@@ -41,8 +41,8 @@
   },
   "devDependencies": {
     "@types/node": "24.13.3",
-    "@types/react": "19.2.14",
-    "react": "19.2.7",
+    "@types/react": "19.2.18",
+    "react": "19.2.8",
     "typescript": "npm:@typescript/typescript6@6.0.2"
   },
   "peerDependencies": {
