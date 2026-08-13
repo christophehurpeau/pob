@@ -1,11 +1,11 @@
 {
   "files": [],
   "references": [
-<% if (hasTools) { -%>
-    { "path": "tsconfig.tools.json" }<%= packagePaths.length > 0 ? ',' : '' %>
-<% } -%>
 <% packagePaths.forEach((packagePath, index) => { -%>
-    { "path": "<%= packagePath %>/tsconfig<%= tsConfigSuffix ? `.${tsConfigSuffix}` : '' %>.json" }<%= index === packagePaths.length -1 ? '' : ',' %>
+    { "path": "<%= packagePath %>/tsconfig<%= tsConfigSuffix ? `.${tsConfigSuffix}` : '' %>.json" }<%= index === packagePaths.length -1 && !hasTools ? '' : ',' %>
 <% }) -%>
+<% if (hasTools) { -%>
+    { "path": "tsconfig.tools.json" }
+<% } -%>
   ]
 }
