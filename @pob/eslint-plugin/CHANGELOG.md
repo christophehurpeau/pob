@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.1.2](https://github.com/christophehurpeau/pob/compare/@pob/eslint-plugin@66.1.1...@pob/eslint-plugin@66.1.2) (2026-08-13)
+
+### Bug Fixes
+
+* **deps:** update dependency eslint to v10.8.1 ([#2818](https://github.com/christophehurpeau/pob/issues/2818))
+
 ## [66.1.1](https://github.com/christophehurpeau/pob/compare/@pob/eslint-plugin@66.1.0...@pob/eslint-plugin@66.1.1) (2026-07-29)
 
 Note: no notable changes

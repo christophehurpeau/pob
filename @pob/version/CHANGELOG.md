@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.1](https://github.com/christophehurpeau/pob/compare/@pob/version@6.0.0...@pob/version@6.0.1) (2026-08-13)
+
+Note: no notable changes
+
+
 ## [6.0.0](https://github.com/christophehurpeau/pob/compare/@pob/version@4.4.0...@pob/version@6.0.0) (2026-07-27)
 
 ### ⚠ BREAKING CHANGES

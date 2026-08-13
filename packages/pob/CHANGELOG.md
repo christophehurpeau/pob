@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [38.5.0](https://github.com/christophehurpeau/pob/compare/pob@38.4.0...pob@38.5.0) (2026-08-13)
+
+### Features
+
+* update TypeScript configuration to include e2e scripts in linting and compilation
+
+### Bug Fixes
+
+* **deps:** update dependency eslint to v10.8.1 ([#2818](https://github.com/christophehurpeau/pob/issues/2818))
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [38.4.0](https://github.com/christophehurpeau/pob/compare/pob@38.3.0...pob@38.4.0) (2026-08-11)
 
 ### Features

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.4.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config@67.3.0...@pob/eslint-config@67.4.0) (2026-08-13)
+
+### Features
+
+* update TypeScript configuration to include e2e scripts in linting and compilation
+
+### Bug Fixes
+
+* **deps:** update dependency eslint to v10.8.1 ([#2818](https://github.com/christophehurpeau/pob/issues/2818))
+
+Version bump for dependency: @pob/eslint-plugin
+
+
 ## [67.3.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config@67.2.0...@pob/eslint-config@67.3.0) (2026-08-11)
 
 ### Features

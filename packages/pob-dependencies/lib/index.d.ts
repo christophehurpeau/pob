@@ -1,5 +1,5 @@
 interface Dependencies {
-  "@playwright/test": "1.61.1";
+  "@playwright/test": "1.62.1";
   "@pob/esbuild": "workspace:*";
   "@pob/eslint-config": "workspace:*";
   "@pob/eslint-config-typescript-react": "workspace:*";
@@ -10,9 +10,9 @@ interface Dependencies {
   "@typescript/native": "npm:typescript@7.0.2";
   "@vitest/coverage-v8": "4.1.10";
   "alp-rollup-plugin-config": "4.1.1";
-  eslint: "10.8.0";
+  eslint: "10.8.1";
   pinst: "3.0.0";
-  playwright: "1.61.1";
+  playwright: "1.62.1";
   rollup: "4.60.4";
   semver: "7.8.5";
   tslib: "2.8.1";

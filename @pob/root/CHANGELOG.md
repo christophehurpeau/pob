@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.5.0](https://github.com/christophehurpeau/pob/compare/@pob/root@27.4.0...@pob/root@27.5.0) (2026-08-13)
+
+### Features
+
+* **deps:** update dependency lint-staged to v17.3.0 ([#2820](https://github.com/christophehurpeau/pob/issues/2820))
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [27.4.0](https://github.com/christophehurpeau/pob/compare/@pob/root@27.3.0...@pob/root@27.4.0) (2026-08-11)
 
 Version bump for dependency: pob-dependencies
