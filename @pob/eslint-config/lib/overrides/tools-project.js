@@ -5,7 +5,7 @@
 // (packages/*/scripts, @scope/*/scripts, ...) against the root tools project.
 export default {
   name: "@pob/eslint-config/overrides/tools-project",
-  files: ["**/scripts/**/*.{ts,mts,cts}", "*.config.{ts,mts,cts}"],
+  files: ["**/{scripts,e2e}/**/*.{ts,mts,cts}", "*.config.{ts,mts,cts}"],
   languageOptions: {
     parserOptions: {
       project: "tsconfig.tools.json",

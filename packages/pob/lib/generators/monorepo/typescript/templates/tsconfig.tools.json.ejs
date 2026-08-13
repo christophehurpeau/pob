@@ -13,7 +13,10 @@
 <% workspaceGlobs.forEach((workspaceGlob, index) => { -%>
     "<%= workspaceGlob %>/scripts/**/*.ts",
     "<%= workspaceGlob %>/scripts/**/*.mts",
-    "<%= workspaceGlob %>/scripts/**/*.cts"<%= index === workspaceGlobs.length - 1 ? '' : ',' %>
+    "<%= workspaceGlob %>/scripts/**/*.cts",
+    "<%= workspaceGlob %>/e2e/**/*.ts",
+    "<%= workspaceGlob %>/e2e/**/*.mts",
+    "<%= workspaceGlob %>/e2e/**/*.cts"<%= index === workspaceGlobs.length - 1 ? '' : ',' %>
 <% }) -%>
   ],
   "compilerOptions": {
