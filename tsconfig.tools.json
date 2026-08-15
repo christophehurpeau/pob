@@ -4,6 +4,7 @@
     "@pob/root/tsconfigs/targets/node-24.json"
   ],
   "include": [
+    "*.config.js",
     "*.config.ts",
     "*.config.mts",
     "*.config.cts",
