@@ -56,13 +56,33 @@ const { lockfile, configfile, installAndDedupe } = (() => {
 const pkg = JSON.parse(fs.readFileSync(path.resolve("package.json")));
 const workspaces = pkg.workspaces || false;
 
+const workspacesPattern = (() => {
+  if (!workspaces) return undefined;
+  return workspaces.length === 1
+    ? workspaces[0]
+    : `{${workspaces.join(",")}}`;
+})();
+
 const getSrcDirectories = () => {
-  if (workspaces) {
-    return `${workspaces.length === 1 ? workspaces[0] : `{${workspaces.join(",")}}`}/{src,lib}`;
+  if (workspacesPattern) {
+    return `${workspacesPattern}/{src,lib}`;
   }
 
   return "{src,lib}";
 };
+
+// tsc must also run when the typescript project layout or the dependencies
+// change, not only when a source file changes.
+const getTscTriggerPattern = (srcDirectories) =>
+  `{${[
+    `${srcDirectories}/**/*.{ts,tsx}`,
+    "tsconfig*.json",
+    "package.json",
+    workspacesPattern && `${workspacesPattern}/tsconfig*.json`,
+    workspacesPattern && `${workspacesPattern}/package.json`,
+  ]
+    .filter(Boolean)
+    .join(",")}}`;
 
 export default function createLintStagedConfig() {
   const srcDirectories = getSrcDirectories();
@@ -105,7 +125,7 @@ export default function createLintStagedConfig() {
     [`{.storybook,${srcDirectories}}/**/*.css`]: [
       "oxfmt --no-error-on-unmatched-pattern",
     ],
-    [`${srcDirectories}/**/*.{ts,tsx}`]: () =>
+    [getTscTriggerPattern(srcDirectories)]: () =>
       pkg.devDependencies && pkg.devDependencies["@pob/rollup-esbuild"]
         ? ["rollup --config rollup.config.mjs", "tsc -b"]
         : ["tsc"],
