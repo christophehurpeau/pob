@@ -58,9 +58,7 @@ const workspaces = pkg.workspaces || false;
 
 const workspacesPattern = (() => {
   if (!workspaces) return undefined;
-  return workspaces.length === 1
-    ? workspaces[0]
-    : `{${workspaces.join(",")}}`;
+  return workspaces.length === 1 ? workspaces[0] : `{${workspaces.join(",")}}`;
 })();
 
 const getSrcDirectories = () => {
