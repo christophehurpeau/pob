@@ -160,7 +160,7 @@ export default class PobMonorepoGenerator extends Generator {
       return;
     }
 
-    if (this.pobMonorepoConfig.ciPushWorkflow) {
+    if (this.pobMonorepoConfig?.ciPushWorkflow) {
       throw new Error(
         "ciPushWorkflow is deprecated, use disablePushWorkflow instead",
       );
@@ -181,7 +181,7 @@ export default class PobMonorepoGenerator extends Generator {
         name: "disablePushWorkflow",
         message: "Would you like to DISABLE push workflow ?",
         when: (answers) => answers.ci,
-        default: config.disablePushWorkflow,
+        default: config?.disablePushWorkflow,
       },
       {
         type: "confirm",
