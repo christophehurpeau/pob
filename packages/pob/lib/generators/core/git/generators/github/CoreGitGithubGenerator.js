@@ -1,10 +1,30 @@
 /* eslint-disable camelcase */
 
+import { spawnSync } from "node:child_process";
+import * as os from "node:os";
 import Generator from "yeoman-generator";
 import { ciContexts } from "../../../ci/CoreCIGenerator.js";
 // const packageUtils = require('../../../../../utils/package');
 
-const GITHUB_TOKEN = process.env.POB_GITHUB_TOKEN;
+const readTokenFromKeychain = () => {
+  if (process.platform !== "darwin") return undefined;
+  const result = spawnSync(
+    "security",
+    [
+      "find-generic-password",
+      "-s",
+      "pob-github-token",
+      "-a",
+      os.userInfo().username,
+      "-w",
+    ],
+    { encoding: "utf8" },
+  );
+  if (result.status !== 0) return undefined;
+  return result.stdout.trim() || undefined;
+};
+
+const GITHUB_TOKEN = process.env.POB_GITHUB_TOKEN || readTokenFromKeychain();
 
 const postJson = (url, jsonBody) =>
   fetch(`https://api.github.com/${url}`, {
@@ -121,7 +141,7 @@ export default class CoreGitGithubGenerator extends Generator {
 
     if (!GITHUB_TOKEN && process.env.CI !== "true") {
       console.warn(
-        "Missing POB_GITHUB_TOKEN. Create one with https://github.com/settings/tokens/new?scopes=repo&description=POB%20Generator and add it in your env variables.",
+        'Missing POB_GITHUB_TOKEN. Create one with https://github.com/settings/tokens/new?scopes=repo&description=POB%20Generator and add it in your env variables, or store it in the macOS keychain with: security add-generic-password -s pob-github-token -a "$USER" -w',
       );
     }
   }
