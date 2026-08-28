@@ -12,7 +12,7 @@ const ensureWorkflowUninstalled = (workflowName) => {
 
 const installWorkflow = (
   workflowName,
-  { pmExec, installOnCICommand, installMutableCommand, ciPreStep },
+  { pmRun, pmExec, installOnCICommand, installMutableCommand, ciPreStep },
   condition = true,
 ) => {
   if (condition) {
@@ -26,6 +26,7 @@ const installWorkflow = (
           ),
           { encoding: "utf8" },
         )
+        .replaceAll("$pmRun$", pmRun)
         .replaceAll("$pmExec$", pmExec)
         .replaceAll("$ciPreStep$", ciPreStep)
         .replaceAll("$installOnCICommand$", installOnCICommand)
@@ -43,7 +44,8 @@ export default function installGithubWorkflows({ pkg, pm }) {
 
   if (fs.existsSync(".github")) {
     installWorkflow("push-renovate-pob_root", pmCommands);
-    installWorkflow("push-renovate-prettier", pmCommands);
+    installWorkflow("push-renovate-format", pmCommands);
+    ensureWorkflowUninstalled("push-renovate-prettier");
     ensureWorkflowUninstalled("push-renovate-typedoc");
     if (
       pkg.devDependencies &&
