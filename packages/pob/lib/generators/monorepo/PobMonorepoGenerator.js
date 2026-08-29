@@ -2,6 +2,7 @@ import { execSync } from "node:child_process";
 import fs from "node:fs";
 import { platform } from "node:process";
 import Generator from "yeoman-generator";
+import removeLegacyGeneratedDocs from "../../utils/legacyGeneratedDocs.js";
 import * as packageUtils from "../../utils/package.js";
 import { packageManagerRun } from "../../utils/packageManagerUtils.js";
 import {
@@ -376,9 +377,11 @@ export default class PobMonorepoGenerator extends Generator {
 
     if (platform !== "win32") {
       execSync(
-        `rm -Rf ${["lib-*", "coverage", "docs"].filter(Boolean).join(" ")}`,
+        `rm -Rf ${["lib-*", "coverage", "generated-docs"].filter(Boolean).join(" ")}`,
       );
     }
+
+    removeLegacyGeneratedDocs((path) => this.destinationPath(path));
   }
 
   async writing() {

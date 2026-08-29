@@ -1,5 +1,6 @@
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
+import removeLegacyGeneratedDocs from "../../../utils/legacyGeneratedDocs.js";
 import * as packageUtils from "../../../utils/package.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
@@ -35,6 +36,8 @@ export default class LibDocGenerator extends Generator {
   }
 
   async writing() {
+    removeLegacyGeneratedDocs((path) => this.destinationPath(path));
+
     if (this.fs.exists(this.destinationPath("jsdoc.conf.json"))) {
       this.fs.delete(this.destinationPath("jsdoc.conf.json"));
     }
@@ -112,8 +115,8 @@ export default class LibDocGenerator extends Generator {
       }
     } else {
       // this.fs.delete(this.destinationPath('jsdoc.conf.js'));
-      if (this.fs.exists(this.destinationPath("docs"))) {
-        this.fs.delete(this.destinationPath("docs"));
+      if (this.fs.exists(this.destinationPath("generated-docs"))) {
+        this.fs.delete(this.destinationPath("generated-docs"));
       }
 
       if (this.fs.exists(this.destinationPath("tsconfig.doc.json"))) {

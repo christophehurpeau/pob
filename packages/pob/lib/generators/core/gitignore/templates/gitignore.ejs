@@ -20,10 +20,10 @@ yarn-error.log*
 !/.vscode
 *.sublime-project
 *.sublime-workspace
-<% if (documentation) { -%>
+<% if (documentation || testing) { -%>
 
-# generated documentation directory
-/docs
+# generated documentation and coverage output
+/generated-docs
 <% } -%>
 <% if (testing) { -%>
 

@@ -458,7 +458,7 @@ export default class CommonFormatLintGenerator extends Generator {
         }
 
         if (inMonorepo && inMonorepo.root && this.options.documentation) {
-          ignorePatterns.add("/docs");
+          ignorePatterns.add("/generated-docs");
         }
 
         if ((!inMonorepo || !inMonorepo.root) && useTypescript) {

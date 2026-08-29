@@ -25,7 +25,7 @@ export default class CommonE2eGenerator extends Generator {
 
     packageUtils.addOrRemoveScripts(pkg, this.options.enable, {
       "test:e2e:prepare": "playwright install chromium",
-      "test:e2e": "playwright test",
+      "test:e2e": "playwright test -c e2e/playwright.config.ts",
     });
 
     return writeAndFormatJson(

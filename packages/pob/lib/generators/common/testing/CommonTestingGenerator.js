@@ -267,7 +267,7 @@ export default class CommonTestingGenerator extends Generator {
           const experimentalTestCoverage = true;
           return [
             experimentalTestCoverage && coverage === "generate"
-              ? "mkdir -p docs && "
+              ? "mkdir -p generated-docs && "
               : "",
             `TZ=UTC ${
               coverage && !experimentalTestCoverage
@@ -281,7 +281,7 @@ export default class CommonTestingGenerator extends Generator {
               this.options.typescript
                 ? `${tsTestLoaderOption ? `${tsTestLoaderOption} ` : ""}`
                 : ""
-            }${this.fs.exists("src/test-setup.ts") ? "--import ./src/test-setup.ts " : ""}--test${experimentalTestCoverage && coverage ? ` --experimental-test-coverage${coverage === "generate" ? " --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=docs/coverage.lcov" : ""} --test-coverage-include="${this.options.srcDirectory}/**/*.ts"` : ""} '${this.options.monorepo ? `${workspacesPattern}/*/` : ""}${`${
+            }${this.fs.exists("src/test-setup.ts") ? "--import ./src/test-setup.ts " : ""}--test${experimentalTestCoverage && coverage ? ` --experimental-test-coverage${coverage === "generate" ? " --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=generated-docs/coverage.lcov" : ""} --test-coverage-include="${this.options.srcDirectory}/**/*.ts"` : ""} '${this.options.monorepo ? `${workspacesPattern}/*/` : ""}${`${
               hasTestFolder
                 ? "test/*"
                 : `${this.options.srcDirectory}/**/*.test`

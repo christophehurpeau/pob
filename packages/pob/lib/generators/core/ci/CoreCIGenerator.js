@@ -200,13 +200,6 @@ export default class CoreCIGenerator extends Generator {
         this.destinationPath(".github/workflows/gh-pages.yml"),
         {
           packageManager: this.options.packageManager,
-          packageManagerRun: (script, packagePath) => {
-            return packageManagerRun(
-              this.options.packageManager,
-              "docs:build",
-              packagePath,
-            );
-          },
           disableYarnGitCache: this.options.disableYarnGitCache,
           testing: this.options.testing,
           testRunner: this.options.testRunner,
