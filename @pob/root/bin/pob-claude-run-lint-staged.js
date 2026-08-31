@@ -56,16 +56,18 @@ for (const [pattern, commandFnOrArray] of Object.entries(config)) {
   const matchBase = !pattern.includes("/");
   if (!picomatch.isMatch(relFile, pattern, { matchBase })) continue;
 
-  let commands;
-  if (typeof commandFnOrArray === "function") {
-    const result = commandFnOrArray([file]);
-    commands = Array.isArray(result) ? result : [result];
-  } else {
-    const arr = Array.isArray(commandFnOrArray)
-      ? commandFnOrArray
-      : [commandFnOrArray];
-    commands = arr.map((cmd) => `${cmd} ${JSON.stringify(file)}`);
-  }
+  // Function tasks generate their own commands and get no filename appended,
+  // arrays are sequential tasks and nested arrays parallel ones.
+  const resolveCommands = (command) => {
+    if (typeof command === "function") {
+      const result = command([file]);
+      return Array.isArray(result) ? result : [result];
+    }
+    if (Array.isArray(command)) return command.flatMap(resolveCommands);
+    return [`${command} ${JSON.stringify(file)}`];
+  };
+
+  const commands = resolveCommands(commandFnOrArray);
 
   for (const cmd of commands.filter(Boolean)) {
     if (shouldSkip(cmd)) continue;

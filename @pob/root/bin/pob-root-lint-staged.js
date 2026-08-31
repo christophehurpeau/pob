@@ -10,6 +10,7 @@ lintStaged({
     process.exitCode = passed ? 0 : 1;
   })
   // eslint-disable-next-line unicorn/prefer-top-level-await
-  .catch(() => {
+  .catch((error) => {
+    console.error(error);
     process.exitCode = 1;
   });

@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import { defineConfig } from "lint-staged/config";
 import { assertYarnBerry } from "./lib/assert-yarn-berry.js";
 import { whichPmRuns } from "./lib/which-pm-runs.js";
 
@@ -85,7 +86,7 @@ const getTscTriggerPattern = (srcDirectories) =>
 export default function createLintStagedConfig() {
   const srcDirectories = getSrcDirectories();
 
-  return {
+  return defineConfig({
     [`{${lockfile},${configfile ? `${configfile},` : ""}package.json${
       workspaces
         ? `,${workspaces.map((workspacePath) => `${workspacePath}/package.json`).join(",")}`
@@ -123,9 +124,11 @@ export default function createLintStagedConfig() {
     [`{.storybook,${srcDirectories}}/**/*.css`]: [
       "oxfmt --no-error-on-unmatched-pattern",
     ],
-    [getTscTriggerPattern(srcDirectories)]: () =>
+    // Tasks are declared as functions so that lint-staged does not append the
+    // matched filenames: both commands build the whole project.
+    [getTscTriggerPattern(srcDirectories)]:
       pkg.devDependencies && pkg.devDependencies["@pob/rollup-esbuild"]
-        ? ["rollup --config rollup.config.mjs", "tsc -b"]
-        : ["tsc"],
-  };
+        ? [[() => "rollup --config rollup.config.mjs", () => "tsc -b"]] // run in parallel
+        : [() => "tsc"],
+  });
 }
