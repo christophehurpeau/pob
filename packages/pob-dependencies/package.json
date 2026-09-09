@@ -43,7 +43,7 @@
     "@pob/pretty-pkg": "workspace:*",
     "@pob/rollup-esbuild": "workspace:*",
     "@pob/rollup-typescript": "workspace:*",
-    "@types/node": "24.13.3",
+    "@types/node": "24.13.4",
     "@typescript/native": "npm:typescript@7.0.2",
     "@vitest/coverage-v8": "4.1.10",
     "alp-rollup-plugin-config": "4.1.1",

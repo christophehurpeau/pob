@@ -64,7 +64,7 @@
   },
   "devDependencies": {
     "@pob/root": "workspace:*",
-    "@types/node": "24.13.3",
+    "@types/node": "24.13.4",
     "@typescript/native": "npm:typescript@7.0.2",
     "@yeoman/types": "1.11.1"
   },

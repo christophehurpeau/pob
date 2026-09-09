@@ -37,7 +37,7 @@
     "@pob/rollup-esbuild": "workspace:*",
     "@pob/root": "workspace:*",
     "@pob/version": "workspace:*",
-    "@types/node": "24.13.3",
+    "@types/node": "24.13.4",
     "@typescript/native": "npm:typescript@7.0.2",
     "@vitest/coverage-v8": "4.1.10",
     "eslint": "10.8.1",
