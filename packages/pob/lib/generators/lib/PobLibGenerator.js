@@ -1,5 +1,6 @@
 import { rmSync } from "node:fs";
 import Generator from "yeoman-generator";
+import { removeFromGitIndex } from "../../utils/git.js";
 import inMonorepo from "../../utils/inMonorepo.js";
 import removeLegacyGeneratedDocs from "../../utils/legacyGeneratedDocs.js";
 import { latestLTS } from "../../utils/nodeVersions.js";
@@ -255,6 +256,17 @@ export default class PobLibGenerator extends Generator {
       this.pobjson.e2e = e2e;
     }
 
+    // build in git
+    if (!this.updateOnly) {
+      const { buildInGit } = await this.prompt({
+        type: "confirm",
+        name: "buildInGit",
+        message: "Would you like the build output committed in git ?",
+        default: this.pobjson.buildInGit === true,
+      });
+      this.pobjson.buildInGit = buildInGit;
+    }
+
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
 
     this.composeWith("pob:common:babel", {
@@ -379,8 +391,7 @@ export default class PobLibGenerator extends Generator {
       enable: !inMonorepo && this.pobjson.testing,
       packageManager,
       enablePublish: true,
-      withBabel,
-      withTypescript,
+      build: withBabel || withTypescript,
       isMonorepo: false,
       ci: this.options.ci,
       disableYarnGitCache: this.options.disableYarnGitCache,
@@ -398,6 +409,9 @@ export default class PobLibGenerator extends Generator {
     });
 
     const buildDirectory = withBabel || withTypescript ? "dist" : "";
+    const buildInGit = this.pobjson.buildInGit === true;
+    this.buildDirectory = buildDirectory;
+    this.buildInGit = buildInGit;
 
     // must be after doc, testing
     this.composeWith("pob:core:gitignore", {
@@ -406,6 +420,7 @@ export default class PobLibGenerator extends Generator {
       typescript: withTypescript,
       documentation: this.pobjson.documentation,
       testing: !!this.pobjson.testing,
+      paths: !buildInGit && buildDirectory ? `/${buildDirectory}` : "",
       buildDirectory,
       playwright: this.pobjson.e2e,
     });
@@ -481,5 +496,12 @@ export default class PobLibGenerator extends Generator {
     this.config.save();
 
     this.composeWith("pob:core:sort-package");
+  }
+
+  end() {
+    // the build output is no longer committed: remove it from git, keeping it on disk.
+    if (!this.buildInGit && this.buildDirectory) {
+      removeFromGitIndex(this.destinationPath(), this.buildDirectory);
+    }
   }
 }

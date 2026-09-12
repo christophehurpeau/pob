@@ -46,13 +46,6 @@ export default class CoreGitignoreGenerator extends Generator {
       description: "Typescript use.",
     });
 
-    this.option("buildInGit", {
-      type: Boolean,
-      required: false,
-      default: true,
-      description: "Build is saved in git.",
-    });
-
     this.option("buildDirectory", {
       type: String,
       required: false,
@@ -88,7 +81,6 @@ export default class CoreGitignoreGenerator extends Generator {
         withBabel,
         typescript: withBabel || this.options.typescript,
         paths: this.options.paths,
-        buildInGit: this.options.buildInGit,
         playwright: this.options.playwright,
       });
     }

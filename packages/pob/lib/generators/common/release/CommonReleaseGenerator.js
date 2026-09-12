@@ -23,19 +23,13 @@ export default class CommonReleaseGenerator extends Generator {
       description: "If publish on npm is enabled",
     });
 
-    this.option("withBabel", {
+    this.option("build", {
       type: Boolean,
-      required: false,
-      default: undefined,
-      description: "Babel enabled.",
+      required: true,
+      description:
+        "If there is a build script. The build output is not necessarily committed, it must be built before publishing.",
     });
 
-    this.option("withTypescript", {
-      type: Boolean,
-      required: false,
-      default: undefined,
-      description: "Typescript enabled.",
-    });
     this.option("isMonorepo", {
       type: Boolean,
       default: false,
@@ -82,6 +76,7 @@ export default class CommonReleaseGenerator extends Generator {
         {
           packageManager: this.options.packageManager,
           enablePublish: this.options.enablePublish,
+          build: this.options.build,
           disableYarnGitCache: this.options.disableYarnGitCache,
           isMonorepo: this.options.isMonorepo,
           isMonorepoIndependent:
@@ -89,6 +84,7 @@ export default class CommonReleaseGenerator extends Generator {
             (!pkg.version || pkg.version === "0.0.0"),
           nodeLatestMajorVersion: latestLTS,
           packageManagerExec,
+          packageManagerRun,
         },
       );
     } else {
@@ -110,9 +106,8 @@ export default class CommonReleaseGenerator extends Generator {
       packageUtils.addScripts(pkg, {
         preversion: [
           packageManagerRun(this.options.packageManager, "lint"),
-          this.options.withBabel ||
-            (this.options.withTypescript &&
-              packageManagerRun(this.options.packageManager, "build")),
+          this.options.build &&
+            packageManagerRun(this.options.packageManager, "build"),
           "repository-check-dirty",
         ]
           .filter(Boolean)

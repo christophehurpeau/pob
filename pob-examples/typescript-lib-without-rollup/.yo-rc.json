@@ -2,7 +2,9 @@
   "pob": {
     "lib": {
       "documentation": false,
-      "testing": {}
+      "testing": {},
+      "buildInGit": true,
+      "e2e": false
     },
     "project": {
       "type": "lib"

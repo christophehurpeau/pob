@@ -83,6 +83,11 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 <% } -%>
+<% if (build) { -%>
+
+      - name: Build
+        run: <%= packageManagerRun(packageManager, 'build') %>
+<% } -%>
 
       - name: New version (dry run)
         if: github.ref == 'refs/heads/main' && inputs.dry-run

@@ -1,6 +1,7 @@
 import { execSync } from "node:child_process";
 import { platform } from "node:process";
 import Generator from "yeoman-generator";
+import { removeFromGitIndex } from "../../utils/git.js";
 import inMonorepo from "../../utils/inMonorepo.js";
 import removeLegacyGeneratedDocs from "../../utils/legacyGeneratedDocs.js";
 import * as packageUtils from "../../utils/package.js";
@@ -173,6 +174,7 @@ export default class PobAppGenerator extends Generator {
     }
 
     const buildDirectory = this.appConfig.distribute ? "dist" : "build";
+    this.buildDirectory = buildDirectory;
     const isAppLibrary =
       this.appConfig.type === "node-library" ||
       this.appConfig.type === "untranspiled-library";
@@ -333,7 +335,7 @@ export default class PobAppGenerator extends Generator {
         this.appConfig.testing &&
         pkg.name !== "yarn-plugin-conventional-version",
       enablePublish: false,
-      withBabel: babel,
+      build: typescript === true && this.appConfig.type !== "expo",
       isMonorepo: false,
       ci: this.options.ci,
       disableYarnGitCache: this.options.disableYarnGitCache,
@@ -362,7 +364,6 @@ export default class PobAppGenerator extends Generator {
       testing: this.appConfig.testing,
       withBabel: babel,
       paths: ignorePaths.join("\n"),
-      buildInGit: false,
       buildDirectory,
     });
 
@@ -440,5 +441,12 @@ export default class PobAppGenerator extends Generator {
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
 
     this.composeWith("pob:core:sort-package");
+  }
+
+  end() {
+    // the build output is no longer committed: remove it from git, keeping it on disk.
+    if (this.buildDirectory) {
+      removeFromGitIndex(this.destinationPath(), this.buildDirectory);
+    }
   }
 }

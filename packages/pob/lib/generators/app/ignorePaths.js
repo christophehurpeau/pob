@@ -12,7 +12,10 @@ export const appIgnorePaths = {
     ].filter(Boolean),
   vite: (config) => ["/dist"],
   "vite-with-server": (config) => ["/dist"],
-  node: (config) => (config.distribute ? [] : ["/build"]),
+  node: (config) => {
+    if (!config.distribute) return ["/build"];
+    return config.buildInGit ? [] : ["/dist"];
+  },
   "node-library": (config) => ["/build"],
   "untranspiled-library": (config) => [],
   "alp-node": (config) => ["/build"],

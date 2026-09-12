@@ -355,7 +355,11 @@ export default class PobMonorepoGenerator extends Generator {
       enable: true,
       packageManager: this.options.packageManager,
       enablePublish: !this.options.isAppProject,
-      withBabel: this.pobMonorepoConfig.typescript,
+      // the root build script is added when there are rollup configs or typescript definitions to build.
+      build:
+        !this.options.isAppProject &&
+        (this.pobMonorepoConfig.typescript === true ||
+          this.packages.some((pkg) => pkg.pob?.bundler)),
       isMonorepo: true,
       ci: this.pobMonorepoConfig.ci,
       disableYarnGitCache: this.options.disableYarnGitCache,

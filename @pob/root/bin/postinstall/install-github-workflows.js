@@ -1,8 +1,22 @@
+import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { assertYarnBerry } from "../../lib/assert-yarn-berry.js";
 import { getPackageManagerCommands } from "./packageManagerHelpers.js";
+
+// this workflow only exists to commit the build output back to the branch.
+const hasBuildOutputInGit = () => {
+  try {
+    return execFileSync("git", ["ls-files", "--", "*dist/*", "*build/*"], {
+      encoding: "utf8",
+    })
+      .split("\n")
+      .some((file) => /(?:^|\/)(?:dist|build)\//.test(file));
+  } catch {
+    return false;
+  }
+};
 
 const ensureWorkflowUninstalled = (workflowName) => {
   try {
@@ -52,7 +66,8 @@ export default function installGithubWorkflows({ pkg, pm }) {
       (pkg.devDependencies.rollup ||
         pkg.devDependencies["@pob/rollup-esbuild"] ||
         pkg.devDependencies["@pob/rollup-typescript"]) &&
-      pkg.scripts?.build
+      pkg.scripts?.build &&
+      hasBuildOutputInGit()
     ) {
       installWorkflow("push-renovate-build", pmCommands);
     } else {
