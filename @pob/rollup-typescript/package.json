@@ -40,7 +40,7 @@
   },
   "scripts": {
     "lint": "pnpm run lint:eslint",
-    "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/rollup-typescript'"
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/rollup-typescript'"
   },
   "peerDependenciesMeta": {
     "rollup": {

@@ -29,7 +29,7 @@
   },
   "scripts": {
     "lint": "pnpm run lint:eslint",
-    "lint:eslint": "pnpm run --dir '../..' eslint --quiet 'packages/repository-check-dirty'"
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'packages/repository-check-dirty'"
   },
   "engines": {
     "node": ">=22.18.0"

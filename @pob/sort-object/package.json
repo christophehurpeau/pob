@@ -29,7 +29,7 @@
   },
   "scripts": {
     "lint": "pnpm run lint:eslint",
-    "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/sort-object'"
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/sort-object'"
   },
   "engines": {
     "node": ">=22.18.0"

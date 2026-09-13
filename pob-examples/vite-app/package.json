@@ -18,7 +18,7 @@
     "build": "vite build",
     "build:analyze": "ENABLE_ANALYZER=true vite build",
     "lint": "pnpm run lint:eslint",
-    "lint:eslint": "pnpm run --dir '../..' eslint --quiet 'pob-examples/vite-app'",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'pob-examples/vite-app'",
     "serve": "vite preview",
     "start": "vite",
     "test": "yarn '../..' run test -- 'pob-examples/vite-app'",

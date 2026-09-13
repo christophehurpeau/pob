@@ -35,7 +35,7 @@
   "scripts": {
     "install-bin": "ln -s $PWD/bin/migrate.mjs /usr/local/bin/pob-migrate",
     "lint": "pnpm run lint:eslint",
-    "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/codemods'"
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/codemods'"
   },
   "dependencies": {
     "jscodeshift": "17.4.0"

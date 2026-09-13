@@ -29,7 +29,7 @@
   },
   "scripts": {
     "lint": "pnpm run lint:eslint",
-    "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/eslint-plugin'"
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/eslint-plugin'"
   },
   "dependencies": {
     "@typescript-eslint/utils": "8.63.0",

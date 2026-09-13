@@ -39,7 +39,7 @@
   },
   "scripts": {
     "lint": "pnpm run lint:eslint",
-    "lint:eslint": "pnpm run --dir '../..' eslint --quiet 'packages/yarn-version'",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'packages/yarn-version'",
     "test": "pnpm run --dir '../..' test -- 'packages/yarn-version'"
   },
   "dependencies": {

@@ -35,7 +35,7 @@
   },
   "scripts": {
     "lint": "pnpm run lint:eslint",
-    "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/esbuild'"
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/esbuild'"
   },
   "dependencies": {
     "esbuild": "0.28.2"

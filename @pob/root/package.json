@@ -62,7 +62,7 @@
   },
   "scripts": {
     "lint": "pnpm run lint:eslint",
-    "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/root'"
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/root'"
   },
   "dependencies": {
     "@commitlint/format": "21.0.1",

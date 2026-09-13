@@ -35,7 +35,7 @@
   },
   "scripts": {
     "lint": "pnpm run lint:eslint",
-    "lint:eslint": "pnpm run --dir '../..' eslint --quiet '@pob/eslint-config'"
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/eslint-config'"
   },
   "dependencies": {
     "@eslint/js": "^10.0.1",
