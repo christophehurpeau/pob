@@ -203,6 +203,7 @@ export default class CoreCIGenerator extends Generator {
           disableYarnGitCache: this.options.disableYarnGitCache,
           testing: this.options.testing,
           testRunner: this.options.testRunner,
+          build: this.options.build,
           typedoc: this.options.documentation && this.options.typescript,
           nodeLatestMajorVersion: latestLTS,
         },

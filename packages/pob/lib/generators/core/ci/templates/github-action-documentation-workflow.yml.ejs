@@ -45,6 +45,11 @@ jobs:
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
 <% } -%>
+<% if (build) { -%>
+
+      - name: Build
+        run: <%= packageManager %> run build
+<% } -%>
 
 <% if (typedoc) { -%>
       - name: Run tsc for tsc cache

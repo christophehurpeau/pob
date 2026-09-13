@@ -138,6 +138,11 @@ jobs:
 <% } else { -%>
         run: npm ci
 <% } -%>
+<% if (build) { -%>
+
+      - name: Build
+        run: <%= packageManagerRun("build") %>
+<% } -%>
 
       - name: Format
         run: <%= packageManagerRun("format:check") %>
@@ -195,6 +200,11 @@ jobs:
 <% } else if (packageManager === 'pnpm') { -%>
       - name: Install Dependencies
         run: pnpm install --frozen-lockfile
+<% } -%>
+<% if (build) { -%>
+
+      - name: Build
+        run: <%= packageManagerRun("build") %>
 <% } -%>
 
 <% if (codecov) { -%>
@@ -266,6 +276,11 @@ jobs:
         run: pnpm install --frozen-lockfile
 <% } else { -%>
         run: npm ci
+<% } -%>
+<% if (build) { -%>
+
+      - name: Build
+        run: <%= packageManagerRun("build") %>
 <% } -%>
 
       - name: E2E testing

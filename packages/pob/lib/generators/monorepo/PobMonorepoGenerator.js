@@ -257,6 +257,14 @@ export default class PobMonorepoGenerator extends Generator {
 
     const splitCIJobs = this.packageNames.length > 8;
 
+    // the root has a build script when there are typescript definitions or rollup
+    // configs to build. The build output is not necessarily committed, so it must be
+    // built in ci and before publishing.
+    const hasRootBuild =
+      this.pobMonorepoConfig.typescript === true ||
+      (!this.options.isAppProject &&
+        this.packages.some((pkg) => pkg.pob?.bundler));
+
     this.composeWith("pob:common:testing", {
       monorepo: true,
       enable: this.pobMonorepoConfig.testing,
@@ -264,7 +272,7 @@ export default class PobMonorepoGenerator extends Generator {
       disableYarnGitCache: this.options.disableYarnGitCache,
       testing: this.pobMonorepoConfig.testing,
       e2eTesting: this.pobMonorepoConfig.e2eTesting,
-      build: this.pobMonorepoConfig.typescript === true,
+      build: hasRootBuild,
       typescript: this.pobMonorepoConfig.typescript,
       documentation: !!this.pobMonorepoConfig.documentation,
       codecov: this.pobMonorepoConfig.testing && this.pobMonorepoConfig.codecov,
@@ -296,7 +304,7 @@ export default class PobMonorepoGenerator extends Generator {
       documentation: this.pobMonorepoConfig.documentation,
       storybook: pkg?.devDependencies?.storybook,
       typescript: this.pobMonorepoConfig.typescript,
-      build: this.pobMonorepoConfig.typescript === true,
+      build: hasRootBuild,
       testing: this.pobMonorepoConfig.testing,
       testRunner: this.pobMonorepoConfig.testRunner,
       packageManager: this.options.packageManager,
@@ -355,11 +363,7 @@ export default class PobMonorepoGenerator extends Generator {
       enable: true,
       packageManager: this.options.packageManager,
       enablePublish: !this.options.isAppProject,
-      // the root build script is added when there are rollup configs or typescript definitions to build.
-      build:
-        !this.options.isAppProject &&
-        (this.pobMonorepoConfig.typescript === true ||
-          this.packages.some((pkg) => pkg.pob?.bundler)),
+      build: hasRootBuild,
       isMonorepo: true,
       ci: this.pobMonorepoConfig.ci,
       disableYarnGitCache: this.options.disableYarnGitCache,

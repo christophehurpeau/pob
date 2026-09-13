@@ -64,7 +64,6 @@ jobs:
 <% if (build) { -%>
       - name: Build
         run: <%= packageManager %> run build
-        if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
 
 <% } -%>
       - name: Format
