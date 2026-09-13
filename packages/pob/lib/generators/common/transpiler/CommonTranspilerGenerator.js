@@ -1,5 +1,4 @@
 import fs from "node:fs";
-import semver from "semver";
 import Generator from "yeoman-generator";
 import { latestLTS, maintenanceLTS } from "../../../utils/nodeVersions.js";
 import * as packageUtils from "../../../utils/package.js";
@@ -284,9 +283,6 @@ export default class CommonTranspilerGenerator extends Generator {
         this.options.useAppConfig,
       ["alp-rollup-plugin-config"],
     );
-
-    /* engines */
-    // TODO move from CommonBabelGenerator
 
     /* side effects */
 
@@ -660,86 +656,10 @@ export default class CommonTranspilerGenerator extends Generator {
     const entries = pkg.pob.entries || ["index"];
     const envs = pkg.pob.envs || pkg.pob.babelEnvs;
 
-    const hasTargetNode = envs && envs.some((env) => env.target === "node");
     const hasTargetBrowser =
       envs && envs.some((env) => env.target === "browser");
 
-    if (!pkg.engines) pkg.engines = {};
-
-    if (hasTargetNode || !envs) {
-      const minNodeVersion = envs
-        ? Math.min(
-            ...envs
-              .filter((env) => env.target === "node")
-              .map((env) => env.version),
-          )
-        : (() =>
-            this.options.onlyLatestLTS
-              ? `${latestLTS}`
-              : `${maintenanceLTS}`)();
-
-      switch (String(minNodeVersion)) {
-        case "4":
-        case "6":
-        case "8":
-        case "10":
-        case "12":
-        case "14":
-        case "16":
-        case "18":
-        case "20":
-        case "22":
-          if (
-            envs ||
-            !pkg.engines.node ||
-            !pkg.engines.node.startsWith(">=24")
-          ) {
-            pkg.engines.node = ">=22.18.0";
-          }
-          break;
-        case "24":
-          if (
-            envs ||
-            !pkg.engines.node ||
-            !pkg.engines.node.startsWith(">=26")
-          ) {
-            pkg.engines.node = ">=24.14.1";
-          }
-          break;
-        case "26":
-          pkg.engines.node = ">=26.0.0";
-          break;
-        default:
-          throw new Error(`Invalid min node version: ${minNodeVersion}`);
-      }
-
-      if (pkg.dependencies && pkg.dependencies["@types/node"]) {
-        pkg.dependencies["@types/node"] = `>=${minNodeVersion}.0.0`;
-      }
-      if (
-        pkg.devDependencies &&
-        pkg.devDependencies["@types/node"] &&
-        !semver.satisfies(
-          pkg.devDependencies["@types/node"],
-          `>=${minNodeVersion}.0.0`,
-        )
-      ) {
-        pkg.devDependencies["@types/node"] = `>=${minNodeVersion}.0.0`;
-      }
-    } else {
-      packageUtils.removeDependencies(pkg, ["@types/node"]);
-      packageUtils.removeDevDependencies(pkg, ["@types/node"]);
-
-      // Supports oldest current or active LTS version of node
-      const minVersion = this.options.onlyLatestLTS ? "24.14.1" : "22.18.0";
-
-      if (
-        !pkg.engines.node ||
-        semver.lt(semver.minVersion(pkg.engines.node), minVersion)
-      ) {
-        pkg.engines.node = `>=${minVersion}`;
-      }
-    }
+    // engines.node and @types/node are handled by pob:core:node
 
     this.fs.delete("rollup.config.js");
     if (

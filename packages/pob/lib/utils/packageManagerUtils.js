@@ -34,6 +34,23 @@ export const packageManagerExec = (packageManager, command) => {
   }
 };
 
+// `pnpm run` and `npm run` only resolve package.json scripts, not binaries
+export const packageManagerExecWithCwd = (packageManager, cwd, command) => {
+  switch (packageManager) {
+    case undefined:
+    case "yarn":
+      return `yarn ${quoteArg(cwd)} run ${command}`;
+    case "npm":
+      return `cd ${quoteArg(cwd)} && npx ${command}`;
+    case "bun":
+      return `bun run --cwd ${quoteArg(cwd)} ${command}`;
+    case "pnpm":
+      return `pnpm --dir ${quoteArg(cwd)} exec ${command}`;
+    default:
+      throw new Error(`Unsupported package manager: ${packageManager}`);
+  }
+};
+
 export const packageManagerRunWithCwd = (packageManager, cwd, script) => {
   switch (packageManager) {
     case undefined:

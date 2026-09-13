@@ -53,23 +53,7 @@ export default class CorePackageGenerator extends Generator {
   async initializing() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
 
-    if (!pkg.engines) pkg.engines = {};
-
-    // dont override engines if set to latest
-    if (
-      !pkg.engines.node ||
-      !(
-        pkg.engines.node.startsWith(">=22.") ||
-        pkg.engines.node.startsWith(">=24.")
-      )
-    ) {
-      // this might be overridden by babel generator
-      pkg.engines.node = ">=22.18.0"; // 22.18.0 is the version with strip typescript out of experimental status
-    }
-
-    if (pkg.engines.node.startsWith(">=22.11.")) {
-      pkg.engines.node = ">=22.18.0";
-    }
+    // engines.node is handled by pob:core:node
 
     if (!this.options.isRoot) {
       delete pkg.packageManager;

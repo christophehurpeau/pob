@@ -31,6 +31,7 @@ import CoreEditorConfigGenerator from "./generators/core/editorconfig/CoreEditor
 import CoreGitGenerator from "./generators/core/git/CoreGitGenerator.js";
 import CoreGitGithubGenerator from "./generators/core/git/generators/github/CoreGitGithubGenerator.js";
 import CoreGitignoreGenerator from "./generators/core/gitignore/CoreGitignoreGenerator.js";
+import CoreNodeGenerator from "./generators/core/node/CoreNodeGenerator.js";
 import CoreNpmGenerator from "./generators/core/npm/CoreNpmGenerator.js";
 import CorePackageGenerator from "./generators/core/package/CorePackageGenerator.js";
 import CorePnpmGenerator from "./generators/core/pnpm/CorePnpmGenerator.js";
@@ -182,6 +183,11 @@ env.registerStub(
   CoreGitignoreGenerator,
   "pob:core:gitignore",
   `${__dirname}/generators/core/gitignore/CoreGitignoreGenerator.js`,
+);
+env.registerStub(
+  CoreNodeGenerator,
+  "pob:core:node",
+  `${__dirname}/generators/core/node/CoreNodeGenerator.js`,
 );
 env.registerStub(
   CoreNpmGenerator,

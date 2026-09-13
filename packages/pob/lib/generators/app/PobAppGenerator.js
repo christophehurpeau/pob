@@ -440,6 +440,13 @@ export default class PobAppGenerator extends Generator {
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
 
+    this.composeWith("pob:core:node", {
+      // only apps using pob:common:transpiler target latest LTS in engines
+      onlyLatestLTS:
+        this.appConfig.type === "node" ||
+        this.appConfig.type === "node-library" ||
+        this.appConfig.type === "alp-node",
+    });
     this.composeWith("pob:core:sort-package");
   }
 

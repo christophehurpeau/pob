@@ -4,8 +4,8 @@ import { quoteArg } from "../../../utils/execUtils.js";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import * as packageUtils from "../../../utils/package.js";
 import {
+  packageManagerExecWithCwd,
   packageManagerRun,
-  packageManagerRunWithCwd,
 } from "../../../utils/packageManagerUtils.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 import { appIgnorePaths } from "../../app/ignorePaths.js";
@@ -524,7 +524,7 @@ export default class CommonFormatLintGenerator extends Generator {
 
       packageUtils.addScripts(pkg, {
         "lint:eslint": globalEslint
-          ? `${packageManagerRunWithCwd(this.options.packageManager, "../..", "eslint")} ${args} ${quoteArg(path.relative("../..", "."))}`
+          ? `${packageManagerExecWithCwd(this.options.packageManager, "../..", "eslint")} ${args} ${quoteArg(path.relative("../..", "."))}`
           : `eslint ${args} .`,
         lint: `${
           useTypescript && !composite ? "tsc && " : ""

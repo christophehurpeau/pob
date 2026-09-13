@@ -454,6 +454,9 @@ export default class PobMonorepoGenerator extends Generator {
       this.fs.writeJSON(this.destinationPath("package.json"), pkg);
     }
 
+    this.composeWith("pob:core:node", {
+      onlyLatestLTS: this.options.onlyLatestLTS,
+    });
     this.composeWith("pob:core:sort-package");
   }
 

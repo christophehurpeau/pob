@@ -495,6 +495,9 @@ export default class PobLibGenerator extends Generator {
     this.config.set("lib", pobjson);
     this.config.save();
 
+    this.composeWith("pob:core:node", {
+      onlyLatestLTS: this.onlyLatestLTS,
+    });
     this.composeWith("pob:core:sort-package");
   }
 
