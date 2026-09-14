@@ -38,7 +38,7 @@
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/rollup'"
   },
   "dependencies": {
-    "rollup": "4.60.4"
+    "rollup": "4.63.3"
   },
   "engines": {
     "node": ">=22.18.0"
