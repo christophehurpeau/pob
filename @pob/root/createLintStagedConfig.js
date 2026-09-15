@@ -64,6 +64,7 @@ const workspacesPattern = (() => {
 })();
 
 const OXFMT = "oxfmt --no-error-on-unmatched-pattern";
+const OXFMT_MAX_FILENAMES = 100;
 const ESLINT_FIX = "eslint --fix --quiet";
 
 const getSrcDirectories = () => {
@@ -73,13 +74,6 @@ const getSrcDirectories = () => {
 
   return "{src,lib}";
 };
-
-const getPackageJsonPattern = () =>
-  workspaces
-    ? `{package.json,${workspaces
-        .map((workspacePath) => `${workspacePath}/package.json`)
-        .join(",")}}`
-    : "package.json";
 
 // Changing the lockfile, the package manager config or any package.json
 // requires a reinstall before anything else runs.
@@ -190,35 +184,20 @@ const createLegacyConfig = ({
  * A single entry, which builds the command list itself: oxfmt and eslint each
  * run once on all the files they should handle, instead of once per pattern
  * group, and the build runs after them instead of alongside.
+ *
+ * oxfmt receives every staged file: it skips the files it does not support and
+ * the ones ignored by its config, so no file it can format is left out.
  */
 const createConfig = ({
-  cssPattern,
   hasRollup,
-  otherJsonPattern,
-  packageJsonPattern,
   pmFilesPattern,
   rootConfigPattern,
-  rootFilesPattern,
   configDirsCodePattern,
   srcCodePattern,
-  srcDocsPattern,
   tscTriggerPattern,
   workspaceConfigPattern,
 }) => {
   const matchesPmFiles = createMatcher([pmFilesPattern]);
-  const matchesOxfmt = createMatcher(
-    [
-      packageJsonPattern,
-      otherJsonPattern,
-      srcDocsPattern,
-      rootFilesPattern,
-      srcCodePattern,
-      configDirsCodePattern,
-      rootConfigPattern,
-      workspaceConfigPattern,
-      cssPattern,
-    ].filter(Boolean),
-  );
   const matchesEslint = createMatcher(
     [
       pmFilesPattern,
@@ -243,8 +222,15 @@ const createConfig = ({
       (allStagedFiles) => {
         const filenames = allStagedFiles.map(toRelativePosixPath);
         const hasPmFiles = filenames.some(matchesPmFiles);
-        const oxfmtFilenames = filenames.filter(matchesOxfmt);
         const eslintFilenames = filenames.filter(matchesEslint);
+
+        const getOxfmtCommand = () => {
+          if (filenames.length === 0) return undefined;
+          // Formatting the whole project is simpler and avoids too long
+          // command lines when many files are staged.
+          if (filenames.length > OXFMT_MAX_FILENAMES) return OXFMT;
+          return withFilenames(OXFMT, filenames);
+        };
 
         const getEslintCommand = () => {
           // eslint runs on the whole project when a package.json, the lockfile
@@ -260,9 +246,7 @@ const createConfig = ({
           hasPmFiles && pkg.scripts?.checks
             ? `${pm.name} run checks`
             : undefined,
-          oxfmtFilenames.length === 0
-            ? undefined
-            : withFilenames(OXFMT, oxfmtFilenames),
+          getOxfmtCommand(),
           getEslintCommand(),
           hasPmFiles ? getGitAddPmFilesCommand() : undefined,
         ].filter(Boolean);
@@ -298,7 +282,6 @@ export default function createLintStagedConfig() {
     cssPattern: `{.storybook,${srcDirectories}}/**/*.css`,
     hasRollup,
     otherJsonPattern: "!(package|package-lock|.eslintrc).json",
-    packageJsonPattern: getPackageJsonPattern(),
     pmFilesPattern: getPmFilesPattern(),
     rootConfigPattern,
     rootFilesPattern: "./*.{yml,yaml,md,jsonc}",
