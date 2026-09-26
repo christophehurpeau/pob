@@ -4,6 +4,10 @@ import reactConfig from "./configs/react.js";
 import { loadRules } from "./loadRules.js";
 
 export default {
+  meta: {
+    name: "@pob/eslint-plugin",
+    namespace: "@pob",
+  },
   rules: {
     ...loadRules(),
   },
