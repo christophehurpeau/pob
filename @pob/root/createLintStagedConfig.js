@@ -64,7 +64,8 @@ const workspacesPattern = (() => {
 })();
 
 const OXFMT = "oxfmt --no-error-on-unmatched-pattern";
-const OXFMT_MAX_FILENAMES = 100;
+// Above this many files, commands run on the whole project instead.
+const MAX_FILENAMES = 100;
 const ESLINT_FIX = "eslint --fix --quiet";
 const OXLINT_FIX = "oxlint --fix --no-error-on-unmatched-pattern";
 
@@ -234,19 +235,20 @@ const createConfig = ({
         const hasPmFiles = filenames.some(matchesPmFiles);
         const eslintFilenames = filenames.filter(matchesEslint);
 
-        const getOxfmtCommand = () => {
-          if (filenames.length === 0) return undefined;
-          // Formatting the whole project is simpler and avoids too long
-          // command lines when many files are staged.
-          if (filenames.length > OXFMT_MAX_FILENAMES) return OXFMT;
-          return withFilenames(OXFMT, filenames);
+        // Running on the whole project is simpler and avoids too long command
+        // lines when many files are staged.
+        const withFilenamesOrWholeProject = (command, commandFilenames) => {
+          if (commandFilenames.length === 0) return undefined;
+          if (commandFilenames.length > MAX_FILENAMES) return command;
+          return withFilenames(command, commandFilenames);
         };
 
         const getOxlintCommand = () => {
           if (!hasOxlint) return undefined;
-          const oxlintFilenames = eslintFilenames.filter(isOxlintSupportedFile);
-          if (oxlintFilenames.length === 0) return undefined;
-          return withFilenames(OXLINT_FIX, oxlintFilenames);
+          return withFilenamesOrWholeProject(
+            OXLINT_FIX,
+            eslintFilenames.filter(isOxlintSupportedFile),
+          );
         };
 
         const getEslintCommand = () => {
@@ -254,8 +256,7 @@ const createConfig = ({
           // or the package manager config changed, like in the legacy config,
           // as lint rules depend on the dependencies themselves.
           if (hasPmFiles) return ESLINT_FIX;
-          if (eslintFilenames.length === 0) return undefined;
-          return withFilenames(ESLINT_FIX, eslintFilenames);
+          return withFilenamesOrWholeProject(ESLINT_FIX, eslintFilenames);
         };
 
         return [
@@ -263,7 +264,7 @@ const createConfig = ({
           hasPmFiles && pkg.scripts?.checks
             ? `${pm.name} run checks`
             : undefined,
-          getOxfmtCommand(),
+          withFilenamesOrWholeProject(OXFMT, filenames),
           getOxlintCommand(),
           getEslintCommand(),
           hasPmFiles ? getGitAddPmFilesCommand() : undefined,
