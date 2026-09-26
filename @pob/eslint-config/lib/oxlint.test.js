@@ -1,26 +1,10 @@
-import { execFile } from "node:child_process";
 import { mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
-import { promisify } from "node:util";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
+import { lintWithOxlint, oxlintConfigsDir } from "./test-utils/oxlint.js";
 
-const execFileAsync = promisify(execFile);
-
-const baseConfigPath = fileURLToPath(
-  new URL("../oxlint/base.json", import.meta.url),
-);
-const oxlintPackageJsonUrl = import.meta.resolve("oxlint/package.json");
-const { default: oxlintPkg } = await import(oxlintPackageJsonUrl, {
-  with: { type: "json" },
-});
-const oxlintBinPath = fileURLToPath(
-  new URL(
-    typeof oxlintPkg.bin === "string" ? oxlintPkg.bin : oxlintPkg.bin.oxlint,
-    oxlintPackageJsonUrl,
-  ),
-);
+const baseConfigPath = path.join(oxlintConfigsDir, "base.json");
 
 /**
  * Lints `source` in a project whose .oxlintrc.json only extends base.json,
@@ -28,21 +12,7 @@ const oxlintBinPath = fileURLToPath(
  */
 const lint = async (cwd, source) => {
   await writeFile(path.join(cwd, "file.js"), source);
-  try {
-    const { stdout } = await execFileAsync(
-      process.execPath,
-      [oxlintBinPath, "-f", "json"],
-      { cwd },
-    );
-    return JSON.parse(stdout).diagnostics;
-  } catch (error) {
-    const { code, stdout } = /** @type {{ code: unknown; stdout: string }} */ (
-      error
-    );
-    // oxlint exits with code 1 when it reports errors
-    if (code !== 1) throw error;
-    return JSON.parse(stdout).diagnostics;
-  }
+  return lintWithOxlint(cwd);
 };
 
 const summarize = (diagnostics) =>
