@@ -1,0 +1,15 @@
+{
+  "extends": ["./node_modules/@pob/eslint-config/oxlint/base.json"],
+  "ignorePatterns": [
+    ".yarn",
+    "**/dist/",
+    "**/build/",
+    "**/coverage/",
+    "**/.next/",
+    "**/.tamagui/",
+    "**/*.d.ts",
+    "*.d.ts",
+    "/rollup.config.mjs",
+    "**/__fixtures__/**"
+  ]
+}

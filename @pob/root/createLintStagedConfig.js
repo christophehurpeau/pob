@@ -66,6 +66,16 @@ const workspacesPattern = (() => {
 const OXFMT = "oxfmt --no-error-on-unmatched-pattern";
 const OXFMT_MAX_FILENAMES = 100;
 const ESLINT_FIX = "eslint --fix --quiet";
+const OXLINT_FIX = "oxlint --fix --no-error-on-unmatched-pattern";
+
+// projects not yet migrated by pob have no oxlint config
+const hasOxlint = fs.existsSync(path.resolve(".oxlintrc.json"));
+const isOxlintSupportedFile = (filename) =>
+  /\.[cm]?[jt]sx?$/.test(filename) && !filename.endsWith(".d.ts");
+
+const CODE_COMMANDS = [OXFMT, hasOxlint && OXLINT_FIX, ESLINT_FIX].filter(
+  Boolean,
+);
 
 const getSrcDirectories = () => {
   if (workspacesPattern) {
@@ -168,11 +178,11 @@ const createLegacyConfig = ({
     [otherJsonPattern]: [OXFMT],
     [srcDocsPattern]: [OXFMT],
     [rootFilesPattern]: [OXFMT],
-    [srcCodePattern]: [OXFMT, ESLINT_FIX],
-    [configDirsCodePattern]: [OXFMT, ESLINT_FIX],
-    [rootConfigPattern]: [OXFMT, ESLINT_FIX],
+    [srcCodePattern]: CODE_COMMANDS,
+    [configDirsCodePattern]: CODE_COMMANDS,
+    [rootConfigPattern]: CODE_COMMANDS,
     ...(workspaceConfigPattern && {
-      [workspaceConfigPattern]: [OXFMT, ESLINT_FIX],
+      [workspaceConfigPattern]: CODE_COMMANDS,
     }),
     [cssPattern]: [OXFMT],
     // Tasks are declared as functions so that lint-staged does not append the
@@ -232,6 +242,13 @@ const createConfig = ({
           return withFilenames(OXFMT, filenames);
         };
 
+        const getOxlintCommand = () => {
+          if (!hasOxlint) return undefined;
+          const oxlintFilenames = eslintFilenames.filter(isOxlintSupportedFile);
+          if (oxlintFilenames.length === 0) return undefined;
+          return withFilenames(OXLINT_FIX, oxlintFilenames);
+        };
+
         const getEslintCommand = () => {
           // eslint runs on the whole project when a package.json, the lockfile
           // or the package manager config changed, like in the legacy config,
@@ -247,6 +264,7 @@ const createConfig = ({
             ? `${pm.name} run checks`
             : undefined,
           getOxfmtCommand(),
+          getOxlintCommand(),
           getEslintCommand(),
           hasPmFiles ? getGitAddPmFilesCommand() : undefined,
         ].filter(Boolean);

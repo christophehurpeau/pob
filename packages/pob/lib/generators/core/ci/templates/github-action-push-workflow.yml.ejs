@@ -76,6 +76,10 @@ jobs:
         if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
 <% } -%>
 
+      - name: Oxlint
+        run: <%= packageManager %> run lint:oxlint
+        if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
+
       - name: Eslint
         run: <%= packageManager %> run lint:eslint
         if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')

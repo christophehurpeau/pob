@@ -152,6 +152,9 @@ jobs:
         run: <%= packageManagerRun("tsc") %>
 <% } -%>
 
+      - name: Oxlint
+        run: <%= packageManagerRun("lint:oxlint") %>
+
       - name: Eslint
         run: <%= packageManagerRun("lint:eslint") %>
 <% if (testing) { -%>

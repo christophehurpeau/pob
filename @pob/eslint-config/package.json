@@ -16,6 +16,7 @@
   },
   "files": [
     "lib",
+    "oxlint",
     "utils.js"
   ],
   "type": "module",
@@ -27,6 +28,7 @@
     "./lib/rules/code-quality": "./lib/rules/code-quality.js",
     "./lib/rules/errors": "./lib/rules/errors.js",
     "./lib/rules/style": "./lib/rules/style.js",
+    "./oxlint/base.json": "./oxlint/base.json",
     "./utils": "./utils.js",
     "./package.json": "./package.json"
   },

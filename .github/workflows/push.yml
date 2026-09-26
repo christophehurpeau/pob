@@ -55,6 +55,9 @@ jobs:
       - name: Typescript
         run: pnpm run tsc
 
+      - name: Oxlint
+        run: pnpm run lint:oxlint
+
       - name: Eslint
         run: pnpm run lint:eslint
 

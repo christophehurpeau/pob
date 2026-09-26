@@ -1,4 +1,7 @@
+import fs from "node:fs";
+import path from "node:path";
 import tseslint from "typescript-eslint";
+import oxlintConfig from "../oxlint/base.json" with { type: "json" };
 import baseConfigs from "./_base.js";
 import baseCommonjsConfig from "./base/commonjs.js";
 import baseModuleConfig from "./base/module.js";
@@ -43,6 +46,19 @@ if (!tsFiles) {
 }
 
 const extensions = "{js,cjs,mjs}";
+
+// turns off the rules checked by oxlint, must be applied last. Only when the
+// project runs oxlint, so the rules are still checked by eslint otherwise.
+const oxlintConfigs = fs.existsSync(path.resolve(".oxlintrc.json"))
+  ? [
+      {
+        name: "@pob/eslint-config/oxlint",
+        rules: Object.fromEntries(
+          Object.keys(oxlintConfig.rules).map((ruleName) => [ruleName, "off"]),
+        ),
+      },
+    ]
+  : [];
 
 const testFiles = [
   `**/*.{test,test-e2e,spec}.${extensions}`,
@@ -169,12 +185,13 @@ export default {
         files: ["**/scripts/"],
         configs: [...nodePluginModuleConfigs, scriptsOverrideConfig],
       }),
+      ...oxlintConfigs,
     ],
     /** @deprecated */
-    nodeModule,
+    nodeModule: [...nodeModule, ...oxlintConfigs],
     /** @deprecated */
-    nodeCommonjs,
-    node: nodeModule,
+    nodeCommonjs: [...nodeCommonjs, ...oxlintConfigs],
+    node: [...nodeModule, ...oxlintConfigs],
 
     allowImplicitReturnType: applyTs({
       configs: [allowImplicitReturnTypeConfig],

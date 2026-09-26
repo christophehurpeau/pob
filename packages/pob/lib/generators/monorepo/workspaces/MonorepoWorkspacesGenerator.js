@@ -96,9 +96,10 @@ export default class MonorepoWorkspacesGenerator extends Generator {
     const packageManager = this.options.packageManager;
 
     packageUtils.addScripts(pkg, {
-      lint: `${packageManager} run format && ${packageManager} run lint:eslint`,
+      lint: `${packageManager} run format && ${packageManager} run lint:oxlint && ${packageManager} run lint:eslint`,
       format: "oxfmt",
       "format:check": "oxfmt --check .",
+      "lint:oxlint": monorepoConfig && monorepoConfig.eslint && "oxlint",
       "lint:eslint":
         monorepoConfig &&
         monorepoConfig.eslint &&

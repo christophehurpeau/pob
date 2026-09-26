@@ -16,6 +16,7 @@
   },
   "bin": {
     "oxfmt": "./bin/oxfmt.cjs",
+    "oxlint": "./bin/oxlint.js",
     "pob-check-commit-msg": "./bin/pob-check-commit-msg.js",
     "pob-claude-run-lint-staged": "./bin/pob-claude-run-lint-staged.js",
     "pob-root-lint-staged": "./bin/pob-root-lint-staged.js",
@@ -75,6 +76,7 @@
     "json5": "^2.2.3",
     "lint-staged": "17.4.1",
     "oxfmt": "0.54.0",
+    "oxlint": "1.85.0",
     "picomatch": "^4.0.7",
     "pob-dependencies": "workspace:*",
     "semver": "^7.7.3"

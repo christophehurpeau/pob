@@ -7,8 +7,23 @@ import {
   packageManagerExecWithCwd,
   packageManagerRun,
 } from "../../../utils/packageManagerUtils.js";
-import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
+import {
+  copyAndFormatTpl,
+  writeAndFormatJson,
+} from "../../../utils/writeAndFormat.js";
 import { appIgnorePaths } from "../../app/ignorePaths.js";
+
+// same as the base ignores of @pob/eslint-config: ignorePatterns are not
+// inherited through "extends"
+const oxlintBaseIgnorePatterns = [
+  ".yarn",
+  "**/dist/",
+  "**/build/",
+  "**/coverage/",
+  "**/.next/",
+  "**/.tamagui/",
+  "**/*.d.ts",
+];
 
 export default class CommonFormatLintGenerator extends Generator {
   constructor(args, opts) {
@@ -446,6 +461,8 @@ export default class CommonFormatLintGenerator extends Generator {
     );
     this.fs.delete(invalidEslintConfigPath);
 
+    const oxlintConfigPath = this.destinationPath(".oxlintrc.json");
+
     if (!inMonorepo || inMonorepo.root) {
       const rootIgnorePaths = this.options.rootIgnorePaths
         .split("\n")
@@ -514,8 +531,28 @@ export default class CommonFormatLintGenerator extends Generator {
             },
             */
       }
+
+      // keeps existing options, only enforces the shared config and ignores
+      const oxlintConfig = this.fs.readJSON(oxlintConfigPath, {});
+      await writeAndFormatJson(this.fs, oxlintConfigPath, {
+        ...oxlintConfig,
+        extends: [
+          "./node_modules/@pob/eslint-config/oxlint/base.json",
+          ...(oxlintConfig.extends || []).filter(
+            (value) => !value.includes("@pob/eslint-config/"),
+          ),
+        ],
+        ignorePatterns: [
+          ...new Set([
+            ...oxlintBaseIgnorePatterns,
+            ...ignorePatterns,
+            ...(oxlintConfig.ignorePatterns || []),
+          ]),
+        ],
+      });
     } else {
       this.fs.delete(eslintConfigPath);
+      this.fs.delete(oxlintConfigPath);
     }
 
     // see monorepo/lerna/index.js
@@ -526,7 +563,10 @@ export default class CommonFormatLintGenerator extends Generator {
         "lint:eslint": globalEslint
           ? `${packageManagerExecWithCwd(this.options.packageManager, "../..", "eslint")} ${args} ${quoteArg(path.relative("../..", "."))}`
           : `eslint ${args} .`,
-        lint: `${
+        "lint:oxlint": globalEslint
+          ? `${packageManagerExecWithCwd(this.options.packageManager, "../..", "oxlint")} ${quoteArg(path.relative("../..", "."))}`
+          : "oxlint",
+        lint: `${packageManagerRun(this.options.packageManager, "lint:oxlint")} && ${
           useTypescript && !composite ? "tsc && " : ""
         }${packageManagerRun(this.options.packageManager, "lint:eslint")}`,
       });
