@@ -470,10 +470,6 @@ export default class CommonFormatLintGenerator extends Generator {
       const getRootIgnorePatterns = () => {
         const ignorePatterns = new Set();
 
-        if (useTypescript) {
-          ignorePatterns.add("*.d.ts");
-        }
-
         if (inMonorepo && inMonorepo.root && this.options.documentation) {
           ignorePatterns.add("/generated-docs");
         }
@@ -532,7 +528,9 @@ export default class CommonFormatLintGenerator extends Generator {
             */
       }
 
-      // keeps existing options, only enforces the shared config and ignores
+      // keeps existing options, only enforces the shared config and ignores.
+      // ignorePatterns are fully owned by the generator: merging with existing
+      // ones would never remove stale patterns
       const oxlintConfig = this.fs.readJSON(oxlintConfigPath, {});
       await writeAndFormatJson(this.fs, oxlintConfigPath, {
         ...oxlintConfig,
@@ -543,11 +541,7 @@ export default class CommonFormatLintGenerator extends Generator {
           ),
         ],
         ignorePatterns: [
-          ...new Set([
-            ...oxlintBaseIgnorePatterns,
-            ...ignorePatterns,
-            ...(oxlintConfig.ignorePatterns || []),
-          ]),
+          ...new Set([...oxlintBaseIgnorePatterns, ...ignorePatterns]),
         ],
       });
     } else {

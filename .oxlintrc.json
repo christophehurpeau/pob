@@ -8,7 +8,6 @@
     "**/.next/",
     "**/.tamagui/",
     "**/*.d.ts",
-    "*.d.ts",
     "/rollup.config.mjs",
     "**/__fixtures__/**"
   ]
