@@ -26,6 +26,7 @@ import typescriptReplaceUnicornConfig from "./plugins/typescript-eslint/typescri
 import typescriptPluginRulesConfig from "./plugins/typescript-eslint/typescript-eslint-rules.js";
 import typescriptRulesConfig from "./rules/typescript.js";
 import { apply } from "./utils/apply.js";
+import { oxlintToEslintRuleNames } from "./utils/oxlint.js";
 
 export { apply } from "./utils/apply.js";
 
@@ -54,7 +55,9 @@ const oxlintConfigs = fs.existsSync(path.resolve(".oxlintrc.json"))
       {
         name: "@pob/eslint-config/oxlint",
         rules: Object.fromEntries(
-          Object.keys(oxlintConfig.rules).map((ruleName) => [ruleName, "off"]),
+          Object.keys(oxlintConfig.rules)
+            .flatMap((ruleName) => oxlintToEslintRuleNames(ruleName))
+            .map((ruleName) => [ruleName, "off"]),
         ),
       },
     ]
