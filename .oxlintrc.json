@@ -1,4 +1,8 @@
 {
+  "options": {
+    "respectEslintDisableDirectives": false,
+    "reportUnusedDisableDirectives": "error"
+  },
   "extends": ["./node_modules/@pob/eslint-config/oxlint/base.json"],
   "ignorePatterns": [
     ".yarn",

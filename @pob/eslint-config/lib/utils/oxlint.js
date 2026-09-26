@@ -71,3 +71,45 @@ export const oxlintToEslintRuleNames = (oxlintRuleName) => {
   }
   return [`${prefix}${ruleName}`];
 };
+
+const unusedDisableDirectiveRegExp =
+  /^Unused eslint-disable directive \(no problems were reported from (.+)\)\.$/;
+
+/**
+ * Rules named by eslint's "Unused eslint-disable directive" report, undefined
+ * for other messages.
+ *
+ * @param {import("eslint").Linter.LintMessage} message
+ * @returns {string[] | undefined}
+ */
+export const getUnusedDisableDirectiveRuleNames = (message) => {
+  if (message.ruleId !== null) return undefined;
+  const match = unusedDisableDirectiveRegExp.exec(message.message);
+  if (!match) return undefined;
+  return [...match[1].matchAll(/'([^']+)'/g)].map(([, ruleName]) => ruleName);
+};
+
+/**
+ * Drops eslint's "Unused eslint-disable directive" reports for rules checked
+ * by oxlint, so projects keep their `eslint-disable` comments of moved rules:
+ * oxlint honors them, and `eslint --fix` no longer deletes them. Unused
+ * directives of other rules are still reported and fixed.
+ *
+ * @param {Set<string>} oxlintEslintRuleNames eslint names of the rules checked
+ *   by oxlint
+ * @returns {import("eslint").Linter.Processor}
+ */
+export const createOxlintDisableDirectivesProcessor = (
+  oxlintEslintRuleNames,
+) => ({
+  meta: { name: "@pob/eslint-config/oxlint-disable-directives" },
+  supportsAutofix: true,
+  preprocess: (text) => [text],
+  postprocess: (messageLists) =>
+    messageLists.flat().filter((message) => {
+      const ruleNames = getUnusedDisableDirectiveRuleNames(message);
+      return !ruleNames?.every((ruleName) =>
+        oxlintEslintRuleNames.has(ruleName),
+      );
+    }),
+});

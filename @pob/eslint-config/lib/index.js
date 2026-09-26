@@ -26,7 +26,10 @@ import typescriptReplaceUnicornConfig from "./plugins/typescript-eslint/typescri
 import typescriptPluginRulesConfig from "./plugins/typescript-eslint/typescript-eslint-rules.js";
 import typescriptRulesConfig from "./rules/typescript.js";
 import { apply } from "./utils/apply.js";
-import { oxlintToEslintRuleNames } from "./utils/oxlint.js";
+import {
+  createOxlintDisableDirectivesProcessor,
+  oxlintToEslintRuleNames,
+} from "./utils/oxlint.js";
 
 export { apply } from "./utils/apply.js";
 
@@ -48,6 +51,12 @@ if (!tsFiles) {
 
 const extensions = "{js,cjs,mjs}";
 
+const oxlintEslintRuleNames = new Set(
+  Object.keys(oxlintConfig.rules).flatMap((ruleName) =>
+    oxlintToEslintRuleNames(ruleName),
+  ),
+);
+
 // turns off the rules checked by oxlint, must be applied last. Only when the
 // project runs oxlint, so the rules are still checked by eslint otherwise.
 const oxlintConfigs = fs.existsSync(path.resolve(".oxlintrc.json"))
@@ -55,9 +64,14 @@ const oxlintConfigs = fs.existsSync(path.resolve(".oxlintrc.json"))
       {
         name: "@pob/eslint-config/oxlint",
         rules: Object.fromEntries(
-          Object.keys(oxlintConfig.rules)
-            .flatMap((ruleName) => oxlintToEslintRuleNames(ruleName))
-            .map((ruleName) => [ruleName, "off"]),
+          [...oxlintEslintRuleNames].map((ruleName) => [ruleName, "off"]),
+        ),
+      },
+      {
+        name: "@pob/eslint-config/oxlint-disable-directives",
+        files: ["**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}"],
+        processor: createOxlintDisableDirectivesProcessor(
+          oxlintEslintRuleNames,
         ),
       },
     ]
