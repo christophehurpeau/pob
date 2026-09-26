@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.2.1](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@14.2.0...@pob/pretty-pkg@14.2.1) (2026-09-26)
+
+### Bug Fixes
+
+* update eslint linting command to use exec to fix pnpm
+
 ## [14.2.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@14.1.1...@pob/pretty-pkg@14.2.0) (2026-07-04)
 
 ### Features

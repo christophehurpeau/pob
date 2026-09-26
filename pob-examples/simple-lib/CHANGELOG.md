@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.15.0](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.14.0...example-simple-lib@0.15.0) (2026-09-26)
+
+### Features
+
+* by default stop adding dist in git
+
+### Bug Fixes
+
+* update eslint linting command to use exec to fix pnpm
+
 ## [0.14.0](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.13.0...example-simple-lib@0.14.0) (2026-05-24)
 
 ### Features

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.0](https://github.com/christophehurpeau/pob/compare/@pob/version@6.0.1...@pob/version@6.1.0) (2026-09-26)
+
+### Features
+
+* by default stop adding dist in git
+
+### Bug Fixes
+
+* update eslint linting command to use exec to fix pnpm
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [6.0.1](https://github.com/christophehurpeau/pob/compare/@pob/version@6.0.0...@pob/version@6.0.1) (2026-08-13)
 
 Note: no notable changes

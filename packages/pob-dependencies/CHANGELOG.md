@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.5.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@27.4.0...pob-dependencies@27.5.0) (2026-09-26)
+
+### Bug Fixes
+
+* update eslint linting command to use exec to fix pnpm
+
+Version bump for dependency: @pob/esbuild
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: @pob/rollup-typescript
+
+
 ## [27.4.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies@27.3.0...pob-dependencies@27.4.0) (2026-08-13)
 
 ### Bug Fixes

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.56.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild@0.55.0...example-typescript-lib-rollup-esbuild@0.56.0) (2026-09-26)
+
+### Features
+
+* by default stop adding dist in git
+
+### Bug Fixes
+
+* update eslint linting command to use exec to fix pnpm
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [0.55.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild@0.54.0...example-typescript-lib-rollup-esbuild@0.55.0) (2026-07-27)
 
 ### ⚠ BREAKING CHANGES

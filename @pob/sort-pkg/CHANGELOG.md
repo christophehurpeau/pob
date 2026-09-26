@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.1.3](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@13.1.2...@pob/sort-pkg@13.1.3) (2026-09-26)
+
+### Bug Fixes
+
+* update eslint linting command to use exec to fix pnpm
+
+Version bump for dependency: @pob/sort-object
+
+
 ## [13.1.2](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@13.1.1...@pob/sort-pkg@13.1.2) (2026-07-17)
 
 Note: no notable changes

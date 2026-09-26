@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.1.0](https://github.com/christophehurpeau/pob/compare/yarn-version@13.0.1...yarn-version@13.1.0) (2026-09-26)
+
+### Features
+
+* by default stop adding dist in git
+
+### Bug Fixes
+
+* update eslint linting command to use exec to fix pnpm
+
+Version bump for dependency: @pob/version
+
+
 ## [13.0.1](https://github.com/christophehurpeau/pob/compare/yarn-version@13.0.0...yarn-version@13.0.1) (2026-08-13)
 
 Version bump for dependency: @pob/version

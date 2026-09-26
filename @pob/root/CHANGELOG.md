@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.6.0](https://github.com/christophehurpeau/pob/compare/@pob/root@27.5.0...@pob/root@27.6.0) (2026-09-26)
+
+### Features
+
+* by default stop adding dist in git
+* enhance oxfmt command handling and clean up config patterns
+* improve lint-staged config using function config ([#2826](https://github.com/christophehurpeau/pob/issues/2826))
+* initial oxlint addition
+* update ci workflow for formatting on renovate to support oxfmt
+* update lint-staged
+
+### Bug Fixes
+
+* add tsconfig.json and package.json files that trigger tsc in lint-staged
+* **root:** lint whole project when too many files are staged
+* simplify workspacesPattern return statement in createLintStagedConfig
+* update eslint linting command to use exec to fix pnpm
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [27.5.0](https://github.com/christophehurpeau/pob/compare/@pob/root@27.4.0...@pob/root@27.5.0) (2026-08-13)
 
 ### Features

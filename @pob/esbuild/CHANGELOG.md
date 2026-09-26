@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@7.0.0...@pob/esbuild@7.0.1) (2026-09-26)
+
+### Bug Fixes
+
+* **deps:** update dependency esbuild to v0.28.2 ([#2817](https://github.com/christophehurpeau/pob/issues/2817))
+* update eslint linting command to use exec to fix pnpm
+
 ## [7.0.0](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@6.1.2...@pob/esbuild@7.0.0) (2026-07-27)
 
 ### ⚠ BREAKING CHANGES

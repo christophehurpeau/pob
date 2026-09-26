@@ -1,6 +1,6 @@
 {
   "name": "@pob/rollup-esbuild",
-  "version": "10.0.0",
+  "version": "10.0.1",
   "description": "rollup configuration with typescript for pob",
   "keywords": [],
   "homepage": "https://github.com/christophehurpeau/pob",

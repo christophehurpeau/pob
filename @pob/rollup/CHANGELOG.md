@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.1.3](https://github.com/christophehurpeau/pob/compare/@pob/rollup@8.1.2...@pob/rollup@8.1.3) (2026-09-26)
+
+### Bug Fixes
+
+* update eslint linting command to use exec to fix pnpm
+
 ## [8.1.2](https://github.com/christophehurpeau/pob/compare/@pob/rollup@8.1.1...@pob/rollup@8.1.2) (2026-07-17)
 
 Note: no notable changes

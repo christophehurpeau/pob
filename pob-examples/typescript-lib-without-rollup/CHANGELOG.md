@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.34.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.33.0...example-typescript-lib-without-rollup@0.34.0) (2026-09-26)
+
+### Features
+
+* by default stop adding dist in git
+
+### Bug Fixes
+
+* update eslint linting command to use exec to fix pnpm
+
 ## [0.33.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup@0.32.2...example-typescript-lib-without-rollup@0.33.0) (2026-07-27)
 
 ### ⚠ BREAKING CHANGES

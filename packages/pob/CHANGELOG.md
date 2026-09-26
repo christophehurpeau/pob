@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [38.6.0](https://github.com/christophehurpeau/pob/compare/pob@38.5.0...pob@38.6.0) (2026-09-26)
+
+### Features
+
+* add build step to CI workflows based on build option
+* by default stop adding dist in git
+* initial oxlint addition
+* node generator
+* **pob:** apply oxlint fixes on save in vscode
+* update documentation handling to use "generated-docs" directory and remove legacy "docs" references
+
+### Bug Fixes
+
+* add "*.config.js" to include patterns in tsconfig files
+* add "oxc.oxc-vscode" to recommendations in extensions.json.ejs
+* correct order of tsconfig references for tools and packages
+* enhance GITHUB_TOKEN retrieval by adding keychain support for macOS
+* remove redundant TypeScript ignore pattern and clarify ignorePatterns handling
+* update eslint linting command to use exec to fix pnpm
+* use optional chaining for ciPushWorkflow and disablePushWorkflow in PobMonorepoGenerator
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: @pob/sort-object
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [38.5.0](https://github.com/christophehurpeau/pob/compare/pob@38.4.0...pob@38.5.0) (2026-08-13)
 
 ### Features

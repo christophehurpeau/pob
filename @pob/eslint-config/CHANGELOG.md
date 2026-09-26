@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.5.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config@67.4.0...@pob/eslint-config@67.5.0) (2026-09-26)
+
+### Features
+
+* **eslint-config:** keep eslint-disable comments of rules moved to oxlint
+* **eslint-config:** map oxlint rule names to eslint rule names
+* **eslint-config:** oxlint ignores eslint-disable and reports unused disable directives
+* initial oxlint addition
+* update check-package-dependencies
+
+### Bug Fixes
+
+* update eslint linting command to use exec to fix pnpm
+
+Version bump for dependency: @pob/eslint-plugin
+
+
 ## [67.4.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config@67.3.0...@pob/eslint-config@67.4.0) (2026-08-13)
 
 ### Features

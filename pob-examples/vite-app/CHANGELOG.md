@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.7.0](https://github.com/christophehurpeau/pob/compare/example-vite-app@0.6.0...example-vite-app@0.7.0) (2026-09-26)
+
+### Features
+
+* by default stop adding dist in git
+
+### Bug Fixes
+
+* update eslint linting command to use exec to fix pnpm
+
+Version bump for dependency: example-typescript-lib-rollup-esbuild
+
+
 ## [0.6.0](https://github.com/christophehurpeau/pob/compare/example-vite-app@0.5.0...example-vite-app@0.6.0) (2026-07-28)
 
 ### Features

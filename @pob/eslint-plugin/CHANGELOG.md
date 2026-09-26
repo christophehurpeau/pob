@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.2.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-plugin@66.1.2...@pob/eslint-plugin@66.2.0) (2026-09-26)
+
+### Features
+
+* add meta information to eslint-plugin configuration
+
+### Bug Fixes
+
+* update eslint linting command to use exec to fix pnpm
+
 ## [66.1.2](https://github.com/christophehurpeau/pob/compare/@pob/eslint-plugin@66.1.1...@pob/eslint-plugin@66.1.2) (2026-08-13)
 
 ### Bug Fixes
