@@ -10,6 +10,7 @@
   "editor.formatOnSave": true,
   "eslint.codeActionsOnSave.mode": "all",
   "editor.codeActionsOnSave": {
+    "source.fixAll.oxc": "always",
     "source.fixAll.eslint": "always",
     "source.organizeImports": "never"
   },
