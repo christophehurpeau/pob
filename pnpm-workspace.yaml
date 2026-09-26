@@ -6,16 +6,14 @@ minimumReleaseAge: 4320
 minimumReleaseAgeExclude:
   - "@pob/*"
   - pob-dependencies
+  - check-package-dependencies
   - alouette
   - alouette-icons
   - nightingale
   - nightingale-logger
-  - check-package-dependencies
-  # Renovate security update: js-yaml@5.2.2
-  - js-yaml@5.2.2
+nodeLinker: hoisted
 packages:
   - packages/*
   - "@pob/*"
   - pob-examples/*
 savePrefix: ^
-nodeLinker: hoisted

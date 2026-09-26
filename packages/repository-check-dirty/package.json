@@ -28,8 +28,9 @@
     "./package.json": "./package.json"
   },
   "scripts": {
-    "lint": "pnpm run lint:eslint",
-    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'packages/repository-check-dirty'"
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'packages/repository-check-dirty'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint 'packages/repository-check-dirty'"
   },
   "engines": {
     "node": ">=22.18.0"

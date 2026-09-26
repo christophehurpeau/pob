@@ -1,7 +1,6 @@
 {
   "files": [],
   "references": [
-    { "path": "tsconfig.tools.json" },
     { "path": "@pob/eslint-plugin/tsconfig.json" },
     { "path": "pob-examples/typescript-lib-without-rollup/tsconfig.json" },
     { "path": "@pob/eslint-config/tsconfig.json" },
@@ -9,6 +8,7 @@
     { "path": "@pob/version/tsconfig.json" },
     { "path": "pob-examples/typescript-lib-rollup-esbuild/tsconfig.json" },
     { "path": "pob-examples/vite-app/tsconfig.json" },
-    { "path": "packages/pob/tsconfig.json" }
+    { "path": "packages/pob/tsconfig.json" },
+    { "path": "tsconfig.tools.json" }
   ]
 }

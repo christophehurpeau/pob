@@ -39,8 +39,9 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "pnpm run lint:eslint",
-    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/rollup-typescript'"
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/rollup-typescript'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint '@pob/rollup-typescript'"
   },
   "peerDependenciesMeta": {
     "rollup": {

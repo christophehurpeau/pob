@@ -34,8 +34,9 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "pnpm run lint:eslint",
-    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/esbuild'"
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/esbuild'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint '@pob/esbuild'"
   },
   "dependencies": {
     "esbuild": "0.28.2"

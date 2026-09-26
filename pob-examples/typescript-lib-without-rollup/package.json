@@ -26,8 +26,9 @@
   "scripts": {
     "build": "tsc",
     "clean": "yarn clean:build",
-    "lint": "pnpm run lint:eslint",
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'pob-examples/typescript-lib-without-rollup'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint 'pob-examples/typescript-lib-without-rollup'",
     "test": "pnpm run --dir '../..' test -- 'pob-examples/typescript-lib-without-rollup'",
     "tsc": "tsc",
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"

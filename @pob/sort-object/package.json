@@ -28,8 +28,9 @@
     "access": "public"
   },
   "scripts": {
-    "lint": "pnpm run lint:eslint",
-    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/sort-object'"
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/sort-object'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint '@pob/sort-object'"
   },
   "engines": {
     "node": ">=22.18.0"
