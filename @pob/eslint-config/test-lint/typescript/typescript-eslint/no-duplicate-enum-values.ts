@@ -1,5 +1,5 @@
 export enum E {
+  // oxlint-disable-next-line typescript/no-duplicate-enum-values
   A = 1,
-  // eslint-disable-next-line @typescript-eslint/no-duplicate-enum-values
   B = 1,
 }

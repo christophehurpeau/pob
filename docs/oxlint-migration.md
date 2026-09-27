@@ -1,0 +1,163 @@
+# Oxlint migration plan
+
+Move the JS/TS rules of `@pob/eslint-config` and `@pob/eslint-config-typescript-react` from eslint to oxlint, one small release at a time, without regressions.
+
+Inventory made on 2026-09-26 with oxlint 1.85.0 on top of `f97e7e8e7` (the published `node`, `baseModule` and typescript-react `node` configs, for `.js`, `.cjs`, `.ts`, `.tsx`, test and `scripts/` files).
+
+## Principles
+
+- **One group per release.** A step moves one group of the config (a source file, a preset, or a set of project-selected overrides). Each step is a `feat`, never a breaking change.
+- **Infrastructure lands with the first step that needs it.** `overrides`, `env`/`globals`, extra config files: each is built in the step that moves the first rule requiring it, never ahead.
+- **Non-breaking by construction.** `@pob/eslint-config` turns off in eslint the rules listed in `oxlint/*.json` only when `.oxlintrc.json` exists in cwd. Projects get the oxlint side through `pob update` (config, scripts, CI, lint-staged).
+- **A rule moves only if** oxlint implements it, supports every option we use, and reports on the same node, or on a node where moving the disable comment is enough (recorded in the step). Otherwise it stays in eslint, and the reason is written in this document.
+- **No deprecated migration.** Deprecated rules and deprecated configs are not ported (see [Not migrated](#not-migrated)).
+- **eslint stays** for what oxlint cannot lint: JSON files (`check-package-dependencies`, `@eslint/json`), and rules with no oxlint equivalent until a decision is made (JS plugins, drop, or keep).
+
+## Inventory
+
+| eslint plugin        | enabled | deprecated | in oxlint | of which type-aware | not in oxlint |
+| -------------------- | ------: | ---------: | --------: | ------------------: | ------------: |
+| eslint (core)        |     154 |          8 |       138 |                   0 |             8 |
+| `@typescript-eslint` |      99 |          1 |        88 |                  47 |            10 |
+| `unicorn`            |      93 |          0 |        89 |                   0 |             4 |
+| `regexp`             |      60 |          0 |         0 |                   0 |            60 |
+| `react`              |      39 |          0 |        29 |                   0 |            10 |
+| `jsx-a11y`           |      31 |          0 |        31 |                   0 |             0 |
+| `import-x`           |      26 |          0 |        20 |                   0 |             6 |
+| `n`                  |      10 |          0 |         3 |                   0 |             7 |
+| `@pob` (custom)      |       4 |          0 |         0 |                   0 |             4 |
+| `react-hooks`        |       2 |          0 |         2 |                   0 |             0 |
+
+The 10 `@typescript-eslint` rules "not in oxlint" are extension rules (`no-unused-vars`, `no-use-before-define`, ...): oxlint's `eslint/` versions handle TypeScript, so they move with the core rules (step T3).
+
+Rule names differ for some plugins (eslint → oxlint): `@typescript-eslint/` → `typescript/`, `import-x/` → `import/`, `n/` → `node/`, `jsx-a11y/` → `jsx_a11y/`, `react-hooks/` → `react/`. Core and `unicorn/` rules keep their name. Handled by P2.
+
+## Phase 0 — first rule (done)
+
+- [x] `no-debugger`: shared `oxlint/base.json`, conditional disable in eslint, `@pob/root` `oxlint` bin and lint-staged step, generator (`.oxlintrc.json`, `lint:oxlint` scripts, CI step).
+
+## Phase 1 — tooling every step needs
+
+Only what protects every step; anything specific to some rules is built in the step that needs it (Phase 2).
+
+- [x] **P1. Directive options.** Add `options: { respectEslintDisableDirectives: false, reportUnusedDisableDirectives: "error" }` to `oxlint/base.json`. Documented as root-only, but verified in 1.85 to apply through `extends` (each option alone, and through two levels of `extends`); a P4 test guards it. oxlint then ignores `eslint-disable` comments and reports unused `oxlint-disable` ones, so `test-lint` fixtures using `oxlint-disable-next-line <rule>` prove the rule fires, like eslint's `reportUnusedDisableDirectives` does today. Consequence for projects until P5: disable comments of migrated rules must become `oxlint-disable` (already required: eslint reports them as unused), including file-level `/* eslint-disable */` blankets on generated files.
+- [x] **P2. Rule name mapping** ([lib/utils/oxlint.js](../@pob/eslint-config/lib/utils/oxlint.js)): turns off in eslint the rules named in `oxlint/*.json` under their eslint names, for every plugin prefix and the react-hooks rules. Core rules also turn off their non-type-aware `@typescript-eslint/` extension rules, derived from typescript-eslint rule metadata.
+- [x] **P4. Upgrade guard tests** (vitest, in `@pob/eslint-config`), so upgrades surface new rules instead of silently ignoring them:
+  - **oxlint rules snapshot:** `oxlint --rules -f json` for the plugins we use (`eslint`, `typescript`, `unicorn`, `import`, `node`, `react`, `jsx_a11y`, `oxc`, `promise`, `vitest`) written to a tracked snapshot with each rule's decision (enabled in `oxlint/*.json`, kept in eslint, rejected). A renovate bump of oxlint that adds rules fails the test with the list of new rules; decide, update the snapshot.
+  - **eslint plugins snapshot:** same for the rules of every loaded eslint plugin (non-deprecated, enabled or not), so new unicorn / typescript-eslint rules and newly deprecated ones show up on upgrades.
+  - **inherited options (done, [lib/oxlint.test.js](../@pob/eslint-config/lib/oxlint.test.js)):** lint a fixture through a `.oxlintrc.json` that only extends `oxlint/base.json`, and assert that an `eslint-disable` comment does not suppress an oxlint rule and that an unused `oxlint-disable` comment is reported. Fails if an oxlint upgrade enforces the documented root-only behavior of `respectEslintDisableDirectives`; fallback then is generating the options in the root `.oxlintrc.json`.
+  - **fixture coverage:** every rule enabled in `oxlint/*.json` has a `test-lint` fixture with an `oxlint-disable-next-line <rule>` comment (P1 makes `pnpm lint:oxlint` fail when it stops firing).
+  - **location differences** need no dedicated test: a fixture's directive sits on the line eslint reports, so once rewritten to `oxlint-disable`, `pnpm lint:oxlint` fails if oxlint reports elsewhere, and the comment is moved (`no-dupe-keys`, `no-duplicate-case`, `no-duplicate-enum-values` report the first occurrence in oxlint, the duplicate in eslint).
+- [x] **P5. Keep `eslint-disable` comments working in other projects** (replaces a codemod), so moving a rule never requires changes in packages/apps:
+  - Move P1's options from `oxlint/base.json` to this repo's root `.oxlintrc.json` (the generator keeps existing options). Other projects get oxlint's default: `eslint-disable` comments are honored. This repo keeps `oxlint-disable` fixtures proving each rule fires.
+  - In `@pob/eslint-config`, when `.oxlintrc.json` exists, add a processor whose `postprocess` drops eslint's "Unused eslint-disable directive (no problems were reported from '<rule>')" reports for rules turned off by P2 (verified: eslint computes them before `postprocess`; the comment is kept, `--fix` no longer deletes it, unused comments of eslint rules are still reported and fixed).
+  - Tests: one on the exact eslint message format (fails if an eslint upgrade rewords it), and retarget the "inherited options" test to this repo's root config.
+  - Trade-off: in other projects, an `eslint-disable` comment of a moved rule that becomes unused is not reported by either tool. A project setting its own `processor` on JS/TS files loses the filter.
+- [x] **P6. Editor:** add the oxc VS Code extension to the generated `.vscode/extensions.json` (already recommended for oxfmt) and `source.fixAll.oxc` to the generated settings.
+
+## Phase 2 — plugin per plugin, group per group
+
+One step per group of the config (a source file, a preset, or a set of project-selected overrides). typescript-eslint first: going through `oxlint-tsgolint` removes the most expensive part of eslint (type-aware linting through the TypeScript program), so it brings the biggest speed gain. `*` marks rules configured with options: check oxlint supports each option before moving it. Every step follows the [step checklist](#step-checklist).
+
+### typescript-eslint
+
+- [x] **T0. Type-aware setup.** Only TypeScript projects, like eslint where typed rules only apply to TS files: add `oxlint/typescript.json` (`options.typeAware`, check it is inherited through `extends` like P1) and the generator adds it to `extends` when the project uses TypeScript. Not in `base.json`: with `typeAware`, oxlint fails when it cannot find tsgolint, even in a JS-only project (verified in 1.85), and tsgolint is a 21 MB native binary. Add `oxlint-tsgolint` (peer dependency of oxlint) to `@pob/root`; the `@pob/root` `oxlint` bin sets `OXLINT_TSGOLINT_PATH` to it, as pnpm does not expose a dependency's bin to the project. Type-aware rules must be scoped to TS files with `overrides`: oxlint also applies them to `.js` files of a TS project (verified). Check tsconfig discovery matches today's typed lint (including `tsconfig.tools.json` for scripts and root config files) and compatibility with the TypeScript version projects use (tsgolint is built on typescript-go). Measure run time on this repo and one app. No rule moves.
+  - Done: [oxlint/typescript.json](../@pob/eslint-config/oxlint/typescript.json), `typeAware` inherited through `extends` and rules scoped by `overrides` (guarded in [lib/oxlint.test.js](../@pob/eslint-config/lib/oxlint.test.js)). `@pob/eslint-config` turns off its rules in eslint only when `.oxlintrc.json` extends it, so TypeScript projects not yet regenerated keep them in eslint. This repo also has `oxlint-tsgolint` in its root devDependencies: its `node_modules/.bin/oxlint` is oxlint itself, not the `@pob/root` bin.
+  - tsconfig discovery: tsgolint uses the tsconfig including each file, and follows `references` of a solution-style `tsconfig.json` (monorepos: `tsconfig.tools.json` is used for scripts and root config files). Single repos: `tsconfig.tools.json` is not referenced, so scripts and `*.config.ts` get an inferred project (default options, no `paths`/`types` of the tools project). Referencing it requires a solution-style `tsconfig.json` (a referenced project may not disable emit).
+  - TypeScript version: tsgolint 7.0 is typescript-go, same as the `tsc` of pob projects (`@typescript/native`); tsconfig options removed in TypeScript 7 are reported as `typescript(tsconfig-error)` (`@pob/eslint-plugin` fixture had `target: es5`).
+  - Run time on this repo: oxlint with type-aware rules about 0.4s; eslint about 6.9s → 6.2s after T1 → 4.0s after T5 without the TypeScript program (see Phase 3). App not measured yet.
+- [x] **T1. `strictTypeChecked` preset (45):** `no-duplicate-enum-values`, `no-dynamic-delete`, `no-empty-object-type`, `no-extra-non-null-assertion`, `no-invalid-void-type`, `no-misused-new`, `no-namespace`, `no-non-null-asserted-nullish-coalescing`, `no-non-null-asserted-optional-chain`, `no-this-alias`, `no-unnecessary-type-constraint`, `no-unsafe-declaration-merging`, `no-unsafe-function-type`, `no-wrapper-object-types`, `prefer-as-const`, `prefer-literal-enum-member`, `triple-slash-reference`, `await-thenable`, `no-array-delete`, `no-base-to-string`, `no-deprecated`, `no-duplicate-type-constituents`, `no-floating-promises*`, `no-for-in-array`, `no-implied-eval`, `no-meaningless-void-operator`, `no-misused-promises`, `no-misused-spread`, `no-mixed-enums`, `no-unnecessary-boolean-literal-compare`, `no-unnecessary-template-expression`, `no-unnecessary-type-assertion`, `no-unnecessary-type-conversion`, `no-unsafe-enum-comparison`, `no-useless-default-assignment`, `only-throw-error`, `prefer-promise-reject-errors`, `prefer-reduce-type-parameter`, `prefer-return-this-type`, `related-getter-setter-pairs`, `require-await`, `restrict-plus-operands*`, `return-await*`, `use-unknown-in-catch-callback-variable`, `dot-notation*` (the no-unsafe-\* rules of the preset move in T5). First per-file behavior: rules scoped to TS files, and `no-floating-promises` has a test override, so this step adds the first `overrides` blocks (in `typescript.json`, inherited through `extends`, verified).
+  - Done: all 45 rules moved. Location differences, disable comments moved: `no-duplicate-enum-values` (oxlint reports the first member, eslint the duplicate: a project's comment on the duplicate must move), `no-unsafe-declaration-merging` (oxlint reports only the interface, eslint both declarations: nothing to change). Mixed fixture directives: `/* eslint-disable-next-line <eslint rules> */ // oxlint-disable-next-line <oxlint rules>` on one line.
+- [x] **T2. `typescript-eslint-rules.js` (34):** `ban-ts-comment*`, `no-explicit-any`, `no-non-null-assertion`, `prefer-namespace-keyword`, `unified-signatures`, `adjacent-overload-signatures`, `array-type`, `ban-tslint-comment`, `class-literal-property-style`, `consistent-generic-constructors`, `consistent-indexed-object-style`, `consistent-type-assertions*`, `consistent-type-definitions`, `consistent-type-imports`, `method-signature-style`, `no-confusing-non-null-assertion`, `no-import-type-side-effects`, `no-inferrable-types`, `no-useless-empty-export`, `parameter-properties`, `prefer-enum-initializers`, `prefer-function-type`, `no-confusing-void-expression`, `no-redundant-type-constituents`, `no-unnecessary-condition`, `no-unnecessary-type-parameters`, `no-unsafe-unary-minus`, `restrict-template-expressions*`, `consistent-type-exports`, `no-unnecessary-qualifier`, `non-nullable-type-assertion-style`, `prefer-optional-chain`, `prefer-regexp-exec`, `switch-exhaustiveness-check` (the `explicit-*` rules move in T5).
+  - Done: all 34 rules moved, options set explicitly where oxlint's default is undocumented (`consistent-type-assertions`) or ours differs (`restrict-template-expressions`, with typescript-eslint's default `allow`). Location differences, disable comments moved: `consistent-indexed-object-style` (oxlint reports the index signature, eslint the type declaration), `adjacent-overload-signatures` and `unified-signatures` (oxlint reports the first overload out of place / combinable, eslint the last). `ban-ts-comment` also reports a `@ts-nocheck` that is not at the start of the file (ignored by eslint, and by TypeScript).
+- [x] **T3. `typescript-eslint-replace-eslint.js`, extension rules (14):** `no-dupe-class-members`, `no-redeclare*`, `no-unused-vars*`, `default-param-last`, `max-params*`, `no-array-constructor`, `no-empty-function*`, `no-loop-func`, `no-unused-expressions*`, `no-use-before-define*`, `no-useless-constructor`, plus the core `require-await`, `no-implied-eval`, `dot-notation*` for JS files (their TS versions move in T1). oxlint has one rule for JS and TS: P2 turns off both the core and the `@typescript-eslint/` name, so this step also moves these rules for JS files. `no-unused-vars` options differ today (unused parameters): check first.
+  - Done: `no-dupe-class-members`, `no-unused-vars*`, `default-param-last`, `max-params*`, `no-array-constructor`, `no-empty-function*`, `no-loop-func`, `no-unused-expressions*`, `no-use-before-define*`, `no-useless-constructor`, `require-await` (JS; off for TS files in `base.json`, the type-aware `typescript/require-await` moved in T1). `no-unused-vars` options are the same for JS and TS (`args: "none"`, `caughtErrors: "none"`). Location differences, disable comments moved: `no-dupe-class-members` (oxlint reports the first member, eslint the duplicate), `no-unused-vars` (oxlint reports the declaration, eslint the last assignment of a variable assigned but never read), `max-params` (arrow functions: oxlint reports the parameters, eslint the `=>`). `no-empty-function` also reports an empty anonymous `export default function () {}` despite `allow: ["functions"]`.
+  - Left in eslint: `no-redeclare*` (`builtinGlobals`) and `no-implied-eval` (JS) depend on the environment globals (`process`, `setTimeout`, ...): they move with C2, which adds `env`/`globals` to `base.json`. `dot-notation` (JS): no oxlint core rule. `no-redeclare` stays off for TS files (covered by tsc).
+- [x] **T4. `typescript-eslint-replace-unicorn.js` (2):** `prefer-string-starts-ends-with`, `prefer-find` (their unicorn counterparts move in U1).
+- [x] **T5. Rules with project-selected overrides (7):** `explicit-function-return-type*`, `explicit-module-boundary-types` (`app`, `allow-implicit-return-type`, tests), `no-unsafe-argument`, `no-unsafe-assignment`, `no-unsafe-call`, `no-unsafe-member-access`, `no-unsafe-return` (`allow-unsafe`, `allow-unsafe-as-warn`, tests). Each project selects these overrides in its eslint config, so this step adds the first extra files next to `base.json` (`oxlint/app.json`, `oxlint/allow-implicit-return-type.json`, `oxlint/allow-unsafe.json`, `oxlint/allow-unsafe-as-warn.json`, like `@pob/root/tsconfigs/`), and the generator adds them to `extends` when it adds the matching eslint configs. Can be two releases: `explicit-*` rules, then `no-unsafe-*` rules.
+  - Done in one release with T2–T4. The override files must come after `typescript.json` in `extends` (later files win, verified and guarded in [lib/oxlint.test.js](../@pob/eslint-config/lib/oxlint.test.js)). The generator adds `app.json` with `configs.app` (TypeScript React apps) and keeps the other override files when added by hand: it cannot see which eslint configs an existing `eslint.config.js` uses. Scoped usage (`apply` on a directory, like `@pob/version` in this repo) becomes `overrides` in the project's `.oxlintrc.json`. The eslint `app`, `allowImplicitReturnType`, `allowUnsafe` and `allowUnsafeAsWarn` configs drop the rules checked by oxlint, so they no longer re-enable them after the oxlint turn-off.
+
+T1–T5 done: eslint no longer needs the TypeScript program (see Phase 3).
+
+### eslint core
+
+- [ ] **C1. `rules/errors.js` (38):** `for-direction`, `getter-return*`, `no-async-promise-executor`, `no-compare-neg-zero`, `no-cond-assign*`, `no-console*`, `no-constant-condition*`, `no-control-regex`, `no-dupe-else-if`, `no-dupe-keys`, `no-duplicate-case`, `no-empty-character-class`, `no-ex-assign`, `no-extra-boolean-cast*`, `no-func-assign`, `no-import-assign`, `no-invalid-regexp*`, `no-irregular-whitespace*`, `no-loss-of-precision`, `no-misleading-character-class*`, `no-new-native-nonconstructor`, `no-obj-calls`, `no-promise-executor-return*`, `no-prototype-builtins`, `no-regex-spaces`, `no-self-compare`, `no-setter-return`, `no-sparse-arrays`, `no-template-curly-in-string`, `no-unreachable`, `no-unreachable-loop*`, `no-unsafe-finally`, `no-unsafe-negation*`, `no-unsafe-optional-chaining*`, `no-unused-private-class-members`, `no-useless-backreference`, `use-isnan*`, `valid-typeof*`. `no-console` has the `dev-only` override. Known location difference: `no-dupe-keys`, `no-duplicate-case`.
+- [ ] **C2. `rules/best-practices.js` (72):** `array-callback-return*`, `block-scoped-var`, `constructor-super`, `default-case*`, `default-case-last`, `grouped-accessor-pairs*`, `guard-for-in`, `new-cap*`, `no-alert`, `no-bitwise*`, `no-caller`, `no-case-declarations`, `no-class-assign`, `no-const-assign`, `no-constructor-return`, `no-empty-pattern*`, `no-empty-static-block`, `no-eval*`, `no-extend-native*`, `no-extra-bind`, `no-extra-label`, `no-fallthrough*`, `no-global-assign*`, `no-implicit-globals*`, `no-label-var`, `no-labels*`, `no-lone-blocks`, `no-lonely-if`, `no-multi-assign*`, `no-multi-str`, `no-nested-ternary`, `no-new`, `no-new-func`, `no-new-wrappers`, `no-nonoctal-decimal-escape`, `no-proto`, `no-restricted-globals*`, `no-restricted-properties*`, `no-return-assign*`, `no-script-url`, `no-self-assign*`, `no-sequences*`, `no-shadow-restricted-names*`, `no-this-before-super`, `no-throw-literal`, `no-undef*`, `no-unneeded-ternary*`, `no-unused-labels`, `no-useless-catch`, `no-useless-computed-key*`, `no-useless-concat`, `no-useless-escape*`, `no-useless-rename*`, `no-useless-return`, `no-var`, `no-void*`, `no-with`, `object-shorthand*`, `prefer-arrow-callback*`, `prefer-const*`, `prefer-exponentiation-operator`, `prefer-numeric-literals`, `prefer-object-has-own`, `prefer-object-spread`, `prefer-promise-reject-errors*`, `prefer-regex-literals*`, `prefer-rest-params`, `prefer-spread`, `prefer-template`, `require-yield`, `symbol-description`, `unicode-bom*`. `no-undef`, `no-restricted-globals`, `no-implicit-globals` need oxlint `env`/`globals` mirroring eslint `languageOptions.globals`: this step adds them to `base.json`. Also moves `no-redeclare*` and `no-implied-eval` (JS), left from T3 for the same reason.
+- [ ] **C3. `rules/style.js`, `rules/code-quality.js`, `base/module.js` (3):** `sort-imports*` (check overlap with oxfmt import sorting), `max-depth*`, `no-restricted-exports*`.
+- [ ] **C4. `@eslint/js` recommended and base rules (11):** `complexity*`, `curly*`, `eqeqeq*`, `no-constant-binary-expression*`, `no-delete-var`, `no-unassigned-vars`, `no-unexpected-multiline`, `no-useless-assignment`, `preserve-caught-error*`, `radix`, `yoda*`.
+
+Stay in eslint: `no-restricted-syntax`, `camelcase`, `no-undef-init`, `dot-notation` (JS). Not needed in ESM/TS (parse errors): `no-dupe-args`, `no-octal`, `no-octal-escape`; `strict` stays for `.cjs`.
+
+### unicorn
+
+- [ ] **U1. `plugins/unicorn.js` (89):** `catch-error-name*`, `consistent-assert`, `consistent-date-clone`, `consistent-existence-index-check`, `consistent-template-literal-escape`, `custom-error-definition`, `error-message`, `escape-case*`, `explicit-length-check*`, `new-for-builtins`, `no-abusive-eslint-disable`, `no-accessor-recursion`, `no-array-method-this-argument`, `no-array-reduce*`, `no-array-reverse*`, `no-array-sort*`, `no-await-expression-member`, `no-document-cookie`, `no-hex-escape`, `no-immediate-mutation`, `no-instanceof-builtins*`, `no-invalid-remove-event-listener`, `no-nested-ternary`, `no-new-array`, `no-new-buffer`, `no-process-exit` (`scripts` override), `no-static-only-class`, `no-this-assignment`, `no-typeof-undefined*`, `no-unnecessary-await`, `no-unnecessary-slice-end`, `no-unreadable-iife`, `no-useless-collection-argument`, `no-useless-fallback-in-spread`, `no-useless-iterator-to-array`, `no-useless-length-check`, `no-useless-promise-resolve-reject`, `no-useless-spread`, `number-literal-case*`, `numeric-separators-style*`, `prefer-add-event-listener*`, `prefer-array-find*`, `prefer-array-flat*`, `prefer-array-flat-map`, `prefer-array-index-of`, `prefer-array-some`, `prefer-at*`, `prefer-blob-reading-methods`, `prefer-class-fields`, `prefer-code-point`, `prefer-date-now`, `prefer-default-parameters`, `prefer-dom-node-append`, `prefer-dom-node-dataset`, `prefer-dom-node-remove`, `prefer-dom-node-text-content`, `prefer-event-target`, `prefer-export-from*`, `prefer-global-this`, `prefer-includes`, `prefer-logical-operator-over-ternary`, `prefer-math-min-max`, `prefer-math-trunc`, `prefer-modern-dom-apis`, `prefer-modern-math-apis`, `prefer-module`, `prefer-native-coercion-functions`, `prefer-negative-index`, `prefer-node-protocol`, `prefer-object-from-entries*`, `prefer-optional-catch-binding`, `prefer-prototype-methods`, `prefer-regexp-test`, `prefer-response-static-json`, `prefer-set-size`, `prefer-single-call*`, `prefer-spread`, `prefer-string-slice`, `prefer-string-starts-ends-with`, `prefer-string-trim-start-end`, `prefer-top-level-await`, `prefer-type-error`, `relative-url-style*`, `require-array-join-separator`, `require-number-to-fixed-digits-argument`, `require-post-message-target-origin`, `switch-case-break-position`, `text-encoding-identifier-case*`, `throw-new-error`.
+
+Stay in eslint: `expiring-todo-comments`, `prefer-switch`, `prefer-json-parse-buffer`, `no-unnecessary-polyfills`.
+
+### import-x → import
+
+- [ ] **I1. `plugins/import/*` and `rules/typescript.js` (20):** `named`, `namespace`, `export`, `no-named-as-default`, `no-named-as-default-member`, `no-duplicates`, `no-mutable-exports`, `no-amd`, `first`, `newline-after-import`, `no-absolute-path`, `no-dynamic-require`, `no-webpack-loader-syntax`, `no-named-default`, `no-self-import`, `no-cycle*`, `no-empty-named-blocks`, `no-commonjs`, `extensions*`, `no-anonymous-default-export*`. `no-cycle` is usually among the slowest eslint rules: measure the speed win. Check resolution (`.ts` extensions, workspaces) with the test-lint fixtures.
+
+Stay in eslint: `no-unresolved`, `no-extraneous-dependencies`, `no-useless-path-segments`, `no-import-module-exports`, `no-relative-packages`, `order`.
+
+### n → node
+
+- [ ] **N1. `node/commonjs.js` and preset (3):** `no-exports-assign`, `no-new-require`, `no-path-concat`.
+
+Stay in eslint: `no-deprecated-api`, `no-unpublished-bin`, `no-unsupported-features/*` (3), `process-exit-as-throw`, `hashbang`.
+
+### react (`@pob/eslint-config-typescript-react`)
+
+- [ ] **R1. `plugins/react.js`, react preset and `plugins/react-hooks.js` (32):** `jsx-key`, `jsx-no-comment-textnodes`, `jsx-no-duplicate-props`, `jsx-no-target-blank`, `jsx-no-undef`, `no-children-prop`, `no-danger-with-children`, `no-direct-mutation-state`, `no-find-dom-node`, `no-is-mounted`, `no-render-return-value`, `no-string-refs`, `no-unknown-property`, `require-render-return`, `func-names*`, `button-has-type`, `function-component-definition*`, `hook-use-state`, `jsx-boolean-value*`, `jsx-curly-brace-presence*`, `jsx-fragments*`, `jsx-no-constructed-context-values`, `jsx-no-script-url*`, `jsx-no-useless-fragment`, `jsx-pascal-case*`, `no-array-index-key`, `no-namespace`, `no-unstable-nested-components`, `prefer-es6-class*`, `self-closing-comp`, `react-hooks/rules-of-hooks`, `react-hooks/exhaustive-deps`. First rules of `@pob/eslint-config-typescript-react`: adds its `oxlint/react.json`, the same conditional turn-off in that package, and the generator `extends` for React projects. Can start with `plugins/react-hooks.js` (2 rules) alone.
+- [ ] **A1. `plugins/jsx-a11y.js` (31):** all rules of the preset (`alt-text`, `anchor-has-content`, `anchor-is-valid`, `aria-*`, ...), `interactive-supports-focus*` and `no-noninteractive-element-interactions*` have options.
+
+Stay in eslint: `jsx-uses-vars`, `no-deprecated`, `destructuring-assignment`, `jsx-sort-props`, `no-arrow-function-lifecycle`, `no-invalid-html-attribute`, `prefer-exact-props`, `prefer-stateless-function`, `sort-comp`, `sort-prop-types`.
+
+## Phase 3 — what stays in eslint
+
+Decide once Phase 2 is done:
+
+- **`regexp` (60 rules):** no oxlint plugin. Options: oxlint JS plugins (`jsPlugins`, alpha and not semver-stable in 1.85), or keep eslint for them.
+- **`@pob` custom rules (4):** `forbid-non-native-fetch-import`, `forbid-non-native-node-imports`, `react-named-import`, `react-function-component-return-react-node`: port to oxlint JS plugins once stable.
+- **Remaining `import-x`, `n`, `unicorn`, `react`, core rules** listed as "stay in eslint" above: drop, keep, or JS plugin, one by one.
+- **JSON** (`check-package-dependencies`, `@eslint/json`): stays in eslint.
+- When a plugin has no rule left in eslint, remove it from `@pob/eslint-config` dependencies.
+- [x] After T1–T5, no type-aware rule is left in eslint: stop building the TypeScript program in eslint, the biggest eslint speed win. typescript-eslint's parser stays while eslint lints TS files.
+  - Done: when `.oxlintrc.json` extends `typescript.json`, `@pob/eslint-config` sets `parserOptions.project` and `projectService` to `false` for TS files, and `configs.toolsProject`/`configs.monorepo` keep only their settings. Guarded by [lib/index.test.js](../@pob/eslint-config/lib/index.test.js): no enabled rule requires type checking. A project enabling a type-aware typescript-eslint rule in its own eslint config must set `parserOptions.project` itself. eslint on this repo: 5.5s with the program and the type-aware rules off, 4.0s without.
+
+## Phase 4 — new rules
+
+Evaluate after the plugin is migrated, one plugin per release, `correctness` and `suspicious` first. oxlint rules not used today (excluding `vue`, `nextjs`, `jest`):
+
+- **eslint (49):** correctness `no-iterator`; suspicious `no-shadow`, `no-underscore-dangle`, `no-unmodified-loop-condition`; perf `no-await-in-loop`, `no-useless-call`; plus pedantic/restriction/style.
+- **unicorn (49):** correctness `no-await-in-promise-methods`, `no-empty-file`, `no-invalid-fetch-options`, `no-single-promise-in-promise-methods`, `no-thenable`; suspicious `consistent-function-scoping`, `no-array-fill-with-reference-type`, `no-confusing-array-with`, `require-module-specifiers`; perf `prefer-set-has`.
+- **typescript (22):** correctness `no-unnecessary-parameter-property-assignment`, `require-array-sort-compare` (type-aware), `unbound-method` (type-aware); suspicious `no-extraneous-class`, `consistent-return`, `no-unnecessary-type-arguments`, `no-unsafe-type-assertion` (type-aware).
+- **oxc (27, oxlint-only):** correctness `bad-array-method-on-arguments`, `bad-char-at-comparison`, `bad-comparison-sequence`, `bad-match-all-arg`, `bad-min-max-func`, `bad-object-literal-comparison`, `bad-replace-all-arg`, `const-comparisons`, `double-comparisons`, `erasing-op`, `missing-throw`, `number-arg-out-of-range`, `only-used-in-recursion`, `uninvoked-array-callback`; suspicious `approx-constant`, `misrefactored-assign-op`, `no-async-endpoint-handlers`, `no-this-in-exported-function`; perf `no-accumulating-spread`, `no-map-spread`.
+- **vitest (73, new: no eslint vitest plugin today):** correctness `expect-expect`, `no-conditional-expect`, `no-disabled-tests`, `no-focused-tests`, `no-standalone-expect`, `valid-expect`, `valid-title`, `valid-describe-callback`, ... in test overrides.
+- **promise (16):** correctness `no-callback-in-promise`, `no-new-statics`, `valid-params`; suspicious `always-return`, `no-multiple-resolved`, `no-promise-in-callback`.
+- **import (13):** correctness `default`; suspicious `no-unassigned-import`.
+- **react (54):** correctness `rules-of-hooks` companions from the React compiler set (`purity`, `refs`, `immutability`, `set-state-in-effect`, `set-state-in-render`, `static-components`, ...), `no-this-in-sfc`, `void-dom-elements-no-children`; suspicious `iframe-missing-sandbox`, `style-prop-object`.
+- **jsx_a11y (5):** `control-has-associated-label`, `lang`, `no-aria-hidden-on-focusable`, `prefer-tag-over-role`, `anchor-ambiguous-text`.
+- **node (8), jsdoc (23):** mostly style/restriction, low priority.
+
+After P4, new rules from oxlint upgrades appear in the rules snapshot diff and are decided in the upgrade PR.
+
+## Not migrated
+
+Deprecated rules still enabled in eslint: remove them from the eslint config (separate cleanup), do not port:
+
+- core: `no-buffer-constructor`, `no-floating-decimal`, `no-mixed-operators`, `no-new-object` (replaced by `no-object-constructor`), `no-return-await`, `template-curly-spacing`, `quotes` (formatting: oxfmt), `no-new-require` (use `n/no-new-require`);
+- `@typescript-eslint/sort-type-constituents`.
+
+Deprecated configs (`nodeModule`, `nodeCommonjs`): no dedicated oxlint file; they get `base.json` like `node`.
+
+## Step checklist
+
+For each step above:
+
+1. List the group's rules; drop deprecated ones and those oxlint lacks or whose options it does not support.
+2. Add them to the matching `oxlint/*.json` (with `overrides` mirroring the eslint per-file overrides).
+3. Rewrite the fixtures' `eslint-disable` comments to `oxlint-disable` (this repo only: other projects keep theirs, see P5).
+4. `pnpm lint:oxlint`, `pnpm lint:eslint`, `pnpm tsc`, fixture coverage and snapshot tests (P4).
+5. Release, run `pob update` on this repo and one downstream project, check CI.
+6. Tick the step here, and record any rule left behind with its reason.

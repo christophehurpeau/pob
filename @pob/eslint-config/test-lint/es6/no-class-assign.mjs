@@ -1,4 +1,4 @@
-/* eslint-disable no-unused-vars */
+/* oxlint-disable no-unused-vars */
 
 class A {}
 // eslint-disable-next-line no-class-assign

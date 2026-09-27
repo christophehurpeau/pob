@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars -- unused const
+// oxlint-disable-next-line no-unused-vars -- unused const
 const y = 10;
 
 // unused parameter
@@ -15,7 +15,7 @@ try {
 
 const [
   a,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars -- unused error
+  // oxlint-disable-next-line no-unused-vars -- unused error
   _b,
   c,
 ] = ["a", "b", "c"];

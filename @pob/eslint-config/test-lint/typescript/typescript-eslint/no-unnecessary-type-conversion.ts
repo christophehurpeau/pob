@@ -1,3 +1,3 @@
 const s = "a";
-// eslint-disable-next-line @typescript-eslint/no-unnecessary-type-conversion
+// oxlint-disable-next-line typescript/no-unnecessary-type-conversion
 export const t = String(s);

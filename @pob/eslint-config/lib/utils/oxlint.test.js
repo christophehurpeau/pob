@@ -5,9 +5,11 @@ import importPlugin from "eslint-plugin-import-x";
 import nodePlugin from "eslint-plugin-n";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import tseslint from "typescript-eslint";
-import oxlintConfig from "../../oxlint/base.json" with { type: "json" };
+import oxlintBaseConfig from "../../oxlint/base.json" with { type: "json" };
+import oxlintTypescriptConfig from "../../oxlint/typescript.json" with { type: "json" };
 import {
   createOxlintDisableDirectivesProcessor,
+  getOxlintConfigRuleNames,
   getUnusedDisableDirectiveRuleNames,
   oxlintToEslintRuleNames,
 } from "./oxlint.js";
@@ -140,7 +142,21 @@ describe("oxlintToEslintRuleNames", () => {
   });
 });
 
-describe("oxlint/base.json", () => {
+describe("getOxlintConfigRuleNames", () => {
+  it("lists the rules of the config and of its overrides", () => {
+    expect(
+      getOxlintConfigRuleNames({
+        rules: { "no-debugger": "error" },
+        overrides: [
+          { rules: { "typescript/no-namespace": "error" } },
+          { rules: {} },
+        ],
+      }),
+    ).toEqual(["no-debugger", "typescript/no-namespace"]);
+  });
+});
+
+describe("oxlint/*.json", () => {
   /** @type {[string, unknown][]} */
   const plugins = [
     ["@typescript-eslint/", tseslint.plugin],
@@ -157,12 +173,15 @@ describe("oxlint/base.json", () => {
     ),
   ]);
 
-  it.each(Object.keys(oxlintConfig.rules))(
-    "%s turns off existing eslint rules",
-    (oxlintRuleName) => {
-      const mapped = oxlintToEslintRuleNames(oxlintRuleName);
-      expect(mapped.length).toBeGreaterThan(0);
-      expect(mapped.filter((name) => !eslintRuleNames.has(name))).toEqual([]);
-    },
-  );
+  it.each([
+    ...new Set(
+      [oxlintBaseConfig, oxlintTypescriptConfig].flatMap((config) =>
+        getOxlintConfigRuleNames(config),
+      ),
+    ),
+  ])("%s turns off existing eslint rules", (oxlintRuleName) => {
+    const mapped = oxlintToEslintRuleNames(oxlintRuleName);
+    expect(mapped.length).toBeGreaterThan(0);
+    expect(mapped.filter((name) => !eslintRuleNames.has(name))).toEqual([]);
+  });
 });

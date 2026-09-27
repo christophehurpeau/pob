@@ -8,7 +8,7 @@ export function ValidFunctionComponent(): ReactNode {
   return null;
 }
 
-// eslint-disable-next-line @typescript-eslint/explicit-function-return-type, @typescript-eslint/explicit-module-boundary-types
+// oxlint-disable-next-line typescript/explicit-function-return-type, typescript/explicit-module-boundary-types
 export function InvalidFunctionComponentWithInference() {
   return null;
 }

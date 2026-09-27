@@ -8,7 +8,7 @@ export function bar(flag: boolean): undefined {
   }
 }
 
-// eslint-disable-next-line @typescript-eslint/require-await
+// oxlint-disable-next-line typescript/require-await
 export async function baz(flag: boolean): Promise<undefined> {
   if (flag) return;
   foo();
@@ -18,13 +18,13 @@ export async function baz(flag: boolean): Promise<undefined> {
 
 export function foo2(): void {}
 export function bar2(flag: boolean): void {
-  // eslint-disable-next-line @typescript-eslint/no-confusing-void-expression
+  // oxlint-disable-next-line typescript/no-confusing-void-expression
   if (flag) return foo();
   // eslint-disable-next-line no-useless-return
   return;
 }
 
-// eslint-disable-next-line @typescript-eslint/no-invalid-void-type, @typescript-eslint/require-await
+// oxlint-disable-next-line typescript/no-invalid-void-type, typescript/require-await
 export async function baz2(flag: boolean): Promise<number | void> {
   if (flag) return 42;
   // eslint-disable-next-line no-useless-return

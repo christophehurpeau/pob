@@ -30,7 +30,7 @@
   "scripts": {
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/eslint-plugin'",
-    "lint:oxlint": "pnpm --dir '../..' exec oxlint '@pob/eslint-plugin'"
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/eslint-plugin'"
   },
   "dependencies": {
     "@typescript-eslint/utils": "8.63.0",

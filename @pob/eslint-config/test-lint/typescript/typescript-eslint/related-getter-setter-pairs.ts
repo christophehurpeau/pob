@@ -1,5 +1,5 @@
 export class A {
-  // eslint-disable-next-line @typescript-eslint/related-getter-setter-pairs
+  // oxlint-disable-next-line typescript/related-getter-setter-pairs
   get x(): number {
     return 1;
   }

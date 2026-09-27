@@ -41,7 +41,7 @@
   "scripts": {
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/rollup-esbuild'",
-    "lint:oxlint": "pnpm --dir '../..' exec oxlint '@pob/rollup-esbuild'"
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/rollup-esbuild'"
   },
   "dependencies": {
     "@pob/rollup": "workspace:*",

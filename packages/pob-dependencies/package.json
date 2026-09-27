@@ -33,7 +33,7 @@
     "build:definitions": "tsc --lib esnext --noEmit --skipLibCheck ./lib/index.d.ts",
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'packages/pob-dependencies'",
-    "lint:oxlint": "pnpm --dir '../..' exec oxlint 'packages/pob-dependencies'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet 'packages/pob-dependencies'",
     "preversion": "node ./scripts/update-peerdeps.js && node ./scripts/generate.d.ts.js && git add lib/index.d.ts"
   },
   "devDependencies": {

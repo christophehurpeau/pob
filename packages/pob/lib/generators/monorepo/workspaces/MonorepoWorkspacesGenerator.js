@@ -99,7 +99,8 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       lint: `${packageManager} run format && ${packageManager} run lint:oxlint && ${packageManager} run lint:eslint`,
       format: "oxfmt",
       "format:check": "oxfmt --check .",
-      "lint:oxlint": monorepoConfig && monorepoConfig.eslint && "oxlint",
+      "lint:oxlint":
+        monorepoConfig && monorepoConfig.eslint && "oxlint --quiet",
       "lint:eslint":
         monorepoConfig &&
         monorepoConfig.eslint &&

@@ -64,7 +64,7 @@
   "scripts": {
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/root'",
-    "lint:oxlint": "pnpm --dir '../..' exec oxlint '@pob/root'"
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/root'"
   },
   "dependencies": {
     "@commitlint/format": "21.0.1",
@@ -78,6 +78,7 @@
     "lint-staged": "17.4.1",
     "oxfmt": "0.54.0",
     "oxlint": "1.85.0",
+    "oxlint-tsgolint": "7.0.2002",
     "picomatch": "^4.0.7",
     "pob-dependencies": "workspace:*",
     "semver": "^7.7.3"

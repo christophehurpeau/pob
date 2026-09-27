@@ -1,0 +1,11 @@
+{
+  "overrides": [
+    {
+      "files": ["**/*.{ts,cts,mts,tsx}"],
+      "rules": {
+        "typescript/explicit-function-return-type": "off",
+        "typescript/explicit-module-boundary-types": "off"
+      }
+    }
+  ]
+}

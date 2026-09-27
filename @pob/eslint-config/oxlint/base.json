@@ -3,6 +3,66 @@
     "correctness": "off"
   },
   "rules": {
-    "no-debugger": "error"
-  }
+    "default-param-last": "error",
+    "max-params": [
+      "warn",
+      {
+        "max": 3
+      }
+    ],
+    "no-array-constructor": "error",
+    "no-debugger": "error",
+    "no-dupe-class-members": "error",
+    "no-empty-function": [
+      "error",
+      {
+        "allow": ["arrowFunctions", "functions", "methods"]
+      }
+    ],
+    "no-loop-func": "error",
+    "no-unused-expressions": [
+      "error",
+      {
+        "allowShortCircuit": false,
+        "allowTaggedTemplates": false,
+        "allowTernary": false,
+        "enforceForJSX": false,
+        "ignoreDirectives": false
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "args": "none",
+        "caughtErrors": "none",
+        "ignoreClassWithStaticInitBlock": false,
+        "ignoreRestSiblings": true,
+        "ignoreUsingDeclarations": false,
+        "reportUsedIgnorePattern": false,
+        "vars": "all"
+      }
+    ],
+    "no-use-before-define": [
+      "error",
+      {
+        "allowNamedExports": false,
+        "classes": true,
+        "enums": true,
+        "functions": true,
+        "ignoreTypeReferences": true,
+        "typedefs": true,
+        "variables": true
+      }
+    ],
+    "no-useless-constructor": "error",
+    "require-await": "error"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.{ts,cts,mts,tsx}"],
+      "rules": {
+        "require-await": "off"
+      }
+    }
+  ]
 }

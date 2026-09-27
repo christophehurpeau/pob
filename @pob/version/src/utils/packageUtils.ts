@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-use-before-define */
+/* oxlint-disable no-use-before-define */
 import fs, { glob } from "node:fs/promises";
 import path from "node:path";
 import type { PackageJson } from "type-fest";
@@ -112,7 +112,7 @@ export async function writePkg(workspace: Workspace): Promise<void> {
 
 export async function readPkg(cwd: string): Promise<PackageJson> {
   const packagePath = getPackageJsonPath(cwd);
-  // eslint-disable-next-line @typescript-eslint/use-unknown-in-catch-callback-variable
+  // oxlint-disable-next-line typescript/use-unknown-in-catch-callback-variable
   const pkg = await fs.readFile(packagePath, "utf8").catch((error: Error) => {
     throw new Error(
       `Failed to read "${packagePath}": ${error instanceof Error ? error.message : String(error)}`,

@@ -36,7 +36,7 @@
   "scripts": {
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/esbuild'",
-    "lint:oxlint": "pnpm --dir '../..' exec oxlint '@pob/esbuild'"
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/esbuild'"
   },
   "dependencies": {
     "esbuild": "0.28.2"

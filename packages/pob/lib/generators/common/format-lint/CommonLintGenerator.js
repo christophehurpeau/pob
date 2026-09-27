@@ -163,6 +163,7 @@ export default class CommonFormatLintGenerator extends Generator {
         : babelEnvs.length > 0;
     const useTypescript = this.options.typescript;
     const hasReact = useTypescript && packageUtils.hasReact(pkg);
+    const useAppConfig = hasReact && this.options.isApp;
     const useNode = !useBabel || babelEnvs.some((env) => env.target === "node");
     const useNodeOnly =
       (!useBabel && !useTypescript) ||
@@ -414,7 +415,7 @@ export default class CommonFormatLintGenerator extends Generator {
 
           return [
             useNode ? "...pobConfig.configs.node" : "...pobConfig.configs.base",
-            this.options.isApp && "...pobConfig.configs.app",
+            useAppConfig && "...pobConfig.configs.app",
             pkg.dependencies?.["react-native-web"] &&
               '...pobTypescriptConfigReact.configs["react-native-web"]',
           ];
@@ -532,14 +533,37 @@ export default class CommonFormatLintGenerator extends Generator {
       // ignorePatterns are fully owned by the generator: merging with existing
       // ones would never remove stale patterns
       const oxlintConfig = this.fs.readJSON(oxlintConfigPath, {});
+      const oxlintExtends = oxlintConfig.extends || [];
+      const pobOxlintConfigPath = (name) =>
+        `./node_modules/@pob/eslint-config/oxlint/${name}.json`;
       await writeAndFormatJson(this.fs, oxlintConfigPath, {
         ...oxlintConfig,
         extends: [
-          "./node_modules/@pob/eslint-config/oxlint/base.json",
-          ...(oxlintConfig.extends || []).filter(
+          pobOxlintConfigPath("base"),
+          // type-aware rules: oxlint fails without tsgolint, even in a
+          // project without TypeScript files
+          useTypescript && pobOxlintConfigPath("typescript"),
+          // overrides of typescript.json, like the matching eslint configs
+          // (configs.app, configs.allowUnsafe, ...). Only app is known here:
+          // the others are kept when added by hand.
+          ...(useTypescript
+            ? [
+                "app",
+                "allow-implicit-return-type",
+                "allow-unsafe",
+                "allow-unsafe-as-warn",
+              ]
+                .filter(
+                  (name) =>
+                    (name === "app" && useAppConfig) ||
+                    oxlintExtends.includes(pobOxlintConfigPath(name)),
+                )
+                .map(pobOxlintConfigPath)
+            : []),
+          ...oxlintExtends.filter(
             (value) => !value.includes("@pob/eslint-config/"),
           ),
-        ],
+        ].filter(Boolean),
         ignorePatterns: [
           ...new Set([...oxlintBaseIgnorePatterns, ...ignorePatterns]),
         ],
@@ -558,8 +582,8 @@ export default class CommonFormatLintGenerator extends Generator {
           ? `${packageManagerExecWithCwd(this.options.packageManager, "../..", "eslint")} ${args} ${quoteArg(path.relative("../..", "."))}`
           : `eslint ${args} .`,
         "lint:oxlint": globalEslint
-          ? `${packageManagerExecWithCwd(this.options.packageManager, "../..", "oxlint")} ${quoteArg(path.relative("../..", "."))}`
-          : "oxlint",
+          ? `${packageManagerExecWithCwd(this.options.packageManager, "../..", "oxlint")} ${args} ${quoteArg(path.relative("../..", "."))}`
+          : `oxlint ${args}`,
         lint: `${packageManagerRun(this.options.packageManager, "lint:oxlint")} && ${
           useTypescript && !composite ? "tsc && " : ""
         }${packageManagerRun(this.options.packageManager, "lint:eslint")}`,

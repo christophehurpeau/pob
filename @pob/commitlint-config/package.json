@@ -32,7 +32,7 @@
   "scripts": {
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/commitlint-config'",
-    "lint:oxlint": "pnpm --dir '../..' exec oxlint '@pob/commitlint-config'"
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/commitlint-config'"
   },
   "engines": {
     "node": ">=22.18.0"

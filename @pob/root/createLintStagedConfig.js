@@ -67,7 +67,7 @@ const OXFMT = "oxfmt --no-error-on-unmatched-pattern";
 // Above this many files, commands run on the whole project instead.
 const MAX_FILENAMES = 100;
 const ESLINT_FIX = "eslint --fix --quiet";
-const OXLINT_FIX = "oxlint --fix --no-error-on-unmatched-pattern";
+const OXLINT_FIX = "oxlint --fix --quiet --no-error-on-unmatched-pattern";
 
 // projects not yet migrated by pob have no oxlint config
 const hasOxlint = fs.existsSync(path.resolve(".oxlintrc.json"));

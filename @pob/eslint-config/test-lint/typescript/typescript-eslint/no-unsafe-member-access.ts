@@ -1,3 +1,3 @@
 const a: any = {};
-// eslint-disable-next-line @typescript-eslint/no-unsafe-member-access, @typescript-eslint/no-unsafe-assignment
+// oxlint-disable-next-line typescript/no-unsafe-member-access, typescript/no-unsafe-assignment
 export const b = a.foo;

@@ -3,7 +3,10 @@
     "respectEslintDisableDirectives": false,
     "reportUnusedDisableDirectives": "error"
   },
-  "extends": ["./node_modules/@pob/eslint-config/oxlint/base.json"],
+  "extends": [
+    "./node_modules/@pob/eslint-config/oxlint/base.json",
+    "./node_modules/@pob/eslint-config/oxlint/typescript.json"
+  ],
   "ignorePatterns": [
     ".yarn",
     "**/dist/",
@@ -14,5 +17,19 @@
     "**/*.d.ts",
     "/rollup.config.mjs",
     "**/__fixtures__/**"
+  ],
+  "overrides": [
+    {
+      "files": ["@pob/version/**/*.{ts,cts,mts,tsx}"],
+      "rules": {
+        "typescript/explicit-function-return-type": "off",
+        "typescript/explicit-module-boundary-types": "off",
+        "typescript/no-unsafe-argument": "off",
+        "typescript/no-unsafe-assignment": "off",
+        "typescript/no-unsafe-call": "off",
+        "typescript/no-unsafe-member-access": "off",
+        "typescript/no-unsafe-return": "off"
+      }
+    }
   ]
 }

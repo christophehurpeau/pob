@@ -5,6 +5,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { lintWithOxlint, oxlintConfigsDir } from "./test-utils/oxlint.js";
 
 const baseConfigPath = path.join(oxlintConfigsDir, "base.json");
+const typescriptConfigPath = path.join(oxlintConfigsDir, "typescript.json");
 // this repo's config, the options are not in base.json so projects keep
 // eslint-disable comments working
 const rootConfig = JSON.parse(
@@ -18,8 +19,8 @@ const rootConfig = JSON.parse(
  * Lints `source` in a project whose .oxlintrc.json extends base.json, like the
  * one written by pob.
  */
-const lint = async (cwd, source) => {
-  await writeFile(path.join(cwd, "file.js"), source);
+const lint = async (cwd, source, fileName = "file.js") => {
+  await writeFile(path.join(cwd, fileName), source);
   return lintWithOxlint(cwd);
 };
 
@@ -31,15 +32,20 @@ const summarize = (diagnostics) =>
 
 /**
  * @param {Record<string, unknown>} config
+ * @param {string[]} extendsPaths
  */
-const useProject = (config) => {
+const useProject = (config, extendsPaths = [baseConfigPath]) => {
   const project = { cwd: "" };
 
   beforeAll(async () => {
     project.cwd = await mkdtemp(path.join(tmpdir(), "pob-oxlint-"));
     await writeFile(
       path.join(project.cwd, ".oxlintrc.json"),
-      JSON.stringify({ ...config, extends: [baseConfigPath] }),
+      JSON.stringify({ ...config, extends: extendsPaths }),
+    );
+    await writeFile(
+      path.join(project.cwd, "tsconfig.json"),
+      JSON.stringify({ compilerOptions: { strict: true } }),
     );
   });
 
@@ -76,6 +82,90 @@ describe("oxlint/base.json", () => {
         "// eslint-disable-next-line no-debugger\ndebugger;\n",
       ),
     ).toEqual([]);
+  });
+});
+
+describe("oxlint/typescript.json", () => {
+  const project = useProject({}, [baseConfigPath, typescriptConfigPath]);
+  const floatingPromise = "Promise.resolve();\nexport {};\n";
+
+  // documented as root-only, but inherited through extends
+  it("enables type-aware linting", async () => {
+    expect(
+      summarize(await lint(project.cwd, floatingPromise, "file.ts")),
+    ).toEqual([{ line: 1, rule: "typescript(no-floating-promises)" }]);
+  });
+
+  // oxlint applies type-aware rules to the .js files of a TypeScript project
+  it("scopes rules to TypeScript files", async () => {
+    await rm(path.join(project.cwd, "file.ts"));
+    expect(await lint(project.cwd, floatingPromise, "file.js")).toEqual([]);
+  });
+});
+
+// projects extend them after typescript.json, like the matching eslint configs
+describe.each([
+  {
+    fileName: "",
+    expected: [
+      "error typescript(explicit-function-return-type)",
+      "error typescript(explicit-module-boundary-types)",
+      "error typescript(no-unsafe-member-access)",
+      "error typescript(no-unsafe-return)",
+    ],
+  },
+  {
+    fileName: "app.json",
+    expected: [
+      "error typescript(no-unsafe-member-access)",
+      "error typescript(no-unsafe-return)",
+    ],
+  },
+  {
+    fileName: "allow-implicit-return-type.json",
+    expected: [
+      "error typescript(no-unsafe-member-access)",
+      "error typescript(no-unsafe-return)",
+    ],
+  },
+  {
+    fileName: "allow-unsafe.json",
+    expected: [
+      "error typescript(explicit-function-return-type)",
+      "error typescript(explicit-module-boundary-types)",
+    ],
+  },
+  {
+    fileName: "allow-unsafe-as-warn.json",
+    expected: [
+      "error typescript(explicit-function-return-type)",
+      "error typescript(explicit-module-boundary-types)",
+      "warning typescript(no-unsafe-member-access)",
+      "warning typescript(no-unsafe-return)",
+    ],
+  },
+])("oxlint/typescript.json with $fileName", ({ fileName, expected }) => {
+  const project = useProject({}, [
+    baseConfigPath,
+    typescriptConfigPath,
+    ...(fileName ? [path.join(oxlintConfigsDir, fileName)] : []),
+  ]);
+
+  it("overrides the rules", async () => {
+    const diagnostics = await lint(
+      project.cwd,
+      "export function f(value: any) {\n  return value.a;\n}\n",
+      "file.ts",
+    );
+    expect(
+      [
+        ...new Set(
+          diagnostics
+            .filter(({ code }) => /\((?:explicit-|no-unsafe-)/.test(code ?? ""))
+            .map(({ code, severity }) => `${severity} ${code}`),
+        ),
+      ].toSorted(),
+    ).toEqual(expected);
   });
 });
 

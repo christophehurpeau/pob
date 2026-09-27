@@ -10,7 +10,7 @@ type Day =
 declare const day: Day;
 let result = 0;
 
-// eslint-disable-next-line @typescript-eslint/switch-exhaustiveness-check
+// oxlint-disable-next-line typescript/switch-exhaustiveness-check
 switch (day) {
   case "Monday":
     result = 1;

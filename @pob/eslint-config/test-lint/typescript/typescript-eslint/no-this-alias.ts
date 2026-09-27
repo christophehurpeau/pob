@@ -1,6 +1,6 @@
 export class A {
   m(): unknown {
-    // eslint-disable-next-line @typescript-eslint/no-this-alias, unicorn/no-this-assignment
+    /* eslint-disable-next-line unicorn/no-this-assignment */ // oxlint-disable-next-line typescript/no-this-alias
     const self = this;
     return self;
   }

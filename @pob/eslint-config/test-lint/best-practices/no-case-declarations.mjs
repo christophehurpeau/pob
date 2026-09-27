@@ -1,5 +1,5 @@
 /* eslint-disable prefer-const */
-/* eslint-disable no-unused-vars */
+/* oxlint-disable no-unused-vars */
 const foo = 1;
 
 switch (foo) {

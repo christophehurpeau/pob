@@ -1,3 +1,3 @@
 declare const s: string;
-// eslint-disable-next-line @typescript-eslint/no-unsafe-unary-minus
+// oxlint-disable-next-line typescript/no-unsafe-unary-minus
 export const m = -s;

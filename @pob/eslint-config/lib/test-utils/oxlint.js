@@ -6,15 +6,9 @@ import { promisify } from "node:util";
 
 const execFileAsync = promisify(execFile);
 
-const oxlintPackageJsonUrl = import.meta.resolve("oxlint/package.json");
-const { default: oxlintPkg } = await import(oxlintPackageJsonUrl, {
-  with: { type: "json" },
-});
+// the bin used by projects, which also locates tsgolint for type-aware rules
 const oxlintBinPath = fileURLToPath(
-  new URL(
-    typeof oxlintPkg.bin === "string" ? oxlintPkg.bin : oxlintPkg.bin.oxlint,
-    oxlintPackageJsonUrl,
-  ),
+  new URL("./bin/oxlint.js", import.meta.resolve("@pob/root/package.json")),
 );
 
 export const oxlintConfigsDir = fileURLToPath(
@@ -90,17 +84,6 @@ export const listOxlintRules = async (cwd) => {
  */
 export const toCanonicalOxlintRuleName = (ruleName) =>
   ruleName.includes("/") ? ruleName : `eslint/${ruleName}`;
-
-/**
- * `plugin/rule` name of a diagnostic, from its code like `jsx-a11y(alt-text)`.
- * Undefined for diagnostics not reported by a rule (unused directives).
- *
- * @param {OxlintDiagnostic} diagnostic
- */
-export const getDiagnosticRuleName = (diagnostic) => {
-  const match = diagnostic.code && /^([^(]+)\(([^)]+)\)$/.exec(diagnostic.code);
-  return match ? `${match[1].replaceAll("-", "_")}/${match[2]}` : undefined;
-};
 
 /**
  * @param {unknown} ruleEntry

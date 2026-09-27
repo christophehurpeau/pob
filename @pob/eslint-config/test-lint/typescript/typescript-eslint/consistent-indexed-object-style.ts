@@ -1,10 +1,11 @@
-// eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style
 export interface Foo1 {
+  // oxlint-disable-next-line typescript/consistent-indexed-object-style
   [key: string]: unknown;
 }
 
-// eslint-disable-next-line @typescript-eslint/consistent-indexed-object-style, @typescript-eslint/consistent-type-definitions
+// oxlint-disable-next-line typescript/consistent-type-definitions
 export type Foo2 = {
+  // oxlint-disable-next-line typescript/consistent-indexed-object-style
   [key: string]: unknown;
 };
 

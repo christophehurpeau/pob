@@ -1,10 +1,10 @@
 export interface Foo {
-  // eslint-disable-next-line @typescript-eslint/method-signature-style
+  // oxlint-disable-next-line typescript/method-signature-style
   foo(s: string): void;
-  // eslint-disable-next-line @typescript-eslint/method-signature-style
+  // oxlint-disable-next-line typescript/adjacent-overload-signatures, typescript/method-signature-style, typescript/unified-signatures
   foo(n: number): void;
-  // eslint-disable-next-line @typescript-eslint/method-signature-style
+  // oxlint-disable-next-line typescript/method-signature-style
   bar(): void;
-  // eslint-disable-next-line @typescript-eslint/adjacent-overload-signatures, @typescript-eslint/method-signature-style, @typescript-eslint/unified-signatures, @typescript-eslint/sort-type-constituents
+  /* eslint-disable-next-line @typescript-eslint/sort-type-constituents */ // oxlint-disable-next-line typescript/method-signature-style
   foo(sn: string | number): void;
 }

@@ -16,7 +16,12 @@
   },
   "files": [
     "lib",
+    "oxlint/allow-implicit-return-type.json",
+    "oxlint/allow-unsafe-as-warn.json",
+    "oxlint/allow-unsafe.json",
+    "oxlint/app.json",
     "oxlint/base.json",
+    "oxlint/typescript.json",
     "utils.js"
   ],
   "type": "module",
@@ -28,7 +33,12 @@
     "./lib/rules/code-quality": "./lib/rules/code-quality.js",
     "./lib/rules/errors": "./lib/rules/errors.js",
     "./lib/rules/style": "./lib/rules/style.js",
+    "./oxlint/allow-implicit-return-type.json": "./oxlint/allow-implicit-return-type.json",
+    "./oxlint/allow-unsafe.json": "./oxlint/allow-unsafe.json",
+    "./oxlint/allow-unsafe-as-warn.json": "./oxlint/allow-unsafe-as-warn.json",
+    "./oxlint/app.json": "./oxlint/app.json",
     "./oxlint/base.json": "./oxlint/base.json",
+    "./oxlint/typescript.json": "./oxlint/typescript.json",
     "./utils": "./utils.js",
     "./package.json": "./package.json"
   },
@@ -38,7 +48,7 @@
   "scripts": {
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/eslint-config'",
-    "lint:oxlint": "pnpm --dir '../..' exec oxlint '@pob/eslint-config'"
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/eslint-config'"
   },
   "dependencies": {
     "@eslint/js": "^10.0.1",

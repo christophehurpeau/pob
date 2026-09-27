@@ -1,3 +1,3 @@
 export const a = 1;
-// eslint-disable-next-line @typescript-eslint/no-useless-empty-export
+// oxlint-disable-next-line typescript/no-useless-empty-export
 export {};

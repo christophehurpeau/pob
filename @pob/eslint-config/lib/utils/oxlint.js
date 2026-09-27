@@ -22,7 +22,7 @@ const typescriptEslintRules =
 
 /**
  * eslint core rule → typescript-eslint rules extending it. Type-aware ones are
- * not listed: oxlint's core rule does not replace them (see TA1 in
+ * not listed: oxlint's core rule does not replace them (see T1 in
  * docs/oxlint-migration.md).
  *
  * @type {Map<string, string[]>}
@@ -71,6 +71,19 @@ export const oxlintToEslintRuleNames = (oxlintRuleName) => {
   }
   return [`${prefix}${ruleName}`];
 };
+
+/**
+ * Rules of an oxlint config, including its overrides.
+ *
+ * @param {{ rules?: Record<string, unknown>; overrides?: { rules?: Record<string, unknown> }[] }} config
+ * @returns {string[]}
+ */
+export const getOxlintConfigRuleNames = (config) => [
+  ...Object.keys(config.rules ?? {}),
+  ...(config.overrides ?? []).flatMap((override) =>
+    Object.keys(override.rules ?? {}),
+  ),
+];
 
 const unusedDisableDirectiveRegExp =
   /^Unused eslint-disable directive \(no problems were reported from (.+)\)\.$/;

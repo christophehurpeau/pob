@@ -1,6 +1,6 @@
 export class A {
+  // oxlint-disable-next-line no-dupe-class-members
   bar() {}
 
-  // eslint-disable-next-line no-dupe-class-members
   bar() {}
 }

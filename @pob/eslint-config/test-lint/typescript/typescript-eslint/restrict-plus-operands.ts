@@ -1,3 +1,3 @@
 const a: any = 1;
-// eslint-disable-next-line @typescript-eslint/restrict-plus-operands, @typescript-eslint/no-unsafe-assignment
+// oxlint-disable-next-line typescript/no-unsafe-assignment, typescript/restrict-plus-operands
 export const b = a + 1;

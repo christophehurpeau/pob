@@ -1,4 +1,4 @@
 export interface I {
-  // eslint-disable-next-line @typescript-eslint/no-misused-new, @typescript-eslint/prefer-function-type
+  // oxlint-disable-next-line typescript/no-misused-new, typescript/prefer-function-type
   new (): I;
 }

@@ -33,7 +33,7 @@
   "scripts": {
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/pretty-pkg'",
-    "lint:oxlint": "pnpm --dir '../..' exec oxlint '@pob/pretty-pkg'"
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/pretty-pkg'"
   },
   "dependencies": {
     "oxfmt": "0.54.0"

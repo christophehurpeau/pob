@@ -1,5 +1,5 @@
 enum E {
   A = 0,
 }
-// eslint-disable-next-line @typescript-eslint/no-unsafe-enum-comparison
+// oxlint-disable-next-line typescript/no-unsafe-enum-comparison
 export const r = (E.A as E) === 0;

@@ -30,7 +30,7 @@
   "scripts": {
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/sort-pkg'",
-    "lint:oxlint": "pnpm --dir '../..' exec oxlint '@pob/sort-pkg'"
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/sort-pkg'"
   },
   "dependencies": {
     "@pob/sort-object": "workspace:*"

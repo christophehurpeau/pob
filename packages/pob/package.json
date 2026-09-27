@@ -33,7 +33,7 @@
     "build:definitions": "tsc -p tsconfig.json",
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'packages/pob'",
-    "lint:oxlint": "pnpm --dir '../..' exec oxlint 'packages/pob'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet 'packages/pob'",
     "tsc": "tsc"
   },
   "dependencies": {

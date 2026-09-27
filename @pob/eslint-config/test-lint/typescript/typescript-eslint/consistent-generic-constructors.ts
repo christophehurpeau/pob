@@ -1,5 +1,5 @@
 // Left-hand side
-// eslint-disable-next-line @typescript-eslint/consistent-generic-constructors
+// oxlint-disable-next-line typescript/consistent-generic-constructors
 export const map1: Map<string, number> = new Map();
 
 // Right-hand side

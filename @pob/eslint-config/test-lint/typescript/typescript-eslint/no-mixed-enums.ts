@@ -1,6 +1,6 @@
 export enum E {
-  // eslint-disable-next-line @typescript-eslint/prefer-enum-initializers
+  // oxlint-disable-next-line typescript/prefer-enum-initializers
   A,
-  // eslint-disable-next-line @typescript-eslint/no-mixed-enums
+  // oxlint-disable-next-line typescript/no-mixed-enums
   B = "x",
 }

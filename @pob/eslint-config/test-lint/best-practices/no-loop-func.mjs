@@ -6,7 +6,7 @@ for (let i = 10; i; i--) {
 
 let i = 0;
 do {
-  // eslint-disable-next-line no-loop-func
+  // oxlint-disable-next-line no-loop-func
   function a() {
     return i;
   }

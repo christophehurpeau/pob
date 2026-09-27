@@ -6,7 +6,7 @@ interface Props {
 }
 
 export function MyStatelessComponent({
-  // eslint-disable-next-line @typescript-eslint/no-useless-default-assignment -- sometimes we want to keep this as safety
+  // oxlint-disable-next-line typescript/no-useless-default-assignment -- sometimes we want to keep this as safety
   foo = "default",
   bar,
 }: Props): ReactNode {

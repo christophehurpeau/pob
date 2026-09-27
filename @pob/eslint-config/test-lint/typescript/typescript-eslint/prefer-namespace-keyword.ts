@@ -1,4 +1,4 @@
-// eslint-disable-next-line @typescript-eslint/prefer-namespace-keyword, @typescript-eslint/no-namespace
+// oxlint-disable-next-line typescript/no-namespace, typescript/prefer-namespace-keyword
 export module Foo {
   export const x = 1;
 }

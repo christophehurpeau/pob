@@ -9,7 +9,7 @@ if (cart.items && cart.items[0] && cart.items[0].quantity === 0)
 
 const interpolation = "";
 
-// eslint-disable-next-line no-unused-vars
+// oxlint-disable-next-line no-unused-vars
 const strings = [
   // eslint-disable-next-line quotes
   `could have been a regular string`,

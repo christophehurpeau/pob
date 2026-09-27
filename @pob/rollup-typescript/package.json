@@ -41,7 +41,7 @@
   "scripts": {
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/rollup-typescript'",
-    "lint:oxlint": "pnpm --dir '../..' exec oxlint '@pob/rollup-typescript'"
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/rollup-typescript'"
   },
   "peerDependenciesMeta": {
     "rollup": {

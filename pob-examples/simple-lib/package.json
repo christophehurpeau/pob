@@ -20,7 +20,7 @@
   "scripts": {
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'pob-examples/simple-lib'",
-    "lint:oxlint": "pnpm --dir '../..' exec oxlint 'pob-examples/simple-lib'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet 'pob-examples/simple-lib'",
     "test": "pnpm run --dir '../..' test -- 'pob-examples/simple-lib'"
   },
   "engines": {

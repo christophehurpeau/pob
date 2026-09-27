@@ -1,2 +1,2 @@
-// eslint-disable-next-line @typescript-eslint/no-wrapper-object-types
+// oxlint-disable-next-line typescript/no-wrapper-object-types
 export type T = Number;

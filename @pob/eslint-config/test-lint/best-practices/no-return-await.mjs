@@ -1,4 +1,4 @@
-// eslint-disable-next-line require-await
+// oxlint-disable-next-line require-await
 const bar = async () => {
   return "bar";
 };

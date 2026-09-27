@@ -44,7 +44,7 @@
     "clean:build": "pob-esbuild-clean-out dist",
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'pob-examples/typescript-lib-rollup-esbuild'",
-    "lint:oxlint": "pnpm --dir '../..' exec oxlint 'pob-examples/typescript-lib-rollup-esbuild'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet 'pob-examples/typescript-lib-rollup-esbuild'",
     "test": "pnpm run --dir '../..' test -- 'pob-examples/typescript-lib-rollup-esbuild'",
     "tsc": "tsc",
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"

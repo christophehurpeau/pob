@@ -1,3 +1,3 @@
-// eslint-disable-next-line no-use-before-define
+// oxlint-disable-next-line no-use-before-define
 f();
 function f() {}

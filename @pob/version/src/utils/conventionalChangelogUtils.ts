@@ -52,6 +52,7 @@ export const recommendBump = async (
 
 export type Commits = Parameters<ConventionalChangelogConfig["whatBump"]>[0];
 
+// oxlint-disable-next-line max-params
 export const generateChangelog = (
   workspace: Workspace,
   pkg: PackageJson,
@@ -60,7 +61,6 @@ export const generateChangelog = (
   newTag: string | null,
   commits: Commits | undefined,
   date: string,
-  // eslint-disable-next-line @typescript-eslint/max-params
 ): Promise<string> => {
   if (!newTag) {
     throw new Error(`Missing new tag for package "${pkg.name ?? ""}"`);
