@@ -1,3 +1,3 @@
 /* global self */
-/* eslint-disable-next-line unicorn/prefer-global-this */ // oxlint-disable-next-line no-restricted-globals
+// oxlint-disable-next-line no-restricted-globals, unicorn/prefer-global-this
 export const r = self;

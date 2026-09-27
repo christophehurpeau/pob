@@ -1,6 +1,6 @@
 export const o = {
   get x() {
-    // eslint-disable-next-line unicorn/no-accessor-recursion
+    // oxlint-disable-next-line unicorn/no-accessor-recursion
     return this.x;
   },
 };

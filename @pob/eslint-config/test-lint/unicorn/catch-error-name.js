@@ -1,7 +1,7 @@
 /* global foo */
 try {
   foo();
-  /* eslint-disable-next-line unicorn/catch-error-name */ // oxlint-disable-next-line no-useless-catch
+  // oxlint-disable-next-line no-useless-catch, unicorn/catch-error-name
 } catch (e) {
   throw e;
 }

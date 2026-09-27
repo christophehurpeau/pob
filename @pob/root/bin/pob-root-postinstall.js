@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-/* eslint-disable unicorn/no-await-expression-member */
+/* oxlint-disable unicorn/no-await-expression-member */
 
 import fs from "node:fs";
 import path from "node:path";

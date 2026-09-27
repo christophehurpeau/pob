@@ -2,6 +2,7 @@
 
 import lintStaged from "lint-staged";
 
+// oxlint-disable-next-line unicorn/prefer-top-level-await
 lintStaged({
   concurrent: true,
   relative: true,
@@ -9,7 +10,6 @@ lintStaged({
   .then((passed) => {
     process.exitCode = passed ? 0 : 1;
   })
-  // eslint-disable-next-line unicorn/prefer-top-level-await
   .catch((error) => {
     console.error(error);
     process.exitCode = 1;

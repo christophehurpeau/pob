@@ -1,2 +1,2 @@
-/* eslint-disable-next-line unicorn/no-unnecessary-await */ // oxlint-disable-next-line typescript/await-thenable
+// oxlint-disable-next-line typescript/await-thenable, unicorn/no-unnecessary-await
 await "value";

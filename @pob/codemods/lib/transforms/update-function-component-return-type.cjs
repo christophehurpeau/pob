@@ -59,7 +59,7 @@ module.exports = (file, api, options) => {
         return (
           j(importDeclaration)
             .closestScope()
-            // eslint-disable-next-line unicorn/no-array-method-this-argument -- not an array
+            // oxlint-disable-next-line unicorn/no-array-method-this-argument -- not an array
             .find(j.Identifier, { name: "ReactElement" })
             .filter((p) => {
               if (p.value.start === importSpecifier.local.start) return false;

@@ -213,7 +213,7 @@ export default class CommonBabelGenerator extends Generator {
         version,
         formats:
           babelConfig.formats && babelConfig.formats.includes("cjs")
-            ? // eslint-disable-next-line unicorn/no-nested-ternary
+            ? // oxlint-disable-next-line unicorn/no-nested-ternary
               version === `${latestLTS}` || version === `${maintenanceLTS}`
               ? babelConfig.formats
               : undefined
@@ -229,7 +229,7 @@ export default class CommonBabelGenerator extends Generator {
         version: version === "supported" ? undefined : version,
         formats:
           babelConfig.formats && babelConfig.formats.includes("cjs")
-            ? // eslint-disable-next-line unicorn/no-nested-ternary
+            ? // oxlint-disable-next-line unicorn/no-nested-ternary
               version === "supported"
               ? babelConfig.formats
               : undefined

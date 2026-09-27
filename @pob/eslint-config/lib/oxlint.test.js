@@ -5,6 +5,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { lintWithOxlint, oxlintConfigsDir } from "./test-utils/oxlint.js";
 
 const baseConfigPath = path.join(oxlintConfigsDir, "base.json");
+const nodeConfigPath = path.join(oxlintConfigsDir, "node.json");
 const typescriptConfigPath = path.join(oxlintConfigsDir, "typescript.json");
 // this repo's config, the options are not in base.json so projects keep
 // eslint-disable comments working
@@ -82,6 +83,23 @@ describe("oxlint/base.json", () => {
         "// eslint-disable-next-line no-debugger\ndebugger;\n",
       ),
     ).toEqual([]);
+  });
+});
+
+describe("oxlint/node.json", () => {
+  const project = useProject({}, [baseConfigPath, nodeConfigPath]);
+  const commonjs = '"use strict";\n';
+
+  it("reports CommonJS in ES modules", async () => {
+    expect(summarize(await lint(project.cwd, commonjs, "file.js"))).toEqual([
+      { line: 1, rule: "unicorn(prefer-module)" },
+    ]);
+  });
+
+  // like the eslint node configs, which apply nodeCommonjs rules to .cjs files
+  it("allows CommonJS in .cjs files", async () => {
+    await rm(path.join(project.cwd, "file.js"));
+    expect(await lint(project.cwd, commonjs, "file.cjs")).toEqual([]);
   });
 });
 

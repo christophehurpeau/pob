@@ -1,2 +1,2 @@
-// eslint-disable-next-line unicorn/no-hex-escape
+// oxlint-disable-next-line unicorn/no-hex-escape
 export const s = "\xA9";

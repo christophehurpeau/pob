@@ -252,7 +252,7 @@ export default class CommonTypescriptGenerator extends Generator {
                 packageName,
                 `../../${
                   packageName[0] === "@"
-                    ? // eslint-disable-next-line unicorn/no-nested-ternary
+                    ? // oxlint-disable-next-line unicorn/no-nested-ternary
                       yoConfig.pob.project.type === "app"
                       ? `packages/${packageName.slice(packageName.indexOf("/") + 1)}`
                       : packageName

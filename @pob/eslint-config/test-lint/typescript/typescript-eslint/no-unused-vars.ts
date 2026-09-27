@@ -8,7 +8,7 @@ const y = 10;
 
 try {
   //...
-  // eslint-disable-next-line unicorn/prefer-optional-catch-binding -- unused error
+  // oxlint-disable-next-line unicorn/prefer-optional-catch-binding -- unused error
 } catch (error) {
   console.error("errors");
 }

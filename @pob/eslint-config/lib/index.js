@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import tseslint from "typescript-eslint";
 import oxlintBaseConfig from "../oxlint/base.json" with { type: "json" };
+import oxlintNodeConfig from "../oxlint/node.json" with { type: "json" };
 import oxlintTypescriptConfig from "../oxlint/typescript.json" with { type: "json" };
 import baseConfigs from "./_base.js";
 import baseCommonjsConfig from "./base/commonjs.js";
@@ -63,9 +64,18 @@ const oxlintrc = fs.existsSync(oxlintrcPath)
 const oxlintTypescript =
   oxlintrc?.includes("@pob/eslint-config/oxlint/typescript.json") ?? false;
 
+// node.json is extended by projects using the node configs, once regenerated
+// by pob: until then its rules stay in eslint.
+const oxlintNode =
+  oxlintrc?.includes("@pob/eslint-config/oxlint/node.json") ?? false;
+
 // the shared oxlint configs the project extends
 const oxlintSharedConfigs = oxlintrc
-  ? [oxlintBaseConfig, ...(oxlintTypescript ? [oxlintTypescriptConfig] : [])]
+  ? [
+      oxlintBaseConfig,
+      ...(oxlintNode ? [oxlintNodeConfig] : []),
+      ...(oxlintTypescript ? [oxlintTypescriptConfig] : []),
+    ]
   : [];
 
 const oxlintEslintRuleNames = new Set(

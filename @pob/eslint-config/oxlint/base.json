@@ -686,6 +686,175 @@
       }
     ],
     "symbol-description": "error",
+    "unicorn/catch-error-name": [
+      "error",
+      {
+        "ignore": [],
+        "name": "error"
+      }
+    ],
+    "unicorn/consistent-assert": "error",
+    "unicorn/consistent-date-clone": "error",
+    "unicorn/consistent-existence-index-check": "error",
+    "unicorn/consistent-template-literal-escape": "error",
+    "unicorn/custom-error-definition": "error",
+    "unicorn/error-message": "error",
+    "unicorn/escape-case": "error",
+    "unicorn/explicit-length-check": [
+      "error",
+      {
+        "non-zero": "greater-than"
+      }
+    ],
+    "unicorn/new-for-builtins": "error",
+    "unicorn/no-abusive-eslint-disable": "error",
+    "unicorn/no-accessor-recursion": "error",
+    "unicorn/no-array-method-this-argument": "error",
+    "unicorn/no-array-reduce": [
+      "error",
+      {
+        "allowSimpleOperations": true
+      }
+    ],
+    "unicorn/no-array-reverse": [
+      "error",
+      {
+        "allowExpressionStatement": true
+      }
+    ],
+    "unicorn/no-array-sort": [
+      "error",
+      {
+        "allowExpressionStatement": true
+      }
+    ],
+    "unicorn/no-await-expression-member": "error",
+    "unicorn/no-document-cookie": "error",
+    "unicorn/no-hex-escape": "error",
+    "unicorn/no-immediate-mutation": "error",
+    "unicorn/no-instanceof-builtins": [
+      "error",
+      {
+        "exclude": [],
+        "include": [],
+        "strategy": "loose",
+        "useErrorIsError": false
+      }
+    ],
+    "unicorn/no-invalid-remove-event-listener": "error",
+    "unicorn/no-nested-ternary": "error",
+    "unicorn/no-new-array": "error",
+    "unicorn/no-new-buffer": "error",
+    "unicorn/no-process-exit": "error",
+    "unicorn/no-static-only-class": "error",
+    "unicorn/no-this-assignment": "error",
+    "unicorn/no-typeof-undefined": [
+      "error",
+      {
+        "checkGlobalVariables": false
+      }
+    ],
+    "unicorn/no-unnecessary-await": "error",
+    "unicorn/no-unnecessary-slice-end": "error",
+    "unicorn/no-unreadable-iife": "error",
+    "unicorn/no-useless-collection-argument": "error",
+    "unicorn/no-useless-fallback-in-spread": "error",
+    "unicorn/no-useless-iterator-to-array": "error",
+    "unicorn/no-useless-length-check": "error",
+    "unicorn/no-useless-promise-resolve-reject": "error",
+    "unicorn/no-useless-spread": "error",
+    "unicorn/number-literal-case": "error",
+    "unicorn/numeric-separators-style": [
+      "error",
+      {
+        "binary": {
+          "groupLength": 4,
+          "minimumDigits": 0
+        },
+        "hexadecimal": {
+          "groupLength": 2,
+          "minimumDigits": 0
+        },
+        "number": {
+          "fractionGroupLength": 3,
+          "groupLength": 3,
+          "minimumDigits": 5
+        },
+        "octal": {
+          "groupLength": 4,
+          "minimumDigits": 0
+        },
+        "onlyIfContainsSeparator": false
+      }
+    ],
+    "unicorn/prefer-array-find": "error",
+    "unicorn/prefer-array-flat": "error",
+    "unicorn/prefer-array-flat-map": "error",
+    "unicorn/prefer-array-index-of": "error",
+    "unicorn/prefer-array-some": "error",
+    "unicorn/prefer-at": [
+      "error",
+      {
+        "checkAllIndexAccess": false,
+        "getLastElementFunctions": []
+      }
+    ],
+    "unicorn/prefer-blob-reading-methods": "error",
+    "unicorn/prefer-class-fields": "error",
+    "unicorn/prefer-code-point": "error",
+    "unicorn/prefer-date-now": "error",
+    "unicorn/prefer-default-parameters": "error",
+    "unicorn/prefer-dom-node-append": "error",
+    "unicorn/prefer-dom-node-dataset": "error",
+    "unicorn/prefer-dom-node-remove": "error",
+    "unicorn/prefer-dom-node-text-content": "error",
+    "unicorn/prefer-event-target": "error",
+    "unicorn/prefer-export-from": [
+      "error",
+      {
+        "checkUsedVariables": true
+      }
+    ],
+    "unicorn/prefer-global-this": "warn",
+    "unicorn/prefer-includes": "error",
+    "unicorn/prefer-logical-operator-over-ternary": "error",
+    "unicorn/prefer-math-min-max": "error",
+    "unicorn/prefer-math-trunc": "error",
+    "unicorn/prefer-modern-dom-apis": "error",
+    "unicorn/prefer-modern-math-apis": "warn",
+    "unicorn/prefer-native-coercion-functions": "error",
+    "unicorn/prefer-negative-index": "error",
+    "unicorn/prefer-node-protocol": "error",
+    "unicorn/prefer-object-from-entries": "error",
+    "unicorn/prefer-optional-catch-binding": "error",
+    "unicorn/prefer-prototype-methods": "error",
+    "unicorn/prefer-regexp-test": "error",
+    "unicorn/prefer-response-static-json": "error",
+    "unicorn/prefer-set-size": "error",
+    "unicorn/prefer-single-call": [
+      "error",
+      {
+        "ignore": []
+      }
+    ],
+    "unicorn/prefer-spread": "error",
+    "unicorn/prefer-string-slice": "error",
+    "unicorn/prefer-string-starts-ends-with": "error",
+    "unicorn/prefer-string-trim-start-end": "error",
+    "unicorn/prefer-top-level-await": "error",
+    "unicorn/prefer-type-error": "error",
+    "unicorn/relative-url-style": ["error", "always"],
+    "unicorn/require-array-join-separator": "error",
+    "unicorn/require-number-to-fixed-digits-argument": "error",
+    "unicorn/require-post-message-target-origin": "error",
+    "unicorn/switch-case-break-position": "error",
+    "unicorn/text-encoding-identifier-case": [
+      "error",
+      {
+        "withDash": false
+      }
+    ],
+    "unicorn/throw-new-error": "error",
     "use-isnan": [
       "error",
       {
@@ -748,7 +917,16 @@
         "no-unsafe-negation": "off",
         "no-with": "off",
         "prefer-promise-reject-errors": "off",
-        "require-await": "off"
+        "require-await": "off",
+        "unicorn/prefer-array-find": "off",
+        "unicorn/prefer-string-slice": "off",
+        "unicorn/prefer-string-starts-ends-with": "off"
+      }
+    },
+    {
+      "files": ["**/scripts/**/*.{js,cjs,mjs}"],
+      "rules": {
+        "unicorn/no-process-exit": "off"
       }
     }
   ]

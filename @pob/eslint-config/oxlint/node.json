@@ -1,0 +1,10 @@
+{
+  "overrides": [
+    {
+      "files": ["**/*.{js,mjs,mts,ts,tsx}"],
+      "rules": {
+        "unicorn/prefer-module": "error"
+      }
+    }
+  ]
+}

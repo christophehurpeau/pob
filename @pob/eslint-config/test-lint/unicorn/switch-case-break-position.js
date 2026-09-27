@@ -9,7 +9,7 @@ export function test(foo) {
       {
         doStuff();
       }
-      // eslint-disable-next-line unicorn/switch-case-break-position
+      // oxlint-disable-next-line unicorn/switch-case-break-position
       break;
     default:
       throw new Error("Invalid foo");

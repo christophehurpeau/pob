@@ -766,7 +766,7 @@ export const versionCommandAction = async (
         await isBehindRemote(rootWorkspace, options.gitRemote, gitCurrentBranch)
       ) {
         logger.error("Remote is ahead, aborting");
-        // eslint-disable-next-line unicorn/no-process-exit
+        // oxlint-disable-next-line unicorn/no-process-exit
         process.exit(1);
       }
 

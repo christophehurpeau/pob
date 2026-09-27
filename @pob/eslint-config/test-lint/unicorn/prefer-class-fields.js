@@ -1,7 +1,7 @@
 // ❌
 export class Foo1 {
   constructor() {
-    // eslint-disable-next-line unicorn/prefer-class-fields
+    // oxlint-disable-next-line unicorn/prefer-class-fields
     this.foo = "foo";
   }
 }

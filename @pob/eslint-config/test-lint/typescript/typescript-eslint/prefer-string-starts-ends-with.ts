@@ -19,7 +19,7 @@ console.log(/^bar/.test(foo));
 // ends with
 
 console.log(foo.at(-1) === "b");
-/* eslint-disable-next-line unicorn/prefer-at */ // oxlint-disable-next-line typescript/prefer-string-starts-ends-with
+// oxlint-disable-next-line typescript/prefer-string-starts-ends-with, unicorn/prefer-at
 console.log(foo.charAt(foo.length - 1) === "b");
 // oxlint-disable-next-line typescript/prefer-string-starts-ends-with
 console.log(foo.lastIndexOf("bar") === foo.length - 3);

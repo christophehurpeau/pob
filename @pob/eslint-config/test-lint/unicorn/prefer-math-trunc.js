@@ -1,3 +1,3 @@
 /* global x */
-/* eslint-disable-next-line unicorn/prefer-math-trunc */ // oxlint-disable-next-line no-bitwise
+// oxlint-disable-next-line no-bitwise, unicorn/prefer-math-trunc
 export const r = ~~x;

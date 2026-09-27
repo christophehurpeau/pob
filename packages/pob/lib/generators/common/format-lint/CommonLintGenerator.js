@@ -540,6 +540,10 @@ export default class CommonFormatLintGenerator extends Generator {
         ...oxlintConfig,
         extends: [
           pobOxlintConfigPath("base"),
+          // like configs.node and configs.nodeModule (not configs.nodeCommonjs)
+          useNode &&
+            (useTypescript || pkg.type !== "commonjs") &&
+            pobOxlintConfigPath("node"),
           // type-aware rules: oxlint fails without tsgolint, even in a
           // project without TypeScript files
           useTypescript && pobOxlintConfigPath("typescript"),

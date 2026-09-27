@@ -167,7 +167,7 @@ export default class CommonTestingGenerator extends Generator {
     const transpileWithEsbuild = false;
     const transpileWithBabel = transpileWithEsbuild
       ? false
-      : // eslint-disable-next-line unicorn/no-nested-ternary
+      : // oxlint-disable-next-line unicorn/no-nested-ternary
         this.options.monorepo
         ? yoConfigPobMonorepo.typescript &&
           yoConfigPobMonorepo.typescript !== "check-only"

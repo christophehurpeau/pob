@@ -1,7 +1,7 @@
 const array = [1, 2, 3];
 
 // ❌
-// eslint-disable-next-line unicorn/no-array-reverse
+// oxlint-disable-next-line unicorn/no-array-reverse
 export const reversed1 = [...array].reverse();
 
 // ✅

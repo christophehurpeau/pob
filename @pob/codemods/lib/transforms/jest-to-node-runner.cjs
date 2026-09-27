@@ -1,5 +1,5 @@
-/* eslint-disable unicorn/prefer-array-some */
-/* eslint-disable unicorn/no-array-method-this-argument */
+/* oxlint-disable unicorn/prefer-array-some */
+/* oxlint-disable unicorn/no-array-method-this-argument */
 
 "use strict";
 

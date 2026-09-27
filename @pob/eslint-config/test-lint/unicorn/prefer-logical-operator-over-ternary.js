@@ -1,3 +1,3 @@
 /* global foo, bar */
-/* eslint-disable-next-line unicorn/prefer-logical-operator-over-ternary */ // oxlint-disable-next-line no-unneeded-ternary
+// oxlint-disable-next-line no-unneeded-ternary, unicorn/prefer-logical-operator-over-ternary
 export const r = foo ? foo : bar;
