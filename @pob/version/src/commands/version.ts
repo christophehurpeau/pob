@@ -1,4 +1,4 @@
-/* eslint-disable complexity */
+/* oxlint-disable complexity */
 
 import { Option, program } from "commander";
 import { LoggerCLI } from "nightingale";

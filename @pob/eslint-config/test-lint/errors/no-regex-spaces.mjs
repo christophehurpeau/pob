@@ -1,2 +1,2 @@
-// eslint-disable-next-line no-regex-spaces
+// oxlint-disable-next-line no-regex-spaces
 export const re = /foo   bar/;

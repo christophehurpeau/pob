@@ -2,6 +2,6 @@
 
 export function foo() {
   return true;
-  // eslint-disable-next-line no-unreachable
+  // oxlint-disable-next-line no-unreachable
   log("done");
 }

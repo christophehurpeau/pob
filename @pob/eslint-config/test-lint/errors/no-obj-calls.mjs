@@ -1,2 +1,2 @@
-// eslint-disable-next-line no-obj-calls
+// oxlint-disable-next-line no-obj-calls
 export const math = Math();

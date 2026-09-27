@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 
 switch (foo) {
-  // eslint-disable-next-line default-case-last
+  // oxlint-disable-next-line default-case-last
   default:
     bar();
     break;

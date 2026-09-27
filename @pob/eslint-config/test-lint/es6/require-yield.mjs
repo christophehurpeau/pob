@@ -1,4 +1,4 @@
-// eslint-disable-next-line require-yield
+// oxlint-disable-next-line require-yield
 export function* foo() {
   return 10;
 }

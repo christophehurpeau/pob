@@ -57,7 +57,7 @@ export default async function installVscodeTasks({ pkg }) {
       type: "shell",
       command: "git main",
       group: { kind: "none" },
-      // eslint-disable-next-line no-template-curly-in-string
+      // oxlint-disable-next-line no-template-curly-in-string
       options: { cwd: "${workspaceFolder}" },
       presentation: { close: true, panel: "dedicated" },
       problemMatcher: [],

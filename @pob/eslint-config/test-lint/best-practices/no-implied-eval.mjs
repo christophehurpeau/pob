@@ -1,2 +1,2 @@
-// eslint-disable-next-line no-implied-eval
+// oxlint-disable-next-line no-implied-eval
 setTimeout("alert('Hi!');", 100);

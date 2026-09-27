@@ -2,7 +2,7 @@ export function doSomething(condition) {
   if (condition) {
     return true;
   } else {
-    // eslint-disable-next-line no-useless-return
+    // oxlint-disable-next-line no-useless-return
     return;
   }
 }

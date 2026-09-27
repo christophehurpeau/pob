@@ -1,2 +1,2 @@
-// eslint-disable-next-line symbol-description
+// oxlint-disable-next-line symbol-description
 export const foo = Symbol();

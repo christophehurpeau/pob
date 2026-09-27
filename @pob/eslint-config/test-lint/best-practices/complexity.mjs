@@ -1,44 +1,53 @@
-// eslint-disable-next-line complexity
+// complexity 21: max is 20
+// oxlint-disable-next-line complexity
 export function a(x) {
-  // eslint-disable-next-line unicorn/prefer-switch
-  if (x === 1) {
-    return x; // 1st path
-  } else if (x === 2) {
-    return x + 1; // 2nd path
-  } else if (x === 3) {
-    return x + 2; // 3rd path
-  } else if (x === 4) {
-    return x + 3; // 4th path
-  } else if (x === 5) {
-    return x + 4; // 5th path
-  } else if (x === 6) {
-    return x + 5; // 6th path
-  } else if (x === 7) {
-    return x + 6; // 7th path
-  } else if (x === 8) {
-    return x + 7; // 8th path
-  } else {
-    return 9; // 9th path
-  }
+  return (
+    x === 1 ||
+    x === 2 ||
+    x === 3 ||
+    x === 4 ||
+    x === 5 ||
+    x === 6 ||
+    x === 7 ||
+    x === 8 ||
+    x === 9 ||
+    x === 10 ||
+    x === 11 ||
+    x === 12 ||
+    x === 13 ||
+    x === 14 ||
+    x === 15 ||
+    x === 16 ||
+    x === 17 ||
+    x === 18 ||
+    x === 19 ||
+    x === 20 ||
+    x === 21
+  );
 }
 
+// complexity 20: allowed
 export function b(x) {
-  // eslint-disable-next-line unicorn/prefer-switch
-  if (x === 1) {
-    return x; // 1st path
-  } else if (x === 2) {
-    return x + 1; // 2nd path
-  } else if (x === 3) {
-    return x + 2; // 3rd path
-  } else if (x === 4) {
-    return x + 3; // 4th path
-  } else if (x === 5) {
-    return x + 4; // 5th path
-  } else if (x === 6) {
-    return x + 5; // 6th path
-  } else if (x === 7) {
-    return x + 6; // 7th path
-  } else {
-    return 8; // 8th path
-  }
+  return (
+    x === 1 ||
+    x === 2 ||
+    x === 3 ||
+    x === 4 ||
+    x === 5 ||
+    x === 6 ||
+    x === 7 ||
+    x === 8 ||
+    x === 9 ||
+    x === 10 ||
+    x === 11 ||
+    x === 12 ||
+    x === 13 ||
+    x === 14 ||
+    x === 15 ||
+    x === 16 ||
+    x === 17 ||
+    x === 18 ||
+    x === 19 ||
+    x === 20
+  );
 }

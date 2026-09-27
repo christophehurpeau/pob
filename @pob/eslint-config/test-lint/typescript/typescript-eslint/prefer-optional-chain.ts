@@ -32,7 +32,7 @@ export const i =
   foo &&
   foo.a != null &&
   foo.a.b !== null &&
-  // eslint-disable-next-line eqeqeq
+  // oxlint-disable-next-line eqeqeq
   foo.a.b.c != undefined &&
   foo.a.b.c.d !== undefined &&
   foo.a.b.c.d.e;

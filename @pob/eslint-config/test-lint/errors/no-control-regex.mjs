@@ -1,2 +1,2 @@
-// eslint-disable-next-line no-control-regex, regexp/control-character-escape
+/* eslint-disable-next-line regexp/control-character-escape */ // oxlint-disable-next-line no-control-regex
 export const pattern1 = /\u0000/;

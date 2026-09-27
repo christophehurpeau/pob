@@ -1,4 +1,3 @@
-/* eslint-disable complexity */
 import path from "node:path";
 import { getMapArrayItemForKey } from "./mapUtils.ts";
 import type { PackageDependencyDescriptor } from "./packageDependenciesUtils.ts";

@@ -1,10 +1,10 @@
 /* eslint-disable no-undef */
-/* eslint-disable eqeqeq */
+/* oxlint-disable eqeqeq */
 
-// eslint-disable-next-line use-isnan
+// oxlint-disable-next-line use-isnan
 if (foo == NaN) {
   // ...
 }
 
-// eslint-disable-next-line no-restricted-globals
+// oxlint-disable-next-line no-restricted-globals
 isNaN(NaN);

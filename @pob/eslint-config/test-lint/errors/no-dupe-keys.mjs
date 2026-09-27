@@ -1,5 +1,5 @@
 export const foo = {
+  // oxlint-disable-next-line no-dupe-keys
   bar: "baz",
-  // eslint-disable-next-line no-dupe-keys
   bar: "qux",
 };

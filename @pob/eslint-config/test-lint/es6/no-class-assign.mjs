@@ -1,5 +1,5 @@
 /* oxlint-disable no-unused-vars */
 
+// oxlint-disable-next-line no-class-assign
 class A {}
-// eslint-disable-next-line no-class-assign
 A = 0;

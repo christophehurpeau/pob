@@ -1,6 +1,5 @@
 "use strict";
 
-/* eslint-disable complexity */
 module.exports = (file, api, options) => {
   const j = api.jscodeshift.withParser("tsx");
   const root = j(file.source);

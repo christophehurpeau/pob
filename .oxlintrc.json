@@ -20,6 +20,13 @@
   ],
   "overrides": [
     {
+      "files": ["packages/pob/**"],
+      "rules": {
+        "complexity": "off",
+        "no-nested-ternary": "off"
+      }
+    },
+    {
       "files": ["@pob/version/**/*.{ts,cts,mts,tsx}"],
       "rules": {
         "typescript/explicit-function-return-type": "off",

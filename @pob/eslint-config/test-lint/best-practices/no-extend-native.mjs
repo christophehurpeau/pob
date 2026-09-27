@@ -1,5 +1,5 @@
 // seems harmless
-// eslint-disable-next-line no-extend-native
+// oxlint-disable-next-line no-extend-native
 Object.prototype.extra = 55;
 
 // loop through some userIds
@@ -9,7 +9,7 @@ const users = {
 };
 
 // not what you'd expect
-// eslint-disable-next-line no-restricted-syntax, guard-for-in
+/* eslint-disable-next-line no-restricted-syntax */ // oxlint-disable-next-line guard-for-in
 for (const id in users) {
   console.log(id); // "123", "456", "extra"
 }
