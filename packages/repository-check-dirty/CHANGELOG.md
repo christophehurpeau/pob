@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.2.0](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@12.1.2...repository-check-dirty@12.2.0) (2026-09-27)
+
+### Features
+
+* **eslint-config:** move typescript-eslint rules to oxlint
+
 ## [12.1.2](https://github.com/christophehurpeau/pob/compare/repository-check-dirty@12.1.1...repository-check-dirty@12.1.2) (2026-09-26)
 
 ### Bug Fixes

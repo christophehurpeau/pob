@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.0](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@7.0.1...@pob/esbuild@7.1.0) (2026-09-27)
+
+### Features
+
+* **eslint-config:** move typescript-eslint rules to oxlint
+
 ## [7.0.1](https://github.com/christophehurpeau/pob/compare/@pob/esbuild@7.0.0...@pob/esbuild@7.0.1) (2026-09-26)
 
 ### Bug Fixes

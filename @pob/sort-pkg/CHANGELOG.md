@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.2.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@13.1.3...@pob/sort-pkg@13.2.0) (2026-09-27)
+
+### Features
+
+* **eslint-config:** move typescript-eslint rules to oxlint
+
+Version bump for dependency: @pob/sort-object
+
+
 ## [13.1.3](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@13.1.2...@pob/sort-pkg@13.1.3) (2026-09-26)
 
 ### Bug Fixes

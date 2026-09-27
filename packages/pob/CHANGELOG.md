@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [38.7.0](https://github.com/christophehurpeau/pob/compare/pob@38.6.0...pob@38.7.0) (2026-09-27)
+
+### Features
+
+* **eslint-config:** move typescript-eslint rules to oxlint
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: @pob/sort-object
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [38.6.0](https://github.com/christophehurpeau/pob/compare/pob@38.5.0...pob@38.6.0) (2026-09-26)
 
 ### Features

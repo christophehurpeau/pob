@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.2.0](https://github.com/christophehurpeau/pob/compare/yarn-version@13.1.0...yarn-version@13.2.0) (2026-09-27)
+
+### Features
+
+* **eslint-config:** move typescript-eslint rules to oxlint
+
+Version bump for dependency: @pob/version
+
+
 ## [13.1.0](https://github.com/christophehurpeau/pob/compare/yarn-version@13.0.1...yarn-version@13.1.0) (2026-09-26)
 
 ### Features

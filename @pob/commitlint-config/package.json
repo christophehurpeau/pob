@@ -1,6 +1,6 @@
 {
   "name": "@pob/commitlint-config",
-  "version": "12.1.2",
+  "version": "12.2.0",
   "description": "pob commitlint config",
   "keywords": [
     "commitlint"

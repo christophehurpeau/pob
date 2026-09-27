@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.8.0](https://github.com/christophehurpeau/pob/compare/example-vite-app@0.7.0...example-vite-app@0.8.0) (2026-09-27)
+
+### Features
+
+* **eslint-config:** move typescript-eslint rules to oxlint
+
+Version bump for dependency: example-typescript-lib-rollup-esbuild
+
+
 ## [0.7.0](https://github.com/christophehurpeau/pob/compare/example-vite-app@0.6.0...example-vite-app@0.7.0) (2026-09-26)
 
 ### Features

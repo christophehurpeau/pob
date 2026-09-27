@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.57.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild@0.56.0...example-typescript-lib-rollup-esbuild@0.57.0) (2026-09-27)
+
+### Features
+
+* **eslint-config:** move typescript-eslint rules to oxlint
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [0.56.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild@0.55.0...example-typescript-lib-rollup-esbuild@0.56.0) (2026-09-26)
 
 ### Features

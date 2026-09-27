@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.6.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config-typescript-react@67.5.0...@pob/eslint-config-typescript-react@67.6.0) (2026-09-27)
+
+### Features
+
+* **eslint-config:** move typescript-eslint rules to oxlint
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-plugin
+
+
 ## [67.5.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config-typescript-react@67.4.0...@pob/eslint-config-typescript-react@67.5.0) (2026-09-26)
 
 ### Bug Fixes
