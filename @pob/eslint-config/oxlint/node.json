@@ -1,9 +1,20 @@
 {
+  "plugins": ["node"],
+  "rules": {
+    "node/no-exports-assign": "error"
+  },
   "overrides": [
     {
       "files": ["**/*.{js,mjs,mts,ts,tsx}"],
       "rules": {
         "unicorn/prefer-module": "error"
+      }
+    },
+    {
+      "files": ["**/*.{cjs,cts}"],
+      "rules": {
+        "node/no-new-require": "error",
+        "node/no-path-concat": "error"
       }
     }
   ]

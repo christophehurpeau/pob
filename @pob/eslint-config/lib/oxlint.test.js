@@ -119,6 +119,23 @@ describe("oxlint/node.json", () => {
     await rm(path.join(project.cwd, "file.js"));
     expect(await lint(project.cwd, commonjs, "file.cjs")).toEqual([]);
   });
+
+  // plugins are merged through extends: node.json does not replace the import
+  // plugin of base.json
+  it("keeps the plugins of base.json", async () => {
+    expect(
+      summarize(
+        await lint(
+          project.cwd,
+          '"use strict";\n\nexports = require(process.env.NAME);\n',
+          "file.cjs",
+        ),
+      ),
+    ).toEqual([
+      { line: 3, rule: "node(no-exports-assign)" },
+      { line: 3, rule: "import(no-dynamic-require)" },
+    ]);
+  });
 });
 
 describe("oxlint/typescript.json", () => {

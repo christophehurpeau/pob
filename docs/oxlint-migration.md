@@ -134,7 +134,9 @@ Stay in eslint: `no-unresolved`, `no-extraneous-dependencies`, `no-useless-path-
 
 ### n → node
 
-- [ ] **N1. `node/commonjs.js` and preset (3):** `no-exports-assign`, `no-new-require`, `no-path-concat`.
+- [x] **N1. `node/commonjs.js` and preset (3):** `no-exports-assign`, `no-new-require`, `no-path-concat`.
+  - Done: 3 rules moved to [oxlint/node.json](../@pob/eslint-config/oxlint/node.json), like the eslint `node` configs: `no-exports-assign` for every file (eslint-plugin-n recommended configs), `no-new-require` and `no-path-concat` for `.cjs`/`.cts` files (`node/commonjs.js`). `plugins: ["node"]` in `node.json` is merged with the `import` plugin of `base.json` through `extends` (verified in 1.85, guarded in [lib/oxlint.test.js](../@pob/eslint-config/lib/oxlint.test.js)). `nodeCommonjs` projects (no `node.json`) keep the 3 rules in eslint, `baseModule` projects keep `no-exports-assign` in eslint for `scripts/`. Same report locations.
+  - Behavior differences, accepted: `no-exports-assign` also reports in ES modules (eslint-plugin-n only when `exports` is a declared global, which it is not in its module configs).
 
 Stay in eslint: `no-deprecated-api`, `no-unpublished-bin`, `no-unsupported-features/*` (3), `process-exit-as-throw`, `hashbang`.
 

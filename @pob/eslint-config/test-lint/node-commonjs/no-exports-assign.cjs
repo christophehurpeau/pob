@@ -1,6 +1,6 @@
 "use strict";
 
-// eslint-disable-next-line n/no-exports-assign
+// oxlint-disable-next-line node/no-exports-assign
 exports = {
   foo: 1,
 };
