@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.8.0](https://github.com/christophehurpeau/pob/compare/@pob/root@27.7.0...@pob/root@27.8.0) (2026-09-28)
+
+### Features
+
+* **eslint-config:** move eslint core rules to oxlint
+* **eslint-config:** move unicorn rules to oxlint
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [27.7.0](https://github.com/christophehurpeau/pob/compare/@pob/root@27.6.0...@pob/root@27.7.0) (2026-09-27)
 
 ### Features

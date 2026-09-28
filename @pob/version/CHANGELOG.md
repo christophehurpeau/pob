@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.0](https://github.com/christophehurpeau/pob/compare/@pob/version@6.2.0...@pob/version@6.3.0) (2026-09-28)
+
+### Features
+
+* **eslint-config:** move eslint core rules to oxlint
+* **eslint-config:** move unicorn rules to oxlint
+
 ## [6.2.0](https://github.com/christophehurpeau/pob/compare/@pob/version@6.1.0...@pob/version@6.2.0) (2026-09-27)
 
 ### Features

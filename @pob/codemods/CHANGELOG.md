@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.0](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.16.0...@pob/codemods@0.17.0) (2026-09-28)
+
+### Features
+
+* **eslint-config:** move eslint core rules to oxlint
+* **eslint-config:** move unicorn rules to oxlint
+
 ## [0.16.0](https://github.com/christophehurpeau/pob/compare/@pob/codemods@0.15.0...@pob/codemods@0.16.0) (2026-09-27)
 
 ### Features

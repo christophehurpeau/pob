@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.4.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-plugin@66.3.0...@pob/eslint-plugin@66.4.0) (2026-09-28)
+
+### Features
+
+* **eslint-config:** move unicorn rules to oxlint
+
 ## [66.3.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-plugin@66.2.0...@pob/eslint-plugin@66.3.0) (2026-09-27)
 
 ### Features
