@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.10.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config-typescript-react@67.9.0...@pob/eslint-config-typescript-react@67.10.0) (2026-09-28)
+
+### Features
+
+* **eslint-config:** move regexp and [@pob](https://github.com/pob) rules to oxlint js plugins
+
+Version bump for dependency: @pob/eslint-config
+
+
 ## [67.9.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config-typescript-react@67.8.0...@pob/eslint-config-typescript-react@67.9.0) (2026-09-28)
 
 ### Features

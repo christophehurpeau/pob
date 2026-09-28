@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [38.11.0](https://github.com/christophehurpeau/pob/compare/pob@38.10.0...pob@38.11.0) (2026-09-28)
+
+### Features
+
+* **eslint-config:** add ".expo/" to ignored paths
+* **eslint-config:** move regexp and [@pob](https://github.com/pob) rules to oxlint js plugins
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [38.10.0](https://github.com/christophehurpeau/pob/compare/pob@38.9.0...pob@38.10.0) (2026-09-28)
 
 ### Features
