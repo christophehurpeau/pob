@@ -1,0 +1,14 @@
+{
+  "overrides": [
+    {
+      "files": ["**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}"],
+      "rules": {
+        "import/extensions": [
+          "error",
+          "ignorePackages",
+          { "pattern": { "ts": "never", "tsx": "never" } }
+        ]
+      }
+    }
+  ]
+}

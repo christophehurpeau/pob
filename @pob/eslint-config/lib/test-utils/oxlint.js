@@ -15,6 +15,11 @@ export const oxlintConfigsDir = fileURLToPath(
   new URL("../../oxlint/", import.meta.url),
 );
 
+// @pob/eslint-config-typescript-react shares the inventory of this package
+export const reactOxlintConfigsDir = fileURLToPath(
+  new URL("../../../eslint-config-typescript-react/oxlint/", import.meta.url),
+);
+
 /**
  * Runs oxlint in `cwd` and parses its JSON output.
  *
@@ -94,18 +99,22 @@ const isRuleEnabled = (ruleEntry) => {
 };
 
 /**
- * Rules enabled in `oxlint/*.json` (including `overrides`), as `plugin/rule`.
+ * Rules enabled in `oxlint/*.json` of this package and of
+ * @pob/eslint-config-typescript-react (including `overrides`), as
+ * `plugin/rule`.
  *
  * @returns {string[]}
  */
 export const getEnabledOxlintConfigRules = () => {
   const ruleNames = new Set();
-  for (const fileName of readdirSync(oxlintConfigsDir)) {
-    if (!fileName.endsWith(".json")) continue;
+  const configPaths = [oxlintConfigsDir, reactOxlintConfigsDir].flatMap((dir) =>
+    readdirSync(dir)
+      .filter((fileName) => fileName.endsWith(".json"))
+      .map((fileName) => path.join(dir, fileName)),
+  );
+  for (const configPath of configPaths) {
     /** @type {{ rules?: Record<string, unknown>; overrides?: { rules?: Record<string, unknown> }[] }} */
-    const config = JSON.parse(
-      readFileSync(path.join(oxlintConfigsDir, fileName), "utf8"),
-    );
+    const config = JSON.parse(readFileSync(configPath, "utf8"));
     for (const rules of [
       config.rules,
       ...(config.overrides ?? []).map((override) => override.rules),

@@ -5,5 +5,5 @@ function Test_component(): ReactNode {
   return <div />;
 }
 
-// eslint-disable-next-line react/jsx-pascal-case, camelcase
+/* eslint-disable-next-line camelcase */ // oxlint-disable-next-line react/jsx-pascal-case
 <Test_component />;

@@ -6,7 +6,14 @@ import {
   toCanonicalOxlintRuleName,
 } from "./test-utils/oxlint.js";
 
-const testLintDir = path.resolve(import.meta.dirname, "../test-lint");
+const testLintDirs = [
+  path.resolve(import.meta.dirname, "../test-lint"),
+  // rules of @pob/eslint-config-typescript-react/oxlint/*.json
+  path.resolve(
+    import.meta.dirname,
+    "../../eslint-config-typescript-react/test-lint",
+  ),
+];
 
 /**
  * Rules named by the oxlint-disable directives of `source`, as `plugin/rule`.
@@ -25,10 +32,12 @@ const getDirectiveRules = (source) =>
         .map((rule) => toCanonicalOxlintRuleName(rule)),
   );
 
-const testLintDirents = await readdir(testLintDir, {
-  recursive: true,
-  withFileTypes: true,
-});
+const testLintDirsDirents = await Promise.all(
+  testLintDirs.map((testLintDir) =>
+    readdir(testLintDir, { recursive: true, withFileTypes: true }),
+  ),
+);
+const testLintDirents = testLintDirsDirents.flat();
 
 const fixturesDirectiveRules = await Promise.all(
   testLintDirents

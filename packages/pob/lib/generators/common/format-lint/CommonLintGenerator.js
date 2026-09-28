@@ -536,6 +536,8 @@ export default class CommonFormatLintGenerator extends Generator {
       const oxlintExtends = oxlintConfig.extends || [];
       const pobOxlintConfigPath = (name) =>
         `./node_modules/@pob/eslint-config/oxlint/${name}.json`;
+      const pobReactOxlintConfigPath = (name) =>
+        `./node_modules/@pob/eslint-config-typescript-react/oxlint/${name}.json`;
       await writeAndFormatJson(this.fs, oxlintConfigPath, {
         ...oxlintConfig,
         extends: [
@@ -567,8 +569,24 @@ export default class CommonFormatLintGenerator extends Generator {
                 )
                 .map(pobOxlintConfigPath)
             : []),
+          // like the @pob/eslint-config-typescript-react configs, after
+          // module.json and node.json: they override import/extensions.
+          // react-native.json is kept when added by hand.
+          ...(hasReact
+            ? ["react", "react-native", "react-native-web"]
+                .filter(
+                  (name) =>
+                    name === "react" ||
+                    (name === "react-native-web" &&
+                      pkg.dependencies?.["react-native-web"]) ||
+                    oxlintExtends.includes(pobReactOxlintConfigPath(name)),
+                )
+                .map(pobReactOxlintConfigPath)
+            : []),
           ...oxlintExtends.filter(
-            (value) => !value.includes("@pob/eslint-config/"),
+            (value) =>
+              !value.includes("@pob/eslint-config/") &&
+              !value.includes("@pob/eslint-config-typescript-react/"),
           ),
         ].filter(Boolean),
         ignorePatterns: [

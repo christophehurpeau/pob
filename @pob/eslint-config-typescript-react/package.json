@@ -15,13 +15,19 @@
     "directory": "@pob/eslint-config-typescript-react"
   },
   "files": [
-    "lib"
+    "lib",
+    "oxlint/react-native-web.json",
+    "oxlint/react-native.json",
+    "oxlint/react.json"
   ],
   "type": "module",
   "sideEffects": false,
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
+    "./oxlint/react.json": "./oxlint/react.json",
+    "./oxlint/react-native.json": "./oxlint/react-native.json",
+    "./oxlint/react-native-web.json": "./oxlint/react-native-web.json",
     "./package.json": "./package.json"
   },
   "publishConfig": {

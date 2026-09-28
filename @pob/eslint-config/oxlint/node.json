@@ -16,6 +16,18 @@
         "node/no-new-require": "error",
         "node/no-path-concat": "error"
       }
+    },
+    {
+      "files": ["**/*.{js,mjs,cts,mts,ts,tsx}"],
+      "rules": {
+        "import/extensions": ["error", "ignorePackages"]
+      }
+    },
+    {
+      "files": ["**/scripts/**/*.cjs"],
+      "rules": {
+        "import/extensions": "off"
+      }
     }
   ]
 }

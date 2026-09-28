@@ -10,5 +10,5 @@ function Hello({
   return null;
 }
 
-// eslint-disable-next-line react/jsx-no-duplicate-props
+// oxlint-disable-next-line react/jsx-no-duplicate-props
 export const helloWithDuplicate = <Hello lastName="Smith" lastName="John" />;

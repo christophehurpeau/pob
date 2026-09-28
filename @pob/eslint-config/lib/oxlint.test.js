@@ -2,7 +2,11 @@ import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
-import { lintWithOxlint, oxlintConfigsDir } from "./test-utils/oxlint.js";
+import {
+  lintWithOxlint,
+  oxlintConfigsDir,
+  reactOxlintConfigsDir,
+} from "./test-utils/oxlint.js";
 
 const baseConfigPath = path.join(oxlintConfigsDir, "base.json");
 const moduleConfigPath = path.join(oxlintConfigsDir, "module.json");
@@ -221,6 +225,41 @@ describe.each([
     ).toEqual(expected);
   });
 });
+
+// React projects extend them after node.json: their import/extensions options
+// win, and their plugins do not replace the import plugin of base.json
+describe.each([
+  { fileNames: [], expected: [2] },
+  { fileNames: ["react.json"], expected: [1] },
+  { fileNames: ["react.json", "react-native-web.json"], expected: [1, 3] },
+])(
+  "@pob/eslint-config-typescript-react/oxlint/$fileNames",
+  ({ fileNames, expected }) => {
+    const project = useProject({}, [
+      baseConfigPath,
+      moduleConfigPath,
+      nodeConfigPath,
+      ...fileNames.map((fileName) =>
+        path.join(reactOxlintConfigsDir, fileName),
+      ),
+    ]);
+
+    it("overrides import/extensions options", async () => {
+      await writeFile(path.join(project.cwd, "t.ts"), "export const t = 1;\n");
+      await writeFile(path.join(project.cwd, "m.mts"), "export const m = 1;\n");
+      const diagnostics = await lint(
+        project.cwd,
+        'import { t } from "./t.ts";\nimport { t as t2 } from "./t";\nimport { m } from "./m.mts";\n\nexport const a = [t, t2, m];\n',
+        "file.ts",
+      );
+      expect(
+        summarize(diagnostics).filter(
+          ({ rule }) => rule === "import(extensions)",
+        ),
+      ).toEqual(expected.map((line) => ({ line, rule: "import(extensions)" })));
+    });
+  },
+);
 
 describe("root .oxlintrc.json options", () => {
   const project = useProject({ options: rootConfig.options });

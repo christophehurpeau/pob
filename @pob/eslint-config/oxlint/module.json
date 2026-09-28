@@ -6,6 +6,12 @@
         "import/no-amd": "error",
         "import/no-commonjs": "error"
       }
+    },
+    {
+      "files": ["**/*.{ts,cts,mts,tsx}", "**/scripts/**/*.{js,cjs,mjs}"],
+      "rules": {
+        "import/extensions": ["error", "ignorePackages"]
+      }
     }
   ]
 }

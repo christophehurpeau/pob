@@ -1,4 +1,4 @@
 import type { ReactNode } from "react";
 
-// eslint-disable-next-line jsx-a11y/no-access-key
+// oxlint-disable-next-line jsx_a11y/no-access-key
 export const El: ReactNode = <div accessKey="h">x</div>;

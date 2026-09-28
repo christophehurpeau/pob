@@ -22,7 +22,11 @@ export default [
   ...apply({
     files: ["@pob/eslint-config-typescript-react/test-lint/**/"],
     mode: "directory",
-    configs: pobTypescriptConfigReact.configs.node,
+    // react.json is extended by test-lint/.oxlintrc.json
+    configs: [
+      ...pobTypescriptConfigReact.configs.node,
+      ...pobTypescriptConfigReact.configs.oxlint,
+    ],
     extensions: tsExtensions,
   }).map((config) => ({
     ...config,
