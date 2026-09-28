@@ -22,6 +22,7 @@ const oxlintBaseIgnorePatterns = [
   "**/coverage/",
   "**/.next/",
   "**/.tamagui/",
+  "**/.expo/",
   "**/*.d.ts",
 ];
 

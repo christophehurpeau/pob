@@ -35,6 +35,7 @@ export default [
       "**/coverage/",
       "**/.next/",
       "**/.tamagui/",
+      "**/.expo/",
       "**/*.d.ts",
     ],
   },

@@ -16,6 +16,7 @@
     "**/coverage/",
     "**/.next/",
     "**/.tamagui/",
+    "**/.expo/",
     "**/*.d.ts",
     "/rollup.config.mjs",
     "**/__fixtures__/**"
