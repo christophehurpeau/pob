@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.9.0](https://github.com/christophehurpeau/pob/compare/@pob/root@27.8.0...@pob/root@27.9.0) (2026-09-28)
+
+### Features
+
+* **eslint-config:** move import-x rules to oxlint
+
+### Bug Fixes
+
+* **package.json:** correct target path for node-24.json
+
+Version bump for dependency: pob-dependencies
+
+
 ## [27.8.0](https://github.com/christophehurpeau/pob/compare/@pob/root@27.7.0...@pob/root@27.8.0) (2026-09-28)
 
 ### Features
