@@ -113,7 +113,7 @@ export const getGitLatestTagVersion = async (
     path?: string[] | string;
   } = {},
 ): Promise<GitTagVersion | null> => {
-  // eslint-disable-next-line regexp/no-super-linear-backtracking
+  // oxlint-disable-next-line regexp/no-super-linear-backtracking
   const tagRegex = /tag:\s*(.+?)[,)]/gi;
   for await (const chunk of execCommandStreamStdout(workspace, [
     "git",

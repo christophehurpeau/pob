@@ -1,11 +1,14 @@
 import { describe, expect, it } from "vitest";
+import pobPlugin from "@pob/eslint-plugin";
 import { Linter } from "eslint";
 import { builtinRules } from "eslint/use-at-your-own-risk";
 import importPlugin from "eslint-plugin-import-x";
 import nodePlugin from "eslint-plugin-n";
+import regexpPlugin from "eslint-plugin-regexp";
 import eslintPluginUnicorn from "eslint-plugin-unicorn";
 import tseslint from "typescript-eslint";
 import oxlintBaseConfig from "../../oxlint/base.json" with { type: "json" };
+import oxlintNodeConfig from "../../oxlint/node.json" with { type: "json" };
 import oxlintTypescriptConfig from "../../oxlint/typescript.json" with { type: "json" };
 import {
   createOxlintDisableDirectivesProcessor,
@@ -163,6 +166,8 @@ describe("oxlint/*.json", () => {
     ["unicorn/", eslintPluginUnicorn],
     ["import-x/", importPlugin],
     ["n/", nodePlugin],
+    ["regexp/", regexpPlugin],
+    ["@pob/", pobPlugin],
   ];
   const eslintRuleNames = new Set([
     ...builtinRules.keys(),
@@ -175,8 +180,8 @@ describe("oxlint/*.json", () => {
 
   it.each([
     ...new Set(
-      [oxlintBaseConfig, oxlintTypescriptConfig].flatMap((config) =>
-        getOxlintConfigRuleNames(config),
+      [oxlintBaseConfig, oxlintNodeConfig, oxlintTypescriptConfig].flatMap(
+        (config) => getOxlintConfigRuleNames(config),
       ),
     ),
   ])("%s turns off existing eslint rules", (oxlintRuleName) => {

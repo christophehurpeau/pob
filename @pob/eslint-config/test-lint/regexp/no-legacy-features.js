@@ -1,2 +1,2 @@
-// eslint-disable-next-line regexp/no-legacy-features
+// oxlint-disable-next-line regexp/no-legacy-features
 export const out = RegExp.$1;

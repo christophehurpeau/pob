@@ -1,5 +1,5 @@
-/* eslint-disable regexp/match-any */
-/* eslint-disable regexp/no-super-linear-backtracking */
+/* oxlint-disable regexp/match-any */
+/* oxlint-disable regexp/no-super-linear-backtracking */
 import camelCase from "lodash.camelcase";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";

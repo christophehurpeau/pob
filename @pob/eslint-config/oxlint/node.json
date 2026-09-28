@@ -1,6 +1,10 @@
 {
   "plugins": ["node"],
+  "jsPlugins": [
+    { "name": "@pob", "specifier": "../lib/oxlint-plugins/pob.js" }
+  ],
   "rules": {
+    "@pob/forbid-non-native-node-imports": "error",
     "node/no-exports-assign": "error"
   },
   "overrides": [

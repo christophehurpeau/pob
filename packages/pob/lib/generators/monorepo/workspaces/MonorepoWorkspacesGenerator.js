@@ -157,17 +157,17 @@ export default class MonorepoWorkspacesGenerator extends Generator {
 
     if (this.fs.exists(readmePath)) {
       const readmeFullContent = this.fs.read(readmePath);
-      // eslint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
+      // oxlint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
       content = readmeFullContent.match(/^<h1 align="center"[^#*]+([^]+)$/);
       if (!content) {
-        // eslint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
+        // oxlint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
         content = readmeFullContent.match(/^<h3 align="center"[^#*]+([^]+)$/);
       }
       if (!content) {
-        // eslint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
+        // oxlint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
         content = readmeFullContent.match(/^<h3[^#*]+([^]+)$/);
       }
-      // eslint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
+      // oxlint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
       if (!content) content = readmeFullContent.match(/^#[^#*]+([^]+)$/);
       content = content ? content[1].trim() : readmeFullContent;
     }

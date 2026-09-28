@@ -4,6 +4,8 @@
     {
       "files": ["**/*.{ts,cts,mts,tsx}"],
       "rules": {
+        "@pob/react-function-component-return-react-node": "error",
+        "@pob/react-named-import": "error",
         "func-names": "error",
         "import/extensions": [
           "error",

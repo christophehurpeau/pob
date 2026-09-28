@@ -1,2 +1,2 @@
-// eslint-disable-next-line regexp/prefer-predefined-assertion
+// oxlint-disable-next-line regexp/prefer-predefined-assertion
 export const out = /(?![\s\S])/;

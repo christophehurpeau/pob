@@ -157,8 +157,13 @@ Stay in eslint: `jsx-uses-vars`, `no-deprecated`, `destructuring-assignment`, `j
 
 Decide once Phase 2 is done:
 
-- **`regexp` (60 rules):** no oxlint plugin. Options: oxlint JS plugins (`jsPlugins`, alpha and not semver-stable in 1.85), or keep eslint for them.
-- **`@pob` custom rules (4):** `forbid-non-native-fetch-import`, `forbid-non-native-node-imports`, `react-named-import`, `react-function-component-return-react-node`: port to oxlint JS plugins once stable.
+- [x] **J1. `regexp` (60 rules) and `@pob` custom rules (4) as oxlint JS plugins** (`jsPlugins`, alpha and not semver-stable in 1.85): the eslint plugins themselves run in oxlint.
+  - Done: 60 `regexp` rules (the `flat/recommended` preset, same severities) and `@pob/forbid-non-native-fetch-import` in `base.json`, `@pob/forbid-non-native-node-imports` in `node.json`, `@pob/react-named-import` and `@pob/react-function-component-return-react-node` in `react.json` (TS files, like eslint). Same report locations (compared on this repo). P2 maps `regexp/` and `@pob/` to themselves.
+  - `jsPlugins` point to re-export files in [lib/oxlint-plugins/](../@pob/eslint-config/lib/oxlint-plugins/), not package names: oxlint resolves a package name from the directory of the config file, not its real path, so it fails when `@pob/eslint-config` is symlinked (isolated `node_modules`, verified in 1.85); Node resolves the imports of a file from its real path. `jsPlugins` are inherited through `extends`; the same file declared twice (`base.json`, `node.json`) is loaded once, but two files with the same plugin name fail ("Plugin name '@pob' is already registered"): `react.json` uses the `@pob` plugin of `base.json`, which React projects always extend.
+  - `oxlint-rules.json` only covers native plugins; JS plugin rules are tracked by `inventory/eslint-rules.json` (a new `regexp` recommended rule stays in eslint until added to `base.json`).
+  - Run time on this repo: oxlint 0.6s → 1.45s (JS plugin runtime), eslint unchanged (about 4.4s): the moved rules were cheap in eslint.
+  - Behavior differences, accepted: `regexp/sort-flags` only reports `RegExp` constructor flags: oxlint gives JS plugins the flags of a regex literal in canonical order (`regex.flags` is `gi` for `/a/ig`, 1.85), and oxfmt sorts them anyway. Other `regexp` fixes replace the whole flags range: unaffected.
+  - Known: eslint-plugin-react's "React version not specified" warning (`Components.detect`, used by the `@pob` react rules) is now printed by oxlint; eslint printed it before.
 - **Remaining `import-x`, `n`, `unicorn`, `react`, core rules** listed as "stay in eslint" above: drop, keep, or JS plugin, one by one.
 - **JSON** (`check-package-dependencies`, `@eslint/json`): stays in eslint.
 - When a plugin has no rule left in eslint, remove it from `@pob/eslint-config` dependencies.

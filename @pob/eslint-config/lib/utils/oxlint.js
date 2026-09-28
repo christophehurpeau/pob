@@ -9,6 +9,9 @@ const eslintRulePrefixes = new Map([
   ["node", "n/"],
   ["react", "react/"],
   ["jsx_a11y", "jsx-a11y/"],
+  // JS plugins: the eslint plugins themselves, loaded by oxlint
+  ["regexp", "regexp/"],
+  ["@pob", "@pob/"],
 ]);
 
 /** oxlint plugins without eslint equivalent in @pob/eslint-config */

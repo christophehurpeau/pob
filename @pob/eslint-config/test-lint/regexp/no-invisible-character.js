@@ -1,2 +1,2 @@
-/* eslint-disable-next-line regexp/no-invisible-character */ // oxlint-disable-next-line no-irregular-whitespace
+// oxlint-disable-next-line no-irregular-whitespace, regexp/no-invisible-character
 export const out = /a b/;

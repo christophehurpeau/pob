@@ -76,6 +76,12 @@ describe("oxlint rules inventory", () => {
       Object.keys(inventory)
         .filter((name) => inventory[name] === "enabled")
         .toSorted(),
-    ).toEqual(getEnabledOxlintConfigRules());
+    ).toEqual(
+      // rules of JS plugins (regexp, @pob) are listed in
+      // inventory/eslint-rules.json
+      getEnabledOxlintConfigRules().filter((name) =>
+        plugins.has(name.slice(0, name.indexOf("/"))),
+      ),
+    );
   });
 });
