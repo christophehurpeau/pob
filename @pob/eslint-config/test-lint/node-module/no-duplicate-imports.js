@@ -2,10 +2,9 @@
 /* eslint-disable import-x/no-unresolved */
 /* oxlint-disable unicorn/prefer-node-protocol */
 
-// eslint-disable-next-line import-x/no-duplicates
+// oxlint-disable-next-line import/no-duplicates
 import { merge } from "module";
 import something from "another-module";
-// eslint-disable-next-line import-x/no-duplicates
 import { find } from "module";
 
 export const a = () => {

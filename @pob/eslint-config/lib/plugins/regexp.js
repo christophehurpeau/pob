@@ -1,8 +1,8 @@
-import eslintPluginRegexp from "eslint-plugin-regexp";
+import { configs } from "eslint-plugin-regexp";
 
 export default [
   {
-    ...eslintPluginRegexp.configs["flat/recommended"],
+    ...configs["flat/recommended"],
     name: "eslint-plugin-regexp/flat/recommended",
   },
   // {

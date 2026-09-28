@@ -5,7 +5,7 @@ define(["a", "b"], (a, b) => {
   /* ... */
 });
 
-// eslint-disable-next-line import-x/no-dynamic-require
+// oxlint-disable-next-line import/no-dynamic-require
 require(["b", "c"], (b, c) => {
   /* ... */
 });

@@ -1,7 +1,7 @@
-import importPlugin, { createNodeResolver } from "eslint-plugin-import-x";
+import { createNodeResolver, flatConfigs } from "eslint-plugin-import-x";
 
 export default [
-  importPlugin.flatConfigs.recommended,
+  flatConfigs.recommended,
   {
     name: "@pob/eslint-config/import/base",
     // override recommended language options

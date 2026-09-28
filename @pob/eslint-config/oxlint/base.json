@@ -2,6 +2,7 @@
   "categories": {
     "correctness": "off"
   },
+  "plugins": ["import"],
   "rules": {
     "array-callback-return": [
       "error",
@@ -686,6 +687,26 @@
       }
     ],
     "symbol-description": "error",
+    "import/first": "error",
+    "import/named": "error",
+    "import/namespace": "error",
+    "import/newline-after-import": "error",
+    "import/no-absolute-path": "error",
+    "import/no-cycle": [
+      "error",
+      {
+        "ignoreTypes": true
+      }
+    ],
+    "import/no-duplicates": "error",
+    "import/no-dynamic-require": "error",
+    "import/no-empty-named-blocks": "error",
+    "import/no-mutable-exports": "error",
+    "import/no-named-as-default": "error",
+    "import/no-named-as-default-member": "error",
+    "import/no-named-default": "error",
+    "import/no-self-import": "error",
+    "import/no-webpack-loader-syntax": "error",
     "unicorn/catch-error-name": [
       "error",
       {
@@ -918,6 +939,19 @@
         "no-with": "off",
         "prefer-promise-reject-errors": "off",
         "require-await": "off",
+        "import/named": "off",
+        "import/no-anonymous-default-export": [
+          "error",
+          {
+            "allowArray": true,
+            "allowArrowFunction": false,
+            "allowAnonymousClass": false,
+            "allowAnonymousFunction": false,
+            "allowCallExpression": true,
+            "allowLiteral": true,
+            "allowObject": true
+          }
+        ],
         "unicorn/prefer-array-find": "off",
         "unicorn/prefer-string-slice": "off",
         "unicorn/prefer-string-starts-ends-with": "off"

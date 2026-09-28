@@ -1,2 +1,2 @@
-// eslint-disable-next-line import-x/no-empty-named-blocks
+// oxlint-disable-next-line import/no-empty-named-blocks
 import {} from "./foo.mjs";

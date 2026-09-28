@@ -1,0 +1,11 @@
+{
+  "overrides": [
+    {
+      "files": ["**/*.{js,mjs,mts,ts,tsx}"],
+      "rules": {
+        "import/no-amd": "error",
+        "import/no-commonjs": "error"
+      }
+    }
+  ]
+}

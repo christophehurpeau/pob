@@ -1,4 +1,4 @@
-// eslint-disable-next-line import-x/no-cycle
+// oxlint-disable-next-line import/no-cycle
 import { foo1 } from "./no-cycle1.mjs";
 
 export const foo2 = `${foo1}2`;

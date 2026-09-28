@@ -21,6 +21,7 @@
     "oxlint/allow-unsafe.json",
     "oxlint/app.json",
     "oxlint/base.json",
+    "oxlint/module.json",
     "oxlint/node.json",
     "oxlint/typescript.json",
     "utils.js"
@@ -39,6 +40,7 @@
     "./oxlint/allow-unsafe-as-warn.json": "./oxlint/allow-unsafe-as-warn.json",
     "./oxlint/app.json": "./oxlint/app.json",
     "./oxlint/base.json": "./oxlint/base.json",
+    "./oxlint/module.json": "./oxlint/module.json",
     "./oxlint/node.json": "./oxlint/node.json",
     "./oxlint/typescript.json": "./oxlint/typescript.json",
     "./utils": "./utils.js",

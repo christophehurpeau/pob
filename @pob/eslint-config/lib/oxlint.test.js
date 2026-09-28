@@ -5,6 +5,7 @@ import { afterAll, beforeAll, describe, expect, it } from "vitest";
 import { lintWithOxlint, oxlintConfigsDir } from "./test-utils/oxlint.js";
 
 const baseConfigPath = path.join(oxlintConfigsDir, "base.json");
+const moduleConfigPath = path.join(oxlintConfigsDir, "module.json");
 const nodeConfigPath = path.join(oxlintConfigsDir, "node.json");
 const typescriptConfigPath = path.join(oxlintConfigsDir, "typescript.json");
 // this repo's config, the options are not in base.json so projects keep
@@ -83,6 +84,23 @@ describe("oxlint/base.json", () => {
         "// eslint-disable-next-line no-debugger\ndebugger;\n",
       ),
     ).toEqual([]);
+  });
+});
+
+describe("oxlint/module.json", () => {
+  const project = useProject({}, [baseConfigPath, moduleConfigPath]);
+  const commonjs = "exports.a = 1;\n";
+
+  it("reports CommonJS in ES modules", async () => {
+    expect(summarize(await lint(project.cwd, commonjs, "file.js"))).toEqual([
+      { line: 1, rule: "import(no-commonjs)" },
+    ]);
+  });
+
+  // like the eslint configs, which apply commonjs rules to .cjs files
+  it("allows CommonJS in .cjs files", async () => {
+    await rm(path.join(project.cwd, "file.js"));
+    expect(await lint(project.cwd, commonjs, "file.cjs")).toEqual([]);
   });
 });
 

@@ -5,6 +5,7 @@
   },
   "extends": [
     "./node_modules/@pob/eslint-config/oxlint/base.json",
+    "./node_modules/@pob/eslint-config/oxlint/module.json",
     "./node_modules/@pob/eslint-config/oxlint/node.json",
     "./node_modules/@pob/eslint-config/oxlint/typescript.json"
   ],

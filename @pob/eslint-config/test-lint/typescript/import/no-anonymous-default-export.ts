@@ -1,2 +1,2 @@
-/* eslint-disable-next-line import-x/no-anonymous-default-export */ // oxlint-disable-next-line no-empty-function
+// oxlint-disable-next-line import/no-anonymous-default-export, no-empty-function
 export default function (): void {}

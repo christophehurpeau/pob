@@ -1,4 +1,4 @@
-/* eslint-disable-next-line no-undef, import-x/no-commonjs */ // oxlint-disable-next-line unicorn/prefer-module
+/* eslint-disable-next-line no-undef */ // oxlint-disable-next-line import/no-commonjs, unicorn/prefer-module
 exports.some = true;
 
 function getDirname() {

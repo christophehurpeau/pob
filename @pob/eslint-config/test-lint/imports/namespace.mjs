@@ -1,4 +1,4 @@
 import * as ns from "./foo.mjs";
 
-// eslint-disable-next-line import-x/namespace
+// oxlint-disable-next-line import/namespace
 console.log(ns.notThere);
