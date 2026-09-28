@@ -46,7 +46,7 @@
     "./tsconfigs/targets/esbuild-node-22.json": "./tsconfigs/targets/esbuild-node-22.json",
     "./tsconfigs/targets/esbuild-node-24.json": "./tsconfigs/targets/esbuild-node-24.json",
     "./tsconfigs/targets/node-22.json": "./tsconfigs/targets/node-22.json",
-    "./tsconfigs/targets/node-24.json": "./tsconfigs/targets/node-22.json",
+    "./tsconfigs/targets/node-24.json": "./tsconfigs/targets/node-24.json",
     "./tsconfigs/targets/rollup-babel.json": "./tsconfigs/targets/rollup-babel.json",
     "./tsconfigs/targets/rollup-babel-with-dom.json": "./tsconfigs/targets/rollup-babel-with-dom.json",
     "./tsconfigs/targets/rollup-es2015.json": "./tsconfigs/targets/rollup-es2015.json",
