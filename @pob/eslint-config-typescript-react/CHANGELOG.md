@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.9.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config-typescript-react@67.8.0...@pob/eslint-config-typescript-react@67.9.0) (2026-09-28)
+
+### Features
+
+* **eslint-config-typescript-react:** move react and jsx-a11y rules to oxlint
+
+Version bump for dependency: @pob/eslint-config
+
+
 ## [67.8.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config-typescript-react@67.7.0...@pob/eslint-config-typescript-react@67.8.0) (2026-09-28)
 
 Version bump for dependency: @pob/eslint-config
