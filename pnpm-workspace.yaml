@@ -11,6 +11,8 @@ minimumReleaseAgeExclude:
   - alouette-icons
   - nightingale
   - nightingale-logger
+  # Renovate security update: js-yaml@5.4.1
+  - js-yaml@5.4.1
 nodeLinker: hoisted
 packages:
   - packages/*
