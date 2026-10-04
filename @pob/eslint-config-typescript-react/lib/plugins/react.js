@@ -68,6 +68,9 @@ export default [
       // https://github.com/yannickcr/eslint-plugin-react/blob/e2eaadae316f9506d163812a09424eb42698470a/docs/rules/jsx-no-constructed-context-values.md
       "react/jsx-no-constructed-context-values": "error",
 
+      // https://github.com/jsx-eslint/eslint-plugin-react/blob/master/docs/rules/jsx-no-leaked-render.md
+      "react/jsx-no-leaked-render": "error",
+
       // Prevent usage of `javascript:` URLs
       // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-no-script-url.md
       "react/jsx-no-script-url": [
