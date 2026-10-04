@@ -105,6 +105,7 @@ describe("oxlintToEslintRuleNames", () => {
     ["react/jsx-key", ["react/jsx-key"]],
     ["react/rules-of-hooks", ["react-hooks/rules-of-hooks"]],
     ["react/exhaustive-deps", ["react-hooks/exhaustive-deps"]],
+    ["react-js/jsx-no-leaked-render", ["react/jsx-no-leaked-render"]],
     ["oxc/no-map-spread", []],
     ["promise/valid-params", []],
     ["vitest/no-focused-tests", []],

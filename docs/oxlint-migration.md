@@ -163,6 +163,7 @@ Decide once Phase 2 is done:
   - `oxlint-rules.json` only covers native plugins; JS plugin rules are tracked by `inventory/eslint-rules.json` (a new `regexp` recommended rule stays in eslint until added to `base.json`).
   - Run time on this repo: oxlint 0.6s → 1.45s (JS plugin runtime), eslint unchanged (about 4.4s): the moved rules were cheap in eslint.
   - Behavior differences, accepted: `regexp/sort-flags` only reports `RegExp` constructor flags: oxlint gives JS plugins the flags of a regex literal in canonical order (`regex.flags` is `gi` for `/a/ig`, 1.85), and oxfmt sorts them anyway. Other `regexp` fixes replace the whole flags range: unaffected.
+  - `react/jsx-no-leaked-render` (no native oxlint rule in 1.85): eslint-plugin-react as JS plugin `react-js` in `react.json` ([lib/oxlint-plugins/react.js](../@pob/eslint-config-typescript-react/lib/oxlint-plugins/react.js)), as `react` is reserved for the native plugin. P2 maps `react-js/` to `react/`. Disable comments use `oxlint-disable-next-line react-js/jsx-no-leaked-render`.
   - Known: eslint-plugin-react's "React version not specified" warning (`Components.detect`, used by the `@pob` react rules) is now printed by oxlint; eslint printed it before.
 - **Remaining `import-x`, `n`, `unicorn`, `react`, core rules** listed as "stay in eslint" above: drop, keep, or JS plugin, one by one.
 - **JSON** (`check-package-dependencies`, `@eslint/json`): stays in eslint.

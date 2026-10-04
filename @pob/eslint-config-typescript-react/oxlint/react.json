@@ -1,5 +1,8 @@
 {
   "plugins": ["react", "jsx-a11y"],
+  "jsPlugins": [
+    { "name": "react-js", "specifier": "../lib/oxlint-plugins/react.js" }
+  ],
   "overrides": [
     {
       "files": ["**/*.{ts,cts,mts,tsx}"],
@@ -133,7 +136,8 @@
         "react/prefer-es6-class": ["error", "always"],
         "react/require-render-return": "error",
         "react/rules-of-hooks": "error",
-        "react/self-closing-comp": "error"
+        "react/self-closing-comp": "error",
+        "react-js/jsx-no-leaked-render": "error"
       }
     }
   ]

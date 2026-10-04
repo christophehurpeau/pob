@@ -74,7 +74,7 @@
   "react/jsx-no-comment-textnodes": "enabled",
   "react/jsx-no-constructed-context-values": "enabled",
   "react/jsx-no-duplicate-props": "enabled",
-  "react/jsx-no-leaked-render": "unset",
+  "react/jsx-no-leaked-render": "enabled",
   "react/jsx-no-literals": "unset",
   "react/jsx-no-script-url": "enabled",
   "react/jsx-no-target-blank": "enabled",
