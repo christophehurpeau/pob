@@ -78,6 +78,9 @@ const CODE_COMMANDS = [OXFMT, hasOxlint && OXLINT_FIX, ESLINT_FIX].filter(
   Boolean,
 );
 
+// a monorepo without packages has no tsconfig.json, and tsc fails without one
+const hasTsconfig = fs.existsSync(path.resolve("tsconfig.json"));
+
 const getSrcDirectories = () => {
   if (workspacesPattern) {
     return `${workspacesPattern}/{src,lib}`;
@@ -188,7 +191,7 @@ const createLegacyConfig = ({
     [cssPattern]: [OXFMT],
     // Tasks are declared as functions so that lint-staged does not append the
     // matched filenames: both commands build the whole project.
-    [tscTriggerPattern]: buildTasks,
+    ...(buildTasks.length > 0 && { [tscTriggerPattern]: buildTasks }),
   });
 
 /**
@@ -275,10 +278,10 @@ const createConfig = ({
       hasRollup
         ? [
             createBuildTask("rollup --config rollup.config.mjs"),
-            createBuildTask("tsc -b"),
-          ]
-        : createBuildTask("tsc"),
-    ],
+            hasTsconfig && createBuildTask("tsc -b"),
+          ].filter(Boolean)
+        : hasTsconfig && createBuildTask("tsc"),
+    ].filter(Boolean),
   });
 };
 
@@ -296,8 +299,13 @@ export default function createLintStagedConfig() {
 
   const patterns = {
     buildTasks: hasRollup
-      ? [[() => "rollup --config rollup.config.mjs", () => "tsc -b"]] // run in parallel
-      : [() => "tsc"],
+      ? [
+          [
+            () => "rollup --config rollup.config.mjs",
+            hasTsconfig && (() => "tsc -b"),
+          ].filter(Boolean),
+        ] // run in parallel
+      : [hasTsconfig && (() => "tsc")].filter(Boolean),
     cssPattern: `{.storybook,${srcDirectories}}/**/*.css`,
     hasRollup,
     otherJsonPattern: "!(package|package-lock|.eslintrc).json",
