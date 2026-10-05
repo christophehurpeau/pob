@@ -1,6 +1,10 @@
 import { chmodSync, readFileSync } from "node:fs";
 import path from "node:path";
-import { nodeFormatToExt, resolveEntry } from "@pob/rollup";
+import {
+  createSourceWorkspaceDependencies,
+  nodeFormatToExt,
+  resolveEntry,
+} from "@pob/rollup";
 import { nodeResolve } from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
 import configExternalDependencies from "rollup-config-external-dependencies";
@@ -25,7 +29,17 @@ export default function createRollupConfig({
   }
 
   const jsx = pobConfig.jsx;
-  const externalByPackageJson = configExternalDependencies(pkg);
+  const sourceWorkspaceDependencies = createSourceWorkspaceDependencies(
+    cwd,
+    pkg,
+  );
+  const externalByPackageJson = configExternalDependencies([
+    pkg,
+    ...sourceWorkspaceDependencies.pkgs,
+  ]);
+  const external = (id) =>
+    !sourceWorkspaceDependencies.isSourceWorkspaceDependency(id) &&
+    externalByPackageJson(id);
 
   const createConfigForEnv = (entry, entryPath, env) => {
     const extensions = getExtensions(
@@ -70,8 +84,9 @@ export default function createRollupConfig({
         warn(warning);
       },
 
-      external: externalByPackageJson,
+      external,
       plugins: [
+        sourceWorkspaceDependencies.plugin,
         esbuild({
           loaders: {
             // https://github.com/egoist/rollup-plugin-esbuild/issues/384
