@@ -10,6 +10,9 @@ export const getWorkspaceName = (workspace) => {
 
 export const discoverWorkspaces = async (rootPath) => {
   const rootPackageJSONPath = path.join(rootPath, "package.json");
+  if (!fs.existsSync(rootPackageJSONPath)) {
+    return [];
+  }
   const rootPkg = JSON.parse(fs.readFileSync(rootPackageJSONPath));
 
   let workspaceGlobs = [];
