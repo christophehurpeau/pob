@@ -60,7 +60,7 @@ export const getPackageManagerCommands = (pm, isYarnBerry) => {
       ciPreStep: `name: Install pnpm
         uses: pnpm/action-setup@v6
         with:
-          version: 11`,
+          version: 12`,
       installOnCICommand: "pnpm install --frozen-lockfile",
       installMutableCommand: "pnpm install",
       installOnDiffCommand: "pnpm install --frozen-lockfile",

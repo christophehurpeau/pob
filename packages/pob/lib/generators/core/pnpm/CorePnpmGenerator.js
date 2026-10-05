@@ -41,7 +41,7 @@ export default class CorePnpmGenerator extends Generator {
       if (
         pkg.packageManager &&
         (!pkg.packageManager.startsWith("pnpm@") ||
-          lt(pkg.packageManager.slice("pnpm@".length), "11.0.0"))
+          lt(pkg.packageManager.slice("pnpm@".length), "12.0.0"))
       ) {
         delete pkg.packageManager;
       }

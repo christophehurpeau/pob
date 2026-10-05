@@ -86,7 +86,7 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       pkg.engines.npm = ">= 6.4.0";
     } else if (this.options.packageManager === "pnpm") {
       if (!pkg.engines) pkg.engines = {};
-      pkg.engines.pnpm = ">= 11.0.0";
+      pkg.engines.pnpm = ">= 12.0.0";
       delete pkg.engines.yarn;
     } else if (pkg.engines) {
       delete pkg.engines.yarn;
