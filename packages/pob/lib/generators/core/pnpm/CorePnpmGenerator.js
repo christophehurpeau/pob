@@ -14,6 +14,8 @@ const minimumReleaseAgeExcludePackages = [
   "nightingale-logger",
 ];
 
+const trustedBuilds = ["esbuild"];
+
 export default class CorePnpmGenerator extends Generator {
   constructor(args, opts) {
     super(args, opts);
@@ -53,14 +55,25 @@ export default class CorePnpmGenerator extends Generator {
       });
       const config = loadedConfig ?? {};
 
-      if (config.allowBuilds) {
-        config.allowBuilds = Object.fromEntries(
-          Object.entries(config.allowBuilds).map(([key, value]) => [
-            key,
-            value === "true" ? true : value,
-          ]),
-        );
+      // the file is read with FAILSAFE_SCHEMA: booleans are read as strings.
+      // Other values are placeholders written by pnpm for ignored builds.
+      const allowBuilds = Object.fromEntries(
+        Object.entries(config.allowBuilds ?? {}).map(([key, value]) => {
+          if (value === "true") return [key, true];
+          if (value === "false") return [key, false];
+          return [key, value];
+        }),
+      );
+      // build scripts of the dependencies pob adds itself. Set even before a
+      // package needs them: the root is generated before its packages, and an
+      // ignored build makes pnpm fail.
+      for (const name of trustedBuilds) {
+        if (typeof allowBuilds[name] !== "boolean") allowBuilds[name] = true;
       }
+      config.allowBuilds = allowBuilds;
+      this.pendingAllowBuilds = Object.keys(allowBuilds).filter(
+        (name) => typeof allowBuilds[name] !== "boolean",
+      );
 
       if (pkg.workspaces) {
         config.packages = pkg.workspaces;
@@ -91,6 +104,11 @@ export default class CorePnpmGenerator extends Generator {
 
   end() {
     if (this.options.enable) {
+      if (this.pendingAllowBuilds.length > 0) {
+        console.warn(
+          `pnpm-workspace.yaml: set allowBuilds to true or false for ${this.pendingAllowBuilds.join(", ")}`,
+        );
+      }
       this.spawnSync("pnpm", ["install"], {});
       this.spawnSync("pnpm", ["dedupe"], {});
 

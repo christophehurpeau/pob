@@ -123,8 +123,16 @@ export default class MonorepoWorkspacesGenerator extends Generator {
     if (this.options.isAppProject) {
       packageUtils.addOrRemoveScripts(pkg, withBundler, {
         build: workspacesRunTopological(packageManager, "build"),
-        watch: workspacesRunExcluding(packageManager, "watch", "*-example"),
       });
+      // rollup apps have a start script, not a watch one
+      packageUtils.addOrRemoveScripts(
+        pkg,
+        withBundler &&
+          this.packages.some((packagePkg) => packagePkg.scripts?.watch),
+        {
+          watch: workspacesRunExcluding(packageManager, "watch", "*-example"),
+        },
+      );
     }
 
     // packageUtils.addOrRemoveScripts(pkg, withTypescript, {
@@ -212,8 +220,8 @@ export default class MonorepoWorkspacesGenerator extends Generator {
 
     switch (this.options.packageManager) {
       case "npm":
-        this.spawnCommandSync("npm", ["install"]);
-        this.spawnCommandSync("npm", ["run", "preversion"]);
+        this.spawnSync("npm", ["install"]);
+        this.spawnSync("npm", ["run", "preversion"]);
         break;
       case "pnpm":
         // see CorePnpmGenerator

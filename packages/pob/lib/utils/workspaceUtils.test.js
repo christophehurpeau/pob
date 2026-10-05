@@ -6,7 +6,22 @@ import {
   buildDependenciesMaps,
   buildTopologicalOrderBatches,
   discoverWorkspaces,
+  getNewPackagePath,
 } from "./workspaceUtils.js";
+
+describe("getNewPackagePath", () => {
+  it("creates a scoped package in the workspaces directory", () => {
+    expect(getNewPackagePath(["packages/*"], "@scope/foo")).toBe(
+      "packages/foo",
+    );
+  });
+
+  it("creates an unscoped package in the workspaces directory", () => {
+    expect(getNewPackagePath(["packages/*", "@pob/*"], "foo")).toBe(
+      "packages/foo",
+    );
+  });
+});
 
 async function prepareMonorepo(tmpDir) {
   await fs.mkdir(path.join(tmpDir, "packages"), { recursive: true });

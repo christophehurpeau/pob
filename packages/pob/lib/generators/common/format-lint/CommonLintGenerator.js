@@ -1,4 +1,5 @@
 import path from "node:path";
+import { format } from "oxfmt";
 import Generator from "yeoman-generator";
 import { quoteArg } from "../../../utils/execUtils.js";
 import inMonorepo from "../../../utils/inMonorepo.js";
@@ -12,6 +13,48 @@ import {
   writeAndFormatJson,
 } from "../../../utils/writeAndFormat.js";
 import { appIgnorePaths } from "../../app/ignorePaths.js";
+
+/**
+ * @param {string} eslintConfigPath
+ * @param {{ imports: string[], flatCascade: string[] }} eslintConfig
+ */
+const renderEslintConfig = async (
+  eslintConfigPath,
+  { imports, flatCascade },
+) => {
+  const { code } = await format(
+    eslintConfigPath,
+    `${imports.map((value) => `${value};\n`).join("")}
+export default [
+${flatCascade.map((value) => `  ${value},\n`).join("")}];
+`,
+    { printWidth: 80 },
+  );
+  return code;
+};
+
+/**
+ * Whether the content is what pob writes for one of the other configs, so it
+ * can be updated without losing changes made by hand.
+ *
+ * @param {string} eslintConfigPath
+ * @param {string} content
+ * @param {{ imports: string[], flatCascade: string[] }[]} previousEslintConfigs
+ */
+const isPreviousEslintConfigOutput = async (
+  eslintConfigPath,
+  content,
+  previousEslintConfigs,
+) => {
+  for (const eslintConfig of previousEslintConfigs) {
+    if (
+      (await renderEslintConfig(eslintConfigPath, eslintConfig)) === content
+    ) {
+      return true;
+    }
+  }
+  return false;
+};
 
 // same as the base ignores of @pob/eslint-config: ignorePatterns are not
 // inherited through "extends"
@@ -103,6 +146,13 @@ export default class CommonFormatLintGenerator extends Generator {
       description: "src directory is root",
     });
 
+    this.option("workspacesHaveReact", {
+      type: Boolean,
+      required: false,
+      default: false,
+      description: "Monorepo root: a workspace package uses react",
+    });
+
     this.option("appTypes", {
       type: String,
       required: false,
@@ -163,21 +213,16 @@ export default class CommonFormatLintGenerator extends Generator {
         ? this.options.babel === "true"
         : babelEnvs.length > 0;
     const useTypescript = this.options.typescript;
-    const hasReact = useTypescript && packageUtils.hasReact(pkg);
+    const isMonorepoRoot =
+      this.options.monorepo || Boolean(inMonorepo && inMonorepo.root);
+    // a monorepo root lints its packages: it needs the react configs when one
+    // of them uses react
+    const hasReact =
+      useTypescript &&
+      (packageUtils.hasReact(pkg) ||
+        (isMonorepoRoot && this.options.workspacesHaveReact));
     const useAppConfig = hasReact && this.options.isApp;
     const useNode = !useBabel || babelEnvs.some((env) => env.target === "node");
-    const useNodeOnly =
-      (!useBabel && !useTypescript) ||
-      (useTypescript &&
-        (!pkg.pob?.envs ||
-          pkg.pob?.envs?.every((env) => env.target === "node")) &&
-        (!pkg.pob?.entries ||
-          pkg.pob?.entries.every(
-            (entry) =>
-              typeof entry === "string" ||
-              (entry.target && entry.target !== "node"),
-          ))) ||
-      (babelEnvs.length > 0 && babelEnvs.every((env) => env.target === "node"));
 
     if (this.fs.exists(this.destinationPath(".eslintignore"))) {
       this.fs.delete(this.destinationPath(".eslintignore"));
@@ -347,7 +392,11 @@ export default class CommonFormatLintGenerator extends Generator {
         );
 
         if ((inMonorepo && inMonorepo.root) || this.options.monorepo) {
-          if (this.options.typescript) {
+          if (hasReact) {
+            packageUtils.addDevDependencies(pkg, [
+              "@pob/eslint-config-typescript-react",
+            ]);
+          } else if (this.options.typescript) {
             packageUtils.updateDevDependenciesIfPresent(pkg, [
               "@pob/eslint-config-typescript-react",
             ]);
@@ -375,7 +424,10 @@ export default class CommonFormatLintGenerator extends Generator {
       }
     }
 
-    const { imports, flatCascade } = (() => {
+    /**
+     * @param {boolean} withReact
+     */
+    const getEslintConfig = (withReact) => {
       if (pkg.name === "@pob/eslint-config-monorepo") {
         return {
           imports: [
@@ -388,53 +440,50 @@ export default class CommonFormatLintGenerator extends Generator {
         };
       }
 
+      const flatCascade = (() => {
+        if (!useTypescript) {
+          return [
+            useNode
+              ? `...pobConfig.configs.node${pkg.type === "commonjs" ? "Commonjs" : "Module"}`
+              : `...pobConfig.configs.base${pkg.type === "commonjs" ? "Commonjs" : "Module"}`,
+          ];
+        }
+        if (!withReact) {
+          return [
+            useNode ? "...pobConfig.configs.node" : "...pobConfig.configs.base",
+          ];
+        }
+
+        return [
+          useNode
+            ? "...pobTypescriptConfigReact.configs.node"
+            : "...pobTypescriptConfigReact.configs.base",
+          withReact && this.options.isApp && "...pobConfig.configs.app",
+          pkg.dependencies?.["react-native-web"] &&
+            '...pobTypescriptConfigReact.configs["react-native-web"]',
+        ];
+      })().filter(Boolean);
+
+      // non-published typescript (scripts/**/*.ts, root *.config.ts) is
+      // type-checked against tsconfig.tools.json rather than any emitting
+      // tsconfig.json; point typed lint at that project. The monorepo root
+      // owns the shared tsconfig.tools.json (its **/scripts/** glob covers
+      // package scripts too), and single repos own their own; in-monorepo
+      // packages inherit the root config.
+      if ((isMonorepoRoot || !inMonorepo) && useTypescript) {
+        flatCascade.push("...pobConfig.configs.toolsProject");
+      }
+
       return {
         imports: [
           'import pobConfig from "@pob/eslint-config"',
           useTypescript &&
-            hasReact &&
+            withReact &&
             'import pobTypescriptConfigReact from "@pob/eslint-config-typescript-react"',
         ].filter(Boolean),
-        flatCascade: (() => {
-          // TODO do something with useNodeOnly ?
-          console.log({ useNodeOnly });
-
-          if (!useTypescript) {
-            return [
-              useNode
-                ? `...pobConfig.configs.node${pkg.type === "commonjs" ? "Commonjs" : "Module"}`
-                : `...pobConfig.configs.base${pkg.type === "commonjs" ? "Commonjs" : "Module"}`,
-            ];
-          }
-          if (!hasReact) {
-            return [
-              useNode
-                ? "...pobConfig.configs.node"
-                : "...pobConfig.configs.base",
-            ];
-          }
-
-          return [
-            useNode ? "...pobConfig.configs.node" : "...pobConfig.configs.base",
-            useAppConfig && "...pobConfig.configs.app",
-            pkg.dependencies?.["react-native-web"] &&
-              '...pobTypescriptConfigReact.configs["react-native-web"]',
-          ];
-        })().filter(Boolean),
+        flatCascade,
       };
-    })();
-
-    const isMonorepoRoot =
-      this.options.monorepo || Boolean(inMonorepo && inMonorepo.root);
-    // non-published typescript (scripts/**/*.ts, root *.config.ts) is
-    // type-checked against tsconfig.tools.json rather than any emitting
-    // tsconfig.json; point typed lint at that project. The monorepo root owns
-    // the shared tsconfig.tools.json (its **/scripts/** glob covers package
-    // scripts too), and single repos own their own; in-monorepo packages
-    // inherit the root config.
-    if ((isMonorepoRoot || !inMonorepo) && useTypescript) {
-      flatCascade.push("...pobConfig.configs.toolsProject");
-    }
+    };
 
     const eslintrcBadPath = this.destinationPath(".eslintrc");
     this.fs.delete(eslintrcBadPath);
@@ -497,37 +546,44 @@ export default class CommonFormatLintGenerator extends Generator {
       };
 
       const ignorePatterns = getRootIgnorePatterns();
-      const srcDirectory =
-        useBabel || this.options.typescript ? this.options.srcDirectory : "lib";
-
-      if (this.fs.exists(eslintConfigPath)) {
-        // TODO update config !
-      } else {
-        await copyAndFormatTpl(
-          this.fs,
-          this.templatePath("eslint.config.js.ejs"),
-          eslintConfigPath,
-          {
-            imports,
-            flatCascade,
-            srcDirectory,
-            ignorePatterns: [...ignorePatterns],
-          },
+      const eslintConfigContent = await renderEslintConfig(
+        eslintConfigPath,
+        getEslintConfig(hasReact),
+      );
+      const existingEslintConfig = this.fs.read(eslintConfigPath, {
+        defaults: null,
+      });
+      if (
+        existingEslintConfig === null ||
+        // still the output of pob for other options: not edited by hand
+        (existingEslintConfig !== eslintConfigContent &&
+          (await isPreviousEslintConfigOutput(
+            eslintConfigPath,
+            existingEslintConfig,
+            [
+              getEslintConfig(!hasReact),
+              // before the react configs were used when react is detected
+              hasReact && {
+                ...getEslintConfig(hasReact),
+                flatCascade: getEslintConfig(hasReact).flatCascade.map(
+                  (config) =>
+                    config.replace(
+                      /^\.\.\.pobTypescriptConfigReact\.configs\.(node|base)$/,
+                      "...pobConfig.configs.$1",
+                    ),
+                ),
+              },
+            ].filter(Boolean),
+          )))
+      ) {
+        this.fs.write(eslintConfigPath, eslintConfigContent);
+      } else if (
+        hasReact &&
+        !existingEslintConfig.includes("@pob/eslint-config-typescript-react")
+      ) {
+        console.warn(
+          `${path.basename(eslintConfigPath)} was edited by hand and is not updated: use the configs of @pob/eslint-config-typescript-react to lint react`,
         );
-        // TODO
-        /*  settings: {
-              "import/resolver": this.options.enableSrcResolver
-                ? {
-                    node: {
-                      moduleDirectory: [
-                        "node_modules",
-                        this.options.srcDirectory,
-                      ],
-                    },
-                  }
-                : false,
-            },
-            */
       }
 
       // keeps existing options, only enforces the shared config and ignores.

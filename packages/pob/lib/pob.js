@@ -47,11 +47,14 @@ import MonorepoTypescriptGenerator from "./generators/monorepo/typescript/Monore
 import MonorepoWorkspacesGenerator from "./generators/monorepo/workspaces/MonorepoWorkspacesGenerator.js";
 import PobBaseGenerator from "./generators/pob/PobBaseGenerator.js";
 import { __dirname } from "./pob-dirname.cjs";
+import { getNewPackagePath } from "./utils/workspaceUtils.js";
 
 const printUsage = () => {
   console.error("Usage: pob [monorepo] [lib|app|init]");
   console.error("       pob [monorepo] update [--force]");
-  console.error("       pob add <packageName>");
+  console.error(
+    "       pob add <packageName> [--app <appType> [--testing] [--e2e]]",
+  );
 };
 
 const readJson = (filepath) => {
@@ -279,21 +282,55 @@ if (action === "add") {
     printUsage();
     process.exit(1);
   }
-  const packagesPath = packageName.startsWith("@")
-    ? packageName
-    : projectPkg.workspaces[0].replace(/\/\*$/, "");
+  const packagePath = getNewPackagePath(projectPkg.workspaces, packageName);
 
-  fs.mkdirSync(`${packagesPath}/${packageName}`, { recursive: true });
-  writeFileSync(`${packagesPath}/${packageName}/.yo-rc.json`, "{}");
+  if (existsSync(packagePath)) {
+    console.error(`${packagePath} already exists`);
+    process.exit(1);
+  }
+
+  // with --app, the package is generated without any prompt
+  const appType = argv.app;
+  const pobConfig = appType
+    ? {
+        pob: {
+          project: { type: "app" },
+          app: {
+            type: appType,
+            testing: !!argv.testing,
+            e2e: !!argv.e2e,
+          },
+        },
+      }
+    : {};
+
+  fs.mkdirSync(packagePath, { recursive: true });
   writeFileSync(
-    `${packagesPath}/${packageName}/package.json`,
-    JSON.stringify({ name: packageName, version: "1.0.0-pre" }, null, 2),
+    `${packagePath}/.yo-rc.json`,
+    JSON.stringify(pobConfig, null, 2),
+  );
+  writeFileSync(
+    `${packagePath}/package.json`,
+    JSON.stringify(
+      {
+        name: packageName,
+        version: "1.0.0-pre",
+        ...(appType && { private: true }),
+      },
+      null,
+      2,
+    ),
   );
   console.log("> Creating new Package");
-  spawnSync(process.argv[0], [process.argv[1]], {
-    cwd: `${packagesPath}/${packageName}`,
-    stdio: "inherit",
-  });
+  // --force: the package is new, its package.json is expected to change
+  spawnSync(
+    process.argv[0],
+    [process.argv[1], ...(appType ? ["update"] : []), "--force"],
+    {
+      cwd: packagePath,
+      stdio: "inherit",
+    },
+  );
 
   console.log("> Updating monorepo");
   spawnSync(process.argv[0], [process.argv[1], "update"], {

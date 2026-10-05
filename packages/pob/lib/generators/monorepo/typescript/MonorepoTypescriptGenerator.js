@@ -67,6 +67,24 @@ export default class MonorepoTypescriptGenerator extends Generator {
     });
   }
 
+  // non-published typescript run in place is not part of any package's
+  // emitting tsconfig, so it needs a dedicated noEmit project for type-aware
+  // linting and tsc -b: root config files (e.g. vitest.config.ts), a root
+  // scripts/ dir, and each package's scripts/ dir (matched via the workspace
+  // globs so all packages are covered)
+  hasTools() {
+    return (
+      hasRootConfigFiles(this.destinationPath()) ||
+      existsSync(this.destinationPath("scripts"))
+    );
+  }
+
+  // tsc fails on a tsconfig.json without files nor references, like the one of
+  // a new monorepo without packages
+  hasTypescriptProjects() {
+    return JSON.parse(this.options.packagePaths).length > 0 || this.hasTools();
+  }
+
   writing() {
     if (this.fs.exists("flow-typed")) this.fs.delete("flow-typed");
     if (this.fs.exists(this.destinationPath(".flowconfig"))) {
@@ -91,7 +109,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
     );
 
     if (this.options.enable) {
-      packageUtils.addScripts(pkg, {
+      packageUtils.addOrRemoveScripts(pkg, this.hasTypescriptProjects(), {
         tsc: "tsc -b",
       });
       packageUtils.addOrRemoveScripts(
@@ -143,7 +161,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
     this.fs.delete(this.destinationPath("tsconfig.root-configs.json"));
     this.fs.delete(tsconfigTestPath);
 
-    if (!this.options.enable) {
+    if (!this.options.enable || !this.hasTypescriptProjects()) {
       this.fs.delete(tsconfigPath);
       this.fs.delete(tsconfigCheckPath);
       this.fs.delete(tsconfigBuildPath);
@@ -152,15 +170,8 @@ export default class MonorepoTypescriptGenerator extends Generator {
       const packagePaths = JSON.parse(this.options.packagePaths);
       const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
-      // non-published typescript run in place is not part of any package's
-      // emitting tsconfig, so it needs a dedicated noEmit project for type-aware
-      // linting and tsc -b: root config files (e.g. vitest.config.ts), a root
-      // scripts/ dir, and each package's scripts/ dir (matched via the
-      // workspace globs so all packages are covered)
-      const hasRootConfigs = hasRootConfigFiles(this.destinationPath());
-      const hasRootScripts = existsSync(this.destinationPath("scripts"));
       const workspaceGlobs = pkg.workspaces || [];
-      const hasTools = hasRootConfigs || hasRootScripts;
+      const hasTools = this.hasTools();
       if (hasTools) {
         await copyAndFormatTpl(
           this.fs,

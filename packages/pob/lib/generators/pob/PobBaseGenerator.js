@@ -300,7 +300,7 @@ export default class PobBaseGenerator extends Generator {
 
     switch (this.getPackageManager()) {
       case "npm":
-        this.spawnCommandSync("npm", ["install"]);
+        this.spawnSync("npm", ["install"]);
         break;
       case "pnpm":
       case "yarn":

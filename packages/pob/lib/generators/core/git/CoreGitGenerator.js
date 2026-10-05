@@ -1,7 +1,14 @@
 import remoteUrl from "git-remote-url";
 import githubUsername from "github-username";
 import Generator from "yeoman-generator";
+import { getRepoName, parseRepositoryUrl } from "../../../utils/git.js";
 import * as packageUtils from "../../../utils/package.js";
+
+const gitHostDomains = {
+  github: "github.com",
+  gitlab: "gitlab.com",
+  bitbucket: "bitbucket.org",
+};
 
 export default class CoreGitGenerator extends Generator {
   constructor(args, opts) {
@@ -34,29 +41,29 @@ export default class CoreGitGenerator extends Generator {
   }
 
   async initializing() {
-    let originUrl = await remoteUrl(this.destinationPath(), "origin").catch(
+    // the real remote, kept apart from the package.json fallback: only a real
+    // remote means the repository already exists
+    this.originUrl = await remoteUrl(this.destinationPath(), "origin").catch(
       () => "",
     );
 
-    if (!originUrl) {
+    let repository = parseRepositoryUrl(this.originUrl);
+
+    if (!this.originUrl) {
       const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
-      originUrl = pkg.repository;
+      repository = parseRepositoryUrl(pkg.repository);
+      if (pkg.repository && !repository) {
+        console.warn(
+          `git: ignoring invalid repository in package.json: ${JSON.stringify(pkg.repository)}`,
+        );
+      }
     }
 
-    this.originUrl = originUrl;
-    const match =
-      originUrl &&
-      typeof originUrl === "string" &&
-      originUrl.match(
-        /^(?:git@|https?:\/\/)(?:([^./:]+)(?:\.com)?[/:])?([^/:]+)\/([^./:]+)(?:.git)?/,
-      );
-    if (!match) return;
-    const [, gitHost, gitAccount, repoName] = match;
-    this.gitHost = gitHost || "github";
-    this.gitHostAccount = gitAccount;
-    if (repoName !== "undefined") {
-      this.repoName = repoName;
-    }
+    this.hasRepositoryUrl = !!(this.originUrl || repository);
+    if (!repository) return;
+    this.gitHost = repository.gitHost;
+    this.gitHostAccount = repository.gitAccount;
+    this.repoName = repository.repoName;
   }
 
   async prompting() {
@@ -72,9 +79,12 @@ export default class CoreGitGenerator extends Generator {
         type: "list",
         name: "gitHost",
         message: "Which git host service would you like ?",
-        default: this.gitHost || (this.originUrl ? "none" : "github"),
+        default: this.gitHost || (this.hasRepositoryUrl ? "none" : "github"),
         choices: [
-          { value: "none", name: !this.originUrl ? "none" : "don't change" },
+          {
+            value: "none",
+            name: !this.hasRepositoryUrl ? "none" : "don't change",
+          },
           "github",
           "bitbucket",
           "gitlab",
@@ -121,23 +131,35 @@ export default class CoreGitGenerator extends Generator {
   writing() {
     console.log("git: writing");
 
-    if (this.gitHost === "none") {
+    if (this.gitHost === "none" || !this.gitHostAccount) {
       return;
     }
 
     const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
-    const repoName = this.repoName || this.options.name || pkg.name;
+    const repoName = this.repoName || getRepoName(pkg.name);
+    const repositoryUrl = `https://${this.gitHost}.com/${this.gitHostAccount}/${repoName}`;
 
-    if (!pkg.homepage && this.gitHostAccount) {
-      pkg.homepage = `https://${this.gitHost}.com/${this.gitHostAccount}/${repoName}`;
+    // keep a custom homepage, but fix one pointing to another repository on the
+    // same host
+    const isHomepageInRepository = (homepage) => {
+      const lowerHomepage = homepage.toLowerCase();
+      const lowerRepositoryUrl = repositoryUrl.toLowerCase();
+      return (
+        lowerHomepage === lowerRepositoryUrl ||
+        lowerHomepage.startsWith(`${lowerRepositoryUrl}/`) ||
+        lowerHomepage.startsWith(`${lowerRepositoryUrl}#`)
+      );
+    };
+    if (
+      !pkg.homepage ||
+      (pkg.homepage.startsWith(`https://${this.gitHost}.com/`) &&
+        !isHomepageInRepository(pkg.homepage))
+    ) {
+      pkg.homepage = repositoryUrl;
     }
-    if (this.gitHostAccount) {
-      pkg.bugs = {
-        url: `https://${this.gitHost}.com/${this.gitHostAccount}/${repoName}/issues`,
-      };
-    }
+    pkg.bugs = { url: `${repositoryUrl}/issues` };
 
-    const repository = `https://${this.gitHost}.com/${this.gitHostAccount}/${repoName}.git`;
+    const repository = `${repositoryUrl}.git`;
 
     if (pkg.repository !== repository) {
       pkg.repository = repository;
@@ -147,37 +169,30 @@ export default class CoreGitGenerator extends Generator {
 
     const cwd = this.destinationPath();
 
-    this.initGitRepository =
-      this.spawnCommandSync("git status", {
+    const isGitRepository =
+      this.spawnSync("git", ["rev-parse", "--git-dir"], {
         cwd,
         stdio: "ignore",
         reject: false,
-      }).status === 128;
-    if (this.initGitRepository) {
-      this.spawnCommandSync("git init", { cwd });
+      }).exitCode === 0;
+    if (!isGitRepository) {
+      this.spawnSync("git", ["init"], { cwd });
+    }
 
-      if (!this.originUrl) {
-        let repoSSH = pkg.repository;
-        if (pkg.repository && !pkg.repository.includes(".git")) {
-          /* this.spawnCommandSync('curl', [
-                        '--silent',
-                        '--write-out',
-                        '"%{http_code}"',
-                        '--output',
-                        '/dev/null',
-                        '-i',
-                        '-u',
-                        this.options.githubAccount,
-                        `-d "{"name": "${this.options.name}", "auto_init": true}`,
-                        'https://api.github.com/user/repos',
-                    ], { cwd }); */
-
-          repoSSH = pkg.repository;
+    if (!this.originUrl) {
+      const remoteHost = gitHostDomains[this.gitHost];
+      if (remoteHost) {
+        const originSSH = `git@${remoteHost}:${this.gitHostAccount}/${repoName}.git`;
+        const { exitCode } = this.spawnSync(
+          "git",
+          ["remote", "add", "origin", originSSH],
+          { cwd, reject: false },
+        );
+        if (exitCode !== 0) {
+          console.warn(
+            `git: failed to add origin, run by hand: git remote add origin ${originSSH}`,
+          );
         }
-
-        this.spawnCommandSync(`git remote add origin ${repoSSH}`, {
-          cwd,
-        });
       }
     }
   }

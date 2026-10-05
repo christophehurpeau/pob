@@ -240,12 +240,14 @@ export default class PobAppGenerator extends Generator {
 
     const enableHashSlash = shouldEnableHashSlash(this.appConfig.type);
 
+    this.useTypescript = Boolean(
+      typescript ||
+      pkg.pob?.typescript === "check-only" ||
+      (inMonorepo && inMonorepo.pobMonorepoConfig?.typescript === "check-only"),
+    );
+
     this.composeWith("pob:common:typescript", {
-      enable:
-        typescript ||
-        pkg.pob?.typescript === "check-only" ||
-        (inMonorepo &&
-          inMonorepo.pobMonorepoConfig?.typescript === "check-only"),
+      enable: this.useTypescript,
       onlyCheck:
         pkg.pob?.typescript === "check-only" ||
         (inMonorepo &&
@@ -387,6 +389,7 @@ export default class PobAppGenerator extends Generator {
       case "vite-with-server":
         this.composeWith("pob:app:vite", {
           enableServer: this.appConfig.type === "vite-with-server",
+          packageManager: this.options.packageManager,
         });
         break;
       case "expo":
@@ -425,6 +428,22 @@ export default class PobAppGenerator extends Generator {
       delete pkg.imports["#/*"];
       if (Object.keys(pkg.imports).length === 0) {
         delete pkg.imports;
+      }
+    }
+
+    // consumers and their tools (bundlers, type-aware lint) resolve the
+    // package through package.json, not through the tsconfig paths
+    if (this.appConfig.type === "untranspiled-library") {
+      const entry =
+        ["ts", "tsx", "js"]
+          .map((extension) => `./${srcDirectory}/index.${extension}`)
+          .find((path) => this.fs.exists(this.destinationPath(path))) ||
+        `./${srcDirectory}/index.${this.useTypescript ? "ts" : "js"}`;
+      if (!pkg.main) pkg.main = entry;
+      if (!pkg.exports) {
+        pkg.exports = { ".": entry };
+      } else if (typeof pkg.exports === "object" && !pkg.exports["."]) {
+        pkg.exports = { ".": entry, ...pkg.exports };
       }
     }
 

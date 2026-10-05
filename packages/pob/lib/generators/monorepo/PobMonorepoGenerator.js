@@ -255,6 +255,25 @@ export default class PobMonorepoGenerator extends Generator {
 
     this.composeWith("pob:common:husky", {});
 
+    // the path of the package running the e2e tests. The prompt only asks
+    // whether there are e2e tests.
+    const e2eTesting = (() => {
+      const value = this.pobMonorepoConfig.e2eTesting;
+      if (!value || value === "false") return "";
+      if (value !== true && value !== "true") return value;
+      const e2eLocations = this.packageLocations.filter(
+        (location, index) =>
+          this.packageConfigs[index]?.app?.e2e ||
+          this.packageConfigs[index]?.lib?.e2e,
+      );
+      if (e2eLocations.length > 1) {
+        console.warn(
+          `monorepo.e2eTesting: several packages have e2e tests (${e2eLocations.join(", ")}), set the path of the one to run in ci in .yo-rc.json`,
+        );
+      }
+      return e2eLocations.length === 1 ? e2eLocations[0] : ".";
+    })();
+
     const splitCIJobs = this.packageNames.length > 8;
 
     // the root has a build script when there are typescript definitions or rollup
@@ -271,7 +290,7 @@ export default class PobMonorepoGenerator extends Generator {
       runner: this.pobMonorepoConfig.testRunner,
       disableYarnGitCache: this.options.disableYarnGitCache,
       testing: this.pobMonorepoConfig.testing,
-      e2eTesting: this.pobMonorepoConfig.e2eTesting,
+      e2eTesting,
       build: hasRootBuild,
       typescript: this.pobMonorepoConfig.typescript,
       documentation: !!this.pobMonorepoConfig.documentation,
@@ -284,11 +303,10 @@ export default class PobMonorepoGenerator extends Generator {
       splitCIJobs,
     });
 
+    const e2eTestingPath = e2eTesting === "." ? "" : `/${e2eTesting}`;
     const rootIgnorePaths = [
-      this.pobMonorepoConfig.e2eTesting &&
-        `${this.pobMonorepoConfig.e2eTesting === "." || this.pobMonorepoConfig.e2eTesting === true ? "" : `/${this.pobMonorepoConfig.e2eTesting}`}/playwright-report/`,
-      this.pobMonorepoConfig.e2eTesting &&
-        `${this.pobMonorepoConfig.e2eTesting === "." || this.pobMonorepoConfig.e2eTesting === true ? "" : `/${this.pobMonorepoConfig.e2eTesting}`}/test-results/`,
+      e2eTesting && `${e2eTestingPath}/playwright-report/`,
+      e2eTesting && `${e2eTestingPath}/test-results/`,
     ].filter(Boolean);
 
     if (hasTamagui(this.packages, this.packageConfigs)) {
@@ -310,6 +328,9 @@ export default class PobMonorepoGenerator extends Generator {
       packageManager: this.options.packageManager,
       yarnNodeLinker: this.options.yarnNodeLinker,
       appTypes: JSON.stringify(getAppTypes(this.packageConfigs)),
+      workspacesHaveReact: this.packages.some((workspacePkg) =>
+        packageUtils.hasReact(workspacePkg),
+      ),
       ignorePaths: [
         ...gitignorePaths.map((path) => `/${path}`),
         hasDist(this.packages, this.packageConfigs) && "/dist",

@@ -121,6 +121,18 @@ export default class CorePackageGenerator extends Generator {
       pkg.type = this.options.packageType;
     }
 
+    // packages of a monorepo share the author, the license and the type of the
+    // root package.json
+    const rootPkg =
+      inMonorepo && !inMonorepo.root ? inMonorepo.rootMonorepoPkg : undefined;
+    if (rootPkg) {
+      if (!pkg.author && !pkg.authors && rootPkg.author) {
+        pkg.author = rootPkg.author;
+      }
+      if (!pkg.type && rootPkg.type) pkg.type = rootPkg.type;
+    }
+    const defaultLicense = rootPkg?.license;
+
     let author = packageUtils.parsePkgAuthor(pkg);
 
     const props = await this.prompt(
@@ -160,7 +172,7 @@ export default class CorePackageGenerator extends Generator {
           message: "License Type",
           type: "list",
           choices: ["MIT", "ISC", "UNLICENSED"],
-          when: !pkg.license,
+          when: !pkg.license && !defaultLicense,
         },
       ].filter(Boolean),
     );
@@ -257,15 +269,16 @@ export default class CorePackageGenerator extends Generator {
     }
 
     if (!pkg.license) {
-      pkg.license = props.license;
-      this.fs.copyTpl(
-        this.templatePath(`licenses/${props.license}.ejs`),
-        this.destinationPath("LICENSE"),
-        {
+      pkg.license = props.license || defaultLicense;
+      const licenseTemplatePath = this.templatePath(
+        `licenses/${pkg.license}.ejs`,
+      );
+      if (fs.existsSync(licenseTemplatePath)) {
+        this.fs.copyTpl(licenseTemplatePath, this.destinationPath("LICENSE"), {
           year: new Date().getFullYear(),
           author: pkg.author,
-        },
-      );
+        });
+      }
     }
 
     if (pkg.private) {

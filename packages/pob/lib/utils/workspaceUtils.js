@@ -8,6 +8,13 @@ export const getWorkspaceName = (workspace) => {
   return path.basename(workspace.location) || "unnamed-workspace";
 };
 
+/**
+ * Path of a package created by "pob add": in the first workspaces directory,
+ * named without the scope.
+ */
+export const getNewPackagePath = (workspaces, packageName) =>
+  `${workspaces[0].replace(/\/\*$/, "")}/${packageName.replace(/^@[^/]+\//, "")}`;
+
 export const discoverWorkspaces = async (rootPath) => {
   const rootPackageJSONPath = path.join(rootPath, "package.json");
   if (!fs.existsSync(rootPackageJSONPath)) {
