@@ -37,6 +37,14 @@ const oxlintReactNativeWeb =
     "@pob/eslint-config-typescript-react/oxlint/react-native-web.json",
   );
 
+// module.json and node.json check import/extensions in oxlint, requiring
+// extensions: without react.json, re-enabling import-x/extensions with the
+// react options would require the opposite, and no import would pass both.
+const enableImportExtensions =
+  oxlintReact ||
+  (!isOxlintConfigExtended("@pob/eslint-config/oxlint/module.json") &&
+    !isOxlintConfigExtended("@pob/eslint-config/oxlint/node.json"));
+
 // turns off the rules of react.json, and those of @pob/eslint-config again as
 // the react configs re-enable import-x/extensions
 const oxlintReactConfigs = createOxlintConfigs([
@@ -72,22 +80,25 @@ const createConfig = (base) => [
         ],
       },
       rules: {
-        "import-x/extensions": [
-          "error",
-          "always",
-          {
-            ignorePackages: true,
-            pattern: {
-              js: "always",
-              cjs: "always",
-              mjs: "always",
-              cts: "always",
-              mts: "always",
-              ts: "never",
-              tsx: "never",
+        // with react.json, turned off again by oxlintReactConfigs
+        ...(enableImportExtensions && {
+          "import-x/extensions": [
+            "error",
+            "always",
+            {
+              ignorePackages: true,
+              pattern: {
+                js: "always",
+                cjs: "always",
+                mjs: "always",
+                cts: "always",
+                mts: "always",
+                ts: "never",
+                tsx: "never",
+              },
             },
-          },
-        ],
+          ],
+        }),
         // "react/jsx-filename-extension": ["error", { extensions: ["tsx"] }],
       },
     },

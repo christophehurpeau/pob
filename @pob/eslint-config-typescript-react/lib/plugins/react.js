@@ -1,9 +1,24 @@
+import { createRequire } from "node:module";
+import path from "node:path";
 import reactPlugin from "eslint-plugin-react";
+
+// "detect" crashes with eslint 10: it uses the removed context.getFilename
+const getReactVersion = () => {
+  try {
+    const require = createRequire(path.resolve("package.json"));
+    return /** @type {{ version: string }} */ (require("react/package.json"))
+      .version;
+  } catch {
+    return undefined;
+  }
+};
+const reactVersion = getReactVersion();
 
 export default [
   reactPlugin.configs.flat.recommended,
   reactPlugin.configs.flat["jsx-runtime"],
   {
+    ...(reactVersion && { settings: { react: { version: reactVersion } } }),
     rules: {
       // https://github.com/airbnb/javascript/issues/2829
       "func-names": "error",
