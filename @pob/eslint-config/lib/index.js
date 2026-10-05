@@ -142,6 +142,21 @@ export const createOxlintConfigs = (additionalOxlintConfigs = []) => {
   ];
 };
 
+// Without the TypeScript program, a type-aware rule crashes eslint. Computed
+// from the installed typescript-eslint, not from oxlint/typescript.json: a rule
+// added by a newer version is off until moved to oxlint, instead of crashing.
+const typeAwareRuleNames = new Set(
+  oxlintTypescript
+    ? Object.entries(
+        /** @type {{ rules?: Record<string, { meta?: { docs?: { requiresTypeChecking?: boolean } } }> }} */ (
+          tseslint.plugin
+        ).rules ?? {},
+      )
+        .filter(([, rule]) => rule.meta?.docs?.requiresTypeChecking)
+        .map(([ruleName]) => `@typescript-eslint/${ruleName}`)
+    : [],
+);
+
 const oxlintConfigs = [
   ...createOxlintConfigs(),
   // oxlint runs every type-aware rule: eslint no longer needs to build the
@@ -154,6 +169,9 @@ const oxlintConfigs = [
           languageOptions: {
             parserOptions: { project: false, projectService: false },
           },
+          rules: Object.fromEntries(
+            [...typeAwareRuleNames].map((ruleName) => [ruleName, "off"]),
+          ),
         },
       ]
     : []),
@@ -176,7 +194,9 @@ const withoutOxlintRules = (configs) =>
           ...config,
           rules: Object.fromEntries(
             Object.entries(config.rules).filter(
-              ([ruleName]) => !oxlintEslintRuleNames.has(ruleName),
+              ([ruleName]) =>
+                !oxlintEslintRuleNames.has(ruleName) &&
+                !typeAwareRuleNames.has(ruleName),
             ),
           ),
         }
