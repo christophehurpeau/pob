@@ -1,0 +1,7 @@
+{
+  "name": "monorepo-workspace-version-higher",
+  "version": "2.1.0",
+  "workspaces": [
+    "packages/*"
+  ]
+}

@@ -117,4 +117,24 @@ describe("version", () => {
       expect(stdout).toContain("basic: 1.0.0 -> 1.1.0"); // replace with expected output
     },
   );
+
+  it("should fail when a workspace version is higher than the fixed monorepo version", async () => {
+    const { exitCode, stdout, stderr } = await executeAction({
+      ...presetOption,
+      force: "patch",
+      dryRun: true,
+      packageManager: "yarn",
+      cwd: fileURLToPath(
+        new URL(
+          "../../__fixtures__/yarn-monorepo-workspace-version-higher",
+          import.meta.url,
+        ),
+      ),
+    });
+    expect(exitCode).toBe(1);
+    expect(stderr).toContain(
+      'UsageError: "package-2" is at 7.0.0-pre, higher than the monorepo version 2.1.1 it would be set to.',
+    );
+    expect(stdout).toBeFalsy();
+  });
 });

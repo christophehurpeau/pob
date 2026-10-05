@@ -2,7 +2,7 @@
 
 import { Option, program } from "commander";
 import { LoggerCLI } from "nightingale";
-import { satisfies } from "semver";
+import { gt, satisfies } from "semver";
 import {
   autoDetectPackageManager,
   getPackageManager,
@@ -539,6 +539,11 @@ export const versionCommandAction = async (
       const isRoot = workspace === rootWorkspace;
       if (isRoot) {
         throw new Error("Unexpected root found in bumped workspaces");
+      }
+      if (gt(bumpedWorkspace.currentVersion, newVersion)) {
+        throw new UsageError(
+          `"${getWorkspaceName(workspace)}" is at ${bumpedWorkspace.currentVersion}, higher than the monorepo version ${newVersion} it would be set to.\nRemove "version" from the root package.json for independent versioning, or align the versions.`,
+        );
       }
       bumpedWorkspace.bumpType = highestBumpType;
       bumpedWorkspace.newVersion = newVersion;
