@@ -1,5 +1,6 @@
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
+import { readJSON5 } from "../../../utils/json5.js";
 import removeLegacyGeneratedDocs from "../../../utils/legacyGeneratedDocs.js";
 import * as packageUtils from "../../../utils/package.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
@@ -54,7 +55,8 @@ export default class LibDocGenerator extends Generator {
           : packageUtils.hasReact(pkg);
 
       if (inMonorepo && inMonorepo.root) {
-        const existingConfig = this.fs.readJSON(
+        const existingConfig = readJSON5(
+          this.fs,
           this.destinationPath("tsconfig.doc.json"),
           {
             typedocOptions: {},

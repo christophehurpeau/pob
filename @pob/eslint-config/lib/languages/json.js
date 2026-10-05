@@ -19,7 +19,7 @@ export default [
   // lint JSONC files
   {
     // name: "@pob/eslint-config/base/languages/json/jsonc",
-    files: ["**/*.jsonc", "**/tsconfig.json", ".vscode/*.json"],
+    files: ["**/*.jsonc", "**/tsconfig*.json", ".vscode/*.json"],
     language: "json/jsonc",
     languageOptions: {
       allowTrailingCommas: true,
