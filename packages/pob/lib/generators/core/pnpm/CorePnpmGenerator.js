@@ -109,7 +109,9 @@ export default class CorePnpmGenerator extends Generator {
           `pnpm-workspace.yaml: set allowBuilds to true or false for ${this.pendingAllowBuilds.join(", ")}`,
         );
       }
-      // pob just modified package.json: the lockfile must be allowed to update
+      // pob just modified package.json: the lockfile must be allowed to update,
+      // in particular in the automatic update GitHub Actions workflow (CI
+      // defaults to frozen lockfile)
       this.spawnSync("pnpm", ["install", "--no-frozen-lockfile"], {});
       this.spawnSync("pnpm", ["dedupe"], {});
 
