@@ -124,7 +124,20 @@ if [ -n "$(git diff HEAD@{1}..HEAD@{0} -- ${lockfile})" ]${additionalConditionIn
 fi`;
     };
 
-    writeHook("post-checkout", runInstallOnDiff());
+    // git worktree add runs post-checkout with the null-ref as previous HEAD
+    writeHook(
+      "post-checkout",
+      `
+if [ "$1" = "0000000000000000000000000000000000000000" ]; then
+  if [ -x scripts/setup-worktree.sh ]; then
+    ./scripts/setup-worktree.sh || true
+  else
+    ${installOnDiffCommand} || true
+  fi
+  exit 0
+fi
+${runInstallOnDiff()}`,
+    );
     writeHook("post-merge", runInstallOnDiff());
     writeHook("post-rewrite", runInstallOnDiff(' || [ "$1" = "rebase" ]'));
   }
