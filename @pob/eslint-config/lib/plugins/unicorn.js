@@ -17,7 +17,7 @@ export default [
       // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-abusive-eslint-disable.md
       // kept in eslint: oxlint's version reports rule names with more than one
       // slash, like n/no-unsupported-features/node-builtins, as not specifying
-      // any rule (1.85)
+      // any rule (1.85, https://github.com/oxc-project/oxc/issues/27364)
       "unicorn/no-abusive-eslint-disable": "error",
 
       // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-process-exit.md

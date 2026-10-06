@@ -119,7 +119,7 @@ Stay in eslint: `no-undef`, `unicode-bom` (see above and J2). `no-restricted-syn
   - Location differences, disable comments moved: `prefer-export-from` (oxlint reports the import, eslint the export), `prefer-top-level-await` on a promise chain (oxlint reports the start of the chain, eslint the `.catch()`).
   - Behavior differences, accepted: `prefer-module` also reports `exports`, `module`, `__dirname` in ES modules (eslint only reports declared globals; already reported by `no-undef`); `prefer-math-min-max` only reports when one side is a number literal; `prefer-array-flat` does not report `_.flatten()`.
   - Left in eslint: `prefer-add-event-listener`: no `excludedPackages` option, oxlint reports `app.onerror` of koa (excluded by default in eslint).
-  - Moved back to eslint (J2): `no-abusive-eslint-disable`: oxlint reports a directive naming a rule with more than one slash (`n/no-unsupported-features/node-builtins`) as not specifying any rule, `eslint-disable` comments of projects included (1.85, `is_valid_rule_name` accepts 2 segments, 3 when scoped; still on oxc `main`, no issue open on 2026-10-06). The directive itself is honored.
+  - Moved back to eslint (J2): `no-abusive-eslint-disable`: oxlint reports a directive naming a rule with more than one slash (`n/no-unsupported-features/node-builtins`) as not specifying any rule, `eslint-disable` comments of projects included (1.85, `is_valid_rule_name` accepts 2 segments, 3 when scoped; [oxc#27364](https://github.com/oxc-project/oxc/issues/27364)). The directive itself is honored.
 
 Stay in eslint: `no-abusive-eslint-disable` (see U1). `expiring-todo-comments`, `prefer-switch`, `prefer-json-parse-buffer`, `no-unnecessary-polyfills`, `prefer-add-event-listener` moved as JS plugins (J2).
 
