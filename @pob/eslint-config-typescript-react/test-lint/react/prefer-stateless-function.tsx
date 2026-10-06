@@ -5,7 +5,7 @@ interface FooProps {
   foo?: string;
 }
 
-/* eslint-disable-next-line react/prefer-stateless-function */ // oxlint-disable-next-line @pob/react-named-import
+// oxlint-disable-next-line react-js/prefer-stateless-function, @pob/react-named-import
 export class Foo extends React.Component<FooProps> {
   // oxlint-disable-next-line @pob/react-named-import
   render(): React.ReactNode {

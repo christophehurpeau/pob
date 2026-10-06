@@ -136,8 +136,9 @@ export default {
     "no-global-assign": "error",
 
     // https://eslint.org/docs/rules/no-implicit-globals
-    // TODO to enable
-    "no-implicit-globals": "warn",
+    // only reports in scripts: ES modules have their own scope, and node wraps
+    // CommonJS files in a function
+    "no-implicit-globals": "off",
 
     // https://eslint.org/docs/rules/no-implied-eval
     "no-implied-eval": "error",

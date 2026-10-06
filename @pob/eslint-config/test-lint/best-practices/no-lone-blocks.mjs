@@ -3,6 +3,6 @@
   const foo = bar();
 }
 
-// eslint-disable-next-line no-lone-blocks
+// oxlint-disable-next-line eslint-js/no-lone-blocks
 {
 }

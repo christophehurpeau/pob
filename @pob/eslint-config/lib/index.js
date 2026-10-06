@@ -177,6 +177,18 @@ const oxlintConfigs = [
     : []),
 ];
 
+// n/process-exit-as-throw only feeds eslint's code path analysis, used by rules
+// checked by oxlint (no-unreachable, array-callback-return, ...)
+const oxlintNodeConfigs = oxlintrc
+  ? [
+      {
+        name: "@pob/eslint-config/oxlint-node",
+        files: ["**/*.{js,cjs,mjs,ts,cts,mts,tsx}"],
+        rules: { "n/process-exit-as-throw": "off" },
+      },
+    ]
+  : [];
+
 /**
  * Removes the rules checked by oxlint from configs applied after
  * `oxlintConfigs`, like the overrides a project selects. Their oxlint
@@ -340,10 +352,10 @@ export default {
       ...oxlintConfigs,
     ],
     /** @deprecated */
-    nodeModule: [...nodeModule, ...oxlintConfigs],
+    nodeModule: [...nodeModule, ...oxlintNodeConfigs, ...oxlintConfigs],
     /** @deprecated */
-    nodeCommonjs: [...nodeCommonjs, ...oxlintConfigs],
-    node: [...nodeModule, ...oxlintConfigs],
+    nodeCommonjs: [...nodeCommonjs, ...oxlintNodeConfigs, ...oxlintConfigs],
+    node: [...nodeModule, ...oxlintNodeConfigs, ...oxlintConfigs],
 
     allowImplicitReturnType: applyTs({
       configs: withoutOxlintRules([allowImplicitReturnTypeConfig]),

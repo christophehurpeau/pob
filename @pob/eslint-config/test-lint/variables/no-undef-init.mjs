@@ -1,5 +1,5 @@
 /* oxlint-disable prefer-const */
 /* oxlint-disable no-unused-vars */
 
-// eslint-disable-next-line no-undef-init
+// oxlint-disable-next-line eslint-js/no-undef-init
 let bar = undefined;

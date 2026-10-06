@@ -1,3 +1,3 @@
 /* global window */
-// eslint-disable-next-line unicorn/prefer-add-event-listener
+// oxlint-disable-next-line unicorn-js/prefer-add-event-listener
 window.onclick = () => {};

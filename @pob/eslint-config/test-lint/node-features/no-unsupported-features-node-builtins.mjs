@@ -1,4 +1,4 @@
-// eslint-disable-next-line n/no-unsupported-features/node-builtins
+// oxlint-disable-next-line node-js/no-unsupported-features/node-builtins
 import sqlite from "node:sqlite";
 
 export function open() {

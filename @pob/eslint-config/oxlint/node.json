@@ -1,11 +1,23 @@
 {
   "plugins": ["node"],
   "jsPlugins": [
-    { "name": "@pob", "specifier": "../lib/oxlint-plugins/pob.js" }
+    { "name": "@pob", "specifier": "../lib/oxlint-plugins/pob.js" },
+    { "name": "node-js", "specifier": "../lib/oxlint-plugins/n.js" }
   ],
   "rules": {
     "@pob/forbid-non-native-node-imports": "error",
-    "node/no-exports-assign": "error"
+    "node/no-exports-assign": "error",
+    "node-js/no-deprecated-api": "error",
+    "node-js/no-unpublished-bin": "error",
+    "node-js/no-unsupported-features/es-builtins": "error",
+    "node-js/no-unsupported-features/es-syntax": [
+      "error",
+      { "ignores": ["modules"] }
+    ],
+    "node-js/no-unsupported-features/node-builtins": [
+      "error",
+      { "ignores": ["localStorage", "sessionStorage", "Storage"] }
+    ]
   },
   "overrides": [
     {
@@ -18,7 +30,11 @@
       "files": ["**/*.{cjs,cts}"],
       "rules": {
         "node/no-new-require": "error",
-        "node/no-path-concat": "error"
+        "node/no-path-concat": "error",
+        "node-js/no-unsupported-features/es-syntax": [
+          "error",
+          { "ignores": [] }
+        ]
       }
     },
     {

@@ -5,7 +5,7 @@ function doStuff() {
 export function test(foo) {
   switch (foo) {
     case 1:
-      // eslint-disable-next-line no-lone-blocks
+      // oxlint-disable-next-line eslint-js/no-lone-blocks
       {
         doStuff();
       }

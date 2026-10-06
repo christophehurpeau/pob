@@ -1,0 +1,12 @@
+{
+  "name": "test-lint-node-package",
+  "version": "1.0.0",
+  "bin": "./bin.js",
+  "files": [
+    "lib"
+  ],
+  "type": "module",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

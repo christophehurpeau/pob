@@ -325,7 +325,7 @@
   "no-func-assign": "enabled",
   "no-global-assign": "enabled",
   "no-implicit-coercion": "unset",
-  "no-implicit-globals": "enabled",
+  "no-implicit-globals": "off",
   "no-implied-eval": "enabled",
   "no-import-assign": "enabled",
   "no-inline-comments": "unset",

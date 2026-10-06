@@ -12,7 +12,10 @@ const eslintRulePrefixes = new Map([
   // JS plugins: the eslint plugins themselves, loaded by oxlint
   ["regexp", "regexp/"],
   ["@pob", "@pob/"],
-  // eslint-plugin-react, "react" is reserved for the native plugin
+  // named "<plugin>-js" when the name is reserved for a native plugin
+  ["eslint-js", ""],
+  ["unicorn-js", "unicorn/"],
+  ["node-js", "n/"],
   ["react-js", "react/"],
 ]);
 

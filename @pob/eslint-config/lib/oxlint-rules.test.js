@@ -12,6 +12,8 @@ import {
  * - enabled: in oxlint/*.json
  * - migrate: enabled in eslint, to move to oxlint (docs/oxlint-migration.md)
  * - eslint: kept in eslint
+ * - js-plugin: checked by the eslint rule run as an oxlint JS plugin, as the
+ *   oxlint rule differs (docs/oxlint-migration.md)
  * - evaluate: not used today, to evaluate (Phase 4 of the migration)
  * - rejected: not wanted
  */
@@ -31,6 +33,7 @@ const decisions = new Set([
   "enabled",
   "migrate",
   "eslint",
+  "js-plugin",
   "evaluate",
   "rejected",
 ]);

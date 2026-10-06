@@ -1,6 +1,6 @@
 /* oxlint-disable no-unreachable-loop */
 /* oxlint-disable no-labels */
-/* eslint-disable no-restricted-syntax */
+/* oxlint-disable eslint-js/no-restricted-syntax */
 const a = 0;
 
 A: while (a) {

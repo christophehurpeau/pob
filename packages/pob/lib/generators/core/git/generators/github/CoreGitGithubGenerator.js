@@ -1,4 +1,4 @@
-/* eslint-disable camelcase */
+/* oxlint-disable eslint-js/camelcase */
 
 import { spawnSync } from "node:child_process";
 import * as os from "node:os";

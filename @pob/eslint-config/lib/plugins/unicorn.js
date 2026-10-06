@@ -15,6 +15,9 @@ export default [
       "unicorn/filename-case": "off",
 
       // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-abusive-eslint-disable.md
+      // kept in eslint: oxlint's version reports rule names with more than one
+      // slash, like n/no-unsupported-features/node-builtins, as not specifying
+      // any rule (1.85)
       "unicorn/no-abusive-eslint-disable": "error",
 
       // https://github.com/sindresorhus/eslint-plugin-unicorn/blob/main/docs/rules/no-process-exit.md

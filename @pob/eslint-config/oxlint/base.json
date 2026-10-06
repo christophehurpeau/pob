@@ -5,7 +5,9 @@
   "plugins": ["import"],
   "jsPlugins": [
     { "name": "@pob", "specifier": "../lib/oxlint-plugins/pob.js" },
-    { "name": "regexp", "specifier": "../lib/oxlint-plugins/regexp.js" }
+    { "name": "regexp", "specifier": "../lib/oxlint-plugins/regexp.js" },
+    { "name": "eslint-js", "specifier": "../lib/oxlint-plugins/eslint.js" },
+    { "name": "unicorn-js", "specifier": "../lib/oxlint-plugins/unicorn.js" }
   ],
   "rules": {
     "array-callback-return": [
@@ -732,7 +734,6 @@
       }
     ],
     "unicorn/new-for-builtins": "error",
-    "unicorn/no-abusive-eslint-disable": "error",
     "unicorn/no-accessor-recursion": "error",
     "unicorn/no-array-method-this-argument": "error",
     "unicorn/no-array-reduce": [
@@ -881,6 +882,40 @@
     ],
     "unicorn/throw-new-error": "error",
     "@pob/forbid-non-native-fetch-import": "error",
+    "eslint-js/camelcase": [
+      "error",
+      {
+        "allow": [],
+        "ignoreDestructuring": false,
+        "ignoreGlobals": false,
+        "ignoreImports": false,
+        "properties": "always"
+      }
+    ],
+    "eslint-js/dot-notation": [
+      "error",
+      {
+        "allowKeywords": true,
+        "allowPattern": ""
+      }
+    ],
+    "eslint-js/no-lone-blocks": "error",
+    "eslint-js/no-restricted-syntax": [
+      "error",
+      {
+        "selector": "ForInStatement",
+        "message": "for..in loops iterate over the entire prototype chain, which is virtually never what you want. Use Object.{keys,values,entries}, and iterate over the resulting array."
+      },
+      {
+        "selector": "LabeledStatement",
+        "message": "Labels are a form of GOTO; using them makes code confusing and hard to maintain and understand."
+      },
+      {
+        "selector": "WithStatement",
+        "message": "`with` is disallowed in strict mode because it makes code impossible to predict and optimize."
+      }
+    ],
+    "eslint-js/no-undef-init": "error",
     "regexp/confusing-quantifier": "warn",
     "regexp/control-character-escape": "error",
     "regexp/match-any": "error",
@@ -941,6 +976,31 @@
     "regexp/sort-flags": "error",
     "regexp/strict": "error",
     "regexp/use-ignore-case": "error",
+    "unicorn-js/expiring-todo-comments": [
+      "error",
+      {
+        "terms": ["todo", "fixme", "xxx"],
+        "ignore": [],
+        "ignoreDates": false,
+        "ignoreDatesOnPullRequests": true,
+        "allowWarningComments": true
+      }
+    ],
+    "unicorn-js/no-unnecessary-polyfills": "error",
+    "unicorn-js/prefer-add-event-listener": [
+      "error",
+      {
+        "excludedPackages": ["koa", "sax"]
+      }
+    ],
+    "unicorn-js/prefer-json-parse-buffer": "error",
+    "unicorn-js/prefer-switch": [
+      "error",
+      {
+        "minimumCases": 3,
+        "emptyDefaultCase": "no-default-comment"
+      }
+    ],
     "use-isnan": [
       "error",
       {
@@ -1004,6 +1064,7 @@
         "no-with": "off",
         "prefer-promise-reject-errors": "off",
         "require-await": "off",
+        "eslint-js/dot-notation": "off",
         "import/named": "off",
         "import/no-anonymous-default-export": [
           "error",

@@ -141,7 +141,8 @@ export default [
       "react/no-unstable-nested-components": "error",
 
       // https://github.com/yannickcr/eslint-plugin-react/blob/8785c169c25b09b33c95655bf508cf46263bc53f/docs/rules/prefer-exact-props.md
-      "react/prefer-exact-props": "error",
+      // only checks propTypes and Flow types, not TypeScript types
+      "react/prefer-exact-props": "off",
 
       // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/prefer-es6-class.md
       "react/prefer-es6-class": ["error", "always"],
@@ -194,15 +195,9 @@ export default [
         },
       ],
 
-      // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/jsx-sort-props.md
-      "react/sort-prop-types": [
-        "error",
-        {
-          noSortAlphabetically: true,
-          requiredFirst: false,
-          callbacksLast: true,
-        },
-      ],
+      // https://github.com/yannickcr/eslint-plugin-react/blob/master/docs/rules/sort-prop-types.md
+      // only checks propTypes, not TypeScript types
+      "react/sort-prop-types": "off",
     },
   },
 ];

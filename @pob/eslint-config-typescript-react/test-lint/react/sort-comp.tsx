@@ -1,7 +1,7 @@
 import { Component, type ReactNode } from "react";
 
 export class C extends Component {
-  // eslint-disable-next-line react/sort-comp
+  // oxlint-disable-next-line react-js/sort-comp
   render(): ReactNode {
     return <div />;
   }

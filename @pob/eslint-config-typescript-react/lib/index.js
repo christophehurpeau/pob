@@ -47,11 +47,27 @@ const enableImportExtensions =
 
 // turns off the rules of react.json, and those of @pob/eslint-config again as
 // the react configs re-enable import-x/extensions
-const oxlintReactConfigs = createOxlintConfigs([
+const oxlintTurnOffConfigs = createOxlintConfigs([
   oxlintReactConfig,
   ...(oxlintReactNative ? [oxlintReactNativeConfig] : []),
   ...(oxlintReactNativeWeb ? [oxlintReactNativeWebConfig] : []),
 ]);
+/** @type {import("eslint").Linter.Config[]} */
+const oxlintReactConfigs =
+  oxlintTurnOffConfigs.length > 0
+    ? [
+        ...oxlintTurnOffConfigs,
+        {
+          name: "@pob/eslint-config-typescript-react/oxlint",
+          files: [`**/*.${tsExtensions}`],
+          rules: {
+            // only marks JSX variables as used for no-unused-vars, checked by
+            // oxlint
+            "react/jsx-uses-vars": "off",
+          },
+        },
+      ]
+    : [];
 
 /**
  * @param {import("typescript-eslint").ConfigArray} base

@@ -1,6 +1,6 @@
 const foo = {};
 
-/* eslint-disable-next-line no-restricted-syntax */ // oxlint-disable-next-line guard-for-in
+// oxlint-disable-next-line eslint-js/no-restricted-syntax, guard-for-in
 for (const key in foo) {
   console.log(key, foo[key]);
 }

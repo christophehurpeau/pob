@@ -9,7 +9,7 @@ const users = {
 };
 
 // not what you'd expect
-/* eslint-disable-next-line no-restricted-syntax */ // oxlint-disable-next-line guard-for-in
+// oxlint-disable-next-line eslint-js/no-restricted-syntax, guard-for-in
 for (const id in users) {
   console.log(id); // "123", "456", "extra"
 }
