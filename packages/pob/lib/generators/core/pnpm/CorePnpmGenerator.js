@@ -109,7 +109,8 @@ export default class CorePnpmGenerator extends Generator {
           `pnpm-workspace.yaml: set allowBuilds to true or false for ${this.pendingAllowBuilds.join(", ")}`,
         );
       }
-      this.spawnSync("pnpm", ["install"], {});
+      // pob just modified package.json: the lockfile must be allowed to update
+      this.spawnSync("pnpm", ["install", "--no-frozen-lockfile"], {});
       this.spawnSync("pnpm", ["dedupe"], {});
 
       this.fs.delete("package-lock.json");
