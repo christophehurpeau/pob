@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.12.0](https://github.com/christophehurpeau/pob/compare/@pob/root@27.11.0...@pob/root@27.12.0) (2026-10-06)
+
+### Features
+
+* update to pnpm 12 ([#2832](https://github.com/christophehurpeau/pob/issues/2832))
+
+### Bug Fixes
+
+* **root:** skip tsc in lint-staged without root tsconfig.json
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [27.11.0](https://github.com/christophehurpeau/pob/compare/@pob/root@27.10.0...@pob/root@27.11.0) (2026-09-28)
 
 Version bump for dependency: @pob/version

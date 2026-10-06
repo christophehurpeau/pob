@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.11.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config@67.10.0...@pob/eslint-config@67.11.0) (2026-10-06)
+
+### Features
+
+* **eslint-config:** enable "jsx-no-leaked-render" rule and add js plugin for react
+* **eslint-config:** move remaining rules to oxlint js plugins
+* **pob:** mark fully generated files with a do-not-edit header
+
+### Bug Fixes
+
+* **eslint-config:** turn off every type-aware rule when oxlint runs them
+
+Version bump for dependency: @pob/eslint-plugin
+
+
 ## [67.10.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config@67.9.0...@pob/eslint-config@67.10.0) (2026-09-28)
 
 ### Features

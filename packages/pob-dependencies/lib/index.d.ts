@@ -6,9 +6,9 @@ interface Dependencies {
   "@pob/pretty-pkg": "workspace:*";
   "@pob/rollup-esbuild": "workspace:*";
   "@pob/rollup-typescript": "workspace:*";
-  "@types/node": "24.13.3";
+  "@types/node": "24.19.1";
   "@typescript/native": "npm:typescript@7.0.2";
-  "@vitest/coverage-v8": "4.1.10";
+  "@vitest/coverage-v8": "4.1.11";
   "alp-rollup-plugin-config": "4.1.1";
   eslint: "10.8.1";
   pinst: "3.0.0";
@@ -19,7 +19,7 @@ interface Dependencies {
   typedoc: "0.28.20";
   typescript: "npm:@typescript/typescript6@6.0.2";
   vite: "8.2.1";
-  vitest: "4.1.10";
+  vitest: "4.1.11";
 }
 
 declare const dependencies: Dependencies;

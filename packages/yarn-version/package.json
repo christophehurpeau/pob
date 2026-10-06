@@ -1,6 +1,6 @@
 {
   "name": "yarn-version",
-  "version": "13.4.0",
+  "version": "13.5.0",
   "description": "yarn berry versioning using conventional commits",
   "keywords": [
     "conventional-commits",

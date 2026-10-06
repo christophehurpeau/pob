@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.5.0](https://github.com/christophehurpeau/pob/compare/@pob/version@6.4.0...@pob/version@6.5.0) (2026-10-06)
+
+### Features
+
+* **eslint-config:** move remaining rules to oxlint js plugins
+
+### Bug Fixes
+
+* **version:** refuse to downgrade a workspace in a fixed-version monorepo, closes [#2831](https://github.com/christophehurpeau/pob/issues/2831)
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [6.4.0](https://github.com/christophehurpeau/pob/compare/@pob/version@6.3.0...@pob/version@6.4.0) (2026-09-28)
 
 ### Features

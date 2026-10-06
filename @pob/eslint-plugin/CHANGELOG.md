@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.5.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-plugin@66.4.0...@pob/eslint-plugin@66.5.0) (2026-10-06)
+
+### Features
+
+* **eslint-config:** move remaining rules to oxlint js plugins
+
 ## [66.4.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-plugin@66.3.0...@pob/eslint-plugin@66.4.0) (2026-09-28)
 
 ### Features

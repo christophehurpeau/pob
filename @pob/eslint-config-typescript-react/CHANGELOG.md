@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.11.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config-typescript-react@67.10.0...@pob/eslint-config-typescript-react@67.11.0) (2026-10-06)
+
+### Features
+
+* **eslint-config:** add rule "jsx-no-leaked-render" and corresponding test
+* **eslint-config:** enable "jsx-no-leaked-render" rule and add js plugin for react
+* **eslint-config:** move remaining rules to oxlint js plugins
+
+### Bug Fixes
+
+* **eslint-config-typescript-react:** avoid contradicting import extensions and set react version
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-plugin
+
+
 ## [67.10.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config-typescript-react@67.9.0...@pob/eslint-config-typescript-react@67.10.0) (2026-09-28)
 
 ### Features

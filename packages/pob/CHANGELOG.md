@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [38.12.0](https://github.com/christophehurpeau/pob/compare/pob@38.11.0...pob@38.12.0) (2026-10-06)
+
+### Features
+
+* **eslint-config:** move remaining rules to oxlint js plugins
+* **pob:** mark fully generated files with a do-not-edit header
+* update to pnpm 12 ([#2832](https://github.com/christophehurpeau/pob/issues/2832))
+
+### Bug Fixes
+
+* **eslint-config:** turn off every type-aware rule when oxlint runs them
+* **pob:** fix new project setup and monorepo package generation
+* **pob:** run pnpm install with --no-frozen-lockfile ([#2834](https://github.com/christophehurpeau/pob/issues/2834))
+* **workspaceUtils:** add check for existing package.json in discoverWorkspaces
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [38.11.0](https://github.com/christophehurpeau/pob/compare/pob@38.10.0...pob@38.11.0) (2026-09-28)
 
 ### Features

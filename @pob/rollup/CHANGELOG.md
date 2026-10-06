@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.3.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup@8.2.0...@pob/rollup@8.3.0) (2026-10-06)
+
+### Features
+
+* **rollup-esbuild:** bundle workspace dependencies published as typescript sources
+
 ## [8.2.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup@8.1.3...@pob/rollup@8.2.0) (2026-09-27)
 
 ### Features

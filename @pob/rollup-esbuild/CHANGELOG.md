@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.2.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@10.1.0...@pob/rollup-esbuild@10.2.0) (2026-10-06)
+
+### Features
+
+* **rollup-esbuild:** bundle workspace dependencies published as typescript sources
+
+Version bump for dependency: @pob/rollup
+
+
 ## [10.1.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@10.0.1...@pob/rollup-esbuild@10.1.0) (2026-09-27)
 
 ### Features
