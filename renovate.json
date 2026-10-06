@@ -6,6 +6,21 @@
   "postUpdateOptions": ["yarnDedupeFewer", "yarnDedupeHighest", "pnpmDedupe"],
   "labels": [":vertical_traffic_light: automerge"],
   "rangeStrategy": "bump",
+  "customManagers": [
+    {
+      "customType": "regex",
+      "description": "pnpm version in generated github workflows",
+      "managerFilePatterns": [
+        "/^packages/pob/lib/generators/.+\\.yml\\.ejs$/",
+        "/^@pob/root/bin/postinstall/packageManagerHelpers\\.js$/"
+      ],
+      "matchStrings": [
+        "pnpm/action-setup@v\\d+\\s+with:\\s+version: (?<currentValue>[^\\s`]+)"
+      ],
+      "depNameTemplate": "pnpm",
+      "datasourceTemplate": "npm"
+    }
+  ],
   "packageRules": [
     {
       "semanticCommitType": "chore",
@@ -91,6 +106,12 @@
       ],
       "dependencyDashboardApproval": false,
       "reviewers": ["christophehurpeau"]
+    },
+    {
+      "groupName": "pnpm",
+      "matchPackageNames": ["pnpm"],
+      "rangeStrategy": "replace",
+      "semanticCommitType": "feat"
     }
   ]
 }
