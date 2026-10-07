@@ -1,11 +1,11 @@
 import sortObject from "@pob/sort-object";
 import { FAILSAFE_SCHEMA, dump, loadAll } from "js-yaml";
-import { lt } from "semver";
 import Generator from "yeoman-generator";
 import { writeAndFormat } from "../../../utils/writeAndFormat.js";
 
 const minimumReleaseAgeExcludePackages = [
   "@pob/*",
+  "pob",
   "pob-dependencies",
   "check-package-dependencies",
   "alouette",
@@ -38,13 +38,18 @@ export default class CorePnpmGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
     if (this.options.enable) {
-      if (
-        pkg.packageManager &&
-        (!pkg.packageManager.startsWith("pnpm@") ||
-          lt(pkg.packageManager.slice("pnpm@".length), "12.0.0"))
-      ) {
-        delete pkg.packageManager;
-      }
+      // devEngines.packageManager replaces packageManager: pnpm switches to
+      // this version on startup (including when pnpm install is run by pob
+      // with an older pnpm), and pnpm/action-setup reads it.
+      delete pkg.packageManager;
+      pkg.devEngines = {
+        ...pkg.devEngines,
+        packageManager: {
+          name: "pnpm",
+          version: "^12.0.0",
+          onFail: "download",
+        },
+      };
 
       const configString = this.fs.read(
         this.destinationPath("pnpm-workspace.yaml"),
@@ -94,6 +99,10 @@ export default class CorePnpmGenerator extends Generator {
     } else {
       if (pkg.packageManager?.startsWith("pnpm@")) {
         delete pkg.packageManager;
+      }
+      if (pkg.devEngines?.packageManager?.name === "pnpm") {
+        delete pkg.devEngines.packageManager;
+        if (Object.keys(pkg.devEngines).length === 0) delete pkg.devEngines;
       }
       this.fs.delete("pnpm-lock.yaml");
       this.fs.delete("pnpm-workspace.yaml");

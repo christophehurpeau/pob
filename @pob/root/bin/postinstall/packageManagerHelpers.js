@@ -4,6 +4,7 @@ export const getPackageManagerCommands = (pm, isYarnBerry) => {
       lockfile: "yarn.lock",
       pmRun: "yarn run",
       pmExec: "yarn",
+      pmDlx: "npx",
       ciPreStep: `name: Enable Corepack
         run: corepack enable`,
       installOnCICommand: "yarn install --immutable",
@@ -34,6 +35,7 @@ export const getPackageManagerCommands = (pm, isYarnBerry) => {
       lockfile: "package-lock.json",
       pmRun: "npm run",
       pmExec: "npx --no-install",
+      pmDlx: "npx",
       ciPreStep: "",
       installOnCICommand: "npm i",
       installMutableCommand: "npm i",
@@ -45,6 +47,7 @@ export const getPackageManagerCommands = (pm, isYarnBerry) => {
       lockfile: "bun.lock",
       pmRun: "bun run",
       pmExec: "bun run",
+      pmDlx: "npx",
       ciPreStep: `name: Install bun
         uses: oven-sh/setup-bun@v2`,
       installOnCICommand: "bun i --frozen-lockfile",
@@ -57,10 +60,12 @@ export const getPackageManagerCommands = (pm, isYarnBerry) => {
       lockfile: "pnpm-lock.yaml",
       pmRun: "pnpm run",
       pmExec: "pnpm exec",
+      // npx fails when devEngines.packageManager is pnpm.
+      // minimumReleaseAge disabled to get the latest version, like npx.
+      pmDlx: "pnpm --config.minimum-release-age=0 dlx",
+      // the version is read from devEngines.packageManager in package.json
       ciPreStep: `name: Install pnpm
-        uses: pnpm/action-setup@v6
-        with:
-          version: 12`,
+        uses: pnpm/action-setup@v6`,
       installOnCICommand: "pnpm install --frozen-lockfile",
       installMutableCommand: "pnpm install",
       installOnDiffCommand: "pnpm install --frozen-lockfile",

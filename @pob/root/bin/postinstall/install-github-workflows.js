@@ -26,7 +26,14 @@ const ensureWorkflowUninstalled = (workflowName) => {
 
 const installWorkflow = (
   workflowName,
-  { pmRun, pmExec, installOnCICommand, installMutableCommand, ciPreStep },
+  {
+    pmRun,
+    pmExec,
+    pmDlx,
+    installOnCICommand,
+    installMutableCommand,
+    ciPreStep,
+  },
   condition = true,
 ) => {
   if (condition) {
@@ -42,6 +49,7 @@ const installWorkflow = (
         )
         .replaceAll("$pmRun$", pmRun)
         .replaceAll("$pmExec$", pmExec)
+        .replaceAll("$pmDlx$", pmDlx)
         .replaceAll("$ciPreStep$", ciPreStep)
         .replaceAll("$installOnCICommand$", installOnCICommand)
         .replaceAll("$installMutableCommand$", installMutableCommand),
