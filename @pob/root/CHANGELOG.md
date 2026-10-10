@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.15.0](https://github.com/christophehurpeau/pob/compare/@pob/root@27.14.0...@pob/root@27.15.0) (2026-10-10)
+
+### Features
+
+* **root:** set up new git worktrees in post-checkout hook ([#2835](https://github.com/christophehurpeau/pob/issues/2835))
+
+### Bug Fixes
+
+* read pnpm version from devEngines instead of workflows ([#2838](https://github.com/christophehurpeau/pob/issues/2838))
+
 ## [27.14.0](https://github.com/christophehurpeau/pob/compare/@pob/root@27.13.0...@pob/root@27.14.0) (2026-10-10)
 
 ### Features

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [39.1.0](https://github.com/christophehurpeau/pob/compare/pob@39.0.0...pob@39.1.0) (2026-10-10)
+
+### Bug Fixes
+
+* read pnpm version from devEngines instead of workflows ([#2838](https://github.com/christophehurpeau/pob/issues/2838))
+
+Version bump for dependency: @pob/root
+
+
 ## [39.0.0](https://github.com/christophehurpeau/pob/compare/pob@38.13.0...pob@39.0.0) (2026-10-10)
 
 ### ⚠ BREAKING CHANGES
