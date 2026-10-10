@@ -1,6 +1,6 @@
 {
   "name": "@pob/version",
-  "version": "6.5.0",
+  "version": "6.5.1",
   "description": "simple versioning using conventional commits",
   "keywords": [
     "bun",
@@ -68,7 +68,7 @@
     "@types/node": "24.19.1",
     "@types/semver": "7.8.0",
     "@typescript/native": "npm:typescript@7.0.2",
-    "type-fest": "5.8.0",
+    "type-fest": "5.10.0",
     "typescript": "npm:@typescript/typescript6@6.0.2"
   },
   "engines": {

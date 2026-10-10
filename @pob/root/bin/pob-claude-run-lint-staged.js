@@ -25,6 +25,14 @@ const cwd = input.cwd;
 if (!file || !cwd) process.exit(0);
 
 const relFile = path.relative(cwd, file);
+// Ignore files outside the project (e.g. ~/.claude, other repos).
+if (
+  relFile === ".." ||
+  relFile.startsWith(`..${path.sep}`) ||
+  path.isAbsolute(relFile)
+) {
+  process.exit(0);
+}
 
 // chdir before importing the config so path.resolve("package.json") and
 // whichPmRuns()'s lockfile detection both resolve against the project root.

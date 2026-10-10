@@ -6,6 +6,7 @@ import {
   workspacesRunExcluding,
   workspacesRunTopological,
 } from "../../../utils/packageManagerWorkspacesUtils.js";
+import { extractMonorepoReadmeContent } from "../../../utils/readmeContent.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
 export default class MonorepoWorkspacesGenerator extends Generator {
@@ -163,19 +164,7 @@ export default class MonorepoWorkspacesGenerator extends Generator {
 
     if (this.fs.exists(readmePath)) {
       const readmeFullContent = this.fs.read(readmePath);
-      // oxlint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
-      content = readmeFullContent.match(/^<h1 align="center"[^#*]+([^]+)$/);
-      if (!content) {
-        // oxlint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
-        content = readmeFullContent.match(/^<h3 align="center"[^#*]+([^]+)$/);
-      }
-      if (!content) {
-        // oxlint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
-        content = readmeFullContent.match(/^<h3[^#*]+([^]+)$/);
-      }
-      // oxlint-disable-next-line regexp/no-super-linear-backtracking, regexp/match-any
-      if (!content) content = readmeFullContent.match(/^#[^#*]+([^]+)$/);
-      content = content ? content[1].trim() : readmeFullContent;
+      content = extractMonorepoReadmeContent(readmeFullContent);
     }
 
     return copyAndFormatTpl(
@@ -183,7 +172,7 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       this.templatePath("README.md.ejs"),
       readmePath,
       {
-        title: pkg.description,
+        title: pkg.description || pkg.name.replace(/-monorepo$/, ""),
         description: "",
         packages: this.packages,
         ci: this.fs.exists(this.destinationPath(".github/workflows/push.yml")),

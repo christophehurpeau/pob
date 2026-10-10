@@ -267,6 +267,7 @@ export default class PobAppGenerator extends Generator {
       updateOnly: this.options.updateOnly,
       resolveJsonModule: true,
       onlyLatestLTS: true,
+      packageManager: this.options.packageManager,
       enableHashSlash,
       plugins: (() => {
         if (this.appConfig.type === "next.js") {

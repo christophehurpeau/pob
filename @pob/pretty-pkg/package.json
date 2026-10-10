@@ -1,6 +1,6 @@
 {
   "name": "@pob/pretty-pkg",
-  "version": "14.3.0",
+  "version": "14.4.0",
   "description": "prettier and sort package.json",
   "keywords": [],
   "homepage": "https://github.com/christophehurpeau/pob",
@@ -36,7 +36,7 @@
     "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/pretty-pkg'"
   },
   "dependencies": {
-    "oxfmt": "0.54.0"
+    "oxfmt": "0.72.0"
   },
   "engines": {
     "node": ">=22.18.0"

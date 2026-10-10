@@ -3,6 +3,46 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [39.0.0](https://github.com/christophehurpeau/pob/compare/pob@38.13.0...pob@39.0.0) (2026-10-10)
+
+### ⚠ BREAKING CHANGES
+
+* **pob:** update yeoman-generator to v10 and require node 24 (#2846)
+
+### Features
+
+* **deps:** update dependency oxfmt to v0.72.0 ([#2801](https://github.com/christophehurpeau/pob/issues/2801))
+* **pob:** update yeoman-generator to v10 and require node 24 ([#2846](https://github.com/christophehurpeau/pob/issues/2846))
+
+### Bug Fixes
+
+* **pob:** fall back to package name for monorepo readme title
+* **pob:** keep readme body placed right after the generated header
+* **pob:** remove duplicate entry in bunfig minimumReleaseAgeExcludes
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
+## [38.13.0](https://github.com/christophehurpeau/pob/compare/pob@38.12.0...pob@38.13.0) (2026-10-10)
+
+### Features
+
+* **pob:** add force input to release workflow
+* **pob:** make bump-dependents-highest-as release input required
+* **pob:** publish with provenance in bun release workflow
+* **pob:** publish with provenance in yarn and pnpm release workflows
+* **pob:** use bun tsconfig target when package manager is bun
+
+### Bug Fixes
+
+* **pob:** remove double space in release workflow command
+
+Version bump for dependency: @pob/root
+
+
 ## [38.12.0](https://github.com/christophehurpeau/pob/compare/pob@38.11.0...pob@38.12.0) (2026-10-06)
 
 ### Features

@@ -15,15 +15,25 @@ on:
         default: false
 <% if (isMonorepo && isMonorepoIndependent) { -%>
       bump-dependents-highest-as:
-        description: "Bump dependents highest as"
-        required: false
+        description: "Bump dependents highest version as"
+        required: true
         type: choice
         options:
           - major
           - minor
           - patch
-        default: "major"
+        default: major
 <% } -%>
+      force:
+        description: "Force bump all packages, even without changes"
+        required: true
+        type: choice
+        options:
+          - none
+          - major
+          - minor
+          - patch
+        default: none
 
 permissions:
   id-token: write # Required for OIDC
@@ -90,7 +100,7 @@ jobs:
 
       - name: New version (dry run)
         if: github.ref == 'refs/heads/main' && inputs.dry-run
-        run: <%= packageManagerExec(packageManager, 'pob-version') %> --dry-run<% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %>
+        run: <%= packageManagerExec(packageManager, 'pob-version') %> --dry-run<% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %> ${{ inputs.force != 'none' && format('--force={0}', inputs.force) || '' }}
 
       - name: Configure Git user
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
@@ -101,7 +111,7 @@ jobs:
       - name: New version
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
-          <%= packageManagerExec(packageManager, 'pob-version') %> <% if (enablePublish && packageManager === "bun") { %>--publish <% } %>--create-release=github <% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %> -m 'chore: release <%- isMonorepoIndependent ? '' : '%v ' %>[skip ci]<%- isMonorepoIndependent ? '\\n\\n%t' : '' %>'
+          <%= packageManagerExec(packageManager, 'pob-version') %> <% if (enablePublish && packageManager === "bun") { %>--publish --publish-provenance <% } %>--create-release=github<% if (isMonorepo && isMonorepoIndependent) { %> --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}<% } %> ${{ inputs.force != 'none' && format('--force={0}', inputs.force) || '' }} -m 'chore: release <%- isMonorepoIndependent ? '' : '%v ' %>[skip ci]<%- isMonorepoIndependent ? '\\n\\n%t' : '' %>'
         env:
           POB_GIT_HOOKS: 0
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
@@ -113,15 +123,15 @@ jobs:
         run: |
 <% if (packageManager === 'yarn') { -%>
 <% if (isMonorepo) { -%>
-          yarn workspaces foreach --all --parallel --no-private npm publish --tolerate-republish
+          yarn workspaces foreach --all --parallel --no-private npm publish --tolerate-republish --provenance
 <% } else { -%>
-          yarn npm publish
+          yarn npm publish --provenance
 <% } -%>
 <% } else if (packageManager === 'pnpm') { -%>
 <% if (isMonorepo) { -%>
-          pnpm -r publish --no-git-checks
+          pnpm -r publish --no-git-checks --provenance
 <% } else { -%>
-          pnpm publish --no-git-checks
+          pnpm publish --no-git-checks --provenance
 <% } -%>
 <% } -%>
 <% } -%>

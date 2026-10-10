@@ -13,14 +13,24 @@ on:
         type: boolean
         default: false
       bump-dependents-highest-as:
-        description: "Bump dependents highest as"
-        required: false
+        description: "Bump dependents highest version as"
+        required: true
         type: choice
         options:
           - major
           - minor
           - patch
-        default: "major"
+        default: major
+      force:
+        description: "Force bump all packages, even without changes"
+        required: true
+        type: choice
+        options:
+          - none
+          - major
+          - minor
+          - patch
+        default: none
 
 permissions:
   id-token: write # Required for OIDC
@@ -60,7 +70,7 @@ jobs:
 
       - name: New version (dry run)
         if: github.ref == 'refs/heads/main' && inputs.dry-run
-        run: pnpm exec pob-version --dry-run --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }}
+        run: pnpm exec pob-version --dry-run --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }} ${{ inputs.force != 'none' && format('--force={0}', inputs.force) || '' }}
 
       - name: Configure Git user
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
@@ -71,7 +81,7 @@ jobs:
       - name: New version
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
-          pnpm exec pob-version --create-release=github  --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }} -m 'chore: release [skip ci]\n\n%t'
+          pnpm exec pob-version --create-release=github --bump-dependents-highest-as=${{ inputs.bump-dependents-highest-as }} ${{ inputs.force != 'none' && format('--force={0}', inputs.force) || '' }} -m 'chore: release [skip ci]\n\n%t'
         env:
           POB_GIT_HOOKS: 0
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
@@ -80,4 +90,4 @@ jobs:
       - name: Publish to npm
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
-          pnpm -r publish --no-git-checks
+          pnpm -r publish --no-git-checks --provenance

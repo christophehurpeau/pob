@@ -31,6 +31,7 @@ export const testOverrideConfigsWithTypescript = [
       "@typescript-eslint/no-floating-promises": [
         "error",
         {
+          ignoreVoid: false,
           allowForKnownSafeCalls: [
             {
               from: "package",

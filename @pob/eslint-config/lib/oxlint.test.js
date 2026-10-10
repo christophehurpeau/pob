@@ -153,9 +153,25 @@ describe("oxlint/typescript.json", () => {
     ).toEqual([{ line: 1, rule: "typescript(no-floating-promises)" }]);
   });
 
+  // the test files override replaces the options
+  it.each(["file.ts", "file.test.ts"])(
+    "reports promises ignored with void in %s",
+    async (fileName) => {
+      const diagnostics = await lint(
+        project.cwd,
+        "void Promise.resolve();\nexport {};\n",
+        fileName,
+      );
+      await rm(path.join(project.cwd, fileName));
+      expect(summarize(diagnostics)).toEqual([
+        { line: 1, rule: "eslint(no-void)" },
+        { line: 1, rule: "typescript(no-floating-promises)" },
+      ]);
+    },
+  );
+
   // oxlint applies type-aware rules to the .js files of a TypeScript project
   it("scopes rules to TypeScript files", async () => {
-    await rm(path.join(project.cwd, "file.ts"));
     expect(await lint(project.cwd, floatingPromise, "file.js")).toEqual([]);
   });
 });

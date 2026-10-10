@@ -1,9 +1,8 @@
-/* oxlint-disable regexp/match-any */
-/* oxlint-disable regexp/no-super-linear-backtracking */
 import camelCase from "lodash.camelcase";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import * as packageUtils from "../../../utils/package.js";
+import { extractLibReadmeContent } from "../../../utils/readmeContent.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
 export default class LibReadmeGenerator extends Generator {
@@ -49,39 +48,7 @@ export default class LibReadmeGenerator extends Generator {
 
     if (this.fs.exists(readmePath)) {
       const readmeFullContent = this.fs.read(readmePath);
-      content = readmeFullContent.match(
-        /^<h1 align="center"[^#*]+([^]+)\[npm-image\]:/,
-      );
-      if (!content) {
-        content = readmeFullContent.match(
-          /^<h1 align="center"[^#*]+([^]+)\[daviddm-image\]:/,
-        );
-      }
-      if (!content) {
-        content = readmeFullContent.match(
-          /^<h3 align="center"[^#*]+([^]+)\[npm-image\]:/,
-        );
-      }
-      if (!content) {
-        content = readmeFullContent.match(
-          /^<h3 align="center"[^#*]+([^]+)\[daviddm-image\]:/,
-        );
-      }
-      if (!content) {
-        content = readmeFullContent.match(/^<h1 align="center"[^#*]+([^]+)$/);
-      }
-      if (!content) {
-        content = readmeFullContent.match(/^<h3 align="center"[^#*]+([^]+)$/);
-      }
-      if (!content) content = readmeFullContent.match(/^<h3[^#*]+([^]+)$/);
-      if (!content) {
-        content = readmeFullContent.match(/^#[^#*]+([^]+)\[npm-image\]:/);
-      }
-      if (!content) {
-        content = readmeFullContent.match(/^#[^#*]+([^]+)\[daviddm-image\]:/);
-      }
-      if (!content) content = readmeFullContent.match(/^#[^#*]+([^]+)$/);
-      content = content ? content[1].trim() : readmeFullContent;
+      content = extractLibReadmeContent(readmeFullContent);
     }
 
     const author = packageUtils.parsePkgAuthor(pkg);

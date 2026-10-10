@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.12.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config-typescript-react@67.11.0...@pob/eslint-config-typescript-react@67.12.0) (2026-10-10)
+
+### Features
+
+* **deps:** update dependency oxfmt to v0.72.0 ([#2801](https://github.com/christophehurpeau/pob/issues/2801))
+
+Version bump for dependency: @pob/eslint-config
+
+
 ## [67.11.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config-typescript-react@67.10.0...@pob/eslint-config-typescript-react@67.11.0) (2026-10-06)
 
 ### Features
