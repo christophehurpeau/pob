@@ -15,14 +15,14 @@ on:
         default: false
 <% if (isMonorepo && isMonorepoIndependent) { -%>
       bump-dependents-highest-as:
-        description: "Bump dependents highest as"
-        required: false
+        description: "Bump dependents highest version as"
+        required: true
         type: choice
         options:
           - major
           - minor
           - patch
-        default: "major"
+        default: major
 <% } -%>
       force:
         description: "Force bump all packages, even without changes"
