@@ -143,14 +143,14 @@ export default class PobBaseGenerator extends Generator {
     this.config.set("project", this.projectConfig);
   }
 
-  getPackageManager() {
+  #getPackageManager() {
     return inMonorepo && !inMonorepo.root
       ? inMonorepo.rootPackageManager
       : (this.projectConfig?.packageManager ?? "yarn");
   }
 
   default() {
-    const packageManager = this.getPackageManager();
+    const packageManager = this.#getPackageManager();
 
     this.composeWith("pob:core:bun", {
       type: this.projectConfig.type,
@@ -298,7 +298,7 @@ export default class PobBaseGenerator extends Generator {
   install() {
     if (this.options.fromPob) return;
 
-    switch (this.getPackageManager()) {
+    switch (this.#getPackageManager()) {
       case "npm":
         this.spawnSync("npm", ["install"]);
         break;
