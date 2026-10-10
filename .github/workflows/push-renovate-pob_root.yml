@@ -35,7 +35,7 @@ jobs:
         run: pnpm exec pob-root-postinstall
 
       - name: Run pob update
-        run: pnpm --config.minimum-release-age=0 dlx pob update --force
+        run: pnpm dlx pob update --force
         env:
           YARN_ENABLE_IMMUTABLE_INSTALLS: false
 

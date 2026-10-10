@@ -61,8 +61,7 @@ export const getPackageManagerCommands = (pm, isYarnBerry) => {
       pmRun: "pnpm run",
       pmExec: "pnpm exec",
       // npx fails when devEngines.packageManager is pnpm.
-      // minimumReleaseAge disabled to get the latest version, like npx.
-      pmDlx: "pnpm --config.minimum-release-age=0 dlx",
+      pmDlx: "pnpm dlx",
       // the version is read from devEngines.packageManager in package.json
       ciPreStep: `name: Install pnpm
         uses: pnpm/action-setup@v6`,
