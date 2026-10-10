@@ -7,16 +7,9 @@
       "label": "git: main",
       "type": "shell",
       "command": "git main",
-      "group": {
-        "kind": "none"
-      },
-      "options": {
-        "cwd": "${workspaceFolder}"
-      },
-      "presentation": {
-        "close": true,
-        "panel": "dedicated"
-      },
+      "group": { "kind": "none" },
+      "options": { "cwd": "${workspaceFolder}" },
+      "presentation": { "close": true, "panel": "dedicated" },
       "problemMatcher": []
     },
     {
@@ -81,7 +74,7 @@
     {
       "label": "lint",
       "group": "test",
-      "dependsOn": ["lint:eslint", "tsc"]
+      "dependsOn": ["lint:eslint", "lint:oxlint", "tsc"]
     },
     {
       "label": "lint:eslint",
@@ -92,6 +85,19 @@
       "presentation": {
         "close": true,
         "revealProblems": "onProblem",
+        "panel": "dedicated",
+        "group": "test",
+        "clear": true,
+        "isBackground": false
+      }
+    },
+    {
+      "label": "lint:oxlint",
+      "problemMatcher": [],
+      "type": "npm",
+      "script": "lint:oxlint",
+      "group": "test",
+      "presentation": {
         "panel": "dedicated",
         "group": "test",
         "clear": true,
@@ -136,12 +142,23 @@
       }
     },
     {
+      "label": "test:coverage:generate",
+      "problemMatcher": [],
+      "type": "npm",
+      "script": "test:coverage:generate",
+      "group": "test",
+      "presentation": {
+        "panel": "dedicated",
+        "group": "test",
+        "clear": true,
+        "isBackground": false
+      }
+    },
+    {
       "label": "test:watch",
       "problemMatcher": {
         "owner": "vitest-watch",
-        "pattern": {
-          "regexp": ".*"
-        },
+        "pattern": { "regexp": ".*" },
         "background": {
           "activeOnStart": true,
           "beginsPattern": "RERUN",
