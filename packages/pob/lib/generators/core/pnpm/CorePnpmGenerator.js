@@ -1,7 +1,44 @@
+import { execFileSync } from "node:child_process";
 import sortObject from "@pob/sort-object";
-import { FAILSAFE_SCHEMA, dump, loadAll } from "js-yaml";
+import { FAILSAFE_SCHEMA, dump, load, loadAll } from "js-yaml";
+import { satisfies } from "semver";
 import Generator from "yeoman-generator";
 import { writeAndFormat } from "../../../utils/writeAndFormat.js";
+
+const pnpmVersionRange = "^12.0.0";
+
+// pnpm 12 writes the pnpm version in a first document of pnpm-lock.yaml when
+// devEngines.packageManager is not ignored. Removes it when it has nothing
+// else (no config dependencies).
+const removePackageManagerLockfileDocument = (lockfile) => {
+  if (!lockfile.startsWith("---\n")) return lockfile;
+  const end = lockfile.indexOf("\n---\n", 4);
+  if (end === -1) return lockfile;
+  const envDocument = load(lockfile.slice(4, end), { schema: FAILSAFE_SCHEMA });
+  const importer = envDocument?.importers?.["."] ?? {};
+  const hasOtherEntries = Object.keys(importer).some(
+    (key) =>
+      key !== "packageManagerDependencies" && key !== "configDependencies",
+  );
+  if (
+    hasOtherEntries ||
+    Object.keys(importer.configDependencies ?? {}).length > 0
+  ) {
+    return lockfile;
+  }
+  return lockfile.slice(end + "\n---\n".length);
+};
+
+const getRunningPnpmVersion = (cwd) => {
+  try {
+    return execFileSync("pnpm", ["--version"], {
+      cwd,
+      encoding: "utf8",
+    }).trim();
+  } catch {
+    return null;
+  }
+};
 
 const minimumReleaseAgeExcludePackages = [
   "@pob/*",
@@ -38,18 +75,25 @@ export default class CorePnpmGenerator extends Generator {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
     if (this.options.enable) {
-      // devEngines.packageManager replaces packageManager: pnpm switches to
-      // this version on startup (including when pnpm install is run by pob
-      // with an older pnpm), and pnpm/action-setup reads it.
+      // devEngines.packageManager is read by pnpm/action-setup. onFail is
+      // "ignore": otherwise pnpm writes its version in pnpm-lock.yaml and it
+      // has to be updated manually. The version is checked by engines.pnpm.
       delete pkg.packageManager;
       pkg.devEngines = {
         ...pkg.devEngines,
         packageManager: {
           name: "pnpm",
-          version: "^12.0.0",
-          onFail: "download",
+          version: pnpmVersionRange,
+          onFail: "ignore",
         },
       };
+
+      const lockfilePath = this.destinationPath("pnpm-lock.yaml");
+      if (this.fs.exists(lockfilePath)) {
+        const lockfile = this.fs.read(lockfilePath);
+        const newLockfile = removePackageManagerLockfileDocument(lockfile);
+        if (newLockfile !== lockfile) this.fs.write(lockfilePath, newLockfile);
+      }
 
       const configString = this.fs.read(
         this.destinationPath("pnpm-workspace.yaml"),
@@ -118,11 +162,23 @@ export default class CorePnpmGenerator extends Generator {
           `pnpm-workspace.yaml: set allowBuilds to true or false for ${this.pendingAllowBuilds.join(", ")}`,
         );
       }
+      // the running pnpm can be older than the version required by pob, for
+      // example in the @pob/root renovate workflow after a pnpm major update
+      const runningPnpmVersion = getRunningPnpmVersion(this.destinationPath());
+      const pnpmArgs =
+        runningPnpmVersion && satisfies(runningPnpmVersion, pnpmVersionRange)
+          ? []
+          : ["with", pnpmVersionRange];
+
       // pob just modified package.json: the lockfile must be allowed to update,
       // in particular in the automatic update GitHub Actions workflow (CI
       // defaults to frozen lockfile)
-      this.spawnSync("pnpm", ["install", "--no-frozen-lockfile"], {});
-      this.spawnSync("pnpm", ["dedupe"], {});
+      this.spawnSync(
+        "pnpm",
+        [...pnpmArgs, "install", "--no-frozen-lockfile"],
+        {},
+      );
+      this.spawnSync("pnpm", [...pnpmArgs, "dedupe"], {});
 
       this.fs.delete("package-lock.json");
       this.fs.delete("yarn.lock");
@@ -131,11 +187,11 @@ export default class CorePnpmGenerator extends Generator {
 
       if (pkg.scripts?.preversion) {
         try {
-          this.spawnSync("pnpm", ["run", "preversion"]);
+          this.spawnSync("pnpm", [...pnpmArgs, "run", "preversion"]);
         } catch {}
       } else if (pkg.scripts?.build) {
         try {
-          this.spawnSync("pnpm", ["run", "build"]);
+          this.spawnSync("pnpm", [...pnpmArgs, "run", "build"]);
         } catch {}
       }
     }
