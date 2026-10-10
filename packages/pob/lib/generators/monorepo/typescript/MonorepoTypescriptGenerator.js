@@ -72,7 +72,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
   // linting and tsc -b: root config files (e.g. vitest.config.ts), a root
   // scripts/ dir, and each package's scripts/ dir (matched via the workspace
   // globs so all packages are covered)
-  hasTools() {
+  #hasTools() {
     return (
       hasRootConfigFiles(this.destinationPath()) ||
       existsSync(this.destinationPath("scripts"))
@@ -81,8 +81,8 @@ export default class MonorepoTypescriptGenerator extends Generator {
 
   // tsc fails on a tsconfig.json without files nor references, like the one of
   // a new monorepo without packages
-  hasTypescriptProjects() {
-    return JSON.parse(this.options.packagePaths).length > 0 || this.hasTools();
+  #hasTypescriptProjects() {
+    return JSON.parse(this.options.packagePaths).length > 0 || this.#hasTools();
   }
 
   writing() {
@@ -109,7 +109,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
     );
 
     if (this.options.enable) {
-      packageUtils.addOrRemoveScripts(pkg, this.hasTypescriptProjects(), {
+      packageUtils.addOrRemoveScripts(pkg, this.#hasTypescriptProjects(), {
         tsc: "tsc -b",
       });
       packageUtils.addOrRemoveScripts(
@@ -161,7 +161,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
     this.fs.delete(this.destinationPath("tsconfig.root-configs.json"));
     this.fs.delete(tsconfigTestPath);
 
-    if (!this.options.enable || !this.hasTypescriptProjects()) {
+    if (!this.options.enable || !this.#hasTypescriptProjects()) {
       this.fs.delete(tsconfigPath);
       this.fs.delete(tsconfigCheckPath);
       this.fs.delete(tsconfigBuildPath);
@@ -171,7 +171,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
       const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
       const workspaceGlobs = pkg.workspaces || [];
-      const hasTools = this.hasTools();
+      const hasTools = this.#hasTools();
       if (hasTools) {
         await copyAndFormatTpl(
           this.fs,

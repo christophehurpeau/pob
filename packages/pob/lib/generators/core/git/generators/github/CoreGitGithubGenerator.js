@@ -111,7 +111,7 @@ export default class CoreGitGithubGenerator extends Generator {
     });
   }
 
-  async configureProtectionRule(owner, repo) {
+  async #configureProtectionRule(owner, repo) {
     if (!this.options.ciEnabled) return;
     if (ciContexts.length === 0) {
       console.warn("No ci contexts: branch protection not configured");
@@ -166,7 +166,7 @@ export default class CoreGitGithubGenerator extends Generator {
    * Runs a step of the repository setup, printing which step failed and what
    * to run by hand instead of stopping the run.
    */
-  runStep(description, manualCommand, fn) {
+  #runStep(description, manualCommand, fn) {
     try {
       fn();
       return true;
@@ -179,7 +179,7 @@ export default class CoreGitGithubGenerator extends Generator {
     }
   }
 
-  async createRepository(owner, repo, pkg) {
+  async #createRepository(owner, repo, pkg) {
     const cwd = this.destinationPath();
 
     try {
@@ -210,7 +210,7 @@ export default class CoreGitGithubGenerator extends Generator {
       console.warn(
         `github repository ${owner}/${repo} already exists, syncing its settings`,
       );
-      await this.syncRepository(owner, repo, pkg);
+      await this.#syncRepository(owner, repo, pkg);
     }
 
     const hasCommit =
@@ -221,7 +221,7 @@ export default class CoreGitGithubGenerator extends Generator {
       }).exitCode === 0;
 
     if (!hasCommit) {
-      const committed = this.runStep(
+      const committed = this.#runStep(
         "create the initial commit",
         'git add --all . && git commit -m "chore: initial commit [skip ci]"',
         () => {
@@ -238,7 +238,7 @@ export default class CoreGitGithubGenerator extends Generator {
       if (!committed) return;
     }
 
-    const pushed = this.runStep(
+    const pushed = this.#runStep(
       "push to github",
       "git branch -M main && git push -u origin main",
       () => {
@@ -248,10 +248,10 @@ export default class CoreGitGithubGenerator extends Generator {
     );
     if (!pushed) return;
 
-    await this.configureProtectionRule(owner, repo);
+    await this.#configureProtectionRule(owner, repo);
   }
 
-  async syncRepository(owner, repo, pkg) {
+  async #syncRepository(owner, repo, pkg) {
     try {
       await githubRequest("PATCH", `repos/${owner}/${repo}`, {
         name: repo,
@@ -282,11 +282,11 @@ export default class CoreGitGithubGenerator extends Generator {
     }
 
     if (this.options.shouldCreate) {
-      await this.createRepository(owner, repo, pkg);
+      await this.#createRepository(owner, repo, pkg);
     } else {
       console.log("sync github info");
-      await this.syncRepository(owner, repo, pkg);
-      await this.configureProtectionRule(owner, repo);
+      await this.#syncRepository(owner, repo, pkg);
+      await this.#configureProtectionRule(owner, repo);
     }
   }
 }
