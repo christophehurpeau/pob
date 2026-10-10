@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.13.0](https://github.com/christophehurpeau/pob/compare/@pob/root@27.12.0...@pob/root@27.13.0) (2026-10-10)
+
+### Features
+
+* **root:** add bun tsconfig target
+
+### Bug Fixes
+
+* **deps:** update dependency oxlint-tsgolint to v7.0.2003 ([#2833](https://github.com/christophehurpeau/pob/issues/2833))
+
 ## [27.12.0](https://github.com/christophehurpeau/pob/compare/@pob/root@27.11.0...@pob/root@27.12.0) (2026-10-06)
 
 ### Features

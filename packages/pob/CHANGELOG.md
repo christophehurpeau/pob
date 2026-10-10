@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [38.13.0](https://github.com/christophehurpeau/pob/compare/pob@38.12.0...pob@38.13.0) (2026-10-10)
+
+### Features
+
+* **pob:** add force input to release workflow
+* **pob:** make bump-dependents-highest-as release input required
+* **pob:** publish with provenance in bun release workflow
+* **pob:** publish with provenance in yarn and pnpm release workflows
+* **pob:** use bun tsconfig target when package manager is bun
+
+### Bug Fixes
+
+* **pob:** remove double space in release workflow command
+
+Version bump for dependency: @pob/root
+
+
 ## [38.12.0](https://github.com/christophehurpeau/pob/compare/pob@38.11.0...pob@38.12.0) (2026-10-06)
 
 ### Features
