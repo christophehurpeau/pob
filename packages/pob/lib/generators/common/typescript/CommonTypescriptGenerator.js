@@ -102,6 +102,12 @@ export default class CommonTypescriptGenerator extends Generator {
       description: "typescript additional includes",
     });
 
+    this.option("packageManager", {
+      type: String,
+      default: "yarn",
+      description: "yarn, npm, bun, or pnpm",
+    });
+
     this.option("onlyLatestLTS", {
       type: Boolean,
       required: false,
@@ -146,6 +152,7 @@ export default class CommonTypescriptGenerator extends Generator {
       },
     ];
     const withNode = envs.some((env) => env.target === "node");
+    const withBun = this.options.packageManager === "bun";
 
     const presets = (() => {
       const babelEnvs =
@@ -172,7 +179,9 @@ export default class CommonTypescriptGenerator extends Generator {
           pkg.pob.bundler === false ||
           pkg.pob.bundler === "tsc"
         ) {
-          return [`@pob/root/tsconfigs/targets/node-${nodeVersion}.json`];
+          return withBun
+            ? ["@pob/root/tsconfigs/targets/bun.json"]
+            : [`@pob/root/tsconfigs/targets/node-${nodeVersion}.json`];
         }
         if (envs && envs.every((env) => env.target === "node")) {
           return [
@@ -198,6 +207,9 @@ export default class CommonTypescriptGenerator extends Generator {
           return ["@pob/root/tsconfigs/targets/vite.json"];
         }
         return ["@pob/root/tsconfigs/targets/webpack.json"];
+      }
+      if (withBun) {
+        return ["@pob/root/tsconfigs/targets/bun.json"];
       }
       return [];
     })();

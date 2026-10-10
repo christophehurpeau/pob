@@ -323,6 +323,7 @@ export default class PobLibGenerator extends Generator {
       updateOnly: this.options.updateOnly,
       builddefs: true,
       onlyLatestLTS: this.onlyLatestLTS,
+      packageManager,
       srcDirectory: withTypescript ? "src" : "lib",
     });
 
