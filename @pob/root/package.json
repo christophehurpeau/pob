@@ -43,6 +43,7 @@
     "./oxfmt.js": "./oxfmt.js",
     "./tsconfigs/base.json": "./tsconfigs/base.json",
     "./tsconfigs/strict.json": "./tsconfigs/strict.json",
+    "./tsconfigs/targets/bun.json": "./tsconfigs/targets/bun.json",
     "./tsconfigs/targets/esbuild-node-22.json": "./tsconfigs/targets/esbuild-node-22.json",
     "./tsconfigs/targets/esbuild-node-24.json": "./tsconfigs/targets/esbuild-node-24.json",
     "./tsconfigs/targets/node-22.json": "./tsconfigs/targets/node-22.json",
