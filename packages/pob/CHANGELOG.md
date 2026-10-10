@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [39.1.1](https://github.com/christophehurpeau/pob/compare/pob@39.1.0...pob@39.1.1) (2026-10-10)
+
+### Bug Fixes
+
+* **pob:** stop recording the pnpm version in pnpm-lock.yaml ([#2849](https://github.com/christophehurpeau/pob/issues/2849))
+
 ## [39.1.0](https://github.com/christophehurpeau/pob/compare/pob@39.0.0...pob@39.1.0) (2026-10-10)
 
 ### Bug Fixes
