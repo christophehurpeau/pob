@@ -125,15 +125,15 @@ jobs:
         run: |
 <% if (packageManager === 'yarn') { -%>
 <% if (isMonorepo) { -%>
-          yarn workspaces foreach --all --parallel --no-private npm publish --tolerate-republish
+          yarn workspaces foreach --all --parallel --no-private npm publish --tolerate-republish --provenance
 <% } else { -%>
-          yarn npm publish
+          yarn npm publish --provenance
 <% } -%>
 <% } else if (packageManager === 'pnpm') { -%>
 <% if (isMonorepo) { -%>
-          pnpm -r publish --no-git-checks
+          pnpm -r publish --no-git-checks --provenance
 <% } else { -%>
-          pnpm publish --no-git-checks
+          pnpm publish --no-git-checks --provenance
 <% } -%>
 <% } -%>
 <% } -%>

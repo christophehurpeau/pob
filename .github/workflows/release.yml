@@ -92,4 +92,4 @@ jobs:
       - name: Publish to npm
         if: github.ref == 'refs/heads/main' && !inputs.dry-run
         run: |
-          pnpm -r publish --no-git-checks
+          pnpm -r publish --no-git-checks --provenance
