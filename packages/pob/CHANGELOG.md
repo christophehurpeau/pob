@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [39.1.2](https://github.com/christophehurpeau/pob/compare/pob@39.1.1...pob@39.1.2) (2026-10-10)
+
+### Bug Fixes
+
+* **pob:** stop running generator helper methods as yeoman tasks ([#2850](https://github.com/christophehurpeau/pob/issues/2850))
+
 ## [39.1.1](https://github.com/christophehurpeau/pob/compare/pob@39.1.0...pob@39.1.1) (2026-10-10)
 
 ### Bug Fixes
