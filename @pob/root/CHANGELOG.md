@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.14.0](https://github.com/christophehurpeau/pob/compare/@pob/root@27.13.0...@pob/root@27.14.0) (2026-10-10)
+
+### Features
+
+* **deps:** update dependency oxfmt to v0.72.0 ([#2801](https://github.com/christophehurpeau/pob/issues/2801))
+
+### Bug Fixes
+
+* **root:** ignore files outside project in claude lint-staged hook
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [27.13.0](https://github.com/christophehurpeau/pob/compare/@pob/root@27.12.0...@pob/root@27.13.0) (2026-10-10)
 
 ### Features
