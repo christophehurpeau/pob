@@ -52,7 +52,7 @@
     "lodash.camelcase": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",
     "mem-fs": "4.1.5",
-    "mem-fs-editor": "12.0.6",
+    "mem-fs-editor": "12.1.0",
     "minimist": "1.2.8",
     "oxfmt": "0.54.0",
     "parse-author": "2.0.0",
@@ -61,7 +61,7 @@
     "typescript": "npm:@typescript/typescript6@6.0.2",
     "validate-npm-package-name": "^8.0.0",
     "yeoman-environment": "6.1.0",
-    "yeoman-generator": "8.2.2"
+    "yeoman-generator": "10.0.1"
   },
   "devDependencies": {
     "@pob/root": "workspace:*",
@@ -70,7 +70,7 @@
     "@yeoman/types": "1.11.1"
   },
   "engines": {
-    "node": ">=22.18.0"
+    "node": ">=24.14.1"
   },
   "pob": {
     "typescript": "check-only"
