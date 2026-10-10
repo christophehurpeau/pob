@@ -174,7 +174,7 @@ export default class MonorepoWorkspacesGenerator extends Generator {
       this.templatePath("README.md.ejs"),
       readmePath,
       {
-        title: pkg.description,
+        title: pkg.description || pkg.name.replace(/-monorepo$/, ""),
         description: "",
         packages: this.packages,
         ci: this.fs.exists(this.destinationPath(".github/workflows/push.yml")),
