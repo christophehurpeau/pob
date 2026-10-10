@@ -183,7 +183,7 @@ export default class CoreYarnGenerator extends Generator {
       config.defaultSemverRangePrefix = this.options.type === "app" ? "" : "^";
       delete config.enableMessageNames; // was a config for yarn < 4
       config.nodeLinker = this.options.yarnNodeLinker;
-      config.npmMinimalAgeGate = 1440 * 3; // 3 days
+      config.npmMinimalAgeGate = 1440 * 2.5; // 2.5 days
       config.npmPreapprovedPackages = [
         "@pob/*",
         "pob-dependencies",

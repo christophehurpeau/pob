@@ -86,7 +86,7 @@ export default class CorePnpmGenerator extends Generator {
         delete config.packages;
       }
       config.savePrefix = this.options.type === "app" ? "" : "^";
-      config.minimumReleaseAge = 1440 * 3; // 3 days in minutes
+      config.minimumReleaseAge = 1440 * 2.5; // 2.5 days in minutes
       config.minimumReleaseAgeExclude = minimumReleaseAgeExcludePackages;
       config.dedupePeerDependents = true;
       config.nodeLinker = "hoisted";
