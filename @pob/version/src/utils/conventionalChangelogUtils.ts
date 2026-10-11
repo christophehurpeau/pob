@@ -84,7 +84,6 @@ export const generateChangelog = (
   return writeChangelogString(
     commits ?? [],
     {
-      // @ts-expect-error - missing types
       previousTag,
       currentTag: newTag,
       linkCompare: previousTag != null,
