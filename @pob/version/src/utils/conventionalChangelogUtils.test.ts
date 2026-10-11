@@ -231,7 +231,7 @@ describe("recommendBump", () => {
   });
 
   describe("no bump scenarios", () => {
-    it("should recommend patch for chore commits", async () => {
+    it("should not recommend a bump for chore commits", async () => {
       const commits = [
         createMockCommit("chore", "update dependencies"),
         createMockCommit("chore", "update config"),
@@ -239,50 +239,50 @@ describe("recommendBump", () => {
 
       const result = await recommendBump(commits, config);
 
-      expect(result.releaseType).toBe("patch");
+      expect(result.releaseType).toBeUndefined();
     });
 
-    it("should recommend patch for docs commits", async () => {
+    it("should not recommend a bump for docs commits", async () => {
       const commits = [createMockCommit("docs", "update documentation")];
 
       const result = await recommendBump(commits, config);
 
-      expect(result.releaseType).toBe("patch");
+      expect(result.releaseType).toBeUndefined();
     });
 
-    it("should recommend patch for style commits", async () => {
+    it("should not recommend a bump for style commits", async () => {
       const commits = [createMockCommit("style", "format code")];
 
       const result = await recommendBump(commits, config);
 
-      expect(result.releaseType).toBe("patch");
+      expect(result.releaseType).toBeUndefined();
     });
 
-    it("should recommend patch for test commits", async () => {
+    it("should not recommend a bump for test commits", async () => {
       const commits = [createMockCommit("test", "add unit tests")];
 
       const result = await recommendBump(commits, config);
 
-      expect(result.releaseType).toBe("patch");
+      expect(result.releaseType).toBeUndefined();
     });
 
-    it("should recommend patch for build commits", async () => {
+    it("should not recommend a bump for build commits", async () => {
       const commits = [createMockCommit("build", "update build script")];
 
       const result = await recommendBump(commits, config);
 
-      expect(result.releaseType).toBe("patch");
+      expect(result.releaseType).toBeUndefined();
     });
 
-    it("should recommend patch for ci commits", async () => {
+    it("should not recommend a bump for ci commits", async () => {
       const commits = [createMockCommit("ci", "update CI configuration")];
 
       const result = await recommendBump(commits, config);
 
-      expect(result.releaseType).toBe("patch");
+      expect(result.releaseType).toBeUndefined();
     });
 
-    it("should recommend patch for mixed non-feature commits", async () => {
+    it("should not recommend a bump for mixed non-feature commits", async () => {
       const commits = [
         createMockCommit("chore", "update deps"),
         createMockCommit("docs", "update docs"),
@@ -292,15 +292,15 @@ describe("recommendBump", () => {
 
       const result = await recommendBump(commits, config);
 
-      expect(result.releaseType).toBe("patch");
+      expect(result.releaseType).toBeUndefined();
     });
 
-    it("should recommend patch for empty commit list", async () => {
+    it("should not recommend a bump for empty commit list", async () => {
       const commits: Commit[] = [];
 
       const result = await recommendBump(commits, config);
 
-      expect(result.releaseType).toBe("patch");
+      expect(result.releaseType).toBeUndefined();
     });
   });
 });
@@ -438,7 +438,7 @@ describe("generateChangelog", () => {
       const commits = await createMockCommits(rawCommits);
 
       const expectedChangelog =
-        "## [1.1.0](https://github.com/org/repo/compare/@test/package-a@1.0.0...@test/package-a@1.1.0) (2025-01-15)\n\n### Bug Fixes\n\n* **package-a:** fix issue\n";
+        "## [1.1.0](https://github.com/org/repo/compare/%40test%2Fpackage-a%401.0.0...%40test%2Fpackage-a%401.1.0) (2025-01-15)\n\n### Bug Fixes\n\n* **package-a:** fix issue\n";
 
       const changelog = await generateChangelog(
         workspace,
@@ -471,7 +471,7 @@ describe("generateChangelog", () => {
       const commits = await createMockCommits(rawCommits);
 
       const expectedChangelog =
-        "## [2.0.0](https://github.com/org/repo/compare/@test/package-b@1.0.0...@test/package-b@2.0.0) (2025-01-15)\n\n### ⚠ BREAKING CHANGES\n\n* **package-b:** API changed\n\n### Features\n\n* **package-b:** API changed\n";
+        "## [2.0.0](https://github.com/org/repo/compare/%40test%2Fpackage-b%401.0.0...%40test%2Fpackage-b%402.0.0) (2025-01-15)\n\n### ⚠ BREAKING CHANGES\n\n* **package-b:** API changed\n\n### Features\n\n* **package-b:** API changed\n";
 
       const changelog = await generateChangelog(
         workspace,
