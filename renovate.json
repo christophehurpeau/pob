@@ -97,6 +97,15 @@
       ]
     },
     {
+      "groupName": "conventional changelog and commitlint",
+      "description": "open conventional-changelog and commitlint majors together",
+      "matchSourceUrls": [
+        "https://github.com/conventional-changelog/conventional-changelog{/,}**",
+        "https://github.com/conventional-changelog/commitlint{/,}**"
+      ],
+      "matchUpdateTypes": ["major"]
+    },
+    {
       "matchPackageNames": [
         "eslint",
         "typescript",
