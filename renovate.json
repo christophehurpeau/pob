@@ -6,7 +6,24 @@
   "postUpdateOptions": ["yarnDedupeFewer", "yarnDedupeHighest", "pnpmDedupe"],
   "labels": [":vertical_traffic_light: automerge"],
   "rangeStrategy": "bump",
+  "minimumReleaseAge": "60 hours",
+  "internalChecksFilter": "strict",
+  "vulnerabilityAlerts": { "minimumReleaseAge": null },
   "packageRules": [
+    {
+      "description": "keep in sync with minimumReleaseAgeExclude in pnpm-workspace.yaml",
+      "matchPackageNames": [
+        "@pob/*",
+        "pob",
+        "pob-dependencies",
+        "check-package-dependencies",
+        "alouette",
+        "alouette-icons",
+        "nightingale",
+        "nightingale-logger"
+      ],
+      "minimumReleaseAge": null
+    },
     {
       "semanticCommitType": "chore",
       "matchPackageNames": ["*"]
