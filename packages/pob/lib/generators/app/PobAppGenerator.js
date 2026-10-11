@@ -399,6 +399,10 @@ export default class PobAppGenerator extends Generator {
       // no default
     }
 
+    if (this.appConfig.type !== "next.js") {
+      this.fs.delete(this.destinationPath("next-env.d.ts"));
+    }
+
     if (platform !== "win32") {
       execSync(
         `rm -Rf ${["lib-*", "coverage", "generated-docs", "dist"].filter(Boolean).join(" ")}`,
