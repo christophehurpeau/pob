@@ -11,6 +11,8 @@ export default [
   {
     // name: "@pob/eslint-config/base/languages/json/json",
     files: ["**/*.json"],
+    // package.json files use the check-package-dependencies/package-json language
+    ignores: ["**/package.json"],
     language: "json/json",
     // @ts-ignore
     ...json.configs.recommended,
