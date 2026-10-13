@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Fversion%406.5.1...%40pob%2Fversion%407.0.0) (2026-10-13)
+
+### ⚠ BREAKING CHANGES
+
+* **deps:** no bump is recommended anymore when there are only
+  chore/docs/style/test/build/ci commits, and tags are URL-encoded in
+  changelog compare links.
+
+### Features
+
+* **deps:** update conventional changelog
+
+### Bug Fixes
+
+* **version:** sync bun.lock workspace versions before packing
+
 ## [6.5.1](https://github.com/christophehurpeau/pob/compare/@pob/version@6.5.0...@pob/version@6.5.1) (2026-10-10)
 
 Note: no notable changes

@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [39.2.0](https://github.com/christophehurpeau/pob/compare/pob%4039.1.2...pob%4039.2.0) (2026-10-13)
+
+### Features
+
+* **deps:** update dependency eslint to v10.12.0 ([#2855](https://github.com/christophehurpeau/pob/issues/2855))
+* **deps:** update yeoman group ([#2858](https://github.com/christophehurpeau/pob/issues/2858))
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [39.1.2](https://github.com/christophehurpeau/pob/compare/pob@39.1.1...pob@39.1.2) (2026-10-10)
 
 ### Bug Fixes

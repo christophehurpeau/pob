@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.13.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-config%4067.12.0...%40pob%2Feslint-config%4067.13.0) (2026-10-13)
+
+### Features
+
+* **deps:** update dependency @eslint/json to v2 ([#2816](https://github.com/christophehurpeau/pob/issues/2816))
+* **deps:** update dependency eslint to v10.12.0 ([#2855](https://github.com/christophehurpeau/pob/issues/2855))
+
+Version bump for dependency: @pob/eslint-plugin
+
+
 ## [67.12.0](https://github.com/christophehurpeau/pob/compare/@pob/eslint-config@67.11.0...@pob/eslint-config@67.12.0) (2026-10-10)
 
 ### Features
