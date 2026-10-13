@@ -1,10 +1,25 @@
+import { syncBunLockFile } from "../utils/bunLockUtils.ts";
 import { execCommand } from "../utils/execCommand.ts";
+import type { Workspace } from "../utils/packageUtils.ts";
 import type {
   PackageManager,
   PackageManagerPublishOptions,
 } from "./PackageManager.ts";
 
 export const BunPackageManager: PackageManager = {
+  async installOnPackageContentChange(rootWorkspace: Workspace) {
+    // bun does not refresh the workspace versions recorded in bun.lock, and
+    // `bun pm pack` / `bun publish` use them to replace `workspace:` ranges.
+    // Without this, a dependent is published with the previous version of its workspace dependency.
+    await syncBunLockFile(rootWorkspace.cwd);
+    // update the dependency ranges of the lockfile
+    await execCommand(
+      rootWorkspace,
+      ["bun", "install", "--lockfile-only"],
+      "inherit",
+    );
+  },
+
   async runScript(workspace, scriptName) {
     await execCommand(workspace, ["bun", "run", scriptName], "inherit");
   },
