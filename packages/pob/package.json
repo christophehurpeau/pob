@@ -51,7 +51,7 @@
     "json5": "^2.2.3",
     "lodash.camelcase": "^4.3.0",
     "lodash.kebabcase": "^4.1.1",
-    "mem-fs": "4.1.5",
+    "mem-fs": "6.0.0",
     "mem-fs-editor": "12.1.0",
     "minimist": "1.2.8",
     "oxfmt": "0.72.0",
