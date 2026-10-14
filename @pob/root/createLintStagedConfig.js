@@ -223,65 +223,60 @@ const createConfig = ({
   );
   const matchesTscTrigger = createMatcher([tscTriggerPattern]);
 
-  // Build tasks generate their own command so that lint-staged does not append
-  // the matched filenames: they build the whole project. They return no command
-  // at all when nothing they depend on changed.
-  const createBuildTask = (command) => (allStagedFiles) =>
-    allStagedFiles.map(toRelativePosixPath).some(matchesTscTrigger)
-      ? command
-      : [];
+  // Both build the whole project, in parallel.
+  const buildCommands = (
+    hasRollup
+      ? ["rollup --config rollup.config.mjs", hasTsconfig && "tsc -b"]
+      : [hasTsconfig && "tsc"]
+  ).filter(Boolean);
 
+  // A single function at the top level: lint-staged runs its commands
+  // sequentially and does not append the matched filenames. A function inside a
+  // list of tasks would have its commands run in parallel.
   return defineConfig({
-    "*": [
-      (allStagedFiles) => {
-        const filenames = allStagedFiles.map(toRelativePosixPath);
-        const hasPmFiles = filenames.some(matchesPmFiles);
-        const eslintFilenames = filenames.filter(matchesEslint);
+    "*": (allStagedFiles) => {
+      const filenames = allStagedFiles.map(toRelativePosixPath);
+      const hasPmFiles = filenames.some(matchesPmFiles);
+      const eslintFilenames = filenames.filter(matchesEslint);
 
-        // Running on the whole project is simpler and avoids too long command
-        // lines when many files are staged.
-        const withFilenamesOrWholeProject = (command, commandFilenames) => {
-          if (commandFilenames.length === 0) return undefined;
-          if (commandFilenames.length > MAX_FILENAMES) return command;
-          return withFilenames(command, commandFilenames);
-        };
+      // Running on the whole project is simpler and avoids too long command
+      // lines when many files are staged.
+      const withFilenamesOrWholeProject = (command, commandFilenames) => {
+        if (commandFilenames.length === 0) return undefined;
+        if (commandFilenames.length > MAX_FILENAMES) return command;
+        return withFilenames(command, commandFilenames);
+      };
 
-        const getOxlintCommand = () => {
-          if (!hasOxlint) return undefined;
-          return withFilenamesOrWholeProject(
-            OXLINT_FIX,
-            eslintFilenames.filter(isOxlintSupportedFile),
-          );
-        };
+      const getOxlintCommand = () => {
+        if (!hasOxlint) return undefined;
+        return withFilenamesOrWholeProject(
+          OXLINT_FIX,
+          eslintFilenames.filter(isOxlintSupportedFile),
+        );
+      };
 
-        const getEslintCommand = () => {
-          // eslint runs on the whole project when a package.json, the lockfile
-          // or the package manager config changed, like in the legacy config,
-          // as lint rules depend on the dependencies themselves.
-          if (hasPmFiles) return ESLINT_FIX;
-          return withFilenamesOrWholeProject(ESLINT_FIX, eslintFilenames);
-        };
+      const getEslintCommand = () => {
+        // eslint runs on the whole project when a package.json, the lockfile
+        // or the package manager config changed, like in the legacy config,
+        // as lint rules depend on the dependencies themselves.
+        if (hasPmFiles) return ESLINT_FIX;
+        return withFilenamesOrWholeProject(ESLINT_FIX, eslintFilenames);
+      };
 
-        return [
-          ...(hasPmFiles ? installAndDedupe : []),
-          hasPmFiles && pkg.scripts?.checks
-            ? `${pm.name} run checks`
-            : undefined,
-          withFilenamesOrWholeProject(OXFMT, filenames),
-          getOxlintCommand(),
-          getEslintCommand(),
-          hasPmFiles ? getGitAddPmFilesCommand() : undefined,
-        ].filter(Boolean);
-      },
-      // Runs after the tasks above, so that the build sees the formatted and
-      // fixed files. Both commands build the whole project, in parallel.
-      hasRollup
-        ? [
-            createBuildTask("rollup --config rollup.config.mjs"),
-            hasTsconfig && createBuildTask("tsc -b"),
-          ].filter(Boolean)
-        : hasTsconfig && createBuildTask("tsc"),
-    ].filter(Boolean),
+      return [
+        ...(hasPmFiles ? installAndDedupe : []),
+        hasPmFiles && pkg.scripts?.checks ? `${pm.name} run checks` : undefined,
+        withFilenamesOrWholeProject(OXFMT, filenames),
+        getOxlintCommand(),
+        getEslintCommand(),
+        hasPmFiles ? getGitAddPmFilesCommand() : undefined,
+        // after the tasks above, so that the build sees the formatted and
+        // fixed files
+        buildCommands.length > 0 && filenames.some(matchesTscTrigger)
+          ? buildCommands
+          : undefined,
+      ].filter(Boolean);
+    },
   });
 };
 
