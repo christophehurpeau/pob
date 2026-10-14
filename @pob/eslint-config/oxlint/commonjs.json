@@ -1,0 +1,17 @@
+{
+  "overrides": [
+    {
+      "files": ["**/*.js"],
+      "rules": {
+        "unicorn/prefer-module": "off",
+        "import/extensions": "off",
+        "node/no-new-require": "error",
+        "node/no-path-concat": "error",
+        "node-js/no-unsupported-features/es-syntax": [
+          "error",
+          { "ignores": [] }
+        ]
+      }
+    }
+  ]
+}

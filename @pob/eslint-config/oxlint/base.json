@@ -1,4 +1,8 @@
 {
+  "options": {
+    "respectEslintDisableDirectives": false,
+    "reportUnusedDisableDirectives": "error"
+  },
   "categories": {
     "correctness": "off"
   },

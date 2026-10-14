@@ -1,6 +1,6 @@
 # Forbid importing libraries replacing fetch which is now available in native, browser and node.
 
-💼 This rule is enabled in the ✅ `base` config.
+💼 This rule is enabled by `@pob/eslint-config/oxlint/base.json` (oxlint JS plugin).
 
 ## Fail
 

@@ -1,16 +1,8 @@
-import js from "@eslint/js";
-import pobPlugin from "@pob/eslint-plugin";
 import checkPackageDependenciesConfigs from "./languages/check-package-dependencies.js";
 import jsonConfigs from "./languages/json.js";
-import regexpPluginConfigs from "./plugins/regexp.js";
-import unicornPluginConfigs from "./plugins/unicorn.js";
-import bestPracticesConfig from "./rules/best-practices.js";
-import codeQualityConfig from "./rules/code-quality.js";
-import devOnlyConfig from "./rules/dev-only.js";
-import errorsConfig from "./rules/errors.js";
-import styleConfig from "./rules/style.js";
-import { apply } from "./utils/apply.js";
 
+// every other rule of JS and TS files is checked by oxlint, see oxlint/*.json
+/** @type {import("eslint").Linter.Config[]} */
 export default [
   {
     name: "@pob/eslint-config/base/linterOptions",
@@ -18,12 +10,6 @@ export default [
       // todo noInlineConfig: true,
       reportUnusedDisableDirectives: "error",
       reportUnusedInlineConfigs: "error",
-    },
-  },
-  {
-    name: "@pob/eslint-config/base/pob-plugin",
-    plugins: {
-      "@pob": pobPlugin,
     },
   },
   {
@@ -41,19 +27,23 @@ export default [
   },
   ...jsonConfigs,
   ...checkPackageDependenciesConfigs,
-  ...apply({
-    extensions: "{js,mjs,cjs,ts,tsx}",
-    mode: "add-extensions",
-    configs: [
-      { name: "js.configs.recommended", ...js.configs.recommended },
-      pobPlugin.configs.base,
-      ...unicornPluginConfigs,
-      ...regexpPluginConfigs,
-      bestPracticesConfig,
-      codeQualityConfig,
-      errorsConfig,
-      styleConfig,
-    ],
-  }),
-  devOnlyConfig,
+  {
+    name: "@pob/eslint-config/base/code",
+    files: ["**/*.{js,cjs,mjs,ts,cts,mts,tsx}"],
+    rules: {
+      // oxlint reports the BOM at offset 0, where no directive can disable it
+      // https://eslint.org/docs/rules/unicode-bom
+      "unicode-bom": ["error", "never"],
+    },
+  },
+  {
+    name: "@pob/eslint-config/base/js",
+    files: ["**/*.{js,cjs,mjs}"],
+    rules: {
+      // oxlint ignores /* global */ comments and does not declare undefined.
+      // TypeScript files are checked by tsc.
+      // https://eslint.org/docs/rules/no-undef
+      "no-undef": "error",
+    },
+  },
 ];

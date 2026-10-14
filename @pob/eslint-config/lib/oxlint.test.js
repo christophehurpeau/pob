@@ -1,4 +1,4 @@
-import { mkdtemp, readFile, rm, writeFile } from "node:fs/promises";
+import { mkdtemp, rm, writeFile } from "node:fs/promises";
 import { tmpdir } from "node:os";
 import path from "node:path";
 import { afterAll, beforeAll, describe, expect, it } from "vitest";
@@ -12,15 +12,7 @@ const baseConfigPath = path.join(oxlintConfigsDir, "base.json");
 const moduleConfigPath = path.join(oxlintConfigsDir, "module.json");
 const nodeConfigPath = path.join(oxlintConfigsDir, "node.json");
 const typescriptConfigPath = path.join(oxlintConfigsDir, "typescript.json");
-// this repo's config, the options are not in base.json so projects keep
-// eslint-disable comments working
-const rootConfig = JSON.parse(
-  await readFile(
-    path.resolve(import.meta.dirname, "../../../.oxlintrc.json"),
-    "utf8",
-  ),
-);
-
+const commonjsConfigPath = path.join(oxlintConfigsDir, "commonjs.json");
 /**
  * Lints `source` in a project whose .oxlintrc.json extends base.json, like the
  * one written by pob.
@@ -80,14 +72,31 @@ describe("oxlint/base.json", () => {
     ).toEqual([]);
   });
 
-  // projects keep their eslint-disable comments when a rule moves to oxlint
-  it("respects eslint-disable directives", async () => {
+  // directive options are documented as root-only, but are inherited through
+  // extends: test-lint fixtures prove each oxlint rule fires, and projects
+  // get their unused oxlint-disable directives reported
+  it("ignores eslint-disable directives", async () => {
     expect(
-      await lint(
-        project.cwd,
-        "// eslint-disable-next-line no-debugger\ndebugger;\n",
+      summarize(
+        await lint(
+          project.cwd,
+          "// eslint-disable-next-line no-debugger\ndebugger;\n",
+        ),
       ),
-    ).toEqual([]);
+    ).toEqual([{ line: 2, rule: "eslint(no-debugger)" }]);
+  });
+
+  it("reports unused oxlint-disable directives", async () => {
+    const diagnostics = await lint(
+      project.cwd,
+      "// oxlint-disable-next-line no-debugger\nexport const a = 1;\n",
+    );
+    expect(diagnostics).toHaveLength(1);
+    expect(diagnostics[0]).toMatchObject({
+      severity: "error",
+      message: expect.stringContaining("Unused oxlint-disable directive"),
+      labels: [{ span: { line: 1 } }],
+    });
   });
 });
 
@@ -118,7 +127,7 @@ describe("oxlint/node.json", () => {
     ]);
   });
 
-  // like the eslint node configs, which apply nodeCommonjs rules to .cjs files
+  // like the eslint node configs, which apply CommonJS rules to .cjs files
   it("allows CommonJS in .cjs files", async () => {
     await rm(path.join(project.cwd, "file.js"));
     expect(await lint(project.cwd, commonjs, "file.cjs")).toEqual([]);
@@ -139,6 +148,38 @@ describe("oxlint/node.json", () => {
       { line: 3, rule: "node(no-exports-assign)" },
       { line: 3, rule: "import(no-dynamic-require)" },
     ]);
+  });
+});
+
+// packages with "type": "commonjs": .js files are CommonJS
+describe("oxlint/commonjs.json", () => {
+  const project = useProject({}, [
+    baseConfigPath,
+    nodeConfigPath,
+    commonjsConfigPath,
+  ]);
+
+  it("allows CommonJS in .js files", async () => {
+    expect(
+      await lint(
+        project.cwd,
+        '"use strict";\n\nmodule.exports = require("node:path");\n',
+        "file.js",
+      ),
+    ).toEqual([]);
+  });
+
+  it("applies CommonJS rules to .js files", async () => {
+    expect(
+      summarize(
+        await lint(
+          project.cwd,
+          // oxlint-disable-next-line no-template-curly-in-string -- code sample
+          '"use strict";\n\nmodule.exports = `${__dirname}/a`;\n',
+          "file.js",
+        ),
+      ),
+    ).toEqual([{ line: 3, rule: "node(no-path-concat)" }]);
   });
 });
 
@@ -276,32 +317,3 @@ describe.each([
     });
   },
 );
-
-describe("root .oxlintrc.json options", () => {
-  const project = useProject({ options: rootConfig.options });
-
-  // with these options, test-lint fixtures prove each oxlint rule fires
-  it("ignores eslint-disable directives", async () => {
-    expect(
-      summarize(
-        await lint(
-          project.cwd,
-          "// eslint-disable-next-line no-debugger\ndebugger;\n",
-        ),
-      ),
-    ).toEqual([{ line: 2, rule: "eslint(no-debugger)" }]);
-  });
-
-  it("reports unused oxlint-disable directives", async () => {
-    const diagnostics = await lint(
-      project.cwd,
-      "// oxlint-disable-next-line no-debugger\nexport const a = 1;\n",
-    );
-    expect(diagnostics).toHaveLength(1);
-    expect(diagnostics[0]).toMatchObject({
-      severity: "error",
-      message: expect.stringContaining("Unused oxlint-disable directive"),
-      labels: [{ span: { line: 1 } }],
-    });
-  });
-});

@@ -1,6 +1,6 @@
 # Return type of react function component should be ReactNode
 
-💼 This rule is enabled in the ✅ `react` config.
+💼 This rule is enabled by `@pob/eslint-config-typescript-react/oxlint/react.json` (oxlint JS plugin).
 
 ## Fail
 

@@ -1,8 +1,6 @@
-import baseConfig from "./configs/base.js";
-import nodeConfig from "./configs/node.js";
-import reactConfig from "./configs/react.js";
 import { loadRules } from "./loadRules.js";
 
+// rules run by oxlint as a JS plugin, see @pob/eslint-config/oxlint/*.json
 export default {
   meta: {
     name: "@pob/eslint-plugin",
@@ -10,10 +8,5 @@ export default {
   },
   rules: {
     ...loadRules(),
-  },
-  configs: {
-    base: baseConfig,
-    react: reactConfig,
-    node: nodeConfig,
   },
 };

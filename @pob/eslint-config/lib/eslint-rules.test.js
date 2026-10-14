@@ -6,9 +6,7 @@ describe("eslint rules inventory", () => {
   // New rules and newly deprecated ones of eslint and its plugins show up in
   // the snapshot diff on upgrades.
   it("matches the snapshot", async () => {
-    const configs = Object.values(pobConfig.configs)
-      .flat()
-      .filter((config) => config.name !== "@pob/eslint-config/oxlint");
+    const configs = Object.values(pobConfig.configs).flat();
     await expect(
       `${JSON.stringify(getEslintRulesStatus(configs), null, 2)}\n`,
     ).toMatchFileSnapshot("../inventory/eslint-rules.json");

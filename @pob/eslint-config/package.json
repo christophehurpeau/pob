@@ -21,6 +21,7 @@
     "oxlint/allow-unsafe.json",
     "oxlint/app.json",
     "oxlint/base.json",
+    "oxlint/commonjs.json",
     "oxlint/module.json",
     "oxlint/node.json",
     "oxlint/typescript.json",
@@ -31,15 +32,12 @@
   "main": "./lib/index.js",
   "exports": {
     ".": "./lib/index.js",
-    "./lib/rules/best-practices": "./lib/rules/best-practices.js",
-    "./lib/rules/code-quality": "./lib/rules/code-quality.js",
-    "./lib/rules/errors": "./lib/rules/errors.js",
-    "./lib/rules/style": "./lib/rules/style.js",
     "./oxlint/allow-implicit-return-type.json": "./oxlint/allow-implicit-return-type.json",
     "./oxlint/allow-unsafe.json": "./oxlint/allow-unsafe.json",
     "./oxlint/allow-unsafe-as-warn.json": "./oxlint/allow-unsafe-as-warn.json",
     "./oxlint/app.json": "./oxlint/app.json",
     "./oxlint/base.json": "./oxlint/base.json",
+    "./oxlint/commonjs.json": "./oxlint/commonjs.json",
     "./oxlint/module.json": "./oxlint/module.json",
     "./oxlint/node.json": "./oxlint/node.json",
     "./oxlint/typescript.json": "./oxlint/typescript.json",
@@ -55,18 +53,14 @@
     "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/eslint-config'"
   },
   "dependencies": {
-    "@eslint/js": "^10.0.1",
     "@eslint/json": "^2.0.0",
     "@pob/eslint-plugin": "workspace:*",
-    "@typescript-eslint/eslint-plugin": "8.63.0",
     "@typescript-eslint/parser": "8.63.0",
     "check-package-dependencies": "^13.2.0",
-    "confusing-browser-globals": "^1.0.11",
     "eslint-plugin-import-x": "^4.17.1",
     "eslint-plugin-n": "^17.24.0",
     "eslint-plugin-regexp": "^3.1.0",
-    "eslint-plugin-unicorn": "^64.0.0",
-    "typescript-eslint": "^8.63.0"
+    "eslint-plugin-unicorn": "^64.0.0"
   },
   "devDependencies": {
     "@types/node": "24.19.1",
@@ -75,8 +69,7 @@
     "eslint-plugin-n": "17.24.0",
     "eslint-plugin-regexp": "3.1.0",
     "eslint-plugin-unicorn": "64.0.0",
-    "typescript": "npm:@typescript/typescript6@6.0.2",
-    "typescript-eslint": "8.63.0"
+    "typescript": "npm:@typescript/typescript6@6.0.2"
   },
   "peerDependencies": {
     "eslint": "^10.8.0",

@@ -23,10 +23,7 @@ export default [
     files: ["@pob/eslint-config-typescript-react/test-lint/**/"],
     mode: "directory",
     // react.json is extended by test-lint/.oxlintrc.json
-    configs: [
-      ...pobTypescriptConfigReact.configs.node,
-      ...pobTypescriptConfigReact.configs.oxlint,
-    ],
+    configs: [...pobTypescriptConfigReact.configs.node],
     extensions: tsExtensions,
   }).map((config) => ({
     ...config,
@@ -45,24 +42,6 @@ export default [
       "import-x/no-extraneous-dependencies": "off",
     },
   },
-  ...apply({
-    files: ["@pob/version/"],
-    mode: "directory",
-    extensions: tsExtensions,
-    configs: [...configs.allowUnsafe, ...configs.app],
-  }),
-  ...apply({
-    files: ["packages/pob/"],
-    mode: "directory",
-    configs: [
-      {
-        rules: {
-          complexity: "off",
-          "no-nested-ternary": "off",
-        },
-      },
-    ],
-  }),
   ...apply({
     files: ["**/*.test.{js,ts}", "vitest.config.js"],
     configs: [

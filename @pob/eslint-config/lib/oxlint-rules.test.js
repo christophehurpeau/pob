@@ -10,7 +10,6 @@ import {
  * plugins below, so an oxlint upgrade adding or removing rules fails here.
  * Decisions:
  * - enabled: in oxlint/*.json
- * - migrate: enabled in eslint, to move to oxlint (docs/oxlint-migration.md)
  * - eslint: kept in eslint
  * - js-plugin: checked by the eslint rule run as an oxlint JS plugin, as the
  *   oxlint rule differs (docs/oxlint-migration.md)
@@ -31,7 +30,6 @@ const plugins = new Set([
 ]);
 const decisions = new Set([
   "enabled",
-  "migrate",
   "eslint",
   "js-plugin",
   "evaluate",
@@ -80,8 +78,8 @@ describe("oxlint rules inventory", () => {
         .filter((name) => inventory[name] === "enabled")
         .toSorted(),
     ).toEqual(
-      // rules of JS plugins (regexp, @pob) are listed in
-      // inventory/eslint-rules.json
+      // rules of JS plugins (regexp, @pob, ...) are listed in
+      // inventory/oxlint-js-plugins-rules.json
       getEnabledOxlintConfigRules().filter((name) =>
         plugins.has(name.slice(0, name.indexOf("/"))),
       ),
