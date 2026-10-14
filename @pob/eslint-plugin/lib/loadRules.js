@@ -2,6 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import forbidNonNativeFetchImportRule from "./rules/forbid-non-native-fetch-import.js";
 import forbidNonNativeNodeImportsRule from "./rules/forbid-non-native-node-imports.js";
+import noUselessTemplateLiteralRule from "./rules/no-useless-template-literal.js";
 import reactFunctionComponentReturnReactNodeRule from "./rules/react-function-component-return-react-node.js";
 import reactNamedImportRule from "./rules/react-named-import.js";
 
@@ -41,6 +42,10 @@ export function loadRules() {
     "forbid-non-native-node-imports": loadRule(
       "forbid-non-native-node-imports",
       forbidNonNativeNodeImportsRule,
+    ),
+    "no-useless-template-literal": loadRule(
+      "no-useless-template-literal",
+      noUselessTemplateLiteralRule,
     ),
     "react-function-component-return-react-node": loadRule(
       "react-function-component-return-react-node",
