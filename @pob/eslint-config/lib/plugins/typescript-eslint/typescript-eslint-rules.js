@@ -166,9 +166,6 @@ export default {
       },
     ],
 
-    // https://typescript-eslint.io/rules/sort-type-constituents/
-    "@typescript-eslint/sort-type-constituents": "error",
-
     // https://typescript-eslint.io/rules/strict-boolean-expressions/
     "@typescript-eslint/strict-boolean-expressions": "off",
 

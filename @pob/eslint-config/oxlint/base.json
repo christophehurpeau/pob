@@ -202,6 +202,7 @@
     "no-new-native-nonconstructor": "error",
     "no-new-wrappers": "error",
     "no-nonoctal-decimal-escape": "error",
+    "no-object-constructor": "error",
     "no-obj-calls": "error",
     "no-promise-executor-return": [
       "error",
@@ -882,6 +883,7 @@
     ],
     "unicorn/throw-new-error": "error",
     "@pob/forbid-non-native-fetch-import": "error",
+    "@pob/no-useless-template-literal": "error",
     "eslint-js/camelcase": [
       "error",
       {

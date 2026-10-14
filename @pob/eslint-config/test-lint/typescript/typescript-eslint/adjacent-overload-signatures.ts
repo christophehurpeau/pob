@@ -5,6 +5,6 @@ export interface Foo {
   foo(n: number): void;
   // oxlint-disable-next-line typescript/method-signature-style
   bar(): void;
-  /* eslint-disable-next-line @typescript-eslint/sort-type-constituents */ // oxlint-disable-next-line typescript/method-signature-style
+  // oxlint-disable-next-line typescript/method-signature-style
   foo(sn: string | number): void;
 }

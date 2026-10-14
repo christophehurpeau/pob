@@ -12,14 +12,6 @@ export default {
     // prettier doesn't enforce {} with multiline
     curly: ["warn", "multi-line"],
 
-    // https://github.com/prettier/eslint-config-prettier#quotes
-    // prettier doesn't change backtick to single
-    quotes: [
-      "warn",
-      "double",
-      { avoidEscape: true, allowTemplateLiterals: false },
-    ],
-
     // https://eslint.org/docs/latest/rules/sort-imports ; declaration is sorted using import/order
     "sort-imports": ["error", { ignoreDeclarationSort: true }],
 

@@ -198,10 +198,16 @@ After P4, new rules from oxlint upgrades appear in the rules snapshot diff and a
 
 ## Not migrated
 
-Deprecated rules still enabled in eslint: remove them from the eslint config (separate cleanup), do not port:
+Deprecated rules removed from the eslint config, not ported (checked against fixtures in JS, CJS and TS files):
 
-- core: `no-buffer-constructor`, `no-floating-decimal`, `no-mixed-operators`, `no-new-object` (replaced by `no-object-constructor`), `no-return-await`, `template-curly-spacing`, `quotes` (formatting: oxfmt), `no-new-require` (use `n/no-new-require`);
-- `@typescript-eslint/sort-type-constituents`.
+- `quotes`: oxfmt normalizes quotes; template literals without interpolation, line break or tag (`allowTemplateLiterals: false`) are reported by the new `@pob/no-useless-template-literal` (`error`, autofix to a double-quoted string, in `base.json` as JS plugin).
+- `no-new-object`: replaced by `no-object-constructor` (`base.json`), which also reports `Object()` and not `new Object(value)`.
+- `no-buffer-constructor`: `unicorn/no-new-buffer` reports `new Buffer()`, `node-js/no-deprecated-api` (`node.json`) reports `Buffer()`; elsewhere `no-undef` reports `Buffer`.
+- `no-floating-decimal`, `template-curly-spacing`: oxfmt.
+- `no-mixed-operators`: oxfmt adds the parentheses for every group we used, except `%` with `**`.
+- `no-return-await`: not replaced, like TS files (`typescript/return-await` with `error-handling-correctness-only`, the `strictTypeChecked` value).
+- `no-new-require` (core): not replaced, `n/no-new-require` stays for `.cjs`/`.cts` files.
+- `@typescript-eslint/sort-type-constituents`: dropped.
 
 Deprecated configs (`nodeModule`, `nodeCommonjs`): no dedicated oxlint file; they get `base.json` like `node`.
 

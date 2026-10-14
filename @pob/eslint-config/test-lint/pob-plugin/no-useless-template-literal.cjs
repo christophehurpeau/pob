@@ -2,5 +2,5 @@
 
 // https://github.com/prettier/prettier/issues/2996
 
-// eslint-disable-next-line quotes
+// oxlint-disable-next-line @pob/no-useless-template-literal
 exports.foo = `bar`;

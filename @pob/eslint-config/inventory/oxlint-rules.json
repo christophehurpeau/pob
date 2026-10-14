@@ -100,7 +100,7 @@
   "eslint/no-new-wrappers": "enabled",
   "eslint/no-nonoctal-decimal-escape": "enabled",
   "eslint/no-obj-calls": "enabled",
-  "eslint/no-object-constructor": "evaluate",
+  "eslint/no-object-constructor": "enabled",
   "eslint/no-param-reassign": "evaluate",
   "eslint/no-plusplus": "evaluate",
   "eslint/no-promise-executor-return": "enabled",

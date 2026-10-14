@@ -11,7 +11,7 @@ const interpolation = "";
 
 // oxlint-disable-next-line no-unused-vars
 const strings = [
-  // eslint-disable-next-line quotes
+  // oxlint-disable-next-line @pob/no-useless-template-literal
   `could have been a regular string`,
   `
     multiple

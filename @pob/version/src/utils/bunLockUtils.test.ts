@@ -47,8 +47,8 @@ describe("syncBunLockWorkspaceVersions", () => {
     );
     expect(result).toBe(
       lock.replace(
-        `"name": "core",\n      "version": "1.0.0"`,
-        `"name": "core",\n      "version": "1.0.1"`,
+        '"name": "core",\n      "version": "1.0.0"',
+        '"name": "core",\n      "version": "1.0.1"',
       ),
     );
   });

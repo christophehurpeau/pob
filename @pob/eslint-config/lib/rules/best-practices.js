@@ -70,9 +70,6 @@ export default {
     // https://eslint.org/docs/rules/no-array-constructor
     "no-array-constructor": "error",
 
-    // https://eslint.org/docs/rules/no-buffer-constructor
-    "no-buffer-constructor": "error",
-
     // https://eslint.org/docs/rules/no-bitwise
     "no-bitwise": "error",
 
@@ -129,9 +126,6 @@ export default {
     // https://eslint.org/docs/rules/no-fallthrough
     "no-fallthrough": "error",
 
-    // https://eslint.org/docs/rules/no-floating-decimal
-    "no-floating-decimal": "error",
-
     // https://eslint.org/docs/rules/no-global-assign
     "no-global-assign": "error",
 
@@ -158,27 +152,6 @@ export default {
     // https://eslint.org/docs/rules/no-loop-func
     "no-loop-func": "error",
 
-    // https://eslint.org/docs/rules/no-mixed-operators
-    "no-mixed-operators": [
-      "error",
-      {
-        // the list of arithmetic groups disallows mixing `%` and `**`
-        // with other arithmetic operators.
-        groups: [
-          ["%", "**"],
-          ["%", "+"],
-          ["%", "-"],
-          ["%", "*"],
-          ["%", "/"],
-          ["/", "*"],
-          ["&", "|", "<<", ">>", ">>>"],
-          ["==", "!=", "===", "!=="],
-          ["&&", "||"],
-        ],
-        allowSamePrecedence: false,
-      },
-    ],
-
     // https://eslint.org/docs/rules/no-multi-assign
     "no-multi-assign": "error",
 
@@ -194,12 +167,6 @@ export default {
     // https://eslint.org/docs/rules/no-new-func
     "no-new-func": "error",
 
-    // https://eslint.org/docs/rules/no-new-object
-    "no-new-object": "error",
-
-    // disallow use of new operator with the require function
-    "no-new-require": "error",
-
     // https://eslint.org/docs/rules/no-new-wrappers
     "no-new-wrappers": "error",
 
@@ -208,6 +175,9 @@ export default {
 
     // https://eslint.org/docs/rules/no-nonoctal-decimal-escape
     "no-nonoctal-decimal-escape": "error",
+
+    // https://eslint.org/docs/rules/no-object-constructor
+    "no-object-constructor": "error",
 
     // https://eslint.org/docs/rules/no-octal
     "no-octal": "error",
@@ -291,9 +261,6 @@ export default {
 
     // https://eslint.org/docs/rules/no-return-assign
     "no-return-assign": ["error", "always"],
-
-    // https://eslint.org/docs/rules/no-return-await
-    "no-return-await": "error",
 
     // https://eslint.org/docs/rules/no-script-url
     "no-script-url": "error",
@@ -468,9 +435,6 @@ export default {
 
     // https://eslint.org/docs/rules/symbol-description
     "symbol-description": "error",
-
-    // https://eslint.org/docs/rules/template-curly-spacing
-    "template-curly-spacing": "error",
 
     // https://eslint.org/docs/rules/unicode-bom
     "unicode-bom": ["error", "never"],
