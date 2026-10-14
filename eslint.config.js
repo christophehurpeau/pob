@@ -104,28 +104,4 @@ export default [
       ],
     },
   },
-  {
-    // packages depending on plugins that have not yet updated to eslint 10,
-    // but there are no errors. @pob/eslint-config is not listed as all its
-    // dependencies already allow eslint 10.
-    files: [
-      "@pob/eslint-config-typescript-react/package.json",
-      "@pob/eslint-plugin/package.json",
-    ],
-    rules: {
-      "check-package-dependencies/require-direct-peer-dependencies": [
-        "error",
-        { onlyWarnsFor: { "*": ["eslint"] } },
-      ],
-    },
-  },
-  {
-    files: ["@pob/eslint-config-typescript-react/package.json"],
-    rules: {
-      "check-package-dependencies/require-direct-peer-dependencies": [
-        "error",
-        { onlyWarnsFor: { "*": ["eslint"] } },
-      ],
-    },
-  },
 ];

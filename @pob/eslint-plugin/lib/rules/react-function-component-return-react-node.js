@@ -1,4 +1,5 @@
-import Components from "eslint-plugin-react/lib/util/Components.js";
+// function components are named in PascalCase
+const isComponentName = (name) => /^[A-Z]/.test(name);
 
 function getSuggestionFixer(node, range, context) {
   return (fixer) => {
@@ -16,8 +17,13 @@ function checkFunctionReturnType(node, onError) {
   const { typeName } = typeAnnotation;
   if (typeName == null) return;
 
-  if (typeName.name !== "ReactNode") {
-    onError(typeName, typeName.name, typeName.range);
+  // React.ReactElement: check and replace the right side. React.ReactNode is
+  // reported by @pob/react-named-import
+  const nameNode =
+    typeName.type === "TSQualifiedName" ? typeName.right : typeName;
+
+  if (nameNode.name !== "ReactNode") {
+    onError(nameNode, nameNode.name, nameNode.range);
   }
 }
 
@@ -41,10 +47,10 @@ export default {
     hasSuggestions: true,
   },
 
-  create: Components.detect((context, components) => {
+  create: (context) => {
     return {
       FunctionDeclaration(node) {
-        if (!components.get(node)) return;
+        if (!node.id || !isComponentName(node.id.name)) return;
 
         checkFunctionReturnType(node, (typeName, currentName, range) =>
           context.report({
@@ -62,5 +68,5 @@ export default {
         );
       },
     };
-  }),
+  },
 };

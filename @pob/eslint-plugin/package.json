@@ -32,9 +32,6 @@
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/eslint-plugin'",
     "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/eslint-plugin'"
   },
-  "dependencies": {
-    "eslint-plugin-react": "^7.37.5"
-  },
   "devDependencies": {
     "@types/node": "24.19.1",
     "@typescript-eslint/rule-tester": "8.63.0",

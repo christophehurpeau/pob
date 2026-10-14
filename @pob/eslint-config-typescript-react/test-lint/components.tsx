@@ -51,21 +51,21 @@ export function getComponentAsArrowFunctionExpression() {
 // oxlint-disable-next-line react/function-component-definition -- also reported by oxlint in memo() and forwardRef()
 memo(() => <div>foo</div>);
 
-// oxlint-disable-next-line react/function-component-definition -- also reported by oxlint in memo() and forwardRef()
+// oxlint-disable-next-line react/function-component-definition, react-x/no-forward-ref -- also reported by oxlint in memo() and forwardRef()
 forwardRef<HTMLDivElement, ExampleProps>(() => <div>foo</div>);
 
-// oxlint-disable-next-line react/function-component-definition -- also reported by oxlint in memo() and forwardRef()
+// oxlint-disable-next-line react/function-component-definition, react-x/no-forward-ref -- also reported by oxlint in memo() and forwardRef()
 forwardRef<HTMLDivElement>(({ foo }: ExampleProps, ref) => (
   <div ref={ref}>{foo}</div>
 ));
 
 // TODO missing ref type
-// oxlint-disable-next-line react/function-component-definition -- also reported by oxlint in memo() and forwardRef()
+// oxlint-disable-next-line react/function-component-definition, react-x/no-forward-ref -- also reported by oxlint in memo() and forwardRef()
 forwardRef(({ foo }: ExampleProps, ref) => (
   // @ts-expect-error -- this should not be the rule that catches this
   <div ref={ref}>{foo}</div>
 ));
 
 // TODO missing ref usage
-// oxlint-disable-next-line react/function-component-definition -- also reported by oxlint in memo() and forwardRef()
+// oxlint-disable-next-line react/function-component-definition, react-x/no-forward-ref -- also reported by oxlint in memo() and forwardRef()
 forwardRef<HTMLDivElement, ExampleProps>(({ foo }) => <div>{foo}</div>);

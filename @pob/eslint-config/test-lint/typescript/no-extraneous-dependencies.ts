@@ -1,4 +1,4 @@
 // eslint-disable-next-line import-x/no-extraneous-dependencies
-import "prop-types";
+import "semver";
 
 export const x = 1;

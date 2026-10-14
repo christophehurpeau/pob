@@ -238,6 +238,15 @@ Breaking changes:
 - [x] **E2. `@pob/eslint-config-typescript-react`:** removes `plugins/{react,react-hooks,jsx-a11y}.js`, the oxlint turn-off, `import-x/extensions` options and its eslint inventory; keeps the `import-x` settings (`import-x/parsers` for `.tsx`, resolvers, `react-native`/`react-native-web` settings and the `react-native` `no-unresolved` ignore). Dependencies: removes `eslint-plugin-jsx-a11y`, `eslint-plugin-react-hooks`, `@pob/eslint-plugin`; keeps `eslint-plugin-react` (`react-js` JS plugin).
 - [x] **E3. `@pob/eslint-plugin`:** removes `configs` and the `@typescript-eslint/utils` dependency (unused).
 
+### R — React rules without `eslint-plugin-react`
+
+- [x] **R2.** `eslint-plugin-react` was only left for the 8 rules of the `react-js` JS plugin and the component detection of `@pob/react-function-component-return-react-node`. It is removed (with its `semver` 6, its eslint `<= 9` peer dependency and the "React version not specified" warning printed by oxlint):
+  - Reimplemented in `@pob/eslint-plugin`: `@pob/jsx-no-leaked-render` (default options, React >= 18, ternary autofix) and `@pob/jsx-sort-props` (only our options: reserved props first, callbacks last, shorthand props first, names not sorted).
+  - Replaced by [eslint-plugin-react-x](https://eslint-react.xyz) as JS plugin `react-x` in `react.json`: `no-class-component` (error boundaries allowed) instead of `prefer-stateless-function`, `sort-comp`, `no-arrow-function-lifecycle`; `no-component-will-mount`, `no-component-will-receive-props`, `no-component-will-update`; React 19: `no-forward-ref`, `no-use-context`, `no-context-provider`. Type-aware react-x rules crash in oxlint (no type information for JS plugins, verified with `no-leaked-conditional-rendering`): only rules without type information can be enabled. `eslint-plugin-react-dom` is not added: React 19 removed `render`, `hydrate`, `findDOMNode` from its types (tsc), `useFormState` is `@deprecated` (`typescript/no-deprecated`).
+  - Dropped: `no-deprecated` (`typescript/no-deprecated`, React types mark deprecated APIs), `no-invalid-html-attribute` (too much to copy), `destructuring-assignment`.
+  - `@pob/react-function-component-return-react-node` treats PascalCase function declarations as components, and checks the right side of qualified names (`React.ReactElement`; `React.ReactNode` is left to `@pob/react-named-import`).
+  - D1 renames `react-js/jsx-no-leaked-render` and `react-js/jsx-sort-props` in `oxlint-disable` comments, and removes the other `react-js/` rules.
+
 ### G — generator
 
 - [x] **G1.** `eslint.config.js` uses `configs.node`/`configs.baseModule` only (JS CommonJS projects included, `configs.base`, which does not exist, is fixed); no `configs.app`. The previous outputs (`nodeModule`, `nodeCommonjs`, `app`) are recognized and updated. `.oxlintrc.json` extends `commonjs.json` for JS `"type": "commonjs"` node packages.

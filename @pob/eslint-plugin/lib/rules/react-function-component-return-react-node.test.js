@@ -27,8 +27,48 @@ export function SomeComponent(): ReactNode {
 }
     `,
     },
+    // reported by @pob/react-named-import
+    {
+      code: `
+import type * as React from 'react';
+export function SomeComponent(): React.ReactNode {
+  return <div />;
+}
+    `,
+    },
+    {
+      code: `
+export function notAComponent(): string {
+  return "";
+}
+    `,
+    },
   ],
   invalid: [
+    {
+      code: `
+import type * as React from 'react';
+export function SomeComponent(): React.ReactElement {
+  return <div />;
+}`,
+      errors: [
+        {
+          messageId: "invalidReturnType",
+          data: { value: "ReactElement" },
+          suggestions: [
+            {
+              messageId: "replaceReturnType",
+              data: { value: "ReactElement" },
+              output: `
+import type * as React from 'react';
+export function SomeComponent(): React.ReactNode {
+  return <div />;
+}`,
+            },
+          ],
+        },
+      ],
+    },
     {
       code: `
 import type { ReactElement } from 'react';

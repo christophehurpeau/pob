@@ -1,19 +1,29 @@
 {
   "plugins": ["react", "jsx-a11y"],
   "jsPlugins": [
-    { "name": "react-js", "specifier": "../lib/oxlint-plugins/react.js" }
+    {
+      "name": "react-x",
+      "specifier": "../lib/oxlint-plugins/react-x.js"
+    }
   ],
   "overrides": [
     {
       "files": ["**/*.{ts,cts,mts,tsx}"],
       "rules": {
+        "@pob/jsx-no-leaked-render": "error",
+        "@pob/jsx-sort-props": "error",
         "@pob/react-function-component-return-react-node": "error",
         "@pob/react-named-import": "error",
         "func-names": "error",
         "import/extensions": [
           "error",
           "ignorePackages",
-          { "pattern": { "ts": "never", "tsx": "never" } }
+          {
+            "pattern": {
+              "ts": "never",
+              "tsx": "never"
+            }
+          }
         ],
         "jsx_a11y/alt-text": "error",
         "jsx_a11y/anchor-has-content": "error",
@@ -101,10 +111,19 @@
           }
         ],
         "react/hook-use-state": "error",
-        "react/jsx-boolean-value": ["error", "never", { "always": [] }],
+        "react/jsx-boolean-value": [
+          "error",
+          "never",
+          {
+            "always": []
+          }
+        ],
         "react/jsx-curly-brace-presence": [
           "error",
-          { "children": "never", "props": "never" }
+          {
+            "children": "never",
+            "props": "never"
+          }
         ],
         "react/jsx-fragments": ["error", "syntax"],
         "react/jsx-key": "error",
@@ -113,14 +132,22 @@
         "react/jsx-no-duplicate-props": "error",
         "react/jsx-no-script-url": [
           "error",
-          [{ "name": "Link", "props": ["to"] }]
+          [
+            {
+              "name": "Link",
+              "props": ["to"]
+            }
+          ]
         ],
         "react/jsx-no-target-blank": "error",
         "react/jsx-no-undef": "error",
         "react/jsx-no-useless-fragment": "error",
         "react/jsx-pascal-case": [
           "error",
-          { "allowAllCaps": true, "ignore": [] }
+          {
+            "allowAllCaps": true,
+            "ignore": []
+          }
         ],
         "react/no-array-index-key": "error",
         "react/no-children-prop": "error",
@@ -137,67 +164,13 @@
         "react/require-render-return": "error",
         "react/rules-of-hooks": "error",
         "react/self-closing-comp": "error",
-        "react-js/destructuring-assignment": [
-          "error",
-          "always",
-          { "ignoreClassFields": false, "destructureInSignature": "always" }
-        ],
-        "react-js/jsx-no-leaked-render": "error",
-        "react-js/jsx-sort-props": [
-          "error",
-          {
-            "noSortAlphabetically": true,
-            "reservedFirst": true,
-            "shorthandFirst": true,
-            "callbacksLast": true,
-            "multiline": "ignore",
-            "locale": "auto"
-          }
-        ],
-        "react-js/no-arrow-function-lifecycle": "error",
-        "react-js/no-deprecated": "error",
-        "react-js/no-invalid-html-attribute": "error",
-        "react-js/prefer-stateless-function": [
-          "error",
-          { "ignorePureComponents": true }
-        ],
-        "react-js/sort-comp": [
-          "error",
-          {
-            "order": [
-              "static-variables",
-              "static-methods",
-              "instance-variables",
-              "lifecycle",
-              "getters",
-              "setters",
-              "instance-methods",
-              "/^(on|handle).+$/",
-              "everything-else",
-              "rendering"
-            ],
-            "groups": {
-              "lifecycle": [
-                "state",
-                "constructor",
-                "getDerivedStateFromProps",
-                "componentWillMount",
-                "UNSAFE_componentWillMount",
-                "componentDidMount",
-                "componentWillReceiveProps",
-                "UNSAFE_componentWillReceiveProps",
-                "shouldComponentUpdate",
-                "componentWillUpdate",
-                "UNSAFE_componentWillUpdate",
-                "getSnapshotBeforeUpdate",
-                "componentDidUpdate",
-                "componentDidCatch",
-                "componentWillUnmount"
-              ],
-              "rendering": ["/^render.+$/", "render"]
-            }
-          }
-        ]
+        "react-x/no-class-component": "error",
+        "react-x/no-component-will-mount": "error",
+        "react-x/no-component-will-receive-props": "error",
+        "react-x/no-component-will-update": "error",
+        "react-x/no-context-provider": "error",
+        "react-x/no-forward-ref": "error",
+        "react-x/no-use-context": "error"
       }
     }
   ]

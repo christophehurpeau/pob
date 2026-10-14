@@ -1,9 +1,8 @@
 import { Component, type ReactNode } from "react";
 
+// oxlint-disable-next-line react-x/no-class-component
 export class C extends Component {
-  // oxlint-disable-next-line react-js/sort-comp
   render(): ReactNode {
-    return <div />;
+    return null;
   }
-  componentDidMount(): void {}
 }

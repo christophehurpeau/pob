@@ -41,7 +41,7 @@
   "dependencies": {
     "@pob/eslint-config": "workspace:*",
     "eslint-plugin-import-x": "4.17.1",
-    "eslint-plugin-react": "7.37.5"
+    "eslint-plugin-react-x": "5.26.1"
   },
   "devDependencies": {
     "@types/node": "24.19.1",
