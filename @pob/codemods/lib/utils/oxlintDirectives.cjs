@@ -17,12 +17,20 @@ const removedEslintPluginPrefixes = [
   "unicorn/",
 ];
 
+// rules of the eslint-plugin-react JS plugin of oxlint (react-js), removed
+// with eslint-plugin-react: renamed when moved to @pob/eslint-plugin
+const renamedOxlintRuleNames = new Map([
+  ["react-js/jsx-no-leaked-render", "@pob/jsx-no-leaked-render"],
+  ["react-js/jsx-sort-props", "@pob/jsx-sort-props"],
+]);
+const removedOxlintPluginPrefixes = ["react-js/"];
+
 /** @param {string} ruleName */
 const isRemovedEslintPluginRule = (ruleName) =>
   removedEslintPluginPrefixes.some((prefix) => ruleName.startsWith(prefix));
 
 const directiveRegExp =
-  /^\s*eslint-(disable-next-line|disable-line|disable|enable)(?=\s|$)/;
+  /^\s*(eslint|oxlint)-(disable-next-line|disable-line|disable|enable)(?=\s|$)/;
 
 // same as eslint: the description starts at the first " -- "
 const descriptionRegExp = /\s-{2,}\s/;
@@ -34,9 +42,10 @@ const parseDirective = (commentValue) => {
   const [content, ...descriptionParts] = commentValue.split(descriptionRegExp);
   const match = directiveRegExp.exec(content);
   if (!match) return undefined;
-  const [prefix, kind] = match;
+  const [prefix, tool, kind] = match;
   const ruleList = content.slice(prefix.length);
   return {
+    tool,
     kind,
     ruleNames: ruleList
       .split(",")
@@ -83,6 +92,38 @@ const formatDirective = (tool, kind, ruleNames, description) =>
     .join(" ");
 
 /**
+ * Renames or removes the rules of the react-js JS plugin in an oxlint
+ * directive comment.
+ *
+ * @param {{ type: "CommentLine" | "CommentBlock" }} comment
+ * @param {{ kind: string; ruleNames: string[]; description: string | undefined }} directive
+ * @returns {string | null | undefined}
+ */
+const rewriteOxlintDirective = (comment, { kind, ruleNames, description }) => {
+  const newRuleNames = [
+    ...new Set(
+      ruleNames
+        .map((ruleName) => renamedOxlintRuleNames.get(ruleName) ?? ruleName)
+        .filter(
+          (ruleName) =>
+            !removedOxlintPluginPrefixes.some((prefix) =>
+              ruleName.startsWith(prefix),
+            ),
+        ),
+    ),
+  ];
+  if (
+    newRuleNames.length === ruleNames.length &&
+    newRuleNames.every((ruleName, index) => ruleName === ruleNames[index])
+  ) {
+    return undefined;
+  }
+  if (newRuleNames.length === 0) return null;
+  const text = formatDirective("oxlint", kind, newRuleNames, description);
+  return comment.type === "CommentBlock" ? `/* ${text} */` : `// ${text}`;
+};
+
+/**
  * Rewrites an eslint directive comment for @pob/eslint-config running the
  * moved rules in oxlint only: their names move to an `oxlint-` directive of
  * the same kind, rules of removed eslint plugins are dropped.
@@ -94,7 +135,8 @@ const formatDirective = (tool, kind, ruleNames, description) =>
 const rewriteDirectiveComment = (comment) => {
   const directive = parseDirective(comment.value);
   if (!directive) return undefined;
-  const { kind, ruleNames, description } = directive;
+  const { tool, kind, ruleNames, description } = directive;
+  if (tool === "oxlint") return rewriteOxlintDirective(comment, directive);
 
   // a blanket directive disables every rule, now in both tools
   if (ruleNames.length === 0) {

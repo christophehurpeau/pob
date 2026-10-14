@@ -124,4 +124,30 @@ describe("oxlint-directives", () => {
       run("// eslint-disable-next-line no-console\nconsole.log(<string>a);\n"),
     ).toBe("// oxlint-disable-next-line no-console\nconsole.log(<string>a);\n");
   });
+  it("renames or removes the rules of the react-js JS plugin", () => {
+    expect(
+      run(
+        "// oxlint-disable-next-line react-js/jsx-no-leaked-render, no-console\nf();\n",
+        "file.tsx",
+      ),
+    ).toBe(
+      "// oxlint-disable-next-line @pob/jsx-no-leaked-render, no-console\nf();\n",
+    );
+    expect(
+      run(
+        "// oxlint-disable-next-line react-js/sort-comp -- legacy\nf();\n",
+        "file.tsx",
+      ),
+    ).toBe("f();\n");
+    const source = "// oxlint-disable-next-line no-console\nf();\n";
+    expect(run(source)).toBe(source);
+    expect(run("/* oxlint-disable */\n")).toBe("/* oxlint-disable */\n");
+  });
+
+  it("maps the rules moved to @pob/eslint-plugin", () => {
+    expect(eslintToOxlintRuleNames["react/jsx-sort-props"]).toBe(
+      "@pob/jsx-sort-props",
+    );
+    expect(eslintToOxlintRuleNames["react/sort-comp"]).toBeUndefined();
+  });
 });
