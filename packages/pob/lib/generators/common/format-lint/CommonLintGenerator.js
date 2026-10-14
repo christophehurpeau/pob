@@ -1,5 +1,9 @@
+import { execFileSync } from "node:child_process";
+import fs from "node:fs";
 import path from "node:path";
+import { runTransform } from "@pob/codemods";
 import { format } from "oxfmt";
+import semver from "semver";
 import Generator from "yeoman-generator";
 import { quoteArg } from "../../../utils/execUtils.js";
 import inMonorepo from "../../../utils/inMonorepo.js";
@@ -54,6 +58,23 @@ const isPreviousEslintConfigOutput = async (
     }
   }
   return false;
+};
+
+// from this major, eslint no longer runs the rules checked by oxlint
+const OXLINT_ONLY_ESLINT_CONFIG_MAJOR = 68;
+
+/**
+ * Whether the project used a version of @pob/eslint-config running the rules
+ * checked by oxlint in eslint too.
+ *
+ * @param {string | undefined} range
+ */
+const isBeforeOxlintOnlyEslintConfig = (range) => {
+  if (!range || !semver.validRange(range)) return false;
+  const minVersion = semver.minVersion(range);
+  return (
+    minVersion !== null && minVersion.major < OXLINT_ONLY_ESLINT_CONFIG_MAJOR
+  );
 };
 
 // same as the base ignores of @pob/eslint-config: ignorePatterns are not
@@ -202,6 +223,12 @@ export default class CommonFormatLintGenerator extends Generator {
 
   async writing() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
+    // the codemods run once from the root, which lints the whole project
+    this.runOxlintOnlyCodemods =
+      (!inMonorepo || inMonorepo.root || this.options.monorepo) &&
+      isBeforeOxlintOnlyEslintConfig(
+        pkg.devDependencies?.["@pob/eslint-config"],
+      );
     const babelEnvs =
       (pkg.pob &&
         (pkg.pob.babelEnvs ||
@@ -379,17 +406,14 @@ export default class CommonFormatLintGenerator extends Generator {
         pkg.name !== "@pob/use-eslint-plugin"
       ) {
         packageUtils.addDevDependencies(pkg, ["@pob/eslint-config"]);
-        packageUtils.addOrRemoveDevDependencies(
-          pkg,
-          shouldHavePluginsDependencies,
-          ["eslint-plugin-import", "eslint-plugin-unicorn"],
-        );
-
-        packageUtils.addOrRemoveDevDependencies(
-          pkg,
-          shouldHavePluginsDependencies,
-          ["eslint-plugin-node"],
-        );
+        // eslint plugins are dependencies of @pob/eslint-config, loaded by
+        // the flat config
+        packageUtils.removeDevDependencies(pkg, [
+          "eslint-plugin-import",
+          "eslint-plugin-node",
+          "eslint-plugin-unicorn",
+          "@typescript-eslint/eslint-plugin",
+        ]);
 
         if ((inMonorepo && inMonorepo.root) || this.options.monorepo) {
           if (hasReact) {
@@ -405,16 +429,18 @@ export default class CommonFormatLintGenerator extends Generator {
               "@pob/eslint-config-typescript-react",
             ]);
           }
+          // import-x loads the TypeScript parser by name, from the project
+          // with yarn PnP
           packageUtils.addOrRemoveDevDependencies(
             pkg,
             this.options.typescript && shouldHavePluginsDependencies,
-            ["@typescript-eslint/eslint-plugin", "@typescript-eslint/parser"],
+            ["@typescript-eslint/parser"],
           );
         } else {
           packageUtils.addOrRemoveDevDependencies(
             pkg,
             useTypescript && shouldHavePluginsDependencies,
-            ["@typescript-eslint/eslint-plugin", "@typescript-eslint/parser"],
+            ["@typescript-eslint/parser"],
           );
 
           packageUtils.addOrRemoveDevDependencies(pkg, hasReact, [
@@ -426,8 +452,10 @@ export default class CommonFormatLintGenerator extends Generator {
 
     /**
      * @param {boolean} withReact
+     * @param {boolean} [legacy] the output of pob before @pob/eslint-config
+     *   68, to update it
      */
-    const getEslintConfig = (withReact) => {
+    const getEslintConfig = (withReact, legacy = false) => {
       if (pkg.name === "@pob/eslint-config-monorepo") {
         return {
           imports: [
@@ -441,16 +469,19 @@ export default class CommonFormatLintGenerator extends Generator {
       }
 
       const flatCascade = (() => {
-        if (!useTypescript) {
+        if (!useTypescript && legacy) {
           return [
             useNode
               ? `...pobConfig.configs.node${pkg.type === "commonjs" ? "Commonjs" : "Module"}`
               : `...pobConfig.configs.base${pkg.type === "commonjs" ? "Commonjs" : "Module"}`,
           ];
         }
-        if (!withReact) {
+        // configs.node and configs.baseModule handle "type": "commonjs"
+        if (!useTypescript || !withReact) {
           return [
-            useNode ? "...pobConfig.configs.node" : "...pobConfig.configs.base",
+            useNode
+              ? "...pobConfig.configs.node"
+              : `...pobConfig.configs.${legacy ? "base" : "baseModule"}`,
           ];
         }
 
@@ -458,7 +489,7 @@ export default class CommonFormatLintGenerator extends Generator {
           useNode
             ? "...pobTypescriptConfigReact.configs.node"
             : "...pobTypescriptConfigReact.configs.base",
-          withReact && this.options.isApp && "...pobConfig.configs.app",
+          legacy && this.options.isApp && "...pobConfig.configs.app",
           pkg.dependencies?.["react-native-web"] &&
             '...pobTypescriptConfigReact.configs["react-native-web"]',
         ];
@@ -560,20 +591,25 @@ export default class CommonFormatLintGenerator extends Generator {
           (await isPreviousEslintConfigOutput(
             eslintConfigPath,
             existingEslintConfig,
-            [
-              getEslintConfig(!hasReact),
-              // before the react configs were used when react is detected
-              hasReact && {
-                ...getEslintConfig(hasReact),
-                flatCascade: getEslintConfig(hasReact).flatCascade.map(
-                  (config) =>
+            [false, true]
+              .flatMap((legacy) => [
+                getEslintConfig(!hasReact, legacy),
+                legacy && getEslintConfig(hasReact, legacy),
+                // before the react configs were used when react is detected
+                hasReact && {
+                  ...getEslintConfig(hasReact, legacy),
+                  flatCascade: getEslintConfig(
+                    hasReact,
+                    legacy,
+                  ).flatCascade.map((config) =>
                     config.replace(
                       /^\.\.\.pobTypescriptConfigReact\.configs\.(node|base)$/,
                       "...pobConfig.configs.$1",
                     ),
-                ),
-              },
-            ].filter(Boolean),
+                  ),
+                },
+              ])
+              .filter(Boolean),
           )))
       ) {
         this.fs.write(eslintConfigPath, eslintConfigContent);
@@ -599,19 +635,20 @@ export default class CommonFormatLintGenerator extends Generator {
         ...oxlintConfig,
         extends: [
           pobOxlintConfigPath("base"),
-          // ES module rules, not for configs.nodeCommonjs
+          // ES module rules, not for .js files of "type": "commonjs" packages
           (useTypescript || pkg.type !== "commonjs") &&
             pobOxlintConfigPath("module"),
-          // like configs.node and configs.nodeModule (not configs.nodeCommonjs)
+          useNode && pobOxlintConfigPath("node"),
+          // .js files of "type": "commonjs" packages, after node.json
           useNode &&
-            (useTypescript || pkg.type !== "commonjs") &&
-            pobOxlintConfigPath("node"),
+            !useTypescript &&
+            pkg.type === "commonjs" &&
+            pobOxlintConfigPath("commonjs"),
           // type-aware rules: oxlint fails without tsgolint, even in a
           // project without TypeScript files
           useTypescript && pobOxlintConfigPath("typescript"),
-          // overrides of typescript.json, like the matching eslint configs
-          // (configs.app, configs.allowUnsafe, ...). Only app is known here:
-          // the others are kept when added by hand.
+          // overrides of typescript.json. Only app is known here: the others
+          // are kept when added by hand.
           ...(useTypescript
             ? [
                 "app",
@@ -626,8 +663,7 @@ export default class CommonFormatLintGenerator extends Generator {
                 )
                 .map(pobOxlintConfigPath)
             : []),
-          // like the @pob/eslint-config-typescript-react configs, after
-          // module.json and node.json: they override import/extensions.
+          // after module.json and node.json: they override import/extensions.
           // react-native.json is kept when added by hand.
           ...(hasReact
             ? ["react", "react-native", "react-native-web"]
@@ -687,5 +723,39 @@ export default class CommonFormatLintGenerator extends Generator {
     delete pkg.scripts["lint:prettier:fix"];
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
+  }
+
+  /**
+   * Updates eslint-disable comments and eslint.config.js for
+   * @pob/eslint-config running the rules checked by oxlint in oxlint only.
+   */
+  async end() {
+    if (!this.runOxlintOnlyCodemods) return;
+    const cwd = this.destinationPath();
+    const files = execFileSync(
+      "git",
+      ["ls-files", "--cached", "--others", "--exclude-standard"],
+      { cwd, encoding: "utf8" },
+    )
+      .split("\n")
+      .filter((file) => /\.[cm]?[jt]sx?$/.test(file) && !file.endsWith(".d.ts"))
+      .map((file) => path.join(cwd, file));
+    console.log(
+      "@pob/eslint-config 68: rewriting eslint-disable comments of rules checked by oxlint",
+    );
+    await runTransform("oxlint-directives", files, { silent: true });
+
+    const eslintConfigPath = ["eslint.config.js", "eslint.config.mjs"]
+      .map((fileName) => path.join(cwd, fileName))
+      .find((filePath) => fs.existsSync(filePath));
+    if (eslintConfigPath) {
+      await runTransform("oxlint-eslint-config", [eslintConfigPath]);
+      const { code } = await format(
+        eslintConfigPath,
+        fs.readFileSync(eslintConfigPath, "utf8"),
+        { printWidth: 80 },
+      );
+      fs.writeFileSync(eslintConfigPath, code);
+    }
   }
 }

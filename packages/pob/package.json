@@ -37,6 +37,7 @@
     "tsc": "tsc"
   },
   "dependencies": {
+    "@pob/codemods": "workspace:*",
     "@pob/eslint-config": "workspace:*",
     "@pob/eslint-config-typescript-react": "workspace:*",
     "@pob/sort-object": "workspace:*",

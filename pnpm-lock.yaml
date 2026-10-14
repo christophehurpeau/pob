@@ -318,6 +318,9 @@ importers:
 
   packages/pob:
     dependencies:
+      '@pob/codemods':
+        specifier: workspace:*
+        version: link:../../@pob/codemods
       '@pob/eslint-config':
         specifier: workspace:*
         version: link:../../@pob/eslint-config
