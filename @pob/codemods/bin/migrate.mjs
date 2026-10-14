@@ -13,7 +13,7 @@ const globPaths = argv[1];
 if (!transformerName || !globPaths) {
   const transformerList = readdirSync(
     new URL("../lib/transforms/", import.meta.url),
-  );
+  ).filter((fileName) => fileName.endsWith(".cjs"));
   throw new Error(
     `Usage: pob-migrate <transformer-name> <glob-paths>\n${transformerList
       .map((t) => `- "${t.slice(0, -4)}"`)

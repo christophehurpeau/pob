@@ -18,10 +18,9 @@
     "pob-migrate": "./bin/migrate.mjs"
   },
   "files": [
-    "src",
-    "build",
     "bin",
-    "lib/index.js"
+    "lib",
+    "!lib/**/*.test.js"
   ],
   "type": "module",
   "main": "./lib/index.js",
@@ -39,6 +38,7 @@
     "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/codemods'"
   },
   "dependencies": {
+    "@babel/parser": "7.29.7",
     "jscodeshift": "17.4.0"
   },
   "devDependencies": {
