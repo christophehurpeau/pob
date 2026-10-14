@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [39.3.0](https://github.com/christophehurpeau/pob/compare/pob%4039.2.0...pob%4039.3.0) (2026-10-14)
+
+### Bug Fixes
+
+* **pob:** delete next-env.d.ts when nextjs is not used
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [39.2.0](https://github.com/christophehurpeau/pob/compare/pob%4039.1.2...pob%4039.2.0) (2026-10-13)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Fversion%407.0.0...%40pob%2Fversion%407.1.0) (2026-10-14)
+
+### Features
+
+* **eslint-config:** remove deprecated rules
+
 ## [7.0.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Fversion%406.5.1...%40pob%2Fversion%407.0.0) (2026-10-13)
 
 ### ⚠ BREAKING CHANGES

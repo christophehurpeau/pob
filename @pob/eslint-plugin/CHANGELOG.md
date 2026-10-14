@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [66.7.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-plugin%4066.6.0...%40pob%2Feslint-plugin%4066.7.0) (2026-10-14)
+
+### Features
+
+* **eslint-plugin:** add no-useless-template-literal rule
+
 ## [66.6.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-plugin%4066.5.0...%40pob%2Feslint-plugin%4066.6.0) (2026-10-13)
 
 ### Features

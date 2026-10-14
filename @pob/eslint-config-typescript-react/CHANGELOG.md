@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.14.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-config-typescript-react%4067.13.0...%40pob%2Feslint-config-typescript-react%4067.14.0) (2026-10-14)
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-plugin
+
+
 ## [67.13.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-config-typescript-react%4067.12.0...%40pob%2Feslint-config-typescript-react%4067.13.0) (2026-10-13)
 
 Version bump for dependency: @pob/eslint-config

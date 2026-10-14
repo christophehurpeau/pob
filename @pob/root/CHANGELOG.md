@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.17.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4027.16.0...%40pob%2Froot%4027.17.0) (2026-10-14)
+
+### Bug Fixes
+
+* **root:** run lint-staged commands sequentially
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [27.16.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4027.15.0...%40pob%2Froot%4027.16.0) (2026-10-13)
 
 ### Features
