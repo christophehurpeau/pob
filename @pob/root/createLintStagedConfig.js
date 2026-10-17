@@ -74,7 +74,8 @@ const hasOxlint = fs.existsSync(path.resolve(".oxlintrc.json"));
 const isOxlintSupportedFile = (filename) =>
   /\.[cm]?[jt]sx?$/.test(filename) && !filename.endsWith(".d.ts");
 
-const CODE_COMMANDS = [OXFMT, hasOxlint && OXLINT_FIX, ESLINT_FIX].filter(
+// oxfmt runs after the linters, as their fixes are not formatted.
+const CODE_COMMANDS = [hasOxlint && OXLINT_FIX, ESLINT_FIX, OXFMT].filter(
   Boolean,
 );
 
@@ -172,10 +173,10 @@ const createLegacyConfig = ({
       return [
         ...installAndDedupe,
         pkg.scripts?.checks ? `${pm.name} run checks` : undefined,
+        ESLINT_FIX,
         packagejsonFilenames.length === 0
           ? undefined
           : withFilenames("oxfmt", packagejsonFilenames),
-        ESLINT_FIX,
         getGitAddPmFilesCommand(),
       ].filter(Boolean);
     },
@@ -266,9 +267,10 @@ const createConfig = ({
       return [
         ...(hasPmFiles ? installAndDedupe : []),
         hasPmFiles && pkg.scripts?.checks ? `${pm.name} run checks` : undefined,
-        withFilenamesOrWholeProject(OXFMT, filenames),
         getOxlintCommand(),
         getEslintCommand(),
+        // after the linters, as their fixes are not formatted
+        withFilenamesOrWholeProject(OXFMT, filenames),
         hasPmFiles ? getGitAddPmFilesCommand() : undefined,
         // after the tasks above, so that the build sees the formatted and
         // fixed files
