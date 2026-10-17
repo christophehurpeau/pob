@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.0.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4027.17.0...%40pob%2Froot%4028.0.0) (2026-10-17)
+
+### Bug Fixes
+
+* **root:** run oxfmt after linter fixes in lint-staged
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [27.17.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4027.16.0...%40pob%2Froot%4027.17.0) (2026-10-14)
 
 ### Bug Fixes

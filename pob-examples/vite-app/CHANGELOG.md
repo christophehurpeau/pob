@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.10.0](https://github.com/christophehurpeau/pob/compare/example-vite-app%400.9.0...example-vite-app%400.10.0) (2026-10-17)
+
+Version bump for dependency: example-typescript-lib-rollup-esbuild
+
+
 ## [0.9.0](https://github.com/christophehurpeau/pob/compare/example-vite-app@0.8.0...example-vite-app@0.9.0) (2026-10-06)
 
 Version bump for dependency: example-typescript-lib-rollup-esbuild

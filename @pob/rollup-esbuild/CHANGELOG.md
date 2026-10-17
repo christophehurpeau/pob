@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Frollup-esbuild%4010.2.0...%40pob%2Frollup-esbuild%4011.0.0) (2026-10-17)
+
+### ⚠ BREAKING CHANGES
+
+* **rollup-esbuild:** the node target now resolves `.web.*` files before the
+  plain ones, as the browser target does. A `.web` file using browser globals
+  (window, document, localStorage) outside effects and event handlers breaks
+  the node build: rename it `.target-browser.*`, which only the browser target
+  resolves. Pass `getExtensions` to `createRollupConfig` to keep the previous
+  resolution.
+
+### Features
+
+* **rollup-esbuild:** resolve .web files for the node target
+
 ## [10.2.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-esbuild@10.1.0...@pob/rollup-esbuild@10.2.0) (2026-10-06)
 
 ### Features

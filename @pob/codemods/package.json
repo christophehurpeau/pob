@@ -1,6 +1,6 @@
 {
   "name": "@pob/codemods",
-  "version": "0.17.1",
+  "version": "0.18.0",
   "description": "codemods for pob",
   "keywords": [],
   "homepage": "https://github.com/christophehurpeau/pob",

@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [68.0.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-config%4067.14.0...%40pob%2Feslint-config%4068.0.0) (2026-10-17)
+
+### ⚠ BREAKING CHANGES
+
+* **eslint-config:** a .oxlintrc.json extending the oxlint configs is required:
+  eslint only runs the JSON, import-x, no-undef, unicode-bom, strict and
+  n/hashbang rules. Removed configs: app, allowUnsafe, allowUnsafeAsWarn,
+  allowImplicitReturnType, nodeModule and nodeCommonjs (configs.node reads the
+  "type" of package.json), and oxlint of eslint-config-typescript-react.
+  Removed exports: ./lib/rules/*, isOxlintConfigExtended, createOxlintConfigs,
+  and the configs of @pob/eslint-plugin. eslint-disable comments of rules
+  checked by oxlint must become oxlint-disable comments: pob update runs the
+  @pob/codemods transforms.
+* **eslint-config-typescript-react:** eslint-plugin-react is no longer run by oxlint (react-js
+  JS plugin). jsx-no-leaked-render and jsx-sort-props move to
+  @pob/jsx-no-leaked-render and @pob/jsx-sort-props, no-deprecated,
+  no-invalid-html-attribute and destructuring-assignment are removed, and
+  eslint-plugin-react-x rules are enabled: no-class-component (instead of
+  prefer-stateless-function, sort-comp and no-arrow-function-lifecycle),
+  no-component-will-*, and the React 19 rules no-forward-ref,
+  no-use-context and no-context-provider.
+
+### Features
+
+* **eslint-config-typescript-react:** replace eslint-plugin-react with [@pob](https://github.com/pob) rules and react-x
+* **eslint-config:** run in eslint only the rules oxlint cannot check
+
+Version bump for dependency: @pob/eslint-plugin
+
+
 ## [67.14.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-config%4067.13.0...%40pob%2Feslint-config%4067.14.0) (2026-10-14)
 
 ### Features
