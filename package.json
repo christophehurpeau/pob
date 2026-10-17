@@ -40,7 +40,7 @@
     "@pob/version": "workspace:*",
     "@types/node": "24.19.1",
     "@typescript/native": "npm:typescript@7.0.2",
-    "@vitest/coverage-v8": "5.0.3",
+    "@vitest/coverage-v8": "5.0.4",
     "eslint": "10.12.0",
     "oxfmt": "0.72.0",
     "oxlint": "1.85.0",
@@ -48,7 +48,7 @@
     "react": "19.2.8",
     "typescript": "npm:@typescript/typescript6@6.0.2",
     "vite": "8.3.4",
-    "vitest": "5.0.3"
+    "vitest": "5.0.4"
   },
   "commitlint": {
     "extends": [
