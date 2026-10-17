@@ -44,6 +44,12 @@ yarn-error.log*
 /test-results
 /playwright-report
 <% } -%>
+<% if (designSync) { -%>
+
+# Claude Design sync
+/.ds-sync/
+/ds-bundle/
+<% } -%>
 
 #*
 *$

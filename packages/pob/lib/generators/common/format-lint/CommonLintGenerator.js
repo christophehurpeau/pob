@@ -5,6 +5,7 @@ import { runTransform } from "@pob/codemods";
 import { format } from "oxfmt";
 import semver from "semver";
 import Generator from "yeoman-generator";
+import hasDesignSync from "../../../utils/designSync.js";
 import { quoteArg } from "../../../utils/execUtils.js";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import * as packageUtils from "../../../utils/package.js";
@@ -564,6 +565,12 @@ export default class CommonFormatLintGenerator extends Generator {
         }
         if (inMonorepo && inMonorepo.root && this.options.build) {
           ignorePatterns.add("/rollup.config.mjs");
+        }
+
+        if (hasDesignSync(this)) {
+          ignorePatterns.add("/.design-sync/");
+          ignorePatterns.add("/.ds-sync/");
+          ignorePatterns.add("/ds-bundle/");
         }
 
         if (rootIgnorePaths) {

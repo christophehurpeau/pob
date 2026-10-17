@@ -1,4 +1,5 @@
 import Generator from "yeoman-generator";
+import hasDesignSync from "../../../utils/designSync.js";
 
 export default class CoreGitignoreGenerator extends Generator {
   constructor(args, opts) {
@@ -82,6 +83,7 @@ export default class CoreGitignoreGenerator extends Generator {
         typescript: withBabel || this.options.typescript,
         paths: this.options.paths,
         playwright: this.options.playwright,
+        designSync: hasDesignSync(this),
       });
     }
 
