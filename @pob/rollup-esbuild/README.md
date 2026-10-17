@@ -35,3 +35,27 @@ export default createRollupConfig({
   plugins: [watch && run({ execArgv: ["--enable-source-maps"] })],
 });
 ```
+
+## Target-specific files
+
+Each env of `pob.envs` resolves a file in this order, `.ts` standing for every
+source extension:
+
+| target         | resolution order                                                 |
+| -------------- | ---------------------------------------------------------------- |
+| `browser`      | `.web.target-browser.ts`, `.target-browser.ts`, `.web.ts`, `.ts` |
+| `node`         | `.web.target-node.ts`, `.target-node.ts`, `.web.ts`, `.ts`       |
+| `react-native` | `.target-react-native.ts`, `.ts`                                 |
+
+- `.target-<target>` selects by runtime: put code needing browser globals
+  (`window`, `document`, `localStorage`) in `.target-browser` files, and code
+  needing Node APIs in `.target-node` files.
+- `.web` selects by platform, as react-native does: the react-native-web
+  variant of a component. The `node` build includes it, because its consumer is
+  web server rendering (expo-router static output resolves the `node` export on
+  the server), which must render the tree the `browser` build hydrates. A `.web`
+  file must therefore not touch browser globals outside of effects and event
+  handlers.
+
+Pass `getExtensions(extensions, env)` to `createRollupConfig` to resolve
+differently.

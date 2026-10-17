@@ -15,11 +15,12 @@ export default function createRollupConfig({
   outDirectory = "dist",
   pkg = JSON.parse(readFileSync(path.join(cwd, "package.json"))),
   plugins = [],
+  // `.web` is the react-native-web platform: node builds it too, as web server
+  // rendering must output the tree the browser build hydrates. Code needing a
+  // browser runtime goes in `.target-browser` files.
   getExtensions = (extensions, { target }) => {
-    if (target === "browser") {
-      return extensions.flatMap((ext) => [`.web${ext}`, `${ext}`]);
-    }
-    return extensions;
+    if (target === "react-native") return extensions;
+    return extensions.flatMap((ext) => [`.web${ext}`, `${ext}`]);
   },
 }) {
   const pobConfig = pkg.pob;
