@@ -360,11 +360,11 @@ importers:
         specifier: ^4.1.1
         version: 4.1.1
       mem-fs:
-        specifier: 4.1.5
-        version: 4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12)
+        specifier: 6.0.0
+        version: 6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12)
       mem-fs-editor:
         specifier: 12.1.0
-        version: 12.1.0(@types/node@24.19.1)(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)
+        version: 12.1.0(@types/node@24.19.1)(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)
       minimist:
         specifier: 1.2.8
         version: 1.2.8
@@ -388,10 +388,10 @@ importers:
         version: 8.0.0
       yeoman-environment:
         specifier: 6.3.0
-        version: 6.3.0(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(@yeoman/types@1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12)))(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)
+        version: 6.3.0(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(@yeoman/types@1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12)))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)
       yeoman-generator:
         specifier: 10.0.1
-        version: 10.0.1(@types/node@24.19.1)(@yeoman/types@1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12)))(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)
+        version: 10.0.1(@types/node@24.19.1)(@yeoman/types@1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12)))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)
     devDependencies:
       '@pob/root':
         specifier: workspace:*
@@ -404,7 +404,7 @@ importers:
         version: typescript@7.0.2
       '@yeoman/types':
         specifier: 1.13.1
-        version: 1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12))
+        version: 1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))
 
   packages/pob-dependencies:
     devDependencies:
@@ -3938,8 +3938,8 @@ packages:
       '@types/node':
         optional: true
 
-  mem-fs@4.1.5:
-    resolution: {integrity: sha512-6aWRo1jLo82ngo44tPQXjzINN7gvSNWhMU96I+O5nsJWdPi5vbUJWMTDGZDb/AVpCJRpaLGcFgrIBIpyk0DuUA==}
+  mem-fs@6.0.0:
+    resolution: {integrity: sha512-sj1/T9x/ypgRQQk4NDhA9QTtBr2woET2ayxkvCLoDPQXQ3DPkbeC+kQj7SiP8kn6Hi9ld8lVBCSj/KtZswP3jg==}
     engines: {node: '>=18.0.0'}
     peerDependencies:
       '@types/node': '>=18'
@@ -7241,18 +7241,18 @@ snapshots:
     transitivePeerDependencies:
       - '@types/node'
 
-  '@yeoman/conflicter@4.1.0(@types/node@24.19.1)(@yeoman/types@1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12)))(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)':
+  '@yeoman/conflicter@4.1.0(@types/node@24.19.1)(@yeoman/types@1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12)))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)':
     dependencies:
       '@types/node': 24.19.1
       '@yeoman/transform': 2.1.1(@types/node@24.19.1)
-      '@yeoman/types': 1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12))
+      '@yeoman/types': 1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))
       binary-extensions: 3.1.0
       cli-table: 0.3.11
       dateformat: 5.0.3
       diff: 9.0.0
       isbinaryfile: 5.0.7
-      mem-fs: 4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12)
-      mem-fs-editor: 12.1.0(@types/node@24.19.1)(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)
+      mem-fs: 6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12)
+      mem-fs-editor: 12.1.0(@types/node@24.19.1)(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)
       minimatch: 10.2.5
       p-transform: 5.0.1
       pretty-bytes: 7.1.0
@@ -7270,12 +7270,12 @@ snapshots:
       '@types/node': 24.19.1
       minimatch: 9.0.9
 
-  '@yeoman/types@1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12))':
+  '@yeoman/types@1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))':
     dependencies:
       '@types/node': 24.19.1
     optionalDependencies:
       '@yeoman/adapter': 4.0.2(@types/node@24.19.1)
-      mem-fs: 4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12)
+      mem-fs: 6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12)
 
   abbrev@4.0.0: {}
 
@@ -8363,7 +8363,7 @@ snapshots:
 
   mdurl@2.0.0: {}
 
-  mem-fs-editor@12.1.0(@types/node@24.19.1)(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0):
+  mem-fs-editor@12.1.0(@types/node@24.19.1)(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0):
     dependencies:
       '@types/ejs': 3.1.5
       '@types/picomatch': 4.0.3
@@ -8373,7 +8373,7 @@ snapshots:
       deep-extend: 0.6.0
       ejs: 6.0.1
       isbinaryfile: 5.0.7
-      mem-fs: 4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12)
+      mem-fs: 6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12)
       minimatch: 10.2.5
       multimatch: 8.0.0
       normalize-path: 3.0.0
@@ -8387,7 +8387,7 @@ snapshots:
       - react-native-b4a
       - supports-color
 
-  mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12):
+  mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12):
     dependencies:
       vinyl: 3.0.1
       vinyl-file: 5.0.0
@@ -9472,13 +9472,13 @@ snapshots:
 
   yaml@2.9.1: {}
 
-  yeoman-environment@6.3.0(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(@yeoman/types@1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12)))(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0):
+  yeoman-environment@6.3.0(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(@yeoman/types@1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12)))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0):
     dependencies:
       '@yeoman/adapter': 4.0.2(@types/node@24.19.1)
-      '@yeoman/conflicter': 4.1.0(@types/node@24.19.1)(@yeoman/types@1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12)))(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)
+      '@yeoman/conflicter': 4.1.0(@types/node@24.19.1)(@yeoman/types@1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12)))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)
       '@yeoman/namespace': 2.1.0
       '@yeoman/transform': 2.1.1(@types/node@24.19.1)
-      '@yeoman/types': 1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12))
+      '@yeoman/types': 1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))
       arrify: 3.0.0
       chalk: 5.6.2
       commander: 14.0.3
@@ -9489,8 +9489,8 @@ snapshots:
       grouped-queue: 2.1.0
       locate-path: 8.0.0
       lodash-es: 4.18.1
-      mem-fs: 4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12)
-      mem-fs-editor: 12.1.0(@types/node@24.19.1)(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)
+      mem-fs: 6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12)
+      mem-fs-editor: 12.1.0(@types/node@24.19.1)(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)
       semver: 7.8.5
       slash: 5.1.0
       untildify: 6.0.0
@@ -9501,19 +9501,19 @@ snapshots:
       - react-native-b4a
       - supports-color
 
-  yeoman-generator@10.0.1(@types/node@24.19.1)(@yeoman/types@1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12)))(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0):
+  yeoman-generator@10.0.1(@types/node@24.19.1)(@yeoman/types@1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12)))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0):
     dependencies:
       '@types/debug': 4.1.13
       '@types/lodash-es': 4.17.12
       '@yeoman/namespace': 2.1.0
-      '@yeoman/types': 1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12))
+      '@yeoman/types': 1.13.1(@types/node@24.19.1)(@yeoman/adapter@4.0.2(@types/node@24.19.1))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))
       chalk: 6.0.1
       debug: 4.4.3(supports-color@7.2.0)
       execa: 10.1.0
       latest-version: 9.0.0
       lodash-es: 4.18.1
-      mem-fs: 4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12)
-      mem-fs-editor: 12.1.0(@types/node@24.19.1)(mem-fs@4.1.5(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)
+      mem-fs: 6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12)
+      mem-fs-editor: 12.1.0(@types/node@24.19.1)(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)
       minimist: 1.2.8
       read-package-up: 12.0.0
       semver: 7.8.5
