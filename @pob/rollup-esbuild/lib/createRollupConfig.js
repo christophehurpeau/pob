@@ -2,6 +2,7 @@ import { chmodSync, readFileSync } from "node:fs";
 import path from "node:path";
 import {
   createSourceWorkspaceDependencies,
+  createWatchWorkspaceDependencies,
   nodeFormatToExt,
   resolveEntry,
 } from "@pob/rollup";
@@ -88,6 +89,7 @@ export default function createRollupConfig({
       external,
       plugins: [
         sourceWorkspaceDependencies.plugin,
+        createWatchWorkspaceDependencies(cwd, pkg),
         esbuild({
           loaders: {
             // https://github.com/egoist/rollup-plugin-esbuild/issues/384
