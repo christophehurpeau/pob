@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.4.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Frollup%408.3.0...%40pob%2Frollup%408.4.0) (2026-10-18)
+
+### Features
+
+* **rollup-esbuild:** restart on rebuilds of workspace dependencies
+
 ## [8.3.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup@8.2.0...@pob/rollup@8.3.0) (2026-10-06)
 
 ### Features

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.1.0](https://github.com/christophehurpeau/pob/compare/pob%4040.0.0...pob%4040.1.0) (2026-10-18)
+
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [40.0.0](https://github.com/christophehurpeau/pob/compare/pob%4039.3.0...pob%4040.0.0) (2026-10-17)
 
 ### Features

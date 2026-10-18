@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.1.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies%4028.0.0...pob-dependencies%4028.1.0) (2026-10-18)
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [28.0.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies%4027.14.0...pob-dependencies%4028.0.0) (2026-10-17)
 
 Version bump for dependency: @pob/eslint-config

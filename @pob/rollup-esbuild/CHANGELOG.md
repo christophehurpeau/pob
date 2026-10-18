@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.1.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Frollup-esbuild%4011.0.0...%40pob%2Frollup-esbuild%4011.1.0) (2026-10-18)
+
+### Features
+
+* **rollup-esbuild:** restart on rebuilds of workspace dependencies
+
+Version bump for dependency: @pob/rollup
+
+
 ## [11.0.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Frollup-esbuild%4010.2.0...%40pob%2Frollup-esbuild%4011.0.0) (2026-10-17)
 
 ### ⚠ BREAKING CHANGES
