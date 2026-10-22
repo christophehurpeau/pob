@@ -740,7 +740,9 @@ export default class CommonTranspilerGenerator extends Generator {
   }
 
   end() {
-    if (this.bundler) {
+    // when updated from the monorepo root, dependencies are not installed yet:
+    // the root builds after installing
+    if (this.bundler && !this.options.fromPob) {
       this.spawnCommandSync(
         packageManagerRun(this.options.packageManager, "build"),
       );
