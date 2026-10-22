@@ -30,11 +30,12 @@
   },
   "scripts": {
     "build": "pnpm run build:definitions",
-    "build:definitions": "tsc -p tsconfig.json",
+    "build:definitions": "tsrs -p tsconfig.json",
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'packages/pob'",
     "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet 'packages/pob'",
-    "tsc": "tsc"
+    "tsc": "tsrs",
+    "tsc:go": "tsc"
   },
   "dependencies": {
     "@pob/codemods": "workspace:*",
@@ -68,7 +69,8 @@
     "@pob/root": "workspace:*",
     "@types/node": "24.19.1",
     "@typescript/native": "npm:typescript@7.0.2",
-    "@yeoman/types": "1.13.1"
+    "@yeoman/types": "1.13.1",
+    "tsrs": "0.18.0-ts7.1.0-dev.20260929"
   },
   "engines": {
     "node": ">=24.14.1"

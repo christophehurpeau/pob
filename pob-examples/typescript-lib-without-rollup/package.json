@@ -24,13 +24,14 @@
     }
   },
   "scripts": {
-    "build": "tsc",
+    "build": "tsrs",
     "clean": "yarn clean:build",
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'pob-examples/typescript-lib-without-rollup'",
     "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet 'pob-examples/typescript-lib-without-rollup'",
     "test": "pnpm run --dir '../..' test -- 'pob-examples/typescript-lib-without-rollup'",
-    "tsc": "tsc",
+    "tsc": "tsrs",
+    "tsc:go": "tsc",
     "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
   },
   "dependencies": {
@@ -39,6 +40,7 @@
   "devDependencies": {
     "@types/node": "24.19.1",
     "@typescript/native": "npm:typescript@7.0.2",
+    "tsrs": "0.18.0-ts7.1.0-dev.20260929",
     "typescript": "npm:@typescript/typescript6@6.0.2"
   },
   "engines": {

@@ -82,6 +82,10 @@ const CODE_COMMANDS = [hasOxlint && OXLINT_FIX, ESLINT_FIX, OXFMT].filter(
 // a monorepo without packages has no tsconfig.json, and tsc fails without one
 const hasTsconfig = fs.existsSync(path.resolve("tsconfig.json"));
 
+// same compiler as the "tsc" script added by pob: tsrs and tsc do not share
+// their .tsbuildinfo
+const TSC = pkg.devDependencies?.tsrs ? "tsrs" : "tsc";
+
 const getSrcDirectories = () => {
   if (workspacesPattern) {
     return `${workspacesPattern}/{src,lib}`;
@@ -227,8 +231,8 @@ const createConfig = ({
   // Both build the whole project, in parallel.
   const buildCommands = (
     hasRollup
-      ? ["rollup --config rollup.config.mjs", hasTsconfig && "tsc -b"]
-      : [hasTsconfig && "tsc"]
+      ? ["rollup --config rollup.config.mjs", hasTsconfig && `${TSC} -b`]
+      : [hasTsconfig && TSC]
   ).filter(Boolean);
 
   // A single function at the top level: lint-staged runs its commands
@@ -299,10 +303,10 @@ export default function createLintStagedConfig() {
       ? [
           [
             () => "rollup --config rollup.config.mjs",
-            hasTsconfig && (() => "tsc -b"),
+            hasTsconfig && (() => `${TSC} -b`),
           ].filter(Boolean),
         ] // run in parallel
-      : [hasTsconfig && (() => "tsc")].filter(Boolean),
+      : [hasTsconfig && (() => TSC)].filter(Boolean),
     cssPattern: `{.storybook,${srcDirectories}}/**/*.css`,
     hasRollup,
     otherJsonPattern: "!(package|package-lock|.eslintrc).json",

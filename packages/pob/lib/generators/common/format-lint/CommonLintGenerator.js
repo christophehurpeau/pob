@@ -725,7 +725,7 @@ export default class CommonFormatLintGenerator extends Generator {
           ? `${packageManagerExecWithCwd(this.options.packageManager, "../..", "oxlint")} ${args} ${quoteArg(path.relative("../..", "."))}`
           : `oxlint ${args}`,
         lint: `${packageManagerRun(this.options.packageManager, "lint:oxlint")} && ${
-          useTypescript && !composite ? "tsc && " : ""
+          useTypescript && !composite ? "tsrs && " : ""
         }${packageManagerRun(this.options.packageManager, "lint:eslint")}`,
       });
 

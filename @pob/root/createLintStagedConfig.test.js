@@ -24,4 +24,14 @@ describe("createLintStagedConfig", () => {
       expect(config).toBeDefined();
     });
   });
+
+  it("builds with tsrs when it is a devDependency", () => {
+    // this monorepo has tsrs and @pob/rollup-esbuild as devDependencies
+    const config = createLintStagedConfig();
+    const commands = config["*"](["packages/pob/src/index.ts"]);
+    expect(commands.at(-1)).toEqual([
+      "rollup --config rollup.config.mjs",
+      "tsrs -b",
+    ]);
+  });
 });

@@ -178,7 +178,7 @@ export default class CommonTranspilerGenerator extends Generator {
           if (bundler && bundler.startsWith("rollup")) {
             return `${packageManagerRun(this.options.packageManager, "clean:build")} && rollup --config rollup.config.mjs --watch`;
           }
-          if (bundler === "tsc") return "tsc --watch";
+          if (bundler === "tsc") return "tsrs --watch";
           if (bundler === "esbuild") return "pob-esbuild-watch";
         })(),
       });
@@ -194,7 +194,7 @@ export default class CommonTranspilerGenerator extends Generator {
         if (bundler && bundler.startsWith("rollup")) {
           return `${packageManagerRun(this.options.packageManager, "clean:build")} && rollup --config rollup.config.mjs`;
         }
-        if (bundler === "tsc") return "tsc";
+        if (bundler === "tsc") return "tsrs";
         if (bundler === "esbuild") return "pob-esbuild-build";
       })(),
     });
@@ -203,7 +203,7 @@ export default class CommonTranspilerGenerator extends Generator {
       !this.options.isApp && withTypescript && bundler !== "tsc";
 
     packageUtils.addOrRemoveScripts(pkg, shouldBuildDefinitions, {
-      "build:definitions": "tsc -p tsconfig.json",
+      "build:definitions": "tsrs -p tsconfig.json",
     });
 
     if (shouldBuildDefinitions) {
@@ -218,7 +218,7 @@ export default class CommonTranspilerGenerator extends Generator {
       if (this.fs.exists(this.destinationPath("lib/index.d.ts"))) {
         packageUtils.addScripts(pkg, {
           "build:definitions":
-            "tsc --lib esnext --noEmit --skipLibCheck ./lib/index.d.ts",
+            "tsrs --lib esnext --noEmit --skipLibCheck ./lib/index.d.ts",
           build: packageManagerRun(
             this.options.packageManager,
             "build:definitions",
@@ -229,7 +229,7 @@ export default class CommonTranspilerGenerator extends Generator {
       if (this.fs.exists(this.destinationPath("lib/index.ts"))) {
         packageUtils.addScripts(pkg, {
           "build:definitions":
-            "tsc --lib esnext --noEmit --skipLibCheck ./lib/index.ts",
+            "tsrs --lib esnext --noEmit --skipLibCheck ./lib/index.ts",
           build: packageManagerRun(
             this.options.packageManager,
             "build:definitions",

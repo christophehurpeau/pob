@@ -47,6 +47,7 @@ const { default: config } = await import(pathToFileURL(configPath).href);
 const SKIP = [
   "git add", // side effects during agent execution
   "tsc", // too slow per-file (matches "tsc" and "tsc -b")
+  "tsrs", // too slow per-file (matches "tsrs" and "tsrs -b")
   "rollup", // too slow per-file
   "yarn", // package manager install/dedupe
   "pnpm", // package manager install/dedupe

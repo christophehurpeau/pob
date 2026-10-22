@@ -23,13 +23,15 @@
     "serve": "vite preview",
     "start": "vite",
     "test": "yarn '../..' run test -- 'pob-examples/vite-app'",
-    "tsc": "tsc"
+    "tsc": "tsrs",
+    "tsc:go": "tsc"
   },
   "dependencies": {
     "example-typescript-lib-rollup-esbuild": "workspace:*"
   },
   "devDependencies": {
     "@typescript/native": "npm:typescript@7.0.2",
+    "tsrs": "0.18.0-ts7.1.0-dev.20260929",
     "typescript": "npm:@typescript/typescript6@6.0.2",
     "vite": "8.3.4"
   },

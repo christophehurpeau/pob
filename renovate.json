@@ -119,6 +119,12 @@
       "reviewers": ["christophehurpeau"]
     },
     {
+      "description": "tsrs only publishes prereleases (e.g. 0.18.0-ts7.1.0-dev.20260929), which Renovate skips by default",
+      "matchPackageNames": ["tsrs"],
+      "ignoreUnstable": false,
+      "reviewers": ["christophehurpeau"]
+    },
+    {
       "groupName": "pnpm",
       "matchPackageNames": ["pnpm"],
       "rangeStrategy": "replace",

@@ -16,6 +16,7 @@ interface Dependencies {
   rollup: "4.60.4";
   semver: "7.8.5";
   tslib: "2.8.1";
+  tsrs: "0.18.0-ts7.1.0-dev.20260929";
   typedoc: "0.28.20";
   typescript: "npm:@typescript/typescript6@6.0.2";
   vite: "8.3.4";

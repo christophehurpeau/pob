@@ -222,12 +222,13 @@ export default class CommonTypescriptGenerator extends Generator {
 
     // "typescript" is aliased to the typescript 6 api package, still required by
     // typescript-eslint and typedoc. "@typescript/native" is typescript 7, which
-    // provides the "tsc" binary.
+    // provides the "tsc" binary, kept for the "tsc:go" script. "tsrs" is the
+    // rust port of typescript 7, used by all the other scripts.
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       this.options.enable ||
         this.fs.exists(this.destinationPath("lib/index.d.ts")),
-      ["typescript", "@typescript/native"],
+      ["typescript", "@typescript/native", "tsrs"],
     );
 
     const tsconfigPath = this.destinationPath("tsconfig.json");
@@ -401,11 +402,15 @@ export default class CommonTypescriptGenerator extends Generator {
     }
 
     if (!pkg.workspaces || !this.options.enable) {
+      // tsrs and tsc do not share their .tsbuildinfo: switching between them
+      // triggers a full rebuild
+      const tscCommand = (compiler) =>
+        inMonorepo || !this.options.enable
+          ? compiler
+          : `${compiler} && ${compiler} -p tsconfig.tools.json`;
       packageUtils.addOrRemoveScripts(pkg, this.options.enable, {
-        tsc:
-          inMonorepo || !this.options.enable
-            ? "tsc"
-            : "tsc && tsc -p tsconfig.tools.json",
+        tsc: tscCommand("tsrs"),
+        "tsc:go": tscCommand("tsc"),
       });
     }
 

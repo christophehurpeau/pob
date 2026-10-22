@@ -101,22 +101,26 @@ export default class MonorepoTypescriptGenerator extends Generator {
 
     // "typescript" is aliased to the typescript 6 api package, still required by
     // typescript-eslint and typedoc. "@typescript/native" is typescript 7, which
-    // provides the "tsc" binary.
+    // provides the "tsc" binary, kept for the "tsc:go" script. "tsrs" is the
+    // rust port of typescript 7, used by all the other scripts.
     packageUtils.addOrRemoveDevDependencies(
       pkg,
       pkg.name === "@pob/eslint-config-monorepo" || this.options.enable,
-      ["typescript", "@typescript/native"],
+      ["typescript", "@typescript/native", "tsrs"],
     );
 
     if (this.options.enable) {
+      // tsrs and tsc do not share their .tsbuildinfo: switching between them
+      // triggers a full rebuild
       packageUtils.addOrRemoveScripts(pkg, this.#hasTypescriptProjects(), {
-        tsc: "tsc -b",
+        tsc: "tsrs -b",
+        "tsc:go": "tsc -b",
       });
       packageUtils.addOrRemoveScripts(
         pkg,
         !this.options.isAppProject && !this.options.checkOnly,
         {
-          "build:definitions": "tsc -b",
+          "build:definitions": "tsrs -b",
         },
       );
 
@@ -134,6 +138,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
       }
     } else if (pkg.scripts) {
       delete pkg.scripts.tsc;
+      delete pkg.scripts["tsc:go"];
       if (
         pkg.scripts.postbuild === "tsc -b tsconfig.build.json" ||
         pkg.scripts.postbuild === "tsc -b"

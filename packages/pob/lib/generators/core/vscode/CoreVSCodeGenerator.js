@@ -69,6 +69,24 @@ export default class CoreVSCodeGenerator extends Generator {
   async writing() {
     if (this.options.root) {
       const pkg = this.fs.readJSON(this.destinationPath("package.json"));
+      // the tsdk script runs tsrs from node_modules, which pnp does not have
+      const withTsrs =
+        this.options.typescript && this.options.yarnNodeLinker !== "pnp";
+      const tsdkPath = this.destinationPath(".vscode/tsrs-tsdk/tsgo");
+
+      if (withTsrs) {
+        // the extension runs it directly, so it must be executable
+        this.fs.write(
+          tsdkPath,
+          this.fs.read(this.templatePath("tsrs-tsdk-tsgo")),
+          {
+            stat: /** @type {import("node:fs").Stats} */ ({ mode: 0o755 }),
+          },
+        );
+      } else {
+        this.fs.delete(tsdkPath);
+      }
+
       await copyAndFormatTpl(
         this.fs,
         this.templatePath("extensions.json.ejs"),
@@ -90,6 +108,7 @@ export default class CoreVSCodeGenerator extends Generator {
           bun: this.options.packageManager === "bun",
           pnpm: this.options.packageManager === "pnpm",
           typescript: this.options.typescript,
+          tsrs: withTsrs,
           testing: this.options.testing,
           testRunner: this.options.testRunner,
           module: pkg.type === "module",
