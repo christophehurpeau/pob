@@ -5,6 +5,7 @@ import { removeFromGitIndex } from "../../utils/git.js";
 import inMonorepo from "../../utils/inMonorepo.js";
 import removeLegacyGeneratedDocs from "../../utils/legacyGeneratedDocs.js";
 import * as packageUtils from "../../utils/package.js";
+import { detectStorybookReactNative } from "../../utils/storybook.js";
 import { appIgnorePaths } from "./ignorePaths.js";
 
 const appsWithTypescript = [
@@ -95,6 +96,13 @@ export default class PobAppGenerator extends Generator {
       delete config.ci;
     }
 
+    const storybookDefault = detectStorybookReactNative([
+      this.fs.readJSON(this.destinationPath("package.json"), {}),
+    ]);
+    if (config?.type === "expo" && config.storybook === undefined) {
+      config.storybook = storybookDefault;
+    }
+
     if (config && this.options.updateOnly) {
       this.config.set("app", this.appConfig);
       this.config.save();
@@ -151,7 +159,7 @@ export default class PobAppGenerator extends Generator {
         type: "confirm",
         name: "storybook",
         message: "Do you want storybook ?",
-        default: (config && config.storybook) || false,
+        default: config?.storybook ?? storybookDefault,
         when: (values) => values.type === "expo",
       },
     ]);
@@ -315,7 +323,8 @@ export default class PobAppGenerator extends Generator {
     this.composeWith("pob:common:format-lint", {
       isApp: true,
       documentation: false,
-      storybook: pkg?.devDependencies?.storybook,
+      // only asked for expo apps: the on-device react-native storybook
+      storybookReactNative: this.appConfig.storybook,
       testing: this.appConfig.testing,
       testRunner: this.appConfig.testRunner,
       babel,

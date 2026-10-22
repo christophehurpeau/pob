@@ -10,6 +10,10 @@ import {
   workspacesRunSequential,
 } from "../../utils/packageManagerWorkspacesUtils.js";
 import {
+  detectStorybook,
+  detectStorybookReactNative,
+} from "../../utils/storybook.js";
+import {
   buildDependenciesMaps,
   buildTopologicalOrderBatches,
   discoverWorkspaces,
@@ -152,7 +156,16 @@ export default class PobMonorepoGenerator extends Generator {
   }
 
   async prompting() {
-    const config = this.config.get("monorepo");
+    const storedConfig = this.config.get("monorepo");
+    const allPackages = [
+      this.fs.readJSON(this.destinationPath("package.json"), {}),
+      ...this.packages,
+    ];
+    const config = storedConfig && {
+      storybook: detectStorybook(allPackages),
+      storybookReactNative: detectStorybookReactNative(allPackages),
+      ...storedConfig,
+    };
 
     if (this.options.updateOnly && config) {
       this.pobMonorepoConfig = config;
@@ -231,6 +244,20 @@ export default class PobMonorepoGenerator extends Generator {
         name: "eslint",
         message: "Would you like eslint in monorepo ?",
         default: config ? config.eslint : true,
+      },
+      {
+        type: "confirm",
+        name: "storybook",
+        message: "Would you like storybook ?",
+        default: config ? config.storybook : detectStorybook(allPackages),
+      },
+      {
+        type: "confirm",
+        name: "storybookReactNative",
+        message: "Would you like the on-device react-native storybook ?",
+        default: config
+          ? config.storybookReactNative
+          : detectStorybookReactNative(allPackages),
       },
     ]);
     this.pobMonorepoConfig.packageNames = this.packageNames;
@@ -320,7 +347,8 @@ export default class PobMonorepoGenerator extends Generator {
     this.composeWith("pob:common:format-lint", {
       monorepo: true,
       documentation: this.pobMonorepoConfig.documentation,
-      storybook: pkg?.devDependencies?.storybook,
+      storybook: this.pobMonorepoConfig.storybook,
+      storybookReactNative: this.pobMonorepoConfig.storybookReactNative,
       typescript: this.pobMonorepoConfig.typescript,
       build: hasRootBuild,
       testing: this.pobMonorepoConfig.testing,

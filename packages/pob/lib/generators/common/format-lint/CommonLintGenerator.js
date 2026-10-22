@@ -161,6 +161,13 @@ export default class CommonFormatLintGenerator extends Generator {
       description: "Enable storybook",
     });
 
+    this.option("storybookReactNative", {
+      type: Boolean,
+      required: false,
+      default: false,
+      description: "Enable the on-device react-native storybook",
+    });
+
     this.option("rootAsSrc", {
       type: Boolean,
       required: false,
@@ -565,6 +572,14 @@ export default class CommonFormatLintGenerator extends Generator {
         }
         if (inMonorepo && inMonorepo.root && this.options.build) {
           ignorePatterns.add("/rollup.config.mjs");
+        }
+
+        if (this.options.storybook) {
+          ignorePatterns.add("**/.storybook/");
+          ignorePatterns.add("**/storybook-static/");
+        }
+        if (this.options.storybookReactNative) {
+          ignorePatterns.add("**/.rnstorybook/");
         }
 
         if (hasDesignSync(this)) {
