@@ -186,7 +186,11 @@ export default class MonorepoWorkspacesGenerator extends Generator {
     );
   }
 
-  end() {
+  // packages are updated in the install phase, after root files are written and
+  // before the root install of the end phase (see CorePnpmGenerator,
+  // CoreYarnGenerator, CoreBunGenerator), so the lockfile includes the
+  // dependencies updated in packages
+  install() {
     this.packagePaths.forEach((packagePath) => {
       if (
         !existsSync(`${packagePath}/.yo-rc.json`) &&
