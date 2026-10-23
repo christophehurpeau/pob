@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.1](https://github.com/christophehurpeau/pob/compare/%40pob%2Fcodemods%400.18.0...%40pob%2Fcodemods%400.18.1) (2026-10-23)
+
+### Bug Fixes
+
+* **deps:** update dependency @babel/parser to v7.29.9 ([#2867](https://github.com/christophehurpeau/pob/issues/2867))
+
 ## [0.18.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Fcodemods%400.17.1...%40pob%2Fcodemods%400.18.0) (2026-10-17)
 
 ### Features

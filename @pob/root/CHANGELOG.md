@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.2.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.1.0...%40pob%2Froot%4028.2.0) (2026-10-23)
+
+### Features
+
+* type-check and build with tsrs, including in vscode
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [28.1.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.0.0...%40pob%2Froot%4028.1.0) (2026-10-18)
 
 Version bump for dependency: @pob/version

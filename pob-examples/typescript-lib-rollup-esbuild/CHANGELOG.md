@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.61.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild%400.60.0...example-typescript-lib-rollup-esbuild%400.61.0) (2026-10-23)
+
+### Features
+
+* type-check and build with tsrs, including in vscode
+
 ## [0.60.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild%400.59.0...example-typescript-lib-rollup-esbuild%400.60.0) (2026-10-18)
 
 Version bump for dependency: @pob/rollup-esbuild

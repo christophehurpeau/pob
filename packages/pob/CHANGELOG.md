@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.2.0](https://github.com/christophehurpeau/pob/compare/pob%4040.1.0...pob%4040.2.0) (2026-10-23)
+
+### Features
+
+* add design sync support in gitignore and generators
+* add storybook support for expo and react-native applications
+* type-check and build with tsrs, including in vscode
+
+### Bug Fixes
+
+* **pob:** update monorepo packages before root install
+
+Version bump for dependency: @pob/codemods
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [40.1.0](https://github.com/christophehurpeau/pob/compare/pob%4040.0.0...pob%4040.1.0) (2026-10-18)
 
 Version bump for dependency: pob-dependencies
