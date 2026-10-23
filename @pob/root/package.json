@@ -78,7 +78,7 @@
     "json5": "^2.2.3",
     "lint-staged": "17.6.0",
     "oxfmt": "0.72.0",
-    "oxlint": "1.85.0",
+    "oxlint": "1.89.0",
     "oxlint-tsgolint": "7.0.2003",
     "picomatch": "^4.0.7",
     "pob-dependencies": "workspace:*",
