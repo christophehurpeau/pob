@@ -46,7 +46,7 @@
     "oxfmt": "0.72.0",
     "oxlint": "1.85.0",
     "oxlint-tsgolint": "7.0.2003",
-    "react": "19.2.8",
+    "react": "19.3.1",
     "tsrs": "0.18.0-ts7.1.0-dev.20260929",
     "typescript": "npm:@typescript/typescript6@6.0.2",
     "vite": "8.3.4",
