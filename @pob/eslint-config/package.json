@@ -17,8 +17,8 @@
   "files": [
     "lib",
     "oxlint/allow-implicit-return-type.json",
-    "oxlint/allow-unsafe-as-warn.json",
     "oxlint/allow-unsafe.json",
+    "oxlint/allow-unsafe-as-warn.json",
     "oxlint/app.json",
     "oxlint/base.json",
     "oxlint/commonjs.json",
@@ -83,5 +83,7 @@
   "engines": {
     "node": ">=22.18.0"
   },
-  "pob": {}
+  "pob": {
+    "typescript": "check-only"
+  }
 }

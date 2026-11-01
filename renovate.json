@@ -8,7 +8,9 @@
   "rangeStrategy": "bump",
   "minimumReleaseAge": "60 hours",
   "internalChecksFilter": "strict",
-  "vulnerabilityAlerts": { "minimumReleaseAge": null },
+  "vulnerabilityAlerts": {
+    "minimumReleaseAge": null
+  },
   "packageRules": [
     {
       "description": "keep in sync with minimumReleaseAgeExclude in pnpm-workspace.yaml",
