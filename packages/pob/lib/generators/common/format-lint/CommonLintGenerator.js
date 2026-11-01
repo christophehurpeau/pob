@@ -576,11 +576,12 @@ export default class CommonFormatLintGenerator extends Generator {
         }
 
         if (this.options.storybook) {
-          ignorePatterns.add("**/.storybook/");
           ignorePatterns.add("**/storybook-static/");
         }
         if (this.options.storybookReactNative) {
           ignorePatterns.add("**/.rnstorybook/");
+          // generated in .storybook/ by sb-rn-get-stories
+          ignorePatterns.add("**/storybook.requires.ts");
         }
 
         if (hasDesignSync(this)) {

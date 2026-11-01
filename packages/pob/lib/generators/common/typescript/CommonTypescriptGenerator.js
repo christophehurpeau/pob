@@ -135,6 +135,13 @@ export default class CommonTypescriptGenerator extends Generator {
       default: false,
       description: "enable #/ in paths",
     });
+
+    this.option("storybook", {
+      type: Boolean,
+      required: false,
+      default: false,
+      description: "Type-check the storybook config in .storybook",
+    });
   }
 
   default() {
@@ -364,6 +371,11 @@ export default class CommonTypescriptGenerator extends Generator {
             ...this.options.additionalIncludes.split(",").filter(Boolean),
             ...(includeScripts
               ? ["scripts/**/*.ts", "scripts/**/*.mts", "scripts/**/*.cts"]
+              : []),
+            // the app only imports the generated storybook.requires.ts, which
+            // loads ./preview with a require() that typescript does not follow
+            ...(this.options.storybook
+              ? [".storybook/*.ts", ".storybook/*.tsx"]
               : []),
           ],
           node: withNode,

@@ -279,6 +279,8 @@ export default class PobAppGenerator extends Generator {
       onlyLatestLTS: true,
       packageManager: this.options.packageManager,
       enableHashSlash,
+      // only asked for expo apps: the on-device react-native storybook
+      storybook: this.appConfig.storybook,
       plugins: (() => {
         if (this.appConfig.type === "next.js") {
           return "next";
