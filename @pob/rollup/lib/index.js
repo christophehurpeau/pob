@@ -63,25 +63,45 @@ export const createSourceWorkspaceDependencies = (cwd, pkg) => {
     }
   };
 
-  const dependencies = Object.entries(pkg.dependencies || {})
-    .filter(([, version]) => version.startsWith("workspace:"))
-    .flatMap(([name]) => {
-      const entryPath = resolve(name);
-      if (!entryPath || !sourceExtensionRegExp.test(entryPath)) return [];
-      return [{ name, pkg: readClosestPackageJson(entryPath) }];
-    });
+  const findSourceDependencies = (dependencies = {}) =>
+    Object.entries(dependencies)
+      .filter(([, version]) => version.startsWith("workspace:"))
+      .flatMap(([name]) => {
+        const entryPath = resolve(name);
+        if (!entryPath || !sourceExtensionRegExp.test(entryPath)) return [];
+        return [{ name, pkg: readClosestPackageJson(entryPath) }];
+      });
+
+  const dependencies = findSourceDependencies(pkg.dependencies);
+  // bundled as well, so the build still works, but reported: a package the
+  // build imports belongs in dependencies
+  const devDependencies = findSourceDependencies(pkg.devDependencies).filter(
+    ({ name }) => !pkg.dependencies?.[name],
+  );
+  const allDependencies = [...dependencies, ...devDependencies];
+  const warnedDevDependencies = new Set();
+
+  const findDependency = (list, id) =>
+    list.find(({ name }) => id === name || id.startsWith(`${name}/`));
 
   const isSourceWorkspaceDependency = (id) =>
-    dependencies.some(({ name }) => id === name || id.startsWith(`${name}/`));
+    findDependency(allDependencies, id) !== undefined;
 
   return {
     isSourceWorkspaceDependency,
     // their own dependencies stay external
-    pkgs: dependencies.map((dependency) => dependency.pkg),
+    pkgs: allDependencies.map((dependency) => dependency.pkg),
     plugin: {
       name: "@pob/rollup/source-workspace-dependencies",
       resolveId(source) {
         if (!isSourceWorkspaceDependency(source)) return null;
+        const devDependency = findDependency(devDependencies, source);
+        if (devDependency && !warnedDevDependencies.has(devDependency.name)) {
+          warnedDevDependencies.add(devDependency.name);
+          this.warn(
+            `"${devDependency.name}" is imported but listed in devDependencies: move it to dependencies.`,
+          );
+        }
         return resolve(source) ?? null;
       },
     },

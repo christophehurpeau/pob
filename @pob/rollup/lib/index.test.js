@@ -2,12 +2,87 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { afterEach, beforeEach, describe, expect, it, vi } from "vitest";
-import { createWatchWorkspaceDependencies } from "./index.js";
+import {
+  createSourceWorkspaceDependencies,
+  createWatchWorkspaceDependencies,
+} from "./index.js";
 
 const writeJson = (filePath, value) => {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
   fs.writeFileSync(filePath, JSON.stringify(value));
 };
+
+describe("createSourceWorkspaceDependencies", () => {
+  let root;
+  let appDirectory;
+
+  const addWorkspacePackage = (name, pkg) => {
+    const directory = path.join(root, "packages", name);
+    writeJson(path.join(directory, "package.json"), { name, ...pkg });
+    fs.mkdirSync(path.join(directory, "src"), { recursive: true });
+    fs.writeFileSync(path.join(directory, "src/index.ts"), "export {};");
+    fs.mkdirSync(path.join(root, "node_modules"), { recursive: true });
+    fs.symlinkSync(directory, path.join(root, "node_modules", name), "dir");
+    return fs.realpathSync(directory);
+  };
+
+  const resolveImports = (pkg, sources) => {
+    const warn = vi.fn();
+    const { plugin } = createSourceWorkspaceDependencies(appDirectory, pkg);
+    const resolved = sources.map((source) =>
+      plugin.resolveId.call({ warn }, source),
+    );
+    return { resolved, warnings: warn.mock.calls.map(([message]) => message) };
+  };
+
+  beforeEach(() => {
+    root = fs.mkdtempSync(path.join(os.tmpdir(), "pob-rollup-"));
+    appDirectory = path.join(root, "packages", "app");
+    fs.mkdirSync(appDirectory, { recursive: true });
+  });
+
+  afterEach(() => {
+    fs.rmSync(root, { recursive: true, force: true });
+  });
+
+  it("resolves a source dependency to its source, without warning", () => {
+    const shared = addWorkspacePackage("shared", { exports: "./src/index.ts" });
+
+    expect(
+      resolveImports({ dependencies: { shared: "workspace:*" } }, ["shared"]),
+    ).toEqual({
+      resolved: [path.join(shared, "src/index.ts")],
+      warnings: [],
+    });
+  });
+
+  it("resolves a source devDependency, warning once to move it", () => {
+    const shared = addWorkspacePackage("shared", { exports: "./src/index.ts" });
+
+    expect(
+      resolveImports({ devDependencies: { shared: "workspace:*" } }, [
+        "shared",
+        "shared",
+      ]),
+    ).toEqual({
+      resolved: [
+        path.join(shared, "src/index.ts"),
+        path.join(shared, "src/index.ts"),
+      ],
+      warnings: [
+        '"shared" is imported but listed in devDependencies: move it to dependencies.',
+      ],
+    });
+  });
+
+  it("leaves other imports to the other resolvers", () => {
+    addWorkspacePackage("shared", { exports: "./src/index.ts" });
+
+    expect(
+      resolveImports({ dependencies: { shared: "workspace:*" } }, ["other"]),
+    ).toEqual({ resolved: [null], warnings: [] });
+  });
+});
 
 describe("createWatchWorkspaceDependencies", () => {
   let root;
