@@ -57,6 +57,33 @@ const printUsage = () => {
   );
 };
 
+const printHelp = () => {
+  console.log(`Usage: pob [monorepo] [lib|app|init]
+       pob [monorepo] update [from-pob] [--force]
+       pob add <packageName> [--app <appType> [--testing] [--e2e]]
+       pob migrate-to-monorepo
+
+Commands:
+  lib                    Generate a library
+  app                    Generate an app
+  init                   Initialize pob config, prompting for project type
+  update                 Regenerate files from the existing .yo-rc.json, without prompts
+  update from-pob        Same as update, without running install or build
+  add <packageName>      Add a new package to the monorepo workspaces
+  migrate-to-monorepo    Move the current project into packages/<name> and create a monorepo root
+
+  monorepo               Prefix to force monorepo mode (auto-detected from workspaces or lerna.json)
+
+Options:
+  --force                Don't check that the repository is clean
+  --app <appType>        With add: generate an app package without prompts
+                         (alp, vite, vite-with-server, next.js, node, node-library,
+                         untranspiled-library, alp-node, expo, other)
+  --testing              With add --app: enable testing
+  --e2e                  With add --app: enable e2e testing
+  -h, --help             Show this help`);
+};
+
 const readJson = (filepath) => {
   try {
     return JSON.parse(readFileSync(filepath, "utf8"));
@@ -69,7 +96,12 @@ const readJson = (filepath) => {
 //   console.log(pkg.version);
 // };
 
-const argv = minimist(process.argv.slice(2));
+const argv = minimist(process.argv.slice(2), { alias: { h: "help" } });
+
+if (argv.help || argv._[0] === "help") {
+  printHelp();
+  process.exit(0);
+}
 
 if (argv.version) {
   // printVersion();
