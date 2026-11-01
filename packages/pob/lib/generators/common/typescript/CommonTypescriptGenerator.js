@@ -1,4 +1,4 @@
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import { latestLTS, maintenanceLTS } from "../../../utils/nodeVersions.js";
@@ -261,6 +261,8 @@ export default class CommonTypescriptGenerator extends Generator {
       let monorepoPackageReferences;
       // let monorepoPackageBuildReferences;
       let monorepoPackageSrcPaths;
+      // another workspace package depends on this one, so its tsconfig references it
+      let isMonorepoDependency = false;
 
       if (inMonorepo && !inMonorepo.root) {
         const yoConfig = inMonorepo.rootYoConfig;
@@ -271,24 +273,42 @@ export default class CommonTypescriptGenerator extends Generator {
           yoConfig.pob.monorepo.typescript;
 
         if (monorepoComposite) {
+          const dependsOn = (dependentPkg, packageName) =>
+            Boolean(
+              dependentPkg.dependencies?.[packageName] ||
+              dependentPkg.devDependencies?.[packageName] ||
+              dependentPkg.peerDependencies?.[packageName],
+            );
+          const getPackageLocation = (packageName) =>
+            `../../${
+              packageName[0] === "@"
+                ? // oxlint-disable-next-line unicorn/no-nested-ternary
+                  yoConfig.pob.project.type === "app"
+                  ? `packages/${packageName.slice(packageName.indexOf("/") + 1)}`
+                  : packageName
+                : `packages/${packageName}`
+            }`;
+
+          isMonorepoDependency = yoConfig.pob.monorepo.packageNames.some(
+            (packageName) => {
+              if (packageName === pkg.name) return false;
+              const dependentPkgPath = `${getPackageLocation(packageName)}/package.json`;
+              return (
+                existsSync(dependentPkgPath) &&
+                dependsOn(
+                  JSON.parse(readFileSync(dependentPkgPath, "utf8")),
+                  pkg.name,
+                )
+              );
+            },
+          );
+
           const packageLocations = new Map(
             yoConfig.pob.monorepo.packageNames
-              .filter(
-                (packageName) =>
-                  (pkg.dependencies && pkg.dependencies[packageName]) ||
-                  (pkg.devDependencies && pkg.devDependencies[packageName]) ||
-                  (pkg.peerDependencies && pkg.peerDependencies[packageName]),
-              )
+              .filter((packageName) => dependsOn(pkg, packageName))
               .map((packageName) => [
                 packageName,
-                `../../${
-                  packageName[0] === "@"
-                    ? // oxlint-disable-next-line unicorn/no-nested-ternary
-                      yoConfig.pob.project.type === "app"
-                      ? `packages/${packageName.slice(packageName.indexOf("/") + 1)}`
-                      : packageName
-                    : `packages/${packageName}`
-                }`,
+                getPackageLocation(packageName),
               ]),
           );
 
@@ -322,6 +342,14 @@ export default class CommonTypescriptGenerator extends Generator {
         }
       }
 
+      // composite is meant for packages built and exported before the ones
+      // depending on them: libraries, and apps imported by other packages.
+      // Other apps only enable incremental.
+      const isReferenceable =
+        !this.options.isApp ||
+        this.options.isAppLibrary ||
+        isMonorepoDependency;
+
       if (this.fs.exists(tsconfigEslintPath)) {
         this.fs.delete(tsconfigEslintPath);
       }
@@ -346,7 +374,7 @@ export default class CommonTypescriptGenerator extends Generator {
             pkg.pob?.rollup === false ||
             pkg.pob?.bundler === false ||
             pkg.pob?.bundler === "tsc",
-          cacheEnabled: !this.options.isApp || this.options.isAppLibrary,
+          cacheEnabled: isReferenceable,
           monorepoPackageSrcPaths,
           monorepoPackageReferences,
           // "." also includes root *.ts files, like vitest.config.ts
@@ -356,11 +384,10 @@ export default class CommonTypescriptGenerator extends Generator {
           jsx,
           jsxPreserve: this.options.jsxPreserve,
           nextConfig: this.options.nextConfig,
-          // for apps, only enable incremental. Composite is meant for libraries to build and export before the ones depending on them.
           composite:
             monorepoComposite &&
             monorepoComposite !== "check-only" &&
-            (!this.options.isApp || this.options.isAppLibrary),
+            isReferenceable,
           incremental: monorepoComposite,
           dom,
           resolveJsonModule: this.options.resolveJsonModule,
