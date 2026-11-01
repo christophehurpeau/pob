@@ -40,7 +40,11 @@
     {
       "files": ["**/*.{js,mjs,cts,mts,ts,tsx}"],
       "rules": {
-        "import/extensions": ["error", "ignorePackages"]
+        "import/extensions": [
+          "error",
+          "ignorePackages",
+          { "checkTypeImports": true }
+        ]
       }
     },
     {

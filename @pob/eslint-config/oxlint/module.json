@@ -10,7 +10,11 @@
     {
       "files": ["**/*.{ts,cts,mts,tsx}", "**/scripts/**/*.{js,cjs,mjs}"],
       "rules": {
-        "import/extensions": ["error", "ignorePackages"]
+        "import/extensions": [
+          "error",
+          "ignorePackages",
+          { "checkTypeImports": true }
+        ]
       }
     }
   ]
