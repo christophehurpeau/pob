@@ -2,6 +2,7 @@ import { execSync } from "node:child_process";
 import fs from "node:fs";
 import { platform } from "node:process";
 import Generator from "yeoman-generator";
+import { isAlouetteApp } from "../../utils/alouette.js";
 import removeLegacyGeneratedDocs from "../../utils/legacyGeneratedDocs.js";
 import { isNodeApp } from "../../utils/nodeApps.js";
 import * as packageUtils from "../../utils/package.js";
@@ -390,6 +391,9 @@ export default class PobMonorepoGenerator extends Generator {
       typescript: this.pobMonorepoConfig.typescript,
       testing: this.pobMonorepoConfig.testing,
       testRunner: this.pobMonorepoConfig.testRunner,
+      tailwind: this.packageConfigs.some((config, index) =>
+        isAlouetteApp(config, this.packages[index]),
+      ),
       packageNames: JSON.stringify(packageNames),
       packageLocations: JSON.stringify(this.packageLocations),
     });

@@ -55,6 +55,13 @@ export default class CoreVSCodeGenerator extends Generator {
       description: "Typescript enabled",
     });
 
+    this.option("tailwind", {
+      type: Boolean,
+      required: false,
+      default: false,
+      description: "Tailwind enabled, with tailwind-variants (alouette)",
+    });
+
     this.option("packageNames", {
       type: String,
       required: false,
@@ -95,6 +102,7 @@ export default class CoreVSCodeGenerator extends Generator {
           yarn: this.options.packageManager === "yarn",
           pnp: this.options.yarnNodeLinker === "pnp",
           typescript: this.options.typescript,
+          tailwind: this.options.tailwind,
         },
       );
       await copyAndFormatTpl(
@@ -111,6 +119,7 @@ export default class CoreVSCodeGenerator extends Generator {
           tsrs: withTsrs,
           testing: this.options.testing,
           testRunner: this.options.testRunner,
+          tailwind: this.options.tailwind,
           module: pkg.type === "module",
         },
       );

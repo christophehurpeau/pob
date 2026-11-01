@@ -63,4 +63,9 @@
   // format config
   "eslint.format.enable": false,
   "editor.defaultFormatter": "oxc.oxc-vscode",
+<% if (tailwind) { -%>
+
+  // tailwind config: class names in tailwind-variants tv() calls
+  "tailwindCSS.classFunctions": ["tv"],
+<% } -%>
 }

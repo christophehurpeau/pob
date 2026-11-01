@@ -1,6 +1,7 @@
 import { execSync } from "node:child_process";
 import { platform } from "node:process";
 import Generator from "yeoman-generator";
+import { detectAlouette } from "../../utils/alouette.js";
 import { removeFromGitIndex } from "../../utils/git.js";
 import inMonorepo from "../../utils/inMonorepo.js";
 import removeLegacyGeneratedDocs from "../../utils/legacyGeneratedDocs.js";
@@ -97,11 +98,14 @@ export default class PobAppGenerator extends Generator {
       delete config.ci;
     }
 
-    const storybookDefault = detectStorybookReactNative([
-      this.fs.readJSON(this.destinationPath("package.json"), {}),
-    ]);
+    const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
+    const storybookDefault = detectStorybookReactNative([pkg]);
     if (config?.type === "expo" && config.storybook === undefined) {
       config.storybook = storybookDefault;
+    }
+    const alouetteDefault = detectAlouette(pkg);
+    if (config?.type === "expo" && config.alouette === undefined) {
+      config.alouette = alouetteDefault;
     }
 
     if (config && this.options.updateOnly) {
@@ -161,6 +165,13 @@ export default class PobAppGenerator extends Generator {
         name: "storybook",
         message: "Do you want storybook ?",
         default: config?.storybook ?? storybookDefault,
+        when: (values) => values.type === "expo",
+      },
+      {
+        type: "confirm",
+        name: "alouette",
+        message: "Do you use alouette ?",
+        default: config?.alouette ?? alouetteDefault,
         when: (values) => values.type === "expo",
       },
     ]);
@@ -367,6 +378,8 @@ export default class PobAppGenerator extends Generator {
       typescript,
       testing: this.appConfig.testing,
       testRunner: this.appConfig.testRunner,
+      // only asked for expo apps
+      tailwind: this.appConfig.alouette,
     });
 
     // only for gitignore
