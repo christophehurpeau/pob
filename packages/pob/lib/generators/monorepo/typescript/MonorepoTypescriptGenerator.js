@@ -57,6 +57,14 @@ export default class MonorepoTypescriptGenerator extends Generator {
       required: true,
     });
 
+    this.option("packagePathsWithScriptsIncluded", {
+      type: String,
+      required: false,
+      default: "[]",
+      description:
+        "packages whose tsconfig.json includes their scripts (node apps)",
+    });
+
     this.option("testRunner", {
       type: String,
       required: false,
@@ -85,7 +93,8 @@ export default class MonorepoTypescriptGenerator extends Generator {
   // emitting tsconfig, so it needs a dedicated noEmit project for type-aware
   // linting and tsc -b: root config files (e.g. vitest.config.ts), a root
   // scripts/ dir, and each package's scripts/ dir (matched via the workspace
-  // globs so all packages are covered)
+  // globs so all packages are covered, except node apps which include them in
+  // their own tsconfig.json)
   #hasTools() {
     return (
       hasRootConfigFiles(this.destinationPath()) ||
@@ -199,6 +208,9 @@ export default class MonorepoTypescriptGenerator extends Generator {
           {
             nodeVersion: latestLTS,
             workspaceGlobs,
+            packagePathsWithScriptsIncluded: JSON.parse(
+              this.options.packagePathsWithScriptsIncluded,
+            ),
           },
         );
       } else {

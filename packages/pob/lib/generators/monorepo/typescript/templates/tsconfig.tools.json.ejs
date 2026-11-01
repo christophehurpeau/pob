@@ -21,6 +21,13 @@
     "<%= workspaceGlob %>/e2e/**/*.cts"<%= index === workspaceGlobs.length - 1 ? '' : ',' %>
 <% }) -%>
   ],
+<% if (packagePathsWithScriptsIncluded.length > 0) { -%>
+  "exclude": [
+<% packagePathsWithScriptsIncluded.forEach((packagePath, index) => { -%>
+    "<%= packagePath %>/scripts/**"<%= index === packagePathsWithScriptsIncluded.length - 1 ? '' : ',' %>
+<% }) -%>
+  ],
+<% } -%>
   "compilerOptions": {
     "noEmit": true,
     "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo-tools",

@@ -4,6 +4,7 @@ import Generator from "yeoman-generator";
 import { removeFromGitIndex } from "../../utils/git.js";
 import inMonorepo from "../../utils/inMonorepo.js";
 import removeLegacyGeneratedDocs from "../../utils/legacyGeneratedDocs.js";
+import { nodeAppTypes } from "../../utils/nodeApps.js";
 import * as packageUtils from "../../utils/package.js";
 import { detectStorybookReactNative } from "../../utils/storybook.js";
 import { appIgnorePaths } from "./ignorePaths.js";
@@ -266,6 +267,7 @@ export default class PobAppGenerator extends Generator {
       // nextjs now supports src
       rootDir: this.appConfig.type === "expo" ? "." : srcDirectory,
       srcDirectory,
+      includeScripts: nodeAppTypes.includes(this.appConfig.type),
       builddefs: false,
       dom: browser,
       jsx,

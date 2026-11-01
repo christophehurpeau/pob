@@ -3,6 +3,7 @@ import fs from "node:fs";
 import { platform } from "node:process";
 import Generator from "yeoman-generator";
 import removeLegacyGeneratedDocs from "../../utils/legacyGeneratedDocs.js";
+import { isNodeApp } from "../../utils/nodeApps.js";
 import * as packageUtils from "../../utils/package.js";
 import { packageManagerRun } from "../../utils/packageManagerUtils.js";
 import {
@@ -428,6 +429,17 @@ export default class PobMonorepoGenerator extends Generator {
       isAppProject: this.options.isAppProject,
       packageNames: JSON.stringify(packageNames),
       packagePaths: JSON.stringify(packagePaths),
+      // mirrors the includeScripts option given by the app generator
+      packagePathsWithScriptsIncluded: JSON.stringify(
+        this.packageLocations.filter(
+          (location, index) =>
+            this.pobMonorepoConfig.typescript !== "check-only" &&
+            this.packages[index].pob?.typescript !== "check-only" &&
+            isNodeApp(this.packageConfigs[index]) &&
+            packagePaths.includes(location) &&
+            fs.existsSync(`${location}/scripts`),
+        ),
+      ),
       testRunner: this.pobMonorepoConfig.testRunner,
       onlyLatestLTS: this.options.onlyLatestLTS,
       packageManager: this.options.packageManager,

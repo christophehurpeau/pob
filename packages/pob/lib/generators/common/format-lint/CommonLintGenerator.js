@@ -508,7 +508,8 @@ export default class CommonFormatLintGenerator extends Generator {
       // tsconfig.json; point typed lint at that project. The monorepo root
       // owns the shared tsconfig.tools.json (its **/scripts/** glob covers
       // package scripts too), and single repos own their own; in-monorepo
-      // packages inherit the root config.
+      // packages inherit the root config. Node apps type-check them with
+      // their tsconfig.json instead, but still need the vitest resolution.
       if ((isMonorepoRoot || !inMonorepo) && useTypescript) {
         flatCascade.push("...pobConfig.configs.toolsProject");
       }

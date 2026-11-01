@@ -39,6 +39,13 @@ export default class CommonTypescriptGenerator extends Generator {
       description: "customize srcDirectory, if different than rootDir",
     });
 
+    this.option("includeScripts", {
+      type: Boolean,
+      default: false,
+      description:
+        "type-check scripts and root config files with tsconfig.json instead of tsconfig.tools.json (node apps)",
+    });
+
     this.option("jsx", {
       type: Boolean,
       default: true,
@@ -237,6 +244,10 @@ export default class CommonTypescriptGenerator extends Generator {
     const tsconfigBuildPath = this.destinationPath("tsconfig.build.json");
     const tsconfigToolsPath = this.destinationPath("tsconfig.tools.json");
 
+    // the check-js template only covers the src directory
+    const includeScripts =
+      this.options.includeScripts && !this.options.onlyCheck;
+
     if (this.options.enable) {
       const { jsx, dom } = this.options;
       let monorepoComposite;
@@ -331,7 +342,8 @@ export default class CommonTypescriptGenerator extends Generator {
           cacheEnabled: !this.options.isApp || this.options.isAppLibrary,
           monorepoPackageSrcPaths,
           monorepoPackageReferences,
-          rootDir: this.options.rootDir,
+          // "." also includes root *.ts files, like vitest.config.ts
+          rootDir: includeScripts ? "." : this.options.rootDir,
           srcDirectory: this.options.srcDirectory || this.options.rootDir,
           enableHashSlash: this.options.enableHashSlash,
           jsx,
@@ -348,9 +360,12 @@ export default class CommonTypescriptGenerator extends Generator {
           forceExcludeNodeModules: this.options.forceExcludeNodeModules,
           forceAllowJs: this.options.forceAllowJs,
           plugins: this.options.plugins.split(",").filter(Boolean),
-          additionalIncludes: this.options.additionalIncludes
-            .split(",")
-            .filter(Boolean),
+          additionalIncludes: [
+            ...this.options.additionalIncludes.split(",").filter(Boolean),
+            ...(includeScripts
+              ? ["scripts/**/*.ts", "scripts/**/*.mts", "scripts/**/*.cts"]
+              : []),
+          ],
           node: withNode,
           presets,
         },
@@ -381,7 +396,8 @@ export default class CommonTypescriptGenerator extends Generator {
       // dedicated noEmit project so it is type-checked without emitting
       // definitions nor violating rootDir. Monorepos handle this at the root
       // via the shared tsconfig.tools.json, so only single repos get it here.
-      if (inMonorepo) {
+      // Node apps include them in tsconfig.json instead.
+      if (inMonorepo || includeScripts) {
         this.fs.delete(tsconfigToolsPath);
       } else {
         await copyAndFormatTpl(
@@ -405,7 +421,7 @@ export default class CommonTypescriptGenerator extends Generator {
       // tsrs and tsc do not share their .tsbuildinfo: switching between them
       // triggers a full rebuild
       const tscCommand = (compiler) =>
-        inMonorepo || !this.options.enable
+        inMonorepo || includeScripts || !this.options.enable
           ? compiler
           : `${compiler} && ${compiler} -p tsconfig.tools.json`;
       packageUtils.addOrRemoveScripts(pkg, this.options.enable, {
