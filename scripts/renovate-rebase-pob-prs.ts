@@ -1,4 +1,3 @@
-#!/usr/bin/env node
 /**
  * Ask renovate to rebase its open pob PRs (by ticking the rebase checkbox), so
  * commits are recreated with the latest pob version.
@@ -15,6 +14,13 @@ interface PullRequest {
   repository: { nameWithOwner: string };
 }
 
+interface SearchResult {
+  search: {
+    pageInfo: { hasNextPage: boolean; endCursor: string };
+    nodes: (PullRequest & { title: string })[];
+  };
+}
+
 const { values } = parseArgs({
   options: {
     owner: { type: "string" },
@@ -27,7 +33,8 @@ const gh = (args: string[]): string =>
   execFileSync("gh", args, { encoding: "utf8", maxBuffer: 64 * 1024 * 1024 });
 
 const graphql = <T>(query: string): T =>
-  JSON.parse(gh(["api", "graphql", "-f", `query=${query}`])).data;
+  (JSON.parse(gh(["api", "graphql", "-f", `query=${query}`])) as { data: T })
+    .data;
 
 const owner = values.owner ?? gh(["api", "user", "--jq", ".login"]).trim();
 const titleFilter = new RegExp(values.filter, "i");
@@ -38,12 +45,7 @@ const CHECKED = "- [x] <!-- rebase-check -->";
 const prs: PullRequest[] = [];
 let cursor: string | null = null;
 do {
-  const data = graphql<{
-    search: {
-      pageInfo: { hasNextPage: boolean; endCursor: string };
-      nodes: (PullRequest & { title: string })[];
-    };
-  }>(`query {
+  const data: SearchResult = graphql<SearchResult>(`query {
     search(type: ISSUE, first: 100${cursor ? `, after: "${cursor}"` : ""}, query: "is:pr is:open author:app/renovate user:${owner}") {
       pageInfo { hasNextPage endCursor }
       nodes { ... on PullRequest { id number title body repository { nameWithOwner } } }
