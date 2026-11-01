@@ -162,7 +162,7 @@ export default class CorePnpmGenerator extends Generator {
   }
 
   end() {
-    if (this.options.enable) {
+    if (this.options.enable && !this.options.check) {
       if (this.pendingAllowBuilds.length > 0) {
         console.warn(
           `pnpm-workspace.yaml: set allowBuilds to true or false for ${this.pendingAllowBuilds.join(", ")}`,

@@ -45,7 +45,9 @@ export default class PobBaseGenerator extends Generator {
 
   async initializing() {
     // format package.json to ensure diff is correct
-    await ensureJsonFileFormatted(this.destinationPath("package.json"));
+    if (!this.options.check) {
+      await ensureJsonFileFormatted(this.destinationPath("package.json"));
+    }
 
     if (this.options.monorepo) {
       this.isMonorepo = true;
@@ -296,7 +298,7 @@ export default class PobBaseGenerator extends Generator {
   }
 
   install() {
-    if (this.options.fromPob) return;
+    if (this.options.fromPob || this.options.check) return;
 
     switch (this.#getPackageManager()) {
       case "npm":

@@ -447,6 +447,8 @@ export default class PobMonorepoGenerator extends Generator {
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
 
+    if (this.options.check) return;
+
     if (platform !== "win32") {
       execSync(
         `rm -Rf ${["lib-*", "coverage", "generated-docs"].filter(Boolean).join(" ")}`,

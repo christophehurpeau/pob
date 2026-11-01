@@ -755,6 +755,12 @@ export default class CommonFormatLintGenerator extends Generator {
    */
   async end() {
     if (!this.runOxlintOnlyCodemods) return;
+    if (this.options.check) {
+      console.log(
+        "@pob/eslint-config 68: eslint-disable comments of rules checked by oxlint would be rewritten",
+      );
+      return;
+    }
     const cwd = this.destinationPath();
     const files = execFileSync(
       "git",

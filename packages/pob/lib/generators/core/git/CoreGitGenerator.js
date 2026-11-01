@@ -167,6 +167,8 @@ export default class CoreGitGenerator extends Generator {
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
 
+    if (this.options.check) return;
+
     const cwd = this.destinationPath();
 
     const isGitRepository =

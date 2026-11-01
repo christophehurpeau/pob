@@ -476,19 +476,21 @@ export default class PobLibGenerator extends Generator {
     }
 
     this.fs.writeJSON(this.destinationPath("package.json"), pkg);
-    [
-      "lib-node14",
-      "lib-node16",
-      "coverage",
-      this.pobjson.documentation && "generated-docs",
-      !(withBabel || withTypescript) && "dist",
-    ]
-      .filter(Boolean)
-      .forEach((path) => {
-        rmSync(path, { recursive: true, force: true });
-      });
+    if (!this.options.check) {
+      [
+        "lib-node14",
+        "lib-node16",
+        "coverage",
+        this.pobjson.documentation && "generated-docs",
+        !(withBabel || withTypescript) && "dist",
+      ]
+        .filter(Boolean)
+        .forEach((path) => {
+          rmSync(path, { recursive: true, force: true });
+        });
 
-    removeLegacyGeneratedDocs((path) => this.destinationPath(path));
+      removeLegacyGeneratedDocs((path) => this.destinationPath(path));
+    }
 
     const { pobjson } = this;
 

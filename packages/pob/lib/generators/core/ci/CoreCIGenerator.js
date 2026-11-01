@@ -107,7 +107,10 @@ export default class CoreCIGenerator extends Generator {
   }
 
   async default() {
-    if (fs.existsSync(this.destinationPath(".circleci"))) {
+    if (
+      !this.options.check &&
+      fs.existsSync(this.destinationPath(".circleci"))
+    ) {
       fs.rmdirSync(this.destinationPath(".circleci"), { recursive: true });
     }
 

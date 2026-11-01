@@ -16,7 +16,9 @@ export default class CommonHuskyGenerator extends Generator {
   }
 
   writing() {
-    rmSync("git-hooks", { recursive: true, force: true });
+    if (!this.options.check) {
+      rmSync("git-hooks", { recursive: true, force: true });
+    }
 
     const gitHookDestination = this.destinationPath(".git/hooks/pre-commit");
     let isSymlink;

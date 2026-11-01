@@ -199,20 +199,25 @@ export default class MonorepoWorkspacesGenerator extends Generator {
         return;
       }
       console.log(`=> update ${packagePath}`);
-      spawnSync(
+      const { status } = spawnSync(
         process.argv[0],
         [
           process.argv[1],
           "update",
           "from-pob",
-          this.options.force ? "--force" : undefined,
+          this.options.check && "--check",
+          !this.options.check && this.options.force && "--force",
         ].filter(Boolean),
         {
           cwd: packagePath,
           stdio: "inherit",
         },
       );
+      // with --check, a package exits with 1 when a file would change
+      if (this.options.check && status !== 0) process.exitCode = 1;
     });
+
+    if (this.options.check) return;
 
     switch (this.options.packageManager) {
       case "npm":

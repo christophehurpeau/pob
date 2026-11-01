@@ -46,7 +46,7 @@ export default class CoreYarnGenerator extends Generator {
   async initializing() {
     if (this.options.enable) {
       // dont use this.fs here, as it will cache the result
-      if (!fs.existsSync(".yarnrc.yml")) {
+      if (!this.options.check && !fs.existsSync(".yarnrc.yml")) {
         // yarn 2 not yet installed
         // https://yarnpkg.com/getting-started/install
         this.spawnSync("yarn", ["set", "version", "stable"]);
@@ -103,6 +103,10 @@ export default class CoreYarnGenerator extends Generator {
       //   this.spawnSync("yarn", ["plugin", "import", nameOrUrl]);
       // };
       const removePlugin = (name) => {
+        if (this.options.check) {
+          console.log(`yarn plugin ${name} would be removed`);
+          return;
+        }
         this.spawnSync("yarn", ["plugin", "remove", name]);
       };
 
@@ -224,7 +228,7 @@ export default class CoreYarnGenerator extends Generator {
 
   end() {
     this.fs.delete(this.destinationPath(".yarn/build-state.yml"));
-    if (this.options.enable) {
+    if (this.options.enable && !this.options.check) {
       if (this.options.yarnNodeLinker === "pnp") {
         this.spawnSync("yarn", ["dlx", "@yarnpkg/sdks", "vscode"]);
       } else {

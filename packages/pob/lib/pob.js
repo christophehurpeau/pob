@@ -51,7 +51,7 @@ import { getNewPackagePath } from "./utils/workspaceUtils.js";
 
 const printUsage = () => {
   console.error("Usage: pob [monorepo] [lib|app|init]");
-  console.error("       pob [monorepo] update [--force]");
+  console.error("       pob [monorepo] update [--force|--check]");
   console.error(
     "       pob add <packageName> [--app <appType> [--testing] [--e2e]]",
   );
@@ -59,7 +59,7 @@ const printUsage = () => {
 
 const printHelp = () => {
   console.log(`Usage: pob [monorepo] [lib|app|init]
-       pob [monorepo] update [from-pob] [--force]
+       pob [monorepo] update [from-pob] [--force|--check]
        pob add <packageName> [--app <appType> [--testing] [--e2e]]
        pob migrate-to-monorepo
 
@@ -75,7 +75,10 @@ Commands:
   monorepo               Prefix to force monorepo mode (auto-detected from workspaces or lerna.json)
 
 Options:
-  --force                Don't check that the repository is clean
+  --force                Overwrite every file without asking
+  --check                With update (implied when no command is given): print
+                         the diffs without writing anything or running install,
+                         exit with code 1 when a file would change
   --app <appType>        With add: generate an app package without prompts
                          (alp, vite, vite-with-server, next.js, node, node-library,
                          untranspiled-library, alp-node, expo, other)
@@ -108,7 +111,27 @@ if (argv.version) {
   process.exit(0);
 }
 
-const env = yeoman.createEnv();
+const check = !!argv.check;
+
+// dryRun: the conflicter prints the diffs and skips every write.
+// sharedOptions.check: generators skip their side effects outside mem-fs.
+const env = yeoman.createEnv(
+  check
+    ? { dryRun: true, skipInstall: true, sharedOptions: { check: true } }
+    : {},
+);
+
+// the conflicter clears its file statuses after each file: collect them as logged
+const changedFiles = [];
+if (check) {
+  for (const status of ["create", "conflict"]) {
+    const log = env.adapter.log[status];
+    env.adapter.log[status] = (filePath, ...args) => {
+      changedFiles.push(filePath);
+      return log.call(env.adapter.log, filePath, ...args);
+    };
+  }
+}
 
 env.on("error", (err) => {
   console.error(err.stack || err.message || err);
@@ -298,7 +321,13 @@ env.registerStub(
 const projectPkg = readJson(path.resolve("./package.json"));
 const monorepoArg = argv._[0] === "lerna" || argv._[0] === "monorepo";
 let monorepo = monorepoArg || !!(projectPkg && projectPkg.workspaces);
-const action = monorepoArg ? argv._[1] : argv._[0];
+const action = (monorepoArg ? argv._[1] : argv._[0]) ?? (check && "update");
+
+if (check && action !== "update") {
+  console.error("--check can only be used with update");
+  printUsage();
+  process.exit(1);
+}
 
 if (action === "add") {
   if (!projectPkg.workspaces) {
@@ -449,7 +478,8 @@ const options = {
   updateOnly,
   monorepo,
   fromPob,
-  force: argv.force,
+  // force bypasses the conflicter diff
+  force: check ? false : argv.force,
 };
 
 try {
@@ -458,6 +488,14 @@ try {
   if (error) {
     console.error(error.stack || error.message || error);
     process.exit(1);
+  }
+}
+
+if (check) {
+  if (changedFiles.length > 0) {
+    console.error(`pob --check: ${changedFiles.length} file(s) would change:`);
+    for (const file of changedFiles) console.error(`  ${file}`);
+    process.exitCode = 1;
   }
 }
 

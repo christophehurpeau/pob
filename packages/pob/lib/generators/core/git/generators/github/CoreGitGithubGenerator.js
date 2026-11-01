@@ -264,6 +264,7 @@ export default class CoreGitGithubGenerator extends Generator {
   }
 
   async end() {
+    if (this.options.check) return;
     const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
     const owner = this.options.gitHostAccount;
     const repo = this.options.repoName || getRepoName(pkg.name);

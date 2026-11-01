@@ -41,7 +41,7 @@ export default class CoreBunGenerator extends Generator {
   }
 
   end() {
-    if (this.options.enable) {
+    if (this.options.enable && !this.options.check) {
       this.spawnSync("bun", ["install", "--save-text-lockfile"], {});
 
       const pkg = this.fs.readJSON(this.destinationPath("package.json"));

@@ -127,15 +127,17 @@ export default class CommonTranspilerGenerator extends Generator {
     this.entries = pkg.pob.entries;
     this.babelEnvs = pkg.pob.babelEnvs || [];
 
-    if (
-      this.babelEnvs.length > 0 ||
-      pkg.pob.typescript === true ||
-      pkg.pob.bundler
-    ) {
-      fs.mkdirSync(this.destinationPath("src"), { recursive: true });
-    } else {
-      // recursive does not throw if directory already exists
-      fs.mkdirSync(this.destinationPath("lib"), { recursive: true });
+    if (!this.options.check) {
+      if (
+        this.babelEnvs.length > 0 ||
+        pkg.pob.typescript === true ||
+        pkg.pob.bundler
+      ) {
+        fs.mkdirSync(this.destinationPath("src"), { recursive: true });
+      } else {
+        // recursive does not throw if directory already exists
+        fs.mkdirSync(this.destinationPath("lib"), { recursive: true });
+      }
     }
   }
 

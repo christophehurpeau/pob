@@ -416,6 +416,8 @@ export default class PobAppGenerator extends Generator {
       this.fs.delete(this.destinationPath("next-env.d.ts"));
     }
 
+    if (this.options.check) return;
+
     if (platform !== "win32") {
       execSync(
         `rm -Rf ${["lib-*", "coverage", "generated-docs", "dist"].filter(Boolean).join(" ")}`,
