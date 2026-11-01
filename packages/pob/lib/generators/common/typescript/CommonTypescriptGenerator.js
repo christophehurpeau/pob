@@ -1,5 +1,9 @@
 import { existsSync, readFileSync } from "node:fs";
 import Generator from "yeoman-generator";
+import {
+  getAppTsconfigTarget,
+  getConsumerAppsTsconfigTarget,
+} from "../../../utils/appTsconfigTarget.js";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import { latestLTS, maintenanceLTS } from "../../../utils/nodeVersions.js";
 import * as packageUtils from "../../../utils/package.js";
@@ -25,6 +29,12 @@ export default class CommonTypescriptGenerator extends Generator {
       type: Boolean,
       required: false,
       default: false,
+    });
+
+    this.option("appType", {
+      type: String,
+      default: "",
+      description: "app type, when isApp",
     });
 
     this.option("rootDir", {
@@ -168,7 +178,22 @@ export default class CommonTypescriptGenerator extends Generator {
     const withNode = envs.some((env) => env.target === "node");
     const withBun = this.options.packageManager === "bun";
 
+    // untranspiled libraries are never built on their own: they are compiled
+    // by the bundler of the apps importing them
+    const consumerAppsTarget =
+      this.options.appType === "untranspiled-library" &&
+      inMonorepo &&
+      !inMonorepo.root
+        ? await getConsumerAppsTsconfigTarget({
+            rootPath: inMonorepo.rootPath,
+            packageName: pkg.name,
+            withBun,
+          })
+        : undefined;
+
     const presets = (() => {
+      if (consumerAppsTarget) return [consumerAppsTarget];
+
       const babelEnvs =
         pkg.pob?.babelEnvs ||
         (pkg.pob?.bundler === "rollup-babel" && pkg.pob.envs) ||
@@ -212,20 +237,12 @@ export default class CommonTypescriptGenerator extends Generator {
         return ["@pob/root/tsconfigs/targets/rollup-es2015.json"];
       }
 
-      if (this.options.isApp && pkg.dependencies?.expo) {
-        return ["@pob/root/tsconfigs/targets/expo.json"];
-      }
-
-      if (this.options.dom) {
-        if (this.options.isApp && pkg.devDependencies?.vite) {
-          return ["@pob/root/tsconfigs/targets/vite.json"];
-        }
-        return ["@pob/root/tsconfigs/targets/webpack.json"];
-      }
-      if (withBun) {
-        return ["@pob/root/tsconfigs/targets/bun.json"];
-      }
-      return [];
+      const target = getAppTsconfigTarget({
+        appType: this.options.isApp ? this.options.appType : undefined,
+        dom: this.options.dom,
+        withBun,
+      });
+      return target ? [target] : [];
     })();
 
     packageUtils.removeDevDependencies(pkg, ["flow-bin"]);

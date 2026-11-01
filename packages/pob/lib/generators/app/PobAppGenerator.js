@@ -2,6 +2,7 @@ import { execSync } from "node:child_process";
 import { platform } from "node:process";
 import Generator from "yeoman-generator";
 import { detectAlouette } from "../../utils/alouette.js";
+import { appsWithBrowser } from "../../utils/appTsconfigTarget.js";
 import { removeFromGitIndex } from "../../utils/git.js";
 import inMonorepo from "../../utils/inMonorepo.js";
 import removeLegacyGeneratedDocs from "../../utils/legacyGeneratedDocs.js";
@@ -18,7 +19,6 @@ const appsWithTypescript = [
   "expo",
   "yarn-plugin",
 ];
-const appsWithBrowser = ["alp", "next.js", "vite", "vite-with-server"];
 const shouldEnableHashSlash = (appType) =>
   appType === "alp" ||
   appType === "vite" ||
@@ -274,6 +274,7 @@ export default class PobAppGenerator extends Generator {
           inMonorepo.pobMonorepoConfig?.typescript === "check-only"),
       isApp: true,
       isAppLibrary,
+      appType: this.appConfig.type,
       nextConfig: this.appConfig.type === "next.js",
       // nextjs now supports src
       rootDir: this.appConfig.type === "expo" ? "." : srcDirectory,
