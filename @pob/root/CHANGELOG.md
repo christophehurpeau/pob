@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.2.1](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.2.0...%40pob%2Froot%4028.2.1) (2026-11-02)
+
+### Bug Fixes
+
+* **deps:** update dependency @commitlint/lint to v21.2.4 ([#2868](https://github.com/christophehurpeau/pob/issues/2868))
+
 ## [28.2.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.1.0...%40pob%2Froot%4028.2.0) (2026-10-23)
 
 ### Features
