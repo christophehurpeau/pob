@@ -33,6 +33,7 @@ const installWorkflow = (
     installOnCICommand,
     installMutableCommand,
     ciPreStep,
+    buildStep = "",
   },
   condition = true,
 ) => {
@@ -51,6 +52,7 @@ const installWorkflow = (
         .replaceAll("$pmExec$", pmExec)
         .replaceAll("$pmDlx$", pmDlx)
         .replaceAll("$ciPreStep$", ciPreStep)
+        .replaceAll("      # $buildStep$\n", buildStep)
         .replaceAll("$installOnCICommand$", installOnCICommand)
         .replaceAll("$installMutableCommand$", installMutableCommand),
     );
@@ -65,7 +67,18 @@ export default function installGithubWorkflows({ pkg, pm }) {
   const pmCommands = getPackageManagerCommands(pm, true);
 
   if (fs.existsSync(".github")) {
-    installWorkflow("push-renovate-pob_root", pmCommands);
+    installWorkflow("push-renovate-pob_root", {
+      ...pmCommands,
+      // the pre-commit lint resolves workspace packages through their build
+      // output, which is not committed
+      buildStep: pkg.scripts?.build
+        ? `      - name: Build
+        if: steps.git-check-modified.outputs.modified == 'true'
+        run: ${pmCommands.pmRun} build
+
+`
+        : "",
+    });
     installWorkflow("push-renovate-format", pmCommands);
     ensureWorkflowUninstalled("push-renovate-prettier");
     ensureWorkflowUninstalled("push-renovate-typedoc");
