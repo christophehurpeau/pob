@@ -126,6 +126,17 @@ describe("resolveEnginesNode", () => {
   it("lets envs lower engines.node", () => {
     expect(resolveEnginesNode(">=24.14.1", "22", true)).toBe(">=22.18.0");
   });
+
+  it.each([true, false])(
+    "keeps a higher min version of the same major (hasEnvs: %s)",
+    (hasEnvs) => {
+      expect(resolveEnginesNode(">=24.15.3", "24", hasEnvs)).toBe(">=24.15.3");
+    },
+  );
+
+  it("raises a lower min version of the same major", () => {
+    expect(resolveEnginesNode(">=24.0.0", "24", true)).toBe(">=24.14.1");
+  });
 });
 
 describe("updateNodeEngines", () => {
