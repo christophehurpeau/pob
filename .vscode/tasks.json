@@ -191,17 +191,6 @@
       }
     },
     {
-      "label": "tsc:go",
-      "problemMatcher": [],
-      "type": "npm",
-      "script": "tsc:go",
-      "presentation": {
-        "panel": "dedicated",
-        "clear": true,
-        "isBackground": false
-      }
-    },
-    {
       "label": "watch",
       "problemMatcher": [],
       "type": "npm",
