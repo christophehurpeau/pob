@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.2.2](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.2.1...%40pob%2Froot%4028.2.2) (2026-11-02)
+
+### Bug Fixes
+
+* **@pob/root:** build before committing pob root update ([#2877](https://github.com/christophehurpeau/pob/issues/2877))
+
 ## [28.2.1](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.2.0...%40pob%2Froot%4028.2.1) (2026-11-02)
 
 ### Bug Fixes
