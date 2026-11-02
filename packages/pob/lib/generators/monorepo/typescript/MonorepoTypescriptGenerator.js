@@ -1,4 +1,4 @@
-import { readdirSync } from "node:fs";
+import { existsSync, readdirSync } from "node:fs";
 import Generator from "yeoman-generator";
 import { latestLTS } from "../../../utils/nodeVersions.js";
 import * as packageUtils from "../../../utils/package.js";
@@ -6,24 +6,11 @@ import { packageManagerRun } from "../../../utils/packageManagerUtils.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
 const rootConfigExtensionsRegex = /\.config\.(?:ts|mts|cts)$/;
-const typescriptExtensionsRegex = /\.(?:ts|mts|cts)$/;
 
 const hasRootConfigFiles = (rootPath) => {
   try {
     return readdirSync(rootPath).some((name) =>
       rootConfigExtensionsRegex.test(name),
-    );
-  } catch {
-    return false;
-  }
-};
-
-// tsc fails with TS18003 when the include patterns match no file, like a
-// scripts/ dir with only .js files
-const hasTypescriptFiles = (dirPath) => {
-  try {
-    return readdirSync(dirPath, { recursive: true }).some((name) =>
-      typescriptExtensionsRegex.test(name),
     );
   } catch {
     return false;
@@ -88,7 +75,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
   #hasTools() {
     return (
       hasRootConfigFiles(this.destinationPath()) ||
-      hasTypescriptFiles(this.destinationPath("scripts"))
+      existsSync(this.destinationPath("scripts"))
     );
   }
 
