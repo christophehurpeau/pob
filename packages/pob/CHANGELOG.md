@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.3.1](https://github.com/christophehurpeau/pob/compare/pob%4040.3.0...pob%4040.3.1) (2026-11-02)
+
+### Bug Fixes
+
+* **pob:** upload vitest coverage report to codecov
+
 ## [40.3.0](https://github.com/christophehurpeau/pob/compare/pob%4040.2.0...pob%4040.3.0) (2026-11-02)
 
 ### Features
