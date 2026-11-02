@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.3.3](https://github.com/christophehurpeau/pob/compare/pob%4040.3.2...pob%4040.3.3) (2026-11-02)
+
+### Bug Fixes
+
+* **pob:** build workspace packages imported by rollup configs first ([#2880](https://github.com/christophehurpeau/pob/issues/2880))
+
 ## [40.3.2](https://github.com/christophehurpeau/pob/compare/pob%4040.3.1...pob%4040.3.2) (2026-11-02)
 
 Version bump for dependency: @pob/codemods
