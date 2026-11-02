@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import pobDependencies from "pob-dependencies";
 import {
   resolveEnginesNode,
   updateNodeEngines,
@@ -6,13 +7,24 @@ import {
 } from "./nodeEngines.js";
 
 describe("updateTypesNodeFromEngines", () => {
-  it("updates devDependencies when lower than engines min major", () => {
+  it("keeps pinned devDependencies pinned when lower than engines min major", () => {
     const pkg = {
       engines: { node: ">=24.14.1" },
       devDependencies: { "@types/node": "22.5.0" },
     };
     updateTypesNodeFromEngines(pkg);
-    expect(pkg.devDependencies["@types/node"]).toBe(">=24.0.0");
+    expect(pkg.devDependencies["@types/node"]).toBe(
+      pobDependencies["@types/node"],
+    );
+  });
+
+  it("uses a range when the pinned version is lower than engines min major", () => {
+    const pkg = {
+      engines: { node: ">=99.0.0" },
+      devDependencies: { "@types/node": "22.5.0" },
+    };
+    updateTypesNodeFromEngines(pkg);
+    expect(pkg.devDependencies["@types/node"]).toBe(">=99.0.0");
   });
 
   it("keeps devDependencies with the same major", () => {
@@ -124,7 +136,9 @@ describe("updateNodeEngines", () => {
     };
     updateNodeEngines(pkg, {});
     expect(pkg.engines.node).toBe(">=24.14.1");
-    expect(pkg.devDependencies["@types/node"]).toBe(">=24.0.0");
+    expect(pkg.devDependencies["@types/node"]).toBe(
+      pobDependencies["@types/node"],
+    );
   });
 
   it("supports babelEnvs", () => {
