@@ -45,7 +45,7 @@
     "eslint": "10.12.0",
     "oxfmt": "0.72.0",
     "oxlint": "1.85.0",
-    "oxlint-tsgolint": "7.0.2003",
+    "oxlint-tsgolint": "7.0.2005",
     "react": "19.2.8",
     "tsrs": "0.18.0-ts7.1.0-dev.20260929",
     "typescript": "npm:@typescript/typescript6@6.0.2",
