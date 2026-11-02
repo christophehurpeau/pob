@@ -7,8 +7,11 @@ import * as packageUtils from "../../utils/package.js";
 import { packageManagerRun } from "../../utils/packageManagerUtils.js";
 import {
   workspacesRun,
+  workspacesRunExcluding,
+  workspacesRunOnly,
   workspacesRunSequential,
 } from "../../utils/packageManagerWorkspacesUtils.js";
+import { getRollupConfigDependencies } from "../../utils/rollupConfigDependencies.js";
 import {
   detectStorybook,
   detectStorybookReactNative,
@@ -453,6 +456,7 @@ export default class PobMonorepoGenerator extends Generator {
       });
 
       const rollupConfigs = [];
+      const rollupConfigContents = [];
       this.packageLocations.forEach((location) => {
         const rollupPath = `${location}/rollup.config.mjs`;
         const rollupConfig = this.fs.read(this.destinationPath(rollupPath), {
@@ -460,8 +464,20 @@ export default class PobMonorepoGenerator extends Generator {
         });
         if (rollupConfig) {
           rollupConfigs.push(rollupPath);
+          rollupConfigContents.push(rollupConfig);
         }
       });
+
+      // built before the root rollup config loads them, and kept out of
+      // clean:build which runs in between
+      const rollupConfigDependencies = getRollupConfigDependencies(
+        this.packages,
+        rollupConfigContents,
+      );
+      const buildRollupConfigDependencies =
+        rollupConfigDependencies.length > 0
+          ? `${workspacesRunOnly(this.options.packageManager, "build", ...rollupConfigDependencies)} && `
+          : "";
 
       if (rollupConfigs.length > 0) {
         await copyAndFormatTpl(
@@ -476,12 +492,16 @@ export default class PobMonorepoGenerator extends Generator {
         this.fs.delete("rollup.config.mjs");
       }
       packageUtils.addOrRemoveScripts(pkg, rollupConfigs.length > 0, {
-        "clean:build": workspacesRun(
-          this.options.packageManager,
-          "clean:build",
-        ),
-        build: `${packageManagerRun(this.options.packageManager, "clean:build")} && rollup --config rollup.config.mjs`,
-        watch: `${packageManagerRun(this.options.packageManager, "clean:build")} && rollup --config rollup.config.mjs --watch`,
+        "clean:build":
+          rollupConfigDependencies.length > 0
+            ? workspacesRunExcluding(
+                this.options.packageManager,
+                "clean:build",
+                ...rollupConfigDependencies,
+              )
+            : workspacesRun(this.options.packageManager, "clean:build"),
+        build: `${buildRollupConfigDependencies}${packageManagerRun(this.options.packageManager, "clean:build")} && rollup --config rollup.config.mjs`,
+        watch: `${buildRollupConfigDependencies}${packageManagerRun(this.options.packageManager, "clean:build")} && rollup --config rollup.config.mjs --watch`,
       });
 
       const hasExpoApp = this.packageConfigs.some(

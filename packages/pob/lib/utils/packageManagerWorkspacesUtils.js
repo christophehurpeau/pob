@@ -59,6 +59,42 @@ export const workspacesRunSequential = (packageManager, script) => {
 };
 
 /**
+ * Run a script in the given workspaces only, in topological dependency order.
+ * Use to build packages other builds depend on first.
+ */
+export const workspacesRunOnly = (packageManager, script, ...packageNames) => {
+  switch (packageManager) {
+    case undefined:
+    case "yarn": {
+      const includeArgs = packageNames
+        .map((name) => `--include "${name}"`)
+        .join(" ");
+      return `yarn workspaces foreach --topological-dev ${includeArgs} -Av run ${script}`;
+    }
+    case "pnpm": {
+      const filterArgs = packageNames
+        .map((name) => `--filter "${name}"`)
+        .join(" ");
+      return `pnpm ${filterArgs} run ${script}`;
+    }
+    case "npm": {
+      const workspaceArgs = packageNames
+        .map((name) => `--workspace "${name}"`)
+        .join(" ");
+      return `npm run ${script} ${workspaceArgs}`;
+    }
+    case "bun": {
+      const filterArgs = packageNames
+        .map((name) => `--filter '${name}'`)
+        .join(" ");
+      return `bun ${filterArgs} run ${script}`;
+    }
+    default:
+      throw new Error(`Unsupported package manager: ${packageManager}`);
+  }
+};
+
+/**
  * Run a script in all workspaces in parallel, excluding packages matching the given patterns.
  * Use for watch commands where example/demo packages should be skipped.
  */
