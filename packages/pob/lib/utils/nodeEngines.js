@@ -1,3 +1,4 @@
+import pobDependencies from "pob-dependencies";
 import semver from "semver";
 import { latestLTS, maintenanceLTS } from "./nodeVersions.js";
 import * as packageUtils from "./package.js";
@@ -26,22 +27,31 @@ export const getEnvsMinNodeMajor = (envs, onlyLatestLTS) => {
 };
 
 /**
- * Min node major of a range, undefined when missing or not parseable
+ * Min version of a range, undefined when missing or not parseable
  * (workspace:*, catalog:, npm: alias...).
  */
-export const getMinMajor = (range) => {
+const getMinVersion = (range) => {
   if (!range) return undefined;
   try {
-    const minVersion = semver.minVersion(range);
-    return minVersion ? semver.major(minVersion) : undefined;
+    return semver.minVersion(range) ?? undefined;
   } catch {
     return undefined;
   }
 };
 
 /**
- * engines.node value for a min node major. When envs are not defined, an
- * already higher engines.node is kept.
+ * Min node major of a range, undefined when missing or not parseable
+ * (workspace:*, catalog:, npm: alias...).
+ */
+export const getMinMajor = (range) => {
+  const minVersion = getMinVersion(range);
+  return minVersion ? semver.major(minVersion) : undefined;
+};
+
+/**
+ * engines.node value for a min node major. An engines.node with a higher min
+ * version is kept, to guarantee a node version with a security fix: within
+ * the min major when envs are defined, any higher version otherwise.
  */
 export const resolveEnginesNode = (
   currentEnginesNode,
@@ -56,11 +66,13 @@ export const resolveEnginesNode = (
     throw new Error(`Invalid min node version: ${minNodeMajor}`);
   }
 
-  if (!hasEnvs) {
-    const currentMinMajor = getMinMajor(currentEnginesNode);
-    if (currentMinMajor !== undefined && currentMinMajor > Number(major)) {
-      return currentEnginesNode;
-    }
+  const currentMinVersion = getMinVersion(currentEnginesNode);
+  if (
+    currentMinVersion &&
+    semver.gt(currentMinVersion, minVersion) &&
+    (!hasEnvs || semver.major(currentMinVersion) === Number(major))
+  ) {
+    return currentEnginesNode;
   }
 
   return `>=${minVersion}`;
@@ -68,7 +80,9 @@ export const resolveEnginesNode = (
 
 /**
  * Updates "@types/node" when it is lower than engines.node min major.
- * Never adds it, never lowers devDependencies.
+ * Never adds it, never lowers devDependencies. A pinned devDependency stays
+ * pinned (check-package-dependencies/require-pinned-versions), with the
+ * pob-dependencies version when it satisfies the min major.
  */
 export const updateTypesNodeFromEngines = (pkg) => {
   const minMajor = getMinMajor(pkg.engines?.node);
@@ -83,7 +97,12 @@ export const updateTypesNodeFromEngines = (pkg) => {
   if (currentDevVersion) {
     const currentMinMajor = getMinMajor(currentDevVersion);
     if (currentMinMajor !== undefined && currentMinMajor < minMajor) {
-      pkg.devDependencies["@types/node"] = range;
+      const pinnedVersion = pobDependencies["@types/node"];
+      pkg.devDependencies["@types/node"] =
+        semver.valid(currentDevVersion) &&
+        semver.major(pinnedVersion) >= minMajor
+          ? pinnedVersion
+          : range;
     }
   }
 };

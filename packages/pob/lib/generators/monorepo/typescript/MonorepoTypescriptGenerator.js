@@ -1,4 +1,4 @@
-import { existsSync, readdirSync } from "node:fs";
+import { readdirSync } from "node:fs";
 import Generator from "yeoman-generator";
 import { latestLTS } from "../../../utils/nodeVersions.js";
 import * as packageUtils from "../../../utils/package.js";
@@ -6,11 +6,25 @@ import { packageManagerRun } from "../../../utils/packageManagerUtils.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
 const rootConfigExtensionsRegex = /\.config\.(?:ts|mts|cts)$/;
+// .js scripts count too: tsc then fails on them, which flags their migration
+// to typescript
+const scriptExtensionsRegex = /\.[cm]?[jt]s$/;
 
 const hasRootConfigFiles = (rootPath) => {
   try {
     return readdirSync(rootPath).some((name) =>
       rootConfigExtensionsRegex.test(name),
+    );
+  } catch {
+    return false;
+  }
+};
+
+// a scripts/ dir with only shell scripts gives tsc no input (TS18003)
+const hasScriptFiles = (scriptsPath) => {
+  try {
+    return readdirSync(scriptsPath, { recursive: true }).some((name) =>
+      scriptExtensionsRegex.test(name),
     );
   } catch {
     return false;
@@ -75,7 +89,7 @@ export default class MonorepoTypescriptGenerator extends Generator {
   #hasTools() {
     return (
       hasRootConfigFiles(this.destinationPath()) ||
-      existsSync(this.destinationPath("scripts"))
+      hasScriptFiles(this.destinationPath("scripts"))
     );
   }
 
