@@ -69,7 +69,7 @@
   },
   "dependencies": {
     "@commitlint/format": "21.2.3",
-    "@commitlint/lint": "21.2.3",
+    "@commitlint/lint": "21.2.4",
     "@commitlint/types": "21.2.3",
     "@pob/version": "workspace:*",
     "conventional-changelog-conventionalcommits": "^10.0.0",
