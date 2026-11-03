@@ -1,6 +1,9 @@
-import fs from "node:fs";
 import path from "node:path";
-import { buildDependentsMaps, discoverWorkspaces } from "./workspaceUtils.js";
+import {
+  buildDependentsMaps,
+  discoverWorkspaces,
+  readPobConfig,
+} from "./workspaceUtils.js";
 
 export const appsWithBrowser = ["alp", "next.js", "vite", "vite-with-server"];
 
@@ -17,16 +20,6 @@ export const getAppTsconfigTarget = ({ appType, dom, withBun }) => {
   }
   if (withBun) return "@pob/root/tsconfigs/targets/bun.json";
   return undefined;
-};
-
-const readPobConfig = (location) => {
-  try {
-    return JSON.parse(
-      fs.readFileSync(path.join(location, ".yo-rc.json"), "utf8"),
-    ).pob;
-  } catch {
-    return undefined;
-  }
 };
 
 /**

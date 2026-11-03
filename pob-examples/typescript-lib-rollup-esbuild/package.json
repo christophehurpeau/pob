@@ -54,7 +54,7 @@
     "@pob/rollup-esbuild": "workspace:*",
     "@types/node": "24.19.1",
     "@typescript/native": "npm:typescript@7.0.2",
-    "tsrs": "0.18.0-ts7.1.0-dev.20260929",
+    "tsrs": "0.20.1-ts7.1.0-beta",
     "typescript": "npm:@typescript/typescript6@6.0.2"
   },
   "browserslist": {
