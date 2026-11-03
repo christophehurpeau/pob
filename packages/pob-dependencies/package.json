@@ -54,7 +54,7 @@
     "rollup": "4.67.3",
     "semver": "7.8.5",
     "tslib": "2.9.1",
-    "tsrs": "0.18.0-ts7.1.0-dev.20260929",
+    "tsrs": "0.20.1-ts7.1.0-beta",
     "typedoc": "0.28.20",
     "typescript": "npm:@typescript/typescript6@6.0.2",
     "vite": "8.3.5",
