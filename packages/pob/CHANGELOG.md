@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.7.2](https://github.com/christophehurpeau/pob/compare/pob%4040.7.1...pob%4040.7.2) (2026-11-03)
+
+Version bump for dependency: @pob/root
+
+
 ## [40.7.1](https://github.com/christophehurpeau/pob/compare/pob%4040.7.0...pob%4040.7.1) (2026-11-03)
 
 ### Bug Fixes
