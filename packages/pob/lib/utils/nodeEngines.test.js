@@ -6,12 +6,12 @@ import {
   updateTypesNodeFromEngines,
 } from "./nodeEngines.js";
 
-const NODE_22 = "^22.18.0 || >=24.14.1";
+const NODE_22 = "^22.23.4 || ^24.22.1 || >=26.13.0";
 
 describe("updateTypesNodeFromEngines", () => {
   it("keeps pinned devDependencies pinned when lower than engines min major", () => {
     const pkg = {
-      engines: { node: ">=24.14.1" },
+      engines: { node: "^24.22.1 || >=26.13.0" },
       devDependencies: { "@types/node": "22.5.0" },
     };
     updateTypesNodeFromEngines(pkg);
@@ -31,7 +31,7 @@ describe("updateTypesNodeFromEngines", () => {
 
   it("keeps devDependencies with the same major", () => {
     const pkg = {
-      engines: { node: ">=24.14.1" },
+      engines: { node: "^24.22.1 || >=26.13.0" },
       devDependencies: { "@types/node": "24.13.3" },
     };
     updateTypesNodeFromEngines(pkg);
@@ -49,7 +49,7 @@ describe("updateTypesNodeFromEngines", () => {
 
   it("updates a devDependencies range", () => {
     const pkg = {
-      engines: { node: ">=24.14.1" },
+      engines: { node: "^24.22.1 || >=26.13.0" },
       devDependencies: { "@types/node": ">=22.0.0" },
     };
     updateTypesNodeFromEngines(pkg);
@@ -66,7 +66,10 @@ describe("updateTypesNodeFromEngines", () => {
   });
 
   it("does not add @types/node", () => {
-    const pkg = { engines: { node: ">=24.14.1" }, devDependencies: {} };
+    const pkg = {
+      engines: { node: "^24.22.1 || >=26.13.0" },
+      devDependencies: {},
+    };
     updateTypesNodeFromEngines(pkg);
     expect(pkg.devDependencies["@types/node"]).toBeUndefined();
   });
@@ -88,7 +91,7 @@ describe("updateTypesNodeFromEngines", () => {
     "keeps unparseable version %s",
     (version) => {
       const pkg = {
-        engines: { node: ">=24.14.1" },
+        engines: { node: "^24.22.1 || >=26.13.0" },
         devDependencies: { "@types/node": version },
       };
       updateTypesNodeFromEngines(pkg);
@@ -101,8 +104,8 @@ describe("resolveEnginesNode", () => {
   it.each([
     ["18", NODE_22],
     ["22", NODE_22],
-    ["24", ">=24.14.1"],
-    ["26", ">=26.0.0"],
+    ["24", "^24.22.1 || >=26.13.0"],
+    ["26", ">=26.13.0"],
   ])("resolves min major %s from envs", (minMajor, expected) => {
     expect(resolveEnginesNode(">=22.18.0", minMajor, true)).toBe(expected);
   });
@@ -126,18 +129,22 @@ describe("resolveEnginesNode", () => {
   });
 
   it("lets envs lower engines.node", () => {
-    expect(resolveEnginesNode(">=24.14.1", "22", true)).toBe(NODE_22);
+    expect(resolveEnginesNode("^24.22.1 || >=26.13.0", "22", true)).toBe(
+      NODE_22,
+    );
   });
 
   it.each([true, false])(
     "keeps a higher min version of the same major (hasEnvs: %s)",
     (hasEnvs) => {
-      expect(resolveEnginesNode(">=24.15.3", "24", hasEnvs)).toBe(">=24.15.3");
+      expect(resolveEnginesNode(">=24.23.0", "24", hasEnvs)).toBe(">=24.23.0");
     },
   );
 
   it("raises a lower min version of the same major", () => {
-    expect(resolveEnginesNode(">=24.0.0", "24", true)).toBe(">=24.14.1");
+    expect(resolveEnginesNode(">=24.0.0", "24", true)).toBe(
+      "^24.22.1 || >=26.13.0",
+    );
   });
 });
 
@@ -148,7 +155,7 @@ describe("updateNodeEngines", () => {
       devDependencies: { "@types/node": "22.5.0" },
     };
     updateNodeEngines(pkg, {});
-    expect(pkg.engines.node).toBe(">=24.14.1");
+    expect(pkg.engines.node).toBe("^24.22.1 || >=26.13.0");
     expect(pkg.devDependencies["@types/node"]).toBe(
       pobDependencies["@types/node"],
     );
@@ -157,7 +164,7 @@ describe("updateNodeEngines", () => {
   it("supports babelEnvs", () => {
     const pkg = { pob: { babelEnvs: [{ target: "node", version: "24" }] } };
     updateNodeEngines(pkg, {});
-    expect(pkg.engines.node).toBe(">=24.14.1");
+    expect(pkg.engines.node).toBe("^24.22.1 || >=26.13.0");
   });
 
   it("uses the maintenance LTS without envs", () => {
@@ -169,7 +176,7 @@ describe("updateNodeEngines", () => {
   it("uses the latest LTS without envs when onlyLatestLTS", () => {
     const pkg = {};
     updateNodeEngines(pkg, { onlyLatestLTS: true });
-    expect(pkg.engines.node).toBe(">=24.14.1");
+    expect(pkg.engines.node).toBe("^24.22.1 || >=26.13.0");
   });
 
   it("removes @types/node when there is no node target", () => {
@@ -196,9 +203,9 @@ describe("updateNodeEngines", () => {
   it("keeps a higher engines.node when there is no node target", () => {
     const pkg = {
       pob: { envs: [{ target: "browser" }] },
-      engines: { node: ">=24.14.1" },
+      engines: { node: "^24.22.1 || >=26.13.0" },
     };
     updateNodeEngines(pkg, {});
-    expect(pkg.engines.node).toBe(">=24.14.1");
+    expect(pkg.engines.node).toBe("^24.22.1 || >=26.13.0");
   });
 });

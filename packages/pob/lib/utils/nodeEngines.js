@@ -3,12 +3,14 @@ import semver from "semver";
 import { latestLTS, maintenanceLTS } from "./nodeVersions.js";
 import * as packageUtils from "./package.js";
 
-// 22.18.0 is the version with strip typescript out of experimental status.
-// 22 skips node 23: features backported to 22 are experimental there.
+// Min versions are the October 2026 security releases (CVE-2026-105482,
+// CVE-2026-111497...), above 22.18.0 which has strip typescript stable.
+// 26.13.0 is the first 26 LTS, with the same code as security release 26.12.1.
+// Odd majors are skipped: features backported to 22 are experimental in 23.
 const enginesNodeForMajor = new Map([
-  ["22", "^22.18.0 || >=24.14.1"],
-  ["24", ">=24.14.1"],
-  ["26", ">=26.0.0"],
+  ["22", "^22.23.4 || ^24.22.1 || >=26.13.0"],
+  ["24", "^24.22.1 || >=26.13.0"],
+  ["26", ">=26.13.0"],
 ]);
 
 const minVersionForMajor = (major) => {

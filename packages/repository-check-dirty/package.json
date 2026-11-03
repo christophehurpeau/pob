@@ -33,7 +33,7 @@
     "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet 'packages/repository-check-dirty'"
   },
   "engines": {
-    "node": "^22.18.0 || >=24.14.1"
+    "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
   },
   "pob": {}
 }
