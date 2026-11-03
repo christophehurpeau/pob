@@ -3,7 +3,7 @@ import fs from "node:fs";
 import { format } from "oxfmt";
 import { pkgPath } from "./helper.cjs";
 
-const pkg = JSON.parse(fs.readFileSync(pkgPath));
+const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
 
 const { code: formatted } = await format(
   "index.d.ts",

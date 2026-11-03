@@ -982,13 +982,14 @@
     "regexp/sort-flags": "error",
     "regexp/strict": "error",
     "regexp/use-ignore-case": "error",
+    "unicorn-js/consistent-json-file-read": "error",
     "unicorn-js/expiring-todo-comments": [
       "error",
       {
         "terms": ["todo", "fixme", "xxx"],
         "ignore": [],
-        "ignoreDates": false,
-        "ignoreDatesOnPullRequests": true,
+        "checkDates": true,
+        "checkDatesOnPullRequests": false,
         "allowWarningComments": true
       }
     ],
@@ -999,7 +1000,6 @@
         "excludedPackages": ["koa", "sax"]
       }
     ],
-    "unicorn-js/prefer-json-parse-buffer": "error",
     "unicorn-js/prefer-switch": [
       "error",
       {

@@ -152,7 +152,8 @@ export default class PobMonorepoGenerator extends Generator {
     this.packageNames = this.packages.map((pkg) => pkg.name);
     this.packageConfigs = this.packageLocations.map((location) => {
       try {
-        return JSON.parse(fs.readFileSync(`${location}/.yo-rc.json`)).pob;
+        return JSON.parse(fs.readFileSync(`${location}/.yo-rc.json`, "utf8"))
+          .pob;
       } catch {
         console.warn(`warn: could not read pob config in ${location}`);
         return {};

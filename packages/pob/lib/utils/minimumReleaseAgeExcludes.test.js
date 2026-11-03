@@ -15,7 +15,9 @@ const readPublishedPackageNames = (directory) =>
     .filter((entry) => entry.isDirectory())
     .map((entry) => path.join(rootPath, directory, entry.name, "package.json"))
     .filter((packageJsonPath) => fs.existsSync(packageJsonPath))
-    .map((packageJsonPath) => JSON.parse(fs.readFileSync(packageJsonPath)))
+    .map((packageJsonPath) =>
+      JSON.parse(fs.readFileSync(packageJsonPath, "utf8")),
+    )
     .filter((pkg) => !pkg.private)
     .map((pkg) => pkg.name);
 

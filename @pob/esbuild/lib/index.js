@@ -5,7 +5,7 @@ import esbuild from "esbuild";
 export function createEsbuildOptions({
   cwd = process.cwd(),
   outDirectory = "dist",
-  pkg = JSON.parse(readFileSync(path.join(cwd, "package.json"))),
+  pkg = JSON.parse(readFileSync(path.join(cwd, "package.json"), "utf8")),
   pobConfig = pkg.pob,
   entryPoints = pobConfig.entries,
 } = {}) {

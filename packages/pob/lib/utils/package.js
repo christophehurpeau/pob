@@ -86,6 +86,7 @@ const getVersionFromDependencyName = (dependency) => {
           // import.meta
           //   .resolve(`${dependency}/package.json`, import.meta.url)
         ),
+        "utf8",
       ),
     );
     return pkgJson.version;
