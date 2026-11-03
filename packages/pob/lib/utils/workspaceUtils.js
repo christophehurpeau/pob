@@ -3,6 +3,14 @@ import { glob } from "node:fs/promises";
 import path from "node:path";
 import { PackageDependencyDescriptorUtils } from "./packageDependencyDescriptorUtils.js";
 
+export const readPobConfig = (location) => {
+  try {
+    return JSON.parse(fs.readFileSync(path.join(location, ".yo-rc.json"))).pob;
+  } catch {
+    return undefined;
+  }
+};
+
 export const getWorkspaceName = (workspace) => {
   if (workspace?.manifest?.raw?.name) return workspace.manifest.raw.name;
   return path.basename(workspace.location) || "unnamed-workspace";
