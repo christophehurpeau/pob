@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [68.1.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-config%4068.0.0...%40pob%2Feslint-config%4068.1.0) (2026-11-03)
+
+### Features
+
+* **eslint-config:** check extensions of type imports
+
 ## [68.0.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-config%4067.14.0...%40pob%2Feslint-config%4068.0.0) (2026-10-17)
 
 ### ⚠ BREAKING CHANGES

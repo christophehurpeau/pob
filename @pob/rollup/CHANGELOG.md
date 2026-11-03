@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.5.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Frollup%408.4.0...%40pob%2Frollup%408.5.0) (2026-11-03)
+
+### Features
+
+* **rollup:** bundle source workspace devDependencies and warn about them
+
 ## [8.4.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Frollup%408.3.0...%40pob%2Frollup%408.4.0) (2026-10-18)
 
 ### Features

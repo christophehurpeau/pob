@@ -19,7 +19,7 @@ interface Dependencies {
   tsrs: "0.18.0-ts7.1.0-dev.20260929";
   typedoc: "0.28.20";
   typescript: "npm:@typescript/typescript6@6.0.2";
-  vite: "8.3.4";
+  vite: "8.3.5";
   vitest: "5.0.5";
 }
 
