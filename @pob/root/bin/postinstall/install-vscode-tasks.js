@@ -115,7 +115,7 @@ export default async function installVscodeTasks({ pkg }) {
   // See https://go.microsoft.com/fwlink/?LinkId=733558
   // for the documentation about the tasks.json format
   "version": "2.0.0",
-  "tasks": ${JSON.stringify(tasks)}
+  "tasks": ${JSON.stringify(tasks, null, 2)}
 }
 `,
     { printWidth: 80 },
