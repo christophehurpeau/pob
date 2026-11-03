@@ -6,6 +6,8 @@ import {
   updateTypesNodeFromEngines,
 } from "./nodeEngines.js";
 
+const NODE_22 = "^22.18.0 || >=24.14.1";
+
 describe("updateTypesNodeFromEngines", () => {
   it("keeps pinned devDependencies pinned when lower than engines min major", () => {
     const pkg = {
@@ -97,8 +99,8 @@ describe("updateTypesNodeFromEngines", () => {
 
 describe("resolveEnginesNode", () => {
   it.each([
-    ["18", ">=22.18.0"],
-    ["22", ">=22.18.0"],
+    ["18", NODE_22],
+    ["22", NODE_22],
     ["24", ">=24.14.1"],
     ["26", ">=26.0.0"],
   ])("resolves min major %s from envs", (minMajor, expected) => {
@@ -112,11 +114,11 @@ describe("resolveEnginesNode", () => {
   });
 
   it("migrates >=22.11.x", () => {
-    expect(resolveEnginesNode(">=22.11.0", "22", false)).toBe(">=22.18.0");
+    expect(resolveEnginesNode(">=22.11.0", "22", false)).toBe(NODE_22);
   });
 
   it("raises a lower engines.node without envs", () => {
-    expect(resolveEnginesNode(">=18.0.0", "22", false)).toBe(">=22.18.0");
+    expect(resolveEnginesNode(">=18.0.0", "22", false)).toBe(NODE_22);
   });
 
   it("keeps a higher engines.node without envs", () => {
@@ -124,7 +126,7 @@ describe("resolveEnginesNode", () => {
   });
 
   it("lets envs lower engines.node", () => {
-    expect(resolveEnginesNode(">=24.14.1", "22", true)).toBe(">=22.18.0");
+    expect(resolveEnginesNode(">=24.14.1", "22", true)).toBe(NODE_22);
   });
 
   it.each([true, false])(
@@ -161,7 +163,7 @@ describe("updateNodeEngines", () => {
   it("uses the maintenance LTS without envs", () => {
     const pkg = {};
     updateNodeEngines(pkg, {});
-    expect(pkg.engines.node).toBe(">=22.18.0");
+    expect(pkg.engines.node).toBe(NODE_22);
   });
 
   it("uses the latest LTS without envs when onlyLatestLTS", () => {
@@ -179,7 +181,16 @@ describe("updateNodeEngines", () => {
     updateNodeEngines(pkg, {});
     expect(pkg.dependencies).toBeUndefined();
     expect(pkg.devDependencies["@types/node"]).toBeUndefined();
-    expect(pkg.engines.node).toBe(">=22.18.0");
+    expect(pkg.engines.node).toBe(NODE_22);
+  });
+
+  it("migrates >=22.18.0 when there is no node target", () => {
+    const pkg = {
+      pob: { envs: [{ target: "browser" }] },
+      engines: { node: ">=22.18.0" },
+    };
+    updateNodeEngines(pkg, {});
+    expect(pkg.engines.node).toBe(NODE_22);
   });
 
   it("keeps a higher engines.node when there is no node target", () => {

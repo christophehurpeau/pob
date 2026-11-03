@@ -1,6 +1,6 @@
 # pob-monorepo
 
-Library generator/tools/scripts. pnpm monorepo. Node >=22.18, pnpm >=11, ESM only (`"type": "module"`).
+Library generator/tools/scripts. pnpm monorepo. Node ^22.18 || >=24.14.1, pnpm >=11, ESM only (`"type": "module"`).
 
 ## Workspaces
 
