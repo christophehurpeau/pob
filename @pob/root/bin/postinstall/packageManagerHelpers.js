@@ -47,7 +47,9 @@ export const getPackageManagerCommands = (pm, isYarnBerry) => {
       lockfile: "bun.lock",
       pmRun: "bun run",
       pmExec: "bun run",
-      pmDlx: "npx",
+      // npx sets npm_config_user_agent to npm, and bun install keeps it for
+      // lifecycle scripts: pob-root-postinstall would then detect npm.
+      pmDlx: "bunx",
       ciPreStep: `name: Install bun
         uses: oven-sh/setup-bun@v2`,
       installOnCICommand: "bun i --frozen-lockfile",
