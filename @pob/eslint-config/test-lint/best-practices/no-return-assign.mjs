@@ -1,5 +1,5 @@
 export function doSomething() {
-  // oxlint-disable-next-line no-unused-vars, prefer-const
+  // oxlint-disable-next-line no-unused-vars
   let foo;
   const bar = 1;
 
