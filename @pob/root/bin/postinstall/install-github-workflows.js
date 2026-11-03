@@ -86,7 +86,8 @@ export default function installGithubWorkflows({ pkg, pm }) {
       pkg.devDependencies &&
       (pkg.devDependencies.rollup ||
         pkg.devDependencies["@pob/rollup-esbuild"] ||
-        pkg.devDependencies["@pob/rollup-typescript"]) &&
+        pkg.devDependencies["@pob/rollup-typescript"] ||
+        pkg.devDependencies.tsrs) &&
       pkg.scripts?.build &&
       hasBuildOutputInGit()
     ) {
