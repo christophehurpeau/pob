@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.5.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.4.0...%40pob%2Froot%4028.5.0) (2026-11-03)
+
+### Bug Fixes
+
+* **root:** write vscode tasks expanded like pob ([#2886](https://github.com/christophehurpeau/pob/issues/2886))
+
+Version bump for dependency: pob-dependencies
+
+
 ## [28.4.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.3.0...%40pob%2Froot%4028.4.0) (2026-11-03)
 
 ### Bug Fixes
