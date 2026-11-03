@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.5.1](https://github.com/christophehurpeau/pob/compare/pob%4040.5.0...pob%4040.5.1) (2026-11-03)
+
+### Bug Fixes
+
+* **pob:** match sources in node test coverage include ([#2884](https://github.com/christophehurpeau/pob/issues/2884))
+
 ## [40.5.0](https://github.com/christophehurpeau/pob/compare/pob%4040.4.0...pob%4040.5.0) (2026-11-03)
 
 ### Features
