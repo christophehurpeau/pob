@@ -27,7 +27,7 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: Run Build
-        run: pnpm exec build
+        run: pnpm run build
 
       - name: Check for added or modified files
         id: git-check-modified
