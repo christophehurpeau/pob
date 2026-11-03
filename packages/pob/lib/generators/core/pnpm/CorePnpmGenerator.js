@@ -3,6 +3,7 @@ import sortObject from "@pob/sort-object";
 import { FAILSAFE_SCHEMA, dump, load, loadAll } from "js-yaml";
 import { satisfies } from "semver";
 import Generator from "yeoman-generator";
+import { minimumReleaseAgeExcludePatterns } from "../../../utils/minimumReleaseAgeExcludes.js";
 import { writeAndFormat } from "../../../utils/writeAndFormat.js";
 
 const pnpmVersionRange = "^12.0.0";
@@ -39,17 +40,6 @@ const getRunningPnpmVersion = (cwd) => {
     return null;
   }
 };
-
-const minimumReleaseAgeExcludePackages = [
-  "@pob/*",
-  "pob",
-  "pob-dependencies",
-  "check-package-dependencies",
-  "alouette",
-  "alouette-icons",
-  "nightingale",
-  "nightingale-logger",
-];
 
 const trustedBuilds = ["esbuild"];
 
@@ -134,7 +124,7 @@ export default class CorePnpmGenerator extends Generator {
       // keep the entries added by renovate for security updates, or manually
       config.minimumReleaseAgeExclude = [
         ...new Set([
-          ...minimumReleaseAgeExcludePackages,
+          ...minimumReleaseAgeExcludePatterns,
           ...(config.minimumReleaseAgeExclude ?? []),
         ]),
       ];

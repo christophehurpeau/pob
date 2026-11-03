@@ -1,4 +1,5 @@
 import Generator from "yeoman-generator";
+import { minimumReleaseAgeExcludeNames } from "../../../utils/minimumReleaseAgeExcludes.js";
 
 export default class CoreBunGenerator extends Generator {
   constructor(args, opts) {
@@ -30,7 +31,7 @@ export default class CoreBunGenerator extends Generator {
       this.fs.copyTpl(
         this.templatePath("bunfig.toml.ejs"),
         this.destinationPath("bunfig.toml"),
-        {},
+        { minimumReleaseAgeExcludes: minimumReleaseAgeExcludeNames },
       );
     } else {
       this.fs.delete("bun.lock");
