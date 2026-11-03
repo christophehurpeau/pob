@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.3.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Fsort-object%4011.2.0...%40pob%2Fsort-object%4011.3.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-n to v18 ([#2824](https://github.com/christophehurpeau/pob/issues/2824))
+
 ## [11.2.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-object@11.1.2...@pob/sort-object@11.2.0) (2026-09-27)
 
 ### Features

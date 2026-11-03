@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.3.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Fsort-pkg%4013.2.0...%40pob%2Fsort-pkg%4013.3.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-n to v18 ([#2824](https://github.com/christophehurpeau/pob/issues/2824))
+
+Version bump for dependency: @pob/sort-object
+
+
 ## [13.2.0](https://github.com/christophehurpeau/pob/compare/@pob/sort-pkg@13.1.3...@pob/sort-pkg@13.2.0) (2026-09-27)
 
 ### Features

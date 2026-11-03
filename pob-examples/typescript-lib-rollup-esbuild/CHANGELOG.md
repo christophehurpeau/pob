@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.63.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild%400.62.0...example-typescript-lib-rollup-esbuild%400.63.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-n to v18 ([#2824](https://github.com/christophehurpeau/pob/issues/2824))
+* **deps:** update dependency rollup to v4.67.3 ([#2782](https://github.com/christophehurpeau/pob/issues/2782))
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [0.62.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-rollup-esbuild%400.61.0...example-typescript-lib-rollup-esbuild%400.62.0) (2026-11-03)
 
 Version bump for dependency: @pob/rollup-esbuild

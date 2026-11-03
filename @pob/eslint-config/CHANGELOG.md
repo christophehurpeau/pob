@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [68.3.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-config%4068.2.0...%40pob%2Feslint-config%4068.3.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-n to v18 ([#2824](https://github.com/christophehurpeau/pob/issues/2824))
+* **deps:** update dependency oxlint to v1.90.0 ([#2857](https://github.com/christophehurpeau/pob/issues/2857))
+* **deps:** update typescript-eslint monorepo to v8.72.1 ([#2814](https://github.com/christophehurpeau/pob/issues/2814))
+
+Version bump for dependency: @pob/eslint-plugin
+
+
 ## [68.2.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-config%4068.1.0...%40pob%2Feslint-config%4068.2.0) (2026-11-03)
 
 ### Features

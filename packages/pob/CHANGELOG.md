@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.7.0](https://github.com/christophehurpeau/pob/compare/pob%4040.6.0...pob%4040.7.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-n to v18 ([#2824](https://github.com/christophehurpeau/pob/issues/2824))
+* **deps:** update dependency oxfmt to v0.75.0 ([#2887](https://github.com/christophehurpeau/pob/issues/2887))
+
+### Bug Fixes
+
+* **deps:** remove @types/inquirer dependency from package.json and pnpm-lock.yaml
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: @pob/sort-object
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [40.6.0](https://github.com/christophehurpeau/pob/compare/pob%4040.5.1...pob%4040.6.0) (2026-11-03)
 
 Version bump for dependency: @pob/eslint-config-typescript-react

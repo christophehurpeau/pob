@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [12.3.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Fcommitlint-config%4012.2.0...%40pob%2Fcommitlint-config%4012.3.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-n to v18 ([#2824](https://github.com/christophehurpeau/pob/issues/2824))
+
 ## [12.2.0](https://github.com/christophehurpeau/pob/compare/@pob/commitlint-config@12.1.2...@pob/commitlint-config@12.2.0) (2026-09-27)
 
 ### Features

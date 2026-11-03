@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.14.0](https://github.com/christophehurpeau/pob/compare/example-vite-app%400.13.0...example-vite-app%400.14.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-n to v18 ([#2824](https://github.com/christophehurpeau/pob/issues/2824))
+
+Version bump for dependency: example-typescript-lib-rollup-esbuild
+
+
 ## [0.13.0](https://github.com/christophehurpeau/pob/compare/example-vite-app%400.12.0...example-vite-app%400.13.0) (2026-11-03)
 
 Version bump for dependency: example-typescript-lib-rollup-esbuild

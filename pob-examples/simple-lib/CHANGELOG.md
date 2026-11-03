@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.17.0](https://github.com/christophehurpeau/pob/compare/example-simple-lib%400.16.0...example-simple-lib%400.17.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-n to v18 ([#2824](https://github.com/christophehurpeau/pob/issues/2824))
+
 ## [0.16.0](https://github.com/christophehurpeau/pob/compare/example-simple-lib@0.15.0...example-simple-lib@0.16.0) (2026-09-27)
 
 ### Features

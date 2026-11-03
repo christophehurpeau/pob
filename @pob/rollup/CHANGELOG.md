@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.6.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Frollup%408.5.0...%40pob%2Frollup%408.6.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-n to v18 ([#2824](https://github.com/christophehurpeau/pob/issues/2824))
+* **deps:** update dependency rollup to v4.67.3 ([#2782](https://github.com/christophehurpeau/pob/issues/2782))
+
 ## [8.5.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Frollup%408.4.0...%40pob%2Frollup%408.5.0) (2026-11-03)
 
 ### Features

@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.6.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.5.0...%40pob%2Froot%4028.6.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-n to v18 ([#2824](https://github.com/christophehurpeau/pob/issues/2824))
+* **deps:** update dependency oxfmt to v0.75.0 ([#2887](https://github.com/christophehurpeau/pob/issues/2887))
+* **deps:** update dependency oxlint to v1.90.0 ([#2857](https://github.com/christophehurpeau/pob/issues/2857))
+
+### Bug Fixes
+
+* **root:** drop INIT_CWD requirement in pob-root-postinstall ([#2890](https://github.com/christophehurpeau/pob/issues/2890))
+* **root:** run the build script in push-renovate-build workflow ([#2888](https://github.com/christophehurpeau/pob/issues/2888))
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [28.5.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.4.0...%40pob%2Froot%4028.5.0) (2026-11-03)
 
 ### Bug Fixes

@@ -13,7 +13,7 @@ interface Dependencies {
   eslint: "10.14.0";
   pinst: "3.0.0";
   playwright: "1.64.1";
-  rollup: "4.60.4";
+  rollup: "4.67.3";
   semver: "7.8.5";
   tslib: "2.9.1";
   tsrs: "0.18.0-ts7.1.0-dev.20260929";

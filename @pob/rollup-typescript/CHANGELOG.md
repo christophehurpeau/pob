@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.3.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Frollup-typescript%409.2.0...%40pob%2Frollup-typescript%409.3.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-n to v18 ([#2824](https://github.com/christophehurpeau/pob/issues/2824))
+
 ## [9.2.0](https://github.com/christophehurpeau/pob/compare/@pob/rollup-typescript@9.1.2...@pob/rollup-typescript@9.2.0) (2026-09-27)
 
 ### Features

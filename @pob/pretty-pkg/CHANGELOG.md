@@ -3,6 +3,13 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.5.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Fpretty-pkg%4014.4.0...%40pob%2Fpretty-pkg%4014.5.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-n to v18 ([#2824](https://github.com/christophehurpeau/pob/issues/2824))
+* **deps:** update dependency oxfmt to v0.75.0 ([#2887](https://github.com/christophehurpeau/pob/issues/2887))
+
 ## [14.4.0](https://github.com/christophehurpeau/pob/compare/@pob/pretty-pkg@14.3.0...@pob/pretty-pkg@14.4.0) (2026-10-10)
 
 ### Features
