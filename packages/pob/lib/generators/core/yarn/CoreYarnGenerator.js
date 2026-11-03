@@ -6,6 +6,7 @@ import { lt } from "semver";
 import Generator from "yeoman-generator";
 import { ensureJsonFileFormatted } from "../../../utils/ensureJsonFileFormatted.js";
 import inMonorepo from "../../../utils/inMonorepo.js";
+import { minimumReleaseAgeExcludePatterns } from "../../../utils/minimumReleaseAgeExcludes.js";
 import * as packageUtils from "../../../utils/package.js";
 import { writeAndFormat } from "../../../utils/writeAndFormat.js";
 
@@ -188,16 +189,7 @@ export default class CoreYarnGenerator extends Generator {
       delete config.enableMessageNames; // was a config for yarn < 4
       config.nodeLinker = this.options.yarnNodeLinker;
       config.npmMinimalAgeGate = 1440 * 2.5; // 2.5 days
-      config.npmPreapprovedPackages = [
-        "@pob/*",
-        "pob-dependencies",
-        "alouette",
-        "alouette-icons",
-        "nightingale",
-        "nightingale-logger",
-        "nightingale-levels",
-        "nightingale-types",
-      ];
+      config.npmPreapprovedPackages = [...minimumReleaseAgeExcludePatterns];
 
       if (config.yarnPath) {
         this.fs.delete(config.yarnPath);
