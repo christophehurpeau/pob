@@ -1,4 +1,4 @@
-// oxlint-disable-next-line unicorn/no-array-reduce
+// oxlint-disable-next-line unicorn/no-array-reduce, array-callback-return
 export const indexMap = [].reduce((memo, item, index) => {
   memo[item] = index;
 }, {});
