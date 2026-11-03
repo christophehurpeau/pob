@@ -99,13 +99,14 @@ const isRuleEnabled = (ruleEntry) => {
 };
 
 /**
- * Rules enabled in `oxlint/*.json` of this package and of
- * @pob/eslint-config-typescript-react (including `overrides`), as
- * `plugin/rule`.
+ * Rules of `oxlint/*.json` of this package and of
+ * @pob/eslint-config-typescript-react (including `overrides`) whose entry
+ * matches `filter`, as `plugin/rule`.
  *
+ * @param {(ruleEntry: unknown) => boolean} filter
  * @returns {string[]}
  */
-export const getEnabledOxlintConfigRules = () => {
+const getOxlintConfigRules = (filter) => {
   const ruleNames = new Set();
   const configPaths = [oxlintConfigsDir, reactOxlintConfigsDir].flatMap((dir) =>
     readdirSync(dir)
@@ -120,7 +121,7 @@ export const getEnabledOxlintConfigRules = () => {
       ...(config.overrides ?? []).map((override) => override.rules),
     ]) {
       for (const [ruleName, ruleEntry] of Object.entries(rules ?? {})) {
-        if (isRuleEnabled(ruleEntry)) {
+        if (filter(ruleEntry)) {
           ruleNames.add(toCanonicalOxlintRuleName(ruleName));
         }
       }
@@ -128,3 +129,20 @@ export const getEnabledOxlintConfigRules = () => {
   }
   return [...ruleNames].toSorted();
 };
+
+/**
+ * Rules enabled in `oxlint/*.json`, see getOxlintConfigRules.
+ *
+ * @returns {string[]}
+ */
+export const getEnabledOxlintConfigRules = () =>
+  getOxlintConfigRules(isRuleEnabled);
+
+/**
+ * Rules turned off in `oxlint/*.json` (enabled in another file or override
+ * included), see getOxlintConfigRules.
+ *
+ * @returns {string[]}
+ */
+export const getOffOxlintConfigRules = () =>
+  getOxlintConfigRules((ruleEntry) => !isRuleEnabled(ruleEntry));

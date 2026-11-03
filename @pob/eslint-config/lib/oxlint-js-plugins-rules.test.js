@@ -5,6 +5,7 @@ import { pathToFileURL } from "node:url";
 import { beforeAll, describe, expect, it } from "vitest";
 import {
   getEnabledOxlintConfigRules,
+  getOffOxlintConfigRules,
   oxlintConfigsDir,
   reactOxlintConfigsDir,
 } from "./test-utils/oxlint.js";
@@ -80,18 +81,20 @@ const loadJsPlugins = async () => {
 
 /*
  * inventory/oxlint-js-plugins-rules.json records the status of every rule of
- * the JS plugins:
- * - enabled: in oxlint/*.json, no native oxlint equivalent
- * - enabled-over-native: in oxlint/*.json, instead of the native oxlint
- *   equivalent (decision `js-plugin` in inventory/oxlint-rules.json)
- * - unset-has-native: not enabled, a native oxlint equivalent exists (its
- *   decision is in inventory/oxlint-rules.json)
- * - unset: not enabled, no native oxlint equivalent
+ * the JS plugins, derived from oxlint/*.json:
+ * - enabled: enabled, no native oxlint equivalent
+ * - enabled:over-native: enabled instead of the native oxlint equivalent
+ *   (decision `js-plugin` in inventory/oxlint-rules.json)
+ * - native: not enabled, a native oxlint equivalent exists (its decision is in
+ *   inventory/oxlint-rules.json)
+ * - rejected: explicitly "off", no native oxlint equivalent
+ * - evaluate: not in oxlint/*.json, no native oxlint equivalent (new rules of
+ *   plugin upgrades)
  * - deprecated: deprecated and enabled (deprecated rules not enabled are not
  *   listed)
  * The native equivalent is the rule of the same name (nativePluginNames) or a
  * rule of another plugin (nativeRuleNamesOfOtherPlugins), named after the
- * status: `unset-has-native:eslint/no-loss-of-precision`.
+ * status: `native:eslint/no-loss-of-precision`.
  */
 describe("oxlint JS plugins rules inventory", () => {
   /** @type {Record<string, string>} */
@@ -106,6 +109,7 @@ describe("oxlint JS plugins rules inventory", () => {
       await readFile(oxlintRulesInventoryPath, "utf8"),
     );
     const enabledRules = new Set(getEnabledOxlintConfigRules());
+    const offRules = new Set(getOffOxlintConfigRules());
     const plugins = await loadJsPlugins();
     for (const [pluginName, plugin] of [...plugins].toSorted(([a], [b]) =>
       a.localeCompare(b),
@@ -131,12 +135,12 @@ describe("oxlint JS plugins rules inventory", () => {
           if (enabled) status[fullName] = "deprecated";
         } else if (enabled) {
           status[fullName] = hasNative
-            ? `enabled-over-native${nativeSuffix}`
+            ? `enabled:over-native${nativeSuffix}`
             : "enabled";
+        } else if (hasNative) {
+          status[fullName] = `native${nativeSuffix}`;
         } else {
-          status[fullName] = hasNative
-            ? `unset-has-native${nativeSuffix}`
-            : "unset";
+          status[fullName] = offRules.has(fullName) ? "rejected" : "evaluate";
         }
       }
     }
@@ -166,7 +170,7 @@ describe("oxlint JS plugins rules inventory", () => {
         .filter(
           ([fullName]) =>
             Object.hasOwn(status, fullName) &&
-            (status[fullName].startsWith("enabled-over-native") ||
+            (status[fullName].startsWith("enabled:over-native") ||
               status[fullName] === "deprecated"),
         )
         .map(([, nativeRuleName]) => nativeRuleName),
