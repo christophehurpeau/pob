@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.6.1](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.6.0...%40pob%2Froot%4028.6.1) (2026-11-03)
+
+### Bug Fixes
+
+* **root:** run pob update with bunx in bun repositories ([#2896](https://github.com/christophehurpeau/pob/issues/2896))
+
 ## [28.6.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.5.0...%40pob%2Froot%4028.6.0) (2026-11-03)
 
 ### Features

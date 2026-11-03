@@ -7,3 +7,7 @@ minimumReleaseAgeExcludes = [
   <%- JSON.stringify(name) %>,
 <% } -%>
 ]
+
+[test]
+# dist is build output: its compiled *.test.js copies would otherwise run too.
+pathIgnorePatterns = ["**/dist/**"]
