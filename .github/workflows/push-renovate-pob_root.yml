@@ -33,9 +33,6 @@ jobs:
 
       - name: Run pob-root-postinstall
         run: pnpm exec pob-root-postinstall
-        env:
-          # set by install lifecycle scripts, not by `bun run`
-          INIT_CWD: ${{ github.workspace }}
 
       - name: Run pob update
         run: pnpm dlx pob update --force
