@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.7.1](https://github.com/christophehurpeau/pob/compare/pob%4040.7.0...pob%4040.7.1) (2026-11-03)
+
+### Bug Fixes
+
+* **pob:** share minimumReleaseAge exclusions between bun, pnpm and yarn ([#2893](https://github.com/christophehurpeau/pob/issues/2893))
+
 ## [40.7.0](https://github.com/christophehurpeau/pob/compare/pob%4040.6.0...pob%4040.7.0) (2026-11-03)
 
 ### Features
