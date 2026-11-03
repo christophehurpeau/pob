@@ -74,7 +74,8 @@
     },
     {
       "groupName": "yeoman group",
-      "matchPackageNames": ["yeoman-*", "@yeoman/*"]
+      "description": "yeoman-environment and @yeoman/types depend on mem-fs: its majors land with theirs",
+      "matchPackageNames": ["yeoman-*", "@yeoman/*", "mem-fs", "mem-fs-editor"]
     },
     {
       "matchUpdateTypes": ["patch", "minor"],
@@ -125,6 +126,11 @@
       "matchPackageNames": ["tsrs"],
       "ignoreUnstable": false,
       "reviewers": ["christophehurpeau"]
+    },
+    {
+      "description": "jscodeshift 17.4.0 depends on @babel/parser ^7 (check-package-dependencies refuses a second line in @pob/codemods): remove when jscodeshift depends on @babel/parser ^8",
+      "matchPackageNames": ["@babel/parser"],
+      "allowedVersions": "<8"
     },
     {
       "groupName": "pnpm",
