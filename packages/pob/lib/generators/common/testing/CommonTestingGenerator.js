@@ -281,7 +281,7 @@ export default class CommonTestingGenerator extends Generator {
               this.options.typescript
                 ? `${tsTestLoaderOption ? `${tsTestLoaderOption} ` : ""}`
                 : ""
-            }${this.fs.exists("src/test-setup.ts") ? "--import ./src/test-setup.ts " : ""}--test${experimentalTestCoverage && coverage ? ` --experimental-test-coverage${coverage === "generate" ? " --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=generated-docs/coverage.lcov" : ""} --test-coverage-include="${this.options.srcDirectory}/**/*.ts"` : ""} '${this.options.monorepo ? `${workspacesPattern}/*/` : ""}${`${
+            }${this.fs.exists("src/test-setup.ts") ? "--import ./src/test-setup.ts " : ""}--test${experimentalTestCoverage && coverage ? ` --experimental-test-coverage${coverage === "generate" ? " --test-reporter=spec --test-reporter-destination=stdout --test-reporter=lcov --test-reporter-destination=generated-docs/coverage.lcov" : ""} --test-coverage-include="${this.options.monorepo ? `${workspacesPattern}/*/` : ""}${this.options.srcDirectory}/**/*.${this.options.typescript ? "ts" : "js"}"` : ""} '${this.options.monorepo ? `${workspacesPattern}/*/` : ""}${`${
               hasTestFolder
                 ? "test/*"
                 : `${this.options.srcDirectory}/**/*.test`
