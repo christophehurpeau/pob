@@ -28,7 +28,6 @@ export const applyTs = (options) =>
 const packageJsonPath = path.resolve("package.json");
 const isCommonjsPackage =
   fs.existsSync(packageJsonPath) &&
-  // oxlint-disable-next-line unicorn-js/prefer-json-parse-buffer
   JSON.parse(fs.readFileSync(packageJsonPath, "utf8")).type === "commonjs";
 
 const moduleFiles = isCommonjsPackage

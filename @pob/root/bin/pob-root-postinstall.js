@@ -14,7 +14,7 @@ if (process.env.PROJECT_CWD) {
   process.chdir(process.env.PROJECT_CWD);
 }
 
-const pkg = JSON.parse(fs.readFileSync(path.resolve("package.json")));
+const pkg = JSON.parse(fs.readFileSync(path.resolve("package.json"), "utf8"));
 
 /* Check Package Manager */
 

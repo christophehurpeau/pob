@@ -5,7 +5,6 @@ import "./commands/version.ts";
 
 // relative to dist directory
 const pkg = JSON.parse(
-  // oxlint-disable-next-line unicorn-js/prefer-json-parse-buffer
   fs.readFileSync(new URL("../package.json", import.meta.url), "utf8"),
 );
 

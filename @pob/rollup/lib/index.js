@@ -41,7 +41,7 @@ const readClosestPackageJson = (filePath) => {
   while (directory !== path.dirname(directory)) {
     const pkgPath = path.join(directory, "package.json");
     if (fs.existsSync(pkgPath)) {
-      return JSON.parse(fs.readFileSync(pkgPath));
+      return JSON.parse(fs.readFileSync(pkgPath, "utf8"));
     }
     directory = path.dirname(directory);
   }
@@ -171,7 +171,7 @@ export const createWatchWorkspaceDependencies = (cwd, pkg) => {
       const dependencyPkgPath = findDependencyPackageJson(cwd, name);
       if (!dependencyPkgPath) return [];
       const entry = getMainEntry(
-        JSON.parse(fs.readFileSync(dependencyPkgPath)),
+        JSON.parse(fs.readFileSync(dependencyPkgPath, "utf8")),
       );
       if (!entry || sourceExtensionRegExp.test(entry)) return [];
       return [path.resolve(path.dirname(dependencyPkgPath), entry)];

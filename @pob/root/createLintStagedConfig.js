@@ -55,7 +55,7 @@ const { lockfile, configfile, installAndDedupe } = (() => {
   );
 })();
 
-const pkg = JSON.parse(fs.readFileSync(path.resolve("package.json")));
+const pkg = JSON.parse(fs.readFileSync(path.resolve("package.json"), "utf8"));
 const workspaces = pkg.workspaces || false;
 
 const workspacesPattern = (() => {

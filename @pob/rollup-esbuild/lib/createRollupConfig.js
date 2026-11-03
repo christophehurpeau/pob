@@ -14,7 +14,7 @@ import esbuild from "rollup-plugin-esbuild";
 export default function createRollupConfig({
   cwd = process.cwd(),
   outDirectory = "dist",
-  pkg = JSON.parse(readFileSync(path.join(cwd, "package.json"))),
+  pkg = JSON.parse(readFileSync(path.join(cwd, "package.json"), "utf8")),
   plugins = [],
   // `.web` is the react-native-web platform: node builds it too, as web server
   // rendering must output the tree the browser build hydrates. Code needing a

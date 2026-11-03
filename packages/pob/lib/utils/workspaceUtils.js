@@ -20,7 +20,7 @@ export const discoverWorkspaces = async (rootPath) => {
   if (!fs.existsSync(rootPackageJSONPath)) {
     return [];
   }
-  const rootPkg = JSON.parse(fs.readFileSync(rootPackageJSONPath));
+  const rootPkg = JSON.parse(fs.readFileSync(rootPackageJSONPath, "utf8"));
 
   let workspaceGlobs = [];
   if (Array.isArray(rootPkg.workspaces)) {
@@ -48,7 +48,7 @@ export const discoverWorkspaces = async (rootPath) => {
       if (found.has(match)) continue;
       found.add(match);
       const filePath = path.join(rootPath, match);
-      const content = JSON.parse(fs.readFileSync(filePath));
+      const content = JSON.parse(fs.readFileSync(filePath, "utf8"));
       const dir = path.dirname(match);
       workspaces.push({
         name: content.name,

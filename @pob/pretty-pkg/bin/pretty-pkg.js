@@ -14,7 +14,7 @@ if (packageJsonPathnames.length > 0) {
     }),
   );
 } else {
-  const pkg = JSON.parse(fs.readFileSync("package.json"));
+  const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
 
   const promises = [write(pkg, "package.json")];
 

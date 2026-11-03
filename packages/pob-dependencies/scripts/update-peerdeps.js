@@ -5,7 +5,7 @@ import { pkgPath, requireIfPossible } from "./helper.cjs";
 
 let madeModifications = false;
 
-const pkg = JSON.parse(fs.readFileSync(pkgPath));
+const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8"));
 
 const npmAliasRegex = /^npm:.+@(?<version>[^@]+)$/;
 

@@ -21,7 +21,9 @@ export const getAppTsconfigTarget = ({ appType, dom, withBun }) => {
 
 const readPobConfig = (location) => {
   try {
-    return JSON.parse(fs.readFileSync(path.join(location, ".yo-rc.json"))).pob;
+    return JSON.parse(
+      fs.readFileSync(path.join(location, ".yo-rc.json"), "utf8"),
+    ).pob;
   } catch {
     return undefined;
   }
