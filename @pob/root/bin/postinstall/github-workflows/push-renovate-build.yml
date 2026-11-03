@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - "renovate/rollup-**"
+      - "renovate/tsrs-**"
 
 permissions:
   contents: write
