@@ -3,12 +3,18 @@ import semver from "semver";
 import { latestLTS, maintenanceLTS } from "./nodeVersions.js";
 import * as packageUtils from "./package.js";
 
-// 22.18.0 is the version with strip typescript out of experimental status
-const minVersionForMajor = new Map([
-  ["22", "22.18.0"],
-  ["24", "24.14.1"],
-  ["26", "26.0.0"],
+// 22.18.0 is the version with strip typescript out of experimental status.
+// 22 skips node 23: features backported to 22 are experimental there.
+const enginesNodeForMajor = new Map([
+  ["22", "^22.18.0 || >=24.14.1"],
+  ["24", ">=24.14.1"],
+  ["26", ">=26.0.0"],
 ]);
+
+const minVersionForMajor = (major) => {
+  const enginesNode = enginesNodeForMajor.get(major);
+  return enginesNode && semver.minVersion(enginesNode).version;
+};
 
 const legacyMajors = ["4", "6", "8", "10", "12", "14", "16", "18", "20"];
 
@@ -61,7 +67,7 @@ export const resolveEnginesNode = (
   const major = legacyMajors.includes(String(minNodeMajor))
     ? maintenanceLTS
     : String(minNodeMajor);
-  const minVersion = minVersionForMajor.get(major);
+  const minVersion = minVersionForMajor(major);
   if (!minVersion) {
     throw new Error(`Invalid min node version: ${minNodeMajor}`);
   }
@@ -75,7 +81,7 @@ export const resolveEnginesNode = (
     return currentEnginesNode;
   }
 
-  return `>=${minVersion}`;
+  return enginesNodeForMajor.get(major);
 };
 
 /**
@@ -129,15 +135,18 @@ export const updateNodeEngines = (pkg, { onlyLatestLTS } = {}) => {
     packageUtils.removeDevDependencies(pkg, ["@types/node"]);
 
     // Supports oldest current or active LTS version of node
-    const minVersion = minVersionForMajor.get(
+    const enginesNode = enginesNodeForMajor.get(
       onlyLatestLTS ? latestLTS : maintenanceLTS,
     );
 
     if (
       !pkg.engines.node ||
-      semver.lt(semver.minVersion(pkg.engines.node), minVersion)
+      semver.lte(
+        semver.minVersion(pkg.engines.node),
+        semver.minVersion(enginesNode),
+      )
     ) {
-      pkg.engines.node = `>=${minVersion}`;
+      pkg.engines.node = enginesNode;
     }
   }
 };
