@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [68.3.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-config-typescript-react%4068.2.0...%40pob%2Feslint-config-typescript-react%4068.3.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-react-x to v5.28.8 ([#2885](https://github.com/christophehurpeau/pob/issues/2885))
+
+## [68.2.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-config-typescript-react%4068.1.0...%40pob%2Feslint-config-typescript-react%4068.2.0) (2026-11-03)
+
+Version bump for dependency: @pob/eslint-config
+
+
 ## [68.1.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-config-typescript-react%4068.0.0...%40pob%2Feslint-config-typescript-react%4068.1.0) (2026-11-03)
 
 Version bump for dependency: @pob/eslint-config

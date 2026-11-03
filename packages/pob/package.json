@@ -1,6 +1,6 @@
 {
   "name": "pob",
-  "version": "40.4.0",
+  "version": "40.6.0",
   "description": "Pile of bones, library generator with git/babel/typescript/typedoc/readme/vitest",
   "keywords": [
     "skeleton"
@@ -45,7 +45,7 @@
     "@pob/sort-pkg": "workspace:*",
     "@types/inquirer": "9.0.10",
     "@yeoman/adapter": "4.0.3",
-    "eslint": "10.12.0",
+    "eslint": "10.14.0",
     "findup-sync": "^5.0.0",
     "git-remote-url": "^1.0.1",
     "github-username": "^9.0.0",

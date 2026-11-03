@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.6.0](https://github.com/christophehurpeau/pob/compare/pob%4040.5.1...pob%4040.6.0) (2026-11-03)
+
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
+## [40.5.1](https://github.com/christophehurpeau/pob/compare/pob%4040.5.0...pob%4040.5.1) (2026-11-03)
+
+### Bug Fixes
+
+* **pob:** match sources in node test coverage include ([#2884](https://github.com/christophehurpeau/pob/issues/2884))
+
+## [40.5.0](https://github.com/christophehurpeau/pob/compare/pob%4040.4.0...pob%4040.5.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint to v10.14.0 ([#2883](https://github.com/christophehurpeau/pob/issues/2883))
+
+### Bug Fixes
+
+* **pob:** format .yo-rc.json after writing it ([#2881](https://github.com/christophehurpeau/pob/issues/2881))
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [40.4.0](https://github.com/christophehurpeau/pob/compare/pob%4040.3.3...pob%4040.4.0) (2026-11-03)
 
 ### Features
