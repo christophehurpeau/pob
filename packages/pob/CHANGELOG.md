@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.7.3](https://github.com/christophehurpeau/pob/compare/pob%4040.7.2...pob%4040.7.3) (2026-11-03)
+
+### Bug Fixes
+
+* **pob:** ignore dist in bun test ([#2897](https://github.com/christophehurpeau/pob/issues/2897))
+
 ## [40.7.2](https://github.com/christophehurpeau/pob/compare/pob%4040.7.1...pob%4040.7.2) (2026-11-03)
 
 Version bump for dependency: @pob/root
