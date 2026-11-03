@@ -1,6 +1,8 @@
 import Generator from "yeoman-generator";
+import { hasExpoApp } from "../../../utils/expoApps.js";
 import inMonorepo from "../../../utils/inMonorepo.js";
 import { writeAndFormatJson } from "../../../utils/writeAndFormat.js";
+import { getRenovateExtends } from "./renovateExtends.js";
 
 export default class CoreRenovateGenerator extends Generator {
   constructor(args, opts) {
@@ -57,7 +59,7 @@ export default class CoreRenovateGenerator extends Generator {
     this.enableRenovate = this.enableRenovateConfig.enable;
   }
 
-  writing() {
+  async writing() {
     if (this.enableRenovate) {
       const pkg = this.fs.readJSON(this.destinationPath("package.json"), {});
       const renovateConfig = this.fs.readJSON(
@@ -68,18 +70,15 @@ export default class CoreRenovateGenerator extends Generator {
       if (this.options.app) {
         renovateConfig.$schema =
           "https://docs.renovatebot.com/renovate-schema.json";
-        renovateConfig.extends = [
-          "config:js-app",
-          "github>christophehurpeau/renovate-presets",
-        ];
-      } else {
-        renovateConfig.extends = [
-          "config:js-lib",
-          pkg.name === "pob-monorepo"
-            ? undefined
-            : "github>christophehurpeau/renovate-presets",
-        ].filter(Boolean);
       }
+      renovateConfig.extends = getRenovateExtends({
+        app: this.options.app,
+        pkgName: pkg.name,
+        withExpo: await hasExpoApp({
+          rootPath: this.destinationPath(),
+          pobConfig: this.config.getAll(),
+        }),
+      });
 
       return writeAndFormatJson(
         this.fs,
