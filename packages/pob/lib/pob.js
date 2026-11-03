@@ -47,6 +47,7 @@ import MonorepoTypescriptGenerator from "./generators/monorepo/typescript/Monore
 import MonorepoWorkspacesGenerator from "./generators/monorepo/workspaces/MonorepoWorkspacesGenerator.js";
 import PobBaseGenerator from "./generators/pob/PobBaseGenerator.js";
 import { __dirname } from "./pob-dirname.cjs";
+import { ensureJsonFileFormatted } from "./utils/ensureJsonFileFormatted.js";
 import { getNewPackagePath } from "./utils/workspaceUtils.js";
 
 const printUsage = () => {
@@ -489,6 +490,12 @@ try {
     console.error(error.stack || error.message || error);
     process.exit(1);
   }
+}
+
+// yeoman writes .yo-rc.json with JSON.stringify: format it so that the
+// formatter does not change it again on commit
+if (!check) {
+  await ensureJsonFileFormatted(".yo-rc.json");
 }
 
 if (check) {
