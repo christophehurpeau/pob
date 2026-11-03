@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.7.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.6.1...%40pob%2Froot%4028.7.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-unicorn to v79 ([#2894](https://github.com/christophehurpeau/pob/issues/2894))
+
+### Bug Fixes
+
+* raise min node version for october 2026 security releases
+* **root:** run push-renovate-build on tsrs updates ([#2899](https://github.com/christophehurpeau/pob/issues/2899))
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [28.6.1](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.6.0...%40pob%2Froot%4028.6.1) (2026-11-03)
 
 ### Bug Fixes

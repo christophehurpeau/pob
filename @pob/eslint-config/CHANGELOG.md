@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [68.4.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-config%4068.3.0...%40pob%2Feslint-config%4068.4.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-unicorn to v79 ([#2894](https://github.com/christophehurpeau/pob/issues/2894))
+
+### Bug Fixes
+
+* raise min node version for october 2026 security releases
+
+Version bump for dependency: @pob/eslint-plugin
+
+
 ## [68.3.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-config%4068.2.0...%40pob%2Feslint-config%4068.3.0) (2026-11-03)
 
 ### Features

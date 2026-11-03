@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [18.3.1](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env%4018.3.0...babel-preset-pob-env%4018.3.1) (2026-11-03)
+
+### Bug Fixes
+
+* raise min node version for october 2026 security releases
+
 ## [18.3.0](https://github.com/christophehurpeau/pob/compare/babel-preset-pob-env%4018.2.0...babel-preset-pob-env%4018.3.0) (2026-11-03)
 
 ### Features

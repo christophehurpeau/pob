@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.37.1](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup%400.37.0...example-typescript-lib-without-rollup%400.37.1) (2026-11-03)
+
+### Bug Fixes
+
+* raise min node version for october 2026 security releases
+
 ## [0.37.0](https://github.com/christophehurpeau/pob/compare/example-typescript-lib-without-rollup%400.36.0...example-typescript-lib-without-rollup%400.37.0) (2026-11-03)
 
 ### Features

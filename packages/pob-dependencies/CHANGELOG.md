@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.7.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies%4028.6.0...pob-dependencies%4028.7.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-unicorn to v79 ([#2894](https://github.com/christophehurpeau/pob/issues/2894))
+
+### Bug Fixes
+
+* raise min node version for october 2026 security releases
+
+Version bump for dependency: @pob/esbuild
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+Version bump for dependency: @pob/rollup-typescript
+
+
 ## [28.6.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies%4028.5.0...pob-dependencies%4028.6.0) (2026-11-03)
 
 ### Features

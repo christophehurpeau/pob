@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.3.1](https://github.com/christophehurpeau/pob/compare/%40pob%2Fsort-object%4011.3.0...%40pob%2Fsort-object%4011.3.1) (2026-11-03)
+
+### Bug Fixes
+
+* raise min node version for october 2026 security releases
+
 ## [11.3.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Fsort-object%4011.2.0...%40pob%2Fsort-object%4011.3.0) (2026-11-03)
 
 ### Features

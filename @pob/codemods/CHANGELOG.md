@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.18.3](https://github.com/christophehurpeau/pob/compare/%40pob%2Fcodemods%400.18.2...%40pob%2Fcodemods%400.18.3) (2026-11-03)
+
+### Bug Fixes
+
+* raise min node version for october 2026 security releases
+
 ## [0.18.2](https://github.com/christophehurpeau/pob/compare/%40pob%2Fcodemods%400.18.1...%40pob%2Fcodemods%400.18.2) (2026-11-02)
 
 ### Bug Fixes

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.8.0](https://github.com/christophehurpeau/pob/compare/pob%4040.7.3...pob%4040.8.0) (2026-11-03)
+
+### Features
+
+* **deps:** update dependency eslint-plugin-unicorn to v79 ([#2894](https://github.com/christophehurpeau/pob/issues/2894))
+* **deps:** update yeoman group (major) ([#2895](https://github.com/christophehurpeau/pob/issues/2895))
+* **pob:** extend renovate expo preset when the repository has an expo app ([#2898](https://github.com/christophehurpeau/pob/issues/2898))
+
+### Bug Fixes
+
+* raise min node version for october 2026 security releases
+
+Version bump for dependency: @pob/codemods
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: @pob/sort-object
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [40.7.3](https://github.com/christophehurpeau/pob/compare/pob%4040.7.2...pob%4040.7.3) (2026-11-03)
 
 ### Bug Fixes

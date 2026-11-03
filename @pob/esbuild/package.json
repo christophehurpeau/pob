@@ -1,6 +1,6 @@
 {
   "name": "@pob/esbuild",
-  "version": "7.2.0",
+  "version": "7.3.0",
   "description": "esbuild configuration for pob",
   "keywords": [],
   "homepage": "https://github.com/christophehurpeau/pob",
