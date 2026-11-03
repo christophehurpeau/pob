@@ -5,13 +5,6 @@ import fs from "node:fs";
 import path from "node:path";
 import { whichPmRuns } from "../lib/which-pm-runs.js";
 
-if (!process.env.INIT_CWD) {
-  console.error(
-    "Missing process.env.INIT_CWD. Did you use postinstall script ?",
-  );
-  process.exit(1);
-}
-
 // PROJECT_CWD (yarn classic) is always the monorepo root, regardless of
 // invocation directory, so honor it explicitly. Without it, npm/pnpm/bun
 // already set cwd to this script's own package (the root) before running
