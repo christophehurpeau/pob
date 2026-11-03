@@ -1,6 +1,6 @@
 {
   "name": "@pob/eslint-config-typescript-react",
-  "version": "68.1.0",
+  "version": "68.3.0",
   "description": "eslint config files",
   "keywords": [],
   "homepage": "https://github.com/christophehurpeau/pob",
@@ -41,12 +41,12 @@
   "dependencies": {
     "@pob/eslint-config": "workspace:*",
     "eslint-plugin-import-x": "4.17.1",
-    "eslint-plugin-react-x": "5.26.1"
+    "eslint-plugin-react-x": "5.28.8"
   },
   "devDependencies": {
     "@types/node": "24.19.1",
-    "@types/react": "19.2.18",
-    "react": "19.2.8",
+    "@types/react": "19.3.0",
+    "react": "19.3.1",
     "typescript": "npm:@typescript/typescript6@6.0.2"
   },
   "peerDependencies": {

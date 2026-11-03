@@ -1,6 +1,6 @@
 {
   "name": "@pob/eslint-plugin",
-  "version": "67.0.0",
+  "version": "67.1.0",
   "description": "eslint plugin for react",
   "keywords": [],
   "homepage": "https://github.com/christophehurpeau/pob",
@@ -34,10 +34,10 @@
   },
   "devDependencies": {
     "@types/node": "24.19.1",
-    "@typescript-eslint/rule-tester": "8.63.0",
+    "@typescript-eslint/rule-tester": "8.72.1",
     "eslint": "10.14.0",
     "typescript": "npm:@typescript/typescript6@6.0.2",
-    "typescript-eslint": "8.63.0"
+    "typescript-eslint": "8.72.1"
   },
   "peerDependencies": {
     "eslint": "^10.0.2",
