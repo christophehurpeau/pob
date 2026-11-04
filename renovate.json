@@ -41,6 +41,12 @@
       "semanticCommitType": "feat"
     },
     {
+      "description": "@pob/eslint-config ships its plugins as dependencies and pins them as devDependencies: check-package-dependencies requires the dependencies range to satisfy the pin, so bump both",
+      "matchFileNames": ["@pob/eslint-config/package.json"],
+      "matchDepTypes": ["dependencies"],
+      "rangeStrategy": "bump"
+    },
+    {
       "matchFileNames": ["packages/pob-dependencies"],
       "matchDepTypes": ["devDependencies"],
       "semanticCommitType": "feat"
