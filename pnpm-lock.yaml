@@ -108,8 +108,8 @@ importers:
         specifier: ^18.5.0
         version: 18.5.0(@typescript/typescript6@6.0.2)(eslint@10.14.0(supports-color@7.2.0))(ts-declaration-location@1.0.7(@typescript/typescript6@6.0.2))
       eslint-plugin-regexp:
-        specifier: ^3.3.2
-        version: 3.3.2(eslint@10.14.0(supports-color@7.2.0))
+        specifier: ^3.3.3
+        version: 3.3.3(eslint@10.14.0(supports-color@7.2.0))
       eslint-plugin-unicorn:
         specifier: ^79.0.0
         version: 79.0.0(@typescript/typescript6@6.0.2)(eslint@10.14.0(supports-color@7.2.0))(supports-color@7.2.0)
@@ -3333,8 +3333,8 @@ packages:
       eslint:
         optional: true
 
-  eslint-plugin-regexp@3.3.2:
-    resolution: {integrity: sha512-hdkHQVDUtP3+U66PMZSQxw++mburJyJbFY8fu8lryMvJ2glo7xjq1Ov8A/uczxNU+IS87TFXUUBIJ7dxqgcJwg==}
+  eslint-plugin-regexp@3.3.3:
+    resolution: {integrity: sha512-bIpFf1uL9AB6MY5cDUXL2lrfuBA+/WLc1AwC+56OsHWo93zoKQ4EcAQ+wsOxq5ozLC9xfTYAb4Si+0w0Ll1hYA==}
     engines: {node: ^20.19.0 || ^22.13.0 || >=24}
     peerDependencies:
       eslint: '>=9.38.0'
@@ -7797,7 +7797,7 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  eslint-plugin-regexp@3.3.2(eslint@10.14.0(supports-color@7.2.0)):
+  eslint-plugin-regexp@3.3.3(eslint@10.14.0(supports-color@7.2.0)):
     dependencies:
       '@eslint-community/eslint-utils': 4.10.1(eslint@10.14.0(supports-color@7.2.0))
       '@eslint-community/regexpp': 4.12.2
