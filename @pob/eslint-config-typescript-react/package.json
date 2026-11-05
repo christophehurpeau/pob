@@ -44,7 +44,7 @@
     "eslint-plugin-react-x": "5.28.8"
   },
   "devDependencies": {
-    "@types/node": "24.19.1",
+    "@types/node": "26.6.6",
     "@types/react": "19.3.0",
     "react": "19.3.1",
     "typescript": "npm:@typescript/typescript6@6.0.2"
