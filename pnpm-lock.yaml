@@ -260,7 +260,7 @@ importers:
         version: link:../../packages/pob-dependencies
       semver:
         specifier: ^7.7.3
-        version: 7.8.5
+        version: 7.8.6
 
   '@pob/sort-object': {}
 
@@ -291,8 +291,8 @@ importers:
         specifier: 18.2.0
         version: 18.2.0
       semver:
-        specifier: 7.8.5
-        version: 7.8.5
+        specifier: 7.8.6
+        version: 7.8.6
     devDependencies:
       '@pob/rollup-esbuild':
         specifier: workspace:*
@@ -381,8 +381,8 @@ importers:
         specifier: workspace:*
         version: link:../pob-dependencies
       semver:
-        specifier: 7.8.5
-        version: 7.8.5
+        specifier: 7.8.6
+        version: 7.8.6
       typescript:
         specifier: npm:@typescript/typescript6@6.0.2
         version: '@typescript/typescript6@6.0.2'
@@ -460,8 +460,8 @@ importers:
         specifier: 4.67.4
         version: 4.67.4
       semver:
-        specifier: 7.8.5
-        version: 7.8.5
+        specifier: 7.8.6
+        version: 7.8.6
       tslib:
         specifier: 2.9.1
         version: 2.9.1
@@ -4628,8 +4628,8 @@ packages:
     resolution: {integrity: sha512-BR7VvDCVHO+q2xBEWskxS6DJE1qRnb7DxzUrogb71CWoSficBxYsiAGd+Kl0mmq/MprG9yArRkyrQxTO6XjMzA==}
     hasBin: true
 
-  semver@7.8.5:
-    resolution: {integrity: sha512-Y7/KDsb8LjooZpwaqGyulO6DQlksgCncchHGk+sZIY4SBvUocMBEFH5Ur1fI4dV+Jvl0w6cjvucaIi40puRioA==}
+  semver@7.8.6:
+    resolution: {integrity: sha512-9lpSSU4Mly3mrtruwLs1eLK6+gzbzqeBFwRNjIjE+9LuDpWdYctrQlQ3ej1Ilgi7gknpsTRnPoLP8DpCHqHIJw==}
     engines: {node: '>=10'}
     hasBin: true
 
@@ -5948,7 +5948,7 @@ snapshots:
   '@commitlint/is-ignored@21.2.3':
     dependencies:
       '@commitlint/types': 21.2.3
-      semver: 7.8.5
+      semver: 7.8.6
 
   '@commitlint/lint@21.2.4':
     dependencies:
@@ -6447,7 +6447,7 @@ snapshots:
       proggy: 4.0.0
       promise-all-reject-late: 1.0.1
       promise-call-limit: 3.0.2
-      semver: 7.8.5
+      semver: 7.8.6
       ssri: 14.0.0
       treeverse: 3.0.0
       validate-npm-package-name: 8.0.0
@@ -6458,7 +6458,7 @@ snapshots:
 
   '@npmcli/fs@6.0.0':
     dependencies:
-      semver: 7.8.5
+      semver: 7.8.6
 
   '@npmcli/git@8.0.0':
     dependencies:
@@ -6468,7 +6468,7 @@ snapshots:
       lru-cache: 11.4.0
       npm-pick-manifest: 12.0.0
       proc-log: 7.0.0
-      semver: 7.8.5
+      semver: 7.8.6
       which: 7.0.0
 
   '@npmcli/installed-package-contents@5.0.0':
@@ -6489,7 +6489,7 @@ snapshots:
       json-parse-even-better-errors: 6.0.0
       pacote: 22.0.1(supports-color@7.2.0)
       proc-log: 7.0.0
-      semver: 7.8.5
+      semver: 7.8.6
     transitivePeerDependencies:
       - kerberos
       - supports-color
@@ -6505,7 +6505,7 @@ snapshots:
       hosted-git-info: 10.1.1
       json-parse-even-better-errors: 6.0.0
       proc-log: 7.0.0
-      semver: 7.8.5
+      semver: 7.8.6
       spdx-expression-parse: 4.0.0
 
   '@npmcli/promise-spawn@10.0.1':
@@ -7105,7 +7105,7 @@ snapshots:
       eslint: 10.14.0(supports-color@7.2.0)
       json-stable-stringify-without-jsonify: 1.0.1
       lodash.merge: 4.6.2
-      semver: 7.8.5
+      semver: 7.8.6
       typescript: '@typescript/typescript6@6.0.2'
     transitivePeerDependencies:
       - supports-color
@@ -7141,7 +7141,7 @@ snapshots:
       '@typescript-eslint/visitor-keys': 8.72.1
       debug: 4.4.3(supports-color@7.2.0)
       minimatch: 10.2.6
-      semver: 7.8.5
+      semver: 7.8.6
       tinyglobby: 0.2.17
       ts-api-utils: 2.5.0(@typescript/typescript6@6.0.2)
       typescript: '@typescript/typescript6@6.0.2'
@@ -7535,7 +7535,7 @@ snapshots:
     dependencies:
       '@eslint/plugin-kit': 0.7.3
       jsonc-parser: 3.3.1
-      semver: 7.8.5
+      semver: 7.8.6
       semver-utils: 1.1.4
       type-fest: 5.10.0
     optionalDependencies:
@@ -7726,7 +7726,7 @@ snapshots:
   eslint-compat-utils@0.5.1(eslint@10.14.0(supports-color@7.2.0)):
     dependencies:
       eslint: 10.14.0(supports-color@7.2.0)
-      semver: 7.8.5
+      semver: 7.8.6
 
   eslint-import-context@0.1.9(unrs-resolver@1.12.0):
     dependencies:
@@ -7751,7 +7751,7 @@ snapshots:
       eslint-import-context: 0.1.9(unrs-resolver@1.12.0)
       is-glob: 4.0.3
       minimatch: 10.2.6
-      semver: 7.8.5
+      semver: 7.8.6
       stable-hash-x: 0.2.0
       unrs-resolver: 1.12.0
     optionalDependencies:
@@ -7770,7 +7770,7 @@ snapshots:
       globrex: 0.1.2
       ignore: 5.3.2
       js-yaml: 5.4.1
-      semver: 7.8.5
+      semver: 7.8.6
     optionalDependencies:
       ts-declaration-location: 1.0.7(@typescript/typescript6@6.0.2)
       typescript: '@typescript/typescript6@6.0.2'
@@ -7830,7 +7830,7 @@ snapshots:
       quote-js-string: 0.1.0
       regjsparser: 0.13.4
       reserved-identifiers: 1.2.0
-      semver: 7.8.5
+      semver: 7.8.6
       strip-indent: 4.1.1
       yaml: 2.9.1
     optionalDependencies:
@@ -8038,7 +8038,7 @@ snapshots:
       npm-package-arg: 14.0.0
       registry-auth-token: 5.1.1
       registry-url: 7.2.0
-      semver: 7.8.5
+      semver: 7.8.6
     transitivePeerDependencies:
       - kerberos
       - supports-color
@@ -8748,7 +8748,7 @@ snapshots:
       graceful-fs: 4.2.10
       nopt: 10.0.1
       proc-log: 7.0.0
-      semver: 7.8.5
+      semver: 7.8.6
       tar: 7.5.22
       tinyglobby: 0.2.17
       undici: 8.12.3
@@ -8768,7 +8768,7 @@ snapshots:
 
   npm-install-checks@9.0.0:
     dependencies:
-      semver: 7.8.5
+      semver: 7.8.6
 
   npm-normalize-package-bin@6.0.0: {}
 
@@ -8776,7 +8776,7 @@ snapshots:
     dependencies:
       hosted-git-info: 10.1.1
       proc-log: 7.0.0
-      semver: 7.8.5
+      semver: 7.8.6
       validate-npm-package-name: 8.0.0
 
   npm-packlist@11.3.0:
@@ -8790,7 +8790,7 @@ snapshots:
       npm-install-checks: 9.0.0
       npm-normalize-package-bin: 6.0.0
       npm-package-arg: 14.0.0
-      semver: 7.8.5
+      semver: 7.8.6
 
   npm-registry-fetch@20.0.1(supports-color@7.2.0):
     dependencies:
@@ -8945,7 +8945,7 @@ snapshots:
       ky: 1.14.3
       registry-auth-token: 5.1.1
       registry-url: 6.0.1
-      semver: 7.8.5
+      semver: 7.8.6
 
   pacote@22.0.1(supports-color@7.2.0):
     dependencies:
@@ -9254,7 +9254,7 @@ snapshots:
 
   semver@6.3.1: {}
 
-  semver@7.8.5: {}
+  semver@7.8.6: {}
 
   shallow-clone@3.0.1:
     dependencies:
@@ -9716,7 +9716,7 @@ snapshots:
       locate-path: 8.0.0
       mem-fs: 6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12)
       mem-fs-editor: 12.1.0(@types/node@24.19.1)(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)
-      semver: 7.8.5
+      semver: 7.8.6
       slash: 5.1.0
       untildify: 6.0.0
       which-package-manager: 1.0.1
@@ -9742,7 +9742,7 @@ snapshots:
       mem-fs: 6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12)
       mem-fs-editor: 12.1.0(@types/node@24.19.1)(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))(supports-color@7.2.0)
       minimist: 1.2.8
-      semver: 7.8.5
+      semver: 7.8.6
       simple-git: 4.0.2(supports-color@7.2.0)
       sort-keys: 6.0.1
       text-table: 0.2.0
