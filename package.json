@@ -39,7 +39,7 @@
     "@pob/rollup-esbuild": "workspace:*",
     "@pob/root": "workspace:*",
     "@pob/version": "workspace:*",
-    "@types/node": "24.19.1",
+    "@types/node": "26.6.6",
     "@typescript/native": "npm:typescript@7.0.2",
     "@vitest/coverage-v8": "5.1.0",
     "eslint": "10.14.0",
