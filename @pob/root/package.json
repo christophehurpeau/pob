@@ -79,7 +79,7 @@
     "lint-staged": "17.6.0",
     "oxfmt": "0.75.0",
     "oxlint": "1.90.0",
-    "oxlint-tsgolint": "7.0.2005",
+    "oxlint-tsgolint": "7.0.2006",
     "picomatch": "^4.0.7",
     "pob-dependencies": "workspace:*",
     "semver": "^7.7.3"
