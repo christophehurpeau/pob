@@ -79,7 +79,11 @@ export default class CoreNpmGenerator extends Generator {
           });
         }
 
-        pkg.files = [...files].filter(Boolean);
+        const exclusions = (pkg.files ?? []).filter((file) =>
+          file.startsWith("!"),
+        );
+
+        pkg.files = [...files, ...exclusions].filter(Boolean);
       }
     } else {
       delete pkg.files;
