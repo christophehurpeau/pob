@@ -7,11 +7,9 @@ import pkg from "oxlint/package.json" with { type: "json" };
 
 /**
  * tsrs-lint of the project's tsrs (0.21+), the same compiler as its "tsc"
- * script: a Rust port of tsgolint, using less memory. Its bin is a node
- * script, which oxlint cannot spawn on windows.
+ * script: a Rust port of tsgolint, using less memory.
  */
 const resolveTsrsLint = () => {
-  if (process.platform === "win32") return undefined;
   try {
     const tsrsPackageJsonPath = createRequire(
       path.resolve("package.json"),
