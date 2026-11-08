@@ -267,6 +267,11 @@ export default class PobMonorepoGenerator extends Generator {
           : detectStorybookReactNative(allPackages),
       },
     ]);
+    // set by hand in .yo-rc.json, never prompted
+    if (storedConfig?.mongodbBinaryCacheKeyFile) {
+      this.pobMonorepoConfig.mongodbBinaryCacheKeyFile =
+        storedConfig.mongodbBinaryCacheKeyFile;
+    }
     this.pobMonorepoConfig.packageNames = this.packageNames;
     this.config.set("monorepo", this.pobMonorepoConfig);
     this.config.delete("pob-config");
@@ -335,6 +340,12 @@ export default class PobMonorepoGenerator extends Generator {
       isApp: this.options.isAppProject,
       onlyLatestLTS: this.options.onlyLatestLTS,
       splitCIJobs,
+      playwrightBrowserTestingPath:
+        this.packageLocations.find((location, index) =>
+          packageUtils.hasVitestBrowserPlaywright(this.packages[index]),
+        ) ?? "",
+      mongodbBinaryCacheKeyFile:
+        this.pobMonorepoConfig.mongodbBinaryCacheKeyFile ?? "",
     });
 
     const e2eTestingPath = e2eTesting === "." ? "" : `/${e2eTesting}`;

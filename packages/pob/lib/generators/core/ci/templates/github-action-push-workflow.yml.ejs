@@ -88,6 +88,19 @@ jobs:
         if: startsWith(matrix.node-version, '<%= nodeLatestMajorVersion %>.')
         run: <%= packageManagerExec('repository-check-dirty') %>
 <% } -%>
+<% if ((codecov || testing) && installPlaywrightBrowserCommand) { -%>
+
+      - name: Install Playwright chromium
+        run: <%- installPlaywrightBrowserCommand %>
+<% } -%>
+<% if ((codecov || testing) && mongodbBinaryCacheKeyFile) { -%>
+
+      - name: Cache mongod binary
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/mongodb-binaries
+          key: mongod-${{ runner.os }}-${{ hashFiles('<%= mongodbBinaryCacheKeyFile %>') }}
+<% } -%>
 <% if (codecov) { -%>
 
       - name: Generate Test Coverage

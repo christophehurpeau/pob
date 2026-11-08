@@ -19,6 +19,15 @@ export const hasReact = (pkg) =>
     (pkg.peerDependencies && pkg.peerDependencies.react)
   );
 
+/**
+ * A package running vitest browser tests (a storybook rendered in a browser)
+ * declares vitest and playwright itself, whatever the test runner of the root.
+ */
+export const hasVitestBrowserPlaywright = (pkg) =>
+  [pkg.dependencies, pkg.devDependencies].some(
+    (dependencies) => dependencies?.["@vitest/browser-playwright"],
+  );
+
 export const sort = function sort(pkg) {
   return sortPkg(pkg);
 };

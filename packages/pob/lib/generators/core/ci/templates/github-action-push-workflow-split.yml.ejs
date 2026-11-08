@@ -202,6 +202,19 @@ jobs:
       - name: Build
         run: <%= packageManagerRun("build") %>
 <% } -%>
+<% if (installPlaywrightBrowserCommand) { -%>
+
+      - name: Install Playwright chromium
+        run: <%- installPlaywrightBrowserCommand %>
+<% } -%>
+<% if (mongodbBinaryCacheKeyFile) { -%>
+
+      - name: Cache mongod binary
+        uses: actions/cache@v6
+        with:
+          path: ~/.cache/mongodb-binaries
+          key: mongod-${{ runner.os }}-${{ hashFiles('<%= mongodbBinaryCacheKeyFile %>') }}
+<% } -%>
 
 <% if (codecov) { -%>
       - name: Test

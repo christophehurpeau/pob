@@ -112,6 +112,20 @@ export default class CommonTestingGenerator extends Generator {
       description:
         "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
+
+    this.option("playwrightBrowserTestingPath", {
+      type: String,
+      default: "",
+      description:
+        "path of a package running vitest browser tests, to install playwright browsers in ci",
+    });
+
+    this.option("mongodbBinaryCacheKeyFile", {
+      type: String,
+      default: "",
+      description:
+        "file pinning the mongodb-memory-server binary version, to cache the binary in ci",
+    });
   }
 
   prompting() {
@@ -139,6 +153,8 @@ export default class CommonTestingGenerator extends Generator {
         isApp: this.options.isApp,
         splitJobs: this.options.splitCIJobs,
         onlyLatestLTS: this.options.onlyLatestLTS,
+        playwrightBrowserTestingPath: this.options.playwrightBrowserTestingPath,
+        mongodbBinaryCacheKeyFile: this.options.mongodbBinaryCacheKeyFile,
       });
     } else {
       this.composeWith("pob:core:ci", {
@@ -222,11 +238,13 @@ export default class CommonTestingGenerator extends Generator {
       },
     );
 
+    const withVitestBrowser = packageUtils.hasVitestBrowserPlaywright(pkg);
+
     if (!this.options.enable || (globalTesting && !enableForMonorepo)) {
       packageUtils.removeDevDependencies(pkg, [
         "jest",
         "@types/jest",
-        "vitest",
+        ...(withVitestBrowser ? [] : ["vitest"]),
         "@vitest/coverage-v8",
       ]);
 
@@ -321,11 +339,15 @@ export default class CommonTestingGenerator extends Generator {
       this.options.enable &&
       (enableForMonorepo || !globalTesting) &&
       testRunner === "vitest";
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      isVitestUsed || withVitestBrowser,
+      ["vitest"],
+    );
     packageUtils.addOrRemoveDevDependencies(pkg, isVitestUsed, [
-      "vitest",
       "@vitest/coverage-v8",
     ]);
-    if (isVitestUsed) {
+    if (isVitestUsed || withVitestBrowser) {
       packageUtils.addDevDependencies(pkg, ["vite"]);
     }
 

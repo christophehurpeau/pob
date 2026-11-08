@@ -4,6 +4,7 @@ import inMonorepo from "../../../utils/inMonorepo.js";
 import { latestLTS, maintenanceLTS } from "../../../utils/nodeVersions.js";
 import {
   packageManagerExec,
+  packageManagerExecWithCwd,
   packageManagerRun,
 } from "../../../utils/packageManagerUtils.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
@@ -104,6 +105,20 @@ export default class CoreCIGenerator extends Generator {
       description:
         "Disable git cache. See https://yarnpkg.com/features/caching#offline-mirror.",
     });
+
+    this.option("playwrightBrowserTestingPath", {
+      type: String,
+      default: "",
+      description:
+        "path of a package running vitest browser tests, to install playwright browsers",
+    });
+
+    this.option("mongodbBinaryCacheKeyFile", {
+      type: String,
+      default: "",
+      description:
+        "file pinning the mongodb-memory-server binary version, to cache the binary",
+    });
   }
 
   async default() {
@@ -155,6 +170,15 @@ export default class CoreCIGenerator extends Generator {
               inMonorepo.pobConfig?.project?.type === "lib",
             nodeLatestMajorVersion: latestLTS,
             nodeMaintenanceMajorVersion: maintenanceLTS,
+            installPlaywrightBrowserCommand: this.options
+              .playwrightBrowserTestingPath
+              ? packageManagerExecWithCwd(
+                  this.options.packageManager,
+                  this.options.playwrightBrowserTestingPath,
+                  "playwright install --with-deps chromium",
+                )
+              : "",
+            mongodbBinaryCacheKeyFile: this.options.mongodbBinaryCacheKeyFile,
             packageManagerRun: (script, packagePath) => {
               return packageManagerRun(
                 this.options.packageManager,

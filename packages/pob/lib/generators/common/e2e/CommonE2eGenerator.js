@@ -20,8 +20,12 @@ export default class CommonE2eGenerator extends Generator {
 
     packageUtils.addOrRemoveDevDependencies(pkg, this.options.enable, [
       "@playwright/test",
-      "playwright",
     ]);
+    packageUtils.addOrRemoveDevDependencies(
+      pkg,
+      this.options.enable || packageUtils.hasVitestBrowserPlaywright(pkg),
+      ["playwright"],
+    );
 
     packageUtils.addOrRemoveScripts(pkg, this.options.enable, {
       // keeps the browsers added by hand, like webkit for iPhone projects
