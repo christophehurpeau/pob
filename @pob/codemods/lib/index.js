@@ -1,6 +1,11 @@
 import { fileURLToPath } from "node:url";
 import runJscodeshift from "./runJscodeshift.cjs";
 
+export {
+  removeUnusedOxlintDirectives,
+  runRemoveUnusedOxlintDirectives,
+} from "./removeUnusedOxlintDirectives.js";
+
 /**
  * Runs a transform of lib/transforms on `paths`, like `pob-migrate`.
  *

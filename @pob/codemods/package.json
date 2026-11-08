@@ -15,7 +15,8 @@
     "directory": "@pob/codemods"
   },
   "bin": {
-    "pob-migrate": "./bin/migrate.mjs"
+    "pob-migrate": "./bin/migrate.mjs",
+    "pob-remove-unused-oxlint-directives": "./bin/remove-unused-oxlint-directives.mjs"
   },
   "files": [
     "bin",
