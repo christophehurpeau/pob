@@ -8,6 +8,7 @@ import inMonorepo from "../../utils/inMonorepo.js";
 import removeLegacyGeneratedDocs from "../../utils/legacyGeneratedDocs.js";
 import { nodeAppTypes } from "../../utils/nodeApps.js";
 import * as packageUtils from "../../utils/package.js";
+import { getPackageEnvs } from "../../utils/packageEnvs.js";
 import { detectStorybookReactNative } from "../../utils/storybook.js";
 import { appIgnorePaths } from "./ignorePaths.js";
 
@@ -236,7 +237,7 @@ export default class PobAppGenerator extends Generator {
       this.composeWith("pob:common:husky", {});
     }
 
-    const envs = (pkg.pob && (pkg.pob.babelEnvs || pkg.pob.envs)) || [];
+    const envs = getPackageEnvs(pkg.pob) || [];
     const babel =
       envs.length > 0 || appsWithTypescript.includes(this.appConfig.type);
     const typescript = babel || pkg.pob?.typescript;

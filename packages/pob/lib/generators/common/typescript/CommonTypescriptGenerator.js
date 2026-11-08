@@ -7,6 +7,7 @@ import {
 import inMonorepo from "../../../utils/inMonorepo.js";
 import { latestLTS, maintenanceLTS } from "../../../utils/nodeVersions.js";
 import * as packageUtils from "../../../utils/package.js";
+import { getPackageEnvs } from "../../../utils/packageEnvs.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
 export default class CommonTypescriptGenerator extends Generator {
@@ -169,7 +170,7 @@ export default class CommonTypescriptGenerator extends Generator {
     }
 
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
-    const envs = pkg.pob?.envs || [
+    const envs = getPackageEnvs(pkg.pob) || [
       {
         target: "node",
         version: `${maintenanceLTS}`,

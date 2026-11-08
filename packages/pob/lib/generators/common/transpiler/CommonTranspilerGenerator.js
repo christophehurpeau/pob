@@ -2,6 +2,7 @@ import fs from "node:fs";
 import Generator from "yeoman-generator";
 import { latestLTS, maintenanceLTS } from "../../../utils/nodeVersions.js";
 import * as packageUtils from "../../../utils/package.js";
+import { getEntryEnvs, getPackageEnvs } from "../../../utils/packageEnvs.js";
 import { packageManagerRun } from "../../../utils/packageManagerUtils.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
 
@@ -341,17 +342,15 @@ export default class CommonTranspilerGenerator extends Generator {
 
     let envs = pkg.pob.babelEnvs || pkg.pob.envs;
 
-    const envsWithDefault =
-      pkg.pob.bundler === false
-        ? []
-        : envs || [
-            {
-              target: "node",
-              version: "22",
-            },
-          ];
+    const getEntryEnvsWithDefault = (entry) =>
+      pkg.pob.bundler === false ? [] : getEntryEnvs(entry, envs);
 
-    const esAllBrowserEnv = envsWithDefault.find(
+    const indexEntry =
+      (pkg.pob.entries ?? ["index"]).find(
+        (entry) => (typeof entry === "string" ? entry : entry.name) === "index",
+      ) ?? "index";
+
+    const esAllBrowserEnv = getEntryEnvsWithDefault(indexEntry).find(
       (env) =>
         env.target === "browser" &&
         env.version === undefined &&
@@ -403,15 +402,17 @@ export default class CommonTranspilerGenerator extends Generator {
               : `./${this.options.buildDirectory}/definitions/${entryDistName}.d.ts`,
         };
 
+        const entryEnvs = getEntryEnvsWithDefault(entryWithOptionalExt);
+
         const defaultNodeEnv =
           withBabel || (withTypescript && pkg.pob?.typescript !== "check-only")
-            ? envsWithDefault.find((env) => env.target === "node")
+            ? entryEnvs.find((env) => env.target === "node")
             : undefined;
 
         const defaultNodeEnvVersion = defaultNodeEnv && defaultNodeEnv.version;
 
-        if (envsWithDefault) {
-          envsWithDefault.forEach(
+        if (entryEnvs) {
+          entryEnvs.forEach(
             ({
               target,
               version,
@@ -656,7 +657,7 @@ export default class CommonTranspilerGenerator extends Generator {
   async writing() {
     const pkg = this.fs.readJSON(this.destinationPath("package.json"));
     const entries = pkg.pob.entries || ["index"];
-    const envs = pkg.pob.envs || pkg.pob.babelEnvs;
+    const envs = getPackageEnvs(pkg.pob);
 
     const hasTargetBrowser =
       envs && envs.some((env) => env.target === "browser");
