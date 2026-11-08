@@ -23,6 +23,7 @@ import {
   buildTopologicalOrderBatches,
   discoverWorkspaces,
   getWorkspaceName,
+  isMonorepoPublishable,
 } from "../../utils/workspaceUtils.js";
 import { copyAndFormatTpl } from "../../utils/writeAndFormat.js";
 
@@ -420,7 +421,10 @@ export default class PobMonorepoGenerator extends Generator {
     this.composeWith("pob:common:release", {
       enable: true,
       packageManager: this.options.packageManager,
-      enablePublish: !this.options.isAppProject,
+      enablePublish: isMonorepoPublishable({
+        isAppProject: this.options.isAppProject,
+        packages: this.packages,
+      }),
       build: hasRootBuild,
       isMonorepo: true,
       ci: this.pobMonorepoConfig.ci,

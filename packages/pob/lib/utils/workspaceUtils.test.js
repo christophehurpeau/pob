@@ -7,7 +7,40 @@ import {
   buildTopologicalOrderBatches,
   discoverWorkspaces,
   getNewPackagePath,
+  isMonorepoPublishable,
 } from "./workspaceUtils.js";
+
+describe("isMonorepoPublishable", () => {
+  it("publishes a lib monorepo", () => {
+    expect(
+      isMonorepoPublishable({
+        isAppProject: false,
+        packages: [{ name: "a", private: true }],
+      }),
+    ).toBe(true);
+  });
+
+  it("publishes an app monorepo with a public workspace", () => {
+    expect(
+      isMonorepoPublishable({
+        isAppProject: true,
+        packages: [{ name: "server", private: true }, { name: "cli" }],
+      }),
+    ).toBe(true);
+  });
+
+  it("does not publish an app monorepo whose workspaces are all private", () => {
+    expect(
+      isMonorepoPublishable({
+        isAppProject: true,
+        packages: [
+          { name: "server", private: true },
+          { name: "web", private: true },
+        ],
+      }),
+    ).toBe(false);
+  });
+});
 
 describe("getNewPackagePath", () => {
   it("creates a scoped package in the workspaces directory", () => {

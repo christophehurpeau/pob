@@ -25,6 +25,13 @@ export const getWorkspaceName = (workspace) => {
 export const getNewPackagePath = (workspaces, packageName) =>
   `${workspaces[0].replace(/\/\*$/, "")}/${packageName.replace(/^@[^/]+\//, "")}`;
 
+/**
+ * A monorepo publishes to npm when it is not an app, or when an app monorepo
+ * has public workspaces, such as a cli shipped for npx.
+ */
+export const isMonorepoPublishable = ({ isAppProject, packages }) =>
+  !isAppProject || packages.some((pkg) => !pkg.private);
+
 export const discoverWorkspaces = async (rootPath) => {
   const rootPackageJSONPath = path.join(rootPath, "package.json");
   if (!fs.existsSync(rootPackageJSONPath)) {
