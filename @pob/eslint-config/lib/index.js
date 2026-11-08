@@ -46,7 +46,7 @@ const scriptsCommonjsFiles = isCommonjsPackage
 
 const testFiles = [
   `**/*.{test,test-e2e,spec}.{js,cjs,mjs,${tsExtensions.slice(1, -1)}}`,
-  `**/{__tests__,__mocks__}/**/*.{js,cjs,mjs,${tsExtensions.slice(1, -1)}}`,
+  `**/{__tests__,__mocks__,test,tests}/**/*.{js,cjs,mjs,${tsExtensions.slice(1, -1)}}`,
 ];
 
 /** @type {import("eslint").Linter.Config[]} */

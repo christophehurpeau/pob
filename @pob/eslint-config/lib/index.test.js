@@ -71,6 +71,20 @@ describe("configs.node", () => {
     );
     expect(config.languageOptions.parserOptions.project).toBeUndefined();
   });
+
+  it.each([
+    ["src/file.test.ts", ["vitest"]],
+    ["src/tests/helpers.ts", ["vitest"]],
+    ["src/git/test/fixture.ts", ["vitest"]],
+    ["src/file.ts", undefined],
+  ])("resolves vitest as a core module in %s", async (filePath, expected) => {
+    const config = await new ESLint({
+      cwd: rootDir,
+      overrideConfigFile: true,
+      overrideConfig: configs.node,
+    }).calculateConfigForFile(path.join(rootDir, filePath));
+    expect(config.settings["import-x/core-modules"]).toEqual(expected);
+  });
 });
 
 describe("configs.baseModule", () => {
