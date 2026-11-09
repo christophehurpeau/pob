@@ -267,8 +267,8 @@ importers:
   '@pob/version':
     dependencies:
       commander:
-        specifier: 15.0.0
-        version: 15.0.0
+        specifier: 15.1.0
+        version: 15.1.0
       conventional-changelog-conventionalcommits:
         specifier: 10.4.1
         version: 10.4.1
@@ -3085,8 +3085,8 @@ packages:
     resolution: {integrity: sha512-pFGrxThWcWQ2MsAz6RtgeWe4NK2kUE1WfsrvvlctdII745EW9I0yflqhe7++M5LEc7bV2c/9/5zc8sFcpL0Drw==}
     engines: {node: '>=0.1.90'}
 
-  commander@15.0.0:
-    resolution: {integrity: sha512-z67u4ZhzCL/Tydu1lJARtEZYWbWaN7oYLHbsuzocr6y4N6WZAagG3RQ4FW61V1/0+jImpj293XfrcYnd1qxtPg==}
+  commander@15.1.0:
+    resolution: {integrity: sha512-cgnQ88TRrWcC7pVq46RzJVRMktu3W2RcbnoidnfBsl1bmDCBwJS/udcIZpKoCrbAYYaCqsz1yZCVIgbIaU3ddQ==}
     engines: {node: '>=22.12.0'}
 
   comment-parser@1.4.6:
@@ -7553,7 +7553,7 @@ snapshots:
 
   colors@1.0.3: {}
 
-  commander@15.0.0: {}
+  commander@15.1.0: {}
 
   comment-parser@1.4.6: {}
 
@@ -9690,7 +9690,7 @@ snapshots:
       '@yeoman/types': 1.13.1(@types/node@24.19.1)(@yeoman/adapter@5.1.1(@types/node@24.19.1))(mem-fs@6.0.0(@types/node@24.19.1)(@types/vinyl@2.0.12))
       arrify: 3.0.0
       chalk: 6.0.1
-      commander: 15.0.0
+      commander: 15.1.0
       debug: 4.4.3(supports-color@7.2.0)
       execa: 10.1.0
       fly-import: 2.1.1(supports-color@7.2.0)
