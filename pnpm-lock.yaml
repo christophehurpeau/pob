@@ -93,8 +93,8 @@ importers:
         specifier: 8.72.2
         version: 8.72.2(@typescript/typescript6@6.0.2)(eslint@10.14.0(supports-color@7.2.0))(supports-color@7.2.0)
       check-package-dependencies:
-        specifier: ^13.2.0
-        version: 13.2.0(eslint@10.14.0(supports-color@7.2.0))
+        specifier: ^13.3.0
+        version: 13.3.0(eslint@10.14.0(supports-color@7.2.0))
       eslint-plugin-import-x:
         specifier: ^4.17.1
         version: 4.17.1(@typescript-eslint/utils@8.72.2(@typescript/typescript6@6.0.2)(eslint@10.14.0(supports-color@7.2.0))(supports-color@7.2.0))(eslint@10.14.0(supports-color@7.2.0))(supports-color@7.2.0)
@@ -124,7 +124,7 @@ importers:
         specifier: workspace:*
         version: link:../eslint-config
       eslint:
-        specifier: ^10.8.0
+        specifier: ^10.14.0
         version: 10.14.0(supports-color@7.2.0)
       eslint-plugin-import-x:
         specifier: 4.17.1
@@ -3035,12 +3035,12 @@ packages:
   chardet@2.1.1:
     resolution: {integrity: sha512-PsezH1rqdV9VvyNhxxOW32/d75r01NY7TQCmOqomRo15ZSOKbpTFVsfjghxo6JloQUCGnH4k1LGu0R4yCLlWQQ==}
 
-  check-package-dependencies@13.2.0:
-    resolution: {integrity: sha512-zw/RZHpkd9owcQ7yOvM1SWz95LWpbPhqG6m8tMoHtC5uq03hxOIKiQkmMDSMyZ8D/fMcmdVf7+XKjYL/1NNEnA==}
-    engines: {node: '>=22.18.0'}
+  check-package-dependencies@13.3.0:
+    resolution: {integrity: sha512-5buvY4ygrME8ulmbq5DSnr8eRJEPRhFoESRkehs16kn9Z7l1OdvK6+9ZT4eb6+on/6OH6CFQB4PC3zAgE+kySg==}
+    engines: {node: ^22.18.0 || >=24.14.1}
     hasBin: true
     peerDependencies:
-      eslint: ^10.8.0
+      eslint: ^10.14.0
     peerDependenciesMeta:
       eslint:
         optional: true
@@ -7514,7 +7514,7 @@ snapshots:
 
   chardet@2.1.1: {}
 
-  check-package-dependencies@13.2.0(eslint@10.14.0(supports-color@7.2.0)):
+  check-package-dependencies@13.3.0(eslint@10.14.0(supports-color@7.2.0)):
     dependencies:
       '@eslint/plugin-kit': 0.7.3
       jsonc-parser: 3.3.1
