@@ -55,7 +55,7 @@
     "mem-fs": "6.0.0",
     "mem-fs-editor": "12.1.0",
     "minimist": "1.2.8",
-    "oxfmt": "0.77.0",
+    "oxfmt": "0.78.0",
     "parse-author": "2.0.0",
     "pob-dependencies": "workspace:*",
     "semver": "7.8.6",
