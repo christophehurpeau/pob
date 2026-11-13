@@ -31,9 +31,9 @@
   },
   "devDependencies": {
     "@typescript/native": "npm:typescript@7.0.2",
-    "tsrs": "0.23.0-ts7.1.0-beta",
+    "tsrs": "0.24.0-ts7.1.0-beta",
     "typescript": "npm:@typescript/typescript6@6.0.2",
-    "vite": "8.3.6"
+    "vite": "8.3.8"
   },
   "engines": {
     "node": "^22.23.4 || ^24.22.1 || >=26.13.0"

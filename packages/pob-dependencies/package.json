@@ -51,13 +51,13 @@
     "eslint": "10.14.0",
     "pinst": "3.0.0",
     "playwright": "1.65.0",
-    "rollup": "4.68.0",
+    "rollup": "4.68.2",
     "semver": "7.8.6",
     "tslib": "2.9.1",
-    "tsrs": "0.23.0-ts7.1.0-beta",
+    "tsrs": "0.24.0-ts7.1.0-beta",
     "typedoc": "0.28.20",
     "typescript": "npm:@typescript/typescript6@6.0.2",
-    "vite": "8.3.6",
+    "vite": "8.3.8",
     "vitest": "5.1.0"
   },
   "engines": {
