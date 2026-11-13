@@ -159,7 +159,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [<% if (!onlyLatestLTS && nodeMaintenanceMajorVersion !== nodeLatestMajorVersion) { -%><%= nodeMaintenanceMajorVersion %>, <% } -%><%= nodeLatestMajorVersion %>]
+        node-version: [<%= nodeMajorVersions.join(", ") %>]
 
     steps:
       - uses: actions/checkout@v7
