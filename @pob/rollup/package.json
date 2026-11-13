@@ -39,7 +39,7 @@
     "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/rollup'"
   },
   "dependencies": {
-    "rollup": "4.68.0"
+    "rollup": "4.68.2"
   },
   "engines": {
     "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
