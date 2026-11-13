@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [67.3.1](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-plugin%4067.3.0...%40pob%2Feslint-plugin%4067.3.1) (2026-11-13)
+
+### Bug Fixes
+
+* **deps:** update typescript-eslint monorepo to v8.72.2 ([#2929](https://github.com/christophehurpeau/pob/issues/2929))
+
 ## [67.3.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-plugin%4067.2.0...%40pob%2Feslint-plugin%4067.3.0) (2026-11-03)
 
 ### Features

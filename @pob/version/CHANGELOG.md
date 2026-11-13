@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.6.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Fversion%408.5.0...%40pob%2Fversion%408.6.0) (2026-11-13)
+
+### Features
+
+* **deps:** update dependency commander to v15.1.0 ([#2923](https://github.com/christophehurpeau/pob/issues/2923))
+
+### Bug Fixes
+
+* **deps:** update dependency conventional-commits-parser to v7.1.4 ([#2903](https://github.com/christophehurpeau/pob/issues/2903))
+* **deps:** update dependency semver to v7.8.6 ([#2906](https://github.com/christophehurpeau/pob/issues/2906))
+
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [8.5.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Fversion%408.4.0...%40pob%2Fversion%408.5.0) (2026-11-03)
 
 ### Features

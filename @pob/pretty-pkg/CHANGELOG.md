@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.7.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Fpretty-pkg%4014.6.0...%40pob%2Fpretty-pkg%4014.7.0) (2026-11-13)
+
+### Features
+
+* **deps:** update dependency oxfmt to v0.76.0 ([#2908](https://github.com/christophehurpeau/pob/issues/2908))
+* **deps:** update dependency oxfmt to v0.77.0 ([#2919](https://github.com/christophehurpeau/pob/issues/2919))
+* **deps:** update dependency oxfmt to v0.78.0 ([#2928](https://github.com/christophehurpeau/pob/issues/2928))
+
 ## [14.6.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Fpretty-pkg%4014.5.0...%40pob%2Fpretty-pkg%4014.6.0) (2026-11-03)
 
 ### Features

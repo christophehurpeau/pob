@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.8.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.7.0...%40pob%2Froot%4028.8.0) (2026-11-13)
+
+### Features
+
+* **deps:** update dependency oxfmt to v0.76.0 ([#2908](https://github.com/christophehurpeau/pob/issues/2908))
+* **deps:** update dependency oxfmt to v0.77.0 ([#2919](https://github.com/christophehurpeau/pob/issues/2919))
+* **deps:** update dependency oxfmt to v0.78.0 ([#2928](https://github.com/christophehurpeau/pob/issues/2928))
+* **deps:** update dependency oxlint to v1.93.0 ([#2909](https://github.com/christophehurpeau/pob/issues/2909))
+* **root:** run oxlint type-aware rules with tsrs-lint ([#2918](https://github.com/christophehurpeau/pob/issues/2918))
+
+### Bug Fixes
+
+* **deps:** update dependency oxlint-tsgolint to v7.0.2006 ([#2915](https://github.com/christophehurpeau/pob/issues/2915))
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [28.7.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.6.1...%40pob%2Froot%4028.7.0) (2026-11-03)
 
 ### Features

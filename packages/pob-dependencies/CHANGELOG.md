@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.8.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies%4028.7.0...pob-dependencies%4028.8.0) (2026-11-13)
+
+### Features
+
+* **deps:** update dependency rollup to v4.68.0 ([#2921](https://github.com/christophehurpeau/pob/issues/2921))
+
+### Bug Fixes
+
+* **deps:** update dependency rollup to v4.67.4 ([#2901](https://github.com/christophehurpeau/pob/issues/2901))
+* **deps:** update dependency rollup to v4.67.5 ([#2912](https://github.com/christophehurpeau/pob/issues/2912))
+* **deps:** update dependency rollup to v4.68.2 ([#2926](https://github.com/christophehurpeau/pob/issues/2926))
+* **deps:** update dependency semver to v7.8.6 ([#2906](https://github.com/christophehurpeau/pob/issues/2906))
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: @pob/pretty-pkg
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [28.7.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies%4028.6.0...pob-dependencies%4028.7.0) (2026-11-03)
 
 ### Features

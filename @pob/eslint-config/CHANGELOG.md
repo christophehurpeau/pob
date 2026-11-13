@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [68.5.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-config%4068.4.0...%40pob%2Feslint-config%4068.5.0) (2026-11-13)
+
+### Features
+
+* **deps:** update dependency check-package-dependencies to ^13.3.0 ([#2911](https://github.com/christophehurpeau/pob/issues/2911))
+* **deps:** update dependency eslint-plugin-import-x to v4.18.1 ([#2920](https://github.com/christophehurpeau/pob/issues/2920))
+
+### Bug Fixes
+
+* **deps:** update dependency @eslint/json to ^2.1.1 ([#2905](https://github.com/christophehurpeau/pob/issues/2905))
+* **deps:** update typescript-eslint monorepo to v8.72.2 ([#2929](https://github.com/christophehurpeau/pob/issues/2929))
+* **eslint-config:** resolve vitest as a core module in test helpers
+
+Version bump for dependency: @pob/eslint-plugin
+
+
 ## [68.4.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Feslint-config%4068.3.0...%40pob%2Feslint-config%4068.4.0) (2026-11-03)
 
 ### Features

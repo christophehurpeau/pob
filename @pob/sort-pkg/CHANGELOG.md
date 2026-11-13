@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.4.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Fsort-pkg%4013.3.1...%40pob%2Fsort-pkg%4013.4.0) (2026-11-13)
+
+Version bump for dependency: @pob/sort-object
+
+
 ## [13.3.1](https://github.com/christophehurpeau/pob/compare/%40pob%2Fsort-pkg%4013.3.0...%40pob%2Fsort-pkg%4013.3.1) (2026-11-03)
 
 ### Bug Fixes

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.4.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Fsort-object%4011.3.1...%40pob%2Fsort-object%4011.4.0) (2026-11-13)
+
+### Features
+
+* **deps:** update dependency oxlint to v1.93.0 ([#2909](https://github.com/christophehurpeau/pob/issues/2909))
+
 ## [11.3.1](https://github.com/christophehurpeau/pob/compare/%40pob%2Fsort-object%4011.3.0...%40pob%2Fsort-object%4011.3.1) (2026-11-03)
 
 ### Bug Fixes

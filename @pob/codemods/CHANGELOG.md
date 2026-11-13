@@ -3,6 +3,16 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.19.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Fcodemods%400.18.3...%40pob%2Fcodemods%400.19.0) (2026-11-13)
+
+### Features
+
+* **codemods:** add remove-unused-oxlint-directives functionality and CLI command
+
+### Bug Fixes
+
+* **deps:** update dependency @babel/parser to v7.29.13 ([#2913](https://github.com/christophehurpeau/pob/issues/2913))
+
 ## [0.18.3](https://github.com/christophehurpeau/pob/compare/%40pob%2Fcodemods%400.18.2...%40pob%2Fcodemods%400.18.3) (2026-11-03)
 
 ### Bug Fixes

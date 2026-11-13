@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.9.0](https://github.com/christophehurpeau/pob/compare/pob%4040.8.0...pob%4040.9.0) (2026-11-13)
+
+### Features
+
+* **deps:** update dependency oxfmt to v0.76.0 ([#2908](https://github.com/christophehurpeau/pob/issues/2908))
+* **deps:** update dependency oxfmt to v0.77.0 ([#2919](https://github.com/christophehurpeau/pob/issues/2919))
+* **deps:** update dependency oxfmt to v0.78.0 ([#2928](https://github.com/christophehurpeau/pob/issues/2928))
+* **pob:** support vitest browser tests and a mongod binary cache in ci
+
+### Bug Fixes
+
+* **deps:** update dependency semver to v7.8.6 ([#2906](https://github.com/christophehurpeau/pob/issues/2906))
+* **pob:** include the web storybook and nativewind types in tsconfig
+* **pob:** keep the exclusions of package files
+* **pob:** publish app monorepos that have public workspaces
+* **pob:** read the envs declared per entry
+
+Version bump for dependency: @pob/codemods
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: @pob/sort-object
+Version bump for dependency: @pob/sort-pkg
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [40.8.0](https://github.com/christophehurpeau/pob/compare/pob%4040.7.3...pob%4040.8.0) (2026-11-03)
 
 ### Features
