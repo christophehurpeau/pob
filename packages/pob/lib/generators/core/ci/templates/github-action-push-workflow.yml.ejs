@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [<% if (!onlyLatestLTS && nodeMaintenanceMajorVersion !== nodeLatestMajorVersion) { -%><%= nodeMaintenanceMajorVersion %>.x, <% } -%><%= nodeLatestMajorVersion %>.x]
+        node-version: [<%= nodeMajorVersions.map((version) => `${version}.x`).join(", ") %>]
 
     steps:
       - uses: actions/checkout@v7

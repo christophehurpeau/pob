@@ -1,13 +1,17 @@
 import fs from "node:fs";
 import Generator from "yeoman-generator";
 import inMonorepo from "../../../utils/inMonorepo.js";
-import { latestLTS, maintenanceLTS } from "../../../utils/nodeVersions.js";
+import { latestLTS } from "../../../utils/nodeVersions.js";
 import {
   packageManagerExec,
   packageManagerExecWithCwd,
   packageManagerRun,
 } from "../../../utils/packageManagerUtils.js";
 import { copyAndFormatTpl } from "../../../utils/writeAndFormat.js";
+import {
+  getCiNodeMajorVersions,
+  getPushWorkflowRequiredChecks,
+} from "./requiredChecks.js";
 
 export const ciContexts = [];
 
@@ -138,6 +142,9 @@ export default class CoreCIGenerator extends Generator {
       const build = this.options.build;
 
       if (!this.options.disablePushWorkflow) {
+        const nodeMajorVersions = getCiNodeMajorVersions(
+          this.options.onlyLatestLTS,
+        );
         await copyAndFormatTpl(
           this.fs,
           this.templatePath(
@@ -160,7 +167,7 @@ export default class CoreCIGenerator extends Generator {
             build,
             typescript: this.options.typescript,
             codecov: this.options.codecov,
-            onlyLatestLTS: this.options.onlyLatestLTS,
+            nodeMajorVersions,
             isReleasePleaseEnabled: this.isReleasePleaseEnabled,
             publishSinglePackage: this.isReleasePleaseEnabled && !pkg.private,
             publishMonorepo:
@@ -169,7 +176,6 @@ export default class CoreCIGenerator extends Generator {
               inMonorepo.root &&
               inMonorepo.pobConfig?.project?.type === "lib",
             nodeLatestMajorVersion: latestLTS,
-            nodeMaintenanceMajorVersion: maintenanceLTS,
             installPlaywrightBrowserCommand: this.options
               .playwrightBrowserTestingPath
               ? packageManagerExecWithCwd(
@@ -196,19 +202,13 @@ export default class CoreCIGenerator extends Generator {
           },
         );
         ciContexts.push(
-          "reviewflow",
-          ...(this.options.splitJobs
-            ? [
-                checks && "checks",
-                build && "build",
-                "lint",
-                testing && !this.options.onlyLatestLTS && `test (${latestLTS})`,
-                testing && `test (${maintenanceLTS})`,
-              ].filter(Boolean)
-            : [
-                !this.options.onlyLatestLTS && `build (${latestLTS}.x)`,
-                `build (${maintenanceLTS}.x)`,
-              ].filter(Boolean)),
+          ...getPushWorkflowRequiredChecks({
+            splitJobs: this.options.splitJobs,
+            checks,
+            build,
+            testing,
+            nodeMajorVersions,
+          }),
         );
       } else {
         this.fs.delete(this.destinationPath(".github/workflows/push.yml"));
