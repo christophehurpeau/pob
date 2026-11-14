@@ -39,7 +39,7 @@
     "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/codemods'"
   },
   "dependencies": {
-    "@babel/parser": "7.29.13",
+    "@babel/parser": "7.29.14",
     "jscodeshift": "17.4.0"
   },
   "devDependencies": {
