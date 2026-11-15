@@ -46,6 +46,7 @@ describe("npm", () => {
       "tsconfigs",
       "config.js",
       "extra",
+      "!**/*.test.*",
       "!src/**/*.test.ts",
     ]);
     expect(plannedOp(plan, ".npmignore")).toBe("create");

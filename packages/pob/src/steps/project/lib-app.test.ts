@@ -52,6 +52,31 @@ describe("lib", () => {
     expect(plannedPkg(plan).sideEffects).toBe(false);
   });
 
+  test("sideEffects true with an executable env: importing it runs it", async () => {
+    const plan = await runTestSteps(
+      createTestContext({
+        files: {
+          "package.json": json({
+            name: "cli",
+            sideEffects: false,
+            pob: {
+              bundler: "rollup-esbuild",
+              entries: ["index"],
+              envs: [{ target: "node", version: "24", executable: true }],
+              typescript: true,
+            },
+          }),
+          ".yo-rc.json": yoRc({
+            project: { type: "lib", packageManager: "yarn", ci: true },
+            lib: {},
+          }),
+        },
+      }),
+      [libSideEffectsStep, transpilerStub],
+    );
+    expect(plannedPkg(plan).sideEffects).toBe(true);
+  });
+
   test("monorepo package: release scripts and build outputs removed", async () => {
     const plan = await runTestSteps(
       createTestContext({

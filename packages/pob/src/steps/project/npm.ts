@@ -28,6 +28,9 @@ const getNpmOptions = (ctx: PackageContext): NpmOptions => {
   };
 };
 
+/** the sources and the type definitions of the built tests */
+const testFilesExclusion = "!**/*.test.*";
+
 const computeFiles = (
   ctx: PackageContext,
   options: NpmOptions,
@@ -61,7 +64,9 @@ const computeFiles = (
   const exclusions = (currentFiles ?? []).filter((file) =>
     file.startsWith("!"),
   );
-  return [...files, ...exclusions].filter(Boolean);
+  return [...files, ...new Set([testFilesExclusion, ...exclusions])].filter(
+    Boolean,
+  );
 };
 
 /** pob:core:npm: published files of libs and apps */

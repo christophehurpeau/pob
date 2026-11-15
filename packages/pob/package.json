@@ -20,10 +20,11 @@
   "files": [
     "src",
     "dist",
-    "bin"
+    "bin",
+    "!**/*.test.*"
   ],
   "type": "module",
-  "sideEffects": false,
+  "sideEffects": true,
   "main": "./dist/index-node.mjs",
   "types": "./dist/definitions/index.d.ts",
   "exports": {

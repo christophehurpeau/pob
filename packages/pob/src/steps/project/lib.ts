@@ -48,9 +48,13 @@ export const libStep = defineStep<PackageContext>({
   },
 });
 
+/** a cli entry: importing it runs it (`import "@pob/version"`) */
+const hasExecutableEnv = (ctx: PackageContext): boolean =>
+  (ctx.config.build?.envs ?? []).some((env) => env.executable);
+
 /**
  * The transpiler sets sideEffects to true when it is absent, pob:lib forces it
- * to false: a library is always tree-shakable.
+ * to false: a library is tree-shakable, unless it builds an executable.
  */
 export const libSideEffectsStep = defineStep<PackageContext>({
   name: "lib:side-effects",
@@ -58,6 +62,7 @@ export const libSideEffectsStep = defineStep<PackageContext>({
   writes: ["pkg.sideEffects"],
   overrides: ["transpiler"],
   run(ctx) {
-    if (ctx.pkg.has("sideEffects")) ctx.pkg.set("sideEffects", false);
+    if (!ctx.pkg.has("sideEffects")) return;
+    ctx.pkg.set("sideEffects", hasExecutableEnv(ctx));
   },
 });
