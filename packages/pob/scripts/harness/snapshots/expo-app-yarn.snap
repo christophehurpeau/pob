@@ -2,11 +2,6 @@
 exit code: 0
 effects:
   [blocked] (.) yarn set version stable
-  (.) rm -Rf lib-* coverage generated-docs dist
-  [blocked] (.) yarn plugin runtime --json
-  (.) rm -rf .yarn/cache
-  [blocked] (.) yarn install
-  [blocked] (.) yarn dedupe
   [blocked] (.) yarn oxfmt .vscode .yarnrc.yml
 removed from git index:
 
@@ -293,28 +288,7 @@ npmPreapprovedPackages:
   - nightingale-logger
   - nightingale-levels
   - nightingale-types
->>>>> pob-harness modified: .yo-rc.json
-{
-  "pob": {
-    "renovate": {
-      "enable": true
-    },
-    "project": {
-      "type": "app",
-      "packageManager": "yarn",
-      "yarnNodeLinker": "node-modules",
-      "ci": true
-    },
-    "app": {
-      "type": "expo",
-      "testing": false,
-      "codecov": false,
-      "e2e": false,
-      "storybook": false,
-      "alouette": false
-    }
-  }
-}
+>>>>> pob-harness deleted: .yo-rc.json
 >>>>> pob-harness created: eslint.config.js
 import pobConfig from "@pob/eslint-config";
 import pobTypescriptConfigReact from "@pob/eslint-config-typescript-react";
@@ -386,6 +360,27 @@ export default createLintStagedConfig();
         "typescript"
       ]
     }
+  }
+}
+>>>>> pob-harness created: pob.json
+{
+  "$schema": "./node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "app",
+    "packageManager": "yarn",
+    "yarnNodeLinker": "node-modules",
+    "ci": true
+  },
+  "app": {
+    "type": "expo",
+    "testing": false,
+    "codecov": false,
+    "e2e": false,
+    "storybook": false,
+    "alouette": false
+  },
+  "renovate": {
+    "enable": true
   }
 }
 >>>>> pob-harness created: renovate.json

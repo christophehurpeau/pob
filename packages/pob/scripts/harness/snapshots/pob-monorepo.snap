@@ -1,15 +1,6 @@
 # pob harness snapshot: pob-monorepo
 exit code: 0
 effects:
-  (.) rm -Rf lib-* coverage generated-docs
-  (packages/yarn-version) rm -Rf lib-* coverage generated-docs dist
-  (@pob/codemods) rm -Rf lib-* coverage generated-docs dist
-  (@pob/version) rm -Rf lib-* coverage generated-docs dist
-  (pob-examples/vite-app) rm -Rf lib-* coverage generated-docs dist
-  [blocked] (.) pnpm --version
-  [blocked] (.) pnpm with ^12.0.0 install --no-frozen-lockfile
-  [blocked] (.) pnpm with ^12.0.0 dedupe
-  [blocked] (.) pnpm with ^12.0.0 run build
 removed from git index:
 
 >>>>> pob-harness modified: .oxfmtrc.jsonc
@@ -69,6 +60,8 @@ removed from git index:
     }
   ]
 }
+>>>>> pob-harness deleted: .yo-rc.json
+>>>>> pob-harness deleted: @pob/codemods/.yo-rc.json
 >>>>> pob-harness modified: @pob/codemods/package.json
 {
   "name": "@pob/codemods",
@@ -95,6 +88,7 @@ removed from git index:
     "build",
     "bin",
     "lib/index.js",
+    "!**/*.test.*",
     "!lib/**/*.test.js"
   ],
   "type": "module",
@@ -122,8 +116,150 @@ removed from git index:
   },
   "engines": {
     "node": "^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: @pob/codemods/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "app"
   },
-  "pob": {}
+  "app": {
+    "type": "node",
+    "testing": false
+  },
+  "build": {}
+}
+>>>>> pob-harness deleted: @pob/commitlint-config/.yo-rc.json
+>>>>> pob-harness modified: @pob/commitlint-config/package.json
+{
+  "name": "@pob/commitlint-config",
+  "version": "12.3.1",
+  "description": "pob commitlint config",
+  "keywords": [
+    "commitlint"
+  ],
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
+  "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "@pob/commitlint-config"
+  },
+  "files": [
+    "lib",
+    "!**/*.test.*"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.cjs",
+  "exports": {
+    ".": "./lib/index.cjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/commitlint-config'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/commitlint-config'"
+  },
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: @pob/commitlint-config/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
+  },
+  "lib": {
+    "documentation": false,
+    "testing": false,
+    "e2e": false
+  },
+  "build": {}
+}
+>>>>> pob-harness deleted: @pob/esbuild/.yo-rc.json
+>>>>> pob-harness modified: @pob/esbuild/package.json
+{
+  "name": "@pob/esbuild",
+  "version": "7.3.0",
+  "description": "esbuild configuration for pob",
+  "keywords": [],
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
+  "license": "MIT",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "@pob/esbuild"
+  },
+  "bin": {
+    "pob-esbuild-build": "./bin/pob-esbuild-build.js",
+    "pob-esbuild-clean-out": "./bin/pob-esbuild-clean-out.js",
+    "pob-esbuild-watch": "./bin/pob-esbuild-watch.js"
+  },
+  "files": [
+    "lib",
+    "bin",
+    "!**/*.test.*"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/esbuild'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/esbuild'"
+  },
+  "dependencies": {
+    "esbuild": "0.28.2"
+  },
+  "peerDependencies": {
+    "typescript": "^4.0.3 || ^5.0.0 || ^6.0.0 || ^7.0.0"
+  },
+  "peerDependenciesMeta": {
+    "rollup": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: @pob/esbuild/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
+  },
+  "lib": {
+    "documentation": false,
+    "testing": false,
+    "e2e": false
+  },
+  "build": {}
+}
+>>>>> pob-harness modified: @pob/eslint-config-typescript-react/.yo-rc.json
+{
+  "@pob/eslint-config-typescript-react": {}
 }
 >>>>> pob-harness modified: @pob/eslint-config-typescript-react/package.json
 {
@@ -146,7 +282,8 @@ removed from git index:
     "lib",
     "oxlint/react.json",
     "oxlint/react-native.json",
-    "oxlint/react-native-web.json"
+    "oxlint/react-native-web.json",
+    "!**/*.test.*"
   ],
   "type": "module",
   "sideEffects": false,
@@ -189,8 +326,20 @@ removed from git index:
   },
   "engines": {
     "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: @pob/eslint-config-typescript-react/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
   },
-  "pob": {
+  "lib": {
+    "documentation": false,
+    "testing": false,
+    "e2e": false
+  },
+  "build": {
     "typescript": "check-only"
   }
 }
@@ -211,6 +360,10 @@ removed from git index:
     "noEmit": true
   },
   "include": ["lib/**/*.js", "lib/**/*.mjs", "lib/**/*.cjs", "lib/**/*.d.ts"]
+}
+>>>>> pob-harness modified: @pob/eslint-config/.yo-rc.json
+{
+  "@pob/eslint-config": {}
 }
 >>>>> pob-harness modified: @pob/eslint-config/package.json
 {
@@ -240,7 +393,8 @@ removed from git index:
     "oxlint/module.json",
     "oxlint/node.json",
     "oxlint/typescript.json",
-    "utils.js"
+    "utils.js",
+    "!**/*.test.*"
   ],
   "type": "module",
   "sideEffects": false,
@@ -303,8 +457,20 @@ removed from git index:
   },
   "engines": {
     "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: @pob/eslint-config/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
   },
-  "pob": {
+  "lib": {
+    "documentation": false,
+    "testing": false,
+    "e2e": false
+  },
+  "build": {
     "typescript": "check-only"
   }
 }
@@ -326,6 +492,7 @@ removed from git index:
   },
   "include": ["lib/**/*.js", "lib/**/*.mjs", "lib/**/*.cjs", "lib/**/*.d.ts"]
 }
+>>>>> pob-harness deleted: @pob/eslint-plugin/.yo-rc.json
 >>>>> pob-harness modified: @pob/eslint-plugin/package.json
 {
   "name": "@pob/eslint-plugin",
@@ -344,7 +511,8 @@ removed from git index:
     "directory": "@pob/eslint-plugin"
   },
   "files": [
-    "lib"
+    "lib",
+    "!**/*.test.*"
   ],
   "type": "module",
   "sideEffects": false,
@@ -385,8 +553,20 @@ removed from git index:
   },
   "engines": {
     "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: @pob/eslint-plugin/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
   },
-  "pob": {
+  "lib": {
+    "documentation": false,
+    "testing": false,
+    "e2e": false
+  },
+  "build": {
     "typescript": "check-only"
   }
 }
@@ -407,6 +587,614 @@ removed from git index:
     "noEmit": true
   },
   "include": ["lib/**/*.js", "lib/**/*.mjs", "lib/**/*.cjs", "lib/**/*.d.ts"]
+}
+>>>>> pob-harness deleted: @pob/pretty-pkg/.yo-rc.json
+>>>>> pob-harness modified: @pob/pretty-pkg/package.json
+{
+  "name": "@pob/pretty-pkg",
+  "version": "14.7.0",
+  "description": "prettier and sort package.json",
+  "keywords": [],
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
+  "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "@pob/pretty-pkg"
+  },
+  "bin": "./bin/pretty-pkg.js",
+  "files": [
+    "lib",
+    "bin",
+    "!**/*.test.*"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./bin/pretty-pkg.js": "./bin/pretty-pkg.js",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/pretty-pkg'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/pretty-pkg'"
+  },
+  "dependencies": {
+    "oxfmt": "0.78.0"
+  },
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: @pob/pretty-pkg/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
+  },
+  "lib": {
+    "documentation": false,
+    "testing": false,
+    "e2e": false
+  },
+  "build": {}
+}
+>>>>> pob-harness deleted: @pob/rollup-esbuild/.yo-rc.json
+>>>>> pob-harness modified: @pob/rollup-esbuild/package.json
+{
+  "name": "@pob/rollup-esbuild",
+  "version": "11.5.0",
+  "description": "rollup configuration with typescript for pob",
+  "keywords": [],
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
+  "license": "MIT",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "@pob/rollup-esbuild"
+  },
+  "bin": {
+    "pob-esbuild-clean-out": "./bin/pob-esbuild-clean-out.js",
+    "rollup": "./bin/rollup.cjs"
+  },
+  "files": [
+    "lib",
+    "bin",
+    "createRollupConfig.js",
+    "plugin-run.cjs",
+    "!**/*.test.*"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./createRollupConfig": "./createRollupConfig.js",
+    "./createRollupConfig.js": "./createRollupConfig.js",
+    "./plugin-run": "./plugin-run.cjs",
+    "./plugin-run.cjs": "./plugin-run.cjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/rollup-esbuild'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/rollup-esbuild'"
+  },
+  "dependencies": {
+    "@pob/rollup": "workspace:*",
+    "@rollup/plugin-node-resolve": "16.0.3",
+    "@rollup/plugin-replace": "6.0.3",
+    "@rollup/plugin-run": "3.1.0",
+    "esbuild": "0.28.2",
+    "rollup": "4.68.2",
+    "rollup-config-external-dependencies": "^3.0.1",
+    "rollup-plugin-esbuild": "6.2.1"
+  },
+  "peerDependencies": {
+    "rollup": "4.68.2",
+    "typescript": "^4.0.3 || ^5.0.0 || ^6.0.0 || ^7.0.0"
+  },
+  "peerDependenciesMeta": {
+    "rollup": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: @pob/rollup-esbuild/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
+  },
+  "lib": {
+    "documentation": false,
+    "testing": false,
+    "e2e": false
+  },
+  "build": {}
+}
+>>>>> pob-harness deleted: @pob/rollup-typescript/.yo-rc.json
+>>>>> pob-harness modified: @pob/rollup-typescript/package.json
+{
+  "name": "@pob/rollup-typescript",
+  "version": "9.3.1",
+  "description": "rollup configuration with typescript for pob",
+  "keywords": [],
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
+  "license": "MIT",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "@pob/rollup-typescript"
+  },
+  "bin": {
+    "pob-typescript-clean-out": "./bin/pob-typescript-clean-out.js",
+    "rollup": "./bin/rollup.cjs"
+  },
+  "files": [
+    "lib",
+    "bin",
+    "createRollupConfig.js",
+    "plugin-run.cjs",
+    "!**/*.test.*"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./createRollupConfig": "./createRollupConfig.js",
+    "./createRollupConfig.js": "./createRollupConfig.js",
+    "./plugin-run": "./plugin-run.cjs",
+    "./plugin-run.cjs": "./plugin-run.cjs",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/rollup-typescript'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/rollup-typescript'"
+  },
+  "peerDependenciesMeta": {
+    "rollup": {
+      "optional": true
+    }
+  },
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: @pob/rollup-typescript/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
+  },
+  "lib": {
+    "documentation": false,
+    "testing": false,
+    "e2e": false
+  },
+  "build": {}
+}
+>>>>> pob-harness deleted: @pob/rollup/.yo-rc.json
+>>>>> pob-harness modified: @pob/rollup/package.json
+{
+  "name": "@pob/rollup",
+  "version": "8.8.0",
+  "description": "rollup configuration for pob",
+  "keywords": [],
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
+  "license": "MIT",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "@pob/rollup"
+  },
+  "bin": {
+    "pob-rollup-clean-out": "./bin/pob-rollup-clean-out.js",
+    "rollup": "./bin/rollup.cjs"
+  },
+  "files": [
+    "lib",
+    "bin",
+    "!**/*.test.*"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./bin/pob-rollup-clean-out.js": "./bin/pob-rollup-clean-out.js",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/rollup'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/rollup'"
+  },
+  "dependencies": {
+    "rollup": "4.68.2"
+  },
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: @pob/rollup/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
+  },
+  "lib": {
+    "documentation": false,
+    "testing": false,
+    "e2e": false
+  },
+  "build": {}
+}
+>>>>> pob-harness deleted: @pob/root/.yo-rc.json
+>>>>> pob-harness modified: @pob/root/package.json
+{
+  "name": "@pob/root",
+  "version": "28.8.1",
+  "description": "root package",
+  "keywords": [],
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
+  "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "@pob/root"
+  },
+  "bin": {
+    "oxfmt": "./bin/oxfmt.cjs",
+    "oxlint": "./bin/oxlint.js",
+    "pob-check-commit-msg": "./bin/pob-check-commit-msg.js",
+    "pob-claude-run-lint-staged": "./bin/pob-claude-run-lint-staged.js",
+    "pob-root-lint-staged": "./bin/pob-root-lint-staged.js",
+    "pob-root-postinstall": "./bin/pob-root-postinstall.js",
+    "pob-version": "./bin/pob-version.js",
+    "repository-check-dirty": "./bin/repository-check-dirty.js",
+    "yarn-version": "./bin/pob-version.js"
+  },
+  "files": [
+    "lib",
+    "bin",
+    "createLintStagedConfig.js",
+    "oxfmt.js",
+    "tsconfigs",
+    "!**/*.test.*"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./createLintStagedConfig": "./createLintStagedConfig.js",
+    "./createLintStagedConfig.js": "./createLintStagedConfig.js",
+    "./oxfmt": "./oxfmt.js",
+    "./oxfmt.js": "./oxfmt.js",
+    "./tsconfigs/base.json": "./tsconfigs/base.json",
+    "./tsconfigs/strict.json": "./tsconfigs/strict.json",
+    "./tsconfigs/targets/bun.json": "./tsconfigs/targets/bun.json",
+    "./tsconfigs/targets/esbuild-node-22.json": "./tsconfigs/targets/esbuild-node-22.json",
+    "./tsconfigs/targets/esbuild-node-24.json": "./tsconfigs/targets/esbuild-node-24.json",
+    "./tsconfigs/targets/node-22.json": "./tsconfigs/targets/node-22.json",
+    "./tsconfigs/targets/node-24.json": "./tsconfigs/targets/node-24.json",
+    "./tsconfigs/targets/rollup-babel.json": "./tsconfigs/targets/rollup-babel.json",
+    "./tsconfigs/targets/rollup-babel-with-dom.json": "./tsconfigs/targets/rollup-babel-with-dom.json",
+    "./tsconfigs/targets/rollup-es2015.json": "./tsconfigs/targets/rollup-es2015.json",
+    "./tsconfigs/targets/rollup-es2015-with-dom.json": "./tsconfigs/targets/rollup-es2015-with-dom.json",
+    "./tsconfigs/targets/vite.json": "./tsconfigs/targets/vite.json",
+    "./tsconfigs/targets/webpack.json": "./tsconfigs/targets/webpack.json",
+    "./tsconfigs/targets/expo.json": "./tsconfigs/targets/expo.json",
+    "./tsconfigs/targets/rollup-node-22.json": "./tsconfigs/targets/rollup-node-22.json",
+    "./tsconfigs/targets/rollup-node-24.json": "./tsconfigs/targets/rollup-node-24.json",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/root'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/root'"
+  },
+  "dependencies": {
+    "@commitlint/format": "21.2.3",
+    "@commitlint/lint": "21.2.4",
+    "@commitlint/types": "21.2.3",
+    "@pob/version": "workspace:*",
+    "conventional-changelog-conventionalcommits": "^10.0.0",
+    "conventional-changelog-writer": "^9.0.0",
+    "conventional-commits-parser": "^7.0.0",
+    "json5": "^2.2.3",
+    "lint-staged": "17.6.0",
+    "oxfmt": "0.78.0",
+    "oxlint": "1.93.0",
+    "oxlint-tsgolint": "7.0.2007",
+    "picomatch": "^4.0.7",
+    "pob-dependencies": "workspace:*",
+    "semver": "^7.7.3"
+  },
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: @pob/root/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
+  },
+  "lib": {
+    "documentation": false,
+    "testing": false,
+    "e2e": false
+  },
+  "build": {}
+}
+>>>>> pob-harness deleted: @pob/sort-object/.yo-rc.json
+>>>>> pob-harness modified: @pob/sort-object/package.json
+{
+  "name": "@pob/sort-object",
+  "version": "11.4.0",
+  "description": "sort object",
+  "keywords": [],
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
+  "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "@pob/sort-object"
+  },
+  "files": [
+    "lib",
+    "!**/*.test.*"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/sort-object'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/sort-object'"
+  },
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: @pob/sort-object/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
+  },
+  "lib": {
+    "documentation": false,
+    "testing": false,
+    "e2e": false
+  },
+  "build": {}
+}
+>>>>> pob-harness deleted: @pob/sort-pkg/.yo-rc.json
+>>>>> pob-harness modified: @pob/sort-pkg/package.json
+{
+  "name": "@pob/sort-pkg",
+  "version": "13.4.0",
+  "description": "sort package.json",
+  "keywords": [],
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
+  "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "@pob/sort-pkg"
+  },
+  "files": [
+    "lib",
+    "!**/*.test.*"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/sort-pkg'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/sort-pkg'"
+  },
+  "dependencies": {
+    "@pob/sort-object": "workspace:*"
+  },
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: @pob/sort-pkg/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
+  },
+  "lib": {
+    "documentation": false,
+    "testing": false,
+    "e2e": false
+  },
+  "build": {}
+}
+>>>>> pob-harness deleted: @pob/version/.git-hooks/commit-msg
+>>>>> pob-harness deleted: @pob/version/.git-hooks/post-checkout
+>>>>> pob-harness deleted: @pob/version/.git-hooks/post-merge
+>>>>> pob-harness deleted: @pob/version/.git-hooks/post-rewrite
+>>>>> pob-harness deleted: @pob/version/.git-hooks/pre-commit
+>>>>> pob-harness deleted: @pob/version/.git-hooks/pre-push
+>>>>> pob-harness deleted: @pob/version/.yo-rc.json
+>>>>> pob-harness modified: @pob/version/package.json
+{
+  "name": "@pob/version",
+  "version": "8.6.0",
+  "description": "simple versioning using conventional commits",
+  "keywords": [
+    "bun",
+    "conventional-commits",
+    "semantic-release",
+    "version",
+    "versioning",
+    "yarn"
+  ],
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
+  "license": "MIT",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "@pob/version"
+  },
+  "bin": {
+    "pob-version": "./dist/index-node.mjs"
+  },
+  "files": [
+    "src",
+    "dist",
+    "bin",
+    "!**/*.test.*"
+  ],
+  "type": "module",
+  "main": "./dist/index-node.mjs",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/definitions/index.d.ts",
+      "node": {
+        "import": "./dist/index-node.mjs"
+      }
+    }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "scripts": {
+    "build": "pnpm run clean:build && rollup --config rollup.config.mjs",
+    "clean": "pnpm run clean:build",
+    "clean:build": "pob-esbuild-clean-out dist",
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet '@pob/version'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet '@pob/version'",
+    "start": "pnpm run clean:build && rollup --config rollup.config.mjs --watch",
+    "test": "pnpm run --dir '../..' test -- '@pob/version'",
+    "tsc": "tsrs",
+    "tsc:go": "tsc"
+  },
+  "dependencies": {
+    "commander": "15.1.0",
+    "conventional-changelog-conventionalcommits": "10.4.1",
+    "conventional-changelog-preset-loader": "6.0.1",
+    "conventional-changelog-writer": "9.3.0",
+    "conventional-commits-parser": "7.1.4",
+    "nightingale": "18.2.0",
+    "semver": "7.8.6"
+  },
+  "devDependencies": {
+    "@pob/rollup-esbuild": "workspace:*",
+    "@types/node": "24.19.1",
+    "@types/semver": "7.8.0",
+    "@typescript/native": "npm:typescript@7.0.2",
+    "tsrs": "0.25.0-ts7.1.0-beta",
+    "type-fest": "5.10.0",
+    "typescript": "npm:@typescript/typescript6@6.0.2"
+  },
+  "engines": {
+    "node": "^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: @pob/version/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "app"
+  },
+  "app": {
+    "type": "node",
+    "testing": true,
+    "codecov": true,
+    "distribute": true
+  },
+  "build": {
+    "bundler": "rollup-esbuild",
+    "entries": ["index"],
+    "envs": [
+      {
+        "target": "node",
+        "version": "24",
+        "omitVersionInFileName": true,
+        "executable": true
+      }
+    ],
+    "typescript": true
+  }
 }
 >>>>> pob-harness modified: @pob/version/tsconfig.json
 // Generated by pob: do not edit, it is overwritten on each pob run.
@@ -441,6 +1229,240 @@ removed from git index:
     }
   }
 }
+>>>>> pob-harness deleted: packages/babel-preset-pob-env/.yo-rc.json
+>>>>> pob-harness modified: packages/babel-preset-pob-env/package.json
+{
+  "name": "babel-preset-pob-env",
+  "version": "18.3.1",
+  "description": "pob babel preset env",
+  "keywords": [
+    "babel-preset"
+  ],
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
+  "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "packages/babel-preset-pob-env"
+  },
+  "files": [
+    "lib",
+    "!**/*.test.*"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'packages/babel-preset-pob-env'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet 'packages/babel-preset-pob-env'",
+    "test": "pnpm run --dir '../..' test -- 'packages/babel-preset-pob-env'"
+  },
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: packages/babel-preset-pob-env/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
+  },
+  "lib": {
+    "documentation": false,
+    "testing": {
+      "codecov": true
+    },
+    "e2e": false
+  },
+  "build": {}
+}
+>>>>> pob-harness deleted: packages/pob-dependencies/.yo-rc.json
+>>>>> pob-harness modified: packages/pob-dependencies/package.json
+{
+  "name": "pob-dependencies",
+  "version": "28.8.1",
+  "description": "easier dependencies upgrade with a real package.json",
+  "keywords": [],
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
+  "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "packages/pob-dependencies"
+  },
+  "files": [
+    "lib",
+    "!**/*.test.*"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "pnpm run build:definitions",
+    "build:definitions": "tsrs --lib esnext --noEmit --skipLibCheck ./lib/index.d.ts",
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'packages/pob-dependencies'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet 'packages/pob-dependencies'",
+    "preversion": "node ./scripts/update-peerdeps.js && node ./scripts/generate.d.ts.js && git add lib/index.d.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.65.0",
+    "@pob/esbuild": "workspace:*",
+    "@pob/eslint-config": "workspace:*",
+    "@pob/eslint-config-typescript-react": "workspace:*",
+    "@pob/pretty-pkg": "workspace:*",
+    "@pob/rollup-esbuild": "workspace:*",
+    "@pob/rollup-typescript": "workspace:*",
+    "@types/node": "24.19.1",
+    "@typescript/native": "npm:typescript@7.0.2",
+    "@vitest/coverage-v8": "5.1.0",
+    "alp-rollup-plugin-config": "4.1.1",
+    "eslint": "10.14.0",
+    "pinst": "3.0.0",
+    "playwright": "1.65.0",
+    "rollup": "4.68.2",
+    "semver": "7.8.6",
+    "tslib": "2.9.1",
+    "tsrs": "0.25.0-ts7.1.0-beta",
+    "typedoc": "0.28.20",
+    "typescript": "npm:@typescript/typescript6@6.0.2",
+    "vite": "8.3.8",
+    "vitest": "5.1.0"
+  },
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: packages/pob-dependencies/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
+  },
+  "lib": {
+    "documentation": false,
+    "testing": false,
+    "e2e": false
+  },
+  "build": {}
+}
+>>>>> pob-harness deleted: packages/pob/.yo-rc.json
+>>>>> pob-harness modified: packages/pob/package.json
+{
+  "name": "pob",
+  "version": "40.9.1",
+  "description": "Pile of bones, library generator with git/babel/typescript/typedoc/readme/vitest",
+  "keywords": [
+    "skeleton"
+  ],
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
+  "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "packages/pob"
+  },
+  "bin": "./lib/pob.js",
+  "files": [
+    "lib",
+    "bin",
+    "!**/*.test.*"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "build": "pnpm run build:definitions",
+    "build:definitions": "tsrs -p tsconfig.json",
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'packages/pob'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet 'packages/pob'",
+    "tsc": "tsrs",
+    "tsc:go": "tsc"
+  },
+  "dependencies": {
+    "@pob/codemods": "workspace:*",
+    "@pob/eslint-config": "workspace:*",
+    "@pob/eslint-config-typescript-react": "workspace:*",
+    "@pob/sort-object": "workspace:*",
+    "@pob/sort-pkg": "workspace:*",
+    "@yeoman/adapter": "5.1.1",
+    "eslint": "10.14.0",
+    "findup-sync": "^5.0.0",
+    "git-remote-url": "^1.0.1",
+    "github-username": "^9.0.0",
+    "js-yaml": "^5.2.1",
+    "json5": "^2.2.3",
+    "lodash.camelcase": "^4.3.0",
+    "lodash.kebabcase": "^4.1.1",
+    "mem-fs": "6.0.0",
+    "mem-fs-editor": "12.1.0",
+    "minimist": "1.2.8",
+    "oxfmt": "0.78.0",
+    "parse-author": "2.0.0",
+    "pob-dependencies": "workspace:*",
+    "semver": "7.8.6",
+    "typescript": "npm:@typescript/typescript6@6.0.2",
+    "validate-npm-package-name": "^8.0.0",
+    "yeoman-environment": "8.5.1",
+    "yeoman-generator": "10.3.0"
+  },
+  "devDependencies": {
+    "@pob/root": "workspace:*",
+    "@types/node": "24.19.1",
+    "@typescript/native": "npm:typescript@7.0.2",
+    "@yeoman/types": "1.13.1",
+    "tsrs": "0.25.0-ts7.1.0-beta"
+  },
+  "engines": {
+    "node": "^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: packages/pob/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib",
+    "onlyLatestLTS": true
+  },
+  "lib": {
+    "documentation": false,
+    "testing": false,
+    "e2e": false
+  },
+  "build": {
+    "typescript": "check-only"
+  }
+}
 >>>>> pob-harness modified: packages/pob/tsconfig.json
 // Generated by pob: do not edit, it is overwritten on each pob run.
 {
@@ -458,6 +1480,132 @@ removed from git index:
     "noEmit": true
   },
   "include": ["lib/**/*.js", "lib/**/*.mjs", "lib/**/*.cjs", "lib/**/*.d.ts"]
+}
+>>>>> pob-harness deleted: packages/repository-check-dirty/.yo-rc.json
+>>>>> pob-harness modified: packages/repository-check-dirty/package.json
+{
+  "name": "repository-check-dirty",
+  "version": "12.3.1",
+  "description": "check that a git repository is not dirty",
+  "keywords": [],
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
+  "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (http://christophe.hurpeau.com/)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "packages/repository-check-dirty"
+  },
+  "bin": "./bin/repository-check-dirty.js",
+  "files": [
+    "lib",
+    "bin",
+    "!**/*.test.*"
+  ],
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./bin/repository-check-dirty.js": "./bin/repository-check-dirty.js",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'packages/repository-check-dirty'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet 'packages/repository-check-dirty'"
+  },
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: packages/repository-check-dirty/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
+  },
+  "lib": {
+    "documentation": false,
+    "testing": false,
+    "e2e": false
+  },
+  "build": {}
+}
+>>>>> pob-harness deleted: packages/yarn-version/.yo-rc.json
+>>>>> pob-harness modified: packages/yarn-version/package.json
+{
+  "name": "yarn-version",
+  "version": "14.6.0",
+  "description": "yarn berry versioning using conventional commits",
+  "keywords": [
+    "conventional-commits",
+    "semantic-release",
+    "version",
+    "versioning",
+    "yarn"
+  ],
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "bugs": {
+    "url": "https://github.com/christophehurpeau/pob/issues"
+  },
+  "license": "MIT",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "packages/yarn-version"
+  },
+  "bin": "./bin/yarn-version.mjs",
+  "files": [
+    "src",
+    "dist",
+    "bin",
+    "!**/*.test.*"
+  ],
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/definitions/index.d.ts",
+      "node": {
+        "import": "./yarn-version.mjs"
+      }
+    }
+  },
+  "scripts": {
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'packages/yarn-version'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet 'packages/yarn-version'",
+    "test": "pnpm run --dir '../..' test -- 'packages/yarn-version'"
+  },
+  "dependencies": {
+    "@pob/version": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "24.19.1"
+  },
+  "engines": {
+    "node": "^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: packages/yarn-version/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "app"
+  },
+  "app": {
+    "type": "node",
+    "testing": true,
+    "codecov": true,
+    "distribute": true
+  },
+  "build": {}
 }
 >>>>> pob-harness modified: pnpm-workspace.yaml
 allowBuilds:
@@ -485,6 +1633,164 @@ packages:
   - "@pob/*"
   - pob-examples/*
 savePrefix: ^
+>>>>> pob-harness deleted: pob-examples/simple-lib/.yo-rc.json
+>>>>> pob-harness modified: pob-examples/simple-lib/package.json
+{
+  "name": "example-simple-lib",
+  "version": "0.17.1",
+  "private": true,
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "pob-examples/simple-lib"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'pob-examples/simple-lib'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet 'pob-examples/simple-lib'",
+    "test": "pnpm run --dir '../..' test -- 'pob-examples/simple-lib'"
+  },
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: pob-examples/simple-lib/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
+  },
+  "lib": {
+    "documentation": false,
+    "testing": {},
+    "e2e": false
+  },
+  "build": {}
+}
+>>>>> pob-harness deleted: pob-examples/typescript-lib-rollup-esbuild/.git-hooks/commit-msg
+>>>>> pob-harness deleted: pob-examples/typescript-lib-rollup-esbuild/.git-hooks/post-checkout
+>>>>> pob-harness deleted: pob-examples/typescript-lib-rollup-esbuild/.git-hooks/post-merge
+>>>>> pob-harness deleted: pob-examples/typescript-lib-rollup-esbuild/.git-hooks/post-rewrite
+>>>>> pob-harness deleted: pob-examples/typescript-lib-rollup-esbuild/.git-hooks/pre-commit
+>>>>> pob-harness deleted: pob-examples/typescript-lib-rollup-esbuild/.git-hooks/pre-push
+>>>>> pob-harness deleted: pob-examples/typescript-lib-rollup-esbuild/.yo-rc.json
+>>>>> pob-harness modified: pob-examples/typescript-lib-rollup-esbuild/package.json
+{
+  "name": "example-typescript-lib-rollup-esbuild",
+  "version": "0.65.0",
+  "private": true,
+  "homepage": "https://github.com/christophehurpeau/pob",
+  "license": "ISC",
+  "author": "Christophe Hurpeau <christophe@hurpeau.com> (https://christophe.hurpeau.com)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/christophehurpeau/pob.git",
+    "directory": "pob-examples/typescript-lib-rollup-esbuild"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "main": "./dist/index-node22.mjs",
+  "module": "./dist/index-browser.es.js",
+  "browser": "./dist/index-browser.es.js",
+  "types": "./dist/definitions/index.d.ts",
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./src/index.ts",
+      "node": {
+        "import": "./dist/index-node22.mjs"
+      },
+      "browser": {
+        "import": "./dist/index-browser.es.js"
+      }
+    },
+    "./run-await": {
+      "types": "./src/run-await.ts",
+      "node": {
+        "import": "./dist/run-await-node22.mjs"
+      },
+      "browser": {
+        "import": "./dist/run-await-browser.es.js"
+      }
+    }
+  },
+  "scripts": {
+    "build": "pnpm run clean:build && rollup --config rollup.config.mjs && pnpm run build:definitions",
+    "build:definitions": "tsrs -p tsconfig.json",
+    "clean": "yarn clean:build",
+    "clean:build": "pob-esbuild-clean-out dist",
+    "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
+    "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'pob-examples/typescript-lib-rollup-esbuild'",
+    "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet 'pob-examples/typescript-lib-rollup-esbuild'",
+    "test": "pnpm run --dir '../..' test -- 'pob-examples/typescript-lib-rollup-esbuild'",
+    "tsc": "tsrs",
+    "tsc:go": "tsc",
+    "watch": "yarn clean:build && rollup --config rollup.config.mjs --watch"
+  },
+  "devDependencies": {
+    "@pob/rollup-esbuild": "workspace:*",
+    "@types/node": "24.19.1",
+    "@typescript/native": "npm:typescript@7.0.2",
+    "tsrs": "0.25.0-ts7.1.0-beta",
+    "typescript": "npm:@typescript/typescript6@6.0.2"
+  },
+  "browserslist": {
+    "production": [
+      "defaults",
+      "> 0.2%",
+      "not ie < 12",
+      "not safari < 10",
+      "not ios_saf < 10"
+    ]
+  },
+  "engines": {
+    "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: pob-examples/typescript-lib-rollup-esbuild/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
+  },
+  "lib": {
+    "documentation": false,
+    "testing": {},
+    "buildInGit": true,
+    "e2e": false
+  },
+  "build": {
+    "bundler": "rollup-esbuild",
+    "entries": ["index", "run-await"],
+    "envs": [
+      {
+        "target": "node",
+        "version": "22"
+      },
+      {
+        "target": "browser"
+      }
+    ],
+    "typescript": true
+  }
+}
+>>>>> pob-harness deleted: pob-examples/typescript-lib-without-rollup/.git-hooks/commit-msg
+>>>>> pob-harness deleted: pob-examples/typescript-lib-without-rollup/.git-hooks/post-checkout
+>>>>> pob-harness deleted: pob-examples/typescript-lib-without-rollup/.git-hooks/post-merge
+>>>>> pob-harness deleted: pob-examples/typescript-lib-without-rollup/.git-hooks/post-rewrite
+>>>>> pob-harness deleted: pob-examples/typescript-lib-without-rollup/.git-hooks/pre-commit
+>>>>> pob-harness deleted: pob-examples/typescript-lib-without-rollup/.git-hooks/pre-push
+>>>>> pob-harness deleted: pob-examples/typescript-lib-without-rollup/.yo-rc.json
 >>>>> pob-harness modified: pob-examples/typescript-lib-without-rollup/package.json
 {
   "name": "example-typescript-lib-without-rollup",
@@ -533,15 +1839,27 @@ savePrefix: ^
   },
   "engines": {
     "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: pob-examples/typescript-lib-without-rollup/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib"
   },
-  "pob": {
-    "entries": [
-      "index"
-    ],
+  "lib": {
+    "documentation": false,
+    "testing": {},
+    "buildInGit": true,
+    "e2e": false
+  },
+  "build": {
+    "entries": ["index"],
     "rollup": false,
     "typescript": true
   }
 }
+>>>>> pob-harness deleted: pob-examples/vite-app/.yo-rc.json
 >>>>> pob-harness modified: pob-examples/vite-app/package.json
 {
   "name": "example-vite-app",
@@ -581,5 +1899,69 @@ savePrefix: ^
   },
   "engines": {
     "node": "^22.23.4 || ^24.22.1 || >=26.13.0"
+  }
+}
+>>>>> pob-harness created: pob-examples/vite-app/pob.json
+{
+  "$schema": "../../node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "app"
+  },
+  "app": {
+    "type": "vite",
+    "testing": false,
+    "codecov": false
+  }
+}
+>>>>> pob-harness modified: pob-examples/vite-app/tsconfig.json
+// Generated by pob: do not edit, it is overwritten on each pob run.
+{
+  "extends": [
+    "@pob/root/tsconfigs/strict.json",
+    "@pob/root/tsconfigs/targets/vite.json"
+  ],
+  "include": ["src/**/*.ts"],
+  "compilerOptions": {
+    "rootDir": "src",
+    "noEmit": true,
+    "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo",
+    "incremental": true,
+
+    "resolveJsonModule": true,
+
+    "paths": {
+      "#/*": ["./src/*"],
+      "example-typescript-lib-rollup-esbuild": [
+        "../../pob-examples/typescript-lib-rollup-esbuild/src"
+      ],
+      "example-typescript-lib-rollup-esbuild/*": [
+        "../../pob-examples/typescript-lib-rollup-esbuild/src/*"
+      ]
+    }
+  },
+  "references": [
+    { "path": "../../pob-examples/typescript-lib-rollup-esbuild/tsconfig.json" }
+  ]
+}
+>>>>> pob-harness created: pob.json
+{
+  "$schema": "./node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib",
+    "packageManager": "pnpm",
+    "ci": true
+  },
+  "monorepo": {
+    "storybook": false,
+    "storybookReactNative": false,
+    "ci": true,
+    "testing": true,
+    "testRunner": "vitest",
+    "documentation": false,
+    "eslint": true,
+    "typescript": true
+  },
+  "renovate": {
+    "enable": true
   }
 }

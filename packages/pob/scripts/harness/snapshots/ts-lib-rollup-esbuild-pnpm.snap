@@ -1,10 +1,6 @@
 # pob harness snapshot: ts-lib-rollup-esbuild-pnpm
 exit code: 0
 effects:
-  [blocked] (.) pnpm --version
-  [blocked] (.) pnpm with ^12.0.0 install --no-frozen-lockfile
-  [blocked] (.) pnpm with ^12.0.0 dedupe
-  [blocked] (.) pnpm with ^12.0.0 run build
 removed from git index:
 
 >>>>> pob-harness created: .claude/.gitignore
@@ -339,6 +335,7 @@ yarn-error.log*
 # (Windows, Intel macOS) or node not in VS Code's PATH.
 # Check with: ps -axo command | grep -- '--lsp --stdio'
 exec node "$(dirname "$0")/../../node_modules/tsrs/bin/tsrs" "$@"
+>>>>> pob-harness deleted: .yo-rc.json
 >>>>> pob-harness created: eslint.config.js
 import pobConfig from "@pob/eslint-config";
 
@@ -363,7 +360,8 @@ export default createLintStagedConfig();
   "repository": "https://github.com/pob-harness/ts-lib-rollup-esbuild-pnpm.git",
   "files": [
     "src",
-    "dist"
+    "dist",
+    "!**/*.test.*"
   ],
   "type": "module",
   "sideEffects": false,
@@ -435,22 +433,6 @@ export default createLintStagedConfig();
   },
   "engines": {
     "node": "^24.22.1 || >=26.13.0"
-  },
-  "pob": {
-    "bundler": "rollup-esbuild",
-    "entries": [
-      "index"
-    ],
-    "envs": [
-      {
-        "target": "node",
-        "version": "24"
-      },
-      {
-        "target": "browser"
-      }
-    ],
-    "typescript": true
   }
 }
 >>>>> pob-harness created: pnpm-workspace.yaml
@@ -471,6 +453,41 @@ minimumReleaseAgeExclude:
   - nightingale-types
 nodeLinker: hoisted
 savePrefix: ^
+>>>>> pob-harness created: pob.json
+{
+  "$schema": "./node_modules/@pob/root/pob.schema.json",
+  "project": {
+    "type": "lib",
+    "packageManager": "pnpm",
+    "ci": true
+  },
+  "lib": {
+    "documentation": false,
+    "testing": {
+      "runner": "vitest",
+      "codecov": true
+    },
+    "e2e": false,
+    "buildInGit": false
+  },
+  "renovate": {
+    "enable": true
+  },
+  "build": {
+    "bundler": "rollup-esbuild",
+    "entries": ["index"],
+    "envs": [
+      {
+        "target": "node",
+        "version": "24"
+      },
+      {
+        "target": "browser"
+      }
+    ],
+    "typescript": true
+  }
+}
 >>>>> pob-harness created: README.md
 <h1 align="center">
   ts-lib-rollup-esbuild-pnpm

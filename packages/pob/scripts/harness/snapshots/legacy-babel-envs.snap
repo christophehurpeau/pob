@@ -1,6 +1,5 @@
 # pob harness snapshot: legacy-babel-envs
 exit code: 1
 effects:
-  [blocked] (.) yarn set version stable
 removed from git index:
 
