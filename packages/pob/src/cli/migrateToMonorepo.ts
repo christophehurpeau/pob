@@ -1,6 +1,7 @@
 import fs from "node:fs";
 import path from "node:path";
 import type { JsonObject } from "../engine/model.ts";
+import { getPackageDirectoryName } from "./add.ts";
 import {
   askConfig,
   detectPromptFacts,
@@ -32,6 +33,11 @@ const rootFiles = new Set([
   "lint-staged.config.js",
   "lint-staged.config.mjs",
   "yarn.lock",
+  // pnpm reads them at the root of the workspace only
+  "pnpm-workspace.yaml",
+  ".npmrc",
+  ".pnpmfile.cjs",
+  "patches",
 ]);
 
 const WORKSPACES_GLOB = "packages/*";
@@ -90,9 +96,10 @@ export const moveToMonorepo = async ({
   if (typeof name !== "string" || !name) {
     throw new Error('package.json: "name" is missing');
   }
-  const packageDir = path.join(cwd, "packages", name);
+  const packagePath = `packages/${getPackageDirectoryName(name)}`;
+  const packageDir = path.join(cwd, packagePath);
   if (fs.existsSync(packageDir)) {
-    throw new Error(`packages/${name} already exists`);
+    throw new Error(`${packagePath} already exists`);
   }
 
   const monorepoPkg = createMonorepoPkg(

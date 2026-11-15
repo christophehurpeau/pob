@@ -14,6 +14,8 @@ import { createPackage, getNewPackagePath } from "./add.ts";
 import { writeInitConfig } from "./init.ts";
 import { moveToMonorepo } from "./migrateToMonorepo.ts";
 import type { Ask } from "./questions.ts";
+import { appTypes } from "./questions.ts";
+import { runUpdatePipeline } from "./update.ts";
 
 let dir: string;
 
@@ -156,6 +158,105 @@ describe("add", () => {
     });
   });
 
+  const writeMonorepoRoot = (): void => {
+    writeJson("package.json", {
+      name: "repo-monorepo",
+      private: true,
+      author,
+      type: "module",
+      license: "MIT",
+      repository: "https://github.com/me/repo.git",
+      workspaces: ["packages/*"],
+    });
+    writeJson("pob.json", {
+      project: { type: "lib", packageManager: "yarn", ci: false },
+      monorepo: { eslint: true, typescript: false },
+      renovate: { enable: true },
+    });
+  };
+
+  test.each(appTypes)(
+    "--app %s writes a config the update accepts, without prompts",
+    async (type) => {
+      const { isTTY } = process.stdin;
+      process.stdin.isTTY = false;
+      onTestFinished(() => {
+        process.stdin.isTTY = isTTY;
+      });
+      writeMonorepoRoot();
+      const ask = vi.fn<Ask>();
+      const { packagePath } = await createPackage({
+        cwd: dir,
+        packageName: "app",
+        app: { type, testing: false, e2e: false },
+        ask,
+      });
+      expect(ask).not.toHaveBeenCalled();
+      const transpiled = ["node", "node-library", "alp-node"].includes(type);
+      expect(readJson(`${packagePath}/pob.json`)).toEqual({
+        project: { type: "app" },
+        app: { type, testing: false, e2e: false },
+        ...(transpiled ? { build: {} } : {}),
+      });
+      const update = runUpdatePipeline({
+        cwd: dir,
+        check: true,
+        fromPob: true,
+      });
+      await (type === "next.js"
+        ? expect(update).rejects.toThrow("nextjs has been removed")
+        : expect(update).resolves.toBeDefined());
+    },
+  );
+
+  test("without a TTY, accepts a directory holding only the missing config", async () => {
+    const { isTTY } = process.stdin;
+    process.stdin.isTTY = false;
+    onTestFinished(() => {
+      process.stdin.isTTY = isTTY;
+    });
+    writeJson("package.json", {
+      name: "repo-monorepo",
+      private: true,
+      type: "module",
+      license: "MIT",
+      workspaces: ["packages/*"],
+    });
+    const error = await createPackage({ cwd: dir, packageName: "lib-a" }).then(
+      () => undefined,
+      (error: unknown) => error as Error,
+    );
+    expect(error?.message).toContain(
+      'set "project.type" in packages/lib-a/pob.json',
+    );
+    expect(error?.message).toContain(
+      "then run pob add lib-a again: it keeps packages/lib-a/pob.json and packages/lib-a/package.json",
+    );
+    expect(fs.existsSync(path.join(dir, "packages/lib-a"))).toBe(false);
+
+    writeJson("packages/lib-a/pob.json", {
+      project: { type: "lib" },
+      lib: { testing: false, e2e: false },
+      build: {},
+    });
+    writeJson("packages/lib-a/package.json", {
+      author: "B <b@b.b>",
+      description: "desc",
+    });
+    await createPackage({ cwd: dir, packageName: "lib-a" });
+    expect(readJson("packages/lib-a/pob.json")).toEqual({
+      project: { type: "lib" },
+      lib: { testing: false, e2e: false, documentation: false },
+      build: {},
+    });
+    expect(readJson("packages/lib-a/package.json")).toEqual({
+      name: "lib-a",
+      version: "1.0.0-pre",
+      author: "B <b@b.b>",
+      description: "desc",
+    });
+  });
+
   test("without --app, asks the package keys only", async () => {
     writeJson("package.json", {
       name: "repo-monorepo",
@@ -201,6 +302,7 @@ describe("add", () => {
     ).rejects.toThrow("Missing workspaces field");
     writeJson("package.json", { name: "a", workspaces: ["packages/*"] });
     writeJson("packages/b/package.json", { name: "b" });
+    fs.writeFileSync(path.join(dir, "packages/b/index.js"), "");
     await expect(
       createPackage({ cwd: dir, packageName: "b", ask: createAsk({}) }),
     ).rejects.toThrow("packages/b already exists");
@@ -264,6 +366,45 @@ describe("migrate-to-monorepo", () => {
       renovate: { enable: true },
       monorepo: { ci: false, typescript: true, eslint: true },
     });
+  });
+
+  test("a scoped package goes to packages/<name>, the pnpm files stay at the root", async () => {
+    writeJson("package.json", {
+      name: "@scope/my-lib",
+      version: "1.2.0",
+      author,
+      type: "module",
+      license: "MIT",
+      repository: "https://github.com/me/my-lib.git",
+      packageManager: "pnpm@10.0.0",
+    });
+    writeJson("pob.json", {
+      project: { type: "lib", packageManager: "pnpm", ci: false },
+      renovate: { enable: true },
+      lib: { testing: false },
+    });
+    fs.writeFileSync(
+      path.join(dir, "pnpm-workspace.yaml"),
+      "patchedDependencies:\n  a: patches/a.patch\n",
+    );
+    fs.writeFileSync(path.join(dir, ".npmrc"), "registry=https://r.example\n");
+    fs.mkdirSync(path.join(dir, "patches"));
+    fs.writeFileSync(path.join(dir, "patches/a.patch"), "");
+    fs.mkdirSync(path.join(dir, "src"));
+
+    await moveToMonorepo({ cwd: dir, ask: createAsk({}) });
+
+    expect(fs.readdirSync(dir).toSorted()).toEqual([
+      ".npmrc",
+      "package.json",
+      "packages",
+      "patches",
+      "pnpm-workspace.yaml",
+      "pob.json",
+    ]);
+    expect(
+      fs.readdirSync(path.join(dir, "packages/my-lib")).toSorted(),
+    ).toEqual(["package.json", "pob.json", "src"]);
   });
 
   test("fails on a monorepo", async () => {

@@ -86,10 +86,14 @@ export interface AskConfigOptions {
   state: QuestionState;
   /** where pob.json and package.json are written, for the error message */
   location: string;
-  /** false: only the missing required keys are asked (add --app) */
+  /** false: only the missing required keys are asked */
   askOptional: boolean;
+  /** false: nothing is asked, even on a TTY (add --app) */
+  interactive?: boolean;
   /** injected in tests; by default a readline prompt on a TTY, none otherwise */
   ask?: Ask;
+  /** appended to the error listing the missing keys: how to run again */
+  retryHint?: string;
 }
 
 /**
@@ -100,13 +104,17 @@ export const askConfig = async ({
   state,
   location,
   askOptional,
+  interactive = true,
   ask,
+  retryHint,
 }: AskConfigOptions): Promise<void> => {
   const prompter =
-    !ask && process.stdin.isTTY ? createReadlinePrompter() : undefined;
+    interactive && !ask && process.stdin.isTTY
+      ? createReadlinePrompter()
+      : undefined;
   try {
     const missing = await resolveQuestions(questions, state, {
-      ask: ask ?? prompter?.ask,
+      ask: interactive ? (ask ?? prompter?.ask) : undefined,
       askOptional,
     });
     if (missing.length > 0) {
@@ -115,6 +123,7 @@ export const askConfig = async ({
       throw new MissingAnswersError(missing, {
         pobJsonPath: join("pob.json"),
         pkgPath: join("package.json"),
+        retryHint,
       });
     }
   } finally {

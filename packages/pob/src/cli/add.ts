@@ -13,6 +13,10 @@ import { createQuestionState } from "./questions.ts";
 import type { CliIO } from "./update.ts";
 import { consoleIO, runUpdate } from "./update.ts";
 
+/** The name of a package directory: without the scope. */
+export const getPackageDirectoryName = (packageName: string): string =>
+  packageName.replace(/^@[^/]+\//, "");
+
 /** In the first workspaces directory, named without the scope. */
 export const getNewPackagePath = (
   workspaces: readonly string[],
@@ -22,7 +26,7 @@ export const getNewPackagePath = (
   if (firstWorkspace === undefined) {
     throw new Error("Missing workspaces field in package.json: not a monorepo");
   }
-  return `${firstWorkspace.replace(/\/\*$/, "")}/${packageName.replace(/^@[^/]+\//, "")}`;
+  return `${firstWorkspace.replace(/\/\*$/, "")}/${getPackageDirectoryName(packageName)}`;
 };
 
 export interface AddAppOptions {
@@ -34,7 +38,7 @@ export interface AddAppOptions {
 export interface AddOptions {
   cwd: string;
   packageName: string;
-  /** --app: no prompts, except for required keys still missing */
+  /** --app: no prompts */
   app?: AddAppOptions;
   ask?: Ask;
 }
@@ -43,6 +47,39 @@ export interface AddResult {
   /** relative to the monorepo root */
   packagePath: string;
 }
+
+/** app types built by the transpiler, which requires a build config */
+const transpiledAppTypes = new Set(["node", "node-library", "alp-node"]);
+
+/** The files a user may write in advance, when `add` cannot prompt. */
+const presetFiles = ["pob.json", "package.json"];
+
+/**
+ * The pob.json and package.json written in advance in the package directory,
+ * which may hold nothing else.
+ */
+const readPresetFiles = (
+  packageDir: string,
+  packagePath: string,
+): { config: JsonObject; pkg: JsonObject } => {
+  if (!fs.existsSync(packageDir)) return { config: {}, pkg: {} };
+  if (
+    fs.readdirSync(packageDir).some((entry) => !presetFiles.includes(entry))
+  ) {
+    throw new Error(`${packagePath} already exists`);
+  }
+  return {
+    config: readJsonFile(path.join(packageDir, "pob.json")) ?? {},
+    pkg: readJsonFile(path.join(packageDir, "package.json")) ?? {},
+  };
+};
+
+const createAppConfig = (app: AddAppOptions): JsonObject => ({
+  project: { type: "app" },
+  app: { type: app.type, testing: app.testing, e2e: app.e2e },
+  // an empty build: built without bundler, like the yeoman generator did
+  ...(transpiledAppTypes.has(app.type) ? { build: {} } : {}),
+});
 
 /** Creates the package.json and pob.json of the new package. */
 export const createPackage = async ({
@@ -58,19 +95,15 @@ export const createPackage = async ({
   }
   const packagePath = getNewPackagePath(workspaces, packageName);
   const packageDir = path.join(cwd, packagePath);
-  if (fs.existsSync(packageDir)) {
-    throw new Error(`${packagePath} already exists`);
-  }
+  const preset = readPresetFiles(packageDir, packagePath);
 
   const config: JsonObject = app
-    ? {
-        project: { type: "app" },
-        app: { type: app.type, testing: app.testing, e2e: app.e2e },
-      }
-    : {};
+    ? { ...preset.config, ...createAppConfig(app) }
+    : preset.config;
   const pkg: JsonObject = {
+    ...preset.pkg,
     name: packageName,
-    version: "1.0.0-pre",
+    version: preset.pkg.version ?? "1.0.0-pre",
     ...(app && { private: true }),
   };
   const state = createQuestionState(
@@ -82,7 +115,9 @@ export const createPackage = async ({
     state,
     location: packagePath,
     askOptional: !app,
+    interactive: !app,
     ask,
+    retryHint: `then run pob add ${packageName} again: it keeps ${packagePath}/pob.json and ${packagePath}/package.json`,
   });
 
   writeJsonFile(path.join(packageDir, "package.json"), state.pkg);
