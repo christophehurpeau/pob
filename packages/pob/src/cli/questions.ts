@@ -4,7 +4,6 @@
  * confirm, string -> input), with the defaults of the old yeoman prompts.
  * Only the keys that are missing are asked.
  */
-import parseAuthor from "parse-author";
 import type { AppType } from "../engine/config.ts";
 import type { JsonObject } from "../engine/model.ts";
 import { getAtPath } from "../engine/tracker.ts";
@@ -18,6 +17,7 @@ import {
   latestLTS,
   parseRepositoryUrl,
 } from "../utils/misc.ts";
+import { parseAuthor } from "../utils/untyped.ts";
 
 export type QuestionKind = "select" | "confirm" | "input";
 

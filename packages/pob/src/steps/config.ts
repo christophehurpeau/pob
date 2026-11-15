@@ -10,7 +10,8 @@ import {
   usesTranspiler,
 } from "./transpiler/settings.ts";
 
-export const POB_SCHEMA_FILE = "pob.schema.json";
+/** published with the sources: the files of the package are computed by pob */
+export const POB_SCHEMA_FILE = "src/pob.schema.json";
 
 /** relative to the package: pob is installed at the root of the repository */
 const getSchemaPath = (ctx: PackageContext): string => {

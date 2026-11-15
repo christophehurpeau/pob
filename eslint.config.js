@@ -81,19 +81,6 @@ export default [
     },
   },
   {
-    files: ["packages/pob/package.json"],
-    rules: {
-      "check-package-dependencies/satisfies-versions-from-dependencies": [
-        "error",
-        {
-          dependencies: {
-            "yeoman-environment": { dependencies: ["mem-fs-editor"] },
-          },
-        },
-      ],
-    },
-  },
-  {
     files: ["packages/pob-dependencies/package.json"],
     rules: {
       "check-package-dependencies/require-identical-versions": [

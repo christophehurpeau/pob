@@ -16,24 +16,32 @@
     "url": "https://github.com/christophehurpeau/pob.git",
     "directory": "packages/pob"
   },
-  "bin": "./lib/pob.js",
+  "bin": "./dist/index-node.mjs",
   "files": [
-    "lib",
+    "src",
+    "dist",
     "bin"
   ],
   "type": "module",
   "sideEffects": false,
-  "main": "./lib/index.js",
+  "main": "./dist/index-node.mjs",
+  "types": "./dist/definitions/index.d.ts",
   "exports": {
-    ".": "./lib/index.js",
-    "./package.json": "./package.json"
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/definitions/index.d.ts",
+      "node": {
+        "import": "./dist/index-node.mjs"
+      }
+    }
   },
   "scripts": {
-    "build": "pnpm run build:definitions",
+    "build": "pnpm run clean:build && rollup --config rollup.config.mjs && pnpm run build:definitions",
     "build:definitions": "tsrs -p tsconfig.json",
+    "clean:build": "pob-esbuild-clean-out dist",
     "generate:schema": "node scripts/generate-schema.ts",
-    "harness": "node harness/run.ts",
-    "harness:update": "node harness/run.ts --update",
+    "harness": "node scripts/harness/run.ts",
+    "harness:update": "node scripts/harness/run.ts --update",
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'packages/pob'",
     "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet 'packages/pob'",
@@ -46,38 +54,39 @@
     "@pob/eslint-config-typescript-react": "workspace:*",
     "@pob/sort-object": "workspace:*",
     "@pob/sort-pkg": "workspace:*",
-    "@yeoman/adapter": "5.1.1",
     "eslint": "10.14.0",
-    "findup-sync": "^5.0.0",
-    "git-remote-url": "^1.0.1",
-    "github-username": "^9.0.0",
     "js-yaml": "^5.2.1",
     "json5": "^2.2.3",
     "lodash.camelcase": "^4.3.0",
-    "lodash.kebabcase": "^4.1.1",
-    "mem-fs": "6.0.0",
-    "mem-fs-editor": "12.1.0",
-    "minimist": "1.2.8",
     "oxfmt": "0.78.0",
     "parse-author": "2.0.0",
     "pob-dependencies": "workspace:*",
     "semver": "7.8.6",
-    "typescript": "npm:@typescript/typescript6@6.0.2",
-    "validate-npm-package-name": "^8.0.0",
-    "yeoman-environment": "8.5.1",
-    "yeoman-generator": "10.3.0"
+    "typescript": "npm:@typescript/typescript6@6.0.2"
   },
   "devDependencies": {
+    "@pob/rollup-esbuild": "workspace:*",
     "@pob/root": "workspace:*",
     "@types/node": "24.19.1",
     "@typescript/native": "npm:typescript@7.0.2",
-    "@yeoman/types": "1.13.1",
     "tsrs": "0.25.0-ts7.1.0-beta"
   },
   "engines": {
     "node": "^24.22.1 || >=26.13.0"
   },
   "pob": {
-    "typescript": "check-only"
+    "bundler": "rollup-esbuild",
+    "entries": [
+      "index"
+    ],
+    "envs": [
+      {
+        "target": "node",
+        "version": "24",
+        "omitVersionInFileName": true,
+        "executable": true
+      }
+    ],
+    "typescript": true
   }
 }

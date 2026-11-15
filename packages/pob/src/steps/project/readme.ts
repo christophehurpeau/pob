@@ -1,7 +1,7 @@
-import camelCase from "lodash.camelcase";
 import type { PackageContext } from "../../engine/context.ts";
 import { defineStep } from "../../engine/step.ts";
 import { extractLibReadmeContent } from "../../utils/misc.ts";
+import { camelCase } from "../../utils/untyped.ts";
 import { getProjectKind } from "../settings.ts";
 import { escapeHtml as e } from "./escape.ts";
 import { getProjectLibSettings } from "./settings.ts";

@@ -1,9 +1,9 @@
 import { isDeepStrictEqual } from "node:util";
-import parseAuthor from "parse-author";
 import type { PackageContext } from "../../engine/context.ts";
 import type { JsonObject } from "../../engine/model.ts";
 import { defineStep } from "../../engine/step.ts";
 import { parseRepositoryUrl } from "../../utils/misc.ts";
+import { parseAuthor } from "../../utils/untyped.ts";
 import { renderLicense } from "./licenses.ts";
 
 const POSTINSTALL_COMMAND = "pob-root-postinstall";

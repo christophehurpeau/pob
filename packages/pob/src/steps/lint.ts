@@ -10,6 +10,7 @@ import {
   packageManagerRun,
   quoteArg,
 } from "../utils/packageManager.ts";
+import { runOxlintOnlyCodemods } from "./lintCodemods.ts";
 import {
   getAppIgnorePaths,
   getAppSettings,
@@ -301,10 +302,7 @@ export const lintStep = defineStep<PackageContext>({
           "@pob/eslint-config 68: eslint-disable comments of rules checked by oxlint are rewritten",
         after: ["install"],
         mayModify: ["**/*.{js,cjs,mjs,jsx,ts,cts,mts,tsx}", "eslint.config.js"],
-        run: async ({ cwd }) => {
-          const { runOxlintOnlyCodemods } = await import("./lintCodemods.ts");
-          await runOxlintOnlyCodemods(cwd);
-        },
+        run: ({ cwd }) => runOxlintOnlyCodemods(cwd),
       });
     }
 
