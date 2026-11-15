@@ -381,23 +381,57 @@ export class LegacyConfigConflictError extends Error {
   }
 }
 
+/** sets a value, replacing the non-object values on its path */
+const setAt = (
+  target: Record<string, unknown>,
+  segments: readonly string[],
+  value: unknown,
+): void => {
+  let current = target;
+  for (const [index, segment] of segments.entries()) {
+    if (index === segments.length - 1) {
+      current[segment] = structuredClone(value);
+      return;
+    }
+    const child = current[segment];
+    if (!isObject(child)) current[segment] = {};
+    current = current[segment] as Record<string, unknown>;
+  }
+};
+
 /**
  * The legacy sources are removed once pob.json exists: they must not hold a
- * value pob.json does not have, or it would be lost.
+ * value pob.json does not have, or it would be lost. A legacy value is lost
+ * only when the config pob would write with it differs from the config it
+ * writes from pob.json: pob normalizes the config (node envs updated by the
+ * transpiler, no documentation in monorepo packages...), so pob.json does not
+ * hold the raw legacy values.
  */
-const assertLegacySourcesMatch = (
+export const assertLegacySourcesMatch = (
   sources: RawConfigSources,
-  pobJsonConfig: RawConfig,
+  pobJsonConfig: PobConfig,
+  normalize: (config: PobConfig) => PobConfig = (config) => config,
 ): void => {
+  const normalizedPobJson = normalize(pobJsonConfig);
   const conflicts = legacySources.flatMap(({ name, toConfig }) => {
     const legacyConfig = toConfig(sources);
     if (!legacyConfig) return [];
     const migrated = migrate(legacyConfig);
-    const differing = leafPaths(migrated).filter(
+    const legacyPaths = leafPaths(migrated);
+    const withLegacyValues = structuredClone(
+      pobJsonConfig,
+    ) as unknown as Record<string, unknown>;
+    for (const segments of legacyPaths) {
+      setAt(withLegacyValues, segments, getAt(migrated, segments));
+    }
+    const normalizedWithLegacyValues = normalize(
+      withLegacyValues as unknown as PobConfig,
+    );
+    const differing = legacyPaths.filter(
       (segments) =>
         !isDeepStrictEqual(
-          getAt(migrated, segments),
-          getAt(pobJsonConfig, segments),
+          getAt(normalizedWithLegacyValues, segments),
+          getAt(normalizedPobJson, segments),
         ),
     );
     if (differing.length === 0) return [];
@@ -408,14 +442,24 @@ const assertLegacySourcesMatch = (
   if (conflicts.length > 0) throw new LegacyConfigConflictError(conflicts);
 };
 
+export interface ResolveConfigOptions {
+  isRoot: boolean;
+  /**
+   * Throw a {@link LegacyConfigConflictError} when pob.json exists and a
+   * legacy source holds a different raw value. The pipeline compares the
+   * normalized configs with {@link assertLegacySourcesMatch} instead. Default
+   * true.
+   */
+  checkLegacySources?: boolean;
+}
+
 /**
  * Merges the config sources and applies the legacy migrations. Pure: the
- * sources are read by the caller. Throws a {@link LegacyConfigConflictError}
- * when pob.json exists and a legacy source holds a different value.
+ * sources are read by the caller.
  */
 export const resolveConfig = (
   sources: RawConfigSources,
-  { isRoot }: { isRoot: boolean },
+  { isRoot, checkLegacySources = true }: ResolveConfigOptions,
 ): ResolvedConfig => {
   const source = sources.pobJson ? "pob.json" : "legacy";
   let raw: RawConfig = sources.pobJson
@@ -433,7 +477,9 @@ export const resolveConfig = (
     raw.lib = structuredClone(sources.legacyPobJson);
   }
   raw = migrate(raw);
-  if (sources.pobJson) assertLegacySourcesMatch(sources, raw);
+  if (sources.pobJson && checkLegacySources) {
+    assertLegacySourcesMatch(sources, raw as unknown as PobConfig);
+  }
 
   const missing: string[] = [];
   const project = (

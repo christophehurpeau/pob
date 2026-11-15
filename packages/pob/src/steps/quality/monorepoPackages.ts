@@ -62,7 +62,10 @@ const readPobConfig = (files: InitialFiles): PobConfig | undefined => {
   const pobJson = files.readJson("pob.json");
   const yoRc = files.readJson<{ pob?: JsonObject }>(".yo-rc.json")?.pob;
   if (!pobJson && !yoRc) return undefined;
-  return resolveConfig({ pobJson, yoRc }, { isRoot: false }).config;
+  return resolveConfig(
+    { pobJson, yoRc },
+    { isRoot: false, checkLegacySources: false },
+  ).config;
 };
 
 /** another workspace of the monorepo, by name */

@@ -4,7 +4,7 @@ import path from "node:path";
 import { isDeepStrictEqual } from "node:util";
 import { format } from "oxfmt";
 import type { PobConfig, RawConfigSources } from "./config.ts";
-import { resolveConfig } from "./config.ts";
+import { assertLegacySourcesMatch, resolveConfig } from "./config.ts";
 import type {
   MonorepoWorkspace,
   PackageContext,
@@ -160,8 +160,9 @@ export const createPackageContext = ({
   warnings,
   normalizeConfig,
 }: CreateContextOptions): PackageContext => {
+  const sources = readConfigSources(initial);
   const resolvedConfig = withLocation(location, () =>
-    resolveConfig(readConfigSources(initial), { isRoot: facts.isRoot }),
+    resolveConfig(sources, { isRoot: facts.isRoot, checkLegacySources: false }),
   );
   if (resolvedConfig.missing.length > 0) {
     throw new Error(
@@ -226,6 +227,15 @@ export const createPackageContext = ({
       warnings.push(location === "." ? message : `${location}: ${message}`);
     },
   };
+  if (sources.pobJson) {
+    withLocation(location, () => {
+      assertLegacySourcesMatch(sources, config, (candidate) =>
+        normalizeConfig
+          ? normalizeConfig({ ...ctx, config: candidate, warn: () => {} })
+          : candidate,
+      );
+    });
+  }
   if (normalizeConfig) {
     ctx.config = withLocation(location, () => normalizeConfig(ctx));
   }
@@ -382,6 +392,7 @@ export const runPipeline = async (
   if (isMonorepoRoot) {
     const rootConfig = resolveConfig(readConfigSources(rootInitial), {
       isRoot: true,
+      checkLegacySources: false,
     }).config;
     const monorepoWorkspaces = readMonorepoWorkspaces(cwd, rootPkg);
     for (const workspace of monorepoWorkspaces) {
@@ -458,9 +469,7 @@ export const runPipeline = async (
     const rootConfig = monorepoRoot
       ? resolveConfig(
           readConfigSources(createDiskFiles(monorepoRoot.rootDir)),
-          {
-            isRoot: true,
-          },
+          { isRoot: true, checkLegacySources: false },
         ).config
       : undefined;
     const ctx = createPackageContext({
