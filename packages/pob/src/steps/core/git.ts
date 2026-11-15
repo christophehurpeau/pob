@@ -1,0 +1,89 @@
+import { spawnSync } from "node:child_process";
+import type { PackageContext } from "../../engine/context.ts";
+import { defineStep } from "../../engine/step.ts";
+import type { GitRepository } from "./gitRepository.ts";
+import { getGitRepository, gitHostDomains } from "./gitRepository.ts";
+
+const isGitRepository = (cwd: string): boolean =>
+  spawnSync("git", ["rev-parse", "--git-dir"], { cwd, stdio: "ignore" })
+    .status === 0;
+
+/**
+ * Without an origin remote: there may be no repository yet. The check runs
+ * with the effect, an origin remote implies a repository.
+ */
+const planGitSetup = (ctx: PackageContext, repository: GitRepository): void => {
+  ctx.effects.add({
+    id: "git-init",
+    reason: "no origin remote: the git repository may not exist",
+    command: "git init",
+    run: ({ cwd }) => {
+      if (isGitRepository(cwd)) return;
+      const result = spawnSync("git", ["init"], { cwd, stdio: "inherit" });
+      if (result.status !== 0) throw new Error("git init failed");
+    },
+  });
+
+  const remoteHost = gitHostDomains[repository.gitHost];
+  if (!remoteHost) return;
+  const originSSH = `git@${remoteHost}:${repository.gitHostAccount}/${repository.repoName}.git`;
+  ctx.effects.add({
+    id: "git-remote-add",
+    reason: "no origin remote",
+    command: `git remote add origin ${originSSH}`,
+    after: ["git-init"],
+    run: ({ cwd }) => {
+      const result = spawnSync("git", ["remote", "add", "origin", originSSH], {
+        cwd,
+        stdio: "inherit",
+      });
+      if (result.status !== 0) {
+        console.warn(
+          `git: failed to add origin, run by hand: git remote add origin ${originSSH}`,
+        );
+      }
+    },
+  });
+};
+
+/** A custom homepage is kept, unless it points to another repository. */
+const isHomepageKept = (
+  homepage: string | undefined,
+  gitHost: string,
+  repositoryUrl: string,
+): boolean => {
+  if (!homepage) return false;
+  if (!homepage.startsWith(`https://${gitHost}.com/`)) return true;
+  const lowerHomepage = homepage.toLowerCase();
+  const lowerRepositoryUrl = repositoryUrl.toLowerCase();
+  return (
+    lowerHomepage === lowerRepositoryUrl ||
+    lowerHomepage.startsWith(`${lowerRepositoryUrl}/`) ||
+    lowerHomepage.startsWith(`${lowerRepositoryUrl}#`)
+  );
+};
+
+/**
+ * repository, homepage and bugs of a standalone package or a monorepo root
+ * (pob:core:package sets them in monorepo packages).
+ */
+export const gitStep = defineStep<PackageContext>({
+  name: "git",
+  when: (ctx) => ctx.facts.isRoot,
+  writes: ["pkg.homepage", "pkg.bugs", "pkg.repository"],
+  run: (ctx) => {
+    const { pkg } = ctx;
+    const repository = getGitRepository(ctx, { warn: true });
+    const { gitHost, gitHostAccount, repoName } = repository;
+    // wrong for bitbucket.org, kept from the yeoman generator
+    const repositoryUrl = `https://${gitHost}.com/${gitHostAccount}/${repoName}`;
+
+    if (!isHomepageKept(pkg.get("homepage"), gitHost, repositoryUrl)) {
+      pkg.set("homepage", repositoryUrl);
+    }
+    pkg.set("bugs", { url: `${repositoryUrl}/issues` });
+    pkg.set("repository", `${repositoryUrl}.git`);
+
+    if (!repository.hasOriginRemote) planGitSetup(ctx, repository);
+  },
+});

@@ -43,7 +43,7 @@ export interface PipelineResult {
   contexts: PackageContext[];
 }
 
-const readConfigSources = (initial: InitialFiles): RawConfigSources => {
+export const readConfigSources = (initial: InitialFiles): RawConfigSources => {
   const pkg = initial.readJson<JsonObject>("package.json");
   return {
     pobJson: initial.readJson("pob.json"),
@@ -56,10 +56,10 @@ const readConfigSources = (initial: InitialFiles): RawConfigSources => {
 const hasPobConfig = (initial: InitialFiles): boolean =>
   ["pob.json", ".yo-rc.json", ".pob.json"].some((file) => initial.exists(file));
 
-const isMonorepoPkg = (pkg: JsonObject | undefined): boolean =>
+export const isMonorepoPkg = (pkg: JsonObject | undefined): boolean =>
   !!pkg && (getWorkspaceGlobs(pkg).length > 0 || !!pkg.lerna);
 
-const readOriginUrl = (dir: string): string | undefined => {
+export const readOriginUrl = (dir: string): string | undefined => {
   try {
     return (
       execFileSync("git", ["config", "--get", "remote.origin.url"], {
@@ -74,7 +74,7 @@ const readOriginUrl = (dir: string): string | undefined => {
 };
 
 /** The monorepo root containing a package directory, if any. */
-const findMonorepoRoot = (
+export const findMonorepoRoot = (
   dir: string,
 ): { rootDir: string; rootPkg: JsonObject } | undefined => {
   let current = path.dirname(dir);
@@ -243,6 +243,7 @@ export const renderContext = async (
         path: filePath,
         op: "delete",
         directory: result.directory || undefined,
+        transient: result.transient || undefined,
         before: result.directory ? undefined : before,
         strategy: result.strategy,
         owners: result.owners,

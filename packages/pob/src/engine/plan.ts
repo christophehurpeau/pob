@@ -7,6 +7,8 @@ export interface PlannedFile {
   op: "create" | "modify" | "delete";
   /** deleted directory: `before` is undefined */
   directory?: boolean;
+  /** regenerated output of a tool, deleted without failing --check */
+  transient?: boolean;
   before?: string;
   after?: string;
   strategy: FileStrategy;
@@ -30,12 +32,12 @@ export interface Plan {
 }
 
 export const isPlanEmpty = (plan: Plan): boolean =>
-  plan.files.length === 0 && plan.effects.length === 0;
+  plan.files.every((file) => file.transient) && plan.effects.length === 0;
 
 const header = (file: PlannedFile): string => {
   const owners = file.owners.join(", ");
   if (file.op === "delete" && file.directory) {
-    return `delete directory ${file.path} (${owners})`;
+    return `delete directory ${file.path} (${owners}${file.transient ? ", transient" : ""})`;
   }
   return `${file.op} ${file.path} (${file.strategy}, ${owners})`;
 };

@@ -163,8 +163,9 @@ export const createPkgModel = (
     for (const dependency of toCheck) {
       const potentialNewVersion = getVersion(dependency);
       if (!currentDependencies) {
+        // the yeoman helper ignored the prefix here: it took two runs
         filtered[dependency] = cleaned
-          ? cleanVersion(potentialNewVersion)
+          ? `${prefix ?? ""}${cleanVersion(potentialNewVersion)}`
           : potentialNewVersion;
         continue;
       }

@@ -48,7 +48,7 @@ export type FileOutput =
       /** written even when the model is unchanged and the file is absent */
       always: boolean;
     })
-  | (BaseOutput & { strategy: "removed" });
+  | (BaseOutput & { strategy: "removed"; transient: boolean });
 
 export class OutputConflictError extends Error {
   constructor(filePath: string, owners: string[], step: string) {
@@ -84,7 +84,11 @@ export interface OutputRegistry {
     options?: OutputOptions & { always?: boolean },
   ) => void;
   /** delete a file or a directory when present */
-  removed: (filePath: string) => void;
+  /**
+   * @param options.transient output of tools (coverage, build) removed on each
+   *   run: not a reason for --check to fail
+   */
+  removed: (filePath: string, options?: { transient?: boolean }) => void;
   get: (filePath: string) => FileOutput | undefined;
   list: () => FileOutput[];
 }
@@ -168,8 +172,14 @@ export const createOutputRegistry = (tracker: Tracker): OutputRegistry => {
         format: options?.format ?? false,
       });
     },
-    removed: (filePath) => {
-      add({ path: filePath, strategy: "removed", owners: [], format: false });
+    removed: (filePath, options) => {
+      add({
+        path: filePath,
+        strategy: "removed",
+        owners: [],
+        format: false,
+        transient: options?.transient ?? false,
+      });
     },
     get: (filePath) => outputs.get(filePath),
     list: () => [...outputs.values()],
@@ -188,6 +198,7 @@ export type RenderedFile =
       path: string;
       kind: "delete";
       directory: boolean;
+      transient: boolean;
       owners: string[];
       strategy: FileStrategy;
     }
@@ -256,6 +267,7 @@ export const resolveOutput = (
         ...base,
         kind: "delete",
         directory: initial.isDirectory(output.path),
+        transient: output.transient,
         strategy: output.strategy,
       };
     default:
