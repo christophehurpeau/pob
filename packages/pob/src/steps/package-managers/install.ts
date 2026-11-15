@@ -219,14 +219,17 @@ const commandEffect = ({
 });
 
 /**
- * The script run after an install: npm only had one at a monorepo root
- * (pob:monorepo:workspaces).
+ * The script run after an install. With npm, a monorepo root runs preversion
+ * and a standalone package builds only when it has a bundler.
  */
 const getBuildScript = (
   ctx: PackageContext,
   packageManager: PackageManager,
 ): string | undefined => {
-  if (packageManager === "npm" && !ctx.facts.isMonorepoRoot) return undefined;
+  const hasBundler = !!ctx.config.build?.bundler;
+  if (packageManager === "npm" && !ctx.facts.isMonorepoRoot) {
+    return hasBundler && ctx.pkg.get("scripts.build") ? "build" : undefined;
+  }
   if (ctx.pkg.get("scripts.preversion")) return "preversion";
   if (packageManager !== "npm" && ctx.pkg.get("scripts.build")) return "build";
   return undefined;
