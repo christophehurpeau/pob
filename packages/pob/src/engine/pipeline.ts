@@ -6,6 +6,7 @@ import { format } from "oxfmt";
 import type { PobConfig, RawConfigSources } from "./config.ts";
 import { resolveConfig } from "./config.ts";
 import type {
+  MonorepoWorkspace,
   PackageContext,
   PobStep,
   RepoFacts,
@@ -70,6 +71,17 @@ export const readConfigSources = (initial: InitialFiles): RawConfigSources => {
 
 const hasPobConfig = (initial: InitialFiles): boolean =>
   ["pob.json", ".yo-rc.json", ".pob.json"].some((file) => initial.exists(file));
+
+const readMonorepoWorkspaces = (
+  rootDir: string,
+  rootPkg: JsonObject,
+): MonorepoWorkspace[] =>
+  discoverWorkspacePackages(rootDir, rootPkg).map(({ location, pkg }) => ({
+    location,
+    pkg,
+    initial: createDiskFiles(path.join(rootDir, location)),
+    context: undefined,
+  }));
 
 export const isMonorepoPkg = (pkg: JsonObject | undefined): boolean =>
   !!pkg && (getWorkspaceGlobs(pkg).length > 0 || !!pkg.lerna);
@@ -371,36 +383,44 @@ export const runPipeline = async (
     const rootConfig = resolveConfig(readConfigSources(rootInitial), {
       isRoot: true,
     }).config;
-    const workspaces = discoverWorkspacePackages(cwd, rootPkg);
-    const packageContexts = workspaces
-      .filter(({ location }) =>
-        hasPobConfig(createDiskFiles(path.join(cwd, location))),
-      )
-      .map((workspacePackage) =>
-        createPackageContext({
-          location: workspacePackage.location,
-          dir: path.join(cwd, workspacePackage.location),
-          facts: {
-            isMonorepoRoot: false,
-            isRoot: false,
-            originUrl,
-            inMonorepo: {
-              rootDir: cwd,
-              relative: workspacePackage.location,
-              rootPkg,
-              rootConfig,
-            },
+    const monorepoWorkspaces = readMonorepoWorkspaces(cwd, rootPkg);
+    for (const workspace of monorepoWorkspaces) {
+      if (!hasPobConfig(workspace.initial)) {
+        warnings.push(
+          `could not read pob config in ${workspace.location}: it is listed in the monorepo files but not updated`,
+        );
+        continue;
+      }
+      workspace.context = createPackageContext({
+        location: workspace.location,
+        dir: path.join(cwd, workspace.location),
+        initial: workspace.initial,
+        facts: {
+          isMonorepoRoot: false,
+          isRoot: false,
+          originUrl,
+          inMonorepo: {
+            rootDir: cwd,
+            relative: workspace.location,
+            rootPkg,
+            rootConfig,
           },
-          rootConfig,
-          versions,
-          strict,
-          options,
-          warnings,
-          normalizeConfig,
-        }),
-      );
+        },
+        rootConfig,
+        versions,
+        strict,
+        options,
+        warnings,
+        normalizeConfig,
+      });
+    }
+    const packageContexts = monorepoWorkspaces.flatMap(({ context }) =>
+      context ? [context] : [],
+    );
     for (const ctx of packageContexts) {
-      ctx.siblingPackages = packageContexts.filter((other) => other !== ctx);
+      ctx.siblingPackages = monorepoWorkspaces.filter(
+        (workspace) => workspace.context !== ctx,
+      );
     }
     // in topological order: the dependencies of a package run before it
     for (const ctx of packageContexts) await runSteps(ctx, steps);
@@ -421,11 +441,7 @@ export const runPipeline = async (
       normalizeConfig,
     });
     rootContext.workspacePackages = packageContexts;
-    rootContext.monorepoWorkspaces = workspaces.map(({ location, pkg }) => ({
-      location,
-      pkg,
-      context: packageContexts.find((ctx) => ctx.location === location),
-    }));
+    rootContext.monorepoWorkspaces = monorepoWorkspaces;
     await runSteps(rootContext, steps);
     contexts.push(...packageContexts, rootContext);
   } else {
@@ -474,6 +490,13 @@ export const runPipeline = async (
       warnings,
       normalizeConfig,
     });
+    if (monorepoRoot && ctx.facts.inMonorepo) {
+      const { relative } = ctx.facts.inMonorepo;
+      ctx.siblingPackages = readMonorepoWorkspaces(
+        monorepoRoot.rootDir,
+        monorepoRoot.rootPkg,
+      ).filter(({ location }) => location !== relative);
+    }
     await runSteps(ctx, steps);
     contexts.push(ctx);
   }

@@ -362,6 +362,7 @@ export default createLintStagedConfig();
   },
   "devDependencies": {
     "@pob/eslint-config": "68.5.0",
+    "@pob/rollup-esbuild": "11.5.0",
     "@pob/root": "28.8.1",
     "@vitest/coverage-v8": "5.1.0",
     "eslint": "10.14.0",
@@ -535,9 +536,17 @@ savePrefix: ^
 
 This repository is a monorepo using workspaces.
 
-| Package                     | Version                                                                                                                | Description     |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------------- | --------------- |
-| [pob-lib](packages/pob-lib) | <a href="https://npmjs.org/package/pob-lib"><img src="https://img.shields.io/npm/v/pob-lib.svg?style=flat-square"></a> | pob-lib fixture |
+| Package                                 | Version                                                                                                                  | Description           |
+| --------------------------------------- | ------------------------------------------------------------------------------------------------------------------------ | --------------------- |
+| [browser-tests](packages/browser-tests) |                                                                                                                          | browser-tests fixture |
+| [bundled](packages/bundled)             | <a href="https://npmjs.org/package/bundled"><img src="https://img.shields.io/npm/v/bundled.svg?style=flat-square"></a>   | bundled fixture       |
+| [five](packages/five)                   | <a href="https://npmjs.org/package/five"><img src="https://img.shields.io/npm/v/five.svg?style=flat-square"></a>         | five fixture          |
+| [four](packages/four)                   | <a href="https://npmjs.org/package/four"><img src="https://img.shields.io/npm/v/four.svg?style=flat-square"></a>         | four fixture          |
+| [one](packages/one)                     | <a href="https://npmjs.org/package/one"><img src="https://img.shields.io/npm/v/one.svg?style=flat-square"></a>           | one fixture           |
+| [pob-lib](packages/pob-lib)             | <a href="https://npmjs.org/package/pob-lib"><img src="https://img.shields.io/npm/v/pob-lib.svg?style=flat-square"></a>   | pob-lib fixture       |
+| [react-ui](packages/react-ui)           | <a href="https://npmjs.org/package/react-ui"><img src="https://img.shields.io/npm/v/react-ui.svg?style=flat-square"></a> | react-ui fixture      |
+| [three](packages/three)                 | <a href="https://npmjs.org/package/three"><img src="https://img.shields.io/npm/v/three.svg?style=flat-square"></a>       | three fixture         |
+| [two](packages/two)                     | <a href="https://npmjs.org/package/two"><img src="https://img.shields.io/npm/v/two.svg?style=flat-square"></a>           | two fixture           |
 >>>>> pob-harness created: renovate.json
 {
   "extends": ["config:js-lib", "github>christophehurpeau/renovate-presets"]

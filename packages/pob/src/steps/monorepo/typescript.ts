@@ -3,7 +3,7 @@ import { defineStep } from "../../engine/step.ts";
 import { getWorkspaceGlobs } from "../../engine/workspace.ts";
 import { isNodeApp, latestLTS } from "../../utils/misc.ts";
 import { packageManagerRun } from "../../utils/packageManager.ts";
-import { finalFileContent, listRootEntries } from "./packages.ts";
+import { listRootEntries, workspaceFileContent } from "./packages.ts";
 import {
   getMonorepoTypescript,
   hasRootBuildDefinitions,
@@ -32,13 +32,13 @@ const hasTools = (ctx: PackageContext): boolean =>
     .some((filePath) => scriptExtensionsRegex.test(filePath));
 
 const getTypescriptPackagePaths = (ctx: PackageContext): string[] => {
-  const packagePaths = ctx.workspacePackages
+  const packagePaths = ctx.monorepoWorkspaces
     .filter(
-      (packageContext) =>
-        finalFileContent(packageContext, "tsconfig.json") !== undefined,
+      (workspace) =>
+        workspaceFileContent(workspace, "tsconfig.json") !== undefined,
     )
-    .map((packageContext) => packageContext.location);
-  if (packagePaths.length === 0 && ctx.workspacePackages.length > 0) {
+    .map((workspace) => workspace.location);
+  if (packagePaths.length === 0 && ctx.monorepoWorkspaces.length > 0) {
     throw new Error(
       "monorepo.typescript is enabled but no package has a tsconfig.json",
     );

@@ -130,12 +130,10 @@ interface MonorepoReferences {
 }
 
 /**
- * Paths and references to the workspace packages this one depends on, located
- * from their names like the yeoman generator did (`../../<scope>/<name>` in a
- * library monorepo, `../../packages/<name>` otherwise), or from their context
- * when the monorepo runs in one process. A dependency is a typescript package
- * when it has a tsconfig.json once its steps ran: in one process, they ran
- * before this package.
+ * Paths and references to the workspace packages this one depends on, at
+ * their location in the monorepo. A dependency is a typescript package when
+ * it has a tsconfig.json once its steps ran: when pob runs at the root, they
+ * ran before this package.
  */
 const getMonorepoReferences = (
   ctx: PackageContext,
@@ -168,21 +166,20 @@ const getMonorepoReferences = (
       : `../../${name}`;
   };
   const readPackageJson = (name: string): JsonObject | undefined =>
-    findSiblingPackage(ctx, name)?.initial.readJson<JsonObject>(
-      "package.json",
-    ) ??
+    findSiblingPackage(ctx, name)?.pkg ??
     readRelativeFiles(ctx, getPackageLocation(name)).readJson<JsonObject>(
       "package.json",
     );
   const isTypescriptPackage = (name: string): boolean => {
     const sibling = findSiblingPackage(ctx, name);
-    if (sibling?.stepsRan) {
+    if (sibling?.context?.stepsRan) {
       return (
-        finalFileContent(sibling, "tsconfig.json") !== undefined &&
+        finalFileContent(sibling.context, "tsconfig.json") !== undefined &&
         sibling.initial.exists("src")
       );
     }
-    const files = readRelativeFiles(ctx, getPackageLocation(name));
+    const files =
+      sibling?.initial ?? readRelativeFiles(ctx, getPackageLocation(name));
     return files.exists("tsconfig.json") && files.exists("src");
   };
 

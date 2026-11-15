@@ -2,7 +2,10 @@ import JSON5 from "json5";
 import type { PackageContext } from "../../engine/context.ts";
 import type { JsonObject } from "../../engine/model.ts";
 import { defineStep } from "../../engine/step.ts";
-import { finalFileContent } from "../monorepo/packages.ts";
+import {
+  workspaceBuildConfig,
+  workspaceFileContent,
+} from "../monorepo/packages.ts";
 import { getProjectKind, hasReact } from "../settings.ts";
 import { escapeHtml as e } from "./escape.ts";
 import { getProjectLibSettings } from "./settings.ts";
@@ -114,27 +117,25 @@ const getJsx = (ctx: PackageContext): boolean => {
 };
 
 /**
- * The packages with a pob config, in topological order, only those with a
- * tsconfig.json once their steps ran in a typescript monorepo: the same state
- * the root tsconfig.json references.
+ * The workspaces in topological order, only those with a tsconfig.json once
+ * pob ran in a typescript monorepo: the same state the root tsconfig.json
+ * references.
  */
 const renderMonorepoDoc = (ctx: PackageContext, jsx: boolean): string => {
   const typescript = !!ctx.config.monorepo?.typescript;
-  const packages = ctx.workspacePackages.filter(
-    (workspacePackage) =>
+  const packages = ctx.monorepoWorkspaces.filter(
+    (workspace) =>
       (!typescript ||
-        finalFileContent(workspacePackage, "tsconfig.json") !== undefined) &&
-      !workspacePackage.location.endsWith("-example"),
+        workspaceFileContent(workspace, "tsconfig.json") !== undefined) &&
+      !workspace.location.endsWith("-example"),
   );
   const entryPoints: string[] = [];
-  for (const workspacePackage of packages) {
-    const entries = workspacePackage.config.build?.entries;
+  for (const workspace of packages) {
+    const entries = workspaceBuildConfig(workspace)?.entries;
     if (entries) {
       // https://typedoc.org/guides/project-references/
       entryPoints.unshift(
-        ...entries.map(
-          (entry) => `${workspacePackage.location}/src/${entry}.ts`,
-        ),
+        ...entries.map((entry) => `${workspace.location}/src/${entry}.ts`),
       );
     }
   }

@@ -4,7 +4,7 @@ import type { JsonObject } from "../../engine/model.ts";
 import { defineStep } from "../../engine/step.ts";
 import { getWorkspaceGlobs } from "../../engine/workspace.ts";
 import { extractMonorepoReadmeContent } from "../../utils/misc.ts";
-import { finalPkg } from "./packages.ts";
+import { workspacePkg } from "./packages.ts";
 import { isMonorepoRoot } from "./settings.ts";
 import { monorepoReadmeTemplate } from "./templates.ts";
 
@@ -68,14 +68,13 @@ const getReadmePackages = (
   workspaceGlobs
     .map((workspaceGlob) => workspaceGlob.replace(/\/\*$/, ""))
     .flatMap((directory) =>
-      ctx.workspacePackages
+      ctx.monorepoWorkspaces
         .filter(
-          (packageContext) =>
-            path.posix.dirname(packageContext.location) === directory,
+          (workspace) => path.posix.dirname(workspace.location) === directory,
         )
         .toSorted((a, b) => (a.location < b.location ? -1 : 1)),
     )
-    .map((packageContext) => finalPkg(packageContext));
+    .map((workspace) => workspacePkg(workspace));
 
 /** root package.json scripts, engines and workspaces, and the README */
 export const monorepoWorkspacesStep = defineStep<PackageContext>({

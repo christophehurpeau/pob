@@ -1,6 +1,11 @@
 import { normalizeConfig as defaultNormalizeConfig } from "../steps/config.ts";
 import type { PobConfig } from "./config.ts";
-import type { PackageContext, PobStep, RepoFacts } from "./context.ts";
+import type {
+  MonorepoWorkspace,
+  PackageContext,
+  PobStep,
+  RepoFacts,
+} from "./context.ts";
 import { createMemoryFiles } from "./files.ts";
 import type { NormalizeConfig } from "./pipeline.ts";
 import { createPackageContext, renderContext, runSteps } from "./pipeline.ts";
@@ -14,9 +19,13 @@ export interface TestContextOptions {
   rootConfig?: PobConfig;
   versions?: DependencyVersions;
   workspacePackages?: PackageContext[];
-  siblingPackages?: PackageContext[];
+  siblingPackages?: MonorepoWorkspace[];
   /** workspaces without a pob config, besides workspacePackages */
-  otherWorkspaces?: { location: string; pkg: Record<string, unknown> }[];
+  otherWorkspaces?: {
+    location: string;
+    pkg: Record<string, unknown>;
+    files?: Record<string, string>;
+  }[];
   location?: string;
   /** the normalization of the pipeline by default */
   normalizeConfig?: NormalizeConfig | false;
@@ -65,10 +74,16 @@ export const createTestContext = ({
         packageContext.initial.readJson<Record<string, unknown>>(
           "package.json",
         ) ?? {},
+      initial: packageContext.initial,
       context: packageContext,
     })),
-    ...otherWorkspaces.map((workspace) => ({
-      ...workspace,
+    ...otherWorkspaces.map(({ location, pkg, files: workspaceFiles = {} }) => ({
+      location,
+      pkg,
+      initial: createMemoryFiles({
+        "package.json": JSON.stringify(pkg),
+        ...workspaceFiles,
+      }),
       context: undefined,
     })),
   ];

@@ -1,5 +1,9 @@
 import fs from "node:fs";
-import type { PackageContext } from "../../engine/context.ts";
+import type { BuildConfig } from "../../engine/config.ts";
+import type {
+  MonorepoWorkspace,
+  PackageContext,
+} from "../../engine/context.ts";
 import type { JsonObject } from "../../engine/model.ts";
 import { resolveOutput } from "../../engine/output.ts";
 
@@ -24,6 +28,29 @@ export const finalFileContent = (
 /** package.json of a workspace package after its steps ran */
 export const finalPkg = (packageContext: PackageContext): JsonObject =>
   packageContext.pkg.snapshot();
+
+/**
+ * A file of a workspace once pob ran: the final output of a workspace with a
+ * pob config, the current content of one without, which pob does not update.
+ */
+export const workspaceFileContent = (
+  workspace: MonorepoWorkspace,
+  filePath: string,
+): string | undefined =>
+  workspace.context
+    ? finalFileContent(workspace.context, filePath)
+    : workspace.initial.read(filePath);
+
+export const workspacePkg = (workspace: MonorepoWorkspace): JsonObject =>
+  workspace.context ? finalPkg(workspace.context) : workspace.pkg;
+
+/** the build config, from package.json#pob for a workspace without config */
+export const workspaceBuildConfig = (
+  workspace: MonorepoWorkspace,
+): BuildConfig | undefined =>
+  workspace.context
+    ? workspace.context.config.build
+    : (workspace.pkg.pob as BuildConfig | undefined);
 
 /**
  * Names in the directory of the context. InitialFiles only lists files

@@ -44,6 +44,72 @@ const pkg = (
 const tsSource = 'export const hello = (): string => "hello";\n';
 const jsSource = 'export const hello = () => "hello";\n';
 
+const scopedLibPkg = (
+  name: string,
+  extra: Record<string, unknown> = {},
+): Record<string, unknown> =>
+  pkg(name, {
+    pob: {
+      bundler: "rollup-esbuild",
+      entries: ["index"],
+      envs: [{ target: "node", version: "24" }],
+      typescript: true,
+    },
+    ...extra,
+  });
+
+const typescriptWorkspacesWithoutPobFiles: Record<string, string> = {
+  ".yo-rc.json": rootYoRc({
+    project: { type: "lib", packageManager: "pnpm", ci: false },
+    monorepo: {
+      ci: false,
+      testing: false,
+      e2eTesting: false,
+      documentation: true,
+      typescript: true,
+      eslint: true,
+    },
+  }),
+  "package.json": json({
+    name: "monorepo-typescript-without-pob",
+    version: "1.0.0",
+    private: true,
+    license: "MIT",
+    author,
+    repository: "https://github.com/pob-harness/without-pob.git",
+    type: "module",
+    workspaces: ["packages/*"],
+  }),
+  "packages/lib/.yo-rc.json": yoRc({
+    project: { type: "lib" },
+    lib: { documentation: false, testing: false, e2e: false },
+  }),
+  "packages/lib/package.json": json(scopedLibPkg("@harness/lib")),
+  "packages/lib/src/index.ts": tsSource,
+  "packages/lib/tsconfig.json": json({}),
+  "packages/app/.yo-rc.json": yoRc({
+    project: { type: "lib" },
+    lib: { documentation: false, testing: false, e2e: false },
+  }),
+  "packages/app/package.json": json(
+    scopedLibPkg("@harness/app", {
+      dependencies: {
+        "@harness/built": "workspace:*",
+        "@harness/lib": "workspace:*",
+        "@harness/plain": "workspace:*",
+      },
+    }),
+  ),
+  "packages/app/src/index.ts": tsSource,
+  "packages/plain/package.json": json(pkg("@harness/plain")),
+  "packages/plain/tsconfig.json": json({ include: ["src"] }),
+  "packages/plain/src/index.ts": tsSource,
+  "packages/built/package.json": json(scopedLibPkg("@harness/built")),
+  "packages/built/tsconfig.json": json({ include: ["src"] }),
+  "packages/built/rollup.config.mjs": "export default [];\n",
+  "packages/built/src/index.ts": tsSource,
+};
+
 export const fixtures: Fixture[] = [
   {
     name: "pob-monorepo",
@@ -846,6 +912,19 @@ export const fixtures: Fixture[] = [
       ),
       "packages/js/lib/index.js": jsSource,
     },
+  },
+  {
+    name: "monorepo-typescript-without-pob",
+    description:
+      "typescript monorepo with documentation: a workspace with a tsconfig and no pob config, one with only package.json#pob and a rollup config, a package depending on them",
+    files: typescriptWorkspacesWithoutPobFiles,
+  },
+  {
+    name: "monorepo-typescript-without-pob-package-run",
+    description:
+      "monorepo-typescript-without-pob, run in the package depending on the other workspaces",
+    cwd: "packages/app",
+    files: typescriptWorkspacesWithoutPobFiles,
   },
   {
     name: "standalone-under-workspaces",

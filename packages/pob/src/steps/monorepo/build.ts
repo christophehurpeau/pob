@@ -1,4 +1,5 @@
 import type { PackageContext } from "../../engine/context.ts";
+import type { JsonObject } from "../../engine/model.ts";
 import { defineStep } from "../../engine/step.ts";
 import { getRollupConfigDependencies } from "../../utils/misc.ts";
 import { packageManagerRun } from "../../utils/packageManager.ts";
@@ -9,7 +10,11 @@ import {
   workspacesRunSequential,
   workspacesRunTopological,
 } from "../../utils/packageManagerWorkspaces.ts";
-import { finalFileContent, finalPkg } from "./packages.ts";
+import {
+  workspaceBuildConfig,
+  workspaceFileContent,
+  workspacePkg,
+} from "./packages.ts";
 import {
   hasBundler,
   hasRootBuildDefinitions,
@@ -24,8 +29,8 @@ const rollupConfigFile = "rollup.config.mjs";
 const setAppBuildScripts = (ctx: PackageContext): void => {
   const { pkg } = ctx;
   const packageManager = ctx.facts.packageManager;
-  const withBundler = ctx.workspacePackages.some((packageContext) =>
-    hasBundler(packageContext.config.build),
+  const withBundler = ctx.monorepoWorkspaces.some((workspace) =>
+    hasBundler(workspaceBuildConfig(workspace)),
   );
   if (withBundler) {
     pkg
@@ -37,9 +42,9 @@ const setAppBuildScripts = (ctx: PackageContext): void => {
   // rollup apps have a start script, not a watch one
   pkg.addOrRemoveScripts(
     withBundler &&
-      ctx.workspacePackages.some(
-        (packageContext) =>
-          !!packageContext.pkg.peek<string>(["scripts", "watch"]),
+      ctx.monorepoWorkspaces.some(
+        (workspace) =>
+          !!(workspacePkg(workspace).scripts as JsonObject | undefined)?.watch,
       ),
     { watch: workspacesRunExcluding(packageManager, "watch", "*-example") },
   );
@@ -49,22 +54,17 @@ const setAppBuildScripts = (ctx: PackageContext): void => {
 const setLibBuildScripts = (ctx: PackageContext): void => {
   const { pkg } = ctx;
   const packageManager = ctx.facts.packageManager;
-  const rollupConfigs = ctx.workspacePackages.flatMap((packageContext) => {
-    const content = finalFileContent(packageContext, rollupConfigFile);
+  const rollupConfigs = ctx.monorepoWorkspaces.flatMap((workspace) => {
+    const content = workspaceFileContent(workspace, rollupConfigFile);
     return content === undefined
       ? []
-      : [
-          {
-            location: `${packageContext.location}/${rollupConfigFile}`,
-            content,
-          },
-        ];
+      : [{ location: `${workspace.location}/${rollupConfigFile}`, content }];
   });
 
   // built before the root rollup config loads them, and kept out of
   // clean:build which runs in between
   const rollupConfigDependencies = getRollupConfigDependencies(
-    ctx.workspacePackages.map((packageContext) => finalPkg(packageContext)),
+    ctx.monorepoWorkspaces.map((workspace) => workspacePkg(workspace)),
     rollupConfigs.map(({ content }) => content),
   );
   const buildRollupConfigDependencies =
@@ -109,9 +109,9 @@ const setLibBuildScripts = (ctx: PackageContext): void => {
     { "upgrade-expo": workspacesRunSequential(packageManager, "upgrade-expo") },
   );
 
-  const withRollupEsbuild = ctx.workspacePackages.some(
-    (packageContext) =>
-      packageContext.config.build?.bundler === "rollup-esbuild",
+  const withRollupEsbuild = ctx.monorepoWorkspaces.some(
+    (workspace) =>
+      workspaceBuildConfig(workspace)?.bundler === "rollup-esbuild",
   );
   pkg.addOrRemoveDevDependencies(withRollupEsbuild, ["@pob/rollup-esbuild"]);
   if (withRollupEsbuild) pkg.removeDevDependencies(["rollup"]);
