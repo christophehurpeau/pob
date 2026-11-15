@@ -6,10 +6,7 @@ import inMonorepo from "../../../utils/inMonorepo.js";
 import * as packageUtils from "../../../utils/package.js";
 import { packageManagerRunWithCwd } from "../../../utils/packageManagerUtils.js";
 import { workspacesRun } from "../../../utils/packageManagerWorkspacesUtils.js";
-import {
-  copyAndFormatTpl,
-  writeAndFormatJson,
-} from "../../../utils/writeAndFormat.js";
+import { writeAndFormatJson } from "../../../utils/writeAndFormat.js";
 
 export default class CommonTestingGenerator extends Generator {
   constructor(args, opts) {
@@ -333,7 +330,6 @@ export default class CommonTestingGenerator extends Generator {
     };
 
     const jestConfigPath = this.destinationPath("jest.config.json");
-    const vitestConfigPath = this.destinationPath("vite.config.js");
 
     const isVitestUsed =
       this.options.enable &&
@@ -359,7 +355,7 @@ export default class CommonTestingGenerator extends Generator {
       //     delete pkg.scripts.test;
       //   }
       // }
-      packageUtils.removeScripts([
+      packageUtils.removeScripts(pkg, [
         "test",
         "test:coverage",
         "test:watch",
@@ -393,17 +389,6 @@ export default class CommonTestingGenerator extends Generator {
           test: workspacesRun(this.options.packageManager, "test"),
         });
       } else {
-        if (this.testRunner === "vitest") {
-          await copyAndFormatTpl(
-            this.fs,
-            this.templatePath("vite.config.js.ejs"),
-            vitestConfigPath,
-            {
-              srcDirectory: this.options.srcDirectory,
-            },
-          );
-        }
-
         packageUtils.removeScripts(pkg, [
           "test:coverage:lcov",
           "test:coverage:json",

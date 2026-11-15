@@ -504,6 +504,7 @@ export default class PobLibGenerator extends Generator {
   }
 
   end() {
+    if (this.options.check) return;
     // the build output is no longer committed: remove it from git, keeping it on disk.
     if (!this.buildInGit && this.buildDirectory) {
       removeFromGitIndex(this.destinationPath(), this.buildDirectory);

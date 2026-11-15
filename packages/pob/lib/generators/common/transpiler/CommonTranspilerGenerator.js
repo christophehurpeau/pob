@@ -170,7 +170,7 @@ export default class CommonTranspilerGenerator extends Generator {
     /* scripts */
 
     if (this.options.isApp) {
-      packageUtils.removeScripts(["watch"]);
+      packageUtils.removeScripts(pkg, ["watch"]);
       packageUtils.addOrRemoveScripts(pkg, bundler && bundler !== "tsc", {
         "clean:build": `${cleanCommand} ${this.options.buildDirectory}`,
         clean: packageManagerRun(this.options.packageManager, "clean:build"),
@@ -186,7 +186,7 @@ export default class CommonTranspilerGenerator extends Generator {
         })(),
       });
     } else {
-      packageUtils.removeScripts(["start"]);
+      packageUtils.removeScripts(pkg, ["start"]);
       packageUtils.addOrRemoveScripts(pkg, bundler && bundler !== "tsc", {
         "clean:build": `${cleanCommand} ${this.options.buildDirectory}`,
       });
@@ -745,7 +745,7 @@ export default class CommonTranspilerGenerator extends Generator {
   end() {
     // when updated from the monorepo root, dependencies are not installed yet:
     // the root builds after installing
-    if (this.bundler && !this.options.fromPob) {
+    if (this.bundler && !this.options.fromPob && !this.options.check) {
       this.spawnCommandSync(
         packageManagerRun(this.options.packageManager, "build"),
       );

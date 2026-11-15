@@ -137,8 +137,9 @@ export default class CoreCIGenerator extends Generator {
       const pkg = this.fs.readJSON(this.destinationPath("package.json"));
 
       const checks = !!pkg.scripts && !!pkg.scripts.checks;
-      const testing =
-        this.options.testing && !!pkg.scripts && !!pkg.scripts.test;
+      // not read from pkg.scripts.test: pob:common:testing writes it later, in
+      // writing, and always does so when testing is enabled
+      const testing = !!this.options.testing;
       const build = this.options.build;
 
       if (!this.options.disablePushWorkflow) {
