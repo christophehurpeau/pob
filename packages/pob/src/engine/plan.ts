@@ -1,4 +1,5 @@
-import { unifiedDiff } from "./diff.ts";
+import path from "node:path";
+import { diffStats, unifiedDiff } from "./diff.ts";
 import type { FileStrategy } from "./output.ts";
 
 export interface PlannedFile {
@@ -42,12 +43,31 @@ const header = (file: PlannedFile): string => {
   return `${file.op} ${file.path} (${file.strategy}, ${owners})`;
 };
 
+const lockfileNames = new Set([
+  "bun.lock",
+  "bun.lockb",
+  "package-lock.json",
+  "pnpm-lock.yaml",
+  "yarn.lock",
+]);
+
+/** generated, often tens of thousands of lines: a diff would drown the plan */
+const isLockfile = (filePath: string): boolean =>
+  lockfileNames.has(path.posix.basename(filePath));
+
 /** --check output: unified diffs, then the effects that would run. */
 export const formatPlan = (plan: Plan): string => {
   const lines: string[] = [];
   for (const file of plan.files) {
     lines.push(header(file));
     if (file.directory) continue;
+    if (isLockfile(file.path)) {
+      const { removed, added } = diffStats(file.before ?? "", file.after ?? "");
+      lines.push(
+        `  lockfile: ${removed} line(s) removed, ${added} line(s) added, diff not shown`,
+      );
+      continue;
+    }
     lines.push(`--- a/${file.path}`, `+++ b/${file.path}`);
     const diff = unifiedDiff(file.before ?? "", file.after ?? "");
     if (diff) lines.push(diff);
