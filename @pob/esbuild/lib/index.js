@@ -4,14 +4,15 @@ import esbuild from "esbuild";
 
 /**
  * The build config of the package: the build key of pob.json, or
- * package.json#pob before pob moved it to pob.json.
+ * package.json#pob before pob moved it to pob.json (also when pob.json exists
+ * without build: a pob version that did not move it yet).
  */
 const readPobBuildConfig = (cwd, pkg) => {
   const pobJsonPath = path.join(cwd, "pob.json");
-  if (existsSync(pobJsonPath)) {
-    return JSON.parse(readFileSync(pobJsonPath, "utf8")).build ?? {};
-  }
-  return pkg.pob;
+  const build = existsSync(pobJsonPath)
+    ? JSON.parse(readFileSync(pobJsonPath, "utf8")).build
+    : undefined;
+  return build ?? pkg.pob ?? {};
 };
 
 export function createEsbuildOptions({
