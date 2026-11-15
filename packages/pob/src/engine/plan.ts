@@ -1,4 +1,5 @@
 import path from "node:path";
+import { redactUrls } from "../utils/redactUrl.ts";
 import { diffStats, unifiedDiff } from "./diff.ts";
 import type { FileStrategy } from "./output.ts";
 
@@ -32,8 +33,20 @@ export interface Plan {
   warnings: string[];
 }
 
+/**
+ * Effects planned on every update, whatever changed (the github settings
+ * sync): --check lists them, but they do not make it fail.
+ */
+export const everyUpdateEffectIds: ReadonlySet<string> = new Set([
+  "github-sync",
+]);
+
+const runsOnEveryUpdate = (effect: PlanEffect): boolean =>
+  everyUpdateEffectIds.has(effect.id);
+
 export const isPlanEmpty = (plan: Plan): boolean =>
-  plan.files.every((file) => file.transient) && plan.effects.length === 0;
+  plan.files.every((file) => file.transient) &&
+  plan.effects.every(runsOnEveryUpdate);
 
 const header = (file: PlannedFile): string => {
   const owners = file.owners.join(", ");
@@ -55,8 +68,7 @@ const lockfileNames = new Set([
 const isLockfile = (filePath: string): boolean =>
   lockfileNames.has(path.posix.basename(filePath));
 
-/** --check output: unified diffs, then the effects that would run. */
-export const formatPlan = (plan: Plan): string => {
+const formatRedactedPlan = (plan: Plan): string => {
   const lines: string[] = [];
   for (const file of plan.files) {
     lines.push(header(file));
@@ -76,8 +88,9 @@ export const formatPlan = (plan: Plan): string => {
     lines.push("", "effects:");
     for (const effect of plan.effects) {
       const location = effect.cwd === "." ? "" : ` in ${effect.cwd}`;
+      const everyUpdate = runsOnEveryUpdate(effect) ? ", on every update" : "";
       lines.push(
-        `  ${effect.id}${location}${effect.command ? `: ${effect.command}` : ""} (${effect.reasons.join("; ")})`,
+        `  ${effect.id}${location}${effect.command ? `: ${effect.command}` : ""} (${effect.reasons.join("; ")}${everyUpdate})`,
       );
       if (effect.mayModify.length > 0) {
         lines.push(`    may modify: ${effect.mayModify.join(", ")}`);
@@ -88,5 +101,20 @@ export const formatPlan = (plan: Plan): string => {
   return lines.join("\n");
 };
 
+/** The effects and warnings of a plan, credentials of urls hidden. */
+const redactPlanMessages = (plan: Plan): Plan => ({
+  ...plan,
+  effects: plan.effects.map((effect) => ({
+    ...effect,
+    reasons: effect.reasons.map(redactUrls),
+    command: effect.command && redactUrls(effect.command),
+  })),
+  warnings: plan.warnings.map(redactUrls),
+});
+
+/** --check output: the files, then the effects that would run. */
+export const formatPlan = (plan: Plan): string =>
+  formatRedactedPlan(redactPlanMessages(plan));
+
 export const serializePlan = (plan: Plan): string =>
-  JSON.stringify(plan, null, 2);
+  JSON.stringify(redactPlanMessages(plan), null, 2);

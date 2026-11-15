@@ -2,6 +2,7 @@ import type { PipelineResult } from "../engine/pipeline.ts";
 import { applyPipelineResult, runPipeline } from "../engine/pipeline.ts";
 import { formatPlan, isPlanEmpty, serializePlan } from "../engine/plan.ts";
 import { steps } from "../steps/index.ts";
+import { redactUrls } from "../utils/redactUrl.ts";
 
 export interface CliIO {
   log: (message: string) => void;
@@ -57,7 +58,11 @@ const withEffectLogs = (result: PipelineResult, io: CliIO): PipelineResult => ({
   effects: result.effects.map((effect) => ({
     ...effect,
     run: (context) => {
-      io.log(`> ${effect.id}${effect.command ? `: ${effect.command}` : ""}`);
+      io.log(
+        redactUrls(
+          `> ${effect.id}${effect.command ? `: ${effect.command}` : ""}`,
+        ),
+      );
       return effect.run(context);
     },
   })),
@@ -68,7 +73,9 @@ export const applyResult = async (
   result: PipelineResult,
   io: CliIO,
 ): Promise<void> => {
-  for (const warning of result.plan.warnings) io.error(`warning: ${warning}`);
+  for (const warning of result.plan.warnings) {
+    io.error(`warning: ${redactUrls(warning)}`);
+  }
   for (const file of result.plan.files) io.log(`${file.op} ${file.path}`);
   await applyPipelineResult(cwd, withEffectLogs(result, io));
 };
@@ -86,11 +93,14 @@ export const runUpdate = async (
     await applyResult(options.cwd, result, io);
     return 0;
   }
-  const empty = isPlanEmpty(result.plan);
-  if (options.json) io.log(serializePlan(result.plan));
-  else if (!empty) io.log(formatPlan(result.plan));
-  else {
-    for (const warning of result.plan.warnings) io.error(`warning: ${warning}`);
+  const { plan } = result;
+  if (options.json) io.log(serializePlan(plan));
+  else if (plan.files.length > 0 || plan.effects.length > 0) {
+    io.log(formatPlan(plan));
+  } else {
+    for (const warning of plan.warnings) {
+      io.error(`warning: ${redactUrls(warning)}`);
+    }
   }
-  return empty ? 0 : 1;
+  return isPlanEmpty(plan) ? 0 : 1;
 };

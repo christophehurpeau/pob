@@ -1,6 +1,6 @@
 import { describe, expect, test } from "vitest";
-import type { PlannedFile } from "./plan.ts";
-import { formatPlan } from "./plan.ts";
+import type { Plan, PlanEffect, PlannedFile } from "./plan.ts";
+import { formatPlan, isPlanEmpty, serializePlan } from "./plan.ts";
 
 const file = (overrides: Partial<PlannedFile>): PlannedFile => ({
   path: "a.txt",
@@ -61,5 +61,54 @@ describe("formatPlan", () => {
         "  lockfile: 5000 line(s) removed, 0 line(s) added, diff not shown",
       ].join("\n"),
     );
+  });
+});
+
+const effect = (overrides: Partial<PlanEffect>): PlanEffect => ({
+  id: "install",
+  cwd: ".",
+  reasons: ["dependencies changed"],
+  owners: ["step"],
+  after: [],
+  mayModify: [],
+  ...overrides,
+});
+
+describe("effects", () => {
+  test("the github sync is listed but does not make --check fail", () => {
+    const plan: Plan = {
+      files: [],
+      effects: [
+        effect({ id: "github-sync", reasons: ["sync the settings of a/b"] }),
+      ],
+      warnings: [],
+    };
+    expect(isPlanEmpty(plan)).toBe(true);
+    expect(formatPlan(plan)).toBe(
+      [
+        "",
+        "effects:",
+        "  github-sync (sync the settings of a/b, on every update)",
+      ].join("\n"),
+    );
+    expect(isPlanEmpty({ ...plan, effects: [effect({})] })).toBe(false);
+  });
+
+  test("hides the credentials of urls in effects and warnings", () => {
+    const plan: Plan = {
+      files: [],
+      effects: [
+        effect({
+          id: "git-remote-add",
+          command: "git remote add origin https://token@gitlab.com/o/r.git",
+          reasons: ["origin https://u:p@gitlab.com/o/r.git"],
+        }),
+      ],
+      warnings: ["unknown git host in https://u:secret@git.corp/o/r.git"],
+    };
+    for (const output of [formatPlan(plan), serializePlan(plan)]) {
+      expect(output).not.toMatch(/token|secret|u:p/);
+      expect(output).toContain("https://***@gitlab.com/o/r.git");
+    }
   });
 });

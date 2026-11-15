@@ -8,6 +8,7 @@ import { runMigrateToMonorepo } from "./cli/migrateToMonorepo.ts";
 import { MissingAnswersError } from "./cli/questions.ts";
 import { runShowConfig } from "./cli/showConfig.ts";
 import { runUpdate } from "./cli/update.ts";
+import { redactUrls } from "./utils/redactUrl.ts";
 
 const usage = `Usage: pob [monorepo] [lib|app|init]
        pob [monorepo] update [from-pob] [--check [--json]]
@@ -102,7 +103,9 @@ try {
     console.error(error.message);
   } else {
     console.error(
-      error instanceof Error ? (error.stack ?? error.message) : error,
+      redactUrls(
+        error instanceof Error ? (error.stack ?? error.message) : String(error),
+      ),
     );
   }
   process.exitCode = 1;

@@ -324,10 +324,13 @@ const getToken = (info: GithubRepositoryInfo, setup: boolean): string => {
 
 /** Every effect a monorepo or standalone setup can plan before the commit */
 const effectsBeforeInitialCommit = [
+  "yarn-set-version",
+  "yarn-plugins",
   "install",
   "dedupe",
   "build",
   "yarn-sdks",
+  "yarn-format",
   "git-untrack-build",
   "git-init",
   "git-remote-add",
@@ -371,8 +374,8 @@ const planGithubSync = (
 
 /**
  * The github repository: created when there is no origin remote, its settings
- * synced on every update otherwise. The sync is not planned with --check: it
- * changes nothing in the repository and would make every check fail.
+ * synced on every update otherwise. --check lists the sync without failing
+ * (see `everyUpdateEffectIds`).
  */
 export const githubStep = defineStep<PackageContext>({
   name: "github",
@@ -380,7 +383,7 @@ export const githubStep = defineStep<PackageContext>({
   reads: ["pkg.description", "pkg.license", "ci.contexts"],
   run: (ctx) => {
     const repository = getGitRepository(ctx, { warn: false });
-    if (repository.gitHost !== "github") return;
+    if (repository?.gitHost !== "github") return;
     const info: GithubRepositoryInfo = {
       owner: repository.gitHostAccount,
       repo: repository.repoName,
@@ -389,10 +392,7 @@ export const githubStep = defineStep<PackageContext>({
       ciEnabled: !!ctx.config.project.ci,
       ciContexts: ctx.model("ci").get<string[]>("contexts") ?? [],
     };
-    if (!repository.hasOriginRemote) {
-      planGithubSetup(ctx, info);
-    } else if (!ctx.options.check) {
-      planGithubSync(ctx, info);
-    }
+    if (repository.hasOriginRemote) planGithubSync(ctx, info);
+    else planGithubSetup(ctx, info);
   },
 });

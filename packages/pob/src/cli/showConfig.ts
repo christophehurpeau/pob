@@ -1,6 +1,7 @@
 import type { PackageContext } from "../engine/context.ts";
 import { runPipeline } from "../engine/pipeline.ts";
 import { steps } from "../steps/index.ts";
+import { redactUrls } from "../utils/redactUrl.ts";
 import type { CliIO } from "./update.ts";
 import { consoleIO } from "./update.ts";
 
@@ -22,6 +23,7 @@ export const createConfigReport = (
     config: ctx.config,
     facts: {
       ...ctx.facts,
+      originUrl: ctx.facts.originUrl && redactUrls(ctx.facts.originUrl),
       inMonorepo: ctx.facts.inMonorepo && {
         rootDir: ctx.facts.inMonorepo.rootDir,
         relative: ctx.facts.inMonorepo.relative,

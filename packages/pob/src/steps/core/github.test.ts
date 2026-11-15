@@ -1,7 +1,9 @@
 import { describe, expect, test } from "vitest";
 import type { PackageContext } from "../../engine/context.ts";
+import { isPlanEmpty } from "../../engine/plan.ts";
 import { defineStep } from "../../engine/step.ts";
 import { createTestContext, runTestSteps } from "../../engine/testing.ts";
+import { steps } from "../index.ts";
 import type {
   GitResult,
   GithubDependencies,
@@ -47,12 +49,15 @@ describe("github step", () => {
     expect(plan.effects[0]?.after).toContain("install");
   });
 
-  test("plans the sync on update, not with --check", async () => {
+  test("plans the sync on update and lists it with --check", async () => {
     const checkPlan = await runTestSteps(
       createContext("https://github.com/account/repo.git"),
       [githubStep],
     );
-    expect(checkPlan.effects).toEqual([]);
+    expect(checkPlan.effects.map((effect) => effect.id)).toEqual([
+      "github-sync",
+    ]);
+    expect(isPlanEmpty(checkPlan)).toBe(true);
 
     const ctx = createContext("https://github.com/account/repo.git");
     ctx.options.check = false;
@@ -60,11 +65,45 @@ describe("github step", () => {
     expect(plan.effects.map((effect) => effect.id)).toEqual(["github-sync"]);
   });
 
-  test("plans nothing for another host", async () => {
-    const ctx = createContext("https://gitlab.com/account/repo.git");
+  test.each([
+    "https://gitlab.com/account/repo.git",
+    "git@gitlab.mycorp.com:team/repo.git",
+  ])("plans nothing for another host: %s", async (originUrl) => {
+    const ctx = createContext(originUrl);
     ctx.options.check = false;
     const plan = await runTestSteps(ctx, [githubStep]);
     expect(plan.effects).toEqual([]);
+  });
+
+  test("the setup runs after every effect that changes files", async () => {
+    const ctx = createTestContext({
+      files: {
+        "pob.json": json({
+          project: { type: "lib", packageManager: "yarn", ci: true },
+          lib: { testing: false, documentation: false, e2e: false },
+          renovate: { enable: true },
+          build: {},
+        }),
+        "package.json": json({
+          name: "repo",
+          description: "desc",
+          type: "module",
+          license: "MIT",
+          author: "A <a@a.a>",
+          repository: "https://github.com/account/repo.git",
+        }),
+      },
+      facts: { originUrl: undefined },
+    });
+    ctx.options.check = false;
+    const plan = await runTestSteps(ctx, steps);
+    const setup = plan.effects.find((effect) => effect.id === "github-setup");
+    expect(setup).toBeDefined();
+    const others = plan.effects
+      .map((effect) => effect.id)
+      .filter((id) => id !== "github-setup");
+    expect(others).toContain("yarn-format");
+    expect(setup?.after).toEqual(expect.arrayContaining(others));
   });
 });
 
