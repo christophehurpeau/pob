@@ -41,6 +41,10 @@ beforeEach(() => {
   // no git user, no origin remote: the facts depend on the temp dir only
   vi.stubEnv("GIT_CONFIG_GLOBAL", "/dev/null");
   vi.stubEnv("GIT_CONFIG_NOSYSTEM", "1");
+  // set by git hooks (pre-push runs the tests): git would read this repository
+  for (const name of ["GIT_DIR", "GIT_WORK_TREE", "GIT_INDEX_FILE"]) {
+    vi.stubEnv(name, undefined);
+  }
 });
 
 afterEach(() => {
