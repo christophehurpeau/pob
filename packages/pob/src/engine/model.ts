@@ -34,6 +34,8 @@ export interface TrackedJson {
   writeComputed: (path: PathInput, value: unknown) => void;
   /** current document, without access checks: for rendering */
   snapshot: () => JsonObject;
+  /** the value before the steps ran */
+  initialValue: (path: PathInput) => unknown;
   /** whether a step wrote anything in it */
   readonly touched: boolean;
 }
@@ -135,5 +137,6 @@ export const createTrackedJson = (
       }
     },
     snapshot: () => pruneEmptiedContainers(structuredClone(data)),
+    initialValue: (path) => getAtPath(initial, toSegments(path)),
   };
 };

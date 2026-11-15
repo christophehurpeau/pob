@@ -1,6 +1,7 @@
 import { execFileSync } from "node:child_process";
 import fs from "node:fs";
 import path from "node:path";
+import { isDeepStrictEqual } from "node:util";
 import { format } from "oxfmt";
 import type { PobConfig, RawConfigSources } from "./config.ts";
 import { resolveConfig } from "./config.ts";
@@ -217,11 +218,20 @@ export const renderContext = async (
   const rendered: RenderedFile[] = outputs.map((output) =>
     resolveOutput(output, ctx.initial),
   );
-  const modelWriters = (modelName: string): string[] => [
+  /** steps whose writes changed the model: not the no-op removals */
+  const modelWriters = (model: TrackedJson): string[] => [
     ...new Set(
       ctx.tracker
         .allRecords()
-        .filter((record) => record.path[0] === modelName)
+        .filter(
+          (record) =>
+            record.path[0] === model.name &&
+            !record.path.includes("\0chain") &&
+            !isDeepStrictEqual(
+              record.value,
+              model.initialValue(record.path.slice(1)),
+            ),
+        )
         .map((record) => record.step),
     ),
   ];
@@ -229,7 +239,7 @@ export const renderContext = async (
     const output = outputs[index];
     if (!output) continue;
     if (output.strategy === "merged") {
-      result.owners = modelWriters(output.model.name);
+      result.owners = modelWriters(output.model);
     }
     const filePath = joinLocation(ctx.location, result.path);
     if (result.kind === "keep") {
