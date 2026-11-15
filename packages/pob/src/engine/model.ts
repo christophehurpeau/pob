@@ -1,3 +1,4 @@
+import { isDeepStrictEqual } from "node:util";
 import type { PathSegments } from "./paths.ts";
 import type { Tracker } from "./tracker.ts";
 import { getAtPath } from "./tracker.ts";
@@ -20,8 +21,9 @@ export interface TrackedJson {
   readonly name: string;
   get: <T = unknown>(path: PathInput) => T | undefined;
   /**
-   * Read without access check, for helpers whose reads are implied by their
-   * writes (a devDependency is not added when it is a dependency).
+   * Read without access check, creating no ordering edge: only for the model
+   * of another package after its steps ran, or for display (explain). A step
+   * reading its own models uses `get`.
    */
   peek: <T = unknown>(path: PathInput) => T | undefined;
   has: (path: PathInput) => boolean;
@@ -115,7 +117,11 @@ export const createTrackedJson = (
     set: (path, value) => {
       const segments = toSegments(path);
       tracker.checkWrite(fullPath(segments));
-      tracker.record(fullPath(segments), value);
+      tracker.record(
+        fullPath(segments),
+        value,
+        !isDeepStrictEqual(getAtPath(data, segments), value),
+      );
       writeValue(segments, value);
     },
     writeComputed: (path, value) => {
@@ -126,9 +132,13 @@ export const createTrackedJson = (
     delete: (path) => {
       const segments = toSegments(path);
       tracker.checkWrite(fullPath(segments));
-      tracker.record(fullPath(segments), undefined);
       const parent = getAtPath(data, segments.slice(0, -1));
       const last = segments.at(-1);
+      tracker.record(
+        fullPath(segments),
+        undefined,
+        isObject(parent) && last !== undefined && last in parent,
+      );
       if (!isObject(parent) || last === undefined || !(last in parent)) return;
       touched = true;
       Reflect.deleteProperty(parent, last);

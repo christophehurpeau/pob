@@ -1,4 +1,4 @@
-import { patternsOverlap } from "./paths.ts";
+import { parsePattern, patternCovers, patternsOverlap } from "./paths.ts";
 import type { StepDeclaration } from "./tracker.ts";
 
 export interface StepDefinition<Context> {
@@ -24,15 +24,40 @@ export interface Step<Context>
   after: readonly string[];
 }
 
+/**
+ * Reads of the dependency helpers of pkg: a devDependency is not added when
+ * it is a dependency, nor removed when it is a peer dependency. A step that
+ * writes devDependencies reads them, so it runs after the steps writing them.
+ */
+const dependencyHelperReads = ["pkg.dependencies", "pkg.peerDependencies"];
+
+const impliedReads = (writes: readonly string[]): string[] =>
+  writes.some((pattern) => patternsOverlap(pattern, "pkg.devDependencies"))
+    ? dependencyHelperReads.filter(
+        // a step writing them reads them anyway
+        (implied) =>
+          !writes.some((pattern) =>
+            patternCovers(parsePattern(pattern), parsePattern(implied)),
+          ),
+      )
+    : [];
+
 export const defineStep = <Context>(
   definition: StepDefinition<Context>,
-): Step<Context> => ({
-  ...definition,
-  reads: definition.reads ?? [],
-  writes: definition.writes ?? [],
-  overrides: definition.overrides ?? [],
-  after: definition.after ?? [],
-});
+): Step<Context> => {
+  const reads = definition.reads ?? [];
+  const writes = definition.writes ?? [];
+  return {
+    ...definition,
+    reads: [
+      ...reads,
+      ...impliedReads(writes).filter((implied) => !reads.includes(implied)),
+    ],
+    writes,
+    overrides: definition.overrides ?? [],
+    after: definition.after ?? [],
+  };
+};
 
 export interface OrderEdge {
   from: string;
@@ -151,4 +176,33 @@ export const orderSteps = <Context>(
     done.add(next.name);
   }
   return ordered;
+};
+
+/**
+ * Whether a step always runs before another one, by the declared edges
+ * (transitively): the order of the other steps follows their registration.
+ */
+export const createStepOrder = (
+  steps: readonly Step<unknown>[],
+): ((before: string, after: string) => boolean) => {
+  const successors = new Map<string, string[]>();
+  for (const edge of computeOrderEdges(steps)) {
+    successors.set(edge.from, [...(successors.get(edge.from) ?? []), edge.to]);
+  }
+  const reachable = new Map<string, Set<string>>();
+  const reach = (from: string): Set<string> => {
+    const cached = reachable.get(from);
+    if (cached) return cached;
+    const seen = new Set<string>();
+    const stack = [...(successors.get(from) ?? [])];
+    while (stack.length > 0) {
+      const next = stack.pop();
+      if (next === undefined || seen.has(next)) continue;
+      seen.add(next);
+      stack.push(...(successors.get(next) ?? []));
+    }
+    reachable.set(from, seen);
+    return seen;
+  };
+  return (before, after) => reach(before).has(after);
 };

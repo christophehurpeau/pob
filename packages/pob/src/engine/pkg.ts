@@ -111,8 +111,12 @@ export const createPkgModel = (
   // the initial name: whether pob manages a package is not decided by a step
   const packageName = initial.name as string | undefined;
 
-  const getObject = (key: string): Record<string, unknown> | undefined =>
-    model.peek<Record<string, unknown>>([key]);
+  /**
+   * A dependency of the package, read key by key: a checked read, declared in
+   * the reads (or writes) of the step, so that the steps writing it run before.
+   */
+  const getDependency = (key: string, name: string): string | undefined =>
+    model.get<string>([key, name]);
 
   const removeFromObject = (key: string, keys: string[]): void => {
     for (const name of keys) {
@@ -144,15 +148,13 @@ export const createPkgModel = (
     cleaned: boolean,
     prefix?: string,
   ): void => {
-    const ignoreDependencies =
-      type === "dependencies" ? {} : (getObject("dependencies") ?? {});
-    const currentDependencies = getObject(type) as
-      | Record<string, string>
-      | undefined;
     const toRemove: string[] = [];
     const toCheck: string[] = [];
     for (const name of names.filter(isName)) {
-      if (ignoreDependencies[name] || packageName === name) {
+      if (
+        packageName === name ||
+        (type === "devDependencies" && getDependency("dependencies", name))
+      ) {
         toRemove.push(name);
       } else {
         toCheck.push(name);
@@ -162,14 +164,7 @@ export const createPkgModel = (
     const filtered: Record<string, string> = {};
     for (const dependency of toCheck) {
       const potentialNewVersion = getVersion(dependency);
-      if (!currentDependencies) {
-        // the yeoman helper ignored the prefix here: it took two runs
-        filtered[dependency] = cleaned
-          ? `${prefix ?? ""}${cleanVersion(potentialNewVersion)}`
-          : potentialNewVersion;
-        continue;
-      }
-      const currentVersion = currentDependencies[dependency];
+      const currentVersion = getDependency(type, dependency);
       const potentialNewVersionCleaned = cleanVersion(potentialNewVersion);
       const newVersion = cleaned
         ? `${prefix ?? ""}${potentialNewVersionCleaned}`
@@ -204,13 +199,12 @@ export const createPkgModel = (
     names: Name[],
     forceEvenIfInPeerDep?: boolean,
   ): void => {
-    const peerDependencies = getObject("peerDependencies");
     const filtered = names.filter(isName);
     removeDependencies(
       "devDependencies",
-      peerDependencies && !forceEvenIfInPeerDep
-        ? filtered.filter((name) => !peerDependencies[name])
-        : filtered,
+      forceEvenIfInPeerDep
+        ? filtered
+        : filtered.filter((name) => !getDependency("peerDependencies", name)),
     );
   };
 
@@ -261,11 +255,11 @@ export const createPkgModel = (
       else removeDevDependencies(names);
     },
     updateDevDependenciesIfPresent: (names) => {
-      const devDependencies = getObject("devDependencies");
-      if (!devDependencies) return;
       addDependencies(
         "devDependencies",
-        names.filter((name) => isName(name) && devDependencies[name]),
+        names.filter(
+          (name) => isName(name) && getDependency("devDependencies", name),
+        ),
         true,
       );
     },

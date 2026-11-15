@@ -244,7 +244,12 @@ describe("rendering", () => {
       pkg.set("scripts.lint", "oxlint");
     });
     expect(tracker.recordsFor(["pkg", "scripts", "lint"])).toEqual([
-      { step: "lint", path: ["pkg", "scripts", "lint"], value: "oxlint" },
+      {
+        step: "lint",
+        path: ["pkg", "scripts", "lint"],
+        value: "oxlint",
+        changed: true,
+      },
     ]);
   });
 });

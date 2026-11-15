@@ -19,6 +19,8 @@ export interface WriteRecord {
   path: PathSegments;
   /** undefined for a removal */
   value: unknown;
+  /** the write changed the document: not a removal of an absent key */
+  changed: boolean;
 }
 
 export class UndeclaredAccessError extends Error {
@@ -27,6 +29,20 @@ export class UndeclaredAccessError extends Error {
       `step "${step}" ${access === "read" ? "reads" : "writes"} "${path}" without declaring it in its ${access === "read" ? "reads or writes" : "writes"}`,
     );
     this.name = "UndeclaredAccessError";
+  }
+}
+
+/**
+ * A read covered only by the step's own writes, of a value another step
+ * writes without being ordered with it: the value read would depend on the
+ * registration order of the steps.
+ */
+export class UnorderedReadError extends Error {
+  constructor(reader: string, path: string, writer: string) {
+    super(
+      `step "${reader}" reads "${path}", which step "${writer}" writes: declare it in its reads`,
+    );
+    this.name = "UnorderedReadError";
   }
 }
 
@@ -77,7 +93,16 @@ export interface Tracker {
   checkRead: (path: PathSegments) => void;
   checkWrite: (path: PathSegments) => void;
   checkFileWrite: (filePath: string) => void;
-  record: (path: PathSegments, value: unknown) => void;
+  /**
+   * @param changed false when the write leaves the document as it is (a
+   *   removal of an absent key): it cannot change what another step reads
+   */
+  record: (path: PathSegments, value: unknown, changed?: boolean) => void;
+  /**
+   * Whether the step `before` always runs before `after`, by the declared
+   * edges: reads covered only by the step's own writes are checked with it.
+   */
+  setStepOrder: (isOrdered: (before: string, after: string) => boolean) => void;
   recordsFor: (path: PathSegments) => WriteRecord[];
   allRecords: () => WriteRecord[];
 }
@@ -103,9 +128,15 @@ const withValueAt = (
   return container;
 };
 
+const overlaps = (a: PathSegments, b: PathSegments): boolean =>
+  isPrefix(a, b) || isPrefix(b, a);
+
 export const createTracker = ({ strict }: { strict: boolean }): Tracker => {
   let current: StepDeclaration | undefined;
   const records = new Map<string, WriteRecord[]>();
+  let isOrdered = (_before: string, _after: string): boolean => false;
+  /** reads covered only by the own writes of their step */
+  const selfReads: { step: string; path: PathSegments }[] = [];
   /**
    * What the writes of a step still set once the steps overriding it wrote:
    * conflicts are checked against this effective value. A record entirely
@@ -202,9 +233,30 @@ export const createTracker = ({ strict }: { strict: boolean }): Tracker => {
     },
     checkRead: (path) => {
       if (!strict || !current) return;
-      if (!isCovered(current.reads, path) && !isCovered(current.writes, path)) {
+      if (isCovered(current.reads, path)) return;
+      if (!isCovered(current.writes, path)) {
         throw new UndeclaredAccessError(current.name, "read", formatPath(path));
       }
+      // covered only by its own writes: no step that writes it may run
+      // before this one without an ordering edge
+      for (const recordList of records.values()) {
+        for (const record of recordList) {
+          if (
+            record.changed &&
+            record.step !== current.name &&
+            record.step !== "engine" &&
+            overlaps(record.path, path) &&
+            !isOrdered(record.step, current.name)
+          ) {
+            throw new UnorderedReadError(
+              current.name,
+              formatPath(path),
+              record.step,
+            );
+          }
+        }
+      }
+      selfReads.push({ step: current.name, path });
     },
     checkWrite: (path) => {
       if (!strict || !current) return;
@@ -230,7 +282,23 @@ export const createTracker = ({ strict }: { strict: boolean }): Tracker => {
         );
       }
     },
-    record: (path, value) => {
+    record: (path, value, changed = true) => {
+      if (strict && current && changed) {
+        // nor run after it without an ordering edge
+        for (const read of selfReads) {
+          if (
+            read.step !== current.name &&
+            overlaps(read.path, path) &&
+            !isOrdered(read.step, current.name)
+          ) {
+            throw new UnorderedReadError(
+              read.step,
+              formatPath(read.path),
+              current.name,
+            );
+          }
+        }
+      }
       checkConflicts(path, value);
       applyOverrides(path, value);
       const key = pathKey(path);
@@ -239,8 +307,12 @@ export const createTracker = ({ strict }: { strict: boolean }): Tracker => {
         step: current?.name ?? "engine",
         path,
         value: structuredClone(value),
+        changed,
       });
       records.set(key, list);
+    },
+    setStepOrder: (ordered) => {
+      isOrdered = ordered;
     },
     recordsFor: (path) => records.get(pathKey(path)) ?? [],
     allRecords: () => [...records.values()].flat(),
