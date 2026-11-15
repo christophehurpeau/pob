@@ -505,6 +505,7 @@ export default class PobAppGenerator extends Generator {
   }
 
   end() {
+    if (this.options.check) return;
     // the build output is no longer committed: remove it from git, keeping it on disk.
     if (this.buildDirectory) {
       removeFromGitIndex(this.destinationPath(), this.buildDirectory);

@@ -37,7 +37,9 @@ export default class LibDocGenerator extends Generator {
   }
 
   async writing() {
-    removeLegacyGeneratedDocs((path) => this.destinationPath(path));
+    if (!this.options.check) {
+      removeLegacyGeneratedDocs((path) => this.destinationPath(path));
+    }
 
     if (this.fs.exists(this.destinationPath("jsdoc.conf.json"))) {
       this.fs.delete(this.destinationPath("jsdoc.conf.json"));
