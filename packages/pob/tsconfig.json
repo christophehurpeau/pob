@@ -13,5 +13,10 @@
     "tsBuildInfoFile": "node_modules/.cache/tsc/tsbuildinfo",
     "noEmit": true
   },
-  "include": ["lib/**/*.js", "src/**/*.ts", "harness/**/*.ts"]
+  "include": [
+    "lib/**/*.js",
+    "src/**/*.ts",
+    "harness/**/*.ts",
+    "scripts/**/*.ts"
+  ]
 }

@@ -26,6 +26,7 @@ export const stepConfigKeys: Readonly<Record<string, readonly string[]>> = {
     "project.type",
   ],
   bun: ["project.packageManager"],
+  config: ["*"],
   ci: [
     "app.codecov",
     "app.distribute",

@@ -1,4 +1,5 @@
 import type { PobStep } from "../engine/context.ts";
+import { configStep } from "./config.ts";
 import { coreSteps } from "./core/index.ts";
 import { gitignoreStep } from "./gitignore.ts";
 import { legacyStep } from "./legacy/index.ts";
@@ -15,6 +16,7 @@ import { transpilerSteps } from "./transpiler/index.ts";
  * the reads and writes of each step.
  */
 export const steps: readonly PobStep[] = [
+  configStep,
   legacyStep,
   gitignoreStep,
   lintStep,

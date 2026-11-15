@@ -303,6 +303,12 @@ const migrateMonorepoDerivedKeys: Migration = (config) => {
   return { ...config, monorepo };
 };
 
+/** answers yeoman stored for the prompts: not config */
+const dropPromptValues: Migration = (config) => {
+  const { promptValues: _, ...rest } = config;
+  return rest;
+};
+
 /** Applied in this order on every run: never removed, never reordered. */
 export const legacyMigrations: readonly Migration[] = [
   migrateProjectStorage,
@@ -314,6 +320,7 @@ export const legacyMigrations: readonly Migration[] = [
   migrateBabelEnvs,
   migrateAppStorage,
   migrateMonorepoDerivedKeys,
+  dropPromptValues,
 ];
 
 export interface ResolvedConfig {

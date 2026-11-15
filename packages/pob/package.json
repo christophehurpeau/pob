@@ -31,6 +31,7 @@
   "scripts": {
     "build": "pnpm run build:definitions",
     "build:definitions": "tsrs -p tsconfig.json",
+    "generate:schema": "node scripts/generate-schema.ts",
     "harness": "node harness/run.ts",
     "harness:update": "node harness/run.ts --update",
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",

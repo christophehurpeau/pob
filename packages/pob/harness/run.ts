@@ -13,6 +13,11 @@ import fs from "node:fs";
 import os from "node:os";
 import path from "node:path";
 import { parseArgs } from "node:util";
+import {
+  applyResult,
+  comparePobJson,
+  normalizeConfigMigration,
+} from "./configMigration.ts";
 import type { Fixture } from "./fixtures.ts";
 import { fixtures } from "./fixtures.ts";
 import type { HarnessResult } from "./snapshot.ts";
@@ -206,10 +211,30 @@ const runOldTwice = (fixture: Fixture, directory: string): HarnessResult => {
 };
 
 interface PlanJson {
-  files: { path: string; op: string; before?: string; after?: string }[];
+  files: {
+    path: string;
+    op: string;
+    before?: string;
+    after?: string;
+    transient?: boolean;
+  }[];
   effects: { id: string; cwd: string; command?: string }[];
   warnings: string[];
 }
+
+const configFileNames = new Set([".yo-rc.json", ".pob.json", "pob.json"]);
+
+/** The move of the config to pob.json: compared by the full mode */
+const isConfigMigrationOnly = (file: PlanJson["files"][number]): boolean => {
+  const name = path.posix.basename(file.path);
+  if (configFileNames.has(name)) return true;
+  if (name !== "package.json" || file.op !== "modify") return false;
+  const withoutPob = (content = "{}"): string => {
+    const { pob: _, ...pkg } = JSON.parse(content) as Record<string, unknown>;
+    return JSON.stringify(pkg);
+  };
+  return withoutPob(file.before) === withoutPob(file.after);
+};
 
 const applySnapshot = (directory: string, snapshot: HarnessResult): void => {
   for (const file of [...snapshot.files, ...snapshot.secondRun]) {
@@ -267,12 +292,39 @@ const runConverge = (
   }
   const plan = JSON.parse(result.stdout) as PlanJson;
   return [
-    ...plan.files.map(
-      (file) =>
-        `${file.op} ${file.path}${file.op === "modify" ? firstChangedLine(file.before, file.after) : ""}`,
-    ),
+    ...plan.files
+      .filter((file) => !isConfigMigrationOnly(file))
+      .map(
+        (file) =>
+          `${file.op} ${file.path}${file.op === "modify" ? firstChangedLine(file.before, file.after) : ""}`,
+      ),
     ...plan.warnings.map((warning) => `warning: ${warning}`),
   ];
+};
+
+/** The new engine must converge in one run: a second run plans nothing. */
+const checkSecondRun = (directory: string, result: HarnessResult): string[] => {
+  if (result.exitCode !== 0 || selectedSteps) return [];
+  const check = spawnSync(
+    process.execPath,
+    [path.join(pobDirectory, "src/cli.ts"), "update", "--check", "--json"],
+    {
+      cwd: directory,
+      encoding: "utf8",
+      env: { ...process.env, POB_STRICT: "1" },
+      maxBuffer: 64 * 1024 * 1024,
+    },
+  );
+  if (!check.stdout.trim().startsWith("{")) {
+    return [`second run failed: ${check.stderr.trim().split("\n")[0] ?? ""}`];
+  }
+  const plan = JSON.parse(check.stdout) as PlanJson;
+  return plan.files
+    .filter((file) => !file.transient)
+    .map(
+      (file) =>
+        `second run: ${file.op} ${file.path}${file.op === "modify" ? firstChangedLine(file.before, file.after) : ""}`,
+    );
 };
 
 let stepFilePatterns: RegExp[] | undefined;
@@ -325,6 +377,38 @@ const restrictToSteps = (
     removedFromIndex: [],
     files: result.files.filter((file) => isWrittenBySteps(file.path)),
   };
+};
+
+/**
+ * The new engine against the fixed point of the old one, the config migration
+ * to pob.json compared apart.
+ */
+const compareNext = async (
+  snapshot: HarnessResult,
+  result: HarnessResult,
+  initialTree: ReadonlyMap<string, string>,
+): Promise<string[]> => {
+  const expected = fixedPoint(snapshot, initialTree);
+  const differences = diffSnapshots(
+    restrictToSteps(
+      await normalizeConfigMigration(expected, initialTree),
+      initialTree,
+    ),
+    restrictToSteps(
+      await normalizeConfigMigration(result, initialTree),
+      initialTree,
+    ),
+  );
+  if (stepFilePatterns || result.exitCode !== 0 || expected.exitCode !== 0) {
+    return differences;
+  }
+  return [
+    ...differences,
+    ...comparePobJson(
+      applyResult(initialTree, expected),
+      applyResult(initialTree, result),
+    ),
+  ];
 };
 
 const main = async (): Promise<void> => {
@@ -406,10 +490,10 @@ const main = async (): Promise<void> => {
               { ...result, files: result.secondRun },
             ).map((difference) => `second run: ${difference}`),
           ]
-        : diffSnapshots(
-            restrictToSteps(fixedPoint(snapshot, initialTree), initialTree),
-            restrictToSteps(result, initialTree),
-          );
+        : [
+            ...(await compareNext(snapshot, result, initialTree)),
+            ...checkSecondRun(directory, result),
+          ];
     if (differences.length === 0) {
       console.log(`${fixture.name}: same`);
     } else {
