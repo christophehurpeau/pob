@@ -16,7 +16,12 @@ import { parseArgs } from "node:util";
 import type { Fixture } from "./fixtures.ts";
 import { fixtures } from "./fixtures.ts";
 import type { HarnessResult } from "./snapshot.ts";
-import { diffSnapshots, parseSnapshot, serializeSnapshot } from "./snapshot.ts";
+import {
+  diffSnapshots,
+  fixedPoint,
+  parseSnapshot,
+  serializeSnapshot,
+} from "./snapshot.ts";
 
 type Engine = "old" | "next";
 
@@ -98,16 +103,22 @@ const keptEffect = (command: string): boolean =>
     command,
   );
 
+let selectedSteps: string | undefined;
+
 const runEngine = (
   engine: Engine,
   fixture: Fixture,
   directory: string,
+  runName = "run1",
 ): HarnessResult => {
   const before = readTree(directory);
-  const logPath = path.join(path.dirname(directory), `${fixture.name}.log`);
+  const logPath = path.join(
+    path.dirname(directory),
+    `${fixture.name}.${runName}.log`,
+  );
   const outputPath = path.join(
     path.dirname(directory),
-    `${fixture.name}.output.txt`,
+    `${fixture.name}.${runName}.output.txt`,
   );
   const result = spawnSync(process.execPath, engineEntries[engine], {
     cwd: directory,
@@ -123,6 +134,8 @@ const runEngine = (
       TZ: "UTC",
       FORCE_COLOR: "0",
       NO_COLOR: "1",
+      POB_STRICT: "1",
+      ...(selectedSteps ? { POB_STEPS: selectedSteps } : {}),
     },
   });
   fs.writeFileSync(outputPath, `${result.stdout}\n${result.stderr}`);
@@ -178,18 +191,157 @@ const runEngine = (
     effects,
     removedFromIndex,
     files,
+    secondRun: [],
   };
 };
 
-const main = (): void => {
+/** First run, then the changes of a second run on its committed output. */
+const runOldTwice = (fixture: Fixture, directory: string): HarnessResult => {
+  const first = runEngine("old", fixture, directory);
+  if (first.exitCode !== 0) return first;
+  git(directory, ["add", "--all", "."]);
+  git(directory, ["commit", "--quiet", "--no-verify", "-m", "old pob run 1"]);
+  const second = runEngine("old", fixture, directory, "run2");
+  return { ...first, secondRun: second.files };
+};
+
+interface PlanJson {
+  files: { path: string; op: string; before?: string; after?: string }[];
+  effects: { id: string; cwd: string; command?: string }[];
+  warnings: string[];
+}
+
+const applySnapshot = (directory: string, snapshot: HarnessResult): void => {
+  for (const file of [...snapshot.files, ...snapshot.secondRun]) {
+    const absolutePath = path.join(directory, file.path);
+    if (file.status === "deleted") {
+      fs.rmSync(absolutePath, { force: true });
+    } else {
+      fs.mkdirSync(path.dirname(absolutePath), { recursive: true });
+      fs.writeFileSync(absolutePath, file.content ?? "");
+    }
+  }
+  git(directory, ["add", "--all", "."]);
+  git(directory, ["commit", "--quiet", "--no-verify", "-m", "old pob output"]);
+};
+
+const firstChangedLine = (before = "", after = ""): string => {
+  const beforeLines = before.split("\n");
+  const afterLines = after.split("\n");
+  const index = afterLines.findIndex((line, i) => line !== beforeLines[i]);
+  if (index === -1) return "";
+  return ` line ${index + 1}: ${JSON.stringify(beforeLines[index])} -> ${JSON.stringify(afterLines[index])}`;
+};
+
+/**
+ * Runs the pipeline engine with --check on the output of the old engine: the
+ * steps already ported must not change anything.
+ */
+const runConverge = (
+  fixture: Fixture,
+  directory: string,
+  steps: string | undefined,
+): string[] | undefined => {
+  const snapshotPath = path.join(snapshotsDirectory, `${fixture.name}.snap`);
+  const snapshot = parseSnapshot(fs.readFileSync(snapshotPath, "utf8"));
+  if (snapshot.exitCode !== 0) return undefined;
+  applySnapshot(directory, snapshot);
+  const result = spawnSync(
+    process.execPath,
+    [path.join(pobDirectory, "src/cli.ts"), "update", "--check", "--json"],
+    {
+      cwd: directory,
+      encoding: "utf8",
+      env: {
+        ...process.env,
+        POB_STRICT: "1",
+        ...(steps ? { POB_STEPS: steps } : {}),
+      },
+      maxBuffer: 64 * 1024 * 1024,
+    },
+  );
+  if (!result.stdout.trim().startsWith("{")) {
+    return [
+      `engine failed: ${result.stderr.trim().split("\n").slice(0, 8).join("\n    ")}`,
+    ];
+  }
+  const plan = JSON.parse(result.stdout) as PlanJson;
+  return [
+    ...plan.files.map(
+      (file) =>
+        `${file.op} ${file.path}${file.op === "modify" ? firstChangedLine(file.before, file.after) : ""}`,
+    ),
+    ...plan.warnings.map((warning) => `warning: ${warning}`),
+  ];
+};
+
+let stepFilePatterns: RegExp[] | undefined;
+
+/** `files:` patterns written by the selected steps, as regexps */
+const getStepFilePatterns = async (names: string[]): Promise<RegExp[]> => {
+  const { steps } = await import("../src/steps/index.ts");
+  return steps
+    .filter((step) => names.includes(step.name))
+    .flatMap((step) => step.writes)
+    .filter((pattern) => pattern.startsWith("files:"))
+    .map(
+      (pattern) =>
+        new RegExp(
+          `^${pattern
+            .slice("files:".length)
+            .replaceAll(/[$()+.?[\\\]^{|}]/g, String.raw`\$&`)
+            .replaceAll("**", "\0")
+            .replaceAll("*", "[^/]*")
+            .replaceAll("\0", ".*")}$`,
+        ),
+    );
+};
+
+/**
+ * With --steps, only the files written by these steps are compared:
+ * package.json is also written by the steps not ported yet.
+ */
+const restrictToSteps = (
+  result: HarnessResult,
+  initialTree: ReadonlyMap<string, string>,
+): HarnessResult => {
+  const patterns = stepFilePatterns;
+  if (!patterns) return result;
+  const packageRoots = [...initialTree.keys()]
+    .filter((filePath) => path.posix.basename(filePath) === "package.json")
+    .map((filePath) => {
+      const directory = path.posix.dirname(filePath);
+      return directory === "." ? "" : `${directory}/`;
+    });
+  const isWrittenBySteps = (filePath: string): boolean =>
+    packageRoots.some(
+      (root) =>
+        filePath.startsWith(root) &&
+        patterns.some((pattern) => pattern.test(filePath.slice(root.length))),
+    );
+  return {
+    ...result,
+    effects: [],
+    removedFromIndex: [],
+    files: result.files.filter((file) => isWrittenBySteps(file.path)),
+  };
+};
+
+const main = async (): Promise<void> => {
   const { values, positionals } = parseArgs({
     allowPositionals: true,
     options: {
       engine: { type: "string", default: "old" },
       update: { type: "boolean", default: false },
+      converge: { type: "boolean", default: false },
+      steps: { type: "string" },
     },
   });
   const engine = values.engine as Engine;
+  selectedSteps = values.steps;
+  stepFilePatterns = selectedSteps
+    ? await getStepFilePatterns(selectedSteps.split(","))
+    : undefined;
   if (!(engine in engineEntries)) throw new Error(`Unknown engine ${engine}`);
 
   const selected =
@@ -205,7 +357,24 @@ const main = (): void => {
   for (const fixture of selected) {
     const directory = path.join(runDirectory, fixture.name);
     createFixture(fixture, directory);
-    const result = runEngine(engine, fixture, directory);
+    if (values.converge) {
+      const differences = runConverge(fixture, directory, values.steps);
+      if (differences === undefined) {
+        console.log(`${fixture.name}: skipped, the old engine failed on it`);
+      } else if (differences.length === 0) {
+        console.log(`${fixture.name}: converged`);
+      } else {
+        failures++;
+        console.log(`${fixture.name}: ${differences.length} change(s)`);
+        for (const difference of differences) console.log(`  ${difference}`);
+      }
+      continue;
+    }
+    const initialTree = readTree(directory);
+    const result =
+      engine === "old"
+        ? runOldTwice(fixture, directory)
+        : runEngine(engine, fixture, directory);
     const serialized = serializeSnapshot(result);
     const snapshotPath = path.join(snapshotsDirectory, `${fixture.name}.snap`);
 
@@ -227,10 +396,20 @@ const main = (): void => {
       console.log(`${fixture.name}: missing snapshot`);
       continue;
     }
-    const differences = diffSnapshots(
-      parseSnapshot(fs.readFileSync(snapshotPath, "utf8")),
-      result,
-    );
+    const snapshot = parseSnapshot(fs.readFileSync(snapshotPath, "utf8"));
+    const differences =
+      engine === "old"
+        ? [
+            ...diffSnapshots(snapshot, result),
+            ...diffSnapshots(
+              { ...snapshot, files: snapshot.secondRun },
+              { ...result, files: result.secondRun },
+            ).map((difference) => `second run: ${difference}`),
+          ]
+        : diffSnapshots(
+            restrictToSteps(fixedPoint(snapshot, initialTree), initialTree),
+            restrictToSteps(result, initialTree),
+          );
     if (differences.length === 0) {
       console.log(`${fixture.name}: same`);
     } else {
@@ -243,4 +422,4 @@ const main = (): void => {
   if (failures > 0) process.exitCode = 1;
 };
 
-main();
+await main();

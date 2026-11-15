@@ -12,9 +12,15 @@ export interface HarnessResult {
   effects: string[];
   removedFromIndex: string[];
   files: SnapshotFile[];
+  /**
+   * what a second run of the old engine changes on its own output: the old
+   * engine sometimes needs two runs to converge
+   */
+  secondRun: SnapshotFile[];
 }
 
 const FILE_MARKER = ">>>>> pob-harness ";
+const SECOND_RUN_PREFIX = "second run ";
 
 export const serializeSnapshot = (result: HarnessResult): string => {
   const lines = [
@@ -26,8 +32,8 @@ export const serializeSnapshot = (result: HarnessResult): string => {
     ...result.removedFromIndex.map((filePath) => `  ${filePath}`),
     "",
   ];
-  for (const file of result.files) {
-    lines.push(`${FILE_MARKER}${file.status}: ${file.path}`);
+  const pushFile = (file: SnapshotFile, prefix: string): void => {
+    lines.push(`${FILE_MARKER}${prefix}${file.status}: ${file.path}`);
     if (file.content !== undefined) {
       lines.push(
         file.content.endsWith("\n")
@@ -35,11 +41,30 @@ export const serializeSnapshot = (result: HarnessResult): string => {
           : `${file.content}\n<<<<< no newline at end of file`,
       );
     }
-  }
+  };
+  for (const file of result.files) pushFile(file, "");
+  for (const file of result.secondRun) pushFile(file, SECOND_RUN_PREFIX);
   return `${lines.join("\n")}\n`;
 };
 
 const NO_NEWLINE = "\n<<<<< no newline at end of file";
+
+const parseFile = (
+  chunk: string,
+  newlineIndex: number,
+  title: string,
+): SnapshotFile => {
+  const [status, ...pathParts] = title.split(": ");
+  const filePath = pathParts.join(": ");
+  if (status === "deleted") {
+    return { path: filePath, status: "deleted" };
+  }
+  const body = newlineIndex === -1 ? "" : chunk.slice(newlineIndex + 1);
+  const content = body.endsWith(NO_NEWLINE)
+    ? body.slice(0, -NO_NEWLINE.length)
+    : `${body.endsWith("\n") ? body.slice(0, -1) : body}\n`;
+  return { path: filePath, status: status as FileStatus, content };
+};
 
 export const parseSnapshot = (text: string): HarnessResult => {
   const [header = "", ...fileChunks] = text.split(`\n${FILE_MARKER}`);
@@ -54,20 +79,22 @@ export const parseSnapshot = (text: string): HarnessResult => {
       .filter((line) => line.startsWith("  "))
       .map((line) => line.slice(2));
 
-  const files = fileChunks.map((chunk): SnapshotFile => {
+  const parsed = fileChunks.map((chunk) => {
     const newlineIndex = chunk.indexOf("\n");
-    const title = newlineIndex === -1 ? chunk : chunk.slice(0, newlineIndex);
-    const [status, ...pathParts] = title.split(": ");
-    const filePath = pathParts.join(": ");
-    if (status === "deleted") {
-      return { path: filePath, status: "deleted" };
-    }
-    const body = newlineIndex === -1 ? "" : chunk.slice(newlineIndex + 1);
-    const content = body.endsWith(NO_NEWLINE)
-      ? body.slice(0, -NO_NEWLINE.length)
-      : `${body.endsWith("\n") ? body.slice(0, -1) : body}\n`;
-    return { path: filePath, status: status as FileStatus, content };
+    const fullTitle =
+      newlineIndex === -1 ? chunk : chunk.slice(0, newlineIndex);
+    const secondRun = fullTitle.startsWith(SECOND_RUN_PREFIX);
+    const title = secondRun
+      ? fullTitle.slice(SECOND_RUN_PREFIX.length)
+      : fullTitle;
+    return { secondRun, file: parseFile(chunk, newlineIndex, title) };
   });
+  const files = parsed
+    .filter((entry) => !entry.secondRun)
+    .map(({ file }) => file);
+  const secondRun = parsed
+    .filter((entry) => entry.secondRun)
+    .map(({ file }) => file);
 
   return {
     fixture,
@@ -75,6 +102,40 @@ export const parseSnapshot = (text: string): HarnessResult => {
     effects: listAfter(effectsStart, indexStart),
     removedFromIndex: listAfter(indexStart, headerLines.length),
     files,
+    secondRun,
+  };
+};
+
+/**
+ * The changes of the old engine once converged: its first run, then the
+ * changes of its second run.
+ */
+export const fixedPoint = (
+  result: HarnessResult,
+  initial: ReadonlyMap<string, string>,
+): HarnessResult => {
+  const files = new Map(result.files.map((file) => [file.path, file]));
+  for (const file of result.secondRun) {
+    const initialContent = initial.get(file.path);
+    if (file.status === "deleted") {
+      if (initialContent === undefined) files.delete(file.path);
+      else files.set(file.path, { path: file.path, status: "deleted" });
+    } else if (initialContent === file.content) {
+      files.delete(file.path);
+    } else {
+      files.set(file.path, {
+        path: file.path,
+        status: initialContent === undefined ? "created" : "modified",
+        content: file.content,
+      });
+    }
+  }
+  return {
+    ...result,
+    files: [...files.values()].toSorted((a, b) =>
+      a.path.localeCompare(b.path, "en"),
+    ),
+    secondRun: [],
   };
 };
 

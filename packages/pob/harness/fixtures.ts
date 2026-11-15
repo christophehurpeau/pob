@@ -260,6 +260,12 @@ export const fixtures: Fixture[] = [
         pkg("@pnpm-monorepo/app-b", {
           private: true,
           dependencies: { "@pnpm-monorepo/lib-a": "workspace:*" },
+          pob: {
+            bundler: "rollup-esbuild",
+            entries: ["index"],
+            envs: [{ target: "node", version: "24" }],
+            typescript: true,
+          },
         }),
       ),
       "packages/app-b/src/index.ts": tsSource,

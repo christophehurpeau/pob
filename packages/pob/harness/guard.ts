@@ -51,6 +51,19 @@ const record = (command: Command, blocked: boolean): void => {
   );
 };
 
+/** a pob child process (one per monorepo package) that failed */
+const recordFailure = (command: Command, status: number | null): void => {
+  if (!logPath) return;
+  fs.appendFileSync(
+    logPath,
+    `${JSON.stringify({
+      cwd: path.relative(root, command.cwd) || ".",
+      command: `pob child process exited with ${String(status)}`,
+      blocked: false,
+    })}\n`,
+  );
+};
+
 const fakeResult = (
   options: { encoding?: string } | undefined,
   file: string,
@@ -108,11 +121,15 @@ patched.spawnSync = (
   const allowed = isAllowed(command);
   record(command, !allowed);
   if (allowed) {
-    return Reflect.apply(originalSpawnSync, childProcess, [
+    const result = Reflect.apply(originalSpawnSync, childProcess, [
       file,
       args,
       options,
-    ]) as unknown;
+    ]) as childProcess.SpawnSyncReturns<unknown>;
+    if (result.status !== 0 && path.basename(file) === "node") {
+      recordFailure(command, result.status);
+    }
+    return result;
   }
   return fakeResult(options as { encoding?: string }, file);
 };
