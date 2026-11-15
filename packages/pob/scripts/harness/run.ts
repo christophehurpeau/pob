@@ -103,6 +103,15 @@ const createFixture = (fixture: Fixture, directory: string): void => {
   git(directory, ["commit", "--quiet", "--no-verify", "-m", "fixture"]);
 };
 
+const guardedEnv = (
+  directory: string,
+  logPath: string,
+): Record<string, string> => ({
+  NODE_OPTIONS: `--import ${guardPath}`,
+  POB_HARNESS_LOG: logPath,
+  POB_HARNESS_ROOT: directory,
+});
+
 const keptEffect = (command: string): boolean =>
   !/^(?:node|security|git (?:rev-parse|ls-files|config|remote get-url))\b/.test(
     command,
@@ -131,9 +140,7 @@ const runEngine = (
     timeout: 5 * 60 * 1000,
     env: {
       ...process.env,
-      NODE_OPTIONS: `--import ${guardPath}`,
-      POB_HARNESS_LOG: logPath,
-      POB_HARNESS_ROOT: directory,
+      ...guardedEnv(directory, logPath),
       CI: "true",
       TZ: "UTC",
       FORCE_COLOR: "0",
@@ -268,6 +275,10 @@ const runConverge = (
       encoding: "utf8",
       env: {
         ...process.env,
+        ...guardedEnv(
+          directory,
+          path.join(path.dirname(directory), `${fixture.name}.converge.log`),
+        ),
         POB_STRICT: "1",
         ...(steps ? { POB_STEPS: steps } : {}),
       },
@@ -300,7 +311,17 @@ const checkSecondRun = (directory: string, result: HarnessResult): string[] => {
     {
       cwd: directory,
       encoding: "utf8",
-      env: { ...process.env, POB_STRICT: "1" },
+      env: {
+        ...process.env,
+        ...guardedEnv(
+          directory,
+          path.join(
+            path.dirname(directory),
+            `${path.basename(directory)}.run2.log`,
+          ),
+        ),
+        POB_STRICT: "1",
+      },
       maxBuffer: 64 * 1024 * 1024,
     },
   );

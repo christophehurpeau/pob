@@ -4,40 +4,31 @@
  *
  * It blocks the network and every external command that installs, builds or
  * talks to a remote: they are recorded in POB_HARNESS_LOG instead. Only local
- * read-only git commands, `git rm --cached`, `rm` and pob itself really run.
+ * read-only git commands, `git rm --cached`, `rm` inside the fixture and pob
+ * itself really run (see guardRules.ts). A shell line runs only when it is one
+ * plain allowed command.
  */
 import childProcess from "node:child_process";
+import dns from "node:dns";
 import fs from "node:fs";
+import http from "node:http";
+import https from "node:https";
 import { syncBuiltinESMExports } from "node:module";
+import net from "node:net";
 import path from "node:path";
+import tls from "node:tls";
+import type { Command } from "./guardRules.ts";
+import {
+  isAllowedCommand,
+  isIpcConnection,
+  parseShellLine,
+} from "./guardRules.ts";
 
 const logPath = process.env.POB_HARNESS_LOG;
 const root = fs.realpathSync(process.env.POB_HARNESS_ROOT ?? process.cwd());
 
-interface Command {
-  file: string;
-  args: string[];
-  cwd: string;
-}
-
-const allowedGitSubcommands = new Set([
-  "rev-parse",
-  "ls-files",
-  "config",
-  "rm",
-]);
-
-const isAllowed = ({ file, args }: Command): boolean => {
-  const name = path.basename(file);
-  if (file === process.execPath || name === "node") return true;
-  if (name === "git") {
-    const subcommand = args.find((arg) => !arg.startsWith("-"));
-    if (subcommand === "rm") return args.includes("--cached");
-    if (subcommand === "remote") return args.includes("get-url");
-    return subcommand !== undefined && allowedGitSubcommands.has(subcommand);
-  }
-  return name === "rm";
-};
+const isAllowed = (command: Command): boolean =>
+  isAllowedCommand(command, { root, execPath: process.execPath });
 
 const record = (command: Command, blocked: boolean): void => {
   if (!logPath) return;
@@ -83,9 +74,22 @@ const fakeResult = (
   };
 };
 
-const parseShellCommand = (command: string, cwd: string): Command => {
-  const [file = "", ...args] = command.trim().split(/\s+/);
-  return { file, args, cwd };
+/** the command to check: the shell line, parsed, when a shell runs it */
+const toCommand = (
+  file: string,
+  args: string[],
+  options: { shell?: unknown } | undefined,
+  cwd: string,
+): { command: Command; allowed: boolean } => {
+  if (!options?.shell) {
+    const command = { file, args, cwd };
+    return { command, allowed: isAllowed(command) };
+  }
+  const line = [file, ...args].join(" ");
+  const parsed = parseShellLine(line, cwd);
+  return parsed
+    ? { command: parsed, allowed: isAllowed(parsed) }
+    : { command: { file: line, args: [], cwd }, allowed: false };
 };
 
 const getCwd = (options: unknown): string => {
@@ -117,8 +121,7 @@ patched.spawnSync = (
   const options = (
     Array.isArray(argsOrOptions) ? maybeOptions : argsOrOptions
   ) as childProcess.SpawnSyncOptions | undefined;
-  const command = { file, args, cwd: getCwd(options) };
-  const allowed = isAllowed(command);
+  const { command, allowed } = toCommand(file, args, options, getCwd(options));
   record(command, !allowed);
   if (allowed) {
     const result = Reflect.apply(originalSpawnSync, childProcess, [
@@ -138,8 +141,10 @@ patched.execSync = (
   commandLine: string,
   options?: childProcess.ExecSyncOptions,
 ) => {
-  const command = parseShellCommand(commandLine, getCwd(options));
-  const allowed = isAllowed(command);
+  const cwd = getCwd(options);
+  const parsed = parseShellLine(commandLine, cwd);
+  const command = parsed ?? { file: commandLine, args: [], cwd };
+  const allowed = parsed !== undefined && isAllowed(parsed);
   record(command, !allowed);
   if (allowed) {
     return Reflect.apply(originalExecSync, childProcess, [
@@ -163,8 +168,7 @@ patched.execFileSync = (
   const options = (
     Array.isArray(argsOrOptions) ? maybeOptions : argsOrOptions
   ) as childProcess.ExecFileSyncOptions | undefined;
-  const command = { file, args, cwd: getCwd(options) };
-  const allowed = isAllowed(command);
+  const { command, allowed } = toCommand(file, args, options, getCwd(options));
   record(command, !allowed);
   if (allowed) {
     return Reflect.apply(originalExecFileSync, childProcess, [
@@ -190,13 +194,12 @@ patched.spawn = (
   const options = (
     Array.isArray(argsOrOptions) ? maybeOptions : argsOrOptions
   ) as childProcess.SpawnOptions | undefined;
-  const command = { file, args, cwd: getCwd(options) };
-  const allowed = isAllowed(command);
+  const { command, allowed } = toCommand(file, args, options, getCwd(options));
   record(command, !allowed);
   return Reflect.apply(originalSpawn, childProcess, [
     allowed ? file : "true",
     allowed ? args : [],
-    options,
+    allowed ? options : { ...options, shell: false },
   ]) as unknown;
 };
 
@@ -208,8 +211,75 @@ for (const name of ["exec", "execFile"] as const) {
   };
 }
 
+const networkBlocked = (what: string): Error =>
+  new Error(`pob harness: network access blocked: ${what}`);
+
+const blockNetwork = (
+  module: object,
+  moduleName: string,
+  names: readonly string[],
+): void => {
+  const target = module as Record<string, unknown>;
+  for (const name of names) {
+    if (typeof target[name] !== "function") continue;
+    target[name] = (...args: unknown[]) => {
+      throw networkBlocked(`${moduleName}.${name}(${String(args[0])})`);
+    };
+  }
+};
+
+blockNetwork(http, "http", ["request", "get"]);
+blockNetwork(https, "https", ["request", "get"]);
+blockNetwork(tls, "tls", ["connect"]);
+blockNetwork(dns, "dns", [
+  "lookup",
+  "lookupService",
+  "resolve",
+  "resolve4",
+  "resolve6",
+  "resolveAny",
+  "resolveCname",
+  "resolveMx",
+  "resolveNs",
+  "resolveSrv",
+  "resolveTxt",
+  "reverse",
+]);
+blockNetwork(dns.promises, "dns.promises", ["lookup", "resolve", "resolveAny"]);
+
+// net.connect, tls and undici (also the one behind fetch) all end in
+// Socket.prototype.connect; IPC through unix sockets and pipes stays allowed
+const originalNetConnect = net.connect;
+const originalSocketConnect = net.Socket.prototype.connect;
+const guardedNetConnect = (...args: unknown[]): unknown => {
+  if (!isIpcConnection(args)) {
+    throw networkBlocked(`net.connect(${JSON.stringify(args[0])})`);
+  }
+  return Reflect.apply(originalNetConnect, net, args);
+};
+(net as unknown as Record<string, unknown>).connect = guardedNetConnect;
+(net as unknown as Record<string, unknown>).createConnection =
+  guardedNetConnect;
+net.Socket.prototype.connect = function connect(
+  this: net.Socket,
+  ...args: unknown[]
+) {
+  if (!isIpcConnection(args)) {
+    throw networkBlocked(`socket.connect(${JSON.stringify(args[0])})`);
+  }
+  return originalSocketConnect.apply(this, args as never);
+};
+
 syncBuiltinESMExports();
 
 globalThis.fetch = (input: unknown) => {
-  throw new Error(`pob harness: network access blocked: ${String(input)}`);
+  throw networkBlocked(`fetch(${String(input)})`);
 };
+for (const name of ["WebSocket", "EventSource"]) {
+  Reflect.defineProperty(globalThis, name, {
+    configurable: true,
+    get: () => {
+      throw networkBlocked(name);
+    },
+  });
+}
