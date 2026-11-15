@@ -63,7 +63,12 @@ const readTasks = (ctx: PackageContext): unknown[] => {
  * directly, so it must be executable.
  */
 const planTsdkChmod = (ctx: PackageContext): void => {
-  if (ctx.initial.read(tsdkPath) === tsrsTsdkTsgo) return;
+  if (
+    ctx.initial.read(tsdkPath) === tsrsTsdkTsgo &&
+    ctx.initial.isExecutable(tsdkPath)
+  ) {
+    return;
+  }
   ctx.effects.add({
     id: "vscode-tsdk-chmod",
     reason: `${tsdkPath} must be executable`,

@@ -15,6 +15,7 @@ import type { DependencyVersions } from "./versions.ts";
 
 export interface TestContextOptions {
   files: Record<string, string>;
+  executableFiles?: string[];
   facts?: Partial<Omit<RepoFacts, "packageManager" | "yarnNodeLinker">>;
   rootConfig?: PobConfig;
   versions?: DependencyVersions;
@@ -38,6 +39,7 @@ export const testVersions: DependencyVersions = (dependency) =>
 /** A package context over in-memory files, with strict access checks. */
 export const createTestContext = ({
   files,
+  executableFiles = [],
   facts,
   rootConfig,
   versions = testVersions,
@@ -50,7 +52,7 @@ export const createTestContext = ({
   const ctx = createPackageContext({
     location,
     dir: `/test/${location}`,
-    initial: createMemoryFiles(files),
+    initial: createMemoryFiles(files, executableFiles),
     facts: {
       isMonorepoRoot: false,
       isRoot: true,

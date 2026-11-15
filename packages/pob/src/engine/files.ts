@@ -7,6 +7,8 @@ export interface InitialFiles {
   readJson: <T = Record<string, unknown>>(filePath: string) => T | undefined;
   exists: (filePath: string) => boolean;
   isDirectory: (filePath: string) => boolean;
+  /** a file the current user can execute */
+  isExecutable: (filePath: string) => boolean;
   /** files under a directory, recursively, relative to the package */
   listFiles: (directory: string) => string[];
 }
@@ -57,6 +59,15 @@ export const createDiskFiles = (root: string): InitialFiles => {
         return false;
       }
     },
+    isExecutable: (filePath) => {
+      try {
+        if (!fs.statSync(resolve(filePath)).isFile()) return false;
+        fs.accessSync(resolve(filePath), fs.constants.X_OK);
+        return true;
+      } catch {
+        return false;
+      }
+    },
     listFiles,
   };
 };
@@ -64,6 +75,7 @@ export const createDiskFiles = (root: string): InitialFiles => {
 /** In-memory files, for step tests. */
 export const createMemoryFiles = (
   files: Record<string, string>,
+  executableFiles: readonly string[] = [],
 ): InitialFiles => {
   const normalize = (filePath: string): string =>
     path.posix.normalize(filePath).replace(/^\.\//, "").replace(/\/$/, "");
@@ -85,6 +97,11 @@ export const createMemoryFiles = (
     exists: (filePath) =>
       entries.has(normalize(filePath)) || isDirectory(filePath),
     isDirectory,
+    isExecutable: (filePath) =>
+      entries.has(normalize(filePath)) &&
+      executableFiles.some(
+        (executable) => normalize(executable) === normalize(filePath),
+      ),
     listFiles: (directory) => {
       const prefix = `${normalize(directory)}/`;
       return [...entries.keys()]

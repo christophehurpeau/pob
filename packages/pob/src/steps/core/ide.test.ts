@@ -149,14 +149,28 @@ describe("vscode", () => {
     ]);
   });
 
-  test("does not chmod an unchanged tsdk script", async () => {
+  test("does not chmod an unchanged executable tsdk script", async () => {
+    const plan = await runTestSteps(
+      createTestContext({
+        files: { ...libFiles(), ".vscode/tsrs-tsdk/tsgo": tsrsTsdkTsgo },
+        executableFiles: [".vscode/tsrs-tsdk/tsgo"],
+      }),
+      [vscodeStep],
+    );
+    expect(plan.effects).toEqual([]);
+  });
+
+  test("chmods an unchanged tsdk script that is not executable", async () => {
     const plan = await runTestSteps(
       createTestContext({
         files: { ...libFiles(), ".vscode/tsrs-tsdk/tsgo": tsrsTsdkTsgo },
       }),
       [vscodeStep],
     );
-    expect(plan.effects).toEqual([]);
+    expect(fileOp(plan, ".vscode/tsrs-tsdk/tsgo")).toBe(undefined);
+    expect(plan.effects.map((effect) => effect.id)).toEqual([
+      "vscode-tsdk-chmod",
+    ]);
   });
 
   test("pnp has no tsrs tsdk", async () => {
