@@ -1,4 +1,4 @@
-import { chmodSync, readFileSync } from "node:fs";
+import { chmodSync, existsSync, readFileSync } from "node:fs";
 import path from "node:path";
 import {
   createSourceWorkspaceDependencies,
@@ -10,6 +10,18 @@ import { nodeResolve } from "@rollup/plugin-node-resolve";
 import replace from "@rollup/plugin-replace";
 import configExternalDependencies from "rollup-config-external-dependencies";
 import esbuild from "rollup-plugin-esbuild";
+
+/**
+ * The build config of the package: the build key of pob.json, or
+ * package.json#pob before pob moved it to pob.json.
+ */
+const readPobBuildConfig = (cwd, pkg) => {
+  const pobJsonPath = path.join(cwd, "pob.json");
+  if (existsSync(pobJsonPath)) {
+    return JSON.parse(readFileSync(pobJsonPath, "utf8")).build ?? {};
+  }
+  return pkg.pob;
+};
 
 export default function createRollupConfig({
   cwd = process.cwd(),
@@ -24,7 +36,7 @@ export default function createRollupConfig({
     return extensions.flatMap((ext) => [`.web${ext}`, `${ext}`]);
   },
 }) {
-  const pobConfig = pkg.pob;
+  const pobConfig = readPobBuildConfig(cwd, pkg);
 
   if (pobConfig.babelEnvs) {
     throw new Error("@pob/rollup-esbuild does not supports babel.");
