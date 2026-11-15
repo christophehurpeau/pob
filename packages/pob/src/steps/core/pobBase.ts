@@ -12,6 +12,8 @@ export const pobBaseLegacyPart: LegacyPart = {
   writes: [
     "files:Makefile",
     "files:.commitrc.js",
+    "files:.git-hooks",
+    "files:git-hooks",
     "pkg.devDependencies",
     "pkg.commitlint",
     "pkg.husky",
@@ -19,9 +21,12 @@ export const pobBaseLegacyPart: LegacyPart = {
   run: (ctx) => {
     ctx.output.removed("Makefile");
     ctx.output.removed(".commitrc.js");
-    // the .git-hooks and git-hooks directories of packages are kept: the
-    // yeoman generator checked them with fs.exists, false for a directory
     if (!ctx.facts.inMonorepo) return;
+    // git hooks are installed by the monorepo root only
+    if (!ctx.facts.isRoot) {
+      ctx.output.removed(".git-hooks");
+      ctx.output.removed("git-hooks");
+    }
     ctx.pkg.removeDevDependencies([
       "standard-version",
       "yarnhook",

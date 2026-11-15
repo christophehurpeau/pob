@@ -31,6 +31,27 @@ export const knownDifferences: Readonly<Record<string, readonly string[]>> = {
     "tsconfig.json: expected unchanged, got created",
     "tsconfig.tools.json: expected unchanged, got created",
   ],
+  // git hooks are installed by the monorepo root: pob deletes the hook directories of packages. The yeoman engine checked them with fs.exists, false for a directory, and never deleted them.
+  "pob-monorepo": [
+    "@pob/version/.git-hooks/commit-msg: expected unchanged, got deleted",
+    "@pob/version/.git-hooks/post-checkout: expected unchanged, got deleted",
+    "@pob/version/.git-hooks/post-merge: expected unchanged, got deleted",
+    "@pob/version/.git-hooks/post-rewrite: expected unchanged, got deleted",
+    "@pob/version/.git-hooks/pre-commit: expected unchanged, got deleted",
+    "@pob/version/.git-hooks/pre-push: expected unchanged, got deleted",
+    "pob-examples/typescript-lib-rollup-esbuild/.git-hooks/commit-msg: expected unchanged, got deleted",
+    "pob-examples/typescript-lib-rollup-esbuild/.git-hooks/post-checkout: expected unchanged, got deleted",
+    "pob-examples/typescript-lib-rollup-esbuild/.git-hooks/post-merge: expected unchanged, got deleted",
+    "pob-examples/typescript-lib-rollup-esbuild/.git-hooks/post-rewrite: expected unchanged, got deleted",
+    "pob-examples/typescript-lib-rollup-esbuild/.git-hooks/pre-commit: expected unchanged, got deleted",
+    "pob-examples/typescript-lib-rollup-esbuild/.git-hooks/pre-push: expected unchanged, got deleted",
+    "pob-examples/typescript-lib-without-rollup/.git-hooks/commit-msg: expected unchanged, got deleted",
+    "pob-examples/typescript-lib-without-rollup/.git-hooks/post-checkout: expected unchanged, got deleted",
+    "pob-examples/typescript-lib-without-rollup/.git-hooks/post-merge: expected unchanged, got deleted",
+    "pob-examples/typescript-lib-without-rollup/.git-hooks/post-rewrite: expected unchanged, got deleted",
+    "pob-examples/typescript-lib-without-rollup/.git-hooks/pre-commit: expected unchanged, got deleted",
+    "pob-examples/typescript-lib-without-rollup/.git-hooks/pre-push: expected unchanged, got deleted",
+  ],
   // yarn2: true is migrated to yarnNodeLinker: node-modules. The yeoman engine skipped the migration when the project config was otherwise complete, and dropped nodeLinker (pnp).
   "legacy-pob-json": [
     '.yarnrc.yml: content differs, line 3: expected "npmMinimalAgeGate: 3600", got "nodeLinker: node-modules"',

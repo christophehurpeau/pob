@@ -47,13 +47,14 @@ const createPackageContext = (name: string): PackageContext =>
       Makefile: "",
       ".commitrc.js": "",
       ".git-hooks/pre-commit": "",
+      "git-hooks/pre-push": "",
     },
     facts: inMonorepoFacts,
     rootConfig: monorepoRootConfig,
   });
 
 describe("pob base cleanup", () => {
-  test("monorepo package: root tooling and legacy files", async () => {
+  test("monorepo package: root tooling, legacy files and git hooks", async () => {
     const ctx = createPackageContext("a");
     const plan = await runTestSteps(ctx, [
       legacyStep,
@@ -63,7 +64,9 @@ describe("pob base cleanup", () => {
       plan.files.map(({ op, path }) => `${op} ${path}`).toSorted(),
     ).toEqual([
       "delete .commitrc.js",
+      "delete .git-hooks",
       "delete Makefile",
+      "delete git-hooks",
       "modify package.json",
     ]);
     expect(ctx.pkg.snapshot()).toEqual({
