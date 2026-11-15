@@ -6,6 +6,6 @@ import {
 import { POB_SCHEMA_FILE } from "../src/steps/config.ts";
 
 fs.writeFileSync(
-  new URL(`../${POB_SCHEMA_FILE}`, import.meta.url),
+  new URL(`../../../@pob/root/${POB_SCHEMA_FILE}`, import.meta.url),
   await serializeSchema(generatePobConfigSchema()),
 );

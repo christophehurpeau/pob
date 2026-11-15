@@ -10,15 +10,18 @@ import {
   usesTranspiler,
 } from "./transpiler/settings.ts";
 
-/** published with the sources: the files of the package are computed by pob */
-export const POB_SCHEMA_FILE = "src/pob.schema.json";
+/**
+ * Published by @pob/root: unlike pob, it is a dev dependency of the root of
+ * every repository pob manages.
+ */
+export const POB_SCHEMA_FILE = "pob.schema.json";
 
-/** relative to the package: pob is installed at the root of the repository */
+/** relative to the package: @pob/root is installed at the root of the repository */
 const getSchemaPath = (ctx: PackageContext): string => {
   const depth = ctx.facts.inMonorepo
     ? ctx.facts.inMonorepo.relative.split("/").filter(Boolean).length
     : 0;
-  return `${depth === 0 ? "./" : "../".repeat(depth)}node_modules/pob/${POB_SCHEMA_FILE}`;
+  return `${depth === 0 ? "./" : "../".repeat(depth)}node_modules/@pob/root/${POB_SCHEMA_FILE}`;
 };
 
 /**

@@ -30,6 +30,7 @@
     "bin",
     "createLintStagedConfig.js",
     "oxfmt.js",
+    "pob.schema.json",
     "tsconfigs"
   ],
   "type": "module",
@@ -41,6 +42,7 @@
     "./createLintStagedConfig.js": "./createLintStagedConfig.js",
     "./oxfmt": "./oxfmt.js",
     "./oxfmt.js": "./oxfmt.js",
+    "./pob.schema.json": "./pob.schema.json",
     "./tsconfigs/base.json": "./tsconfigs/base.json",
     "./tsconfigs/strict.json": "./tsconfigs/strict.json",
     "./tsconfigs/targets/bun.json": "./tsconfigs/targets/bun.json",

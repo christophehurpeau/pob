@@ -5,7 +5,7 @@ import { generatePobConfigSchema, serializeSchema } from "./generateSchema.ts";
 
 test("pob.schema.json is generated from PobConfig: run `pnpm run generate:schema`", async () => {
   const committed = fs.readFileSync(
-    new URL(`../../${POB_SCHEMA_FILE}`, import.meta.url),
+    new URL(`../../../../@pob/root/${POB_SCHEMA_FILE}`, import.meta.url),
     "utf8",
   );
   expect(committed).toBe(await serializeSchema(generatePobConfigSchema()));
