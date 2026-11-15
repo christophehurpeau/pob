@@ -158,6 +158,73 @@ describe("write conflicts", () => {
   });
 });
 
+describe("overrides chain", () => {
+  const setInSteps = (
+    writes: [name: string, value: unknown, overrides?: string[]][],
+    path = "sideEffects",
+  ): void => {
+    const tracker = createTracker({ strict: true });
+    const pkg = createTrackedJson("pkg", {}, tracker);
+    for (const [name, value, overrides] of writes) {
+      tracker.runAs(step(name, { writes: ["pkg"], overrides }), () => {
+        pkg.set(path, value);
+      });
+    }
+  };
+
+  test("a value equal to the overriding one does not conflict with the overridden one", () => {
+    expect(() => {
+      setInSteps([
+        ["a", 1],
+        ["b", 2, ["a"]],
+        ["c", 2],
+      ]);
+    }).not.toThrow();
+  });
+
+  test("a value different from the overriding one conflicts with it", () => {
+    expect(() => {
+      setInSteps([
+        ["a", 1],
+        ["b", 2, ["a"]],
+        ["c", 3],
+      ]);
+    }).toThrow(
+      /step "c" sets "pkg.sideEffects" to 3 but step "b" sets it to 2/,
+    );
+  });
+
+  test("a value equal to the overridden one conflicts with the overriding one", () => {
+    expect(() => {
+      setInSteps([
+        ["a", 1],
+        ["b", 2, ["a"]],
+        ["c", 1],
+      ]);
+    }).toThrow(/but step "b" sets it to 2/);
+  });
+
+  test("a child override changes the effective value of the parent write", () => {
+    const tracker = createTracker({ strict: true });
+    const pkg = createTrackedJson("pkg", {}, tracker);
+    tracker.runAs(step("a", { writes: ["pkg.engines"] }), () => {
+      pkg.set("engines", { node: ">=22", pnpm: ">=10" });
+    });
+    tracker.runAs(
+      step("b", { writes: ["pkg.engines"], overrides: ["a"] }),
+      () => {
+        pkg.set("engines.node", ">=24");
+      },
+    );
+    tracker.runAs(step("c", { writes: ["pkg.engines"] }), () => {
+      pkg.set("engines", { node: ">=24", pnpm: ">=10" });
+      expect(() => {
+        pkg.set("engines", { node: ">=22", pnpm: ">=10" });
+      }).toThrow(WriteConflictError);
+    });
+  });
+});
+
 describe("rendering", () => {
   test("a container emptied by a removal is removed", () => {
     const tracker = createTracker({ strict: false });

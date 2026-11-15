@@ -85,9 +85,37 @@ export interface Tracker {
 const isCovered = (patterns: readonly string[], path: PathSegments): boolean =>
   patterns.some((pattern) => patternCovers(parsePattern(pattern), path));
 
+/** `value` with the value at `path` replaced, undefined removing it */
+const withValueAt = (
+  value: unknown,
+  path: PathSegments,
+  replacement: unknown,
+): unknown => {
+  const [segment, ...rest] = path;
+  if (segment === undefined) return structuredClone(replacement);
+  const container: Record<string, unknown> =
+    value !== null && typeof value === "object" && !Array.isArray(value)
+      ? { ...(value as Record<string, unknown>) }
+      : {};
+  const next = withValueAt(container[segment], rest, replacement);
+  if (next === undefined) Reflect.deleteProperty(container, segment);
+  else container[segment] = next;
+  return container;
+};
+
 export const createTracker = ({ strict }: { strict: boolean }): Tracker => {
   let current: StepDeclaration | undefined;
   const records = new Map<string, WriteRecord[]>();
+  /**
+   * What the writes of a step still set once the steps overriding it wrote:
+   * conflicts are checked against this effective value. A record entirely
+   * replaced by an override is absent from the conflict checks.
+   */
+  const effectiveValues = new Map<WriteRecord, unknown>();
+  const superseded = new Set<WriteRecord>();
+
+  const effectiveValue = (record: WriteRecord): unknown =>
+    effectiveValues.has(record) ? effectiveValues.get(record) : record.value;
 
   const checkConflicts = (path: PathSegments, value: unknown): void => {
     if (!current) return;
@@ -95,15 +123,19 @@ export const createTracker = ({ strict }: { strict: boolean }): Tracker => {
     for (const recordList of records.values()) {
       for (const record of recordList) {
         if (record.step === step.name) continue;
+        if (superseded.has(record)) continue;
         if (step.overrides.includes(record.step)) continue;
         let ownValue: unknown;
         let otherValue: unknown;
         if (isPrefix(path, record.path)) {
           ownValue = getAtPath(value, record.path.slice(path.length));
-          otherValue = record.value;
+          otherValue = effectiveValue(record);
         } else if (isPrefix(record.path, path)) {
           ownValue = value;
-          otherValue = getAtPath(record.value, path.slice(record.path.length));
+          otherValue = getAtPath(
+            effectiveValue(record),
+            path.slice(record.path.length),
+          );
         } else {
           continue;
         }
@@ -114,6 +146,31 @@ export const createTracker = ({ strict }: { strict: boolean }): Tracker => {
             record,
             ownValue,
             otherValue,
+          );
+        }
+      }
+    }
+  };
+
+  /** the overridden writes now set what the overriding step set */
+  const applyOverrides = (path: PathSegments, value: unknown): void => {
+    if (!current || current.overrides.length === 0) return;
+    const { overrides } = current;
+    for (const recordList of records.values()) {
+      for (const record of recordList) {
+        if (!overrides.includes(record.step) || superseded.has(record)) {
+          continue;
+        }
+        if (isPrefix(path, record.path)) {
+          superseded.add(record);
+        } else if (isPrefix(record.path, path)) {
+          effectiveValues.set(
+            record,
+            withValueAt(
+              effectiveValue(record),
+              path.slice(record.path.length),
+              value,
+            ),
           );
         }
       }
@@ -175,6 +232,7 @@ export const createTracker = ({ strict }: { strict: boolean }): Tracker => {
     },
     record: (path, value) => {
       checkConflicts(path, value);
+      applyOverrides(path, value);
       const key = pathKey(path);
       const list = records.get(key) ?? [];
       list.push({
