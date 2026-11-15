@@ -1,5 +1,6 @@
 import type { InitialFiles } from "./files.ts";
 import type { TrackedJson } from "./model.ts";
+import { normalizePackagePath } from "./paths.ts";
 import type { Tracker } from "./tracker.ts";
 
 /**
@@ -103,9 +104,16 @@ const sameOutput = (a: FileOutput, b: FileOutput): boolean => {
 export const createOutputRegistry = (tracker: Tracker): OutputRegistry => {
   const outputs = new Map<string, FileOutput>();
 
-  const add = (output: FileOutput): void => {
-    tracker.checkFileWrite(output.path);
+  const add = (rawOutput: FileOutput): void => {
     const step = tracker.current?.name ?? "engine";
+    const filePath = normalizePackagePath(rawOutput.path);
+    if (filePath === undefined) {
+      throw new Error(
+        `step "${step}" outputs ${rawOutput.path}, outside the package`,
+      );
+    }
+    const output = { ...rawOutput, path: filePath };
+    tracker.checkFileWrite(output.path);
     const existing = outputs.get(output.path);
     if (existing) {
       const overridden = existing.owners.every((owner) =>
@@ -181,7 +189,7 @@ export const createOutputRegistry = (tracker: Tracker): OutputRegistry => {
         transient: options?.transient ?? false,
       });
     },
-    get: (filePath) => outputs.get(filePath),
+    get: (filePath) => outputs.get(normalizePackagePath(filePath) ?? filePath),
     list: () => [...outputs.values()],
   };
 };

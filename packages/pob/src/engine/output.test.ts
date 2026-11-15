@@ -232,3 +232,33 @@ effects:
     ).toEqual(["install", "codemods", "build"]);
   });
 });
+
+describe("output paths", () => {
+  test.each(["../outside.txt", "a/../../outside.txt", "/etc/outside.txt"])(
+    "%s, outside the package, is refused",
+    async (filePath) => {
+      const ctx = createTestContext({ files });
+      await expect(
+        runTestSteps(ctx, [
+          fileStep("outside", ["files:**"], (c) => {
+            c.output.removed(filePath);
+          }),
+        ]),
+      ).rejects.toThrow(`outputs ${filePath}, outside the package`);
+    },
+  );
+
+  test("normalized: a planned path is the path applied", async () => {
+    const ctx = createTestContext({
+      files: { ...files, "a/b.txt": "b\n" },
+    });
+    const plan = await runTestSteps(ctx, [
+      fileStep("normalized", ["files:a/**"], (c) => {
+        c.output.removed("./a/x/../b.txt");
+      }),
+    ]);
+    expect(plan.files.map(({ path, op }) => `${op} ${path}`)).toEqual([
+      "delete a/b.txt",
+    ]);
+  });
+});

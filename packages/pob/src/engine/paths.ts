@@ -8,7 +8,41 @@
  * `*.extends` covers the `extends` key of every model.
  */
 
+import path from "node:path";
+
 export type PathSegments = readonly string[];
+
+/**
+ * A file path of a package, relative to it and normalized (posix, without
+ * `.` and `..` segments): the path planned and the path applied. Undefined
+ * for the package directory itself and for a path outside of it.
+ */
+export const normalizePackagePath = (filePath: string): string | undefined => {
+  if (path.posix.isAbsolute(filePath) || path.win32.isAbsolute(filePath)) {
+    return undefined;
+  }
+  const normalized = path.posix
+    .normalize(filePath.replaceAll("\\", "/"))
+    .replace(/\/$/, "");
+  if (
+    normalized === "." ||
+    normalized === ".." ||
+    normalized.startsWith("../")
+  ) {
+    return undefined;
+  }
+  return normalized;
+};
+
+/** The absolute path of a file of the plan, which must be inside root. */
+export const resolveInside = (root: string, filePath: string): string => {
+  const absolutePath = path.resolve(root, filePath);
+  const relative = path.relative(root, absolutePath);
+  if (!relative || relative.startsWith("..") || path.isAbsolute(relative)) {
+    throw new Error(`${filePath} is outside ${root}`);
+  }
+  return absolutePath;
+};
 
 const FILES_PREFIX = "files:";
 

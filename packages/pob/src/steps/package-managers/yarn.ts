@@ -1,7 +1,9 @@
 import { spawnSync } from "node:child_process";
+import path from "node:path";
 import { lt } from "semver";
 import type { PackageContext } from "../../engine/context.ts";
 import type { JsonObject } from "../../engine/model.ts";
+import { normalizePackagePath } from "../../engine/paths.ts";
 import { defineStep } from "../../engine/step.ts";
 import { minimumReleaseAgeExcludePatterns } from "../../utils/misc.ts";
 import { parseYamlConfig, runCommand, serializeYamlConfig } from "./shared.ts";
@@ -150,7 +152,17 @@ const writeYarnrc = (ctx: PackageContext): void => {
 
   const yarnPath = yarnrc.get<string>("yarnPath");
   if (yarnPath) {
-    output.removed(yarnPath);
+    // relative to the package, or absolute
+    const filePath = normalizePackagePath(
+      path.relative(ctx.dir, path.resolve(ctx.dir, yarnPath)),
+    );
+    if (filePath) {
+      output.removed(filePath);
+    } else {
+      ctx.warn(
+        `yarnPath ${yarnPath} is outside the package: removed from .yarnrc.yml, the file is kept`,
+      );
+    }
     yarnrc.delete("yarnPath");
   }
 

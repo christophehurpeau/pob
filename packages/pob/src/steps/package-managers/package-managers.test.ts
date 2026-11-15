@@ -144,6 +144,36 @@ npmPreapprovedPackages:
     expect(plan.effects).toEqual([]);
   });
 
+  test.each([
+    ["outside the repository", "../shared/yarn.cjs", undefined],
+    ["absolute, outside", "/elsewhere/yarn.cjs", undefined],
+    [
+      "absolute, inside",
+      "/test/.yarn/releases/yarn-3.6.0.cjs",
+      ".yarn/releases/yarn-3.6.0.cjs",
+    ],
+  ])("yarnPath %s", async (_name, yarnPath, deleted) => {
+    const plan = await run({
+      files: {
+        ...yarnLibFiles,
+        ".yo-rc.json": libYoRc({ packageManager: "yarn" }),
+        ".yarnrc.yml": `yarnPath: ${yarnPath}\n`,
+        ".yarn/releases/yarn-3.6.0.cjs": "",
+      },
+    });
+    expect(plannedContent(plan, ".yarnrc.yml")).not.toContain("yarnPath");
+    expect(
+      plan.files.filter((file) => file.op === "delete").map(({ path }) => path),
+    ).toEqual(deleted ? [deleted] : []);
+    expect(plan.warnings).toEqual(
+      deleted
+        ? []
+        : [
+            `yarnPath ${yarnPath} is outside the package: removed from .yarnrc.yml, the file is kept`,
+          ],
+    );
+  });
+
   test("keeps user keys and removes yarnPath", async () => {
     const plan = await run({
       files: {
