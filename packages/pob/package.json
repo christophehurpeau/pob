@@ -31,6 +31,8 @@
   "scripts": {
     "build": "pnpm run build:definitions",
     "build:definitions": "tsrs -p tsconfig.json",
+    "harness": "node harness/run.ts",
+    "harness:update": "node harness/run.ts --update",
     "lint": "pnpm run lint:oxlint && pnpm run lint:eslint",
     "lint:eslint": "pnpm --dir '../..' exec eslint --quiet 'packages/pob'",
     "lint:oxlint": "pnpm --dir '../..' exec oxlint --quiet 'packages/pob'",
