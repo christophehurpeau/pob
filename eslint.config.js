@@ -38,6 +38,10 @@ export default [
   })),
   {
     files: ["**/test-lint/**/*.{js,cjs,mjs}"],
+    settings: {
+      // imported by fixtures, not installed since yeoman was removed
+      "import-x/core-modules": ["chalk"],
+    },
     rules: {
       "import-x/no-extraneous-dependencies": "off",
     },
