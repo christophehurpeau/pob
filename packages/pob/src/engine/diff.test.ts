@@ -47,7 +47,20 @@ describe("diffLines", () => {
       expect(operations.filter((op) => op.kind === "equal")).toHaveLength(
         lcsLength(before, after),
       );
+      for (const [index, operation] of operations.entries()) {
+        if (operation.kind === "delete") {
+          expect(operations[index - 1]?.kind).not.toBe("insert");
+        }
+      }
     }
+  });
+
+  test("deletes before inserting in a change block, like diff -u", () => {
+    expect(
+      diffLines(["a", "b"], ["b", "a", "c"]).map(
+        ({ kind, line }) => `${kind} ${line}`,
+      ),
+    ).toEqual(["insert b", "equal a", "delete b", "insert c"]);
   });
 });
 

@@ -194,6 +194,28 @@ const diffRange = (range: Range, operations: Operation[]): void => {
   }
 };
 
+/**
+ * The halves of a split can meet with an insertion before a deletion: each
+ * block of changes is ordered deletions first, like diff -u and git.
+ */
+const deletionsFirst = (operations: readonly Operation[]): Operation[] => {
+  const ordered: Operation[] = [];
+  let insertions: Operation[] = [];
+  for (const operation of operations) {
+    if (operation.kind === "insert") {
+      insertions.push(operation);
+      continue;
+    }
+    if (operation.kind === "equal") {
+      ordered.push(...insertions);
+      insertions = [];
+    }
+    ordered.push(operation);
+  }
+  ordered.push(...insertions);
+  return ordered;
+};
+
 /** Line operations of a minimal diff (Myers, linear space). */
 export const diffLines = (
   before: readonly string[],
@@ -211,7 +233,7 @@ export const diffLines = (
     },
     operations,
   );
-  return operations;
+  return deletionsFirst(operations);
 };
 
 /** Number of removed and added lines between two file contents. */
