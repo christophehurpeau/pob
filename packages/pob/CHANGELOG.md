@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.9.1](https://github.com/christophehurpeau/pob/compare/pob%4040.9.0...pob%4040.9.1) (2026-11-15)
+
+### Bug Fixes
+
+* **pob:** require the push workflow node versions in branch protection ([#2932](https://github.com/christophehurpeau/pob/issues/2932))
+* **pob:** stop adding nativewind-env.d.ts to the tsconfig include ([#2937](https://github.com/christophehurpeau/pob/issues/2937))
+
+Version bump for dependency: @pob/codemods
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [40.9.0](https://github.com/christophehurpeau/pob/compare/pob%4040.8.0...pob%4040.9.0) (2026-11-13)
 
 ### Features

@@ -3,6 +3,15 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.8.1](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.8.0...%40pob%2Froot%4028.8.1) (2026-11-15)
+
+### Bug Fixes
+
+* **deps:** update dependency oxlint-tsgolint to v7.0.2007 ([#2936](https://github.com/christophehurpeau/pob/issues/2936))
+
+Version bump for dependency: pob-dependencies
+
+
 ## [28.8.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.7.0...%40pob%2Froot%4028.8.0) (2026-11-13)
 
 ### Features
