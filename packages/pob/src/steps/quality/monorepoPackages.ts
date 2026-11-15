@@ -1,7 +1,8 @@
 /**
- * The other packages of a monorepo, seen from one of its packages. Their steps
- * have not run in this context, so their files are read from disk, as they are
- * before pob runs: the yeoman generators read them from disk too.
+ * The other packages of a monorepo, seen from one of its packages. When the
+ * whole monorepo runs in one process, their contexts are known: dependencies
+ * ran before (topological order), so their final outputs are read. Otherwise
+ * (pob run in a package), their files are read from disk.
  */
 import path from "node:path";
 import type { PobConfig } from "../../engine/config.ts";
@@ -61,6 +62,17 @@ const readPobConfig = (files: InitialFiles): PobConfig | undefined => {
   return resolveConfig({ pobJson, yoRc }, { isRoot: false }).config;
 };
 
+/** the context of another package of the monorepo, by name */
+export const findSiblingPackage = (
+  ctx: PackageContext,
+  packageName: string,
+): PackageContext | undefined =>
+  ctx.siblingPackages.find(
+    (sibling) =>
+      sibling.initial.readJson<JsonObject>("package.json")?.name ===
+      packageName,
+  );
+
 /** configs of the workspaces (root included) depending on a package */
 export const getDependentConfigs = (
   ctx: PackageContext,
@@ -68,14 +80,25 @@ export const getDependentConfigs = (
 ): PobConfig[] => {
   const inMonorepo = ctx.facts.inMonorepo;
   if (!inMonorepo) return [];
-  const workspaces = [
-    { location: ".", pkg: inMonorepo.rootPkg },
-    ...discoverWorkspacePackages(inMonorepo.rootDir, inMonorepo.rootPkg),
-  ];
-  return workspaces
+  const root = dependsOnWorkspace(inMonorepo.rootPkg, packageName)
+    ? [inMonorepo.rootConfig]
+    : [];
+  const packages = discoverWorkspacePackages(
+    inMonorepo.rootDir,
+    inMonorepo.rootPkg,
+  )
     .filter(({ pkg }) => dependsOnWorkspace(pkg, packageName))
-    .map(({ location }) =>
-      readPobConfig(createDiskFiles(path.join(inMonorepo.rootDir, location))),
-    )
-    .filter((config): config is PobConfig => config !== undefined);
+    .map(({ location }) => {
+      const sibling = ctx.siblingPackages.find(
+        (packageContext) => packageContext.location === location,
+      );
+      // the normalized config of the package, which its steps see
+      if (sibling) return sibling.config;
+      return readPobConfig(
+        createDiskFiles(path.join(inMonorepo.rootDir, location)),
+      );
+    });
+  return [...root, ...packages].filter(
+    (config): config is PobConfig => config !== undefined,
+  );
 };

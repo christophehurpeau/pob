@@ -45,8 +45,12 @@ const getAppConfig = (ctx: PackageContext): PobConfig["app"] => {
   };
 };
 
-/** The content of pob.json: the resolved config, normalized. */
-export const buildPobJson = (ctx: PackageContext): PobConfig => {
+/**
+ * The resolved config, normalized the way pob.json stores it. Every step sees
+ * this config (the pipeline normalizes it before the steps run), so that a run
+ * sees what the next run reads from pob.json. Idempotent.
+ */
+export const normalizeConfig = (ctx: PackageContext): PobConfig => {
   const { config } = ctx;
   const kind = getProjectKind(ctx);
   const build = getBuildConfig(ctx);
@@ -54,8 +58,7 @@ export const buildPobJson = (ctx: PackageContext): PobConfig => {
     config.lib && ctx.facts.inMonorepo
       ? { ...config.lib, documentation: false }
       : config.lib;
-  const pobJson: PobConfig = {
-    $schema: getSchemaPath(ctx),
+  return {
     project: config.project,
     ...(lib && kind === "lib" ? { lib } : {}),
     ...(config.app && kind === "app" ? { app: getAppConfig(ctx) } : {}),
@@ -68,8 +71,13 @@ export const buildPobJson = (ctx: PackageContext): PobConfig => {
     // an empty build config tells apps that pob was configured without bundler
     ...(build ? { build } : {}),
   };
-  return pobJson;
 };
+
+/** The content of pob.json: the resolved config, normalized. */
+export const buildPobJson = (ctx: PackageContext): PobConfig => ({
+  $schema: getSchemaPath(ctx),
+  ...normalizeConfig(ctx),
+});
 
 /**
  * Writes the config to pob.json, and removes the files that held it in older

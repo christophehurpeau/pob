@@ -1,3 +1,4 @@
+import path from "node:path";
 import type { PackageContext } from "../../engine/context.ts";
 import type { JsonObject } from "../../engine/model.ts";
 import { defineStep } from "../../engine/step.ts";
@@ -7,9 +8,11 @@ import {
   latestLTS,
   maintenanceLTS,
 } from "../../utils/misc.ts";
+import { finalFileContent } from "../monorepo/packages.ts";
 import { getPackageEnvs } from "../settings.ts";
 import {
   dependsOn,
+  findSiblingPackage,
   getDependentConfigs,
   getWorkspacePackageNames,
   readRelativeFiles,
@@ -129,7 +132,10 @@ interface MonorepoReferences {
 /**
  * Paths and references to the workspace packages this one depends on, located
  * from their names like the yeoman generator did (`../../<scope>/<name>` in a
- * library monorepo, `../../packages/<name>` otherwise).
+ * library monorepo, `../../packages/<name>` otherwise), or from their context
+ * when the monorepo runs in one process. A dependency is a typescript package
+ * when it has a tsconfig.json once its steps ran: in one process, they ran
+ * before this package.
  */
 const getMonorepoReferences = (
   ctx: PackageContext,
@@ -148,19 +154,41 @@ const getMonorepoReferences = (
   }
   const isRootApp = inMonorepo.rootConfig.project.type === "app";
   const packageNames = getWorkspacePackageNames(ctx);
+  const toRoot = inMonorepo.relative
+    .split("/")
+    .filter(Boolean)
+    .map(() => "..")
+    .join("/");
   const getPackageLocation = (name: string): string => {
+    const sibling = findSiblingPackage(ctx, name);
+    if (sibling) return path.posix.join(toRoot, sibling.location);
     if (!name.startsWith("@")) return `../../packages/${name}`;
     return isRootApp
       ? `../../packages/${name.slice(name.indexOf("/") + 1)}`
       : `../../${name}`;
   };
+  const readPackageJson = (name: string): JsonObject | undefined =>
+    findSiblingPackage(ctx, name)?.initial.readJson<JsonObject>(
+      "package.json",
+    ) ??
+    readRelativeFiles(ctx, getPackageLocation(name)).readJson<JsonObject>(
+      "package.json",
+    );
+  const isTypescriptPackage = (name: string): boolean => {
+    const sibling = findSiblingPackage(ctx, name);
+    if (sibling?.stepsRan) {
+      return (
+        finalFileContent(sibling, "tsconfig.json") !== undefined &&
+        sibling.initial.exists("src")
+      );
+    }
+    const files = readRelativeFiles(ctx, getPackageLocation(name));
+    return files.exists("tsconfig.json") && files.exists("src");
+  };
 
   const isDependency = packageNames.some((name) => {
     if (name === packageName) return false;
-    const dependentPkg = readRelativeFiles(
-      ctx,
-      getPackageLocation(name),
-    ).readJson<JsonObject>("package.json");
+    const dependentPkg = readPackageJson(name);
     return (
       !!dependentPkg && !!packageName && dependsOn(dependentPkg, packageName)
     );
@@ -171,11 +199,8 @@ const getMonorepoReferences = (
       .filter((name) => dependsOn(pkg, name))
       .map((name) => [name, getPackageLocation(name)]),
   );
-  const isTypescriptPackage = new Map(
-    [...locations].map(([name, location]) => {
-      const files = readRelativeFiles(ctx, location);
-      return [name, files.exists("tsconfig.json") && files.exists("src")];
-    }),
+  const typescriptPackages = new Map(
+    [...locations.keys()].map((name) => [name, isTypescriptPackage(name)]),
   );
 
   return {
@@ -183,10 +208,10 @@ const getMonorepoReferences = (
     isDependency,
     srcPaths: [...locations].map(([name, location]) => [
       name,
-      `${location}/${isTypescriptPackage.get(name) ? "src" : "lib"}`,
+      `${location}/${typescriptPackages.get(name) ? "src" : "lib"}`,
     ]),
     references: packageNames
-      .filter((name) => isTypescriptPackage.get(name))
+      .filter((name) => typescriptPackages.get(name))
       .map((name) => locations.get(name) ?? ""),
   };
 };

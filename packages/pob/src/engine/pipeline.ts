@@ -19,13 +19,19 @@ import type { JsonObject, TrackedJson } from "./model.ts";
 import { createTrackedJson } from "./model.ts";
 import type { RenderedFile } from "./output.ts";
 import { createOutputRegistry, resolveOutput } from "./output.ts";
+import { resolveInside } from "./paths.ts";
 import { createPkgModel } from "./pkg.ts";
 import type { Plan, PlanEffect, PlannedFile } from "./plan.ts";
-import { orderSteps } from "./step.ts";
+import type { Step } from "./step.ts";
+import { createStepOrder, orderSteps } from "./step.ts";
 import { createTracker } from "./tracker.ts";
 import type { DependencyVersions } from "./versions.ts";
 import { createDependencyVersions } from "./versions.ts";
-import { discoverWorkspacePackages, getWorkspaceGlobs } from "./workspace.ts";
+import {
+  discoverWorkspacePackages,
+  getWorkspaceGlobs,
+  isWorkspaceOf,
+} from "./workspace.ts";
 
 export interface PipelineOptions extends RunOptions {
   cwd: string;
@@ -35,7 +41,15 @@ export interface PipelineOptions extends RunOptions {
   /** run only these steps, for partial ports */
   only?: readonly string[];
   versions?: DependencyVersions;
+  /** the config the steps see, from the resolved one */
+  normalizeConfig?: NormalizeConfig;
 }
+
+/**
+ * Normalizes the resolved config once, before the steps run: every step then
+ * reads the same values, the ones the next run reads from pob.json.
+ */
+export type NormalizeConfig = (ctx: PackageContext) => PobConfig;
 
 export interface PipelineResult {
   plan: Plan;
@@ -74,7 +88,11 @@ export const readOriginUrl = (dir: string): string | undefined => {
   }
 };
 
-/** The monorepo root containing a package directory, if any. */
+/**
+ * The monorepo root a package directory is a workspace of, if any. An
+ * ancestor with workspaces that do not list the directory is not its root:
+ * the directory is then a standalone project.
+ */
 export const findMonorepoRoot = (
   dir: string,
 ): { rootDir: string; rootPkg: JsonObject } | undefined => {
@@ -83,7 +101,9 @@ export const findMonorepoRoot = (
     const pkgPath = path.join(current, "package.json");
     if (fs.existsSync(pkgPath)) {
       const pkg = JSON.parse(fs.readFileSync(pkgPath, "utf8")) as JsonObject;
-      if (isMonorepoPkg(pkg)) return { rootDir: current, rootPkg: pkg };
+      if (isMonorepoPkg(pkg) && isWorkspaceOf(current, pkg, dir)) {
+        return { rootDir: current, rootPkg: pkg };
+      }
     }
     const parent = path.dirname(current);
     if (parent === current) return undefined;
@@ -113,6 +133,7 @@ export interface CreateContextOptions {
   strict: boolean;
   options: RunOptions;
   warnings: string[];
+  normalizeConfig?: NormalizeConfig;
 }
 
 export const createPackageContext = ({
@@ -125,6 +146,7 @@ export const createPackageContext = ({
   strict,
   options,
   warnings,
+  normalizeConfig,
 }: CreateContextOptions): PackageContext => {
   const resolvedConfig = withLocation(location, () =>
     resolveConfig(readConfigSources(initial), { isRoot: facts.isRoot }),
@@ -152,7 +174,7 @@ export const createPackageContext = ({
     () => `${JSON.stringify(pkg.render(), null, 2)}\n`,
     { format: "oxfmt" },
   );
-  return {
+  const ctx: PackageContext = {
     location,
     dir,
     config,
@@ -185,16 +207,24 @@ export const createPackageContext = ({
     effects: createEffectRegistry(tracker),
     options,
     workspacePackages: [],
+    siblingPackages: [],
+    stepsRan: false,
+    monorepoWorkspaces: [],
     warn: (message) => {
       warnings.push(location === "." ? message : `${location}: ${message}`);
     },
   };
+  if (normalizeConfig) {
+    ctx.config = withLocation(location, () => normalizeConfig(ctx));
+  }
+  return ctx;
 };
 
 export const runSteps = async (
   ctx: PackageContext,
   steps: readonly PobStep[],
 ): Promise<void> => {
+  ctx.tracker.setStepOrder(createStepOrder(steps as readonly Step<unknown>[]));
   for (const step of steps) {
     if (step.when && !ctx.tracker.runAs(step, () => step.when?.(ctx))) continue;
     await ctx.tracker.runAsAsync(step, async () => {
@@ -208,6 +238,7 @@ export const runSteps = async (
       }
     });
   }
+  ctx.stepsRan = true;
 };
 
 const joinLocation = (location: string, filePath: string): string =>
@@ -292,10 +323,15 @@ export const renderContext = async (
 const toPlanEffect = (
   effect: PlannedEffect,
   location: string,
-): PlannedEffect & { absoluteCwd: string; planned: PlanEffect } => {
+): PlannedEffect & {
+  location: string;
+  absoluteCwd: string;
+  planned: PlanEffect;
+} => {
   const cwd = joinLocation(location, effect.cwd ?? ".");
   return {
     ...effect,
+    location,
     absoluteCwd: cwd,
     planned: {
       id: effect.id,
@@ -307,6 +343,7 @@ const toPlanEffect = (
       mayModify: (effect.mayModify ?? []).map((file) =>
         joinLocation(location, file),
       ),
+      ...(effect.everyUpdate ? { everyUpdate: true } : {}),
     },
   };
 };
@@ -315,7 +352,7 @@ const toPlanEffect = (
 export const runPipeline = async (
   pipelineOptions: PipelineOptions,
 ): Promise<PipelineResult> => {
-  const { cwd, strict, check, fromPob } = pipelineOptions;
+  const { cwd, strict, check, fromPob, normalizeConfig } = pipelineOptions;
   const steps = orderSteps(pipelineOptions.steps).filter(
     (step) => !pipelineOptions.only || pipelineOptions.only.includes(step.name),
   );
@@ -334,7 +371,8 @@ export const runPipeline = async (
     const rootConfig = resolveConfig(readConfigSources(rootInitial), {
       isRoot: true,
     }).config;
-    const packageContexts = discoverWorkspacePackages(cwd, rootPkg)
+    const workspaces = discoverWorkspacePackages(cwd, rootPkg);
+    const packageContexts = workspaces
       .filter(({ location }) =>
         hasPobConfig(createDiskFiles(path.join(cwd, location))),
       )
@@ -358,8 +396,13 @@ export const runPipeline = async (
           strict,
           options,
           warnings,
+          normalizeConfig,
         }),
       );
+    for (const ctx of packageContexts) {
+      ctx.siblingPackages = packageContexts.filter((other) => other !== ctx);
+    }
+    // in topological order: the dependencies of a package run before it
     for (const ctx of packageContexts) await runSteps(ctx, steps);
     const rootContext = createPackageContext({
       location: ".",
@@ -375,12 +418,27 @@ export const runPipeline = async (
       strict,
       options,
       warnings,
+      normalizeConfig,
     });
     rootContext.workspacePackages = packageContexts;
+    rootContext.monorepoWorkspaces = workspaces.map(({ location, pkg }) => ({
+      location,
+      pkg,
+      context: packageContexts.find((ctx) => ctx.location === location),
+    }));
     await runSteps(rootContext, steps);
     contexts.push(...packageContexts, rootContext);
   } else {
     const monorepoRoot = findMonorepoRoot(cwd);
+    if (
+      monorepoRoot &&
+      !hasPobConfig(createDiskFiles(monorepoRoot.rootDir)) &&
+      !monorepoRoot.rootPkg.pob
+    ) {
+      throw new Error(
+        `${cwd} is a workspace of the monorepo at ${monorepoRoot.rootDir}, which has no pob config: run pob at the root of the monorepo`,
+      );
+    }
     const rootConfig = monorepoRoot
       ? resolveConfig(
           readConfigSources(createDiskFiles(monorepoRoot.rootDir)),
@@ -414,16 +472,14 @@ export const runPipeline = async (
       strict,
       options,
       warnings,
+      normalizeConfig,
     });
     await runSteps(ctx, steps);
     contexts.push(ctx);
   }
 
   const files: PlannedFile[] = [];
-  const effects: (PlannedEffect & {
-    absoluteCwd: string;
-    planned: PlanEffect;
-  })[] = [];
+  const effects: ReturnType<typeof toPlanEffect>[] = [];
   for (const ctx of contexts) {
     const rendered = await renderContext(ctx);
     files.push(...rendered.files);
@@ -454,7 +510,7 @@ export const applyPipelineResult = async (
   result: PipelineResult,
 ): Promise<void> => {
   for (const file of result.plan.files) {
-    const absolutePath = path.join(cwd, file.path);
+    const absolutePath = resolveInside(cwd, file.path);
     if (file.op === "delete") {
       fs.rmSync(absolutePath, { recursive: true, force: true });
     } else {

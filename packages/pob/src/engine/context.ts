@@ -44,6 +44,15 @@ export interface RunOptions {
   fromPob: boolean;
 }
 
+export interface MonorepoWorkspace {
+  /** relative to the root, posix */
+  location: string;
+  /** package.json before pob runs */
+  pkg: JsonObject;
+  /** undefined for a workspace without a pob config: pob does not update it */
+  context: PackageContext | undefined;
+}
+
 export interface PackageContext {
   /** relative to the directory pob runs in, posix, "." for it */
   location: string;
@@ -71,6 +80,20 @@ export interface PackageContext {
   options: RunOptions;
   /** monorepo root: the contexts of its packages, after their steps ran */
   workspacePackages: PackageContext[];
+  /**
+   * monorepo package, when the whole monorepo runs in one process: the
+   * contexts of the other packages with a pob config. They run in topological
+   * order, so the steps of a package's dependencies already ran (`stepsRan`).
+   */
+  siblingPackages: PackageContext[];
+  /** every step ran: the final outputs are known */
+  stepsRan: boolean;
+  /**
+   * monorepo root: every workspace, with or without a pob config, in
+   * topological order: for the detections over the whole monorepo (react,
+   * storybook, publishable packages...).
+   */
+  monorepoWorkspaces: MonorepoWorkspace[];
   warn: (message: string) => void;
 }
 

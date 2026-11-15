@@ -2,6 +2,7 @@ import JSON5 from "json5";
 import type { PackageContext } from "../../engine/context.ts";
 import type { JsonObject } from "../../engine/model.ts";
 import { defineStep } from "../../engine/step.ts";
+import { finalFileContent } from "../monorepo/packages.ts";
 import { getProjectKind, hasReact } from "../settings.ts";
 import { escapeHtml as e } from "./escape.ts";
 import { getProjectLibSettings } from "./settings.ts";
@@ -113,15 +114,16 @@ const getJsx = (ctx: PackageContext): boolean => {
 };
 
 /**
- * The packages as the yeoman monorepo generator listed them: every workspace
- * in topological order, only those with a tsconfig.json in a typescript
- * monorepo, read before they are updated.
+ * The packages with a pob config, in topological order, only those with a
+ * tsconfig.json once their steps ran in a typescript monorepo: the same state
+ * the root tsconfig.json references.
  */
 const renderMonorepoDoc = (ctx: PackageContext, jsx: boolean): string => {
   const typescript = !!ctx.config.monorepo?.typescript;
   const packages = ctx.workspacePackages.filter(
     (workspacePackage) =>
-      (!typescript || workspacePackage.initial.exists("tsconfig.json")) &&
+      (!typescript ||
+        finalFileContent(workspacePackage, "tsconfig.json") !== undefined) &&
       !workspacePackage.location.endsWith("-example"),
   );
   const entryPoints: string[] = [];

@@ -1,5 +1,6 @@
 import type { PackageContext } from "../engine/context.ts";
 import { runPipeline } from "../engine/pipeline.ts";
+import { normalizeConfig } from "../steps/config.ts";
 import { steps } from "../steps/index.ts";
 import { redactUrls } from "../utils/redactUrl.ts";
 import type { CliIO } from "./update.ts";
@@ -32,8 +33,8 @@ export const createConfigReport = (
   }));
 
 /**
- * `pob config`: the resolved config of each package (after the legacy
- * migrations) and the repository facts, as JSON. No step runs.
+ * `pob config`: the config of each package as the steps see it (after the
+ * legacy migrations, normalized) and the repository facts, as JSON. No step runs.
  */
 export const runShowConfig = async (
   { cwd }: { cwd: string },
@@ -42,6 +43,7 @@ export const runShowConfig = async (
   const result = await runPipeline({
     cwd,
     steps,
+    normalizeConfig,
     strict: false,
     check: true,
     fromPob: false,

@@ -79,7 +79,11 @@ describe("effects", () => {
     const plan: Plan = {
       files: [],
       effects: [
-        effect({ id: "github-sync", reasons: ["sync the settings of a/b"] }),
+        effect({
+          id: "github-sync",
+          reasons: ["sync the settings of a/b"],
+          everyUpdate: true,
+        }),
       ],
       warnings: [],
     };

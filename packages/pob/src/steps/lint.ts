@@ -89,13 +89,13 @@ const getLintOptions = (ctx: PackageContext): LintOptions => {
       const isLibWithEnvs = (
         config: (typeof packages)[number]["config"],
       ): boolean =>
-        config.project.type === "lib" &&
+        config?.project.type === "lib" &&
         ((config.build?.babelEnvs as BuildEnv[] | undefined)?.length ?? 0) +
           (config.build?.envs?.length ?? 0) >
           0;
       const hasAlpNode = packages.some(
         ({ config }) =>
-          config.project.type === "app" && config.app?.type === "alp-node",
+          config?.project.type === "app" && config.app?.type === "alp-node",
       );
       if (
         packages.some(

@@ -25,6 +25,35 @@ const describeRepository = (repository: unknown): string =>
   );
 
 /**
+ * From the origin remote, or the repository of a package.json without a
+ * remote. Undefined for a host other than github, gitlab or bitbucket.
+ * @param describe names the missing source in the error
+ */
+export const resolveGitRepository = (
+  originUrl: string | undefined,
+  pkgRepository: unknown,
+  describe = "add an origin remote, or a repository in package.json",
+): { repository: GitRepository | undefined; source: unknown } => {
+  const source = originUrl ?? pkgRepository;
+  if (!source) {
+    throw new Error(`git: cannot find the git host: ${describe}`);
+  }
+  const repository = parseRepositoryUrl(source);
+  return {
+    source,
+    repository: repository && {
+      gitHost: repository.gitHost,
+      gitHostAccount: repository.gitAccount,
+      repoName: repository.repoName,
+      hasOriginRemote: !!originUrl,
+    },
+  };
+};
+
+export const unknownHostWarning = (source: unknown): string =>
+  `git: unknown git host in ${describeRepository(source)}: repository, homepage and bugs are left as they are, the github features are skipped`;
+
+/**
  * From the origin remote, or the repository of the initial package.json
  * without a remote. Undefined, with a warning when `warn`, for a host other
  * than github, gitlab or bitbucket: the steps then leave repository, homepage
@@ -34,27 +63,53 @@ export const getGitRepository = (
   ctx: PackageContext,
   { warn }: { warn: boolean },
 ): GitRepository | undefined => {
-  const originUrl = ctx.facts.originUrl;
-  const source =
-    originUrl ?? ctx.initial.readJson<JsonObject>("package.json")?.repository;
-  if (!source) {
-    throw new Error(
-      "git: cannot find the git host: add an origin remote, or a repository in package.json",
-    );
-  }
-  const repository = parseRepositoryUrl(source);
-  if (!repository) {
-    if (warn) {
-      ctx.warn(
-        `git: unknown git host in ${describeRepository(source)}: repository, homepage and bugs are left as they are, the github features are skipped`,
-      );
-    }
-    return undefined;
-  }
+  const { repository, source } = resolveGitRepository(
+    ctx.facts.originUrl,
+    ctx.initial.readJson<JsonObject>("package.json")?.repository,
+  );
+  if (!repository && warn) ctx.warn(unknownHostWarning(source));
+  return repository;
+};
+
+/** A custom homepage is kept, unless it points to another repository. */
+const isHomepageKept = (
+  homepage: unknown,
+  gitHost: string,
+  repositoryUrl: string,
+): boolean => {
+  if (!homepage || typeof homepage !== "string") return false;
+  if (!homepage.startsWith(`https://${gitHost}.com/`)) return true;
+  const lowerHomepage = homepage.toLowerCase();
+  const lowerRepositoryUrl = repositoryUrl.toLowerCase();
+  return (
+    lowerHomepage === lowerRepositoryUrl ||
+    lowerHomepage.startsWith(`${lowerRepositoryUrl}/`) ||
+    lowerHomepage.startsWith(`${lowerRepositoryUrl}#`)
+  );
+};
+
+export interface RepositoryMetadata {
+  repository: string;
+  homepage: unknown;
+  bugs: { url: string };
+}
+
+/**
+ * repository, homepage and bugs the git step writes in the package.json of a
+ * standalone package or a monorepo root, from its current homepage. The
+ * packages of a monorepo copy those of the root.
+ */
+export const getRepositoryMetadata = (
+  { gitHost, gitHostAccount, repoName }: GitRepository,
+  homepage: unknown,
+): RepositoryMetadata => {
+  // wrong for bitbucket.org, kept from the yeoman generator
+  const repositoryUrl = `https://${gitHost}.com/${gitHostAccount}/${repoName}`;
   return {
-    gitHost: repository.gitHost,
-    gitHostAccount: repository.gitAccount,
-    repoName: repository.repoName,
-    hasOriginRemote: !!originUrl,
+    repository: `${repositoryUrl}.git`,
+    homepage: isHomepageKept(homepage, gitHost, repositoryUrl)
+      ? homepage
+      : repositoryUrl,
+    bugs: { url: `${repositoryUrl}/issues` },
   };
 };

@@ -25,6 +25,8 @@ export interface PlanEffect {
   command?: string;
   after: string[];
   mayModify: string[];
+  /** planned on every update: --check lists it without failing */
+  everyUpdate?: boolean;
 }
 
 export interface Plan {
@@ -33,16 +35,7 @@ export interface Plan {
   warnings: string[];
 }
 
-/**
- * Effects planned on every update, whatever changed (the github settings
- * sync): --check lists them, but they do not make it fail.
- */
-export const everyUpdateEffectIds: ReadonlySet<string> = new Set([
-  "github-sync",
-]);
-
-const runsOnEveryUpdate = (effect: PlanEffect): boolean =>
-  everyUpdateEffectIds.has(effect.id);
+const runsOnEveryUpdate = (effect: PlanEffect): boolean => !!effect.everyUpdate;
 
 export const isPlanEmpty = (plan: Plan): boolean =>
   plan.files.every((file) => file.transient) &&

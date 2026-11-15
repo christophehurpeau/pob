@@ -1,6 +1,8 @@
+import { normalizeConfig as defaultNormalizeConfig } from "../steps/config.ts";
 import type { PobConfig } from "./config.ts";
 import type { PackageContext, PobStep, RepoFacts } from "./context.ts";
 import { createMemoryFiles } from "./files.ts";
+import type { NormalizeConfig } from "./pipeline.ts";
 import { createPackageContext, renderContext, runSteps } from "./pipeline.ts";
 import type { Plan } from "./plan.ts";
 import { orderSteps } from "./step.ts";
@@ -12,7 +14,12 @@ export interface TestContextOptions {
   rootConfig?: PobConfig;
   versions?: DependencyVersions;
   workspacePackages?: PackageContext[];
+  siblingPackages?: PackageContext[];
+  /** workspaces without a pob config, besides workspacePackages */
+  otherWorkspaces?: { location: string; pkg: Record<string, unknown> }[];
   location?: string;
+  /** the normalization of the pipeline by default */
+  normalizeConfig?: NormalizeConfig | false;
 }
 
 /** fixed versions, so that tests do not change with pob-dependencies */
@@ -26,7 +33,10 @@ export const createTestContext = ({
   rootConfig,
   versions = testVersions,
   workspacePackages = [],
+  siblingPackages = [],
+  otherWorkspaces = [],
   location = ".",
+  normalizeConfig = defaultNormalizeConfig,
 }: TestContextOptions): PackageContext => {
   const ctx = createPackageContext({
     location,
@@ -44,8 +54,24 @@ export const createTestContext = ({
     strict: true,
     options: { check: true, fromPob: false },
     warnings: [],
+    normalizeConfig: normalizeConfig || undefined,
   });
   ctx.workspacePackages = workspacePackages;
+  ctx.siblingPackages = siblingPackages;
+  ctx.monorepoWorkspaces = [
+    ...workspacePackages.map((packageContext) => ({
+      location: packageContext.location,
+      pkg:
+        packageContext.initial.readJson<Record<string, unknown>>(
+          "package.json",
+        ) ?? {},
+      context: packageContext,
+    })),
+    ...otherWorkspaces.map((workspace) => ({
+      ...workspace,
+      context: undefined,
+    })),
+  ];
   return ctx;
 };
 
@@ -66,6 +92,7 @@ export const runTestSteps = async (
       command: effect.command,
       after: [...(effect.after ?? [])],
       mayModify: [...(effect.mayModify ?? [])],
+      ...(effect.everyUpdate ? { everyUpdate: true } : {}),
     })),
     warnings,
   };

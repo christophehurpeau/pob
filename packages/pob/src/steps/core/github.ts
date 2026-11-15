@@ -361,6 +361,7 @@ const planGithubSync = (
   ctx.effects.add({
     id: "github-sync",
     reason: `sync the settings and branch protection of ${info.owner}/${info.repo}`,
+    everyUpdate: true,
     run: async ({ cwd }) => {
       const token = getToken(info, false);
       if (!token) return;
@@ -375,7 +376,7 @@ const planGithubSync = (
 /**
  * The github repository: created when there is no origin remote, its settings
  * synced on every update otherwise. --check lists the sync without failing
- * (see `everyUpdateEffectIds`).
+ * (`everyUpdate`).
  */
 export const githubStep = defineStep<PackageContext>({
   name: "github",

@@ -2,8 +2,12 @@ import { isDeepStrictEqual } from "node:util";
 import type { PackageContext } from "../../engine/context.ts";
 import type { JsonObject } from "../../engine/model.ts";
 import { defineStep } from "../../engine/step.ts";
-import { parseRepositoryUrl } from "../../utils/misc.ts";
 import { parseAuthor } from "../../utils/untyped.ts";
+import type { RepositoryMetadata } from "../core/gitRepository.ts";
+import {
+  getRepositoryMetadata,
+  resolveGitRepository,
+} from "../core/gitRepository.ts";
 import { renderLicense } from "./licenses.ts";
 
 const POSTINSTALL_COMMAND = "pob-root-postinstall";
@@ -41,42 +45,23 @@ const parsePkgAuthor = (pkg: JsonObject): Author | undefined =>
     ? parseAuthor(pkg.author)
     : (pkg.author as Author | undefined);
 
-interface RootRepository {
-  url: string;
-  homepage: unknown;
-  bugs: unknown;
-}
-
 /**
- * The root package.json as it is before pob runs, like the yeoman generator
- * which ran in each package after the root was written. On a new monorepo the
- * root has no repository yet: it is derived from the origin remote, the way
- * the git step of the root writes it.
+ * repository, homepage and bugs of the root once its git step ran: computed
+ * from the origin remote and the initial root package.json by the same
+ * function as the git step, since the packages run before the root.
+ * Undefined for an unknown git host: the root keeps its values, the packages
+ * keep theirs.
  */
-const getRootRepository = (
+const getRootRepositoryMetadata = (
   ctx: PackageContext,
   rootPkg: JsonObject,
-): RootRepository => {
-  const repository = rootPkg.repository as
-    | string
-    | { url?: string }
-    | undefined;
-  if (repository) {
-    const url = typeof repository === "string" ? repository : repository.url;
-    if (url) return { url, homepage: rootPkg.homepage, bugs: rootPkg.bugs };
-  }
-  const parsed = parseRepositoryUrl(ctx.facts.originUrl);
-  if (!parsed) {
-    throw new Error(
-      "the monorepo root package.json has no repository and there is no origin remote",
-    );
-  }
-  const repositoryUrl = `https://${parsed.gitHost}.com/${parsed.gitAccount}/${parsed.repoName}`;
-  return {
-    url: `${repositoryUrl}.git`,
-    homepage: rootPkg.homepage ?? repositoryUrl,
-    bugs: rootPkg.bugs ?? { url: `${repositoryUrl}/issues` },
-  };
+): RepositoryMetadata | undefined => {
+  const { repository } = resolveGitRepository(
+    ctx.facts.originUrl,
+    rootPkg.repository,
+    "the monorepo root package.json has no repository and there is no origin remote",
+  );
+  return repository && getRepositoryMetadata(repository, rootPkg.homepage);
 };
 
 const updateMetadata = (ctx: PackageContext, pkg: JsonObject): void => {
@@ -120,16 +105,19 @@ const updateMetadata = (ctx: PackageContext, pkg: JsonObject): void => {
 
   if (rootPkg?.type === "module") pkg.type = "module";
 
-  if (monorepoPackage && rootPkg) {
-    const rootRepository = getRootRepository(ctx, rootPkg);
+  const rootRepository =
+    monorepoPackage && rootPkg
+      ? getRootRepositoryMetadata(ctx, rootPkg)
+      : undefined;
+  if (monorepoPackage && rootRepository) {
     pkg.repository = {
       type: "git",
-      url: rootRepository.url,
+      url: rootRepository.repository,
       directory: monorepoPackage.relative,
     };
     pkg.homepage = rootRepository.homepage;
     if (pkg.private) delete pkg.bugs;
-    else if (rootRepository.bugs) pkg.bugs = rootRepository.bugs;
+    else pkg.bugs = rootRepository.bugs;
   }
 
   if (!pkg.authors && author) {

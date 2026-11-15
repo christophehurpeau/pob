@@ -118,6 +118,7 @@ describe("doc", () => {
         },
       });
     const withEntries = workspacePackage("packages/b", {
+      bundler: "tsc",
       entries: ["index", "x"],
     });
     const plan = await runTestSteps(

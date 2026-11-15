@@ -1,6 +1,7 @@
 import type { PipelineResult } from "../engine/pipeline.ts";
 import { applyPipelineResult, runPipeline } from "../engine/pipeline.ts";
 import { formatPlan, isPlanEmpty, serializePlan } from "../engine/plan.ts";
+import { normalizeConfig } from "../steps/config.ts";
 import { steps } from "../steps/index.ts";
 import { redactUrls } from "../utils/redactUrl.ts";
 
@@ -46,6 +47,7 @@ export const runUpdatePipeline = ({
   runPipeline({
     cwd,
     steps,
+    normalizeConfig,
     strict: isStrict(),
     check,
     fromPob,

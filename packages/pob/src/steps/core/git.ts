@@ -2,7 +2,11 @@ import { spawnSync } from "node:child_process";
 import type { PackageContext } from "../../engine/context.ts";
 import { defineStep } from "../../engine/step.ts";
 import type { GitRepository } from "./gitRepository.ts";
-import { getGitRepository, gitHostDomains } from "./gitRepository.ts";
+import {
+  getGitRepository,
+  getRepositoryMetadata,
+  gitHostDomains,
+} from "./gitRepository.ts";
 
 const isGitRepository = (cwd: string): boolean =>
   spawnSync("git", ["rev-parse", "--git-dir"], { cwd, stdio: "ignore" })
@@ -49,23 +53,6 @@ const planGitSetup = (
   });
 };
 
-/** A custom homepage is kept, unless it points to another repository. */
-const isHomepageKept = (
-  homepage: string | undefined,
-  gitHost: string,
-  repositoryUrl: string,
-): boolean => {
-  if (!homepage) return false;
-  if (!homepage.startsWith(`https://${gitHost}.com/`)) return true;
-  const lowerHomepage = homepage.toLowerCase();
-  const lowerRepositoryUrl = repositoryUrl.toLowerCase();
-  return (
-    lowerHomepage === lowerRepositoryUrl ||
-    lowerHomepage.startsWith(`${lowerRepositoryUrl}/`) ||
-    lowerHomepage.startsWith(`${lowerRepositoryUrl}#`)
-  );
-};
-
 /**
  * repository, homepage and bugs of a standalone package or a monorepo root
  * (pob:core:package sets them in monorepo packages).
@@ -81,15 +68,11 @@ export const gitStep = defineStep<PackageContext>({
       if (!ctx.facts.originUrl) planGitSetup(ctx, undefined);
       return;
     }
-    const { gitHost, gitHostAccount, repoName } = repository;
-    // wrong for bitbucket.org, kept from the yeoman generator
-    const repositoryUrl = `https://${gitHost}.com/${gitHostAccount}/${repoName}`;
-
-    if (!isHomepageKept(pkg.get("homepage"), gitHost, repositoryUrl)) {
-      pkg.set("homepage", repositoryUrl);
-    }
-    pkg.set("bugs", { url: `${repositoryUrl}/issues` });
-    pkg.set("repository", `${repositoryUrl}.git`);
+    const homepage = pkg.get("homepage");
+    const metadata = getRepositoryMetadata(repository, homepage);
+    if (metadata.homepage !== homepage) pkg.set("homepage", metadata.homepage);
+    pkg.set("bugs", metadata.bugs);
+    pkg.set("repository", metadata.repository);
 
     if (!repository.hasOriginRemote) planGitSetup(ctx, repository);
   },

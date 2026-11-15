@@ -202,7 +202,8 @@ export const getAppIgnorePaths = (
 interface WorkspacePackageInfo {
   location: string;
   pkg: JsonObject;
-  config: PobConfig;
+  /** undefined for a workspace without a pob config */
+  config: PobConfig | undefined;
 }
 
 const someDependency = (
@@ -237,15 +238,18 @@ export interface MonorepoSettings {
 }
 
 /**
- * The initial content of the package.json of the packages: the yeoman
- * monorepo generator read them before the packages were updated.
+ * Every workspace, with or without a pob config, and the initial content of
+ * their package.json: the yeoman monorepo generator read them before the
+ * packages were updated.
  */
 export const getMonorepoSettings = (ctx: PackageContext): MonorepoSettings => {
-  const packages = ctx.workspacePackages.map((packageContext) => ({
-    location: packageContext.location,
-    pkg: packageContext.initial.readJson<JsonObject>("package.json") ?? {},
-    config: packageContext.config,
-  }));
+  const packages: WorkspacePackageInfo[] = ctx.monorepoWorkspaces.map(
+    ({ location, pkg, context }) => ({
+      location,
+      pkg,
+      config: context?.config,
+    }),
+  );
   const allPkgs = [
     ctx.initial.readJson<JsonObject>("package.json") ?? {},
     ...packages.map(({ pkg }) => pkg),
@@ -263,7 +267,7 @@ export const getMonorepoSettings = (ctx: PackageContext): MonorepoSettings => {
     if (!value || value === "false") return "";
     if (value !== true && value !== "true") return value as string;
     const e2eLocations = packages
-      .filter(({ config }) => config.app?.e2e || config.lib?.e2e)
+      .filter(({ config }) => config?.app?.e2e || config?.lib?.e2e)
       .map(({ location }) => location);
     if (e2eLocations.length > 1) {
       ctx.warn(
@@ -278,7 +282,7 @@ export const getMonorepoSettings = (ctx: PackageContext): MonorepoSettings => {
     ...new Set(
       packages
         .map(({ config }) =>
-          config.project.type === "app" ? config.app?.type : undefined,
+          config?.project.type === "app" ? config.app?.type : undefined,
         )
         .filter((type): type is AppType => type !== undefined),
     ),
@@ -297,7 +301,13 @@ export const getMonorepoSettings = (ctx: PackageContext): MonorepoSettings => {
       : [],
     hasRootBuild:
       monorepo.typescript === true ||
-      (!isAppProject && packages.some(({ config }) => !!config.build?.bundler)),
+      (!isAppProject &&
+        packages.some(
+          ({ config, pkg }) =>
+            !!(config
+              ? config.build?.bundler
+              : (pkg.pob as JsonObject | undefined)?.bundler),
+        )),
     appTypes,
   };
 };

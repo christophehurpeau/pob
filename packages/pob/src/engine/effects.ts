@@ -17,6 +17,11 @@ export interface EffectDefinition {
   mayModify?: readonly string[];
   /** the command, for --check */
   command?: string;
+  /**
+   * planned on every update whatever changed (the github settings sync):
+   * --check lists it, but it does not make --check fail
+   */
+  everyUpdate?: boolean;
   run: (context: EffectRunContext) => void | Promise<void>;
 }
 
@@ -53,34 +58,57 @@ export const createEffectRegistry = (tracker: Tracker): EffectRegistry => {
   };
 };
 
+interface OrderableEffect {
+  id: string;
+  /** package location: ids are unique per package, "." by default */
+  location?: string;
+  after?: readonly string[];
+}
+
+const effectKey = (effect: OrderableEffect): string =>
+  `${effect.location ?? "."}#${effect.id}`;
+
 /**
  * Orders effects by their `after` declarations, keeping the order they were
- * planned in otherwise. `after` on an effect that is not planned is ignored.
+ * planned in otherwise. An id in `after` refers to the effect of the same
+ * package, or, when the package does not plan it, to the effects with this id
+ * in every package (the install of a monorepo runs at the root). `after` on
+ * an effect that is not planned is ignored.
  */
-export const orderEffects = <
-  Effect extends { id: string; after?: readonly string[] },
->(
+export const orderEffects = <Effect extends OrderableEffect>(
   effects: readonly Effect[],
 ): Effect[] => {
-  const ids = new Set(effects.map((effect) => effect.id));
+  const keys = new Set(effects.map(effectKey));
+  const dependencies = new Map(
+    effects.map((effect) => [
+      effect,
+      (effect.after ?? []).flatMap((id) => {
+        const sameLocation = effectKey({ id, location: effect.location });
+        if (keys.has(sameLocation)) return [sameLocation];
+        return effects
+          .filter((other) => other.id === id)
+          .map((other) => effectKey(other));
+      }),
+    ]),
+  );
   const ordered: Effect[] = [];
   const done = new Set<string>();
   while (ordered.length < effects.length) {
     const next = effects.find(
       (effect) =>
-        !done.has(effect.id) &&
-        (effect.after ?? []).every((id) => !ids.has(id) || done.has(id)),
+        !done.has(effectKey(effect)) &&
+        (dependencies.get(effect) ?? []).every((key) => done.has(key)),
     );
     if (!next) {
       throw new Error(
         `Cycle in effect order: ${effects
-          .filter((effect) => !done.has(effect.id))
-          .map((effect) => effect.id)
+          .filter((effect) => !done.has(effectKey(effect)))
+          .map((effect) => effectKey(effect))
           .join(", ")}`,
       );
     }
     ordered.push(next);
-    done.add(next.id);
+    done.add(effectKey(next));
   }
   return ordered;
 };

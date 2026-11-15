@@ -33,6 +33,26 @@ export const getWorkspaceGlobs = (
   return [];
 };
 
+/** lerna without workspaces: its default packages location */
+const getMonorepoGlobs = (rootPkg: Record<string, unknown>): string[] => {
+  const globs = getWorkspaceGlobs(rootPkg);
+  return globs.length === 0 && rootPkg.lerna ? ["packages/*"] : globs;
+};
+
+/** whether a directory is one of the workspaces of a monorepo root */
+export const isWorkspaceOf = (
+  rootDir: string,
+  rootPkg: Record<string, unknown>,
+  dir: string,
+): boolean => {
+  const relative = path.relative(rootDir, dir).split(path.sep).join("/");
+  if (!relative || relative.startsWith("..")) return false;
+  // the directory may not exist yet: `pob add` creates it
+  return getMonorepoGlobs(rootPkg).some((workspaceGlob) =>
+    path.posix.matchesGlob(relative, path.posix.normalize(workspaceGlob)),
+  );
+};
+
 /**
  * Packages of a monorepo, in topological order of their dependencies, sorted
  * by name inside each batch: the order of the yeoman monorepo generator.
