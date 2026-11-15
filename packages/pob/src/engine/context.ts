@@ -57,10 +57,13 @@ export interface PackageContext {
   versions: DependencyVersions;
   tracker: Tracker;
   pkg: PkgModel;
-  /** merged config files, created from their current content */
+  /**
+   * A tracked model, created once per name: from the current content of a
+   * merged config file, or empty without a file (`ci`, shared by steps).
+   */
   model: (
     name: string,
-    filePath: string,
+    filePath?: string,
     parse?: (content: string) => JsonObject,
   ) => TrackedJson;
   output: OutputRegistry;

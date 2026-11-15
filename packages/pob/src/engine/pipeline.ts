@@ -156,7 +156,8 @@ export const createPackageContext = ({
     model: (name, filePath, parse) => {
       const existing = models.get(name);
       if (existing) return existing;
-      const content = initial.read(filePath);
+      const content =
+        filePath === undefined ? undefined : initial.read(filePath);
       const parseContent =
         parse ?? ((value) => JSON.parse(value) as JsonObject);
       const model = createTrackedJson(
