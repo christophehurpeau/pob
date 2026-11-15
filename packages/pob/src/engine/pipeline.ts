@@ -91,6 +91,18 @@ export const findMonorepoRoot = (
   }
 };
 
+/** prefixes the errors of fn with the package location */
+const withLocation = <T>(location: string, fn: () => T): T => {
+  try {
+    return fn();
+  } catch (error) {
+    if (location === ".") throw error;
+    throw new Error(`${location}: ${(error as Error).message}`, {
+      cause: error,
+    });
+  }
+};
+
 export interface CreateContextOptions {
   location: string;
   dir: string;
@@ -114,9 +126,9 @@ export const createPackageContext = ({
   options,
   warnings,
 }: CreateContextOptions): PackageContext => {
-  const resolvedConfig = resolveConfig(readConfigSources(initial), {
-    isRoot: facts.isRoot,
-  });
+  const resolvedConfig = withLocation(location, () =>
+    resolveConfig(readConfigSources(initial), { isRoot: facts.isRoot }),
+  );
   if (resolvedConfig.missing.length > 0) {
     throw new Error(
       `${location}: missing pob config: ${resolvedConfig.missing.join(", ")}`,

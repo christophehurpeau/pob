@@ -25,11 +25,21 @@ describe("resolveConfig", () => {
     });
   });
 
-  test("pob.json wins over legacy sources", () => {
+  test("pob.json wins over legacy sources holding the same values", () => {
     const { config, source } = resolveConfig(
       {
-        pobJson: { project: { type: "app" }, app: { type: "vite" } },
-        yoRc: { project: { type: "lib" } },
+        pobJson: {
+          project: { type: "app" },
+          app: { type: "vite" },
+          lib: { testing: false },
+          build: { bundler: "tsc" },
+        },
+        yoRc: {
+          project: { type: "app" },
+          promptValues: { author: "a" },
+        },
+        pkgPob: { bundler: "tsc" },
+        legacyPobJson: {},
       },
       { isRoot: false },
     );
@@ -37,7 +47,37 @@ describe("resolveConfig", () => {
     expect(config).toEqual({
       project: { type: "app" },
       app: { type: "vite" },
+      lib: { testing: false },
+      build: { bundler: "tsc" },
     });
+  });
+
+  test("fails when a legacy source differs from pob.json", () => {
+    expect(() =>
+      resolveConfig(
+        {
+          pobJson: {
+            project: { type: "app" },
+            app: { type: "vite" },
+            build: { bundler: "tsc" },
+          },
+          yoRc: {
+            project: { type: "lib" },
+            app: { type: "vite", testing: true },
+          },
+          pkgPob: { bundler: "rollup-esbuild" },
+          legacyPobJson: { testing: true },
+        },
+        { isRoot: false },
+      ),
+    ).toThrow(
+      [
+        "pob.json and legacy config files disagree, nothing was changed. Move the values to keep into pob.json, then remove them from the legacy file:",
+        "  - .yo-rc.json (pob key): project.type, app.testing",
+        "  - package.json#pob: build.bundler",
+        "  - .pob.json: lib.testing.codecov",
+      ].join("\n"),
+    );
   });
 
   test("yarn2 becomes yarnNodeLinker", () => {

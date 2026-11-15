@@ -4,6 +4,8 @@
  * read and migrated on every run by {@link resolveConfig}.
  */
 
+import { isDeepStrictEqual } from "node:util";
+
 export type PackageManager = "yarn" | "npm" | "pnpm" | "bun";
 export type YarnNodeLinker = "node-modules" | "pnp" | "pnpm";
 export type TestRunner = "vitest" | "node";
@@ -331,9 +333,85 @@ export interface ResolvedConfig {
   missing: string[];
 }
 
+const migrate = (config: RawConfig): RawConfig => {
+  let migrated = structuredClone(config);
+  for (const migration of legacyMigrations) migrated = migration(migrated);
+  return migrated;
+};
+
+/** dotted paths of the values of a config: arrays are values */
+const leafPaths = (value: unknown, prefix: string[] = []): string[][] => {
+  if (!isObject(value)) return prefix.length > 0 ? [prefix] : [];
+  return Object.entries(value).flatMap(([key, child]) =>
+    leafPaths(child, [...prefix, key]),
+  );
+};
+
+const getAt = (value: unknown, segments: readonly string[]): unknown => {
+  let current = value;
+  for (const segment of segments) {
+    current = isObject(current) ? current[segment] : undefined;
+  }
+  return current;
+};
+
+const legacySources = [
+  {
+    name: ".yo-rc.json (pob key)",
+    toConfig: (sources: RawConfigSources) => sources.yoRc,
+  },
+  {
+    name: "package.json#pob",
+    toConfig: (sources: RawConfigSources) =>
+      sources.pkgPob && { build: sources.pkgPob },
+  },
+  {
+    name: ".pob.json",
+    toConfig: (sources: RawConfigSources) =>
+      sources.legacyPobJson && { lib: sources.legacyPobJson },
+  },
+] as const;
+
+export class LegacyConfigConflictError extends Error {
+  constructor(conflicts: readonly string[]) {
+    super(
+      `pob.json and legacy config files disagree, nothing was changed. Move the values to keep into pob.json, then remove them from the legacy file:\n${conflicts.join("\n")}`,
+    );
+    this.name = "LegacyConfigConflictError";
+  }
+}
+
+/**
+ * The legacy sources are removed once pob.json exists: they must not hold a
+ * value pob.json does not have, or it would be lost.
+ */
+const assertLegacySourcesMatch = (
+  sources: RawConfigSources,
+  pobJsonConfig: RawConfig,
+): void => {
+  const conflicts = legacySources.flatMap(({ name, toConfig }) => {
+    const legacyConfig = toConfig(sources);
+    if (!legacyConfig) return [];
+    const migrated = migrate(legacyConfig);
+    const differing = leafPaths(migrated).filter(
+      (segments) =>
+        !isDeepStrictEqual(
+          getAt(migrated, segments),
+          getAt(pobJsonConfig, segments),
+        ),
+    );
+    if (differing.length === 0) return [];
+    return [
+      `  - ${name}: ${differing.map((segments) => segments.join(".")).join(", ")}`,
+    ];
+  });
+  if (conflicts.length > 0) throw new LegacyConfigConflictError(conflicts);
+};
+
 /**
  * Merges the config sources and applies the legacy migrations. Pure: the
- * sources are read by the caller.
+ * sources are read by the caller. Throws a {@link LegacyConfigConflictError}
+ * when pob.json exists and a legacy source holds a different value.
  */
 export const resolveConfig = (
   sources: RawConfigSources,
@@ -354,7 +432,8 @@ export const resolveConfig = (
   ) {
     raw.lib = structuredClone(sources.legacyPobJson);
   }
-  for (const migration of legacyMigrations) raw = migration(raw);
+  raw = migrate(raw);
+  if (sources.pobJson) assertLegacySourcesMatch(sources, raw);
 
   const missing: string[] = [];
   const project = (
