@@ -78,6 +78,15 @@ describe("orderSteps", () => {
     );
   });
 
+  test("reports the cycle, not a step waiting on it", () => {
+    const x = step("x", { after: ["b"] });
+    const a = step("a", { reads: ["pkg.b"], writes: ["pkg.a"] });
+    const b = step("b", { reads: ["pkg.a"], writes: ["pkg.b"] });
+    expect(() => orderSteps([x, a, b])).toThrow(
+      /^Cycle in step order:\n {2}a -> b \(b reads pkg\.a\)\n {2}b -> a \(a reads pkg\.b\)$/,
+    );
+  });
+
   test("refuses an unknown step in after", () => {
     expect(() =>
       computeOrderEdges([step("a", { after: ["missing"] })]),

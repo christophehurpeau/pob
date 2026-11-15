@@ -92,25 +92,31 @@ export const computeOrderEdges = (
   return edges;
 };
 
+/**
+ * A cycle among the steps that cannot run. Each of them waits on another one
+ * of them, so walking back their predecessors always ends in a cycle, while
+ * walking forward can end on a step that only waits on the cycle.
+ */
 const findCycle = (remaining: string[], edges: OrderEdge[]): string[] => {
   const remainingSet = new Set(remaining);
-  const successors = (name: string): string[] =>
-    edges
-      .filter((edge) => edge.from === name && remainingSet.has(edge.to))
-      .map((edge) => edge.to);
+  const predecessor = (name: string): string | undefined =>
+    edges.find((edge) => edge.to === name && remainingSet.has(edge.from))?.from;
   const start = remaining[0];
   if (start === undefined) return [];
   const path: string[] = [];
   const seen = new Map<string, number>();
-  let current = start;
-  while (!seen.has(current)) {
+  let current: string | undefined = start;
+  while (current !== undefined && !seen.has(current)) {
     seen.set(current, path.length);
     path.push(current);
-    const next = successors(current)[0];
-    if (next === undefined) return path;
-    current = next;
+    current = predecessor(current);
   }
-  return path.slice(seen.get(current));
+  if (current === undefined) return path.toReversed();
+  const cycle = path.slice(seen.get(current)).toReversed();
+  // starts at the first registered step of the cycle
+  const first = remaining.find((name) => cycle.includes(name));
+  const index = first === undefined ? 0 : cycle.indexOf(first);
+  return [...cycle.slice(index), ...cycle.slice(0, index)];
 };
 
 /**
