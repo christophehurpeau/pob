@@ -80,21 +80,40 @@ export const normalizeConfigMigration = async (
   return { ...result, files };
 };
 
+/** the content of a pob.json without $schema */
+const readPobJson = (
+  tree: ReadonlyMap<string, string>,
+  filePath: string,
+): Json | undefined => {
+  const pobJson = parse(tree.get(filePath));
+  if (!pobJson) return undefined;
+  const { $schema: _, ...config } = pobJson;
+  return config;
+};
+
+const isInside = (directory: string, root: string): boolean =>
+  root === "." || directory === root || directory.startsWith(`${root}/`);
+
 /**
- * Differences between the pob.json files of the new engine and the config the
- * old engine left (.yo-rc.json and package.json#pob of its fixed point).
+ * Differences between the pob.json files of the new engine and the expected
+ * config: the pob.json of a snapshot of the new engine, or for a snapshot of
+ * the old engine the config it left (.yo-rc.json and package.json#pob of its
+ * fixed point). Only the packages inside `root`, where pob ran, are compared.
  */
 export const comparePobJson = (
   expectedTree: ReadonlyMap<string, string>,
   actualTree: ReadonlyMap<string, string>,
+  root = ".",
 ): string[] => {
   const differences: string[] = [];
   const packageDirectories = [...expectedTree.keys()]
     .filter((filePath) => path.posix.basename(filePath) === "package.json")
     .map((filePath) => path.posix.dirname(filePath))
+    .filter((directory) => isInside(directory, root))
     .filter(
       (directory) =>
         expectedTree.has(path.posix.join(directory, ".yo-rc.json")) ||
+        expectedTree.has(path.posix.join(directory, "pob.json")) ||
         actualTree.has(path.posix.join(directory, "pob.json")),
     );
   for (const directory of packageDirectories) {
@@ -108,10 +127,10 @@ export const comparePobJson = (
         | Json
         | undefined,
     };
-    const expected = resolveConfig(sources, { isRoot: false })
-      .config as unknown as Json;
-    const { $schema: _, ...actual } =
-      parse(actualTree.get(join("pob.json"))) ?? {};
+    const expected =
+      readPobJson(expectedTree, join("pob.json")) ??
+      (resolveConfig(sources, { isRoot: false }).config as unknown as Json);
+    const actual = readPobJson(actualTree, join("pob.json")) ?? {};
     if (parse(actualTree.get(join(".yo-rc.json")))?.pob) {
       differences.push(`${join(".yo-rc.json")}: not removed`);
     }

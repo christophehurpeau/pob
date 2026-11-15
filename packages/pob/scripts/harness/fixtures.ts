@@ -11,6 +11,8 @@ export interface Fixture {
   files: Record<string, string>;
   /** origin remote, a github one by default */
   remote?: string | null;
+  /** directory pob runs in, relative to the fixture, "." by default */
+  cwd?: string;
 }
 
 /** this monorepo, pinned so that the snapshot does not change on every commit */
@@ -544,6 +546,367 @@ export const fixtures: Fixture[] = [
         }),
       ),
       "packages/only/lib/index.js": jsSource,
+    },
+  },
+  {
+    name: "monorepo-root-repository",
+    description:
+      "monorepo whose root repository is a git+ url of another repository, without homepage nor bugs: the packages get the values of the root git step",
+    files: {
+      ".yo-rc.json": rootYoRc({
+        project: { type: "lib", packageManager: "pnpm", ci: false },
+        monorepo: {
+          ci: false,
+          testing: false,
+          e2eTesting: false,
+          documentation: false,
+          typescript: false,
+          eslint: true,
+        },
+      }),
+      "package.json": json({
+        name: "monorepo-root-repository",
+        version: "1.0.0",
+        private: true,
+        license: "MIT",
+        author,
+        type: "module",
+        repository: {
+          type: "git",
+          url: "git+https://github.com/old-owner/old-name.git",
+        },
+        workspaces: ["packages/*"],
+      }),
+      "packages/lib/.yo-rc.json": yoRc({
+        project: { type: "lib" },
+        lib: { documentation: false, testing: false, e2e: false },
+      }),
+      "packages/lib/package.json": json(
+        pkg("monorepo-root-repository-lib", {
+          pob: {},
+          homepage: "https://github.com/old-owner/old-name",
+          repository: {
+            type: "git",
+            url: "git+https://github.com/old-owner/old-name.git",
+            directory: "packages/lib",
+          },
+        }),
+      ),
+      "packages/lib/lib/index.js": jsSource,
+    },
+  },
+  {
+    name: "monorepo-workspaces-without-pob",
+    description:
+      "monorepo with one pob package and 8 workspaces without pob config: react, vitest browser, a bundler in package.json#pob",
+    files: {
+      ".yo-rc.json": rootYoRc({
+        project: { type: "lib", packageManager: "pnpm", ci: true },
+        monorepo: {
+          ci: true,
+          testing: true,
+          testRunner: "vitest",
+          e2eTesting: false,
+          codecov: false,
+          documentation: false,
+          typescript: false,
+          eslint: true,
+        },
+      }),
+      "package.json": json({
+        name: "monorepo-workspaces-without-pob",
+        version: "1.0.0",
+        private: true,
+        license: "MIT",
+        author,
+        type: "module",
+        workspaces: ["packages/*"],
+      }),
+      "packages/pob-lib/.yo-rc.json": yoRc({
+        project: { type: "lib" },
+        lib: { documentation: false, testing: {}, e2e: false },
+      }),
+      "packages/pob-lib/package.json": json(pkg("pob-lib", { pob: {} })),
+      "packages/pob-lib/lib/index.js": jsSource,
+      "packages/react-ui/package.json": json(
+        pkg("react-ui", { dependencies: { react: "19.0.0" } }),
+      ),
+      "packages/browser-tests/package.json": json(
+        pkg("browser-tests", {
+          private: true,
+          devDependencies: { "@vitest/browser-playwright": "5.0.0" },
+        }),
+      ),
+      "packages/bundled/package.json": json(
+        pkg("bundled", { pob: { bundler: "rollup-esbuild" } }),
+      ),
+      ...Object.fromEntries(
+        ["one", "two", "three", "four", "five"].map((name) => [
+          `packages/${name}/package.json`,
+          json(pkg(name)),
+        ]),
+      ),
+    },
+  },
+  {
+    name: "expo-app-alouette",
+    description:
+      "expo app depending on alouette and the react-native storybook, app.alouette and app.storybook unset",
+    files: {
+      ".yo-rc.json": rootYoRc({
+        project: {
+          type: "app",
+          packageManager: "yarn",
+          yarnNodeLinker: "node-modules",
+          ci: true,
+        },
+        app: { type: "expo", testing: false, codecov: false, e2e: false },
+      }),
+      "package.json": json(
+        pkg("expo-app-alouette", {
+          private: true,
+          main: "expo-router/entry",
+          dependencies: {
+            alouette: "1.0.0",
+            expo: "55.0.0",
+            react: "19.0.0",
+            "react-native": "0.83.0",
+          },
+          devDependencies: { "@storybook/react-native": "9.0.0" },
+        }),
+      ),
+      "src/app/index.tsx": "export default function Index() { return null; }\n",
+    },
+  },
+  {
+    name: "node-app-old-envs",
+    description:
+      "node app built with rollup-esbuild for node 22, without typescript: true",
+    files: {
+      ".yo-rc.json": rootYoRc({
+        project: { type: "app", packageManager: "pnpm", ci: true },
+        app: { type: "node", testing: false, codecov: false, e2e: false },
+      }),
+      "package.json": json(
+        pkg("node-app-old-envs", {
+          private: true,
+          engines: { node: ">=22.0.0" },
+          pob: {
+            bundler: "rollup-esbuild",
+            entries: ["index"],
+            envs: [{ target: "node", version: "22" }],
+          },
+        }),
+      ),
+      "src/index.ts": tsSource,
+    },
+  },
+  {
+    name: "lib-rollup-node-22",
+    description:
+      "library built with rollup-esbuild for node 22, without typescript: true",
+    files: {
+      ".yo-rc.json": rootYoRc({
+        project: { type: "lib", packageManager: "pnpm", ci: true },
+        lib: { documentation: false, testing: false, e2e: false },
+      }),
+      "package.json": json(
+        pkg("lib-rollup-node-22", {
+          pob: {
+            bundler: "rollup-esbuild",
+            entries: ["index"],
+            envs: [{ target: "node", version: "22" }],
+          },
+        }),
+      ),
+      "src/index.ts": tsSource,
+    },
+  },
+  {
+    name: "monorepo-tracked-dist",
+    description:
+      "monorepo with two packages whose dist is tracked in git, buildInGit false: each one plans git-untrack-build",
+    files: {
+      ".yo-rc.json": rootYoRc({
+        project: { type: "lib", packageManager: "pnpm", ci: false },
+        monorepo: {
+          ci: false,
+          testing: false,
+          e2eTesting: false,
+          documentation: false,
+          typescript: false,
+          eslint: true,
+        },
+      }),
+      "package.json": json({
+        name: "monorepo-tracked-dist",
+        version: "1.0.0",
+        private: true,
+        license: "MIT",
+        author,
+        type: "module",
+        workspaces: ["packages/*"],
+      }),
+      ...Object.fromEntries(
+        ["a", "b"].flatMap((name) => [
+          [
+            `packages/${name}/.yo-rc.json`,
+            yoRc({
+              project: { type: "lib" },
+              lib: {
+                documentation: false,
+                testing: false,
+                e2e: false,
+                buildInGit: false,
+              },
+            }),
+          ],
+          [
+            `packages/${name}/package.json`,
+            json(
+              pkg(`monorepo-tracked-dist-${name}`, {
+                pob: {
+                  bundler: "rollup-esbuild",
+                  entries: ["index"],
+                  envs: [{ target: "node", version: "24" }],
+                  typescript: true,
+                },
+              }),
+            ),
+          ],
+          [`packages/${name}/src/index.ts`, tsSource],
+          [`packages/${name}/dist/index.mjs`, jsSource],
+        ]),
+      ),
+    },
+  },
+  {
+    name: "monorepo-new-tsconfig",
+    description:
+      "typescript monorepo with documentation: a package gains its tsconfig.json in this run and another one depends on it; an untranspiled library with lib.documentation",
+    files: {
+      ".yo-rc.json": rootYoRc({
+        project: { type: "lib", packageManager: "pnpm", ci: false },
+        monorepo: {
+          ci: false,
+          testing: false,
+          e2eTesting: false,
+          documentation: true,
+          typescript: true,
+          eslint: true,
+        },
+      }),
+      "package.json": json({
+        name: "monorepo-new-tsconfig",
+        version: "1.0.0",
+        private: true,
+        license: "MIT",
+        author,
+        type: "module",
+        workspaces: ["packages/*"],
+      }),
+      "packages/a/.yo-rc.json": yoRc({
+        project: { type: "lib" },
+        lib: { documentation: false, testing: false, e2e: false },
+      }),
+      "packages/a/package.json": json(
+        pkg("monorepo-new-tsconfig-a", {
+          pob: {
+            bundler: "rollup-esbuild",
+            entries: ["index"],
+            envs: [{ target: "node", version: "24" }],
+            typescript: true,
+          },
+        }),
+      ),
+      "packages/a/src/index.ts": tsSource,
+      "packages/b/.yo-rc.json": yoRc({
+        project: { type: "lib" },
+        lib: { documentation: false, testing: false, e2e: false },
+      }),
+      "packages/b/package.json": json(
+        pkg("monorepo-new-tsconfig-b", {
+          dependencies: { "monorepo-new-tsconfig-a": "workspace:*" },
+          pob: {
+            bundler: "rollup-esbuild",
+            entries: ["index"],
+            envs: [{ target: "node", version: "24" }],
+            typescript: true,
+          },
+        }),
+      ),
+      "packages/b/src/index.ts": tsSource,
+      "packages/b/tsconfig.json": json({}),
+      "packages/js/.yo-rc.json": yoRc({
+        project: { type: "lib" },
+        lib: { documentation: true, testing: false, e2e: false },
+      }),
+      "packages/js/package.json": json(
+        pkg("monorepo-new-tsconfig-js", { pob: {} }),
+      ),
+      "packages/js/lib/index.js": jsSource,
+    },
+  },
+  {
+    name: "standalone-under-workspaces",
+    description:
+      "standalone library in a directory a workspaces root without pob config does not list",
+    cwd: "tools/standalone",
+    files: {
+      "package.json": json({
+        name: "outer",
+        private: true,
+        workspaces: ["packages/*"],
+      }),
+      "tools/standalone/.yo-rc.json": rootYoRc({
+        project: { type: "lib", packageManager: "npm", ci: false },
+        lib: { documentation: false, testing: false, e2e: false },
+      }),
+      "tools/standalone/package.json": json(
+        pkg("standalone-under-workspaces", {
+          repository: "https://github.com/pob-harness/standalone.git",
+          pob: {},
+        }),
+      ),
+      "tools/standalone/lib/index.js": jsSource,
+    },
+  },
+  {
+    name: "standalone-under-pob-monorepo",
+    description:
+      "standalone library in a directory a pob monorepo does not list in its workspaces",
+    cwd: "examples/standalone",
+    files: {
+      ".yo-rc.json": rootYoRc({
+        project: { type: "lib", packageManager: "pnpm", ci: false },
+        monorepo: {
+          ci: false,
+          testing: false,
+          documentation: false,
+          typescript: false,
+          eslint: true,
+        },
+      }),
+      "package.json": json({
+        name: "outer-monorepo",
+        version: "1.0.0",
+        private: true,
+        license: "MIT",
+        author,
+        type: "module",
+        workspaces: ["packages/*"],
+      }),
+      "examples/standalone/.yo-rc.json": rootYoRc({
+        project: { type: "lib", packageManager: "npm", ci: false },
+        lib: { documentation: false, testing: false, e2e: false },
+      }),
+      "examples/standalone/package.json": json(
+        pkg("standalone-under-pob-monorepo", {
+          repository: "https://github.com/pob-harness/standalone.git",
+          pob: {},
+        }),
+      ),
+      "examples/standalone/lib/index.js": jsSource,
     },
   },
 ];

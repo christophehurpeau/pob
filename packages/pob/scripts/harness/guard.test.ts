@@ -52,7 +52,8 @@ try {
   console.log(error.message.includes("network access blocked") ? "blocked" : error.message);
 }`;
 
-describe("harness guard", () => {
+// every test spawns node with the guard: slow when the whole suite runs
+describe("harness guard", { timeout: 30_000 }, () => {
   test.each([
     ["fetch", 'await fetch("https://example.com");'],
     [

@@ -4,13 +4,16 @@
  *
  *   node packages/pob/scripts/harness/run.ts [--converge] [--steps a,b] [--update] [names...]
  *
- * The snapshots hold the output of the yeoman engine (first run, then what a
- * second run changed) at the time the pipeline engine replaced it: the
- * pipeline engine is compared with its fixed point, apart from the known
- * differences of known-differences.ts. --converge runs the pipeline engine on
- * the output of the yeoman engine instead: nothing may change. --update
- * rewrites the snapshots with the output of the pipeline engine, when the
- * versions of pob-dependencies changed.
+ * The snapshots are regression snapshots of the pipeline engine. Until
+ * 95243aea3 they held the output of the yeoman engine (first run, then what a
+ * second run changed), compared by its fixed point. Any run must converge: a
+ * second run with --check plans nothing. --converge runs the pipeline engine
+ * with --check on the output of a snapshot instead: nothing may change.
+ * --update rewrites the snapshots with the output of the pipeline engine,
+ * for deliberate changes only (also when the versions of pob-dependencies
+ * changed). Snapshots of the old engine still parse (secondRun, config in
+ * .yo-rc.json), and known-differences.ts lists the accepted differences with
+ * them.
  */
 import { execFileSync, spawnSync } from "node:child_process";
 import fs from "node:fs";
@@ -112,6 +115,10 @@ const guardedEnv = (
   POB_HARNESS_ROOT: directory,
 });
 
+/** the directory pob runs in */
+const pobCwd = (fixture: Fixture, directory: string): string =>
+  path.join(directory, fixture.cwd ?? ".");
+
 const keptEffect = (command: string): boolean =>
   !/^(?:node|security|git (?:rev-parse|ls-files|config|remote get-url))\b/.test(
     command,
@@ -134,7 +141,7 @@ const runEngine = (
     `${fixture.name}.${runName}.output.txt`,
   );
   const result = spawnSync(process.execPath, [pobEntry, "update", "from-pob"], {
-    cwd: directory,
+    cwd: pobCwd(fixture, directory),
     encoding: "utf8",
     stdio: ["ignore", "pipe", "pipe"],
     timeout: 5 * 60 * 1000,
@@ -237,6 +244,12 @@ const applySnapshot = (directory: string, snapshot: HarnessResult): void => {
     const absolutePath = path.join(directory, file.path);
     if (file.status === "deleted") {
       fs.rmSync(absolutePath, { force: true });
+      // like a checkout: no empty directory is left
+      let parent = path.dirname(absolutePath);
+      while (parent !== directory && fs.readdirSync(parent).length === 0) {
+        fs.rmdirSync(parent);
+        parent = path.dirname(parent);
+      }
     } else {
       fs.mkdirSync(path.dirname(absolutePath), { recursive: true });
       fs.writeFileSync(absolutePath, file.content ?? "");
@@ -271,7 +284,7 @@ const runConverge = (
     process.execPath,
     [pobEntry, "update", "--check", "--json"],
     {
-      cwd: directory,
+      cwd: pobCwd(fixture, directory),
       encoding: "utf8",
       env: {
         ...process.env,
@@ -303,13 +316,17 @@ const runConverge = (
 };
 
 /** The new engine must converge in one run: a second run plans nothing. */
-const checkSecondRun = (directory: string, result: HarnessResult): string[] => {
+const checkSecondRun = (
+  fixture: Fixture,
+  directory: string,
+  result: HarnessResult,
+): string[] => {
   if (result.exitCode !== 0 || selectedSteps) return [];
   const check = spawnSync(
     process.execPath,
     [pobEntry, "update", "--check", "--json"],
     {
-      cwd: directory,
+      cwd: pobCwd(fixture, directory),
       encoding: "utf8",
       env: {
         ...process.env,
@@ -394,6 +411,7 @@ const restrictToSteps = (
  * to pob.json compared apart.
  */
 const compareNext = async (
+  fixture: Fixture,
   snapshot: HarnessResult,
   result: HarnessResult,
   initialTree: ReadonlyMap<string, string>,
@@ -417,6 +435,7 @@ const compareNext = async (
     ...comparePobJson(
       applyResult(initialTree, expected),
       applyResult(initialTree, result),
+      fixture.cwd,
     ),
   ];
 };
@@ -484,8 +503,8 @@ const main = async (): Promise<void> => {
     }
     const snapshot = parseSnapshot(fs.readFileSync(snapshotPath, "utf8"));
     const differences = [
-      ...(await compareNext(snapshot, result, initialTree)),
-      ...checkSecondRun(directory, result),
+      ...(await compareNext(fixture, snapshot, result, initialTree)),
+      ...checkSecondRun(fixture, directory, result),
     ];
     const known = selectedSteps ? [] : (knownDifferences[fixture.name] ?? []);
     if (differences.length === 0) {
