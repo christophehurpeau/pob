@@ -64,42 +64,94 @@ export const minimumReleaseAgeExcludeNames = [
 export const getRepoName = (pkgName: string): string =>
   pkgName.replace(/^@[^/]+\//, "").replace(/-monorepo$/, "");
 
-// characters allowed by GitHub in account and repository names
+// characters allowed by GitHub and GitLab in account, group and repository names
 const validGitNameRegex = /^[\w.-]+$/;
 
+export interface ParsedGitUrl {
+  /** full host name, without user info nor port */
+  host: string;
+  /** path segments, the last one being the repository name, without .git */
+  segments: string[];
+}
+
+// the user info may hold a token: anything up to the last @ before the path
+const urlRegex = /^(?:https?|ssh|git):\/\/(?:[^/]*@)?([^/:@]+)(?::\d*)?\/(.+)$/;
+const scpLikeRegex = /^(?:[^/:@]+@)?([^/:@]+):(?!\/)(.+)$/;
+
+/**
+ * Parses a git remote url of any host: https (with user info), ssh, git and
+ * scp-like (git@host:path), with `git+` prefix and nested groups.
+ */
+export const parseGitUrl = (url: string): ParsedGitUrl | undefined => {
+  const withoutPrefix = url.replace(/^git\+/, "");
+  const match =
+    urlRegex.exec(withoutPrefix) ?? scpLikeRegex.exec(withoutPrefix);
+  if (!match) return undefined;
+  const [, host = "", pathname = ""] = match;
+  const segments = pathname
+    .replace(/\/+$/, "")
+    .replace(/\.git$/, "")
+    .split("/");
+  if (
+    segments.length < 2 ||
+    !segments.every((segment) => validGitNameRegex.test(segment))
+  ) {
+    return undefined;
+  }
+  return { host: host.toLowerCase(), segments };
+};
+
+export type KnownGitHost = "github" | "gitlab" | "bitbucket";
+
+/** bitbucket.com: the init prompt wrote https://<host>.com for every host */
+const knownGitHosts: Record<string, KnownGitHost | undefined> = {
+  "github.com": "github",
+  "gitlab.com": "gitlab",
+  "bitbucket.org": "bitbucket",
+  "bitbucket.com": "bitbucket",
+};
+
 export interface ParsedRepositoryUrl {
-  gitHost: string;
+  gitHost: KnownGitHost;
+  /** account, organization or group: nested groups joined by / on gitlab */
   gitAccount: string;
   repoName: string;
 }
 
-/**
- * Parses a git remote url, or the "repository" field of a package.json.
- * Returns undefined when the url cannot come from a real remote.
- */
-export const parseRepositoryUrl = (
-  repository: unknown,
-): ParsedRepositoryUrl | undefined => {
+const getRepositoryUrlString = (repository: unknown): string | undefined => {
   const url =
     typeof repository === "string"
       ? repository
       : (repository as { url?: unknown } | undefined)?.url;
-  if (!url || typeof url !== "string") return undefined;
+  return typeof url === "string" && url ? url : undefined;
+};
 
-  const match =
-    /^(?:git\+)?(?:git@|ssh:\/\/git@|https?:\/\/)([^./:]+)(?:\.[a-z]+)?[/:]([^/]+)\/([^/]+?)(?:\.git)?\/?$/.exec(
-      url,
-    );
-  if (!match) return undefined;
+/** Whether a package.json "repository" field holds a git url, of any host. */
+export const isGitRepositoryField = (repository: unknown): boolean => {
+  const url = getRepositoryUrlString(repository);
+  return url !== undefined && parseGitUrl(url) !== undefined;
+};
 
-  const [, gitHost = "", gitAccount = "", repoName = ""] = match;
-  if (
-    !validGitNameRegex.test(gitAccount) ||
-    !validGitNameRegex.test(repoName)
-  ) {
-    return undefined;
-  }
-  return { gitHost, gitAccount, repoName };
+/**
+ * Parses a git remote url, or the "repository" field of a package.json, on a
+ * known host. Undefined for another host or an invalid url.
+ */
+export const parseRepositoryUrl = (
+  repository: unknown,
+): ParsedRepositoryUrl | undefined => {
+  const url = getRepositoryUrlString(repository);
+  if (!url) return undefined;
+  const parsed = parseGitUrl(url);
+  if (!parsed) return undefined;
+  const gitHost = knownGitHosts[parsed.host];
+  if (!gitHost) return undefined;
+  const { segments } = parsed;
+  if (gitHost !== "gitlab" && segments.length !== 2) return undefined;
+  return {
+    gitHost,
+    gitAccount: segments.slice(0, -1).join("/"),
+    repoName: segments.at(-1) ?? "",
+  };
 };
 
 /* oxlint-disable regexp/no-super-linear-backtracking, regexp/match-any */

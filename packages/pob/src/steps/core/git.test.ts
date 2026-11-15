@@ -68,6 +68,62 @@ describe("git", () => {
     ]);
   });
 
+  test("gitlab nested groups and credentials in the remote", async () => {
+    const ctx = createContext(
+      {},
+      "https://gitlab-ci-token:secret@gitlab.com/group/sub/repo.git",
+    );
+    await runTestSteps(ctx, [gitStep]);
+    expect(ctx.pkg.snapshot()).toMatchObject({
+      homepage: "https://gitlab.com/group/sub/repo",
+      bugs: { url: "https://gitlab.com/group/sub/repo/issues" },
+      repository: "https://gitlab.com/group/sub/repo.git",
+    });
+  });
+
+  test.each([
+    "git@gitlab.mycorp.com:team/repo.git",
+    "https://user:secret@git.mycorp.com/team/repo.git",
+  ])(
+    "unknown host %s: warns and keeps repository, homepage and bugs",
+    async (originUrl) => {
+      const pkg = {
+        homepage: "https://docs.mycorp.com",
+        bugs: { url: "https://jira.mycorp.com" },
+        repository: "https://gitlab.mycorp.com/team/repo.git",
+      };
+      const ctx = createContext(pkg, originUrl);
+      const plan = await runTestSteps(ctx, [gitStep]);
+      expect(ctx.pkg.snapshot()).toMatchObject(pkg);
+      expect(plan.effects).toEqual([]);
+    },
+  );
+
+  test("unknown host: the warning hides credentials", async () => {
+    const warnings: string[] = [];
+    const ctx = createContext(
+      {},
+      "https://user:secret@git.mycorp.com/team/repo.git",
+    );
+    ctx.warn = (message) => warnings.push(message);
+    await runTestSteps(ctx, [gitStep]);
+    expect(warnings).toEqual([
+      "git: unknown git host in https://***@git.mycorp.com/team/repo.git: repository, homepage and bugs are left as they are, the github features are skipped",
+    ]);
+  });
+
+  test("without origin remote, a repository on an unknown host: git init only", async () => {
+    const ctx = createContext(
+      { repository: "https://gitlab.mycorp.com/team/repo.git" },
+      undefined,
+    );
+    const plan = await runTestSteps(ctx, [gitStep]);
+    expect(ctx.pkg.get("repository")).toBe(
+      "https://gitlab.mycorp.com/team/repo.git",
+    );
+    expect(plan.effects.map(({ id }) => id)).toEqual(["git-init"]);
+  });
+
   test("throws without remote nor repository", async () => {
     await expect(
       runTestSteps(createContext({}, undefined), [gitStep]),

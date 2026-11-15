@@ -320,6 +320,31 @@ describe("questions", () => {
     );
     expect(pkg.repository).toBe("https://gitlab.com/me/my-lib.git");
   });
+
+  test("keeps a repository on an unknown host without asking", async () => {
+    const repository = "https://gitlab.mycorp.com/team/my-lib.git";
+    const { pkg, asked } = await resolveWith(
+      {
+        config: {
+          project: { type: "lib", packageManager: "npm", ci: true },
+          renovate: { enable: true },
+          lib: { documentation: false, testing: false, e2e: false },
+          build: {},
+        },
+        pkg: {
+          name: "my-lib",
+          author: "A <a@a.a> (https://a.a)",
+          type: "module",
+          license: "MIT",
+          repository,
+        },
+        facts: { ...standaloneFacts, hasOriginRemote: false },
+      },
+      {},
+    );
+    expect(asked).not.toContain("package.json#repository");
+    expect(pkg.repository).toBe(repository);
+  });
 });
 
 describe("parseAnswer", () => {

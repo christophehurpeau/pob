@@ -12,7 +12,10 @@ const isGitRepository = (cwd: string): boolean =>
  * Without an origin remote: there may be no repository yet. The check runs
  * with the effect, an origin remote implies a repository.
  */
-const planGitSetup = (ctx: PackageContext, repository: GitRepository): void => {
+const planGitSetup = (
+  ctx: PackageContext,
+  repository: GitRepository | undefined,
+): void => {
   ctx.effects.add({
     id: "git-init",
     reason: "no origin remote: the git repository may not exist",
@@ -24,8 +27,8 @@ const planGitSetup = (ctx: PackageContext, repository: GitRepository): void => {
     },
   });
 
+  if (!repository) return;
   const remoteHost = gitHostDomains[repository.gitHost];
-  if (!remoteHost) return;
   const originSSH = `git@${remoteHost}:${repository.gitHostAccount}/${repository.repoName}.git`;
   ctx.effects.add({
     id: "git-remote-add",
@@ -74,6 +77,10 @@ export const gitStep = defineStep<PackageContext>({
   run: (ctx) => {
     const { pkg } = ctx;
     const repository = getGitRepository(ctx, { warn: true });
+    if (!repository) {
+      if (!ctx.facts.originUrl) planGitSetup(ctx, undefined);
+      return;
+    }
     const { gitHost, gitHostAccount, repoName } = repository;
     // wrong for bitbucket.org, kept from the yeoman generator
     const repositoryUrl = `https://${gitHost}.com/${gitHostAccount}/${repoName}`;

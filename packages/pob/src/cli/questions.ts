@@ -14,8 +14,8 @@ import {
 import {
   detectAlouette,
   getRepoName,
+  isGitRepositoryField,
   latestLTS,
-  parseRepositoryUrl,
 } from "../utils/misc.ts";
 import { parseAuthor } from "../utils/untyped.ts";
 
@@ -163,7 +163,7 @@ const needsAuthor = (state: QuestionState): boolean =>
   !state.pkg.authors && !state.facts.rootPkg?.author;
 
 const hasRepository = (state: QuestionState): boolean =>
-  state.facts.hasOriginRemote || !!parseRepositoryUrl(state.pkg.repository);
+  state.facts.hasOriginRemote || isGitRepositoryField(state.pkg.repository);
 
 const monorepoCi = (state: QuestionState): boolean =>
   config(state, "monorepo.ci") === true;
@@ -681,9 +681,11 @@ export class MissingAnswersError extends Error {
     {
       pobJsonPath,
       pkgPath,
+      retryHint,
     }: {
       pobJsonPath: string;
       pkgPath: string;
+      retryHint?: string;
     },
   ) {
     const lines = new Map<string, string>();
@@ -698,7 +700,7 @@ export class MissingAnswersError extends Error {
       lines.set(id, `  - ${id}${choices}: ${how}`);
     }
     super(
-      `Missing pob config, and no TTY to ask for it:\n${[...lines.values()].join("\n")}\nKeys that depend on these values are not listed yet.`,
+      `Missing pob config, and no TTY to ask for it:\n${[...lines.values()].join("\n")}\nKeys that depend on these values are not listed yet.${retryHint ? `\nSet them, ${retryHint}.` : ""}`,
     );
     this.name = "MissingAnswersError";
   }
