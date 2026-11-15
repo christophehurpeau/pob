@@ -6,6 +6,18 @@ import { afterEach, beforeEach, describe, expect, test } from "vitest";
 
 const guardPath = path.join(import.meta.dirname, "guard.ts");
 
+/**
+ * Without the variables git hooks set (pre-push runs the tests): git would
+ * act on this repository, `git init` would make it bare.
+ */
+const testEnv = (): NodeJS.ProcessEnv => {
+  const env = { ...process.env };
+  for (const name of ["GIT_DIR", "GIT_WORK_TREE", "GIT_INDEX_FILE"]) {
+    Reflect.deleteProperty(env, name);
+  }
+  return env;
+};
+
 let directory: string;
 
 beforeEach(() => {
@@ -29,7 +41,7 @@ const runGuarded = (
     cwd: directory,
     encoding: "utf8",
     env: {
-      ...process.env,
+      ...testEnv(),
       NODE_OPTIONS: `--import ${guardPath}`,
       POB_HARNESS_LOG: logPath,
       POB_HARNESS_ROOT: directory,
@@ -116,7 +128,7 @@ execFileSync("git", ["config", "--global", "user.name", "x"]);
   });
 
   test("runs allowed commands and blocks git init", () => {
-    spawnSync("git", ["init", "--quiet"], { cwd: directory });
+    spawnSync("git", ["init", "--quiet"], { cwd: directory, env: testEnv() });
     const { stdout, log } = runGuarded(`
 import { execFileSync } from "node:child_process";
 execFileSync("git", ["init", "--quiet", "other"]);

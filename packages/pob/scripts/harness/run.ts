@@ -65,6 +65,18 @@ const readTree = (root: string): Map<string, string> => {
   return tree;
 };
 
+/**
+ * The environment without the variables git hooks set: git would act on the
+ * repository of the hook, `git init` would make it bare.
+ */
+const harnessEnv = (): NodeJS.ProcessEnv => {
+  const env = { ...process.env };
+  for (const name of ["GIT_DIR", "GIT_WORK_TREE", "GIT_INDEX_FILE"]) {
+    Reflect.deleteProperty(env, name);
+  }
+  return env;
+};
+
 const git = (cwd: string, args: string[]): string =>
   execFileSync(
     "git",
@@ -79,7 +91,12 @@ const git = (cwd: string, args: string[]): string =>
       "commit.gpgsign=false",
       ...args,
     ],
-    { cwd, encoding: "utf8", stdio: ["ignore", "pipe", "pipe"] },
+    {
+      cwd,
+      encoding: "utf8",
+      stdio: ["ignore", "pipe", "pipe"],
+      env: harnessEnv(),
+    },
   );
 
 const createFixture = (fixture: Fixture, directory: string): void => {
@@ -146,7 +163,7 @@ const runEngine = (
     stdio: ["ignore", "pipe", "pipe"],
     timeout: 5 * 60 * 1000,
     env: {
-      ...process.env,
+      ...harnessEnv(),
       ...guardedEnv(directory, logPath),
       CI: "true",
       TZ: "UTC",
@@ -287,7 +304,7 @@ const runConverge = (
       cwd: pobCwd(fixture, directory),
       encoding: "utf8",
       env: {
-        ...process.env,
+        ...harnessEnv(),
         ...guardedEnv(
           directory,
           path.join(path.dirname(directory), `${fixture.name}.converge.log`),
@@ -329,7 +346,7 @@ const checkSecondRun = (
       cwd: pobCwd(fixture, directory),
       encoding: "utf8",
       env: {
-        ...process.env,
+        ...harnessEnv(),
         ...guardedEnv(
           directory,
           path.join(
