@@ -1,0 +1,196 @@
+{
+  "$schema": "https://json-schema.org/draft-07/schema#",
+  "title": "pob.json",
+  "description": "Config of pob: the files of the package are generated from it. Run `pob explain <file>` to know which keys control a file.",
+  "type": "object",
+  "properties": {
+    "$schema": { "type": "string" },
+    "project": {
+      "type": "object",
+      "properties": {
+        "type": { "description": "kind of project", "enum": ["lib", "app"] },
+        "packageManager": {
+          "description": "package manager of the repository, only at the root",
+          "enum": ["yarn", "npm", "pnpm", "bun"]
+        },
+        "yarnNodeLinker": {
+          "description": "yarn only",
+          "enum": ["pnpm", "node-modules", "pnp"]
+        },
+        "ci": {
+          "description": "continuous integration with github actions, only at the root",
+          "type": "boolean"
+        },
+        "disableYarnGitCache": {
+          "description": "see https://yarnpkg.com/features/caching#offline-mirror, default true",
+          "type": "boolean"
+        },
+        "onlyLatestLTS": {
+          "description": "only support the latest LTS of node in a monorepo",
+          "type": "boolean"
+        },
+        "supportsNode14": { "deprecated": true, "type": "boolean" }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    "lib": {
+      "type": "object",
+      "properties": {
+        "documentation": {
+          "description": "generated documentation",
+          "type": "boolean"
+        },
+        "testing": {
+          "anyOf": [
+            { "const": false },
+            {
+              "type": "object",
+              "properties": {
+                "runner": { "enum": ["vitest", "node"] },
+                "codecov": { "type": "boolean" }
+              },
+              "additionalProperties": false
+            }
+          ]
+        },
+        "e2e": { "description": "playwright e2e tests", "type": "boolean" },
+        "buildInGit": {
+          "description": "commit the build output in git",
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "app": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "enum": [
+            "node",
+            "alp",
+            "vite",
+            "vite-with-server",
+            "next.js",
+            "node-library",
+            "untranspiled-library",
+            "alp-node",
+            "expo",
+            "yarn-plugin",
+            "storybook",
+            "other"
+          ]
+        },
+        "testing": { "type": "boolean" },
+        "testRunner": { "enum": ["vitest", "node"] },
+        "codecov": { "type": "boolean" },
+        "e2e": { "type": "boolean" },
+        "distribute": {
+          "description": "build to dist and publish, instead of building to build",
+          "type": "boolean"
+        },
+        "buildInGit": { "type": "boolean" },
+        "storybook": {
+          "description": "expo: on-device react-native storybook",
+          "type": "boolean"
+        },
+        "alouette": {
+          "description": "expo: alouette (tailwind with nativewind)",
+          "type": "boolean"
+        },
+        "export": { "description": "next.js: next export", "type": "boolean" }
+      },
+      "required": ["type"],
+      "additionalProperties": false
+    },
+    "monorepo": {
+      "type": "object",
+      "properties": {
+        "ci": { "type": "boolean" },
+        "disablePushWorkflow": { "type": "boolean" },
+        "testing": { "type": "boolean" },
+        "testRunner": { "enum": ["vitest", "node"] },
+        "e2eTesting": {
+          "description": "path of the package running the e2e tests, or true to detect it",
+          "anyOf": [{ "type": "string" }, { "const": false }, { "const": true }]
+        },
+        "codecov": { "type": "boolean" },
+        "documentation": { "type": "boolean" },
+        "typescript": {
+          "anyOf": [
+            { "const": false },
+            { "const": true },
+            { "const": "check-only" }
+          ]
+        },
+        "eslint": { "type": "boolean" },
+        "storybook": { "type": "boolean" },
+        "storybookReactNative": { "type": "boolean" },
+        "mongodbBinaryCacheKeyFile": {
+          "description": "file whose hash is the cache key of the mongodb binaries in ci",
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "renovate": {
+      "type": "object",
+      "properties": { "enable": { "type": "boolean" } },
+      "required": ["enable"],
+      "additionalProperties": false
+    },
+    "build": {
+      "type": "object",
+      "properties": {
+        "bundler": {
+          "enum": [
+            "rollup-esbuild",
+            "rollup-typescript",
+            "rollup-babel",
+            "tsc",
+            "esbuild"
+          ]
+        },
+        "typescript": {
+          "anyOf": [
+            { "const": false },
+            { "const": true },
+            { "const": "check-only" }
+          ]
+        },
+        "envs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "target": { "enum": ["node", "browser"] },
+              "version": {
+                "anyOf": [{ "type": "string" }, { "type": "number" }]
+              },
+              "formats": {
+                "type": "array",
+                "items": { "enum": ["es", "cjs"] }
+              },
+              "omitVersionInFileName": { "type": "boolean" },
+              "executable": { "type": "boolean" }
+            },
+            "required": ["target"],
+            "additionalProperties": false
+          }
+        },
+        "entries": { "type": "array", "items": { "type": "string" } },
+        "extraEntries": { "type": "array", "items": {} },
+        "jsx": { "type": "boolean" },
+        "rollup": { "deprecated": true, "type": "boolean" }
+      },
+      "additionalProperties": {}
+    },
+    "gitignore": {
+      "description": "paths added to the generated .gitignore, for files pob does not know about",
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  },
+  "required": ["project"],
+  "additionalProperties": false
+}

@@ -38,6 +38,10 @@ export default [
   })),
   {
     files: ["**/test-lint/**/*.{js,cjs,mjs}"],
+    settings: {
+      // imported by fixtures, not installed since yeoman was removed
+      "import-x/core-modules": ["chalk"],
+    },
     rules: {
       "import-x/no-extraneous-dependencies": "off",
     },
@@ -75,19 +79,6 @@ export default [
         {
           dependencies: {
             "lint-staged": { dependencies: ["picomatch"] },
-          },
-        },
-      ],
-    },
-  },
-  {
-    files: ["packages/pob/package.json"],
-    rules: {
-      "check-package-dependencies/satisfies-versions-from-dependencies": [
-        "error",
-        {
-          dependencies: {
-            "yeoman-environment": { dependencies: ["mem-fs-editor"] },
           },
         },
       ],

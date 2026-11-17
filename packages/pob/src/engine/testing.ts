@@ -1,0 +1,123 @@
+import { normalizeConfig as defaultNormalizeConfig } from "../steps/config.ts";
+import type { PobConfig } from "./config.ts";
+import type {
+  MonorepoWorkspace,
+  PackageContext,
+  PobStep,
+  RepoFacts,
+} from "./context.ts";
+import { createMemoryFiles } from "./files.ts";
+import type { NormalizeConfig } from "./pipeline.ts";
+import { createPackageContext, renderContext, runSteps } from "./pipeline.ts";
+import type { Plan } from "./plan.ts";
+import { orderSteps } from "./step.ts";
+import type { DependencyVersions } from "./versions.ts";
+
+export interface TestContextOptions {
+  files: Record<string, string>;
+  executableFiles?: string[];
+  facts?: Partial<Omit<RepoFacts, "packageManager" | "yarnNodeLinker">>;
+  rootConfig?: PobConfig;
+  versions?: DependencyVersions;
+  workspacePackages?: PackageContext[];
+  siblingPackages?: MonorepoWorkspace[];
+  /** workspaces without a pob config, besides workspacePackages */
+  otherWorkspaces?: {
+    location: string;
+    pkg: Record<string, unknown>;
+    files?: Record<string, string>;
+  }[];
+  location?: string;
+  /** the normalization of the pipeline by default */
+  normalizeConfig?: NormalizeConfig | false;
+}
+
+/** fixed versions, so that tests do not change with pob-dependencies */
+export const testVersions: DependencyVersions = (dependency) =>
+  `${dependency.length}.0.0`;
+
+/** A package context over in-memory files, with strict access checks. */
+export const createTestContext = ({
+  files,
+  executableFiles = [],
+  facts,
+  rootConfig,
+  versions = testVersions,
+  workspacePackages = [],
+  siblingPackages = [],
+  otherWorkspaces = [],
+  location = ".",
+  normalizeConfig = defaultNormalizeConfig,
+}: TestContextOptions): PackageContext => {
+  const ctx = createPackageContext({
+    location,
+    dir: `/test/${location}`,
+    initial: createMemoryFiles(files, executableFiles),
+    facts: {
+      isMonorepoRoot: false,
+      isRoot: true,
+      originUrl: "https://github.com/test/test.git",
+      inMonorepo: undefined,
+      ...facts,
+    },
+    rootConfig,
+    versions,
+    strict: true,
+    options: { check: true, fromPob: false },
+    warnings: [],
+    normalizeConfig: normalizeConfig || undefined,
+  });
+  ctx.workspacePackages = workspacePackages;
+  ctx.siblingPackages = siblingPackages;
+  ctx.monorepoWorkspaces = [
+    ...workspacePackages.map((packageContext) => ({
+      location: packageContext.location,
+      pkg:
+        packageContext.initial.readJson<Record<string, unknown>>(
+          "package.json",
+        ) ?? {},
+      initial: packageContext.initial,
+      context: packageContext,
+    })),
+    ...otherWorkspaces.map(({ location, pkg, files: workspaceFiles = {} }) => ({
+      location,
+      pkg,
+      initial: createMemoryFiles({
+        "package.json": JSON.stringify(pkg),
+        ...workspaceFiles,
+      }),
+      context: undefined,
+    })),
+  ];
+  return ctx;
+};
+
+/** Runs steps on a context and renders it, without touching the disk. */
+export const runTestSteps = async (
+  ctx: PackageContext,
+  steps: readonly PobStep[],
+): Promise<Plan> => {
+  await runSteps(ctx, orderSteps(steps));
+  const { files, warnings } = await renderContext(ctx);
+  return {
+    files,
+    effects: ctx.effects.list().map((effect) => ({
+      id: effect.id,
+      cwd: effect.cwd ?? ".",
+      reasons: effect.reasons,
+      owners: effect.owners,
+      command: effect.command,
+      after: [...(effect.after ?? [])],
+      mayModify: [...(effect.mayModify ?? [])],
+      ...(effect.everyUpdate ? { everyUpdate: true } : {}),
+    })),
+    warnings,
+  };
+};
+
+/** Content of a planned file, by path. */
+export const plannedContent = (
+  plan: Plan,
+  filePath: string,
+): string | undefined =>
+  plan.files.find((file) => file.path === filePath)?.after;
