@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [40.10.0](https://github.com/christophehurpeau/pob/compare/pob%4040.9.1...pob%4040.10.0) (2026-11-17)
+
+### Features
+
+* **deps:** update dependency eslint to v10.15.0 ([#2942](https://github.com/christophehurpeau/pob/issues/2942))
+
+### Bug Fixes
+
+* **pob:** ci test detection, --check side effects and no-op removeScripts ([#2938](https://github.com/christophehurpeau/pob/issues/2938))
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: pob-dependencies
+Version bump for dependency: @pob/root
+
+
 ## [40.9.1](https://github.com/christophehurpeau/pob/compare/pob%4040.9.0...pob%4040.9.1) (2026-11-15)
 
 ### Bug Fixes

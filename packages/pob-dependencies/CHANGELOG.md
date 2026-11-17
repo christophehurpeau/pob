@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.9.0](https://github.com/christophehurpeau/pob/compare/pob-dependencies%4028.8.1...pob-dependencies%4028.9.0) (2026-11-17)
+
+### Features
+
+* **deps:** update dependency eslint to v10.15.0 ([#2942](https://github.com/christophehurpeau/pob/issues/2942))
+
+### Bug Fixes
+
+* **deps:** update dependency rollup to v4.68.3 ([#2940](https://github.com/christophehurpeau/pob/issues/2940))
+
+Version bump for dependency: @pob/eslint-config
+Version bump for dependency: @pob/eslint-config-typescript-react
+Version bump for dependency: @pob/rollup-esbuild
+
+
 ## [28.8.1](https://github.com/christophehurpeau/pob/compare/pob-dependencies%4028.8.0...pob-dependencies%4028.8.1) (2026-11-15)
 
 Version bump for dependency: @pob/eslint-config-typescript-react

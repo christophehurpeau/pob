@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.9.0](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.8.1...%40pob%2Froot%4028.9.0) (2026-11-17)
+
+Version bump for dependency: @pob/version
+Version bump for dependency: pob-dependencies
+
+
 ## [28.8.1](https://github.com/christophehurpeau/pob/compare/%40pob%2Froot%4028.8.0...%40pob%2Froot%4028.8.1) (2026-11-15)
 
 ### Bug Fixes

@@ -3,6 +3,11 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.6.1](https://github.com/christophehurpeau/pob/compare/yarn-version%4014.6.0...yarn-version%4014.6.1) (2026-11-17)
+
+Version bump for dependency: @pob/version
+
+
 ## [14.6.0](https://github.com/christophehurpeau/pob/compare/yarn-version%4014.5.0...yarn-version%4014.6.0) (2026-11-13)
 
 Version bump for dependency: @pob/version
