@@ -182,6 +182,8 @@ export const getAppIgnorePaths = (
         "/ios/",
         "/dist/",
         "/dist-native/",
+        "/web-build/",
+        "/.expo-shared/",
         "*.jks",
         "*.p8",
         "*.p12",

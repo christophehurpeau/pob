@@ -1,6 +1,8 @@
 import type { PackageContext } from "../engine/context.ts";
+import type { JsonObject } from "../engine/model.ts";
 import { defineStep } from "../engine/step.ts";
 import {
+  detectStorybook,
   getAppIgnorePaths,
   getAppSettings,
   getLibSettings,
@@ -14,7 +16,7 @@ export interface GitignoreOptions {
   testing: boolean;
   withBabel: boolean | undefined;
   typescript: boolean;
-  paths: string;
+  paths: string[];
   playwright: boolean;
   designSync: boolean;
 }
@@ -69,13 +71,15 @@ export const renderGitignore = (options: GitignoreOptions): string => {
           "yarn-error.log*",
         ]
       : []),
-    ...(options.paths ? [...(options.root ? [""] : []), options.paths] : []),
+    ...(options.paths.length > 0
+      ? [...(options.root ? [""] : []), ...options.paths]
+      : []),
     ...(options.root ? rootSection(options, typescript) : []),
   ];
   return `${lines.join("\n")}\n`;
 };
 
-const getGitignoreOptions = (ctx: PackageContext): GitignoreOptions => {
+const getProjectKindOptions = (ctx: PackageContext): GitignoreOptions => {
   const designSync = ctx.initial.exists(".design-sync/config.json");
   switch (getProjectKind(ctx)) {
     case "monorepo": {
@@ -86,7 +90,7 @@ const getGitignoreOptions = (ctx: PackageContext): GitignoreOptions => {
         testing: !!settings.monorepo.testing,
         withBabel: undefined,
         typescript: !!settings.monorepo.typescript,
-        paths: settings.rootIgnorePaths.join("\n"),
+        paths: settings.rootIgnorePaths,
         playwright: false,
         designSync,
       };
@@ -106,7 +110,7 @@ const getGitignoreOptions = (ctx: PackageContext): GitignoreOptions => {
         testing: !!settings.app.testing,
         withBabel: settings.babel,
         typescript: true,
-        paths: ignorePaths.join("\n"),
+        paths: ignorePaths,
         playwright: false,
         designSync,
       };
@@ -121,8 +125,8 @@ const getGitignoreOptions = (ctx: PackageContext): GitignoreOptions => {
         typescript: settings.withTypescript,
         paths:
           !settings.buildInGit && settings.buildDirectory
-            ? `/${settings.buildDirectory}`
-            : "",
+            ? [`/${settings.buildDirectory}`]
+            : [],
         playwright: settings.e2e,
         designSync,
       };
@@ -130,6 +134,30 @@ const getGitignoreOptions = (ctx: PackageContext): GitignoreOptions => {
     default:
       throw new Error("Unknown project kind");
   }
+};
+
+const getConfigPaths = (ctx: PackageContext): string[] => {
+  const paths: unknown = ctx.config.gitignore ?? [];
+  if (
+    !Array.isArray(paths) ||
+    !paths.every((path): path is string => typeof path === "string")
+  ) {
+    throw new TypeError("pob.json: gitignore must be an array of paths");
+  }
+  return paths;
+};
+
+const getGitignoreOptions = (ctx: PackageContext): GitignoreOptions => {
+  const options = getProjectKindOptions(ctx);
+  const pkg = ctx.initial.readJson<JsonObject>("package.json");
+  return {
+    ...options,
+    paths: [
+      ...options.paths,
+      ...(pkg && detectStorybook([pkg]) ? ["/storybook-static/"] : []),
+      ...getConfigPaths(ctx),
+    ],
+  };
 };
 
 /** .gitignore, owned. npm publish also reads it. */
@@ -141,7 +169,7 @@ export const gitignoreStep = defineStep<PackageContext>({
     if (
       !options.root &&
       !options.documentation &&
-      !options.paths &&
+      options.paths.length === 0 &&
       !options.withBabel
     ) {
       ctx.output.removed(".gitignore");

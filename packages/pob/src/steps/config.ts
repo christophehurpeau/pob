@@ -70,6 +70,7 @@ export const normalizeConfig = (ctx: PackageContext): PobConfig => {
       : {}),
     // an empty build config tells apps that pob was configured without bundler
     ...(build ? { build } : {}),
+    ...(config.gitignore ? { gitignore: config.gitignore } : {}),
   };
 };
 

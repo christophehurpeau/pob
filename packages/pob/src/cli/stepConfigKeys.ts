@@ -100,6 +100,7 @@ export const stepConfigKeys: Readonly<Record<string, readonly string[]>> = {
     "build.entries",
     "build.envs",
     "build.typescript",
+    "gitignore",
     "lib.buildInGit",
     "lib.documentation",
     "lib.e2e",

@@ -78,3 +78,17 @@ describe("legacy sources next to pob.json", () => {
     );
   });
 });
+
+test("pob.json keeps the gitignore paths", () => {
+  const pobJson = buildPobJson(
+    createPackage({
+      "package.json": json({ name: "a" }),
+      "pob.json": json({
+        project: { type: "lib" },
+        lib: {},
+        gitignore: ["/snapshots/"],
+      }),
+    }),
+  );
+  expect(pobJson.gitignore).toEqual(["/snapshots/"]);
+});

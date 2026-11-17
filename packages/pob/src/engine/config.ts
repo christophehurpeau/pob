@@ -124,6 +124,8 @@ export interface PobConfig {
   monorepo?: MonorepoConfig;
   renovate?: { enable: boolean };
   build?: BuildConfig;
+  /** paths added to the generated .gitignore, for files pob does not know about */
+  gitignore?: string[];
 }
 
 /** Config as found on disk, before migrations. */

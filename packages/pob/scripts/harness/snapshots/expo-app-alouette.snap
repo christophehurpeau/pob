@@ -104,6 +104,8 @@ yarn-error.log*
 /ios/
 /dist/
 /dist-native/
+/web-build/
+/.expo-shared/
 *.jks
 *.p8
 *.p12
@@ -146,6 +148,8 @@ yarn-error.log*
     "/ios/",
     "/dist/",
     "/dist-native/",
+    "/web-build/",
+    "/.expo-shared/",
     "*.jks",
     "*.p8",
     "*.p12",
@@ -183,6 +187,8 @@ yarn-error.log*
     "/ios/",
     "/dist/",
     "/dist-native/",
+    "/web-build/",
+    "/.expo-shared/",
     "*.jks",
     "*.p8",
     "*.p12",

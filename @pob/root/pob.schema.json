@@ -184,6 +184,11 @@
         "rollup": { "deprecated": true, "type": "boolean" }
       },
       "additionalProperties": {}
+    },
+    "gitignore": {
+      "description": "paths added to the generated .gitignore, for files pob does not know about",
+      "type": "array",
+      "items": { "type": "string" }
     }
   },
   "required": ["project"],
