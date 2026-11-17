@@ -398,6 +398,9 @@ export const renderPushWorkflowSplit = (
           ...install({ ...options, withNpm: true }),
           ...buildStep,
           "",
+          "      - name: E2E testing prepare",
+          `        run: ${run("test:e2e:prepare", options.e2eTesting)}`,
+          "",
           "      - name: E2E testing",
           `        run: ${run("test:e2e", options.e2eTesting)}`,
         ]

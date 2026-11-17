@@ -145,6 +145,7 @@ describe("ci", () => {
             testRunner: "vitest",
             typescript: true,
             mongodbBinaryCacheKeyFile: "packages/p0/mongodb.json",
+            e2eTesting: "packages/p0",
           },
         }),
       },
@@ -154,6 +155,9 @@ describe("ci", () => {
     const plan = await runTestSteps(ctx, [ciStep, readContextsStep]);
     const push = plannedContent(plan, ".github/workflows/push.yml");
     expect(push).toContain("  lint:");
+    expect(push?.slice(push.indexOf("  test-e2e:"))).toContain(
+      "      - name: E2E testing prepare\n        run: yarn packages/p0 run test:e2e:prepare\n\n      - name: E2E testing\n",
+    );
     expect(push).toContain("hashFiles('packages/p0/mongodb.json')");
     expect(push).toContain("yarn install --immutable\n");
     expect(publishedContexts).toEqual(
