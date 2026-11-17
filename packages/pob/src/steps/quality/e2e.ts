@@ -5,6 +5,14 @@ import { hasVitestBrowserPlaywright } from "../settings.ts";
 import { getE2eEnabled } from "./settings.ts";
 
 const e2ePrepareScript = "test:e2e:prepare";
+const playwrightConfigPath = "e2e/playwright.config.ts";
+
+/** vitest browser tests, like the stories of storybook, run as e2e tests */
+const getE2eCommand = (ctx: PackageContext, initialPkg: JsonObject): string =>
+  !ctx.initial.exists(playwrightConfigPath) &&
+  hasVitestBrowserPlaywright(initialPkg)
+    ? "vitest run"
+    : `playwright test -c ${playwrightConfigPath}`;
 
 /**
  * Playwright e2e tests. The .gitignore entries are written by the gitignore
@@ -33,7 +41,7 @@ export const e2eStep = defineStep<PackageContext>({
       [e2ePrepareScript]: currentPrepare?.startsWith("playwright install ")
         ? currentPrepare
         : "playwright install chromium",
-      "test:e2e": "playwright test -c e2e/playwright.config.ts",
+      "test:e2e": getE2eCommand(ctx, initialPkg),
     });
   },
 });

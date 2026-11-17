@@ -211,6 +211,48 @@ describe("e2e", () => {
     });
   });
 
+  test("vitest browser tests without a playwright config run with vitest", async () => {
+    const plan = await runTestSteps(
+      createTestContext({
+        files: libFiles(
+          { e2e: true },
+          {
+            name: "lib",
+            devDependencies: { "@vitest/browser-playwright": "1.0.0" },
+          },
+        ),
+      }),
+      [e2eStep],
+    );
+    const pkg = parse(plannedContent(plan, "package.json"));
+    expect(pkg.scripts).toEqual({
+      "test:e2e": "vitest run",
+      "test:e2e:prepare": "playwright install chromium",
+    });
+  });
+
+  test("a playwright config wins over vitest browser tests", async () => {
+    const plan = await runTestSteps(
+      createTestContext({
+        files: {
+          ...libFiles(
+            { e2e: true },
+            {
+              name: "lib",
+              devDependencies: { "@vitest/browser-playwright": "1.0.0" },
+            },
+          ),
+          "e2e/playwright.config.ts": "",
+        },
+      }),
+      [e2eStep],
+    );
+    const pkg = parse(plannedContent(plan, "package.json"));
+    expect(pkg.scripts).toMatchObject({
+      "test:e2e": "playwright test -c e2e/playwright.config.ts",
+    });
+  });
+
   test("disabled: keeps playwright for vitest browser tests", async () => {
     const plan = await runTestSteps(
       createTestContext({
