@@ -55,7 +55,7 @@
     "@pob/eslint-config-typescript-react": "workspace:*",
     "@pob/sort-object": "workspace:*",
     "@pob/sort-pkg": "workspace:*",
-    "eslint": "10.14.0",
+    "eslint": "10.15.0",
     "js-yaml": "^5.2.1",
     "json5": "^2.2.3",
     "lodash.camelcase": "^4.3.0",
