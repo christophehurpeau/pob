@@ -61,8 +61,8 @@
     "semver": "7.8.6",
     "typescript": "npm:@typescript/typescript6@6.0.2",
     "validate-npm-package-name": "^8.0.0",
-    "yeoman-environment": "8.5.1",
-    "yeoman-generator": "10.3.0"
+    "yeoman-environment": "8.6.0",
+    "yeoman-generator": "10.3.1"
   },
   "devDependencies": {
     "@pob/root": "workspace:*",
